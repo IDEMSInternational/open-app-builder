@@ -1,0 +1,33 @@
+{
+  "flow_type": "template",
+  "flow_name": "w_self_care_intro_text",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "description_text",
+          "value": "Greetings, everyone. \n\nToday's topic is self-care. \n\nThere are times where we experience challenging times, where we face problems and do not know what to do. It is important to take care of ourselves to learn the techniques of how we can keep ourselves calm in case problems, challenges or issues come up. \n\nWhen we are calm we are in a good state to think positively and come up with positive solutions to any challenges we may be facing.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.description_text"
+        },
+        {
+          "name": "list_text",
+          "hidden": true,
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text"
+        }
+      ],
+      "_nested_name": "suggestions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"
+}

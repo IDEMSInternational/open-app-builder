@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
-import { IconBannerComponent } from "./icon-banner.component";
+import { TmplIconBannerComponent } from "./icon-banner.component";
 
-describe("IconBannerComponent", () => {
-  let component: IconBannerComponent;
-  let fixture: ComponentFixture<IconBannerComponent>;
+describe("TmplIconBannerComponent", () => {
+  let component: TmplIconBannerComponent;
+  let fixture: ComponentFixture<TmplIconBannerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [IconBannerComponent],
+      declarations: [TmplIconBannerComponent],
       imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(IconBannerComponent);
+    fixture = TestBed.createComponent(TmplIconBannerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

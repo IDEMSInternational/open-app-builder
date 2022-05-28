@@ -1,0 +1,90 @@
+{
+  "flow_type": "template",
+  "module": "safe",
+  "flow_name": "w_safe_talk_2",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "talk_together",
+      "value": "talk_together",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Let's talk about our teens' online safety.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "talk_together.workshop_activity.intro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "name": "text",
+                  "value": "What are some of the online risks for teens these days?",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "talk_together.workshop_activity.content_box.text"
+                },
+                {
+                  "name": "button_1",
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "pop_up",
+                      "args": [
+                        "w_safe_talk_2_pop"
+                      ],
+                      "_raw": "click | pop_up:w_safe_talk_2_pop",
+                      "_cleaned": "click | pop_up:w_safe_talk_2_pop"
+                    }
+                  ],
+                  "hidden": false,
+                  "type": "set_variable",
+                  "_nested_name": "talk_together.workshop_activity.content_box.button_1"
+                }
+              ],
+              "_nested_name": "talk_together.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "talk_together.workshop_activity"
+        }
+      ],
+      "_nested_name": "talk_together"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"
+}

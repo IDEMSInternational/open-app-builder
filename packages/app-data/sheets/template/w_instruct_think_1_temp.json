@@ -1,0 +1,191 @@
+{
+  "flow_type": "template",
+  "module": "instruct",
+  "flow_name": "w_instruct_think_1_temp",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "think",
+      "value": "think_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Let’s do a thought experiment!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "think.workshop_activity.intro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "pair",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "value": "box_image_more",
+                  "rows": [
+                    {
+                      "name": "image_src",
+                      "value": "plh_images/workshops/w_instruct/guide_2/think/slide_1.svg",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "think.workshop_activity.content_box.box_1.image_src"
+                    },
+                    {
+                      "name": "text",
+                      "value": "DO NOT THINK ABOUT AN ELEPHANT \n\nWhat are you thinking about?",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "think.workshop_activity.content_box.box_1.text"
+                    }
+                  ],
+                  "_nested_name": "think.workshop_activity.content_box.box_1"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "box_2",
+                  "value": "pair",
+                  "rows": [
+                    {
+                      "type": "nested_properties",
+                      "name": "box_1",
+                      "value": "box_image_more",
+                      "rows": [
+                        {
+                          "name": "image_src",
+                          "value": "plh_images/workshops/w_instruct/guide_2/think/slide_2.svg",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "think.workshop_activity.content_box.box_2.box_1.image_src"
+                        },
+                        {
+                          "name": "text",
+                          "value": "You probably DID think about an elephant...\n\n‘Don’t do’ instructions make teens think about that thing. \n\nSometimes they don’t understand what we DID want from them. \n\nAlso they often don’t like being told not to do things (don’t we all?)",
+                          "_translations": {
+                            "value": {
+                              "tz_sw": true
+                            }
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "think.workshop_activity.content_box.box_2.box_1.text"
+                        }
+                      ],
+                      "_nested_name": "think.workshop_activity.content_box.box_2.box_1"
+                    },
+                    {
+                      "type": "nested_properties",
+                      "name": "box_2",
+                      "value": "pair",
+                      "rows": [
+                        {
+                          "type": "nested_properties",
+                          "name": "box_1",
+                          "value": "box_image_more",
+                          "rows": [
+                            {
+                              "name": "image_src",
+                              "value": "plh_images/workshops/w_instruct/guide_2/think/slide_1.svg",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "think.workshop_activity.content_box.box_2.box_2.box_1.image_src"
+                            },
+                            {
+                              "name": "text",
+                              "value": "NOW, THINK ABOUT A CHEETAH! \n\nWhat are you thinking about?",
+                              "_translations": {
+                                "value": {
+                                  "tz_sw": true
+                                }
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "think.workshop_activity.content_box.box_2.box_2.box_1.text"
+                            }
+                          ],
+                          "_nested_name": "think.workshop_activity.content_box.box_2.box_2.box_1"
+                        },
+                        {
+                          "type": "nested_properties",
+                          "name": "box_2",
+                          "value": "box_image",
+                          "rows": [
+                            {
+                              "name": "image_src",
+                              "value": "plh_images/workshops/w_instruct/guide_2/think/slide_3.svg",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "think.workshop_activity.content_box.box_2.box_2.box_2.image_src"
+                            },
+                            {
+                              "name": "text",
+                              "value": "That’s right! Positive, clear instructions help teens focus on what they should be doing. \n\nTeens will also feel more respected this way, and are more likely to listen.",
+                              "_translations": {
+                                "value": {
+                                  "tz_sw": true
+                                }
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "think.workshop_activity.content_box.box_2.box_2.box_2.text"
+                            }
+                          ],
+                          "_nested_name": "think.workshop_activity.content_box.box_2.box_2.box_2"
+                        }
+                      ],
+                      "_nested_name": "think.workshop_activity.content_box.box_2.box_2"
+                    }
+                  ],
+                  "_nested_name": "think.workshop_activity.content_box.box_2"
+                }
+              ],
+              "_nested_name": "think.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "think.workshop_activity"
+        }
+      ],
+      "_nested_name": "think"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
+}

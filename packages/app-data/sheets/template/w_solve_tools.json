@@ -1,0 +1,186 @@
+{
+  "flow_type": "template",
+  "module": "solve",
+  "flow_name": "w_solve_tools",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "essential_tools",
+      "value": "essential_tools",
+      "rows": [
+        {
+          "name": "top_text",
+          "value": "Take a few deep breaths to calm down, and",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "hidden": false,
+          "type": "set_variable",
+          "_nested_name": "essential_tools.top_text"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_1",
+          "rows": [
+            {
+              "name": "title",
+              "value": "KNOW IT",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_1.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Identify the problem.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_1.text_1"
+            },
+            {
+              "name": "image_src",
+              "value": "plh_images/workshops/w_solve/tools/tool_1.svg",
+              "_translations": {
+                "value": {}
+              },
+              "hidden": false,
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_1.image_src"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_1"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_2",
+          "rows": [
+            {
+              "name": "title",
+              "value": "SOLVE IT",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_2.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Think of possible solutions and what would happen if we used them.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_2.text_1"
+            },
+            {
+              "name": "image_src",
+              "value": "plh_images/workshops/w_solve/tools/tool_2.svg",
+              "_translations": {
+                "value": {}
+              },
+              "hidden": false,
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_2.image_src"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_2"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_3",
+          "rows": [
+            {
+              "name": "title",
+              "value": "TRY IT",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_3.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Choose a solution and try it out.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_3.text_1"
+            },
+            {
+              "name": "image_src",
+              "value": "plh_images/workshops/w_solve/tools/tool_3.svg",
+              "_translations": {
+                "value": {}
+              },
+              "hidden": false,
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_3.image_src"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_3"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_4",
+          "hidden": false,
+          "rows": [
+            {
+              "name": "title",
+              "value": "TEST IT",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_4.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Did it work? Great! If it did not work, then try another solution.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_4.text_1"
+            },
+            {
+              "name": "image_src",
+              "value": "plh_images/workshops/w_solve/tools/tool_4.svg",
+              "_translations": {
+                "value": {}
+              },
+              "hidden": false,
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_4.image_src"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_4"
+        }
+      ],
+      "_nested_name": "essential_tools"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"
+}

@@ -1,0 +1,24 @@
+{
+  "flow_type": "template",
+  "flow_name": "suggestions",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "name": "description_text",
+      "value": "Ideas from other families:",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "description_text"
+    },
+    {
+      "type": "text",
+      "name": "list_text",
+      "_nested_name": "list_text"
+    }
+  ],
+  "_xlsxPath": "global/mode_templates/talk_together.xlsx"
+}

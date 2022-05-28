@@ -1,0 +1,149 @@
+{
+  "flow_type": "template",
+  "module": "stress",
+  "flow_name": "w_stress_talk",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "talk_together",
+      "value": "talk_together",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Let's discuss what happened in this story.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "talk_together.workshop_activity.intro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "name": "text",
+                  "value": "How do you think @global.w_stress_teen_boy_1 felt? And his @global.w_stress_male_caregiver? And @global.w_stress_girl?\n\nWhat could @global.w_stress_male_caregiver have done differently?",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "talk_together.workshop_activity.content_box.text",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "How do you think @global.w_stress_teen_boy_1 felt? And his @global.w_stress_male_caregiver? And @global.w_stress_girl?\n\nWhat could @global.w_stress_male_caregiver have done differently?",
+                        "matchedExpression": "@global.w_stress_teen_boy_1",
+                        "type": "global",
+                        "fieldName": "w_stress_teen_boy_1"
+                      },
+                      {
+                        "fullExpression": "How do you think @global.w_stress_teen_boy_1 felt? And his @global.w_stress_male_caregiver? And @global.w_stress_girl?\n\nWhat could @global.w_stress_male_caregiver have done differently?",
+                        "matchedExpression": "@global.w_stress_male_caregiver",
+                        "type": "global",
+                        "fieldName": "w_stress_male_caregiver"
+                      },
+                      {
+                        "fullExpression": "How do you think @global.w_stress_teen_boy_1 felt? And his @global.w_stress_male_caregiver? And @global.w_stress_girl?\n\nWhat could @global.w_stress_male_caregiver have done differently?",
+                        "matchedExpression": "@global.w_stress_girl",
+                        "type": "global",
+                        "fieldName": "w_stress_girl"
+                      },
+                      {
+                        "fullExpression": "How do you think @global.w_stress_teen_boy_1 felt? And his @global.w_stress_male_caregiver? And @global.w_stress_girl?\n\nWhat could @global.w_stress_male_caregiver have done differently?",
+                        "matchedExpression": "@global.w_stress_male_caregiver",
+                        "type": "global",
+                        "fieldName": "w_stress_male_caregiver"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@global.w_stress_teen_boy_1": [
+                      "value"
+                    ],
+                    "@global.w_stress_male_caregiver": [
+                      "value",
+                      "value"
+                    ],
+                    "@global.w_stress_girl": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "name": "button_1",
+                  "value": "@global.ideas_short_button",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "pop_up",
+                      "args": [
+                        "w_stress_talk_pop"
+                      ],
+                      "_raw": "click | pop_up:w_stress_talk_pop",
+                      "_cleaned": "click | pop_up:w_stress_talk_pop"
+                    }
+                  ],
+                  "hidden": false,
+                  "type": "set_variable",
+                  "_nested_name": "talk_together.workshop_activity.content_box.button_1",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@global.ideas_short_button",
+                        "matchedExpression": "@global.ideas_short_button",
+                        "type": "global",
+                        "fieldName": "ideas_short_button"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@global.ideas_short_button": [
+                      "value"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "talk_together.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "talk_together.workshop_activity"
+        }
+      ],
+      "_nested_name": "talk_together"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
+}

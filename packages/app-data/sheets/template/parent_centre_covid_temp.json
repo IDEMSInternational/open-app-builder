@@ -1,0 +1,240 @@
+{
+  "flow_type": "template",
+  "flow_name": "parent_centre_covid_temp",
+  "status": "released",
+  "rows": [
+    {
+      "name": "tile_1_text",
+      "value": "WHO Website",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "tile_1_text"
+    },
+    {
+      "name": "tile_2_text",
+      "value": "UNICEF Website",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "tile_2_text"
+    },
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@data.parent_centre.covid.title",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "tiny"
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.parent_centre.covid.title",
+            "matchedExpression": "@data.parent_centre.covid.title",
+            "type": "data",
+            "fieldName": "parent_centre"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.parent_centre.covid.title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "Parenting during COVID is hard. Be proud of yourself for making it this far.\n\nWe are working on new content here to support you with talking to your teens and children about COVID.\n\nThe most up to date information on COVID-19 can be found on the WHO and UNICEF websites:",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_1"
+    },
+    {
+      "type": "display_group",
+      "rows": [
+        {
+          "type": "tile_component",
+          "name": "tile_1",
+          "value": "tile_1",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to_url",
+              "args": [
+                "www.who.int/emergencies/diseases/novel-coronavirus-2019"
+              ],
+              "_raw": "click | go_to_url:www.who.int/emergencies/diseases/novel-coronavirus-2019",
+              "_cleaned": "click | go_to_url:www.who.int/emergencies/diseases/novel-coronavirus-2019"
+            }
+          ],
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "first_line_text": "@local.tile_1_text",
+            "left_icon_src": "globe-outline",
+            "style": "button_tile",
+            "icon_src": "chevron-forward-outline"
+          },
+          "_nested_name": "display_group.tile_1",
+          "_dynamicFields": {
+            "parameter_list": {
+              "first_line_text": [
+                {
+                  "fullExpression": "@local.tile_1_text",
+                  "matchedExpression": "@local.tile_1_text",
+                  "type": "local",
+                  "fieldName": "tile_1_text"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.tile_1_text": [
+              "parameter_list.first_line_text"
+            ]
+          }
+        },
+        {
+          "type": "help_icon",
+          "name": "help_1",
+          "value": "help_1",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "pop_up",
+              "args": [
+                "parent_centre_covid_who_pop_up"
+              ],
+              "_raw": "click | pop_up:parent_centre_covid_who_pop_up",
+              "_cleaned": "click | pop_up:parent_centre_covid_who_pop_up"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "display_group.help_1"
+        }
+      ],
+      "name": "display_group",
+      "_nested_name": "display_group"
+    },
+    {
+      "type": "display_group",
+      "rows": [
+        {
+          "type": "tile_component",
+          "name": "tile_2",
+          "value": "tile_2",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to_url",
+              "args": [
+                "https",
+                "//www.unicef.org/coronavirus/covid-19"
+              ],
+              "_raw": "click | go_to_url:https://www.unicef.org/coronavirus/covid-19",
+              "_cleaned": "click | go_to_url:https://www.unicef.org/coronavirus/covid-19"
+            }
+          ],
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "first_line_text": "@local.tile_2_text",
+            "left_icon_src": "globe-outline",
+            "style": "button_tile",
+            "icon_src": "chevron-forward-outline"
+          },
+          "_nested_name": "display_group.tile_2",
+          "_dynamicFields": {
+            "parameter_list": {
+              "first_line_text": [
+                {
+                  "fullExpression": "@local.tile_2_text",
+                  "matchedExpression": "@local.tile_2_text",
+                  "type": "local",
+                  "fieldName": "tile_2_text"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.tile_2_text": [
+              "parameter_list.first_line_text"
+            ]
+          }
+        },
+        {
+          "type": "help_icon",
+          "name": "help_2",
+          "value": "help_2",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "pop_up",
+              "args": [
+                "parent_centre_covid_uni_pop_up"
+              ],
+              "_raw": "click | pop_up:parent_centre_covid_uni_pop_up",
+              "_cleaned": "click | pop_up:parent_centre_covid_uni_pop_up"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "display_group.help_2"
+        }
+      ],
+      "name": "display_group",
+      "_nested_name": "display_group"
+    },
+    {
+      "type": "dashed_box",
+      "name": "warning",
+      "value": "@global.data_warning_websites",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "icon_src": "plh_images/icons/globe_circle.svg"
+      },
+      "_nested_name": "warning",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.data_warning_websites",
+            "matchedExpression": "@global.data_warning_websites",
+            "type": "global",
+            "fieldName": "data_warning_websites"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.data_warning_websites": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
+}

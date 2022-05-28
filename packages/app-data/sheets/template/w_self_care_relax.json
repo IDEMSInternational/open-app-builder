@@ -1,0 +1,145 @@
+{
+  "flow_type": "template",
+  "flow_name": "w_self_care_relax",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "relax",
+      "value": "relax",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_self_care",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "relax.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_self_care",
+                "matchedExpression": "@data.workshop.w_self_care",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_self_care": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Let's try it out and do a short relaxation activity together!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "condition": "!@field.do_this_workshop_together",
+              "type": "set_variable",
+              "_nested_name": "relax.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "!@field.do_this_workshop_together",
+                    "matchedExpression": "!@field.do_this_workshop_together",
+                    "type": "field",
+                    "fieldName": "do_this_workshop_together"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "!@field.do_this_workshop_together": [
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "intro_text",
+              "value": "As parents, we often don’t have time to look after ourselves - but this is so important to do! Reducing our stress helps us AND our teens. \n\nLet’s take a first step and do a short relaxation activity together.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "condition": "@field.do_this_workshop_together",
+              "type": "set_variable",
+              "_nested_name": "relax.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "@field.do_this_workshop_together",
+                    "matchedExpression": "@field.do_this_workshop_together",
+                    "type": "field",
+                    "fieldName": "do_this_workshop_together"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@field.do_this_workshop_together": [
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "outro_text",
+              "value": "Well done! Try to do this every day.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "relax.workshop_activity.outro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "outro_habit_box",
+              "rows": [
+                {
+                  "name": "use_short_mark_text",
+                  "value": false,
+                  "type": "set_variable",
+                  "_nested_name": "relax.workshop_activity.outro_habit_box.use_short_mark_text"
+                }
+              ],
+              "_nested_name": "relax.workshop_activity.outro_habit_box"
+            }
+          ],
+          "_nested_name": "relax.workshop_activity"
+        }
+      ],
+      "_nested_name": "relax"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"
+}

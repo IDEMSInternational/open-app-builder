@@ -1,0 +1,1042 @@
+{
+  "flow_type": "template",
+  "flow_name": "demo_navigation",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "general_title",
+      "value": "ParentApp Demo",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "style_list": [
+        "font-size: 32px"
+      ],
+      "_nested_name": "general_title"
+    },
+    {
+      "type": "display_group",
+      "name": "content_pt_1",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "pt_1",
+          "value": "1. Check-in",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_1.pt_1"
+        },
+        {
+          "type": "button",
+          "name": "pt_1_button_1",
+          "value": "Check-in",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "demo_emo_check_in"
+              ],
+              "_raw": "click | go_to:demo_emo_check_in",
+              "_cleaned": "click | go_to:demo_emo_check_in"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_1.pt_1_button_1"
+        }
+      ],
+      "_nested_name": "content_pt_1"
+    },
+    {
+      "type": "display_group",
+      "name": "content_pt_2",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "pt_2",
+          "value": "2. @data.workshop.w_self_care.short_title activities",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_2.pt_2",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "2. @data.workshop.w_self_care.short_title activities",
+                "matchedExpression": "@data.workshop.w_self_care.short_title",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_self_care.short_title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "pt_2_button_1",
+          "value": "@data.workshop.w_self_care.short_title activities",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "do_this_workshop_together",
+                false
+              ],
+              "_raw": "click | set_field:do_this_workshop_together:false",
+              "_cleaned": "click | set_field:do_this_workshop_together:false"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "demo_self_care_stepper"
+              ],
+              "_raw": "click | go_to:demo_self_care_stepper",
+              "_cleaned": "click | go_to:demo_self_care_stepper"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_2.pt_2_button_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_self_care.short_title activities",
+                "matchedExpression": "@data.workshop.w_self_care.short_title",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_self_care.short_title": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "content_pt_2"
+    },
+    {
+      "type": "display_group",
+      "name": "content_pt_3",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "pt_3",
+          "value": "3. @global.weekly_workshops",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_3.pt_3",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "3. @global.weekly_workshops",
+                "matchedExpression": "@global.weekly_workshops",
+                "type": "global",
+                "fieldName": "weekly_workshops"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.weekly_workshops": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "pt_3_button_3",
+          "value": "Unlock workshops",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "pop_up",
+              "args": [
+                "demo_workshop_unlock_pop"
+              ],
+              "_raw": "click | pop_up:demo_workshop_unlock_pop",
+              "_cleaned": "click | pop_up:demo_workshop_unlock_pop"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_3.pt_3_button_3"
+        },
+        {
+          "type": "button",
+          "name": "pt_3_button_1",
+          "value": "@global.weekly_workshops",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "weekly_workshops"
+              ],
+              "_raw": "click | go_to:weekly_workshops",
+              "_cleaned": "click | go_to:weekly_workshops"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_3.pt_3_button_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.weekly_workshops",
+                "matchedExpression": "@global.weekly_workshops",
+                "type": "global",
+                "fieldName": "weekly_workshops"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.weekly_workshops": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "content_pt_3"
+    },
+    {
+      "type": "display_group",
+      "name": "content_pt_4",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "pt_4",
+          "value": "4. @global.parent_points",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_4.pt_4",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "4. @global.parent_points",
+                "matchedExpression": "@global.parent_points",
+                "type": "global",
+                "fieldName": "parent_points"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.parent_points": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "pt_4_button_1",
+          "value": "@global.parent_points",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "parent_points"
+              ],
+              "_raw": "click | go_to:parent_points",
+              "_cleaned": "click | go_to:parent_points"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_4.pt_4_button_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.parent_points",
+                "matchedExpression": "@global.parent_points",
+                "type": "global",
+                "fieldName": "parent_points"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.parent_points": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "content_pt_4"
+    },
+    {
+      "type": "display_group",
+      "name": "content_pt_5",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "pt_5",
+          "value": "5. Benefits (example @data.workshop.w_1on1.title)",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_5.pt_5",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "5. Benefits (example @data.workshop.w_1on1.title)",
+                "matchedExpression": "@data.workshop.w_1on1.title",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_1on1.title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "pt_5_button_1",
+          "value": "Why @data.workshop.w_1on1.title?",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "w_1on1_intro"
+              ],
+              "_raw": "click | go_to:w_1on1_intro",
+              "_cleaned": "click | go_to:w_1on1_intro"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_5.pt_5_button_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "Why @data.workshop.w_1on1.title?",
+                "matchedExpression": "@data.workshop.w_1on1.title",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_1on1.title": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "content_pt_5"
+    },
+    {
+      "type": "display_group",
+      "name": "content_pt_6",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "pt_6",
+          "value": "6. Comic & reflection (example @data.workshop.w_praise.title)",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_6.pt_6",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "6. Comic & reflection (example @data.workshop.w_praise.title)",
+                "matchedExpression": "@data.workshop.w_praise.title",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_praise.title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "pt_6_button_1",
+          "value": "Read Together",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "do_this_workshop_together",
+                true
+              ],
+              "_raw": "click | set_field:do_this_workshop_together:true",
+              "_cleaned": "click | set_field:do_this_workshop_together:true"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "w_praise_read_temp"
+              ],
+              "_raw": "click | go_to:w_praise_read_temp",
+              "_cleaned": "click | go_to:w_praise_read_temp"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_6.pt_6_button_1"
+        },
+        {
+          "type": "button",
+          "name": "pt_6_button_2",
+          "value": "Question Time (reflect individually)",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "do_this_workshop_together",
+                false
+              ],
+              "_raw": "click | set_field:do_this_workshop_together:false",
+              "_cleaned": "click | set_field:do_this_workshop_together:false"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "w_praise_question_2"
+              ],
+              "_raw": "click | go_to:w_praise_question_2",
+              "_cleaned": "click | go_to:w_praise_question_2"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_6.pt_6_button_2"
+        },
+        {
+          "type": "button",
+          "name": "pt_6_button_3",
+          "value": "Talk Together (reflect as a group)",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "do_this_workshop_together",
+                true
+              ],
+              "_raw": "click | set_field:do_this_workshop_together:true",
+              "_cleaned": "click | set_field:do_this_workshop_together:true"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "w_praise_talk_2"
+              ],
+              "_raw": "click | go_to:w_praise_talk_2",
+              "_cleaned": "click | go_to:w_praise_talk_2"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_6.pt_6_button_3"
+        }
+      ],
+      "_nested_name": "content_pt_6"
+    },
+    {
+      "type": "display_group",
+      "name": "content_pt_7",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "pt_7",
+          "value": "7. @data.parent_centre.essential_tools.title (example @data.workshop.w_praise.title)",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_7.pt_7",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "7. @data.parent_centre.essential_tools.title (example @data.workshop.w_praise.title)",
+                "matchedExpression": "@data.parent_centre.essential_tools.title",
+                "type": "data",
+                "fieldName": "parent_centre"
+              },
+              {
+                "fullExpression": "7. @data.parent_centre.essential_tools.title (example @data.workshop.w_praise.title)",
+                "matchedExpression": "@data.workshop.w_praise.title",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.parent_centre.essential_tools.title": [
+              "value"
+            ],
+            "@data.workshop.w_praise.title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "pt_7_button_1",
+          "value": "@data.workshop.w_praise.tools",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "do_this_workshop_together",
+                true
+              ],
+              "_raw": "click | set_field:do_this_workshop_together:true",
+              "_cleaned": "click | set_field:do_this_workshop_together:true"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "w_praise_tools_activity"
+              ],
+              "_raw": "click | go_to:w_praise_tools_activity",
+              "_cleaned": "click | go_to:w_praise_tools_activity"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_7.pt_7_button_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_praise.tools",
+                "matchedExpression": "@data.workshop.w_praise.tools",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_praise.tools": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "pt_7_button_2",
+          "value": "Tour: where to find @data.parent_centre.essential_tools.title",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "start_tour",
+              "args": [
+                "demo_essential_tools_tour"
+              ],
+              "_raw": "click | start_tour:demo_essential_tools_tour",
+              "_cleaned": "click | start_tour:demo_essential_tools_tour"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_7.pt_7_button_2",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "Tour: where to find @data.parent_centre.essential_tools.title",
+                "matchedExpression": "@data.parent_centre.essential_tools.title",
+                "type": "data",
+                "fieldName": "parent_centre"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.parent_centre.essential_tools.title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "pt_7_button_3",
+          "value": "Try it Together",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "do_this_workshop_together",
+                true
+              ],
+              "_raw": "click | set_field:do_this_workshop_together:true",
+              "_cleaned": "click | set_field:do_this_workshop_together:true"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "w_praise_try"
+              ],
+              "_raw": "click | go_to:w_praise_try",
+              "_cleaned": "click | go_to:w_praise_try"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_7.pt_7_button_3"
+        }
+      ],
+      "_nested_name": "content_pt_7"
+    },
+    {
+      "type": "display_group",
+      "name": "content_pt_8",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "pt_8",
+          "value": "8. @global.home_practice (example @data.workshop.w_instruct.title)",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_8.pt_8",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "8. @global.home_practice (example @data.workshop.w_instruct.title)",
+                "matchedExpression": "@global.home_practice",
+                "type": "global",
+                "fieldName": "home_practice"
+              },
+              {
+                "fullExpression": "8. @global.home_practice (example @data.workshop.w_instruct.title)",
+                "matchedExpression": "@data.workshop.w_instruct.title",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.home_practice": [
+              "value"
+            ],
+            "@data.workshop.w_instruct.title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "pt_8_button_1",
+          "value": "@global.home_practice Assignment",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "do_this_workshop_together",
+                true
+              ],
+              "_raw": "click | set_field:do_this_workshop_together:true",
+              "_cleaned": "click | set_field:do_this_workshop_together:true"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "w_instruct_home_practice"
+              ],
+              "_raw": "click | go_to:w_instruct_home_practice",
+              "_cleaned": "click | go_to:w_instruct_home_practice"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_8.pt_8_button_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.home_practice Assignment",
+                "matchedExpression": "@global.home_practice",
+                "type": "global",
+                "fieldName": "home_practice"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.home_practice": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "pt_8_button_2",
+          "value": "@global.hp_review",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "w_instruct_hp_review"
+              ],
+              "_raw": "click | go_to:w_instruct_hp_review",
+              "_cleaned": "click | go_to:w_instruct_hp_review"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_8.pt_8_button_2",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.hp_review",
+                "matchedExpression": "@global.hp_review",
+                "type": "global",
+                "fieldName": "hp_review"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.hp_review": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "pt_8_button_3",
+          "value": "@global.home_practice Discussion",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "do_this_workshop_together",
+                true
+              ],
+              "_raw": "click | set_field:do_this_workshop_together:true",
+              "_cleaned": "click | set_field:do_this_workshop_together:true"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "w_stress_reflect_together"
+              ],
+              "_raw": "click | go_to:w_stress_reflect_together",
+              "_cleaned": "click | go_to:w_stress_reflect_together"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_8.pt_8_button_3",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.home_practice Discussion",
+                "matchedExpression": "@global.home_practice",
+                "type": "global",
+                "fieldName": "home_practice"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.home_practice": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "content_pt_8"
+    },
+    {
+      "type": "display_group",
+      "name": "content_pt_9",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "pt_9",
+          "value": "9. Customisation and Survey",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_9.pt_9"
+        },
+        {
+          "type": "button",
+          "name": "pt_9_button_1",
+          "value": "@global.parent_app customisation",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "workshop_setup_stepper"
+              ],
+              "_raw": "click | go_to:workshop_setup_stepper",
+              "_cleaned": "click | go_to:workshop_setup_stepper"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_9.pt_9_button_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.parent_app customisation",
+                "matchedExpression": "@global.parent_app",
+                "type": "global",
+                "fieldName": "parent_app"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.parent_app": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "pt_9_button_2",
+          "value": "Sample survey question (Q1)",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "survey_welcome_q_1"
+              ],
+              "_raw": "click | go_to:survey_welcome_q_1",
+              "_cleaned": "click | go_to:survey_welcome_q_1"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_9.pt_9_button_2"
+        }
+      ],
+      "_nested_name": "content_pt_9"
+    },
+    {
+      "type": "display_group",
+      "name": "content_pt_10",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "pt_10",
+          "value": "10. @global.parent_centre",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_10.pt_10",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "10. @global.parent_centre",
+                "matchedExpression": "@global.parent_centre",
+                "type": "global",
+                "fieldName": "parent_centre"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.parent_centre": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "pt_10_button_1",
+          "value": "@global.parent_centre",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "parent_centre"
+              ],
+              "_raw": "click | go_to:parent_centre",
+              "_cleaned": "click | go_to:parent_centre"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_10.pt_10_button_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.parent_centre",
+                "matchedExpression": "@global.parent_centre",
+                "type": "global",
+                "fieldName": "parent_centre"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.parent_centre": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "content_pt_10"
+    },
+    {
+      "type": "display_group",
+      "name": "content_pt_11",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "pt_11",
+          "value": "11. Reset app",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_11.pt_11"
+        },
+        {
+          "type": "button",
+          "name": "pt_11_button_1",
+          "value": "Reset App",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "pop_up",
+              "args": [
+                "demo_reset_app_pop"
+              ],
+              "_raw": "click | pop_up:demo_reset_app_pop",
+              "_cleaned": "click | pop_up:demo_reset_app_pop"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "content_pt_11.pt_11_button_1"
+        }
+      ],
+      "_nested_name": "content_pt_11"
+    }
+  ],
+  "_xlsxPath": "global/demo_templates/demo_navigation.xlsx"
+}

@@ -1,0 +1,42 @@
+{
+  "flow_type": "template",
+  "flow_name": "relax_6_text",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "relax_text",
+      "value": "relax_text",
+      "rows": [
+        {
+          "name": "activity_text",
+          "value": "Close your eyes. \n\nTake a minute to think about the day.\n\nThink about one positive or fun thing you did.\nPraise yourself for one thing you did well today. \nThink of one thing you can do differently tomorrow.  \nThink of one thing that you are grateful for.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "relax_text.activity_text"
+        },
+        {
+          "name": "outro_text",
+          "hidden": true,
+          "type": "set_variable",
+          "_nested_name": "relax_text.outro_text"
+        }
+      ],
+      "_nested_name": "relax_text"
+    },
+    {
+      "value": "",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "name": "set_variable",
+      "_nested_name": "set_variable"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/databank_relax.xlsx"
+}

@@ -1,0 +1,63 @@
+{
+  "flow_type": "template",
+  "module": "rules",
+  "flow_name": "w_rules_talk_pop_2",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "description_text",
+          "value": "@global.w_rules_teen_boy knew his @global.w_rules_female_caregiver_1 appreciated him because...",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.description_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.w_rules_teen_boy knew his @global.w_rules_female_caregiver_1 appreciated him because...",
+                "matchedExpression": "@global.w_rules_teen_boy",
+                "type": "global",
+                "fieldName": "w_rules_teen_boy"
+              },
+              {
+                "fullExpression": "@global.w_rules_teen_boy knew his @global.w_rules_female_caregiver_1 appreciated him because...",
+                "matchedExpression": "@global.w_rules_female_caregiver_1",
+                "type": "global",
+                "fieldName": "w_rules_female_caregiver_1"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.w_rules_teen_boy": [
+              "value"
+            ],
+            "@global.w_rules_female_caregiver_1": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "list_text",
+          "value": "* She praised him\n* She rewarded him when he followed the rule",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text"
+        }
+      ],
+      "_nested_name": "suggestions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_rules.xlsx"
+}

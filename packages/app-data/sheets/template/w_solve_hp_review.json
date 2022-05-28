@@ -1,0 +1,172 @@
+{
+  "flow_type": "template",
+  "module": "solve",
+  "flow_name": "w_solve_hp_review",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "home_practice_review",
+      "value": "home_practice_review",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_solve",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice_review.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_solve",
+                "matchedExpression": "@data.workshop.w_solve",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_solve": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "rows": [
+                    {
+                      "name": "text",
+                      "value": "Your goal was to try and resolve a problem or conflict together with your teen.",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.text"
+                    },
+                    {
+                      "name": "reply_happy",
+                      "value": "@data.praise.hp_praise_message_25.text",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.reply_happy",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.praise.hp_praise_message_25.text",
+                            "matchedExpression": "@data.praise.hp_praise_message_25.text",
+                            "type": "data",
+                            "fieldName": "praise"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.praise.hp_praise_message_25.text": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "reply_ok",
+                      "value": "@data.praise.hp_praise_message_20.text",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.reply_ok",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.praise.hp_praise_message_20.text",
+                            "matchedExpression": "@data.praise.hp_praise_message_20.text",
+                            "type": "data",
+                            "fieldName": "praise"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.praise.hp_praise_message_20.text": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "reply_sad",
+                      "value": "@data.praise.hp_praise_message_20.text",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.reply_sad",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.praise.hp_praise_message_20.text",
+                            "matchedExpression": "@data.praise.hp_praise_message_20.text",
+                            "type": "data",
+                            "fieldName": "praise"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.praise.hp_praise_message_20.text": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "home_practice_review.workshop_activity.content_box.box_1"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "box_2",
+                  "value": "w_solve_hp_challenges",
+                  "rows": [],
+                  "_nested_name": "home_practice_review.workshop_activity.content_box.box_2"
+                }
+              ],
+              "_nested_name": "home_practice_review.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "home_practice_review.workshop_activity"
+        }
+      ],
+      "_nested_name": "home_practice_review"
+    }
+  ],
+  "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_solve_hp_review.xlsx"
+}

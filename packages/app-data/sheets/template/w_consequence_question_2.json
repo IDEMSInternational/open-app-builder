@@ -1,0 +1,296 @@
+{
+  "flow_type": "template",
+  "module": "consequence",
+  "flow_name": "w_consequence_question_2",
+  "status": "released",
+  "rows": [
+    {
+      "name": "idea_1",
+      "value": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "idea_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
+            "matchedExpression": "@global.w_consequence_teen_boy_1",
+            "type": "global",
+            "fieldName": "w_consequence_teen_boy_1"
+          },
+          {
+            "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
+            "matchedExpression": "@global.w_consequence_male_caregiver",
+            "type": "global",
+            "fieldName": "w_consequence_male_caregiver"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.w_consequence_teen_boy_1": [
+          "value"
+        ],
+        "@global.w_consequence_male_caregiver": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "idea_2",
+      "value": "They agreed on consequences together",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "idea_2"
+    },
+    {
+      "name": "idea_3",
+      "value": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "idea_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+            "matchedExpression": "@global.w_consequence_male_caregiver",
+            "type": "global",
+            "fieldName": "w_consequence_male_caregiver"
+          },
+          {
+            "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+            "matchedExpression": "@global.w_consequence_teen_boy_1",
+            "type": "global",
+            "fieldName": "w_consequence_teen_boy_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.w_consequence_male_caregiver": [
+          "value"
+        ],
+        "@global.w_consequence_teen_boy_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "idea_4",
+      "value": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "idea_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+            "matchedExpression": "@global.w_consequence_male_caregiver",
+            "type": "global",
+            "fieldName": "w_consequence_male_caregiver"
+          },
+          {
+            "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+            "matchedExpression": "@global.w_consequence_teen_boy_1",
+            "type": "global",
+            "fieldName": "w_consequence_teen_boy_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.w_consequence_male_caregiver": [
+          "value"
+        ],
+        "@global.w_consequence_teen_boy_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "idea_5",
+      "value": "The consequence was realistic and appropriate",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "idea_5"
+    },
+    {
+      "type": "template",
+      "name": "question_time",
+      "value": "question_time",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Let's think about this story.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "question_time.workshop_activity.intro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_combo_box",
+              "rows": [
+                {
+                  "name": "combo_box_tracker",
+                  "value": "w_consequence_question_2_a",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.combo_box_tracker"
+                },
+                {
+                  "name": "text",
+                  "hidden": true,
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.text"
+                },
+                {
+                  "name": "question_text",
+                  "value": "Why did using a consequence work well this time?",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.question_text"
+                },
+                {
+                  "name": "answer_list",
+                  "value": [
+                    "name:name_1 | text:@local.idea_1",
+                    "name:name_2 | text:@local.idea_2",
+                    "name:name_3 | text:@local.idea_3",
+                    "name:name_4 | text:@local.idea_4",
+                    "name:name_5 | text:@local.idea_5"
+                  ],
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.answer_list",
+                  "_dynamicFields": {
+                    "value": {
+                      "0": [
+                        {
+                          "fullExpression": "name:name_1 | text:@local.idea_1",
+                          "matchedExpression": "@local.idea_1",
+                          "type": "local",
+                          "fieldName": "idea_1"
+                        }
+                      ],
+                      "1": [
+                        {
+                          "fullExpression": "name:name_2 | text:@local.idea_2",
+                          "matchedExpression": "@local.idea_2",
+                          "type": "local",
+                          "fieldName": "idea_2"
+                        }
+                      ],
+                      "2": [
+                        {
+                          "fullExpression": "name:name_3 | text:@local.idea_3",
+                          "matchedExpression": "@local.idea_3",
+                          "type": "local",
+                          "fieldName": "idea_3"
+                        }
+                      ],
+                      "3": [
+                        {
+                          "fullExpression": "name:name_4 | text:@local.idea_4",
+                          "matchedExpression": "@local.idea_4",
+                          "type": "local",
+                          "fieldName": "idea_4"
+                        }
+                      ],
+                      "4": [
+                        {
+                          "fullExpression": "name:name_5 | text:@local.idea_5",
+                          "matchedExpression": "@local.idea_5",
+                          "type": "local",
+                          "fieldName": "idea_5"
+                        }
+                      ]
+                    }
+                  },
+                  "_dynamicDependencies": {
+                    "@local.idea_1": [
+                      "value.0"
+                    ],
+                    "@local.idea_2": [
+                      "value.1"
+                    ],
+                    "@local.idea_3": [
+                      "value.2"
+                    ],
+                    "@local.idea_4": [
+                      "value.3"
+                    ],
+                    "@local.idea_5": [
+                      "value.4"
+                    ]
+                  }
+                },
+                {
+                  "name": "reply",
+                  "hidden": true,
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.reply"
+                }
+              ],
+              "_nested_name": "question_time.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "question_time.workshop_activity"
+        }
+      ],
+      "_nested_name": "question_time"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
+}

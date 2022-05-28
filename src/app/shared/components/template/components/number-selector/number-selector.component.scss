@@ -1,11 +1,11 @@
-@import "../../../../../../theme/mixins.scss";
+@use "/src/theme/mixins";
 .container {
   width: calc(100% - 10px);
   background: var(--ion-color-primary-contrast);
   border: var(--ion-border-standard);
   box-shadow: var(--ion-default-box-shadow);
   border-radius: var(--ion-border-radius-secondary);
-  @include flex-space-between;
+  @include mixins.flex-space-between;
   padding: 0 var(--tiny-padding);
   margin-left: var(--tiny-margin);
   margin-right: var(--tiny-margin);
@@ -25,8 +25,8 @@
     --box-shadow: none;
     border-radius: var(--ion-border-radius-rounded);
     border: var(--ion-border-standard);
-    @include tiny-square;
-    @include flex-centered;
+    @include mixins.tiny-square;
+    @include mixins.flex-centered;
     .line {
       position: absolute;
       width: 8px;
@@ -38,7 +38,7 @@
     }
   }
   .center {
-    @include flex-centered;
+    @include mixins.flex-centered;
     flex-direction: column;
     .title,
     .num {
@@ -67,7 +67,7 @@
     }
   }
   ion-button {
-    @include small-square;
+    @include mixins.small-square;
     .line {
       width: 15px;
       height: 3px;

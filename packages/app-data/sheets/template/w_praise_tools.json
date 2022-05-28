@@ -1,0 +1,115 @@
+{
+  "flow_type": "template",
+  "module": "praise",
+  "flow_name": "w_praise_tools",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "essential_tools",
+      "value": "essential_tools",
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "tool_1",
+          "rows": [
+            {
+              "name": "title",
+              "value": "SEE IT",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_1.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Look for anything your teen does that is helpful or good, and praise them for it. They may not show it, but you’ll see them doing that good thing again. It will also reassure them that you notice and care.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_1.text_1"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_1"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_2",
+          "rows": [
+            {
+              "name": "title",
+              "value": "SAY IT",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_2.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Be enthusiastic – really mean it when you say it!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_2.text_1"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_2"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_3",
+          "rows": [
+            {
+              "name": "title",
+              "value": "REPEAT IT",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_3.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Try to find something to thank them for every day. Even something really small.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_3.text_1"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_3"
+        },
+        {
+          "name": "bottom_text",
+          "value": "You can also praise other adults in your household, too. Notice how they respond!",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "essential_tools.bottom_text"
+        }
+      ],
+      "_nested_name": "essential_tools"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"
+}

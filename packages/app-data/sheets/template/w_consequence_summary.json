@@ -1,0 +1,82 @@
+{
+  "flow_type": "template",
+  "module": "consequence",
+  "flow_name": "w_consequence_summary",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "description_text",
+          "value": "Today you will explore:",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.description_text"
+        },
+        {
+          "name": "list_text",
+          "value": "* Story & discussion – that didn’t work…\n* Examples of consequences\n* Tools: How to give calm consequences\nEXPLAIN - AGREE - ACT\n* Discussion on rules & consequences\n* Story & discussion – that worked!\n* Try it out!\n* Home practice suggestions",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "condition": "@field.do_this_workshop_together",
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@field.do_this_workshop_together",
+                "matchedExpression": "@field.do_this_workshop_together",
+                "type": "field",
+                "fieldName": "do_this_workshop_together"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@field.do_this_workshop_together": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "name": "list_text",
+          "value": "* Story & reflection – that didn’t work…\n* Examples of consequences\n* Tools: How to give calm consequences\nEXPLAIN - AGREE - ACT\n* Discussion on rules & consequences\n* Story & reflection – that worked!\n* Try it out!\n* Home practice suggestions",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "condition": "!@field.do_this_workshop_together",
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!@field.do_this_workshop_together",
+                "matchedExpression": "!@field.do_this_workshop_together",
+                "type": "field",
+                "fieldName": "do_this_workshop_together"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "!@field.do_this_workshop_together": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "suggestions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
+}

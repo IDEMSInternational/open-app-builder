@@ -1,0 +1,167 @@
+{
+  "flow_type": "template",
+  "module": "praise",
+  "flow_name": "w_praise_question_1",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "question_time",
+      "value": "question_time",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_duo_radio_buttons",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "radio_buttons_1",
+                  "rows": [
+                    {
+                      "name": "radio_group_tracker",
+                      "value": "w_praise_question_1_a_1",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "exclude_from_translation": true,
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_1.radio_group_tracker"
+                    },
+                    {
+                      "name": "text",
+                      "value": "Think about the last time someone thanked you, or said you did something great.",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_1.text"
+                    },
+                    {
+                      "name": "question_text",
+                      "value": "How did it make you feel?",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_1.question_text"
+                    },
+                    {
+                      "name": "answer_list",
+                      "value": [
+                        "name:happy | image:plh_images/stickers/faces/happy.svg | image_checked:plh_images/stickers/faces/happy.svg",
+                        "name:happier | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
+                        "name:happiest | image:plh_images/stickers/faces/happiest.svg | image_checked:plh_images/stickers/faces/happiest.svg"
+                      ],
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_1.answer_list"
+                    },
+                    {
+                      "name": "reply",
+                      "hidden": true,
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_1.reply"
+                    }
+                  ],
+                  "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_1"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "radio_buttons_2",
+                  "rows": [
+                    {
+                      "name": "radio_group_tracker",
+                      "value": "w_praise_question_1_a_2",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "exclude_from_translation": true,
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_2.radio_group_tracker"
+                    },
+                    {
+                      "name": "text",
+                      "value": "Parents usually don’t get thanked or praised enough.",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_2.text"
+                    },
+                    {
+                      "name": "question_text",
+                      "value": "How does it make you feel when nobody says \"thank you\"?",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_2.question_text"
+                    },
+                    {
+                      "name": "answer_list",
+                      "value": [
+                        "name:sad | text: Sad |  image:plh_images/stickers/faces/sadder.svg | image_checked: plh_images/stickers/faces/sadder.svg",
+                        "name:angry | text: Angry | image:plh_images/stickers/faces/angry.svg | image_checked:plh_images/stickers/faces/angry.svg",
+                        "name:tired | text:Tired | image:plh_images/stickers/faces/tired.svg | image_checked:plh_images/stickers/faces/tired.svg"
+                      ],
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_2.answer_list"
+                    },
+                    {
+                      "name": "reply",
+                      "value": "Your teen can feel this way too. That's what makes this week's parenting tool simple but important: Praise them for what they do right.",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_2.reply"
+                    }
+                  ],
+                  "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_2"
+                }
+              ],
+              "_nested_name": "question_time.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "question_time.workshop_activity"
+        }
+      ],
+      "_nested_name": "question_time"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"
+}

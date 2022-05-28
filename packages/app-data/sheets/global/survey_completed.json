@@ -1,0 +1,74 @@
+{
+  "flow_type": "global",
+  "flow_name": "survey_completed",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_field_default",
+      "name": "survey_completed",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "survey_welcome_started",
+      "value": false
+    },
+    {
+      "type": "declare_field_default",
+      "name": "survey_welcome_completed",
+      "value": false
+    },
+    {
+      "type": "declare_field_default",
+      "name": "survey_final_started",
+      "value": false
+    },
+    {
+      "type": "declare_field_default",
+      "name": "survey_final_completed",
+      "value": false
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "tap_and_type",
+      "value": "Tap and type",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "tap_and_choose",
+      "value": "Tap and choose",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "type_your_own",
+      "value": "Type your own",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "dont_show_again",
+      "value": "I've understood this. Don't show me this message again.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/survey_globals.xlsx"
+}

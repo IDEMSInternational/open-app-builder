@@ -43,6 +43,17 @@
           "destination": "/index.html"
         }
       ]
+    },
+    {
+      "target": "early_family_math",
+      "public": "www",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
     }
   ]
 }

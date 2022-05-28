@@ -1,0 +1,140 @@
+{
+  "flow_type": "template",
+  "module": "crisis",
+  "flow_name": "w_crisis_tools",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "essential_tools",
+      "value": "essential_tools",
+      "rows": [
+        {
+          "name": "top_text",
+          "value": "Crisis can make us feel angry or helpless. But this is when our teens really need us to breathe, listen and think.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "hidden": false,
+          "type": "set_variable",
+          "_nested_name": "essential_tools.top_text"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_1",
+          "rows": [
+            {
+              "name": "title",
+              "value": "BREATHE",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_1.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Stay calm. Ask yourself ‘what does my teen need right now’",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_1.text_1"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_1"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_2",
+          "rows": [
+            {
+              "name": "title",
+              "value": "LISTEN",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_2.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Tell them you are there for them and love them.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_2.text_1"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_2"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_3",
+          "rows": [
+            {
+              "name": "title",
+              "value": "THINK",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_3.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Talk with your teen. What might help the situation? You might need to make immediate plans now, and then long-term plans later.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_3.text_1"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_3"
+        },
+        {
+          "name": "bottom_text",
+          "value": "You can be proud of yourself for exploring ways to get help!",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "hidden": false,
+          "type": "set_variable",
+          "_nested_name": "essential_tools.bottom_text"
+        },
+        {
+          "name": "button_1",
+          "value": "Resources to help in the community",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "hidden": true,
+          "type": "set_variable",
+          "_nested_name": "essential_tools.button_1"
+        }
+      ],
+      "_nested_name": "essential_tools"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"
+}

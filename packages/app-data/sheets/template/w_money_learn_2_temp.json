@@ -1,0 +1,142 @@
+{
+  "flow_type": "template",
+  "module": "money",
+  "flow_name": "w_money_learn_2_temp",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "learn",
+      "value": "learn_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_title",
+              "value": "Step 1: THINK",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn.workshop_activity.intro_title"
+            },
+            {
+              "name": "intro_text",
+              "value": "Think about what we spend money on each month.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn.workshop_activity.intro_text"
+            },
+            {
+              "name": "include_outro",
+              "value": true,
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "learn.workshop_activity.include_outro"
+            },
+            {
+              "name": "activity_banner",
+              "hidden": true,
+              "type": "set_variable",
+              "_nested_name": "learn.workshop_activity.activity_banner"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_image",
+              "rows": [
+                {
+                  "name": "image_src",
+                  "value": "plh_images/workshops/w_money/learn/slide_1.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn.workshop_activity.content_box.image_src"
+                },
+                {
+                  "name": "text",
+                  "value": "* Get a piece of paper (or old newspaper or a cardboard box) and a pen. \n* Draw pictures of all the things that you and your family spend money on each month. \n* Write next to each picture how much each thing costs each month. (There is no need to share the numbers if you don’t want to.)\n* Add up how much money you have to spend each month.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn.workshop_activity.content_box.text"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "nav_buttons",
+                  "rows": [
+                    {
+                      "name": "button_info",
+                      "action_list": [
+                        {
+                          "trigger": "click",
+                          "action_id": "pop_up",
+                          "args": [
+                            "w_money_learn_2_pop"
+                          ],
+                          "_raw": "click | pop_up:w_money_learn_2_pop",
+                          "_cleaned": "click | pop_up:w_money_learn_2_pop"
+                        }
+                      ],
+                      "hidden": false,
+                      "type": "set_variable",
+                      "_nested_name": "learn.workshop_activity.content_box.nav_buttons.button_info"
+                    }
+                  ],
+                  "_nested_name": "learn.workshop_activity.content_box.nav_buttons"
+                }
+              ],
+              "_nested_name": "learn.workshop_activity.content_box"
+            },
+            {
+              "name": "outro_text",
+              "value": "Wonderful! You finished step 1! \n\nLet’s move on!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn.workshop_activity.outro_text"
+            }
+          ],
+          "_nested_name": "learn.workshop_activity"
+        }
+      ],
+      "_nested_name": "learn"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
+}

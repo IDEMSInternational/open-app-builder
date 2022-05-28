@@ -1,0 +1,82 @@
+{
+  "flow_type": "template",
+  "module": "celebrate",
+  "flow_name": "w_celebrate_talk_1",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "talk_together",
+      "value": "talk_together",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "activity_image",
+              "value": "plh_images/workshop_modes/group/final/talk.svg",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "talk_together.workshop_activity.activity_image"
+            },
+            {
+              "name": "intro_text",
+              "value": "Let's talk about what has changed.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "talk_together.workshop_activity.intro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "name": "text",
+                  "value": "Discuss together:\n* What has changed in your family?\n* What are you proud of that you have done?\n\nRemember to praise and encourage each other!",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "talk_together.workshop_activity.content_box.text"
+                }
+              ],
+              "_nested_name": "talk_together.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "talk_together.workshop_activity"
+        }
+      ],
+      "_nested_name": "talk_together"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"
+}

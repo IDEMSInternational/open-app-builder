@@ -1,0 +1,803 @@
+{
+  "flow_type": "template",
+  "flow_name": "parenting_tips_reply",
+  "status": "released",
+  "rows": [
+    {
+      "name": "use_workshop_specific_content",
+      "value": true,
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "use_workshop_specific_content"
+    },
+    {
+      "type": "text",
+      "name": "reply",
+      "_nested_name": "reply"
+    },
+    {
+      "type": "display_group",
+      "name": "workshop_specific_content",
+      "condition": "@local.use_workshop_specific_content",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_self_care",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "workshop_specific_content.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_self_care",
+                "matchedExpression": "@data.workshop.w_self_care",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_self_care": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "workshop",
+          "value": "@local.workshop_data.id",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "workshop_specific_content.workshop",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.workshop_data.id",
+                "matchedExpression": "@local.workshop_data.id",
+                "type": "local",
+                "fieldName": "workshop_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_data.id": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "disabled",
+          "value": "_disabled",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_specific_content.disabled"
+        },
+        {
+          "name": "started",
+          "value": "_started",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_specific_content.started"
+        },
+        {
+          "name": "completed",
+          "value": "_completed",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_specific_content.completed"
+        },
+        {
+          "name": "stepper",
+          "value": "_stepper",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_specific_content.stepper"
+        },
+        {
+          "name": "tools",
+          "value": "_tools",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_specific_content.tools"
+        },
+        {
+          "name": "workshop_disabled",
+          "value": "@local.workshop@local.disabled",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_specific_content.workshop_disabled",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.workshop@local.disabled",
+                "matchedExpression": "@local.workshop",
+                "type": "local",
+                "fieldName": "workshop"
+              },
+              {
+                "fullExpression": "@local.workshop@local.disabled",
+                "matchedExpression": "@local.disabled",
+                "type": "local",
+                "fieldName": "disabled"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop": [
+              "value"
+            ],
+            "@local.disabled": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "workshop_started",
+          "value": "@local.workshop@local.started",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_specific_content.workshop_started",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.workshop@local.started",
+                "matchedExpression": "@local.workshop",
+                "type": "local",
+                "fieldName": "workshop"
+              },
+              {
+                "fullExpression": "@local.workshop@local.started",
+                "matchedExpression": "@local.started",
+                "type": "local",
+                "fieldName": "started"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop": [
+              "value"
+            ],
+            "@local.started": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "workshop_completed",
+          "value": "@local.workshop@local.completed",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_specific_content.workshop_completed",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.workshop@local.completed",
+                "matchedExpression": "@local.workshop",
+                "type": "local",
+                "fieldName": "workshop"
+              },
+              {
+                "fullExpression": "@local.workshop@local.completed",
+                "matchedExpression": "@local.completed",
+                "type": "local",
+                "fieldName": "completed"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop": [
+              "value"
+            ],
+            "@local.completed": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "workshop_stepper",
+          "value": "@local.workshop@local.stepper",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_specific_content.workshop_stepper",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.workshop@local.stepper",
+                "matchedExpression": "@local.workshop",
+                "type": "local",
+                "fieldName": "workshop"
+              },
+              {
+                "fullExpression": "@local.workshop@local.stepper",
+                "matchedExpression": "@local.stepper",
+                "type": "local",
+                "fieldName": "stepper"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop": [
+              "value"
+            ],
+            "@local.stepper": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "workshop_tools",
+          "value": "lib_act_@local.workshop",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_specific_content.workshop_tools",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "lib_act_@local.workshop",
+                "matchedExpression": "@local.workshop",
+                "type": "local",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "display_group",
+          "name": "dg_workshop_disabled",
+          "condition": "@fields.@local.workshop_disabled",
+          "parameter_list": {
+            "style": "column"
+          },
+          "rows": [
+            {
+              "type": "text",
+              "name": "reply_workshop_disabled",
+              "value": "You will get more support in the @local.workshop_data.in_text_title.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "_nested_name": "workshop_specific_content.dg_workshop_disabled.reply_workshop_disabled",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "You will get more support in the @local.workshop_data.in_text_title.",
+                    "matchedExpression": "@local.workshop_data.in_text_title",
+                    "type": "local",
+                    "fieldName": "workshop_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.workshop_data.in_text_title": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "workshop_specific_content.dg_workshop_disabled",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@fields.@local.workshop_disabled",
+                "matchedExpression": "@local.workshop_disabled",
+                "type": "local",
+                "fieldName": "workshop_disabled"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_disabled": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "display_group",
+          "name": "dg_workshop_start",
+          "condition": "!(@fields.@local.workshop_disabled) && !(@fields.@local.workshop_started)",
+          "parameter_list": {
+            "style": "column"
+          },
+          "rows": [
+            {
+              "type": "text",
+              "name": "reply_workshop_start",
+              "value": "You can get more support in the @local.workshop_data.in_text_title.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "_nested_name": "workshop_specific_content.dg_workshop_start.reply_workshop_start",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "You can get more support in the @local.workshop_data.in_text_title.",
+                    "matchedExpression": "@local.workshop_data.in_text_title",
+                    "type": "local",
+                    "fieldName": "workshop_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.workshop_data.in_text_title": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "button",
+              "name": "button_workshop_start",
+              "value": "Start the @local.workshop_data.in_text_title",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "go_to",
+                  "args": [
+                    "@local.workshop_stepper"
+                  ],
+                  "_raw": "click | go_to: @local.workshop_stepper",
+                  "_cleaned": "click | go_to: @local.workshop_stepper"
+                }
+              ],
+              "_nested_name": "workshop_specific_content.dg_workshop_start.button_workshop_start",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Start the @local.workshop_data.in_text_title",
+                    "matchedExpression": "@local.workshop_data.in_text_title",
+                    "type": "local",
+                    "fieldName": "workshop_data"
+                  }
+                ],
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.workshop_stepper",
+                          "matchedExpression": "@local.workshop_stepper",
+                          "type": "local",
+                          "fieldName": "workshop_stepper"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | go_to: @local.workshop_stepper",
+                        "matchedExpression": "@local.workshop_stepper",
+                        "type": "local",
+                        "fieldName": "workshop_stepper"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | go_to: @local.workshop_stepper",
+                        "matchedExpression": "@local.workshop_stepper",
+                        "type": "local",
+                        "fieldName": "workshop_stepper"
+                      }
+                    ]
+                  }
+                }
+              },
+              "_dynamicDependencies": {
+                "@local.workshop_data.in_text_title": [
+                  "value"
+                ],
+                "@local.workshop_stepper": [
+                  "action_list.0.args.0",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "workshop_specific_content.dg_workshop_start",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!(@fields.@local.workshop_disabled) && !(@fields.@local.workshop_started)",
+                "matchedExpression": "@local.workshop_disabled",
+                "type": "local",
+                "fieldName": "workshop_disabled"
+              },
+              {
+                "fullExpression": "!(@fields.@local.workshop_disabled) && !(@fields.@local.workshop_started)",
+                "matchedExpression": "@local.workshop_started",
+                "type": "local",
+                "fieldName": "workshop_started"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_disabled": [
+              "condition"
+            ],
+            "@local.workshop_started": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "display_group",
+          "name": "dg_workshop_continue",
+          "condition": "@fields.@local.workshop_started && !(@fields.@local.workshop_completed)",
+          "parameter_list": {
+            "style": "column"
+          },
+          "rows": [
+            {
+              "type": "text",
+              "name": "reply_workshop_continue",
+              "value": "Finish the @local.workshop_data.in_text_title to get more support.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "_nested_name": "workshop_specific_content.dg_workshop_continue.reply_workshop_continue",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Finish the @local.workshop_data.in_text_title to get more support.",
+                    "matchedExpression": "@local.workshop_data.in_text_title",
+                    "type": "local",
+                    "fieldName": "workshop_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.workshop_data.in_text_title": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "button",
+              "name": "button_workshop_continue",
+              "value": "Continue the @local.workshop_data.in_text_title",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "go_to",
+                  "args": [
+                    "@local.workshop_stepper"
+                  ],
+                  "_raw": "click | go_to: @local.workshop_stepper",
+                  "_cleaned": "click | go_to: @local.workshop_stepper"
+                }
+              ],
+              "_nested_name": "workshop_specific_content.dg_workshop_continue.button_workshop_continue",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Continue the @local.workshop_data.in_text_title",
+                    "matchedExpression": "@local.workshop_data.in_text_title",
+                    "type": "local",
+                    "fieldName": "workshop_data"
+                  }
+                ],
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.workshop_stepper",
+                          "matchedExpression": "@local.workshop_stepper",
+                          "type": "local",
+                          "fieldName": "workshop_stepper"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | go_to: @local.workshop_stepper",
+                        "matchedExpression": "@local.workshop_stepper",
+                        "type": "local",
+                        "fieldName": "workshop_stepper"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | go_to: @local.workshop_stepper",
+                        "matchedExpression": "@local.workshop_stepper",
+                        "type": "local",
+                        "fieldName": "workshop_stepper"
+                      }
+                    ]
+                  }
+                }
+              },
+              "_dynamicDependencies": {
+                "@local.workshop_data.in_text_title": [
+                  "value"
+                ],
+                "@local.workshop_stepper": [
+                  "action_list.0.args.0",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "workshop_specific_content.dg_workshop_continue",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@fields.@local.workshop_started && !(@fields.@local.workshop_completed)",
+                "matchedExpression": "@local.workshop_started",
+                "type": "local",
+                "fieldName": "workshop_started"
+              },
+              {
+                "fullExpression": "@fields.@local.workshop_started && !(@fields.@local.workshop_completed)",
+                "matchedExpression": "@local.workshop_completed",
+                "type": "local",
+                "fieldName": "workshop_completed"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_started": [
+              "condition"
+            ],
+            "@local.workshop_completed": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "display_group",
+          "name": "dg_workshop_completed",
+          "condition": "@fields.@local.workshop_completed",
+          "parameter_list": {
+            "style": "column"
+          },
+          "rows": [
+            {
+              "type": "button",
+              "name": "button_workshop_completed",
+              "value": "Re-access the @local.workshop_data.in_text_title",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "go_to",
+                  "args": [
+                    "@local.workshop_stepper"
+                  ],
+                  "_raw": "click | go_to: @local.workshop_stepper",
+                  "_cleaned": "click | go_to: @local.workshop_stepper"
+                }
+              ],
+              "_nested_name": "workshop_specific_content.dg_workshop_completed.button_workshop_completed",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Re-access the @local.workshop_data.in_text_title",
+                    "matchedExpression": "@local.workshop_data.in_text_title",
+                    "type": "local",
+                    "fieldName": "workshop_data"
+                  }
+                ],
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.workshop_stepper",
+                          "matchedExpression": "@local.workshop_stepper",
+                          "type": "local",
+                          "fieldName": "workshop_stepper"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | go_to: @local.workshop_stepper",
+                        "matchedExpression": "@local.workshop_stepper",
+                        "type": "local",
+                        "fieldName": "workshop_stepper"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | go_to: @local.workshop_stepper",
+                        "matchedExpression": "@local.workshop_stepper",
+                        "type": "local",
+                        "fieldName": "workshop_stepper"
+                      }
+                    ]
+                  }
+                }
+              },
+              "_dynamicDependencies": {
+                "@local.workshop_data.in_text_title": [
+                  "value"
+                ],
+                "@local.workshop_stepper": [
+                  "action_list.0.args.0",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "workshop_specific_content.dg_workshop_completed",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@fields.@local.workshop_completed",
+                "matchedExpression": "@local.workshop_completed",
+                "type": "local",
+                "fieldName": "workshop_completed"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_completed": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_tools",
+          "value": "@local.workshop_data.tools",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.workshop_tools"
+              ],
+              "_raw": "click | go_to: @local.workshop_tools",
+              "_cleaned": "click | go_to: @local.workshop_tools"
+            }
+          ],
+          "_nested_name": "workshop_specific_content.button_tools",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.workshop_data.tools",
+                "matchedExpression": "@local.workshop_data.tools",
+                "type": "local",
+                "fieldName": "workshop_data"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.workshop_tools",
+                      "matchedExpression": "@local.workshop_tools",
+                      "type": "local",
+                      "fieldName": "workshop_tools"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.workshop_tools",
+                    "matchedExpression": "@local.workshop_tools",
+                    "type": "local",
+                    "fieldName": "workshop_tools"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.workshop_tools",
+                    "matchedExpression": "@local.workshop_tools",
+                    "type": "local",
+                    "fieldName": "workshop_tools"
+                  }
+                ]
+              }
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_data.tools": [
+              "value"
+            ],
+            "@local.workshop_tools": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "workshop_specific_content",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.use_workshop_specific_content",
+            "matchedExpression": "@local.use_workshop_specific_content",
+            "type": "local",
+            "fieldName": "use_workshop_specific_content"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.use_workshop_specific_content": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_1",
+      "hidden": true,
+      "_nested_name": "button_1"
+    },
+    {
+      "type": "button",
+      "name": "button_2",
+      "hidden": true,
+      "_nested_name": "button_2"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/help_me_now.xlsx"
+}

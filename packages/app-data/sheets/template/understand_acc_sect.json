@@ -1,0 +1,70 @@
+{
+  "flow_type": "template",
+  "flow_name": "understand_acc_sect",
+  "status": "released",
+  "rows": [
+    {
+      "type": "subtitle",
+      "name": "title_1",
+      "value": "What does that mean?",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "title_1"
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "_nested_name": "text_1"
+    },
+    {
+      "type": "button",
+      "name": "button_1",
+      "condition": false,
+      "_nested_name": "button_1"
+    },
+    {
+      "type": "subtitle",
+      "name": "title_2",
+      "value": "How can you help?",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "title_2"
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "_nested_name": "text_2"
+    },
+    {
+      "type": "button",
+      "name": "button_2",
+      "condition": false,
+      "_nested_name": "button_2"
+    },
+    {
+      "type": "subtitle",
+      "name": "title_3",
+      "condition": false,
+      "_nested_name": "title_3"
+    },
+    {
+      "type": "text",
+      "name": "text_3",
+      "condition": false,
+      "_nested_name": "text_3"
+    },
+    {
+      "type": "button",
+      "name": "button_3",
+      "condition": false,
+      "_nested_name": "button_3"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/covid/covid_reflect.xlsx"
+}

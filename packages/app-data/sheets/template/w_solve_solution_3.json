@@ -1,0 +1,107 @@
+{
+  "flow_type": "template",
+  "module": "solve",
+  "flow_name": "w_solve_solution_3",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "box_image",
+      "value": "box_image",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "image_src",
+          "value": "plh_images/workshops/w_solve/read_3/slide_3.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "box_image.image_src"
+        },
+        {
+          "name": "title",
+          "value": "Learn about safe sex",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "hidden": false,
+          "type": "set_variable",
+          "_nested_name": "box_image.title"
+        },
+        {
+          "name": "text",
+          "value": "@global.w_solve_female_caregiver_1: “This makes me realise we should talk about boyfriends and protecting yourself. Many teens your age get pregnant or become HIV positive. Let’s go to the clinic so you can talk with the nurse to learn how you can stay safe.”",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "box_image.text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.w_solve_female_caregiver_1: “This makes me realise we should talk about boyfriends and protecting yourself. Many teens your age get pregnant or become HIV positive. Let’s go to the clinic so you can talk with the nurse to learn how you can stay safe.”",
+                "matchedExpression": "@global.w_solve_female_caregiver_1",
+                "type": "global",
+                "fieldName": "w_solve_female_caregiver_1"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.w_solve_female_caregiver_1": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "dashed_box",
+          "value": "This is great!",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "hidden": false,
+          "parameter_list": {
+            "icon_src": "plh_images/icons/tick_circle.svg",
+            "icon_position": "top-left"
+          },
+          "type": "set_variable",
+          "_nested_name": "box_image.dashed_box"
+        },
+        {
+          "type": "nested_properties",
+          "name": "nav_buttons",
+          "hidden": true,
+          "rows": [],
+          "_nested_name": "box_image.nav_buttons"
+        }
+      ],
+      "_nested_name": "box_image"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"
+}

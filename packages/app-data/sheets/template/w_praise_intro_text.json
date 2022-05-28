@@ -1,0 +1,34 @@
+{
+  "flow_type": "template",
+  "module": "praise",
+  "flow_name": "w_praise_intro_text",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "description_text",
+          "value": "Greetings everyone. \n\nOur topic today is about praise. \n\nIt is good to praise our children when they've done good because when we do that, they will do more of that good behavior we want to see. \n\nAnd let's not forget to praise ourselves when we do good too!",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.description_text"
+        },
+        {
+          "name": "list_text",
+          "hidden": true,
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text"
+        }
+      ],
+      "_nested_name": "suggestions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"
+}

@@ -1,0 +1,41 @@
+{
+  "flow_type": "template",
+  "flow_name": "understand_teen_influences",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "A teen sometimes does something because they:",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_1"
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "value": "- Listen to their friends\n- Want to do what others do\n- Think more about ‘now’ than ‘later’\n- Love impulses and can find being careful boring\n- Do not worry about risk – may even like risks\n- Have limited experience to rely on\n- Are willing to try something – no matter what happens",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_2"
+    },
+    {
+      "type": "text",
+      "name": "text_3",
+      "value": "It can help to keep this in mind when your teen makes a wrong decision. Talk to them and spend time together so you can help them choose better next time!",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_3"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/covid/covid_reflect.xlsx"
+}

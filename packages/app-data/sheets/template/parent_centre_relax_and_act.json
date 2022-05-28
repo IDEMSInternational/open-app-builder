@@ -1,0 +1,457 @@
+{
+  "flow_type": "template",
+  "flow_name": "parent_centre_relax_and_act",
+  "status": "released",
+  "rows": [
+    {
+      "name": "relax_campaign",
+      "value": "@campaign.relax",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "relax_campaign",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@campaign.relax",
+            "matchedExpression": "@campaign.relax",
+            "type": "campaign",
+            "fieldName": "relax"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@campaign.relax": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "activity_campaign",
+      "value": "@campaign.something_fun",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "activity_campaign",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@campaign.something_fun",
+            "matchedExpression": "@campaign.something_fun",
+            "type": "campaign",
+            "fieldName": "something_fun"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@campaign.something_fun": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@data.parent_centre.relax_and_activities.title",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "tiny"
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.parent_centre.relax_and_activities.title",
+            "matchedExpression": "@data.parent_centre.relax_and_activities.title",
+            "type": "data",
+            "fieldName": "parent_centre"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.parent_centre.relax_and_activities.title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle_1",
+      "value": "Relaxation activities",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "subtitle_1"
+    },
+    {
+      "type": "tile_component",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "trigger_actions",
+          "args": [
+            "@local.relax_campaign.action_list"
+          ],
+          "_raw": "click | trigger_actions: @local.relax_campaign.action_list",
+          "_cleaned": "click | trigger_actions: @local.relax_campaign.action_list"
+        }
+      ],
+      "hidden": "@local.relax_campaign.id == \"default\"",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "quick_start_dark",
+        "icon_src": "@local.relax_campaign.icon",
+        "first_line_text": "@global.current_relax"
+      },
+      "name": "tile_component",
+      "_nested_name": "tile_component",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.relax_campaign.action_list",
+                  "matchedExpression": "@local.relax_campaign.action_list",
+                  "type": "local",
+                  "fieldName": "relax_campaign"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | trigger_actions: @local.relax_campaign.action_list",
+                "matchedExpression": "@local.relax_campaign.action_list",
+                "type": "local",
+                "fieldName": "relax_campaign"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | trigger_actions: @local.relax_campaign.action_list",
+                "matchedExpression": "@local.relax_campaign.action_list",
+                "type": "local",
+                "fieldName": "relax_campaign"
+              }
+            ]
+          }
+        },
+        "hidden": [
+          {
+            "fullExpression": "@local.relax_campaign.id == \"default\"",
+            "matchedExpression": "@local.relax_campaign.id",
+            "type": "local",
+            "fieldName": "relax_campaign"
+          }
+        ],
+        "parameter_list": {
+          "icon_src": [
+            {
+              "fullExpression": "@local.relax_campaign.icon",
+              "matchedExpression": "@local.relax_campaign.icon",
+              "type": "local",
+              "fieldName": "relax_campaign"
+            }
+          ],
+          "first_line_text": [
+            {
+              "fullExpression": "@global.current_relax",
+              "matchedExpression": "@global.current_relax",
+              "type": "global",
+              "fieldName": "current_relax"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.relax_campaign.action_list": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.relax_campaign.id": [
+          "hidden"
+        ],
+        "@local.relax_campaign.icon": [
+          "parameter_list.icon_src"
+        ],
+        "@global.current_relax": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "buttons_1",
+      "rows": [
+        {
+          "type": "button",
+          "name": "tile_1",
+          "value": "@global.my_relaxes",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "parent_centre_my_relaxes"
+              ],
+              "_raw": "click | go_to:parent_centre_my_relaxes",
+              "_cleaned": "click | go_to:parent_centre_my_relaxes"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "buttons_1.tile_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.my_relaxes",
+                "matchedExpression": "@global.my_relaxes",
+                "type": "global",
+                "fieldName": "my_relaxes"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.my_relaxes": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "tile_2",
+          "value": "@global.all_relaxes",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "parent_centre_relaxes"
+              ],
+              "_raw": "click | go_to:parent_centre_relaxes",
+              "_cleaned": "click | go_to:parent_centre_relaxes"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "buttons_1.tile_2",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.all_relaxes",
+                "matchedExpression": "@global.all_relaxes",
+                "type": "global",
+                "fieldName": "all_relaxes"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.all_relaxes": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "buttons_1"
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle_2",
+      "value": "Something fun to do with your teen",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "subtitle_2"
+    },
+    {
+      "type": "tile_component",
+      "name": "tile_3",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "trigger_actions",
+          "args": [
+            "@local.activity_campaign.action_list"
+          ],
+          "_raw": "click | trigger_actions: @local.activity_campaign.action_list",
+          "_cleaned": "click | trigger_actions: @local.activity_campaign.action_list"
+        }
+      ],
+      "hidden": "@local.activity_campaign.id == \"default\"",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "quick_start_dark",
+        "icon_src": "@local.activity_campaign.icon",
+        "first_line_text": "@global.current_activity"
+      },
+      "_nested_name": "tile_3",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.activity_campaign.action_list",
+                  "matchedExpression": "@local.activity_campaign.action_list",
+                  "type": "local",
+                  "fieldName": "activity_campaign"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | trigger_actions: @local.activity_campaign.action_list",
+                "matchedExpression": "@local.activity_campaign.action_list",
+                "type": "local",
+                "fieldName": "activity_campaign"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | trigger_actions: @local.activity_campaign.action_list",
+                "matchedExpression": "@local.activity_campaign.action_list",
+                "type": "local",
+                "fieldName": "activity_campaign"
+              }
+            ]
+          }
+        },
+        "hidden": [
+          {
+            "fullExpression": "@local.activity_campaign.id == \"default\"",
+            "matchedExpression": "@local.activity_campaign.id",
+            "type": "local",
+            "fieldName": "activity_campaign"
+          }
+        ],
+        "parameter_list": {
+          "icon_src": [
+            {
+              "fullExpression": "@local.activity_campaign.icon",
+              "matchedExpression": "@local.activity_campaign.icon",
+              "type": "local",
+              "fieldName": "activity_campaign"
+            }
+          ],
+          "first_line_text": [
+            {
+              "fullExpression": "@global.current_activity",
+              "matchedExpression": "@global.current_activity",
+              "type": "global",
+              "fieldName": "current_activity"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.activity_campaign.action_list": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.activity_campaign.id": [
+          "hidden"
+        ],
+        "@local.activity_campaign.icon": [
+          "parameter_list.icon_src"
+        ],
+        "@global.current_activity": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "buttons_2",
+      "rows": [
+        {
+          "type": "button",
+          "name": "tile_4",
+          "value": "@global.my_activities",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "parent_centre_my_activities"
+              ],
+              "_raw": "click | go_to:parent_centre_my_activities",
+              "_cleaned": "click | go_to:parent_centre_my_activities"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "buttons_2.tile_4",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.my_activities",
+                "matchedExpression": "@global.my_activities",
+                "type": "global",
+                "fieldName": "my_activities"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.my_activities": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "tile_5",
+          "value": "@global.all_activities",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "parent_centre_activities"
+              ],
+              "_raw": "click | go_to:parent_centre_activities",
+              "_cleaned": "click | go_to:parent_centre_activities"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "buttons_2.tile_5",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.all_activities",
+                "matchedExpression": "@global.all_activities",
+                "type": "global",
+                "fieldName": "all_activities"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.all_activities": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "buttons_2"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
+}

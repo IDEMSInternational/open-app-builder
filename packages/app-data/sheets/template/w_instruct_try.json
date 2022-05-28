@@ -1,0 +1,90 @@
+{
+  "flow_type": "template",
+  "module": "instruct",
+  "flow_name": "w_instruct_try",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "try_together",
+      "value": "try_together",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Let's practice giving REAL, POSITIVE and CLEAR instructions. Practice will help you be successful with your teen!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "try_together.workshop_activity.intro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "name": "text",
+                  "value": "Choose two people from your group:\n* One person pretends to be a teenager\n* The other pretends to be the teenager’s parent\n* “Parent”: Give your “teen” a positive instruction with encouragement and praise\n* “Teen”: Respond as you think a teen may respond to this \n\nDiscuss together how that went:\n* How did this make you feel as “parent” and as “teen”?\n* Could you do anything better?\n\nGive everyone a chance to be the “parent” and the “teen” if you can. Practice brings success!",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "try_together.workshop_activity.content_box.text"
+                },
+                {
+                  "name": "button",
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "pop_up",
+                      "args": [
+                        "w_instruct_try_pop"
+                      ],
+                      "_raw": "click | pop_up:w_instruct_try_pop",
+                      "_cleaned": "click | pop_up:w_instruct_try_pop"
+                    }
+                  ],
+                  "hidden": false,
+                  "type": "set_variable",
+                  "_nested_name": "try_together.workshop_activity.content_box.button"
+                }
+              ],
+              "_nested_name": "try_together.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "try_together.workshop_activity"
+        }
+      ],
+      "_nested_name": "try_together"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
+}

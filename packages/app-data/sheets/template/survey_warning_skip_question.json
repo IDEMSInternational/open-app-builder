@@ -1,0 +1,44 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_warning_skip_question",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "survey_warning",
+      "value": "survey_warning",
+      "rows": [
+        {
+          "name": "title",
+          "value": "Are you sure you want to skip this question?",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "survey_warning.title"
+        },
+        {
+          "name": "text",
+          "value": "Are you sure you want to skip this question? Remember, your answer will be kept private and will help us understand your parenting needs. \n\nYou can also choose not to answer any question by selecting the circle.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "survey_warning.text"
+        },
+        {
+          "name": "checkbox",
+          "hidden": true,
+          "type": "set_variable",
+          "_nested_name": "survey_warning.checkbox"
+        }
+      ],
+      "_nested_name": "survey_warning"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey_warnings.xlsx"
+}

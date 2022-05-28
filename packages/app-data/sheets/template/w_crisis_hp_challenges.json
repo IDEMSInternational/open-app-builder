@@ -1,0 +1,209 @@
+{
+  "flow_type": "template",
+  "module": "solve",
+  "flow_name": "w_crisis_hp_challenges",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "home_practice_challenges",
+      "value": "home_practice_challenges",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "number_of_challenges",
+          "value": 3,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "home_practice_challenges.number_of_challenges"
+        },
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_crisis",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice_challenges.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_crisis",
+                "matchedExpression": "@data.workshop.w_crisis",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_crisis": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "hp_description_third_plural",
+          "value": "prepare for a possible crisis with their teens",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice_challenges.hp_description_third_plural"
+        },
+        {
+          "name": "hp_description_second_singular",
+          "value": "prepare for a possible crisis with your teen",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice_challenges.hp_description_second_singular"
+        },
+        {
+          "name": "text_challenge_1",
+          "value": "My teen told me that something serious happened to them and I did not know how to handle it.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice_challenges.text_challenge_1"
+        },
+        {
+          "name": "reply_challenge_1",
+          "value": "Praise your teen for telling you; that is not easy to do! Remember, you can use all the skills you picked from your toolbox: Take a pause, use the four steps of problem solving, and reach out to get the support you and your teen need!",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice_challenges.reply_challenge_1"
+        },
+        {
+          "name": "reply_challenge_1_has_2_buttons",
+          "value": true,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "home_practice_challenges.reply_challenge_1_has_2_buttons"
+        },
+        {
+          "name": "button_1_a",
+          "value": "@global.w_solve_tools",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "w_solve_tools"
+              ],
+              "_raw": "click | go_to: w_solve_tools",
+              "_cleaned": "click | go_to: w_solve_tools"
+            }
+          ],
+          "type": "set_variable",
+          "_nested_name": "home_practice_challenges.button_1_a",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.w_solve_tools",
+                "matchedExpression": "@global.w_solve_tools",
+                "type": "global",
+                "fieldName": "w_solve_tools"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.w_solve_tools": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "button_1_b",
+          "value": "Get support",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice_challenges.button_1_b"
+        },
+        {
+          "name": "text_challenge_2",
+          "value": "The conversation made me very uncomfortable because I was reminded of a negative experience I had.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice_challenges.text_challenge_2"
+        },
+        {
+          "name": "reply_challenge_2",
+          "value": "When we are reminded of such experiences, it is normal to feel upset or angry. It is important to find a time when you are calm, so that you can think of what support you need. You may need to talk to someone.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice_challenges.reply_challenge_2"
+        },
+        {
+          "name": "text_challenge_3",
+          "value": "One of us did not feel comfortable.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice_challenges.text_challenge_3"
+        },
+        {
+          "name": "reply_challenge_3",
+          "value": "This is difficult stuff to talk about. Find a relaxing time for it. We know it is much easier to not talk about these things and to hope they will never happen to us. However, learning to deal with crisis is like getting insurance; it is ALWAYS best to think about them and be prepared.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice_challenges.reply_challenge_3"
+        }
+      ],
+      "_nested_name": "home_practice_challenges"
+    }
+  ],
+  "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_crisis_hp_review.xlsx"
+}

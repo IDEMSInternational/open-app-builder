@@ -1,0 +1,594 @@
+{
+  "flow_type": "template",
+  "module": "money",
+  "flow_name": "w_money_learn_4_temp",
+  "status": "released",
+  "rows": [
+    {
+      "name": "monthly_income",
+      "value": "+@global.monthly_income_estimate",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "monthly_income",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "+@global.monthly_income_estimate",
+            "matchedExpression": "@global.monthly_income_estimate",
+            "type": "global",
+            "fieldName": "monthly_income_estimate"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.monthly_income_estimate": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "number_of_beans",
+      "value": "+@global.number_of_beans",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "number_of_beans",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "+@global.number_of_beans",
+            "matchedExpression": "@global.number_of_beans",
+            "type": "global",
+            "fieldName": "number_of_beans"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.number_of_beans": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "bean_value",
+      "value": "@calc(Math.floor(@local.monthly_income/@local.number_of_beans))",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "bean_value",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@calc(Math.floor(@local.monthly_income/@local.number_of_beans))",
+            "matchedExpression": "@local.monthly_income",
+            "type": "local",
+            "fieldName": "monthly_income"
+          },
+          {
+            "fullExpression": "@calc(Math.floor(@local.monthly_income/@local.number_of_beans))",
+            "matchedExpression": "@local.number_of_beans",
+            "type": "local",
+            "fieldName": "number_of_beans"
+          },
+          {
+            "fullExpression": "@calc(Math.floor(@local.monthly_income/@local.number_of_beans))",
+            "matchedExpression": "@calc(Math.floor(@local.monthly_income/@local.number_of_beans))",
+            "type": "calc",
+            "fieldName": "Math.floor(@local.monthly_income/@local.number_of_beans)"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.monthly_income": [
+          "value"
+        ],
+        "@local.number_of_beans": [
+          "value"
+        ],
+        "@calc(Math.floor(@local.monthly_income/@local.number_of_beans))": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "learn_alone",
+      "value": "learn_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"alone\" || !@fields.w_money_path )",
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_title",
+              "value": "Step 3: BUILD",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn_alone.workshop_activity.intro_title"
+            },
+            {
+              "name": "intro_text",
+              "value": "Make a budget!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn_alone.workshop_activity.intro_text"
+            },
+            {
+              "name": "activity_banner",
+              "hidden": true,
+              "type": "set_variable",
+              "_nested_name": "learn_alone.workshop_activity.activity_banner"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_image",
+              "rows": [
+                {
+                  "name": "image_src",
+                  "value": "plh_images/workshops/w_money/learn/slide_3.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn_alone.workshop_activity.content_box.image_src"
+                },
+                {
+                  "name": "text",
+                  "value": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn_alone.workshop_activity.content_box.text",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "matchedExpression": "@global.currency",
+                        "type": "global",
+                        "fieldName": "currency"
+                      },
+                      {
+                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "matchedExpression": "@local.monthly_income",
+                        "type": "local",
+                        "fieldName": "monthly_income"
+                      },
+                      {
+                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "matchedExpression": "@local.number_of_beans",
+                        "type": "local",
+                        "fieldName": "number_of_beans"
+                      },
+                      {
+                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "matchedExpression": "@global.currency",
+                        "type": "global",
+                        "fieldName": "currency"
+                      },
+                      {
+                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "matchedExpression": "@local.bean_value",
+                        "type": "local",
+                        "fieldName": "bean_value"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@global.currency": [
+                      "value",
+                      "value"
+                    ],
+                    "@local.monthly_income": [
+                      "value"
+                    ],
+                    "@local.number_of_beans": [
+                      "value"
+                    ],
+                    "@local.bean_value": [
+                      "value"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "learn_alone.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "learn_alone.workshop_activity"
+        }
+      ],
+      "_nested_name": "learn_alone",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"alone\" || !@fields.w_money_path )",
+            "matchedExpression": "!@fields.do_this_workshop_together",
+            "type": "fields",
+            "fieldName": "do_this_workshop_together"
+          },
+          {
+            "fullExpression": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"alone\" || !@fields.w_money_path )",
+            "matchedExpression": "@fields.w_money_path",
+            "type": "fields",
+            "fieldName": "w_money_path"
+          },
+          {
+            "fullExpression": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"alone\" || !@fields.w_money_path )",
+            "matchedExpression": "!@fields.w_money_path",
+            "type": "fields",
+            "fieldName": "w_money_path"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@fields.do_this_workshop_together": [
+          "condition"
+        ],
+        "@fields.w_money_path": [
+          "condition"
+        ],
+        "!@fields.w_money_path": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "learn_group",
+      "value": "learn_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "@fields.do_this_workshop_together",
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_title",
+              "value": "Step 3: BUILD",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn_group.workshop_activity.intro_title"
+            },
+            {
+              "name": "intro_text",
+              "value": "Make a budget as one big family!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn_group.workshop_activity.intro_text"
+            },
+            {
+              "name": "activity_banner",
+              "hidden": true,
+              "type": "set_variable",
+              "_nested_name": "learn_group.workshop_activity.activity_banner"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_image",
+              "rows": [
+                {
+                  "name": "image_src",
+                  "value": "plh_images/workshops/w_money/learn/slide_3.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn_group.workshop_activity.content_box.image_src"
+                },
+                {
+                  "name": "text",
+                  "value": "* One person will volunteer to share his/her list (If no one volunteers you can make a new list together) \n* Take roles - some will be adults, some will be teens. \n* Decide what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)  \n* Decide together what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn_group.workshop_activity.content_box.text",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "* One person will volunteer to share his/her list (If no one volunteers you can make a new list together) \n* Take roles - some will be adults, some will be teens. \n* Decide what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)  \n* Decide together what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "matchedExpression": "@global.currency",
+                        "type": "global",
+                        "fieldName": "currency"
+                      },
+                      {
+                        "fullExpression": "* One person will volunteer to share his/her list (If no one volunteers you can make a new list together) \n* Take roles - some will be adults, some will be teens. \n* Decide what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)  \n* Decide together what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "matchedExpression": "@local.monthly_income",
+                        "type": "local",
+                        "fieldName": "monthly_income"
+                      },
+                      {
+                        "fullExpression": "* One person will volunteer to share his/her list (If no one volunteers you can make a new list together) \n* Take roles - some will be adults, some will be teens. \n* Decide what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)  \n* Decide together what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "matchedExpression": "@local.number_of_beans",
+                        "type": "local",
+                        "fieldName": "number_of_beans"
+                      },
+                      {
+                        "fullExpression": "* One person will volunteer to share his/her list (If no one volunteers you can make a new list together) \n* Take roles - some will be adults, some will be teens. \n* Decide what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)  \n* Decide together what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "matchedExpression": "@global.currency",
+                        "type": "global",
+                        "fieldName": "currency"
+                      },
+                      {
+                        "fullExpression": "* One person will volunteer to share his/her list (If no one volunteers you can make a new list together) \n* Take roles - some will be adults, some will be teens. \n* Decide what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)  \n* Decide together what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "matchedExpression": "@local.bean_value",
+                        "type": "local",
+                        "fieldName": "bean_value"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@global.currency": [
+                      "value",
+                      "value"
+                    ],
+                    "@local.monthly_income": [
+                      "value"
+                    ],
+                    "@local.number_of_beans": [
+                      "value"
+                    ],
+                    "@local.bean_value": [
+                      "value"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "learn_group.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "learn_group.workshop_activity"
+        }
+      ],
+      "_nested_name": "learn_group",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.do_this_workshop_together",
+            "matchedExpression": "@fields.do_this_workshop_together",
+            "type": "fields",
+            "fieldName": "do_this_workshop_together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.do_this_workshop_together": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "learn_family",
+      "value": "learn_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"family\" )",
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_title",
+              "value": "Step 3: BUILD",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn_family.workshop_activity.intro_title"
+            },
+            {
+              "name": "intro_text",
+              "value": "Make a budget as a family!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn_family.workshop_activity.intro_text"
+            },
+            {
+              "name": "activity_banner",
+              "hidden": true,
+              "type": "set_variable",
+              "_nested_name": "learn_family.workshop_activity.activity_banner"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_image",
+              "rows": [
+                {
+                  "name": "image_src",
+                  "value": "plh_images/workshops/w_money/learn/slide_3.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn_family.workshop_activity.content_box.image_src"
+                },
+                {
+                  "name": "text",
+                  "value": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn_family.workshop_activity.content_box.text",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "matchedExpression": "@global.currency",
+                        "type": "global",
+                        "fieldName": "currency"
+                      },
+                      {
+                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "matchedExpression": "@local.monthly_income",
+                        "type": "local",
+                        "fieldName": "monthly_income"
+                      },
+                      {
+                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "matchedExpression": "@local.number_of_beans",
+                        "type": "local",
+                        "fieldName": "number_of_beans"
+                      },
+                      {
+                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "matchedExpression": "@global.currency",
+                        "type": "global",
+                        "fieldName": "currency"
+                      },
+                      {
+                        "fullExpression": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
+                        "matchedExpression": "@local.bean_value",
+                        "type": "local",
+                        "fieldName": "bean_value"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@global.currency": [
+                      "value",
+                      "value"
+                    ],
+                    "@local.monthly_income": [
+                      "value"
+                    ],
+                    "@local.number_of_beans": [
+                      "value"
+                    ],
+                    "@local.bean_value": [
+                      "value"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "learn_family.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "learn_family.workshop_activity"
+        }
+      ],
+      "_nested_name": "learn_family",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"family\" )",
+            "matchedExpression": "!@fields.do_this_workshop_together",
+            "type": "fields",
+            "fieldName": "do_this_workshop_together"
+          },
+          {
+            "fullExpression": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"family\" )",
+            "matchedExpression": "@fields.w_money_path",
+            "type": "fields",
+            "fieldName": "w_money_path"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@fields.do_this_workshop_together": [
+          "condition"
+        ],
+        "@fields.w_money_path": [
+          "condition"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
+}

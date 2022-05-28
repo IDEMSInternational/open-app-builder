@@ -1,0 +1,166 @@
+{
+  "flow_type": "template",
+  "module": "praise",
+  "flow_name": "w_praise_talk_2",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "talk_together",
+      "value": "talk_together",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "include_outro",
+              "value": true,
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "talk_together.workshop_activity.include_outro"
+            },
+            {
+              "name": "outro_habit_data",
+              "value": "@data.habit.praise_teen",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "talk_together.workshop_activity.outro_habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.praise_teen",
+                    "matchedExpression": "@data.habit.praise_teen",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.praise_teen": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "intro_text",
+              "value": "Let's discuss this story.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "talk_together.workshop_activity.intro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "name": "text",
+                  "value": "Discuss together:\n\n* How did praise make @global.w_praise_female_caregiver_name's teens feel?\n* Why did she praise them?",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "talk_together.workshop_activity.content_box.text",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "Discuss together:\n\n* How did praise make @global.w_praise_female_caregiver_name's teens feel?\n* Why did she praise them?",
+                        "matchedExpression": "@global.w_praise_female_caregiver_name",
+                        "type": "global",
+                        "fieldName": "w_praise_female_caregiver_name"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@global.w_praise_female_caregiver_name": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "name": "button_1",
+                  "value": "@global.ideas_short_button",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "pop_up",
+                      "args": [
+                        "w_praise_talk_2_pop"
+                      ],
+                      "_raw": "click | pop_up:w_praise_talk_2_pop",
+                      "_cleaned": "click | pop_up:w_praise_talk_2_pop"
+                    }
+                  ],
+                  "hidden": false,
+                  "type": "set_variable",
+                  "_nested_name": "talk_together.workshop_activity.content_box.button_1",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@global.ideas_short_button",
+                        "matchedExpression": "@global.ideas_short_button",
+                        "type": "global",
+                        "fieldName": "ideas_short_button"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@global.ideas_short_button": [
+                      "value"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "talk_together.workshop_activity.content_box"
+            },
+            {
+              "name": "outro_text",
+              "value": "The same can work for you!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "talk_together.workshop_activity.outro_text"
+            }
+          ],
+          "_nested_name": "talk_together.workshop_activity"
+        }
+      ],
+      "_nested_name": "talk_together"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"
+}

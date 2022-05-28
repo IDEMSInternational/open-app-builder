@@ -1,0 +1,82 @@
+{
+  "flow_type": "template",
+  "module": "1on1",
+  "flow_name": "w_1on1_summary",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "description_text",
+          "value": "Today you will explore:",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.description_text"
+        },
+        {
+          "name": "list_text",
+          "value": "* Ideas for one-on-one time\n* Tools: How to spend one-on-one time\nDAY - PLAY - STAY\n* Home practice suggestions",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "condition": "!@field.do_this_workshop_together",
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!@field.do_this_workshop_together",
+                "matchedExpression": "!@field.do_this_workshop_together",
+                "type": "field",
+                "fieldName": "do_this_workshop_together"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "!@field.do_this_workshop_together": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "name": "list_text",
+          "value": "* Self-care activities\n* Ideas for one-on-one time\n* Tools: How to spend one-on-one time\nDAY - PLAY - STAY\n* Home practice suggestions",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "condition": "@field.do_this_workshop_together",
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@field.do_this_workshop_together",
+                "matchedExpression": "@field.do_this_workshop_together",
+                "type": "field",
+                "fieldName": "do_this_workshop_together"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@field.do_this_workshop_together": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "suggestions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_1on1.xlsx"
+}

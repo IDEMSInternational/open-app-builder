@@ -1,0 +1,48 @@
+{
+  "flow_type": "template",
+  "module": "praise",
+  "flow_name": "w_praise_try_pop",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "description_text",
+          "value": "Sometimes it’s hard to think of what to praise your teen for! Here are some ideas from other parents:",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.description_text"
+        },
+        {
+          "name": "list_text",
+          "value": "* Being kind to someone \n* Cleaning their room \n* Joining a family meal \n* Greeting other family members \n* Looking after siblings \n* Coming home in time \n* Showing thoughtfulness \n* Saying 'please' or 'thank you' \n* Going to school  \n* Doing chores or schoolwork  \n* Getting through mealtime peacefully",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text"
+        }
+      ],
+      "_nested_name": "suggestions"
+    },
+    {
+      "value": "",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "name": "set_variable",
+      "_nested_name": "set_variable"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"
+}

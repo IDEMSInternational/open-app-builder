@@ -1,0 +1,409 @@
+{
+  "flow_type": "data_list",
+  "flow_subtype": "campaign_rows",
+  "flow_name": "campaign_something_fun",
+  "status": "released",
+  "rows": [
+    {
+      "id": "default",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "default.sent",
+            true
+          ],
+          "_raw": "set_field: default.sent : true",
+          "_cleaned": "click | set_field: default.sent : true"
+        }
+      ],
+      "priority": -1,
+      "campaign_list": [
+        "something_fun"
+      ],
+      "icon": "plh_images/icons/smile_eyes_up_white.svg"
+    },
+    {
+      "id": "w_1on1_m_something_fun",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "activity_co_chef"
+          ],
+          "_raw": "go_to: activity_co_chef",
+          "_cleaned": "click | go_to: activity_co_chef"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_1on1_m_something_fun.sent",
+            true
+          ],
+          "_raw": "set_field: w_1on1_m_something_fun.sent : true",
+          "_cleaned": "click | set_field: w_1on1_m_something_fun.sent : true"
+        }
+      ],
+      "priority": 1.4,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 1"
+          },
+          "_raw": "@fields.workshop_number == 1"
+        }
+      ],
+      "campaign_list": [
+        "something_fun"
+      ],
+      "icon": "plh_images/icons/smile_eyes_up_white.svg"
+    },
+    {
+      "id": "w_praise_m_something_fun",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "activity_reflect_positive"
+          ],
+          "_raw": "go_to: activity_reflect_positive",
+          "_cleaned": "click | go_to: activity_reflect_positive"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_praise_m_something_fun.sent",
+            true
+          ],
+          "_raw": "set_field: w_praise_m_something_fun.sent : true",
+          "_cleaned": "click | set_field: w_praise_m_something_fun.sent : true"
+        }
+      ],
+      "priority": 2.4,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 2"
+          },
+          "_raw": "@fields.workshop_number == 2"
+        }
+      ],
+      "campaign_list": [
+        "something_fun"
+      ],
+      "icon": "plh_images/icons/smile_eyes_up_white.svg"
+    },
+    {
+      "id": "w_instruct_m_something_fun",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "activity_dance_moves"
+          ],
+          "_raw": "go_to: activity_dance_moves",
+          "_cleaned": "click | go_to: activity_dance_moves"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_instruct_m_something_fun.sent",
+            true
+          ],
+          "_raw": "set_field: w_instruct_m_something_fun.sent : true",
+          "_cleaned": "click | set_field: w_instruct_m_something_fun.sent : true"
+        }
+      ],
+      "priority": 3.4,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 3"
+          },
+          "_raw": "@fields.workshop_number == 3"
+        }
+      ],
+      "campaign_list": [
+        "something_fun"
+      ],
+      "icon": "plh_images/icons/smile_eyes_up_white.svg"
+    },
+    {
+      "id": "w_stress_m_something_fun",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "activity_check_in_chat"
+          ],
+          "_raw": "go_to: activity_check_in_chat",
+          "_cleaned": "click | go_to: activity_check_in_chat"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_stress_m_something_fun.sent",
+            true
+          ],
+          "_raw": "set_field: w_stress_m_something_fun.sent : true",
+          "_cleaned": "click | set_field: w_stress_m_something_fun.sent : true"
+        }
+      ],
+      "priority": 4.4,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 4"
+          },
+          "_raw": "@fields.workshop_number == 4"
+        }
+      ],
+      "campaign_list": [
+        "something_fun"
+      ],
+      "icon": "plh_images/icons/smile_eyes_up_white.svg"
+    },
+    {
+      "id": "w_money_m_something_fun",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "activity_dream_travel"
+          ],
+          "_raw": "go_to: activity_dream_travel",
+          "_cleaned": "click | go_to: activity_dream_travel"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_money_m_something_fun.sent",
+            true
+          ],
+          "_raw": "set_field: w_money_m_something_fun.sent : true",
+          "_cleaned": "click | set_field: w_money_m_something_fun.sent : true"
+        }
+      ],
+      "priority": 5.4,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 5"
+          },
+          "_raw": "@fields.workshop_number == 5"
+        }
+      ],
+      "campaign_list": [
+        "something_fun"
+      ],
+      "icon": "plh_images/icons/smile_eyes_up_white.svg"
+    },
+    {
+      "id": "w_rules_m_something_fun",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "activity_famous_party"
+          ],
+          "_raw": "go_to: activity_famous_party",
+          "_cleaned": "click | go_to: activity_famous_party"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_rules_m_something_fun.sent",
+            true
+          ],
+          "_raw": "set_field: w_rules_m_something_fun.sent : true",
+          "_cleaned": "click | set_field: w_rules_m_something_fun.sent : true"
+        }
+      ],
+      "priority": 6.4,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 6"
+          },
+          "_raw": "@fields.workshop_number == 6"
+        }
+      ],
+      "campaign_list": [
+        "something_fun"
+      ],
+      "icon": "plh_images/icons/smile_eyes_up_white.svg"
+    },
+    {
+      "id": "w_consequence_m_something_fun",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "activity_two_truths"
+          ],
+          "_raw": "go_to: activity_two_truths",
+          "_cleaned": "click | go_to: activity_two_truths"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_consequence_m_something_fun.sent",
+            true
+          ],
+          "_raw": "set_field: w_consequence_m_something_fun.sent : true",
+          "_cleaned": "click | set_field: w_consequence_m_something_fun.sent : true"
+        }
+      ],
+      "priority": 7.4,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 7"
+          },
+          "_raw": "@fields.workshop_number == 7"
+        }
+      ],
+      "campaign_list": [
+        "something_fun"
+      ],
+      "icon": "plh_images/icons/smile_eyes_up_white.svg"
+    },
+    {
+      "id": "w_solve_m_something_fun",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "activity_mirror"
+          ],
+          "_raw": "go_to: activity_mirror",
+          "_cleaned": "click | go_to: activity_mirror"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_solve_m_something_fun.sent",
+            true
+          ],
+          "_raw": "set_field: w_solve_m_something_fun.sent : true",
+          "_cleaned": "click | set_field: w_solve_m_something_fun.sent : true"
+        }
+      ],
+      "priority": 8.4,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 8"
+          },
+          "_raw": "@fields.workshop_number == 8"
+        }
+      ],
+      "campaign_list": [
+        "something_fun"
+      ],
+      "icon": "plh_images/icons/smile_eyes_up_white.svg"
+    },
+    {
+      "id": "w_safe_m_something_fun",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "activity_time_machine"
+          ],
+          "_raw": "go_to: activity_time_machine",
+          "_cleaned": "click | go_to: activity_time_machine"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_safe_m_something_fun.sent",
+            true
+          ],
+          "_raw": "set_field: w_safe_m_something_fun.sent : true",
+          "_cleaned": "click | set_field: w_safe_m_something_fun.sent : true"
+        }
+      ],
+      "priority": 9.4,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 9"
+          },
+          "_raw": "@fields.workshop_number == 9"
+        }
+      ],
+      "campaign_list": [
+        "something_fun"
+      ],
+      "icon": "plh_images/icons/smile_eyes_up_white.svg"
+    },
+    {
+      "id": "w_crisis_m_something_fun",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "activity_superpowers"
+          ],
+          "_raw": "go_to: activity_superpowers",
+          "_cleaned": "click | go_to: activity_superpowers"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_crisis_m_something_fun.sent",
+            true
+          ],
+          "_raw": "set_field: w_crisis_m_something_fun.sent : true",
+          "_cleaned": "click | set_field: w_crisis_m_something_fun.sent : true"
+        }
+      ],
+      "priority": 10.4,
+      "activation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.workshop_number == 10"
+          },
+          "_raw": "@fields.workshop_number == 10"
+        }
+      ],
+      "campaign_list": [
+        "something_fun"
+      ],
+      "icon": "plh_images/icons/smile_eyes_up_white.svg"
+    }
+  ],
+  "_xlsxPath": "global/campaigns/quick_start_parent_centre.xlsx"
+}

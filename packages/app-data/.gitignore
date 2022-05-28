@@ -1,4 +1,4 @@
 merged
 dist
-translations/*
-!translations/from_translators
+translations_source/*
+!translations_source/from_translators

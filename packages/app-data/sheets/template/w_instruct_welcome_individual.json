@@ -1,0 +1,108 @@
+{
+  "flow_type": "template",
+  "module": "instruct",
+  "flow_name": "w_instruct_welcome_individual",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "welcome_individual",
+      "value": "welcome_individual",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_instruct",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "welcome_individual.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_instruct",
+                "matchedExpression": "@data.workshop.w_instruct",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_instruct": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "name": "reply_happy",
+                  "value": "Wonderful, I am so happy! Keep up the good work.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_happy"
+                },
+                {
+                  "name": "reply_ok",
+                  "value": "Sorry that things are difficult. All families struggle. We are here to help!",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_ok"
+                },
+                {
+                  "name": "reply_sad",
+                  "value": "Whatever went ‘wrong’ today, let it go and try again tomorrow. It’s okay!",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_sad"
+                }
+              ],
+              "_nested_name": "welcome_individual.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "welcome_individual.workshop_activity"
+        }
+      ],
+      "_nested_name": "welcome_individual"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
+}

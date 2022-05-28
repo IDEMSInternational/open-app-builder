@@ -1,0 +1,71 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_intro",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "box_image",
+      "value": "box_image",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "title",
+          "value": "Customise for your needs",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "hidden": false,
+          "type": "set_variable",
+          "_nested_name": "box_image.title"
+        },
+        {
+          "name": "image_src",
+          "value": "plh_images/survey/welcome/busy.svg",
+          "_translations": {
+            "value": {}
+          },
+          "style_list": [
+            "max-height: 300px"
+          ],
+          "type": "set_variable",
+          "_nested_name": "box_image.image_src"
+        },
+        {
+          "name": "text",
+          "value": "Every parent in the world is struggling in these hard times. The next questions about your parenting experiences will help us to get you the support you need.\n\nBe honest. Remember that you are not alone! Millions of parents feel like you do, and we all deserve support.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "box_image.text"
+        }
+      ],
+      "_nested_name": "box_image"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey.xlsx"
+}

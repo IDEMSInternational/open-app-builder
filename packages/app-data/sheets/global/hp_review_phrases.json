@@ -1,0 +1,38 @@
+{
+  "flow_type": "global",
+  "flow_name": "hp_review_phrases",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_global_constant",
+      "name": "to_solve_hp_challenge",
+      "value": "To solve this challenge, I will try to:",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "try_this_hp_challenge",
+      "value": "Do you want to try one of the following things?",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "challenge_not_here",
+      "value": "My challenge is not listed here.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/in_week_message_globals.xlsx"
+}

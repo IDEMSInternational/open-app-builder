@@ -1,0 +1,110 @@
+{
+  "flow_type": "template",
+  "module": "rules",
+  "flow_name": "w_rules_learn_temp",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "learn_temp",
+      "value": "learn_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Let's practice making rules.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn_temp.workshop_activity.intro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_buttons",
+              "rows": [
+                {
+                  "name": "text_1",
+                  "value": "Write down one important rule you’d like to make with your teenager – you'll be doing this as your home practice this week. \n\nWhat will they think about it?",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn_temp.workshop_activity.content_box.text_1"
+                },
+                {
+                  "name": "button_1",
+                  "value": "@global.ideas_button",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "pop_up",
+                      "args": [
+                        "w_rules_try_pop"
+                      ],
+                      "_raw": "click | pop_up:w_rules_try_pop",
+                      "_cleaned": "click | pop_up:w_rules_try_pop"
+                    }
+                  ],
+                  "hidden": false,
+                  "type": "set_variable",
+                  "_nested_name": "learn_temp.workshop_activity.content_box.button_1",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@global.ideas_button",
+                        "matchedExpression": "@global.ideas_button",
+                        "type": "global",
+                        "fieldName": "ideas_button"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@global.ideas_button": [
+                      "value"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "learn_temp.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "learn_temp.workshop_activity"
+        }
+      ],
+      "_nested_name": "learn_temp"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_rules.xlsx"
+}

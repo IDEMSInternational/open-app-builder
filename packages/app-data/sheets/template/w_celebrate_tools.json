@@ -1,0 +1,209 @@
+{
+  "flow_type": "template",
+  "module": "celebrate",
+  "flow_name": "w_celebrate_tools",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "essential_tools",
+      "value": "essential_tools",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "tool_1",
+          "rows": [
+            {
+              "name": "title",
+              "value": "MEET",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_1.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Keep meeting regularly to give each other parenting support.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_1.text_1"
+            },
+            {
+              "name": "image_src",
+              "value": "plh_images/workshops/w_celebrate/read/slide_1.svg",
+              "_translations": {
+                "value": {}
+              },
+              "hidden": false,
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_1.image_src"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_1"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_2",
+          "rows": [
+            {
+              "name": "title",
+              "value": "CALL",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_2.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Be ‘parenting buddies’ to call when you are upset or don’t know what to do.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_2.text_1"
+            },
+            {
+              "name": "image_src",
+              "value": "plh_images/workshops/w_celebrate/read/slide_2.svg",
+              "_translations": {
+                "value": {}
+              },
+              "hidden": false,
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_2.image_src"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_2"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_3",
+          "rows": [
+            {
+              "name": "title",
+              "value": "TEXT",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_3.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Text each other every week to share what you’ve done well.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_3.text_1"
+            },
+            {
+              "name": "image_src",
+              "value": "plh_images/workshops/w_celebrate/read/slide_3.svg",
+              "_translations": {
+                "value": {}
+              },
+              "hidden": false,
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_3.image_src"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_3"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_4",
+          "hidden": false,
+          "rows": [
+            {
+              "name": "title",
+              "value": "SHARE",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_4.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Share @global.parent_app and help other families start their journey.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_4.text_1",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Share @global.parent_app and help other families start their journey.",
+                    "matchedExpression": "@global.parent_app",
+                    "type": "global",
+                    "fieldName": "parent_app"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.parent_app": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "image_src",
+              "value": "plh_images/workshops/w_celebrate/read/slide_4.svg",
+              "_translations": {
+                "value": {}
+              },
+              "hidden": false,
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_4.image_src"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_4"
+        }
+      ],
+      "_nested_name": "essential_tools"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"
+}

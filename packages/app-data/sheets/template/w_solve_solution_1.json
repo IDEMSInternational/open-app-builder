@@ -1,0 +1,122 @@
+{
+  "flow_type": "template",
+  "module": "solve",
+  "flow_name": "w_solve_solution_1",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "box_image",
+      "value": "box_image",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "image_src",
+          "value": "plh_images/workshops/w_solve/read_3/slide_1.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "box_image.image_src"
+        },
+        {
+          "name": "title",
+          "value": "Ground @global.w_solve_teen_girl for a month",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "hidden": false,
+          "type": "set_variable",
+          "_nested_name": "box_image.title",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "Ground @global.w_solve_teen_girl for a month",
+                "matchedExpression": "@global.w_solve_teen_girl",
+                "type": "global",
+                "fieldName": "w_solve_teen_girl"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.w_solve_teen_girl": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "text",
+          "value": "@global.w_solve_female_caregiver_1: “You can’t go out for the next month”",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "box_image.text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.w_solve_female_caregiver_1: “You can’t go out for the next month”",
+                "matchedExpression": "@global.w_solve_female_caregiver_1",
+                "type": "global",
+                "fieldName": "w_solve_female_caregiver_1"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.w_solve_female_caregiver_1": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "dashed_box",
+          "value": "That didn’t work... Let's try something else.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "hidden": false,
+          "parameter_list": {
+            "icon_src": "plh_images/icons/cross_circle.svg",
+            "icon_position": "top-left"
+          },
+          "type": "set_variable",
+          "_nested_name": "box_image.dashed_box"
+        },
+        {
+          "type": "nested_properties",
+          "name": "nav_buttons",
+          "hidden": true,
+          "rows": [],
+          "_nested_name": "box_image.nav_buttons"
+        }
+      ],
+      "_nested_name": "box_image"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"
+}

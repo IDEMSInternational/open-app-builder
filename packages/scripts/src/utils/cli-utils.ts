@@ -7,15 +7,20 @@ import * as inquirer from "inquirer";
  * (what is displayed), and value (what is returned)
  * @param message main text that appears above options
  */
-export async function promptOptions(
-  choices: string[] | { name: string; value: string }[] = [],
+export async function promptOptions<T = any>(
+  choices: string[] | { name: string; value: any }[] = [],
   message = "Select an option"
 ) {
   const res = await inquirer.prompt([{ type: "list", name: "selected", message, choices }]);
-  return res.selected;
+  return res.selected as T;
 }
 export async function promptInput(message: string) {
   const name = "inputValue";
   const res = await inquirer.prompt([{ type: "input", message, name }]);
   return res[name];
+}
+export function pad(str: string | number, chars: number) {
+  str = `${str}`;
+  const padChars = Math.max(chars - str.length + 1, 0);
+  return str + new Array(padChars).join(" ");
 }

@@ -1,0 +1,109 @@
+{
+  "flow_type": "template",
+  "module": "consequence",
+  "flow_name": "w_consequence_talk_3",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "talk_together",
+      "value": "talk_together",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Let's talk about this story",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "talk_together.workshop_activity.intro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "name": "text",
+                  "value": "Why did using a consequence work well this time?",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "talk_together.workshop_activity.content_box.text"
+                },
+                {
+                  "name": "button_1",
+                  "value": "@global.ideas_short_button",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "pop_up",
+                      "args": [
+                        "w_consequence_talk_3_pop"
+                      ],
+                      "_raw": "click | pop_up:w_consequence_talk_3_pop",
+                      "_cleaned": "click | pop_up:w_consequence_talk_3_pop"
+                    }
+                  ],
+                  "hidden": false,
+                  "type": "set_variable",
+                  "_nested_name": "talk_together.workshop_activity.content_box.button_1",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@global.ideas_short_button",
+                        "matchedExpression": "@global.ideas_short_button",
+                        "type": "global",
+                        "fieldName": "ideas_short_button"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@global.ideas_short_button": [
+                      "value"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "talk_together.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "talk_together.workshop_activity"
+        }
+      ],
+      "_nested_name": "talk_together"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
+}

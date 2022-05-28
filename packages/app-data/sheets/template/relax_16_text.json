@@ -1,0 +1,47 @@
+{
+  "flow_type": "template",
+  "flow_name": "relax_16_text",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "relax_text",
+      "value": "relax_text",
+      "rows": [
+        {
+          "name": "activity_text",
+          "value": "Let’s practice a calming trick that we call ‘Pause Power’. \n\nPlant your feet on the ground and breathe in and out three times as slowly as you can. Imagine you are smelling a flower or blowing out a candle. \n\nTa Da! Pause Power!",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "relax_text.activity_text"
+        },
+        {
+          "name": "outro_text",
+          "value": "This is a great trick to use when you are feeling frustrated because it will help to calm you down.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "relax_text.outro_text"
+        }
+      ],
+      "_nested_name": "relax_text"
+    },
+    {
+      "value": "",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "name": "set_variable",
+      "_nested_name": "set_variable"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/databank_relax.xlsx"
+}

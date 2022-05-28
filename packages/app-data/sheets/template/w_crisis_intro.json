@@ -1,0 +1,86 @@
+{
+  "flow_type": "template",
+  "module": "crisis",
+  "flow_name": "w_crisis_intro",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "topic_intro",
+      "value": "topic_intro",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_crisis",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "topic_intro.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_crisis",
+                "matchedExpression": "@data.workshop.w_crisis",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_crisis": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "listen",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "workshop_activity",
+              "rows": [
+                {
+                  "name": "intro_text",
+                  "value": "All families experience crises. When we prepare together and know where to get help BEFORE something bad happens, we can overcome any crisis.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "topic_intro.listen.workshop_activity.intro_text"
+                }
+              ],
+              "_nested_name": "topic_intro.listen.workshop_activity"
+            }
+          ],
+          "_nested_name": "topic_intro.listen"
+        }
+      ],
+      "_nested_name": "topic_intro"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"
+}

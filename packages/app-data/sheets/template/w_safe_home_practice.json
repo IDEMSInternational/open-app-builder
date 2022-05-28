@@ -1,0 +1,218 @@
+{
+  "flow_type": "template",
+  "module": "safe",
+  "flow_name": "w_safe_home_practice",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "home_practice",
+      "value": "home_practice",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_safe",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_safe",
+                "matchedExpression": "@data.workshop.w_safe",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_safe": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "rows": [
+                    {
+                      "name": "text_1",
+                      "value": "Make two maps with your teen of safe and unsafe places:\n* Map of your community\n* Map of apps and websites your teen uses \n\nMake sure you're both happy with the safety plan.  \n\nWhat really matters is that you talk with your teen as you do this – often teens know much more than we do about where it is safe and unsafe!",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "condition": "@field.do_this_workshop_together",
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1",
+                      "_dynamicFields": {
+                        "condition": [
+                          {
+                            "fullExpression": "@field.do_this_workshop_together",
+                            "matchedExpression": "@field.do_this_workshop_together",
+                            "type": "field",
+                            "fieldName": "do_this_workshop_together"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@field.do_this_workshop_together": [
+                          "condition"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "text_1",
+                      "value": "If you have not done it together yet, make two maps with your teen of safe and unsafe places:\n* Map of your community\n* Map of apps and websites your teen uses \n\nMake sure you're both happy with the safety plan.  \n\nWhat really matters is that you talk with your teen as you do this – often teens know much more than we do about where it is safe and unsafe!",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "condition": "!@field.do_this_workshop_together",
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1",
+                      "_dynamicFields": {
+                        "condition": [
+                          {
+                            "fullExpression": "!@field.do_this_workshop_together",
+                            "matchedExpression": "!@field.do_this_workshop_together",
+                            "type": "field",
+                            "fieldName": "do_this_workshop_together"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "!@field.do_this_workshop_together": [
+                          "condition"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "button_1",
+                      "value": "Safety Plan Activity",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "action_list": [
+                        {
+                          "trigger": "click",
+                          "action_id": "go_to",
+                          "args": [
+                            "w_safe_learn_individual_temp"
+                          ],
+                          "_raw": "click | go_to:w_safe_learn_individual_temp",
+                          "_cleaned": "click | go_to:w_safe_learn_individual_temp"
+                        }
+                      ],
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_1"
+                    },
+                    {
+                      "name": "button_2",
+                      "value": "@data.parent_centre.essential_tools.title",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "action_list": [
+                        {
+                          "trigger": "click",
+                          "action_id": "go_to",
+                          "args": [
+                            "lib_act_w_safe"
+                          ],
+                          "_raw": "click | go_to:lib_act_w_safe",
+                          "_cleaned": "click | go_to:lib_act_w_safe"
+                        }
+                      ],
+                      "hidden": false,
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_2",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.parent_centre.essential_tools.title",
+                            "matchedExpression": "@data.parent_centre.essential_tools.title",
+                            "type": "data",
+                            "fieldName": "parent_centre"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.parent_centre.essential_tools.title": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "habit_text",
+                      "value": "@data.habit.safe.mark_text",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.habit_text",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.habit.safe.mark_text",
+                            "matchedExpression": "@data.habit.safe.mark_text",
+                            "type": "data",
+                            "fieldName": "habit"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.habit.safe.mark_text": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "home_practice.workshop_activity.content_box.box_1"
+                }
+              ],
+              "_nested_name": "home_practice.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "home_practice.workshop_activity"
+        }
+      ],
+      "_nested_name": "home_practice"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"
+}

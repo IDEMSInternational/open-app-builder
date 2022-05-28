@@ -1,0 +1,176 @@
+{
+  "flow_type": "template",
+  "flow_name": "essential_tools",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "name": "top_text",
+      "hidden": true,
+      "_nested_name": "top_text"
+    },
+    {
+      "type": "template",
+      "name": "tool_1",
+      "value": "essential_tool",
+      "rows": [
+        {
+          "name": "tool_style",
+          "value": "tool_1",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "tool_1.tool_style"
+        }
+      ],
+      "_nested_name": "tool_1"
+    },
+    {
+      "type": "template",
+      "name": "tool_2",
+      "value": "essential_tool",
+      "rows": [
+        {
+          "name": "tool_style",
+          "value": "tool_2",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "tool_2.tool_style"
+        }
+      ],
+      "_nested_name": "tool_2"
+    },
+    {
+      "type": "template",
+      "name": "tool_3",
+      "value": "essential_tool",
+      "rows": [
+        {
+          "name": "tool_style",
+          "value": "tool_3",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "tool_3.tool_style"
+        }
+      ],
+      "_nested_name": "tool_3"
+    },
+    {
+      "type": "template",
+      "name": "tool_4",
+      "value": "essential_tool",
+      "hidden": true,
+      "rows": [
+        {
+          "name": "tool_style",
+          "value": "tool_4",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "tool_4.tool_style"
+        }
+      ],
+      "_nested_name": "tool_4"
+    },
+    {
+      "type": "template",
+      "name": "tool_5",
+      "value": "essential_tool",
+      "hidden": true,
+      "rows": [
+        {
+          "name": "tool_style",
+          "value": "tool_5",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "tool_5.tool_style"
+        }
+      ],
+      "_nested_name": "tool_5"
+    },
+    {
+      "type": "text",
+      "name": "bottom_text",
+      "hidden": true,
+      "_nested_name": "bottom_text"
+    },
+    {
+      "type": "button",
+      "name": "button_1",
+      "hidden": true,
+      "_nested_name": "button_1"
+    },
+    {
+      "type": "button",
+      "name": "button_2",
+      "hidden": true,
+      "_nested_name": "button_2"
+    },
+    {
+      "name": "tip_icon",
+      "value": "plh_images/icons/house_circle.svg",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "tip_icon"
+    },
+    {
+      "type": "dashed_box",
+      "name": "tip_text",
+      "value": "You can always find these tools in the @global.parent_centre",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "icon_src": "@local.tip_icon",
+        "icon_position": "top-left"
+      },
+      "_nested_name": "tip_text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "You can always find these tools in the @global.parent_centre",
+            "matchedExpression": "@global.parent_centre",
+            "type": "global",
+            "fieldName": "parent_centre"
+          }
+        ],
+        "parameter_list": {
+          "icon_src": [
+            {
+              "fullExpression": "@local.tip_icon",
+              "matchedExpression": "@local.tip_icon",
+              "type": "local",
+              "fieldName": "tip_icon"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@global.parent_centre": [
+          "value"
+        ],
+        "@local.tip_icon": [
+          "parameter_list.icon_src"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_essential_tools.xlsx"
+}

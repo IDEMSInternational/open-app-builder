@@ -1,0 +1,48 @@
+{
+  "flow_type": "template",
+  "module": "praise",
+  "flow_name": "relax_3_text",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "relax_text",
+      "value": "relax_text",
+      "rows": [
+        {
+          "name": "activity_text",
+          "value": "Close your eyes and think about the day. \n\nName 1 thing that you are grateful for. \nName 1 thing that you did well. \nName 1 thing that you love.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "relax_text.activity_text"
+        },
+        {
+          "name": "outro_text",
+          "value": "Well done, you are a hero!",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "relax_text.outro_text"
+        }
+      ],
+      "_nested_name": "relax_text"
+    },
+    {
+      "value": "",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "name": "set_variable",
+      "_nested_name": "set_variable"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/databank_relax.xlsx"
+}

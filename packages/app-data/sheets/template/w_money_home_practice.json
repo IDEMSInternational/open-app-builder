@@ -1,0 +1,237 @@
+{
+  "flow_type": "template",
+  "module": "money",
+  "flow_name": "w_money_home_practice",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "home_practice",
+      "value": "home_practice",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_money",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_money",
+                "matchedExpression": "@data.workshop.w_money",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_money": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "rows": [
+                    {
+                      "name": "text_1",
+                      "value": "Make a budget again - this time WITH your teen and family! \n\nThis is an important and fun thing to do with your family - it takes about 30 minutes.\n\nMaking a budget together helps teens understand that we all need to make hard decisions sometimes - but that it helps us have enough money at the end of the month and realise our goals!\n\nBudgets have helped  millions of families.",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "condition": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"alone\" || !@fields.w_money_path )",
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1",
+                      "_dynamicFields": {
+                        "condition": [
+                          {
+                            "fullExpression": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"alone\" || !@fields.w_money_path )",
+                            "matchedExpression": "!@fields.do_this_workshop_together",
+                            "type": "fields",
+                            "fieldName": "do_this_workshop_together"
+                          },
+                          {
+                            "fullExpression": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"alone\" || !@fields.w_money_path )",
+                            "matchedExpression": "@fields.w_money_path",
+                            "type": "fields",
+                            "fieldName": "w_money_path"
+                          },
+                          {
+                            "fullExpression": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"alone\" || !@fields.w_money_path )",
+                            "matchedExpression": "!@fields.w_money_path",
+                            "type": "fields",
+                            "fieldName": "w_money_path"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "!@fields.do_this_workshop_together": [
+                          "condition"
+                        ],
+                        "@fields.w_money_path": [
+                          "condition"
+                        ],
+                        "!@fields.w_money_path": [
+                          "condition"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "text_1",
+                      "value": "Make a budget with your teen and family. \n\nThis is an important and fun thing to do with your family - it takes about 30 minutes.\n\nMaking a budget together helps teens understand that we all need to make hard decisions sometimes - but that it helps us have enough money at the end of the month and realise our goals!\n\nBudgets have helped  millions of families.",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "condition": "@fields.do_this_workshop_together",
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1",
+                      "_dynamicFields": {
+                        "condition": [
+                          {
+                            "fullExpression": "@fields.do_this_workshop_together",
+                            "matchedExpression": "@fields.do_this_workshop_together",
+                            "type": "fields",
+                            "fieldName": "do_this_workshop_together"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@fields.do_this_workshop_together": [
+                          "condition"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "text_1",
+                      "value": "Review your budget with your teen and family. This will remind everyone that we all need to make hard decisions sometimes - but that it helps us have enough money at the end of the month and realise our goals!\n\nBudgets have helped millions of families.",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "condition": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"family\" )",
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1",
+                      "_dynamicFields": {
+                        "condition": [
+                          {
+                            "fullExpression": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"family\" )",
+                            "matchedExpression": "!@fields.do_this_workshop_together",
+                            "type": "fields",
+                            "fieldName": "do_this_workshop_together"
+                          },
+                          {
+                            "fullExpression": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"family\" )",
+                            "matchedExpression": "@fields.w_money_path",
+                            "type": "fields",
+                            "fieldName": "w_money_path"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "!@fields.do_this_workshop_together": [
+                          "condition"
+                        ],
+                        "@fields.w_money_path": [
+                          "condition"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "button_1",
+                      "value": "Steps to make a budget",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "action_list": [
+                        {
+                          "trigger": "click",
+                          "action_id": "go_to",
+                          "args": [
+                            "lib_act_w_money"
+                          ],
+                          "_raw": "click | go_to:lib_act_w_money",
+                          "_cleaned": "click | go_to:lib_act_w_money"
+                        }
+                      ],
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_1"
+                    },
+                    {
+                      "name": "habit_text",
+                      "value": "@data.habit.money.mark_text",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "hidden": false,
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.habit_text",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.habit.money.mark_text",
+                            "matchedExpression": "@data.habit.money.mark_text",
+                            "type": "data",
+                            "fieldName": "habit"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.habit.money.mark_text": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "home_practice.workshop_activity.content_box.box_1"
+                }
+              ],
+              "_nested_name": "home_practice.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "home_practice.workshop_activity"
+        }
+      ],
+      "_nested_name": "home_practice"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
+}

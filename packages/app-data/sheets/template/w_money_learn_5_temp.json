@@ -1,0 +1,239 @@
+{
+  "flow_type": "template",
+  "module": "money",
+  "flow_name": "w_money_learn_5_temp",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "learn_group_family",
+      "value": "learn_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_title",
+              "value": "Step 4: PLAN",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn_group_family.workshop_activity.intro_title"
+            },
+            {
+              "name": "intro_text",
+              "value": "Plan how you can save money, so you can deal with emergencies and realise your family goals!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn_group_family.workshop_activity.intro_text"
+            },
+            {
+              "name": "include_outro",
+              "value": true,
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "learn_group_family.workshop_activity.include_outro"
+            },
+            {
+              "name": "outro_habit_data",
+              "value": "@data.habit.money",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "learn_group_family.workshop_activity.outro_habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.money",
+                    "matchedExpression": "@data.habit.money",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.money": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "activity_banner",
+              "hidden": true,
+              "type": "set_variable",
+              "_nested_name": "learn_group_family.workshop_activity.activity_banner"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_image",
+              "rows": [
+                {
+                  "name": "image_src",
+                  "value": "plh_images/workshops/w_money/learn/slide_4.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn_group_family.workshop_activity.content_box.image_src"
+                },
+                {
+                  "name": "text",
+                  "value": "If you can save even a tiny amount for the future or emergency - it can make a big difference over time. \n* Add a circle called “emergencies”.\n* Add a circle called “family goals”.\n* Now try to move your money around so you can save a bit every month for each of these.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn_group_family.workshop_activity.content_box.text"
+                }
+              ],
+              "_nested_name": "learn_group_family.workshop_activity.content_box"
+            },
+            {
+              "name": "outro_text",
+              "value": "CONGRATULATIONS!!! You’ve made your family budget – and using it will make a huge difference for you. I think every person in your group deserves a praise, don’t you?",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "condition": "@fields.do_this_workshop_together",
+              "type": "set_variable",
+              "_nested_name": "learn_group_family.workshop_activity.outro_text",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "@fields.do_this_workshop_together",
+                    "matchedExpression": "@fields.do_this_workshop_together",
+                    "type": "fields",
+                    "fieldName": "do_this_workshop_together"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@fields.do_this_workshop_together": [
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "outro_text",
+              "value": "CONGRATULATIONS!!! You’ve made your family budget – and using it will make a huge difference for you. I think every person in your family deserves a praise, don’t you?",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "condition": "!@fields.do_this_workshop_together || @fields.w_money_path==\"family\"",
+              "type": "set_variable",
+              "_nested_name": "learn_group_family.workshop_activity.outro_text",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "!@fields.do_this_workshop_together || @fields.w_money_path==\"family\"",
+                    "matchedExpression": "!@fields.do_this_workshop_together",
+                    "type": "fields",
+                    "fieldName": "do_this_workshop_together"
+                  },
+                  {
+                    "fullExpression": "!@fields.do_this_workshop_together || @fields.w_money_path==\"family\"",
+                    "matchedExpression": "@fields.w_money_path",
+                    "type": "fields",
+                    "fieldName": "w_money_path"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "!@fields.do_this_workshop_together": [
+                  "condition"
+                ],
+                "@fields.w_money_path": [
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "outro_text",
+              "value": "CONGRATULATIONS!!! You’ve made your budget – remember to do this exercise again with your other family members - if you agree on a plan together it will make a huge difference!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "condition": "!@fields.do_this_workshop_together || (@fields.w_money_path==\"alone\" || !@fields.w_money_path)",
+              "type": "set_variable",
+              "_nested_name": "learn_group_family.workshop_activity.outro_text",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "!@fields.do_this_workshop_together || (@fields.w_money_path==\"alone\" || !@fields.w_money_path)",
+                    "matchedExpression": "!@fields.do_this_workshop_together",
+                    "type": "fields",
+                    "fieldName": "do_this_workshop_together"
+                  },
+                  {
+                    "fullExpression": "!@fields.do_this_workshop_together || (@fields.w_money_path==\"alone\" || !@fields.w_money_path)",
+                    "matchedExpression": "@fields.w_money_path",
+                    "type": "fields",
+                    "fieldName": "w_money_path"
+                  },
+                  {
+                    "fullExpression": "!@fields.do_this_workshop_together || (@fields.w_money_path==\"alone\" || !@fields.w_money_path)",
+                    "matchedExpression": "!@fields.w_money_path",
+                    "type": "fields",
+                    "fieldName": "w_money_path"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "!@fields.do_this_workshop_together": [
+                  "condition"
+                ],
+                "@fields.w_money_path": [
+                  "condition"
+                ],
+                "!@fields.w_money_path": [
+                  "condition"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "learn_group_family.workshop_activity"
+        }
+      ],
+      "_nested_name": "learn_group_family"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
+}
