@@ -1,0 +1,221 @@
+{
+  "flow_type": "template",
+  "flow_name": "organisation_registration_za",
+  "status": "released",
+  "override_target": "organisation_registration",
+  "override_condition": "@fields._deployment_name == \"plh_za\"",
+  "rows": [
+    {
+      "name": "myself",
+      "value": "I found it myself",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "myself"
+    },
+    {
+      "name": "friend",
+      "value": "A friend or family",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "friend"
+    },
+    {
+      "name": "organisation_1",
+      "value": "Amathuba Collective",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "organisation_1"
+    },
+    {
+      "name": "organisation_2",
+      "value": "Dlalanathi",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "organisation_2"
+    },
+    {
+      "name": "organisation_3",
+      "value": "Hillcrest AIDS Centre Trust",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "organisation_3"
+    },
+    {
+      "name": "organisation_4",
+      "value": "HPCCC",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "organisation_4"
+    },
+    {
+      "name": "organisation_5",
+      "value": "Seven Passes Initiative",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "organisation_5"
+    },
+    {
+      "name": "organisation_6",
+      "value": "Zlto",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "organisation_6"
+    },
+    {
+      "type": "template",
+      "name": "organisation_registration",
+      "value": "organisation_registration",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        }
+      ],
+      "is_override_target": true,
+      "rows": [
+        {
+          "name": "answer_list",
+          "value": [
+            "name:myself | text:@local.myself",
+            "name:friend | text: @local.friend",
+            "name:organisation_1 | text: @local.organisation_1",
+            "name:organisation_2 | text: @local.organisation_2",
+            "name:organisation_3 | text: @local.organisation_3",
+            "name:organisation_4 | text: @local.organisation_4",
+            "name:organisation_5 | text: @local.organisation_5",
+            "name:organisation_6 | text: @local.organisation_6"
+          ],
+          "type": "set_variable",
+          "_nested_name": "organisation_registration.answer_list",
+          "_dynamicFields": {
+            "value": {
+              "0": [
+                {
+                  "fullExpression": "name:myself | text:@local.myself",
+                  "matchedExpression": "@local.myself",
+                  "type": "local",
+                  "fieldName": "myself"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "name:friend | text: @local.friend",
+                  "matchedExpression": "@local.friend",
+                  "type": "local",
+                  "fieldName": "friend"
+                }
+              ],
+              "2": [
+                {
+                  "fullExpression": "name:organisation_1 | text: @local.organisation_1",
+                  "matchedExpression": "@local.organisation_1",
+                  "type": "local",
+                  "fieldName": "organisation_1"
+                }
+              ],
+              "3": [
+                {
+                  "fullExpression": "name:organisation_2 | text: @local.organisation_2",
+                  "matchedExpression": "@local.organisation_2",
+                  "type": "local",
+                  "fieldName": "organisation_2"
+                }
+              ],
+              "4": [
+                {
+                  "fullExpression": "name:organisation_3 | text: @local.organisation_3",
+                  "matchedExpression": "@local.organisation_3",
+                  "type": "local",
+                  "fieldName": "organisation_3"
+                }
+              ],
+              "5": [
+                {
+                  "fullExpression": "name:organisation_4 | text: @local.organisation_4",
+                  "matchedExpression": "@local.organisation_4",
+                  "type": "local",
+                  "fieldName": "organisation_4"
+                }
+              ],
+              "6": [
+                {
+                  "fullExpression": "name:organisation_5 | text: @local.organisation_5",
+                  "matchedExpression": "@local.organisation_5",
+                  "type": "local",
+                  "fieldName": "organisation_5"
+                }
+              ],
+              "7": [
+                {
+                  "fullExpression": "name:organisation_6 | text: @local.organisation_6",
+                  "matchedExpression": "@local.organisation_6",
+                  "type": "local",
+                  "fieldName": "organisation_6"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.myself": [
+              "value.0"
+            ],
+            "@local.friend": [
+              "value.1"
+            ],
+            "@local.organisation_1": [
+              "value.2"
+            ],
+            "@local.organisation_2": [
+              "value.3"
+            ],
+            "@local.organisation_3": [
+              "value.4"
+            ],
+            "@local.organisation_4": [
+              "value.5"
+            ],
+            "@local.organisation_5": [
+              "value.6"
+            ],
+            "@local.organisation_6": [
+              "value.7"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "organisation_registration"
+    }
+  ],
+  "_xlsxPath": "za/core_templates/core_templates_settings_za.xlsx"
+}

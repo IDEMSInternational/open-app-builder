@@ -1,0 +1,583 @@
+{
+  "flow_type": "template",
+  "flow_name": "parent_centre_my_activities",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@global.my_activities",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "tiny"
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.my_activities",
+            "matchedExpression": "@global.my_activities",
+            "type": "global",
+            "fieldName": "my_activities"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.my_activities": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "none_added",
+      "hidden": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "text",
+          "value": "You have not added any activities to @global.my_activities yet. Why don't you choose some?",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "_nested_name": "none_added.text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "You have not added any activities to @global.my_activities yet. Why don't you choose some?",
+                "matchedExpression": "@global.my_activities",
+                "type": "global",
+                "fieldName": "my_activities"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.my_activities": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button",
+          "value": "@global.all_activities",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "parent_centre_activities"
+              ],
+              "_raw": "click | go_to:parent_centre_activities",
+              "_cleaned": "click | go_to:parent_centre_activities"
+            }
+          ],
+          "_nested_name": "none_added.button",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.all_activities",
+                "matchedExpression": "@global.all_activities",
+                "type": "global",
+                "fieldName": "all_activities"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.all_activities": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "none_added",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_reflect_positive_favourite",
+            "type": "fields",
+            "fieldName": "activity_reflect_positive_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_check_in_chat_favourite",
+            "type": "fields",
+            "fieldName": "activity_check_in_chat_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_dream_travel_favourite",
+            "type": "fields",
+            "fieldName": "activity_dream_travel_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_famous_party_favourite",
+            "type": "fields",
+            "fieldName": "activity_famous_party_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_two_truths_favourite",
+            "type": "fields",
+            "fieldName": "activity_two_truths_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_time_machine_favourite",
+            "type": "fields",
+            "fieldName": "activity_time_machine_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_superpowers_favourite",
+            "type": "fields",
+            "fieldName": "activity_superpowers_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_friendly_chat_favourite",
+            "type": "fields",
+            "fieldName": "activity_friendly_chat_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_interrupter_favourite",
+            "type": "fields",
+            "fieldName": "activity_interrupter_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_three_options_favourite",
+            "type": "fields",
+            "fieldName": "activity_three_options_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_yes_no_maybe_favourite",
+            "type": "fields",
+            "fieldName": "activity_yes_no_maybe_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_memory_game_favourite",
+            "type": "fields",
+            "fieldName": "activity_memory_game_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_invent_story_favourite",
+            "type": "fields",
+            "fieldName": "activity_invent_story_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_co_chef_favourite",
+            "type": "fields",
+            "fieldName": "activity_co_chef_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_dance_moves_favourite",
+            "type": "fields",
+            "fieldName": "activity_dance_moves_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_mirror_favourite",
+            "type": "fields",
+            "fieldName": "activity_mirror_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_whats_new_favourite",
+            "type": "fields",
+            "fieldName": "activity_whats_new_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_get_active_favourite",
+            "type": "fields",
+            "fieldName": "activity_get_active_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_name_that_tune_favourite",
+            "type": "fields",
+            "fieldName": "activity_name_that_tune_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_pass_the_snap_favourite",
+            "type": "fields",
+            "fieldName": "activity_pass_the_snap_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_family_workout_favourite",
+            "type": "fields",
+            "fieldName": "activity_family_workout_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_housework_favourite",
+            "type": "fields",
+            "fieldName": "activity_housework_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_doing_what_favourite",
+            "type": "fields",
+            "fieldName": "activity_doing_what_favourite"
+          },
+          {
+            "fullExpression": "@fields.activity_reflect_positive_favourite || @fields.activity_check_in_chat_favourite || @fields.activity_dream_travel_favourite || @fields.activity_famous_party_favourite || @fields.activity_two_truths_favourite || @fields.activity_time_machine_favourite || @fields.activity_superpowers_favourite || @fields.activity_friendly_chat_favourite || @fields.activity_interrupter_favourite || @fields.activity_three_options_favourite || @fields.activity_yes_no_maybe_favourite || @fields.activity_memory_game_favourite || @fields.activity_invent_story_favourite || @fields.activity_co_chef_favourite || @fields.activity_dance_moves_favourite || @fields.activity_mirror_favourite || @fields.activity_whats_new_favourite || @fields.activity_get_active_favourite || @fields.activity_name_that_tune_favourite || @fields.activity_pass_the_snap_favourite || @fields.activity_family_workout_favourite || @fields.activity_housework_favourite || @fields.activity_doing_what_favourite || @fields.activity_crazy_chicken_favourite",
+            "matchedExpression": "@fields.activity_crazy_chicken_favourite",
+            "type": "fields",
+            "fieldName": "activity_crazy_chicken_favourite"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.activity_reflect_positive_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_check_in_chat_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_dream_travel_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_famous_party_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_two_truths_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_time_machine_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_superpowers_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_friendly_chat_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_interrupter_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_three_options_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_yes_no_maybe_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_memory_game_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_invent_story_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_co_chef_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_dance_moves_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_mirror_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_whats_new_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_get_active_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_name_that_tune_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_pass_the_snap_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_family_workout_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_housework_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_doing_what_favourite": [
+          "hidden"
+        ],
+        "@fields.activity_crazy_chicken_favourite": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "name": "items",
+      "value": "@data.something_fun",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_@item.id",
+          "value": "@item.title",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@item.activity_template"
+              ],
+              "_raw": "click | go_to: @item.activity_template",
+              "_cleaned": "click | go_to: @item.activity_template"
+            }
+          ],
+          "hidden": "!@fields.@item.favourite_field",
+          "condition": "@item.type != \"do_together\"",
+          "_nested_name": "items.button_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@item.title",
+                "matchedExpression": "@item.title",
+                "type": "item",
+                "fieldName": "title"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@item.activity_template",
+                      "matchedExpression": "@item.activity_template",
+                      "type": "item",
+                      "fieldName": "activity_template"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @item.activity_template",
+                    "matchedExpression": "@item.activity_template",
+                    "type": "item",
+                    "fieldName": "activity_template"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @item.activity_template",
+                    "matchedExpression": "@item.activity_template",
+                    "type": "item",
+                    "fieldName": "activity_template"
+                  }
+                ]
+              }
+            },
+            "hidden": [
+              {
+                "fullExpression": "!@fields.@item.favourite_field",
+                "matchedExpression": "@item.favourite_field",
+                "type": "item",
+                "fieldName": "favourite_field"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@item.type != \"do_together\"",
+                "matchedExpression": "@item.type",
+                "type": "item",
+                "fieldName": "type"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "_nested_name"
+            ],
+            "@item.title": [
+              "value"
+            ],
+            "@item.activity_template": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@item.favourite_field": [
+              "hidden"
+            ],
+            "@item.type": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_@item.id",
+          "value": "@item.title",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@item.activity_template"
+              ],
+              "_raw": "click | go_to: @item.activity_template",
+              "_cleaned": "click | go_to: @item.activity_template"
+            }
+          ],
+          "hidden": "!@fields.@item.favourite_field",
+          "condition": "@item.type == \"do_together\"",
+          "parameter_list": {
+            "style": "navigation"
+          },
+          "_nested_name": "items.button_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@item.title",
+                "matchedExpression": "@item.title",
+                "type": "item",
+                "fieldName": "title"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@item.activity_template",
+                      "matchedExpression": "@item.activity_template",
+                      "type": "item",
+                      "fieldName": "activity_template"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @item.activity_template",
+                    "matchedExpression": "@item.activity_template",
+                    "type": "item",
+                    "fieldName": "activity_template"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @item.activity_template",
+                    "matchedExpression": "@item.activity_template",
+                    "type": "item",
+                    "fieldName": "activity_template"
+                  }
+                ]
+              }
+            },
+            "hidden": [
+              {
+                "fullExpression": "!@fields.@item.favourite_field",
+                "matchedExpression": "@item.favourite_field",
+                "type": "item",
+                "fieldName": "favourite_field"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@item.type == \"do_together\"",
+                "matchedExpression": "@item.type",
+                "type": "item",
+                "fieldName": "type"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "_nested_name"
+            ],
+            "@item.title": [
+              "value"
+            ],
+            "@item.activity_template": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@item.favourite_field": [
+              "hidden"
+            ],
+            "@item.type": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.something_fun",
+            "matchedExpression": "@data.something_fun",
+            "type": "data",
+            "fieldName": "something_fun"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.something_fun": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
+}

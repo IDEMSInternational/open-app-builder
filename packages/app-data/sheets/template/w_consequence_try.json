@@ -1,0 +1,79 @@
+{
+  "flow_type": "template",
+  "module": "consequence",
+  "flow_name": "w_consequence_try",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "try_together",
+      "value": "try_together",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "name": "text",
+                  "value": "What would be a calm consequence for your teenagers arguing with each other during dinner? \n\nRemember it needs to be: \nFAIR - IMMEDIATE - CONSISTENT",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "try_together.workshop_activity.content_box.text"
+                },
+                {
+                  "name": "button_1",
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "pop_up",
+                      "args": [
+                        "w_consequence_try_pop"
+                      ],
+                      "_raw": "click | pop_up:w_consequence_try_pop",
+                      "_cleaned": "click | pop_up:w_consequence_try_pop"
+                    }
+                  ],
+                  "hidden": false,
+                  "type": "set_variable",
+                  "_nested_name": "try_together.workshop_activity.content_box.button_1"
+                }
+              ],
+              "_nested_name": "try_together.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "try_together.workshop_activity"
+        }
+      ],
+      "_nested_name": "try_together"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
+}

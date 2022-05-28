@@ -1,0 +1,124 @@
+{
+  "flow_type": "template",
+  "module": "instruct",
+  "flow_name": "w_instruct_tools",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "essential_tools",
+      "value": "essential_tools",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "tool_1",
+          "rows": [
+            {
+              "name": "title",
+              "value": "GET REAL",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_1.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_1.text_1"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_1"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_2",
+          "rows": [
+            {
+              "name": "title",
+              "value": "GET POSITIVE",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_2.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Smile, look them in the eye, and use positive words. Praise them as soon as they start to do what you ask!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_2.text_1"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_2"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_3",
+          "rows": [
+            {
+              "name": "title",
+              "value": "GET  CLEAR",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_3.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Often we know what we want in our head, but we don’t say it clearly enough. Say exactly what you want your teen to do. Try ‘please come home by 7pm’ instead of ‘come home in time’.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_3.text_1"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_3"
+        }
+      ],
+      "_nested_name": "essential_tools"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
+}

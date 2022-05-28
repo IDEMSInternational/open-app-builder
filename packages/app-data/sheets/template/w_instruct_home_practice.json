@@ -1,0 +1,188 @@
+{
+  "flow_type": "template",
+  "module": "instruct",
+  "flow_name": "w_instruct_home_practice",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "home_practice",
+      "value": "home_practice",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_instruct",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_instruct",
+                "matchedExpression": "@data.workshop.w_instruct",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_instruct": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "rows": [
+                    {
+                      "name": "text_1",
+                      "value": "This week's home practice is to give your teen positive instructions.\n\nRemember – GET REAL, GET POSITIVE, GET CLEAR = GET EXACTLY WHAT YOU WANT (as much as is possible with a teenager!)",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1"
+                    },
+                    {
+                      "name": "button_1",
+                      "value": "@global.ideas_button",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "action_list": [
+                        {
+                          "trigger": "click",
+                          "action_id": "pop_up",
+                          "args": [
+                            "w_instruct_try_pop"
+                          ],
+                          "_raw": "click | pop_up:w_instruct_try_pop",
+                          "_cleaned": "click | pop_up:w_instruct_try_pop"
+                        }
+                      ],
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_1",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@global.ideas_button",
+                            "matchedExpression": "@global.ideas_button",
+                            "type": "global",
+                            "fieldName": "ideas_button"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@global.ideas_button": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "button_2",
+                      "value": "@data.parent_centre.essential_tools.title",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "action_list": [
+                        {
+                          "trigger": "click",
+                          "action_id": "go_to",
+                          "args": [
+                            "lib_act_w_instruct"
+                          ],
+                          "_raw": "click | go_to: lib_act_w_instruct",
+                          "_cleaned": "click | go_to: lib_act_w_instruct"
+                        }
+                      ],
+                      "hidden": false,
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_2",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.parent_centre.essential_tools.title",
+                            "matchedExpression": "@data.parent_centre.essential_tools.title",
+                            "type": "data",
+                            "fieldName": "parent_centre"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.parent_centre.essential_tools.title": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "habit_text",
+                      "value": "@data.habit.instruct_positively.mark_text",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.habit_text",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.habit.instruct_positively.mark_text",
+                            "matchedExpression": "@data.habit.instruct_positively.mark_text",
+                            "type": "data",
+                            "fieldName": "habit"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.habit.instruct_positively.mark_text": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "home_practice.workshop_activity.content_box.box_1"
+                }
+              ],
+              "_nested_name": "home_practice.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "home_practice.workshop_activity"
+        }
+      ],
+      "_nested_name": "home_practice"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
+}

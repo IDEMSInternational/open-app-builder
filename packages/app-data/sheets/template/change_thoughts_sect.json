@@ -1,0 +1,228 @@
+{
+  "flow_type": "template",
+  "flow_name": "change_thoughts_sect",
+  "status": "released",
+  "rows": [
+    {
+      "name": "sad_face",
+      "value": "plh_images/stickers/faces/sad.svg",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "sad_face"
+    },
+    {
+      "name": "happy_face",
+      "value": "plh_images/stickers/faces/happy.svg",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "happy_face"
+    },
+    {
+      "name": "show_happy",
+      "value": false,
+      "type": "set_variable",
+      "_nested_name": "show_happy"
+    },
+    {
+      "name": "change_button_text",
+      "value": "Change",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "change_button_text"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_sad",
+      "parameter_list": {
+        "icon_src": "@local.sad_face",
+        "icon_position": "top-left",
+        "style": "dashed_box"
+      },
+      "condition": "!@local.show_happy",
+      "rows": [
+        {
+          "type": "text",
+          "name": "thought_neg",
+          "parameter_list": {
+            "icon_src": "@local.sad_face",
+            "icon_position": "top-left"
+          },
+          "_nested_name": "dg_sad.thought_neg",
+          "_dynamicFields": {
+            "parameter_list": {
+              "icon_src": [
+                {
+                  "fullExpression": "@local.sad_face",
+                  "matchedExpression": "@local.sad_face",
+                  "type": "local",
+                  "fieldName": "sad_face"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.sad_face": [
+              "parameter_list.icon_src"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "change_button",
+          "value": "@local.change_button_text",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_local",
+              "args": [
+                "show_happy",
+                true
+              ],
+              "_raw": "click | set_local: show_happy: true",
+              "_cleaned": "click | set_local: show_happy: true"
+            }
+          ],
+          "_nested_name": "dg_sad.change_button",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.change_button_text",
+                "matchedExpression": "@local.change_button_text",
+                "type": "local",
+                "fieldName": "change_button_text"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.change_button_text": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "dg_sad",
+      "_dynamicFields": {
+        "parameter_list": {
+          "icon_src": [
+            {
+              "fullExpression": "@local.sad_face",
+              "matchedExpression": "@local.sad_face",
+              "type": "local",
+              "fieldName": "sad_face"
+            }
+          ]
+        },
+        "condition": [
+          {
+            "fullExpression": "!@local.show_happy",
+            "matchedExpression": "!@local.show_happy",
+            "type": "local",
+            "fieldName": "show_happy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.sad_face": [
+          "parameter_list.icon_src"
+        ],
+        "!@local.show_happy": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "dg_happy",
+      "parameter_list": {
+        "icon_src": "@local.happy_face",
+        "icon_position": "top-left",
+        "style": "dashed_box"
+      },
+      "condition": "@local.show_happy",
+      "rows": [
+        {
+          "type": "text",
+          "name": "thought_pos",
+          "_nested_name": "dg_happy.thought_pos"
+        },
+        {
+          "type": "button",
+          "name": "change_button",
+          "value": "@local.change_button_text",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_local",
+              "args": [
+                "show_happy",
+                false
+              ],
+              "_raw": "click | set_local: show_happy: false",
+              "_cleaned": "click | set_local: show_happy: false"
+            }
+          ],
+          "_nested_name": "dg_happy.change_button",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.change_button_text",
+                "matchedExpression": "@local.change_button_text",
+                "type": "local",
+                "fieldName": "change_button_text"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.change_button_text": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "dg_happy",
+      "_dynamicFields": {
+        "parameter_list": {
+          "icon_src": [
+            {
+              "fullExpression": "@local.happy_face",
+              "matchedExpression": "@local.happy_face",
+              "type": "local",
+              "fieldName": "happy_face"
+            }
+          ]
+        },
+        "condition": [
+          {
+            "fullExpression": "@local.show_happy",
+            "matchedExpression": "@local.show_happy",
+            "type": "local",
+            "fieldName": "show_happy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.happy_face": [
+          "parameter_list.icon_src"
+        ],
+        "@local.show_happy": [
+          "condition"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/covid/covid_reflect.xlsx"
+}

@@ -1,0 +1,1938 @@
+{
+  "flow_type": "template",
+  "flow_name": "home_practice_challenges",
+  "status": "released",
+  "rows": [
+    {
+      "name": "number_of_challenges",
+      "value": 5,
+      "type": "set_variable",
+      "_nested_name": "number_of_challenges"
+    },
+    {
+      "name": "workshop_data",
+      "type": "set_variable",
+      "_nested_name": "workshop_data"
+    },
+    {
+      "name": "workshop",
+      "value": "@local.workshop_data.id",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "workshop",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop_data.id",
+            "matchedExpression": "@local.workshop_data.id",
+            "type": "local",
+            "fieldName": "workshop_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_data.id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "hp_review_mood",
+      "value": "_hp_review_mood",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "hp_review_mood"
+    },
+    {
+      "name": "hp_challenge",
+      "value": "_hp_challenge",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "hp_challenge"
+    },
+    {
+      "name": "tracker",
+      "value": "_tracker",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "tracker"
+    },
+    {
+      "name": "final",
+      "value": "_final",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "final"
+    },
+    {
+      "name": "workshop_hp_review_mood",
+      "value": "@local.workshop@local.hp_review_mood@local.final",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "workshop_hp_review_mood",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop@local.hp_review_mood@local.final",
+            "matchedExpression": "@local.workshop",
+            "type": "local",
+            "fieldName": "workshop"
+          },
+          {
+            "fullExpression": "@local.workshop@local.hp_review_mood@local.final",
+            "matchedExpression": "@local.hp_review_mood",
+            "type": "local",
+            "fieldName": "hp_review_mood"
+          },
+          {
+            "fullExpression": "@local.workshop@local.hp_review_mood@local.final",
+            "matchedExpression": "@local.final",
+            "type": "local",
+            "fieldName": "final"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop": [
+          "value"
+        ],
+        "@local.hp_review_mood": [
+          "value"
+        ],
+        "@local.final": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "hp_description_third_plural",
+      "value": "talk to their teens about how they feel",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "hp_description_third_plural"
+    },
+    {
+      "name": "hp_description_second_singular",
+      "value": "talk to your teen about how you feel",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "hp_description_second_singular"
+    },
+    {
+      "name": "top_text",
+      "value": "Top @local.number_of_challenges challenges other parents experience:",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "top_text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Top @local.number_of_challenges challenges other parents experience:",
+            "matchedExpression": "@local.number_of_challenges",
+            "type": "local",
+            "fieldName": "number_of_challenges"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.number_of_challenges": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "question_text_happy",
+      "value": "Did you experience any challenges when trying to @local.hp_description_second_singular?",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "condition": "!(@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\")",
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "question_text_happy",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Did you experience any challenges when trying to @local.hp_description_second_singular?",
+            "matchedExpression": "@local.hp_description_second_singular",
+            "type": "local",
+            "fieldName": "hp_description_second_singular"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!(@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\")",
+            "matchedExpression": "@local.workshop_hp_review_mood",
+            "type": "local",
+            "fieldName": "workshop_hp_review_mood"
+          },
+          {
+            "fullExpression": "!(@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\")",
+            "matchedExpression": "@local.workshop_hp_review_mood",
+            "type": "local",
+            "fieldName": "workshop_hp_review_mood"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.hp_description_second_singular": [
+          "value"
+        ],
+        "@local.workshop_hp_review_mood": [
+          "condition",
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "question_text_ok_sad",
+      "value": "What was difficult for you when trying to @local.hp_description_second_singular?",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "condition": "@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\"",
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "question_text_ok_sad",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "What was difficult for you when trying to @local.hp_description_second_singular?",
+            "matchedExpression": "@local.hp_description_second_singular",
+            "type": "local",
+            "fieldName": "hp_description_second_singular"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\"",
+            "matchedExpression": "@local.workshop_hp_review_mood",
+            "type": "local",
+            "fieldName": "workshop_hp_review_mood"
+          },
+          {
+            "fullExpression": "@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\"",
+            "matchedExpression": "@local.workshop_hp_review_mood",
+            "type": "local",
+            "fieldName": "workshop_hp_review_mood"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.hp_description_second_singular": [
+          "value"
+        ],
+        "@local.workshop_hp_review_mood": [
+          "condition",
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "text_challenge_1",
+      "value": "text_challenge_1",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "text_challenge_1"
+    },
+    {
+      "name": "text_challenge_2",
+      "value": "text_challenge_2",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "text_challenge_2"
+    },
+    {
+      "name": "text_challenge_3",
+      "value": "text_challenge_3",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "text_challenge_3"
+    },
+    {
+      "name": "text_challenge_4",
+      "value": "text_challenge_4",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "text_challenge_4"
+    },
+    {
+      "name": "text_challenge_5",
+      "value": "text_challenge_5",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "text_challenge_5"
+    },
+    {
+      "name": "text_challenge_6",
+      "value": "text_challenge_6",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "text_challenge_6"
+    },
+    {
+      "name": "text_other_challenge",
+      "value": "@global.challenge_not_here",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "text_other_challenge",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.challenge_not_here",
+            "matchedExpression": "@global.challenge_not_here",
+            "type": "global",
+            "fieldName": "challenge_not_here"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.challenge_not_here": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "answer_list",
+      "value": [
+        "name:challenge_1 | text:@local.text_challenge_1",
+        "name:challenge_2 | text:@local.text_challenge_2",
+        "name:challenge_3 | text:@local.text_challenge_3",
+        "name:other_challenge | text: @local.text_other_challenge"
+      ],
+      "condition": "@local.number_of_challenges == 3",
+      "type": "set_variable",
+      "_nested_name": "answer_list",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "name:challenge_1 | text:@local.text_challenge_1",
+              "matchedExpression": "@local.text_challenge_1",
+              "type": "local",
+              "fieldName": "text_challenge_1"
+            }
+          ],
+          "1": [
+            {
+              "fullExpression": "name:challenge_2 | text:@local.text_challenge_2",
+              "matchedExpression": "@local.text_challenge_2",
+              "type": "local",
+              "fieldName": "text_challenge_2"
+            }
+          ],
+          "2": [
+            {
+              "fullExpression": "name:challenge_3 | text:@local.text_challenge_3",
+              "matchedExpression": "@local.text_challenge_3",
+              "type": "local",
+              "fieldName": "text_challenge_3"
+            }
+          ],
+          "3": [
+            {
+              "fullExpression": "name:other_challenge | text: @local.text_other_challenge",
+              "matchedExpression": "@local.text_other_challenge",
+              "type": "local",
+              "fieldName": "text_other_challenge"
+            }
+          ]
+        },
+        "condition": [
+          {
+            "fullExpression": "@local.number_of_challenges == 3",
+            "matchedExpression": "@local.number_of_challenges",
+            "type": "local",
+            "fieldName": "number_of_challenges"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.text_challenge_1": [
+          "value.0"
+        ],
+        "@local.text_challenge_2": [
+          "value.1"
+        ],
+        "@local.text_challenge_3": [
+          "value.2"
+        ],
+        "@local.text_other_challenge": [
+          "value.3"
+        ],
+        "@local.number_of_challenges": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "answer_list",
+      "value": [
+        "name:challenge_1 | text:@local.text_challenge_1",
+        "name:challenge_2 | text:@local.text_challenge_2",
+        "name:challenge_3 | text:@local.text_challenge_3",
+        "name:challenge_4 | text:@local.text_challenge_4",
+        "name:other_challenge | text: @local.text_other_challenge"
+      ],
+      "condition": "@local.number_of_challenges == 4",
+      "type": "set_variable",
+      "_nested_name": "answer_list",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "name:challenge_1 | text:@local.text_challenge_1",
+              "matchedExpression": "@local.text_challenge_1",
+              "type": "local",
+              "fieldName": "text_challenge_1"
+            }
+          ],
+          "1": [
+            {
+              "fullExpression": "name:challenge_2 | text:@local.text_challenge_2",
+              "matchedExpression": "@local.text_challenge_2",
+              "type": "local",
+              "fieldName": "text_challenge_2"
+            }
+          ],
+          "2": [
+            {
+              "fullExpression": "name:challenge_3 | text:@local.text_challenge_3",
+              "matchedExpression": "@local.text_challenge_3",
+              "type": "local",
+              "fieldName": "text_challenge_3"
+            }
+          ],
+          "3": [
+            {
+              "fullExpression": "name:challenge_4 | text:@local.text_challenge_4",
+              "matchedExpression": "@local.text_challenge_4",
+              "type": "local",
+              "fieldName": "text_challenge_4"
+            }
+          ],
+          "4": [
+            {
+              "fullExpression": "name:other_challenge | text: @local.text_other_challenge",
+              "matchedExpression": "@local.text_other_challenge",
+              "type": "local",
+              "fieldName": "text_other_challenge"
+            }
+          ]
+        },
+        "condition": [
+          {
+            "fullExpression": "@local.number_of_challenges == 4",
+            "matchedExpression": "@local.number_of_challenges",
+            "type": "local",
+            "fieldName": "number_of_challenges"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.text_challenge_1": [
+          "value.0"
+        ],
+        "@local.text_challenge_2": [
+          "value.1"
+        ],
+        "@local.text_challenge_3": [
+          "value.2"
+        ],
+        "@local.text_challenge_4": [
+          "value.3"
+        ],
+        "@local.text_other_challenge": [
+          "value.4"
+        ],
+        "@local.number_of_challenges": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "answer_list",
+      "value": [
+        "name:challenge_1 | text:@local.text_challenge_1",
+        "name:challenge_2 | text:@local.text_challenge_2",
+        "name:challenge_3 | text:@local.text_challenge_3",
+        "name:challenge_4 | text:@local.text_challenge_4",
+        "name:challenge_5 | text:@local.text_challenge_5",
+        "name:other_challenge | text: @local.text_other_challenge"
+      ],
+      "condition": "@local.number_of_challenges == 5",
+      "type": "set_variable",
+      "_nested_name": "answer_list",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "name:challenge_1 | text:@local.text_challenge_1",
+              "matchedExpression": "@local.text_challenge_1",
+              "type": "local",
+              "fieldName": "text_challenge_1"
+            }
+          ],
+          "1": [
+            {
+              "fullExpression": "name:challenge_2 | text:@local.text_challenge_2",
+              "matchedExpression": "@local.text_challenge_2",
+              "type": "local",
+              "fieldName": "text_challenge_2"
+            }
+          ],
+          "2": [
+            {
+              "fullExpression": "name:challenge_3 | text:@local.text_challenge_3",
+              "matchedExpression": "@local.text_challenge_3",
+              "type": "local",
+              "fieldName": "text_challenge_3"
+            }
+          ],
+          "3": [
+            {
+              "fullExpression": "name:challenge_4 | text:@local.text_challenge_4",
+              "matchedExpression": "@local.text_challenge_4",
+              "type": "local",
+              "fieldName": "text_challenge_4"
+            }
+          ],
+          "4": [
+            {
+              "fullExpression": "name:challenge_5 | text:@local.text_challenge_5",
+              "matchedExpression": "@local.text_challenge_5",
+              "type": "local",
+              "fieldName": "text_challenge_5"
+            }
+          ],
+          "5": [
+            {
+              "fullExpression": "name:other_challenge | text: @local.text_other_challenge",
+              "matchedExpression": "@local.text_other_challenge",
+              "type": "local",
+              "fieldName": "text_other_challenge"
+            }
+          ]
+        },
+        "condition": [
+          {
+            "fullExpression": "@local.number_of_challenges == 5",
+            "matchedExpression": "@local.number_of_challenges",
+            "type": "local",
+            "fieldName": "number_of_challenges"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.text_challenge_1": [
+          "value.0"
+        ],
+        "@local.text_challenge_2": [
+          "value.1"
+        ],
+        "@local.text_challenge_3": [
+          "value.2"
+        ],
+        "@local.text_challenge_4": [
+          "value.3"
+        ],
+        "@local.text_challenge_5": [
+          "value.4"
+        ],
+        "@local.text_other_challenge": [
+          "value.5"
+        ],
+        "@local.number_of_challenges": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "answer_list",
+      "value": [
+        "name:challenge_1 | text:@local.text_challenge_1",
+        "name:challenge_2 | text:@local.text_challenge_2",
+        "name:challenge_3 | text:@local.text_challenge_3",
+        "name:challenge_4 | text:@local.text_challenge_4",
+        "name:challenge_5 | text:@local.text_challenge_5",
+        "name:challenge_6 | text:@local.text_challenge_6",
+        "name:other_challenge | text: @local.text_other_challenge"
+      ],
+      "condition": "@local.number_of_challenges == 6",
+      "type": "set_variable",
+      "_nested_name": "answer_list",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "name:challenge_1 | text:@local.text_challenge_1",
+              "matchedExpression": "@local.text_challenge_1",
+              "type": "local",
+              "fieldName": "text_challenge_1"
+            }
+          ],
+          "1": [
+            {
+              "fullExpression": "name:challenge_2 | text:@local.text_challenge_2",
+              "matchedExpression": "@local.text_challenge_2",
+              "type": "local",
+              "fieldName": "text_challenge_2"
+            }
+          ],
+          "2": [
+            {
+              "fullExpression": "name:challenge_3 | text:@local.text_challenge_3",
+              "matchedExpression": "@local.text_challenge_3",
+              "type": "local",
+              "fieldName": "text_challenge_3"
+            }
+          ],
+          "3": [
+            {
+              "fullExpression": "name:challenge_4 | text:@local.text_challenge_4",
+              "matchedExpression": "@local.text_challenge_4",
+              "type": "local",
+              "fieldName": "text_challenge_4"
+            }
+          ],
+          "4": [
+            {
+              "fullExpression": "name:challenge_5 | text:@local.text_challenge_5",
+              "matchedExpression": "@local.text_challenge_5",
+              "type": "local",
+              "fieldName": "text_challenge_5"
+            }
+          ],
+          "5": [
+            {
+              "fullExpression": "name:challenge_6 | text:@local.text_challenge_6",
+              "matchedExpression": "@local.text_challenge_6",
+              "type": "local",
+              "fieldName": "text_challenge_6"
+            }
+          ],
+          "6": [
+            {
+              "fullExpression": "name:other_challenge | text: @local.text_other_challenge",
+              "matchedExpression": "@local.text_other_challenge",
+              "type": "local",
+              "fieldName": "text_other_challenge"
+            }
+          ]
+        },
+        "condition": [
+          {
+            "fullExpression": "@local.number_of_challenges == 6",
+            "matchedExpression": "@local.number_of_challenges",
+            "type": "local",
+            "fieldName": "number_of_challenges"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.text_challenge_1": [
+          "value.0"
+        ],
+        "@local.text_challenge_2": [
+          "value.1"
+        ],
+        "@local.text_challenge_3": [
+          "value.2"
+        ],
+        "@local.text_challenge_4": [
+          "value.3"
+        ],
+        "@local.text_challenge_5": [
+          "value.4"
+        ],
+        "@local.text_challenge_6": [
+          "value.5"
+        ],
+        "@local.text_other_challenge": [
+          "value.6"
+        ],
+        "@local.number_of_challenges": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "answer_list",
+      "value": [
+        "name:challenge_1 | text:@local.text_challenge_1",
+        "name:challenge_2 | text:@local.text_challenge_2",
+        "name:challenge_3 | text:@local.text_challenge_3",
+        "name:challenge_4 | text:@local.text_challenge_4",
+        "name:challenge_5 | text:@local.text_challenge_5",
+        "name:challenge_6 | text:@local.text_challenge_6",
+        "name:challenge_7 | text:@local.text_challenge_7",
+        "name:other_challenge | text: @local.text_other_challenge"
+      ],
+      "condition": "@local.number_of_challenges == 7",
+      "type": "set_variable",
+      "_nested_name": "answer_list",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "name:challenge_1 | text:@local.text_challenge_1",
+              "matchedExpression": "@local.text_challenge_1",
+              "type": "local",
+              "fieldName": "text_challenge_1"
+            }
+          ],
+          "1": [
+            {
+              "fullExpression": "name:challenge_2 | text:@local.text_challenge_2",
+              "matchedExpression": "@local.text_challenge_2",
+              "type": "local",
+              "fieldName": "text_challenge_2"
+            }
+          ],
+          "2": [
+            {
+              "fullExpression": "name:challenge_3 | text:@local.text_challenge_3",
+              "matchedExpression": "@local.text_challenge_3",
+              "type": "local",
+              "fieldName": "text_challenge_3"
+            }
+          ],
+          "3": [
+            {
+              "fullExpression": "name:challenge_4 | text:@local.text_challenge_4",
+              "matchedExpression": "@local.text_challenge_4",
+              "type": "local",
+              "fieldName": "text_challenge_4"
+            }
+          ],
+          "4": [
+            {
+              "fullExpression": "name:challenge_5 | text:@local.text_challenge_5",
+              "matchedExpression": "@local.text_challenge_5",
+              "type": "local",
+              "fieldName": "text_challenge_5"
+            }
+          ],
+          "5": [
+            {
+              "fullExpression": "name:challenge_6 | text:@local.text_challenge_6",
+              "matchedExpression": "@local.text_challenge_6",
+              "type": "local",
+              "fieldName": "text_challenge_6"
+            }
+          ],
+          "6": [
+            {
+              "fullExpression": "name:challenge_7 | text:@local.text_challenge_7",
+              "matchedExpression": "@local.text_challenge_7",
+              "type": "local",
+              "fieldName": "text_challenge_7"
+            }
+          ],
+          "7": [
+            {
+              "fullExpression": "name:other_challenge | text: @local.text_other_challenge",
+              "matchedExpression": "@local.text_other_challenge",
+              "type": "local",
+              "fieldName": "text_other_challenge"
+            }
+          ]
+        },
+        "condition": [
+          {
+            "fullExpression": "@local.number_of_challenges == 7",
+            "matchedExpression": "@local.number_of_challenges",
+            "type": "local",
+            "fieldName": "number_of_challenges"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.text_challenge_1": [
+          "value.0"
+        ],
+        "@local.text_challenge_2": [
+          "value.1"
+        ],
+        "@local.text_challenge_3": [
+          "value.2"
+        ],
+        "@local.text_challenge_4": [
+          "value.3"
+        ],
+        "@local.text_challenge_5": [
+          "value.4"
+        ],
+        "@local.text_challenge_6": [
+          "value.5"
+        ],
+        "@local.text_challenge_7": [
+          "value.6"
+        ],
+        "@local.text_other_challenge": [
+          "value.7"
+        ],
+        "@local.number_of_challenges": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "combo_box_tracker",
+      "value": "@local.workshop@local.hp_challenge@local.tracker",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "combo_box_tracker",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop@local.hp_challenge@local.tracker",
+            "matchedExpression": "@local.workshop",
+            "type": "local",
+            "fieldName": "workshop"
+          },
+          {
+            "fullExpression": "@local.workshop@local.hp_challenge@local.tracker",
+            "matchedExpression": "@local.hp_challenge",
+            "type": "local",
+            "fieldName": "hp_challenge"
+          },
+          {
+            "fullExpression": "@local.workshop@local.hp_challenge@local.tracker",
+            "matchedExpression": "@local.tracker",
+            "type": "local",
+            "fieldName": "tracker"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop": [
+          "value"
+        ],
+        "@local.hp_challenge": [
+          "value"
+        ],
+        "@local.tracker": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "combo_box_final",
+      "value": "@local.workshop@local.hp_challenge@local.final",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "combo_box_final",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop@local.hp_challenge@local.final",
+            "matchedExpression": "@local.workshop",
+            "type": "local",
+            "fieldName": "workshop"
+          },
+          {
+            "fullExpression": "@local.workshop@local.hp_challenge@local.final",
+            "matchedExpression": "@local.hp_challenge",
+            "type": "local",
+            "fieldName": "hp_challenge"
+          },
+          {
+            "fullExpression": "@local.workshop@local.hp_challenge@local.final",
+            "matchedExpression": "@local.final",
+            "type": "local",
+            "fieldName": "final"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop": [
+          "value"
+        ],
+        "@local.hp_challenge": [
+          "value"
+        ],
+        "@local.final": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "combo_box",
+      "name": "combo_box",
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.combo_box_tracker",
+            "this.value"
+          ],
+          "_raw": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
+          "_cleaned": "changed | set_field: @local.combo_box_tracker: @local.combo_box"
+        }
+      ],
+      "parameter_list": {
+        "text": "@local.top_text",
+        "answer_list": "@local.answer_list",
+        "placeholder": "@global.tap_and_choose"
+      },
+      "_nested_name": "combo_box",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.combo_box_tracker",
+                  "matchedExpression": "@local.combo_box_tracker",
+                  "type": "local",
+                  "fieldName": "combo_box_tracker"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
+                "matchedExpression": "@local.combo_box_tracker",
+                "type": "local",
+                "fieldName": "combo_box_tracker"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
+                "matchedExpression": "@local.combo_box",
+                "type": "local",
+                "fieldName": "combo_box"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
+                "matchedExpression": "@local.combo_box_tracker",
+                "type": "local",
+                "fieldName": "combo_box_tracker"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
+                "matchedExpression": "@local.combo_box",
+                "type": "local",
+                "fieldName": "combo_box"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "text": [
+            {
+              "fullExpression": "@local.top_text",
+              "matchedExpression": "@local.top_text",
+              "type": "local",
+              "fieldName": "top_text"
+            }
+          ],
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ],
+          "placeholder": [
+            {
+              "fullExpression": "@global.tap_and_choose",
+              "matchedExpression": "@global.tap_and_choose",
+              "type": "global",
+              "fieldName": "tap_and_choose"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.combo_box_tracker": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.combo_box": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.top_text": [
+          "parameter_list.text"
+        ],
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ],
+        "@global.tap_and_choose": [
+          "parameter_list.placeholder"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "challenge_1",
+      "condition": "@local.combo_box==\"challenge_1\"",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "reply_challenge_1",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_1.reply_challenge_1"
+        },
+        {
+          "name": "reply_challenge_1_has_button",
+          "value": false,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "challenge_1.reply_challenge_1_has_button"
+        },
+        {
+          "name": "reply_challenge_1_has_2_buttons",
+          "value": false,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "challenge_1.reply_challenge_1_has_2_buttons"
+        },
+        {
+          "type": "button",
+          "name": "button_1_a",
+          "value": "button_1_a",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.reply_challenge_1_has_button || @local.reply_challenge_1_has_2_buttons",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_1.button_1_a",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.reply_challenge_1_has_button || @local.reply_challenge_1_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_1_has_button",
+                "type": "local",
+                "fieldName": "reply_challenge_1_has_button"
+              },
+              {
+                "fullExpression": "@local.reply_challenge_1_has_button || @local.reply_challenge_1_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_1_has_2_buttons",
+                "type": "local",
+                "fieldName": "reply_challenge_1_has_2_buttons"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.reply_challenge_1_has_button": [
+              "condition"
+            ],
+            "@local.reply_challenge_1_has_2_buttons": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_1_b",
+          "value": "button_1_b",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.reply_challenge_1_has_2_buttons",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_1.button_1_b",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.reply_challenge_1_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_1_has_2_buttons",
+                "type": "local",
+                "fieldName": "reply_challenge_1_has_2_buttons"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.reply_challenge_1_has_2_buttons": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "challenge_1",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.combo_box==\"challenge_1\"",
+            "matchedExpression": "@local.combo_box",
+            "type": "local",
+            "fieldName": "combo_box"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.combo_box": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "challenge_2",
+      "condition": "@local.combo_box==\"challenge_2\"",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "reply_challenge_2",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_2.reply_challenge_2"
+        },
+        {
+          "name": "reply_challenge_2_has_button",
+          "value": false,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "challenge_2.reply_challenge_2_has_button"
+        },
+        {
+          "name": "reply_challenge_2_has_2_buttons",
+          "value": false,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "challenge_2.reply_challenge_2_has_2_buttons"
+        },
+        {
+          "type": "button",
+          "name": "button_2_a",
+          "value": "button_2_a",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.reply_challenge_2_has_button || @local.reply_challenge_2_has_2_buttons",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_2.button_2_a",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.reply_challenge_2_has_button || @local.reply_challenge_2_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_2_has_button",
+                "type": "local",
+                "fieldName": "reply_challenge_2_has_button"
+              },
+              {
+                "fullExpression": "@local.reply_challenge_2_has_button || @local.reply_challenge_2_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_2_has_2_buttons",
+                "type": "local",
+                "fieldName": "reply_challenge_2_has_2_buttons"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.reply_challenge_2_has_button": [
+              "condition"
+            ],
+            "@local.reply_challenge_2_has_2_buttons": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_2_b",
+          "value": "button_2_b",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.reply_challenge_2_has_2_buttons",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_2.button_2_b",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.reply_challenge_2_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_2_has_2_buttons",
+                "type": "local",
+                "fieldName": "reply_challenge_2_has_2_buttons"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.reply_challenge_2_has_2_buttons": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "challenge_2",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.combo_box==\"challenge_2\"",
+            "matchedExpression": "@local.combo_box",
+            "type": "local",
+            "fieldName": "combo_box"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.combo_box": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "challenge_3",
+      "condition": "@local.combo_box==\"challenge_3\"",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "reply_challenge_3",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_3.reply_challenge_3"
+        },
+        {
+          "name": "reply_challenge_3_has_button",
+          "value": false,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "challenge_3.reply_challenge_3_has_button"
+        },
+        {
+          "name": "reply_challenge_3_has_2_buttons",
+          "value": false,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "challenge_3.reply_challenge_3_has_2_buttons"
+        },
+        {
+          "type": "button",
+          "name": "button_3_a",
+          "value": "button_3_a",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.reply_challenge_3_has_button || @local.reply_challenge_3_has_2_buttons",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_3.button_3_a",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.reply_challenge_3_has_button || @local.reply_challenge_3_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_3_has_button",
+                "type": "local",
+                "fieldName": "reply_challenge_3_has_button"
+              },
+              {
+                "fullExpression": "@local.reply_challenge_3_has_button || @local.reply_challenge_3_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_3_has_2_buttons",
+                "type": "local",
+                "fieldName": "reply_challenge_3_has_2_buttons"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.reply_challenge_3_has_button": [
+              "condition"
+            ],
+            "@local.reply_challenge_3_has_2_buttons": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_3_b",
+          "value": "button_3_b",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.reply_challenge_3_has_2_buttons",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_3.button_3_b",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.reply_challenge_3_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_3_has_2_buttons",
+                "type": "local",
+                "fieldName": "reply_challenge_3_has_2_buttons"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.reply_challenge_3_has_2_buttons": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "challenge_3",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.combo_box==\"challenge_3\"",
+            "matchedExpression": "@local.combo_box",
+            "type": "local",
+            "fieldName": "combo_box"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.combo_box": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "challenge_4",
+      "condition": "@local.combo_box==\"challenge_4\"",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "reply_challenge_4",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_4.reply_challenge_4"
+        },
+        {
+          "name": "reply_challenge_4_has_button",
+          "value": false,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "challenge_4.reply_challenge_4_has_button"
+        },
+        {
+          "name": "reply_challenge_4_has_2_buttons",
+          "value": false,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "challenge_4.reply_challenge_4_has_2_buttons"
+        },
+        {
+          "type": "button",
+          "name": "button_4_a",
+          "value": "button_4_a",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.reply_challenge_4_has_button || @local.reply_challenge_4_has_2_buttons",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_4.button_4_a",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.reply_challenge_4_has_button || @local.reply_challenge_4_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_4_has_button",
+                "type": "local",
+                "fieldName": "reply_challenge_4_has_button"
+              },
+              {
+                "fullExpression": "@local.reply_challenge_4_has_button || @local.reply_challenge_4_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_4_has_2_buttons",
+                "type": "local",
+                "fieldName": "reply_challenge_4_has_2_buttons"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.reply_challenge_4_has_button": [
+              "condition"
+            ],
+            "@local.reply_challenge_4_has_2_buttons": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_4_b",
+          "value": "button_4_b",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.reply_challenge_4_has_2_buttons",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_4.button_4_b",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.reply_challenge_4_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_4_has_2_buttons",
+                "type": "local",
+                "fieldName": "reply_challenge_4_has_2_buttons"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.reply_challenge_4_has_2_buttons": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "challenge_4",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.combo_box==\"challenge_4\"",
+            "matchedExpression": "@local.combo_box",
+            "type": "local",
+            "fieldName": "combo_box"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.combo_box": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "challenge_5",
+      "condition": "@local.combo_box==\"challenge_5\"",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "reply_challenge_5",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_5.reply_challenge_5"
+        },
+        {
+          "name": "reply_challenge_5_has_button",
+          "value": false,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "challenge_5.reply_challenge_5_has_button"
+        },
+        {
+          "name": "reply_challenge_5_has_2_buttons",
+          "value": false,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "challenge_5.reply_challenge_5_has_2_buttons"
+        },
+        {
+          "type": "button",
+          "name": "button_5_a",
+          "value": "button_5_a",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.reply_challenge_5_has_button || @local.reply_challenge_5_has_2_buttons",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_5.button_5_a",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.reply_challenge_5_has_button || @local.reply_challenge_5_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_5_has_button",
+                "type": "local",
+                "fieldName": "reply_challenge_5_has_button"
+              },
+              {
+                "fullExpression": "@local.reply_challenge_5_has_button || @local.reply_challenge_5_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_5_has_2_buttons",
+                "type": "local",
+                "fieldName": "reply_challenge_5_has_2_buttons"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.reply_challenge_5_has_button": [
+              "condition"
+            ],
+            "@local.reply_challenge_5_has_2_buttons": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_5_b",
+          "value": "button_5_b",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.reply_challenge_5_has_2_buttons",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_5.button_5_b",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.reply_challenge_5_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_5_has_2_buttons",
+                "type": "local",
+                "fieldName": "reply_challenge_5_has_2_buttons"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.reply_challenge_5_has_2_buttons": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "challenge_5",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.combo_box==\"challenge_5\"",
+            "matchedExpression": "@local.combo_box",
+            "type": "local",
+            "fieldName": "combo_box"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.combo_box": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "challenge_6",
+      "condition": "@local.combo_box==\"challenge_6\"",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "reply_challenge_6",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_6.reply_challenge_6"
+        },
+        {
+          "name": "reply_challenge_6_has_button",
+          "value": false,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "challenge_6.reply_challenge_6_has_button"
+        },
+        {
+          "name": "reply_challenge_6_has_2_buttons",
+          "value": false,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "challenge_6.reply_challenge_6_has_2_buttons"
+        },
+        {
+          "type": "button",
+          "name": "button_6_a",
+          "value": "button_6_a",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.reply_challenge_6_has_button || @local.reply_challenge_6_has_2_buttons",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_6.button_6_a",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.reply_challenge_6_has_button || @local.reply_challenge_6_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_6_has_button",
+                "type": "local",
+                "fieldName": "reply_challenge_6_has_button"
+              },
+              {
+                "fullExpression": "@local.reply_challenge_6_has_button || @local.reply_challenge_6_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_6_has_2_buttons",
+                "type": "local",
+                "fieldName": "reply_challenge_6_has_2_buttons"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.reply_challenge_6_has_button": [
+              "condition"
+            ],
+            "@local.reply_challenge_6_has_2_buttons": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_6_b",
+          "value": "button_6_b",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.reply_challenge_6_has_2_buttons",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_6.button_6_b",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.reply_challenge_6_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_6_has_2_buttons",
+                "type": "local",
+                "fieldName": "reply_challenge_6_has_2_buttons"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.reply_challenge_6_has_2_buttons": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "challenge_6",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.combo_box==\"challenge_6\"",
+            "matchedExpression": "@local.combo_box",
+            "type": "local",
+            "fieldName": "combo_box"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.combo_box": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "challenge_7",
+      "condition": "@local.combo_box==\"challenge_7\"",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "reply_challenge_7",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_7.reply_challenge_7"
+        },
+        {
+          "name": "reply_challenge_7_has_button",
+          "value": false,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "challenge_7.reply_challenge_7_has_button"
+        },
+        {
+          "name": "reply_challenge_7_has_2_buttons",
+          "value": false,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "challenge_7.reply_challenge_7_has_2_buttons"
+        },
+        {
+          "type": "button",
+          "name": "button_7_a",
+          "value": "button_7_a",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.reply_challenge_7_has_button || @local.reply_challenge_7_has_2_buttons",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_7.button_7_a",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.reply_challenge_7_has_button || @local.reply_challenge_7_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_7_has_button",
+                "type": "local",
+                "fieldName": "reply_challenge_7_has_button"
+              },
+              {
+                "fullExpression": "@local.reply_challenge_7_has_button || @local.reply_challenge_7_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_7_has_2_buttons",
+                "type": "local",
+                "fieldName": "reply_challenge_7_has_2_buttons"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.reply_challenge_7_has_button": [
+              "condition"
+            ],
+            "@local.reply_challenge_7_has_2_buttons": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_7_b",
+          "value": "button_7_b",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.reply_challenge_7_has_2_buttons",
+          "exclude_from_translation": true,
+          "_nested_name": "challenge_7.button_7_b",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.reply_challenge_7_has_2_buttons",
+                "matchedExpression": "@local.reply_challenge_7_has_2_buttons",
+                "type": "local",
+                "fieldName": "reply_challenge_7_has_2_buttons"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.reply_challenge_7_has_2_buttons": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "challenge_7",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.combo_box==\"challenge_7\"",
+            "matchedExpression": "@local.combo_box",
+            "type": "local",
+            "fieldName": "combo_box"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.combo_box": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "hp_review_other_challenge",
+      "value": "hp_review_other_challenge",
+      "condition": "@local.combo_box==\"other_challenge\"",
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@local.workshop_data",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "hp_review_other_challenge.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.workshop_data",
+                "matchedExpression": "@local.workshop_data",
+                "type": "local",
+                "fieldName": "workshop_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_data": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "hp_review_other_challenge",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.combo_box==\"other_challenge\"",
+            "matchedExpression": "@local.combo_box",
+            "type": "local",
+            "fieldName": "combo_box"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.combo_box": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "set_field",
+          "args": [
+            "@local.combo_box_final",
+            "@local.combo_box"
+          ],
+          "_raw": "completed | set_field:@local.combo_box_final: @local.combo_box",
+          "_cleaned": "completed | set_field:@local.combo_box_final: @local.combo_box"
+        }
+      ],
+      "rows": [],
+      "_nested_name": "nav_buttons",
+      "_dynamicFields": {
+        "action_list": {
+          "2": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.combo_box_final",
+                  "matchedExpression": "@local.combo_box_final",
+                  "type": "local",
+                  "fieldName": "combo_box_final"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@local.combo_box",
+                  "matchedExpression": "@local.combo_box",
+                  "type": "local",
+                  "fieldName": "combo_box"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "completed | set_field:@local.combo_box_final: @local.combo_box",
+                "matchedExpression": "@local.combo_box_final",
+                "type": "local",
+                "fieldName": "combo_box_final"
+              },
+              {
+                "fullExpression": "completed | set_field:@local.combo_box_final: @local.combo_box",
+                "matchedExpression": "@local.combo_box",
+                "type": "local",
+                "fieldName": "combo_box"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "completed | set_field:@local.combo_box_final: @local.combo_box",
+                "matchedExpression": "@local.combo_box_final",
+                "type": "local",
+                "fieldName": "combo_box_final"
+              },
+              {
+                "fullExpression": "completed | set_field:@local.combo_box_final: @local.combo_box",
+                "matchedExpression": "@local.combo_box",
+                "type": "local",
+                "fieldName": "combo_box"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.combo_box_final": [
+          "action_list.2.args.0",
+          "action_list.2._raw",
+          "action_list.2._cleaned"
+        ],
+        "@local.combo_box": [
+          "action_list.2.args.1",
+          "action_list.2._raw",
+          "action_list.2._cleaned"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/mode_templates/home_practice.xlsx"
+}

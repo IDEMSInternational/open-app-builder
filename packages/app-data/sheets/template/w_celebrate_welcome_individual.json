@@ -1,0 +1,123 @@
+{
+  "flow_type": "template",
+  "module": "celebrate",
+  "flow_name": "w_celebrate_welcome_individual",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "welcome_individual",
+      "value": "welcome_individual",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_celebrate",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "welcome_individual.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_celebrate",
+                "matchedExpression": "@data.workshop.w_celebrate",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_celebrate": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "activity_image",
+              "value": "plh_images/workshop_modes/guide_2/final/wave.svg",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "welcome_individual.workshop_activity.activity_image"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "name": "text",
+                  "hidden": true,
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.text"
+                },
+                {
+                  "name": "reply_happy",
+                  "value": "Fantastic! We are proud of you for all you have done over the past weeks.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_happy"
+                },
+                {
+                  "name": "reply_ok",
+                  "value": "We’re sorry it’s a difficult day. We are proud of you for all you have done over the past weeks.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_ok"
+                },
+                {
+                  "name": "reply_sad",
+                  "value": "We’re sorry it’s a difficult day. We are proud of you for all you have done over the past weeks.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_sad"
+                }
+              ],
+              "_nested_name": "welcome_individual.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "welcome_individual.workshop_activity"
+        }
+      ],
+      "_nested_name": "welcome_individual"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"
+}

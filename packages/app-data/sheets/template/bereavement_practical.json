@@ -1,0 +1,112 @@
+{
+  "flow_type": "template",
+  "flow_name": "bereavement_practical",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "banner",
+      "value": "banner",
+      "rows": [
+        {
+          "name": "banner_title",
+          "value": "@data.bereavement.practical.title",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "banner.banner_title",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.bereavement.practical.title",
+                "matchedExpression": "@data.bereavement.practical.title",
+                "type": "data",
+                "fieldName": "bereavement"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.bereavement.practical.title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "banner_image",
+          "value": "plh_images/parent_centre/bereavement/practical.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "banner.banner_image"
+        }
+      ],
+      "_nested_name": "banner"
+    },
+    {
+      "type": "template",
+      "name": "bereavement_section",
+      "value": "bereavement_section",
+      "rows": [
+        {
+          "name": "top_text",
+          "value": "Losing a loved one can feel very overwhelming. Here are a few practical tips that can be helpful to keep in mind.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "bereavement_section.top_text"
+        },
+        {
+          "name": "title_1",
+          "value": "Ask for help",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "bereavement_section.title_1"
+        },
+        {
+          "name": "title_2",
+          "value": "Say goodbye",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "bereavement_section.title_2"
+        },
+        {
+          "name": "text_1",
+          "value": "- Ask someone you trust for help - food or childcare can be useful. You may need documents for inheritance, for your children, or to access services.\n- Sometimes people try to take money or inheritance from a grieving person. Find out about your rights.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "bereavement_section.text_1"
+        },
+        {
+          "name": "text_2",
+          "value": "- Saying goodbye is difficult. Do what feels okay for you and your teen. \n- Families, teens and parents are not perfect. When someone has died, it is okay to talk about the good and bad things we remember. \n- It can help to write a letter or make a drawing for the person who has gone.  \n- Some people hold a ceremony or have a special meal to celebrate the person, and say goodbye.  \n- It can help to make a box of memories, to put things that remind you and your teen of the person.  \n- It can help just to talk about the person when you think about them.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "bereavement_section.text_2"
+        }
+      ],
+      "_nested_name": "bereavement_section"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/bereavement.xlsx"
+}

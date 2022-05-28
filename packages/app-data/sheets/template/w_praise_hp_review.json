@@ -1,0 +1,135 @@
+{
+  "flow_type": "template",
+  "module": "praise",
+  "flow_name": "w_praise_hp_review",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "home_practice_review",
+      "value": "home_practice_review",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "set_field",
+          "args": [
+            "w_praise_hp_review_completed",
+            true
+          ],
+          "_raw": "completed | set_field:w_praise_hp_review_completed: true",
+          "_cleaned": "completed | set_field:w_praise_hp_review_completed: true"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_praise",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice_review.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_praise",
+                "matchedExpression": "@data.workshop.w_praise",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_praise": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "outro_habit_data",
+              "value": "@data.habit.praise_teen",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "home_practice_review.workshop_activity.outro_habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.praise_teen",
+                    "matchedExpression": "@data.habit.praise_teen",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.praise_teen": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "w_praise_hp_content",
+              "rows": [],
+              "_nested_name": "home_practice_review.workshop_activity.content_box"
+            },
+            {
+              "name": "outro_text",
+              "value": "You deserve some praise, too. Thank you again for using @global.parent_app. It shows you really care!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "home_practice_review.workshop_activity.outro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "You deserve some praise, too. Thank you again for using @global.parent_app. It shows you really care!",
+                    "matchedExpression": "@global.parent_app",
+                    "type": "global",
+                    "fieldName": "parent_app"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.parent_app": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "home_practice_review.workshop_activity"
+        }
+      ],
+      "_nested_name": "home_practice_review"
+    }
+  ],
+  "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_praise_hp_review.xlsx"
+}

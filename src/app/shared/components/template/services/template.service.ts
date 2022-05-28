@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { GLOBAL, TEMPLATE } from "src/app/shared/services/data/data.service";
+import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "src/app/shared/model";
 import { BehaviorSubject } from "rxjs";
@@ -20,6 +20,7 @@ export class TemplateService {
   currentTheme = this.themeValue.asObservable();
   constructor(
     private localStorageService: LocalStorageService,
+    private appDataService: AppDataService,
     private dbService: DbService,
     private modalCtrl: ModalController,
     private translateService: TemplateTranslateService,
@@ -52,6 +53,7 @@ export class TemplateService {
       name: templatename,
       templatename,
       dismissOnEmit: true, // defaults will be overridden by passed options
+      waitForDismiss: true,
       fullscreen: true,
       showCloseButton: true,
       ...options,
@@ -62,9 +64,12 @@ export class TemplateService {
       componentProps: { props },
     });
     await modal.present();
-    const { data } = await modal.onDidDismiss();
-    const emitData: { emit_value?: string; emit_data?: any } = data;
-    return emitData;
+    let dismissData: { emit_value?: string; emit_data?: any } = {};
+    if (props.waitForDismiss) {
+      const { data } = await modal.onDidDismiss();
+      dismissData = data;
+    }
+    return { modal, ...dismissData };
   }
 
   /**
@@ -76,9 +81,10 @@ export class TemplateService {
   private async initialiseDefaultFieldAndGlobals() {
     // Evaluate overrides
     // TODO - should be generalised with other template and datalist retrieval methods
-    const baseGlobals = GLOBAL.filter((flow) => !flow.hasOwnProperty("override_target"));
+    const allGlobals = await this.appDataService.getSheetsWithData<FlowTypes.Global>("global");
+    const baseGlobals = allGlobals.filter((flow) => !flow.hasOwnProperty("override_target"));
     const baseGlobalsHashmap = arrayToHashmap(baseGlobals, "flow_name");
-    const globalOverrides = GLOBAL.filter((flow) => flow.hasOwnProperty("override_target"));
+    const globalOverrides = allGlobals.filter((flow) => flow.hasOwnProperty("override_target"));
     for (const flow of globalOverrides) {
       const satisfied = await this.templateVariablesService.evaluateConditionString(
         `${flow.override_condition}`
@@ -89,7 +95,7 @@ export class TemplateService {
       }
     }
     // Apply field default and global constants
-    Object.values(baseGlobalsHashmap).forEach((flow) => {
+    Object.values<any>(baseGlobalsHashmap).forEach((flow) => {
       flow.rows?.forEach((row) => {
         switch (row.type) {
           case "declare_field_default":
@@ -120,7 +126,11 @@ export class TemplateService {
     templateName: string,
     is_override_target: boolean
   ): Promise<FlowTypes.Template> {
-    const foundTemplate: FlowTypes.Template = TEMPLATE.find((t) => t.flow_name === templateName);
+    const foundTemplate = await this.appDataService.getSheet<FlowTypes.Template>(
+      "template",
+      templateName
+    );
+    // const foundTemplate: FlowTypes.Template = template.find((t) => t.flow_name === templateName);
     if (foundTemplate) {
       const overiddenTemplate = await this.getTemplateOverride(foundTemplate, is_override_target);
       // create a deep clone of the object to prevent accidental reference changes
@@ -158,6 +168,47 @@ export class TemplateService {
       }
     }
     return foundTemplate;
+  }
+  //   // write to local storage - this will cast to string
+  //   this.localStorageService.setString("rp-contact-field." + key, value);
+
+  //   // write to db - note this can handle more data formats but only string/number will be available to queries
+  //   if (typeof value === "boolean") value = "value";
+  //   const evt: IFlowEvent = {
+  //     ...this.dbService.generateDBMeta(),
+  //     event: "set",
+  //     value,
+  //     name: key,
+  //     type: "contact_field" as any,
+  //   };
+  //   return this.dbService.table("data_events").add(evt);
+  // }
+
+  getGlobal(key: string): string {
+    alert("TODO - getGlobal");
+    return null as any;
+    // // provide a fallback if the target global variable has never been set
+    // if (!this.globals.hasOwnProperty(key)) {
+    //   console.warn("global value not found for key:", key);
+    //   return undefined;
+    // }
+    // let global = this.globals[key];
+    // // HACK - ensure global value is translated (if exists)
+    // // (could possibly be handled better from within translate service)
+    // return this.translateService.translateValue(global.value);
+  }
+
+  // private setGlobal(row: FlowTypes.GlobalRow) {
+  //   this.globals[row.name] = row;
+  // }
+
+  // /** Get the value of a data_list item as defined within templates */
+  getDataListByPath(path: string) {
+    // const data = getNestedProperty(this.appDataService.dataLists, path);
+    // return data;
+    // TODO
+    alert("TODO - get datalist by path" + path);
+    return null as any;
   }
 
   /** Record a template event to the database */

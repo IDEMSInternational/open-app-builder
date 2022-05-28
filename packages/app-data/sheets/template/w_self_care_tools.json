@@ -1,0 +1,172 @@
+{
+  "flow_type": "template",
+  "flow_name": "w_self_care_tools",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "essential_tools",
+      "value": "essential_tools",
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "tool_1",
+          "rows": [
+            {
+              "name": "title",
+              "value": "RELAX",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_1.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Do a 30 second quick relaxation activity.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_1.text_1"
+            },
+            {
+              "name": "button_1",
+              "value": "Relax activity",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "go_to",
+                  "args": [
+                    "w_self_care_relax"
+                  ],
+                  "_raw": "click | go_to:w_self_care_relax",
+                  "_cleaned": "click | go_to:w_self_care_relax"
+                }
+              ],
+              "hidden": false,
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_1.button_1"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_1"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_2",
+          "rows": [
+            {
+              "name": "title",
+              "value": "RECOGNISE",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_2.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Take a moment and think of one thing YOU have done recently that you have done well! Say it aloud if you can \"Well done for …\"",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_2.text_1"
+            },
+            {
+              "name": "button_1",
+              "value": "Recognise activity",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "go_to",
+                  "args": [
+                    "w_self_care_recognise"
+                  ],
+                  "_raw": "click | go_to:w_self_care_recognise",
+                  "_cleaned": "click | go_to:w_self_care_recognise"
+                }
+              ],
+              "hidden": false,
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_2.button_1"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_2"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_3",
+          "rows": [
+            {
+              "name": "title",
+              "value": "REWARD",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_3.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Remember you deserve your quality time too! What makes you happy?",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_3.text_1"
+            },
+            {
+              "name": "button_1",
+              "value": "Reward activity",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "go_to",
+                  "args": [
+                    "w_self_care_reward"
+                  ],
+                  "_raw": "click | go_to:w_self_care_reward",
+                  "_cleaned": "click | go_to:w_self_care_reward"
+                }
+              ],
+              "hidden": false,
+              "type": "set_variable",
+              "_nested_name": "essential_tools.tool_3.button_1"
+            }
+          ],
+          "_nested_name": "essential_tools.tool_3"
+        }
+      ],
+      "_nested_name": "essential_tools"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"
+}

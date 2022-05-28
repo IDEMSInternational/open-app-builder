@@ -1,0 +1,50 @@
+{
+  "flow_type": "template",
+  "flow_name": "app_menu_reset_app_pop",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Reset App",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "title"
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "By clicking in the button below you will reset the app to its initial settings. \n\nThis means that all your progress and usage data will be deleted and your app will work as if it was just installed for the first time.\n\nNOTE: Resetting the app is permanent and you will not be able to recover any information.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text_1"
+    },
+    {
+      "type": "button",
+      "name": "button_1",
+      "value": "Reset App",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "reset_app",
+          "args": [],
+          "_raw": "click | reset_app",
+          "_cleaned": "click | reset_app"
+        }
+      ],
+      "_nested_name": "button_1"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
+}

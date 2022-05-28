@@ -1,0 +1,323 @@
+{
+  "flow_type": "template",
+  "module": "consequence",
+  "flow_name": "w_consequence_read_1_temp",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "read",
+      "value": "read_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Let's read what happened with @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver:",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "read.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Let's read what happened with @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver:",
+                    "matchedExpression": "@global.w_consequence_teen_boy_1",
+                    "type": "global",
+                    "fieldName": "w_consequence_teen_boy_1"
+                  },
+                  {
+                    "fullExpression": "Let's read what happened with @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver:",
+                    "matchedExpression": "@global.w_consequence_male_caregiver",
+                    "type": "global",
+                    "fieldName": "w_consequence_male_caregiver"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.w_consequence_teen_boy_1": [
+                  "value"
+                ],
+                "@global.w_consequence_male_caregiver": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "pair",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "value": "box_story",
+                  "rows": [
+                    {
+                      "name": "image_src",
+                      "value": "plh_images/workshops/w_consequence/read_1/slide_1.svg",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "read.workshop_activity.content_box.box_1.image_src"
+                    },
+                    {
+                      "name": "text",
+                      "value": "@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1! What time is this? You are late!”",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "read.workshop_activity.content_box.box_1.text",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1! What time is this? You are late!”",
+                            "matchedExpression": "@global.w_consequence_male_caregiver",
+                            "type": "global",
+                            "fieldName": "w_consequence_male_caregiver"
+                          },
+                          {
+                            "fullExpression": "@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1! What time is this? You are late!”",
+                            "matchedExpression": "@global.w_consequence_teen_boy_1",
+                            "type": "global",
+                            "fieldName": "w_consequence_teen_boy_1"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@global.w_consequence_male_caregiver": [
+                          "value"
+                        ],
+                        "@global.w_consequence_teen_boy_1": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "read.workshop_activity.content_box.box_1"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "box_2",
+                  "value": "pair",
+                  "rows": [
+                    {
+                      "type": "nested_properties",
+                      "name": "box_1",
+                      "value": "box_story",
+                      "rows": [
+                        {
+                          "name": "image_src",
+                          "value": "plh_images/workshops/w_consequence/read_1/slide_2.svg",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.image_src"
+                        },
+                        {
+                          "name": "text",
+                          "value": "@global.w_consequence_teen_boy_1: “Sorry @global.w_consequence_male_caregiver – you can go back to sleep”.  \n\n@global.w_consequence_male_caregiver: “It is WAY past the time you were supposed to be home!”",
+                          "_translations": {
+                            "value": {
+                              "tz_sw": true
+                            }
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.text",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@global.w_consequence_teen_boy_1: “Sorry @global.w_consequence_male_caregiver – you can go back to sleep”.  \n\n@global.w_consequence_male_caregiver: “It is WAY past the time you were supposed to be home!”",
+                                "matchedExpression": "@global.w_consequence_teen_boy_1",
+                                "type": "global",
+                                "fieldName": "w_consequence_teen_boy_1"
+                              },
+                              {
+                                "fullExpression": "@global.w_consequence_teen_boy_1: “Sorry @global.w_consequence_male_caregiver – you can go back to sleep”.  \n\n@global.w_consequence_male_caregiver: “It is WAY past the time you were supposed to be home!”",
+                                "matchedExpression": "@global.w_consequence_male_caregiver",
+                                "type": "global",
+                                "fieldName": "w_consequence_male_caregiver"
+                              },
+                              {
+                                "fullExpression": "@global.w_consequence_teen_boy_1: “Sorry @global.w_consequence_male_caregiver – you can go back to sleep”.  \n\n@global.w_consequence_male_caregiver: “It is WAY past the time you were supposed to be home!”",
+                                "matchedExpression": "@global.w_consequence_male_caregiver",
+                                "type": "global",
+                                "fieldName": "w_consequence_male_caregiver"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@global.w_consequence_teen_boy_1": [
+                              "value"
+                            ],
+                            "@global.w_consequence_male_caregiver": [
+                              "value",
+                              "value"
+                            ]
+                          }
+                        }
+                      ],
+                      "_nested_name": "read.workshop_activity.content_box.box_2.box_1"
+                    },
+                    {
+                      "type": "nested_properties",
+                      "name": "box_2",
+                      "value": "pair",
+                      "rows": [
+                        {
+                          "type": "nested_properties",
+                          "name": "box_1",
+                          "value": "box_story",
+                          "rows": [
+                            {
+                              "name": "image_src",
+                              "value": "plh_images/workshops/w_consequence/read_1/slide_3.svg",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.image_src"
+                            },
+                            {
+                              "name": "text",
+                              "value": "@global.w_consequence_teen_boy_1: “I can explain, @global.w_consequence_male_caregiver, I can.” \n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1, you are not keeping our rule! I will give you a hiding!”",
+                              "_translations": {
+                                "value": {
+                                  "tz_sw": true
+                                }
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.text",
+                              "_dynamicFields": {
+                                "value": [
+                                  {
+                                    "fullExpression": "@global.w_consequence_teen_boy_1: “I can explain, @global.w_consequence_male_caregiver, I can.” \n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1, you are not keeping our rule! I will give you a hiding!”",
+                                    "matchedExpression": "@global.w_consequence_teen_boy_1",
+                                    "type": "global",
+                                    "fieldName": "w_consequence_teen_boy_1"
+                                  },
+                                  {
+                                    "fullExpression": "@global.w_consequence_teen_boy_1: “I can explain, @global.w_consequence_male_caregiver, I can.” \n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1, you are not keeping our rule! I will give you a hiding!”",
+                                    "matchedExpression": "@global.w_consequence_male_caregiver",
+                                    "type": "global",
+                                    "fieldName": "w_consequence_male_caregiver"
+                                  },
+                                  {
+                                    "fullExpression": "@global.w_consequence_teen_boy_1: “I can explain, @global.w_consequence_male_caregiver, I can.” \n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1, you are not keeping our rule! I will give you a hiding!”",
+                                    "matchedExpression": "@global.w_consequence_male_caregiver",
+                                    "type": "global",
+                                    "fieldName": "w_consequence_male_caregiver"
+                                  },
+                                  {
+                                    "fullExpression": "@global.w_consequence_teen_boy_1: “I can explain, @global.w_consequence_male_caregiver, I can.” \n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1, you are not keeping our rule! I will give you a hiding!”",
+                                    "matchedExpression": "@global.w_consequence_teen_boy_1",
+                                    "type": "global",
+                                    "fieldName": "w_consequence_teen_boy_1"
+                                  }
+                                ]
+                              },
+                              "_dynamicDependencies": {
+                                "@global.w_consequence_teen_boy_1": [
+                                  "value",
+                                  "value"
+                                ],
+                                "@global.w_consequence_male_caregiver": [
+                                  "value",
+                                  "value"
+                                ]
+                              }
+                            }
+                          ],
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1"
+                        },
+                        {
+                          "type": "nested_properties",
+                          "name": "box_2",
+                          "value": "box_image",
+                          "rows": [
+                            {
+                              "name": "image_src",
+                              "value": "plh_images/workshops/w_consequence/read_1/slide_4.svg",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.image_src"
+                            },
+                            {
+                              "name": "text",
+                              "value": "@global.w_consequence_teen_boy_1: “That’s unfair! You never listen to me!! I hate you!”",
+                              "_translations": {
+                                "value": {
+                                  "tz_sw": true
+                                }
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.text",
+                              "_dynamicFields": {
+                                "value": [
+                                  {
+                                    "fullExpression": "@global.w_consequence_teen_boy_1: “That’s unfair! You never listen to me!! I hate you!”",
+                                    "matchedExpression": "@global.w_consequence_teen_boy_1",
+                                    "type": "global",
+                                    "fieldName": "w_consequence_teen_boy_1"
+                                  }
+                                ]
+                              },
+                              "_dynamicDependencies": {
+                                "@global.w_consequence_teen_boy_1": [
+                                  "value"
+                                ]
+                              }
+                            }
+                          ],
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2"
+                        }
+                      ],
+                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2"
+                    }
+                  ],
+                  "_nested_name": "read.workshop_activity.content_box.box_2"
+                }
+              ],
+              "_nested_name": "read.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "read.workshop_activity"
+        }
+      ],
+      "_nested_name": "read"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
+}

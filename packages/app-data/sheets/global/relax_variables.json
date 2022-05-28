@@ -1,0 +1,222 @@
+{
+  "flow_type": "global",
+  "flow_name": "relax_variables",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_global_constant",
+      "name": "my_relaxes",
+      "value": "My Favourite Relaxes",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "all_relaxes",
+      "value": "All Relaxes",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "random_relax",
+      "value": "Random Relax",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "current_relax",
+      "value": "This Week's Relax",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "relax_passive_short",
+      "value": "Listen & Relax (1-2 minutes)",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "relax_passive_long",
+      "value": "Listen & Relax (3-5 minutes)",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "relax_active",
+      "value": "Do & Relax (5-10 minutes)",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_1_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_2_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_3_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_4_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_5_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_6_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_7_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_8_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_9_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_10_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_11_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_12_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_13_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_14_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_15_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_16_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_17_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_18_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_19_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_20_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_21_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_22_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_23_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "relax_24_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    }
+  ],
+  "_xlsxPath": "global/data/parent_centre_globals.xlsx"
+}

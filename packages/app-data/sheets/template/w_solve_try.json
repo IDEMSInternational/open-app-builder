@@ -1,0 +1,73 @@
+{
+  "flow_type": "template",
+  "module": "solve",
+  "flow_name": "w_solve_try",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "try_together",
+      "value": "try_together",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Let's practice problem-solving!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "try_together.workshop_activity.intro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "name": "text",
+                  "value": "Practice together on a problem you have now. One of you is the parent and one the teen. \n\nPraise and encourage each other – we are proud of you! \n\nRemember the steps: \nKNOW IT - SOLVE IT - TRY IT - TEST IT",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "try_together.workshop_activity.content_box.text"
+                }
+              ],
+              "_nested_name": "try_together.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "try_together.workshop_activity"
+        }
+      ],
+      "_nested_name": "try_together"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"
+}

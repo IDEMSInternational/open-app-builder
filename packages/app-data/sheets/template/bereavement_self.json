@@ -1,0 +1,146 @@
+{
+  "flow_type": "template",
+  "flow_name": "bereavement_self",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "banner",
+      "value": "banner",
+      "rows": [
+        {
+          "name": "banner_title",
+          "value": "@data.bereavement.self.title",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "banner.banner_title",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.bereavement.self.title",
+                "matchedExpression": "@data.bereavement.self.title",
+                "type": "data",
+                "fieldName": "bereavement"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.bereavement.self.title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "banner_image",
+          "value": "plh_images/parent_centre/bereavement/self.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "banner.banner_image"
+        }
+      ],
+      "_nested_name": "banner"
+    },
+    {
+      "type": "template",
+      "name": "bereavement_section",
+      "value": "bereavement_section",
+      "rows": [
+        {
+          "name": "top_text",
+          "value": "Losing a friend or loved one is hard for everyone. Being kind to yourself and doing things to help yourself cope in this difficult time helps your teen too!",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "bereavement_section.top_text"
+        },
+        {
+          "name": "title_1",
+          "value": "Take care of yourself",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "bereavement_section.title_1"
+        },
+        {
+          "name": "title_2",
+          "value": "Find a support group",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "bereavement_section.title_2"
+        },
+        {
+          "name": "text_1",
+          "value": "- Grief can affect us for weeks or months or years. You do not have to feel better quickly.  \n- Get enough sleep and food - it is hard to care for teens when you are tired and hungry. \n- Make a list of things that make you feel better, and do them.  \n- Try to do one simple thing to relax each day with your teen,  and also for yourself.  \n- It’s okay to not feel good and it is okay to cry. Never blame yourself, this is not your fault.  \n- There is always hope even after loss. Try to enjoy simple things, and take a minute to do something fun or relaxing with your teen. \n- Find one or two adults who can support you, listen, and talk.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "bereavement_section.text_1"
+        },
+        {
+          "name": "button_1_text",
+          "value": "@data.workshop.w_1on1.tools",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "bereavement_section.button_1_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_1on1.tools",
+                "matchedExpression": "@data.workshop.w_1on1.tools",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_1on1.tools": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "button_1_go_to",
+          "value": "lib_act_w_1on1",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "bereavement_section.button_1_go_to"
+        },
+        {
+          "name": "text_2",
+          "value": "- Talking with someone who can support you and listen to you can help.  \n- It can help to join a group of people who have also lost someone. \n- Nobody is perfect. It is okay to talk about good and bad memories.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "bereavement_section.text_2"
+        }
+      ],
+      "_nested_name": "bereavement_section"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/bereavement.xlsx"
+}

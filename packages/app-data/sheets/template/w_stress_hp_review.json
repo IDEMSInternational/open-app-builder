@@ -1,0 +1,381 @@
+{
+  "flow_type": "template",
+  "module": "stress",
+  "flow_name": "w_stress_hp_review",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "home_practice_review",
+      "value": "home_practice_review",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_stress",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice_review.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_stress",
+                "matchedExpression": "@data.workshop.w_stress",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_stress": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "outro_habit_data",
+              "value": "@data.habit.breathe",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "home_practice_review.workshop_activity.outro_habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.breathe",
+                    "matchedExpression": "@data.habit.breathe",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.breathe": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "rows": [
+                    {
+                      "name": "text",
+                      "value": "This week, your goal was: Whenever you are feeling stressed or upset, take five breaths in and out before you react. You tapped the @data.habit.breathe.in_text_title - well done!",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "condition": "@fields.weekly_parent_point_breathe > 0",
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.text",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "This week, your goal was: Whenever you are feeling stressed or upset, take five breaths in and out before you react. You tapped the @data.habit.breathe.in_text_title - well done!",
+                            "matchedExpression": "@data.habit.breathe.in_text_title",
+                            "type": "data",
+                            "fieldName": "habit"
+                          }
+                        ],
+                        "condition": [
+                          {
+                            "fullExpression": "@fields.weekly_parent_point_breathe > 0",
+                            "matchedExpression": "@fields.weekly_parent_point_breathe",
+                            "type": "fields",
+                            "fieldName": "weekly_parent_point_breathe"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.habit.breathe.in_text_title": [
+                          "value"
+                        ],
+                        "@fields.weekly_parent_point_breathe": [
+                          "condition"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "text",
+                      "value": "This week, your goal was: Whenever you are feeling stressed or upset, take five breaths in and out before you react.",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "condition": "!(@fields.weekly_parent_point_breathe > 0)",
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.text",
+                      "_dynamicFields": {
+                        "condition": [
+                          {
+                            "fullExpression": "!(@fields.weekly_parent_point_breathe > 0)",
+                            "matchedExpression": "@fields.weekly_parent_point_breathe",
+                            "type": "fields",
+                            "fieldName": "weekly_parent_point_breathe"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@fields.weekly_parent_point_breathe": [
+                          "condition"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "question_text",
+                      "value": "How did this work out?",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.question_text"
+                    },
+                    {
+                      "name": "reply_happy",
+                      "value": "@data.praise.hp_praise_message_10.text",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.reply_happy",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.praise.hp_praise_message_10.text",
+                            "matchedExpression": "@data.praise.hp_praise_message_10.text",
+                            "type": "data",
+                            "fieldName": "praise"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.praise.hp_praise_message_10.text": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "reply_ok",
+                      "value": "@data.praise.hp_praise_message_11.text",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.reply_ok",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.praise.hp_praise_message_11.text",
+                            "matchedExpression": "@data.praise.hp_praise_message_11.text",
+                            "type": "data",
+                            "fieldName": "praise"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.praise.hp_praise_message_11.text": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "reply_sad",
+                      "value": "@data.praise.hp_praise_message_11.text",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.reply_sad",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.praise.hp_praise_message_11.text",
+                            "matchedExpression": "@data.praise.hp_praise_message_11.text",
+                            "type": "data",
+                            "fieldName": "praise"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.praise.hp_praise_message_11.text": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "home_practice_review.workshop_activity.content_box.box_1"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "box_2",
+                  "value": "pair",
+                  "rows": [
+                    {
+                      "type": "nested_properties",
+                      "name": "box_1",
+                      "value": "box_radio_buttons_emo_temp",
+                      "rows": [
+                        {
+                          "name": "radio_group_final",
+                          "value": "w_stress_hp_review_mood",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "exclude_from_translation": true,
+                          "type": "set_variable",
+                          "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_1.radio_group_final"
+                        },
+                        {
+                          "name": "text",
+                          "value": "Your goal was also to talk to your teen about how you both felt in a stressful situation.",
+                          "_translations": {
+                            "value": {
+                              "tz_sw": true
+                            }
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_1.text"
+                        },
+                        {
+                          "name": "question_text",
+                          "value": "How did this go?",
+                          "_translations": {
+                            "value": {
+                              "tz_sw": true
+                            }
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_1.question_text"
+                        },
+                        {
+                          "name": "reply_happy",
+                          "value": "@data.praise.hp_praise_message_12.text",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_1.reply_happy",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@data.praise.hp_praise_message_12.text",
+                                "matchedExpression": "@data.praise.hp_praise_message_12.text",
+                                "type": "data",
+                                "fieldName": "praise"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@data.praise.hp_praise_message_12.text": [
+                              "value"
+                            ]
+                          }
+                        },
+                        {
+                          "name": "reply_ok",
+                          "value": "@data.praise.hp_praise_message_13.text",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_1.reply_ok",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@data.praise.hp_praise_message_13.text",
+                                "matchedExpression": "@data.praise.hp_praise_message_13.text",
+                                "type": "data",
+                                "fieldName": "praise"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@data.praise.hp_praise_message_13.text": [
+                              "value"
+                            ]
+                          }
+                        },
+                        {
+                          "name": "reply_sad",
+                          "value": "@data.praise.hp_praise_message_13.text",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_1.reply_sad",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@data.praise.hp_praise_message_13.text",
+                                "matchedExpression": "@data.praise.hp_praise_message_13.text",
+                                "type": "data",
+                                "fieldName": "praise"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@data.praise.hp_praise_message_13.text": [
+                              "value"
+                            ]
+                          }
+                        }
+                      ],
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_1"
+                    },
+                    {
+                      "type": "nested_properties",
+                      "name": "box_2",
+                      "value": "w_stress_hp_challenges",
+                      "rows": [],
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_2"
+                    }
+                  ],
+                  "_nested_name": "home_practice_review.workshop_activity.content_box.box_2"
+                }
+              ],
+              "_nested_name": "home_practice_review.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "home_practice_review.workshop_activity"
+        }
+      ],
+      "_nested_name": "home_practice_review"
+    }
+  ],
+  "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_stress_hp_review.xlsx"
+}

@@ -1,0 +1,38 @@
+{
+  "flow_type": "template",
+  "flow_name": "relax_1_text",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "relax_text",
+      "value": "relax_text",
+      "rows": [
+        {
+          "name": "activity_text",
+          "value": "Sit down, close your eyes and listen to your breath as it goes in and out. \n\nNotice how you feel. \n\nWhen you are ready, open your eyes again.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "relax_text.activity_text"
+        },
+        {
+          "name": "outro_text",
+          "value": "Try this whenever you are feeling stressed and you need a break to reconnect.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "relax_text.outro_text"
+        }
+      ],
+      "_nested_name": "relax_text"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/databank_relax.xlsx"
+}

@@ -1,0 +1,216 @@
+{
+  "flow_type": "template",
+  "module": "consequence",
+  "flow_name": "w_consequence_talk_3_pop",
+  "status": "released",
+  "rows": [
+    {
+      "name": "idea_1",
+      "value": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "idea_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
+            "matchedExpression": "@global.w_consequence_teen_boy_1",
+            "type": "global",
+            "fieldName": "w_consequence_teen_boy_1"
+          },
+          {
+            "fullExpression": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
+            "matchedExpression": "@global.w_consequence_male_caregiver",
+            "type": "global",
+            "fieldName": "w_consequence_male_caregiver"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.w_consequence_teen_boy_1": [
+          "value"
+        ],
+        "@global.w_consequence_male_caregiver": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "idea_2",
+      "value": "They agreed on consequences together",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "idea_2"
+    },
+    {
+      "name": "idea_3",
+      "value": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "idea_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+            "matchedExpression": "@global.w_consequence_male_caregiver",
+            "type": "global",
+            "fieldName": "w_consequence_male_caregiver"
+          },
+          {
+            "fullExpression": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
+            "matchedExpression": "@global.w_consequence_teen_boy_1",
+            "type": "global",
+            "fieldName": "w_consequence_teen_boy_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.w_consequence_male_caregiver": [
+          "value"
+        ],
+        "@global.w_consequence_teen_boy_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "idea_4",
+      "value": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "idea_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+            "matchedExpression": "@global.w_consequence_male_caregiver",
+            "type": "global",
+            "fieldName": "w_consequence_male_caregiver"
+          },
+          {
+            "fullExpression": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
+            "matchedExpression": "@global.w_consequence_teen_boy_1",
+            "type": "global",
+            "fieldName": "w_consequence_teen_boy_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.w_consequence_male_caregiver": [
+          "value"
+        ],
+        "@global.w_consequence_teen_boy_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "idea_5",
+      "value": "The consequence was realistic and appropriate",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "idea_5"
+    },
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "description_text",
+          "value": "Using a consequence worked well this time because...",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.description_text"
+        },
+        {
+          "name": "list_text",
+          "value": "* @local.idea_1\n* @local.idea_2\n* @local.idea_3\n* @local.idea_4\n* @local.idea_5",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "* @local.idea_1\n* @local.idea_2\n* @local.idea_3\n* @local.idea_4\n* @local.idea_5",
+                "matchedExpression": "@local.idea_1",
+                "type": "local",
+                "fieldName": "idea_1"
+              },
+              {
+                "fullExpression": "* @local.idea_1\n* @local.idea_2\n* @local.idea_3\n* @local.idea_4\n* @local.idea_5",
+                "matchedExpression": "@local.idea_2",
+                "type": "local",
+                "fieldName": "idea_2"
+              },
+              {
+                "fullExpression": "* @local.idea_1\n* @local.idea_2\n* @local.idea_3\n* @local.idea_4\n* @local.idea_5",
+                "matchedExpression": "@local.idea_3",
+                "type": "local",
+                "fieldName": "idea_3"
+              },
+              {
+                "fullExpression": "* @local.idea_1\n* @local.idea_2\n* @local.idea_3\n* @local.idea_4\n* @local.idea_5",
+                "matchedExpression": "@local.idea_4",
+                "type": "local",
+                "fieldName": "idea_4"
+              },
+              {
+                "fullExpression": "* @local.idea_1\n* @local.idea_2\n* @local.idea_3\n* @local.idea_4\n* @local.idea_5",
+                "matchedExpression": "@local.idea_5",
+                "type": "local",
+                "fieldName": "idea_5"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.idea_1": [
+              "value"
+            ],
+            "@local.idea_2": [
+              "value"
+            ],
+            "@local.idea_3": [
+              "value"
+            ],
+            "@local.idea_4": [
+              "value"
+            ],
+            "@local.idea_5": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "suggestions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
+}

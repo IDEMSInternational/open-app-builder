@@ -1,0 +1,54 @@
+{
+  "flow_type": "template",
+  "module": "1on1",
+  "flow_name": "w_1on1_care_together_pop",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "description_text",
+          "value": "Some rules that other groups made:",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.description_text"
+        },
+        {
+          "name": "list_text",
+          "value": "* Tuesday at 7pm is our @global.parent_app time together\n* Take turns holding the phone (1 activity per person)\n* Accept each other’s experiences. We are all different!\n* Take turns speaking and listening\n* All questions are welcome\n* What we share stays among us",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "* Tuesday at 7pm is our @global.parent_app time together\n* Take turns holding the phone (1 activity per person)\n* Accept each other’s experiences. We are all different!\n* Take turns speaking and listening\n* All questions are welcome\n* What we share stays among us",
+                "matchedExpression": "@global.parent_app",
+                "type": "global",
+                "fieldName": "parent_app"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.parent_app": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "suggestions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_1on1.xlsx"
+}

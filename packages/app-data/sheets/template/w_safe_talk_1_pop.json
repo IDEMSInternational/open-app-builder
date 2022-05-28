@@ -1,0 +1,75 @@
+{
+  "flow_type": "template",
+  "module": "safe",
+  "flow_name": "w_safe_talk_1_pop",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "description_text",
+          "value": "The situation was risky because...",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.description_text"
+        },
+        {
+          "name": "list_text",
+          "value": "* The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts \n* @global.w_safe_teen_girl_1's friend was encouraging her  \n* Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things \n* Many girls in our communities get pregnant or catch HIV from older men \n* There were no other trusted adults to advise @global.w_safe_teen_girl_1",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "* The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts \n* @global.w_safe_teen_girl_1's friend was encouraging her  \n* Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things \n* Many girls in our communities get pregnant or catch HIV from older men \n* There were no other trusted adults to advise @global.w_safe_teen_girl_1",
+                "matchedExpression": "@global.w_safe_teen_girl_1",
+                "type": "global",
+                "fieldName": "w_safe_teen_girl_1"
+              },
+              {
+                "fullExpression": "* The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts \n* @global.w_safe_teen_girl_1's friend was encouraging her  \n* Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things \n* Many girls in our communities get pregnant or catch HIV from older men \n* There were no other trusted adults to advise @global.w_safe_teen_girl_1",
+                "matchedExpression": "@global.w_safe_teen_girl_1",
+                "type": "global",
+                "fieldName": "w_safe_teen_girl_1"
+              },
+              {
+                "fullExpression": "* The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts \n* @global.w_safe_teen_girl_1's friend was encouraging her  \n* Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things \n* Many girls in our communities get pregnant or catch HIV from older men \n* There were no other trusted adults to advise @global.w_safe_teen_girl_1",
+                "matchedExpression": "@global.w_safe_teen_girl_1",
+                "type": "global",
+                "fieldName": "w_safe_teen_girl_1"
+              },
+              {
+                "fullExpression": "* The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts \n* @global.w_safe_teen_girl_1's friend was encouraging her  \n* Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things \n* Many girls in our communities get pregnant or catch HIV from older men \n* There were no other trusted adults to advise @global.w_safe_teen_girl_1",
+                "matchedExpression": "@global.w_safe_teen_girl_1",
+                "type": "global",
+                "fieldName": "w_safe_teen_girl_1"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.w_safe_teen_girl_1": [
+              "value",
+              "value",
+              "value",
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "suggestions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"
+}

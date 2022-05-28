@@ -1,0 +1,30 @@
+{
+  "flow_type": "template",
+  "flow_name": "parent_centre_testimonies",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "name": "testimony_1",
+      "value": "The first time my mother asked me if I wanted to spend time with her, I told her to leave me alone because I was in the middle of a game. But she insisted like she always does. I said she could watch me playing if that's what she wanted. After a few minutes she started asking me questions about the game. It was annoying at the beginning, but after a while I was happy that she was finally interested in what I was doing. She even gave it a try!",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "testimony_1"
+    },
+    {
+      "type": "text",
+      "name": "testimony_2",
+      "value": "My father told me I’m playing too much basketball after school, so we must set a family rule. He promised we'll think about a solution together, so we both feel good about it. I didn't believe it's possible but said, “OK, let's try”. We negotiated and agreed that the rule will be playing basketball is allowed after doing homework and until family dinner. It is hard for me to see my friends playing after school, so I'm doing my best to finish homework first and join them. I also have now the whole evening to do other things I want after the family dinner like watching basketball in the NBA.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "testimony_2"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
+}

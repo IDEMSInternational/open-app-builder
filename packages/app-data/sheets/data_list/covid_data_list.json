@@ -1,0 +1,111 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "covid_data_list",
+  "status": "released",
+  "data_list_name": "covid",
+  "rows": [
+    {
+      "id": "talk_to_teen",
+      "content_template": "tools_talk_to_teen",
+      "library_activity": "lib_act_talk_to_teen",
+      "image_asset": "plh_images/parent_centre/covid/talk_to_teen.svg",
+      "title": "How to talk to my teen",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to talk to my teen"
+        }
+      }
+    },
+    {
+      "id": "deal_with_news",
+      "content_template": "tools_deal_with_news",
+      "library_activity": "lib_act_deal_with_news",
+      "image_asset": "plh_images/parent_centre/covid/deal_with_news.svg",
+      "title": "Steps to deal with news",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Steps to deal with news"
+        }
+      }
+    },
+    {
+      "id": "help_teen_choose",
+      "content_template": "tools_help_teen_choose",
+      "library_activity": "lib_act_help_teen_choose",
+      "image_asset": "plh_images/parent_centre/covid/help_teen_choose.svg",
+      "title": "How can I help my teen choose well?",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How can I help my teen choose well?"
+        }
+      }
+    },
+    {
+      "id": "teen_influences",
+      "content_template": "understand_teen_influences",
+      "library_activity": "lib_act_teen_influences",
+      "image_asset": "plh_images/parent_centre/covid/teen_influences.svg",
+      "title": "What influences teen decisions?",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "What influences teen decisions?"
+        }
+      }
+    },
+    {
+      "id": "teen_feelings",
+      "content_template": "understand_teen_feelings",
+      "library_activity": "lib_act_teen_feelings",
+      "image_asset": "plh_images/parent_centre/covid/teen_feelings.svg",
+      "title": "How does my teen feel?",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How does my teen feel?"
+        }
+      }
+    },
+    {
+      "id": "change_thoughts",
+      "content_template": "change_thoughts",
+      "library_activity": "lib_act_change_thoughts",
+      "image_asset": "plh_images/parent_centre/covid/change_thoughts.svg",
+      "title": "Changing negative to positive",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Changing negative to positive"
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/parent_centre_data_list.xlsx"
+}

@@ -1,0 +1,87 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_warning_no_adults",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "survey_warning",
+      "value": "survey_warning",
+      "rows": [
+        {
+          "name": "title",
+          "value": "Are there adults in your family?",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "survey_warning.title"
+        },
+        {
+          "name": "text",
+          "value": "This app focuses on parents of teenagers age @global.teen_age_bracket, but you are welcome to continue - you may learn useful things too!",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "survey_warning.text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "This app focuses on parents of teenagers age @global.teen_age_bracket, but you are welcome to continue - you may learn useful things too!",
+                "matchedExpression": "@global.teen_age_bracket",
+                "type": "global",
+                "fieldName": "teen_age_bracket"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.teen_age_bracket": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "checkbox_tracker",
+          "value": "survey_continue_no_adults",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "survey_warning.checkbox_tracker"
+        },
+        {
+          "name": "checkbox_text",
+          "value": "@global.dont_show_again",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "survey_warning.checkbox_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.dont_show_again",
+                "matchedExpression": "@global.dont_show_again",
+                "type": "global",
+                "fieldName": "dont_show_again"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.dont_show_again": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "survey_warning"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey_warnings.xlsx"
+}

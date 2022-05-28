@@ -1,0 +1,87 @@
+{
+  "flow_type": "template",
+  "module": "1on1",
+  "flow_name": "w_1on1_relax",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "relax",
+      "value": "relax",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_1on1",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "relax.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_1on1",
+                "matchedExpression": "@data.workshop.w_1on1",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_1on1": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "outro_text",
+          "value": "You are a star! \n\nEvery day, recognise something you have done well. Reward yourself with something that makes you happy. And take a deep breath to relax. \n\nRemember, you earn a @global.parent_point every time you care for yourself - you matter!",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "relax.outro_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "You are a star! \n\nEvery day, recognise something you have done well. Reward yourself with something that makes you happy. And take a deep breath to relax. \n\nRemember, you earn a @global.parent_point every time you care for yourself - you matter!",
+                "matchedExpression": "@global.parent_point",
+                "type": "global",
+                "fieldName": "parent_point"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.parent_point": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "relax"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_1on1.xlsx"
+}

@@ -1,0 +1,171 @@
+{
+  "flow_type": "template",
+  "flow_name": "box_timer",
+  "status": "released",
+  "rows": [
+    {
+      "name": "timer_duration",
+      "value": 10,
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "timer_duration"
+    },
+    {
+      "name": "timer_duration_extension",
+      "value": 1,
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "timer_duration_extension"
+    },
+    {
+      "name": "timer_title",
+      "value": "Timer",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "timer_title"
+    },
+    {
+      "name": "timer_help",
+      "value": "Press the triangle to help you keep this discussion to @local.timer_duration minutes.",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "timer_help",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Press the triangle to help you keep this discussion to @local.timer_duration minutes.",
+            "matchedExpression": "@local.timer_duration",
+            "type": "local",
+            "fieldName": "timer_duration"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.timer_duration": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "_nested_name": "text"
+    },
+    {
+      "type": "button",
+      "name": "button_1",
+      "hidden": true,
+      "_nested_name": "button_1"
+    },
+    {
+      "type": "button",
+      "name": "button_2",
+      "hidden": true,
+      "_nested_name": "button_2"
+    },
+    {
+      "type": "button",
+      "name": "button_3",
+      "hidden": true,
+      "_nested_name": "button_3"
+    },
+    {
+      "type": "timer",
+      "name": "timer",
+      "parameter_list": {
+        "title": "@local.timer_title",
+        "starting_minutes": "@local.timer_duration",
+        "duration_extension": "@local.timer_duration_extension",
+        "help": "@local.timer_help",
+        "ping": "plh_audio/timer/bell_1.mp3"
+      },
+      "_nested_name": "timer",
+      "_dynamicFields": {
+        "parameter_list": {
+          "title": [
+            {
+              "fullExpression": "@local.timer_title",
+              "matchedExpression": "@local.timer_title",
+              "type": "local",
+              "fieldName": "timer_title"
+            }
+          ],
+          "starting_minutes": [
+            {
+              "fullExpression": "@local.timer_duration",
+              "matchedExpression": "@local.timer_duration",
+              "type": "local",
+              "fieldName": "timer_duration"
+            }
+          ],
+          "duration_extension": [
+            {
+              "fullExpression": "@local.timer_duration_extension",
+              "matchedExpression": "@local.timer_duration_extension",
+              "type": "local",
+              "fieldName": "timer_duration_extension"
+            }
+          ],
+          "help": [
+            {
+              "fullExpression": "@local.timer_help",
+              "matchedExpression": "@local.timer_help",
+              "type": "local",
+              "fieldName": "timer_help"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.timer_title": [
+          "parameter_list.title"
+        ],
+        "@local.timer_duration": [
+          "parameter_list.starting_minutes"
+        ],
+        "@local.timer_duration_extension": [
+          "parameter_list.duration_extension"
+        ],
+        "@local.timer_help": [
+          "parameter_list.help"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [],
+      "_nested_name": "nav_buttons"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+}

@@ -1,0 +1,62 @@
+{
+  "flow_type": "template",
+  "flow_name": "activity_name_that_tune",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "lib_act_something_fun",
+      "value": "lib_act_something_fun",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        }
+      ],
+      "rows": [
+        {
+          "name": "activity_data",
+          "value": "@data.something_fun.name_that_tune",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "lib_act_something_fun.activity_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.something_fun.name_that_tune",
+                "matchedExpression": "@data.something_fun.name_that_tune",
+                "type": "data",
+                "fieldName": "something_fun"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.something_fun.name_that_tune": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "activity_text",
+          "value": "* The first person gets to choose or sing a song.\n* Everyone else must guess the name of the tune (to make it harder they can guess the singer).\n* The first one to guess it right becomes the next leader.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "lib_act_something_fun.activity_text"
+        }
+      ],
+      "_nested_name": "lib_act_something_fun"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
+}

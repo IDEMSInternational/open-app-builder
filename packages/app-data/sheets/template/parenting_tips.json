@@ -1,0 +1,54 @@
+{
+  "flow_type": "template",
+  "flow_name": "parenting_tips",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "library_activity",
+      "value": "library_activity",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        }
+      ],
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Quick Parenting Tips",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "library_activity.activity_title"
+        },
+        {
+          "name": "activity_image",
+          "value": "plh_images/characters/elder/large.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "library_activity.activity_image"
+        },
+        {
+          "type": "nested_properties",
+          "name": "content_box",
+          "value": "parenting_tips_content",
+          "rows": [],
+          "_nested_name": "library_activity.content_box"
+        }
+      ],
+      "_nested_name": "library_activity"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/help_me_now.xlsx"
+}

@@ -1,0 +1,241 @@
+{
+  "flow_type": "template",
+  "module": "money",
+  "flow_name": "w_money_learn_3_temp",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "learn_group_family",
+      "value": "learn_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "@fields.do_this_workshop_together || @fields.w_money_path==\"family\"",
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_title",
+              "value": "Step 2: CHOOSE",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn_group_family.workshop_activity.intro_title"
+            },
+            {
+              "name": "intro_text",
+              "value": "Talk together about your needs and wants\n\nWANT: Something you can live without\nNEED: Something you cannot live without",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn_group_family.workshop_activity.intro_text"
+            },
+            {
+              "name": "activity_banner",
+              "hidden": true,
+              "type": "set_variable",
+              "_nested_name": "learn_group_family.workshop_activity.activity_banner"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_image",
+              "rows": [
+                {
+                  "name": "image_src",
+                  "value": "plh_images/workshops/w_money/learn/slide_2.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn_group_family.workshop_activity.content_box.image_src"
+                },
+                {
+                  "name": "text",
+                  "value": "People often don’t see things in the same way. When we talk about our needs and wants, we understand each other better and can make good choices together on how to spend our money.\n\nLook at your lists of things you spend money on and discuss:\n* Which are NEEDS that you can’t live without? Why?\n* Which are WANTS which are nice to have but not essential? Why? \n* Which things could you try to spend less money on as a family?",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn_group_family.workshop_activity.content_box.text"
+                }
+              ],
+              "_nested_name": "learn_group_family.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "learn_group_family.workshop_activity"
+        }
+      ],
+      "_nested_name": "learn_group_family",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.do_this_workshop_together || @fields.w_money_path==\"family\"",
+            "matchedExpression": "@fields.do_this_workshop_together",
+            "type": "fields",
+            "fieldName": "do_this_workshop_together"
+          },
+          {
+            "fullExpression": "@fields.do_this_workshop_together || @fields.w_money_path==\"family\"",
+            "matchedExpression": "@fields.w_money_path",
+            "type": "fields",
+            "fieldName": "w_money_path"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.do_this_workshop_together": [
+          "condition"
+        ],
+        "@fields.w_money_path": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "learn_alone",
+      "value": "learn_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "!(@fields.do_this_workshop_together || @fields.w_money_path==\"family\")",
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_title",
+              "value": "Step 2: CHOOSE",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn_alone.workshop_activity.intro_title"
+            },
+            {
+              "name": "intro_text",
+              "value": "Think about your needs and wants\n\nWANT: Something you can live without\nNEED: Something you cannot live without",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn_alone.workshop_activity.intro_text"
+            },
+            {
+              "name": "activity_banner",
+              "hidden": true,
+              "type": "set_variable",
+              "_nested_name": "learn_alone.workshop_activity.activity_banner"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_image",
+              "rows": [
+                {
+                  "name": "image_src",
+                  "value": "plh_images/workshops/w_money/learn/slide_1.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn_alone.workshop_activity.content_box.image_src"
+                },
+                {
+                  "name": "text",
+                  "value": "Look at your list of things you spend money on and choose:\n* Which are NEEDS that you can’t live without? Why?\n* Which are WANTS which are nice to have but not essential? Why? \n* Which things could you try to spend less money on?",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn_alone.workshop_activity.content_box.text"
+                }
+              ],
+              "_nested_name": "learn_alone.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "learn_alone.workshop_activity"
+        }
+      ],
+      "_nested_name": "learn_alone",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!(@fields.do_this_workshop_together || @fields.w_money_path==\"family\")",
+            "matchedExpression": "@fields.do_this_workshop_together",
+            "type": "fields",
+            "fieldName": "do_this_workshop_together"
+          },
+          {
+            "fullExpression": "!(@fields.do_this_workshop_together || @fields.w_money_path==\"family\")",
+            "matchedExpression": "@fields.w_money_path",
+            "type": "fields",
+            "fieldName": "w_money_path"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.do_this_workshop_together": [
+          "condition"
+        ],
+        "@fields.w_money_path": [
+          "condition"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
+}

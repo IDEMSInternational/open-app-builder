@@ -1,0 +1,62 @@
+{
+  "flow_type": "template",
+  "flow_name": "activity_dance_moves",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "lib_act_something_fun",
+      "value": "lib_act_something_fun",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        }
+      ],
+      "rows": [
+        {
+          "name": "activity_data",
+          "value": "@data.something_fun.dance_moves",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "lib_act_something_fun.activity_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.something_fun.dance_moves",
+                "matchedExpression": "@data.something_fun.dance_moves",
+                "type": "data",
+                "fieldName": "something_fun"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.something_fun.dance_moves": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "activity_text",
+          "value": "* Create a set of dance moves to your teen's favourite songs. \n* One person does a dance move and everyone else copies it.  \n* Everyone takes turns being the leader. \n* Perform it for the household!",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "lib_act_something_fun.activity_text"
+        }
+      ],
+      "_nested_name": "lib_act_something_fun"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
+}

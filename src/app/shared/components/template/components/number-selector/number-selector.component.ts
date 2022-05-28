@@ -21,7 +21,8 @@ interface ICategoryList {
 })
 export class TmplNumberComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit
+{
   @Input() parent: TemplateContainerComponent;
 
   title: string | null;

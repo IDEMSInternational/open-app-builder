@@ -1,0 +1,360 @@
+{
+  "flow_type": "template",
+  "module": "stress",
+  "flow_name": "w_stress_read_1_temp",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "read",
+      "value": "read_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Let’s look at an example of how stress can sometimes just get too much, for all of us:",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "read.workshop_activity.intro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "pair",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "value": "box_story",
+                  "rows": [
+                    {
+                      "name": "image_src",
+                      "value": "plh_images/workshops/w_stress/read_1/slide_1.svg",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "read.workshop_activity.content_box.box_1.image_src"
+                    },
+                    {
+                      "name": "text",
+                      "value": "@global.w_stress_male_caregiver lost his job. He was sitting at home feeling frustrated and stressed, when @global.w_stress_teen_boy_1 entered.",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true
+                        }
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "read.workshop_activity.content_box.box_1.text",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@global.w_stress_male_caregiver lost his job. He was sitting at home feeling frustrated and stressed, when @global.w_stress_teen_boy_1 entered.",
+                            "matchedExpression": "@global.w_stress_male_caregiver",
+                            "type": "global",
+                            "fieldName": "w_stress_male_caregiver"
+                          },
+                          {
+                            "fullExpression": "@global.w_stress_male_caregiver lost his job. He was sitting at home feeling frustrated and stressed, when @global.w_stress_teen_boy_1 entered.",
+                            "matchedExpression": "@global.w_stress_teen_boy_1",
+                            "type": "global",
+                            "fieldName": "w_stress_teen_boy_1"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@global.w_stress_male_caregiver": [
+                          "value"
+                        ],
+                        "@global.w_stress_teen_boy_1": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "read.workshop_activity.content_box.box_1"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "box_2",
+                  "value": "pair",
+                  "rows": [
+                    {
+                      "type": "nested_properties",
+                      "name": "box_1",
+                      "value": "box_story",
+                      "rows": [
+                        {
+                          "name": "image_src",
+                          "value": "plh_images/workshops/w_stress/read_1/slide_2.svg",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.image_src"
+                        },
+                        {
+                          "name": "text",
+                          "value": "@global.w_stress_teen_boy_1: “Can I have money to buy some airtime?”  \n\n@global.w_stress_male_caregiver: “Leave me alone and mind your own business!”",
+                          "_translations": {
+                            "value": {
+                              "tz_sw": true
+                            }
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.text",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@global.w_stress_teen_boy_1: “Can I have money to buy some airtime?”  \n\n@global.w_stress_male_caregiver: “Leave me alone and mind your own business!”",
+                                "matchedExpression": "@global.w_stress_teen_boy_1",
+                                "type": "global",
+                                "fieldName": "w_stress_teen_boy_1"
+                              },
+                              {
+                                "fullExpression": "@global.w_stress_teen_boy_1: “Can I have money to buy some airtime?”  \n\n@global.w_stress_male_caregiver: “Leave me alone and mind your own business!”",
+                                "matchedExpression": "@global.w_stress_male_caregiver",
+                                "type": "global",
+                                "fieldName": "w_stress_male_caregiver"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@global.w_stress_teen_boy_1": [
+                              "value"
+                            ],
+                            "@global.w_stress_male_caregiver": [
+                              "value"
+                            ]
+                          }
+                        }
+                      ],
+                      "_nested_name": "read.workshop_activity.content_box.box_2.box_1"
+                    },
+                    {
+                      "type": "nested_properties",
+                      "name": "box_2",
+                      "value": "pair",
+                      "rows": [
+                        {
+                          "type": "nested_properties",
+                          "name": "box_1",
+                          "value": "box_story",
+                          "rows": [
+                            {
+                              "name": "image_src",
+                              "value": "plh_images/workshops/w_stress/read_1/slide_3.svg",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.image_src"
+                            },
+                            {
+                              "name": "text",
+                              "value": "@global.w_stress_teen_boy_1: “What did I do? You never listen!”  \n\n@global.w_stress_male_caregiver: “I said leave me alone or you will get a beating!”",
+                              "_translations": {
+                                "value": {
+                                  "tz_sw": true
+                                }
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.text",
+                              "_dynamicFields": {
+                                "value": [
+                                  {
+                                    "fullExpression": "@global.w_stress_teen_boy_1: “What did I do? You never listen!”  \n\n@global.w_stress_male_caregiver: “I said leave me alone or you will get a beating!”",
+                                    "matchedExpression": "@global.w_stress_teen_boy_1",
+                                    "type": "global",
+                                    "fieldName": "w_stress_teen_boy_1"
+                                  },
+                                  {
+                                    "fullExpression": "@global.w_stress_teen_boy_1: “What did I do? You never listen!”  \n\n@global.w_stress_male_caregiver: “I said leave me alone or you will get a beating!”",
+                                    "matchedExpression": "@global.w_stress_male_caregiver",
+                                    "type": "global",
+                                    "fieldName": "w_stress_male_caregiver"
+                                  }
+                                ]
+                              },
+                              "_dynamicDependencies": {
+                                "@global.w_stress_teen_boy_1": [
+                                  "value"
+                                ],
+                                "@global.w_stress_male_caregiver": [
+                                  "value"
+                                ]
+                              }
+                            }
+                          ],
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1"
+                        },
+                        {
+                          "type": "nested_properties",
+                          "name": "box_2",
+                          "value": "pair",
+                          "rows": [
+                            {
+                              "type": "nested_properties",
+                              "name": "box_1",
+                              "value": "box_story",
+                              "rows": [
+                                {
+                                  "name": "image_src",
+                                  "value": "plh_images/workshops/w_stress/read_1/slide_4.svg",
+                                  "_translations": {
+                                    "value": {}
+                                  },
+                                  "type": "set_variable",
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1.image_src"
+                                },
+                                {
+                                  "name": "text",
+                                  "value": "@global.w_stress_girl: “Look! I have made a house!”",
+                                  "_translations": {
+                                    "value": {
+                                      "tz_sw": true
+                                    }
+                                  },
+                                  "type": "set_variable",
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1.text",
+                                  "_dynamicFields": {
+                                    "value": [
+                                      {
+                                        "fullExpression": "@global.w_stress_girl: “Look! I have made a house!”",
+                                        "matchedExpression": "@global.w_stress_girl",
+                                        "type": "global",
+                                        "fieldName": "w_stress_girl"
+                                      }
+                                    ]
+                                  },
+                                  "_dynamicDependencies": {
+                                    "@global.w_stress_girl": [
+                                      "value"
+                                    ]
+                                  }
+                                }
+                              ],
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1"
+                            },
+                            {
+                              "type": "nested_properties",
+                              "name": "box_2",
+                              "value": "pair",
+                              "rows": [
+                                {
+                                  "type": "nested_properties",
+                                  "name": "box_1",
+                                  "value": "box_story",
+                                  "rows": [
+                                    {
+                                      "name": "image_src",
+                                      "value": "plh_images/workshops/w_stress/read_1/slide_5.svg",
+                                      "_translations": {
+                                        "value": {}
+                                      },
+                                      "type": "set_variable",
+                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_1.image_src"
+                                    },
+                                    {
+                                      "name": "text",
+                                      "value": "@global.w_stress_teen_boy_1: “Who cares about your stupid house!”",
+                                      "_translations": {
+                                        "value": {
+                                          "tz_sw": true
+                                        }
+                                      },
+                                      "type": "set_variable",
+                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_1.text",
+                                      "_dynamicFields": {
+                                        "value": [
+                                          {
+                                            "fullExpression": "@global.w_stress_teen_boy_1: “Who cares about your stupid house!”",
+                                            "matchedExpression": "@global.w_stress_teen_boy_1",
+                                            "type": "global",
+                                            "fieldName": "w_stress_teen_boy_1"
+                                          }
+                                        ]
+                                      },
+                                      "_dynamicDependencies": {
+                                        "@global.w_stress_teen_boy_1": [
+                                          "value"
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_1"
+                                },
+                                {
+                                  "type": "nested_properties",
+                                  "name": "box_2",
+                                  "value": "box_image",
+                                  "rows": [
+                                    {
+                                      "name": "image_src",
+                                      "value": "plh_images/workshops/w_stress/read_1/slide_6.svg",
+                                      "_translations": {
+                                        "value": {}
+                                      },
+                                      "type": "set_variable",
+                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.image_src"
+                                    },
+                                    {
+                                      "name": "text",
+                                      "hidden": true,
+                                      "type": "set_variable",
+                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.text"
+                                    }
+                                  ],
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2"
+                                }
+                              ],
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2"
+                            }
+                          ],
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2"
+                        }
+                      ],
+                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2"
+                    }
+                  ],
+                  "_nested_name": "read.workshop_activity.content_box.box_2"
+                }
+              ],
+              "_nested_name": "read.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "read.workshop_activity"
+        }
+      ],
+      "_nested_name": "read"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
+}

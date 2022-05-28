@@ -1,0 +1,276 @@
+{
+  "flow_type": "template",
+  "module": "1on1",
+  "flow_name": "w_1on1_question",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "question_time",
+      "value": "question_time",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "include_outro",
+              "value": true,
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "question_time.workshop_activity.include_outro"
+            },
+            {
+              "name": "intro_text",
+              "value": "Let's think of ways to spend one-on-one time with your teen.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "question_time.workshop_activity.intro_text"
+            },
+            {
+              "name": "outro_habit_data",
+              "value": "@data.habit.spend_time",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "question_time.workshop_activity.outro_habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.spend_time",
+                    "matchedExpression": "@data.habit.spend_time",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.spend_time": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_combo_box",
+              "rows": [
+                {
+                  "name": "combo_box_tracker",
+                  "value": "w_1on1_question_a",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.combo_box_tracker"
+                },
+                {
+                  "name": "text",
+                  "hidden": true,
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.text"
+                },
+                {
+                  "name": "question_text",
+                  "value": "What could you do to spend one-on-one time with your teen?",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.question_text"
+                },
+                {
+                  "name": "answer_list",
+                  "value": [
+                    "name:name_1 | text:@global.spend_time_idea_1",
+                    "name:name_2 | text:@global.spend_time_idea_2",
+                    "name:name_3 | text:@global.spend_time_idea_3",
+                    "name:name_4 | text:@global.spend_time_idea_4",
+                    "name:name_5 | text:@global.spend_time_idea_5",
+                    "name:name_6 | text:@global.spend_time_idea_6",
+                    "name:name_7 | text:@global.spend_time_idea_7",
+                    "name:name_8 | text:@global.spend_time_idea_8",
+                    "name:name_9 | text:@global.spend_time_idea_9",
+                    "name:name_10 | text:@global.spend_time_idea_10"
+                  ],
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.answer_list",
+                  "_dynamicFields": {
+                    "value": {
+                      "0": [
+                        {
+                          "fullExpression": "name:name_1 | text:@global.spend_time_idea_1",
+                          "matchedExpression": "@global.spend_time_idea_1",
+                          "type": "global",
+                          "fieldName": "spend_time_idea_1"
+                        }
+                      ],
+                      "1": [
+                        {
+                          "fullExpression": "name:name_2 | text:@global.spend_time_idea_2",
+                          "matchedExpression": "@global.spend_time_idea_2",
+                          "type": "global",
+                          "fieldName": "spend_time_idea_2"
+                        }
+                      ],
+                      "2": [
+                        {
+                          "fullExpression": "name:name_3 | text:@global.spend_time_idea_3",
+                          "matchedExpression": "@global.spend_time_idea_3",
+                          "type": "global",
+                          "fieldName": "spend_time_idea_3"
+                        }
+                      ],
+                      "3": [
+                        {
+                          "fullExpression": "name:name_4 | text:@global.spend_time_idea_4",
+                          "matchedExpression": "@global.spend_time_idea_4",
+                          "type": "global",
+                          "fieldName": "spend_time_idea_4"
+                        }
+                      ],
+                      "4": [
+                        {
+                          "fullExpression": "name:name_5 | text:@global.spend_time_idea_5",
+                          "matchedExpression": "@global.spend_time_idea_5",
+                          "type": "global",
+                          "fieldName": "spend_time_idea_5"
+                        }
+                      ],
+                      "5": [
+                        {
+                          "fullExpression": "name:name_6 | text:@global.spend_time_idea_6",
+                          "matchedExpression": "@global.spend_time_idea_6",
+                          "type": "global",
+                          "fieldName": "spend_time_idea_6"
+                        }
+                      ],
+                      "6": [
+                        {
+                          "fullExpression": "name:name_7 | text:@global.spend_time_idea_7",
+                          "matchedExpression": "@global.spend_time_idea_7",
+                          "type": "global",
+                          "fieldName": "spend_time_idea_7"
+                        }
+                      ],
+                      "7": [
+                        {
+                          "fullExpression": "name:name_8 | text:@global.spend_time_idea_8",
+                          "matchedExpression": "@global.spend_time_idea_8",
+                          "type": "global",
+                          "fieldName": "spend_time_idea_8"
+                        }
+                      ],
+                      "8": [
+                        {
+                          "fullExpression": "name:name_9 | text:@global.spend_time_idea_9",
+                          "matchedExpression": "@global.spend_time_idea_9",
+                          "type": "global",
+                          "fieldName": "spend_time_idea_9"
+                        }
+                      ],
+                      "9": [
+                        {
+                          "fullExpression": "name:name_10 | text:@global.spend_time_idea_10",
+                          "matchedExpression": "@global.spend_time_idea_10",
+                          "type": "global",
+                          "fieldName": "spend_time_idea_10"
+                        }
+                      ]
+                    }
+                  },
+                  "_dynamicDependencies": {
+                    "@global.spend_time_idea_1": [
+                      "value.0"
+                    ],
+                    "@global.spend_time_idea_2": [
+                      "value.1"
+                    ],
+                    "@global.spend_time_idea_3": [
+                      "value.2"
+                    ],
+                    "@global.spend_time_idea_4": [
+                      "value.3"
+                    ],
+                    "@global.spend_time_idea_5": [
+                      "value.4"
+                    ],
+                    "@global.spend_time_idea_6": [
+                      "value.5"
+                    ],
+                    "@global.spend_time_idea_7": [
+                      "value.6"
+                    ],
+                    "@global.spend_time_idea_8": [
+                      "value.7"
+                    ],
+                    "@global.spend_time_idea_9": [
+                      "value.8"
+                    ],
+                    "@global.spend_time_idea_10": [
+                      "value.9"
+                    ]
+                  }
+                },
+                {
+                  "name": "reply",
+                  "value": "Feel like you have NO TIME and you are exhausted? Remember to also think of ways that do not take up extra time.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.reply"
+                }
+              ],
+              "_nested_name": "question_time.workshop_activity.content_box"
+            },
+            {
+              "name": "outro_text",
+              "value": "It may take some time to get used to one-on-one time, but the more you do it the better it gets!\n\nYou are an amazing parent for trying this.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "question_time.workshop_activity.outro_text"
+            }
+          ],
+          "_nested_name": "question_time.workshop_activity"
+        }
+      ],
+      "_nested_name": "question_time"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_1on1.xlsx"
+}

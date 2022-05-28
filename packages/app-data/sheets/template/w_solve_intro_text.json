@@ -1,0 +1,34 @@
+{
+  "flow_type": "template",
+  "module": "solve",
+  "flow_name": "w_solve_intro_text",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "description_text",
+          "value": "Greetings, everyone. \n\nToday's topic is problem solving. \n\nWe all know that in life there are times where we face problems, and we all know in a way that when we find ourselves in these situations, it is difficult to think of immediate positive solutions. \n\nTherefore, it is important that when we are facing problems we take a pause, we breathe, keep calm and think of problem-solving skills that we may use. \n\nRemember to include our teenagers when we are solving problems. This will help them to become responsible and learn how to solve their own problems in the future.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.description_text"
+        },
+        {
+          "name": "list_text",
+          "hidden": true,
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text"
+        }
+      ],
+      "_nested_name": "suggestions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"
+}

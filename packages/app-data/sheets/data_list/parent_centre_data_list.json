@@ -1,0 +1,319 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "parent_centre_data_list",
+  "status": "released",
+  "data_list_name": "parent_centre",
+  "rows": [
+    {
+      "id": "my_tips",
+      "show": true,
+      "icon_asset": "plh_images/icons/light_bulb_heart_white.svg",
+      "template": "parent_centre_my_tips",
+      "tile_style": "parent_centre_1",
+      "click_count_field": "click_pc_my_tips_count",
+      "title": "My Tips",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "location_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "My Tips"
+        },
+        "location_text": {
+          "eng": "**My Tips** in the @global.parent_centre"
+        }
+      },
+      "location_text": "**My Tips** in the @global.parent_centre"
+    },
+    {
+      "id": "essential_tools",
+      "show": true,
+      "icon_asset": "plh_images/icons/light_bulb_white.svg",
+      "template": "parent_centre_essential_tools",
+      "tile_style": "parent_centre_3",
+      "click_count_field": "click_pc_essential_tools_count",
+      "title": "Essential Tools",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "location_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Essential Tools"
+        },
+        "location_text": {
+          "eng": "**Essential Tools** in the @global.parent_centre"
+        }
+      },
+      "location_text": "**Essential Tools** in the @global.parent_centre"
+    },
+    {
+      "id": "customisation",
+      "show": "@fields.survey_welcome_completed",
+      "icon_asset": "plh_images/icons/phone_heart_white.svg",
+      "template": "setup_and_survey_stepper",
+      "tile_style": "parent_centre_4",
+      "click_count_field": "click_pc_customisation_count",
+      "title": "Customise @global.parent_app",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "location_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Customise @global.parent_app"
+        },
+        "location_text": {
+          "eng": "**Customise @global.parent_app** in the @global.parent_centre"
+        }
+      },
+      "location_text": "**Customise @global.parent_app** in the @global.parent_centre"
+    },
+    {
+      "id": "customise_again",
+      "show": "!@fields.survey_welcome_completed",
+      "icon_asset": "plh_images/icons/phone_heart_white.svg",
+      "template": "parent_centre_customisation",
+      "tile_style": "parent_centre_4",
+      "click_count_field": "click_pc_customise_again_count",
+      "title": "Customise Again",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "location_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Customise Again"
+        },
+        "location_text": {
+          "eng": "**Customise Again** in the @global.parent_centre"
+        }
+      },
+      "location_text": "**Customise Again** in the @global.parent_centre"
+    },
+    {
+      "id": "relax_and_activities",
+      "show": true,
+      "icon_asset": "plh_images/icons/smile_eyes_up_white.svg",
+      "template": "parent_centre_relax_and_act",
+      "tile_style": "parent_centre_1",
+      "click_count_field": "click_pc_relax_and_activities_count",
+      "title": "Relax & Activities",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "location_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Relax & Activities"
+        },
+        "location_text": {
+          "eng": "under **Relax & Activities** in the @global.parent_centre"
+        }
+      },
+      "location_text": "under **Relax & Activities** in the @global.parent_centre"
+    },
+    {
+      "id": "help",
+      "show": true,
+      "icon_asset": "plh_images/icons/question_mark_white.svg",
+      "template": "parent_centre_help",
+      "tile_style": "parent_centre_3",
+      "click_count_field": "click_pc_help_count",
+      "title": "Help",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "location_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Help"
+        },
+        "location_text": {
+          "eng": "**Help** in the @global.parent_centre"
+        }
+      },
+      "location_text": "**Help** in the @global.parent_centre"
+    },
+    {
+      "id": "technical_support",
+      "show": true,
+      "icon_asset": "plh_images/icons/info_phone_white.svg",
+      "template": "parent_centre_technical_support",
+      "tile_style": "parent_centre_4",
+      "click_count_field": "click_pc_technical_support_count",
+      "title": "Technical Support",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "location_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Technical Support"
+        },
+        "location_text": {
+          "eng": "**Technical Support** in the @global.parent_centre"
+        }
+      },
+      "location_text": "**Technical Support** in the @global.parent_centre"
+    },
+    {
+      "id": "covid",
+      "show": true,
+      "icon_asset": "plh_images/icons/ask_question_white.svg",
+      "template": "parent_centre_covid",
+      "tile_style": "parent_centre_1",
+      "click_count_field": "click_pc_covid_count",
+      "title": "Coping with @global.covid",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "location_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Coping with @global.covid"
+        },
+        "location_text": {
+          "eng": "**Coping with @global.covid** in the @global.parent_centre"
+        }
+      },
+      "location_text": "**Coping with @global.covid** in the @global.parent_centre"
+    },
+    {
+      "id": "bereavement",
+      "show": true,
+      "icon_asset": "plh_images/icons/hands_support_heart_white.svg",
+      "template": "parent_centre_bereavement",
+      "tile_style": "parent_centre_3",
+      "click_count_field": "click_pc_bereavement_count",
+      "title": "Coping with grief",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "location_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Coping with grief"
+        },
+        "location_text": {
+          "eng": "**Coping with grief** in the @global.parent_centre"
+        }
+      },
+      "location_text": "**Coping with grief** in the @global.parent_centre"
+    },
+    {
+      "id": "message_archive",
+      "show": true,
+      "icon_asset": "plh_images/icons/letter_white.svg",
+      "template": "parent_centre_message_archive",
+      "tile_style": "parent_centre_4",
+      "click_count_field": "click_pc_message_archive_count",
+      "title": "Message Archive",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "location_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Message Archive"
+        },
+        "location_text": {
+          "eng": "**Message Archive** in the @global.parent_centre"
+        }
+      },
+      "location_text": "**Message Archive** in the @global.parent_centre"
+    },
+    {
+      "id": "support_contacts",
+      "show": false,
+      "icon_asset": "plh_images/icons/hands_support_heart_white.svg",
+      "tile_style": "parent_centre_1",
+      "click_count_field": "click_pc_support_contacts_count",
+      "title": "Support Contacts",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "location_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Support Contacts"
+        },
+        "location_text": {
+          "eng": "**Support Contacts** in the @global.parent_centre"
+        }
+      },
+      "location_text": "**Support Contacts** in the @global.parent_centre"
+    },
+    {
+      "id": "evidence_base",
+      "show": false,
+      "icon_asset": "plh_images/icons/documents_white.svg",
+      "tile_style": "parent_centre_3",
+      "click_count_field": "click_pc_evidence_base_count",
+      "title": "Evidence Base",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "location_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Evidence Base"
+        },
+        "location_text": {
+          "eng": "**Evidence Base** in the @global.parent_centre"
+        }
+      },
+      "location_text": "**Evidence Base** in the @global.parent_centre"
+    }
+  ],
+  "_xlsxPath": "global/data/parent_centre_data_list.xlsx"
+}

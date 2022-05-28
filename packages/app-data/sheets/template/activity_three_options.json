@@ -1,0 +1,62 @@
+{
+  "flow_type": "template",
+  "flow_name": "activity_three_options",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "lib_act_something_fun",
+      "value": "lib_act_something_fun",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        }
+      ],
+      "rows": [
+        {
+          "name": "activity_data",
+          "value": "@data.something_fun.three_options",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "lib_act_something_fun.activity_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.something_fun.three_options",
+                "matchedExpression": "@data.something_fun.three_options",
+                "type": "data",
+                "fieldName": "something_fun"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.something_fun.three_options": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "activity_text",
+          "value": "* Think of three different situations. For example, driving a car, sailing a boat or flying a plane.\n* Say them to your teen and ask, “Which would you prefer?”\n* Ask them why?\n* Now think of three more situations or ask your teen to do it for you.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "lib_act_something_fun.activity_text"
+        }
+      ],
+      "_nested_name": "lib_act_something_fun"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
+}

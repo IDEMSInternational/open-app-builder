@@ -1,0 +1,61 @@
+{
+  "flow_type": "template",
+  "module": "safe",
+  "flow_name": "w_safe_relax",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "relax",
+      "value": "relax",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_safe",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "relax.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_safe",
+                "matchedExpression": "@data.workshop.w_safe",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_safe": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "relax"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"
+}

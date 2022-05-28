@@ -1,0 +1,218 @@
+{
+  "flow_type": "global",
+  "flow_name": "activity_variables",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_global_constant",
+      "name": "my_activities",
+      "value": "My Favourite Activities",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "all_activities",
+      "value": "All Activities",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "random_activity",
+      "value": "Random Activity",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "current_activity",
+      "value": "This Week's Activity",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "chat_together",
+      "value": "Chat Together",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "do_together",
+      "value": "Do Together",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_reflect_positive_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_check_in_chat_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_dream_travel_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_famous_party_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_two_truths_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_time_machine_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_superpowers_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_friendly_chat_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_interrupter_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_three_options_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_yes_no_maybe_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_memory_game_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_invent_story_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_co_chef_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_dance_moves_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_mirror_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_praise_time_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_whats_new_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_get_active_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_name_that_tune_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_pass_the_snap_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_family_workout_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_housework_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_doing_what_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "activity_crazy_chicken_favourite",
+      "value": false,
+      "exclude_from_translation": true
+    }
+  ],
+  "_xlsxPath": "global/data/parent_centre_globals.xlsx"
+}

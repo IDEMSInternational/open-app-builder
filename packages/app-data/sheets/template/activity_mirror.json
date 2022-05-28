@@ -1,0 +1,62 @@
+{
+  "flow_type": "template",
+  "flow_name": "activity_mirror",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "lib_act_something_fun",
+      "value": "lib_act_something_fun",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        }
+      ],
+      "rows": [
+        {
+          "name": "activity_data",
+          "value": "@data.something_fun.mirror",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "lib_act_something_fun.activity_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.something_fun.mirror",
+                "matchedExpression": "@data.something_fun.mirror",
+                "type": "data",
+                "fieldName": "something_fun"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.something_fun.mirror": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "activity_text",
+          "value": "* This game can be played in pairs or with many people in a group.\n* Stand facing each other or in a circle. \n* One person leads first and everyone else copies them, trying to move exactly at the same time as the leader.\n* Make sure the leader moves slowly enough for everyone else to follow! Explore moving different body parts and in different levels.\n* After a while, switch who is leading. Give everyone a chance to lead.\n* Try it with no leaders!",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "lib_act_something_fun.activity_text"
+        }
+      ],
+      "_nested_name": "lib_act_something_fun"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
+}

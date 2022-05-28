@@ -1,0 +1,34 @@
+{
+  "flow_type": "template",
+  "module": "rules",
+  "flow_name": "w_rules_intro_text",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "description_text",
+          "value": "Greetings, everyone. \n\nToday's topic is rules. \n\nRules promote peace within the household and promote understanding amongst family members. \n\nRules promote responsibilities for each family member; therefore, it is important to have family rules. \n\nA household with family rules lives in peace.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.description_text"
+        },
+        {
+          "name": "list_text",
+          "hidden": true,
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text"
+        }
+      ],
+      "_nested_name": "suggestions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_rules.xlsx"
+}

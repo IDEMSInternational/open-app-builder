@@ -1,0 +1,62 @@
+{
+  "flow_type": "template",
+  "flow_name": "activity_time_machine",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "lib_act_something_fun",
+      "value": "lib_act_something_fun",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        }
+      ],
+      "rows": [
+        {
+          "name": "activity_data",
+          "value": "@data.something_fun.time_machine",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "lib_act_something_fun.activity_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.something_fun.time_machine",
+                "matchedExpression": "@data.something_fun.time_machine",
+                "type": "data",
+                "fieldName": "something_fun"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.something_fun.time_machine": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "activity_text",
+          "value": "Tell your teenager something about when you were a teenager yourself. What things didn’t exist then? Phones with internet? What did you do for fun? What did you worry about? Don’t worry if they don’t tell you something in return – what’s important is that they listen and remember. Sometimes our teenagers forget that their parents are people too!",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "lib_act_something_fun.activity_text"
+        }
+      ],
+      "_nested_name": "lib_act_something_fun"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
+}

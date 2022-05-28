@@ -1,0 +1,163 @@
+{
+  "flow_type": "template",
+  "flow_name": "workshop_unlock",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Unlock Workshops",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "title"
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "Are you sure you want to unlock all the workshops? Once you do this you will not be able to lock them back",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text"
+    },
+    {
+      "type": "button",
+      "name": "unlock_button",
+      "value": "Unlock Workshops",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_self_care_disabled",
+            false
+          ],
+          "_raw": "click | set_field:w_self_care_disabled:false",
+          "_cleaned": "click | set_field:w_self_care_disabled:false"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_1on1_disabled",
+            false
+          ],
+          "_raw": "click | set_field:w_1on1_disabled:false",
+          "_cleaned": "click | set_field:w_1on1_disabled:false"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_praise_disabled",
+            false
+          ],
+          "_raw": "click | set_field:w_praise_disabled:false",
+          "_cleaned": "click | set_field:w_praise_disabled:false"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_instruct_disabled",
+            false
+          ],
+          "_raw": "click | set_field:w_instruct_disabled:false",
+          "_cleaned": "click | set_field:w_instruct_disabled:false"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_stress_disabled",
+            false
+          ],
+          "_raw": "click | set_field:w_stress_disabled:false",
+          "_cleaned": "click | set_field:w_stress_disabled:false"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_money_disabled",
+            false
+          ],
+          "_raw": "click | set_field:w_money_disabled:false",
+          "_cleaned": "click | set_field:w_money_disabled:false"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_rules_disabled",
+            false
+          ],
+          "_raw": "click | set_field:w_rules_disabled:false",
+          "_cleaned": "click | set_field:w_rules_disabled:false"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_consequence_disabled",
+            false
+          ],
+          "_raw": "click | set_field:w_consequence_disabled:false",
+          "_cleaned": "click | set_field:w_consequence_disabled:false"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_solve_disabled",
+            false
+          ],
+          "_raw": "click | set_field:w_solve_disabled:false",
+          "_cleaned": "click | set_field:w_solve_disabled:false"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_safe_disabled",
+            false
+          ],
+          "_raw": "click | set_field:w_safe_disabled:false",
+          "_cleaned": "click | set_field:w_safe_disabled:false"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_crisis_disabled",
+            false
+          ],
+          "_raw": "click | set_field:w_crisis_disabled:false",
+          "_cleaned": "click | set_field:w_crisis_disabled:false"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "w_celebrate_disabled",
+            false
+          ],
+          "_raw": "click | set_field:w_celebrate_disabled:false",
+          "_cleaned": "click | set_field:w_celebrate_disabled:false"
+        }
+      ],
+      "_nested_name": "unlock_button"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_navigation.xlsx"
+}

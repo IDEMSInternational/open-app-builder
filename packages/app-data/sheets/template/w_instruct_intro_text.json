@@ -1,0 +1,34 @@
+{
+  "flow_type": "template",
+  "module": "instruct",
+  "flow_name": "w_instruct_intro_text",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "description_text",
+          "value": "Greetings, greetings everyone.\n\nToday our topic is positive instructions. \n\nIt is important to give positive instructions to our children, because when we give them positive instructions they know and understand what we are expecting them to do, and they do it the way we want them to do it. \n\nSo, at the end it keeps everyone happy.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.description_text"
+        },
+        {
+          "name": "list_text",
+          "hidden": true,
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text"
+        }
+      ],
+      "_nested_name": "suggestions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
+}

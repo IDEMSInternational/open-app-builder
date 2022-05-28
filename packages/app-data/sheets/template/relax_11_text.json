@@ -1,0 +1,43 @@
+{
+  "flow_type": "template",
+  "module": "solve",
+  "flow_name": "relax_11_text",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "relax_text",
+      "value": "relax_text",
+      "rows": [
+        {
+          "name": "activity_text",
+          "value": "Sit down and close your eyes.\nHow many sounds can you hear?  \nListen to the sounds inside and outside the room. Count them on your fingers. \nAfter ten seconds, how many fingers do you have up? What sounds did you hear? \n\nTry again for another ten seconds.  \nDid you hear any new sounds? Did you hear any sounds inside your own body? \nNotice how you feel now.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "relax_text.activity_text"
+        },
+        {
+          "name": "outro_text",
+          "hidden": true,
+          "type": "set_variable",
+          "_nested_name": "relax_text.outro_text"
+        }
+      ],
+      "_nested_name": "relax_text"
+    },
+    {
+      "value": "",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "name": "set_variable",
+      "_nested_name": "set_variable"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/databank_relax.xlsx"
+}

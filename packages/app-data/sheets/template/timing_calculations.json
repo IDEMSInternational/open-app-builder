@@ -1,0 +1,589 @@
+{
+  "flow_type": "template",
+  "flow_name": "timing_calculations",
+  "status": "released",
+  "process_on_start": 1,
+  "rows": [
+    {
+      "name": "app_first_launch",
+      "value": "@calc(this.app_first_launch)",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "app_first_launch",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@calc(this.app_first_launch)",
+            "matchedExpression": "@calc(this.app_first_launch)",
+            "type": "calc",
+            "fieldName": "this.app_first_launch"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@calc(this.app_first_launch)": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "today_end",
+      "value": "@calc(window.date_fns.endOfDay(new Date()))",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "today_end",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@calc(window.date_fns.endOfDay(new Date()))",
+            "matchedExpression": "@calc(window.date_fns.endOfDay(new Date()))",
+            "type": "calc",
+            "fieldName": "window.date_fns.endOfDay(new Date())"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@calc(window.date_fns.endOfDay(new Date()))": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "initial_benchmarks",
+      "condition": "!@fields.benchmark_date",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "set_field",
+          "name": "workshop_start_day",
+          "value": "@calc(window.date_fns.getDay(new Date(@local.app_first_launch)))",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "initial_benchmarks.workshop_start_day",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@calc(window.date_fns.getDay(new Date(@local.app_first_launch)))",
+                "matchedExpression": "@local.app_first_launch",
+                "type": "local",
+                "fieldName": "app_first_launch"
+              },
+              {
+                "fullExpression": "@calc(window.date_fns.getDay(new Date(@local.app_first_launch)))",
+                "matchedExpression": "@calc(window.date_fns.getDay(new Date(@local.app_first_launch)))",
+                "type": "calc",
+                "fieldName": "window.date_fns.getDay(new Date(@local.app_first_launch))"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.app_first_launch": [
+              "value"
+            ],
+            "@calc(window.date_fns.getDay(new Date(@local.app_first_launch)))": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "set_field",
+          "name": "benchmark_date",
+          "value": "@local.app_first_launch",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "initial_benchmarks.benchmark_date",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.app_first_launch",
+                "matchedExpression": "@local.app_first_launch",
+                "type": "local",
+                "fieldName": "app_first_launch"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.app_first_launch": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "set_field",
+          "name": "benchmark_workshop_number",
+          "value": 1,
+          "_nested_name": "initial_benchmarks.benchmark_workshop_number"
+        }
+      ],
+      "_nested_name": "initial_benchmarks",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@fields.benchmark_date",
+            "matchedExpression": "!@fields.benchmark_date",
+            "type": "fields",
+            "fieldName": "benchmark_date"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@fields.benchmark_date": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "workshop_start_day_label",
+      "value": "Sunday",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "condition": "@fields.workshop_start_day == 0",
+      "_nested_name": "workshop_start_day_label",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.workshop_start_day == 0",
+            "matchedExpression": "@fields.workshop_start_day",
+            "type": "fields",
+            "fieldName": "workshop_start_day"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.workshop_start_day": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "workshop_start_day_label",
+      "value": "Monday",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "condition": "@fields.workshop_start_day == 1",
+      "_nested_name": "workshop_start_day_label",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.workshop_start_day == 1",
+            "matchedExpression": "@fields.workshop_start_day",
+            "type": "fields",
+            "fieldName": "workshop_start_day"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.workshop_start_day": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "workshop_start_day_label",
+      "value": "Tuesday",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "condition": "@fields.workshop_start_day == 2",
+      "_nested_name": "workshop_start_day_label",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.workshop_start_day == 2",
+            "matchedExpression": "@fields.workshop_start_day",
+            "type": "fields",
+            "fieldName": "workshop_start_day"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.workshop_start_day": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "workshop_start_day_label",
+      "value": "Wednesday",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "condition": "@fields.workshop_start_day == 3",
+      "_nested_name": "workshop_start_day_label",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.workshop_start_day == 3",
+            "matchedExpression": "@fields.workshop_start_day",
+            "type": "fields",
+            "fieldName": "workshop_start_day"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.workshop_start_day": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "workshop_start_day_label",
+      "value": "Thursday",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "condition": "@fields.workshop_start_day == 4",
+      "_nested_name": "workshop_start_day_label",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.workshop_start_day == 4",
+            "matchedExpression": "@fields.workshop_start_day",
+            "type": "fields",
+            "fieldName": "workshop_start_day"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.workshop_start_day": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "workshop_start_day_label",
+      "value": "Friday",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "condition": "@fields.workshop_start_day == 5",
+      "_nested_name": "workshop_start_day_label",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.workshop_start_day == 5",
+            "matchedExpression": "@fields.workshop_start_day",
+            "type": "fields",
+            "fieldName": "workshop_start_day"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.workshop_start_day": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "workshop_start_day_label",
+      "value": "Saturday",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "condition": "@fields.workshop_start_day == 6",
+      "_nested_name": "workshop_start_day_label",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.workshop_start_day == 6",
+            "matchedExpression": "@fields.workshop_start_day",
+            "type": "fields",
+            "fieldName": "workshop_start_day"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.workshop_start_day": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "benchmark_day",
+      "value": "@calc( (window.date_fns.getDay(new Date(@fields.benchmark_date)) - @fields.workshop_start_day +7) % 7)",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "benchmark_day",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@calc( (window.date_fns.getDay(new Date(@fields.benchmark_date)) - @fields.workshop_start_day +7) % 7)",
+            "matchedExpression": "@fields.benchmark_date",
+            "type": "fields",
+            "fieldName": "benchmark_date"
+          },
+          {
+            "fullExpression": "@calc( (window.date_fns.getDay(new Date(@fields.benchmark_date)) - @fields.workshop_start_day +7) % 7)",
+            "matchedExpression": "@fields.workshop_start_day",
+            "type": "fields",
+            "fieldName": "workshop_start_day"
+          },
+          {
+            "fullExpression": "@calc( (window.date_fns.getDay(new Date(@fields.benchmark_date)) - @fields.workshop_start_day +7) % 7)",
+            "matchedExpression": "@calc( (window.date_fns.getDay(new Date(@fields.benchmark_date)) - @fields.workshop_start_day +7) % 7)",
+            "type": "calc",
+            "fieldName": " (window.date_fns.getDay(new Date(@fields.benchmark_date)) - @fields.workshop_start_day +7) % 7"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.benchmark_date": [
+          "value"
+        ],
+        "@fields.workshop_start_day": [
+          "value"
+        ],
+        "@calc( (window.date_fns.getDay(new Date(@fields.benchmark_date)) - @fields.workshop_start_day +7) % 7)": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "days_since_benchmark_date",
+      "value": "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@fields.benchmark_date)))",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "days_since_benchmark_date",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@fields.benchmark_date)))",
+            "matchedExpression": "@local.today_end",
+            "type": "local",
+            "fieldName": "today_end"
+          },
+          {
+            "fullExpression": "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@fields.benchmark_date)))",
+            "matchedExpression": "@fields.benchmark_date",
+            "type": "fields",
+            "fieldName": "benchmark_date"
+          },
+          {
+            "fullExpression": "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@fields.benchmark_date)))",
+            "matchedExpression": "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@fields.benchmark_date)))",
+            "type": "calc",
+            "fieldName": "window.date_fns.differenceInDays(@local.today_end, new Date(@fields.benchmark_date))"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.today_end": [
+          "value"
+        ],
+        "@fields.benchmark_date": [
+          "value"
+        ],
+        "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@fields.benchmark_date)))": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "workshop_number",
+      "value": "@calc( +@fields.benchmark_workshop_number + Math.floor((@local.days_since_benchmark_date + +@fields.benchmark_day)/7) )",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "workshop_number",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@calc( +@fields.benchmark_workshop_number + Math.floor((@local.days_since_benchmark_date + +@fields.benchmark_day)/7) )",
+            "matchedExpression": "@fields.benchmark_workshop_number",
+            "type": "fields",
+            "fieldName": "benchmark_workshop_number"
+          },
+          {
+            "fullExpression": "@calc( +@fields.benchmark_workshop_number + Math.floor((@local.days_since_benchmark_date + +@fields.benchmark_day)/7) )",
+            "matchedExpression": "@local.days_since_benchmark_date",
+            "type": "local",
+            "fieldName": "days_since_benchmark_date"
+          },
+          {
+            "fullExpression": "@calc( +@fields.benchmark_workshop_number + Math.floor((@local.days_since_benchmark_date + +@fields.benchmark_day)/7) )",
+            "matchedExpression": "@fields.benchmark_day",
+            "type": "fields",
+            "fieldName": "benchmark_day"
+          },
+          {
+            "fullExpression": "@calc( +@fields.benchmark_workshop_number + Math.floor((@local.days_since_benchmark_date + +@fields.benchmark_day)/7) )",
+            "matchedExpression": "@calc( +@fields.benchmark_workshop_number + Math.floor((@local.days_since_benchmark_date + +@fields.benchmark_day)/7) )",
+            "type": "calc",
+            "fieldName": " +@fields.benchmark_workshop_number + Math.floor((@local.days_since_benchmark_date + +@fields.benchmark_day)/7) "
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.benchmark_workshop_number": [
+          "value"
+        ],
+        "@local.days_since_benchmark_date": [
+          "value"
+        ],
+        "@fields.benchmark_day": [
+          "value"
+        ],
+        "@calc( +@fields.benchmark_workshop_number + Math.floor((@local.days_since_benchmark_date + +@fields.benchmark_day)/7) )": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "workshop_day",
+      "value": "@calc( (window.date_fns.getDay(@local.today_end) - @fields.workshop_start_day + 7) % 7 )",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "workshop_day",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@calc( (window.date_fns.getDay(@local.today_end) - @fields.workshop_start_day + 7) % 7 )",
+            "matchedExpression": "@local.today_end",
+            "type": "local",
+            "fieldName": "today_end"
+          },
+          {
+            "fullExpression": "@calc( (window.date_fns.getDay(@local.today_end) - @fields.workshop_start_day + 7) % 7 )",
+            "matchedExpression": "@fields.workshop_start_day",
+            "type": "fields",
+            "fieldName": "workshop_start_day"
+          },
+          {
+            "fullExpression": "@calc( (window.date_fns.getDay(@local.today_end) - @fields.workshop_start_day + 7) % 7 )",
+            "matchedExpression": "@calc( (window.date_fns.getDay(@local.today_end) - @fields.workshop_start_day + 7) % 7 )",
+            "type": "calc",
+            "fieldName": " (window.date_fns.getDay(@local.today_end) - @fields.workshop_start_day + 7) % 7 "
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.today_end": [
+          "value"
+        ],
+        "@fields.workshop_start_day": [
+          "value"
+        ],
+        "@calc( (window.date_fns.getDay(@local.today_end) - @fields.workshop_start_day + 7) % 7 )": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "value": "@data.workshop",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "type": "set_field",
+          "name": "workshop_id",
+          "value": "@item.id",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@item.number == @fields.workshop_number",
+          "exclude_from_translation": true,
+          "_nested_name": "items.workshop_id",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@item.number == @fields.workshop_number",
+                "matchedExpression": "@item.number",
+                "type": "item",
+                "fieldName": "number"
+              },
+              {
+                "fullExpression": "@item.number == @fields.workshop_number",
+                "matchedExpression": "@fields.workshop_number",
+                "type": "fields",
+                "fieldName": "workshop_number"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "value"
+            ],
+            "@item.number": [
+              "condition"
+            ],
+            "@fields.workshop_number": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.workshop",
+            "matchedExpression": "@data.workshop",
+            "type": "data",
+            "fieldName": "workshop"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.workshop": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/campaigns/timing_calculations.xlsx"
+}

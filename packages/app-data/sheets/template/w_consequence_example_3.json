@@ -1,0 +1,311 @@
+{
+  "flow_type": "template",
+  "module": "consequence",
+  "flow_name": "w_consequence_example_3",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "box_combo_box",
+      "value": "box_combo_box",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "!@field.do_this_workshop_together",
+      "rows": [
+        {
+          "name": "combo_box_tracker",
+          "value": "w_consequence_example_3_a",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "box_combo_box.combo_box_tracker"
+        },
+        {
+          "name": "image_src",
+          "value": "plh_images/workshops/w_consequence/read_2/slide_3.svg",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": false,
+          "type": "set_variable",
+          "_nested_name": "box_combo_box.image_src"
+        },
+        {
+          "name": "text",
+          "value": "@global.w_consequence_teen_boy_2 helps washing dishes.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "box_combo_box.text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.w_consequence_teen_boy_2 helps washing dishes.",
+                "matchedExpression": "@global.w_consequence_teen_boy_2",
+                "type": "global",
+                "fieldName": "w_consequence_teen_boy_2"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.w_consequence_teen_boy_2": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "question_text",
+          "value": "What consequence would help here?",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "box_combo_box.question_text"
+        },
+        {
+          "name": "input_allowed",
+          "value": false,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "box_combo_box.input_allowed"
+        },
+        {
+          "name": "answer_list",
+          "value": [
+            "name:name_1 | text:@global.positive_consequence_1",
+            "name:name_2 | text:@global.positive_consequence_2",
+            "name:name_3 | text:@global.positive_consequence_3",
+            "name:name_4 | text:@global.positive_consequence_4",
+            "name:name_5 | text:@global.positive_consequence_5"
+          ],
+          "type": "set_variable",
+          "_nested_name": "box_combo_box.answer_list",
+          "_dynamicFields": {
+            "value": {
+              "0": [
+                {
+                  "fullExpression": "name:name_1 | text:@global.positive_consequence_1",
+                  "matchedExpression": "@global.positive_consequence_1",
+                  "type": "global",
+                  "fieldName": "positive_consequence_1"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "name:name_2 | text:@global.positive_consequence_2",
+                  "matchedExpression": "@global.positive_consequence_2",
+                  "type": "global",
+                  "fieldName": "positive_consequence_2"
+                }
+              ],
+              "2": [
+                {
+                  "fullExpression": "name:name_3 | text:@global.positive_consequence_3",
+                  "matchedExpression": "@global.positive_consequence_3",
+                  "type": "global",
+                  "fieldName": "positive_consequence_3"
+                }
+              ],
+              "3": [
+                {
+                  "fullExpression": "name:name_4 | text:@global.positive_consequence_4",
+                  "matchedExpression": "@global.positive_consequence_4",
+                  "type": "global",
+                  "fieldName": "positive_consequence_4"
+                }
+              ],
+              "4": [
+                {
+                  "fullExpression": "name:name_5 | text:@global.positive_consequence_5",
+                  "matchedExpression": "@global.positive_consequence_5",
+                  "type": "global",
+                  "fieldName": "positive_consequence_5"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@global.positive_consequence_1": [
+              "value.0"
+            ],
+            "@global.positive_consequence_2": [
+              "value.1"
+            ],
+            "@global.positive_consequence_3": [
+              "value.2"
+            ],
+            "@global.positive_consequence_4": [
+              "value.3"
+            ],
+            "@global.positive_consequence_5": [
+              "value.4"
+            ]
+          }
+        },
+        {
+          "name": "reply",
+          "hidden": true,
+          "type": "set_variable",
+          "_nested_name": "box_combo_box.reply"
+        }
+      ],
+      "_nested_name": "box_combo_box",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@field.do_this_workshop_together",
+            "matchedExpression": "!@field.do_this_workshop_together",
+            "type": "field",
+            "fieldName": "do_this_workshop_together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@field.do_this_workshop_together": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "box_buttons",
+      "value": "box_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "@field.do_this_workshop_together",
+      "rows": [
+        {
+          "name": "image_src",
+          "value": "plh_images/workshops/w_consequence/read_2/slide_3.svg",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": false,
+          "type": "set_variable",
+          "_nested_name": "box_buttons.image_src"
+        },
+        {
+          "name": "text_1",
+          "value": "@global.w_consequence_teen_boy_2 helps washing dishes.\n\nWhat positive consequence would help here?",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "box_buttons.text_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.w_consequence_teen_boy_2 helps washing dishes.\n\nWhat positive consequence would help here?",
+                "matchedExpression": "@global.w_consequence_teen_boy_2",
+                "type": "global",
+                "fieldName": "w_consequence_teen_boy_2"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.w_consequence_teen_boy_2": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "button_1",
+          "value": "@global.ideas_button",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "pop_up",
+              "args": [
+                "w_consequence_example_3_pop"
+              ],
+              "_raw": "click | pop_up:w_consequence_example_3_pop",
+              "_cleaned": "click | pop_up:w_consequence_example_3_pop"
+            }
+          ],
+          "type": "set_variable",
+          "_nested_name": "box_buttons.button_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.ideas_button",
+                "matchedExpression": "@global.ideas_button",
+                "type": "global",
+                "fieldName": "ideas_button"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.ideas_button": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "box_buttons",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@field.do_this_workshop_together",
+            "matchedExpression": "@field.do_this_workshop_together",
+            "type": "field",
+            "fieldName": "do_this_workshop_together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@field.do_this_workshop_together": [
+          "condition"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
+}

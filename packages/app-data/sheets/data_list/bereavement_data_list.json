@@ -1,0 +1,54 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "bereavement_data_list",
+  "status": "released",
+  "data_list_name": "bereavement",
+  "rows": [
+    {
+      "id": "self",
+      "content_template": "bereavement_self",
+      "title": "Help yourself cope",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Help yourself cope"
+        }
+      }
+    },
+    {
+      "id": "teen",
+      "content_template": "bereavement_teen",
+      "title": "Help your teen cope",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Help your teen cope"
+        }
+      }
+    },
+    {
+      "id": "practical",
+      "content_template": "bereavement_practical",
+      "title": "Practical steps",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Practical steps"
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/parent_centre_data_list.xlsx"
+}

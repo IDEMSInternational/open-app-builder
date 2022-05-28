@@ -1,0 +1,572 @@
+{
+  "flow_type": "template",
+  "flow_name": "parent_centre_my_relaxes",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@global.my_relaxes",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "tiny"
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.my_relaxes",
+            "matchedExpression": "@global.my_relaxes",
+            "type": "global",
+            "fieldName": "my_relaxes"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.my_relaxes": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "none_added",
+      "condition": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "text",
+          "value": "You have not added any relaxation activities to @global.my_relaxes yet. Why don't you choose some?",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "_nested_name": "none_added.text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "You have not added any relaxation activities to @global.my_relaxes yet. Why don't you choose some?",
+                "matchedExpression": "@global.my_relaxes",
+                "type": "global",
+                "fieldName": "my_relaxes"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.my_relaxes": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button",
+          "value": "@global.all_relaxes",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "parent_centre_relaxes"
+              ],
+              "_raw": "click | go_to:parent_centre_relaxes",
+              "_cleaned": "click | go_to:parent_centre_relaxes"
+            }
+          ],
+          "_nested_name": "none_added.button",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.all_relaxes",
+                "matchedExpression": "@global.all_relaxes",
+                "type": "global",
+                "fieldName": "all_relaxes"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.all_relaxes": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "none_added",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_1_favourite",
+            "type": "field",
+            "fieldName": "relax_1_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_2_favourite",
+            "type": "field",
+            "fieldName": "relax_2_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_3_favourite",
+            "type": "field",
+            "fieldName": "relax_3_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_4_favourite",
+            "type": "field",
+            "fieldName": "relax_4_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_5_favourite",
+            "type": "field",
+            "fieldName": "relax_5_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_6_favourite",
+            "type": "field",
+            "fieldName": "relax_6_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_7_favourite",
+            "type": "field",
+            "fieldName": "relax_7_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_9_favourite",
+            "type": "field",
+            "fieldName": "relax_9_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_10_favourite",
+            "type": "field",
+            "fieldName": "relax_10_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_11_favourite",
+            "type": "field",
+            "fieldName": "relax_11_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_12_favourite",
+            "type": "field",
+            "fieldName": "relax_12_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_14_favourite",
+            "type": "field",
+            "fieldName": "relax_14_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_15_favourite",
+            "type": "field",
+            "fieldName": "relax_15_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_16_favourite",
+            "type": "field",
+            "fieldName": "relax_16_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_18_favourite",
+            "type": "field",
+            "fieldName": "relax_18_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_19_favourite",
+            "type": "field",
+            "fieldName": "relax_19_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_13_favourite",
+            "type": "field",
+            "fieldName": "relax_13_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_20_favourite",
+            "type": "field",
+            "fieldName": "relax_20_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_21_favourite",
+            "type": "field",
+            "fieldName": "relax_21_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_22_favourite",
+            "type": "field",
+            "fieldName": "relax_22_favourite"
+          },
+          {
+            "fullExpression": "!(@field.relax_1_favourite || @field.relax_2_favourite || @field.relax_3_favourite || @field.relax_4_favourite || @field.relax_5_favourite || @field.relax_6_favourite || @field.relax_7_favourite || field.relax_8_favourite || @field.relax_9_favourite || @field.relax_10_favourite || @field.relax_11_favourite || @field.relax_12_favourite || @field.relax_14_favourite || @field.relax_15_favourite || @field.relax_16_favourite || field.relax_17_favourite || @field.relax_18_favourite || @field.relax_19_favourite || @field.relax_13_favourite || @field.relax_20_favourite || @field.relax_21_favourite || @field.relax_22_favourite || field.relax_23_favourite || @field.relax_24_favourite)",
+            "matchedExpression": "@field.relax_24_favourite",
+            "type": "field",
+            "fieldName": "relax_24_favourite"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@field.relax_1_favourite": [
+          "condition"
+        ],
+        "@field.relax_2_favourite": [
+          "condition"
+        ],
+        "@field.relax_3_favourite": [
+          "condition"
+        ],
+        "@field.relax_4_favourite": [
+          "condition"
+        ],
+        "@field.relax_5_favourite": [
+          "condition"
+        ],
+        "@field.relax_6_favourite": [
+          "condition"
+        ],
+        "@field.relax_7_favourite": [
+          "condition"
+        ],
+        "@field.relax_9_favourite": [
+          "condition"
+        ],
+        "@field.relax_10_favourite": [
+          "condition"
+        ],
+        "@field.relax_11_favourite": [
+          "condition"
+        ],
+        "@field.relax_12_favourite": [
+          "condition"
+        ],
+        "@field.relax_14_favourite": [
+          "condition"
+        ],
+        "@field.relax_15_favourite": [
+          "condition"
+        ],
+        "@field.relax_16_favourite": [
+          "condition"
+        ],
+        "@field.relax_18_favourite": [
+          "condition"
+        ],
+        "@field.relax_19_favourite": [
+          "condition"
+        ],
+        "@field.relax_13_favourite": [
+          "condition"
+        ],
+        "@field.relax_20_favourite": [
+          "condition"
+        ],
+        "@field.relax_21_favourite": [
+          "condition"
+        ],
+        "@field.relax_22_favourite": [
+          "condition"
+        ],
+        "@field.relax_24_favourite": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "name": "items",
+      "value": "@data.relax",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_@item.id",
+          "value": "@item.title",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "this_workshop_together",
+                false
+              ],
+              "_raw": "click | set_field:this_workshop_together:false",
+              "_cleaned": "click | set_field:this_workshop_together:false"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "activity_@item.id"
+              ],
+              "_raw": "click | go_to:activity_@item.id",
+              "_cleaned": "click | go_to:activity_@item.id"
+            }
+          ],
+          "hidden": "!@field.@item.favourite_field",
+          "condition": "@item.type != \"relax_active\"",
+          "_nested_name": "items.button_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@item.title",
+                "matchedExpression": "@item.title",
+                "type": "item",
+                "fieldName": "title"
+              }
+            ],
+            "action_list": {
+              "1": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "activity_@item.id",
+                      "matchedExpression": "@item.id",
+                      "type": "item",
+                      "fieldName": "id"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to:activity_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to:activity_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              }
+            },
+            "hidden": [
+              {
+                "fullExpression": "!@field.@item.favourite_field",
+                "matchedExpression": "@item.favourite_field",
+                "type": "item",
+                "fieldName": "favourite_field"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@item.type != \"relax_active\"",
+                "matchedExpression": "@item.type",
+                "type": "item",
+                "fieldName": "type"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "action_list.1.args.0",
+              "action_list.1._raw",
+              "action_list.1._cleaned",
+              "_nested_name"
+            ],
+            "@item.title": [
+              "value"
+            ],
+            "@item.favourite_field": [
+              "hidden"
+            ],
+            "@item.type": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_@item.id",
+          "value": "@item.title",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "this_workshop_together",
+                false
+              ],
+              "_raw": "click | set_field:this_workshop_together:false",
+              "_cleaned": "click | set_field:this_workshop_together:false"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "activity_@item.id"
+              ],
+              "_raw": "click | go_to:activity_@item.id",
+              "_cleaned": "click | go_to:activity_@item.id"
+            }
+          ],
+          "hidden": "!@field.@item.favourite_field",
+          "condition": "@item.type == \"relax_active\"",
+          "parameter_list": {
+            "style": "navigation"
+          },
+          "_nested_name": "items.button_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@item.title",
+                "matchedExpression": "@item.title",
+                "type": "item",
+                "fieldName": "title"
+              }
+            ],
+            "action_list": {
+              "1": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "activity_@item.id",
+                      "matchedExpression": "@item.id",
+                      "type": "item",
+                      "fieldName": "id"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to:activity_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to:activity_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              }
+            },
+            "hidden": [
+              {
+                "fullExpression": "!@field.@item.favourite_field",
+                "matchedExpression": "@item.favourite_field",
+                "type": "item",
+                "fieldName": "favourite_field"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@item.type == \"relax_active\"",
+                "matchedExpression": "@item.type",
+                "type": "item",
+                "fieldName": "type"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "action_list.1.args.0",
+              "action_list.1._raw",
+              "action_list.1._cleaned",
+              "_nested_name"
+            ],
+            "@item.title": [
+              "value"
+            ],
+            "@item.favourite_field": [
+              "hidden"
+            ],
+            "@item.type": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.relax",
+            "matchedExpression": "@data.relax",
+            "type": "data",
+            "fieldName": "relax"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.relax": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
+}

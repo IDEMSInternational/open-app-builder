@@ -1,0 +1,220 @@
+{
+  "flow_type": "template",
+  "module": "crisis",
+  "flow_name": "w_crisis_question_2",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "question_time",
+      "value": "question_time",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "This was such a difficult situation for @global.w_crisis_teen_boy_1 and his @global.w_crisis_male_caregiver_1!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "question_time.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "This was such a difficult situation for @global.w_crisis_teen_boy_1 and his @global.w_crisis_male_caregiver_1!",
+                    "matchedExpression": "@global.w_crisis_teen_boy_1",
+                    "type": "global",
+                    "fieldName": "w_crisis_teen_boy_1"
+                  },
+                  {
+                    "fullExpression": "This was such a difficult situation for @global.w_crisis_teen_boy_1 and his @global.w_crisis_male_caregiver_1!",
+                    "matchedExpression": "@global.w_crisis_male_caregiver_1",
+                    "type": "global",
+                    "fieldName": "w_crisis_male_caregiver_1"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.w_crisis_teen_boy_1": [
+                  "value"
+                ],
+                "@global.w_crisis_male_caregiver_1": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_combo_box",
+              "rows": [
+                {
+                  "name": "combo_box_tracker",
+                  "value": "w_crisis_question_2_a",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.combo_box_tracker"
+                },
+                {
+                  "name": "text",
+                  "hidden": true,
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.text"
+                },
+                {
+                  "name": "question_text",
+                  "value": "What skills did @global.w_crisis_male_caregiver_1 use?",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.question_text",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "What skills did @global.w_crisis_male_caregiver_1 use?",
+                        "matchedExpression": "@global.w_crisis_male_caregiver_1",
+                        "type": "global",
+                        "fieldName": "w_crisis_male_caregiver_1"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@global.w_crisis_male_caregiver_1": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "name": "answer_list",
+                  "value": [
+                    "name:name_1 | text:@global.crisis_skill_1",
+                    "name:name_2 | text:@global.crisis_skill_2",
+                    "name:name_3 | text:@global.crisis_skill_3",
+                    "name:name_4 | text:@global.crisis_skill_4",
+                    "name:name_5 | text:@global.crisis_skill_5"
+                  ],
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.answer_list",
+                  "_dynamicFields": {
+                    "value": {
+                      "0": [
+                        {
+                          "fullExpression": "name:name_1 | text:@global.crisis_skill_1",
+                          "matchedExpression": "@global.crisis_skill_1",
+                          "type": "global",
+                          "fieldName": "crisis_skill_1"
+                        }
+                      ],
+                      "1": [
+                        {
+                          "fullExpression": "name:name_2 | text:@global.crisis_skill_2",
+                          "matchedExpression": "@global.crisis_skill_2",
+                          "type": "global",
+                          "fieldName": "crisis_skill_2"
+                        }
+                      ],
+                      "2": [
+                        {
+                          "fullExpression": "name:name_3 | text:@global.crisis_skill_3",
+                          "matchedExpression": "@global.crisis_skill_3",
+                          "type": "global",
+                          "fieldName": "crisis_skill_3"
+                        }
+                      ],
+                      "3": [
+                        {
+                          "fullExpression": "name:name_4 | text:@global.crisis_skill_4",
+                          "matchedExpression": "@global.crisis_skill_4",
+                          "type": "global",
+                          "fieldName": "crisis_skill_4"
+                        }
+                      ],
+                      "4": [
+                        {
+                          "fullExpression": "name:name_5 | text:@global.crisis_skill_5",
+                          "matchedExpression": "@global.crisis_skill_5",
+                          "type": "global",
+                          "fieldName": "crisis_skill_5"
+                        }
+                      ]
+                    }
+                  },
+                  "_dynamicDependencies": {
+                    "@global.crisis_skill_1": [
+                      "value.0"
+                    ],
+                    "@global.crisis_skill_2": [
+                      "value.1"
+                    ],
+                    "@global.crisis_skill_3": [
+                      "value.2"
+                    ],
+                    "@global.crisis_skill_4": [
+                      "value.3"
+                    ],
+                    "@global.crisis_skill_5": [
+                      "value.4"
+                    ]
+                  }
+                },
+                {
+                  "name": "input_allowed",
+                  "value": false,
+                  "exclude_from_translation": true,
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.input_allowed"
+                },
+                {
+                  "name": "reply",
+                  "value": "All these skills can help in a crisis.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.reply"
+                }
+              ],
+              "_nested_name": "question_time.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "question_time.workshop_activity"
+        }
+      ],
+      "_nested_name": "question_time"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"
+}

@@ -1,0 +1,34 @@
+{
+  "flow_type": "template",
+  "module": "safe",
+  "flow_name": "w_safe_intro_text",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "description_text",
+          "value": "Greetings, everyone. \n\nToday our topic is teen safety. \n\nIt is our responsibility as parents to keep our teens safe at all times. We need to ensure that our teenagers are safe in the communities that we live in. It is our responsibility that we make them aware of the safe and unsafe areas in the communities. \n\nIt is also our responsibility to ensure that they understand the dangers that they might be exposed to when they are online. That way our teenagers will be responsible and be able to make right decisions to keep themselves safe too.",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "suggestions.description_text"
+        },
+        {
+          "name": "list_text",
+          "hidden": true,
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text"
+        }
+      ],
+      "_nested_name": "suggestions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"
+}

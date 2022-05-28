@@ -1,0 +1,747 @@
+{
+  "flow_type": "template",
+  "flow_name": "understand_teen_feelings",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "name": "top_text",
+      "value": "Understanding how your teen feels and how you can support them makes a big difference for you both! Observe your teen and ask how they feel. Click on a face below to find out more:",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "top_text"
+    },
+    {
+      "name": "answer_list",
+      "value": [
+        "name:happy | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
+        "name:ok | image:plh_images/stickers/faces/neutral.svg | image_checked:plh_images/stickers/faces/neutral.svg",
+        "name:sad | image:plh_images/stickers/faces/sadder.svg |  image_checked:plh_images/stickers/faces/sadder.svg"
+      ],
+      "type": "set_variable",
+      "_nested_name": "answer_list"
+    },
+    {
+      "name": "options_per_row",
+      "value": 3,
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "options_per_row"
+    },
+    {
+      "name": "radio_group_tracker",
+      "value": "covid_chat_teen_emo",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "radio_group_tracker"
+    },
+    {
+      "type": "radio_group",
+      "name": "radio_group",
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.radio_group_tracker",
+            "this.value"
+          ],
+          "_raw": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
+          "_cleaned": "changed | set_field:@local.radio_group_tracker:@local.radio_group"
+        }
+      ],
+      "parameter_list": {
+        "answer_list": "@local.answer_list",
+        "options_per_row": "@local.options_per_row"
+      },
+      "_nested_name": "radio_group",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.radio_group_tracker",
+                  "matchedExpression": "@local.radio_group_tracker",
+                  "type": "local",
+                  "fieldName": "radio_group_tracker"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
+                "matchedExpression": "@local.radio_group_tracker",
+                "type": "local",
+                "fieldName": "radio_group_tracker"
+              },
+              {
+                "fullExpression": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
+                "matchedExpression": "@local.radio_group",
+                "type": "local",
+                "fieldName": "radio_group"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
+                "matchedExpression": "@local.radio_group_tracker",
+                "type": "local",
+                "fieldName": "radio_group_tracker"
+              },
+              {
+                "fullExpression": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
+                "matchedExpression": "@local.radio_group",
+                "type": "local",
+                "fieldName": "radio_group"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ],
+          "options_per_row": [
+            {
+              "fullExpression": "@local.options_per_row",
+              "matchedExpression": "@local.options_per_row",
+              "type": "local",
+              "fieldName": "options_per_row"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group_tracker": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.radio_group": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ],
+        "@local.options_per_row": [
+          "parameter_list.options_per_row"
+        ]
+      }
+    },
+    {
+      "type": "accordion",
+      "name": "accordion_happy",
+      "condition": "@local.radio_group==\"happy\"",
+      "rows": [
+        {
+          "name": "happy_title_1",
+          "value": "Hopeful",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "accordion_happy.happy_title_1"
+        },
+        {
+          "name": "happy_title_2",
+          "value": "Resilient",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "accordion_happy.happy_title_2"
+        },
+        {
+          "name": "happy_title_3",
+          "value": "Self-esteem",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "accordion_happy.happy_title_3"
+        },
+        {
+          "type": "accordion_section",
+          "name": "hopeful",
+          "value": "@local.happy_title_1",
+          "rows": [
+            {
+              "type": "template",
+              "name": "hopeful_template",
+              "value": "understand_acc_sect",
+              "rows": [
+                {
+                  "name": "text_1",
+                  "value": "Teens have goals and dreams for the future – near and far!",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion_happy.hopeful.hopeful_template.text_1"
+                },
+                {
+                  "name": "text_2",
+                  "value": "Ask your teen about their goals and dreams, encourage them to think what they want for their future, and make a plan together to work towards realising them.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion_happy.hopeful.hopeful_template.text_2"
+                }
+              ],
+              "_nested_name": "accordion_happy.hopeful.hopeful_template"
+            }
+          ],
+          "_nested_name": "accordion_happy.hopeful",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.happy_title_1",
+                "matchedExpression": "@local.happy_title_1",
+                "type": "local",
+                "fieldName": "happy_title_1"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.happy_title_1": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "accordion_section",
+          "name": "resilient",
+          "value": "@local.happy_title_2",
+          "rows": [
+            {
+              "type": "template",
+              "name": "resilient_template",
+              "value": "understand_acc_sect",
+              "rows": [
+                {
+                  "name": "text_1",
+                  "value": "Resilient teens can handle difficult situations, adapt to changes, and solve problems when they come up.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion_happy.resilient.resilient_template.text_1"
+                },
+                {
+                  "name": "text_2",
+                  "value": "Praise your teen for overcoming difficulty and support them where you can.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion_happy.resilient.resilient_template.text_2"
+                }
+              ],
+              "_nested_name": "accordion_happy.resilient.resilient_template"
+            }
+          ],
+          "_nested_name": "accordion_happy.resilient",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.happy_title_2",
+                "matchedExpression": "@local.happy_title_2",
+                "type": "local",
+                "fieldName": "happy_title_2"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.happy_title_2": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "accordion_section",
+          "name": "self_esteem",
+          "value": "@local.happy_title_3",
+          "rows": [
+            {
+              "type": "template",
+              "name": "self_esteem_template",
+              "value": "understand_acc_sect",
+              "rows": [
+                {
+                  "name": "text_1",
+                  "value": "A teen’s self-esteem is how they think of themselves.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion_happy.self_esteem.self_esteem_template.text_1"
+                },
+                {
+                  "name": "text_2",
+                  "value": "Encourage a positive self-image, set an example not to make fun of or criticise yourself all the time. Know your teen’s strengths and support their weaknesses.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion_happy.self_esteem.self_esteem_template.text_2"
+                }
+              ],
+              "_nested_name": "accordion_happy.self_esteem.self_esteem_template"
+            }
+          ],
+          "_nested_name": "accordion_happy.self_esteem",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.happy_title_3",
+                "matchedExpression": "@local.happy_title_3",
+                "type": "local",
+                "fieldName": "happy_title_3"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.happy_title_3": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "accordion_happy",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.radio_group==\"happy\"",
+            "matchedExpression": "@local.radio_group",
+            "type": "local",
+            "fieldName": "radio_group"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "accordion",
+      "name": "accordion_ok",
+      "condition": "@local.radio_group==\"ok\"",
+      "rows": [
+        {
+          "name": "ok_title_1",
+          "value": "Lonely",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "accordion_ok.ok_title_1"
+        },
+        {
+          "name": "ok_title_2",
+          "value": "Anxious",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "accordion_ok.ok_title_2"
+        },
+        {
+          "type": "accordion_section",
+          "name": "lonely",
+          "value": "@local.ok_title_1",
+          "rows": [
+            {
+              "type": "template",
+              "name": "lonely_template",
+              "value": "understand_acc_sect",
+              "rows": [
+                {
+                  "name": "text_1",
+                  "value": "Teens can feel alone, even when they are with others. They may feel like they don’t have anyone to talk to, trust, or share with.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion_ok.lonely.lonely_template.text_1"
+                },
+                {
+                  "name": "text_2",
+                  "value": "Ask how your teen is doing and try to find new fun ways together to interact with their friends and family – especially during lockdown.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion_ok.lonely.lonely_template.text_2"
+                }
+              ],
+              "_nested_name": "accordion_ok.lonely.lonely_template"
+            }
+          ],
+          "_nested_name": "accordion_ok.lonely",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.ok_title_1",
+                "matchedExpression": "@local.ok_title_1",
+                "type": "local",
+                "fieldName": "ok_title_1"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.ok_title_1": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "accordion_section",
+          "name": "anxious",
+          "value": "@local.ok_title_2",
+          "rows": [
+            {
+              "type": "template",
+              "name": "anxious_template",
+              "value": "understand_acc_sect",
+              "rows": [
+                {
+                  "name": "text_1",
+                  "value": "Anxiety is a normal emotion and it can help us deal with challenging situations. But too much anxiety or worry that prevents teens from doing things they love is a problem.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion_ok.anxious.anxious_template.text_1"
+                },
+                {
+                  "name": "text_2",
+                  "value": "Help your teen identify what makes them anxious and make a plan together how they can respond to anxious thoughts.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion_ok.anxious.anxious_template.text_2"
+                },
+                {
+                  "name": "button_2",
+                  "value": "@data.covid.change_thoughts.title",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "go_to",
+                      "args": [
+                        "lib_act_change_thoughts"
+                      ],
+                      "_raw": "click | go_to: lib_act_change_thoughts",
+                      "_cleaned": "click | go_to: lib_act_change_thoughts"
+                    }
+                  ],
+                  "condition": true,
+                  "type": "set_variable",
+                  "_nested_name": "accordion_ok.anxious.anxious_template.button_2",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@data.covid.change_thoughts.title",
+                        "matchedExpression": "@data.covid.change_thoughts.title",
+                        "type": "data",
+                        "fieldName": "covid"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@data.covid.change_thoughts.title": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "name": "text_3",
+                  "value": "Doing a relaxation activity together can help!",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "condition": true,
+                  "type": "set_variable",
+                  "_nested_name": "accordion_ok.anxious.anxious_template.text_3"
+                },
+                {
+                  "name": "button_3",
+                  "value": "@data.parent_centre.relax_and_activities.title",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "go_to",
+                      "args": [
+                        "parent_centre_relax_and_act"
+                      ],
+                      "_raw": "click | go_to:parent_centre_relax_and_act",
+                      "_cleaned": "click | go_to:parent_centre_relax_and_act"
+                    }
+                  ],
+                  "condition": true,
+                  "type": "set_variable",
+                  "_nested_name": "accordion_ok.anxious.anxious_template.button_3",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@data.parent_centre.relax_and_activities.title",
+                        "matchedExpression": "@data.parent_centre.relax_and_activities.title",
+                        "type": "data",
+                        "fieldName": "parent_centre"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@data.parent_centre.relax_and_activities.title": [
+                      "value"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "accordion_ok.anxious.anxious_template"
+            }
+          ],
+          "_nested_name": "accordion_ok.anxious",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.ok_title_2",
+                "matchedExpression": "@local.ok_title_2",
+                "type": "local",
+                "fieldName": "ok_title_2"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.ok_title_2": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "accordion_ok",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.radio_group==\"ok\"",
+            "matchedExpression": "@local.radio_group",
+            "type": "local",
+            "fieldName": "radio_group"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "accordion",
+      "name": "accordion_sad",
+      "condition": "@local.radio_group==\"sad\"",
+      "rows": [
+        {
+          "name": "sad_title_1",
+          "value": "Depressed",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "accordion_sad.sad_title_1"
+        },
+        {
+          "name": "sad_title_2",
+          "value": "Self-harm",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "accordion_sad.sad_title_2"
+        },
+        {
+          "type": "accordion_section",
+          "name": "depressed",
+          "value": "@local.sad_title_1",
+          "rows": [
+            {
+              "type": "template",
+              "name": "depressed_template",
+              "value": "understand_acc_sect",
+              "rows": [
+                {
+                  "name": "text_1",
+                  "value": "Feeling sad or down, being in a bad mood, are all normal human emotions. Depression is when it carries on for a long time and your teen’s normal daily activities are affected. Your teen may feel hopeless and unable or unmotivated to change anything.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion_sad.depressed.depressed_template.text_1"
+                },
+                {
+                  "name": "text_2",
+                  "value": "Telling your teen to ‘just stop’ may make things worse. Rather listen to them, calmly show you understand, and build their confidence. Try to get professional help.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion_sad.depressed.depressed_template.text_2"
+                }
+              ],
+              "_nested_name": "accordion_sad.depressed.depressed_template"
+            }
+          ],
+          "_nested_name": "accordion_sad.depressed",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.sad_title_1",
+                "matchedExpression": "@local.sad_title_1",
+                "type": "local",
+                "fieldName": "sad_title_1"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.sad_title_1": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "accordion_section",
+          "name": "self_harm",
+          "value": "@local.sad_title_2",
+          "rows": [
+            {
+              "type": "template",
+              "name": "self_harm_template",
+              "value": "understand_acc_sect",
+              "rows": [
+                {
+                  "name": "text_1",
+                  "value": "Sometimes teens can hurt themselves on purpose to deal with negative emotions like anger, guilt, emptiness, or self-hate. This can be caused by anxiety or depression.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion_sad.self_harm.self_harm_template.text_1"
+                },
+                {
+                  "name": "text_2",
+                  "value": "Telling your teen to ‘just stop’ may make things worse. Rather listen to them, calmly show you understand, and build their confidence. If your teen is willing to explain how hurting themselves makes them feel better, you can start to understand the reasons. Try to get professional help.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion_sad.self_harm.self_harm_template.text_2"
+                }
+              ],
+              "_nested_name": "accordion_sad.self_harm.self_harm_template"
+            }
+          ],
+          "_nested_name": "accordion_sad.self_harm",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.sad_title_2",
+                "matchedExpression": "@local.sad_title_2",
+                "type": "local",
+                "fieldName": "sad_title_2"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.sad_title_2": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "accordion_sad",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.radio_group==\"sad\"",
+            "matchedExpression": "@local.radio_group",
+            "type": "local",
+            "fieldName": "radio_group"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group": [
+          "condition"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/covid/covid_reflect.xlsx"
+}

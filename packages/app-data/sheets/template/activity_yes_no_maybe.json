@@ -1,0 +1,62 @@
+{
+  "flow_type": "template",
+  "flow_name": "activity_yes_no_maybe",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "lib_act_something_fun",
+      "value": "lib_act_something_fun",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        }
+      ],
+      "rows": [
+        {
+          "name": "activity_data",
+          "value": "@data.something_fun.yes_no_maybe",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "lib_act_something_fun.activity_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.something_fun.yes_no_maybe",
+                "matchedExpression": "@data.something_fun.yes_no_maybe",
+                "type": "data",
+                "fieldName": "something_fun"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.something_fun.yes_no_maybe": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "activity_text",
+          "value": "* Ask each other questions. They can be any questions about things you like or what you did today.\n* The only rule is that you can’t answer “Yes”, “No” or “Maybe”.\n* How long can you last? How creative can you get with your answers?\n* Swap over and play again!",
+          "_translations": {
+            "value": {
+              "tz_sw": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "lib_act_something_fun.activity_text"
+        }
+      ],
+      "_nested_name": "lib_act_something_fun"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"
+}

@@ -1,0 +1,90 @@
+{
+  "flow_type": "template",
+  "module": "praise",
+  "flow_name": "w_praise_try",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "try_together",
+      "value": "try_together",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Let's practice giving praise.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "try_together.workshop_activity.intro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "name": "text",
+                  "value": "Share with each other: \n\n* What can you praise your teen for? \n* What has someone else done well during this workshop? Tell them!\n* How did it make you feel to praise someone?\n* How did it make you feel to be praised?",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "try_together.workshop_activity.content_box.text"
+                },
+                {
+                  "name": "button_1",
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "pop_up",
+                      "args": [
+                        "w_praise_try_pop"
+                      ],
+                      "_raw": "click | pop_up:w_praise_try_pop",
+                      "_cleaned": "click | pop_up:w_praise_try_pop"
+                    }
+                  ],
+                  "hidden": false,
+                  "type": "set_variable",
+                  "_nested_name": "try_together.workshop_activity.content_box.button_1"
+                }
+              ],
+              "_nested_name": "try_together.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "try_together.workshop_activity"
+        }
+      ],
+      "_nested_name": "try_together"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"
+}

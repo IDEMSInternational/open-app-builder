@@ -1,0 +1,262 @@
+{
+  "flow_type": "template",
+  "module": "money",
+  "flow_name": "w_money_learn_1_temp",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "learn",
+      "value": "learn_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "@fields.do_this_workshop_together",
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "A family budget can help @global.w_money_grandma - and YOU!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "A family budget can help @global.w_money_grandma - and YOU!",
+                    "matchedExpression": "@global.w_money_grandma",
+                    "type": "global",
+                    "fieldName": "w_money_grandma"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.w_money_grandma": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "activity_banner",
+              "hidden": false,
+              "type": "set_variable",
+              "_nested_name": "learn.workshop_activity.activity_banner"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_image",
+              "rows": [
+                {
+                  "name": "image_src",
+                  "hidden": true,
+                  "type": "set_variable",
+                  "_nested_name": "learn.workshop_activity.content_box.image_src"
+                },
+                {
+                  "name": "text",
+                  "value": "There are four steps for doing a family budget: \n\nStep 1: THINK\nStep 2: CHOOSE\nStep 3: BUILD\nStep 4: PLAN\n\nLet’s go through the steps together. You need:\n\n- Papers (or old newspaper or a cardboard box) and pens\n- Stones or beans or anything with lots of bits to represent money\n \nTake a minute to get these things before we start with the first step.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn.workshop_activity.content_box.text"
+                }
+              ],
+              "_nested_name": "learn.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "learn.workshop_activity"
+        }
+      ],
+      "_nested_name": "learn",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.do_this_workshop_together",
+            "matchedExpression": "@fields.do_this_workshop_together",
+            "type": "fields",
+            "fieldName": "do_this_workshop_together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.do_this_workshop_together": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "learn",
+      "value": "learn_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "!@fields.do_this_workshop_together",
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "A family budget can help @global.w_money_grandma - and YOU!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "learn.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "A family budget can help @global.w_money_grandma - and YOU!",
+                    "matchedExpression": "@global.w_money_grandma",
+                    "type": "global",
+                    "fieldName": "w_money_grandma"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.w_money_grandma": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "activity_banner",
+              "hidden": false,
+              "type": "set_variable",
+              "_nested_name": "learn.workshop_activity.activity_banner"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_radio_buttons",
+              "rows": [
+                {
+                  "name": "text",
+                  "value": "There are four steps for doing a family budget: \n\nStep 1: THINK\nStep 2: CHOOSE\nStep 3: BUILD\nStep 4: PLAN\n\nLet’s go through the steps together.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn.workshop_activity.content_box.text"
+                },
+                {
+                  "name": "question_text",
+                  "hidden": true,
+                  "type": "set_variable",
+                  "_nested_name": "learn.workshop_activity.content_box.question_text"
+                },
+                {
+                  "name": "options_per_row",
+                  "value": 2,
+                  "exclude_from_translation": true,
+                  "type": "set_variable",
+                  "_nested_name": "learn.workshop_activity.content_box.options_per_row"
+                },
+                {
+                  "name": "answer_list",
+                  "value": [
+                    "name:family | text:My family can join in now!",
+                    "name:alone | text:Let me try it out by myself"
+                  ],
+                  "type": "set_variable",
+                  "_nested_name": "learn.workshop_activity.content_box.answer_list"
+                },
+                {
+                  "name": "radio_group_final",
+                  "value": "w_money_path",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "type": "set_variable",
+                  "_nested_name": "learn.workshop_activity.content_box.radio_group_final"
+                },
+                {
+                  "name": "reply",
+                  "value": "You need: \n* Papers (or old newspaper or a cardboard box) and pens \n* Stones or beans or anything with lots of bits to represent money \n\nTake a minute to get these things before we start with the first step.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "learn.workshop_activity.content_box.reply"
+                }
+              ],
+              "_nested_name": "learn.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "learn.workshop_activity"
+        }
+      ],
+      "_nested_name": "learn",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@fields.do_this_workshop_together",
+            "matchedExpression": "!@fields.do_this_workshop_together",
+            "type": "fields",
+            "fieldName": "do_this_workshop_together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@fields.do_this_workshop_together": [
+          "condition"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
+}

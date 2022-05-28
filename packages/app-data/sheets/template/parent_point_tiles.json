@@ -1,0 +1,338 @@
+{
+  "flow_type": "template",
+  "flow_name": "parent_point_tiles",
+  "status": "released",
+  "rows": [
+    {
+      "type": "display_group",
+      "name": "habits",
+      "parameter_list": {
+        "style": "parent_point"
+      },
+      "rows": [
+        {
+          "type": "template",
+          "name": "relax",
+          "value": "parent_point_tile",
+          "rows": [
+            {
+              "name": "habit_data",
+              "value": "@data.habit.relax",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "habits.relax.habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.relax",
+                    "matchedExpression": "@data.habit.relax",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.relax": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "habits.relax"
+        },
+        {
+          "type": "template",
+          "name": "treat_yourself",
+          "value": "parent_point_tile",
+          "rows": [
+            {
+              "name": "habit_data",
+              "value": "@data.habit.treat_yourself",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "habits.treat_yourself.habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.treat_yourself",
+                    "matchedExpression": "@data.habit.treat_yourself",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.treat_yourself": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "habits.treat_yourself"
+        },
+        {
+          "type": "template",
+          "name": "praise_yourself",
+          "value": "parent_point_tile",
+          "rows": [
+            {
+              "name": "habit_data",
+              "value": "@data.habit.praise_yourself",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "habits.praise_yourself.habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.praise_yourself",
+                    "matchedExpression": "@data.habit.praise_yourself",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.praise_yourself": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "habits.praise_yourself"
+        },
+        {
+          "type": "template",
+          "name": "spend_time",
+          "value": "parent_point_tile",
+          "rows": [
+            {
+              "name": "habit_data",
+              "value": "@data.habit.spend_time",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "habits.spend_time.habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.spend_time",
+                    "matchedExpression": "@data.habit.spend_time",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.spend_time": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "habits.spend_time"
+        },
+        {
+          "type": "template",
+          "name": "praise_teen",
+          "value": "parent_point_tile",
+          "rows": [
+            {
+              "name": "habit_data",
+              "value": "@data.habit.praise_teen",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "habits.praise_teen.habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.praise_teen",
+                    "matchedExpression": "@data.habit.praise_teen",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.praise_teen": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "habits.praise_teen"
+        },
+        {
+          "type": "template",
+          "name": "instruct_positively",
+          "value": "parent_point_tile",
+          "rows": [
+            {
+              "name": "habit_data",
+              "value": "@data.habit.instruct_positively",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "habits.instruct_positively.habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.instruct_positively",
+                    "matchedExpression": "@data.habit.instruct_positively",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.instruct_positively": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "habits.instruct_positively"
+        },
+        {
+          "type": "template",
+          "name": "breathe",
+          "value": "parent_point_tile",
+          "rows": [
+            {
+              "name": "habit_data",
+              "value": "@data.habit.breathe",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "habits.breathe.habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.breathe",
+                    "matchedExpression": "@data.habit.breathe",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.breathe": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "habits.breathe"
+        },
+        {
+          "type": "template",
+          "name": "money",
+          "value": "parent_point_tile",
+          "rows": [
+            {
+              "name": "habit_data",
+              "value": "@data.habit.money",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "habits.money.habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.money",
+                    "matchedExpression": "@data.habit.money",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.money": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "habits.money"
+        },
+        {
+          "type": "template",
+          "name": "consequence",
+          "value": "parent_point_tile",
+          "rows": [
+            {
+              "name": "habit_data",
+              "value": "@data.habit.consequence",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "habits.consequence.habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.consequence",
+                    "matchedExpression": "@data.habit.consequence",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.consequence": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "habits.consequence"
+        },
+        {
+          "type": "template",
+          "name": "safe",
+          "value": "parent_point_tile",
+          "rows": [
+            {
+              "name": "habit_data",
+              "value": "@data.habit.safe",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "habits.safe.habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.safe",
+                    "matchedExpression": "@data.habit.safe",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.safe": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "habits.safe"
+        }
+      ],
+      "_nested_name": "habits"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_parent_points.xlsx"
+}

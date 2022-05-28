@@ -1,0 +1,78 @@
+{
+  "flow_type": "template",
+  "module": "stress",
+  "flow_name": "w_stress_ending",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "ending",
+      "value": "ending",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "watch",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "workshop_activity",
+              "rows": [
+                {
+                  "name": "intro_text",
+                  "value": "You've completed this week's workshop.\n\nNext week, we will talk about money - you will need:\n* a sheet of paper/cardboard\n* a pen\n* 20 small rocks/beans/kernels\n\nIt will be fun!",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "condition": "@fields.do_this_workshop_together",
+                  "type": "set_variable",
+                  "_nested_name": "ending.watch.workshop_activity.intro_text",
+                  "_dynamicFields": {
+                    "condition": [
+                      {
+                        "fullExpression": "@fields.do_this_workshop_together",
+                        "matchedExpression": "@fields.do_this_workshop_together",
+                        "type": "fields",
+                        "fieldName": "do_this_workshop_together"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@fields.do_this_workshop_together": [
+                      "condition"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "ending.watch.workshop_activity"
+            }
+          ],
+          "_nested_name": "ending.watch"
+        }
+      ],
+      "_nested_name": "ending"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
+}

@@ -1,0 +1,109 @@
+{
+  "flow_type": "global",
+  "module": "consequence",
+  "flow_name": "consequences",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_global_constant",
+      "name": "negative_consequence_1",
+      "value": "No gadget use the next day",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "negative_consequence_2",
+      "value": "Take 5 minutes pause in separate part of the room",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "negative_consequence_3",
+      "value": "Write a letter of apology",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "negative_consequence_4",
+      "value": "Cannot see friends the next day",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "negative_consequence_5",
+      "value": "Cannot play with phone after dinner (or next hour)",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "positive_consequence_1",
+      "value": "Extra time with friends on weekend (1hr)",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "positive_consequence_2",
+      "value": "Cooking teen’s favourite meal",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "positive_consequence_3",
+      "value": "Extra time with phone after dinner (30 min)",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "positive_consequence_4",
+      "value": "Watching teen’s T.V. show together",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "positive_consequence_5",
+      "value": "Extra one-on-one time on Sunday (30 min)",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/suggestion_globals.xlsx"
+}
