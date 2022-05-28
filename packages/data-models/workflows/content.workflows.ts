@@ -9,7 +9,7 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "content_repo_init",
         function: async ({ tasks }) =>
-          tasks.git.clone({
+          tasks.git().clone({
             repoPath: "https://github.com/c-squared-dev/idems-app-data-demo",
           }),
       },

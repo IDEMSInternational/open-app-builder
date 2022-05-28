@@ -1,20 +1,19 @@
-import fs from "fs";
-import path from "path";
 import simpleGit, { SimpleGit } from "simple-git";
 import { getActiveDeployment } from "../../commands/deployment/get";
-import { logError, logOutput, logWarning, promptInput } from "../../utils";
+import { logWarning, promptInput } from "../../utils";
 
 class GitProvider {
-  private _git: SimpleGit;
-
-  /** Ensure any calls to git are made from configured subrepo git client */
-  private get git(): SimpleGit {
-    if (this._git) return this._git;
+  private git: SimpleGit;
+  constructor() {
+    // Ensure any calls to git are made from configured subrepo git client
     const { _workspace_path } = getActiveDeployment();
-    return simpleGit(_workspace_path);
+    if (_workspace_path) {
+      this.git = simpleGit(_workspace_path);
+    }
   }
 
   public async clone(options: { repoPath: string }) {
+    console.log("cloning", this.git);
     // not required - instead check .git and if not add remote
     // if (this.git) {
     //   return logWarning({ msg1: "Git repo already exists, skip clone", msg2: this.subrepoPath });
@@ -63,8 +62,8 @@ class GitProvider {
     return remote ? true : false;
   }
 }
-
-export default new GitProvider();
+// Export class without initialisation to avoid constructor call until required
+export default () => new GitProvider();
 
 function formatTimestamp(d = new Date()) {
   let year = d.getFullYear();

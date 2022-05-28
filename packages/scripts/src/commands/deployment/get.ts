@@ -29,16 +29,34 @@ export default program
 /**
  * Read the default deployment json and return compiled json of previously set active
  * deployment.
+ * @param options.skipRecompileCheck - Skipping checking if ts file updated requiring json update
+ * @param options.ignoreMissing - If no config has been set a warning will be shown.
+ * Supress this and instead return an empty config object `{}`
  */
-export function getActiveDeployment(): IDeploymentConfigJson {
+export function getActiveDeployment(
+  options: {
+    skipRecompileCheck?: boolean;
+    ignoreMissing?: boolean;
+  } = {}
+): IDeploymentConfigJson {
   const defaultJsonPath = path.resolve(IDEMS_APP_CONFIG.deployments, "default.json");
+  // Handle no deployment configured
   if (!fs.existsSync(defaultJsonPath)) {
+    if (options.ignoreMissing) {
+      return {} as any;
+    }
     logError({
       msg1: "No default deployment has been specified",
       msg2: `Run "yarn scripts deployment set" to configure`,
     });
   }
+  // Load config from json
   const deploymentJson: IDeploymentConfigJson = fs.readJsonSync(defaultJsonPath);
+
+  // Check corresponding config ts file in case recompile required
+  if (options.skipRecompileCheck) {
+    return deploymentJson;
+  }
   const { _config_ts_path } = deploymentJson;
   const deploymentTSPath = path.resolve(IDEMS_APP_CONFIG.deployments, _config_ts_path);
 
