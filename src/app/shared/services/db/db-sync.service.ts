@@ -76,7 +76,7 @@ export class DBSyncService {
     const { is_user_record, user_record_id_field } = mapping;
     if (is_user_record && user_record_id_field) {
       const serverRecord: IDBServerUserRecord = {
-        app_user_id: this.userMetaService.getUserMeta("uuid"),
+        app_user_id: this.userMetaService.getUserMetaUuid(),
         app_user_record_id: record[user_record_id_field],
         app_deployment_name: environment.deploymentName,
         app_version: environment.version,

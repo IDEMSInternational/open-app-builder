@@ -114,11 +114,13 @@ const APP_AUTHENTICATION_DEFAULTS = {
 type IAppLaunchAction = {
   type: "template_popup" | "tour_start";
   value: string;
+  first_launch_only: boolean;
+  condition: null | "terms_not_accepted";
 };
 /** Define app-specific startup tasks and logic */
 const APP_INITIALISATION_DEFAULTS = {
   /** Define initial launch tasks to be performed before main content loaded */
-  app_first_launch_actions: [] as IAppLaunchAction[],
+  app_launch_actions: [] as IAppLaunchAction[],
 
   // TODO - better if refactored to more general handler with condition to filter
   // for things such as app_first_launch, app_version_first_launch etc. and pass data fields

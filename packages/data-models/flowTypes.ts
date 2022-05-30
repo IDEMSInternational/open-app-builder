@@ -319,6 +319,7 @@ export namespace FlowTypes {
     | "audio_pause"
     | "audio_end"
     | "audio_first_start"
+    | "accept_terms"
     | "nav_resume" // return to template after navigation or popup close;
     | "sent"; // notification sent
 
@@ -347,6 +348,7 @@ export namespace FlowTypes {
       | "trigger_actions"
       | "track_event"
       | "process_template"
+      | "accept_terms"
       | "google_auth";
     args: any[]; // should be string | boolean, but breaks type-checking for templates;
     params?: any; // additional params also used by args (does not require position argument)
