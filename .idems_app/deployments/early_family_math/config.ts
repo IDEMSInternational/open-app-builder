@@ -1,6 +1,5 @@
 import { IDeploymentConfig } from "data-models";
-import { DEFAULT_CONSTANTS } from "data-models";
-
+import { getDefaultAppConstants } from "data-models";
 /**
  * The default config should ideally be a superset of any extended configs
  * to allow for easier post-processing
@@ -17,7 +16,7 @@ const config: IDeploymentConfig = {
     translated_strings_path: "packages/app-data/translations_source/from_translators",
     source_strings_path: "packages/app-data/translations_source/to_translate",
   },
-  app_constants: DEFAULT_CONSTANTS,
+  app_constants: getDefaultAppConstants(),
 };
 // Override constants
 config.app_constants.APP_LANGUAGES.default = "us_en";

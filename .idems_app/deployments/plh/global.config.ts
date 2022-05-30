@@ -1,7 +1,7 @@
 import { IDeploymentConfig } from "data-models";
-import { DEFAULT_CONSTANTS } from "data-models";
+import { getDefaultAppConstants } from "data-models/constants";
 
-const app_constants = DEFAULT_CONSTANTS;
+const app_constants = getDefaultAppConstants();
 /** Define default startup actions for plh app */
 app_constants.APP_INITIALISATION_DEFAULTS.app_first_launch_actions = [
   {
@@ -32,7 +32,7 @@ app_constants.APP_INITIALISATION_DEFAULTS.app_first_launch_actions = [
  */
 const config: IDeploymentConfig = {
   name: "plh_global",
-  app_constants: DEFAULT_CONSTANTS,
+  app_constants,
   google_drive: {
     sheets_folder_id: "1n221Zv9LYuwxmjhiboq8vhQg67_K9L5f",
     assets_folder_id: "1dp9QAQ84m8pm0IBQTSPXe1ramyynKPNn",
