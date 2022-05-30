@@ -8,7 +8,9 @@
       "name": "verse_1_1",
       "value": "When everything feels like it is falling apart",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "verse_1_1"
@@ -17,7 +19,9 @@
       "name": "verse_1_2",
       "value": "And you can't help but raise your voice",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "verse_1_2"
@@ -26,7 +30,9 @@
       "name": "verse_1_3",
       "value": "When all the frustrations are beginning to start",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "verse_1_3"
@@ -35,7 +41,9 @@
       "name": "verse_1_4",
       "value": "Remember that you have a choice",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "verse_1_4"
@@ -44,7 +52,9 @@
       "name": "chorus_1",
       "value": "Let's slow down",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "chorus_1"
@@ -53,7 +63,9 @@
       "name": "chorus_2",
       "value": "Take a few deep breaths",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "chorus_2"
@@ -62,7 +74,9 @@
       "name": "chorus_3",
       "value": "Remember all we have to be grateful for",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "chorus_3"
@@ -71,7 +85,9 @@
       "name": "chorus_4",
       "value": "Let's slow down",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "chorus_4"
@@ -80,7 +96,9 @@
       "name": "chorus_5",
       "value": "Take a few deep breaths",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "chorus_5"
@@ -89,7 +107,9 @@
       "name": "chorus_6",
       "value": "Because I really couldn't love you more",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "chorus_6"
@@ -98,7 +118,9 @@
       "name": "verse_2_1",
       "value": "You can take pause, you can count to 10",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "verse_2_1"
@@ -107,7 +129,9 @@
       "name": "verse_2_2",
       "value": "Play a game or do something fun",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "verse_2_2"
@@ -116,7 +140,9 @@
       "name": "verse_2_3",
       "value": "You can phone a friend, someone to confide in",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "verse_2_3"
@@ -125,7 +151,9 @@
       "name": "verse_2_4",
       "value": "Remember you're not the only one",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "verse_2_4"
