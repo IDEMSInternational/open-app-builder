@@ -1,7 +1,7 @@
 /** Custom overrides for specific templates **/
 
 /// import any template styles defined in child folder
-@import "./templates/index";
+@use "./templates/index";
 
 // w_self_care_stepper
 plh-template-container[data-templatename="w_self_care_stepper"] {
