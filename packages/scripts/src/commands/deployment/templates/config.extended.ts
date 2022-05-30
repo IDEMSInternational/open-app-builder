@@ -2,9 +2,10 @@
 
 export default (name: string, parentFilename: string) =>
   `
-import DEFAULT_CONFIG from "./${parentFilename}";
+import { cloneConfig } from "data-models/deployment.model";
+import PARENT_CONFIG from "./${parentFilename.replace(".ts", "")}";
 
-const config = cloneConfig(DEFAULT_CONFIG);
+const config = cloneConfig(PARENT_CONFIG);
 config.name = "${name}";
 
 // override app constants here
