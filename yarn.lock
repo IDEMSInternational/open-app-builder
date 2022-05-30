@@ -5124,6 +5124,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/clone@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "@types/clone@npm:2.1.1"
+  checksum: bda9668b9d6e0875d64bbe00763676f566e8647bc224333a03ac7fd66655dfed56a98a9f8304d0145c4411b964649c84c4d1a03adbdb6547eafb9ab8f303d254
+  languageName: node
+  linkType: hard
+
 "@types/component-emitter@npm:^1.2.10":
   version: 1.2.11
   resolution: "@types/component-emitter@npm:1.2.11"
@@ -9958,7 +9965,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "data-models@workspace:packages/data-models"
   dependencies:
+    "@types/clone": ^2.1.1
     "@types/node": ^15.12.4
+    clone: ^2.1.2
     scripts: "workspace:*"
     typescript: ~4.2.4
   languageName: unknown
