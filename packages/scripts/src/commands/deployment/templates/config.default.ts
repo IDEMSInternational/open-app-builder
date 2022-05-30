@@ -1,10 +1,8 @@
-// TODO - this will need refactor after PR 1401 merged
-
 export default (name: string) =>
   `
-import { DEFAULT_CONSTANTS, IDeploymentConfig } from "data-models";
+import { IDeploymentConfig, getDefaultAppConstants } from "data-models";
   
-const app_constants = DEFAULT_CONSTANTS
+const app_constants = getDefaultAppConstants()
   
 // Override any app constants here
 app_constants.APP_HEADER_DEFAULTS.title = "${name}"

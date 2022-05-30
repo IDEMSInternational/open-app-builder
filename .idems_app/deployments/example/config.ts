@@ -1,6 +1,6 @@
-import { DEFAULT_CONSTANTS, IDeploymentConfig } from "data-models";
+import { getDefaultAppConstants, IDeploymentConfig } from "data-models";
 
-const app_constants = DEFAULT_CONSTANTS
+const app_constants = getDefaultAppConstants()
 
 // Override any app constants here
 app_constants.APP_HEADER_DEFAULTS.title = 'Example'

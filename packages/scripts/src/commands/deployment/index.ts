@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 import { Command } from "commander";
 
-import setCmd from "./set";
+import createCmd from "./create";
 import getCmd from "./get";
+import setCmd from "./set";
 import { logProgramHelp } from "../../utils";
 
 const program = new Command("deployment").description("Manage active deployment workspace");
 
-/** add sub-commands from child folders */
-program.addCommand(setCmd);
+program.addCommand(createCmd);
 program.addCommand(getCmd);
+program.addCommand(setCmd);
 
 export default program;
 

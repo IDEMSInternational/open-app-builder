@@ -32,7 +32,7 @@ export default program
  * NOTE - when updating a deployment .ts this will need to be run again to ensure
  * parsed data correct in default
  */
-async function setActiveDeployment(deploymentName?: string) {
+export async function setActiveDeployment(deploymentName?: string) {
   const allDeployments = await listDeployments();
   if (!deploymentName) {
     deploymentName = await promptOptions(Object.keys(allDeployments));
