@@ -90,9 +90,9 @@ export class AppComponent {
       if (APP_AUTHENTICATION_DEFAULTS.enforceLogin && Capacitor.isNativePlatform()) {
         await this.ensureUserSignedIn();
       }
+      await this.handleLaunchDataActions(user);
       if (!user.first_app_open) {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
-        await this.handleFirstLaunchDataActions();
       }
       this.menuController.enable(true, "main-side-menu");
       if (Capacitor.isNativePlatform()) {
@@ -156,10 +156,19 @@ export class AppComponent {
   }
 
   /**
-   * Run app-specific first launch tasks
+   * Run app-specific launch tasks
    **/
-  private async handleFirstLaunchDataActions() {
-    for (const initAction of APP_INITIALISATION_DEFAULTS.app_first_launch_actions) {
+  private async handleLaunchDataActions(user) {
+    for (const initAction of APP_INITIALISATION_DEFAULTS.app_launch_actions) {
+      if (initAction.first_launch_only && user.first_app_open) {
+        continue;
+      }
+      if (initAction.condition) {
+        const conditionMet = this.checkLaunchActionCondition(initAction.condition, user);
+        if (!conditionMet) {
+          continue;
+        }
+      }
       switch (initAction.type) {
         case "template_popup":
           await this.templateService.runStandaloneTemplate(initAction.value, {
@@ -174,6 +183,13 @@ export class AppComponent {
           break;
       }
     }
+  }
+
+  checkLaunchActionCondition(condition, user) {
+    if (condition === "terms_not_accepted") {
+      return !user.terms_accepted;
+    }
+    return false;
   }
 
   clickOnMenuItem(id: string) {

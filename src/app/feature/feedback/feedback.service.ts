@@ -176,7 +176,7 @@ export class FeedbackService {
     const metadata: IFeedbackMetadata = {
       deviceInfo: this.deviceInfo,
       pathname: location.pathname,
-      uuid: this.userMetaService.getUserMeta("uuid"),
+      uuid: this.userMetaService.getUserMetaUuid(),
       timestamp: generateTimestamp(),
       app_version: environment.version,
       app_deployment_name: environment.deploymentName,

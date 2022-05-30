@@ -139,62 +139,50 @@
       "_nested_name": "text_2"
     },
     {
-      "type": "template",
-      "name": "nav_buttons",
-      "value": "nav_buttons",
+      "type": "button",
+      "name": "button_3",
+      "value": "@global.continue_button",
+      "_translations": {
+        "value": {}
+      },
       "action_list": [
         {
-          "trigger": "completed",
+          "trigger": "click",
+          "action_id": "accept_terms",
+          "args": [],
+          "_raw": "click | accept_terms",
+          "_cleaned": "click | accept_terms"
+        },
+        {
+          "trigger": "click",
           "action_id": "emit",
           "args": [
             "completed"
           ],
-          "_raw": "completed | emit:completed",
-          "_cleaned": "completed | emit:completed"
-        },
-        {
-          "trigger": "uncompleted",
-          "action_id": "emit",
-          "args": [
-            "uncompleted"
-          ],
-          "_raw": "uncompleted | emit:uncompleted",
-          "_cleaned": "uncompleted | emit:uncompleted"
+          "_raw": "emit:completed",
+          "_cleaned": "click | emit:completed"
         }
       ],
-      "rows": [
-        {
-          "name": "display_back",
-          "value": false,
-          "type": "set_variable",
-          "_nested_name": "nav_buttons.display_back"
-        },
-        {
-          "name": "button_completed",
-          "value": "@global.continue_button",
-          "_translations": {
-            "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "nav_buttons.button_completed",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.continue_button",
-                "matchedExpression": "@global.continue_button",
-                "type": "global",
-                "fieldName": "continue_button"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.continue_button": [
-              "value"
-            ]
+      "parameter_list": {
+        "style": "navigation",
+        "text_align": "center"
+      },
+      "_nested_name": "button_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.continue_button",
+            "matchedExpression": "@global.continue_button",
+            "type": "global",
+            "fieldName": "continue_button"
           }
-        }
-      ],
-      "_nested_name": "nav_buttons"
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.continue_button": [
+          "value"
+        ]
+      }
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_app_first_launch.xlsx"
