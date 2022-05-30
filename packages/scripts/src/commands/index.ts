@@ -43,7 +43,6 @@ program.addCommand(compileCmd);
 program.addCommand(e2eDataCmd);
 program.addCommand(configCmd);
 program.addCommand(deploymentCmd);
-// program.addCommand(generateCmd);
 program.addCommand(versionCmd);
 program.addCommand(workflowCmd);
 
