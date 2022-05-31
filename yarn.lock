@@ -5018,6 +5018,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ts-morph/common@npm:~0.15.0":
+  version: 0.15.0
+  resolution: "@ts-morph/common@npm:0.15.0"
+  dependencies:
+    fast-glob: ^3.2.11
+    minimatch: ^5.0.1
+    mkdirp: ^1.0.4
+    path-browserify: ^1.0.1
+  checksum: 31476b677df02aebe3ca7985e393f02929002ef6094d1d803d0026fdda7947fa3276d6594feeef862f719c3e92dd9b6336ea3c0929782a36cdf003813508270e
+  languageName: node
+  linkType: hard
+
 "@tsconfig/node10@npm:^1.0.7":
   version: 1.0.8
   resolution: "@tsconfig/node10@npm:1.0.8"
@@ -5606,6 +5618,13 @@ __metadata:
   version: 0.12.1
   resolution: "@types/retry@npm:0.12.1"
   checksum: 5f46b2556053655f78262bb33040dc58417c900457cc63ff37d6c35349814471453ef511af0cec76a540c601296cd2b22f64bab1ab649c0dacc0223765ba876c
+  languageName: node
+  linkType: hard
+
+"@types/semver@npm:^7.3.9":
+  version: 7.3.9
+  resolution: "@types/semver@npm:7.3.9"
+  checksum: 60bfcfdfa7f937be2c6f4b37ddb6714fb0f27b05fe4cbdfdd596a97d35ed95d13ee410efdd88e72a66449d0384220bf20055ab7d6b5df10de4990fbd20e5cbe0
   languageName: node
   linkType: hard
 
@@ -7789,6 +7808,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"brace-expansion@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "brace-expansion@npm:2.0.1"
+  dependencies:
+    balanced-match: ^1.0.0
+  checksum: a61e7cd2e8a8505e9f0036b3b6108ba5e926b4b55089eeb5550cd04a471fe216c96d4fe7e4c7f995c728c554ae20ddfc4244cad10aef255e72b62930afd233d1
+  languageName: node
+  linkType: hard
+
 "braces@npm:^2.3.1, braces@npm:^2.3.2":
   version: 2.3.2
   resolution: "braces@npm:2.3.2"
@@ -8762,6 +8790,15 @@ __metadata:
   version: 4.6.0
   resolution: "co@npm:4.6.0"
   checksum: 5210d9223010eb95b29df06a91116f2cf7c8e0748a9013ed853b53f362ea0e822f1e5bb054fb3cefc645239a4cf966af1f6133a3b43f40d591f3b68ed6cf0510
+  languageName: node
+  linkType: hard
+
+"code-block-writer@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "code-block-writer@npm:11.0.0"
+  dependencies:
+    tslib: 2.3.1
+  checksum: d3d92a06f762d5926ecdb2033e4f30eb4c51aca365ea69ef424afbce7cc2b1518a50deff2645cc17b6fa53f234d664631f2268a4caf91af6a1fd696aa0b2fefb
   languageName: node
   linkType: hard
 
@@ -12572,6 +12609,19 @@ __metadata:
     merge2: ^1.3.0
     micromatch: ^4.0.4
   checksum: 2f4708ff112d2b451888129fdd9a0938db88b105b0ddfd043c064e3c4d3e20eed8d7c7615f7565fee660db34ddcf08a2db1bf0ab3c00b87608e4719694642d78
+  languageName: node
+  linkType: hard
+
+"fast-glob@npm:^3.2.11":
+  version: 3.2.11
+  resolution: "fast-glob@npm:3.2.11"
+  dependencies:
+    "@nodelib/fs.stat": ^2.0.2
+    "@nodelib/fs.walk": ^1.2.3
+    glob-parent: ^5.1.2
+    merge2: ^1.3.0
+    micromatch: ^4.0.4
+  checksum: f473105324a7780a20c06de842e15ddbb41d3cb7e71d1e4fe6e8373204f22245d54f5ab9e2061e6a1c613047345954d29b022e0e76f5c28b1df9858179a0e6d7
   languageName: node
   linkType: hard
 
@@ -18122,6 +18172,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"minimatch@npm:^5.0.1":
+  version: 5.1.0
+  resolution: "minimatch@npm:5.1.0"
+  dependencies:
+    brace-expansion: ^2.0.1
+  checksum: 15ce53d31a06361e8b7a629501b5c75491bc2b59712d53e802b1987121d91b433d73fcc5be92974fde66b2b51d8fb28d75a9ae900d249feb792bb1ba2a4f0a90
+  languageName: node
+  linkType: hard
+
 "minimist@npm:1.2.5, minimist@npm:^1.1.0, minimist@npm:^1.1.1, minimist@npm:^1.2.0, minimist@npm:^1.2.3, minimist@npm:^1.2.5":
   version: 1.2.5
   resolution: "minimist@npm:1.2.5"
@@ -19872,7 +19931,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"path-browserify@npm:^1.0.0":
+"path-browserify@npm:^1.0.0, path-browserify@npm:^1.0.1":
   version: 1.0.1
   resolution: "path-browserify@npm:1.0.1"
   checksum: c6d7fa376423fe35b95b2d67990060c3ee304fc815ff0a2dc1c6c3cfaff2bd0d572ee67e18f19d0ea3bbe32e8add2a05021132ac40509416459fffee35200699
@@ -22611,6 +22670,7 @@ __metadata:
     "@types/fs-extra": ^9.0.4
     "@types/inquirer": ^7.3.1
     "@types/node-rsa": ^1.1.1
+    "@types/semver": ^7.3.9
     boxen: ^5.0.1
     chalk: ^4.1.0
     commander: ^8.3.0
@@ -22623,7 +22683,9 @@ __metadata:
     jasmine-ts: ^0.3.2
     node-rsa: ^1.1.1
     pkg: ^5.5.1
+    semver: ^7.3.7
     simple-git: ^3.7.1
+    ts-morph: ^15.0.0
     ts-node: ^10.8.0
     ts-node-dev: ^1.0.0
     typescript: ^4.1.2
@@ -22735,7 +22797,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.1.3":
+"semver@npm:^7.1.3, semver@npm:^7.3.7":
   version: 7.3.7
   resolution: "semver@npm:7.3.7"
   dependencies:
@@ -24846,6 +24908,16 @@ __metadata:
   bin:
     ts-mocha: bin/ts-mocha
   checksum: 66062e82f9be469cdcf51b120ff83e4a69c664fafb3ee020708cb5d65e87ee6bd8c98703a1012f2fb583d540dcbe14e0be77a36ea69a6c08ba3c89345859d8d9
+  languageName: node
+  linkType: hard
+
+"ts-morph@npm:^15.0.0":
+  version: 15.0.0
+  resolution: "ts-morph@npm:15.0.0"
+  dependencies:
+    "@ts-morph/common": ~0.15.0
+    code-block-writer: ^11.0.0
+  checksum: a2de1f0d7fd80c1eb21cbdbc8e1eca828100288f102560f7f17915813b504f445a432fac18fec43ce84ecdbdb80e375ca7beab6ec9f8598550195c63aca9e5e6
   languageName: node
   linkType: hard
 
