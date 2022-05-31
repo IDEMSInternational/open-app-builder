@@ -21,7 +21,6 @@
 |max       |number                                                        | Any number as max value. Min should be less than max   |
 |min_value_label        |string                                                        | A string below the minimum value                                |
 |max_value_label        |string                                                        | A string below the maximum value                                |
-|min_max_value_label    |string                                                        | A string below both minimum and maximum values                  |
 |min_max_step           |number                                                        | A number as a step size. This number needs to divide (max - min)|
 |min_max_step           |number                                                        | A number as a step size. This number needs to divide (max - min)|
 |min_max_labels_count   |number   | A number as the number of labels to show. This labels count minus 1 needs to divide (max - min). Selection of labels in between is possible/can be done.|
