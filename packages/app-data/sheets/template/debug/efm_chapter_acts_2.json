@@ -83,7 +83,32 @@
       "_translations": {
         "value": {}
       },
+      "hidden": true,
       "_nested_name": "current_page_title"
+    },
+    {
+      "type": "text",
+      "name": "debug_0a",
+      "value": "page title: @local.current_page_title",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "debug_0a",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "page title: @local.current_page_title",
+            "matchedExpression": "@local.current_page_title",
+            "type": "local",
+            "fieldName": "current_page_title"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.current_page_title": [
+          "value"
+        ]
+      }
     },
     {
       "type": "items",
@@ -170,6 +195,133 @@
               "value"
             ]
           }
+        },
+        {
+          "type": "display_group",
+          "name": "debug_group",
+          "rows": [
+            {
+              "type": "text",
+              "name": "debug_1a",
+              "value": "page title: @item.page_title",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "activity_buttons.debug_group.debug_1a",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "page title: @item.page_title",
+                    "matchedExpression": "@item.page_title",
+                    "type": "item",
+                    "fieldName": "page_title"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.page_title": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "name": "debug_1b",
+              "value": "activity: @local.activity_type",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "activity_buttons.debug_group.debug_1b",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "activity: @local.activity_type",
+                    "matchedExpression": "@local.activity_type",
+                    "type": "local",
+                    "fieldName": "activity_type"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.activity_type": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "name": "debug_1c",
+              "value": "field: @@local.activity_type",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "activity_buttons.debug_group.debug_1c",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "field: @@local.activity_type",
+                    "matchedExpression": "@local.activity_type",
+                    "type": "local",
+                    "fieldName": "activity_type"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.activity_type": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "name": "debug_1d",
+              "value": "ok_type: @local.ok_type",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "activity_buttons.debug_group.debug_1d",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "ok_type: @local.ok_type",
+                    "matchedExpression": "@local.ok_type",
+                    "type": "local",
+                    "fieldName": "ok_type"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.ok_type": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "name": "debug_1e",
+              "value": "new_page: @local.ok_new_page",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "activity_buttons.debug_group.debug_1e",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "new_page: @local.ok_new_page",
+                    "matchedExpression": "@local.ok_new_page",
+                    "type": "local",
+                    "fieldName": "ok_new_page"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.ok_new_page": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "activity_buttons.debug_group"
         },
         {
           "type": "button",
@@ -331,5 +483,5 @@
       }
     }
   ],
-  "_xlsxPath": "quality_assurance/debug_templates/Debugging copy of EFM_activity_high_level_sheets.xlsx"
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/Debugging copy of EFM_activity_high_level_sheets.xlsx"
 }

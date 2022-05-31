@@ -8,7 +8,12 @@
       "type": "title",
       "value": "Powered by Parenting for Lifelong Health and partners",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
       },
       "parameter_list": {
         "style": "center",
@@ -78,5 +83,5 @@
       "_nested_name": "display_group"
     }
   ],
-  "_xlsxPath": "quality_assurance/feature_templates/feature_template_components.xlsx"
+  "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"
 }

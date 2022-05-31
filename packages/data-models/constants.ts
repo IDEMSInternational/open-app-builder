@@ -1,5 +1,6 @@
 /// <reference lib="dom" />
-
+import APP_CONFIG_GLOBALS from "./app-config/globals";
+import clone from "clone";
 /*********************************************************************************************
  *  Constants used throughout the app
  *
@@ -36,6 +37,7 @@ const APP_FIELDS = {
   SERVER_SYNC_LATEST: `${FIELD_PREFIX}._server_sync_latest`,
   APP_LANGUAGE: `${FIELD_PREFIX}._app_language`,
   DEPLOYMENT_NAME: `${FIELD_PREFIX}._deployment_name`,
+  APP_AUTH_USER: `${FIELD_PREFIX}._app_auth_user`,
 };
 
 const APP_LANGUAGES = {
@@ -44,14 +46,14 @@ const APP_LANGUAGES = {
 };
 
 /**
- * Some specific strings are currently hardcoded into the app
- * TODO - not all strings included, should add to when required
- */
-const APP_STRINGS = {};
+ * WiP - App strings will be defined from global config
+ * Temporarily just re-export to allow override from deployment in same way as rest of constants
+ * */
+const APP_STRINGS = APP_CONFIG_GLOBALS;
 
 const NOTIFICATION_DEFAULTS = {
-  title: "Notification",
-  text: "You have a new message",
+  title: APP_STRINGS.notification_default_title,
+  text: APP_STRINGS.notification_default_text,
   time: {
     hour: 12,
     minute: 0,
@@ -105,8 +107,13 @@ const APP_SIDEMENU_DEFAULTS = {
   should_show_deployment_name: false,
 };
 
+const APP_AUTHENTICATION_DEFAULTS = {
+  enforceLogin: false,
+  signInTemplate: "sign_in",
+};
+
 type IAppLaunchAction = {
-  type: "run_survey" | "template_popup" | "tour_start";
+  type: "template_popup" | "tour_start";
   value: string;
 };
 /** Define app-specific startup tasks and logic */
@@ -123,13 +130,13 @@ const FEEDBACK_MODULE_DEFAULTS = {
   buttons: [
     {
       id: "feedback-addFeedback",
-      menuButtonText: "Add Feedback",
+      menuButtonText: APP_STRINGS.feedback_add_button_text,
       appearInMenus: ["rightClick", "longPress", "textSelect"] as any[],
       displayedTemplate: "feature_feedback_default",
     },
     {
       id: "feedback-suggestChange",
-      menuButtonText: "Suggest Change",
+      menuButtonText: APP_STRINGS.feedback_suggest_change_text,
       appearInMenus: ["textSelect"] as any[],
       displayedTemplate: "feature_feedback_text_select",
     },
@@ -142,6 +149,7 @@ const APP_CONSTANTS = {
   APP_FIELDS,
   APP_HEADER_DEFAULTS,
   APP_INITIALISATION_DEFAULTS,
+  APP_AUTHENTICATION_DEFAULTS,
   APP_LANGUAGES,
   APP_ROUTE_DEFAULTS,
   APP_SIDEMENU_DEFAULTS,
@@ -153,5 +161,6 @@ const APP_CONSTANTS = {
   NOTIFICATION_DEFAULTS,
   SERVER_SYNC_FREQUENCY_MS,
 };
-
-export default APP_CONSTANTS;
+// Export as a clone to avoid risk one import could alter another
+export const getDefaultAppConstants = () => clone(APP_CONSTANTS);
+export type IAppConstants = typeof APP_CONSTANTS;

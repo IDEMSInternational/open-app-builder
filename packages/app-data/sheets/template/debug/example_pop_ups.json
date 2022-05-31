@@ -151,7 +151,10 @@
             "example_text"
           ],
           "_raw": "click | pop_up:example_text | fullscreen:true",
-          "_cleaned": "click | pop_up:example_text | fullscreen:true"
+          "_cleaned": "click | pop_up:example_text | fullscreen:true",
+          "params": {
+            "fullscreen": true
+          }
         }
       ],
       "exclude_from_translation": true,
@@ -182,12 +185,16 @@
             "example_emit"
           ],
           "_raw": "click | pop_up:example_emit | fullscreen:true, showCloseButton:false",
-          "_cleaned": "click | pop_up:example_emit | fullscreen:true, showCloseButton:false"
+          "_cleaned": "click | pop_up:example_emit | fullscreen:true, showCloseButton:false",
+          "params": {
+            "fullscreen": true,
+            "showCloseButton": false
+          }
         }
       ],
       "exclude_from_translation": true,
       "_nested_name": "button_pop_up_5"
     }
   ],
-  "_xlsxPath": "quality_assurance/example_templates/example_actions.xlsx"
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_actions.xlsx"
 }
