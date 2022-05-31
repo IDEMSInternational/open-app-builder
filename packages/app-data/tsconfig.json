@@ -8,8 +8,9 @@
     "skipLibCheck": true,
     "composite": true,
     "lib": ["ESNext"],
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "resolveJsonModule": true
   },
-  "include": ["**/*.ts", "index.ts"],
+  "include": ["**/*.ts", "index.ts","**/contents.json"],
   "exclude": ["node_modules", "dist"]
 }
