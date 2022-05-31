@@ -22,8 +22,7 @@
 |min_value_label        |string                                                        | A string below the minimum value                                |
 |max_value_label        |string                                                        | A string below the maximum value                                |
 |step           |number                                                        | A number as a step size. This number needs to divide (max - min)|
-|min_max_labels_count   |number   | A number as the number of labels to show. This labels count minus 1 needs to divide (max - min). Selection of labels in between is possible/can be done.|
-|min_max_labels_count   |number   | A number as the number of labels to show. This labels count minus 1 needs to divide (max - min). Selection of labels in between is possible/can be done.|
+|labels_count   |number   | A number as the number of labels to show. This labels count minus 1 needs to divide (max - min). It is possible to select values in between labels.|
 |no_value               |false (default)                                               | To be removed                        |
 |no_value               |true                                                          | To be removed                        |
 |no_value_text          |'no_value' (default)                                          | To be removed                        |
