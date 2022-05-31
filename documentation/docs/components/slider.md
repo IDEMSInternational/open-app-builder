@@ -17,7 +17,8 @@
 | ---------             | -----------                                                  | ---------                                                       |                              
 |help                   |string                                                        | Any text for help tooltip                                       |             
 |title                  |string                                                        | Any text as a title                                             |
-|min_max_value          |number                                                        | Any number as min and max values. Min should be less than max   |
+|min        |number                                                        | Any number as min value. Min should be less than max   |
+|max       |number                                                        | Any number as max value. Min should be less than max   |
 |min_value_label        |string                                                        | A string below the minimum value                                |
 |max_value_label        |string                                                        | A string below the maximum value                                |
 |min_max_value_label    |string                                                        | A string below both minimum and maximum values                  |
