@@ -81,10 +81,10 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
   },
   app_constants: {},
   app_data: {
-    sheets_output_path: "packages/app-data/sheets",
+    sheets_output_path: "./app_data/sheets",
     converter_cache_path: "./cache/converter",
-    assets_output_path: "packages/app-data/assets",
-    translations_output_path: "packages/app-data/translations",
+    assets_output_path: "./app_data/assets",
+    translations_output_path: "./app_data/translations",
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
   },
