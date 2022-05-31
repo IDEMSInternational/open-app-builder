@@ -4,11 +4,20 @@ const workflows: IDeploymentWorkflows = {
   // Copy app-data assets directly to src assets
   // Note - this is already done as part of `tasks.appData.copy`, so just for postinstall
   deployment_create: {
-    label: "Create a new app deployment",
+    label: "Create a new local deployment",
     steps: [
       {
         name: "deployment_create",
         function: async ({ tasks }) => tasks.deployment.create(),
+      },
+    ],
+  },
+  deployment_import: {
+    label: "Import a remote deployment repository",
+    steps: [
+      {
+        name: "deployment_import",
+        function: async ({ tasks }) => tasks.git().importRemoteRepo(),
       },
     ],
   },
