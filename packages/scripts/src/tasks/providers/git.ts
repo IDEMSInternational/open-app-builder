@@ -1,12 +1,14 @@
+import chalk from "chalk";
 import fs from "fs-extra";
 import path from "path";
 import semver from "semver";
-import simpleGit, { ResetMode } from "simple-git";
+import simpleGit from "simple-git";
 import type { SimpleGit } from "simple-git";
 import { Project, PropertyAssignment, SyntaxKind } from "ts-morph";
 import { getActiveDeployment } from "../../commands/deployment/get";
 import { logError, logOutput, logWarning, promptInput, promptOptions } from "../../utils";
 import { IDeploymentConfigJson } from "../../commands/deployment/set";
+import { IDEMS_APP_CONFIG } from "../../paths";
 
 class GitProvider {
   private git: SimpleGit;
@@ -17,24 +19,33 @@ class GitProvider {
    **/
   constructor() {}
 
+  /** Clone a remote repo to deployments */
+  public async importRemoteRepo() {
+    const remoteTarget = await promptInput("Specify url to remote git repo");
+    const [owner, repo] = remoteTarget.split("/").slice(-2);
+    const targetDir = path.resolve(IDEMS_APP_CONFIG.deployments, repo);
+    if (fs.existsSync(targetDir)) {
+      logError({ msg1: "A folder for this deployment already exists", msg2: targetDir });
+    }
+    this.git = simpleGit(IDEMS_APP_CONFIG.deployments);
+    await this.git.clone(remoteTarget, targetDir);
+    logOutput({ msg1: "Deployment imported successfully", msg2: targetDir });
+    return targetDir;
+  }
+
   public async createContentRelease() {
     await this.initialiseGitProvider();
-    await this.git.add(".");
-    const status = await this.git.status();
-    console.log(status);
+    console.log("Preparing files...");
+    this.copyAppData();
+    await this.promptChangesReview();
     const tagName = await this.promptReleaseTag();
     const branchName = `content/${tagName}`;
-    // sync latest from master
-    // TODO - probably want a hard reset or stash to avoid conflicts
-    await this.git.reset([ResetMode.SOFT]);
-    await this.git.checkoutLocalBranch(branchName);
+    const compareLink = `${this.deployment.git.content_repo}/compare/main...${branchName}`;
+    await this.prepareReleaseBranch(branchName, compareLink);
+
     // apply changes
     await this.updateGitConfigTs({ content_tag_latest: tagName });
-    console.log("committing changes");
-    const changes = await this.git.status();
-    for (const file of changes.files) {
-      console.log();
-    }
+
     await this.git.add([this.deployment._config_ts_path]);
     await this.git.commit(`chore: update config`);
     await this.git.add(["app_data"]);
@@ -42,11 +53,58 @@ class GitProvider {
     await this.git.addTag(tagName);
     console.log("pushing changes");
     await this.git.push("origin", branchName);
-    logOutput({
-      msg1: "Content uploaded successfully",
-      msg2: `${this.deployment.git.content_repo}/compare/main...${branchName}`,
-    });
+    logOutput({ msg1: "Content uploaded successfully", msg2: compareLink });
     // open PR
+  }
+
+  /**
+   * TODO - Octokit api requires auth, so will need to come up with appropriate handling */
+  private async wipCreateReleasePr(head: string, base = "main", body: string) {
+    // const [owner, repo] = this.deployment.git.content_repo.split("/").slice(-2);
+    // const res = await new Octokit({}).rest.pulls.create({ owner, repo, base, head, body });
+    // console.log(res)
+  }
+
+  /**
+   * TODO - Ideally this should already be handled in earlier workflow step or default
+   * populate to folder
+   * */
+  private copyAppData() {
+    const { _workspace_path, app_data } = this.deployment;
+    const deploymentDataDir = path.resolve(_workspace_path, "app_data");
+    fs.ensureDirSync(deploymentDataDir);
+    fs.emptyDirSync(deploymentDataDir);
+    fs.copySync(app_data.assets_output_path, path.resolve(deploymentDataDir, "assets"));
+    fs.copySync(app_data.sheets_output_path, path.resolve(deploymentDataDir, "sheets"));
+    // TODO - handle translations and any other content
+    // TODO - likely remove all configured cache folders for predefined structures
+  }
+
+  private async prepareReleaseBranch(branchName: string, compareLink: string) {
+    // Ensure existing release does not already exist for tag
+    if (await this.checkRemoteBranchExists(branchName)) {
+      logError({ msg1: "A branch already exists for this release", msg2: compareLink });
+    }
+    if (await this.checkLocalBranchExists(branchName)) {
+      await this.git.deleteLocalBranch(branchName, true);
+    }
+    await this.git.checkoutLocalBranch(branchName);
+  }
+
+  /** Stage all changes and show a summary */
+  private async promptChangesReview() {
+    // Stage files to show summary
+    await this.git.add(".");
+    const status = await this.git.status();
+    if (status.files.length === 0) {
+      logOutput({ msg1: "No files have been changed, skipping" });
+      process.exit(0);
+    }
+    console.log(chalk.blueBright("\nChanges Summary"));
+    const summary = status.files.map((file) => ({ change: `[${file.index}]`, path: file.path }));
+    console.table(summary);
+    console.log("");
+    return status;
   }
 
   private async promptReleaseTag() {
@@ -98,11 +156,13 @@ class GitProvider {
     await project.save();
   }
 
-  private async checkBranchExists(name: string) {
-    const branches = await this.git.branch(["--list", `${name}\*`]);
-    console.log("branches", branches);
+  private async checkRemoteBranchExists(name: string) {
     const remote = await this.git.listRemote(["--heads", "origin", `${name}`]);
     return remote ? true : false;
+  }
+  private async checkLocalBranchExists(name: string) {
+    const localBranches = await this.git.branchLocal();
+    return localBranches.all.includes(name);
   }
 
   /**
@@ -142,6 +202,10 @@ class GitProvider {
       await this.git.addRemote("origin", git.content_repo);
     }
     await this.git.checkout("origin/main");
+    await this.git.fetch();
+    // TODO - handle case where local changes exist that would conflict with checkout
+    // TODO - likely remove any app-data changes
+    // await this.git.reset([ResetMode.SOFT]);
   }
 }
 // Export class without initialisation to avoid constructor call until required
