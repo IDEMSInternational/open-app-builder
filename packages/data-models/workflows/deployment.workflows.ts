@@ -12,6 +12,15 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
   },
+  deployment_set: {
+    label: "Set active deployment",
+    steps: [
+      {
+        name: "deployment_set",
+        function: async ({ tasks }) => tasks.deployment.set(),
+      },
+    ],
+  },
 };
 
 export default workflows;

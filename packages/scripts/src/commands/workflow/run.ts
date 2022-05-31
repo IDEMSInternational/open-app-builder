@@ -50,10 +50,10 @@ export class WorkflowRunnerClass {
     if (workflow) {
       for (const workflowPath of customWorkflowFiles) {
         const ts: IDeploymentWorkflows = await import(path.resolve(_workspace_path, workflowPath));
-        const workflows: IDeploymentWorkflows = ts?.default as any;
-        if (workflows) {
-          Object.entries(workflows).forEach(([name, workflow]) => {
-            this.workflows[name] = workflow;
+        const parsedWorkflows: IDeploymentWorkflows = ts?.default as any;
+        if (parsedWorkflows) {
+          Object.entries(parsedWorkflows).forEach(([name, parsedWorkflow]) => {
+            this.workflows[name] = parsedWorkflow;
           });
         }
       }
