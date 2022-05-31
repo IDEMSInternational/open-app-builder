@@ -250,7 +250,7 @@
             {
               "type": "text",
               "name": "debug_1c",
-              "value": "local: @@local.activity_type",
+              "value": "field: @@local.activity_type",
               "_translations": {
                 "value": {}
               },
@@ -258,7 +258,7 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "local: @@local.activity_type",
+                    "fullExpression": "field: @@local.activity_type",
                     "matchedExpression": "@local.activity_type",
                     "type": "local",
                     "fieldName": "activity_type"
@@ -480,7 +480,40 @@
           "value"
         ]
       }
+    },
+    {
+      "name": "current_page_title",
+      "value": "\"No Match\"",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "current_page_title"
+    },
+    {
+      "type": "text",
+      "name": "debug_2a",
+      "value": "page title: @local.current_page_title",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "debug_2a",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "page title: @local.current_page_title",
+            "matchedExpression": "@local.current_page_title",
+            "type": "local",
+            "fieldName": "current_page_title"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.current_page_title": [
+          "value"
+        ]
+      }
     }
   ],
-  "_xlsxPath": "quality_assurance/debug_templates/Debugging copy of EFM_activity_high_level_sheets.xlsx"
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/Debugging copy of EFM_activity_high_level_sheets.xlsx"
 }
