@@ -30,21 +30,15 @@ export default program
  * Supress this and instead return an empty config object `{}`
  */
 export async function createDeployment() {
-  const isNewDeployment = await promptOptions(
-    [
-      { name: "New Deployment", value: true },
-      { name: "Extend Existing", value: false },
-    ],
-    "Would you like to create a new deployment or extend an existing deployment?"
+  const generators = [
+    { name: "New Local Deployment", value: () => generateNewDeployment() },
+    { name: "Extend Existing Local", value: () => generateExtendedDeployment() },
+  ];
+  const generatorExec: () => Promise<IGeneratedDeployment> = await promptOptions(
+    generators,
+    "Would you like to create a new deployment or extend an existing?"
   );
-
-  // Create deployment
-  let createdDeployment: { targetConfigFile: string; name: string } = null;
-  if (isNewDeployment) {
-    createdDeployment = await generateNewDeployment();
-  } else {
-    createdDeployment = await generateExtendedDeployment();
-  }
+  const createdDeployment = await generatorExec();
   logOutput({ msg1: "Deployment created", msg2: createdDeployment.targetConfigFile });
 
   // Set new config
@@ -59,17 +53,19 @@ export async function createDeployment() {
 }
 
 /** Create a new standalone deployment config */
-async function generateNewDeployment() {
+async function generateNewDeployment(): Promise<IGeneratedDeployment> {
   const nameInput = await promptInput("Specify a name for the deployment");
   const name = nameInput.toLowerCase().replace(/ /, "_");
   const targetConfigFile = path.join(IDEMS_APP_CONFIG.deployments, name, `config.ts`);
   const configTs = generateDefaultConfig(name);
   writeConfig(targetConfigFile, configTs);
+  const targetGitIgnoreFile = path.join(IDEMS_APP_CONFIG.deployments, name, `.gitignore`);
+  writeGitIgnore(targetGitIgnoreFile);
   return { name, targetConfigFile };
 }
 
 /** Create a deployment config that extends an existing config */
-async function generateExtendedDeployment() {
+async function generateExtendedDeployment(): Promise<IGeneratedDeployment> {
   const parentDeployment = await selectParentConfigToExtend();
   const nameInput = await promptInput("Specify a name for the deployment");
   const name = nameInput.toLowerCase().replace(/ /, "_");
@@ -78,6 +74,10 @@ async function generateExtendedDeployment() {
   const configTs = generateExtendedConfig(extendedName, parentDeployment.filename);
   writeConfig(targetConfigFile, configTs);
   return { name: extendedName, targetConfigFile };
+}
+
+async function generateImportedDeployment(): Promise<IGeneratedDeployment> {
+  return { name: "", targetConfigFile: "" };
 }
 
 /** Prompt select of an existing config to extend */
@@ -104,4 +104,18 @@ function writeConfig(targetConfigFile: string, configTs: string) {
   }
   fs.ensureDirSync(path.dirname(targetConfigFile));
   fs.writeFileSync(targetConfigFile, configTs);
+}
+
+function writeGitIgnore(targetFile: string) {
+  const ignoredPaths = ["tasks"];
+  const gitIgnoreTxt = ignoredPaths.join("\n");
+  if (fs.existsSync(targetFile)) {
+    logError({ msg1: "Gitignore file already exists", msg2: targetFile });
+  }
+  fs.writeFileSync(targetFile, gitIgnoreTxt);
+}
+
+interface IGeneratedDeployment {
+  name: string;
+  targetConfigFile: string;
 }
