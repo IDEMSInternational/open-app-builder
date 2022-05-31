@@ -1408,9 +1408,14 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "efm_bonus_chapters",
       _xlsxPath: "EFM_activity_high_level_sheets.xlsx",
     },
-    efm_chapter_acts: {
+    efm_chapter_acts_by_topic: {
       flow_type: "template",
-      flow_name: "efm_chapter_acts",
+      flow_name: "efm_chapter_acts_by_topic",
+      _xlsxPath: "EFM_activity_high_level_sheets.xlsx",
+    },
+    efm_chapter_acts_individually: {
+      flow_type: "template",
+      flow_name: "efm_chapter_acts_individually",
       _xlsxPath: "EFM_activity_high_level_sheets.xlsx",
     },
     efm_chapter_bon_acts: {
