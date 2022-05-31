@@ -37,6 +37,8 @@ export interface IDeploymentConfig {
   git?: {
     /** Url of external git repo to store content */
     content_repo?: string;
+    /** Current tag of content for release */
+    content_tag_latest?: string;
   };
   translations?: {
     /** List of all language codes to include. Default null (includes all) */
