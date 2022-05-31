@@ -6,8 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -b",
-    "serve": "tsc -w",
-    "sync": "TODO - call scripts"
+    "serve": "tsc -w"
   },
   "devDependencies": {
     "@types/node": "^15.12.4",
