@@ -1,4 +1,5 @@
-import type APP_CONSTANTS from "./constants";
+import clone from "clone";
+import type { IAppConstants } from "./constants";
 
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
@@ -18,7 +19,7 @@ export interface IDeploymentConfig {
     assets_filter_function?: (gdriveEntry: IGdriveEntry) => boolean;
   };
   /** Optional override of any provided constants from data-models/constants */
-  app_constants?: Partial<typeof APP_CONSTANTS>;
+  app_constants?: Partial<IAppConstants>;
   app_data?: {
     /** processed sheets for use in app. Default `packages/app-data/sheets` */
     sheets_output_path?: string;
@@ -52,6 +53,9 @@ export interface IDeploymentConfig {
   /** optional version number to force recompile */
   _version?: number;
 }
+
+/** When extending a config it is usually better to clone to avoid accidentally altering original */
+export const cloneConfig = (config: IDeploymentConfig): IDeploymentConfig => clone(config);
 
 /** Minimal example of just required config */
 export const DEPLOYMENT_CONFIG_EXAMPLE_MIN: IDeploymentConfig = {
