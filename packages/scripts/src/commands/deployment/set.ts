@@ -4,7 +4,7 @@ import { GlobSync } from "glob";
 import fs from "fs-extra";
 import path from "path";
 import { IDeploymentConfig, DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS } from "../../../types";
-import { IDEMS_APP_CONFIG, ROOT_DIR } from "../../paths";
+import { APP_DATA_WORKSPACE_PATH, IDEMS_APP_CONFIG, ROOT_DIR } from "../../paths";
 import { promptOptions, logError, deepMergeObjects, logOutput } from "../../utils";
 import { DEPLOYMENT_CONFIG_VERSION } from "./common";
 
@@ -57,6 +57,27 @@ export async function setActiveDeployment(deploymentName?: string) {
   const angularCacheDir = path.join(ROOT_DIR, ".angular");
   if (fs.existsSync(angularCacheDir)) {
     fs.removeSync(angularCacheDir);
+  }
+  addDeploymentDataSymlinks(deploymentJson);
+}
+
+/** Use symlinks to populate deployment app-data to running app */
+function addDeploymentDataSymlinks(deploymentJson: IDeploymentConfigJson) {
+  const { _workspace_path } = deploymentJson;
+  const deploymentAppDataDir = path.resolve(_workspace_path, "app_data");
+  if (fs.existsSync(deploymentAppDataDir)) {
+    const deploymentAppFolders = fs
+      .readdirSync(deploymentAppDataDir, { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .map((d) => d.name);
+    for (const folderName of deploymentAppFolders) {
+      const src = path.resolve(deploymentAppDataDir, folderName);
+      const target = path.resolve(APP_DATA_WORKSPACE_PATH, folderName);
+      if (fs.existsSync(target)) {
+        fs.removeSync(target);
+      }
+      fs.createSymlinkSync(src, target, "junction");
+    }
   }
 }
 
