@@ -8,7 +8,6 @@ const workflows: IDeploymentWorkflows = {
         name: "Create github release",
         function: async ({ tasks }) => {
           await tasks.git().createContentRelease();
-          // await tasks.git.createPr('content/2022-05-26')
         },
       },
     ],
