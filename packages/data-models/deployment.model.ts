@@ -21,11 +21,11 @@ export interface IDeploymentConfig {
   /** Optional override of any provided constants from data-models/constants */
   app_constants?: Partial<IAppConstants>;
   app_data?: {
-    /** processed sheets for use in app. Default `packages/app-data/sheets` */
+    /** processed sheets for use in app. Default `./app_data/sheets` */
     sheets_output_path?: string;
     /** partially compiled sheets for use in repopulation. Default `./cache/converter` */
     converter_cache_path?: string;
-    /** processed assets for use in app. Defaults `packages/app_data/assets` */
+    /** processed assets for use in app. Defaults `./app_data/assets` */
     assets_output_path?: string;
     /** filter function that receives converted flows. Default `(flow)=>true`*/
     sheets_filter_function?: (flow: IFlowTypeBase) => boolean;
