@@ -31,14 +31,15 @@ Note - you may have to do this from time to time when content is updated)
 
 ## Configuration
 ### Set Deployment
-The app supports using different workspace or deployment configurations. These are stored in [.idems_app/deployments](../../.idems_app/deployments)
+Deployments are used to configure data sources (such as google drive) and store generated content.   
 
-An initial deployment should be specified via the command
+An initial deployment can be created via the command
 ```
-yarn workflow deployment_set
+yarn workflow deployment_create
 ```
+You will be prompted to specify the deployment type, this should be a `New Local Deployment`. You will also be prompted to provide a name.
 
-Deployments are used to configure data sources (such as google drive) and various processing steps. See [Deployment Documentation](./developers/deployments.md) for more information
+See [Deployment Documentation](./developers/deployments.md) for more information about configuring deployments
 
 ### Firebase
 To be able to run the full project a specific configuration file needs to be included to access
