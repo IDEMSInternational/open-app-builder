@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ASSETS_CONTENTS_LIST } from "app-data";
+import { ASSETS_CONTENT_LIST } from "src/app/data";
 import { TemplateTranslateService } from "./template-translate.service";
 
 /** Synced assets are automatically copied during build to asset subfolder */
@@ -19,7 +19,7 @@ export class TemplateAssetService {
   getTranslatedAssetPath(value: string) {
     const currentLanguageCode = this.translateService.app_language;
     const assetName = this.cleanAssetName(value);
-    const assetEntry = ASSETS_CONTENTS_LIST[assetName];
+    const assetEntry = ASSETS_CONTENT_LIST[assetName];
     if (!assetEntry) {
       console.error("Asset missing", value, assetName);
     }
