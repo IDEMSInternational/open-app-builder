@@ -72,7 +72,6 @@ class AppDataCopy {
       const sheetContents = this.sheetsGenerateContents(localSheetsFolder);
       this.sheetsWriteContents(localSheetsFolder, sheetContents);
       this.sheetsCopyFiles(localSheetsFolder, appSheetsFolder);
-      runPrettierCodeTidy(appSheetsFolder);
     }
 
     // Sheet Translations (applied if sheets are copied)
@@ -93,7 +92,6 @@ class AppDataCopy {
       this.assetsQualityCheck(localAssetsFolder);
       this.assetsCopyFiles(localAssetsFolder, appAssetsFolder);
       this.assetsGenerateIndex(appAssetsFolder);
-      runPrettierCodeTidy(appAssetsFolder);
     }
     console.log(chalk.green("Copy Complete"));
   }
@@ -149,13 +147,14 @@ class AppDataCopy {
       }
     });
 
-    // write output index file for tracked and untracked assets
-    const outputTS = `
-export const UNTRACKED_ASSETS = ${JSON.stringify(untrackedAssets, null, 2)}
-export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
-`.trim();
-    const ASSETS_INDEX_PATH = path.resolve(baseFolder, "index.ts");
-    fs.writeFileSync(ASSETS_INDEX_PATH, outputTS);
+    fs.writeFileSync(
+      path.resolve(baseFolder, "contents.json"),
+      JSON.stringify(cleanedContents, null, 2)
+    );
+    fs.writeFileSync(
+      path.resolve(baseFolder, "untracked.json"),
+      JSON.stringify(untrackedAssets, null, 2)
+    );
 
     // Log total size of all exports
     let assetsTotal = 0;
@@ -265,15 +264,8 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
     return keptFields as FlowTypes.FlowTypeBase;
   }
   private sheetsWriteContents(baseFolder: string, contents: ISheetContents) {
-    // Write ts
-    const contentsString = JSON.stringify(contents, null, 2);
-    const outputTS = `
-import { FlowTypes } from "data-models";
-type ISheetContents = { [flow_type in FlowTypes.FlowType]: { [flow_name: string]: FlowTypes.FlowTypeBase } };
-export const SHEETS_CONTENT_LIST:ISheetContents = ${contentsString}
-    `.trim();
-    const SHEETS_INDEX_PATH = path.resolve(baseFolder, "index.ts");
-    fs.writeFileSync(SHEETS_INDEX_PATH, outputTS);
+    const contentsOutputPath = path.resolve(baseFolder, "contents.json");
+    fs.writeFileSync(contentsOutputPath, JSON.stringify(contents, null, 2));
   }
   /**
    * Check for unsupported flow types or flows with duplicate names (can happen across subtypes)

@@ -1,6 +1,7 @@
 import { spawnSync } from "child_process";
 import path from "path";
-import { ROOT_DIR } from "../../paths";
+import { WorkflowRunner } from "../../commands/workflow/run";
+import { SRC_ASSETS_PATH } from "../../paths";
 import { IContentsEntry, replicateDir } from "../../utils";
 
 // const qualityCheckAssets = () => {};
@@ -40,7 +41,7 @@ const copy = (options: {
   let copyCmd = `app-data copy ${args}`;
 
   spawnSync(`${scriptsExec} ${copyCmd}`, { stdio: "inherit", shell: true });
-  populateSrcAssets({ appSheetsFolder, appAssetsFolder, appTranslationsFolder });
+  copyDeploymentDataToApp();
 };
 
 /**
@@ -48,26 +49,18 @@ const copy = (options: {
  * Note - ideally this will be removed when transitioning away from app-data (to standalone repos)
  * and direct copy can be included instead
  */
-const populateSrcAssets = (options: {
-  appSheetsFolder?: string;
-  appAssetsFolder?: string;
-  appTranslationsFolder?: string;
-}) => {
-  const { appSheetsFolder, appAssetsFolder, appTranslationsFolder } = options;
+const copyDeploymentDataToApp = () => {
+  const { _workspace_path } = WorkflowRunner.config;
+  const copiedFolders = ["assets", "sheets", "translations"];
   // omit index files
-  const filter_fn = (entry: IContentsEntry) => entry.relativePath !== "index.ts";
-  if (appSheetsFolder) {
-    const targetFolder = path.resolve(ROOT_DIR, "src", "assets", "app_data", "sheets");
-    replicateDir(appSheetsFolder, targetFolder, filter_fn);
-  }
-  if (appAssetsFolder) {
-    const targetFolder = path.resolve(ROOT_DIR, "src", "assets", "app_data", "assets");
-    replicateDir(appAssetsFolder, targetFolder, filter_fn);
-  }
-  if (appTranslationsFolder) {
-    const targetFolder = path.resolve(ROOT_DIR, "src", "assets", "app_data", "translations");
-    replicateDir(appTranslationsFolder, targetFolder, filter_fn);
-  }
+  const filter_fn = (entry: IContentsEntry) => {
+    const [baseDir] = entry.relativePath.split("/");
+    return copiedFolders.includes(baseDir);
+  };
+  const source = path.resolve(_workspace_path, "app_data");
+  const target = path.resolve(SRC_ASSETS_PATH, "app_data");
+
+  replicateDir(source, target, filter_fn);
 };
 
-export default { copy, populateSrcAssets };
+export default { copy, copyDeploymentDataToApp };
