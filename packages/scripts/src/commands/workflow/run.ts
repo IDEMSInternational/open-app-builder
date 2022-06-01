@@ -18,13 +18,14 @@ const program = new Command("run");
  *************************************************************************************/
 export default program
   .description("Run a workflow")
-  // options for compare
   .argument("[name]", "Name of workflow to run")
   .option("-p --parent <string>", "Name of parent workflow triggered by")
   .action(async (name, { parent }) => {
+    // pass any additional args after [name] positional argument
+    const args = program.args.slice(1);
     const runner = WorkflowRunner;
     await runner.init();
-    return runner.run(name, parent);
+    return runner.run({ name, parent, args });
   });
 
 /***************************************************************************
@@ -60,11 +61,9 @@ export class WorkflowRunnerClass {
     }
   }
 
-  /**
-   *
-   * @param name
-   */
-  public async run(name?: string, parent?: string) {
+  /** Run a target workflow. If no name supplied will prompt select from list */
+  public async run(options: { name?: string; parent?: string; args?: string[] }) {
+    let { name, parent, args } = options;
     if (!parent) {
       const heading = chalk.yellow(`${this.config.name}`);
       console.log(boxen(heading, { padding: 1, borderColor: "yellow" }));
@@ -73,10 +72,8 @@ export class WorkflowRunnerClass {
       name = await this.promptWorkflowSelect();
       console.log(chalk.yellow(`yarn scripts workflow run ${name}`));
     }
-
     const workflow = this.prepareWorkflow(name);
-
-    return this.executeWorkflow(workflow);
+    return this.executeWorkflow(workflow, args);
   }
 
   /** Ensure task */
@@ -92,12 +89,17 @@ export class WorkflowRunnerClass {
     return workflow;
   }
 
-  private async executeWorkflow(workflow: IWorkflow) {
+  private async executeWorkflow(workflow: IWorkflow, args: string[] = []) {
     this.activeWorkflow = {};
     for (const step of workflow.steps) {
       this.activeWorkflow[step.name] = step;
       console.log(chalk.yellow(`========== ${step.name} ==========`));
-      const context = { config: this.config, workflow: this.activeWorkflow, tasks: this.tasks };
+      const context = {
+        config: this.config,
+        workflow: this.activeWorkflow,
+        tasks: this.tasks,
+        args,
+      };
       const output = await step.function(context);
       this.activeWorkflow[step.name].output = output;
       // re-evaluate active deployment in case step changed it

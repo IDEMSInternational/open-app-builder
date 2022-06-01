@@ -17,7 +17,7 @@ const workflows: IDeploymentWorkflows = {
     steps: [
       {
         name: "deployment_import",
-        function: async ({ tasks }) => tasks.git().importRemoteRepo(),
+        function: async ({ tasks, args }) => tasks.git().importRemoteRepo(args[0]),
       },
       {
         name: "set_deployment",
