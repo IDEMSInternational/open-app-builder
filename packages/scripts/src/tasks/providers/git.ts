@@ -2,11 +2,11 @@ import chalk from "chalk";
 import fs from "fs-extra";
 import path from "path";
 import semver from "semver";
-import simpleGit from "simple-git";
+import simpleGit, { ResetMode } from "simple-git";
 import type { SimpleGit } from "simple-git";
 import { Project, PropertyAssignment, SyntaxKind } from "ts-morph";
 import { getActiveDeployment } from "../../commands/deployment/get";
-import { logError, logOutput, logWarning, promptInput, promptOptions } from "../../utils";
+import { logError, logOutput, promptInput, promptOptions } from "../../utils";
 import { IDeploymentConfigJson } from "../../commands/deployment/set";
 import { IDEMS_APP_CONFIG } from "../../paths";
 
@@ -33,10 +33,19 @@ class GitProvider {
     return targetDir;
   }
 
+  /** Stash any existing changes and fetch latest content from main branch */
+  public async refreshRemoteRepo() {
+    console.log("refreshing remote repo");
+    await this.initialiseGitProvider();
+    await this.git.checkout("main");
+    await this.git.reset(ResetMode.SOFT, ["HEAD"]);
+    await this.git.stash(["--keep-index", "--include-untracked"]);
+    await this.git.pull();
+  }
+
   public async createContentRelease() {
     await this.initialiseGitProvider();
     console.log("Preparing files...");
-    this.copyAppData();
     await this.promptChangesReview();
     const tagName = await this.promptReleaseTag();
     const branchName = `content/${tagName}`;
@@ -63,21 +72,6 @@ class GitProvider {
     // const [owner, repo] = this.deployment.git.content_repo.split("/").slice(-2);
     // const res = await new Octokit({}).rest.pulls.create({ owner, repo, base, head, body });
     // console.log(res)
-  }
-
-  /**
-   * TODO - Ideally this should already be handled in earlier workflow step or default
-   * populate to folder
-   * */
-  private copyAppData() {
-    const { _workspace_path, app_data } = this.deployment;
-    const deploymentDataDir = path.resolve(_workspace_path, "app_data");
-    fs.ensureDirSync(deploymentDataDir);
-    fs.emptyDirSync(deploymentDataDir);
-    fs.copySync(app_data.assets_output_path, path.resolve(deploymentDataDir, "assets"));
-    fs.copySync(app_data.sheets_output_path, path.resolve(deploymentDataDir, "sheets"));
-    // TODO - handle translations and any other content
-    // TODO - likely remove all configured cache folders for predefined structures
   }
 
   private async prepareReleaseBranch(branchName: string, compareLink: string) {
@@ -201,7 +195,6 @@ class GitProvider {
       }
       await this.git.addRemote("origin", git.content_repo);
     }
-    await this.git.checkout("origin/main");
     await this.git.fetch();
     // TODO - handle case where local changes exist that would conflict with checkout
     // TODO - likely remove any app-data changes
