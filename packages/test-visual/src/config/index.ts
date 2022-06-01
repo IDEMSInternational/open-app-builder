@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 const env = loadEnvVars();
 
-const APP_SRC_FOLDER = path.resolve(__dirname, "../../../../");
+const ROOT_FOLDER = path.resolve(__dirname, "../../../../");
 const REPO_FOLDER = path.resolve(__dirname, "../../");
 
 export const paths = {
@@ -21,8 +21,11 @@ Object.values(paths).forEach((p) => {
 });
 
 /** path to src dexie installation to use during db seed methods */
-export const DEXIE_SRC_PATH = path.resolve(APP_SRC_FOLDER, "node_modules/dexie/dist/dexie.js");
-
+export const DEXIE_SRC_PATH = path.resolve(ROOT_FOLDER, "node_modules/dexie/dist/dexie.js");
+export const TEMPLATE_CONTENTS_PATH = path.resolve(
+  ROOT_FOLDER,
+  "src/assets/app_data/sheets/contents.json"
+);
 export const GH_REPO_ORG = env.GH_REPO_ORG;
 export const GH_REPO_NAME = env.GH_REPO_NAME;
 

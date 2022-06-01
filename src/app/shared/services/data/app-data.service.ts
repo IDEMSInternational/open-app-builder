@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { SHEETS_CONTENT_LIST, TRANSLATIONS_CONTENT_LIST } from "app-data";
+import { SHEETS_CONTENT_LIST, TRANSLATIONS_CONTENT_LIST } from "src/app/data";
 import { FlowTypes } from "../../model";
 import { arrayToHashmap } from "../../utils";
 
