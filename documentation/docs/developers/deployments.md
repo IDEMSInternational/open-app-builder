@@ -21,11 +21,6 @@ This will prompt for a deployment type
 !!! tip
     Extending deployments are more efficient if using content from the same google drive folder. Content can still be customised through the use of filters or other configuration options
 
-config.app_data.sheets_filter_function = (flow) => flow.subtype!=='debug'
-
-!!! Tip
-    When using multiple configs it is recommended to have a default config that does not include any filters, so that complete data can be synced and populated to the cache for use by other deployments.
-
 ## Change Deployment
 To set the active deployment for the workspace run the following script:
 ```sh
