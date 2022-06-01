@@ -62,7 +62,10 @@ class GitProvider {
     await this.git.addTag(tagName);
     console.log("pushing changes");
     await this.git.push("origin", branchName);
-    logOutput({ msg1: "Content uploaded successfully", msg2: compareLink });
+    logOutput({
+      msg1: "Content uploaded successfully. Pull request link:",
+      msg2: compareLink,
+    });
     // open PR
   }
 
