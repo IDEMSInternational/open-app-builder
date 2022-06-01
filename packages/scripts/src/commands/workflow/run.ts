@@ -44,7 +44,7 @@ export class WorkflowRunnerClass {
     // load default workflows
     this.workflows = WORKFLOW_DEFAULTS;
     // load custom workflows
-    this.config = getActiveDeployment();
+    this.config = getActiveDeployment({ ignoreMissing: true });
     const { workflow, _workspace_path } = this.config as any;
     const customWorkflowFiles = [];
     if (workflow) {
