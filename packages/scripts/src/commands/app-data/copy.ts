@@ -19,6 +19,7 @@ import { spawnSync } from "child_process";
 import { getActiveDeployment } from "../deployment/get";
 import { ROOT_DIR } from "../../paths";
 import { FlowTypes } from "data-models";
+import type { IAssetEntry } from "data-models/deployment.model";
 
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
@@ -81,7 +82,6 @@ class AppDataCopy {
       // Handle Copy
       this.translationsWriteIndex(localTranslationsFolder);
       this.translationsCopyFiles(localTranslationsFolder, appTranslationsFolder);
-      runPrettierCodeTidy(appTranslationsFolder);
     }
 
     // Assets
@@ -300,13 +300,8 @@ class AppDataCopy {
     fs.readdirSync(baseFolder).forEach((language_code) => {
       contents[language_code] = { filename: `${language_code}/strings.json` };
     });
-    const contentsString = JSON.stringify(contents, null, 2);
-    const outputTS = `
-    type ITranslationContents = { [language_code:string]: { filename:  string } };
-    export const TRANSLATIONS_CONTENT_LIST:ITranslationContents = ${contentsString}
-        `.trim();
-    const TRANSLATIONS_INDEX_PATH = path.resolve(baseFolder, "index.ts");
-    fs.writeFileSync(TRANSLATIONS_INDEX_PATH, outputTS);
+    const TRANSLATIONS_INDEX_PATH = path.resolve(baseFolder, "contents.json");
+    fs.writeFileSync(TRANSLATIONS_INDEX_PATH, JSON.stringify(contents, null, 2));
   }
 
   private translationsCopyFiles(sourceFolder: string, targetFolder: string) {
@@ -331,9 +326,4 @@ type ISheetContents = {
 function runPrettierCodeTidy(folderPath: string) {
   const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${folderPath}/**/*.ts --loglevel error`;
   return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
-}
-
-/**  Subset of IContentsEntry (with additional translations) */
-interface IAssetEntry extends IContentsEntry {
-  translations?: { [language_code: string]: IContentsEntry };
 }
