@@ -19,6 +19,11 @@ const workflows: IDeploymentWorkflows = {
         name: "deployment_import",
         function: async ({ tasks }) => tasks.git().importRemoteRepo(),
       },
+      {
+        name: "set_deployment",
+        function: async ({ tasks, workflow }) =>
+          tasks.workflow.runWorkflow({ name: "deployment_set", parent: workflow }),
+      },
     ],
   },
   deployment_set: {
@@ -31,6 +36,11 @@ const workflows: IDeploymentWorkflows = {
           if (config.git?.content_repo) {
             await tasks.git().refreshRemoteRepo();
           }
+        },
+      },
+      {
+        name: "copy_app_data",
+        function: async ({ tasks }) => {
           tasks.appData.copyDeploymentDataToApp();
         },
       },

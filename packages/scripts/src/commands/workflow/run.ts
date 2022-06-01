@@ -100,6 +100,8 @@ export class WorkflowRunnerClass {
       const context = { config: this.config, workflow: this.activeWorkflow, tasks: this.tasks };
       const output = await step.function(context);
       this.activeWorkflow[step.name].output = output;
+      // re-evaluate active deployment in case step changed it
+      this.config = getActiveDeployment({ ignoreMissing: true });
     }
   }
 
