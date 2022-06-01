@@ -31,8 +31,8 @@ const workflows: IDeploymentWorkflows = {
     steps: [
       {
         name: "deployment_set",
-        function: async ({ tasks, config }) => {
-          await tasks.deployment.set();
+        function: async ({ tasks, config, args }) => {
+          await tasks.deployment.set(args[0]);
           if (config.git?.content_repo) {
             await tasks.git().refreshRemoteRepo();
           }

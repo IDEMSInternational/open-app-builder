@@ -8,8 +8,8 @@ class DeploymentProvider {
     spawnSync(`${scriptsExec} deployment create`, { shell: true, stdio: "inherit" });
   }
 
-  async set() {
-    spawnSync(`${scriptsExec} deployment set`, { shell: true, stdio: "inherit" });
+  async set(name = "") {
+    spawnSync(`${scriptsExec} deployment set ${name}`, { shell: true, stdio: "inherit" });
   }
 }
 
