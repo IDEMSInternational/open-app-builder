@@ -1,4 +1,4 @@
-# Deployment Configuration
+# Deployments
 
 All user-generated content are stored within deployments, alongside app-specific settings such as remote data sources and app strings.
 
