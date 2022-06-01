@@ -33,5 +33,4 @@ async function compileTypes(options: IProgramOptions) {
   }
   //   compile data-models and app-data files
   spawnSync(`yarn workspace data-models build`, { stdio: "inherit", shell: true });
-  spawnSync(`yarn workspace app-data build`, { stdio: "inherit", shell: true });
 }

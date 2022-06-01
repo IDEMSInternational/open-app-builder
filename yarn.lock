@@ -6870,16 +6870,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"app-data@workspace:*, app-data@workspace:packages/app-data":
-  version: 0.0.0-use.local
-  resolution: "app-data@workspace:packages/app-data"
-  dependencies:
-    "@types/node": ^15.12.4
-    data-models: "workspace:*"
-    typescript: ~4.2.4
-  languageName: unknown
-  linkType: soft
-
 "app-path@npm:^3.2.0":
   version: 3.3.0
   resolution: "app-path@npm:3.3.0"
@@ -13247,7 +13237,6 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 5.17.0
     "@typescript-eslint/eslint-plugin-tslint": ^4.28.0
     "@typescript-eslint/parser": 5.17.0
-    app-data: "workspace:*"
     capacitor-firebase-auth: ^3.0.0
     codelyzer: ^6.0.2
     concurrently: ^6.2.0
@@ -24553,7 +24542,6 @@ __metadata:
     "@types/node": ^15.12.4
     "@types/pixelmatch": ^5.2.4
     "@types/pngjs": ^6.0.1
-    app-data: "workspace:*"
     archiver: ^5.3.0
     axios: ^0.21.4
     boxen: ^5.1.2
@@ -24818,7 +24806,6 @@ __metadata:
     "@types/fs-extra": ^9.0.12
     "@types/inquirer": ^7.3.3
     "@types/node": ^15.12.4
-    app-data: "workspace:*"
     boxen: ^5.0.1
     chalk: ^4.1.1
     commander: ^8.1.0
