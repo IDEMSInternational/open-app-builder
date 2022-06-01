@@ -50,8 +50,8 @@ export async function setActiveDeployment(deploymentName?: string) {
   const deploymentJson = generateDeploymentJson(deployment, filename);
   fs.writeFileSync(defaultDeploymentPath, JSON.stringify(deploymentJson, null, 2));
   logOutput({
-    msg1: `Deployment set`,
-    msg2: JSON.stringify(deployment, null, 2),
+    msg1: `Active Deployment - "${deploymentJson.name}"`,
+    msg2: defaultDeploymentPath,
   });
   // delete .angular cache as it may not detect changes to json files otherwise
   const angularCacheDir = path.join(ROOT_DIR, ".angular");

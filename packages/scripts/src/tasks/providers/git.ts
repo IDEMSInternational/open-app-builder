@@ -36,14 +36,33 @@ class GitProvider {
     return targetDir;
   }
 
-  /** Stash any existing changes and fetch latest content from main branch */
+  /** Pull latest content from remote repo into local branch. Attempt to resolve any conflicts */
   public async refreshRemoteRepo() {
-    console.log("refreshing remote repo");
     await this.initialiseGitProvider();
+    console.log(chalk.gray("checkout [main]"));
     await this.git.checkout("main");
-    await this.git.reset(ResetMode.SOFT, ["HEAD"]);
-    await this.git.stash(["--keep-index", "--include-untracked"]);
-    await this.git.pull();
+    try {
+      await this.git.pull();
+    } catch (error) {
+      // If merge conflict prompt to discard local changes and retry
+      console.log(chalk.red(error.message));
+      const mergeErrorMsg = "Your local changes to the following files would be overwritten";
+      if (error.message.includes(mergeErrorMsg)) {
+        const shouldDiscard = await promptOptions(
+          [
+            { name: "No", value: false },
+            { name: "Yes", value: true },
+          ],
+          "Would you like to discard local changes and retry?"
+        );
+        if (shouldDiscard) {
+          await this.git.reset(ResetMode.SOFT, ["HEAD"]);
+          await this.git.stash(["--keep-index", "--include-untracked"]);
+          await this.refreshRemoteRepo();
+        }
+      }
+    }
+    console.log(chalk.gray("branch up-to-date"));
   }
 
   public async createContentRelease() {
