@@ -35,13 +35,6 @@ const workflows: IDeploymentWorkflows = {
           tasks.translate.apply({ inputFolder: workflow.sheets_process.output }),
       },
       {
-        name: "translations_copy_for_export",
-        function: async ({ tasks, workflow }) =>
-          tasks.translate.copyContentForTranslators({
-            inputFolder: workflow.sheets_process.output,
-          }),
-      },
-      {
         name: "app_copy_sheets",
         function: async ({ tasks, workflow, config }) =>
           tasks.appData.copy({

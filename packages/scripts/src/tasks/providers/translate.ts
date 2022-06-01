@@ -1,8 +1,7 @@
 import path from "path";
-import fs from "fs-extra";
 import { spawnSync } from "child_process";
 import { WorkflowRunner } from "../../commands/workflow/run";
-import { logError, recursiveFindByExtension } from "../../utils";
+import { logError } from "../../utils";
 
 /**
  * Apply translations to sheets
@@ -35,23 +34,6 @@ const apply = (options: { inputFolder: string }) => {
   };
 };
 
-/**
- * Copy all files for translation from local cache folder to global folder
- * Removes nested folder structure to create single folder output
- * @param options
- */
-const copyContentForTranslators = (options: { inputFolder: string }) => {
-  const { source_strings_path: outputFolder } = WorkflowRunner.config.translations;
-  fs.ensureDirSync(outputFolder);
-  fs.emptyDirSync(outputFolder);
-  const inputFiles = recursiveFindByExtension(options.inputFolder, "json");
-  for (const filepath of inputFiles) {
-    const filename = path.basename(filepath);
-    fs.copyFileSync(filepath, path.resolve(outputFolder, filename));
-  }
-};
-
 export default {
   apply,
-  copyContentForTranslators,
 };
