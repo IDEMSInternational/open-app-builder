@@ -186,7 +186,7 @@ class GitProvider {
     if (!_workspace_path) {
       logError({
         msg1: "No active deployment specified",
-        msg2: "yarn scripts deployment set",
+        msg2: "yarn workflow deployment_set",
       });
     }
     // Ensure git initialised with correct remote

@@ -35,7 +35,7 @@ The app supports using different workspace or deployment configurations. These a
 
 An initial deployment should be specified via the command
 ```
-yarn scripts deployment set
+yarn workflow deployment_set
 ```
 
 Deployments are used to configure data sources (such as google drive) and various processing steps. See [Deployment Documentation](./developers/deployments.md) for more information

@@ -47,7 +47,7 @@ export function getActiveDeployment(
     }
     logError({
       msg1: "No default deployment has been specified",
-      msg2: `Run "yarn scripts deployment set" to configure`,
+      msg2: `Run "yarn workflow deployment_set" to configure`,
     });
   }
   // Load config from json
@@ -63,7 +63,7 @@ export function getActiveDeployment(
   if (!fs.existsSync(deploymentTSPath)) {
     logError({
       msg1: `Deployment not found: ${_config_ts_path}`,
-      msg2: `Run "yarn scripts deployment set" to specify a new active deployment`,
+      msg2: `Run "yarn workflow deployment_set" to specify a new active deployment`,
     });
   }
 
