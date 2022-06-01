@@ -13,6 +13,7 @@ interface IWorkflowStep {
     config: IDeploymentConfig;
     workflow: IWorkflowContext;
     tasks: ITasks;
+    /** Positional args passed to workflow script */
     args: string[];
   }) => Promise<any>;
 }
