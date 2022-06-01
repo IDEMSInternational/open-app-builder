@@ -1,5 +1,13 @@
+import fs from "fs-extra";
 import { DB_TABLES, DB_VERSION } from "data-models/db.model";
-import { SHEETS_CONTENT_LIST } from "app-data";
+import { TEMPLATE_CONTENTS_PATH } from "./index";
+
+/**
+ * HACK - previously contents files imported from shared app-data workspace
+ * Now only exists in app so temp workaround to import directly
+ */
+const SHEETS_CONTENT_LIST = fs.readJsonSync(TEMPLATE_CONTENTS_PATH);
+
 const template = Object.values(SHEETS_CONTENT_LIST.template) as any[];
 
 /** List of template flow subtypes to test */
