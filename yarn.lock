@@ -13207,6 +13207,7 @@ __metadata:
     rxjs: ^6.6.7
     simple-git-hooks: ^2.4.1
     stacktrace-js: ^2.0.2
+    subtitles-parser-vtt: ^0.1.0
     typescript: 4.4.2
     zone.js: ~0.11.4
   languageName: unknown
@@ -23981,6 +23982,13 @@ __metadata:
   bin:
     stylus: bin/stylus
   checksum: 5ec06f3186aaa4802cc2f04f93665a71348954e3d10f6cb26d7cdba7108fcdfa5e9a330fa7694fa0d0d31d8decf6b18349f49bbaadde96351e30d549dfb272c7
+  languageName: node
+  linkType: hard
+
+"subtitles-parser-vtt@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "subtitles-parser-vtt@npm:0.1.0"
+  checksum: 644441bdca5aeeade50b71ded8ad294aa5da0eaeb363e960fc6ce079612de724907ac58145d5fdcd1914c30c59fd087417ffb3eda02037027de924f6de18ff5b
   languageName: node
   linkType: hard
 
