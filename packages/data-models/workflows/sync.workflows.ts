@@ -1,6 +1,20 @@
+import path from "path";
 import type { IDeploymentWorkflows } from "./workflow.model";
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
+  custom: {
+    label: "Run WIP subtitles code",
+    steps: [
+      {
+        name: "convert_srt_to_json",
+        function: async ({ tasks }) => {
+          const srtPath =
+            "/Users/Johnny/Documents/IDEMS-parenting-app/parenting-app-ui/packages/app-data/assets/global/plh_video/lets_slow_down.srt";
+          tasks.subtitles.subtitlesFileToJson({ srtPath });
+        },
+      },
+    ],
+  },
   sync: {
     label: "Sync All Content",
     steps: [
