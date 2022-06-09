@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 import { Command } from "commander";
+import type { drive_v3 } from "googleapis";
 import { logProgramHelp } from "../utils";
 import { authorizeGDrive, authorizeGDriveActivity } from "./authorize";
 import { PATHS } from "../paths";
 import { randomUUID } from "crypto";
+import { GDriveDownloader } from "./download";
 
 /***************************************************************************************
  * WiP Methods to enable streaming of live changes from google drive
@@ -37,8 +39,6 @@ interface IProgramOptions {
   credentialsPath: string;
   authTokenPath: string;
   logName: string;
-  contentsFileName: string;
-  filterFunction64?: string;
 }
 
 const program = new Command("watch");
@@ -46,11 +46,22 @@ export default program
   .description("Watch a folder for changes")
   .requiredOption("-id --folder-id <string>", "Unique ID of folder to download (gdrive url suffix)")
   .requiredOption(
+    "-o --output-path <string>",
+    "Output path for downloaded files (default ./output)",
+    PATHS.DEFAULT_OUTPUT_FOLDER
+  )
+  .requiredOption(
     "-c --credentials-path <string>",
     "Path to credentials JSON",
     PATHS.DEFAULT_CREDENTIALS
   )
   .requiredOption("-a --auth-token-path <string>", "Path to token JSON", PATHS.DEFAULT_TOKEN)
+  .requiredOption(
+    "-l --log-name <string>",
+    "Name provided for logs (defaults action.log)",
+    "actions.log"
+  )
+
   .action(async (options: IProgramOptions) => new GDriveWatcher(options).run());
 
 // Run if called directly from Node
@@ -140,7 +151,7 @@ class GDriveWatcher {
    * TODO - see if there is better way to apply filtered query
    **/
   private async wipPollDriveChangesApi(interval = 1000 * 3) {
-    const { folderId, authTokenPath, credentialsPath } = this.options;
+    const { authTokenPath, credentialsPath } = this.options;
     const { drive } = await authorizeGDrive({ authTokenPath, credentialsPath });
     const initialTokenRes = await drive.changes.getStartPageToken();
     let pageToken = initialTokenRes.data.startPageToken;
@@ -163,23 +174,24 @@ class GDriveWatcher {
         if (changes?.length > 0) {
           pageToken = newStartPageToken;
           for (const change of changes) {
-            const { file } = change;
-            // TODO - see if way to check file used by app
-            // filter only files modified by me
-            const { modifiedByMe, name } = file;
-            if (modifiedByMe) {
-              console.log(`${formatTimestamp()} [Change] ${name}`);
-              // TODO - handle download target.driveItem.name
-            }
-
-            // console.log(`${time.slice(11, 19)} [CHANGE] ${file.name}`);
-            // console.log(JSON.stringify(change, null, 2));
+            await this.handleFileChange(change);
           }
         }
       }
       setTimeout(executePoll, interval, resolve, reject);
     };
     return new Promise(executePoll);
+  }
+
+  private async handleFileChange(change: drive_v3.Schema$Change) {
+    const { file } = change;
+    // TODO - see if way to check file used by app
+    // filter only files modified by me
+    const { modifiedByMe, name } = file;
+    if (modifiedByMe) {
+      console.log(`${formatTimestamp()} [Change] ${name}`);
+      await new GDriveDownloader(this.options).downloadFile(file);
+    }
   }
 
   /**
