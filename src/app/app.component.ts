@@ -92,11 +92,11 @@ export class AppComponent {
       if (APP_AUTHENTICATION_DEFAULTS.enforceLogin && Capacitor.isNativePlatform()) {
         await this.ensureUserSignedIn();
       }
-      // Run app-specific launch tasks
-      await this.lifecycleActionsService.handleLaunchActions();
       if (!user.first_app_open) {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
       }
+      // Run app-specific launch tasks
+      await this.lifecycleActionsService.handleLaunchActions();
       this.menuController.enable(true, "main-side-menu");
       if (Capacitor.isNativePlatform()) {
         if (!isDeveloperMode) {
