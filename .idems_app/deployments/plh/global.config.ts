@@ -1,7 +1,7 @@
 import { IDeploymentConfig } from "data-models";
-import { DEFAULT_CONSTANTS } from "data-models";
+import { getDefaultAppConstants } from "data-models/constants";
 
-const app_constants = DEFAULT_CONSTANTS;
+const app_constants = getDefaultAppConstants();
 
 /**
  * The default config should ideally be a superset of any extended configs
@@ -9,7 +9,7 @@ const app_constants = DEFAULT_CONSTANTS;
  */
 const config: IDeploymentConfig = {
   name: "plh_global",
-  app_constants: DEFAULT_CONSTANTS,
+  app_constants,
   google_drive: {
     sheets_folder_id: "1n221Zv9LYuwxmjhiboq8vhQg67_K9L5f",
     assets_folder_id: "1dp9QAQ84m8pm0IBQTSPXe1ramyynKPNn",
