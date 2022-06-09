@@ -13,11 +13,13 @@ interface IWorkflowStep {
     config: IDeploymentConfig;
     workflow: IWorkflowContext;
     tasks: ITasks;
+    options: { [optionName: string]: string | boolean };
   }) => Promise<any>;
 }
 export interface IWorkflow {
   label: string;
   steps: IWorkflowStep[];
+  options?: { flags: string; description?: string; defaultValue?: string | boolean }[];
 }
 
 export interface IDeploymentWorkflows {

@@ -3,6 +3,12 @@ import type { IDeploymentWorkflows } from "./workflow.model";
 const workflows: IDeploymentWorkflows = {
   sync: {
     label: "Sync All Content",
+    options: [
+      {
+        flags: "-cw, --content-watch",
+        description: "Listen for realtime updates to content drive",
+      },
+    ],
     steps: [
       {
         name: "sync_assets",
@@ -16,8 +22,13 @@ const workflows: IDeploymentWorkflows = {
       },
       {
         name: "sync_live",
-        function: async ({ tasks, workflow }) =>
-          tasks.workflow.runWorkflow({ name: "sync_live", parent: workflow }),
+        function: async ({ tasks, workflow, options }) => {
+          if (options.contentWatch) {
+            tasks.workflow.runWorkflow({ name: "sync_live", parent: workflow });
+          } else {
+            console.log('Use "--content-watch" or "-cw" to enable live sync\n');
+          }
+        },
       },
     ],
   },
@@ -84,6 +95,9 @@ const workflows: IDeploymentWorkflows = {
         function: async ({ tasks, workflow, config }) => {
           tasks.gdrive.liveReload({
             folderId: config.google_drive.sheets_folder_id,
+            onUpdate: (entry) => {
+              console.log("file updated", entry);
+            },
             // customCommands: [
             //   {
             //     keybinding: "r",
