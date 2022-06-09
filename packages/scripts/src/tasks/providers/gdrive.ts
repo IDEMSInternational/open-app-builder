@@ -1,4 +1,4 @@
-import { spawnSync } from "child_process";
+import { spawn, spawnSync } from "child_process";
 import path from "path";
 import { WorkflowRunner } from "../../commands/workflow/run";
 import { AUTH_TOKEN_PATH, CREDENTIALS_PATH } from "../../paths";
@@ -41,13 +41,34 @@ const download = (options: { folderId: string }) => {
  */
 const liveReload = async (options: {
   folderId: string;
-  onUpdate?: () => void;
+  onUpdate?: (entry) => void;
   customCommands?: IWatchCommand[];
 }) => {
-  const cmd = `${gdriveToolsExec} watch --folder-id ${options.folderId} `;
-  spawnSync(cmd, { stdio: "inherit", shell: true });
-  // WiP - allow manual intervention to force actions
+  const { folderId } = options;
+  const { config } = WorkflowRunner;
+  const { _workspace_path } = config;
+  const { auth_token_path } = config.google_drive;
+  const authTokenPath = auth_token_path
+    ? path.resolve(_workspace_path, auth_token_path)
+    : AUTH_TOKEN_PATH;
 
+  const outputPath = path.resolve(_workspace_path, "tasks", "gdrive", "outputs", folderId);
+
+  const commonArgs = `--credentials-path "${CREDENTIALS_PATH}" --auth-token-path "${authTokenPath}"`;
+
+  const dlArgs = `--folder-id ${folderId} --output-path "${outputPath}" --log-name "${folderId}.log"`;
+
+  const cmd = `${gdriveToolsExec} watch ${commonArgs} ${dlArgs}`;
+  const child = spawn(cmd, { stdio: "inherit", shell: true });
+
+  // As it's not easy to communicate directly with spawned child, instead
+  // set-up a file watcher for locally updated files
+
+  // TODO - file watcher
+};
+
+// WiP - allow manual intervention to force actions
+function addUserInputCommands() {
   // const watchCommands: IWatchCommand[] = [
   //   ...(options.customCommands || []),
   //   {
@@ -64,7 +85,7 @@ const liveReload = async (options: {
   // const prompts = watchCommands.map((v) => ({ name: v.name, value: v }));
   // const selected = await promptOptions<IWatchCommand>(prompts, "Sync Options");
   // await selected.command();
-};
+}
 
 interface IWatchCommand {
   keybinding: string;
