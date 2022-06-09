@@ -1,4 +1,4 @@
-import APP_CONSTANTS from "./constants";
+import type { IAppConstants } from "./constants";
 
 /*********************************************************************************************
  *  Base flow types
@@ -303,7 +303,7 @@ export namespace FlowTypes {
   }
   export type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
-  type IDynamicPrefix = typeof APP_CONSTANTS.DYNAMIC_PREFIXES[number];
+  type IDynamicPrefix = IAppConstants["DYNAMIC_PREFIXES"][number];
 
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
