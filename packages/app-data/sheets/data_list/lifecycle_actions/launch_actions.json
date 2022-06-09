@@ -1,0 +1,165 @@
+{
+  "flow_type": "data_list",
+  "flow_subtype": "lifecycle_actions",
+  "flow_name": "launch_actions",
+  "status": "released",
+  "rows": [
+    {
+      "lifecycle_event": "app_start",
+      "priority": 1,
+      "condition_list": [
+        "!@fields.splash_screens_viewed"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "splash_screens"
+          ],
+          "_raw": "pop_up: splash_screens | fullscreen: true, showCloseButton: false",
+          "_cleaned": "click | pop_up: splash_screens | fullscreen: true, showCloseButton: false",
+          "params": {
+            "fullscreen": true,
+            "showCloseButton": false
+          }
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "splash_screens_viewed",
+            true
+          ],
+          "_raw": "set_field: splash_screens_viewed: true",
+          "_cleaned": "click | set_field: splash_screens_viewed: true"
+        }
+      ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "priority": 2,
+      "condition_list": [
+        "!@fields.terms_v20200916_accepted"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "accept_terms"
+          ],
+          "_raw": "pop_up: accept_terms | fullscreen: true, showCloseButton: false",
+          "_cleaned": "click | pop_up: accept_terms | fullscreen: true, showCloseButton: false",
+          "params": {
+            "fullscreen": true,
+            "showCloseButton": false
+          }
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "terms_v20200916_accepted",
+            true
+          ],
+          "_raw": "set_field: terms_v20200916_accepted: true",
+          "_cleaned": "click | set_field: terms_v20200916_accepted: true"
+        }
+      ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "priority": 3,
+      "condition_list": [
+        "!@fields.language_selected"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "language_select"
+          ],
+          "_raw": "pop_up: language_select | fullscreen: true, showCloseButton: false",
+          "_cleaned": "click | pop_up: language_select | fullscreen: true, showCloseButton: false",
+          "params": {
+            "fullscreen": true,
+            "showCloseButton": false
+          }
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "language_selected",
+            true
+          ],
+          "_raw": "set_field: language_selected: true",
+          "_cleaned": "click | set_field: language_selected: true"
+        }
+      ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "priority": 4,
+      "condition_list": [
+        "!@fields.organisation_registration_completed"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "organisation_registration"
+          ],
+          "_raw": "pop_up: organisation_registration | fullscreen: true, showCloseButton: false",
+          "_cleaned": "click | pop_up: organisation_registration | fullscreen: true, showCloseButton: false",
+          "params": {
+            "fullscreen": true,
+            "showCloseButton": false
+          }
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "organisation_registration_completed",
+            true
+          ],
+          "_raw": "set_field: organisation_registration_completed: true",
+          "_cleaned": "click | set_field: organisation_registration_completed: true"
+        }
+      ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "priority": 5,
+      "condition_list": [
+        "!@fields.home_screen_tour_viewed"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "start_tour",
+          "args": [
+            "home_screen_tour_intro"
+          ],
+          "_raw": "start_tour: home_screen_tour_intro",
+          "_cleaned": "click | start_tour: home_screen_tour_intro"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "home_screen_tour_viewed",
+            true
+          ],
+          "_raw": "set_field: home_screen_tour_viewed: true",
+          "_cleaned": "click | set_field: home_screen_tour_viewed: true"
+        }
+      ]
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_app_first_launch.xlsx"
+}
