@@ -139,50 +139,72 @@
       "_nested_name": "text_2"
     },
     {
-      "type": "button",
-      "name": "button_3",
-      "value": "@global.continue_button",
-      "_translations": {
-        "value": {}
-      },
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
       "action_list": [
         {
-          "trigger": "click",
-          "action_id": "accept_terms",
-          "args": [],
-          "_raw": "click | accept_terms",
-          "_cleaned": "click | accept_terms"
-        },
-        {
-          "trigger": "click",
+          "trigger": "completed",
           "action_id": "emit",
           "args": [
             "completed"
           ],
-          "_raw": "emit:completed",
-          "_cleaned": "click | emit:completed"
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "set_field",
+          "args": [
+            "terms_v20200916_accepted",
+            true
+          ],
+          "_raw": "completed | set_field: terms_v20200916_accepted: true",
+          "_cleaned": "completed | set_field: terms_v20200916_accepted: true"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "parameter_list": {
-        "style": "navigation",
-        "text_align": "center"
-      },
-      "_nested_name": "button_3",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.continue_button",
-            "matchedExpression": "@global.continue_button",
-            "type": "global",
-            "fieldName": "continue_button"
+      "rows": [
+        {
+          "name": "display_back",
+          "value": false,
+          "type": "set_variable",
+          "_nested_name": "nav_buttons.display_back"
+        },
+        {
+          "name": "button_completed",
+          "value": "@global.continue_button",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "nav_buttons.button_completed",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.continue_button",
+                "matchedExpression": "@global.continue_button",
+                "type": "global",
+                "fieldName": "continue_button"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.continue_button": [
+              "value"
+            ]
           }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.continue_button": [
-          "value"
-        ]
-      }
+        }
+      ],
+      "_nested_name": "nav_buttons"
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_app_first_launch.xlsx"
