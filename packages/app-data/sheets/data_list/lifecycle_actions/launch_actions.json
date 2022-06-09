@@ -6,6 +6,7 @@
   "rows": [
     {
       "lifecycle_event": "app_start",
+      "id": "app_start_splash_screens",
       "priority": 1,
       "condition_list": [
         "!@fields.splash_screens_viewed"
@@ -38,6 +39,7 @@
     },
     {
       "lifecycle_event": "app_start",
+      "id": "app_start_accept_terms",
       "priority": 2,
       "condition_list": [
         "!@fields.terms_v20200916_accepted"
@@ -55,21 +57,12 @@
             "fullscreen": true,
             "showCloseButton": false
           }
-        },
-        {
-          "trigger": "click",
-          "action_id": "set_field",
-          "args": [
-            "terms_v20200916_accepted",
-            true
-          ],
-          "_raw": "set_field: terms_v20200916_accepted: true",
-          "_cleaned": "click | set_field: terms_v20200916_accepted: true"
         }
       ]
     },
     {
       "lifecycle_event": "app_start",
+      "id": "app_start_language_select",
       "priority": 3,
       "condition_list": [
         "!@fields.language_selected"
@@ -102,6 +95,7 @@
     },
     {
       "lifecycle_event": "app_start",
+      "id": "app_start_organisation_registration",
       "priority": 4,
       "condition_list": [
         "!@fields.organisation_registration_completed"
@@ -134,6 +128,7 @@
     },
     {
       "lifecycle_event": "app_start",
+      "id": "app_start_home_screen_tour",
       "priority": 5,
       "condition_list": [
         "!@fields.home_screen_tour_viewed"
