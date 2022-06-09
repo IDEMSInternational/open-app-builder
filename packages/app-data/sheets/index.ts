@@ -354,7 +354,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "data_list",
       flow_subtype: "lifecycle_actions",
       flow_name: "launch_actions",
-      _xlsxPath: "global/core_templates/core_templates_app_first_launch.xlsx",
+      _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
     },
     parent_centre_data_list: {
       flow_type: "data_list",
@@ -589,7 +589,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     accept_terms: {
       flow_type: "template",
       flow_name: "accept_terms",
-      _xlsxPath: "global/core_templates/core_templates_app_first_launch.xlsx",
+      _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
     },
     activity_check_in_chat: {
       flow_type: "template",
@@ -1081,6 +1081,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "comp_latex",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_latex.xlsx",
+    },
+    comp_radio_button: {
+      flow_type: "template",
+      flow_name: "comp_radio_button",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_radio_button.xlsx",
     },
     comp_round_button: {
       flow_type: "template",
@@ -3278,7 +3284,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     sign_in: {
       flow_type: "template",
       flow_name: "sign_in",
-      _xlsxPath: "global/core_templates/core_templates_app_first_launch.xlsx",
+      _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
     },
     something_fun: {
       flow_type: "template",
@@ -3288,7 +3294,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     splash_screens: {
       flow_type: "template",
       flow_name: "splash_screens",
-      _xlsxPath: "global/core_templates/core_templates_app_first_launch.xlsx",
+      _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
     },
     suggestions: {
       flow_type: "template",
