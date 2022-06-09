@@ -2,9 +2,9 @@
 
 ## Example
 
-| type     | name       |value            |parameter_list  |
-|--------- | -----------|----------       |----------------|
-|video     |video_src	  |mp4              |subtitles_src: plh_video/lets_slow_down.vtt |
+| type     | name       |value                                  |parameter_list  |
+|--------- | -----------|----------                             |----------------|
+|video     |video_src	  |plh_video/lets_slow_down.mp4           |subtitles_src: plh_video/lets_slow_down.vtt |
 
 ![](images/video.png)
 
@@ -15,4 +15,4 @@
 
 | Parameter             | Value                        | Description |
 | ---------             | -----------                  | --------- |
-|subtitles_src          |mp4                           | On clicking the play button, the "Let's slow down" song plays|
+|subtitles_src          |path to subtitle file         | subtitles are shown on top of the video|
