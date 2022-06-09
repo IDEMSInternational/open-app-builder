@@ -28,10 +28,6 @@ export class UserMetaService {
     return this.userMeta[key];
   }
 
-  getUserMetaUuid() {
-    return this.userMeta.uuid;
-  }
-
   async setUserMeta(meta: Partial<IUserMeta>) {
     const entries = Object.entries(meta).map(([key, value]) => ({ key, value }));
     await this.dbService.table<IUserMetaEntry>("user_meta").bulkPut(entries as any);
@@ -48,7 +44,6 @@ export interface IUserMeta {
   uuid: string;
   uuid_temp?: string; // legacy id that previously may have been set
   first_app_open: isostring;
-  terms_accepted: boolean;
   current_date: isostring;
   app_skin: "MODULE_FOCUS_SKIN" | "BLOBS" | "BUTTONS";
 }
@@ -59,6 +54,5 @@ const USER_DEFAULTS: IUserMeta = {
   uuid: null,
   app_skin: "MODULE_FOCUS_SKIN",
   first_app_open: null,
-  terms_accepted: false,
   current_date: null,
 };
