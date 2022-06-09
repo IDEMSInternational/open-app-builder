@@ -350,6 +350,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "praise",
       _xlsxPath: "global/data/praise_data_list.xlsx",
     },
+    launch_actions: {
+      flow_type: "data_list",
+      flow_subtype: "lifecycle_actions",
+      flow_name: "launch_actions",
+      _xlsxPath: "global/core_templates/core_templates_app_first_launch.xlsx",
+    },
     parent_centre_data_list: {
       flow_type: "data_list",
       flow_name: "parent_centre_data_list",
@@ -1099,6 +1105,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "comp_text",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_text.xlsx",
+    },
+    comp_timer: {
+      flow_type: "template",
+      flow_name: "comp_timer",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_timer.xlsx",
     },
     comp_video: {
       flow_type: "template",

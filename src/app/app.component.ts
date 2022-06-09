@@ -28,6 +28,7 @@ import { APP_CONSTANTS } from "./data";
 import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
 import { AppDataService } from "./shared/services/data/app-data.service";
 import { AuthService } from "./shared/services/auth/auth.service";
+import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
 
 const {
   APP_FIELDS,
@@ -72,6 +73,7 @@ export class AppComponent {
     private authService: AuthService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
+    public lifecycleActionsService: LifecycleActionsService,
     public serverService: ServerService
   ) {
     this.initializeApp();
@@ -90,7 +92,8 @@ export class AppComponent {
       if (APP_AUTHENTICATION_DEFAULTS.enforceLogin && Capacitor.isNativePlatform()) {
         await this.ensureUserSignedIn();
       }
-      await this.handleLaunchDataActions(user);
+      // Run app-specific launch tasks
+      await this.lifecycleActionsService.handleLaunchActions();
       if (!user.first_app_open) {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
       }
@@ -153,36 +156,6 @@ export class AppComponent {
       /** CC 2022-04-01 - Disable service as not currently in use */
       // await this.pushNotificationService.init();
     }, 1000);
-  }
-
-  /**
-   * Run app-specific launch tasks
-   **/
-  private async handleLaunchDataActions(user) {
-    for (const initAction of APP_INITIALISATION_DEFAULTS.app_launch_actions) {
-      if (initAction.first_launch_only && user.first_app_open) {
-        continue;
-      }
-      if (initAction.condition) {
-        const conditionMet = this.checkLaunchActionCondition(initAction.condition, user);
-        if (!conditionMet) {
-          continue;
-        }
-      }
-      switch (initAction.type) {
-        case "template_popup":
-          await this.templateService.runStandaloneTemplate(initAction.value, {
-            showCloseButton: false,
-          });
-          break;
-        case "tour_start":
-          await this.tourService.startTour(initAction.value);
-          break;
-        default:
-          console.error("Startup action not defined:", initAction);
-          break;
-      }
-    }
   }
 
   checkLaunchActionCondition(condition, user) {

@@ -178,6 +178,13 @@ export namespace FlowTypes {
     _cleaned?: string;
     _parsed?: string[][];
   }
+  export interface Lifecycle_Action {
+    priority?: number; // priority order in which to run actions
+    lifecycle_event: LifecycleEvent;
+    condition_list?: string[];
+    action_list: TemplateRowAction[];
+  }
+  export type LifecycleEvent = "app_start"; // scope to add app_open, app_close, app_minimize, app_first_start etc.
   export interface RowWithActivationConditions {
     /** evaluated statements for activating campaign */
     activation_condition_list?: DataEvaluationCondition[];
@@ -319,7 +326,6 @@ export namespace FlowTypes {
     | "audio_pause"
     | "audio_end"
     | "audio_first_start"
-    | "accept_terms"
     | "nav_resume" // return to template after navigation or popup close;
     | "sent"; // notification sent
 
@@ -348,7 +354,6 @@ export namespace FlowTypes {
       | "trigger_actions"
       | "track_event"
       | "process_template"
-      | "accept_terms"
       | "google_auth";
     args: any[]; // should be string | boolean, but breaks type-checking for templates;
     params?: any; // additional params also used by args (does not require position argument)

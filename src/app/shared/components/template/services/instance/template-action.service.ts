@@ -183,9 +183,6 @@ export class TemplateActionService extends TemplateInstanceService {
         );
         const processor = new TemplateProcessService(this.injector);
         return processor.processTemplateWithoutRender(templateToProcess);
-      case "accept_terms":
-        await this.userMetaService.setUserMeta({ terms_accepted: true });
-        return console.log("terms accepted");
       case "google_auth":
         return await this.authService.signInWithGoogle();
       case "emit":
