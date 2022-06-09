@@ -16,7 +16,6 @@ import { TemplateFieldService } from "../template-field.service";
 import { EventService } from "src/app/shared/services/event/event.service";
 import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
-import { UserMetaService } from "src/app/shared/services/userMeta/userMeta.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -43,7 +42,6 @@ export class TemplateActionService extends TemplateInstanceService {
   private eventService: EventService;
   private dbSyncService: DBSyncService;
   private authService: AuthService;
-  private userMetaService: UserMetaService;
 
   constructor(injector: Injector, public container?: TemplateContainerComponent) {
     super(injector);
@@ -58,7 +56,6 @@ export class TemplateActionService extends TemplateInstanceService {
     this.eventService = this.getGlobalService(EventService);
     this.dbSyncService = this.getGlobalService(DBSyncService);
     this.authService = this.getGlobalService(AuthService);
-    this.userMetaService = this.getGlobalService(UserMetaService);
   }
 
   /** Public method to add actions to processing queue and process */

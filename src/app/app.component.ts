@@ -158,13 +158,6 @@ export class AppComponent {
     }, 1000);
   }
 
-  checkLaunchActionCondition(condition, user) {
-    if (condition === "terms_not_accepted") {
-      return !user.terms_accepted;
-    }
-    return false;
-  }
-
   clickOnMenuItem(id: string) {
     this.menuController.close("main-side-menu");
     this.router.navigateByUrl("/" + id);
