@@ -34,6 +34,7 @@ export class LifecycleActionsService {
           await this.templateVariablesService.evaluateConditionString(condition)
       );
       if (allConditionsSatisfied) {
+        console.log(`[Lifecycle Actions] ${launchAction.id}`);
         await templateActionService.handleActions(launchAction.action_list);
       }
     }
@@ -52,7 +53,6 @@ export class LifecycleActionsService {
 
   private async getAllLifecycleActionsByEventType(lifecycleEvent: FlowTypes.LifecycleEvent) {
     const allLifecycleActions = await this.getAllLifecycleActions();
-    console.log("allLifecycleActions: ", allLifecycleActions);
     return allLifecycleActions.filter(
       (launchAction) => launchAction.lifecycle_event === lifecycleEvent
     );

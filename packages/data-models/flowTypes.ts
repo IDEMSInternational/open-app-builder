@@ -179,8 +179,9 @@ export namespace FlowTypes {
     _parsed?: string[][];
   }
   export interface Lifecycle_Action {
-    priority?: number; // priority order in which to run actions
     lifecycle_event: LifecycleEvent;
+    id: string;
+    priority?: number; // priority order in which to run actions
     condition_list?: string[];
     action_list: TemplateRowAction[];
   }
