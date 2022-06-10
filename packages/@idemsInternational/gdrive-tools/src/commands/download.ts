@@ -89,16 +89,12 @@ export class GDriveDownloader {
     this.loadCacheContents();
   }
 
-  private async setupGdrive() {
-    const { authTokenPath, credentialsPath } = this.options;
-    const { drive } = await authorizeGDrive({ authTokenPath, credentialsPath });
-    this.drive = drive;
-  }
-
   /** Process entire folder download */
   public async downloadFolder(folderId: string) {
     await this.setupGdrive();
-    return this.processFullFolderDownload(folderId);
+    console.log(chalk.yellow("Retrieving list of files"));
+    const serverFiles = await this.listGdriveFilesRecursively(folderId);
+    return this.processDownloads(serverFiles);
   }
 
   /**
@@ -112,11 +108,19 @@ export class GDriveDownloader {
       console.log(chalk.red("Full sync required before updating file", serverEntry.name));
       return;
     }
-    // only update time and size from server (assume folder path stays same)
-    const { modifiedTime, size } = serverEntry;
-    const updatedEntry = { ...cachedEntry, modifiedTime, size };
-    await this.processSyncActions({ ...SYNC_ACTIONS_EMPTY, new: [updatedEntry] });
-    this.updateCacheContentsFile(updatedEntry);
+    // HACK - gdrive ignores updates in quick succession, so ensure change detection whenever
+    // viewedByMeTime changes (e.g. gsheet page reload)
+    if (serverEntry.viewedByMeTime) {
+      serverEntry.modifiedTime = serverEntry.viewedByMeTime;
+    }
+    // we still call the main method used to download entire folder, just passing individual server file
+    await this.processDownloads([{ ...serverEntry, folderPath: cachedEntry.folderPath }]);
+  }
+
+  private async setupGdrive() {
+    const { authTokenPath, credentialsPath } = this.options;
+    const { drive } = await authorizeGDrive({ authTokenPath, credentialsPath });
+    this.drive = drive;
   }
 
   private loadCacheContents() {
@@ -127,9 +131,7 @@ export class GDriveDownloader {
   }
 
   /** Download a full folder */
-  private async processFullFolderDownload(folderId: string) {
-    console.log(chalk.yellow("Retrieving list of files"));
-    const files = await this.listGdriveFilesRecursively(folderId);
+  private async processDownloads(files: IGDriveFileWithFolder[]) {
     // Generate list of files to download
     const actions = this.prepareSyncActionsList(files);
     await this.processSyncActions(actions);
