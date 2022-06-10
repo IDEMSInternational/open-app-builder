@@ -1,7 +1,5 @@
 import { extendConfig } from "data-models/deployment.model";
-import PARENT_CONFIG from "./global.config";
-
-/** TZ config extends the default config **/
+import PARENT_CONFIG from "../plh/config";
 
 const config = extendConfig(PARENT_CONFIG);
 config.name = "plh_tz";
@@ -15,5 +13,6 @@ config.translations.filter_language_codes = ["tz_en", "tz_sw"];
 config.app_constants.APP_LANGUAGES.default = "tz_en";
 config.app_constants.APP_SIDEMENU_DEFAULTS.title = "ParentApp (TZ)";
 config.app_constants.APP_AUTHENTICATION_DEFAULTS.enforceLogin = true;
+
 
 export default config;

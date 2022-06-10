@@ -64,11 +64,15 @@ export interface IDeploymentConfig {
 
 /**
  * Create a deep clone of parent config (to avoid accidental hard reference),
- * and populate with a named refernce to parent
+ * populate with a named refernce to parent and remove parent git repo ref
  **/
 export const extendConfig = (parentConfig: IDeploymentConfig): IDeploymentConfig => {
   const extendedConfig = clone(parentConfig);
   extendedConfig._parent_config = { name: parentConfig.name };
+  if (parentConfig.git) {
+    extendedConfig._parent_config.git = parentConfig.git;
+    delete extendedConfig.git;
+  }
   return extendedConfig;
 };
 

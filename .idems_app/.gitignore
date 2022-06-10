@@ -1,6 +1,8 @@
 /deployments/**
 !/deployments/example
 !/deployments/plh
+!/deployments/plh_tz
+!/deployments/plh_za
 !/deployments/early_family_math
 # Renamed to activeDeployment.json, include here so people can remove
 !/deployments/default.json

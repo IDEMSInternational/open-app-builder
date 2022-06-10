@@ -61,6 +61,7 @@ export function getActiveDeployment(
   const deploymentTSPath = path.resolve(IDEMS_APP_CONFIG.deployments, _config_ts_path);
 
   if (!fs.existsSync(deploymentTSPath)) {
+    fs.removeSync(defaultJsonPath);
     logError({
       msg1: `Deployment not found: ${_config_ts_path}`,
       msg2: `Run "yarn workflow deployment_set" to specify a new active deployment`,
