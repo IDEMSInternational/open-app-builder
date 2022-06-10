@@ -47,7 +47,7 @@ const workflows: IDeploymentWorkflows = {
     ],
   },
   sync_sheets: {
-    label: "Sync Latest Sheets",
+    // label: "Sync Latest Sheets",
     steps: [
       {
         name: "sheets_dl",
@@ -77,7 +77,7 @@ const workflows: IDeploymentWorkflows = {
     ],
   },
   sync_assets: {
-    label: "Sync Latest Assets",
+    // label: "Sync Latest Assets",
     steps: [
       {
         name: "assets_dl",
