@@ -45,7 +45,7 @@ export async function setActiveDeployment(deploymentName?: string) {
     });
   }
   const { filename, ...deployment } = matchingDeployment;
-  const defaultDeploymentPath = path.resolve(IDEMS_APP_CONFIG.deployments, "default.json");
+  const defaultDeploymentPath = path.resolve(IDEMS_APP_CONFIG.deployments, "activeDeployment.json");
 
   const deploymentJson = generateDeploymentJson(deployment, filename);
   fs.writeFileSync(defaultDeploymentPath, JSON.stringify(deploymentJson, null, 2));
