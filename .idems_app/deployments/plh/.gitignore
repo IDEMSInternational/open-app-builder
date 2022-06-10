@@ -1,6 +1,7 @@
 /*
-!/app_data
+# !/app_data
 !/config.ts
 !/*.config.ts
 !/.gitignore
+!/translations_source
 !/README.md

@@ -36,6 +36,9 @@ const config: IDeploymentConfig = {
   google_drive: {
     sheets_folder_id: "1n221Zv9LYuwxmjhiboq8vhQg67_K9L5f",
     assets_folder_id: "1dp9QAQ84m8pm0IBQTSPXe1ramyynKPNn",
+    /* TODO - may need to reconsider how best to organise/filter global vs deployment assets */
+    sheets_filter_function: (entry)=>entry.folderPath.startsWith('global'),
+    assets_filter_function: (entry)=>entry.folderPath.startsWith('global')
   },
   app_data: {},
   translations: {
