@@ -37,6 +37,7 @@ export function getActiveDeployment(
   options: {
     skipRecompileCheck?: boolean;
     ignoreMissing?: boolean;
+    exitOnRecompileRequired?: boolean;
   } = {}
 ): IDeploymentConfigJson {
   const defaultJsonPath = path.resolve(IDEMS_APP_CONFIG.deployments, "activeDeployment.json");
@@ -57,7 +58,7 @@ export function getActiveDeployment(
   if (options.skipRecompileCheck) {
     return deploymentJson;
   }
-  const { _config_ts_path } = deploymentJson;
+  const { _config_ts_path, name } = deploymentJson;
   const deploymentTSPath = path.resolve(IDEMS_APP_CONFIG.deployments, _config_ts_path);
 
   if (!fs.existsSync(deploymentTSPath)) {
@@ -73,16 +74,22 @@ export function getActiveDeployment(
   const { mtime: tsModifiedTime } = fs.statSync(deploymentTSPath);
 
   if (jsonModifiedTime < tsModifiedTime) {
+    if (options.exitOnRecompileRequired) {
+      logError({
+        msg1: `Could not load deployment: ${_config_ts_path}`,
+        msg2: `Run "yarn workflow deployment_set" to specify a new active deployment`,
+      });
+    }
     console.log(chalk.grey("Config has been updated, recompile required"));
-    promptConfigSet();
-    return getActiveDeployment();
+    recompileConfig(name);
+    return getActiveDeployment({ exitOnRecompileRequired: true });
   }
 
   // ensure json compiled any time core config set methods updated
   if (deploymentJson._config_version !== DEPLOYMENT_CONFIG_VERSION) {
     console.log(chalk.grey("Config core has been updated, recompile required"));
-    promptConfigSet();
-    return getActiveDeployment();
+    recompileConfig(name);
+    return getActiveDeployment({ exitOnRecompileRequired: true });
   }
 
   const convertedJson = convertStringsToFunctions(deploymentJson);
@@ -93,6 +100,11 @@ export function getActiveDeployment(
 /** Run interactive command prompt to specify config */
 function promptConfigSet() {
   const cmd = `yarn workspace scripts start deployment set`;
+  spawnSync(cmd, { stdio: "inherit", shell: true });
+}
+
+function recompileConfig(name: string) {
+  const cmd = `yarn workspace scripts start deployment set ${name}`;
   spawnSync(cmd, { stdio: "inherit", shell: true });
 }
 
