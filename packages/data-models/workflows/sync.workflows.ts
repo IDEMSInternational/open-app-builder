@@ -5,6 +5,23 @@ const workflows: IDeploymentWorkflows = {
     label: "Sync All Content",
     steps: [
       {
+        name: "sync_parent",
+        function: async ({ tasks, workflow, config }) => {
+          if (config._parent_config) {
+            const shouldSyncParent = await tasks.userInput.promptOptions(
+              [
+                { name: "No", value: false },
+                { name: "Yes", value: true },
+              ],
+              `Would you like to sync the [${config._parent_config.name}] content also`
+            );
+            if (shouldSyncParent) {
+              await tasks.workflow.runWorkflow({ name: "sync_parent", parent: workflow });
+            }
+          }
+        },
+      },
+      {
         name: "sync_sheets",
         function: async ({ tasks, workflow }) =>
           tasks.workflow.runWorkflow({ name: "sync_sheets", parent: workflow }),
@@ -13,6 +30,19 @@ const workflows: IDeploymentWorkflows = {
         name: "sync_assets",
         function: async ({ tasks, workflow }) =>
           tasks.workflow.runWorkflow({ name: "sync_assets", parent: workflow }),
+      },
+    ],
+  },
+  sync_parent: {
+    steps: [
+      {
+        name: "sync_parent",
+        function: async ({ tasks, workflow, config }) => {
+          await tasks.deployment.set(config._parent_config.name);
+          await tasks.workflow.runWorkflow({ name: "sync_sheets", parent: workflow });
+          await tasks.workflow.runWorkflow({ name: "sync_assets", parent: workflow });
+          await tasks.deployment.set(config.name);
+        },
       },
     ],
   },
