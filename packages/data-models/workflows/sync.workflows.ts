@@ -92,19 +92,15 @@ const workflows: IDeploymentWorkflows = {
     steps: [
       {
         name: "sync_live",
-        function: async ({ tasks, workflow, config }) => {
+        function: async ({ tasks, config }) => {
           tasks.gdrive.liveReload({
             folderId: config.google_drive.sheets_folder_id,
-            onUpdate: (entry) => {
-              console.log("file updated", entry);
+            onUpdate: (filepath) => {
+              // only respond to xlsx file changes
+              if (filepath.endsWith(".xlsx")) {
+                tasks.template.processIndividualFile({ inputFile: filepath });
+              }
             },
-            // customCommands: [
-            //   {
-            //     keybinding: "r",
-            //     name: "Full Resync",
-            //     command: async () => tasks.workflow.runWorkflow({ name: "sync", parent: workflow }),
-            //   },
-            // ],
           });
         },
       },

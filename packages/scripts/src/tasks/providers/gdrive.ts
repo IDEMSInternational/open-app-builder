@@ -1,5 +1,6 @@
 import { spawn, spawnSync } from "child_process";
 import path from "path";
+import chokidar from "chokidar";
 import { WorkflowRunner } from "../../commands/workflow/run";
 import { AUTH_TOKEN_PATH, CREDENTIALS_PATH } from "../../paths";
 
@@ -41,7 +42,7 @@ const download = (options: { folderId: string }) => {
  */
 const liveReload = async (options: {
   folderId: string;
-  onUpdate?: (entry) => void;
+  onUpdate?: (filepath: string) => void;
   customCommands?: IWatchCommand[];
 }) => {
   const { folderId } = options;
@@ -63,8 +64,12 @@ const liveReload = async (options: {
 
   // As it's not easy to communicate directly with spawned child, instead
   // set-up a file watcher for locally updated files
-
-  // TODO - file watcher
+  const watcher = chokidar
+    .watch(outputPath, { ignoreInitial: true, awaitWriteFinish: true })
+    .on("change", (e, stats) => {
+      options.onUpdate(e);
+    });
+  process.on("SIGINT", () => watcher.close().then(() => process.exit(0)));
 };
 
 // WiP - allow manual intervention to force actions
