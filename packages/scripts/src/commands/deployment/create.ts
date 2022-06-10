@@ -67,12 +67,17 @@ async function generateNewDeployment(): Promise<IGeneratedDeployment> {
 /** Create a deployment config that extends an existing config */
 async function generateExtendedDeployment(): Promise<IGeneratedDeployment> {
   const parentDeployment = await selectParentConfigToExtend();
-  const nameInput = await promptInput("Specify a name for the deployment");
+  const nameInput = await promptInput(
+    `Specify a name for the deployment: ${parentDeployment.name} - `
+  );
   const name = nameInput.toLowerCase().replace(/ /, "_");
-  const targetConfigFile = path.join(parentDeployment.folder, `${name}.config.ts`);
   const extendedName = `${parentDeployment.name}_${name}`;
-  const configTs = generateExtendedConfig(extendedName, parentDeployment.filename);
+  const targetFolder = path.join(IDEMS_APP_CONFIG.deployments, extendedName);
+  const targetConfigFile = path.join(targetFolder, `config.ts`);
+  const configTs = generateExtendedConfig(extendedName, path.basename(parentDeployment.folder));
   writeConfig(targetConfigFile, configTs);
+  const targetGitIgnoreFile = path.join(IDEMS_APP_CONFIG.deployments, extendedName, `.gitignore`);
+  writeGitIgnore(targetGitIgnoreFile);
   return { name: extendedName, targetConfigFile };
 }
 

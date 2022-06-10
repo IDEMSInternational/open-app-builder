@@ -1,11 +1,11 @@
 // TODO - this will need refactor after PR 1401 merged
 
-export default (name: string, parentFilename: string) =>
+export default (name: string, parentFolderName: string) =>
   `
-import { cloneConfig } from "data-models/deployment.model";
-import PARENT_CONFIG from "./${parentFilename.replace(".ts", "")}";
+import { extendConfig } from "data-models/deployment.model";
+import PARENT_CONFIG from "../${parentFolderName}/config";
 
-const config = cloneConfig(PARENT_CONFIG);
+const config = extendConfig(PARENT_CONFIG);
 config.name = "${name}";
 
 // override app constants here

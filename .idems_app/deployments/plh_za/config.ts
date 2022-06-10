@@ -1,10 +1,9 @@
 import { extendConfig } from "data-models/deployment.model";
-import PARENT_CONFIG from "./global.config";
-
-/** ZA config extends the default config **/
+import PARENT_CONFIG from "../plh/config";
 
 const config = extendConfig(PARENT_CONFIG);
 config.name = "plh_za";
+
 config.app_data.sheets_filter_function = (flow) =>
   !["debug", "component_demo", "example_hardcoded", "campaign_rows_debug"].includes(
     flow.flow_subtype
