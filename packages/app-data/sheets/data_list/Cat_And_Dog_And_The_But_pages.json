@@ -269,7 +269,7 @@
       "id": "page_10",
       "page_no": 10,
       "illustration": "EFMStorybooks/EFM-SB-CADATBu-10.jpg",
-      "story_text": "The Cat and Dog stop. They stop and sit down. They sit down at a tree.\n\nThe sit down at a big tree.\n\nBut then ....",
+      "story_text": "The Cat and Dog stop. They stop and sit down. They sit down at a tree.\n\nThey sit down at a big tree.\n\nBut then ....",
       "_translations": {
         "story_text": {},
         "annotation_1": {},
@@ -278,7 +278,7 @@
       },
       "_translatedFields": {
         "story_text": {
-          "eng": "The Cat and Dog stop. They stop and sit down. They sit down at a tree.\n\nThe sit down at a big tree.\n\nBut then ...."
+          "eng": "The Cat and Dog stop. They stop and sit down. They sit down at a tree.\n\nThey sit down at a big tree.\n\nBut then ...."
         },
         "annotation_1": {
           "eng": "Which is longer, Cat's tongue or Cat's legs?"

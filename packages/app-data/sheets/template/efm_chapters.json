@@ -480,6 +480,164 @@
     },
     {
       "type": "text",
+      "name": "activity_or_topic",
+      "value": "Please select whether you would rather view the chapter activities individually or by topic.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "activity_or_topic"
+    },
+    {
+      "name": "radio_description_1",
+      "value": "Individually",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "radio_description_1"
+    },
+    {
+      "name": "radio_description_2",
+      "value": "By topic",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "radio_description_2"
+    },
+    {
+      "name": "answer_list",
+      "value": [
+        "name:individually | text: @local.radio_description_1",
+        "name:by_topic | text: @local.radio_description_2"
+      ],
+      "type": "set_variable",
+      "_nested_name": "answer_list",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "name:individually | text: @local.radio_description_1",
+              "matchedExpression": "@local.radio_description_1",
+              "type": "local",
+              "fieldName": "radio_description_1"
+            }
+          ],
+          "1": [
+            {
+              "fullExpression": "name:by_topic | text: @local.radio_description_2",
+              "matchedExpression": "@local.radio_description_2",
+              "type": "local",
+              "fieldName": "radio_description_2"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.radio_description_1": [
+          "value.0"
+        ],
+        "@local.radio_description_2": [
+          "value.1"
+        ]
+      }
+    },
+    {
+      "name": "listing_style",
+      "value": "by_topic",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "listing_style"
+    },
+    {
+      "type": "radio_group",
+      "name": "radio_group",
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_local",
+          "args": [
+            "listing_style",
+            "this.value"
+          ],
+          "_raw": "changed | set_local: listing_style: @local.radio_group",
+          "_cleaned": "changed | set_local: listing_style: @local.radio_group"
+        }
+      ],
+      "parameter_list": {
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "radio_group",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "_raw": [
+              {
+                "fullExpression": "changed | set_local: listing_style: @local.radio_group",
+                "matchedExpression": "@local.radio_group",
+                "type": "local",
+                "fieldName": "radio_group"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_local: listing_style: @local.radio_group",
+                "matchedExpression": "@local.radio_group",
+                "type": "local",
+                "fieldName": "radio_group"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "name": "template_name",
+      "value": "efm_chapter_acts_@local.listing_style",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "template_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "efm_chapter_acts_@local.listing_style",
+            "matchedExpression": "@local.listing_style",
+            "type": "local",
+            "fieldName": "listing_style"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.listing_style": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
       "name": "chapter_select",
       "value": "Select a starting chapter. You can always go forward or backward from there.",
       "_translations": {
@@ -514,10 +672,10 @@
               "trigger": "click",
               "action_id": "go_to",
               "args": [
-                "efm_chapter_acts"
+                "@local.template_name"
               ],
-              "_raw": "click | go_to: efm_chapter_acts",
-              "_cleaned": "click | go_to: efm_chapter_acts"
+              "_raw": "click | go_to: @local.template_name",
+              "_cleaned": "click | go_to: @local.template_name"
             }
           ],
           "parameter_list": {
@@ -570,6 +728,34 @@
                     "fieldName": "id"
                   }
                 ]
+              },
+              "1": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.template_name",
+                      "matchedExpression": "@local.template_name",
+                      "type": "local",
+                      "fieldName": "template_name"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.template_name",
+                    "matchedExpression": "@local.template_name",
+                    "type": "local",
+                    "fieldName": "template_name"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.template_name",
+                    "matchedExpression": "@local.template_name",
+                    "type": "local",
+                    "fieldName": "template_name"
+                  }
+                ]
               }
             },
             "_nested_name": [
@@ -591,6 +777,11 @@
               "action_list.0.args.1",
               "action_list.0._raw",
               "action_list.0._cleaned"
+            ],
+            "@local.template_name": [
+              "action_list.1.args.0",
+              "action_list.1._raw",
+              "action_list.1._cleaned"
             ]
           }
         }
@@ -657,6 +848,18 @@
         "text_align": "center"
       },
       "_nested_name": "button_activities"
+    },
+    {
+      "type": "display_group",
+      "name": "fake_group",
+      "rows": [
+        {
+          "type": "text",
+          "name": "spacer1",
+          "_nested_name": "fake_group.spacer1"
+        }
+      ],
+      "_nested_name": "fake_group"
     }
   ],
   "_xlsxPath": "EFM_activity_high_level_sheets.xlsx"

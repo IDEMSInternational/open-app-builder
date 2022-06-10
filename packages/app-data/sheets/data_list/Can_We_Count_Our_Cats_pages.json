@@ -52,14 +52,14 @@
           "eng": "Point to and name the green and orange squares, blue shirt, and black cat."
         },
         "annotation_2": {
-          "eng": "Notice how Paul is looking at the cat. Pual sure likes cats!"
+          "eng": "Notice how Paul is looking at the cat. Paul sure likes cats!"
         },
         "annotation_3": {
           "eng": "Each time a cat is added: a) say that one more than the last number of cats is the new number, and b) one less than the current number is the last number."
         }
       },
       "annotation_1": "Point to and name the green and orange squares, blue shirt, and black cat.",
-      "annotation_2": "Notice how Paul is looking at the cat. Pual sure likes cats!",
+      "annotation_2": "Notice how Paul is looking at the cat. Paul sure likes cats!",
       "annotation_3": "Each time a cat is added: a) say that one more than the last number of cats is the new number, and b) one less than the current number is the last number."
     },
     {

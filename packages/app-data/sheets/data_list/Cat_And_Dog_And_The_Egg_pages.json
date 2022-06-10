@@ -55,12 +55,12 @@
           "eng": "There are many things to count together -- one bird, one cat, one dog, three animals, three buildings, and one tree."
         },
         "annotation_3": {
-          "eng": "Two of the building are round around the base. The third one has a base shaped like this page."
+          "eng": "Two of the buildings are round around the base. The third one has a base shaped like this page."
         }
       },
       "annotation_1": "Count together the homes in the village.",
       "annotation_2": "There are many things to count together -- one bird, one cat, one dog, three animals, three buildings, and one tree.",
-      "annotation_3": "Two of the building are round around the base. The third one has a base shaped like this page."
+      "annotation_3": "Two of the buildings are round around the base. The third one has a base shaped like this page."
     },
     {
       "id": "page_3",
@@ -211,7 +211,7 @@
       "id": "page_8",
       "page_no": 8,
       "illustration": "EFMStorybooks/EFM-SB-CADATE-8.jpg",
-      "story_text": "Cat and Dog walk to the goose.\n\nThey ask the goose, \"is this your egg?\"",
+      "story_text": "Cat and Dog walk to the goose.\n\nThey ask the goose, \"Is this your egg?\"",
       "_translations": {
         "story_text": {},
         "annotation_1": {},
@@ -220,7 +220,7 @@
       },
       "_translatedFields": {
         "story_text": {
-          "eng": "Cat and Dog walk to the goose.\n\nThey ask the goose, \"is this your egg?\""
+          "eng": "Cat and Dog walk to the goose.\n\nThey ask the goose, \"Is this your egg?\""
         },
         "annotation_1": {
           "eng": "How many animals are there?"
@@ -356,7 +356,7 @@
       "id": "page_13",
       "page_no": 13,
       "illustration": "EFMStorybooks/EFM-SB-CADATE-13.jpg",
-      "story_text": "The baby lizard says, \"Where is my mother? Where is my father? Where are my mother and father?\n\nCat and Dog bring the baby lizard to his mother and father.",
+      "story_text": "The baby lizard says, \"Where is my mother? Where is my father? Where are my mother and father?\"\n\nCat and Dog bring the baby lizard to his mother and father.",
       "_translations": {
         "story_text": {},
         "annotation_1": {},
@@ -365,7 +365,7 @@
       },
       "_translatedFields": {
         "story_text": {
-          "eng": "The baby lizard says, \"Where is my mother? Where is my father? Where are my mother and father?\n\nCat and Dog bring the baby lizard to his mother and father."
+          "eng": "The baby lizard says, \"Where is my mother? Where is my father? Where are my mother and father?\"\n\nCat and Dog bring the baby lizard to his mother and father."
         },
         "annotation_1": {
           "eng": "How many lizards are on top of the rocks?"

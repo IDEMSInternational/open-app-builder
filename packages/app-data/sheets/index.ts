@@ -138,6 +138,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "app_menu",
       _xlsxPath: "EFM_high_level_sheets.xlsx",
     },
+    app_menu_privacy_policy: {
+      flow_type: "template",
+      flow_name: "app_menu_privacy_policy",
+      _xlsxPath: "EFM_high_level_sheets.xlsx",
+    },
     efm_act_1_10a_template: {
       flow_type: "template",
       flow_name: "efm_act_1_10a_template",
@@ -1183,6 +1188,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "efm_act_5_570c_template",
       _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
     },
+    efm_activity_advice_template: {
+      flow_type: "template",
+      flow_name: "efm_activity_advice_template",
+      _xlsxPath: "EFM_activity_high_level_sheets.xlsx",
+    },
     efm_activity_body_template: {
       flow_type: "template",
       flow_name: "efm_activity_body_template",
@@ -1408,9 +1418,14 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "efm_bonus_chapters",
       _xlsxPath: "EFM_activity_high_level_sheets.xlsx",
     },
-    efm_chapter_acts: {
+    efm_chapter_acts_by_topic: {
       flow_type: "template",
-      flow_name: "efm_chapter_acts",
+      flow_name: "efm_chapter_acts_by_topic",
+      _xlsxPath: "EFM_activity_high_level_sheets.xlsx",
+    },
+    efm_chapter_acts_individually: {
+      flow_type: "template",
+      flow_name: "efm_chapter_acts_individually",
       _xlsxPath: "EFM_activity_high_level_sheets.xlsx",
     },
     efm_chapter_bon_acts: {

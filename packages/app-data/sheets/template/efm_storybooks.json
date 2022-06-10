@@ -407,6 +407,18 @@
           "condition"
         ]
       }
+    },
+    {
+      "type": "display_group",
+      "name": "fake_group",
+      "rows": [
+        {
+          "type": "text",
+          "name": "spacer",
+          "_nested_name": "fake_group.spacer"
+        }
+      ],
+      "_nested_name": "fake_group"
     }
   ],
   "_xlsxPath": "EFM_storybooks_high_level_sheets.xlsx"

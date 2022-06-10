@@ -1,0 +1,478 @@
+{
+  "flow_type": "template",
+  "flow_name": "app_menu_privacy_policy",
+  "status": "released",
+  "rows": [
+    {
+      "name": "link_1_text",
+      "value": "Google Play Services",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "link_1_text"
+    },
+    {
+      "name": "link_2_text",
+      "value": "Google Analytics for Firebase",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "link_2_text"
+    },
+    {
+      "name": "link_3_text",
+      "value": "Sentry",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "link_3_text"
+    },
+    {
+      "type": "title",
+      "name": "title_1",
+      "value": "@global.privacy_policy",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.privacy_policy",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "IDEMS International built this app as a Free app. This SERVICE is provided by IDEMS International at no cost and is intended for use as is.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_1"
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "value": "This page is used to inform visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_2"
+    },
+    {
+      "type": "text",
+      "name": "text_3",
+      "value": "If you choose to use our Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that we collect is used for providing and improving the Service. We will not use or share your information with anyone except as described in this Privacy Policy.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_3"
+    },
+    {
+      "type": "text",
+      "name": "text_4",
+      "value": "The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions unless otherwise defined in this Privacy Policy.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_4"
+    },
+    {
+      "type": "title",
+      "name": "title_2",
+      "value": "Information Collection and Use",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_2"
+    },
+    {
+      "type": "text",
+      "name": "text_5",
+      "value": "For a better experience, while using our Service, we may require you to provide us with certain personally identifiable information. The information that we request will be retained by us and used as described in this privacy policy.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_5"
+    },
+    {
+      "type": "text",
+      "name": "text_6",
+      "value": "The app does use third party services that may collect information used to identify you.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_6"
+    },
+    {
+      "type": "text",
+      "name": "text_7",
+      "value": "Link to privacy policy of third party service providers used by the app",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_7"
+    },
+    {
+      "type": "tile_component",
+      "name": "link_1",
+      "value": "tile_1",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "https",
+            "//policies.google.com/terms"
+          ],
+          "_raw": "click | go_to_url:https://policies.google.com/terms",
+          "_cleaned": "click | go_to_url:https://policies.google.com/terms"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "first_line_text": "@local.link_1_text",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "_nested_name": "link_1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.link_1_text",
+              "matchedExpression": "@local.link_1_text",
+              "type": "local",
+              "fieldName": "link_1_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.link_1_text": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "type": "tile_component",
+      "name": "link_2",
+      "value": "tile_2",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "https",
+            "//firebase.google.com/terms/analytics"
+          ],
+          "_raw": "click | go_to_url:https://firebase.google.com/terms/analytics",
+          "_cleaned": "click | go_to_url:https://firebase.google.com/terms/analytics"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "first_line_text": "@local.link_2_text",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "_nested_name": "link_2",
+      "_dynamicFields": {
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.link_2_text",
+              "matchedExpression": "@local.link_2_text",
+              "type": "local",
+              "fieldName": "link_2_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.link_2_text": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "type": "tile_component",
+      "name": "link_3",
+      "value": "tile_3",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "https",
+            "//sentry.io/terms/"
+          ],
+          "_raw": "click | go_to_url:https://sentry.io/terms/",
+          "_cleaned": "click | go_to_url:https://sentry.io/terms/"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "first_line_text": "@local.link_3_text",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "_nested_name": "link_3",
+      "_dynamicFields": {
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.link_3_text",
+              "matchedExpression": "@local.link_3_text",
+              "type": "local",
+              "fieldName": "link_3_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.link_3_text": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title_3",
+      "value": "Log Data",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_3"
+    },
+    {
+      "type": "text",
+      "name": "text_8",
+      "value": "We want to inform you that whenever you use our Service, in a case of an error in the app we collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing our Service, the time and date of your use of the Service, and other statistics.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_8"
+    },
+    {
+      "type": "title",
+      "name": "title_4",
+      "value": "Cookies",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_4"
+    },
+    {
+      "type": "text",
+      "name": "text_9",
+      "value": "Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_9"
+    },
+    {
+      "type": "text",
+      "name": "text_10",
+      "value": "This Service does not use these “cookies” explicitly. However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_10"
+    },
+    {
+      "type": "title",
+      "name": "title_5",
+      "value": "Service Providers",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_5"
+    },
+    {
+      "type": "text",
+      "name": "text_11",
+      "value": "We may employ third-party companies and individuals due to the following reasons:\n1. To facilitate our Service\n2. To provide the Service on our behalf\n3. To perform Service-related services; or\n4. To assist us in analyzing how our Service is used.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_11"
+    },
+    {
+      "type": "text",
+      "name": "text_12",
+      "value": "We want to inform users of this Service that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_12"
+    },
+    {
+      "type": "title",
+      "name": "title_6",
+      "value": "Security",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_6"
+    },
+    {
+      "type": "text",
+      "name": "text_13",
+      "value": "We value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_13"
+    },
+    {
+      "type": "title",
+      "name": "title_7",
+      "value": "Links to Other Sites",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_7"
+    },
+    {
+      "type": "text",
+      "name": "text_14",
+      "value": "This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by us. Therefore, we strongly advise you to review the Privacy Policy of these websites. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_14"
+    },
+    {
+      "type": "title",
+      "name": "title_8",
+      "value": "Children’s Privacy",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_8"
+    },
+    {
+      "type": "text",
+      "name": "text_15",
+      "value": "These Services do not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13. In the case we discover that a child under 13 has provided us with personal information, we immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us so that we will be able to do necessary actions.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_15"
+    },
+    {
+      "type": "title",
+      "name": "title_9",
+      "value": "Changes to This Privacy Policy",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_9"
+    },
+    {
+      "type": "text",
+      "name": "text_16",
+      "value": "We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_16"
+    },
+    {
+      "type": "text",
+      "name": "text_17",
+      "value": "This policy is effective as of 6 June 2022.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_17"
+    },
+    {
+      "type": "title",
+      "name": "title_10",
+      "value": "Contact Us",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_10"
+    },
+    {
+      "type": "text",
+      "name": "text_18",
+      "value": "If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at apps@idems.international.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_18"
+    },
+    {
+      "type": "text",
+      "name": "text_19",
+      "value": "This privacy policy page was created at privacypolicytemplate.net and modified/generated by App Privacy Policy Generator",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_19"
+    }
+  ],
+  "_xlsxPath": "EFM_high_level_sheets.xlsx"
+}
