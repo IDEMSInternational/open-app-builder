@@ -39,7 +39,7 @@ export function getActiveDeployment(
     ignoreMissing?: boolean;
   } = {}
 ): IDeploymentConfigJson {
-  const defaultJsonPath = path.resolve(IDEMS_APP_CONFIG.deployments, "default.json");
+  const defaultJsonPath = path.resolve(IDEMS_APP_CONFIG.deployments, "activeDeployment.json");
   // Handle no deployment configured
   if (!fs.existsSync(defaultJsonPath)) {
     if (options.ignoreMissing) {

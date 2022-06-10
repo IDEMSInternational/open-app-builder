@@ -1,9 +1,9 @@
-import { cloneConfig } from "data-models/deployment.model";
-import DEFAULT_CONFIG from "./global.config";
+import { extendConfig } from "data-models/deployment.model";
+import PARENT_CONFIG from "./global.config";
 
 /** ZA config extends the default config **/
 
-const config = cloneConfig(DEFAULT_CONFIG);
+const config = extendConfig(PARENT_CONFIG);
 config.name = "plh_za";
 config.app_data.sheets_filter_function = (flow) =>
   !["debug", "component_demo", "example_hardcoded", "campaign_rows_debug"].includes(

@@ -58,10 +58,19 @@ export interface IDeploymentConfig {
   };
   /** optional version number to force recompile */
   _version?: number;
+  /** track parent config */
+  _parent_config?: Partial<IDeploymentConfig>;
 }
 
-/** When extending a config it is usually better to clone to avoid accidentally altering original */
-export const cloneConfig = (config: IDeploymentConfig): IDeploymentConfig => clone(config);
+/**
+ * Create a deep clone of parent config (to avoid accidental hard reference),
+ * and populate with a named refernce to parent
+ **/
+export const extendConfig = (parentConfig: IDeploymentConfig): IDeploymentConfig => {
+  const extendedConfig = clone(parentConfig);
+  extendedConfig._parent_config = { name: parentConfig.name };
+  return extendedConfig;
+};
 
 /** Minimal example of just required config */
 export const DEPLOYMENT_CONFIG_EXAMPLE_MIN: IDeploymentConfig = {
