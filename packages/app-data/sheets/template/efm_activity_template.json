@@ -822,6 +822,38 @@
     },
     {
       "type": "template",
+      "name": "advice_accordion",
+      "value": "efm_activity_advice_template",
+      "rows": [
+        {
+          "name": "activity_advice_type",
+          "value": "@local.efm_activity.type",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "advice_accordion.activity_advice_type",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.efm_activity.type",
+                "matchedExpression": "@local.efm_activity.type",
+                "type": "local",
+                "fieldName": "efm_activity"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.efm_activity.type": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "advice_accordion"
+    },
+    {
+      "type": "template",
       "name": "activity_body",
       "value": "@local.efm_activity_body_template",
       "rows": [],

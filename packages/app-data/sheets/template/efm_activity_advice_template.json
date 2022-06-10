@@ -1,0 +1,183 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_activity_advice_template",
+  "status": "released",
+  "rows": [
+    {
+      "name": "activity_advice_type",
+      "type": "set_variable",
+      "_nested_name": "activity_advice_type"
+    },
+    {
+      "name": "advice_for_game",
+      "value": "First and foremost, playing math games should be fun, like any other game your family plays together!\n\nPlease let your child make poor plays (mistakes) without correction, and resist the urge to tell them the best ways to play. Bit by bit, your child will get better at the game, and they will learn so much more if you let them figure things out. There is no hurry.\n\nIf you see your child make a mistake, ask them to describe why they decided to do what they did. If your child is stuck and doesn't know which play to make, ask them to describe the pros and cons of their choices, or ask them about how they solved a similar situation in the past. If your child doesn't remember how to do a calculation, discuss with them the methods they know for figuring it out. These conversations are important for helping your child to develop mathematically. \n\nThrough math game play and math conversations, you are helping your child learn to enjoy math and develop important problem solving skills!",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "advice_for_game"
+    },
+    {
+      "name": "advice_for_puzzle",
+      "value": "Puzzles are meant to be challenging and to take time, so please don't ruin the fun by telling your child how to do them. These puzzles are chosen so that you can create them easily and then have fun solving them together.\n\nIf your child gets stuck on a puzzle, you have several options. You can, of course, give very small hints, if you can think of things that won't give away the puzzle. You can suggest looking at smaller or simpler versions of the puzzle. Encourage your child to be bold in their ideas, even if sometimes they lead to dead ends. We all learn a lot from our mistakes and dead ends! Let your child know that it is perfectly okay not to solve a puzzle on the first (or second or third) try, and that useful ideas may occur to them if they leave the puzzle alone for a day or two.\n\nThese puzzles are meant to be fun and to teach problem solving. One of the greatest mathematical pleasures is that AHA moment, after many false starts and much wrestling with a problem, when the answer is finally discovered – be sure to let your child experience that feeling of discovery as many times as you can!",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "advice_for_puzzle"
+    },
+    {
+      "name": "advice_for_introduction",
+      "type": "set_variable",
+      "_nested_name": "advice_for_introduction"
+    },
+    {
+      "name": "advice_for_activity",
+      "type": "set_variable",
+      "_nested_name": "advice_for_activity"
+    },
+    {
+      "name": "advice_for_investigation",
+      "value": "Investigations are meant for your child to play with and think about. Let your child explore these looking for interesting patterns and beautiful relationships. Resist the temptation to unveil what is going on and give the answer. If your child seems to have reached a dead end, suggest that they come back to the investigation at a future time to play with it again.\n\nMany investigations benefit from organizing results, and this is a great thing for you to help your child with. Help them make tables, drawings, or whatever may help them see more easily what is going on. And of course, it is perfectly fine to give them gentle nudges from time to time in the right direction. Remember that your child will learn a lot by developing persistence and learning how to look more deeply at things.",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "advice_for_investigation"
+    },
+    {
+      "name": "guidance_label",
+      "value": "advice_for_@local.activity_advice_type",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "guidance_label",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "advice_for_@local.activity_advice_type",
+            "matchedExpression": "@local.activity_advice_type",
+            "type": "local",
+            "fieldName": "activity_advice_type"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.activity_advice_type": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "guidance_text",
+      "value": "@local.@local.guidance_label",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "guidance_text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.@local.guidance_label",
+            "matchedExpression": "@local.guidance_label",
+            "type": "local",
+            "fieldName": "guidance_label"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.guidance_label": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "accordion_label",
+      "value": "Helping your child",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "accordion_label"
+    },
+    {
+      "type": "accordion",
+      "name": "accordion",
+      "condition": "@local.guidance_text",
+      "parameter_list": {
+        "open_multiple": "TRUE"
+      },
+      "style_list": [
+        "margin-top: -7px"
+      ],
+      "rows": [
+        {
+          "type": "accordion_section",
+          "name": "bloxk_1",
+          "value": "@local.accordion_label",
+          "rows": [
+            {
+              "type": "text",
+              "name": "text_1",
+              "value": "@local.guidance_text",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "accordion.bloxk_1.text_1",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.guidance_text",
+                    "matchedExpression": "@local.guidance_text",
+                    "type": "local",
+                    "fieldName": "guidance_text"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.guidance_text": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "accordion.bloxk_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.accordion_label",
+                "matchedExpression": "@local.accordion_label",
+                "type": "local",
+                "fieldName": "accordion_label"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.accordion_label": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "accordion",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.guidance_text",
+            "matchedExpression": "@local.guidance_text",
+            "type": "local",
+            "fieldName": "guidance_text"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.guidance_text": [
+          "condition"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "EFM_activity_high_level_sheets.xlsx"
+}

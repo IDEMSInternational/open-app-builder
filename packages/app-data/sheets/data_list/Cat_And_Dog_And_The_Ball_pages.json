@@ -124,7 +124,7 @@
       "id": "page_5",
       "page_no": 5,
       "illustration": "EFMStorybooks/EFM-SB-CADATB-5.jpg",
-      "story_text": "Then Cat throws the ball very high.\n\nOh! oh!",
+      "story_text": "Then Cat throws the ball very high.\n\nOh! Oh!",
       "_translations": {
         "story_text": {},
         "annotation_1": {},
@@ -133,7 +133,7 @@
       },
       "_translatedFields": {
         "story_text": {
-          "eng": "Then Cat throws the ball very high.\n\nOh! oh!"
+          "eng": "Then Cat throws the ball very high.\n\nOh! Oh!"
         },
         "annotation_1": {
           "eng": "The ball is higher than Dog. How much higher than Dog did Cat throw it?"
