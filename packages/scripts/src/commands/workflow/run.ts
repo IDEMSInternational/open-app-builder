@@ -108,10 +108,12 @@ export class WorkflowRunnerClass {
   }
 
   private async promptWorkflowSelect() {
-    const options = Object.entries(this.workflows).map(([id, workflow]) => ({
-      name: `${chalk.blueBright(pad(id, 15))} ${workflow.label}`,
-      value: id,
-    }));
+    const options = Object.entries(this.workflows)
+      .filter(([_, workflow]) => workflow.hasOwnProperty("label"))
+      .map(([id, workflow]) => ({
+        name: `${chalk.blueBright(pad(id, 15))} ${workflow.label}`,
+        value: id,
+      }));
     const name = await promptOptions(options, "Select a workflow to run");
     return name;
   }
