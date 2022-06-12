@@ -17,6 +17,7 @@ import {
   ILocalFileWithStats,
   getGDriveFileById,
   logProgramHelp,
+  removeEmptyFoldersRecursively,
 } from "../utils";
 import { authorizeGDrive } from "./authorize";
 
@@ -201,6 +202,8 @@ class GDriveDownloader {
     logUpdate.done();
     queue.start();
     await queue.onIdle();
+    // Remove empty folders left after deletions
+    removeEmptyFoldersRecursively(this.options.outputPath);
     // Update logs
     const actionsLogPath = path.resolve(PATHS.LOGS_DIR, `${this.options.logName}.json`);
     console.log(chalk.gray(actionsLogPath));
@@ -222,13 +225,13 @@ class GDriveDownloader {
     const filterFn: Function = filterFunction64
       ? new Function(`return ${Buffer.from(filterFunction64, "base64").toString()}`)()
       : null;
-
     // Compare server with local
     for (const serverFile of serverFiles) {
       (() => {
         // add to hashmap for use in local-server comparison
         const cacheRelativePath = getRelativeLocalPath(serverFile);
         serverFilesHashmap[cacheRelativePath] = serverFile;
+        const cacheFile = localFilesHashmap[cacheRelativePath];
 
         // run a regex test for anything ending .abc(d)
         // gdrive keeps duplicate open office formats of gsheets without extension
@@ -238,15 +241,21 @@ class GDriveDownloader {
           output.ignored.push(serverFile);
           return;
         }
+        // Apply any server filter functions, removing files that already exist and ignoring
+        // files that do not
         if (filterFn) {
           const included = filterFn(serverFile);
           if (!included) {
-            output.ignored.push(serverFile);
-            return;
+            if (cacheFile) {
+              output.deleted.push({ folderPath: cacheRelativePath });
+              return;
+            } else {
+              output.ignored.push(serverFile);
+              return;
+            }
           }
         }
 
-        const cacheFile = localFilesHashmap[cacheRelativePath];
         if (cacheFile) {
           // compare with modified times instead of checksums
           const isSame = this.isServerFileSameAsLocalFile(serverFile, cacheFile);
