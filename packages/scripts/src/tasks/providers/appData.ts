@@ -8,7 +8,7 @@ import { IContentsEntry, replicateDir } from "../../utils";
 const postProcessAssets = (options: { sourceAssetsFolder: string }) => {
   const scriptsExec = `yarn workspace scripts start`;
   const { sourceAssetsFolder } = options;
-  let args = `--source-assets-folder ${sourceAssetsFolder} --skip-sheets`;
+  let args = `--source-assets-folder ${sourceAssetsFolder}`;
   let cmd = `app-data post-process assets ${args}`;
 
   spawnSync(`${scriptsExec} ${cmd}`, { stdio: "inherit", shell: true });
@@ -21,7 +21,7 @@ const postProcessSheets = (options: {
 }) => {
   const scriptsExec = `yarn workspace scripts start`;
   const { sourceSheetsFolder, sourceTranslationsFolder } = options;
-  let args = `--source-sheets-folder ${sourceSheetsFolder} --source-translations-folder ${sourceTranslationsFolder}  --skip-assets`;
+  let args = `--source-sheets-folder ${sourceSheetsFolder} --source-translations-folder ${sourceTranslationsFolder}`;
   let cmd = `app-data post-process sheets ${args}`;
   spawnSync(`${scriptsExec} ${cmd}`, { stdio: "inherit", shell: true });
 };

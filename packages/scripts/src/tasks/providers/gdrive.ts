@@ -9,8 +9,8 @@ import { AUTH_TOKEN_PATH, CREDENTIALS_PATH } from "../../paths";
  * @returns path to output files
  * }
  */
-const download = (options: { folderId: string }) => {
-  const { folderId } = options;
+const download = (options: { folderId: string; filterFn?: any }) => {
+  const { folderId, filterFn } = options;
   const { config } = WorkflowRunner;
   const { _workspace_path } = config;
   const { auth_token_path } = config.google_drive;
@@ -18,11 +18,18 @@ const download = (options: { folderId: string }) => {
     ? path.resolve(_workspace_path, auth_token_path)
     : AUTH_TOKEN_PATH;
 
+  // Can also check if really need folder ID (or just pass deployment config)... probably do for sheets vs assets
+
   const outputPath = path.resolve(_workspace_path, "tasks", "gdrive", "outputs", folderId);
 
   const commonArgs = `--credentials-path "${CREDENTIALS_PATH}" --auth-token-path "${authTokenPath}"`;
 
-  const dlArgs = `--folder-id ${folderId} --output-path "${outputPath}" --log-name "${folderId}.log"`;
+  let dlArgs = `--folder-id ${folderId} --output-path "${outputPath}" --log-name "${folderId}.log"`;
+
+  if (filterFn) {
+    const filterFnBase64 = Buffer.from(filterFn.toString()).toString("base64");
+    dlArgs += ` --filter-function-64 "${filterFnBase64}"`;
+  }
 
   const gdriveToolsExec = `yarn workspace @idemsInternational/gdrive-tools start`;
 

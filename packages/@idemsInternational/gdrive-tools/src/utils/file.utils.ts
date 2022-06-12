@@ -86,3 +86,28 @@ export function getFileMD5Checksum(filePath: string) {
   const checksum = hash.digest("hex");
   return checksum;
 }
+
+/**
+ * Recursively remove any empty folders
+ * https://gist.github.com/jakub-g/5903dc7e4028133704a4
+ */
+export function removeEmptyFoldersRecursively(folderPath: string) {
+  const isDir = fs.statSync(folderPath).isDirectory();
+  if (!isDir) {
+    return;
+  }
+  let files = fs.readdirSync(folderPath);
+  if (files.length > 0) {
+    files.forEach(function (file) {
+      const fullPath = path.join(folderPath, file);
+      removeEmptyFoldersRecursively(fullPath);
+    });
+    // re-evaluate files; after deleting subfolder
+    // we may have parent folder empty now
+    files = fs.readdirSync(folderPath);
+  }
+  if (files.length === 0) {
+    fs.rmdirSync(folderPath);
+    return;
+  }
+}
