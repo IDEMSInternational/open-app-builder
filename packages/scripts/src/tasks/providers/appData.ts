@@ -4,50 +4,30 @@ import { WorkflowRunner } from "../../commands/workflow/run";
 import { SRC_ASSETS_PATH } from "../../paths";
 import { IContentsEntry, replicateDir } from "../../utils";
 
-// const qualityCheckAssets = () => {};
+/** Prepare sourcely cached assets for population to app */
+const postProcessAssets = (options: { sourceAssetsFolder: string }) => {
+  const scriptsExec = `yarn workspace scripts start`;
+  const { sourceAssetsFolder } = options;
+  let args = `--source-assets-folder ${sourceAssetsFolder} --skip-sheets`;
+  let cmd = `app-data post-process assets ${args}`;
 
-/**
- *
- */
-const copy = (options: {
-  localSheetsFolder?: string;
-  localAssetsFolder?: string;
-  localTranslationsFolder?: string;
-  appSheetsFolder?: string;
-  appAssetsFolder?: string;
-  appTranslationsFolder?: string;
+  spawnSync(`${scriptsExec} ${cmd}`, { stdio: "inherit", shell: true });
+};
+
+/** Prepare sourcely cached seets for population to app */
+const postProcessSheets = (options: {
+  sourceSheetsFolder: string;
+  sourceTranslationsFolder: string;
 }) => {
   const scriptsExec = `yarn workspace scripts start`;
-
-  const {
-    localAssetsFolder,
-    localSheetsFolder,
-    localTranslationsFolder,
-    appAssetsFolder,
-    appSheetsFolder,
-    appTranslationsFolder,
-  } = options;
-
-  let args = ``;
-  if (localAssetsFolder)
-    args += ` --local-assets-folder ${localAssetsFolder} --app-assets-folder ${appAssetsFolder}`;
-  if (!localAssetsFolder) args += ` --skip-assets `;
-  if (localSheetsFolder)
-    args += ` --local-sheets-folder ${localSheetsFolder} --app-sheets-folder ${appSheetsFolder}`;
-  if (!localSheetsFolder) args += ` --skip-sheets `;
-  if (localTranslationsFolder)
-    args += ` --local-translations-folder ${localTranslationsFolder} --app-translations-folder ${appTranslationsFolder}`;
-
-  let copyCmd = `app-data copy ${args}`;
-
-  spawnSync(`${scriptsExec} ${copyCmd}`, { stdio: "inherit", shell: true });
-  copyDeploymentDataToApp();
+  const { sourceSheetsFolder, sourceTranslationsFolder } = options;
+  let args = `--source-sheets-folder ${sourceSheetsFolder} --source-translations-folder ${sourceTranslationsFolder}  --skip-assets`;
+  let cmd = `app-data post-process sheets ${args}`;
+  spawnSync(`${scriptsExec} ${cmd}`, { stdio: "inherit", shell: true });
 };
 
 /**
- * HACK - make additional copy direct to app assets to force angular to detect changes if running
- * Note - ideally this will be removed when transitioning away from app-data (to standalone repos)
- * and direct copy can be included instead
+ * Copy data from source deployment folder to running app assets folder
  */
 const copyDeploymentDataToApp = () => {
   const { _workspace_path } = WorkflowRunner.config;
@@ -63,4 +43,4 @@ const copyDeploymentDataToApp = () => {
   replicateDir(source, target, filter_fn);
 };
 
-export default { copy, copyDeploymentDataToApp };
+export default { postProcessAssets, postProcessSheets, copyDeploymentDataToApp };
