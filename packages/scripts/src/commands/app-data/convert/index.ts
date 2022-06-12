@@ -23,17 +23,17 @@ import { DefaultParser } from "./parsers";
  *************************************************************************************/
 const program = new Command("convert");
 interface IProgramOptions {
+  cacheFolder: string;
+  inputFolder: string;
+  outputFolder: string;
   skipCache?: boolean;
-  cacheFolder?: string;
-  inputFolder?: string;
-  outputFolder?: string;
 }
 export default program
   .description("Convert app data")
-  .option("-i --input-folder <string>", "")
+  .requiredOption("-i --input-folder <string>", "")
+  .requiredOption("-c --cache-folder <string>", "")
+  .requiredOption("-o --output-folder <string>", "")
   .option("-s --skip-cache", "Wipe local conversion cache and process all files")
-  .option("-c --cache-folder <string>", "")
-  .option("-o --output-folder <string>", "")
   .action(async (options: IProgramOptions) => {
     await new AppDataConverter(options).run();
   });
@@ -47,11 +47,6 @@ class AppDataConverter {
   public converterVersion = 1.7;
 
   private activeDeployment = getActiveDeployment();
-  private paths = {
-    SHEETS_INPUT_FOLDER: "",
-    SHEETS_CACHE_FOLDER: "",
-    SHEETS_OUTPUT_FOLDER: "",
-  };
 
   private conversionErrors = [];
   private conversionWarnings = [];
@@ -61,16 +56,9 @@ class AppDataConverter {
     // console.table(options);
     // Setup Folders
     const { inputFolder, outputFolder, cacheFolder } = options;
-    const { app_data, _workspace_path } = this.activeDeployment;
-    const SHEETS_CACHE_FOLDER = app_data.converter_cache_path;
-    this.paths = {
-      SHEETS_INPUT_FOLDER: inputFolder || path.resolve(_workspace_path, "app_data", "sheets"),
-      SHEETS_CACHE_FOLDER: cacheFolder || path.resolve(SHEETS_CACHE_FOLDER, "individual"),
-      SHEETS_OUTPUT_FOLDER: outputFolder || path.resolve(SHEETS_CACHE_FOLDER, "converted"),
-    };
-    Object.values(this.paths).forEach((p) => fs.ensureDir(p));
+    [inputFolder, outputFolder, cacheFolder].forEach((p) => fs.ensureDir(p));
     if (this.options.skipCache) {
-      fs.emptyDirSync(SHEETS_CACHE_FOLDER);
+      fs.emptyDirSync(this.options.cacheFolder);
     }
   }
 
@@ -114,17 +102,17 @@ class AppDataConverter {
    * Generate a list of sheets requiring conversion and cached files requiring deletion
    */
   private prepareConversionActions() {
-    const { SHEETS_INPUT_FOLDER, SHEETS_CACHE_FOLDER } = this.paths;
+    const { inputFolder, cacheFolder } = this.options;
     const actions: IConverterActions = { convert: [], delete: [], skip: [] };
     // generate hashmap of input and cache contents
     const hashKey = "relativePath";
-    const inputContents = readContentsFileAsHashmap(SHEETS_INPUT_FOLDER, { hashKey });
-    const cacheContents = readContentsFileAsHashmap(SHEETS_CACHE_FOLDER, { hashKey });
+    const inputContents = readContentsFileAsHashmap(inputFolder, { hashKey });
+    const cacheContents = readContentsFileAsHashmap(cacheFolder, { hashKey });
     // run comparisons
     Object.entries<IGDriveContentsEntry>(inputContents).forEach(([key, sourceFile]) => {
       // track the filename of the downloaded file (avoid duplicate .xlsx.xlsx depending if gsheet or xlsx original)
       const xlsxFilename = `${key.replace(".xlsx", "")}.xlsx`;
-      sourceFile.xlsxPath = path.resolve(SHEETS_INPUT_FOLDER, xlsxFilename);
+      sourceFile.xlsxPath = path.resolve(inputFolder, xlsxFilename);
       const cacheFile = cacheContents[key];
       // compare with modified times instead of checksums
       const isSame = this.isConvertedCacheValid(sourceFile, cacheFile);
@@ -137,7 +125,7 @@ class AppDataConverter {
     // handle deleting cache files no longer existing
     Object.entries<IGDriveContentsEntry>(cacheContents).forEach(([key, cacheFile]) => {
       const xlsxFilename = `${key.replace(".xlsx", "")}.xlsx`;
-      cacheFile.xlsxPath = path.resolve(SHEETS_CACHE_FOLDER, xlsxFilename);
+      cacheFile.xlsxPath = path.resolve(cacheFolder, xlsxFilename);
       if (!inputContents.hasOwnProperty(key)) {
         actions.delete.push(cacheFile);
       }
@@ -150,7 +138,7 @@ class AppDataConverter {
   }
 
   private processCacheDeletions(entries: IGDriveContentsEntry[]) {
-    const cacheBase = this.paths.SHEETS_CACHE_FOLDER;
+    const cacheBase = this.options.cacheFolder;
     for (const entry of entries) {
       const targetFile = path.resolve(cacheBase, `${entry.relativePath}.json`);
       if (fs.existsSync(targetFile)) {
@@ -160,14 +148,14 @@ class AppDataConverter {
   }
 
   private processSheetConversions(entries: IGDriveContentsEntry[]) {
-    const { SHEETS_INPUT_FOLDER } = this.paths;
+    const { inputFolder } = this.options;
     let i = 0;
     let total = entries.length;
     const processed: IParsedWorkbookData[] = [];
     for (let entry of entries) {
       const { xlsxPath } = entry;
       const json = convertXLSXSheetsToJson(xlsxPath);
-      const merged = this.mergeAppData(SHEETS_INPUT_FOLDER, [{ json, xlsxPath }]);
+      const merged = this.mergeAppData(inputFolder, [{ json, xlsxPath }]);
       const dataByFlowType = groupJsonByKey(merged, "flow_type");
       try {
         const convertedData = processData(dataByFlowType);
@@ -213,7 +201,7 @@ class AppDataConverter {
 
   /** Write individual converted jsons to flow_type folders */
   private writeOutputJsons(data: IParsedWorkbookData) {
-    const outputBase = this.paths.SHEETS_OUTPUT_FOLDER;
+    const outputBase = this.options.outputFolder;
     fs.ensureDirSync(outputBase);
     fs.emptyDirSync(outputBase);
     Object.values(data).forEach((flowArray) => {
@@ -257,7 +245,7 @@ class AppDataConverter {
   private writeCacheContentsJson() {
     const contentsFilename = "_contents.json";
     const cacheHashmap = generateFolderFlatMap(
-      this.paths.SHEETS_CACHE_FOLDER,
+      this.options.cacheFolder,
       true,
       (p) => p !== contentsFilename
     ) as { [relativePath: string]: IContentsEntry };
@@ -272,14 +260,14 @@ class AppDataConverter {
       return contentsEntry;
     });
 
-    const contentsOutput = path.resolve(this.paths.SHEETS_CACHE_FOLDER, contentsFilename);
+    const contentsOutput = path.resolve(this.options.cacheFolder, contentsFilename);
     fs.writeFileSync(contentsOutput, JSON.stringify(contentsData, null, 2));
   }
 
   private saveCachedConversion(entry: IGDriveContentsEntry, convertedData: any) {
     const { xlsxPath } = entry;
-    const relativePath = path.relative(this.paths.SHEETS_INPUT_FOLDER, xlsxPath);
-    const cacheTarget = path.resolve(this.paths.SHEETS_CACHE_FOLDER, `${relativePath}.json`);
+    const relativePath = path.relative(this.options.inputFolder, xlsxPath);
+    const cacheTarget = path.resolve(this.options.cacheFolder, `${relativePath}.json`);
     fs.ensureDirSync(path.dirname(cacheTarget));
     fs.writeFileSync(cacheTarget, JSON.stringify(convertedData, null, 2));
     const modifiedTime = new Date(entry.modifiedTime);
@@ -289,8 +277,8 @@ class AppDataConverter {
 
   private loadCachedConversion(entry: IGDriveContentsEntry) {
     const { xlsxPath } = entry;
-    const relativePath = path.relative(this.paths.SHEETS_INPUT_FOLDER, xlsxPath);
-    const cacheTarget = path.resolve(this.paths.SHEETS_CACHE_FOLDER, `${relativePath}.json`);
+    const relativePath = path.relative(this.options.inputFolder, xlsxPath);
+    const cacheTarget = path.resolve(this.options.cacheFolder, `${relativePath}.json`);
     const cachedConversion = fs.readJSONSync(cacheTarget);
     return cachedConversion;
   }
