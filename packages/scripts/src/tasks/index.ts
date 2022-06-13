@@ -1,4 +1,4 @@
-import android from "./providers/android";
+import android from "./providers/android/android";
 import appData from "./providers/appData";
 import file from "./providers/file";
 import gdrive from "./providers/gdrive";
