@@ -1,16 +1,35 @@
-import path from "path";
 import type { IDeploymentWorkflows } from "./workflow.model";
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
   custom: {
     label: "Run WIP subtitles code",
     steps: [
+      // {
+      //   name: "convert_srt_to_json",
+      //   function: async ({ tasks }) => {
+      //     const srtPath =
+      //       "/Users/Johnny/Documents/IDEMS-parenting-app/parenting-app-ui/packages/app-data/assets/global/plh_video/lets_slow_down.srt";
+      //     const subtitlesJson = tasks.subtitles.subtitlesFileToJson({
+      //       srtPath,
+      //       outputFolder:
+      //         "/Users/Johnny/Documents/IDEMS-parenting-app/parenting-app-ui/packages/app-data/assets/global/plh_video",
+      //     });
+      //     console.log(subtitlesJson);
+      //   },
+      // },
+      // {
+      //   name: "compile_translated_subtitles_json",
+      //   function: async ({ tasks }) => {
+      //     tasks.translate.apply({inputFolder: "/Users/Johnny/Documents/IDEMS-parenting-app/parenting-app-ui/packages/app-data/assets/global/plh_video"})
+      //   }
+      // }
       {
-        name: "convert_srt_to_json",
+        name: "translate_vtt",
         function: async ({ tasks }) => {
-          const srtPath =
-            "/Users/Johnny/Documents/IDEMS-parenting-app/parenting-app-ui/packages/app-data/assets/global/plh_video/lets_slow_down.srt";
-          tasks.subtitles.subtitlesFileToJson({ srtPath });
+          const languageCode = "tz_sw";
+          const vttPath =
+            "/Users/Johnny/Documents/IDEMS-parenting-app/parenting-app-ui/packages/app-data/assets/global/plh_video/lets_slow_down.vtt";
+          await tasks.subtitles.translateVtt(vttPath, languageCode);
         },
       },
     ],
