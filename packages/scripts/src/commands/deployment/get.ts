@@ -6,7 +6,8 @@ import chalk from "chalk";
 import { IDEMS_APP_CONFIG } from "../../paths";
 import { logError } from "../../utils";
 import { DEPLOYMENT_CONFIG_VERSION } from "./common";
-import { IDeploymentConfigJson } from "./set";
+import type { IDeploymentConfigJson } from "./common";
+
 import { spawnSync } from "child_process";
 
 const program = new Command("get");

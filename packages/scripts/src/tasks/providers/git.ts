@@ -7,7 +7,7 @@ import type { SimpleGit } from "simple-git";
 import { Project, PropertyAssignment, SyntaxKind } from "ts-morph";
 import { getActiveDeployment } from "../../commands/deployment/get";
 import { logError, logOutput, promptInput, promptOptions } from "../../utils";
-import { IDeploymentConfigJson } from "../../commands/deployment/set";
+import type { IDeploymentConfigJson } from "../../commands/deployment/common";
 import { IDEMS_APP_CONFIG } from "../../paths";
 
 class GitProvider {

@@ -8,7 +8,7 @@ import { IDeploymentWorkflows, IWorkflow, WORKFLOW_DEFAULTS } from "data-models"
 import ALL_TASKS from "../../tasks";
 import { logError, pad, promptOptions } from "../../utils";
 import { getActiveDeployment } from "../deployment/get";
-import { IDeploymentConfigJson } from "../deployment/set";
+import type { IDeploymentConfigJson } from "../deployment/common";
 
 const program = new Command("run");
 
