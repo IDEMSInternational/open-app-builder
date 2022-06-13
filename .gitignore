@@ -39,13 +39,8 @@ src/assets/app_data
 **/*.jks
 .firebase
 
-/scripts/input
-/scripts/output
-/scripts/plh-spreadsheet/input
-/scripts/plh-spreadsheet/output
-
 .env
-scripts/config/token.json
+
 .eslintcache
 report.*
 
