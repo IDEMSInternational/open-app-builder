@@ -5,10 +5,13 @@ import { TemplateBaseComponent } from "./base";
 @Component({
   selector: "plh-tmpl-video",
   template: `<div class="tmpl-video-container margin-t-large" [class]="style">
-    <video [src]="_row.value | plhAsset" controls>
-      <track *ngIf="subtitles_src" [src]="subtitles_src | plhAsset" default label="Subtitles" />
-    </video>
-  </div>`,
+      <video [src]="_row.value | plhAsset" controls>
+        <track *ngIf="subtitles_src" [src]="subtitles_src | plhAsset" default label="Subtitles" />
+      </video>
+    </div>
+    <p>
+      subtitles_src: {{ subtitles_src }} subtitles_src | plhAsset: {{ subtitles_src | plhAsset }}
+    </p> `,
   styleUrls: ["./tmpl-components-common.scss"],
   styles: [
     `
