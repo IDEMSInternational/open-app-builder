@@ -1,5 +1,5 @@
 import { extendConfig } from "data-models/deployment.model";
-import PARENT_CONFIG from "../plh/config";
+import PARENT_CONFIG from "../plh_global/config";
 
 const config = extendConfig(PARENT_CONFIG);
 config.name = "plh_za";
