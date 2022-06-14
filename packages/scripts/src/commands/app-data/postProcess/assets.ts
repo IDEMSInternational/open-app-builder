@@ -1,6 +1,5 @@
 import * as path from "path";
 import * as fs from "fs-extra";
-import { tmpdir } from "os";
 import chalk from "chalk";
 import { Command } from "commander";
 import {
@@ -8,11 +7,10 @@ import {
   isCountryLanguageCode,
   listFolderNames,
   logError,
-  readContentsFile,
   IContentsEntry,
   logOutput,
-  replicateDir,
   logWarning,
+  createTempDir,
 } from "../../../utils";
 import { spawnSync } from "child_process";
 
@@ -48,130 +46,158 @@ class AssetsPostProcessor {
   constructor(private options: IProgramOptions) {}
 
   public run() {
-    const { _parent_config, _workspace_path } = this.activeDeployment;
-    if (_parent_config) {
-      logWarning({ msg1: "TODO - merge parent" });
-    }
-
-    // Setup Folders
+    const { _workspace_path } = this.activeDeployment;
     const { sourceAssetsFolder } = this.options;
     const appAssetsFolder = path.resolve(_workspace_path, "app_data", "assets");
-    // Handle Copy
-    this.assetsQualityCheck(sourceAssetsFolder);
-    this.assetsCopyFiles(sourceAssetsFolder, appAssetsFolder);
-    this.assetsGenerateIndex(appAssetsFolder);
-    console.log(chalk.green("Copy Complete"));
+
+    // handle merge with parent - creates a staging folder with parent content and merges deployment data on top
+
+    const sourceAssets = generateFolderFlatMap(sourceAssetsFolder, { includeLocalPath: true });
+    const sourceAssetsFiltered = this.filterAppAssets(sourceAssets);
+
+    const mergedAssets = this.mergeParentAssets(sourceAssetsFiltered);
+
+    // populate staging dir for quality control
+    const stagingDir = createTempDir();
+    this.copyAssetsToFolder(mergedAssets, stagingDir);
+
+    this.assetsQualityCheck(stagingDir);
+
+    // TODO - Decide if populating translations should come now or later )
+    // But will need to know as part of final output.... so later (?)
+    // Or maybe additional full-contents json ?
+
+    // const { translationAssets, untrackedAssets } = this.listTranslationAssets(filteredAssets);
+    // if (Object.keys(untrackedAssets).length > 0) {
+    //   const untrackedList = Object.keys(untrackedAssets).join(", ");
+    //   logWarning({ msg1: "Skipping assets without global", msg2: untrackedList });
+    // }
+    // console.log(translationAssets);
+
+    // this.checkTotalAssetSize(translationAssets);
+
+    // TODO - write list of untracked assets
+
+    // TODO - copy to local app_data folder only those files that we will use
+
+    fs.removeSync(stagingDir);
+
+    this.copyAssetsToFolder(sourceAssetsFiltered, appAssetsFolder);
+    this.writeAssetsContentsFile(appAssetsFolder);
+
+    // fs.writeFileSync(untrackedTarget, JSON.stringify(untrackedJson, null, 2));
+
+    console.log(chalk.green("Asset Process Complete"));
   }
 
-  /**********************************************************************************************************
-   *                                            Assets
-   *********************************************************************************************************/
-  /**
-   * Create an index recursively listing all assets in app-data assets folder.
-   * Distinguishies between 'global' and 'translated' assets via folder naming, and tracks which global files have
-   * corresponding translation files
-   * */
-  private assetsGenerateIndex(baseFolder: string) {
-    const topLevelFolders = listFolderNames(baseFolder);
-    const languageFolders = topLevelFolders.filter((name) => isCountryLanguageCode(name));
+  private writeAssetsContentsFile(targetFolder: string) {
+    const assetContents = generateFolderFlatMap(targetFolder);
+    const assetEntries = {};
+    for (const [key, entry] of Object.entries(assetContents)) {
+      assetEntries[key] = this.contentsToAssetEntry(entry);
+    }
+    const contentsTarget = path.resolve(targetFolder, "contents.json");
 
-    // TODO - ideally "global" folder should sit at top level but refactoring required so for now use filter
-    const globalAssetsFolder = path.join(baseFolder, ASSETS_GLOBAL_FOLDER_NAME);
-    const globalAssets = generateFolderFlatMap(globalAssetsFolder, true) as {
-      [relative_path: string]: IAssetEntry;
-    };
-    const untrackedAssets: any = [];
+    fs.writeFileSync(contentsTarget, JSON.stringify(assetEntries, null, 2));
+  }
 
-    // populate tracked and untracked translated assets
-    for (const languageFolder of languageFolders) {
-      const languageFolderPath = path.resolve(baseFolder, languageFolder);
-      const translatedAssets = generateFolderFlatMap(languageFolderPath);
-      Object.entries(translatedAssets).forEach(([name, value]) => {
-        if (globalAssets.hasOwnProperty(name)) {
-          globalAssets[name].translations = globalAssets[name].translations || {};
-          globalAssets[name].translations[languageFolder] = value as IContentsEntry;
-        } else {
-          untrackedAssets.push(`${languageFolder}/${name}`);
+  private copyAssetsToFolder(
+    sourceAssets: { [relativePath: string]: IContentsEntry },
+    targetDir: string
+  ) {
+    fs.ensureDirSync(targetDir);
+    fs.emptyDirSync(targetDir);
+    Object.values(sourceAssets).forEach(({ localPath, relativePath, modifiedTime }) => {
+      const target = path.resolve(targetDir, relativePath);
+      fs.ensureDirSync(path.dirname(target));
+      fs.copyFileSync(localPath, target);
+      const mtime = new Date(modifiedTime);
+      fs.utimesSync(target, mtime, mtime);
+    });
+  }
+
+  private mergeParentAssets(sourceAssets: { [relativePath: string]: IContentsEntry }) {
+    const { _parent_config } = this.activeDeployment;
+
+    const mergedAssets = { ...sourceAssets };
+
+    // If parent config exists also include any parent files that would not be overwritten by source
+    if (_parent_config) {
+      const parentAssetsFolder = path.resolve(_parent_config._workspace_path, "app_data", "assets");
+      const parentAssets = generateFolderFlatMap(parentAssetsFolder, { includeLocalPath: true });
+      const filteredParentAssets = this.filterAppAssets(parentAssets);
+      Object.keys(filteredParentAssets).forEach((relativePath) => {
+        if (!mergedAssets.hasOwnProperty(relativePath)) {
+          mergedAssets[relativePath] = { ...parentAssets[relativePath] };
         }
       });
     }
-    // clean output to exclude modifiedTime and relativePath fields. Track totals
-    // TODO - size calcs could be tidied to own function
-    const cleanedContents: { [relative_path: string]: Partial<IAssetEntry> } = {};
-    let sizeTotals = { global: 0 };
-    Object.entries(globalAssets).forEach(([key, entry]) => {
-      const { modifiedTime, relativePath, ...fieldsToKeep } = entry;
-      cleanedContents[key] = fieldsToKeep;
-      sizeTotals.global += Math.round(entry.size_kb / 102.4) / 10;
-      // repeat for nested translation entries (TODO - could give breakdown by language)
-      if (entry.translations) {
-        Object.entries(entry.translations).forEach(([translated_key, translatedEntry]) => {
-          const { modifiedTime, relativePath, ...translatedFieldsToKeep } = translatedEntry;
-          cleanedContents[key].translations[translated_key] = translatedFieldsToKeep as any;
-          if (!sizeTotals[translated_key]) sizeTotals[translated_key] = 0;
-          sizeTotals[translated_key] += Math.round(translatedEntry.size_kb / 102.4) / 10;
-        });
-      }
-    });
-
-    fs.writeFileSync(
-      path.resolve(baseFolder, "contents.json"),
-      JSON.stringify(cleanedContents, null, 2)
-    );
-    fs.writeFileSync(
-      path.resolve(baseFolder, "untracked.json"),
-      JSON.stringify(untrackedAssets, null, 2)
-    );
-
-    // Log total size of all exports
-    let assetsTotal = 0;
-    Object.keys(sizeTotals).forEach((key) => {
-      sizeTotals[key] = Math.round(sizeTotals[key] * 10) / 10;
-      assetsTotal += sizeTotals[key];
-    });
-    const totalsByLang = JSON.stringify(sizeTotals, null, 2)
-      .replace(/[{}]/gim, "")
-      .replace(/[ ]{2}/gim, "")
-      .replace(/"/gim, "");
-    logOutput({
-      msg1: "Assets copied",
-      msg2: `Total size: ${Math.round(assetsTotal * 10) / 10} MB\n\n${totalsByLang}`,
-    });
+    return mergedAssets;
   }
 
-  private assetsCopyFiles(sourceFolder: string, targetFolder: string) {
-    // filter and copy
-    const assetFiles = readContentsFile(sourceFolder);
-    const { assets_filter_function } = this.activeDeployment.app_data;
-    const filterLanguages = this.activeDeployment.translations?.filter_language_codes;
+  /**
+   * Make a list of any source assets that have language-code overrides, and any language assets
+   * that are missing corresponding globals
+   */
+  private listTranslationAssets(sourceAssets: { [relativePath: string]: IContentsEntry }) {
+    const untrackedAssets: typeof sourceAssets = {};
+    const translationAssets: { [assetPath: string]: IAssetEntry } = {};
 
-    if (filterLanguages) {
-      filterLanguages.push("global");
-    }
-    const filteredFiles = assetFiles.filter((fileEntry) => {
-      // language filter
-      if (filterLanguages) {
-        const [lang_folder] = fileEntry.relativePath.split("/");
-        if (!filterLanguages.includes(lang_folder)) return false;
+    Object.entries(sourceAssets).forEach(([relativePath, entry]) => {
+      const [languageCode, ...nestedPaths] = relativePath.split("/");
+      const nestedPath = nestedPaths.join("/");
+      // handle translated assets
+      if (languageCode !== ASSETS_GLOBAL_FOLDER_NAME) {
+        const globalName = `${ASSETS_GLOBAL_FOLDER_NAME}/${nestedPath}`;
+        const globalAsset = sourceAssets[globalName];
+        if (globalAsset) {
+          if (!translationAssets[nestedPath]) {
+            translationAssets[nestedPath] = this.contentsToAssetEntry(globalAsset);
+            translationAssets[nestedPath].translations = {};
+          }
+          translationAssets[nestedPath].translations[languageCode] =
+            this.contentsToAssetEntry(entry);
+        } else {
+          untrackedAssets[relativePath] = entry;
+        }
       }
-      // global filter
-      return assets_filter_function(fileEntry);
     });
+    return { translationAssets, untrackedAssets };
+  }
 
-    // Copy
-    // Write to tmp dir to allow minimal update via replicate methods
-    // (will fail to unlink if app running)
-    const tmpFolder = path.resolve(tmpdir(), "app_assets");
-    fs.ensureDirSync(tmpFolder);
-    fs.emptyDirSync(tmpFolder);
-    for (const fileEntry of filteredFiles) {
-      const src = path.resolve(sourceFolder, fileEntry.relativePath);
-      const dest = path.resolve(tmpFolder, fileEntry.relativePath);
-      fs.ensureDirSync(path.dirname(dest));
-      fs.copySync(src, dest, { preserveTimestamps: true });
+  private contentsToAssetEntry(entry: IContentsEntry): IAssetEntry {
+    const { md5Checksum, modifiedTime, size_kb } = entry;
+    return { md5Checksum, modifiedTime, size_kb };
+  }
+
+  /**
+   * Take a list of all potential app assets and return a list of only those that match
+   * both app asset filter functions and language code filter functions
+   */
+  private filterAppAssets(sourceAssets: { [relativePath: string]: IContentsEntry }) {
+    const filtered: typeof sourceAssets = {};
+    const { assets_filter_function } = this.activeDeployment.app_data;
+    const { filter_language_codes } = this.activeDeployment.translations;
+    // include global folder if filtering by language
+    if (filter_language_codes) {
+      filter_language_codes.push(ASSETS_GLOBAL_FOLDER_NAME);
     }
-    replicateDir(tmpFolder, targetFolder);
-    fs.removeSync(tmpFolder);
+    // individual file filter function
+    function shouldInclude(entry: IContentsEntry) {
+      if (assets_filter_function && !assets_filter_function(entry)) return false;
+      if (filter_language_codes) {
+        const entryLang = entry.relativePath.split("/")[0];
+        if (!filter_language_codes.includes(entryLang)) return false;
+      }
+      return true;
+    }
+    // process files
+    Object.entries(sourceAssets).forEach(([name, entry]) => {
+      if (shouldInclude(entry)) {
+        filtered[name] = entry;
+      }
+    });
+    return filtered;
   }
 
   /** Ensure asset folders are named correctly */
@@ -197,6 +223,42 @@ class AssetsPostProcessor {
         msg2: `Invalid language codes: [${output.invalidFolders.join(", ")}]`,
       });
     }
+  }
+
+  private checkTotalAssetSize(sourceAssets: { [relativePath: string]: IAssetEntry }) {
+    let sizeTotals = { overall: 0, global: 0 };
+    Object.entries(sourceAssets).forEach(([key, entry]) => {
+      const sizeMB = Math.round(entry.size_kb / 102.4) / 10;
+      sizeTotals.global += sizeMB;
+      sizeTotals.overall += sizeMB;
+      // repeat for nested translation entries (TODO - could give breakdown by language)
+      if (entry.translations) {
+        Object.entries(entry.translations).forEach(([translated_key, translatedEntry]) => {
+          if (!sizeTotals[translated_key]) sizeTotals[translated_key] = 0;
+          const translatedSizeMB = Math.round(translatedEntry.size_kb / 102.4) / 10;
+          sizeTotals[translated_key] += translatedSizeMB;
+          sizeTotals.overall += translatedSizeMB;
+        });
+      }
+    });
+    // Log output
+    const { overall, ...langTotals } = sizeTotals;
+    const langSummary = JSON.stringify(langTotals, null, 2)
+      .replace(/[{}]/gim, "")
+      .replace(/[ ]{2}/gim, "")
+      .replace(/"/gim, "");
+
+    if (sizeTotals.overall > 140) {
+      logWarning({
+        msg1: `Asset files should be under 140MB`,
+        msg2: `Total size: ${Math.round(sizeTotals.overall * 10) / 10} MB\n\n${langSummary}`,
+      });
+    }
+
+    logOutput({
+      msg1: "Assets Summary",
+      msg2: `Total size: ${Math.round(sizeTotals.overall * 10) / 10} MB\n\n${langSummary}`,
+    });
   }
 }
 
