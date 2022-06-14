@@ -3,7 +3,7 @@ import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
 import chalk from "chalk";
-import { IDEMS_APP_CONFIG } from "../../paths";
+import { DEPLOYMENTS_PATH } from "../../paths";
 import { logError } from "../../utils";
 import { DEPLOYMENT_CONFIG_VERSION } from "./common";
 import type { IDeploymentConfigJson } from "./common";
@@ -41,7 +41,7 @@ export function getActiveDeployment(
     exitOnRecompileRequired?: boolean;
   } = {}
 ): IDeploymentConfigJson {
-  const defaultJsonPath = path.resolve(IDEMS_APP_CONFIG.deployments, "activeDeployment.json");
+  const defaultJsonPath = path.resolve(DEPLOYMENTS_PATH, "activeDeployment.json");
   // Handle no deployment configured
   if (!fs.existsSync(defaultJsonPath)) {
     if (options.ignoreMissing) {
@@ -60,7 +60,7 @@ export function getActiveDeployment(
     return deploymentJson;
   }
   const { _config_ts_path, name } = deploymentJson;
-  const deploymentTSPath = path.resolve(IDEMS_APP_CONFIG.deployments, _config_ts_path);
+  const deploymentTSPath = path.resolve(DEPLOYMENTS_PATH, _config_ts_path);
 
   if (!fs.existsSync(deploymentTSPath)) {
     fs.removeSync(defaultJsonPath);

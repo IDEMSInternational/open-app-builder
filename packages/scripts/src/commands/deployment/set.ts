@@ -4,7 +4,7 @@ import { GlobSync } from "glob";
 import fs from "fs-extra";
 import path from "path";
 import { IDeploymentConfig, DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS } from "../../../types";
-import { IDEMS_APP_CONFIG, ROOT_DIR } from "../../paths";
+import { DEPLOYMENTS_PATH, ROOT_DIR } from "../../paths";
 import { promptOptions, logError, deepMergeObjects, logOutput } from "../../utils";
 import { DEPLOYMENT_CONFIG_VERSION, IDeploymentConfigJson } from "./common";
 import { getActiveDeployment } from "./get";
@@ -60,17 +60,17 @@ export class DeploymentSet {
       });
     }
     const { filename, ...deployment } = matchingDeployment;
-    const defaultDeploymentPath = path.resolve(
-      IDEMS_APP_CONFIG.deployments,
-      "activeDeployment.json"
-    );
 
     const deploymentJson = this.generateDeploymentJson(deployment, filename);
-
-    fs.writeFileSync(defaultDeploymentPath, JSON.stringify(deploymentJson, null, 2));
+    const deploymentJsonString = JSON.stringify(deploymentJson, null, 2);
+    // write json to store the config both within the current deployment and as the active deployment
+    const deploymentJsonPath = path.resolve(deploymentJson._workspace_path, "config.json");
+    const activeDeploymentPath = path.resolve(DEPLOYMENTS_PATH, "activeDeployment.json");
+    fs.writeFileSync(deploymentJsonPath, deploymentJsonString);
+    fs.writeFileSync(activeDeploymentPath, deploymentJsonString);
     logOutput({
       msg1: `Active Deployment - "${deploymentJson.name}"`,
-      msg2: defaultDeploymentPath,
+      msg2: activeDeploymentPath,
     });
     // delete .angular cache as it may not detect changes to json files otherwise
     const angularCacheDir = path.join(ROOT_DIR, ".angular");
@@ -87,7 +87,7 @@ export class DeploymentSet {
   public async listDeployments() {
     const deploymentsHashmap: { [name: string]: IDeploymentConfigWithFilename } = {};
     const { found: allDeploymentFiles } = new GlobSync("**/*config.ts", {
-      cwd: IDEMS_APP_CONFIG.deployments,
+      cwd: DEPLOYMENTS_PATH,
     });
     for (const filename of allDeploymentFiles) {
       try {
@@ -107,14 +107,14 @@ export class DeploymentSet {
 
   /** Read a .ts file containing deployment information and return processed default export */
   public async loadDeploymentTS(filename: string) {
-    const filepath = path.resolve(IDEMS_APP_CONFIG.deployments, filename);
+    const filepath = path.resolve(DEPLOYMENTS_PATH, filename);
     const res = await import(filepath);
     return res.default;
   }
 
   /** Take a base deployment config, merge with metadata fields, evaluate relative paths */
   private generateDeploymentJson(deployment: IDeploymentConfig, filename: string) {
-    const _config_ts_path = path.resolve(IDEMS_APP_CONFIG.deployments, filename);
+    const _config_ts_path = path.resolve(DEPLOYMENTS_PATH, filename);
     const _workspace_path = path.dirname(_config_ts_path);
     const _config_version = DEPLOYMENT_CONFIG_VERSION;
 

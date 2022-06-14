@@ -8,7 +8,7 @@ import { Project, PropertyAssignment, SyntaxKind } from "ts-morph";
 import { getActiveDeployment } from "../../commands/deployment/get";
 import { logError, logOutput, promptInput, promptOptions } from "../../utils";
 import type { IDeploymentConfigJson } from "../../commands/deployment/common";
-import { IDEMS_APP_CONFIG } from "../../paths";
+import { DEPLOYMENTS_PATH } from "../../paths";
 
 class GitProvider {
   private git: SimpleGit;
@@ -25,11 +25,11 @@ class GitProvider {
       remoteTarget = await promptInput("Specify url to remote git repo");
     }
     const [owner, repo] = remoteTarget.split("/").slice(-2);
-    const targetDir = path.resolve(IDEMS_APP_CONFIG.deployments, repo);
+    const targetDir = path.resolve(DEPLOYMENTS_PATH, repo);
     if (fs.existsSync(targetDir)) {
       logError({ msg1: "A folder for this deployment already exists", msg2: targetDir });
     }
-    this.git = simpleGit(IDEMS_APP_CONFIG.deployments);
+    this.git = simpleGit(DEPLOYMENTS_PATH);
     console.log(chalk.gray(`Cloning ${remoteTarget}`));
     await this.git.clone(remoteTarget, targetDir);
     logOutput({ msg1: "Deployment imported successfully", msg2: targetDir });
