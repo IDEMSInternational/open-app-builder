@@ -51,7 +51,9 @@ class SheetsPostProcessor {
       // const parentSheetsFolder =
     }
     // Merge parent
-
+    if (_parent_config) {
+      logError({ msg1: "TODO - merge parent" });
+    }
     // Handle Copy
     this.sheetsCopyFiles(sourceSheetsFolder, appSheetsFolder);
     const sheetContents = this.sheetsGenerateContents(appSheetsFolder);
