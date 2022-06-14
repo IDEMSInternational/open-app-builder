@@ -2,7 +2,7 @@
 import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
-import { IDEMS_APP_CONFIG } from "../../paths";
+import { DEPLOYMENTS_PATH } from "../../paths";
 import { logError, logOutput, promptInput, promptOptions } from "../../utils";
 import { DeploymentSet } from "./set";
 import generateDefaultConfig from "./templates/config.default";
@@ -57,10 +57,10 @@ export async function createDeployment() {
 async function generateNewDeployment(): Promise<IGeneratedDeployment> {
   const nameInput = await promptInput("Specify a name for the deployment");
   const name = nameInput.toLowerCase().replace(/ /, "_");
-  const targetConfigFile = path.join(IDEMS_APP_CONFIG.deployments, name, `config.ts`);
+  const targetConfigFile = path.join(DEPLOYMENTS_PATH, name, `config.ts`);
   const configTs = generateDefaultConfig(name);
   writeConfig(targetConfigFile, configTs);
-  const targetGitIgnoreFile = path.join(IDEMS_APP_CONFIG.deployments, name, `.gitignore`);
+  const targetGitIgnoreFile = path.join(DEPLOYMENTS_PATH, name, `.gitignore`);
   writeGitIgnore(targetGitIgnoreFile);
   return { name, targetConfigFile };
 }
@@ -73,11 +73,11 @@ async function generateExtendedDeployment(): Promise<IGeneratedDeployment> {
   );
   const name = nameInput.toLowerCase().replace(/ /, "_");
   const extendedName = `${parentDeployment.name}_${name}`;
-  const targetFolder = path.join(IDEMS_APP_CONFIG.deployments, extendedName);
+  const targetFolder = path.join(DEPLOYMENTS_PATH, extendedName);
   const targetConfigFile = path.join(targetFolder, `config.ts`);
   const configTs = generateExtendedConfig(extendedName, path.basename(parentDeployment.folder));
   writeConfig(targetConfigFile, configTs);
-  const targetGitIgnoreFile = path.join(IDEMS_APP_CONFIG.deployments, extendedName, `.gitignore`);
+  const targetGitIgnoreFile = path.join(DEPLOYMENTS_PATH, extendedName, `.gitignore`);
   writeGitIgnore(targetGitIgnoreFile);
   return { name: extendedName, targetConfigFile };
 }
@@ -95,7 +95,7 @@ async function selectParentConfigToExtend() {
     value: {
       name: deployment.name,
       filename: path.basename(deployment.filename),
-      folder: path.dirname(path.resolve(IDEMS_APP_CONFIG.deployments, deployment.filename)),
+      folder: path.dirname(path.resolve(DEPLOYMENTS_PATH, deployment.filename)),
     },
   }));
   const parentDeployment = await promptOptions(
