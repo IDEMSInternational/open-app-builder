@@ -244,11 +244,9 @@ class AppDataConverter {
 
   private writeCacheContentsJson() {
     const contentsFilename = "_contents.json";
-    const cacheHashmap = generateFolderFlatMap(
-      this.options.cacheFolder,
-      true,
-      (p) => p !== contentsFilename
-    ) as { [relativePath: string]: IContentsEntry };
+    const cacheHashmap = generateFolderFlatMap(this.options.cacheFolder, {
+      filterFn: (p) => p !== contentsFilename,
+    });
     const contentsData = Object.values(cacheHashmap).map((entry) => {
       entry.relativePath = entry.relativePath.replace(".json", "");
       const contentsEntry: IConvertedContentsEntry = {

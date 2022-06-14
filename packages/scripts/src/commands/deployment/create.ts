@@ -4,7 +4,7 @@ import fs from "fs-extra";
 import path from "path";
 import { IDEMS_APP_CONFIG } from "../../paths";
 import { logError, logOutput, promptInput, promptOptions } from "../../utils";
-import { listDeployments, setActiveDeployment } from "./set";
+import { DeploymentSet } from "./set";
 import generateDefaultConfig from "./templates/config.default";
 import generateExtendedConfig from "./templates/config.extended";
 
@@ -48,6 +48,7 @@ export async function createDeployment() {
   );
   if (shouldSetConfig === "Yes") {
     // Set newly created config as active
+    const { setActiveDeployment } = new DeploymentSet();
     await setActiveDeployment(createdDeployment.name);
   }
 }
@@ -87,6 +88,7 @@ async function generateImportedDeployment(): Promise<IGeneratedDeployment> {
 
 /** Prompt select of an existing config to extend */
 async function selectParentConfigToExtend() {
+  const { listDeployments } = new DeploymentSet();
   const allDeployments = await listDeployments();
   const options = Object.values(allDeployments).map((deployment) => ({
     name: deployment.name,
