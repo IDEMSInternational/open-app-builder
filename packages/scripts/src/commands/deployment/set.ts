@@ -67,14 +67,6 @@ export class DeploymentSet {
 
     const deploymentJson = this.generateDeploymentJson(deployment, filename);
 
-    // Populate parent config metadata
-    const { _parent_config } = deploymentJson;
-    if (_parent_config) {
-      const parentTs = this.allDeployments[_parent_config.name];
-      const parentJson = this.generateDeploymentJson(parentTs, "config.ts");
-      deploymentJson._parent_config._workspace_path = parentJson._workspace_path;
-    }
-
     fs.writeFileSync(defaultDeploymentPath, JSON.stringify(deploymentJson, null, 2));
     logOutput({
       msg1: `Active Deployment - "${deploymentJson.name}"`,
@@ -129,13 +121,15 @@ export class DeploymentSet {
     // merge default values
     const merged = deepMergeObjects(DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS, deployment);
 
+    // populate parent config path
+    if (merged._parent_config) {
+      merged._parent_config._workspace_path = `../${merged._parent_config.name}`;
+    }
+
     // rewrite relative urls to absolute
     const rewritten = rewriteConfigPaths(merged, _workspace_path);
 
     const converted = convertFunctionsToStrings(rewritten);
-
-    if (deployment._parent_config) {
-    }
 
     // merge with metadata fields
     const deploymentJson: IDeploymentConfigJson = {
