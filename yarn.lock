@@ -13277,6 +13277,7 @@ __metadata:
     nouislider: ^14.6.3
     prettier: 2.4.1
     rxjs: ^6.6.7
+    scripts: "workspace:*"
     simple-git-hooks: ^2.4.1
     stacktrace-js: ^2.0.2
     typescript: 4.4.2

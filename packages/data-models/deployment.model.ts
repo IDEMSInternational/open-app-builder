@@ -1,4 +1,3 @@
-import clone from "clone";
 import type { IAppConstants } from "./constants";
 
 export interface IDeploymentConfig {
@@ -9,8 +8,6 @@ export interface IDeploymentConfig {
     sheets_folder_id: string;
     /** ID of folder containing app assets, as seen in end of url */
     assets_folder_id: string;
-    /** cache of downloaded gdrive files. Default `./cache/gdrive` */
-    cache_path?: string;
     /** generated gdrive access token. Default `packages/scripts/config/token.json` */
     auth_token_path?: string;
     /** filter function applied to sheets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */
@@ -19,22 +16,20 @@ export interface IDeploymentConfig {
     assets_filter_function?: (gdriveEntry: IGdriveEntry) => boolean;
   };
   /** Optional override of any provided constants from data-models/constants */
-  app_constants?: Partial<IAppConstants>;
-  app_data?: {
+  app_constants: IAppConstants;
+  app_data: {
     /** filter function that receives converted flows. Default `(flow)=>true`*/
     sheets_filter_function?: (flow: IFlowTypeBase) => boolean;
     /** filter function that receives basic file info such as relativePath and size. Default `(fileEntry)=>true`*/
     assets_filter_function?: (fileEntry: IContentsEntry) => boolean;
-    /** processed translations for use in app. Default `packages/app_data/translations` */
-    translations_output_path?: string;
   };
-  git?: {
+  git: {
     /** Url of external git repo to store content */
     content_repo?: string;
     /** Current tag of content for release */
     content_tag_latest?: string;
   };
-  translations?: {
+  translations: {
     /** List of all language codes to include. Default null (includes all) */
     filter_language_codes?: string[];
     /** generated output of list of strings to translate. Default `./app_data/translations_source/source_strings` */
@@ -42,7 +37,7 @@ export interface IDeploymentConfig {
     /** translated string for import. Default `./app_data/translations_source/translated_strings */
     translated_strings_path?: string;
   };
-  workflows?: {
+  workflows: {
     /** path to custom workflow files to include */
     custom_ts_files?: string[];
     /** path for task working directory. Default `./tasks` */
@@ -54,26 +49,6 @@ export interface IDeploymentConfig {
   _parent_config?: Partial<IDeploymentConfig & { _workspace_path: string }>;
 }
 
-/**
- * Create a deep clone of parent config (to avoid accidental hard reference),
- * populate with a named refernce to parent and remove parent git repo ref
- **/
-export const extendConfig = (parentConfig: IDeploymentConfig): IDeploymentConfig => {
-  const extendedConfig = clone(parentConfig);
-  extendedConfig._parent_config = { name: parentConfig.name };
-  if (parentConfig.git) {
-    extendedConfig._parent_config.git = parentConfig.git;
-    delete extendedConfig.git;
-  }
-  return extendedConfig;
-};
-
-/** Minimal example of just required config */
-export const DEPLOYMENT_CONFIG_EXAMPLE_MIN: IDeploymentConfig = {
-  name: "Minimal Config Example",
-  google_drive: { assets_folder_id: "", sheets_folder_id: "" },
-};
-
 /** Full example of just all config once merged with defaults */
 export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
   name: "Full Config Example",
@@ -84,7 +59,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     sheets_filter_function: (gdriveEntry) => true,
     assets_filter_function: (gdriveEntry) => true,
   },
-  app_constants: {},
+  app_constants: {} as any, // populated by `getDefaultAppConstants()`
   app_data: {
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
@@ -98,6 +73,8 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     custom_ts_files: [],
     task_cache_path: "./tasks",
   },
+  git: {},
+  _parent_config: null,
   _version: 1.0,
 };
 

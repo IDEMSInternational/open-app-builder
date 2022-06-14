@@ -4,6 +4,7 @@ import fs from "fs-extra";
 import path from "path";
 import { DEPLOYMENTS_PATH } from "../../paths";
 import { logError, logOutput, promptInput, promptOptions } from "../../utils";
+import { listDeployments } from "./common";
 import { DeploymentSet } from "./set";
 import generateDefaultConfig from "./templates/config.default";
 import generateExtendedConfig from "./templates/config.extended";
@@ -75,7 +76,7 @@ async function generateExtendedDeployment(): Promise<IGeneratedDeployment> {
   const extendedName = `${parentDeployment.name}_${name}`;
   const targetFolder = path.join(DEPLOYMENTS_PATH, extendedName);
   const targetConfigFile = path.join(targetFolder, `config.ts`);
-  const configTs = generateExtendedConfig(extendedName, path.basename(parentDeployment.folder));
+  const configTs = generateExtendedConfig(extendedName, parentDeployment.name);
   writeConfig(targetConfigFile, configTs);
   const targetGitIgnoreFile = path.join(DEPLOYMENTS_PATH, extendedName, `.gitignore`);
   writeGitIgnore(targetGitIgnoreFile);
@@ -88,14 +89,13 @@ async function generateImportedDeployment(): Promise<IGeneratedDeployment> {
 
 /** Prompt select of an existing config to extend */
 async function selectParentConfigToExtend() {
-  const { listDeployments } = new DeploymentSet();
   const allDeployments = await listDeployments();
   const options = Object.values(allDeployments).map((deployment) => ({
     name: deployment.name,
     value: {
       name: deployment.name,
-      filename: path.basename(deployment.filename),
-      folder: path.dirname(path.resolve(DEPLOYMENTS_PATH, deployment.filename)),
+      filename: path.basename(deployment._config_ts_path),
+      folder: path.dirname(path.resolve(DEPLOYMENTS_PATH, deployment._workspace_path)),
     },
   }));
   const parentDeployment = await promptOptions(
