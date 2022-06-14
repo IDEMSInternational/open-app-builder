@@ -56,3 +56,7 @@ process.on("SIGINT", handleExit);
 process.on("uncaughtException", handleError);
 
 program.parse(process.argv);
+
+// Additional exports for direct consumption
+import { extendDeploymentConfig, generateDeploymentConfig } from "./deployment/common";
+export { extendDeploymentConfig, generateDeploymentConfig };
