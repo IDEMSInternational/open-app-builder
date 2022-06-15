@@ -12,7 +12,7 @@
     "ng": "ng",
     "start": "concurrently --kill-others --raw \"yarn data-models:serve\" \"ng serve --open\"",
     "precompile": "yarn scripts compile types",
-    "build": "yarn precompile && yarn workflow && ng build --prod",
+    "build": "yarn precompile && ng build --prod",
     "data-models:serve": "yarn workspace data-models serve",
     "scripts": "yarn workspace scripts start",
     "workflow": "yarn scripts workflow run",
