@@ -27,7 +27,6 @@
     "commander": "^8.3.0",
     "data-models": "workspace:*",
     "fs-extra": "^9.0.1",
-    "glob": "^7.2.0",
     "inquirer": "^7.3.3",
     "node-rsa": "^1.1.1",
     "semver": "^7.3.7",
