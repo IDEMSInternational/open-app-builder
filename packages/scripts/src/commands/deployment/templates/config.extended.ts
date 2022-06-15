@@ -1,12 +1,10 @@
 // TODO - this will need refactor after PR 1401 merged
 
-export default (name: string, parentFolderName: string) =>
+export default (name: string, parent: string) =>
   `
-import { extendConfig } from "data-models/deployment.model";
-import PARENT_CONFIG from "../${parentFolderName}/config";
+import { extendDeploymentConfig } from "scripts";
 
-const config = extendConfig(PARENT_CONFIG);
-config.name = "${name}";
+const config = extendDeploymentConfig({ name: "${name}", parent: "${parent}" });
 
 // override app constants here
 config.app_constants.APP_HEADER_DEFAULTS.title = "${name}";
