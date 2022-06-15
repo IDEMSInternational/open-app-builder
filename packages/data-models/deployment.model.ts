@@ -115,3 +115,4 @@ export interface IAssetEntry {
   md5Checksum: string;
   translations?: { [language_code: string]: IAssetEntry };
 }
+export type IAssetEntryHashmap = { [assetPath: string]: IAssetEntry };
