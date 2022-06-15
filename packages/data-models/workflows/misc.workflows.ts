@@ -27,14 +27,11 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
   },
+  // Generate Android assets from source images (splash.png, icon.png and, optionally, icon-foreground.png and icon-background.png)
+  // File specifications provided here: https://www.npmjs.com/package/cordova-res
   populate_android_assets: {
     label: "Populate Android assets (app icon and splash screen)",
     steps: [
-      {
-        name: "Clear",
-        function: async ({ tasks, config }) =>
-          tasks.file.remove({ src: config.workflows.task_cache_path }),
-      },
       {
         name: "set_splash_image",
         function: async ({ tasks, workflow }) =>
@@ -53,7 +50,10 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "set_splash_image",
         function: async ({ tasks, config }) =>
-          tasks.android.set_splash_image(config.app_data.assets_output_path, "global/android"),
+          tasks.android.set_splash_image(
+            config.app_data.assets_output_path,
+            config.app_data.android_assets_subpath
+          ),
       },
     ],
   },
@@ -64,7 +64,10 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "set_launcher_icon",
         function: async ({ tasks, config }) =>
-          tasks.android.set_launcher_icon(config.app_data.assets_output_path, "global/android"),
+          tasks.android.set_launcher_icon(
+            config.app_data.assets_output_path,
+            config.app_data.android_assets_subpath
+          ),
       },
     ],
   },
