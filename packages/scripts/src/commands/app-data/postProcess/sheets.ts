@@ -156,12 +156,3 @@ class SheetsPostProcessor {
 type ISheetContents = {
   [flow_type in FlowTypes.FlowType]: { [flow_name: string]: FlowTypes.FlowTypeBase };
 };
-
-/**
- * Run prettier to automatically format code in given folder path
- * NOTE - by default will only format .ts files
- */
-function runPrettierCodeTidy(folderPath: string) {
-  const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${folderPath}/**/*.ts --loglevel error`;
-  return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
-}
