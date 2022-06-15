@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 import { Command } from "commander";
+import { IDeploymentConfig } from "data-models";
 import fs from "fs-extra";
 import path from "path";
-import chalk from "chalk";
 import { DEPLOYMENTS_PATH } from "../../paths";
 import { logError } from "../../utils";
-import { DEPLOYMENT_CONFIG_VERSION } from "./common";
-import type { IDeploymentConfigJson } from "./common";
-
-import { spawnSync } from "child_process";
+import { IDeploymentConfigJson } from "./common";
+import { loadTSFileDefaultExport } from "./compile";
+import { loadDeploymentJson } from "./utils";
 
 const program = new Command("get");
 
@@ -16,13 +15,10 @@ const program = new Command("get");
  * CLI
  * @example yarn
  *************************************************************************************/
-export default program
-  .description("Get active deployment")
-  // options copied from/passed to generate
-  .action(async () => {
-    const deployment = getActiveDeployment();
-    console.log("deployment get", deployment);
-  });
+export default program.description("Get active deployment").action(async () => {
+  const deployment = getActiveDeployment();
+  console.log("deployment get", deployment);
+});
 
 /***************************************************************************************
  * Main Methods
@@ -35,13 +31,10 @@ export default program
  * Supress this and instead return an empty config object `{}`
  */
 export function getActiveDeployment(
-  options: {
-    skipRecompileCheck?: boolean;
-    ignoreMissing?: boolean;
-    exitOnRecompileRequired?: boolean;
-  } = {}
+  options: { skipRecompileCheck?: boolean; ignoreMissing?: boolean } = {}
 ): IDeploymentConfigJson {
   const defaultJsonPath = path.resolve(DEPLOYMENTS_PATH, "activeDeployment.json");
+
   // Handle no deployment configured
   if (!fs.existsSync(defaultJsonPath)) {
     if (options.ignoreMissing) {
@@ -52,72 +45,26 @@ export function getActiveDeployment(
       msg2: `Run "yarn workflow deployment_set" to configure`,
     });
   }
-  // Load config from json
-  const deploymentJson: IDeploymentConfigJson = fs.readJsonSync(defaultJsonPath);
 
-  // Check corresponding config ts file in case recompile required
+  // Load last active json, ensure still exists and up-to-date (unless otherwise specified)
+  const deploymentJson = fs.readJsonSync(defaultJsonPath) as IDeploymentConfigJson;
   if (options.skipRecompileCheck) {
     return deploymentJson;
   }
-  const { _config_ts_path, name } = deploymentJson;
-  const deploymentTSPath = path.resolve(DEPLOYMENTS_PATH, _config_ts_path);
-
-  if (!fs.existsSync(deploymentTSPath)) {
+  const { _config_ts_path, _workspace_path, name } = deploymentJson;
+  if (!fs.existsSync(_config_ts_path)) {
     fs.removeSync(defaultJsonPath);
     logError({
-      msg1: `Deployment not found: ${_config_ts_path}`,
+      msg1: `Deployment not found: ${name}`,
       msg2: `Run "yarn workflow deployment_set" to specify a new active deployment`,
     });
   }
-
-  // Ensure json compiled since any changes to ts
-  const { mtime: jsonModifiedTime } = fs.statSync(defaultJsonPath);
-  const { mtime: tsModifiedTime } = fs.statSync(deploymentTSPath);
-
-  if (jsonModifiedTime < tsModifiedTime) {
-    if (options.exitOnRecompileRequired) {
-      logError({
-        msg1: `Could not load deployment: ${_config_ts_path}`,
-        msg2: `Run "yarn workflow deployment_set" to specify a new active deployment`,
-      });
-    }
-    console.log(chalk.grey("Config has been updated, recompile required"));
-    recompileConfig(name);
-    return getActiveDeployment({ exitOnRecompileRequired: true });
-  }
-
-  // ensure json compiled any time core config set methods updated
-  if (deploymentJson._config_version !== DEPLOYMENT_CONFIG_VERSION) {
-    console.log(chalk.grey("Config core has been updated, recompile required"));
-    recompileConfig(name);
-    return getActiveDeployment({ exitOnRecompileRequired: true });
-  }
-
-  const convertedJson = convertStringsToFunctions(deploymentJson);
-
-  return convertedJson;
+  return loadDeploymentJson(_workspace_path);
 }
 
-/** Run interactive command prompt to specify config */
-function promptConfigSet() {
-  const cmd = `yarn workspace scripts start deployment set`;
-  spawnSync(cmd, { stdio: "inherit", shell: true });
-}
-
-function recompileConfig(name: string) {
-  const cmd = `yarn workspace scripts start deployment set ${name}`;
-  spawnSync(cmd, { stdio: "inherit", shell: true });
-}
-
-/** When JSON is stored functions are stringified. Convert back */
-function convertStringsToFunctions<T>(data: T) {
-  Object.entries(data).forEach(([key, value]) => {
-    if (value && typeof value === "object") {
-      data[key] = convertStringsToFunctions(value);
-    }
-    if (key.endsWith("_function") && typeof value === "string") {
-      data[key] = new Function(`return ${value}`)();
-    }
-  });
-  return data;
+/** Similar to above, but parses TS async so can return without serialization/de-serialization */
+export async function getActiveDeploymentTS() {
+  const { _config_ts_path } = getActiveDeployment();
+  const ts = await loadTSFileDefaultExport(_config_ts_path);
+  return ts as IDeploymentConfig;
 }

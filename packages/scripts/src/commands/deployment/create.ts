@@ -3,11 +3,12 @@ import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
 import { DEPLOYMENTS_PATH } from "../../paths";
-import { logError, logOutput, promptInput, promptOptions } from "../../utils";
-import { listDeployments } from "./common";
+import { logError, logOutput, logWarning, promptInput, promptOptions } from "../../utils";
+import { IDeploymentConfigJson } from "./common";
 import { DeploymentSet } from "./set";
 import generateDefaultConfig from "./templates/config.default";
 import generateExtendedConfig from "./templates/config.extended";
+import { loadDeploymentJson } from "./utils";
 
 const program = new Command("create");
 
@@ -83,13 +84,9 @@ async function generateExtendedDeployment(): Promise<IGeneratedDeployment> {
   return { name: extendedName, targetConfigFile };
 }
 
-async function generateImportedDeployment(): Promise<IGeneratedDeployment> {
-  return { name: "", targetConfigFile: "" };
-}
-
 /** Prompt select of an existing config to extend */
 async function selectParentConfigToExtend() {
-  const allDeployments = await listDeployments();
+  const allDeployments = listValidDeployments();
   const options = Object.values(allDeployments).map((deployment) => ({
     name: deployment.name,
     value: {
@@ -103,6 +100,32 @@ async function selectParentConfigToExtend() {
     "Which deployment would you like to extend?"
   );
   return parentDeployment as { name: string; filename: string; folder: string };
+}
+
+/**
+ * Iterate over deployment folder config.ts files, parse typescript to see which
+ * can be successfully generated
+ */
+export function listValidDeployments() {
+  const deploymentsHashmap: { [name: string]: IDeploymentConfigJson } = {};
+
+  const deploymentTSPaths = fs
+    .readdirSync(DEPLOYMENTS_PATH, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((d) => path.resolve(DEPLOYMENTS_PATH, d.name, "config.ts"))
+    .filter((d) => fs.existsSync(d));
+
+  for (const tsPath of deploymentTSPaths) {
+    try {
+      const deploymentJson = loadDeploymentJson(path.dirname(tsPath));
+      deploymentsHashmap[deploymentJson.name] = deploymentJson;
+    } catch (error) {
+      logWarning({
+        msg1: `Could not load deployment: ${tsPath}`,
+      });
+    }
+  }
+  return deploymentsHashmap;
 }
 
 function writeConfig(targetConfigFile: string, configTs: string) {
