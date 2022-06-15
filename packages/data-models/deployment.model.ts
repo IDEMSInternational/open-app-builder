@@ -27,7 +27,7 @@ export interface IDeploymentConfig {
     converter_cache_path?: string;
     /** processed assets for use in app. Defaults `packages/app_data/assets` */
     assets_output_path?: string;
-    /** location of source android assets directory (splash and launcher source images) relative to assets dir */
+    /** location of source android assets directory (splash and launcher source images) relative to assets dir. Default `android` */
     android_assets_subpath?: string;
     /** filter function that receives converted flows. Default `(flow)=>true`*/
     sheets_filter_function?: (flow: IFlowTypeBase) => boolean;
@@ -80,6 +80,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     sheets_output_path: "packages/app-data/sheets",
     converter_cache_path: "./cache/converter",
     assets_output_path: "packages/app-data/assets",
+    android_assets_subpath: "android",
     translations_output_path: "packages/app-data/translations",
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
