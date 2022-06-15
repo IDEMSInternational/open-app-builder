@@ -136,6 +136,8 @@ class AssetsPostProcessor {
     if (filter_language_codes) {
       filter_language_codes.push(ASSETS_GLOBAL_FOLDER_NAME);
     }
+    // remove contents file from gdrive download
+    delete sourceAssets["_contents.json"];
     // individual file filter function
     function shouldInclude(entry: IContentsEntry) {
       if (assets_filter_function && !assets_filter_function(entry)) return false;
@@ -201,10 +203,11 @@ class AssetsPostProcessor {
       .map(([key, value]) => `${key}: ${kbToMB(value)} MB`)
       .join("\n");
     const totalSizeMB = kbToMB(totalSize);
-    if (totalSizeMB > 140) {
+    const maxWarningSize = 145;
+    if (totalSizeMB > maxWarningSize) {
       logWarning({
         msg1: `Asset files too large`,
-        msg2: `All assets should combine to be less than 140MB`,
+        msg2: `All assets should combine to be less than ${maxWarningSize}MB`,
       });
     }
 
