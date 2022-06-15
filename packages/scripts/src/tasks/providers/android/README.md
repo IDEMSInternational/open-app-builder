@@ -1,1 +1,0 @@
-TODO - Adapt this readme: https://www.npmjs.com/package/cordova-res
