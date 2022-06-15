@@ -13741,7 +13741,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:7.2.0, glob@npm:^7.0.0, glob@npm:^7.0.3, glob@npm:^7.1.1, glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6, glob@npm:^7.1.7, glob@npm:^7.2.0":
+"glob@npm:7.2.0, glob@npm:^7.0.0, glob@npm:^7.0.3, glob@npm:^7.1.1, glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6, glob@npm:^7.1.7":
   version: 7.2.0
   resolution: "glob@npm:7.2.0"
   dependencies:
@@ -22667,7 +22667,6 @@ __metadata:
     data-models: "workspace:*"
     esbuild: ^0.14.2
     fs-extra: ^9.0.1
-    glob: ^7.2.0
     inquirer: ^7.3.3
     jasmine: ^3.6.3
     jasmine-ts: ^0.3.2
