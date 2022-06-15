@@ -1,7 +1,7 @@
 import {extendDeploymentConfig} from 'scripts'
 
-const config = extendDeploymentConfig("plh_global");
-config.name = "plh_za";
+const config = extendDeploymentConfig({name:'plh_za',parent:"plh_global"});
+
 config.google_drive.sheets_folder_id="1_-mSeISZQXrD6dmVnruFT9LfRjozYcBk"
 // TODO - this is currently the same as the parent, needs consideration
 config.google_drive.assets_folder_id="1dp9QAQ84m8pm0IBQTSPXe1ramyynKPNn"
