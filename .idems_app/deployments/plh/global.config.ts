@@ -37,7 +37,9 @@ const config: IDeploymentConfig = {
     sheets_folder_id: "1n221Zv9LYuwxmjhiboq8vhQg67_K9L5f",
     assets_folder_id: "1dp9QAQ84m8pm0IBQTSPXe1ramyynKPNn",
   },
-  app_data: {},
+  app_data: {
+    android_assets_subpath: "global/android"
+  },
   translations: {
     translated_strings_path: "packages/app-data/translations_source/from_translators",
     source_strings_path: "packages/app-data/translations_source/to_translate",
