@@ -1,13 +1,11 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import { GlobSync } from "glob";
 import fs from "fs-extra";
 import path from "path";
-import { IDeploymentConfig, DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS } from "../../../types";
 import { DEPLOYMENTS_PATH, ROOT_DIR } from "../../paths";
-import { promptOptions, logError, deepMergeObjects, logOutput } from "../../utils";
-import { DEPLOYMENT_CONFIG_VERSION, IDeploymentConfigJson } from "./common";
+import { promptOptions, logOutput } from "../../utils";
 import { getActiveDeployment } from "./get";
+import { loadDeploymentJson } from "./utils";
 
 const program = new Command("set");
 
@@ -28,7 +26,6 @@ export default program
  *************************************************************************************/
 
 export class DeploymentSet {
-  private allDeployments: { [name: string]: IDeploymentConfigWithFilename } = {};
   /**
    * Specify or choose a deployment from a list of available deployments, and
    * populate as the active deployment to default deployment json file
@@ -37,36 +34,16 @@ export class DeploymentSet {
    * parsed data correct in default
    */
   public async setActiveDeployment(deploymentName?: string) {
-    this.allDeployments = await this.listDeployments();
     // Prompt selection from list
     if (!deploymentName) {
-      let deploymentNames = Object.keys(this.allDeployments);
-      // move current deployment name to start of list if exists
-      const currentDeploymentName = getActiveDeployment({
-        ignoreMissing: true,
-        skipRecompileCheck: true,
-      })?.name;
-      if (currentDeploymentName && deploymentNames.includes(currentDeploymentName)) {
-        deploymentNames.splice(deploymentNames.indexOf(currentDeploymentName), 1);
-        deploymentNames.unshift(currentDeploymentName);
-      }
-      deploymentName = await promptOptions(deploymentNames);
+      deploymentName = await this.promptDeploymentSelect();
+      return this.setActiveDeployment(deploymentName);
     }
-    const matchingDeployment = this.allDeployments[deploymentName];
-    if (!matchingDeployment) {
-      logError({
-        msg1: `No deployment found with name: "${deploymentName}"`,
-        msg2: `Available: ${Object.keys(this.allDeployments).join(", ")}`,
-      });
-    }
-    const { filename, ...deployment } = matchingDeployment;
-
-    const deploymentJson = this.generateDeploymentJson(deployment, filename);
+    const deploymentWorkspace = path.resolve(DEPLOYMENTS_PATH, deploymentName);
+    const deploymentJson = loadDeploymentJson(deploymentWorkspace);
     const deploymentJsonString = JSON.stringify(deploymentJson, null, 2);
     // write json to store the config both within the current deployment and as the active deployment
-    const deploymentJsonPath = path.resolve(deploymentJson._workspace_path, "config.json");
     const activeDeploymentPath = path.resolve(DEPLOYMENTS_PATH, "activeDeployment.json");
-    fs.writeFileSync(deploymentJsonPath, deploymentJsonString);
     fs.writeFileSync(activeDeploymentPath, deploymentJsonString);
     logOutput({
       msg1: `Active Deployment - "${deploymentJson.name}"`,
@@ -79,103 +56,21 @@ export class DeploymentSet {
     }
   }
 
-  /**
-   * Deployment files are written in .ts, so cannot be ready directly
-   * Iterate over the files and dynamically import to resolve their values,
-   * which can be passed back as an array of deployments
-   */
-  public async listDeployments() {
-    const deploymentsHashmap: { [name: string]: IDeploymentConfigWithFilename } = {};
-    const { found: allDeploymentFiles } = new GlobSync("**/*config.ts", {
-      cwd: DEPLOYMENTS_PATH,
-    });
-    for (const filename of allDeploymentFiles) {
-      try {
-        const deployment: IDeploymentConfig = await this.loadDeploymentTS(filename);
-
-        // should have default export with a name property
-        // assign via deep merge to ensure created as new object and won't conflict with future imports
-        if (deployment?.name) {
-          deploymentsHashmap[deployment.name] = deepMergeObjects({ filename }, deployment);
-        }
-      } catch (error) {
-        console.error(error);
-      }
+  private async promptDeploymentSelect() {
+    const deploymentNames = fs
+      .readdirSync(DEPLOYMENTS_PATH, { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .map((d) => d.name);
+    const currentDeploymentName = getActiveDeployment({
+      ignoreMissing: true,
+      skipRecompileCheck: true,
+    })?.name;
+    // move current deployment name to start of list if exists
+    if (currentDeploymentName && deploymentNames.includes(currentDeploymentName)) {
+      deploymentNames.splice(deploymentNames.indexOf(currentDeploymentName), 1);
+      deploymentNames.unshift(currentDeploymentName);
     }
-    return deploymentsHashmap;
+    const selectedName = await promptOptions(deploymentNames);
+    return selectedName;
   }
-
-  /** Read a .ts file containing deployment information and return processed default export */
-  public async loadDeploymentTS(filename: string) {
-    const filepath = path.resolve(DEPLOYMENTS_PATH, filename);
-    const res = await import(filepath);
-    return res.default;
-  }
-
-  /** Take a base deployment config, merge with metadata fields, evaluate relative paths */
-  private generateDeploymentJson(deployment: IDeploymentConfig, filename: string) {
-    const _config_ts_path = path.resolve(DEPLOYMENTS_PATH, filename);
-    const _workspace_path = path.dirname(_config_ts_path);
-    const _config_version = DEPLOYMENT_CONFIG_VERSION;
-
-    // merge default values
-    const merged = deepMergeObjects(DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS, deployment);
-
-    // populate parent config path
-    if (merged._parent_config) {
-      merged._parent_config._workspace_path = `../${merged._parent_config.name}`;
-    }
-
-    // rewrite relative urls to absolute
-    const rewritten = rewriteConfigPaths(merged, _workspace_path);
-
-    const converted = convertFunctionsToStrings(rewritten);
-
-    // merge with metadata fields
-    const deploymentJson: IDeploymentConfigJson = {
-      ...converted,
-      _workspace_path,
-      _config_ts_path,
-      _config_version,
-    };
-
-    // TODO - convert functions to strings
-    return deploymentJson;
-  }
-}
-
-interface IDeploymentConfigWithFilename extends IDeploymentConfig {
-  filename: string;
-}
-
-function rewriteConfigPaths<T>(data: T, relativePathRoot: string) {
-  Object.entries(data).forEach(([key, value]) => {
-    if (value && typeof value === "object") {
-      data[key] = rewriteConfigPaths(value, relativePathRoot);
-    }
-    if (key.endsWith("_path") && typeof value === "string") {
-      // handle paths relative to config file
-      if (value.startsWith(".")) {
-        data[key] = path.resolve(relativePathRoot, value);
-      }
-      // assume all other paths are relative to workspace
-      else {
-        data[key] = path.resolve(ROOT_DIR, value);
-      }
-    }
-  });
-  return data;
-}
-
-/** When stringifying json functions cannot be converted, so pre-convert any using function .toString() method */
-function convertFunctionsToStrings<T>(data: T) {
-  Object.entries(data).forEach(([key, value]) => {
-    if (value && typeof value === "object") {
-      data[key] = convertFunctionsToStrings(value);
-    }
-    if (key.endsWith("_function") && typeof value === "function") {
-      data[key] = (value as Function).toString();
-    }
-  });
-  return data;
 }
