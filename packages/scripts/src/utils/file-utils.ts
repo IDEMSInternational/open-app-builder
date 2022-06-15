@@ -3,6 +3,8 @@ import * as path from "path";
 import * as os from "os";
 import { createHash, randomUUID } from "crypto";
 import { logWarning } from "./logging.utils";
+import { ROOT_DIR } from "../paths";
+import { spawnSync } from "child_process";
 
 /**
  * Retrieve a nested property from a json object
@@ -184,6 +186,7 @@ export interface IContentsEntry {
   md5Checksum: string;
   localPath?: string;
 }
+export type IContentsEntryHashmap = { [relativePath: string]: IContentsEntry };
 
 export function getFileMD5Checksum(filePath: string) {
   const hash = createHash("md5", {});
@@ -498,4 +501,13 @@ export function createTempDir() {
   fs.ensureDirSync(dirPath);
   fs.emptyDirSync(dirPath);
   return dirPath;
+}
+
+/**
+ * Run prettier to automatically format code in given folder path
+ * NOTE - by default will only format .ts files
+ */
+export function runPrettierCodeTidy(folderPath: string) {
+  const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${folderPath}/**/*.ts --loglevel error`;
+  return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
 }

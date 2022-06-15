@@ -20,3 +20,9 @@ export function isCountryLanguageCode(str: string) {
   const regex = /[a-z]{2}_[a-z]{2,3}/gi;
   return regex.test(str);
 }
+
+/** Convert size in KB to MB with specified number of decimal places */
+export function kbToMB(kb: number, decimalPlaces = 1) {
+  const mb = kb / 1024;
+  return (Math.round((mb * 10) ^ decimalPlaces) / 10) ^ decimalPlaces;
+}
