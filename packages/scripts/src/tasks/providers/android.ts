@@ -5,11 +5,8 @@ import { ROOT_DIR } from "../../paths";
 import { logError } from "../../utils";
 
 const set_splash_image = async (assetsFolderPath: string, subPath: string) => {
-  const fullAssetsFolderPath = path.resolve(assetsFolderPath);
-  const androidAssetsPath = path.join(fullAssetsFolderPath, subPath);
-
+  const androidAssetsPath = path.join(path.resolve(assetsFolderPath), subPath);
   const availableAssets = fs.readdirSync(androidAssetsPath);
-
   if (!availableAssets.includes("splash.png")) {
     return logError({
       msg1: "splash.png not found",
@@ -41,11 +38,8 @@ const set_splash_image = async (assetsFolderPath: string, subPath: string) => {
 };
 
 const set_launcher_icon = async (assetsFolderPath: string, subPath: string) => {
-  const fullAssetsFolderPath = path.resolve(assetsFolderPath);
-  const androidAssetsPath = path.join(fullAssetsFolderPath, subPath);
-
+  const androidAssetsPath = path.join(path.resolve(assetsFolderPath), subPath);
   const availableAssets = fs.readdirSync(androidAssetsPath);
-
   const iconSources = [];
   if (availableAssets.includes("icon.png")) {
     iconSources.push(path.join(androidAssetsPath, "icon.png"));
@@ -56,13 +50,9 @@ const set_launcher_icon = async (assetsFolderPath: string, subPath: string) => {
     });
   }
 
-  let includeAdaptiveIcons = false;
-  if (
+  const includeAdaptiveIcons =
     availableAssets.includes("icon-background.png") &&
-    availableAssets.includes("icon-foreground.png")
-  ) {
-    includeAdaptiveIcons = true;
-  }
+    availableAssets.includes("icon-foreground.png");
 
   const options: Options = {
     directory: ROOT_DIR,

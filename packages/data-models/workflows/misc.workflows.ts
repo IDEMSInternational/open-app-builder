@@ -28,7 +28,8 @@ const workflows: IDeploymentWorkflows = {
     ],
   },
   // Generate Android assets from source images (splash.png, icon.png and, optionally, icon-foreground.png and icon-background.png)
-  // File specifications provided here: https://www.npmjs.com/package/cordova-res
+  // Icon images must be at least 1024×1024px, splash image must be at least 2732×2732px
+  // Further specifications provided here: https://www.npmjs.com/package/cordova-res
   populate_android_assets: {
     label: "Populate Android assets (app icon and splash screen)",
     steps: [
