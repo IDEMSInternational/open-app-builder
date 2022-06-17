@@ -75,12 +75,10 @@ export class AppDataService {
     // Populate cache if not exist
     if (!this.appDataCache[flow_type].hasOwnProperty(flow_name)) {
       const flow = await this.loadSheetFromJson(sheetContents);
-      if (flow) {
-        this.appDataCache[flow_type][flow_name] = flow;
-        // Data lists have additional processing, default is just to populate value
-        if (flow.flow_type === "data_list") {
-          this.populateCacheDataList(flow);
-        }
+      this.appDataCache[flow_type][flow_name] = flow;
+      // Data lists have additional processing, default is just to populate value
+      if (flow.flow_type === "data_list") {
+        this.populateCacheDataList(flow);
       }
     }
     return this.appDataCache[flow_type][flow_name] as T;
