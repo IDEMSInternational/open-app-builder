@@ -56,12 +56,12 @@ jobs:
       - name : Create production build
         run: |
           yarn build
-          rm www/assets/app_data/sheets/data_list/lifecycle_actions/launch_actions.json
+          rm www/assets/app_data/sheets/data_list/lifecycle_actions
       # Serve production build locally and generate screenshots. Kill server after completion
       - name: Start server and compare screenshots
         run: |
           npx concurrently --kill-others \
-          "npx serve --listen 4200 www" \
+          "npx serve --single --listen 4200 www" \
           "yarn workspace test-visual start compare --concurrency 5 && \
           lsof -ti tcp:4200 | xargs kill"
 
