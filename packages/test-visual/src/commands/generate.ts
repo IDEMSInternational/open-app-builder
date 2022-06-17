@@ -120,7 +120,7 @@ export class ScreenshotGenerate {
   }
 
   /** Create a custom browser page object and inject dynamic scripts required for use during db seeding */
-  private async setupPage() {
+  private async setupPage(isRetry = false) {
     const page = await this.browser.newPage();
     // disable javascript during initial nav to prevent full load (can still seed db)
     await page.setJavaScriptEnabled(false);
@@ -132,8 +132,19 @@ export class ScreenshotGenerate {
       await page.addScriptTag({ path: DEXIE_SRC_PATH });
       return page;
     } catch (error) {
-      outputErrorMessage(`Could not load app on ${APP_SERVER_URL}`, "Is the server running?");
-      process.exit(1);
+      if (isRetry) {
+        outputErrorMessage(`Could not load app on ${APP_SERVER_URL}`, "Is the server running?");
+        process.exit(1);
+      } else {
+        // Allow setup fail once in case server is loading
+        console.log("Page setup failed, retrying in 5s...");
+        await new Promise((resolve) =>
+          setTimeout(() => {
+            resolve(true);
+          }, 5000)
+        );
+        return this.setupPage(true);
+      }
     }
   }
 
