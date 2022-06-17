@@ -23,13 +23,29 @@ const workflows: IDeploymentWorkflows = {
       //     tasks.translate.apply({inputFolder: "/Users/Johnny/Documents/IDEMS-parenting-app/parenting-app-ui/packages/app-data/assets/global/plh_video"})
       //   }
       // }
+      // {
+      //   name: "translate_vtt",
+      //   function: async ({ tasks }) => {
+      //     const languageCode = "tz_sw";
+      //     const vttPath =
+      //       "/Users/Johnny/Documents/IDEMS-parenting-app/parenting-app-ui/packages/app-data/assets/global/plh_video/lets_slow_down.vtt";
+      //     await tasks.subtitles.translateVtt(vttPath, languageCode);
+      //   },
+      // },
+      // {
+      //   name: "translate_vtt_files",
+      //   function: async ({ tasks, config }) => {
+      //     await tasks.subtitles.translateAllVttFilesAndSave('tz_sw', config.app_data.translations_output_path, config.app_data.assets_output_path, 'global');
+      //   },
+      // },
       {
-        name: "translate_vtt",
-        function: async ({ tasks }) => {
-          const languageCode = "tz_sw";
-          const vttPath =
-            "/Users/Johnny/Documents/IDEMS-parenting-app/parenting-app-ui/packages/app-data/assets/global/plh_video/lets_slow_down.vtt";
-          await tasks.subtitles.translateVtt(vttPath, languageCode);
+        name: "copy_vtt_files_for_translation",
+        function: async ({ tasks, config }) => {
+          await tasks.subtitles.copyVttFilesForTranslation(
+            config.app_data.assets_output_path,
+            "global",
+            config.translations.source_strings_path
+          );
         },
       },
     ],
