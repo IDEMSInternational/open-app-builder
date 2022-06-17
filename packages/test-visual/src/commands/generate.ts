@@ -104,18 +104,18 @@ export class ScreenshotGenerate {
   }
 
   public async run() {
-    await this.startServer();
+    await this.startFrontendServer();
     await this.prepareBrowserRunner();
     await this.seedBrowserDB();
     await this.generateTemplateScreenshots();
     await this.generateZipOutput();
     await this.browser.close();
-    await this.stopServer();
+    await this.stopFrontendServer();
     outputCompleteMessage("Screenshots successfully generated", SCREENSHOTS_OUTPUT_ZIP);
   }
 
-  /** Run a local webserver to server generated build */
-  private async startServer() {
+  /** Run a local webserver to server to serve frontend build from www folder */
+  private async startFrontendServer() {
     if (this.options.serveWww) {
       return new Promise((resolve, reject) => {
         this.server = http.createServer((request, response) => {
@@ -132,7 +132,7 @@ export class ScreenshotGenerate {
       });
     }
   }
-  private stopServer() {
+  private stopFrontendServer() {
     if (this.server) {
       return new Promise((resolve, reject) => {
         this.server!.close((err) => {
