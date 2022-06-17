@@ -937,6 +937,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "box_duo_radio_buttons",
       _xlsxPath: "global/core_templates/core_templates_workshop_boxes.xlsx",
     },
+    box_hp_review: {
+      flow_type: "template",
+      flow_name: "box_hp_review",
+      _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
+    },
     box_image: {
       flow_type: "template",
       flow_name: "box_image",
@@ -1082,11 +1087,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_latex.xlsx",
     },
-    comp_radio_button: {
+    comp_radio_group: {
       flow_type: "template",
-      flow_name: "comp_radio_button",
+      flow_name: "comp_radio_group",
       flow_subtype: "component_demo",
-      _xlsxPath: "quality_assurance/component_sheets/component_radio_button.xlsx",
+      _xlsxPath: "quality_assurance/component_sheets/component_radio_group.xlsx",
     },
     comp_round_button: {
       flow_type: "template",
@@ -1188,6 +1193,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_subtype: "debug",
       flow_name: "debug_campaign_tester",
+      comments: "test56",
       _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_campaigns.xlsx",
     },
     debug_changed_radio_group_1: {
@@ -3366,11 +3372,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "survey_final_q_8",
       _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
     },
-    survey_final_q_9: {
-      flow_type: "template",
-      flow_name: "survey_final_q_9",
-      _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
-    },
     survey_final_stepper: {
       flow_type: "template",
       flow_name: "survey_final_stepper",
@@ -3429,11 +3430,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     survey_q_8: {
       flow_type: "template",
       flow_name: "survey_q_8",
-      _xlsxPath: "global/top_templates/survey_templates/survey.xlsx",
-    },
-    survey_q_9: {
-      flow_type: "template",
-      flow_name: "survey_q_9",
       _xlsxPath: "global/top_templates/survey_templates/survey.xlsx",
     },
     survey_stepper: {
@@ -3521,11 +3517,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "survey_welcome_q_8",
       _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
     },
-    survey_welcome_q_9: {
-      flow_type: "template",
-      flow_name: "survey_welcome_q_9",
-      _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
-    },
     survey_welcome_repeat_intro: {
       flow_type: "template",
       flow_name: "survey_welcome_repeat_intro",
@@ -3574,11 +3565,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     survey_welcome_repeat_q_8: {
       flow_type: "template",
       flow_name: "survey_welcome_repeat_q_8",
-      _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
-    },
-    survey_welcome_repeat_q_9: {
-      flow_type: "template",
-      flow_name: "survey_welcome_repeat_q_9",
       _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
     },
     survey_welcome_repeat_stepper: {
