@@ -7,16 +7,12 @@
     {
       "type": "slider",
       "name": "slider_default",
-      "value": "Default",
-      "_translations": {
-        "value": {}
-      },
       "_nested_name": "slider_default"
     },
     {
       "type": "title",
       "name": "title_1",
-      "value": "Slider help tooltip",
+      "value": "Help tooltip",
       "_translations": {
         "value": {}
       },
@@ -26,22 +22,14 @@
       "type": "slider",
       "name": "slider_par_1_1",
       "parameter_list": {
-        "help": ""
+        "help": "any text for help tooltip"
       },
       "_nested_name": "slider_par_1_1"
     },
     {
-      "type": "slider",
-      "name": "slider_par_1_2",
-      "parameter_list": {
-        "help": "any text for help tooltip"
-      },
-      "_nested_name": "slider_par_1_2"
-    },
-    {
       "type": "title",
       "name": "title_2",
-      "value": "Slider minimum value",
+      "value": "Title",
       "_translations": {
         "value": {}
       },
@@ -51,22 +39,14 @@
       "type": "slider",
       "name": "slider_par_2_1",
       "parameter_list": {
-        "min": "0"
+        "title": "any text as a title"
       },
       "_nested_name": "slider_par_2_1"
     },
     {
-      "type": "slider",
-      "name": "slider_par_2_2",
-      "parameter_list": {
-        "min": "5"
-      },
-      "_nested_name": "slider_par_2_2"
-    },
-    {
       "type": "title",
       "name": "title_3",
-      "value": "Slider maximum value",
+      "value": "Minimum & maximum value",
       "_translations": {
         "value": {}
       },
@@ -76,22 +56,15 @@
       "type": "slider",
       "name": "slider_par_3_1",
       "parameter_list": {
-        "max": "7"
+        "min": "5",
+        "max": "8"
       },
       "_nested_name": "slider_par_3_1"
     },
     {
-      "type": "slider",
-      "name": "slider_par_3_2",
-      "parameter_list": {
-        "max": "8"
-      },
-      "_nested_name": "slider_par_3_2"
-    },
-    {
       "type": "title",
       "name": "title_4",
-      "value": "Slider title",
+      "value": "Minimum & maximum value label",
       "_translations": {
         "value": {}
       },
@@ -101,7 +74,7 @@
       "type": "slider",
       "name": "slider_par_4_1",
       "parameter_list": {
-        "title": ""
+        "min_value_label": "minimum label"
       },
       "_nested_name": "slider_par_4_1"
     },
@@ -109,14 +82,23 @@
       "type": "slider",
       "name": "slider_par_4_2",
       "parameter_list": {
-        "title": "string"
+        "max_value_label": "maximum label"
       },
       "_nested_name": "slider_par_4_2"
     },
     {
+      "type": "slider",
+      "name": "slider_par_4_3",
+      "parameter_list": {
+        "min_value_label": "minimum label",
+        "max_value_label": "maximum label"
+      },
+      "_nested_name": "slider_par_4_3"
+    },
+    {
       "type": "title",
       "name": "title_5",
-      "value": "Slider step",
+      "value": "Step",
       "_translations": {
         "value": {}
       },
@@ -126,7 +108,9 @@
       "type": "slider",
       "name": "slider_par_5_1",
       "parameter_list": {
-        "step": "1"
+        "min": "0",
+        "max": "10",
+        "step": "2"
       },
       "_nested_name": "slider_par_5_1"
     },
@@ -134,14 +118,16 @@
       "type": "slider",
       "name": "slider_par_5_2",
       "parameter_list": {
-        "step": "7"
+        "min": "0",
+        "max": "10",
+        "step": "5"
       },
       "_nested_name": "slider_par_5_2"
     },
     {
       "type": "title",
       "name": "title_6",
-      "value": "Slider minimum value label",
+      "value": "Labels count",
       "_translations": {
         "value": {}
       },
@@ -151,7 +137,9 @@
       "type": "slider",
       "name": "slider_par_6_1",
       "parameter_list": {
-        "min_value_label": ""
+        "min": "0",
+        "max": "10",
+        "labels_count": "6"
       },
       "_nested_name": "slider_par_6_1"
     },
@@ -159,14 +147,16 @@
       "type": "slider",
       "name": "slider_par_6_2",
       "parameter_list": {
-        "min_value_label": "string"
+        "min": "0",
+        "max": "10",
+        "labels_count": "3"
       },
       "_nested_name": "slider_par_6_2"
     },
     {
       "type": "title",
       "name": "title_7",
-      "value": "Slider maximum value label",
+      "value": "To be removed",
       "_translations": {
         "value": {}
       },
@@ -176,7 +166,7 @@
       "type": "slider",
       "name": "slider_par_7_1",
       "parameter_list": {
-        "max_value_label": ""
+        "no_value": "false"
       },
       "_nested_name": "slider_par_7_1"
     },
@@ -184,66 +174,25 @@
       "type": "slider",
       "name": "slider_par_7_2",
       "parameter_list": {
-        "max_value_label": "string"
+        "no_value": "true"
       },
       "_nested_name": "slider_par_7_2"
     },
     {
-      "type": "title",
-      "name": "title_8",
-      "value": "To be removed",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "title_8"
-    },
-    {
       "type": "slider",
-      "name": "slider_par_8_1",
-      "parameter_list": {
-        "labels_count": "8"
-      },
-      "_nested_name": "slider_par_8_1"
-    },
-    {
-      "type": "slider",
-      "name": "slider_par_8_2",
-      "parameter_list": {
-        "labels_count": "10"
-      },
-      "_nested_name": "slider_par_8_2"
-    },
-    {
-      "type": "slider",
-      "name": "slider_par_8_3",
-      "parameter_list": {
-        "no_value": "false"
-      },
-      "_nested_name": "slider_par_8_3"
-    },
-    {
-      "type": "slider",
-      "name": "slider_par_8_4",
-      "parameter_list": {
-        "no_value": "true"
-      },
-      "_nested_name": "slider_par_8_4"
-    },
-    {
-      "type": "slider",
-      "name": "slider_par_8_5",
+      "name": "slider_par_7_3",
       "parameter_list": {
         "no_value_text": "'no_value'"
       },
-      "_nested_name": "slider_par_8_5"
+      "_nested_name": "slider_par_7_3"
     },
     {
       "type": "slider",
-      "name": "slider_par_8_6",
+      "name": "slider_par_7_4",
       "parameter_list": {
-        "no_value_text": ""
+        "no_value_text": "string"
       },
-      "_nested_name": "slider_par_8_6"
+      "_nested_name": "slider_par_7_4"
     }
   ],
   "_xlsxPath": "quality_assurance/component_sheets/component_slider.xlsx"
