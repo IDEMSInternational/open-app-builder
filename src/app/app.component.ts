@@ -81,6 +81,7 @@ export class AppComponent {
     this.platform.ready().then(async () => {
       // ensure deployment field set correctly for use in any startup services or templates
       localStorage.setItem(APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
+      localStorage.setItem(APP_FIELDS.APP_VERSION, this.APP_VERSION);
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
