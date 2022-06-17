@@ -56,7 +56,7 @@ jobs:
       - name : Create production build
         run: |
           yarn build
-          rm www/assets/app_data/sheets/data_list/lifecycle_actions
+          rm -R www/assets/app_data/sheets/data_list/lifecycle_actions
       # Serve production build locally and generate screenshots. Kill server after completion
       - name: Start server and compare screenshots
         run: |
