@@ -59,12 +59,7 @@ jobs:
           rm -R www/assets/app_data/sheets/data_list/lifecycle_actions
       # Serve production build locally and generate screenshots. Gracefully terminate server after completion
       - name: Start server and compare screenshots
-        run: |
-          npx concurrently --kill-others \
-          "npx serve --single --listen 4200 www" \
-          "yarn workspace test-visual start compare --concurrency 5 && \
-          lsof -ti tcp:4200 | xargs kill -2 && \
-          sleep 5"
+        run: yarn workspace test-visual start generate --concurrency 5 --serve-www
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
