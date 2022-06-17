@@ -97,7 +97,8 @@ const saveJsonToVtt = async (vttFilepath, data, languageCode, assetsFolder) => {
   const enclosingFolder = path.basename(path.dirname(vttFilepath));
   const destinationPath = path.join(assetsFolder, languageCode, enclosingFolder, filename);
   const vtt = parser.toVtt(data);
-  fs.writeFileSync(destinationPath, vtt);
+  const vttWithHeader = "WEBVTT\n\n" + vtt;
+  fs.writeFileSync(destinationPath, vttWithHeader);
   return destinationPath;
 };
 
