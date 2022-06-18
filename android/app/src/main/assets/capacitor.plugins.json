@@ -4,6 +4,10 @@
 		"classpath": "com.getcapacitor.community.firebasecrashlytics.FirebaseCrashlyticsPlugin"
 	},
 	{
+		"pkg": "@capacitor-firebase/authentication",
+		"classpath": "dev.robingenz.capacitorjs.plugins.firebase.authentication.FirebaseAuthenticationPlugin"
+	},
+	{
 		"pkg": "@capacitor-firebase/performance",
 		"classpath": "dev.robingenz.capacitorjs.plugins.firebase.performance.FirebasePerformancePlugin"
 	},

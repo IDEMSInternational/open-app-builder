@@ -1,4 +1,4 @@
-import APP_CONSTANTS from "./constants";
+import type { IAppConstants } from "./constants";
 
 /*********************************************************************************************
  *  Base flow types
@@ -178,6 +178,14 @@ export namespace FlowTypes {
     _cleaned?: string;
     _parsed?: string[][];
   }
+  export interface Lifecycle_Action {
+    lifecycle_event: LifecycleEvent;
+    id: string;
+    priority?: number; // priority order in which to run actions
+    condition_list?: string[];
+    action_list: TemplateRowAction[];
+  }
+  export type LifecycleEvent = "app_start"; // scope to add app_open, app_close, app_minimize, app_first_start etc.
   export interface RowWithActivationConditions {
     /** evaluated statements for activating campaign */
     activation_condition_list?: DataEvaluationCondition[];
@@ -264,7 +272,8 @@ export namespace FlowTypes {
     | "items"
     | "select_text"
     | "html"
-    | "latex";
+    | "latex"
+    | "animated_slides";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
@@ -294,7 +303,7 @@ export namespace FlowTypes {
   }
   export type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
-  type IDynamicPrefix = typeof APP_CONSTANTS.DYNAMIC_PREFIXES[number];
+  type IDynamicPrefix = IAppConstants["DYNAMIC_PREFIXES"][number];
 
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
@@ -345,7 +354,8 @@ export namespace FlowTypes {
       | "start_tour"
       | "trigger_actions"
       | "track_event"
-      | "process_template";
+      | "process_template"
+      | "google_auth";
     args: any[]; // should be string | boolean, but breaks type-checking for templates;
     params?: any; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params

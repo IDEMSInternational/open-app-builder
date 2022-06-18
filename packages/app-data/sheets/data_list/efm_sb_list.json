@@ -235,6 +235,52 @@
       "math_themes_words": "This story has counting to seven and shapes. Practice words: small numbers, especially one and two; and comparing words such as more, equal, same, and less. Also, talk about squares, circles, solids, stripes, bigger, and smaller."
     },
     {
+      "id": "efm_sb_Where_Is_Lulu",
+      "pages": "data.Where_Is_Lulu_storybook",
+      "cover": "EFMStorybooks/EFM-SB-WIL-Cover.jpg",
+      "author": "Mohale Mashigo",
+      "illustrator": "Clyde Beech",
+      "intro_level": "basic",
+      "book_level": "beginner",
+      "title": "Where Is Lulu?",
+      "_translations": {
+        "title": {},
+        "math_themes_words": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Where Is Lulu?"
+        },
+        "math_themes_words": {
+          "eng": "This story has counting to 10, comparing sizes, and geometry. Practice words: numbers to 10, one more, one less, less, more, small, big, too, too big, smallest, largest, triangle, rectangle, pentagon, cylinder, same, on, under, and on top of."
+        }
+      },
+      "math_themes_words": "This story has counting to 10, comparing sizes, and geometry. Practice words: numbers to 10, one more, one less, less, more, small, big, too, too big, smallest, largest, triangle, rectangle, pentagon, cylinder, same, on, under, and on top of."
+    },
+    {
+      "id": "efm_sb_Where_Is_My_Cat",
+      "pages": "data.Where_Is_My_Cat_storybook",
+      "cover": "EFMStorybooks/EFM-SB-WIMC-Cover.jpg",
+      "author": "Clare  Verbeek",
+      "illustrator": "Bronwen Heath",
+      "intro_level": "basic",
+      "book_level": "beginner",
+      "title": "Where Is My Cat?",
+      "_translations": {
+        "title": {},
+        "math_themes_words": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Where Is My Cat?"
+        },
+        "math_themes_words": {
+          "eng": "This story has counting to 5, relationship words, and colors. Practice words: numbers to 5, under, on top of, over, behind, next to, inside, outside, color names, straight, and curved."
+        }
+      },
+      "math_themes_words": "This story has counting to 5, relationship words, and colors. Practice words: numbers to 5, under, on top of, over, behind, next to, inside, outside, color names, straight, and curved."
+    },
+    {
       "id": "efm_sb_A_Dancers_Tale",
       "pages": "data.A_Dancers_Tale_storybook",
       "cover": "EFMStorybooks/EFM-SB-ADT-Cover.jpg",
@@ -275,10 +321,10 @@
           "eng": "A Fish and a Gift"
         },
         "math_themes_words": {
-          "eng": "This story has counting to 8, descriptions and comparisons, and shapes. Practice words: numbers to 8, earlier, later, dark, faster, down, backwards, longest, more, little, different, triangle, rectangle, line, side, striaght, horizon, and horizontal."
+          "eng": "This story has counting to 8, descriptions and comparisons, and shapes. Practice words: numbers to 8, earlier, later, dark, faster, down, backwards, longest, more, little, different, triangle, rectangle, line, side, straight, horizon, and horizontal."
         }
       },
-      "math_themes_words": "This story has counting to 8, descriptions and comparisons, and shapes. Practice words: numbers to 8, earlier, later, dark, faster, down, backwards, longest, more, little, different, triangle, rectangle, line, side, striaght, horizon, and horizontal."
+      "math_themes_words": "This story has counting to 8, descriptions and comparisons, and shapes. Practice words: numbers to 8, earlier, later, dark, faster, down, backwards, longest, more, little, different, triangle, rectangle, line, side, straight, horizon, and horizontal."
     },
     {
       "id": "efm_sb_Amazing_Daisy",
@@ -327,7 +373,30 @@
       "math_themes_words": "This story has shapes, comparisons, and skip counting.  Practice words: rectangle, square, oval, circle, arc, triangle, line, straight, curved, mirror symmetry, similar, different, less, same, more, pair, difference, right, left, skip counting by 2's, 3's, and 5's."
     },
     {
-      "id": "efm_sb_Is_There_Anyone_Like_me",
+      "id": "efm_sb_How_Many",
+      "pages": "data.How_Many_storybook",
+      "cover": "EFMStorybooks/EFM-SB-HM-Cover.jpg",
+      "author": "Clare Verbeek",
+      "illustrator": "Sandra McDougall",
+      "intro_level": "advanced",
+      "book_level": "intermediate",
+      "title": "How Many?",
+      "_translations": {
+        "title": {},
+        "math_themes_words": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How Many?"
+        },
+        "math_themes_words": {
+          "eng": "This story has counting to 14 and skip counting. Practice words: numbers to 14, skip counting, more, fewer, one more, three more, and double."
+        }
+      },
+      "math_themes_words": "This story has counting to 14 and skip counting. Practice words: numbers to 14, skip counting, more, fewer, one more, three more, and double."
+    },
+    {
+      "id": "efm_sb_Is_There_Anyone_Like_Me",
       "pages": "data.Is_There_Anyone_Like_Me_storybook",
       "cover": "EFMStorybooks/EFM-SB-ITALM-Cover.jpg",
       "author": "Fred Strydom",
@@ -371,6 +440,121 @@
         }
       },
       "math_themes_words": "This story has  counting to 10 and comparing. Practice words: more, less, difference, and counting by 2's."
+    },
+    {
+      "id": "efm_sb_Little_Jojos_Long_Tall_Tale",
+      "pages": "data.Little_Jojos_Tale_storybook",
+      "cover": "EFMStorybooks/EFM-SB-LJLTT-Cover.jpg",
+      "author": "Leo Daly",
+      "illustrator": "Marleen Visser",
+      "intro_level": "advanced",
+      "book_level": "intermediate",
+      "title": "Little Jojo's Long Tall Tale",
+      "_translations": {
+        "title": {},
+        "math_themes_words": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Little Jojo's Long Tall Tale"
+        },
+        "math_themes_words": {
+          "eng": "This story has many shapes. Practice words: circle, round, short, polygon, side, triangle, quadrilateral, pentagon, hexagon, square, rectangle, diamond, rhombus, cone, pattern, concentric circles, colors, tall, tallest, far, farthest, long, half, pair, add, subtract, easy, hard, easier, harder, and problem solving."
+        }
+      },
+      "math_themes_words": "This story has many shapes. Practice words: circle, round, short, polygon, side, triangle, quadrilateral, pentagon, hexagon, square, rectangle, diamond, rhombus, cone, pattern, concentric circles, colors, tall, tallest, far, farthest, long, half, pair, add, subtract, easy, hard, easier, harder, and problem solving."
+    },
+    {
+      "id": "efm_sb_Lory_Dory",
+      "pages": "data.Lory_Dory_storybook",
+      "cover": "EFMStorybooks/EFM-SB-LD-Cover.jpg",
+      "author": "Brendon O'Neill",
+      "illustrator": "Sonia Dearling",
+      "intro_level": "advanced",
+      "book_level": "intermediate",
+      "title": "Lory Dory",
+      "_translations": {
+        "title": {},
+        "math_themes_words": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Lory Dory"
+        },
+        "math_themes_words": {
+          "eng": "This story has shapes and descriptions. Practice words: thin, pairs, line, parallel, horizontal, vertical, perpendicular, negative space, different, triangle, side, straight, sphere, circle, arc, red, blue, right, left, and skip count by 5's."
+        }
+      },
+      "math_themes_words": "This story has shapes and descriptions. Practice words: thin, pairs, line, parallel, horizontal, vertical, perpendicular, negative space, different, triangle, side, straight, sphere, circle, arc, red, blue, right, left, and skip count by 5's."
+    },
+    {
+      "id": "efm_sb_Singing_The_Truth",
+      "pages": "data.Singing_The_Truth_storybook",
+      "cover": "EFMStorybooks/EFM-SB-STT.jpg",
+      "author": "Jade Mathieson",
+      "illustrator": "Louwrisa Blaauw",
+      "intro_level": "advanced",
+      "book_level": "intermediate",
+      "title": "Singing the Truth: The Story of Miriam Makeba",
+      "_translations": {
+        "title": {},
+        "math_themes_words": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Singing the Truth: The Story of Miriam Makeba"
+        },
+        "math_themes_words": {
+          "eng": "This story has lots of shapes. Practice words: shape, rectangle, straight, circle, arc, oval, arch, cone, ellipse, different, same, flat, outline, and stripe."
+        }
+      },
+      "math_themes_words": "This story has lots of shapes. Practice words: shape, rectangle, straight, circle, arc, oval, arch, cone, ellipse, different, same, flat, outline, and stripe."
+    },
+    {
+      "id": "efm_sb_Tortoise_Finds_His_House",
+      "pages": "data.Tortoise_Finds_His_House_storybook",
+      "cover": "EFMStorybooks/EFM-SB-TFHH.jpg",
+      "author": "Maya Fowler",
+      "illustrator": "Katrin Coetzer",
+      "intro_level": "advanced",
+      "book_level": "intermediate",
+      "title": "Tortoise Finds his House",
+      "_translations": {
+        "title": {},
+        "math_themes_words": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Tortoise Finds his House"
+        },
+        "math_themes_words": {
+          "eng": "This story has descriptions and comparisons. Practice words: high, on, onto, average, speed, 5 times, pairs, odd, even, sharing, too, very, fast, long, distance, light, heavy, lower, higher, different, estimate, more, stronger, vertically, diagonally, parallel lines, and big."
+        }
+      },
+      "math_themes_words": "This story has descriptions and comparisons. Practice words: high, on, onto, average, speed, 5 times, pairs, odd, even, sharing, too, very, fast, long, distance, light, heavy, lower, higher, different, estimate, more, stronger, vertically, diagonally, parallel lines, and big."
+    },
+    {
+      "id": "efm_sb_Who_Can_Count_To_Ten",
+      "pages": "data.Who_Can_Count_To_Ten_storybook",
+      "cover": "EFMStorybooks/EFM-SB-WCCTT.jpg",
+      "author": "Athieno Gertrude",
+      "illustrator": "Salim Kasamba",
+      "intro_level": "advanced",
+      "book_level": "intermediate",
+      "title": "Who Can Count to Ten?",
+      "_translations": {
+        "title": {},
+        "math_themes_words": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Who Can Count to Ten?"
+        },
+        "math_themes_words": {
+          "eng": "This story has counting, comparisons, and problem solving. Practice words: numbers to ten, skip counting, counting by 2's, 3's, 4's, 5's, and 10's, odd numbers, more, difference, add, combination, total, stripes, spots, big, biggest, fast, fastest, strong, strongest, large largest, high, higher, pattern, and problem solving."
+        }
+      },
+      "math_themes_words": "This story has counting, comparisons, and problem solving. Practice words: numbers to ten, skip counting, counting by 2's, 3's, 4's, 5's, and 10's, odd numbers, more, difference, add, combination, total, stripes, spots, big, biggest, fast, fastest, strong, strongest, large largest, high, higher, pattern, and problem solving."
     }
   ],
   "_xlsxPath": "EFM_storybooks_high_level_sheets.xlsx"

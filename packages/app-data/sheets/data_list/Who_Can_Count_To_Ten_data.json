@@ -1,0 +1,478 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Who_Can_Count_To_Ten_data",
+  "status": "released",
+  "data_list_name": "Who_Can_Count_To_Ten_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-1.jpg",
+      "story_text": "A long time ago, deep in the forests, King Leopard began to think about the future.\n\nHe thought, \"I'm getting old and one day, I'm going to die. A wise ruler should pick a successor while still young and healthy.\"\n\nBut how could King Leopard choose? He loved all the members of the animal kingdom the same!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "A long time ago, deep in the forests, King Leopard began to think about the future.\n\nHe thought, \"I'm getting old and one day, I'm going to die. A wise ruler should pick a successor while still young and healthy.\"\n\nBut how could King Leopard choose? He loved all the members of the animal kingdom the same!"
+        },
+        "annotation_1": {
+          "eng": "If you were going to pick a leader, which skills would you want them to have?"
+        },
+        "annotation_2": {
+          "eng": "Guess what King Leopard will look for in a successor. Do you think he will look for the largest, the fastest, or the friendliest animal?"
+        },
+        "annotation_3": {
+          "eng": "Count together all the tree trunks you can see. Can you count that high?"
+        }
+      },
+      "annotation_1": "If you were going to pick a leader, which skills would you want them to have?",
+      "annotation_2": "Guess what King Leopard will look for in a successor. Do you think he will look for the largest, the fastest, or the friendliest animal?",
+      "annotation_3": "Count together all the tree trunks you can see. Can you count that high?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-2.jpg",
+      "story_text": "King Leopard had an idea. He sent his messengers out into the forests. He told them to ask all the animals of the kingdom to come to the palace.\n\nHe was going to have a big party and he was going to make an important announcement.\n\nAway the messengers ran, to all four corners of the forest.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "King Leopard had an idea. He sent his messengers out into the forests. He told them to ask all the animals of the kingdom to come to the palace.\n\nHe was going to have a big party and he was going to make an important announcement.\n\nAway the messengers ran, to all four corners of the forest."
+        },
+        "annotation_1": {
+          "eng": "How many messengers does the King have? Are there enough to go to four corners? How many more does he need?"
+        },
+        "annotation_2": {
+          "eng": "Do you think the forest really has four corners?"
+        },
+        "annotation_3": {
+          "eng": "What does the writer mean by the phrase \"all four corners of the forest?\" If forests don't have four corners, what shape are they?"
+        }
+      },
+      "annotation_1": "How many messengers does the King have? Are there enough to go to four corners? How many more does he need?",
+      "annotation_2": "Do you think the forest really has four corners?",
+      "annotation_3": "What does the writer mean by the phrase \"all four corners of the forest?\" If forests don't have four corners, what shape are they?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-3.jpg",
+      "story_text": "On the night of the party, all the animals were at the palace. They sang and they danced and had a great time.\n\nAfter the moon had risen above the trees, King Leopard came and stood in the middle of the clearing. The animals stopped their singing and dancing. They listened quietly as their king began to speak.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "On the night of the party, all the animals were at the palace. They sang and they danced and had a great time.\n\nAfter the moon had risen above the trees, King Leopard came and stood in the middle of the clearing. The animals stopped their singing and dancing. They listened quietly as their king began to speak."
+        },
+        "annotation_1": {
+          "eng": "How many animals can you count in this picture? Are there more animals or more trees?"
+        },
+        "annotation_2": {
+          "eng": "How many animals do you think are in the forest? 10, 20, 30, ... ? A forest usually has hundreds or even thousands of animals, so this will be a very large party!"
+        },
+        "annotation_3": {
+          "eng": "Have you ever seen a non-human animal dance?"
+        }
+      },
+      "annotation_1": "How many animals can you count in this picture? Are there more animals or more trees?",
+      "annotation_2": "How many animals do you think are in the forest? 10, 20, 30, ... ? A forest usually has hundreds or even thousands of animals, so this will be a very large party!",
+      "annotation_3": "Have you ever seen a non-human animal dance?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-4.jpg",
+      "story_text": "He cleared his throat and said, \"I've been thinking that it's time for me to pick a successor. But because I love all of you equally, I can't decide who among you is most worthy. So I've decided to let a contest decide for me.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "He cleared his throat and said, \"I've been thinking that it's time for me to pick a successor. But because I love all of you equally, I can't decide who among you is most worthy. So I've decided to let a contest decide for me."
+        },
+        "annotation_1": {
+          "eng": "Some of these animals would usually hunt some of these other animals. Can you think of some examples in this picture of animals who would hunt and others who would be hunted?"
+        },
+        "annotation_2": {
+          "eng": "What kind of contest would be good for picking a successor? Would you have a race to see who can run the fastest or longest?"
+        },
+        "annotation_3": {
+          "eng": "What would be good contests if you want to find the largest or the strongest?"
+        }
+      },
+      "annotation_1": "Some of these animals would usually hunt some of these other animals. Can you think of some examples in this picture of animals who would hunt and others who would be hunted?",
+      "annotation_2": "What kind of contest would be good for picking a successor? Would you have a race to see who can run the fastest or longest?",
+      "annotation_3": "What would be good contests if you want to find the largest or the strongest?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-5.jpg",
+      "story_text": "King Leopard held up a spear. He said, \"The first one among you who can throw this spear up into the sky and count to ten before it touches the ground, will be my successor.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "King Leopard held up a spear. He said, \"The first one among you who can throw this spear up into the sky and count to ten before it touches the ground, will be my successor.\""
+        },
+        "annotation_1": {
+          "eng": "Will this contest produce a good successor? Predict which animal is going to win."
+        },
+        "annotation_2": {
+          "eng": "Some of the animal skins have stripes, some have spots, some are segmented, and some have just one color. Do you see any that involve more than two colors?"
+        },
+        "annotation_3": {
+          "eng": "How many of these animals have horns, antlers, or tusks? Are there more of these animals than the other animals on this page?"
+        }
+      },
+      "annotation_1": "Will this contest produce a good successor? Predict which animal is going to win.",
+      "annotation_2": "Some of the animal skins have stripes, some have spots, some are segmented, and some have just one color. Do you see any that involve more than two colors?",
+      "annotation_3": "How many of these animals have horns, antlers, or tusks? Are there more of these animals than the other animals on this page?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-6.jpg",
+      "story_text": "As King Leopard finished talking, the animals heard a loud noise from behind them. They turned around and saw elephant stomping through the crowd to the front.\n\n\"Move out of my way. I'm the biggest, I should be king,\" said Elephant.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "As King Leopard finished talking, the animals heard a loud noise from behind them. They turned around and saw elephant stomping through the crowd to the front.\n\n\"Move out of my way. I'm the biggest, I should be king,\" said Elephant."
+        },
+        "annotation_1": {
+          "eng": "Did the Elephant listen to the King? Was being the biggest important to the King?"
+        },
+        "annotation_2": {
+          "eng": "When we have our own ideas about the way something should be, we sometimes don't listen to others. Can you think of a time when you were like the elephant and didn't listen well?"
+        },
+        "annotation_3": {
+          "eng": "A lion is often called the King of the Jungle. Do you think a lion will win this contest and be the next king?"
+        }
+      },
+      "annotation_1": "Did the Elephant listen to the King? Was being the biggest important to the King?",
+      "annotation_2": "When we have our own ideas about the way something should be, we sometimes don't listen to others. Can you think of a time when you were like the elephant and didn't listen well?",
+      "annotation_3": "A lion is often called the King of the Jungle. Do you think a lion will win this contest and be the next king?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-7.jpg",
+      "story_text": "Elephant took the spear and held it up with his trunk. He put his head back and threw the spear up into the sky. \"One! Two! Three! Oh!\" Elephant cried.\n\nThe spear hit the ground on the count of three. Elephant was angry and started stomping. King Leopard told him, \"You've had your chance.\"\n\nAnd so Elephant had to leave.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Elephant took the spear and held it up with his trunk. He put his head back and threw the spear up into the sky. \"One! Two! Three! Oh!\" Elephant cried.\n\nThe spear hit the ground on the count of three. Elephant was angry and started stomping. King Leopard told him, \"You've had your chance.\"\n\nAnd so Elephant had to leave."
+        },
+        "annotation_1": {
+          "eng": "Does it help to get angry when you lose? How do you feel and what do you show to other people when you lose?"
+        },
+        "annotation_2": {
+          "eng": "There are many four-legged animals in this picture. Name some animals that don't have four legs."
+        },
+        "annotation_3": {
+          "eng": "An odd number is a number that can't be split into two equal parts -- 7 is an example. Can you think of any animals that have an odd number of arms or legs?"
+        }
+      },
+      "annotation_1": "Does it help to get angry when you lose? How do you feel and what do you show to other people when you lose?",
+      "annotation_2": "There are many four-legged animals in this picture. Name some animals that don't have four legs.",
+      "annotation_3": "An odd number is a number that can't be split into two equal parts -- 7 is an example. Can you think of any animals that have an odd number of arms or legs?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-8.jpg",
+      "story_text": "After Elephant left, the animals started to talk excitedly amongst themselves. They were again disturbed by a loud noise coming from the back of the crowd.\n\nBoar came charging through saying, \"Get out of my way. Get out of my way. I'm going to be king. I've got the biggest muscles. I'm the strongest. I should be king.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "After Elephant left, the animals started to talk excitedly amongst themselves. They were again disturbed by a loud noise coming from the back of the crowd.\n\nBoar came charging through saying, \"Get out of my way. Get out of my way. I'm going to be king. I've got the biggest muscles. I'm the strongest. I should be king.\""
+        },
+        "annotation_1": {
+          "eng": "Boar did not listen to the King either. Do you think the King wants someone who is the strongest?"
+        },
+        "annotation_2": {
+          "eng": "Do you think leaders need to be good listeners to help them know how to lead?"
+        },
+        "annotation_3": {
+          "eng": "In this picture, there is only one of most of the animals. Can you spot the animals that there are more than one of?"
+        }
+      },
+      "annotation_1": "Boar did not listen to the King either. Do you think the King wants someone who is the strongest?",
+      "annotation_2": "Do you think leaders need to be good listeners to help them know how to lead?",
+      "annotation_3": "In this picture, there is only one of most of the animals. Can you spot the animals that there are more than one of?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-9.jpg",
+      "story_text": "Boar leaned back, clenched the spear, and threw it into the sky. \"One! Two! Three! Four! Five! Oh!\" he shouted.\n\nThe spear dropped on the count of five. He was so angry. He fumed and threw clouds of dirt into the air.\n\nLeopard told him \"Boar, you only throw once and you've had your chance.\" Boar had to leave.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Boar leaned back, clenched the spear, and threw it into the sky. \"One! Two! Three! Four! Five! Oh!\" he shouted.\n\nThe spear dropped on the count of five. He was so angry. He fumed and threw clouds of dirt into the air.\n\nLeopard told him \"Boar, you only throw once and you've had your chance.\" Boar had to leave."
+        },
+        "annotation_1": {
+          "eng": "Is an animal who gets angry when they lose likely to be a good leader?"
+        },
+        "annotation_2": {
+          "eng": "So far, it looks like the King's contest is removing poor leaders. The contest is working! Who do you think will win?"
+        },
+        "annotation_3": {
+          "eng": "Stories sometimes vary from reality. This story does that in many ways. A boar does not have any fingers! How would a boar be able to clench a spear and throw it? Have you seen other ways this story seems unreal?"
+        }
+      },
+      "annotation_1": "Is an animal who gets angry when they lose likely to be a good leader?",
+      "annotation_2": "So far, it looks like the King's contest is removing poor leaders. The contest is working! Who do you think will win?",
+      "annotation_3": "Stories sometimes vary from reality. This story does that in many ways. A boar does not have any fingers! How would a boar be able to clench a spear and throw it? Have you seen other ways this story seems unreal?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-10.jpg",
+      "story_text": "After that, the animals started to say things like, \"This contest is difficult! Elephant couldn't do it, and he's really big. Boar couldn't do it either, and he's really strong. No one can win this contest!\"\n\nRight about then, they heard another sound coming from the back of the crowd. When the animals looked around, they couldn't believe their eyes.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "After that, the animals started to say things like, \"This contest is difficult! Elephant couldn't do it, and he's really big. Boar couldn't do it either, and he's really strong. No one can win this contest!\"\n\nRight about then, they heard another sound coming from the back of the crowd. When the animals looked around, they couldn't believe their eyes."
+        },
+        "annotation_1": {
+          "eng": "What is unusual about the body positions these animals are in?"
+        },
+        "annotation_2": {
+          "eng": "Count the number of animals -- it is a bit tricky, but do your best. Each animal has two eyes, so you can double that number to find the total number of eyes. You can also count the eyes by skip counting by 2's."
+        },
+        "annotation_3": {
+          "eng": "You can count all the legs by multiplying the number of animals by 4, skip counting by 4, or by doubling the number of eyes! Which do you like best? Why does this work?"
+        }
+      },
+      "annotation_1": "What is unusual about the body positions these animals are in?",
+      "annotation_2": "Count the number of animals -- it is a bit tricky, but do your best. Each animal has two eyes, so you can double that number to find the total number of eyes. You can also count the eyes by skip counting by 2's.",
+      "annotation_3": "You can count all the legs by multiplying the number of animals by 4, skip counting by 4, or by doubling the number of eyes! Which do you like best? Why does this work?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-11.jpg",
+      "story_text": "They saw a big ape coming forward. As Ape moved, he chanted \"I can do it. I know I can do it. I can do it.\"\n\nApe took the spear and he backed way up. He pulled his arm back, charged forward, leapt into the air and threw the spear into the sky.\n\n\"One! Two! Three! Four! Five! Six! Seven! Oh!\" cried Ape.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "They saw a big ape coming forward. As Ape moved, he chanted \"I can do it. I know I can do it. I can do it.\"\n\nApe took the spear and he backed way up. He pulled his arm back, charged forward, leapt into the air and threw the spear into the sky.\n\n\"One! Two! Three! Four! Five! Six! Seven! Oh!\" cried Ape."
+        },
+        "annotation_1": {
+          "eng": "Why did Ape start by saying \"I can do it?\" Having confidence often helps with success."
+        },
+        "annotation_2": {
+          "eng": "Your attitude can make a big difference! Have you ever started to do something by saying to yourself that you wouldn't be able to do it -- do it help or did it get in your way?"
+        },
+        "annotation_3": {
+          "eng": "How much higher was Ape able to count before the spear landed than Boar could count?"
+        }
+      },
+      "annotation_1": "Why did Ape start by saying \"I can do it?\" Having confidence often helps with success.",
+      "annotation_2": "Your attitude can make a big difference! Have you ever started to do something by saying to yourself that you wouldn't be able to do it -- do it help or did it get in your way?",
+      "annotation_3": "How much higher was Ape able to count before the spear landed than Boar could count?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-12.jpg",
+      "story_text": "The spear hit the ground on the count of seven.\n\nApe was upset. He was so angry that he started turning around, complaining and making all sorts of excuses.\n\nBut King Leopard told him \"No, Ape, you only get one chance.\" And so the ape had to leave.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The spear hit the ground on the count of seven.\n\nApe was upset. He was so angry that he started turning around, complaining and making all sorts of excuses.\n\nBut King Leopard told him \"No, Ape, you only get one chance.\" And so the ape had to leave."
+        },
+        "annotation_1": {
+          "eng": "So far, no animal has done it. Make up an ending for this story. Either think of a way an animal can win, change the contest, or figure out what to do if no animal can win."
+        },
+        "annotation_2": {
+          "eng": "How long does it take you to count to ten? Do you think you can throw something in the air long enough to count to ten?"
+        },
+        "annotation_3": {
+          "eng": "Use their facial expressions to describe what each of the animals in this picture is feeling."
+        }
+      },
+      "annotation_1": "So far, no animal has done it. Make up an ending for this story. Either think of a way an animal can win, change the contest, or figure out what to do if no animal can win.",
+      "annotation_2": "How long does it take you to count to ten? Do you think you can throw something in the air long enough to count to ten?",
+      "annotation_3": "Use their facial expressions to describe what each of the animals in this picture is feeling."
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-13.jpg",
+      "story_text": "Some of the animals turned and started to leave for home. As they were leaving, they saw a little antelope coming through the crowd. As she trotted, she said, \"Wait, wait, Let me try. I can do it. I can do it. Let me try.\"\n\nWhen the animals heard her words, they all started laughing.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Some of the animals turned and started to leave for home. As they were leaving, they saw a little antelope coming through the crowd. As she trotted, she said, \"Wait, wait, Let me try. I can do it. I can do it. Let me try.\"\n\nWhen the animals heard her words, they all started laughing."
+        },
+        "annotation_1": {
+          "eng": "Why did the other animals laugh at the little antelope? Were they being nice?"
+        },
+        "annotation_2": {
+          "eng": "What skill might the antelope have that the others did not?"
+        },
+        "annotation_3": {
+          "eng": "Have you ever seen people laugh at someone and just assume that person would do poorly? How did that make the person feel?"
+        }
+      },
+      "annotation_1": "Why did the other animals laugh at the little antelope? Were they being nice?",
+      "annotation_2": "What skill might the antelope have that the others did not?",
+      "annotation_3": "Have you ever seen people laugh at someone and just assume that person would do poorly? How did that make the person feel?"
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-14.jpg",
+      "story_text": "King Leopard jumped up and shouted angrily. \"Stop it! Do not make fun of Antelope! Who is to say that small animals can't do things that big animals can do? If Antelope wants to have a chance, she will be given the same chance that all the animals had. So stand back and let Antelope throw the spear.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "King Leopard jumped up and shouted angrily. \"Stop it! Do not make fun of Antelope! Who is to say that small animals can't do things that big animals can do? If Antelope wants to have a chance, she will be given the same chance that all the animals had. So stand back and let Antelope throw the spear.\""
+        },
+        "annotation_1": {
+          "eng": "It sounds like there might be a surprise coming. What do you think will be surprising about Antelope?"
+        },
+        "annotation_2": {
+          "eng": "A good leader takes care of everyone. Do you think King Leopard is a good leader?"
+        },
+        "annotation_3": {
+          "eng": "Think of a good leader who you know. Describe some qualities that you think make that person a good leader."
+        }
+      },
+      "annotation_1": "It sounds like there might be a surprise coming. What do you think will be surprising about Antelope?",
+      "annotation_2": "A good leader takes care of everyone. Do you think King Leopard is a good leader?",
+      "annotation_3": "Think of a good leader who you know. Describe some qualities that you think make that person a good leader."
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-15.jpg",
+      "story_text": "Antelope bowed to her king, turned and took the spear in her mouth. She backed up, and with all the strength in her tiny body she started running. When she reached the center of the clearing, she jumped high.\n\nShe took a deep breath, released the spear and shouted, \"Five and five is ten.\" The spear hit the ground.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Antelope bowed to her king, turned and took the spear in her mouth. She backed up, and with all the strength in her tiny body she started running. When she reached the center of the clearing, she jumped high.\n\nShe took a deep breath, released the spear and shouted, \"Five and five is ten.\" The spear hit the ground."
+        },
+        "annotation_1": {
+          "eng": "The surprise is Math! Antelope used her intelligence and the power of math to win the contest!"
+        },
+        "annotation_2": {
+          "eng": "Think of some other combinations of numbers that add up to ten. How many ways can you think of?"
+        },
+        "annotation_3": {
+          "eng": "Try some smaller numbers, such as three, four, or five, and find all the ways to make combinations of numbers add up to those totals. Do you notice any patterns that can save you time? Discovering interesting patterns is what math is all about!"
+        }
+      },
+      "annotation_1": "The surprise is Math! Antelope used her intelligence and the power of math to win the contest!",
+      "annotation_2": "Think of some other combinations of numbers that add up to ten. How many ways can you think of?",
+      "annotation_3": "Try some smaller numbers, such as three, four, or five, and find all the ways to make combinations of numbers add up to those totals. Do you notice any patterns that can save you time? Discovering interesting patterns is what math is all about!"
+    },
+    {
+      "id": "page_16",
+      "page_no": 16,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-16.jpg",
+      "story_text": "The animals were quiet. They were confused. King Leopard explained, \"Yes, Antelope! Five plus five is another way to get to ten. There is more than one way to count to ten.\"\n\nThe contest was not to find the biggest or the strongest animal. It was a contest to find the smartest animal! That is how Antelope became queen when leopard died.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The animals were quiet. They were confused. King Leopard explained, \"Yes, Antelope! Five plus five is another way to get to ten. There is more than one way to count to ten.\"\n\nThe contest was not to find the biggest or the strongest animal. It was a contest to find the smartest animal! That is how Antelope became queen when leopard died."
+        },
+        "annotation_1": {
+          "eng": "Antelope listened carefully to the rules and found a new solution. Did Antelope cheat or was she clever?"
+        },
+        "annotation_2": {
+          "eng": "If someone asked you to count to ten, would you count by 1's, 2's, 5's, or 10's? What would happen if you counted by 3's or 4's? Why don't those numbers come out evenly?"
+        },
+        "annotation_3": {
+          "eng": "A group of people often all think about something the same way and miss a good way to solve a problem. Good problem solvers discover new ways to approach problems!"
+        }
+      },
+      "annotation_1": "Antelope listened carefully to the rules and found a new solution. Did Antelope cheat or was she clever?",
+      "annotation_2": "If someone asked you to count to ten, would you count by 1's, 2's, 5's, or 10's? What would happen if you counted by 3's or 4's? Why don't those numbers come out evenly?",
+      "annotation_3": "A group of people often all think about something the same way and miss a good way to solve a problem. Good problem solvers discover new ways to approach problems!"
+    },
+    {
+      "id": "page_17",
+      "page_no": 17,
+      "illustration": "EFMStorybooks/EFM-SB-WCCTT-17.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

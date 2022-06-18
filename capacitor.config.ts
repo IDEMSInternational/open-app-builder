@@ -14,13 +14,9 @@ const config: CapacitorConfig = {
       launchAutoHide: true,
       androidScaleType: "CENTER_CROP",
     },
-    CapacitorFirebaseAuth: {
+    FirebaseAuthentication: {
+      skipNativeAuth: false,
       providers: ["google.com"],
-      languageCode: "en",
-      nativeAuth: false,
-      permissions: {
-        google: ["profile"],
-      },
     },
   },
 };

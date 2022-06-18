@@ -1,0 +1,362 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Singing_The_Truth_data",
+  "status": "released",
+  "data_list_name": "Singing_The_Truth_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-STT-1.jpg",
+      "story_text": "A long time ago, in the vast city of Johannesburg, a baby girl was born. That baby was me. My mom called me Miriam. Miriam Makeba.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "A long time ago, in the vast city of Johannesburg, a baby girl was born. That baby was me. My mom called me Miriam. Miriam Makeba."
+        },
+        "annotation_1": {
+          "eng": "She is sitting on a three-legged stool. Most chairs have four legs. What is better about having three legs?"
+        },
+        "annotation_2": {
+          "eng": "This story has lots of rectangles. A rectangle is a shape with four straight sides and corners that right angles, like the corners of this page. Point to some rectangles in this picture."
+        },
+        "annotation_3": {
+          "eng": "There are rectangles all around you. Point to some rectangles where you are."
+        }
+      },
+      "annotation_1": "She is sitting on a three-legged stool. Most chairs have four legs. What is better about having three legs?",
+      "annotation_2": "This story has lots of rectangles. A rectangle is a shape with four straight sides and corners that right angles, like the corners of this page. Point to some rectangles in this picture.",
+      "annotation_3": "There are rectangles all around you. Point to some rectangles where you are."
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-STT-2.jpg",
+      "story_text": "Mom was a sangoma, but she also worked to make other people's homes neat and clean. It was hard for my mom to earn enough for both of us. She started selling homemade beer to bring in more money.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Mom was a sangoma, but she also worked to make other people's homes neat and clean. It was hard for my mom to earn enough for both of us. She started selling homemade beer to bring in more money."
+        },
+        "annotation_1": {
+          "eng": "A sangoma is an herbalist or a healer. Do you like going to the doctor?"
+        },
+        "annotation_2": {
+          "eng": "Look at the rectangles that are beautiful shades of blue in this picture. How many do you count? Did you count them by 1's, 2's, or in some other way?"
+        },
+        "annotation_3": {
+          "eng": "Point to some rectangles that are not blue, if you can find any."
+        }
+      },
+      "annotation_1": "A sangoma is an herbalist or a healer. Do you like going to the doctor?",
+      "annotation_2": "Look at the rectangles that are beautiful shades of blue in this picture. How many do you count? Did you count them by 1's, 2's, or in some other way?",
+      "annotation_3": "Point to some rectangles that are not blue, if you can find any."
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-STT-3.jpg",
+      "story_text": "The laws of the land said that selling homemade beer was wrong. The police sent my mom to jail for six long months. I was only 18 days old, and needed my mom. So even though I was a baby, I went to jail too.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The laws of the land said that selling homemade beer was wrong. The police sent my mom to jail for six long months. I was only 18 days old, and needed my mom. So even though I was a baby, I went to jail too."
+        },
+        "annotation_1": {
+          "eng": "Looking at their faces, how are Miriam and her mother feeling? How were they feeling on the previous page?"
+        },
+        "annotation_2": {
+          "eng": "More and more rectangles! There are lots of rectangles, but there are also some other shapes -- can you find them?"
+        },
+        "annotation_3": {
+          "eng": "There are circles for the eyes, beads, and hoop earrings. There is a downturned arc, which is a part of a circle, for the mother's mouth."
+        }
+      },
+      "annotation_1": "Looking at their faces, how are Miriam and her mother feeling? How were they feeling on the previous page?",
+      "annotation_2": "More and more rectangles! There are lots of rectangles, but there are also some other shapes -- can you find them?",
+      "annotation_3": "There are circles for the eyes, beads, and hoop earrings. There is a downturned arc, which is a part of a circle, for the mother's mouth."
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-STT-4.jpg",
+      "story_text": "As a little girl I loved to sing. When I was older, I helped my mom clean houses. Singing songs as I worked made the chores go faster and the days seem brighter. Singing made me happier than I can explain.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "As a little girl I loved to sing. When I was older, I helped my mom clean houses. Singing songs as I worked made the chores go faster and the days seem brighter. Singing made me happier than I can explain."
+        },
+        "annotation_1": {
+          "eng": "What in this page shows that she is singing? Do you know how to read music notes on a page?"
+        },
+        "annotation_2": {
+          "eng": "Do you like to sing? Some people have trouble hearing the right notes to sing, but with practice and listening they can get much better at it."
+        },
+        "annotation_3": {
+          "eng": "Rectangles are a very common shape in most rooms. How many rectangles can you find in this picture?"
+        }
+      },
+      "annotation_1": "What in this page shows that she is singing? Do you know how to read music notes on a page?",
+      "annotation_2": "Do you like to sing? Some people have trouble hearing the right notes to sing, but with practice and listening they can get much better at it.",
+      "annotation_3": "Rectangles are a very common shape in most rooms. How many rectangles can you find in this picture?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-STT-5.jpg",
+      "story_text": "I sang in my church, and this made others happy too. Music has the power to bring people together. When we were singing we felt brave and strong.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I sang in my church, and this made others happy too. Music has the power to bring people together. When we were singing we felt brave and strong."
+        },
+        "annotation_1": {
+          "eng": "Does it surprise you to read that she felt brave and strong while singing? What do you think she meant by that?"
+        },
+        "annotation_2": {
+          "eng": "These windows are not rectangles! One of the windows is a circle. We can't see the whole scene, but it looks like the other windows have arched tops. An arch is part of an oval."
+        },
+        "annotation_3": {
+          "eng": "Look at the particularly interesting interplay of shapes on the blue dress. Shapes can be combined in such interesting ways!"
+        }
+      },
+      "annotation_1": "Does it surprise you to read that she felt brave and strong while singing? What do you think she meant by that?",
+      "annotation_2": "These windows are not rectangles! One of the windows is a circle. We can't see the whole scene, but it looks like the other windows have arched tops. An arch is part of an oval.",
+      "annotation_3": "Look at the particularly interesting interplay of shapes on the blue dress. Shapes can be combined in such interesting ways!"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-STT-6.jpg",
+      "story_text": "People said my voice was a gift and my songs were special. I sang with other musicians and our music was heard all over the world.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "People said my voice was a gift and my songs were special. I sang with other musicians and our music was heard all over the world."
+        },
+        "annotation_1": {
+          "eng": "Miriam is standing in a spotlight shining down from a bright light in the ceiling. The spotlight makes a cone of light that the singer can be in and stand on the stage. People can have cones that are funnels or ice cream cones."
+        },
+        "annotation_2": {
+          "eng": "When a spotlight shines straight down it makes a circle on the stage floor. When it shines from the side, the shape on the floor is called an oval or an ellipse. Do you see any ellipses where you are?"
+        },
+        "annotation_3": {
+          "eng": "Other than the spotlight, what other ovals or parts of ovals do you see in this picture?"
+        }
+      },
+      "annotation_1": "Miriam is standing in a spotlight shining down from a bright light in the ceiling. The spotlight makes a cone of light that the singer can be in and stand on the stage. People can have cones that are funnels or ice cream cones.",
+      "annotation_2": "When a spotlight shines straight down it makes a circle on the stage floor. When it shines from the side, the shape on the floor is called an oval or an ellipse. Do you see any ellipses where you are?",
+      "annotation_3": "Other than the spotlight, what other ovals or parts of ovals do you see in this picture?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-STT-7.jpg",
+      "story_text": "My home was Sophiatown, a place of culture and music. Sophiatown is a place where South Africans could make music and harmony and dance together. But the people who ruled the land at the time did not like this togetherness. Those rulers didn't want black and white people to be friends.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "My home was Sophiatown, a place of culture and music. Sophiatown is a place where South Africans could make music and harmony and dance together. But the people who ruled the land at the time did not like this togetherness. Those rulers didn't want black and white people to be friends."
+        },
+        "annotation_1": {
+          "eng": "Unfortunately, some people pay attention to things that are different about people, such as skin color, how tall they are, or the place where they come from. Are there some differences that keep you away from some people?"
+        },
+        "annotation_2": {
+          "eng": "Music is something that can be shared and it can help bring people together. What brings you together with your friends?"
+        },
+        "annotation_3": {
+          "eng": "Do you think doing math is something that can be shared and bring people together?"
+        }
+      },
+      "annotation_1": "Unfortunately, some people pay attention to things that are different about people, such as skin color, how tall they are, or the place where they come from. Are there some differences that keep you away from some people?",
+      "annotation_2": "Music is something that can be shared and it can help bring people together. What brings you together with your friends?",
+      "annotation_3": "Do you think doing math is something that can be shared and bring people together?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-STT-8.jpg",
+      "story_text": "I knew it was wrong to treat people differently because of their skin color. I did not hide my beliefs, and so those people in charge wanted me out of the country. When I was singing in America, I was told I could never return home.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I knew it was wrong to treat people differently because of their skin color. I did not hide my beliefs, and so those people in charge wanted me out of the country. When I was singing in America, I was told I could never return home."
+        },
+        "annotation_1": {
+          "eng": "How is Miriam feeling? How can you tell?"
+        },
+        "annotation_2": {
+          "eng": "Have you ever been away from home and worried about getting back? Did it make you sad, or was it just hard to wait?"
+        },
+        "annotation_3": {
+          "eng": "Clouds can come in many shapes! Notice that the bottoms of these clouds are flat. That often happens with clouds. Look at the clouds where you are, or remember a time when there were lots of clouds -- were they flat on the bottom?"
+        }
+      },
+      "annotation_1": "How is Miriam feeling? How can you tell?",
+      "annotation_2": "Have you ever been away from home and worried about getting back? Did it make you sad, or was it just hard to wait?",
+      "annotation_3": "Clouds can come in many shapes! Notice that the bottoms of these clouds are flat. That often happens with clouds. Look at the clouds where you are, or remember a time when there were lots of clouds -- were they flat on the bottom?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-STT-9.jpg",
+      "story_text": "People all over the world heard my story. My songs and my story helped many to see how there was no fairness in South Africa for those with black skin. I decided to go on singing and telling the truth about my country, no matter what.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "People all over the world heard my story. My songs and my story helped many to see how there was no fairness in South Africa for those with black skin. I decided to go on singing and telling the truth about my country, no matter what."
+        },
+        "annotation_1": {
+          "eng": "Have you ever done something that some people thought was a bad idea, but you knew it was the right things to do? What was it? Were you glad you stood up for what you believed in?"
+        },
+        "annotation_2": {
+          "eng": "How do the eyebrows and mouths in this picture show that the people are dismayed?"
+        },
+        "annotation_3": {
+          "eng": "Use your eyebrows to show different feelings. Try to show that you are happy, sad, surprised, or worried."
+        }
+      },
+      "annotation_1": "Have you ever done something that some people thought was a bad idea, but you knew it was the right things to do? What was it? Were you glad you stood up for what you believed in?",
+      "annotation_2": "How do the eyebrows and mouths in this picture show that the people are dismayed?",
+      "annotation_3": "Use your eyebrows to show different feelings. Try to show that you are happy, sad, surprised, or worried."
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-STT-10.jpg",
+      "story_text": "The world loved my music and I was welcomed in many countries. I won awards and sang for important people all over the globe. My life was good, but something was missing. I could not sing in my home country, and people there were not free.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The world loved my music and I was welcomed in many countries. I won awards and sang for important people all over the globe. My life was good, but something was missing. I could not sing in my home country, and people there were not free."
+        },
+        "annotation_1": {
+          "eng": "Notice how the spotlight creates part of an oval on the floor."
+        },
+        "annotation_2": {
+          "eng": "Sometimes an outline of a shape is enough to tell what it is. The two dark outlines show people wearing something special on their heads. Who do you think these people are?"
+        },
+        "annotation_3": {
+          "eng": "Have you ever done some singing, dancing, or other performing in front of people? How did you feel?"
+        }
+      },
+      "annotation_1": "Notice how the spotlight creates part of an oval on the floor.",
+      "annotation_2": "Sometimes an outline of a shape is enough to tell what it is. The two dark outlines show people wearing something special on their heads. Who do you think these people are?",
+      "annotation_3": "Have you ever done some singing, dancing, or other performing in front of people? How did you feel?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-STT-11.jpg",
+      "story_text": "Then a wonderful day dawned when Nelson Mandela became president of South Africa. New people were in charge and the unfair laws belonged to the past. I finally went home with new hope in my heart.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Then a wonderful day dawned when Nelson Mandela became president of South Africa. New people were in charge and the unfair laws belonged to the past. I finally went home with new hope in my heart."
+        },
+        "annotation_1": {
+          "eng": "Which arcs on their faces show that they are happy?"
+        },
+        "annotation_2": {
+          "eng": "The stripes on the shirt of President Mandela are made up of rectangles. There are shapes all around us!"
+        },
+        "annotation_3": {
+          "eng": "Did you notice the flat-bottomed clouds in this picture?"
+        }
+      },
+      "annotation_1": "Which arcs on their faces show that they are happy?",
+      "annotation_2": "The stripes on the shirt of President Mandela are made up of rectangles. There are shapes all around us!",
+      "annotation_3": "Did you notice the flat-bottomed clouds in this picture?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-STT-12.jpg",
+      "story_text": "After that, I could sing in a free, fair country. People of different colors could enjoy music together. I helped make this happen because I was brave and strong. I sang the truth in all of my songs.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "After that, I could sing in a free, fair country. People of different colors could enjoy music together. I helped make this happen because I was brave and strong. I sang the truth in all of my songs."
+        },
+        "annotation_1": {
+          "eng": "What are some times when you have been brave and strong. How did you feel?"
+        },
+        "annotation_2": {
+          "eng": "Count together all the people on this page. If you take away the people on the stage, how many are left?"
+        },
+        "annotation_3": {
+          "eng": "How wonderful to see all these people enjoying Miriam's music and dancing together!"
+        }
+      },
+      "annotation_1": "What are some times when you have been brave and strong. How did you feel?",
+      "annotation_2": "Count together all the people on this page. If you take away the people on the stage, how many are left?",
+      "annotation_3": "How wonderful to see all these people enjoying Miriam's music and dancing together!"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-STT-13.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

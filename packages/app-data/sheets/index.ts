@@ -88,6 +88,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "Creature_With_Two_storybook",
       _xlsxPath: "EFM_storybooks_beginning.xlsx",
     },
+    How_Many_data: {
+      flow_type: "data_list",
+      flow_name: "How_Many_data",
+      data_list_name: "How_Many_storybook",
+      _xlsxPath: "EFM_storybooks_intermediate.xlsx",
+    },
     Is_There_Anyone_Like_Me_data: {
       flow_type: "data_list",
       flow_name: "Is_There_Anyone_Like_Me_data",
@@ -98,6 +104,48 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "data_list",
       flow_name: "Listen_To_My_Body_data",
       data_list_name: "Listen_To_My_Body_storybook",
+      _xlsxPath: "EFM_storybooks_intermediate.xlsx",
+    },
+    Little_Jojos_Tale_data: {
+      flow_type: "data_list",
+      flow_name: "Little_Jojos_Tale_data",
+      data_list_name: "Little_Jojos_Tale_storybook",
+      _xlsxPath: "EFM_storybooks_intermediate.xlsx",
+    },
+    Lory_Dory_data: {
+      flow_type: "data_list",
+      flow_name: "Lory_Dory_data",
+      data_list_name: "Lory_Dory_storybook",
+      _xlsxPath: "EFM_storybooks_intermediate.xlsx",
+    },
+    Singing_The_Truth_data: {
+      flow_type: "data_list",
+      flow_name: "Singing_The_Truth_data",
+      data_list_name: "Singing_The_Truth_storybook",
+      _xlsxPath: "EFM_storybooks_intermediate.xlsx",
+    },
+    Tortoise_Finds_His_House_data: {
+      flow_type: "data_list",
+      flow_name: "Tortoise_Finds_His_House_data",
+      data_list_name: "Tortoise_Finds_His_House_storybook",
+      _xlsxPath: "EFM_storybooks_intermediate.xlsx",
+    },
+    Where_Is_Lulu_pages: {
+      flow_type: "data_list",
+      flow_name: "Where_Is_Lulu_pages",
+      data_list_name: "Where_Is_Lulu_storybook",
+      _xlsxPath: "EFM_storybooks_beginning.xlsx",
+    },
+    Where_Is_My_Cat_pages: {
+      flow_type: "data_list",
+      flow_name: "Where_Is_My_Cat_pages",
+      data_list_name: "Where_Is_My_Cat_storybook",
+      _xlsxPath: "EFM_storybooks_beginning.xlsx",
+    },
+    Who_Can_Count_To_Ten_data: {
+      flow_type: "data_list",
+      flow_name: "Who_Can_Count_To_Ten_data",
+      data_list_name: "Who_Can_Count_To_Ten_storybook",
       _xlsxPath: "EFM_storybooks_intermediate.xlsx",
     },
     efm_act_list: {

@@ -66,7 +66,7 @@
       "id": "page_3",
       "page_no": 3,
       "illustration": "EFMStorybooks/EFM-SB-CADDAC-3.jpg",
-      "story_text": "First drog draws an oval.\n\nThe oval is the body of Cat.\n\nWow, that is simple!",
+      "story_text": "First, dog draws an oval.\n\nThe oval is the body of Cat.\n\nWow, that is simple!",
       "_translations": {
         "story_text": {},
         "annotation_1": {},
@@ -75,7 +75,7 @@
       },
       "_translatedFields": {
         "story_text": {
-          "eng": "First drog draws an oval.\n\nThe oval is the body of Cat.\n\nWow, that is simple!"
+          "eng": "First, dog draws an oval.\n\nThe oval is the body of Cat.\n\nWow, that is simple!"
         },
         "annotation_1": {
           "eng": "An oval is like a squished or pulled circle. Ellipses are also ovals. Look for some ovals around where you are."
@@ -269,7 +269,7 @@
       "id": "page_10",
       "page_no": 10,
       "illustration": "EFMStorybooks/EFM-SB-CADDAC-10.jpg",
-      "story_text": "First Cat draws an oval.\n\nThe oval is the body of Dog.\n\nWow, that is good!",
+      "story_text": "First, Cat draws an oval.\n\nThe oval is the body of Dog.\n\nWow, that is good!",
       "_translations": {
         "story_text": {},
         "annotation_1": {},
@@ -278,7 +278,7 @@
       },
       "_translatedFields": {
         "story_text": {
-          "eng": "First Cat draws an oval.\n\nThe oval is the body of Dog.\n\nWow, that is good!"
+          "eng": "First, Cat draws an oval.\n\nThe oval is the body of Dog.\n\nWow, that is good!"
         },
         "annotation_1": {
           "eng": "Cat is now drawing with the other paw. Cat is probably right-handed (or is that right-pawed)."
@@ -313,21 +313,21 @@
           "eng": "Cat's nose and Dog's nose are two different shapes. What are the shapes and how are they different?"
         },
         "annotation_2": {
-          "eng": "The picure doesn't look like Dog yet. Use your imagination to think of what else the drawing might become. Perhaps a ladybug, or a water bottle squirting water, or a space alien?"
+          "eng": "The picture doesn't look like Dog yet. Use your imagination to think of what else the drawing might become. Perhaps a ladybug, or a water bottle squirting water, or a space alien?"
         },
         "annotation_3": {
           "eng": "Have you noticed what came back on the rectangular piece of paper?"
         }
       },
       "annotation_1": "Cat's nose and Dog's nose are two different shapes. What are the shapes and how are they different?",
-      "annotation_2": "The picure doesn't look like Dog yet. Use your imagination to think of what else the drawing might become. Perhaps a ladybug, or a water bottle squirting water, or a space alien?",
+      "annotation_2": "The picture doesn't look like Dog yet. Use your imagination to think of what else the drawing might become. Perhaps a ladybug, or a water bottle squirting water, or a space alien?",
       "annotation_3": "Have you noticed what came back on the rectangular piece of paper?"
     },
     {
       "id": "page_12",
       "page_no": 12,
       "illustration": "EFMStorybooks/EFM-SB-CADDAC-12.jpg",
-      "story_text": "Now he draws the eyes and the eyebrows of dog.\n\nThe eyes are two dots. \\PARA The eyebrows are two lines.\n\nWow, that is perfect!",
+      "story_text": "Now he draws the eyes and the eyebrows of dog.\n\nThe eyes are two dots.\n\nThe eyebrows are two lines.\n\nWow, that is perfect!",
       "_translations": {
         "story_text": {},
         "annotation_1": {},
@@ -336,7 +336,7 @@
       },
       "_translatedFields": {
         "story_text": {
-          "eng": "Now he draws the eyes and the eyebrows of dog.\n\nThe eyes are two dots. \\PARA The eyebrows are two lines.\n\nWow, that is perfect!"
+          "eng": "Now he draws the eyes and the eyebrows of dog.\n\nThe eyes are two dots.\n\nThe eyebrows are two lines.\n\nWow, that is perfect!"
         },
         "annotation_1": {
           "eng": "Do you see any rectangles in addition to the piece of paper? There are probably many rectangles where you are. How many can you find?"
