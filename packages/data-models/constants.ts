@@ -37,6 +37,7 @@ const APP_FIELDS = {
   SERVER_SYNC_LATEST: `${FIELD_PREFIX}._server_sync_latest`,
   APP_LANGUAGE: `${FIELD_PREFIX}._app_language`,
   DEPLOYMENT_NAME: `${FIELD_PREFIX}._deployment_name`,
+  APP_VERSION: `${FIELD_PREFIX}._app_version`,
   APP_AUTH_USER: `${FIELD_PREFIX}._app_auth_user`,
 };
 

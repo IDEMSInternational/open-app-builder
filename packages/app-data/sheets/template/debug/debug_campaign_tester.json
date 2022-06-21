@@ -3,6 +3,7 @@
   "flow_subtype": "debug",
   "flow_name": "debug_campaign_tester",
   "status": "released",
+  "comments": "test56",
   "rows": [
     {
       "type": "text",
