@@ -1,0 +1,38 @@
+{
+  "flow_type": "data_list",
+  "flow_subtype": "lifecycle_actions",
+  "flow_name": "launch_actions",
+  "status": "released",
+  "rows": [
+    {
+      "lifecycle_event": "app_start",
+      "id": "app_start_home_screen_tour",
+      "priority": 1,
+      "condition_list": [
+        "!@fields.home_screen_tour_started"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "start_tour",
+          "args": [
+            "home_screen_tour"
+          ],
+          "_raw": "start_tour: home_screen_tour",
+          "_cleaned": "click | start_tour: home_screen_tour"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "home_screen_tour_started",
+            true
+          ],
+          "_raw": "set_field: home_screen_tour_started: true",
+          "_cleaned": "click | set_field: home_screen_tour_started: true"
+        }
+      ]
+    }
+  ],
+  "_xlsxPath": "EFM_app_launch.xlsx"
+}

@@ -4,15 +4,6 @@
   "status": "released",
   "rows": [
     {
-      "type": "title",
-      "name": "title",
-      "value": "Welcome!",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "title"
-    },
-    {
       "type": "template",
       "name": "inits",
       "value": "initializations_on_startup",
@@ -36,35 +27,123 @@
       }
     },
     {
-      "type": "image",
-      "name": "main_image",
-      "value": "EFM00Logo.svg",
-      "_translations": {
-        "value": {}
-      },
-      "style_list": [
-        "margin-top: -10px"
-      ],
-      "_nested_name": "main_image"
-    },
-    {
       "type": "display_group",
-      "name": "intro_group",
-      "parameter_list": {
-        "style": "column"
-      },
-      "style_list": [
-        "margin-top: -15px"
-      ],
+      "name": "dg_top_of_page",
       "rows": [
         {
-          "type": "text",
-          "name": "intro_text",
-          "value": "Enjoy reading and playing with math together! The best way to learn and experience math is in a social and playful way. We have two kinds of materials for your family to enjoy together.\n\n**Storybooks** Read our storybooks with your child. These storybooks have math comments and guiding questions on every page. Help your child grow mathematically and create strong associations of math with the happy, cozy experience of reading together!\n\n**Activities** These educationally sequenced math games, puzzles, activities, and investigations, designed for your family to play together, provide lots of enjoyable family time as your child learns all the math they need for school.",
+          "type": "title",
+          "name": "spacer",
+          "value": "Welcome!",
           "_translations": {
             "value": {}
           },
-          "_nested_name": "intro_group.intro_text"
+          "style_list": [
+            "flex:1"
+          ],
+          "_nested_name": "dg_top_of_page.spacer"
+        },
+        {
+          "type": "display_group",
+          "name": "dg_help",
+          "rows": [
+            {
+              "type": "round_button",
+              "name": "help_button",
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "start_tour",
+                  "args": [
+                    "home_screen_tour"
+                  ],
+                  "_raw": "click | start_tour: home_screen_tour",
+                  "_cleaned": "click | start_tour: home_screen_tour"
+                }
+              ],
+              "parameter_list": {
+                "icon_src": "help",
+                "style": "navigation"
+              },
+              "_nested_name": "dg_top_of_page.dg_help.help_button"
+            }
+          ],
+          "_nested_name": "dg_top_of_page.dg_help"
+        }
+      ],
+      "_nested_name": "dg_top_of_page"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_image",
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "image",
+          "name": "main_image",
+          "value": "EFM12EFMLogoNoEFMpng.png",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "dg_image.main_image"
+        }
+      ],
+      "_nested_name": "dg_image"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_storybooks",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_storybooks",
+          "value": "Storybooks",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "start_tour",
+              "args": [
+                "efm_storybooks_tour"
+              ],
+              "_raw": "click | start_tour: efm_storybooks_tour",
+              "_cleaned": "click | start_tour: efm_storybooks_tour"
+            },
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "has_accessed_storybooks",
+                true
+              ],
+              "_raw": "click | set_field: has_accessed_storybooks: TRUE",
+              "_cleaned": "click | set_field: has_accessed_storybooks: TRUE"
+            }
+          ],
+          "condition": "!@fields.has_accessed_storybooks",
+          "parameter_list": {
+            "style": "short",
+            "text_align": "center"
+          },
+          "_nested_name": "dg_storybooks.button_storybooks",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!@fields.has_accessed_storybooks",
+                "matchedExpression": "!@fields.has_accessed_storybooks",
+                "type": "fields",
+                "fieldName": "has_accessed_storybooks"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "!@fields.has_accessed_storybooks": [
+              "condition"
+            ]
+          }
         },
         {
           "type": "button",
@@ -84,11 +163,84 @@
               "_cleaned": "click | go_to: efm_storybooks"
             }
           ],
+          "condition": "@fields.has_accessed_storybooks",
           "parameter_list": {
             "style": "short",
             "text_align": "center"
           },
-          "_nested_name": "intro_group.button_storybooks"
+          "_nested_name": "dg_storybooks.button_storybooks",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@fields.has_accessed_storybooks",
+                "matchedExpression": "@fields.has_accessed_storybooks",
+                "type": "fields",
+                "fieldName": "has_accessed_storybooks"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.has_accessed_storybooks": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "dg_storybooks"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_activities",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_activities",
+          "value": "Activities",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "start_tour",
+              "args": [
+                "efm_chapters_tour"
+              ],
+              "_raw": "click | start_tour: efm_chapters_tour",
+              "_cleaned": "click | start_tour: efm_chapters_tour"
+            },
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "has_accessed_activities",
+                true
+              ],
+              "_raw": "click | set_field: has_accessed_activities: TRUE",
+              "_cleaned": "click | set_field: has_accessed_activities: TRUE"
+            }
+          ],
+          "condition": "!@fields.has_accessed_activities",
+          "parameter_list": {
+            "style": "short",
+            "text_align": "center"
+          },
+          "_nested_name": "dg_activities.button_activities",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!@fields.has_accessed_activities",
+                "matchedExpression": "!@fields.has_accessed_activities",
+                "type": "fields",
+                "fieldName": "has_accessed_activities"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "!@fields.has_accessed_activities": [
+              "condition"
+            ]
+          }
         },
         {
           "type": "button",
@@ -108,19 +260,30 @@
               "_cleaned": "click | go_to: efm_chapters"
             }
           ],
+          "condition": "@fields.has_accessed_activities",
           "parameter_list": {
             "style": "short",
             "text_align": "center"
           },
-          "_nested_name": "intro_group.button_activities"
-        },
-        {
-          "type": "text",
-          "name": "blank_text",
-          "_nested_name": "intro_group.blank_text"
+          "_nested_name": "dg_activities.button_activities",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@fields.has_accessed_activities",
+                "matchedExpression": "@fields.has_accessed_activities",
+                "type": "fields",
+                "fieldName": "has_accessed_activities"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.has_accessed_activities": [
+              "condition"
+            ]
+          }
         }
       ],
-      "_nested_name": "intro_group"
+      "_nested_name": "dg_activities"
     }
   ],
   "_xlsxPath": "EFM_high_level_sheets.xlsx"

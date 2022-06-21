@@ -172,6 +172,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "efm_storybooks",
       _xlsxPath: "EFM_storybooks_high_level_sheets.xlsx",
     },
+    launch_actions: {
+      flow_type: "data_list",
+      flow_subtype: "lifecycle_actions",
+      flow_name: "launch_actions",
+      _xlsxPath: "EFM_app_launch.xlsx",
+    },
   },
   global: {
     efm_act_globals: {
@@ -1512,5 +1518,26 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       _xlsxPath: "EFM_high_level_sheets.xlsx",
     },
   },
-  tour: {},
+  tour: {
+    efm_chapters_bonus_tour: {
+      flow_type: "tour",
+      flow_name: "efm_chapters_bonus_tour",
+      _xlsxPath: "EFM_tours.xlsx",
+    },
+    efm_chapters_tour: {
+      flow_type: "tour",
+      flow_name: "efm_chapters_tour",
+      _xlsxPath: "EFM_tours.xlsx",
+    },
+    efm_storybooks_tour: {
+      flow_type: "tour",
+      flow_name: "efm_storybooks_tour",
+      _xlsxPath: "EFM_tours.xlsx",
+    },
+    home_screen_tour: {
+      flow_type: "tour",
+      flow_name: "home_screen_tour",
+      _xlsxPath: "EFM_tours.xlsx",
+    },
+  },
 };

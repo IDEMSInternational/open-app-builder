@@ -1,0 +1,58 @@
+{
+  "flow_type": "tour",
+  "flow_name": "efm_chapters_tour",
+  "status": "released",
+  "rows": [
+    {
+      "type": "step",
+      "title": "Activities",
+      "_translations": {
+        "title": {},
+        "message_text": {}
+      },
+      "message_text": "Each of the chapters has about a dozen sections of fun games, puzzles, activities, and investigations.",
+      "route": "template/efm_chapters"
+    },
+    {
+      "type": "step",
+      "title": "Chapters",
+      "_translations": {
+        "title": {},
+        "message_text": {}
+      },
+      "message_text": "Each chapter name describes the main requirement for your child to start that chapter. For example, if your child can count to ten, and knows what those numbers mean, then start with chapter 3. The materials in the chapters are designed in a learning progression so that later sections build on the earlier ones.",
+      "template_component_name": "dg_chapters",
+      "route": "template/efm_chapters"
+    },
+    {
+      "type": "step",
+      "message_text": "Please select the kinds of activities you would like to do.",
+      "_translations": {
+        "message_text": {}
+      },
+      "template_component_name": "dg_types",
+      "route": "template/efm_chapters"
+    },
+    {
+      "type": "step",
+      "message_text": "Please select whether you would rather view the chapter activities individually or by topic.",
+      "_translations": {
+        "message_text": {}
+      },
+      "template_component_name": "dg_view",
+      "route": "template/efm_chapters"
+    },
+    {
+      "type": "step",
+      "title": "Help",
+      "_translations": {
+        "title": {},
+        "message_text": {}
+      },
+      "message_text": "If you ever want to see this introduction again, just click on the question mark.",
+      "template_component_name": "dg_help",
+      "route": "template/efm_chapters"
+    }
+  ],
+  "_xlsxPath": "EFM_tours.xlsx"
+}
