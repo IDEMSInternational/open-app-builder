@@ -1,9 +1,9 @@
+import chalk from "chalk";
 import fs from "fs";
 import * as path from "path";
 import parser from "subtitles-parser-vtt";
 import { ROOT_DIR } from "../../paths";
 import { recursiveFindByExtension, logError, logOutput, promptOptions } from "../../utils";
-import { TRANSLATIONS_CONTENT_LIST } from "../../../../app-data/translations";
 
 // This is an interim solution for manually generating translated .vtt files,
 // to be used pending reworking the translations repo/pipeline to handle assets more generally
@@ -14,7 +14,14 @@ const translateAllVttFilesAndSave = async (
   assetsSubpath?: string,
   languageCode?: string
 ) => {
-  const allLanguageCodes = await Object.keys(TRANSLATIONS_CONTENT_LIST);
+  // Use translations already generated and populated to app
+  // TODO - in the future this could likely be refactored to run from deployment folder
+  const translationsFolder = path.resolve(ROOT_DIR, "src", "assets", "app_data", "translations");
+  const allLanguageCodes = fs
+    .readdirSync(translationsFolder, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((d) => d.name);
+
   if (!languageCode) {
     languageCode = await promptOptions(
       allLanguageCodes,
@@ -76,15 +83,20 @@ const vttToJson = async (sourcePath: string) => {
 
 // Without access to the translate service from within these workflows,
 // this hack applies the translations to a subtitles json specifically
-const translateJson = async (data, languageCode, translationsPath) => {
+const translateJson = async (
+  data: parser.Subtitle[],
+  languageCode: string,
+  translationsPath: string
+) => {
   const translationStringsPath = path.join(translationsPath, languageCode, "strings.json");
   const translationStrings = JSON.parse(fs.readFileSync(translationStringsPath).toString());
   for (const cue of data) {
     const translatedString = translationStrings[cue.text];
     if (translatedString === undefined) {
+      console.log(chalk.grey(translationStringsPath));
       return logError({
-        msg1: "Unable to translate",
-        msg2: `Translations could not be applied. Please make sure "${languageCode}" is a valid language code for which translations exist for all strings in this .vtt file.`,
+        msg1: `No [${languageCode}] tranlsations found for cue text`,
+        msg2: cue.text,
       });
     }
     cue.text = translatedString;
