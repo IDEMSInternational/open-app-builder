@@ -47,19 +47,19 @@ jobs:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
       - run: yarn install
+        # Currently all tests are run against global deployment as this contains debug sheets
+        # In the future we will want to move this to a custom deployment for testing purposes
       - name: Set Deployment
-        run: yarn scripts deployment set "$APP_DEPLOYMENT_NAME"
-        env:
-          APP_DEPLOYMENT_NAME: ${{ secrets.APP_DEPLOYMENT_NAME }}
-      - name: Start server and compare screenshots
-        # Will always throw error even if successful at end as yarn start script terminated abruptly by\
-        # concurrently kill after test-visual complete
-        continue-on-error: true
+        run: yarn scripts deployment set "plh_global"
+        # Create a production build and serve via a local webserver
+        # HACK - as lifecycle_actions block template view simply remove them all
+      - name : Create production build
         run: |
-          npx concurrently --kill-others \
-          "yarn start" \
-          "npx wait-on --timeout 1200000 http-get://localhost:4200 && \
-          yarn workspace test-visual start compare --concurrency 5"
+          yarn build
+          rm -R www/assets/app_data/sheets/data_list/lifecycle_actions
+      # Serve production build locally and generate screenshots. Gracefully terminate server after completion
+      - name: Start server and compare screenshots
+        run: yarn workspace test-visual start compare --concurrency 5 --serve-www
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
