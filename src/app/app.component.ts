@@ -28,6 +28,7 @@ import { APP_CONSTANTS } from "./data";
 import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
 import { AppDataService } from "./shared/services/data/app-data.service";
 import { AuthService } from "./shared/services/auth/auth.service";
+import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
 
 const {
   APP_FIELDS,
@@ -72,6 +73,7 @@ export class AppComponent {
     private authService: AuthService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
+    public lifecycleActionsService: LifecycleActionsService,
     public serverService: ServerService
   ) {
     this.initializeApp();
@@ -81,6 +83,7 @@ export class AppComponent {
     this.platform.ready().then(async () => {
       // ensure deployment field set correctly for use in any startup services or templates
       localStorage.setItem(APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
+      localStorage.setItem(APP_FIELDS.APP_VERSION, this.APP_VERSION);
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
@@ -92,8 +95,9 @@ export class AppComponent {
       }
       if (!user.first_app_open) {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
-        await this.handleFirstLaunchDataActions();
       }
+      // Run app-specific launch tasks
+      await this.lifecycleActionsService.handleLaunchActions();
       this.menuController.enable(true, "main-side-menu");
       if (Capacitor.isNativePlatform()) {
         if (!isDeveloperMode) {
@@ -153,27 +157,6 @@ export class AppComponent {
       /** CC 2022-04-01 - Disable service as not currently in use */
       // await this.pushNotificationService.init();
     }, 1000);
-  }
-
-  /**
-   * Run app-specific first launch tasks
-   **/
-  private async handleFirstLaunchDataActions() {
-    for (const initAction of APP_INITIALISATION_DEFAULTS.app_first_launch_actions) {
-      switch (initAction.type) {
-        case "template_popup":
-          await this.templateService.runStandaloneTemplate(initAction.value, {
-            showCloseButton: false,
-          });
-          break;
-        case "tour_start":
-          await this.tourService.startTour(initAction.value);
-          break;
-        default:
-          console.error("Startup action not defined:", initAction);
-          break;
-      }
-    }
   }
 
   clickOnMenuItem(id: string) {
