@@ -95,7 +95,7 @@ const translateJson = async (
     if (translatedString === undefined) {
       console.log(chalk.grey(translationStringsPath));
       return logError({
-        msg1: `No [${languageCode}] tranlsations found for cue text`,
+        msg1: `No [${languageCode}] translations found for cue text`,
         msg2: cue.text,
       });
     }
