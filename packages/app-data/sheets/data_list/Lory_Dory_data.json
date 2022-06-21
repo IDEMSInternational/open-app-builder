@@ -1,0 +1,420 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Lory_Dory_data",
+  "status": "released",
+  "data_list_name": "Lory_Dory_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-LD-1.jpg",
+      "story_text": "One night Grandpa was tucking me in. His hands were soft and his hair was thin.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "One night Grandpa was tucking me in. His hands were soft and his hair was thin."
+        },
+        "annotation_1": {
+          "eng": "Two words rhyme when their endings sound alike. Look for the rhyming words on many of the pages of this story. For this page, \"in\" and \"thin\" are the rhyming words."
+        },
+        "annotation_2": {
+          "eng": "Think of some other words that rhyme with in and thin. (fin, din, kin, tin, win, bin, grin)"
+        },
+        "annotation_3": {
+          "eng": "Putting things in pairs can be fun. However, not everything can be paired up. There are five buttons on Grandpa's coat, and no matter how you pair them up there will be one left over -- that's because five is an odd number!"
+        }
+      },
+      "annotation_1": "Two words rhyme when their endings sound alike. Look for the rhyming words on many of the pages of this story. For this page, \"in\" and \"thin\" are the rhyming words.",
+      "annotation_2": "Think of some other words that rhyme with in and thin. (fin, din, kin, tin, win, bin, grin)",
+      "annotation_3": "Putting things in pairs can be fun. However, not everything can be paired up. There are five buttons on Grandpa's coat, and no matter how you pair them up there will be one left over -- that's because five is an odd number!"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-LD-2.jpg",
+      "story_text": "I'm going to tell you a special story, about a girl named Lory Dory.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I'm going to tell you a special story, about a girl named Lory Dory."
+        },
+        "annotation_1": {
+          "eng": "Hearing someone tell you a story is a special treat. Someone is reading this story to you right now. How does it make you feel?"
+        },
+        "annotation_2": {
+          "eng": "When lines are lined up and go in exactly the same direction they are called parallel lines. The artist has drawn this room in a style with almost no parallel lines. Point out some parallel lines where you are right now."
+        },
+        "annotation_3": {
+          "eng": "What are the rhyming words on this page?"
+        }
+      },
+      "annotation_1": "Hearing someone tell you a story is a special treat. Someone is reading this story to you right now. How does it make you feel?",
+      "annotation_2": "When lines are lined up and go in exactly the same direction they are called parallel lines. The artist has drawn this room in a style with almost no parallel lines. Point out some parallel lines where you are right now.",
+      "annotation_3": "What are the rhyming words on this page?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-LD-3.jpg",
+      "story_text": "You couldn't see Lory Dory at all because she was born invisible.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "You couldn't see Lory Dory at all because she was born invisible."
+        },
+        "annotation_1": {
+          "eng": "How do you think it feels to be invisible? You could go places and no one would know you were there. Would you like to be invisible?"
+        },
+        "annotation_2": {
+          "eng": "If you are invisible and you put clothes on, are the clothes invisible too?"
+        },
+        "annotation_3": {
+          "eng": "Where is Lory Dory in this picture? How can you tell?"
+        }
+      },
+      "annotation_1": "How do you think it feels to be invisible? You could go places and no one would know you were there. Would you like to be invisible?",
+      "annotation_2": "If you are invisible and you put clothes on, are the clothes invisible too?",
+      "annotation_3": "Where is Lory Dory in this picture? How can you tell?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-LD-4.jpg",
+      "story_text": "You'd only see Lory when rain hit her head.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "You'd only see Lory when rain hit her head."
+        },
+        "annotation_1": {
+          "eng": "When you see a shape by seeing an empty space in a picture, that is called \"negative space.\" You can tell where Lory is by seeing the negative space where there is no rain."
+        },
+        "annotation_2": {
+          "eng": "The rain lines in this picture are lined up. Those lines are parallel lines."
+        },
+        "annotation_3": {
+          "eng": "Look for parallel lines around you. Most of them will probably be horizontal lines (going side to side) or vertical lines (going up and down). Are there any other parallel lines around you?"
+        }
+      },
+      "annotation_1": "When you see a shape by seeing an empty space in a picture, that is called \"negative space.\" You can tell where Lory is by seeing the negative space where there is no rain.",
+      "annotation_2": "The rain lines in this picture are lined up. Those lines are parallel lines.",
+      "annotation_3": "Look for parallel lines around you. Most of them will probably be horizontal lines (going side to side) or vertical lines (going up and down). Are there any other parallel lines around you?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-LD-5.jpg",
+      "story_text": "Or when she was curled under blankets in bed.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Or when she was curled under blankets in bed."
+        },
+        "annotation_1": {
+          "eng": "The artist took many liberties with this drawing. There are extra squiggles that aren't really there. What else is extra in the picture? (the big red area)"
+        },
+        "annotation_2": {
+          "eng": "Why did the artist put in those extra things?"
+        },
+        "annotation_3": {
+          "eng": "What is the easiest part of Lory to see in this picture?"
+        }
+      },
+      "annotation_1": "The artist took many liberties with this drawing. There are extra squiggles that aren't really there. What else is extra in the picture? (the big red area)",
+      "annotation_2": "Why did the artist put in those extra things?",
+      "annotation_3": "What is the easiest part of Lory to see in this picture?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-LD-6.jpg",
+      "story_text": "Lory was left out of all the kids' games. They teased her and they called her names.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Lory was left out of all the kids' games. They teased her and they called her names."
+        },
+        "annotation_1": {
+          "eng": "We can see Lory in this picture by her negative space and her eyes."
+        },
+        "annotation_2": {
+          "eng": "Why do you suppose her eyelashes are visible when the rest of her is not?"
+        },
+        "annotation_3": {
+          "eng": "People often make fun of someone who is different in some way. Have you ever been made fun for this reason? Have you made fun of someone for this reason? Why do you think people do this?"
+        }
+      },
+      "annotation_1": "We can see Lory in this picture by her negative space and her eyes.",
+      "annotation_2": "Why do you suppose her eyelashes are visible when the rest of her is not?",
+      "annotation_3": "People often make fun of someone who is different in some way. Have you ever been made fun for this reason? Have you made fun of someone for this reason? Why do you think people do this?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-LD-7.jpg",
+      "story_text": "Look, it's Lory. The Imaginary Friend! She's not like us, she's just pretend!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Look, it's Lory. The Imaginary Friend! She's not like us, she's just pretend!"
+        },
+        "annotation_1": {
+          "eng": "The umbrellas are divided into areas that are triangles. Triangles are shapes with three straight sides. Do you see any triangles where you are?"
+        },
+        "annotation_2": {
+          "eng": "Triangles are stronger than four-sided shapes. It is much harder to bend triangles and make them lose their shape. Why do you suppose that is?"
+        },
+        "annotation_3": {
+          "eng": "That child is about to throw a snowball. Balls are also called spheres. Spheres roll well and are fun to kick and play with. Do you have any spheres around you?"
+        }
+      },
+      "annotation_1": "The umbrellas are divided into areas that are triangles. Triangles are shapes with three straight sides. Do you see any triangles where you are?",
+      "annotation_2": "Triangles are stronger than four-sided shapes. It is much harder to bend triangles and make them lose their shape. Why do you suppose that is?",
+      "annotation_3": "That child is about to throw a snowball. Balls are also called spheres. Spheres roll well and are fun to kick and play with. Do you have any spheres around you?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-LD-8.jpg",
+      "story_text": "One day at school, a boy wanted to know: \"How do you look? I only see you in snow.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "One day at school, a boy wanted to know: \"How do you look? I only see you in snow.\""
+        },
+        "annotation_1": {
+          "eng": "What did the boy mean when he said \"I only see you in snow.\"? Where is Lory in this picture?"
+        },
+        "annotation_2": {
+          "eng": "The lines on the boy's shirt go in two directions. The two directions meet each other in the same way as the edges of this page do. Lines that meet this way are said to be perpendicular to each other."
+        },
+        "annotation_3": {
+          "eng": "Point out some perpendicular lines where you are. There will probably be a lot of them! Horizontal and vertical lines are usually perpendicular to each other."
+        }
+      },
+      "annotation_1": "What did the boy mean when he said \"I only see you in snow.\"? Where is Lory in this picture?",
+      "annotation_2": "The lines on the boy's shirt go in two directions. The two directions meet each other in the same way as the edges of this page do. Lines that meet this way are said to be perpendicular to each other.",
+      "annotation_3": "Point out some perpendicular lines where you are. There will probably be a lot of them! Horizontal and vertical lines are usually perpendicular to each other."
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-LD-9.jpg",
+      "story_text": "Can you paint yourself? Lory knew that she could. But not in the same way the boy thought she would.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Can you paint yourself? Lory knew that she could. But not in the same way the boy thought she would."
+        },
+        "annotation_1": {
+          "eng": "It often happens that someone will mean something different when they say something than what the person hearing it understands. Has that happened to you recently?"
+        },
+        "annotation_2": {
+          "eng": "What did the boy mean by \"paint yourself\" and what do you think Lory is going to do?"
+        },
+        "annotation_3": {
+          "eng": "A partial circle is called an arc. There are at least five arcs on this page -- can you find them all? Can you find more than five?"
+        }
+      },
+      "annotation_1": "It often happens that someone will mean something different when they say something than what the person hearing it understands. Has that happened to you recently?",
+      "annotation_2": "What did the boy mean by \"paint yourself\" and what do you think Lory is going to do?",
+      "annotation_3": "A partial circle is called an arc. There are at least five arcs on this page -- can you find them all? Can you find more than five?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-LD-10.jpg",
+      "story_text": "Lory painted her body with all that she loved from the world all around and the sky above.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Lory painted her body with all that she loved from the world all around and the sky above."
+        },
+        "annotation_1": {
+          "eng": "The expression \"wearing your feelings on your sleeve\" refers to showing the world how you feel. Do you keep your feelings to yourself or do you show them to the world?"
+        },
+        "annotation_2": {
+          "eng": "Lory is showing the world all the things she loves. She is wearing her thoughts all over her body!"
+        },
+        "annotation_3": {
+          "eng": "What is inside each of us is invisible to the world until we tell the world. Which things that you love would you like to share with the world?"
+        }
+      },
+      "annotation_1": "The expression \"wearing your feelings on your sleeve\" refers to showing the world how you feel. Do you keep your feelings to yourself or do you show them to the world?",
+      "annotation_2": "Lory is showing the world all the things she loves. She is wearing her thoughts all over her body!",
+      "annotation_3": "What is inside each of us is invisible to the world until we tell the world. Which things that you love would you like to share with the world?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-LD-11.jpg",
+      "story_text": "She painted herself every day with such pride, to bring out the person who she was inside.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "She painted herself every day with such pride, to bring out the person who she was inside."
+        },
+        "annotation_1": {
+          "eng": "Which color did she use for her right foot and which one for her left foot?"
+        },
+        "annotation_2": {
+          "eng": "Using paint is a bit messy, but it is one way to show her mark on the world. There are many ways we leave marks on the world without using paint. Can you think of a few?"
+        },
+        "annotation_3": {
+          "eng": "You can count the toe prints one by one, or you can count them by 5's. Skip counting is often a quick way to count a bunch of things! How many toe prints are there?"
+        }
+      },
+      "annotation_1": "Which color did she use for her right foot and which one for her left foot?",
+      "annotation_2": "Using paint is a bit messy, but it is one way to show her mark on the world. There are many ways we leave marks on the world without using paint. Can you think of a few?",
+      "annotation_3": "You can count the toe prints one by one, or you can count them by 5's. Skip counting is often a quick way to count a bunch of things! How many toe prints are there?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-LD-12.jpg",
+      "story_text": "I know I'm invisible and hard to see. So I painted these pictures to show the real me.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I know I'm invisible and hard to see. So I painted these pictures to show the real me."
+        },
+        "annotation_1": {
+          "eng": "How many different things can you see on her that Lory likes?"
+        },
+        "annotation_2": {
+          "eng": "How well does this share who Lory is?"
+        },
+        "annotation_3": {
+          "eng": "Which things would be hard to share this way?"
+        }
+      },
+      "annotation_1": "How many different things can you see on her that Lory likes?",
+      "annotation_2": "How well does this share who Lory is?",
+      "annotation_3": "Which things would be hard to share this way?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-LD-13.jpg",
+      "story_text": "Are you making this up, Gramps? Is this story true? \"Lory is real -- real as me, real as you.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Are you making this up, Gramps? Is this story true? \"Lory is real -- real as me, real as you.\""
+        },
+        "annotation_1": {
+          "eng": "The story may not be real, but it has a real message. What is the message?"
+        },
+        "annotation_2": {
+          "eng": "How well do you think people see the invisible things inside you?"
+        },
+        "annotation_3": {
+          "eng": "Is there something inside you that you would want to keep invisible?"
+        }
+      },
+      "annotation_1": "The story may not be real, but it has a real message. What is the message?",
+      "annotation_2": "How well do you think people see the invisible things inside you?",
+      "annotation_3": "Is there something inside you that you would want to keep invisible?"
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-LD-14.jpg",
+      "story_text": "When Grandpa had left me, I can't quite be sure, but I think I saw Lory just outside my door.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "When Grandpa had left me, I can't quite be sure, but I think I saw Lory just outside my door."
+        },
+        "annotation_1": {
+          "eng": "What do you think? Do \"sure\" and \"door\" rhyme?"
+        },
+        "annotation_2": {
+          "eng": "Go back and look at all the pairs of rhyming words. Can you find a few more words that with each pair?"
+        },
+        "annotation_3": {
+          "eng": "Some kinds of poems use rhyming words. Have you ever written a poem?"
+        }
+      },
+      "annotation_1": "What do you think? Do \"sure\" and \"door\" rhyme?",
+      "annotation_2": "Go back and look at all the pairs of rhyming words. Can you find a few more words that with each pair?",
+      "annotation_3": "Some kinds of poems use rhyming words. Have you ever written a poem?"
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-LD-15.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

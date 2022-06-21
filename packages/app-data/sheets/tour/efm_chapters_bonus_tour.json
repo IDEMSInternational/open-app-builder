@@ -1,0 +1,19 @@
+{
+  "flow_type": "tour",
+  "flow_name": "efm_chapters_bonus_tour",
+  "status": "released",
+  "rows": [
+    {
+      "type": "step",
+      "title": "Bonus Material",
+      "_translations": {
+        "title": {},
+        "message_text": {}
+      },
+      "message_text": "Some of the activities have additional material with examples and further explanations. You can look at them here or at the end of the corresponding activity page.",
+      "template_component_name": "dg_button_bonus",
+      "route": "template/efm_chapters"
+    }
+  ],
+  "_xlsxPath": "EFM_tours.xlsx"
+}

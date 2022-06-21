@@ -1,0 +1,246 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "How_Many_data",
+  "status": "released",
+  "data_list_name": "How_Many_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-HM-1.jpg",
+      "story_text": "How many legs do two ladybugs have?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "How many legs do two ladybugs have?"
+        },
+        "annotation_1": {
+          "eng": "Skip counting is counting by steps bigger than 1. You can skip count these legs by 6's by counting 6, 12. You can also skip count by 3's using the sides of their bodies 3, 6, 9, 12."
+        },
+        "annotation_2": {
+          "eng": "You can skip count to 12 in steps of 3 and 6. Can you think of other ways to skip count to 12? Which ways work (1, 2, 3, 4, 6, 12) and which ways don't (5, 7, 8, 9, 10, 11)?"
+        },
+        "annotation_3": {
+          "eng": "Count together the dots on each ladybug's back. Have you seen ladybugs around where you live -- did they have more or fewer dots than these?"
+        }
+      },
+      "annotation_1": "Skip counting is counting by steps bigger than 1. You can skip count these legs by 6's by counting 6, 12. You can also skip count by 3's using the sides of their bodies 3, 6, 9, 12.",
+      "annotation_2": "You can skip count to 12 in steps of 3 and 6. Can you think of other ways to skip count to 12? Which ways work (1, 2, 3, 4, 6, 12) and which ways don't (5, 7, 8, 9, 10, 11)?",
+      "annotation_3": "Count together the dots on each ladybug's back. Have you seen ladybugs around where you live -- did they have more or fewer dots than these?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-HM-2.jpg",
+      "story_text": "How many wings do four birds have?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "How many wings do four birds have?"
+        },
+        "annotation_1": {
+          "eng": "Skip count the wings by counting by 2's -- one 2 for each bird."
+        },
+        "annotation_2": {
+          "eng": "Skip count the wings by counting the four left wings and then the four right wings. It's fun that you get the same answer whether you skip by 2's or 4's!"
+        },
+        "annotation_3": {
+          "eng": "If the bird in the sky flies away, how many of the four birds will remain?"
+        }
+      },
+      "annotation_1": "Skip count the wings by counting by 2's -- one 2 for each bird.",
+      "annotation_2": "Skip count the wings by counting the four left wings and then the four right wings. It's fun that you get the same answer whether you skip by 2's or 4's!",
+      "annotation_3": "If the bird in the sky flies away, how many of the four birds will remain?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-HM-3.jpg",
+      "story_text": "How many horns do three rhinos have?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "How many horns do three rhinos have?"
+        },
+        "annotation_1": {
+          "eng": "Each rhino has two horns, a big one and a small one. Skip count their horns by 2's and 3's."
+        },
+        "annotation_2": {
+          "eng": "How would you skip count to find out how many feet they have?"
+        },
+        "annotation_3": {
+          "eng": "Each rhino has twice as many feet as horns. Take the total number of horns and double that to get the total number of feet."
+        }
+      },
+      "annotation_1": "Each rhino has two horns, a big one and a small one. Skip count their horns by 2's and 3's.",
+      "annotation_2": "How would you skip count to find out how many feet they have?",
+      "annotation_3": "Each rhino has twice as many feet as horns. Take the total number of horns and double that to get the total number of feet."
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-HM-4.jpg",
+      "story_text": "How many trunks do five elephants have?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "How many trunks do five elephants have?"
+        },
+        "annotation_1": {
+          "eng": "Let's count trunks, tails, tusks, and ears. Counting tails and tusks is simple -- what number do you get?"
+        },
+        "annotation_2": {
+          "eng": "Each elephant has two tusks and two ears. Which do you like better -- skip counting these by 2's or by 5's?"
+        },
+        "annotation_3": {
+          "eng": "There are four big elephants and one baby elephant. How much is four plus one more?"
+        }
+      },
+      "annotation_1": "Let's count trunks, tails, tusks, and ears. Counting tails and tusks is simple -- what number do you get?",
+      "annotation_2": "Each elephant has two tusks and two ears. Which do you like better -- skip counting these by 2's or by 5's?",
+      "annotation_3": "There are four big elephants and one baby elephant. How much is four plus one more?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-HM-5.jpg",
+      "story_text": "How many ears do seven dogs have?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "How many ears do seven dogs have?"
+        },
+        "annotation_1": {
+          "eng": "Did you count the ears by 1's, 2's, or 7's?"
+        },
+        "annotation_2": {
+          "eng": "There are 14 ears. We can skip count to 14 by 1's, 2's, and 7's. Are there any other step sizes that work for counting to 14?"
+        },
+        "annotation_3": {
+          "eng": "There are four dogs in the top group and three in the bottom. What do you get when put four dogs together with three more?"
+        }
+      },
+      "annotation_1": "Did you count the ears by 1's, 2's, or 7's?",
+      "annotation_2": "There are 14 ears. We can skip count to 14 by 1's, 2's, and 7's. Are there any other step sizes that work for counting to 14?",
+      "annotation_3": "There are four dogs in the top group and three in the bottom. What do you get when put four dogs together with three more?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-HM-6.jpg",
+      "story_text": "How many tails do three monkeys have?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "How many tails do three monkeys have?"
+        },
+        "annotation_1": {
+          "eng": "Let's count the tails, eyes, and feet. How many tails do you count?"
+        },
+        "annotation_2": {
+          "eng": "Would you count the eyes two at a time, two for each monkey, or would you count them three at a time, which is doubling the number of monkeys?"
+        },
+        "annotation_3": {
+          "eng": "You have many choices for skip counting their feet. What are your choices and which one would you choose to use?"
+        }
+      },
+      "annotation_1": "Let's count the tails, eyes, and feet. How many tails do you count?",
+      "annotation_2": "Would you count the eyes two at a time, two for each monkey, or would you count them three at a time, which is doubling the number of monkeys?",
+      "annotation_3": "You have many choices for skip counting their feet. What are your choices and which one would you choose to use?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-HM-7.jpg",
+      "story_text": "How many eyes do six cats have?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "How many eyes do six cats have?"
+        },
+        "annotation_1": {
+          "eng": "Wow, these cats are a bit creepy! Did you skip count the eyes by 2's or 6's?"
+        },
+        "annotation_2": {
+          "eng": "How many whiskers does each cat have? Can you count high enough to skip count all the whiskers?"
+        },
+        "annotation_3": {
+          "eng": "Can you skip count high enough to count all the feet?"
+        }
+      },
+      "annotation_1": "Wow, these cats are a bit creepy! Did you skip count the eyes by 2's or 6's?",
+      "annotation_2": "How many whiskers does each cat have? Can you count high enough to skip count all the whiskers?",
+      "annotation_3": "Can you skip count high enough to count all the feet?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-HM-8.jpg",
+      "story_text": "How many legs does one worm have?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "How many legs does one worm have?"
+        },
+        "annotation_1": {
+          "eng": "Can you count all those legs, or is it too tricky to see or too high to count?"
+        },
+        "annotation_2": {
+          "eng": "Think of some other things that are just too many to count."
+        },
+        "annotation_3": {
+          "eng": "Skip counting can be fun because it gets you to the answer much more quickly than counting by 1's. It's also fun to discover the different step sizes that give you the same answer."
+        }
+      },
+      "annotation_1": "Can you count all those legs, or is it too tricky to see or too high to count?",
+      "annotation_2": "Think of some other things that are just too many to count.",
+      "annotation_3": "Skip counting can be fun because it gets you to the answer much more quickly than counting by 1's. It's also fun to discover the different step sizes that give you the same answer."
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-HM-9.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

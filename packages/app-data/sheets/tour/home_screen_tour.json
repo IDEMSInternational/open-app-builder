@@ -1,0 +1,51 @@
+{
+  "flow_type": "tour",
+  "flow_name": "home_screen_tour",
+  "status": "released",
+  "rows": [
+    {
+      "type": "step",
+      "title": "Welcome!",
+      "_translations": {
+        "title": {},
+        "message_text": {}
+      },
+      "message_text": "Enjoy reading and playing with math together! The best way to learn and experience math is in a social and playful way. We have two kinds of materials for your family to enjoy together.",
+      "route": "template/home_screen"
+    },
+    {
+      "type": "step",
+      "title": "Storybooks",
+      "_translations": {
+        "title": {},
+        "message_text": {}
+      },
+      "message_text": "Read our storybooks with your child. These storybooks have math comments and guiding questions on every page. Help your child grow mathematically and create strong associations of math with the happy, cozy experience of reading together!",
+      "template_component_name": "dg_storybooks",
+      "route": "template/home_screen"
+    },
+    {
+      "type": "step",
+      "title": "Activities",
+      "_translations": {
+        "title": {},
+        "message_text": {}
+      },
+      "message_text": "These educationally sequenced math games, puzzles, activities, and investigations, designed for your family to play together, provide lots of enjoyable family time as your child learns all the math they need for school.",
+      "template_component_name": "dg_activities",
+      "route": "template/home_screen"
+    },
+    {
+      "type": "step",
+      "title": "Help",
+      "_translations": {
+        "title": {},
+        "message_text": {}
+      },
+      "message_text": "If you ever want to see this introduction again, just click on the question mark.",
+      "template_component_name": "dg_help",
+      "route": "template/home_screen"
+    }
+  ],
+  "_xlsxPath": "EFM_tours.xlsx"
+}

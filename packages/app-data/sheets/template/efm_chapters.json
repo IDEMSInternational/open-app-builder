@@ -4,81 +4,108 @@
   "status": "released",
   "rows": [
     {
-      "type": "title",
-      "name": "title",
-      "value": "Games, Puzzles, and More",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "title"
-    },
-    {
-      "type": "text",
-      "name": "checkbox_guidance",
-      "value": "Each of the chapters has about a dozen sections of fun games, puzzles, activities, and investigations. Each chapter name describes the main requirement for your child to start that chapter. For example, if your child can count to ten, **and knows what those numbers mean,** then start with chapter 3. The materials in the chapters are designed in a learning progression so that later sections build on the earlier ones.\n\nPlease select the kinds of activities you would like to do.",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "checkbox_guidance"
-    },
-    {
-      "name": "description_1",
-      "value": "Introductions",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "description_1"
-    },
-    {
-      "name": "description_2",
-      "value": "Games",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "description_2"
-    },
-    {
-      "name": "description_3",
-      "value": "Puzzles",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "description_3"
-    },
-    {
-      "name": "description_4",
-      "value": "Activities",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "description_4"
-    },
-    {
-      "name": "description_5",
-      "value": "Investigations",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "description_5"
+      "type": "display_group",
+      "name": "dg_top_of_page",
+      "rows": [
+        {
+          "type": "title",
+          "name": "spacer",
+          "value": "Activities",
+          "_translations": {
+            "value": {}
+          },
+          "style_list": [
+            "flex:1"
+          ],
+          "_nested_name": "dg_top_of_page.spacer"
+        },
+        {
+          "type": "display_group",
+          "name": "dg_help",
+          "rows": [
+            {
+              "type": "round_button",
+              "name": "help_button",
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "start_tour",
+                  "args": [
+                    "efm_chapters_tour"
+                  ],
+                  "_raw": "click | start_tour: efm_chapters_tour",
+                  "_cleaned": "click | start_tour: efm_chapters_tour"
+                }
+              ],
+              "parameter_list": {
+                "icon_src": "help",
+                "style": "navigation"
+              },
+              "_nested_name": "dg_top_of_page.dg_help.help_button"
+            }
+          ],
+          "_nested_name": "dg_top_of_page.dg_help"
+        }
+      ],
+      "_nested_name": "dg_top_of_page"
     },
     {
       "type": "display_group",
-      "name": "checkboxes",
+      "name": "dg_types",
+      "parameter_list": {
+        "style": "column"
+      },
       "rows": [
         {
-          "type": "display_group",
-          "name": "col1",
-          "parameter_list": {
-            "style": "column"
+          "name": "description_1",
+          "value": "Introductions",
+          "_translations": {
+            "value": {}
           },
+          "type": "set_variable",
+          "_nested_name": "dg_types.description_1"
+        },
+        {
+          "name": "description_2",
+          "value": "Games",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "dg_types.description_2"
+        },
+        {
+          "name": "description_3",
+          "value": "Puzzles",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "dg_types.description_3"
+        },
+        {
+          "name": "description_4",
+          "value": "Activities",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "dg_types.description_4"
+        },
+        {
+          "name": "description_5",
+          "value": "Investigations",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "dg_types.description_5"
+        },
+        {
+          "type": "display_group",
           "rows": [
             {
-              "type": "simple_checkbox",
+              "type": "toggle_bar",
               "name": "checkbox_intros",
               "value": "@fields.see_activities_introduction",
               "_translations": {
@@ -97,10 +124,10 @@
                 }
               ],
               "parameter_list": {
-                "label_text": "@local.description_1",
-                "align": "left"
+                "true_text": "@local.description_1",
+                "false_text": "@local.description_1"
               },
-              "_nested_name": "checkboxes.col1.checkbox_intros",
+              "_nested_name": "dg_types.display_group.checkbox_intros",
               "_dynamicFields": {
                 "value": [
                   {
@@ -131,7 +158,15 @@
                   }
                 },
                 "parameter_list": {
-                  "label_text": [
+                  "true_text": [
+                    {
+                      "fullExpression": "@local.description_1",
+                      "matchedExpression": "@local.description_1",
+                      "type": "local",
+                      "fieldName": "description_1"
+                    }
+                  ],
+                  "false_text": [
                     {
                       "fullExpression": "@local.description_1",
                       "matchedExpression": "@local.description_1",
@@ -150,12 +185,13 @@
                   "action_list.0._cleaned"
                 ],
                 "@local.description_1": [
-                  "parameter_list.label_text"
+                  "parameter_list.true_text",
+                  "parameter_list.false_text"
                 ]
               }
             },
             {
-              "type": "simple_checkbox",
+              "type": "toggle_bar",
               "name": "checkbox_games",
               "value": "@fields.see_activities_game",
               "_translations": {
@@ -174,10 +210,10 @@
                 }
               ],
               "parameter_list": {
-                "label_text": "@local.description_2",
-                "align": "left"
+                "true_text": "@local.description_2",
+                "false_text": "@local.description_2"
               },
-              "_nested_name": "checkboxes.col1.checkbox_games",
+              "_nested_name": "dg_types.display_group.checkbox_games",
               "_dynamicFields": {
                 "value": [
                   {
@@ -208,7 +244,15 @@
                   }
                 },
                 "parameter_list": {
-                  "label_text": [
+                  "true_text": [
+                    {
+                      "fullExpression": "@local.description_2",
+                      "matchedExpression": "@local.description_2",
+                      "type": "local",
+                      "fieldName": "description_2"
+                    }
+                  ],
+                  "false_text": [
                     {
                       "fullExpression": "@local.description_2",
                       "matchedExpression": "@local.description_2",
@@ -227,12 +271,20 @@
                   "action_list.0._cleaned"
                 ],
                 "@local.description_2": [
-                  "parameter_list.label_text"
+                  "parameter_list.true_text",
+                  "parameter_list.false_text"
                 ]
               }
-            },
+            }
+          ],
+          "name": "display_group",
+          "_nested_name": "dg_types.display_group"
+        },
+        {
+          "type": "display_group",
+          "rows": [
             {
-              "type": "simple_checkbox",
+              "type": "toggle_bar",
               "name": "checkbox_puzzles",
               "value": "@fields.see_activities_puzzle",
               "_translations": {
@@ -251,10 +303,10 @@
                 }
               ],
               "parameter_list": {
-                "label_text": "@local.description_3",
-                "align": "left"
+                "true_text": "@local.description_3",
+                "false_text": "@local.description_3"
               },
-              "_nested_name": "checkboxes.col1.checkbox_puzzles",
+              "_nested_name": "dg_types.display_group.checkbox_puzzles",
               "_dynamicFields": {
                 "value": [
                   {
@@ -285,7 +337,15 @@
                   }
                 },
                 "parameter_list": {
-                  "label_text": [
+                  "true_text": [
+                    {
+                      "fullExpression": "@local.description_3",
+                      "matchedExpression": "@local.description_3",
+                      "type": "local",
+                      "fieldName": "description_3"
+                    }
+                  ],
+                  "false_text": [
                     {
                       "fullExpression": "@local.description_3",
                       "matchedExpression": "@local.description_3",
@@ -304,22 +364,13 @@
                   "action_list.0._cleaned"
                 ],
                 "@local.description_3": [
-                  "parameter_list.label_text"
+                  "parameter_list.true_text",
+                  "parameter_list.false_text"
                 ]
               }
-            }
-          ],
-          "_nested_name": "checkboxes.col1"
-        },
-        {
-          "type": "display_group",
-          "name": "col2",
-          "parameter_list": {
-            "style": "column"
-          },
-          "rows": [
+            },
             {
-              "type": "simple_checkbox",
+              "type": "toggle_bar",
               "name": "checkbox_activities",
               "value": "@fields.see_activities_activity",
               "_translations": {
@@ -338,10 +389,10 @@
                 }
               ],
               "parameter_list": {
-                "label_text": "@local.description_4",
-                "align": "left"
+                "true_text": "@local.description_4",
+                "false_text": "@local.description_4"
               },
-              "_nested_name": "checkboxes.col2.checkbox_activities",
+              "_nested_name": "dg_types.display_group.checkbox_activities",
               "_dynamicFields": {
                 "value": [
                   {
@@ -372,7 +423,15 @@
                   }
                 },
                 "parameter_list": {
-                  "label_text": [
+                  "true_text": [
+                    {
+                      "fullExpression": "@local.description_4",
+                      "matchedExpression": "@local.description_4",
+                      "type": "local",
+                      "fieldName": "description_4"
+                    }
+                  ],
+                  "false_text": [
                     {
                       "fullExpression": "@local.description_4",
                       "matchedExpression": "@local.description_4",
@@ -391,12 +450,20 @@
                   "action_list.0._cleaned"
                 ],
                 "@local.description_4": [
-                  "parameter_list.label_text"
+                  "parameter_list.true_text",
+                  "parameter_list.false_text"
                 ]
               }
-            },
+            }
+          ],
+          "name": "display_group",
+          "_nested_name": "dg_types.display_group"
+        },
+        {
+          "type": "display_group",
+          "rows": [
             {
-              "type": "simple_checkbox",
+              "type": "toggle_bar",
               "name": "checkbox_investigations",
               "value": "@fields.see_activities_investigation",
               "_translations": {
@@ -415,10 +482,10 @@
                 }
               ],
               "parameter_list": {
-                "label_text": "@local.description_5",
-                "align": "left"
+                "true_text": "@local.description_5",
+                "false_text": "@local.description_5"
               },
-              "_nested_name": "checkboxes.col2.checkbox_investigations",
+              "_nested_name": "dg_types.display_group.checkbox_investigations",
               "_dynamicFields": {
                 "value": [
                   {
@@ -449,7 +516,15 @@
                   }
                 },
                 "parameter_list": {
-                  "label_text": [
+                  "true_text": [
+                    {
+                      "fullExpression": "@local.description_5",
+                      "matchedExpression": "@local.description_5",
+                      "type": "local",
+                      "fieldName": "description_5"
+                    }
+                  ],
+                  "false_text": [
                     {
                       "fullExpression": "@local.description_5",
                       "matchedExpression": "@local.description_5",
@@ -468,386 +543,447 @@
                   "action_list.0._cleaned"
                 ],
                 "@local.description_5": [
-                  "parameter_list.label_text"
+                  "parameter_list.true_text",
+                  "parameter_list.false_text"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "name": "blank",
+              "style_list": [
+                "flex: 1"
+              ],
+              "_nested_name": "dg_types.display_group.blank"
+            }
+          ],
+          "name": "display_group",
+          "_nested_name": "dg_types.display_group"
+        }
+      ],
+      "_nested_name": "dg_types"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_view",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "name": "radio_description_1",
+          "value": "Individually",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "dg_view.radio_description_1"
+        },
+        {
+          "name": "radio_description_2",
+          "value": "By topic",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "dg_view.radio_description_2"
+        },
+        {
+          "name": "answer_list",
+          "value": [
+            "name:individually | text: @local.radio_description_1",
+            "name:by_topic | text: @local.radio_description_2"
+          ],
+          "type": "set_variable",
+          "_nested_name": "dg_view.answer_list",
+          "_dynamicFields": {
+            "value": {
+              "0": [
+                {
+                  "fullExpression": "name:individually | text: @local.radio_description_1",
+                  "matchedExpression": "@local.radio_description_1",
+                  "type": "local",
+                  "fieldName": "radio_description_1"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "name:by_topic | text: @local.radio_description_2",
+                  "matchedExpression": "@local.radio_description_2",
+                  "type": "local",
+                  "fieldName": "radio_description_2"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.radio_description_1": [
+              "value.0"
+            ],
+            "@local.radio_description_2": [
+              "value.1"
+            ]
+          }
+        },
+        {
+          "name": "listing_style",
+          "value": "by_topic",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "dg_view.listing_style"
+        },
+        {
+          "type": "radio_group",
+          "name": "radio_group",
+          "value": "@local.listing_style",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "changed",
+              "action_id": "set_local",
+              "args": [
+                "listing_style",
+                "this.value"
+              ],
+              "_raw": "changed | set_local: listing_style: @local.radio_group",
+              "_cleaned": "changed | set_local: listing_style: @local.radio_group"
+            }
+          ],
+          "parameter_list": {
+            "answer_list": "@local.answer_list",
+            "options_per_row": "2"
+          },
+          "_nested_name": "dg_view.radio_group",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.listing_style",
+                "matchedExpression": "@local.listing_style",
+                "type": "local",
+                "fieldName": "listing_style"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "_raw": [
+                  {
+                    "fullExpression": "changed | set_local: listing_style: @local.radio_group",
+                    "matchedExpression": "@local.radio_group",
+                    "type": "local",
+                    "fieldName": "radio_group"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "changed | set_local: listing_style: @local.radio_group",
+                    "matchedExpression": "@local.radio_group",
+                    "type": "local",
+                    "fieldName": "radio_group"
+                  }
+                ]
+              }
+            },
+            "parameter_list": {
+              "answer_list": [
+                {
+                  "fullExpression": "@local.answer_list",
+                  "matchedExpression": "@local.answer_list",
+                  "type": "local",
+                  "fieldName": "answer_list"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.listing_style": [
+              "value"
+            ],
+            "@local.radio_group": [
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@local.answer_list": [
+              "parameter_list.answer_list"
+            ]
+          }
+        },
+        {
+          "name": "template_name",
+          "value": "efm_chapter_acts_@local.listing_style",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "dg_view.template_name",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "efm_chapter_acts_@local.listing_style",
+                "matchedExpression": "@local.listing_style",
+                "type": "local",
+                "fieldName": "listing_style"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.listing_style": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "dg_view"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_chapters",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "chapter_select",
+          "value": "**Chapters**",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "dg_chapters.chapter_select"
+        },
+        {
+          "type": "items",
+          "name": "chapter_buttons",
+          "value": "@data.efm_chapt",
+          "rows": [
+            {
+              "type": "button",
+              "name": "button_@item.title",
+              "value": "@item.title",
+              "_translations": {
+                "value": {}
+              },
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "current_chapter",
+                    "data.efm_chapt.@item.id"
+                  ],
+                  "_raw": "click | set_field:current_chapter: data.efm_chapt.@item.id",
+                  "_cleaned": "click | set_field:current_chapter: data.efm_chapt.@item.id"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "go_to",
+                  "args": [
+                    "@local.template_name"
+                  ],
+                  "_raw": "click | go_to: @local.template_name",
+                  "_cleaned": "click | go_to: @local.template_name"
+                }
+              ],
+              "parameter_list": {
+                "style": "short",
+                "text_align": "center"
+              },
+              "_nested_name": "dg_chapters.chapter_buttons.button_@item.title",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "button_@item.title",
+                    "matchedExpression": "@item.title",
+                    "type": "item",
+                    "fieldName": "title"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@item.title",
+                    "matchedExpression": "@item.title",
+                    "type": "item",
+                    "fieldName": "title"
+                  }
+                ],
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "1": [
+                        {
+                          "fullExpression": "data.efm_chapt.@item.id",
+                          "matchedExpression": "@item.id",
+                          "type": "item",
+                          "fieldName": "id"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | set_field:current_chapter: data.efm_chapt.@item.id",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | set_field:current_chapter: data.efm_chapt.@item.id",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  },
+                  "1": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.template_name",
+                          "matchedExpression": "@local.template_name",
+                          "type": "local",
+                          "fieldName": "template_name"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | go_to: @local.template_name",
+                        "matchedExpression": "@local.template_name",
+                        "type": "local",
+                        "fieldName": "template_name"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | go_to: @local.template_name",
+                        "matchedExpression": "@local.template_name",
+                        "type": "local",
+                        "fieldName": "template_name"
+                      }
+                    ]
+                  }
+                },
+                "_nested_name": [
+                  {
+                    "fullExpression": "dg_chapters.chapter_buttons.button_@item.title",
+                    "matchedExpression": "@item.title",
+                    "type": "item",
+                    "fieldName": "title"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.title": [
+                  "name",
+                  "value",
+                  "_nested_name"
+                ],
+                "@item.id": [
+                  "action_list.0.args.1",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned"
+                ],
+                "@local.template_name": [
+                  "action_list.1.args.0",
+                  "action_list.1._raw",
+                  "action_list.1._cleaned"
                 ]
               }
             }
           ],
-          "_nested_name": "checkboxes.col2"
-        }
-      ],
-      "_nested_name": "checkboxes"
-    },
-    {
-      "type": "text",
-      "name": "activity_or_topic",
-      "value": "Please select whether you would rather view the chapter activities individually or by topic.",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "activity_or_topic"
-    },
-    {
-      "name": "radio_description_1",
-      "value": "Individually",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "radio_description_1"
-    },
-    {
-      "name": "radio_description_2",
-      "value": "By topic",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "radio_description_2"
-    },
-    {
-      "name": "answer_list",
-      "value": [
-        "name:individually | text: @local.radio_description_1",
-        "name:by_topic | text: @local.radio_description_2"
-      ],
-      "type": "set_variable",
-      "_nested_name": "answer_list",
-      "_dynamicFields": {
-        "value": {
-          "0": [
-            {
-              "fullExpression": "name:individually | text: @local.radio_description_1",
-              "matchedExpression": "@local.radio_description_1",
-              "type": "local",
-              "fieldName": "radio_description_1"
-            }
-          ],
-          "1": [
-            {
-              "fullExpression": "name:by_topic | text: @local.radio_description_2",
-              "matchedExpression": "@local.radio_description_2",
-              "type": "local",
-              "fieldName": "radio_description_2"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.radio_description_1": [
-          "value.0"
-        ],
-        "@local.radio_description_2": [
-          "value.1"
-        ]
-      }
-    },
-    {
-      "name": "listing_style",
-      "value": "by_topic",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "listing_style"
-    },
-    {
-      "type": "radio_group",
-      "name": "radio_group",
-      "action_list": [
-        {
-          "trigger": "changed",
-          "action_id": "set_local",
-          "args": [
-            "listing_style",
-            "this.value"
-          ],
-          "_raw": "changed | set_local: listing_style: @local.radio_group",
-          "_cleaned": "changed | set_local: listing_style: @local.radio_group"
-        }
-      ],
-      "parameter_list": {
-        "answer_list": "@local.answer_list"
-      },
-      "_nested_name": "radio_group",
-      "_dynamicFields": {
-        "action_list": {
-          "0": {
-            "_raw": [
+          "_nested_name": "dg_chapters.chapter_buttons",
+          "_dynamicFields": {
+            "value": [
               {
-                "fullExpression": "changed | set_local: listing_style: @local.radio_group",
-                "matchedExpression": "@local.radio_group",
-                "type": "local",
-                "fieldName": "radio_group"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "changed | set_local: listing_style: @local.radio_group",
-                "matchedExpression": "@local.radio_group",
-                "type": "local",
-                "fieldName": "radio_group"
+                "fullExpression": "@data.efm_chapt",
+                "matchedExpression": "@data.efm_chapt",
+                "type": "data",
+                "fieldName": "efm_chapt"
               }
             ]
+          },
+          "_dynamicDependencies": {
+            "@data.efm_chapt": [
+              "value"
+            ]
           }
-        },
-        "parameter_list": {
-          "answer_list": [
-            {
-              "fullExpression": "@local.answer_list",
-              "matchedExpression": "@local.answer_list",
-              "type": "local",
-              "fieldName": "answer_list"
-            }
-          ]
         }
-      },
-      "_dynamicDependencies": {
-        "@local.radio_group": [
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ],
-        "@local.answer_list": [
-          "parameter_list.answer_list"
-        ]
-      }
+      ],
+      "_nested_name": "dg_chapters"
     },
     {
-      "name": "template_name",
-      "value": "efm_chapter_acts_@local.listing_style",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "template_name",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "efm_chapter_acts_@local.listing_style",
-            "matchedExpression": "@local.listing_style",
-            "type": "local",
-            "fieldName": "listing_style"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.listing_style": [
-          "value"
-        ]
-      }
+      "type": "display_group",
+      "name": "dg_row_bonus",
+      "rows": [
+        {
+          "type": "text",
+          "name": "act_text",
+          "value": "**Bonus Material**",
+          "_translations": {
+            "value": {}
+          },
+          "style_list": [
+            "flex: 1"
+          ],
+          "_nested_name": "dg_row_bonus.act_text"
+        },
+        {
+          "type": "round_button",
+          "name": "help_button",
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "start_tour",
+              "args": [
+                "efm_chapters_bonus_tour"
+              ],
+              "_raw": "click | start_tour: efm_chapters_bonus_tour",
+              "_cleaned": "click | start_tour: efm_chapters_bonus_tour"
+            }
+          ],
+          "parameter_list": {
+            "icon_src": "help",
+            "style": "navigation"
+          },
+          "_nested_name": "dg_row_bonus.help_button"
+        }
+      ],
+      "_nested_name": "dg_row_bonus"
     },
     {
-      "type": "text",
-      "name": "chapter_select",
-      "value": "Select a starting chapter. You can always go forward or backward from there.",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "chapter_select"
-    },
-    {
-      "type": "items",
-      "name": "chapter_buttons",
-      "value": "@data.efm_chapt",
+      "type": "display_group",
+      "name": "dg_button_bonus",
       "rows": [
         {
           "type": "button",
-          "name": "button_@item.title",
-          "value": "@item.title",
+          "name": "button_activities",
+          "value": "Bonus Material — Activities",
           "_translations": {
             "value": {}
           },
           "action_list": [
             {
               "trigger": "click",
-              "action_id": "set_field",
-              "args": [
-                "current_chapter",
-                "data.efm_chapt.@item.id"
-              ],
-              "_raw": "click | set_field:current_chapter: data.efm_chapt.@item.id",
-              "_cleaned": "click | set_field:current_chapter: data.efm_chapt.@item.id"
-            },
-            {
-              "trigger": "click",
               "action_id": "go_to",
               "args": [
-                "@local.template_name"
+                "efm_bonus_chapters"
               ],
-              "_raw": "click | go_to: @local.template_name",
-              "_cleaned": "click | go_to: @local.template_name"
+              "_raw": "click | go_to: efm_bonus_chapters",
+              "_cleaned": "click | go_to: efm_bonus_chapters"
             }
           ],
           "parameter_list": {
             "style": "short",
             "text_align": "center"
           },
-          "_nested_name": "chapter_buttons.button_@item.title",
-          "_dynamicFields": {
-            "name": [
-              {
-                "fullExpression": "button_@item.title",
-                "matchedExpression": "@item.title",
-                "type": "item",
-                "fieldName": "title"
-              }
-            ],
-            "value": [
-              {
-                "fullExpression": "@item.title",
-                "matchedExpression": "@item.title",
-                "type": "item",
-                "fieldName": "title"
-              }
-            ],
-            "action_list": {
-              "0": {
-                "args": {
-                  "1": [
-                    {
-                      "fullExpression": "data.efm_chapt.@item.id",
-                      "matchedExpression": "@item.id",
-                      "type": "item",
-                      "fieldName": "id"
-                    }
-                  ]
-                },
-                "_raw": [
-                  {
-                    "fullExpression": "click | set_field:current_chapter: data.efm_chapt.@item.id",
-                    "matchedExpression": "@item.id",
-                    "type": "item",
-                    "fieldName": "id"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "click | set_field:current_chapter: data.efm_chapt.@item.id",
-                    "matchedExpression": "@item.id",
-                    "type": "item",
-                    "fieldName": "id"
-                  }
-                ]
-              },
-              "1": {
-                "args": {
-                  "0": [
-                    {
-                      "fullExpression": "@local.template_name",
-                      "matchedExpression": "@local.template_name",
-                      "type": "local",
-                      "fieldName": "template_name"
-                    }
-                  ]
-                },
-                "_raw": [
-                  {
-                    "fullExpression": "click | go_to: @local.template_name",
-                    "matchedExpression": "@local.template_name",
-                    "type": "local",
-                    "fieldName": "template_name"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "click | go_to: @local.template_name",
-                    "matchedExpression": "@local.template_name",
-                    "type": "local",
-                    "fieldName": "template_name"
-                  }
-                ]
-              }
-            },
-            "_nested_name": [
-              {
-                "fullExpression": "chapter_buttons.button_@item.title",
-                "matchedExpression": "@item.title",
-                "type": "item",
-                "fieldName": "title"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@item.title": [
-              "name",
-              "value",
-              "_nested_name"
-            ],
-            "@item.id": [
-              "action_list.0.args.1",
-              "action_list.0._raw",
-              "action_list.0._cleaned"
-            ],
-            "@local.template_name": [
-              "action_list.1.args.0",
-              "action_list.1._raw",
-              "action_list.1._cleaned"
-            ]
-          }
+          "_nested_name": "dg_button_bonus.button_activities"
         }
       ],
-      "_nested_name": "chapter_buttons",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.efm_chapt",
-            "matchedExpression": "@data.efm_chapt",
-            "type": "data",
-            "fieldName": "efm_chapt"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.efm_chapt": [
-          "value"
-        ]
-      }
-    },
-    {
-      "type": "text",
-      "name": "act_text",
-      "value": "Activities - Bonus Material",
-      "_translations": {
-        "value": {}
-      },
-      "parameter_list": {
-        "text_align": "center",
-        "style": "large emphasised"
-      },
-      "_nested_name": "act_text"
-    },
-    {
-      "type": "text",
-      "name": "bonus_intro",
-      "value": "Some of the activities have additional material with examples and further explanations. You can look at them here or at the end of the corresponding activity page.",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "bonus_intro"
-    },
-    {
-      "type": "button",
-      "name": "button_activities",
-      "value": "Bonus Material",
-      "_translations": {
-        "value": {}
-      },
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "go_to",
-          "args": [
-            "efm_bonus_chapters"
-          ],
-          "_raw": "click | go_to: efm_bonus_chapters",
-          "_cleaned": "click | go_to: efm_bonus_chapters"
-        }
-      ],
-      "parameter_list": {
-        "style": "short",
-        "text_align": "center"
-      },
-      "_nested_name": "button_activities"
+      "_nested_name": "dg_button_bonus"
     },
     {
       "type": "display_group",

@@ -6,10 +6,9 @@ import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
 import { DbService } from "./shared/services/db/db.service";
 import { ThemeService } from "./feature/theme/theme-service/theme.service";
-import { _DeprecatedSurveyService } from "./feature/survey/survey.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
-import { UserMetaService, IUserMeta } from "./shared/services/userMeta/userMeta.service";
+import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
 import { AppEventService } from "./shared/services/app-events/app-events.service";
 import { TourService } from "./shared/services/tour/tour.service";
 import { TemplateService } from "./shared/components/template/services/template.service";
@@ -28,8 +27,15 @@ import { DBSyncService } from "./shared/services/db/db-sync.service";
 import { APP_CONSTANTS } from "./data";
 import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
 import { AppDataService } from "./shared/services/data/app-data.service";
+import { AuthService } from "./shared/services/auth/auth.service";
+import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
 
-const { APP_FIELDS, APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } = APP_CONSTANTS;
+const {
+  APP_FIELDS,
+  APP_INITIALISATION_DEFAULTS,
+  APP_SIDEMENU_DEFAULTS,
+  APP_AUTHENTICATION_DEFAULTS,
+} = APP_CONSTANTS;
 
 @Component({
   selector: "app-root",
@@ -51,7 +57,6 @@ export class AppComponent {
     private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
     private themeService: ThemeService,
-    private _deprecatedSurveyService: _DeprecatedSurveyService,
     private tourService: TourService,
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
@@ -65,8 +70,10 @@ export class AppComponent {
     private templateTranslateService: TemplateTranslateService,
     private crashlyticsService: CrashlyticsService,
     private appDataService: AppDataService,
+    private authService: AuthService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
+    public lifecycleActionsService: LifecycleActionsService,
     public serverService: ServerService
   ) {
     this.initializeApp();
@@ -76,14 +83,21 @@ export class AppComponent {
     this.platform.ready().then(async () => {
       // ensure deployment field set correctly for use in any startup services or templates
       localStorage.setItem(APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
+      localStorage.setItem(APP_FIELDS.APP_VERSION, this.APP_VERSION);
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
+      // Authentication requires verified domain and app ids populated to firebase console
+      // Currently only run on native where specified (but can comment out for testing locally)
+      if (APP_AUTHENTICATION_DEFAULTS.enforceLogin && Capacitor.isNativePlatform()) {
+        await this.ensureUserSignedIn();
+      }
       if (!user.first_app_open) {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
-        await this.handleFirstLaunchDataActions();
       }
+      // Run app-specific launch tasks
+      await this.lifecycleActionsService.handleLaunchActions();
       this.menuController.enable(true, "main-side-menu");
       if (Capacitor.isNativePlatform()) {
         if (!isDeveloperMode) {
@@ -95,6 +109,19 @@ export class AppComponent {
       this.renderAppTemplates = true;
       this.scheduleReinitialisation();
     });
+  }
+
+  async ensureUserSignedIn() {
+    const authUser = await this.authService.getCurrentUser();
+    if (!authUser) {
+      const templatename = APP_AUTHENTICATION_DEFAULTS.signInTemplate;
+      const { modal } = await this.templateService.runStandaloneTemplate(templatename, {
+        showCloseButton: false,
+        waitForDismiss: false,
+      });
+      await this.authService.waitForSignInComplete();
+      await modal.dismiss();
+    }
   }
 
   /**
@@ -130,30 +157,6 @@ export class AppComponent {
       /** CC 2022-04-01 - Disable service as not currently in use */
       // await this.pushNotificationService.init();
     }, 1000);
-  }
-
-  /**
-   * Run app-specific first launch tasks
-   **/
-  private async handleFirstLaunchDataActions() {
-    for (const initAction of APP_INITIALISATION_DEFAULTS.app_first_launch_actions) {
-      switch (initAction.type) {
-        case "run_survey":
-          await this._deprecatedSurveyService.runSurvey(initAction.value as any);
-          break;
-        case "template_popup":
-          await this.templateService.runStandaloneTemplate(initAction.value, {
-            showCloseButton: false,
-          });
-          break;
-        case "tour_start":
-          await this.tourService.startTour(initAction.value);
-          break;
-        default:
-          console.error("Startup action not defined:", initAction);
-          break;
-      }
-    }
   }
 
   clickOnMenuItem(id: string) {

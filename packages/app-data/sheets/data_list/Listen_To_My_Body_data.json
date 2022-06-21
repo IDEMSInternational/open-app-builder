@@ -153,7 +153,7 @@
       "id": "page_6",
       "page_no": 6,
       "illustration": "EFMStorybooks/EFM-SB-LTMB-6.jpg",
-      "story_text": "And I can make my breath noisier. Ssssssssssss!\n\nAnd softer.\nMmmmmmmm.",
+      "story_text": "And I can make my breath noisier. \nSsssssssssss!\n\nAnd softer.\nMmmmmmmm.",
       "_translations": {
         "story_text": {},
         "annotation_1": {},
@@ -162,7 +162,7 @@
       },
       "_translatedFields": {
         "story_text": {
-          "eng": "And I can make my breath noisier. Ssssssssssss!\n\nAnd softer.\nMmmmmmmm."
+          "eng": "And I can make my breath noisier. \nSsssssssssss!\n\nAnd softer.\nMmmmmmmm."
         },
         "annotation_1": {
           "eng": "She is making her toy fly around by blowing on it very hard. When have you blown hard on something?"
@@ -252,17 +252,17 @@
           "eng": "Now see, my heart is beating faster."
         },
         "annotation_1": {
-          "eng": "Have you ever seen your own heart beating in yuor chest? Is it possible to see it?"
+          "eng": "Have you ever seen your own heart beating in your chest? Is it possible to see it?"
         },
         "annotation_2": {
-          "eng": "The storyteller and artist are streatching the truth a bit here. Have you ever stretched the truth a bit to make a story a little more interesting?"
+          "eng": "The storyteller and artist are stretching the truth a bit here. Have you ever stretched the truth a bit to make a story a little more interesting?"
         },
         "annotation_3": {
           "eng": "Her toy is covering its ears because the heart is beating so loudly. Is it possible to hear someone else's heart from a distance?"
         }
       },
-      "annotation_1": "Have you ever seen your own heart beating in yuor chest? Is it possible to see it?",
-      "annotation_2": "The storyteller and artist are streatching the truth a bit here. Have you ever stretched the truth a bit to make a story a little more interesting?",
+      "annotation_1": "Have you ever seen your own heart beating in your chest? Is it possible to see it?",
+      "annotation_2": "The storyteller and artist are stretching the truth a bit here. Have you ever stretched the truth a bit to make a story a little more interesting?",
       "annotation_3": "Her toy is covering its ears because the heart is beating so loudly. Is it possible to hear someone else's heart from a distance?"
     },
     {

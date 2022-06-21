@@ -1,0 +1,246 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Where_Is_My_Cat_pages",
+  "status": "released",
+  "data_list_name": "Where_Is_My_Cat_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-WIMC-1.jpg",
+      "story_text": "Where is my cat?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Where is my cat?"
+        },
+        "annotation_1": {
+          "eng": "This cat is very good at hiding. The dark black of this cat helps it hide."
+        },
+        "annotation_2": {
+          "eng": "What kinds of places would make it easy to see this cat?"
+        },
+        "annotation_3": {
+          "eng": "Where do you like to hide?"
+        }
+      },
+      "annotation_1": "This cat is very good at hiding. The dark black of this cat helps it hide.",
+      "annotation_2": "What kinds of places would make it easy to see this cat?",
+      "annotation_3": "Where do you like to hide?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-WIMC-2.jpg",
+      "story_text": "Is it under the bed?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Is it under the bed?"
+        },
+        "annotation_1": {
+          "eng": "Was the cat under the bed before the boy looked there?"
+        },
+        "annotation_2": {
+          "eng": "This bed cover has lots of colorful stripes. Count how many different colors it has."
+        },
+        "annotation_3": {
+          "eng": "The walls in this room have a free form design that doesn't repeat. Have you  seen walls like this before?"
+        }
+      },
+      "annotation_1": "Was the cat under the bed before the boy looked there?",
+      "annotation_2": "This bed cover has lots of colorful stripes. Count how many different colors it has.",
+      "annotation_3": "The walls in this room have a free form design that doesn't repeat. Have you  seen walls like this before?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-WIMC-3.jpg",
+      "story_text": "Is it on top of the cupboard?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Is it on top of the cupboard?"
+        },
+        "annotation_1": {
+          "eng": "Instead of being on top of the cupboard, the cat is inside it."
+        },
+        "annotation_2": {
+          "eng": "This cupboard has a beautiful design. How many colors does it have?"
+        },
+        "annotation_3": {
+          "eng": "Talk about the shapes and patterns on the cupboard doors."
+        }
+      },
+      "annotation_1": "Instead of being on top of the cupboard, the cat is inside it.",
+      "annotation_2": "This cupboard has a beautiful design. How many colors does it have?",
+      "annotation_3": "Talk about the shapes and patterns on the cupboard doors."
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-WIMC-4.jpg",
+      "story_text": "Is it behind the couch?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Is it behind the couch?"
+        },
+        "annotation_1": {
+          "eng": "The cat is very easy to see right now. Too bad the boy is looking in the wrong place."
+        },
+        "annotation_2": {
+          "eng": "Point at the strong colors on this page: red, orange, yellow, green, blue, and brown."
+        },
+        "annotation_3": {
+          "eng": "Which colors of the rainbow are missing from the room?"
+        }
+      },
+      "annotation_1": "The cat is very easy to see right now. Too bad the boy is looking in the wrong place.",
+      "annotation_2": "Point at the strong colors on this page: red, orange, yellow, green, blue, and brown.",
+      "annotation_3": "Which colors of the rainbow are missing from the room?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-WIMC-5.jpg",
+      "story_text": "Is it next to the trash can?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Is it next to the trash can?"
+        },
+        "annotation_1": {
+          "eng": "The cat must be very fast and quiet -- he was next to where the boy is now."
+        },
+        "annotation_2": {
+          "eng": "Count the red bricks just below the window."
+        },
+        "annotation_3": {
+          "eng": "There are many straight lines in this picture. Point to some curved lines."
+        }
+      },
+      "annotation_1": "The cat must be very fast and quiet -- he was next to where the boy is now.",
+      "annotation_2": "Count the red bricks just below the window.",
+      "annotation_3": "There are many straight lines in this picture. Point to some curved lines."
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-WIMC-6.jpg",
+      "story_text": "Is it inside the basket?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Is it inside the basket?"
+        },
+        "annotation_1": {
+          "eng": "Which part of the cat is not inside the SOAP box?"
+        },
+        "annotation_2": {
+          "eng": "What is inside the basket? Is that where the cat sleeps?"
+        },
+        "annotation_3": {
+          "eng": "Notice that the wall does not line up with the squares of the floor."
+        }
+      },
+      "annotation_1": "Which part of the cat is not inside the SOAP box?",
+      "annotation_2": "What is inside the basket? Is that where the cat sleeps?",
+      "annotation_3": "Notice that the wall does not line up with the squares of the floor."
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-WIMC-7.jpg",
+      "story_text": "Is it outside the house?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Is it outside the house?"
+        },
+        "annotation_1": {
+          "eng": "That poor boy is always looking in the wrong place."
+        },
+        "annotation_2": {
+          "eng": "Do you think the boy ever finds the cat, or will the boy give up?"
+        },
+        "annotation_3": {
+          "eng": "This is the same wall pattern as on the last page, but the floor is a different color!"
+        }
+      },
+      "annotation_1": "That poor boy is always looking in the wrong place.",
+      "annotation_2": "Do you think the boy ever finds the cat, or will the boy give up?",
+      "annotation_3": "This is the same wall pattern as on the last page, but the floor is a different color!"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-WIMC-8.jpg",
+      "story_text": "Here it is!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Here it is!"
+        },
+        "annotation_1": {
+          "eng": "It looks like the cat is in a cupboard or under a sink."
+        },
+        "annotation_2": {
+          "eng": "Was the cat playing a game with the boy?"
+        },
+        "annotation_3": {
+          "eng": "What will the boy do with the cat now? Maybe he will feed it or play with it? What do you think?"
+        }
+      },
+      "annotation_1": "It looks like the cat is in a cupboard or under a sink.",
+      "annotation_2": "Was the cat playing a game with the boy?",
+      "annotation_3": "What will the boy do with the cat now? Maybe he will feed it or play with it? What do you think?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-WIMC-9.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

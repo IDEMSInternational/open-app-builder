@@ -311,3 +311,15 @@ export function deepMergeObjects(target: any, ...sources: any) {
 function isObject(item: any) {
   return item && typeof item === "object" && !Array.isArray(item);
 }
+
+/**
+ * An alternative to the every() Array method that can handle
+ * a predicate function that is asynchronous
+ * From https://advancedweb.hu/how-to-use-async-functions-with-array-some-and-every-in-javascript/
+ */
+export async function asyncEvery(arr: any[], predicate: Function) {
+  for (const el of arr) {
+    if (!(await predicate(el))) return false;
+  }
+  return true;
+}

@@ -10,21 +10,23 @@
     },
     {
       "type": "button",
-      "name": "button_reset",
-      "value": "Reset app",
+      "name": "button_privacy",
+      "value": "Privacy policy",
       "_translations": {
         "value": {}
       },
       "action_list": [
         {
           "trigger": "click",
-          "action_id": "reset_app",
-          "args": [],
-          "_raw": "click | reset_app",
-          "_cleaned": "click | reset_app"
+          "action_id": "go_to",
+          "args": [
+            "app_menu_privacy_policy"
+          ],
+          "_raw": "click | go_to: app_menu_privacy_policy",
+          "_cleaned": "click | go_to: app_menu_privacy_policy"
         }
       ],
-      "_nested_name": "button_reset"
+      "_nested_name": "button_privacy"
     },
     {
       "type": "button",
@@ -48,8 +50,8 @@
     },
     {
       "type": "button",
-      "name": "button_privacy",
-      "value": "Privacy policy",
+      "name": "button_tour",
+      "value": "Tour list",
       "_translations": {
         "value": {}
       },
@@ -58,13 +60,31 @@
           "trigger": "click",
           "action_id": "go_to",
           "args": [
-            "app_menu_privacy_policy"
+            "/tour"
           ],
-          "_raw": "click | go_to: app_menu_privacy_policy",
-          "_cleaned": "click | go_to: app_menu_privacy_policy"
+          "_raw": "click | go_to:/tour",
+          "_cleaned": "click | go_to:/tour"
         }
       ],
-      "_nested_name": "button_privacy"
+      "_nested_name": "button_tour"
+    },
+    {
+      "type": "button",
+      "name": "button_reset",
+      "value": "Reset app",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "reset_app",
+          "args": [],
+          "_raw": "click | reset_app",
+          "_cleaned": "click | reset_app"
+        }
+      ],
+      "_nested_name": "button_reset"
     }
   ],
   "_xlsxPath": "EFM_high_level_sheets.xlsx"

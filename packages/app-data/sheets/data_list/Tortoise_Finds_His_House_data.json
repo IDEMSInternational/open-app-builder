@@ -1,0 +1,449 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Tortoise_Finds_His_House_data",
+  "status": "released",
+  "data_list_name": "Tortoise_Finds_His_House_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-TFHH-1.jpg",
+      "story_text": "One day Tortoise was walking through the countryside. He was looking for something. He gazed into the distance and squinted at the grass. Then he walked past Snail.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "One day Tortoise was walking through the countryside. He was looking for something. He gazed into the distance and squinted at the grass. Then he walked past Snail."
+        },
+        "annotation_1": {
+          "eng": "Tortoise is looking for his house. Do you think he forgot it or did he never know where it was? Do you know where Tortoise's house is?"
+        },
+        "annotation_2": {
+          "eng": "Do you know where Snail's house is?"
+        },
+        "annotation_3": {
+          "eng": "Where do you live? Is your house easy to find, or do you need help finding your house sometimes?"
+        }
+      },
+      "annotation_1": "Tortoise is looking for his house. Do you think he forgot it or did he never know where it was? Do you know where Tortoise's house is?",
+      "annotation_2": "Do you know where Snail's house is?",
+      "annotation_3": "Where do you live? Is your house easy to find, or do you need help finding your house sometimes?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-TFHH-2.jpg",
+      "story_text": "Are you looking for something?\" Snail asked. \"Yes, Snail, I'm looking for my house. Have you seen it, by any chance?\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Are you looking for something?\" Snail asked. \"Yes, Snail, I'm looking for my house. Have you seen it, by any chance?\""
+        },
+        "annotation_1": {
+          "eng": "Can you remember having trouble finding something and discovering it was easy to find all along?"
+        },
+        "annotation_2": {
+          "eng": "When you don't think of how to do something that is easy to do, how do you feel? Does it frustrate you? People overlook things all the time, it's very easy to do!"
+        },
+        "annotation_3": {
+          "eng": "It's fun to imagine animals talking together like this. If you could talk with an animal, what would you ask them?"
+        }
+      },
+      "annotation_1": "Can you remember having trouble finding something and discovering it was easy to find all along?",
+      "annotation_2": "When you don't think of how to do something that is easy to do, how do you feel? Does it frustrate you? People overlook things all the time, it's very easy to do!",
+      "annotation_3": "It's fun to imagine animals talking together like this. If you could talk with an animal, what would you ask them?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-TFHH-3.jpg",
+      "story_text": "Snail said, \"No, I haven't, but I'll help you look!\" She climbed onto Tortoise's shell.\n\nTortoise walked on with Snail on his back. They looked and looked, but there was no sign of a house. The sun was high in the sky.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Snail said, \"No, I haven't, but I'll help you look!\" She climbed onto Tortoise's shell.\n\nTortoise walked on with Snail on his back. They looked and looked, but there was no sign of a house. The sun was high in the sky."
+        },
+        "annotation_1": {
+          "eng": "Why didn't Snail and Tortoise walk together side by side?"
+        },
+        "annotation_2": {
+          "eng": "The average speed of a tortoise is about 20 times faster than a snail. The average speed of a person is about five times faster than a tortoise."
+        },
+        "annotation_3": {
+          "eng": "Why did the story mention where the sun is? Do you think something interesting is going to happen with the sun?"
+        }
+      },
+      "annotation_1": "Why didn't Snail and Tortoise walk together side by side?",
+      "annotation_2": "The average speed of a tortoise is about 20 times faster than a snail. The average speed of a person is about five times faster than a tortoise.",
+      "annotation_3": "Why did the story mention where the sun is? Do you think something interesting is going to happen with the sun?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-TFHH-4.jpg",
+      "story_text": "A little later they passed Sparrow.\n\n\"Are you looking for something?\" asked Sparrow. \"Yes, Sparrow, I'm looking for my house. Have you seen it, by any chance?\" Sparrow said, \"No, I haven't, but I'll help you look!\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "A little later they passed Sparrow.\n\n\"Are you looking for something?\" asked Sparrow. \"Yes, Sparrow, I'm looking for my house. Have you seen it, by any chance?\" Sparrow said, \"No, I haven't, but I'll help you look!\""
+        },
+        "annotation_1": {
+          "eng": "The leaves of each branch are paired up except for one leaf at the very end. When things are paired up with one left over, that means there are an odd number of them."
+        },
+        "annotation_2": {
+          "eng": "When you have an odd number of something, you can't share it equally with two people. If you can share something equally, that means you have an even number of things. Two and four are examples of even numbers. Can you think of some other even numbers?"
+        },
+        "annotation_3": {
+          "eng": "It's even trickier to think of numbers that can be shared equally by three people? Can you think of any examples of this?"
+        }
+      },
+      "annotation_1": "The leaves of each branch are paired up except for one leaf at the very end. When things are paired up with one left over, that means there are an odd number of them.",
+      "annotation_2": "When you have an odd number of something, you can't share it equally with two people. If you can share something equally, that means you have an even number of things. Two and four are examples of even numbers. Can you think of some other even numbers?",
+      "annotation_3": "It's even trickier to think of numbers that can be shared equally by three people? Can you think of any examples of this?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-TFHH-5.jpg",
+      "story_text": "The average speed of a tortoise is about 20 times faster than a snail. The average speed of a person is about five times faster than a tortoise.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The average speed of a tortoise is about 20 times faster than a snail. The average speed of a person is about five times faster than a tortoise."
+        },
+        "annotation_1": {
+          "eng": "The average speed of a sparrow is at least 10 times faster than a person, so it is about 50 times faster than a tortoise!"
+        },
+        "annotation_2": {
+          "eng": "What a huge range of speeds! Sparrow is 50 times faster than Tortoise, and Tortoise is 20 times faster than Snail!"
+        },
+        "annotation_3": {
+          "eng": "Fortunately for Tortoise, Sparrow and Snail are very light to carry. Have you ever carried a heavy load for a long distance?"
+        }
+      },
+      "annotation_1": "The average speed of a sparrow is at least 10 times faster than a person, so it is about 50 times faster than a tortoise!",
+      "annotation_2": "What a huge range of speeds! Sparrow is 50 times faster than Tortoise, and Tortoise is 20 times faster than Snail!",
+      "annotation_3": "Fortunately for Tortoise, Sparrow and Snail are very light to carry. Have you ever carried a heavy load for a long distance?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-TFHH-6.jpg",
+      "story_text": "Tortoise carried on, with Snail and Sparrow perched on his shell. They looked and looked, but there was no sign of a house. The sun had inched lower in the sky.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Tortoise carried on, with Snail and Sparrow perched on his shell. They looked and looked, but there was no sign of a house. The sun had inched lower in the sky."
+        },
+        "annotation_1": {
+          "eng": "Why does the story keep mentioning where the sun is? Where was the sun the last time it was mentioned?"
+        },
+        "annotation_2": {
+          "eng": "Mentioning the sun's position is a way for the story to let us know that time is passing and it is getting later in the day."
+        },
+        "annotation_3": {
+          "eng": "It is getting later and the group is still not successful. What do you think happens next? WIll Tortoise give up?"
+        }
+      },
+      "annotation_1": "Why does the story keep mentioning where the sun is? Where was the sun the last time it was mentioned?",
+      "annotation_2": "Mentioning the sun's position is a way for the story to let us know that time is passing and it is getting later in the day.",
+      "annotation_3": "It is getting later and the group is still not successful. What do you think happens next? WIll Tortoise give up?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-TFHH-7.jpg",
+      "story_text": "A little later they passed Ladybird. \"Are you looking for something?\" asked Ladybird. \"Yes, Ladybird, I'm looking for my house. Have you seen it, by any chance?\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "A little later they passed Ladybird. \"Are you looking for something?\" asked Ladybird. \"Yes, Ladybird, I'm looking for my house. Have you seen it, by any chance?\""
+        },
+        "annotation_1": {
+          "eng": "There are many names for ladybirds -- they are also called ladybugs, lady beetles, lady clocks, and lady flies. There are many thousands of types of ladybirds in the world!"
+        },
+        "annotation_2": {
+          "eng": "Although ladybugs do not fly for very long, they can briefly fly as fast as a sparrow!"
+        },
+        "annotation_3": {
+          "eng": "Ladybirds can have different numbers of spots. How many spots have you seen on a ladybird?"
+        }
+      },
+      "annotation_1": "There are many names for ladybirds -- they are also called ladybugs, lady beetles, lady clocks, and lady flies. There are many thousands of types of ladybirds in the world!",
+      "annotation_2": "Although ladybugs do not fly for very long, they can briefly fly as fast as a sparrow!",
+      "annotation_3": "Ladybirds can have different numbers of spots. How many spots have you seen on a ladybird?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-TFHH-8.jpg",
+      "story_text": "Ladybird said, \"No, I haven't, but I'll help you look!\" She hopped onto Tortoise's back and on he went, with Snail and Sparrow and Ladybird on his back.\n\nThey looked and looked, but there was no sign of a house. A breeze started to blow.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Ladybird said, \"No, I haven't, but I'll help you look!\" She hopped onto Tortoise's back and on he went, with Snail and Sparrow and Ladybird on his back.\n\nThey looked and looked, but there was no sign of a house. A breeze started to blow."
+        },
+        "annotation_1": {
+          "eng": "Tortoise is lucky. A ladybird is another very light animal to carry."
+        },
+        "annotation_2": {
+          "eng": "It is getting later in the day and a breeze is start to blow. Hmm ... What do you think will happen with the weather?"
+        },
+        "annotation_3": {
+          "eng": "It's hard to see all of Tortoise's shell. What's your best estimate for how many yellow regions are in his shell? An estimate is an educated guess."
+        }
+      },
+      "annotation_1": "Tortoise is lucky. A ladybird is another very light animal to carry.",
+      "annotation_2": "It is getting later in the day and a breeze is start to blow. Hmm ... What do you think will happen with the weather?",
+      "annotation_3": "It's hard to see all of Tortoise's shell. What's your best estimate for how many yellow regions are in his shell? An estimate is an educated guess."
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-TFHH-9.jpg",
+      "story_text": "A little later they passed Mouse. He was making a garland of daisies. \"Are you looking for something?\" asked Mouse. \"Yes, Mouse, I'm looking for my house. Have you seen it, by any chance?\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "A little later they passed Mouse. He was making a garland of daisies. \"Are you looking for something?\" asked Mouse. \"Yes, Mouse, I'm looking for my house. Have you seen it, by any chance?\""
+        },
+        "annotation_1": {
+          "eng": "Estimate and then count the number of daisies. Do the same for the number of dark spots on Tortoise."
+        },
+        "annotation_2": {
+          "eng": "Are there more daisies or spots, and how many more are there?"
+        },
+        "annotation_3": {
+          "eng": "What happened to all the animals Tortoise was carrying? Where do you think they went?"
+        }
+      },
+      "annotation_1": "Estimate and then count the number of daisies. Do the same for the number of dark spots on Tortoise.",
+      "annotation_2": "Are there more daisies or spots, and how many more are there?",
+      "annotation_3": "What happened to all the animals Tortoise was carrying? Where do you think they went?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-TFHH-10.jpg",
+      "story_text": "Mouse said: \"No, I haven't, but I'll help you loo!\" She hopped onto Tortoise's back. \"Wait, I can't leave my flowers behind.\" Tortoise waited. Mouse stretched and stretched and scooped up her daisies.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Mouse said: \"No, I haven't, but I'll help you loo!\" She hopped onto Tortoise's back. \"Wait, I can't leave my flowers behind.\" Tortoise waited. Mouse stretched and stretched and scooped up her daisies."
+        },
+        "annotation_1": {
+          "eng": "How much help have the other animals been? Do you think Tortoise could have done just as well alone?"
+        },
+        "annotation_2": {
+          "eng": "Which kinds of things do you like to do with others, and which do you like to do by yourself?"
+        },
+        "annotation_3": {
+          "eng": "Estimate and count the leaves blowing around Tortoise. Are your estimates getting better?"
+        }
+      },
+      "annotation_1": "How much help have the other animals been? Do you think Tortoise could have done just as well alone?",
+      "annotation_2": "Which kinds of things do you like to do with others, and which do you like to do by yourself?",
+      "annotation_3": "Estimate and count the leaves blowing around Tortoise. Are your estimates getting better?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-TFHH-11.jpg",
+      "story_text": "Tortoise walked on, with Snail and Sparrow and Ladybird and Mouse on his back. They looked and looked, but there was no sign of a house. The wind swept leaves off the ground and swirled them around Tortoise's feet. He was tired. \"You lot are heavy,\" he sighed.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Tortoise walked on, with Snail and Sparrow and Ladybird and Mouse on his back. They looked and looked, but there was no sign of a house. The wind swept leaves off the ground and swirled them around Tortoise's feet. He was tired. \"You lot are heavy,\" he sighed."
+        },
+        "annotation_1": {
+          "eng": "The wind is getting stronger. The weather is changing!"
+        },
+        "annotation_2": {
+          "eng": "Do you notice the weather changing when a storm comes? The wind picks up and there are more clouds."
+        },
+        "annotation_3": {
+          "eng": "Do you enjoy the excitement of a storm coming in? Sometimes there is lightning and thunder! Do you enjoy the thunder, or is it scary, or perhaps some of both?"
+        }
+      },
+      "annotation_1": "The wind is getting stronger. The weather is changing!",
+      "annotation_2": "Do you notice the weather changing when a storm comes? The wind picks up and there are more clouds.",
+      "annotation_3": "Do you enjoy the excitement of a storm coming in? Sometimes there is lightning and thunder! Do you enjoy the thunder, or is it scary, or perhaps some of both?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-TFHH-12.jpg",
+      "story_text": "The wind got stronger. The sky turned dark. \"Oh, where is my house?\" asked Tortoise. Thunder roared in the hills. Lightning flashed in the distance. Drip-drip came the rain.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The wind got stronger. The sky turned dark. \"Oh, where is my house?\" asked Tortoise. Thunder roared in the hills. Lightning flashed in the distance. Drip-drip came the rain."
+        },
+        "annotation_1": {
+          "eng": "Why does Tortoise want to find his house so urgently now?"
+        },
+        "annotation_2": {
+          "eng": "Usually, people look for shelter when a storm comes. Do you see anyplace that could give them shelter?"
+        },
+        "annotation_3": {
+          "eng": "Have you ever been caught out in an open area when a storm came up suddenly? If you don't mind getting wet, it can be fun to experience being in the storm!"
+        }
+      },
+      "annotation_1": "Why does Tortoise want to find his house so urgently now?",
+      "annotation_2": "Usually, people look for shelter when a storm comes. Do you see anyplace that could give them shelter?",
+      "annotation_3": "Have you ever been caught out in an open area when a storm came up suddenly? If you don't mind getting wet, it can be fun to experience being in the storm!"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-TFHH-13.jpg",
+      "story_text": "The wind swirled and whipped. It blew Snail and Sparrow and Ladybird and Mouse right off Tortoise's back.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The wind swirled and whipped. It blew Snail and Sparrow and Ladybird and Mouse right off Tortoise's back."
+        },
+        "annotation_1": {
+          "eng": "There are many parts of this picture that show how strongly the wind is blowing things around. Describe a few of them."
+        },
+        "annotation_2": {
+          "eng": "Is the rain coming down vertically (straight up and down), or is the wind blowing the rain diagonally?"
+        },
+        "annotation_3": {
+          "eng": "The diagonal rain is all falling in the same direction. Parallel lines are lines that go in the same direction. Find some parallel lines around where you are."
+        }
+      },
+      "annotation_1": "There are many parts of this picture that show how strongly the wind is blowing things around. Describe a few of them.",
+      "annotation_2": "Is the rain coming down vertically (straight up and down), or is the wind blowing the rain diagonally?",
+      "annotation_3": "The diagonal rain is all falling in the same direction. Parallel lines are lines that go in the same direction. Find some parallel lines around where you are."
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-TFHH-14.jpg",
+      "story_text": "And then came the hail, tip-tip-tip. Tortoise got such a fright he shrank into his shell. It was warm and cozy in there. \"Oh, here is my house!\" smiled Tortoise.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "And then came the hail, tip-tip-tip. Tortoise got such a fright he shrank into his shell. It was warm and cozy in there. \"Oh, here is my house!\" smiled Tortoise."
+        },
+        "annotation_1": {
+          "eng": "Tortoise solved his problem when he got distracted and stopped looking for the answer. Sometimes, when we focus too hard on something, it's hard to have new ideas and find an answer."
+        },
+        "annotation_2": {
+          "eng": "Have you ever stopped thinking about something, relaxed for a while, and then suddenly realized the answer? It can be very powerful to let a different part of your brain work on a problem!"
+        },
+        "annotation_3": {
+          "eng": "Tortoise found his shell was a warm and cozy place, and that meant home to Tortoise! What does home mean to you?"
+        }
+      },
+      "annotation_1": "Tortoise solved his problem when he got distracted and stopped looking for the answer. Sometimes, when we focus too hard on something, it's hard to have new ideas and find an answer.",
+      "annotation_2": "Have you ever stopped thinking about something, relaxed for a while, and then suddenly realized the answer? It can be very powerful to let a different part of your brain work on a problem!",
+      "annotation_3": "Tortoise found his shell was a warm and cozy place, and that meant home to Tortoise! What does home mean to you?"
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-TFHH-15.jpg",
+      "story_text": "Oh, here is Tortoise's house! said Snail and Robin and Mouse.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Oh, here is Tortoise's house! said Snail and Robin and Mouse."
+        },
+        "annotation_1": {
+          "eng": "The hail coming down on Tortoise's shell probably made a lot of noise. Imagine the racket! Have you ever heard hail falling on a roof or hard surface?"
+        },
+        "annotation_2": {
+          "eng": "It is easy for Tortoise to carry his home wherever he goes. Is your home easy to carry around, or is it a structure that would be very hard to move?"
+        },
+        "annotation_3": {
+          "eng": "A nice thing about a home, if it is big enough, is that it can be shared with friends. It looks like a happy time for our group of friends in the story!"
+        }
+      },
+      "annotation_1": "The hail coming down on Tortoise's shell probably made a lot of noise. Imagine the racket! Have you ever heard hail falling on a roof or hard surface?",
+      "annotation_2": "It is easy for Tortoise to carry his home wherever he goes. Is your home easy to carry around, or is it a structure that would be very hard to move?",
+      "annotation_3": "A nice thing about a home, if it is big enough, is that it can be shared with friends. It looks like a happy time for our group of friends in the story!"
+    },
+    {
+      "id": "page_16",
+      "page_no": 16,
+      "illustration": "EFMStorybooks/EFM-SB-TFHH-16.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

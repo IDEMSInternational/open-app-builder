@@ -1,0 +1,468 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Where_Is_Lulu_pages",
+  "status": "released",
+  "data_list_name": "Where_Is_Lulu_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-1.jpg",
+      "story_text": "Oh, no!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Oh, no!"
+        },
+        "annotation_1": {
+          "eng": "Lulu is scared of something. She is holding that book very tightly -- perhaps her fear has something to do with the book?"
+        },
+        "annotation_2": {
+          "eng": "What are some things that scare you?"
+        },
+        "annotation_3": {
+          "eng": "What do you do when you are scared? Do you go to someone or maybe find a safe place?"
+        }
+      },
+      "annotation_1": "Lulu is scared of something. She is holding that book very tightly -- perhaps her fear has something to do with the book?",
+      "annotation_2": "What are some things that scare you?",
+      "annotation_3": "What do you do when you are scared? Do you go to someone or maybe find a safe place?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-2.jpg",
+      "story_text": "Lulu, it is time to go, calls Ma.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Lulu, it is time to go, calls Ma."
+        },
+        "annotation_1": {
+          "eng": "Lulu is running away from her mother. Where do you think she will hide?"
+        },
+        "annotation_2": {
+          "eng": "What do you think is Lulu's favorite color? How can you tell?"
+        },
+        "annotation_3": {
+          "eng": "Is Lulu walking or running? How can you tell?"
+        }
+      },
+      "annotation_1": "Lulu is running away from her mother. Where do you think she will hide?",
+      "annotation_2": "What do you think is Lulu's favorite color? How can you tell?",
+      "annotation_3": "Is Lulu walking or running? How can you tell?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-3.jpg",
+      "story_text": "Where is Lulu?\n\nIs she under the sofa?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Where is Lulu?\n\nIs she under the sofa?"
+        },
+        "annotation_1": {
+          "eng": "Lulu is hiding. Do you see Lulu?"
+        },
+        "annotation_2": {
+          "eng": "Count together the cushions and window panes."
+        },
+        "annotation_3": {
+          "eng": "Are there more or less cushions than window panes? What is the difference -- how far apart are the two numbers?"
+        }
+      },
+      "annotation_1": "Lulu is hiding. Do you see Lulu?",
+      "annotation_2": "Count together the cushions and window panes.",
+      "annotation_3": "Are there more or less cushions than window panes? What is the difference -- how far apart are the two numbers?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-4.jpg",
+      "story_text": "Is she behind the curtain?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Is she behind the curtain?"
+        },
+        "annotation_1": {
+          "eng": "That's a clever disguise for Lulu. Why does her clothing make her stand out?"
+        },
+        "annotation_2": {
+          "eng": "Count together the number of legs on the lamp table. Do you have any tables around you with that many legs?"
+        },
+        "annotation_3": {
+          "eng": "The number of legs on the lamp table is one less than the number on the couch.  Three is one less than what number?"
+        }
+      },
+      "annotation_1": "That's a clever disguise for Lulu. Why does her clothing make her stand out?",
+      "annotation_2": "Count together the number of legs on the lamp table. Do you have any tables around you with that many legs?",
+      "annotation_3": "The number of legs on the lamp table is one less than the number on the couch.  Three is one less than what number?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-5.jpg",
+      "story_text": "Where is Lulu?\n\nIs she next to the stove?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Where is Lulu?\n\nIs she next to the stove?"
+        },
+        "annotation_1": {
+          "eng": "Guess where Lulu is hiding in the kitchen."
+        },
+        "annotation_2": {
+          "eng": "Count the cabinet knobs together."
+        },
+        "annotation_3": {
+          "eng": "Point at all the round things you can find in this kitchen -- there are quite a few."
+        }
+      },
+      "annotation_1": "Guess where Lulu is hiding in the kitchen.",
+      "annotation_2": "Count the cabinet knobs together.",
+      "annotation_3": "Point at all the round things you can find in this kitchen -- there are quite a few."
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-6.jpg",
+      "story_text": "Is she in the cupboard?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Is she in the cupboard?"
+        },
+        "annotation_1": {
+          "eng": "Once again, Lulu picked a clever hiding place, but her colors don't fit in with the colors in the kitchen."
+        },
+        "annotation_2": {
+          "eng": "A rectangle is a four-sided shape like this page. Count the rectangles you see on this page."
+        },
+        "annotation_3": {
+          "eng": "A cylinder is a shape like a jar with straight sides. There are five cylinders on the top shelf (the bowl is not a cylinder). How many are there on Lulu's shelf? Is it the same number?"
+        }
+      },
+      "annotation_1": "Once again, Lulu picked a clever hiding place, but her colors don't fit in with the colors in the kitchen.",
+      "annotation_2": "A rectangle is a four-sided shape like this page. Count the rectangles you see on this page.",
+      "annotation_3": "A cylinder is a shape like a jar with straight sides. There are five cylinders on the top shelf (the bowl is not a cylinder). How many are there on Lulu's shelf? Is it the same number?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-7.jpg",
+      "story_text": "Lulu, it is time to go! Where are you? calls Ma.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Lulu, it is time to go! Where are you? calls Ma."
+        },
+        "annotation_1": {
+          "eng": "Lulu blends in better this time. Do you see her?"
+        },
+        "annotation_2": {
+          "eng": "So many things to count! Point at and count together the blocks on the floor, the dolls, and the drawings on the wall."
+        },
+        "annotation_3": {
+          "eng": "Which group of things is the largest and which is the smallest?"
+        }
+      },
+      "annotation_1": "Lulu blends in better this time. Do you see her?",
+      "annotation_2": "So many things to count! Point at and count together the blocks on the floor, the dolls, and the drawings on the wall.",
+      "annotation_3": "Which group of things is the largest and which is the smallest?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-8.jpg",
+      "story_text": "There you are! says Ma.\n\n\"I do not want to gooo!\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "There you are! says Ma.\n\n\"I do not want to gooo!\""
+        },
+        "annotation_1": {
+          "eng": "Lulu is still holding her book tightly. Do you think Lulu is afraid her mother will take it away?"
+        },
+        "annotation_2": {
+          "eng": "Lulu seems like she can be difficult when she doesn't get her way. How are you when you don't get your way?"
+        },
+        "annotation_3": {
+          "eng": "Lulu's room has many rectangles. How many can you count?"
+        }
+      },
+      "annotation_1": "Lulu is still holding her book tightly. Do you think Lulu is afraid her mother will take it away?",
+      "annotation_2": "Lulu seems like she can be difficult when she doesn't get her way. How are you when you don't get your way?",
+      "annotation_3": "Lulu's room has many rectangles. How many can you count?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-9.jpg",
+      "story_text": "We have to go, says Ma.\n\n\"But I really like this one!\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "We have to go, says Ma.\n\n\"But I really like this one!\""
+        },
+        "annotation_1": {
+          "eng": "Lulu's book looks very big compared to Lulu. Do you think her book is really that big?"
+        },
+        "annotation_2": {
+          "eng": "Do you have a favorite book or story that you like to look through or have told to you? Have you heard the story many times?"
+        },
+        "annotation_3": {
+          "eng": "There are many kinds of stories. There are scary ones, funny ones, and some are adventures. Do you have a favorite type?"
+        }
+      },
+      "annotation_1": "Lulu's book looks very big compared to Lulu. Do you think her book is really that big?",
+      "annotation_2": "Do you have a favorite book or story that you like to look through or have told to you? Have you heard the story many times?",
+      "annotation_3": "There are many kinds of stories. There are scary ones, funny ones, and some are adventures. Do you have a favorite type?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-10.jpg",
+      "annotation_1": "This building has many rectangles. Most buildings use rectangles a lot for their sides and windows.",
+      "_translations": {
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "annotation_1": {
+          "eng": "This building has many rectangles. Most buildings use rectangles a lot for their sides and windows."
+        },
+        "annotation_2": {
+          "eng": "Triangles are three-sided shapes, and pentagons are five-sided shapes. There is a famous building called the Pentagon because it is made in the shape of a pentagon."
+        },
+        "annotation_3": {
+          "eng": "Why do you suppose buildings are not often made in the shape of a triangle or circle? Have you seen any buildings like that?"
+        }
+      },
+      "annotation_2": "Triangles are three-sided shapes, and pentagons are five-sided shapes. There is a famous building called the Pentagon because it is made in the shape of a pentagon.",
+      "annotation_3": "Why do you suppose buildings are not often made in the shape of a triangle or circle? Have you seen any buildings like that?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-11.jpg",
+      "annotation_1": "Where are they going? What does that big book on top of the building tell you about what this building is?",
+      "_translations": {
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "annotation_1": {
+          "eng": "Where are they going? What does that big book on top of the building tell you about what this building is?"
+        },
+        "annotation_2": {
+          "eng": "What is going to happen to Lulu's book at this library?"
+        },
+        "annotation_3": {
+          "eng": "Do you have a place where you can borrow books near where you live? Have you ever borrowed books there?"
+        }
+      },
+      "annotation_2": "What is going to happen to Lulu's book at this library?",
+      "annotation_3": "Do you have a place where you can borrow books near where you live? Have you ever borrowed books there?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-12.jpg",
+      "story_text": "I really like this one!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I really like this one!"
+        },
+        "annotation_1": {
+          "eng": "She found a new book very quickly. It didn't take Lulu long to forget about her old book."
+        },
+        "annotation_2": {
+          "eng": "How does Lulu feel about this new book? How can you tell?"
+        },
+        "annotation_3": {
+          "eng": "The windows behind Lulu have four sides and are almost rectangles. How are they different from rectangles?"
+        }
+      },
+      "annotation_1": "She found a new book very quickly. It didn't take Lulu long to forget about her old book.",
+      "annotation_2": "How does Lulu feel about this new book? How can you tell?",
+      "annotation_3": "The windows behind Lulu have four sides and are almost rectangles. How are they different from rectangles?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-13.jpg",
+      "story_text": "And this one!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "And this one!"
+        },
+        "annotation_1": {
+          "eng": "Lulu is a very enthusiastic person. Some people display their feelings a lot and others are quieter with them. Which are you?"
+        },
+        "annotation_2": {
+          "eng": "How many books do you think she will want to take home?"
+        },
+        "annotation_3": {
+          "eng": "Do you have a library near you? Do you like to check books out of the library?"
+        }
+      },
+      "annotation_1": "Lulu is a very enthusiastic person. Some people display their feelings a lot and others are quieter with them. Which are you?",
+      "annotation_2": "How many books do you think she will want to take home?",
+      "annotation_3": "Do you have a library near you? Do you like to check books out of the library?"
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-14.jpg",
+      "story_text": "And this one! \n\n\"And this one!\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "And this one! \n\n\"And this one!\""
+        },
+        "annotation_1": {
+          "eng": "How many Lulus are there in this picture? Why did the artist draw more than one?"
+        },
+        "annotation_2": {
+          "eng": "To count as Lulu grabs books, you would keep adding \"one more\" each time she added a book. What is one more than zero? What is one more than one? You can count as high as you like this way!"
+        },
+        "annotation_3": {
+          "eng": "Libraries are supposed to be quiet places. Do you think Lulu should be running around?"
+        }
+      },
+      "annotation_1": "How many Lulus are there in this picture? Why did the artist draw more than one?",
+      "annotation_2": "To count as Lulu grabs books, you would keep adding \"one more\" each time she added a book. What is one more than zero? What is one more than one? You can count as high as you like this way!",
+      "annotation_3": "Libraries are supposed to be quiet places. Do you think Lulu should be running around?"
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-15.jpg",
+      "story_text": "See, you return books and borrow more, says Ma.\n\n\"YAY!\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "See, you return books and borrow more, says Ma.\n\n\"YAY!\""
+        },
+        "annotation_1": {
+          "eng": "Why isn't Lulu sad about having to return her old book?"
+        },
+        "annotation_2": {
+          "eng": "Count together the books on the counter."
+        },
+        "annotation_3": {
+          "eng": "How many books do you think Lulu is checking out? What is the largest number you know?"
+        }
+      },
+      "annotation_1": "Why isn't Lulu sad about having to return her old book?",
+      "annotation_2": "Count together the books on the counter.",
+      "annotation_3": "How many books do you think Lulu is checking out? What is the largest number you know?"
+    },
+    {
+      "id": "page_16",
+      "page_no": 16,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-16.jpg",
+      "story_text": "Where is Lulu now?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Where is Lulu now?"
+        },
+        "annotation_1": {
+          "eng": "Lulu checked out a lot of books! Can you count them all?"
+        },
+        "annotation_2": {
+          "eng": "Do you think Lulu likes to look at and read books?"
+        },
+        "annotation_3": {
+          "eng": "Do you?"
+        }
+      },
+      "annotation_1": "Lulu checked out a lot of books! Can you count them all?",
+      "annotation_2": "Do you think Lulu likes to look at and read books?",
+      "annotation_3": "Do you?"
+    },
+    {
+      "id": "page_17",
+      "page_no": 17,
+      "illustration": "EFMStorybooks/EFM-SB-WIL-17.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}
