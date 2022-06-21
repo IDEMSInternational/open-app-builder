@@ -13207,7 +13207,6 @@ __metadata:
     rxjs: ^6.6.7
     simple-git-hooks: ^2.4.1
     stacktrace-js: ^2.0.2
-    subtitles-parser-vtt: ^0.1.0
     typescript: 4.4.2
     zone.js: ~0.11.4
   languageName: unknown
@@ -22591,6 +22590,7 @@ __metadata:
     jasmine-ts: ^0.3.2
     node-rsa: ^1.1.1
     pkg: ^5.5.1
+    subtitles-parser-vtt: ^0.1.0
     ts-node: ~7.0.0
     ts-node-dev: ^1.0.0
     typescript: ^4.1.2
