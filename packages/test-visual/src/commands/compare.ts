@@ -29,6 +29,7 @@ export default program
   .option("-c, --clean", "Clean output folder before generating")
   .option("-D --debug", "Run in debug mode (not headless)")
   .option("-C --concurrency <string>", "Max number of browser pages to process in parallel")
+  .option("-S --serve-www", "Serve production build from local www folder")
   .action(async (opts) => {
     const options = { ...DEFAULT_OPTIONS, ...opts };
     await new ScreenshotComparator(options).run();

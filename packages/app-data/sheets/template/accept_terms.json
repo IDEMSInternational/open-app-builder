@@ -153,6 +153,16 @@
           "_cleaned": "completed | emit:completed"
         },
         {
+          "trigger": "completed",
+          "action_id": "set_field",
+          "args": [
+            "terms_v20200916_accepted",
+            true
+          ],
+          "_raw": "completed | set_field: terms_v20200916_accepted: true",
+          "_cleaned": "completed | set_field: terms_v20200916_accepted: true"
+        },
+        {
           "trigger": "uncompleted",
           "action_id": "emit",
           "args": [
@@ -197,5 +207,5 @@
       "_nested_name": "nav_buttons"
     }
   ],
-  "_xlsxPath": "global/core_templates/core_templates_app_first_launch.xlsx"
+  "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"
 }
