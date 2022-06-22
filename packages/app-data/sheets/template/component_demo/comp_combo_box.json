@@ -1,0 +1,345 @@
+{
+  "flow_type": "template",
+  "flow_name": "comp_combo_box",
+  "status": "released",
+  "flow_subtype": "component_demo",
+  "rows": [
+    {
+      "type": "combo_box",
+      "name": "combo_box_default",
+      "_nested_name": "combo_box_default"
+    },
+    {
+      "type": "title",
+      "name": "title_1",
+      "value": "Answer list",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title_1"
+    },
+    {
+      "type": "combo_box",
+      "name": "combo_box_par_1_1",
+      "parameter_list": {
+        "answer_list": ""
+      },
+      "_nested_name": "combo_box_par_1_1"
+    },
+    {
+      "name": "answer_list",
+      "value": [
+        "name: name_1 | text: This is text 1",
+        "name: name_2 | text: This is text 2",
+        "name: name_3 | text: This is text 3"
+      ],
+      "type": "set_variable",
+      "_nested_name": "answer_list"
+    },
+    {
+      "type": "combo_box",
+      "name": "combo_box_par_1_2",
+      "parameter_list": {
+        "answer_list": "@local.answer_list",
+        "placeholder": "Click here to answer",
+        "input_allowed": "true",
+        "answer_placeholder": "Type your own"
+      },
+      "_nested_name": "combo_box_par_1_2",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title_2",
+      "value": "Input allowed",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title_2"
+    },
+    {
+      "type": "combo_box",
+      "name": "combo_box_par_2_1",
+      "value": "name: name_1 | text: This is text 1;  \nname: name_2 | text: This is text 2;  \nname: name_3 | text: This is text 3",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "input_allowed": "false",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "combo_box_par_2_1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "combo_box",
+      "name": "combo_box_par_2_2",
+      "value": "name: name_1 | text: This is text 1;  \nname: name_2 | text: This is text 2;  \nname: name_3 | text: This is text 3",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "input_allowed": "true",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "combo_box_par_2_2",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title_3",
+      "value": "Input_position",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title_3"
+    },
+    {
+      "type": "combo_box",
+      "name": "combo_box_par_3_1",
+      "value": "name: name_1 | text: This is text 1;  \nname: name_2 | text: This is text 2;  \nname: name_3 | text: This is text 3",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "input_position": "top",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "combo_box_par_3_1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "combo_box",
+      "name": "combo_box_par_3_2",
+      "value": "name: name_1 | text: This is text 1;  \nname: name_2 | text: This is text 2;  \nname: name_3 | text: This is text 3",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "input_position": "bottom",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "combo_box_par_3_2",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title_4",
+      "value": "Answer_placeholder",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title_4"
+    },
+    {
+      "type": "combo_box",
+      "name": "combo_box_par_4_1",
+      "value": "name: name_1 | text: This is text 1;  \nname: name_2 | text: This is text 2;  \nname: name_3 | text: This is text 3",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "answer_placeholder": "empty string",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "combo_box_par_4_1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "combo_box",
+      "name": "combo_box_par_4_2",
+      "value": "name: name_1 | text: This is text 1;  \nname: name_2 | text: This is text 2;  \nname: name_3 | text: This is text 3",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "answer_placeholder": "string",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "combo_box_par_4_2",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title_4",
+      "value": "Placeholder",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title_4"
+    },
+    {
+      "type": "combo_box",
+      "name": "combo_box_par_4_1",
+      "value": "name: name_1 | text: This is text 1;  \nname: name_2 | text: This is text 2;  \nname: name_3 | text: This is text 3",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "placeholder": "null",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "combo_box_par_4_1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "combo_box",
+      "name": "combo_box_par_4_2",
+      "value": "name: name_1 | text: This is text 1;  \nname: name_2 | text: This is text 2;  \nname: name_3 | text: This is text 3",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "placeholder": "string",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "combo_box_par_4_2",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/component_sheets/component_combo_box.xlsx"
+}
