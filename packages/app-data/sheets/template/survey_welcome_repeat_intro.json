@@ -25,6 +25,16 @@
           ],
           "_raw": "uncompleted | emit:uncompleted",
           "_cleaned": "uncompleted | emit:uncompleted"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "set_field",
+          "args": [
+            "survey_welcome_started",
+            true
+          ],
+          "_raw": "completed | set_field: survey_welcome_started: true",
+          "_cleaned": "completed | set_field: survey_welcome_started: true"
         }
       ],
       "rows": [],

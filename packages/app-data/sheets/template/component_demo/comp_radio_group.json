@@ -27,13 +27,40 @@
       "_nested_name": "radio_group_par_1_1"
     },
     {
+      "name": "answer_list",
+      "value": [
+        "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+        "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+        "name:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+        "name:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg"
+      ],
+      "type": "set_variable",
+      "_nested_name": "answer_list"
+    },
+    {
       "type": "radio_group",
       "name": "radio_group_par_1_2",
       "parameter_list": {
-        "answer_list": "name",
-        "name": "name_var_4 | text"
+        "answer_list": "@local.answer_list"
       },
-      "_nested_name": "radio_group_par_1_2"
+      "_nested_name": "radio_group_par_1_2",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
     },
     {
       "type": "title",
@@ -47,26 +74,92 @@
     {
       "type": "radio_group",
       "name": "radio_group_par_2_1",
-      "parameter_list": {
-        "radio_button_type": "btn_text"
+      "value": "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg; \nname:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+      "_translations": {
+        "value": {}
       },
-      "_nested_name": "radio_group_par_2_1"
+      "parameter_list": {
+        "radio_button_type": "btn_text",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "radio_group_par_2_1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
     },
     {
       "type": "radio_group",
       "name": "radio_group_par_2_2",
-      "parameter_list": {
-        "radio_button_type": "btn_square"
+      "value": "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg; \nname:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+      "_translations": {
+        "value": {}
       },
-      "_nested_name": "radio_group_par_2_2"
+      "parameter_list": {
+        "radio_button_type": "btn_square",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "radio_group_par_2_2",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
     },
     {
       "type": "radio_group",
       "name": "radio_group_par_2_3",
-      "parameter_list": {
-        "radio_button_type": "btn_image"
+      "value": "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg; \nname:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+      "_translations": {
+        "value": {}
       },
-      "_nested_name": "radio_group_par_2_3"
+      "parameter_list": {
+        "radio_button_type": "btn_image",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "radio_group_par_2_3",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
     },
     {
       "type": "title",
@@ -80,18 +173,62 @@
     {
       "type": "radio_group",
       "name": "radio_group_par_3_1",
-      "parameter_list": {
-        "options_per_row": "2"
+      "value": "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg; \nname:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+      "_translations": {
+        "value": {}
       },
-      "_nested_name": "radio_group_par_3_1"
+      "parameter_list": {
+        "options_per_row": "2",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "radio_group_par_3_1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
     },
     {
       "type": "radio_group",
       "name": "radio_group_par_3_2",
-      "parameter_list": {
-        "options_per_row": "5"
+      "value": "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg; \nname:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+      "_translations": {
+        "value": {}
       },
-      "_nested_name": "radio_group_par_3_2"
+      "parameter_list": {
+        "options_per_row": "5",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "radio_group_par_3_2",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
     },
     {
       "type": "title",
@@ -105,34 +242,122 @@
     {
       "type": "radio_group",
       "name": "radio_group_par_4_1",
-      "parameter_list": {
-        "style": "''"
+      "value": "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg; \nname:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+      "_translations": {
+        "value": {}
       },
-      "_nested_name": "radio_group_par_4_1"
+      "parameter_list": {
+        "style": "''",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "radio_group_par_4_1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
     },
     {
       "type": "radio_group",
       "name": "radio_group_par_4_2",
-      "parameter_list": {
-        "style": "full"
+      "value": "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg; \nname:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+      "_translations": {
+        "value": {}
       },
-      "_nested_name": "radio_group_par_4_2"
+      "parameter_list": {
+        "style": "full",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "radio_group_par_4_2",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
     },
     {
       "type": "radio_group",
       "name": "radio_group_par_4_3",
-      "parameter_list": {
-        "style": "standard"
+      "value": "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg; \nname:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+      "_translations": {
+        "value": {}
       },
-      "_nested_name": "radio_group_par_4_3"
+      "parameter_list": {
+        "style": "standard",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "radio_group_par_4_3",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
     },
     {
       "type": "radio_group",
       "name": "radio_group_par_4_4",
-      "parameter_list": {
-        "style": "''"
+      "value": "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg;\nname:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg; \nname:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+      "_translations": {
+        "value": {}
       },
-      "_nested_name": "radio_group_par_4_4"
+      "parameter_list": {
+        "style": "''",
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "radio_group_par_4_4",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
     }
   ],
   "_xlsxPath": "quality_assurance/component_sheets/component_radio_group.xlsx"

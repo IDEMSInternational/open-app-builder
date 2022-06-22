@@ -1,0 +1,108 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_final_cme",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "survey_question_cme",
+      "value": "survey_question_cme",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "box_slider",
+          "rows": [
+            {
+              "name": "survey_name",
+              "value": "survey_final",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_cme.box_slider.survey_name"
+            },
+            {
+              "name": "reply_less",
+              "value": "Well done. Brain science shows that controlling your anger improves your teen’s brain development. Be proud of yourself.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_cme.box_slider.reply_less"
+            },
+            {
+              "name": "reply_greater_equal",
+              "value": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_cme.box_slider.reply_greater_equal",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.",
+                    "matchedExpression": "@global.weekly_workshop",
+                    "type": "global",
+                    "fieldName": "weekly_workshop"
+                  },
+                  {
+                    "fullExpression": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.",
+                    "matchedExpression": "@data.parent_centre.my_tips.location_text",
+                    "type": "data",
+                    "fieldName": "parent_centre"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.weekly_workshop": [
+                  "value"
+                ],
+                "@data.parent_centre.my_tips.location_text": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "survey_question_cme.box_slider"
+        }
+      ],
+      "_nested_name": "survey_question_cme"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey_final.xlsx"
+}
