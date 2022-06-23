@@ -38,6 +38,30 @@
       }
     },
     {
+      "name": "app_version",
+      "value": "_v@fields._app_version",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "app_version",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "_v@fields._app_version",
+            "matchedExpression": "@fields._app_version",
+            "type": "fields",
+            "fieldName": "_app_version"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._app_version": [
+          "value"
+        ]
+      }
+    },
+    {
       "name": "yes_no",
       "value": "_yes_no",
       "_translations": {
@@ -105,7 +129,7 @@
     },
     {
       "name": "radio_group_tracker",
-      "value": "@local.survey_name@local.underscore_question_id@local.yes_no",
+      "value": "@local.survey_name@local.underscore_question_id@local.yes_no@local.app_version",
       "_translations": {
         "value": {}
       },
@@ -115,22 +139,28 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.survey_name@local.underscore_question_id@local.yes_no",
+            "fullExpression": "@local.survey_name@local.underscore_question_id@local.yes_no@local.app_version",
             "matchedExpression": "@local.survey_name",
             "type": "local",
             "fieldName": "survey_name"
           },
           {
-            "fullExpression": "@local.survey_name@local.underscore_question_id@local.yes_no",
+            "fullExpression": "@local.survey_name@local.underscore_question_id@local.yes_no@local.app_version",
             "matchedExpression": "@local.underscore_question_id",
             "type": "local",
             "fieldName": "underscore_question_id"
           },
           {
-            "fullExpression": "@local.survey_name@local.underscore_question_id@local.yes_no",
+            "fullExpression": "@local.survey_name@local.underscore_question_id@local.yes_no@local.app_version",
             "matchedExpression": "@local.yes_no",
             "type": "local",
             "fieldName": "yes_no"
+          },
+          {
+            "fullExpression": "@local.survey_name@local.underscore_question_id@local.yes_no@local.app_version",
+            "matchedExpression": "@local.app_version",
+            "type": "local",
+            "fieldName": "app_version"
           }
         ]
       },
@@ -143,6 +173,9 @@
         ],
         "@local.yes_no": [
           "value"
+        ],
+        "@local.app_version": [
+          "value"
         ]
       }
     },
@@ -154,7 +187,7 @@
     },
     {
       "name": "slider_tracker",
-      "value": "@local.survey_name@local.underscore_question_id",
+      "value": "@local.survey_name@local.underscore_question_id@local.app_version",
       "_translations": {
         "value": {}
       },
@@ -164,16 +197,22 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.survey_name@local.underscore_question_id",
+            "fullExpression": "@local.survey_name@local.underscore_question_id@local.app_version",
             "matchedExpression": "@local.survey_name",
             "type": "local",
             "fieldName": "survey_name"
           },
           {
-            "fullExpression": "@local.survey_name@local.underscore_question_id",
+            "fullExpression": "@local.survey_name@local.underscore_question_id@local.app_version",
             "matchedExpression": "@local.underscore_question_id",
             "type": "local",
             "fieldName": "underscore_question_id"
+          },
+          {
+            "fullExpression": "@local.survey_name@local.underscore_question_id@local.app_version",
+            "matchedExpression": "@local.app_version",
+            "type": "local",
+            "fieldName": "app_version"
           }
         ]
       },
@@ -182,6 +221,9 @@
           "value"
         ],
         "@local.underscore_question_id": [
+          "value"
+        ],
+        "@local.app_version": [
           "value"
         ]
       }
