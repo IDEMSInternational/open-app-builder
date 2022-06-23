@@ -62,12 +62,7 @@
           "value": "Great that you are aware of what your teen is doing. Parenting is hard, but you’re really succeeding in this to keep them safe.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

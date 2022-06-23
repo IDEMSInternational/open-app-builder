@@ -46,12 +46,7 @@
               "value": "This is a real concern for parents everywhere. Remember to use your new skills to continue to build good communication with your teen. \n\nYou can review core tips on planning for your teen’s safety in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",

@@ -2250,18 +2250,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 1.7,
         md5Checksum: "863b1dc416755fd6e7075e9da48862d4",
       },
-      za_af: {
-        size_kb: 2,
-        md5Checksum: "bc171b6b66335b3ebb3e6e641bde0b78",
-      },
-      za_st: {
-        size_kb: 2,
-        md5Checksum: "0a82badf875cce535d3ed0504dd053fd",
-      },
-      za_tn: {
-        size_kb: 1.9,
-        md5Checksum: "1108e9d18835084b836c046d82b443f3",
-      },
     },
   },
   "quality_assurance/test_audio.mp3": {

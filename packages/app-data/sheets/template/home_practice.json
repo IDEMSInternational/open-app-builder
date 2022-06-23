@@ -359,10 +359,7 @@
                   "value": "Hear a teen's testimonial",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true
+                      "tz_sw": true
                     }
                   },
                   "type": "set_variable",
@@ -403,10 +400,7 @@
                   "value": "Read a teen's testimonial",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true
+                      "tz_sw": true
                     }
                   },
                   "action_list": [
