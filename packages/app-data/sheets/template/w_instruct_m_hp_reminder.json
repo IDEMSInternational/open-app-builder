@@ -274,7 +274,10 @@
               "value": "You’ve marked the @global.parent_point @data.habit.instruct_positively.title @fields.parent_point_count_instruct_positively times already  – so you’re making great progress.",
               "_translations": {
                 "value": {
-                  "tz_sw": true
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true
                 }
               },
               "condition": "@fields.parent_point_count_instruct_positively > 1",
