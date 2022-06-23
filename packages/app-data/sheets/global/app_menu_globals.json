@@ -21,7 +21,7 @@
     {
       "type": "declare_global_constant",
       "name": "test_mode_code",
-      "value": "ParentApp_test",
+      "value": "ParentApp_Test",
       "_translations": {
         "value": {}
       },
