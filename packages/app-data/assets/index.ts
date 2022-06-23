@@ -2691,8 +2691,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "1c172282f4c58766a03562d1eb88a4a4",
     translations: {
       tz_sw: {
-        size_kb: 1.8,
-        md5Checksum: "7ed1d70fbd4893c46d27aacfe93defd2",
+        size_kb: 1.7,
+        md5Checksum: "863b1dc416755fd6e7075e9da48862d4",
       },
     },
   },
