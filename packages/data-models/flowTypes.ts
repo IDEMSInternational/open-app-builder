@@ -178,6 +178,14 @@ export namespace FlowTypes {
     _cleaned?: string;
     _parsed?: string[][];
   }
+  export interface Lifecycle_Action {
+    lifecycle_event: LifecycleEvent;
+    id: string;
+    priority?: number; // priority order in which to run actions
+    condition_list?: string[];
+    action_list: TemplateRowAction[];
+  }
+  export type LifecycleEvent = "app_start"; // scope to add app_open, app_close, app_minimize, app_first_start etc.
   export interface RowWithActivationConditions {
     /** evaluated statements for activating campaign */
     activation_condition_list?: DataEvaluationCondition[];

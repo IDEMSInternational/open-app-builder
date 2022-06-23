@@ -1,5 +1,21 @@
 export const UNTRACKED_ASSETS = [];
 export const ASSETS_CONTENTS_LIST = {
+  "android/icon-background.png": {
+    size_kb: 6.4,
+    md5Checksum: "36ea4af913dffebba39598547c17e73c",
+  },
+  "android/icon-foreground.png": {
+    size_kb: 20.8,
+    md5Checksum: "e1846bdf186f1e2c7e8fd253f1a1ce94",
+  },
+  "android/icon.png": {
+    size_kb: 27.7,
+    md5Checksum: "98b3661351720ace9d1a2f3642fbe492",
+  },
+  "android/splash.png": {
+    size_kb: 80.9,
+    md5Checksum: "3e225d2f52e559606e7a90184f28d6e4",
+  },
   "i18n/flags/gb.svg": {
     size_kb: 0.5,
     md5Checksum: "d3ddd6025a06a78535b0d432d14905bf",
@@ -2229,6 +2245,24 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_video/lets_slow_down.vtt": {
     size_kb: 1.8,
     md5Checksum: "1c172282f4c58766a03562d1eb88a4a4",
+    translations: {
+      tz_sw: {
+        size_kb: 1.7,
+        md5Checksum: "863b1dc416755fd6e7075e9da48862d4",
+      },
+      za_af: {
+        size_kb: 2,
+        md5Checksum: "bc171b6b66335b3ebb3e6e641bde0b78",
+      },
+      za_st: {
+        size_kb: 2,
+        md5Checksum: "0a82badf875cce535d3ed0504dd053fd",
+      },
+      za_tn: {
+        size_kb: 1.9,
+        md5Checksum: "1108e9d18835084b836c046d82b443f3",
+      },
+    },
   },
   "quality_assurance/test_audio.mp3": {
     size_kb: 43.4,

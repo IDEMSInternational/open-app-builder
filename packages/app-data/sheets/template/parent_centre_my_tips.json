@@ -29,8 +29,8 @@
     },
     {
       "type": "display_group",
-      "name": "survey_not_completed",
-      "condition": "!@field.survey_completed",
+      "name": "dg_if_empty",
+      "condition": "!@fields.survey_completed && @fields.w_self_care_tools_disabled && @fields.w_1on1_tools_disabled && @fields.w_praise_tools_disabled && @fields.w_instruct_tools_disabled && @fields.w_stress_tools_disabled && @fields.w_money_tools_disabled && @fields.w_rules_tools_disabled && @fields.w_consequence_tools_disabled && @fields.w_solve_tools_disabled && @fields.w_safe_tools_disabled && @fields.w_crisis_tools_disabled && @fields.w_celebrate_tools_disabled",
       "parameter_list": {
         "style": "column"
       },
@@ -44,7 +44,7 @@
               "tz_sw": true
             }
           },
-          "_nested_name": "survey_not_completed.text_if_empty"
+          "_nested_name": "dg_if_empty.text_if_empty"
         },
         {
           "type": "display_group",
@@ -72,7 +72,7 @@
                 "icon_src": "@data.parent_centre.customisation.icon_asset",
                 "first_line_text": "@data.parent_centre.customisation.title"
               },
-              "_nested_name": "survey_not_completed.tile.tile_customisation",
+              "_nested_name": "dg_if_empty.tile.tile_customisation",
               "_dynamicFields": {
                 "parameter_list": {
                   "icon_src": [
@@ -103,22 +103,130 @@
               }
             }
           ],
-          "_nested_name": "survey_not_completed.tile"
+          "_nested_name": "dg_if_empty.tile"
         }
       ],
-      "_nested_name": "survey_not_completed",
+      "_nested_name": "dg_if_empty",
       "_dynamicFields": {
         "condition": [
           {
-            "fullExpression": "!@field.survey_completed",
-            "matchedExpression": "!@field.survey_completed",
-            "type": "field",
+            "fullExpression": "!@fields.survey_completed && @fields.w_self_care_tools_disabled && @fields.w_1on1_tools_disabled && @fields.w_praise_tools_disabled && @fields.w_instruct_tools_disabled && @fields.w_stress_tools_disabled && @fields.w_money_tools_disabled && @fields.w_rules_tools_disabled && @fields.w_consequence_tools_disabled && @fields.w_solve_tools_disabled && @fields.w_safe_tools_disabled && @fields.w_crisis_tools_disabled && @fields.w_celebrate_tools_disabled",
+            "matchedExpression": "!@fields.survey_completed",
+            "type": "fields",
             "fieldName": "survey_completed"
+          },
+          {
+            "fullExpression": "!@fields.survey_completed && @fields.w_self_care_tools_disabled && @fields.w_1on1_tools_disabled && @fields.w_praise_tools_disabled && @fields.w_instruct_tools_disabled && @fields.w_stress_tools_disabled && @fields.w_money_tools_disabled && @fields.w_rules_tools_disabled && @fields.w_consequence_tools_disabled && @fields.w_solve_tools_disabled && @fields.w_safe_tools_disabled && @fields.w_crisis_tools_disabled && @fields.w_celebrate_tools_disabled",
+            "matchedExpression": "@fields.w_self_care_tools_disabled",
+            "type": "fields",
+            "fieldName": "w_self_care_tools_disabled"
+          },
+          {
+            "fullExpression": "!@fields.survey_completed && @fields.w_self_care_tools_disabled && @fields.w_1on1_tools_disabled && @fields.w_praise_tools_disabled && @fields.w_instruct_tools_disabled && @fields.w_stress_tools_disabled && @fields.w_money_tools_disabled && @fields.w_rules_tools_disabled && @fields.w_consequence_tools_disabled && @fields.w_solve_tools_disabled && @fields.w_safe_tools_disabled && @fields.w_crisis_tools_disabled && @fields.w_celebrate_tools_disabled",
+            "matchedExpression": "@fields.w_1on1_tools_disabled",
+            "type": "fields",
+            "fieldName": "w_1on1_tools_disabled"
+          },
+          {
+            "fullExpression": "!@fields.survey_completed && @fields.w_self_care_tools_disabled && @fields.w_1on1_tools_disabled && @fields.w_praise_tools_disabled && @fields.w_instruct_tools_disabled && @fields.w_stress_tools_disabled && @fields.w_money_tools_disabled && @fields.w_rules_tools_disabled && @fields.w_consequence_tools_disabled && @fields.w_solve_tools_disabled && @fields.w_safe_tools_disabled && @fields.w_crisis_tools_disabled && @fields.w_celebrate_tools_disabled",
+            "matchedExpression": "@fields.w_praise_tools_disabled",
+            "type": "fields",
+            "fieldName": "w_praise_tools_disabled"
+          },
+          {
+            "fullExpression": "!@fields.survey_completed && @fields.w_self_care_tools_disabled && @fields.w_1on1_tools_disabled && @fields.w_praise_tools_disabled && @fields.w_instruct_tools_disabled && @fields.w_stress_tools_disabled && @fields.w_money_tools_disabled && @fields.w_rules_tools_disabled && @fields.w_consequence_tools_disabled && @fields.w_solve_tools_disabled && @fields.w_safe_tools_disabled && @fields.w_crisis_tools_disabled && @fields.w_celebrate_tools_disabled",
+            "matchedExpression": "@fields.w_instruct_tools_disabled",
+            "type": "fields",
+            "fieldName": "w_instruct_tools_disabled"
+          },
+          {
+            "fullExpression": "!@fields.survey_completed && @fields.w_self_care_tools_disabled && @fields.w_1on1_tools_disabled && @fields.w_praise_tools_disabled && @fields.w_instruct_tools_disabled && @fields.w_stress_tools_disabled && @fields.w_money_tools_disabled && @fields.w_rules_tools_disabled && @fields.w_consequence_tools_disabled && @fields.w_solve_tools_disabled && @fields.w_safe_tools_disabled && @fields.w_crisis_tools_disabled && @fields.w_celebrate_tools_disabled",
+            "matchedExpression": "@fields.w_stress_tools_disabled",
+            "type": "fields",
+            "fieldName": "w_stress_tools_disabled"
+          },
+          {
+            "fullExpression": "!@fields.survey_completed && @fields.w_self_care_tools_disabled && @fields.w_1on1_tools_disabled && @fields.w_praise_tools_disabled && @fields.w_instruct_tools_disabled && @fields.w_stress_tools_disabled && @fields.w_money_tools_disabled && @fields.w_rules_tools_disabled && @fields.w_consequence_tools_disabled && @fields.w_solve_tools_disabled && @fields.w_safe_tools_disabled && @fields.w_crisis_tools_disabled && @fields.w_celebrate_tools_disabled",
+            "matchedExpression": "@fields.w_money_tools_disabled",
+            "type": "fields",
+            "fieldName": "w_money_tools_disabled"
+          },
+          {
+            "fullExpression": "!@fields.survey_completed && @fields.w_self_care_tools_disabled && @fields.w_1on1_tools_disabled && @fields.w_praise_tools_disabled && @fields.w_instruct_tools_disabled && @fields.w_stress_tools_disabled && @fields.w_money_tools_disabled && @fields.w_rules_tools_disabled && @fields.w_consequence_tools_disabled && @fields.w_solve_tools_disabled && @fields.w_safe_tools_disabled && @fields.w_crisis_tools_disabled && @fields.w_celebrate_tools_disabled",
+            "matchedExpression": "@fields.w_rules_tools_disabled",
+            "type": "fields",
+            "fieldName": "w_rules_tools_disabled"
+          },
+          {
+            "fullExpression": "!@fields.survey_completed && @fields.w_self_care_tools_disabled && @fields.w_1on1_tools_disabled && @fields.w_praise_tools_disabled && @fields.w_instruct_tools_disabled && @fields.w_stress_tools_disabled && @fields.w_money_tools_disabled && @fields.w_rules_tools_disabled && @fields.w_consequence_tools_disabled && @fields.w_solve_tools_disabled && @fields.w_safe_tools_disabled && @fields.w_crisis_tools_disabled && @fields.w_celebrate_tools_disabled",
+            "matchedExpression": "@fields.w_consequence_tools_disabled",
+            "type": "fields",
+            "fieldName": "w_consequence_tools_disabled"
+          },
+          {
+            "fullExpression": "!@fields.survey_completed && @fields.w_self_care_tools_disabled && @fields.w_1on1_tools_disabled && @fields.w_praise_tools_disabled && @fields.w_instruct_tools_disabled && @fields.w_stress_tools_disabled && @fields.w_money_tools_disabled && @fields.w_rules_tools_disabled && @fields.w_consequence_tools_disabled && @fields.w_solve_tools_disabled && @fields.w_safe_tools_disabled && @fields.w_crisis_tools_disabled && @fields.w_celebrate_tools_disabled",
+            "matchedExpression": "@fields.w_solve_tools_disabled",
+            "type": "fields",
+            "fieldName": "w_solve_tools_disabled"
+          },
+          {
+            "fullExpression": "!@fields.survey_completed && @fields.w_self_care_tools_disabled && @fields.w_1on1_tools_disabled && @fields.w_praise_tools_disabled && @fields.w_instruct_tools_disabled && @fields.w_stress_tools_disabled && @fields.w_money_tools_disabled && @fields.w_rules_tools_disabled && @fields.w_consequence_tools_disabled && @fields.w_solve_tools_disabled && @fields.w_safe_tools_disabled && @fields.w_crisis_tools_disabled && @fields.w_celebrate_tools_disabled",
+            "matchedExpression": "@fields.w_safe_tools_disabled",
+            "type": "fields",
+            "fieldName": "w_safe_tools_disabled"
+          },
+          {
+            "fullExpression": "!@fields.survey_completed && @fields.w_self_care_tools_disabled && @fields.w_1on1_tools_disabled && @fields.w_praise_tools_disabled && @fields.w_instruct_tools_disabled && @fields.w_stress_tools_disabled && @fields.w_money_tools_disabled && @fields.w_rules_tools_disabled && @fields.w_consequence_tools_disabled && @fields.w_solve_tools_disabled && @fields.w_safe_tools_disabled && @fields.w_crisis_tools_disabled && @fields.w_celebrate_tools_disabled",
+            "matchedExpression": "@fields.w_crisis_tools_disabled",
+            "type": "fields",
+            "fieldName": "w_crisis_tools_disabled"
+          },
+          {
+            "fullExpression": "!@fields.survey_completed && @fields.w_self_care_tools_disabled && @fields.w_1on1_tools_disabled && @fields.w_praise_tools_disabled && @fields.w_instruct_tools_disabled && @fields.w_stress_tools_disabled && @fields.w_money_tools_disabled && @fields.w_rules_tools_disabled && @fields.w_consequence_tools_disabled && @fields.w_solve_tools_disabled && @fields.w_safe_tools_disabled && @fields.w_crisis_tools_disabled && @fields.w_celebrate_tools_disabled",
+            "matchedExpression": "@fields.w_celebrate_tools_disabled",
+            "type": "fields",
+            "fieldName": "w_celebrate_tools_disabled"
           }
         ]
       },
       "_dynamicDependencies": {
-        "!@field.survey_completed": [
+        "!@fields.survey_completed": [
+          "condition"
+        ],
+        "@fields.w_self_care_tools_disabled": [
+          "condition"
+        ],
+        "@fields.w_1on1_tools_disabled": [
+          "condition"
+        ],
+        "@fields.w_praise_tools_disabled": [
+          "condition"
+        ],
+        "@fields.w_instruct_tools_disabled": [
+          "condition"
+        ],
+        "@fields.w_stress_tools_disabled": [
+          "condition"
+        ],
+        "@fields.w_money_tools_disabled": [
+          "condition"
+        ],
+        "@fields.w_rules_tools_disabled": [
+          "condition"
+        ],
+        "@fields.w_consequence_tools_disabled": [
+          "condition"
+        ],
+        "@fields.w_solve_tools_disabled": [
+          "condition"
+        ],
+        "@fields.w_safe_tools_disabled": [
+          "condition"
+        ],
+        "@fields.w_crisis_tools_disabled": [
+          "condition"
+        ],
+        "@fields.w_celebrate_tools_disabled": [
           "condition"
         ]
       }
@@ -134,7 +242,7 @@
           "type": "template",
           "name": "workshop_1",
           "value": "tool_tile",
-          "condition": "!@field.w_self_care_tools_disabled",
+          "condition": "!@fields.w_self_care_tools_disabled",
           "rows": [
             {
               "name": "workshop_data",
@@ -165,15 +273,15 @@
           "_dynamicFields": {
             "condition": [
               {
-                "fullExpression": "!@field.w_self_care_tools_disabled",
-                "matchedExpression": "!@field.w_self_care_tools_disabled",
-                "type": "field",
+                "fullExpression": "!@fields.w_self_care_tools_disabled",
+                "matchedExpression": "!@fields.w_self_care_tools_disabled",
+                "type": "fields",
                 "fieldName": "w_self_care_tools_disabled"
               }
             ]
           },
           "_dynamicDependencies": {
-            "!@field.w_self_care_tools_disabled": [
+            "!@fields.w_self_care_tools_disabled": [
               "condition"
             ]
           }
@@ -182,7 +290,7 @@
           "type": "template",
           "name": "workshop_2",
           "value": "tool_tile",
-          "condition": "!@field.w_1on1_tools_disabled",
+          "condition": "!@fields.w_1on1_tools_disabled",
           "rows": [
             {
               "name": "workshop_data",
@@ -213,15 +321,15 @@
           "_dynamicFields": {
             "condition": [
               {
-                "fullExpression": "!@field.w_1on1_tools_disabled",
-                "matchedExpression": "!@field.w_1on1_tools_disabled",
-                "type": "field",
+                "fullExpression": "!@fields.w_1on1_tools_disabled",
+                "matchedExpression": "!@fields.w_1on1_tools_disabled",
+                "type": "fields",
                 "fieldName": "w_1on1_tools_disabled"
               }
             ]
           },
           "_dynamicDependencies": {
-            "!@field.w_1on1_tools_disabled": [
+            "!@fields.w_1on1_tools_disabled": [
               "condition"
             ]
           }
@@ -230,7 +338,7 @@
           "type": "template",
           "name": "workshop_3",
           "value": "tool_tile",
-          "condition": "!@field.w_praise_tools_disabled",
+          "condition": "!@fields.w_praise_tools_disabled",
           "rows": [
             {
               "name": "workshop_data",
@@ -261,15 +369,15 @@
           "_dynamicFields": {
             "condition": [
               {
-                "fullExpression": "!@field.w_praise_tools_disabled",
-                "matchedExpression": "!@field.w_praise_tools_disabled",
-                "type": "field",
+                "fullExpression": "!@fields.w_praise_tools_disabled",
+                "matchedExpression": "!@fields.w_praise_tools_disabled",
+                "type": "fields",
                 "fieldName": "w_praise_tools_disabled"
               }
             ]
           },
           "_dynamicDependencies": {
-            "!@field.w_praise_tools_disabled": [
+            "!@fields.w_praise_tools_disabled": [
               "condition"
             ]
           }
@@ -278,7 +386,7 @@
           "type": "template",
           "name": "workshop_4",
           "value": "tool_tile",
-          "condition": "!@field.w_instruct_tools_disabled",
+          "condition": "!@fields.w_instruct_tools_disabled",
           "rows": [
             {
               "name": "workshop_data",
@@ -309,15 +417,15 @@
           "_dynamicFields": {
             "condition": [
               {
-                "fullExpression": "!@field.w_instruct_tools_disabled",
-                "matchedExpression": "!@field.w_instruct_tools_disabled",
-                "type": "field",
+                "fullExpression": "!@fields.w_instruct_tools_disabled",
+                "matchedExpression": "!@fields.w_instruct_tools_disabled",
+                "type": "fields",
                 "fieldName": "w_instruct_tools_disabled"
               }
             ]
           },
           "_dynamicDependencies": {
-            "!@field.w_instruct_tools_disabled": [
+            "!@fields.w_instruct_tools_disabled": [
               "condition"
             ]
           }
@@ -326,7 +434,7 @@
           "type": "template",
           "name": "workshop_5",
           "value": "tool_tile",
-          "condition": "!@field.w_stress_tools_disabled",
+          "condition": "!@fields.w_stress_tools_disabled",
           "rows": [
             {
               "name": "workshop_data",
@@ -357,15 +465,15 @@
           "_dynamicFields": {
             "condition": [
               {
-                "fullExpression": "!@field.w_stress_tools_disabled",
-                "matchedExpression": "!@field.w_stress_tools_disabled",
-                "type": "field",
+                "fullExpression": "!@fields.w_stress_tools_disabled",
+                "matchedExpression": "!@fields.w_stress_tools_disabled",
+                "type": "fields",
                 "fieldName": "w_stress_tools_disabled"
               }
             ]
           },
           "_dynamicDependencies": {
-            "!@field.w_stress_tools_disabled": [
+            "!@fields.w_stress_tools_disabled": [
               "condition"
             ]
           }
@@ -374,7 +482,7 @@
           "type": "template",
           "name": "workshop_6",
           "value": "tool_tile",
-          "condition": "!@field.w_money_tools_disabled",
+          "condition": "!@fields.w_money_tools_disabled",
           "rows": [
             {
               "name": "workshop_data",
@@ -405,15 +513,15 @@
           "_dynamicFields": {
             "condition": [
               {
-                "fullExpression": "!@field.w_money_tools_disabled",
-                "matchedExpression": "!@field.w_money_tools_disabled",
-                "type": "field",
+                "fullExpression": "!@fields.w_money_tools_disabled",
+                "matchedExpression": "!@fields.w_money_tools_disabled",
+                "type": "fields",
                 "fieldName": "w_money_tools_disabled"
               }
             ]
           },
           "_dynamicDependencies": {
-            "!@field.w_money_tools_disabled": [
+            "!@fields.w_money_tools_disabled": [
               "condition"
             ]
           }
@@ -422,7 +530,7 @@
           "type": "template",
           "name": "workshop_7",
           "value": "tool_tile",
-          "condition": "!@field.w_rules_tools_disabled",
+          "condition": "!@fields.w_rules_tools_disabled",
           "rows": [
             {
               "name": "workshop_data",
@@ -453,15 +561,15 @@
           "_dynamicFields": {
             "condition": [
               {
-                "fullExpression": "!@field.w_rules_tools_disabled",
-                "matchedExpression": "!@field.w_rules_tools_disabled",
-                "type": "field",
+                "fullExpression": "!@fields.w_rules_tools_disabled",
+                "matchedExpression": "!@fields.w_rules_tools_disabled",
+                "type": "fields",
                 "fieldName": "w_rules_tools_disabled"
               }
             ]
           },
           "_dynamicDependencies": {
-            "!@field.w_rules_tools_disabled": [
+            "!@fields.w_rules_tools_disabled": [
               "condition"
             ]
           }
@@ -470,7 +578,7 @@
           "type": "template",
           "name": "workshop_8",
           "value": "tool_tile",
-          "condition": "!@field.w_consequence_tools_disabled",
+          "condition": "!@fields.w_consequence_tools_disabled",
           "rows": [
             {
               "name": "workshop_data",
@@ -501,15 +609,15 @@
           "_dynamicFields": {
             "condition": [
               {
-                "fullExpression": "!@field.w_consequence_tools_disabled",
-                "matchedExpression": "!@field.w_consequence_tools_disabled",
-                "type": "field",
+                "fullExpression": "!@fields.w_consequence_tools_disabled",
+                "matchedExpression": "!@fields.w_consequence_tools_disabled",
+                "type": "fields",
                 "fieldName": "w_consequence_tools_disabled"
               }
             ]
           },
           "_dynamicDependencies": {
-            "!@field.w_consequence_tools_disabled": [
+            "!@fields.w_consequence_tools_disabled": [
               "condition"
             ]
           }
@@ -518,7 +626,7 @@
           "type": "template",
           "name": "workshop_9",
           "value": "tool_tile",
-          "condition": "!@field.w_solve_tools_disabled",
+          "condition": "!@fields.w_solve_tools_disabled",
           "rows": [
             {
               "name": "workshop_data",
@@ -549,15 +657,15 @@
           "_dynamicFields": {
             "condition": [
               {
-                "fullExpression": "!@field.w_solve_tools_disabled",
-                "matchedExpression": "!@field.w_solve_tools_disabled",
-                "type": "field",
+                "fullExpression": "!@fields.w_solve_tools_disabled",
+                "matchedExpression": "!@fields.w_solve_tools_disabled",
+                "type": "fields",
                 "fieldName": "w_solve_tools_disabled"
               }
             ]
           },
           "_dynamicDependencies": {
-            "!@field.w_solve_tools_disabled": [
+            "!@fields.w_solve_tools_disabled": [
               "condition"
             ]
           }
@@ -566,7 +674,7 @@
           "type": "template",
           "name": "workshop_10",
           "value": "tool_tile",
-          "condition": "!@field.w_safe_tools_disabled",
+          "condition": "!@fields.w_safe_tools_disabled",
           "rows": [
             {
               "name": "workshop_data",
@@ -597,15 +705,15 @@
           "_dynamicFields": {
             "condition": [
               {
-                "fullExpression": "!@field.w_safe_tools_disabled",
-                "matchedExpression": "!@field.w_safe_tools_disabled",
-                "type": "field",
+                "fullExpression": "!@fields.w_safe_tools_disabled",
+                "matchedExpression": "!@fields.w_safe_tools_disabled",
+                "type": "fields",
                 "fieldName": "w_safe_tools_disabled"
               }
             ]
           },
           "_dynamicDependencies": {
-            "!@field.w_safe_tools_disabled": [
+            "!@fields.w_safe_tools_disabled": [
               "condition"
             ]
           }
@@ -614,7 +722,7 @@
           "type": "template",
           "name": "workshop_11",
           "value": "tool_tile",
-          "condition": "!@field.w_crisis_tools_disabled",
+          "condition": "!@fields.w_crisis_tools_disabled",
           "rows": [
             {
               "name": "workshop_data",
@@ -645,15 +753,15 @@
           "_dynamicFields": {
             "condition": [
               {
-                "fullExpression": "!@field.w_crisis_tools_disabled",
-                "matchedExpression": "!@field.w_crisis_tools_disabled",
-                "type": "field",
+                "fullExpression": "!@fields.w_crisis_tools_disabled",
+                "matchedExpression": "!@fields.w_crisis_tools_disabled",
+                "type": "fields",
                 "fieldName": "w_crisis_tools_disabled"
               }
             ]
           },
           "_dynamicDependencies": {
-            "!@field.w_crisis_tools_disabled": [
+            "!@fields.w_crisis_tools_disabled": [
               "condition"
             ]
           }
@@ -662,7 +770,7 @@
           "type": "template",
           "name": "workshop_12",
           "value": "tool_tile",
-          "condition": "!@field.w_celebrate_tools_disabled",
+          "condition": "!@fields.w_celebrate_tools_disabled",
           "rows": [
             {
               "name": "workshop_data",
@@ -693,15 +801,15 @@
           "_dynamicFields": {
             "condition": [
               {
-                "fullExpression": "!@field.w_celebrate_tools_disabled",
-                "matchedExpression": "!@field.w_celebrate_tools_disabled",
-                "type": "field",
+                "fullExpression": "!@fields.w_celebrate_tools_disabled",
+                "matchedExpression": "!@fields.w_celebrate_tools_disabled",
+                "type": "fields",
                 "fieldName": "w_celebrate_tools_disabled"
               }
             ]
           },
           "_dynamicDependencies": {
-            "!@field.w_celebrate_tools_disabled": [
+            "!@fields.w_celebrate_tools_disabled": [
               "condition"
             ]
           }
