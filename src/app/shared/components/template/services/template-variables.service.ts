@@ -375,7 +375,7 @@ export class TemplateVariablesService {
    * TODO - could also merge with standalone global method
    */
   private ensureValueTranslated(value: any) {
-    // If translatable value should be an object with _tranlsations property
+    // If translatable value should be an object with _translations property
     // TODO - check if case needs to be added to translate arrays
     if (value && typeof value === "object" && !Array.isArray(value)) {
       if (value.hasOwnProperty("_translations")) {

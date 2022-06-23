@@ -66,7 +66,10 @@
               "value": "Hi @fields.user_name! Congratulations for starting your third  @global.parent_app week. \n\nA new workshop awaits you! Can you guess the topic of the workshop from this picture?",
               "_translations": {
                 "value": {
-                  "tz_sw": true
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true
                 }
               },
               "condition": "!@local.do_workshops_together",
@@ -113,7 +116,10 @@
               "value": "Hi @fields.group_name! Congratulations for starting your third  @global.parent_app week. \n\nA new workshop awaits you! Can you guess the topic of the workshop from this picture?",
               "_translations": {
                 "value": {
-                  "tz_sw": true
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true
                 }
               },
               "condition": "@local.do_workshops_together",
