@@ -22,7 +22,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "slider_question": {},
+        "slider_question": {
+          "tz_sw": true
+        },
         "range_description": {
           "tz_sw": true,
           "za_af": true,
@@ -203,8 +205,12 @@
       "parent_text_question": "Q: Money is one of the biggest stresses for families now. How many days in the past week have you felt very worried or anxious about money? \n\nA: 0 – 7 days in the past week",
       "intro_text": "Money is one of the biggest stresses for families.",
       "_translations": {
-        "intro_text": {},
-        "slider_question": {},
+        "intro_text": {
+          "tz_sw": true
+        },
+        "slider_question": {
+          "tz_sw": true
+        },
         "range_description": {
           "tz_sw": true,
           "za_af": true,
@@ -381,9 +387,15 @@
           "za_xh": true,
           "za_zu": true
         },
-        "yes_no_question": {},
-        "example_text": {},
-        "slider_question": {},
+        "yes_no_question": {
+          "tz_sw": true
+        },
+        "example_text": {
+          "tz_sw": true
+        },
+        "slider_question": {
+          "tz_sw": true
+        },
         "range_description": {
           "tz_sw": true,
           "za_af": true,
@@ -424,10 +436,18 @@
       "parent_text_question": "Q: It can sometimes be difficult to have a positive relationship with our children. How confident do you feel about your ability as a parent/caregiver to have a positive relationship with your children? \n\nA: 0=not confident to 7=extremely confident",
       "intro_text": "It can sometimes be difficult to have a positive relationship with our children.",
       "_translations": {
-        "intro_text": {},
-        "slider_question": {},
-        "min_description": {},
-        "max_description": {}
+        "intro_text": {
+          "tz_sw": true
+        },
+        "slider_question": {
+          "tz_sw": true
+        },
+        "min_description": {
+          "tz_sw": true
+        },
+        "max_description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "intro_text": {

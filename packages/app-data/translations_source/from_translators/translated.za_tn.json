@@ -1,5 +1,77 @@
 [
   {
+    "SourceText": "When everything feels like it is falling apart",
+    "text": "Fa tsotlhe di utlwalega okare di a phutlhama",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "And you can't help but raise your voice",
+    "text": "Ebile o palela ke go itshwara mme o isa lentswe kwa godimo",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "When all the frustrations are beginning to start",
+    "text": "Fa tsotlhe tse di kgobang marapo di simolola",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Remember that you have a choice",
+    "text": "Gopola gore o na le boikgethelo",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Remember all we have to be grateful for",
+    "text": "Gopola tsotlhe tse o ka di lebogelang",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Let's slow down",
+    "text": "A re fokotse lobelo",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Take a few deep breaths",
+    "text": "Hemela kwa teng makgetlhonyana",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Because I really couldn't love you more",
+    "text": "Ka gonne ga go na gore nka go rata go fetisa",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "You can take pause, you can count to 10",
+    "text": "O ka emisa go se kae, o ka bala go fitlha ka 10",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Play a game or do something fun",
+    "text": "Tshameka motshameko kgotsa dira sengwe se se monate",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "You can phone a friend, someone to confide in",
+    "text": "O ka letsetsa tsala, mongwe yo o ka buang le ene",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Remember you're not the only one",
+    "text": "Gopola gore ga se wena fela",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "* Ask each other, “What made you happy today?”\n* Ask each other, “What difficulty did you face today?”\n* Ask each other, “How can I help you?”\n* Try to do this together every day; it could be when you are eating dinner together or before you go to bed.",
     "text": "* Botsanang gore, “Ke eng se se go itumedisitseng gompieno?”\n* Botsanang gore, “Ke bothata bofe jo o kopaneng le jone gompieno?”\n* Botsanang gore, “Nka go thusa jang?”\n* Lekang go dira seno mmogo letsatsi le letsatsi; e ka nna ka nako ya fa lo ja dijo tsa maitseboa mmogo kgotsa pele ga lo ya go robala.",
     "type": "template",
@@ -160,6 +232,12 @@
     "text": "Thempoleiti",
     "type": "template",
     "note": ""
+  },
+  {
+    "SourceText": "How to use @global.parent_app",
+    "text": "Go dirisa @global.parent_app",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
   },
   {
     "SourceText": "In-Week Messages",
@@ -576,6 +654,12 @@
     "note": ""
   },
   {
+    "SourceText": "Read along",
+    "text": "Buisa mmogo",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "See you soon.",
     "text": "Re tla go bona mo bogautshwaneng.",
     "type": "template",
@@ -602,6 +686,18 @@
   {
     "SourceText": "Small actions, big results! Parents who practice their workshop skills at home get better results.",
     "text": "Ditiro tse dinnye, dipholo tse di kgolo! Batsadi bao ba dirisang botswerere jwa bone jwa di workshop ko gae ba nna le dipholo tse di botoka.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Hear a teen's testimonial",
+    "text": "Utlwa bosupi ba mosha",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Read a teen's testimonial",
+    "text": "Buisa bosupi ba mosha",
     "type": "template",
     "note": ""
   },
@@ -1584,16 +1680,52 @@
     "note": ""
   },
   {
+    "SourceText": "Please sign in with your Google account to use the app.",
+    "text": "Kopa o tsene mo go akhaonto ya Google go dirisa app.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Sign in with Google",
+    "text": "Tsena mo gare ka Google",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Add this activity to @global.my_activities",
     "text": "Tsenya tiro eno go @global.my_activities",
     "type": "template",
     "note": "The string @global.my_activities should not be translated."
   },
   {
+    "SourceText": "Bringing teenagers up is hard",
+    "text": "Go godisa basha go bioma",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "You are the best parent your teen could have",
+    "text": "O motsadi wa mmakgonthe o mosha wa gago a ka nnang le ene",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Join the 152.4 million parents who have used our resources",
+    "text": "Ikopanye le dimilione di le 152.4 tsa batsadi ba ba dirisitseng didiriswa tsa rona",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Powered by Parenting for Lifelong Health and partners",
     "text": "E Matlafadiwa ke Botsadi jwa Boitekanelo jwa Botshelo jo bo Leele le balekane",
     "type": "template",
     "note": ""
+  },
+  {
+    "SourceText": "@global.parent_app funded by",
+    "text": "@global.parent_app e tlametswe ka madi ke",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
   },
   {
     "SourceText": "Ideas from other families:",
@@ -2258,6 +2390,18 @@
   {
     "SourceText": "Thank your teen for sharing and highlight how it is helping you both.",
     "text": "Leboga mosha wa gago ka go arolelanela mme o tlhagise gore go le thusa jaang ka bobedi.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Hear a caregiver's testimonial",
+    "text": "Utlwa bosupi ba motlhokomedi",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Read a caregiver's testimonial",
+    "text": "Buisa bosupi ba motlhokomedi",
     "type": "template",
     "note": ""
   },
@@ -3876,6 +4020,18 @@
     "note": ""
   },
   {
+    "SourceText": "Hi @fields.user_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s workshop will help you know what to do when your teen is not following the household rules.",
+    "text": "Dumela @fields.user_name! Gompieno re keteka kgwedi di le pedi tsa go dirisa @global.parent_app!\n\nO dira bontle! Tirelothuto ya beke eno e tlile go go thusa go itse se o ka se dirang fa mosha wa gago a sa latele melao ya fa gae.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.user_name\n@global.parent_app"
+  },
+  {
+    "SourceText": "Hi @fields.group_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s workshop will help you know what to do when your teen is not following the household rules.",
+    "text": "Dumela @fields.group_name! Gompieno re keteka kgwedi di le pedi tsa go dirisa @global.parent_app!\n\nO dira bontle! Tirelothuto ya beke eno e tlile go go thusa go itse se o ka se dirang fa mosha wa gago a sa latele melao ya fa gae.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.group_name\n@global.parent_app"
+  },
+  {
     "SourceText": "It’s great that you’ve been using @global.parent_app. You’ve gained 6 parenting tools already! \n\nTake the next workshop to get another parenting tool!",
     "text": "Go gontle gore o ntse o dirisa @global.parent_app. O setse o iponetse didiriswa tse 6 tsa go nna motsadi! \n\nDira workshop e e latelang go iponela sedirisiwa se se nngwe sa go nna motsadi!",
     "type": "template",
@@ -4422,6 +4578,18 @@
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
+    "SourceText": "Hi @fields.user_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
+    "text": "Dumela @fields.user_name! Dipharagobe di ka diragalela mongwe le mongwe - Go ipaakanya go thusa thata.\n\nTirelothuto eno e tlile go go bontsha gore jaang.",
+    "type": "template",
+    "note": "The string @fields.user_name should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.group_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
+    "text": "Dumela @fields.group_name Dipharagobe di ka diragalela mongwe le mongwe - Go ipaakanya go thusa thata.\n\nTirelothuto eno e tlile go go bontsha gore jaang.",
+    "type": "template",
+    "note": "The string @fields.group_name should not be translated."
+  },
+  {
     "SourceText": "We never know when a crisis may happen, but we CAN be prepared! \n\nStart the next workshop to explore how you can do this together with your teen.",
     "text": "Ga re itse mathata a ka tlhaga leng, mme re ka KGONA go ipaakanya! \n\nSimolola workshop ya gago e e latelang go bona gore o ka dira seno jang mmogo le mosha wa gago.",
     "type": "template",
@@ -4836,6 +5004,12 @@
     "note": "The following strings should not be translated:\n@global.parent_point\n@data.habit.instruct_positively.title"
   },
   {
+    "SourceText": "You’ve marked the @global.parent_point @data.habit.instruct_positively.title @fields.parent_point_count_instruct_positively times already  – so you’re making great progress.",
+    "text": "O setse o tshwaile @global.parent_point @data.habit.instruct_positively.title @fields.parent_point_count_instruct_positively - o dira tswelopele e bonalang.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@global.parent_point\n@data.habit.instruct_positively.title\n@fields.parent_point_count_instruct_positively"
+  },
+  {
     "SourceText": "Speak kindly to yourself about what a great job you are doing. There is no such thing as a perfect parent, and we think you’re doing great!",
     "text": "Bua sentle le wena o ipolelele gore o dira tiro e e molemo. Ga gona selo se se jaaka motsadi yo o itekanetseng, mme re akanya gore o dira sentle!",
     "type": "template",
@@ -4846,6 +5020,18 @@
     "text": "Ditaelo tse di siameng di thusa go bona boitshwaro jo bo molemo ga ntsintsi! \n\nFeleletsa @local.workshop_data.in_text_title go bona dikakantsho tsa gore seno se ka dira jang mo lelapeng la gago.",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
+    "text": "Dumela @fields.user_name! Ra go lebogisa gore o simolola beke ya 4 ya @global.parent_app.\n\nBeke eno tirelothuto ya teng ke ka go oketsa tshono tsa gago tsa go bona mosha wa gago a dira se o se kopang.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.user_name\n@global.parent_app"
+  },
+  {
+    "SourceText": "Hi @fields.group_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
+    "text": "Dumela @fields.group_name! Ra go lebogisa gore o simolola beke ya 4 ya @global.parent_app.\n\nBeke eno tirelothuto ya teng ke ka go oketsa tshono tsa gago tsa go bona mosha wa gago a dira se o se kopang.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.group_name\n@global.parent_app"
   },
   {
     "SourceText": "Does your teen always listen to you? If not (like the rest of us), have a look at this week's workshop to learn how giving positive instructions can help - a lot.",
@@ -5412,6 +5598,18 @@
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
+    "SourceText": "Hi @fields.user_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+    "text": "Dumela @fields.user_name! O simolola kgwedi ya gago ya bobedi ya go dirisa @global.parent_app. Kgakgamatso!\n\nMalapa e ka nnang otlhe a kgaratlhisiwa ke mathata a madi, jaanong, beke eno tirelothuto e tlile go go neela didiriswa tse di tla go thusang go baakanyetsa ditlhokego gore o kgone go nna le madi a a ka go fitlhisang bokhutlong jwa kgwedi.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.user_name\n@global.parent_app"
+  },
+  {
+    "SourceText": "Hi @fields.group_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+    "text": "Dumela @fields.group_name! O simolola kgwedi ya gago ya bobedi ya go dirisa @global.parent_app. Kgakgamatso!\n\nMalapa e ka nnang otlhe a kgaratlhisiwa ke mathata a madi, jaanong, beke eno tirelothuto e tlile go go neela didiriswa tse di tla go thusang go baakanyetsa ditlhokego gore o kgone go nna le madi a a ka go fitlhisang bokhutlong jwa kgwedi.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.group_name\n@global.parent_app"
+  },
+  {
     "SourceText": "Do you feel stressed about money? Does your teen keep asking for things you can’t afford? \n\nThis week’s workshop deals with money and budgeting.",
     "text": "A o ikutlwa o tshwenyegile mo maikutlong ka ntlha ya madi? A mosha wa gago o nna a kopa dilo tse o sa kgoneng go di reka? \n\nWorkshop ya beke eno e bua ka madi le ditekanyetsokabo.",
     "type": "template",
@@ -5838,6 +6036,18 @@
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
+    "SourceText": "Hi @fields.user_name! Congratulations for starting your third  @global.parent_app week. \n\nA new workshop awaits you! Can you guess the topic of the workshop from this picture?",
+    "text": "Dumela @fields.user_name! Ra go lebogisa gore o simolola beke ya gago ya boraro ya  @global.parent_app.\n\nTirelothuto e ntšhwa e go emetse! A o ka fopholetsa setlhogo sa tirelothuto go tswa mo setshwantshong se?",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.user_name\n@global.parent_app"
+  },
+  {
+    "SourceText": "Hi @fields.group_name! Congratulations for starting your third  @global.parent_app week. \n\nA new workshop awaits you! Can you guess the topic of the workshop from this picture?",
+    "text": "Dumela @fields.group_name! Ra go lebogisa gore o simolola beke ya gago ya boraro ya  @global.parent_app.\n\nTirelothuto e ntšhwa e go emetse! A o ka fopholetsa setlhogo sa tirelothuto go tswa mo setshwantshong se?",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.group_name\n@global.parent_app"
+  },
+  {
     "SourceText": "Thank you for using @global.parent_app to invest in yourself and your family.\n\nTry the @local.workshop_data.in_text_title and build a great parenting skill!",
     "text": "Re lebogela gore o bo o dirisitse @global.parent_app go beeletsa mo go wena le lelapa la gago.\n\nLeka @local.workshop_data.in_text_title mme o kgone go nna le bokgoni jo bo siameng thata jwa go godisa bana!",
     "type": "template",
@@ -6262,6 +6472,18 @@
     "text": "O gaufi le go nna le sedirisiwa sengwe sa botsadi! Feleletsa @local.workshop_data.in_text_title, baya molao o le MONGWE o o motlhofo le o o ka kgonang go latelwa le mosha wa gago, mme o bone dilo di fetoga!",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.user_name! New week, new workshop! Learn how to set household rules in a way that will increase the chances of your teen keeping them.",
+    "text": "Dumela @fields.user_name! Beke e ntshwa, tirelothuto e ntšhwa! Ithute go tlhama melao ya fa gae ka tsela e e tla oketsang ditshono tsa gore mosha wa gago a e obamele.",
+    "type": "template",
+    "note": "The string @fields.user_name should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.group_name! New week, new workshop! Learn how to set household rules in a way that will increase the chances of your teen keeping them.",
+    "text": "Dumela @fields.group_name! Beke e ntshwa, tirelothuto e ntshwa! Ithute go tlhama melao ya fa gae ka tsela e e tla oketsang ditshono tsa gore mosha wa gago a e obamele.",
+    "type": "template",
+    "note": "The string @fields.group_name should not be translated."
   },
   {
     "SourceText": "Thank you again for using @global.parent_app and for committing to your parenting journey. \n\nThe @local.workshop_data.in_text_title will show you how to set rules in a way that will help your teen to understand and follow them better.",
@@ -6820,6 +7042,18 @@
     "text": "Go boloka mosha wa gago a sireletsegile, go a thusa go tlotla le bone ka tikologo ya gago le maitemogelo a bone a mafaratlhatlha. \n\nFeleletsa @local.workshop_data.in_text_title mme o bone gore o ka dira seno!",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.user_name! You are nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. \n\nThis week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
+    "text": "Dumela @fields.user_name! O gaufi le bokhutlho ba tirelothuto ya @global.parent_app! Re lebogela maitlamo a gago a goya-go-ile.\n\nBeke eno tirelothuto e ka ga go tshola mosha wa gago a bolokesegile, mo mafaratlhatlheng le mo motseng selegae.Itumele!",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.user_name\n@global.parent_app"
+  },
+  {
+    "SourceText": "Hi @fields.group_name! You are all nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. \n\nThis week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
+    "text": "Dumela @fields.group_name! O gaufi le bokhutlho ba tirelothuto ya @global.parent_app! Re lebogela maitlamo a gago a goya-go-ile.\n\nBeke eno tirelothuto e ka ga go tshola mosha wa gago a bolokesegile, mo mafaratlhatlheng le mo motseng selegae.Itumele!",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.group_name\n@global.parent_app"
   },
   {
     "SourceText": "You have have gained so many parenting skills already over the past weeks!\n\nComplete the next workshop to gain another helpful skill.",
@@ -7662,6 +7896,18 @@
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
+    "SourceText": "Hi @fields.user_name! You are making such good progress on your parenting journey! \n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you how to deal with them.",
+    "text": "Dumela @fields.user_name! O dira tswelopele e ntle mo leetong la gago la batsadi!\n\nGo nna le mosha go raya go mekamekana le mathata a mantsi a a sa solofelegang. Tirelothuto eno e tlile go go bontsha tsela ya go mekamekana le ona.",
+    "type": "template",
+    "note": "The string @fields.user_name should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.group_name! You are making such good progress on your parenting journey!\n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you all how to deal with them.",
+    "text": "Dumela @fields.group_name! O dira tswelopele e ntle mo leetong la gago la batsadi!\n\nGo nna le mosha go raya go mekamekana le mathata a mantsi a a sa solofelegang. Tirelothuto eno e tlile go go bontsha tsela ya go mekamekana le ona.",
+    "type": "template",
+    "note": "The string @fields.group_name should not be translated."
+  },
+  {
     "SourceText": "With teenagers, and in life, unexpected problems come up and we have to deal with them. \n\nStart the next workshop to learn how to successfully address these problems.",
     "text": "Ka basha, le mo botshelong, mathata a a sa lebelelwang a nna gone mme re tshwanetse go lepalepana le one. \n\nSimolola workshop e e latelang go ithuta gore o ka samagana jang le mathata ano ka katlego.",
     "type": "template",
@@ -8158,6 +8404,18 @@
     "text": "Rotlhe re ikutlwa re imetswe ka dinako dingwe. Go hemela ko teng go ka thusa! \n\nFeleletsa @local.workshop_data.in_text_title go iponela didiriswa tse di mosola tsa go lepalepana le go tshwenyega mo maikutlong.",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.",
+    "text": "Dumela @fields.user_name! Ra go lebogisa go simolola beke ya botlhano ya @global.parent_app.\n\nTirelothuto e ntšha ya botsadi e go emetse ya dintlha tsa thuso ka gore o ka itshola o ritibetse mme o le mo taolong fa basha ba re gafisa.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.user_name\n@global.parent_app"
+  },
+  {
+    "SourceText": "Hi @fields.group_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting workshop awaits you with tips how we can stay calm and in control when our teens are driving us crazy.",
+    "text": "Dumela @fields.group_name! Ra go lebogisa go simolola beke ya botlhano ya @global.parent_app.\n\nTirelothuto e ntšha ya botsadi e go emetse ya dintlha tsa thuso ka gore o ka itshola o ritibetse mme o le mo taolong fa basha ba re gafisa.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.group_name\n@global.parent_app"
   },
   {
     "SourceText": "We have a new workshop available for you about managing anger and stress. It will help you take better care of yourself.",
@@ -9198,6 +9456,60 @@
     "note": "The string @global.parent_app should not be translated."
   },
   {
+    "SourceText": "<p>You deserve to feel good, and have happier family relationships.</p>\n\n<p>@global.parent_app is here to support you.</p>\n\n<p>Here is how to use the app:</p>",
+    "text": "<p>O tshwanetse ke go ikutlwa o itumetse, mme o na le botsalano jwa boitumelo le ba lelapa.</p>\n\n<p>@global.parent_app e fano go go tshegetsa.</p>\n\n<p>Fano ke tsela ya dirisa app:</p>",
+    "type": "tour",
+    "note": "The string <p>@global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "<p>This big button takes you to your @global.weekly_workshops. </p>",
+    "text": "<p>Konopo e kgolo ena e go isa kwa @global.weekly_workshops. </p>",
+    "type": "tour",
+    "note": "The string @global.weekly_workshops. should not be translated."
+  },
+  {
+    "SourceText": "<p> Each week you will unlock a new workshop focusing on a different parenting skill. </p>",
+    "text": "<p> Beke nngwe le nngwe o tlile go bula tirelothuto e ntšha e e tlileng go lebagana le bokgoni jo bo farologaneng jwa botsadi. </p>",
+    "type": "tour",
+    "note": ""
+  },
+  {
+    "SourceText": "<p>The round button appears when a new workshop is ready for you.</p>",
+    "text": "<p>Konopo eno e e kgolokwe e tlhagelela fa go na le tirelothuto e ntšha e e go letileng.</p>",
+    "type": "tour",
+    "note": ""
+  },
+  {
+    "SourceText": "<p>Each new parenting skill comes with a @global.parent_point.</p>",
+    "text": "<p> Bokgoni bo bongwe le bo bongwe bo bo ntšha ba botsadi bo tla le @global.parent_point.</p>",
+    "type": "tour",
+    "note": "The string @global.parent_point.</p> should not be translated."
+  },
+  {
+    "SourceText": "<p>Use @global.parent_points to celebrate your achievements!</p>",
+    "text": "<p>Dirisa @global.parent_points go keteka diphitlhelelo tsa gago!</p>",
+    "type": "tour",
+    "note": "The string @global.parent_points should not be translated."
+  },
+  {
+    "SourceText": "<p>Find lots of helpful resources in the @global.parent_centre.</p>\n\n<p>You can get instant access to the @data.parent_centre.essential_tools.title from all @global.weekly_workshops.</p>",
+    "text": "<p>Bona didiriswa di le dintsi tse di thusang mo go @global.parent_centre.</p>\n\n<p>O ka bona tetlelelo ya tshoganyetso mo go @data.parent_centre.essential_tools.title go tswa go @global.weekly_workshops.</p>",
+    "type": "tour",
+    "note": "The following strings should not be translated:\n@global.parent_centre.</p>\n@data.parent_centre.essential_tools.title\n@global.weekly_workshops.</p>"
+  },
+  {
+    "SourceText": "<p>Check out the extra relaxation and parenting activities!</p>\n\n<p>You can also get quick parenting tips and technical support.</p>",
+    "text": "<p>Tlhola ditirwana tse di okeditsweng tsa go itapolosa le botsadi!</p>\n\n<p>O ka kgona le go bona maele a botsadi ka potlako le tshegetso ya sethekeniki.</p>",
+    "type": "tour",
+    "note": ""
+  },
+  {
+    "SourceText": "<p>Have a look around! Wherever you start, just the fact you are here shows you care.</p>",
+    "text": "<p>Leba tikologo ya gago! Gongwe le gonwe kwa o simololang, lebaka la gore o fano le bontsha gore wa kgathala.</p>",
+    "type": "tour",
+    "note": ""
+  },
+  {
     "SourceText": "Go to the @global.weekly_workshops",
     "text": "Ya kwa @global.weekly_workshops",
     "type": "tour",
@@ -9894,6 +10206,12 @@
     "note": ""
   },
   {
+    "SourceText": "**Customise Again** in the @global.parent_centre",
+    "text": "**Tshwanedisa gape** mo go @global.parent_centre",
+    "type": "data_list",
+    "note": "The string @global.parent_centre should not be translated."
+  },
+  {
     "SourceText": "Relax & Activities",
     "text": "Go iketla & Ditiro",
     "type": "data_list",
@@ -10158,6 +10476,18 @@
     "note": ""
   },
   {
+    "SourceText": "For me as a parent, it was almost impossible to find time for myself. I was always busy taking care of everyone else. Through @global.parent_app, I realised how important it is to take care of myself. It helps me AND my family! \n\nHaving a moment for myself helps me to breathe and notice how I feel. Even 5 minutes to have a cup of tea makes a big difference. Now I can deal with my stress better.",
+    "text": "Mo go nna jaaka motsadi, go batlile go sa kgonagale gore ke itirele nako ya me ke le mongwe. ke ne ke phela ke tlhokomela batho ba bangwe. Ka @global.parent_app, ke lemogile gore go botlhokwa jaang gore ke itlhokomele. E thusa nna le ba lelapa!\n\nGo itirela motsotswana go nthusa go hema mme ke lemoge gore ke ikutlwa jaang. Le metsotso e le metlhano ya go nwa tee e dira pharologanyo e kgolo. Jaanong ke kgona go mekamekana le mathata a me bokaone.",
+    "type": "data_list",
+    "note": "The string @global.parent_app, should not be translated."
+  },
+  {
+    "SourceText": "My dad was always busy. He would come home from work and snap at us when we started asking him questions. \n\n@global.parent_app helped us a lot. We no longer fight. Now, when my dad comes home, he first sits down by himself for 5 minutes and then we do a relaxing activity from @global.parent_app together, so we can all take a deep breath and relax. Then we can chat about our day, about anything good or bad that happened. Everyone is so much happier now.",
+    "text": "Rre wa me o ne a phela a tshwaregile. O ne a boa tirong mme a re omanye fa re mo botsisa dipotso.\n\n@global.parent_app e re thusitse thata.ga re sa lwa. Jaanong, fa rre a fitlha gae, o simolola ka go dula a le nosi metsotso e le 5 mme morago re dira dirwana ya go itapolosa go tswa go @global.parent_app mmogo, gore botlhe re hemele teng mme re repe. Morago re kgona go bua gore re tlhotse jaang,ka sengwe le sengwe se se bosula kgotsa molemo se se diragetseng. Rotlhe re itumetse thata jaanong.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@global.parent_app\n@global.parent_app"
+  },
+  {
     "SourceText": "One-on-One Time",
     "text": "Go Ipha Nako Mmogo",
     "type": "data_list",
@@ -10172,6 +10502,18 @@
   {
     "SourceText": "How to spend one-on-one time",
     "text": "Tsela ya go ipha nako lo le mmogo",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "When I first heard I had to spend One-on-One Time with my teen, it was hard for me. I did not know when to do it or what to say. I did not want to spoil my teen so that he thinks we have to do everything together. \n\nBut I really wanted to build my relationship with my teen and I wanted him to open up about what was troubling him. So we tried the One-on-One Time. \n\nFirst, it felt weird, but it turned out to be fun! Now we watch his TV programme together and we chat about it. And we can even talk about how my son is changing into adolescence, and even about girlfriends and those things!",
+    "text": "Fa ke simolola go ultwa gore ke tshwanetse go nna le nako ya motho-ka-mongwe le mosha wa me, go ne go le thata. ke ne ke sa itse gore ke e dire leng mme ke bue ke reng. Ke ne ke sa batle go senya mosha wa me gore a nagane gore re tshwanetse go dira sengwe le sengwe mmogo.\n\nFela ke ne ke batla go aga botsalano le mosha wa me mme ke ne ke batla a tlwaele go bua le nna ka dilo tse mo tshwenyang. Ke ka moo re lekileng nako ya motho-ka-mongwe.\n\nLantha, go ne go sa tlwaelega, mme ga tswa go le monate. Jaanong re bogela mananeo a TV mmogo ebe re tlotle ka ona. Re bua le ka tsela e morwa wa me a fetogelang mo dingwageng tsa bosha, le ka makgarebe le dilo tse di ntseng jalo!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "When my mother asked to spend time with me, I thought “Maybe something is wrong, maybe she is sick”. But she said “No, I just want to spend time.” I was sceptical, but I accepted. \n\nShe asked me what I like doing. It was strange and I was not comfortable, because she never ever spent time with me on my own. \n\nThe more she kept on trying and we spent this time together, it felt really nice. She got to share her own childhood with me, things I never heard before. That helped me to also share what is going on in my life. We even talk about boyfriends and about problems I have. I know I can talk to my mother now.",
+    "text": "Fa mme wa me a nkopa go fetsa nako le nna, ke naganne gore \" Gonwe go na le sengwe se se phoso, kgotsa ga a itekanela\". Mme o rile \" Nnyaa, ke batla fela go fetsa nako le wena.\"Ke ne ke belaela mme ka dumela.\n\nO ne a mpotsisa gore ke rata go dira eng. Go ne sa tlwaelega mme ke ne ke sa phuthologa, ka gore ga ise leseng a fetse nako le nna fela.\n\nFa ntse a leka re mme re feletsa re fetsa nako mmogo, go ne go le monate tota. O ne a abelana ka kgolo ya gagwe le nna, dilo tse ke iseng ke di utlwe. Seo se thusitse gore ke kgone go abelana ka seo se diragalng mo botshelong ba me. Ebile re bua ka makau le mathata a ke kopanang le ona. Ke a itse gore nka bua le mme wa me jaanong.",
     "type": "data_list",
     "note": ""
   },
@@ -10194,6 +10536,18 @@
     "note": ""
   },
   {
+    "SourceText": "When we learned about this praising thing, I thought “We were never praised for things as teenagers, so why should we start now?”. But I got interested when I learned what the benefits of praising could be. \n\nRight after the weekly workshop, I noticed my teen doing what they do every day: Washing the dishes. And I said “Thank you for washing the dishes, my girl, it really makes me happy that you are helping out.” My teen was smiling and she even came to give me a hug, which she never does. \n\nThis praising business is hard. I still forget sometimes or give praise at the same time as criticism. But praising really makes a difference. I never thought that a simple praise could make such a change in a person!",
+    "text": "Fa re ithuta ka selo se sa go tlotlomatsa, ke naganne gore\"Gaise re tlotlomalediwe dilo re le basha, jaanong goreng re tshwanetse go simolola jaanong?\"Mme ke nnile le kgatlhego fa ke sene ke ithuta gore melemo ya go tlotlomatsa e ka nna eng.\n\nMorago fela ga tirelothuto ya beke, ke lemogile mosha wa ka a dira seo a tlwaetseng go se dira ka letsatsi: Go tlhatswa dijana. Ka bo ke re\"Ke a leboga fa o tlhatswitse dijana, mosetsana wa me, go a intumedisa gore o a thusa\". Mosha wa me o ne a nyeba ebe a nkatlarela, selo se a senkeng a se dira.\n\nKgang e ya go tlotlomatsa e boima. Ke sentse ke lebala kgotsa ke tlotlomatsa ka nako e le nngwe le go nyenyefatsa. Mme go tlotlomatsa go dira pharologanyo. Ke ne ke sa nagane gore go tlotlomatsa fela go ka dira pharologanyo e kana mo mothong!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "I was grateful that my mother learned about praise. \n\nMy mother always noticed when I was doing something wrong. She would shout at me and hit me. \n\nBut when my mother did the workshop, she would praise me for little things. First I thought “What is going on?” but then it continued. I liked it so I did more good things I thought she would like. \n\nIt feels great that my mother sees the good things I do, and not just the bad things.\n\nI even said it to her once. During @data.workshop.w_1on1.title, I said “Thank you, mom, for saying something nice when I do things well, not only when I do things wrong.” This made us both very happy.",
+    "text": "Ke ne ke anaanela gore mme wa me o ithutile go tlotlomatsa.\n\nMme wa me o ne a phela a lemoga fa ke dirile phoso. O ne a nkomanya mme a nkitaya.\n\nIrile fa mme wa me a fetsa go dira tirelothuto, o ne a ntlotlomaletsa dilo di le dinnye. Lantlha ke ne ke nagana gore\"Go diragala eng?\"mme go ne gwa tswela pele. Ke ne ke e rata jaanong ka tswela pele ke dira dilo tse dintle tse ke nagang gore o tla di rata.\n\nGo utlwalega go le monate gore mme wa me o bona dilo tse dintle tse ke di dirang, eseng tse di bosula fela.\n\nKe bile ka mmolelela gangwe. Mo magareng a @data.workshop.w_1on1.title, Ke rile\"Kea leboga, mme, gore o bue sengwe se sentle fa ke dira dilo sentle, eseng fela fa ke dira diphoso\". Seno se re itumedisitse thata.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_1on1.title, should not be translated."
+  },
+  {
     "SourceText": "Positive Instructions",
     "text": "Ditaelo tse di siameng",
     "type": "data_list",
@@ -10212,6 +10566,18 @@
     "note": ""
   },
   {
+    "SourceText": "Before, I used to raise my teens the way I was raised: I would tell them “don’t do this, don’t do that.” We used to fight a lot, but things have really changed when I learned about giving positive instructions.\n\nNow I focus on the behaviour I want to see, and give clear and simple instructions to my teens. It took time to learn to say “please do this” instead of “don’t do this.” \n\nMy teens and even my husband tell me that they love this way of doing things, because now they know what needs to be done. My teen said one day “I really love this new mom,” and my own stress levels have come down a lot.",
+    "text": "Pele, Ke ne ke godisa basha ba me ka tsela e ke godileng ka yona: Ke ne ke ba raya ke re\" Le seke la dira seno, le seke la dira jalo.\" Re ne re lwa thata, fela dilo di fetogile tota fa ke sene ke ithuta ka go neelana ka melao e e molemo.\n\nJaanong ke tlhomile mogopolo mo maitshwarong a ke batlang go a bona, le go neelana ka melao e e bonolo e e tlhaloganyegang go basha ba me. Go tsere nako go ithuta gore\"Ke kopa o dire jaana\" go na le \"O seke wa dira jaana.\"\n\nBasha ba me mmogo le monna wa me ba mpolelela gore ba rata tsela e ya go dira dilo, ka go re jaanong ba itse se ba tlhokang go se dira. Mosha wa me o kile a re\"Ke rata mme o montšha ona,\"mme le maemo a kgatelelo ya me ya maikutlo a fokotsegile thata.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "At first, I did not care much that my mother was doing @global.parent_app. But then I started to see my mother change how she communicated with us.\n\nOne day, when I was going out with my friends, she said I must be home by 6pm. I was like “Hmmm okay,” because she normally did not give clear instructions on what she wanted - she would just say nothing and then shout at me for being late when I got home. \n\nWhen I got home around 5pm, my mother gave me a hug and said “Thank you for being on time.” It was strange, but I liked it. \n\nSince then, we have much clearer communication in the house.",
+    "text": "Lantlha, ke ne ke sa kgathalele gore mme wa me o dira @global.parent_app. Mme fela ka simolola go bona mme wa me a fetola tsela e a buang le rona ka yona. \n\nTsatsi lengwe, fa ke ne ke tswa le ditsala tsa me, O rile ke be ke le gae ka 6pm. Ka re fela\"Hmmm gosiame,\" ka gore o ne a senke a neelana ka ditaelo tse di tlhaloganyegang gore o batla eng - O ne a sa bue sepe mme morago a nkomanye fa ke buile gae bosigo.\n\nFa ke fitlha gae ka 5pm, mme wa me o ne a ntlamarela mme a re \"Ke a leboga fa o nnile mo nakong.\" Go ne go gakgamatsa, mme ke go ratile.\n\nFa e sele nako eo e feta, re na le puisano e e tlhaloganyegang fa lapeng.",
+    "type": "data_list",
+    "note": "The string @global.parent_app. should not be translated."
+  },
+  {
     "SourceText": "Managing Stress",
     "text": "Go laola go tshwenyega mo maikutlong",
     "type": "data_list",
@@ -10226,6 +10592,18 @@
   {
     "SourceText": "How to manage stress",
     "text": "Kafa o ka laolang go tshwenyega mo maikutlong",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Life is tough sometimes. Before I joined @global.parent_app, I used to be grumpy at all times. I would take out my anger on everyone at home, not only my teens but even my husband as well. They would run away when I came home, because they knew I would start yelling at them. \n\nLearning to take a pause and breathe was difficult at first, but every time I tried it, it helped me to calm down. Now my teens are no longer running away when I come home, and they actually listen better than when I used to shout at them!",
+    "text": "Botshelo bo boima ka nako dingwe. Pele ke golagana le @global.parent_app, ke ne ke selekega fela ka nako tsotlhe. Ke ne ke ntshetsa kgalefo ya me mo go botlhe kwa gae, eseng fela basha ba me mme le monna wa me. Ba ne ba tshaba fa ke fitlha gae, ka gore ba ne ba itse gore ke tlile go simolola go ba rasetsa.\n\nGo ithuta go emisa mme ke heme go ne go le boima kwa tshimologong, fela nako nngwe le nngwe fa ke e leka, e nthusitse go ritibala. Jaanong basha ba me ga ba sa tshaba fa ke fitlha gae, mme ebile ba reetsa botoka go na le fa ke ne ke ba omanya!",
+    "type": "data_list",
+    "note": "The string @global.parent_app, should not be translated."
+  },
+  {
+    "SourceText": "Whenever I would do something wrong, my father would get so angry at me and beat me. He would not even listen to me, and I would get so angry as well at him and everyone else. \n\nNow, when he gets angry, he first takes a few deep breaths before he responds. It makes everyone calm down instead of causing a big fight.\n\nIt really helped me at home and at school, because even me I am no longer slashing everyone and I am no longer this moody person. When I feel really angry or stressed, I also take deep breaths like my father does. I am a different person.",
+    "text": "Nako nngwe le nngwe fa ke dira phoso, rre wa me o ne a nkgalefela mme a mpetse. O ne a sa nkutlwelele, mme ke ne ke mo galefela mmogo le batho botlhe.\n\nJaanong, fa a galefa, o simolola ka go hemela teng pele a araba. E dira botlhe ba ritibale go na le go baka ntwa e kgolo.\n\nE thusitse thata kwa gae le kwa sekolong, ka gonne le nna ga ke sa kgerisa batho botlhe le go fela pelo fela. Fa ke ikutlwa ke galefa mme ke gatelega maikutlo, ke hemela kwa teng jaaka rre a dira. Ke motho yo a fetogileng.",
     "type": "data_list",
     "note": ""
   },
@@ -10248,6 +10626,18 @@
     "note": ""
   },
   {
+    "SourceText": "Saving and budgeting helps me as a parent, and it helps my teens as well to understand where the money goes.\n\nMy teens always asked for a lot of things and they did not understand when I said “I do not have money.” They would say “but you have a job!” \n\nI sat down with them and showed them all the things we pay for and how much is left. They understand now and even give ideas on how we can save to work towards our goals like new shoes or a birthday and bigger goals like their school fees. For the older one, I even opened a savings account.",
+    "text": "Go boloka le tekanyetsomadi di nthusitse ke le motsadi, mme e thusitse gape le mosha wa me gore a tlhaloganye gore madi a ya kae.\n\nBasha ba me ba ne ba kopa dilo di le dintsi mme ba ne ba sa tlhaloganye fa ke re \"ga ke na madi.\" Ba ne ba re \" fela o na le tiro!\"\n\nKe ne ka nna fa gatshe le bona mme ka ba bontsha dilo tsotlhe tse ke di duelang le gore ke sala ka bokae. Ba tlhaloganya jaanong ebile ba nnaya dikakanyo gore nka boloka jaang gore re kgone go fitlhela mekgele ya rona jaaka ditlhako tse dintšhwa, letsatsi la matsalo le mekgele e mogolo jaaka madi a sekolo. Go yo mogolo, ke butse akhaonto ya go boloka.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "I used to ask my mom to buy me nice clothes all the time. Each time, she would say “I do not have money,” but I knew that she was getting money from my uncle. I did not understand why she refused to buy me clothes. I thought at some point “she does not love me.”\n\nBut one day, she called me to sit down with her and asked “what are the needs and wants in our house.” I started to list all my needs and wants. Then my mother helped me to also think about the family needs. Now I understand where our money is going, towards the things we need as a family. \n\nFrom that day, I understand I cannot come in and ask any time. Now, when I want something, I wait till the month-end when we all discuss the budget together to see if it fits. We understand each other better now.",
+    "text": "Ke ne ke kopa mme wa me go nthekele diaparo tse di ntle nako tsotlhe. Nako tsotlhe, o ne a re \"Ga ke na madi,\" mme ke ne ke itse gore o bona madi gotswa go malome wa me. Ke ne ke sa tlhaloganye gore goreng a gana go nthekela diaparo. Ka nako enngwe ke ne ke nagana gore \"ga a nthate.\"\n\nMme tsatsi le lengwe, o ne mpitse gore ke dule fatshe le ene mme a mpotsisa gore\" Ke eng ditlhokego le dilo tse re di batlang fa lapeng la rona.\" Ka simolola go bala ditlhokego le dipatlo tsa me tsotlhe. Morago mme wa me o ne a nthusa go nagana ka ditlhokego tsa balelapa. Jaanong ka tlhaloganya gore madi a rona aya kae, kwa dilong tse re di tlhokang re le lelapa.\n\nGo tloga tsatsing leo, Ke a tlhaloganya gore nkase kope fela ka nako nngwe le nngwe. Jaanong, fa ke batla sengwe, ke emela mafelo a kgwedi fa re sekaseka tekanyetsomadi mmogo go bona gore aa e ka lekana. Re tlhaloganyana botoka gone jaanong.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
     "SourceText": "Rules",
     "text": "Melao",
     "type": "data_list",
@@ -10262,6 +10652,18 @@
   {
     "SourceText": "How to create rules",
     "text": "Kafa o ka bayang melao ka teng",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "My teenagers always just disappeared. I did not know where they were, and I would get so worried and angry with them. I used to say “this is my house, and these are my rules, if you do not want to follow them you can leave and stay in your own place.” \n\nWhen we learned in @global.parent_app about rules, I learned that there are rules for teens and for adults and for everyone. If we follow the rules as parents, our teens will follow our example.\n\nI explained my worry and we all agreed: We all follow the rule and say where we are going when we leave the house. Coming up with rules together helped us a lot, as my teens do not see me anymore as that annoying parent that just makes up unnecessary rules.",
+    "text": "Basha ba me ba ne ba phela ba nyamalela. Ke ne ke sa itse gore ba ile kae, mme ke ke tshwenyega ebile ke ba galefele. ke ne ke re\"e ke ntlo ya me, mme ebile eno ke melao ya me,fa le sa batle go e latela le ka tsamaya la ya go ipatlela bodula ba lona.\"\n\nFa re ithuta mo go @global.parent_app ka ga melao, ke ithutile gore go na le melao ya basha, bagolo, le batho botlhe. Fa re latela melao re le batsadi, basha ba rona ba tlile go latela sekao sa rona.\n\nKe ne ka tlhalosa matshwenyego a me mme ra dumellana gore: Rotlhe re latela melao mme ra laela gore re ya kae fa re tswa fa ntlong. Go tlhama melao botlhe go re thusitse thata, jaaka basha ba me ba sa tlhole ba mpona jaaka motsadi yo o lapisang o a dirang melao e e sa tlhokegeng.",
+    "type": "data_list",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "I never liked rules and I used to forget rules a lot. \n\nOne day, I was playing with my friends. The rule at home was that we should be in the yard by 6pm, but I forgot again. By 6.30 it was getting dark and I was still outside and playing with my phone. Then a boy came, grabbed my phone and ran away. \n\nI understood that rules can really help to keep us safe, so I changed my behaviour and I was in the yard by 5pm from then.",
+    "text": "Ke ne ke sa rate melao mme ke ne ke lebala melao thata.\n\nTsatsi le lengwe, ke ne ke tshameka le ditsala tsa me. Molao wa kwa gae ke gore re tshwanetse go bo re le ka fa gae ka 6pm, mme nna ke ne ke lebetse gape. Ka 6: 30 go ne go fifala gape ke ne ke santse ke le kwa ntle ke tshameka ka mogala wa letheka wa me. Ebe mosimane a tla, a phamola mogala wa letheka a tshaba.\n\nKe tlhalogantse gore melao e kgona go thusa gore re nne re bolokesegile, jaanong ke fetotse maitsholo a me mme ka simolola go fitlha gae ka 5pm go tloga letsatsi leno.",
     "type": "data_list",
     "note": ""
   },
@@ -10284,6 +10686,18 @@
     "note": ""
   },
   {
+    "SourceText": "When my teenagers did something to make me angry, I would shout at them and punish them right away. But the next time they did it again! I could not understand why they did not hear me even when I shouted. \n\n@global.parent_app helped me understand that my teenagers will listen to me more when I am calm. So, when something happens, I take a deep breath and say “we will talk about this later when we are both calm.”\n\nWe even agree on the consequences together now before something goes wrong. This has worked wonders - I have seen a huge change in my teen’s behaviour now that they are more involved, and I have less stress. \n\nI wish I knew this long ago, but it is never too late to start!",
+    "text": "Fa basha ba me ba dira senngwe go nkgalefisa, ke ne ke ba omanya mme ke ba otlhaya fela foo. Mme nako e e latelang ba e dirile gape! Ke ne ke sa tlhaloganye gore goreng ba sa nkutlwi le fa ntse ke ba omantse.\n\n@global.parent_app e nthusitse go tlhaloganya gore basha ba me ba ka nutlwelela thata fa ke ritibetse. Jaanong, fa sengwe se direga, ke tsaya nako go hemela kwa teng ebe ke re\"re tla bua ka seno mankgapele fa botlhe re ritibetse.\"\n\nRe felletsa re dumelana ka ditlamorago mmogo gone jaanong pele ga sengwe se sa tsamae sentle. Seno se re diretse metlholo - Ke bone phetogo e kgolo thata mo maitsholong a mosha wa me ka gonne jaanong ba tsentse seatla ebile ga ke sa na kgatelelo ya mailutlo.\n\nKe lakatsa gore nkabo ke itsitse seno kgale, fela ga go thari go simolola!",
+    "type": "data_list",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "My mom and dad would always punish me when they were angry with me. They would shout at me and I would also get angry. I often did not follow the rules, because they were too harsh, I did not understand what they were saying, or I would not even bother listening to them, because we were all angry.\n\nOne day, they asked me: Let's think together what the consequence should be for not coming home in time. It was great to give my view – before something happens that makes us all angry. We are all calm and agree first. It is easier for me to follow the rules now because I know I agreed on the rule and on the consequence if I do not follow the rule.",
+    "text": "Mme le rre wa me ba ne ba nkotlhaya fa ba ne ba nkgalefetse. Ba ne ba nkomanya mme le nna ke ne ke feletsa ke galefa. Go le gantsi ke ne ke sa latele melao, ka gonne ba ne ba le bogale thata, ke ne ke sa tlhalogane se ba se buang, kgotsa, ke ne ke sa itshwenya ka go ba utlwelela, ka gonne rotlhe re ne re galefile.\n\nKa tsatsi le lengwe, ba ne ba ba mpotsisa: A re naganeng mmogo gore ditlamorago tsa go se boe gae ka nako e nne eng. Go ne go le monate go tlhagisa pono ya me - pele sengwe se direga se se re galefisang rotlhe. Re ritibitse botlhe ebile re dumelana pele. Go bonolo go amogela melao jaanong ka gonne ke a itsi gore ke e dumetse ebile ke itse ditlamorago fa ke sa o lalete molao.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
     "SourceText": "Problem Solving",
     "text": "Go Rarabolola Mathata",
     "type": "data_list",
@@ -10298,6 +10712,18 @@
   {
     "SourceText": "How to solve problems",
     "text": "Kafa o ka rarabololang mathata ka teng",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "I did not have a good relationship with my daughter. I was always shouting at her, and she was refusing to go to school. \n\nOnly when I started spending One-on-One time with her, I realised that she did not want to go to school because she was being bullied at school. We sat down and used the 6 steps of problem solving. We identified the problem, and figured out solutions together: “What can I do as a parent so you can attend school and feel safe?”\n\nWe agreed I would go talk to the teacher to find a way forward. We really found the solutions together, and we are closer now.",
+    "text": "Ke ne ke se na botsalano jo bontle le moradi wa me. Ke ne ke phela ke mo omanya mme ebile o ne a gana go ya sekolong.\n\nFela fa ke sene ke simolola go fetsa nako ya motho-ka-mong le ene, ke lemogile gore ga a batle go ya sekolong ka gonne o ne a kgerisiwa kwa sekolong. Re ne ra nna fa fatshe ebe re dirisa dikgato tse 6 tsa go rarabolola mathata. Re tlhomolotse bothata, mme ra batla tharabololo mmogo.\"Nka dira eng jaaka motsadi gore o tsene sekolo mme o ikutlwe o bolokesegile?\"\n\nRe dumellane gore ke tlile go bua le morutabana go batla tsela ya go tswela pele. Re bone tharabololo mmogo, ebile re atumelane jaanong.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "When my father introduced the problem-solving steps to me, it helped me with my family, but it also helped me with my friends. \n\nI told my friends about the steps, and now when we are arguing we sit down and everyone comes up with solutions. We then look for the negatives and positives of each solution, and we agree “okay let’s try this one.” \n\nMy friends even took it to their own homes, and it is helping with their families as well! \n\nIt is great when others listen to you and accept your ideas even though you are young. We can all bring that harmony with our friends and family.",
+    "text": "Fa rre wa me a ne a nkitsise kgato tsa go rarabolola mathata, e thusitse lelapa la mme e nthusitse le ka ditsala tsa me.\n\nKe boleletse ditsala tsa me ka ga dikgato, jaanong fa re nganga re nna fa fatshe mme rotlhe re tla ka ditharabololo. Re bo re lebelela masula le tseo tse dintle ka tharabololo nngwe le nngwe, mme re dumelana re re \"go giame a re leke ena.\"\n\nEbile ditsala tsa me di di dirisa kwa magaeng a bone, mme e thusa malapa a bone le bona!\n\nGo a itumedisa fa bangwe ba go reetsa ebile ba amogela dikakanyo tsa gago le fa o le monnye. Rotlhe re ka tlisa kutlwano mo malapeng le ditsala tsa rona.",
     "type": "data_list",
     "note": ""
   },
@@ -10320,6 +10746,18 @@
     "note": ""
   },
   {
+    "SourceText": "I was so grateful to make the safety plan with my teen. I thought I knew which areas are safe for my teen and which are not. But when we made the safety plan together, I realised that my girl knew more areas that I was not aware of. \n\nI also thought she was safe at school, but through this activity I realised she was being bullied and the teachers did not do anything about it.\n\nThe more we talked, the more I understood and got information from my teen. That really helped me to protect my teen and keep her safe.",
+    "text": "Ke ne ke lebogela go dira lenaneo la pabalesego le mosha wa me. Ke ne ke nagana gore ke itse mafela a a babalesegileng gore ke afe go mosha wa me le a a sa nnang jaalo. Fela re sena go dira lenaneo la pabalesego mmogo, ke ne ka lemoga gore mosetsana wa me o itse mafelo a le mantsi a ke neng ke sa lemoge.\n\nKe ne ke ke nagana gape gore o babalesegile kwa sekolong, fela ka tirwana eno ke lemogile gore o ne a kgerisiwa mme barutabana ba ne ba sa dire sepe ka yone.\n\nFa re ntse re bua, ke gone fa ke ne ke tlhaloganya mme ke nna le kitso go tswa go mosha wa me. Seo se nthusitse thata go sireletsa mosha wa me le go mo tshola a babalesegile.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "When my friends or I got into trouble, I would always try to hide it from my mother because she would get so angry and shout at me. \n\nWhen we made the map of safe and unsafe places, I learned a lot – also why it is dangerous to share every picture online. My mother told me I can always ask her if there is a problem and she promised she would not get mad. \n\nShe kept her promise, so now if I have a problem or I do not feel safe I know we can always come up with a solution together. I can even talk to my mother about the things I do online now!",
+    "text": "Fa ditsala tsa me kgotsa nna re tsene mo mathateng, ke ne ke leka go e fitlhela mme wa me ka gonne o ne a tlile go nkgalefela mme o omanye.\n\nFa re ne thala mmepe wa mafela a pabalesego le a a sa babalesegang, ke ithutile go le gontsi - gape le gore goreng go le kotsi go abelana ka seepe sengwe le sengwe mo mafaratlhatlheng. Mme wa me o ne a mpolelela gore nka mmotsisa nako nngwe le nngwe fa go na le mathata gape o tshepisitse go se nkgalefele.\n\nO tshotse tshepiso ya gagwe, jaanong fa ke na le bothata kgotsa ke sa ikutlwe ke babalesegile ke a itse gore re ka bona tharabololo mmogo. Ke kgona go bua le mme wa ka dilo tse ke di dirang mo inthaneteng jaanong!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
     "SourceText": "Dealing with Crisis",
     "text": "Go lepalepana le Mathata a a masisi",
     "type": "data_list",
@@ -10336,6 +10774,18 @@
     "text": "Kafa o ka lepalepanang ka teng le mathata a a masisi",
     "type": "data_list",
     "note": ""
+  },
+  {
+    "SourceText": "My teen used to be so angry all the time. He would never listen and we would get into big arguments every day. Through @global.parent_app, I started spending more time with my teen and strengthening our relationship. One day he shared with me that he was part of a gang but he wanted to get out. \n\nWe made short-term and long-term plans together on how we could do that. Our life looks so different now!",
+    "text": "Mosha wa me o ne a phela a galefila ka dinako tsotlhe. O ne a sa reetse ebile o ne a tsen mo dikgogakgoganong tse dikgolo tsatsi le letsatsi. Ka @global.parent_app, ke ne ka simolola go fetsa nako thata le mosha wa me le go nonotsha kamano ya rona.Tsatsi le lengwe o ne abelana le nna gore ke lekolo la segopa fela o batla go tswa mo go sona.\n\nRe dirile maano a nako-khutswane le nako-telele mmogo a gore re ka dira jaang jaalo. Botshelo ba rona bo lebega bo fetogile jaanong!",
+    "type": "data_list",
+    "note": "The string @global.parent_app, should not be translated."
+  },
+  {
+    "SourceText": "Two years ago, I was raped by my uncle who stayed in our yard. I did not tell my mother, because I was afraid she would hit me, shout at me, or even throw me out of the house. I did not have anywhere else to go. \n\nWhen my mother started with @global.parent_app, she started spending more time together. I was still afraid, but in the end I shared it with my mother. My mom did not shout, but she listened and told me it is not my fault. We went to the police and the clinic together. I am so grateful I do not have to carry this secret anymore.",
+    "text": "Dingwana tse pedi tse di fitileng, ke ne ka betelelwa ke malome wa me o a neng a nna le rona fa jarateng. Ga ka bolelela mme wa me, ka gonne ke ne ke tshaba gore o tlile go mpetsa, go nkomanya, kgotsa gonwe go nkobela kwa ntle ga ntlo. Ke ne ke sena gope kwa nkayang kwa teng\n\nFa mme wa me a simolola ka @global.parent_app, o ne a simolola go fetsa nako e le ntsi le mmogo. Ke ne ke sentse ke tshaba, fela kwa bokhutlhong ke ne ka abelana le mme wa me. Mme wa me ga a omanya, mme o ne a reetsa ebile a mpolelela gore ga se phoso ya me. Re ne ya ya maphodiseng le bookelong mmogo. Ke lebogela gore ga ke tlhole ke rwele sephiri seno.",
+    "type": "data_list",
+    "note": "The string @global.parent_app, should not be translated."
   },
   {
     "SourceText": "Celebration and Next Steps",
@@ -10458,6 +10908,12 @@
     "note": ""
   },
   {
+    "SourceText": "Thank you for committing to your parenting. \n\nYour @data.workshop.w_1on1.in_text_title is ready for you!",
+    "text": "Re lebogela maikemisetso a gago go botsadi bagago.\n\n@data.workshop.w_1on1.in_text_title ya gago e go letile!",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_1on1.in_text_title should not be translated."
+  },
+  {
     "SourceText": "Spending time with your teen helps build trust. \n\nContinue your @global.parent_app journey for great results.",
     "text": "Go fetsa nako le mosha wa gago go thusa go aga tshepo.\n\nTswelela pele ka @global.parent_app leeto la gago go bona pholo tse dintle.",
     "type": "data_list",
@@ -10470,16 +10926,214 @@
     "note": ""
   },
   {
+    "SourceText": "Well done for completing the @data.workshop.w_1on1.in_text_title. Tomorrow, you can access a new workshop to help you relax, enjoy and learn new skills!",
+    "text": "O dirile sentle ka go tlatsa @data.workshop.w_1on1.in_text_title. Kamoso, o ka tsenela tirelogae e ntšhwa go go thusa go itapolosa, natefelwa gape o ithute bokgoni jo bo ntšhwa!",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_1on1.in_text_title. should not be translated."
+  },
+  {
     "SourceText": "Remember to finish the @data.workshop.w_1on1.in_text_title. You will get valuable information within minutes! \n\nWell done for trying to be a better parent.",
     "text": "Gopola go fetsa @data.workshop.w_1on1.in_text_title. o tla bona kitsiso ya boleng ka metsotso fela!\n\nTiro e ntle ka go leka go nna motsadi yo o botoka.",
     "type": "data_list",
     "note": "The string @data.workshop.w_1on1.in_text_title. should not be translated."
   },
   {
+    "SourceText": "Hi @fields.user_name! Today we are celebrating two @global.parent_app months! \nThis week you'll learn to how help your teen follow household rules.",
+    "text": "Dumela @fields.user_name! Gompieno re keteka kgwedi tse pedi tsa @global.parent_app! \n\nBeke eno o tlile go ithuta ka go thusa mosha wa gago go latela melao ya fa gae.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@fields.user_name!\n@global.parent_app"
+  },
+  {
+    "SourceText": "Hi @fields.group_name! Today we are celebrating two @global.parent_app months! \n\nThis week you'll learn to help your teen follow household rules.",
+    "text": "Dumela @fields.group_name!! Gompieno re keteka kgwedi tse pedi tsa @global.parent_app! \n\nBeke eno o tlile go ithuta ka go thusa mosha wa gago go latela melao ya fa gae.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@fields.group_name!\n@global.parent_app"
+  },
+  {
+    "SourceText": "Think about every time you have made your teen smile and all the care you have given them.  \n\nYou should be so proud - this is a hard time to be a parent.",
+    "text": "Nagana ka makgatlho otlhe a o kile wa dira mosha wa gago a nyebe le tlhokomelo yotlhe e o mo neileng yone.\n\nO tshwanetse go nna motlotlo tota - Eno ke nako e e thata ya go nna motsadi.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Well done - you’ve gained 6 parenting tools already! Do the next workshop to get more!",
+    "text": "Tiro e ntle - O setse o okeditse didiriswa tsa botsadi ka 6! Dira tirelothuto e e latelang go bona di le dintsi!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Complete the workshop and talk with your teen about a positive and a negative consequence of a behaviour.",
+    "text": "Feleletsa tirelothuto ebe o bua le mosha wa gago ka ditlamorago tse di siameng le tse di sa siamang tsa maitsholo.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Have you thought of a positive and a negative consequence of a behaviour with your teen yet?",
+    "text": "A o setse o naganne ka ditlamorago tse di siameng le tse di sa siamang tsa maitsholo le mosha wa gago?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Well done for completing the @data.workshop.w_consequence.in_text_title. Access a new workshop tomorrow to help you enjoy and learn useful skills!",
+    "text": "Tiro e ntle go tlatsa @data.workshop.w_consequence.in_text_title. Tsena go tirelothuto e ntšhwa kamoso go go thusa go natefelwa le go ithuta bokgoni jo bo thusang!",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_consequence.in_text_title. should not be translated."
+  },
+  {
+    "SourceText": "Calm consequences help your teen follow rules. If you haven't finished  the @data.workshop.w_consequence.in_text_title, give it a go!\n\nWell done for showing so much commitment.",
+    "text": "Ditlamorago tse di ritibetseng di thusa mosha wa gago go latela melao. Fa isi o fetse @data.workshop.w_consequence.in_text_title, e leke!\n\nTiro e ntle go bontsha maikemisetso tota.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_consequence.in_text_title, should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.user_name! Crises happen to anyone - being ready helps a lot. \n\nThis workshop will show you how.",
+    "text": "Dumela @fields.user_name! Dipharagobeng di diragalela botlhe - Go nna o itukisitse go thusa tota.\n\nTirelothuto eno e tlile go go bontsha gore jaang.",
+    "type": "data_list",
+    "note": "The string @fields.user_name! should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.group_name! Crises happen to anyone - being ready helps a lot. \n\nThis workshop will show you how.",
+    "text": "Dumela @fields.group_name! Dipharagobeng di diragalela botlhe - Go nna o itukisitse go thusa tota.\n\nTirelothuto eno e tlile go go bontsha gore jaang.",
+    "type": "data_list",
+    "note": "The string @fields.group_name! should not be translated."
+  },
+  {
+    "SourceText": "Be proud, you are a committed parent. This is a big achievement!",
+    "text": "Nna motlotlo, o motsadi yo a ikemiseditseng. Seno ke phitlhelelo e kgolo!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Crises may happen, and we CAN be prepared!\n\nStart the next workshop to see how with your teen.",
+    "text": "Pharagobe e ka direga, mme re KA NNA re itukisitse!\n\nSimolola tirelothuto e e latelang go bona gore jaang le mosha wa gago.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Great that you joined this parenting journey! \n\nComplete the @data.workshop.w_crisis.in_text_title to learn the best way to react when teens need us.",
+    "text": "Go gontle gore o tsenetse leeto leno la botsadi!\n\nTlatsa @data.workshop.w_crisis.in_text_title go ithuta ka tsela ya maleba ya go tsiboga fa basha ba rona ba re tlhoka.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_crisis.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "Have you and your teen discussed what you would do in a crisis?",
+    "text": "Aa wena le mosha wa gago le kile la buisana ka gore le ka dira eng mo dipharagobeng?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Well done for finishing the @data.workshop.w_crisis. Tomorrow, you can access the final workshop to reflect on your journey and plan what to do next!",
+    "text": "Tiro e ntle go fetsa @data.workshop.w_crisis. Kamoso, o ka tsena go tirelothuto ya bofelo akanya ka leeto la gago le go rulaganya se o tla se dira eng go latela!",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_crisis. should not be translated."
+  },
+  {
+    "SourceText": "The final workshop unlocks tomorrow!\n\nFirst try to finish the @data.workshop.w_crisis.in_text_title. That way, you can complete your set of parenting skills and decide what to do next.",
+    "text": "Tirelothuto ya bofelo e notlologa kamoso!\n\nSa ntlha leka go fetsa @data.workshop.w_crisis.in_text_title. Ka tsela eo, O ka fetsa setlhopha sa gago sa bokgoni jwa botsadi mme o tseye tshwetso gore o tla dira eng go latela.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_crisis.in_text_title. should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.user_name, well done for starting week 4! \n\nThis week helps increase your chances of getting your teen to do what you ask them.",
+    "text": "Dumela @fields.user_name, Tiro e ntle go simolola beke ya 4!\n\nBeke eno e thusa go oketsa ditshono tsa gago tsa go fitlhelela gore mosha wa gago a dire se o se kopang.",
+    "type": "data_list",
+    "note": "The string @fields.user_name, should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.group_name, well done for starting week 4!\n\nThis week helps increase your chances of getting your teen to do what you ask them.",
+    "text": "Dumela @fields.group_name, Tiro e ntle go simolola beke ya 4!\n\nBeke eno e thusa go oketsa ditshono tsa gago tsa go fitlhelela gore mosha wa gago a dire se o se kopang.",
+    "type": "data_list",
+    "note": "The string @fields.group_name, should not be translated."
+  },
+  {
+    "SourceText": "Be kind to yourself. No parent is perfect. Using @global.parent_app shows you care!",
+    "text": "Nna pelonomi go wena.Ga go na motsadi yo a senang diphoso. Go dirisa @global.parent_app go bontsha gore o a kgathala!",
+    "type": "data_list",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "Teens don’t always listen. Look at this week's workshop to learn how positive instructions can help.",
+    "text": "Basha ga ba nne ba utlwelela. Lebelela tirelothuto ya beke eno go ithuta gore ditaelo tse di molemo di thusa jaang.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Positive instructions improves behaviour.\n\nComplete the @data.workshop.w_instruct.in_text_title for ideas on how this can work in your family.",
+    "text": "Ditaelo tse di molemo di tokafatsa maitsholo.\n\nTlatsa @data.workshop.w_instruct.in_text_title go bona dikakanyo gore seno se ka dira jaang mo lapeng la gago.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_instruct.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "You’ve already marked the @global.parent_point @data.habit.instruct_positively.title once – you’re making great progress.",
+    "text": "O setse o tshwaile @global.parent_point @data.habit.instruct_positively.title gangwe - O dira kgatelopele e ntle.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@global.parent_point\n@data.habit.instruct_positively.title"
+  },
+  {
+    "SourceText": "You’ve already marked the @global.parent_point @data.habit.instruct_positively.title @fields.parent_point_count_instruct_positively times – you’re making great progress.",
+    "text": "O setse o tshwaile @global.parent_point @data.habit.instruct_positively.title @fields.parent_point_count_instruct_positively makgetlho - O dira kgatelopele e ntle.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@global.parent_point\n@data.habit.instruct_positively.title\n@fields.parent_point_count_instruct_positively"
+  },
+  {
+    "SourceText": "Congratulations, you completed the @data.workshop.w_instruct.in_text_title.\n\nTomorrow, a new workshop is ready for you. See a big difference by making small changes!",
+    "text": "Kakgolo, o tladitse @data.workshop.w_instruct.in_text_title.\n\nKamoso, tirelothuto e ntšhwa e go letile. Bona pharologanyo ka go dira diphetogo di le dinnye!",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_instruct.in_text_title. should not be translated."
+  },
+  {
+    "SourceText": "Some parents use the app after their evening meal. Why not complete the @data.workshop.w_instruct.in_text_title when you have a few minutes?",
+    "text": "Batsa ba bangwe ba dirisa app morago ga dijo tsa bosigo. Gore o sa tlatse @data.workshop.w_instruct.in_text_title fa o na le metsotsonyana?",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_instruct.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.user_name! Amazing, this is your second month with @global.parent_app.\n\nMost families struggle with money. This workshop will give you tools to plan your expenses to help you through the month.",
+    "text": "Dumela @fields.user_name! Kgakamalo, eno ke kgwedi ya gago ya bobedi le @global.parent_app.\n\nMalapa a le mantsi a sokodisiwa ke madi. Tirelothuto eno e tlile go go naya didiriswa go rulaganya ditlhokego tsa madi go go thusa mo tsamaong ya kgwedi.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@fields.user_name!\n@global.parent_app."
+  },
+  {
+    "SourceText": "Hi @fields.group_name! Amazing, this is your second month with @global.parent_app. \n\nMost families struggle with money. This workshop will give you tools to plan your expenses to help you through the month.",
+    "text": "Dumela @fields.group_name! Kgakamalo, eno ke kgwedi ya gago ya bobedi le @global.parent_app.\n\nMalapa a le mantsi a sokodisiwa ke madi. Tirelothuto eno e tlile go go naya didiriswa go rulaganya ditlhokego tsa madi go go thusa mo tsamaong ya kgwedi.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@fields.group_name!\n@global.parent_app."
+  },
+  {
+    "SourceText": "You are not alone. Parents around the world are going through the same struggles. \n\nYou are doing your best and we are proud of you!",
+    "text": "Ga o nosi. Batsadi lefatshe ka bophara ba mekamekane le dikgwetlho tse di tshwanang le tsa gago.\n\nO dira ka bojotlhe mme re motlotlo ka wena!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Stressed about money? Does your teen ask for things you can’t afford? \n\nThis week deals with money and budgeting.",
+    "text": "A o gateletswe mo moweng ka ntlha ya madi? Aa mosha wa gago o kopa dilo tse o ka se di kgoneng?\n\nBeke eno e mekamekana le madi le tekanyetsomadi.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Create a family budget with your teen - it will prevent money arguments. \n\nComplete the @data.workshop.w_money.in_text_title to see how. It's easy - you'll see!",
+    "text": "Tlhama tekanyetsomadi le mosha wa gago - e tlile go thibela dikgogakgogano tsa madi.\n\nTlatsa @data.workshop.w_money.in_text_title go bona gore jaang. Go bonolo - o tla bona!",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_money.in_text_title should not be translated."
+  },
+  {
     "SourceText": "Have you talked with your teen about your family budget yet?",
     "text": "A o setse o buile le mosha wa gago ka ga tekanyetsokabo ya lelapa la gago?",
     "type": "data_list",
     "note": ""
+  },
+  {
+    "SourceText": "Great, you completed the @data.workshop.w_money.in_text_title! Tomorrow, access a new workshop to help you set family rules that work.",
+    "text": "Bontle, o tladitse @data.workshop.w_money.in_text_title! Kamoso, tsena go tirelothuto e ntšha go go thusa go tlhama melao ya fa gae e e dirang.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_money.in_text_title! should not be translated."
+  },
+  {
+    "SourceText": "Many parents say budgeting brings peace. If you haven't finished the @data.workshop.w_money.in_text_title, give it a go!\n\nThank you for your committed parenting.",
+    "text": "Batsadi ba le bantsi ba re tekanyetsomadi e tlisa kagiso. Fa ise o fetse @data.workshop.w_money.in_text_title, e leke!\n\nRe leboga gore o na le maitlamo mo botsading.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_money.in_text_title, should not be translated."
   },
   {
     "SourceText": "Hi @fields.user_name! You're starting your third  @global.parent_app week. \n\nA new workshop is ready!",
@@ -10524,10 +11178,106 @@
     "note": "The string @data.workshop.w_praise.in_text_title. should not be translated."
   },
   {
+    "SourceText": "Hi @global.user_name, a new workshop awaits you tomorrow!\n\nIt seems like you haven’t finished the @data.workshop.w_praise.in_text_title. It’s short (promise!) – give it a go when you have a few minutes.",
+    "text": "Dumela @global.user_name, tirelothuto e ntšhwa e go emetse kamoso!\n\nGo bonala okare gaise o fetse @data.workshop.w_praise.in_text_title. Ke e khutswane(ka go tshepisa!) - e leke fa o na le metsotsonyana.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@global.user_name,\n@data.workshop.w_praise.in_text_title."
+  },
+  {
+    "SourceText": "Hi @fields.user_name! New week, new workshop! Learn to set household rules that your teen understands and follows.",
+    "text": "Dumela @fields.user_name! Beke e ntšhwa, tirelothuto e ntšhwa! Ithute go tlhama melao ya fa gae e mosha wa gago a e tlhaloganyang mme a e latela.",
+    "type": "data_list",
+    "note": "The string @fields.user_name! should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.group_name! New week, new workshop! Learn to set household rules that your teen understands and follows.",
+    "text": "Dumela @fields.group_name! Beke e ntšhwa, tirelothuto e ntšhwa! Ithute go tlhama melao ya fa gae e mosha wa gago a e tlhaloganyang mme a e latela.",
+    "type": "data_list",
+    "note": "The string @fields.group_name! should not be translated."
+  },
+  {
+    "SourceText": "Tried your best but your teen is still grumpy? Remember, you are doing a great job - there will be good times with them too!",
+    "text": "O lekile ka thata mme fela mosha wa gago sentse a selekega fela? Gopola, o dira tiro e ntle - Go tlile go nna le nako tse dintle le bona!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Thank you for investing in your parenting. \n\nDo the @data.workshop.w_rules.in_text_title to help your teen understand and follow household rules.",
+    "text": "Re lebogela fa o tsenyeleditse mo botsading.\n\nDira @data.workshop.w_rules.in_text_title go thusa mosha wa gago go tlhaloganya le go latela melao ya fa gae.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_rules.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "So close to gaining another tool! Complete the @data.workshop.w_rules.in_text_title and set ONE simple, realistic rule with your teen, and see things change!",
+    "text": "Fa gaufi le go bona sediriswa se seng! Tlatsa @data.workshop.w_rules.in_text_title mme o beye molao o MONGWE o bonolo, o kgonegang le mosha wa gao, mme o bone fa dilo di fetoga!",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_rules.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "Have you managed to set a rule with your teen?",
+    "text": "A o kgonne go baya molao mmogo le mosha wa gago?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Congratulations, you completed the @local.workshop_data.in_text_title.\n \nTomorrow, access a new workshop! It will show you what to do when teens display bad (or good) behaviour!",
+    "text": "Ra go lebogisa, o feditse @local.workshop_data.in_text_title.\n\nKamoso, tsena go tirelothuto e ntšhwa! E tlile go go bontsha se o ka se dirang fa basha ba tlhagisa maitsholo a bosula (kgotsa a mantle)!",
+    "type": "data_list",
+    "note": "The string @local.workshop_data.in_text_title. should not be translated."
+  },
+  {
+    "SourceText": "A brand-new workshop unlocks tomorrow!\n \nComplete the @local.workshop_data.in_text_title before moving on. Just a few more minutes to help your teen follow your rules!",
+    "text": "Tirelothuto e ntšhwa e a bulega kamoso!\n\nTlatsa @local.workshop_data.in_text_title pele o tswela pele. Metsotsonyana e mmalwa fela go thusa mosha wa gago go latela melao!",
+    "type": "data_list",
+    "note": "The string @local.workshop_data.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.user_name! You're nearly at the end of your @global.parent_app journey! Thank you for sticking to it. \n\nThis week is about keeping our teens safe online and in the community.",
+    "text": "Dumela @fields.user_name! O gaufi le bokhutlo jwa leeto la @global.parent_app! Re lebogela fa o ntse o tshwareletse.\n\nBeke eno e ka ga go tshwara basha ba rona ba bolokesegile mo mafaratlhatlheng le fa motseng.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@fields.user_name!\n@global.parent_app"
+  },
+  {
+    "SourceText": "Hi @fields.group_name! You're nearly at the end of your @global.parent_app journey! Thank you for sticking to it.  \n\nThis week is about keeping our teens safe online and in the community.",
+    "text": "Dumela @fields.group_name! O gaufi le bokhutlo jwa leeto la @global.parent_app! Re lebogela fa o ntse o tshwareletse.\n\nBeke eno e ka ga go tshwara basha ba rona ba bolokesegile mo mafaratlhatlheng le fa motseng.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@fields.group_name!\n@global.parent_app"
+  },
+  {
+    "SourceText": "Parenting is tough, especially now. Be proud of your achievements. Of the care you give them. Of every time you make them smile. You're incredible!",
+    "text": "Botsadi bo boima, segolo setona jaanong. Nna motlotlo ka diphitlhelelo tsa gago. ka tlhokomelo e o ba nayang yone. Ka nako tsotlhe tse o dirang ba nyebe ka boitumelo. O a makatsa!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Think about all the parenting skills you've already gained!\n\nComplete the next workshop to get more.",
+    "text": "Nagana ka bokgoni botlhe ba botsadi bo o setseng o bo bone!\n\nTlatsa tirelothuto e e latelang go bona tse dingwe.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Chatting together about their community and online experiences helps keep teens safe. \n\nComplete the @data.workshop.w_safe.in_text_title to see how.",
+    "text": "Go bua mmogo ka maitemogelo a motse selegae le mafatlhatlha go thusa go boloka basha.\n\nTlatsa @data.workshop.w_safe.in_text_title go bona gore jaang.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_safe.in_text_title should not be translated."
+  },
+  {
     "SourceText": "Have you talked with your teen about safety measures?",
     "text": "A o setse o buile le mosha wa gago kaga ditsela tsa tshireletsego?",
     "type": "data_list",
     "note": ""
+  },
+  {
+    "SourceText": "Congratulations, you completed @data.workshop.w_safe.in_text_title. A new workshop is ready tomorrow to help your family deal with any situation – together you can do so much!",
+    "text": "Kakgolo, o tladitse @data.workshop.w_safe.in_text_title. Tirelothuto e ntšhwa e go letile kamoso go thusa lelapa la gago go mekamekana le seemo sengwe le sengwe - Mmogo lo ka dira go le gontsi!",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_safe.in_text_title. should not be translated."
+  },
+  {
+    "SourceText": "Finish the @data.workshop.w_safe.in_text_title before moving on. This can prevent many problems. \n\nWell done for using @global.parent_app to support your family.",
+    "text": "Fetsa @data.workshop.w_safe.in_text_title pele o tswela pele. Seno se ka thibela mathata a le mantsi.\n\nTiro e ntle go dirisa @global.parent_app go tshegetsa lelapa la gago.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@data.workshop.w_safe.in_text_title\n@global.parent_app"
   },
   {
     "SourceText": "This week is about YOU! Treat yourself well. You deserve it!",
@@ -10546,5 +11296,101 @@
     "text": "Gopola go bolelela balekane @global.parent_app ka app eno. Kamoso, o ka simolola go dira @global.parent_app ditirwana mmogo!",
     "type": "data_list",
     "note": "The following strings should not be translated:\n@global.parent_app\n@global.parent_app"
+  },
+  {
+    "SourceText": "Hi @fields.user_name! You are making such good progress! \n\nHaving a teen means having lots of unexpected problems. This workshop will show you how to deal with them.",
+    "text": "Dumela @fields.user_name! O dira tswelopele e ntle tota!\n\nGo nna le mosha go raya gore go nna le mathata a le mantsi a a sa solofediwang. Tirelothuto eno e tlile go go bontsha gore o ka mekamekana le ona jaang.",
+    "type": "data_list",
+    "note": "The string @fields.user_name! should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.group_name! You are making such good progress!\n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you all how to deal with them.",
+    "text": "Dumela @fields.group_name! O dira tswelopele e ntle tota!\n\nGo nna le mosha go raya gore go nna le mathata a le mantsi a a sa solofediwang. Tirelothuto eno e tlile go go bontsha gore o ka mekamekana le ona jaang.",
+    "type": "data_list",
+    "note": "The string @fields.group_name! should not be translated."
+  },
+  {
+    "SourceText": "Your commitment is inspiring. Keep calm and carry on!",
+    "text": "Maitlamo a gago a rotloetsa. Ritibala mme o tswelepele!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Unexpected problems arise when we have teens. \n \nLearn how to address them in the next workshop.",
+    "text": "Mathata a a sa solofelwang a tlhagelela fa re na le basha.\n\nIthute tsela ya go buisana ka ona mo tirelothuto e e lateng.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "You are on the right track to solving problems with your teen! \n\nComplete the @data.workshop.w_solve.in_text_title to gain another parenting skill.",
+    "text": "O mo tseleng ya nnete go rarabolola mathata le mosha wa gago!\n\nTlatsa @data.workshop.w_solve.in_text_title go oketsa bokgoni jwa gago jwa botsadi.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_solve.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "Practise the four steps of problem-solving with your teen. \n \nKNOW IT, SOLVE IT, TRY IT, TEST IT!",
+    "text": "Lekelela dikgato di le nne tsa go rarabolola mathata le mosha wa gago.\n \nA ITSE, A RARABOLOLE, E LEKE, E TLHATLHOBE!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Great! You completed the @data.workshop.w_solve.in_text_title. Tomorrow, a new workshop is unlocked to help you keep your teen safe.",
+    "text": "Bontle! O tladitse @data.workshop.w_solve.in_text_title. Kamoso, tirelothuto e ntšhwa e a notlologa go go thusa go tshola mosha wa gago a babalesegile.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_solve.in_text_title. should not be translated."
+  },
+  {
+    "SourceText": "Access a new workshop tomorrow! \n \n By completing the @data.workshop.w_solve.in_text_title first, you'll know how to solve problems together.",
+    "text": "Tsena go tirelothuto e ntšhwa kamoso!\n\nKa go tlatsa @data.workshop.w_solve.in_text_title lantlha, O tlile go itse go rarabolola mathata mmogo.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_solve.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.user_name! Congratulations for starting week 5.\n\nA new workshop awaits with tips on staying calm and in control when our teens drive us crazy.",
+    "text": "Dumela @fields.user_name! Kakgolo ka go simolola beke ya 5.\n\nTirelothuto e ntšhwa e go emetse ka dikgakololo tsa go nna o ritibetse ebile o laola fa basha ba re tlhakanya tlhogo.",
+    "type": "data_list",
+    "note": "The string @fields.user_name! should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.group_name! Congratulations for starting week 5.\n\nA new workshop awaits with tips on staying calm and in control when our teens drive us crazy.",
+    "text": "Dumela @fields.group_name! Kakgolo ka go simolola beke ya 5.\n\nTirelothuto e ntšhwa e go emetse ka dikgakololo tsa go nna o ritibetse ebile o laola fa basha ba re tlhakanya tlhogo.",
+    "type": "data_list",
+    "note": "The string @fields.group_name! should not be translated."
+  },
+  {
+    "SourceText": "Manage anger and stress with this new workshop. It helps you take better care of yourself.",
+    "text": "Laola kgalefo ya gago kgatelelo ya maikutlo ka tirelothuto e ntšhwa. E go thusa go itlhokomela botoka.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Feeling overwhelmed? Deep breaths help. \n\nComplete the @data.workshop.w_stress.in_text_title to help you deal with stress.",
+    "text": "A o ikutlwa o tlalelane? Go hemela kwa teng go a thusa.\n\nTlatsa @data.workshop.w_stress.in_text_title go go thusa go mekamekana le kgatelelo ya maikutlo.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_stress.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "Feeling stressed this week? Try taking deep breaths before responding to your teen - it makes a big difference.",
+    "text": "A o ikutlwa o na le kgatelelo ya maikutlo beke eno? Leka go hemela kwa teng pele o araba mosha wa gago - E dira pharologanyo e kgolo.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Well done for taking a big breath before responding to your teen! Each time you take a pause, you take back control.",
+    "text": "Tiro e ntle ka go hemela kwa teng pele o araba mosha wa gago! Nako nngwe le nngwe fa o ema go se kae, o boela o nna fa taolong.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Well done for completing the @data.workshop.w_stress.in_text_title. Tomorrow, access a new workshop to help you relax and build valuable skills!",
+    "text": "Tiro e ntle ka go tlatsa @data.workshop.w_stress.in_text_title. Kamoso, tsena go tirelothuto e ntšhwa go go thusa go itapolosa le go aga bokgoni jo bo nang le boleng!",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_stress.in_text_title. should not be translated."
+  },
+  {
+    "SourceText": "Get ready for a new workshop tomorrow. \n \n By completing the @data.workshop.w_stress.in_text_title first, you lay a key foundation: If you feel good, your family will too!",
+    "text": "Itukisetse tirelothuto e ntšhwa kamoso.\n\nka go tlatsa @data.workshop.w_stress.in_text_title lantlha, o baya motheo o botlhokwa: fa o ikutlwa sentle, le lelapa la gago le tlile go dira jalo!",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_stress.in_text_title should not be translated."
   }
 ]
