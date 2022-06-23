@@ -792,6 +792,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "box_duo_radio_buttons",
       _xlsxPath: "global/core_templates/core_templates_workshop_boxes.xlsx",
     },
+    box_hp_review: {
+      flow_type: "template",
+      flow_name: "box_hp_review",
+      _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
+    },
     box_image: {
       flow_type: "template",
       flow_name: "box_image",
@@ -810,16 +815,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     box_multi_2: {
       flow_type: "template",
       flow_name: "box_multi_2",
-      _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
-    },
-    box_multi_3_temp: {
-      flow_type: "template",
-      flow_name: "box_multi_3_temp",
-      _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
-    },
-    box_multi_4_temp: {
-      flow_type: "template",
-      flow_name: "box_multi_4_temp",
       _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
     },
     box_multi_radio_buttons: {
@@ -852,16 +847,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "box_slider",
       _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
     },
-    box_slider_month_temp: {
-      flow_type: "template",
-      flow_name: "box_slider_month_temp",
-      _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
-    },
-    box_slider_week_temp: {
-      flow_type: "template",
-      flow_name: "box_slider_week_temp",
-      _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
-    },
     box_story: {
       flow_type: "template",
       flow_name: "box_story",
@@ -886,6 +871,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "box_video",
       _xlsxPath: "global/core_templates/core_templates_workshop_boxes.xlsx",
+    },
+    box_yes_no_slider: {
+      flow_type: "template",
+      flow_name: "box_yes_no_slider",
+      _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
     },
     care_together: {
       flow_type: "template",

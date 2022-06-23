@@ -62,10 +62,7 @@
               "value": "Bringing teenagers up is hard",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true
+                  "tz_sw": true
                 }
               },
               "parameter_list": {
@@ -109,10 +106,7 @@
               "value": "You are the best parent your teen could have",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true
+                  "tz_sw": true
                 }
               },
               "parameter_list": {
@@ -156,10 +150,7 @@
               "value": "Join the 152.4 million parents who have used our resources",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true
+                  "tz_sw": true
                 }
               },
               "parameter_list": {
@@ -182,12 +173,7 @@
               "value": "Powered by Parenting for Lifelong Health and partners",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "parameter_list": {
@@ -281,10 +267,7 @@
               "value": "@global.parent_app funded by",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true
+                  "tz_sw": true
                 }
               },
               "parameter_list": {
