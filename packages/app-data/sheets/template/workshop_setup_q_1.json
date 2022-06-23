@@ -207,8 +207,8 @@
             "user_gender",
             "this.value"
           ],
-          "_raw": "changed | set_field:user_gender:@local.radio_group",
-          "_cleaned": "changed | set_field:user_gender:@local.radio_group"
+          "_raw": "changed | set_field: user_gender: @local.radio_group",
+          "_cleaned": "changed | set_field: user_gender: @local.radio_group"
         }
       ],
       "parameter_list": {
@@ -228,7 +228,7 @@
           "0": {
             "_raw": [
               {
-                "fullExpression": "changed | set_field:user_gender:@local.radio_group",
+                "fullExpression": "changed | set_field: user_gender: @local.radio_group",
                 "matchedExpression": "@local.radio_group",
                 "type": "local",
                 "fieldName": "radio_group"
@@ -236,7 +236,7 @@
             ],
             "_cleaned": [
               {
-                "fullExpression": "changed | set_field:user_gender:@local.radio_group",
+                "fullExpression": "changed | set_field: user_gender: @local.radio_group",
                 "matchedExpression": "@local.radio_group",
                 "type": "local",
                 "fieldName": "radio_group"
@@ -287,17 +287,8 @@
       "_nested_name": "age"
     },
     {
-      "type": "image",
-      "name": "age_image",
-      "value": "plh_images/survey/workshop_setup/age_image.svg",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "age_image"
-    },
-    {
-      "type": "slider",
-      "name": "slider",
+      "type": "text_box",
+      "name": "number_box",
       "value": "@fields.user_age",
       "_translations": {
         "value": {}
@@ -310,16 +301,16 @@
             "user_age",
             "this.value"
           ],
-          "_raw": "changed | set_field:user_age:@local.slider",
-          "_cleaned": "changed | set_field:user_age:@local.slider"
+          "_raw": "changed | set_field: user_age: @local.number_box",
+          "_cleaned": "changed | set_field: user_age: @local.number_box"
         }
       ],
       "parameter_list": {
-        "min": "0",
-        "max": "80",
-        "labels_count": "5"
+        "text_align": "center",
+        "placeholder": "@global.tap_and_type",
+        "number_input": "true"
       },
-      "_nested_name": "slider",
+      "_nested_name": "number_box",
       "_dynamicFields": {
         "value": [
           {
@@ -333,32 +324,54 @@
           "0": {
             "_raw": [
               {
-                "fullExpression": "changed | set_field:user_age:@local.slider",
-                "matchedExpression": "@local.slider",
+                "fullExpression": "changed | set_field: user_age: @local.number_box",
+                "matchedExpression": "@local.number_box",
                 "type": "local",
-                "fieldName": "slider"
+                "fieldName": "number_box"
               }
             ],
             "_cleaned": [
               {
-                "fullExpression": "changed | set_field:user_age:@local.slider",
-                "matchedExpression": "@local.slider",
+                "fullExpression": "changed | set_field: user_age: @local.number_box",
+                "matchedExpression": "@local.number_box",
                 "type": "local",
-                "fieldName": "slider"
+                "fieldName": "number_box"
               }
             ]
           }
+        },
+        "parameter_list": {
+          "placeholder": [
+            {
+              "fullExpression": "@global.tap_and_type",
+              "matchedExpression": "@global.tap_and_type",
+              "type": "global",
+              "fieldName": "tap_and_type"
+            }
+          ]
         }
       },
       "_dynamicDependencies": {
         "@fields.user_age": [
           "value"
         ],
-        "@local.slider": [
+        "@local.number_box": [
           "action_list.0._raw",
           "action_list.0._cleaned"
+        ],
+        "@global.tap_and_type": [
+          "parameter_list.placeholder"
         ]
       }
+    },
+    {
+      "type": "image",
+      "name": "age_image",
+      "value": "plh_images/survey/workshop_setup/age_image.svg",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "age_image"
     },
     {
       "type": "template",

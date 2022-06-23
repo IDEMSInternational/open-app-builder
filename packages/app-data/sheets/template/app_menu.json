@@ -181,7 +181,12 @@
       "name": "button_5",
       "value": "How to use @global.parent_app",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
+        }
       },
       "action_list": [
         {

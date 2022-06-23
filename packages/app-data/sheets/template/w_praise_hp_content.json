@@ -6,7 +6,7 @@
   "rows": [
     {
       "name": "praise_teen_count",
-      "value": "@fields.weekly_parent_point_praise_teen",
+      "value": "+@fields.parent_point_count_praise_teen",
       "_translations": {
         "value": {}
       },
@@ -15,22 +15,22 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@fields.weekly_parent_point_praise_teen",
-            "matchedExpression": "@fields.weekly_parent_point_praise_teen",
+            "fullExpression": "+@fields.parent_point_count_praise_teen",
+            "matchedExpression": "@fields.parent_point_count_praise_teen",
             "type": "fields",
-            "fieldName": "weekly_parent_point_praise_teen"
+            "fieldName": "parent_point_count_praise_teen"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@fields.weekly_parent_point_praise_teen": [
+        "@fields.parent_point_count_praise_teen": [
           "value"
         ]
       }
     },
     {
       "name": "radio_group_tracker",
-      "value": "w_praise_hp_review_1",
+      "value": "w_praise_hp_done",
       "_translations": {
         "value": {}
       },
@@ -40,7 +40,7 @@
     },
     {
       "name": "combo_box_tracker",
-      "value": "w_praise_hp_review_2",
+      "value": "w_praise_hp_teen_response",
       "_translations": {
         "value": {}
       },
@@ -51,14 +51,10 @@
     {
       "type": "text",
       "name": "text_1",
-      "value": "Your goal was to praise your teen. You’ve tapped the @data.habit.praise_teen.in_text_title this week. Great job for remembering!",
+      "value": "You’ve tapped the @data.habit.praise_teen.in_text_title this week. Great job for remembering!",
       "_translations": {
         "value": {
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "hidden": "@local.praise_teen_count == 0",
@@ -66,7 +62,7 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "Your goal was to praise your teen. You’ve tapped the @data.habit.praise_teen.in_text_title this week. Great job for remembering!",
+            "fullExpression": "You’ve tapped the @data.habit.praise_teen.in_text_title this week. Great job for remembering!",
             "matchedExpression": "@data.habit.praise_teen.in_text_title",
             "type": "data",
             "fieldName": "habit"
@@ -103,23 +99,7 @@
           "za_zu": true
         }
       },
-      "hidden": "@local.praise_teen_count >= 1",
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@local.praise_teen_count >= 1",
-            "matchedExpression": "@local.praise_teen_count",
-            "type": "local",
-            "fieldName": "praise_teen_count"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.praise_teen_count": [
-          "hidden"
-        ]
-      }
+      "_nested_name": "text_2"
     },
     {
       "type": "text",
@@ -134,26 +114,10 @@
           "za_zu": true
         }
       },
-      "hidden": "@local.praise_teen_count >= 1",
       "parameter_list": {
         "style": "emphasised"
       },
-      "_nested_name": "question_text_1",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@local.praise_teen_count >= 1",
-            "matchedExpression": "@local.praise_teen_count",
-            "type": "local",
-            "fieldName": "praise_teen_count"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.praise_teen_count": [
-          "hidden"
-        ]
-      }
+      "_nested_name": "question_text_1"
     },
     {
       "name": "answer_list_1",
@@ -179,7 +143,6 @@
           "_cleaned": "changed | set_field:@local.radio_group_tracker:@local.radio_group"
         }
       ],
-      "hidden": "@local.praise_teen_count >= 1",
       "parameter_list": {
         "answer_list": "@local.answer_list_1",
         "radio_button_type": "btn_text",
@@ -229,14 +192,6 @@
             ]
           }
         },
-        "hidden": [
-          {
-            "fullExpression": "@local.praise_teen_count >= 1",
-            "matchedExpression": "@local.praise_teen_count",
-            "type": "local",
-            "fieldName": "praise_teen_count"
-          }
-        ],
         "parameter_list": {
           "answer_list": [
             {
@@ -258,9 +213,6 @@
           "action_list.0._raw",
           "action_list.0._cleaned"
         ],
-        "@local.praise_teen_count": [
-          "hidden"
-        ],
         "@local.answer_list_1": [
           "parameter_list.answer_list"
         ]
@@ -279,18 +231,12 @@
           "za_zu": true
         }
       },
-      "hidden": "@local.praise_teen_count >= 1 || !(@local.radio_group == \"no\")",
+      "hidden": "!(@local.radio_group == \"no\")",
       "_nested_name": "reply_no",
       "_dynamicFields": {
         "hidden": [
           {
-            "fullExpression": "@local.praise_teen_count >= 1 || !(@local.radio_group == \"no\")",
-            "matchedExpression": "@local.praise_teen_count",
-            "type": "local",
-            "fieldName": "praise_teen_count"
-          },
-          {
-            "fullExpression": "@local.praise_teen_count >= 1 || !(@local.radio_group == \"no\")",
+            "fullExpression": "!(@local.radio_group == \"no\")",
             "matchedExpression": "@local.radio_group",
             "type": "local",
             "fieldName": "radio_group"
@@ -298,9 +244,6 @@
         ]
       },
       "_dynamicDependencies": {
-        "@local.praise_teen_count": [
-          "hidden"
-        ],
         "@local.radio_group": [
           "hidden"
         ]
@@ -319,18 +262,12 @@
           "za_zu": true
         }
       },
-      "hidden": "@local.praise_teen_count >= 1 || !(@local.radio_group == \"yes\")",
+      "hidden": "!(@local.radio_group == \"yes\")",
       "_nested_name": "reply_yes",
       "_dynamicFields": {
         "hidden": [
           {
-            "fullExpression": "@local.praise_teen_count >= 1 || !(@local.radio_group == \"yes\")",
-            "matchedExpression": "@local.praise_teen_count",
-            "type": "local",
-            "fieldName": "praise_teen_count"
-          },
-          {
-            "fullExpression": "@local.praise_teen_count >= 1 || !(@local.radio_group == \"yes\")",
+            "fullExpression": "!(@local.radio_group == \"yes\")",
             "matchedExpression": "@local.radio_group",
             "type": "local",
             "fieldName": "radio_group"
@@ -338,9 +275,6 @@
         ]
       },
       "_dynamicDependencies": {
-        "@local.praise_teen_count": [
-          "hidden"
-        ],
         "@local.radio_group": [
           "hidden"
         ]
@@ -349,7 +283,7 @@
     {
       "type": "display_group",
       "name": "replies_did_it",
-      "hidden": "@local.praise_teen_count ==0 && !(@local.radio_group == \"yes\" )",
+      "hidden": "!(@local.radio_group == \"yes\" )",
       "parameter_list": {
         "style": "column"
       },
@@ -612,13 +546,7 @@
       "_dynamicFields": {
         "hidden": [
           {
-            "fullExpression": "@local.praise_teen_count ==0 && !(@local.radio_group == \"yes\" )",
-            "matchedExpression": "@local.praise_teen_count",
-            "type": "local",
-            "fieldName": "praise_teen_count"
-          },
-          {
-            "fullExpression": "@local.praise_teen_count ==0 && !(@local.radio_group == \"yes\" )",
+            "fullExpression": "!(@local.radio_group == \"yes\" )",
             "matchedExpression": "@local.radio_group",
             "type": "local",
             "fieldName": "radio_group"
@@ -626,9 +554,6 @@
         ]
       },
       "_dynamicDependencies": {
-        "@local.praise_teen_count": [
-          "hidden"
-        ],
         "@local.radio_group": [
           "hidden"
         ]

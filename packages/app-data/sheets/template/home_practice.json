@@ -372,7 +372,8 @@
                   "_translations": {
                     "value": {
                       "za_af": true,
-                      "za_st": true
+                      "za_st": true,
+                      "za_tn": true
                     }
                   },
                   "type": "set_variable",
@@ -414,7 +415,8 @@
                   "_translations": {
                     "value": {
                       "za_af": true,
-                      "za_st": true
+                      "za_st": true,
+                      "za_tn": true
                     }
                   },
                   "action_list": [

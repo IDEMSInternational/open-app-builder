@@ -1,0 +1,92 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_welcome_cs",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "survey_question_cs",
+      "value": "survey_question_cs",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "box_slider",
+          "rows": [
+            {
+              "name": "survey_name",
+              "value": "survey_welcome",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_cs.box_slider.survey_name"
+            },
+            {
+              "name": "reply_less",
+              "value": "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. \n\nWe’ll talk more about planning for your teen’s safety later in the @global.weekly_workshops, but you can already access some first core tips to keep your teen safe under @data.parent_centre.my_tips.location_text!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_cs.box_slider.reply_less",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. \n\nWe’ll talk more about planning for your teen’s safety later in the @global.weekly_workshops, but you can already access some first core tips to keep your teen safe under @data.parent_centre.my_tips.location_text!",
+                    "matchedExpression": "@global.weekly_workshops",
+                    "type": "global",
+                    "fieldName": "weekly_workshops"
+                  },
+                  {
+                    "fullExpression": "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. \n\nWe’ll talk more about planning for your teen’s safety later in the @global.weekly_workshops, but you can already access some first core tips to keep your teen safe under @data.parent_centre.my_tips.location_text!",
+                    "matchedExpression": "@data.parent_centre.my_tips.location_text",
+                    "type": "data",
+                    "fieldName": "parent_centre"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.weekly_workshops": [
+                  "value"
+                ],
+                "@data.parent_centre.my_tips.location_text": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "survey_question_cs.box_slider"
+        }
+      ],
+      "_nested_name": "survey_question_cs"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey_welcome.xlsx"
+}
