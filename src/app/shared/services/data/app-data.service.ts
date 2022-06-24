@@ -91,8 +91,15 @@ export class AppDataService {
     let type_path = `${flow_type}`;
     if (flow_subtype) type_path += `/${flow_subtype}`;
     const path = `${APP_DATA_BASE}/sheets/${type_path}/${flow_name}.json`;
-    const data = await this.http.get(path).toPromise();
-    return data as T;
+    try {
+      const data = await this.http.get(path).toPromise();
+      return data as T;
+    } catch (error) {
+      // Sheet no longer in assets folder. This typically only happens
+      // if manually deleted (like test-visual-generate ci scripts)
+      console.error("Failed to load sheet", flow_name);
+      return { rows: [] } as T;
+    }
   }
 
   /** Include rowsHashmap field and aliased cache entry for datalists  */
