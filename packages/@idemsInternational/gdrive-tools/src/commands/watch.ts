@@ -6,6 +6,7 @@ import { authorizeGDrive, authorizeGDriveActivity } from "./authorize";
 import { PATHS } from "../paths";
 import { randomUUID } from "crypto";
 import { GDriveDownloader } from "./download";
+import chalk from "chalk";
 
 /***************************************************************************************
  * WiP Methods to enable streaming of live changes from google drive
@@ -153,10 +154,12 @@ class GDriveWatcher {
   private async wipPollDriveChangesApi(interval = 1000 * 3) {
     const { authTokenPath, credentialsPath } = this.options;
     const { drive } = await authorizeGDrive({ authTokenPath, credentialsPath });
-    const initialTokenRes = await drive.changes.getStartPageToken();
-    let pageToken = initialTokenRes.data.startPageToken;
+    let pageToken = await this.getPageToken(drive);
     console.log("watching file changes...");
     const executePoll = async (resolve: (value: any) => void, reject: (err: Error) => void) => {
+      if (!pageToken) {
+        pageToken = await this.getPageToken(drive);
+      }
       const res = await drive.changes
         .list({
           pageToken,
@@ -183,14 +186,20 @@ class GDriveWatcher {
     return new Promise(executePoll);
   }
 
+  /** Generate a token used to interact with drive changes API */
+  private async getPageToken(drive: drive_v3.Drive) {
+    const initialTokenRes = await drive.changes.getStartPageToken();
+    return initialTokenRes.data.startPageToken;
+  }
+
   private async handleFileChange(change: drive_v3.Schema$Change) {
     const { file } = change;
     // TODO - see if way to check file used by app
     // filter only files modified by me
     const { modifiedByMe, name } = file;
     if (modifiedByMe) {
-      console.log(`${formatTimestamp()} [Change] ${name}`);
-      await new GDriveDownloader(this.options).downloadFile(file);
+      console.log(chalk.blue(`${formatTimestamp()} [Change] ${name}`));
+      await new GDriveDownloader(this.options).updateFileEntry(file);
     }
   }
 
