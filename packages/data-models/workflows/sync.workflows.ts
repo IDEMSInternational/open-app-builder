@@ -21,10 +21,11 @@ const workflows: IDeploymentWorkflows = {
           tasks.workflow.runWorkflow({ name: "sync_sheets", parent: workflow }),
       },
       {
-        name: "sync_live",
+        name: "sync_watch",
+        condition: async ({ options }) => !!options.contentWatch,
         function: async ({ tasks, workflow, options }) => {
           if (options.contentWatch) {
-            tasks.workflow.runWorkflow({ name: "sync_live", parent: workflow });
+            tasks.workflow.runWorkflow({ name: "sync_watch", parent: workflow });
           } else {
             console.log('Use "--content-watch" or "-cw" to enable live sync\n');
           }
@@ -34,11 +35,24 @@ const workflows: IDeploymentWorkflows = {
   },
   sync_sheets: {
     label: "Sync Latest Sheets",
+    options: [
+      {
+        flags: "-s, --skip-download",
+        description: "Skip download and just process local sheets",
+      },
+    ],
     steps: [
       {
         name: "sheets_dl",
-        function: async ({ tasks, config }) =>
-          tasks.gdrive.download({ folderId: config.google_drive.sheets_folder_id }),
+        function: async ({ tasks, config, options }) => {
+          const folderId = config.google_drive.sheets_folder_id;
+          // If skipping download still need to return download folder for next step
+          if (options.skipDownload) {
+            return tasks.gdrive.getOutputFolder(folderId);
+          } else {
+            return tasks.gdrive.download({ folderId });
+          }
+        },
       },
       {
         name: "sheets_process",
@@ -87,18 +101,23 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
   },
-  sync_live: {
+  sync_watch: {
     label: "View options for sync live reload (🧪 experimental)",
     steps: [
       {
-        name: "sync_live",
-        function: async ({ tasks, config }) => {
+        name: "sync_watch",
+        function: async ({ tasks, config, workflow }) => {
           tasks.gdrive.liveReload({
             folderId: config.google_drive.sheets_folder_id,
-            onUpdate: (filepath) => {
+            onUpdate: async (filepath) => {
               // only respond to xlsx file changes
               if (filepath.endsWith(".xlsx")) {
-                tasks.template.processIndividualFile({ inputFile: filepath });
+                // TODO - add better methods to process single sheet instead of all
+                await tasks.workflow.runWorkflow({
+                  name: "sync_sheets",
+                  parent: workflow,
+                  args: ["--skip-download"],
+                });
               }
             },
           });
