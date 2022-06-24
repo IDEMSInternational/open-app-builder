@@ -98,10 +98,10 @@ export class GDriveDownloader {
   }
 
   /**
-   * Process single file download
+   * Process updates for a single file - used during watch mode
    * NOTE - file must already exist in cache to know nested folder structure to output file to
    */
-  public async downloadFile(serverEntry: drive_v3.Schema$File) {
+  public async updateFileEntry(serverEntry: drive_v3.Schema$File) {
     await this.setupGdrive();
     const cachedEntry = this.contentsData.find((cached) => cached.id === serverEntry.id);
     if (!cachedEntry) {
@@ -114,7 +114,11 @@ export class GDriveDownloader {
       serverEntry.modifiedTime = serverEntry.viewedByMeTime;
     }
     // we still call the main method used to download entire folder, just passing individual server file
-    await this.processDownloads([{ ...serverEntry, folderPath: cachedEntry.folderPath }]);
+    const entryWithFolderPath = { ...serverEntry, folderPath: cachedEntry.folderPath };
+    const actions = { ...SYNC_ACTIONS_EMPTY };
+    actions.updated.push(entryWithFolderPath);
+    await this.processSyncActions(actions);
+    this.updateCacheContentsFile(entryWithFolderPath);
   }
 
   private async setupGdrive() {
@@ -140,6 +144,7 @@ export class GDriveDownloader {
     console.log(chalk.green("Download Complete"));
   }
 
+  /** Keep a local reference of all files in cache */
   private writeCacheContentsFile(files: IGDriveFileWithFolder[]) {
     const { outputPath } = this.options;
     // also add a relativePath for full path to local file
