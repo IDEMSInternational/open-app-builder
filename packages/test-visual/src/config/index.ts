@@ -14,6 +14,7 @@ export const paths = {
   SCREENSHOT_DIFFS_FOLDER: path.resolve(REPO_FOLDER, "output/diffs"),
   CACHED_ASSETS: path.resolve(REPO_FOLDER, "cache/assets"),
   DOWNLOADED_SCREENSHOTS_FOLDER: path.resolve(REPO_FOLDER, "output/downloaded"),
+  WWW_FOLDER: path.resolve(APP_SRC_FOLDER, "www"),
 };
 
 Object.values(paths).forEach((p) => {

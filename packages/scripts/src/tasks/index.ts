@@ -4,6 +4,7 @@ import deployment from "./providers/deployment";
 import file from "./providers/file";
 import gdrive from "./providers/gdrive";
 import git from "./providers/git";
+import subtitles from "./providers/subtitles";
 import template from "./providers/template";
 import translate from "./providers/translate";
 import userInput from "./providers/userInput";
@@ -22,6 +23,7 @@ const ALL_TASKS = {
   file,
   git,
   gdrive,
+  subtitles,
   template,
   translate,
   userInput,
