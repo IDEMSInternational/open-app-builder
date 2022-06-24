@@ -21,7 +21,7 @@ const download = (options: { folderId: string }) => {
     ? path.resolve(_workspace_path, auth_token_path)
     : AUTH_TOKEN_PATH;
 
-  const outputPath = path.resolve(_workspace_path, "tasks", "gdrive", "outputs", folderId);
+  const outputPath = getOutputFolder(folderId);
 
   const commonArgs = `--credentials-path "${CREDENTIALS_PATH}" --auth-token-path "${authTokenPath}"`;
 
@@ -31,6 +31,11 @@ const download = (options: { folderId: string }) => {
 
   spawnSync(cmd, { stdio: "inherit", shell: true });
   return outputPath;
+};
+
+const getOutputFolder = (folderId: string) => {
+  const { _workspace_path } = WorkflowRunner.config;
+  return path.resolve(_workspace_path, "tasks", "gdrive", "outputs", folderId);
 };
 
 /**
@@ -98,4 +103,4 @@ interface IWatchCommand {
   command: () => Promise<void>;
 }
 
-export default { download, liveReload };
+export default { download, liveReload, getOutputFolder };

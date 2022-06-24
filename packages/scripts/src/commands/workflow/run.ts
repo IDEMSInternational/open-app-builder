@@ -138,8 +138,16 @@ export class WorkflowRunnerClass {
         tasks: this.tasks,
         options: this.activeWorkflowOptions,
       };
-      const output = await step.function(context);
-      this.activeWorkflow[step.name].output = output;
+      let shouldProcess = true;
+      if (step.condition) {
+        shouldProcess = await step.condition(context);
+      }
+      if (shouldProcess) {
+        const output = await step.function(context);
+        this.activeWorkflow[step.name].output = output;
+      } else {
+        console.log(chalk.gray("skipped"));
+      }
     }
   }
 
