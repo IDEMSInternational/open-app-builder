@@ -2,29 +2,6 @@ import { IDeploymentConfig } from "data-models";
 import { getDefaultAppConstants } from "data-models/constants";
 
 const app_constants = getDefaultAppConstants();
-/** Define default startup actions for plh app */
-app_constants.APP_INITIALISATION_DEFAULTS.app_first_launch_actions = [
-  {
-    type: "template_popup",
-    value: "splash_screens",
-  },
-  {
-    type: "template_popup",
-    value: "accept_terms",
-  },
-  {
-    type: "template_popup",
-    value: "language_select",
-  },
-  {
-    type: "template_popup",
-    value: "organisation_registration",
-  },
-  {
-    type: "tour_start",
-    value: "home_screen_tour_intro",
-  },
-];
 
 /**
  * The default config should ideally be a superset of any extended configs

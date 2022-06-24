@@ -27,6 +27,21 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
   },
+  translate_vtt_files: {
+    label: "Find .vtt files and generate new ones translated to the target language",
+    steps: [
+      {
+        name: "translate_vtt_files",
+        function: async ({ tasks, config }) => {
+          await tasks.subtitles.translateAllVttFilesAndSave(
+            config.app_data.translations_output_path,
+            config.app_data.assets_output_path,
+            "global"
+          );
+        },
+      },
+    ],
+  },
 };
 
 export default workflows;

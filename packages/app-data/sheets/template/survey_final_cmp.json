@@ -1,0 +1,83 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_final_cmp",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "survey_question_cmp",
+      "value": "survey_question_cmp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "box_slider",
+          "rows": [
+            {
+              "name": "survey_name",
+              "value": "survey_final",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_cmp.box_slider.survey_name"
+            },
+            {
+              "name": "reply_greater_equal",
+              "value": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and continuing to use @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_cmp.box_slider.reply_greater_equal",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and continuing to use @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.",
+                    "matchedExpression": "@global.parent_app",
+                    "type": "global",
+                    "fieldName": "parent_app"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.parent_app": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "survey_question_cmp.box_slider"
+        }
+      ],
+      "_nested_name": "survey_question_cmp"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey_final.xlsx"
+}
