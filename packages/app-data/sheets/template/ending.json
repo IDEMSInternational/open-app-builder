@@ -181,11 +181,23 @@
                   "_nested_name": "watch.workshop_activity.content_box.video_src"
                 },
                 {
+                  "name": "subs_src",
+                  "value": "plh_video/lets_slow_down.vtt",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "watch.workshop_activity.content_box.subs_src"
+                },
+                {
                   "name": "button",
                   "value": "Read along",
                   "_translations": {
                     "value": {
-                      "tz_sw": true
+                      "tz_sw": true,
+                      "za_af": true,
+                      "za_st": true,
+                      "za_tn": true
                     }
                   },
                   "action_list": [

@@ -38,7 +38,7 @@ export function checkInputOutputDirs(inDir: string, outDir: string) {
     fs.mkdirSync(inDir, { recursive: true });
   }
   if (fs.readdirSync(inDir).length === 0) {
-    console.warn(chalk.red("Warning - No source tranlsations found\n", inDir));
+    console.warn(chalk.red("Warning - No source translations found\n", inDir));
   }
   if (!fs.existsSync(outDir)) {
     fs.mkdirSync(outDir, { recursive: true });
