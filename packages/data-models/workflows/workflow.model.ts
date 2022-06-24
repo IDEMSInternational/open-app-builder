@@ -9,15 +9,20 @@ export interface IWorkflowContext {
 
 interface IWorkflowStep {
   name: string;
-  function: (context: {
-    config: IDeploymentConfig;
-    workflow: IWorkflowContext;
-    tasks: ITasks;
-  }) => Promise<any>;
+  condition?: (context: IWorkflowStepContext) => Promise<boolean>;
+  function: (context: IWorkflowStepContext) => Promise<any>;
 }
+interface IWorkflowStepContext {
+  config: IDeploymentConfig;
+  workflow: IWorkflowContext;
+  tasks: ITasks;
+  options: { [optionName: string]: string | boolean };
+}
+
 export interface IWorkflow {
   label: string;
   steps: IWorkflowStep[];
+  options?: { flags: string; description?: string; defaultValue?: string | boolean }[];
 }
 
 export interface IDeploymentWorkflows {

@@ -1,7 +1,6 @@
 import fs from "fs";
 import readline from "readline";
-import { drive_v3, google } from "googleapis";
-import chalk from "chalk";
+import { driveactivity_v2, drive_v3, google } from "googleapis";
 require("dotenv").config();
 
 /***************************************************************************************
@@ -27,7 +26,6 @@ export default program
   )
   .requiredOption("-a --auth-token-path <string>", "Path to token JSON", PATHS.DEFAULT_TOKEN)
   .action(async (opts: IProgramOptions) => {
-    console.log("authorize", opts);
     authorizeGDrive(opts);
   });
 
@@ -43,42 +41,61 @@ if (require.main === module) {
  * Main Methods
  *************************************************************************************/
 
-// If modifying these scopes, delete token.json.
-const SCOPES = [
-  "https://www.googleapis.com/auth/drive.readonly",
-  "https://www.googleapis.com/auth/drive.metadata.readonly",
-];
-
+/** Authorize access to the Gdrive api and return client */
 export function authorizeGDrive(
   options: IProgramOptions,
   driveOptions?: drive_v3.Options
-): Promise<drive_v3.Drive> {
+): Promise<{ drive: drive_v3.Drive }> {
   const { authTokenPath, credentialsPath } = options;
+  const authScopes = [
+    "https://www.googleapis.com/auth/drive.readonly",
+    "https://www.googleapis.com/auth/drive.metadata.readonly",
+  ];
   return new Promise((resolve, reject) => {
     try {
-      // The file token.json stores the user's access and refresh tokens, and is
-      // created automatically when the authorization flow completes for the first
-      // time.
-
-      // Load client secrets from a local file or env variable
-      if (!fs.existsSync(credentialsPath)) {
-        logError({
-          msg1: `No application credentials found in : ${credentialsPath}`,
-          msg2: "Application must be registered as per https://developers.google.com/identity/protocols/oauth2",
-        });
-      }
-      const creds = getJSONFromEnvOrFile("GDRIVE_CREDENTIALS", credentialsPath);
-
-      // Authorize a client with credentials, then call the Google Drive API.
-      authorize(creds, authTokenPath, SCOPES, (auth) => {
+      const credentials = getAuthCredentials(credentialsPath);
+      authorize(credentials, authTokenPath, authScopes, (auth) => {
         const drive = google.drive({ version: "v3", auth, ...driveOptions });
-        resolve(drive);
+        resolve({ drive });
       });
     } catch (ex) {
       console.warn("Error authorizing google drive access", ex);
       reject(ex);
     }
   });
+}
+
+/** Authorize access to the GdriveActivity api and return client */
+export function authorizeGDriveActivity(
+  options: IProgramOptions,
+  activityOptions?: driveactivity_v2.Options
+): Promise<{ driveactivity: driveactivity_v2.Driveactivity }> {
+  const { authTokenPath, credentialsPath } = options;
+  const authScopes = ["https://www.googleapis.com/auth/drive.activity.readonly"];
+  return new Promise((resolve, reject) => {
+    try {
+      const credentials = getAuthCredentials(credentialsPath);
+      authorize(credentials, authTokenPath, authScopes, (auth) => {
+        const driveactivity = google.driveactivity({ version: "v2", auth, ...activityOptions });
+        resolve({ driveactivity });
+      });
+    } catch (ex) {
+      console.warn("Error authorizing google drive access", ex);
+      reject(ex);
+    }
+  });
+}
+
+/** Verify application auth credentials exist and return */
+function getAuthCredentials(credentialsPath: string) {
+  if (!fs.existsSync(credentialsPath)) {
+    logError({
+      msg1: `No application credentials found in : ${credentialsPath}`,
+      msg2: "Application must be registered as per https://developers.google.com/identity/protocols/oauth2",
+    });
+  }
+  const credentials = getJSONFromEnvOrFile("GDRIVE_CREDENTIALS", credentialsPath);
+  return credentials;
 }
 
 function getJSONFromEnvOrFile(envVar: string, filepath: string) {
@@ -108,23 +125,35 @@ function authorize(
 ) {
   const { client_secret, client_id, redirect_uris } = credentials.installed;
   const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
-
   // Check if we have previously stored a token.
   const token = getJSONFromEnvOrFile("GDRIVE_OAUTH_TOKEN", tokenPath);
   if (!token) {
+    return getAccessToken(oAuth2Client, scopes, tokenPath, callback);
+  }
+  if (doesTokenHaveRequiredScopes(token.scope, scopes) === false) {
     return getAccessToken(oAuth2Client, scopes, tokenPath, callback);
   }
   oAuth2Client.setCredentials(token);
   callback(oAuth2Client);
 }
 
-/** */
-function getAccessToken(oAuth2Client, scopes, tokenPath, callback) {
+/**
+ * Retrieve an access token from the google drive api
+ * The file token.json stores the user's access and refresh tokens, and is
+ * created automatically when the authorization flow completes for the first time.
+ * */
+function getAccessToken(
+  oAuth2Client: OAuth2Client,
+  scopes: string[],
+  tokenPath: string,
+  callback: (client: OAuth2Client) => void
+) {
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: "offline",
     scope: scopes,
   });
-  console.log("Authorize this app by visiting this url:", authUrl);
+  console.log("Authorize this app by visiting:\n");
+  console.log("\x1b[36m" + authUrl + "\n" + "\x1b[0m");
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -135,11 +164,15 @@ function getAccessToken(oAuth2Client, scopes, tokenPath, callback) {
       if (err) return console.error("Error retrieving access token", err);
       oAuth2Client.setCredentials(token);
       // Store the token to disk for later program executions
-      fs.writeFile(tokenPath, JSON.stringify(token), (err) => {
-        if (err) return console.error(err);
-        console.log("Token stored to", tokenPath);
-      });
+      fs.writeFileSync(tokenPath, JSON.stringify(token));
+      console.log("Token stored to", tokenPath);
       callback(oAuth2Client);
     });
   });
+}
+
+/** Check if generated token scope has access to all required scopes */
+function doesTokenHaveRequiredScopes(tokenScope: string, requiredScopes: string[]): boolean {
+  const tokenScopeArray = tokenScope.split(" ");
+  return requiredScopes.every((scope) => tokenScopeArray.includes(scope));
 }
