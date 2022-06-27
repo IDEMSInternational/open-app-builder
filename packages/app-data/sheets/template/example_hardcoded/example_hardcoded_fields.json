@@ -119,6 +119,41 @@
           "value"
         ]
       }
+    },
+    {
+      "type": "subtitle",
+      "name": "app_version_label",
+      "value": "_app_version",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "app_version_label"
+    },
+    {
+      "type": "text",
+      "name": "app_version_value",
+      "value": "@fields._app_version",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "app_version_value",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields._app_version",
+            "matchedExpression": "@fields._app_version",
+            "type": "fields",
+            "fieldName": "_app_version"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._app_version": [
+          "value"
+        ]
+      }
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/hardcoded_variables.xlsx"

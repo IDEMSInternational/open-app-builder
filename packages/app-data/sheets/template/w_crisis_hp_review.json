@@ -90,7 +90,7 @@
                   "name": "box_1",
                   "rows": [
                     {
-                      "name": "text",
+                      "name": "text_done",
                       "value": "Your goal was to discuss a possible crisis situation with your teen and make a plan for it.",
                       "_translations": {
                         "value": {
@@ -103,7 +103,7 @@
                         }
                       },
                       "type": "set_variable",
-                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.text"
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.text_done"
                     },
                     {
                       "name": "reply_happy",

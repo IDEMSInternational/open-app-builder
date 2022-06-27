@@ -90,50 +90,17 @@
                   "name": "box_1",
                   "rows": [
                     {
-                      "name": "text",
-                      "value": "Your goal was to make a family budget and savings plan. We noticed you tapped the @data.habit.money.in_text_title - great job for remembering!",
+                      "name": "parent_point",
+                      "value": "money",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
-                      "condition": "@fields.weekly_parent_point_money > 0",
+                      "exclude_from_translation": true,
                       "type": "set_variable",
-                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.text",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "Your goal was to make a family budget and savings plan. We noticed you tapped the @data.habit.money.in_text_title - great job for remembering!",
-                            "matchedExpression": "@data.habit.money.in_text_title",
-                            "type": "data",
-                            "fieldName": "habit"
-                          }
-                        ],
-                        "condition": [
-                          {
-                            "fullExpression": "@fields.weekly_parent_point_money > 0",
-                            "matchedExpression": "@fields.weekly_parent_point_money",
-                            "type": "fields",
-                            "fieldName": "weekly_parent_point_money"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@data.habit.money.in_text_title": [
-                          "value"
-                        ],
-                        "@fields.weekly_parent_point_money": [
-                          "condition"
-                        ]
-                      }
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.parent_point"
                     },
                     {
-                      "name": "text",
+                      "name": "text_done",
                       "value": "Your goal was to make a family budget and savings plan.",
                       "_translations": {
                         "value": {
@@ -145,24 +112,8 @@
                           "za_zu": true
                         }
                       },
-                      "condition": "@fields.weekly_parent_point_money == 0",
                       "type": "set_variable",
-                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.text",
-                      "_dynamicFields": {
-                        "condition": [
-                          {
-                            "fullExpression": "@fields.weekly_parent_point_money == 0",
-                            "matchedExpression": "@fields.weekly_parent_point_money",
-                            "type": "fields",
-                            "fieldName": "weekly_parent_point_money"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@fields.weekly_parent_point_money": [
-                          "condition"
-                        ]
-                      }
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.text_done"
                     },
                     {
                       "name": "reply_happy",

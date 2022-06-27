@@ -53,36 +53,36 @@
       }
     },
     {
-      "name": "hp_review_mood",
-      "value": "_hp_review_mood",
+      "name": "hp_mood",
+      "value": "_hp_mood",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "hp_review_mood"
+      "_nested_name": "hp_mood"
     },
     {
-      "name": "workshop_hp_review_mood",
-      "value": "@local.workshop@local.hp_review_mood",
+      "name": "workshop_hp_mood",
+      "value": "@local.workshop@local.hp_mood",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "workshop_hp_review_mood",
+      "_nested_name": "workshop_hp_mood",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.workshop@local.hp_review_mood",
+            "fullExpression": "@local.workshop@local.hp_mood",
             "matchedExpression": "@local.workshop",
             "type": "local",
             "fieldName": "workshop"
           },
           {
-            "fullExpression": "@local.workshop@local.hp_review_mood",
-            "matchedExpression": "@local.hp_review_mood",
+            "fullExpression": "@local.workshop@local.hp_mood",
+            "matchedExpression": "@local.hp_mood",
             "type": "local",
-            "fieldName": "hp_review_mood"
+            "fieldName": "hp_mood"
           }
         ]
       },
@@ -90,8 +90,95 @@
         "@local.workshop": [
           "value"
         ],
-        "@local.hp_review_mood": [
+        "@local.hp_mood": [
           "value"
+        ]
+      }
+    },
+    {
+      "name": "hp_challenge",
+      "value": "_hp_challenge",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "hp_challenge"
+    },
+    {
+      "name": "workshop_hp_challenge",
+      "value": "@local.workshop@local.hp_challenge",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "workshop_hp_challenge",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop@local.hp_challenge",
+            "matchedExpression": "@local.workshop",
+            "type": "local",
+            "fieldName": "workshop"
+          },
+          {
+            "fullExpression": "@local.workshop@local.hp_challenge",
+            "matchedExpression": "@local.hp_challenge",
+            "type": "local",
+            "fieldName": "hp_challenge"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop": [
+          "value"
+        ],
+        "@local.hp_challenge": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "hp_challenge_list",
+      "value": [
+        "_hp_challenge_list"
+      ],
+      "type": "set_variable",
+      "_nested_name": "hp_challenge_list"
+    },
+    {
+      "name": "workshop_hp_challenge_list",
+      "value": [
+        "@local.workshop@local.hp_challenge_list"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "workshop_hp_challenge_list",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "@local.workshop@local.hp_challenge_list",
+              "matchedExpression": "@local.workshop",
+              "type": "local",
+              "fieldName": "workshop"
+            },
+            {
+              "fullExpression": "@local.workshop@local.hp_challenge_list",
+              "matchedExpression": "@local.hp_challenge_list",
+              "type": "local",
+              "fieldName": "hp_challenge_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.workshop": [
+          "value.0"
+        ],
+        "@local.hp_challenge_list": [
+          "value.0"
         ]
       }
     },
@@ -125,7 +212,7 @@
           "za_zu": true
         }
       },
-      "condition": "@fields.@local.workshop_hp_review_mood == \"happy\" || !@fields.@local.workshop_hp_review_mood",
+      "condition": "@fields.@local.workshop_hp_mood == \"happy\" || !@fields.@local.workshop_hp_mood",
       "parameter_list": {
         "style": "emphasised"
       },
@@ -133,21 +220,21 @@
       "_dynamicFields": {
         "condition": [
           {
-            "fullExpression": "@fields.@local.workshop_hp_review_mood == \"happy\" || !@fields.@local.workshop_hp_review_mood",
-            "matchedExpression": "@local.workshop_hp_review_mood",
+            "fullExpression": "@fields.@local.workshop_hp_mood == \"happy\" || !@fields.@local.workshop_hp_mood",
+            "matchedExpression": "@local.workshop_hp_mood",
             "type": "local",
-            "fieldName": "workshop_hp_review_mood"
+            "fieldName": "workshop_hp_mood"
           },
           {
-            "fullExpression": "@fields.@local.workshop_hp_review_mood == \"happy\" || !@fields.@local.workshop_hp_review_mood",
-            "matchedExpression": "@local.workshop_hp_review_mood",
+            "fullExpression": "@fields.@local.workshop_hp_mood == \"happy\" || !@fields.@local.workshop_hp_mood",
+            "matchedExpression": "@local.workshop_hp_mood",
             "type": "local",
-            "fieldName": "workshop_hp_review_mood"
+            "fieldName": "workshop_hp_mood"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_hp_review_mood": [
+        "@local.workshop_hp_mood": [
           "condition",
           "condition"
         ]
@@ -167,7 +254,7 @@
           "za_zu": true
         }
       },
-      "condition": "@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\"",
+      "condition": "@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\"",
       "parameter_list": {
         "style": "emphasised"
       },
@@ -175,21 +262,21 @@
       "_dynamicFields": {
         "condition": [
           {
-            "fullExpression": "@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\"",
-            "matchedExpression": "@local.workshop_hp_review_mood",
+            "fullExpression": "@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\"",
+            "matchedExpression": "@local.workshop_hp_mood",
             "type": "local",
-            "fieldName": "workshop_hp_review_mood"
+            "fieldName": "workshop_hp_mood"
           },
           {
-            "fullExpression": "@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\"",
-            "matchedExpression": "@local.workshop_hp_review_mood",
+            "fullExpression": "@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\"",
+            "matchedExpression": "@local.workshop_hp_mood",
             "type": "local",
-            "fieldName": "workshop_hp_review_mood"
+            "fieldName": "workshop_hp_mood"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.workshop_hp_review_mood": [
+        "@local.workshop_hp_mood": [
           "condition",
           "condition"
         ]
@@ -469,26 +556,6 @@
       }
     },
     {
-      "name": "combo_box_tracker",
-      "value": "w_1on1_hp_challenge_tracker",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "combo_box_tracker"
-    },
-    {
-      "name": "combo_box_final",
-      "value": "w_1on1_hp_challenge_final",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "combo_box_final"
-    },
-    {
       "type": "combo_box",
       "name": "combo_box",
       "action_list": [
@@ -496,11 +563,21 @@
           "trigger": "changed",
           "action_id": "set_field",
           "args": [
-            "@local.combo_box_tracker",
+            "@local.workshop_hp_challenge",
             "this.value"
           ],
-          "_raw": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
-          "_cleaned": "changed | set_field: @local.combo_box_tracker: @local.combo_box"
+          "_raw": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box",
+          "_cleaned": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box"
+        },
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.workshop_hp_challenge_list",
+            "@fields.@local.workshop_hp_challenge_list, @local.combo_box"
+          ],
+          "_raw": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
+          "_cleaned": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box"
         }
       ],
       "parameter_list": {
@@ -514,22 +591,22 @@
             "args": {
               "0": [
                 {
-                  "fullExpression": "@local.combo_box_tracker",
-                  "matchedExpression": "@local.combo_box_tracker",
+                  "fullExpression": "@local.workshop_hp_challenge",
+                  "matchedExpression": "@local.workshop_hp_challenge",
                   "type": "local",
-                  "fieldName": "combo_box_tracker"
+                  "fieldName": "workshop_hp_challenge"
                 }
               ]
             },
             "_raw": [
               {
-                "fullExpression": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
-                "matchedExpression": "@local.combo_box_tracker",
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box",
+                "matchedExpression": "@local.workshop_hp_challenge",
                 "type": "local",
-                "fieldName": "combo_box_tracker"
+                "fieldName": "workshop_hp_challenge"
               },
               {
-                "fullExpression": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box",
                 "matchedExpression": "@local.combo_box",
                 "type": "local",
                 "fieldName": "combo_box"
@@ -537,13 +614,79 @@
             ],
             "_cleaned": [
               {
-                "fullExpression": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
-                "matchedExpression": "@local.combo_box_tracker",
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box",
+                "matchedExpression": "@local.workshop_hp_challenge",
                 "type": "local",
-                "fieldName": "combo_box_tracker"
+                "fieldName": "workshop_hp_challenge"
               },
               {
-                "fullExpression": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box",
+                "matchedExpression": "@local.combo_box",
+                "type": "local",
+                "fieldName": "combo_box"
+              }
+            ]
+          },
+          "1": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.workshop_hp_challenge_list",
+                  "matchedExpression": "@local.workshop_hp_challenge_list",
+                  "type": "local",
+                  "fieldName": "workshop_hp_challenge_list"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@fields.@local.workshop_hp_challenge_list, @local.combo_box",
+                  "matchedExpression": "@local.workshop_hp_challenge_list",
+                  "type": "local",
+                  "fieldName": "workshop_hp_challenge_list"
+                },
+                {
+                  "fullExpression": "@fields.@local.workshop_hp_challenge_list, @local.combo_box",
+                  "matchedExpression": "@local.combo_box",
+                  "type": "local",
+                  "fieldName": "combo_box"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
+                "matchedExpression": "@local.workshop_hp_challenge_list",
+                "type": "local",
+                "fieldName": "workshop_hp_challenge_list"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
+                "matchedExpression": "@local.workshop_hp_challenge_list",
+                "type": "local",
+                "fieldName": "workshop_hp_challenge_list"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
+                "matchedExpression": "@local.combo_box",
+                "type": "local",
+                "fieldName": "combo_box"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
+                "matchedExpression": "@local.workshop_hp_challenge_list",
+                "type": "local",
+                "fieldName": "workshop_hp_challenge_list"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
+                "matchedExpression": "@local.workshop_hp_challenge_list",
+                "type": "local",
+                "fieldName": "workshop_hp_challenge_list"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
                 "matchedExpression": "@local.combo_box",
                 "type": "local",
                 "fieldName": "combo_box"
@@ -571,14 +714,25 @@
         }
       },
       "_dynamicDependencies": {
-        "@local.combo_box_tracker": [
+        "@local.workshop_hp_challenge": [
           "action_list.0.args.0",
           "action_list.0._raw",
           "action_list.0._cleaned"
         ],
         "@local.combo_box": [
           "action_list.0._raw",
-          "action_list.0._cleaned"
+          "action_list.0._cleaned",
+          "action_list.1.args.1",
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ],
+        "@local.workshop_hp_challenge_list": [
+          "action_list.1.args.0",
+          "action_list.1.args.1",
+          "action_list.1._raw",
+          "action_list.1._raw",
+          "action_list.1._cleaned",
+          "action_list.1._cleaned"
         ],
         "@local.answer_list": [
           "parameter_list.answer_list"
@@ -2431,84 +2585,10 @@
           ],
           "_raw": "uncompleted | emit:uncompleted",
           "_cleaned": "uncompleted | emit:uncompleted"
-        },
-        {
-          "trigger": "completed",
-          "action_id": "set_field",
-          "args": [
-            "@local.combo_box_final",
-            "@local.combo_box"
-          ],
-          "_raw": "completed | set_field:@local.combo_box_final: @local.combo_box",
-          "_cleaned": "completed | set_field:@local.combo_box_final: @local.combo_box"
         }
       ],
       "rows": [],
-      "_nested_name": "nav_buttons",
-      "_dynamicFields": {
-        "action_list": {
-          "2": {
-            "args": {
-              "0": [
-                {
-                  "fullExpression": "@local.combo_box_final",
-                  "matchedExpression": "@local.combo_box_final",
-                  "type": "local",
-                  "fieldName": "combo_box_final"
-                }
-              ],
-              "1": [
-                {
-                  "fullExpression": "@local.combo_box",
-                  "matchedExpression": "@local.combo_box",
-                  "type": "local",
-                  "fieldName": "combo_box"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "completed | set_field:@local.combo_box_final: @local.combo_box",
-                "matchedExpression": "@local.combo_box_final",
-                "type": "local",
-                "fieldName": "combo_box_final"
-              },
-              {
-                "fullExpression": "completed | set_field:@local.combo_box_final: @local.combo_box",
-                "matchedExpression": "@local.combo_box",
-                "type": "local",
-                "fieldName": "combo_box"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "completed | set_field:@local.combo_box_final: @local.combo_box",
-                "matchedExpression": "@local.combo_box_final",
-                "type": "local",
-                "fieldName": "combo_box_final"
-              },
-              {
-                "fullExpression": "completed | set_field:@local.combo_box_final: @local.combo_box",
-                "matchedExpression": "@local.combo_box",
-                "type": "local",
-                "fieldName": "combo_box"
-              }
-            ]
-          }
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.combo_box_final": [
-          "action_list.2.args.0",
-          "action_list.2._raw",
-          "action_list.2._cleaned"
-        ],
-        "@local.combo_box": [
-          "action_list.2.args.1",
-          "action_list.2._raw",
-          "action_list.2._cleaned"
-        ]
-      }
+      "_nested_name": "nav_buttons"
     }
   ],
   "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
