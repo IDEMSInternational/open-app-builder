@@ -16,6 +16,7 @@ import { TemplateFieldService } from "../template-field.service";
 import { EventService } from "src/app/shared/services/event/event.service";
 import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
+import { AssetsService } from "src/app/shared/services/assets/assets.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -42,6 +43,7 @@ export class TemplateActionService extends TemplateInstanceService {
   private eventService: EventService;
   private dbSyncService: DBSyncService;
   private authService: AuthService;
+  private assetsService: AssetsService;
 
   constructor(injector: Injector, public container?: TemplateContainerComponent) {
     super(injector);
@@ -56,6 +58,7 @@ export class TemplateActionService extends TemplateInstanceService {
     this.eventService = this.getGlobalService(EventService);
     this.dbSyncService = this.getGlobalService(DBSyncService);
     this.authService = this.getGlobalService(AuthService);
+    this.assetsService = this.getGlobalService(AssetsService);
   }
 
   /** Public method to add actions to processing queue and process */
@@ -128,6 +131,8 @@ export class TemplateActionService extends TemplateInstanceService {
     let [key, value] = args;
 
     switch (action_id) {
+      case "download_assets":
+        return this.assetsService.custom();
       case "reset_app":
         return this.settingsService.resetApp();
       case "set_local":
