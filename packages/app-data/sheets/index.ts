@@ -350,6 +350,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "praise",
       _xlsxPath: "global/data/praise_data_list.xlsx",
     },
+    launch_actions: {
+      flow_type: "data_list",
+      flow_subtype: "lifecycle_actions",
+      flow_name: "launch_actions",
+      _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
+    },
     parent_centre_data_list: {
       flow_type: "data_list",
       flow_name: "parent_centre_data_list",
@@ -361,6 +367,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "relax_list",
       data_list_name: "relax",
       _xlsxPath: "global/data/relax_data_list.xlsx",
+    },
+    survey_data_list: {
+      flow_type: "data_list",
+      flow_name: "survey_data_list",
+      data_list_name: "survey",
+      _xlsxPath: "global/data/survey_data_list.xlsx",
     },
     workshop_data_list: {
       flow_type: "data_list",
@@ -558,11 +570,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "survey_completed",
       _xlsxPath: "global/data/survey_globals.xlsx",
     },
-    thresholds: {
-      flow_type: "global",
-      flow_name: "thresholds",
-      _xlsxPath: "global/data/survey_globals.xlsx",
-    },
     workshop_completion_levels: {
       flow_type: "global",
       flow_name: "workshop_completion_levels",
@@ -583,7 +590,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     accept_terms: {
       flow_type: "template",
       flow_name: "accept_terms",
-      _xlsxPath: "global/core_templates/core_templates_app_first_launch.xlsx",
+      _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
     },
     activity_check_in_chat: {
       flow_type: "template",
@@ -931,6 +938,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "box_duo_radio_buttons",
       _xlsxPath: "global/core_templates/core_templates_workshop_boxes.xlsx",
     },
+    box_hp_review: {
+      flow_type: "template",
+      flow_name: "box_hp_review",
+      _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
+    },
     box_image: {
       flow_type: "template",
       flow_name: "box_image",
@@ -949,16 +961,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     box_multi_2: {
       flow_type: "template",
       flow_name: "box_multi_2",
-      _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
-    },
-    box_multi_3_temp: {
-      flow_type: "template",
-      flow_name: "box_multi_3_temp",
-      _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
-    },
-    box_multi_4_temp: {
-      flow_type: "template",
-      flow_name: "box_multi_4_temp",
       _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
     },
     box_multi_radio_buttons: {
@@ -991,16 +993,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "box_slider",
       _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
     },
-    box_slider_month_temp: {
-      flow_type: "template",
-      flow_name: "box_slider_month_temp",
-      _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
-    },
-    box_slider_week_temp: {
-      flow_type: "template",
-      flow_name: "box_slider_week_temp",
-      _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
-    },
     box_story: {
       flow_type: "template",
       flow_name: "box_story",
@@ -1025,6 +1017,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "box_video",
       _xlsxPath: "global/core_templates/core_templates_workshop_boxes.xlsx",
+    },
+    box_yes_no_slider: {
+      flow_type: "template",
+      flow_name: "box_yes_no_slider",
+      _xlsxPath: "global/core_templates/core_templates_survey_boxes.xlsx",
     },
     care_together: {
       flow_type: "template",
@@ -1064,6 +1061,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_simple_checkbox .xlsx",
     },
+    comp_combo_box: {
+      flow_type: "template",
+      flow_name: "comp_combo_box",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_combo_box.xlsx",
+    },
     comp_html: {
       flow_type: "template",
       flow_name: "comp_html",
@@ -1075,6 +1078,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "comp_latex",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_latex.xlsx",
+    },
+    comp_radio_group: {
+      flow_type: "template",
+      flow_name: "comp_radio_group",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_radio_group.xlsx",
     },
     comp_round_button: {
       flow_type: "template",
@@ -1099,6 +1108,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "comp_text",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_text.xlsx",
+    },
+    comp_timer: {
+      flow_type: "template",
+      flow_name: "comp_timer",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_timer.xlsx",
     },
     comp_video: {
       flow_type: "template",
@@ -1170,6 +1185,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_subtype: "debug",
       flow_name: "debug_campaign_tester",
+      comments: "test56",
       _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_campaigns.xlsx",
     },
     debug_changed_radio_group_1: {
@@ -3266,7 +3282,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     sign_in: {
       flow_type: "template",
       flow_name: "sign_in",
-      _xlsxPath: "global/core_templates/core_templates_app_first_launch.xlsx",
+      _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
     },
     something_fun: {
       flow_type: "template",
@@ -3276,7 +3292,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     splash_screens: {
       flow_type: "template",
       flow_name: "splash_screens",
-      _xlsxPath: "global/core_templates/core_templates_app_first_launch.xlsx",
+      _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
     },
     suggestions: {
       flow_type: "template",
@@ -3298,6 +3314,31 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "survey_activity",
       _xlsxPath: "global/mode_templates/survey_activity.xlsx",
     },
+    survey_final_cme: {
+      flow_type: "template",
+      flow_name: "survey_final_cme",
+      _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
+    },
+    survey_final_cmp: {
+      flow_type: "template",
+      flow_name: "survey_final_cmp",
+      _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
+    },
+    survey_final_cs: {
+      flow_type: "template",
+      flow_name: "survey_final_cs",
+      _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
+    },
+    survey_final_fi: {
+      flow_type: "template",
+      flow_name: "survey_final_fi",
+      _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
+    },
+    survey_final_fs: {
+      flow_type: "template",
+      flow_name: "survey_final_fs",
+      _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
+    },
     survey_final_intro: {
       flow_type: "template",
       flow_name: "survey_final_intro",
@@ -3308,49 +3349,29 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "survey_final_outro",
       _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
     },
-    survey_final_q_1: {
+    survey_final_pcsap: {
       flow_type: "template",
-      flow_name: "survey_final_q_1",
+      flow_name: "survey_final_pcsap",
       _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
     },
-    survey_final_q_2: {
+    survey_final_ppf: {
       flow_type: "template",
-      flow_name: "survey_final_q_2",
+      flow_name: "survey_final_ppf",
       _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
     },
-    survey_final_q_3: {
+    survey_final_ppp: {
       flow_type: "template",
-      flow_name: "survey_final_q_3",
+      flow_name: "survey_final_ppp",
       _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
     },
-    survey_final_q_4: {
+    survey_final_ps: {
       flow_type: "template",
-      flow_name: "survey_final_q_4",
+      flow_name: "survey_final_ps",
       _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
     },
-    survey_final_q_5: {
+    survey_final_pse: {
       flow_type: "template",
-      flow_name: "survey_final_q_5",
-      _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
-    },
-    survey_final_q_6: {
-      flow_type: "template",
-      flow_name: "survey_final_q_6",
-      _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
-    },
-    survey_final_q_7: {
-      flow_type: "template",
-      flow_name: "survey_final_q_7",
-      _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
-    },
-    survey_final_q_8: {
-      flow_type: "template",
-      flow_name: "survey_final_q_8",
-      _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
-    },
-    survey_final_q_9: {
-      flow_type: "template",
-      flow_name: "survey_final_q_9",
+      flow_name: "survey_final_pse",
       _xlsxPath: "global/top_templates/survey_templates/survey_final.xlsx",
     },
     survey_final_stepper: {
@@ -3373,49 +3394,54 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "survey_outro",
       _xlsxPath: "global/top_templates/survey_templates/survey.xlsx",
     },
-    survey_q_1: {
+    survey_question_cme: {
       flow_type: "template",
-      flow_name: "survey_q_1",
+      flow_name: "survey_question_cme",
       _xlsxPath: "global/top_templates/survey_templates/survey.xlsx",
     },
-    survey_q_2: {
+    survey_question_cmp: {
       flow_type: "template",
-      flow_name: "survey_q_2",
+      flow_name: "survey_question_cmp",
       _xlsxPath: "global/top_templates/survey_templates/survey.xlsx",
     },
-    survey_q_3: {
+    survey_question_cs: {
       flow_type: "template",
-      flow_name: "survey_q_3",
+      flow_name: "survey_question_cs",
       _xlsxPath: "global/top_templates/survey_templates/survey.xlsx",
     },
-    survey_q_4: {
+    survey_question_fi: {
       flow_type: "template",
-      flow_name: "survey_q_4",
+      flow_name: "survey_question_fi",
       _xlsxPath: "global/top_templates/survey_templates/survey.xlsx",
     },
-    survey_q_5: {
+    survey_question_fs: {
       flow_type: "template",
-      flow_name: "survey_q_5",
+      flow_name: "survey_question_fs",
       _xlsxPath: "global/top_templates/survey_templates/survey.xlsx",
     },
-    survey_q_6: {
+    survey_question_pcsap: {
       flow_type: "template",
-      flow_name: "survey_q_6",
+      flow_name: "survey_question_pcsap",
       _xlsxPath: "global/top_templates/survey_templates/survey.xlsx",
     },
-    survey_q_7: {
+    survey_question_ppf: {
       flow_type: "template",
-      flow_name: "survey_q_7",
+      flow_name: "survey_question_ppf",
       _xlsxPath: "global/top_templates/survey_templates/survey.xlsx",
     },
-    survey_q_8: {
+    survey_question_ppp: {
       flow_type: "template",
-      flow_name: "survey_q_8",
+      flow_name: "survey_question_ppp",
       _xlsxPath: "global/top_templates/survey_templates/survey.xlsx",
     },
-    survey_q_9: {
+    survey_question_ps: {
       flow_type: "template",
-      flow_name: "survey_q_9",
+      flow_name: "survey_question_ps",
+      _xlsxPath: "global/top_templates/survey_templates/survey.xlsx",
+    },
+    survey_question_pse: {
+      flow_type: "template",
+      flow_name: "survey_question_pse",
       _xlsxPath: "global/top_templates/survey_templates/survey.xlsx",
     },
     survey_stepper: {
@@ -3453,6 +3479,31 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "survey_warning_skip_question",
       _xlsxPath: "global/top_templates/survey_templates/survey_warnings.xlsx",
     },
+    survey_welcome_cme: {
+      flow_type: "template",
+      flow_name: "survey_welcome_cme",
+      _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
+    },
+    survey_welcome_cmp: {
+      flow_type: "template",
+      flow_name: "survey_welcome_cmp",
+      _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
+    },
+    survey_welcome_cs: {
+      flow_type: "template",
+      flow_name: "survey_welcome_cs",
+      _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
+    },
+    survey_welcome_fi: {
+      flow_type: "template",
+      flow_name: "survey_welcome_fi",
+      _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
+    },
+    survey_welcome_fs: {
+      flow_type: "template",
+      flow_name: "survey_welcome_fs",
+      _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
+    },
     survey_welcome_intro: {
       flow_type: "template",
       flow_name: "survey_welcome_intro",
@@ -3463,50 +3514,55 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "survey_welcome_outro",
       _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
     },
-    survey_welcome_q_1: {
+    survey_welcome_pcsap: {
       flow_type: "template",
-      flow_name: "survey_welcome_q_1",
+      flow_name: "survey_welcome_pcsap",
       _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
     },
-    survey_welcome_q_2: {
+    survey_welcome_ppf: {
       flow_type: "template",
-      flow_name: "survey_welcome_q_2",
+      flow_name: "survey_welcome_ppf",
       _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
     },
-    survey_welcome_q_3: {
+    survey_welcome_ppp: {
       flow_type: "template",
-      flow_name: "survey_welcome_q_3",
+      flow_name: "survey_welcome_ppp",
       _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
     },
-    survey_welcome_q_4: {
+    survey_welcome_ps: {
       flow_type: "template",
-      flow_name: "survey_welcome_q_4",
+      flow_name: "survey_welcome_ps",
       _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
     },
-    survey_welcome_q_5: {
+    survey_welcome_pse: {
       flow_type: "template",
-      flow_name: "survey_welcome_q_5",
+      flow_name: "survey_welcome_pse",
       _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
     },
-    survey_welcome_q_6: {
+    survey_welcome_repeat_cme: {
       flow_type: "template",
-      flow_name: "survey_welcome_q_6",
-      _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
+      flow_name: "survey_welcome_repeat_cme",
+      _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
     },
-    survey_welcome_q_7: {
+    survey_welcome_repeat_cmp: {
       flow_type: "template",
-      flow_name: "survey_welcome_q_7",
-      _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
+      flow_name: "survey_welcome_repeat_cmp",
+      _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
     },
-    survey_welcome_q_8: {
+    survey_welcome_repeat_cs: {
       flow_type: "template",
-      flow_name: "survey_welcome_q_8",
-      _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
+      flow_name: "survey_welcome_repeat_cs",
+      _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
     },
-    survey_welcome_q_9: {
+    survey_welcome_repeat_fi: {
       flow_type: "template",
-      flow_name: "survey_welcome_q_9",
-      _xlsxPath: "global/top_templates/survey_templates/survey_welcome.xlsx",
+      flow_name: "survey_welcome_repeat_fi",
+      _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
+    },
+    survey_welcome_repeat_fs: {
+      flow_type: "template",
+      flow_name: "survey_welcome_repeat_fs",
+      _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
     },
     survey_welcome_repeat_intro: {
       flow_type: "template",
@@ -3518,49 +3574,29 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "survey_welcome_repeat_outro",
       _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
     },
-    survey_welcome_repeat_q_1: {
+    survey_welcome_repeat_pcsap: {
       flow_type: "template",
-      flow_name: "survey_welcome_repeat_q_1",
+      flow_name: "survey_welcome_repeat_pcsap",
       _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
     },
-    survey_welcome_repeat_q_2: {
+    survey_welcome_repeat_ppf: {
       flow_type: "template",
-      flow_name: "survey_welcome_repeat_q_2",
+      flow_name: "survey_welcome_repeat_ppf",
       _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
     },
-    survey_welcome_repeat_q_3: {
+    survey_welcome_repeat_ppp: {
       flow_type: "template",
-      flow_name: "survey_welcome_repeat_q_3",
+      flow_name: "survey_welcome_repeat_ppp",
       _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
     },
-    survey_welcome_repeat_q_4: {
+    survey_welcome_repeat_ps: {
       flow_type: "template",
-      flow_name: "survey_welcome_repeat_q_4",
+      flow_name: "survey_welcome_repeat_ps",
       _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
     },
-    survey_welcome_repeat_q_5: {
+    survey_welcome_repeat_pse: {
       flow_type: "template",
-      flow_name: "survey_welcome_repeat_q_5",
-      _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
-    },
-    survey_welcome_repeat_q_6: {
-      flow_type: "template",
-      flow_name: "survey_welcome_repeat_q_6",
-      _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
-    },
-    survey_welcome_repeat_q_7: {
-      flow_type: "template",
-      flow_name: "survey_welcome_repeat_q_7",
-      _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
-    },
-    survey_welcome_repeat_q_8: {
-      flow_type: "template",
-      flow_name: "survey_welcome_repeat_q_8",
-      _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
-    },
-    survey_welcome_repeat_q_9: {
-      flow_type: "template",
-      flow_name: "survey_welcome_repeat_q_9",
+      flow_name: "survey_welcome_repeat_pse",
       _xlsxPath: "global/top_templates/survey_templates/survey_welcome_repeat.xlsx",
     },
     survey_welcome_repeat_stepper: {
