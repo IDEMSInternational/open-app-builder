@@ -38,6 +38,7 @@ nav:
       - components/slider.md
       - components/video.md
       - components/timer.md
+      - components/radio_group.md
   - Q & A:
       - questions/parameters_styles.md
       - questions/positioning_components.md
