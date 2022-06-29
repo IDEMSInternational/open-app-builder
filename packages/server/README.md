@@ -158,7 +158,10 @@ Roughly the issue is:
 
 
 ## Server Deployment (WiP docs)
-To deploy on a server the same ensure docker and docker-compse are installed and run the same way as locally
+Production deployments can be managed in the same way as local deployments,
+although docker installation may vary depending on platform.
+
+Additional care should also be taken to ensure all passwords set in the `.env` file are changed to strong variants.
 
 ### Securing automaticatlly
 The docker container will automatically generate https certificates and renew for the `SERVER_NAME` specified in the `.env` file, with additional config options. I.e.
