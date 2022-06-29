@@ -22,8 +22,15 @@ server {
     client_max_body_size 32m;
     listen 443 ssl default_server;
     listen [::]:443 ssl default_server;
+
     server_name ${SERVER_NAME};
+
     ssl_certificate /etc/letsencrypt/live/${SERVER_NAME}/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/${SERVER_NAME}/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/${SERVER_NAME}/chain.pem;
+    
+    # Load the Diffie-Hellman parameter.
+    ssl_dhparam /etc/letsencrypt/dhparams/dhparam.pem;
+    
     include conf/locations.conf;
 }

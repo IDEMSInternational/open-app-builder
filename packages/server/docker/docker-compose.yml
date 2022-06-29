@@ -3,11 +3,10 @@ version: "3.1"
 services:
   ####################################################################
   # Primary Webserver (Nginx)
-  # Alt: https://hub.docker.com/r/jonasal/nginx-certbot
+  # Nginx with auto cert generate and renewal
   ####################################################################
   nginx:
-    # image: jonasal/nginx-certbot:latest
-    image: nginx:stable
+    image: jonasal/nginx-certbot:3.1.3
     container_name: plh_webserver
     restart: unless-stopped
     env_file:
@@ -23,12 +22,12 @@ services:
       options:
         max-size: "1m"
     volumes:
+      # Local nginx conf
       - ./config/nginx/conf.d:/etc/nginx/conf.d
       - ./config/nginx/conf:/etc/nginx/conf
       - ./config/nginx/templates:/etc/nginx/templates
-      - /root/certs-data/:/data/letsencrypt/
-      - /etc/letsencrypt/:/etc/letsencrypt/
-      # NOTE - the bind volumes directly from motomo (could be another service)
+      # Certs populated by certbot
+      - nginx_secrets:/etc/letsencrypt
   ####################################################################
   # IDEMS Apps API
   ####################################################################
