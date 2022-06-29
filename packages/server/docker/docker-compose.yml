@@ -23,10 +23,9 @@ services:
       options:
         max-size: "1m"
     volumes:
-      # - nginx_secrets:/etc/letsencrypt
       - ./config/nginx/conf.d:/etc/nginx/conf.d
-      # - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./config/nginx/conf:/etc/nginx/conf
+      - ./config/nginx/templates:/etc/nginx/templates
       - /root/certs-data/:/data/letsencrypt/
       - /etc/letsencrypt/:/etc/letsencrypt/
       # NOTE - the bind volumes directly from motomo (could be another service)
