@@ -35,6 +35,9 @@ yarn start
 yarn workspace server start
 ```
 
+You should be able to access the dashboard at http://localhost (will redirect)
+
+
 ## Application Configs
 
 ### Adminer DB Admin
@@ -157,23 +160,14 @@ Roughly the issue is:
 ## Server Deployment (WiP docs)
 To deploy on a server the same ensure docker and docker-compse are installed and run the same way as locally
 
-### Securing with HTTPS
-The recommended approach is to use [Certbot](https://certbot.eff.org/). An example of creating certificates whilst running a docker nginx container can be found here: https://dbillinghamuk.medium.com/certbot-certificate-verification-through-nginx-container-710c299ec549
+### Securing automaticatlly
+The docker container will automatically generate https certificates and renew for the `SERVER_NAME` specified in the `.env` file, with additional config options. I.e.
 
-Example command
 ```
-sudo certbot certonly --webroot -w /root/certs-data/ -d welcome.co.uk -d apps-server.idems.international
+CERTBOT_EMAIL=myEmail@mydomain.com
+SERVER_NAME=example.mydomain.com
+USE_LOCAL_CA=0
 ```
-
-Certificates will auto-renew, or can be manually renewed via `sudo certbot renew`.
-The new certificates will be populated to the same local folder, and so to update those inside the container the container must be restarted, e.g.
-```
-docker restart plh_webserver
-```
-This can either be scheduled as a cron task, or handled manually.
-
-TODO - in future this could be handled with nginx-certbot image all similar docker container system
-
 
 ### WiP - Alternate deployment
 Another way to deploy on a standalone server is via [Swarmlet](https://swarmlet.dev/docs) - an automation service that handles installing and managing docker containers
