@@ -9,7 +9,7 @@ The Apps Server contains various docker containers for managing IDEMS Apps, incl
 - Matomo Analytics (Dashboard + DB + Webserver)
 
 ## Configure Environment Variables
-Copy the sample environemnt file
+Copy the sample environment file
 ```bash
 cp .env.example .env
 ```
@@ -51,7 +51,7 @@ Username: (POSTGRES_USER in .env)
 Password: (POSTGRES_PASS in .env)
 Database: (blank)
 ```
-You should already see app and metabase databases created via the initialisation script [docker/config/init.sh](./docker/config/db/init.sh)
+You should already see app and metabase databases created via the initialisation script [docker/config/db/init.sh](./docker/config/db/init.sh)
 
 Note - as these scripts only ever run on first initialisation, if adjustments need to be made then SQL can be executed from within Adminer in a similar way as the scripts
 
@@ -68,7 +68,7 @@ The api page should load with an overview of all available endpoints for referen
 ### Metabase DB Dashboard
 http://localhost/dashboard/
 
-A new database will need to be created to allow access for metabase. This should be automatically configured in [](./docker/config/db/init.sh), however if these steps fail they can be run manually (currently a bit temperamental - TODO ISSUE - will know if successful if can see a database created that matches the provided $MB_DB_DBNAME).
+A new database will need to be created to allow access for metabase. This should be automatically configured in [docker/config/db/init.sh](./docker/config/db/init.sh), however if these steps fail they can be run manually (currently a bit temperamental - TODO ISSUE - will know if successful if can see a database created that matches the provided $MB_DB_DBNAME).
 
 Manual SQL can be executed from the Adminer DB interface, e.g. using the example config:
 ```
@@ -91,9 +91,9 @@ Database type: PostgreSQL
 Name: (any)
 Host: db
 Port: 5432
-Database name: ($DB_NAME in ../api/.env)
-Username: ($DB_USER in ../api/.env)
-Password: ($DB_PASSWORD in ../api/.env)
+Database name: ($APP_DB_NAME in ../api/.env)
+Username: ($APP_DB_USER in ../api/.env)
+Password: ($APP_DB_PASSWORD in ../api/.env)
 ```
 
 
