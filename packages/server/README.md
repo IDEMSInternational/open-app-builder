@@ -23,6 +23,13 @@ cp ../api/.env.example ../api/.env
 Matomo analytics can be configured in the file [./docker/config/matomo_config/config.ini.php](./docker/config/matomo_config/config.ini.php).
 Note - this file will only be populated after initial config has been completed from within the webbrowser running the app
 
+## Build API
+This will create a docker image from the local api workspace. It should be rebuilt
+whenever changed
+```
+yarn workspace api docker:build
+```
+
 ## Running Locally
 1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop   )
 
