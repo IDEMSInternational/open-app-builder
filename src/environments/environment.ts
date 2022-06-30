@@ -21,8 +21,8 @@ export const environment = {
   /** Local Postgres */
   // apiEndpoint: "http://localhost:3000",
   /** Local Docker */
-  apiEndpoint: "http://localhost/api",
-  analytics: { endpoint: "http://localhost/analytics", siteId: 1 },
+  apiEndpoint: "http://localhost:3000",
+  analytics: { endpoint: "http://localhost:3001", siteId: 1 },
   /** production settings **/
   // apiEndpoint: "https://apps-server.idems.international/api",
   // analytics: { endpoint: "https://apps-server.idems.international/analytics", siteId: 1 },
