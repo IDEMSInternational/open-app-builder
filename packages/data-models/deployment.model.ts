@@ -18,6 +18,13 @@ export interface IDeploymentConfig {
     /** filter function applied to assets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */
     assets_filter_function?: (gdriveEntry: IGdriveEntry) => boolean;
   };
+  android?: {
+    /** Location of source android assets (splash and launcher source images). */
+    icon_asset_path?: string;
+    splash_asset_path?: string;
+    icon_asset_foreground_path?: string;
+    icon_asset_background_path?: string;
+  };
   /** Optional override of any provided constants from data-models/constants */
   app_constants?: Partial<IAppConstants>;
   app_data?: {
@@ -27,8 +34,6 @@ export interface IDeploymentConfig {
     converter_cache_path?: string;
     /** processed assets for use in app. Defaults `packages/app_data/assets` */
     assets_output_path?: string;
-    /** location of source android assets directory (splash and launcher source images) relative to assets dir. Default `android` */
-    android_assets_subpath?: string;
     /** filter function that receives converted flows. Default `(flow)=>true`*/
     sheets_filter_function?: (flow: IFlowTypeBase) => boolean;
     /** filter function that receives basic file info such as relativePath and size. Default `(fileEntry)=>true`*/
@@ -75,12 +80,17 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     sheets_filter_function: (gdriveEntry) => true,
     assets_filter_function: (gdriveEntry) => true,
   },
+  android: {
+    splash_asset_path: "packages/app-data/assets/android/splash.png",
+    icon_asset_path: "packages/app-data/assets/android/icon.png",
+    icon_asset_foreground_path: "packages/app-data/assets/android/icon-foreground.png",
+    icon_asset_background_path: "packages/app-data/assets/android/icon-background.png",
+  },
   app_constants: {},
   app_data: {
     sheets_output_path: "packages/app-data/sheets",
     converter_cache_path: "./cache/converter",
     assets_output_path: "packages/app-data/assets",
-    android_assets_subpath: "android",
     translations_output_path: "packages/app-data/translations",
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,

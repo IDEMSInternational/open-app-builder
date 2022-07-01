@@ -4,24 +4,22 @@ import fs from "fs";
 import { ROOT_DIR } from "../../paths";
 import { logError } from "../../utils";
 
-const set_splash_image = async (assetsFolderPath: string, subPath: string) => {
-  const androidAssetsPath = path.join(path.resolve(assetsFolderPath), subPath);
-  const availableAssets = fs.readdirSync(androidAssetsPath);
-  if (!availableAssets.includes("splash.png")) {
+const set_splash_image = async (splashAssetPath: string) => {
+  if (!fs.existsSync(splashAssetPath)) {
     return logError({
-      msg1: "splash.png not found",
-      msg2: `A splash.png file is required to generate a splash screen.`,
+      msg1: "Splash source image not found",
+      msg2: `A source .png file is required to generate a splash screen. No asset was found at the path supplied in the deployment config: ${splashAssetPath}.`,
     });
   }
 
-  const options: Options = {
+  const cordovaOptions: Options = {
     directory: ROOT_DIR,
     resourcesDirectory: path.join(ROOT_DIR, "resources"),
     logstream: process.stdout,
     platforms: {
       android: {
         splash: {
-          sources: [path.join(androidAssetsPath, "splash.png")],
+          sources: [splashAssetPath],
         },
       },
     },
@@ -34,27 +32,30 @@ const set_splash_image = async (assetsFolderPath: string, subPath: string) => {
     },
   };
 
-  return await run(options);
+  return await run(cordovaOptions);
 };
 
-const set_launcher_icon = async (assetsFolderPath: string, subPath: string) => {
-  const androidAssetsPath = path.join(path.resolve(assetsFolderPath), subPath);
-  const availableAssets = fs.readdirSync(androidAssetsPath);
+const set_launcher_icon = async (options: {
+  iconAssetPath: string;
+  iconAssetForegroundPath?: string;
+  iconAssetBackgroundPath?: string;
+}) => {
+  const { iconAssetPath, iconAssetForegroundPath, iconAssetBackgroundPath } = options;
+
   const iconSources = [];
-  if (availableAssets.includes("icon.png")) {
-    iconSources.push(path.join(androidAssetsPath, "icon.png"));
+  if (fs.existsSync(iconAssetPath)) {
+    iconSources.push(iconAssetPath);
   } else {
     return logError({
-      msg1: "icon.png not found",
-      msg2: `An icon.png file is required to be used as a fall back for when the device's android version does not support adaptive icons.`,
+      msg1: "Icon source asset not found",
+      msg2: `A source .png file is required to be used as a fall back for when the device's android version does not support adaptive icons. No asset was found at the path supplied in the deployment config: ${iconAssetPath}.`,
     });
   }
 
   const includeAdaptiveIcons =
-    availableAssets.includes("icon-background.png") &&
-    availableAssets.includes("icon-foreground.png");
+    fs.existsSync(iconAssetForegroundPath) && fs.existsSync(iconAssetBackgroundPath);
 
-  const options: Options = {
+  const cordovaOptions: Options = {
     directory: ROOT_DIR,
     resourcesDirectory: path.join(ROOT_DIR, "resources"),
     logstream: process.stdout,
@@ -63,8 +64,8 @@ const set_launcher_icon = async (assetsFolderPath: string, subPath: string) => {
         ? {
             "adaptive-icon": {
               icon: { sources: iconSources },
-              foreground: { sources: [path.join(androidAssetsPath, "icon-foreground.png")] },
-              background: { sources: [path.join(androidAssetsPath, "icon-background.png")] },
+              foreground: { sources: [iconAssetForegroundPath] },
+              background: { sources: [iconAssetBackgroundPath] },
             },
           }
         : { icon: { sources: iconSources } },
@@ -78,7 +79,7 @@ const set_launcher_icon = async (assetsFolderPath: string, subPath: string) => {
     },
   };
 
-  return await run(options);
+  return await run(cordovaOptions);
 };
 
 const add_assets = () => null;
