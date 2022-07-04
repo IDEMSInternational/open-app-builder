@@ -52,8 +52,8 @@ export class AuthService {
   private addStorageEntry(user?: User) {
     const { APP_AUTH_USER } = APP_CONSTANTS.APP_FIELDS;
     if (user) {
-      const { email, phoneNumber, uid, displayName } = user;
-      localStorage.setItem(APP_AUTH_USER, JSON.stringify({ email, phoneNumber, uid, displayName }));
+      const { uid } = user;
+      localStorage.setItem(APP_AUTH_USER, JSON.stringify({ uid }));
     } else {
       localStorage.removeItem(APP_AUTH_USER);
     }
