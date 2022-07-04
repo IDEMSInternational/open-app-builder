@@ -80,12 +80,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     sheets_filter_function: (gdriveEntry) => true,
     assets_filter_function: (gdriveEntry) => true,
   },
-  android: {
-    splash_asset_path: "packages/app-data/assets/android/splash.png",
-    icon_asset_path: "packages/app-data/assets/android/icon.png",
-    icon_asset_foreground_path: "packages/app-data/assets/android/icon-foreground.png",
-    icon_asset_background_path: "packages/app-data/assets/android/icon-background.png",
-  },
+  android: {},
   app_constants: {},
   app_data: {
     sheets_output_path: "packages/app-data/sheets",
