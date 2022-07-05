@@ -1,0 +1,132 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_final_fi",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "survey_question_fi",
+      "value": "survey_question_fi",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "box_slider",
+          "rows": [
+            {
+              "name": "survey_name",
+              "value": "survey_final",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_fi.box_slider.survey_name"
+            },
+            {
+              "name": "reply_less",
+              "value": "Great. If any stress or disagreements around money do come up in your family in the future, you can always review the @data.workshop.w_money.in_text_title or @data.parent_centre.my_tips.location_text!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_fi.box_slider.reply_less",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Great. If any stress or disagreements around money do come up in your family in the future, you can always review the @data.workshop.w_money.in_text_title or @data.parent_centre.my_tips.location_text!",
+                    "matchedExpression": "@data.workshop.w_money.in_text_title",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  },
+                  {
+                    "fullExpression": "Great. If any stress or disagreements around money do come up in your family in the future, you can always review the @data.workshop.w_money.in_text_title or @data.parent_centre.my_tips.location_text!",
+                    "matchedExpression": "@data.parent_centre.my_tips.location_text",
+                    "type": "data",
+                    "fieldName": "parent_centre"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_money.in_text_title": [
+                  "value"
+                ],
+                "@data.parent_centre.my_tips.location_text": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "reply_greater_equal",
+              "value": "Money stress can be overwhelming. \n\nWhenever stress or disagreements around money come up in your family, you can find tips in the @data.workshop.w_money.in_text_title or under @data.parent_centre.my_tips.location_text!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_fi.box_slider.reply_greater_equal",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Money stress can be overwhelming. \n\nWhenever stress or disagreements around money come up in your family, you can find tips in the @data.workshop.w_money.in_text_title or under @data.parent_centre.my_tips.location_text!",
+                    "matchedExpression": "@data.workshop.w_money.in_text_title",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  },
+                  {
+                    "fullExpression": "Money stress can be overwhelming. \n\nWhenever stress or disagreements around money come up in your family, you can find tips in the @data.workshop.w_money.in_text_title or under @data.parent_centre.my_tips.location_text!",
+                    "matchedExpression": "@data.parent_centre.my_tips.location_text",
+                    "type": "data",
+                    "fieldName": "parent_centre"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_money.in_text_title": [
+                  "value"
+                ],
+                "@data.parent_centre.my_tips.location_text": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "survey_question_fi.box_slider"
+        }
+      ],
+      "_nested_name": "survey_question_fi"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey_final.xlsx"
+}

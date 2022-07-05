@@ -62,8 +62,14 @@
               "value": "Bringing teenagers up is hard",
               "_translations": {
                 "value": {
-                  "tz_sw": true
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true
                 }
+              },
+              "parameter_list": {
+                "text_align": "center"
               },
               "_nested_name": "animated_slides.animated_section.slogan_1"
             }
@@ -103,7 +109,10 @@
               "value": "You are the best parent your teen could have",
               "_translations": {
                 "value": {
-                  "tz_sw": true
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true
                 }
               },
               "parameter_list": {
@@ -147,7 +156,10 @@
               "value": "Join the 152.4 million parents who have used our resources",
               "_translations": {
                 "value": {
-                  "tz_sw": true
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true
                 }
               },
               "parameter_list": {
@@ -171,6 +183,8 @@
               "_translations": {
                 "value": {
                   "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
                   "za_tn": true,
                   "za_xh": true,
                   "za_zu": true
@@ -267,7 +281,10 @@
               "value": "@global.parent_app funded by",
               "_translations": {
                 "value": {
-                  "tz_sw": true
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true
                 }
               },
               "parameter_list": {
@@ -294,7 +311,7 @@
             {
               "type": "display_group",
               "parameter_list": {
-                "style": "two_columns_images tight"
+                "style": "two_columns_images grid-spacing-sm"
               },
               "rows": [
                 {

@@ -53,7 +53,9 @@
       "name": "text_1",
       "value": "You’ve tapped the @data.habit.praise_teen.in_text_title this week. Great job for remembering!",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "hidden": "@local.praise_teen_count == 0",
       "_nested_name": "text_1",

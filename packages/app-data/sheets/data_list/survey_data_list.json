@@ -1,0 +1,472 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "survey_data_list",
+  "status": "released",
+  "data_list_name": "survey",
+  "rows": [
+    {
+      "id": "ppf",
+      "outcome": "Positive parenting (fun)",
+      "question_template": "box_slider",
+      "range_min": 0,
+      "range_max": 7,
+      "threshold": 4,
+      "parent_text_question": "Q: It is hard to find time to have fun with your children. How many times in the past week did you do something fun together? \n\nA: 0 – 8+",
+      "intro_text": "It is hard to find time to have fun with your teenager.",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "slider_question": {
+          "tz_sw": true
+        },
+        "range_description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "It is hard to find time to have fun with your teenager."
+        },
+        "slider_question": {
+          "eng": "How many days in the past week were you able to do something fun together?"
+        },
+        "range_description": {
+          "eng": "Days in the past week"
+        }
+      },
+      "slider_question": "How many days in the past week were you able to do something fun together?",
+      "range_description": "Days in the past week"
+    },
+    {
+      "id": "ppp",
+      "outcome": "Positive parenting (praise)",
+      "question_template": "box_slider",
+      "range_min": 0,
+      "range_max": 7,
+      "threshold": 5,
+      "parent_text_question": "-",
+      "intro_text": "In our busy lives it’s hard to focus on the positive.",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "slider_question": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "range_description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "In our busy lives it’s hard to focus on the positive."
+        },
+        "slider_question": {
+          "eng": "How many days in the past week have you praised your teen?"
+        },
+        "range_description": {
+          "eng": "Days in the past week"
+        }
+      },
+      "slider_question": "How many days in the past week have you praised your teen?",
+      "range_description": "Days in the past week"
+    },
+    {
+      "id": "ps",
+      "outcome": "Parenting stress",
+      "question_template": "box_slider",
+      "range_min": 0,
+      "range_max": 7,
+      "threshold": 2,
+      "parent_text_question": "Q: This is a very stressful time for families. How many times in the past week did you feel very stressed as a parent/caregiver? \n\nA: 0 – 8 +",
+      "intro_text": "This is a very stressful time for families.",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "slider_question": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "range_description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "This is a very stressful time for families."
+        },
+        "slider_question": {
+          "eng": "How many days in the past week did you feel very stressed as a parent/caregiver?"
+        },
+        "range_description": {
+          "eng": "Days in the past week"
+        }
+      },
+      "slider_question": "How many days in the past week did you feel very stressed as a parent/caregiver?",
+      "range_description": "Days in the past week"
+    },
+    {
+      "id": "cme",
+      "outcome": "Child maltreatment (emotional)",
+      "question_template": "box_slider",
+      "range_min": 0,
+      "range_max": 7,
+      "threshold": 2,
+      "parent_text_question": "Sometimes our children make us really upset. How many times in the past week did you shout, scream, or yell at your children? \n\nA: 0 – 8+",
+      "intro_text": "Sometimes our children make us really upset.",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "slider_question": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "range_description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Sometimes our children make us really upset."
+        },
+        "slider_question": {
+          "eng": "How many days in the past week did you shout, scream or yell at your teen?"
+        },
+        "range_description": {
+          "eng": "Days in the past week"
+        }
+      },
+      "slider_question": "How many days in the past week did you shout, scream or yell at your teen?",
+      "range_description": "Days in the past week"
+    },
+    {
+      "id": "fs",
+      "outcome": "Financial stress",
+      "question_template": "box_slider",
+      "range_min": 0,
+      "range_max": 7,
+      "threshold": 1,
+      "parent_text_question": "Q: Money is one of the biggest stresses for families now. How many days in the past week have you felt very worried or anxious about money? \n\nA: 0 – 7 days in the past week",
+      "intro_text": "Money is one of the biggest stresses for families.",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true
+        },
+        "slider_question": {
+          "tz_sw": true
+        },
+        "range_description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "Money is one of the biggest stresses for families."
+        },
+        "slider_question": {
+          "eng": "How many days in the past week have you felt worried or anxious about money?"
+        },
+        "range_description": {
+          "eng": "Days in the past week"
+        }
+      },
+      "slider_question": "How many days in the past week have you felt worried or anxious about money?",
+      "range_description": "Days in the past week"
+    },
+    {
+      "id": "fi",
+      "outcome": "Food insecurity",
+      "question_template": "box_slider",
+      "range_min": 0,
+      "range_max": 30,
+      "threshold": 1,
+      "parent_text_question": "Q: How many days in the past month (30 days) did you run out of money to pay for food? \n\nA: 0 - 30",
+      "slider_question": "How many days in the past month (30 days) did you run out of money to pay for food?",
+      "_translations": {
+        "slider_question": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "range_description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "slider_question": {
+          "eng": "How many days in the past month (30 days) did you run out of money to pay for food?"
+        },
+        "range_description": {
+          "eng": "Days in the past month"
+        }
+      },
+      "range_description": "Days in the past month"
+    },
+    {
+      "id": "cmp",
+      "outcome": "Child maltreatment (physical)",
+      "question_template": "box_slider",
+      "range_min": 0,
+      "range_max": 7,
+      "threshold": 1,
+      "parent_text_question": "Q: It is so stressful when children misbehave. How many times in the past week did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt? \n\nA: 0 – 8+",
+      "intro_text": "It is so stressful when children misbehave.",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "slider_question": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "range_description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "It is so stressful when children misbehave."
+        },
+        "slider_question": {
+          "eng": "How many days in the past week did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?"
+        },
+        "range_description": {
+          "eng": "Days in the past week"
+        }
+      },
+      "slider_question": "How many days in the past week did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?",
+      "range_description": "Days in the past week"
+    },
+    {
+      "id": "cs",
+      "outcome": "Child safety",
+      "question_template": "box_slider",
+      "range_min": 0,
+      "range_max": 7,
+      "threshold": 7,
+      "parent_text_question": "-",
+      "intro_text": "It’s hard to keep track of your teenagers when they are becoming independent.",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "slider_question": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "range_description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "It’s hard to keep track of your teenagers when they are becoming independent."
+        },
+        "slider_question": {
+          "eng": "How many days in the past week did you know what your teen was doing and who they were with?"
+        },
+        "range_description": {
+          "eng": "Days in the past week"
+        }
+      },
+      "slider_question": "How many days in the past week did you know what your teen was doing and who they were with?",
+      "range_description": "Days in the past week"
+    },
+    {
+      "id": "pcsap",
+      "outcome": "Parental Communication about Sexual Abuse Prevention",
+      "question_template": "box_yes_no_slider",
+      "range_min": 0,
+      "range_max": 30,
+      "threshold": 5,
+      "parent_text_question": "Q: In the past month, have you talked with your teen about keeping safe from sexual violence online or offline? This could be when they are going out with friends or talking about the websites they use.  \nQ: How many days have you had a talk like this? \n\nA: 0 - 30",
+      "intro_text": "We all want to keep our children safe.",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "yes_no_question": {
+          "tz_sw": true
+        },
+        "example_text": {
+          "tz_sw": true
+        },
+        "slider_question": {
+          "tz_sw": true
+        },
+        "range_description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "We all want to keep our children safe."
+        },
+        "yes_no_question": {
+          "eng": "In the past month, did you talk with your teen about keeping safe from sexual violence online or offline?"
+        },
+        "example_text": {
+          "eng": "This could be about going out with friends or about the websites and apps they use."
+        },
+        "slider_question": {
+          "eng": "How many days have you had a talk like this?"
+        },
+        "range_description": {
+          "eng": "Days in the past month"
+        }
+      },
+      "yes_no_question": "In the past month, did you talk with your teen about keeping safe from sexual violence online or offline?",
+      "example_text": "This could be about going out with friends or about the websites and apps they use.",
+      "slider_question": "How many days have you had a talk like this?",
+      "range_description": "Days in the past month"
+    },
+    {
+      "id": "pse",
+      "outcome": "Parental self-efficacy",
+      "question_template": "box_slider",
+      "range_min": 0,
+      "range_max": 7,
+      "parent_text_question": "Q: It can sometimes be difficult to have a positive relationship with our children. How confident do you feel about your ability as a parent/caregiver to have a positive relationship with your children? \n\nA: 0=not confident to 7=extremely confident",
+      "intro_text": "It can sometimes be difficult to have a positive relationship with our children.",
+      "_translations": {
+        "intro_text": {
+          "tz_sw": true
+        },
+        "slider_question": {
+          "tz_sw": true
+        },
+        "min_description": {
+          "tz_sw": true
+        },
+        "max_description": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "intro_text": {
+          "eng": "It can sometimes be difficult to have a positive relationship with our children."
+        },
+        "slider_question": {
+          "eng": "How confident do you feel about your ability as a parent/caregiver to have a positive relationship with your children?"
+        },
+        "min_description": {
+          "eng": "Not confident"
+        },
+        "max_description": {
+          "eng": "Extremely confident"
+        }
+      },
+      "slider_question": "How confident do you feel about your ability as a parent/caregiver to have a positive relationship with your children?",
+      "min_description": "Not confident",
+      "max_description": "Extremely confident"
+    }
+  ],
+  "_xlsxPath": "global/data/survey_data_list.xlsx"
+}
