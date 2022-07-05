@@ -50,11 +50,18 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
     max-width: 160px;
     padding: 16px;
   }
-  &[data-param-style~="tight"] {
+  @media (max-width: 375px) {
     plh-template-component {
-      display: block;
-      max-height: 70px;
-      max-width: 160px;
+      padding: 4px;
+    }
+  }
+  &[data-param-style~="grid-spacing-sm"] {
+    grid-gap: 16px;
+    @media (max-width: 375px) {
+      grid-gap: 8px;
+    }
+    plh-template-component {
+      max-height: 80px;
       padding: 0px;
     }
   }

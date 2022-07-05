@@ -8473,6 +8473,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chokidar@npm:^3.5.3":
+  version: 3.5.3
+  resolution: "chokidar@npm:3.5.3"
+  dependencies:
+    anymatch: ~3.1.2
+    braces: ~3.0.2
+    fsevents: ~2.3.2
+    glob-parent: ~5.1.2
+    is-binary-path: ~2.1.0
+    is-glob: ~4.0.1
+    normalize-path: ~3.0.0
+    readdirp: ~3.6.0
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  checksum: b49fcde40176ba007ff361b198a2d35df60d9bb2a5aab228279eb810feae9294a6b4649ab15981304447afe1e6ffbf4788ad5db77235dc770ab777c6e771980c
+  languageName: node
+  linkType: hard
+
 "chownr@npm:^1.1.1, chownr@npm:^1.1.4":
   version: 1.1.4
   resolution: "chownr@npm:1.1.4"
@@ -22787,6 +22806,7 @@ __metadata:
     "@types/node-rsa": ^1.1.1
     boxen: ^5.0.1
     chalk: ^4.1.0
+    chokidar: ^3.5.3
     commander: ^8.3.0
     data-models: "workspace:*"
     esbuild: ^0.14.2
@@ -22797,6 +22817,7 @@ __metadata:
     jasmine-ts: ^0.3.2
     node-rsa: ^1.1.1
     pkg: ^5.5.1
+    subtitles-parser-vtt: ^0.1.0
     ts-node: ~7.0.0
     ts-node-dev: ^1.0.0
     typescript: ^4.1.2
@@ -24251,6 +24272,13 @@ __metadata:
   bin:
     stylus: bin/stylus
   checksum: 5ec06f3186aaa4802cc2f04f93665a71348954e3d10f6cb26d7cdba7108fcdfa5e9a330fa7694fa0d0d31d8decf6b18349f49bbaadde96351e30d549dfb272c7
+  languageName: node
+  linkType: hard
+
+"subtitles-parser-vtt@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "subtitles-parser-vtt@npm:0.1.0"
+  checksum: 644441bdca5aeeade50b71ded8ad294aa5da0eaeb363e960fc6ce079612de724907ac58145d5fdcd1914c30c59fd087417ffb3eda02037027de924f6de18ff5b
   languageName: node
   linkType: hard
 
