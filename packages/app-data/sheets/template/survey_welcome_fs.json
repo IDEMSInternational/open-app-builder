@@ -1,0 +1,99 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_welcome_fs",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "survey_question_fs",
+      "value": "survey_question_fs",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "box_slider",
+          "rows": [
+            {
+              "name": "survey_name",
+              "value": "survey_welcome",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_fs.box_slider.survey_name"
+            },
+            {
+              "name": "reply_less",
+              "value": "Great. We have a workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_fs.box_slider.reply_less"
+            },
+            {
+              "name": "reply_greater_equal",
+              "value": "Money stress can be overwhelming. \n\nWe have a workshop on family budgeting in five weeks, but you can already access some core family budgeting tips under @data.parent_centre.my_tips.location_text!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_fs.box_slider.reply_greater_equal",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Money stress can be overwhelming. \n\nWe have a workshop on family budgeting in five weeks, but you can already access some core family budgeting tips under @data.parent_centre.my_tips.location_text!",
+                    "matchedExpression": "@data.parent_centre.my_tips.location_text",
+                    "type": "data",
+                    "fieldName": "parent_centre"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.parent_centre.my_tips.location_text": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "survey_question_fs.box_slider"
+        }
+      ],
+      "_nested_name": "survey_question_fs"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey_welcome.xlsx"
+}

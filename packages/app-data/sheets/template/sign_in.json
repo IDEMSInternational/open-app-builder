@@ -8,7 +8,10 @@
       "value": "Please sign in with your Google account to use the app.",
       "_translations": {
         "value": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
         }
       },
       "name": "text",
@@ -19,7 +22,10 @@
       "value": "Sign in with Google",
       "_translations": {
         "value": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
         }
       },
       "action_list": [

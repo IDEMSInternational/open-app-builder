@@ -9,7 +9,7 @@ The Apps Server contains various docker containers for managing IDEMS Apps, incl
 - Matomo Analytics (Dashboard + DB + Webserver)
 
 ## Configure Environment Variables
-Copy the sample environemnt file
+Copy the sample environment file
 ```bash
 cp .env.example .env
 ```
@@ -23,6 +23,13 @@ cp ../api/.env.example ../api/.env
 Matomo analytics can be configured in the file [./docker/config/matomo_config/config.ini.php](./docker/config/matomo_config/config.ini.php).
 Note - this file will only be populated after initial config has been completed from within the webbrowser running the app
 
+## Build API
+This will create a docker image from the local api workspace. It should be rebuilt
+whenever changed
+```
+yarn workspace api docker:build
+```
+
 ## Running Locally
 1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop   )
 
@@ -34,6 +41,9 @@ yarn start
 # From parent directory
 yarn workspace server start
 ```
+
+You should be able to access the dashboard at http://localhost (will redirect)
+
 
 ## Application Configs
 
@@ -48,7 +58,7 @@ Username: (POSTGRES_USER in .env)
 Password: (POSTGRES_PASS in .env)
 Database: (blank)
 ```
-You should already see app and metabase databases created via the initialisation script [docker/config/init.sh](./docker/config/db/init.sh)
+You should already see app and metabase databases created via the initialisation script [docker/config/db/init.sh](./docker/config/db/init.sh)
 
 Note - as these scripts only ever run on first initialisation, if adjustments need to be made then SQL can be executed from within Adminer in a similar way as the scripts
 
@@ -65,7 +75,7 @@ The api page should load with an overview of all available endpoints for referen
 ### Metabase DB Dashboard
 http://localhost/dashboard/
 
-A new database will need to be created to allow access for metabase. This should be automatically configured in [](./docker/config/db/init.sh), however if these steps fail they can be run manually (currently a bit temperamental - TODO ISSUE - will know if successful if can see a database created that matches the provided $MB_DB_DBNAME).
+A new database will need to be created to allow access for metabase. This should be automatically configured in [docker/config/db/init.sh](./docker/config/db/init.sh), however if these steps fail they can be run manually (currently a bit temperamental - TODO ISSUE - will know if successful if can see a database created that matches the provided $MB_DB_DBNAME).
 
 Manual SQL can be executed from the Adminer DB interface, e.g. using the example config:
 ```
@@ -88,9 +98,9 @@ Database type: PostgreSQL
 Name: (any)
 Host: db
 Port: 5432
-Database name: ($DB_NAME in ../api/.env)
-Username: ($DB_USER in ../api/.env)
-Password: ($DB_PASSWORD in ../api/.env)
+Database name: ($APP_DB_NAME in ../api/.env)
+Username: ($APP_DB_USER in ../api/.env)
+Password: ($APP_DB_PASSWORD in ../api/.env)
 ```
 
 
@@ -155,25 +165,19 @@ Roughly the issue is:
 
 
 ## Server Deployment (WiP docs)
-To deploy on a server the same ensure docker and docker-compse are installed and run the same way as locally
+Production deployments can be managed in the same way as local deployments,
+although docker installation may vary depending on platform.
 
-### Securing with HTTPS
-The recommended approach is to use [Certbot](https://certbot.eff.org/). An example of creating certificates whilst running a docker nginx container can be found here: https://dbillinghamuk.medium.com/certbot-certificate-verification-through-nginx-container-710c299ec549
+Additional care should also be taken to ensure all passwords set in the `.env` file are changed to strong variants.
 
-Example command
+### Securing automaticatlly
+The docker container will automatically generate https certificates and renew for the `SERVER_NAME` specified in the `.env` file, with additional config options. I.e.
+
 ```
-sudo certbot certonly --webroot -w /root/certs-data/ -d welcome.co.uk -d apps-server.idems.international
+CERTBOT_EMAIL=myEmail@mydomain.com
+SERVER_NAME=example.mydomain.com
+USE_LOCAL_CA=0
 ```
-
-Certificates will auto-renew, or can be manually renewed via `sudo certbot renew`.
-The new certificates will be populated to the same local folder, and so to update those inside the container the container must be restarted, e.g.
-```
-docker restart plh_webserver
-```
-This can either be scheduled as a cron task, or handled manually.
-
-TODO - in future this could be handled with nginx-certbot image all similar docker container system
-
 
 ### WiP - Alternate deployment
 Another way to deploy on a standalone server is via [Swarmlet](https://swarmlet.dev/docs) - an automation service that handles installing and managing docker containers

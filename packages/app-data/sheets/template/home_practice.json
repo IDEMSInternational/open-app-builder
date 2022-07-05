@@ -376,7 +376,8 @@
                     "value": {
                       "tz_sw": true,
                       "za_af": true,
-                      "za_st": true
+                      "za_st": true,
+                      "za_tn": true
                     }
                   },
                   "type": "set_variable",
@@ -419,7 +420,8 @@
                     "value": {
                       "tz_sw": true,
                       "za_af": true,
-                      "za_st": true
+                      "za_st": true,
+                      "za_tn": true
                     }
                   },
                   "action_list": [
