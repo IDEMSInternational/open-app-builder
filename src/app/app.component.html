@@ -1,4 +1,4 @@
-<ion-app *ngIf="renderAppTemplates">
+<ion-app *ngIf="renderAppTemplates" [ngClass]="'theme-' + themeService.currentTheme.name">
   <ion-menu #menu side="start" menuId="main-side-menu" contentId="main-content">
     <ion-header>
       <ion-toolbar color="primary">
