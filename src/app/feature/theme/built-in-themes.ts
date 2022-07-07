@@ -1,7 +1,7 @@
 import { AppTheme } from "./theme.model";
 
 export const BASE_THEME: AppTheme = {
-  name: "PLH Teens 1",
+  name: "default",
   editable: true,
   colors: {
     primary: {
