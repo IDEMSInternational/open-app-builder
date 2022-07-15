@@ -26,6 +26,7 @@ nav:
       - developers/adding-components.md
       - developers/deployments.md
       - developers/device-testing.md
+      - developers/android-assets.md
   - Display Components:
       - components/audio.md
       - components/html.md
