@@ -1,7 +1,8 @@
 import * as fs from "fs-extra";
 import * as path from "path";
-import { createHash } from "crypto";
+import { createHash, randomUUID } from "crypto";
 import { logWarning } from "./logging.utils";
+import { tmpdir } from "os";
 
 /**
  * Retrieve a nested property from a json object
@@ -428,4 +429,12 @@ export function replicateDir(
     fs.utimesSync(targetPath, mtime, mtime);
   });
   return ops;
+}
+
+/** Create a randomly-named temporary folder within the os temp directory */
+export function createTemporaryFolder() {
+  const folderName = randomUUID();
+  const folderPath = path.resolve(tmpdir(), folderName);
+  fs.ensureDirSync(folderPath);
+  return folderPath;
 }

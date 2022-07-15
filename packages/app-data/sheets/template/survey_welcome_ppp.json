@@ -1,0 +1,123 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_welcome_ppp",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "survey_question_ppp",
+      "value": "survey_question_ppp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "box_slider",
+          "rows": [
+            {
+              "name": "survey_name",
+              "value": "survey_welcome",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_ppp.box_slider.survey_name"
+            },
+            {
+              "name": "reply_less",
+              "value": "Using this app shows that you care about your teen. We have added some essential tools on how to use praise to @data.parent_centre.my_tips.location_text for quick access.\n\nIn our @data.workshop.w_praise.in_text_title you will learn even more on how to use this skill well.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_ppp.box_slider.reply_less",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Using this app shows that you care about your teen. We have added some essential tools on how to use praise to @data.parent_centre.my_tips.location_text for quick access.\n\nIn our @data.workshop.w_praise.in_text_title you will learn even more on how to use this skill well.",
+                    "matchedExpression": "@data.parent_centre.my_tips.location_text",
+                    "type": "data",
+                    "fieldName": "parent_centre"
+                  },
+                  {
+                    "fullExpression": "Using this app shows that you care about your teen. We have added some essential tools on how to use praise to @data.parent_centre.my_tips.location_text for quick access.\n\nIn our @data.workshop.w_praise.in_text_title you will learn even more on how to use this skill well.",
+                    "matchedExpression": "@data.workshop.w_praise.in_text_title",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.parent_centre.my_tips.location_text": [
+                  "value"
+                ],
+                "@data.workshop.w_praise.in_text_title": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "reply_greater_equal",
+              "value": "Wonderful that you are praising your teen! This helps them feel valued – your encouragement means a lot. In our @data.workshop.w_praise.in_text_title you will learn even more how to use this skill well.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_ppp.box_slider.reply_greater_equal",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Wonderful that you are praising your teen! This helps them feel valued – your encouragement means a lot. In our @data.workshop.w_praise.in_text_title you will learn even more how to use this skill well.",
+                    "matchedExpression": "@data.workshop.w_praise.in_text_title",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_praise.in_text_title": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "survey_question_ppp.box_slider"
+        }
+      ],
+      "_nested_name": "survey_question_ppp"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey_welcome.xlsx"
+}

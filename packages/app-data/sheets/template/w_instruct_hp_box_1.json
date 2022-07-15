@@ -28,30 +28,48 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "condition": "!(@fields.w_instruct_hp_review_mood == \"happy\" ||  !@fields.w_instruct_hp_review_mood)",
+      "condition": "@fields.w_instruct_hp_mood != \"happy\" || !@fields.w_instruct_hp_mood  ||  @fields.w_instruct_hp_done !=  \"yes\" || !@fields.w_instruct_hp_done",
       "rows": [],
       "_nested_name": "w_instruct_hp_challenges",
       "_dynamicFields": {
         "condition": [
           {
-            "fullExpression": "!(@fields.w_instruct_hp_review_mood == \"happy\" ||  !@fields.w_instruct_hp_review_mood)",
-            "matchedExpression": "@fields.w_instruct_hp_review_mood",
+            "fullExpression": "@fields.w_instruct_hp_mood != \"happy\" || !@fields.w_instruct_hp_mood  ||  @fields.w_instruct_hp_done !=  \"yes\" || !@fields.w_instruct_hp_done",
+            "matchedExpression": "@fields.w_instruct_hp_mood",
             "type": "fields",
-            "fieldName": "w_instruct_hp_review_mood"
+            "fieldName": "w_instruct_hp_mood"
           },
           {
-            "fullExpression": "!(@fields.w_instruct_hp_review_mood == \"happy\" ||  !@fields.w_instruct_hp_review_mood)",
-            "matchedExpression": "!@fields.w_instruct_hp_review_mood",
+            "fullExpression": "@fields.w_instruct_hp_mood != \"happy\" || !@fields.w_instruct_hp_mood  ||  @fields.w_instruct_hp_done !=  \"yes\" || !@fields.w_instruct_hp_done",
+            "matchedExpression": "!@fields.w_instruct_hp_mood",
             "type": "fields",
-            "fieldName": "w_instruct_hp_review_mood"
+            "fieldName": "w_instruct_hp_mood"
+          },
+          {
+            "fullExpression": "@fields.w_instruct_hp_mood != \"happy\" || !@fields.w_instruct_hp_mood  ||  @fields.w_instruct_hp_done !=  \"yes\" || !@fields.w_instruct_hp_done",
+            "matchedExpression": "@fields.w_instruct_hp_done",
+            "type": "fields",
+            "fieldName": "w_instruct_hp_done"
+          },
+          {
+            "fullExpression": "@fields.w_instruct_hp_mood != \"happy\" || !@fields.w_instruct_hp_mood  ||  @fields.w_instruct_hp_done !=  \"yes\" || !@fields.w_instruct_hp_done",
+            "matchedExpression": "!@fields.w_instruct_hp_done",
+            "type": "fields",
+            "fieldName": "w_instruct_hp_done"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@fields.w_instruct_hp_review_mood": [
+        "@fields.w_instruct_hp_mood": [
           "condition"
         ],
-        "!@fields.w_instruct_hp_review_mood": [
+        "!@fields.w_instruct_hp_mood": [
+          "condition"
+        ],
+        "@fields.w_instruct_hp_done": [
+          "condition"
+        ],
+        "!@fields.w_instruct_hp_done": [
           "condition"
         ]
       }
@@ -80,30 +98,48 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "condition": "@fields.w_instruct_hp_review_mood == \"happy\" ||  !@fields.w_instruct_hp_review_mood",
+      "condition": "!(@fields.w_instruct_hp_mood != \"happy\" || !@fields.w_instruct_hp_mood  ||  @fields.w_instruct_hp_done !=  \"yes\" || !@fields.w_instruct_hp_done )",
       "rows": [],
       "_nested_name": "w_instruct_hp_highlights",
       "_dynamicFields": {
         "condition": [
           {
-            "fullExpression": "@fields.w_instruct_hp_review_mood == \"happy\" ||  !@fields.w_instruct_hp_review_mood",
-            "matchedExpression": "@fields.w_instruct_hp_review_mood",
+            "fullExpression": "!(@fields.w_instruct_hp_mood != \"happy\" || !@fields.w_instruct_hp_mood  ||  @fields.w_instruct_hp_done !=  \"yes\" || !@fields.w_instruct_hp_done )",
+            "matchedExpression": "@fields.w_instruct_hp_mood",
             "type": "fields",
-            "fieldName": "w_instruct_hp_review_mood"
+            "fieldName": "w_instruct_hp_mood"
           },
           {
-            "fullExpression": "@fields.w_instruct_hp_review_mood == \"happy\" ||  !@fields.w_instruct_hp_review_mood",
-            "matchedExpression": "!@fields.w_instruct_hp_review_mood",
+            "fullExpression": "!(@fields.w_instruct_hp_mood != \"happy\" || !@fields.w_instruct_hp_mood  ||  @fields.w_instruct_hp_done !=  \"yes\" || !@fields.w_instruct_hp_done )",
+            "matchedExpression": "!@fields.w_instruct_hp_mood",
             "type": "fields",
-            "fieldName": "w_instruct_hp_review_mood"
+            "fieldName": "w_instruct_hp_mood"
+          },
+          {
+            "fullExpression": "!(@fields.w_instruct_hp_mood != \"happy\" || !@fields.w_instruct_hp_mood  ||  @fields.w_instruct_hp_done !=  \"yes\" || !@fields.w_instruct_hp_done )",
+            "matchedExpression": "@fields.w_instruct_hp_done",
+            "type": "fields",
+            "fieldName": "w_instruct_hp_done"
+          },
+          {
+            "fullExpression": "!(@fields.w_instruct_hp_mood != \"happy\" || !@fields.w_instruct_hp_mood  ||  @fields.w_instruct_hp_done !=  \"yes\" || !@fields.w_instruct_hp_done )",
+            "matchedExpression": "!@fields.w_instruct_hp_done",
+            "type": "fields",
+            "fieldName": "w_instruct_hp_done"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@fields.w_instruct_hp_review_mood": [
+        "@fields.w_instruct_hp_mood": [
           "condition"
         ],
-        "!@fields.w_instruct_hp_review_mood": [
+        "!@fields.w_instruct_hp_mood": [
+          "condition"
+        ],
+        "@fields.w_instruct_hp_done": [
+          "condition"
+        ],
+        "!@fields.w_instruct_hp_done": [
           "condition"
         ]
       }

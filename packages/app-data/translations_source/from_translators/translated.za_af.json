@@ -1,5 +1,77 @@
 [
   {
+    "SourceText": "When everything feels like it is falling apart",
+    "text": "Wanneer dit voel asof alles uitmekaar val",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "And you can't help but raise your voice",
+    "text": "En jy kan nie help om te skree nie",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "When all the frustrations are beginning to start",
+    "text": "Wanneer al die frustrasies begin opbou",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Remember that you have a choice",
+    "text": "Onthou dat jy 'n keuse het",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Remember all we have to be grateful for",
+    "text": "Onthou alles waarvoor ons dankbaar moet wees",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Let's slow down",
+    "text": "Kom ons vat dit bietjie stadiger",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Take a few deep breaths",
+    "text": "Haal 'n paar keer diep asem",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Because I really couldn't love you more",
+    "text": "Want ek kan regtig nie liewer vir jou wees nie",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "You can take pause, you can count to 10",
+    "text": "Jy kan 'n blaaskans neem, jy kan tot 10 tel",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Play a game or do something fun",
+    "text": "Speel 'n speletjie of doen iets lekkers",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "You can phone a friend, someone to confide in",
+    "text": "Jy kan 'n vriend(in) bel, iemand wat jy in jou vertroue kan neem",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Remember you're not the only one",
+    "text": "Onthou dat jy nie die enigste een is nie",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "* Ask each other, “What made you happy today?”\n* Ask each other, “What difficulty did you face today?”\n* Ask each other, “How can I help you?”\n* Try to do this together every day; it could be when you are eating dinner together or before you go to bed.",
     "text": "* Vra vir mekaar: “Wat het jou vandag gelukkig gemaak?”\n* Vra vir mekaar: “Met watter probleme het jy vandag te doen gehad?”\n* Vra vir mekaar: “Hoe kan ek jou help?”\n* Probeer dit elke dag saam doen; julle kan dit doen wanneer julle saam aandete eet of voor julle gaan slaap.",
     "type": "template",
@@ -61,7 +133,7 @@
   },
   {
     "SourceText": "Take turns being the “leader”. Say the intro sentences to activate everyone. Then the “leader” gives an instruction and everyone does the activity as fast as possible:\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Touch something red.” \n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Jump up and down ten times.”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Put the shoes in the shoe rack.”",
-    "text": "Maak beurte om die “leier” te wees. Sê die inleidingsinne om almal te aktiveer. Dan gee die “leier” ’n opdrag en almal doen die aktiwiteit so vinnig as moontlik:\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Raak iets rooi van kleur.”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Spring tien keer op en af.”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Sit die skoene op die skoenrak.”",
+    "text": "Maak beurte om die “leier” te wees. Sê die inleidingsinne om almal te aktiveer. Dan gee die “leier” ’n opdrag en almal doen die aktiwiteit so vinnig as moontlik:\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: \"Raak aan iets wat 'n rooi kleur het.\"\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Daar is ’n brand op die berg!”        \n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Spring tien keer op en af.”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Sit die skoene op die skoenrak.”",
     "type": "template",
     "note": ""
   },
@@ -160,6 +232,12 @@
     "text": "Sjabloon",
     "type": "template",
     "note": ""
+  },
+  {
+    "SourceText": "How to use @global.parent_app",
+    "text": "Hoe om @global.parent_app te gebruik",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
   },
   {
     "SourceText": "In-Week Messages",
@@ -373,7 +451,7 @@
   },
   {
     "SourceText": "- Explain that grief comes with many emotions and reactions. Show your teen that they are loved and cared for, and encourage them to share their emotions by talking, writing or drawing. \n- If there is a support group that your teen can be part of, this can help. \n- If a teen talks about wanting to hurt or kill themselves, ask for help from someone as soon as you can. \n- If you can, keep your normal daily routines, this can be comforting for teens. \n- It can help for teens to be part of rituals around death - to choose a song or something to say. \n- Spending a few minutes every day focused on your teen helps to make them feel more secure and give them a chance to relax or talk about things that are upsetting them.",
-    "text": "-Verduidelik dat hartseer met baie emosies en reaksies gepaard gaan. Wys vir jou tiener dat hulle geliefd en versorg is, en moedig hulle aan om hul emosies te deel deur daaroor te praat, skryf of teken.\n-Indien daar 'n ondersteuningsgroep is waarvan jou tiener kan deel word, kan dit help.\n-As 'n tiener praat van hulself beseer of om die lewe bring, vra vir hulp by iemand so vinnig as wat jy moontlik kan.\n-Indien moontlik, hou by jou normale daaglikse routines, dit kan vir 'n tiener vertroostend wees.\n-Dit kan help vir tieners om deel te neem aan rituele rondom die dood - om 'n lied te kies of om iets te sê.\n-Deur elke dag 'n paar minute op jou tiener te fokus help om hulle veiliger te laat voel en gee hulle 'n kans om te ontspan of te praat oor dinge wat hulle ontstel.",
+    "text": "-Verduidelik dat hartseer met baie emosies en reaksies gepaard gaan. Wys vir jou tiener dat hulle geliefd en versorg is, en moedig hulle aan om hul emosies te deel deur daaroor te praat, skryf of teken.\n-Indien daar 'n ondersteuningsgroep is waarvan jou tiener kan deel word, kan dit help.\n-As 'n tiener praat van hulself beseer of om die lewe bring, vra vir hulp by iemand so vinnig as wat jy moontlik kan.\n-Indien moontlik, hou by jou normale daaglikse roetines, dit kan vir 'n tiener vertroostend wees.\n-Dit kan help vir tieners om deel te neem aan rituele rondom die dood - om 'n lied te kies of om iets te sê.\n-Deur elke dag 'n paar minute op jou tiener te fokus help om hulle veiliger te laat voel en gee hulle 'n kans om te ontspan of te praat oor dinge wat hulle ontstel.",
     "type": "template",
     "note": ""
   },
@@ -572,6 +650,12 @@
   {
     "SourceText": "You’ve completed this week’s workshop.",
     "text": "Jy het hierdie week se werksessie voltooi.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Read along",
+    "text": "Lees aan",
     "type": "template",
     "note": ""
   },
@@ -1039,7 +1123,7 @@
   },
   {
     "SourceText": "Share how you feel, and encourage your teen to talk about their worries too. You will understand each other better and can make a good plan together to stay healthy and happy!",
-    "text": "Deel jou gevoelens, en moedig jou tiener aan om te ook praat oor hulle bekommernisse. Julle sal mekaar dan beter verstaan en dus 'n goeie plan saam kan beraam om gesond en gelukkig te bly!",
+    "text": "Deel jou gevoelens, en moedig jou tiener aan om ook te praat oor hulle bekommernisse. Julle sal mekaar dan beter verstaan en dus 'n goeie plan saam kan beraam om gesond en gelukkig te bly!",
     "type": "template",
     "note": ""
   },
@@ -1596,10 +1680,52 @@
     "note": ""
   },
   {
+    "SourceText": "Please sign in with your Google account to use the app.",
+    "text": "Meld asseblief met jou Google-rekening aan om die toep te gebruik.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Sign in with Google",
+    "text": "Meld aan met Google",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Add this activity to @global.my_activities",
     "text": "Voeg hierdie aktiwiteit by @global.my_activities",
     "type": "template",
     "note": "The string @global.my_activities should not be translated."
+  },
+  {
+    "SourceText": "Bringing teenagers up is hard",
+    "text": "Om tieners groot te maak, is moeilik",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "You are the best parent your teen could have",
+    "text": "Jy is die beste ouer wat jou tiener kon hê",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Join the 152.4 million parents who have used our resources",
+    "text": "Sluit aan by die 152,4 miljoen ouers wat reeds ons hulpbronne gebruik het",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Powered by Parenting for Lifelong Health and partners",
+    "text": "Gerugsteun deur Parenting for Lifelong Health en vennote",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "@global.parent_app funded by",
+    "text": "@global.parent_app befonds deur",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
   },
   {
     "SourceText": "Ideas from other families:",
@@ -2371,7 +2497,7 @@
   },
   {
     "SourceText": "Praise your teen for overcoming difficulty and support them where you can.",
-    "text": "Prys jou tiener vir hulle oorkoming van moeilikhede en ondersteun hulle waar jy kan.",
+    "text": "Prys jou tiener dat hulle moeilikhede oorkom het en ondersteun hulle waar jy kan.",
     "type": "template",
     "note": ""
   },
@@ -2473,7 +2599,7 @@
   },
   {
     "SourceText": "- Listen to their friends\n- Want to do what others do\n- Think more about ‘now’ than ‘later’\n- Love impulses and can find being careful boring\n- Do not worry about risk – may even like risks\n- Have limited experience to rely on\n- Are willing to try something – no matter what happens",
-    "text": "-Luister na hulle vriende\n-Wil doen wat ander doen\n-Meer dink aan 'nou' as aan 'later''\n-Lief is vir impulsiwiteit en versigtigheid vervelig mag vind\n-Nie bekommerd is oor risiko nie - mag selfs risikogedrag geniet\n-Beperkte ondervinding het om op staat te maak\n-Gewillig is om enigiets te probeer - ongeag die gevolge daarvan",
+    "text": "-Luister na hulle vriende\n-Wil doen wat ander doen\n-Meer dink aan 'nou' as aan 'later''\n-Lief is vir impulsiwiteit en versigtigheid vervelig mag vind\n-Nie bekommerd is oor risiko nie - mag selfs risiko gedrag geniet\n-Beperkte ondervinding het om op staat te maak\n-Gewillig is om enigiets te probeer - ongeag die gevolge daarvan",
     "type": "template",
     "note": ""
   },
@@ -3894,6 +4020,18 @@
     "note": ""
   },
   {
+    "SourceText": "Hi @fields.user_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s workshop will help you know what to do when your teen is not following the household rules.",
+    "text": "Hallo, @fields.user_name! Vandag vier ons twee maande wat jy @global.parent_app gebruik! \n\nJy doen uitstekend! Hierdie week se werkswinkel sal jou help om te weet wat om te doen wanneer jou tiener nie die huisreëls nakom nie.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.user_name\n@global.parent_app"
+  },
+  {
+    "SourceText": "Hi @fields.group_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s workshop will help you know what to do when your teen is not following the household rules.",
+    "text": "Hallo, @fields.group_name! Vandag vier ons twee maande wat jy @global.parent_app gebruik! \n\nJy doen uitstekend! Hierdie week se werkswinkel sal jou help om te weet wat om te doen wanneer jou tiener nie die huisreëls nakom nie.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.group_name\n@global.parent_app"
+  },
+  {
     "SourceText": "It’s great that you’ve been using @global.parent_app. You’ve gained 6 parenting tools already! \n\nTake the next workshop to get another parenting tool!",
     "text": "Welgedaan met jou gebruik van @global.parent_app. Jy het al 6 ouerskaphulpmiddels gekry!\n\nDoen die volgende werksessie om nog ’n ouerskaphulpmiddel te kry!",
     "type": "template",
@@ -4440,6 +4578,18 @@
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
+    "SourceText": "Hi @fields.user_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
+    "text": "Hallo, @fields.user_name! 'n Krisis kan met enigiemand gebeur - dit help baie om voorbereid te wees. \n\nHierdie werkswinkel sal jou wys hoe.",
+    "type": "template",
+    "note": "The string @fields.user_name should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.group_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
+    "text": "Hallo, @fields.group_name! 'n Krisis kan met enigiemand gebeur - dit help baie om voorbereid te wees. \n\nHierdie werkswinkel sal jou wys hoe.",
+    "type": "template",
+    "note": "The string @fields.group_name should not be translated."
+  },
+  {
     "SourceText": "We never know when a crisis may happen, but we CAN be prepared! \n\nStart the next workshop to explore how you can do this together with your teen.",
     "text": "Ons weet nooit wanneer ’n krisis kan plaasvind nie, maar ons KAN voorbereid wees!\n\nBegin die volgende werksessie om te ontdek hoe jy dit saam met jou tiener kan doen.",
     "type": "template",
@@ -4843,7 +4993,7 @@
   },
   {
     "SourceText": "You’ve not marked any @data.habit.instruct_positively.title @global.parent_points yet. \n\nGive it a try today!",
-    "text": "Jy't nog nie enige @data.habit.instruct_positively.title @global.parent_points gemerk nie. Probeer dit vandag nog!",
+    "text": "Jy't nog nie enige punte @data.habit.instruct_positively.title @global.parent_points gemerk nie. \n\nProbeer dit vandag nog!",
     "type": "template",
     "note": "The following strings should not be translated:\n@data.habit.instruct_positively.title\n@global.parent_points"
   },
@@ -4852,6 +5002,12 @@
     "text": "Jy het die @global.parent_point @data.habit.instruct_positively.title reeds een keer gemerk – jy maak dus goeie vordering.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.parent_point\n@data.habit.instruct_positively.title"
+  },
+  {
+    "SourceText": "You’ve marked the @global.parent_point @data.habit.instruct_positively.title @fields.parent_point_count_instruct_positively times already  – so you’re making great progress.",
+    "text": "Jy het reeds die @global.parent_point @data.habit.instruct_positively.title @fields.parent_point_count_instruct_positively kere gemerk  – so jy maak goeie vordering.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@global.parent_point\n@data.habit.instruct_positively.title\n@fields.parent_point_count_instruct_positively"
   },
   {
     "SourceText": "Speak kindly to yourself about what a great job you are doing. There is no such thing as a perfect parent, and we think you’re doing great!",
@@ -4864,6 +5020,18 @@
     "text": "Positiewe opdragte help om al hoe meer goeie gedrag te sien!\n\nVoltooi die @local.workshop_data.in_text_title om ’n paar idees te kry oor hoe dit in jou gesin kan werk.",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
+    "text": "Hallo, @fields.user_name! Veels geluk dat jy @global.parent_app week 4 begin. \n\nHierdie week se werkswinkel gaan oor hoe om jou kanse te verbeter om jou tiener sover te kry om te doen wat jy vra.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.user_name\n@global.parent_app"
+  },
+  {
+    "SourceText": "Hi @fields.group_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
+    "text": "Hallo, @fields.group_name! Veels geluk dat jy @global.parent_app week 4 begin. \n\nHierdie week se werkswinkel gaan oor hoe om jou kanse te verbeter om jou tiener sover te kry om te doen wat jy vra.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.group_name\n@global.parent_app"
   },
   {
     "SourceText": "Does your teen always listen to you? If not (like the rest of us), have a look at this week's workshop to learn how giving positive instructions can help - a lot.",
@@ -5430,6 +5598,18 @@
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
+    "SourceText": "Hi @fields.user_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+    "text": "Hallo, @fields.user_name! Jy begin met die tweede maand wat jy @global.parent_app gebruik. Fantasties! \n\nBykans alle gesinne sukkel met geldkwessies, daarom sal hierdie week se werkswinkel jou toerus om jou uitgawes so te beplan dat jy genoeg geld sal hê om deur die maand te kom.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.user_name\n@global.parent_app"
+  },
+  {
+    "SourceText": "Hi @fields.group_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
+    "text": "Hallo, @fields.group_name! Jy begin met die tweede maand wat jy @global.parent_app gebruik. Fantasties! \n\nBykans alle gesinne sukkel met geldkwessies, daarom sal hierdie week se werkswinkel jou toerus om jou uitgawes so te beplan dat jy genoeg geld sal hê om deur die maand te kom.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.group_name\n@global.parent_app"
+  },
+  {
     "SourceText": "Do you feel stressed about money? Does your teen keep asking for things you can’t afford? \n\nThis week’s workshop deals with money and budgeting.",
     "text": "Voel jy gestres oor geld? Hou jou tiener aan vra vir dinge wat jy nie kan bekostig nie?\n\nHierdie week se werksessie handel oor geld en begroting.",
     "type": "template",
@@ -5856,6 +6036,18 @@
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
+    "SourceText": "Hi @fields.user_name! Congratulations for starting your third  @global.parent_app week. \n\nA new workshop awaits you! Can you guess the topic of the workshop from this picture?",
+    "text": "Hallo, @fields.user_name! Veels geluk met die begin van jou derde week op @global.parent_app. \n\n'n Nuwe werkswinkel wag op jou! Kyk na hierdie prentjie en raai wat die onderwerp van die werkswinkel is!",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.user_name\n@global.parent_app"
+  },
+  {
+    "SourceText": "Hi @fields.group_name! Congratulations for starting your third  @global.parent_app week. \n\nA new workshop awaits you! Can you guess the topic of the workshop from this picture?",
+    "text": "Hallo, @fields.group_name! Veels geluk met die begin van jou derde week op @global.parent_app. \n\n'n Nuwe werkswinkel wag op jou! Kyk na hierdie prentjie en raai wat die onderwerp van die werkswinkel is!",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.group_name\n@global.parent_app"
+  },
+  {
     "SourceText": "Thank you for using @global.parent_app to invest in yourself and your family.\n\nTry the @local.workshop_data.in_text_title and build a great parenting skill!",
     "text": "Dankie dat jy @global.parent_app gebruik om in jouself en jou gesin te belê.\n\nProbeer die @local.workshop_data.in_text_title en ontwikkel ’n uitstekende ouerskapvaardigheid!",
     "type": "template",
@@ -6280,6 +6472,18 @@
     "text": "Jy is op die punt om nog ’n ouerskaphulpmiddel te verkry! Voltooi die @local.workshop_data.in_text_title, stel EEN eenvoudige en realistiese reël saam met jou tiener op, en kyk hoe dinge verander!",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.user_name! New week, new workshop! Learn how to set household rules in a way that will increase the chances of your teen keeping them.",
+    "text": "Hallo, @fields.user_name! Nuwe week, nuwe werkswinkel! Leer hoe om huisreëls op so 'n manier op te stel dat dit die kanse sal verbeter dat jou tiener dit sal nakom.",
+    "type": "template",
+    "note": "The string @fields.user_name should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.group_name! New week, new workshop! Learn how to set household rules in a way that will increase the chances of your teen keeping them.",
+    "text": "Hallo, @fields.group_name! Nuwe week, nuwe werkswinkel! Leer hoe om huisreëls op te stel op so 'n manier dat dit die kanse sal verbeter dat jou tiener dit sal nakom.",
+    "type": "template",
+    "note": "The string @fields.group_name should not be translated."
   },
   {
     "SourceText": "Thank you again for using @global.parent_app and for committing to your parenting journey. \n\nThe @local.workshop_data.in_text_title will show you how to set rules in a way that will help your teen to understand and follow them better.",
@@ -6838,6 +7042,18 @@
     "text": "Om jou tiener veilig te hou, dra dit by om saam te gesels oor julle gemeenskap en hul aanlyn ervarings.\n\nVoltooi die @local.workshop_data.in_text_title en kyk hoe julle dit kan doen!",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.user_name! You are nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. \n\nThis week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
+    "text": "Hallo, @fields.user_name! Jy nader nou die einde van jou @global.parent_app-werkswinkels! Dankie vir jou volgehoue toewyding. \n\nHierdie week se werkswinkel gaan oor hoe om jou tieners veilig te hou, beide aanlyn en in die gemeenskap. Geniet dit!",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.user_name\n@global.parent_app"
+  },
+  {
+    "SourceText": "Hi @fields.group_name! You are all nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. \n\nThis week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
+    "text": "Hallo, @fields.group_name! Julle nader nou die einde van julle @global.parent_app-werkswinkels! Dankie vir julle volgehoue toewyding. \n\nHierdie week se werkswinkel gaan oor hoe om ons tieners veilig te hou, beide aanlyn en in die gemeenskap. Geniet dit!",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.group_name\n@global.parent_app"
   },
   {
     "SourceText": "You have have gained so many parenting skills already over the past weeks!\n\nComplete the next workshop to gain another helpful skill.",
@@ -7680,6 +7896,18 @@
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
+    "SourceText": "Hi @fields.user_name! You are making such good progress on your parenting journey! \n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you how to deal with them.",
+    "text": "Hallo, @fields.user_name! Jy maak sulke goeie vordering op jou ouerskapsreis! \n\nWanneer mens 'n tiener het, beteken dat talle onverwagse probleme kan opduik. Hierdie werkswinkel sal jou wys hoe om dit te hanteer.",
+    "type": "template",
+    "note": "The string @fields.user_name should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.group_name! You are making such good progress on your parenting journey!\n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you all how to deal with them.",
+    "text": "Hallo, @fields.group_name! Jy maak sulke goeie vordering op jou ouerskapsreis!\n\nWanneer mens 'n tiener het, beteken dit dat talle onverwagse probleme kan opduik. Hierdie werkswinkel sal jou wys hoe om dit te hanteer.",
+    "type": "template",
+    "note": "The string @fields.group_name should not be translated."
+  },
+  {
     "SourceText": "With teenagers, and in life, unexpected problems come up and we have to deal with them. \n\nStart the next workshop to learn how to successfully address these problems.",
     "text": "Met tieners, en die lewe, duik onverwagte probleme op en ons moet dit hanteer.\n\nBegin met die volgende werksessie om te leer hoe jy hierdie probleme suksesvol kan hanteer.",
     "type": "template",
@@ -8176,6 +8404,18 @@
     "text": "Ons voel almal soms oorweldig. Dit help om diep asem te haal!\n\nVoltooi die @local.workshop_data.in_text_title om ’n paar nuttige hulpmiddels te kry om stres te hanteer.",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.",
+    "text": "Hallo, @fields.user_name! Veels geluk met die begin van @global.parent_app week 5.\n\n'n Nuwe ouerskap-werkswinkel wag op jou, met wenke oor hoe ons kalm en in beheer kan bly wanneer ons tieners ons mal maak.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.user_name\n@global.parent_app"
+  },
+  {
+    "SourceText": "Hi @fields.group_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting workshop awaits you with tips how we can stay calm and in control when our teens are driving us crazy.",
+    "text": "Hallo, @fields.group_name! Veels geluk met die begin van @global.parent_app week 5.\n\n'n Nuwe ouerskap-werkswinkel wag op jou, met wenke oor hoe ons kalm en in beheer kan bly wanneer ons tieners ons mal maak.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@fields.group_name\n@global.parent_app"
   },
   {
     "SourceText": "We have a new workshop available for you about managing anger and stress. It will help you take better care of yourself.",
@@ -9216,6 +9456,60 @@
     "note": "The string @global.parent_app should not be translated."
   },
   {
+    "SourceText": "<p>You deserve to feel good, and have happier family relationships.</p>\n\n<p>@global.parent_app is here to support you.</p>\n\n<p>Here is how to use the app:</p>",
+    "text": "<p>Jy verdien dit om goed te voel en gelukkiger gesinsverhoudinge te hê.</p>\n\n<p>@global.parent_app is hier om jou te ondersteun.</p>\n\n<p>Hier volg hoe om die toep te gebruik:</p>",
+    "type": "tour",
+    "note": "The string <p>@global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "<p>This big button takes you to your @global.weekly_workshops. </p>",
+    "text": "<p>Hierdie groot knoppie neem jou na jou @global.weekly_workshops. </p>",
+    "type": "tour",
+    "note": "The string @global.weekly_workshops. should not be translated."
+  },
+  {
+    "SourceText": "<p> Each week you will unlock a new workshop focusing on a different parenting skill. </p>",
+    "text": "<p>Elke week sal jy 'n nuwe werkswinkel ontsluit wat op 'n verskillende ouerskapsvaardigheid fokus. </p>",
+    "type": "tour",
+    "note": ""
+  },
+  {
+    "SourceText": "<p>The round button appears when a new workshop is ready for you.</p>",
+    "text": "<p>Die ronde knoppie verskyn wanneer 'n nuwe werkswinkel gereed is vir jou.</p>",
+    "type": "tour",
+    "note": ""
+  },
+  {
+    "SourceText": "<p>Each new parenting skill comes with a @global.parent_point.</p>",
+    "text": "<p>Elke nuwe ouerskapsvaardigheid kom met 'n @global.parent_point.</p>",
+    "type": "tour",
+    "note": "The string @global.parent_point.</p> should not be translated."
+  },
+  {
+    "SourceText": "<p>Use @global.parent_points to celebrate your achievements!</p>",
+    "text": "<p>Gebruik @global.parent_points om jou prestasies te vier!</p>",
+    "type": "tour",
+    "note": "The string @global.parent_points should not be translated."
+  },
+  {
+    "SourceText": "<p>Find lots of helpful resources in the @global.parent_centre.</p>\n\n<p>You can get instant access to the @data.parent_centre.essential_tools.title from all @global.weekly_workshops.</p>",
+    "text": "<p>Vind talle nuttige hulpbronne in die @global.parent_centre.</p>\n\n<p>Jy kan onmiddellike toegang tot die @data.parent_centre.essential_tools.title verkry vanaf al die @global.weekly_workshops.</p>",
+    "type": "tour",
+    "note": "The following strings should not be translated:\n@global.parent_centre.</p>\n@data.parent_centre.essential_tools.title\n@global.weekly_workshops.</p>"
+  },
+  {
+    "SourceText": "<p>Check out the extra relaxation and parenting activities!</p>\n\n<p>You can also get quick parenting tips and technical support.</p>",
+    "text": "<p>Verken die ekstra ontspannings- en ouerskapaktiwiteite!</p>\n\n<p>Jy kan ook vinnige ouerskapwenke en tegniese ondersteuning kry.</p>",
+    "type": "tour",
+    "note": ""
+  },
+  {
+    "SourceText": "<p>Have a look around! Wherever you start, just the fact you are here shows you care.</p>",
+    "text": "<p>Snuffel 'n bietjie rond! Waar jy ook al begin, net die feit dat jy hier is, wys jy gee om.</p>",
+    "type": "tour",
+    "note": ""
+  },
+  {
     "SourceText": "Go to the @global.weekly_workshops",
     "text": "Gaan na die @global.weekly_workshops",
     "type": "tour",
@@ -9433,13 +9727,13 @@
   },
   {
     "SourceText": "Help yourself cope",
-    "text": "Help jouself met lewenshantering",
+    "text": "Help jouself met hanteringstrategieë",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "Help your teen cope",
-    "text": "Help jou tiener met lewenshantering",
+    "text": "Help jou tiener met lhanteringstrategieë",
     "type": "data_list",
     "note": ""
   },
@@ -10189,7 +10483,7 @@
   },
   {
     "SourceText": "My dad was always busy. He would come home from work and snap at us when we started asking him questions. \n\n@global.parent_app helped us a lot. We no longer fight. Now, when my dad comes home, he first sits down by himself for 5 minutes and then we do a relaxing activity from @global.parent_app together, so we can all take a deep breath and relax. Then we can chat about our day, about anything good or bad that happened. Everyone is so much happier now.",
-    "text": "My pa was altyd besig. Hy sou by die huis kom en ons afjak wanneer ons hom begin vrae vra. \n\n@global.parent_app het ons baie gehelp. Ons baklei nie meer nie. Nou, wanneer my pa by die huis kom, sit hy eers vir 5 minute alleen, en dan doen ons saam 'n ontspanningsaktiwiteit van @global.parent_app, sodat ons almal diep kan asemhaal en ontspan. Dan kan ons oor ons dag praat, oor enigiets, goed of sleg, wat gebeur het. Almal is nou soveel gelukkiger.",
+    "text": "My pa was altyd besig. Hy sou by die huis kom en ons afjak wanneer ons hom begin uitvra. \n\n@global.parent_app het ons baie gehelp. Ons baklei nie meer nie. Nou, wanneer my pa by die huis kom, sit hy eers vir 5 minute alleen, en dan doen ons saam 'n ontspanningsaktiwiteit van @global.parent_app, sodat ons almal diep kan asemhaal en ontspan. Dan kan ons oor ons dag praat, oor enigiets, goed of sleg, wat gebeur het. Almal is nou soveel gelukkiger.",
     "type": "data_list",
     "note": "The following strings should not be translated:\n@global.parent_app\n@global.parent_app"
   },
@@ -10243,7 +10537,7 @@
   },
   {
     "SourceText": "When we learned about this praising thing, I thought “We were never praised for things as teenagers, so why should we start now?”. But I got interested when I learned what the benefits of praising could be. \n\nRight after the weekly workshop, I noticed my teen doing what they do every day: Washing the dishes. And I said “Thank you for washing the dishes, my girl, it really makes me happy that you are helping out.” My teen was smiling and she even came to give me a hug, which she never does. \n\nThis praising business is hard. I still forget sometimes or give praise at the same time as criticism. But praising really makes a difference. I never thought that a simple praise could make such a change in a person!",
-    "text": "Toe ek gehoor het van hierdie aanprysingsding, het ek gedink, “As tieners is ons nooit geprys vir goed nie, so hoekom moet ons nou begin?”. Maar ek het begin belangstel toe ek hoor wat die voordele van aanprysing kan wees. \n\nDirek na die weeklikse werkswinkel, het ek opgelet dat my tiener doen wat sy elke dag doen: Skottelgoed was. En ek sê, “Dankie dat jy die skottelgoed was, my meisiekind, dit maak my regtig gelukkig dat jy so mooi help.” My tiener het geglimlag en het my selfs 'n drukkie kom gee, iets wat sy nooit doen nie. \n\nHierdie aanprysingsbesigheid is moeilik. Ek vergeet nog steeds soms, of prys en kritiseer in dieselfde asem. Maar aanprysing maak regtig 'n verskil. Ek het nooit gedink dat eenvoudige woorde van lof soveel verskil aan 'n mens kan maak nie!",
+    "text": "Toe ek gehoor het van hierdie aanprys ding, het ek gedink, “As tieners is ons nooit geprys vir dinge nie, so hoekom moet ons nou begin?”. Maar ek het begin belangstel toe ek hoor wat die voordele van aanprysing kan wees. \n\nDirek na die weeklikse werkswinkel, het ek opgelet dat my tiener doen wat sy elke dag doen: Skottelgoed was. En ek sê, “Dankie dat jy die skottelgoed was, my meisiekind, dit maak my regtig gelukkig dat jy so mooi help.” My tiener het geglimlag en het my selfs 'n drukkie kom gee, iets wat sy nooit doen nie. \n\nHierdie aanprysing besigheid is moeilik. Ek vergeet nog steeds soms, of prys en kritiseer in dieselfde asem. Maar aanprysing maak regtig 'n verskil. Ek het nooit gedink dat eenvoudige woorde van lof soveel verskil aan 'n mens kan maak nie!",
     "type": "data_list",
     "note": ""
   },
@@ -10279,7 +10573,7 @@
   },
   {
     "SourceText": "At first, I did not care much that my mother was doing @global.parent_app. But then I started to see my mother change how she communicated with us.\n\nOne day, when I was going out with my friends, she said I must be home by 6pm. I was like “Hmmm okay,” because she normally did not give clear instructions on what she wanted - she would just say nothing and then shout at me for being late when I got home. \n\nWhen I got home around 5pm, my mother gave me a hug and said “Thank you for being on time.” It was strange, but I liked it. \n\nSince then, we have much clearer communication in the house.",
-    "text": "Eers het ek nie veel omgegee oor my ma wat @global.parent_app doen nie. Maar toe begin ek sien dat die manier waarop my ma met ons kommunikeer, begin verander.\n\nEen dag het ek saam met my vriende uitgegaan, en sy het gesê ek moet teen 6 nm. terug wees. Ek het gedink, “O, oukei,” want sy het normaalweg nie duidelike instruksies gegee oor wat sy wou hê nie - sy sou net niks sê nie en dan op my skree omdat ek laat is wanneer ek tuis kom. \n\nToe ek so 5 nm. by die huis kom, het my ma my 'n drukkie gegee en gesê, “Dankie dat jy betyds is”. Dit was vreemd, maar ek het daarvan gehou. \n\nVan toe af het ons baie duideliker kommunikasie in die huis.",
+    "text": "Aanvanklik, het ek nie veel omgegee dat my ma @global.parent_app doen nie. Maar toe begin ek sien dat die manier waarop my ma met ons kommunikeer, begin verander.\n\nOp 'n dag het ek saam met my vriende uitgegaan, en sy het gesê ek moet teen 6 nm. terug wees. Ek het gedink, “O, oukei,” want sy het normaalweg nie duidelike instruksies gegee oor wat sy wou hê nie - sy sou net niks sê nie en dan op my skree omdat ek laat is wanneer ek tuis kom. \n\nToe ek so 5 nm. by die huis kom, het my ma my 'n drukkie gegee en gesê, “Dankie dat jy betyds is”. Dit was vreemd, maar ek het daarvan gehou. \n\nVan toe af het ons baie duideliker kommunikasie in die huis.",
     "type": "data_list",
     "note": "The string @global.parent_app. should not be translated."
   },
@@ -10303,7 +10597,7 @@
   },
   {
     "SourceText": "Life is tough sometimes. Before I joined @global.parent_app, I used to be grumpy at all times. I would take out my anger on everyone at home, not only my teens but even my husband as well. They would run away when I came home, because they knew I would start yelling at them. \n\nLearning to take a pause and breathe was difficult at first, but every time I tried it, it helped me to calm down. Now my teens are no longer running away when I come home, and they actually listen better than when I used to shout at them!",
-    "text": "Die lewe is soms moeilik. Voordat ek by @global.parent_app aangesluit het, was ek die hele tyd knorrig. Ek sou my woede op almal in die huis uithaal, nie net my tieners nie, maar sommer my man ook. Hulle sou sorg dat hulle wegkom wanneer ek tuis kom, want hulle het geweet ek sou op hulle begin skree. \n\nDit was aanvanklik moeilik om te leer om rustig te raak en asem te haal, maar elke keer dat ek dit probeer het, het dit my gehelp om te kalmeer. Nou vlug my tieners nie meer wanneer ek tuis kom nie, en hulle luister eintlik beter as toe ek hulle verskree het!",
+    "text": "Die lewe is soms moeilik. Voordat ek by @global.parent_app aangesluit het, was ek die hele tyd knorrig. Ek sou my woede op almal in die huis uithaal, nie net my tieners nie, maar selfs my man. Hulle sou sorg dat hulle wegkom wanneer ek tuis kom, want hulle het geweet ek sou op hulle begin skree. \n\nDit was aanvanklik moeilik om te leer om rustig te raak en asem te haal, maar elke keer wanneer ek dit probeer het, het dit my gehelp om te kalmeer. Nou vlug my tieners nie meer wanneer ek tuis kom nie, en hulle luister eintlik beter as toe ek hulle verskree het!",
     "type": "data_list",
     "note": "The string @global.parent_app, should not be translated."
   },
@@ -10489,7 +10783,7 @@
   },
   {
     "SourceText": "Two years ago, I was raped by my uncle who stayed in our yard. I did not tell my mother, because I was afraid she would hit me, shout at me, or even throw me out of the house. I did not have anywhere else to go. \n\nWhen my mother started with @global.parent_app, she started spending more time together. I was still afraid, but in the end I shared it with my mother. My mom did not shout, but she listened and told me it is not my fault. We went to the police and the clinic together. I am so grateful I do not have to carry this secret anymore.",
-    "text": "Twee jaar gelede is ek deur my oom wat in ons erf gebly het, verkrag. Ek het nie my ma daarvan vertel nie, want ek was bang dat sy my sou slaan, op my sou skree, of my selfs uit die huis sou gooi. Ek het nêrens anders gehad om heen te gaan nie. \n\nToe my ma begin het met @global.parent_app, het sy meer tyd saam met my begin spandeer. Ek was nog steeds bang, maar ek het dit uiteindelik met my ma gedeel. My ma het nie geskree nie, maar sy het geluister en vir my gesê dit is nie my skuld nie. Ons is saam na die polisie en die kliniek toe. Ek is so bly dat ek nie hierdie geheim meer alleen hoef te dra nie.",
+    "text": "Twee jaar gelede is ek deur my oom wat in ons erf gebly het, verkrag. Ek het nie my ma daarvan vertel nie, want ek was bang dat sy my sou slaan, op my sou skree, of my selfs uit die huis sou gooi. Ek het nêrens anders gehad om heen te gaan nie. \n\nToe my ma begin het met @global.parent_app, het sy meer tyd saam met my begin spandeer. Ek was nog steeds bang, maar ek het dit uiteindelik met my ma gedeel. My ma het nie geskree nie, maar sy het geluister en vir my gesê dit is nie my skuld nie. Ons is saam na die polisie en kliniek toe. Ek is so bly dat ek nie hierdie geheim meer alleen hoef te dra nie.",
     "type": "data_list",
     "note": "The string @global.parent_app, should not be translated."
   },
@@ -10603,7 +10897,7 @@
   },
   {
     "SourceText": "Hi @fields.group_name. Your @data.workshop.w_1on1.in_text_title is ready for you.",
-    "text": "Hallo, @fields.group_name. Jou @data.workshop.w_1on1.in_text_title is gereed vir jou.",
+    "text": "Hallo, @fields.group_name. Julle @data.workshop.w_1on1.in_text_title is gereed vir julle.",
     "type": "data_list",
     "note": "The following strings should not be translated:\n@fields.group_name.\n@data.workshop.w_1on1.in_text_title"
   },
@@ -10651,7 +10945,7 @@
   },
   {
     "SourceText": "Hi @fields.group_name! Today we are celebrating two @global.parent_app months! \n\nThis week you'll learn to help your teen follow household rules.",
-    "text": "Hallo, @fields.group_name! Vandag vier ons twee maande van @global.parent_app! \n\nHierdie week sal jy meer uitvind oor hoe om jou tiener te help om huisreëls na te kom.",
+    "text": "Hallo, @fields.group_name! Vandag vier ons twee maande van @global.parent_app! \n\nHierdie week sal julle meer uitvind oor hoe om jul tiener te help om huisreëls na te kom.",
     "type": "data_list",
     "note": "The following strings should not be translated:\n@fields.group_name!\n@global.parent_app"
   },
@@ -10687,7 +10981,7 @@
   },
   {
     "SourceText": "Calm consequences help your teen follow rules. If you haven't finished  the @data.workshop.w_consequence.in_text_title, give it a go!\n\nWell done for showing so much commitment.",
-    "text": "Gevolge wat kalm oorgedra word, help jou tiener om reëls na te kom. As jy nog nie die @data.workshop.w_consequence.in_text_title voltooi het nie, probeer dit nou!\n\nWell done for showing so much commitment.",
+    "text": "Gevolge wat kalm oorgedra word, help jou tiener om reëls na te kom. As jy nog nie die @data.workshop.w_consequence.in_text_title voltooi het nie, probeer dit nou!\n\nWelgedaan dat jy so veel toewyding wys.",
     "type": "data_list",
     "note": "The string @data.workshop.w_consequence.in_text_title, should not be translated."
   },
@@ -10699,7 +10993,7 @@
   },
   {
     "SourceText": "Hi @fields.group_name! Crises happen to anyone - being ready helps a lot. \n\nThis workshop will show you how.",
-    "text": "Hallo, @fields.group_name! Krisisse gebeur met enigiemand - dit help baie as 'n mens gereed is daarvoor. \n\nHierdie werkswinkel sal jou wys hoe om dit te doen.",
+    "text": "Hallo, @fields.group_name! Krisisse gebeur met enigiemand - dit help baie as 'n mens gereed is daarvoor. \n\nHierdie werkswinkel sal julle wys hoe om dit te doen.",
     "type": "data_list",
     "note": "The string @fields.group_name! should not be translated."
   },
@@ -10741,13 +11035,13 @@
   },
   {
     "SourceText": "Hi @fields.user_name, well done for starting week 4! \n\nThis week helps increase your chances of getting your teen to do what you ask them.",
-    "text": "Hallo, @fields.user_name, welgedaan dat jy week 4 begin! \n\nHierdie week help om die kans te vergroot dat jy jou tiener sal kry om te doen wat jy vra.",
+    "text": "Hallo, @fields.user_name, welgedaan dat jy week 4 begin! \n\nHierdie week help om die kans te vergroot dat jy jou tiener so ver sal kry om te doen wat jy vra.",
     "type": "data_list",
     "note": "The string @fields.user_name, should not be translated."
   },
   {
     "SourceText": "Hi @fields.group_name, well done for starting week 4!\n\nThis week helps increase your chances of getting your teen to do what you ask them.",
-    "text": "Hallo, @fields.group_name, welgedaan dat jy week 4 begin!\n\nHierdie week help om die kans te vergroot dat jou tiener sal doen wat jy vra.",
+    "text": "Hallo, @fields.group_name, welgedaan dat julle week 4 begin!\n\nHierdie week help om die kans te vergroot dat jul tiener sal doen wat julle vra.",
     "type": "data_list",
     "note": "The string @fields.group_name, should not be translated."
   },
@@ -10765,7 +11059,7 @@
   },
   {
     "SourceText": "Positive instructions improves behaviour.\n\nComplete the @data.workshop.w_instruct.in_text_title for ideas on how this can work in your family.",
-    "text": "Positiewe instruksies verbeter gedrag.\n\nVoltooi die @data.workshop.w_instruct.in_text_title vir idees oor hoe dit in jou gesin kan werk.",
+    "text": "Positiewe instruksies verbeter gedrag.\n\nVoltooi die @data.workshop.w_instruct.in_text_title vir idees oor hoe om dit in jou gesin te laat werk.",
     "type": "data_list",
     "note": "The string @data.workshop.w_instruct.in_text_title should not be translated."
   },
@@ -10783,7 +11077,7 @@
   },
   {
     "SourceText": "Congratulations, you completed the @data.workshop.w_instruct.in_text_title.\n\nTomorrow, a new workshop is ready for you. See a big difference by making small changes!",
-    "text": "Veels geluk, jy het die @data.workshop.w_instruct.in_text_title voltooi.\n\nMôre wag 'n nuwe werkswinkel vir jou. Sien 'n groot verskil deur klein veranderinkies te maak!",
+    "text": "Veels geluk, jy het die @data.workshop.w_instruct.in_text_title voltooi.\n\nMôre wag 'n nuwe werkswinkel vir jou. Sien 'n groot verskil deur klein veranderinge te maak!",
     "type": "data_list",
     "note": "The string @data.workshop.w_instruct.in_text_title. should not be translated."
   },
@@ -10801,7 +11095,7 @@
   },
   {
     "SourceText": "Hi @fields.group_name! Amazing, this is your second month with @global.parent_app. \n\nMost families struggle with money. This workshop will give you tools to plan your expenses to help you through the month.",
-    "text": "Hallo, @fields.group_name! Wonderlik, dis al jou tweede maand saam met @global.parent_app. \n\nDie meeste gesinne sukkel met geld. Hierdie werkswinkel sal jou toerus om jou uitgawes te beplan om jou deur die maand te help.",
+    "text": "Hallo, @fields.group_name! Wonderlik, dis al julle tweede maand saam met @global.parent_app. \n\nDie meeste gesinne sukkel met geld. Hierdie werkswinkel sal julle toerus om jul uitgawes te beplan om julle deur die maand te help.",
     "type": "data_list",
     "note": "The following strings should not be translated:\n@fields.group_name!\n@global.parent_app."
   },
@@ -10849,7 +11143,7 @@
   },
   {
     "SourceText": "Hi @fields.group_name! You're starting your third  @global.parent_app week. \n\nA new workshop is ready!",
-    "text": "Hallo, @fields.group_name! Jy begin met jou derde @global.parent_app-week. \n\n'n Nuwe werkswinkel is gereed!",
+    "text": "Hallo, @fields.group_name! Julle begin met jul derde @global.parent_app-week. \n\n'n Nuwe werkswinkel is gereed!",
     "type": "data_list",
     "note": "The following strings should not be translated:\n@fields.group_name!\n@global.parent_app"
   },
@@ -10897,7 +11191,7 @@
   },
   {
     "SourceText": "Hi @fields.group_name! New week, new workshop! Learn to set household rules that your teen understands and follows.",
-    "text": "Hallo, @fields.group_name! Nuwe week, nuwe werkswinkel! Leer om huishoudelike reëls op te stel wat jou tiener verstaan en nakom.",
+    "text": "Hallo, @fields.group_name! Nuwe week, nuwe werkswinkel! Leer om huishoudelike reëls op te stel wat julle tiener verstaan en nakom.",
     "type": "data_list",
     "note": "The string @fields.group_name! should not be translated."
   },
@@ -10945,7 +11239,7 @@
   },
   {
     "SourceText": "Hi @fields.group_name! You're nearly at the end of your @global.parent_app journey! Thank you for sticking to it.  \n\nThis week is about keeping our teens safe online and in the community.",
-    "text": "Hallo, @fields.group_name! Jy nader nou vinnig die einde van jou @global.parent_app-reis! Dankie dat jy deurdruk daarmee.  \n\nHierdie week handel oor hoe om ons tieners aanlyn en in die gemeenskap veilig te hou.",
+    "text": "Hallo, @fields.group_name! Julle nader nou vinnig die einde van julle @global.parent_app-reis! Dankie dat julle vasbyt daarmee.  \n\nHierdie week handel oor hoe om ons tieners aanlyn en in die gemeenskap veilig te hou.",
     "type": "data_list",
     "note": "The following strings should not be translated:\n@fields.group_name!\n@global.parent_app"
   },
@@ -11005,13 +11299,13 @@
   },
   {
     "SourceText": "Hi @fields.user_name! You are making such good progress! \n\nHaving a teen means having lots of unexpected problems. This workshop will show you how to deal with them.",
-    "text": "Hallo, @fields.user_name! Jy maak sulke goeie vordering! \n\nOm 'n tiener te hê, beteken dat 'n mens hope onverwagse probleme het. Hierdie werkswinkel sal jou wys hoe om dit te hanteer.",
+    "text": "Hallo, @fields.user_name! Jy maak sulke goeie vordering! \n\nOm 'n tiener te hê, beteken hope onverwagse probleme. Hierdie werkswinkel sal jou wys hoe om dit te hanteer.",
     "type": "data_list",
     "note": "The string @fields.user_name! should not be translated."
   },
   {
     "SourceText": "Hi @fields.group_name! You are making such good progress!\n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you all how to deal with them.",
-    "text": "Hallo, @fields.group_name! Jy maak sulke goeie vordering!\n\nOm 'n tiener te hê, beteken dat jy hope onverwagse probleme moet hanteer. Hierdie werkswinkel sal jou wys hoe om dit te hanteer.",
+    "text": "Hallo, @fields.group_name! Julle maak sulke goeie vordering!\n\nOm 'n tiener te hê, beteken hope onverwagse probleme om te hanteer. Hierdie werkswinkel sal julle almal wys hoe om dit te hanteer.",
     "type": "data_list",
     "note": "The string @fields.group_name! should not be translated."
   },
@@ -11059,7 +11353,7 @@
   },
   {
     "SourceText": "Hi @fields.group_name! Congratulations for starting week 5.\n\nA new workshop awaits with tips on staying calm and in control when our teens drive us crazy.",
-    "text": "Hallo, @fields.group_name! Veels geluk dat jy week 5 begin.\n\n'n Nuwe werkswinkel wag met wenke oor hoe om kalm en in beheer te bly wanneer jou tiener jou mal maak.",
+    "text": "Hallo, @fields.group_name! Veels geluk dat jul week 5 begin.\n\n'n Nuwe werkswinkel wag met wenke oor hoe om kalm en in beheer te bly wanneer ons tieners ons mal maak.",
     "type": "data_list",
     "note": "The string @fields.group_name! should not be translated."
   },
@@ -11077,7 +11371,7 @@
   },
   {
     "SourceText": "Feeling stressed this week? Try taking deep breaths before responding to your teen - it makes a big difference.",
-    "text": "Voel jy vandeesweek gestres? Probeer diep asemhaal voordat jy op jou tiener reageer - dit maak 'n groot verskil.",
+    "text": "Voel jy vandeesweek gestres? Probeer om diep asem te haal voordat jy op jou tiener reageer - dit maak 'n groot verskil.",
     "type": "data_list",
     "note": ""
   },
@@ -11095,7 +11389,7 @@
   },
   {
     "SourceText": "Get ready for a new workshop tomorrow. \n \n By completing the @data.workshop.w_stress.in_text_title first, you lay a key foundation: If you feel good, your family will too!",
-    "text": "Maak gereed vir 'n nuwe werkswinkel môre. \n \nDeur die @data.workshop.w_stress.in_text_title eers te voltooi, vestig jy 'n kerngrondslag: As jy goed voel, sal jou gesin ook!",
+    "text": "Maak gereed vir 'n nuwe werkswinkel môre. \n \nDeur die @data.workshop.w_stress.in_text_title eers te voltooi, vestig jy 'n sleutel fondament: As jy goed voel, sal jou gesin ook!",
     "type": "data_list",
     "note": "The string @data.workshop.w_stress.in_text_title should not be translated."
   }
