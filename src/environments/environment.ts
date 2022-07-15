@@ -18,12 +18,10 @@ export const environment = {
   domains: ["plh-demo1.idems.international", "plh-demo.idems.international"],
   chatNonNavigatePaths: ["/chat/action", "/chat/msg-info"],
   variableNameFlows: ["character_names"],
-  /** Local Postgres */
-  // apiEndpoint: "http://localhost:3000",
-  /** Local Docker */
-  apiEndpoint: "http://localhost/api",
+  /** Local Settings */
+  apiEndpoint: "http://localhost:3000",
   analytics: { endpoint: "http://localhost/analytics", siteId: 1 },
-  /** production settings **/
+  /** Production Settings **/
   // apiEndpoint: "https://apps-server.idems.international/api",
   // analytics: { endpoint: "https://apps-server.idems.international/analytics", siteId: 1 },
 };

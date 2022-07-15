@@ -2,29 +2,6 @@ import { IDeploymentConfig } from "data-models";
 import { getDefaultAppConstants } from "data-models/constants";
 
 const app_constants = getDefaultAppConstants();
-/** Define default startup actions for plh app */
-app_constants.APP_INITIALISATION_DEFAULTS.app_first_launch_actions = [
-  {
-    type: "template_popup",
-    value: "splash_screens",
-  },
-  {
-    type: "template_popup",
-    value: "accept_terms",
-  },
-  {
-    type: "template_popup",
-    value: "language_select",
-  },
-  {
-    type: "template_popup",
-    value: "organisation_registration",
-  },
-  {
-    type: "tour_start",
-    value: "home_screen_tour_intro",
-  },
-];
 
 /**
  * The default config should ideally be a superset of any extended configs
@@ -36,6 +13,12 @@ const config: IDeploymentConfig = {
   google_drive: {
     sheets_folder_id: "1n221Zv9LYuwxmjhiboq8vhQg67_K9L5f",
     assets_folder_id: "1dp9QAQ84m8pm0IBQTSPXe1ramyynKPNn",
+  },
+  android: {
+    splash_asset_path: "packages/app-data/assets/global/android/splash.png",
+    icon_asset_path: "packages/app-data/assets/global/android/icon.png",
+    icon_asset_foreground_path: "packages/app-data/assets/global/android/icon-foreground.png",
+    icon_asset_background_path: "packages/app-data/assets/global/android/icon-background.png",
   },
   app_data: {},
   translations: {
