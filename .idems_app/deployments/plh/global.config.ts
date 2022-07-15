@@ -14,6 +14,12 @@ const config: IDeploymentConfig = {
     sheets_folder_id: "1n221Zv9LYuwxmjhiboq8vhQg67_K9L5f",
     assets_folder_id: "1dp9QAQ84m8pm0IBQTSPXe1ramyynKPNn",
   },
+  android: {
+    splash_asset_path: "packages/app-data/assets/global/android/splash.png",
+    icon_asset_path: "packages/app-data/assets/global/android/icon.png",
+    icon_asset_foreground_path: "packages/app-data/assets/global/android/icon-foreground.png",
+    icon_asset_background_path: "packages/app-data/assets/global/android/icon-background.png",
+  },
   app_data: {},
   translations: {
     translated_strings_path: "packages/app-data/translations_source/from_translators",
