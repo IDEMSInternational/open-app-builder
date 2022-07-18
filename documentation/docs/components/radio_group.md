@@ -2,11 +2,12 @@
 
 ## Example
 
-| type       | name                      |parameter_list |
-| ---------  | ------------              |--------- |
-|radio_group |radio_group_par_2_1	     |answer_list: @local.answer_list_2|
-|radio_group |radio_group_par_2_2	     |answer_list: @local.answer_list_3|
-|radio_group |radio_group_par_2_3	     |answer_list: @local.answer_list_4|
+| type       | name              | value                                 |parameter_list |
+| ---------  | ------------     | -------------------              |--------- |
+| | answer_list_2 | name:name_var_1 \| text:First;name:name_var_2 \| text:Second;name:name_var_3 \| text:Third; name:name_var_4 \| text:Fourth;name:name_var_5 \| text:Fifth; | |
+| | answer_list_3 | name:name_var_1 \| text:First \| image:/plh_images/icons/heart.svg \| image_checked: /plh_images/icons/tick.svg;name:name_var_2 \| text:Second \| image:/plh_images/icons/heart.svg \| image_checked: /plh_images/icons/tick.svg;name:name_var_3 \| text: Third \| image:/plh_images/icons/heart.svg \| image_checked: /plh_images/icons/tick.svg; name:name_var_4 \| text:Fourth \| image:/plh_images/icons/heart.svg \| image_checked: /plh_images/icons/tick.svg;name:name_var_5 \| text:Fourth \| image:/plh_images/icons/heart.svg \| image_checked: /plh_images/icons/tick.svg; | |
+|radio_group |radio_group_par_2_1 | 	                     |answer_list: @local.answer_list_2|
+|radio_group |radio_group_par_2_2 |              	     |answer_list: @local.answer_list_3|
 
 ![](images/radio_group.png)
 
