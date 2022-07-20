@@ -39,6 +39,7 @@ nav:
       - components/video.md
       - components/timer.md
       - components/radio_group.md
+      - components/combo_box.md
   - Q & A:
       - questions/parameters_styles.md
       - questions/positioning_components.md
