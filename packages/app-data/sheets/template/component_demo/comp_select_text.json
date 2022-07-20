@@ -1,8 +1,8 @@
 {
   "flow_type": "template",
-  "flow_name": "feature_select_text",
+  "flow_name": "comp_select_text",
   "status": "released",
-  "flow_subtype": "debug",
+  "flow_subtype": "component_demo",
   "rows": [
     {
       "name": "user_id",
@@ -31,7 +31,7 @@
     },
     {
       "name": "copy_text",
-      "value": "Copy this",
+      "value": "Copy to clipboard",
       "_translations": {
         "value": {}
       },
