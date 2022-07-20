@@ -563,46 +563,112 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_audio/testimonials/caregiver/caregiver_test_w_1on1.mp3": {
     size_kb: 737.7,
     md5Checksum: "36a24d6ad95cc402bb1681faa5b1e3a4",
+    translations: {
+      tz_sw: {
+        size_kb: 963.8,
+        md5Checksum: "5e22fd94ba57ffb2b6dd5d48cb773d2e",
+      },
+    },
   },
   "plh_audio/testimonials/caregiver/caregiver_test_w_consequence.mp3": {
     size_kb: 905.7,
     md5Checksum: "78ce55cffe940fc12314da045a546719",
+    translations: {
+      tz_sw: {
+        size_kb: 1029.4,
+        md5Checksum: "62209e7ce4f830b33761acb792ef0b7a",
+      },
+    },
   },
   "plh_audio/testimonials/caregiver/caregiver_test_w_crisis.mp3": {
     size_kb: 516.4,
     md5Checksum: "8fa7ec84159ca032796833995a1b2b62",
+    translations: {
+      tz_sw: {
+        size_kb: 498.8,
+        md5Checksum: "38a4723857cfe4307db769808f3d0e52",
+      },
+    },
   },
   "plh_audio/testimonials/caregiver/caregiver_test_w_instruct.mp3": {
     size_kb: 800.7,
     md5Checksum: "ee313a449c29f58ce9899698898997a7",
+    translations: {
+      tz_sw: {
+        size_kb: 821.3,
+        md5Checksum: "16fb71e6ac811f5f50eea28b1ffe897f",
+      },
+    },
   },
   "plh_audio/testimonials/caregiver/caregiver_test_w_money.mp3": {
     size_kb: 672,
     md5Checksum: "aa4cba93dc63a20f60a91e357780abed",
+    translations: {
+      tz_sw: {
+        size_kb: 875.7,
+        md5Checksum: "31645bfbc5382e7632efd13b25e9f4eb",
+      },
+    },
   },
   "plh_audio/testimonials/caregiver/caregiver_test_w_praise.mp3": {
     size_kb: 836.4,
     md5Checksum: "019a0e6f0340875dbab6f912bd1d29ab",
+    translations: {
+      tz_sw: {
+        size_kb: 797.7,
+        md5Checksum: "847293fb338754b57d3129961b5d7f62",
+      },
+    },
   },
   "plh_audio/testimonials/caregiver/caregiver_test_w_rules.mp3": {
     size_kb: 871.3,
     md5Checksum: "6b7b48df0e3aba9a41786c3487c21b04",
+    translations: {
+      tz_sw: {
+        size_kb: 1089.4,
+        md5Checksum: "57e7afcb1b880ebbcd450e453da92e45",
+      },
+    },
   },
   "plh_audio/testimonials/caregiver/caregiver_test_w_safe.mp3": {
     size_kb: 647.4,
     md5Checksum: "d18a091db58024e72159b14e908d7430",
+    translations: {
+      tz_sw: {
+        size_kb: 826.9,
+        md5Checksum: "a8c4136de2bc98179954e7c7c1bae30a",
+      },
+    },
   },
   "plh_audio/testimonials/caregiver/caregiver_test_w_self_care.mp3": {
     size_kb: 493.6,
     md5Checksum: "212924f29d05c94e977952b06c7edb8c",
+    translations: {
+      tz_sw: {
+        size_kb: 666.4,
+        md5Checksum: "6a4211ffc57ed7ce3e6e1815b55f9da3",
+      },
+    },
   },
   "plh_audio/testimonials/caregiver/caregiver_test_w_solve.mp3": {
     size_kb: 660.9,
     md5Checksum: "a09239ee2cd722701f310e3a1e822d55",
+    translations: {
+      tz_sw: {
+        size_kb: 683.3,
+        md5Checksum: "9740f277632c276a3f00dc7da64c1692",
+      },
+    },
   },
   "plh_audio/testimonials/caregiver/caregiver_test_w_stress.mp3": {
     size_kb: 640.3,
     md5Checksum: "e1bee0b763b33787767eade301353b8a",
+    translations: {
+      tz_sw: {
+        size_kb: 612,
+        md5Checksum: "a94a77f103dd62eaa0e35c74fa66ee67",
+      },
+    },
   },
   "plh_audio/timer/bell_1.mp3": {
     size_kb: 121.6,
@@ -1454,65 +1520,89 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 0.9,
     md5Checksum: "b2baf969abbe27383327d1d82f6a644c",
   },
-  "plh_images/logos/funders/end_violence_against_children.png": {
-    size_kb: 21.4,
-    md5Checksum: "42a6b3a80ff26261d75ac38ccfdad863",
-  },
-  "plh_images/logos/funders/erc.png": {
-    size_kb: 63.3,
-    md5Checksum: "4cd542dfa425f700924d1b823d047573",
-  },
-  "plh_images/logos/funders/gcrf.png": {
-    size_kb: 27.2,
-    md5Checksum: "2df9eff2c10512be23db96dda5f8b712",
-  },
-  "plh_images/logos/funders/generali_human_safety_net.png": {
-    size_kb: 39.7,
-    md5Checksum: "048861ee167499c5320a23786cd697f8",
-  },
-  "plh_images/logos/funders/lego_foundation.png": {
-    size_kb: 14.3,
-    md5Checksum: "7fcc41d9c3df90a74bfd0e05e8acc4e5",
-  },
-  "plh_images/logos/funders/newton_fund.png": {
-    size_kb: 14.3,
-    md5Checksum: "97c52b2da9fc03641461ce8aa0174f36",
-  },
-  "plh_images/logos/funders/oak_foundation.png": {
-    size_kb: 21.7,
-    md5Checksum: "33c25310845e91c8b6034ee6c9113682",
-  },
-  "plh_images/logos/funders/ukri.png": {
-    size_kb: 17,
-    md5Checksum: "a4122de03ae40177cd218dd37abb3b2d",
-  },
-  "plh_images/logos/funders/unicef.png": {
-    size_kb: 23.6,
-    md5Checksum: "c5262d757c340125cc601c3dc368f37c",
-  },
-  "plh_images/logos/funders/university_of_oxford.png": {
-    size_kb: 42,
-    md5Checksum: "a738b0e0c6d5601cac1d4ea299ee4281",
-  },
-  "plh_images/logos/partners/cwb.png": {
+  "plh_images/logos/cwb.png": {
     size_kb: 28.3,
     md5Checksum: "4813caff2be00e158e6f0d3fec5df6a2",
   },
-  "plh_images/logos/partners/idems.png": {
+  "plh_images/logos/erc.png": {
+    size_kb: 63.3,
+    md5Checksum: "4cd542dfa425f700924d1b823d047573",
+  },
+  "plh_images/logos/gcrf.png": {
+    size_kb: 27.2,
+    md5Checksum: "2df9eff2c10512be23db96dda5f8b712",
+  },
+  "plh_images/logos/gisp.png": {
+    size_kb: 34.3,
+    md5Checksum: "5ce0882cda6ff387f3bb664d9cb75a1d",
+  },
+  "plh_images/logos/ics.png": {
+    size_kb: 317.2,
+    md5Checksum: "99446a9409eafa3ee111b9c6b7f650d5",
+  },
+  "plh_images/logos/idems.png": {
     size_kb: 17.3,
     md5Checksum: "963f0b32ea26bd9fdfddf47f0d42f340",
   },
-  "plh_images/logos/partners/plh.png": {
+  "plh_images/logos/lego_foundation.png": {
+    size_kb: 14.3,
+    md5Checksum: "7fcc41d9c3df90a74bfd0e05e8acc4e5",
+  },
+  "plh_images/logos/nimr.png": {
+    size_kb: 287.4,
+    md5Checksum: "fd69a0b61a447efcae27cbaa0f74d79f",
+  },
+  "plh_images/logos/oak_foundation.png": {
+    size_kb: 21.7,
+    md5Checksum: "33c25310845e91c8b6034ee6c9113682",
+  },
+  "plh_images/logos/old/end_violence_against_children.png": {
+    size_kb: 21.4,
+    md5Checksum: "42a6b3a80ff26261d75ac38ccfdad863",
+  },
+  "plh_images/logos/old/generali_human_safety_net.png": {
+    size_kb: 39.7,
+    md5Checksum: "048861ee167499c5320a23786cd697f8",
+  },
+  "plh_images/logos/old/newton_fund.png": {
+    size_kb: 14.3,
+    md5Checksum: "97c52b2da9fc03641461ce8aa0174f36",
+  },
+  "plh_images/logos/plh.png": {
     size_kb: 66.5,
     md5Checksum: "4cc18480bb1e712fa397cbe2ff130021",
   },
-  "plh_images/logos/partners/unicef.png": {
+  "plh_images/logos/tz_government.png": {
+    size_kb: 416.1,
+    md5Checksum: "c32f205f332c4f9f10b6a256d1ea873a",
+  },
+  "plh_images/logos/uct.png": {
+    size_kb: 283.7,
+    md5Checksum: "1f2656a3271ef01c5e04a8460bf9e841",
+  },
+  "plh_images/logos/ukri.png": {
+    size_kb: 17,
+    md5Checksum: "a4122de03ae40177cd218dd37abb3b2d",
+  },
+  "plh_images/logos/unicef.png": {
     size_kb: 29.9,
     md5Checksum: "0c9fb229c82fd604b1ad9b23a64804e8",
   },
-  "plh_images/logos/partners/who.png": {
+  "plh_images/logos/university_of_oxford.png": {
+    size_kb: 42,
+    md5Checksum: "a738b0e0c6d5601cac1d4ea299ee4281",
+  },
+  "plh_images/logos/usaid.png": {
+    size_kb: 38.3,
+    md5Checksum: "fc3fbd8224a815dd75f89348fbf79dba",
+  },
+  "plh_images/logos/who.png": {
     size_kb: 42.9,
     md5Checksum: "f05f8934b9b7f5565c2d9a589086de96",
+  },
+  "plh_images/logos/za_dsd.png": {
+    size_kb: 80.9,
+    md5Checksum: "8a4c8ce58e2fe176318107ce599277ec",
   },
   "plh_images/parent_centre/ask.svg": {
     size_kb: 1,
