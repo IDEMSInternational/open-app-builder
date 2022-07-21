@@ -12,19 +12,19 @@
 /* TODO: rework into getColorPalette() function to populate
 /* subsidiary colours if not provided
 */
-$primary: hsl(203, 76%, 21%);
-$primary-light: color.change($primary, $lightness: 80%);
-$primary-lighter: color.change($primary, $lightness: 95%);
+// $primary: hsl(203, 76%, 21%);
+// $primary-light: color.change($primary, $lightness: 80%);
+// $primary-lighter: color.change($primary, $lightness: 95%);
 
-$secondary: hsl(31, 95%, 57%);
-$secondary-light: color.change($secondary, $lightness: 80%);
-$secondary-lighter: color.change($secondary, $lightness: 95%);
+// $secondary: hsl(31, 95%, 57%);
+// $secondary-light: color.change($secondary, $lightness: 80%);
+// $secondary-lighter: color.change($secondary, $lightness: 95%);
 
-$tertiary: hsl(47, 100%, 92%);
-$quaternary: hsl(204, 88%, 94%);
-$light: #ffffff;
-$dark: #00000040;
-$warning: hsl(10, 81%, 49%);
+// $tertiary: hsl(47, 100%, 92%);
+// $quaternary: hsl(204, 88%, 94%);
+// $light: #ffffff;
+// $dark: #00000040;
+// $warning: hsl(10, 81%, 49%);
 
 /** Gradient direction **/
 $vertical: 180deg;
@@ -49,6 +49,8 @@ E.g. when defining other ion variables such as --ion-btn-primary
     "color-secondary-light": color.change($secondary, $lightness: 80%),
     "color-secondary-lighter": color.change($secondary, $lightness: 95%),
     "color-secondary-contrast": contrast-colour.choose-contrast-color($secondary),
+    "light": $light,
+    "dark": $dark,
     //  GRADIENTS
     // primary-gradient
     "gradient-primary-start": color.adjust($primary, $lightness: 33%),
@@ -119,14 +121,19 @@ $colorPalette: getColorPalette($color-primary, $color-secondary);
     #{map-get($colorPalette, "gradient-secondary-start")} 28.12%,
     #{map-get($colorPalette, "gradient-secondary-end")} 100%
   );
-  --ion-btn-control-bg: #{color.adjust($primary, $hue: 3.6deg, $saturation: 3%, $lightness: 25%)};
+  --ion-btn-control-bg: #{color.adjust(
+      map-get($colorPalette, "color-primary"),
+      $hue: 3.6deg,
+      $saturation: 3%,
+      $lightness: 25%
+    )};
 
   //  Borders
   --ion-border-standard: 2px solid #{map-get($colorPalette, "color-primary")};
   --ion-border-thin-standard: 1px solid #{map-get($colorPalette, "color-primary")};
   --ion-border-color-secondary: 2px solid #{map-get($colorPalette, "color-secondary")};
-  --ion-border-light: 1px solid #{$light};
-  --ion-border-light-thicker: 2px solid #{$light};
+  --ion-border-light: 1px solid #{map-get($colorPalette, "light")};
+  --ion-border-light-thicker: 2px solid #{map-get($colorPalette, "light")};
   --border-dashed: 2px dashed #{map-get($colorPalette, "color-primary")};
 
   //   // Margins //
