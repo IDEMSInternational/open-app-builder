@@ -167,7 +167,7 @@
               },
               "condition": "@item.description",
               "parameter_list": {
-                "style": "center small"
+                "style": "center tiny"
               },
               "_nested_name": "global_funders_overflow.loop_funders_description.@item.id",
               "_dynamicFields": {
