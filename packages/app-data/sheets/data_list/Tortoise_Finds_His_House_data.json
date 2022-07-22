@@ -37,7 +37,7 @@
       "id": "page_2",
       "page_no": 2,
       "illustration": "EFMStorybooks/EFM-SB-TFHH-2.jpg",
-      "story_text": "Are you looking for something?\" Snail asked. \"Yes, Snail, I'm looking for my house. Have you seen it, by any chance?\"",
+      "story_text": "\"Are you looking for something?\" Snail asked. \"Yes, Snail, I'm looking for my house. Have you seen it, by any chance?\"",
       "_translations": {
         "story_text": {},
         "annotation_1": {},
@@ -46,7 +46,7 @@
       },
       "_translatedFields": {
         "story_text": {
-          "eng": "Are you looking for something?\" Snail asked. \"Yes, Snail, I'm looking for my house. Have you seen it, by any chance?\""
+          "eng": "\"Are you looking for something?\" Snail asked. \"Yes, Snail, I'm looking for my house. Have you seen it, by any chance?\""
         },
         "annotation_1": {
           "eng": "Can you remember having trouble finding something and discovering it was easy to find all along?"
@@ -226,14 +226,14 @@
           "eng": "Tortoise is lucky. A ladybird is another very light animal to carry."
         },
         "annotation_2": {
-          "eng": "It is getting later in the day and a breeze is start to blow. Hmm ... What do you think will happen with the weather?"
+          "eng": "It is getting later in the day and a breeze is starting to blow. Hmm ... What do you think will happen with the weather?"
         },
         "annotation_3": {
           "eng": "It's hard to see all of Tortoise's shell. What's your best estimate for how many yellow regions are in his shell? An estimate is an educated guess."
         }
       },
       "annotation_1": "Tortoise is lucky. A ladybird is another very light animal to carry.",
-      "annotation_2": "It is getting later in the day and a breeze is start to blow. Hmm ... What do you think will happen with the weather?",
+      "annotation_2": "It is getting later in the day and a breeze is starting to blow. Hmm ... What do you think will happen with the weather?",
       "annotation_3": "It's hard to see all of Tortoise's shell. What's your best estimate for how many yellow regions are in his shell? An estimate is an educated guess."
     },
     {
@@ -269,7 +269,7 @@
       "id": "page_10",
       "page_no": 10,
       "illustration": "EFMStorybooks/EFM-SB-TFHH-10.jpg",
-      "story_text": "Mouse said: \"No, I haven't, but I'll help you loo!\" She hopped onto Tortoise's back. \"Wait, I can't leave my flowers behind.\" Tortoise waited. Mouse stretched and stretched and scooped up her daisies.",
+      "story_text": "Mouse said: \"No, I haven't, but I'll help you look!\" She hopped onto Tortoise's back. \"Wait, I can't leave my flowers behind.\" Tortoise waited. Mouse stretched and stretched and scooped up her daisies.",
       "_translations": {
         "story_text": {},
         "annotation_1": {},
@@ -278,7 +278,7 @@
       },
       "_translatedFields": {
         "story_text": {
-          "eng": "Mouse said: \"No, I haven't, but I'll help you loo!\" She hopped onto Tortoise's back. \"Wait, I can't leave my flowers behind.\" Tortoise waited. Mouse stretched and stretched and scooped up her daisies."
+          "eng": "Mouse said: \"No, I haven't, but I'll help you look!\" She hopped onto Tortoise's back. \"Wait, I can't leave my flowers behind.\" Tortoise waited. Mouse stretched and stretched and scooped up her daisies."
         },
         "annotation_1": {
           "eng": "How much help have the other animals been? Do you think Tortoise could have done just as well alone?"
@@ -414,7 +414,7 @@
       "id": "page_15",
       "page_no": 15,
       "illustration": "EFMStorybooks/EFM-SB-TFHH-15.jpg",
-      "story_text": "Oh, here is Tortoise's house! said Snail and Robin and Mouse.",
+      "story_text": "Oh, here is Tortoise's house! said Snail and Sparrow and Ladybird and Mouse.",
       "_translations": {
         "story_text": {},
         "annotation_1": {},
@@ -423,7 +423,7 @@
       },
       "_translatedFields": {
         "story_text": {
-          "eng": "Oh, here is Tortoise's house! said Snail and Robin and Mouse."
+          "eng": "Oh, here is Tortoise's house! said Snail and Sparrow and Ladybird and Mouse."
         },
         "annotation_1": {
           "eng": "The hail coming down on Tortoise's shell probably made a lot of noise. Imagine the racket! Have you ever heard hail falling on a roof or hard surface?"

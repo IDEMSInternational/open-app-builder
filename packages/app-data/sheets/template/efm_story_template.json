@@ -671,6 +671,7 @@
           "style_list": [
             "margin-top: -20px"
           ],
+          "exclude_from_translation": true,
           "_nested_name": "pages.anno1_@item.page_no",
           "_dynamicFields": {
             "name": [
@@ -737,6 +738,7 @@
           "style_list": [
             "margin-top: -20px"
           ],
+          "exclude_from_translation": true,
           "_nested_name": "pages.anno2_@item.page_no",
           "_dynamicFields": {
             "name": [
@@ -803,6 +805,7 @@
           "style_list": [
             "margin-top: -20px"
           ],
+          "exclude_from_translation": true,
           "_nested_name": "pages.anno3_@item.page_no",
           "_dynamicFields": {
             "name": [

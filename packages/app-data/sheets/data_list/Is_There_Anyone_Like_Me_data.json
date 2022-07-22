@@ -397,7 +397,7 @@
           "eng": "But not just me, don't you see?\nThere's only one of you!"
         },
         "annotation_1": {
-          "eng": "Do you know someone who is very similar to you? How are they similar?"
+          "eng": "Do you know someone who is very similar to you? How are they similar to you?"
         },
         "annotation_2": {
           "eng": "Despite the similarities, describe some ways they are different from you."
@@ -406,7 +406,7 @@
           "eng": "Do you like being the only you that there is?"
         }
       },
-      "annotation_1": "Do you know someone who is very similar to you? How are they similar?",
+      "annotation_1": "Do you know someone who is very similar to you? How are they similar to you?",
       "annotation_2": "Despite the similarities, describe some ways they are different from you.",
       "annotation_3": "Do you like being the only you that there is?"
     },

@@ -171,12 +171,12 @@
           "eng": "What is Daisy's mother doing to help Daisy feel better?"
         },
         "annotation_3": {
-          "eng": "Sometimes we fell better when someone pats us or holds our hand. Have you ever tried to help a friend feel better with a friendly touch?"
+          "eng": "Sometimes we feel better when someone pats us or holds our hand. Have you ever tried to help a friend feel better with a friendly touch?"
         }
       },
       "annotation_1": "Discuss what is similar about Daisy and her mother, and how they look different from the other chickens.",
       "annotation_2": "What is Daisy's mother doing to help Daisy feel better?",
-      "annotation_3": "Sometimes we fell better when someone pats us or holds our hand. Have you ever tried to help a friend feel better with a friendly touch?"
+      "annotation_3": "Sometimes we feel better when someone pats us or holds our hand. Have you ever tried to help a friend feel better with a friendly touch?"
     },
     {
       "id": "page_7",
@@ -240,7 +240,7 @@
       "id": "page_9",
       "page_no": 9,
       "illustration": "EFMStorybooks/EFM-SB-AD-9.jpg",
-      "story_text": "So Flap, flap, flap, every day Daisy would flap her wings.",
+      "story_text": "So flap, flap, flap, every day Daisy would flap her wings.",
       "_translations": {
         "story_text": {},
         "annotation_1": {},
@@ -249,7 +249,7 @@
       },
       "_translatedFields": {
         "story_text": {
-          "eng": "So Flap, flap, flap, every day Daisy would flap her wings."
+          "eng": "So flap, flap, flap, every day Daisy would flap her wings."
         },
         "annotation_1": {
           "eng": "Count together the little lines coming from Daisy showing her squawking."
@@ -298,7 +298,7 @@
       "id": "page_11",
       "page_no": 11,
       "illustration": "EFMStorybooks/EFM-SB-AD-11.jpg",
-      "story_text": "I'm never going to fly!\" Daisy cried to Mama. \"The others are right.\"",
+      "story_text": "\"I'm never going to fly!\" Daisy cried to Mama. \"The others are right.\"",
       "_translations": {
         "story_text": {},
         "annotation_1": {},
@@ -307,7 +307,7 @@
       },
       "_translatedFields": {
         "story_text": {
-          "eng": "I'm never going to fly!\" Daisy cried to Mama. \"The others are right.\""
+          "eng": "\"I'm never going to fly!\" Daisy cried to Mama. \"The others are right.\""
         },
         "annotation_1": {
           "eng": "Describe some times when you got discouraged like Daisy."

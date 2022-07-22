@@ -351,6 +351,7 @@
             "text_align": "center",
             "style": "large emphasised"
           },
+          "exclude_from_translation": true,
           "_nested_name": "needed_for_centering_images.title_1",
           "_dynamicFields": {
             "value": [
@@ -473,6 +474,7 @@
             "text_align": "center",
             "style": "large emphasised"
           },
+          "exclude_from_translation": true,
           "_nested_name": "needed_for_centering_images.title_2",
           "_dynamicFields": {
             "value": [
@@ -595,6 +597,7 @@
             "text_align": "center",
             "style": "large emphasised"
           },
+          "exclude_from_translation": true,
           "_nested_name": "needed_for_centering_images.title_3",
           "_dynamicFields": {
             "value": [
@@ -717,6 +720,7 @@
             "text_align": "center",
             "style": "large emphasised"
           },
+          "exclude_from_translation": true,
           "_nested_name": "needed_for_centering_images.title_4",
           "_dynamicFields": {
             "value": [
@@ -839,6 +843,7 @@
             "text_align": "center",
             "style": "large emphasised"
           },
+          "exclude_from_translation": true,
           "_nested_name": "needed_for_centering_images.title_5",
           "_dynamicFields": {
             "value": [
@@ -961,6 +966,7 @@
             "text_align": "center",
             "style": "large emphasised"
           },
+          "exclude_from_translation": true,
           "_nested_name": "needed_for_centering_images.title_6",
           "_dynamicFields": {
             "value": [
@@ -1083,6 +1089,7 @@
             "text_align": "center",
             "style": "large emphasised"
           },
+          "exclude_from_translation": true,
           "_nested_name": "needed_for_centering_images.title_7",
           "_dynamicFields": {
             "value": [
@@ -1205,6 +1212,7 @@
             "text_align": "center",
             "style": "large emphasised"
           },
+          "exclude_from_translation": true,
           "_nested_name": "needed_for_centering_images.title_8",
           "_dynamicFields": {
             "value": [
@@ -1327,6 +1335,7 @@
             "text_align": "center",
             "style": "large emphasised"
           },
+          "exclude_from_translation": true,
           "_nested_name": "needed_for_centering_images.title_9",
           "_dynamicFields": {
             "value": [
@@ -1449,6 +1458,7 @@
             "text_align": "center",
             "style": "large emphasised"
           },
+          "exclude_from_translation": true,
           "_nested_name": "needed_for_centering_images.title_10",
           "_dynamicFields": {
             "value": [

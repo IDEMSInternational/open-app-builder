@@ -107,7 +107,7 @@
           "eng": "How many trunks do five elephants have?"
         },
         "annotation_1": {
-          "eng": "Let's count trunks, tails, tusks, and ears. Counting tails and tusks is simple -- what number do you get?"
+          "eng": "Let's count trunks, tails, tusks, and ears. Counting tails and trunks is simple -- what number do you get?"
         },
         "annotation_2": {
           "eng": "Each elephant has two tusks and two ears. Which do you like better -- skip counting these by 2's or by 5's?"
@@ -116,7 +116,7 @@
           "eng": "There are four big elephants and one baby elephant. How much is four plus one more?"
         }
       },
-      "annotation_1": "Let's count trunks, tails, tusks, and ears. Counting tails and tusks is simple -- what number do you get?",
+      "annotation_1": "Let's count trunks, tails, tusks, and ears. Counting tails and trunks is simple -- what number do you get?",
       "annotation_2": "Each elephant has two tusks and two ears. Which do you like better -- skip counting these by 2's or by 5's?",
       "annotation_3": "There are four big elephants and one baby elephant. How much is four plus one more?"
     },
