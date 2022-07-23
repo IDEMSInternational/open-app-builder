@@ -3,11 +3,10 @@ version: "3.1"
 services:
   ####################################################################
   # Primary Webserver (Nginx)
-  # Alt: https://hub.docker.com/r/jonasal/nginx-certbot
+  # Nginx with auto cert generate and renewal
   ####################################################################
   nginx:
-    # image: jonasal/nginx-certbot:latest
-    image: nginx:stable
+    image: jonasal/nginx-certbot:3.1.3
     container_name: plh_webserver
     restart: unless-stopped
     env_file:
@@ -23,13 +22,12 @@ services:
       options:
         max-size: "1m"
     volumes:
-      # - nginx_secrets:/etc/letsencrypt
+      # Local nginx conf
       - ./config/nginx/conf.d:/etc/nginx/conf.d
-      # - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./config/nginx/conf:/etc/nginx/conf
-      - /root/certs-data/:/data/letsencrypt/
-      - /etc/letsencrypt/:/etc/letsencrypt/
-      # NOTE - the bind volumes directly from motomo (could be another service)
+      - ./config/nginx/templates:/etc/nginx/templates
+      # Certs populated by certbot
+      - nginx_secrets:/etc/letsencrypt
   ####################################################################
   # IDEMS Apps API
   ####################################################################
@@ -53,8 +51,8 @@ services:
     logging: *logging_default
     depends_on:
       - db
-    # ports:
-    #   - 3000:3000
+    ports:
+      - 3000:3000
   ####################################################################
   # Postgres DB
   ####################################################################
@@ -182,7 +180,8 @@ services:
     ports:
       - 3306:3306
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test:
+        ["CMD", "/usr/local/bin/healthcheck.sh", "--su-mysql", "--connect", "--innodb_initialized"]
       timeout: 20s
       retries: 10
   analytics_dashboard:

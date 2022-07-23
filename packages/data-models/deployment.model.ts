@@ -18,6 +18,13 @@ export interface IDeploymentConfig {
     /** filter function applied to assets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */
     assets_filter_function?: (gdriveEntry: IGdriveEntry) => boolean;
   };
+  android?: {
+    /** Location of source android assets (splash and launcher source images). */
+    icon_asset_path?: string;
+    splash_asset_path?: string;
+    icon_asset_foreground_path?: string;
+    icon_asset_background_path?: string;
+  };
   /** Optional override of any provided constants from data-models/constants */
   app_constants?: Partial<IAppConstants>;
   app_data?: {
@@ -73,6 +80,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     sheets_filter_function: (gdriveEntry) => true,
     assets_filter_function: (gdriveEntry) => true,
   },
+  android: {},
   app_constants: {},
   app_data: {
     sheets_output_path: "packages/app-data/sheets",

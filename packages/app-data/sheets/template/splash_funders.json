@@ -1,0 +1,238 @@
+{
+  "flow_type": "template",
+  "flow_name": "splash_funders",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "value": "@global.parent_app funded by",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "parameter_list": {
+        "style": "large center"
+      },
+      "name": "text",
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.parent_app funded by",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "funders_data",
+      "value": "@data.funders",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "funders_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.funders",
+            "matchedExpression": "@data.funders",
+            "type": "data",
+            "fieldName": "funders"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.funders": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "global_funders",
+      "parameter_list": {
+        "style": "two_columns_images grid-spacing-sm"
+      },
+      "rows": [
+        {
+          "type": "items",
+          "name": "loop_funders_image",
+          "value": "@local.funders_data",
+          "rows": [
+            {
+              "type": "image",
+              "name": "@item.id",
+              "value": "@item.image_asset",
+              "_translations": {
+                "value": {}
+              },
+              "condition": "@item.image_asset",
+              "_nested_name": "global_funders.loop_funders_image.@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@item.image_asset",
+                    "matchedExpression": "@item.image_asset",
+                    "type": "item",
+                    "fieldName": "image_asset"
+                  }
+                ],
+                "condition": [
+                  {
+                    "fullExpression": "@item.image_asset",
+                    "matchedExpression": "@item.image_asset",
+                    "type": "item",
+                    "fieldName": "image_asset"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "global_funders.loop_funders_image.@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ],
+                "@item.image_asset": [
+                  "value",
+                  "condition"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "global_funders.loop_funders_image",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.funders_data",
+                "matchedExpression": "@local.funders_data",
+                "type": "local",
+                "fieldName": "funders_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.funders_data": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "global_funders"
+    },
+    {
+      "type": "display_group",
+      "name": "global_funders_overflow",
+      "parameter_list": {
+        "style": "two_columns_images_overflow grid-spacing-sm"
+      },
+      "rows": [
+        {
+          "type": "items",
+          "name": "loop_funders_description",
+          "value": "@local.funders_data",
+          "rows": [
+            {
+              "type": "subtitle",
+              "name": "@item.id",
+              "value": "@item.description",
+              "_translations": {
+                "value": {}
+              },
+              "condition": "@item.description",
+              "parameter_list": {
+                "style": "center tiny"
+              },
+              "_nested_name": "global_funders_overflow.loop_funders_description.@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@item.description",
+                    "matchedExpression": "@item.description",
+                    "type": "item",
+                    "fieldName": "description"
+                  }
+                ],
+                "condition": [
+                  {
+                    "fullExpression": "@item.description",
+                    "matchedExpression": "@item.description",
+                    "type": "item",
+                    "fieldName": "description"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "global_funders_overflow.loop_funders_description.@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ],
+                "@item.description": [
+                  "value",
+                  "condition"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "global_funders_overflow.loop_funders_description",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.funders_data",
+                "matchedExpression": "@local.funders_data",
+                "type": "local",
+                "fieldName": "funders_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.funders_data": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "global_funders_overflow"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"
+}

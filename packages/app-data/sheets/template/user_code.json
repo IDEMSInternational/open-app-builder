@@ -99,41 +99,32 @@
       },
       "rows": [
         {
-          "type": "display_group",
-          "name": "dg_user_code",
-          "parameter_list": {
-            "style": "dashed_box"
+          "type": "select_text",
+          "name": "user_code",
+          "value": "@local.user_id",
+          "_translations": {
+            "value": {}
           },
-          "rows": [
-            {
-              "type": "subtitle",
-              "name": "code",
-              "value": "@local.user_id",
-              "_translations": {
-                "value": {}
-              },
-              "parameter_list": {
-                "style": "center"
-              },
-              "_nested_name": "has_ever_been_synced.dg_user_code.code",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@local.user_id",
-                    "matchedExpression": "@local.user_id",
-                    "type": "local",
-                    "fieldName": "user_id"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.user_id": [
-                  "value"
-                ]
+          "parameter_list": {
+            "copy_text": "Copy code",
+            "copied_text": "Copied!"
+          },
+          "_nested_name": "has_ever_been_synced.user_code",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.user_id",
+                "matchedExpression": "@local.user_id",
+                "type": "local",
+                "fieldName": "user_id"
               }
-            }
-          ],
-          "_nested_name": "has_ever_been_synced.dg_user_code"
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.user_id": [
+              "value"
+            ]
+          }
         },
         {
           "type": "text",

@@ -236,6 +236,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "covid",
       _xlsxPath: "global/data/parent_centre_data_list.xlsx",
     },
+    funders_data_list: {
+      flow_type: "data_list",
+      flow_name: "funders_data_list",
+      data_list_name: "funders",
+      _xlsxPath: "global/data/partners_data_lists.xlsx",
+    },
     habit_data_list: {
       flow_type: "data_list",
       flow_name: "habit_data_list",
@@ -254,11 +260,41 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "launch_actions",
       _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
     },
+    organisations_tz_data_list: {
+      flow_type: "data_list",
+      flow_name: "organisations_tz_data_list",
+      data_list_name: "organisations_plh_tz",
+      _xlsxPath: "global/data/partners_data_lists.xlsx",
+    },
+    organisations_za_data_list: {
+      flow_type: "data_list",
+      flow_name: "organisations_za_data_list",
+      data_list_name: "organisations_plh_za",
+      _xlsxPath: "global/data/partners_data_lists.xlsx",
+    },
     parent_centre_data_list: {
       flow_type: "data_list",
       flow_name: "parent_centre_data_list",
       data_list_name: "parent_centre",
       _xlsxPath: "global/data/parent_centre_data_list.xlsx",
+    },
+    partners_data_list: {
+      flow_type: "data_list",
+      flow_name: "partners_data_list",
+      data_list_name: "partners",
+      _xlsxPath: "global/data/partners_data_lists.xlsx",
+    },
+    partners_tz_data_list: {
+      flow_type: "data_list",
+      flow_name: "partners_tz_data_list",
+      data_list_name: "partners_plh_tz",
+      _xlsxPath: "global/data/partners_data_lists.xlsx",
+    },
+    partners_za_data_list: {
+      flow_type: "data_list",
+      flow_name: "partners_za_data_list",
+      data_list_name: "partners_plh_za",
+      _xlsxPath: "global/data/partners_data_lists.xlsx",
     },
     relax_list: {
       flow_type: "data_list",
@@ -444,6 +480,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     accept_terms: {
       flow_type: "template",
       flow_name: "accept_terms",
+      _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
+    },
+    accept_terms_warning: {
+      flow_type: "template",
+      flow_name: "accept_terms_warning",
       _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
     },
     activity_check_in_chat: {
@@ -1520,6 +1561,21 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "something_fun",
       _xlsxPath: "global/core_templates/core_templates_relax_and_activities.xlsx",
+    },
+    splash_funders: {
+      flow_type: "template",
+      flow_name: "splash_funders",
+      _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
+    },
+    splash_partners_1: {
+      flow_type: "template",
+      flow_name: "splash_partners_1",
+      _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
+    },
+    splash_partners_2: {
+      flow_type: "template",
+      flow_name: "splash_partners_2",
+      _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
     },
     splash_screens: {
       flow_type: "template",
