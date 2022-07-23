@@ -155,7 +155,9 @@
               "name": "slogan_3",
               "value": "Join the 210 million parents who have used our resources",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "parameter_list": {
                 "style": "large center"
