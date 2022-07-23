@@ -1585,8 +1585,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "a4122de03ae40177cd218dd37abb3b2d",
   },
   "plh_images/logos/unicef.png": {
-    size_kb: 29.9,
-    md5Checksum: "0c9fb229c82fd604b1ad9b23a64804e8",
+    size_kb: 23.6,
+    md5Checksum: "c5262d757c340125cc601c3dc368f37c",
   },
   "plh_images/logos/university_of_oxford.png": {
     size_kb: 42,
