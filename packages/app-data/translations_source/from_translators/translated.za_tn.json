@@ -456,50 +456,14 @@
     "note": ""
   },
   {
-    "SourceText": "You selected less than @local.threshold",
-    "text": "O tlhophile kwa tlase ga @local.threshold",
+    "SourceText": "How did it go?",
+    "text": "Go tsamaile jang?",
     "type": "template",
-    "note": "The string @local.threshold should not be translated."
-  },
-  {
-    "SourceText": "Unlock for less than @local.threshold",
-    "text": "Bula kwa tlase ga @local.threshold",
-    "type": "template",
-    "note": "The string @local.threshold should not be translated."
-  },
-  {
-    "SourceText": "You selected @local.threshold or more",
-    "text": "O tlhophile @local.threshold kgotsa go feta",
-    "type": "template",
-    "note": "The string @local.threshold should not be translated."
+    "note": ""
   },
   {
     "SourceText": "Reply",
     "text": "Araba",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "You selected @local.threshold or less",
-    "text": "O tlhophile @local.threshold kgotsa kwa tlase",
-    "type": "template",
-    "note": "The string @local.threshold should not be translated."
-  },
-  {
-    "SourceText": "You selected more than @local.threshold",
-    "text": "O tlhophile kwa godimo ga @local.threshold",
-    "type": "template",
-    "note": "The string @local.threshold should not be translated."
-  },
-  {
-    "SourceText": "Days in the past month",
-    "text": "Malatsi mo kgweding e e fetileng",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Days in the past week",
-    "text": "Malatsi mo bekeng e e fetileng",
     "type": "template",
     "note": ""
   },
@@ -520,6 +484,12 @@
     "text": "Bidio",
     "type": "template",
     "note": ""
+  },
+  {
+    "SourceText": "You selected less than @local.threshold",
+    "text": "O tlhophile kwa tlase ga @local.threshold",
+    "type": "template",
+    "note": "The string @local.threshold should not be translated."
   },
   {
     "SourceText": "Start Positively Together",
@@ -724,12 +694,6 @@
     "text": "Ke eng se se neng se le bokete fa o ne o leka go @local.hp_description_second_singular?",
     "type": "template",
     "note": "The string @local.hp_description_second_singular should not be translated."
-  },
-  {
-    "SourceText": "How did it go?",
-    "text": "Go tsamaile jang?",
-    "type": "template",
-    "note": ""
   },
   {
     "SourceText": "Sorry we missed this!",
@@ -1698,6 +1662,18 @@
     "note": "The string @global.my_activities should not be translated."
   },
   {
+    "SourceText": "@global.parent_app funded by",
+    "text": "@global.parent_app e tlametswe ka madi ke",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "Powered by Parenting for Lifelong Health and partners",
+    "text": "E Matlafadiwa ke Botsadi jwa Boitekanelo jwa Botshelo jo bo Leele le balekane",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Bringing teenagers up is hard",
     "text": "Go godisa basha go bioma",
     "type": "template",
@@ -1708,24 +1684,6 @@
     "text": "O motsadi wa mmakgonthe o mosha wa gago a ka nnang le ene",
     "type": "template",
     "note": ""
-  },
-  {
-    "SourceText": "Join the 152.4 million parents who have used our resources",
-    "text": "Ikopanye le dimilione di le 152.4 tsa batsadi ba ba dirisitseng didiriswa tsa rona",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Powered by Parenting for Lifelong Health and partners",
-    "text": "E Matlafadiwa ke Botsadi jwa Boitekanelo jwa Botshelo jo bo Leele le balekane",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@global.parent_app funded by",
-    "text": "@global.parent_app e tlametswe ka madi ke",
-    "type": "template",
-    "note": "The string @global.parent_app should not be translated."
   },
   {
     "SourceText": "Ideas from other families:",
@@ -1740,10 +1698,46 @@
     "note": "The string @global.parent_app should not be translated."
   },
   {
+    "SourceText": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.",
+    "text": "Re lebogela gore o buile nnete. Go ka nna bokete go laola go tshwenyega mo maikutlong ga rona. Go itlhokomela le go go thusa o ikutlwe o kgobile makgwafo fa dilo di nna bokete, re tla nna re go gopotsa gore o iketle, o lemoge le gore o iteboge. O botlhokwa!\n\nO ka bona megopolo e mengwe ya go laola go tshwenyega mo maikutlong mo go @global.weekly_workshop kgotsa tlase ga @data.parent_centre.my_tips.location_text.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
+  },
+  {
+    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and continuing to use @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.",
+    "text": "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e boima ka mosha wa gago. \n\nRotlhe re ikutlwa re gateletswe ka dinako dingwe, mme go tswelela o dirisa @global.parent_app ke kgato e ntle ya go thusa wena le lelapa la gago!\n\nDilo tsa rona di thusitse diketekete tsa batsadi le malapa gore ba se tshwenyege thata mo maikutlong le go nna le nako e e siameng mmogo. Re fano go go tshegetsa.",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "This is a real concern for parents everywhere. Remember to use your new skills to continue to build good communication with your teen. \n\nYou can review core tips on planning for your teen’s safety in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text!",
+    "text": "Seno ke bothata jo bo tshwenyang batsadi gongwe le gongwe. Gopola go dirisa bokgoni jo bosha gore o tswelele o nna le puisano e e siameng le mosha wa gago. \n\nO ka sekaseka ditlhabobotlhale tsa motheo tsa go rulaganya tshireletsego ya mosha wa gago mo go @global.weekly_workshop kgotsa tlase ga @data.parent_centre.my_tips.location_text!",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
+  },
+  {
+    "SourceText": "Great. If any stress or disagreements around money do come up in your family in the future, you can always review the @data.workshop.w_money.in_text_title or @data.parent_centre.my_tips.location_text!",
+    "text": "Go gontle. Fa go ka nna le kgatelelo epe ya maikutlo kgotsa go sa utlwane ka baka la madi mo lelapeng la lona mo nakong e e tlang, o ka nna wa sekaseka @data.workshop.w_money.in_text_title kgotsa @data.parent_centre.my_tips.location_text!",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@data.workshop.w_money.in_text_title\n@data.parent_centre.my_tips.location_text"
+  },
+  {
+    "SourceText": "Money stress can be overwhelming. \n\nWhenever stress or disagreements around money come up in your family, you can find tips in the @data.workshop.w_money.in_text_title or under @data.parent_centre.my_tips.location_text!",
+    "text": "Go tshwenyega ka madi go ka tlhakanya tlhogo. \n\nNako le nako fa go nna le go sa utlwane ka madi mo lelapeng la gago, batla ditlhabobotlhale mo go @data.workshop.w_money.in_text_title kgotsa kafa tlase ga @data.parent_centre.my_tips.location_text!",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@data.workshop.w_money.in_text_title\n@data.parent_centre.my_tips.location_text"
+  },
+  {
     "SourceText": "Remember you can access lots of helpful tips and resources in the @global.parent_centre - this is available for you at any time!",
     "text": "Gopola gore o ka kgona go bona ditlhabobotlhale di le dintsi tse di thusang le didirisiwa mo go @global.parent_centre - o ka kgona go di bona nako nngwe le nngwe fela!",
     "type": "template",
     "note": "The string @global.parent_centre should not be translated."
+  },
+  {
+    "SourceText": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nRemember, you can find more support on this in the @data.workshop.w_safe.in_text_title whenever you need it!",
+    "text": "Go nna motsadi ga go bonolo. O dirile sentle ka go tlhoma mogopolo mo go sireletseng mosha wa gago. \n\nGopola, o ka kgona go bona tshegetso e nngwe ka seno mo go @data.workshop.w_safe.in_text_title nako le nako fa o e batla!",
+    "type": "template",
+    "note": "The string @data.workshop.w_safe.in_text_title should not be translated."
   },
   {
     "SourceText": "We know this is hard. You can review some helpful tips on how you can spend time with your teen under @data.parent_centre.my_tips.location_text or you can have another look at the @data.workshop.w_1on1.in_text_title.",
@@ -1788,72 +1782,6 @@
     "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
   },
   {
-    "SourceText": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.",
-    "text": "Re lebogela gore o buile nnete. Go ka nna bokete go laola go tshwenyega mo maikutlong ga rona. Go itlhokomela le go go thusa o ikutlwe o kgobile makgwafo fa dilo di nna bokete, re tla nna re go gopotsa gore o iketle, o lemoge le gore o iteboge. O botlhokwa!\n\nO ka bona megopolo e mengwe ya go laola go tshwenyega mo maikutlong mo go @global.weekly_workshop kgotsa tlase ga @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Thank you for being honest. It can be so difficult to control our stress. You can always find some helpful stress management tools under @data.parent_centre.my_tips.location_text.",
-    "text": "Re lebogela gore o buile nnete. Go ka nna bokete go laola go tshwenyega mo maikutlong ga rona. Gantsi o ka bona ditsela tsa go laola go tshwenyega mo maikutlong tse di thusang tlase ga @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
-  },
-  {
-    "SourceText": "Great. If any stress or disagreements around money do come up in your family in the future, you can always review the @data.workshop.w_money.in_text_title or @data.parent_centre.my_tips.location_text!",
-    "text": "Go gontle. Fa go ka nna le kgatelelo epe ya maikutlo kgotsa go sa utlwane ka baka la madi mo lelapeng la lona mo nakong e e tlang, o ka nna wa sekaseka @data.workshop.w_money.in_text_title kgotsa @data.parent_centre.my_tips.location_text!",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_money.in_text_title\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Money stress can be overwhelming. \n\nWhenever stress or disagreements around money come up in your family, you can find tips in the @data.workshop.w_money.in_text_title or under @data.parent_centre.my_tips.location_text!",
-    "text": "Go tshwenyega ka madi go ka tlhakanya tlhogo. \n\nNako le nako fa go nna le go sa utlwane ka madi mo lelapeng la gago, batla ditlhabobotlhale mo go @data.workshop.w_money.in_text_title kgotsa kafa tlase ga @data.parent_centre.my_tips.location_text!",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_money.in_text_title\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. To look after yourselves and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.",
-    "text": "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e bokete ka mosha wa gago. Gore re le tlhokomele le go le thusa go ikutlwa le kgobile makgwafo fa dilo di nna bokete, re tla nna re le go gopotsa gore lo iketle, le lemoge gore le kgonne le go iteboga. O botlhokwa!\n\nO ka bona megopolo e mengwe ya go laola go tshwenyega mo maikutlong mo go @global.weekly_workshop kgotsa tlase ga @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and continuing to use @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.",
-    "text": "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e boima ka mosha wa gago. \n\nRotlhe re ikutlwa re gateletswe ka dinako dingwe, mme go tswelela o dirisa @global.parent_app ke kgato e ntle ya go thusa wena le lelapa la gago!\n\nDilo tsa rona di thusitse diketekete tsa batsadi le malapa gore ba se tshwenyege thata mo maikutlong le go nna le nako e e siameng mmogo. Re fano go go tshegetsa.",
-    "type": "template",
-    "note": "The string @global.parent_app should not be translated."
-  },
-  {
-    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe hope our stress management tools will continue to help you to feel calmer in hard situations. You can find them under @data.parent_centre.my_tips.location_text.",
-    "text": "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e bokete ka mosha wa gago. \n\nRe solofela didirisiwa tsa rona tsa go laola go tshwenyega mo maikutlong di tla nna di go thusa gore o ikutlwe o kgobile makgwafo mo maemong a a thata. O kgona go di bona mo tlase ga @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
-  },
-  {
-    "SourceText": "This is a real concern for parents everywhere. Remember to use your new skills to continue to build good communication with your teen. \n\nYou can review core tips on planning for your teen’s safety in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text!",
-    "text": "Seno ke bothata jo bo tshwenyang batsadi gongwe le gongwe. Gopola go dirisa bokgoni jo bosha gore o tswelele o nna le puisano e e siameng le mosha wa gago. \n\nO ka sekaseka ditlhabobotlhale tsa motheo tsa go rulaganya tshireletsego ya mosha wa gago mo go @global.weekly_workshop kgotsa tlase ga @data.parent_centre.my_tips.location_text!",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you!\n\nRemember, you can find focused tools, extra content and resources on this in the @global.parent_centre at any time. You can also review core tips on rules and safety planning under @data.parent_centre.my_tips.location_text.",
-    "text": "Go nna motsadi ga go bonolo. Go ka nna bokete go itse gore o ka boloka basha ba rona ba sireletsegile jang. Gantsi re ikutlwa re sena matla atla jaaka batsadi mo go seno, mme fela re fano go go tshegetsa!\n\nGopola, o ka bona didirisiwa tse di remeletseng mo go seno, mafoko a mangwe a a kwadilweng le ditsompelo mabapi le seno mo go @global.parent_centre nako nngwe le nngwe. Gape o ka kgona go sekaseka ditlhabobotlhale tsa motheo mabapi le melao le go rulaganyetsa thulaganyo mo tlase ga @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.parent_centre\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! Remember, you can find focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can also review core tips on making rules under @data.parent_centre.my_tips.location_text.",
-    "text": "Go nna motsadi ga go bonolo. Go ka nna bokete go itse gore o ka boloka basha ba rona ba sireletsegile jang. Gantsi re ikutlwa re sena matla jaaka batsadi mo go seno, mme fela re fano go go tshegetsa! Gopola, o ka bona didirisiwa tse di remeletseng mo go seno, mafoko a mangwe a a kwadilweng le ditsompelo mabapi le seno mo go @global.parent_centre nako nngwe le nngwe. \n\nGape o ka sekaseka ditlhabobotlhale tsa motheo mabapi le go dira melao tlase ga @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.parent_centre\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nRemember, you can find more support on this in the @data.workshop.w_safe.in_text_title whenever you need it!",
-    "text": "Go nna motsadi ga go bonolo. O dirile sentle ka go tlhoma mogopolo mo go sireletseng mosha wa gago. \n\nGopola, o ka kgona go bona tshegetso e nngwe ka seno mo go @data.workshop.w_safe.in_text_title nako le nako fa o e batla!",
-    "type": "template",
-    "note": "The string @data.workshop.w_safe.in_text_title should not be translated."
-  },
-  {
     "SourceText": "Customise for your needs",
     "text": "Direla ditlhoko tsa gago",
     "type": "template",
@@ -1872,134 +1800,8 @@
     "note": ""
   },
   {
-    "SourceText": "It is hard to find time to have fun with your teenager.",
-    "text": "Go thata go bona nako ya go itumela le mosha wa gago.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past week were you able to give them your attention and do something that they enjoyed with them?",
-    "text": "Ke malatsi a le kae mo bekeng e e fetileng a o kgonneng go neelana ka nako ya gago mme lwa dira sengwe se lo se ratang le bone?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@data.workshop.w_1on1.tools added to @data.parent_centre.my_tips.title.",
-    "text": "@data.workshop.w_1on1.tools e tsenyeleditswe mo @data.parent_centre.my_tips.title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_1on1.tools\n@data.parent_centre.my_tips.title"
-  },
-  {
-    "SourceText": "In our busy lives it’s hard to focus on the positive.",
-    "text": "Mo go tshwaregeng ka botshelo jwa rona go bokete go tlhomamisa mogopolo mo dilong tse di siameng.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past week have you praised your teen?",
-    "text": "O akgotse mosha wa gago ga kae mo bekeng e e fetileng?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@data.workshop.w_praise.tools added to @data.parent_centre.my_tips.title.",
-    "text": "@data.workshop.w_praise.tools e tsenyeleditswe mo @data.parent_centre.my_tips.title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_praise.tools\n@data.parent_centre.my_tips.title"
-  },
-  {
-    "SourceText": "This is a very stressful time for families.",
-    "text": "Eno ke nako e e tshwenyang maikutlo mo malapeng.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past week did you feel very stressed as a parent/caregiver?",
-    "text": "Ke malatsi a le kae a o neng o ikutlwa o tshwenyegile mo maikutlong jaaka motsadi/motlhokomedi mo bekeng e e fetileng?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Sometimes our children make us really upset.",
-    "text": "Ka dinako tse dingwe bana ba rona ba dira gore re utlwe botlhoko thata.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past week did you shout, scream or yell at your teen?",
-    "text": "Mo bekeng e e fetileng o omantse kgotsa o goile mosha wa gago malatsi a le kae?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Money is one of the biggest stresses for families now.",
-    "text": "Madi ke nngwe ya tse dikgolo tseo di dirang gore malapa a tshwenyege mo maikutlong ga jaana.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past week have you worried or felt anxious about money?",
-    "text": "O ikutlwile o tshwenyegile kgotsa o akanya thata ka madi malatsi a le kae mo bekeng e e fetileng?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past month (30 days) did you run out of money to pay for food?",
-    "text": "Ke malatsi a le kae mo kgweding (malatsi a 30) e e fetileng mo o o neng o felelwa ke madi a go duelela dijo?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@data.workshop.w_money.tools added to @data.parent_centre.my_tips.title.",
-    "text": "@data.workshop.w_money.tools e tsenyeleditswe mo @data.parent_centre.my_tips.title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_money.tools\n@data.parent_centre.my_tips.title"
-  },
-  {
-    "SourceText": "It is so stressful when children misbehave.",
-    "text": "Go tshwenya mo maikutlong tota fa bana ba sa itshware sentle.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past week did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?",
-    "text": "Ke matsatsi a makae mo bekeng e e fitileng a o kileng wa kgalema bana ba gago ka go ba betsa, go ba kgwathisa kgotsa go ba betsa ka seatla kgotsa sediriswa, thupa kgotsa lepanta?",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!",
     "text": "Go gontle fa o araba o kgobile makgwafo fa mosha wa gago a dira sengwe se se tenang. Ba ka ithuta go le gontsi go tswa mo go wena!",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@data.workshop.w_stress.tools added to @data.parent_centre.my_tips.title.",
-    "text": "@data.workshop.w_stress.tools e tsenyeleditswe mo @data.parent_centre.my_tips.title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_stress.tools\n@data.parent_centre.my_tips.title"
-  },
-  {
-    "SourceText": "It’s hard to keep track of your teenagers when they are becoming independent.",
-    "text": "Go thata go tsamaisana le mosha wa gago fa ba ikemela.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past week did you know what your teen was doing and who they were with?",
-    "text": "Ke malatsi a le kae mo bekeng e e fetileng mo o ileng wa itse se mosha wa gago a se dirang le gore o ne a na le mang?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "This is good to hear.",
-    "text": "Seno se molemo go se utlwa.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Were you in lockdown this week?",
-    "text": "A o ne o lotleletswe mo bekeng eno?",
     "type": "template",
     "note": ""
   },
@@ -2008,60 +1810,6 @@
     "text": "Go gontle gore o lemoga se mosha wa gago a se dirang. Go nna motsadi go bokete, mme o dira sentle go mmoloka a sireletsegile.",
     "type": "template",
     "note": ""
-  },
-  {
-    "SourceText": "How many days in a typical non-lockdown week do you know what your teen is doing and who they are with?",
-    "text": "Ke malatsi a le kae mo bekeng mo go neng go sa lotlelelwa mo o ileng wa itse se mosha wa gago a se dirang le gore o ne a na le mang?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@data.workshop.w_safe.tools added to @data.parent_centre.my_tips.title.",
-    "text": "@data.workshop.w_safe.tools e tsenyeleditswe mo @data.parent_centre.my_tips.title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_safe.tools\n@data.parent_centre.my_tips.title"
-  },
-  {
-    "SourceText": "We all want to keep our children safe.",
-    "text": "Rotlhe re batla go boloka bana ba rona ba sireletsegile.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past month (30 days) did you talk with your teen about keeping safe from sexual violence online or offline?",
-    "text": "Ke malatsi a le kae mo kgweding e e fetileng (malatsi a 30) mo o kileng wa bua le mosha wa gago ka go ipoloka a sireletsegile mo tirisong dikgoka ya tlhakanelo dikobo mo mafaratlhatlheng kgotsa ka namana?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "This could be when they are going out with friends, or talking about the websites they use.",
-    "text": "Seno e ka nna fa ba ikentsha le ditsala, kgotsa ba bua ka diwebosaete tse ba di dirisang.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "We have a new challenge now – keeping our teenagers safe from COVID-19.",
-    "text": "Re na le kgwetlho e ntšha jaanong – go sireletsa basha ba rona go COVID-19.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days last week did your teenager stay safe through wearing a mask, keeping a distance from people and keeping away from crowded places?",
-    "text": "Ke malatsi a le kae ao mosha wa gago a ileng a nna a sireletsegile ka go tsenya mmaseke, a katogane le batho le go nna kgakala le mo mafelong a a tletseng ka batho?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "It can be challenging to keep your teen safe in COVID! We are putting together some advice - you will soon be able to access it in the @global.parent_centre.",
-    "text": "E ka nna kgwetlho go sireletsa mosha wa gago go COVID! Re ntse re rulaganyetsa go tla ka dikakantsho - mo bogautshwaneng o tla di bona mo @global.parent_centre.",
-    "type": "template",
-    "note": "The string @global.parent_centre should not be translated."
-  },
-  {
-    "SourceText": "That’s great. We are putting together some advice for keeping your teen safe in COVID - you will soon be able to access it in the @global.parent_centre.",
-    "text": "Go gontle. Re ntse re rulaganyetsa go tla ka dikakantsho tsa go boloka mosha wa gago a sireletsegile go COVID - mo bogautshwaneng o tla di bona mo@global.parent_centre.",
-    "type": "template",
-    "note": "The string @global.parent_centre should not be translated."
   },
   {
     "SourceText": "You selected \"I would rather not answer\"",
@@ -2112,6 +1860,54 @@
     "note": ""
   },
   {
+    "SourceText": "Well done. Brain science shows that controlling your anger improves your teen’s brain development. Be proud of yourself.",
+    "text": "O dirile sentle. Saense ya boboko e bontsha gore go laola kgalefo ya gago go tla tokafatsa tsela e boboko jwa mosha wa gago bo golang ka gone. Nna motlotlo ka wena.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we’ll remind you regularly to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops, but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get started.",
+    "text": "Re lebogela gore o buile nnete. Go ka nna bokete go laola go tshwenyega mo maikutlong ga rona. Go itlhokomela le go go thusa gore o ikutlwe o kgobile makgwafo fa dilo di nna bokete, re tla go gopotsa ka metlha gore o iketle, o lemoge gore o kgonne le go iteboga. O botlhokwa!\n\nRe tla ithuta mo go oketsegileng ka go laola go tshwenyega mo maikutlong mo bekeng ya bo 5 ya @data.workshop.w_stress.number - mme fela o ka kgona go dirisa didirisiwa tse di thusang mo tlase ga @global.weekly_workshops gore o simolole.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@data.workshop.w_stress.number\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
+  },
+  {
+    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and using @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.",
+    "text": "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e bokete ka mosha wa gago. \n\nRotlhe re ikutlwa re gateletswe ka dinako dingwe, mme go dirisa @global.parent_app ke kgato e ntle ya go thusa wena le lelapa la gago!\n\nDidirisiwa tsa rona di thusitse diketekete tsa batsadi le malapa gore ba se tshwenyege thata mo maikutlong le go nna le nako e e siameng mmogo. Re fano go go tshegetsa.",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. \n\nWe’ll talk more about planning for your teen’s safety later in the @global.weekly_workshops, but you can already access some first core tips to keep your teen safe under @data.parent_centre.my_tips.location_text!",
+    "text": "Seno ke bothata jo bo tshwenyang batsadi gongwe le gongwe. Re tla netefatsa gore o a tshegediwa ka go aga puisano. \n\nRe tla bua mo go oketsegileng ka go rulaganya tshireletsego ya mosha wa gago kgantele mo @global.weekly_workshops, mme fela o ka iponela dikakantsho tse di tseneletseng tsa go boloka mosha wa gago a sireletsegile mo tlase ga @data.parent_centre.my_tips.location_text!",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
+  },
+  {
+    "SourceText": "Great. We have a workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments.",
+    "text": "Go gontle. Re na le workshop e e rutang ka tekanyetsokabo ya lelapa e e ka thusang ka go tshwenyega ka madi ka kakaretso, le go fokotsa go omana ka madi.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Money stress can be overwhelming. \n\nWe have a workshop on family budgeting in five weeks, but you can already access some core family budgeting tips under @data.parent_centre.my_tips.location_text!",
+    "text": "Go tshwenyega ka madi go ka tlhakanya tlhogo. \n\nRe na le workshop e e rutang ka tekanyetsokabo ya lelapa dibeke di le tlhano, mme o setse o ka kgona go bona ditlhabobotlhale dingwe tsa motheo ka tekanyetsokabo ya lelapa mo tlase ga @data.parent_centre.my_tips.location_text!",
+    "type": "template",
+    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
+  },
+  {
+    "SourceText": "Content unlocked by these questions is now accessible under @data.parent_centre.my_tips.location_text.",
+    "text": "Diteng tse di bulwang ka dipotso tseno jaanong di ka bonwa mo tlase ga @data.parent_centre.my_tips.location_text.",
+    "type": "template",
+    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
+  },
+  {
+    "SourceText": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nWe’ll have more support for you on this in the later @global.weekly_workshops if you’d like to know even more!",
+    "text": "Go nna motsadi ga go bonolo. O dirile sentle ka go tlhoma mogopolo mo go sireletseng mosha wa gago. \n\nRe tlile go go neela tshegetso e oketsegileng ka seno mo nakong e e tlang @global.weekly_workshops fa o ka rata go itse mo go oketsegileng!",
+    "type": "template",
+    "note": "The string @global.weekly_workshops should not be translated."
+  },
+  {
     "SourceText": "We know this is hard. We have added some helpful tips on how you can spend time with your teen to @data.parent_centre.my_tips.location_text, so you can access it right away. \n\nBecause @data.workshop.w_1on1.title builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!",
     "text": "Re a itse seno se bokete. Re tsentse dikakantsho tse di tla go thusang gore o iphe nako le mosha wa gago go @data.parent_centre.my_tips.location_text, gore o e bone ka nako e o e batlang ka yone. \n\nKa gonne @data.workshop.w_1on1.title e aga motheo wa sedirisiwa sa batsadi botlhe, e tla bo e le @global.weekly_workshop o e amogelang beke e e tlang!",
     "type": "template",
@@ -2152,108 +1948,6 @@
     "text": "Re a tlhaloganya gore botshelo bo ka ngamola pelo go le kana kang. Re tla go gopotsa letsatsi le letsatsi gore o iketle, gakologelwa mme o iteboge, go go thusa go kgona go laola go tshwenyega mo maikutlong ga gago le gore o ikutlwe o kgobile makgwafo.\n\nRe tla ithuta mo go oketsegileng ka go laola go tshwenyega mo maikutlong mo bekeng ya bo @data.workshop.w_stress.number ya @global.weekly_workshops- mme o setse o kgona go dirisa didirisiwa tse di thusang mo tlase ga@data.parent_centre.my_tips.location_text gore o simolole!",
     "type": "template",
     "note": "The following strings should not be translated:\n@data.workshop.w_stress.number\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Well done. Brain science shows that controlling your anger improves your teen’s brain development. Be proud of yourself.",
-    "text": "O dirile sentle. Saense ya boboko e bontsha gore go laola kgalefo ya gago go tla tokafatsa tsela e boboko jwa mosha wa gago bo golang ka gone. Nna motlotlo ka wena.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we’ll remind you regularly to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops, but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get started.",
-    "text": "Re lebogela gore o buile nnete. Go ka nna bokete go laola go tshwenyega mo maikutlong ga rona. Go itlhokomela le go go thusa gore o ikutlwe o kgobile makgwafo fa dilo di nna bokete, re tla go gopotsa ka metlha gore o iketle, o lemoge gore o kgonne le go iteboga. O botlhokwa!\n\nRe tla ithuta mo go oketsegileng ka go laola go tshwenyega mo maikutlong mo bekeng ya bo 5 ya @data.workshop.w_stress.number - mme fela o ka kgona go dirisa didirisiwa tse di thusang mo tlase ga @global.weekly_workshops gore o simolole.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_stress.number\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Thank you for being honest. It can be so difficult to control our stress. We hope our stress management tools will be useful to you. You can already find them under @data.parent_centre.my_tips.location_text.",
-    "text": "Re lebogela gore o buile nnete. Go ka nna bokete go laola go tshwenyega mo maikutlong ga rona. Re solofela sedirisiwa sa rona sa go laola go tshwenyega mo maikutlong se go thusitse. O setse o kgona go di bona mo tlase ga @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
-  },
-  {
-    "SourceText": "Great. We have a workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments.",
-    "text": "Go gontle. Re na le workshop e e rutang ka tekanyetsokabo ya lelapa e e ka thusang ka go tshwenyega ka madi ka kakaretso, le go fokotsa go omana ka madi.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Money stress can be overwhelming. \n\nWe have a workshop on family budgeting in five weeks, but you can already access some core family budgeting tips under @data.parent_centre.my_tips.location_text!",
-    "text": "Go tshwenyega ka madi go ka tlhakanya tlhogo. \n\nRe na le workshop e e rutang ka tekanyetsokabo ya lelapa dibeke di le tlhano, mme o setse o ka kgona go bona ditlhabobotlhale dingwe tsa motheo ka tekanyetsokabo ya lelapa mo tlase ga @data.parent_centre.my_tips.location_text!",
-    "type": "template",
-    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
-  },
-  {
-    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. To look after yourselves and help you feel calmer when things get tough, we’ll remind you every day to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week 5 of the @global.weekly_workshops, but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get started.",
-    "text": "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e bokete ka mosha wa gago. Go itlhokomela le go thusa o ikutlwe o kgobile makgwafo fa dilo di nna boima, re tla go gopotsa tsatsi le letsatsi gore o iketle, o lemoge mme o iteboge. O botlhokwa!\n\nRe tla ithuta mo go oketsegileng ka go laola go tshwenyega mo maikutlong mo bekeng ya bo 5 ya @global.weekly_workshops - mme fela o ka kgona go dirisa didirisiwa tse di thusang mo tlase ga @data.parent_centre.my_tips.location_text gore o simolole.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and using @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.",
-    "text": "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e bokete ka mosha wa gago. \n\nRotlhe re ikutlwa re gateletswe ka dinako dingwe, mme go dirisa @global.parent_app ke kgato e ntle ya go thusa wena le lelapa la gago!\n\nDidirisiwa tsa rona di thusitse diketekete tsa batsadi le malapa gore ba se tshwenyege thata mo maikutlong le go nna le nako e e siameng mmogo. Re fano go go tshegetsa.",
-    "type": "template",
-    "note": "The string @global.parent_app should not be translated."
-  },
-  {
-    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe hope our stress management tools will help you to feel calmer in hard situations. You can find them under @data.parent_centre.my_tips.location_text.",
-    "text": "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e bokete ka mosha wa gago. \n\nRe solofela didirisiwa tsa rona tsa go laola go tshwenyega mo maikutlong di tla go thusa gore o ikutlwe o kgobile makgwafo mo maemong a a thata. O kgona go di bona mo tlase ga @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
-  },
-  {
-    "SourceText": "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. \n\nWe’ll talk more about planning for your teen’s safety later in the @global.weekly_workshops, but you can already access some first core tips to keep your teen safe under @data.parent_centre.my_tips.location_text!",
-    "text": "Seno ke bothata jo bo tshwenyang batsadi gongwe le gongwe. Re tla netefatsa gore o a tshegediwa ka go aga puisano. \n\nRe tla bua mo go oketsegileng ka go rulaganya tshireletsego ya mosha wa gago kgantele mo @global.weekly_workshops, mme fela o ka iponela dikakantsho tse di tseneletseng tsa go boloka mosha wa gago a sireletsegile mo tlase ga @data.parent_centre.my_tips.location_text!",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "This is really great. Parenting is hard, but you’re really succeeding in this.",
-    "text": "Seno se sentle tota. Go nna motsadi go bokete, mme o a atlega mo go direng seno.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can already access some first core tips which will help with making rules and safety planning under @data.parent_centre.my_tips.location_text.",
-    "text": "Go nna motsadi ga go bonolo. Go ka nna bokete go itse gore o ka boloka basha ba rona ba sireletsegile jang. Gantsi re ikutlwa re sena matla jaaka batsadi mo go seno, mme fela re fano go go tshegetsa! O ka bona didirisiwa tse di tobileng, ka diteng tse di oketsegileng le ditlamelwana mo @global.parent_centre nako nngwe le nngwe. \n\nO setse o ka kgona go bona ditlhabotlhale tse dingwe tsa motheo tse di thusang ka go rulaganya go dira mo tlase ga @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.parent_centre\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "@data.workshop.w_rules.tools and @data.workshop.w_safe.tools added to @data.parent_centre.my_tips.title.",
-    "text": "@data.workshop.w_rules.tools le @data.workshop.w_safe.tools e e tsenngwang mo go @data.parent_centre.my_tips.title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_rules.tools\n@data.workshop.w_safe.tools\n@data.parent_centre.my_tips.title"
-  },
-  {
-    "SourceText": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can already access some first core tips which will help with making rules under @data.parent_centre.my_tips.location_text.",
-    "text": "Go nna motsadi ga go bonolo. Go ka nna bokete go itse gore o ka boloka basha ba rona ba sireletsegile jang. Gantsi re ikutlwa re sena matla jaaka batsadi mo go seno, mme fela re fano go go tshegetsa! O ka bona didirisiwa tse di tobileng, ka diteng tse di oketsegileng le ditlamelwana mo @global.parent_centre nako nngwe le nngwe. \n\nO setse o ka kgona go bona ditlhabotlhale tse dingwe tsa motheo tse di tla thusang ka go dira melao mo tlase ga @global.parent_centre.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.parent_centre\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "@data.workshop.w_rules.tools added to @data.parent_centre.my_tips.title.",
-    "text": "@data.workshop.w_rules.tools e tsenyeleditswe mo @data.parent_centre.my_tips.title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_rules.tools\n@data.parent_centre.my_tips.title"
-  },
-  {
-    "SourceText": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nWe’ll have more support for you on this in the later @global.weekly_workshops if you’d like to know even more!",
-    "text": "Go nna motsadi ga go bonolo. O dirile sentle ka go tlhoma mogopolo mo go sireletseng mosha wa gago. \n\nRe tlile go go neela tshegetso e oketsegileng ka seno mo nakong e e tlang @global.weekly_workshops fa o ka rata go itse mo go oketsegileng!",
-    "type": "template",
-    "note": "The string @global.weekly_workshops should not be translated."
-  },
-  {
-    "SourceText": "Content unlocked by these questions is now accessible under @data.parent_centre.my_tips.location_text.",
-    "text": "Diteng tse di bulwang ka dipotso tseno jaanong di ka bonwa mo tlase ga @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
-  },
-  {
-    "SourceText": "You have just unlocked the first workshop!",
-    "text": "O sa tswa go bula workshop ya ntlha!",
-    "type": "template",
-    "note": ""
   },
   {
     "SourceText": "Talk Together",
@@ -3426,12 +3120,6 @@
     "note": ""
   },
   {
-    "SourceText": "Your goal was to spend one-on-one time with your teen. We noticed you tapped the @data.habit.spend_time.in_text_title - great job for remembering!",
-    "text": "Boikaelelo jwa gago e ne e le go fetsa nako le mosha wa gago lo le babedi. Re lemogile gore o tobeditse @data.habit.spend_time.in_text_title - o dirile sentle wa gopola!",
-    "type": "template",
-    "note": "The string @data.habit.spend_time.in_text_title should not be translated."
-  },
-  {
     "SourceText": "Your goal was to spend one-on-one time with your teen.",
     "text": "Boikaelelo jwa gago e ne e le go fetsa nako le mosha wa gago lo le babedi.",
     "type": "template",
@@ -3964,12 +3652,6 @@
     "text": "Basha ba ka bona go itewa e le gone fela ditlamorago tsa go roba melao. \n\nAkantshana ditlamorago dingwe tse di seng thata le bone tse di ka ba thusang go tlhaloganya gore ba dirile sengwe se se sa siamang. Tseno di ka dira thata mme e nne sekao se se molemo!",
     "type": "template",
     "note": ""
-  },
-  {
-    "SourceText": "Your goal was to introduce ONE positive consequence (for your teen taking responsibility) and ONE negative consequence (for your teen breaking a household rule). You tapped the @data.habit.consequence.in_text_title - great job for remembering!",
-    "text": "Mokgele wa gago e ne e le go itsise NNGWE ya ditlamorago tse di molemo (tsa mosha wa gago yo o tsereng maikarabelo) le NNGWE ya ditlamorago tse di sa siamang (tsa mosha wa gago fa a roba molao wa mo lapeng). O tobeditse @data.habit.consequence.in_text_title - o dirile sentle wa gopola!",
-    "type": "template",
-    "note": "The string @data.habit.consequence.in_text_title should not be translated."
   },
   {
     "SourceText": "Your goal was to introduce ONE positive consequence (for your teen taking responsibility) and ONE negative consequence (for your teen breaking a household rule).",
@@ -4962,12 +4644,6 @@
     "note": ""
   },
   {
-    "SourceText": "Your home practice was to try out REAL, POSITIVE and EXACT instructions with your teen.  We noticed you tapped the @data.habit.instruct_positively.in_text_title - great job for remembering!",
-    "text": "Ikatiso ya legae la gago e ne e le go leka ditaelo tsa NNETE, TSE DI SIAMENG le TSE DI TSEPAMENG le mosha wa gago.  Re lemogile gore o tobeditse @data.habit.instruct_positively.in_text_tite - o dirile sentle wa gopola!",
-    "type": "template",
-    "note": "The string @data.habit.instruct_positively.in_text_title should not be translated."
-  },
-  {
     "SourceText": "Your home practice was to try out REAL, POSITIVE and EXACT instructions with your teen.",
     "text": "Ikatiso ya legae la gago e ne e le go leka ditaelo tsa NNETE, TSE DI SIAMENG le TSE DI TSEPAMENG le mosha wa gago.",
     "type": "template",
@@ -5416,12 +5092,6 @@
     "text": "Leka go dira tekanyetsokabo le bagolo ba bangwe mo legaeng la gago pele. Mosha wa gago a ka kgatlhegela se o se dirang. \n\nGo dira tekanyetsokabo go ka bonala go le masisi mme leka go go dira monate – go dire motshameko fa lo ntse lo ipha nako mmogo! Kgotsa o ka leka go dira tekanyetsokabo ya @global.w_money_grandma pele. \n\nGopola go ba akgola fa o feditse!",
     "type": "template",
     "note": "The string @global.w_money_grandma should not be translated."
-  },
-  {
-    "SourceText": "Your goal was to make a family budget and savings plan. We noticed you tapped the @data.habit.money.in_text_title - great job for remembering!",
-    "text": "Mokgele wa gago e ne e le go dira thulaganyo ya tekanyetsokabo le go boloka madi a elapa. Re lemogile gore o tobeditse @data.habit.money.in_text_title - o dirile sentle wa gopola!",
-    "type": "template",
-    "note": "The string @data.habit.money.in_text_title should not be translated."
   },
   {
     "SourceText": "Your goal was to make a family budget and savings plan.",
@@ -5896,12 +5566,6 @@
     "text": "Ikatiso ya kwa gae ya beke eno ke go akgola mosha wa gago gangwe mo letsatsing. E tlile go tsaya fela metsotswana e le 10!",
     "type": "template",
     "note": ""
-  },
-  {
-    "SourceText": "Your goal was to praise your teen. You’ve tapped the @data.habit.praise_teen.in_text_title this week. Great job for remembering!",
-    "text": "Mokgele wa gago e ne e le go akgola mosha wa gago. O tobeditse @data.habit.praise_teen.in_text_title mo bekeng eno. O dirile sentle wa gopola!",
-    "type": "template",
-    "note": "The string @data.habit.praise_teen.in_text_title should not be translated."
   },
   {
     "SourceText": "Your goal was to praise your teen.",
@@ -8334,32 +7998,14 @@
     "note": ""
   },
   {
-    "SourceText": "This week, your goal was: Whenever you are feeling stressed or upset, take five breaths in and out before you react. You tapped the @data.habit.breathe.in_text_title - well done!",
-    "text": "Beke eno, mokgele wa gago e ne e le gore: Fa o ikutlwa o tshwenyegile mo maikutlong kgotsa o tenegile, hemela ko teng le kwa ntle ga tlhano pele ga o ka tsaya kgato. O tobeditse @data.habit.breathe.in_text_title - o dirile sentle!",
-    "type": "template",
-    "note": "The string @data.habit.breathe.in_text_title should not be translated."
-  },
-  {
     "SourceText": "This week, your goal was: Whenever you are feeling stressed or upset, take five breaths in and out before you react.",
     "text": "Beke eno, mokgele wa gago e ne e le gore: Fa o ikutlwa o tshwenyegile maikutlo kgotsa o tenegile, hemela kwa teng le kwa ntle ga tlhano pele ga o ka tsaya kgato.",
     "type": "template",
     "note": ""
   },
   {
-    "SourceText": "How did this work out?",
-    "text": "Seno se ile sa dira jang?",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "Your goal was also to talk to your teen about how you both felt in a stressful situation.",
     "text": "Mokgele wa gago e ne ele go bua le mosha wa gago gore lo ikutlwile jang fa lo ne lo mo seemong sa go tshwenyega mo maikutlong.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How did this go?",
-    "text": "Seno se ile sa direga jang?",
     "type": "template",
     "note": ""
   },
@@ -9492,12 +9138,6 @@
     "note": "The string @global.parent_points should not be translated."
   },
   {
-    "SourceText": "<p>Find lots of helpful resources in the @global.parent_centre.</p>\n\n<p>You can get instant access to the @data.parent_centre.essential_tools.title from all @global.weekly_workshops.</p>",
-    "text": "<p>Bona didiriswa di le dintsi tse di thusang mo go @global.parent_centre.</p>\n\n<p>O ka bona tetlelelo ya tshoganyetso mo go @data.parent_centre.essential_tools.title go tswa go @global.weekly_workshops.</p>",
-    "type": "tour",
-    "note": "The following strings should not be translated:\n@global.parent_centre.</p>\n@data.parent_centre.essential_tools.title\n@global.weekly_workshops.</p>"
-  },
-  {
     "SourceText": "<p>Check out the extra relaxation and parenting activities!</p>\n\n<p>You can also get quick parenting tips and technical support.</p>",
     "text": "<p>Tlhola ditirwana tse di okeditsweng tsa go itapolosa le botsadi!</p>\n\n<p>O ka kgona le go bona maele a botsadi ka potlako le tshegetso ya sethekeniki.</p>",
     "type": "tour",
@@ -10448,6 +10088,96 @@
   {
     "SourceText": "Angry? Take a break",
     "text": "O galefile? Ikhutse go se kae",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "It is hard to find time to have fun with your teenager.",
+    "text": "Go thata go bona nako ya go itumela le mosha wa gago.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "In our busy lives it’s hard to focus on the positive.",
+    "text": "Mo go tshwaregeng ka botshelo jwa rona go boima go tlhoma mogopolo mo dilong tse di siameng.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many days in the past week have you praised your teen?",
+    "text": "O akgotse mosha wa gago ga kae mo bekeng e e fetileng?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "This is a very stressful time for families.",
+    "text": "Eno ke nako e e tshwenyang mo maikutlong mo malapeng.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many days in the past week did you feel very stressed as a parent/caregiver?",
+    "text": "Ke malatsi a le kae a o neng o ikutlwa o tshwenyegile mo maikutlong jaaka motsadi/motlhokomedi mo bekeng e e fetileng?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Sometimes our children make us really upset.",
+    "text": "Ka dinako tse dingwe bana ba rona ba dira gore re tenege thata.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many days in the past week did you shout, scream or yell at your teen?",
+    "text": "Mo bekeng e e fetileng o omantse kgotsa o goile mosha wa gago malatsi a le kae?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many days in the past month (30 days) did you run out of money to pay for food?",
+    "text": "Ke malatsi a le kae mo kgweding (malatsi a 30) e e fetileng mo o o neng o felelwa ke madi a go duela dijo?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "It is so stressful when children misbehave.",
+    "text": "Go tshwenya mo maikutlong tota fa bana ba sa itshware sentle.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many days in the past week did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?",
+    "text": "Ke matsatsi a makae mo bekeng e e fitileng a o kileng wa kgalema bana ba gago ka go ba betsa, go ba kgwathisa kgotsa go ba betsa ka seatla kgotsa sediriswa, thupa kgotsa lepanta?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "It’s hard to keep track of your teenagers when they are becoming independent.",
+    "text": "Go thata go tsamaisana le mosha wa gago fa ba ikemela.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many days in the past week did you know what your teen was doing and who they were with?",
+    "text": "Ke malatsi a le kae mo bekeng e e fetileng mo o ileng wa itse se mosha wa gago a se dirang le gore o ne a na le mang?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Days in the past week",
+    "text": "Malatsi mo bekeng e e fetileng",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "We all want to keep our children safe.",
+    "text": "Rotlhe re batla go boloka bana ba rona ba sireletsegile.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Days in the past month",
+    "text": "Malatsi mo kgweding e e fetileng",
     "type": "data_list",
     "note": ""
   },
