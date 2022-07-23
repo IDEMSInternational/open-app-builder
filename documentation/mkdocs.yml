@@ -26,6 +26,7 @@ nav:
       - developers/adding-components.md
       - developers/deployments.md
       - developers/device-testing.md
+      - developers/android-assets.md
   - Display Components:
       - components/audio.md
       - components/html.md
@@ -37,6 +38,8 @@ nav:
       - components/simple_checkbox.md
       - components/slider.md
       - components/video.md
+      - components/timer.md
+      - components/radio_group.md
   - Q & A:
       - questions/parameters_styles.md
       - questions/positioning_components.md

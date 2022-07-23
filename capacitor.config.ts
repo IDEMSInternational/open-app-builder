@@ -12,6 +12,7 @@ const config: CapacitorConfig = {
     SplashScreen: {
       launchShowDuration: 7000, // app.component.ts should manually dismiss before duration
       launchAutoHide: true,
+      androidScaleType: "CENTER_CROP",
     },
     FirebaseAuthentication: {
       skipNativeAuth: false,
