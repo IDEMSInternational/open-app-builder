@@ -1,0 +1,33 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "organisations_za_data_list",
+  "status": "released",
+  "data_list_name": "organisations_plh_za",
+  "rows": [
+    {
+      "id": "organisation_1",
+      "name": "Amathuba Collective"
+    },
+    {
+      "id": "organisation_2",
+      "name": "Dlalanathi"
+    },
+    {
+      "id": "organisation_3",
+      "name": "Hillcrest AIDS Centre Trust"
+    },
+    {
+      "id": "organisation_4",
+      "name": "HPCCC"
+    },
+    {
+      "id": "organisation_5",
+      "name": "Seven Passes Initiative"
+    },
+    {
+      "id": "organisation_6",
+      "name": "Zlto"
+    }
+  ],
+  "_xlsxPath": "global/data/partners_data_lists.xlsx"
+}
