@@ -74,11 +74,9 @@
     },
     {
       "type": "step",
-      "message_text": "<p>Find lots of helpful resources in the @global.parent_centre.</p>\n\n<p>You can get instant access to the @data.parent_centre.essential_tools.title from all @global.weekly_workshops.</p>",
+      "message_text": "<p>Find lots of helpful resources in the @global.parent_centre.</p>\n\n<p>You can get instant access to the Essential Tools from all @global.weekly_workshops.</p>",
       "_translations": {
-        "message_text": {
-          "tz_sw": true
-        }
+        "message_text": {}
       },
       "template_component_name": "tile_parent_centre",
       "route": "template/home_screen"
