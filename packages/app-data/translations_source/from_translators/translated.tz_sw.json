@@ -55,7 +55,7 @@
   },
   {
     "SourceText": "Play a game or do something fun",
-    "text": "Cheza mchezo au fany kitu flani cha kufurahisha",
+    "text": "Cheza mchezo au fanya kitu fulani cha kufurahisha",
     "type": "template",
     "note": ""
   },
@@ -499,7 +499,7 @@
   },
   {
     "SourceText": "@local.relevant_content_title added to @data.parent_centre.my_tips.title.",
-    "text": "@local.relevant_content_title added to @data.parent_centre.my_tips.title.",
+    "text": "@local.relevant_content_title imeongezwa kwenye @data.parent_centre.my_tips.title.",
     "type": "template",
     "note": "The following strings should not be translated:\n@local.relevant_content_title\n@data.parent_centre.my_tips.title"
   },
@@ -1680,6 +1680,18 @@
     "note": "The string @global.my_activities should not be translated."
   },
   {
+    "SourceText": "@global.parent_app funded by",
+    "text": "@global.parent_app imefadhiliwa na",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "Powered by Parenting for Lifelong Health and partners",
+    "text": "Imewezeshwa na Malezi kwa Maisha Marefu yenye Afya na wadau",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Bringing teenagers up is hard",
     "text": "Kuwakuza vijana ni kazi ngumu",
     "type": "template",
@@ -1692,22 +1704,10 @@
     "note": ""
   },
   {
-    "SourceText": "Join the 152.4 million parents who have used our resources",
-    "text": "Ungana na wazazi milioni 152.4 ambao wametumia rasilimali zetu",
+    "SourceText": "Join the 210 million parents who have used our resources",
+    "text": "Ungana na wazazi milioni 210 ambao wametumia rasilimali zetu",
     "type": "template",
     "note": ""
-  },
-  {
-    "SourceText": "Powered by Parenting for Lifelong Health and partners",
-    "text": "Imewezeshwa ma Malezi kwa Maisha Marefu yenye Afya na wadau",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@global.parent_app funded by",
-    "text": "@global.parent_app imefadhiliwa na",
-    "type": "template",
-    "note": "The string @global.parent_app should not be translated."
   },
   {
     "SourceText": "Ideas from other families:",
@@ -3739,7 +3739,7 @@
   },
   {
     "SourceText": "Hi @fields.user_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s workshop will help you know what to do when your teen is not following the household rules.",
-    "text": "Habari @fields.user_name! Leo tunasherekea miezi miwili ya kutumia @global.parent_app.\n\nUnafanya vizuri! Warsha ya wiki hii itakusaidia kujua nini cha kufanya wakati kijana wako hafuati sheria za nyumbani.",
+    "text": "Habari @fields.user_name! Leo tunasherehekea miezi miwili ya kutumia @global.parent_app.\n\nUnafanya vizuri! Warsha ya wiki hii itakusaidia kujua nini cha kufanya wakati kijana wako hafuati sheria za nyumbani.",
     "type": "template",
     "note": "The following strings should not be translated:\n@fields.user_name\n@global.parent_app"
   },
@@ -4297,13 +4297,13 @@
   },
   {
     "SourceText": "Hi @fields.user_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
-    "text": "Habari @fields.user_name! Matatizo yanaweza kumtokea mtu yeyote – kujiandaa mapema husaidia sana.\n\nWarsha hii kitakuonyesha jinsi ya kujiandaa mapema.",
+    "text": "Habari @fields.user_name! Matatizo yanaweza kumtokea mtu yeyote – kujiandaa mapema husaidia sana.\n\nWarsha hii itakuonyesha jinsi ya kujiandaa mapema.",
     "type": "template",
     "note": "The string @fields.user_name should not be translated."
   },
   {
     "SourceText": "Hi @fields.group_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
-    "text": "Habari @fields.group_name! Matatizo yanaweza kumtokea mtu yeyote – kujiandaa mapema husaidia sana.\n\nWarsha hii kitakuonyesha jinsi ya kujiandaa mapema.",
+    "text": "Habari @fields.group_name! Matatizo yanaweza kumtokea mtu yeyote – kujiandaa mapema husaidia sana.\n\nWarsha hii itakuonyesha jinsi ya kujiandaa mapema.",
     "type": "template",
     "note": "The string @fields.group_name should not be translated."
   },
@@ -4735,7 +4735,7 @@
   },
   {
     "SourceText": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
-    "text": "Habari @fields.user_name! Hongera kwa kuanza wiki ya 4 ya @global.parent_app.\n\nKipindi cha wiki hii kinahusu jinsi ya kuongeza uwezo wako wa kumfanya kijana wako afanye kile unachomuagiza kufanya.",
+    "text": "Habari @fields.user_name! Hongera kwa kuanza wiki ya 4 ya @global.parent_app.\n\nKipindi cha wiki hii ni kuhusu jinsi ya kuongeza uwezo wako wa kumfanya kijana wako afanye kile unachomuagiza kufanya.",
     "type": "template",
     "note": "The following strings should not be translated:\n@fields.user_name\n@global.parent_app"
   },
@@ -6757,7 +6757,7 @@
   },
   {
     "SourceText": "Hi @fields.group_name! You are all nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. \n\nThis week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
-    "text": "Halo @fields.group_name! Mnakaribia kumaliza warsha zenu za @global.parent_app! Hongereni kwa kujitolea kwenu kwa dhati kwa muda mrefu.\n\nWarsha ya wiki hii inahusu kuwaweka salama vijana wetu, mtandaoni na katika jamii. Furahia!",
+    "text": "Habari @fields.group_name! unakaribia kumaliza warsha zako za @global.parent_app! Hongera kwa kujitolea kwako kwa dhati kwa muda mrefu.\n\nWarsha ya wiki hii inahusu kuwaweka salama vijana wetu, mtandaoni na katika jamii. Furahia!",
     "type": "template",
     "note": "The following strings should not be translated:\n@fields.group_name\n@global.parent_app"
   },
@@ -7603,13 +7603,13 @@
   },
   {
     "SourceText": "Hi @fields.user_name! You are making such good progress on your parenting journey! \n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you how to deal with them.",
-    "text": "Habari @fields.user_name! Unaendelea vizuri sana katika safari yako ya malezi!\n\nKuwa na kijana inamanisha kuwa na matatizo mengi yasiyotarajiwa yanayotakiwa kushughulikiwa. Warsha hii itakuonesha jinsi ya kuyashughulikia.",
+    "text": "Habari @fields.user_name! Unaendelea vizuri sana katika safari yako ya malezi!\n\nKuwa na kijana inamaanisha kuwa na matatizo mengi yasiyotarajiwa yanayotakiwa kushughulikiwa. Warsha hii itakuonesha jinsi ya kuyashughulikia.",
     "type": "template",
     "note": "The string @fields.user_name should not be translated."
   },
   {
     "SourceText": "Hi @fields.group_name! You are making such good progress on your parenting journey!\n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you all how to deal with them.",
-    "text": "Habari @fields.group_name! Unaendelea vizuri sana katika safari yako ya malezi!\n\nKuwa na kijana inamanisha kuwa na matatizo mengi yasiyotarajiwa yanayotakiwa kushughulikiwa. Warsha hii itakuonesha jinsi ya kuyashughulikia.",
+    "text": "Habari @fields.group_name! Unaendelea vizuri sana katika safari yako ya malezi!\n\nKuwa na kijana inamaanisha kuwa na matatizo mengi yasiyotarajiwa yanayotakiwa kushughulikiwa. Warsha hii itakuonesha jinsi ya kuyashughulikia.",
     "type": "template",
     "note": "The string @fields.group_name should not be translated."
   },
@@ -9180,10 +9180,10 @@
     "note": "The string @global.parent_points should not be translated."
   },
   {
-    "SourceText": "<p>Find lots of helpful resources in the @global.parent_centre.</p>\n\n<p>You can get instant access to the @data.parent_centre.essential_tools.title from all @global.weekly_workshops.</p>",
-    "text": "<p> Pata rasilimali nyingi za kukusaidia katika @global.parent_centre.</p>\n\n<p> Unaweza kupata uwezo wa papo kwa papo kupata @data.parent_centre.essential_tools.title kutoka katika @global.weekly_workshops.</p> zote",
+    "SourceText": "<p>Find lots of helpful resources in the @global.parent_centre.</p>\n\n<p>You can get instant access to the Essential Tools from all @global.weekly_workshops.</p>",
+    "text": "<p> Pata rasilimali nyingi za kukusaidia katika @global.parent_centre.</p>\n\n<p> Unaweza kupata uwezo wa papo kwa papo kupata Nyenzo Muhimu kutoka katika @global.weekly_workshops.</p>",
     "type": "tour",
-    "note": "The following strings should not be translated:\n@global.parent_centre.</p>\n@data.parent_centre.essential_tools.title\n@global.weekly_workshops.</p>"
+    "note": "The following strings should not be translated:\n@global.parent_centre.</p>\n@global.weekly_workshops.</p>"
   },
   {
     "SourceText": "<p>Check out the extra relaxation and parenting activities!</p>\n\n<p>You can also get quick parenting tips and technical support.</p>",
@@ -9193,7 +9193,7 @@
   },
   {
     "SourceText": "<p>Have a look around! Wherever you start, just the fact you are here shows you care.</p>",
-    "text": "<p>Tazama! Popote utakapoanzia, kule tu kuwa hapa kunaonesha unajali.</p>",
+    "text": "<p>Tazama! Popote utakapoanzia, hata kuwa kwako hapa kunaonesha unajali.</p>",
     "type": "tour",
     "note": ""
   },
@@ -10165,7 +10165,7 @@
   },
   {
     "SourceText": "This is a very stressful time for families.",
-    "text": "Huu ni muda wenye msongo mkubwa kwa familia.",
+    "text": "Huu ni muda wenye msongo mkubwa wa mawazo kwa familia.",
     "type": "data_list",
     "note": ""
   },
