@@ -245,6 +245,118 @@
       }
     },
     {
+      "name": "organisation_name",
+      "value": "@local.@local.combo_box;",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "organisation_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.@local.combo_box;",
+            "matchedExpression": "@local.combo_box",
+            "type": "local",
+            "fieldName": "combo_box"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.combo_box": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "By selecting this organisation you are allowing them to have access to your anonymous usage data so that they can support you on this journey.",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@fields.organisation_code == \"organisation_1\" || @fields.organisation_code == \"organisation_2\" || @fields.organisation_code == \"organisation_3\" || @fields.organisation_code == \"organisation_4\" || @fields.organisation_code == \"organisation_5\" || @fields.organisation_code == \"organisation_6\" || @fields.organisation_code == \"organisation_7\" || @fields.organisation_code == \"organisation_8\" || @fields.organisation_code == \"organisation_9\" || @fields.organisation_code == \"organisation_10\"",
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.organisation_code == \"organisation_1\" || @fields.organisation_code == \"organisation_2\" || @fields.organisation_code == \"organisation_3\" || @fields.organisation_code == \"organisation_4\" || @fields.organisation_code == \"organisation_5\" || @fields.organisation_code == \"organisation_6\" || @fields.organisation_code == \"organisation_7\" || @fields.organisation_code == \"organisation_8\" || @fields.organisation_code == \"organisation_9\" || @fields.organisation_code == \"organisation_10\"",
+            "matchedExpression": "@fields.organisation_code",
+            "type": "fields",
+            "fieldName": "organisation_code"
+          },
+          {
+            "fullExpression": "@fields.organisation_code == \"organisation_1\" || @fields.organisation_code == \"organisation_2\" || @fields.organisation_code == \"organisation_3\" || @fields.organisation_code == \"organisation_4\" || @fields.organisation_code == \"organisation_5\" || @fields.organisation_code == \"organisation_6\" || @fields.organisation_code == \"organisation_7\" || @fields.organisation_code == \"organisation_8\" || @fields.organisation_code == \"organisation_9\" || @fields.organisation_code == \"organisation_10\"",
+            "matchedExpression": "@fields.organisation_code",
+            "type": "fields",
+            "fieldName": "organisation_code"
+          },
+          {
+            "fullExpression": "@fields.organisation_code == \"organisation_1\" || @fields.organisation_code == \"organisation_2\" || @fields.organisation_code == \"organisation_3\" || @fields.organisation_code == \"organisation_4\" || @fields.organisation_code == \"organisation_5\" || @fields.organisation_code == \"organisation_6\" || @fields.organisation_code == \"organisation_7\" || @fields.organisation_code == \"organisation_8\" || @fields.organisation_code == \"organisation_9\" || @fields.organisation_code == \"organisation_10\"",
+            "matchedExpression": "@fields.organisation_code",
+            "type": "fields",
+            "fieldName": "organisation_code"
+          },
+          {
+            "fullExpression": "@fields.organisation_code == \"organisation_1\" || @fields.organisation_code == \"organisation_2\" || @fields.organisation_code == \"organisation_3\" || @fields.organisation_code == \"organisation_4\" || @fields.organisation_code == \"organisation_5\" || @fields.organisation_code == \"organisation_6\" || @fields.organisation_code == \"organisation_7\" || @fields.organisation_code == \"organisation_8\" || @fields.organisation_code == \"organisation_9\" || @fields.organisation_code == \"organisation_10\"",
+            "matchedExpression": "@fields.organisation_code",
+            "type": "fields",
+            "fieldName": "organisation_code"
+          },
+          {
+            "fullExpression": "@fields.organisation_code == \"organisation_1\" || @fields.organisation_code == \"organisation_2\" || @fields.organisation_code == \"organisation_3\" || @fields.organisation_code == \"organisation_4\" || @fields.organisation_code == \"organisation_5\" || @fields.organisation_code == \"organisation_6\" || @fields.organisation_code == \"organisation_7\" || @fields.organisation_code == \"organisation_8\" || @fields.organisation_code == \"organisation_9\" || @fields.organisation_code == \"organisation_10\"",
+            "matchedExpression": "@fields.organisation_code",
+            "type": "fields",
+            "fieldName": "organisation_code"
+          },
+          {
+            "fullExpression": "@fields.organisation_code == \"organisation_1\" || @fields.organisation_code == \"organisation_2\" || @fields.organisation_code == \"organisation_3\" || @fields.organisation_code == \"organisation_4\" || @fields.organisation_code == \"organisation_5\" || @fields.organisation_code == \"organisation_6\" || @fields.organisation_code == \"organisation_7\" || @fields.organisation_code == \"organisation_8\" || @fields.organisation_code == \"organisation_9\" || @fields.organisation_code == \"organisation_10\"",
+            "matchedExpression": "@fields.organisation_code",
+            "type": "fields",
+            "fieldName": "organisation_code"
+          },
+          {
+            "fullExpression": "@fields.organisation_code == \"organisation_1\" || @fields.organisation_code == \"organisation_2\" || @fields.organisation_code == \"organisation_3\" || @fields.organisation_code == \"organisation_4\" || @fields.organisation_code == \"organisation_5\" || @fields.organisation_code == \"organisation_6\" || @fields.organisation_code == \"organisation_7\" || @fields.organisation_code == \"organisation_8\" || @fields.organisation_code == \"organisation_9\" || @fields.organisation_code == \"organisation_10\"",
+            "matchedExpression": "@fields.organisation_code",
+            "type": "fields",
+            "fieldName": "organisation_code"
+          },
+          {
+            "fullExpression": "@fields.organisation_code == \"organisation_1\" || @fields.organisation_code == \"organisation_2\" || @fields.organisation_code == \"organisation_3\" || @fields.organisation_code == \"organisation_4\" || @fields.organisation_code == \"organisation_5\" || @fields.organisation_code == \"organisation_6\" || @fields.organisation_code == \"organisation_7\" || @fields.organisation_code == \"organisation_8\" || @fields.organisation_code == \"organisation_9\" || @fields.organisation_code == \"organisation_10\"",
+            "matchedExpression": "@fields.organisation_code",
+            "type": "fields",
+            "fieldName": "organisation_code"
+          },
+          {
+            "fullExpression": "@fields.organisation_code == \"organisation_1\" || @fields.organisation_code == \"organisation_2\" || @fields.organisation_code == \"organisation_3\" || @fields.organisation_code == \"organisation_4\" || @fields.organisation_code == \"organisation_5\" || @fields.organisation_code == \"organisation_6\" || @fields.organisation_code == \"organisation_7\" || @fields.organisation_code == \"organisation_8\" || @fields.organisation_code == \"organisation_9\" || @fields.organisation_code == \"organisation_10\"",
+            "matchedExpression": "@fields.organisation_code",
+            "type": "fields",
+            "fieldName": "organisation_code"
+          },
+          {
+            "fullExpression": "@fields.organisation_code == \"organisation_1\" || @fields.organisation_code == \"organisation_2\" || @fields.organisation_code == \"organisation_3\" || @fields.organisation_code == \"organisation_4\" || @fields.organisation_code == \"organisation_5\" || @fields.organisation_code == \"organisation_6\" || @fields.organisation_code == \"organisation_7\" || @fields.organisation_code == \"organisation_8\" || @fields.organisation_code == \"organisation_9\" || @fields.organisation_code == \"organisation_10\"",
+            "matchedExpression": "@fields.organisation_code",
+            "type": "fields",
+            "fieldName": "organisation_code"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.organisation_code": [
+          "condition",
+          "condition",
+          "condition",
+          "condition",
+          "condition",
+          "condition",
+          "condition",
+          "condition",
+          "condition",
+          "condition"
+        ]
+      }
+    },
+    {
       "type": "template",
       "name": "nav_buttons",
       "value": "nav_buttons",
