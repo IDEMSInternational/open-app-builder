@@ -1003,13 +1003,7 @@
                   "name": "reply_greater_equal",
                   "value": "You selected @local.threshold or more",
                   "_translations": {
-                    "value": {
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "exclude_from_translation": true,
                   "_nested_name": "radio_group_replies.radio_group_replies_yes.replies_yes_and_greater_equal.reply_greater_equal",

@@ -1,0 +1,15 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "partners_za_data_list",
+  "status": "released",
+  "data_list_name": "partners_plh_za",
+  "rows": [
+    {
+      "id": "za_dsd",
+      "splash_page": 2,
+      "name": "South African Department of Social Development",
+      "image_asset": "plh_images/logos/za_dsd.png"
+    }
+  ],
+  "_xlsxPath": "global/data/partners_data_lists.xlsx"
+}
