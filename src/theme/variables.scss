@@ -11,22 +11,16 @@
 @include default.theme-default;
 
 // WiP - system to generate colours from base colour
-/* TODO: rework into getColorPalette() function to populate
-/* subsidiary colours if not provided
-*/
 $primary: hsl(203, 76%, 21%);
 $primary-light: color.change($primary, $lightness: 80%);
 $primary-lighter: color.change($primary, $lightness: 95%);
 
 $secondary: hsl(31, 95%, 57%);
-$secondary-light: color.change($secondary, $lightness: 80%);
-$secondary-lighter: color.change($secondary, $lightness: 95%);
 
 $tertiary: hsl(47, 100%, 92%);
 $quaternary: hsl(204, 88%, 94%);
 $light: #ffffff;
 $dark: #00000040;
-$warning: hsl(10, 81%, 49%);
 
 /** Gradient direction **/
 $vertical: 180deg;
