@@ -1,8 +1,8 @@
 @use "./utils/generate-theme.scss";
 
 /** Authoring variables **/
-$color-primary: green;
-$color-secondary: red;
+$color-primary: hsl(203, 76%, 21%);
+$color-secondary: hsl(31, 95%, 57%);
 
 @mixin theme-default {
   .theme-default {

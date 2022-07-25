@@ -61,12 +61,12 @@
     #{map-get($colorPalette, "gradient-secondary-start")} 28.12%,
     #{map-get($colorPalette, "gradient-secondary-end")} 100%
   );
-  --ion-btn-control-bg: #{color.adjust(
-      map-get($colorPalette, "color-primary"),
-      $hue: 3.6deg,
-      $saturation: 3%,
-      $lightness: 25%
-    )};
+  --ion-btn-control-bg: color.adjust(
+    #{map-get($colorPalette, "color-primary")},
+    $hue: 3.6deg,
+    $saturation: 3%,
+    $lightness: 25%
+  );
 
   //  Borders
   --ion-border-standard: 2px solid #{map-get($colorPalette, "color-primary")};
