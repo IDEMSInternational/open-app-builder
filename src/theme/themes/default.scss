@@ -1,0 +1,11 @@
+@use "./utils/generate-theme.scss";
+
+/** Authoring variables **/
+$color-primary: green;
+$color-secondary: red;
+
+@mixin theme-default {
+  .theme-default {
+    @include generate-theme.generateTheme($color-primary, $color-secondary);
+  }
+}
