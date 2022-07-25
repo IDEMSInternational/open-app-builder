@@ -2415,12 +2415,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/clipboard@npm:^1.0.7":
-  version: 1.0.7
-  resolution: "@capacitor/clipboard@npm:1.0.7"
+"@capacitor/clipboard@npm:^1.0.8":
+  version: 1.0.8
+  resolution: "@capacitor/clipboard@npm:1.0.8"
   peerDependencies:
     "@capacitor/core": ^3.0.0
-  checksum: af76705160ea01af8598a8ef2e7f09a03d9aea6b0bfb5349bd3d693cf38880bb286c26a4abff596bdb8c68401cbe7d8f340d73f3a4ab6bbfec5b30beb2fdbd31
+  checksum: ead89335ea184c569bfcbe01a6e8a2a05d81b9a50c1fd4eb45527d990c9463777197849cfc930b2fdc26c3156dec59cfc013dffef2ddc1d34cda374e90f8eec8
   languageName: node
   linkType: hard
 
@@ -13265,7 +13265,7 @@ __metadata:
     "@capacitor/android": ^3.4.0
     "@capacitor/app": ^1.1.0
     "@capacitor/cli": ^3.4.0
-    "@capacitor/clipboard": ^1.0.7
+    "@capacitor/clipboard": ^1.0.8
     "@capacitor/core": ^3.4.0
     "@capacitor/device": ^1.1.2
     "@capacitor/local-notifications": ^1.1.0
