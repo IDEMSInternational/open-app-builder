@@ -23,10 +23,10 @@
 }
 @mixin generateTheme($p, $s) {
   $colorPalette: getColorPalette($p, $s);
-  @include ionColorPalette($colorPalette);
+  @include colorVars($colorPalette);
 }
 
-@mixin ionColorPalette($sourceColorPalette) {
+@mixin colorVars($sourceColorPalette) {
   $colorPalette: $sourceColorPalette;
 
   --ion-color-primary: #{map-get($colorPalette, "color-primary")};
@@ -50,6 +50,7 @@
   --ion-gradient-secondary-start: #{map-get($colorPalette, "gradient-secondary-start")};
   --ion-gradient-secondary-end: #{map-get($colorPalette, "gradient-secondary-end")};
 
+  // COMPONENTS
   // Buttons
   --ion-btn-primary: linear-gradient(
     #{$vertical},

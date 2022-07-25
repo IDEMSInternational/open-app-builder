@@ -115,7 +115,6 @@ $horizontal: 90deg;
 
   // Dashed-box //
   --dashed-box-item-min-height: 60px;
-  --dashed-box-icon-border: 0.7px solid #{$primary};
 
   // Checkbox //
   --checkbox-border-width: 2px;
@@ -184,8 +183,6 @@ $horizontal: 90deg;
   //* Help icon **/
   --help-icon-standard-size: 35px;
   --help-icon-small-size: 30px;
-  --help-icon-standard-color: $primary;
-  --help-icon-alternative-color: $light;
 
   //TOOLS
   --tool-one-bg: #{color.adjust($secondary, $hue: -2%)}; // #FA8E29
