@@ -23,10 +23,10 @@
 }
 @mixin generateTheme($p, $s) {
   $colorPalette: getColorPalette($p, $s);
-  @include colorVars($colorPalette);
+  @include colorVariables($colorPalette);
 }
 
-@mixin colorVars($sourceColorPalette) {
+@mixin colorVariables($sourceColorPalette) {
   $colorPalette: $sourceColorPalette;
 
   --ion-color-primary: #{map-get($colorPalette, "color-primary")};
