@@ -154,7 +154,6 @@ $horizontal: 90deg;
   --combo-box-font-size-standard: 20px;
   --combo-box-min-height: 55px;
   --combo-box-min-width: 260px;
-  --combo-box-active-no-answer-bg: var(--ion-color-primary-contrast);
   --combo-box-passive-no-answer-bg: transparent;
   --combo-box-no-answer-bg: transparent;
   --combo-box-with-answer-bg: transparent;
@@ -189,7 +188,7 @@ $horizontal: 90deg;
   --tool-two-bg: #{color.adjust($secondary, $hue: -2%, $saturation: 5%, $lightness: -7%)}; // #FF7B00
   --tool-three-bg: #{color.adjust($primary, $hue: -8%, $saturation: 8%, $lightness: 17%)}; // #108AB2
   --tool-four-bg: #{color.adjust($primary, $hue: -8%, $saturation: 12%, $lightness: 8%)}; //#096A8B
-  --tool-five-bg: var(--ion-color-primary);
+  --tool-five-bg: #{$primary};
 
   //BUTTONS
   --buttons-min-height: 71px;
@@ -282,7 +281,7 @@ $horizontal: 90deg;
       $saturation: 3%,
       $lightness: 11%
     )};
-  --ion-accordion-progress-gradient-primery-end: var(--ion-color-primary);
+  --ion-accordion-progress-gradient-primery-end: #{$primary};
   --ion-accordion-progress-primary-gradient: linear-gradient(
     #{$vertical},
     var(--ion-accordion-progress-gradient-primery-start-start) 28.12%,
@@ -294,7 +293,7 @@ $horizontal: 90deg;
       $saturation: -5%,
       $lightness: -6%
     )};
-  --ion-accordion-progress-gradient-secondary-end: var(--ion-color-secondary);
+  --ion-accordion-progress-gradient-secondary-end: #{$secondary};
   --ion-accordion-progress-secondary-gradient: linear-gradient(
     281.65deg,
     var(--ion-accordion-progress-gradient-secondary-start) 41.02%,
@@ -354,7 +353,7 @@ $horizontal: 90deg;
 
   // ROUND ICON BUTTON
   --round-icon-button-light: #{color.adjust($tertiary, $lightness: -42%)}; //#FFCA41
-  --round-icon-button: var(--ion-color-secondary); //#F49D04
+  --round-icon-button: #{$secondary}; //#F49D04
   --round-icon-button-dark: #{color.adjust($secondary, $lightness: -7%)}; //#F87023
 
   // POINTS ITEM
@@ -470,7 +469,7 @@ $horizontal: 90deg;
   --ion-color-help-tooltip: #{color.adjust($primary, $hue: -8%, $saturation: 12%, $lightness: 9%)};
   --ion-color-slider: #{color.adjust($primary, $hue: -8%, $saturation: 12%, $lightness: 9%)};
   --ion-btn-dark-box-shadow: 0px 4px 4px #{$dark};
-  --ion-dg-bg-default: var(--ion-banner-primary);
+  --ion-dg-bg-default: #{$secondary};
 
   // Used for .background-primary-lighter in _layout.scss
   --ion-color-primary-lighter: #{$primary-lighter};
