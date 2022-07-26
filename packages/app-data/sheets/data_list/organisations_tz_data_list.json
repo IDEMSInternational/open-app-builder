@@ -1,0 +1,13 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "organisations_tz_data_list",
+  "status": "released",
+  "data_list_name": "organisations_plh_tz",
+  "rows": [
+    {
+      "id": "organisation_1",
+      "name": "ICS"
+    }
+  ],
+  "_xlsxPath": "global/data/partners_data_lists.xlsx"
+}

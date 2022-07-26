@@ -65,6 +65,30 @@
       "is_override_target": true,
       "rows": [
         {
+          "name": "organisation_1",
+          "value": "@local.organisation_1",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "organisation_registration.organisation_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.organisation_1",
+                "matchedExpression": "@local.organisation_1",
+                "type": "local",
+                "fieldName": "organisation_1"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.organisation_1": [
+              "value"
+            ]
+          }
+        },
+        {
           "name": "answer_list",
           "value": [
             "name:myself | text:@local.myself",
