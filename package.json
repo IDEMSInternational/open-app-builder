@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.16.3",
+  "version": "0.16.4",
   "author": "IDEMS International",
   "homepage": "https://idems.international/",
   "description": "",
@@ -42,7 +42,7 @@
     "@capacitor/android": "^3.4.0",
     "@capacitor/app": "^1.1.0",
     "@capacitor/cli": "^3.4.0",
-    "@capacitor/clipboard": "^1.0.7",
+    "@capacitor/clipboard": "^1.0.8",
     "@capacitor/core": "^3.4.0",
     "@capacitor/device": "^1.1.2",
     "@capacitor/local-notifications": "^1.1.0",
