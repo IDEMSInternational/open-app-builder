@@ -153,13 +153,10 @@
             {
               "type": "text",
               "name": "slogan_3",
-              "value": "Join the 152.4 million parents who have used our resources",
+              "value": "Join the 210 million parents who have used our resources",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true
+                  "tz_sw": true
                 }
               },
               "parameter_list": {
@@ -174,97 +171,15 @@
         {
           "type": "animated_section",
           "parameter_list": {
-            "duration": "5"
+            "duration": "4"
           },
           "rows": [
             {
-              "type": "text",
-              "value": "Powered by Parenting for Lifelong Health and partners",
-              "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
-              },
-              "parameter_list": {
-                "style": "large center"
-              },
-              "name": "text",
-              "_nested_name": "animated_slides.animated_section.text"
-            },
-            {
-              "type": "display_group",
-              "parameter_list": {
-                "style": "two_columns_images"
-              },
-              "rows": [
-                {
-                  "type": "image",
-                  "name": "partner_1",
-                  "value": "plh_images/logos/partners/plh.png",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.partner_1"
-                },
-                {
-                  "type": "image",
-                  "name": "partner_2",
-                  "value": "plh_images/logos/partners/unicef.png",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.partner_2"
-                },
-                {
-                  "type": "image",
-                  "name": "partner_3",
-                  "value": "plh_images/logos/partners/who.png",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.partner_3"
-                },
-                {
-                  "type": "image",
-                  "name": "partner_4",
-                  "value": "plh_images/logos/partners/cwb.png",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.partner_4"
-                }
-              ],
-              "name": "display_group",
-              "_nested_name": "animated_slides.animated_section.display_group"
-            },
-            {
-              "type": "display_group",
-              "parameter_list": {
-                "style": "two_columns_images_overflow"
-              },
-              "rows": [
-                {
-                  "type": "image",
-                  "name": "partner_5",
-                  "value": "plh_images/logos/partners/idems.png",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.partner_5"
-                }
-              ],
-              "name": "display_group",
-              "_nested_name": "animated_slides.animated_section.display_group"
+              "type": "template",
+              "name": "splash_partners_1",
+              "value": "splash_partners_1",
+              "rows": [],
+              "_nested_name": "animated_slides.animated_section.splash_partners_1"
             }
           ],
           "name": "animated_section",
@@ -277,146 +192,28 @@
           },
           "rows": [
             {
-              "type": "text",
-              "value": "@global.parent_app funded by",
-              "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true
-                }
-              },
-              "parameter_list": {
-                "style": "large center"
-              },
-              "name": "text",
-              "_nested_name": "animated_slides.animated_section.text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@global.parent_app funded by",
-                    "matchedExpression": "@global.parent_app",
-                    "type": "global",
-                    "fieldName": "parent_app"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.parent_app": [
-                  "value"
-                ]
-              }
-            },
+              "type": "template",
+              "name": "splash_partners_2",
+              "value": "splash_partners_2",
+              "rows": [],
+              "_nested_name": "animated_slides.animated_section.splash_partners_2"
+            }
+          ],
+          "name": "animated_section",
+          "_nested_name": "animated_slides.animated_section"
+        },
+        {
+          "type": "animated_section",
+          "parameter_list": {
+            "duration": "4"
+          },
+          "rows": [
             {
-              "type": "display_group",
-              "parameter_list": {
-                "style": "two_columns_images grid-spacing-sm"
-              },
-              "rows": [
-                {
-                  "type": "image",
-                  "name": "funder_1",
-                  "value": "plh_images/logos/funders/ukri.png",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.funder_1"
-                },
-                {
-                  "type": "image",
-                  "name": "funder_2",
-                  "value": "plh_images/logos/funders/gcrf.png",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.funder_2"
-                },
-                {
-                  "type": "image",
-                  "name": "funder_3",
-                  "value": "plh_images/logos/funders/newton_fund.png",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.funder_3"
-                },
-                {
-                  "type": "image",
-                  "name": "funder_4",
-                  "value": "plh_images/logos/funders/lego_foundation.png",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.funder_4"
-                },
-                {
-                  "type": "image",
-                  "name": "funder_5",
-                  "value": "plh_images/logos/funders/university_of_oxford.png",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.funder_5"
-                },
-                {
-                  "type": "image",
-                  "name": "funder_6",
-                  "value": "plh_images/logos/funders/oak_foundation.png",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.funder_6"
-                },
-                {
-                  "type": "image",
-                  "name": "funder_7",
-                  "value": "plh_images/logos/funders/unicef.png",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.funder_7"
-                },
-                {
-                  "type": "image",
-                  "name": "funder_8",
-                  "value": "plh_images/logos/funders/end_violence_against_children.png",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.funder_8"
-                },
-                {
-                  "type": "image",
-                  "name": "funder_9",
-                  "value": "plh_images/logos/funders/erc.png",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.funder_9"
-                },
-                {
-                  "type": "image",
-                  "name": "funder_10",
-                  "value": "plh_images/logos/funders/generali_human_safety_net.png",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.funder_10"
-                }
-              ],
-              "name": "display_group",
-              "_nested_name": "animated_slides.animated_section.display_group"
+              "type": "template",
+              "name": "splash_funders",
+              "value": "splash_funders",
+              "rows": [],
+              "_nested_name": "animated_slides.animated_section.splash_funders"
             }
           ],
           "name": "animated_section",
