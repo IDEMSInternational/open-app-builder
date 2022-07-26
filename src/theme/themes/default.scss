@@ -1,4 +1,4 @@
-@use "./utils/generate-theme.scss";
+@use "./utils";
 
 /** Authoring variables **/
 $color-primary: hsl(203, 76%, 21%);
@@ -6,6 +6,6 @@ $color-secondary: hsl(31, 95%, 57%);
 
 @mixin theme-default {
   .theme-default {
-    @include generate-theme.generateTheme($color-primary, $color-secondary);
+    @include utils.generateTheme($color-primary, $color-secondary);
   }
 }
