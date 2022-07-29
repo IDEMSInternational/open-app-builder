@@ -1,0 +1,79 @@
+@use "sass:color";
+@use "./contrast-colour.scss";
+
+@function getColorPalette($primary, $secondary) {
+  $result: (
+    "color-primary": $primary,
+    "color-primary-light": color.change($primary, $lightness: 80%),
+    "color-primary-lighter": color.change($primary, $lightness: 95%),
+    "color-primary-contrast": contrast-colour.choose-contrast-color($primary),
+    "color-secondary": $secondary,
+    "color-secondary-light": color.change($secondary, $lightness: 80%),
+    "color-secondary-lighter": color.change($secondary, $lightness: 95%),
+    "color-secondary-contrast": contrast-colour.choose-contrast-color($secondary),
+    //  GRADIENTS
+    // primary-gradient
+    "gradient-primary-start": color.adjust($primary, $lightness: 33%),
+    "gradient-primary-end": color.adjust($primary, $saturation: 2%, $lightness: 13%),
+    // secondary-gradient
+    "gradient-secondary-start": color.adjust($secondary, $saturation: 4%),
+    "gradient-secondary-end": color.adjust($secondary, $saturation: 5%, $lightness: -19%),
+  );
+  @return $result;
+}
+@mixin generateTheme($p, $s) {
+  $colorPalette: getColorPalette($p, $s);
+  @include colorVariables($colorPalette);
+}
+
+@mixin colorVariables($sourceColorPalette) {
+  $colorPalette: $sourceColorPalette;
+
+  --ion-color-primary: #{map-get($colorPalette, "color-primary")};
+  --ion-color-primary-light: #{map-get($colorPalette, "color-primary-light")};
+  --ion-color-primary-lighter: #{map-get($colorPalette, "color-primary-lighter")};
+  --ion-color-primary-contrast: #{map-get($colorPalette, "color-primary-contrast")};
+
+  --ion-color-secondary: #{map-get($colorPalette, "color-secondary")};
+  --ion-color-secondary-light: #{map-get($colorPalette, "color-secondary-light")};
+  --ion-color-secondary-lighter: #{map-get($colorPalette, "color-secondary-lighter")};
+  --ion-color-secondary-contrast: #{map-get($colorPalette, "color-secondary-contrast")};
+
+  //  GRADIENTS
+  //Gradient direction
+  $vertical: 180deg;
+  $horizontal: 90deg;
+  // primary-gradient
+  --ion-gradient-primary-start: #{map-get($colorPalette, "gradient-primary-start")};
+  --ion-gradient-primary-end: #{map-get($colorPalette, "gradient-primary-end")};
+  // secondary-gradient
+  --ion-gradient-secondary-start: #{map-get($colorPalette, "gradient-secondary-start")};
+  --ion-gradient-secondary-end: #{map-get($colorPalette, "gradient-secondary-end")};
+
+  // COMPONENTS
+  // Buttons
+  --ion-btn-primary: linear-gradient(
+    #{$vertical},
+    #{map-get($colorPalette, "gradient-primary-start")} 0.43%,
+    #{map-get($colorPalette, "gradient-primary-end")} 74.07%
+  );
+  --ion-btn-secondary: linear-gradient(
+    #{$vertical},
+    #{map-get($colorPalette, "gradient-secondary-start")} 28.12%,
+    #{map-get($colorPalette, "gradient-secondary-end")} 100%
+  );
+  --ion-btn-control-bg: #{color.adjust(
+      map-get($colorPalette, "color-primary"),
+      $hue: 3.6deg,
+      $saturation: 3%,
+      $lightness: 25%
+    )};
+
+  //  Borders
+  --ion-border-standard: 2px solid #{map-get($colorPalette, "color-primary")};
+  --ion-border-thin-standard: 1px solid #{map-get($colorPalette, "color-primary")};
+  --ion-border-color-secondary: 2px solid #{map-get($colorPalette, "color-secondary")};
+  --ion-border-light: 1px solid #{map-get($colorPalette, "light")};
+  --ion-border-light-thicker: 2px solid #{map-get($colorPalette, "light")};
+  --border-dashed: 2px dashed #{map-get($colorPalette, "color-primary")};
+}
