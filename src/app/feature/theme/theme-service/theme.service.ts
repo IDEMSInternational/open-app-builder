@@ -28,6 +28,17 @@ export class ThemeService {
 
     this.currentTheme = this.getCurrentTheme();
     this.applyCSSVariablesForTheme(this.currentTheme);
+    this.applyTheme(this.currentTheme.name);
+  }
+
+  public applyTheme(themeName: string) {
+    document.body.classList.add("theme-" + themeName);
+    // remove other "theme-" classes from document.body, only after adding
+    // new theme- class to avoid no theme- class being applied momentarily
+    const classes = document.body.className.split(" ").filter((c) => {
+      return !c.startsWith("theme-") || c === "theme-" + themeName;
+    });
+    document.body.className = classes.join(" ").trim();
   }
 
   private getThemeMap(): { [themeName: string]: AppTheme } {
@@ -65,6 +76,7 @@ export class ThemeService {
     } else {
       this.currentTheme = BASE_THEME;
     }
+    this.applyTheme(this.currentTheme.name);
     this.localStorageService.setString("currentThemeName", this.currentTheme.name);
     this.ipcService.send(ThemeService.THEME_UPDATE_CHANNEL, themeName);
   }
