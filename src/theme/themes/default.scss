@@ -1,0 +1,11 @@
+@use "./utils";
+
+/** Authoring variables **/
+$color-primary: hsl(203, 76%, 21%);
+$color-secondary: hsl(31, 95%, 57%);
+
+@mixin theme-default {
+  .theme-default {
+    @include utils.generateTheme($color-primary, $color-secondary);
+  }
+}

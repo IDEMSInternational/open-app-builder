@@ -56,7 +56,7 @@ export class AppComponent {
     private dbService: DbService,
     private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
-    private themeService: ThemeService,
+    public themeService: ThemeService,
     private tourService: TourService,
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
