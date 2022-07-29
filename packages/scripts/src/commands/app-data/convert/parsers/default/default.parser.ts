@@ -26,11 +26,18 @@ export class DefaultParser implements AbstractParser {
   /** All rows are handled in a queue, processing linearly */
   private queue: IRowData[];
   private summary = { missingAssets: [] };
+  private rowDefaultValues: any = {};
 
   /** Default function to call a start the process of parsing rows */
   public run(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeWithData {
     this.queue = flow.rows;
     const processedRows = [];
+    // If first row specifies default values extract them and remove row from queue
+    this.rowDefaultValues = this.extractRowDefaultValues(flow);
+    if (this.rowDefaultValues) {
+      this.queue.shift();
+    }
+    // Process queue
     while (this.queue.length > 0) {
       const row = this.queue[0];
       try {
@@ -64,8 +71,31 @@ export class DefaultParser implements AbstractParser {
     return flows;
   }
 
+  /** If any flows have a first row that starts `@default` return values */
+  private extractRowDefaultValues(flow: FlowTypes.FlowTypeWithData) {
+    const firstRow = flow.rows?.[0] || {};
+    if (Object.values(firstRow)[0] === "@default") {
+      const defaultKey = Object.keys(firstRow)[0];
+      delete firstRow[defaultKey];
+      return firstRow;
+    }
+  }
+
   /** Handle a single row */
   private processRow(row: IRowData, flow: FlowTypes.FlowTypeWithData) {
+    // Apply any defaults where row value not defined or defaults included/omitted
+    if (this.rowDefaultValues) {
+      Object.entries(this.rowDefaultValues).forEach(([key, value]) => {
+        if (row[key] === undefined) {
+          row[key] = value;
+        } else if (row[key].includes("@include_default")) {
+          row[key] = row[key].replace("@include_default", value);
+        } else if (row[key].includes("@omit_default")) {
+          delete row[key];
+        }
+      });
+    }
+
     // Handle specific data manipulations for fields
     Object.keys(row).forEach((field) => {
       // delete metadata (e.g. __empty)
