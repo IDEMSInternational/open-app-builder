@@ -9,6 +9,7 @@
       "value": "ParentApp",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -23,6 +24,7 @@
       "value": "Weekly Workshops",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -37,6 +39,7 @@
       "value": "Weekly Workshop",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -51,6 +54,7 @@
       "value": "Weekly Workshop Options",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -65,6 +69,7 @@
       "value": "ParentPoints",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -79,6 +84,7 @@
       "value": "ParentPoint",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -93,6 +99,7 @@
       "value": "Parent Library",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -107,6 +114,7 @@
       "value": "In-Week Messages",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

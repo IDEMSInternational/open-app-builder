@@ -1,0 +1,501 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_workshops_accordion",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "label_group",
+      "value": "@global.together",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "label_group",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.together",
+            "matchedExpression": "@global.together",
+            "type": "global",
+            "fieldName": "together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.together": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "image_group",
+      "value": "@global.together_image",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_group",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.together_image",
+            "matchedExpression": "@global.together_image",
+            "type": "global",
+            "fieldName": "together_image"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.together_image": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "label_individual",
+      "value": "@global.individual",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "label_individual",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.individual",
+            "matchedExpression": "@global.individual",
+            "type": "global",
+            "fieldName": "individual"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.individual": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "image_individual",
+      "value": "@global.individual_image",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_individual",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.individual_image",
+            "matchedExpression": "@global.individual_image",
+            "type": "global",
+            "fieldName": "individual_image"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.individual_image": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "title_1",
+      "value": "First title",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "title_1"
+    },
+    {
+      "name": "text_1",
+      "value": "Text 1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "text_1"
+    },
+    {
+      "name": "title_2",
+      "value": "Second title",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "title_2"
+    },
+    {
+      "name": "text_2",
+      "value": "Text 2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "text_2"
+    },
+    {
+      "name": "title_3",
+      "value": "Third title",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "title_3"
+    },
+    {
+      "name": "text_3",
+      "value": "Text 3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "text_3"
+    },
+    {
+      "name": "title_4",
+      "value": "Fourth title",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "title_4"
+    },
+    {
+      "type": "set_field",
+      "name": "debug_completion_level",
+      "value": 0,
+      "_nested_name": "debug_completion_level"
+    },
+    {
+      "type": "set_field",
+      "name": "debug_section_3_disabled",
+      "value": true,
+      "_nested_name": "debug_section_3_disabled"
+    },
+    {
+      "type": "workshops_accordion",
+      "name": "workshops_accordion",
+      "rows": [
+        {
+          "type": "accordion_section",
+          "name": "first",
+          "parameter_list": {
+            "state": "open",
+            "title": "@local.title_1"
+          },
+          "rows": [
+            {
+              "type": "template",
+              "name": "template_1",
+              "value": "example_text",
+              "rows": [
+                {
+                  "name": "text",
+                  "value": "@local.text_1",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "workshops_accordion.first.template_1.text",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@local.text_1",
+                        "matchedExpression": "@local.text_1",
+                        "type": "local",
+                        "fieldName": "text_1"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.text_1": [
+                      "value"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "workshops_accordion.first.template_1"
+            }
+          ],
+          "_nested_name": "workshops_accordion.first",
+          "_dynamicFields": {
+            "parameter_list": {
+              "title": [
+                {
+                  "fullExpression": "@local.title_1",
+                  "matchedExpression": "@local.title_1",
+                  "type": "local",
+                  "fieldName": "title_1"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.title_1": [
+              "parameter_list.title"
+            ]
+          }
+        },
+        {
+          "name": "completion_level_2",
+          "value": "+0",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "workshops_accordion.completion_level_2"
+        },
+        {
+          "type": "accordion_section",
+          "name": "second",
+          "value": "@fields.debug_completion_level",
+          "parameter_list": {
+            "title": "@local.title_2"
+          },
+          "rows": [
+            {
+              "type": "template",
+              "name": "template_2",
+              "value": "example_text_button",
+              "rows": [
+                {
+                  "name": "text",
+                  "value": "@local.text_2",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "workshops_accordion.second.template_2.text",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@local.text_2",
+                        "matchedExpression": "@local.text_2",
+                        "type": "local",
+                        "fieldName": "text_2"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.text_2": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "name": "button",
+                  "value": "Button 2",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "workshops_accordion.second.template_2.button"
+                }
+              ],
+              "_nested_name": "workshops_accordion.second.template_2"
+            }
+          ],
+          "_nested_name": "workshops_accordion.second",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@fields.debug_completion_level",
+                "matchedExpression": "@fields.debug_completion_level",
+                "type": "fields",
+                "fieldName": "debug_completion_level"
+              }
+            ],
+            "parameter_list": {
+              "title": [
+                {
+                  "fullExpression": "@local.title_2",
+                  "matchedExpression": "@local.title_2",
+                  "type": "local",
+                  "fieldName": "title_2"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@fields.debug_completion_level": [
+              "value"
+            ],
+            "@local.title_2": [
+              "parameter_list.title"
+            ]
+          }
+        },
+        {
+          "type": "accordion_section",
+          "name": "third",
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "pop_up",
+              "args": [
+                "example_text"
+              ],
+              "_raw": "click | pop_up: example_text",
+              "_cleaned": "click | pop_up: example_text"
+            }
+          ],
+          "parameter_list": {
+            "title": "@local.title_3",
+            "launch_when_locked": "true"
+          },
+          "disabled": "@fields.debug_section_3_disabled",
+          "rows": [
+            {
+              "type": "template",
+              "name": "template_3",
+              "value": "example_text",
+              "rows": [
+                {
+                  "name": "text",
+                  "value": "@local.text_3",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "workshops_accordion.third.template_3.text",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@local.text_3",
+                        "matchedExpression": "@local.text_3",
+                        "type": "local",
+                        "fieldName": "text_3"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.text_3": [
+                      "value"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "workshops_accordion.third.template_3"
+            }
+          ],
+          "_nested_name": "workshops_accordion.third",
+          "_dynamicFields": {
+            "parameter_list": {
+              "title": [
+                {
+                  "fullExpression": "@local.title_3",
+                  "matchedExpression": "@local.title_3",
+                  "type": "local",
+                  "fieldName": "title_3"
+                }
+              ]
+            },
+            "disabled": [
+              {
+                "fullExpression": "@fields.debug_section_3_disabled",
+                "matchedExpression": "@fields.debug_section_3_disabled",
+                "type": "fields",
+                "fieldName": "debug_section_3_disabled"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.title_3": [
+              "parameter_list.title"
+            ],
+            "@fields.debug_section_3_disabled": [
+              "disabled"
+            ]
+          }
+        },
+        {
+          "type": "accordion_section",
+          "name": "fourth",
+          "parameter_list": {
+            "title": "@local.title_4"
+          },
+          "rows": [
+            {
+              "type": "text",
+              "name": "text_4",
+              "value": "Text 4",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "workshops_accordion.fourth.text_4"
+            },
+            {
+              "type": "image",
+              "name": "image",
+              "value": "plh_images/workshops/w_rules/read_1/slide_4.svg",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "workshops_accordion.fourth.image"
+            }
+          ],
+          "_nested_name": "workshops_accordion.fourth",
+          "_dynamicFields": {
+            "parameter_list": {
+              "title": [
+                {
+                  "fullExpression": "@local.title_4",
+                  "matchedExpression": "@local.title_4",
+                  "type": "local",
+                  "fieldName": "title_4"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.title_4": [
+              "parameter_list.title"
+            ]
+          }
+        },
+        {
+          "type": "accordion_section",
+          "name": "fifth",
+          "parameter_list": {
+            "title": "Title 5"
+          },
+          "rows": [
+            {
+              "type": "text",
+              "name": "text_5",
+              "value": "Text 5",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "workshops_accordion.fifth.text_5"
+            },
+            {
+              "type": "button",
+              "name": "button_5",
+              "value": "Button 5",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "workshops_accordion.fifth.button_5"
+            },
+            {
+              "type": "button",
+              "name": "button_6",
+              "value": "Button 6",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "workshops_accordion.fifth.button_6"
+            }
+          ],
+          "_nested_name": "workshops_accordion.fifth"
+        }
+      ],
+      "_nested_name": "workshops_accordion"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_accordion.xlsx"
+}

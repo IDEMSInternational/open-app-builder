@@ -62,6 +62,7 @@
           "value": "It seems you haven’t finished the @local.workshop_data.in_text_title yet. Making a plan together with your teen can prevent many problems – give it a try before moving on!\n\nWell done for using @global.parent_app to support your family.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -101,6 +102,7 @@
           "value": "Congratulations, you completed @local.workshop_data.in_text_title. Tomorrow, a new workshop is ready for you to help you and your family deal with any situation – together you can do so much!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

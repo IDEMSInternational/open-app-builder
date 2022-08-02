@@ -1,0 +1,113 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_lang_template_pop_2",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "template",
+      "name": "example_lang_template_pop_1",
+      "value": "example_lang_template_pop_1",
+      "rows": [
+        {
+          "name": "title_1",
+          "value": "New title: @data.example_lang.example_lang_2.title",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "example_lang_template_pop_1.title_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "New title: @data.example_lang.example_lang_2.title",
+                "matchedExpression": "@data.example_lang.example_lang_2.title",
+                "type": "data",
+                "fieldName": "example_lang"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.example_lang.example_lang_2.title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "text_1",
+          "value": "New text: @data.example_lang.example_lang_2.text",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "example_lang_template_pop_1.text_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "New text: @data.example_lang.example_lang_2.text",
+                "matchedExpression": "@data.example_lang.example_lang_2.text",
+                "type": "data",
+                "fieldName": "example_lang"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.example_lang.example_lang_2.text": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "image_1",
+          "value": "@data.example_lang.example_lang_2.image_asset",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "example_lang_template_pop_1.image_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.example_lang.example_lang_2.image_asset",
+                "matchedExpression": "@data.example_lang.example_lang_2.image_asset",
+                "type": "data",
+                "fieldName": "example_lang"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.example_lang.example_lang_2.image_asset": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "lottie_1",
+          "value": "@data.example_lang.example_lang_2.lottie_asset",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "example_lang_template_pop_1.lottie_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.example_lang.example_lang_2.lottie_asset",
+                "matchedExpression": "@data.example_lang.example_lang_2.lottie_asset",
+                "type": "data",
+                "fieldName": "example_lang"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.example_lang.example_lang_2.lottie_asset": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "example_lang_template_pop_1"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_languages.xlsx"
+}

@@ -38,6 +38,7 @@
               "value": "MEET",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -53,6 +54,7 @@
               "value": "Keep meeting regularly to give each other parenting support.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -85,6 +87,7 @@
               "value": "CALL",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -100,6 +103,7 @@
               "value": "Be ‘parenting buddies’ to call when you are upset or don’t know what to do.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -132,6 +136,7 @@
               "value": "TEXT",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -147,6 +152,7 @@
               "value": "Text each other every week to share what you’ve done well.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -180,6 +186,7 @@
               "value": "SHARE",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -195,6 +202,7 @@
               "value": "Share @global.parent_app and help other families start their journey.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

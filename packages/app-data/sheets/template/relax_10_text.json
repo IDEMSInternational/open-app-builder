@@ -14,6 +14,7 @@
           "value": "Close your eyes.  \n\nNotice your connection with the ground beneath you.  \nWhat parts of your body touch the ground? What parts of your body don’t?   \nNotice where it feels warm and where it feels cool.  \nFeel the ground underneath you supporting you. Let your body sink into the support of the ground.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -29,6 +30,7 @@
           "value": "Try this next time you feel alone or are doing a mundane activity like washing up. It can really help!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

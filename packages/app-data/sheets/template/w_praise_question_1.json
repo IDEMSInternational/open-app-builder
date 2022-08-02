@@ -57,6 +57,7 @@
                       "value": "Think about the last time someone thanked you, or said you did something great.",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -72,6 +73,7 @@
                       "value": "How did it make you feel?",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -120,6 +122,7 @@
                       "value": "Parents usually don’t get thanked or praised enough.",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -135,6 +138,7 @@
                       "value": "How does it make you feel when nobody says \"thank you\"?",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -160,6 +164,7 @@
                       "value": "Your teen can feel this way too. That's what makes this week's parenting tool simple but important: Praise them for what they do right.",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,

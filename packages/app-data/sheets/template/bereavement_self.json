@@ -54,6 +54,7 @@
           "value": "Losing a friend or loved one is hard for everyone. Being kind to yourself and doing things to help yourself cope in this difficult time helps your teen too!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -69,6 +70,7 @@
           "value": "Take care of yourself",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -83,6 +85,7 @@
           "value": "Find a support group",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -98,6 +101,7 @@
           "value": "- Grief can affect us for weeks or months or years. You do not have to feel better quickly.  \n- Get enough sleep and food - it is hard to care for teens when you are tired and hungry. \n- Make a list of things that make you feel better, and do them.  \n- Try to do one simple thing to relax each day with your teen,  and also for yourself.  \n- It’s okay to not feel good and it is okay to cry. Never blame yourself, this is not your fault.  \n- There is always hope even after loss. Try to enjoy simple things, and take a minute to do something fun or relaxing with your teen. \n- Find one or two adults who can support you, listen, and talk.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -147,6 +151,7 @@
           "value": "- Talking with someone who can support you and listen to you can help.  \n- It can help to join a group of people who have also lost someone. \n- Nobody is perfect. It is okay to talk about good and bad memories.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

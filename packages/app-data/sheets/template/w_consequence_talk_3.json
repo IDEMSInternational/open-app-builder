@@ -38,6 +38,7 @@
               "value": "Let's talk about this story",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -57,6 +58,7 @@
                   "value": "Why did using a consequence work well this time?",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,

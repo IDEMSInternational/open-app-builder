@@ -18,6 +18,7 @@
               "value": "Sometimes it feels like your teens are still grumpy even when you’ve done the best you can. Remember that you are doing an amazing job, and that there will be good times with them too!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

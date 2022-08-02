@@ -10,6 +10,7 @@
       "value": "Which of the tips helped you?",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -27,6 +28,7 @@
       "value": "DAY – Do it every day",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -43,6 +45,7 @@
       "value": "PLAY – Let your teen choose the activity",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -58,6 +61,7 @@
       "value": "STAY – Give your teen all of your attention",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -264,6 +268,7 @@
       "value": "Why was this tip helpful for you?",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -306,6 +311,7 @@
       "value": "\"@local.choice_1\" was helpful because...",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -336,6 +342,7 @@
       "value": "\"@local.choice_2\" was helpful because...",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -366,6 +373,7 @@
       "value": "\"@local.choice_3\" was helpful because...",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -464,6 +472,7 @@
           "value": "Ah yes, even 10 minutes together makes a big difference – that makes it easy to schedule it in, next to your work and chores!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -582,6 +591,7 @@
           "value": "So true! And if our teens choose, they are encouraged to also take responsibility in other areas of their lives.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -698,6 +708,7 @@
           "value": "Yes! If we give our teens our full attention, they will more likely do the same for us the next time we ask them for something!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

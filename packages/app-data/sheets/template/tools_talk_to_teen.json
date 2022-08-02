@@ -17,6 +17,7 @@
               "value": "MAKE TIME",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -32,6 +33,7 @@
               "value": "Set aside time to have a conversation without distractions.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -54,6 +56,7 @@
               "value": "LISTEN",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -69,6 +72,7 @@
               "value": "Ask your teen questions and let them share their views without interrupting.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -91,6 +95,7 @@
               "value": "WORK TOGETHER",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -106,6 +111,7 @@
               "value": "Discuss a specific problem, come up with solutions together, and both do what you agree.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -129,6 +135,7 @@
               "value": "PRAISE",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -144,6 +151,7 @@
               "value": "Thank your teen for sharing and highlight how it is helping you both.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

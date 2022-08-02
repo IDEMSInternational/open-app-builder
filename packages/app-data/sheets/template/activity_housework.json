@@ -48,6 +48,7 @@
           "value": "Take turns being the “leader”. Say the intro sentences to activate everyone. Then the “leader” gives an instruction and everyone does the activity as fast as possible:\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Touch something red.” \n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Jump up and down ten times.”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Put the shoes in the shoe rack.”",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

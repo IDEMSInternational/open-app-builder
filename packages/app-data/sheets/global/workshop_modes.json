@@ -9,6 +9,7 @@
       "value": "Home Practice",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -23,6 +24,7 @@
       "value": "Talk about @global.home_practice",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -37,6 +39,7 @@
       "value": "Home Practice Review",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -51,6 +54,7 @@
       "value": "Let's talk about how your home practice went this week.",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

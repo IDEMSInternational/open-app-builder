@@ -14,6 +14,7 @@
       "title": "Reflect on the positive",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -37,6 +38,7 @@
       "title": "Check-in chat",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -60,6 +62,7 @@
       "title": "Dream Travel",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -83,6 +86,7 @@
       "title": "Famous Party",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -106,6 +110,7 @@
       "title": "Two truths, one lie",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -129,6 +134,7 @@
       "title": "Time Machine",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -152,6 +158,7 @@
       "title": "Superpowers",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -174,6 +181,7 @@
       "title": "Just a friendly chat",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -196,6 +204,7 @@
       "title": "The Interrupter",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -218,6 +227,7 @@
       "title": "Three options",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -240,6 +250,7 @@
       "title": "Yes, No or Maybe",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -262,6 +273,7 @@
       "title": "Memory game - \"On Saturday...\"",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -284,6 +296,7 @@
       "title": "Make up a story",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -307,6 +320,7 @@
       "title": "Co-chef",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -330,6 +344,7 @@
       "title": "Dance moves",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -353,6 +368,7 @@
       "title": "Mirror",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -375,6 +391,7 @@
       "title": "What's new?",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -397,6 +414,7 @@
       "title": "Get active!",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -419,6 +437,7 @@
       "title": "Name that tune",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -441,6 +460,7 @@
       "title": "Pass the snap",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -448,6 +468,7 @@
           "za_zu": true
         },
         "intro_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -474,6 +495,7 @@
       "title": "Family workout",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -497,6 +519,7 @@
       "title": "Make housework fun",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -504,6 +527,7 @@
           "za_zu": true
         },
         "intro_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -531,6 +555,7 @@
       "title": "What are you doing?",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -538,6 +563,7 @@
           "za_zu": true
         },
         "intro_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -564,6 +590,7 @@
       "title": "Crazy chicken",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

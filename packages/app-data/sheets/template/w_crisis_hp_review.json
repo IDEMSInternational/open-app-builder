@@ -94,6 +94,7 @@
                       "value": "Your goal was to discuss a possible crisis situation with your teen and make a plan for it.",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,

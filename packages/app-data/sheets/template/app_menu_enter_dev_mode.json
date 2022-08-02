@@ -276,6 +276,7 @@
           "value": "You have successfully entered developer mode.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -307,6 +308,7 @@
           "value": "You have entered an incorrect code.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

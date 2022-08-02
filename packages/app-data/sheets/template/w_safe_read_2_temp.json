@@ -38,6 +38,7 @@
               "value": "Let's look at another example of a dangerous situation together.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -72,6 +73,7 @@
                       "value": "@global.w_safe_teen_girl_1: \"My friend has been talking with a guy our age online... She’s going to send him photos of herself. Is that better because he’s our age?\"",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -124,6 +126,7 @@
                           "value": "@global.w_safe_female_caregiver: \"You are a good friend for being worried about her. Sending sexy photos is a real risk too.\"",
                           "_translations": {
                             "value": {
+                              "tz_sw": true,
                               "za_af": true,
                               "za_st": true,
                               "za_tn": true,
@@ -171,6 +174,7 @@
                           "value": "@global.w_safe_female_caregiver: \"Sometimes people aren’t who they say they are online – he could say he is your age but be a 50 year old man. Or when they break up, he could send those photos to everyone and your friend would feel awful.\"",
                           "_translations": {
                             "value": {
+                              "tz_sw": true,
                               "za_af": true,
                               "za_st": true,
                               "za_tn": true,

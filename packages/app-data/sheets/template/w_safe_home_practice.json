@@ -70,6 +70,7 @@
                       "value": "Make two maps with your teen of safe and unsafe places:\n* Map of your community\n* Map of apps and websites your teen uses \n\nMake sure you're both happy with the safety plan.  \n\nWhat really matters is that you talk with your teen as you do this – often teens know much more than we do about where it is safe and unsafe!",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -101,6 +102,7 @@
                       "value": "If you have not done it together yet, make two maps with your teen of safe and unsafe places:\n* Map of your community\n* Map of apps and websites your teen uses \n\nMake sure you're both happy with the safety plan.  \n\nWhat really matters is that you talk with your teen as you do this – often teens know much more than we do about where it is safe and unsafe!",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -132,6 +134,7 @@
                       "value": "Safety Plan Activity",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,

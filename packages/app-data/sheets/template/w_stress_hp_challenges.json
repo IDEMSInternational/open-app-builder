@@ -97,6 +97,7 @@
           "value": "Did you experience any of these challenges when sharing how you feel with your teen?",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -112,6 +113,7 @@
           "value": "What was difficult for you about sharing how you feel with your teen?",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -127,6 +129,7 @@
           "value": "I was afraid my teen would think I was weak.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -142,6 +145,7 @@
           "value": "Sharing feelings, especially the difficult ones, sets an important example for your teen! It actually makes everyone in the family stronger, because you can understand and support each other better.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -157,6 +161,7 @@
           "value": "I felt uncomfortable about naming specific difficult feelings.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -172,6 +177,7 @@
           "value": "Being specific is not rude or insensitive - it really helps others to understand you clearly and this prevents confusion in the family. Feelings like anger and stress are part of our lives. All we need to do when we feel angry and stressed is handle our emotions well by taking a few deep breaths before responding.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -187,6 +193,7 @@
           "value": "My teen felt uncomfortable when I shared my feelings.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -202,6 +209,7 @@
           "value": "Starting a new thing is always difficult at first. Give yourselves some time to get used to it and keep showing a good example by observing and sharing your feelings. Over time, your teen will learn to do the same, and they will feel even more loved and cared for!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -217,6 +225,7 @@
           "value": "When I shared my feelings, my teen asked many questions, which made me uncomfortable.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -232,6 +241,7 @@
           "value": "Sharing feelings helps your teen to be aware and learn to do the same. You can choose how much detail you want to share about the situation. It’s up to you! You can also choose to answer questions later by saying, “I am feeling angry/stressed now. Could you please give me some time? We can talk about this more tonight”.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -247,6 +257,7 @@
           "value": "I was too stressed or angry to try sharing my feelings – I prefer to be alone when I feel like that.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -262,6 +273,7 @@
           "value": "It’s okay to not want to share at that time. Find some time to explain later, when you feel calmer, so that everyone can understand.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

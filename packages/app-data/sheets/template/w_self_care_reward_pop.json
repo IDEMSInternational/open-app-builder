@@ -13,6 +13,7 @@
           "value": "Things you can do to reward yourself:",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -28,6 +29,7 @@
           "value": "* Have a hot drink \n* Call a friend or relative \n* Have a relaxing bath \n* Read \n* Watch TV",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

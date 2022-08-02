@@ -38,6 +38,7 @@
               "value": "Praise really is powerful. \n\nLet’s look at the example of @global.w_praise_female_caregiver_name and her daughters:",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -87,6 +88,7 @@
                       "value": "When @global.w_praise_female_caregiver_name is busy, her two daughters often fight. But today, her older daughter actually helped her sister with her schoolwork!",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -134,6 +136,7 @@
                       "value": "@global.w_praise_female_caregiver_name: \"Thank you for doing your schoolwork, @global.w_praise_girl, and thank you for helping your sister,  @global.w_praise_teen_girl. I'm so proud of you!\"",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,

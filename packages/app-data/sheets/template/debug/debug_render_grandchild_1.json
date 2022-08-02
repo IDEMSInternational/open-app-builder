@@ -1,0 +1,151 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_render_grandchild_1",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Grandchild 1",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title"
+    },
+    {
+      "name": "answer_list_1",
+      "value": [
+        "name: yes | text: Yes",
+        "name: no | text: No"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "answer_list_1"
+    },
+    {
+      "type": "radio_group",
+      "name": "radio_group",
+      "value": "@fields.test_render_updates_field",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "test_render_updates_field",
+            "this.value"
+          ],
+          "_raw": "changed | set_field:test_render_updates_field:@local.radio_group",
+          "_cleaned": "changed | set_field:test_render_updates_field:@local.radio_group"
+        },
+        {
+          "trigger": "changed",
+          "action_id": "emit",
+          "args": [
+            "force_reload"
+          ],
+          "_raw": "changed | emit:force_reload",
+          "_cleaned": "changed | emit:force_reload"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "answer_list": "@local.answer_list_1",
+        "radio_button_type": "btn_text",
+        "options_per_row": "2"
+      },
+      "_nested_name": "radio_group",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.test_render_updates_field",
+            "matchedExpression": "@fields.test_render_updates_field",
+            "type": "fields",
+            "fieldName": "test_render_updates_field"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field:test_render_updates_field:@local.radio_group",
+                "matchedExpression": "@local.radio_group",
+                "type": "local",
+                "fieldName": "radio_group"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field:test_render_updates_field:@local.radio_group",
+                "matchedExpression": "@local.radio_group",
+                "type": "local",
+                "fieldName": "radio_group"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list_1",
+              "matchedExpression": "@local.answer_list_1",
+              "type": "local",
+              "fieldName": "answer_list_1"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@fields.test_render_updates_field": [
+          "value"
+        ],
+        "@local.radio_group": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.answer_list_1": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "go_to_field",
+      "value": "Value of test_render_updates_field:  @fields.test_render_updates_field\n\nlocal: @local.radio_group;",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "go_to_field",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Value of test_render_updates_field:  @fields.test_render_updates_field\n\nlocal: @local.radio_group;",
+            "matchedExpression": "@fields.test_render_updates_field",
+            "type": "fields",
+            "fieldName": "test_render_updates_field"
+          },
+          {
+            "fullExpression": "Value of test_render_updates_field:  @fields.test_render_updates_field\n\nlocal: @local.radio_group;",
+            "matchedExpression": "@local.radio_group",
+            "type": "local",
+            "fieldName": "radio_group"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.test_render_updates_field": [
+          "value"
+        ],
+        "@local.radio_group": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_render_grandchild_2.xlsx"
+}

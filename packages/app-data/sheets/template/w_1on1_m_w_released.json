@@ -90,6 +90,7 @@
               "value": "First @global.weekly_workshop!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -120,6 +121,7 @@
               "value": "Hi @fields.user_name. Your @local.workshop_data.in_text_title is ready for you.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -171,6 +173,7 @@
               "value": "Hi @fields.group_name. Your @local.workshop_data.in_text_title is ready for you.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

@@ -48,6 +48,7 @@
           "value": "Choose a sport or exercise to do together. Decide on a schedule. Are you going to do it every day? For how long? \n\nTry it out for a week. At the end of the week, ask yourself and your family these questions:\n* How is it going? \n* How did you feel at the start of the week? \n* How do you feel at the end of the week? \n* What can we do differently next week?",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

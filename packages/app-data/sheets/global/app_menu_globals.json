@@ -42,6 +42,7 @@
       "value": "Your @global.parent_app Code",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -56,6 +57,7 @@
       "value": "Terms & Conditions",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -70,6 +72,7 @@
       "value": "Privacy Policy",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

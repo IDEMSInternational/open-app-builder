@@ -66,6 +66,7 @@
               "value": "Involving your family in how you spend your money can take away a lot of stress and arguments. \n\nComplete the @local.workshop_data.in_text_title to help your family with budgeting and saving. It's actually easy - you will see!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

@@ -27,6 +27,7 @@
       "text": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your @global.parent_app journey!",
       "_translations": {
         "text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -63,6 +64,7 @@
       "text": "Hope you are feeling OK. We know parenting is hard - use @global.parent_app to help you manage parenting stress.",
       "_translations": {
         "text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -99,6 +101,7 @@
       "text": "Hello again! It’s never too late to use @global.parent_app and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
       "_translations": {
         "text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -135,6 +138,7 @@
       "text": "Hope you are feeling OK. We know parenting is hard - use @global.parent_app to help you manage your teen's behaviour.",
       "_translations": {
         "text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

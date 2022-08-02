@@ -14,6 +14,7 @@
           "value": "Today you will celebrate, look back and look ahead:",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -45,6 +46,7 @@
           "value": "* Reflection & discussion\n* Tools: How to support each other\nMEET - CALL - TEXT - SHARE\n* Planning support",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -76,6 +78,7 @@
           "value": "Today you celebrate and reflect on your experiences.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

@@ -66,6 +66,7 @@
               "value": "You are on the right track to start solving problems together with your teen! \n\nComplete the @local.workshop_data.in_text_title and gain another important parenting skill!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

@@ -55,6 +55,7 @@
           "value": "@global.w_consequence_teen_girl_1 and @global.w_consequence_teen_girl_2 fight over a phone.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -94,6 +95,7 @@
           "value": "What consequence would help here?",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -189,6 +191,7 @@
           "value": "Consequences are more successful if you discuss and agree in advance with teens before you apply them.\n\nAnd: consequences are not all negative… You can also agree on GOOD consequences for GOOD actions to see more positive behaviour!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -258,6 +261,7 @@
           "value": "@global.w_consequence_teen_girl_1 and @global.w_consequence_teen_girl_2 fight over a phone.\n\nWhat consequence would help here?",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -332,6 +336,7 @@
           "value": "Consequences are more successful if you discuss and agree in advance with teens before you apply them.\n\nAnd: consequences are not all negative… You can also agree on GOOD consequences for GOOD actions to see more positive behaviour!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

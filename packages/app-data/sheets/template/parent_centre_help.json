@@ -36,6 +36,7 @@
       "value": "Give me quick parenting tips",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -62,6 +63,7 @@
       "value": "Something really bad happened",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -78,6 +80,7 @@
       "value": "I have technical problems with the app",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

@@ -68,6 +68,7 @@
           "value": "Well done. Brain science shows that controlling your anger improves your teen’s brain development. Be proud of yourself.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

@@ -38,6 +38,7 @@
               "value": "Thank you for thinking along! Let’s go back in time and see what @global.w_stress_male_caregiver does now:",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -118,6 +119,7 @@
                       "value": "@global.w_stress_male_caregiver lost his job. He was sitting at home feeling frustrated and stressed, when @global.w_stress_teen_boy_1 entered.",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -179,6 +181,7 @@
                           "value": "@global.w_stress_teen_boy_1: “Can I have money to buy some airtime?”  \n\n@global.w_stress_male_caregiver (taking a breath): “I’m sorry son. I had a difficult day today. The boss fired me.”",
                           "_translations": {
                             "value": {
+                              "tz_sw": true,
                               "za_af": true,
                               "za_st": true,
                               "za_tn": true,
@@ -240,6 +243,7 @@
                               "value": "@global.w_stress_teen_boy_1: “Oh no!  I need a new school uniform.”  \n\n@global.w_stress_male_caregiver: “I’ll try, son, And your @global.w_stress_female_caregiver’s job will help us get by while I look for another job.”",
                               "_translations": {
                                 "value": {
+                                  "tz_sw": true,
                                   "za_af": true,
                                   "za_st": true,
                                   "za_tn": true,
@@ -310,6 +314,7 @@
                                   "value": "@global.w_stress_teen_boy_1: “I can help out with looking for work, too, @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: “No it’s okay, @global.w_stress_teen_boy_1. I appreciate your offer. The most important thing is that you work hard at school. Thanks for listening to me.”",
                                   "_translations": {
                                     "value": {
+                                      "tz_sw": true,
                                       "za_af": true,
                                       "za_st": true,
                                       "za_tn": true,
@@ -380,6 +385,7 @@
                                   "value": "@global.w_stress_male_caregiver: “Let’s play some soccer together. It will help me get this stress off my mind for a bit.”  \n\n@global.w_stress_teen_boy_1: “Okay, @global.w_stress_male_caregiver!”",
                                   "_translations": {
                                     "value": {
+                                      "tz_sw": true,
                                       "za_af": true,
                                       "za_st": true,
                                       "za_tn": true,
@@ -441,6 +447,7 @@
               "value": "That went so much better! \n\nTaking a pause helps to respond calmly when you feel angry or stressed. Try it, you will see!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

@@ -13,6 +13,7 @@
           "value": "When you take care of yourself, you take care of your children. We all need to connect. Try to talk to friends, family, and other support networks every day. If it has been a while since you reached out to someone, do it now!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

@@ -66,6 +66,7 @@
               "value": "To keep your teen safe, it helps to chat together about your community and their online experiences. \n\nComplete the @local.workshop_data.in_text_title and see how you can do this!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

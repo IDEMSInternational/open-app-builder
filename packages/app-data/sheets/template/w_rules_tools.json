@@ -14,6 +14,7 @@
           "value": "Household rules help keep our teenagers safe, and understand what is expected from them. When you involve a teenager in making rules they are more likely to follow them.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -34,6 +35,7 @@
               "value": "TEAM RULES",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -49,6 +51,7 @@
               "value": "Plan rules WITH your teenager. Start with one new rule first - you can add another one later. Discuss the reasons for the rule and listen to their views.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -71,6 +74,7 @@
               "value": "REAL RULES",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -86,6 +90,7 @@
               "value": "Make them realistic for what your teenager can do, and be clear and specific so there’s no misunderstanding. Not ‘on time’ but ‘by 7pm’.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -108,6 +113,7 @@
               "value": "PRAISE RULES!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -123,6 +129,7 @@
               "value": "Praise your teen for planning a rule with you, and praise them for keeping it!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

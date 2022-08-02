@@ -66,6 +66,7 @@
               "value": "Thank you for using @global.parent_app to invest in yourself and your family.\n\nTry the @local.workshop_data.in_text_title and build a great parenting skill!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

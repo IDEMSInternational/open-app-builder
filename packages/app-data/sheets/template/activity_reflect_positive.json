@@ -48,6 +48,7 @@
           "value": "At the end of the day, take a minute to: \n\n* Talk to your teen about one fun thing they did. \n* Praise yourself for one thing you did well today. \n* You are a star!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

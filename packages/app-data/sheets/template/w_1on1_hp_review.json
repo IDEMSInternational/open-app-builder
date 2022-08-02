@@ -104,6 +104,7 @@
                       "value": "Your goal was to spend one-on-one time with your teen.",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -219,6 +220,7 @@
               "value": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

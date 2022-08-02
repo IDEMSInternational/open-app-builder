@@ -1,0 +1,111 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_dg_center",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title_1",
+      "value": "Centering a title component",
+      "_translations": {
+        "value": {}
+      },
+      "style_list": [
+        "text-align: center"
+      ],
+      "_nested_name": "title_1"
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle",
+      "value": "Centering a subtitle component",
+      "_translations": {
+        "value": {}
+      },
+      "style_list": [
+        "text-align: center"
+      ],
+      "_nested_name": "subtitle"
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "Centering a text component",
+      "_translations": {
+        "value": {}
+      },
+      "style_list": [
+        "text-align: center"
+      ],
+      "_nested_name": "text"
+    },
+    {
+      "type": "title",
+      "name": "title_2",
+      "value": "Three ways of centering an image component",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title_2"
+    },
+    {
+      "type": "image",
+      "name": "image_1",
+      "value": "plh_images/workshop_modes/guide_2/relax.svg",
+      "_translations": {
+        "value": {}
+      },
+      "style_list": [
+        "width:100px",
+        "margin:auto"
+      ],
+      "_nested_name": "image_1"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_1",
+      "style_list": [
+        "justify-content: center"
+      ],
+      "rows": [
+        {
+          "type": "image",
+          "name": "image_2",
+          "value": "plh_images/workshop_modes/guide_2/relax.svg",
+          "_translations": {
+            "value": {}
+          },
+          "style_list": [
+            "max-width:100px"
+          ],
+          "_nested_name": "dg_1.image_2"
+        }
+      ],
+      "_nested_name": "dg_1"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_2",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "image",
+          "name": "image_3",
+          "value": "plh_images/workshop_modes/guide_2/relax.svg",
+          "_translations": {
+            "value": {}
+          },
+          "style_list": [
+            "width:100px"
+          ],
+          "_nested_name": "dg_2.image_3"
+        }
+      ],
+      "_nested_name": "dg_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_dg.xlsx"
+}

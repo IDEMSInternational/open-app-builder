@@ -70,6 +70,7 @@
                       "value": "Spend 5-20 minutes of one-on-one time with your teen, every day you can this week.",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -156,6 +157,7 @@
                       "value": "Remember - whenever you can, relax, recognise and reward yourself. \n\nCare for yourself every day. You matter!",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,

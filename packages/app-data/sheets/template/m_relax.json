@@ -139,6 +139,7 @@
           "value": "Relax now",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -249,6 +250,7 @@
           "value": "Did you relax already? Tap it!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

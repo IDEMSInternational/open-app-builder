@@ -38,6 +38,7 @@
               "value": "Using the app together",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -53,6 +54,7 @@
               "value": "It’s great to see you!\n\nFirst, let’s help your group get started.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -84,6 +86,7 @@
                       "value": "Agree on your ground rules together:\n* Which day(s)/time(s) will we meet in the week?\n* Who will hold the phone(s) during our activities?\n* How can we make sure everyone can share freely?\n* What can we do so we all feel respected?",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -143,6 +146,7 @@
                       "value": "You always can change your workshop day and your group name in the @global.weekly_workshop_options.",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,

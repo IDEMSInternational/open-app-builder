@@ -9,6 +9,7 @@
       "value": "Watching this video requires internet access. To limit data use, watch or download this video when on WiFi.",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -23,6 +24,7 @@
       "value": "Visiting these websites requires internet access. To limit data use, visit these websites when on WiFi.",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -37,6 +39,7 @@
       "value": "Sending this message requires internet access. To limit data use, send this message when on WiFi.",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

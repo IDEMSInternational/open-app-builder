@@ -33,6 +33,7 @@
           "value": "Start Positively Together",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -57,6 +58,7 @@
           "value": "Welcome @fields.group_name",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -87,6 +89,7 @@
           "value": "It's great to see you again! \n\nLet's start with caring for you.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -113,6 +116,7 @@
               "value": "Take turns:\n* Share: How are you feeling today?\n* Praise someone in your group for something they did well this week!\n\nRemember that no matter how you feel, it’s great you are here. You all deserve praise.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

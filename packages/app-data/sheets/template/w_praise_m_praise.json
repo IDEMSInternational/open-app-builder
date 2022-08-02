@@ -18,6 +18,7 @@
               "value": "Well done for using @global.parent_app! Remember that it’s the small things that make a big difference.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

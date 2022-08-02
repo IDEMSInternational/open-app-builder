@@ -66,6 +66,7 @@
                   "value": "Rules help teens understand what is expected from them. \n\nTeens are more likely to follow rules if you create the rules WITH your teen and praise them for it!",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
