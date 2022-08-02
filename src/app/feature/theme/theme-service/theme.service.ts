@@ -32,13 +32,7 @@ export class ThemeService {
   }
 
   public applyTheme(themeName: string) {
-    document.body.classList.add("theme-" + themeName);
-    // remove other "theme-" classes from document.body, only after adding
-    // new theme- class to avoid no theme- class being applied momentarily
-    const classes = document.body.className.split(" ").filter((c) => {
-      return !c.startsWith("theme-") || c === "theme-" + themeName;
-    });
-    document.body.className = classes.join(" ").trim();
+    document.body.dataset.theme = themeName;
   }
 
   private getThemeMap(): { [themeName: string]: AppTheme } {
