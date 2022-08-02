@@ -33,7 +33,6 @@
           "value": "Question Time",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -58,7 +57,6 @@
           "value": "It's time for some questions!",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

@@ -66,7 +66,6 @@
               "value": "Thank you for using @global.parent_app and committing to your parenting. \n\nYour @local.workshop_data.in_text_title is ready for you!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

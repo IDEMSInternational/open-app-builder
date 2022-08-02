@@ -18,7 +18,6 @@
               "value": "How have your stress levels been this week? Try to take a few deep breaths before responding to your teen - it makes a big difference.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -86,7 +85,6 @@
               "value": "Well done!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -154,7 +152,6 @@
               "value": "Well done for taking a big breath before responding to your teen! Each time you are taking a pause, you are getting back control.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

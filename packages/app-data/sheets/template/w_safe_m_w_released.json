@@ -66,7 +66,6 @@
               "value": "Hi @fields.user_name! You are nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. \n\nThis week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true
@@ -116,7 +115,6 @@
               "value": "Hi @fields.group_name! You are all nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. \n\nThis week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true

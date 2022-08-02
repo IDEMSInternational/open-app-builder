@@ -51,7 +51,6 @@
           "value": "Listen Together",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -83,7 +82,6 @@
           "value": "Let's listen to an audio together!",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -115,7 +113,6 @@
           "value": "Listen",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -147,7 +144,6 @@
           "value": "Let's listen to an audio!",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

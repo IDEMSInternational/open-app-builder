@@ -525,9 +525,7 @@
       "name": "unlock_text",
       "value": "@local.relevant_content_title added to @data.parent_centre.my_tips.title.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "unlock_text",
@@ -586,7 +584,6 @@
       "value": "You selected less than @local.threshold",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

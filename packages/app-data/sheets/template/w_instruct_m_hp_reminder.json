@@ -18,7 +18,6 @@
               "value": "You’ve not marked any @data.habit.instruct_positively.title @global.parent_points yet. \n\nGive it a try today!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -154,7 +153,6 @@
               "value": "Well done!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -222,7 +220,6 @@
               "value": "You’ve marked the @global.parent_point @data.habit.instruct_positively.title once already  – so you’re making great progress.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -274,7 +271,6 @@
               "value": "You’ve marked the @global.parent_point @data.habit.instruct_positively.title @fields.parent_point_count_instruct_positively times already  – so you’re making great progress.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true

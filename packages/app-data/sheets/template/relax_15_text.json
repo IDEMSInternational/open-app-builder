@@ -13,7 +13,6 @@
           "value": "Hello! How are you feeling right now? Happy, sad, angry, excited, worried?\n\nNotice where you feel it in your body. Notice what thoughts are connected to that feeling. Take a deep breath.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -29,7 +28,6 @@
           "value": "Thank yourself for taking the time to check in with your feelings and thoughts!",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

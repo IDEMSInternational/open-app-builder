@@ -36,7 +36,6 @@
       "value": "Are you experiencing any technical issues? Let us know and help to make @global.parent_app better!",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -66,7 +65,6 @@
       "value": "Type your name (optional)",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -108,7 +106,6 @@
       "value": "Contact me on @global.whatsapp",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -169,7 +166,6 @@
           "value": "Type your phone number",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -229,7 +225,6 @@
       "value": "Contact me via email",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -276,7 +271,6 @@
           "value": "Type your email address",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -336,7 +330,6 @@
       "value": "Tell us about your issue",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

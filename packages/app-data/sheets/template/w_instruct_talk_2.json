@@ -69,7 +69,6 @@
               "value": "Let's discuss what happened this time.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -89,7 +88,6 @@
                   "value": "Discuss together: \n\n* How did @global.w_instruct_teen_girl and @global.w_instruct_female_caregiver feel now?\n* Why do you think the situation went better for @global.w_instruct_female_caregiver this time?",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -175,7 +173,6 @@
               "value": "Positive instructions can work with your teen too!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

@@ -69,7 +69,6 @@
               "value": "Let's discuss this story.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -89,7 +88,6 @@
                   "value": "Discuss together:\n\n* How did praise make @global.w_praise_female_caregiver_name's teens feel?\n* Why did she praise them?",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -159,7 +157,6 @@
               "value": "The same can work for you!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

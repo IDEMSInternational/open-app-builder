@@ -8,7 +8,6 @@
       "value": "Have a hot drink",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -24,7 +23,6 @@
       "value": "Call a friend or relative",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -40,7 +38,6 @@
       "value": "Have a relaxing bath",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -56,7 +53,6 @@
       "value": "Read",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -72,7 +68,6 @@
       "value": "Watch TV",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -118,7 +113,6 @@
               "value": "Reward",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -158,7 +152,6 @@
               "value": "We all deserve to treat ourselves well!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -220,7 +213,6 @@
                   "value": "Taking care of ourselves is an important parenting skill. Share with each other:\n\nWhat small things make you happy?",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -274,7 +266,6 @@
               "value": "Try to do something to reward yourself every day.\n\nYou can use these skills at home and find them anytime in your @global.parent_centre!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -356,7 +347,6 @@
               "value": "Reward",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -381,7 +371,6 @@
               "value": "We all deserve to treat ourselves well!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -459,7 +448,6 @@
                   "value": "What small thing makes you happy?",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -548,7 +536,6 @@
                   "value": "Nice! Taking care of yourself is an important parenting skill!",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -567,7 +554,6 @@
               "value": "Try to do something to reward yourself every day. This could be to @local.name_1 or anything else that you enjoy.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -610,7 +596,6 @@
               "value": "Try to do something to reward yourself every day. This could be to @local.name_2 or anything else that you enjoy.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -653,7 +638,6 @@
               "value": "Try to do something to reward yourself every day. This could be to @local.name_3 or anything else that you enjoy.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -696,7 +680,6 @@
               "value": "Try to do something to reward yourself every day. This could be to @local.name_4 or anything else that you enjoy.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -739,7 +722,6 @@
               "value": "Try to do something to reward yourself every day. This could be to @local.name_5 or anything else that you enjoy.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

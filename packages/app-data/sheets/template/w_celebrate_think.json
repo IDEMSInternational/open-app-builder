@@ -88,7 +88,6 @@
               "value": "You and your family have learnt so much. Let's think back and see what has changed.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -110,7 +109,6 @@
               "value": "Reflect",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -131,7 +129,6 @@
                   "value": "Listen and reflect",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -156,7 +153,6 @@
                   "value": "Read and reflect",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
