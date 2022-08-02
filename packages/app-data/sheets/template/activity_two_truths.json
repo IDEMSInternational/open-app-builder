@@ -48,6 +48,7 @@
           "value": "* Think of three statements about yourself. Two must be true and one must be a lie.\n* It might help to think of wishes, dreams, experiences at school, likes or dislikes. For example: I hate bananas, my favourite subject is science, and I really wish I could sing. \n* Say them to your teenager and ask them to guess which one is a lie. \n* Did they guess correctly? Was it a surprise?\n* Now ask them to do the same. Did you learn something new about each other?",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

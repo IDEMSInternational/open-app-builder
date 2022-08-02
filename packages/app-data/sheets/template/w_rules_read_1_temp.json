@@ -38,6 +38,7 @@
               "value": "Let's read what happened with @global.w_rules_teen_boy and his @global.w_rules_female_caregiver_1:",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -96,6 +97,7 @@
                       "value": "@global.w_rules_female_caregiver_1: \"You always come home late!\"\n\n@global.w_rules_teen_boy: \"No I don’t, I don’t even know what late means! Stop nagging me.\"",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -135,6 +137,7 @@
                       "value": "Which specific rule could @global.w_rules_teen_boy and @global.w_rules_female_caregiver_1 create together?",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -197,6 +200,7 @@
                           "value": "Let’s see how @global.w_rules_female_caregiver_1 and @global.w_rules_teen_boy did this the next day:\n\n@global.w_rules_female_caregiver_1: “I want you to have fun, @global.w_rules_teen_boy, but I’m also worried about you staying out late. Do you know why?” \n\n@global.w_rules_teen_boy: “Because you want me to have enough time for my schoolwork?”",
                           "_translations": {
                             "value": {
+                              "tz_sw": true,
                               "za_af": true,
                               "za_st": true,
                               "za_tn": true,
@@ -279,6 +283,7 @@
                               "value": "@global.w_rules_female_caregiver_1: “That’s right, and it’s also not safe in this area to be outside after sunset. What do you think would be a good time for you to be home?”",
                               "_translations": {
                                 "value": {
+                                  "tz_sw": true,
                                   "za_af": true,
                                   "za_st": true,
                                   "za_tn": true,
@@ -331,6 +336,7 @@
                                   "value": "@global.w_rules_teen_boy: “I could come home at 10pm?\"  \n\n@global.w_rules_female_caregiver_1: “That’s a bit late, what about 6pm? Or something in the middle?\"",
                                   "_translations": {
                                     "value": {
+                                      "tz_sw": true,
                                       "za_af": true,
                                       "za_st": true,
                                       "za_tn": true,
@@ -392,6 +398,7 @@
                                       "value": "@global.w_rules_teen_boy: “I could come home at 6pm on school nights and 10pm on Friday and Saturday?” \n\n@global.w_rules_female_caregiver_1: “Yes, great. From now on, our household rule is that you need to come home at 6pm on school nights and 10pm on Friday and Saturday. But you always walk home with a friend. Okay?”",
                                       "_translations": {
                                         "value": {
+                                          "tz_sw": true,
                                           "za_af": true,
                                           "za_st": true,
                                           "za_tn": true,
@@ -453,6 +460,7 @@
                                           "value": "@global.w_rules_teen_boy: “Okay, @global.w_rules_female_caregiver_1” \n\n@global.w_rules_female_caregiver_1: “Thank you very much, @global.w_rules_teen_boy, for helping to come up with a good rule together. I am proud to see how responsible you are getting.”",
                                           "_translations": {
                                             "value": {
+                                              "tz_sw": true,
                                               "za_af": true,
                                               "za_st": true,
                                               "za_tn": true,
@@ -523,6 +531,7 @@
                                           "value": "The next day...\n\n@global.w_rules_female_caregiver_1: “Thank you, @global.w_rules_teen_boy, for coming home on time. After you finish your schoolwork we can have your favourite meal for dinner.”",
                                           "_translations": {
                                             "value": {
+                                              "tz_sw": true,
                                               "za_af": true,
                                               "za_st": true,
                                               "za_tn": true,

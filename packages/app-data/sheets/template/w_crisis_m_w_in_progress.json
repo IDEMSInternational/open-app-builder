@@ -66,6 +66,7 @@
               "value": "So good that you're with us on this parenting journey! \n\nComplete the @local.workshop_data.in_text_title and learn the best way to react when your teen needs you the most.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

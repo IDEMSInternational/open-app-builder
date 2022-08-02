@@ -27,14 +27,18 @@
       "intro_text": "It is hard to find time to have fun with your teenager.",
       "_translations": {
         "intro_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
           "za_xh": true,
           "za_zu": true
         },
-        "slider_question": {},
+        "slider_question": {
+          "tz_sw": true
+        },
         "range_description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -79,6 +83,7 @@
       "intro_text": "In our busy lives it’s hard to focus on the positive.",
       "_translations": {
         "intro_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -86,6 +91,7 @@
           "za_zu": true
         },
         "slider_question": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -93,6 +99,7 @@
           "za_zu": true
         },
         "range_description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -137,6 +144,7 @@
       "intro_text": "This is a very stressful time for families.",
       "_translations": {
         "intro_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -144,6 +152,7 @@
           "za_zu": true
         },
         "slider_question": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -151,6 +160,7 @@
           "za_zu": true
         },
         "range_description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -197,6 +207,7 @@
       "intro_text": "Sometimes our children make us really upset.",
       "_translations": {
         "intro_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -204,6 +215,7 @@
           "za_zu": true
         },
         "slider_question": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -211,6 +223,7 @@
           "za_zu": true
         },
         "range_description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -242,9 +255,14 @@
       "parent_text_question": "Money is one of the biggest stresses for families now. How many days in the past week have you felt very worried or anxious about money? (0, 1, 2, 3, 4, 5, 6, 7)\r\n\r\nIf you don't want to answer, please type 99.",
       "intro_text": "Money is one of the biggest stresses for families.",
       "_translations": {
-        "intro_text": {},
-        "slider_question": {},
+        "intro_text": {
+          "tz_sw": true
+        },
+        "slider_question": {
+          "tz_sw": true
+        },
         "range_description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -277,6 +295,7 @@
       "slider_question": "How many days in the past month (30 days) did you run out of money to pay for food?",
       "_translations": {
         "slider_question": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -284,6 +303,7 @@
           "za_zu": true
         },
         "range_description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -326,6 +346,7 @@
       "intro_text": "It is so stressful when children misbehave.",
       "_translations": {
         "intro_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -333,6 +354,7 @@
           "za_zu": true
         },
         "slider_question": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -340,6 +362,7 @@
           "za_zu": true
         },
         "range_description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -372,6 +395,7 @@
       "intro_text": "It’s hard to keep track of your teenagers when they are becoming independent.",
       "_translations": {
         "intro_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -379,6 +403,7 @@
           "za_zu": true
         },
         "slider_question": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -386,6 +411,7 @@
           "za_zu": true
         },
         "range_description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -420,16 +446,24 @@
       "intro_text": "We all want to keep our children safe.",
       "_translations": {
         "intro_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
           "za_xh": true,
           "za_zu": true
         },
-        "yes_no_question": {},
-        "example_text": {},
-        "slider_question": {},
+        "yes_no_question": {
+          "tz_sw": true
+        },
+        "example_text": {
+          "tz_sw": true
+        },
+        "slider_question": {
+          "tz_sw": true
+        },
         "range_description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -470,10 +504,18 @@
       "improvement (condition on diff to get fb_better)": ">",
       "intro_text": "It can sometimes be difficult to have a positive relationship with our children.",
       "_translations": {
-        "intro_text": {},
-        "slider_question": {},
-        "min_description": {},
-        "max_description": {}
+        "intro_text": {
+          "tz_sw": true
+        },
+        "slider_question": {
+          "tz_sw": true
+        },
+        "min_description": {
+          "tz_sw": true
+        },
+        "max_description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "intro_text": {

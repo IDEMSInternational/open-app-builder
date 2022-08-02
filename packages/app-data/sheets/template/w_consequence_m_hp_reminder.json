@@ -18,6 +18,7 @@
               "value": "Have you managed to come up with one positive and one negative consequence of a behaviour with your teen yet?",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

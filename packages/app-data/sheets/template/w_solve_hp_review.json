@@ -70,6 +70,7 @@
                       "value": "Your goal was to try and resolve a problem or conflict together with your teen.",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,

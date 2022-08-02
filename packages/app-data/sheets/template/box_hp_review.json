@@ -8,6 +8,7 @@
       "value": "Yes",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -23,6 +24,7 @@
       "value": "No",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -191,7 +193,9 @@
       "name": "text_pp",
       "value": "We noticed you tapped the @local.parent_point_data.in_text_title - great job for remembering!",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "condition": "@local.count_pp > 0",
       "_nested_name": "text_pp",
@@ -228,6 +232,7 @@
       "value": "Your goal was to spend one-on-one time with your teen.",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -242,7 +247,9 @@
       "name": "question_text_done",
       "value": "Did you have a chance to do this?",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "parameter_list": {
         "style": "emphasised"
@@ -430,6 +437,7 @@
           "value": "How did it go?",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

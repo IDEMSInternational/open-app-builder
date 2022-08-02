@@ -129,6 +129,7 @@
               "value": "Step 3: BUILD",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -144,6 +145,7 @@
               "value": "Make a budget!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -179,6 +181,7 @@
                   "value": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -315,6 +318,7 @@
               "value": "Step 3: BUILD",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -330,6 +334,7 @@
               "value": "Make a budget as one big family!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -365,6 +370,7 @@
                   "value": "* One person will volunteer to share his/her list (If no one volunteers you can make a new list together) \n* Take roles - some will be adults, some will be teens. \n* Decide what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)  \n* Decide together what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -483,6 +489,7 @@
               "value": "Step 3: BUILD",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -498,6 +505,7 @@
               "value": "Make a budget as a family!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -533,6 +541,7 @@
                   "value": "* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between \"needs\" and \"wants\"? That’s totally fine!",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,

@@ -1,0 +1,168 @@
+{
+  "flow_type": "template",
+  "flow_subtype": "debug",
+  "flow_name": "example_data_from_id",
+  "status": "released",
+  "rows": [
+    {
+      "name": "data_item_id",
+      "value": "@data.example.example1.id",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "data_item_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.example.example1.id",
+            "matchedExpression": "@data.example.example1.id",
+            "type": "data",
+            "fieldName": "example"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.example.example1.id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "example",
+      "value": "example.@local.data_item_id",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "example",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "example.@local.data_item_id",
+            "matchedExpression": "@local.data_item_id",
+            "type": "local",
+            "fieldName": "data_item_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_item_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "data_item",
+      "value": "@data.@local.example",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "data_item",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.example",
+            "matchedExpression": "@local.example",
+            "type": "local",
+            "fieldName": "example"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.example": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "id: @local.data_item_id\nwhich is the same as\nid: @local.data_item.id",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "id: @local.data_item_id\nwhich is the same as\nid: @local.data_item.id",
+            "matchedExpression": "@local.data_item_id",
+            "type": "local",
+            "fieldName": "data_item_id"
+          },
+          {
+            "fullExpression": "id: @local.data_item_id\nwhich is the same as\nid: @local.data_item.id",
+            "matchedExpression": "@local.data_item.id",
+            "type": "local",
+            "fieldName": "data_item"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_item_id": [
+          "value"
+        ],
+        "@local.data_item.id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "value": "value: @local.data_item.value",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "value: @local.data_item.value",
+            "matchedExpression": "@local.data_item.value",
+            "type": "local",
+            "fieldName": "data_item"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_item.value": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_3",
+      "value": "text: @local.data_item.text",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "text: @local.data_item.text",
+            "matchedExpression": "@local.data_item.text",
+            "type": "local",
+            "fieldName": "data_item"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_item.text": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_data_lists.xlsx"
+}

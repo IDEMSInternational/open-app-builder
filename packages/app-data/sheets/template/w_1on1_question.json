@@ -45,6 +45,7 @@
               "value": "Let's think of ways to spend one-on-one time with your teen.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -105,6 +106,7 @@
                   "value": "What could you do to spend one-on-one time with your teen?",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -253,6 +255,7 @@
                   "value": "Feel like you have NO TIME and you are exhausted? Remember to also think of ways that do not take up extra time.",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -271,6 +274,7 @@
               "value": "It may take some time to get used to one-on-one time, but the more you do it the better it gets!\n\nYou are an amazing parent for trying this.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

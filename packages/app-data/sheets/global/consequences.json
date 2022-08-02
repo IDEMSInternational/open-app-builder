@@ -10,6 +10,7 @@
       "value": "No gadget use the next day",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -24,6 +25,7 @@
       "value": "Take 5 minutes pause in separate part of the room",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -38,6 +40,7 @@
       "value": "Write a letter of apology",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -52,6 +55,7 @@
       "value": "Cannot see friends the next day",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -66,6 +70,7 @@
       "value": "Cannot play with phone after dinner (or next hour)",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -80,6 +85,7 @@
       "value": "Extra time with friends on weekend (1hr)",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -94,6 +100,7 @@
       "value": "Cooking teen’s favourite meal",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -108,6 +115,7 @@
       "value": "Extra time with phone after dinner (30 min)",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -122,6 +130,7 @@
       "value": "Watching teen’s T.V. show together",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -136,6 +145,7 @@
       "value": "Extra one-on-one time on Sunday (30 min)",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

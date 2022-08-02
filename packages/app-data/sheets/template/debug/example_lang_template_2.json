@@ -1,0 +1,88 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_lang_template_2",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "template",
+      "name": "example_lang_template_1",
+      "value": "example_lang_template_1",
+      "rows": [
+        {
+          "name": "text_1",
+          "value": "This is a modified text that needs to be translated.\n\nThis is a nested text.",
+          "_translations": {
+            "value": {
+              "es_sp": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "example_lang_template_1.text_1"
+        },
+        {
+          "name": "reply_happy",
+          "value": "This is the modified reply if the feeling response is happy, the first option.\n\nThis is a nested text.",
+          "_translations": {
+            "value": {
+              "es_sp": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "example_lang_template_1.reply_happy"
+        },
+        {
+          "name": "reply_ok",
+          "value": "This is the modified reply if the feeling response is ok, the second option.\n\nThis is a nested text.",
+          "_translations": {
+            "value": {
+              "es_sp": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "example_lang_template_1.reply_ok"
+        },
+        {
+          "name": "reply_sad",
+          "value": "This is the modified reply if the feeling response is sad, the third option.\n\nThis is a nested text.",
+          "_translations": {
+            "value": {
+              "es_sp": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "example_lang_template_1.reply_sad"
+        },
+        {
+          "name": "subtitle_2",
+          "value": "Which of the following do you like the most (this is modified)?",
+          "_translations": {
+            "value": {
+              "es_sp": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "example_lang_template_1.subtitle_2"
+        },
+        {
+          "name": "answer_list_2",
+          "value": [
+            "name: option_1 | text:Cats (modified text in answer list)",
+            "name: option_2 | text:Dogs (modified text in answer list)",
+            "name: option_3 | text:Chinchillas (modified text in answer list)"
+          ],
+          "type": "set_variable",
+          "_nested_name": "example_lang_template_1.answer_list_2"
+        },
+        {
+          "name": "input_allowed",
+          "value": false,
+          "type": "set_variable",
+          "_nested_name": "example_lang_template_1.input_allowed"
+        }
+      ],
+      "_nested_name": "example_lang_template_1"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_languages.xlsx"
+}

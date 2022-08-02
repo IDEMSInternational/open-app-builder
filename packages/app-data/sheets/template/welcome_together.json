@@ -43,6 +43,7 @@
               "value": "Welcome @fields.group_name",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -82,6 +83,7 @@
               "value": "It's great to see you again! Let’s start with a song for families everywhere.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -101,6 +103,7 @@
                   "value": "Let's Slow Down",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,

@@ -66,6 +66,7 @@
                   "value": "Great!",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -81,6 +82,7 @@
                   "value": "I know life can be hard. I’m proud of you. \n\nWhatever you are feeling, it’s great that you are here!",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -96,6 +98,7 @@
                   "value": "I know life can be hard. I’m proud of you. \n\nWhatever you are feeling, it’s great that you are here!",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,

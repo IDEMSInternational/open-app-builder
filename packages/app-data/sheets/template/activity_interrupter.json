@@ -48,6 +48,7 @@
           "value": "* Choose a storyteller to start making up a story.\n* Story listeners can interrupt with a word at any time.\n* Storyteller needs to fit that word in their story.\n* When the story is finished, try with a different storyteller!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

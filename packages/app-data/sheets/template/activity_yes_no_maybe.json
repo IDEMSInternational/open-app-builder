@@ -48,6 +48,7 @@
           "value": "* Ask each other questions. They can be any questions about things you like or what you did today.\n* The only rule is that you can’t answer “Yes”, “No” or “Maybe”.\n* How long can you last? How creative can you get with your answers?\n* Swap over and play again!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

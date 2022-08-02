@@ -48,6 +48,7 @@
           "value": "* Come up with three types of exercise together. For example, walking, jogging, soccer or dancing.\n* Pick one together and try it out. \n* If you both like it, decide how often you are going to do it. Once or twice a week? Every morning?\n* Together think of ways to make it even more fun. Can you jog to a certain point? Take turns in being the coach? Motivate each other with a small free reward?",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

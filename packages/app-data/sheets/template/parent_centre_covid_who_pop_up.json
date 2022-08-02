@@ -9,6 +9,7 @@
       "value": "This button will take you to the Coronavirus section of the official WHO website.",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -24,6 +25,7 @@
       "value": "The URL is https://www.who.int/emergencies/diseases/novel-coronavirus-2019",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

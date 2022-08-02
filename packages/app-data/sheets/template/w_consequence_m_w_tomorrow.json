@@ -62,6 +62,7 @@
           "value": "It seems you haven’t finished the @local.workshop_data.in_text_title yet. Calm consequences really help your teen to follow rules well – give it a try before moving on!\n\nWell done for showing so much commitment to your family.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -92,6 +93,7 @@
           "value": "Well done for completing the @local.workshop_data.in_text_title. Tomorrow, you can access a new workshop to help you relax, enjoy and learn useful skills!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

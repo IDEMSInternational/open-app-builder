@@ -46,6 +46,7 @@
               "value": "Remember you can access lots of helpful tips and resources in the @global.parent_centre - this is available for you at any time!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

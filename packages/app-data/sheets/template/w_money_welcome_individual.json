@@ -66,6 +66,7 @@
                   "value": "Caring for yourself is so essential.",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -81,6 +82,7 @@
                   "value": "Wonderful, I am so happy things are going well. Keep up the good work.",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -96,6 +98,7 @@
                   "value": "Sorry that things are difficult now. It is completely normal to struggle sometimes. Remember that you are not alone!",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -111,6 +114,7 @@
                   "value": "Sorry that things are difficult now. It is completely normal to struggle sometimes. Remember that you are not alone!",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,

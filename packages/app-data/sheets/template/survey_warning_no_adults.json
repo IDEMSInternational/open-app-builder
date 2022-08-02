@@ -13,6 +13,7 @@
           "value": "Are there adults in your family?",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -28,6 +29,7 @@
           "value": "This app focuses on parents of teenagers age @global.teen_age_bracket, but you are welcome to continue - you may learn useful things too!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

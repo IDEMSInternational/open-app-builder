@@ -225,6 +225,7 @@
       "value": "How would you like to do this workshop?",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

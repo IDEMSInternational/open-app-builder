@@ -48,6 +48,7 @@
           "value": "This game is best when more than 2 people play.\n* One person pretends to be doing something – for example, combing hair or making dinner. \n* Another person asks, “What are you doing?”\n* The first person needs to say something that has nothing to do with combing hair, for example, “Tying my shoes.”  \n* The second person then starts pretending to tie their shoes until a new person asks, “What are you doing?” \n\nThe answer must always be something different than what you are actually doing!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

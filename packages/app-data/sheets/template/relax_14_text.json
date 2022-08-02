@@ -14,6 +14,7 @@
           "value": "Close your eyes.  \nTake a moment to feel the ground under your feet. \nThink of something you feel grateful for.\nFocus on your breath.\nBreathe in and out.\n\nIn and out.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

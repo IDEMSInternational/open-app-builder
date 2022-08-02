@@ -66,6 +66,7 @@
                   "value": "All families experience crises. When we prepare together and know where to get help BEFORE something bad happens, we can overcome any crisis.",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,

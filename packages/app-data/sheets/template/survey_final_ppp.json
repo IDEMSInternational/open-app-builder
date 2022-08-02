@@ -46,6 +46,7 @@
               "value": "Using this app shows that you care about your teen. You can review how to use praise under @data.parent_centre.my_tips.location_text.\n\nFor more tips on how to use this skill well, you can also have another look at the @data.workshop.w_praise.in_text_title.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -85,6 +86,7 @@
               "value": "Wonderful that you are praising your teen! This helps them feel valued – your encouragement means a lot. \n\nYou can always have another look at the @data.workshop.w_praise.in_text_title for more tips on how to use this skill well.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

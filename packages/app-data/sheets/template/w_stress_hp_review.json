@@ -194,6 +194,7 @@
                       "value": "This week, your goal was: Whenever you are feeling stressed or upset, take five breaths in and out before you react.",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -360,6 +361,7 @@
                           "value": "Your goal was also to talk to your teen about how you both felt in a stressful situation.",
                           "_translations": {
                             "value": {
+                              "tz_sw": true,
                               "za_af": true,
                               "za_st": true,
                               "za_tn": true,

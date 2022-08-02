@@ -61,6 +61,7 @@
               "value": "Let's try it out and do a short relaxation activity together!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -92,6 +93,7 @@
               "value": "As parents, we often don’t have time to look after ourselves - but this is so important to do! Reducing our stress helps us AND our teens. \n\nLet’s take a first step and do a short relaxation activity together.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -123,6 +125,7 @@
               "value": "Well done! Try to do this every day.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

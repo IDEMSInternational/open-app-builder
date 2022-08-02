@@ -61,6 +61,7 @@
               "value": "Welcome! It’s great to have you here. This week is about YOU. \n\nIn this welcome workshop you will: \n* Get tools to care for yourself \n* Customise the app for your needs",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -80,6 +81,7 @@
                   "value": "Wonderful, I am so happy things are going well.",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -95,6 +97,7 @@
                   "value": "Sorry that things are difficult now. It is completely normal to struggle sometimes. Remember that you are not alone!",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -110,6 +113,7 @@
                   "value": "Sorry that things are difficult now. It is completely normal to struggle sometimes. Remember that you are not alone!",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,

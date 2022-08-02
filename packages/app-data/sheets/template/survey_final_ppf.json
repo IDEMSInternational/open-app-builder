@@ -46,6 +46,7 @@
               "value": "We know this is hard. You can review some helpful tips on how you can spend time with your teen under @data.parent_centre.my_tips.location_text or you can have another look at the @data.workshop.w_1on1.in_text_title.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -85,6 +86,7 @@
               "value": "Well done for laying such a good foundation! You can always review the @data.workshop.w_1on1.in_text_title to get more ideas on how to spend time together.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

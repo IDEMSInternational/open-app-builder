@@ -58,6 +58,7 @@
           "value": "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

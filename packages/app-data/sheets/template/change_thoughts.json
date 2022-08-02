@@ -36,6 +36,7 @@
       "value": "We all have negative thoughts sometimes.",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -51,6 +52,7 @@
       "value": "\"I am a failure\"",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -90,6 +92,7 @@
           "value": "What to do?",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -105,6 +108,7 @@
           "value": "Examples",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -133,6 +137,7 @@
                   "value": "Telling yourself or your teen to stop or to say the positive opposite often does not help.",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -148,6 +153,7 @@
                   "value": "\"I do everything perfectly\"",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -184,6 +190,7 @@
                   "value": "Instead, you can ask:",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -199,6 +206,7 @@
                   "value": "- Is the thought realistic? What are other explanations? \n- What happens if I continue to believe this thought?\n - What would I tell a friend if he/she had this thought?",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -214,6 +222,7 @@
                   "value": "\"This is hard, but you are trying your best, and we will work together to find a solution\"",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -287,6 +296,7 @@
                       "value": "\"It’s your fault\"",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -302,6 +312,7 @@
                       "value": "\"Let’s come up with a solution together\"",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -325,6 +336,7 @@
                       "value": "\"I lost my job\"",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -340,6 +352,7 @@
                       "value": "\"I learned a lot in my job – that will help me find another one\"",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -363,6 +376,7 @@
                       "value": "\"Nobody likes me\"",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -378,6 +392,7 @@
                       "value": "\"Last week I did have a great time with...\"",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -401,6 +416,7 @@
                       "value": "\"Bad things always happen to me\"",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -416,6 +432,7 @@
                       "value": "\"This good thing happened the other day...\"",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,

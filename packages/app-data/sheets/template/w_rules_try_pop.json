@@ -14,6 +14,7 @@
           "value": "Here are some of the rules other families created:",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -29,6 +30,7 @@
           "value": "* Teen can play outside after finishing homework\n* All family members are eating dinner together\n* Teen 1 does dishes on Sunday and Monday, Teen 2 on Tuesday and Wednesday\n* We speak to each other politely and nicely\n* When listening to music you need to use earphones",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

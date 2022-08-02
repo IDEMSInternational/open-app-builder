@@ -38,6 +38,7 @@
               "value": "Let's discuss what happened in this story.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -57,6 +58,7 @@
                   "value": "Discuss together: \n\n* How do you think @global.w_instruct_teen_girl felt about the way @global.w_instruct_female_caregiver responded?  \n* What could @global.w_instruct_female_caregiver have done differently?",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,

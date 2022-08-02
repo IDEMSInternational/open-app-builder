@@ -62,6 +62,7 @@
           "value": "Tomorrow a brand new @global.parent_app workshop is ready for you. \n\nTry to complete the @local.workshop_data.in_text_title before starting the new workshop. It won’t take long and will help your teen to follow rules better!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -101,6 +102,7 @@
           "value": "Congratulations, you completed the @local.workshop_data.in_text_title.\n\nTomorrow, a new workshop will help you know what to do when teens show bad (or good) behaviour!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

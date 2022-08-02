@@ -9,6 +9,7 @@
       "value": "You can do the @global.weekly_workshops by yourself OR you can invite some other family members or friends to join you - you will learn a lot from each other. It's up to you!",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -39,6 +40,7 @@
       "value": "How would you like to do your @global.weekly_workshops?",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -221,6 +223,7 @@
           "value": "Can you think of a name for your group?",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -386,6 +389,7 @@
       "value": "Which day of the week would you like to do your @global.weekly_workshops?",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -418,6 +422,7 @@
       "value": "Monday",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -433,6 +438,7 @@
       "value": "Tuesday",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -448,6 +454,7 @@
       "value": "Wednesday",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -463,6 +470,7 @@
       "value": "Thursday",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -478,6 +486,7 @@
       "value": "Friday",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -493,6 +502,7 @@
       "value": "Saturday",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -508,6 +518,7 @@
       "value": "Sunday",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -801,6 +812,7 @@
           "value": "Great! We will unlock a new workshop for your group every week. This allows all of you to try what you learned with your families before building the next skill.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -832,6 +844,7 @@
           "value": "Great! We will unlock a new workshop for you every week. This allows you to try what you learned with your family before building the next skill.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -881,6 +894,7 @@
       "value": "You can always change these settings in your @global.weekly_workshop_options.",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

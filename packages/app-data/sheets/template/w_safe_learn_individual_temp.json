@@ -38,6 +38,7 @@
               "value": "Safety Plan",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -53,6 +54,7 @@
               "value": "To keep our teens safe, we need to understand the dangerous situations they could get into!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -99,6 +101,7 @@
               "value": "Every time you plan or keep a safety plan, click the @global.parent_point and celebrate your success!",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -161,6 +164,7 @@
                       "value": "Let’s make two maps together of safe and unsafe places: \n* A map of our community \n* A map of apps/websites we use online \n\nYou’ll do the same with your teen as home practice this week - if your teen is here now, you can do it together now!",
                       "_translations": {
                         "value": {
+                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,

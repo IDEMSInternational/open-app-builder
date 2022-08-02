@@ -47,6 +47,7 @@
               "value": "Let's talk about what has changed.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -66,6 +67,7 @@
                   "value": "Discuss together:\n* What has changed in your family?\n* What are you proud of that you have done?\n\nRemember to praise and encourage each other!",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,

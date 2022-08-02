@@ -66,6 +66,7 @@
               "value": "Positive instructions help to see more and more good behaviour! \n\nComplete the @local.workshop_data.in_text_title to get some ideas on how this could work in your family.",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

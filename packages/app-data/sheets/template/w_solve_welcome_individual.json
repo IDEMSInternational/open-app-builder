@@ -66,6 +66,7 @@
                   "value": "We care about you, and how life is treating you.",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -81,6 +82,7 @@
                   "value": "You are a star. And you are making a real difference. Be proud of yourself.",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -96,6 +98,7 @@
                   "value": "Sorry that things are not easy today. All parents have these days.",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -111,6 +114,7 @@
                   "value": "Sorry that things are not easy today. All parents have these days.",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,

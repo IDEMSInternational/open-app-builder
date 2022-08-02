@@ -18,6 +18,7 @@
               "value": "Have you talked with your teen about your family budget yet?",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

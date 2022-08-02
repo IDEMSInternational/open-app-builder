@@ -62,6 +62,7 @@
               "value": "Bringing teenagers up is hard",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true
@@ -108,6 +109,7 @@
               "value": "You are the best parent your teen could have",
               "_translations": {
                 "value": {
+                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true
@@ -153,7 +155,9 @@
               "name": "slogan_3",
               "value": "Join the 210 million parents who have used our resources",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "parameter_list": {
                 "style": "large center"

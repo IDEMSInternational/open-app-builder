@@ -62,6 +62,7 @@
           "value": "It seems you haven’t finished the @local.workshop_data.in_text_title yet. It won’t take long, and you will get valuable information. \n\nWell done for trying to be a better parent. Tomorrow, you can access a new workshop.",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -92,6 +93,7 @@
           "value": "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access a new workshop to help you relax, enjoy and learn new skills!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

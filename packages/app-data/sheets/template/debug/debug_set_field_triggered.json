@@ -1,0 +1,208 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_set_field_triggered",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "text_box",
+      "name": "text_box",
+      "value": "@fields.debug_tracker_text_box",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "debug_tracker_undefined@local.text_box"
+          ],
+          "_raw": "changed | set_field:debug_tracker_undefined@local.text_box",
+          "_cleaned": "changed | set_field:debug_tracker_undefined@local.text_box"
+        }
+      ],
+      "exclude_from_translation": true,
+      "_nested_name": "text_box",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.debug_tracker_text_box",
+            "matchedExpression": "@fields.debug_tracker_text_box",
+            "type": "fields",
+            "fieldName": "debug_tracker_text_box"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "debug_tracker_undefined@local.text_box",
+                  "matchedExpression": "@local.text_box",
+                  "type": "local",
+                  "fieldName": "text_box"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field:debug_tracker_undefined@local.text_box",
+                "matchedExpression": "@local.text_box",
+                "type": "local",
+                "fieldName": "text_box"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field:debug_tracker_undefined@local.text_box",
+                "matchedExpression": "@local.text_box",
+                "type": "local",
+                "fieldName": "text_box"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@fields.debug_tracker_text_box": [
+          "value"
+        ],
+        "@local.text_box": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "value": "text_box\n---------------------------------------------------\nlocal: @local.text_box   \nfield: @fields.debug_tracker_text_box    \ntriggered: @fields.debug_triggered_text_box",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "name": "text",
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "text_box\n---------------------------------------------------\nlocal: @local.text_box   \nfield: @fields.debug_tracker_text_box    \ntriggered: @fields.debug_triggered_text_box",
+            "matchedExpression": "@local.text_box",
+            "type": "local",
+            "fieldName": "text_box"
+          },
+          {
+            "fullExpression": "text_box\n---------------------------------------------------\nlocal: @local.text_box   \nfield: @fields.debug_tracker_text_box    \ntriggered: @fields.debug_triggered_text_box",
+            "matchedExpression": "@fields.debug_tracker_text_box",
+            "type": "fields",
+            "fieldName": "debug_tracker_text_box"
+          },
+          {
+            "fullExpression": "text_box\n---------------------------------------------------\nlocal: @local.text_box   \nfield: @fields.debug_tracker_text_box    \ntriggered: @fields.debug_triggered_text_box",
+            "matchedExpression": "@fields.debug_triggered_text_box",
+            "type": "fields",
+            "fieldName": "debug_triggered_text_box"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.text_box": [
+          "value"
+        ],
+        "@fields.debug_tracker_text_box": [
+          "value"
+        ],
+        "@fields.debug_triggered_text_box": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "set_field",
+          "args": [
+            "debug_triggered_text_box",
+            "@local.text_box"
+          ],
+          "_raw": "completed | set_field:debug_triggered_text_box:@local.text_box",
+          "_cleaned": "completed | set_field:debug_triggered_text_box:@local.text_box"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "use_completed_chevron",
+          "value": true,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "nav_buttons.use_completed_chevron"
+        }
+      ],
+      "_nested_name": "nav_buttons",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "@local.text_box",
+                  "matchedExpression": "@local.text_box",
+                  "type": "local",
+                  "fieldName": "text_box"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "completed | set_field:debug_triggered_text_box:@local.text_box",
+                "matchedExpression": "@local.text_box",
+                "type": "local",
+                "fieldName": "text_box"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "completed | set_field:debug_triggered_text_box:@local.text_box",
+                "matchedExpression": "@local.text_box",
+                "type": "local",
+                "fieldName": "text_box"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.text_box": [
+          "action_list.0.args.1",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_set_field_triggered.xlsx"
+}

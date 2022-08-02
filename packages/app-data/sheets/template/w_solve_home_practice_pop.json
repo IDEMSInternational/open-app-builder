@@ -14,6 +14,7 @@
           "value": "Some problems other parents solved with their teens:",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -29,6 +30,7 @@
           "value": "* My teenager does not want to go to school\n* I am worried my teenager will get pregnant or will get someone pregnant\n* I am worried about what my teen does online\n* My teenager is hanging out with bad friends\n* My teenager is lazy\n* My teenager is not doing their school work\n* My teenager might be using drugs",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

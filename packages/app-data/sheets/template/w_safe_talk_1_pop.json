@@ -14,6 +14,7 @@
           "value": "The situation was risky because...",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -29,6 +30,7 @@
           "value": "* The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts \n* @global.w_safe_teen_girl_1's friend was encouraging her  \n* Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things \n* Many girls in our communities get pregnant or catch HIV from older men \n* There were no other trusted adults to advise @global.w_safe_teen_girl_1",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

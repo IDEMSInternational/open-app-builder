@@ -10,6 +10,7 @@
       "value": "Take a deep breath and pause before responding",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -24,6 +25,7 @@
       "value": "Listen to your teen",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -38,6 +40,7 @@
       "value": "Praise your teen for sharing",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -52,6 +55,7 @@
       "value": "Use problem solving skills",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -66,6 +70,7 @@
       "value": "Work out where you can get help",
       "_translations": {
         "value": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

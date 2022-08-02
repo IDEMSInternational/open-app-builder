@@ -42,6 +42,7 @@
                   "value": "This is fantastic, especially in such difficult times as this. You are a star.",
                   "_translations": {
                     "value": {
+                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,

@@ -18,6 +18,7 @@
       "title": "Welcome and Self-Care",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -25,6 +26,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -32,6 +34,7 @@
           "za_zu": true
         },
         "short_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -39,6 +42,7 @@
           "za_zu": true
         },
         "tools": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -46,11 +50,13 @@
           "za_zu": true
         },
         "caregiver_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -97,6 +103,7 @@
       "title": "One-on-One Time",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -104,6 +111,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -111,6 +119,7 @@
           "za_zu": true
         },
         "tools": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -118,11 +127,13 @@
           "za_zu": true
         },
         "caregiver_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -165,6 +176,7 @@
       "title": "Praise",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -172,6 +184,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -179,6 +192,7 @@
           "za_zu": true
         },
         "tools": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -186,11 +200,13 @@
           "za_zu": true
         },
         "caregiver_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -233,6 +249,7 @@
       "title": "Positive Instructions",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -240,6 +257,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -247,6 +265,7 @@
           "za_zu": true
         },
         "tools": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -254,11 +273,13 @@
           "za_zu": true
         },
         "caregiver_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -301,6 +322,7 @@
       "title": "Managing Stress",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -308,6 +330,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -315,6 +338,7 @@
           "za_zu": true
         },
         "tools": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -322,11 +346,13 @@
           "za_zu": true
         },
         "caregiver_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -369,6 +395,7 @@
       "title": "Family Budgets",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -376,6 +403,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -383,6 +411,7 @@
           "za_zu": true
         },
         "tools": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -390,11 +419,13 @@
           "za_zu": true
         },
         "caregiver_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -437,6 +468,7 @@
       "title": "Rules",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -444,6 +476,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -451,6 +484,7 @@
           "za_zu": true
         },
         "tools": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -458,11 +492,13 @@
           "za_zu": true
         },
         "caregiver_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -505,6 +541,7 @@
       "title": "Calm Consequences",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -512,6 +549,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -519,6 +557,7 @@
           "za_zu": true
         },
         "tools": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -526,11 +565,13 @@
           "za_zu": true
         },
         "caregiver_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -573,6 +614,7 @@
       "title": "Problem Solving",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -580,6 +622,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -587,6 +630,7 @@
           "za_zu": true
         },
         "tools": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -594,11 +638,13 @@
           "za_zu": true
         },
         "caregiver_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -641,6 +687,7 @@
       "title": "Teen Safety",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -648,6 +695,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -655,6 +703,7 @@
           "za_zu": true
         },
         "tools": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -662,11 +711,13 @@
           "za_zu": true
         },
         "caregiver_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -709,6 +760,7 @@
       "title": "Dealing with Crisis",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -716,6 +768,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -723,6 +776,7 @@
           "za_zu": true
         },
         "tools": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -730,11 +784,13 @@
           "za_zu": true
         },
         "caregiver_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
         },
         "teen_testimonial_script": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -776,6 +832,7 @@
       "title": "Celebration and Next Steps",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -783,6 +840,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -790,6 +848,7 @@
           "za_zu": true
         },
         "tools": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

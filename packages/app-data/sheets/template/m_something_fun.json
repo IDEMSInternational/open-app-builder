@@ -133,6 +133,7 @@
           "value": "Here is a fun activity to do with your teen!",
           "_translations": {
             "value": {
+              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

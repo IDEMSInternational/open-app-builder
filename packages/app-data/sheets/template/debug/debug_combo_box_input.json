@@ -1,0 +1,74 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_combo_box_input",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "answer_list",
+      "value": [
+        "name: name_1 | text: This is text 1",
+        "name: name_2 | text: This is text 2",
+        "name: name_3 | text: This is text 3"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "answer_list"
+    },
+    {
+      "type": "combo_box",
+      "name": "combo_box",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "answer_list": "@local.answer_list",
+        "placeholder": "Click here to answer",
+        "input_allowed": "true",
+        "answer_placeholder": "Type your own"
+      },
+      "_nested_name": "combo_box",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_result",
+      "value": "Local combo box variable: @local.combo_box",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_result",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Local combo box variable: @local.combo_box",
+            "matchedExpression": "@local.combo_box",
+            "type": "local",
+            "fieldName": "combo_box"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.combo_box": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_combo_box.xlsx"
+}

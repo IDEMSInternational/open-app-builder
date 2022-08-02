@@ -1,0 +1,65 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_go_to_1",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text",
+      "value": "This is the first template",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text"
+    },
+    {
+      "type": "button",
+      "name": "button_go_to_1",
+      "value": "Go to the second template",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "debug_go_to_2"
+          ],
+          "_raw": "click | go_to:debug_go_to_2",
+          "_cleaned": "click | go_to:debug_go_to_2"
+        }
+      ],
+      "exclude_from_translation": true,
+      "_nested_name": "button_go_to_1"
+    },
+    {
+      "type": "text",
+      "name": "go_to_field",
+      "value": "Value of debug_go_to_field: @fields.debug_go_to_field",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "go_to_field",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Value of debug_go_to_field: @fields.debug_go_to_field",
+            "matchedExpression": "@fields.debug_go_to_field",
+            "type": "fields",
+            "fieldName": "debug_go_to_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.debug_go_to_field": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_double_go_to.xlsx"
+}

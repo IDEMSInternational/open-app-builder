@@ -1,0 +1,18 @@
+{
+  "flow_type": "template",
+  "flow_name": "comp_latex",
+  "status": "released",
+  "flow_subtype": "component_demo",
+  "rows": [
+    {
+      "type": "latex",
+      "name": "latex",
+      "value": "You can write text that contains expressions inline like this: $\\sum_{i=1}^n(x_i^2 - \\overline{x}^2)$, by using the format \\$expression\\$.\nYou also can write expressions in display mode as follows: $$\\sum_{i=1}^n(x_i^2 - \\overline{x}^2)$$\nThis is achieved by using a double \\$ symbol, like \\$\\$expression\\$\\$.\nYou can escape the \\$ by using \\\\$ in the text input.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "latex"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/component_sheets/component_latex.xlsx"
+}

@@ -14,6 +14,7 @@
       "title": "Relax",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -21,6 +22,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -28,6 +30,7 @@
           "za_zu": true
         },
         "description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -35,6 +38,7 @@
           "za_zu": true
         },
         "mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -42,6 +46,7 @@
           "za_zu": true
         },
         "short_mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -81,6 +86,7 @@
       "title": "Treat yourself well",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -88,6 +94,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -95,6 +102,7 @@
           "za_zu": true
         },
         "description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -102,6 +110,7 @@
           "za_zu": true
         },
         "mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -109,6 +118,7 @@
           "za_zu": true
         },
         "short_mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -148,6 +158,7 @@
       "title": "Praise yourself",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -155,6 +166,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -162,6 +174,7 @@
           "za_zu": true
         },
         "description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -169,6 +182,7 @@
           "za_zu": true
         },
         "mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -176,6 +190,7 @@
           "za_zu": true
         },
         "short_mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -215,6 +230,7 @@
       "title": "One-on-one time",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -222,6 +238,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -229,6 +246,7 @@
           "za_zu": true
         },
         "description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -236,6 +254,7 @@
           "za_zu": true
         },
         "mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -243,6 +262,7 @@
           "za_zu": true
         },
         "short_mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -282,6 +302,7 @@
       "title": "Praise your teen",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -289,6 +310,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -296,6 +318,7 @@
           "za_zu": true
         },
         "description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -303,6 +326,7 @@
           "za_zu": true
         },
         "mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -310,6 +334,7 @@
           "za_zu": true
         },
         "short_mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -349,6 +374,7 @@
       "title": "Get positive",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -356,6 +382,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -363,6 +390,7 @@
           "za_zu": true
         },
         "description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -370,6 +398,7 @@
           "za_zu": true
         },
         "mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -377,6 +406,7 @@
           "za_zu": true
         },
         "short_mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -416,6 +446,7 @@
       "title": "Breathe not yell",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -423,6 +454,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -430,6 +462,7 @@
           "za_zu": true
         },
         "description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -437,6 +470,7 @@
           "za_zu": true
         },
         "mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -444,6 +478,7 @@
           "za_zu": true
         },
         "short_mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -483,6 +518,7 @@
       "title": "Good money choice",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -490,6 +526,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -497,6 +534,7 @@
           "za_zu": true
         },
         "description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -504,6 +542,7 @@
           "za_zu": true
         },
         "mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -511,6 +550,7 @@
           "za_zu": true
         },
         "short_mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -550,6 +590,7 @@
       "title": "Calm consequence",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -557,6 +598,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -564,6 +606,7 @@
           "za_zu": true
         },
         "description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -571,6 +614,7 @@
           "za_zu": true
         },
         "mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -578,6 +622,7 @@
           "za_zu": true
         },
         "short_mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -617,6 +662,7 @@
       "title": "Safe",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -624,6 +670,7 @@
           "za_zu": true
         },
         "in_text_title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -631,6 +678,7 @@
           "za_zu": true
         },
         "description": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -638,6 +686,7 @@
           "za_zu": true
         },
         "mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -645,6 +694,7 @@
           "za_zu": true
         },
         "short_mark_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

@@ -8,6 +8,7 @@
       "title": "Welcome to @global.parent_app",
       "_translations": {
         "title": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -15,6 +16,7 @@
           "za_zu": true
         },
         "message_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -28,6 +30,7 @@
       "message_text": "<p>This big button takes you to your @global.weekly_workshops. </p>",
       "_translations": {
         "message_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -41,6 +44,7 @@
       "message_text": "<p> Each week you will unlock a new workshop focusing on a different parenting skill. </p>",
       "_translations": {
         "message_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -54,6 +58,7 @@
       "message_text": "<p>The round button appears when a new workshop is ready for you.</p>",
       "_translations": {
         "message_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -67,6 +72,7 @@
       "message_text": "<p>Each new parenting skill comes with a @global.parent_point.</p>",
       "_translations": {
         "message_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -80,6 +86,7 @@
       "message_text": "<p>Use @global.parent_points to celebrate your achievements!</p>",
       "_translations": {
         "message_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -92,7 +99,9 @@
       "type": "step",
       "message_text": "<p>Find lots of helpful resources in the @global.parent_centre.</p>\n\n<p>You can get instant access to the Essential Tools from all @global.weekly_workshops.</p>",
       "_translations": {
-        "message_text": {}
+        "message_text": {
+          "tz_sw": true
+        }
       },
       "template_component_name": "tile_parent_centre",
       "route": "template/home_screen"
@@ -102,6 +111,7 @@
       "message_text": "<p>Check out the extra relaxation and parenting activities!</p>\n\n<p>You can also get quick parenting tips and technical support.</p>",
       "_translations": {
         "message_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
@@ -115,6 +125,7 @@
       "message_text": "<p>Have a look around! Wherever you start, just the fact you are here shows you care.</p>",
       "_translations": {
         "message_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true
