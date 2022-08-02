@@ -296,7 +296,6 @@
               "value": "You will get more support in the @local.workshop_data.in_text_title.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -353,7 +352,6 @@
               "value": "You can get more support in the @local.workshop_data.in_text_title.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -384,7 +382,6 @@
               "value": "Start the @local.workshop_data.in_text_title",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -496,7 +493,6 @@
               "value": "Finish the @local.workshop_data.in_text_title to get more support.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -527,7 +523,6 @@
               "value": "Continue the @local.workshop_data.in_text_title",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -639,7 +634,6 @@
               "value": "Re-access the @local.workshop_data.in_text_title",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

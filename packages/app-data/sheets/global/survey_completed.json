@@ -35,7 +35,6 @@
       "value": "Tap and type",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -50,7 +49,6 @@
       "value": "Tap and choose",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -65,7 +63,6 @@
       "value": "Type your own",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -80,7 +77,6 @@
       "value": "I've understood this. Don't show me this message again.",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

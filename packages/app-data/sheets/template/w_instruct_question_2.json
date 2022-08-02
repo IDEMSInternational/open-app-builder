@@ -5,6 +5,105 @@
   "status": "released",
   "rows": [
     {
+      "name": "answer_1",
+      "value": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
+      "_translations": {
+        "value": {
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "answer_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
+            "matchedExpression": "@global.w_instruct_teen_girl",
+            "type": "global",
+            "fieldName": "w_instruct_teen_girl"
+          },
+          {
+            "fullExpression": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
+            "matchedExpression": "@global.w_instruct_female_caregiver",
+            "type": "global",
+            "fieldName": "w_instruct_female_caregiver"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.w_instruct_teen_girl": [
+          "value"
+        ],
+        "@global.w_instruct_female_caregiver": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "answer_2",
+      "value": "@global.w_instruct_female_caregiver was able to stay calm",
+      "_translations": {
+        "value": {
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "answer_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.w_instruct_female_caregiver was able to stay calm",
+            "matchedExpression": "@global.w_instruct_female_caregiver",
+            "type": "global",
+            "fieldName": "w_instruct_female_caregiver"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.w_instruct_female_caregiver": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "answer_3",
+      "value": "@global.w_instruct_female_caregiver kept a positive attitude",
+      "_translations": {
+        "value": {
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "answer_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.w_instruct_female_caregiver kept a positive attitude",
+            "matchedExpression": "@global.w_instruct_female_caregiver",
+            "type": "global",
+            "fieldName": "w_instruct_female_caregiver"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.w_instruct_female_caregiver": [
+          "value"
+        ]
+      }
+    },
+    {
       "type": "template",
       "name": "question_time",
       "value": "question_time",
@@ -94,7 +193,6 @@
                       "value": "How did @global.w_instruct_teen_girl and @global.w_instruct_female_caregiver feel now?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -180,7 +278,6 @@
                       "value": "Why do you think the situation went better for @global.w_instruct_female_caregiver this time?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -209,9 +306,9 @@
                     {
                       "name": "answer_list",
                       "value": [
-                        "name:name_1 | text:@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
-                        "name:name_2 | text:@global.w_instruct_female_caregiver was able to stay calm",
-                        "name:name_3 | text:@global.w_instruct_female_caregiver kept a positive attitude"
+                        "name:name_1 | text:@local.answer_1",
+                        "name:name_2 | text:@local.answer_2",
+                        "name:name_3 | text:@local.answer_3"
                       ],
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.answer_list",
@@ -219,43 +316,38 @@
                         "value": {
                           "0": [
                             {
-                              "fullExpression": "name:name_1 | text:@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
-                              "matchedExpression": "@global.w_instruct_teen_girl",
-                              "type": "global",
-                              "fieldName": "w_instruct_teen_girl"
-                            },
-                            {
-                              "fullExpression": "name:name_1 | text:@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
-                              "matchedExpression": "@global.w_instruct_female_caregiver",
-                              "type": "global",
-                              "fieldName": "w_instruct_female_caregiver"
+                              "fullExpression": "name:name_1 | text:@local.answer_1",
+                              "matchedExpression": "@local.answer_1",
+                              "type": "local",
+                              "fieldName": "answer_1"
                             }
                           ],
                           "1": [
                             {
-                              "fullExpression": "name:name_2 | text:@global.w_instruct_female_caregiver was able to stay calm",
-                              "matchedExpression": "@global.w_instruct_female_caregiver",
-                              "type": "global",
-                              "fieldName": "w_instruct_female_caregiver"
+                              "fullExpression": "name:name_2 | text:@local.answer_2",
+                              "matchedExpression": "@local.answer_2",
+                              "type": "local",
+                              "fieldName": "answer_2"
                             }
                           ],
                           "2": [
                             {
-                              "fullExpression": "name:name_3 | text:@global.w_instruct_female_caregiver kept a positive attitude",
-                              "matchedExpression": "@global.w_instruct_female_caregiver",
-                              "type": "global",
-                              "fieldName": "w_instruct_female_caregiver"
+                              "fullExpression": "name:name_3 | text:@local.answer_3",
+                              "matchedExpression": "@local.answer_3",
+                              "type": "local",
+                              "fieldName": "answer_3"
                             }
                           ]
                         }
                       },
                       "_dynamicDependencies": {
-                        "@global.w_instruct_teen_girl": [
+                        "@local.answer_1": [
                           "value.0"
                         ],
-                        "@global.w_instruct_female_caregiver": [
-                          "value.0",
-                          "value.1",
+                        "@local.answer_2": [
+                          "value.1"
+                        ],
+                        "@local.answer_3": [
                           "value.2"
                         ]
                       }
@@ -284,7 +376,6 @@
               "value": "Positive instructions can work with your teen too!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

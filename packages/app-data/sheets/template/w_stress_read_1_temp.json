@@ -38,7 +38,6 @@
               "value": "Let’s look at an example of how stress can sometimes just get too much, for all of us:",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -73,7 +72,6 @@
                       "value": "@global.w_stress_male_caregiver lost his job. He was sitting at home feeling frustrated and stressed, when @global.w_stress_teen_boy_1 entered.",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -135,7 +133,6 @@
                           "value": "@global.w_stress_teen_boy_1: “Can I have money to buy some airtime?”  \n\n@global.w_stress_male_caregiver: “Leave me alone and mind your own business!”",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
                               "za_af": true,
                               "za_st": true,
                               "za_tn": true,
@@ -197,7 +194,6 @@
                               "value": "@global.w_stress_teen_boy_1: “What did I do? You never listen!”  \n\n@global.w_stress_male_caregiver: “I said leave me alone or you will get a beating!”",
                               "_translations": {
                                 "value": {
-                                  "tz_sw": true,
                                   "za_af": true,
                                   "za_st": true,
                                   "za_tn": true,
@@ -259,7 +255,6 @@
                                   "value": "@global.w_stress_girl: “Look! I have made a house!”",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
                                       "za_af": true,
                                       "za_st": true,
                                       "za_tn": true,
@@ -312,7 +307,6 @@
                                       "value": "@global.w_stress_teen_boy_1: “Who cares about your stupid house!”",
                                       "_translations": {
                                         "value": {
-                                          "tz_sw": true,
                                           "za_af": true,
                                           "za_st": true,
                                           "za_tn": true,

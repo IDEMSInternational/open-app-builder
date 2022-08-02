@@ -65,7 +65,6 @@
           "value": "make a budget together with their family",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -81,7 +80,6 @@
           "value": "Did you have any challenges when making your budget together?",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -97,7 +95,6 @@
           "value": "What whas difficult for you about making your budget together?",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -113,7 +110,6 @@
           "value": "I did not want to tell my family how much I earn.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -129,7 +125,6 @@
           "value": "You don’t have to reveal the exact amount you earn; you could give an estimate. You could say, “In this household, we have @global.currency@global.monthly_income_estimate every month” rather than, “I make @global.currency@global.monthly_income_precise”.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -185,7 +180,6 @@
           "value": "When budgeting, we could not agree on what should fall under needs and what should fall under wants.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -201,7 +195,6 @@
           "value": "People’s wants and needs are different sometimes. Talking about them together can help you and your teen to understand each other, respect your differences, and see where you can compromise.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -217,7 +210,6 @@
           "value": "I did not understand what to do.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -233,7 +225,6 @@
           "value": "I’m sorry to hear this. I know it can be difficult! Why don’t we go through it again? Your teen or other family members can join and help you!",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -291,7 +282,6 @@
           "value": "My teen did not want to do the budgeting with me.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -307,7 +297,6 @@
           "value": "Try making the budget with other adults in your home first. Your teen may get interested in what you are doing. \n\nMaking a budget may sound serious but try to make it fun – make it a game during one-on-one time! Or you can try to make the budget for @global.w_money_grandma first. \n\nRemember to praise them when you are done!",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

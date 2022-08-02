@@ -208,7 +208,6 @@
       "value": "Sorry to hear the tips did not help you.",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -224,7 +223,6 @@
       "value": "Do you want to share with us what you think would help you?",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -331,7 +329,6 @@
       "value": "Thank you for sharing! You are an awesome parent for trying to spend time with your teen. It makes all the difference. Keep up the good work, and remember, I am always here to support!",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

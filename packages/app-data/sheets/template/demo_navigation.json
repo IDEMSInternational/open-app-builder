@@ -179,7 +179,6 @@
           "value": "Unlock workshops",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -423,7 +422,6 @@
           "value": "Read Together",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -650,7 +648,6 @@
           "value": "Try it Together",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -1032,7 +1029,6 @@
           "value": "Reset App",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

@@ -5,6 +5,111 @@
   "status": "released",
   "rows": [
     {
+      "name": "answer_1",
+      "value": "Recognise why he feels stressed",
+      "_translations": {
+        "value": {
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "answer_1"
+    },
+    {
+      "name": "answer_2",
+      "value": "Take a deep breath and speak calmly",
+      "_translations": {
+        "value": {
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "answer_2"
+    },
+    {
+      "name": "answer_3",
+      "value": "Show he understands his teen’s feelings",
+      "_translations": {
+        "value": {
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "answer_3"
+    },
+    {
+      "name": "answer_4",
+      "value": "Think about solutions together with @global.w_stress_teen_boy_1",
+      "_translations": {
+        "value": {
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "answer_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Think about solutions together with @global.w_stress_teen_boy_1",
+            "matchedExpression": "@global.w_stress_teen_boy_1",
+            "type": "global",
+            "fieldName": "w_stress_teen_boy_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.w_stress_teen_boy_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "answer_5",
+      "value": "Do something positive together with @global.w_stress_teen_boy_1",
+      "_translations": {
+        "value": {
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "answer_5",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Do something positive together with @global.w_stress_teen_boy_1",
+            "matchedExpression": "@global.w_stress_teen_boy_1",
+            "type": "global",
+            "fieldName": "w_stress_teen_boy_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.w_stress_teen_boy_1": [
+          "value"
+        ]
+      }
+    },
+    {
       "type": "template",
       "name": "question_time",
       "value": "question_time",
@@ -38,7 +143,6 @@
               "value": "Let's think about what happened in this story.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -79,7 +183,6 @@
                       "value": "How do you think @global.w_stress_teen_boy_1 felt?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -150,7 +253,6 @@
                       "value": "And @global.w_stress_male_caregiver?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -221,7 +323,6 @@
                       "value": "And @global.w_stress_girl?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -263,7 +364,6 @@
                       "value": "Each of them was feeling upset for their own reason!",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -303,7 +403,6 @@
                       "value": "What could @global.w_stress_male_caregiver have done differently?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -332,37 +431,72 @@
                     {
                       "name": "answer_list",
                       "value": [
-                        "name:name_1 | text:Recognise why he feels stressed",
-                        "name:name_2 | text:Take a deep breath and speak calmly",
-                        "name:name_3 | text:Show he understands his teen’s feelings",
-                        "name:name_4 | text:Think about solutions together with @global.w_stress_teen_boy_1",
-                        "name:name_5 | text:Do something positive together with @global.w_stress_teen_boy_1"
+                        "name:name_1 | text:@local.answer_1",
+                        "name:name_2 | text:@local.answer_2",
+                        "name:name_3 | text:@local.answer_3",
+                        "name:name_4 | text:@local.answer_4",
+                        "name:name_5 | text:@local.answer_5"
                       ],
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_4.answer_list",
                       "_dynamicFields": {
                         "value": {
+                          "0": [
+                            {
+                              "fullExpression": "name:name_1 | text:@local.answer_1",
+                              "matchedExpression": "@local.answer_1",
+                              "type": "local",
+                              "fieldName": "answer_1"
+                            }
+                          ],
+                          "1": [
+                            {
+                              "fullExpression": "name:name_2 | text:@local.answer_2",
+                              "matchedExpression": "@local.answer_2",
+                              "type": "local",
+                              "fieldName": "answer_2"
+                            }
+                          ],
+                          "2": [
+                            {
+                              "fullExpression": "name:name_3 | text:@local.answer_3",
+                              "matchedExpression": "@local.answer_3",
+                              "type": "local",
+                              "fieldName": "answer_3"
+                            }
+                          ],
                           "3": [
                             {
-                              "fullExpression": "name:name_4 | text:Think about solutions together with @global.w_stress_teen_boy_1",
-                              "matchedExpression": "@global.w_stress_teen_boy_1",
-                              "type": "global",
-                              "fieldName": "w_stress_teen_boy_1"
+                              "fullExpression": "name:name_4 | text:@local.answer_4",
+                              "matchedExpression": "@local.answer_4",
+                              "type": "local",
+                              "fieldName": "answer_4"
                             }
                           ],
                           "4": [
                             {
-                              "fullExpression": "name:name_5 | text:Do something positive together with @global.w_stress_teen_boy_1",
-                              "matchedExpression": "@global.w_stress_teen_boy_1",
-                              "type": "global",
-                              "fieldName": "w_stress_teen_boy_1"
+                              "fullExpression": "name:name_5 | text:@local.answer_5",
+                              "matchedExpression": "@local.answer_5",
+                              "type": "local",
+                              "fieldName": "answer_5"
                             }
                           ]
                         }
                       },
                       "_dynamicDependencies": {
-                        "@global.w_stress_teen_boy_1": [
-                          "value.3",
+                        "@local.answer_1": [
+                          "value.0"
+                        ],
+                        "@local.answer_2": [
+                          "value.1"
+                        ],
+                        "@local.answer_3": [
+                          "value.2"
+                        ],
+                        "@local.answer_4": [
+                          "value.3"
+                        ],
+                        "@local.answer_5": [
                           "value.4"
                         ]
                       }

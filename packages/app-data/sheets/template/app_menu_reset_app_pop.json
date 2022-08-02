@@ -9,7 +9,6 @@
       "value": "Reset App",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -25,7 +24,6 @@
       "value": "By clicking in the button below you will reset the app to its initial settings. \n\nThis means that all your progress and usage data will be deleted and your app will work as if it was just installed for the first time.\n\nNOTE: Resetting the app is permanent and you will not be able to recover any information.",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -41,7 +39,6 @@
       "value": "Reset App",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

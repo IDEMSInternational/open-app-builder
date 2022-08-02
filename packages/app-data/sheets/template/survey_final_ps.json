@@ -46,7 +46,6 @@
               "value": "Great that this has been a good week!\n\nWe will keep reminding you to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -62,7 +61,6 @@
               "value": "Great that you felt calm most of the week! \n\nWe will keep reminding you to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -78,7 +76,6 @@
               "value": "We understand how stressful life can be. We will keep reminding you to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

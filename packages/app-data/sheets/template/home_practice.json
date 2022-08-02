@@ -159,7 +159,6 @@
       "value": "Next week, you’ll share with your group how your home practice went. You can also support and remind each other during the week.",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -250,7 +249,6 @@
           "value": "Home Practice",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -266,7 +264,6 @@
           "value": "Small actions, big results! Parents who practice their workshop skills at home get better results.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -374,7 +371,6 @@
                   "value": "Hear a teen's testimonial",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true
@@ -418,7 +414,6 @@
                   "value": "Read a teen's testimonial",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true

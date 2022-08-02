@@ -5,6 +5,81 @@
   "status": "released",
   "rows": [
     {
+      "name": "answer_1",
+      "value": "Said something nice first",
+      "_translations": {
+        "value": {
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "answer_1"
+    },
+    {
+      "name": "answer_2",
+      "value": "Spoken to @global.w_instruct_teen_girl in a calm voice",
+      "_translations": {
+        "value": {
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "answer_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Spoken to @global.w_instruct_teen_girl in a calm voice",
+            "matchedExpression": "@global.w_instruct_teen_girl",
+            "type": "global",
+            "fieldName": "w_instruct_teen_girl"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.w_instruct_teen_girl": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "answer_3",
+      "value": "Told @global.w_instruct_teen_girl what she wants her to do",
+      "_translations": {
+        "value": {
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "answer_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Told @global.w_instruct_teen_girl what she wants her to do",
+            "matchedExpression": "@global.w_instruct_teen_girl",
+            "type": "global",
+            "fieldName": "w_instruct_teen_girl"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.w_instruct_teen_girl": [
+          "value"
+        ]
+      }
+    },
+    {
       "type": "template",
       "name": "question_time",
       "value": "question_time",
@@ -63,7 +138,6 @@
                       "value": "How do you think @global.w_instruct_teen_girl felt about the way @global.w_instruct_female_caregiver responded?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -149,7 +223,6 @@
                       "value": "What could @global.w_instruct_female_caregiver have done differently?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -178,35 +251,48 @@
                     {
                       "name": "answer_list",
                       "value": [
-                        "name:name_1 | text:Said something nice first",
-                        "name:name_2 | text:Spoken to @global.w_instruct_teen_girl in a calm voice",
-                        "name:name_3 | text:Told @global.w_instruct_teen_girl what she wants her to do"
+                        "name:name_1 | text:@local.answer_1",
+                        "name:name_2 | text:@local.answer_2",
+                        "name:name_3 | text:@local.answer_3"
                       ],
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.answer_list",
                       "_dynamicFields": {
                         "value": {
+                          "0": [
+                            {
+                              "fullExpression": "name:name_1 | text:@local.answer_1",
+                              "matchedExpression": "@local.answer_1",
+                              "type": "local",
+                              "fieldName": "answer_1"
+                            }
+                          ],
                           "1": [
                             {
-                              "fullExpression": "name:name_2 | text:Spoken to @global.w_instruct_teen_girl in a calm voice",
-                              "matchedExpression": "@global.w_instruct_teen_girl",
-                              "type": "global",
-                              "fieldName": "w_instruct_teen_girl"
+                              "fullExpression": "name:name_2 | text:@local.answer_2",
+                              "matchedExpression": "@local.answer_2",
+                              "type": "local",
+                              "fieldName": "answer_2"
                             }
                           ],
                           "2": [
                             {
-                              "fullExpression": "name:name_3 | text:Told @global.w_instruct_teen_girl what she wants her to do",
-                              "matchedExpression": "@global.w_instruct_teen_girl",
-                              "type": "global",
-                              "fieldName": "w_instruct_teen_girl"
+                              "fullExpression": "name:name_3 | text:@local.answer_3",
+                              "matchedExpression": "@local.answer_3",
+                              "type": "local",
+                              "fieldName": "answer_3"
                             }
                           ]
                         }
                       },
                       "_dynamicDependencies": {
-                        "@global.w_instruct_teen_girl": [
-                          "value.1",
+                        "@local.answer_1": [
+                          "value.0"
+                        ],
+                        "@local.answer_2": [
+                          "value.1"
+                        ],
+                        "@local.answer_3": [
                           "value.2"
                         ]
                       }

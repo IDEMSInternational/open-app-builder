@@ -8,7 +8,6 @@
       "value": "Monday",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -24,7 +23,6 @@
       "value": "Tuesday",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -40,7 +38,6 @@
       "value": "Wednesday",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -56,7 +53,6 @@
       "value": "Thursday",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -72,7 +68,6 @@
       "value": "Friday",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -88,7 +83,6 @@
       "value": "Saturday",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -104,7 +98,6 @@
       "value": "Sunday",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -502,7 +495,6 @@
       "value": "My name",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -650,7 +642,6 @@
       "value": "@global.weekly_workshop day",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -736,7 +727,6 @@
       "value": "I do the workshops...",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -849,7 +839,6 @@
           "value": "My group's name",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -1015,7 +1004,6 @@
       "value": "My group is now doing the workshop...",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -1050,7 +1038,6 @@
       "value": "I am now doing the workshop...",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

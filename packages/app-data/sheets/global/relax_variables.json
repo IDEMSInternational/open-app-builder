@@ -9,7 +9,6 @@
       "value": "My Favourite Relaxes",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -24,7 +23,6 @@
       "value": "All Relaxes",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -39,7 +37,6 @@
       "value": "Random Relax",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -54,7 +51,6 @@
       "value": "This Week's Relax",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -69,7 +65,6 @@
       "value": "Listen & Relax (1-2 minutes)",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -84,7 +79,6 @@
       "value": "Listen & Relax (3-5 minutes)",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -99,7 +93,6 @@
       "value": "Do & Relax (5-10 minutes)",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

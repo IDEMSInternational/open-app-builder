@@ -62,7 +62,6 @@
           "value": "Tomorrow the final @global.parent_app workshop is ready for you. \n\nTry to complete @local.workshop_data.in_text_title before starting the new workshop. That way, you can complete your set of parenting skills and decide what to do next!",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -102,7 +101,6 @@
           "value": "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access the final workshop to reflect on your @global.parent_app journey and on what you can do next!",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

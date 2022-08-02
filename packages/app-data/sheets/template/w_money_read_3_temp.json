@@ -38,7 +38,6 @@
               "value": "Saving is important for one more reason: emergencies! @global.w_money_grandma also learned this along the way:",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -83,7 +82,6 @@
                   "value": "“One night there was a horrible storm that broke my roof. Everything was flooded. I suddenly had to find money to fix the roof. I just felt defeated.”",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
