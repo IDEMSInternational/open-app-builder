@@ -23,12 +23,14 @@ export function isCountryLanguageCode(str: string) {
   return regex.test(str);
 }
 
-interface ITemplateVariables {
+interface ITemplatedStringVariable {
   value?: string;
-  variables?: { [key: string]: ITemplateVariables };
+  variables?: { [key: string]: ITemplatedStringVariable };
 }
 /**
- * Take a string and extract any dynamic text listed within template tags
+ * Take a string and extract any dynamic text listed within delimiter tags
+ * Provides recursive support for deeply nested expressions
+ * 
  * @example
  * ```
  * "Hello {@row.first_name}-{@row.last_name}"
@@ -62,9 +64,9 @@ interface ITemplateVariables {
     } 
  * ```
  */
-export function extractTemplateTags(
+export function extractTemplatedString(
   value: string,
-  variables: ITemplateVariables = {},
+  variables: ITemplatedStringVariable = {},
   nestedName = ""
 ) {
   const [startDelimiter, endDelimiter] = ["{", "}"];
@@ -84,7 +86,7 @@ export function extractTemplateTags(
       };
       // Run again to extract any sibling values
 
-      const sibling = extractTemplateTags(value, variables);
+      const sibling = extractTemplatedString(value, variables);
       if (sibling) {
         value = sibling.value;
         variables = { ...variables, ...sibling.variables };
@@ -99,7 +101,7 @@ export function extractTemplateTags(
   if (variables) {
     nestedName += `${Object.keys(variables).length}.`;
     for (const [key, parent] of Object.entries(variables)) {
-      const nested = extractTemplateTags(parent.value, {}, nestedName);
+      const nested = extractTemplatedString(parent.value, {}, nestedName);
       const { variables: nestedVariables } = nested;
       if (nestedVariables) {
         variables[key] = nested;
