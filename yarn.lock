@@ -8363,6 +8363,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"character-parser@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "character-parser@npm:4.0.0"
+  checksum: 29bd1acf5138adb82d735a7a87d2d11bf2dfaaa0b01b2510402b52ea0706ac5da17a2a0897d47a124cafe9a7914d070b910114a5b90c89c2396e7a0b7c20f20d
+  languageName: node
+  linkType: hard
+
 "chardet@npm:^0.7.0":
   version: 0.7.0
   resolution: "chardet@npm:0.7.0"
@@ -22806,6 +22813,7 @@ __metadata:
     "@types/node-rsa": ^1.1.1
     boxen: ^5.0.1
     chalk: ^4.1.0
+    character-parser: ^4.0.0
     chokidar: ^3.5.3
     commander: ^8.3.0
     data-models: "workspace:*"
