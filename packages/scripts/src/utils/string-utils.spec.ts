@@ -3,9 +3,9 @@ import * as StringUtils from "./string-utils";
 describe("extractTemplatedString", () => {
   const tests = [
     {
-      text: "Hello {@row.first_name}-{@row.last_name}",
+      text: "1. {@row.first_name}-{@row.last_name}",
       expected: {
-        value: "Hello [1]-[2]",
+        value: "1. [1]-[2]",
         variables: {
           "[1]": { value: "@row.first_name" },
           "[2]": { value: "@row.last_name" },
@@ -13,9 +13,9 @@ describe("extractTemplatedString", () => {
       },
     },
     {
-      text: "Hello {@row.{@row.name_field}}",
+      text: "2. {@row.{@row.name_field}}",
       expected: {
-        value: "Hello [1]",
+        value: "2. [1]",
         variables: {
           "[1]": {
             value: "@row.[1.1]",
@@ -29,9 +29,9 @@ describe("extractTemplatedString", () => {
       },
     },
     {
-      text: "Hello {@row.first_name} {@row.{@row.name_field}}",
+      text: "3. {@row.first_name} {@row.{@row.name_field}}",
       expected: {
-        value: "Hello [1] [2]",
+        value: "3. [1] [2]",
         variables: {
           "[1]": {
             value: "@row.first_name",
@@ -47,6 +47,25 @@ describe("extractTemplatedString", () => {
         },
       },
     },
+    {
+      text: "4. {@row.{@row.first_name}_{@row.last_name}}",
+      expected: {
+        value: "4. [1]",
+        variables: {
+          "[1]": {
+            value: "@row.[1.1]_[1.2]",
+            variables: {
+              "[1.1]": {
+                value: "@row.first_name",
+              },
+              "[1.2]": {
+                value: "@row.last_name",
+              },
+            },
+          },
+        },
+      },
+    },
   ];
 
   // Use a function wrapper to allow looping tests
@@ -56,6 +75,7 @@ describe("extractTemplatedString", () => {
       expect(output).toEqual(expected as any);
     });
   }
+
   for (const { text, expected } of tests) {
     execTest(text, expected);
   }

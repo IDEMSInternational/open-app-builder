@@ -86,7 +86,7 @@ export function extractTemplatedString(
       };
       // Run again to extract any sibling values
 
-      const sibling = extractTemplatedString(value, variables);
+      const sibling = extractTemplatedString(value, variables, nestedName);
       if (sibling) {
         value = sibling.value;
         variables = { ...variables, ...sibling.variables };
