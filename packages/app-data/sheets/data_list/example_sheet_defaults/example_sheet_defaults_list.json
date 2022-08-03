@@ -5,46 +5,84 @@
   "flow_subtype": "example_sheet_defaults",
   "rows": [
     {
-      "id": "@default",
-      "text": "ID: @default",
+      "id": "item_1",
+      "text": "ID: item_1",
       "action_list": [
         {
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "example_sheet_default.@default.completed",
+            "example_sheet_default.item_1.completed",
             true
           ],
-          "_raw": "click | set_field : example_sheet_default.@default.completed : true",
-          "_cleaned": "click | set_field : example_sheet_default.@default.completed : true"
+          "_raw": "click | set_field : example_sheet_default.item_1.completed : true",
+          "_cleaned": "click | set_field : example_sheet_default.item_1.completed : true"
         }
       ],
       "exclude_from_translation": true
     },
     {
-      "id": "item_1"
-    },
-    {
       "id": "item_2",
-      "text": "Replacement override text"
+      "text": "Replacement override text",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "example_sheet_default.item_2.completed",
+            true
+          ],
+          "_raw": "click | set_field : example_sheet_default.item_2.completed : true",
+          "_cleaned": "click | set_field : example_sheet_default.item_2.completed : true"
+        }
+      ],
+      "exclude_from_translation": true
     },
     {
       "id": "item_3",
-      "text": "@include_default;\nAdditional override text"
+      "text": "ID: item_3;\nAdditional override text",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "example_sheet_default.item_3.completed",
+            true
+          ],
+          "_raw": "click | set_field : example_sheet_default.item_3.completed : true",
+          "_cleaned": "click | set_field : example_sheet_default.item_3.completed : true"
+        }
+      ],
+      "exclude_from_translation": true
     },
     {
       "id": "item_4",
-      "text": "@omit_default;"
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "example_sheet_default.item_4.completed",
+            true
+          ],
+          "_raw": "click | set_field : example_sheet_default.item_4.completed : true",
+          "_cleaned": "click | set_field : example_sheet_default.item_4.completed : true"
+        }
+      ],
+      "exclude_from_translation": true
     },
     {
       "id": "item_5",
       "action_list": [
         {
           "trigger": "click",
-          "action_id": "@include_default",
-          "args": [],
-          "_raw": "@include_default",
-          "_cleaned": "click | @include_default"
+          "action_id": "set_field",
+          "args": [
+            "example_sheet_default.item_5.completed",
+            true
+          ],
+          "_raw": "click | set_field : example_sheet_default.item_5.completed : true",
+          "_cleaned": "click | set_field : example_sheet_default.item_5.completed : true"
         },
         {
           "trigger": "click",
@@ -56,11 +94,26 @@
           "_raw": "click | set_field : example_sheet_defaults_completed : true",
           "_cleaned": "click | set_field : example_sheet_defaults_completed : true"
         }
-      ]
+      ],
+      "text": "ID: item_5",
+      "exclude_from_translation": true
     },
     {
       "id": "item_6",
-      "text": "undefined",
+      "text": "Eng Title",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "example_sheet_default.item_6.completed",
+            true
+          ],
+          "_raw": "click | set_field : example_sheet_default.item_6.completed : true",
+          "_cleaned": "click | set_field : example_sheet_default.item_6.completed : true"
+        }
+      ],
+      "exclude_from_translation": true,
       "title": "Eng Title",
       "_translations": {
         "title": {}
