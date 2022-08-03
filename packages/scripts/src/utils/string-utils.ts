@@ -34,12 +34,12 @@ interface ITemplateVariables {
  * "Hello {@row.first_name}-{@row.last_name}"
  * // Output
  * { 
-    "value": "Hello %1-%2", 
+    "value": "Hello [1]-[2]", 
     "variables": { 
-      "%1": { 
+      "[1]": { 
         "value": "@row.first_name" 
       }, 
-      "%2": { 
+      "[2]": { 
         "value": "@row.last_name" 
       } 
     } 
@@ -49,12 +49,12 @@ interface ITemplateVariables {
  * "Hello {@row.{@row.name_field}}"
  * // Output
  * { 
-    "value": "Hello %1", 
+    "value": "Hello [1]", 
     "variables": { 
-      "%1": { 
-        "value": "@row.%1", 
+      "[1]: { 
+        "value": "@row.[1.1]", 
         "variables": { 
-          "%1": { 
+          "[1.1]": { 
             "value": "@row.name_field" 
           } 
         } 
@@ -62,18 +62,22 @@ interface ITemplateVariables {
     } 
  * ```
  */
-export function extractTemplateTags(value: string, variables?: ITemplateVariables) {
+export function extractTemplateTags(
+  value: string,
+  variables: ITemplateVariables = {},
+  nestedName = ""
+) {
+  const [startDelimiter, endDelimiter] = ["{", "}"];
+  const [varPrefix, varSuffix] = ["[", "]"];
   // Extract top-level dyanmic values
-  const startIndex = value.indexOf("{");
+  const startIndex = value.indexOf(startDelimiter);
   if (startIndex > -1) {
     try {
-      const { src } = parseUntil(value, "}", {
+      const { src } = parseUntil(value, endDelimiter, {
         start: startIndex + 1,
       });
-      if (!variables) {
-        variables = {};
-      }
-      const variableName = `%${Object.keys(variables).length + 1}`;
+      const variableNumber = Object.keys(variables).length + 1;
+      const variableName = `${varPrefix}${nestedName}${variableNumber}${varSuffix}`;
       value = value.replace(`{${src}}`, variableName);
       variables[variableName] = {
         value: src,
@@ -87,17 +91,19 @@ export function extractTemplateTags(value: string, variables?: ITemplateVariable
       }
     } catch (error) {
       console.error({ error, ctx: this });
+      throw new Error("Template literal parse error");
     }
   }
   // Extract any recursively nested dynamic values
   if (variables) {
+    nestedName += `${Object.keys(variables).length}.`;
     for (const [key, parent] of Object.entries(variables)) {
-      const nested = extractTemplateTags(parent.value);
+      const nested = extractTemplateTags(parent.value, {}, nestedName);
       const { variables: nestedVariables } = nested;
       if (nestedVariables) {
         variables[key] = nested;
       }
     }
   }
-  return { value, variables };
+  return Object.keys(variables).length === 0 ? { value } : { value, variables };
 }
