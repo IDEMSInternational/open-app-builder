@@ -5,12 +5,30 @@
 @function getColorPalette($primary, $secondary, $page-background: null) {
   $result: (
     "color-primary": $primary,
-    "color-primary-light": color.change($primary, $lightness: 80%),
-    "color-primary-lighter": color.change($primary, $lightness: 95%),
+    "color-primary-50": color.change($primary, $lightness: 95%),
+    "color-primary-100": color.change($primary, $lightness: 90%),
+    "color-primary-200": color.change($primary, $lightness: 80%),
+    "color-primary-300": color.change($primary, $lightness: 70%),
+    "color-primary-400": color.change($primary, $lightness: 60%),
+    "color-primary-500": color.change($primary, $lightness: 50%),
+    "color-primary-600": color.change($primary, $lightness: 40%),
+    "color-primary-700": color.change($primary, $lightness: 30%),
+    "color-primary-800": color.change($primary, $lightness: 20%),
+    "color-primary-900": color.change($primary, $lightness: 10%),
     "color-primary-contrast": contrast-colour.choose-contrast-color($primary),
     "color-secondary": $secondary,
     "color-secondary-light": color.change($secondary, $lightness: 80%),
     "color-secondary-lighter": color.change($secondary, $lightness: 95%),
+    "color-secondary-50": color.change($secondary, $lightness: 95%),
+    "color-secondary-100": color.change($secondary, $lightness: 90%),
+    "color-secondary-200": color.change($secondary, $lightness: 80%),
+    "color-secondary-300": color.change($secondary, $lightness: 70%),
+    "color-secondary-400": color.change($secondary, $lightness: 60%),
+    "color-secondary-500": color.change($secondary, $lightness: 50%),
+    "color-secondary-600": color.change($secondary, $lightness: 40%),
+    "color-secondary-700": color.change($secondary, $lightness: 30%),
+    "color-secondary-800": color.change($secondary, $lightness: 20%),
+    "color-secondary-900": color.change($secondary, $lightness: 10%),
     "color-secondary-contrast": contrast-colour.choose-contrast-color($secondary),
     "color-page-background": color.change($primary, $lightness: 95%),
     //  GRADIENTS
@@ -35,13 +53,13 @@
   $colorPalette: $sourceColorPalette;
 
   --ion-color-primary: #{map.get($colorPalette, "color-primary")};
-  --ion-color-primary-light: #{map.get($colorPalette, "color-primary-light")};
-  --ion-color-primary-lighter: #{map.get($colorPalette, "color-primary-lighter")};
+  --ion-color-primary-light: #{map.get($colorPalette, "color-primary-200")};
+  --ion-color-primary-lighter: #{map.get($colorPalette, "color-primary-50")};
   --ion-color-primary-contrast: #{map.get($colorPalette, "color-primary-contrast")};
 
   --ion-color-secondary: #{map.get($colorPalette, "color-secondary")};
-  --ion-color-secondary-light: #{map.get($colorPalette, "color-secondary-light")};
-  --ion-color-secondary-lighter: #{map.get($colorPalette, "color-secondary-lighter")};
+  --ion-color-secondary-light: #{map.get($colorPalette, "color-secondary-200")};
+  --ion-color-secondary-lighter: #{map.get($colorPalette, "color-secondary-50")};
   --ion-color-secondary-contrast: #{map.get($colorPalette, "color-secondary-contrast")};
 
   --ion-background-color: #{map.get($colorPalette, "color-page-background")};
