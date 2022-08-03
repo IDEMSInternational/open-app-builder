@@ -338,6 +338,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_items.xlsx",
     },
+    example_sheet_defaults_list: {
+      flow_type: "data_list",
+      flow_name: "example_sheet_defaults_list",
+      flow_subtype: "example_sheet_defaults",
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_sheet_defaults.xlsx",
+    },
     funders_data_list: {
       flow_type: "data_list",
       flow_name: "funders_data_list",
@@ -2817,6 +2823,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "example_hardcoded_fields",
       comments: "List of fields automatically populated by app",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/hardcoded_variables.xlsx",
+    },
+    example_sheet_defaults: {
+      flow_type: "template",
+      flow_name: "example_sheet_defaults",
+      flow_subtype: "example_sheet_defaults",
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_sheet_defaults.xlsx",
     },
     home_practice: {
       flow_type: "template",
