@@ -5,6 +5,118 @@
   "status": "released",
   "rows": [
     {
+      "name": "answer_1",
+      "value": "They discussed the reasons behind the rule",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "answer_1"
+    },
+    {
+      "name": "answer_2",
+      "value": "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "answer_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
+            "matchedExpression": "@global.w_rules_female_caregiver_1",
+            "type": "global",
+            "fieldName": "w_rules_female_caregiver_1"
+          },
+          {
+            "fullExpression": "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
+            "matchedExpression": "@global.w_rules_teen_boy",
+            "type": "global",
+            "fieldName": "w_rules_teen_boy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.w_rules_female_caregiver_1": [
+          "value"
+        ],
+        "@global.w_rules_teen_boy": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "answer_3",
+      "value": "The rule was clear, specific and fair",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "answer_3"
+    },
+    {
+      "name": "answer_4",
+      "value": "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "answer_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
+            "matchedExpression": "@global.w_rules_female_caregiver_1",
+            "type": "global",
+            "fieldName": "w_rules_female_caregiver_1"
+          },
+          {
+            "fullExpression": "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
+            "matchedExpression": "@global.w_rules_teen_boy",
+            "type": "global",
+            "fieldName": "w_rules_teen_boy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.w_rules_female_caregiver_1": [
+          "value"
+        ],
+        "@global.w_rules_teen_boy": [
+          "value"
+        ]
+      }
+    },
+    {
       "type": "template",
       "name": "question_time",
       "value": "question_time",
@@ -92,52 +204,60 @@
                     {
                       "name": "answer_list",
                       "value": [
-                        "name:name_1 | text:They discussed the reasons behind the rule",
-                        "name:name_2 | text:@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
-                        "name:name_3 | text:The rule was clear, specific and fair",
-                        "name:name_4 | text:@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule"
+                        "name:name_1 | text:@local.answer_1",
+                        "name:name_2 | text:@local.answer_2",
+                        "name:name_3 | text:@local.answer_3",
+                        "name:name_4 | text:@local.answer_4"
                       ],
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.answer_list",
                       "_dynamicFields": {
                         "value": {
+                          "0": [
+                            {
+                              "fullExpression": "name:name_1 | text:@local.answer_1",
+                              "matchedExpression": "@local.answer_1",
+                              "type": "local",
+                              "fieldName": "answer_1"
+                            }
+                          ],
                           "1": [
                             {
-                              "fullExpression": "name:name_2 | text:@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
-                              "matchedExpression": "@global.w_rules_female_caregiver_1",
-                              "type": "global",
-                              "fieldName": "w_rules_female_caregiver_1"
-                            },
+                              "fullExpression": "name:name_2 | text:@local.answer_2",
+                              "matchedExpression": "@local.answer_2",
+                              "type": "local",
+                              "fieldName": "answer_2"
+                            }
+                          ],
+                          "2": [
                             {
-                              "fullExpression": "name:name_2 | text:@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
-                              "matchedExpression": "@global.w_rules_teen_boy",
-                              "type": "global",
-                              "fieldName": "w_rules_teen_boy"
+                              "fullExpression": "name:name_3 | text:@local.answer_3",
+                              "matchedExpression": "@local.answer_3",
+                              "type": "local",
+                              "fieldName": "answer_3"
                             }
                           ],
                           "3": [
                             {
-                              "fullExpression": "name:name_4 | text:@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
-                              "matchedExpression": "@global.w_rules_female_caregiver_1",
-                              "type": "global",
-                              "fieldName": "w_rules_female_caregiver_1"
-                            },
-                            {
-                              "fullExpression": "name:name_4 | text:@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
-                              "matchedExpression": "@global.w_rules_teen_boy",
-                              "type": "global",
-                              "fieldName": "w_rules_teen_boy"
+                              "fullExpression": "name:name_4 | text:@local.answer_4",
+                              "matchedExpression": "@local.answer_4",
+                              "type": "local",
+                              "fieldName": "answer_4"
                             }
                           ]
                         }
                       },
                       "_dynamicDependencies": {
-                        "@global.w_rules_female_caregiver_1": [
-                          "value.1",
-                          "value.3"
+                        "@local.answer_1": [
+                          "value.0"
                         ],
-                        "@global.w_rules_teen_boy": [
-                          "value.1",
+                        "@local.answer_2": [
+                          "value.1"
+                        ],
+                        "@local.answer_3": [
+                          "value.2"
+                        ],
+                        "@local.answer_4": [
                           "value.3"
                         ]
                       }
