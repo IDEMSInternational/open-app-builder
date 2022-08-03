@@ -5,15 +5,10 @@
   "flow_subtype": "example_sheet_defaults",
   "rows": [
     {
-      "type": "@default",
-      "exclude_from_translation": true,
-      "name": "@default",
-      "_nested_name": "@default"
-    },
-    {
       "type": "items",
       "name": "items",
       "value": "@data.example_sheet_defaults_list",
+      "exclude_from_translation": true,
       "rows": [
         {
           "type": "text",
@@ -66,15 +61,7 @@
           "_translations": {
             "value": {}
           },
-          "action_list": [
-            {
-              "trigger": "click",
-              "action_id": "@item.action_list",
-              "args": [],
-              "_raw": "@item.action_list",
-              "_cleaned": "click | @item.action_list"
-            }
-          ],
+          "action_list": "@item.action_list",
           "_nested_name": "items.button_@item.id",
           "_dynamicFields": {
             "name": [
@@ -93,34 +80,14 @@
                 "fieldName": "id"
               }
             ],
-            "action_list": {
-              "0": {
-                "action_id": [
-                  {
-                    "fullExpression": "@item.action_list",
-                    "matchedExpression": "@item.action_list",
-                    "type": "item",
-                    "fieldName": "action_list"
-                  }
-                ],
-                "_raw": [
-                  {
-                    "fullExpression": "@item.action_list",
-                    "matchedExpression": "@item.action_list",
-                    "type": "item",
-                    "fieldName": "action_list"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "click | @item.action_list",
-                    "matchedExpression": "@item.action_list",
-                    "type": "item",
-                    "fieldName": "action_list"
-                  }
-                ]
+            "action_list": [
+              {
+                "fullExpression": "@item.action_list",
+                "matchedExpression": "@item.action_list",
+                "type": "item",
+                "fieldName": "action_list"
               }
-            },
+            ],
             "_nested_name": [
               {
                 "fullExpression": "items.button_@item.id",
@@ -137,9 +104,7 @@
               "_nested_name"
             ],
             "@item.action_list": [
-              "action_list.0.action_id",
-              "action_list.0._raw",
-              "action_list.0._cleaned"
+              "action_list"
             ]
           }
         }
