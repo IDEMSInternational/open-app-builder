@@ -10,7 +10,7 @@
   "scripts": {
     "start": "ts-node src/commands/index.ts",
     "dev": "ts-node-dev --respawn --watch src/**/*.ts src/commands/index.ts",
-    "test": "jasmine-ts",
+    "test": "jasmine-ts --config=jasmine.json",
     "build": "esbuild src/commands/index.ts --bundle --platform=node --target=node12.22 --outfile=build/commands.js",
     "pkg": "pkg . --output ./exec/idems-app-scripts"
   },
@@ -39,10 +39,11 @@
   "devDependencies": {
     "@types/fs-extra": "^9.0.4",
     "@types/inquirer": "^7.3.1",
+    "@types/jasmine": "^3.10.6",
     "@types/node-rsa": "^1.1.1",
     "esbuild": "^0.14.2",
-    "jasmine": "^3.6.3",
-    "jasmine-ts": "^0.3.2",
+    "jasmine": "^3.99.0",
+    "jasmine-ts": "^0.4.0",
     "pkg": "^5.5.1",
     "ts-node": "~7.0.0",
     "ts-node-dev": "^1.0.0"
