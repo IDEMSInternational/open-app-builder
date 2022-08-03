@@ -90,8 +90,9 @@ export function extractTemplateTags(
         variables = { ...variables, ...sibling.variables };
       }
     } catch (error) {
-      console.error({ error, ctx: this });
-      throw new Error("Template literal parse error");
+      // Likely no closing tag detected
+      console.error({ value, variables, nestedName });
+      throw error;
     }
   }
   // Extract any recursively nested dynamic values
