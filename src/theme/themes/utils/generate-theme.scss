@@ -53,13 +53,29 @@
   $colorPalette: $sourceColorPalette;
 
   --ion-color-primary: #{map.get($colorPalette, "color-primary")};
-  --ion-color-primary-light: #{map.get($colorPalette, "color-primary-200")};
-  --ion-color-primary-lighter: #{map.get($colorPalette, "color-primary-50")};
+  --ion-color-primary-50: #{map.get($colorPalette, "color-primary-50")};
+  --ion-color-primary-100: #{map.get($colorPalette, "color-primary-100")};
+  --ion-color-primary-200: #{map.get($colorPalette, "color-primary-200")};
+  --ion-color-primary-300: #{map.get($colorPalette, "color-primary-300")};
+  --ion-color-primary-400: #{map.get($colorPalette, "color-primary-400")};
+  --ion-color-primary-500: #{map.get($colorPalette, "color-primary-500")};
+  --ion-color-primary-600: #{map.get($colorPalette, "color-primary-600")};
+  --ion-color-primary-700: #{map.get($colorPalette, "color-primary-700")};
+  --ion-color-primary-800: #{map.get($colorPalette, "color-primary-800")};
+  --ion-color-primary-900: #{map.get($colorPalette, "color-primary-900")};
   --ion-color-primary-contrast: #{map.get($colorPalette, "color-primary-contrast")};
 
   --ion-color-secondary: #{map.get($colorPalette, "color-secondary")};
-  --ion-color-secondary-light: #{map.get($colorPalette, "color-secondary-200")};
-  --ion-color-secondary-lighter: #{map.get($colorPalette, "color-secondary-50")};
+  --ion-color-secondary-50: #{map.get($colorPalette, "color-secondary-50")};
+  --ion-color-secondary-100: #{map.get($colorPalette, "color-secondary-100")};
+  --ion-color-secondary-200: #{map.get($colorPalette, "color-secondary-200")};
+  --ion-color-secondary-300: #{map.get($colorPalette, "color-secondary-300")};
+  --ion-color-secondary-400: #{map.get($colorPalette, "color-secondary-400")};
+  --ion-color-secondary-500: #{map.get($colorPalette, "color-secondary-500")};
+  --ion-color-secondary-600: #{map.get($colorPalette, "color-secondary-600")};
+  --ion-color-secondary-700: #{map.get($colorPalette, "color-secondary-700")};
+  --ion-color-secondary-800: #{map.get($colorPalette, "color-secondary-800")};
+  --ion-color-secondary-900: #{map.get($colorPalette, "color-secondary-900")};
   --ion-color-secondary-contrast: #{map.get($colorPalette, "color-secondary-contrast")};
 
   --ion-background-color: #{map.get($colorPalette, "color-page-background")};
