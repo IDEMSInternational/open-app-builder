@@ -36,7 +36,7 @@ interface ITemplatedStringVariable {
  * "Hello {@row.first_name}-{@row.last_name}"
  * // Output
  * { 
-    "value": "Hello [1]-[2]", 
+    "value": "Hello [$1]-[$2]", 
     "variables": { 
       "[1]": { 
         "value": "@row.first_name" 
@@ -51,10 +51,10 @@ interface ITemplatedStringVariable {
  * "Hello {@row.{@row.name_field}}"
  * // Output
  * { 
-    "value": "Hello [1]", 
+    "value": "Hello [$1]", 
     "variables": { 
       "[1]: { 
-        "value": "@row.[1.1]", 
+        "value": "@row.[$1.1]", 
         "variables": { 
           "[1.1]": { 
             "value": "@row.name_field" 
@@ -69,8 +69,8 @@ export function extractTemplatedString(
   variables: ITemplatedStringVariable = {},
   nestedName = ""
 ) {
-  const [startDelimiter, endDelimiter] = ["{", "}"];
-  const [varPrefix, varSuffix] = ["[", "]"];
+  const [startDelimiter, endDelimiter] = ["{@", "}"];
+  const [varPrefix, varSuffix] = ["[$", "]"];
   // Extract top-level dyanmic values
   const startIndex = value.indexOf(startDelimiter);
   if (startIndex > -1) {
