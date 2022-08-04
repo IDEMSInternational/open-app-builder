@@ -211,8 +211,6 @@ $horizontal: 90deg;
   // ***********************
   // TODO: Migrate these variables to use the new theming system and replace their references
 
-  // Tiles
-  --tile-button-background: #{color.adjust($primary, $saturation: 14%, $lightness: 60%)};
   --tile-primary-light-gradient-start: #{color.adjust(
       $primary-lighter,
       $saturation: 6%,
