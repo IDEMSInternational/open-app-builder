@@ -481,9 +481,6 @@ $horizontal: 90deg;
   --ion-btn-dark-box-shadow: 0px 4px 4px #00000040;
   --ion-dg-bg-default: var(--ion-banner-primary);
 
-  // Used for .background-primary-lighter in _layout.scss
-  --ion-color-primary-lighter: #{$primary-lighter};
-
   // Used for background of .home_screen_wrapper in round-icon-button.component.scss
   --ion-color-quaternary: #{$primary-lighter};
 
