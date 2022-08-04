@@ -1,0 +1,129 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "example_sheet_defaults_list",
+  "status": "released",
+  "flow_subtype": "example_sheet_defaults",
+  "rows": [
+    {
+      "id": "item_1",
+      "text": "ID: item_1",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "example_sheet_default.item_1.completed",
+            true
+          ],
+          "_raw": "click | set_field : example_sheet_default.item_1.completed : true",
+          "_cleaned": "click | set_field : example_sheet_default.item_1.completed : true"
+        }
+      ],
+      "exclude_from_translation": true
+    },
+    {
+      "id": "item_2",
+      "text": "Replacement override text",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "example_sheet_default.item_2.completed",
+            true
+          ],
+          "_raw": "click | set_field : example_sheet_default.item_2.completed : true",
+          "_cleaned": "click | set_field : example_sheet_default.item_2.completed : true"
+        }
+      ],
+      "exclude_from_translation": true
+    },
+    {
+      "id": "item_3",
+      "text": "ID: item_3;\nAdditional override text",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "example_sheet_default.item_3.completed",
+            true
+          ],
+          "_raw": "click | set_field : example_sheet_default.item_3.completed : true",
+          "_cleaned": "click | set_field : example_sheet_default.item_3.completed : true"
+        }
+      ],
+      "exclude_from_translation": true
+    },
+    {
+      "id": "item_4",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "example_sheet_default.item_4.completed",
+            true
+          ],
+          "_raw": "click | set_field : example_sheet_default.item_4.completed : true",
+          "_cleaned": "click | set_field : example_sheet_default.item_4.completed : true"
+        }
+      ],
+      "exclude_from_translation": true
+    },
+    {
+      "id": "item_5",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "example_sheet_default.item_5.completed",
+            true
+          ],
+          "_raw": "click | set_field : example_sheet_default.item_5.completed : true",
+          "_cleaned": "click | set_field : example_sheet_default.item_5.completed : true"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "example_sheet_defaults_completed",
+            true
+          ],
+          "_raw": "click | set_field : example_sheet_defaults_completed : true",
+          "_cleaned": "click | set_field : example_sheet_defaults_completed : true"
+        }
+      ],
+      "text": "ID: item_5",
+      "exclude_from_translation": true
+    },
+    {
+      "id": "item_6",
+      "text": "Eng Title",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "example_sheet_default.item_6.completed",
+            true
+          ],
+          "_raw": "click | set_field : example_sheet_default.item_6.completed : true",
+          "_cleaned": "click | set_field : example_sheet_default.item_6.completed : true"
+        }
+      ],
+      "exclude_from_translation": true,
+      "title": "Eng Title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Eng Title"
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_sheet_defaults.xlsx"
+}

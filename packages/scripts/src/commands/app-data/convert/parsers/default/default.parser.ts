@@ -21,20 +21,27 @@ type IRowData = { type: string; name?: string; rows?: IRowData };
 export class DefaultParser implements AbstractParser {
   activeDeployment = getActiveDeployment();
 
-  public groupSuffix = "_group";
+  public flow: FlowTypes.FlowTypeWithData;
 
   /** All rows are handled in a queue, processing linearly */
-  private queue: IRowData[];
+  public queue: IRowData[];
   private summary = { missingAssets: [] };
 
   /** Default function to call a start the process of parsing rows */
   public run(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeWithData {
+    this.flow = JSON.parse(JSON.stringify(flow));
     this.queue = flow.rows;
     const processedRows = [];
+    // If first row specifies default values extract them and remove row from queue
+    const rowDefaultValues = this.extractRowDefaultValues(this.flow);
+    if (rowDefaultValues) {
+      this.queue.shift();
+    }
+    // Process queue
     while (this.queue.length > 0) {
       const row = this.queue[0];
       try {
-        const processed = this.processRow(row, flow);
+        const processed = new RowProcessor(row, this, rowDefaultValues).run();
         // some rows may be omitted during processing so ignore
         if (processed) {
           const postProcessed = this.postProcess(processed);
@@ -51,8 +58,8 @@ export class DefaultParser implements AbstractParser {
       console.log(chalk.red("Missing Assets:"));
       console.table(this.summary.missingAssets);
     }
-
-    return { ...flow, rows: processedRows };
+    this.flow.rows = processedRows;
+    return this.flow;
   }
 
   /** If extending the class add additional postprocess pipeline here */
@@ -64,119 +71,111 @@ export class DefaultParser implements AbstractParser {
     return flows;
   }
 
-  /** Handle a single row */
-  private processRow(row: IRowData, flow: FlowTypes.FlowTypeWithData) {
-    // Handle specific data manipulations for fields
-    Object.keys(row).forEach((field) => {
-      // delete metadata (e.g. __empty)
-      if (field.startsWith("__")) {
-        delete row[field];
-      }
-      // delete any comments, e.g. 'comment', 'comments', 'comment_1' etc.
-      if (field.startsWith("comment")) {
-        delete row[field];
-      }
-      // rename legacy fields
-      if (DEPRECATED_FIELD_NAMES.hasOwnProperty(field)) {
-        const replacement = DEPRECATED_FIELD_NAMES[field];
-        const warning = `-- ${flow.flow_name} --\n[${field}] is deprecated and should be replaced with [${replacement}]`;
-        console.warn(chalk.gray(warning));
-        row[replacement] = JSON.parse(JSON.stringify(row[field]));
-        delete row[field];
-        field = replacement;
-      }
-      // replace any self references, i.e "hello @row.id" => "hello some_id", @row.text::eng
-      // TODO - should find better long term option that can update based on dynamic value and translations
-      if (typeof row[field] === "string") {
-        const rowReplacements = [...row[field].matchAll(/@row.([0-9a-z_:]+)/gim)];
-        for (const replacement of rowReplacements) {
-          const [expression, replaceField] = replacement;
-          const replaceValue = row[replaceField];
-          row[field] = row[field].replace(expression, replaceValue);
-        }
-      }
-      // remove any trailing whitespace from any entries
-      if (typeof row[field] === "string") {
-        row[field] = row[field].trim();
-      }
-      // mark fields for translation, rename so can process regularly (add translation data at end)
-      // Note, cannot assume all :: statements translations as also used in fields, e.g. fields::favourite
+  /** If any flows have a first row that starts `@default` return values */
+  private extractRowDefaultValues(flow: FlowTypes.FlowTypeWithData) {
+    const firstRow = flow.rows?.[0] || {};
+    if (Object.values(firstRow)[0] === "@default") {
+      const defaultKey = Object.keys(firstRow)[0];
+      delete firstRow[defaultKey];
+      return firstRow;
+    }
+  }
+}
+
+/**
+ * Process individual template rows. By default this includes steps such as removing metadata columns,
+ * migrating deprecated columns, processing default values and self-references and handling translations
+ */
+class RowProcessor {
+  constructor(public row: IRowData, public parent: DefaultParser, public defaultValues?: any) {}
+
+  public run() {
+    this.processRowDefaultValues();
+    this.removeMetaFields();
+    this.cleanFieldValues();
+    this.migrateDeprecatedFields();
+    this.assignTranslatedFields();
+    this.replaceRowSelfReferences();
+
+    // NOTE - translated and row-reference fields can both reference each other
+    // (e.g. @row.title -> title::eng -> @row.id ) so additional update required after translate and replace
+    this.updateTranslatedFields();
+
+    this.handleSpecialFieldTypes();
+    this.processNestedRowGroups();
+
+    // remove rows now left as empty (null return will remove from future processing)
+    if (Object.keys(this.row).length === 0) {
+      return null;
+    }
+    return this.row;
+  }
+
+  /**
+   * When processing datalists only some fields will be translatable. These are identified with a
+   * `::eng` suffix, e.g. title::eng
+   *
+   * Copy these base translations to the base field (e.g. `title`), and track ref in metadata
+   * Note, cannot assume all :: statements translations as also used in fields, e.g. fields::favourite
+   */
+
+  private assignTranslatedFields() {
+    Object.keys(this.row).forEach((field) => {
       // TODO - alter fields syntax to avoid potential conflict (e.g. fields::eng)
-      let isTranslateField = false;
       if (field.endsWith("::eng")) {
         // copy eng value to base column. Avoid replace if base column already exists with value
         // (e.g. in case where value, value::eng only applies to some rows in template)
-        // (NOTE - could use the exclude_from_translation column, but may end up changing syntax)
-        isTranslateField = true;
-        const baseTranslation = row[field];
+        const baseTranslation = this.row[field];
         const baseField = field.replace("::eng", "");
-        if (row[baseField] === undefined || row[baseField] === "") {
-          row[baseField] = baseTranslation;
+        if (this.row[baseField] === undefined || this.row[baseField] === "") {
+          this.row[baseField] = baseTranslation;
+          this.row["_translatedFields"] = {
+            ...this.row["_translatedFields"],
+            [baseField]: {
+              eng: this.row[baseField],
+            },
+          };
         }
-        field = baseField;
-      }
-      if (field.endsWith("_list")) {
-        row[field] = parseAppDataListString(row[field]);
-      }
-      if (field.endsWith("_collection")) {
-        row[field] = parseAppDataCollectionString(row[field]);
-      }
-      // parse action list
-      if (field.endsWith("action_list")) {
-        row[field] = row[field]
-          .map((actionString) => parseAppDataActionString(actionString))
-          .filter((action) => action != null);
-      }
-      // convert google/excel number dates to dates (https://stackoverflow.com/questions/16229494/converting-excel-date-serial-number-to-date-using-javascript)
-      if (field.endsWith("_date")) {
-        if (typeof row[field] === "number") {
-          row[field] = parseAppDateValue(row[field]);
-        }
-      }
-
-      // assign default translation and track as metadata
-      if (isTranslateField) {
-        row["_translatedFields"] = {
-          ...row["_translatedFields"],
-          [field]: {
-            eng: row[field],
-          },
-        };
-        delete row[`${field}::eng`];
+        delete this.row[field];
       }
     });
-    // remove rows now left as empty (null return will remove from future processing)
-    if (Object.keys(row).length === 0) {
-      return null;
-    }
+    this.updateTranslatedFields();
+  }
 
-    /**
-     * TODO - some specific sheet types (e.g. template data_list and derivatives)
-     * will likely perfer to convert depending on the name or id of the row (ending in _list or _collection)
-     * Should likely want to add support to automate conversion (currently manually handled in template parser)
-     **/
+  private updateTranslatedFields() {
+    const translatedFields = this.row["_translatedFields"] || {};
+    Object.keys(translatedFields).forEach((field) => {
+      this.row["_translatedFields"][field] = {
+        eng: this.row[field],
+      };
+    });
+  }
 
-    // Extract any required groups that start from this row
-    const type = row.type || "";
+  /**
+   * TODO - some specific sheet types (e.g. template data_list and derivatives)
+   * will likely perfer to convert depending on the name or id of the row (ending in _list or _collection)
+   * Should likely want to add support to automate conversion (currently manually handled in template parser)
+   **/
+  private processNestedRowGroups() {
+    const type = this.row.type || "";
     if (type.startsWith("begin_")) {
       try {
         const group = this.extractGroup();
-        const groupType = type.replace("begin_", "") + this.groupSuffix;
+        const groupType = type.replace("begin_", "");
         const subParser = new DefaultParser();
-        subParser.groupSuffix = this.groupSuffix;
-        const parsedGroup = subParser.run({ ...flow, rows: group });
-        return { ...row, type: groupType, rows: parsedGroup.rows };
+        const childFlow = JSON.parse(JSON.stringify(this.parent.flow));
+        childFlow.rows = group;
+        const parsedGroup = subParser.run(childFlow);
+        this.row = { ...this.row, type: groupType, rows: parsedGroup.rows as any };
       } catch (ex) {
-        console.warn("Error on group extract on row", row, flow, ex);
-        console.warn("Error is in sheet ", flow._xlsxPath);
+        console.warn("Error on group extract on row", this.row, this.parent.flow, ex);
+        console.warn("Error is in sheet ", this.parent.flow._xlsxPath);
       }
     }
     // Can ignore as handled during subgroup extraction
     if (type.startsWith("end_")) {
-      return;
+      this.row = {} as any;
     }
-
-    return row;
   }
 
   /**
@@ -186,7 +185,7 @@ export class DefaultParser implements AbstractParser {
    */
   private extractGroup(startIndex = 0): IRowData[] {
     let nestedIfCount = 0;
-    const endIndex = this.queue.slice(startIndex).findIndex((row) => {
+    const endIndex = this.parent.queue.slice(startIndex).findIndex((row) => {
       const type = row.type || "";
       if (type.startsWith("begin_")) nestedIfCount++;
       if (type.startsWith("end_")) nestedIfCount--;
@@ -194,12 +193,110 @@ export class DefaultParser implements AbstractParser {
     });
     if (endIndex === -1) {
       console.log("could not find end index", startIndex);
-      throw "extract group error. count not find end index for start index=" + startIndex;
+      throw new Error(
+        "extract group error. count not find end index for start index=" + startIndex
+      );
     }
     const queueEndIndex = startIndex + endIndex;
     // remove all rows from the queue excluding start and end clause statements (e.g. if/end-if)
-    const groupedRows = this.queue.splice(1, queueEndIndex - 1);
+    const groupedRows = this.parent.queue.splice(1, queueEndIndex - 1);
     return groupedRows;
+  }
+
+  private handleSpecialFieldTypes() {
+    Object.keys(this.row).forEach((field) => {
+      // skip processing any fields that will be populated from datalist itmes
+      const shouldSkip =
+        typeof this.row[field] === "string" && this.row[field].startsWith("@item.");
+      // handle custom fields
+      if (!shouldSkip) {
+        if (field.endsWith("_list")) {
+          this.row[field] = parseAppDataListString(this.row[field]);
+        }
+        if (field.endsWith("_collection")) {
+          this.row[field] = parseAppDataCollectionString(this.row[field]);
+        }
+        if (field.endsWith("action_list")) {
+          this.row[field] = this.row[field]
+            .map((actionString) => parseAppDataActionString(actionString))
+            .filter((action) => action !== null);
+        }
+        // convert google/excel number dates to dates (https://stackoverflow.com/questions/16229494/converting-excel-date-serial-number-to-date-using-javascript)
+        if (field.endsWith("_date")) {
+          if (typeof this.row[field] === "number") {
+            this.row[field] = parseAppDateValue(this.row[field]);
+          }
+        }
+      }
+    });
+  }
+
+  /**
+   * replace any self references, i.e "hello @row.id" => "hello some_id", @row.text::eng
+   * TODO - should find better long term option that can update based on dynamic value and translations
+   */
+  private replaceRowSelfReferences() {
+    Object.keys(this.row).forEach((field) => {
+      if (typeof this.row[field] === "string") {
+        const rowReplacements = [...this.row[field].matchAll(/@row.([0-9a-z_:]+)/gim)];
+        for (const replacement of rowReplacements) {
+          const [expression, replaceField] = replacement;
+          const replaceValue = this.row[replaceField];
+          this.row[field] = this.row[field].replace(expression, replaceValue);
+        }
+      }
+    });
+  }
+
+  private removeMetaFields() {
+    Object.keys(this.row).forEach((field) => {
+      if (field.startsWith("__")) {
+        delete this.row[field];
+      }
+      if (field.startsWith("comment")) {
+        delete this.row[field];
+      }
+    });
+  }
+  private cleanFieldValues() {
+    Object.keys(this.row).forEach((field) => {
+      if (typeof this.row[field] === "string") {
+        // remove whitespace
+        this.row[field] = this.row[field].trim();
+      }
+    });
+  }
+
+  private migrateDeprecatedFields() {
+    Object.keys(this.row).forEach((field) => {
+      if (DEPRECATED_FIELD_NAMES.hasOwnProperty(field)) {
+        const replacement = DEPRECATED_FIELD_NAMES[field];
+        const warning = `-- ${this.parent.flow.flow_name} --\n[${field}] is deprecated and should be replaced with [${replacement}]`;
+        console.warn(chalk.gray(warning));
+        this.row[replacement] = JSON.parse(JSON.stringify(this.row[field]));
+        delete this.row[field];
+      }
+    });
+  }
+
+  /** Apply any defaults where row value not defined or defaults included/omitted */
+  private processRowDefaultValues() {
+    if (this.defaultValues) {
+      Object.entries(this.defaultValues).forEach(([key, value]) => {
+        if (this.row[key] === undefined) {
+          this.row[key] = value;
+        } else {
+          if (typeof this.row[key] === "string") {
+            if (this.row[key].includes("@include_default")) {
+              this.row[key] = this.row[key].replace("@include_default", value);
+            }
+            if (this.row[key].includes("@omit_default")) {
+              delete this.row[key];
+            }
+          }
+        }
+      });
+    }
   }
 }
 
