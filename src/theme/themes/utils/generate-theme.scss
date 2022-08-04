@@ -2,6 +2,8 @@
 @use "sass:map";
 @use "./contrast-colour.scss";
 
+// Returns a map of colours based partly on Material Design's colour system
+// https://material.io/design/color/the-color-system.html
 @function getColorPalette($primary, $secondary, $page-background: null) {
   $result: (
     "color-primary": $primary,
@@ -17,8 +19,6 @@
     "color-primary-900": color.change($primary, $lightness: 10%),
     "color-primary-contrast": contrast-colour.choose-contrast-color($primary),
     "color-secondary": $secondary,
-    "color-secondary-light": color.change($secondary, $lightness: 80%),
-    "color-secondary-lighter": color.change($secondary, $lightness: 95%),
     "color-secondary-50": color.change($secondary, $lightness: 95%),
     "color-secondary-100": color.change($secondary, $lightness: 90%),
     "color-secondary-200": color.change($secondary, $lightness: 80%),
@@ -64,16 +64,18 @@
 
   --ion-background-color: #{map.get($colorPalette, "color-page-background")};
 
+  // BORDERS
+  --ion-border-standard: 2px solid #{map.get($colorPalette, "color-primary")};
+  --ion-border-thin-standard: 1px solid #{map.get($colorPalette, "color-primary")};
+  --ion-border-color-secondary: 2px solid #{map.get($colorPalette, "color-secondary")};
+  --ion-border-light: 1px solid #{map.get($colorPalette, "light")};
+  --ion-border-light-thicker: 2px solid #{map.get($colorPalette, "light")};
+  --border-dashed: 2px dashed #{map.get($colorPalette, "color-primary")};
+
   //  GRADIENTS
   //Gradient direction
   $vertical: 180deg;
   $horizontal: 90deg;
-  // primary-gradient
-  --ion-gradient-primary-start: #{map.get($colorPalette, "gradient-primary-start")};
-  --ion-gradient-primary-end: #{map.get($colorPalette, "gradient-primary-end")};
-  // secondary-gradient
-  --ion-gradient-secondary-start: #{map.get($colorPalette, "gradient-secondary-start")};
-  --ion-gradient-secondary-end: #{map.get($colorPalette, "gradient-secondary-end")};
 
   // COMPONENTS
   // Buttons
@@ -93,12 +95,4 @@
       $saturation: 3%,
       $lightness: 25%
     )};
-
-  //  Borders
-  --ion-border-standard: 2px solid #{map.get($colorPalette, "color-primary")};
-  --ion-border-thin-standard: 1px solid #{map.get($colorPalette, "color-primary")};
-  --ion-border-color-secondary: 2px solid #{map.get($colorPalette, "color-secondary")};
-  --ion-border-light: 1px solid #{map.get($colorPalette, "light")};
-  --ion-border-light-thicker: 2px solid #{map.get($colorPalette, "light")};
-  --border-dashed: 2px dashed #{map.get($colorPalette, "color-primary")};
 }
