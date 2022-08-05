@@ -1,0 +1,6 @@
+<div class="palette-container" *ngFor="let colour of themeColours">
+  <div class="swatch-container" *ngFor="let weight of colourWeights">
+    <div [ngClass]="'swatch color-' + colour + '-' + weight"></div>
+    <div class="label">color-{{ colour }}-{{ weight }}</div>
+  </div>
+</div>

@@ -49,6 +49,7 @@ import { TemplateHTMLComponent } from "./html/html.component";
 import { TmplAccordionComponent } from "./accordion/accordion.component";
 import { TmplLatexComponent } from "./latex/latex.component";
 import { TmplAnimatedSlidesComponent } from "./animated-slides/animated-slides.component";
+import { TmplColourPaletteComponent } from "./colour-palette/colour-palette.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -95,6 +96,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplAccordionComponent,
   TmplLatexComponent,
   TmplAnimatedSlidesComponent,
+  TmplColourPaletteComponent,
 ];
 
 /***************************************************************************************
@@ -157,4 +159,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   html: TemplateHTMLComponent,
   latex: TmplLatexComponent,
   animated_slides: TmplAnimatedSlidesComponent,
+  colour_palette: TmplColourPaletteComponent,
 };

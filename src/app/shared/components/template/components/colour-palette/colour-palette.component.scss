@@ -1,0 +1,32 @@
+@use "/src/theme/mixins";
+
+$colors: primary, secondary;
+$colorWeights: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900;
+
+.palette-container {
+  background-color: white;
+  margin: 20px;
+  padding: 20px;
+}
+
+.swatch-container {
+  @include mixins.flex-centered;
+}
+
+.swatch {
+  width: 100px;
+  height: 30px;
+}
+
+.label {
+  width: 170px;
+  padding-left: 10px;
+}
+
+@each $color in $colors {
+  @each $weight in $colorWeights {
+    .color-#{$color}-#{$weight} {
+      background-color: var(--ion-color-#{$color}-#{$weight});
+    }
+  }
+}
