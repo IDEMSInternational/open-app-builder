@@ -4,33 +4,18 @@
 
 // Returns a map of colours based partly on Material Design's colour system
 // https://material.io/design/color/the-color-system.html
-@function getColorPalette($primary, $secondary, $page-background: null) {
+@function getColorPalette(
+  $primary,
+  $secondary,
+  $page-background: null,
+  $weights: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900)
+) {
   $result: (
     "color-primary": $primary,
-    "color-primary-50": color.change($primary, $lightness: 95%),
-    "color-primary-100": color.change($primary, $lightness: 90%),
-    "color-primary-200": color.change($primary, $lightness: 80%),
-    "color-primary-300": color.change($primary, $lightness: 70%),
-    "color-primary-400": color.change($primary, $lightness: 60%),
-    "color-primary-500": color.change($primary, $lightness: 50%),
-    "color-primary-600": color.change($primary, $lightness: 40%),
-    "color-primary-700": color.change($primary, $lightness: 30%),
-    "color-primary-800": color.change($primary, $lightness: 20%),
-    "color-primary-900": color.change($primary, $lightness: 10%),
     "color-primary-contrast": contrast-colour.choose-contrast-color($primary),
     "color-secondary": $secondary,
-    "color-secondary-50": color.change($secondary, $lightness: 95%),
-    "color-secondary-100": color.change($secondary, $lightness: 90%),
-    "color-secondary-200": color.change($secondary, $lightness: 80%),
-    "color-secondary-300": color.change($secondary, $lightness: 70%),
-    "color-secondary-400": color.change($secondary, $lightness: 60%),
-    "color-secondary-500": color.change($secondary, $lightness: 50%),
-    "color-secondary-600": color.change($secondary, $lightness: 40%),
-    "color-secondary-700": color.change($secondary, $lightness: 30%),
-    "color-secondary-800": color.change($secondary, $lightness: 20%),
-    "color-secondary-900": color.change($secondary, $lightness: 10%),
     "color-secondary-contrast": contrast-colour.choose-contrast-color($secondary),
-    "color-page-background": color.change($primary, $lightness: 95%),
+    "background-color": color.change($primary, $lightness: 95%),
     //  GRADIENTS
     // primary-gradient
     "gradient-primary-start": color.adjust($primary, $lightness: 33%),
@@ -39,11 +24,27 @@
     "gradient-secondary-start": color.adjust($secondary, $saturation: 4%),
     "gradient-secondary-end": color.adjust($secondary, $saturation: 5%, $lightness: -19%),
   );
+
+  // Generate variants of base colours based on given weights and add to map
+  // E.g. '"color-primary-400": color.change($primary, $lightness: 60%)'
+  $result: map.merge($result, generateColourVariants($primary, "primary", $weights));
+  $result: map.merge($result, generateColourVariants($secondary, "secondary", $weights));
+
   @if ($page-background != null) {
-    $result: map.set($result, "color-page-background", $page-background);
+    $result: map.set($result, "background-color", $page-background);
   }
   @return $result;
 }
+
+@function generateColourVariants($base, $baseName, $weights) {
+  $variants-map: ();
+  @each $weight in $weights {
+    $map: (color-#{$baseName}-#{$weight}: color.change($base, $lightness: 100 - ($weight / 10)));
+    $variants-map: map.merge($variants-map, $map);
+  }
+  @return $variants-map;
+}
+
 @mixin generateTheme($p, $s, $bg: null) {
   $colorPalette: getColorPalette($p, $s, $bg);
   @include colorVariables($colorPalette);
@@ -52,33 +53,11 @@
 @mixin colorVariables($sourceColorPalette) {
   $colorPalette: $sourceColorPalette;
 
-  --ion-color-primary: #{map.get($colorPalette, "color-primary")};
-  --ion-color-primary-50: #{map.get($colorPalette, "color-primary-50")};
-  --ion-color-primary-100: #{map.get($colorPalette, "color-primary-100")};
-  --ion-color-primary-200: #{map.get($colorPalette, "color-primary-200")};
-  --ion-color-primary-300: #{map.get($colorPalette, "color-primary-300")};
-  --ion-color-primary-400: #{map.get($colorPalette, "color-primary-400")};
-  --ion-color-primary-500: #{map.get($colorPalette, "color-primary-500")};
-  --ion-color-primary-600: #{map.get($colorPalette, "color-primary-600")};
-  --ion-color-primary-700: #{map.get($colorPalette, "color-primary-700")};
-  --ion-color-primary-800: #{map.get($colorPalette, "color-primary-800")};
-  --ion-color-primary-900: #{map.get($colorPalette, "color-primary-900")};
-  --ion-color-primary-contrast: #{map.get($colorPalette, "color-primary-contrast")};
-
-  --ion-color-secondary: #{map.get($colorPalette, "color-secondary")};
-  --ion-color-secondary-50: #{map.get($colorPalette, "color-secondary-50")};
-  --ion-color-secondary-100: #{map.get($colorPalette, "color-secondary-100")};
-  --ion-color-secondary-200: #{map.get($colorPalette, "color-secondary-200")};
-  --ion-color-secondary-300: #{map.get($colorPalette, "color-secondary-300")};
-  --ion-color-secondary-400: #{map.get($colorPalette, "color-secondary-400")};
-  --ion-color-secondary-500: #{map.get($colorPalette, "color-secondary-500")};
-  --ion-color-secondary-600: #{map.get($colorPalette, "color-secondary-600")};
-  --ion-color-secondary-700: #{map.get($colorPalette, "color-secondary-700")};
-  --ion-color-secondary-800: #{map.get($colorPalette, "color-secondary-800")};
-  --ion-color-secondary-900: #{map.get($colorPalette, "color-secondary-900")};
-  --ion-color-secondary-contrast: #{map.get($colorPalette, "color-secondary-contrast")};
-
-  --ion-background-color: #{map.get($colorPalette, "color-page-background")};
+  // Generate variants of base colours based on given weights and add to map
+  // E.g. equivalent to '--ion-color-primary-400: #{map.get($colorPalette, "color-primary-400")}'
+  @each $label, $color in $colorPalette {
+    --ion-#{$label}: #{$color};
+  }
 
   // BORDERS
   --ion-border-standard: 2px solid #{map.get($colorPalette, "color-primary")};
