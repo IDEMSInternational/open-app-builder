@@ -38,7 +38,7 @@ export class ThemeService {
   private getThemeMap(): { [themeName: string]: AppTheme } {
     let editableThemeMap = this.localStorageService.getJSON("editableThemes");
     if (!editableThemeMap || Object.keys(editableThemeMap).length < 1) {
-      let editableThemeMap = {};
+      editableThemeMap = {};
       BUILT_IN_EDITABLE_THEMES.forEach((theme) => {
         editableThemeMap[theme.name] = this.populateWithDefaults(theme);
       });
