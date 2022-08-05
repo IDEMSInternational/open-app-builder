@@ -1,11 +1,20 @@
 @use "./utils";
+@use "sass:color";
 
 /** Authoring variables **/
 $color-primary: hsl(203, 76%, 21%);
 $color-secondary: hsl(31, 95%, 57%);
 
+/** Authoring component overrides **/
+$component-variables: (
+  tile-button-background: red,
+);
+
 @mixin theme-default {
   [data-theme="default"] {
     @include utils.generateTheme($color-primary, $color-secondary);
+    @each $name, $value in $component-variables {
+      --#{$name}: #{$value};
+    }
   }
 }

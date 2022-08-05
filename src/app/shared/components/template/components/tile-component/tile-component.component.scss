@@ -1,5 +1,7 @@
 @use "/src/theme/mixins.scss";
 
+$tile-button-background: var(--tile-button-background, var(--ion-color-primary-200));
+
 // NOTE CC 2021-12-16 - Presumably this is for case of rendered markdown
 // (but ideally should be handled from within markdown itself)
 .first-line-text ::ng-deep,
@@ -169,7 +171,7 @@
 }
 
 .button_tile {
-  background: var(--tile-button-background);
+  background: $tile-button-background;
   overflow: hidden;
   justify-content: space-between;
   height: var(--tile-button-style-height);
