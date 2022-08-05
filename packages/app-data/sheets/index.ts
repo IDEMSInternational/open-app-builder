@@ -1108,6 +1108,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_simple_checkbox .xlsx",
     },
+    comp_colour_palette: {
+      flow_type: "template",
+      flow_name: "comp_colour_palette",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/comp_colour_palette.xlsx",
+    },
     comp_combo_box: {
       flow_type: "template",
       flow_name: "comp_combo_box",
