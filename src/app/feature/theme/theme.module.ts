@@ -5,11 +5,12 @@ import { IonicModule } from "@ionic/angular";
 import { ColorSketchModule } from "ngx-color/sketch";
 import { ThemeRoutingModule } from "./theme-routing.module";
 import { ThemeEditorPage } from "./pages/theme-editor/theme-editor.page";
+import { CssVariableTableComponent } from "./components/css-variable-table/css-variable-table.component";
 import { ColourPaletteComponent } from "./components/colour-palette/colour-palette.component";
 import { ThemeEditorComponent } from "./components/theme-editor/theme-editor.component";
 
 const Pages = [ThemeEditorPage];
-const Components = [ColourPaletteComponent, ThemeEditorComponent];
+const Components = [CssVariableTableComponent, ColourPaletteComponent, ThemeEditorComponent];
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, ThemeRoutingModule, ColorSketchModule],

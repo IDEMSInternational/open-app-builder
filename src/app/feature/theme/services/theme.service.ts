@@ -14,6 +14,48 @@ export class ThemeService {
 
   constructor(private ipcService: IpcService, private localStorageService: LocalStorageService) {}
 
+  /** Calculate all custom properties inherited for a particular element */
+  public calculateElCustomProperties(el: Element) {
+    const props = {};
+    const customProps = this.listAllCssCustomProperties();
+    const computedStyles = window.getComputedStyle(el);
+    for (const prop of Object.keys(customProps)) {
+      props[prop] = computedStyles.getPropertyValue(prop).trim();
+    }
+    return props;
+  }
+
+  /**
+   * Iterate through all style sheets on a page to extract a list of custom css properties
+   * @returns hashmap containing all properties and value corresponding to latest-processed sheet
+   *
+   * Adapted from https://css-tricks.com/how-to-get-all-custom-properties-on-a-page-in-javascript/
+   */
+  private listAllCssCustomProperties() {
+    const customPropsHashmap = {};
+    for (const styleSheet of Array.from(document.styleSheets)) {
+      if (this.isSameDomain(styleSheet)) {
+        for (const rule of Array.from(styleSheet.cssRules)) {
+          if (rule instanceof CSSStyleRule) {
+            const customStyleProps = Array.from(rule.style).filter((prop) => prop.startsWith("--"));
+            for (const prop of customStyleProps) {
+              customPropsHashmap[prop] = rule.style.getPropertyValue(prop).trim();
+            }
+          }
+        }
+      }
+    }
+    return customPropsHashmap;
+  }
+
+  /** Determine if style is local styleblock or from stylesheet on same domain */
+  private isSameDomain = (styleSheet: CSSStyleSheet) =>
+    styleSheet.href ? styleSheet.href.startsWith(location.origin) : true;
+
+  /*********************************************************************************
+   *  LEGACY CODE (2022-08-07) - To be reviewed
+   *********************************************************************************/
+
   init() {
     // Listens on IPC for updates to current theme
     this.ipcService.listen(ThemeService.THEME_UPDATE_CHANNEL).subscribe((themeName: string) => {
