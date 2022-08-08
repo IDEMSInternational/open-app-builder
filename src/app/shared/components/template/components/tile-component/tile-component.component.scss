@@ -130,7 +130,7 @@ $tile-button-background: var(--tile-button-background, var(--ion-color-primary-2
   width: 10rem;
   margin-bottom: var(--regular-margin);
   max-width: var(--tile-image-text-width);
-  background: var(--points-item-bg);
+  background: $tile-button-background;
   box-shadow: var(--ion-default-box-shadow);
   border-radius: var(--ion-border-radius-standard);
   position: relative;
