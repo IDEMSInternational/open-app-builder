@@ -16,6 +16,9 @@
     "color-secondary": $secondary,
     "color-secondary-contrast": contrast-colour.choose-contrast-color($secondary),
     "background-color": color.change($primary, $lightness: 95%),
+    "color-yellow": #ffd333,
+    "color-red": #eb445a,
+    "default-box-shadow": 0 4px 4px rgba(0, 0, 0, 0.25),
     //  GRADIENTS
     // primary-gradient
     "gradient-primary-start": color.adjust($primary, $lightness: 33%),
@@ -42,6 +45,8 @@
     $map: (color-#{$baseName}-#{$weight}: color.change($base, $lightness: 100 - ($weight / 10)));
     $variants-map: map.merge($variants-map, $map);
   }
+  $map: (color-#{$baseName}-transparent: rgba($base, 0.5));
+  $variants-map: map.merge($variants-map, $map);
   @return $variants-map;
 }
 

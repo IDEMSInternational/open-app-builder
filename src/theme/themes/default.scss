@@ -2,12 +2,27 @@
 @use "sass:color";
 
 /** Authoring variables **/
-$color-primary: hsl(203, 76%, 21%);
-$color-secondary: hsl(31, 95%, 57%);
+$color-primary: hsl(203, 76%, 21%); // #0d3f5e
+$color-secondary: hsl(31, 95%, 57%); // #e5943e
 
 /** Authoring component overrides **/
 $component-variables: (
-  tile-button-background: red,
+  // E.g.:
+  // tile-button-background: red,
+  // points-item-bg: red,
+  // round-icon-button-light: red,
+  // round-icon-button: red,
+  // round-icon-button-dark: #F87023
+  // tool-one-bg: #fa8e29,
+  // tool-two-bg: #ff7b00,
+  // tool-three-bg: #108ab2,
+  // tool-four-bg: #096a8b,
+  // tool-five-bg: $color-primary,
+  // timer-buttons-color: #1985d2,
+  // combo-box-placeholder-primary: rgba(13, 64, 96, 0.5),
+  // ion-color-slider: #096e90,
+  // ion-color-help-tooltip: #096e90,
+  // ion-banner-primary: var(--ion-banner-primary),
 );
 
 @mixin theme-default {
