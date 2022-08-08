@@ -1,12 +1,16 @@
 @use "/src/theme/mixins";
 
+$round-icon-button-light: var(--round-icon-button-light, var(--ion-color-yellow));
+$round-icon-button: var(--round-icon-button, var(--ion-color-secondary));
+$round-icon-button-dark: var(--round-icon-button-dark, var(--ion-color-secondary-600));
+
 ion-tab-button {
   color: var(--ion-color-primary-contrast);
   text-transform: none;
   white-space: pre-line;
   min-height: var(--round-button-min-height);
   background: var(--ion-btn-primary);
-  box-shadow: var(--ion-btn-dark-box-shadow);
+  box-shadow: var(--ion-default-box-shadow);
   width: var(--round-button-width);
   margin: 0 auto;
   padding: 0;
@@ -73,7 +77,7 @@ ion-tab-button {
   width: var(--round-button-wrapper-width);
   height: var(--round-button-wrapper-height);
   border-radius: var(--ion-border-radius-rounded);
-  background: var(--ion-color-quaternary);
+  background: var(--ion-background-color);
   position: relative;
   margin-left: auto;
   margin-right: -13px;
@@ -83,13 +87,13 @@ ion-tab-button {
   }
 }
 .yellow {
-  background: var(--round-icon-button-light);
+  background: $round-icon-button-light;
 }
 .orange {
-  background: var(--round-icon-button);
+  background: $round-icon-button;
 }
 .dark_orange {
-  background: var(--round-icon-button-dark);
+  background: $round-icon-button-dark;
 }
 
 .navigation {

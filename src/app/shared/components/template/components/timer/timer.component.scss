@@ -1,5 +1,7 @@
 @use "/src/theme/mixins";
 
+$timer-buttons-color: var(--timer-buttons-color, var(--ion-color-primary-500));
+
 .timer-counter {
   @include mixins.flex-centered;
   width: calc(100% - 10px);
@@ -39,7 +41,7 @@
   @include mixins.large-square;
   min-width: var(--buttons-size);
   position: relative;
-  --background: var(--timer-buttons-color);
+  --background: #{$timer-buttons-color};
   --background-size: cover;
   --border-radius: var(--ion-border-radius-rounded);
   --padding: 0;

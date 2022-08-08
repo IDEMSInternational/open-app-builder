@@ -30,7 +30,7 @@ import { Device } from "@capacitor/device";
         min-height: 71px;
         padding: var(--regular-margin) var(--regular-padding) 0;
         --border-radius: 15px;
-        --box-shadow: var(--ion-btn-dark-box-shadow);
+        --box-shadow: var(--ion-default-box-shadow);
         min-width: 100%;
         --background: var(--ion-btn-primary);
       }
