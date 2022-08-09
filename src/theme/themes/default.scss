@@ -4,6 +4,7 @@
 /** Authoring variables **/
 $color-primary: hsl(203, 76%, 21%); // #0d3f5e
 $color-secondary: hsl(31, 95%, 57%); // #fa9529
+$page-background: #e3f4ff;
 
 /** Authoring component overrides **/
 $component-variables: (
@@ -26,7 +27,7 @@ $component-variables: (
 
 @mixin theme-default {
   [data-theme="default"] {
-    @include utils.generateTheme($color-primary, $color-secondary);
+    @include utils.generateTheme($color-primary, $color-secondary, $page-background);
     @each $name, $value in $component-variables {
       --#{$name}: #{$value};
     }
