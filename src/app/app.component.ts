@@ -5,12 +5,12 @@ import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
 import { DbService } from "./shared/services/db/db.service";
-import { ThemeService } from "./feature/theme/theme-service/theme.service";
+import { ThemeService } from "./feature/theme/services/theme.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
 import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
 import { AppEventService } from "./shared/services/app-events/app-events.service";
-import { TourService } from "./shared/services/tour/tour.service";
+import { TourService } from "./feature/tour/tour.service";
 import { TemplateService } from "./shared/components/template/services/template.service";
 import { CampaignService } from "./feature/campaign/campaign.service";
 import { ServerService } from "./shared/services/server/server.service";
@@ -30,12 +30,7 @@ import { AppDataService } from "./shared/services/data/app-data.service";
 import { AuthService } from "./shared/services/auth/auth.service";
 import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
 
-const {
-  APP_FIELDS,
-  APP_INITIALISATION_DEFAULTS,
-  APP_SIDEMENU_DEFAULTS,
-  APP_AUTHENTICATION_DEFAULTS,
-} = APP_CONSTANTS;
+const { APP_FIELDS, APP_SIDEMENU_DEFAULTS, APP_AUTHENTICATION_DEFAULTS } = APP_CONSTANTS;
 
 @Component({
   selector: "app-root",

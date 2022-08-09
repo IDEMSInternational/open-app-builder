@@ -1,0 +1,15 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Value</th>
+  </tr>
+
+  <tbody>
+    <tr *ngFor="let customVal of customStyleVariables">
+      <td>{{ customVal.name }}</td>
+      <td [style]="customVal.tableDisplayStyles">
+        {{ customVal.value }}
+      </td>
+    </tr>
+  </tbody>
+</table>

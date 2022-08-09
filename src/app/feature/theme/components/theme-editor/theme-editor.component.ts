@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { ThemeService } from "../theme-service/theme.service";
-import { AppTheme, ThemeColor } from "../theme.model";
+import { ThemeService } from "../../services/theme.service";
+import { AppTheme, ThemeColor } from "../../theme.model";
 import { ColorEvent } from "ngx-color";
 
 @Component({
