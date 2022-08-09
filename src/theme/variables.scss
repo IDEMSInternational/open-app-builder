@@ -15,7 +15,7 @@ $primary: hsl(203, 76%, 21%); // 0d3f5e
 $primary-light: color.change($primary, $lightness: 80%);
 $primary-lighter: color.change($primary, $lightness: 95%); // #e9f5fc
 
-$secondary: hsl(31, 95%, 57%); // #e5943e
+$secondary: hsl(31, 95%, 57%); // #fa9529
 
 $tertiary: hsl(47, 100%, 92%); // #fff6d6
 

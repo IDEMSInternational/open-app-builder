@@ -3,14 +3,13 @@
 
 /** Authoring variables **/
 $color-primary: hsl(203, 76%, 21%); // #0d3f5e
-$color-secondary: hsl(31, 95%, 57%); // #e5943e
+$color-secondary: hsl(31, 95%, 57%); // #fa9529
 
 /** Authoring component overrides **/
 $component-variables: (
-  // E.g.:
   // tile-button-background: #a3d9fa,
   // points-item-bg: #bce3fb,
-  // round-icon-button-light: #ffc800,
+  round-icon-button-light: var(--ion-color-yellow),
   // round-icon-button: #fa9529,
   // round-icon-button-dark: #F87023
   // tool-one-bg: #fa8e29,

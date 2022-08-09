@@ -160,6 +160,7 @@ export class ThemeService {
   }
 
   private applyCSSVariablesForTheme(theme: AppTheme) {
+    return null;
     // const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     let colorId = Object.keys(theme.colors) as (keyof ThemeColors)[];
     let unchangedCount = 0;

@@ -1,7 +1,7 @@
 @use "/src/theme/mixins";
 
-$round-icon-button-light: var(--round-icon-button-light, var(--ion-color-yellow));
-$round-icon-button: var(--round-icon-button, var(--ion-color-secondary));
+$round-icon-button-light: var(--round-icon-button-light, var(--ion-color-secondary-200));
+$round-icon-button: var(--round-icon-button, var(--ion-color-secondary-400));
 $round-icon-button-dark: var(--round-icon-button-dark, var(--ion-color-secondary-600));
 
 ion-tab-button {
