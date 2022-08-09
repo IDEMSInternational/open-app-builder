@@ -2,10 +2,10 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 
 import introJs from "intro.js";
-import { TemplateTranslateService } from "../../components/template/services/template-translate.service";
+import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
 import { FlowTypes } from "data-models";
-import { TemplateFieldService } from "../../components/template/services/template-field.service";
-import { AppDataService } from "../data/app-data.service";
+import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
+import { AppDataService } from "src/app/shared/services/data/app-data.service";
 
 @Injectable({
   providedIn: "root",
