@@ -273,8 +273,7 @@ export namespace FlowTypes {
     | "select_text"
     | "html"
     | "latex"
-    | "animated_slides"
-    | "colour_palette";
+    | "animated_slides";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
