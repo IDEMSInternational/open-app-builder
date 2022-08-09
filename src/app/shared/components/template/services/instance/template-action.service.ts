@@ -10,7 +10,7 @@ import { Injector } from "@angular/core";
 import { TemplateInstanceService } from "./template-instance.service";
 import { TemplateNavService } from "../template-nav.service";
 import { TemplateService } from "../template.service";
-import { TourService } from "src/app/shared/services/tour/tour.service";
+import { TourService } from "src/app/feature/tour/tour.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { TemplateFieldService } from "../template-field.service";
 import { EventService } from "src/app/shared/services/event/event.service";
