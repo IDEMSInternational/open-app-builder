@@ -15,7 +15,7 @@ $primary: hsl(203, 76%, 21%); // 0d3f5e
 $primary-light: color.change($primary, $lightness: 80%);
 $primary-lighter: color.change($primary, $lightness: 95%); // #e9f5fc
 
-$secondary: hsl(31, 95%, 57%); // #e5943e
+$secondary: hsl(31, 95%, 57%); // #fa9529
 
 $tertiary: hsl(47, 100%, 92%); // #fff6d6
 
@@ -47,9 +47,6 @@ $horizontal: 90deg;
   @include breakpoints.desktop {
     --content-max-width: #{map-get(breakpoints.$sizes, "desktop")};
   }
-
-  // Box shadow //
-  --ion-default-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 
   // Borders //
   // --- border-radiuses
@@ -211,8 +208,6 @@ $horizontal: 90deg;
   // ***********************
   // TODO: Migrate these variables to use the new theming system and replace their references
 
-  // Tiles
-  --tile-button-background: #{color.adjust($primary, $saturation: 14%, $lightness: 60%)};
   --tile-primary-light-gradient-start: #{color.adjust(
       $primary-lighter,
       $saturation: 6%,
@@ -303,14 +298,6 @@ $horizontal: 90deg;
     var(--parent-centre-secondary-gradient-start) 28.12%,
     var(--parent-centre-secondary-gradient-end) 100%
   );
-
-  // ROUND ICON BUTTON
-  --round-icon-button-light: #{color.adjust($tertiary, $lightness: -42%)}; //#FFCA41
-  --round-icon-button: #{$secondary}; //#F49D04
-  --round-icon-button-dark: #{color.adjust($secondary, $lightness: -7%)}; //#F87023
-
-  // POINTS ITEM
-  --points-item-bg: #{color.adjust($primary-lighter, $saturation: 12%, $lightness: -9%)}; //#B2E2FF
 
   // RADIO GROUP
   --radio-group-gradient-active-start: #{color.adjust($tertiary, $lightness: -13%)};
@@ -441,18 +428,7 @@ $horizontal: 90deg;
     var(--ion-gradient-primary-option-end) 100%
   );
 
-  // Tools
-  --tool-one-bg: #{color.adjust($secondary, $hue: -2%)}; // #FA8E29
-  --tool-two-bg: #{color.adjust($secondary, $hue: -2%, $saturation: 5%, $lightness: -7%)}; // #FF7B00
-  --tool-three-bg: #{color.adjust($primary, $hue: -8%, $saturation: 8%, $lightness: 17%)}; // #108AB2
-  --tool-four-bg: #{color.adjust($primary, $hue: -8%, $saturation: 12%, $lightness: 8%)}; //#096A8B
-  --tool-five-bg: #{$primary};
-
-  // Timer
-  --timer-buttons-color: #{color.adjust($primary, $hue: 1%, $saturation: 3%, $lightness: 25%)};
-
   // Combo box
-  --combo-box-placeholder-primary: rgba(13, 64, 96, 0.5);
   --combo-box-gradient-active-start: #{color.adjust($tertiary, $lightness: -13%)};
   --combo-box-gradient-active-end: #{color.adjust($tertiary, $saturation: -3%, $lightness: -40%)};
   --combo-box-gradient-passive-start: #{color.adjust(
@@ -475,15 +451,4 @@ $horizontal: 90deg;
     var(--combo-box-gradient-passive-start) 34.6%,
     var(--combo-box-gradient-passive-end) 105.68%
   );
-
-  --ion-color-help-tooltip: #{color.adjust($primary, $hue: -8%, $saturation: 12%, $lightness: 9%)};
-  --ion-color-slider: #{color.adjust($primary, $hue: -8%, $saturation: 12%, $lightness: 9%)};
-  --ion-btn-dark-box-shadow: 0px 4px 4px #00000040;
-  --ion-dg-bg-default: var(--ion-banner-primary);
-
-  // Used for background of .home_screen_wrapper in round-icon-button.component.scss
-  --ion-color-quaternary: #{$primary-lighter};
-
-  // Used on .alert-delete-button in _layout.scss
-  --ion-color-danger: #eb445a;
 }
