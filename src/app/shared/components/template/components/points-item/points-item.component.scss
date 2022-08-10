@@ -1,5 +1,7 @@
 @use "/src/theme/mixins";
 
+$points-item-bg: var(--points-item-bg, var(--ion-color-primary-200));
+
 .wrapper-point {
   padding: calc(var(--regular-padding) * var(--scale-factor--point))
     calc(5px * var(--scale-factor--point));
@@ -9,7 +11,7 @@
     padding: calc(20px * var(--scale-factor--point)) 0;
     width: calc(var(--points-item-width) * var(--scale-factor--point));
     height: calc(var(--points-item-height) * var(--scale-factor--point));
-    background: var(--points-item-bg);
+    background: $points-item-bg;
     box-shadow: var(--ion-default-box-shadow);
     border-radius: var(--ion-border-radius-standard);
     position: relative;

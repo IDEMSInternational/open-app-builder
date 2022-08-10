@@ -1,11 +1,36 @@
 @use "./utils";
+@use "sass:color";
 
 /** Authoring variables **/
-$color-primary: hsl(203, 76%, 21%);
-$color-secondary: hsl(31, 95%, 57%);
+$color-primary: hsl(203, 76%, 21%); // #0d3f5e
+$color-secondary: hsl(31, 95%, 57%); // #fa9529
+$page-background: #e3f4ff;
+
+/** Authoring component overrides **/
+$component-variables: (
+  // tile-button-background: #a3d9fa,
+  // points-item-bg: #bce3fb,
+  round-icon-button-light: var(--ion-color-yellow),
+  // round-icon-button: #fa9529,
+  // round-icon-button-dark: #F87023
+  // tool-one-bg: #fa8e29,
+  // tool-two-bg: #ff7b00,
+  // tool-three-bg: #108ab2,
+  // tool-four-bg: #096a8b,
+  // tool-five-bg: $color-primary,
+  // timer-buttons-color: #1985d2,
+  // combo-box-placeholder-primary: rgba(13, 64, 96, 0.5),
+  // ion-color-slider: #096e90,
+  // ion-color-help-tooltip: #096e90,
+  // ion-banner-primary: var(--ion-banner-primary),
+  ion-item-background: var(--ion-color-gray-light)
+);
 
 @mixin theme-default {
   [data-theme="default"] {
-    @include utils.generateTheme($color-primary, $color-secondary);
+    @include utils.generateTheme($color-primary, $color-secondary, $page-background);
+    @each $name, $value in $component-variables {
+      --#{$name}: #{$value};
+    }
   }
 }

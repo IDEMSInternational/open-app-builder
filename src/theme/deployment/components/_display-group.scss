@@ -1,3 +1,10 @@
+$tool-one-bg: var(--tool-one-bg, var(--ion-color-secondary-400));
+$tool-two-bg: var(--tool-two-bg, var(--ion-color-secondary-500));
+$tool-three-bg: var(--tool-three-bg, var(--ion-color-primary-600));
+$tool-four-bg: var(--tool-four-bg, var(--ion-color-primary-700));
+$tool-five-bg: var(--tool-five-bg, var(--ion-color-primary));
+$ion-dg-bg-default: var(--ion-dg-bg-default, var(--ion-banner-primary));
+
 // background colours
 plh-tmpl-display-group .display-group-wrapper[data-param-style~="light"] {
   background: var(--home-screen-light-bg);
@@ -104,7 +111,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
   margin-top: var(--regular-margin);
   padding: var(--regular-padding);
   border-radius: var(--ion-border-radius-secondary);
-  background: var(--ion-dg-bg-default);
+  background: $ion-dg-bg-default;
   margin-bottom: var(--regular-margin);
 }
 
@@ -113,7 +120,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
   @include banner;
 }
 .display-group-wrapper[data-param-style~="banner_passive"] {
-  background: var(--ion-banner-primary);
+  background: $ion-dg-bg-default;
   @include banner;
 }
 .display-group-wrapper[data-param-style~="banner_light"] {
@@ -127,7 +134,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
   width: 100%;
   margin-bottom: var(--small-margin) !important;
   padding: 0 var(--large-padding);
-  background: var(--ion-dg-bg-default);
+  background: $ion-dg-bg-default;
   height: var(--banner-short-height);
   /// short banner title
   plh-template-component[data-type="subtitle"] {
@@ -153,7 +160,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
   border-radius: var(--ion-border-radius-secondary);
   width: 100%;
   margin-bottom: var(--largest-margin) !important;
-  background: var(--ion-dg-bg-default);
+  background: $ion-dg-bg-default;
   justify-content: center;
 
   plh-template-component > plh-tmpl-image > .tmpl-image-container {
@@ -174,23 +181,23 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
 
 .display-group-wrapper[data-param-style~="tool_1"] {
   @include essential-tool;
-  background: var(--tool-one-bg);
+  background: $tool-one-bg;
 }
 .display-group-wrapper[data-param-style~="tool_2"] {
   @include essential-tool;
-  background: var(--tool-two-bg);
+  background: $tool-two-bg;
 }
 .display-group-wrapper[data-param-style~="tool_3"] {
   @include essential-tool;
-  background: var(--tool-three-bg);
+  background: $tool-three-bg;
 }
 .display-group-wrapper[data-param-style~="tool_4"] {
   @include essential-tool;
-  background: var(--tool-four-bg);
+  background: $tool-four-bg;
 }
 .display-group-wrapper[data-param-style~="tool_5"] {
   @include essential-tool;
-  background: var(--tool-five-bg);
+  background: $tool-five-bg;
 }
 .display-group-wrapper[data-param-style~="white_box"] {
   @include essential-tool;
