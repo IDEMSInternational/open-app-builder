@@ -46,5 +46,6 @@
   "@global.language_global_1: \"text\"": "@global.language_global_1: \"texto\"",
   "@global.language_global_2: \"text\"": "@global.language_global_2: \"texto\"",
   "@global.language_global_1: text": "@global.language_global_1: texto",
-  "@global.language_global_2: text": "@global.language_global_2: texto"
+  "@global.language_global_2: text": "@global.language_global_2: texto",
+  "Text and @global.language_global_1": "Texto y @global.language_global_1"
 }

@@ -17,7 +17,7 @@ ion-button {
   min-height: var(--buttons-min-height);
   padding: var(--regular-margin) var(--tiny-padding) 0;
   --border-radius: var(--ion-border-radius-standard);
-  --box-shadow: var(--ion-btn-dark-box-shadow);
+  --box-shadow: var(--ion-default-box-shadow);
   display: flex;
   width: fit-content;
   margin: 0 auto;
