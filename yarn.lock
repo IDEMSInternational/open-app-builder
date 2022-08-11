@@ -5494,6 +5494,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^16.11.47":
+  version: 16.11.47
+  resolution: "@types/node@npm:16.11.47"
+  checksum: 26811000753fd1bb9a90a563fc72942ac3ad5d5b6c97609a090c1e24210e040597ba060e55a7a46cb22cc84dafee112d741f45652139c6166e8ce0c970b4f05a
+  languageName: node
+  linkType: hard
+
 "@types/normalize-package-data@npm:^2.4.0":
   version: 2.4.1
   resolution: "@types/normalize-package-data@npm:2.4.1"
@@ -22813,7 +22820,6 @@ __metadata:
     "@types/node-rsa": ^1.1.1
     boxen: ^5.0.1
     chalk: ^4.1.0
-    character-parser: ^4.0.0
     chokidar: ^3.5.3
     commander: ^8.3.0
     data-models: "workspace:*"
@@ -23234,8 +23240,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "shared@workspace:packages/shared"
   dependencies:
-    concurrently: ^6.2.0
-    wait-on: ^6.0.0
+    "@types/jasmine": ^3.10.6
+    "@types/node": ^16.11.47
+    character-parser: ^4.0.0
+    jasmine: ^3.99.0
+    jasmine-spec-reporter: ^7.0.0
+    jasmine-ts: ^0.4.0
+    ts-node: ~7.0.0
+    typescript: ^4.1.2
   languageName: unknown
   linkType: soft
 
