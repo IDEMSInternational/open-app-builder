@@ -18,61 +18,6 @@ export function parseTemplatedString(value: string, context = {}) {
 }
 
 /**
- * Take a json-object representing all context variables and convert into a list of
- * string replacements. It retains each entry as the original variable, but also calculates
- * all possible nested paths for json objects and arrays
- * @example
- * ```
- * generateContextReplacements({
- *  row:{
- *      name:"Bob",
- *      foods:["pizza","salad"]
- *      }
- *  }
- * })
- *
- * // Output
- * {
- *  "@row":{name:"Bob",foods:["pizza","salad"]}
- *  "@row.name":"Bob",
- *  "@row.foods":["pizza","salad"],
- *  "@row.foods.0":"pizza"
- *  ...
- * }
- * ```
- */
-export function generateContextReplacements(context = {}, prefix = "", replacements = {}) {
-  for (let [key, value] of Object.entries<any>(context)) {
-    if (prefix) {
-      key = `${prefix}.${key}`;
-    } else {
-      key = `@${key}`;
-    }
-    replacements[key] = value;
-    // Create nested entries for json objects and arrays (with index keys)
-    if (value && typeof value === "object") {
-      if (Array.isArray(value)) {
-        value = arrayToObject(value);
-      }
-      replacements = {
-        ...replacements,
-        ...generateContextReplacements(value, key, {}),
-      };
-    }
-  }
-  return replacements;
-}
-
-/** Convert an array to a json object keyed by item index */
-function arrayToObject(arr: any[]) {
-  const arrObj: any = {};
-  for (const [index, el] of arr.entries()) {
-    arrObj[index] = el;
-  }
-  return arrObj;
-}
-
-/**
    * Take a string and extract any dynamic text listed within delimiter tags
    * Provides recursive support for deeply nested expressions
    * 
@@ -158,6 +103,52 @@ export function extractTemplatedString(
 }
 
 /**
+ * Take a json-object representing all context variables and convert into a list of
+ * string replacements. It retains each entry as the original variable, but also calculates
+ * all possible nested paths for json objects and arrays
+ * @example
+ * ```
+ * generateContextReplacements({
+ *  row:{
+ *      name:"Bob",
+ *      foods:["pizza","salad"]
+ *      }
+ *  }
+ * })
+ *
+ * // Output
+ * {
+ *  "@row":{name:"Bob",foods:["pizza","salad"]}
+ *  "@row.name":"Bob",
+ *  "@row.foods":["pizza","salad"],
+ *  "@row.foods.0":"pizza"
+ *  ...
+ * }
+ * ```
+ */
+export function generateContextReplacements(context = {}, prefix = "", replacements = {}) {
+  for (let [key, value] of Object.entries<any>(context)) {
+    if (prefix) {
+      key = `${prefix}.${key}`;
+    } else {
+      key = `@${key}`;
+    }
+    replacements[key] = value;
+    // Create nested entries for json objects and arrays (with index keys)
+    if (value && typeof value === "object") {
+      if (Array.isArray(value)) {
+        value = arrayToObject(value);
+      }
+      replacements = {
+        ...replacements,
+        ...generateContextReplacements(value, key, {}),
+      };
+    }
+  }
+  return replacements;
+}
+
+/**
  * @param valueReplacements - additional string replacements to perform on final values
  */
 export function parseExtractedTemplatedString(
@@ -172,4 +163,13 @@ export function parseExtractedTemplatedString(
     }
   }
   return valueReplacements[value] ?? value;
+}
+
+/** Convert an array to a json object keyed by item index */
+function arrayToObject(arr: any[]) {
+  const arrObj: any = {};
+  for (const [index, el] of arr.entries()) {
+    arrObj[index] = el;
+  }
+  return arrObj;
 }
