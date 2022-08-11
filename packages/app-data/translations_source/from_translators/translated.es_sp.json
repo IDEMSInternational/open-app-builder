@@ -238,5 +238,10 @@
     "SourceText": "@global.language_global_2: text",
     "text": "@global.language_global_2: texto",
     "type": "template"
+  },
+  {
+    "SourceText": "Text and @global.language_global_1",
+    "text": "Texto y @global.language_global_1",
+    "type": "template"
   }
 ]

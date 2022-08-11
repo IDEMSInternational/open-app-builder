@@ -10,10 +10,6 @@ import {
 } from "../../utils";
 
 export class TemplateParser extends DefaultParser {
-  constructor() {
-    super();
-    this.groupSuffix = "";
-  }
   postProcess(row: FlowTypes.TemplateRow, nestedPath?: string) {
     // remove empty rows
     if (Object.keys(row).length === 0) {
@@ -139,6 +135,10 @@ export class TemplateParser extends DefaultParser {
     action_list: FlowTypes.TemplateRow["action_list"],
     rowName: string
   ) {
+    // Ignore case where action list not array, such as when dynamic reference to @item.action_list
+    if (!Array.isArray(action_list)) {
+      return action_list;
+    }
     return action_list.map((action) => {
       if (rowName && Array.isArray(action.args)) {
         action.args = action.args.map((arg) => {

@@ -1,0 +1,14 @@
+{
+  "flow_type": "template",
+  "flow_name": "comp_colour_palette",
+  "status": "released",
+  "flow_subtype": "component_demo",
+  "rows": [
+    {
+      "type": "colour_palette",
+      "name": "colour_palette",
+      "_nested_name": "colour_palette"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/component_sheets/component_colour_palette.xlsx"
+}
