@@ -116,9 +116,10 @@ describe("Templating", () => {
   // Use a function wrapper to allow looping tests
   function execTest(testData: ITestData) {
     const { input, output } = testData;
-    it(`Parses "${input}"`, () => {
+    it(input, () => {
       const parsed = Templating.parseTemplatedString(input, context.input);
       expect(parsed).toEqual(output);
+      process.nextTick(() => console.log(`      ${parsed}\n`));
       // NOTE - in case of errors additional tests can be carried out just on intermediate
     });
   }
@@ -127,6 +128,7 @@ describe("Templating", () => {
   const parsed = Templating.generateContextReplacements(context.input);
   it("Generates context replacments", () => {
     expect(parsed).toEqual(context.output);
+    // process.nextTick(() => console.log(`\n${JSON.stringify(parsed, null, 2)}\n`));
   });
 
   // Test individual string parsing
