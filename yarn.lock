@@ -5336,6 +5336,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/jasmine@npm:^3.10.6":
+  version: 3.10.6
+  resolution: "@types/jasmine@npm:3.10.6"
+  checksum: dff2c26a9ecbc8198d2f5bf1860275b0b323c80db772c2417d7217afa28bd05fee4b98ab3673dcb18d859f2cd0e084b0dcbd33629fcbe6945b08a72f8e5c36d2
+  languageName: node
+  linkType: hard
+
 "@types/jasmine@npm:~3.7.7":
   version: 3.7.8
   resolution: "@types/jasmine@npm:3.7.8"
@@ -5484,6 +5491,13 @@ __metadata:
   version: 16.11.26
   resolution: "@types/node@npm:16.11.26"
   checksum: 57757caaba3f0d95de82198cb276a1002c49b710108c932a1d02d7c91ff2fa57cfe2dd19fde60853b6dd90b0964b3cf35557981d2628e20aed6a909057aedfe6
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^16.11.47":
+  version: 16.11.47
+  resolution: "@types/node@npm:16.11.47"
+  checksum: 26811000753fd1bb9a90a563fc72942ac3ad5d5b6c97609a090c1e24210e040597ba060e55a7a46cb22cc84dafee112d741f45652139c6166e8ce0c970b4f05a
   languageName: node
   linkType: hard
 
@@ -8360,6 +8374,13 @@ __metadata:
   version: 1.0.2
   resolution: "char-regex@npm:1.0.2"
   checksum: b563e4b6039b15213114626621e7a3d12f31008bdce20f9c741d69987f62aeaace7ec30f6018890ad77b2e9b4d95324c9f5acfca58a9441e3b1dcdd1e2525d17
+  languageName: node
+  linkType: hard
+
+"character-parser@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "character-parser@npm:4.0.0"
+  checksum: 29bd1acf5138adb82d735a7a87d2d11bf2dfaaa0b01b2510402b52ea0706ac5da17a2a0897d47a124cafe9a7914d070b910114a5b90c89c2396e7a0b7c20f20d
   languageName: node
   linkType: hard
 
@@ -15762,7 +15783,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jasmine-core@npm:^3.6.0, jasmine-core@npm:~3.10.0":
+"jasmine-core@npm:^3.6.0":
   version: 3.10.1
   resolution: "jasmine-core@npm:3.10.1"
   checksum: 77ee26aaf29576e982a2ebe6586218ff4d7cc4305ad18c400954bbdeb3c7987e9a4a8ac6d6548b65838852f325395fc901d69bf8c24bdccfbd67b263fbf5d4fd
@@ -15776,27 +15797,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jasmine-spec-reporter@npm:~7.0.0":
+"jasmine-core@npm:~3.99.0":
+  version: 3.99.1
+  resolution: "jasmine-core@npm:3.99.1"
+  checksum: 4e4a89739d99e471b86c7ccc4c5c244a77cc6d1e17b2b0d87d81266b8415697354d8873f7e764790a10661744f73a753a6e9bcd9b3e48c66a0c9b8a092b071b7
+  languageName: node
+  linkType: hard
+
+"jasmine-spec-reporter@npm:^7.0.0, jasmine-spec-reporter@npm:~7.0.0":
   version: 7.0.0
   resolution: "jasmine-spec-reporter@npm:7.0.0"
   dependencies:
     colors: 1.4.0
   checksum: d5dd5ee26aad98158653776111231889b21b6cffa136d712a814058ad099301045fa2b95f887fcdeaa20e2a82c3896ffd43b47e25190ddfc921782b09088224e
-  languageName: node
-  linkType: hard
-
-"jasmine-ts@npm:^0.3.2":
-  version: 0.3.3
-  resolution: "jasmine-ts@npm:0.3.3"
-  dependencies:
-    yargs: ^16.2.0
-  peerDependencies:
-    jasmine: ">=3.4"
-    ts-node: ">=3.2.0 <=10"
-    typescript: ">=3.5.2"
-  bin:
-    jasmine-ts: lib/index.js
-  checksum: 30224b614de6411be584264ca24b17ee4514c37ffc85dfc938753e624560f54629510650c4e99efbcc0623609c8e24b72b12ff1ba6ef3fc79d14c936af32bdd8
   languageName: node
   linkType: hard
 
@@ -15815,15 +15828,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jasmine@npm:^3.6.3":
-  version: 3.10.0
-  resolution: "jasmine@npm:3.10.0"
+"jasmine@npm:^3.99.0":
+  version: 3.99.0
+  resolution: "jasmine@npm:3.99.0"
   dependencies:
     glob: ^7.1.6
-    jasmine-core: ~3.10.0
+    jasmine-core: ~3.99.0
   bin:
     jasmine: bin/jasmine.js
-  checksum: 38c534148238ae3fa1bdce0a22176e447eb2961eccd4513d3c52e8f2580dfe04655c25d6da955aa850402231e3d5f9f7d58ae55bbe6f23ac2e24d66b7045b2ab
+  checksum: baa9a5d8555b844063cd6e11bb272d424a17fa3ebd31c62b211a80c9b8dbb4d9c26218b33212b4f8122e38204a443c2eefbcce89c1c72ee3f0044037ec651427
   languageName: node
   linkType: hard
 
@@ -22803,6 +22816,7 @@ __metadata:
     "@idemsInternational/rapidpro-excel": "workspace:*"
     "@types/fs-extra": ^9.0.4
     "@types/inquirer": ^7.3.1
+    "@types/jasmine": ^3.10.6
     "@types/node-rsa": ^1.1.1
     boxen: ^5.0.1
     chalk: ^4.1.0
@@ -22813,8 +22827,9 @@ __metadata:
     fs-extra: ^9.0.1
     glob: ^7.2.0
     inquirer: ^7.3.3
-    jasmine: ^3.6.3
-    jasmine-ts: ^0.3.2
+    jasmine: ^3.99.0
+    jasmine-spec-reporter: ^7.0.0
+    jasmine-ts: ^0.4.0
     node-rsa: ^1.1.1
     pkg: ^5.5.1
     subtitles-parser-vtt: ^0.1.0
@@ -23225,8 +23240,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "shared@workspace:packages/shared"
   dependencies:
-    concurrently: ^6.2.0
-    wait-on: ^6.0.0
+    "@types/jasmine": ^3.10.6
+    "@types/node": ^16.11.47
+    character-parser: ^4.0.0
+    jasmine: ^3.99.0
+    jasmine-spec-reporter: ^7.0.0
+    jasmine-ts: ^0.4.0
+    ts-node: ~7.0.0
+    typescript: ^4.1.2
   languageName: unknown
   linkType: soft
 
