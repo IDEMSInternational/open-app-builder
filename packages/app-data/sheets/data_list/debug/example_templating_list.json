@@ -15,7 +15,7 @@
     {
       "id": "example_3",
       "text": "Hello example_3",
-      "text_2": "@row.text - with additional message"
+      "text_2": "Hello example_3 - with additional message"
     },
     {
       "id": "example_4",

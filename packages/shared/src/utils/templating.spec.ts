@@ -3,7 +3,7 @@ import * as Templating from "./templating";
 interface ITestData {
   input: any; // Source data for evaluation
   output: any; // Expected end parsed data
-  intermediate: Templating.ITemplatedStringVariable; // Expected intermediate extracted values
+  intermediate?: Templating.ITemplatedStringVariable; // Expected intermediate extracted values
 }
 
 /** This context is applied to all tests. Input will be processed for subsitition into output */
@@ -107,6 +107,16 @@ const tests: ITestData[] = [
       nested: { string: "Smith" },
     },
     intermediate: {}, // not currently used
+  },
+  // Legacy concatenation (append missing bit)
+  {
+    input: "@row.first_name.sent.2",
+    output: "Bob.sent.2",
+  },
+  // Missing values are not replaced
+  {
+    input: "@row.missing",
+    output: "@row.missing",
   },
 ];
 
