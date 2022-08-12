@@ -6,15 +6,46 @@ export interface ITemplatedStringVariable {
 }
 
 /**
- *
- * @param value
- * @param context
+ * Take a string and replace instances of context variables, such as `"hello {@row.name}"`
+ * @param value - string to process replacements
+ * @param context - json object specifying specific values for replacement
+ * E.g. {row:{id:'example_1'}} will replace `{@row.id}_completed` with 'example_1_completed`
  */
 export function parseTemplatedString(value: string, context = {}) {
   const extracted = extractTemplatedString({ value });
   const replacements = generateContextReplacements(context);
   const parsed = parseExtractedTemplatedString(extracted, replacements);
   return parsed;
+}
+
+/**
+ * Similar to code above, except input uses expressions without curly brace syntax
+ * @param value - string to process replacements
+ * @param context - json object specifying specific values for replacement
+ * E.g. {row:{id:'example_1'}} will replace `@row.id` with 'example_1`
+ */
+export function parseNonTemplatedString(value: string, context = {}) {
+  let replaceCount = 0;
+  const replacements = generateContextReplacements(context);
+  // Check each context prefix for references (e.g. if context has 'row' property search '@row')
+  for (const prefix of Object.keys(context)) {
+    // full regex searches for prefix with following alpha-numeric characters,
+    // or permitted special characters "." ":" "_"
+    const regex = new RegExp(`@${prefix}[a-z0-9.:_]+$`, "gi");
+    const potentialReplacments = value.matchAll(regex);
+    for (const replacement of potentialReplacments) {
+      const [expression] = replacement;
+      if (replacements.hasOwnProperty(expression)) {
+        value = value.replace(expression, replacements[expression]);
+        replaceCount++;
+      }
+    }
+  }
+  // Second parse to cover any replacements that reference additional context strings
+  if (replaceCount > 0) {
+    return parseNonTemplatedString(value, context);
+  }
+  return value;
 }
 
 /**

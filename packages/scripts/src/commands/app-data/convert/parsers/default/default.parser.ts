@@ -1,5 +1,6 @@
 import chalk from "chalk";
 import { FlowTypes } from "data-models";
+import { parseNonTemplatedString, parseTemplatedString } from "shared";
 import { AbstractParser } from "../abstract.parser";
 import {
   parseAppDataListString,
@@ -231,19 +232,15 @@ class RowProcessor {
     });
   }
 
-  /**
-   * replace any self references, i.e "hello @row.id" => "hello some_id", @row.text::eng
-   * TODO - should find better long term option that can update based on dynamic value and translations
-   */
+  /** replace any self references, i.e "hello @row.id" => "hello some_id"   */
   private replaceRowSelfReferences() {
+    const context = { row: this.row };
     Object.keys(this.row).forEach((field) => {
       if (typeof this.row[field] === "string") {
-        const rowReplacements = [...this.row[field].matchAll(/@row.([0-9a-z_:]+)/gim)];
-        for (const replacement of rowReplacements) {
-          const [expression, replaceField] = replacement;
-          const replaceValue = this.row[replaceField];
-          this.row[field] = this.row[field].replace(expression, replaceValue);
-        }
+        // First pass - replace any templated variables (curly brace syntax, e.g. `{@row.id}_completed`)
+        this.row[field] = parseTemplatedString(this.row[field], context);
+        // Second pass - replace any non-templated variables (e.g. `@row.id`)
+        this.row[field] = parseNonTemplatedString(this.row[field], context);
       }
     });
   }
