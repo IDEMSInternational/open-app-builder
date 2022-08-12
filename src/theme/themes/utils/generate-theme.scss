@@ -1,5 +1,6 @@
 @use "sass:color";
 @use "sass:map";
+@use "sass:math";
 @use "./contrast-colour.scss";
 
 // Returns a map of colours based partly on Material Design's colour system
@@ -8,7 +9,8 @@
   $primary,
   $secondary,
   $page-background: null,
-  $weights: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900)
+  $weights: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900),
+  $yellow: #ffd333
 ) {
   $result: (
     "color-primary": $primary,
@@ -16,23 +18,17 @@
     "color-secondary": $secondary,
     "color-secondary-contrast": contrast-colour.choose-contrast-color($secondary),
     "background-color": color.change($primary, $lightness: 95%),
-    "color-yellow": #ffd333,
+    "color-yellow": $yellow,
     "color-red": #eb445a,
     "color-gray-light": hsl(0, 0%, 93%),
     "default-box-shadow": 0 4px 4px rgba(0, 0, 0, 0.25),
-    //  GRADIENTS
-    // primary-gradient
-    "gradient-primary-start": color.adjust($primary, $lightness: 33%),
-    "gradient-primary-end": color.adjust($primary, $saturation: 2%, $lightness: 13%),
-    // secondary-gradient
-    "gradient-secondary-start": color.adjust($secondary, $saturation: 4%),
-    "gradient-secondary-end": color.adjust($secondary, $saturation: 5%, $lightness: -19%),
   );
 
   // Generate variants of base colours based on given weights and add to map
   // E.g. '"color-primary-400": color.change($primary, $lightness: 60%)'
   $result: map.merge($result, generateColourVariants($primary, "primary", $weights));
   $result: map.merge($result, generateColourVariants($secondary, "secondary", $weights));
+  $result: map.merge($result, generateColourVariants($yellow, "yellow", $weights));
 
   @if ($page-background != null) {
     $result: map.set($result, "background-color", $page-background);
@@ -43,7 +39,10 @@
 @function generateColourVariants($base, $baseName, $weights) {
   $variants-map: ();
   @each $weight in $weights {
-    $map: (color-#{$baseName}-#{$weight}: color.change($base, $lightness: 100 - ($weight / 10)));
+    $map: (
+      color-#{$baseName}-#{$weight}:
+        color.change($base, $lightness: math.percentage(1 - math.div($weight, 1000)))
+    );
     $variants-map: map.merge($variants-map, $map);
   }
   $map: (color-#{$baseName}-transparent: rgba($base, 0.5));
@@ -51,18 +50,62 @@
   @return $variants-map;
 }
 
-@mixin generateTheme($p, $s, $bg: null) {
-  $colorPalette: getColorPalette($p, $s, $bg);
-  @include colorVariables($colorPalette);
+@function getGradientPalette($colorPalette) {
+  $baseColors: primary, secondary;
+  $gradientDirections: (
+    vertical: 175deg,
+    horizontal: 85deg,
+  );
+  $gradientPalette: ();
+  @each $baseColor in $baseColors {
+    @each $directionName, $directionValue in $gradientDirections {
+      $result: (
+        "gradient-#{$baseColor}-#{$directionName}":
+          linear-gradient(
+            $directionValue,
+            color.adjust(map.get($colorPalette, "color-#{$baseColor}"), $lightness: 10%) 30%,
+            color.adjust(map.get($colorPalette, "color-#{$baseColor}"), $lightness: -10%)
+          ),
+        "gradient-#{$baseColor}-light-#{$directionName}":
+          linear-gradient(
+            $directionValue,
+            map.get($colorPalette, "color-#{$baseColor}-200") 30%,
+            map.get($colorPalette, "color-#{$baseColor}-500")
+          ),
+        "gradient-#{$baseColor}-mid-#{$directionName}":
+          linear-gradient(
+            $directionValue,
+            map.get($colorPalette, "color-#{$baseColor}-400") 30%,
+            map.get($colorPalette, "color-#{$baseColor}-700")
+          ),
+        "gradient-#{$baseColor}-dark-#{$directionName}":
+          linear-gradient(
+            $directionValue,
+            map.get($colorPalette, "color-#{$baseColor}-700") 30%,
+            map.get($colorPalette, "color-#{$baseColor}-900")
+          ),
+      );
+      $gradientPalette: map.merge($gradientPalette, $result);
+    }
+  }
+  @return $gradientPalette;
 }
 
-@mixin colorVariables($sourceColorPalette) {
-  $colorPalette: $sourceColorPalette;
+@mixin generateTheme($p, $s, $bg: null) {
+  $colorPalette: getColorPalette($p, $s, $bg);
+  $gradientPalette: getGradientPalette($colorPalette);
+  @include colorVariables($colorPalette, $gradientPalette);
+}
 
-  // Generate variants of base colours based on given weights and add to map
-  // E.g. equivalent to '--ion-color-primary-400: #{map.get($colorPalette, "color-primary-400")}'
+@mixin colorVariables($sourceColorPalette, $sourceGradientPalette) {
+  $colorPalette: $sourceColorPalette;
+  $gradientPalette: $sourceGradientPalette;
+
   @each $label, $color in $colorPalette {
     --ion-#{$label}: #{$color};
+  }
+  @each $label, $color in $gradientPalette {
+    --#{$label}: #{$color};
   }
 
   --ion-item-background: #{map.get($colorPalette, "color-primary-100")};
@@ -79,23 +122,4 @@
   //Gradient direction
   $vertical: 180deg;
   $horizontal: 90deg;
-
-  // COMPONENTS
-  // Buttons
-  --ion-btn-primary: linear-gradient(
-    #{$vertical},
-    #{map.get($colorPalette, "gradient-primary-start")} 0.43%,
-    #{map.get($colorPalette, "gradient-primary-end")} 74.07%
-  );
-  --ion-btn-secondary: linear-gradient(
-    #{$vertical},
-    #{map.get($colorPalette, "gradient-secondary-start")} 28.12%,
-    #{map.get($colorPalette, "gradient-secondary-end")} 100%
-  );
-  --ion-btn-control-bg: #{color.adjust(
-      map.get($colorPalette, "color-primary"),
-      $hue: 3.6deg,
-      $saturation: 3%,
-      $lightness: 25%
-    )};
 }

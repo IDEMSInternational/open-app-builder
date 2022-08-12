@@ -1,4 +1,14 @@
 @use "/src/theme/mixins";
+
+$combo-box-active-with-answer-bg: var(
+  --combo-box-active-with-answer-bg,
+  var(--gradient-yellow-vertical)
+);
+$combo-box-passive-with-answer-bg: var(
+  --combo-box-passive-with-answer-bg,
+  var(--gradient-primary-light-vertical)
+);
+
 :host {
   display: contents;
 }
@@ -72,10 +82,10 @@
       background: var(--combo-box-with-answer-bg);
     }
     .active {
-      background: var(--combo-box-active-with-answer-bg);
+      background: $combo-box-active-with-answer-bg;
     }
     .passive {
-      background: var(--combo-box-passive-with-answer-bg);
+      background: $combo-box-passive-with-answer-bg;
     }
   }
 }
