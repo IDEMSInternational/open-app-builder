@@ -1,6 +1,32 @@
 @use "/src/theme/mixins.scss";
 
 $tile-button-background: var(--tile-button-background, var(--ion-color-primary-200));
+$parent-centre-primary-gradient: var(
+  --parent-centre-primary-gradient,
+  var(--gradient-primary-mid-vertical)
+);
+$parent-centre-primary-light-gradient: var(
+  --parent-centre-primary-light-gradient,
+  var(--gradient-primary-light-vertical)
+);
+$parent-centre-secondary-gradient: var(
+  --parent-centre-secondary-gradient,
+  var(--gradient-secondary-mid-vertical)
+);
+$parent-centre-secondary-light-gradient: var(
+  --parent-centre-secondary-light-gradient,
+  var(--gradient-yellow-vertical)
+);
+$tile-primary-gradient: var(--tile-primary-gradient, var(--gradient-primary-mid-vertical));
+$tile-primary-light-gradient: var(
+  --tile-primary-light-gradient,
+  var(--gradient-primary-light-vertical)
+);
+$tile-secondary-gradient: var(--tile-secondary-gradient, var(--gradient-secondary-mid-vertical));
+$tile-secondary-light-gradient: var(
+  --tile-secondary-light-gradient,
+  var(--gradient-yellow-vertical)
+);
 
 // NOTE CC 2021-12-16 - Presumably this is for case of rendered markdown
 // (but ideally should be handled from within markdown itself)
@@ -96,29 +122,29 @@ $tile-button-background: var(--tile-button-background, var(--ion-color-primary-2
 }
 
 .quick_start {
-  background: var(--tile-secondary-light-gradient);
+  background: $tile-secondary-light-gradient;
 }
 
 .quick_start_passive {
-  background: var(--tile-primary-gradient);
+  background: $tile-primary-gradient;
 }
 .quick_start_blue {
-  background: var(--tile-primary-light-gradient);
+  background: $tile-primary-light-gradient;
 }
 .quick_start_dark {
-  background: var(--tile-secondary-gradient);
+  background: $tile-secondary-gradient;
 }
 .parent_centre_1 {
-  background: var(--parent-centre-primary-light-gradient);
+  background: $parent-centre-primary-light-gradient;
 }
 .parent_centre_2 {
-  background: var(--parent-centre-secondary-light-gradient);
+  background: $parent-centre-secondary-light-gradient;
 }
 .parent_centre_3 {
-  background: var(--parent-centre-secondary-gradient);
+  background: $parent-centre-secondary-gradient;
 }
 .parent_centre_4 {
-  background: var(--parent-centre-primary-gradient);
+  background: $parent-centre-primary-gradient;
 }
 
 .image_text {
