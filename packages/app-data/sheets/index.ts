@@ -332,6 +332,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_languages.xlsx",
     },
+    example_templating_list: {
+      flow_type: "data_list",
+      flow_subtype: "debug",
+      flow_name: "example_templating_list",
+      _xlsxPath: "quality_assurance/example_sheets/example_advanced_templating.xlsx",
+    },
     feature_items_data: {
       flow_type: "data_list",
       flow_name: "feature_items_data",

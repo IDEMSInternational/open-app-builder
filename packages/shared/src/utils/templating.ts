@@ -5,47 +5,86 @@ export interface ITemplatedStringVariable {
   variables?: { [key: string]: ITemplatedStringVariable };
 }
 
+type ITemplatedDataContext = { [prefix: string]: any };
+
+/**
+ * Utility class for parsing data containing templated values
+ *
+ * @param context - json object specifying specific values for replacement
+ * E.g. {row:{id:'example_1'}} will replace `@row.id` with 'example_1`
+ */
+export class TemplatedData {
+  private replacementMapping: { [key: string]: any };
+
+  constructor(private context: ITemplatedDataContext = {}) {
+    this.updateContext(this.context);
+  }
+
+  private updateContext(context: ITemplatedDataContext) {
+    this.context = context;
+    this.replacementMapping = generateContextReplacements(context);
+  }
+
+  public parse(value: any) {
+    const contextKeys = Object.keys(this.context);
+    if (value) {
+      if (typeof value === "string") {
+        value = parseTemplatedString(value, this.replacementMapping);
+        value = parseNonTemplatedString(value, contextKeys, this.replacementMapping);
+      }
+      if (typeof value === "object") {
+        if (Array.isArray(value)) {
+          value = value.map((v) => this.parse(v));
+        }
+        if (value.constructor === {}.constructor) {
+          Object.keys(value).forEach((key) => (value[key] = this.parse(value[key])));
+        }
+      }
+    }
+    return value;
+  }
+}
+
 /**
  * Take a string and replace instances of context variables, such as `"hello {@row.name}"`
  * @param value - string to process replacements
- * @param context - json object specifying specific values for replacement
- * E.g. {row:{id:'example_1'}} will replace `{@row.id}_completed` with 'example_1_completed`
  */
-export function parseTemplatedString(value: string, context = {}) {
+function parseTemplatedString(value: string, replacementMapping: any) {
   const extracted = extractTemplatedString({ value });
-  const replacements = generateContextReplacements(context);
-  const parsed = parseExtractedTemplatedString(extracted, replacements);
+  const parsed = parseExtractedTemplatedString(extracted, replacementMapping);
   return parsed;
 }
 
 /**
  * Similar to code above, except input uses expressions without curly brace syntax
  * @param value - string to process replacements
- * @param context - json object specifying specific values for replacement
- * E.g. {row:{id:'example_1'}} will replace `@row.id` with 'example_1`
  */
-export function parseNonTemplatedString(value: string, context = {}) {
+function parseNonTemplatedString(
+  value: string,
+  contextPrefixes: string[],
+  replacementMapping: any
+) {
+  let parsed = value;
   let replaceCount = 0;
-  const replacements = generateContextReplacements(context);
   // Check each context prefix for references (e.g. if context has 'row' property search '@row')
-  for (const prefix of Object.keys(context)) {
+  for (const prefix of contextPrefixes) {
     // full regex searches for prefix with following alpha-numeric characters,
     // or permitted special characters "." ":" "_"
     const regex = new RegExp(`@${prefix}[a-z0-9.:_]+$`, "gi");
-    const potentialReplacments = value.matchAll(regex);
+    const potentialReplacments = parsed.matchAll(regex);
     for (const replacement of potentialReplacments) {
       const [expression] = replacement;
-      if (replacements.hasOwnProperty(expression)) {
-        value = value.replace(expression, replacements[expression]);
+      if (replacementMapping.hasOwnProperty(expression)) {
+        parsed = parsed.replace(expression, replacementMapping[expression]);
         replaceCount++;
       }
     }
   }
   // Second parse to cover any replacements that reference additional context strings
   if (replaceCount > 0) {
-    return parseNonTemplatedString(value, context);
+    return parseNonTemplatedString(parsed, contextPrefixes, replacementMapping);
   }
-  return value;
+  return parsed;
 }
 
 /**
@@ -180,20 +219,20 @@ export function generateContextReplacements(context = {}, prefix = "", replaceme
 }
 
 /**
- * @param valueReplacements - additional string replacements to perform on final values
+ * @param replacementMapping - additional string replacements to perform on final values
  */
 export function parseExtractedTemplatedString(
   data: ITemplatedStringVariable,
-  valueReplacements = {}
+  replacementMapping: { [key: string]: any }
 ) {
   let { value, variables } = data;
   if (variables) {
     for (const [key, childData] of Object.entries(variables)) {
-      const childValue = parseExtractedTemplatedString(childData, valueReplacements);
+      const childValue = parseExtractedTemplatedString(childData, replacementMapping);
       value = value?.replace(key, childValue || key);
     }
   }
-  return valueReplacements[value] ?? value;
+  return replacementMapping[value] ?? value;
 }
 
 /** Convert an array to a json object keyed by item index */
