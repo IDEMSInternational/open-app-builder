@@ -1,8 +1,8 @@
 import * as Templating from "./templating";
 
 interface ITestData {
-  input: string; // Source string for evaluation
-  output: string; // Expected end parsed string
+  input: any; // Source data for evaluation
+  output: any; // Expected end parsed data
   intermediate: Templating.ITemplatedStringVariable; // Expected intermediate extracted values
 }
 
@@ -35,22 +35,24 @@ const context = {
  * An intermediate value exists for debugging purposes (output of extraction process)
  */
 const tests: ITestData[] = [
+  // Concatenation
   {
-    input: "1. {@row.first_name}-{@row.last_name}",
-    output: "1. Bob-Smith",
+    input: "Hello {@row.first_name}-{@row.last_name}",
+    output: "Hello Bob-Smith",
     intermediate: {
-      value: "1. [$1]-[$2]",
+      value: "Hello [$1]-[$2]",
       variables: {
         "[$1]": { value: "@row.first_name" },
         "[$2]": { value: "@row.last_name" },
       },
     },
   },
+  // Recursive lookup
   {
-    input: "2. {@row.{@row.firstname_lookup_field}}",
-    output: "2. Bob",
+    input: "{@row.{@row.firstname_lookup_field}}",
+    output: "Bob",
     intermediate: {
-      value: "2. [$1]",
+      value: "[$1]",
       variables: {
         "[$1]": {
           value: "@row.[$1.1]",
@@ -63,31 +65,12 @@ const tests: ITestData[] = [
       },
     },
   },
+  // Recursive lookup with concatenation
   {
-    input: "3. {@row.first_name} {@row.{@row.firstname_lookup_field}}",
-    output: "3. Bob Bob",
+    input: "{@row.{@row.first_name}_{@row.last_name}}",
+    output: "Bob_Smith Lookup Row",
     intermediate: {
-      value: "3. [$1] [$2]",
-      variables: {
-        "[$1]": {
-          value: "@row.first_name",
-        },
-        "[$2]": {
-          value: "@row.[$2.1]",
-          variables: {
-            "[$2.1]": {
-              value: "@row.firstname_lookup_field",
-            },
-          },
-        },
-      },
-    },
-  },
-  {
-    input: "4. {@row.{@row.first_name}_{@row.last_name}}",
-    output: "4. Bob_Smith Lookup Row",
-    intermediate: {
-      value: "4. [$1]",
+      value: "[$1]",
       variables: {
         "[$1]": {
           value: "@row.[$1.1]_[$1.2]",
@@ -103,12 +86,27 @@ const tests: ITestData[] = [
       },
     },
   },
+  // Text with curly braces but no templated data
   {
-    input: "5. {non-dynamic}",
-    output: "5. {non-dynamic}",
+    input: "{non-dynamic}",
+    output: "{non-dynamic}",
     intermediate: {
-      value: "5. {non-dynamic}",
+      value: "{non-dynamic}",
     },
+  },
+  // JSON objects and arrays
+  {
+    input: {
+      string: "@row.first_name",
+      array: ["@row.first_name", "@row.last_name"],
+      nested: { string: "@row.last_name" },
+    },
+    output: {
+      string: "Bob",
+      array: ["Bob", "Smith"],
+      nested: { string: "Smith" },
+    },
+    intermediate: {}, // not currently used
   },
 ];
 
@@ -116,10 +114,10 @@ describe("Templating", () => {
   // Use a function wrapper to allow looping tests
   function execTest(testData: ITestData) {
     const { input, output } = testData;
-    it(input, () => {
-      const parsed = Templating.parseTemplatedString(input, context.input);
+    it(JSON.stringify(input), () => {
+      const parsed = new Templating.TemplatedData(context.input).parse(input);
       expect(parsed).toEqual(output);
-      process.nextTick(() => console.log(`      ${parsed}\n`));
+      process.nextTick(() => console.log(`      ${JSON.stringify(parsed)}\n`));
       // NOTE - in case of errors additional tests can be carried out just on intermediate
     });
   }

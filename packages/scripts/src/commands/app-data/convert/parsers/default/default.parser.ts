@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import { FlowTypes } from "data-models";
-import { parseNonTemplatedString, parseTemplatedString } from "shared";
+import { TemplatedData } from "shared";
 import { AbstractParser } from "../abstract.parser";
 import {
   parseAppDataListString,
@@ -235,14 +235,7 @@ class RowProcessor {
   /** replace any self references, i.e "hello @row.id" => "hello some_id"   */
   private replaceRowSelfReferences() {
     const context = { row: this.row };
-    Object.keys(this.row).forEach((field) => {
-      if (typeof this.row[field] === "string") {
-        // First pass - replace any templated variables (curly brace syntax, e.g. `{@row.id}_completed`)
-        this.row[field] = parseTemplatedString(this.row[field], context);
-        // Second pass - replace any non-templated variables (e.g. `@row.id`)
-        this.row[field] = parseNonTemplatedString(this.row[field], context);
-      }
-    });
+    return new TemplatedData(context).parse(this.row);
   }
 
   private removeMetaFields() {
