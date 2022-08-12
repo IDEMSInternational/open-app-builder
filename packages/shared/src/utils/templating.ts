@@ -14,6 +14,7 @@ type ITemplatedDataContext = { [prefix: string]: any };
  * E.g. {row:{id:'example_1'}} will replace `@row.id` with 'example_1`
  */
 export class TemplatedData {
+  /** list of all potential string replacments */
   private replacementMapping: { [key: string]: any };
 
   constructor(private context: ITemplatedDataContext = {}) {
@@ -25,13 +26,20 @@ export class TemplatedData {
     this.replacementMapping = generateContextReplacements(context);
   }
 
+  /**
+   * Main data conversion method
+   * Iterate over data, parse string values and nested objects and arrays recursively
+   */
   public parse(value: any) {
     const contextKeys = Object.keys(this.context);
     if (value) {
       if (typeof value === "string") {
+        // convert strings, with separate passes for expressions containing
+        // templated (curly brace) syntax and not
         value = parseTemplatedString(value, this.replacementMapping);
         value = parseNonTemplatedString(value, contextKeys, this.replacementMapping);
       }
+      // recurssively convert array and json-like objects
       if (typeof value === "object") {
         if (Array.isArray(value)) {
           value = value.map((v) => this.parse(v));
@@ -47,7 +55,6 @@ export class TemplatedData {
 
 /**
  * Take a string and replace instances of context variables, such as `"hello {@row.name}"`
- * @param value - string to process replacements
  */
 function parseTemplatedString(value: string, replacementMapping: any) {
   const extracted = extractTemplatedString({ value });
@@ -57,7 +64,6 @@ function parseTemplatedString(value: string, replacementMapping: any) {
 
 /**
  * Similar to code above, except input uses expressions without curly brace syntax
- * @param value - string to process replacements
  */
 function parseNonTemplatedString(
   value: string,
