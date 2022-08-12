@@ -76,13 +76,17 @@ function parseNonTemplatedString(
   for (const prefix of contextPrefixes) {
     // full regex searches for prefix with following alpha-numeric characters,
     // or permitted special characters "." ":" "_"
-    const regex = new RegExp(`@${prefix}[a-z0-9.:_]+$`, "gi");
+    const regex = new RegExp(`@${prefix}[a-z0-9.:_]+`, "gi");
     const potentialReplacments = parsed.matchAll(regex);
     for (const replacement of potentialReplacments) {
       const [expression] = replacement;
       if (replacementMapping.hasOwnProperty(expression)) {
         parsed = parsed.replace(expression, replacementMapping[expression]);
         replaceCount++;
+      } else {
+        // No variable found - likely legacy syntax where @row.id.completed would append '.completed' to row.id
+        const legacyReplacement = hackHandleLegacyReplacement(expression, replacementMapping);
+        parsed = parsed.replace(expression, legacyReplacement);
       }
     }
   }
@@ -91,6 +95,29 @@ function parseNonTemplatedString(
     return parseNonTemplatedString(parsed, contextPrefixes, replacementMapping);
   }
   return parsed;
+}
+
+/**
+ * Previously processing a field like `@row.id.sent` would simply append
+ * `.sent` onto the parsed row.id (as `.` was not considered a reserved character for names)
+ * Now that `.` is used when looking up nested replacements include a manual method to
+ * try to replace neareset match where possible
+ * E.g. `@row.id.sent.2` will first try match the full expression, then `@row.id.sent`,
+ * before finally matching `@row.id` and appending the rest as strings
+ */
+function hackHandleLegacyReplacement(value: string, replacementMapping: any) {
+  let replacement = value;
+  const parts = value.split(".");
+  for (const i of parts.keys()) {
+    const replaceKey = parts.slice(0, i).join(".");
+    if (replacementMapping.hasOwnProperty(replaceKey)) {
+      const replaceValue = replacementMapping[replaceKey];
+      if (typeof replaceValue === "string") {
+        replacement = [replaceValue, ...parts.slice(i)].join(".");
+      }
+    }
+  }
+  return replacement;
 }
 
 /**
