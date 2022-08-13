@@ -29,6 +29,10 @@ export class TemplatedData {
   /**
    * Main data conversion method
    * Iterate over data, parse string values and nested objects and arrays recursively
+   *
+   * TODO - possibly add generic method to track converted data
+   * Use list to re-parse in case where parsing creates new templated data
+   * Will need means to avoid infinite loops (possibly max parses)
    */
   public parse(value: any) {
     const contextKeys = Object.keys(this.context);
