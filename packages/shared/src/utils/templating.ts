@@ -25,17 +25,13 @@ export class TemplatedData {
    * {row:{id:"example_1"}}
    * ```
    */
-  private initialContext: any;
-  /**
-   * generated list of all namespaced and flattened string replacments as parsed from initial context
-   * ```
-   * {"@row.id":"example_1"}
-   * ```
-   * */
   public parsedContext: ITemplatedDataContext;
 
+  /** List of all prefixes used in context, e.g `["row"]` */
+  private contextPrefixes: string[] = [];
+
   /** A list of all variable replacements carried out during parse (for tracking dependencies list) */
-  public replacedVariablesList = {};
+  public replacedVariablesList: { [key: string]: string } = {};
 
   constructor(options?: { initialValue?: any; context?: ITemplatedDataContext }) {
     this.updateValue(options?.initialValue ?? "");
@@ -45,33 +41,35 @@ export class TemplatedData {
   /** Change the initial value whilst keeping existing context same */
   public updateValue(value: any) {
     this.initialValue = value;
+    this.replacedVariablesList = {};
     return this;
   }
 
   /** Change the parsing context and generate new context replacement mapping */
   public updateContext(context: ITemplatedDataContext) {
-    this.initialContext = context;
     this.parsedContext = generateContextReplacements(context);
+    this.contextPrefixes = Object.keys(context);
+
+    // Reassign any context replacements that themselves contain another dynamic reference
+    // TODO - could make this recursive for deeper refs, but would need to include inf loop check
+    Object.entries(this.parsedContext).forEach(([key, value]) => {
+      if (typeof value === "string") {
+        this.parsedContext[key] = this.parse(value);
+      }
+    });
+
+    this.replacedVariablesList = {};
     return this;
   }
 
   /**
    * Main data conversion method
    * Iterate over data, parse string values and nested objects and arrays recursively
-   *
-   * TODO - possibly add generic method to track converted data
-   * Use list to re-parse in case where parsing creates new templated data
-   * Will need means to avoid infinite loops (possibly max parses)
    */
   public parse(value = this.initialValue) {
-    this.replacedVariablesList = {};
-    const contextKeys = Object.keys(this.initialContext);
     if (value) {
       if (typeof value === "string") {
-        // convert strings, with separate passes for expressions containing
-        // templated (curly brace) syntax and not
         value = this.parseTemplatedString(value, this.parsedContext);
-        value = this.parseNonTemplatedString(value, contextKeys, this.parsedContext);
       }
       // recurssively convert array and json-like objects
       if (typeof value === "object") {
@@ -88,73 +86,57 @@ export class TemplatedData {
 
   /**
    * Take a string and replace instances of context variables, such as `"hello {@row.name}"`
+   * Extracts variables in 2 stages to account for variables with delimiters and variables without
+   * e.g. `hello {@row.name}!` instead of `hello @row.name!`
    */
   private parseTemplatedString(value: string, parsedContext: any) {
-    const extracted = extractTemplatedString({ value });
-    const parsed = this.parseExtractedTemplatedString(extracted, parsedContext);
-    return parsed;
+    const delimitedVariables = extractDelimitedTemplateString({ value });
+    const firstParseValue = this.parseExtractedString(delimitedVariables, parsedContext);
+    const nonDelimitedVariables = extractNonDelimitedTemplateString(
+      { value: firstParseValue },
+      this.contextPrefixes
+    );
+    const secondParseValue = this.parseExtractedString(nonDelimitedVariables, parsedContext);
+    return secondParseValue;
   }
 
   /**
    * @param parsedContext - additional string replacements to perform on final values
    */
-  private parseExtractedTemplatedString(
+  private parseExtractedString(
     data: ITemplatedStringVariable,
     parsedContext: { [key: string]: any }
   ) {
     let { value, variables } = data;
-    if (variables) {
+    const hasChildData = variables ? true : false;
+    let parsedValue = value;
+    // recursively replace any deeply-nested variable expressions
+    if (hasChildData) {
       for (const [key, childData] of Object.entries(variables)) {
-        const childValue = this.parseExtractedTemplatedString(childData, parsedContext);
-        value = value?.replace(key, childValue || key);
+        const childValue = this.parseExtractedString(childData, parsedContext);
+        parsedValue = parsedValue.replace(key, childValue ?? key);
       }
     }
-    if (parsedContext.hasOwnProperty(value)) {
-      this.updateReplacedVariablesList(value, parsedContext[value]);
+    // replace main variables
+    else {
+      let replacedValue = value;
+      if (parsedContext.hasOwnProperty(value)) {
+        replacedValue = parsedContext[value];
+      } else {
+        const legacyValue = this.hackHandleLegacyReplacement(value, parsedContext);
+        replacedValue = legacyValue;
+      }
+      if (replacedValue !== value) {
+        this.updateReplacedVariablesList(value, replacedValue);
+        parsedValue = parsedValue.replace(value, replacedValue);
+      }
     }
-
-    return parsedContext[value] ?? value;
+    return parsedValue;
   }
 
   /** Update replaced variables to track all replaced variable dependencies */
   private updateReplacedVariablesList(srcValue: string, replacedValue: string) {
     this.replacedVariablesList[srcValue] = replacedValue;
-  }
-
-  /**
-   * Similar to code above, except input uses expressions without curly brace syntax
-   */
-  private parseNonTemplatedString(
-    value: string,
-    contextPrefixes: string[],
-    parsedContext: any
-  ): string {
-    let parsed = value;
-    let replaceCount = 0;
-    // Check each context prefix for references (e.g. if context has 'row' property search '@row')
-    for (const prefix of contextPrefixes) {
-      // full regex searches for prefix with following alpha-numeric characters,
-      // or permitted special characters "." ":" "_"
-      const regex = new RegExp(`@${prefix}[a-z0-9.:_]+`, "gi");
-      const potentialReplacments = parsed.matchAll(regex);
-      for (const replacement of potentialReplacments) {
-        const [expression] = replacement;
-        if (parsedContext.hasOwnProperty(expression)) {
-          parsed = parsed.replace(expression, parsedContext[expression]);
-          replaceCount++;
-        } else {
-          // No variable found - likely legacy syntax where @row.id.completed would append '.completed' to row.id
-          const legacyReplacement = this.hackHandleLegacyReplacement(expression, parsedContext);
-          parsed = parsed.replace(expression, legacyReplacement);
-        }
-        this.updateReplacedVariablesList(value, parsed);
-      }
-    }
-    // Second parse to cover any replacements that reference additional context strings
-    if (replaceCount > 0) {
-      return this.parseNonTemplatedString(parsed, contextPrefixes, parsedContext);
-    }
-    return parsed;
   }
 
   /**
@@ -218,7 +200,7 @@ export class TemplatedData {
       } 
    * ```
    */
-export function extractTemplatedString(
+function extractDelimitedTemplateString(
   data: ITemplatedStringVariable,
   nestedName = ""
 ): ITemplatedStringVariable {
@@ -241,7 +223,7 @@ export function extractTemplatedString(
       };
       // Run again to extract any sibling values
 
-      const sibling = extractTemplatedString({ value, variables }, nestedName);
+      const sibling = extractDelimitedTemplateString({ value, variables }, nestedName);
       if (sibling) {
         value = sibling.value;
         variables = { ...variables, ...sibling.variables };
@@ -256,11 +238,41 @@ export function extractTemplatedString(
   if (variables) {
     nestedName += `${Object.keys(variables).length}.`;
     for (const [key, parent] of Object.entries(variables)) {
-      const nested = extractTemplatedString({ value: parent.value, variables: {} }, nestedName);
+      const nested = extractDelimitedTemplateString(
+        { value: parent.value, variables: {} },
+        nestedName
+      );
       const { variables: nestedVariables } = nested;
       if (nestedVariables) {
         variables[key] = nested;
       }
+    }
+  }
+  return Object.keys(variables).length === 0 ? { value } : { value, variables };
+}
+
+/**
+ * Similar to code for delimited template string, except no delimiters used to indicate
+ * start and end of variable expression so use list of allowed characters instead
+ * (e.g. `hello @row.field!` instead of hello {@row.field}!)
+ */
+function extractNonDelimitedTemplateString(
+  data: ITemplatedStringVariable,
+  contextPrefixes: string[]
+): ITemplatedStringVariable {
+  let value = data.value;
+  let variables = data.variables ?? {};
+  // Check each context prefix for references (e.g. if context has 'row' property search '@row')
+  for (const prefix of contextPrefixes) {
+    // full regex searches for prefix with following alpha-numeric characters,
+    // or permitted special characters "." ":" "_"
+    const regex = new RegExp(`@${prefix}[a-z0-9.:_]+`, "gi");
+    const potentialReplacments = value.matchAll(regex);
+    for (const replacement of potentialReplacments) {
+      const [expression] = replacement;
+      variables[expression] = {
+        value: expression,
+      };
     }
   }
   return Object.keys(variables).length === 0 ? { value } : { value, variables };

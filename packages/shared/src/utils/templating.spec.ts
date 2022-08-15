@@ -14,6 +14,7 @@ const context = {
       last_name: "Smith",
       firstname_lookup_field: "first_name",
       Bob_Smith: "Bob_Smith Lookup Row",
+      full_name: "@row.first_name @row.last_name",
     },
   },
   output: {
@@ -22,11 +23,13 @@ const context = {
       last_name: "Smith",
       firstname_lookup_field: "first_name",
       Bob_Smith: "Bob_Smith Lookup Row",
+      full_name: "@row.first_name @row.last_name",
     },
     "@row.first_name": "Bob",
     "@row.last_name": "Smith",
     "@row.firstname_lookup_field": "first_name",
     "@row.Bob_Smith": "Bob_Smith Lookup Row",
+    "@row.full_name": "Bob Smith", // evaluated recursive context
   },
 };
 
@@ -35,7 +38,12 @@ const context = {
  * An intermediate value exists for debugging purposes (output of extraction process)
  */
 const tests: ITestData[] = [
-  // Concatenation
+  // Basic non-delimited
+  {
+    input: "@row.first_name @row.last_name",
+    output: "Bob Smith",
+  },
+  // Basic delimited
   {
     input: "Hello {@row.first_name}-{@row.last_name}",
     output: "Hello Bob-Smith",
@@ -107,6 +115,11 @@ const tests: ITestData[] = [
       nested: { string: "Smith" },
     },
     intermediate: {}, // not currently used
+  },
+  // Recursive lookup with context-dependent return
+  {
+    input: "@row.full_name",
+    output: "Bob Smith",
   },
   // Legacy concatenation (append missing bit)
   {
