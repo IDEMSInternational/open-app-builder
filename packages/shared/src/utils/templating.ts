@@ -34,6 +34,9 @@ export class TemplatedData {
    * */
   public parsedContext: ITemplatedDataContext;
 
+  /** A list of all variable replacements carried out during parse (for tracking dependencies list) */
+  public replacedVariablesList = {};
+
   constructor(options?: { initialValue?: any; context?: ITemplatedDataContext }) {
     this.updateValue(options?.initialValue ?? "");
     this.updateContext(options?.context ?? {});
@@ -61,6 +64,7 @@ export class TemplatedData {
    * Will need means to avoid infinite loops (possibly max parses)
    */
   public parse(value = this.initialValue) {
+    this.replacedVariablesList = {};
     const contextKeys = Object.keys(this.initialContext);
     if (value) {
       if (typeof value === "string") {
@@ -87,8 +91,34 @@ export class TemplatedData {
    */
   private parseTemplatedString(value: string, parsedContext: any) {
     const extracted = extractTemplatedString({ value });
-    const parsed = parseExtractedTemplatedString(extracted, parsedContext);
+    const parsed = this.parseExtractedTemplatedString(extracted, parsedContext);
     return parsed;
+  }
+
+  /**
+   * @param parsedContext - additional string replacements to perform on final values
+   */
+  private parseExtractedTemplatedString(
+    data: ITemplatedStringVariable,
+    parsedContext: { [key: string]: any }
+  ) {
+    let { value, variables } = data;
+    if (variables) {
+      for (const [key, childData] of Object.entries(variables)) {
+        const childValue = this.parseExtractedTemplatedString(childData, parsedContext);
+        value = value?.replace(key, childValue || key);
+      }
+    }
+    if (parsedContext.hasOwnProperty(value)) {
+      this.updateReplacedVariablesList(value, parsedContext[value]);
+    }
+
+    return parsedContext[value] ?? value;
+  }
+
+  /** Update replaced variables to track all replaced variable dependencies */
+  private updateReplacedVariablesList(srcValue: string, replacedValue: string) {
+    this.replacedVariablesList[srcValue] = replacedValue;
   }
 
   /**
@@ -117,6 +147,7 @@ export class TemplatedData {
           const legacyReplacement = this.hackHandleLegacyReplacement(expression, parsedContext);
           parsed = parsed.replace(expression, legacyReplacement);
         }
+        this.updateReplacedVariablesList(value, parsed);
       }
     }
     // Second parse to cover any replacements that reference additional context strings
@@ -279,23 +310,6 @@ function generateContextReplacements(context = {}, prefix = "", replacements = {
     }
   }
   return replacements;
-}
-
-/**
- * @param parsedContext - additional string replacements to perform on final values
- */
-function parseExtractedTemplatedString(
-  data: ITemplatedStringVariable,
-  parsedContext: { [key: string]: any }
-) {
-  let { value, variables } = data;
-  if (variables) {
-    for (const [key, childData] of Object.entries(variables)) {
-      const childValue = parseExtractedTemplatedString(childData, parsedContext);
-      value = value?.replace(key, childValue || key);
-    }
-  }
-  return parsedContext[value] ?? value;
 }
 
 /** Convert an array to a json object keyed by item index */
