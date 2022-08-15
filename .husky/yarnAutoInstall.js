@@ -15,7 +15,6 @@ const autoInstallPath = path.resolve(rootDir, "yarn.auto-install");
  * in cases where yarn lock updated locally (as opposed to incoming git changes)
  */
 function yarnAutoInstall() {
-  let requiresInstall = true;
   if (fs.existsSync(lockfilePath) && fs.existsSync(autoInstallPath)) {
     const lockModifiedTime = fs.statSync(lockfilePath).mtime.getTime();
     const autoInstallTime = fs.statSync(autoInstallPath).mtime.getTime();
@@ -25,8 +24,6 @@ function yarnAutoInstall() {
   } else {
     installPackages();
   }
-  if (requiresInstall) {
-  }
 }
 
 function installPackages() {
@@ -34,7 +31,8 @@ function installPackages() {
   console.log(`Changes to lockfile found, running \`${command}\``);
   spawnSync(command, { cwd: rootDir, shell: true, stdio: "inherit" });
   const lockModifiedTime = fs.statSync(lockfilePath).mtime;
-  fs.writeFileSync(autoInstallPath, `${lockModifiedTime.getTime()}`);
+  const autoInstallContents = `Installed for yarn.lock modified:\n${lockModifiedTime.toISOString()}`;
+  fs.writeFileSync(autoInstallPath, autoInstallContents);
   fs.utimesSync(autoInstallPath, lockModifiedTime, lockModifiedTime);
 }
 
@@ -60,4 +58,3 @@ function yarnAutoInstallGit() {
 if (require.main === module) {
   yarnAutoInstall();
 }
-
