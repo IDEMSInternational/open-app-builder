@@ -24,7 +24,7 @@
     "test:e2e": "yarn workspace test-e2e start",
     "lint": "ng lint",
     "analyse": "yarn build -- --stats-json && npx webpack-bundle-analyzer www/stats.json",
-    "prepare": "yarn husky install && yarn precompile"
+    "prepare": "yarn husky install"
   },
   "private": true,
   "dependencies": {
