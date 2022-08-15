@@ -235,7 +235,7 @@ class RowProcessor {
   /** replace any self references, i.e "hello @row.id" => "hello some_id"   */
   private replaceRowSelfReferences() {
     const context = { row: this.row };
-    return new TemplatedData(context).parse(this.row);
+    return new TemplatedData({ context, initialValue: this.row }).parse();
   }
 
   private removeMetaFields() {
