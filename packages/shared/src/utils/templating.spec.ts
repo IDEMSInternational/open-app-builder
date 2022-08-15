@@ -125,18 +125,21 @@ describe("Templating", () => {
   function execTest(testData: ITestData) {
     const { input, output } = testData;
     it(JSON.stringify(input), () => {
-      const parsed = new Templating.TemplatedData(context.input).parse(input);
-      expect(parsed).toEqual(output);
-      process.nextTick(() => console.log(`      ${JSON.stringify(parsed)}\n`));
+      const parser = new Templating.TemplatedData({ context: context.input, initialValue: input });
+
+      const parsedValue = parser.parse();
+
+      expect(parsedValue).toEqual(output);
+      process.nextTick(() => console.log(`      ${JSON.stringify(parsedValue)}\n`));
       // NOTE - in case of errors additional tests can be carried out just on intermediate
     });
   }
 
   // Test context replacements
-  const parsed = Templating.generateContextReplacements(context.input);
   it("Generates context replacments", () => {
-    expect(parsed).toEqual(context.output);
-    // process.nextTick(() => console.log(`\n${JSON.stringify(parsed, null, 2)}\n`));
+    const { parsedContext } = new Templating.TemplatedData({ context: context.input });
+    expect(parsedContext).toEqual(context.output);
+    // process.nextTick(() => console.log(`\n${JSON.stringify(parsedContext, null, 2)}\n`));
   });
 
   // Test individual string parsing

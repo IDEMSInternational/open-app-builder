@@ -14,16 +14,42 @@ type ITemplatedDataContext = { [prefix: string]: any };
  * E.g. {row:{id:'example_1'}} will replace `@row.id` with 'example_1`
  */
 export class TemplatedData {
-  /** list of all potential string replacments */
-  private replacementMapping: { [key: string]: any };
+  /** Value containing templated data, e.g. `"Hello @row.id"` */
+  private initialValue: any;
 
-  constructor(private context: ITemplatedDataContext = {}) {
-    this.updateContext(this.context);
+  /** Value returned after parsing templated data, e.g. `"Hello example_1"` */
+  public parsedValue: any;
+
+  /** json object containing namespaced values for context replacements
+   * ```
+   * {row:{id:"example_1"}}
+   * ```
+   */
+  private initialContext: any;
+  /**
+   * generated list of all namespaced and flattened string replacments as parsed from initial context
+   * ```
+   * {"@row.id":"example_1"}
+   * ```
+   * */
+  public parsedContext: ITemplatedDataContext;
+
+  constructor(options?: { initialValue?: any; context?: ITemplatedDataContext }) {
+    this.updateValue(options?.initialValue ?? "");
+    this.updateContext(options?.context ?? {});
   }
 
-  private updateContext(context: ITemplatedDataContext) {
-    this.context = context;
-    this.replacementMapping = generateContextReplacements(context);
+  /** Change the initial value whilst keeping existing context same */
+  public updateValue(value: any) {
+    this.initialValue = value;
+    return this;
+  }
+
+  /** Change the parsing context and generate new context replacement mapping */
+  public updateContext(context: ITemplatedDataContext) {
+    this.initialContext = context;
+    this.parsedContext = generateContextReplacements(context);
+    return this;
   }
 
   /**
@@ -34,14 +60,14 @@ export class TemplatedData {
    * Use list to re-parse in case where parsing creates new templated data
    * Will need means to avoid infinite loops (possibly max parses)
    */
-  public parse(value: any) {
-    const contextKeys = Object.keys(this.context);
+  public parse(value = this.initialValue) {
+    const contextKeys = Object.keys(this.initialContext);
     if (value) {
       if (typeof value === "string") {
         // convert strings, with separate passes for expressions containing
         // templated (curly brace) syntax and not
-        value = parseTemplatedString(value, this.replacementMapping);
-        value = parseNonTemplatedString(value, contextKeys, this.replacementMapping);
+        value = this.parseTemplatedString(value, this.parsedContext);
+        value = this.parseNonTemplatedString(value, contextKeys, this.parsedContext);
       }
       // recurssively convert array and json-like objects
       if (typeof value === "object") {
@@ -55,73 +81,73 @@ export class TemplatedData {
     }
     return value;
   }
-}
 
-/**
- * Take a string and replace instances of context variables, such as `"hello {@row.name}"`
- */
-function parseTemplatedString(value: string, replacementMapping: any) {
-  const extracted = extractTemplatedString({ value });
-  const parsed = parseExtractedTemplatedString(extracted, replacementMapping);
-  return parsed;
-}
+  /**
+   * Take a string and replace instances of context variables, such as `"hello {@row.name}"`
+   */
+  private parseTemplatedString(value: string, parsedContext: any) {
+    const extracted = extractTemplatedString({ value });
+    const parsed = parseExtractedTemplatedString(extracted, parsedContext);
+    return parsed;
+  }
 
-/**
- * Similar to code above, except input uses expressions without curly brace syntax
- */
-function parseNonTemplatedString(
-  value: string,
-  contextPrefixes: string[],
-  replacementMapping: any
-) {
-  let parsed = value;
-  let replaceCount = 0;
-  // Check each context prefix for references (e.g. if context has 'row' property search '@row')
-  for (const prefix of contextPrefixes) {
-    // full regex searches for prefix with following alpha-numeric characters,
-    // or permitted special characters "." ":" "_"
-    const regex = new RegExp(`@${prefix}[a-z0-9.:_]+`, "gi");
-    const potentialReplacments = parsed.matchAll(regex);
-    for (const replacement of potentialReplacments) {
-      const [expression] = replacement;
-      if (replacementMapping.hasOwnProperty(expression)) {
-        parsed = parsed.replace(expression, replacementMapping[expression]);
-        replaceCount++;
-      } else {
-        // No variable found - likely legacy syntax where @row.id.completed would append '.completed' to row.id
-        const legacyReplacement = hackHandleLegacyReplacement(expression, replacementMapping);
-        parsed = parsed.replace(expression, legacyReplacement);
+  /**
+   * Similar to code above, except input uses expressions without curly brace syntax
+   */
+  private parseNonTemplatedString(
+    value: string,
+    contextPrefixes: string[],
+    parsedContext: any
+  ): string {
+    let parsed = value;
+    let replaceCount = 0;
+    // Check each context prefix for references (e.g. if context has 'row' property search '@row')
+    for (const prefix of contextPrefixes) {
+      // full regex searches for prefix with following alpha-numeric characters,
+      // or permitted special characters "." ":" "_"
+      const regex = new RegExp(`@${prefix}[a-z0-9.:_]+`, "gi");
+      const potentialReplacments = parsed.matchAll(regex);
+      for (const replacement of potentialReplacments) {
+        const [expression] = replacement;
+        if (parsedContext.hasOwnProperty(expression)) {
+          parsed = parsed.replace(expression, parsedContext[expression]);
+          replaceCount++;
+        } else {
+          // No variable found - likely legacy syntax where @row.id.completed would append '.completed' to row.id
+          const legacyReplacement = this.hackHandleLegacyReplacement(expression, parsedContext);
+          parsed = parsed.replace(expression, legacyReplacement);
+        }
       }
     }
+    // Second parse to cover any replacements that reference additional context strings
+    if (replaceCount > 0) {
+      return this.parseNonTemplatedString(parsed, contextPrefixes, parsedContext);
+    }
+    return parsed;
   }
-  // Second parse to cover any replacements that reference additional context strings
-  if (replaceCount > 0) {
-    return parseNonTemplatedString(parsed, contextPrefixes, replacementMapping);
-  }
-  return parsed;
-}
 
-/**
- * Previously processing a field like `@row.id.sent` would simply append
- * `.sent` onto the parsed row.id (as `.` was not considered a reserved character for names)
- * Now that `.` is used when looking up nested replacements include a manual method to
- * try to replace neareset match where possible
- * E.g. `@row.id.sent.2` will first try match the full expression, then `@row.id.sent`,
- * before finally matching `@row.id` and appending the rest as strings
- */
-function hackHandleLegacyReplacement(value: string, replacementMapping: any) {
-  let replacement = value;
-  const parts = value.split(".");
-  for (const i of parts.keys()) {
-    const replaceKey = parts.slice(0, i).join(".");
-    if (replacementMapping.hasOwnProperty(replaceKey)) {
-      const replaceValue = replacementMapping[replaceKey];
-      if (typeof replaceValue === "string") {
-        replacement = [replaceValue, ...parts.slice(i)].join(".");
+  /**
+   * Previously processing a field like `@row.id.sent` would simply append
+   * `.sent` onto the parsed row.id (as `.` was not considered a reserved character for names)
+   * Now that `.` is used when looking up nested replacements include a manual method to
+   * try to replace neareset match where possible
+   * E.g. `@row.id.sent.2` will first try match the full expression, then `@row.id.sent`,
+   * before finally matching `@row.id` and appending the rest as strings
+   */
+  private hackHandleLegacyReplacement(value: string, parsedContext: any) {
+    let replacement = value;
+    const parts = value.split(".");
+    for (const i of parts.keys()) {
+      const replaceKey = parts.slice(0, i).join(".");
+      if (parsedContext.hasOwnProperty(replaceKey)) {
+        const replaceValue = parsedContext[replaceKey];
+        if (typeof replaceValue === "string") {
+          replacement = [replaceValue, ...parts.slice(i)].join(".");
+        }
       }
     }
+    return replacement;
   }
-  return replacement;
 }
 
 /**
@@ -233,7 +259,7 @@ export function extractTemplatedString(
  * }
  * ```
  */
-export function generateContextReplacements(context = {}, prefix = "", replacements = {}) {
+function generateContextReplacements(context = {}, prefix = "", replacements = {}) {
   for (let [key, value] of Object.entries<any>(context)) {
     if (prefix) {
       key = `${prefix}.${key}`;
@@ -256,20 +282,20 @@ export function generateContextReplacements(context = {}, prefix = "", replaceme
 }
 
 /**
- * @param replacementMapping - additional string replacements to perform on final values
+ * @param parsedContext - additional string replacements to perform on final values
  */
-export function parseExtractedTemplatedString(
+function parseExtractedTemplatedString(
   data: ITemplatedStringVariable,
-  replacementMapping: { [key: string]: any }
+  parsedContext: { [key: string]: any }
 ) {
   let { value, variables } = data;
   if (variables) {
     for (const [key, childData] of Object.entries(variables)) {
-      const childValue = parseExtractedTemplatedString(childData, replacementMapping);
+      const childValue = parseExtractedTemplatedString(childData, parsedContext);
       value = value?.replace(key, childValue || key);
     }
   }
-  return replacementMapping[value] ?? value;
+  return parsedContext[value] ?? value;
 }
 
 /** Convert an array to a json object keyed by item index */
