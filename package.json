@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "ng": "ng",
-    "start": "yarn workflow populate_src_assets && concurrently --kill-others --raw \"yarn data-models:serve\" \"yarn data:serve\" \"ng serve --open\"",
+    "start": "yarn precompile && yarn workflow populate_src_assets && concurrently --kill-others --raw \"yarn data-models:serve\" \"yarn data:serve\" \"ng serve --open\"",
     "precompile": "yarn scripts compile types",
     "build": "yarn precompile && yarn workflow populate_src_assets && ng build --prod",
     "data:serve": "yarn workspace app-data serve",
