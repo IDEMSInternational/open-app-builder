@@ -55,6 +55,8 @@ const tests: ITestData[] = [
       },
     },
   },
+  // Mixed contexts
+  { input: "@local.@row.first_name", output: "@local.Bob" },
   // Recursive lookup
   {
     input: "{@row.{@row.firstname_lookup_field}}",
@@ -156,7 +158,7 @@ describe("Templating", () => {
   });
 
   // Test individual string parsing
-  for (const testData of tests) {
+  for (const testData of tests.slice(2, 3)) {
     execTest(testData);
   }
 });
