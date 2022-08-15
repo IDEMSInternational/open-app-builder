@@ -1,4 +1,5 @@
 import chalk from "chalk";
+import { FlowTypes } from "data-models";
 import { setNestedProperty, booleanStringToBoolean } from "../utils";
 
 /**
@@ -108,4 +109,16 @@ export function flattenJson<T>(json: any, tree = {}, nestedPath?: string): { [ke
     }
   });
   return tree;
+}
+
+export function extractDynamicDependencies(dynamicFields: FlowTypes.TemplateRow["_dynamicFields"]) {
+  const dynamicDependencies = {};
+  const flatFields = flattenJson<FlowTypes.TemplateRowDynamicEvaluator[]>(dynamicFields);
+  Object.entries(flatFields).forEach(([key, fields]) => {
+    fields.forEach((field) => {
+      const deps = dynamicDependencies[field.matchedExpression] || [];
+      dynamicDependencies[field.matchedExpression] = [...deps, key];
+    });
+  });
+  return dynamicDependencies;
 }
