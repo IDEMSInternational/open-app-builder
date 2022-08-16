@@ -237,7 +237,6 @@ export namespace FlowTypes {
     | "animated_section_group"
     | "display_group"
     | "set_variable"
-    | "set_theme"
     // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
     | "set_field"
     | "set_local"
@@ -350,7 +349,6 @@ export namespace FlowTypes {
       | "audio_play"
       | "style"
       | "close_pop_up"
-      | "set_theme"
       | "start_tour"
       | "trigger_actions"
       | "track_event"
