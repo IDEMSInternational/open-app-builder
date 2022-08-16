@@ -1,7 +1,7 @@
 @use "/src/theme/mixins";
 
-$ion-btn-primary: var(--ion-btn-primary, var(--gradient-primary-mid-vertical));
-$ion-btn-secondary: var(--ion-btn-secondary, var(--gradient-secondary-mid-vertical));
+$background-primary: var(--button-background-primary, var(--gradient-primary-mid-vertical));
+$background-secondary: var(--button-background-secondary, var(--gradient-secondary-mid-vertical));
 
 .wrapper {
   width: var(--square-button-min-width);
@@ -30,9 +30,9 @@ ion-button[disabled] {
 
 .navigation {
   min-height: var(--square-button-navigation-min-height);
-  background: $ion-btn-secondary;
+  background: $background-secondary;
 }
 
 .information {
-  background: $ion-btn-primary;
+  background: $background-primary;
 }

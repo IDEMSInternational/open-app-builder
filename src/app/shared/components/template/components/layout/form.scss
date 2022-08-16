@@ -1,4 +1,4 @@
-$ion-btn-primary: var(--ion-btn-primary, var(--gradient-primary-mid-vertical));
+$button-background-primary: var(--button-background-primary, var(--gradient-primary-mid-vertical));
 
 ion-button {
   font-size: 25px;
@@ -11,5 +11,5 @@ ion-button {
   --border-radius: 15px;
   --box-shadow: var(--ion-default-box-shadow);
   min-width: 100%;
-  --background: #{$ion-btn-primary};
+  --background: #{$button-background-primary};
 }
