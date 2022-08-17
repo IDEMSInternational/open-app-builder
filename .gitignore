@@ -63,3 +63,6 @@ node_modules
 
 .angular
 .gradle
+
+# Ignore auto-lock-install
+yarn.auto-install
