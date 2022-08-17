@@ -1,9 +1,5 @@
-import { parseUntil } from "character-parser";
-
-export interface ITemplatedStringVariable {
-  value?: string;
-  variables?: { [key: string]: ITemplatedStringVariable };
-}
+import { ITemplatedStringVariable } from "../types";
+import { addStringDelimiters, extractDelimitedTemplateString } from "./delimiters";
 
 type ITemplatedDataContext = { [prefix: string]: any };
 
@@ -49,7 +45,6 @@ export class TemplatedData {
   public updateContext(context: ITemplatedDataContext) {
     this.parsedContext = generateContextReplacements(context);
     this.contextPrefixes = Object.keys(context);
-
     // Reassign any context replacements that themselves contain another dynamic reference
     // TODO - could make this recursive for deeper refs, but would need to include inf loop check
     Object.entries(this.parsedContext).forEach(([key, value]) => {
@@ -57,7 +52,6 @@ export class TemplatedData {
         this.parsedContext[key] = this.parse(value);
       }
     });
-
     this.replacedVariablesList = {};
     return this;
   }
@@ -90,14 +84,10 @@ export class TemplatedData {
    * e.g. `hello {@row.name}!` instead of `hello @row.name!`
    */
   private parseTemplatedString(value: string, parsedContext: any) {
-    const delimitedVariables = extractDelimitedTemplateString({ value });
-    const firstParseValue = this.parseExtractedString(delimitedVariables, parsedContext);
-    const nonDelimitedVariables = extractNonDelimitedTemplateString(
-      { value: firstParseValue },
-      this.contextPrefixes
-    );
-    const secondParseValue = this.parseExtractedString(nonDelimitedVariables, parsedContext);
-    return secondParseValue;
+    value = addStringDelimiters(value, this.contextPrefixes);
+    const extractedData = extractDelimitedTemplateString({ value });
+    const parsedValue = this.parseExtractedString(extractedData, parsedContext);
+    return parsedValue;
   }
 
   /**
@@ -116,6 +106,8 @@ export class TemplatedData {
         const childValue = this.parseExtractedString(childData, parsedContext);
         parsedValue = parsedValue.replace(key, childValue ?? key);
       }
+      // handle case is parsedValue is all a dynamic context variable
+      return this.parseExtractedString({ value: parsedValue }, parsedContext);
     }
     // replace main variables
     else {
@@ -161,121 +153,6 @@ export class TemplatedData {
     }
     return replacement;
   }
-}
-
-/**
-   * Take a string and extract any dynamic text listed within delimiter tags
-   * Provides recursive support for deeply nested expressions
-   * 
-   * @example
-   * ```
-   * "Hello {@row.first_name}-{@row.last_name}"
-   * // Output
-   * { 
-      "value": "Hello [$1]-[$2]", 
-      "variables": { 
-        "[1]": { 
-          "value": "@row.first_name" 
-        }, 
-        "[2]": { 
-          "value": "@row.last_name" 
-        } 
-      } 
-   * ```
-   * @example
-   * ```
-   * "Hello {@row.{@row.name_field}}"
-   * // Output
-   * { 
-      "value": "Hello [$1]", 
-      "variables": { 
-        "[1]: { 
-          "value": "@row.[$1.1]", 
-          "variables": { 
-            "[1.1]": { 
-              "value": "@row.name_field" 
-            } 
-          } 
-        } 
-      } 
-   * ```
-   */
-function extractDelimitedTemplateString(
-  data: ITemplatedStringVariable,
-  nestedName = ""
-): ITemplatedStringVariable {
-  let value = data.value;
-  let variables = data.variables ?? {};
-  const [startDelimiter, endDelimiter] = ["{@", "}"];
-  const [varPrefix, varSuffix] = ["[$", "]"];
-  // Extract top-level dyanmic values
-  const startIndex = value.indexOf(startDelimiter);
-  if (startIndex > -1) {
-    try {
-      const { src } = parseUntil(value, endDelimiter, {
-        start: startIndex + 1,
-      });
-      const variableNumber = Object.keys(variables).length + 1;
-      const variableName = `${varPrefix}${nestedName}${variableNumber}${varSuffix}`;
-      value = value.replace(`{${src}}`, variableName);
-      variables[variableName] = {
-        value: src,
-      };
-      // Run again to extract any sibling values
-
-      const sibling = extractDelimitedTemplateString({ value, variables }, nestedName);
-      if (sibling) {
-        value = sibling.value;
-        variables = { ...variables, ...sibling.variables };
-      }
-    } catch (error) {
-      // Likely no closing tag detected
-      console.error({ value, variables, nestedName });
-      throw error;
-    }
-  }
-  // Extract any recursively nested dynamic values
-  if (variables) {
-    nestedName += `${Object.keys(variables).length}.`;
-    for (const [key, parent] of Object.entries(variables)) {
-      const nested = extractDelimitedTemplateString(
-        { value: parent.value, variables: {} },
-        nestedName
-      );
-      const { variables: nestedVariables } = nested;
-      if (nestedVariables) {
-        variables[key] = nested;
-      }
-    }
-  }
-  return Object.keys(variables).length === 0 ? { value } : { value, variables };
-}
-
-/**
- * Similar to code for delimited template string, except no delimiters used to indicate
- * start and end of variable expression so use list of allowed characters instead
- * (e.g. `hello @row.field!` instead of hello {@row.field}!)
- */
-function extractNonDelimitedTemplateString(
-  data: ITemplatedStringVariable,
-  contextPrefixes: string[]
-): ITemplatedStringVariable {
-  let value = data.value;
-  let variables = data.variables ?? {};
-  // Check each context prefix for references (e.g. if context has 'row' property search '@row')
-  for (const prefix of contextPrefixes) {
-    // full regex searches for prefix with following alpha-numeric characters,
-    // or permitted special characters "." ":" "_"
-    const regex = new RegExp(`@${prefix}[a-z0-9.:_]+`, "gi");
-    const potentialReplacments = value.matchAll(regex);
-    for (const replacement of potentialReplacments) {
-      const [expression] = replacement;
-      variables[expression] = {
-        value: expression,
-      };
-    }
-  }
-  return Object.keys(variables).length === 0 ? { value } : { value, variables };
 }
 
 /**
