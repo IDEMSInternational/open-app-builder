@@ -1,7 +1,6 @@
 @use "/src/theme/mixins";
 
-$ion-color-slider: var(--ion-color-slider, var(--ion-color-primary-700));
-$ion-color-help-tooltip: var(--ion-color-help-tooltip, var(--ion-color-primary-700));
+$ui-color: var(--slider-ui-color, var(--ion-color-primary-700));
 
 .slider-wrapper {
   min-width: 100%;
@@ -14,7 +13,7 @@ $ion-color-help-tooltip: var(--ion-color-help-tooltip, var(--ion-color-primary-7
   position: relative;
   min-height: var(--slider-wrapper-min-height);
   .help {
-    color: $ion-color-help-tooltip;
+    color: $ui-color;
     height: var(--help-icon-standard-size);
     width: var(--help-icon-standard-size);
     position: absolute;
@@ -51,7 +50,7 @@ $ion-color-help-tooltip: var(--ion-color-help-tooltip, var(--ion-color-primary-7
     .min,
     .max {
       font-size: var(--font-size-text-tiny);
-      color: $ion-color-slider;
+      color: $ui-color;
     }
   }
 }
@@ -62,7 +61,7 @@ $ion-color-help-tooltip: var(--ion-color-help-tooltip, var(--ion-color-primary-7
     box-shadow: none;
   }
   .noUi-connects {
-    border: 1px solid $ion-color-slider;
+    border: 1px solid $ui-color;
     box-sizing: border-box;
     border-radius: var(--ion-border-radius-secondary);
     height: 10px;
@@ -74,7 +73,7 @@ $ion-color-help-tooltip: var(--ion-color-help-tooltip, var(--ion-color-primary-7
   .noUi-horizontal .noUi-handle {
     @include mixins.tiny-square;
     border-radius: var(--ion-border-radius-rounded);
-    background: $ion-color-slider;
+    background: $ui-color;
     border: none;
     box-shadow: none;
     outline: none;
@@ -86,7 +85,7 @@ $ion-color-help-tooltip: var(--ion-color-help-tooltip, var(--ion-color-primary-7
   }
   .noUi-value-horizontal {
     font-size: var(--font-size-text-large);
-    color: $ion-color-slider;
+    color: $ui-color;
   }
   .noUi-marker-horizontal {
     display: none;
@@ -97,7 +96,7 @@ $ion-color-help-tooltip: var(--ion-color-help-tooltip, var(--ion-color-primary-7
   .noUi-active .noUi-tooltip {
     @include mixins.flex-centered;
     @include mixins.small-square;
-    background: $ion-color-slider;
+    background: $ui-color;
     color: var(--ion-color-primary-contrast);
     border: none;
     border-radius: var(--ion-border-radius-rounded);
@@ -110,7 +109,7 @@ $ion-color-help-tooltip: var(--ion-color-help-tooltip, var(--ion-color-primary-7
 }
 .custom-checkbox {
   --border-radius: var(--ion-border-radius-rounded);
-  --border-color: #{$ion-color-slider};
+  --border-color: #{$ui-color};
   --background: transparent;
   --size: var(--font-size-text-small);
 }
