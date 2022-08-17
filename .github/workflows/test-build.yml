@@ -38,6 +38,8 @@ jobs:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
       - run: yarn install
+      - name: Unit Tests
+        run: yarn test:unit
       - name: Set Scripts Deployment
         run: yarn scripts deployment set $DEPLOYMENT_NAME
       - run: yarn build

@@ -19,7 +19,7 @@
     "workflow": "yarn scripts workflow run",
     "server": "yarn workspace server",
     "translations": "yarn workspace translations start",
-    "test:unit": "ng test",
+    "test:unit": "yarn workspace shared test && yarn workspace scripts test && ng test",
     "test:unit:ci": "ng test --no-watch --no-progress",
     "test:e2e": "yarn workspace test-e2e start",
     "lint": "ng lint",
