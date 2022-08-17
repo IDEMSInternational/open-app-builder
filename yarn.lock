@@ -22986,6 +22986,7 @@ __metadata:
     jasmine-ts: ^0.4.0
     node-rsa: ^1.1.1
     pkg: ^5.5.1
+    shared: "workspace:*"
     subtitles-parser-vtt: ^0.1.0
     ts-node: ~7.0.0
     ts-node-dev: ^1.0.0
@@ -23383,7 +23384,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shared@workspace:packages/shared":
+"shared@workspace:*, shared@workspace:packages/shared":
   version: 0.0.0-use.local
   resolution: "shared@workspace:packages/shared"
   dependencies:

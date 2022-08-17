@@ -3,7 +3,7 @@ import { extractDynamicFields } from "data-models";
 import { DefaultParser } from "../default/default.parser";
 import {
   arrayToHashmap,
-  flattenJson,
+  extractDynamicDependencies,
   logWarning,
   parseAppDataCollectionString,
   parseAppDataListString,
@@ -54,7 +54,7 @@ export class TemplateParser extends DefaultParser {
     const dynamicFields = extractDynamicFields(row);
     if (dynamicFields) {
       row._dynamicFields = dynamicFields;
-      row._dynamicDependencies = this.extractDynamicDependencies(dynamicFields);
+      row._dynamicDependencies = extractDynamicDependencies(dynamicFields);
     }
 
     // handle nested rows in same way
@@ -113,18 +113,6 @@ export class TemplateParser extends DefaultParser {
   private parseExcludeFromTranslation(value: boolean) {
     const result = value;
     return result;
-  }
-
-  private extractDynamicDependencies(dynamicFields: FlowTypes.TemplateRow["_dynamicFields"]) {
-    const dynamicDependencies = {};
-    const flatFields = flattenJson<FlowTypes.TemplateRowDynamicEvaluator[]>(dynamicFields);
-    Object.entries(flatFields).forEach(([key, fields]) => {
-      fields.forEach((field) => {
-        const deps = dynamicDependencies[field.matchedExpression] || [];
-        dynamicDependencies[field.matchedExpression] = [...deps, key];
-      });
-    });
-    return dynamicDependencies;
   }
 
   /**
