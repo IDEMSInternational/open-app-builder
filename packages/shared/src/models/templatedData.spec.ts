@@ -9,26 +9,26 @@ interface ITestData {
 const context = {
   input: {
     row: {
-      first_name: "Bob",
+      first_name: "Alice",
       last_name: "Smith",
       firstname_lookup_field: "first_name",
-      Bob_Smith: "Bob_Smith Lookup Row",
+      Alice_Smith: "Alice_Smith Lookup Row",
       full_name: "@row.first_name @row.last_name",
     },
   },
   output: {
     "@row": {
-      first_name: "Bob",
+      first_name: "Alice",
       last_name: "Smith",
       firstname_lookup_field: "first_name",
-      Bob_Smith: "Bob_Smith Lookup Row",
+      Alice_Smith: "Alice_Smith Lookup Row",
       full_name: "@row.first_name @row.last_name",
     },
-    "@row.first_name": "Bob",
+    "@row.first_name": "Alice",
     "@row.last_name": "Smith",
     "@row.firstname_lookup_field": "first_name",
-    "@row.Bob_Smith": "Bob_Smith Lookup Row",
-    "@row.full_name": "Bob Smith", // evaluated recursive context
+    "@row.Alice_Smith": "Alice_Smith Lookup Row",
+    "@row.full_name": "Alice Smith", // evaluated recursive context
   },
 };
 
@@ -40,19 +40,19 @@ const tests: ITestData[] = [
   // Basic delimited
   {
     input: "Hello {@row.first_name}-{@row.last_name}",
-    output: "Hello Bob-Smith",
+    output: "Hello Alice-Smith",
   },
   // Mixed contexts
-  { input: "@local.@row.first_name", output: "@local.Bob" },
+  { input: "@local.@row.first_name", output: "@local.Alice" },
   // Recursive lookup
   {
     input: "{@row.{@row.firstname_lookup_field}}",
-    output: "Bob",
+    output: "Alice",
   },
   // Recursive lookup with concatenation
   {
     input: "{@row.{@row.first_name}_{@row.last_name}}",
-    output: "Bob_Smith Lookup Row",
+    output: "Alice_Smith Lookup Row",
   },
   // Text with curly braces but no templated data
   {
@@ -67,20 +67,20 @@ const tests: ITestData[] = [
       nested: { string: "@row.last_name" },
     },
     output: {
-      string: "Bob",
-      array: ["Bob", "Smith"],
+      string: "Alice",
+      array: ["Alice", "Smith"],
       nested: { string: "Smith" },
     },
   },
   // Recursive lookup with context-dependent return
   {
     input: "@row.full_name",
-    output: "Bob Smith",
+    output: "Alice Smith",
   },
   // Legacy concatenation (append missing bit)
   {
     input: "@row.first_name.sent.2",
-    output: "Bob.sent.2",
+    output: "Alice.sent.2",
   },
   // Missing values are not replaced
   {
@@ -89,7 +89,7 @@ const tests: ITestData[] = [
   },
 ];
 
-describe("Models", () => {
+describe("Templated Data Parsing", () => {
   // Use a function wrapper to allow looping tests
   function execTest(testData: ITestData) {
     const { input, output } = testData;
@@ -110,7 +110,7 @@ describe("Models", () => {
   });
 
   // Test individual string parsing
-  for (const testData of tests.slice(3, 4)) {
+  for (const testData of tests) {
     execTest(testData);
   }
 });
