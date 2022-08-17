@@ -1,1 +1,1 @@
-export * from "./templating";
+export * from "./delimiters";

@@ -1,10 +1,12 @@
 import { ITemplatedStringVariable } from "../types";
-import { addStringDelimiters, extractDelimitedTemplateString } from "./delimiters";
+import { addStringDelimiters, extractDelimitedTemplateString } from "../utils";
 
 type ITemplatedDataContext = { [prefix: string]: any };
 
 /**
- * Utility class for parsing data containing templated values
+ * Templated data class contains methods to to convert data containing dynamic context variables
+ * in delimited (`Hello {@row.first_name}`) or non-delimited (`Hello @row.first_name`) form to
+ * static values based provided context
  *
  * @param context - json object specifying specific values for replacement
  * E.g. {row:{id:'example_1'}} will replace `@row.id` with 'example_1`
@@ -43,9 +45,9 @@ export class TemplatedData {
 
   /** Change the parsing context and generate new context replacement mapping */
   public updateContext(context: ITemplatedDataContext) {
-    this.parsedContext = generateContextReplacements(context);
+    this.parsedContext = flattenContextReplacementList(context);
     this.contextPrefixes = Object.keys(context);
-    // Reassign any context replacements that themselves contain another dynamic reference
+    // Reassign any context replacements that themselves contain another context reference
     // TODO - could make this recursive for deeper refs, but would need to include inf loop check
     Object.entries(this.parsedContext).forEach(([key, value]) => {
       if (typeof value === "string") {
@@ -63,7 +65,7 @@ export class TemplatedData {
   public parse(value = this.initialValue) {
     if (value) {
       if (typeof value === "string") {
-        value = this.parseTemplatedString(value, this.parsedContext);
+        value = this.parseTemplatedString(value);
       }
       // recurssively convert array and json-like objects
       if (typeof value === "object") {
@@ -80,42 +82,38 @@ export class TemplatedData {
 
   /**
    * Take a string and replace instances of context variables, such as `"hello {@row.name}"`
-   * Extracts variables in 2 stages to account for variables with delimiters and variables without
-   * e.g. `hello {@row.name}!` instead of `hello @row.name!`
+   * Will convert non-delimited strings to delimted, extract list of variables and parse
    */
-  private parseTemplatedString(value: string, parsedContext: any) {
+  private parseTemplatedString(value: string) {
     value = addStringDelimiters(value, this.contextPrefixes);
     const extractedData = extractDelimitedTemplateString({ value });
-    const parsedValue = this.parseExtractedString(extractedData, parsedContext);
+    const parsedValue = this.parseExtractedString(extractedData);
     return parsedValue;
   }
 
   /**
    * @param parsedContext - additional string replacements to perform on final values
    */
-  private parseExtractedString(
-    data: ITemplatedStringVariable,
-    parsedContext: { [key: string]: any }
-  ) {
+  private parseExtractedString(data: ITemplatedStringVariable) {
     let { value, variables } = data;
     const hasChildData = variables ? true : false;
     let parsedValue = value;
     // recursively replace any deeply-nested variable expressions
     if (hasChildData) {
       for (const [key, childData] of Object.entries(variables)) {
-        const childValue = this.parseExtractedString(childData, parsedContext);
+        const childValue = this.parseExtractedString(childData);
         parsedValue = parsedValue.replace(key, childValue ?? key);
       }
       // handle case is parsedValue is all a dynamic context variable
-      return this.parseExtractedString({ value: parsedValue }, parsedContext);
+      return this.parseExtractedString({ value: parsedValue });
     }
     // replace main variables
     else {
       let replacedValue = value;
-      if (parsedContext.hasOwnProperty(value)) {
-        replacedValue = parsedContext[value];
+      if (this.parsedContext.hasOwnProperty(value)) {
+        replacedValue = this.parsedContext[value];
       } else {
-        const legacyValue = this.hackHandleLegacyReplacement(value, parsedContext);
+        const legacyValue = this.hackHandleLegacyReplacement(value);
         replacedValue = legacyValue;
       }
       if (replacedValue !== value) {
@@ -139,13 +137,13 @@ export class TemplatedData {
    * E.g. `@row.id.sent.2` will first try match the full expression, then `@row.id.sent`,
    * before finally matching `@row.id` and appending the rest as strings
    */
-  private hackHandleLegacyReplacement(value: string, parsedContext: any) {
+  private hackHandleLegacyReplacement(value: string) {
     let replacement = value;
     const parts = value.split(".");
     for (const i of parts.keys()) {
       const replaceKey = parts.slice(0, i).join(".");
-      if (parsedContext.hasOwnProperty(replaceKey)) {
-        const replaceValue = parsedContext[replaceKey];
+      if (this.parsedContext.hasOwnProperty(replaceKey)) {
+        const replaceValue = this.parsedContext[replaceKey];
         if (typeof replaceValue === "string") {
           replacement = [replaceValue, ...parts.slice(i)].join(".");
         }
@@ -157,11 +155,11 @@ export class TemplatedData {
 
 /**
  * Take a json-object representing all context variables and convert into a list of
- * string replacements. It retains each entry as the original variable, but also calculates
+ * string replacements. It retains each entry as the original variable, but also flattens
  * all possible nested paths for json objects and arrays
  * @example
  * ```
- * generateContextReplacements({
+ * flattenContextReplacementList({
  *  row:{
  *      name:"Bob",
  *      foods:["pizza","salad"]
@@ -179,7 +177,7 @@ export class TemplatedData {
  * }
  * ```
  */
-function generateContextReplacements(context = {}, prefix = "", replacements = {}) {
+function flattenContextReplacementList(context = {}, prefix = "", replacements = {}) {
   for (let [key, value] of Object.entries<any>(context)) {
     if (prefix) {
       key = `${prefix}.${key}`;
@@ -194,7 +192,7 @@ function generateContextReplacements(context = {}, prefix = "", replacements = {
       }
       replacements = {
         ...replacements,
-        ...generateContextReplacements(value, key, {}),
+        ...flattenContextReplacementList(value, key, {}),
       };
     }
   }
