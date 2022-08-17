@@ -1,11 +1,7 @@
 @use "/src/theme/mixins";
 
-$combo-box-active-with-answer-bg: var(
-  --combo-box-active-with-answer-bg,
-  var(--gradient-yellow-vertical)
-);
-$combo-box-passive-with-answer-bg: var(
-  --combo-box-passive-with-answer-bg,
+$background-with-value: var(
+  --combo-box-background-with-value,
   var(--gradient-primary-light-vertical)
 );
 
@@ -79,13 +75,7 @@ $combo-box-passive-with-answer-bg: var(
       }
     }
     .checked-radio {
-      background: var(--combo-box-with-answer-bg);
-    }
-    .active {
-      background: $combo-box-active-with-answer-bg;
-    }
-    .passive {
-      background: $combo-box-passive-with-answer-bg;
+      background: $background-with-value;
     }
   }
 }
