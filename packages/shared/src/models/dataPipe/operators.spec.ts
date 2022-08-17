@@ -1,23 +1,29 @@
-import { IOperator, IOperatorName, OPERATORS } from "./operators";
+import { DataFrame, toJSON } from "danfojs";
+import { OPERATORS } from "./operators";
 
-type ITestArgs = string[];
-
-const testData: { [key in IOperatorName]: ITestArgs } = {
-  filter: [],
-  append_columns: [],
-  filter_any: [],
+const testData = {
+  names: [
+    {
+      id: "id_1",
+      first_name: "Alice",
+      last_name: "Smith",
+    },
+    {
+      id: "id_2",
+      first_name: "Bob",
+      last_name: "Jones",
+    },
+  ],
 };
 
-// Test individual string parsing
-for (const [name, args] of Object.entries(testData)) {
-  const operator: IOperator = OPERATORS[name];
-  execTest(name, operator);
-}
-
-function execTest(name: string, operator: IOperator) {
-  it(name, () => {
-    operator;
-    // validate
-    //
+describe("Pipe Operators", () => {
+  it("Filter (all)", () => {
+    const testDf = new DataFrame(testData.names);
+    const output = new OPERATORS.filter(testDf, ["first_name.startsWith('A')"]).apply();
+    expect(toJSON(output)).toEqual([testData.names[0]]);
   });
-}
+  it("Filter (any)", () => {});
+  it("Append Columns", () => {});
+  it("Merge", () => {});
+  it("Chained operations");
+});
