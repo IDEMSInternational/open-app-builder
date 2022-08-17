@@ -1,4 +1,4 @@
-import * as Templating from "./templating";
+import { TemplatedData } from "./templatedData";
 
 interface ITestData {
   input: any; // Source data for evaluation
@@ -89,12 +89,12 @@ const tests: ITestData[] = [
   },
 ];
 
-describe("Templating", () => {
+describe("Models", () => {
   // Use a function wrapper to allow looping tests
   function execTest(testData: ITestData) {
     const { input, output } = testData;
     it(JSON.stringify(input), () => {
-      const parser = new Templating.TemplatedData({ context: context.input, initialValue: input });
+      const parser = new TemplatedData({ context: context.input, initialValue: input });
       const parsedValue = parser.parse();
       expect(parsedValue).toEqual(output);
       process.nextTick(() => console.log(`      ${JSON.stringify(parsedValue)}\n`));
@@ -104,7 +104,7 @@ describe("Templating", () => {
 
   // Test context replacements
   it("Generates context replacments", () => {
-    const { parsedContext } = new Templating.TemplatedData({ context: context.input });
+    const { parsedContext } = new TemplatedData({ context: context.input });
     expect(parsedContext).toEqual(context.output);
     // process.nextTick(() => console.log(`\n${JSON.stringify(parsedContext, null, 2)}\n`));
   });
