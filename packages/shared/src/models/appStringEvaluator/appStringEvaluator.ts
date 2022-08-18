@@ -1,5 +1,5 @@
 import { JSEvaluator } from "../jsEvaluator/jsEvaluator";
-import { TemplatedData } from "../templatedData";
+import { TemplatedData } from "..";
 
 /**
  * Utility class to allow evaluation of strings that contain a mix of context expressions,
