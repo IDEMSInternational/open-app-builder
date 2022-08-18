@@ -1,5 +1,7 @@
 @use "/src/theme/mixins";
 
+$ion-accordion-bg: var(--ion-accordion-bg, var(--gradient-primary-light-vertical));
+
 .workshops-accordion {
   position: relative;
   margin-top: var(--large-margin);
@@ -30,13 +32,13 @@
     justify-content: center;
     z-index: 2;
     &.inProgress {
-      background: var(--ion-accordion-bg);
+      background: $ion-accordion-bg;
     }
     &.disabled {
       background: var(--ion-color-primary-contrast);
     }
     &.completed {
-      background: var(--ion-accordion-bg);
+      background: $ion-accordion-bg;
     }
   }
   .accordion-section {
@@ -51,7 +53,7 @@
     transition: max-height 0.4s;
     overflow-y: hidden;
     &.completed {
-      background: var(--ion-accordion-bg);
+      background: $ion-accordion-bg;
       color: var(--ion-color-primary);
       .progress {
         opacity: 0;
@@ -69,7 +71,7 @@
       color: var(--ion-color-primary);
     }
     &.openSection {
-      background: var(--ion-accordion-bg);
+      background: $ion-accordion-bg;
       transition: max-height 0.4s;
       .progress {
         opacity: 0;
@@ -81,7 +83,7 @@
       height: 100%;
       left: 0;
       z-index: 1;
-      background: var(--ion-accordion-bg);
+      background: $ion-accordion-bg;
       opacity: 1;
       transition: opacity 0.4s ease-in;
       margin-top: calc(var(--small-padding) * -1); // offset for padding in .accordion-section
