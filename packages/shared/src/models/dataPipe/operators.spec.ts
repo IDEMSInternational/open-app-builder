@@ -44,9 +44,12 @@ describe("Pipe Operators", () => {
     const testDf = new DataFrame(testData.names);
     const output = new OPERATORS.append_columns(testDf, [
       "full_name : @row.first_name @row.last_name",
-      "greeting : hello @row.full_name",
+      "greeting : Hello @row.full_name",
     ]).apply();
-    console.log("output", toJSON(output));
-    expect(toJSON(output)).toEqual([testData.names[0]]);
+    const testOutputFullName = output.column("full_name").values[2];
+    expect(testOutputFullName).toEqual("Charles Babbage");
+
+    const testOutputGreeting = output.column("greeting").values[2];
+    expect(testOutputGreeting).toEqual("Hello Charles Babbage");
   });
 });
