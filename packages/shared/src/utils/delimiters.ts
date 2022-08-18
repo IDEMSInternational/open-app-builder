@@ -17,17 +17,16 @@ export function addStringDelimiters(value: string, contextPrefixes: string[], fi
   for (const prefix of contextPrefixes) {
     // First pass ignores nested statements, adding delimiters only to inner parts e.g.
     // @row.@row.some_value -> @row.{@row.some_value}
-    const firstPassRegex = new RegExp(`({?)@${prefix}.[a-z0-9.:_]+(}?)`, "gi");
+    const firstPassRegex = new RegExp(`({?)@${prefix}\.[a-z0-9.:_]+(}?)`, "gi");
     // Second pass includes nested, converting outer parts e.g.
     // @row.{@row.some_value} -> {@row.{@row.some_value}}
-    const secondPassRegex = new RegExp(`({?)@${prefix}.[a-z0-9.:_{}@]+`, "gi");
+    const secondPassRegex = new RegExp(`({?)@${prefix}\.[a-z0-9.:_{}@]+`, "gi");
     const regex = firstPass ? firstPassRegex : secondPassRegex;
     const matches = value.matchAll(regex);
     let replaceCount = 0;
     for (const match of matches) {
       const [expression] = match;
-      const [startDelimiter, endDelimiter] = [expression[0], expression[expression.length - 1]];
-      if (startDelimiter !== "{" || endDelimiter !== "}") {
+      if (shouldAddDelimiter(expression)) {
         value = insertCharacter(value, "{", match.index! + replaceCount);
         replaceCount++;
         value = insertCharacter(value, "}", match.index! + expression.length + replaceCount);
@@ -39,6 +38,16 @@ export function addStringDelimiters(value: string, contextPrefixes: string[], fi
     }
   }
   return value;
+}
+
+function shouldAddDelimiter(expression: string) {
+  const [startDelimiter] = [expression[0]];
+  // skip adding delimiters if starts with delimiter and contains an end delimiter within string
+  // (may be at end of string or mid-string in case concatenating with regular text)
+  if (startDelimiter === "{" && expression.includes("}")) {
+    return false;
+  }
+  return true;
 }
 
 /**
