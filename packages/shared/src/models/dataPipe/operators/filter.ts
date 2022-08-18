@@ -3,7 +3,7 @@ import { JSEvaluator } from "../../jsEvaluator/jsEvaluator";
 import BaseOperator from "./base";
 
 class FilterOperator extends BaseOperator {
-  private filterConditions: string[] = [];
+  public filterConditions: string[] = [];
   constructor(df: DataFrame, args: any) {
     super(df, args);
     this.filterConditions = this.args;
@@ -21,7 +21,7 @@ class FilterOperator extends BaseOperator {
     return new DataFrame(filtered);
   }
 
-  private satisfiesFilters(row: any) {
+  public satisfiesFilters(row: any) {
     const evaluator = new JSEvaluator();
     evaluator.setGlobalContext({ constants: row });
     return this.filterConditions.every((condition) => {
@@ -35,4 +35,23 @@ class FilterOperator extends BaseOperator {
     });
   }
 }
-export default FilterOperator;
+
+class FilterAnyOperator extends FilterOperator {
+  public satisfiesFilters(row: any) {
+    const evaluator = new JSEvaluator();
+    evaluator.setGlobalContext({ constants: row });
+    return (
+      this.filterConditions.find((condition) => {
+        try {
+          const result = evaluator.evaluate(condition);
+          return result;
+        } catch (error) {
+          console.error("Filter evaluation failed", { row, condition, error });
+          throw error;
+        }
+      }) !== undefined
+    );
+  }
+}
+
+export default { filter: FilterOperator, filter_any: FilterAnyOperator };

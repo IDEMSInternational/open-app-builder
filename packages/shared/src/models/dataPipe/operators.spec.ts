@@ -1,4 +1,4 @@
-import { DataFrame, toJSON } from "danfojs";
+import { DataFrame } from "danfojs";
 import { OPERATORS } from "./operators";
 
 // https://famous-mathematicians.com/list/
@@ -32,14 +32,6 @@ const testData = {
 };
 
 describe("Pipe Operators", () => {
-  it("filter", () => {
-    const testDf = new DataFrame(testData.names);
-    const output = new OPERATORS.filter(testDf, [
-      "last_name.startsWith('B')",
-      "year_of_birth > 1750",
-    ]).apply();
-    expect(toJSON(output)).toEqual([testData.names[2]]);
-  });
   it("append_columns", () => {
     const testDf = new DataFrame(testData.names);
     const output = new OPERATORS.append_columns(testDf, [
@@ -48,8 +40,25 @@ describe("Pipe Operators", () => {
     ]).apply();
     const testOutputFullName = output.column("full_name").values[2];
     expect(testOutputFullName).toEqual("Charles Babbage");
-
     const testOutputGreeting = output.column("greeting").values[2];
     expect(testOutputGreeting).toEqual("Hello Charles Babbage");
+  });
+  it("filter", () => {
+    const testDf = new DataFrame(testData.names);
+    const output = new OPERATORS.filter(testDf, [
+      "last_name.startsWith('B')",
+      "year_of_birth > 1750",
+    ]).apply();
+    const outputIDs = output.column("id").values;
+    expect(outputIDs).toEqual(["id_3"]);
+  });
+  it("filter_any", () => {
+    const testDf = new DataFrame(testData.names);
+    const output = new OPERATORS.filter_any(testDf, [
+      "last_name.startsWith('B')",
+      "year_of_birth > 1750",
+    ]).apply();
+    const outputIDs = output.column("id").values;
+    expect(outputIDs).toEqual(["id_1", "id_3", "id_4"]);
   });
 });
