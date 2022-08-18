@@ -1,3 +1,6 @@
+$ion-btn-primary: var(--ion-btn-primary, var(--gradient-primary-mid-vertical));
+$ion-btn-secondary: var(--ion-btn-secondary, var(--gradient-secondary-mid-vertical));
+
 :host {
   width: 100%;
   ion-button {
@@ -40,29 +43,29 @@ ion-button[data-param-style~="nested_color"] {
 /// TODO CC-2021-12-19 - the code below should likely be refactored to param selectors and moved
 
 .navigation {
-  --background: var(--ion-btn-secondary);
+  --background: #{$ion-btn-secondary};
 }
 
 .information {
-  --background: var(--ion-btn-primary);
+  --background: #{$ion-btn-primary};
 }
 
 .make_me_smile {
   min-height: 80px !important;
   max-width: fit-content;
-  --background: var(--ion-btn-primary);
+  --background: #{$ion-btn-primary};
   color: var(--ion-color-primary-contrast);
 }
 
 .get_me_going {
   min-height: 80px !important;
   max-width: fit-content;
-  --background: var(--ion-btn-secondary);
+  --background: #{$ion-btn-secondary};
   color: var(--ion-color-primary-contrast);
 }
 
 .options {
-  --background: var(--ion-btn-primary);
+  --background: #{$ion-btn-primary};
   color: var(--ion-color-primary-contrast);
 }
 
