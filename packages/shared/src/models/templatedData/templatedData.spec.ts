@@ -89,7 +89,7 @@ const tests: ITestData[] = [
   },
   {
     input: "{@row.first_name}_{@row.last_name}_completed",
-    output: "Alice_Smith_completed",
+    output: "Ada_Lovelace_completed",
   },
 ];
 
