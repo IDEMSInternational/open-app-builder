@@ -1,6 +1,6 @@
 {
   "flow_type": "data_list",
-  "flow_name": "workshop_data_list",
+  "flow_name": "workshop_data",
   "status": "released",
   "data_list_name": "workshop",
   "rows": [
@@ -871,5 +871,5 @@
       "tools": "How to support each other"
     }
   ],
-  "_xlsxPath": "global/data/workshop_data_list.xlsx"
+  "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
 }
