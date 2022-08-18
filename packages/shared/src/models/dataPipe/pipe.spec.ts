@@ -62,9 +62,6 @@ describe("Data Pipe", () => {
     pipe.run();
     expect(Object.keys(pipe.outputTargets)).toEqual(["output_a", "output_b", "output_c"]);
   });
-  it("Remove local-only outputs", () => {
-    expect(true).toEqual(false);
-  });
   // Error Handling and QC
   it("Throw on invalid operation", () => {
     expect(true).toEqual(false);
