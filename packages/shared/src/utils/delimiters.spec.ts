@@ -28,6 +28,11 @@ const delimitedTests: IDelimitedTestData[] = [
     input: "@row.{@row.first_name}",
     delimited: "{@row.{@row.first_name}}",
   },
+  // ignore
+  {
+    input: "{@row.last_name}_completed",
+    delimited: "{@row.last_name}_completed",
+  },
 ];
 
 interface IParseTestData {
@@ -74,6 +79,11 @@ const parseTests: IParseTestData[] = [
 ];
 
 describe("Converts non-delimited variables", () => {
+  // Test individual string parsing
+  for (const testData of delimitedTests) {
+    execTest(testData);
+  }
+
   // Use a function wrapper to allow looping tests
   function execTest(testData: IDelimitedTestData) {
     const { input, delimited } = testData;
@@ -85,14 +95,14 @@ describe("Converts non-delimited variables", () => {
       // NOTE - in case of errors additional tests can be carried out just on intermediate
     });
   }
-
-  // Test individual string parsing
-  for (const testData of delimitedTests) {
-    execTest(testData);
-  }
 });
 
 describe("Parses delimiters", () => {
+  // Test individual string parsing
+  for (const testData of parseTests) {
+    execTest(testData);
+  }
+
   // Use a function wrapper to allow looping tests
   function execTest(testData: IParseTestData) {
     const { delimited, extracted } = testData;
@@ -104,10 +114,5 @@ describe("Parses delimiters", () => {
         // NOTE - in case of errors additional tests can be carried out just on intermediate
       });
     }
-  }
-
-  // Test individual string parsing
-  for (const testData of parseTests) {
-    execTest(testData);
   }
 });
