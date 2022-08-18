@@ -3,13 +3,16 @@
 $round-icon-button-light: var(--round-icon-button-light, var(--ion-color-secondary-200));
 $round-icon-button: var(--round-icon-button, var(--ion-color-secondary-400));
 $round-icon-button-dark: var(--round-icon-button-dark, var(--ion-color-secondary-600));
+$ion-btn-primary: var(--ion-btn-primary, var(--gradient-primary-mid-vertical));
+$ion-btn-secondary: var(--ion-btn-secondary, var(--gradient-secondary-mid-vertical));
+$ion-gradient-option-btn: (--ion-gradient-option-btn, var(--gradient-primary-dark-vertical));
 
 ion-tab-button {
   color: var(--ion-color-primary-contrast);
   text-transform: none;
   white-space: pre-line;
   min-height: var(--round-button-min-height);
-  background: var(--ion-btn-primary);
+  background: $ion-btn-primary;
   box-shadow: var(--ion-default-box-shadow);
   width: var(--round-button-width);
   margin: 0 auto;
@@ -99,25 +102,25 @@ ion-tab-button {
 .navigation {
   width: var(--round-button-navigation-width);
   min-height: var(--round-button-navigation-min-height);
-  background: var(--ion-btn-secondary);
+  background: $ion-btn-secondary;
 }
 
 .information {
-  background: var(--ion-btn-primary);
+  background: $ion-btn-primary;
 }
 
 .make_me_smile {
-  background: var(--ion-btn-primary);
+  background: $ion-btn-primary;
   color: var(--ion-color-primary-contrast);
 }
 
 .get_me_going {
-  background: var(--ion-btn-secondary);
+  background: $ion-btn-secondary;
   color: var(--ion-color-primary-contrast);
 }
 
 .options {
-  background: var(--ion-gradient-option-btn);
+  background: $ion-gradient-option-btn;
   color: var(--ion-color-primary-contrast);
 }
 

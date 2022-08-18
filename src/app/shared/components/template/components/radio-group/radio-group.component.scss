@@ -1,5 +1,7 @@
 @use "/src/theme/mixins";
 
+$radio-group-passive-bg: var(--radio-group-passive-bg, var(--gradient-primary-light-vertical));
+$radio-group-active-bg: var(--radio-group-active-bg, var(--gradient-yellow-vertical));
 $primary-radio-border: 2px solid;
 $primary-radio-border-rd: 15px;
 
@@ -112,7 +114,7 @@ img {
   }
 
   .checked {
-    background: var(--radio-group-passive-bg);
+    background: $radio-group-passive-bg;
     transition: 0.3s linear;
   }
 
@@ -131,13 +133,13 @@ img {
   }
 
   .checked {
-    background: var(--radio-group-active-bg);
+    background: $radio-group-active-bg;
     transition: 0.3s linear;
     color: var(--ion-color-primary);
   }
 
   .smile-checked {
-    color: var(--radio-group-active-bg);
+    color: $radio-group-active-bg;
     border: $primary-radio-border !important;
     border-color: var(--ion-color-primary);
   }

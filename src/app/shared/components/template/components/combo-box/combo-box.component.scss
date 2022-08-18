@@ -2,6 +2,14 @@ $combo-box-placeholder-primary: var(
   --combo-box-placeholder-primary,
   var(--ion-color-primary-transparent)
 );
+$combo-box-active-with-answer-bg: var(
+  --combo-box-active-with-answer-bg,
+  var(--gradient-yellow-vertical)
+);
+$combo-box-passive-with-answer-bg: var(
+  --combo-box-passive-with-answer-bg,
+  var(--gradient-primary-light-vertical)
+);
 
 .open-combobox {
   outline: none;
@@ -26,13 +34,13 @@ $combo-box-placeholder-primary: var(
   color: $combo-box-placeholder-primary;
 }
 .active {
-  background: var(--combo-box-active-with-answer-bg);
+  background: $combo-box-active-with-answer-bg;
 }
 .active-no-value {
   background: var(--ion-color-primary-contrast);
 }
 .passive {
-  background: var(--combo-box-passive-with-answer-bg);
+  background: $combo-box-passive-with-answer-bg;
 }
 .passive-no-value {
   background: transparent;
