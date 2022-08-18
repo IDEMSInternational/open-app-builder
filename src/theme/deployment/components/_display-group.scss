@@ -3,17 +3,21 @@ $tool-two-bg: var(--tool-two-bg, var(--ion-color-secondary-500));
 $tool-three-bg: var(--tool-three-bg, var(--ion-color-primary-600));
 $tool-four-bg: var(--tool-four-bg, var(--ion-color-primary-700));
 $tool-five-bg: var(--tool-five-bg, var(--ion-color-primary));
-$ion-dg-bg-default: var(--ion-dg-bg-default, var(--ion-banner-primary));
+$ion-dg-bg-default: var(--ion-dg-bg-default, var(--gradient-primary-light-vertical));
+$home-screen-dark-bg: var(--home-screen-dark-bg, var(--gradient-primary-dark-horizontal));
+$home-screen-light-bg: var(--home-screen-light-bg, var(--gradient-primary-light-horizontal));
+$home-screen-shade-bg: var(--home-screen-shade-bg, var(--gradient-primary-mid-horizontal));
+$ion-banner-secondary: var(--ion-banner-secondary, var(--gradient-yellow-vertical));
 
 // background colours
 plh-tmpl-display-group .display-group-wrapper[data-param-style~="light"] {
-  background: var(--home-screen-light-bg);
+  background: $home-screen-light-bg;
 }
 plh-tmpl-display-group .display-group-wrapper[data-param-style~="shade"] {
-  background: var(--home-screen-shade-bg);
+  background: $home-screen-shade-bg;
 }
 plh-tmpl-display-group .display-group-wrapper[data-param-style~="dark"] {
-  background: var(--home-screen-dark-bg);
+  background: $home-screen-dark-bg;
 }
 
 /// Wrap parent_point display groups in grid
@@ -116,7 +120,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
 }
 
 .display-group-wrapper[data-param-style~="banner_active"] {
-  background: var(--ion-banner-secondary);
+  background: $ion-banner-secondary;
   @include banner;
 }
 .display-group-wrapper[data-param-style~="banner_passive"] {
