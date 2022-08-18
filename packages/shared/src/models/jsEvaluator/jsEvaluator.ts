@@ -1,6 +1,31 @@
-/** Utility class to allow safe evaluation of javascript expressionss */
+/**
+ * Utility class to allow safe evaluation of javascript expressions
+ * Enable parsing of expressions containing context and global variables and functions
+ * within a JS environment
+ * @example
+ * ```
+ * const evaluator = new JSEvaluator()
+ * evaluator.setGlobalContext(
+ *  {
+ *    constants:{a:5, b:7})
+ *    functions:isEven(n)=>n%2===0},
+ *  }
+ *
+ * const expression1 = "Math.min(a,b)"
+ * evaluator.evaluate(expression1)
+ * // 5
+ *
+ * const expression2 = "isEven(this.inputNumber)"
+ * evaluator.evaluate(expression2,{inputNumber:5})
+ * // false
+ * ```
+ * */
 export class JSEvaluator {
   private evaluationContextBase: string;
+
+  constructor() {
+    this.setGlobalContext({});
+  }
 
   /**
    * Specify global functions and constants that can be directly evaluated in expression
@@ -11,12 +36,6 @@ export class JSEvaluator {
    *  constants:{ a: 1, b:2 },
    *  functions:{ isEven: (n) => n%2 === 0 }
    * }
-   * // Can be used in later expression
-   * Math.min(a+b) // 3
-   * isEven(b) // true
-   * ```
-   * E.g. can evaluate `Math.min(a+b)` with context
-   * E.g. can evaluae `isEven(a)` with context {constants:{a:4},functions:{isEven:(n)=>n%2===0}}
    **/
   setGlobalContext(context: { functions?: IFunctionHashmap; constants?: IConstantHashmap }) {
     const constantString = Object.entries(context.constants ?? {})
@@ -31,7 +50,6 @@ export class JSEvaluator {
     const functionString = Object.entries(context.functions ?? {})
       .map(([name, fn]) => `var ${name} = ${fn}`)
       .join(";");
-
     this.evaluationContextBase = `"use strict"; ${constantString}; ${functionString}; return`;
 
     return this;
@@ -49,7 +67,6 @@ export class JSEvaluator {
       const evaluated = func.apply(executionContext);
       return evaluated;
     } catch (error) {
-      // console.warn('Could not evaluate expression', { expression, error, thisCtxt, globalFunctions, funcString })
       // still throw error so that calling function can decide how to handle, e.g. attempt string replace
       throw error;
     }
