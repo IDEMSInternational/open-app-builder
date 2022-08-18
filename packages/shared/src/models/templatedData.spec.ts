@@ -87,9 +87,25 @@ const tests: ITestData[] = [
     input: "@row.missing",
     output: "@row.missing",
   },
+  {
+    input: "{@row.first_name}_{@row.last_name}_completed",
+    output: "Alice_Smith_completed",
+  },
 ];
 
 describe("Templated Data Parsing", () => {
+  // Test context replacements
+  it("Generates context replacments", () => {
+    const { parsedContext } = new TemplatedData({ context: context.input });
+    expect(parsedContext).toEqual(context.output);
+    // process.nextTick(() => console.log(`\n${JSON.stringify(parsedContext, null, 2)}\n`));
+  });
+
+  // Test individual string parsing
+  for (const testData of tests.slice(-1)) {
+    execTest(testData);
+  }
+
   // Use a function wrapper to allow looping tests
   function execTest(testData: ITestData) {
     const { input, output } = testData;
@@ -100,17 +116,5 @@ describe("Templated Data Parsing", () => {
       process.nextTick(() => console.log(`      ${JSON.stringify(parsedValue)}\n`));
       // NOTE - in case of errors additional tests can be carried out just on intermediate
     });
-  }
-
-  // Test context replacements
-  it("Generates context replacments", () => {
-    const { parsedContext } = new TemplatedData({ context: context.input });
-    expect(parsedContext).toEqual(context.output);
-    // process.nextTick(() => console.log(`\n${JSON.stringify(parsedContext, null, 2)}\n`));
-  });
-
-  // Test individual string parsing
-  for (const testData of tests) {
-    execTest(testData);
   }
 });
