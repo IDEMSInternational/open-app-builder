@@ -31,7 +31,7 @@
       "rows": [
         {
           "name": "workshop_data",
-          "value": "@data.workshop.w_safe",
+          "value": "@data.workshop.w_crisis",
           "_translations": {
             "value": {}
           },
@@ -40,15 +40,15 @@
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@data.workshop.w_safe",
-                "matchedExpression": "@data.workshop.w_safe",
+                "fullExpression": "@data.workshop.w_crisis",
+                "matchedExpression": "@data.workshop.w_crisis",
                 "type": "data",
                 "fieldName": "workshop"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@data.workshop.w_safe": [
+            "@data.workshop.w_crisis": [
               "value"
             ]
           }
