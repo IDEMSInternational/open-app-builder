@@ -3,7 +3,7 @@
 
 /** Authoring variables **/
 $color-primary: hsl(203, 76%, 21%); // #0d3f5e
-$color-secondary: hsl(31, 95%, 57%); // #fa9529
+$color-secondary: hsl(31, 100%, 57%); // #fa9529
 $page-background: #e3f4ff;
 
 /** Authoring component overrides **/
@@ -22,8 +22,39 @@ $component-variables: (
   // combo-box-placeholder-primary: rgba(13, 64, 96, 0.5),
   // ion-color-slider: #096e90,
   // ion-color-help-tooltip: #096e90,
-  // ion-banner-primary: var(--ion-banner-primary),
-  ion-item-background: var(--ion-color-gray-light)
+  // ion-btn-control-bg: #1980d2,
+  ion-item-background: var(--ion-color-gray-light),
+  gradient-yellow-vertical:
+    linear-gradient(175deg, var(--ion-color-yellow-200) 30%, var(--ion-color-yellow-500)),
+  gradient-yellow-horizontal:
+    linear-gradient(85deg, var(--ion-color-yellow-200) 30%, var(--ion-color-yellow-500)),
+  // ion-dg-bg-default: var(--ion-banner-primary)
+  // combo-box-active-with-answer-bg: var(--gradient-yellow-vertical),
+  // combo-box-passive-with-answer-bg: var(--gradient-primary-light-vertical),
+  // home-screen-dark-bg: var(--gradient-primary-dark-horizontal),
+  // home-screen-light-bg: var(--gradient-primary-light-horizontal),
+  home-screen-shade-bg: linear-gradient(85deg, #1c87ca 30%, #044974),
+  // ion-accordion-bg: var(--gradient-primary-light-vertical),
+  // ion-btn-primary: var(--gradient-primary-mid-vertical),
+  // ion-btn-secondary: var(--gradient-secondary-mid-vertical),
+  // tour-next-btn-background: var(--gradient-secondary-mid-vertical),
+  // ion-gradient-option-btn: var(--gradient-primary-dark-vertical),
+  // parent-centre-primary-gradient: var(--gradient-primary-mid-vertical),
+  // parent-centre-primary-light-gradient: var(--gradient-primary-light-vertical),
+  // parent-centre-secondary-gradient: var(--gradient-secondary-mid-vertical),
+  // parent-centre-secondary-light-gradient: var(--gradient-yellow-vertical),
+  // radio-group-passive-bg: var(--gradient-primary-light-vertical),
+  // radio-group-active-bg: var(--gradient-yellow-vertical),
+  // tile-primary-gradient: var(--gradient-primary-mid-vertical),
+  // tile-primary-light-gradient: var(--gradient-primary-light-vertical),
+  // tile-secondary-gradient: var(--gradient-secondary-mid-vertical),
+  // tile-secondary-light-gradient: var(--gradient-yellow-vertical),
+  // TODO: these vars are currently used for the set_theme template action,
+  // which should be deprecated in favour of new system
+  ion-main-bg-active: var(--ion-color-secondary-100),
+  ion-main-bg-passive: var(--ion-color-primary-50),
+  ion-banner-primary: var(--gradient-primary-light-vertical),
+  ion-banner-secondary: var(--gradient-yellow-vertical)
 );
 
 @mixin theme-default {
