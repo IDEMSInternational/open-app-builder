@@ -40,7 +40,7 @@ describe("Pipe Operators", () => {
     ]).apply();
     expect(toJSON(output)).toEqual([testData.names[2]]);
   });
-  fit("append_columns", () => {
+  it("append_columns", () => {
     const testDf = new DataFrame(testData.names);
     const output = new OPERATORS.append_columns(testDf, [
       "full_name : @row.first_name @row.last_name",
