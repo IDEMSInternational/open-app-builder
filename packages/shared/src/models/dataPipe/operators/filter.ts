@@ -1,6 +1,6 @@
 import { DataFrame, toJSON } from "danfojs";
 import { JSEvaluator } from "../../jsEvaluator/jsEvaluator";
-import { BaseOperator } from "./base";
+import BaseOperator from "./base";
 
 class FilterOperator extends BaseOperator {
   private filterConditions: string[] = [];
@@ -9,8 +9,8 @@ class FilterOperator extends BaseOperator {
     this.filterConditions = this.args;
   }
   // args are simply evaluated as JS statements and do not require additional parsing
-  parseArgs(args: string[]): string[] {
-    return args;
+  parseArg(arg: string) {
+    return arg;
   }
   validateArg(arg: string): boolean {
     return typeof arg === "string";
@@ -22,10 +22,16 @@ class FilterOperator extends BaseOperator {
   }
 
   private satisfiesFilters(row: any) {
-    const evaulator = new JSEvaluator();
-    evaulator.setGlobalContext({ constants: row });
+    const evaluator = new JSEvaluator();
+    evaluator.setGlobalContext({ constants: row });
     return this.filterConditions.every((condition) => {
-      return evaulator.evaluate(condition);
+      try {
+        const result = evaluator.evaluate(condition);
+        return result;
+      } catch (error) {
+        console.error("Filter evaluation failed", { row, condition, error });
+        throw error;
+      }
     });
   }
 }

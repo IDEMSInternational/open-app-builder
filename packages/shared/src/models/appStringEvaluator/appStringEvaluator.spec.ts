@@ -7,11 +7,11 @@ describe("App String Evaluator", () => {
     row: { first_name: "Ada", last_name: "Lovelace", number_1: 1, number_2: 2 },
   });
 
-  fit("@row.number_1 > @row.number_2", () => {
+  it("@row.number_1 > @row.number_2", () => {
     expect(evaluator.evaluate("@row.number_1 > @row.number_2")).toEqual(false);
   });
 
-  fit("Hello @row.first_name @row.last_name)", () => {
+  it("Hello @row.first_name @row.last_name)", () => {
     expect(evaluator.evaluate("Hello @row.first_name @row.last_name")).toEqual(
       "Hello Ada Lovelace"
     );

@@ -15,8 +15,8 @@ describe("JS Evaluator", () => {
     expect(evaluator.evaluate("isEven(9)")).toEqual(false);
   });
   it("this context: 'Hello '+this.nested.name", () => {
-    expect(evaluator.evaluate("'Hello '+this.nested.name", { nested: { name: "Alice" } })).toEqual(
-      "Hello Alice"
+    expect(evaluator.evaluate("'Hello '+this.nested.name", { nested: { name: "Ada" } })).toEqual(
+      "Hello Ada"
     );
   });
 });

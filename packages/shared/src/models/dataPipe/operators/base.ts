@@ -1,17 +1,15 @@
 import { DataFrame } from "danfojs";
 
-export class BaseOperator {
+type IParsedArg = any;
+
+class BaseOperator {
   public args: any[];
-  public valid: boolean;
   constructor(public df: DataFrame, args: string[]) {
-    this.args = this.parseArgs(args);
-    this.valid = this.args.every((arg) => this.validateArg(arg) === true);
-    if (!this.valid) {
-      throw new Error(`args invalid: ${this.valid}`);
-    }
+    this.args = args.map((a) => this.parseArg(a));
+    this.validate();
   }
-  parseArgs(args: any[]) {
-    return args;
+  parseArg(arg: any): IParsedArg {
+    return arg;
   }
   validateArg(arg: any) {
     return true;
@@ -19,4 +17,14 @@ export class BaseOperator {
   apply() {
     return this.df;
   }
+
+  private validate() {
+    const validatedArgs = this.args.map((a) => ({ ...a, validation: this.validateArg(a) }));
+    const invalidArgs = validatedArgs.filter((a) => a.validation !== true);
+    if (invalidArgs.length > 0) {
+      console.error(invalidArgs);
+      throw new Error(`Arg validation error`);
+    }
+  }
 }
+export default BaseOperator;
