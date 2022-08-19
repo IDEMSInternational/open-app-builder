@@ -87,25 +87,25 @@ export class NavGroupComponent extends TemplateLayoutComponent {
   }
 
   modifyRowSetter(row: FlowTypes.TemplateRow) {
-    if (Array.isArray(row?.value)) {
-      // Check if value is an object referring to a whole data_list with a "template" column,
-      // and if so, assign an array of the values of this column to templateNames
-      const templateArray = [];
-      if (row?.value.length === 1) {
-        const dataObject = row?.value[0];
-        if (isObject(dataObject)) {
-          for (const property in dataObject) {
-            if (dataObject[property].hasOwnProperty("template")) {
-              templateArray.push(dataObject[property].template);
-            }
-          }
+    // Check if value is an object referring to a whole data_list with a "template" column,
+    // and if so, assign an array of the values of this column to templateNames
+    const templateArray = [];
+    if (isObject(row?.value)) {
+      const dataListObject = row?.value;
+      for (const property in dataListObject) {
+        if (dataListObject[property].hasOwnProperty("template")) {
+          templateArray.push(dataListObject[property].template);
         }
       }
-      if (templateArray.length > 0) {
-        this.templateNames = templateArray;
-      } else {
+    }
+    if (templateArray.length > 0) {
+      this.templateNames = templateArray;
+    } else {
+      if (Array.isArray(row?.value)) {
         this.templateNames = row.value;
       }
+    }
+    if (this.templateNames.length > 0) {
       row._debug_name = this.templateNames[this.sectionIndex];
       // only set the active section the first time value received
       // (handle via goToSection method internally for other cases)
