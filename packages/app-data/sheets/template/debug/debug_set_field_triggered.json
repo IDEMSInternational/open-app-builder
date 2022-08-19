@@ -16,10 +16,11 @@
           "trigger": "changed",
           "action_id": "set_field",
           "args": [
-            "debug_tracker_undefined@local.text_box"
+            "debug_tracker_@row.type",
+            "this.value"
           ],
-          "_raw": "changed | set_field:debug_tracker_undefined@local.text_box",
-          "_cleaned": "changed | set_field:debug_tracker_undefined@local.text_box"
+          "_raw": "changed | set_field:debug_tracker_@row.type:@local.text_box",
+          "_cleaned": "changed | set_field:debug_tracker_@row.type:@local.text_box"
         }
       ],
       "exclude_from_translation": true,
@@ -35,19 +36,9 @@
         ],
         "action_list": {
           "0": {
-            "args": {
-              "0": [
-                {
-                  "fullExpression": "debug_tracker_undefined@local.text_box",
-                  "matchedExpression": "@local.text_box",
-                  "type": "local",
-                  "fieldName": "text_box"
-                }
-              ]
-            },
             "_raw": [
               {
-                "fullExpression": "changed | set_field:debug_tracker_undefined@local.text_box",
+                "fullExpression": "changed | set_field:debug_tracker_@row.type:@local.text_box",
                 "matchedExpression": "@local.text_box",
                 "type": "local",
                 "fieldName": "text_box"
@@ -55,7 +46,7 @@
             ],
             "_cleaned": [
               {
-                "fullExpression": "changed | set_field:debug_tracker_undefined@local.text_box",
+                "fullExpression": "changed | set_field:debug_tracker_@row.type:@local.text_box",
                 "matchedExpression": "@local.text_box",
                 "type": "local",
                 "fieldName": "text_box"
@@ -69,7 +60,6 @@
           "value"
         ],
         "@local.text_box": [
-          "action_list.0.args.0",
           "action_list.0._raw",
           "action_list.0._cleaned"
         ]
