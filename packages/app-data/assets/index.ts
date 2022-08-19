@@ -1252,6 +1252,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 1.2,
     md5Checksum: "bd1a62fc8c4d3cbd2b3ff5f303d99903",
   },
+  "plh_images/icons/book.svg": {
+    size_kb: 0.7,
+    md5Checksum: "1b287c85e36a3375196a2a6ee7a0bca3",
+  },
   "plh_images/icons/cogwheel.svg": {
     size_kb: 1.7,
     md5Checksum: "c8b581942faf5621c497523bf1a73306",
@@ -1303,6 +1307,10 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/icons/heart_white.svg": {
     size_kb: 0.6,
     md5Checksum: "870d6d4afc2a52aaa37e01460f5efc45",
+  },
+  "plh_images/icons/house.svg": {
+    size_kb: 0.6,
+    md5Checksum: "9d7892c6dd14f51c1b51e303e8e87933",
   },
   "plh_images/icons/house_circle.svg": {
     size_kb: 1.4,
@@ -1392,6 +1400,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 0.9,
     md5Checksum: "628f519c6ce2529b71d6ec00beaddc99",
   },
+  "plh_images/icons/parent_child.svg": {
+    size_kb: 2,
+    md5Checksum: "99747503b2023a185d20be8e5c7d8076",
+  },
   "plh_images/icons/parent_heart.svg": {
     size_kb: 0.9,
     md5Checksum: "45a1616c608c4ef9c3517d78bfb714d4",
@@ -1419,6 +1431,10 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/icons/pause_white.svg": {
     size_kb: 0.7,
     md5Checksum: "f6989826fb94a865281b035fa155689d",
+  },
+  "plh_images/icons/person.svg": {
+    size_kb: 0.5,
+    md5Checksum: "444b0881c42e0de9f28495b05de5db0c",
   },
   "plh_images/icons/phone_heart.svg": {
     size_kb: 1.3,
