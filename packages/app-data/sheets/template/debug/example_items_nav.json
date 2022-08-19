@@ -380,26 +380,26 @@
     },
     {
       "type": "title",
-      "name": "title_4",
+      "name": "title_5",
       "value": "Result when passing in a whole data list as a \"_list\" local variable",
       "_translations": {
         "value": {}
       },
-      "_nested_name": "title_4"
+      "_nested_name": "title_5"
     },
     {
-      "name": "template_list_4",
+      "name": "template_list_5",
       "value": [
-        "@data.example_items_nav.id_concat.template"
+        "@data.example_items_nav"
       ],
       "type": "set_variable",
-      "_nested_name": "template_list_4",
+      "_nested_name": "template_list_5",
       "_dynamicFields": {
         "value": {
           "0": [
             {
-              "fullExpression": "@data.example_items_nav.id_concat.template",
-              "matchedExpression": "@data.example_items_nav.id_concat.template",
+              "fullExpression": "@data.example_items_nav",
+              "matchedExpression": "@data.example_items_nav",
               "type": "data",
               "fieldName": "example_items_nav"
             }
@@ -407,31 +407,31 @@
         }
       },
       "_dynamicDependencies": {
-        "@data.example_items_nav.id_concat.template": [
+        "@data.example_items_nav": [
           "value.0"
         ]
       }
     },
     {
       "type": "nav_group",
-      "name": "nav_group_4",
-      "value": "@local.template_list_4",
+      "name": "nav_group_5",
+      "value": "@local.template_list_5",
       "_translations": {
         "value": {}
       },
-      "_nested_name": "nav_group_4",
+      "_nested_name": "nav_group_5",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.template_list_4",
-            "matchedExpression": "@local.template_list_4",
+            "fullExpression": "@local.template_list_5",
+            "matchedExpression": "@local.template_list_5",
             "type": "local",
-            "fieldName": "template_list_4"
+            "fieldName": "template_list_5"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.template_list_4": [
+        "@local.template_list_5": [
           "value"
         ]
       }
