@@ -348,26 +348,40 @@
     {
       "type": "title",
       "name": "title_4",
-      "value": "Result when using a field",
+      "value": "Result when passing in a whole data list",
       "_translations": {
         "value": {}
       },
       "_nested_name": "title_4"
     },
     {
-      "type": "set_field",
-      "name": "template_list_4",
-      "value": [
-        "example_text_button",
-        "example_text_image",
-        "example_text"
-      ],
-      "_nested_name": "template_list_4"
+      "name": "templates_4",
+      "value": "@data.example_items_nav",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "templates_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.example_items_nav",
+            "matchedExpression": "@data.example_items_nav",
+            "type": "data",
+            "fieldName": "example_items_nav"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.example_items_nav": [
+          "value"
+        ]
+      }
     },
     {
       "type": "text",
       "name": "example_4",
-      "value": "@fields.template_list_4",
+      "value": "@local.templates_4",
       "_translations": {
         "value": {}
       },
@@ -375,15 +389,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@fields.template_list_4",
-            "matchedExpression": "@fields.template_list_4",
-            "type": "fields",
-            "fieldName": "template_list_4"
+            "fullExpression": "@local.templates_4",
+            "matchedExpression": "@local.templates_4",
+            "type": "local",
+            "fieldName": "templates_4"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@fields.template_list_4": [
+        "@local.templates_4": [
           "value"
         ]
       }
@@ -391,7 +405,7 @@
     {
       "type": "nav_group",
       "name": "nav_group_4",
-      "value": "@fields.template_list_4",
+      "value": "@data.example_items_nav",
       "_translations": {
         "value": {}
       },
@@ -399,15 +413,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@fields.template_list_4",
-            "matchedExpression": "@fields.template_list_4",
-            "type": "fields",
-            "fieldName": "template_list_4"
+            "fullExpression": "@data.example_items_nav",
+            "matchedExpression": "@data.example_items_nav",
+            "type": "data",
+            "fieldName": "example_items_nav"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@fields.template_list_4": [
+        "@data.example_items_nav": [
           "value"
         ]
       }
