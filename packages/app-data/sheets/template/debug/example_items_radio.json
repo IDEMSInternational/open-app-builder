@@ -307,6 +307,65 @@
           "parameter_list.answer_list"
         ]
       }
+    },
+    {
+      "type": "title",
+      "name": "title_4",
+      "value": "Use datalist through local variable",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title_4"
+    },
+    {
+      "name": "answer_list_2",
+      "value": [
+        "@data.example_items_radio"
+      ],
+      "type": "set_variable",
+      "_nested_name": "answer_list_2",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "@data.example_items_radio",
+              "matchedExpression": "@data.example_items_radio",
+              "type": "data",
+              "fieldName": "example_items_radio"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@data.example_items_radio": [
+          "value.0"
+        ]
+      }
+    },
+    {
+      "type": "radio_group",
+      "name": "radio_group_4",
+      "parameter_list": {
+        "answer_list": "@local.answer_list_2"
+      },
+      "_nested_name": "radio_group_4",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list_2",
+              "matchedExpression": "@local.answer_list_2",
+              "type": "local",
+              "fieldName": "answer_list_2"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list_2": [
+          "parameter_list.answer_list"
+        ]
+      }
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/example_items.xlsx"

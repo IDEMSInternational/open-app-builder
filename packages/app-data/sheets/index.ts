@@ -1077,6 +1077,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "box_story",
       _xlsxPath: "global/core_templates/core_templates_workshop_boxes.xlsx",
     },
+    box_story_pages: {
+      flow_type: "template",
+      flow_name: "box_story_pages",
+      _xlsxPath: "global_modular/core_templates/box_scroll.xlsx",
+    },
     box_story_scroll: {
       flow_type: "template",
       flow_name: "box_story_scroll",
