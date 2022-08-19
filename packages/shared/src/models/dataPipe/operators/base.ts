@@ -1,17 +1,18 @@
 import { DataFrame } from "danfojs";
+import type { DataPipe } from "../pipe";
 
 type IParsedArg = any;
 
 class BaseOperator {
   public args: any[];
-  constructor(public df: DataFrame, args: string[]) {
+  constructor(public df: DataFrame, args: string[], public pipe?: DataPipe) {
     this.args = args.map((a) => this.parseArg(a));
     this.validate();
   }
   parseArg(arg: any): IParsedArg {
     return arg;
   }
-  validateArg(arg: any) {
+  validateArg(arg: any): Boolean | String {
     return true;
   }
   apply() {
