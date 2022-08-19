@@ -1,5 +1,6 @@
 import { DataFrame } from "danfojs";
 import { OPERATORS } from "./operators";
+import { DataPipe } from "./pipe";
 
 // https://famous-mathematicians.com/list/
 const testData = {
@@ -27,6 +28,30 @@ const testData = {
       first_name: "Daniel",
       last_name: "Bernoulli",
       year_of_birth: 1700,
+    },
+  ],
+  concat_names: [
+    {
+      id: "id_5",
+      first_name: "Edward",
+      last_name: "Lorenz",
+      // year_of_birth omitted, additional field added
+      additonal_field: "EL",
+    },
+    {
+      id: "id_6",
+      first_name: "Felix",
+      last_name: "Klein",
+      // year_of_birth omitted, additional field added
+      additonal_field: "FK",
+    },
+  ],
+  countries: [
+    {
+      id: "id_3",
+    },
+    {
+      id: "id_4",
     },
   ],
 };
@@ -60,5 +85,18 @@ describe("Pipe Operators", () => {
     ]).apply();
     const outputIDs = output.column("id").values;
     expect(outputIDs).toEqual(["id_1", "id_3", "id_4"]);
+  });
+  it("concat", () => {
+    console.log("concat test");
+    const testDf = new DataFrame([]);
+    // TODO - create mock for pipe
+    const testPipe: DataPipe = { inputSources: testData } as any;
+    // throws on missing list
+    expect(() => new OPERATORS.concat(testDf, ["names", "missing_list"], testPipe)).toThrow(
+      new Error("Arg validation error")
+    );
+    // concatenates data, combining the 4+2 rows and 4+1 columns
+    const output = new OPERATORS.concat(testDf, ["names", "concat_names"], testPipe).apply();
+    expect(output.shape).toEqual([6, 5]);
   });
 });

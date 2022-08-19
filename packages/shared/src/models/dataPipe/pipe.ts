@@ -1,5 +1,5 @@
 import { DataFrame, toJSON } from "danfojs";
-import { OPERATORS } from "./operators";
+import { IBaseOperator, OPERATORS } from "./operators";
 
 export interface IDataPipeOperation {
   operation: keyof typeof OPERATORS;
@@ -11,8 +11,11 @@ export interface IDataPipeOperation {
 export class DataPipe {
   private df = new DataFrame([]);
   public outputTargets: { [key: string]: any } = {};
+  public inputSources: { [key: string]: any } = {};
 
-  constructor(private steps: IDataPipeOperation[], private inputSources = {}) {}
+  constructor(private steps: IDataPipeOperation[], inputSources = {}) {
+    this.inputSources = inputSources;
+  }
 
   run() {
     for (const step of this.steps) {
@@ -21,12 +24,12 @@ export class DataPipe {
         this.setInputSource(step.input_source);
       }
       // validate operator
-      const operator = OPERATORS[step.operation];
+      const operator = OPERATORS[step.operation] as IBaseOperator;
       if (!operator) {
         throw new Error(`No pipeline operator exists: ${step.operation}`);
       }
       // apply operation
-      const instance = new operator(this.df, step.args);
+      const instance = new operator(this.df, step.args, this);
       console.log(step.operation, instance.args);
       const output = instance.apply();
       // Assign output as next input. Populate as named input/output if specified
