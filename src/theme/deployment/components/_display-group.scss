@@ -67,9 +67,9 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
     }
   }
   &[data-param-style~="grid-spacing-sm"] {
-    grid-gap: 16px;
+    grid-gap: 0px;
     @media (max-width: 375px) {
-      grid-gap: 8px;
+      grid-gap: 0px;
     }
     plh-template-component {
       max-height: 80px;
@@ -78,6 +78,9 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
   }
   .tmpl-image-container {
     padding: 0 !important;
+    img {
+      padding: 0 !important;
+    }
   }
 }
 
