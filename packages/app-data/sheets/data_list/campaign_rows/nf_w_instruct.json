@@ -722,11 +722,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "undefined.sent",
+            "w_instruct_hp_review.sent",
             true
           ],
-          "_raw": "click | set_field: undefined.sent : true",
-          "_cleaned": "click | set_field: undefined.sent : true"
+          "_raw": "click | set_field: w_instruct_hp_review.sent : true",
+          "_cleaned": "click | set_field: w_instruct_hp_review.sent : true"
         }
       ],
       "priority": 9.2,

@@ -89,8 +89,7 @@
       "name": "combo_box_defaults",
       "exclude_from_translation": true,
       "parameter_list": {
-        "answer_list": "@local.answer_list",
-        "style": "active"
+        "answer_list": "@local.answer_list"
       },
       "_nested_name": "combo_box_defaults",
       "_dynamicFields": {
