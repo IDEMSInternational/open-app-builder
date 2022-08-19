@@ -355,54 +355,6 @@
       "_nested_name": "title_4"
     },
     {
-      "name": "templates_4",
-      "value": "@data.example_items_nav",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "templates_4",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.example_items_nav",
-            "matchedExpression": "@data.example_items_nav",
-            "type": "data",
-            "fieldName": "example_items_nav"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.example_items_nav": [
-          "value"
-        ]
-      }
-    },
-    {
-      "type": "text",
-      "name": "example_4",
-      "value": "@local.templates_4",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "example_4",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.templates_4",
-            "matchedExpression": "@local.templates_4",
-            "type": "local",
-            "fieldName": "templates_4"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.templates_4": [
-          "value"
-        ]
-      }
-    },
-    {
       "type": "nav_group",
       "name": "nav_group_4",
       "value": "@data.example_items_nav",
@@ -422,6 +374,64 @@
       },
       "_dynamicDependencies": {
         "@data.example_items_nav": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title_4",
+      "value": "Result when passing in a whole data list as a \"_list\" local variable",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title_4"
+    },
+    {
+      "name": "template_list_4",
+      "value": [
+        "@data.example_items_nav.id_concat.template"
+      ],
+      "type": "set_variable",
+      "_nested_name": "template_list_4",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "@data.example_items_nav.id_concat.template",
+              "matchedExpression": "@data.example_items_nav.id_concat.template",
+              "type": "data",
+              "fieldName": "example_items_nav"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@data.example_items_nav.id_concat.template": [
+          "value.0"
+        ]
+      }
+    },
+    {
+      "type": "nav_group",
+      "name": "nav_group_4",
+      "value": "@local.template_list_4",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "nav_group_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.template_list_4",
+            "matchedExpression": "@local.template_list_4",
+            "type": "local",
+            "fieldName": "template_list_4"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.template_list_4": [
           "value"
         ]
       }
