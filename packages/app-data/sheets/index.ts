@@ -388,6 +388,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "launch_actions",
       _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
     },
+    number_data: {
+      flow_type: "data_list",
+      flow_name: "number_data",
+      data_list_name: "number",
+      _xlsxPath: "global/data/workshop_data/workshop_data_list.xlsx",
+    },
     organisations_tz_data_list: {
       flow_type: "data_list",
       flow_name: "organisations_tz_data_list",
@@ -430,6 +436,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "relax",
       _xlsxPath: "global/data/relax_data_list.xlsx",
     },
+    story_data: {
+      flow_type: "data_list",
+      flow_name: "story_data",
+      data_list_name: "story",
+      _xlsxPath: "global/data/workshop_data/workshop_data_list.xlsx",
+    },
     survey_data_list: {
       flow_type: "data_list",
       flow_name: "survey_data_list",
@@ -440,12 +452,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "data_list",
       flow_name: "workshop_data",
       data_list_name: "workshop",
-      _xlsxPath: "global/data/workshop_data/workshop_data_list.xlsx",
-    },
-    workshop_tasks_data: {
-      flow_type: "data_list",
-      flow_name: "workshop_tasks_data",
-      data_list_name: "workshop_tasks",
       _xlsxPath: "global/data/workshop_data/workshop_data_list.xlsx",
     },
   },
@@ -1070,6 +1076,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "box_story",
       _xlsxPath: "global/core_templates/core_templates_workshop_boxes.xlsx",
+    },
+    box_story_scroll: {
+      flow_type: "template",
+      flow_name: "box_story_scroll",
+      _xlsxPath: "global_modular/core_templates/box_scroll.xlsx",
     },
     box_text_box: {
       flow_type: "template",
@@ -3096,6 +3107,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "message_navigation",
       _xlsxPath: "global/in_week_messages/message_navigation.xlsx",
     },
+    module_activity: {
+      flow_type: "template",
+      flow_name: "module_activity",
+      _xlsxPath: "global_modular/core_templates/module_activity.xlsx",
+    },
     nav_buttons: {
       flow_type: "template",
       flow_name: "nav_buttons",
@@ -3263,6 +3279,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "question_time",
       _xlsxPath: "global/mode_templates/question_time.xlsx",
+    },
+    read_scroll: {
+      flow_type: "template",
+      flow_name: "read_scroll",
+      _xlsxPath: "global_modular/mode_templates/read_scroll.xlsx",
     },
     read_temp: {
       flow_type: "template",

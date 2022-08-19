@@ -2696,6 +2696,22 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 3.8,
     md5Checksum: "d85011b09a2953d05a49e784995492d3",
   },
+  "plh_images_human/icons/book.svg": {
+    size_kb: 0.7,
+    md5Checksum: "1b287c85e36a3375196a2a6ee7a0bca3",
+  },
+  "plh_images_human/icons/house.svg": {
+    size_kb: 0.6,
+    md5Checksum: "9d7892c6dd14f51c1b51e303e8e87933",
+  },
+  "plh_images_human/icons/parent_child.svg": {
+    size_kb: 2,
+    md5Checksum: "99747503b2023a185d20be8e5c7d8076",
+  },
+  "plh_images_human/icons/person.svg": {
+    size_kb: 0.5,
+    md5Checksum: "444b0881c42e0de9f28495b05de5db0c",
+  },
   "plh_lottie/habits/cascading_stars.json": {
     size_kb: 140.5,
     md5Checksum: "131145b165cd19613a9e277a514eec2f",
