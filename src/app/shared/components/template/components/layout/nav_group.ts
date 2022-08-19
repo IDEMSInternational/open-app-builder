@@ -3,6 +3,7 @@ import { PLHAnimations } from "src/app/shared/animations";
 import { FlowTypes } from "data-models";
 import { hackAddRowWithDefaultActions } from "../../hacks";
 import { TemplateLayoutComponent } from "./layout";
+import { isObject } from "src/app/shared/utils/utils";
 import { TemplateFieldService } from "../../services/template-field.service";
 
 @Component({
@@ -87,7 +88,24 @@ export class NavGroupComponent extends TemplateLayoutComponent {
 
   modifyRowSetter(row: FlowTypes.TemplateRow) {
     if (Array.isArray(row?.value)) {
-      this.templateNames = row.value;
+      // Check if value is an object referring to a whole data_list with a "template" column,
+      // and if so, assign an array of the values of this column to templateNames
+      const templateArray = [];
+      if (row?.value.length === 1) {
+        const dataObject = row?.value[0];
+        if (isObject(dataObject)) {
+          for (const property in dataObject) {
+            if (dataObject[property].hasOwnProperty("template")) {
+              templateArray.push(dataObject[property].template);
+            }
+          }
+        }
+      }
+      if (templateArray.length > 0) {
+        this.templateNames = templateArray;
+      } else {
+        this.templateNames = row.value;
+      }
       row._debug_name = this.templateNames[this.sectionIndex];
       // only set the active section the first time value received
       // (handle via goToSection method internally for other cases)
