@@ -87,17 +87,15 @@ export class NavGroupComponent extends TemplateLayoutComponent {
   }
 
   modifyRowSetter(row: FlowTypes.TemplateRow) {
-    console.log(`row.value for ${row.name}`, row.value);
     // Check if value is an object referring to a whole data_list with a "template" column,
-    // and if so, assign an array of the values of this column to templateNames
-    const templateArray = [];
+    // and if so, assign an array of the values of this column to templateNames.
     // Handle case where object is passed in directly, or where inside a _list local variable
+    const templateArray = [];
     const dataListObject = isObject(row?.value)
       ? row.value
       : Array.isArray(row?.value) && isObject(row?.value[0])
       ? row.value[0]
       : null;
-    console.log("dataListObject: ", dataListObject);
     if (dataListObject) {
       for (const property in dataListObject) {
         if (dataListObject[property].hasOwnProperty("template")) {
