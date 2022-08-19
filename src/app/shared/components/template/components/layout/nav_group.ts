@@ -91,7 +91,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     // and if so, assign an array of the values of this column to templateNames
     const templateArray = [];
     if (isObject(row?.value)) {
-      const dataListObject = row?.value;
+      const dataListObject = row.value;
       for (const property in dataListObject) {
         if (dataListObject[property].hasOwnProperty("template")) {
           templateArray.push(dataListObject[property].template);
