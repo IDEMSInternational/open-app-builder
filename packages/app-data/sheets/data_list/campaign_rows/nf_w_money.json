@@ -637,11 +637,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "undefined.sent",
+            "w_money_hp_review.sent",
             true
           ],
-          "_raw": "click | set_field: undefined.sent : true",
-          "_cleaned": "click | set_field: undefined.sent : true"
+          "_raw": "click | set_field: w_money_hp_review.sent : true",
+          "_cleaned": "click | set_field: w_money_hp_review.sent : true"
         }
       ],
       "priority": 7.2,
