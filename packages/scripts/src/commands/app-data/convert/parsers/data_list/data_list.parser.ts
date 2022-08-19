@@ -1,5 +1,10 @@
-import { FlowTypes } from "data-models";
-import { extractConditionList, parseAppDataCollectionString, setNestedProperty } from "../../utils";
+import { extractDynamicFields, FlowTypes } from "data-models";
+import {
+  extractConditionList,
+  extractDynamicDependencies,
+  parseAppDataCollectionString,
+  setNestedProperty,
+} from "../../utils";
 import { DefaultParser } from "../default/default.parser";
 
 export class DataListParser extends DefaultParser {
@@ -18,6 +23,13 @@ export class DataListParser extends DefaultParser {
         delete row[field];
       }
     });
+    // extract dynamic fields for runtime evaluation
+    // NOTE CC 2022-08-17 - not currently in use
+    const dynamicFields = extractDynamicFields(row);
+    if (dynamicFields) {
+      // row._dynamicFields = dynamicFields;
+      // row._dynamicDependencies = extractDynamicDependencies(dynamicFields);
+    }
     return row;
   }
 }
