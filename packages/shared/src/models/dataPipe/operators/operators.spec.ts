@@ -1,6 +1,6 @@
 import { DataFrame } from "danfojs";
-import { OPERATORS } from "./operators";
-import { DataPipe } from "./pipe";
+import { OPERATORS } from ".";
+import { DataPipe } from "../pipe";
 
 // https://famous-mathematicians.com/list/
 const testData = {
