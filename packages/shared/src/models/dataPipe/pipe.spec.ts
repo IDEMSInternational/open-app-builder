@@ -63,7 +63,7 @@ describe("Data Pipe", () => {
     expect(Object.keys(pipe.outputTargets)).toEqual(["output_a", "output_b", "output_c"]);
   });
   // Error Handling and QC
-  fit("Throw on invalid operation", () => {
+  it("Throw on invalid operation", () => {
     const invalidOp = { operation: "invalid_op" };
     expect(() => new DataPipe([invalidOp as any]).run()).toThrowError(
       `No pipeline operator exists: ${invalidOp.operation}`
