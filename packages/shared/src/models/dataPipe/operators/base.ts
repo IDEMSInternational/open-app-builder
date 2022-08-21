@@ -23,7 +23,7 @@ class BaseOperator {
     const validatedArgs = this.args.map((a) => ({ ...a, validation: this.validateArg(a) }));
     const invalidArgs = validatedArgs.filter((a) => a.validation !== true);
     if (invalidArgs.length > 0) {
-      console.error(invalidArgs);
+      console.error("invalid args\n", invalidArgs);
       throw new Error(`Arg validation error`);
     }
   }
