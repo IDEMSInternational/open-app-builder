@@ -103,7 +103,7 @@ describe("Pipe Operators", () => {
     const outputIDs = output.column("id").values;
     expect(outputIDs).toEqual(["id_1", "id_3", "id_4"]);
   });
-  fit("map", () => {
+  it("map", () => {
     const testDf = new DataFrame(testData.names);
     // throws on missing list
     expect(() => new OPERATORS.map(testDf, ["full_name | @row.first_name @row.last_name"])).toThrow(
