@@ -2,20 +2,21 @@ import * as fs from "fs-extra";
 import { Command } from "commander";
 import * as xlsx from "xlsx";
 import * as path from "path";
-import boxen from "boxen";
 import chalk from "chalk";
 import logUpdate from "log-update";
 import * as Parsers from "./parsers";
-import {
-  groupJsonByKey,
-  readContentsFileAsHashmap,
-  generateFolderFlatMap,
-  IContentsEntry,
-} from "./utils";
+import { groupJsonByKey } from "./utils";
 import { FlowTypes } from "data-models";
-
 import { getActiveDeployment } from "../../deployment/get";
 import { DefaultParser } from "./parsers";
+import { ContentsFileProcessor } from "./processors/contentsFile";
+import { IParsedWorkbookData } from "./types";
+import {
+  logCacheActionsSummary,
+  logSheetErrorSummary,
+  logSheetsSummary,
+  throwTemplateParseError,
+} from "./logging";
 
 /***************************************************************************************
  * CLI
@@ -58,7 +59,6 @@ class AppDataConverter {
 
   constructor(private options: IProgramOptions) {
     console.log(chalk.yellow("App Data Convert"));
-    // console.table(options);
     // Setup Folders
     const { inputFolder, outputFolder, cacheFolder } = options;
     const { app_data, _workspace_path } = this.activeDeployment;
@@ -79,12 +79,12 @@ class AppDataConverter {
    * objects representing sheet names and data values
    */
   public async run() {
-    const actions = this.prepareConversionActions();
-    this.processCacheDeletions(actions.delete);
-    const converted = this.processSheetConversions(actions.convert);
-    const cached: IParsedWorkbookData[] = actions.skip.map((entry) =>
+    const actions = this.compareCachedConversions();
+    this.processCacheDeletions(actions.DELETE);
+    const cached: IParsedWorkbookData[] = actions.IGNORE.map((entry) =>
       this.loadCachedConversion(entry)
     );
+    const converted = this.processSheetConversions(actions.CREATE);
     this.writeCacheContentsJson();
     const allConvertedData = [...converted, ...cached].filter((data) =>
       this.applySheetFilters(data)
@@ -92,60 +92,24 @@ class AppDataConverter {
     const mergedData = this.mergeOutputsByType(allConvertedData);
     const postProcessedData = postProcessData(mergedData);
     this.writeOutputJsons(postProcessedData);
-    this.logSheetsSummary(postProcessedData);
+    logSheetsSummary(postProcessedData);
+    logSheetErrorSummary(this.conversionWarnings, this.conversionErrors);
     console.log(chalk.yellow("Conversion Complete"));
-
-    if (this.conversionWarnings.length > 0) {
-      console.log(chalk.red(this.conversionWarnings.length, "warnings"));
-      for (const warning of this.conversionWarnings) {
-        console.log(warning);
-      }
-    }
-    if (this.conversionErrors.length > 0) {
-      console.log(chalk.red(this.conversionErrors.length, "errors"));
-      for (const err of this.conversionErrors) {
-        console.log(err);
-      }
-    }
   }
 
   /**
    * Read downloaded sheets contents folder and compare against cached conversions contents.
    * Generate a list of sheets requiring conversion and cached files requiring deletion
    */
-  private prepareConversionActions() {
+  private compareCachedConversions() {
     const { SHEETS_INPUT_FOLDER, SHEETS_CACHE_FOLDER } = this.paths;
-    const actions: IConverterActions = { convert: [], delete: [], skip: [] };
-    // generate hashmap of input and cache contents
-    const hashKey = "relativePath";
-    const inputContents = readContentsFileAsHashmap(SHEETS_INPUT_FOLDER, { hashKey });
-    const cacheContents = readContentsFileAsHashmap(SHEETS_CACHE_FOLDER, { hashKey });
-    // run comparisons
-    Object.entries<IGDriveContentsEntry>(inputContents).forEach(([key, sourceFile]) => {
-      // track the filename of the downloaded file (avoid duplicate .xlsx.xlsx depending if gsheet or xlsx original)
-      const xlsxFilename = `${key.replace(".xlsx", "")}.xlsx`;
-      sourceFile.xlsxPath = path.resolve(SHEETS_INPUT_FOLDER, xlsxFilename);
-      const cacheFile = cacheContents[key];
-      // compare with modified times instead of checksums
-      const isSame = this.isConvertedCacheValid(sourceFile, cacheFile);
-      if (isSame) {
-        actions.skip.push(sourceFile);
-      } else {
-        actions.convert.push(sourceFile);
-      }
-    });
-    // handle deleting cache files no longer existing
-    Object.entries<IGDriveContentsEntry>(cacheContents).forEach(([key, cacheFile]) => {
-      const xlsxFilename = `${key.replace(".xlsx", "")}.xlsx`;
-      cacheFile.xlsxPath = path.resolve(SHEETS_CACHE_FOLDER, xlsxFilename);
-      if (!inputContents.hasOwnProperty(key)) {
-        actions.delete.push(cacheFile);
-      }
-    });
-    // log summary
-    const summary = {};
-    Object.entries(actions).forEach(([key, value]) => (summary[key] = value.length));
-    console.log("\nFile Summary\n", summary);
+    const contentsProcessor = new ContentsFileProcessor<IGDriveContentsEntry>(
+      this.converterVersion
+    );
+    const inputContents = contentsProcessor.read(SHEETS_INPUT_FOLDER);
+    const cacheContents = contentsProcessor.read(SHEETS_CACHE_FOLDER);
+    const actions = contentsProcessor.compare(inputContents, cacheContents);
+    logCacheActionsSummary(actions);
     return actions;
   }
 
@@ -164,6 +128,8 @@ class AppDataConverter {
     let i = 0;
     let total = entries.length;
     const processed: IParsedWorkbookData[] = [];
+    const jsonEntries = entries.map(({ xlsxPath }) => convertXLSXSheetsToJson(xlsxPath));
+
     for (let entry of entries) {
       const { xlsxPath } = entry;
       const json = convertXLSXSheetsToJson(xlsxPath);
@@ -233,47 +199,8 @@ class AppDataConverter {
     });
   }
 
-  /** Collate totals of flows by subtype and log */
-  private logSheetsSummary(data: IParsedWorkbookData) {
-    const countBySubtype = {};
-    Object.values(data).forEach((flows) => {
-      flows.forEach((flow) => {
-        let type = flow.flow_type;
-        if (flow.flow_subtype) type += `.${flow.flow_subtype}`;
-        if (!countBySubtype[type]) countBySubtype[type] = 0;
-        countBySubtype[type]++;
-      });
-    });
-    const logOutput = Object.keys(countBySubtype)
-      .sort()
-      .map((key) => {
-        const [type, subtype] = key.split(".");
-        return { type, subtype: subtype || null, total: countBySubtype[key] };
-      });
-    console.log("\nSheet Summary");
-    console.table(logOutput);
-  }
-
   private writeCacheContentsJson() {
-    const contentsFilename = "_contents.json";
-    const cacheHashmap = generateFolderFlatMap(
-      this.paths.SHEETS_CACHE_FOLDER,
-      true,
-      (p) => p !== contentsFilename
-    ) as { [relativePath: string]: IContentsEntry };
-    const contentsData = Object.values(cacheHashmap).map((entry) => {
-      entry.relativePath = entry.relativePath.replace(".json", "");
-      const contentsEntry: IConvertedContentsEntry = {
-        ...entry,
-        converterVersion: this.converterVersion,
-        relativePath: entry.relativePath.replace(".json", ""),
-      };
-
-      return contentsEntry;
-    });
-
-    const contentsOutput = path.resolve(this.paths.SHEETS_CACHE_FOLDER, contentsFilename);
-    fs.writeFileSync(contentsOutput, JSON.stringify(contentsData, null, 2));
+    return new ContentsFileProcessor(this.converterVersion).write(this.paths.SHEETS_CACHE_FOLDER);
   }
 
   private saveCachedConversion(entry: IGDriveContentsEntry, convertedData: any) {
@@ -293,21 +220,6 @@ class AppDataConverter {
     const cacheTarget = path.resolve(this.paths.SHEETS_CACHE_FOLDER, `${relativePath}.json`);
     const cachedConversion = fs.readJSONSync(cacheTarget);
     return cachedConversion;
-  }
-
-  /**
-   * Compare a current sheet json with previously converted.
-   * Assumes conversion still valid if both have same modified timestamp and generated
-   * using the same converter version
-   */
-  private isConvertedCacheValid(sourceFile: any, cacheFile?: any) {
-    if (cacheFile) {
-      return (
-        sourceFile.modifiedTime === cacheFile.modifiedTime &&
-        cacheFile.converterVersion === this.converterVersion
-      );
-    }
-    return false;
   }
 
   /**
@@ -350,7 +262,6 @@ class AppDataConverter {
     return Object.values(merged);
   }
 }
-type IParsedWorkbookData = { [type in FlowTypes.FlowType]?: FlowTypes.FlowTypeWithData[] };
 
 function processData(dataByFlowType: IParsedWorkbookData): IParsedWorkbookData {
   const parsedData: IParsedWorkbookData = {};
@@ -384,6 +295,7 @@ function getDataParsers() {
   const customParsers: { [flowType in FlowTypes.FlowType]?: Parsers.AbstractParser } = {
     template: new Parsers.TemplateParser(),
     data_list: new Parsers.DataListParser(),
+    // data_pipe: new Parsers.DataPipeParser(),
   };
   return customParsers;
 }
@@ -416,30 +328,6 @@ function convertXLSXSheetsToJson(xlsxFilePath: string) {
   return json;
 }
 
-/**
- * Debug info to log and exit when a template parsing error occurs
- */
-function throwTemplateParseError(error: Error, flow: FlowTypes.FlowTypeWithData) {
-  const errMsg = boxen(
-    `
-${chalk.red("Template Parse Error")}
-
-${chalk.yellow(flow.flow_name)}
-
-${flow._xlsxPath}
-
-This is likely an authoring error, see full stacktrace below
-      `,
-    { padding: 1, borderColor: "red" }
-  );
-
-  console.log(errMsg);
-
-  console.error(error);
-  throw errMsg;
-  // process.exit(1);
-}
-
 interface IGDriveContentsEntry {
   id: string;
   name: string;
@@ -455,13 +343,4 @@ interface IGDriveContentsEntry {
   size?: string;
   // populated during processing
   xlsxPath?: string;
-}
-interface IConvertedContentsEntry extends IContentsEntry {
-  converterVersion: number;
-}
-
-interface IConverterActions {
-  convert: IGDriveContentsEntry[];
-  delete: IGDriveContentsEntry[];
-  skip: IGDriveContentsEntry[];
 }

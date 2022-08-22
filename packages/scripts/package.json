@@ -11,6 +11,7 @@
     "start": "ts-node src/commands/index.ts",
     "dev": "ts-node-dev --respawn --watch src/**/*.ts src/commands/index.ts",
     "test": "jasmine-ts --config=jasmine.json",
+    "test:watch": "nodemon --ext ts --exec 'jasmine-ts --config=jasmine.json'",
     "build": "esbuild src/commands/index.ts --bundle --platform=node --target=node12.22 --outfile=build/commands.js",
     "pkg": "pkg . --output ./exec/idems-app-scripts"
   },
@@ -45,6 +46,7 @@
     "jasmine": "^3.99.0",
     "jasmine-spec-reporter": "^7.0.0",
     "jasmine-ts": "^0.4.0",
+    "nodemon": "^2.0.19",
     "pkg": "^5.5.1",
     "ts-node": "~7.0.0",
     "ts-node-dev": "^1.0.0"

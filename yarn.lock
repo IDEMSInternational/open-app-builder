@@ -23294,6 +23294,7 @@ __metadata:
     jasmine-spec-reporter: ^7.0.0
     jasmine-ts: ^0.4.0
     node-rsa: ^1.1.1
+    nodemon: ^2.0.19
     pkg: ^5.5.1
     shared: "workspace:*"
     subtitles-parser-vtt: ^0.1.0
