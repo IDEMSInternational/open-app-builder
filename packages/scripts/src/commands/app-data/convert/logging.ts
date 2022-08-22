@@ -27,7 +27,7 @@ export function logSheetsSummary(data: IParsedWorkbookData) {
 export function logCacheActionsSummary(actions: any) {
   // log summary
   const summary = {};
-  Object.entries(actions).forEach(([key, value]) => (summary[key] = value.length));
+  Object.entries<any>(actions).forEach(([key, value]) => (summary[key] = value.length));
   console.log("\nFile Summary\n", summary);
 }
 
