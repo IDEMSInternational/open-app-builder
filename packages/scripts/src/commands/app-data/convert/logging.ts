@@ -1,7 +1,15 @@
 import boxen from "boxen";
 import chalk from "chalk";
 import type { FlowTypes } from "data-models";
+
+import pino from "pino";
+const logger = pino();
+
 import { IParsedWorkbookData } from "./types";
+
+export function createChildLogger(meta = {}) {
+  return logger.child(meta);
+}
 
 /** Collate totals of flows by subtype and log */
 export function logSheetsSummary(data: IParsedWorkbookData) {
@@ -31,16 +39,16 @@ export function logCacheActionsSummary(actions: any) {
   console.log("\nFile Summary\n", summary);
 }
 
-export function logSheetErrorSummary(conversionWarnings: any[], conversionErrors: any[]) {
-  if (conversionWarnings.length > 0) {
-    console.log(chalk.red(conversionWarnings.length, "warnings"));
-    for (const warning of conversionWarnings) {
+export function logSheetErrorSummary(warnings: any[], errors: any[]) {
+  if (warnings.length > 0) {
+    console.log(chalk.red(warnings.length, "warnings"));
+    for (const warning of warnings) {
       console.log(warning);
     }
   }
-  if (conversionErrors.length > 0) {
-    console.log(chalk.red(conversionErrors.length, "errors"));
-    for (const err of conversionErrors) {
+  if (errors.length > 0) {
+    console.log(chalk.red(errors.length, "errors"));
+    for (const err of errors) {
       console.log(err);
     }
   }
