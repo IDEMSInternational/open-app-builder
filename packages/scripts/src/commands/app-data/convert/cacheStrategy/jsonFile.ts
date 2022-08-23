@@ -3,6 +3,10 @@ import { emptyDirSync, existsSync, mkdirSync, readJSONSync, writeJSONSync } from
 import path from "path";
 import { generateFolderFlatMap, IContentsEntry } from "../utils";
 
+interface IContentsEntryWithValue extends IContentsEntry {
+  value?: any;
+}
+
 /**
  * The cache processor creates a file cache that can store json outputs from
  * previous processes
@@ -17,39 +21,59 @@ export class JsonFileCache {
   public contentsPath: string;
   public version: number;
 
-  private contents: { [name: string]: IContentsEntry };
+  private contents: { [name: string]: IContentsEntryWithValue };
 
   constructor(folderPath: string, version: number) {
     this.version = version;
     this.setup(folderPath);
   }
 
+  /**
+   * Add a data entry to the cache. By default will store
+   * @param data
+   * @param entryName
+   */
   add(data: any, entryName?: string) {
-    if (!entryName) {
-      entryName = this.generateCacheEntryName(data);
+    if (data) {
+      if (!entryName) {
+        entryName = this.generateCacheEntryName(data);
+      }
+      if (!this.contents[entryName]) {
+        this.contents[entryName] = {} as any;
+      }
+      this.contents[entryName].value = data;
     }
-    this.contents[entryName] = data;
   }
+  /**
+   * Retrive a named entry from the cache
+   * Will try to return value from in-memory cache with fallback to saved file
+   */
   get<T = any>(entryName: string) {
     const entry = this.contents[entryName];
-    const entryPath = path.resolve(this.folderPath, entry.relativePath);
-    return readJSONSync(entryPath) as T;
+    let value = entry.value as T;
+    if (!value) {
+      const entryPath = path.resolve(this.folderPath, entry.relativePath);
+      value = readJSONSync(entryPath);
+    }
+    return value;
   }
+  /**
+   * Return metadata info from the cached file, including md5 hash and modified timestamp
+   */
   info(entryName: string) {
     return this.contents[entryName];
   }
 
   /**
    * Write cache contents to file
-   * TODO - provide incremental write instead of clearing everything
+   * Provides incremental updates just to files which have had values set
    */
   public save() {
     // Write files
-    emptyDirSync(this.folderPath);
-    for (const [name, value] of Object.entries<any>(this.contents)) {
-      if (value && typeof value === "object") {
+    for (const [name, contents] of Object.entries(this.contents)) {
+      if (contents && contents.value) {
         const outputPath = path.resolve(this.folderPath, name);
-        writeJSONSync(outputPath, value);
+        writeJSONSync(outputPath, contents.value);
       }
     }
     // Write contents
@@ -60,7 +84,7 @@ export class JsonFileCache {
     writeJSONSync(contentsPath, contents);
   }
 
-  /**  */
+  /** Create name for cache entries from stringified data md5 checksum */
   public generateCacheEntryName(data: any) {
     if (data) {
       if (typeof data === "object") {
