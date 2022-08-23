@@ -52,8 +52,16 @@ export class JsonFileCache {
       }
       const filePath = this.writeCacheFile(entryName, data, stats);
       this.contents[entryName].value = data;
+      this.writeCacheContents();
       return { filePath, entryName, data };
     }
+  }
+
+  /** Clear all cache entries */
+  public clear() {
+    emptyDirSync(this.folderPath);
+    this.contents = {};
+    this.writeCacheContents();
   }
 
   /** Remove and item from the file cache */
@@ -70,6 +78,7 @@ export class JsonFileCache {
   /**
    * Retrive a named entry from the cache
    * Will try to return value from in-memory cache with fallback to saved file
+   * Returns undefined if no entry exists
    */
   public get<T = any>(entryName: string) {
     const entry = this.contents[entryName];
@@ -88,19 +97,6 @@ export class JsonFileCache {
    */
   public info(entryName: string) {
     return this.contents[entryName];
-  }
-
-  /**
-   * Write cache contents to file
-   * Provides incremental updates just to files which have had values set
-   */
-  public save() {
-    // Write contents
-    const { contentsPath, folderPath } = this;
-    const contents = generateFolderFlatMap(folderPath, true, (p) => p !== "_contents.json");
-    contents._version = this.version as any;
-    this.contents = contents as any;
-    writeJSONSync(contentsPath, contents);
   }
 
   /** Create name for cache entries from stringified data md5 checksum */
@@ -128,11 +124,18 @@ export class JsonFileCache {
     }
     return target;
   }
+  private writeCacheContents() {
+    const { contentsPath, folderPath } = this;
+    const contents = generateFolderFlatMap(folderPath, true, (p) => p !== "_contents.json");
+    contents._version = this.version as any;
+    this.contents = contents as any;
+    writeJSONSync(contentsPath, contents);
+  }
 
   private setup(folderPath: string) {
+    ensureDirSync(folderPath);
     this.folderPath = folderPath;
     this.contentsPath = path.resolve(this.folderPath, "_contents.json");
-    ensureDirSync(this.folderPath);
     this.loadCache();
   }
 
@@ -147,19 +150,12 @@ export class JsonFileCache {
       const { _version } = cacheContents;
       if (_version === this.version) {
         this.contents = cacheContents;
+        return this.contents;
       } else {
-        this.clearCache();
+        this.clear();
       }
     }
-    // populate contents file for first time
-    else {
-      this.save();
-    }
-  }
-
-  private clearCache() {
-    emptyDirSync(this.folderPath);
-    this.contents = {};
-    this.save();
+    // repopulate cache if not loaded or cleared
+    this.writeCacheContents();
   }
 }
