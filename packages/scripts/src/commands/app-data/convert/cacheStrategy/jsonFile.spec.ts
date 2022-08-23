@@ -24,12 +24,15 @@ describe("Json File Cache", () => {
     }
     // Initialise cache
     cache = new JsonFileCache(testCacheDir, 1);
+    cache.clear();
+  });
+  afterAll(() => {
+    cache.clear();
   });
   it("Creates cache folder", () => {
     expect(existsSync(cache.folderPath)).toEqual(true);
   });
   it("Populates cache contents", () => {
-    cache.save();
     const { contentsPath } = cache;
     expect(existsSync(contentsPath)).toEqual(true);
   });
@@ -60,16 +63,15 @@ describe("Json File Cache", () => {
     cache.add(input, customName);
     expect(cache.get(customName)).toEqual(input);
   });
+  it("Writes cache files to disk", () => {
+    const cachedFile = path.resolve(cache.folderPath, testData.jsonEntry.expectedName);
+    expect(existsSync(cachedFile)).toEqual(true);
+  });
   it("Populates cache file with custom timestamp", () => {
     const timestamp = new Date("2000-01-01");
     const { filePath } = cache.add(testData.jsonEntry, "with_stats", { mtime: timestamp });
     const { mtime } = statSync(filePath);
     expect(new Date(mtime).getTime()).toEqual(timestamp.getTime());
-  });
-  it("Writes cache files to disk", () => {
-    cache.save();
-    const cachedFile = path.resolve(cache.folderPath, testData.jsonEntry.expectedName);
-    expect(existsSync(cachedFile)).toEqual(true);
   });
 
   it("Gets cached entry", () => {

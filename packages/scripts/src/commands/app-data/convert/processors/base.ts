@@ -37,18 +37,24 @@ class BaseProcessor<T = any, V = any> {
    * Handle a list of inputs. By default this will loop through the inputs, attempt to load
    * from cache and proceed to process individual as required
    */
-  process(inputs: T[] = []): any {
+  process(inputs: T[] = []): V[] {
     const outputs: V[] = [];
     for (const input of inputs) {
       const output = this.handleInputProcessing(input);
       outputs.push(output);
     }
+    return this.postProcess(outputs);
+  }
+
+  /** Optional post-processing */
+  postProcess(outputs: V[]): any {
     return outputs;
   }
 
   private handleInputProcessing(input: T) {
     const cacheEntryName = this.generateCacheEntryName(input);
     const cachedEntry = this.cache.get(cacheEntryName);
+    console.log({ cacheEntryName, cachedEntry });
     // handle with cache
     if (cachedEntry) {
       if (this.shouldUseCachedEntry(input, cachedEntry)) {

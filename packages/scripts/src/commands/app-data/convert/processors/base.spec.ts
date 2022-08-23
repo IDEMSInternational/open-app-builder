@@ -25,6 +25,10 @@ let processor: TestProcessor;
 describe("Base Processor", () => {
   beforeAll(() => {
     processor = new TestProcessor({ namespace: "BaseProcessor", paths });
+    processor.cache.clear();
+  });
+  afterAll(() => {
+    processor.cache.clear();
   });
 
   it("Processes inputs", () => {
