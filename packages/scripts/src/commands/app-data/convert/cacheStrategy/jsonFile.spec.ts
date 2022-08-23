@@ -50,7 +50,7 @@ describe("Json File Cache", () => {
   it("Creates unnamed entry", () => {
     const { input, expectedName } = testData.jsonEntry;
     cache.add(input);
-    expect(cache.info[expectedName]).toEqual(input);
+    expect(cache.get(expectedName)).toEqual(input);
   });
   it("Creates named entry", () => {
     const { input, customName } = testData.jsonEntry;
