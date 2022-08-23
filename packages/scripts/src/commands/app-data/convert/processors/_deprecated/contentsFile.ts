@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 
-import { generateFolderFlatMap, IContentsEntry, readContentsFileAsHashmap } from "../utils";
+import { generateFolderFlatMap, IContentsEntry, readContentsFileAsHashmap } from "../../utils";
 
 /** Contents file entries minimally contain modified time and converter version */
 interface IContentsFileEntry extends Partial<IContentsEntry> {
@@ -9,9 +9,14 @@ interface IContentsFileEntry extends Partial<IContentsEntry> {
 }
 
 /**
+ * DEPRECATED 2022-08-23
+ * Common caching strategy used on per-processor level makes most of the code here
+ * redundant. Retaining for short period in case useful
+ * (recommend remove if not integrated by 2022-11-23)
+ *
  * Processor designed to read and write a contents file, and compare values
  */
-export class ContentsFileProcessor<T extends IContentsFileEntry> {
+export class DeprecatedContentsFileProcessor<T extends IContentsFileEntry> {
   constructor(public converterVersion: number) {}
 
   public process(contentsPath: string) {
