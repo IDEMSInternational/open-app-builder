@@ -1,6 +1,6 @@
 import { emptyDirSync, existsSync, readdirSync, readJsonSync, rmdirSync } from "fs-extra";
 import path from "path";
-import { JSONCacheProcessor } from "./jsonCache";
+import { JsonFileCache } from "./jsonFile";
 
 import { SCRIPTS_WORKSPACE_PATH } from "../../../../paths";
 const testCacheDir = path.resolve(SCRIPTS_WORKSPACE_PATH, "test", "data", "cache");
@@ -19,9 +19,9 @@ const testData = {
   },
 };
 
-const cache = new JSONCacheProcessor(testCacheDir, 1);
+const cache = new JsonFileCache(testCacheDir, 1);
 
-describe("Cache", () => {
+describe("Json File Cache", () => {
   it("Creates cache folder", () => {
     expect(existsSync(cache.folderPath)).toEqual(true);
   });
@@ -50,22 +50,27 @@ describe("Cache", () => {
   it("Creates unnamed entry", () => {
     const { input, expectedName } = testData.jsonEntry;
     cache.add(input);
-    expect(cache.contents[expectedName]).toEqual(input);
+    expect(cache.info[expectedName]).toEqual(input);
   });
   it("Creates named entry", () => {
     const { input, customName } = testData.jsonEntry;
     cache.add(input, customName);
-    expect(cache.contents[customName]).toEqual(input);
+    expect(cache.get(customName)).toEqual(input);
   });
   it("Writes cache files to disk", () => {
     cache.save();
     const cachedFile = path.resolve(cache.folderPath, testData.jsonEntry.expectedName);
     expect(existsSync(cachedFile)).toEqual(true);
   });
+  it("Gets cached entry", () => {
+    const newCache = new JsonFileCache(testCacheDir, 1);
+    const cachedEntry = newCache.get(testData.jsonEntry.expectedName);
+    expect(cachedEntry).toEqual(testData.jsonEntry.input);
+  });
 
   it("Invalidates cache on version update", () => {
     expect(readdirSync(cache.folderPath).length).toBeGreaterThan(0);
-    const newCache = new JSONCacheProcessor(testCacheDir, 2);
+    const updatedCache = new JsonFileCache(testCacheDir, 2);
     expect(readdirSync(cache.folderPath).length).toEqual(0);
   });
 });
