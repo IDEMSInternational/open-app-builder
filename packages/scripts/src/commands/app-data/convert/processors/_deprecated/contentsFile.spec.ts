@@ -1,9 +1,9 @@
-import { ContentsFileProcessor } from "./contentsFile";
+import { DeprecatedContentsFileProcessor } from "./contentsFile";
 
 describe("Contents File Processor", () => {
   it("Compares server and cache contents", () => {
     const testConverterVersion = 2;
-    const processor = new ContentsFileProcessor<any>(testConverterVersion);
+    const processor = new DeprecatedContentsFileProcessor<any>(testConverterVersion);
     const actions = processor.compare(
       // E.g. Server
       {

@@ -37,11 +37,11 @@ class BaseProcessor<T = any, V = any> {
    * Handle a list of inputs. By default this will loop through the inputs, attempt to load
    * from cache and proceed to process individual as required
    */
-  process(inputs: T[] = []): V[] {
+  async process(inputs: T[] = []): Promise<V[]> {
     const outputs: V[] = [];
     for (const input of inputs) {
-      const output = this.handleInputProcessing(input);
-      outputs.push(output);
+      const { value, source } = await this.handleInputProcessing(input);
+      outputs.push(value);
     }
     return this.postProcess(outputs);
   }
@@ -51,27 +51,27 @@ class BaseProcessor<T = any, V = any> {
     return outputs;
   }
 
-  private handleInputProcessing(input: T) {
+  private async handleInputProcessing(input: T) {
     const cacheEntryName = this.generateCacheEntryName(input);
     const cachedEntry = this.cache.get(cacheEntryName);
-    console.log({ cacheEntryName, cachedEntry });
     // handle with cache
     if (cachedEntry) {
       if (this.shouldUseCachedEntry(input, cachedEntry)) {
-        return cachedEntry;
+        this.logger.debug("cache retrieved: " + cacheEntryName);
+        return { value: cachedEntry, source: "cache" };
       } else {
         this.cache.remove(cacheEntryName);
       }
     }
     // handle with processing
-    const output = this.processInput(input);
+    const output = await this.processInput(input);
     // update cache
     const cacheStats = this.generateCacheEntryStats();
     this.cache.add(output, cacheEntryName, cacheStats);
-    return output;
+    return { value: output, source: "processor" };
   }
 
-  public processInput(input: T): V {
+  public async processInput(input: T): Promise<V> {
     return input as any;
   }
 

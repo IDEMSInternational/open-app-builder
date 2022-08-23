@@ -1,18 +1,19 @@
 import * as xlsx from "xlsx";
 import path from "path";
 import { FlowTypes } from "data-models";
-import { IConverterPaths, IGDriveContentsEntry } from "../types";
+import { IConverterPaths } from "../types";
 import chalk from "chalk";
 import BaseProcessor from "./base";
 import { existsSync } from "fs-extra";
+import { IContentsEntry } from "../utils";
 
-export class XLSXWorkbookProcessor extends BaseProcessor<IGDriveContentsEntry> {
+export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
   public cacheVersion = 20220823.1;
   constructor(paths: IConverterPaths) {
     super({ paths, namespace: "xlsxWorkbookProcessor" });
   }
 
-  public processInput(entry: IGDriveContentsEntry) {
+  public async processInput(entry: IContentsEntry) {
     const { relativePath } = entry;
     const inputFolder = this.context.paths.SHEETS_INPUT_FOLDER;
     const xlsxPath = path.resolve(inputFolder, relativePath);
