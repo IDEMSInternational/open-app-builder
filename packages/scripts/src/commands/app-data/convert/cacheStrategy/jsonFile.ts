@@ -1,7 +1,7 @@
 import { createHash } from "crypto";
 import { emptyDirSync, existsSync, mkdirSync, readJSONSync, writeJSONSync } from "fs-extra";
 import path from "path";
-import { generateFolderFlatMap } from "../utils";
+import { generateFolderFlatMap, IContentsEntry } from "../utils";
 
 /**
  * The cache processor creates a file cache that can store json outputs from
@@ -12,11 +12,12 @@ import { generateFolderFlatMap } from "../utils";
  *
  * A versioning system handles clearing cache as required
  */
-export class JSONCacheProcessor {
+export class JsonFileCache {
   public folderPath: string;
   public contentsPath: string;
-  public contents: {};
   public version: number;
+
+  private contents: { [name: string]: IContentsEntry };
 
   constructor(folderPath: string, version: number) {
     this.version = version;
@@ -29,7 +30,12 @@ export class JSONCacheProcessor {
     }
     this.contents[entryName] = data;
   }
-  get(entryName: string) {
+  get<T = any>(entryName: string) {
+    const entry = this.contents[entryName];
+    const entryPath = path.resolve(this.folderPath, entry.relativePath);
+    return readJSONSync(entryPath) as T;
+  }
+  info(entryName: string) {
     return this.contents[entryName];
   }
 
@@ -46,7 +52,6 @@ export class JSONCacheProcessor {
         writeJSONSync(outputPath, value);
       }
     }
-
     // Write contents
     const { contentsPath, folderPath } = this;
     const contents = generateFolderFlatMap(folderPath, true, (p) => p !== "_contents.json");
@@ -83,14 +88,14 @@ export class JSONCacheProcessor {
   }
 
   /**
-   * Load cache from contents file
+   * Load contents list into cache
    * Invalidate and clear if cache contents version does not match current cache version
    */
   private load() {
     this.contents = {};
     if (existsSync(this.contentsPath)) {
       const cacheContents = readJSONSync(this.contentsPath);
-      const { _version } = cacheContents;
+      const { _version, ...entries } = cacheContents;
       if (_version === this.version) {
         this.contents = cacheContents;
       } else {
