@@ -1,5 +1,14 @@
 import { createHash } from "crypto";
-import { emptyDirSync, existsSync, mkdirSync, readJSONSync, writeJSONSync } from "fs-extra";
+import { TimeLike } from "fs";
+import {
+  emptyDirSync,
+  existsSync,
+  mkdirSync,
+  readJSONSync,
+  removeSync,
+  utimesSync,
+  writeJSONSync,
+} from "fs-extra";
 import path from "path";
 import { generateFolderFlatMap, IContentsEntry } from "../utils";
 
@@ -33,7 +42,7 @@ export class JsonFileCache {
    * @param data
    * @param entryName
    */
-  add(data: any, entryName?: string) {
+  add(data: any, entryName?: string, stats?: { mtime: TimeLike }) {
     if (data) {
       if (!entryName) {
         entryName = this.generateCacheEntryName(data);
@@ -41,21 +50,38 @@ export class JsonFileCache {
       if (!this.contents[entryName]) {
         this.contents[entryName] = {} as any;
       }
+      const filePath = this.writeCacheFile(entryName, data, stats);
       this.contents[entryName].value = data;
+      return { filePath, entryName, data };
     }
   }
+
+  /** Remove and item from the file cache */
+  remove(entryName: string) {
+    if (this.contents.hasOwnProperty(entryName)) {
+      delete this.contents[entryName];
+    }
+    const target = path.resolve(this.folderPath, entryName);
+    if (existsSync(target)) {
+      removeSync(target);
+    }
+  }
+
   /**
    * Retrive a named entry from the cache
    * Will try to return value from in-memory cache with fallback to saved file
    */
   get<T = any>(entryName: string) {
     const entry = this.contents[entryName];
-    let value = entry.value as T;
-    if (!value) {
-      const entryPath = path.resolve(this.folderPath, entry.relativePath);
-      value = readJSONSync(entryPath);
+    if (entry) {
+      let value = entry.value as T;
+      if (!value) {
+        const entryPath = path.resolve(this.folderPath, entry.relativePath);
+        value = readJSONSync(entryPath);
+      }
+      return value;
     }
-    return value;
+    return undefined;
   }
   /**
    * Return metadata info from the cached file, including md5 hash and modified timestamp
@@ -69,19 +95,21 @@ export class JsonFileCache {
    * Provides incremental updates just to files which have had values set
    */
   public save() {
-    // Write files
-    for (const [name, contents] of Object.entries(this.contents)) {
-      if (contents && contents.value) {
-        const outputPath = path.resolve(this.folderPath, name);
-        writeJSONSync(outputPath, contents.value);
-      }
-    }
     // Write contents
     const { contentsPath, folderPath } = this;
     const contents = generateFolderFlatMap(folderPath, true, (p) => p !== "_contents.json");
     contents._version = this.version as any;
     this.contents = contents as any;
     writeJSONSync(contentsPath, contents);
+  }
+
+  private writeCacheFile(entryName: string, data: any, stats?: { mtime: TimeLike }) {
+    const target = path.resolve(this.folderPath, entryName);
+    writeJSONSync(target, data);
+    if (stats) {
+      utimesSync(target, stats.mtime, stats.mtime);
+    }
+    return target;
   }
 
   /** Create name for cache entries from stringified data md5 checksum */

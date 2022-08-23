@@ -1,4 +1,4 @@
-import { emptyDirSync, existsSync, readdirSync, readJsonSync, rmdirSync } from "fs-extra";
+import { emptyDirSync, existsSync, readdirSync, readJsonSync, rmdirSync, statSync } from "fs-extra";
 import path from "path";
 import { JsonFileCache } from "./jsonFile";
 
@@ -47,7 +47,7 @@ describe("Json File Cache", () => {
       "Invalid cache entry name: undefined"
     );
   });
-  it("Creates unnamed entry", () => {
+  fit("Creates unnamed entry", () => {
     const { input, expectedName } = testData.jsonEntry;
     cache.add(input);
     expect(cache.get(expectedName)).toEqual(input);
@@ -57,15 +57,39 @@ describe("Json File Cache", () => {
     cache.add(input, customName);
     expect(cache.get(customName)).toEqual(input);
   });
+  it("Populates cache file with custom timestamp", () => {
+    const timestamp = new Date("2000-01-01");
+    const { filePath } = cache.add(testData.jsonEntry, "with_stats", { mtime: timestamp });
+    const { mtime } = statSync(filePath);
+    expect(new Date(mtime).getTime()).toEqual(timestamp.getTime());
+  });
   it("Writes cache files to disk", () => {
     cache.save();
     const cachedFile = path.resolve(cache.folderPath, testData.jsonEntry.expectedName);
     expect(existsSync(cachedFile)).toEqual(true);
   });
+
   it("Gets cached entry", () => {
     const newCache = new JsonFileCache(testCacheDir, 1);
     const cachedEntry = newCache.get(testData.jsonEntry.expectedName);
     expect(cachedEntry).toEqual(testData.jsonEntry.input);
+  });
+
+  it("Returns undefined on missing entry", () => {
+    const newCache = new JsonFileCache(testCacheDir, 1);
+    const cachedEntry = newCache.get("missing_data");
+    expect(cachedEntry).toBeUndefined();
+  });
+  fit("Removes entry", () => {
+    // Add entry
+    const data = Math.random();
+    const { entryName, filePath } = cache.add(data);
+    expect(existsSync(filePath)).toBeTrue();
+    expect(cache.get(entryName)).toEqual(data);
+    // Remove entry
+    cache.remove(entryName);
+    expect(existsSync(filePath)).toBeFalse();
+    expect(cache.get(entryName)).toBeUndefined();
   });
 
   it("Invalidates cache on version update", () => {
