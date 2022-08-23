@@ -1,5 +1,5 @@
-import { ITemplatedStringVariable } from "../types";
-import { addStringDelimiters, extractDelimitedTemplateString } from "../utils";
+import { ITemplatedStringVariable } from "../../types";
+import { addStringDelimiters, extractDelimitedTemplateString } from "../../utils";
 
 type ITemplatedDataContext = { [prefix: string]: any };
 
@@ -161,7 +161,7 @@ export class TemplatedData {
  * ```
  * flattenContextReplacementList({
  *  row:{
- *      name:"Bob",
+ *      name:"Ada",
  *      foods:["pizza","salad"]
  *      }
  *  }
@@ -169,8 +169,8 @@ export class TemplatedData {
  *
  * // Output
  * {
- *  "@row":{name:"Bob",foods:["pizza","salad"]}
- *  "@row.name":"Bob",
+ *  "@row":{name:"Ada",foods:["pizza","salad"]}
+ *  "@row.name":"Ada",
  *  "@row.foods":["pizza","salad"],
  *  "@row.foods.0":"pizza"
  *  ...
