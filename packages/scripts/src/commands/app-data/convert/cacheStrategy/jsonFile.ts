@@ -2,8 +2,8 @@ import { createHash } from "crypto";
 import { TimeLike } from "fs";
 import {
   emptyDirSync,
+  ensureDirSync,
   existsSync,
-  mkdirSync,
   readJSONSync,
   removeSync,
   utimesSync,
@@ -42,7 +42,7 @@ export class JsonFileCache {
    * @param data
    * @param entryName
    */
-  add(data: any, entryName?: string, stats?: { mtime: TimeLike }) {
+  public add(data: any, entryName?: string, stats?: { mtime: TimeLike }) {
     if (data) {
       if (!entryName) {
         entryName = this.generateCacheEntryName(data);
@@ -57,7 +57,7 @@ export class JsonFileCache {
   }
 
   /** Remove and item from the file cache */
-  remove(entryName: string) {
+  public remove(entryName: string) {
     if (this.contents.hasOwnProperty(entryName)) {
       delete this.contents[entryName];
     }
@@ -71,7 +71,7 @@ export class JsonFileCache {
    * Retrive a named entry from the cache
    * Will try to return value from in-memory cache with fallback to saved file
    */
-  get<T = any>(entryName: string) {
+  public get<T = any>(entryName: string) {
     const entry = this.contents[entryName];
     if (entry) {
       let value = entry.value as T;
@@ -86,7 +86,7 @@ export class JsonFileCache {
   /**
    * Return metadata info from the cached file, including md5 hash and modified timestamp
    */
-  info(entryName: string) {
+  public info(entryName: string) {
     return this.contents[entryName];
   }
 
@@ -101,15 +101,6 @@ export class JsonFileCache {
     contents._version = this.version as any;
     this.contents = contents as any;
     writeJSONSync(contentsPath, contents);
-  }
-
-  private writeCacheFile(entryName: string, data: any, stats?: { mtime: TimeLike }) {
-    const target = path.resolve(this.folderPath, entryName);
-    writeJSONSync(target, data);
-    if (stats) {
-      utimesSync(target, stats.mtime, stats.mtime);
-    }
-    return target;
   }
 
   /** Create name for cache entries from stringified data md5 checksum */
@@ -129,30 +120,46 @@ export class JsonFileCache {
     }
   }
 
+  private writeCacheFile(entryName: string, data: any, stats?: { mtime: TimeLike }) {
+    const target = path.resolve(this.folderPath, entryName);
+    writeJSONSync(target, data);
+    if (stats) {
+      utimesSync(target, stats.mtime, stats.mtime);
+    }
+    return target;
+  }
+
   private setup(folderPath: string) {
     this.folderPath = folderPath;
-    this.contentsPath = path.resolve(folderPath, "_contents.json");
     this.contentsPath = path.resolve(this.folderPath, "_contents.json");
-    if (!existsSync(this.folderPath)) {
-      mkdirSync(this.folderPath);
-    }
-    this.load();
+    ensureDirSync(this.folderPath);
+    this.loadCache();
   }
 
   /**
    * Load contents list into cache
    * Invalidate and clear if cache contents version does not match current cache version
    */
-  private load() {
+  private loadCache() {
     this.contents = {};
     if (existsSync(this.contentsPath)) {
       const cacheContents = readJSONSync(this.contentsPath);
-      const { _version, ...entries } = cacheContents;
+      const { _version } = cacheContents;
       if (_version === this.version) {
         this.contents = cacheContents;
       } else {
-        emptyDirSync(this.folderPath);
+        this.clearCache();
       }
     }
+    // populate contents file for first time
+    else {
+      this.save();
+    }
+  }
+
+  private clearCache() {
+    emptyDirSync(this.folderPath);
+    this.contents = {};
+    this.save();
   }
 }

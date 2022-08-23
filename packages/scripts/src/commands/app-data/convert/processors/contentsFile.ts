@@ -1,6 +1,6 @@
 import path from "path";
-
 import fs from "fs";
+
 import { generateFolderFlatMap, IContentsEntry, readContentsFileAsHashmap } from "../utils";
 
 /** Contents file entries minimally contain modified time and converter version */
@@ -14,7 +14,7 @@ interface IContentsFileEntry extends Partial<IContentsEntry> {
 export class ContentsFileProcessor<T extends IContentsFileEntry> {
   constructor(public converterVersion: number) {}
 
-  public read(contentsPath: string) {
+  public process(contentsPath: string) {
     const hashKey = "relativePath";
     const contentsHashmap = readContentsFileAsHashmap(contentsPath, { hashKey });
     const contentsHashmapWithXlsxPath: { [key: string]: T & { xlsxPath: string } } = {};

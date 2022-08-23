@@ -21,9 +21,12 @@ class TestProcessor extends BaseProcessor<string, any> {
     return { processed: input };
   }
 }
-const processor = new TestProcessor({ namespace: "BaseProcessor", paths });
-
+let processor: TestProcessor;
 describe("Base Processor", () => {
+  beforeAll(() => {
+    processor = new TestProcessor({ namespace: "BaseProcessor", paths });
+  });
+
   it("Processes inputs", () => {
     const inputs = testData.map((t) => t.input);
     const outputs = processor.process(inputs);
