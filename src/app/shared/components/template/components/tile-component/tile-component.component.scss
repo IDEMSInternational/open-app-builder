@@ -1,31 +1,18 @@
 @use "/src/theme/mixins.scss";
 
-$tile-button-background: var(--tile-button-background, var(--ion-color-primary-200));
-$parent-centre-primary-gradient: var(
-  --parent-centre-primary-gradient,
-  var(--gradient-primary-mid-vertical)
-);
-$parent-centre-primary-light-gradient: var(
-  --parent-centre-primary-light-gradient,
+$background-default: var(--tile-button-background-default, var(--ion-color-primary-200));
+$background-primary: var(--tile-button-background-primary, var(--gradient-primary-mid-vertical));
+$background-primary-light: var(
+  --tile-button-background-primary-light,
   var(--gradient-primary-light-vertical)
 );
-$parent-centre-secondary-gradient: var(
-  --parent-centre-secondary-gradient,
+$background-secondary: var(
+  --tile-button-background-secondary,
   var(--gradient-secondary-mid-vertical)
 );
-$parent-centre-secondary-light-gradient: var(
-  --parent-centre-secondary-light-gradient,
-  var(--gradient-yellow-vertical)
-);
-$tile-primary-gradient: var(--tile-primary-gradient, var(--gradient-primary-mid-vertical));
-$tile-primary-light-gradient: var(
-  --tile-primary-light-gradient,
-  var(--gradient-primary-light-vertical)
-);
-$tile-secondary-gradient: var(--tile-secondary-gradient, var(--gradient-secondary-mid-vertical));
-$tile-secondary-light-gradient: var(
-  --tile-secondary-light-gradient,
-  var(--gradient-yellow-vertical)
+$background-secondary-light: var(
+  --tile-button-background-secondary-light,
+  var(--gradient-secondary-light-vertical)
 );
 
 // NOTE CC 2021-12-16 - Presumably this is for case of rendered markdown
@@ -122,29 +109,29 @@ $tile-secondary-light-gradient: var(
 }
 
 .quick_start {
-  background: $tile-secondary-light-gradient;
+  background: $background-secondary-light;
 }
 
 .quick_start_passive {
-  background: $tile-primary-gradient;
+  background: $background-primary;
 }
 .quick_start_blue {
-  background: $tile-primary-light-gradient;
+  background: $background-primary-light;
 }
 .quick_start_dark {
-  background: $tile-secondary-gradient;
+  background: $background-secondary;
 }
 .parent_centre_1 {
-  background: $parent-centre-primary-light-gradient;
+  background: $background-primary-light;
 }
 .parent_centre_2 {
-  background: $parent-centre-secondary-light-gradient;
+  background: $background-secondary-light;
 }
 .parent_centre_3 {
-  background: $parent-centre-secondary-gradient;
+  background: $background-secondary;
 }
 .parent_centre_4 {
-  background: $parent-centre-primary-gradient;
+  background: $background-primary;
 }
 
 .image_text {
@@ -156,7 +143,7 @@ $tile-secondary-light-gradient: var(
   width: 10rem;
   margin-bottom: var(--regular-margin);
   max-width: var(--tile-image-text-width);
-  background: $tile-button-background;
+  background: $background-default;
   box-shadow: var(--ion-default-box-shadow);
   border-radius: var(--ion-border-radius-standard);
   position: relative;
@@ -197,7 +184,7 @@ $tile-secondary-light-gradient: var(
 }
 
 .button_tile {
-  background: $tile-button-background;
+  background: $background-default;
   overflow: hidden;
   justify-content: space-between;
   height: var(--tile-button-style-height);
