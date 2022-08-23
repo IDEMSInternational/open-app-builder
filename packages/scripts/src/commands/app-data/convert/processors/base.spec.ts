@@ -17,7 +17,7 @@ const testData = [
 ];
 
 class TestProcessor extends BaseProcessor<string, any> {
-  public processInput(input: string) {
+  public async processInput(input: string) {
     return { processed: input };
   }
 }
@@ -31,9 +31,9 @@ describe("Base Processor", () => {
     processor.cache.clear();
   });
 
-  it("Processes inputs", () => {
+  it("Processes inputs", async () => {
     const inputs = testData.map((t) => t.input);
-    const outputs = processor.process(inputs);
+    const outputs = await processor.process(inputs);
     expect(outputs).toEqual(testData.map((t) => t.output));
   });
 

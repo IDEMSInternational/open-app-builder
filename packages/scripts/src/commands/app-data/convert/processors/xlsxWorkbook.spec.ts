@@ -3,6 +3,7 @@ import { XLSXWorkbookProcessor } from "./xlsxWorkbook";
 
 import { SCRIPTS_WORKSPACE_PATH } from "../../../../paths";
 import { IGDriveContentsEntry } from "../types";
+import { IContentsEntry } from "../utils";
 const testDataDir = path.resolve(SCRIPTS_WORKSPACE_PATH, "test", "data");
 const paths = {
   SHEETS_CACHE_FOLDER: path.resolve(testDataDir, "cache"),
@@ -10,14 +11,11 @@ const paths = {
   SHEETS_OUTPUT_FOLDER: path.resolve(testDataDir, "output"),
 };
 
-const testInputs: IGDriveContentsEntry[] = [
+const testInputs: IContentsEntry[] = [
   {
-    id: "0123456789ABCDEFG",
-    name: "test_input",
-    mimeType: "application/vnd.google-apps.spreadsheet",
     modifiedTime: "2021-08-20T09:55:53.006Z",
-    size: "2717",
-    folderPath: "sheets",
+    size_kb: 2717,
+    md5Checksum: "123456789abcd",
     relativePath: "sheets/test_input.xlsx",
   },
 ];
@@ -34,8 +32,8 @@ describe("XLSX Workbook Processor", () => {
 
   // Processor will convert all inputs to json array, producing
   // an array of arrays
-  it("Converts XLSXs to array of JSON sheet arrays", () => {
-    const outputs = processor.process(testInputs);
+  it("Converts XLSXs to array of JSON sheet arrays", async () => {
+    const outputs = await processor.process(testInputs);
     expect(Array.isArray(outputs)).toBeTrue();
     expect(outputs.length).toEqual(testInputs.length);
     // each entry may contain multiple sheets from workbook
@@ -44,9 +42,11 @@ describe("XLSX Workbook Processor", () => {
     expect(testInputsheets.length).toEqual(3);
     expect(testInputsheets[0].flow_type).toEqual("data_list");
   });
-  it("throws on missing file", () => {
+  it("throws on missing file", async () => {
     const missingInput = { ...testInputs[0], relativePath: "missing.xlsx" };
-    expect(() => processor.process([missingInput])).toThrowError("Xlsx not found: missing.xlsx");
+    await processor.process([missingInput]).catch((err) => {
+      expect(err.message).toEqual("Xlsx not found: missing.xlsx");
+    });
   });
   it("Uses cache", () => {
     const cacheName = processor.cache.generateCacheEntryName(testInputs[0]);
