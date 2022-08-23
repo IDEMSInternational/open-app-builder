@@ -1,10 +1,5 @@
 import { extractDynamicFields, FlowTypes } from "data-models";
-import {
-  extractConditionList,
-  extractDynamicDependencies,
-  parseAppDataCollectionString,
-  setNestedProperty,
-} from "../../utils";
+import { extractConditionList, parseAppDataCollectionString, setNestedProperty } from "../../utils";
 import { DefaultParser } from "../default/default.parser";
 
 export class DataListParser extends DefaultParser {

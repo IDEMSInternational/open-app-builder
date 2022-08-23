@@ -3,7 +3,7 @@ import path from "path";
 import { JsonFileCache } from "./jsonFile";
 
 import { SCRIPTS_WORKSPACE_PATH } from "../../../../paths";
-const testCacheDir = path.resolve(SCRIPTS_WORKSPACE_PATH, "test", "data", "cache");
+const testCacheDir = path.resolve(SCRIPTS_WORKSPACE_PATH, "test", "data", "cache", "spec");
 
 // Clear previous folders
 if (existsSync(testCacheDir)) {
@@ -47,7 +47,7 @@ describe("Json File Cache", () => {
       "Invalid cache entry name: undefined"
     );
   });
-  fit("Creates unnamed entry", () => {
+  it("Creates unnamed entry", () => {
     const { input, expectedName } = testData.jsonEntry;
     cache.add(input);
     expect(cache.get(expectedName)).toEqual(input);
@@ -80,7 +80,7 @@ describe("Json File Cache", () => {
     const cachedEntry = newCache.get("missing_data");
     expect(cachedEntry).toBeUndefined();
   });
-  fit("Removes entry", () => {
+  it("Removes entry", () => {
     // Add entry
     const data = Math.random();
     const { entryName, filePath } = cache.add(data);
