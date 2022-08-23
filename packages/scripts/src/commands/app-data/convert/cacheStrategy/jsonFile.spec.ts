@@ -5,12 +5,6 @@ import { JsonFileCache } from "./jsonFile";
 import { SCRIPTS_WORKSPACE_PATH } from "../../../../paths";
 const testCacheDir = path.resolve(SCRIPTS_WORKSPACE_PATH, "test", "data", "cache", "spec");
 
-// Clear previous folders
-if (existsSync(testCacheDir)) {
-  emptyDirSync(testCacheDir);
-  rmdirSync(testCacheDir);
-}
-
 const testData = {
   jsonEntry: {
     input: { nested: { json: true } },
@@ -19,9 +13,18 @@ const testData = {
   },
 };
 
-const cache = new JsonFileCache(testCacheDir, 1);
+let cache: JsonFileCache;
 
 describe("Json File Cache", () => {
+  beforeAll(() => {
+    // Clear previous folders
+    if (existsSync(testCacheDir)) {
+      emptyDirSync(testCacheDir);
+      rmdirSync(testCacheDir);
+    }
+    // Initialise cache
+    cache = new JsonFileCache(testCacheDir, 1);
+  });
   it("Creates cache folder", () => {
     expect(existsSync(cache.folderPath)).toEqual(true);
   });
@@ -93,8 +96,8 @@ describe("Json File Cache", () => {
   });
 
   it("Invalidates cache on version update", () => {
-    expect(readdirSync(cache.folderPath).length).toBeGreaterThan(0);
+    expect(readdirSync(cache.folderPath).length).toBeGreaterThan(1);
     const updatedCache = new JsonFileCache(testCacheDir, 2);
-    expect(readdirSync(cache.folderPath).length).toEqual(0);
+    expect(readdirSync(cache.folderPath).length).toEqual(1);
   });
 });
