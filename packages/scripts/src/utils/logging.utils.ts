@@ -37,8 +37,9 @@ export function getLogFiles() {
  * for easy querying
  */
 function setupLogger() {
-  if (global.logger) {
-    return global.logger;
+  const g = global as any;
+  if (g.logger) {
+    return g.logger;
   }
   // setup files
   ensureDirSync(SCRIPTS_LOGS_DIR);
@@ -68,7 +69,7 @@ function setupLogger() {
     format: winston.format.json(),
   });
   logger.add(streamTransport);
-  global.logger = logger;
+  g.logger = logger;
   return logger;
 }
 
