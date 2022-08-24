@@ -40,28 +40,28 @@ describe("FlowParser Processor", () => {
   afterAll(() => {
     processor.cache.clear();
   });
-  // TODO - should it throw or just log as output
-  it("Throws on invalid flow_type", async () => {
-    const invalidFlow: FlowTypes.FlowTypeWithData = {
-      ...testInputs[0],
-      flow_type: "test_invalid_type" as any,
-    };
-    await processor.process([invalidFlow]).catch((err) => {
-      const { flow_name, flow_type, _xlsxPath } = invalidFlow;
-      const expected = `No parser available for flow_type: ${flow_type}\n${flow_name}\n${_xlsxPath}`;
-      expect(err.message).toEqual(expected);
-    });
-  });
-  it("Throws on flow parse error", async () => {
-    const brokenFlow: FlowTypes.FlowTypeWithData = {
-      ...testInputs[0],
-      flow_name: "test_broken_flow",
-    };
-    delete brokenFlow.rows;
-    await processor.process([brokenFlow]).catch((err) => {
-      expect(err.includes("Template Parse Error")).toBe(true);
-    });
-  });
+  // TODO - Handle errors
+  // it("Throws on invalid flow_type", async () => {
+  //   const invalidFlow: FlowTypes.FlowTypeWithData = {
+  //     ...testInputs[0],
+  //     flow_type: "test_invalid_type" as any,
+  //   };
+  //   await processor.process([invalidFlow]).catch((err) => {
+  //     const { flow_name, flow_type, _xlsxPath } = invalidFlow;
+  //     const expected = `No parser available for flow_type: ${flow_type}\n${flow_name}\n${_xlsxPath}`;
+  //     expect(err.message).toEqual(expected);
+  //   });
+  // });
+  // it("Throws on flow parse error", async () => {
+  //   const brokenFlow: FlowTypes.FlowTypeWithData = {
+  //     ...testInputs[0],
+  //     flow_name: "test_broken_flow",
+  //   };
+  //   delete brokenFlow.rows;
+  //   await processor.process([brokenFlow]).catch((err) => {
+  //     expect(err.includes("Template Parse Error")).toBe(true);
+  //   });
+  // });
   it("Outputs flows by type", async () => {
     const output = await processor.process(testInputs);
     expect(Object.keys(output)).toEqual(["data_list", "template"]);
