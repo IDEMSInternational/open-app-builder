@@ -154,8 +154,6 @@ export class TemplateActionService extends TemplateInstanceService {
       case "set_field":
         console.log("[SET FIELD]", key, value);
         return this.templateFieldService.setField(key, value);
-      case "set_theme":
-        return this.templateService.setTheme(this.container?.template, "set_theme", action.args);
       case "start_tour":
         return this.tourService.startTour(key);
       case "feedback": {
