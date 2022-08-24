@@ -41,7 +41,7 @@ describe("FlowParser Processor", () => {
     processor.cache.clear();
   });
   // TODO - should it throw or just log as output
-  fit("Throws on invalid flow_type", async () => {
+  it("Throws on invalid flow_type", async () => {
     const invalidFlow: FlowTypes.FlowTypeWithData = {
       ...testInputs[0],
       flow_type: "test_invalid_type" as any,
@@ -52,7 +52,7 @@ describe("FlowParser Processor", () => {
       expect(err.message).toEqual(expected);
     });
   });
-  fit("Throws on flow parse error", async () => {
+  it("Throws on flow parse error", async () => {
     const brokenFlow: FlowTypes.FlowTypeWithData = {
       ...testInputs[0],
       flow_name: "test_broken_flow",
@@ -62,11 +62,11 @@ describe("FlowParser Processor", () => {
       expect(err.includes("Template Parse Error")).toBe(true);
     });
   });
-  fit("Outputs flows by type", async () => {
+  it("Outputs flows by type", async () => {
     const output = await processor.process(testInputs);
     expect(Object.keys(output)).toEqual(["data_list", "template"]);
   });
-  fit("Uses cache", () => {
+  it("Uses cache", () => {
     const cacheName = processor.cache.generateCacheEntryName(testInputs[0]);
     expect(processor.cache.get(cacheName)).toBeTruthy();
   });
