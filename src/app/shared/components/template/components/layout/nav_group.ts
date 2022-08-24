@@ -87,9 +87,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
   }
 
   modifyRowSetter(row: FlowTypes.TemplateRow) {
-    console.log("modifyRowSetter for " + row.name);
     this.hackPopulateTemplateNames(row);
-    console.log("this.templateNames: ", this.templateNames);
     if (this.templateNames.length > 0) {
       row._debug_name = this.templateNames[this.sectionIndex];
       // only set the active section the first time value received
@@ -112,7 +110,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
       dataListObject = row.value;
     }
     // Handle case where data list object is inside an array,
-    // e.g. if assigned to a "_list" local variable
+    // e.g. if assigned to a "_list" local variable in authoring
     else if (Array.isArray(row?.value) && isObject(row?.value[0])) {
       dataListObject = row.value[0];
     }
