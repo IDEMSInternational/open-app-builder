@@ -1,7 +1,7 @@
 import { FlowTypes } from "data-models";
 import { throwTemplateParseError } from "../logging";
 import * as Parsers from "../parsers";
-import { IConverterPaths } from "../types";
+import { IConverterPaths, IParsedWorkbookData } from "../types";
 import { groupJsonByKey, IContentsEntry } from "../utils";
 import BaseProcessor from "./base";
 
@@ -41,9 +41,9 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
    * Apply combined parser postProcess methods
    * @returns hashmap of flowtypes with postprocessed flows
    */
-  public async postProcess(flows: FlowTypes.FlowTypeWithData[]) {
+  public async postProcess(flows: FlowTypes.FlowTypeWithData[]): Promise<IParsedWorkbookData> {
     const flowsByType = groupJsonByKey(flows, "flow_type");
-    const postProcessed = {};
+    const postProcessed: IParsedWorkbookData = {};
     Object.entries(flowsByType).forEach(([flow_type, contentFlows]) => {
       const parser: Parsers.AbstractParser = this.parsers[flow_type];
       postProcessed[flow_type] = parser.postProcessFlows(contentFlows);
