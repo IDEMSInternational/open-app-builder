@@ -20,9 +20,16 @@ export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
     if (!existsSync(xlsxPath)) {
       throw new Error(`Xlsx not found: ${relativePath}`);
     }
+    // convert and merge contents sheet
     const json = this.convertXLSXSheetsToJson(xlsxPath);
+    const merged = this.mergeContentsSheet([{ json, xlsxPath }]);
+    // Ensure all paths use / to match HTTP style paths
     const { SHEETS_INPUT_FOLDER } = this.context.paths;
-    const processed = this.mergeContentsSheet(SHEETS_INPUT_FOLDER, [{ json, xlsxPath }]);
+    const _xlsxPath = path.relative(SHEETS_INPUT_FOLDER, xlsxPath).replace(/\\/g, "/");
+    const processed = merged.map((v) => {
+      v._xlsxPath = _xlsxPath;
+      return v;
+    });
     return processed;
   }
 
@@ -58,7 +65,7 @@ export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
    * Merge and collate with other existing data, warning in case of overwrites
    * @returns - array of all merged sheets (no grouping or collating)
    */
-  private mergeContentsSheet(sheetsInputFolder: string, jsons: { json: any; xlsxPath: string }[]) {
+  private mergeContentsSheet(jsons: { json: any; xlsxPath: string }[]) {
     const merged: { [flow_name: string]: FlowTypes.FlowTypeWithData } = {};
     const releasedSummary = {};
     const skippedSummary = {};
@@ -67,23 +74,21 @@ export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
       const contentList = json["==content_list=="] as FlowTypes.FlowTypeWithData[];
       if (contentList) {
         for (const contents of contentList) {
-          const { flow_name, status, flow_type, module } = contents;
+          const { flow_name, flow_type, module } = contents;
           const filename = path.basename(xlsxPath, ".xlsx");
           // only include flows marked as released in the contents
-          if (flow_name && status === "released") {
-            releasedSummary[flow_name] = { status, flow_type, module, filename };
+          if (flow_name) {
+            releasedSummary[flow_name] = { flow_type, module, filename };
             if (json.hasOwnProperty(flow_name)) {
               if (merged.hasOwnProperty(flow_name)) {
                 this.logger.warn(chalk.yellow(`Duplicate flow: ${flow_name}`));
               }
-              // Ensure all paths use / to match HTTP style paths
-              const _xlsxPath = path.relative(sheetsInputFolder, xlsxPath).replace(/\\/g, "/");
-              merged[flow_name] = { ...contents, rows: json[flow_name], _xlsxPath };
+              merged[flow_name] = { ...contents, rows: json[flow_name] };
             } else {
               this.logger.warn(chalk.yellow(`No Contents: ${flow_name}`));
             }
           } else {
-            skippedSummary[flow_name] = { status, flow_type, module, filename };
+            skippedSummary[flow_name] = { flow_type, module, filename };
           }
         }
       } else {
