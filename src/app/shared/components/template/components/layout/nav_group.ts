@@ -87,29 +87,9 @@ export class NavGroupComponent extends TemplateLayoutComponent {
   }
 
   modifyRowSetter(row: FlowTypes.TemplateRow) {
-    // Check if value is an object referring to a whole data_list with a "template" column,
-    // and if so, assign an array of the values of this column to templateNames.
-    // Handle case where object is passed in directly, or where inside a "_list" local variable
-    const templateArray = [];
-    const dataListObject = isObject(row?.value)
-      ? row.value
-      : Array.isArray(row?.value) && isObject(row?.value[0])
-      ? row.value[0]
-      : null;
-    if (dataListObject) {
-      for (const property in dataListObject) {
-        if (dataListObject[property].hasOwnProperty("template")) {
-          templateArray.push(dataListObject[property].template);
-        }
-      }
-    }
-    if (templateArray.length > 0) {
-      this.templateNames = templateArray;
-    } else {
-      if (Array.isArray(row?.value)) {
-        this.templateNames = row.value;
-      }
-    }
+    console.log("modifyRowSetter for " + row.name);
+    this.hackPopulateTemplateNames(row);
+    console.log("this.templateNames: ", this.templateNames);
     if (this.templateNames.length > 0) {
       row._debug_name = this.templateNames[this.sectionIndex];
       // only set the active section the first time value received
@@ -119,6 +99,36 @@ export class NavGroupComponent extends TemplateLayoutComponent {
       }
     }
     return row;
+  }
+
+  /**
+   * Populate this.templateNames: if row.value is an object referring to a data_list with a "template" column,
+   * use these values, else if row.value is an array assume it's a list of template names.
+   */
+  private hackPopulateTemplateNames(row: any) {
+    let dataListObject = null;
+    // Handle case where data list object is passed in directly
+    if (isObject(row?.value)) {
+      dataListObject = row.value;
+    }
+    // Handle case where data list object is inside an array,
+    // e.g. if assigned to a "_list" local variable
+    else if (Array.isArray(row?.value) && isObject(row?.value[0])) {
+      dataListObject = row.value[0];
+    }
+    if (dataListObject) {
+      // If the data list has a "template" column, populate this.templateNames with these values
+      for (const property in dataListObject) {
+        if (dataListObject[property].hasOwnProperty("template")) {
+          this.templateNames.push(dataListObject[property].template);
+        }
+      }
+    }
+    // If row.value is an array that doesn't contain a datalist object,
+    // assume it's a list of template names
+    if (this.templateNames.length === 0 && Array.isArray(row?.value)) {
+      this.templateNames = row.value;
+    }
   }
 
   interceptTemplateContainerAction(action: FlowTypes.TemplateRowAction) {
