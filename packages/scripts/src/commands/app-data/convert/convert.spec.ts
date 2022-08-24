@@ -28,7 +28,7 @@ describe("App Data Converter", () => {
     const cacheFolders = readdirSync(paths.cacheFolder);
     expect(cacheFolders.length).toEqual(1); // only contents file
   });
-  fit("Populates output to folder by data type", async () => {
+  it("Populates output to folder by data type", async () => {
     await converter.run();
     expect(readdirSync(paths.outputFolder)).toEqual(["data_list", "template"]);
     const testFileOutput = ["data_list", "spec_test", "test_data_list.json"];
