@@ -39,11 +39,4 @@ describe("App Data Converter", () => {
     const { errors } = await converter.run();
     expect(errors.length).toBeGreaterThan(0);
   });
-
-  // fit("Skips draft flows", async () => {
-  //   const outputs = await processor.process(testInputs);
-  //   console.log("outputs", outputs);
-  // });
-
-  // TODO - test errors and warnings are collated and output accordingly
 });
