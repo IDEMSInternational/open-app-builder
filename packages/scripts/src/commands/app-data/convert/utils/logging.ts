@@ -1,13 +1,6 @@
 import chalk from "chalk";
 
-import pino from "pino";
-const logger = pino();
-
 import { IParsedWorkbookData } from "../types";
-
-export function createChildLogger(meta = {}) {
-  return logger.child(meta);
-}
 
 /** Collate totals of flows by subtype and log */
 export function logSheetsSummary(data: IParsedWorkbookData) {
