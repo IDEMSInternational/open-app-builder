@@ -1,7 +1,7 @@
 import { FlowTypes } from "data-models";
 import * as Parsers from "../parsers";
 import { IConverterPaths, IParsedWorkbookData } from "../types";
-import { groupJsonByKey, IContentsEntry, throwTemplateParseError } from "../utils";
+import { groupJsonByKey, IContentsEntry } from "../utils";
 import BaseProcessor from "./base";
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
@@ -24,16 +24,16 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     const parser = this.parsers[flow_type];
     if (!parser) {
       const errMsg = `No parser available for flow_type: ${flow_type}\n${flow_name}\n${_xlsxPath}`;
-      throw new Error(errMsg);
+      this.logger.error(errMsg);
+      return null;
     }
     try {
       const parsed = parser.run(flow);
       return parsed;
     } catch (error) {
-      // this.logger.error(error, flow);
-      throwTemplateParseError(error, flow);
+      this.logger.error(error, flow);
+      return null;
     }
-    return null;
   }
 
   /**

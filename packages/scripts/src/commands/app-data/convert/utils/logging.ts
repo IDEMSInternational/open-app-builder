@@ -1,6 +1,4 @@
-import boxen from "boxen";
 import chalk from "chalk";
-import type { FlowTypes } from "data-models";
 
 import pino from "pino";
 const logger = pino();
@@ -52,24 +50,4 @@ export function logSheetErrorSummary(warnings: any[], errors: any[]) {
       console.log(err);
     }
   }
-}
-
-/** Debug info to log and exit when a template parsing error occurs */
-export function throwTemplateParseError(error: Error, flow: FlowTypes.FlowTypeWithData) {
-  const errMsg = boxen(
-    `
-${chalk.red("Template Parse Error")}
-
-${chalk.yellow(flow.flow_name)}
-
-${flow._xlsxPath}
-
-This is likely an authoring error, see full stacktrace below
-      `,
-    { padding: 1, borderColor: "red" }
-  );
-  console.log(errMsg);
-  console.error(error);
-  throw errMsg;
-  // process.exit(1);
 }
