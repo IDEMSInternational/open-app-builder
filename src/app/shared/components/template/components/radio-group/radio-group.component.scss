@@ -1,7 +1,6 @@
 @use "/src/theme/mixins";
 
-$radio-group-passive-bg: var(--radio-group-passive-bg, var(--gradient-primary-light-vertical));
-$radio-group-active-bg: var(--radio-group-active-bg, var(--gradient-yellow-vertical));
+$background-selected: var(--radio-group-background-selected, var(--gradient-primary-light-vertical));
 $primary-radio-border: 2px solid;
 $primary-radio-border-rd: 15px;
 
@@ -104,45 +103,20 @@ img {
   max-width: fit-content;
   min-width: 100%;
   box-shadow: var(--ion-default-box-shadow);
+  border: var(--ion-border-standard);
+  color: var(--ion-color-primary);
+  background: var(--ion-color-primary-contrast);
 }
 
-.passive {
-  .standard-label {
-    border: var(--ion-border-standard);
-    color: var(--ion-color-primary);
-    background: var(--ion-color-primary-contrast);
-  }
-
-  .checked {
-    background: $radio-group-passive-bg;
-    transition: 0.3s linear;
-  }
-
-  .smile-checked {
-    color: var(--ion-color-primary);
-    border: $primary-radio-border !important;
-    border-color: var(--ion-color-primary);
-  }
+.checked {
+  background: $background-selected;
+  transition: 0.3s linear;
 }
 
-.active {
-  .standard-label {
-    border: var(--ion-border-standard);
-    background: var(--ion-color-primary-contrast);
-    color: var(--ion-color-primary);
-  }
-
-  .checked {
-    background: $radio-group-active-bg;
-    transition: 0.3s linear;
-    color: var(--ion-color-primary);
-  }
-
-  .smile-checked {
-    color: $radio-group-active-bg;
-    border: $primary-radio-border !important;
-    border-color: var(--ion-color-primary);
-  }
+.smile-checked {
+  color: var(--ion-color-primary);
+  border: $primary-radio-border !important;
+  border-color: var(--ion-color-primary);
 }
 
 .center {
