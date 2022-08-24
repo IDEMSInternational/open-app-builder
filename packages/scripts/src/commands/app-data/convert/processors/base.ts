@@ -1,9 +1,8 @@
 import { Logger } from "pino";
 import path from "path";
-import { createChildLogger } from "../logging";
 import { IConverterPaths } from "../types";
 import { TimeLike } from "fs-extra";
-import { IContentsEntry } from "../utils";
+import { IContentsEntry, createChildLogger } from "../utils";
 import { JsonFileCache } from "../cacheStrategy/jsonFile";
 
 class BaseProcessor<T = any, V = any> {
