@@ -6,10 +6,14 @@ import chalk from "chalk";
 import { FlowTypes } from "data-models";
 import { getActiveDeployment } from "../../deployment/get";
 import { IConverterPaths, IParsedWorkbookData } from "./types";
-import { createChildLogger, logSheetsSummary, throwTemplateParseError } from "./logging";
 import { XLSXWorkbookProcessor } from "./processors/xlsxWorkbook";
 import { JsonFileCache } from "./cacheStrategy/jsonFile";
-import { generateFolderFlatMap, IContentsEntry } from "./utils";
+import {
+  generateFolderFlatMap,
+  IContentsEntry,
+  createChildLogger,
+  logSheetsSummary,
+} from "./utils";
 import { FlowParserProcessor } from "./processors/flowParser";
 
 /***************************************************************************************

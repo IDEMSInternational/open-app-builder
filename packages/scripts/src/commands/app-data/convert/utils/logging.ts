@@ -5,7 +5,7 @@ import type { FlowTypes } from "data-models";
 import pino from "pino";
 const logger = pino();
 
-import { IParsedWorkbookData } from "./types";
+import { IParsedWorkbookData } from "../types";
 
 export function createChildLogger(meta = {}) {
   return logger.child(meta);

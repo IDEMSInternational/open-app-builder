@@ -1,8 +1,7 @@
 import { FlowTypes } from "data-models";
-import { throwTemplateParseError } from "../logging";
 import * as Parsers from "../parsers";
 import { IConverterPaths, IParsedWorkbookData } from "../types";
-import { groupJsonByKey, IContentsEntry } from "../utils";
+import { groupJsonByKey, IContentsEntry, throwTemplateParseError } from "../utils";
 import BaseProcessor from "./base";
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
