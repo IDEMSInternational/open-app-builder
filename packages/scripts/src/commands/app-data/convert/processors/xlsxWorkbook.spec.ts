@@ -2,7 +2,6 @@ import path from "path";
 import { XLSXWorkbookProcessor } from "./xlsxWorkbook";
 
 import { SCRIPTS_WORKSPACE_PATH } from "../../../../paths";
-import { IGDriveContentsEntry } from "../types";
 import { IContentsEntry } from "../utils";
 const testDataDir = path.resolve(SCRIPTS_WORKSPACE_PATH, "test", "data");
 const paths = {

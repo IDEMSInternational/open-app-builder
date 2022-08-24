@@ -40,8 +40,12 @@ class BaseProcessor<T = any, V = any> {
   async process(inputs: T[] = []): Promise<V[]> {
     const outputs: V[] = [];
     for (const input of inputs) {
-      const { value, source } = await this.handleInputProcessing(input);
-      outputs.push(value);
+      if (input) {
+        const { value, source } = await this.handleInputProcessing(input);
+        if (value) {
+          outputs.push(value);
+        }
+      }
     }
     return this.postProcess(outputs);
   }
