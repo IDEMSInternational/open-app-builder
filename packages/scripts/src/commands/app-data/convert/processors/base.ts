@@ -1,4 +1,4 @@
-import { Logger } from "pino";
+import { Logger } from "winston";
 import path from "path";
 import { IConverterPaths } from "../types";
 import { TimeLike } from "fs-extra";

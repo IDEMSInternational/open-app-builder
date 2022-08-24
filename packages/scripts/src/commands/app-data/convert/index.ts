@@ -13,6 +13,10 @@ import {
   IContentsEntry,
   createChildLogger,
   logSheetsSummary,
+  getLogs,
+  logError,
+  getLogFiles,
+  logWarning,
 } from "./utils";
 import { FlowParserProcessor } from "./processors/flowParser";
 
@@ -59,7 +63,7 @@ export class AppDataConverter {
     SHEETS_OUTPUT_FOLDER: "",
   };
 
-  public logger = createChildLogger({});
+  public logger = createChildLogger({ source: "converter" });
 
   cache: JsonFileCache;
 
@@ -130,15 +134,40 @@ export class AppDataConverter {
     let output: any;
     for (const step of processPipeline) {
       output = await step.fn(input);
-      this.logger.debug(step.name, output);
+      this.logger.debug({ step: step.name, output });
       input = output;
     }
     const result = output as IParsedWorkbookData;
+
+    const { errors, warnings } = this.logOutputs(result);
+    return { result, errors, warnings };
+  }
+
+  private logOutputs(result: IParsedWorkbookData) {
     this.writeOutputJsons(result);
     logSheetsSummary(result);
+    // warnings
+    const warnings = getLogs("warning");
+    if (warnings.length > 0) {
+      const errorLogFile = getLogFiles().error;
+      logWarning({
+        msg1: `Completed with ${warnings.length} warnings`,
+        msg2: errorLogFile,
+      });
+    }
+    // errors
+    const errors = getLogs("error");
+    if (errors.length > 0) {
+      const errorLogFile = getLogFiles().error;
+      logError({
+        msg1: `Completed with ${errors.length} errors`,
+        msg2: errorLogFile,
+        logOnly: true,
+      });
+    }
     // logSheetErrorSummary(this.conversionWarnings, this.conversionErrors);
     console.log(chalk.yellow("Conversion Complete"));
-    return result;
+    return { errors, warnings };
   }
 
   private cleanFlowOutputs(data: FlowTypes.FlowTypeWithData[][]) {

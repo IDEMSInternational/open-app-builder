@@ -2,6 +2,7 @@ import path from "path";
 import { FlowTypes } from "data-models";
 import { SCRIPTS_WORKSPACE_PATH } from "../../../../paths";
 import { FlowParserProcessor } from "./flowParser";
+import { getLogs } from "../utils";
 
 const testDataDir = path.resolve(SCRIPTS_WORKSPACE_PATH, "test", "data");
 const paths = {
@@ -41,27 +42,31 @@ describe("FlowParser Processor", () => {
     processor.cache.clear();
   });
   // TODO - Handle errors
-  // it("Throws on invalid flow_type", async () => {
-  //   const invalidFlow: FlowTypes.FlowTypeWithData = {
-  //     ...testInputs[0],
-  //     flow_type: "test_invalid_type" as any,
-  //   };
-  //   await processor.process([invalidFlow]).catch((err) => {
-  //     const { flow_name, flow_type, _xlsxPath } = invalidFlow;
-  //     const expected = `No parser available for flow_type: ${flow_type}\n${flow_name}\n${_xlsxPath}`;
-  //     expect(err.message).toEqual(expected);
-  //   });
-  // });
-  // it("Throws on flow parse error", async () => {
-  //   const brokenFlow: FlowTypes.FlowTypeWithData = {
-  //     ...testInputs[0],
-  //     flow_name: "test_broken_flow",
-  //   };
-  //   delete brokenFlow.rows;
-  //   await processor.process([brokenFlow]).catch((err) => {
-  //     expect(err.includes("Template Parse Error")).toBe(true);
-  //   });
-  // });
+  it("Logs error on invalid flow_type", async () => {
+    const invalidFlow: FlowTypes.FlowTypeWithData = {
+      ...testInputs[0],
+      flow_type: "test_invalid_type" as any,
+    };
+    await processor.process([invalidFlow]);
+    const errorLogs = getLogs("error");
+    const foundError = errorLogs.find(
+      (l) => l.message === "No parser available for flow_type: test_invalid_type"
+    );
+    expect(foundError).not.toBeUndefined();
+  });
+  it("Logs flow parse errors", async () => {
+    const brokenFlow: FlowTypes.FlowTypeWithData = {
+      ...testInputs[0],
+      flow_name: "test_broken_flow",
+    };
+    delete brokenFlow.rows;
+    await processor.process([brokenFlow]);
+    const errorLogs = getLogs("error");
+    const foundError = errorLogs.find(
+      (l) => l.message === "Template parse error: test_broken_flow"
+    );
+    expect(foundError).not.toBeUndefined();
+  });
   it("Outputs flows by type", async () => {
     const output = await processor.process(testInputs);
     expect(Object.keys(output)).toEqual(["data_list", "template"]);

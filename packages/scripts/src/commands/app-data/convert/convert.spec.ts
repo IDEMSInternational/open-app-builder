@@ -35,6 +35,10 @@ describe("App Data Converter", () => {
     const expectedOutput = path.resolve(paths.outputFolder, ...testFileOutput);
     expect(existsSync(expectedOutput)).toBeTrue();
   });
+  it("Tracks number of conversion errors", async () => {
+    const { errors } = await converter.run();
+    expect(errors.length).toBeGreaterThan(0);
+  });
 
   // fit("Skips draft flows", async () => {
   //   const outputs = await processor.process(testInputs);
