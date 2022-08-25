@@ -17,12 +17,16 @@ type ILogLevel = typeof logLevels[number];
 let logHistory = "";
 
 /** Retrieve all logs from current session for a given variable */
-export function getLogs(level: ILogLevel) {
-  const logEntries: { level: ILogLevel; message: any }[] = logHistory
+export function getLogs(level: ILogLevel, message?: string) {
+  const logEntries: { level: ILogLevel; message: any; details?: any }[] = logHistory
     .split("\n")
     .filter((v) => v)
     .map((v) => JSON.parse(v));
-  return logEntries.filter((entry) => entry.level === level);
+  const logLevelEntries = logEntries.filter((entry) => entry.level === level);
+  if (message) {
+    return logLevelEntries.filter((entry) => entry.message === message);
+  }
+  return logLevelEntries;
 }
 export function getLogFiles() {
   const logFiles: { [level in ILogLevel]: string } = {} as any;

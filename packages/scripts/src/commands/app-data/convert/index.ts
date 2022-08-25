@@ -160,7 +160,7 @@ export class AppDataConverter {
     if (errors.length > 0) {
       const errorLogFile = getLogFiles().error;
       logError({
-        msg1: `Completed with ${errors.length} errors`,
+        msg1: `Completed with errors`,
         msg2: errorLogFile,
         logOnly: true,
       });
@@ -200,10 +200,15 @@ export class AppDataConverter {
           flow_subtype || "",
           `${flow_name}.json`
         );
-        // TODO - track error if output path already exists (duplicate name)
+
         fs.ensureDirSync(path.dirname(flowOutputPath));
+        if (fs.existsSync(flowOutputPath)) {
+          this.logger.error({
+            message: "Duplicate flows found",
+            details: [flow, fs.readJsonSync(flowOutputPath)],
+          });
+        }
         fs.writeFileSync(flowOutputPath, JSON.stringify(flow, null, 2));
-        // TODO - statsync
       });
     });
   }

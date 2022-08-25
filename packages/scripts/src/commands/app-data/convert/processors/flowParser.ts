@@ -24,14 +24,14 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     const parser = this.parsers[flow_type];
     if (!parser) {
       const message = `No parser available for flow_type: ${flow_type}`;
-      this.logger.error(message, { _xlsxPath, flow_name, flow_type });
+      this.logger.error({ message, details: { _xlsxPath, flow_name, flow_type } });
       return null;
     }
     try {
       const parsed = parser.run(flow);
       return parsed;
     } catch (error) {
-      this.logger.error(`Template parse error: ${flow_name}`, { flow });
+      this.logger.error({ message: "Template parse error", details: flow });
       return null;
     }
   }

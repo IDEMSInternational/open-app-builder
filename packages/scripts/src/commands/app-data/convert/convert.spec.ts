@@ -39,4 +39,9 @@ describe("App Data Converter", () => {
     const { errors } = await converter.run();
     expect(errors.length).toBeGreaterThan(0);
   });
+  it("Throws on duplicate flows", async () => {
+    await converter.run().catch((err) => {
+      expect(err.message.includes("Duplicate flows found"));
+    });
+  });
 });
