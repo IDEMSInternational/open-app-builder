@@ -1,8 +1,6 @@
 import { spawnSync } from "child_process";
-import fs from "fs-extra";
 import path from "path";
 import { WorkflowRunner } from "../../commands/workflow/run";
-import { createTemporaryFolder } from "../../utils";
 
 /** Process all templates within a folder */
 const process = (options: { inputFolder: string }) => {
