@@ -54,6 +54,7 @@ const testData = {
     {
       id: "id_1",
       nationality: "British",
+      first_name: "override",
     },
     {
       id: "id_2",
@@ -131,7 +132,11 @@ describe("Pipe Operators", () => {
     );
     // merges data - additional nationality column appended for all entries and populated for available
     const output = new OPERATORS.merge(testDf, ["merge_nationality"], testPipe).apply();
-    const expectedOutput = ["British", "French", undefined, undefined];
-    expect(output.column("nationality").values).toEqual(expectedOutput);
+    // merges new nationality column
+    const expectedNationalities = ["British", "French", undefined, undefined];
+    expect(output.column("nationality").values).toEqual(expectedNationalities);
+    // merges existing name overrides
+    const expectedNames = ["override", "Blaise", "Charles", "Daniel"];
+    expect(output.column("first_name").values).toEqual(expectedNames);
   });
 });

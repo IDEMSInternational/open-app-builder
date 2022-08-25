@@ -1,4 +1,4 @@
-import { DataFrame, concat, toJSON, Series } from "danfojs";
+import { DataFrame, concat } from "danfojs";
 import type { DataPipe } from "../pipe";
 import BaseOperator from "./base";
 
