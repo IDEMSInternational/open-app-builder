@@ -1,0 +1,20 @@
+import { DataFrame } from "danfojs";
+import * as DataPipeUtils from "./utils";
+
+describe("DataPipe Utils", () => {
+  it("Normalises json array data", () => {
+    const input = [{ id: 1, value: 1 }, { id: 2 }];
+    const output = DataPipeUtils.normalizeData(input);
+    expect(output).toEqual([
+      { id: 1, value: 1 },
+      { id: 2, value: undefined },
+    ]);
+  });
+
+  it("Replaces dataframe NaN with value", () => {
+    const input = [{ id: 1, nan_value: NaN, undefined_value: undefined, null_value: null }];
+    const df = new DataFrame(input);
+    DataPipeUtils.replaceNaN(df, undefined);
+    expect(df.values[0]).toEqual([1, undefined, undefined, null]);
+  });
+});
