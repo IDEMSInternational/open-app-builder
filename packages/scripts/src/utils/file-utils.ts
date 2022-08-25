@@ -347,7 +347,7 @@ export function readContentsFileAsHashmap(
   options: { hashKey?: string; hashKeyFn?: (entry: any) => string }
 ) {
   const contentsJson = readContentsFile(folderPath);
-  const hashmap = {};
+  const hashmap: { [key: string]: IContentsEntry } = {};
   const { hashKey, hashKeyFn } = options;
   for (const entry of contentsJson) {
     if (hashKey) {

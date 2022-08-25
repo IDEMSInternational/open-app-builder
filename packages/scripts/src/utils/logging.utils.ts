@@ -2,6 +2,86 @@ import boxen from "boxen";
 import chalk from "chalk";
 import { Command } from "commander";
 
+import { SCRIPTS_LOGS_DIR } from "../paths";
+
+import winston from "winston";
+import path from "path";
+import { emptyDirSync, ensureDirSync } from "fs-extra";
+import { _wait } from "./cli-utils";
+import { Writable } from "stream";
+
+const logLevels = ["debug", "info", "warning", "error"] as const;
+type ILogLevel = typeof logLevels[number];
+
+// Declare a history variable that can be written to via a stream
+let logHistory = "";
+
+/** Retrieve all logs from current session for a given variable */
+export function getLogs(level: ILogLevel, message?: string) {
+  const logEntries: { level: ILogLevel; message: any; details?: any }[] = logHistory
+    .split("\n")
+    .filter((v) => v)
+    .map((v) => JSON.parse(v));
+  const logLevelEntries = logEntries.filter((entry) => entry.level === level);
+  if (message) {
+    return logLevelEntries.filter((entry) => entry.message === message);
+  }
+  return logLevelEntries;
+}
+export function getLogFiles() {
+  const logFiles: { [level in ILogLevel]: string } = {} as any;
+  for (const level of logLevels) {
+    logFiles[level] = path.resolve(SCRIPTS_LOGS_DIR, `${level}.log`);
+  }
+  return logFiles;
+}
+
+/**
+ * Create loggers that write to file based on level and also save all logs to a single string
+ * for easy querying
+ */
+function setupLogger() {
+  const g = global as any;
+  if (g.logger) {
+    return g.logger;
+  }
+  // setup files
+  ensureDirSync(SCRIPTS_LOGS_DIR);
+  emptyDirSync(SCRIPTS_LOGS_DIR);
+  const logFiles = getLogFiles();
+  // file transports
+  const fileTransports = logLevels.map(
+    (level) =>
+      new winston.transports.File({
+        filename: logFiles[level],
+        level,
+        format: winston.format.prettyPrint(),
+      })
+  );
+  const logger = winston.createLogger({
+    level: "info",
+    transports: fileTransports,
+  });
+  // stream (memory) transport
+  const logStream = new Writable();
+  logStream._write = (chunk, encoding, next) => {
+    logHistory = logHistory += chunk.toString();
+    next();
+  };
+  const streamTransport = new winston.transports.Stream({
+    stream: logStream,
+    format: winston.format.json(),
+  });
+  logger.add(streamTransport);
+  g.logger = logger;
+  return logger;
+}
+
+export function createChildLogger(meta = {}) {
+  const logger = setupLogger();
+  return logger.child(meta);
+}
+
 /** Record a 2-line error message in a box with additional optional logging and exit */
 export function logError(opts: Partial<ILogOptions> = {}) {
   const { msg1, msg2, error, logOnly } = { ...defaultLog, ...opts };
