@@ -61,10 +61,8 @@ describe("FlowParser Processor", () => {
     };
     delete brokenFlow.rows;
     await processor.process([brokenFlow]);
-    const errorLogs = getLogs("error");
-    const foundError = errorLogs.find(
-      (l) => l.message === "Template parse error: test_broken_flow"
-    );
+    const errorLogs = getLogs("error", "Template parse error");
+    const foundError = errorLogs.find((l) => l.details?.flow_name === "test_broken_flow");
     expect(foundError).not.toBeUndefined();
   });
   it("Outputs flows by type", async () => {
