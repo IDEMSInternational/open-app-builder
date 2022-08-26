@@ -75,17 +75,28 @@ describe("Pipe Operators", () => {
     const testOutputGreeting = output.column("greeting").values[2];
     expect(testOutputGreeting).toEqual("Hello Charles Babbage");
   });
-  it("concat", () => {
-    const testDf = new DataFrame([]);
+  describe("concat", () => {
+    const emptyDf = new DataFrame([]);
     const testPipe: DataPipe = new DataPipe([], testData);
-    // throws on missing list
-    expect(() => new OPERATORS.concat(testDf, ["names", "missing_list"], testPipe)).toThrow(
-      new Error("Arg validation error")
-    );
-    // concatenates data, combining the 4+2 rows and 4+1 columns
-    const output = new OPERATORS.concat(testDf, ["names", "concat_names"], testPipe).apply();
-    expect(output.shape).toEqual([6, 5]);
+    it("Throws on missing data_list", () => {
+      expect(() => new OPERATORS.concat(emptyDf, ["missing_list"], testPipe)).toThrowError(
+        "Arg validation error"
+      );
+    });
+    it("Throws on duplicate rows", () => {
+      const duplicateDf = new DataFrame([{ id: "id_3", first_name: "Duplicated" }]);
+      expect(() => new OPERATORS.concat(duplicateDf, ["names"], testPipe).apply()).toThrowError(
+        "Multiple entries exist for index: id_3"
+      );
+    });
+    it("concatenates multiple lists", () => {
+      const output = new OPERATORS.concat(emptyDf, ["names", "concat_names"], testPipe).apply();
+      expect(output.index).toEqual(["id_1", "id_2", "id_3", "id_4", "id_5", "id_6"]);
+      const expectedCols = ["id", "first_name", "last_name", "year_of_birth", "additonal_field"];
+      expect(output.columns).toEqual(expectedCols);
+    });
   });
+
   it("filter", () => {
     const testDf = new DataFrame(testData.names);
     const output = new OPERATORS.filter(testDf, [
@@ -123,20 +134,26 @@ describe("Pipe Operators", () => {
       ["id_4", "Daniel Bernoulli"],
     ]);
   });
-  it("merge", () => {
+  describe("merge", () => {
     const testDf = new DataFrame(testData.names);
     const testPipe: DataPipe = new DataPipe([], testData);
-    // throws on missing list
-    expect(() => new OPERATORS.merge(testDf, ["names", "missing_list"], testPipe)).toThrow(
-      new Error("Arg validation error")
-    );
-    // merges data - additional nationality column appended for all entries and populated for available
-    const output = new OPERATORS.merge(testDf, ["merge_nationality"], testPipe).apply();
-    // merges new nationality column
-    const expectedNationalities = ["British", "French", undefined, undefined];
-    expect(output.column("nationality").values).toEqual(expectedNationalities);
-    // merges existing name overrides
-    const expectedNames = ["override", "Blaise", "Charles", "Daniel"];
-    expect(output.column("first_name").values).toEqual(expectedNames);
+
+    it("Throws on missing list", () => {
+      // throws on missing list
+      expect(() => new OPERATORS.merge(testDf, ["names", "missing_list"], testPipe)).toThrow(
+        new Error("Arg validation error")
+      );
+    });
+    it("Merges multiple lists", () => {
+      // merges data - additional nationality column appended for all entries and populated for available
+      const output = new OPERATORS.merge(testDf, ["merge_nationality"], testPipe).apply();
+      expect(output.index).toEqual(["id_1", "id_2", "id_3", "id_4"]);
+      // merges new nationality column
+      const expectedNationalities = ["British", "French", undefined, undefined];
+      expect(output.column("nationality").values).toEqual(expectedNationalities);
+      // merges existing name overrides
+      const expectedNames = ["override", "Blaise", "Charles", "Daniel"];
+      expect(output.column("first_name").values).toEqual(expectedNames);
+    });
   });
 });
