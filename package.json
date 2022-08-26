@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.16.4",
   "author": "IDEMS International",
+  "license": "See LICENSE",
   "homepage": "https://idems.international/",
   "description": "",
   "workspaces": [
