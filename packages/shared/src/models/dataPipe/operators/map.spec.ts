@@ -1,5 +1,5 @@
 import { DataFrame } from "danfojs";
-import { testData } from "./operators.spec";
+import testData from "../testData.spec";
 import map from "./map";
 
 describe("Map Operator", () => {

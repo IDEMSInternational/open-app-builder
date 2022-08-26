@@ -1,7 +1,24 @@
 import { DataFrame } from "danfojs";
 import { DataPipe } from "../pipe";
-import { testData } from "./operators.spec";
+import testData from "../testData.spec";
 import concat from "./concat";
+
+(testData as any).concat_names = [
+  {
+    id: "id_5",
+    first_name: "Edward",
+    last_name: "Lorenz",
+    // year_of_birth omitted, additional field added
+    additonal_field: "EL",
+  },
+  {
+    id: "id_6",
+    first_name: "Felix",
+    last_name: "Klein",
+    // year_of_birth omitted, additional field added
+    additonal_field: "FK",
+  },
+];
 
 describe("Concat Operator", () => {
   const emptyDf = new DataFrame([]);
