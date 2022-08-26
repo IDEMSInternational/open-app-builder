@@ -1,6 +1,6 @@
 import { DataFrame, merge, toJSON } from "danfojs";
 import { DataPipe } from "../pipe";
-import { normalizeData, replaceNaN, arrayToHashmap } from "../utils";
+import { normalizeData, replaceNaN, arrayToHashmap, setIndexColumn } from "../utils";
 import BaseOperator from "./base";
 
 type ILoadedDatalist = any; // datalist
@@ -8,7 +8,7 @@ type ILoadedDatalist = any; // datalist
 /** Merge multiple datalists together, joining columns by id and replacing values where overrides exist **/
 class MergeOperator extends BaseOperator {
   public args: ILoadedDatalist[];
-  private mergeKey = "id";
+  private indexColumn = "id";
   constructor(df: DataFrame, args: string[], pipe: DataPipe) {
     super(df, args, pipe);
   }
@@ -21,7 +21,7 @@ class MergeOperator extends BaseOperator {
   }
 
   apply() {
-    this.df.setIndex({ column: this.mergeKey, inplace: true });
+    setIndexColumn(this.df, this.indexColumn);
     for (const dataList of this.args) {
       this.df = this.replaceUpdatedValues(dataList);
       this.df = this.joinNewColumns(dataList);
@@ -31,26 +31,29 @@ class MergeOperator extends BaseOperator {
   }
 
   /** Join any new columns from right dataframe into left dataframe by merge key **/
-  private joinNewColumns(data: any) {
-    const right = new DataFrame(normalizeData(data));
-    right.setIndex({ column: this.mergeKey, inplace: true });
+  private joinNewColumns(data: any[]) {
     const left = this.df;
-    // Drop columns from right that already exists in left (except merge key)
-    const droppedColumns = right.columns.filter(
-      (column) => column !== this.mergeKey && left.columns.includes(column)
+    const joinDf = new DataFrame(normalizeData(data));
+    setIndexColumn(joinDf, this.indexColumn);
+
+    // Drop columns from joinDf that already exists in left (except merge key)
+    const droppedColumns = joinDf.columns.filter(
+      (column) => column !== this.indexColumn && left.columns.includes(column)
     );
-    const joinDf = right.drop({ columns: droppedColumns });
-    return merge({ left, right: joinDf, on: ["id"], how: "left" });
+    joinDf.drop({ columns: droppedColumns, inplace: true });
+    const merged = merge({ left, right: joinDf, on: ["id"], how: "left" });
+    setIndexColumn(merged, this.indexColumn);
+    return merged;
   }
 
   /** Replace any values updated from the data in the original dataframe **/
-  private replaceUpdatedValues(data: any) {
+  private replaceUpdatedValues(data: any[]) {
     const replacments = new DataFrame(normalizeData(data));
-    replacments.setIndex({ column: this.mergeKey, inplace: true });
+    setIndexColumn(replacments, this.indexColumn);
 
     // remove any columns that does not exist in left
     const droppedColumns = replacments.columns.filter(
-      (column) => column !== this.mergeKey && !this.df.columns.includes(column)
+      (column) => column !== this.indexColumn && !this.df.columns.includes(column)
     );
     replacments.drop({ columns: droppedColumns, inplace: true });
     // remove any rows that does not exist in left
@@ -58,7 +61,7 @@ class MergeOperator extends BaseOperator {
     replacments.drop({ index: droppedIndexes, inplace: true });
 
     // replace all values in left with values from replacments where defined
-    const replaceHashmap = arrayToHashmap(toJSON(replacments) as any, this.mergeKey);
+    const replaceHashmap = arrayToHashmap(toJSON(replacments) as any, this.indexColumn);
 
     // handle replacement by looping over all rows and replacing values where override defined
     const replaceDf = this.df.apply((row: any[]) => {
