@@ -9,6 +9,22 @@ export function replaceNaN(df: DataFrame, replaceValue: any) {
 }
 
 /**
+ * Wrapper around danfo setIndex method to provide better logging
+ */
+export function setIndexColumn(df: DataFrame, name: string) {
+  // danfo attempts sort after setting index which will throw range error if length 0
+  if (df.index.length === 0) {
+    throw new Error(`Cannot set an index on an empty dataframe`);
+  }
+  // throw error if column does not exist
+  if (!df.columns.includes(name)) {
+    const columnList = df.columns.join(", ");
+    throw new Error(`Column [${name}] does not exist in data\nColumns: ${columnList}`);
+  }
+  df.setIndex({ column: name, inplace: true });
+}
+
+/**
  * Take a json data array and ensure all entries contain value for all keys
  * @param missingValueReplacement - value to assign where key not contained in entry
  **/

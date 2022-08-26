@@ -1,11 +1,13 @@
 import { DataFrame, concat } from "danfojs";
 import type { DataPipe } from "../pipe";
+import { setIndexColumn } from "../utils";
 import BaseOperator from "./base";
 
 type ILoadedDatalist = any; // datalist
 
 class ConcatOperator extends BaseOperator {
   public args: string[];
+  private indexColumn = "id";
   constructor(df: DataFrame, args: any, pipe: DataPipe) {
     super(df, args, pipe);
   }
@@ -21,10 +23,23 @@ class ConcatOperator extends BaseOperator {
 
   apply() {
     for (const dataList of this.args) {
-      const { df1, df2 } = this.ensureDfColumnsMatch(this.df.copy(), new DataFrame(dataList));
-      this.df = this.concatDfs(df1, df2);
+      this.df = this.applyConcat(dataList);
     }
     return this.df;
+  }
+  private applyConcat(data: any): DataFrame {
+    let concatDf = new DataFrame(data);
+    // empty dataframes throw error on concat, so just return the other (or existing) dataframe instead
+    if (this.df.index.length === 0) return concatDf;
+    if (concatDf.index.length === 0) return this.df;
+    // ensure indices match for use in duplicate check
+    setIndexColumn(this.df, this.indexColumn);
+    setIndexColumn(concatDf, this.indexColumn);
+    this.checkDuplicateRows(this.df, concatDf);
+    this.ensureDfColumnsMatch(this.df, concatDf);
+    const concatenatedDf = concat({ dfList: [this.df, concatDf], axis: 0 }) as DataFrame;
+    setIndexColumn(concatenatedDf, this.indexColumn);
+    return concatenatedDf;
   }
 
   /**
@@ -48,17 +63,16 @@ class ConcatOperator extends BaseOperator {
         });
       }
     }
-    return { df1, df2 };
+  }
+
+  private checkDuplicateRows(df1: DataFrame, df2: DataFrame) {
+    const duplicateIndex = df1.index.find((index) => df2.index.includes(index));
+    if (duplicateIndex) {
+      throw new Error("Multiple entries exist for index: " + duplicateIndex);
+    }
   }
 
   /** Concatenate two identically-shaped data frames */
-  private concatDfs(df1: DataFrame, df2: DataFrame) {
-    const [df1RowCount] = df1.shape;
-    const [df2RowCount] = df2.shape;
-    // error thrown when concatenating empty dataframe, so just return non-empty instead
-    if (df1RowCount === 0) return df2;
-    if (df2RowCount === 0) return df1;
-    return concat({ dfList: [df1, df2], axis: 0 }) as DataFrame;
-  }
+  private concatDfs(df1: DataFrame, df2: DataFrame) {}
 }
 export default ConcatOperator;
