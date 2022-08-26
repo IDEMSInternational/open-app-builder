@@ -1,7 +1,23 @@
 import { DataFrame } from "danfojs";
 import { DataPipe } from "../pipe";
-import { testData } from "./operators.spec";
+import testData from "../testData.spec";
 import merge from "./merge";
+
+(testData as any).merge_nationality = [
+  {
+    id: "invalid_id",
+    nationality: "German",
+  },
+  {
+    id: "id_1",
+    nationality: "British",
+    first_name: "override",
+  },
+  {
+    id: "id_2",
+    nationality: "French",
+  },
+];
 
 describe("Merge Operator", () => {
   const testDf = new DataFrame(testData.names);

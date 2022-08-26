@@ -1,6 +1,6 @@
 import { DataFrame } from "danfojs";
 import filters from "./filter";
-import { testData } from "./operators.spec";
+import testData from "../testData.spec";
 const { filter, filter_any } = filters;
 
 describe("Filter", () => {

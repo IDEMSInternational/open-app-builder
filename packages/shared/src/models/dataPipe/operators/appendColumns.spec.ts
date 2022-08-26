@@ -1,6 +1,6 @@
 import { DataFrame } from "danfojs";
 import append_columns from "./appendColumns";
-import { testData } from "./operators.spec";
+import testData from "../testData.spec";
 
 describe("Append Columns Operator", () => {
   it("appends columns with dynamic data", () => {
