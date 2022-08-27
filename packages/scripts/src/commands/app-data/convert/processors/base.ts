@@ -4,6 +4,7 @@ import { IConverterPaths } from "../types";
 import { TimeLike } from "fs-extra";
 import { IContentsEntry, createChildLogger } from "../utils";
 import { JsonFileCache } from "../cacheStrategy/jsonFile";
+import PQueue from "p-queue";
 
 class BaseProcessor<T = any, V = any> {
   /** Used to invalidate cache */
@@ -12,6 +13,12 @@ class BaseProcessor<T = any, V = any> {
   public logger: Logger;
 
   public cache: JsonFileCache;
+
+  public queue = new PQueue({ autoStart: false, concurrency: 1 });
+
+  private deferredProcesses: { [id: string]: number } = {};
+
+  public outputs: V[] = [];
 
   /**
    * Create a base processor instance. Sets up logging and cache
@@ -37,21 +44,74 @@ class BaseProcessor<T = any, V = any> {
    * from cache and proceed to process individual as required
    */
   async process(inputs: T[] = []): Promise<V[]> {
-    const outputs: V[] = [];
-    for (const input of inputs) {
-      if (input) {
-        const { value, source } = await this.handleInputProcessing(input);
-        if (value) {
-          outputs.push(value);
-        }
-      }
-    }
-    return this.postProcess(outputs);
+    this.addInputProcessesToQueue(inputs);
+    await this.queue.onEmpty();
+    return this.postProcess(this.outputs);
   }
 
-  /** Optional post-processing */
-  postProcess(outputs: V[]): any {
+  /** Optional post-processing of combined outputs */
+  public postProcess(outputs: V[]): any {
     return outputs;
+  }
+
+  /** Override method to specify how to process a particular input */
+  public async processInput(input: T): Promise<V> {
+    return input as any;
+  }
+
+  /**
+   * Use as part of processInput to defer processing until all other queued processes are complete
+   * @param deferId unique process ID used with `deferMax` to prevent infinite loops
+   **/
+  public async deferInputProcess(input: T, deferId: string, deferMax = 5) {
+    return this.handleDeferredInputProcess(input, deferId, deferMax);
+  }
+
+  /**
+   * Optional override handle how cache names are stored
+   * By default will create an md5 hash of the data from the cacheHandler
+   */
+  public generateCacheEntryName(input: T): string {
+    return this.cache.generateCacheEntryName(input);
+  }
+
+  /** Optional override to set timestamp on cache items */
+  public generateCacheEntryStats(): { mtime: TimeLike } | undefined {
+    return undefined;
+  }
+
+  /** Optional override to specify if cached entry should be used */
+  public shouldUseCachedEntry(input: any, cachedEntry: IContentsEntry): Boolean {
+    return true;
+  }
+
+  private addInputProcessesToQueue(inputs: T[] = [], autoStart = true) {
+    this.queue.pause();
+    for (const input of inputs) {
+      if (input) {
+        this.queue.add(async () => {
+          const { value, source } = await this.handleInputProcessing(input);
+          if (value) {
+            this.outputs.push(value);
+          }
+        });
+      }
+    }
+    if (autoStart) {
+      this.queue.start();
+    }
+  }
+
+  private async handleDeferredInputProcess(input: T, deferId: string, deferMax = 5) {
+    if (!this.deferredProcesses.hasOwnProperty(deferId)) {
+      this.deferredProcesses[deferId] = 0;
+    }
+    if (this.deferredProcesses[deferId] === deferMax) {
+      this.queue.pause();
+      throw new Error("max defer limit reached for: " + deferId);
+    }
+    this.deferredProcesses[deferId]++;
+    this.addInputProcessesToQueue([input]);
   }
 
   private async handleInputProcessing(input: T) {
@@ -72,28 +132,6 @@ class BaseProcessor<T = any, V = any> {
     const cacheStats = this.generateCacheEntryStats();
     this.cache.add(output, cacheEntryName, cacheStats);
     return { value: output, source: "processor" };
-  }
-
-  public async processInput(input: T): Promise<V> {
-    return input as any;
-  }
-
-  /**
-   * Optional override handle how cache names are stored
-   * By default will create an md5 hash of the data from the cacheHandler
-   */
-  public generateCacheEntryName(input: T): string {
-    return this.cache.generateCacheEntryName(input);
-  }
-
-  /** Optional override to set timestamp on cache items */
-  public generateCacheEntryStats(): { mtime: TimeLike } | undefined {
-    return undefined;
-  }
-
-  /** Optional override to specify if cached entry should be used */
-  public shouldUseCachedEntry(input: any, cachedEntry: IContentsEntry): Boolean {
-    return true;
   }
 }
 
