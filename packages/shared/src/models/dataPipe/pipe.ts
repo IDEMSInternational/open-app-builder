@@ -3,7 +3,7 @@ import { IBaseOperator, OPERATORS } from "./operators";
 
 export interface IDataPipeOperation {
   operation: keyof typeof OPERATORS;
-  args: any;
+  args_list: any[];
   input_source?: string;
   output_target?: string;
 }
@@ -29,8 +29,8 @@ export class DataPipe {
         throw new Error(`No pipeline operator exists: ${step.operation}`);
       }
       // apply operation
-      const instance = new operator(this.df, step.args, this);
-      console.log(step.operation, instance.args);
+      const instance = new operator(this.df, step.args_list, this);
+      console.log(step.operation, instance.args_list);
       const output = instance.apply();
       // Assign output as next input. Populate as named input/output if specified
       this.df = output;

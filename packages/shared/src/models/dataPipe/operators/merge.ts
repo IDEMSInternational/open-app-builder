@@ -7,10 +7,10 @@ type ILoadedDatalist = any; // datalist
 
 /** Merge multiple datalists together, joining columns by id and replacing values where overrides exist **/
 class MergeOperator extends BaseOperator {
-  public args: ILoadedDatalist[];
+  public args_list: ILoadedDatalist[];
   private indexColumn = "id";
-  constructor(df: DataFrame, args: string[], pipe: DataPipe) {
-    super(df, args, pipe);
+  constructor(df: DataFrame, args_list: string[], pipe: DataPipe) {
+    super(df, args_list, pipe);
   }
   // load input data list from arg, populate error object if not exist for use in validation step
   parseArg(arg: string): ILoadedDatalist {
@@ -22,7 +22,7 @@ class MergeOperator extends BaseOperator {
 
   apply() {
     setIndexColumn(this.df, this.indexColumn);
-    for (const dataList of this.args) {
+    for (const dataList of this.args_list) {
       this.df = this.replaceUpdatedValues(dataList);
       this.df = this.joinNewColumns(dataList);
     }
