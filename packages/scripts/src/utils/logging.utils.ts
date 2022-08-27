@@ -6,7 +6,7 @@ import { SCRIPTS_LOGS_DIR } from "../paths";
 
 import winston from "winston";
 import path from "path";
-import { emptyDirSync, ensureDirSync } from "fs-extra";
+import { emptyDirSync, ensureDirSync, truncateSync, unlinkSync } from "fs-extra";
 import { _wait } from "./cli-utils";
 import { Writable } from "stream";
 
@@ -36,16 +36,30 @@ export function getLogFiles() {
   return logFiles;
 }
 
+export function clearLogs() {
+  logHistory = "";
+  try {
+    const logFiles = getLogFiles();
+    for (const logFile of Object.values(logFiles)) {
+      truncateSync(logFile);
+    }
+  } catch (error) {
+    console.log("could not clear logs, retrying...");
+    return clearLogs();
+  }
+}
+
 /**
  * Create loggers that write to file based on level and also save all logs to a single string
  * for easy querying
  */
-function setupLogger() {
+function getLogger() {
   const g = global as any;
   if (g.logger) {
-    return g.logger;
+    return g.logger as winston.Logger;
   }
   // setup files
+  logHistory = "";
   ensureDirSync(SCRIPTS_LOGS_DIR);
   emptyDirSync(SCRIPTS_LOGS_DIR);
   const logFiles = getLogFiles();
@@ -78,7 +92,7 @@ function setupLogger() {
 }
 
 export function createChildLogger(meta = {}) {
-  const logger = setupLogger();
+  const logger = getLogger();
   return logger.child(meta);
 }
 
