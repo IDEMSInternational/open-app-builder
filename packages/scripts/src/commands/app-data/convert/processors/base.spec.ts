@@ -43,3 +43,35 @@ describe("Base Processor", () => {
     expect(processor.cache.get(cacheName)).toEqual(output);
   });
 });
+
+let errMsg = "";
+class DeferredProcessor extends BaseProcessor<any, any> {
+  public async processInput(input: any) {
+    let shouldDefer = input === 1 && this.outputs.length === 0;
+    if (shouldDefer) {
+      return this.deferInputProcess(input, input).catch((err) => {
+        errMsg = err.message;
+      });
+    }
+    return input;
+  }
+}
+
+let deferredProcessor: DeferredProcessor;
+describe("Deferred Processor", () => {
+  beforeEach(() => {
+    deferredProcessor = new DeferredProcessor({ namespace: "BaseProcessor", paths });
+    deferredProcessor.cache.clear();
+  });
+  afterAll(() => {
+    deferredProcessor.cache.clear();
+  });
+  it("Defers processing", async () => {
+    const outputs = await deferredProcessor.process([1, 2]);
+    expect(outputs).toEqual([2, 1]);
+  });
+  it("Limits max defer", async () => {
+    await deferredProcessor.process([1]);
+    expect(errMsg).toEqual("max defer limit reached for: 1");
+  });
+});
