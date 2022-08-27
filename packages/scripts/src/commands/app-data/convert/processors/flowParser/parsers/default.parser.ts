@@ -1,14 +1,14 @@
 import chalk from "chalk";
 import { FlowTypes } from "data-models";
 import { TemplatedData } from "shared";
-import { AbstractParser } from "../abstract.parser";
 import {
   parseAppDataListString,
   parseAppDataCollectionString,
   parseAppDataActionString,
   parseAppDateValue,
-} from "../../utils";
-import { getActiveDeployment } from "../../../../deployment/get";
+} from "../../../utils";
+import { getActiveDeployment } from "../../../../../deployment/get";
+import { FlowParserProcessor } from "../flowParser";
 // When running this parser assumes there is a 'type' column
 type IRowData = { type: string; name?: string; rows?: IRowData };
 
@@ -19,7 +19,7 @@ type IRowData = { type: string; name?: string; rows?: IRowData };
  * - Rewrite urls for `_asset` types to direct to local assets folder
  * - Rewrite `_list` content as string array
  */
-export class DefaultParser implements AbstractParser {
+export class DefaultParser {
   activeDeployment = getActiveDeployment();
 
   public flow: FlowTypes.FlowTypeWithData;
@@ -27,6 +27,9 @@ export class DefaultParser implements AbstractParser {
   /** All rows are handled in a queue, processing linearly */
   public queue: IRowData[];
   private summary = { missingAssets: [] };
+
+  /** All parsers have access to main processor */
+  constructor(public flowProcessor: FlowParserProcessor) {}
 
   /** Default function to call a start the process of parsing rows */
   public run(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeWithData {
@@ -45,7 +48,7 @@ export class DefaultParser implements AbstractParser {
         const processed = new RowProcessor(row, this, rowDefaultValues).run();
         // some rows may be omitted during processing so ignore
         if (processed) {
-          const postProcessed = this.postProcess(processed);
+          const postProcessed = this.postProcessRow(processed);
           if (postProcessed) {
             processedRows.push(postProcessed);
           }
@@ -60,16 +63,18 @@ export class DefaultParser implements AbstractParser {
       console.table(this.summary.missingAssets);
     }
     this.flow.rows = processedRows;
+    this.flow = this.postProcessFlow(this.flow);
     return this.flow;
   }
 
   /** If extending the class add additional postprocess pipeline here */
-  public postProcess(row: any) {
+  public postProcessRow(row: any) {
     return row;
   }
 
-  public postProcessFlows(flows: FlowTypes.FlowTypeWithData[]) {
-    return flows;
+  /** Postprocess an individual flow */
+  public postProcessFlow(flow: FlowTypes.FlowTypeWithData) {
+    return flow;
   }
 
   /** If any flows have a first row that starts `@default` return values */
@@ -163,7 +168,7 @@ class RowProcessor {
       try {
         const group = this.extractGroup();
         const groupType = type.replace("begin_", "");
-        const subParser = new DefaultParser();
+        const subParser = new DefaultParser(this.parent.flowProcessor);
         const childFlow = JSON.parse(JSON.stringify(this.parent.flow));
         childFlow.rows = group;
         const parsedGroup = subParser.run(childFlow);
@@ -295,6 +300,7 @@ class RowProcessor {
  * This will from the template error logging method
  * */
 function throwRowParseError(error: Error, row: IRowData) {
+  console.trace(error);
   error.message = `Error Parsing Row \n  ${chalk.yellow(
     JSON.stringify(row, null, 2)
   )} \n ${chalk.red(error.message)}`;
