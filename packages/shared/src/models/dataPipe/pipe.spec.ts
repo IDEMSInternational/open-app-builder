@@ -21,11 +21,11 @@ describe("Data Pipe", () => {
       {
         input_source: "names",
         operation: "filter",
-        args: ["first_name.startsWith('A')"],
+        args_list: ["first_name.startsWith('A')"],
       },
       {
         operation: "append_columns",
-        args: ["full_name: @row.first_name @row.last_name"],
+        args_list: ["full_name: @row.first_name @row.last_name"],
       },
     ];
     const pipe = new DataPipe(operations, testData);
@@ -36,25 +36,25 @@ describe("Data Pipe", () => {
       {
         input_source: "names",
         operation: "filter",
-        args: [],
+        args_list: [],
         output_target: "output_a",
       },
       {
         input_source: "names",
         operation: "filter",
-        args: [],
+        args_list: [],
         output_target: "temp_b : local_only",
       },
       {
         input_source: "temp_b",
         operation: "filter",
-        args: [],
+        args_list: [],
         output_target: "output_b",
       },
       {
         input_source: "temp_b",
         operation: "filter",
-        args: [],
+        args_list: [],
         output_target: "output_c",
       },
     ];
