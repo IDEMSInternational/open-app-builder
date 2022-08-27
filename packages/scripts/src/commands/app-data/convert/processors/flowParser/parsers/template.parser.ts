@@ -1,13 +1,13 @@
 import { FlowTypes } from "data-models";
 import { extractDynamicFields } from "data-models";
-import { DefaultParser } from "../default/default.parser";
+import { DefaultParser } from "./default.parser";
 import {
   arrayToHashmap,
   extractDynamicDependencies,
   logWarning,
   parseAppDataCollectionString,
   parseAppDataListString,
-} from "../../utils";
+} from "../../../utils";
 
 export class TemplateParser extends DefaultParser {
   postProcess(row: FlowTypes.TemplateRow, nestedPath?: string) {

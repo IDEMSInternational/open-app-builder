@@ -1,19 +1,21 @@
 import { FlowTypes } from "data-models";
-import * as Parsers from "../parsers";
-import { IConverterPaths, IParsedWorkbookData } from "../types";
-import { groupJsonByKey, IContentsEntry } from "../utils";
-import BaseProcessor from "./base";
+import * as Parsers from "./parsers";
+import { IConverterPaths, IParsedWorkbookData } from "../../types";
+import { groupJsonByKey, IContentsEntry } from "../../utils";
+import BaseProcessor from "../base";
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
   public cacheVersion = 20220823.1;
 
-  public parsers: { [flowType in FlowTypes.FlowType]?: Parsers.AbstractParser } = {
-    template: new Parsers.TemplateParser(),
-    data_list: new Parsers.DataListParser(),
-    global: new Parsers.DefaultParser(),
-    tour: new Parsers.DefaultParser(),
-    // data_pipe: new Parsers.DataPipeParser(),
+  public parsers: { [flowType in FlowTypes.FlowType]: Parsers.DefaultParser } = {
+    template: new Parsers.TemplateParser(this),
+    data_list: new Parsers.DataListParser(this),
+    global: new Parsers.DefaultParser(this),
+    tour: new Parsers.DefaultParser(this),
+    data_pipe: new Parsers.DataPipeParser(this),
   };
+
+  public processedFlows: IParsedWorkbookData = {};
 
   constructor(paths: IConverterPaths) {
     super({ paths, namespace: "flowParser" });
@@ -42,12 +44,7 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
    */
   public async postProcess(flows: FlowTypes.FlowTypeWithData[]): Promise<IParsedWorkbookData> {
     const flowsByType = groupJsonByKey(flows, "flow_type");
-    const postProcessed: IParsedWorkbookData = {};
-    Object.entries(flowsByType).forEach(([flow_type, contentFlows]) => {
-      const parser: Parsers.AbstractParser = this.parsers[flow_type];
-      postProcessed[flow_type] = parser.postProcessFlows(contentFlows);
-    });
-    return postProcessed;
+    return flowsByType;
   }
 
   /**

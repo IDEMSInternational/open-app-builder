@@ -18,7 +18,7 @@ import {
   getLogFiles,
   logWarning,
 } from "./utils";
-import { FlowParserProcessor } from "./processors/flowParser";
+import { FlowParserProcessor } from "./processors/flowParser/flowParser";
 
 /***************************************************************************************
  * CLI
