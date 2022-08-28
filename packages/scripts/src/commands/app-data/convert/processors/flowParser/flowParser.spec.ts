@@ -84,8 +84,53 @@ describe("FlowParser Processor", () => {
     }
     expect(errorLogs.length).toEqual(0);
   });
+  it("Keeps a hashmap of processed flows by type and name", async () => {
+    await processor.process(testInputs);
+    const processedDataListNames = Object.keys(processor.processedFlowHashmap.data_list);
+    expect(processedDataListNames).toEqual(["test_data_list"]);
+  });
   it("Caches outputs for conversions", () => {
     const cacheName = processor.cache.generateCacheEntryName(testInputs[0]);
     expect(processor.cache.get(cacheName)).toBeTruthy();
+  });
+});
+
+/** Additional tests for data pipe integration */
+describe("FlowParser Processor - Data Pipes", () => {
+  beforeAll(() => {
+    processor = new FlowParserProcessor(paths);
+    processor.cache.clear();
+  });
+  beforeEach(() => {
+    clearLogs();
+  });
+  afterAll(() => {
+    processor.cache.clear();
+  });
+
+  it("Supports deferred processing", async () => {
+    await processor.process([
+      {
+        flow_name: "defered_pipe",
+        flow_type: "data_pipe",
+        rows: [
+          {
+            input_source: "defer_data_list",
+            args_list: "id>1" as any,
+            operation: "filter",
+            output_target: "defer_output_list",
+          },
+        ],
+      },
+      {
+        flow_type: "data_list",
+        flow_name: "defer_data_list",
+        rows: [{ id: 1 }, { id: 2 }, { id: 3 }],
+      },
+    ]);
+    expect(processor.processedFlowHashmap.data_list.defer_output_list).toEqual([
+      { id: 2 },
+      { id: 3 },
+    ]);
   });
 });

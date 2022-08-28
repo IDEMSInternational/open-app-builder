@@ -2,14 +2,13 @@ import { AppDataConverter } from "./index";
 
 import path from "path";
 
-import { SCRIPTS_WORKSPACE_PATH } from "../../../paths";
+import { SCRIPTS_TEST_DATA_DIR } from "../../../paths";
 import { emptyDirSync, existsSync, readdirSync } from "fs-extra";
-const testDataDir = path.resolve(SCRIPTS_WORKSPACE_PATH, "test", "data");
 
 const paths = {
-  inputFolder: path.resolve(testDataDir, "input"),
-  outputFolder: path.resolve(testDataDir, "output"),
-  cacheFolder: path.resolve(testDataDir, "cache"),
+  inputFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "input"),
+  outputFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "output"),
+  cacheFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
 };
 
 describe("App Data Converter", () => {
