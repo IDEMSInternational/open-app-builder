@@ -16,7 +16,7 @@ class BaseProcessor<T = any, V = any> {
 
   public queue = new PQueue({ autoStart: false, concurrency: 1 });
 
-  private deferredProcesses: { [id: string]: number } = {};
+  public deferredProcesses: { [id: string]: number } = {};
 
   public outputs: V[] = [];
 

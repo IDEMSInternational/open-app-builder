@@ -1,3 +1,4 @@
+import type { IDataPipeOperation } from "shared";
 import type { IAppConstants } from "./constants";
 
 /*********************************************************************************************
@@ -12,7 +13,9 @@ export namespace FlowTypes {
     | "global"
     // data_lists are a general catch for any data that will be used throughout the app, but
     // without defined typings (such as habit_list).
-    | "data_list";
+    | "data_list"
+    // data_pipes are used to modify or generate new data_lists via processing methods
+    | "data_pipe";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
 
@@ -61,6 +64,11 @@ export namespace FlowTypes {
   export interface Data_list extends FlowTypeWithData {
     flow_type: "data_list";
     rows: Data_listRow[];
+  }
+  export interface DataPipeFlow extends FlowTypeWithData {
+    flow_type: "data_pipe";
+    rows: IDataPipeOperation[];
+    _processed?: { [output_target: string]: any[] };
   }
   export interface Translation_strings {
     [sourceText: string]: string;
