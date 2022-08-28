@@ -63,6 +63,14 @@ describe("Data Pipe", () => {
     expect(Object.keys(pipe.outputTargets)).toEqual(["output_a", "output_b", "output_c"]);
   });
   // Error Handling and QC
+  it("Checks if required inputs available", () => {
+    const operations: IDataPipeOperation[] = [
+      { input_source: "names", operation: "filter", args_list: [] },
+      { input_source: "nationalities", operation: "filter", args_list: [] },
+    ];
+    const pipe = new DataPipe(operations, testData);
+    expect(() => pipe.run()).toThrowError("Input sources missing for data pipe: nationalities");
+  });
   it("Throw on invalid operation", () => {
     const invalidOp = { operation: "invalid_op" };
     expect(() => new DataPipe([invalidOp as any]).run()).toThrowError(
