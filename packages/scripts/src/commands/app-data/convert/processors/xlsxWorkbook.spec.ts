@@ -37,8 +37,7 @@ describe("XLSX Workbook Processor", () => {
     expect(outputs.length).toEqual(testInputs.length);
     // each entry may contain multiple sheets from workbook
     const testInputsheets = outputs[0];
-    // 3 test sheets exist
-    expect(testInputsheets.length).toEqual(4);
+    expect(testInputsheets.length).toEqual(5);
     expect(testInputsheets[0].flow_type).toEqual("data_list");
   });
   it("throws on missing file", async () => {
@@ -52,3 +51,15 @@ describe("XLSX Workbook Processor", () => {
     expect(processor.cache.get(cacheName)).toBeTruthy();
   });
 });
+
+/** Utility class to allow direct access to parsed flows for use in tests */
+export class TestXLSXWorkbookProcessor extends XLSXWorkbookProcessor {
+  constructor() {
+    super(paths);
+  }
+  async getProcessed(sheetPath: string, flowname: string) {
+    const parsedWorkbooks = await this.process([{ relativePath: sheetPath } as any]);
+    const matchingFlow = parsedWorkbooks[0].find((f) => f.flow_name === flowname);
+    return matchingFlow;
+  }
+}
