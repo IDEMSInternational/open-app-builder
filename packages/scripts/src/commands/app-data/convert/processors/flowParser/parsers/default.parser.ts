@@ -19,10 +19,12 @@ type IRowData = { type: string; name?: string; rows?: IRowData };
  * - Rewrite urls for `_asset` types to direct to local assets folder
  * - Rewrite `_list` content as string array
  */
-export class DefaultParser {
+export class DefaultParser<
+  FlowType extends FlowTypes.FlowTypeWithData = FlowTypes.FlowTypeWithData
+> {
   activeDeployment = getActiveDeployment();
 
-  public flow: FlowTypes.FlowTypeWithData;
+  public flow: FlowType;
 
   /** All rows are handled in a queue, processing linearly */
   public queue: IRowData[];
@@ -73,12 +75,12 @@ export class DefaultParser {
   }
 
   /** Postprocess an individual flow */
-  public postProcessFlow(flow: FlowTypes.FlowTypeWithData) {
+  public postProcessFlow(flow: FlowType) {
     return flow;
   }
 
   /** If any flows have a first row that starts `@default` return values */
-  private extractRowDefaultValues(flow: FlowTypes.FlowTypeWithData) {
+  private extractRowDefaultValues(flow: FlowType) {
     const firstRow = flow.rows?.[0] || {};
     if (Object.values(firstRow)[0] === "@default") {
       const defaultKey = Object.keys(firstRow)[0];
@@ -210,22 +212,23 @@ class RowProcessor {
   }
 
   private handleSpecialFieldTypes() {
-    Object.keys(this.row).forEach((field) => {
+    Object.entries(this.row).forEach(([field, value]) => {
       // skip processing any fields that will be populated from datalist itmes
-      const shouldSkip =
-        typeof this.row[field] === "string" && this.row[field].startsWith("@item.");
+      const shouldSkip = typeof value === "string" && value.startsWith("@item.");
       // handle custom fields
       if (!shouldSkip) {
-        if (field.endsWith("_list")) {
-          this.row[field] = parseAppDataListString(this.row[field]);
-        }
-        if (field.endsWith("_collection")) {
-          this.row[field] = parseAppDataCollectionString(this.row[field]);
-        }
-        if (field.endsWith("action_list")) {
-          this.row[field] = this.row[field]
-            .map((actionString) => parseAppDataActionString(actionString))
-            .filter((action) => action !== null);
+        if (typeof value === "string") {
+          if (field.endsWith("_list")) {
+            this.row[field] = parseAppDataListString(value);
+          }
+          if (field.endsWith("_collection")) {
+            this.row[field] = parseAppDataCollectionString(this.row[field]);
+          }
+          if (field.endsWith("action_list")) {
+            this.row[field] = this.row[field]
+              .map((actionString) => parseAppDataActionString(actionString))
+              .filter((action) => action !== null);
+          }
         }
         // convert google/excel number dates to dates (https://stackoverflow.com/questions/16229494/converting-excel-date-serial-number-to-date-using-javascript)
         if (field.endsWith("_date")) {
