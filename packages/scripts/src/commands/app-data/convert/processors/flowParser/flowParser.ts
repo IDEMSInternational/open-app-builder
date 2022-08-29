@@ -44,6 +44,7 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     }
   }
 
+  /**  When an input has been processed keep a reference in the hashmap */
   public notifyInputProcessed(
     input: FlowTypes.FlowTypeWithData,
     source: "cache" | "processor"

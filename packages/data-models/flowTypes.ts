@@ -68,6 +68,7 @@ export namespace FlowTypes {
   export interface DataPipeFlow extends FlowTypeWithData {
     flow_type: "data_pipe";
     rows: IDataPipeOperation[];
+    /** Datapipes store output from operations in a temporary field to allow data-list population */
     _processed?: { [output_target: string]: any[] };
   }
   export interface Translation_strings {
