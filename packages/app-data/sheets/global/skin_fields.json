@@ -1,0 +1,14 @@
+{
+  "flow_type": "global",
+  "flow_name": "skin_fields",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_field_default",
+      "name": "use_modular_skin",
+      "value": false,
+      "exclude_from_translation": true
+    }
+  ],
+  "_xlsxPath": "global/data/navigation_globals.xlsx"
+}
