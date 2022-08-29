@@ -36,7 +36,7 @@ describe("XLSX Workbook Processor", () => {
     expect(outputs.length).toEqual(testInputs.length);
     // each entry may contain multiple sheets from workbook
     const testInputsheets = outputs[0];
-    expect(testInputsheets.length).toEqual(6);
+    expect(testInputsheets.length).toEqual(5);
     expect(testInputsheets[0].flow_type).toEqual("data_list");
   });
   it("throws on missing file", async () => {

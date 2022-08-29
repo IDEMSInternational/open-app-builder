@@ -4,10 +4,11 @@ import path from "path";
 
 import { SCRIPTS_TEST_DATA_DIR } from "../../../paths";
 import { emptyDirSync, existsSync, readdirSync } from "fs-extra";
+import { clearLogs, getLogs } from "./utils";
 
 const paths = {
-  inputFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "input"),
-  outputFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "output"),
+  inputFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "input", "sheets"),
+  outputFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "output", "sheets"),
   cacheFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
 };
 
@@ -15,8 +16,11 @@ describe("App Data Converter", () => {
   const converter = new AppDataConverter(paths);
   beforeAll(() => {
     if (existsSync(paths.outputFolder)) {
-      emptyDirSync(paths.outputFolder);
+      path.resolve(SCRIPTS_TEST_DATA_DIR, "output");
     }
+  });
+  afterAll(() => {
+    emptyDirSync(path.resolve(SCRIPTS_TEST_DATA_DIR, "output"));
   });
   it("Uses child caches", async () => {
     const cacheFolders = readdirSync(paths.cacheFolder);
@@ -27,19 +31,58 @@ describe("App Data Converter", () => {
     const cacheFolders = readdirSync(paths.cacheFolder);
     expect(cacheFolders.length).toEqual(1); // only contents file
   });
+  it("Processes test_input xlsx without error", async () => {
+    clearLogs();
+    await converter.run();
+    const errorLogs = getLogs("error");
+    expect(errorLogs.length).toEqual(0);
+  });
   it("Populates output to folder by data type", async () => {
     await converter.run();
-    expect(readdirSync(paths.outputFolder)).toEqual(["data_list", "template"]);
-    const testFileOutput = ["data_list", "spec_test", "test_data_list.json"];
-    const expectedOutput = path.resolve(paths.outputFolder, ...testFileOutput);
-    expect(existsSync(expectedOutput)).toBeTrue();
+    const outputFolders = readdirSync(paths.outputFolder);
+    expect(outputFolders).toEqual(["data_list", "data_pipe", "template"]);
   });
-  it("Tracks number of conversion errors", async () => {
-    const { errors } = await converter.run();
-    expect(errors.length).toBeGreaterThan(0);
+  it("Tracks conversion errors", async () => {
+    const errorPaths = {
+      inputFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "input", "errorChecking"),
+      outputFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "output", "errorChecking"),
+      cacheFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
+    };
+    const errorConverter = new AppDataConverter(errorPaths);
+    await errorConverter.run();
+    const errors = getLogs("error");
+    const errorMessages = errors.map((err) => err.message);
+    expect(errorMessages).toEqual([
+      "No parser available for flow_type: test_invalid_type",
+      "Duplicate flows found",
+    ]);
   });
   it("Throws on duplicate flows", async () => {
     await converter.run().catch((err) => {
+      expect(err.message.includes("Duplicate flows found"));
+    });
+  });
+});
+
+describe("App Data Converter - Error Checking", () => {
+  const errorPaths = {
+    inputFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "input", "errorChecking"),
+    outputFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "output", "errorChecking"),
+    cacheFolder: path.resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
+  };
+  const errorConverter = new AppDataConverter(errorPaths);
+  beforeAll(() => {
+    if (existsSync(paths.outputFolder)) {
+      emptyDirSync(paths.outputFolder);
+    }
+  });
+  it("Tracks number of conversion errors", async () => {
+    const errorConverter = new AppDataConverter(errorPaths);
+    const { errors } = await errorConverter.run();
+    expect(errors.length).toBeGreaterThan(0);
+  });
+  it("Throws on duplicate flows", async () => {
+    await errorConverter.run().catch((err) => {
       expect(err.message.includes("Duplicate flows found"));
     });
   });
