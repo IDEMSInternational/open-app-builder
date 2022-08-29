@@ -77,6 +77,6 @@ describe("data_pipe Parser", () => {
       flow_type: "data_pipe",
       rows: [{ input_source: "missing_list" }],
     });
-    expect(deferred).toEqual(["data_pipe.missing_list"]);
+    expect(deferred).toEqual(["data_pipe.test_pipe_defer"]);
   });
 });

@@ -43,7 +43,7 @@ describe("Data Pipe", () => {
         input_source: "names",
         operation: "filter",
         args_list: [],
-        output_target: "temp_b : local_only",
+        output_target: "temp_b | local_only",
       },
       {
         input_source: "temp_b",

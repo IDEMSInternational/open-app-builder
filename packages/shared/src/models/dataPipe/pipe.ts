@@ -45,7 +45,7 @@ export class DataPipe {
   }
 
   setOutputTarget(target: string) {
-    const [name, localOnly] = target.split(":").map((v) => v.trim());
+    const [name, localOnly] = target.split("|").map((v) => v.trim());
     const jsonOutput = toJSON(this.df);
     this.inputSources[name] = jsonOutput;
     if (!localOnly) {
@@ -75,7 +75,7 @@ export class DataPipe {
         missingInputs[input_source] = true;
       }
       if (output_target) {
-        const [outputName] = step.output_target.split(":").map((v) => v.trim());
+        const [outputName] = step.output_target.split("|").map((v) => v.trim());
         availableInputs[outputName] = true;
       }
     }
