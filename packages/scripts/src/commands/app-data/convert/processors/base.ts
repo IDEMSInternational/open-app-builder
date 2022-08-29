@@ -1,10 +1,12 @@
-import { Logger } from "winston";
-import path from "path";
-import { IConverterPaths } from "../types";
 import { TimeLike } from "fs-extra";
+import logUpdate from "log-update";
+import path from "path";
+import PQueue from "p-queue";
+import { Logger } from "winston";
+import { IConverterPaths } from "../types";
 import { IContentsEntry, createChildLogger } from "../utils";
 import { JsonFileCache } from "../cacheStrategy/jsonFile";
-import PQueue from "p-queue";
+import chalk from "chalk";
 
 class BaseProcessor<T = any, V = any> {
   /** Used to invalidate cache */
@@ -16,9 +18,9 @@ class BaseProcessor<T = any, V = any> {
 
   public queue = new PQueue({ autoStart: false, concurrency: 1 });
 
-  public deferredProcesses: { [id: string]: number } = {};
-
   public outputs: V[] = [];
+
+  public deferredCounter: { [id: string]: number } = {};
 
   /**
    * Create a base processor instance. Sets up logging and cache
@@ -44,8 +46,17 @@ class BaseProcessor<T = any, V = any> {
    * from cache and proceed to process individual as required
    */
   async process(inputs: T[] = []): Promise<V[]> {
+    // add queue process update logs
+    const total = inputs.length;
+    this.queue.on("next", () => {
+      const queueCounter = total - this.queue.size - this.queue.pending;
+      const logCount = `${queueCounter}/${total} processed`;
+      logUpdate(chalk.blue(`[ ${this.context.namespace} ] ${logCount}`));
+    });
+    // queue inputs
     this.addInputProcessesToQueue(inputs);
-    await this.queue.onEmpty();
+    await this.queue.onIdle();
+    logUpdate.done();
     return this.postProcess(this.outputs);
   }
 
@@ -55,16 +66,22 @@ class BaseProcessor<T = any, V = any> {
   }
 
   /** Override method to specify how to process a particular input */
-  public async processInput(input: T): Promise<V> {
+  public processInput(input: T): V | Promise<V> {
+    console.log("No process input method defined");
     return input as any;
+  }
+
+  /** Callback made after input either retrieved from cache or processed */
+  public notifyInputProcessed(input: T, source: "cache" | "processor") {
+    // console.log("input processed", { input, source });
   }
 
   /**
    * Use as part of processInput to defer processing until all other queued processes are complete
    * @param deferId unique process ID used with `deferMax` to prevent infinite loops
    **/
-  public async deferInputProcess(input: T, deferId: string, deferMax = 5) {
-    return this.handleDeferredInputProcess(input, deferId, deferMax);
+  public deferInputProcess(input: T, deferId: string, deferMax = 5) {
+    this.handleDeferredInputProcess(input, deferId, deferMax);
   }
 
   /**
@@ -85,16 +102,20 @@ class BaseProcessor<T = any, V = any> {
     return true;
   }
 
-  private addInputProcessesToQueue(inputs: T[] = [], autoStart = true) {
+  private addInputProcessesToQueue(inputs: T[] = [], autoStart = true, priority = 1) {
     this.queue.pause();
     for (const input of inputs) {
       if (input) {
-        this.queue.add(async () => {
-          const { value, source } = await this.handleInputProcessing(input);
-          if (value) {
-            this.outputs.push(value);
-          }
-        });
+        this.queue.add(
+          async () => {
+            const { value, source } = await this.handleInputProcessing(input);
+            if (value) {
+              this.notifyInputProcessed(value, source as any);
+              this.outputs.push(value);
+            }
+          },
+          { priority }
+        );
       }
     }
     if (autoStart) {
@@ -102,16 +123,17 @@ class BaseProcessor<T = any, V = any> {
     }
   }
 
-  private async handleDeferredInputProcess(input: T, deferId: string, deferMax = 5) {
-    if (!this.deferredProcesses.hasOwnProperty(deferId)) {
-      this.deferredProcesses[deferId] = 0;
+  private handleDeferredInputProcess(input: T, deferId: string, deferMax = 5) {
+    if (!this.deferredCounter.hasOwnProperty(deferId)) {
+      this.deferredCounter[deferId] = 0;
     }
-    if (this.deferredProcesses[deferId] === deferMax) {
-      this.queue.pause();
-      throw new Error("max defer limit reached for: " + deferId);
+    if (this.deferredCounter[deferId] === deferMax) {
+      this.logger.error({ message: "Max defer limit reached", details: input });
+      return;
     }
-    this.deferredProcesses[deferId]++;
-    this.addInputProcessesToQueue([input]);
+    this.deferredCounter[deferId]++;
+    const priority = -1 * this.deferredCounter[deferId];
+    this.addInputProcessesToQueue([input], true, priority);
   }
 
   private async handleInputProcessing(input: T) {

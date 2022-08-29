@@ -24,7 +24,7 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     super({ paths, namespace: "flowParser" });
   }
 
-  public async processInput(flow: FlowTypes.FlowTypeWithData) {
+  public processInput(flow: FlowTypes.FlowTypeWithData) {
     const { flow_name, flow_type, _xlsxPath } = flow;
     const parser = this.parsers[flow_type];
     if (!parser) {
@@ -34,12 +34,21 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
     }
     try {
       const parsed = parser.run(flow);
-      this.updateProcessedFlowHashmap(parsed);
       return parsed;
     } catch (error) {
-      this.logger.error({ message: "Template parse error", details: flow });
+      this.logger.error({
+        message: "Template parse error",
+        details: { error: error.message, flow },
+      });
       return null;
     }
+  }
+
+  public notifyInputProcessed(
+    input: FlowTypes.FlowTypeWithData,
+    source: "cache" | "processor"
+  ): void {
+    this.updateProcessedFlowHashmap(input);
   }
 
   public updateProcessedFlowHashmap(flow: FlowTypes.FlowTypeWithData) {
