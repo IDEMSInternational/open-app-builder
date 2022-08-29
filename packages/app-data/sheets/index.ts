@@ -6341,4 +6341,5 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       _xlsxPath: "global/tours/weekly_workshops_tour.xlsx",
     },
   },
+  data_pipe:{}
 };
