@@ -13,6 +13,7 @@ export class AppDataService {
   private sheetContents = SHEETS_CONTENT_LIST;
   private translationContents = TRANSLATIONS_CONTENT_LIST;
   public appDataCache: IAppDataCache = {
+    data_pipe: {},
     data_list: {},
     global: {},
     template: {},
