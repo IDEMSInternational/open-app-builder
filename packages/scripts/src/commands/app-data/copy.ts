@@ -247,7 +247,13 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
   /** Extract a list of all sheets by type including flow contents */
   private sheetsGenerateContents(baseFolder: string) {
     // Generate contents
-    const contents: ISheetContents = { data_list: {}, global: {}, template: {}, tour: {} };
+    const contents: ISheetContents = {
+      data_list: {},
+      global: {},
+      template: {},
+      tour: {},
+      data_pipe: {},
+    };
     const sheetPaths = recursiveFindByExtension(baseFolder, "json").sort();
     for (const sheetPath of sheetPaths) {
       const filePath = path.resolve(baseFolder, sheetPath);
