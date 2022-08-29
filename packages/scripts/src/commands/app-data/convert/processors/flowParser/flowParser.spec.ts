@@ -53,7 +53,6 @@ describe("FlowParser Processor", () => {
   afterAll(() => {
     processor.cache.clear();
   });
-  // TODO - Handle errors
   it("Logs error on invalid flow_type", async () => {
     const invalidFlow: FlowTypes.FlowTypeWithData = {
       ...testInputs[0],
@@ -65,15 +64,25 @@ describe("FlowParser Processor", () => {
     expect(errorLogs[0].message).toEqual("No parser available for flow_type: test_invalid_type");
   });
   it("Logs flow parse errors", async () => {
+    clearLogs();
     const brokenFlow: FlowTypes.FlowTypeWithData = {
-      ...testInputs[0],
       flow_name: "test_broken_flow",
+      flow_type: "data_list",
+      rows: null,
     };
-    delete brokenFlow.rows;
     await processor.process([brokenFlow]);
     const errorLogs = getLogs("error", "Template parse error");
-    const foundError = errorLogs.find((l) => l.details?.flow_name === "test_broken_flow");
-    expect(foundError).not.toBeUndefined();
+    expect(errorLogs).toEqual([
+      {
+        source: "flowParser",
+        message: "Template parse error",
+        details: {
+          error: "Cannot read properties of null (reading 'length')",
+          flow: brokenFlow,
+        },
+        level: "error",
+      },
+    ]);
   });
   it("Outputs flows by type", async () => {
     const output = await processor.process(testInputs);

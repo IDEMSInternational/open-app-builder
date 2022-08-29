@@ -12,13 +12,19 @@ import { Writable } from "stream";
 
 const logLevels = ["debug", "info", "warning", "error"] as const;
 type ILogLevel = typeof logLevels[number];
+interface ILogEntry {
+  level: ILogLevel;
+  message?: string;
+  details?: any;
+  source?: string;
+}
 
 // Declare a history variable that can be written to via a stream
 let logHistory = "";
 
 /** Retrieve all logs from current session for a given variable */
 export function getLogs(level: ILogLevel, message?: string) {
-  const logEntries: { level: ILogLevel; message: any; details?: any }[] = logHistory
+  const logEntries: ILogEntry[] = logHistory
     .split("\n")
     .filter((v) => v)
     .map((v) => JSON.parse(v));
