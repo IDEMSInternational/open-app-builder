@@ -5,7 +5,7 @@ import { groupJsonByKey, IContentsEntry } from "../../utils";
 import BaseProcessor from "../base";
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
-  public cacheVersion = 20220823.1;
+  public cacheVersion = 20220831.1;
 
   public parsers: { [flowType in FlowTypes.FlowType]: Parsers.DefaultParser } = {
     template: new Parsers.TemplateParser(this),
@@ -85,7 +85,7 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
           for (const [flow_name, rows] of Object.entries(dataPipeFlow._processed)) {
             const datalist: FlowTypes.Data_list = {
               flow_name,
-              flow_subtype: "generated-" + flow.flow_name,
+              flow_subtype: "generated",
               flow_type: "data_list",
               rows,
             };
