@@ -6,9 +6,10 @@ import { SCRIPTS_LOGS_DIR } from "../paths";
 
 import winston from "winston";
 import path from "path";
-import { emptyDirSync, ensureDirSync, truncateSync, unlinkSync } from "fs-extra";
+import { emptyDirSync, ensureDirSync, truncateSync } from "fs-extra";
 import { _wait } from "./cli-utils";
 import { Writable } from "stream";
+import { existsSync } from "fs";
 
 const logLevels = ["debug", "info", "warning", "error"] as const;
 type ILogLevel = typeof logLevels[number];
@@ -42,16 +43,22 @@ export function getLogFiles() {
   return logFiles;
 }
 
-export function clearLogs() {
+export function clearLogs(attempt = 0) {
   logHistory = "";
   try {
     const logFiles = getLogFiles();
     for (const logFile of Object.values(logFiles)) {
-      truncateSync(logFile);
+      if (existsSync(logFile)) {
+        truncateSync(logFile);
+      }
     }
   } catch (error) {
-    console.log("could not clear logs, retrying...");
-    return clearLogs();
+    attempt++;
+    if (attempt > 5) {
+      throw error;
+    }
+    console.log("could not clear logs, retrying...", attempt);
+    return clearLogs(attempt);
   }
 }
 
