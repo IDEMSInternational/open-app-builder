@@ -633,6 +633,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "savings_options",
       _xlsxPath: "global/data/suggestion_globals.xlsx",
     },
+    skin_fields: {
+      flow_type: "global",
+      flow_name: "skin_fields",
+      _xlsxPath: "global/data/navigation_globals.xlsx",
+    },
     spend_time_ideas: {
       flow_type: "global",
       module: "1on1",
@@ -1075,17 +1080,17 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     box_story: {
       flow_type: "template",
       flow_name: "box_story",
-      _xlsxPath: "global/core_templates/core_templates_workshop_boxes.xlsx",
+      _xlsxPath: "global_modular/core_templates/box_story.xlsx",
     },
     box_story_pages: {
       flow_type: "template",
       flow_name: "box_story_pages",
-      _xlsxPath: "global_modular/core_templates/box_scroll.xlsx",
+      _xlsxPath: "global_modular/core_templates/box_story.xlsx",
     },
     box_story_scroll: {
       flow_type: "template",
       flow_name: "box_story_scroll",
-      _xlsxPath: "global_modular/core_templates/box_scroll.xlsx",
+      _xlsxPath: "global_modular/core_templates/box_story.xlsx",
     },
     box_text_box: {
       flow_type: "template",
@@ -2456,15 +2461,15 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     },
     example_radio_group_fb_con: {
       flow_type: "template",
-      flow_name: "example_radio_group_fb_con",
       flow_subtype: "debug",
-      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_radio_group.xlsx",
+      flow_name: "example_radio_group_fb_con",
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_options_feedback.xlsx",
     },
     example_radio_group_fb_hid: {
       flow_type: "template",
-      flow_name: "example_radio_group_fb_hid",
       flow_subtype: "debug",
-      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_radio_group.xlsx",
+      flow_name: "example_radio_group_fb_hid",
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_options_feedback.xlsx",
     },
     example_set_fields_in_action: {
       flow_type: "template",
@@ -2924,8 +2929,8 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "language_select",
       _xlsxPath: "global/core_templates/core_templates_settings.xlsx",
       _overrides: {
-        language_select_tz: '@fields._deployment_name == "plh_tz"',
         language_select_za: '@fields._deployment_name == "plh_za"',
+        language_select_tz: '@fields._deployment_name == "plh_tz"',
       },
     },
     language_select_tz: {
@@ -3112,11 +3117,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "message_navigation",
       _xlsxPath: "global/in_week_messages/message_navigation.xlsx",
     },
-    module_activity: {
-      flow_type: "template",
-      flow_name: "module_activity",
-      _xlsxPath: "global_modular/core_templates/module_activity.xlsx",
-    },
     nav_buttons: {
       flow_type: "template",
       flow_name: "nav_buttons",
@@ -3127,8 +3127,8 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "organisation_registration",
       _xlsxPath: "global/core_templates/core_templates_settings.xlsx",
       _overrides: {
-        organisation_registration_tz: '@fields._deployment_name == "plh_tz"',
         organisation_registration_za: '@fields._deployment_name == "plh_za"',
+        organisation_registration_tz: '@fields._deployment_name == "plh_tz"',
       },
     },
     organisation_registration_tz: {
@@ -3285,10 +3285,10 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "question_time",
       _xlsxPath: "global/mode_templates/question_time.xlsx",
     },
-    read_scroll: {
+    read: {
       flow_type: "template",
-      flow_name: "read_scroll",
-      _xlsxPath: "global_modular/mode_templates/read_scroll.xlsx",
+      flow_name: "read",
+      _xlsxPath: "global/mode_templates/read.xlsx",
     },
     read_temp: {
       flow_type: "template",
@@ -5209,6 +5209,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "w_praise_question_2",
       _xlsxPath: "global/top_templates/workshop_templates/workshop_praise.xlsx",
     },
+    w_praise_read: {
+      flow_type: "template",
+      module: "praise",
+      flow_name: "w_praise_read",
+      _xlsxPath: "global/top_templates/workshop_templates/workshop_praise.xlsx",
+    },
     w_praise_read_temp: {
       flow_type: "template",
       module: "praise",
@@ -6242,6 +6248,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     workshop_activity: {
       flow_type: "template",
       flow_name: "workshop_activity",
+      _xlsxPath: "global/core_templates/core_templates_workshops.xlsx",
+    },
+    workshop_activity_old: {
+      flow_type: "template",
+      flow_name: "workshop_activity_old",
       _xlsxPath: "global/core_templates/core_templates_workshops.xlsx",
     },
     workshop_completed_calc: {

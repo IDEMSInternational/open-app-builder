@@ -1256,6 +1256,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 0.7,
     md5Checksum: "1b287c85e36a3375196a2a6ee7a0bca3",
   },
+  "plh_images/icons/book_white.svg": {
+    size_kb: 0.7,
+    md5Checksum: "12c477faa57812b7a16bc6a0d0424c06",
+  },
   "plh_images/icons/cogwheel.svg": {
     size_kb: 1.7,
     md5Checksum: "c8b581942faf5621c497523bf1a73306",
@@ -1323,6 +1327,10 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/icons/house_heart_white.svg": {
     size_kb: 1.1,
     md5Checksum: "1da725ad4fbf5359351ad80e0d9c8046",
+  },
+  "plh_images/icons/house_white.svg": {
+    size_kb: 0.6,
+    md5Checksum: "f65ea96d7ff53e9bed8613e7f2fe3302",
   },
   "plh_images/icons/hug_heart.svg": {
     size_kb: 2.1,
@@ -1404,6 +1412,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 2,
     md5Checksum: "99747503b2023a185d20be8e5c7d8076",
   },
+  "plh_images/icons/parent_child_white.svg": {
+    size_kb: 2,
+    md5Checksum: "5b0134d8d260ac9b7455aad15db462f8",
+  },
   "plh_images/icons/parent_heart.svg": {
     size_kb: 0.9,
     md5Checksum: "45a1616c608c4ef9c3517d78bfb714d4",
@@ -1435,6 +1447,10 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/icons/person.svg": {
     size_kb: 0.5,
     md5Checksum: "444b0881c42e0de9f28495b05de5db0c",
+  },
+  "plh_images/icons/person_white.svg": {
+    size_kb: 0.5,
+    md5Checksum: "33f7d11059237e08c71f3266a622c864",
   },
   "plh_images/icons/phone_heart.svg": {
     size_kb: 1.3,
@@ -2711,6 +2727,10 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshop_modes/guide_2/write.svg": {
     size_kb: 3.8,
     md5Checksum: "d85011b09a2953d05a49e784995492d3",
+  },
+  "plh_images_human/workshops/w_self_care.svg": {
+    size_kb: 8.8,
+    md5Checksum: "78c195ccd45042016c0a6c4a666ab170",
   },
   "plh_lottie/habits/cascading_stars.json": {
     size_kb: 140.5,
