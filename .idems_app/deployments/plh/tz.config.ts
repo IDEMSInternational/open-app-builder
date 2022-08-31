@@ -12,7 +12,7 @@ config.app_data.sheets_filter_function = (flow) =>
 config.translations.filter_language_codes = ["tz_en", "tz_sw"];
 
 // Override constants
-config.app_constants.APP_LANGUAGES.default = "tz_en";
+config.app_constants.APP_LANGUAGES.default = "tz_sw";
 config.app_constants.APP_SIDEMENU_DEFAULTS.title = "ParentApp (TZ)";
 config.app_constants.APP_AUTHENTICATION_DEFAULTS.enforceLogin = true;
 
