@@ -140,13 +140,13 @@ export class AppComponent {
     await this.appDataService.init();
     await this.templateService.init();
     await this.templateProcessService.init();
-    await this.campaignService.init();
     await this.tourService.init();
 
     // Initialise additional services in a non-blocking way
     setTimeout(async () => {
       await this.localNotificationInteractionService.init();
       await this.localNotificationService.init();
+      await this.campaignService.init();
       await this.dbSyncService.init();
       await this.analyticsService.init();
       /** CC 2022-04-01 - Disable service as not currently in use */
