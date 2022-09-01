@@ -272,7 +272,9 @@ export namespace FlowTypes {
     | "select_text"
     | "html"
     | "latex"
-    | "animated_slides";
+    | "animated_slides"
+    | "task_card"
+    | "task_progress_bar";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
