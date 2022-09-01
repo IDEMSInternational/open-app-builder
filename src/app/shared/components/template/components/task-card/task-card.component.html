@@ -1,0 +1,34 @@
+<div [class]="'card-wrapper ' + style">
+  <span *ngIf="highlighted" class="highlighted-badge"> Active </span>
+  <div class="content-wrapper">
+    <ng-container *ngIf="!title">
+      <plh-template-component
+        *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
+        [row]="childRow"
+        [parent]="parent"
+        [attr.data-rowname]="_row.name"
+      >
+      </plh-template-component>
+    </ng-container>
+    <ng-container *ngIf="title">
+      <div class="text-wrapper">
+        <div *ngIf="title" class="title-wrapper">
+          <h1>
+            {{ title }}
+          </h1>
+        </div>
+        <div *ngIf="subtitle" class="subtitle-wrapper">
+          <h2 class="normal">
+            {{ subtitle }}
+          </h2>
+        </div>
+        <div *ngIf="taskGroupId">
+          <plh-task-progress-bar [taskGroupId]="taskGroupId"></plh-task-progress-bar>
+        </div>
+      </div>
+      <div *ngIf="image" class="image-wrapper">
+        <img [src]="image | plhAsset" />
+      </div>
+    </ng-container>
+  </div>
+</div>
