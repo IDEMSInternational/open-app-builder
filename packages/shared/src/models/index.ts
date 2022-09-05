@@ -1,3 +1,4 @@
+export * from "./appStringEvaluator/appStringEvaluator";
 export * from "./templatedData/templatedData";
 export * from "./dataPipe/operators";
 export * from "./dataPipe/pipe";
