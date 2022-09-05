@@ -337,6 +337,7 @@ export namespace FlowTypes {
       | "" // TODO document this property for stop propogation
       | "reset_app"
       | "set_field"
+      | "toggle_field"
       | "set_local"
       | "emit"
       | "feedback"
