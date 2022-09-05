@@ -16,8 +16,6 @@ import { arrayToHashmap } from "src/app/shared/utils";
   providedIn: "root",
 })
 export class TemplateService {
-  private themeValue = new BehaviorSubject("passive");
-  currentTheme = this.themeValue.asObservable();
   constructor(
     private localStorageService: LocalStorageService,
     private appDataService: AppDataService,

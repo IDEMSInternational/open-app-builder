@@ -1,34 +1,30 @@
 @use "./utils";
 @use "sass:color";
 
-@mixin theme-default {
-  [data-theme="default"] {
+@mixin theme-flat {
+  [data-theme="flat"] {
     /** Authoring variables **/
     $color-primary: hsl(203, 76%, 21%); // #0d3f5e
     $color-secondary: hsl(31, 100%, 57%); // #fa9529
-    $page-background: null;
+    $page-background: white;
 
     /** Authoring component overrides **/
     $variable-overrides: (
-      gradient-yellow-vertical:
-        linear-gradient(175deg, var(--ion-color-yellow-200) 30%, var(--ion-color-yellow-500)),
-      gradient-yellow-horizontal:
-        linear-gradient(85deg, var(--ion-color-yellow-200) 30%, var(--ion-color-yellow-500)),
-      // button-background-primary: var(--gradient-primary-mid-vertical),
-      // button-background-secondary: var(--gradient-secondary-mid-vertical),
+      button-background-primary: var(--ion-color-primary-500),
+      button-background-secondary: var(--ion-color-secondary),
       // button-background-option: var(--gradient-primary-dark-vertical),
       round-button-background-secondary-light: var(--ion-color-yellow),
       // round-button-background-secondary-mid: #fa9529,
       // round-button-background-secondary-dark: #F87023,
       // tile-button-background-default: #a3d9fa,
-      // tile-button-background-primary: var(--gradient-primary-mid-vertical),
-      // tile-button-background-primary-light: var(--gradient-primary-light-vertical),
-      // tile-button-background-secondary: var(--gradient-secondary-mid-vertical),
-      tile-button-background-secondary-light: var(--gradient-yellow-vertical),
+      tile-button-background-primary: var(--ion-color-primary-500),
+      tile-button-background-primary-light: var(--ion-color-primary-300),
+      tile-button-background-secondary: var(--ion-color-secondary),
+      tile-button-background-secondary-light: var(--ion-color-yellow),
       // audio-control-background: #1980d2,
       // points-item-background: #bce3fb,
-      // display-group-background-banner-primary: var(--ion-banner-primary)
-      // display-group-background-banner-secondary: var(--gradient-yellow-vertical)
+      display-group-background-banner-primary: var(--ion-color-primary-300),
+      display-group-background-banner-secondary: var(--ion-color-secondary-300),
       // display-group-background-tool-1: #fa8e29,
       // display-group-background-tool-2: #ff7b00,
       // display-group-background-tool-3: #108ab2,
@@ -40,11 +36,11 @@
       // timer-button-background: #1985d2,
       // combo-box-placeholder-text: rgba(13, 64, 96, 0.5),
       // combo-box-background-no-value: transparent,
-      // combo-box-background-with-value: var(--gradient-primary-light-vertical),
+      combo-box-background-with-value: var(--ion-color-primary-300),
       // slider-ui-color: #096e90,
-      // accordion-background-highlight: var(--gradient-primary-light-vertical),
-      // tour-next-button-background: var(--gradient-secondary-mid-vertical),
-      // radio-group-background-selected: var(--gradient-primary-light-vertical),
+      accordion-background-highlight: var(--ion-color-primary-300),
+      tour-next-button-background: var(--ion-color-secondary),
+      radio-group-background-selected: var(--ion-color-primary-300),
       ion-item-background: var(--ion-color-gray-light),
     );
     @include utils.generateTheme($color-primary, $color-secondary, $page-background);
