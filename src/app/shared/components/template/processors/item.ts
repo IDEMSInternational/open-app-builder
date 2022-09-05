@@ -1,3 +1,4 @@
+// TODO - shared package name conflicts with local shared
 import { AppStringEvaluator } from "packages/shared";
 import { FlowTypes } from "../models";
 import { objectToArray } from "../utils";
