@@ -1,5 +1,5 @@
 import { FlowTypes } from "data-models";
-import { DataPipe } from "shared";
+import { DataPipe } from "shared/src/models/dataPipe";
 import { DefaultParser } from "./default.parser";
 
 export class DataPipeParser extends DefaultParser<FlowTypes.DataPipeFlow> {
