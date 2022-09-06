@@ -33,16 +33,6 @@
       "delay": {
         "days": 30
       }
-    },
-    {
-      "id": "nf_generic",
-      "schedule": {
-        "day_of_week": 6
-      },
-      "time": {
-        "hour": 12,
-        "minute": 0
-      }
     }
   ],
   "_xlsxPath": "global/campaigns/notifications_inactive.xlsx"

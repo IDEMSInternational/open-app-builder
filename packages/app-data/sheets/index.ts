@@ -121,28 +121,16 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "campaign_workshop_quick_start",
       _xlsxPath: "global/campaigns/quick_start_weekly_workshops.xlsx",
     },
-    nf_generic: {
-      flow_type: "data_list",
-      flow_subtype: "campaign_rows",
-      flow_name: "nf_generic",
-      _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
-    },
     nf_inactive_day: {
       flow_type: "data_list",
       flow_subtype: "campaign_rows",
       flow_name: "nf_inactive_day",
       _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
     },
-    nf_inactive_month: {
+    nf_inactive_week_month: {
       flow_type: "data_list",
       flow_subtype: "campaign_rows",
-      flow_name: "nf_inactive_month",
-      _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
-    },
-    nf_inactive_week: {
-      flow_type: "data_list",
-      flow_subtype: "campaign_rows",
-      flow_name: "nf_inactive_week",
+      flow_name: "nf_inactive_week_month",
       _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
     },
     nf_w_1on1: {
@@ -357,6 +345,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "feature_items_data",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_items.xlsx",
+    },
+    example_data_pipe_list: {
+      flow_type: "data_list",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_list",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes.xlsx",
     },
     example_sheet_defaults_list: {
       flow_type: "data_list",
@@ -1148,6 +1142,18 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "comp_button",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_button.xlsx",
+    },
+    comp_card: {
+      flow_type: "template",
+      flow_name: "comp_card",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_card.xlsx",
+    },
+    comp_card_params: {
+      flow_type: "template",
+      flow_name: "comp_card_params",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_card.xlsx",
     },
     comp_checkbox: {
       flow_type: "template",
@@ -2355,6 +2361,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_subtype: "debug",
       flow_name: "example_items_nav",
+      _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
+    },
+    example_items_pipe: {
+      flow_type: "template",
+      flow_subtype: "debug",
+      flow_name: "example_items_pipe",
       _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
     },
     example_items_radio: {
