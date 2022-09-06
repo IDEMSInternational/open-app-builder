@@ -21,6 +21,15 @@
         }
       ],
       "priority": 1,
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "nf_inactive_day_1.sent"
+          },
+          "_raw": "nf_inactive_day_1.sent"
+        }
+      ],
       "campaign_list": [
         "nf_inactive_day"
       ],
