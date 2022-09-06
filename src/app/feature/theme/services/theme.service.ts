@@ -26,14 +26,14 @@ export class ThemeService {
       document.body.dataset.theme = themeName;
       this.currentTheme$.next(themeName);
       // Use local storage so that the current theme persists across app launches
-      this.localStorageService.setString("currentTheme", themeName);
+      this.localStorageService.setString("_current_theme", themeName);
     } else {
       console.error(`No theme found with name "${themeName}"`);
     }
   }
 
   public getCurrentTheme() {
-    return this.localStorageService.getString("currentTheme");
+    return this.localStorageService.getString("_current_theme");
   }
 
   public getAllThemes() {
