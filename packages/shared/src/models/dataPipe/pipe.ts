@@ -1,12 +1,6 @@
 import { DataFrame, toJSON } from "danfojs";
 import { IBaseOperator, OPERATORS } from "./operators";
-
-export interface IDataPipeOperation {
-  operation: keyof typeof OPERATORS;
-  args_list: any[];
-  input_source?: string;
-  output_target?: string;
-}
+import type { IDataPipeOperation } from "./types";
 
 export class DataPipe {
   private df = new DataFrame([]);

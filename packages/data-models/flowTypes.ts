@@ -1,4 +1,4 @@
-import type { IDataPipeOperation } from "shared";
+import type { IDataPipeOperation } from "shared/src/models/dataPipe/types";
 import type { IAppConstants } from "./constants";
 
 /*********************************************************************************************
@@ -56,6 +56,8 @@ export namespace FlowTypes {
     rows: any[];
     /** Datalists populate rows as a hashmap instead to allow easier access to nested structures */
     rowsHashmap?: { [id: string]: any };
+    /** Datapipes store output from operations in a temporary field to allow data-list population */
+    _processed?: { [output_target: string]: any[] };
   }
 
   /*********************************************************************************************

@@ -1,4 +1,5 @@
-import { DataPipe, IDataPipeOperation } from "./pipe";
+import { DataPipe } from "./pipe";
+import type { IDataPipeOperation } from "./types";
 
 const testData = {
   names: [
