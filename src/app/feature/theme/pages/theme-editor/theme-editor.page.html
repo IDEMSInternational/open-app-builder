@@ -1,8 +1,13 @@
 <ion-content ion-padding>
+  <h2>Change Theme</h2>
+  <ion-button
+    *ngFor="let theme of availableThemes"
+    (click)="setTheme(theme)"
+    [ngClass]="{'active' : currentTheme===theme }"
+    >{{theme}}
+  </ion-button>
   <h2>Palette</h2>
   <plh-colour-palette></plh-colour-palette>
   <h2>Variables</h2>
   <plh-css-variable-table></plh-css-variable-table>
-  <h2>Legacy Editor</h2>
-  <plh-theme-editor></plh-theme-editor>
 </ion-content>
