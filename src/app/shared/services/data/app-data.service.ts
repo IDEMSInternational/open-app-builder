@@ -81,7 +81,8 @@ export class AppDataService {
         this.populateCacheDataList(flow);
       }
     }
-    return this.appDataCache[flow_type][flow_name] as T;
+    // return as new object to prevent modification to raw list
+    return JSON.parse(JSON.stringify(this.appDataCache[flow_type][flow_name])) as T;
   }
 
   private async loadSheetFromJson<T extends FlowTypes.FlowTypeWithData>(
