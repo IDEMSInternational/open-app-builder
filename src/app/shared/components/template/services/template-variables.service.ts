@@ -340,7 +340,7 @@ export class TemplateVariablesService {
       // TODO - ideally campaign lookup should be merged into data list lookup with additional query/params
       // e.g. evaluate conditions, take first etc.
       case "campaign":
-        parsedValue = (await this.campaignService.getNextCampaignRows(fieldName))[0];
+        parsedValue = (await this.campaignService.getNextCampaignRows(fieldName))?.[0];
         break;
       case "calc":
         const expression = fieldName.replace(/@/gi, "this.");
