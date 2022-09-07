@@ -1,8 +1,9 @@
 import { Injector } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 import { booleanStringToBoolean } from "src/app/shared/utils";
+import { ItemProcessor } from "../../processors/item";
 import { TemplateContainerComponent } from "../../template-container.component";
-import { mergeTemplateRows, objectToArray } from "../../utils/template-utils";
+import { mergeTemplateRows } from "../../utils/template-utils";
 import { TemplateFieldService } from "../template-field.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { TemplateVariablesService } from "../template-variables.service";
@@ -259,10 +260,13 @@ export class TemplateRowService extends TemplateInstanceService {
 
     // Instead of returning themselves items looped child rows
     if (type === "items") {
-      const itemsToIterateOver = objectToArray(row.value);
-      const itemRows = this.generateLoopItemRows(row, itemsToIterateOver);
-      const processedItems = await this.processRows(itemRows, isNestedTemplate, row.name);
-      return processedItems;
+      // extract raw parameter list
+      const itemDataList: { [id: string]: any } = row.value;
+      const parameterList = this.hackUnparseItemParameterList(row);
+      const parsedItemDataList = await this.parseDataList(itemDataList);
+      const itemRows = new ItemProcessor(parsedItemDataList, parameterList).process(row.rows);
+      const parsedItemRows = await this.processRows(itemRows, isNestedTemplate, row.name);
+      return parsedItemRows;
     }
 
     // process any nested rows in same way
@@ -327,40 +331,32 @@ export class TemplateRowService extends TemplateInstanceService {
    *  Utils
    **************************************************************************************/
 
-  /**
-   * Takes a row and list of items to iterate over, creating a new entry for each item with
-   * the same row values but a unique evaluation context for populating dynamic variables from the item
-   * @param items - list of items to iterate over
-   */
-  private generateLoopItemRows(row: FlowTypes.TemplateRow, items: any[]) {
-    const loopItemRows: FlowTypes.TemplateRow[] = [];
-    for (const [index, item] of Object.entries(items)) {
-      item._index = index;
-      const evalContext = { itemContext: item };
-      for (const r of row.rows) {
-        const itemRow = this.setRecursiveRowEvalContext(r, evalContext);
-        loopItemRows.push(itemRow);
+  private async parseDataList(dataList: { [id: string]: any }) {
+    const parsed: { [id: string]: any } = {};
+    for (const [listKey, listValue] of Object.entries(dataList)) {
+      parsed[listKey] = listValue;
+      for (const [itemKey, itemValue] of Object.entries(listValue)) {
+        if (typeof itemValue === "string") {
+          parsed[listKey][itemKey] = await this.templateVariablesService.evaluateConditionString(
+            itemValue
+          );
+        }
       }
     }
-    return loopItemRows;
+    return parsed;
   }
-  /** Update the evaluation context of a row and recursively any nested rows */
-  private setRecursiveRowEvalContext(
-    row: FlowTypes.TemplateRow,
-    evalContext: FlowTypes.TemplateRow["_evalContext"]
-  ) {
-    // Workaround destructure for memory allocation issues (applying click action of last item only)
-    const { rows, ...rest } = JSON.parse(JSON.stringify(row));
-    const rowWithEvalContext: FlowTypes.TemplateRow = { ...rest, _evalContext: evalContext };
-    // handle child rows independently to avoid accidental property leaks
-    if (row.rows) {
-      rowWithEvalContext.rows = [];
-      for (const r of row.rows) {
-        const recursivelyEvaluated = this.setRecursiveRowEvalContext(r, evalContext);
-        rowWithEvalContext.rows.push(recursivelyEvaluated);
-      }
+
+  /**
+   * When parsing item parameter lists filter references to @item will be replaced before processing
+   * Hacky workaround to replace back with unparsed value
+   */
+  private hackUnparseItemParameterList(row: FlowTypes.TemplateRow) {
+    const list = row.parameter_list;
+    const unparsedFilter = row._dynamicFields?.parameter_list?.filter?.[0].fullExpression;
+    if (list && unparsedFilter) {
+      list.filter = unparsedFilter;
     }
-    return rowWithEvalContext;
+    return list;
   }
 
   /** recursively filter out any rows that have a false condition */
