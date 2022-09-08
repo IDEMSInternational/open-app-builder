@@ -22,8 +22,8 @@
 |answer_list            |strings array           |List of options to appear in the drop-down|
 |input_allowed          |false (default)         |User can not set a custom response|
 |input_allowed          |true                    |User can set a custom response|
-|input_position         |top (default)           |Position of input element|
-|input_position         |bottom                  |Position of input element|
+|input_position         |top (default)           |Position of input box is at the top of the drop-down list|
+|input_position         |bottom                  |Position of input box is at the bottom of the drop-down list|
 |answer_placeholder     |string                  |Any input placeholder|
 |placeholder            |string                  |Any placeholder for button open pop_up window|
 |text                   |string                  |Text to appear on top|
