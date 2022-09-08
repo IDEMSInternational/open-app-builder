@@ -456,50 +456,14 @@
     "note": ""
   },
   {
-    "SourceText": "You selected less than @local.threshold",
-    "text": "Jy het minder as @local.threshold gekies",
+    "SourceText": "How did it go?",
+    "text": "Hoe het dit gegaan?",
     "type": "template",
-    "note": "The string @local.threshold should not be translated."
-  },
-  {
-    "SourceText": "Unlock for less than @local.threshold",
-    "text": "Ontsluit vir minder as @local.threshold",
-    "type": "template",
-    "note": "The string @local.threshold should not be translated."
-  },
-  {
-    "SourceText": "You selected @local.threshold or more",
-    "text": "Jy het @local.threshold of meer gekies",
-    "type": "template",
-    "note": "The string @local.threshold should not be translated."
+    "note": ""
   },
   {
     "SourceText": "Reply",
     "text": "Antwoord",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "You selected @local.threshold or less",
-    "text": "Jy het @local.threshold of minder gekies",
-    "type": "template",
-    "note": "The string @local.threshold should not be translated."
-  },
-  {
-    "SourceText": "You selected more than @local.threshold",
-    "text": "Jy het meer as @local.threshold gekies",
-    "type": "template",
-    "note": "The string @local.threshold should not be translated."
-  },
-  {
-    "SourceText": "Days in the past month",
-    "text": "Dae gedurende die afgelope maand",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Days in the past week",
-    "text": "Dae gedurende die afgelope week",
     "type": "template",
     "note": ""
   },
@@ -520,6 +484,12 @@
     "text": "Video",
     "type": "template",
     "note": ""
+  },
+  {
+    "SourceText": "You selected less than @local.threshold",
+    "text": "Jy het minder as @local.threshold gekies",
+    "type": "template",
+    "note": "The string @local.threshold should not be translated."
   },
   {
     "SourceText": "Start Positively Together",
@@ -724,12 +694,6 @@
     "text": "Wat was vir jou moeilik toe jy probeer @local.hp_description_second_singular het?",
     "type": "template",
     "note": "The string @local.hp_description_second_singular should not be translated."
-  },
-  {
-    "SourceText": "How did it go?",
-    "text": "Hoe het dit gegaan?",
-    "type": "template",
-    "note": ""
   },
   {
     "SourceText": "Sorry we missed this!",
@@ -1698,6 +1662,18 @@
     "note": "The string @global.my_activities should not be translated."
   },
   {
+    "SourceText": "@global.parent_app funded by",
+    "text": "@global.parent_app befonds deur",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "Powered by Parenting for Lifelong Health and partners",
+    "text": "Gerugsteun deur Parenting for Lifelong Health en vennote",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Bringing teenagers up is hard",
     "text": "Om tieners groot te maak, is moeilik",
     "type": "template",
@@ -1708,24 +1684,6 @@
     "text": "Jy is die beste ouer wat jou tiener kon hê",
     "type": "template",
     "note": ""
-  },
-  {
-    "SourceText": "Join the 152.4 million parents who have used our resources",
-    "text": "Sluit aan by die 152,4 miljoen ouers wat reeds ons hulpbronne gebruik het",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Powered by Parenting for Lifelong Health and partners",
-    "text": "Gerugsteun deur Parenting for Lifelong Health en vennote",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@global.parent_app funded by",
-    "text": "@global.parent_app befonds deur",
-    "type": "template",
-    "note": "The string @global.parent_app should not be translated."
   },
   {
     "SourceText": "Ideas from other families:",
@@ -1740,10 +1698,46 @@
     "note": "The string @global.parent_app should not be translated."
   },
   {
+    "SourceText": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.",
+    "text": "Dankie vir jou eerlikheid. Dit kan so moeilik wees om ons spanning te beheer. Om na jouself om te sien en jou rustiger te laat voel wanneer dit moeilik gaan, sal ons jou aanhou herinner daaraan om te ontspan, jouself te erken en te beloon. Jy maak saak!\n\nJy kan meer idees vind om stres te hanteer in @global.weekly_workshop of onder @data.parent_centre.my_tips.location_text.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
+  },
+  {
+    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and continuing to use @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.",
+    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het.\n\nOns voel almal soms oorweldig, en om @global.parent_app aan te gebruik, is ’n goeie stap om jou en jou gesin te help!\n\nOns materiaal het duisende ouers en gesinne gehelp om minder gespanne te wees en meer positiewe tyd saam te geniet. Ons is hier om jou te ondersteun.",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "This is a real concern for parents everywhere. Remember to use your new skills to continue to build good communication with your teen. \n\nYou can review core tips on planning for your teen’s safety in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text!",
+    "text": "Dit is ’n groot bron van kommer vir ouers oral. Onthou om jou nuwe vaardighede te gebruik om goeie kommunikasie met jou tiener te bly opbou.\n\nJy kan die belangrikste wenke oor beplanning vir jou tiener se veiligheid in @global.weekly_workshop of onder @data.parent_centre.my_tips.location_text lees!",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
+  },
+  {
+    "SourceText": "Great. If any stress or disagreements around money do come up in your family in the future, you can always review the @data.workshop.w_money.in_text_title or @data.parent_centre.my_tips.location_text!",
+    "text": "Uitstekend. As daar in die toekoms in jou gesin spanning of meningsverskille oor geld opduik, kan jy altyd die @data.workshop.w_money.in_text_title of @data.parent_centre.my_tips.location_text raadpleeg!",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@data.workshop.w_money.in_text_title\n@data.parent_centre.my_tips.location_text"
+  },
+  {
+    "SourceText": "Money stress can be overwhelming. \n\nWhenever stress or disagreements around money come up in your family, you can find tips in the @data.workshop.w_money.in_text_title or under @data.parent_centre.my_tips.location_text!",
+    "text": "Geldstres kan oorweldigend wees.\n\nAs spanning of meningsverskille oor geld in jou gesin opduik, kan jy wenke in die @data.workshop.w_money.in_text_title of onder @data.parent_centre.my_tips.location_text vind!",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@data.workshop.w_money.in_text_title\n@data.parent_centre.my_tips.location_text"
+  },
+  {
     "SourceText": "Remember you can access lots of helpful tips and resources in the @global.parent_centre - this is available for you at any time!",
     "text": "Onthou dat jy toegang tot baie nuttige wenke en hulpbronne in die @global.parent_centre kan kry – dit is te eniger tyd vir jou beskikbaar!",
     "type": "template",
     "note": "The string @global.parent_centre should not be translated."
+  },
+  {
+    "SourceText": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nRemember, you can find more support on this in the @data.workshop.w_safe.in_text_title whenever you need it!",
+    "text": "Dit is nie maklik om ’n ouer te wees nie. Welgedaan dat jy daarop gefokus het om jou tiener veilig te hou.\n\nOnthou, jy kan meer ondersteuning hieroor in die @data.workshop.w_safe.in_text_title kry wanneer jy dit ook al nodig het!",
+    "type": "template",
+    "note": "The string @data.workshop.w_safe.in_text_title should not be translated."
   },
   {
     "SourceText": "We know this is hard. You can review some helpful tips on how you can spend time with your teen under @data.parent_centre.my_tips.location_text or you can have another look at the @data.workshop.w_1on1.in_text_title.",
@@ -1788,72 +1782,6 @@
     "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
   },
   {
-    "SourceText": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.",
-    "text": "Dankie vir jou eerlikheid. Dit kan so moeilik wees om ons spanning te beheer. Om na jouself om te sien en jou rustiger te laat voel wanneer dit moeilik gaan, sal ons jou aanhou herinner daaraan om te ontspan, jouself te erken en te beloon. Jy maak saak!\n\nJy kan meer idees vind om stres te hanteer in @global.weekly_workshop of onder @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Thank you for being honest. It can be so difficult to control our stress. You can always find some helpful stress management tools under @data.parent_centre.my_tips.location_text.",
-    "text": "Dankie vir jou eerlikheid. Dit kan so moeilik wees om ons spanning te beheer. Jy kan altyd ’n paar nuttige hulpmiddels oor hoe om spanning te hanteer vind onder @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
-  },
-  {
-    "SourceText": "Great. If any stress or disagreements around money do come up in your family in the future, you can always review the @data.workshop.w_money.in_text_title or @data.parent_centre.my_tips.location_text!",
-    "text": "Uitstekend. As daar in die toekoms in jou gesin spanning of meningsverskille oor geld opduik, kan jy altyd die @data.workshop.w_money.in_text_title of @data.parent_centre.my_tips.location_text raadpleeg!",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_money.in_text_title\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Money stress can be overwhelming. \n\nWhenever stress or disagreements around money come up in your family, you can find tips in the @data.workshop.w_money.in_text_title or under @data.parent_centre.my_tips.location_text!",
-    "text": "Geldstres kan oorweldigend wees.\n\nAs spanning of meningsverskille oor geld in jou gesin opduik, kan jy wenke in die @data.workshop.w_money.in_text_title of onder @data.parent_centre.my_tips.location_text vind!",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_money.in_text_title\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. To look after yourselves and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.",
-    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het. Om na jouself om te sien en jou rustiger te laat voel wanneer dit moeilik gaan, sal ons jou aanhou herinner daaraan om te ontspan, jouself te erken en te beloon. Jy maak saak!\n\nJy kan meer idees vind om spanning te hanteer in @global.weekly_workshop of onder @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and continuing to use @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.",
-    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het.\n\nOns voel almal soms oorweldig, en om @global.parent_app aan te gebruik, is ’n goeie stap om jou en jou gesin te help!\n\nOns materiaal het duisende ouers en gesinne gehelp om minder gespanne te wees en meer positiewe tyd saam te geniet. Ons is hier om jou te ondersteun.",
-    "type": "template",
-    "note": "The string @global.parent_app should not be translated."
-  },
-  {
-    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe hope our stress management tools will continue to help you to feel calmer in hard situations. You can find them under @data.parent_centre.my_tips.location_text.",
-    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het.\n\nOns hoop dat ons hulpmiddels hoe om spanning te hanteer jou steeds sal help om rustiger te voel in moeilike situasies. Jy kan dit vind onder @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
-  },
-  {
-    "SourceText": "This is a real concern for parents everywhere. Remember to use your new skills to continue to build good communication with your teen. \n\nYou can review core tips on planning for your teen’s safety in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text!",
-    "text": "Dit is ’n groot bron van kommer vir ouers oral. Onthou om jou nuwe vaardighede te gebruik om goeie kommunikasie met jou tiener te bly opbou.\n\nJy kan die belangrikste wenke oor beplanning vir jou tiener se veiligheid in @global.weekly_workshop of onder @data.parent_centre.my_tips.location_text lees!",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you!\n\nRemember, you can find focused tools, extra content and resources on this in the @global.parent_centre at any time. You can also review core tips on rules and safety planning under @data.parent_centre.my_tips.location_text.",
-    "text": "Dit is nie maklik om ’n ouer te wees nie. Dit kan moeilik wees om te weet hoe om ons tieners veilig te hou. Dit laat ons as ouers dikwels magteloos voel, maar ons is hier om jou te ondersteun!\n\nOnthou dat jy te eniger tyd gefokusde hulpmiddels, ekstra inhoud en hulpbronne hieroor in die @global.parent_centre kan vind. Jy kan ook die belangrikste wenke oor reëls en veiligheidsbeplanning nagaan onder @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.parent_centre\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! Remember, you can find focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can also review core tips on making rules under @data.parent_centre.my_tips.location_text.",
-    "text": "Dit is nie maklik om ’n ouer te wees nie. Dit kan moeilik wees om te weet hoe om ons tieners veilig te hou. Dit laat ons as ouers dikwels magteloos voel, maar ons is hier om jou te ondersteun! Onthou dat jy te eniger tyd gefokusde hulpmiddels, ekstra inhoud en hulpbronne hieroor in die @global.parent_centre kan vind.\n\nJy kan ook die belangrikste wenke oor die maak van reëls nagaan onder @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.parent_centre\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nRemember, you can find more support on this in the @data.workshop.w_safe.in_text_title whenever you need it!",
-    "text": "Dit is nie maklik om ’n ouer te wees nie. Welgedaan dat jy daarop gefokus het om jou tiener veilig te hou.\n\nOnthou, jy kan meer ondersteuning hieroor in die @data.workshop.w_safe.in_text_title kry wanneer jy dit ook al nodig het!",
-    "type": "template",
-    "note": "The string @data.workshop.w_safe.in_text_title should not be translated."
-  },
-  {
     "SourceText": "Customise for your needs",
     "text": "Pas dit aan volgens jou behoeftes",
     "type": "template",
@@ -1872,134 +1800,8 @@
     "note": ""
   },
   {
-    "SourceText": "It is hard to find time to have fun with your teenager.",
-    "text": "Dis moeilik om tyd te kry om prettige dinge saam met jou tiener te doen.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past week were you able to give them your attention and do something that they enjoyed with them?",
-    "text": "Hoeveel dae die afgelope week kon jy aan hulle aandag gee en iets saam met hulle doen wat hulle geniet het?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@data.workshop.w_1on1.tools added to @data.parent_centre.my_tips.title.",
-    "text": "@data.workshop.w_1on1.tools bygevoeg tot @data.parent_centre.my_tips.title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_1on1.tools\n@data.parent_centre.my_tips.title"
-  },
-  {
-    "SourceText": "In our busy lives it’s hard to focus on the positive.",
-    "text": "Dis moeilik om in ons besige lewens op die positiewe te fokus.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past week have you praised your teen?",
-    "text": "Hoeveel dae die afgelope week het jy jou tiener geprys?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@data.workshop.w_praise.tools added to @data.parent_centre.my_tips.title.",
-    "text": "@data.workshop.w_praise.tools bygevoeg tot @data.parent_centre.my_tips.title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_praise.tools\n@data.parent_centre.my_tips.title"
-  },
-  {
-    "SourceText": "This is a very stressful time for families.",
-    "text": "Dit is ’n baie stresvolle tyd vir gesinne.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past week did you feel very stressed as a parent/caregiver?",
-    "text": "Hoeveel dae die afgelope week het jy as ouer/versorger stres ervaar?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Sometimes our children make us really upset.",
-    "text": "Soms ontstel ons kinders ons baie.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past week did you shout, scream or yell at your teen?",
-    "text": "Hoeveel dae die afgelope week het jy op jou tiener geskree of gegil?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Money is one of the biggest stresses for families now.",
-    "text": "Geld is een van die dinge wat tans die meeste stres by gesinne veroorsaak.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past week have you worried or felt anxious about money?",
-    "text": "Hoeveel dae die afgelope week het jy bekommerd of gespanne gevoel oor geld?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past month (30 days) did you run out of money to pay for food?",
-    "text": "Hoeveel keer die afgelope maand (30 dae) het jou kosgeld opgeraak?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@data.workshop.w_money.tools added to @data.parent_centre.my_tips.title.",
-    "text": "@data.workshop.w_money.tools bygevoeg tot @data.parent_centre.my_tips.title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_money.tools\n@data.parent_centre.my_tips.title"
-  },
-  {
-    "SourceText": "It is so stressful when children misbehave.",
-    "text": "Dis so stresvol as kinders stout of ongehoorsaam is.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past week did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?",
-    "text": "Hoeveel dae die afgelope week het jy jou kinders fisies gedissiplineer deur hulle te klap, pak te gee of te slaan met jou hand of ’n voorwerp soos ’n stok of ’n belt?",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!",
     "text": "Dit is wonderlik dat jy kalm reageer as jou tiener iets ontstellends doen. Hulle kan soveel by jou leer!",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@data.workshop.w_stress.tools added to @data.parent_centre.my_tips.title.",
-    "text": "@data.workshop.w_stress.tools bygevoeg tot @data.parent_centre.my_tips.title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_stress.tools\n@data.parent_centre.my_tips.title"
-  },
-  {
-    "SourceText": "It’s hard to keep track of your teenagers when they are becoming independent.",
-    "text": "Dit is moeilik om toesig oor jou tieners te hou wanneer hulle onafhanklik raak.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past week did you know what your teen was doing and who they were with?",
-    "text": "Hoeveel dae die afgelope week het jy geweet wat jou tiener doen en by wie hulle was?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "This is good to hear.",
-    "text": "Dit is goed om te hoor.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Were you in lockdown this week?",
-    "text": "Was julle hierdie week onder inperking?",
     "type": "template",
     "note": ""
   },
@@ -2008,60 +1810,6 @@
     "text": "Dit is wonderlik dat jy bewus is van wat jou tiener doen. Ouerskap is moeilik, maar jy slaag regtig daarin om hulle veilig te hou.",
     "type": "template",
     "note": ""
-  },
-  {
-    "SourceText": "How many days in a typical non-lockdown week do you know what your teen is doing and who they are with?",
-    "text": "Hoeveel dae in ’n tipiese week sonder inperking weet jy wat jou tiener doen en by wie hulle is?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@data.workshop.w_safe.tools added to @data.parent_centre.my_tips.title.",
-    "text": "@data.workshop.w_safe.tools bygevoeg tot @data.parent_centre.my_tips.title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_safe.tools\n@data.parent_centre.my_tips.title"
-  },
-  {
-    "SourceText": "We all want to keep our children safe.",
-    "text": "Ons almal wil ons kinders veilig hou.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past month (30 days) did you talk with your teen about keeping safe from sexual violence online or offline?",
-    "text": "Het jy die afgelope maand (30 dae) met jou kind gepraat oor veiligheid wanneer dit kom by seksuele geweld aanlyn of elders?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "This could be when they are going out with friends, or talking about the websites they use.",
-    "text": "Dit kan wees wanneer hulle saam met vriende uitgaan of praat oor webwerwe wat hulle gebruik.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "We have a new challenge now – keeping our teenagers safe from COVID-19.",
-    "text": "Ons het nou ’n nuwe uitdaging – om ons tieners teen COVID-19 te beskerm.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days last week did your teenager stay safe through wearing a mask, keeping a distance from people and keeping away from crowded places?",
-    "text": "Hoeveel dae het jou tiener verlede week veilig gebly deur ’n masker te dra, afstand van mense te hou en van oorvol plekke weg te bly?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "It can be challenging to keep your teen safe in COVID! We are putting together some advice - you will soon be able to access it in the @global.parent_centre.",
-    "text": "Dit kan ’n uitdaging wees om jou tiener veilig te hou teen COVID! Ons stel ’n bietjie advies saam – dit sal binnekort vir jou beskikbaar wees in die @global.parent_centre.",
-    "type": "template",
-    "note": "The string @global.parent_centre should not be translated."
-  },
-  {
-    "SourceText": "That’s great. We are putting together some advice for keeping your teen safe in COVID - you will soon be able to access it in the @global.parent_centre.",
-    "text": "Dis uitstekend. Ons stel ’n bietjie advies saam om jou tiener veilig te hou teen COVID – dit sal binnekort vir jou beskikbaar wees in die @global.parent_centre.",
-    "type": "template",
-    "note": "The string @global.parent_centre should not be translated."
   },
   {
     "SourceText": "You selected \"I would rather not answer\"",
@@ -2112,6 +1860,54 @@
     "note": ""
   },
   {
+    "SourceText": "Well done. Brain science shows that controlling your anger improves your teen’s brain development. Be proud of yourself.",
+    "text": "Mooi so. Breinwetenskap toon dat as jy jou woede beheer, dit die breinontwikkeling van jou tiener verbeter. Wees trots op jouself.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we’ll remind you regularly to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops, but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get started.",
+    "text": "Dankie vir jou eerlikheid. Dit kan so moeilik wees om ons spanning te beheer. Om na jouself om te sien en jou rustiger te laat voel wanneer dit moeilik gaan, sal ons jou gereeld daaraan herinner om te ontspan, jouself te erken en te beloon. Jy maak saak!\n\nIn week @data.workshop.w_stress.number van die @global.weekly_workshops kan jy meer idees vind om spanning te hanteer, maar onder @data.parent_centre.my_tips.location_text het jy alreeds toegang tot ’n paar nuttige hulpmiddels om aan die gang te kom.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@data.workshop.w_stress.number\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
+  },
+  {
+    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and using @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.",
+    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het.\n\nOns voel almal soms oorweldig, en om @global.parent_app te gebruik, is ’n goeie stap om jou en jou gesin te help!\n\nOns materiaal het duisende ouers en gesinne gehelp om minder gestres te wees en meer positiewe tyd saam te geniet. Ons is hier om jou te ondersteun.",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. \n\nWe’ll talk more about planning for your teen’s safety later in the @global.weekly_workshops, but you can already access some first core tips to keep your teen safe under @data.parent_centre.my_tips.location_text!",
+    "text": "Dit is ’n groot bron van kommer vir ouers oral. Ons sal seker maak dat jy ondersteuning kry om kommunikasie te bou.\n\nOns sal later in die @global.weekly_workshops verder praat oor beplanning vir jou tiener se veiligheid, maar onder@data.parent_centre.my_tips.location_text kan jy reeds ’n paar kernwenke kry om jou tiener veilig te hou!",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
+  },
+  {
+    "SourceText": "Great. We have a workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments.",
+    "text": "Uitstekend. Ons het ’n slypskool oor gesinsbegroting wat met geldstres in die algemeen kan help, en geldverwante argumente kan verminder.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Money stress can be overwhelming. \n\nWe have a workshop on family budgeting in five weeks, but you can already access some core family budgeting tips under @data.parent_centre.my_tips.location_text!",
+    "text": "Geldstres kan oorweldigend wees.\n\nOns hou oor vyf weke ’n werksessie oor gesinsbegroting, maar jy kan reeds onder @data.parent_centre.my_tips.location_text ’n paar kernwenke vir gesinsbegroting kry!",
+    "type": "template",
+    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
+  },
+  {
+    "SourceText": "Content unlocked by these questions is now accessible under @data.parent_centre.my_tips.location_text.",
+    "text": "Inhoud wat deur hierdie vrae ontsluit is, is nou toeganklik onder @data.parent_centre.my_tips.location_text.",
+    "type": "template",
+    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
+  },
+  {
+    "SourceText": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nWe’ll have more support for you on this in the later @global.weekly_workshops if you’d like to know even more!",
+    "text": "Dit is nie maklik om ’n ouer te wees nie. Welgedaan dat jy daarop gefokus het om jou tiener veilig te hou.\n\nOns sal meer ondersteuning vir jou in die latere @global.weekly_workshops hê as jy nog meer wil weet!",
+    "type": "template",
+    "note": "The string @global.weekly_workshops should not be translated."
+  },
+  {
     "SourceText": "We know this is hard. We have added some helpful tips on how you can spend time with your teen to @data.parent_centre.my_tips.location_text, so you can access it right away. \n\nBecause @data.workshop.w_1on1.title builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!",
     "text": "Ons weet dit is moeilik. Ons het ’n paar nuttige wenke by @data.parent_centre.my_tips.location_text gevoeg oor hoe jy tyd met jou tiener kan deurbring, so jy kan dadelik toegang daartoe kry.\n\nOmdat @data.workshop.w_1on1.title die basis vorm vir alle ander hulpmiddels vir ouerskap, sal jy volgende week die @global.weekly_workshop ontvang!",
     "type": "template",
@@ -2152,108 +1948,6 @@
     "text": "Ons verstaan hoe spanningsvol die lewe kan wees. Ons sal jou gereeld daaraan herinner om te ontspan, jouself te erken en te beloon, sodat jy jou spanning kan hanteer en kalmer kan voel.\n\nIn week @data.workshop.w_stress.number van die @global.weekly_workshops sal ons meer leer oor die hantering van spanning – maar onder @data.parent_centre.my_tips.location_text het jy reeds toegang tot ’n paar nuttige hulpmiddels om aan die gang te kom!",
     "type": "template",
     "note": "The following strings should not be translated:\n@data.workshop.w_stress.number\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Well done. Brain science shows that controlling your anger improves your teen’s brain development. Be proud of yourself.",
-    "text": "Mooi so. Breinwetenskap toon dat as jy jou woede beheer, dit die breinontwikkeling van jou tiener verbeter. Wees trots op jouself.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we’ll remind you regularly to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops, but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get started.",
-    "text": "Dankie vir jou eerlikheid. Dit kan so moeilik wees om ons spanning te beheer. Om na jouself om te sien en jou rustiger te laat voel wanneer dit moeilik gaan, sal ons jou gereeld daaraan herinner om te ontspan, jouself te erken en te beloon. Jy maak saak!\n\nIn week @data.workshop.w_stress.number van die @global.weekly_workshops kan jy meer idees vind om spanning te hanteer, maar onder @data.parent_centre.my_tips.location_text het jy alreeds toegang tot ’n paar nuttige hulpmiddels om aan die gang te kom.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_stress.number\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Thank you for being honest. It can be so difficult to control our stress. We hope our stress management tools will be useful to you. You can already find them under @data.parent_centre.my_tips.location_text.",
-    "text": "Dankie vir jou eerlikheid. Dit kan so moeilik wees om ons spanning te beheer. Ons hoop dat ons hulpmiddels oor hoe om spanning te hanteer vir jou nuttig sal wees. Jy kan dit reeds vind onder @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
-  },
-  {
-    "SourceText": "Great. We have a workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments.",
-    "text": "Uitstekend. Ons het ’n slypskool oor gesinsbegroting wat met geldstres in die algemeen kan help, en geldverwante argumente kan verminder.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Money stress can be overwhelming. \n\nWe have a workshop on family budgeting in five weeks, but you can already access some core family budgeting tips under @data.parent_centre.my_tips.location_text!",
-    "text": "Geldstres kan oorweldigend wees.\n\nOns hou oor vyf weke ’n werksessie oor gesinsbegroting, maar jy kan reeds onder @data.parent_centre.my_tips.location_text ’n paar kernwenke vir gesinsbegroting kry!",
-    "type": "template",
-    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
-  },
-  {
-    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. To look after yourselves and help you feel calmer when things get tough, we’ll remind you every day to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week 5 of the @global.weekly_workshops, but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get started.",
-    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het. Om na jouself om te sien en jou rustiger te laat voel as dit moeilik gaan, sal ons jou elke dag daaraan herinner om te ontspan, jouself te erken en te beloon. Jy maak saak!\n\nOns sal in week 5 van die @global.weekly_workshops meer leer oor die hantering van spanning, maar jy het alreeds toegang tot ’n paar nuttige hulpmiddels onder @data.parent_centre.my_tips.location_text om aan die gang te kom.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and using @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.",
-    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het.\n\nOns voel almal soms oorweldig, en om @global.parent_app te gebruik, is ’n goeie stap om jou en jou gesin te help!\n\nOns materiaal het duisende ouers en gesinne gehelp om minder gestres te wees en meer positiewe tyd saam te geniet. Ons is hier om jou te ondersteun.",
-    "type": "template",
-    "note": "The string @global.parent_app should not be translated."
-  },
-  {
-    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe hope our stress management tools will help you to feel calmer in hard situations. You can find them under @data.parent_centre.my_tips.location_text.",
-    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het.\n\nOns hoop dat ons hulpmiddels hoe om spanning te hanteer jou sal help om rustiger te voel in moeilike situasies. Jy kan dit vind onder @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
-  },
-  {
-    "SourceText": "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. \n\nWe’ll talk more about planning for your teen’s safety later in the @global.weekly_workshops, but you can already access some first core tips to keep your teen safe under @data.parent_centre.my_tips.location_text!",
-    "text": "Dit is ’n groot bron van kommer vir ouers oral. Ons sal seker maak dat jy ondersteuning kry om kommunikasie te bou.\n\nOns sal later in die @global.weekly_workshops verder praat oor beplanning vir jou tiener se veiligheid, maar onder@data.parent_centre.my_tips.location_text kan jy reeds ’n paar kernwenke kry om jou tiener veilig te hou!",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "This is really great. Parenting is hard, but you’re really succeeding in this.",
-    "text": "Dit is regtig wonderlik. Ouerskap is moeilik, maar jy slaag regtig goed daarin.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can already access some first core tips which will help with making rules and safety planning under @data.parent_centre.my_tips.location_text.",
-    "text": "Dit is nie maklik om ’n ouer te wees nie. Dit kan moeilik wees om te weet hoe om ons tieners veilig te hou. Dit laat ons as ouers dikwels magteloos voel, maar ons is hier om jou te ondersteun! Jy kan te eniger tyd gefokusde hulpmiddels, ekstra inhoud en hulpbronne hieroor in die @global.parent_centre vind. \n\nJy kan ook ’n paar eerste kernwenke kry wat jou sal help om reëls te maak en veiligheid te beplan onder @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.parent_centre\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "@data.workshop.w_rules.tools and @data.workshop.w_safe.tools added to @data.parent_centre.my_tips.title.",
-    "text": "@data.workshop.w_rules.tools en @data.workshop.w_safe.tools bygevoeg tot @data.parent_centre.my_tips.title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_rules.tools\n@data.workshop.w_safe.tools\n@data.parent_centre.my_tips.title"
-  },
-  {
-    "SourceText": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can already access some first core tips which will help with making rules under @data.parent_centre.my_tips.location_text.",
-    "text": "Dit is nie maklik om ’n ouer te wees nie. Dit kan moeilik wees om te weet hoe om ons tieners veilig te hou. Dit laat ons as ouers dikwels magteloos voel, maar ons is hier om jou te ondersteun! Jy kan te eniger tyd gefokusde hulpmiddels, ekstra inhoud en hulpbronne hieroor in die @global.parent_centre vind. \n\nJy kan ook ’n paar eerste kernwenke kry wat jou sal help om reëls te maak onder @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.parent_centre\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "@data.workshop.w_rules.tools added to @data.parent_centre.my_tips.title.",
-    "text": "@data.workshop.w_rules.tools bygevoeg tot @data.parent_centre.my_tips.title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_rules.tools\n@data.parent_centre.my_tips.title"
-  },
-  {
-    "SourceText": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nWe’ll have more support for you on this in the later @global.weekly_workshops if you’d like to know even more!",
-    "text": "Dit is nie maklik om ’n ouer te wees nie. Welgedaan dat jy daarop gefokus het om jou tiener veilig te hou.\n\nOns sal meer ondersteuning vir jou in die latere @global.weekly_workshops hê as jy nog meer wil weet!",
-    "type": "template",
-    "note": "The string @global.weekly_workshops should not be translated."
-  },
-  {
-    "SourceText": "Content unlocked by these questions is now accessible under @data.parent_centre.my_tips.location_text.",
-    "text": "Inhoud wat deur hierdie vrae ontsluit is, is nou toeganklik onder @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
-  },
-  {
-    "SourceText": "You have just unlocked the first workshop!",
-    "text": "Jy het nounet die eerste werksessie ontsluit!",
-    "type": "template",
-    "note": ""
   },
   {
     "SourceText": "Talk Together",
@@ -3426,12 +3120,6 @@
     "note": ""
   },
   {
-    "SourceText": "Your goal was to spend one-on-one time with your teen. We noticed you tapped the @data.habit.spend_time.in_text_title - great job for remembering!",
-    "text": "Jou doel was om een-tot-een-tyd saam met jou tiener deur te bring. Ons het opgemerk dat jy op die@data.habit.spend_time.in_text_title getik het – geluk dat jy onthou het!",
-    "type": "template",
-    "note": "The string @data.habit.spend_time.in_text_title should not be translated."
-  },
-  {
     "SourceText": "Your goal was to spend one-on-one time with your teen.",
     "text": "Jou doelwit was om een-tot-een-tyd saam met jou tiener deur te bring.",
     "type": "template",
@@ -3964,12 +3652,6 @@
     "text": "Tieners is dalk daaraan gewoond dat ’n pakslae die enigste gevolg is as die reëls gebreek word. \n\nDink saam aan ’n paar kalm gevolge wat hulle kan help verstaan dat hulle iets verkeerds gedoen het. Dit sal meer doeltreffend wees en sal positiewe voorbeelde stel!",
     "type": "template",
     "note": ""
-  },
-  {
-    "SourceText": "Your goal was to introduce ONE positive consequence (for your teen taking responsibility) and ONE negative consequence (for your teen breaking a household rule). You tapped the @data.habit.consequence.in_text_title - great job for remembering!",
-    "text": "Jou doelwit was om EEN positiewe gevolg (vir jou tiener om verantwoordelikheid te neem) en EEN negatiewe gevolg (vir jou tiener wat ’n huisreël gebreek het) in te stel. Jy het op die @data.habit.consequence.in_text_title getik – welgedaan dat jy onthou het!",
-    "type": "template",
-    "note": "The string @data.habit.consequence.in_text_title should not be translated."
   },
   {
     "SourceText": "Your goal was to introduce ONE positive consequence (for your teen taking responsibility) and ONE negative consequence (for your teen breaking a household rule).",
@@ -4962,12 +4644,6 @@
     "note": ""
   },
   {
-    "SourceText": "Your home practice was to try out REAL, POSITIVE and EXACT instructions with your teen.  We noticed you tapped the @data.habit.instruct_positively.in_text_title - great job for remembering!",
-    "text": "Jou tuisoefening was om REALISTIESE, POSITIEWE en PRESIESE instruksies met jou tiener te probeer. Ons het opgemerk dat jy op die @data.habit.instruct_positively.in_text_title getik het – wonderlik dat jy onthou het!",
-    "type": "template",
-    "note": "The string @data.habit.instruct_positively.in_text_title should not be translated."
-  },
-  {
     "SourceText": "Your home practice was to try out REAL, POSITIVE and EXACT instructions with your teen.",
     "text": "Jou tuisoefening was om REALISTIESE, POSITIEWE en PRESIESE instruksies met jou tiener te poog.",
     "type": "template",
@@ -5416,12 +5092,6 @@
     "text": "Probeer die begroting eers saam met ander volwassenes in jou huis maak. Jou tiener sal dalk begin belangstel in wat julle doen.\n\nOm ’n begroting te maak, kan ernstig klink, maar probeer om dit pret te maak – maak dit ’n speletjie tydens een-tot-een-tyd! Of jy kan probeer om die begroting eers vir @global.w_money_grandma te maak.\n\nOnthou om jou tiener te prys wanneer julle klaar is!",
     "type": "template",
     "note": "The string @global.w_money_grandma should not be translated."
-  },
-  {
-    "SourceText": "Your goal was to make a family budget and savings plan. We noticed you tapped the @data.habit.money.in_text_title - great job for remembering!",
-    "text": "Jou doelwit was om ’n gesinsbegroting en spaarplan te maak. Ons het opgemerk dat jy op die@data.habit.money.in_text_title getik het – welgedaan dat jy onthou het!",
-    "type": "template",
-    "note": "The string @data.habit.money.in_text_title should not be translated."
   },
   {
     "SourceText": "Your goal was to make a family budget and savings plan.",
@@ -5896,12 +5566,6 @@
     "text": "Hierdie week se tuisoefening is om jou tiener een keer per dag te prys. Dit sal net 10 sekondes neem!",
     "type": "template",
     "note": ""
-  },
-  {
-    "SourceText": "Your goal was to praise your teen. You’ve tapped the @data.habit.praise_teen.in_text_title this week. Great job for remembering!",
-    "text": "Jou doelwit was om jou tiener te prys. Jy het hierdie week op @data.habit.praise_teen.in_text_title getik. Welgedaan dat jy onthou het!",
-    "type": "template",
-    "note": "The string @data.habit.praise_teen.in_text_title should not be translated."
   },
   {
     "SourceText": "Your goal was to praise your teen.",
@@ -8334,32 +7998,14 @@
     "note": ""
   },
   {
-    "SourceText": "This week, your goal was: Whenever you are feeling stressed or upset, take five breaths in and out before you react. You tapped the @data.habit.breathe.in_text_title - well done!",
-    "text": "Hierdie week was jou doelwit: wanneer jy gestres of ontsteld voel, moet jy vyf keer in- en uitasem voordat jy reageer. Jy het op die@data.habit.breathe.in_text_title getik – mooi so!",
-    "type": "template",
-    "note": "The string @data.habit.breathe.in_text_title should not be translated."
-  },
-  {
     "SourceText": "This week, your goal was: Whenever you are feeling stressed or upset, take five breaths in and out before you react.",
     "text": "Hierdie week was jou doelwit: wanneer jy gestres of ontsteld voel, moet jy vyf keer in- en uitasem voordat jy reageer.",
     "type": "template",
     "note": ""
   },
   {
-    "SourceText": "How did this work out?",
-    "text": "Hoe het dit verloop?",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "Your goal was also to talk to your teen about how you both felt in a stressful situation.",
     "text": "Jou doelwit was ook om met jou tiener te praat oor hoe julle albei in ’n stresvolle situasie gevoel het.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "How did this go?",
-    "text": "Hoe het dit gegaan?",
     "type": "template",
     "note": ""
   },
@@ -9492,12 +9138,6 @@
     "note": "The string @global.parent_points should not be translated."
   },
   {
-    "SourceText": "<p>Find lots of helpful resources in the @global.parent_centre.</p>\n\n<p>You can get instant access to the @data.parent_centre.essential_tools.title from all @global.weekly_workshops.</p>",
-    "text": "<p>Vind talle nuttige hulpbronne in die @global.parent_centre.</p>\n\n<p>Jy kan onmiddellike toegang tot die @data.parent_centre.essential_tools.title verkry vanaf al die @global.weekly_workshops.</p>",
-    "type": "tour",
-    "note": "The following strings should not be translated:\n@global.parent_centre.</p>\n@data.parent_centre.essential_tools.title\n@global.weekly_workshops.</p>"
-  },
-  {
     "SourceText": "<p>Check out the extra relaxation and parenting activities!</p>\n\n<p>You can also get quick parenting tips and technical support.</p>",
     "text": "<p>Verken die ekstra ontspannings- en ouerskapaktiwiteite!</p>\n\n<p>Jy kan ook vinnige ouerskapwenke en tegniese ondersteuning kry.</p>",
     "type": "tour",
@@ -10448,6 +10088,96 @@
   {
     "SourceText": "Angry? Take a break",
     "text": "Kwaad? Neem ’n blaaskans",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "It is hard to find time to have fun with your teenager.",
+    "text": "Dis moeilik om tyd te kry om prettige dinge saam met jou tiener te doen.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "In our busy lives it’s hard to focus on the positive.",
+    "text": "Dis moeilik om in ons besige lewens op die positiewe te fokus.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many days in the past week have you praised your teen?",
+    "text": "Hoeveel dae die afgelope week het jy jou tiener geprys?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "This is a very stressful time for families.",
+    "text": "Dit is ’n baie stresvolle tyd vir gesinne.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many days in the past week did you feel very stressed as a parent/caregiver?",
+    "text": "Hoeveel dae die afgelope week het jy as ouer/versorger stres ervaar?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Sometimes our children make us really upset.",
+    "text": "Soms ontstel ons kinders ons baie.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many days in the past week did you shout, scream or yell at your teen?",
+    "text": "Hoeveel dae die afgelope week het jy op jou tiener geskree of gegil?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many days in the past month (30 days) did you run out of money to pay for food?",
+    "text": "Hoeveel keer die afgelope maand (30 dae) het jou kosgeld opgeraak?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "It is so stressful when children misbehave.",
+    "text": "Dis so stresvol as kinders stout of ongehoorsaam is.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many days in the past week did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?",
+    "text": "Hoeveel dae die afgelope week het jy jou kinders fisies gedissiplineer deur hulle te klap, pak te gee of te slaan met jou hand of ’n voorwerp soos ’n stok of ’n belt?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "It’s hard to keep track of your teenagers when they are becoming independent.",
+    "text": "Dit is moeilik om toesig oor jou tieners te hou wanneer hulle onafhanklik raak.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many days in the past week did you know what your teen was doing and who they were with?",
+    "text": "Hoeveel dae die afgelope week het jy geweet wat jou tiener doen en by wie hulle was?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Days in the past week",
+    "text": "Dae gedurende die afgelope week",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "We all want to keep our children safe.",
+    "text": "Ons almal wil ons kinders veilig hou.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Days in the past month",
+    "text": "Dae gedurende die afgelope maand",
     "type": "data_list",
     "note": ""
   },

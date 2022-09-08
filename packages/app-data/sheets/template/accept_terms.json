@@ -11,49 +11,48 @@
         "value": {}
       },
       "style_list": [
-        "max-height: 150px"
+        "max-height: 100px"
       ],
       "_nested_name": "image"
     },
     {
       "type": "text",
       "name": "text_1",
-      "value": "By pressing @global.continue_button, you acknowledge reading and accepting the @global.terms_and_conditions and @global.privacy_policy. The most important commitments are:\n1. This is, and will always be, a fully free app.\n2. Your data will never be sold. We are not for profit.\n3. By using the app you are helping to make the app better for you and others.",
+      "value": "By providing your consent below you acknowledge reading and accepting the @global.terms_and_conditions and @global.privacy_policy. The most important commitments are:\n1. This is, and will always be, a fully free app.\n2. Your data will never be sold. We are not for profit.\n3. By using the app you are helping to make the app better for you and others.\n4. Your anonymised data may be used for research purposes by our @global.parent_app team.",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
       "_nested_name": "text_1",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "By pressing @global.continue_button, you acknowledge reading and accepting the @global.terms_and_conditions and @global.privacy_policy. The most important commitments are:\n1. This is, and will always be, a fully free app.\n2. Your data will never be sold. We are not for profit.\n3. By using the app you are helping to make the app better for you and others.",
-            "matchedExpression": "@global.continue_button",
-            "type": "global",
-            "fieldName": "continue_button"
-          },
-          {
-            "fullExpression": "By pressing @global.continue_button, you acknowledge reading and accepting the @global.terms_and_conditions and @global.privacy_policy. The most important commitments are:\n1. This is, and will always be, a fully free app.\n2. Your data will never be sold. We are not for profit.\n3. By using the app you are helping to make the app better for you and others.",
+            "fullExpression": "By providing your consent below you acknowledge reading and accepting the @global.terms_and_conditions and @global.privacy_policy. The most important commitments are:\n1. This is, and will always be, a fully free app.\n2. Your data will never be sold. We are not for profit.\n3. By using the app you are helping to make the app better for you and others.\n4. Your anonymised data may be used for research purposes by our @global.parent_app team.",
             "matchedExpression": "@global.terms_and_conditions",
             "type": "global",
             "fieldName": "terms_and_conditions"
           },
           {
-            "fullExpression": "By pressing @global.continue_button, you acknowledge reading and accepting the @global.terms_and_conditions and @global.privacy_policy. The most important commitments are:\n1. This is, and will always be, a fully free app.\n2. Your data will never be sold. We are not for profit.\n3. By using the app you are helping to make the app better for you and others.",
+            "fullExpression": "By providing your consent below you acknowledge reading and accepting the @global.terms_and_conditions and @global.privacy_policy. The most important commitments are:\n1. This is, and will always be, a fully free app.\n2. Your data will never be sold. We are not for profit.\n3. By using the app you are helping to make the app better for you and others.\n4. Your anonymised data may be used for research purposes by our @global.parent_app team.",
             "matchedExpression": "@global.privacy_policy",
             "type": "global",
             "fieldName": "privacy_policy"
+          },
+          {
+            "fullExpression": "By providing your consent below you acknowledge reading and accepting the @global.terms_and_conditions and @global.privacy_policy. The most important commitments are:\n1. This is, and will always be, a fully free app.\n2. Your data will never be sold. We are not for profit.\n3. By using the app you are helping to make the app better for you and others.\n4. Your anonymised data may be used for research purposes by our @global.parent_app team.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.continue_button": [
-          "value"
-        ],
         "@global.terms_and_conditions": [
           "value"
         ],
         "@global.privacy_policy": [
+          "value"
+        ],
+        "@global.parent_app": [
           "value"
         ]
       }
@@ -135,12 +134,111 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
       "_nested_name": "text_2"
     },
     {
+      "name": "consent_text",
+      "value": "I consent to the commitments stated above.",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "consent_text"
+    },
+    {
+      "type": "simple_checkbox",
+      "name": "checkbox",
+      "parameter_list": {
+        "align": "left",
+        "label_text": "@local.consent_text"
+      },
+      "_nested_name": "checkbox",
+      "_dynamicFields": {
+        "parameter_list": {
+          "label_text": [
+            {
+              "fullExpression": "@local.consent_text",
+              "matchedExpression": "@local.consent_text",
+              "type": "local",
+              "fieldName": "consent_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.consent_text": [
+          "parameter_list.label_text"
+        ]
+      }
+    },
+    {
       "type": "template",
-      "name": "nav_buttons",
+      "name": "nav_buttons_no_consent",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "pop_up",
+          "args": [
+            "accept_terms_warning"
+          ],
+          "_raw": "completed | pop_up: accept_terms_warning",
+          "_cleaned": "completed | pop_up: accept_terms_warning"
+        }
+      ],
+      "condition": "!@local.checkbox",
+      "rows": [
+        {
+          "name": "display_back",
+          "value": false,
+          "type": "set_variable",
+          "_nested_name": "nav_buttons_no_consent.display_back"
+        },
+        {
+          "name": "button_completed",
+          "value": "@global.continue_button",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "nav_buttons_no_consent.button_completed",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.continue_button",
+                "matchedExpression": "@global.continue_button",
+                "type": "global",
+                "fieldName": "continue_button"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.continue_button": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "nav_buttons_no_consent",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@local.checkbox",
+            "matchedExpression": "!@local.checkbox",
+            "type": "local",
+            "fieldName": "checkbox"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@local.checkbox": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons_consent",
       "value": "nav_buttons",
       "action_list": [
         {
@@ -172,12 +270,16 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
+      "parameter_list": {
+        "disabled": "@local.checkbox"
+      },
+      "condition": "@local.checkbox",
       "rows": [
         {
           "name": "display_back",
           "value": false,
           "type": "set_variable",
-          "_nested_name": "nav_buttons.display_back"
+          "_nested_name": "nav_buttons_consent.display_back"
         },
         {
           "name": "button_completed",
@@ -186,7 +288,7 @@
             "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "nav_buttons.button_completed",
+          "_nested_name": "nav_buttons_consent.button_completed",
           "_dynamicFields": {
             "value": [
               {
@@ -204,7 +306,33 @@
           }
         }
       ],
-      "_nested_name": "nav_buttons"
+      "_nested_name": "nav_buttons_consent",
+      "_dynamicFields": {
+        "parameter_list": {
+          "disabled": [
+            {
+              "fullExpression": "@local.checkbox",
+              "matchedExpression": "@local.checkbox",
+              "type": "local",
+              "fieldName": "checkbox"
+            }
+          ]
+        },
+        "condition": [
+          {
+            "fullExpression": "@local.checkbox",
+            "matchedExpression": "@local.checkbox",
+            "type": "local",
+            "fieldName": "checkbox"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.checkbox": [
+          "parameter_list.disabled",
+          "condition"
+        ]
+      }
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"

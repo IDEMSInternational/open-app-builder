@@ -1,0 +1,15 @@
+$button-background-primary: var(--button-background-primary, var(--gradient-primary-mid-vertical));
+
+ion-button {
+  font-size: 25px;
+  font-weight: 500;
+  color: var(--ion-color-primary-contrast);
+  text-transform: none;
+  white-space: pre-line;
+  min-height: 71px;
+  padding: var(--regular-margin) var(--regular-padding) 0;
+  --border-radius: 15px;
+  --box-shadow: var(--ion-default-box-shadow);
+  min-width: 100%;
+  --background: #{$button-background-primary};
+}

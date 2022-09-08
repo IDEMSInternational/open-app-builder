@@ -1,6 +1,12 @@
 import { Injectable } from "@angular/core";
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from "@angular/common/http";
-
+import {
+  HttpEvent,
+  HttpInterceptor,
+  HttpHandler,
+  HttpRequest,
+  HTTP_INTERCEPTORS,
+} from "@angular/common/http";
+import { environment } from "src/environments/environment";
 import { Observable } from "rxjs";
 
 /** Handle updating urls intended for api server */
@@ -16,10 +22,6 @@ export class ServerAPIInterceptor implements HttpInterceptor {
     return next.handle(req);
   }
 }
-
-/* "Barrel" of Http Interceptors */
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
-import { environment } from "src/environments/environment";
 
 /** Http interceptor providers in outside-in order */
 export const httpInterceptorProviders = [

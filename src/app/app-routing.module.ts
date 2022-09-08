@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, Route, RouterModule, Routes } from "@angular/router";
-import { ThemeEditorComponent } from "src/app/feature/theme/theme-editor/theme-editor.component";
 import { APP_CONSTANTS } from "./data";
 import { TourComponent } from "./feature/tour/tour.component";
 
@@ -30,12 +29,12 @@ const FeatureRoutes: Routes = [
       import("./feature/template/template.module").then((m) => m.TemplatePageModule),
   },
   {
-    path: "theme-editor",
-    component: ThemeEditorComponent,
+    path: "theme",
+    loadChildren: () => import("./feature/theme/theme.module").then((m) => m.ThemeModule),
   },
   {
     path: "tour",
-    component: TourComponent,
+    loadChildren: () => import("./feature/tour/tour.module").then((m) => m.TourModule),
   },
   {
     path: "tour/:tourName",
