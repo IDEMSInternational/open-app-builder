@@ -1,9 +1,13 @@
 import { extractDynamicFields, FlowTypes } from "data-models";
-import { extractConditionList, parseAppDataCollectionString, setNestedProperty } from "../../utils";
-import { DefaultParser } from "../default/default.parser";
+import {
+  extractConditionList,
+  parseAppDataCollectionString,
+  setNestedProperty,
+} from "../../../utils";
+import { DefaultParser } from "./default.parser";
 
 export class DataListParser extends DefaultParser {
-  postProcess(row: FlowTypes.Data_listRow) {
+  postProcessRow(row: FlowTypes.Data_listRow) {
     Object.keys(row).forEach((field) => {
       // handle other data structures
       if (field.endsWith("_condition_list")) {

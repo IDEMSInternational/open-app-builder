@@ -6,19 +6,26 @@ import { SCRIPTS_LOGS_DIR } from "../paths";
 
 import winston from "winston";
 import path from "path";
-import { emptyDirSync, ensureDirSync } from "fs-extra";
+import { emptyDirSync, ensureDirSync, truncateSync } from "fs-extra";
 import { _wait } from "./cli-utils";
 import { Writable } from "stream";
+import { existsSync } from "fs";
 
 const logLevels = ["debug", "info", "warning", "error"] as const;
 type ILogLevel = typeof logLevels[number];
+interface ILogEntry {
+  level: ILogLevel;
+  message?: string;
+  details?: any;
+  source?: string;
+}
 
 // Declare a history variable that can be written to via a stream
 let logHistory = "";
 
 /** Retrieve all logs from current session for a given variable */
 export function getLogs(level: ILogLevel, message?: string) {
-  const logEntries: { level: ILogLevel; message: any; details?: any }[] = logHistory
+  const logEntries: ILogEntry[] = logHistory
     .split("\n")
     .filter((v) => v)
     .map((v) => JSON.parse(v));
@@ -36,16 +43,36 @@ export function getLogFiles() {
   return logFiles;
 }
 
+export function clearLogs(attempt = 0) {
+  logHistory = "";
+  try {
+    const logFiles = getLogFiles();
+    for (const logFile of Object.values(logFiles)) {
+      if (existsSync(logFile)) {
+        truncateSync(logFile);
+      }
+    }
+  } catch (error) {
+    attempt++;
+    if (attempt > 5) {
+      throw error;
+    }
+    console.log("could not clear logs, retrying...", attempt);
+    return clearLogs(attempt);
+  }
+}
+
 /**
  * Create loggers that write to file based on level and also save all logs to a single string
  * for easy querying
  */
-function setupLogger() {
+function getLogger() {
   const g = global as any;
   if (g.logger) {
-    return g.logger;
+    return g.logger as winston.Logger;
   }
   // setup files
+  logHistory = "";
   ensureDirSync(SCRIPTS_LOGS_DIR);
   emptyDirSync(SCRIPTS_LOGS_DIR);
   const logFiles = getLogFiles();
@@ -78,7 +105,7 @@ function setupLogger() {
 }
 
 export function createChildLogger(meta = {}) {
-  const logger = setupLogger();
+  const logger = getLogger();
   return logger.child(meta);
 }
 

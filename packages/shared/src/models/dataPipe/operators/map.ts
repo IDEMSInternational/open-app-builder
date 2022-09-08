@@ -2,8 +2,8 @@ import { DataFrame } from "danfojs";
 import AppendColumnsOperator from "./appendColumns";
 
 class MapOperator extends AppendColumnsOperator {
-  constructor(df: DataFrame, args: any) {
-    super(df, args);
+  constructor(df: DataFrame, args_list: any) {
+    super(df, args_list);
   }
   apply() {
     // append columns using parent operator

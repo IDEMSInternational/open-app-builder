@@ -6,10 +6,10 @@ import BaseOperator from "./base";
 type ILoadedDatalist = any; // datalist
 
 class ConcatOperator extends BaseOperator {
-  public args: string[];
+  public args_list: string[];
   private indexColumn = "id";
-  constructor(df: DataFrame, args: any, pipe: DataPipe) {
-    super(df, args, pipe);
+  constructor(df: DataFrame, args_list: any, pipe: DataPipe) {
+    super(df, args_list, pipe);
   }
 
   // load input data list from arg, populate error object if not exist for use in validation step
@@ -22,7 +22,7 @@ class ConcatOperator extends BaseOperator {
   }
 
   apply() {
-    for (const dataList of this.args) {
+    for (const dataList of this.args_list) {
       this.df = this.applyConcat(dataList);
     }
     return this.df;

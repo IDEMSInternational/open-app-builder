@@ -4,9 +4,9 @@ import BaseOperator from "./base";
 
 class FilterOperator extends BaseOperator {
   public filterConditions: string[] = [];
-  constructor(df: DataFrame, args: any) {
-    super(df, args);
-    this.filterConditions = this.args;
+  constructor(df: DataFrame, args_list: any) {
+    super(df, args_list);
+    this.filterConditions = this.args_list;
   }
   // args are simply evaluated as JS statements and do not require additional parsing
   parseArg(arg: string) {
