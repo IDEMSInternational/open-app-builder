@@ -1,3 +1,10 @@
+$placeholder-text: var(--combo-box-placeholder-text, var(--ion-color-primary-transparent));
+$background-no-value: var(combo-box-background-no-value, transparent);
+$background-with-value: var(
+  --combo-box-background-with-value,
+  var(--gradient-primary-light-vertical)
+);
+
 .open-combobox {
   outline: none;
   width: 100%;
@@ -6,7 +13,7 @@
   filter: drop-shadow(var(--ion-default-box-shadow));
   border-radius: var(--ion-border-radius-secondary);
   font-weight: var(--font-weight-standard);
-  background: var(--combo-box-with-answer-bg);
+  background: $background-no-value;
   font-size: var(--combo-box-font-size-standard);
   line-height: var(--line-height-text-large);
   text-align: center;
@@ -18,20 +25,11 @@
 }
 
 .placeholder-style {
-  color: var(--combo-box-placeholder-primary);
+  color: $placeholder-text;
 }
-.active {
-  background: var(--combo-box-active-with-answer-bg);
+.with-value {
+  background: $background-with-value;
 }
-.active-no-value {
-  background: var(--ion-color-primary-contrast);
-}
-.passive {
-  background: var(--combo-box-passive-with-answer-bg);
-}
-.passive-no-value {
-  background: transparent;
-}
-.default-no-value {
-  background: var(--combo-box-no-answer-bg);
+.no-value {
+  background: $background-no-value;
 }

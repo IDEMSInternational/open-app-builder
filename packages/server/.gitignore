@@ -1,2 +1,4 @@
 .env.*
 !.env.example
+# Generated from template, stored locally just for reference
+docker/config/nginx/conf.d/server.conf

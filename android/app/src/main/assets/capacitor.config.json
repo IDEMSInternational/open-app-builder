@@ -6,7 +6,8 @@
 	"plugins": {
 		"SplashScreen": {
 			"launchShowDuration": 7000,
-			"launchAutoHide": true
+			"launchAutoHide": true,
+			"androidScaleType": "CENTER_CROP"
 		},
 		"FirebaseAuthentication": {
 			"skipNativeAuth": false,

@@ -121,28 +121,16 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "campaign_workshop_quick_start",
       _xlsxPath: "global/campaigns/quick_start_weekly_workshops.xlsx",
     },
-    nf_generic: {
-      flow_type: "data_list",
-      flow_subtype: "campaign_rows",
-      flow_name: "nf_generic",
-      _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
-    },
     nf_inactive_day: {
       flow_type: "data_list",
       flow_subtype: "campaign_rows",
       flow_name: "nf_inactive_day",
       _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
     },
-    nf_inactive_month: {
+    nf_inactive_week_month: {
       flow_type: "data_list",
       flow_subtype: "campaign_rows",
-      flow_name: "nf_inactive_month",
-      _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
-    },
-    nf_inactive_week: {
-      flow_type: "data_list",
-      flow_subtype: "campaign_rows",
-      flow_name: "nf_inactive_week",
+      flow_name: "nf_inactive_week_month",
       _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
     },
     nf_w_1on1: {
@@ -323,7 +311,21 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       flow_name: "example_items_data_list",
       data_list_name: "example_items",
-      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_items.xlsx",
+      _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
+    },
+    example_items_nav_data_list: {
+      flow_type: "data_list",
+      flow_subtype: "debug",
+      flow_name: "example_items_nav_data_list",
+      data_list_name: "example_items_nav",
+      _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
+    },
+    example_items_radio_data_list: {
+      flow_type: "data_list",
+      flow_subtype: "debug",
+      flow_name: "example_items_radio_data_list",
+      data_list_name: "example_items_radio",
+      _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
     },
     example_lang_data_list: {
       flow_type: "data_list",
@@ -332,11 +334,35 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_languages.xlsx",
     },
+    example_templating_list: {
+      flow_type: "data_list",
+      flow_subtype: "debug",
+      flow_name: "example_templating_list",
+      _xlsxPath: "quality_assurance/example_sheets/example_advanced_templating.xlsx",
+    },
     feature_items_data: {
       flow_type: "data_list",
       flow_name: "feature_items_data",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_items.xlsx",
+    },
+    example_data_pipe_list: {
+      flow_type: "data_list",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_list",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes.xlsx",
+    },
+    example_sheet_defaults_list: {
+      flow_type: "data_list",
+      flow_name: "example_sheet_defaults_list",
+      flow_subtype: "example_sheet_defaults",
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_sheet_defaults.xlsx",
+    },
+    funders_data_list: {
+      flow_type: "data_list",
+      flow_name: "funders_data_list",
+      data_list_name: "funders",
+      _xlsxPath: "global/data/partners_data_lists.xlsx",
     },
     habit_data_list: {
       flow_type: "data_list",
@@ -356,11 +382,47 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "launch_actions",
       _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
     },
+    number_data: {
+      flow_type: "data_list",
+      flow_name: "number_data",
+      data_list_name: "number",
+      _xlsxPath: "global/data/workshop_data/workshop_data_list.xlsx",
+    },
+    organisations_tz_data_list: {
+      flow_type: "data_list",
+      flow_name: "organisations_tz_data_list",
+      data_list_name: "organisations_plh_tz",
+      _xlsxPath: "global/data/partners_data_lists.xlsx",
+    },
+    organisations_za_data_list: {
+      flow_type: "data_list",
+      flow_name: "organisations_za_data_list",
+      data_list_name: "organisations_plh_za",
+      _xlsxPath: "global/data/partners_data_lists.xlsx",
+    },
     parent_centre_data_list: {
       flow_type: "data_list",
       flow_name: "parent_centre_data_list",
       data_list_name: "parent_centre",
       _xlsxPath: "global/data/parent_centre_data_list.xlsx",
+    },
+    partners_data_list: {
+      flow_type: "data_list",
+      flow_name: "partners_data_list",
+      data_list_name: "partners",
+      _xlsxPath: "global/data/partners_data_lists.xlsx",
+    },
+    partners_tz_data_list: {
+      flow_type: "data_list",
+      flow_name: "partners_tz_data_list",
+      data_list_name: "partners_plh_tz",
+      _xlsxPath: "global/data/partners_data_lists.xlsx",
+    },
+    partners_za_data_list: {
+      flow_type: "data_list",
+      flow_name: "partners_za_data_list",
+      data_list_name: "partners_plh_za",
+      _xlsxPath: "global/data/partners_data_lists.xlsx",
     },
     relax_list: {
       flow_type: "data_list",
@@ -368,17 +430,23 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "relax",
       _xlsxPath: "global/data/relax_data_list.xlsx",
     },
+    story_data: {
+      flow_type: "data_list",
+      flow_name: "story_data",
+      data_list_name: "story",
+      _xlsxPath: "global/data/workshop_data/workshop_data_list.xlsx",
+    },
     survey_data_list: {
       flow_type: "data_list",
       flow_name: "survey_data_list",
       data_list_name: "survey",
       _xlsxPath: "global/data/survey_data_list.xlsx",
     },
-    workshop_data_list: {
+    workshop_data: {
       flow_type: "data_list",
-      flow_name: "workshop_data_list",
+      flow_name: "workshop_data",
       data_list_name: "workshop",
-      _xlsxPath: "global/data/workshop_data_list.xlsx",
+      _xlsxPath: "global/data/workshop_data/workshop_data_list.xlsx",
     },
   },
   global: {
@@ -559,6 +627,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "savings_options",
       _xlsxPath: "global/data/suggestion_globals.xlsx",
     },
+    skin_fields: {
+      flow_type: "global",
+      flow_name: "skin_fields",
+      _xlsxPath: "global/data/navigation_globals.xlsx",
+    },
     spend_time_ideas: {
       flow_type: "global",
       module: "1on1",
@@ -573,23 +646,28 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     workshop_completion_levels: {
       flow_type: "global",
       flow_name: "workshop_completion_levels",
-      _xlsxPath: "global/data/workshop_globals.xlsx",
+      _xlsxPath: "global/data/workshop_data/workshop_globals.xlsx",
     },
     workshop_modes: {
       flow_type: "global",
       flow_name: "workshop_modes",
-      _xlsxPath: "global/data/workshop_globals.xlsx",
+      _xlsxPath: "global/data/workshop_data/workshop_globals.xlsx",
     },
     workshop_options: {
       flow_type: "global",
       flow_name: "workshop_options",
-      _xlsxPath: "global/data/workshop_globals.xlsx",
+      _xlsxPath: "global/data/workshop_data/workshop_globals.xlsx",
     },
   },
   template: {
     accept_terms: {
       flow_type: "template",
       flow_name: "accept_terms",
+      _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
+    },
+    accept_terms_warning: {
+      flow_type: "template",
+      flow_name: "accept_terms_warning",
       _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
     },
     activity_check_in_chat: {
@@ -996,7 +1074,17 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     box_story: {
       flow_type: "template",
       flow_name: "box_story",
-      _xlsxPath: "global/core_templates/core_templates_workshop_boxes.xlsx",
+      _xlsxPath: "global_modular/core_templates/box_story.xlsx",
+    },
+    box_story_pages: {
+      flow_type: "template",
+      flow_name: "box_story_pages",
+      _xlsxPath: "global_modular/core_templates/box_story.xlsx",
+    },
+    box_story_scroll: {
+      flow_type: "template",
+      flow_name: "box_story_scroll",
+      _xlsxPath: "global_modular/core_templates/box_story.xlsx",
     },
     box_text_box: {
       flow_type: "template",
@@ -1055,11 +1143,29 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_button.xlsx",
     },
+    comp_card: {
+      flow_type: "template",
+      flow_name: "comp_card",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_card.xlsx",
+    },
+    comp_card_params: {
+      flow_type: "template",
+      flow_name: "comp_card_params",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_card.xlsx",
+    },
     comp_checkbox: {
       flow_type: "template",
       flow_name: "comp_checkbox",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_simple_checkbox .xlsx",
+    },
+    comp_colour_palette: {
+      flow_type: "template",
+      flow_name: "comp_colour_palette",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_colour_palette.xlsx",
     },
     comp_combo_box: {
       flow_type: "template",
@@ -1067,17 +1173,47 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_combo_box.xlsx",
     },
+    comp_dashed_box: {
+      flow_type: "template",
+      flow_name: "comp_dashed_box",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_dashed_box.xlsx",
+    },
+    comp_form: {
+      flow_type: "template",
+      flow_name: "comp_form",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_form.xlsx",
+    },
     comp_html: {
       flow_type: "template",
       flow_name: "comp_html",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_html.xlsx",
     },
+    comp_image: {
+      flow_type: "template",
+      flow_name: "comp_image",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_image.xlsx",
+    },
     comp_latex: {
       flow_type: "template",
       flow_name: "comp_latex",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_latex.xlsx",
+    },
+    comp_parent_point_box: {
+      flow_type: "template",
+      flow_name: "comp_parent_point_box",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_parent_point_box.xlsx",
+    },
+    comp_parent_point_counter: {
+      flow_type: "template",
+      flow_name: "comp_parent_point_counter",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_parent_point_counter.xlsx",
     },
     comp_radio_group: {
       flow_type: "template",
@@ -1091,6 +1227,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_round_button .xlsx",
     },
+    comp_select_text: {
+      flow_type: "template",
+      flow_name: "comp_select_text",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_select_text.xlsx",
+    },
     comp_slider: {
       flow_type: "template",
       flow_name: "comp_slider",
@@ -1103,17 +1245,47 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_square_button.xlsx",
     },
+    comp_subtitle: {
+      flow_type: "template",
+      flow_name: "comp_subtitle",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_subtitle.xlsx",
+    },
     comp_text: {
       flow_type: "template",
       flow_name: "comp_text",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_text.xlsx",
     },
+    comp_text_area: {
+      flow_type: "template",
+      flow_name: "comp_text_area",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_text_area.xlsx",
+    },
+    comp_text_box: {
+      flow_type: "template",
+      flow_name: "comp_text_box",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_text_box.xlsx",
+    },
     comp_timer: {
       flow_type: "template",
       flow_name: "comp_timer",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_timer.xlsx",
+    },
+    comp_title: {
+      flow_type: "template",
+      flow_name: "comp_title",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_title.xlsx",
+    },
+    "comp_toggle-bar": {
+      flow_type: "template",
+      flow_name: "comp_toggle-bar",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_toggle_bar.xlsx",
     },
     comp_video: {
       flow_type: "template",
@@ -2047,6 +2219,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_analytics.xlsx",
     },
+    example_asset_sync: {
+      flow_type: "template",
+      flow_name: "example_asset_sync",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_actions.xlsx",
+    },
     example_audio_player: {
       flow_type: "template",
       flow_name: "example_audio_player",
@@ -2177,13 +2355,31 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_subtype: "debug",
       flow_name: "example_items",
-      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_items.xlsx",
+      _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
+    },
+    example_items_nav: {
+      flow_type: "template",
+      flow_subtype: "debug",
+      flow_name: "example_items_nav",
+      _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
+    },
+    example_items_pipe: {
+      flow_type: "template",
+      flow_subtype: "debug",
+      flow_name: "example_items_pipe",
+      _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
+    },
+    example_items_radio: {
+      flow_type: "template",
+      flow_subtype: "debug",
+      flow_name: "example_items_radio",
+      _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
     },
     example_items_unlock: {
       flow_type: "template",
       flow_subtype: "debug",
       flow_name: "example_items_unlock",
-      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_items.xlsx",
+      _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
     },
     example_lang_select: {
       flow_type: "template",
@@ -2277,15 +2473,15 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     },
     example_radio_group_fb_con: {
       flow_type: "template",
-      flow_name: "example_radio_group_fb_con",
       flow_subtype: "debug",
-      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_radio_group.xlsx",
+      flow_name: "example_radio_group_fb_con",
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_options_feedback.xlsx",
     },
     example_radio_group_fb_hid: {
       flow_type: "template",
-      flow_name: "example_radio_group_fb_hid",
       flow_subtype: "debug",
-      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_radio_group.xlsx",
+      flow_name: "example_radio_group_fb_hid",
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_options_feedback.xlsx",
     },
     example_set_fields_in_action: {
       flow_type: "template",
@@ -2537,18 +2733,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx",
     },
-    feature_select_text: {
-      flow_type: "template",
-      flow_name: "feature_select_text",
-      flow_subtype: "debug",
-      _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_select_text.xlsx",
-    },
-    feature_set_theme_2: {
-      flow_type: "template",
-      flow_name: "feature_set_theme_2",
-      flow_subtype: "debug",
-      _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx",
-    },
     feature_slider: {
       flow_type: "template",
       flow_name: "feature_slider",
@@ -2711,6 +2895,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       comments: "List of fields automatically populated by app",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/hardcoded_variables.xlsx",
     },
+    example_sheet_defaults: {
+      flow_type: "template",
+      flow_name: "example_sheet_defaults",
+      flow_subtype: "example_sheet_defaults",
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_sheet_defaults.xlsx",
+    },
     home_practice: {
       flow_type: "template",
       flow_name: "home_practice",
@@ -2751,8 +2941,8 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "language_select",
       _xlsxPath: "global/core_templates/core_templates_settings.xlsx",
       _overrides: {
-        language_select_tz: '@fields._deployment_name == "plh_tz"',
         language_select_za: '@fields._deployment_name == "plh_za"',
+        language_select_tz: '@fields._deployment_name == "plh_tz"',
       },
     },
     language_select_tz: {
@@ -2949,8 +3139,8 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "organisation_registration",
       _xlsxPath: "global/core_templates/core_templates_settings.xlsx",
       _overrides: {
-        organisation_registration_tz: '@fields._deployment_name == "plh_tz"',
         organisation_registration_za: '@fields._deployment_name == "plh_za"',
+        organisation_registration_tz: '@fields._deployment_name == "plh_tz"',
       },
     },
     organisation_registration_tz: {
@@ -3106,6 +3296,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "question_time",
       _xlsxPath: "global/mode_templates/question_time.xlsx",
+    },
+    read: {
+      flow_type: "template",
+      flow_name: "read",
+      _xlsxPath: "global/mode_templates/read.xlsx",
     },
     read_temp: {
       flow_type: "template",
@@ -3288,6 +3483,21 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "something_fun",
       _xlsxPath: "global/core_templates/core_templates_relax_and_activities.xlsx",
+    },
+    splash_funders: {
+      flow_type: "template",
+      flow_name: "splash_funders",
+      _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
+    },
+    splash_partners_1: {
+      flow_type: "template",
+      flow_name: "splash_partners_1",
+      _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
+    },
+    splash_partners_2: {
+      flow_type: "template",
+      flow_name: "splash_partners_2",
+      _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
     },
     splash_screens: {
       flow_type: "template",
@@ -5011,6 +5221,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "w_praise_question_2",
       _xlsxPath: "global/top_templates/workshop_templates/workshop_praise.xlsx",
     },
+    w_praise_read: {
+      flow_type: "template",
+      module: "praise",
+      flow_name: "w_praise_read",
+      _xlsxPath: "global/top_templates/workshop_templates/workshop_praise.xlsx",
+    },
     w_praise_read_temp: {
       flow_type: "template",
       module: "praise",
@@ -6046,6 +6262,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "workshop_activity",
       _xlsxPath: "global/core_templates/core_templates_workshops.xlsx",
     },
+    workshop_activity_old: {
+      flow_type: "template",
+      flow_name: "workshop_activity_old",
+      _xlsxPath: "global/core_templates/core_templates_workshops.xlsx",
+    },
     workshop_completed_calc: {
       flow_type: "template",
       flow_name: "workshop_completed_calc",
@@ -6130,17 +6351,17 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     home_screen_tour_intro: {
       flow_type: "tour",
       flow_name: "home_screen_tour_intro",
-      _xlsxPath: "global/tutorials/home_screen_tour.xlsx",
+      _xlsxPath: "global/tours/home_screen_tour.xlsx",
     },
     home_screen_tour_menu: {
       flow_type: "tour",
       flow_name: "home_screen_tour_menu",
-      _xlsxPath: "global/tutorials/home_screen_tour.xlsx",
+      _xlsxPath: "global/tours/home_screen_tour.xlsx",
     },
     weekly_workshop_options_tour: {
       flow_type: "tour",
       flow_name: "weekly_workshop_options_tour",
-      _xlsxPath: "global/tutorials/weekly_workshops_tour.xlsx",
+      _xlsxPath: "global/tours/weekly_workshops_tour.xlsx",
     },
   },
 };

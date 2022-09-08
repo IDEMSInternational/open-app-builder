@@ -3,11 +3,8 @@
   (click)="openModal()"
   [class.placeholder-style]="(!_row.value && placeholder) || prioritisePlaceholder"
   [ngClass]="{
-    active: _row.value && style === 'active',
-    'active-no-value': !_row.value && style === 'active',
-    passive: _row.value && style === 'passive',
-    'passive-no-value': (!_row.value && style === 'passive') || prioritisePlaceholder,
-    'default-no-value': !checkIfContainsDefaultStyles && !_row.value
+    'with-value': _row.value,
+    'no-value': !_row.value
   }"
   [disabled]="_row.disabled"
 >

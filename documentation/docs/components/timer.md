@@ -21,9 +21,9 @@
 |help                   |string           | Any text for help tooltip   |                  
 |is_editable_on_playing |false (default)  | Not possible to change the values of the timer when it is running|
 |is_editable_on_playing |true             | Possible to change the values of the timer when it is running| 
-|duration_extension     |1 (default)      | Value for increasing the time on the timer|                        
-|duration_extension     |number           | Any number as value for increasing the time on the timer|
-|starting_minutes       |10 (default)     | 10 minutes by default   | 
+|duration_extension     |1 (default)      | Increase the time by one minute when adding time|                        
+|duration_extension     |number           | Any number of minutes for increasing the time on the timer|
+|starting_minutes       |10 (default)     | Starting time is 10 minutes (and 0 seconds) | 
 |starting_minutes       |number           | Any number as starting minutes|
-|starting_seconds       |0 (default)      | 0 seconds by default                    |
+|starting_seconds       |0 (default)      | Starting time is 0 seconds (and 10 minutes)   |
 |starting_seconds       |number           | Any number as starting seconds          | 
