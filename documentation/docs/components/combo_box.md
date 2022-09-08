@@ -2,15 +2,17 @@
 
 ## Example
 
-| type       | name                      |parameter_list |
-| ---------  | ------------              |--------- |
-|combo_box   |combo_box_par_2_1	         |input_allowed: false; answer_list: @local.answer_list_1|
-|combo_box   |combo_box_par_2_2	         |input_allowed: true; answer_list: @local.answer_list_1|
+| type        | name               | value                                 |parameter_list |
+| ---------   | ------------       |---------------                        |--------- |
+| |answer_list_1 |name: name_1 \| text: This is text 1\|name: name_2 \| text: This is text 2\|name: name_3 \| text: This is text 3;||                                      
+|combo_box    |combo_box_par_2_1   |                       |input_allowed: false; answer_list: @local.answer_list_1|
+|combo_box    |combo_box_par_2_2   |                       |input_allowed: true; answer_list: @local.answer_list_1|
 
-![](images/combo_box.png)
+###Video demonstration (click image to play)
+[![combo_box](images/combo_box.png)](videos/combo_box.mp4 "combo_box")
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/1uIkaMlDjoDN7uTpHkSeEQ6Yp-4ehX9IrBQMrolpfjQc/edit#gid=569531329)   
-[Live Preview Demo](https://plh-global.web.app/template/comp_box_box)
+[Live Preview Demo](https://plh-global.web.app/template/comp_combo_box)
 
 ## Parameters
 
