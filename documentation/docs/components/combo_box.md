@@ -19,7 +19,7 @@
 | Parameter             | Value                  | Description |
 | ---------             | -----------            | --------- |
 |answer_list            |null (default)          |No buttons presented|
-|answer_list            |strings array           |List of buttons with parameters|
+|answer_list            |strings array           |List of options to appear in the drop-down|
 |input_allowed          |false (default)         |User can not set a custom response|
 |input_allowed          |true                    |User can set a custom response|
 |input_position         |top (default)           |Position of input element|
