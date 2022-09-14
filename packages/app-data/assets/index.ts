@@ -144,7 +144,7 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 178.5,
     md5Checksum: "5c8df2d4bd27fb1f6c641a96ae119104",
   },
-  "pests/beneficials_attracted_to_flowers.PNG": {
+  "pests/beneficials_attracted_to_flowers.png": {
     size_kb: 108,
     md5Checksum: "711d3ce01c9ba873c907419d83492c97",
   },
@@ -212,7 +212,7 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 180.8,
     md5Checksum: "7aff7ff0c4ee94d57b88f73c6413b24e",
   },
-  "pests/ornamentals_attract_beneicials.png": {
+  "pests/ornamentals_attract_beneficials.png": {
     size_kb: 222.9,
     md5Checksum: "dd6902b2d2a06d8acd0bb002f9329930",
   },
@@ -392,6 +392,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 37.8,
     md5Checksum: "7a68a7013927a7fa04998365ca20f1c9",
   },
+  "soils/outfield.jpg": {
+    size_kb: 18.7,
+    md5Checksum: "8c95e2c8172c8b8d672c195beeacbcc0",
+  },
   "soils/particulate_organic_matter.JPG": {
     size_kb: 40.9,
     md5Checksum: "9495375680d97f66a169b09e63a17684",
@@ -464,6 +468,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 26.7,
     md5Checksum: "9adcd04d7a06a2a561d6eea66242c289",
   },
+  "soils/soil_1.PNG": {
+    size_kb: 74.3,
+    md5Checksum: "0c8e5625d3cecb6a104d988832ce1e62",
+  },
   "soils/soil_animals_combined.JPG": {
     size_kb: 47.9,
     md5Checksum: "eb414a7e599ca3d732e62fe777acb1c4",
@@ -480,7 +488,15 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 71,
     md5Checksum: "c76868eadaff5384ea45f837936dbd8a",
   },
-  "soils/soils 3.png": {
+  "soils/soils_2.PNG": {
+    size_kb: 159.3,
+    md5Checksum: "cbb0c90fcb02c9d5e5640f0d06b11c59",
+  },
+  "soils/soils_3.jpg": {
+    size_kb: 23.5,
+    md5Checksum: "f7355ccfb438a2f914456fcf8a5353c2",
+  },
+  "soils/soils_3.png": {
     size_kb: 108.9,
     md5Checksum: "18cdcf058493804fe8ca5ead735b6b1e",
   },
