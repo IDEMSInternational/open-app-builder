@@ -26,12 +26,22 @@
           "action_list": [
             {
               "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "current_topic",
+                "@item.id"
+              ],
+              "_raw": "click | set_field: current_topic: @item.id",
+              "_cleaned": "click | set_field: current_topic: @item.id"
+            },
+            {
+              "trigger": "click",
               "action_id": "go_to",
               "args": [
-                "@item.template"
+                "topic_screen"
               ],
-              "_raw": "click | go_to: @item.template",
-              "_cleaned": "click | go_to: @item.template"
+              "_raw": "click | go_to: topic_screen",
+              "_cleaned": "click | go_to: topic_screen"
             }
           ],
           "_nested_name": "items.button_@item.id",
@@ -55,29 +65,29 @@
             "action_list": {
               "0": {
                 "args": {
-                  "0": [
+                  "1": [
                     {
-                      "fullExpression": "@item.template",
-                      "matchedExpression": "@item.template",
+                      "fullExpression": "@item.id",
+                      "matchedExpression": "@item.id",
                       "type": "item",
-                      "fieldName": "template"
+                      "fieldName": "id"
                     }
                   ]
                 },
                 "_raw": [
                   {
-                    "fullExpression": "click | go_to: @item.template",
-                    "matchedExpression": "@item.template",
+                    "fullExpression": "click | set_field: current_topic: @item.id",
+                    "matchedExpression": "@item.id",
                     "type": "item",
-                    "fieldName": "template"
+                    "fieldName": "id"
                   }
                 ],
                 "_cleaned": [
                   {
-                    "fullExpression": "click | go_to: @item.template",
-                    "matchedExpression": "@item.template",
+                    "fullExpression": "click | set_field: current_topic: @item.id",
+                    "matchedExpression": "@item.id",
                     "type": "item",
-                    "fieldName": "template"
+                    "fieldName": "id"
                   }
                 ]
               }
@@ -94,15 +104,13 @@
           "_dynamicDependencies": {
             "@item.id": [
               "name",
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
               "_nested_name"
             ],
             "@item.title": [
               "value"
-            ],
-            "@item.template": [
-              "action_list.0.args.0",
-              "action_list.0._raw",
-              "action_list.0._cleaned"
             ]
           }
         }
