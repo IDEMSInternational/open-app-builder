@@ -1,0 +1,26 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "topics",
+  "status": "released",
+  "data_list_name": "topics",
+  "rows": [
+    {
+      "id": "pests",
+      "title": "Pests",
+      "description": "Managing and controlling pests",
+      "data_list_name": "pests_data_lists"
+    },
+    {
+      "id": "nutrition",
+      "title": "Nutrition",
+      "description": "Understanding your food",
+      "data_list_name": "understanding_your_food",
+      "template": "nutrition_screen"
+    },
+    {
+      "id": "soils",
+      "title": "Soils"
+    }
+  ],
+  "_xlsxPath": "data_lists/homepage/topics_data_list.xlsx"
+}
