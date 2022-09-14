@@ -1,0 +1,17 @@
+{
+  "flow_type": "template",
+  "flow_name": "library_screen",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Library",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title"
+    }
+  ],
+  "_xlsxPath": "templates/global/navigation.xlsx"
+}

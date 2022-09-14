@@ -93,14 +93,7 @@
               "name": "button_completed",
               "value": "Let's go!",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "exclude_from_translation": true,
               "type": "set_variable",
@@ -205,5 +198,5 @@
       }
     }
   ],
-  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_navigation_style.xlsx"
+  "_xlsxPath": "quality_assurance/example_sheets/Copy of example_navigation_style.xlsx"
 }
