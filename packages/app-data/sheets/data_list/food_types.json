@@ -1,0 +1,33 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "food_types",
+  "status": "released",
+  "data_list_name": "food_types",
+  "rows": [
+    {
+      "id": "food_type_go",
+      "illustration": "nutrition/food_types_go.png",
+      "icon": "nutrition/icon_food_types_go.png",
+      "food_types_heading_text": "Go",
+      "food_types_description_text": "These foods give us energy to help us 'go' and be active",
+      "Examples": "Potatoes; Rice; Cassava; Corn; Wheat"
+    },
+    {
+      "id": "food_type_grow",
+      "illustration": "nutrition/food_types_grow.png",
+      "icon": "nutrition/icon_food_types_go.png",
+      "food_types_heading_text": "Grow",
+      "food_types_description_text": "These are foods that help build and repair our bodies",
+      "Examples": "Beans; Lentils; Eggs; Milk; Chicken; Fish"
+    },
+    {
+      "id": "food_type_glow",
+      "illustration": "nutrition/food_types_glow.png",
+      "icon": "nutrition/icon_food_types_go.png",
+      "food_types_heading_text": "Glow",
+      "food_types_description_text": "Foods that improve our health and protect our bodies from getting diseases",
+      "Examples": "Spinach, Kales, Watermelon, Orange, Pawpaw; Lettuce; Pumkin"
+    }
+  ],
+  "_xlsxPath": "data_lists/nutrition/nutrition_data_lists.xlsx"
+}

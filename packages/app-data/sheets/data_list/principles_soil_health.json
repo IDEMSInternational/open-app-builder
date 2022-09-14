@@ -6,65 +6,51 @@
     {
       "id": "princ_recyc",
       "title": "Recycling organic materials to the soil is essential",
-      "image_list": [
-        "soils 1.png"
+      "image_1": "soils_1.png",
+      "keypoint_list": [
+        "Recycling Organic Materials to Feed and Replinish the Soil"
       ],
-      "keypoint_title": "Recycling Organic Materials to Feed and Replinish the Soil",
-      "keypoints": "recycling_organic_material_keypoints"
+      "data_list_name": "recycling_organic_material_keypoints"
     },
     {
       "id": "princ_covercrop",
       "title": "Covering the soil protects it from erosion and allows more water to be stored in soils",
-      "image_list": [
-        "high_erosion.png",
-        "low_erosion.png"
-      ],
-      "image_title_list": [
-        "Soil with Good cover and drainage, LOW EROSION, more water",
-        "Bare, crusted soil with poor infiltration, HIGH EROSION, less water for crops"
-      ],
-      "keypoints": "cover_crops_keypoints"
+      "image_1": "high_erosion.png",
+      "image_2": "low_erosion.png",
+      "image_title_1": "Soil with Good cover and drainage, LOW EROSION, more water",
+      "image_title_2": "Bare, crusted soil with poor infiltration, HIGH EROSION, less water for crops",
+      "data_list_name": "cover_crops_keypoints"
     },
     {
       "id": "princ_animaldiv",
       "title": "The diversity of life in the soil benefits all of us.",
-      "image_list": [
-        "soilanimals_combined.jpg"
+      "image_1": "soilanimals_combined.jpg",
+      "image_title_1": "How many of these have you seen in the soil?",
+      "keypoint_list": [
+        "Most soil animals are not harmful and many are quite beneficial, eating pests, transforming organic matter into nutrients for plants, and bringing nitrogen from the air to feed plantsl."
       ],
-      "image_title_list": [
-        "How many of these have you seen in the soil?"
-      ],
-      "keypoint_title": "Most soil animals are not harmful and many are quite beneficial, eating pests, transforming organic matter into nutrients for plants, and bringing nitrogen from the air to feed plantsl.",
-      "keypoints": "animal_diversity_keypoints"
+      "data_list_name": "animal_diversity_keypoints"
     },
     {
       "id": "princ_plantdiv",
       "title": "Different types of plants complement each other to benefit soils and productivity",
-      "image_list": [
-        "crop_variety.jpg",
-        "legume_nodule.jpg",
-        "annual_perennial.jpg"
+      "image_1": "crop_variety.jpg;;annual_perennial.jpg",
+      "image_title_1": "Crop variety;A large healthy legume nodule on the root with red colour indicating that free nitrogen is being added to the soil;Perennial and long season plants have more roots to feed the soil",
+      "keypoint_list": [
+        "How many types of crops and other plants grow in your community?"
       ],
-      "image_title_list": [
-        "Crop variety",
-        "A large healthy legume nodule on the root with red colour indicating that free nitrogen is being added to the soil",
-        "Perennial and long season plants have more roots to feed the soil"
-      ],
-      "keypoint_title": "How many types of crops and other plants grow in your community?",
-      "keypoints": "plant_diversity_keypoints"
+      "data_list_name": "plant_diversity_keypoints"
     },
     {
       "id": "princ_healthsoil",
       "title": "Healthy soil has crumbs (aggregates) and pores (channels) that help it to BREATHE and DRINK",
-      "image_list": [
-        "healthy_soil_structure.jpg"
+      "image_1": "healthy_soil_structure.jpg",
+      "image_title_1": "What are we looking at here?",
+      "keypoint_list": [
+        "Healthy soil is not a fine powder but is made up of crumbs of various sizes, with many spaces or pores between them"
       ],
-      "image_title_list": [
-        "What are we looking at here?"
-      ],
-      "keypoint_title": "Healthy soil is not a fine powder but is made up of crumbs of various sizes, with many spaces or pores between them",
-      "keypoints": "Healthy_Soils_keypoints"
+      "data_list_name": "Healthy_Soils_keypoints"
     }
   ],
-  "_xlsxPath": "data_lists/soils/Soils.xlsx"
+  "_xlsxPath": "data_lists/soils/trees_as_residues_source .xlsx"
 }

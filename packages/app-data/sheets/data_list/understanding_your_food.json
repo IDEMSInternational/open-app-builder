@@ -1,0 +1,23 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "understanding_your_food",
+  "status": "released",
+  "data_list_name": "understanding_your_food",
+  "rows": [
+    {
+      "id": "food_types_section",
+      "heading": "Food types",
+      "descrption": "All the foods can be categorized into 3 types"
+    },
+    {
+      "id": "needs_section",
+      "heading": "Different needs for different people",
+      "descrption": "Depending upon age groups various foods are necessary"
+    },
+    {
+      "id": "super_crops_section",
+      "heading": "Nutrients & Calculators"
+    }
+  ],
+  "_xlsxPath": "data_lists/nutrition/nutrition_data_lists.xlsx"
+}
