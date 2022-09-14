@@ -139,14 +139,16 @@ export class AppComponent {
     await this.templateTranslateService.init();
     await this.appDataService.init();
     await this.templateService.init();
-    await this.templateProcessService.init();
+    // ensure local notifications service available for campaigns service
+    await this.localNotificationService.init();
+    // ensure campaigns initialised before template_process which processes templates on startup
     await this.campaignService.init();
+    await this.templateProcessService.init();
     await this.tourService.init();
 
     // Initialise additional services in a non-blocking way
     setTimeout(async () => {
       await this.localNotificationInteractionService.init();
-      await this.localNotificationService.init();
       await this.dbSyncService.init();
       await this.analyticsService.init();
       /** CC 2022-04-01 - Disable service as not currently in use */
