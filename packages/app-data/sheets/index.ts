@@ -13,12 +13,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     animal_diversity_keypoints: {
       flow_type: "data_list",
       flow_name: "animal_diversity_keypoints",
-      _xlsxPath: "data_lists/soils/Soils.xlsx",
+      _xlsxPath: "data_lists/soils/trees_as_residues_source .xlsx",
     },
     cover_crops_keypoints: {
       flow_type: "data_list",
       flow_name: "cover_crops_keypoints",
-      _xlsxPath: "data_lists/soils/Soils.xlsx",
+      _xlsxPath: "data_lists/soils/trees_as_residues_source .xlsx",
     },
     example_calc_data_list: {
       flow_type: "data_list",
@@ -74,46 +74,58 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "example_sheet_defaults",
       _xlsxPath: "quality_assurance/example_sheets/Copy of example_sheet_defaults.xlsx",
     },
+    food_types: {
+      flow_type: "data_list",
+      flow_name: "food_types",
+      data_list_name: "food_types",
+      _xlsxPath: "data_lists/nutrition/nutrition_data_lists.xlsx",
+    },
     healthy_soils_keypoints: {
       flow_type: "data_list",
       flow_name: "healthy_soils_keypoints",
-      _xlsxPath: "data_lists/soils/Soils.xlsx",
+      _xlsxPath: "data_lists/soils/trees_as_residues_source .xlsx",
     },
     plant_diversity_keypoints: {
       flow_type: "data_list",
       flow_name: "plant_diversity_keypoints",
-      _xlsxPath: "data_lists/soils/Soils.xlsx",
+      _xlsxPath: "data_lists/soils/trees_as_residues_source .xlsx",
     },
     principles_soil_health: {
       flow_type: "data_list",
       flow_name: "principles_soil_health",
-      _xlsxPath: "data_lists/soils/Soils.xlsx",
+      _xlsxPath: "data_lists/soils/trees_as_residues_source .xlsx",
     },
     residue_additions_keypoints: {
       flow_type: "data_list",
       flow_name: "residue_additions_keypoints",
-      _xlsxPath: "data_lists/soils/Soils.xlsx",
+      _xlsxPath: "data_lists/soils/trees_as_residues_source .xlsx",
     },
     soil_health_support_slides: {
       flow_type: "data_list",
       flow_name: "soil_health_support_slides",
-      _xlsxPath: "data_lists/soils/Soils.xlsx",
+      _xlsxPath: "data_lists/soils/trees_as_residues_source .xlsx",
     },
     soil_seals_and_crusts_keypoints: {
       flow_type: "data_list",
       flow_name: "soil_seals_and_crusts_keypoints",
-      _xlsxPath: "data_lists/soils/Soils.xlsx",
+      _xlsxPath: "data_lists/soils/trees_as_residues_source .xlsx",
     },
     soil_tilth_keypoints: {
       flow_type: "data_list",
       flow_name: "soil_tilth_keypoints",
-      _xlsxPath: "data_lists/soils/Soils.xlsx",
+      _xlsxPath: "data_lists/soils/trees_as_residues_source .xlsx",
     },
     topics: {
       flow_type: "data_list",
       flow_name: "topics",
       data_list_name: "topics",
       _xlsxPath: "data_lists/homepage/topics_data_list.xlsx",
+    },
+    understanding_your_food: {
+      flow_type: "data_list",
+      flow_name: "understanding_your_food",
+      data_list_name: "understanding_your_food",
+      _xlsxPath: "data_lists/nutrition/nutrition_data_lists.xlsx",
     },
   },
   global: {
@@ -590,6 +602,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     principles_screen: {
       flow_type: "template",
       flow_name: "principles_screen",
+      _xlsxPath: "templates/global/navigation.xlsx",
+    },
+    topic_screen: {
+      flow_type: "template",
+      flow_name: "topic_screen",
       _xlsxPath: "templates/global/navigation.xlsx",
     },
     topics_screen: {
