@@ -85,6 +85,7 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
           for (const [flow_name, rows] of Object.entries(dataPipeFlow._processed)) {
             const datalist: FlowTypes.Data_list = {
               flow_name,
+              data_list_name: flow_name,
               flow_subtype: "generated",
               flow_type: "data_list",
               rows,
