@@ -72,4 +72,4 @@ Please see [Quickstart Authors](https://idemsinternational.github.io/parenting-a
 
 # For Developers
 
-Please see [Quickstart Developers]([/documentation/quickstart-developers.md](https://idemsinternational.github.io/parenting-app-ui/developers/quickstart/))
+Please see [Quickstart Developers](https://idemsinternational.github.io/parenting-app-ui/developers/quickstart/)
