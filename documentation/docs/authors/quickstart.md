@@ -35,7 +35,6 @@ To connect to your google account you must run:
 ```
 yarn scripts gdrive-auth
 ```
-yarn scripts app-data download --authorize
 
 You will see a warning message to connect the unverified app. Use the advanced dropdown to accept.
 
