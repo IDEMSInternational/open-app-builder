@@ -1,0 +1,39 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "food_types",
+  "status": "released",
+  "data_list_name": "food_types",
+  "rows": [
+    {
+      "id": "food_types_go",
+      "illustration": "nutrition/go_foods.png",
+      "icon": "nutrition/icon_go_foods.png",
+      "heading": "Go",
+      "description": "These foods give us energy to help us 'go' and be active.",
+      "examples": "Potatoes, Rice, Cassava, Corn, Wheat",
+      "audio": "nutrition/audio/food_types_go_audio.mp3",
+      "audio_transcript": "abc"
+    },
+    {
+      "id": "food_types_grow",
+      "illustration": "nutrition/grow_foods.png",
+      "icon": "nutrition/icon_grow_foods.png",
+      "heading": "Grow",
+      "description": "These are foods that support growth: they help build and repair our bodies.",
+      "examples": "Beans, Lentils, Eggs, Milk, Chicken, Fish",
+      "audio": "nutrition/audio/food_types_grow_audio.mp3",
+      "audio_transcript": "xyz"
+    },
+    {
+      "id": "food_types_glow",
+      "illustration": "nutrition/glow_foods.png",
+      "icon": "nutrition/icon_glow_foods.png",
+      "heading": "Glow",
+      "description": "Glow' foods improve our health and protect our bodies from getting diseases.",
+      "examples": "Spinach, Kales, Watermelon, Orange, Pawpaw; Lettuce; Pumpkin",
+      "audio": "nutrition/audio/food_types_grow_audio.mp3",
+      "audio_transcript": "mno"
+    }
+  ],
+  "_xlsxPath": "data_lists/nutrition/nutrition_data_lists.xlsx"
+}

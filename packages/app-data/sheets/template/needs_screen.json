@@ -1,0 +1,178 @@
+{
+  "flow_type": "template",
+  "flow_name": "needs_screen",
+  "status": "released",
+  "data_list_name": "needs_screen",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@data.understanding_your_food.needs_section.heading",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.understanding_your_food.needs_section.heading",
+            "matchedExpression": "@data.understanding_your_food.needs_section.heading",
+            "type": "data",
+            "fieldName": "understanding_your_food"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.understanding_your_food.needs_section.heading": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "description",
+      "value": "@data.understanding_your_food.needs_section.description",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "description",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.understanding_your_food.needs_section.description",
+            "matchedExpression": "@data.understanding_your_food.needs_section.description",
+            "type": "data",
+            "fieldName": "understanding_your_food"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.understanding_your_food.needs_section.description": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "value": "@data.different_needs_for_different_people",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_@item.id",
+          "value": "@item.heading",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "current_type",
+                "@item.id"
+              ],
+              "_raw": "click | set_field: current_type: @item.id",
+              "_cleaned": "click | set_field: current_type: @item.id"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "individual_need"
+              ],
+              "_raw": "click | go_to: individual_need",
+              "_cleaned": "click | go_to: individual_need"
+            }
+          ],
+          "_nested_name": "items.button_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@item.heading",
+                "matchedExpression": "@item.heading",
+                "type": "item",
+                "fieldName": "heading"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "1": [
+                    {
+                      "fullExpression": "@item.id",
+                      "matchedExpression": "@item.id",
+                      "type": "item",
+                      "fieldName": "id"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | set_field: current_type: @item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | set_field: current_type: @item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              }
+            },
+            "_nested_name": [
+              {
+                "fullExpression": "items.button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
+              "_nested_name"
+            ],
+            "@item.heading": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.different_needs_for_different_people",
+            "matchedExpression": "@data.different_needs_for_different_people",
+            "type": "data",
+            "fieldName": "different_needs_for_different_people"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.different_needs_for_different_people": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "templates/global/nutrition_templates.xlsx"
+}

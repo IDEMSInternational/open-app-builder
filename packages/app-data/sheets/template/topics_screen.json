@@ -17,33 +17,38 @@
       "value": "@data.topics",
       "rows": [
         {
-          "type": "button",
-          "name": "button_@item.id",
+          "name": "icon_src",
+          "value": "@item.illustration",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "items.icon_src",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@item.illustration",
+                "matchedExpression": "@item.illustration",
+                "type": "item",
+                "fieldName": "illustration"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.illustration": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "tile_text",
           "value": "@item.title",
           "_translations": {
             "value": {}
           },
-          "action_list": [
-            {
-              "trigger": "click",
-              "action_id": "go_to",
-              "args": [
-                "@item.template"
-              ],
-              "_raw": "click | go_to: @item.template",
-              "_cleaned": "click | go_to: @item.template"
-            }
-          ],
-          "_nested_name": "items.button_@item.id",
+          "type": "set_variable",
+          "_nested_name": "items.tile_text",
           "_dynamicFields": {
-            "name": [
-              {
-                "fullExpression": "button_@item.id",
-                "matchedExpression": "@item.id",
-                "type": "item",
-                "fieldName": "id"
-              }
-            ],
             "value": [
               {
                 "fullExpression": "@item.title",
@@ -51,40 +56,104 @@
                 "type": "item",
                 "fieldName": "title"
               }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "tile_component",
+          "name": "tile_@item.id",
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "current_topic",
+                "@item.id"
+              ],
+              "_raw": "click | set_field: current_topic: @item.id",
+              "_cleaned": "click | set_field: current_topic: @item.id"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "topic_screen"
+              ],
+              "_raw": "click | go_to: topic_screen",
+              "_cleaned": "click | go_to: topic_screen"
+            }
+          ],
+          "parameter_list": {
+            "icon_src": "@local.icon_src",
+            "first_line_text": "@local.tile_text",
+            "style": "quick_start_dark"
+          },
+          "_nested_name": "items.tile_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "tile_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
             ],
             "action_list": {
               "0": {
                 "args": {
-                  "0": [
+                  "1": [
                     {
-                      "fullExpression": "@item.template",
-                      "matchedExpression": "@item.template",
+                      "fullExpression": "@item.id",
+                      "matchedExpression": "@item.id",
                       "type": "item",
-                      "fieldName": "template"
+                      "fieldName": "id"
                     }
                   ]
                 },
                 "_raw": [
                   {
-                    "fullExpression": "click | go_to: @item.template",
-                    "matchedExpression": "@item.template",
+                    "fullExpression": "click | set_field: current_topic: @item.id",
+                    "matchedExpression": "@item.id",
                     "type": "item",
-                    "fieldName": "template"
+                    "fieldName": "id"
                   }
                 ],
                 "_cleaned": [
                   {
-                    "fullExpression": "click | go_to: @item.template",
-                    "matchedExpression": "@item.template",
+                    "fullExpression": "click | set_field: current_topic: @item.id",
+                    "matchedExpression": "@item.id",
                     "type": "item",
-                    "fieldName": "template"
+                    "fieldName": "id"
                   }
                 ]
               }
             },
+            "parameter_list": {
+              "icon_src": [
+                {
+                  "fullExpression": "@local.icon_src",
+                  "matchedExpression": "@local.icon_src",
+                  "type": "local",
+                  "fieldName": "icon_src"
+                }
+              ],
+              "first_line_text": [
+                {
+                  "fullExpression": "@local.tile_text",
+                  "matchedExpression": "@local.tile_text",
+                  "type": "local",
+                  "fieldName": "tile_text"
+                }
+              ]
+            },
             "_nested_name": [
               {
-                "fullExpression": "items.button_@item.id",
+                "fullExpression": "items.tile_@item.id",
                 "matchedExpression": "@item.id",
                 "type": "item",
                 "fieldName": "id"
@@ -94,15 +163,16 @@
           "_dynamicDependencies": {
             "@item.id": [
               "name",
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
               "_nested_name"
             ],
-            "@item.title": [
-              "value"
+            "@local.icon_src": [
+              "parameter_list.icon_src"
             ],
-            "@item.template": [
-              "action_list.0.args.0",
-              "action_list.0._raw",
-              "action_list.0._cleaned"
+            "@local.tile_text": [
+              "parameter_list.first_line_text"
             ]
           }
         }
