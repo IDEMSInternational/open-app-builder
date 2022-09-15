@@ -14,7 +14,7 @@ yarn install
 
 ### Setup required configuration
 
-All configuration is pre-established in the `scripts/config` folder, however is encrypted to avoid sharing sensitive information publically.
+All configuration is pre-established in the `packages/scripts/config` folder, however is encrypted to avoid sharing sensitive information publically.
 
 You must optain a `private.key` file from the development team which you can copy into the `scripts/config` folder.
 
@@ -35,6 +35,7 @@ To connect to your google account you must run:
 ```
 yarn scripts gdrive-auth
 ```
+yarn scripts app-data download --authorize
 
 You will see a warning message to connect the unverified app. Use the advanced dropdown to accept.
 
