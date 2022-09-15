@@ -13,9 +13,10 @@
    This will be used to download the repository
 
 2. Download and install [Git LFS](https://git-lfs.github.com/)  
+   Run `git lfs install` to set up Git LFS for your user account.
    This will be used to download any required binary assets, such as images or pdfs
 
-3. Download and install [Node](https://nodejs.org/en/download/)  
+3. Download and install [Node](https://nodejs.org/en/download/) 
    This is the programming lanugage required to run the project
 
 4. Download and Install [Yarn](https://classic.yarnpkg.com/en/docs/install)  
@@ -25,9 +26,8 @@
 
 ### Download the repo with binary assets
 ```
-$ git lfs clone https://github.com/jfmcquade/ae-soils-app
+$ git clone https://github.com/jfmcquade/ae-soils-app
 ```
-Note - if you do a regular git clone, you can always run `git lfs fetch --all` later to sync assets
 
 ### Install required dependencies
 ```
@@ -66,8 +66,8 @@ This will start a local server and serve the app in your browser on http://local
 
 # For Content Coders
 
-Please see [Quickstart Authors](https://idemsinternational.github.io/parenting-app-ui/developers/quickstart/)
+Please see [Quickstart Authors](https://idemsinternational.github.io/parenting-app-ui/authors/quickstart/)
 
 # For Developers
 
-Please see [Quickstart Developers]([/documentation/quickstart-developers.md](https://idemsinternational.github.io/parenting-app-ui/authors/quickstart/))
+Please see [Quickstart Developers]([/documentation/quickstart-developers.md](https://idemsinternational.github.io/parenting-app-ui/developers/quickstart/))
