@@ -44,6 +44,7 @@ An initial deployment should be specified via the command
 ```
 yarn scripts deployment set
 ```
+For the AE App, select the `ae_soils` deployment.
 
 ### Firebase
 To be able to run the full project a specific configuration file needs to be included to access
