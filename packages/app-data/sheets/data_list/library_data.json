@@ -1,0 +1,21 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "library_data",
+  "status": "released",
+  "data_list_name": "library",
+  "rows": [
+    {
+      "id": "pests",
+      "title": "Pests",
+      "data_list_name": "experimental_library_pests",
+      "template": "lib_pests"
+    },
+    {
+      "id": "plants",
+      "title": "Plants",
+      "data_list_name": "experimental_library_plants",
+      "template": "lib_plants"
+    }
+  ],
+  "_xlsxPath": "data_lists/homepage/library_data_list.xlsx"
+}
