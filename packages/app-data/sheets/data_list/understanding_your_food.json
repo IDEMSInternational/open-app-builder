@@ -7,12 +7,14 @@
     {
       "id": "food_types_section",
       "heading": "Food types",
-      "descrption": "All the foods can be categorized into 3 types"
+      "description": "All food can be categorized into 3 types",
+      "template": "food_types_screen"
     },
     {
       "id": "needs_section",
       "heading": "Different needs for different people",
-      "descrption": "Depending upon age groups various foods are necessary"
+      "description": "Depending on age, various foods are necessary",
+      "template": "needs_screen"
     },
     {
       "id": "super_crops_section",

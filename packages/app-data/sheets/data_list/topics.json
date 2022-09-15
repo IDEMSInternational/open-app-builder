@@ -7,8 +7,10 @@
     {
       "id": "pests",
       "title": "Pests",
-      "description": "Managing and controlling pests",
-      "data_list_name": "pests_data_lists"
+      "illustration": "pests/pests_icon.png",
+      "description": "Managing pests",
+      "data_list_name": "pests_sections",
+      "template": "pests_screen"
     },
     {
       "id": "nutrition",
@@ -19,7 +21,10 @@
     },
     {
       "id": "soils",
-      "title": "Soils"
+      "title": "Soil Health",
+      "illustration": "soils/soils_icon.png",
+      "data_list_name": "principles_soil_health",
+      "template": "soils_screen"
     }
   ],
   "_xlsxPath": "data_lists/homepage/topics_data_list.xlsx"
