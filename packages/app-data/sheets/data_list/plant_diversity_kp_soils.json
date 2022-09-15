@@ -1,15 +1,13 @@
 {
   "flow_type": "data_list",
-  "flow_name": "plant_diversity_keypoints",
+  "flow_name": "plant_diversity_kp_soils",
   "status": "released",
+  "data_list_name": "plant_diversity_kp_soils",
   "rows": [
     {
       "id": "keypoint_1",
       "text": "When a variety of crops are grown in the same field, this makes better use of nutrients in the soil, and many plants benefit from each other. These can either be:",
-      "subtext_list": [
-        "In rotation, with one crop following each other",
-        "As an intercrop, with two or more crops at the same time in the field"
-      ]
+      "subtext": "* In rotation, with one crop following each other\n* As an intercrop, with two or more crops at the same time in the field"
     },
     {
       "id": "keypoint_2",
@@ -24,5 +22,5 @@
       "text": "Crops in fields and field boundaries should use the benefits of diverse crops, shrubs, and trees."
     }
   ],
-  "_xlsxPath": "data_lists/soils/trees_as_residues_source .xlsx"
+  "_xlsxPath": "data_lists/soils/soils_health.xlsx"
 }

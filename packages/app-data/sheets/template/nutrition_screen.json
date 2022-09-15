@@ -1,0 +1,34 @@
+{
+  "flow_type": "template",
+  "flow_name": "nutrition_screen",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "topic_screen",
+      "value": "topic_screen",
+      "rows": [
+        {
+          "name": "topic_id",
+          "value": "nutrition",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "topic_screen.topic_id"
+        }
+      ],
+      "_nested_name": "topic_screen"
+    },
+    {
+      "type": "text",
+      "name": "special",
+      "value": "I'm special",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "special"
+    }
+  ],
+  "_xlsxPath": "templates/global/navigation.xlsx"
+}

@@ -277,6 +277,18 @@
           "_translations": {
             "value": {}
           },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@item.template"
+              ],
+              "_raw": "click | go_to: @item.template",
+              "_cleaned": "click | go_to: @item.template"
+            }
+          ],
+          "condition": "!@item.save_id_field",
           "_nested_name": "items.button_@item.id",
           "_dynamicFields": {
             "name": [
@@ -295,6 +307,44 @@
                 "fieldName": "heading"
               }
             ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@item.template",
+                      "matchedExpression": "@item.template",
+                      "type": "item",
+                      "fieldName": "template"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @item.template",
+                    "matchedExpression": "@item.template",
+                    "type": "item",
+                    "fieldName": "template"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @item.template",
+                    "matchedExpression": "@item.template",
+                    "type": "item",
+                    "fieldName": "template"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "!@item.save_id_field",
+                "matchedExpression": "!@item.save_id_field",
+                "type": "item",
+                "fieldName": "save_id_field"
+              }
+            ],
             "_nested_name": [
               {
                 "fullExpression": "items.button_@item.id",
@@ -311,6 +361,182 @@
             ],
             "@item.heading": [
               "value"
+            ],
+            "@item.template": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "!@item.save_id_field": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_@item.id",
+          "value": "@item.heading",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "@item.save_id_field",
+                "@item.id"
+              ],
+              "_raw": "click | set_field: @item.save_id_field: @item.id",
+              "_cleaned": "click | set_field: @item.save_id_field: @item.id"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@item.template"
+              ],
+              "_raw": "click | go_to: @item.template",
+              "_cleaned": "click | go_to: @item.template"
+            }
+          ],
+          "condition": "!!@item.save_id_field",
+          "_nested_name": "items.button_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@item.heading",
+                "matchedExpression": "@item.heading",
+                "type": "item",
+                "fieldName": "heading"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@item.save_id_field",
+                      "matchedExpression": "@item.save_id_field",
+                      "type": "item",
+                      "fieldName": "save_id_field"
+                    }
+                  ],
+                  "1": [
+                    {
+                      "fullExpression": "@item.id",
+                      "matchedExpression": "@item.id",
+                      "type": "item",
+                      "fieldName": "id"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | set_field: @item.save_id_field: @item.id",
+                    "matchedExpression": "@item.save_id_field",
+                    "type": "item",
+                    "fieldName": "save_id_field"
+                  },
+                  {
+                    "fullExpression": "click | set_field: @item.save_id_field: @item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | set_field: @item.save_id_field: @item.id",
+                    "matchedExpression": "@item.save_id_field",
+                    "type": "item",
+                    "fieldName": "save_id_field"
+                  },
+                  {
+                    "fullExpression": "click | set_field: @item.save_id_field: @item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "1": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@item.template",
+                      "matchedExpression": "@item.template",
+                      "type": "item",
+                      "fieldName": "template"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @item.template",
+                    "matchedExpression": "@item.template",
+                    "type": "item",
+                    "fieldName": "template"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @item.template",
+                    "matchedExpression": "@item.template",
+                    "type": "item",
+                    "fieldName": "template"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "!!@item.save_id_field",
+                "matchedExpression": "!@item.save_id_field",
+                "type": "item",
+                "fieldName": "save_id_field"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
+              "_nested_name"
+            ],
+            "@item.heading": [
+              "value"
+            ],
+            "@item.save_id_field": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@item.template": [
+              "action_list.1.args.0",
+              "action_list.1._raw",
+              "action_list.1._cleaned"
+            ],
+            "!@item.save_id_field": [
+              "condition"
             ]
           }
         }

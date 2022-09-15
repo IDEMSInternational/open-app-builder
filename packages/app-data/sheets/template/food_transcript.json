@@ -1,0 +1,99 @@
+{
+  "flow_type": "template",
+  "flow_name": "food_transcript",
+  "status": "released",
+  "data_list_name": "food_transcript",
+  "rows": [
+    {
+      "name": "type_id",
+      "value": "@fields.current_type",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "type_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.current_type",
+            "matchedExpression": "@fields.current_type",
+            "type": "fields",
+            "fieldName": "current_type"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.current_type": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "transcript",
+      "value": ".audio_transcript",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "transcript"
+    },
+    {
+      "name": "type_transcript",
+      "value": "food_types.@local.type_id@local.transcript",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "type_transcript",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "food_types.@local.type_id@local.transcript",
+            "matchedExpression": "@local.type_id",
+            "type": "local",
+            "fieldName": "type_id"
+          },
+          {
+            "fullExpression": "food_types.@local.type_id@local.transcript",
+            "matchedExpression": "@local.transcript",
+            "type": "local",
+            "fieldName": "transcript"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.type_id": [
+          "value"
+        ],
+        "@local.transcript": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "@data.@local.type_transcript",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.type_transcript",
+            "matchedExpression": "@local.type_transcript",
+            "type": "local",
+            "fieldName": "type_transcript"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.type_transcript": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "templates/global/nutrition_templates.xlsx"
+}

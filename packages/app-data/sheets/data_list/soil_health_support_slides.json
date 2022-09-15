@@ -2,12 +2,13 @@
   "flow_type": "data_list",
   "flow_name": "soil_health_support_slides",
   "status": "released",
+  "data_list_name": "soil_health_support_slides",
   "rows": [
     {
       "id": "prac_act_1",
       "principle": "princ_animaldiv",
       "title": "The abundance and diversity of life in the soil depends on the amount of carbon (organic debris) available to the system",
-      "data_list_name": "formation_of_organic_matter_keypoint",
+      "data_list_name": "formation_of_organic_matter_kp_soils",
       "image_1": "soil_animals_combined.jpg"
     },
     {
@@ -24,9 +25,9 @@
       "principle": "princ_recyc",
       "title": "Residue additions are essential to create healthy soils",
       "keypoints_list": [
-        "A soil that receives regular addition of plant and animal residues, accumulates soil organic carbon."
+        "A soil that receives regular additions of plant and animal residues accumulates soil organic carbon."
       ],
-      "data_list_name": "residue_additions_keypoints",
+      "data_list_name": "residue_additions_kp_soils",
       "image_1": "soil_residue_rodale instit.jpg",
       "image_title_1": "Rodale institute"
     },
@@ -43,60 +44,63 @@
       "keypoints_list": [
         "Healthy soils are dark in color. The dark color indicates that the soil is rich in organic matter."
       ],
-      "image_1": "unhealthy_soils_colour.jpg; healthy_soils_colour.jpg",
-      "image_title_1": "Soil color- residue rich soils (left) residue deficient (right)"
+      "image_1": "unhealthy_soils_colour.jpg",
+      "image_title_1": "Soil colour - residue rich soils (left) residue deficient (right)",
+      "image_2": "healthy_soils_colour.jpg"
     },
     {
       "id": "prac_act_6",
       "principle": "princ_healthsoil",
       "title": "Soil physical property",
       "keypoints_list": [
-        "A soil that receives regular addition of residues is well aggregated.",
-        "Roots of crops, as well as the strands of fungi that decompose residues, together with other life in the soil, create channels in the soil and glue the soil particles loosely together.",
-        "Roots and water infiltrates easily.  \nPictures on right from the Cornell  soil health manual"
+        "*A soil that receives regular addition of residues is well aggregated.\n*Roots of crops, as well as the strands of fungi that decompose residues, together with other life in the soil, create channels in the soil and glue the soil particles loosely together.\n*Roots and water infiltrates easily."
       ],
-      "image_1": "porous_soil_image.jpg;\nwater_filtration_aggregated_soil.jpg;\nwell_aggregated_soil_with_residue.jpg",
-      "image_title_1": "The white threads (below) are soil fungi that are binding the soil particles together and improving water infiltration and storage"
+      "image_1": "porous_soil_image.jpg",
+      "image_title_1": "The white threads (below) are soil fungi that are binding the soil particles together and improving water infiltration and storage",
+      "image_2": "water_filtration_aggregated_soil.jpg",
+      "image_3": "well_aggregated_soil_with_residue.jpg"
     },
     {
       "id": "prac_act_7",
       "principle": "princ_healthsoil",
       "title": "Soil physical property",
-      "image_1": "carbon_rich_soil.jpg;\nresidue_poor_soil.jpg",
-      "image_title_1": "carbon rich soil; residue poor soil"
+      "image_1": "carbon_rich_soil.jpg",
+      "image_title_1": "carbon rich soil",
+      "image_2": "residue_poor_soil.jpg",
+      "image_title_2": "residue poor soil"
     },
     {
       "id": "prac_act_8",
       "principle": "princ_healthsoil",
       "title": "Soil physical property",
       "keypoints_list": [
-        "Without residue additions soil physical properties become unfavorable"
+        "Without residue additions soil physical properties become unfavorable."
       ],
-      "image_1": "soil_seals_and_crusts.jpg;\ncompact_soil.jpg"
+      "image_1": "soil_seals_and_crusts.jpg",
+      "image_2": "compact_soil.jpg"
     },
     {
       "id": "prac_act_9",
       "principle": "princ_healthsoil",
-      "title": "Loss of carbon from smallholder farms in western  Kenya",
+      "title": "Loss of carbon from smallholder farms in western Kenya",
       "keypoints_list": [
-        "Crop production is greatly reduced in low carbon soils",
-        "Low productivity leads to competing uses for biomass  (fodder, fuel….soils lose!)",
-        "This can quickly become a poverty trap for farmers who depend on ag for food and income!",
-        "Without residue addition, crop production exploits the When soils are degraded residue production & retention is problematic",
-        "Warm temps and cultivation make soil microbes use up carbon quickly, before it can build up"
+        "*Crop production is greatly reduced in low carbon soils\n*Low productivity leads to competing uses for biomass (fodder, fuel….soils lose!)\n*This can quickly become a poverty trap for farmers who depend on agriculture for food and income\n*Without residue addition, crop production exploits the soil\n*When soils are degraded, residue production & retention is problematic\n*Warm temperatures and cultivation makes soil microbes use up carbon quickly, before it can build up"
       ],
-      "image_1": "carbon_perc_overcultivated_soil.jpg;\ncarbon_perc_kenya_forest_soil_sample.jpg;\ncarbon_perc_cultivated_soil_sample.jpg"
+      "image_1": "carbon_perc_overcultivated_soil.jpg",
+      "image_2": "carbon_perc_kenya_forest_soil_sample.jpg;",
+      "image_3": "carbon_perc_cultivated_soil_sample.jpg"
     },
     {
       "id": "prac_act_10",
       "principle": "princ_recyc",
-      "title": "for nutrient demanding crops, combine modest amounts of compost or manure with small amounts of fertilizer, Compost/manure plus fertilizer usually gives better results than either fertilizer alone",
+      "title": "For nutrient demanding crops, combine modest amounts of compost or manure with small amounts of fertilizer. Compost or manure plus fertilizer usually gives better results than either fertilizer alone.",
       "image_1": "compost_mixed_fertilizer.jpg",
-      "image_title_1": "Left: maize planted with full fertilizer; Right: maize planted on same day with half half (microdosed fertilizer plus compost mix)"
+      "image_title_1": "Left: maize planted with full fertilizer",
+      "image_title_2": "Right: maize planted on same day with half-half (microdosed fertilizer plus compost mix)"
     },
     {
       "id": "prac_act_11",
-      "title": "Concentrate nutrients: zai holes, tumbukiza and applying compost or manure in planting furrows",
+      "title": "Concentrate nutrients: zai holes, tumbukiza and apply compost or manure in planting furrows",
       "image_1": "concentrate_neutrients.jpg"
     },
     {
@@ -104,7 +108,7 @@
       "principle": "princ_healthsoil",
       "title": "Reduce plant to plant competition",
       "keypoints_list": [
-        "Oversowing reduces plant performance due to competition for nutrients, water and sunlight"
+        "Oversowing reduces plant performance due to competition for nutrients, water and sunlight."
       ],
       "image_1": "reduce_plant_competition.jpg"
     },
@@ -113,19 +117,19 @@
       "principle": "princ_covercrop",
       "title": "Reduce nutrient losses",
       "keypoints_list": [
-        "Cover compost and manure to protect land from the sun and rain, both of which cause nutrients, especially nitrogen to be lose"
+        "Cover compost and manure to protect land from the sun and rain, both of which cause nutrients, especially nitrogen to be lost."
       ],
       "image_1": "reduce_nutrient_loss.jpg"
     },
     {
       "id": "prac_act_14",
       "principle": "princ_healthsoil",
-      "title": "Grow multipurpose legumes for N fixation",
+      "title": "Grow multipurpose legumes for nitrogen fixation",
       "keypoints_list": [
-        "Special bacteria that can make nitrogen make their home, called nodules, on the roots of legumes. Nitrogen is needed to make proteins in the bodies of living things. You can tell if these bacteria are actively making nitrogen in the nodules if they are pink on the inside.",
-        "Because certain legumes, like lablab, soya and groundnut, leave nitrogen in the soil where they grew, farmers can take advantage of this by rotating the legumes with cereals that have a high nitrogen demand"
+        "*Special bacteria that can make nitrogen make their home, called nodules, on the roots of legumes. Nitrogen is needed to make proteins in the bodies of living things. You can tell if these bacteria are actively making nitrogen in the nodules if they are pink on the inside.\n*Because certain legumes, like lablab, soya and groundnut, leave nitrogen in the soil where they grew, farmers can take advantage of this by rotating the legumes with cereals that have a high nitrogen demand."
       ],
-      "image_1": "grow_multipurpose_legumes.jpg; grow_multipurpose_legumes_2.jpg"
+      "image_1": "grow_multipurpose_legumes.jpg",
+      "image_2": "grow_multipurpose_legumes_2.jpg"
     },
     {
       "id": "prac_act_15",
@@ -134,12 +138,14 @@
       "keypoints_list": [
         "By one estimate, 40-50 kg of waste are converted into 1 kg of fish."
       ],
-      "image_1": "livestock_and_fish.jpg; livestock_and_fish_2.jpg"
+      "image_1": "livestock_and_fish.jpg",
+      "image_2": "livestock_and_fish_2.jpg"
     },
     {
       "id": "prac_act_16",
       "principle": "princ_animaldiv",
-      "image_1": "lablab.jpg; lablab_2.jpg"
+      "image_1": "lablab.jpg",
+      "image_2": "lablab_2.jpg"
     },
     {
       "id": "prac_act_17",
@@ -153,7 +159,7 @@
       "principle": "princ_healthsoil",
       "title": "Lablab- multipurpose legume",
       "keypoints_list": [
-        "The most useful types of legumes are those that produce multiple benefits for farmers. Lablab is a good example of such a legume"
+        "The most useful types of legumes are those that produce multiple benefits for farmers. Lablab is a good example of such a legume."
       ],
       "image_1": "lablab.jpg"
     },
@@ -197,9 +203,10 @@
       "principle": "princ_covercrop",
       "title": "Control erosion",
       "keypoints_list": [
-        "It takes between 100-500 years to form one inch of topsoil in nature. We cannot afford to allow our topsoils to be washed away"
+        "It takes between 100-500 years to form one inch of topsoil in nature. We cannot afford to allow our topsoils to be washed away."
       ],
-      "image_1": "erosion_1.png;erosion_2.png"
+      "image_1": "erosion_1.png",
+      "image_2": "erosion_2.png"
     },
     {
       "id": "prac_act_25",
@@ -215,7 +222,7 @@
       "principle": "princ_covercrop",
       "title": "Control erosion",
       "keypoints_list": [
-        "On sloping land, use contours strips planted with useful forages such as the napier grass and desmodium shown here, which are good food for livestock"
+        "On sloping land, use contour strips planted with useful forages such as the napier grass and desmodium shown here, which are good food for livestock."
       ],
       "image_1": "erosion_4.png"
     },
@@ -224,19 +231,17 @@
       "principle": "princ_recyc",
       "title": "Strategic residue additions & management practices \ncan help you recreate healthy soils",
       "keypoints_list": [
-        "Biomass production is greatly reduced in degraded soils",
-        "Higher temps and cultivation accelerate breakdown of OM, make build up more difficult",
-        "Low productivity leads to insufficiencies of food, fodder, fuel > competing uses for biomass"
+        "*Biomass production is greatly reduced in degraded soils\n*Higher temperatures and cultivation accelerates the breakdown of OM, making build up more difficult\n*Low productivity leads to insufficiencies of food, fodder, fuel > competing uses for biomass"
       ],
       "image_1": "recycle_1.png",
-      "image_title_1": "Adding organic matter results in many changes modified from Oshind and Drinkwater(1999)"
+      "image_title_1": "Adding organic matter results in many changes. Modified from Oshind and Drinkwater (1999)"
     },
     {
       "id": "prac_act_28",
       "principle": "princ_recyc",
       "title": "Wise use of all the valuable resources you have on hand, like crop residues!",
       "keypoints_list": [
-        "Recycle don’t burn! Those residues are your major source of carbon for bringing your soil back to life!"
+        "Recycle don’t burn! Those residues are your major source of carbon for bringing your soil back to life."
       ],
       "image_1": "recycle_2.png"
     },
@@ -244,12 +249,14 @@
       "id": "prac_act_29",
       "principle": "princ_recyc",
       "title": "Use resources on hand…importance of animal urine…..",
-      "image_1": "recycle_3.png;recycle_4.png"
+      "image_1": "recycle_3.png",
+      "image_2": "recycle_4.png"
     },
     {
       "id": "prac_act_30",
       "principle": "princ_recyc",
-      "image_1": "recycle_5.png;recycle_6.png"
+      "image_1": "recycle_5.png",
+      "image_2": "recycle_6.png"
     },
     {
       "id": "prac_act_31",
@@ -261,31 +268,36 @@
       "id": "prac_act_32",
       "principle": "princ_recyc",
       "title": "Effect of urine gum tree Eucalyptus grandis",
-      "image_1": "recycle_8.png;recycle_9.png",
-      "image_title_1": "Gum trees planted in two 10 litre buckets on 20th March 2009. One of the trees was fed 125mls urine +275mls water (400mls) with extra watering once a week after the trees had become established. Right photo on 19th April 2009; Effect of urine treatement becomes more apparent. Left photo 6th May 2009 and right photo 30th August 2009."
+      "image_1": "recycle_8.png",
+      "image_title_1": "Right photo on 19th April 2009; Effect of urine treatement becomes more apparent.",
+      "image_2": "recycle_9.png",
+      "image_title_2": "Left photo 6th May 2009 and right photo 30th August 2009."
     },
     {
       "id": "prac_act_33",
       "principle": "princ_recyc",
-      "title": "Turn ‘waste products’ into Biochar!",
-      "image_1": "recycle_10.png;recycle_11.png"
+      "title": "Turn ‘waste products’ into biochar!",
+      "image_1": "recycle_10.png",
+      "image_2": "recycle_11.png"
     },
     {
       "id": "prac_act_34",
       "principle": "princ_recyc",
       "title": "Biochar has different characteristics depending on the material used",
-      "image_1": "recycle_12.png;recycle_13.png",
-      "image_title_1": "Pine biochars; Maize biochars"
+      "image_1": "recycle_12.png",
+      "image_title_1": "Pine biochars",
+      "image_2": "recycle_13.png",
+      "image_title_2": "Maize biochars"
     },
     {
       "id": "prac_act_35",
       "principle": "princ_recyc",
       "title": "Farmers night paddocking system in western Zambia",
       "keypoints_list": [
-        "Traditional method for adding nutrients and water holding capacity to extremely sandy soils, which are otherwise poorly suited to cropping.",
-        "Youth build temporary paddocks on crop land and confine the animals there at night. Once the soil is covered with manure, they shift the paddock to fertilize the next patch."
+        "*Traditional method for adding nutrients and water holding capacity to extremely sandy soils, which are otherwise poorly suited to cropping.\n*Youth build temporary paddocks on crop land and confine the animals there at night. Once the soil is covered with manure, they shift the paddock to fertilize the next patch."
       ],
-      "image_1": "recycle_14.png;recycle_15.png"
+      "image_1": "recycle_14.png",
+      "image_2": "recycle_15.png"
     },
     {
       "id": "prac_act_36",
@@ -298,8 +310,7 @@
       "principle": "princ_plantdiv",
       "title": "Target strategies depending on the field’s position in the farm",
       "keypoints_list": [
-        "Grow multipurpose leguminous trees & other plants that can produce lots of residues under low nutrient conditions. Must protect from livestock",
-        "If your outfields are extremely unproductive use these plants to help them regenerate"
+        "*Grow multipurpose leguminous trees and other plants that can produce lots of residues under low nutrient conditions. These must be protected from livestock.\n*If your outfields are extremely unproductive use these plants to help them regenerate."
       ],
       "image_1": "outfield.jpg",
       "image_title_1": "Outfields"
@@ -309,9 +320,7 @@
       "principle": "princ_plantdiv",
       "title": "Target strategies depending on the field’s position in the farm",
       "keypoints_list": [
-        "Multipurpose grain legumes cannot grow well on worst soils but can improve the mid-field soils",
-        "Middle fields can be the best place to grow multipurpose grain legumes….for example lablab…..",
-        "Many legumes cannot grow well in the most degraded soils. These are likely to perform much better in the less degraded middle fields."
+        "*Multipurpose grain legumes cannot grow well on the poorest soils but they can improve mid-field soils\n*Middle fields can be the best place to grow multipurpose grain legumes….for example lablab…..\n*Many legumes cannot grow well in the most degraded soils. These are likely to perform much better in the less degraded middle fields."
       ],
       "image_1": "outfield.jpg",
       "image_title_1": "Middle fields"
@@ -321,8 +330,7 @@
       "principle": "princ_plantdiv",
       "title": "Target strategies depending on the field’s position in the farm",
       "keypoints_list": [
-        "Home fields are the most enriched soils on the farm due to regular additions of residues- household wastes including plant wastes, ash, livestock wastes etc",
-        "Home fields can be best for producing high value horticultural crops, like fruits and vegetables"
+        "*Home fields are the most enriched soils on the farm due to regular additions of residues- household wastes including plant wastes, ash, livestock wastes etc.\n*Home fields can be best for producing high value horticultural crops, like fruit and vegetables."
       ],
       "image_1": "outfield.jpg",
       "image_title_1": "Home fields"
@@ -335,20 +343,11 @@
     },
     {
       "id": "prac_act_41",
-      "title": "Soil Rehabilitation recap",
+      "title": "Soil rehabilitation recap",
       "keypoints_list": [
-        "Control erosion",
-        "Recycle all farm residues",
-        "Integrate crop and livestock enterprises",
-        "Concentrate nutrients (microdose)",
-        "Reduce nutrient losses (use oga?)",
-        "Reduce plant to plant competition",
-        "Grow leguminous crops for N fixation and to reduce striga infestation and impact",
-        "Grow crops that produce lots of residues",
-        "Grow varieties adapted to soil-based constraints (acid soil, P-efficient, drought, parasitic weeds and soilborne P&D)",
-        "Target different strategies for different parts of the farm, depending on fertility status\r\nDiversify crops & rotate to reduce build up of pests and diseases"
+        "*Control erosion\n*Recycle all farm residues\n*Integrate crop and livestock enterprises\n*Concentrate nutrients (microdose)\n*Reduce nutrient losses (use oga?)\n*Reduce plant to plant competition\n*Grow leguminous crops for nitrogen fixation and to reduce striga infestation and impact\n*Grow crops that produce lots of residues\n*Grow varieties adapted to soil-based constraints (acid soil, P-efficient, drought, parasitic weeds and soilborne P&D)\n*Target different strategies for different parts of the farm, depending on fertility status\n*Diversify crops & rotate to reduce build up of pests and diseases"
       ]
     }
   ],
-  "_xlsxPath": "data_lists/soils/trees_as_residues_source .xlsx"
+  "_xlsxPath": "data_lists/soils/soils_health.xlsx"
 }

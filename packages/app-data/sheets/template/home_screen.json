@@ -10,6 +10,7 @@
       "_translations": {
         "value": {}
       },
+      "condition": false,
       "_nested_name": "title"
     },
     {
@@ -30,6 +31,7 @@
           "_cleaned": "click | go_to: topics_screen"
         }
       ],
+      "condition": false,
       "_nested_name": "button_topics"
     },
     {
@@ -50,6 +52,7 @@
           "_cleaned": "click | go_to: principles_screen"
         }
       ],
+      "condition": false,
       "_nested_name": "button_principles"
     },
     {
@@ -70,7 +73,137 @@
           "_cleaned": "click | go_to: library_screen"
         }
       ],
+      "condition": false,
       "_nested_name": "button_library"
+    },
+    {
+      "type": "display_group",
+      "name": "tile_topics",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "topics_screen"
+          ],
+          "_raw": "click | go_to: topics_screen",
+          "_cleaned": "click | go_to: topics_screen"
+        }
+      ],
+      "parameter_list": {
+        "style": "home_screen light"
+      },
+      "rows": [
+        {
+          "type": "image",
+          "name": "image_topics",
+          "value": "homepage/topics.png",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "tile_topics.image_topics"
+        },
+        {
+          "type": "title",
+          "name": "title_topics",
+          "value": "Topics",
+          "_translations": {
+            "value": {}
+          },
+          "parameter_list": {
+            "style": "alternative",
+            "text_align": "center"
+          },
+          "_nested_name": "tile_topics.title_topics"
+        }
+      ],
+      "_nested_name": "tile_topics"
+    },
+    {
+      "type": "display_group",
+      "name": "tile_topics",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "principles_screen"
+          ],
+          "_raw": "click | go_to: principles_screen",
+          "_cleaned": "click | go_to: principles_screen"
+        }
+      ],
+      "parameter_list": {
+        "style": "home_screen shade"
+      },
+      "rows": [
+        {
+          "type": "image",
+          "name": "image_topics",
+          "value": "homepage/principles.png",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "tile_topics.image_topics"
+        },
+        {
+          "type": "title",
+          "name": "title_topics",
+          "value": "Principles",
+          "_translations": {
+            "value": {}
+          },
+          "parameter_list": {
+            "style": "alternative",
+            "text_align": "center"
+          },
+          "_nested_name": "tile_topics.title_topics"
+        }
+      ],
+      "_nested_name": "tile_topics"
+    },
+    {
+      "type": "display_group",
+      "name": "tile_topics",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "library_screen"
+          ],
+          "_raw": "click | go_to: library_screen",
+          "_cleaned": "click | go_to: library_screen"
+        }
+      ],
+      "parameter_list": {
+        "style": "home_screen dark"
+      },
+      "rows": [
+        {
+          "type": "image",
+          "name": "image_topics",
+          "value": "homepage/library.png",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "tile_topics.image_topics"
+        },
+        {
+          "type": "title",
+          "name": "title_topics",
+          "value": "Library",
+          "_translations": {
+            "value": {}
+          },
+          "parameter_list": {
+            "style": "alternative",
+            "text_align": "center"
+          },
+          "_nested_name": "tile_topics.title_topics"
+        }
+      ],
+      "_nested_name": "tile_topics"
     }
   ],
   "_xlsxPath": "templates/global/navigation.xlsx"

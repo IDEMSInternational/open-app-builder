@@ -1,0 +1,210 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "pests_illustration",
+  "status": "released",
+  "data_list_name": "pests_illustration",
+  "rows": [
+    {
+      "id": "spider_mites",
+      "sub_section": "pests_pests",
+      "description": "Spider mites cause yellow dots on leaves, and in a severe infestation leaves may loose their green color.",
+      "title": "Spider mites",
+      "image_1": "pests/spidermite_2.png",
+      "body_type": "soft",
+      "animal_type": "pest"
+    },
+    {
+      "id": "thrips",
+      "sub_section": "pests_pests",
+      "description": "Thrips can cause wilting and distort leaves and fruits.",
+      "title": "Thrips",
+      "image_1": "pests/thrips.png",
+      "body_type": "soft",
+      "animal_type": "pest"
+    },
+    {
+      "id": "whiteflies",
+      "sub_section": "pests_pests",
+      "description": "Whiteflies also transmit many serious viral diseases in tomatoes, including all those on the right.",
+      "title": "Whiteflies",
+      "image_1": "pests/whiteflies_1.png",
+      "body_type": "soft",
+      "animal_type": "pest"
+    },
+    {
+      "id": "aphids",
+      "sub_section": "pests_pests",
+      "description": "Aphids can cause rolling, twisting, or bending of leaves, and in a heavy infestation leaves can turn yellow and wilt.",
+      "title": "Aphids",
+      "image_1": "pests/aphids_1.png",
+      "image_2": "pests/aphids_2.png",
+      "body_type": "soft",
+      "animal_type": "pest"
+    },
+    {
+      "id": "mealy_bugs",
+      "sub_section": "pests_pests",
+      "title": "Mealy bugs",
+      "image_1": "pests/mealy_bug_effect.png",
+      "body_type": "soft",
+      "animal_type": "pest"
+    },
+    {
+      "id": "leafminers",
+      "sub_section": "pests_pests",
+      "title": "Leafminers",
+      "image_1": "pests/leafminer_adult.png",
+      "image_2": "pests/leafminer_larvae.png",
+      "body_type": "soft",
+      "animal_type": "pest"
+    },
+    {
+      "id": "caterpillars",
+      "sub_section": "pests_pests",
+      "title": "Caterpillars",
+      "image_1": "pests/caterpillars.png",
+      "body_type": "soft",
+      "animal_type": "pest"
+    },
+    {
+      "id": "lady_beetles",
+      "sub_section": "pests_beneficials",
+      "description": "Both the larva and adult ladybugs eat aphids and other small soft bodied insects.",
+      "title": "Ladybugs",
+      "image_1": "pests/lady_beetle.png",
+      "body_type": "hard",
+      "animal_type": "beneficial"
+    },
+    {
+      "id": "lacewing",
+      "sub_section": "pests_beneficials",
+      "title": "Lacewing",
+      "image_1": "pests/lacewing_adult.png",
+      "image_2": "pests/lacewing_larvae.png",
+      "body_type": "soft",
+      "animal_type": "beneficial"
+    },
+    {
+      "id": "hover_files",
+      "sub_section": "pests_beneficials",
+      "description": "Adult hover flies can hover in the air like sunbirds or helicopters. They feed on pollen and nectar and their young are key predators of small soft bodied insects.",
+      "title": "Syrphid files (hover files)",
+      "image_1": "pests/hover_flies_adults.png",
+      "image_2": "pests/hover_flies_larva.png",
+      "body_type": "soft",
+      "animal_type": "beneficial"
+    },
+    {
+      "id": "parasitoids",
+      "sub_section": "pests_beneficials",
+      "title": "Parasitoids",
+      "image_1": "pests/parasitoids_on_aphids.png",
+      "image_2": "pests/parasitoids.png",
+      "body_type": "soft",
+      "animal_type": "beneficial"
+    },
+    {
+      "id": "praying_mantis",
+      "sub_section": "pests_beneficials",
+      "description": "Young praying mantis are smaller with no wings but otherwise identical. They eat any insect, even others of their kind.",
+      "title": "Praying mantis",
+      "image_1": "pests/praying_mantis.png",
+      "body_type": "hard",
+      "animal_type": "predator"
+    },
+    {
+      "id": "dragonfies",
+      "sub_section": "pests_beneficials",
+      "description": "Adult dragonflies eat insects of all types. They are among the most successful predators and catch over 90% of the prey they target (lions are successful less than 20% of time).",
+      "title": "Dragonflies",
+      "image_1": "pests/dragon_fly.png",
+      "body_type": "hard",
+      "animal_type": "predator"
+    },
+    {
+      "id": "wasps",
+      "sub_section": "pests_beneficials",
+      "title": "Wasps",
+      "image_1": "pests/wasp_1.png",
+      "body_type": "hard",
+      "animal_type": "predator"
+    },
+    {
+      "id": "ants",
+      "sub_section": "pests_beneficials",
+      "title": "Ants",
+      "image_1": "pests/ants_beneficials_1.png",
+      "body_type": "hard",
+      "animal_type": "predator"
+    },
+    {
+      "id": "spiders",
+      "sub_section": "pests_beneficials",
+      "description": "Spiders eat up to 880 million tons of insects each year.",
+      "title": "Spiders",
+      "image_1": "pests/spider_predators.png",
+      "body_type": "hard",
+      "animal_type": "predator"
+    },
+    {
+      "id": "ground_beetle_predators",
+      "sub_section": "pests_beneficials",
+      "title": "Ground beetle predators",
+      "image_1": "pests/ground_beetle.png",
+      "body_type": "hard",
+      "animal_type": "predator"
+    },
+    {
+      "id": "predator_flies",
+      "sub_section": "pests_beneficials",
+      "title": "Predator flies (robber flies)",
+      "image_1": "pests/robber_flies.png",
+      "body_type": "hard",
+      "animal_type": "predator"
+    },
+    {
+      "id": "other_insect_eaters",
+      "sub_section": "pests_beneficials",
+      "title": "Other insect eaters",
+      "image_1": "pests/other_insect_eaters.png",
+      "body_type": "hard",
+      "animal_type": "predator"
+    },
+    {
+      "id": "ornamentals_attract_beneficials",
+      "sub_section": "pests_plant_diversity",
+      "description": "Ornamental plants attract beneficials.",
+      "image_1": "pests/ornamentals_attract_beneficials.png"
+    },
+    {
+      "id": "food_crops_with_flowers",
+      "sub_section": "pests_plant_diversity",
+      "description": "Food crops that have flowers can attract many beneficial insects.",
+      "image_1": "pests/food_crops_with_flowers.png",
+      "image_2": "pests/beneicials_attracted_to_flowers.png"
+    },
+    {
+      "sub_section": "pests_plant_diversity",
+      "description": "Use pesticidal plants like tephrosia or tithonia if pest populations start getting out of control."
+    },
+    {
+      "id": "flowers_on_edges",
+      "sub_section": "pests_plant_diversity",
+      "description": "Plant flower strips on edges of veg and field crops.",
+      "image_1": "pests/flower_strips_on_the_edges.png"
+    },
+    {
+      "id": "grass_on_edges",
+      "sub_section": "pests_plant_diversity",
+      "description": "Allow grasses and wildflowers to grow on the margins of your fields and gardens. Don’t disturb them.",
+      "image_1": "pests/grasses_on_edges_of_fields.png"
+    },
+    {
+      "id": "flowers_on_margins",
+      "sub_section": "pests_plant_diversity",
+      "description": "Hedgerows, tree lines and contour lines attract beneficials provided they also include flowering plants.",
+      "image_1": "pests/flowers_on_margins_of_fields.png"
+    }
+  ],
+  "_xlsxPath": "data_lists/pests/pests_data_lists.xlsx"
+}

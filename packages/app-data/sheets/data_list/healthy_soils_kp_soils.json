@@ -1,7 +1,8 @@
 {
   "flow_type": "data_list",
-  "flow_name": "healthy_soils_keypoints",
+  "flow_name": "healthy_soils_kp_soils",
   "status": "released",
+  "data_list_name": "healthy_soils_kp_soils",
   "rows": [
     {
       "id": "keypoint_1",
@@ -26,11 +27,8 @@
     {
       "id": "keypoint_6",
       "text": "So to create this healthy arrangement of crumbs:",
-      "subtext_list": [
-        "Keep living roots in soils, and include perennial crops in crop rotations or at the margins of fields, see earlier slides",
-        "Feed microbes in the soil by returning organic matter to soils, see the earlier slides."
-      ]
+      "subtext": "* Keep living roots in soils, and include perennial crops in crop rotations or at the margins of fields, see earlier slides\n* Feed microbes in the soil by returning organic matter to soils, see the earlier slides."
     }
   ],
-  "_xlsxPath": "data_lists/soils/trees_as_residues_source .xlsx"
+  "_xlsxPath": "data_lists/soils/soils_health.xlsx"
 }
