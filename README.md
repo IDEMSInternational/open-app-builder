@@ -26,8 +26,9 @@
 
 ### Download the repo with binary assets
 ```
-$ git clone https://github.com/jfmcquade/ae-soils-app
+$ git lfs clone https://github.com/jfmcquade/ae-soils-app
 ```
+For newer versions of git, this equivalent to running `$ git clone https://github.com/jfmcquade/ae-soils-app`
 
 ### Install required dependencies
 ```
