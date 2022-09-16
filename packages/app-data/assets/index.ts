@@ -1,56 +1,160 @@
 export const UNTRACKED_ASSETS = [];
 export const ASSETS_CONTENTS_LIST = {
-  "ae_principles/circular_and_solidarity_economy.png": {
+  "ae_principles/CIDSE/CIDSE_agrochemicals.png": {
+    size_kb: 6,
+    md5Checksum: "e45c6fdf33134a49071d00dbfbd88706",
+  },
+  "ae_principles/CIDSE/CIDSE_biodiversity.png": {
+    size_kb: 4,
+    md5Checksum: "c53a608d8d93c33a2d7c277ea255749a",
+  },
+  "ae_principles/CIDSE/CIDSE_climate_change.png": {
+    size_kb: 5.6,
+    md5Checksum: "4d54ea01c3cbb8a07bef81b571423e7b",
+  },
+  "ae_principles/CIDSE/CIDSE_communities.png": {
+    size_kb: 8.7,
+    md5Checksum: "014afee1ad487d5fb5ca3dbeab5366df",
+  },
+  "ae_principles/CIDSE/CIDSE_decision_making.png": {
+    size_kb: 5.6,
+    md5Checksum: "b968fac8229248f596c04cc538320a61",
+  },
+  "ae_principles/CIDSE/CIDSE_diets.png": {
+    size_kb: 9.8,
+    md5Checksum: "6129e2562129be5431b0837ccbf36218",
+  },
+  "ae_principles/CIDSE/CIDSE_economic_resilience.png": {
+    size_kb: 5.5,
+    md5Checksum: "6b2ea370e72552069c04d887f6d17e22",
+  },
+  "ae_principles/CIDSE/CIDSE_economic_solidarity.png": {
+    size_kb: 3.9,
+    md5Checksum: "c2162a7da58e1765c65e1ac0dd0ed3a1",
+  },
+  "ae_principles/CIDSE/CIDSE_economy.png": {
+    size_kb: 6.6,
+    md5Checksum: "1900f4b8037614eeb5ccce25807a135a",
+  },
+  "ae_principles/CIDSE/CIDSE_empowerment.png": {
+    size_kb: 13.7,
+    md5Checksum: "753b41e68219f623ad89fce48a3f7ee7",
+  },
+  "ae_principles/CIDSE/CIDSE_food_governance.png": {
+    size_kb: 14.7,
+    md5Checksum: "8bc6c5e0c409ec8849d9ae3da4247d0f",
+  },
+  "ae_principles/CIDSE/CIDSE_integration.png": {
+    size_kb: 6.5,
+    md5Checksum: "b46894a4cb3a5d4ee73ab5f12f4fe110",
+  },
+  "ae_principles/CIDSE/CIDSE_knowledge.png": {
+    size_kb: 11.2,
+    md5Checksum: "73bb6e5b3c56046d2199c50f179f98d7",
+  },
+  "ae_principles/CIDSE/CIDSE_policies.png": {
+    size_kb: 3.4,
+    md5Checksum: "a22788cc4656a02604aa1568fc338855",
+  },
+  "ae_principles/CIDSE/CIDSE_rights.png": {
+    size_kb: 5.1,
+    md5Checksum: "d5b741db3de91f7c2294abb404f3f275",
+  },
+  "ae_principles/FAO/circular_and_solidarity_economy.png": {
     size_kb: 9.4,
     md5Checksum: "55e158fbf56c882b4d80448c26d42287",
   },
-  "ae_principles/co_creating_knowledge.png": {
+  "ae_principles/FAO/co_creating_knowledge.png": {
     size_kb: 7.4,
     md5Checksum: "678fc861dac2411e7b690c839f4c218c",
   },
-  "ae_principles/culture_and_food_traditions.png": {
+  "ae_principles/FAO/culture_and_food_traditions.png": {
     size_kb: 7.1,
     md5Checksum: "00a37b121f3d6e6756195de5f47ccda2",
   },
-  "ae_principles/diversity.png": {
+  "ae_principles/FAO/diversity.png": {
     size_kb: 9.7,
     md5Checksum: "0147f9ac293b69a82f63bc572d6fbe53",
   },
-  "ae_principles/efficiency.png": {
+  "ae_principles/FAO/efficiency.png": {
     size_kb: 8.2,
     md5Checksum: "4ea0362128dba3ef60ce75ad2fa45e6c",
   },
-  "ae_principles/human_and_social_values.png": {
+  "ae_principles/FAO/human_and_social_values.png": {
     size_kb: 9,
     md5Checksum: "c86f475f3d55c9261352e19ece8cc238",
   },
-  "ae_principles/interactions.png": {
+  "ae_principles/FAO/interactions.png": {
     size_kb: 195.5,
     md5Checksum: "e9a43e0a34fc343fe012fd1f0e5270b2",
   },
-  "ae_principles/overview.png": {
+  "ae_principles/FAO/overview.png": {
     size_kb: 6.9,
     md5Checksum: "cbcbef4f3ee802264e85b48ec9897c23",
   },
-  "ae_principles/principles.jpg": {
+  "ae_principles/FAO/principles.jpg": {
     size_kb: 40.1,
     md5Checksum: "c39fd9243356413b48adf3aec3ef8b28",
   },
-  "ae_principles/recycling.png": {
+  "ae_principles/FAO/recycling.png": {
     size_kb: 7.8,
     md5Checksum: "a4fedddac5743b40b77538838135eaec",
   },
-  "ae_principles/resilience.png": {
+  "ae_principles/FAO/resilience.png": {
     size_kb: 9.5,
     md5Checksum: "525daf3ac5029cf44de89c62bfabd0c7",
   },
-  "ae_principles/responsible_governance.png": {
+  "ae_principles/FAO/responsible_governance.png": {
     size_kb: 7.6,
     md5Checksum: "8f2b978f963c9b59b78d111dfd1e5a70",
   },
-  "ae_principles/synergies.png": {
+  "ae_principles/FAO/synergies.png": {
     size_kb: 11.1,
     md5Checksum: "b3649b16d2b7214d46f08c5c0c4a8d96",
+  },
+  "ae_principles/IFA/IFA_autonomy.png": {
+    size_kb: 543.3,
+    md5Checksum: "254ee812810fda796d2153f660fc6163",
+  },
+  "ae_principles/IFA/IFA_cosmovision.png": {
+    size_kb: 618,
+    md5Checksum: "f90c76a216e1f97c1bdc0ac80642d345",
+  },
+  "ae_principles/IFA/IFA_knowing.png": {
+    size_kb: 389.6,
+    md5Checksum: "aee943c5f6669b5f91588fa92463b871",
+  },
+  "ae_principles/IFA/IFA_movements.png": {
+    size_kb: 607.8,
+    md5Checksum: "e491704cf5ab860e8ba7847b3281b3d8",
+  },
+  "ae_principles/IFA/IFA_political.png": {
+    size_kb: 440.2,
+    md5Checksum: "67b58295e0771eea68d6c3754a7cca8c",
+  },
+  "ae_principles/IFA/IFA_resistance.png": {
+    size_kb: 507.2,
+    md5Checksum: "7a43632e2492f5915fcfae430f150281",
+  },
+  "ae_principles/IFA/IFA_resistance1.png": {
+    size_kb: 323,
+    md5Checksum: "af5a8c5f0ce6c19e35411732587b2ab4",
+  },
+  "ae_principles/IFA/IFA_rights.png": {
+    size_kb: 568.4,
+    md5Checksum: "9241cd72fec9c367cbfa11fbbe132e88",
+  },
+  "ae_principles/IFA/IFA_territories.png": {
+    size_kb: 333.6,
+    md5Checksum: "051dbb966be9a45cc083f9f9b9355c54",
+  },
+  "ae_principles/IFA/IFA_women.png": {
+    size_kb: 247.1,
+    md5Checksum: "2d4eba67578031fe81d04f3daff12fe3",
+  },
+  "ae_principles/IFA/IFA_youth.png": {
+    size_kb: 434.8,
+    md5Checksum: "57c01af46bdded7e7b6efaea164d2b5b",
   },
   "full/00098909911c90b53746767e94238b90a42c3f3f.jpg": {
     size_kb: 231.4,
@@ -4132,6 +4236,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 199.3,
     md5Checksum: "47145b595d5b9d5327cece05a2979e3d",
   },
+  "nutrition/Untitled document.docx": {
+    size_kb: 6.1,
+    md5Checksum: "6fcbab7b6d745b93293efa36de27ede4",
+  },
   "nutrition/Water.png": {
     size_kb: 116.1,
     md5Checksum: "0e3d8f88f630fc477fa4e916e240e88b",
@@ -4175,6 +4283,14 @@ export const ASSETS_CONTENTS_LIST = {
   "nutrition/grow_foods.png": {
     size_kb: 285.1,
     md5Checksum: "4c6b7a5560f146e5a855aa3826b3daa8",
+  },
+  "nutrition/nutrition icon.png": {
+    size_kb: 247.8,
+    md5Checksum: "f459a3cfe4086743bb98e4be27201e6e",
+  },
+  "nutrition/nutrition_icon.png": {
+    size_kb: 247.8,
+    md5Checksum: "f459a3cfe4086743bb98e4be27201e6e",
   },
   "nutrition/super_nutritious_new_crops.png": {
     size_kb: 196.2,
@@ -4292,9 +4408,9 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 56.4,
     md5Checksum: "5f50f9e7a2817651a707118caa0a3078",
   },
-  "pests/pests_icon.jpg": {
-    size_kb: 59.9,
-    md5Checksum: "70d110b67e681fe6effe36a2d67461c3",
+  "pests/pesticides.png": {
+    size_kb: 198.3,
+    md5Checksum: "3591fd17b53ad83b045054da94ffbe1b",
   },
   "pests/pests_icon.png": {
     size_kb: 251.7,
@@ -4351,6 +4467,1630 @@ export const ASSETS_CONTENTS_LIST = {
   "pests/whiteflies_effect.png": {
     size_kb: 185.8,
     md5Checksum: "d11f98f54100e6995ebfdc5723702b56",
+  },
+  "plants_pests_assets/022e16577d371d90f793ff61d8411fa2.jpg": {
+    size_kb: 37.3,
+    md5Checksum: "38f594824ba01f5dae71a89185dc9414",
+  },
+  "plants_pests_assets/02a8defc6a2153f94197d878221e5219.jpg": {
+    size_kb: 124.3,
+    md5Checksum: "15c9ef684d521522e78a100b7a9715eb",
+  },
+  "plants_pests_assets/03358efa52c59665b4e1b93bc0c41669.jpg": {
+    size_kb: 429.3,
+    md5Checksum: "3e4373ee0e3292c5412dd060a8b7c65d",
+  },
+  "plants_pests_assets/0440549e81c3b245112a526befb9664f.jpg": {
+    size_kb: 25.7,
+    md5Checksum: "8a14e7995ab664c91f64769bfaec3f91",
+  },
+  "plants_pests_assets/05c18b2693ac281f258085b342d24de5.jpg": {
+    size_kb: 37.3,
+    md5Checksum: "38f594824ba01f5dae71a89185dc9414",
+  },
+  "plants_pests_assets/06f0de0191422c382c0dbc1b8dae5112.jpg": {
+    size_kb: 109.3,
+    md5Checksum: "605bdb3d39032568592433a91ce4de39",
+  },
+  "plants_pests_assets/07a94eddda26b2da1b7c591c4271486b.jpg": {
+    size_kb: 8.7,
+    md5Checksum: "9116441a96d2cba677adefa3072ad823",
+  },
+  "plants_pests_assets/081e3bd2c166576ac0d0023e776d9d94.jpg": {
+    size_kb: 621.9,
+    md5Checksum: "1ed2ebae2b6e21bea9cb040b2fee602c",
+  },
+  "plants_pests_assets/0865df7976f42a353938eb9b3e3318e0.jpg": {
+    size_kb: 22.4,
+    md5Checksum: "0a1ea4f82a3d8eefb1be161a15c34177",
+  },
+  "plants_pests_assets/08733e63b2ea52742174c7c131ec1cb4.jpg": {
+    size_kb: 24.6,
+    md5Checksum: "65396fe6d50a1668644f63cd2d28e03a",
+  },
+  "plants_pests_assets/08789f94e0245bb20e2b288912debd72.jpg": {
+    size_kb: 98.2,
+    md5Checksum: "69c37354a8db5a034a6a43655917f350",
+  },
+  "plants_pests_assets/09a637c83db6cccecbee24df46efe647.jpg": {
+    size_kb: 332.1,
+    md5Checksum: "64aa62a1a6187bba034af163bdf977f5",
+  },
+  "plants_pests_assets/09aa86221619ee750ef4bb4891d3d87f.jpg": {
+    size_kb: 48.7,
+    md5Checksum: "3681610fb26717c815a1f3ec0a590df5",
+  },
+  "plants_pests_assets/0a056efc6a31ffb12a3712a957199d59.jpg": {
+    size_kb: 851.9,
+    md5Checksum: "50d72729d6836aaaeac66d69baf653d0",
+  },
+  "plants_pests_assets/0a1417cc02ca98306e142aa1439c21d8.jpg": {
+    size_kb: 26.1,
+    md5Checksum: "4ccbdb91e86266e4f1500c8580580727",
+  },
+  "plants_pests_assets/0a1bfd903423a3fb3c67312d6217a015.jpg": {
+    size_kb: 114.1,
+    md5Checksum: "2845d6c16c0eab05ecea91a3a463bd6e",
+  },
+  "plants_pests_assets/0a2c917e69c77815a5f1a6f8da3e6d01.jpg": {
+    size_kb: 14.8,
+    md5Checksum: "fa74c8d48bae7ac58b7d8b55835e9219",
+  },
+  "plants_pests_assets/0bebdf335cec72fef04bf586176733fd.jpg": {
+    size_kb: 11.2,
+    md5Checksum: "bdb36ed5dd41e1fe99615e38e08b3802",
+  },
+  "plants_pests_assets/0d105de86cfce667923bea7c2e4e65e8.jpg": {
+    size_kb: 64.7,
+    md5Checksum: "39bfd2da4cf86cf1c7939a67418edde6",
+  },
+  "plants_pests_assets/0f58d8d23a48488eede9b93d63db0d50.jpg": {
+    size_kb: 15.3,
+    md5Checksum: "0ff74fb86301930c2e9fcf35b7769697",
+  },
+  "plants_pests_assets/0f7cf4fec778be1b4d78df41ea4e5b9b.jpg": {
+    size_kb: 9.3,
+    md5Checksum: "c83b7a57c12843e9e8094629f63160a8",
+  },
+  "plants_pests_assets/11e2bdb8f730a67570f63ee891644b68.jpg": {
+    size_kb: 47.2,
+    md5Checksum: "7d3c2ac3f3cc74c660b61e4b1f1c280e",
+  },
+  "plants_pests_assets/1307baf6c1a3077dc62e3c8d8d219c85.jpg": {
+    size_kb: 21.6,
+    md5Checksum: "788d4fe3b4517b8b8f1e804cd68c7b5b",
+  },
+  "plants_pests_assets/13835b47c69d4ed51b03f2e2228aef8d.jpg": {
+    size_kb: 16.5,
+    md5Checksum: "54178673b1e8b01d3241d45ed9a16018",
+  },
+  "plants_pests_assets/13c9d5c6641cb9c254d270b1b6a9b1df.jpg": {
+    size_kb: 98.8,
+    md5Checksum: "52d596df9ec6d528d67247679c045903",
+  },
+  "plants_pests_assets/13fdd75a7527ecdfef6b15ad5ac9c525.jpg": {
+    size_kb: 72.7,
+    md5Checksum: "38099b9bc0bee62a02f25acfc8f2a29e",
+  },
+  "plants_pests_assets/1426d203d1b86c0535cf1780d0139df1.jpg": {
+    size_kb: 33.6,
+    md5Checksum: "87163dd2e634ffa3284c357df7b9b4d8",
+  },
+  "plants_pests_assets/14dbe48b12c378058cb5587f5b424673.jpg": {
+    size_kb: 794,
+    md5Checksum: "7d59cdf629a886351bdc1646afa1ad4e",
+  },
+  "plants_pests_assets/15c304bee3c41e12f0a1c22c73254e46.jpg": {
+    size_kb: 459.4,
+    md5Checksum: "73de1c4450b6cbde13a72a87ed96fd74",
+  },
+  "plants_pests_assets/16067bea3f9cf5f62697680ea5a68914.jpg": {
+    size_kb: 71.7,
+    md5Checksum: "acf7cb8184326c06455de93350e419f5",
+  },
+  "plants_pests_assets/1957be3016a30dfb07ad3ad9705e6012.jpg": {
+    size_kb: 451.1,
+    md5Checksum: "4755cccb9ce097a1eae1bf8f5317fe7a",
+  },
+  "plants_pests_assets/1a2c9fac3aa2c7fda1bf9e9a9c4d6b0b.jpg": {
+    size_kb: 31.4,
+    md5Checksum: "d2a35176b90e7c360abc3de3cb802125",
+  },
+  "plants_pests_assets/1a4361c671ab84e7e0ec99edccc426b9.jpg": {
+    size_kb: 19.5,
+    md5Checksum: "a4e8db19ebfb0622a99916feed18a09c",
+  },
+  "plants_pests_assets/1c2f85b12cec63f728d128850bcdb2cc.jpg": {
+    size_kb: 48.3,
+    md5Checksum: "fdb8102f140735f0398a19f4a9040a25",
+  },
+  "plants_pests_assets/1cd03dea8a9883d5bc3b5d3996c8317b.jpg": {
+    size_kb: 539.7,
+    md5Checksum: "c9fa9e51301c7f2f63ed0202a23e310b",
+  },
+  "plants_pests_assets/1ce0a2cc1763535e14491161acf07e4b.jpg": {
+    size_kb: 76.3,
+    md5Checksum: "e584941bca4301b11ccef5b30f1ecb6d",
+  },
+  "plants_pests_assets/1e3505d89d8937971369acf0783fbf53.jpg": {
+    size_kb: 118.1,
+    md5Checksum: "19aeeebf90ebe59d51e87a13a456ad45",
+  },
+  "plants_pests_assets/1e595c1e82166a43e7536276c92cfdaf.jpg": {
+    size_kb: 215.8,
+    md5Checksum: "5d2d14d1f96a70ff52cd24f37c954cc8",
+  },
+  "plants_pests_assets/1f05db3250993f12f78bbe8a62f708a4.jpg": {
+    size_kb: 4016.4,
+    md5Checksum: "99418334fc5af5e90689b567a2dc68f1",
+  },
+  "plants_pests_assets/1f228b7956a3659c312f492cbdd0cd2c.jpg": {
+    size_kb: 97.8,
+    md5Checksum: "87f6abbe592abbf92281bd3105163119",
+  },
+  "plants_pests_assets/1f5bbc19ec5a8f264826b4d5254b7d37.jpg": {
+    size_kb: 384.3,
+    md5Checksum: "d497d7a6b6b83b80939cfef5de10edc6",
+  },
+  "plants_pests_assets/1f80666067beeec3bdb4065530ca2c90.jpg": {
+    size_kb: 53.5,
+    md5Checksum: "239b7cdec5ecc54087ccee065ef5217a",
+  },
+  "plants_pests_assets/20be991a5936c3dc85675887b7bfec1f.jpg": {
+    size_kb: 32.3,
+    md5Checksum: "3dbe6a3224b39ff66fc6e26c341fc461",
+  },
+  "plants_pests_assets/21a1fe04b3502bce9f7b58761f7344a4.jpg": {
+    size_kb: 15.8,
+    md5Checksum: "2e58ed828f0532937c75f6a53a27dec5",
+  },
+  "plants_pests_assets/236df81c9a567106f77e4f38fc14d261.jpg": {
+    size_kb: 36.1,
+    md5Checksum: "f99b0c7c8bae7b7f5bc10bc144f3d5f7",
+  },
+  "plants_pests_assets/23eec11f7e50756b69cff5f7c325446b.jpg": {
+    size_kb: 144.8,
+    md5Checksum: "4d134871a2355c8442e41375e9201109",
+  },
+  "plants_pests_assets/24b8bba1ac95a4b9ec1994a84e2f4d93.jpg": {
+    size_kb: 152.8,
+    md5Checksum: "5e5fdedce0079561e5b2959a7e50abfb",
+  },
+  "plants_pests_assets/24c2fef1d5715ba284c8ba59a77326d3.jpg": {
+    size_kb: 42.1,
+    md5Checksum: "2f6738372a6624dc37d395956cca5e73",
+  },
+  "plants_pests_assets/24e5a1056a316363fe5db0a61918adb0.jpg": {
+    size_kb: 7.2,
+    md5Checksum: "3b78a5c9688122832df821625ebba19a",
+  },
+  "plants_pests_assets/2515a67f1aed87d5e3b5b2dd0b31aa82.jpg": {
+    size_kb: 176.3,
+    md5Checksum: "28a86b73212b6233b5b99dff064bdd0b",
+  },
+  "plants_pests_assets/2579853b67c1bcb27ea1893dc461faf2.jpg": {
+    size_kb: 279.4,
+    md5Checksum: "a23a3c46f663614da58659f2c4f04f02",
+  },
+  "plants_pests_assets/272ba46a9d253f146614dbd68f0b4a00.jpg": {
+    size_kb: 61.1,
+    md5Checksum: "149167d802aef901396b873a01b2b193",
+  },
+  "plants_pests_assets/28252075929a31d06c7b8634462fd74f.jpg": {
+    size_kb: 136.1,
+    md5Checksum: "7034b33e6504c0c32019e8eac50424b5",
+  },
+  "plants_pests_assets/28be06a507db8cdf6b4df272e846b0af.jpg": {
+    size_kb: 6.3,
+    md5Checksum: "a7e8de391d8eca68c663e06d0e527233",
+  },
+  "plants_pests_assets/2910ddcd64a36538fd52ab02fa8db769.jpg": {
+    size_kb: 14.8,
+    md5Checksum: "bec534c600041ce0a967314164b188fd",
+  },
+  "plants_pests_assets/29c69925d3044bad56e0d498602f0f2b.jpg": {
+    size_kb: 145.2,
+    md5Checksum: "8909ae09ec1c887993c9c2399e7c5342",
+  },
+  "plants_pests_assets/29ec2273e284fa9dcba5a85c0a4dd096.jpg": {
+    size_kb: 48.3,
+    md5Checksum: "6f132cd8476ffe9161c31e01d33f6659",
+  },
+  "plants_pests_assets/2ac8d6eb5b5ac546206a49c6e0671c7e.jpg": {
+    size_kb: 171.4,
+    md5Checksum: "d4b041854aa3bf2408916e3534acdb13",
+  },
+  "plants_pests_assets/2c2b93e6e2c9d80eaddbc4c8331d5742.jpg": {
+    size_kb: 28.5,
+    md5Checksum: "1770bf098f0ec9e38ddfe0389b825cbe",
+  },
+  "plants_pests_assets/2c9d09d52a682663ca0646433eed7f7a.jpg": {
+    size_kb: 49,
+    md5Checksum: "9b482f6a3e49fbdfe248f84e25dba98c",
+  },
+  "plants_pests_assets/2d745c67b45a432302a24b6eaf31f95c.jpg": {
+    size_kb: 11.3,
+    md5Checksum: "63baa1f3d5c0401419bbdf0d592478ba",
+  },
+  "plants_pests_assets/2dc65a8b6010ae28e77ba9e864da581f.jpg": {
+    size_kb: 13.7,
+    md5Checksum: "2b2f92531b998d74aa81efbdf7c6ab51",
+  },
+  "plants_pests_assets/2ebad29ea0f07e4245fb5cf1e48a48cb.jpg": {
+    size_kb: 535.8,
+    md5Checksum: "95df3f867d76e32456af31998f78d73b",
+  },
+  "plants_pests_assets/301be27292c6bb8fd72c333ead2fc9c9.jpg": {
+    size_kb: 74.7,
+    md5Checksum: "ec3045f573f64796e1e560b7377bacc1",
+  },
+  "plants_pests_assets/30a2f73a27e4c1b6c3991164147dfbac.jpg": {
+    size_kb: 15.1,
+    md5Checksum: "789f66a7c7d5e2e2d9c2440e36b23d89",
+  },
+  "plants_pests_assets/30d64499254a5df631d6c962ba9a9e39.jpg": {
+    size_kb: 68,
+    md5Checksum: "7f49505d93d1846257099352525e5cce",
+  },
+  "plants_pests_assets/30fff3241f7354782bc9b73a16a421c3.jpg": {
+    size_kb: 88.5,
+    md5Checksum: "6655269138ca1e2c2fe3b49932505469",
+  },
+  "plants_pests_assets/31f53df996149e6324deac2318312c2f.jpg": {
+    size_kb: 14.8,
+    md5Checksum: "3749585558d90bb65ece4d163b0397cc",
+  },
+  "plants_pests_assets/3348281aff0d3c9bbe539f3dc0837cf2.jpg": {
+    size_kb: 258.7,
+    md5Checksum: "991a1076cd1d93f1f5427b8f00d4562f",
+  },
+  "plants_pests_assets/3379ce1142081d2255ef797ffa1c6c3f.jpg": {
+    size_kb: 93.4,
+    md5Checksum: "dcb7717cc4daf29596f4266ea6631f7d",
+  },
+  "plants_pests_assets/34e30bd59647bcc44ca6fa5bb87643e1.jpg": {
+    size_kb: 316.5,
+    md5Checksum: "35528e10a9ccd0c2370f5cf370196317",
+  },
+  "plants_pests_assets/3562887fd62c6466377916f8df7e20b0.jpg": {
+    size_kb: 45.2,
+    md5Checksum: "c3bc82f059d362ad24d31162e1f883bf",
+  },
+  "plants_pests_assets/3611629ece52555de45b195c693d2522.jpg": {
+    size_kb: 10.9,
+    md5Checksum: "aaa0adf793df18cf31119f26743255c5",
+  },
+  "plants_pests_assets/361caadc46fb2bf66010ddb9669024cb.jpg": {
+    size_kb: 197.2,
+    md5Checksum: "88e87a335e29c59c1897aff1f6a46f3a",
+  },
+  "plants_pests_assets/38b4fd64adacadbd51dcb4cdfa70df74.jpg": {
+    size_kb: 35.9,
+    md5Checksum: "de399664c96f927b54767e0832414752",
+  },
+  "plants_pests_assets/38d2552dbb3287a066ae5f50508ba672.jpg": {
+    size_kb: 76.7,
+    md5Checksum: "0adb0bab3839f2f4d39312fec71949de",
+  },
+  "plants_pests_assets/39203d3e1a640a3893f772d40f618730.jpg": {
+    size_kb: 857.4,
+    md5Checksum: "49bab164da09d7e96b3559ad53d16b54",
+  },
+  "plants_pests_assets/39648345b3a25f092ed3cc6796bd659d.jpg": {
+    size_kb: 65.3,
+    md5Checksum: "b6a6a30d4bd25ea95be14baa2b1af73f",
+  },
+  "plants_pests_assets/396c1d519b8ebf12b755056529fd67ac.jpg": {
+    size_kb: 65.9,
+    md5Checksum: "2cc14caef4d2191bd45458a19bd0cb2c",
+  },
+  "plants_pests_assets/3a2766fd7cb4215523c1a68e53188562.jpg": {
+    size_kb: 62.9,
+    md5Checksum: "6f95875eb6e6bbfa36e1f4eba56fd5d6",
+  },
+  "plants_pests_assets/3ad430102609556f7e1bf1506113df2b.jpg": {
+    size_kb: 128,
+    md5Checksum: "4166f9f381f472261e9e040feea477d6",
+  },
+  "plants_pests_assets/3c477fc0435b0471962adb65d7f48985.jpg": {
+    size_kb: 68.2,
+    md5Checksum: "7ab55ac04420d7ea359696f5d539f4af",
+  },
+  "plants_pests_assets/3cebe5ba34d2e22575dbe1f3342a1fc4.jpg": {
+    size_kb: 30.8,
+    md5Checksum: "bc781f04f34db31a89df22ff25f1626e",
+  },
+  "plants_pests_assets/3d4c85faaabd8286091faa79167fa46f.jpg": {
+    size_kb: 106,
+    md5Checksum: "ff6d764968f8cd6a8e4dd78e56480c9e",
+  },
+  "plants_pests_assets/3e1581b0c1ee2b27411870af4a1c56ec.jpg": {
+    size_kb: 8.7,
+    md5Checksum: "20614a50c7e718f50eebcdea679e1348",
+  },
+  "plants_pests_assets/3ed943f3b3875e3a55018edbd14a36ce.jpg": {
+    size_kb: 17.9,
+    md5Checksum: "c95a3c0e0483cc432def8c4cc6936cd7",
+  },
+  "plants_pests_assets/3ff6f421892e0dff8c12e5eaae47294c.jpg": {
+    size_kb: 10.3,
+    md5Checksum: "54641ce7520733408fdb4b099210146c",
+  },
+  "plants_pests_assets/403bd1b61010306cf26603c36dcce2d0.jpg": {
+    size_kb: 13,
+    md5Checksum: "f65817a29be9b01d53795b0ca5183443",
+  },
+  "plants_pests_assets/41136598f86521348c2ba473fbd0b15d.jpg": {
+    size_kb: 32.1,
+    md5Checksum: "5d13db5f6d1d6bba910e2722b156d22a",
+  },
+  "plants_pests_assets/4198b38c865d991d5dc1cfe260bae57a.jpg": {
+    size_kb: 689.4,
+    md5Checksum: "7666dbf74498e65bef51e8ffa2b50ba5",
+  },
+  "plants_pests_assets/438593b08af7af55a51a6c6513397104.jpg": {
+    size_kb: 186.4,
+    md5Checksum: "0858f87cefef01092bcf739144c756db",
+  },
+  "plants_pests_assets/43af600834e666fa3146537e60bab405.jpg": {
+    size_kb: 22.5,
+    md5Checksum: "e766bda574bdf80d5893481ca2245fd8",
+  },
+  "plants_pests_assets/43dc0230fcc7228b0e90767905389728.jpg": {
+    size_kb: 51.7,
+    md5Checksum: "4873de78d6f1c9958009864caa17f1b1",
+  },
+  "plants_pests_assets/44d2534169ca278ff64dca321c897527.jpg": {
+    size_kb: 182.8,
+    md5Checksum: "1816383d7bcfbc3a3225a90c3ac7e8de",
+  },
+  "plants_pests_assets/46299ff951d07be7baa147a2ecb80f9b.jpg": {
+    size_kb: 44.2,
+    md5Checksum: "4ed86eb26fa61de25ab6af4ef4569251",
+  },
+  "plants_pests_assets/464f6c39f2051ae02951d1178a08542e.jpg": {
+    size_kb: 9.7,
+    md5Checksum: "3a6600dfd772af96677e1250912bdf48",
+  },
+  "plants_pests_assets/47905da60b5bc158b4cd229d0997abd0.jpg": {
+    size_kb: 7.4,
+    md5Checksum: "d2a89f2eba23a84c004dd5400bafc645",
+  },
+  "plants_pests_assets/47ac734728fa6bbbd21cf1be4dfb990f.jpg": {
+    size_kb: 191.5,
+    md5Checksum: "05752633b9d19f73c70a3beff59ddf10",
+  },
+  "plants_pests_assets/483f281f4ab4d0e1f446eca6223097f5.jpg": {
+    size_kb: 19.4,
+    md5Checksum: "0f4deedab96376fc76c69cd449c9cb44",
+  },
+  "plants_pests_assets/48494a4d3b098df9a8a50788c0f55588.jpg": {
+    size_kb: 6.8,
+    md5Checksum: "1633a20a5ce939598800256e09b28105",
+  },
+  "plants_pests_assets/48bc6e77719fedee0517ed9ae29cfea5.jpg": {
+    size_kb: 172.9,
+    md5Checksum: "54a5323c6b7e2c5037129e31144557c9",
+  },
+  "plants_pests_assets/49e92a88a5e6062623503fe32c50d306.jpg": {
+    size_kb: 118.3,
+    md5Checksum: "b56e480096b47b4adbca2ef4a0af7b47",
+  },
+  "plants_pests_assets/4a372c3644ea1c6bb2bc239708aa7ff1.jpg": {
+    size_kb: 369.2,
+    md5Checksum: "b7ce3a69ba92688cd9f1a4e2214a40b0",
+  },
+  "plants_pests_assets/4ae2bf145af9389f32e54ec47708dbb4.jpg": {
+    size_kb: 40.8,
+    md5Checksum: "7358d7dbe8373fa11cf047ce2b626636",
+  },
+  "plants_pests_assets/4baa4c6073921c5c53f9e40b7561f7a9.jpg": {
+    size_kb: 74.8,
+    md5Checksum: "a86beef7596e4d171d739816c8c8453b",
+  },
+  "plants_pests_assets/4bb1d5db4ab02823ce9f0f76814ff9c0.jpg": {
+    size_kb: 21,
+    md5Checksum: "4531d170a429c0082f2262fff1b987a5",
+  },
+  "plants_pests_assets/4bb540a9a4a92cc0c164f0c4da1cbe1d.jpg": {
+    size_kb: 34.4,
+    md5Checksum: "4e7d6ba6a973228ed8e35a6979354343",
+  },
+  "plants_pests_assets/4d84264d2a3644967061a3abdaa03ea9.jpg": {
+    size_kb: 8.7,
+    md5Checksum: "bac487601e858805ebb3127e0bf9502c",
+  },
+  "plants_pests_assets/4de486626601c2cb448098b2f9a2182f.jpg": {
+    size_kb: 53.5,
+    md5Checksum: "f56200e5caa76d526ac2f2969b5020a3",
+  },
+  "plants_pests_assets/4e0cf3710c6f8038670dd8f3c9fb1e02.jpg": {
+    size_kb: 18.2,
+    md5Checksum: "fb7c44569f0d6e262cd391718df020a6",
+  },
+  "plants_pests_assets/4e471b158acc0a37ad1027209e589bef.jpg": {
+    size_kb: 42.8,
+    md5Checksum: "393a670bfcb7a4f5fb9ece3ff31488b7",
+  },
+  "plants_pests_assets/4ffb1da57365d36b00de5378f19c7764.jpg": {
+    size_kb: 180.6,
+    md5Checksum: "ecb51683f3ce0e0cebae79b4ae019226",
+  },
+  "plants_pests_assets/504fa8ebb2d1e2cc8c90e2eab4347218.jpg": {
+    size_kb: 192.4,
+    md5Checksum: "000739b307650916805d14ae087d2ec1",
+  },
+  "plants_pests_assets/518611c9f3952f14555685d2e3a61d31.jpg": {
+    size_kb: 43.5,
+    md5Checksum: "f9a6c1a4d9aab0d75589bc1d3466ed91",
+  },
+  "plants_pests_assets/52007a088c77d654017bebdfdd6a80d6.jpg": {
+    size_kb: 14.3,
+    md5Checksum: "0865d8366dcb21debe804f5a78f55639",
+  },
+  "plants_pests_assets/52a487a88ea12dd1ebf4bc80a84274c4.jpg": {
+    size_kb: 362.2,
+    md5Checksum: "9e0f662b038e895d01f8e39b77052a32",
+  },
+  "plants_pests_assets/532256abcda7f76ff1ac18e4010d0d13.jpg": {
+    size_kb: 18.2,
+    md5Checksum: "565cfd6879f98ace86e2e3d935299e11",
+  },
+  "plants_pests_assets/53cfebc3946e6fc4670a021d4fb75e19.jpg": {
+    size_kb: 8.7,
+    md5Checksum: "82a68a6e422dcdc8bfa896ce748cddfd",
+  },
+  "plants_pests_assets/543949bf037bd5da06a531fbc1d8a4a0.jpg": {
+    size_kb: 14.3,
+    md5Checksum: "251225b4939b85ec16eb9c8223e1b685",
+  },
+  "plants_pests_assets/5559097ce34067250bdd708bc229da5e.jpg": {
+    size_kb: 154.5,
+    md5Checksum: "3743bb982e282ce7ea53720d41590c49",
+  },
+  "plants_pests_assets/55b31f62a0a2bbdebfdf22e09ee07e53.jpg": {
+    size_kb: 23.5,
+    md5Checksum: "595016ad35bd0e9ab2c99da8738a6db4",
+  },
+  "plants_pests_assets/5611194710e9f2b946be9bf64e4b2e18.jpg": {
+    size_kb: 277.1,
+    md5Checksum: "7684520b2c1eabc32e392d859f8eda9b",
+  },
+  "plants_pests_assets/567f2382231746152f23f7ce3ba2a6c9.jpg": {
+    size_kb: 29.1,
+    md5Checksum: "874be813cebb04b2b73b94e92699aa71",
+  },
+  "plants_pests_assets/589119b472fe03e8339299fd881d3413.jpg": {
+    size_kb: 227.7,
+    md5Checksum: "cbab6586ccf9c054d44793435989367b",
+  },
+  "plants_pests_assets/58d0584885ec38a94ee9419869ed5b30.jpg": {
+    size_kb: 31.8,
+    md5Checksum: "ff95ccc433e0cbd8c55a4615b13b768f",
+  },
+  "plants_pests_assets/58dbb50d7af1227e6a004b2535ea333c.jpg": {
+    size_kb: 27.5,
+    md5Checksum: "f11e9bdc5dd8cde25832e734b012b805",
+  },
+  "plants_pests_assets/59f0240f8c07d2799f6dea01272151df.jpg": {
+    size_kb: 53,
+    md5Checksum: "a7ecee17a43978e028d4da1a08fca7ff",
+  },
+  "plants_pests_assets/5a246b3e58a2f7117ca46d5451953536.jpg": {
+    size_kb: 196.5,
+    md5Checksum: "66cc587f2c85c7cf8271366cb9a777c2",
+  },
+  "plants_pests_assets/5a2fd8eb8e17680fb0691b0d7d0bee68.jpg": {
+    size_kb: 11.7,
+    md5Checksum: "dedbb69938e192e6683ffac7735b298e",
+  },
+  "plants_pests_assets/5a72ea2e7a7316af59b9b54d86b64672.jpg": {
+    size_kb: 677.5,
+    md5Checksum: "0ed4f47d698d0fae4144799f206f2565",
+  },
+  "plants_pests_assets/5b007b40dab941cd4cc14276612ba189.jpg": {
+    size_kb: 184.2,
+    md5Checksum: "0f385a241b3abeaf1e0dff7a06c13016",
+  },
+  "plants_pests_assets/5b318895cb9ba1509840d3e9caab03dd.jpg": {
+    size_kb: 177.3,
+    md5Checksum: "fed9caadf3d3c1d43f317284a4ad4002",
+  },
+  "plants_pests_assets/5b9c14256e0f41d95ce5d8bc50dbfa71.jpg": {
+    size_kb: 135.6,
+    md5Checksum: "213181260b7a099144e0f8b3176f177e",
+  },
+  "plants_pests_assets/5c600ef9a08591891f2724b4bec6233b.jpg": {
+    size_kb: 4096.8,
+    md5Checksum: "a2343463d6b90c91079320bd9fd31a1b",
+  },
+  "plants_pests_assets/5ca8f885b0a3c3b80542d4666a0d357f.jpg": {
+    size_kb: 32.2,
+    md5Checksum: "d72faa0901a4a353bec06eaa9ba0e28c",
+  },
+  "plants_pests_assets/5cdb42fedb3def3bbe5ec094e6bdb410.jpg": {
+    size_kb: 38.1,
+    md5Checksum: "03bf7d2ca30a2518886ca61a70f08a48",
+  },
+  "plants_pests_assets/5d19e90f5d678a2a1f6406798d32bbab.jpg": {
+    size_kb: 5.2,
+    md5Checksum: "02b0a04d6a7c24c2bfc235a092ca8ef7",
+  },
+  "plants_pests_assets/5d6b8ad675f588d4c1bec9b0b03724ab.jpg": {
+    size_kb: 16.5,
+    md5Checksum: "9764f5fe0e601d394219f82802b03b1b",
+  },
+  "plants_pests_assets/5e37ab065b08fbf48db264987a2a9e49.jpg": {
+    size_kb: 14.8,
+    md5Checksum: "9eb5c958574198f10ec3b5347d73fdc6",
+  },
+  "plants_pests_assets/5e5a3e77e1c747bd60d2c7ff2e1569f8.jpg": {
+    size_kb: 241.9,
+    md5Checksum: "d97ecf16bb4a4c473e342728af6fac6a",
+  },
+  "plants_pests_assets/6005e32e61f0d8f939ba42c6527a16db.jpg": {
+    size_kb: 11.5,
+    md5Checksum: "edc982e9822e9c2a553072f0372fa492",
+  },
+  "plants_pests_assets/60e575766bd3e850b19d4301dcacbe5c.jpg": {
+    size_kb: 34.6,
+    md5Checksum: "74cea260656a2cf77b9ea8bd464c42f8",
+  },
+  "plants_pests_assets/628028a1df6306a6090c8bbeb03ff480.jpg": {
+    size_kb: 171.6,
+    md5Checksum: "08628b8b2b64d4a9cb367b6e51bc2b9a",
+  },
+  "plants_pests_assets/6306a909144960420a07ba1f01e9a207.jpg": {
+    size_kb: 99.3,
+    md5Checksum: "2ba6573a0d9e27c11d74a8232d269f8b",
+  },
+  "plants_pests_assets/6335fb514895601797723bc9f0f66ed3.jpg": {
+    size_kb: 26.5,
+    md5Checksum: "44161b22b7847e30c5687e893f602789",
+  },
+  "plants_pests_assets/63b9d54990f2de6b88170ee510326fe6.jpg": {
+    size_kb: 15.2,
+    md5Checksum: "fa7890325f5993e906fd9de8a2ec4963",
+  },
+  "plants_pests_assets/66ee875f58c6db006aed935d18414569.jpg": {
+    size_kb: 88.5,
+    md5Checksum: "64a4cd4d29ec3d2df50b187ecb09424b",
+  },
+  "plants_pests_assets/676b8ecabe5bb47b2a2f631baf8fae13.jpg": {
+    size_kb: 15.6,
+    md5Checksum: "9311449b7a809e39c706712afb1d5af5",
+  },
+  "plants_pests_assets/679b43884212242c21061358d64d05c6.jpg": {
+    size_kb: 204.9,
+    md5Checksum: "ba8a9a5ba660f08a4044cfb954642838",
+  },
+  "plants_pests_assets/67bc25a882810b3916793e940a3f06ff.jpg": {
+    size_kb: 15.6,
+    md5Checksum: "9311449b7a809e39c706712afb1d5af5",
+  },
+  "plants_pests_assets/686bf1d897fccca5774d669953827da4.jpg": {
+    size_kb: 222.6,
+    md5Checksum: "fc1afa6a5259ef6c91e810532be3f344",
+  },
+  "plants_pests_assets/693fe10b89f0562f37d8655dbbb46cee.jpg": {
+    size_kb: 203.3,
+    md5Checksum: "8bc7ee9db4e5ac89e0d579ec829facf8",
+  },
+  "plants_pests_assets/697bc77eaed04f24bb7f7bef73405cac.jpg": {
+    size_kb: 169.4,
+    md5Checksum: "14c4fd866411496f55cc326ab6bb6591",
+  },
+  "plants_pests_assets/6b085118680d0a98baacf0299c05d78c.jpg": {
+    size_kb: 26.5,
+    md5Checksum: "0d066af2bee1cdf9c023f308ea1f8e04",
+  },
+  "plants_pests_assets/6b1f84850072548ad3252a32d57183b4.jpg": {
+    size_kb: 11.8,
+    md5Checksum: "fec8d13ccf10d781dbdb9755868c1743",
+  },
+  "plants_pests_assets/6bdcfc261fc69cde2428aa720dd50684.jpg": {
+    size_kb: 29.4,
+    md5Checksum: "528e0dba2821d064a73de7542e102760",
+  },
+  "plants_pests_assets/6bf0cc6126649ada2d01c0f9e7d01773.jpg": {
+    size_kb: 17.8,
+    md5Checksum: "b26c3a6b22f7131e7a9a52bf53048fd1",
+  },
+  "plants_pests_assets/6c7d0c49b018c961151a8e26ee3776de.jpg": {
+    size_kb: 14.8,
+    md5Checksum: "6dac763f68ffc16d0248622173dfe6ae",
+  },
+  "plants_pests_assets/6e59fb41b08edb6778d85f84f71ac87f.jpg": {
+    size_kb: 18.4,
+    md5Checksum: "229fe464f113ed59f7779309f540e0f9",
+  },
+  "plants_pests_assets/6e899bd0bd39af31752a56441e19647e.jpg": {
+    size_kb: 9,
+    md5Checksum: "dbb71d721950a3ab3f4ad68775288f2a",
+  },
+  "plants_pests_assets/7042342a6c20cf2b7ccdc148f6bbe69b.jpg": {
+    size_kb: 30,
+    md5Checksum: "e254334acac4338315a48b917c22c1a3",
+  },
+  "plants_pests_assets/706d2c66e7381d3ebb3f7a0073bf5d99.jpg": {
+    size_kb: 169.4,
+    md5Checksum: "c29d396195534ce084bae9d7327a574f",
+  },
+  "plants_pests_assets/70f104b33129f8513a2ec164d664c780.jpg": {
+    size_kb: 7.1,
+    md5Checksum: "956366fac3b0d2215cad793fc9faca27",
+  },
+  "plants_pests_assets/7114b2eef292c7a59f32410ad22bd207.jpg": {
+    size_kb: 14.8,
+    md5Checksum: "bb464a3498a3cf762f7ad657c8c54d04",
+  },
+  "plants_pests_assets/712fc2cf1ba7d8b75d6ebe81615b0e9e.jpg": {
+    size_kb: 19.2,
+    md5Checksum: "2c649b4c70ccf3cfcb632a2ecefcdfc9",
+  },
+  "plants_pests_assets/71d7c812670507ba7e5196c936bcf596.jpg": {
+    size_kb: 75.3,
+    md5Checksum: "d8551be44c258a599504c6c3eb3717bc",
+  },
+  "plants_pests_assets/7346266c9798c74e9d62ebcb4cae6031.jpg": {
+    size_kb: 43.3,
+    md5Checksum: "d862588b89c7367679186986d2b43f17",
+  },
+  "plants_pests_assets/73fea70937500b58150d4f94ff66413c.jpg": {
+    size_kb: 96.7,
+    md5Checksum: "6430b734691acddbfb681915986d701a",
+  },
+  "plants_pests_assets/741219762975161ee337a1d5cba1df37.jpg": {
+    size_kb: 948.3,
+    md5Checksum: "4acdb98c8fef661f71aa32b3b55dede6",
+  },
+  "plants_pests_assets/7461fc6ef7349fdefec33254335e050c.jpg": {
+    size_kb: 264.2,
+    md5Checksum: "f7ba8076cbd82abe6b55383111d6e01e",
+  },
+  "plants_pests_assets/756345180eb5d62b27bc99adccbc49c2.jpg": {
+    size_kb: 122.8,
+    md5Checksum: "2166e530feff6c1c104b3334ca385b54",
+  },
+  "plants_pests_assets/7571940875c11d6ee2af90d128f22d0b.jpg": {
+    size_kb: 14.6,
+    md5Checksum: "1e6613906a0e572f4635e0fee9350fd2",
+  },
+  "plants_pests_assets/75845bf70e2fc3b7832af606626659ee.jpg": {
+    size_kb: 386.5,
+    md5Checksum: "42db0b0618a93b069976cf51142cfc4b",
+  },
+  "plants_pests_assets/7663044afcda81d384a6ae79547d3425.jpg": {
+    size_kb: 7.1,
+    md5Checksum: "956366fac3b0d2215cad793fc9faca27",
+  },
+  "plants_pests_assets/7663a46b36483534a4c9b2a755265a66.jpg": {
+    size_kb: 32.2,
+    md5Checksum: "ecea3e38eead15284e65aff4b1994d93",
+  },
+  "plants_pests_assets/7712edd245748b55073e5bba8fcda663.jpg": {
+    size_kb: 21.5,
+    md5Checksum: "d657b82ed1fb4ddf3fb9a2586443144a",
+  },
+  "plants_pests_assets/771a298529dc51fc4b22984fd78edabd.jpg": {
+    size_kb: 16.2,
+    md5Checksum: "7efef4c28e3c08d7f22ea6b69a7f5feb",
+  },
+  "plants_pests_assets/779f5cf70c76625ec3415aaedbaf968c.jpg": {
+    size_kb: 31,
+    md5Checksum: "cde2fd5fce2d547168c81a4ede468155",
+  },
+  "plants_pests_assets/78680515de8278cf2ebd89d1be4ba5ab.jpg": {
+    size_kb: 106.1,
+    md5Checksum: "7a9cab18e802cabc225ee1b618fbe592",
+  },
+  "plants_pests_assets/7883ef37e9f32744f9440baa7d45cab3.jpg": {
+    size_kb: 328.1,
+    md5Checksum: "def2c324e0c96ba49c96ca6cfe46c858",
+  },
+  "plants_pests_assets/78c7ad7f8793899313fbaa8f1a154a22.jpg": {
+    size_kb: 394.2,
+    md5Checksum: "4930c86d3dffb269099724b3f11eb5ba",
+  },
+  "plants_pests_assets/79a10589c752d2492c5e9e1a9d4d4fd0.jpg": {
+    size_kb: 41.4,
+    md5Checksum: "727f53c323fef612c954f6ed1df3c052",
+  },
+  "plants_pests_assets/7a0f9309863388d8d4f43dd4532c582d.jpg": {
+    size_kb: 65.8,
+    md5Checksum: "3c000b8170e52accbeb76ac5aea7ca69",
+  },
+  "plants_pests_assets/7a166b78eee8e78bd1f47e96e2bd847e.jpg": {
+    size_kb: 25.8,
+    md5Checksum: "c3e72cb7b60bc78877e19065096e850b",
+  },
+  "plants_pests_assets/7ac6999f9d62a63eb3a113e01c134e27.jpg": {
+    size_kb: 59.3,
+    md5Checksum: "c00d934837b7b4b12d44b9f5a1e6dbb0",
+  },
+  "plants_pests_assets/7acfa880fce2b2c22bbd3f8cb30e9153.jpg": {
+    size_kb: 86.9,
+    md5Checksum: "9baf4acb31033adc5ffd0bde8802f15d",
+  },
+  "plants_pests_assets/7ad2127627b3c1b85fcbcceee8f81e0c.jpg": {
+    size_kb: 24.6,
+    md5Checksum: "e0615707cdc320d6e2a0dffd669683a8",
+  },
+  "plants_pests_assets/7bb5ad5cad38751f00ca93a2853d7948.jpg": {
+    size_kb: 460.9,
+    md5Checksum: "cb4a3b4fa498c3561a1a2f164152d2e3",
+  },
+  "plants_pests_assets/7c068b0051ac9c1dcb89f0c0e8d5a0bd.jpg": {
+    size_kb: 242.2,
+    md5Checksum: "615b6b4ccae0f49228e02ed365fee5ff",
+  },
+  "plants_pests_assets/7c2faee501bdbb01b13670049f08a92d.jpg": {
+    size_kb: 17.7,
+    md5Checksum: "63f5500dd13cb95f61237d12e80290f0",
+  },
+  "plants_pests_assets/7c97c428fb8552d6d893f5e11b59fcec.jpg": {
+    size_kb: 201.1,
+    md5Checksum: "3585190e0279e8a3e3b6d1ba3b98c09f",
+  },
+  "plants_pests_assets/7d04f463d718ecd96269f55c7dcb07f1.jpg": {
+    size_kb: 3.7,
+    md5Checksum: "640ceab0257367cb9102a2d52907a0ee",
+  },
+  "plants_pests_assets/7d0afac4f89811bf3fdd071742fc21a5.jpg": {
+    size_kb: 16.3,
+    md5Checksum: "9c833f7dc0a2dbd4436c35ed27f84a59",
+  },
+  "plants_pests_assets/7d10c272c8e57a322c3d5710265528b7.jpg": {
+    size_kb: 10.2,
+    md5Checksum: "73e29c93f1bf68dd753f303d9d93a5db",
+  },
+  "plants_pests_assets/7f0492db54cd43a0085e0ad80a9886cc.jpg": {
+    size_kb: 873.5,
+    md5Checksum: "0cf5b981903f49f9efa883db5b2a42ef",
+  },
+  "plants_pests_assets/7ff5936ed10523785362ee5204b113be.jpg": {
+    size_kb: 17.5,
+    md5Checksum: "0bcd0613c45b6c1c1ec21ab5b0ea4904",
+  },
+  "plants_pests_assets/8004e4bfc15492b2879e163f3246ffe2.jpg": {
+    size_kb: 59.4,
+    md5Checksum: "96953b4af6f45c3110c77e56a270974d",
+  },
+  "plants_pests_assets/809cdfadabe79647715656e869dd0b5b.jpg": {
+    size_kb: 181.7,
+    md5Checksum: "563df8cd8b33134436ec70384f38abde",
+  },
+  "plants_pests_assets/80d81d6d9ac5fb0ef542f0c4352860e1.jpg": {
+    size_kb: 90.5,
+    md5Checksum: "be6f4be29b2f0bcd46945f42227ff90a",
+  },
+  "plants_pests_assets/810f480df88c4fa156ca066b896efb63.jpg": {
+    size_kb: 24.1,
+    md5Checksum: "2a9018b3c0c29cbb81b5de40817006eb",
+  },
+  "plants_pests_assets/8237e8e83c2f501e49cfb6eec191354a.jpg": {
+    size_kb: 29.1,
+    md5Checksum: "e253527dd5c1a2fff51c5f552ee3fdac",
+  },
+  "plants_pests_assets/82662bacbc16fdf5820e3d5acf958873.jpg": {
+    size_kb: 23.9,
+    md5Checksum: "e35955e94fc96f1fbfbdad982c69e464",
+  },
+  "plants_pests_assets/8274e11be6ccfcb21113a78eaa301cda.jpg": {
+    size_kb: 58.4,
+    md5Checksum: "223d407d7d77e802d8c51846792792f4",
+  },
+  "plants_pests_assets/827cfd826e8e64f4b700908364072222.jpg": {
+    size_kb: 27.9,
+    md5Checksum: "18db06619991c92bda94837e45f7ad45",
+  },
+  "plants_pests_assets/82ccd678c015bd8a13075609e955ff7e.jpg": {
+    size_kb: 8.5,
+    md5Checksum: "4c81e423b2076f4fa8983518e01ab4dd",
+  },
+  "plants_pests_assets/83c41c93a4ad5fed6ef355d2f76be582.jpg": {
+    size_kb: 4234.7,
+    md5Checksum: "da4c2ec87aeaf0b019e000fb29625d24",
+  },
+  "plants_pests_assets/83d256285db779b28abfb0c150886a04.jpg": {
+    size_kb: 25.2,
+    md5Checksum: "99c362a074c2d5f8dbd6f5649fae1ffb",
+  },
+  "plants_pests_assets/83ecc83a0ea6ed95d0d82ea9c368aca8.jpg": {
+    size_kb: 11.6,
+    md5Checksum: "5f36c0e7f5c89a28b7e6bef56330dbb2",
+  },
+  "plants_pests_assets/8449a17ff0edc56b74115d6ec83790e4.jpg": {
+    size_kb: 82.3,
+    md5Checksum: "61bf949ce8a0cf06f5b5561b6649f8db",
+  },
+  "plants_pests_assets/8477b17b6527e3b7e27a439b0c8a121d.jpg": {
+    size_kb: 132.8,
+    md5Checksum: "c499f4cd67481ccf22c0a30eee22351e",
+  },
+  "plants_pests_assets/851df334134d9539b5a5a87abd302988.jpg": {
+    size_kb: 13.9,
+    md5Checksum: "58179823853e3b37574be31ca53a40a3",
+  },
+  "plants_pests_assets/8545620410b6974c34c7fd11639b85af.jpg": {
+    size_kb: 22.7,
+    md5Checksum: "a5dc799b615782869b7e94e79a85f891",
+  },
+  "plants_pests_assets/85ae85212743620ed9a6b430023585a5.jpg": {
+    size_kb: 884.3,
+    md5Checksum: "b947e0405f861f55690d07f1d3de7ca7",
+  },
+  "plants_pests_assets/85e95572ac1019d82a8b8d8ab5bbd4de.jpg": {
+    size_kb: 100.9,
+    md5Checksum: "1d83478dae5ecf9477370cd3f4c06f1e",
+  },
+  "plants_pests_assets/86528f80180e58793d69b9802ebdc88b.jpg": {
+    size_kb: 32.1,
+    md5Checksum: "9977ed0a89a7baa9ffd204335fb24a38",
+  },
+  "plants_pests_assets/86a6396b5d4840120408a7a2a08304db.jpg": {
+    size_kb: 4.8,
+    md5Checksum: "74e240a154ff3c8cb4c547bac3be1cb0",
+  },
+  "plants_pests_assets/8711df4db767f3c24b659909532bec28.jpg": {
+    size_kb: 111.2,
+    md5Checksum: "779144f4f07f0bee89fae0383bdb618e",
+  },
+  "plants_pests_assets/8738f557d900f1c9f58f2d091bea43ab.jpg": {
+    size_kb: 48.2,
+    md5Checksum: "822b0a593fe8e5cdd24cf6dc71ae454c",
+  },
+  "plants_pests_assets/873c63e4ca36647c0a1af1b2e2f94c15.jpg": {
+    size_kb: 18.9,
+    md5Checksum: "4dd89afa17711290b9e1c9bbc185c89f",
+  },
+  "plants_pests_assets/8761767d2e16058c4825182349f6e44a.jpg": {
+    size_kb: 104.1,
+    md5Checksum: "fc597d21ed48460cd1c09afae612bbfc",
+  },
+  "plants_pests_assets/877a40c92ef8f735dd5cbb368b0567f3.jpg": {
+    size_kb: 10.2,
+    md5Checksum: "c28a2e0ccd5b5c5f6d8bc137b626145e",
+  },
+  "plants_pests_assets/877e4ea64fe52a4dd351920f3fb4faa0.jpg": {
+    size_kb: 27.5,
+    md5Checksum: "60bea724e6712ae0584e67263b89808b",
+  },
+  "plants_pests_assets/87c3f7bc98e6ddd9dff437de9c39fd32.jpg": {
+    size_kb: 82.7,
+    md5Checksum: "b360f37355ecf4fe81f53037584536b8",
+  },
+  "plants_pests_assets/88596aab410e5daa407c8c5357c97b56.jpg": {
+    size_kb: 16.5,
+    md5Checksum: "54178673b1e8b01d3241d45ed9a16018",
+  },
+  "plants_pests_assets/88a88cbd7b8740146235ac00756fb7ec.jpg": {
+    size_kb: 64.1,
+    md5Checksum: "4b141235fc97b4a898364ee0a6eacc45",
+  },
+  "plants_pests_assets/89054134ba954f93ce3f1e17fc62ddd0.jpg": {
+    size_kb: 191.5,
+    md5Checksum: "05752633b9d19f73c70a3beff59ddf10",
+  },
+  "plants_pests_assets/89feb80b240398c1ac264adb2ab07e05.jpg": {
+    size_kb: 17.3,
+    md5Checksum: "7ca7bd8711fa7340fe29554a87c1d8e0",
+  },
+  "plants_pests_assets/8ad8b394be0c5be5e8caa0fd690b577b.jpg": {
+    size_kb: 97.9,
+    md5Checksum: "abcf8bdceab2eb73dd6e4472913de06e",
+  },
+  "plants_pests_assets/8bbd14eff886861064e35954e0b89efa.jpg": {
+    size_kb: 114.8,
+    md5Checksum: "f540fb0741ea93485e0c981249a17f73",
+  },
+  "plants_pests_assets/8bce1309587af389ee1ebd4fbe98bd29.jpg": {
+    size_kb: 119.1,
+    md5Checksum: "d66955590cdbc262babd388a7152dd1e",
+  },
+  "plants_pests_assets/8bd87f6a2f171d6a60fb3a6f9a9bc141.jpg": {
+    size_kb: 48.7,
+    md5Checksum: "3681610fb26717c815a1f3ec0a590df5",
+  },
+  "plants_pests_assets/8c4c28d6140b4aa5529481ac0f59dfc9.jpg": {
+    size_kb: 93.5,
+    md5Checksum: "e144d57b7c6373a0258576396737ade4",
+  },
+  "plants_pests_assets/8d7366c9220852976caf04dabc3a51f2.jpg": {
+    size_kb: 12.6,
+    md5Checksum: "5db4587fc71e32252003bd1d13592dc8",
+  },
+  "plants_pests_assets/8d8ae29311557c3f2014b49233afaf7d.jpg": {
+    size_kb: 120.7,
+    md5Checksum: "d56797233d2921cd5430a397e885c86b",
+  },
+  "plants_pests_assets/8e6105a6e86df4d18a35e8b1ea0fadc9.jpg": {
+    size_kb: 113,
+    md5Checksum: "50078cfb73603d213c698bc0973a9694",
+  },
+  "plants_pests_assets/8e998b21c78860ba4047bf74327cd104.jpg": {
+    size_kb: 56,
+    md5Checksum: "e37a7838f5e0edf919ed865351b32267",
+  },
+  "plants_pests_assets/8ed15959ef7c4133f5168a4b6de0e1e7.jpg": {
+    size_kb: 53.5,
+    md5Checksum: "149c94a10e317d52cde9cbfa32d2afd0",
+  },
+  "plants_pests_assets/8efc418f949bba01009fe4d84e73567e.jpg": {
+    size_kb: 289.3,
+    md5Checksum: "b62b9ff5fda10a9469f9df2d614468c7",
+  },
+  "plants_pests_assets/8f5b48c325f22b6b02096f6bca65ea91.jpg": {
+    size_kb: 569,
+    md5Checksum: "fe51734636bf0888e1979bbde862ea1d",
+  },
+  "plants_pests_assets/8fe89236aef1ff604070da3c1a07aedc.jpg": {
+    size_kb: 481.2,
+    md5Checksum: "85350fbc744b3a636e9992314596963e",
+  },
+  "plants_pests_assets/90766e39d9d3634e931f4c3527c7d0aa.jpg": {
+    size_kb: 329.8,
+    md5Checksum: "b3a265d3c210ff1b3f8ce3f3d14d8f67",
+  },
+  "plants_pests_assets/919acb28072c7df58e0bce0ec2c37ed2.jpg": {
+    size_kb: 515.8,
+    md5Checksum: "8ac7e9f514250c6e948baf3d5363c829",
+  },
+  "plants_pests_assets/91be95a81437a516f7d3082103a71c3b.jpg": {
+    size_kb: 23.7,
+    md5Checksum: "a9a27ecf916f7cd1c157cebfbbd6a1f5",
+  },
+  "plants_pests_assets/92a82246eed4023e6f1a122271085c79.jpg": {
+    size_kb: 17.9,
+    md5Checksum: "aaf939f6d0d97a25fec60cb874018c0b",
+  },
+  "plants_pests_assets/92b64c143a14188efd05525bf687d7a9.jpg": {
+    size_kb: 377,
+    md5Checksum: "f78c6af54ffbbcfa8241c15bef32e592",
+  },
+  "plants_pests_assets/9353093f847e890910acdd999cf9eaea.jpg": {
+    size_kb: 214.6,
+    md5Checksum: "7d7af70cda6ca5bf88fa7382e23434d6",
+  },
+  "plants_pests_assets/9419ee316032b89e4f8c7afc17b88079.jpg": {
+    size_kb: 18.7,
+    md5Checksum: "0fceac6712e7c0b3134b3c7a44d6360e",
+  },
+  "plants_pests_assets/948e916c3f7107145181cc09664c6d94.jpg": {
+    size_kb: 23.7,
+    md5Checksum: "20dce47b183bc19f8548ba04ae5f12e4",
+  },
+  "plants_pests_assets/94e703d11db124b60be6382ae08207b8.jpg": {
+    size_kb: 20.9,
+    md5Checksum: "e61ed7b94ae736c1d636ad6ca8bfbde0",
+  },
+  "plants_pests_assets/9608da073bf5ec177d8cf7037015de54.jpg": {
+    size_kb: 11.3,
+    md5Checksum: "55dc351ba6c035b90891691ce605be7b",
+  },
+  "plants_pests_assets/96428853b2776112b4918fc8085a5a0d.jpg": {
+    size_kb: 20.5,
+    md5Checksum: "731cca695cf9aa3f32bbfda0f949fb26",
+  },
+  "plants_pests_assets/9642cef9d5dfa5adc054842fbdb0b1e1.jpg": {
+    size_kb: 18.6,
+    md5Checksum: "b2d2296ff175b11455be60997747e63a",
+  },
+  "plants_pests_assets/96a196ea167eb198859cb86d827dd978.jpg": {
+    size_kb: 26.5,
+    md5Checksum: "4927c5fdb8c092acc01dc64023a4ce40",
+  },
+  "plants_pests_assets/9780f34404b3f63cc996d7c235c44f09.jpg": {
+    size_kb: 23.3,
+    md5Checksum: "bef7620db6ccaed082d3ed21a4f843cf",
+  },
+  "plants_pests_assets/985f9d96fe67544325714624d8f6269b.jpg": {
+    size_kb: 76.7,
+    md5Checksum: "645e91aee359d16730a04e22e1b54d68",
+  },
+  "plants_pests_assets/999d9f97d03b50d65b459716515e66ec.jpg": {
+    size_kb: 29.4,
+    md5Checksum: "dd9f591f8ac3ec68e2eca33a3ef4c58f",
+  },
+  "plants_pests_assets/9ad3d9c03c762fb1543bb9dae5a61482.jpg": {
+    size_kb: 608.6,
+    md5Checksum: "7e677be9ebd238911722314a0bf32368",
+  },
+  "plants_pests_assets/9b05ccf4115d0258151bd68832652d3e.jpg": {
+    size_kb: 23.9,
+    md5Checksum: "678f0666271a69150723e77df5baa6ad",
+  },
+  "plants_pests_assets/9bb2c910caf7e17d11688a3682c67642.jpg": {
+    size_kb: 28.4,
+    md5Checksum: "6c4eb9a831f16d4c536838d0f1b2040d",
+  },
+  "plants_pests_assets/9c7cc30d87c2f983c91293c2b901d595.jpg": {
+    size_kb: 96,
+    md5Checksum: "ce4d7d1b3255920d4cbc823896be6612",
+  },
+  "plants_pests_assets/9ce7b959abbf67817e29aca543c94fe3.jpg": {
+    size_kb: 146.9,
+    md5Checksum: "201ad641101cc77a4fd368f73c337259",
+  },
+  "plants_pests_assets/9d60c849d423748e8be0daeea1e123af.jpg": {
+    size_kb: 19.7,
+    md5Checksum: "e1efefceebcdb4887a5958e45c3f0dc2",
+  },
+  "plants_pests_assets/9d7f649eafcf250eca19765c2bf59245.jpg": {
+    size_kb: 16.4,
+    md5Checksum: "ca1bd215556d7a9ff7c581caee614410",
+  },
+  "plants_pests_assets/9e2679db6c5cbbfe8be5572900bfc1c5.jpg": {
+    size_kb: 67.1,
+    md5Checksum: "b56202b60bf85de6f8dd9e83f59f8059",
+  },
+  "plants_pests_assets/9eae66987f382757a66a9b8793a5aede.jpg": {
+    size_kb: 18.5,
+    md5Checksum: "01805be15652f7c0840b7331af88535c",
+  },
+  "plants_pests_assets/9fa23640a9c1adc4ffb6e4f7f7516abd.jpg": {
+    size_kb: 145.8,
+    md5Checksum: "12fef03c24b0d6cb213026bd9896a6fd",
+  },
+  "plants_pests_assets/9faa5b939d1ca914ec13712563695863.jpg": {
+    size_kb: 67.1,
+    md5Checksum: "9dee318c67c37990e3c2f2aa84fe1511",
+  },
+  "plants_pests_assets/a112a17e62ca714ca29be65226870779.jpg": {
+    size_kb: 9.5,
+    md5Checksum: "d0c91c89226cb25e6f7e49862d4c0bda",
+  },
+  "plants_pests_assets/a1d2d7fcef996902110deb0a915ab882.jpg": {
+    size_kb: 4.4,
+    md5Checksum: "5979e1dd7fb3b72ac0c80e5369b7c181",
+  },
+  "plants_pests_assets/a206a2de1f4109337bb7c2c80468d888.jpg": {
+    size_kb: 261.8,
+    md5Checksum: "3ce5f985caf1a0ff1e97f4036ac0514d",
+  },
+  "plants_pests_assets/a2e605cfe62d8883771a64538bed5153.jpg": {
+    size_kb: 21.9,
+    md5Checksum: "72653309cd6363e71ce3bd01228cf2ed",
+  },
+  "plants_pests_assets/a30f0b876d562904d9f62bef2fabffd9.jpg": {
+    size_kb: 19,
+    md5Checksum: "80adf32e204ecb6a69e7d590749e2687",
+  },
+  "plants_pests_assets/a395ee57996c74f57f7cc07f71510a4c.jpg": {
+    size_kb: 7.9,
+    md5Checksum: "894f6554a7b690a72c8f3eb7d692b7c1",
+  },
+  "plants_pests_assets/a4410a8774d62a022ab7a54fe3d4bd48.jpg": {
+    size_kb: 2972.8,
+    md5Checksum: "b8b907ad1ca841b457769ec456a1b788",
+  },
+  "plants_pests_assets/a4be345a8f4d6a01ca6d8bcb2a52ebee.jpg": {
+    size_kb: 308.7,
+    md5Checksum: "863fe204ce7c9e5cd2b6f46dc1c0fef9",
+  },
+  "plants_pests_assets/a52f8f55ceb41aedb1521fcdeaa1e07a.jpg": {
+    size_kb: 3.7,
+    md5Checksum: "b16922199f566f08c80cf646331af83a",
+  },
+  "plants_pests_assets/a5d90e04941cf069f6dc8cb2619fc111.jpg": {
+    size_kb: 606.4,
+    md5Checksum: "386c452975f482b5042944706c5ec31f",
+  },
+  "plants_pests_assets/a63b244c7b36a456efb5e90a2f898286.jpg": {
+    size_kb: 15.9,
+    md5Checksum: "2de0cd5a45da2290f9d1eaaac289b635",
+  },
+  "plants_pests_assets/a7942d7c7838ab2c25d6f988c83b0d24.jpg": {
+    size_kb: 38.2,
+    md5Checksum: "53f732c7d841c160548b924de3c80625",
+  },
+  "plants_pests_assets/a798374abab7a221f408ad77ea653fd3.jpg": {
+    size_kb: 51.6,
+    md5Checksum: "8ded97230c495969f2f554d70114404d",
+  },
+  "plants_pests_assets/a80b9ed09656b6a12b77ba4bb6af1053.jpg": {
+    size_kb: 143.5,
+    md5Checksum: "cbafee1be4ad2b2c6763c5b22c8162d2",
+  },
+  "plants_pests_assets/a8da178fc3937b10fad42782f29416a9.jpg": {
+    size_kb: 108.9,
+    md5Checksum: "ef1f94a979f9ef131cd98fa0bfb83bd7",
+  },
+  "plants_pests_assets/a8f72deab5489becc1d2869ad6740bc0.jpg": {
+    size_kb: 6.8,
+    md5Checksum: "0d13bb8f8189fafe01512a714ede5f45",
+  },
+  "plants_pests_assets/a938dcc56bee36255c7f4cf0bd06d5d1.jpg": {
+    size_kb: 321.8,
+    md5Checksum: "b3cebfd84deb730e4cdae2b16be74c10",
+  },
+  "plants_pests_assets/a9744d64ed408baab0c480a97f3d4aa0.jpg": {
+    size_kb: 134,
+    md5Checksum: "e0e8f0f6c9ea13fdb1bb6a99f3297442",
+  },
+  "plants_pests_assets/aa80bec268d4c735f76020f6e6d15e0a.jpg": {
+    size_kb: 21.9,
+    md5Checksum: "72653309cd6363e71ce3bd01228cf2ed",
+  },
+  "plants_pests_assets/aafa62a3d83d61fc8fef9d23ea0d763a.jpg": {
+    size_kb: 814.7,
+    md5Checksum: "ae21c1e26b21e540982088f3327cd2a5",
+  },
+  "plants_pests_assets/ab636e105de66e6f7376fea0d834523d.jpg": {
+    size_kb: 142.5,
+    md5Checksum: "af89d154ab0f5bc604feb8f01eaddb22",
+  },
+  "plants_pests_assets/abcc0a8a66cb3a635fdad6314651e48b.jpg": {
+    size_kb: 6.9,
+    md5Checksum: "253f126f44c53d157b39d3f6a8e1d7c9",
+  },
+  "plants_pests_assets/ae3cee742cccec002a5e0406faba39dd.jpg": {
+    size_kb: 427.5,
+    md5Checksum: "812610744eeca829d73d43ce74f2921a",
+  },
+  "plants_pests_assets/aed4ebd684a02c499c33d9939734c93b.jpg": {
+    size_kb: 132.2,
+    md5Checksum: "d1bc737be220e751afa224d282c8352f",
+  },
+  "plants_pests_assets/aed76c8d906b1107211c7ae171ba908b.jpg": {
+    size_kb: 80.4,
+    md5Checksum: "91af63c69826918e1f3acdb4f8197fd9",
+  },
+  "plants_pests_assets/aedfdb12f9a6500b89abe3332e8b9214.jpg": {
+    size_kb: 116.1,
+    md5Checksum: "af9a6c7855da39e8c44e30f3e8228fb7",
+  },
+  "plants_pests_assets/af8424608fdfec4fb2c5c543cf7d8a74.jpg": {
+    size_kb: 687.2,
+    md5Checksum: "50c8ded9f05a25fe5edd5e0305a1f1e9",
+  },
+  "plants_pests_assets/afb8077e82fc064d21fa99bf87868b7f.jpg": {
+    size_kb: 185.6,
+    md5Checksum: "d7cf98ab94c5059ba5869e28fd7512f4",
+  },
+  "plants_pests_assets/afe0c6f2387c8608adc513132fb52e37.jpg": {
+    size_kb: 8.9,
+    md5Checksum: "d910c65f55a1eb3f140fd817402da326",
+  },
+  "plants_pests_assets/b07ea9cc3eca4ee1389a85618a0823d0.jpg": {
+    size_kb: 22.6,
+    md5Checksum: "d8fad97ac15bc90a2527bd3c44226282",
+  },
+  "plants_pests_assets/b29a46612b9e91de0a5845773b3910a8.jpg": {
+    size_kb: 266.2,
+    md5Checksum: "7c57570a6d9b1fc5741858755486f1e2",
+  },
+  "plants_pests_assets/b31e275ac68a555b5aea15bafc77dc56.jpg": {
+    size_kb: 6.8,
+    md5Checksum: "a9601704d5735e7cf5bba71fc29e90c7",
+  },
+  "plants_pests_assets/b3e6fbd2289deb101155899628440713.jpg": {
+    size_kb: 68.8,
+    md5Checksum: "0816c6851ed84388fdc45c8bcccabad2",
+  },
+  "plants_pests_assets/b3f7ea93925859a7e8d8a29b1fefc22f.jpg": {
+    size_kb: 60.4,
+    md5Checksum: "64eb6ac57176610bad42b5cd11d2918f",
+  },
+  "plants_pests_assets/b46f44f56816ce8b1fdd1c167b596f5f.jpg": {
+    size_kb: 30.4,
+    md5Checksum: "cc7027c0ed0172520064691d357ba1f7",
+  },
+  "plants_pests_assets/b48b0a4a2d097df3f05b8892f8b74883.jpg": {
+    size_kb: 40.1,
+    md5Checksum: "de7320c1801ba16dbffa90da14b5c8de",
+  },
+  "plants_pests_assets/b5988232d235f072b4a9979888e91938.jpg": {
+    size_kb: 80.9,
+    md5Checksum: "637d8296732f840c90d09f85cef18c6a",
+  },
+  "plants_pests_assets/baf82c1c9b335b7e2d6fe32b3a30b9f6.jpg": {
+    size_kb: 72.4,
+    md5Checksum: "6269e7e0074dd6996f6b0589d1c44da4",
+  },
+  "plants_pests_assets/bcb14bd11a37f5b6908c130fe138ad26.jpg": {
+    size_kb: 364.6,
+    md5Checksum: "5a50ec9e174ad58de27764cd7446ed48",
+  },
+  "plants_pests_assets/bce1ef5a7e21fab503f7de88076c9c8c.jpg": {
+    size_kb: 24.6,
+    md5Checksum: "90774ea507ea306dd974172dd9b188c0",
+  },
+  "plants_pests_assets/bdc55f7a64b21a0c0efad1e2411947a5.jpg": {
+    size_kb: 10.1,
+    md5Checksum: "fa3df1aa60ece8a82328d7462b9d9643",
+  },
+  "plants_pests_assets/be2d7bcaf90d39df0a93f5e9f6d5e245.jpg": {
+    size_kb: 20.9,
+    md5Checksum: "af83ec6d7ca25ee40871b8c43484ef1b",
+  },
+  "plants_pests_assets/bea3095f1153287943a6ae73a57029b4.jpg": {
+    size_kb: 4,
+    md5Checksum: "4eec6a4f130410028bb791cb2c8de25f",
+  },
+  "plants_pests_assets/bfb55aac21d6d5d675acbe039b80438c.jpg": {
+    size_kb: 104.6,
+    md5Checksum: "c8045c915876fa27b8f8eecd668b079d",
+  },
+  "plants_pests_assets/c14dd99bbb80261085c7b490806e124e.jpg": {
+    size_kb: 14.2,
+    md5Checksum: "f36d59efd2684bfb1856b74013ab142e",
+  },
+  "plants_pests_assets/c1b1c938e417136fdddd6390769cc4ba.jpg": {
+    size_kb: 47.6,
+    md5Checksum: "01a08fa4cb77ff2f8bd391bc02ff8221",
+  },
+  "plants_pests_assets/c3622ef4d641bdce21cb223ff4dc5832.jpg": {
+    size_kb: 56.3,
+    md5Checksum: "7feefbbd5a9f265e575c23a42aeabd2d",
+  },
+  "plants_pests_assets/c3e8662c3b06b230ea8a013fb233966e.jpg": {
+    size_kb: 208.1,
+    md5Checksum: "3c56fb22f76f7bf941688a80fecf95c1",
+  },
+  "plants_pests_assets/c5e55e93da663868a9af56e268119b4a.jpg": {
+    size_kb: 9.4,
+    md5Checksum: "399764cf7c57ab9474adc98b77c35a7e",
+  },
+  "plants_pests_assets/c7f87a28038ef99c5dd5ebfe0765a764.jpg": {
+    size_kb: 26.9,
+    md5Checksum: "b54bb1cff287b5f1bbdc39bdc345385c",
+  },
+  "plants_pests_assets/c84c37d7b288200435f0bc2e216cb2c0.jpg": {
+    size_kb: 78.3,
+    md5Checksum: "2e9fa20620eeee1e06f0616a03dbb014",
+  },
+  "plants_pests_assets/c9b5fe1e95958cb853a50c147dd95a3c.jpg": {
+    size_kb: 43.1,
+    md5Checksum: "292bbfaa783db2fc58c10599c08a9647",
+  },
+  "plants_pests_assets/c9f3c3dc542545469753b7d8bec35a05.jpg": {
+    size_kb: 101.9,
+    md5Checksum: "e0a9e445e4f5d9bb47807c36c255d2be",
+  },
+  "plants_pests_assets/c9f43009e9e4925020b811d7d59af2f9.jpg": {
+    size_kb: 35.7,
+    md5Checksum: "10f8277b86f8f1991b32814aa1ce4a37",
+  },
+  "plants_pests_assets/ca01173ecd66be9310cab1e730633112.jpg": {
+    size_kb: 40.2,
+    md5Checksum: "b62e7068bd22b871d26067e76b872dbd",
+  },
+  "plants_pests_assets/cad2d9e786c4f3da2461ffcedfcc4e7f.jpg": {
+    size_kb: 28.3,
+    md5Checksum: "051ea1fdb92ee4252cda296ca9d40a9d",
+  },
+  "plants_pests_assets/caf26a5a93f8c5970c1d91a8f8ecb43d.jpg": {
+    size_kb: 13,
+    md5Checksum: "610ec5edd4d14c742b68b126d46114bd",
+  },
+  "plants_pests_assets/cb8f3b226fed18664be0b0b5828b889f.jpg": {
+    size_kb: 141.3,
+    md5Checksum: "b37e54822fad48e48fff9c7abb82153e",
+  },
+  "plants_pests_assets/cbdca47218fd4d574ea5b74352fcab3a.jpg": {
+    size_kb: 37.2,
+    md5Checksum: "1fb6aff25230941404d8fa674babfbef",
+  },
+  "plants_pests_assets/cc7fa99848916637f43d12d5e43cab06.jpg": {
+    size_kb: 34.4,
+    md5Checksum: "6fad3ed9bdfc1473896372c6bcb17841",
+  },
+  "plants_pests_assets/cd6927ee480208561ea6cf54c1c4470d.jpg": {
+    size_kb: 151.7,
+    md5Checksum: "3da7aa6aca57abab536d0c933ecff841",
+  },
+  "plants_pests_assets/cdad3d97388c5700006349414c4bb59e.jpg": {
+    size_kb: 39,
+    md5Checksum: "9c8b27a7c10e6e098ba9107896f4876a",
+  },
+  "plants_pests_assets/cde04534a0ddbbbbdfbe7ced190f5d19.jpg": {
+    size_kb: 62.1,
+    md5Checksum: "96278af20cdf02b1d41fc4d8c65e76ff",
+  },
+  "plants_pests_assets/ce2e049484c1a89265752d8f6d2a92b2.jpg": {
+    size_kb: 187.4,
+    md5Checksum: "7fb1ce4a71f231f431192d2185556df8",
+  },
+  "plants_pests_assets/cfcf9a0afab726bddbbe571cde138547.jpg": {
+    size_kb: 652.3,
+    md5Checksum: "6997bd80110ab586b9d2a37191cfa9f8",
+  },
+  "plants_pests_assets/d1d4c74cb35102a7846cc21cf414da53.jpg": {
+    size_kb: 23,
+    md5Checksum: "9f6dd37f569578eab445272b775ce1c1",
+  },
+  "plants_pests_assets/d228ae215edfd4dea42a351fd46e8fa7.jpg": {
+    size_kb: 17.1,
+    md5Checksum: "cbd56fe339a7963d3476b4c0c8ef25a0",
+  },
+  "plants_pests_assets/d27c784308bfbe12f63e86f1014b60c3.jpg": {
+    size_kb: 11.4,
+    md5Checksum: "f45ce8db4e15ae0c6d8ecf112cb9550e",
+  },
+  "plants_pests_assets/d37bba7cef0f6c2d537f7eb5fb6b76dd.jpg": {
+    size_kb: 38.7,
+    md5Checksum: "5c1c8ff0be61ae65841c107034ead25b",
+  },
+  "plants_pests_assets/d4973ce909ba188d1389850290d05646.jpg": {
+    size_kb: 73.7,
+    md5Checksum: "28d3552750d7d4e1ae60468c315ea6c3",
+  },
+  "plants_pests_assets/d4b75a944221083ad6d2aa8b697161b4.jpg": {
+    size_kb: 9.4,
+    md5Checksum: "399764cf7c57ab9474adc98b77c35a7e",
+  },
+  "plants_pests_assets/d5fe1f86622179f3cd1768d4a92c149b.jpg": {
+    size_kb: 649.5,
+    md5Checksum: "ac7a79e912d1ffe9e50ceea99bd3cb32",
+  },
+  "plants_pests_assets/d67b5ffd2b1cd8cfca8d41868e199704.jpg": {
+    size_kb: 15.3,
+    md5Checksum: "3988a8d8d11d51276f2e4623c424b3da",
+  },
+  "plants_pests_assets/d7365c7072353319f24f726a18b1b3c2.jpg": {
+    size_kb: 8.9,
+    md5Checksum: "782a08973d82e693762cb01d670c2820",
+  },
+  "plants_pests_assets/d772450292b0316a8ff1faf10ee8b4ab.jpg": {
+    size_kb: 155.9,
+    md5Checksum: "d69993e827f52430f4ffe6f5e14ab3c8",
+  },
+  "plants_pests_assets/d7cb75e15fd3836332210ff796a9cf63.jpg": {
+    size_kb: 19.6,
+    md5Checksum: "06b21da5d0e0be54803b68903715ea42",
+  },
+  "plants_pests_assets/d7fa757de6ef98ee0bcbc169745129cd.jpg": {
+    size_kb: 31.6,
+    md5Checksum: "082bfeeb905bd8576edeb76809aa40aa",
+  },
+  "plants_pests_assets/d875d46bfc5c6eb3258de362f107544c.jpg": {
+    size_kb: 11.1,
+    md5Checksum: "a03676c5c218253a40fe00ea95bd8efb",
+  },
+  "plants_pests_assets/d883421d68074bc880db39c0c9587924.jpg": {
+    size_kb: 97.2,
+    md5Checksum: "9b0ba9338ae0a3b73290a142492a308b",
+  },
+  "plants_pests_assets/d8b0feed560a6c73939790cd64942f68.jpg": {
+    size_kb: 95.9,
+    md5Checksum: "de95e7f18add61ecba9f56446689d0e4",
+  },
+  "plants_pests_assets/d9d8a8b6d6fdb2cdc40bc3ece4e5e85c.jpg": {
+    size_kb: 124.9,
+    md5Checksum: "3d26c6cc4d113328156d9a9c22c8a3ef",
+  },
+  "plants_pests_assets/dac3a670b5cb99fb33595664fb28220e.jpg": {
+    size_kb: 16.2,
+    md5Checksum: "faa40afeafca5410bf53dd7a2e9702e2",
+  },
+  "plants_pests_assets/db0ed569dc42078828aba2f8e6101029.jpg": {
+    size_kb: 20.7,
+    md5Checksum: "2a7109ed75272e887127d1fc12cbcdc7",
+  },
+  "plants_pests_assets/ded6cdd7e2b024ec8275c3e37d2bc8f7.jpg": {
+    size_kb: 11.8,
+    md5Checksum: "fec8d13ccf10d781dbdb9755868c1743",
+  },
+  "plants_pests_assets/df0f88adc29ac9dcf335aa14c320407d.jpg": {
+    size_kb: 49.2,
+    md5Checksum: "4f00b592c35e29a64130beec08a93913",
+  },
+  "plants_pests_assets/df691eb7506f3be95ad2300b6937f722.jpg": {
+    size_kb: 69.5,
+    md5Checksum: "2d11db7a30a026a081ae46fdb41ab6db",
+  },
+  "plants_pests_assets/e00bde835f932501d3d1339d1d7da25b.jpg": {
+    size_kb: 0.3,
+    md5Checksum: "808b1df843d3539cceb30ddc75fef4d3",
+  },
+  "plants_pests_assets/e13e2c7f6c9340a5d3fc95d57e61291a.jpg": {
+    size_kb: 35.4,
+    md5Checksum: "1e07c9dd2b42ca920cff92a39386b504",
+  },
+  "plants_pests_assets/e19925af32a1f2a7c2b5e17f6994789a.jpg": {
+    size_kb: 28.7,
+    md5Checksum: "bd4f3819d29e290a4232540f17c60cc9",
+  },
+  "plants_pests_assets/e276afacd09334a81fce95fa52fb17bd.jpg": {
+    size_kb: 130.5,
+    md5Checksum: "5bc4755fba4ace65f22d00b53d15754c",
+  },
+  "plants_pests_assets/e30e70ba5fd3f2c1197c20ae91cc3d97.jpg": {
+    size_kb: 146.8,
+    md5Checksum: "72a3b1136e9f55e31409a00ca796cba3",
+  },
+  "plants_pests_assets/e3e57f9d887e62b65106304100067dad.jpg": {
+    size_kb: 47.4,
+    md5Checksum: "c6948b0cc08d65e481e14804ce327824",
+  },
+  "plants_pests_assets/e450f96bec79ad1ba6770a410db42694.jpg": {
+    size_kb: 89.8,
+    md5Checksum: "57c38fa0a31f3aa474310f19ff36e063",
+  },
+  "plants_pests_assets/e54669c47e6922a1256fa89f221c523b.jpg": {
+    size_kb: 77,
+    md5Checksum: "bfeec9f3fce96e5fe37728bf2bcc38b5",
+  },
+  "plants_pests_assets/e6624896f68e94b9ca72ce2954cd8845.jpg": {
+    size_kb: 159.1,
+    md5Checksum: "b41b8246c6a655edd66b538841907717",
+  },
+  "plants_pests_assets/e66400aea838db880bee82d22724eb5d.jpg": {
+    size_kb: 51.5,
+    md5Checksum: "79de0c2b19563a366a0ef269af1a9a72",
+  },
+  "plants_pests_assets/e69f5880ea915b1168dda5b6d9b2909f.jpg": {
+    size_kb: 324.2,
+    md5Checksum: "1c1f991794f971aedd35bd7aca812efc",
+  },
+  "plants_pests_assets/e6b7d09f151c0b843f498c118fa7567e.jpg": {
+    size_kb: 277,
+    md5Checksum: "a4573ef4d34c486773956d543a3ca2bf",
+  },
+  "plants_pests_assets/e8b022640d9468c47f798e09e3c60f23.jpg": {
+    size_kb: 21.1,
+    md5Checksum: "31bc1a806c9a0778f48a4e3ae0efd964",
+  },
+  "plants_pests_assets/e93085f0bf9a679c87e590210ccdaf22.jpg": {
+    size_kb: 462.1,
+    md5Checksum: "6186d17a6d5241ba14cc75e8eebe68ec",
+  },
+  "plants_pests_assets/ea1f3b4201feaae811bf4b9510ed40a0.jpg": {
+    size_kb: 15.1,
+    md5Checksum: "aa206fe2cb8c334da07d103c25acd1f7",
+  },
+  "plants_pests_assets/eaa2a72fef438da98116c7d9a46617d5.jpg": {
+    size_kb: 93,
+    md5Checksum: "e83a0437e44807290a559eb5c66ae468",
+  },
+  "plants_pests_assets/eb7426f910d9657cfa1550bfb2f9dec7.jpg": {
+    size_kb: 42.5,
+    md5Checksum: "3100c412d41f7c19a85878c2da0b14e3",
+  },
+  "plants_pests_assets/ed733a0d1a797254c262f3e28f169a69.jpg": {
+    size_kb: 61.9,
+    md5Checksum: "269a12fc672922bd11ac4bd946691cfb",
+  },
+  "plants_pests_assets/eea5076475df8c94337f70a0103b5e41.jpg": {
+    size_kb: 6.3,
+    md5Checksum: "7aa06464f720af1b28f6b5824b0d1366",
+  },
+  "plants_pests_assets/eed2e7d60a8d6fc956be21195e93b98e.jpg": {
+    size_kb: 179.4,
+    md5Checksum: "5a6e3da039a770fb50bfac384445afa0",
+  },
+  "plants_pests_assets/eee1241eb10f966423b2b75e38804d27.jpg": {
+    size_kb: 32.8,
+    md5Checksum: "d8d988d3412f2de3f986f083ff46f2fe",
+  },
+  "plants_pests_assets/f00adb9e9ad8e693d5c511248afb29ed.jpg": {
+    size_kb: 70.2,
+    md5Checksum: "672313ea6ccae622872e8266566d1443",
+  },
+  "plants_pests_assets/f0889772c7df6381924a1675cf3abb91.jpg": {
+    size_kb: 11.3,
+    md5Checksum: "63baa1f3d5c0401419bbdf0d592478ba",
+  },
+  "plants_pests_assets/f13e8eea1f59c7cfef89eacb9317c837.jpg": {
+    size_kb: 176,
+    md5Checksum: "baebdb0f80cf7c9efa26c37e31853f5d",
+  },
+  "plants_pests_assets/f19a2de53f1ba36e9e0569cdbec7a8fc.jpg": {
+    size_kb: 29,
+    md5Checksum: "9d8c79770fdd6294914aaa7fb1baa166",
+  },
+  "plants_pests_assets/f21cf0f1889f83430a30c126d4a3559e.jpg": {
+    size_kb: 64,
+    md5Checksum: "c80748a33d8ae943c066e20d0f60c2e4",
+  },
+  "plants_pests_assets/f2bad69dfc947c71fd12857383ac068e.jpg": {
+    size_kb: 67.4,
+    md5Checksum: "d6e2ad2985ede2582ad67371d0747fdf",
+  },
+  "plants_pests_assets/f2e418f6fe7fbf19ef314de60a063ce2.jpg": {
+    size_kb: 525.7,
+    md5Checksum: "bb75fd058a985857c23b3a5f4baa4ad5",
+  },
+  "plants_pests_assets/f2ea26735eddded4fdb51ce4912dc9e1.jpg": {
+    size_kb: 172.6,
+    md5Checksum: "5c9ba9136c41a597b6bd9197b898f9bd",
+  },
+  "plants_pests_assets/f2fc6a9787563650a66e989e1833d050.jpg": {
+    size_kb: 245.3,
+    md5Checksum: "e8c7e7ac5d412301b7e15efdd8b79565",
+  },
+  "plants_pests_assets/f32ad16259e9bad27ea50c4e12653379.jpg": {
+    size_kb: 18.2,
+    md5Checksum: "b3e517ae5c9d803f7a0758587324c498",
+  },
+  "plants_pests_assets/f435436a6dac4f58ea38a5a4628b58bc.jpg": {
+    size_kb: 18.9,
+    md5Checksum: "80aa2c0d5e6d11700ea5b79990e20920",
+  },
+  "plants_pests_assets/f44c2bed1ae6c9a017365ed9496af729.jpg": {
+    size_kb: 30.9,
+    md5Checksum: "eb3b36fb7c24880fcf39046d8a0cd0aa",
+  },
+  "plants_pests_assets/f58166c63b1d547fd902786a0fddb329.jpg": {
+    size_kb: 16.2,
+    md5Checksum: "b0f94e6c54257d7c05522221bd966c94",
+  },
+  "plants_pests_assets/f5e7b5e76070b99af2c274c477409dd1.jpg": {
+    size_kb: 96.9,
+    md5Checksum: "06148407b9bc8a285ea5a1c5e6ef7016",
+  },
+  "plants_pests_assets/f62a63187e41592830ccd3236182a51f.jpg": {
+    size_kb: 122.5,
+    md5Checksum: "aa42d5e9ee07bd05c49eacc416a02db9",
+  },
+  "plants_pests_assets/f66875a1e33a983aca674043e4eba029.jpg": {
+    size_kb: 1060.4,
+    md5Checksum: "caca2cdad71c80f0e0135f127420a332",
+  },
+  "plants_pests_assets/f67f828c59377ebdce9a5c69affc296a.jpg": {
+    size_kb: 1092.3,
+    md5Checksum: "9e5f6f130e6c2883d135d41fc25605e6",
+  },
+  "plants_pests_assets/f715e49c15d789ffbc18c62dc85b2cfe.jpg": {
+    size_kb: 7,
+    md5Checksum: "562847aac4bc98611f82168301dab486",
+  },
+  "plants_pests_assets/f7d93b59da2849908a967eff1cfc1b2f.jpg": {
+    size_kb: 51.1,
+    md5Checksum: "0be01d284d96dd8165384c7669138d7d",
+  },
+  "plants_pests_assets/f7de937ab9d5b0ded8a703a62f7d6e54.jpg": {
+    size_kb: 27.7,
+    md5Checksum: "e55928f1f2253fe6890491a2a752dafd",
+  },
+  "plants_pests_assets/f7faabfef9918ccaff7817659343fe96.jpg": {
+    size_kb: 8.8,
+    md5Checksum: "d50d055896f347324c5ef3ce4765eb20",
+  },
+  "plants_pests_assets/f937a8abcbd3476cafd476e0b2787519.jpg": {
+    size_kb: 549.9,
+    md5Checksum: "944168a830f55279d7a8f19be6494b45",
+  },
+  "plants_pests_assets/faed31aefaebf2365723f3e802fb95ca.jpg": {
+    size_kb: 98.7,
+    md5Checksum: "065d1606cd1736f284ab148cbcfe6fbc",
+  },
+  "plants_pests_assets/faf0f0cf4e0403b624a5e1787c508320.jpg": {
+    size_kb: 38.1,
+    md5Checksum: "b1558eff658e073c109c942bf47e3464",
+  },
+  "plants_pests_assets/fb087592338beef220df623f3ec89dc9.jpg": {
+    size_kb: 23.4,
+    md5Checksum: "fcb870ed1b9a2666eb87b2bf0cf08c79",
+  },
+  "plants_pests_assets/fb2967220656cc027c65247a88c97f41.jpg": {
+    size_kb: 43.4,
+    md5Checksum: "3efee786f83de3d45a83f5968194da86",
+  },
+  "plants_pests_assets/fbaf0dd1f3b52e76ff8919074ddd3252.jpg": {
+    size_kb: 254.3,
+    md5Checksum: "b7dac1b4ea6d5172fa47c70fc25ed050",
+  },
+  "plants_pests_assets/fcf74c7d12d4f14a37834b3fcef6793a.jpg": {
+    size_kb: 671.5,
+    md5Checksum: "2f4fbcff929d0f07e0c3aef303ecc0a2",
+  },
+  "plants_pests_assets/fe6879193cca498ebedb3969b14e1dc4.jpg": {
+    size_kb: 333.8,
+    md5Checksum: "61b185be44d1d07fe65b8d1be462146c",
+  },
+  "plants_pests_assets/ff46f2abf8b350191fc94c035313f339.jpg": {
+    size_kb: 24.9,
+    md5Checksum: "38761a940f75d00e975f2862b3964131",
+  },
+  "plants_pests_assets/ff64aa84be38fa78925bf105328e9195.jpg": {
+    size_kb: 402.2,
+    md5Checksum: "28ae854f6c3814e935a490ab1b92e874",
+  },
+  "plants_pests_assets/ff6a6e69b6d1779d5ea82263fef53953.jpg": {
+    size_kb: 21.9,
+    md5Checksum: "c87529c46d31933e71a349ec946f79fe",
   },
   "plh_images/icons/pause_white.svg": {
     size_kb: 0.7,
@@ -4428,7 +6168,7 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 25.9,
     md5Checksum: "6e5009eb90710e2d5c4462ee336bfbba",
   },
-  "soils/healthy_soil_structure.JPG": {
+  "soils/healthy_soil_structure.jpg": {
     size_kb: 30.9,
     md5Checksum: "983c50616a46707ad492aefad6dcf8ac",
   },
@@ -4436,7 +6176,7 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 28.2,
     md5Checksum: "48100c6968f12a39db310bf7dffa9bed",
   },
-  "soils/high_erosion.PNG": {
+  "soils/high_erosion.png": {
     size_kb: 74.3,
     md5Checksum: "0c8e5625d3cecb6a104d988832ce1e62",
   },
@@ -4456,7 +6196,7 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 8.6,
     md5Checksum: "9656957495469f235fd2df28492d1079",
   },
-  "soils/low_erosion.PNG": {
+  "soils/low_erosion.png": {
     size_kb: 159.3,
     md5Checksum: "cbb0c90fcb02c9d5e5640f0d06b11c59",
   },
@@ -4548,10 +6288,6 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 26.7,
     md5Checksum: "9adcd04d7a06a2a561d6eea66242c289",
   },
-  "soils/soil_1.PNG": {
-    size_kb: 74.3,
-    md5Checksum: "0c8e5625d3cecb6a104d988832ce1e62",
-  },
   "soils/soil_animals_combined.JPG": {
     size_kb: 47.9,
     md5Checksum: "eb414a7e599ca3d732e62fe777acb1c4",
@@ -4564,15 +6300,15 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 21.1,
     md5Checksum: "1d85725307ad48483ac738187a658bd9",
   },
-  "soils/soilanimals_combined.JPG": {
+  "soils/soilanimals_combined.jpg": {
     size_kb: 71,
     md5Checksum: "c76868eadaff5384ea45f837936dbd8a",
   },
-  "soils/soils.png": {
-    size_kb: 443.8,
-    md5Checksum: "485a118478e7eb311621f2461e2c1f95",
+  "soils/soils_1.png": {
+    size_kb: 74.3,
+    md5Checksum: "0c8e5625d3cecb6a104d988832ce1e62",
   },
-  "soils/soils_2.PNG": {
+  "soils/soils_2.png": {
     size_kb: 159.3,
     md5Checksum: "cbb0c90fcb02c9d5e5640f0d06b11c59",
   },
@@ -4583,6 +6319,10 @@ export const ASSETS_CONTENTS_LIST = {
   "soils/soils_3.png": {
     size_kb: 108.9,
     md5Checksum: "18cdcf058493804fe8ca5ead735b6b1e",
+  },
+  "soils/soils_icon.png": {
+    size_kb: 443.8,
+    md5Checksum: "485a118478e7eb311621f2461e2c1f95",
   },
   "soils/unhealthy_soils_colour.JPG": {
     size_kb: 34.3,

@@ -15,6 +15,7 @@
     {
       "id": "nutrition",
       "title": "Nutrition",
+      "illustration": "nutrition/nutrition_icon.png",
       "description": "Understanding your food",
       "data_list_name": "understanding_your_food",
       "template": "nutrition_screen"

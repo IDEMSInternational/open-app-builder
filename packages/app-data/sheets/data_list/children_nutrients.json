@@ -1,0 +1,24 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "children_nutrients",
+  "status": "released",
+  "data_list_name": "children_nutrients",
+  "rows": [
+    {
+      "id": "child_nutrient_zinc",
+      "nutrient_id": "nutrient_zinc",
+      "why_nutrient": "Zinc supports cell growth, division and boosts immunity"
+    },
+    {
+      "id": "child_nutrient_calcium",
+      "nutrient_id": "nutrient_calcium",
+      "why_nutrient": "Calcium supports the development of healthy bones, teeth and muscles."
+    },
+    {
+      "id": "child_nutrient_proteins",
+      "nutrient_id": "nutrient_proteins",
+      "why_nutrient": "Proteins help children to build their tissues, muscles and supports their growth."
+    }
+  ],
+  "_xlsxPath": "data_lists/nutrition/nutrition_data_lists.xlsx"
+}

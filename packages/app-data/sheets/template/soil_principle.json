@@ -270,7 +270,7 @@
     {
       "type": "text",
       "name": "image_title_1",
-      "value": "@.data.@local.image_title_1_name",
+      "value": "@data.@local.image_title_1_name",
       "_translations": {
         "value": {}
       },
@@ -278,7 +278,7 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@.data.@local.image_title_1_name",
+            "fullExpression": "@data.@local.image_title_1_name",
             "matchedExpression": "@local.image_title_1_name",
             "type": "local",
             "fieldName": "image_title_1_name"
@@ -336,7 +336,7 @@
     {
       "type": "image",
       "name": "image_2",
-      "value": "@.data.@local.image_2_name",
+      "value": "@data.@local.image_2_name",
       "_translations": {
         "value": {}
       },
@@ -344,7 +344,7 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@.data.@local.image_2_name",
+            "fullExpression": "@data.@local.image_2_name",
             "matchedExpression": "@local.image_2_name",
             "type": "local",
             "fieldName": "image_2_name"
@@ -402,7 +402,7 @@
     {
       "type": "text",
       "name": "image_title_2",
-      "value": "@.data.@local.image_title_2_name",
+      "value": "@data.@local.image_title_2_name",
       "_translations": {
         "value": {}
       },
@@ -410,7 +410,7 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@.data.@local.image_title_2_name",
+            "fullExpression": "@data.@local.image_title_2_name",
             "matchedExpression": "@local.image_title_2_name",
             "type": "local",
             "fieldName": "image_title_2_name"
@@ -468,7 +468,7 @@
     {
       "type": "image",
       "name": "image_3",
-      "value": "@.data.@local.image_3_name",
+      "value": "@data.@local.image_3_name",
       "_translations": {
         "value": {}
       },
@@ -476,7 +476,7 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@.data.@local.image_3_name",
+            "fullExpression": "@data.@local.image_3_name",
             "matchedExpression": "@local.image_3_name",
             "type": "local",
             "fieldName": "image_3_name"
@@ -708,5 +708,5 @@
       }
     }
   ],
-  "_xlsxPath": "templates/global/soils playground/soils_template_draft.xlsx"
+  "_xlsxPath": "templates/global/soil_navigation.xlsx"
 }

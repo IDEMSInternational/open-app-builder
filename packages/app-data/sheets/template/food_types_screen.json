@@ -2,7 +2,6 @@
   "flow_type": "template",
   "flow_name": "food_types_screen",
   "status": "released",
-  "data_list_name": "food_types_screen",
   "rows": [
     {
       "type": "title",
@@ -54,6 +53,7 @@
     },
     {
       "type": "accordion",
+      "condition": false,
       "rows": [
         {
           "type": "items",
@@ -61,6 +61,7 @@
           "rows": [
             {
               "type": "accordion_section",
+              "name": "acc_@item.id",
               "value": "@item.heading",
               "rows": [
                 {
@@ -74,7 +75,7 @@
                         "value": {}
                       },
                       "type": "set_variable",
-                      "_nested_name": "accordion.items.accordion_section.food_type.type_id",
+                      "_nested_name": "accordion.items.acc_@item.id.food_type.type_id",
                       "_dynamicFields": {
                         "value": [
                           {
@@ -83,22 +84,55 @@
                             "type": "item",
                             "fieldName": "id"
                           }
+                        ],
+                        "_nested_name": [
+                          {
+                            "fullExpression": "accordion.items.acc_@item.id.food_type.type_id",
+                            "matchedExpression": "@item.id.food_type.type_id",
+                            "type": "item",
+                            "fieldName": "id"
+                          }
                         ]
                       },
                       "_dynamicDependencies": {
                         "@item.id": [
                           "value"
+                        ],
+                        "@item.id.food_type.type_id": [
+                          "_nested_name"
                         ]
                       }
                     }
                   ],
                   "name": "food_type",
-                  "_nested_name": "accordion.items.accordion_section.food_type"
+                  "_nested_name": "accordion.items.acc_@item.id.food_type",
+                  "_dynamicFields": {
+                    "_nested_name": [
+                      {
+                        "fullExpression": "accordion.items.acc_@item.id.food_type",
+                        "matchedExpression": "@item.id.food_type",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@item.id.food_type": [
+                      "_nested_name"
+                    ]
+                  }
                 }
               ],
-              "name": "accordion_section",
-              "_nested_name": "accordion.items.accordion_section",
+              "_nested_name": "accordion.items.acc_@item.id",
               "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "acc_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
                 "value": [
                   {
                     "fullExpression": "@item.heading",
@@ -106,9 +140,21 @@
                     "type": "item",
                     "fieldName": "heading"
                   }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "accordion.items.acc_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
                 ]
               },
               "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ],
                 "@item.heading": [
                   "value"
                 ]

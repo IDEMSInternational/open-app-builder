@@ -2,7 +2,6 @@
   "flow_type": "template",
   "flow_name": "food_transcript",
   "status": "released",
-  "data_list_name": "food_transcript",
   "rows": [
     {
       "name": "type_id",

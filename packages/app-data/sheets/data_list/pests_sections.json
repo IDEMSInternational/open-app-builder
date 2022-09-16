@@ -23,6 +23,7 @@
     {
       "id": "section_pesticides",
       "heading": "Using pesticides.",
+      "illustration": "pests/pesticides.png",
       "child_1": "sections.pests_toxic",
       "child_2": "sections.pests_nontoxic",
       "template": "pests_sub_templates",

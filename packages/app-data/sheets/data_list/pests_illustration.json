@@ -174,35 +174,41 @@
       "id": "ornamentals_attract_beneficials",
       "sub_section": "pests_plant_diversity",
       "description": "Ornamental plants attract beneficials.",
+      "title": "Ornamental plants",
       "image_1": "pests/ornamentals_attract_beneficials.png"
     },
     {
       "id": "food_crops_with_flowers",
       "sub_section": "pests_plant_diversity",
       "description": "Food crops that have flowers can attract many beneficial insects.",
+      "title": "Food crops with flowers",
       "image_1": "pests/food_crops_with_flowers.png",
       "image_2": "pests/beneicials_attracted_to_flowers.png"
     },
     {
       "sub_section": "pests_plant_diversity",
-      "description": "Use pesticidal plants like tephrosia or tithonia if pest populations start getting out of control."
+      "description": "Use pesticidal plants like tephrosia or tithonia if pest populations start getting out of control.",
+      "title": "Pesticidal plants"
     },
     {
       "id": "flowers_on_edges",
       "sub_section": "pests_plant_diversity",
       "description": "Plant flower strips on edges of veg and field crops.",
+      "title": "Flower strips",
       "image_1": "pests/flower_strips_on_the_edges.png"
     },
     {
       "id": "grass_on_edges",
       "sub_section": "pests_plant_diversity",
       "description": "Allow grasses and wildflowers to grow on the margins of your fields and gardens. Don’t disturb them.",
+      "title": "Wildflowers",
       "image_1": "pests/grasses_on_edges_of_fields.png"
     },
     {
       "id": "flowers_on_margins",
       "sub_section": "pests_plant_diversity",
       "description": "Hedgerows, tree lines and contour lines attract beneficials provided they also include flowering plants.",
+      "title": "Hedgerows",
       "image_1": "pests/flowers_on_margins_of_fields.png"
     }
   ],
