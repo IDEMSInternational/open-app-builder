@@ -74,7 +74,7 @@
     {
       "type": "button",
       "name": "button_height_weight_calculator",
-      "value": "Height Weight calculator",
+      "value": "Height Weight Calculator",
       "_translations": {
         "value": {}
       },
