@@ -31,7 +31,7 @@
     {
       "id": "needs_elderly",
       "heading": "Food for the elderly",
-      "icon": "nutrition/elderly",
+      "icon": "nutrition/elderly.png",
       "description": "Older people require more grow foods which have calcium. This help them  to combat brittle bones. They also need  glow foods to help boost their immunity",
       "go_food_why": "The elderly can benefit from foods which boost their energy and support their memory.",
       "grow_food_why": "Grow food helps them to maintain bone and muscle health.",

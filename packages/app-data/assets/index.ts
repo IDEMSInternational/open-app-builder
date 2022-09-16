@@ -4193,8 +4193,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "b10f4e6608ebd2f5638d26f50ad3e404",
   },
   "homepage/library.png": {
-    size_kb: 354.5,
-    md5Checksum: "5558df0e12a457a6e0e2d26bad639252",
+    size_kb: 909.2,
+    md5Checksum: "6e5bf99008fc1cdab9d0615cdb433d6a",
   },
   "homepage/nutrition_grain_photo.jpg": {
     size_kb: 12.7,
@@ -4278,7 +4278,7 @@ export const ASSETS_CONTENTS_LIST = {
   },
   "nutrition/Untitled document.docx": {
     size_kb: 6.3,
-    md5Checksum: "9e15abe1ca92ed2e8cead297a9a47815",
+    md5Checksum: "a6eb161b70c87b0dc309616c0b1927ae",
   },
   "nutrition/Water.png": {
     size_kb: 116.1,

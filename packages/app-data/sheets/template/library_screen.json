@@ -116,7 +116,8 @@
           ],
           "parameter_list": {
             "first_line_text": "@local.tile_text",
-            "style": "quick_start"
+            "style": "quick_start",
+            "icon_src": "@item.icon"
           },
           "_nested_name": "items.tile_@item.id",
           "_dynamicFields": {
@@ -194,6 +195,14 @@
                   "type": "local",
                   "fieldName": "tile_text"
                 }
+              ],
+              "icon_src": [
+                {
+                  "fullExpression": "@item.icon",
+                  "matchedExpression": "@item.icon",
+                  "type": "item",
+                  "fieldName": "icon"
+                }
               ]
             },
             "_nested_name": [
@@ -220,6 +229,9 @@
             ],
             "@local.tile_text": [
               "parameter_list.first_line_text"
+            ],
+            "@item.icon": [
+              "parameter_list.icon_src"
             ]
           }
         }
