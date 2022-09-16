@@ -385,10 +385,10 @@
           "trigger": "click",
           "action_id": "pop_up",
           "args": [
-            "food_transcript"
+            "transcript"
           ],
-          "_raw": "click | pop_up: food_transcript",
-          "_cleaned": "click | pop_up: food_transcript"
+          "_raw": "click | pop_up: transcript",
+          "_cleaned": "click | pop_up: transcript"
         }
       ],
       "_nested_name": "button_audio"
