@@ -179,21 +179,69 @@
     },
     {
       "name": "comp_var_content_1",
-      "value": "pests_sub_sections.pests_pests.var_content_1",
+      "value": "pests_sub_sections.@local.pests_id@local.var_content_1",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "comp_var_content_1"
+      "_nested_name": "comp_var_content_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "pests_sub_sections.@local.pests_id@local.var_content_1",
+            "matchedExpression": "@local.pests_id",
+            "type": "local",
+            "fieldName": "pests_id"
+          },
+          {
+            "fullExpression": "pests_sub_sections.@local.pests_id@local.var_content_1",
+            "matchedExpression": "@local.var_content_1",
+            "type": "local",
+            "fieldName": "var_content_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.pests_id": [
+          "value"
+        ],
+        "@local.var_content_1": [
+          "value"
+        ]
+      }
     },
     {
       "name": "comp_var_content_2",
-      "value": "pests_sub_sections.pests_pests.var_content_2",
+      "value": "pests_sub_sections.@local.pests_id@local.var_content_2",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "comp_var_content_2"
+      "_nested_name": "comp_var_content_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "pests_sub_sections.@local.pests_id@local.var_content_2",
+            "matchedExpression": "@local.pests_id",
+            "type": "local",
+            "fieldName": "pests_id"
+          },
+          {
+            "fullExpression": "pests_sub_sections.@local.pests_id@local.var_content_2",
+            "matchedExpression": "@local.var_content_2",
+            "type": "local",
+            "fieldName": "var_content_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.pests_id": [
+          "value"
+        ],
+        "@local.var_content_2": [
+          "value"
+        ]
+      }
     },
     {
       "type": "text",
@@ -245,7 +293,7 @@
     },
     {
       "type": "items",
-      "value": "@data.pests_sub_sections",
+      "value": "@data.pests_illustration",
       "rows": [
         {
           "type": "display_group",
@@ -415,15 +463,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@data.pests_sub_sections",
-            "matchedExpression": "@data.pests_sub_sections",
+            "fullExpression": "@data.pests_illustration",
+            "matchedExpression": "@data.pests_illustration",
             "type": "data",
-            "fieldName": "pests_sub_sections"
+            "fieldName": "pests_illustration"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@data.pests_sub_sections": [
+        "@data.pests_illustration": [
           "value"
         ]
       }
