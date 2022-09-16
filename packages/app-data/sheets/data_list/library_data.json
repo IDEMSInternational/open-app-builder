@@ -19,13 +19,11 @@
       "linking_term": "Pests"
     },
     {
-      "id": "fao_principles"
-    },
-    {
-      "id": "cidse_principles"
-    },
-    {
-      "id": "ifa_principles"
+      "id": "principles",
+      "title": "Principles",
+      "data_list_name": "library_principles",
+      "save_id_field": "principles_id",
+      "linking_term": "Principles"
     }
   ],
   "_xlsxPath": "data_lists/homepage/library_data_list.xlsx"

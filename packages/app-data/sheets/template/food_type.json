@@ -336,7 +336,7 @@
     {
       "type": "audio",
       "name": "audio_1",
-      "value": "nutrition/audio/@data.@local.type_audio",
+      "value": "@data.@local.type_audio",
       "_translations": {
         "value": {}
       },
@@ -347,7 +347,7 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "nutrition/audio/@data.@local.type_audio",
+            "fullExpression": "@data.@local.type_audio",
             "matchedExpression": "@local.type_audio",
             "type": "local",
             "fieldName": "type_audio"

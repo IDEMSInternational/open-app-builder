@@ -100,6 +100,18 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "example_sheet_defaults",
       _xlsxPath: "quality_assurance/example_sheets/Copy of example_sheet_defaults.xlsx",
     },
+    female_heights: {
+      flow_type: "data_list",
+      flow_name: "female_heights",
+      data_list_name: "female_heights",
+      _xlsxPath: "data_lists/nutrition/nutrition_data_lists.xlsx",
+    },
+    female_weights: {
+      flow_type: "data_list",
+      flow_name: "female_weights",
+      data_list_name: "female_weights",
+      _xlsxPath: "data_lists/nutrition/nutrition_data_lists.xlsx",
+    },
     food_types: {
       flow_type: "data_list",
       flow_name: "food_types",
@@ -142,6 +154,24 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "library_plants",
       _xlsxPath: "data_lists/pests/pests_data_lists.xlsx",
     },
+    library_principles: {
+      flow_type: "data_list",
+      flow_name: "library_principles",
+      data_list_name: "library_principles",
+      _xlsxPath: "data_lists/homepage/library_data_list.xlsx",
+    },
+    male_heights: {
+      flow_type: "data_list",
+      flow_name: "male_heights",
+      data_list_name: "male_heights",
+      _xlsxPath: "data_lists/nutrition/nutrition_data_lists.xlsx",
+    },
+    male_weights: {
+      flow_type: "data_list",
+      flow_name: "male_weights",
+      data_list_name: "male_weights",
+      _xlsxPath: "data_lists/nutrition/nutrition_data_lists.xlsx",
+    },
     nutrients: {
       flow_type: "data_list",
       flow_name: "nutrients",
@@ -152,6 +182,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "data_list",
       flow_name: "people_needs",
       data_list_name: "people_needs",
+      _xlsxPath: "data_lists/nutrition/nutrition_data_lists.xlsx",
+    },
+    percentiles: {
+      flow_type: "data_list",
+      flow_name: "percentiles",
+      data_list_name: "percentiles",
       _xlsxPath: "data_lists/nutrition/nutrition_data_lists.xlsx",
     },
     pests_illustration: {
@@ -709,10 +745,25 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "food_types_screen",
       _xlsxPath: "templates/global/nutrition_templates.xlsx",
     },
+    help_banner: {
+      flow_type: "template",
+      flow_name: "help_banner",
+      _xlsxPath: "templates/global/navigation.xlsx",
+    },
     home_screen: {
       flow_type: "template",
       flow_name: "home_screen",
       _xlsxPath: "templates/global/navigation.xlsx",
+    },
+    hw_calculator_input: {
+      flow_type: "template",
+      flow_name: "hw_calculator_input",
+      _xlsxPath: "templates/global/nutrition_templates.xlsx",
+    },
+    hw_calculator_result: {
+      flow_type: "template",
+      flow_name: "hw_calculator_result",
+      _xlsxPath: "templates/global/nutrition_templates.xlsx",
     },
     individual_need: {
       flow_type: "template",
@@ -722,6 +773,21 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     lib_pest: {
       flow_type: "template",
       flow_name: "lib_pest",
+      _xlsxPath: "templates/global/library.xlsx",
+    },
+    lib_plant: {
+      flow_type: "template",
+      flow_name: "lib_plant",
+      _xlsxPath: "templates/global/library.xlsx",
+    },
+    lib_principles: {
+      flow_type: "template",
+      flow_name: "lib_principles",
+      _xlsxPath: "templates/global/library.xlsx",
+    },
+    lib_principles_screen: {
+      flow_type: "template",
+      flow_name: "lib_principles_screen",
       _xlsxPath: "templates/global/library.xlsx",
     },
     library_collection: {
@@ -784,10 +850,20 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "principle",
       _xlsxPath: "templates/global/principles.xlsx",
     },
+    principle_buttons: {
+      flow_type: "template",
+      flow_name: "principle_buttons",
+      _xlsxPath: "templates/global/principles.xlsx",
+    },
     principles_screen: {
       flow_type: "template",
       flow_name: "principles_screen",
       _xlsxPath: "templates/global/principles.xlsx",
+    },
+    soil_prac_acts: {
+      flow_type: "template",
+      flow_name: "soil_prac_acts",
+      _xlsxPath: "templates/global/soil_navigation.xlsx",
     },
     soil_principle: {
       flow_type: "template",
@@ -811,11 +887,21 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     },
   },
   tour: {
+    ae_topics_tour: {
+      flow_type: "tour",
+      flow_name: "ae_topics_tour",
+      _xlsxPath: "tours/global/navigation_tours.xlsx",
+    },
     example_lang_tour: {
       flow_type: "tour",
       flow_name: "example_lang_tour",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/example_sheets/Copy of example_languages.xlsx",
+    },
+    home_screen_tour: {
+      flow_type: "tour",
+      flow_name: "home_screen_tour",
+      _xlsxPath: "tours/global/navigation_tours.xlsx",
     },
   },
 };

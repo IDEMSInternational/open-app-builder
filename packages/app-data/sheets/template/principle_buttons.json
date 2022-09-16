@@ -1,0 +1,852 @@
+{
+  "flow_type": "template",
+  "flow_name": "principle_buttons",
+  "status": "released",
+  "rows": [
+    {
+      "name": "row_id",
+      "value": "princ_recyc",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "row_id"
+    },
+    {
+      "name": "data_list_name",
+      "value": [
+        "principles_soil_health"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_name"
+    },
+    {
+      "name": "principle_id_1",
+      "value": ".principle_id_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "principle_id_1"
+    },
+    {
+      "name": "principle_id_2",
+      "value": ".principle_id_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "principle_id_2"
+    },
+    {
+      "name": "principle_id_3",
+      "value": ".principle_id_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "principle_id_3"
+    },
+    {
+      "name": "principle_id_4",
+      "value": ".principle_id_4",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "principle_id_4"
+    },
+    {
+      "name": "comp_princ_id_1",
+      "value": "@local.data_list_name.@local.row_id@local.principle_id_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "comp_princ_id_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.data_list_name.@local.row_id@local.principle_id_1",
+            "matchedExpression": "@local.data_list_name",
+            "type": "local",
+            "fieldName": "data_list_name"
+          },
+          {
+            "fullExpression": "@local.data_list_name.@local.row_id@local.principle_id_1",
+            "matchedExpression": "@local.row_id",
+            "type": "local",
+            "fieldName": "row_id"
+          },
+          {
+            "fullExpression": "@local.data_list_name.@local.row_id@local.principle_id_1",
+            "matchedExpression": "@local.principle_id_1",
+            "type": "local",
+            "fieldName": "principle_id_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name": [
+          "value"
+        ],
+        "@local.row_id": [
+          "value"
+        ],
+        "@local.principle_id_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "comp_princ_id_2",
+      "value": "@local.data_list_name.@local.row_id@local.principle_id_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "comp_princ_id_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.data_list_name.@local.row_id@local.principle_id_2",
+            "matchedExpression": "@local.data_list_name",
+            "type": "local",
+            "fieldName": "data_list_name"
+          },
+          {
+            "fullExpression": "@local.data_list_name.@local.row_id@local.principle_id_2",
+            "matchedExpression": "@local.row_id",
+            "type": "local",
+            "fieldName": "row_id"
+          },
+          {
+            "fullExpression": "@local.data_list_name.@local.row_id@local.principle_id_2",
+            "matchedExpression": "@local.principle_id_2",
+            "type": "local",
+            "fieldName": "principle_id_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name": [
+          "value"
+        ],
+        "@local.row_id": [
+          "value"
+        ],
+        "@local.principle_id_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "comp_princ_id_3",
+      "value": "@local.data_list_name.@local.row_id@local.principle_id_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "comp_princ_id_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.data_list_name.@local.row_id@local.principle_id_3",
+            "matchedExpression": "@local.data_list_name",
+            "type": "local",
+            "fieldName": "data_list_name"
+          },
+          {
+            "fullExpression": "@local.data_list_name.@local.row_id@local.principle_id_3",
+            "matchedExpression": "@local.row_id",
+            "type": "local",
+            "fieldName": "row_id"
+          },
+          {
+            "fullExpression": "@local.data_list_name.@local.row_id@local.principle_id_3",
+            "matchedExpression": "@local.principle_id_3",
+            "type": "local",
+            "fieldName": "principle_id_3"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name": [
+          "value"
+        ],
+        "@local.row_id": [
+          "value"
+        ],
+        "@local.principle_id_3": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "comp_princ_id_4",
+      "value": "@local.data_list_name.@local.row_id@local.principle_id_4",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "comp_princ_id_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.data_list_name.@local.row_id@local.principle_id_4",
+            "matchedExpression": "@local.data_list_name",
+            "type": "local",
+            "fieldName": "data_list_name"
+          },
+          {
+            "fullExpression": "@local.data_list_name.@local.row_id@local.principle_id_4",
+            "matchedExpression": "@local.row_id",
+            "type": "local",
+            "fieldName": "row_id"
+          },
+          {
+            "fullExpression": "@local.data_list_name.@local.row_id@local.principle_id_4",
+            "matchedExpression": "@local.principle_id_4",
+            "type": "local",
+            "fieldName": "principle_id_4"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name": [
+          "value"
+        ],
+        "@local.row_id": [
+          "value"
+        ],
+        "@local.principle_id_4": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "eval_princ_id_1",
+      "value": "@data.@local.comp_princ_id_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "eval_princ_id_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.comp_princ_id_1",
+            "matchedExpression": "@local.comp_princ_id_1",
+            "type": "local",
+            "fieldName": "comp_princ_id_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.comp_princ_id_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "eval_princ_id_2",
+      "value": "@data.@local.comp_princ_id_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "eval_princ_id_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.comp_princ_id_2",
+            "matchedExpression": "@local.comp_princ_id_2",
+            "type": "local",
+            "fieldName": "comp_princ_id_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.comp_princ_id_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "eval_princ_id_3",
+      "value": "@data.@local.comp_princ_id_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "eval_princ_id_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.comp_princ_id_3",
+            "matchedExpression": "@local.comp_princ_id_3",
+            "type": "local",
+            "fieldName": "comp_princ_id_3"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.comp_princ_id_3": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "eval_princ_id_4",
+      "value": "@data.@local.comp_princ_id_4",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "eval_princ_id_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.comp_princ_id_4",
+            "matchedExpression": "@local.comp_princ_id_4",
+            "type": "local",
+            "fieldName": "comp_princ_id_4"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.comp_princ_id_4": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "illustration",
+      "value": ".illustration",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "illustration"
+    },
+    {
+      "name": "comp_illustration_1",
+      "value": "ae_idems.@local.eval_princ_id_1@local.illustration",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "comp_illustration_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "ae_idems.@local.eval_princ_id_1@local.illustration",
+            "matchedExpression": "@local.eval_princ_id_1",
+            "type": "local",
+            "fieldName": "eval_princ_id_1"
+          },
+          {
+            "fullExpression": "ae_idems.@local.eval_princ_id_1@local.illustration",
+            "matchedExpression": "@local.illustration",
+            "type": "local",
+            "fieldName": "illustration"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.eval_princ_id_1": [
+          "value"
+        ],
+        "@local.illustration": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "comp_illustration_2",
+      "value": "ae_idems.@local.eval_princ_id_2@local.illustration",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "comp_illustration_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "ae_idems.@local.eval_princ_id_2@local.illustration",
+            "matchedExpression": "@local.eval_princ_id_2",
+            "type": "local",
+            "fieldName": "eval_princ_id_2"
+          },
+          {
+            "fullExpression": "ae_idems.@local.eval_princ_id_2@local.illustration",
+            "matchedExpression": "@local.illustration",
+            "type": "local",
+            "fieldName": "illustration"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.eval_princ_id_2": [
+          "value"
+        ],
+        "@local.illustration": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "comp_illustration_3",
+      "value": "ae_idems.@local.eval_princ_id_3@local.illustration",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "comp_illustration_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "ae_idems.@local.eval_princ_id_3@local.illustration",
+            "matchedExpression": "@local.eval_princ_id_3",
+            "type": "local",
+            "fieldName": "eval_princ_id_3"
+          },
+          {
+            "fullExpression": "ae_idems.@local.eval_princ_id_3@local.illustration",
+            "matchedExpression": "@local.illustration",
+            "type": "local",
+            "fieldName": "illustration"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.eval_princ_id_3": [
+          "value"
+        ],
+        "@local.illustration": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "comp_illustration_4",
+      "value": "ae_idems.@local.eval_princ_id_4@local.illustration",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "comp_illustration_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "ae_idems.@local.eval_princ_id_4@local.illustration",
+            "matchedExpression": "@local.eval_princ_id_4",
+            "type": "local",
+            "fieldName": "eval_princ_id_4"
+          },
+          {
+            "fullExpression": "ae_idems.@local.eval_princ_id_4@local.illustration",
+            "matchedExpression": "@local.illustration",
+            "type": "local",
+            "fieldName": "illustration"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.eval_princ_id_4": [
+          "value"
+        ],
+        "@local.illustration": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "buttons",
+      "style_list": [
+        "justify-content: space-evenly"
+      ],
+      "rows": [
+        {
+          "type": "round_button",
+          "name": "button_princ_1",
+          "condition": "!!@local.eval_principle_id_1",
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "current_principle",
+                "@local.eval_principle_id_1"
+              ],
+              "_raw": "click | set_field: current_principle: @local.eval_principle_id_1",
+              "_cleaned": "click | set_field: current_principle: @local.eval_principle_id_1"
+            },
+            {
+              "trigger": "click",
+              "action_id": "pop_up",
+              "args": [
+                "principle"
+              ],
+              "_raw": "click | pop_up: principle",
+              "_cleaned": "click | pop_up: principle"
+            }
+          ],
+          "parameter_list": {
+            "style": "dark_orange",
+            "icon_src": "@data.@local.comp_illustration_1"
+          },
+          "_nested_name": "buttons.button_princ_1",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!!@local.eval_principle_id_1",
+                "matchedExpression": "!@local.eval_principle_id_1",
+                "type": "local",
+                "fieldName": "eval_principle_id_1"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "1": [
+                    {
+                      "fullExpression": "@local.eval_principle_id_1",
+                      "matchedExpression": "@local.eval_principle_id_1",
+                      "type": "local",
+                      "fieldName": "eval_principle_id_1"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | set_field: current_principle: @local.eval_principle_id_1",
+                    "matchedExpression": "@local.eval_principle_id_1",
+                    "type": "local",
+                    "fieldName": "eval_principle_id_1"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | set_field: current_principle: @local.eval_principle_id_1",
+                    "matchedExpression": "@local.eval_principle_id_1",
+                    "type": "local",
+                    "fieldName": "eval_principle_id_1"
+                  }
+                ]
+              }
+            },
+            "parameter_list": {
+              "icon_src": [
+                {
+                  "fullExpression": "@data.@local.comp_illustration_1",
+                  "matchedExpression": "@local.comp_illustration_1",
+                  "type": "local",
+                  "fieldName": "comp_illustration_1"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "!@local.eval_principle_id_1": [
+              "condition"
+            ],
+            "@local.eval_principle_id_1": [
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@local.comp_illustration_1": [
+              "parameter_list.icon_src"
+            ]
+          }
+        },
+        {
+          "type": "round_button",
+          "name": "button_princ_2",
+          "condition": "!!@local.eval_principle_id_2",
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "current_principle",
+                "@local.eval_principle_id_2"
+              ],
+              "_raw": "click | set_field: current_principle: @local.eval_principle_id_2",
+              "_cleaned": "click | set_field: current_principle: @local.eval_principle_id_2"
+            },
+            {
+              "trigger": "click",
+              "action_id": "pop_up",
+              "args": [
+                "principle"
+              ],
+              "_raw": "click | pop_up: principle",
+              "_cleaned": "click | pop_up: principle"
+            }
+          ],
+          "parameter_list": {
+            "style": "dark_orange",
+            "icon_src": "@data.@local.comp_illustration_2"
+          },
+          "_nested_name": "buttons.button_princ_2",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!!@local.eval_principle_id_2",
+                "matchedExpression": "!@local.eval_principle_id_2",
+                "type": "local",
+                "fieldName": "eval_principle_id_2"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "1": [
+                    {
+                      "fullExpression": "@local.eval_principle_id_2",
+                      "matchedExpression": "@local.eval_principle_id_2",
+                      "type": "local",
+                      "fieldName": "eval_principle_id_2"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | set_field: current_principle: @local.eval_principle_id_2",
+                    "matchedExpression": "@local.eval_principle_id_2",
+                    "type": "local",
+                    "fieldName": "eval_principle_id_2"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | set_field: current_principle: @local.eval_principle_id_2",
+                    "matchedExpression": "@local.eval_principle_id_2",
+                    "type": "local",
+                    "fieldName": "eval_principle_id_2"
+                  }
+                ]
+              }
+            },
+            "parameter_list": {
+              "icon_src": [
+                {
+                  "fullExpression": "@data.@local.comp_illustration_2",
+                  "matchedExpression": "@local.comp_illustration_2",
+                  "type": "local",
+                  "fieldName": "comp_illustration_2"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "!@local.eval_principle_id_2": [
+              "condition"
+            ],
+            "@local.eval_principle_id_2": [
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@local.comp_illustration_2": [
+              "parameter_list.icon_src"
+            ]
+          }
+        },
+        {
+          "type": "round_button",
+          "name": "button_princ_3",
+          "condition": "!!@local.eval_principle_id_3",
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "current_principle",
+                "@local.eval_principle_id_3"
+              ],
+              "_raw": "click | set_field: current_principle: @local.eval_principle_id_3",
+              "_cleaned": "click | set_field: current_principle: @local.eval_principle_id_3"
+            },
+            {
+              "trigger": "click",
+              "action_id": "pop_up",
+              "args": [
+                "principle"
+              ],
+              "_raw": "click | pop_up: principle",
+              "_cleaned": "click | pop_up: principle"
+            }
+          ],
+          "parameter_list": {
+            "style": "dark_orange",
+            "icon_src": "@data.@local.comp_illustration_3"
+          },
+          "_nested_name": "buttons.button_princ_3",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!!@local.eval_principle_id_3",
+                "matchedExpression": "!@local.eval_principle_id_3",
+                "type": "local",
+                "fieldName": "eval_principle_id_3"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "1": [
+                    {
+                      "fullExpression": "@local.eval_principle_id_3",
+                      "matchedExpression": "@local.eval_principle_id_3",
+                      "type": "local",
+                      "fieldName": "eval_principle_id_3"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | set_field: current_principle: @local.eval_principle_id_3",
+                    "matchedExpression": "@local.eval_principle_id_3",
+                    "type": "local",
+                    "fieldName": "eval_principle_id_3"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | set_field: current_principle: @local.eval_principle_id_3",
+                    "matchedExpression": "@local.eval_principle_id_3",
+                    "type": "local",
+                    "fieldName": "eval_principle_id_3"
+                  }
+                ]
+              }
+            },
+            "parameter_list": {
+              "icon_src": [
+                {
+                  "fullExpression": "@data.@local.comp_illustration_3",
+                  "matchedExpression": "@local.comp_illustration_3",
+                  "type": "local",
+                  "fieldName": "comp_illustration_3"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "!@local.eval_principle_id_3": [
+              "condition"
+            ],
+            "@local.eval_principle_id_3": [
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@local.comp_illustration_3": [
+              "parameter_list.icon_src"
+            ]
+          }
+        },
+        {
+          "type": "round_button",
+          "name": "button_princ_4",
+          "condition": "!!@local.eval_principle_id_4",
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "current_principle",
+                "@local.eval_principle_id_4"
+              ],
+              "_raw": "click | set_field: current_principle: @local.eval_principle_id_4",
+              "_cleaned": "click | set_field: current_principle: @local.eval_principle_id_4"
+            },
+            {
+              "trigger": "click",
+              "action_id": "pop_up",
+              "args": [
+                "principle"
+              ],
+              "_raw": "click | pop_up: principle",
+              "_cleaned": "click | pop_up: principle"
+            }
+          ],
+          "parameter_list": {
+            "style": "dark_orange",
+            "icon_src": "@data.@local.comp_illustration_4"
+          },
+          "_nested_name": "buttons.button_princ_4",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!!@local.eval_principle_id_4",
+                "matchedExpression": "!@local.eval_principle_id_4",
+                "type": "local",
+                "fieldName": "eval_principle_id_4"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "1": [
+                    {
+                      "fullExpression": "@local.eval_principle_id_4",
+                      "matchedExpression": "@local.eval_principle_id_4",
+                      "type": "local",
+                      "fieldName": "eval_principle_id_4"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | set_field: current_principle: @local.eval_principle_id_4",
+                    "matchedExpression": "@local.eval_principle_id_4",
+                    "type": "local",
+                    "fieldName": "eval_principle_id_4"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | set_field: current_principle: @local.eval_principle_id_4",
+                    "matchedExpression": "@local.eval_principle_id_4",
+                    "type": "local",
+                    "fieldName": "eval_principle_id_4"
+                  }
+                ]
+              }
+            },
+            "parameter_list": {
+              "icon_src": [
+                {
+                  "fullExpression": "@data.@local.comp_illustration_4",
+                  "matchedExpression": "@local.comp_illustration_4",
+                  "type": "local",
+                  "fieldName": "comp_illustration_4"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "!@local.eval_principle_id_4": [
+              "condition"
+            ],
+            "@local.eval_principle_id_4": [
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@local.comp_illustration_4": [
+              "parameter_list.icon_src"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "buttons"
+    }
+  ],
+  "_xlsxPath": "templates/global/principles.xlsx"
+}

@@ -83,33 +83,13 @@
           "trigger": "click",
           "action_id": "go_to",
           "args": [
-            "height_weight_calculator"
+            "hw_calculator_input"
           ],
-          "_raw": "click | go_to: height_weight_calculator",
-          "_cleaned": "click | go_to: height_weight_calculator"
+          "_raw": "click | go_to: hw_calculator_input",
+          "_cleaned": "click | go_to: hw_calculator_input"
         }
       ],
       "_nested_name": "button_height_weight_calculator"
-    },
-    {
-      "type": "button",
-      "name": "button_nutrition_facts",
-      "value": "Nutrition facts",
-      "_translations": {
-        "value": {}
-      },
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "go_to",
-          "args": [
-            "nutrition_facts"
-          ],
-          "_raw": "click | go_to: nutrition_facts",
-          "_cleaned": "click | go_to: nutrition_facts"
-        }
-      ],
-      "_nested_name": "button_nutrition_facts"
     }
   ],
   "_xlsxPath": "templates/global/nutrition_templates.xlsx"

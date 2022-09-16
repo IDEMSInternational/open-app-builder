@@ -1,0 +1,1097 @@
+{
+  "flow_type": "template",
+  "flow_name": "lib_plant",
+  "status": "released",
+  "rows": [
+    {
+      "name": "plant_id",
+      "value": "@fields.plant_id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "plant_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.plant_id",
+            "matchedExpression": "@fields.plant_id",
+            "type": "fields",
+            "fieldName": "plant_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.plant_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "name",
+      "value": ".name",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "name"
+    },
+    {
+      "name": "plant_name",
+      "value": "library_plants.@local.plant_id@local.name",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "plant_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "library_plants.@local.plant_id@local.name",
+            "matchedExpression": "@local.plant_id",
+            "type": "local",
+            "fieldName": "plant_id"
+          },
+          {
+            "fullExpression": "library_plants.@local.plant_id@local.name",
+            "matchedExpression": "@local.name",
+            "type": "local",
+            "fieldName": "name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.plant_id": [
+          "value"
+        ],
+        "@local.name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@data.@local.plant_name",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.plant_name",
+            "matchedExpression": "@local.plant_name",
+            "type": "local",
+            "fieldName": "plant_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.plant_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "image_1",
+      "value": ".image_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_1"
+    },
+    {
+      "name": "plant_image_1",
+      "value": "library_plants.@local.plant_id@local.image_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "plant_image_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "library_plants.@local.plant_id@local.image_1",
+            "matchedExpression": "@local.plant_id",
+            "type": "local",
+            "fieldName": "plant_id"
+          },
+          {
+            "fullExpression": "library_plants.@local.plant_id@local.image_1",
+            "matchedExpression": "@local.image_1",
+            "type": "local",
+            "fieldName": "image_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.plant_id": [
+          "value"
+        ],
+        "@local.image_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "dg_image_1",
+      "condition": "!!@data.@local.plant_image_1",
+      "rows": [
+        {
+          "type": "image",
+          "name": "image_1",
+          "value": "@data.@local.plant_image_1",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "dg_image_1.image_1",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.@local.plant_image_1",
+                "matchedExpression": "@local.plant_image_1",
+                "type": "local",
+                "fieldName": "plant_image_1"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.plant_image_1": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "dg_image_1",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!!@data.@local.plant_image_1",
+            "matchedExpression": "@local.plant_image_1",
+            "type": "local",
+            "fieldName": "plant_image_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.plant_image_1": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "accordion",
+      "rows": [
+        {
+          "type": "accordion_section",
+          "name": "acc_images",
+          "value": "More images",
+          "rows": [
+            {
+              "type": "display_group",
+              "name": "more_images",
+              "parameter_list": {
+                "style": "column"
+              },
+              "rows": [
+                {
+                  "name": "image_2",
+                  "value": ".image_2",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion.acc_images.more_images.image_2"
+                },
+                {
+                  "name": "plant_image_2",
+                  "value": "library_plants.@local.plant_id@local.image_2",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion.acc_images.more_images.plant_image_2",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "library_plants.@local.plant_id@local.image_2",
+                        "matchedExpression": "@local.plant_id",
+                        "type": "local",
+                        "fieldName": "plant_id"
+                      },
+                      {
+                        "fullExpression": "library_plants.@local.plant_id@local.image_2",
+                        "matchedExpression": "@local.image_2",
+                        "type": "local",
+                        "fieldName": "image_2"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.plant_id": [
+                      "value"
+                    ],
+                    "@local.image_2": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "type": "display_group",
+                  "name": "dg_image_2",
+                  "condition": "!!@data.@local.plant_image_2",
+                  "rows": [
+                    {
+                      "type": "image",
+                      "name": "image_2",
+                      "value": "@data.@local.plant_image_2",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "_nested_name": "accordion.acc_images.more_images.dg_image_2.image_2",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.@local.plant_image_2",
+                            "matchedExpression": "@local.plant_image_2",
+                            "type": "local",
+                            "fieldName": "plant_image_2"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.plant_image_2": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "accordion.acc_images.more_images.dg_image_2",
+                  "_dynamicFields": {
+                    "condition": [
+                      {
+                        "fullExpression": "!!@data.@local.plant_image_2",
+                        "matchedExpression": "@local.plant_image_2",
+                        "type": "local",
+                        "fieldName": "plant_image_2"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.plant_image_2": [
+                      "condition"
+                    ]
+                  }
+                },
+                {
+                  "name": "image_3",
+                  "value": ".image_3",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion.acc_images.more_images.image_3"
+                },
+                {
+                  "name": "plant_image_3",
+                  "value": "library_plants.@local.plant_id@local.image_3",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion.acc_images.more_images.plant_image_3",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "library_plants.@local.plant_id@local.image_3",
+                        "matchedExpression": "@local.plant_id",
+                        "type": "local",
+                        "fieldName": "plant_id"
+                      },
+                      {
+                        "fullExpression": "library_plants.@local.plant_id@local.image_3",
+                        "matchedExpression": "@local.image_3",
+                        "type": "local",
+                        "fieldName": "image_3"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.plant_id": [
+                      "value"
+                    ],
+                    "@local.image_3": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "type": "display_group",
+                  "name": "dg_image_3",
+                  "condition": "!!@data.@local.plant_image_3",
+                  "rows": [
+                    {
+                      "type": "image",
+                      "name": "image_3",
+                      "value": "@data.@local.plant_image_3",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "_nested_name": "accordion.acc_images.more_images.dg_image_3.image_3",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.@local.plant_image_3",
+                            "matchedExpression": "@local.plant_image_3",
+                            "type": "local",
+                            "fieldName": "plant_image_3"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.plant_image_3": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "accordion.acc_images.more_images.dg_image_3",
+                  "_dynamicFields": {
+                    "condition": [
+                      {
+                        "fullExpression": "!!@data.@local.plant_image_3",
+                        "matchedExpression": "@local.plant_image_3",
+                        "type": "local",
+                        "fieldName": "plant_image_3"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.plant_image_3": [
+                      "condition"
+                    ]
+                  }
+                },
+                {
+                  "name": "image_4",
+                  "value": ".image_4",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion.acc_images.more_images.image_4"
+                },
+                {
+                  "name": "plant_image_4",
+                  "value": "library_plants.@local.plant_id@local.image_4",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion.acc_images.more_images.plant_image_4",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "library_plants.@local.plant_id@local.image_4",
+                        "matchedExpression": "@local.plant_id",
+                        "type": "local",
+                        "fieldName": "plant_id"
+                      },
+                      {
+                        "fullExpression": "library_plants.@local.plant_id@local.image_4",
+                        "matchedExpression": "@local.image_4",
+                        "type": "local",
+                        "fieldName": "image_4"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.plant_id": [
+                      "value"
+                    ],
+                    "@local.image_4": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "type": "display_group",
+                  "name": "dg_image_4",
+                  "condition": "!!@data.@local.plant_image_4",
+                  "rows": [
+                    {
+                      "type": "image",
+                      "name": "image_4",
+                      "value": "@data.@local.plant_image_4",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "_nested_name": "accordion.acc_images.more_images.dg_image_4.image_4",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.@local.plant_image_4",
+                            "matchedExpression": "@local.plant_image_4",
+                            "type": "local",
+                            "fieldName": "plant_image_4"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.plant_image_4": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "accordion.acc_images.more_images.dg_image_4",
+                  "_dynamicFields": {
+                    "condition": [
+                      {
+                        "fullExpression": "!!@data.@local.plant_image_4",
+                        "matchedExpression": "@local.plant_image_4",
+                        "type": "local",
+                        "fieldName": "plant_image_4"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.plant_image_4": [
+                      "condition"
+                    ]
+                  }
+                },
+                {
+                  "name": "image_5",
+                  "value": ".image_5",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion.acc_images.more_images.image_5"
+                },
+                {
+                  "name": "plant_image_5",
+                  "value": "library_plants.@local.plant_id@local.image_5",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion.acc_images.more_images.plant_image_5",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "library_plants.@local.plant_id@local.image_5",
+                        "matchedExpression": "@local.plant_id",
+                        "type": "local",
+                        "fieldName": "plant_id"
+                      },
+                      {
+                        "fullExpression": "library_plants.@local.plant_id@local.image_5",
+                        "matchedExpression": "@local.image_5",
+                        "type": "local",
+                        "fieldName": "image_5"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.plant_id": [
+                      "value"
+                    ],
+                    "@local.image_5": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "type": "display_group",
+                  "name": "dg_image_5",
+                  "condition": "!!@data.@local.plant_image_5",
+                  "rows": [
+                    {
+                      "type": "image",
+                      "name": "image_5",
+                      "value": "@data.@local.plant_image_5",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "_nested_name": "accordion.acc_images.more_images.dg_image_5.image_5",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.@local.plant_image_5",
+                            "matchedExpression": "@local.plant_image_5",
+                            "type": "local",
+                            "fieldName": "plant_image_5"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.plant_image_5": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "accordion.acc_images.more_images.dg_image_5",
+                  "_dynamicFields": {
+                    "condition": [
+                      {
+                        "fullExpression": "!!@data.@local.plant_image_5",
+                        "matchedExpression": "@local.plant_image_5",
+                        "type": "local",
+                        "fieldName": "plant_image_5"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.plant_image_5": [
+                      "condition"
+                    ]
+                  }
+                },
+                {
+                  "name": "image_6",
+                  "value": ".image_6",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion.acc_images.more_images.image_6"
+                },
+                {
+                  "name": "plant_image_6",
+                  "value": "library_plants.@local.plant_id@local.image_6",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion.acc_images.more_images.plant_image_6",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "library_plants.@local.plant_id@local.image_6",
+                        "matchedExpression": "@local.plant_id",
+                        "type": "local",
+                        "fieldName": "plant_id"
+                      },
+                      {
+                        "fullExpression": "library_plants.@local.plant_id@local.image_6",
+                        "matchedExpression": "@local.image_6",
+                        "type": "local",
+                        "fieldName": "image_6"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.plant_id": [
+                      "value"
+                    ],
+                    "@local.image_6": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "type": "display_group",
+                  "name": "dg_image_6",
+                  "condition": "!!@data.@local.plant_image_6",
+                  "rows": [
+                    {
+                      "type": "image",
+                      "name": "image_6",
+                      "value": "@data.@local.plant_image_6",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "_nested_name": "accordion.acc_images.more_images.dg_image_6.image_6",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.@local.plant_image_6",
+                            "matchedExpression": "@local.plant_image_6",
+                            "type": "local",
+                            "fieldName": "plant_image_6"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.plant_image_6": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "accordion.acc_images.more_images.dg_image_6",
+                  "_dynamicFields": {
+                    "condition": [
+                      {
+                        "fullExpression": "!!@data.@local.plant_image_6",
+                        "matchedExpression": "@local.plant_image_6",
+                        "type": "local",
+                        "fieldName": "plant_image_6"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.plant_image_6": [
+                      "condition"
+                    ]
+                  }
+                },
+                {
+                  "name": "image_7",
+                  "value": ".image_7",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion.acc_images.more_images.image_7"
+                },
+                {
+                  "name": "plant_image_7",
+                  "value": "library_plants.@local.plant_id@local.image_7",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "accordion.acc_images.more_images.plant_image_7",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "library_plants.@local.plant_id@local.image_7",
+                        "matchedExpression": "@local.plant_id",
+                        "type": "local",
+                        "fieldName": "plant_id"
+                      },
+                      {
+                        "fullExpression": "library_plants.@local.plant_id@local.image_7",
+                        "matchedExpression": "@local.image_7",
+                        "type": "local",
+                        "fieldName": "image_7"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.plant_id": [
+                      "value"
+                    ],
+                    "@local.image_7": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "type": "display_group",
+                  "name": "dg_image_7",
+                  "condition": "!!@data.@local.plant_image_7",
+                  "rows": [
+                    {
+                      "type": "image",
+                      "name": "image_7",
+                      "value": "@data.@local.plant_image_7",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "_nested_name": "accordion.acc_images.more_images.dg_image_7.image_7",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.@local.plant_image_7",
+                            "matchedExpression": "@local.plant_image_7",
+                            "type": "local",
+                            "fieldName": "plant_image_7"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.plant_image_7": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "accordion.acc_images.more_images.dg_image_7",
+                  "_dynamicFields": {
+                    "condition": [
+                      {
+                        "fullExpression": "!!@data.@local.plant_image_7",
+                        "matchedExpression": "@local.plant_image_7",
+                        "type": "local",
+                        "fieldName": "plant_image_7"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.plant_image_7": [
+                      "condition"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "accordion.acc_images.more_images"
+            }
+          ],
+          "_nested_name": "accordion.acc_images"
+        },
+        {
+          "type": "accordion_section",
+          "name": "acc_hosts",
+          "value": "@data.library.plants.linking_term",
+          "parameter_list": {
+            "state": "open"
+          },
+          "rows": [
+            {
+              "type": "display_group",
+              "name": "tiles",
+              "parameter_list": {
+                "style": "column"
+              },
+              "rows": [
+                {
+                  "type": "items",
+                  "value": "@data.library_plant_pests",
+                  "rows": [
+                    {
+                      "type": "display_group",
+                      "name": "pest_check",
+                      "condition": "@item.plant_id == @local.plant_id",
+                      "parameter_list": {
+                        "style": "dashed_box"
+                      },
+                      "rows": [
+                        {
+                          "name": "pest_id",
+                          "value": "@item.pest_id",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "accordion.acc_hosts.tiles.items.pest_check.pest_id",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@item.pest_id",
+                                "matchedExpression": "@item.pest_id",
+                                "type": "item",
+                                "fieldName": "pest_id"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@item.pest_id": [
+                              "value"
+                            ]
+                          }
+                        },
+                        {
+                          "type": "title",
+                          "name": "title_@item.id",
+                          "value": "@item.pest_title",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "_nested_name": "accordion.acc_hosts.tiles.items.pest_check.title_@item.id",
+                          "_dynamicFields": {
+                            "name": [
+                              {
+                                "fullExpression": "title_@item.id",
+                                "matchedExpression": "@item.id",
+                                "type": "item",
+                                "fieldName": "id"
+                              }
+                            ],
+                            "value": [
+                              {
+                                "fullExpression": "@item.pest_title",
+                                "matchedExpression": "@item.pest_title",
+                                "type": "item",
+                                "fieldName": "pest_title"
+                              }
+                            ],
+                            "_nested_name": [
+                              {
+                                "fullExpression": "accordion.acc_hosts.tiles.items.pest_check.title_@item.id",
+                                "matchedExpression": "@item.id",
+                                "type": "item",
+                                "fieldName": "id"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@item.id": [
+                              "name",
+                              "_nested_name"
+                            ],
+                            "@item.pest_title": [
+                              "value"
+                            ]
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "name": "description_@item.id",
+                          "value": "@item.pest_description",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "_nested_name": "accordion.acc_hosts.tiles.items.pest_check.description_@item.id",
+                          "_dynamicFields": {
+                            "name": [
+                              {
+                                "fullExpression": "description_@item.id",
+                                "matchedExpression": "@item.id",
+                                "type": "item",
+                                "fieldName": "id"
+                              }
+                            ],
+                            "value": [
+                              {
+                                "fullExpression": "@item.pest_description",
+                                "matchedExpression": "@item.pest_description",
+                                "type": "item",
+                                "fieldName": "pest_description"
+                              }
+                            ],
+                            "_nested_name": [
+                              {
+                                "fullExpression": "accordion.acc_hosts.tiles.items.pest_check.description_@item.id",
+                                "matchedExpression": "@item.id",
+                                "type": "item",
+                                "fieldName": "id"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@item.id": [
+                              "name",
+                              "_nested_name"
+                            ],
+                            "@item.pest_description": [
+                              "value"
+                            ]
+                          }
+                        },
+                        {
+                          "type": "subtitle",
+                          "name": "subtitle_tips",
+                          "value": "What you can do:",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "parameter_list": {
+                            "style": "emphasised"
+                          },
+                          "_nested_name": "accordion.acc_hosts.tiles.items.pest_check.subtitle_tips"
+                        },
+                        {
+                          "type": "text",
+                          "name": "what_to_do_@item.id",
+                          "value": "@item.pest_what_to_do",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "_nested_name": "accordion.acc_hosts.tiles.items.pest_check.what_to_do_@item.id",
+                          "_dynamicFields": {
+                            "name": [
+                              {
+                                "fullExpression": "what_to_do_@item.id",
+                                "matchedExpression": "@item.id",
+                                "type": "item",
+                                "fieldName": "id"
+                              }
+                            ],
+                            "value": [
+                              {
+                                "fullExpression": "@item.pest_what_to_do",
+                                "matchedExpression": "@item.pest_what_to_do",
+                                "type": "item",
+                                "fieldName": "pest_what_to_do"
+                              }
+                            ],
+                            "_nested_name": [
+                              {
+                                "fullExpression": "accordion.acc_hosts.tiles.items.pest_check.what_to_do_@item.id",
+                                "matchedExpression": "@item.id",
+                                "type": "item",
+                                "fieldName": "id"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@item.id": [
+                              "name",
+                              "_nested_name"
+                            ],
+                            "@item.pest_what_to_do": [
+                              "value"
+                            ]
+                          }
+                        },
+                        {
+                          "type": "button",
+                          "name": "button_@item.id",
+                          "value": "Pest info",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "action_list": [
+                            {
+                              "trigger": "click",
+                              "action_id": "set_field",
+                              "args": [
+                                "pest_id",
+                                "@item.pest_id"
+                              ],
+                              "_raw": "click | set_field: pest_id: @item.pest_id",
+                              "_cleaned": "click | set_field: pest_id: @item.pest_id"
+                            },
+                            {
+                              "trigger": "click",
+                              "action_id": "go_to",
+                              "args": [
+                                "lib_pest"
+                              ],
+                              "_raw": "click | go_to: lib_pest",
+                              "_cleaned": "click | go_to: lib_pest"
+                            }
+                          ],
+                          "_nested_name": "accordion.acc_hosts.tiles.items.pest_check.button_@item.id",
+                          "_dynamicFields": {
+                            "name": [
+                              {
+                                "fullExpression": "button_@item.id",
+                                "matchedExpression": "@item.id",
+                                "type": "item",
+                                "fieldName": "id"
+                              }
+                            ],
+                            "action_list": {
+                              "0": {
+                                "args": {
+                                  "1": [
+                                    {
+                                      "fullExpression": "@item.pest_id",
+                                      "matchedExpression": "@item.pest_id",
+                                      "type": "item",
+                                      "fieldName": "pest_id"
+                                    }
+                                  ]
+                                },
+                                "_raw": [
+                                  {
+                                    "fullExpression": "click | set_field: pest_id: @item.pest_id",
+                                    "matchedExpression": "@item.pest_id",
+                                    "type": "item",
+                                    "fieldName": "pest_id"
+                                  }
+                                ],
+                                "_cleaned": [
+                                  {
+                                    "fullExpression": "click | set_field: pest_id: @item.pest_id",
+                                    "matchedExpression": "@item.pest_id",
+                                    "type": "item",
+                                    "fieldName": "pest_id"
+                                  }
+                                ]
+                              }
+                            },
+                            "_nested_name": [
+                              {
+                                "fullExpression": "accordion.acc_hosts.tiles.items.pest_check.button_@item.id",
+                                "matchedExpression": "@item.id",
+                                "type": "item",
+                                "fieldName": "id"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@item.id": [
+                              "name",
+                              "_nested_name"
+                            ],
+                            "@item.pest_id": [
+                              "action_list.0.args.1",
+                              "action_list.0._raw",
+                              "action_list.0._cleaned"
+                            ]
+                          }
+                        }
+                      ],
+                      "_nested_name": "accordion.acc_hosts.tiles.items.pest_check",
+                      "_dynamicFields": {
+                        "condition": [
+                          {
+                            "fullExpression": "@item.plant_id == @local.plant_id",
+                            "matchedExpression": "@item.plant_id",
+                            "type": "item",
+                            "fieldName": "plant_id"
+                          },
+                          {
+                            "fullExpression": "@item.plant_id == @local.plant_id",
+                            "matchedExpression": "@local.plant_id",
+                            "type": "local",
+                            "fieldName": "plant_id"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@item.plant_id": [
+                          "condition"
+                        ],
+                        "@local.plant_id": [
+                          "condition"
+                        ]
+                      }
+                    }
+                  ],
+                  "name": "items",
+                  "_nested_name": "accordion.acc_hosts.tiles.items",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@data.library_plant_pests",
+                        "matchedExpression": "@data.library_plant_pests",
+                        "type": "data",
+                        "fieldName": "library_plant_pests"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@data.library_plant_pests": [
+                      "value"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "accordion.acc_hosts.tiles"
+            }
+          ],
+          "_nested_name": "accordion.acc_hosts",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.library.plants.linking_term",
+                "matchedExpression": "@data.library.plants.linking_term",
+                "type": "data",
+                "fieldName": "library"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.library.plants.linking_term": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "name": "accordion",
+      "_nested_name": "accordion"
+    }
+  ],
+  "_xlsxPath": "templates/global/library.xlsx"
+}
