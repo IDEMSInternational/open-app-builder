@@ -86,6 +86,13 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   @HostBinding("attr.data-hidden") get getAttrHidden() {
     return this._row && this._row.hidden ? true : false; // explictly state for all components to allow css selection
   }
+  @HostBinding("attr.data-empty") get getAttrEmpty() {
+    return this._row &&
+      ["text", "title", "image", "subtitle"].includes(this._row.type) &&
+      !this._row.value
+      ? true
+      : false; // explictly state for all components to allow css selection
+  }
   @HostBinding("attr.data-name") get getComponentName() {
     return this._row?.name || null;
   }
