@@ -13,8 +13,7 @@
       },
       "style_list": [
         "text-align: center"
-      ],
-      "_nested_name": "title_1"
+      ]
     },
     {
       "type": "subtitle",
@@ -25,8 +24,7 @@
       },
       "style_list": [
         "text-align: center"
-      ],
-      "_nested_name": "subtitle"
+      ]
     },
     {
       "type": "text",
@@ -37,8 +35,7 @@
       },
       "style_list": [
         "text-align: center"
-      ],
-      "_nested_name": "text"
+      ]
     },
     {
       "type": "title",
@@ -46,8 +43,7 @@
       "value": "Three ways of centering an image component",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_2"
+      }
     },
     {
       "type": "image",
@@ -59,8 +55,7 @@
       "style_list": [
         "width:100px",
         "margin:auto"
-      ],
-      "_nested_name": "image_1"
+      ]
     },
     {
       "type": "display_group",
@@ -78,18 +73,16 @@
           },
           "style_list": [
             "max-width:100px"
-          ],
-          "_nested_name": "dg_1.image_2"
+          ]
         }
-      ],
-      "_nested_name": "dg_1"
+      ]
     },
     {
       "type": "display_group",
       "name": "dg_2",
-      "parameter_list": {
-        "style": "column"
-      },
+      "parameter_list": [
+        "style:column"
+      ],
       "rows": [
         {
           "type": "image",
@@ -100,11 +93,9 @@
           },
           "style_list": [
             "width:100px"
-          ],
-          "_nested_name": "dg_2.image_3"
+          ]
         }
-      ],
-      "_nested_name": "dg_2"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_dg.xlsx"

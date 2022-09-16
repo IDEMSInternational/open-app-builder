@@ -8,23 +8,6 @@
       "value": "@data.workshop.w_1on1",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "workshop_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_1on1",
-            "matchedExpression": "@data.workshop.w_1on1",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_1on1": [
-          "value"
-        ]
       }
     },
     {
@@ -32,23 +15,6 @@
       "value": "@local.workshop_data.id",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "workshop",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop_data.id",
-            "matchedExpression": "@local.workshop_data.id",
-            "type": "local",
-            "fieldName": "workshop_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_data.id": [
-          "value"
-        ]
       }
     },
     {
@@ -57,9 +23,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "hp_review"
+      "exclude_from_translation": true
     },
     {
       "name": "mood",
@@ -67,9 +31,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "mood"
+      "exclude_from_translation": true
     },
     {
       "name": "final",
@@ -77,9 +39,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "final"
+      "exclude_from_translation": true
     },
     {
       "name": "hp_highlight_other",
@@ -87,9 +47,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "hp_highlight_other"
+      "exclude_from_translation": true
     },
     {
       "name": "current_mood_field",
@@ -97,51 +55,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "current_mood_field",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop@local.hp_review@local.mood@local.final",
-            "matchedExpression": "@local.workshop",
-            "type": "local",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@local.workshop@local.hp_review@local.mood@local.final",
-            "matchedExpression": "@local.hp_review",
-            "type": "local",
-            "fieldName": "hp_review"
-          },
-          {
-            "fullExpression": "@local.workshop@local.hp_review@local.mood@local.final",
-            "matchedExpression": "@local.mood",
-            "type": "local",
-            "fieldName": "mood"
-          },
-          {
-            "fullExpression": "@local.workshop@local.hp_review@local.mood@local.final",
-            "matchedExpression": "@local.final",
-            "type": "local",
-            "fieldName": "final"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop": [
-          "value"
-        ],
-        "@local.hp_review": [
-          "value"
-        ],
-        "@local.mood": [
-          "value"
-        ],
-        "@local.final": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "current_mood",
@@ -149,24 +63,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "current_mood",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields.@local.current_mood_field",
-            "matchedExpression": "@local.current_mood_field",
-            "type": "local",
-            "fieldName": "current_mood_field"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.current_mood_field": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "text_box_tracker",
@@ -174,33 +71,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "text_box_tracker",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop@local.hp_highlight_other",
-            "matchedExpression": "@local.workshop",
-            "type": "local",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@local.workshop@local.hp_highlight_other",
-            "matchedExpression": "@local.hp_highlight_other",
-            "type": "local",
-            "fieldName": "hp_highlight_other"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop": [
-          "value"
-        ],
-        "@local.hp_highlight_other": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -215,8 +86,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text"
+      }
     },
     {
       "type": "text",
@@ -232,10 +102,9 @@
           "za_zu": true
         }
       },
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "question_text_1b"
+      "parameter_list": [
+        "style:emphasised"
+      ]
     },
     {
       "type": "text_box",
@@ -246,84 +115,15 @@
           "action_id": "set_field",
           "args": [
             "@local.text_box_tracker",
-            "this.value"
+            "@local.text_box"
           ],
           "_raw": "changed | set_field: @local.text_box_tracker: @local.text_box",
           "_cleaned": "changed | set_field: @local.text_box_tracker: @local.text_box"
         }
       ],
-      "parameter_list": {
-        "placeholder": "@global.tap_and_type"
-      },
-      "_nested_name": "text_box",
-      "_dynamicFields": {
-        "action_list": {
-          "0": {
-            "args": {
-              "0": [
-                {
-                  "fullExpression": "@local.text_box_tracker",
-                  "matchedExpression": "@local.text_box_tracker",
-                  "type": "local",
-                  "fieldName": "text_box_tracker"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
-                "matchedExpression": "@local.text_box_tracker",
-                "type": "local",
-                "fieldName": "text_box_tracker"
-              },
-              {
-                "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
-                "matchedExpression": "@local.text_box",
-                "type": "local",
-                "fieldName": "text_box"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
-                "matchedExpression": "@local.text_box_tracker",
-                "type": "local",
-                "fieldName": "text_box_tracker"
-              },
-              {
-                "fullExpression": "changed | set_field: @local.text_box_tracker: @local.text_box",
-                "matchedExpression": "@local.text_box",
-                "type": "local",
-                "fieldName": "text_box"
-              }
-            ]
-          }
-        },
-        "parameter_list": {
-          "placeholder": [
-            {
-              "fullExpression": "@global.tap_and_type",
-              "matchedExpression": "@global.tap_and_type",
-              "type": "global",
-              "fieldName": "tap_and_type"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.text_box_tracker": [
-          "action_list.0.args.0",
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ],
-        "@local.text_box": [
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ],
-        "@global.tap_and_type": [
-          "parameter_list.placeholder"
-        ]
-      }
+      "parameter_list": [
+        "placeholder: @global.tap_and_type"
+      ]
     },
     {
       "type": "text",
@@ -339,23 +139,7 @@
           "za_zu": true
         }
       },
-      "hidden": "!@local.text_box",
-      "_nested_name": "reply_text_box",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "!@local.text_box",
-            "matchedExpression": "!@local.text_box",
-            "type": "local",
-            "fieldName": "text_box"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "!@local.text_box": [
-          "hidden"
-        ]
-      }
+      "hidden": "!@local.text_box"
     }
   ],
   "_xlsxPath": "global/mode_templates/home_practice.xlsx"

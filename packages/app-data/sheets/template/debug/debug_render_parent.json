@@ -11,8 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -21,23 +20,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Value of test_render_updates_field: \nfield: @fields.test_render_updates_field",
-            "matchedExpression": "@fields.test_render_updates_field",
-            "type": "fields",
-            "fieldName": "test_render_updates_field"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.test_render_updates_field": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -57,9 +40,7 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "debug_render_child.debug_render_grandchild_2b.title"
+              "exclude_from_translation": true
             },
             {
               "name": "text_3",
@@ -68,24 +49,7 @@
                 "value": {}
               },
               "hidden": "@fields.test_render_updates_field!=\"no\"",
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "debug_render_child.debug_render_grandchild_2b.text_3",
-              "_dynamicFields": {
-                "hidden": [
-                  {
-                    "fullExpression": "@fields.test_render_updates_field!=\"no\"",
-                    "matchedExpression": "@fields.test_render_updates_field",
-                    "type": "fields",
-                    "fieldName": "test_render_updates_field"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@fields.test_render_updates_field": [
-                  "hidden"
-                ]
-              }
+              "exclude_from_translation": true
             },
             {
               "name": "text_4",
@@ -94,24 +58,7 @@
                 "value": {}
               },
               "hidden": "@fields.test_render_updates_field!=\"yes\"",
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "debug_render_child.debug_render_grandchild_2b.text_4",
-              "_dynamicFields": {
-                "hidden": [
-                  {
-                    "fullExpression": "@fields.test_render_updates_field!=\"yes\"",
-                    "matchedExpression": "@fields.test_render_updates_field",
-                    "type": "fields",
-                    "fieldName": "test_render_updates_field"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@fields.test_render_updates_field": [
-                  "hidden"
-                ]
-              }
+              "exclude_from_translation": true
             },
             {
               "name": "text_5",
@@ -119,27 +66,9 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "debug_render_child.debug_render_grandchild_2b.text_5",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "(parent) Value of test_render_updates_field: @fields.test_render_updates_field",
-                    "matchedExpression": "@fields.test_render_updates_field",
-                    "type": "fields",
-                    "fieldName": "test_render_updates_field"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@fields.test_render_updates_field": [
-                  "value"
-                ]
-              }
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "debug_render_child.debug_render_grandchild_2b"
+          ]
         },
         {
           "type": "nested_properties",
@@ -154,9 +83,7 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "debug_render_child.debug_render_grandchild_3b.title"
+              "exclude_from_translation": true
             },
             {
               "name": "text",
@@ -164,27 +91,9 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "debug_render_child.debug_render_grandchild_3b.text"
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "debug_render_child.debug_render_grandchild_3b",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@fields.test_render_updates_field==\"no\"",
-                "matchedExpression": "@fields.test_render_updates_field",
-                "type": "fields",
-                "fieldName": "test_render_updates_field"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@fields.test_render_updates_field": [
-              "condition"
-            ]
-          }
+          ]
         },
         {
           "type": "nested_properties",
@@ -199,9 +108,7 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "debug_render_child.debug_render_grandchild_4b.title"
+              "exclude_from_translation": true
             },
             {
               "name": "text",
@@ -209,30 +116,11 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "debug_render_child.debug_render_grandchild_4b.text"
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "debug_render_child.debug_render_grandchild_4b",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@fields.test_render_updates_field==\"yes\"",
-                "matchedExpression": "@fields.test_render_updates_field",
-                "type": "fields",
-                "fieldName": "test_render_updates_field"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@fields.test_render_updates_field": [
-              "condition"
-            ]
-          }
+          ]
         }
-      ],
-      "_nested_name": "debug_render_child"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_render_grandchild_2.xlsx"

@@ -14,79 +14,47 @@
           "action_id": "set_field",
           "args": [
             "changed_field_toggle",
-            "this.value"
+            "@local.toggle_1"
           ],
           "_raw": "changed | set_field:changed_field_toggle:@local.toggle_1",
           "_cleaned": "changed | set_field:changed_field_toggle:@local.toggle_1"
         }
       ],
       "exclude_from_translation": true,
-      "parameter_list": {
-        "position": "right",
-        "true_text": "some text for true value",
-        "false_text": "text for false",
-        "show_tick_and_cross": "false"
-      },
-      "_nested_name": "toggle_1",
-      "_dynamicFields": {
-        "action_list": {
-          "0": {
-            "_raw": [
-              {
-                "fullExpression": "changed | set_field:changed_field_toggle:@local.toggle_1",
-                "matchedExpression": "@local.toggle_1",
-                "type": "local",
-                "fieldName": "toggle_1"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "changed | set_field:changed_field_toggle:@local.toggle_1",
-                "matchedExpression": "@local.toggle_1",
-                "type": "local",
-                "fieldName": "toggle_1"
-              }
-            ]
-          }
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.toggle_1": [
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ]
-      }
+      "parameter_list": [
+        "position: right",
+        "true_text: some text for true value",
+        "false_text: text for false",
+        "show_tick_and_cross: false"
+      ]
     },
     {
       "type": "toggle_bar",
       "name": "toggle_2",
       "value": false,
       "exclude_from_translation": true,
-      "parameter_list": {
-        "position": "center",
-        "true_text": "some text for true value"
-      },
-      "_nested_name": "toggle_2"
+      "parameter_list": [
+        "position: center",
+        "true_text: some text for true value"
+      ]
     },
     {
       "type": "toggle_bar",
       "name": "toggle_3",
       "value": false,
       "exclude_from_translation": true,
-      "parameter_list": {
-        "false_text": "false text"
-      },
-      "_nested_name": "toggle_3"
+      "parameter_list": [
+        "false_text:false text"
+      ]
     },
     {
       "type": "toggle_bar",
       "name": "toggle_4",
       "value": true,
       "exclude_from_translation": true,
-      "parameter_list": {
-        "false_text": "false text"
-      },
-      "_nested_name": "toggle_4"
+      "parameter_list": [
+        "false_text:false text"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"

@@ -10,25 +10,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "tiny"
-      },
-      "_nested_name": "title",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.parent_centre.help.title",
-            "matchedExpression": "@data.parent_centre.help.title",
-            "type": "data",
-            "fieldName": "parent_centre"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.parent_centre.help.title": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "style: tiny"
+      ]
     },
     {
       "type": "button",
@@ -54,8 +38,7 @@
           "_raw": "click | go_to: parenting_tips",
           "_cleaned": "click | go_to: parenting_tips"
         }
-      ],
-      "_nested_name": "button_1"
+      ]
     },
     {
       "type": "button",
@@ -71,8 +54,7 @@
           "za_zu": true
         }
       },
-      "hidden": true,
-      "_nested_name": "button_2"
+      "hidden": true
     },
     {
       "type": "button",
@@ -99,8 +81,7 @@
           "_cleaned": "click | go_to: parent_centre_technical_support"
         }
       ],
-      "hidden": true,
-      "_nested_name": "button_3"
+      "hidden": true
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"

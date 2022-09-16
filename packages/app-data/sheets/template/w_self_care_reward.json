@@ -15,9 +15,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "name_1"
+      }
     },
     {
       "name": "name_2",
@@ -31,9 +29,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "name_2"
+      }
     },
     {
       "name": "name_3",
@@ -47,9 +43,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "name_3"
+      }
     },
     {
       "name": "name_4",
@@ -63,9 +57,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "name_4"
+      }
     },
     {
       "name": "name_5",
@@ -79,9 +71,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "name_5"
+      }
     },
     {
       "type": "template",
@@ -125,32 +115,13 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.activity_title"
+              }
             },
             {
               "name": "activity_image",
               "value": "@data.habit.treat_yourself.image_asset",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.activity_image",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.habit.treat_yourself.image_asset",
-                    "matchedExpression": "@data.habit.treat_yourself.image_asset",
-                    "type": "data",
-                    "fieldName": "habit"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@data.habit.treat_yourself.image_asset": [
-                  "value"
-                ]
               }
             },
             {
@@ -165,39 +136,18 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.intro_text"
+              }
             },
             {
               "name": "include_outro",
               "value": true,
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.include_outro"
+              "exclude_from_translation": true
             },
             {
               "name": "outro_habit_data",
               "value": "@data.habit.treat_yourself",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.outro_habit_data",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.habit.treat_yourself",
-                    "matchedExpression": "@data.habit.treat_yourself",
-                    "type": "data",
-                    "fieldName": "habit"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@data.habit.treat_yourself": [
-                  "value"
-                ]
               }
             },
             {
@@ -211,9 +161,7 @@
                   "_translations": {
                     "value": {}
                   },
-                  "hidden": false,
-                  "type": "set_variable",
-                  "_nested_name": "think.workshop_activity.content_box.image_src"
+                  "hidden": false
                 },
                 {
                   "name": "text_1",
@@ -227,9 +175,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "think.workshop_activity.content_box.text_1"
+                  }
                 },
                 {
                   "name": "button_1",
@@ -247,27 +193,9 @@
                       "_raw": "click | pop_up:w_self_care_reward_pop",
                       "_cleaned": "click | pop_up:w_self_care_reward_pop"
                     }
-                  ],
-                  "type": "set_variable",
-                  "_nested_name": "think.workshop_activity.content_box.button_1",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "@global.ideas_button",
-                        "matchedExpression": "@global.ideas_button",
-                        "type": "global",
-                        "fieldName": "ideas_button"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@global.ideas_button": [
-                      "value"
-                    ]
-                  }
+                  ]
                 }
-              ],
-              "_nested_name": "think.workshop_activity.content_box"
+              ]
             },
             {
               "name": "outro_text",
@@ -281,45 +209,11 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.outro_text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Try to do something to reward yourself every day.\n\nYou can use these skills at home and find them anytime in your @global.parent_centre!",
-                    "matchedExpression": "@global.parent_centre",
-                    "type": "global",
-                    "fieldName": "parent_centre"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.parent_centre": [
-                  "value"
-                ]
               }
             }
-          ],
-          "_nested_name": "think.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "think",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@field.do_this_workshop_together",
-            "matchedExpression": "@field.do_this_workshop_together",
-            "type": "field",
-            "fieldName": "do_this_workshop_together"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.do_this_workshop_together": [
-          "condition"
-        ]
-      }
+      ]
     },
     {
       "type": "template",
@@ -363,18 +257,14 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.activity_title"
+              }
             },
             {
               "name": "activity_image",
               "value": "plh_images/habits/habit_treat_yourself.svg",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.activity_image"
+              }
             },
             {
               "name": "intro_text",
@@ -388,39 +278,18 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.intro_text"
+              }
             },
             {
               "name": "include_outro",
               "value": true,
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.include_outro"
+              "exclude_from_translation": true
             },
             {
               "name": "outro_habit_data",
               "value": "@data.habit.treat_yourself",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.outro_habit_data",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.habit.treat_yourself",
-                    "matchedExpression": "@data.habit.treat_yourself",
-                    "type": "data",
-                    "fieldName": "habit"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@data.habit.treat_yourself": [
-                  "value"
-                ]
               }
             },
             {
@@ -434,9 +303,7 @@
                   "_translations": {
                     "value": {}
                   },
-                  "exclude_from_translation": true,
-                  "type": "set_variable",
-                  "_nested_name": "think.workshop_activity.content_box.combo_box_tracker"
+                  "exclude_from_translation": true
                 },
                 {
                   "name": "image_src",
@@ -444,15 +311,11 @@
                   "_translations": {
                     "value": {}
                   },
-                  "hidden": false,
-                  "type": "set_variable",
-                  "_nested_name": "think.workshop_activity.content_box.image_src"
+                  "hidden": false
                 },
                 {
                   "name": "text",
-                  "hidden": true,
-                  "type": "set_variable",
-                  "_nested_name": "think.workshop_activity.content_box.text"
+                  "hidden": true
                 },
                 {
                   "name": "question_text",
@@ -466,81 +329,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "think.workshop_activity.content_box.question_text"
+                  }
                 },
                 {
                   "name": "answer_list",
-                  "value": [
-                    "name:name_1 | text:@local.name_1",
-                    "name:name_2 | text:@local.name_2",
-                    "name:name_3 | text:@local.name_3",
-                    "name:name_4 | text:@local.name_4",
-                    "name:name_5 | text:@local.name_5"
-                  ],
-                  "type": "set_variable",
-                  "_nested_name": "think.workshop_activity.content_box.answer_list",
-                  "_dynamicFields": {
-                    "value": {
-                      "0": [
-                        {
-                          "fullExpression": "name:name_1 | text:@local.name_1",
-                          "matchedExpression": "@local.name_1",
-                          "type": "local",
-                          "fieldName": "name_1"
-                        }
-                      ],
-                      "1": [
-                        {
-                          "fullExpression": "name:name_2 | text:@local.name_2",
-                          "matchedExpression": "@local.name_2",
-                          "type": "local",
-                          "fieldName": "name_2"
-                        }
-                      ],
-                      "2": [
-                        {
-                          "fullExpression": "name:name_3 | text:@local.name_3",
-                          "matchedExpression": "@local.name_3",
-                          "type": "local",
-                          "fieldName": "name_3"
-                        }
-                      ],
-                      "3": [
-                        {
-                          "fullExpression": "name:name_4 | text:@local.name_4",
-                          "matchedExpression": "@local.name_4",
-                          "type": "local",
-                          "fieldName": "name_4"
-                        }
-                      ],
-                      "4": [
-                        {
-                          "fullExpression": "name:name_5 | text:@local.name_5",
-                          "matchedExpression": "@local.name_5",
-                          "type": "local",
-                          "fieldName": "name_5"
-                        }
-                      ]
-                    }
-                  },
-                  "_dynamicDependencies": {
-                    "@local.name_1": [
-                      "value.0"
-                    ],
-                    "@local.name_2": [
-                      "value.1"
-                    ],
-                    "@local.name_3": [
-                      "value.2"
-                    ],
-                    "@local.name_4": [
-                      "value.3"
-                    ],
-                    "@local.name_5": [
-                      "value.4"
-                    ]
+                  "value": "name:name_1 | text:@local.name_1;\nname:name_2 | text:@local.name_2; \nname:name_3 | text:@local.name_3; \nname:name_4 | text:@local.name_4;\nname:name_5 | text:@local.name_5",
+                  "_translations": {
+                    "value": {}
                   }
                 },
                 {
@@ -555,12 +350,9 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "think.workshop_activity.content_box.reply"
+                  }
                 }
-              ],
-              "_nested_name": "think.workshop_activity.content_box"
+              ]
             },
             {
               "name": "outro_text",
@@ -575,35 +367,7 @@
                   "za_zu": true
                 }
               },
-              "condition": "@fields.w_self_care_reward_a == \"name_1\"",
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.outro_text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Try to do something to reward yourself every day. This could be to @local.name_1 or anything else that you enjoy.",
-                    "matchedExpression": "@local.name_1",
-                    "type": "local",
-                    "fieldName": "name_1"
-                  }
-                ],
-                "condition": [
-                  {
-                    "fullExpression": "@fields.w_self_care_reward_a == \"name_1\"",
-                    "matchedExpression": "@fields.w_self_care_reward_a",
-                    "type": "fields",
-                    "fieldName": "w_self_care_reward_a"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.name_1": [
-                  "value"
-                ],
-                "@fields.w_self_care_reward_a": [
-                  "condition"
-                ]
-              }
+              "condition": "@fields.w_self_care_reward_a == \"name_1\""
             },
             {
               "name": "outro_text",
@@ -618,35 +382,7 @@
                   "za_zu": true
                 }
               },
-              "condition": "@fields.w_self_care_reward_a == \"name_2\"",
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.outro_text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Try to do something to reward yourself every day. This could be to @local.name_2 or anything else that you enjoy.",
-                    "matchedExpression": "@local.name_2",
-                    "type": "local",
-                    "fieldName": "name_2"
-                  }
-                ],
-                "condition": [
-                  {
-                    "fullExpression": "@fields.w_self_care_reward_a == \"name_2\"",
-                    "matchedExpression": "@fields.w_self_care_reward_a",
-                    "type": "fields",
-                    "fieldName": "w_self_care_reward_a"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.name_2": [
-                  "value"
-                ],
-                "@fields.w_self_care_reward_a": [
-                  "condition"
-                ]
-              }
+              "condition": "@fields.w_self_care_reward_a == \"name_2\""
             },
             {
               "name": "outro_text",
@@ -661,35 +397,7 @@
                   "za_zu": true
                 }
               },
-              "condition": "@fields.w_self_care_reward_a == \"name_3\"",
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.outro_text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Try to do something to reward yourself every day. This could be to @local.name_3 or anything else that you enjoy.",
-                    "matchedExpression": "@local.name_3",
-                    "type": "local",
-                    "fieldName": "name_3"
-                  }
-                ],
-                "condition": [
-                  {
-                    "fullExpression": "@fields.w_self_care_reward_a == \"name_3\"",
-                    "matchedExpression": "@fields.w_self_care_reward_a",
-                    "type": "fields",
-                    "fieldName": "w_self_care_reward_a"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.name_3": [
-                  "value"
-                ],
-                "@fields.w_self_care_reward_a": [
-                  "condition"
-                ]
-              }
+              "condition": "@fields.w_self_care_reward_a == \"name_3\""
             },
             {
               "name": "outro_text",
@@ -704,35 +412,7 @@
                   "za_zu": true
                 }
               },
-              "condition": "@fields.w_self_care_reward_a == \"name_4\"",
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.outro_text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Try to do something to reward yourself every day. This could be to @local.name_4 or anything else that you enjoy.",
-                    "matchedExpression": "@local.name_4",
-                    "type": "local",
-                    "fieldName": "name_4"
-                  }
-                ],
-                "condition": [
-                  {
-                    "fullExpression": "@fields.w_self_care_reward_a == \"name_4\"",
-                    "matchedExpression": "@fields.w_self_care_reward_a",
-                    "type": "fields",
-                    "fieldName": "w_self_care_reward_a"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.name_4": [
-                  "value"
-                ],
-                "@fields.w_self_care_reward_a": [
-                  "condition"
-                ]
-              }
+              "condition": "@fields.w_self_care_reward_a == \"name_4\""
             },
             {
               "name": "outro_text",
@@ -747,56 +427,11 @@
                   "za_zu": true
                 }
               },
-              "condition": "@fields.w_self_care_reward_a == \"name_5\"",
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.outro_text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Try to do something to reward yourself every day. This could be to @local.name_5 or anything else that you enjoy.",
-                    "matchedExpression": "@local.name_5",
-                    "type": "local",
-                    "fieldName": "name_5"
-                  }
-                ],
-                "condition": [
-                  {
-                    "fullExpression": "@fields.w_self_care_reward_a == \"name_5\"",
-                    "matchedExpression": "@fields.w_self_care_reward_a",
-                    "type": "fields",
-                    "fieldName": "w_self_care_reward_a"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.name_5": [
-                  "value"
-                ],
-                "@fields.w_self_care_reward_a": [
-                  "condition"
-                ]
-              }
+              "condition": "@fields.w_self_care_reward_a == \"name_5\""
             }
-          ],
-          "_nested_name": "think.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "think",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "!@field.do_this_workshop_together",
-            "matchedExpression": "!@field.do_this_workshop_together",
-            "type": "field",
-            "fieldName": "do_this_workshop_together"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "!@field.do_this_workshop_together": [
-          "condition"
-        ]
-      }
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"

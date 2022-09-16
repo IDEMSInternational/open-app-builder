@@ -11,10 +11,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "subtitles_src": "plh_video/lets_slow_down.vtt"
-      },
-      "_nested_name": "video_src"
+      "parameter_list": [
+        "subtitles_src: plh_video/lets_slow_down.vtt"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/component_sheets/component_video.xlsx"

@@ -31,32 +31,13 @@
       "rows": [
         {
           "name": "number_of_challenges",
-          "value": 5,
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.number_of_challenges"
+          "value": 5
         },
         {
           "name": "workshop_data",
           "value": "@data.workshop.w_solve",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_solve",
-                "matchedExpression": "@data.workshop.w_solve",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_solve": [
-              "value"
-            ]
           }
         },
         {
@@ -71,9 +52,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.hp_description_third_plural"
+          }
         },
         {
           "name": "hp_description_second_singular",
@@ -87,9 +66,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.hp_description_second_singular"
+          }
         },
         {
           "name": "text_challenge_1",
@@ -103,9 +80,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_1"
+          }
         },
         {
           "name": "reply_challenge_1",
@@ -119,16 +94,12 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_1"
+          }
         },
         {
           "name": "reply_challenge_1_has_button",
           "value": true,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_1_has_button"
+          "exclude_from_translation": true
         },
         {
           "name": "button_1_a",
@@ -153,9 +124,7 @@
               "_raw": "click | go_to: w_solve_tools",
               "_cleaned": "click | go_to: w_solve_tools"
             }
-          ],
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.button_1_a"
+          ]
         },
         {
           "name": "text_challenge_2",
@@ -169,9 +138,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_2"
+          }
         },
         {
           "name": "reply_challenge_2",
@@ -185,16 +152,12 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_2"
+          }
         },
         {
           "name": "reply_challenge_2_has_button",
           "value": true,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_2_has_button"
+          "exclude_from_translation": true
         },
         {
           "name": "button_2_a",
@@ -219,9 +182,7 @@
               "_raw": "click | go_to: w_solve_tools",
               "_cleaned": "click | go_to: w_solve_tools"
             }
-          ],
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.button_2_a"
+          ]
         },
         {
           "name": "text_challenge_3",
@@ -235,9 +196,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_3"
+          }
         },
         {
           "name": "reply_challenge_3",
@@ -251,9 +210,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_3"
+          }
         },
         {
           "name": "text_challenge_4",
@@ -267,9 +224,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_4"
+          }
         },
         {
           "name": "reply_challenge_4",
@@ -283,9 +238,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_4"
+          }
         },
         {
           "name": "text_challenge_5",
@@ -299,9 +252,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_5"
+          }
         },
         {
           "name": "reply_challenge_5",
@@ -315,12 +266,9 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_5"
+          }
         }
-      ],
-      "_nested_name": "home_practice_challenges"
+      ]
     }
   ],
   "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_solve_hp_review.xlsx"

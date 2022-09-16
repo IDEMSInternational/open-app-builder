@@ -4,9 +4,7 @@
   "status": "released",
   "rows": [
     {
-      "name": "workshop_id",
-      "type": "set_variable",
-      "_nested_name": "workshop_id"
+      "name": "workshop_id"
     },
     {
       "type": "template",
@@ -56,52 +54,16 @@
           "value": "@local.workshop_id",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_stepper.workshop_id",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.workshop_id",
-                "matchedExpression": "@local.workshop_id",
-                "type": "local",
-                "fieldName": "workshop_id"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.workshop_id": [
-              "value"
-            ]
           }
         },
         {
           "name": "nav_template_list",
-          "value": [
-            "@local.nav_template_list"
-          ],
-          "type": "set_variable",
-          "_nested_name": "workshop_stepper.nav_template_list",
-          "_dynamicFields": {
-            "value": {
-              "0": [
-                {
-                  "fullExpression": "@local.nav_template_list",
-                  "matchedExpression": "@local.nav_template_list",
-                  "type": "local",
-                  "fieldName": "nav_template_list"
-                }
-              ]
-            }
-          },
-          "_dynamicDependencies": {
-            "@local.nav_template_list": [
-              "value.0"
-            ]
+          "value": "@local.nav_template_list",
+          "_translations": {
+            "value": {}
           }
         }
-      ],
-      "_nested_name": "workshop_stepper"
+      ]
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"

@@ -10,9 +10,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "debug_variable_one"
+      "exclude_from_translation": true
     },
     {
       "name": "debug_variable_two",
@@ -20,9 +18,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "debug_variable_two"
+      "exclude_from_translation": true
     },
     {
       "name": "debug_variable_3",
@@ -30,9 +26,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "debug_variable_3"
+      "exclude_from_translation": true
     },
     {
       "name": "debug_variable_four",
@@ -40,9 +34,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "debug_variable_four"
+      "exclude_from_translation": true
     },
     {
       "name": "debug_variable_five",
@@ -50,9 +42,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "debug_variable_five"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -61,23 +51,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "debug_text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Text that includes @local.debug_variable_one",
-            "matchedExpression": "@local.debug_variable_one",
-            "type": "local",
-            "fieldName": "debug_variable_one"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.debug_variable_one": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -86,23 +60,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "debug_text_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Text that includes @local.debug_variable_two",
-            "matchedExpression": "@local.debug_variable_two",
-            "type": "local",
-            "fieldName": "debug_variable_two"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.debug_variable_two": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -111,23 +69,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "debug_text_3",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Text that includes @local.debug_variable_3",
-            "matchedExpression": "@local.debug_variable_3",
-            "type": "local",
-            "fieldName": "debug_variable_3"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.debug_variable_3": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -136,23 +78,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "debug_text_4",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Text that includes @local.debug_variable_four",
-            "matchedExpression": "@local.debug_variable_four",
-            "type": "local",
-            "fieldName": "debug_variable_four"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.debug_variable_four": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -161,23 +87,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "debug_text_5",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Text that includes @local.debug_variable-five",
-            "matchedExpression": "@local.debug_variable",
-            "type": "local",
-            "fieldName": "debug_variable"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.debug_variable": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_small_issues.xlsx"

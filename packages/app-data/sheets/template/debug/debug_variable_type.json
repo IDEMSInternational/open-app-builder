@@ -8,8 +8,7 @@
       "type": "set_variable",
       "name": "var_counter",
       "value": 1,
-      "exclude_from_translation": true,
-      "_nested_name": "var_counter"
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
@@ -18,23 +17,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "var_counter_calc",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "10*@local.var_counter",
-            "matchedExpression": "@local.var_counter",
-            "type": "local",
-            "fieldName": "var_counter"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.var_counter": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
@@ -43,30 +26,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "var_counter_addition",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.var_counter + @local.var_counter",
-            "matchedExpression": "@local.var_counter",
-            "type": "local",
-            "fieldName": "var_counter"
-          },
-          {
-            "fullExpression": "@local.var_counter + @local.var_counter",
-            "matchedExpression": "@local.var_counter",
-            "type": "local",
-            "fieldName": "var_counter"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.var_counter": [
-          "value",
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
@@ -75,23 +35,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "var_bool_true",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.debug_vars.bool_true.value",
-            "matchedExpression": "@data.debug_vars.bool_true.value",
-            "type": "data",
-            "fieldName": "debug_vars"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.debug_vars.bool_true.value": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
@@ -100,23 +44,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "var_recursive_lookup",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.var_bool_true",
-            "matchedExpression": "@local.var_bool_true",
-            "type": "local",
-            "fieldName": "var_bool_true"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.var_bool_true": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
@@ -125,8 +53,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "var_dynamic_nested_name"
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
@@ -135,23 +62,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "var_dynamic_nested",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.@local.var_dynamic_nested_name",
-            "matchedExpression": "@local.var_dynamic_nested_name",
-            "type": "local",
-            "fieldName": "var_dynamic_nested_name"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.var_dynamic_nested_name": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
@@ -160,23 +71,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "var_bool_false",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.debug_vars.bool_false.value",
-            "matchedExpression": "@data.debug_vars.bool_false.value",
-            "type": "data",
-            "fieldName": "debug_vars"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.debug_vars.bool_false.value": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
@@ -185,75 +80,25 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "var_number_0",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.debug_vars.number_0.value",
-            "matchedExpression": "@data.debug_vars.number_0.value",
-            "type": "data",
-            "fieldName": "debug_vars"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.debug_vars.number_0.value": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
       "name": "var_list_1",
-      "value": [
-        "@data.debug_vars.list_1.value_list"
-      ],
-      "exclude_from_translation": true,
-      "_nested_name": "var_list_1",
-      "_dynamicFields": {
-        "value": {
-          "0": [
-            {
-              "fullExpression": "@data.debug_vars.list_1.value_list",
-              "matchedExpression": "@data.debug_vars.list_1.value_list",
-              "type": "data",
-              "fieldName": "debug_vars"
-            }
-          ]
-        }
+      "value": "@data.debug_vars.list_1.value_list",
+      "_translations": {
+        "value": {}
       },
-      "_dynamicDependencies": {
-        "@data.debug_vars.list_1.value_list": [
-          "value.0"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
       "name": "var_list_1_length",
-      "value": [
-        "@local.var_list_1.length"
-      ],
-      "exclude_from_translation": true,
-      "_nested_name": "var_list_1_length",
-      "_dynamicFields": {
-        "value": {
-          "0": [
-            {
-              "fullExpression": "@local.var_list_1.length",
-              "matchedExpression": "@local.var_list_1.length",
-              "type": "local",
-              "fieldName": "var_list_1"
-            }
-          ]
-        }
+      "value": "@local.var_list_1.length",
+      "_translations": {
+        "value": {}
       },
-      "_dynamicDependencies": {
-        "@local.var_list_1.length": [
-          "value.0"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
@@ -262,23 +107,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "var_text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.debug_vars.text_1.value",
-            "matchedExpression": "@data.debug_vars.text_1.value",
-            "type": "data",
-            "fieldName": "debug_vars"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.debug_vars.text_1.value": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
@@ -287,23 +116,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "global_text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.debug_variable_1",
-            "matchedExpression": "@global.debug_variable_1",
-            "type": "global",
-            "fieldName": "debug_variable_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.debug_variable_1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -312,23 +125,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "List length Test: @local.var_list_1_length",
-            "matchedExpression": "@local.var_list_1_length",
-            "type": "local",
-            "fieldName": "var_list_1_length"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.var_list_1_length": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -337,23 +134,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_4wrong",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Expected fail calculation: 10*@local.var_counter",
-            "matchedExpression": "@local.var_counter",
-            "type": "local",
-            "fieldName": "var_counter"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.var_counter": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -362,23 +143,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_4right",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Expected pass calculation: @local.var_counter_calc",
-            "matchedExpression": "@local.var_counter_calc",
-            "type": "local",
-            "fieldName": "var_counter_calc"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.var_counter_calc": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -387,8 +152,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_5"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -397,32 +161,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_6",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Multiple values: @local.var_bool_true and @local.var_bool_false",
-            "matchedExpression": "@local.var_bool_true",
-            "type": "local",
-            "fieldName": "var_bool_true"
-          },
-          {
-            "fullExpression": "Multiple values: @local.var_bool_true and @local.var_bool_false",
-            "matchedExpression": "@local.var_bool_false",
-            "type": "local",
-            "fieldName": "var_bool_false"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.var_bool_true": [
-          "value"
-        ],
-        "@local.var_bool_false": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -431,23 +170,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_7",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Recursive lookup: @local.var_recursive_lookup",
-            "matchedExpression": "@local.var_recursive_lookup",
-            "type": "local",
-            "fieldName": "var_recursive_lookup"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.var_recursive_lookup": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -456,23 +179,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_dynamic_nested",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Dynamic nested pass: @local.var_dynamic_nested",
-            "matchedExpression": "@local.var_dynamic_nested",
-            "type": "local",
-            "fieldName": "var_dynamic_nested"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.var_dynamic_nested": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -493,56 +200,7 @@
           "_cleaned": "click | set_local:var_counter:@local.var_counter+ 1"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_number_1_increment",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Counter value: @local.var_counter",
-            "matchedExpression": "@local.var_counter",
-            "type": "local",
-            "fieldName": "var_counter"
-          }
-        ],
-        "action_list": {
-          "0": {
-            "args": {
-              "1": [
-                {
-                  "fullExpression": "@local.var_counter+ 1",
-                  "matchedExpression": "@local.var_counter",
-                  "type": "local",
-                  "fieldName": "var_counter"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "click | set_local:var_counter:@local.var_counter+ 1",
-                "matchedExpression": "@local.var_counter",
-                "type": "local",
-                "fieldName": "var_counter"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "click | set_local:var_counter:@local.var_counter+ 1",
-                "matchedExpression": "@local.var_counter",
-                "type": "local",
-                "fieldName": "var_counter"
-              }
-            ]
-          }
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.var_counter": [
-          "value",
-          "action_list.0.args.1",
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -551,8 +209,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_7"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -561,23 +218,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_8",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Expected: global.debug_variable_1 lookup\nResult: @local.global_text",
-            "matchedExpression": "@local.global_text",
-            "type": "local",
-            "fieldName": "global_text"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.global_text": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -586,23 +227,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_9",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Global text test: @global.debug_variable_1",
-            "matchedExpression": "@global.debug_variable_1",
-            "type": "global",
-            "fieldName": "debug_variable_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.debug_variable_1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
@@ -611,23 +236,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "var_col_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.debug_vars.collection_1.value_collection",
-            "matchedExpression": "@data.debug_vars.collection_1.value_collection",
-            "type": "data",
-            "fieldName": "debug_vars"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.debug_vars.collection_1.value_collection": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
@@ -636,23 +245,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "var_col_1_key1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.var_col_1.key1",
-            "matchedExpression": "@local.var_col_1.key1",
-            "type": "local",
-            "fieldName": "var_col_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.var_col_1.key1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -661,23 +254,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_col",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "col_1 (object): @local.var_col_1",
-            "matchedExpression": "@local.var_col_1",
-            "type": "local",
-            "fieldName": "var_col_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.var_col_1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -686,23 +263,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_col_key",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "key1: @local.var_col_1_key1",
-            "matchedExpression": "@local.var_col_1_key1",
-            "type": "local",
-            "fieldName": "var_col_1_key1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.var_col_1_key1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -711,23 +272,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "test_col_key",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.var_col_1_key1 === \"val1\"",
-            "matchedExpression": "@local.var_col_1_key1",
-            "type": "local",
-            "fieldName": "var_col_1_key1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.var_col_1_key1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_nesting_variables.xlsx"

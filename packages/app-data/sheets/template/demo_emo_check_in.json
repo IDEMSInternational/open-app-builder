@@ -42,16 +42,12 @@
                 {
                   "name": "hide_intro",
                   "value": true,
-                  "exclude_from_translation": true,
-                  "type": "set_variable",
-                  "_nested_name": "w_self_care_welcome_individual.welcome_individual.workshop_activity.hide_intro"
+                  "exclude_from_translation": true
                 },
                 {
                   "name": "hide_content",
                   "value": false,
-                  "exclude_from_translation": true,
-                  "type": "set_variable",
-                  "_nested_name": "w_self_care_welcome_individual.welcome_individual.workshop_activity.hide_content"
+                  "exclude_from_translation": true
                 },
                 {
                   "type": "nested_properties",
@@ -66,24 +62,17 @@
                         {
                           "name": "display_back",
                           "value": false,
-                          "exclude_from_translation": true,
-                          "type": "set_variable",
-                          "_nested_name": "w_self_care_welcome_individual.welcome_individual.workshop_activity.content_box.nav_buttons.display_back"
+                          "exclude_from_translation": true
                         }
-                      ],
-                      "_nested_name": "w_self_care_welcome_individual.welcome_individual.workshop_activity.content_box.nav_buttons"
+                      ]
                     }
-                  ],
-                  "_nested_name": "w_self_care_welcome_individual.welcome_individual.workshop_activity.content_box"
+                  ]
                 }
-              ],
-              "_nested_name": "w_self_care_welcome_individual.welcome_individual.workshop_activity"
+              ]
             }
-          ],
-          "_nested_name": "w_self_care_welcome_individual.welcome_individual"
+          ]
         }
-      ],
-      "_nested_name": "w_self_care_welcome_individual"
+      ]
     }
   ],
   "_xlsxPath": "global/demo_templates/demo_navigation.xlsx"

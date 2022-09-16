@@ -5,9 +5,7 @@
   "rows": [
     {
       "name": "workshop_id",
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "workshop_id"
+      "exclude_from_translation": true
     },
     {
       "name": "started",
@@ -15,9 +13,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "started"
+      "exclude_from_translation": true
     },
     {
       "name": "workshop_started",
@@ -25,33 +21,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "workshop_started",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop_id@local.started",
-            "matchedExpression": "@local.workshop_id",
-            "type": "local",
-            "fieldName": "workshop_id"
-          },
-          {
-            "fullExpression": "@local.workshop_id@local.started",
-            "matchedExpression": "@local.started",
-            "type": "local",
-            "fieldName": "started"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_id": [
-          "value"
-        ],
-        "@local.started": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
@@ -64,40 +34,13 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "first_access.timestamp"
+          "exclude_from_translation": true
         },
         {
           "type": "set_field",
           "name": "@local.workshop_started",
           "value": true,
-          "exclude_from_translation": true,
-          "_nested_name": "first_access.@local.workshop_started",
-          "_dynamicFields": {
-            "name": [
-              {
-                "fullExpression": "@local.workshop_started",
-                "matchedExpression": "@local.workshop_started",
-                "type": "local",
-                "fieldName": "workshop_started"
-              }
-            ],
-            "_nested_name": [
-              {
-                "fullExpression": "first_access.@local.workshop_started",
-                "matchedExpression": "@local.workshop_started",
-                "type": "local",
-                "fieldName": "workshop_started"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.workshop_started": [
-              "name",
-              "_nested_name"
-            ]
-          }
+          "exclude_from_translation": true
         },
         {
           "name": "now",
@@ -105,24 +48,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "first_access.now",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@calc(timestamp())",
-                "matchedExpression": "@calc(timestamp())",
-                "type": "calc",
-                "fieldName": "timestamp()"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@calc(timestamp())": [
-              "value"
-            ]
-          }
+          "exclude_from_translation": true
         },
         {
           "type": "set_field",
@@ -131,77 +57,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "first_access.@local.workshop_started@local.timestamp",
-          "_dynamicFields": {
-            "name": [
-              {
-                "fullExpression": "@local.workshop_started@local.timestamp",
-                "matchedExpression": "@local.workshop_started",
-                "type": "local",
-                "fieldName": "workshop_started"
-              },
-              {
-                "fullExpression": "@local.workshop_started@local.timestamp",
-                "matchedExpression": "@local.timestamp",
-                "type": "local",
-                "fieldName": "timestamp"
-              }
-            ],
-            "value": [
-              {
-                "fullExpression": "@local.now",
-                "matchedExpression": "@local.now",
-                "type": "local",
-                "fieldName": "now"
-              }
-            ],
-            "_nested_name": [
-              {
-                "fullExpression": "first_access.@local.workshop_started@local.timestamp",
-                "matchedExpression": "@local.workshop_started",
-                "type": "local",
-                "fieldName": "workshop_started"
-              },
-              {
-                "fullExpression": "first_access.@local.workshop_started@local.timestamp",
-                "matchedExpression": "@local.timestamp",
-                "type": "local",
-                "fieldName": "timestamp"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.workshop_started": [
-              "name",
-              "_nested_name"
-            ],
-            "@local.timestamp": [
-              "name",
-              "_nested_name"
-            ],
-            "@local.now": [
-              "value"
-            ]
-          }
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "first_access",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "!@fields.@local.workshop_started",
-            "matchedExpression": "@local.workshop_started",
-            "type": "local",
-            "fieldName": "workshop_started"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_started": [
-          "condition"
-        ]
-      }
+      ]
     },
     {
       "type": "set_field",
@@ -209,35 +67,15 @@
       "value": "@local.workshop_id",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "workshop_id_temp",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop_id",
-            "matchedExpression": "@local.workshop_id",
-            "type": "local",
-            "fieldName": "workshop_id"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_id": [
-          "value"
-        ]
       }
     },
     {
       "name": "progress_bar_value",
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "progress_bar_value"
+      "exclude_from_translation": true
     },
     {
       "name": "progress_bar_num_items",
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "progress_bar_num_items"
+      "exclude_from_translation": true
     },
     {
       "name": "progress_bar",
@@ -246,39 +84,9 @@
         "value": {}
       },
       "exclude_from_translation": true,
-      "parameter_list": {
-        "num_items": "@local.progress_bar_num_items"
-      },
-      "type": "set_variable",
-      "_nested_name": "progress_bar",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.progress_bar_value",
-            "matchedExpression": "@local.progress_bar_value",
-            "type": "local",
-            "fieldName": "progress_bar_value"
-          }
-        ],
-        "parameter_list": {
-          "num_items": [
-            {
-              "fullExpression": "@local.progress_bar_num_items",
-              "matchedExpression": "@local.progress_bar_num_items",
-              "type": "local",
-              "fieldName": "progress_bar_num_items"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.progress_bar_value": [
-          "value"
-        ],
-        "@local.progress_bar_num_items": [
-          "parameter_list.num_items"
-        ]
-      }
+      "parameter_list": [
+        "num_items:@local.progress_bar_num_items"
+      ]
     },
     {
       "name": "completion_level",
@@ -286,9 +94,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "completion_level"
+      "exclude_from_translation": true
     },
     {
       "name": "current_completion_level",
@@ -296,9 +102,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "current_completion_level"
+      "exclude_from_translation": true
     },
     {
       "name": "progress_field",
@@ -306,33 +110,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "progress_field",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop_id@local.current_completion_level",
-            "matchedExpression": "@local.workshop_id",
-            "type": "local",
-            "fieldName": "workshop_id"
-          },
-          {
-            "fullExpression": "@local.workshop_id@local.current_completion_level",
-            "matchedExpression": "@local.current_completion_level",
-            "type": "local",
-            "fieldName": "current_completion_level"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_id": [
-          "value"
-        ],
-        "@local.current_completion_level": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "max_progress_field",
@@ -340,70 +118,15 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "max_progress_field",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop_id@local.completion_level",
-            "matchedExpression": "@local.workshop_id",
-            "type": "local",
-            "fieldName": "workshop_id"
-          },
-          {
-            "fullExpression": "@local.workshop_id@local.completion_level",
-            "matchedExpression": "@local.completion_level",
-            "type": "local",
-            "fieldName": "completion_level"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_id": [
-          "value"
-        ],
-        "@local.completion_level": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "nav_group",
       "name": "nav_template_list",
-      "parameter_list": {
-        "progress_field": "@local.progress_field",
-        "max_progress_field": "@local.max_progress_field"
-      },
-      "_nested_name": "nav_template_list",
-      "_dynamicFields": {
-        "parameter_list": {
-          "progress_field": [
-            {
-              "fullExpression": "@local.progress_field",
-              "matchedExpression": "@local.progress_field",
-              "type": "local",
-              "fieldName": "progress_field"
-            }
-          ],
-          "max_progress_field": [
-            {
-              "fullExpression": "@local.max_progress_field",
-              "matchedExpression": "@local.max_progress_field",
-              "type": "local",
-              "fieldName": "max_progress_field"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.progress_field": [
-          "parameter_list.progress_field"
-        ],
-        "@local.max_progress_field": [
-          "parameter_list.max_progress_field"
-        ]
-      }
+      "parameter_list": [
+        "progress_field:@local.progress_field",
+        "max_progress_field:@local.max_progress_field"
+      ]
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"

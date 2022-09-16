@@ -34,23 +34,6 @@
           "value": "@data.workshop.w_consequence",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "welcome_individual.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_consequence",
-                "matchedExpression": "@data.workshop.w_consequence",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_consequence": [
-              "value"
-            ]
           }
         },
         {
@@ -73,9 +56,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.text"
+                  }
                 },
                 {
                   "name": "question_text",
@@ -90,9 +71,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.question_text"
+                  }
                 },
                 {
                   "name": "reply_happy",
@@ -106,9 +85,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_happy"
+                  }
                 },
                 {
                   "name": "reply_ok",
@@ -122,9 +99,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_ok"
+                  }
                 },
                 {
                   "name": "reply_sad",
@@ -138,18 +113,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_sad"
+                  }
                 }
-              ],
-              "_nested_name": "welcome_individual.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "welcome_individual.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "welcome_individual"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"

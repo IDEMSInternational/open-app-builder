@@ -27,27 +27,9 @@
           "value": "@data.language_tz",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "language_select.language_select_options",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.language_tz",
-                "matchedExpression": "@data.language_tz",
-                "type": "data",
-                "fieldName": "language_tz"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.language_tz": [
-              "value"
-            ]
           }
         }
-      ],
-      "_nested_name": "language_select"
+      ]
     }
   ],
   "_xlsxPath": "tz/core_templates/core_templates_settings_tz.xlsx"

@@ -39,24 +39,7 @@
               "_translations": {
                 "value": {}
               },
-              "condition": "@field.do_this_workshop_together",
-              "type": "set_variable",
-              "_nested_name": "think_temp.workshop_activity.activity_image",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "@field.do_this_workshop_together",
-                    "matchedExpression": "@field.do_this_workshop_together",
-                    "type": "field",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@field.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "@field.do_this_workshop_together"
             },
             {
               "name": "activity_image",
@@ -64,24 +47,7 @@
               "_translations": {
                 "value": {}
               },
-              "condition": "!@field.do_this_workshop_together",
-              "type": "set_variable",
-              "_nested_name": "think_temp.workshop_activity.activity_image",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "!@field.do_this_workshop_together",
-                    "matchedExpression": "!@field.do_this_workshop_together",
-                    "type": "field",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "!@field.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "!@field.do_this_workshop_together"
             },
             {
               "name": "intro_text",
@@ -95,15 +61,11 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "think_temp.workshop_activity.intro_text"
+              }
             },
             {
               "name": "activity_banner",
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "think_temp.workshop_activity.activity_banner"
+              "hidden": false
             },
             {
               "name": "activity_title",
@@ -117,9 +79,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "think_temp.workshop_activity.activity_title"
+              }
             },
             {
               "type": "nested_properties",
@@ -138,18 +98,14 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "think_temp.workshop_activity.content_box.audio_title"
+                  }
                 },
                 {
                   "name": "audio_src",
                   "value": "plh_audio/topic_intros/workshops_reflection.mp3",
                   "_translations": {
                     "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "think_temp.workshop_activity.content_box.audio_src"
+                  }
                 },
                 {
                   "name": "button_1",
@@ -175,18 +131,13 @@
                       "_cleaned": "click | pop_up : w_celebrate_think_text"
                     }
                   ],
-                  "hidden": false,
-                  "type": "set_variable",
-                  "_nested_name": "think_temp.workshop_activity.content_box.button_1"
+                  "hidden": false
                 }
-              ],
-              "_nested_name": "think_temp.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "think_temp.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "think_temp"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"

@@ -45,9 +45,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.intro_title"
+              }
             },
             {
               "name": "intro_text",
@@ -61,39 +59,18 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.intro_text"
+              }
             },
             {
               "name": "include_outro",
               "value": true,
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.include_outro"
+              "exclude_from_translation": true
             },
             {
               "name": "outro_habit_data",
               "value": "@data.habit.safe",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.outro_habit_data",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.habit.safe",
-                    "matchedExpression": "@data.habit.safe",
-                    "type": "data",
-                    "fieldName": "habit"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@data.habit.safe": [
-                  "value"
-                ]
               }
             },
             {
@@ -108,30 +85,11 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.outro_habit_text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Every time you plan or keep a safety plan, click the @global.parent_point and celebrate your success!",
-                    "matchedExpression": "@global.parent_point",
-                    "type": "global",
-                    "fieldName": "parent_point"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.parent_point": [
-                  "value"
-                ]
               }
             },
             {
               "name": "activity_banner",
-              "hidden": true,
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.activity_banner"
+              "hidden": true
             },
             {
               "type": "nested_properties",
@@ -149,15 +107,11 @@
                       "_translations": {
                         "value": {}
                       },
-                      "exclude_from_translation": true,
-                      "type": "set_variable",
-                      "_nested_name": "learn.workshop_activity.content_box.box_1.radio_group_final"
+                      "exclude_from_translation": true
                     },
                     {
                       "name": "image_src",
-                      "hidden": true,
-                      "type": "set_variable",
-                      "_nested_name": "learn.workshop_activity.content_box.box_1.image_src"
+                      "hidden": true
                     },
                     {
                       "name": "text",
@@ -171,56 +125,41 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "learn.workshop_activity.content_box.box_1.text"
+                      }
                     },
                     {
                       "name": "question_text",
-                      "hidden": true,
-                      "type": "set_variable",
-                      "_nested_name": "learn.workshop_activity.content_box.box_1.question_text"
+                      "hidden": true
                     },
                     {
                       "name": "answer_list",
-                      "value": [
-                        "name:family | text:My family can join in now!",
-                        "name:alone | text:Let me try it out by myself"
-                      ],
-                      "type": "set_variable",
-                      "_nested_name": "learn.workshop_activity.content_box.box_1.answer_list"
+                      "value": "name:family | text:My family can join in now!; name:alone | text:Let me try it out by myself",
+                      "_translations": {
+                        "value": {}
+                      }
                     },
                     {
                       "name": "options_per_row",
                       "value": 2,
-                      "exclude_from_translation": true,
-                      "type": "set_variable",
-                      "_nested_name": "learn.workshop_activity.content_box.box_1.options_per_row"
+                      "exclude_from_translation": true
                     },
                     {
                       "name": "reply",
-                      "hidden": true,
-                      "type": "set_variable",
-                      "_nested_name": "learn.workshop_activity.content_box.box_1.reply"
+                      "hidden": true
                     }
-                  ],
-                  "_nested_name": "learn.workshop_activity.content_box.box_1"
+                  ]
                 },
                 {
                   "type": "nested_properties",
                   "name": "box_2",
                   "value": "w_safe_learn_individual_steps",
-                  "rows": [],
-                  "_nested_name": "learn.workshop_activity.content_box.box_2"
+                  "rows": []
                 }
-              ],
-              "_nested_name": "learn.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "learn.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "learn"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"

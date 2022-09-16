@@ -12,8 +12,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_1"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -22,29 +21,12 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "selected_text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields._feedback_selected_text",
-            "matchedExpression": "@fields._feedback_selected_text",
-            "type": "fields",
-            "fieldName": "_feedback_selected_text"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields._feedback_selected_text": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text_area",
       "name": "feedback",
-      "exclude_from_translation": true,
-      "_nested_name": "feedback"
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
@@ -69,8 +51,7 @@
               "_cleaned": "click | emit:uncompleted"
             }
           ],
-          "exclude_from_translation": true,
-          "_nested_name": "dg_buttons.button_cancel"
+          "exclude_from_translation": true
         },
         {
           "type": "button",
@@ -98,50 +79,9 @@
               "_cleaned": "click | emit:completed:@local.feedback"
             }
           ],
-          "exclude_from_translation": true,
-          "_nested_name": "dg_buttons.button_submit",
-          "_dynamicFields": {
-            "action_list": {
-              "0": {
-                "args": {
-                  "1": [
-                    {
-                      "fullExpression": "@local.feedback",
-                      "matchedExpression": "@local.feedback",
-                      "type": "local",
-                      "fieldName": "feedback"
-                    }
-                  ]
-                },
-                "_raw": [
-                  {
-                    "fullExpression": "click | emit:completed:@local.feedback",
-                    "matchedExpression": "@local.feedback",
-                    "type": "local",
-                    "fieldName": "feedback"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "click | emit:completed:@local.feedback",
-                    "matchedExpression": "@local.feedback",
-                    "type": "local",
-                    "fieldName": "feedback"
-                  }
-                ]
-              }
-            }
-          },
-          "_dynamicDependencies": {
-            "@local.feedback": [
-              "action_list.0.args.1",
-              "action_list.0._raw",
-              "action_list.0._cleaned"
-            ]
-          }
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "dg_buttons"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_feedback.xlsx"

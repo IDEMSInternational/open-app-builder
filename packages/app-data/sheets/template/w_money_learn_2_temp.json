@@ -45,9 +45,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.intro_title"
+              }
             },
             {
               "name": "intro_text",
@@ -61,22 +59,16 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.intro_text"
+              }
             },
             {
               "name": "include_outro",
               "value": true,
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.include_outro"
+              "exclude_from_translation": true
             },
             {
               "name": "activity_banner",
-              "hidden": true,
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.activity_banner"
+              "hidden": true
             },
             {
               "type": "nested_properties",
@@ -88,9 +80,7 @@
                   "value": "plh_images/workshops/w_money/learn/slide_1.svg",
                   "_translations": {
                     "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "learn.workshop_activity.content_box.image_src"
+                  }
                 },
                 {
                   "name": "text",
@@ -104,9 +94,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "learn.workshop_activity.content_box.text"
+                  }
                 },
                 {
                   "type": "nested_properties",
@@ -125,15 +113,11 @@
                           "_cleaned": "click | pop_up:w_money_learn_2_pop"
                         }
                       ],
-                      "hidden": false,
-                      "type": "set_variable",
-                      "_nested_name": "learn.workshop_activity.content_box.nav_buttons.button_info"
+                      "hidden": false
                     }
-                  ],
-                  "_nested_name": "learn.workshop_activity.content_box.nav_buttons"
+                  ]
                 }
-              ],
-              "_nested_name": "learn.workshop_activity.content_box"
+              ]
             },
             {
               "name": "outro_text",
@@ -147,15 +131,11 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.outro_text"
+              }
             }
-          ],
-          "_nested_name": "learn.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "learn"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"

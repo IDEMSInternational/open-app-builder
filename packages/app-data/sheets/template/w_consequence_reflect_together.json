@@ -34,33 +34,14 @@
           "value": "@data.workshop.w_crisis",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "reflect_together.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_crisis",
-                "matchedExpression": "@data.workshop.w_crisis",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_crisis": [
-              "value"
-            ]
           }
         },
         {
           "type": "nested_properties",
           "name": "workshop_activity",
-          "rows": [],
-          "_nested_name": "reflect_together.workshop_activity"
+          "rows": []
         }
-      ],
-      "_nested_name": "reflect_together"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"

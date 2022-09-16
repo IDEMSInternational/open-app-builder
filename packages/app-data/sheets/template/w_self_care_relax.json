@@ -33,23 +33,6 @@
           "value": "@data.workshop.w_self_care",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "relax.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_self_care",
-                "matchedExpression": "@data.workshop.w_self_care",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_self_care": [
-              "value"
-            ]
           }
         },
         {
@@ -69,24 +52,7 @@
                   "za_zu": true
                 }
               },
-              "condition": "!@field.do_this_workshop_together",
-              "type": "set_variable",
-              "_nested_name": "relax.workshop_activity.intro_text",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "!@field.do_this_workshop_together",
-                    "matchedExpression": "!@field.do_this_workshop_together",
-                    "type": "field",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "!@field.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "!@field.do_this_workshop_together"
             },
             {
               "name": "intro_text",
@@ -101,24 +67,7 @@
                   "za_zu": true
                 }
               },
-              "condition": "@field.do_this_workshop_together",
-              "type": "set_variable",
-              "_nested_name": "relax.workshop_activity.intro_text",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "@field.do_this_workshop_together",
-                    "matchedExpression": "@field.do_this_workshop_together",
-                    "type": "field",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@field.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "@field.do_this_workshop_together"
             },
             {
               "name": "outro_text",
@@ -132,9 +81,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "relax.workshop_activity.outro_text"
+              }
             },
             {
               "type": "nested_properties",
@@ -142,18 +89,13 @@
               "rows": [
                 {
                   "name": "use_short_mark_text",
-                  "value": false,
-                  "type": "set_variable",
-                  "_nested_name": "relax.workshop_activity.outro_habit_box.use_short_mark_text"
+                  "value": false
                 }
-              ],
-              "_nested_name": "relax.workshop_activity.outro_habit_box"
+              ]
             }
-          ],
-          "_nested_name": "relax.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "relax"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"

@@ -16,8 +16,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text"
+      }
     },
     {
       "type": "text",
@@ -33,33 +32,15 @@
           "za_zu": true
         }
       },
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "name"
+      "parameter_list": [
+        "style: emphasised"
+      ]
     },
     {
       "name": "user_name",
       "value": "@fields.user_name",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "user_name",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields.user_name",
-            "matchedExpression": "@fields.user_name",
-            "type": "fields",
-            "fieldName": "user_name"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.user_name": [
-          "value"
-        ]
       }
     },
     {
@@ -70,102 +51,17 @@
         "value": {}
       },
       "condition": "@local.user_name != @global.user_name_default",
-      "parameter_list": {
-        "placeholder": "@global.tap_and_type"
-      },
-      "_nested_name": "text_box",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.user_name",
-            "matchedExpression": "@local.user_name",
-            "type": "local",
-            "fieldName": "user_name"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@local.user_name != @global.user_name_default",
-            "matchedExpression": "@local.user_name",
-            "type": "local",
-            "fieldName": "user_name"
-          },
-          {
-            "fullExpression": "@local.user_name != @global.user_name_default",
-            "matchedExpression": "@global.user_name_default",
-            "type": "global",
-            "fieldName": "user_name_default"
-          }
-        ],
-        "parameter_list": {
-          "placeholder": [
-            {
-              "fullExpression": "@global.tap_and_type",
-              "matchedExpression": "@global.tap_and_type",
-              "type": "global",
-              "fieldName": "tap_and_type"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.user_name": [
-          "value",
-          "condition"
-        ],
-        "@global.user_name_default": [
-          "condition"
-        ],
-        "@global.tap_and_type": [
-          "parameter_list.placeholder"
-        ]
-      }
+      "parameter_list": [
+        "placeholder: @global.tap_and_type"
+      ]
     },
     {
       "type": "text_box",
       "name": "text_box",
       "condition": "@local.user_name == @global.user_name_default",
-      "parameter_list": {
-        "placeholder": "@global.tap_and_type"
-      },
-      "_nested_name": "text_box",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.user_name == @global.user_name_default",
-            "matchedExpression": "@local.user_name",
-            "type": "local",
-            "fieldName": "user_name"
-          },
-          {
-            "fullExpression": "@local.user_name == @global.user_name_default",
-            "matchedExpression": "@global.user_name_default",
-            "type": "global",
-            "fieldName": "user_name_default"
-          }
-        ],
-        "parameter_list": {
-          "placeholder": [
-            {
-              "fullExpression": "@global.tap_and_type",
-              "matchedExpression": "@global.tap_and_type",
-              "type": "global",
-              "fieldName": "tap_and_type"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.user_name": [
-          "condition"
-        ],
-        "@global.user_name_default": [
-          "condition"
-        ],
-        "@global.tap_and_type": [
-          "parameter_list.placeholder"
-        ]
-      }
+      "parameter_list": [
+        "placeholder: @global.tap_and_type"
+      ]
     },
     {
       "type": "text",
@@ -181,19 +77,16 @@
           "za_zu": true
         }
       },
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "gender"
+      "parameter_list": [
+        "style: emphasised"
+      ]
     },
     {
       "name": "answer_list",
-      "value": [
-        "name:female | text: Woman",
-        "name:male | text: Man"
-      ],
-      "type": "set_variable",
-      "_nested_name": "answer_list"
+      "value": "name:female | text: Woman;\nname:male | text: Man;",
+      "_translations": {
+        "value": {}
+      }
     },
     {
       "type": "radio_group",
@@ -208,68 +101,15 @@
           "action_id": "set_field",
           "args": [
             "user_gender",
-            "this.value"
+            "@local.radio_group"
           ],
           "_raw": "changed | set_field: user_gender: @local.radio_group",
           "_cleaned": "changed | set_field: user_gender: @local.radio_group"
         }
       ],
-      "parameter_list": {
-        "answer_list": "@local.answer_list"
-      },
-      "_nested_name": "radio_group",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields.user_gender",
-            "matchedExpression": "@fields.user_gender",
-            "type": "fields",
-            "fieldName": "user_gender"
-          }
-        ],
-        "action_list": {
-          "0": {
-            "_raw": [
-              {
-                "fullExpression": "changed | set_field: user_gender: @local.radio_group",
-                "matchedExpression": "@local.radio_group",
-                "type": "local",
-                "fieldName": "radio_group"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "changed | set_field: user_gender: @local.radio_group",
-                "matchedExpression": "@local.radio_group",
-                "type": "local",
-                "fieldName": "radio_group"
-              }
-            ]
-          }
-        },
-        "parameter_list": {
-          "answer_list": [
-            {
-              "fullExpression": "@local.answer_list",
-              "matchedExpression": "@local.answer_list",
-              "type": "local",
-              "fieldName": "answer_list"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@fields.user_gender": [
-          "value"
-        ],
-        "@local.radio_group": [
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ],
-        "@local.answer_list": [
-          "parameter_list.answer_list"
-        ]
-      }
+      "parameter_list": [
+        "answer_list: @local.answer_list"
+      ]
     },
     {
       "type": "text",
@@ -285,10 +125,9 @@
           "za_zu": true
         }
       },
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "age"
+      "parameter_list": [
+        "style: emphasised"
+      ]
     },
     {
       "type": "text_box",
@@ -303,70 +142,17 @@
           "action_id": "set_field",
           "args": [
             "user_age",
-            "this.value"
+            "@local.number_box"
           ],
           "_raw": "changed | set_field: user_age: @local.number_box",
           "_cleaned": "changed | set_field: user_age: @local.number_box"
         }
       ],
-      "parameter_list": {
-        "text_align": "center",
-        "placeholder": "@global.tap_and_type",
-        "number_input": "true"
-      },
-      "_nested_name": "number_box",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields.user_age",
-            "matchedExpression": "@fields.user_age",
-            "type": "fields",
-            "fieldName": "user_age"
-          }
-        ],
-        "action_list": {
-          "0": {
-            "_raw": [
-              {
-                "fullExpression": "changed | set_field: user_age: @local.number_box",
-                "matchedExpression": "@local.number_box",
-                "type": "local",
-                "fieldName": "number_box"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "changed | set_field: user_age: @local.number_box",
-                "matchedExpression": "@local.number_box",
-                "type": "local",
-                "fieldName": "number_box"
-              }
-            ]
-          }
-        },
-        "parameter_list": {
-          "placeholder": [
-            {
-              "fullExpression": "@global.tap_and_type",
-              "matchedExpression": "@global.tap_and_type",
-              "type": "global",
-              "fieldName": "tap_and_type"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@fields.user_age": [
-          "value"
-        ],
-        "@local.number_box": [
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ],
-        "@global.tap_and_type": [
-          "parameter_list.placeholder"
-        ]
-      }
+      "parameter_list": [
+        "text_align: center",
+        "placeholder: @global.tap_and_type",
+        "number_input: true"
+      ]
     },
     {
       "type": "image",
@@ -374,8 +160,7 @@
       "value": "plh_images/survey/workshop_setup/age_image.svg",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "age_image"
+      }
     },
     {
       "type": "template",
@@ -426,93 +211,9 @@
         {
           "name": "use_completed_chevron",
           "value": true,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "nav_buttons.use_completed_chevron"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "nav_buttons",
-      "_dynamicFields": {
-        "action_list": {
-          "0": {
-            "args": {
-              "1": [
-                {
-                  "fullExpression": "`@global.user_name_default`",
-                  "matchedExpression": "`@global.user_name_default",
-                  "type": "raw",
-                  "fieldName": "user_name_default"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "completed | set_field: user_name:`@global.user_name_default`",
-                "matchedExpression": "`@global.user_name_default",
-                "type": "raw",
-                "fieldName": "user_name_default"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "completed | set_field: user_name:`@global.user_name_default`",
-                "matchedExpression": "`@global.user_name_default",
-                "type": "raw",
-                "fieldName": "user_name_default"
-              }
-            ]
-          },
-          "1": {
-            "args": {
-              "1": [
-                {
-                  "fullExpression": "`@global.user_name_default`",
-                  "matchedExpression": "`@global.user_name_default",
-                  "type": "raw",
-                  "fieldName": "user_name_default"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "uncompleted | set_field: user_name:`@global.user_name_default`",
-                "matchedExpression": "`@global.user_name_default",
-                "type": "raw",
-                "fieldName": "user_name_default"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "uncompleted | set_field: user_name:`@global.user_name_default`",
-                "matchedExpression": "`@global.user_name_default",
-                "type": "raw",
-                "fieldName": "user_name_default"
-              }
-            ]
-          }
-        },
-        "condition": [
-          {
-            "fullExpression": "!@local.text_box",
-            "matchedExpression": "!@local.text_box",
-            "type": "local",
-            "fieldName": "text_box"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "`@global.user_name_default": [
-          "action_list.0.args.1",
-          "action_list.0._raw",
-          "action_list.0._cleaned",
-          "action_list.1.args.1",
-          "action_list.1._raw",
-          "action_list.1._cleaned"
-        ],
-        "!@local.text_box": [
-          "condition"
-        ]
-      }
+      ]
     },
     {
       "type": "template",
@@ -563,91 +264,9 @@
         {
           "name": "use_completed_chevron",
           "value": true,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "nav_buttons.use_completed_chevron"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "nav_buttons",
-      "_dynamicFields": {
-        "action_list": {
-          "0": {
-            "args": {
-              "1": [
-                {
-                  "fullExpression": "@local.text_box",
-                  "matchedExpression": "@local.text_box",
-                  "type": "local",
-                  "fieldName": "text_box"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "completed | set_field: user_name:@local.text_box",
-                "matchedExpression": "@local.text_box",
-                "type": "local",
-                "fieldName": "text_box"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "completed | set_field: user_name:@local.text_box",
-                "matchedExpression": "@local.text_box",
-                "type": "local",
-                "fieldName": "text_box"
-              }
-            ]
-          },
-          "1": {
-            "args": {
-              "1": [
-                {
-                  "fullExpression": "@local.text_box",
-                  "matchedExpression": "@local.text_box",
-                  "type": "local",
-                  "fieldName": "text_box"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "uncompleted | set_field: user_name:@local.text_box",
-                "matchedExpression": "@local.text_box",
-                "type": "local",
-                "fieldName": "text_box"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "uncompleted | set_field: user_name:@local.text_box",
-                "matchedExpression": "@local.text_box",
-                "type": "local",
-                "fieldName": "text_box"
-              }
-            ]
-          }
-        },
-        "condition": [
-          {
-            "fullExpression": "@local.text_box",
-            "matchedExpression": "@local.text_box",
-            "type": "local",
-            "fieldName": "text_box"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.text_box": [
-          "action_list.0.args.1",
-          "action_list.0._raw",
-          "action_list.0._cleaned",
-          "action_list.1.args.1",
-          "action_list.1._raw",
-          "action_list.1._cleaned",
-          "condition"
-        ]
-      }
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/workshop_setup.xlsx"

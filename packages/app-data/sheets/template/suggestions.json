@@ -16,13 +16,11 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "description_text"
+      }
     },
     {
       "type": "text",
-      "name": "list_text",
-      "_nested_name": "list_text"
+      "name": "list_text"
     }
   ],
   "_xlsxPath": "global/mode_templates/talk_together.xlsx"

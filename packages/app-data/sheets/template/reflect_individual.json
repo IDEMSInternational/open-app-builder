@@ -33,32 +33,13 @@
           "value": "plh_images/workshop_modes/guide_2/star.svg",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_image"
+          }
         },
         {
           "name": "activity_title",
           "value": "@global.parent_points",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_title",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.parent_points",
-                "matchedExpression": "@global.parent_points",
-                "type": "global",
-                "fieldName": "parent_points"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.parent_points": [
-              "value"
-            ]
           }
         },
         {
@@ -73,15 +54,11 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.intro_text"
+          }
         },
         {
           "name": "activity_banner",
-          "hidden": false,
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_banner"
+          "hidden": false
         },
         {
           "type": "nested_properties",
@@ -100,9 +77,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "workshop_activity.content_box.top_text"
+              }
             },
             {
               "name": "bottom_text",
@@ -116,15 +91,11 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "workshop_activity.content_box.bottom_text"
+              }
             }
-          ],
-          "_nested_name": "workshop_activity.content_box"
+          ]
         }
-      ],
-      "_nested_name": "workshop_activity"
+      ]
     }
   ],
   "_xlsxPath": "global/mode_templates/welcome.xlsx"

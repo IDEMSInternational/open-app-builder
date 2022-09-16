@@ -11,9 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "name": "title",
-      "_nested_name": "title"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -21,9 +19,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "name": "text",
-      "_nested_name": "text"
+      "exclude_from_translation": true
     },
     {
       "type": "title",
@@ -31,9 +27,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "name": "title",
-      "_nested_name": "title"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -52,9 +46,7 @@
           "_cleaned": "click | feedback:enable"
         }
       ],
-      "exclude_from_translation": true,
-      "name": "button",
-      "_nested_name": "button"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -73,9 +65,7 @@
           "_cleaned": "click | feedback:disable"
         }
       ],
-      "exclude_from_translation": true,
-      "name": "button",
-      "_nested_name": "button"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -95,9 +85,7 @@
           "_cleaned": "click | feedback:open:feature_feedback_default"
         }
       ],
-      "exclude_from_translation": true,
-      "name": "button",
-      "_nested_name": "button"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -117,9 +105,7 @@
           "_cleaned": "click | feedback:send:test feedback"
         }
       ],
-      "exclude_from_translation": true,
-      "name": "button",
-      "_nested_name": "button"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_feedback.xlsx"

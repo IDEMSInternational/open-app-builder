@@ -37,9 +37,7 @@
               "value": "survey_final",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "survey_question_cmp.box_slider.survey_name"
+              }
             },
             {
               "name": "reply_greater_equal",
@@ -53,30 +51,11 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "survey_question_cmp.box_slider.reply_greater_equal",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and continuing to use @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.",
-                    "matchedExpression": "@global.parent_app",
-                    "type": "global",
-                    "fieldName": "parent_app"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.parent_app": [
-                  "value"
-                ]
               }
             }
-          ],
-          "_nested_name": "survey_question_cmp.box_slider"
+          ]
         }
-      ],
-      "_nested_name": "survey_question_cmp"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/survey_final.xlsx"

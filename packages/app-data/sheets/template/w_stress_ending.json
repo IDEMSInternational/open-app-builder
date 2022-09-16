@@ -50,33 +50,13 @@
                       "za_zu": true
                     }
                   },
-                  "condition": "@fields.do_this_workshop_together",
-                  "type": "set_variable",
-                  "_nested_name": "ending.watch.workshop_activity.intro_text",
-                  "_dynamicFields": {
-                    "condition": [
-                      {
-                        "fullExpression": "@fields.do_this_workshop_together",
-                        "matchedExpression": "@fields.do_this_workshop_together",
-                        "type": "fields",
-                        "fieldName": "do_this_workshop_together"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@fields.do_this_workshop_together": [
-                      "condition"
-                    ]
-                  }
+                  "condition": "@fields.do_this_workshop_together"
                 }
-              ],
-              "_nested_name": "ending.watch.workshop_activity"
+              ]
             }
-          ],
-          "_nested_name": "ending.watch"
+          ]
         }
-      ],
-      "_nested_name": "ending"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"

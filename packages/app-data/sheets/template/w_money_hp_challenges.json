@@ -32,32 +32,13 @@
         {
           "name": "number_of_challenges",
           "value": 4,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.number_of_challenges"
+          "exclude_from_translation": true
         },
         {
           "name": "workshop_data",
           "value": "@data.workshop.w_money",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_money",
-                "matchedExpression": "@data.workshop.w_money",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_money": [
-              "value"
-            ]
           }
         },
         {
@@ -72,9 +53,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.hp_description_third_plural"
+          }
         },
         {
           "name": "question_text_happy",
@@ -88,9 +67,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.question_text_happy"
+          }
         },
         {
           "name": "question_text_ok_sad",
@@ -104,9 +81,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.question_text_ok_sad"
+          }
         },
         {
           "name": "text_challenge_1",
@@ -120,9 +95,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_1"
+          }
         },
         {
           "name": "reply_challenge_1",
@@ -136,48 +109,6 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_1",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "You don’t have to reveal the exact amount you earn; you could give an estimate. You could say, “In this household, we have @global.currency@global.monthly_income_estimate every month” rather than, “I make @global.currency@global.monthly_income_precise”.",
-                "matchedExpression": "@global.currency",
-                "type": "global",
-                "fieldName": "currency"
-              },
-              {
-                "fullExpression": "You don’t have to reveal the exact amount you earn; you could give an estimate. You could say, “In this household, we have @global.currency@global.monthly_income_estimate every month” rather than, “I make @global.currency@global.monthly_income_precise”.",
-                "matchedExpression": "@global.monthly_income_estimate",
-                "type": "global",
-                "fieldName": "monthly_income_estimate"
-              },
-              {
-                "fullExpression": "You don’t have to reveal the exact amount you earn; you could give an estimate. You could say, “In this household, we have @global.currency@global.monthly_income_estimate every month” rather than, “I make @global.currency@global.monthly_income_precise”.",
-                "matchedExpression": "@global.currency",
-                "type": "global",
-                "fieldName": "currency"
-              },
-              {
-                "fullExpression": "You don’t have to reveal the exact amount you earn; you could give an estimate. You could say, “In this household, we have @global.currency@global.monthly_income_estimate every month” rather than, “I make @global.currency@global.monthly_income_precise”.",
-                "matchedExpression": "@global.monthly_income_precise",
-                "type": "global",
-                "fieldName": "monthly_income_precise"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.currency": [
-              "value",
-              "value"
-            ],
-            "@global.monthly_income_estimate": [
-              "value"
-            ],
-            "@global.monthly_income_precise": [
-              "value"
-            ]
           }
         },
         {
@@ -192,9 +123,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_2"
+          }
         },
         {
           "name": "reply_challenge_2",
@@ -208,9 +137,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_2"
+          }
         },
         {
           "name": "text_challenge_3",
@@ -224,9 +151,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_3"
+          }
         },
         {
           "name": "reply_challenge_3",
@@ -240,16 +165,12 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_3"
+          }
         },
         {
           "name": "reply_challenge_3_has_button",
           "value": true,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_3_has_button"
+          "exclude_from_translation": true
         },
         {
           "name": "button_3_a",
@@ -267,24 +188,7 @@
               "_raw": "click | go_to: w_money_tools",
               "_cleaned": "click | go_to: w_money_tools"
             }
-          ],
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.button_3_a",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_money.tools",
-                "matchedExpression": "@data.workshop.w_money.tools",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_money.tools": [
-              "value"
-            ]
-          }
+          ]
         },
         {
           "name": "text_challenge_4",
@@ -298,9 +202,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_4"
+          }
         },
         {
           "name": "reply_challenge_4",
@@ -314,27 +216,9 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_4",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "Try making the budget with other adults in your home first. Your teen may get interested in what you are doing. \n\nMaking a budget may sound serious but try to make it fun – make it a game during one-on-one time! Or you can try to make the budget for @global.w_money_grandma first. \n\nRemember to praise them when you are done!",
-                "matchedExpression": "@global.w_money_grandma",
-                "type": "global",
-                "fieldName": "w_money_grandma"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.w_money_grandma": [
-              "value"
-            ]
           }
         }
-      ],
-      "_nested_name": "home_practice_challenges"
+      ]
     }
   ],
   "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_money_hp_review.xlsx"

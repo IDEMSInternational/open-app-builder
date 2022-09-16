@@ -22,8 +22,7 @@
           "_cleaned": "click | emit:completed"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_overriding_action_list.xlsx"

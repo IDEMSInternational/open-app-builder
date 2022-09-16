@@ -10,8 +10,7 @@
       "value": "a",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "a_or_b"
+      }
     },
     {
       "type": "title",
@@ -20,8 +19,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_1"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -30,23 +28,7 @@
       "_translations": {
         "value": {}
       },
-      "condition": "@local.a_or_b === \"a\"",
-      "_nested_name": "text_a",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.a_or_b === \"a\"",
-            "matchedExpression": "@local.a_or_b",
-            "type": "local",
-            "fieldName": "a_or_b"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.a_or_b": [
-          "condition"
-        ]
-      }
+      "condition": "@local.a_or_b === \"a\""
     },
     {
       "type": "text",
@@ -55,23 +37,7 @@
       "_translations": {
         "value": {}
       },
-      "condition": "@local.a_or_b === \"b\"",
-      "_nested_name": "text_b",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.a_or_b === \"b\"",
-            "matchedExpression": "@local.a_or_b",
-            "type": "local",
-            "fieldName": "a_or_b"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.a_or_b": [
-          "condition"
-        ]
-      }
+      "condition": "@local.a_or_b === \"b\""
     },
     {
       "type": "text",
@@ -79,34 +45,14 @@
       "value": "The value of the global variable example_glob_override is: @global.example_glob_override",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_c",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "The value of the global variable example_glob_override is: @global.example_glob_override",
-            "matchedExpression": "@global.example_glob_override",
-            "type": "global",
-            "fieldName": "example_glob_override"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.example_glob_override": [
-          "value"
-        ]
       }
     },
     {
       "type": "template",
       "name": "example_lang_select",
       "value": "example_lang_select",
-      "rows": [],
-      "_nested_name": "example_lang_select"
+      "rows": []
     }
   ],
-  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
-  "_overrides": {
-    "example_temp_override_es_sp": "@fields._app_language.startsWith(\"es\")"
-  }
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx"
 }

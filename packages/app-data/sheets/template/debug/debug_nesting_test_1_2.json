@@ -10,9 +10,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "name": "text",
-      "_nested_name": "text"
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
@@ -21,8 +19,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "test_1_text"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -42,9 +39,7 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "debug_override_1.template_wrapper.title"
+              "exclude_from_translation": true
             },
             {
               "name": "text",
@@ -52,30 +47,11 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "debug_override_1.template_wrapper.text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@local.test_1_text",
-                    "matchedExpression": "@local.test_1_text",
-                    "type": "local",
-                    "fieldName": "test_1_text"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.test_1_text": [
-                  "value"
-                ]
-              }
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "debug_override_1.template_wrapper"
+          ]
         }
-      ],
-      "_nested_name": "debug_override_1"
+      ]
     },
     {
       "type": "text",
@@ -83,9 +59,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "name": "text",
-      "_nested_name": "text"
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
@@ -94,8 +68,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "test_2_text"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -109,9 +82,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_sheet_2.title"
+          "exclude_from_translation": true
         },
         {
           "name": "text",
@@ -119,27 +90,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_sheet_2.text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.test_2_text",
-                "matchedExpression": "@local.test_2_text",
-                "type": "local",
-                "fieldName": "test_2_text"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.test_2_text": [
-              "value"
-            ]
-          }
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "debug_sheet_2"
+      ]
     },
     {
       "type": "set_variable",
@@ -148,8 +101,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "test_3_text"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -157,9 +109,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "name": "text",
-      "_nested_name": "text"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -185,9 +135,7 @@
                   "_translations": {
                     "value": {}
                   },
-                  "exclude_from_translation": true,
-                  "type": "set_variable",
-                  "_nested_name": "wrapper.template_wrapper.template_wrapper.title"
+                  "exclude_from_translation": true
                 },
                 {
                   "name": "text",
@@ -195,33 +143,13 @@
                   "_translations": {
                     "value": {}
                   },
-                  "exclude_from_translation": true,
-                  "type": "set_variable",
-                  "_nested_name": "wrapper.template_wrapper.template_wrapper.text",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "@local.test_3_text",
-                        "matchedExpression": "@local.test_3_text",
-                        "type": "local",
-                        "fieldName": "test_3_text"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@local.test_3_text": [
-                      "value"
-                    ]
-                  }
+                  "exclude_from_translation": true
                 }
-              ],
-              "_nested_name": "wrapper.template_wrapper.template_wrapper"
+              ]
             }
-          ],
-          "_nested_name": "wrapper.template_wrapper"
+          ]
         }
-      ],
-      "_nested_name": "wrapper"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_nesting.xlsx"

@@ -21,18 +21,13 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "suggestions.description_text"
+          }
         },
         {
           "name": "list_text",
-          "hidden": true,
-          "type": "set_variable",
-          "_nested_name": "suggestions.list_text"
+          "hidden": true
         }
-      ],
-      "_nested_name": "suggestions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"

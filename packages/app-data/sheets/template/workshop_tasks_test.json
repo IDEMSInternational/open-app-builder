@@ -1,0 +1,16 @@
+{
+  "flow_type": "template",
+  "flow_name": "workshop_tasks_test",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text",
+      "value": "Relax template: @data.w_self_care_tasks.w_self_care_relax.id",
+      "_translations": {
+        "value": {}
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks_templates.xlsx"
+}

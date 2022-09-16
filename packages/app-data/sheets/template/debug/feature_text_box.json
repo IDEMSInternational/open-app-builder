@@ -10,9 +10,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "blank_display_text"
+      "exclude_from_translation": true
     },
     {
       "type": "set_default",
@@ -21,51 +19,17 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "_value",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.default_value",
-            "matchedExpression": "@local.default_value",
-            "type": "local",
-            "fieldName": "default_value"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.default_value": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text_box",
       "name": "text_box",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "blank_display_text": "@local.blank_display_text",
-        "help": "some help text",
-        "placeholder": "example placeholder"
-      },
-      "_nested_name": "text_box",
-      "_dynamicFields": {
-        "parameter_list": {
-          "blank_display_text": [
-            {
-              "fullExpression": "@local.blank_display_text",
-              "matchedExpression": "@local.blank_display_text",
-              "type": "local",
-              "fieldName": "blank_display_text"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.blank_display_text": [
-          "parameter_list.blank_display_text"
-        ]
-      }
+      "parameter_list": [
+        "blank_display_text:@local.blank_display_text",
+        "help: some help text",
+        "placeholder: example placeholder"
+      ]
     },
     {
       "type": "text_box",
@@ -75,12 +39,11 @@
         "value": {}
       },
       "exclude_from_translation": true,
-      "parameter_list": {
-        "help": "some help text",
-        "text_align": "right",
-        "placeholder": "Add your answer"
-      },
-      "_nested_name": "text_box_1"
+      "parameter_list": [
+        "help: some help text",
+        "text_align: right",
+        "placeholder: Add your answer"
+      ]
     },
     {
       "type": "text_box",
@@ -90,33 +53,30 @@
         "value": {}
       },
       "exclude_from_translation": true,
-      "parameter_list": {
-        "help": "some help text",
-        "text_align": "left",
-        "placeholder": "Add your answer 2"
-      },
-      "_nested_name": "text_box_2"
+      "parameter_list": [
+        "help: some help text",
+        "text_align: left",
+        "placeholder: Add your answer 2"
+      ]
     },
     {
       "type": "text_box",
       "name": "text_box_3",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "text_align": "center",
-        "placeholder": "Add your answer 3"
-      },
-      "_nested_name": "text_box_3"
+      "parameter_list": [
+        "text_align: center",
+        "placeholder: Add your answer 3"
+      ]
     },
     {
       "type": "text_box",
       "name": "text_box_3",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "text_align": "center",
-        "placeholder": "Add your answer 3",
-        "number_input": "true"
-      },
-      "_nested_name": "text_box_3"
+      "parameter_list": [
+        "text_align: center",
+        "placeholder: Add your answer 3",
+        "number_input: true"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"

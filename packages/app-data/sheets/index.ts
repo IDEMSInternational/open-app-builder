@@ -364,6 +364,30 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "funders",
       _xlsxPath: "global/data/partners_data_lists.xlsx",
     },
+    double_example_data_pipe_list: {
+      flow_name: "double_example_data_pipe_list",
+      data_list_name: "double_example_data_pipe_list",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    example_pipe_completed: {
+      flow_name: "example_pipe_completed",
+      data_list_name: "example_pipe_completed",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    example_pipe_uncompleted: {
+      flow_name: "example_pipe_uncompleted",
+      data_list_name: "example_pipe_uncompleted",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    prefix_example_data_pipe_list: {
+      flow_name: "prefix_example_data_pipe_list",
+      data_list_name: "prefix_example_data_pipe_list",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
     habit_data_list: {
       flow_type: "data_list",
       flow_name: "habit_data_list",
@@ -2500,9 +2524,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "example_temp_override_default",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
-      _overrides: {
-        example_temp_override_es_sp: '@fields._app_language.startsWith("es")',
-      },
     },
     example_temp_override_es_sp: {
       flow_type: "template",
@@ -2940,10 +2961,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "language_select",
       _xlsxPath: "global/core_templates/core_templates_settings.xlsx",
-      _overrides: {
-        language_select_za: '@fields._deployment_name == "plh_za"',
-        language_select_tz: '@fields._deployment_name == "plh_tz"',
-      },
     },
     language_select_tz: {
       flow_type: "template",
@@ -3138,10 +3155,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "organisation_registration",
       _xlsxPath: "global/core_templates/core_templates_settings.xlsx",
-      _overrides: {
-        organisation_registration_za: '@fields._deployment_name == "plh_za"',
-        organisation_registration_tz: '@fields._deployment_name == "plh_tz"',
-      },
     },
     organisation_registration_tz: {
       flow_type: "template",
@@ -6312,6 +6325,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "workshop_stepper_actions",
       _xlsxPath: "global/core_templates/core_templates_workshops.xlsx",
     },
+    workshop_tasks_test: {
+      flow_type: "template",
+      flow_name: "workshop_tasks_test",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_templates.xlsx",
+    },
     workshop_unlock: {
       flow_type: "template",
       flow_name: "workshop_unlock",
@@ -6364,5 +6382,24 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       _xlsxPath: "global/tours/weekly_workshops_tour.xlsx",
     },
   },
-  data_pipe:{}
+  data_pipe: {
+    example_data_pipe: {
+      flow_type: "data_pipe",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes.xlsx",
+    },
+    example_data_pipe_concat: {
+      flow_type: "data_pipe",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_concat",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes.xlsx",
+    },
+    example_data_pipe_map: {
+      flow_type: "data_pipe",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_map",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes.xlsx",
+    },
+  },
 };

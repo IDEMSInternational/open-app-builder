@@ -12,11 +12,9 @@
           "type": "nested_properties",
           "name": "nav_buttons",
           "hidden": true,
-          "rows": [],
-          "_nested_name": "combo_box_1.nav_buttons"
+          "rows": []
         }
-      ],
-      "_nested_name": "combo_box_1"
+      ]
     },
     {
       "type": "template",
@@ -27,11 +25,9 @@
           "type": "nested_properties",
           "name": "nav_buttons",
           "hidden": true,
-          "rows": [],
-          "_nested_name": "combo_box_2.nav_buttons"
+          "rows": []
         }
-      ],
-      "_nested_name": "combo_box_2"
+      ]
     },
     {
       "type": "template",
@@ -57,8 +53,7 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "rows": [],
-      "_nested_name": "nav_buttons"
+      "rows": []
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"

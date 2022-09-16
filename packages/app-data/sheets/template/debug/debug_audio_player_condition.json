@@ -9,10 +9,9 @@
       "name": "checkbox_1",
       "value": true,
       "exclude_from_translation": true,
-      "parameter_list": {
-        "label_text": "Show audio player"
-      },
-      "_nested_name": "checkbox_1"
+      "parameter_list": [
+        "label_text: Show audio player"
+      ]
     },
     {
       "type": "audio",
@@ -23,25 +22,9 @@
       },
       "condition": "@local.checkbox_1",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "title": "Audio player"
-      },
-      "_nested_name": "audio_1",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.checkbox_1",
-            "matchedExpression": "@local.checkbox_1",
-            "type": "local",
-            "fieldName": "checkbox_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.checkbox_1": [
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "title: Audio player"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_audio_player.xlsx"

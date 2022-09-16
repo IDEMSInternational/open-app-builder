@@ -11,8 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title1"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -21,8 +20,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text1"
+      "exclude_from_translation": true
     },
     {
       "type": "dashed_box",
@@ -31,8 +29,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "box1"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -41,8 +38,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "button1"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -51,8 +47,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "list1"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"

@@ -17,8 +17,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "title"
+      }
     },
     {
       "type": "text",
@@ -34,34 +33,7 @@
           "za_zu": true
         }
       },
-      "condition": "!@field.survey_final_completed",
-      "_nested_name": "text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "You have been using @global.parent_app for the last months, but parenting a teen is long lasting!  The next questions about your parenting experiences will help us assess your parenting.\n\nBe honest. Remember that millions of parents feel like you do, and we all deserve support. You are not alone!",
-            "matchedExpression": "@global.parent_app",
-            "type": "global",
-            "fieldName": "parent_app"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "!@field.survey_final_completed",
-            "matchedExpression": "!@field.survey_final_completed",
-            "type": "field",
-            "fieldName": "survey_final_completed"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.parent_app": [
-          "value"
-        ],
-        "!@field.survey_final_completed": [
-          "condition"
-        ]
-      }
+      "condition": "!@field.survey_final_completed"
     },
     {
       "type": "text",
@@ -77,23 +49,7 @@
           "za_zu": true
         }
       },
-      "condition": "@field.survey_final_completed",
-      "_nested_name": "text",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@field.survey_final_completed",
-            "matchedExpression": "@field.survey_final_completed",
-            "type": "field",
-            "fieldName": "survey_final_completed"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.survey_final_completed": [
-          "condition"
-        ]
-      }
+      "condition": "@field.survey_final_completed"
     },
     {
       "type": "template",
@@ -114,9 +70,7 @@
         {
           "name": "display_back",
           "value": false,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "nav_buttons.display_back"
+          "exclude_from_translation": true
         },
         {
           "name": "button_completed",
@@ -144,35 +98,7 @@
               "_cleaned": "click | emit:completed"
             }
           ],
-          "condition": "!@field.survey_final_completed",
-          "type": "set_variable",
-          "_nested_name": "nav_buttons.button_completed",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.start_button",
-                "matchedExpression": "@global.start_button",
-                "type": "global",
-                "fieldName": "start_button"
-              }
-            ],
-            "condition": [
-              {
-                "fullExpression": "!@field.survey_final_completed",
-                "matchedExpression": "!@field.survey_final_completed",
-                "type": "field",
-                "fieldName": "survey_final_completed"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.start_button": [
-              "value"
-            ],
-            "!@field.survey_final_completed": [
-              "condition"
-            ]
-          }
+          "condition": "!@field.survey_final_completed"
         },
         {
           "name": "button_completed",
@@ -191,38 +117,9 @@
               "_cleaned": "click | emit:completed"
             }
           ],
-          "condition": "@field.survey_final_completed",
-          "type": "set_variable",
-          "_nested_name": "nav_buttons.button_completed",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.skip_button",
-                "matchedExpression": "@global.skip_button",
-                "type": "global",
-                "fieldName": "skip_button"
-              }
-            ],
-            "condition": [
-              {
-                "fullExpression": "@field.survey_final_completed",
-                "matchedExpression": "@field.survey_final_completed",
-                "type": "field",
-                "fieldName": "survey_final_completed"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.skip_button": [
-              "value"
-            ],
-            "@field.survey_final_completed": [
-              "condition"
-            ]
-          }
+          "condition": "@field.survey_final_completed"
         }
-      ],
-      "_nested_name": "nav_buttons"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"

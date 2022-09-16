@@ -11,8 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "heading_1"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -27,8 +26,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "two_texts_a.child_local_variable"
+          "exclude_from_translation": true
         },
         {
           "type": "set_variable",
@@ -37,11 +35,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "two_texts_a.child_text_1"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "two_texts_a"
+      ]
     },
     {
       "type": "text",
@@ -50,8 +46,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "heading_2"
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
@@ -60,8 +55,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "var_text_1"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -76,8 +70,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "two_texts_b.child_local_variable"
+          "exclude_from_translation": true
         },
         {
           "type": "set_variable",
@@ -86,26 +79,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "two_texts_b.child_text_1",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.var_text_1",
-                "matchedExpression": "@local.var_text_1",
-                "type": "local",
-                "fieldName": "var_text_1"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.var_text_1": [
-              "value"
-            ]
-          }
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "two_texts_b"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_nesting_variables.xlsx"

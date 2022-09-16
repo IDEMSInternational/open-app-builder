@@ -11,23 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_0",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "The value of field_0 is @field.field_0",
-            "matchedExpression": "@field.field_0",
-            "type": "field",
-            "fieldName": "field_0"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.field_0": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -48,8 +32,7 @@
           "_cleaned": "click | set_field:field_1:\"New value of Field 1\""
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_1"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -58,23 +41,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "The value of field_1 is @field.field_1",
-            "matchedExpression": "@field.field_1",
-            "type": "field",
-            "fieldName": "field_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.field_1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -95,8 +62,7 @@
           "_cleaned": "click | set_field:field_2:\"Value of Field 2\""
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_2"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -105,23 +71,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "The value of field_2 is @field.field_2",
-            "matchedExpression": "@field.field_2",
-            "type": "field",
-            "fieldName": "field_2"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.field_2": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -131,23 +81,7 @@
         "value": {}
       },
       "hidden": "@field.field_4",
-      "exclude_from_translation": true,
-      "_nested_name": "text_hidden_4",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@field.field_4",
-            "matchedExpression": "@field.field_4",
-            "type": "field",
-            "fieldName": "field_4"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.field_4": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -157,23 +91,7 @@
         "value": {}
       },
       "hidden": "!@field.field_4",
-      "exclude_from_translation": true,
-      "_nested_name": "text_not_hidden_4",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "!@field.field_4",
-            "matchedExpression": "!@field.field_4",
-            "type": "field",
-            "fieldName": "field_4"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "!@field.field_4": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -183,23 +101,7 @@
         "value": {}
       },
       "hidden": "@field.field_5>2",
-      "exclude_from_translation": true,
-      "_nested_name": "text_hidden_5",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@field.field_5>2",
-            "matchedExpression": "@field.field_5",
-            "type": "field",
-            "fieldName": "field_5"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.field_5": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -209,23 +111,7 @@
         "value": {}
       },
       "hidden": "@field.field_5<=2",
-      "exclude_from_translation": true,
-      "_nested_name": "text_not_hidden_5_a",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@field.field_5<=2",
-            "matchedExpression": "@field.field_5",
-            "type": "field",
-            "fieldName": "field_5"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.field_5": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -235,23 +121,7 @@
         "value": {}
       },
       "hidden": "!@field.field_5>2",
-      "exclude_from_translation": true,
-      "_nested_name": "text_not_hidden_5_b",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "!@field.field_5>2",
-            "matchedExpression": "!@field.field_5",
-            "type": "field",
-            "fieldName": "field_5"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "!@field.field_5": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -272,47 +142,7 @@
           "_cleaned": "click | set_field:example_raw:`@global.example_global_constant_text`"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_set_raw",
-      "_dynamicFields": {
-        "action_list": {
-          "0": {
-            "args": {
-              "1": [
-                {
-                  "fullExpression": "`@global.example_global_constant_text`",
-                  "matchedExpression": "`@global.example_global_constant_text",
-                  "type": "raw",
-                  "fieldName": "example_global_constant_text"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "click | set_field:example_raw:`@global.example_global_constant_text`",
-                "matchedExpression": "`@global.example_global_constant_text",
-                "type": "raw",
-                "fieldName": "example_global_constant_text"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "click | set_field:example_raw:`@global.example_global_constant_text`",
-                "matchedExpression": "`@global.example_global_constant_text",
-                "type": "raw",
-                "fieldName": "example_global_constant_text"
-              }
-            ]
-          }
-        }
-      },
-      "_dynamicDependencies": {
-        "`@global.example_global_constant_text": [
-          "action_list.0.args.1",
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -321,23 +151,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_raw",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "raw: `@fields.example_raw`",
-            "matchedExpression": "`@fields.example_raw",
-            "type": "raw",
-            "fieldName": "example_raw"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "`@fields.example_raw": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -346,23 +160,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_raw_parsed",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "parsed: @fields.example_raw",
-            "matchedExpression": "@fields.example_raw",
-            "type": "fields",
-            "fieldName": "example_raw"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.example_raw": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -371,32 +169,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_raw_combined",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "will not work when combined:\nraw: `@fields.example_raw`\nparsed: @fields.example_raw",
-            "matchedExpression": "`@fields.example_raw",
-            "type": "raw",
-            "fieldName": "example_raw"
-          },
-          {
-            "fullExpression": "will not work when combined:\nraw: `@fields.example_raw`\nparsed: @fields.example_raw",
-            "matchedExpression": "@fields.example_raw",
-            "type": "fields",
-            "fieldName": "example_raw"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "`@fields.example_raw": [
-          "value"
-        ],
-        "@fields.example_raw": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_global_field.xlsx"

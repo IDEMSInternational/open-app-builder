@@ -41,9 +41,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "suggestions.description_text"
+          }
         },
         {
           "name": "list_text",
@@ -57,50 +55,9 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "suggestions.list_text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "* @global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver\n* @global.w_instruct_female_caregiver was able to stay calm  \n* @global.w_instruct_female_caregiver  kept a positive attitude",
-                "matchedExpression": "@global.w_instruct_teen_girl",
-                "type": "global",
-                "fieldName": "w_instruct_teen_girl"
-              },
-              {
-                "fullExpression": "* @global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver\n* @global.w_instruct_female_caregiver was able to stay calm  \n* @global.w_instruct_female_caregiver  kept a positive attitude",
-                "matchedExpression": "@global.w_instruct_female_caregiver",
-                "type": "global",
-                "fieldName": "w_instruct_female_caregiver"
-              },
-              {
-                "fullExpression": "* @global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver\n* @global.w_instruct_female_caregiver was able to stay calm  \n* @global.w_instruct_female_caregiver  kept a positive attitude",
-                "matchedExpression": "@global.w_instruct_female_caregiver",
-                "type": "global",
-                "fieldName": "w_instruct_female_caregiver"
-              },
-              {
-                "fullExpression": "* @global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver\n* @global.w_instruct_female_caregiver was able to stay calm  \n* @global.w_instruct_female_caregiver  kept a positive attitude",
-                "matchedExpression": "@global.w_instruct_female_caregiver",
-                "type": "global",
-                "fieldName": "w_instruct_female_caregiver"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.w_instruct_teen_girl": [
-              "value"
-            ],
-            "@global.w_instruct_female_caregiver": [
-              "value",
-              "value",
-              "value"
-            ]
           }
         }
-      ],
-      "_nested_name": "suggestions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"

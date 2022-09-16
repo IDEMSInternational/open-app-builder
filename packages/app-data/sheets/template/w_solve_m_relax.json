@@ -14,27 +14,9 @@
           "value": "@data.workshop.w_solve",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "m_relax.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_solve",
-                "matchedExpression": "@data.workshop.w_solve",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_solve": [
-              "value"
-            ]
           }
         }
-      ],
-      "_nested_name": "m_relax"
+      ]
     }
   ],
   "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"

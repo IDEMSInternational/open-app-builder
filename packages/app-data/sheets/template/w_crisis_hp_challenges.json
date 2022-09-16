@@ -32,32 +32,13 @@
         {
           "name": "number_of_challenges",
           "value": 3,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.number_of_challenges"
+          "exclude_from_translation": true
         },
         {
           "name": "workshop_data",
           "value": "@data.workshop.w_crisis",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_crisis",
-                "matchedExpression": "@data.workshop.w_crisis",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_crisis": [
-              "value"
-            ]
           }
         },
         {
@@ -72,9 +53,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.hp_description_third_plural"
+          }
         },
         {
           "name": "hp_description_second_singular",
@@ -88,9 +67,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.hp_description_second_singular"
+          }
         },
         {
           "name": "text_challenge_1",
@@ -104,9 +81,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_1"
+          }
         },
         {
           "name": "reply_challenge_1",
@@ -120,16 +95,12 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_1"
+          }
         },
         {
           "name": "reply_challenge_1_has_2_buttons",
           "value": true,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_1_has_2_buttons"
+          "exclude_from_translation": true
         },
         {
           "name": "button_1_a",
@@ -147,24 +118,7 @@
               "_raw": "click | go_to: w_solve_tools",
               "_cleaned": "click | go_to: w_solve_tools"
             }
-          ],
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.button_1_a",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.w_solve_tools",
-                "matchedExpression": "@global.w_solve_tools",
-                "type": "global",
-                "fieldName": "w_solve_tools"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.w_solve_tools": [
-              "value"
-            ]
-          }
+          ]
         },
         {
           "name": "button_1_b",
@@ -178,9 +132,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.button_1_b"
+          }
         },
         {
           "name": "text_challenge_2",
@@ -194,9 +146,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_2"
+          }
         },
         {
           "name": "reply_challenge_2",
@@ -210,9 +160,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_2"
+          }
         },
         {
           "name": "text_challenge_3",
@@ -226,9 +174,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_3"
+          }
         },
         {
           "name": "reply_challenge_3",
@@ -242,12 +188,9 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_3"
+          }
         }
-      ],
-      "_nested_name": "home_practice_challenges"
+      ]
     }
   ],
   "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_crisis_hp_review.xlsx"

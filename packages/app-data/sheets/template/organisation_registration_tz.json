@@ -17,9 +17,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "myself"
+      }
     },
     {
       "name": "friend",
@@ -33,9 +31,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "friend"
+      }
     },
     {
       "name": "organisation_1",
@@ -43,9 +39,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "organisation_1"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -69,76 +63,16 @@
           "value": "@local.organisation_1",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "organisation_registration.organisation_1",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.organisation_1",
-                "matchedExpression": "@local.organisation_1",
-                "type": "local",
-                "fieldName": "organisation_1"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.organisation_1": [
-              "value"
-            ]
           }
         },
         {
           "name": "answer_list",
-          "value": [
-            "name:myself | text:@local.myself",
-            "name:friend | text: @local.friend",
-            "name:organisation_1 | text: @local.organisation_1"
-          ],
-          "type": "set_variable",
-          "_nested_name": "organisation_registration.answer_list",
-          "_dynamicFields": {
-            "value": {
-              "0": [
-                {
-                  "fullExpression": "name:myself | text:@local.myself",
-                  "matchedExpression": "@local.myself",
-                  "type": "local",
-                  "fieldName": "myself"
-                }
-              ],
-              "1": [
-                {
-                  "fullExpression": "name:friend | text: @local.friend",
-                  "matchedExpression": "@local.friend",
-                  "type": "local",
-                  "fieldName": "friend"
-                }
-              ],
-              "2": [
-                {
-                  "fullExpression": "name:organisation_1 | text: @local.organisation_1",
-                  "matchedExpression": "@local.organisation_1",
-                  "type": "local",
-                  "fieldName": "organisation_1"
-                }
-              ]
-            }
-          },
-          "_dynamicDependencies": {
-            "@local.myself": [
-              "value.0"
-            ],
-            "@local.friend": [
-              "value.1"
-            ],
-            "@local.organisation_1": [
-              "value.2"
-            ]
+          "value": "name:myself | text:@local.myself; \nname:friend | text: @local.friend;\nname:organisation_1 | text: @local.organisation_1;",
+          "_translations": {
+            "value": {}
           }
         }
-      ],
-      "_nested_name": "organisation_registration"
+      ]
     }
   ],
   "_xlsxPath": "tz/core_templates/core_templates_settings_tz.xlsx"

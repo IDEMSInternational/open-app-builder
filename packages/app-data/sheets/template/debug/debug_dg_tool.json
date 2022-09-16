@@ -9,16 +9,14 @@
       "value": "tool_1",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "tool_style"
+      }
     },
     {
       "type": "display_group",
       "name": "dg_1",
-      "parameter_list": {
-        "style": "tool_1 column"
-      },
+      "parameter_list": [
+        "style: tool_1 column"
+      ],
       "rows": [
         {
           "type": "title",
@@ -27,10 +25,9 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "alternative"
-          },
-          "_nested_name": "dg_1.title"
+          "parameter_list": [
+            "style: alternative"
+          ]
         },
         {
           "type": "subtitle",
@@ -39,10 +36,9 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "alternative"
-          },
-          "_nested_name": "dg_1.subtitle_1"
+          "parameter_list": [
+            "style: alternative"
+          ]
         },
         {
           "type": "text",
@@ -51,10 +47,9 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "alternative"
-          },
-          "_nested_name": "dg_1.text_1"
+          "parameter_list": [
+            "style: alternative"
+          ]
         },
         {
           "type": "button",
@@ -63,10 +58,9 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "navigation"
-          },
-          "_nested_name": "dg_1.button_1"
+          "parameter_list": [
+            "style: navigation"
+          ]
         },
         {
           "type": "button",
@@ -75,10 +69,9 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "information"
-          },
-          "_nested_name": "dg_1.button_2"
+          "parameter_list": [
+            "style: information"
+          ]
         },
         {
           "type": "button",
@@ -86,8 +79,7 @@
           "value": "Third button",
           "_translations": {
             "value": {}
-          },
-          "_nested_name": "dg_1.button_3"
+          }
         },
         {
           "type": "button",
@@ -95,8 +87,7 @@
           "value": "Button 4",
           "_translations": {
             "value": {}
-          },
-          "_nested_name": "dg_1.button_4"
+          }
         },
         {
           "type": "image",
@@ -104,11 +95,9 @@
           "value": "plh_images/workshops/options/individual.svg",
           "_translations": {
             "value": {}
-          },
-          "_nested_name": "dg_1.image_src"
+          }
         }
-      ],
-      "_nested_name": "dg_1"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_dg.xlsx"

@@ -11,15 +11,13 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "heading_1"
+      "exclude_from_translation": true
     },
     {
       "type": "set_variable",
       "name": "toggle_value",
       "value": true,
-      "exclude_from_translation": true,
-      "_nested_name": "toggle_value"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -40,58 +38,7 @@
           "_cleaned": "click | set_local : toggle_value:!@local.toggle_value"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "toggle_button",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Value: @local.toggle_value",
-            "matchedExpression": "@local.toggle_value",
-            "type": "local",
-            "fieldName": "toggle_value"
-          }
-        ],
-        "action_list": {
-          "0": {
-            "args": {
-              "1": [
-                {
-                  "fullExpression": "!@local.toggle_value",
-                  "matchedExpression": "!@local.toggle_value",
-                  "type": "local",
-                  "fieldName": "toggle_value"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "click | set_local : toggle_value:!@local.toggle_value",
-                "matchedExpression": "!@local.toggle_value",
-                "type": "local",
-                "fieldName": "toggle_value"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "click | set_local : toggle_value:!@local.toggle_value",
-                "matchedExpression": "!@local.toggle_value",
-                "type": "local",
-                "fieldName": "toggle_value"
-              }
-            ]
-          }
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.toggle_value": [
-          "value"
-        ],
-        "!@local.toggle_value": [
-          "action_list.0.args.1",
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -107,23 +54,7 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "condition": "@local.toggle_value",
-          "_nested_name": "two_texts_a.child_local_variable",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@local.toggle_value",
-                "matchedExpression": "@local.toggle_value",
-                "type": "local",
-                "fieldName": "toggle_value"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.toggle_value": [
-              "condition"
-            ]
-          }
+          "condition": "@local.toggle_value"
         },
         {
           "type": "set_variable",
@@ -133,23 +64,7 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "condition": "!@local.toggle_value",
-          "_nested_name": "two_texts_a.child_local_variable",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "!@local.toggle_value",
-                "matchedExpression": "!@local.toggle_value",
-                "type": "local",
-                "fieldName": "toggle_value"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "!@local.toggle_value": [
-              "condition"
-            ]
-          }
+          "condition": "!@local.toggle_value"
         },
         {
           "type": "set_variable",
@@ -158,11 +73,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "two_texts_a.child_text_1"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "two_texts_a"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_nesting_variables.xlsx"

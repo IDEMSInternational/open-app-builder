@@ -35,9 +35,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "workshop_stepper_actions.workshop_id"
+          "exclude_from_translation": true
         },
         {
           "type": "nested_properties",
@@ -45,80 +43,25 @@
           "rows": [
             {
               "name": "nav_template_list",
-              "value": [
-                "w_crisis_care_together",
-                "w_crisis_relax",
-                "w_crisis_reflect_together",
-                "w_crisis_intro",
-                "w_crisis_read_1_temp",
-                "w_crisis_talk_1",
-                "w_crisis_read_2_temp",
-                "w_crisis_talk_2",
-                "w_crisis_tools_activity",
-                "w_crisis_learn_temp",
-                "w_crisis_home_practice",
-                "w_crisis_ending"
-              ],
-              "condition": "@field.do_this_workshop_together",
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "@field.do_this_workshop_together",
-                    "matchedExpression": "@field.do_this_workshop_together",
-                    "type": "field",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
+              "value": "w_crisis_care_together;\nw_crisis_relax;\nw_crisis_reflect_together;\nw_crisis_intro;\nw_crisis_read_1_temp;\nw_crisis_talk_1;\nw_crisis_read_2_temp;\nw_crisis_talk_2;\nw_crisis_tools_activity;\nw_crisis_learn_temp;\nw_crisis_home_practice;\nw_crisis_ending",
+              "_translations": {
+                "value": {}
               },
-              "_dynamicDependencies": {
-                "@field.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "@field.do_this_workshop_together",
+              "exclude_from_translation": true
             },
             {
               "name": "nav_template_list",
-              "value": [
-                "w_crisis_welcome_individual",
-                "w_crisis_relax",
-                "w_crisis_intro",
-                "w_crisis_read_1_temp",
-                "w_crisis_question_1",
-                "w_crisis_read_2_temp",
-                "w_crisis_question_2",
-                "w_crisis_tools_activity",
-                "w_crisis_learn_temp",
-                "w_crisis_home_practice",
-                "w_crisis_ending"
-              ],
-              "condition": "!@field.do_this_workshop_together",
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "!@field.do_this_workshop_together",
-                    "matchedExpression": "!@field.do_this_workshop_together",
-                    "type": "field",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
+              "value": "w_crisis_welcome_individual;\nw_crisis_relax;\nw_crisis_intro;\nw_crisis_read_1_temp;\nw_crisis_question_1;\nw_crisis_read_2_temp;\nw_crisis_question_2;\nw_crisis_tools_activity;\nw_crisis_learn_temp;\nw_crisis_home_practice;\nw_crisis_ending",
+              "_translations": {
+                "value": {}
               },
-              "_dynamicDependencies": {
-                "!@field.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "!@field.do_this_workshop_together",
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "workshop_stepper_actions.workshop_stepper"
+          ]
         }
-      ],
-      "_nested_name": "workshop_stepper_actions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"

@@ -7,11 +7,10 @@
     {
       "type": "tile_component",
       "name": "tile_1",
-      "parameter_list": {
-        "style": "parent_centre_1",
-        "first_line_text": "Tile 1"
-      },
-      "_nested_name": "tile_1"
+      "parameter_list": [
+        "style:parent_centre_1",
+        "first_line_text: Tile 1"
+      ]
     },
     {
       "type": "display_group",
@@ -20,51 +19,45 @@
         {
           "type": "tile_component",
           "name": "tile_2",
-          "parameter_list": {
-            "style": "parent_centre_1",
-            "first_line_text": "Tile 2"
-          },
-          "_nested_name": "dg_1.tile_2"
+          "parameter_list": [
+            "style:parent_centre_1",
+            "first_line_text: Tile 2"
+          ]
         },
         {
           "type": "tile_component",
           "name": "tile_3",
-          "parameter_list": {
-            "style": "parent_centre_1",
-            "first_line_text": "Tile 3"
-          },
-          "_nested_name": "dg_1.tile_3"
+          "parameter_list": [
+            "style:parent_centre_1",
+            "first_line_text: Tile 3"
+          ]
         }
-      ],
-      "_nested_name": "dg_1"
+      ]
     },
     {
       "type": "display_group",
       "name": "dg_1",
-      "parameter_list": {
-        "style": "parent_point"
-      },
+      "parameter_list": [
+        "style:parent_point"
+      ],
       "rows": [
         {
           "type": "tile_component",
           "name": "tile_2",
-          "parameter_list": {
-            "style": "parent_centre_1",
-            "first_line_text": "Tile 2"
-          },
-          "_nested_name": "dg_1.tile_2"
+          "parameter_list": [
+            "style:parent_centre_1",
+            "first_line_text: Tile 2"
+          ]
         },
         {
           "type": "tile_component",
           "name": "tile_3",
-          "parameter_list": {
-            "style": "parent_centre_1",
-            "first_line_text": "Tile 3"
-          },
-          "_nested_name": "dg_1.tile_3"
+          "parameter_list": [
+            "style:parent_centre_1",
+            "first_line_text: Tile 3"
+          ]
         }
-      ],
-      "_nested_name": "dg_1"
+      ]
     },
     {
       "type": "button",
@@ -72,8 +65,7 @@
       "value": "Button 1",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "button_1"
+      }
     },
     {
       "type": "display_group",
@@ -85,8 +77,7 @@
           "value": "Button 2",
           "_translations": {
             "value": {}
-          },
-          "_nested_name": "dg_2.button_2"
+          }
         },
         {
           "type": "button",
@@ -94,18 +85,16 @@
           "value": "Button 3",
           "_translations": {
             "value": {}
-          },
-          "_nested_name": "dg_2.button_3"
+          }
         }
-      ],
-      "_nested_name": "dg_2"
+      ]
     },
     {
       "type": "display_group",
       "name": "dg_2",
-      "parameter_list": {
-        "style": "parent_point"
-      },
+      "parameter_list": [
+        "style:parent_point"
+      ],
       "rows": [
         {
           "type": "button",
@@ -113,8 +102,7 @@
           "value": "Button 2",
           "_translations": {
             "value": {}
-          },
-          "_nested_name": "dg_2.button_2"
+          }
         },
         {
           "type": "button",
@@ -122,11 +110,9 @@
           "value": "Button 3",
           "_translations": {
             "value": {}
-          },
-          "_nested_name": "dg_2.button_3"
+          }
         }
-      ],
-      "_nested_name": "dg_2"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_buttons.xlsx"

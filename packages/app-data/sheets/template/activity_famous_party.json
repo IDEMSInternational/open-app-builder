@@ -24,23 +24,6 @@
           "value": "@data.something_fun.famous_party",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "lib_act_something_fun.activity_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.something_fun.famous_party",
-                "matchedExpression": "@data.something_fun.famous_party",
-                "type": "data",
-                "fieldName": "something_fun"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.something_fun.famous_party": [
-              "value"
-            ]
           }
         },
         {
@@ -55,12 +38,9 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "lib_act_something_fun.activity_text"
+          }
         }
-      ],
-      "_nested_name": "lib_act_something_fun"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/parent_centre_templates/databank_activities.xlsx"

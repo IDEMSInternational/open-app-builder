@@ -11,8 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_unordered"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -21,8 +20,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_unordered"
+      "exclude_from_translation": true
     },
     {
       "type": "title",
@@ -31,8 +29,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_ordered"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -42,10 +39,9 @@
         "value": {}
       },
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "numbered"
-      },
-      "_nested_name": "text_ordered"
+      "parameter_list": [
+        "style: numbered"
+      ]
     },
     {
       "type": "title",
@@ -54,8 +50,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_ordered"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -65,10 +60,9 @@
         "value": {}
       },
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "numbered"
-      },
-      "_nested_name": "text_ordered2"
+      "parameter_list": [
+        "style: numbered"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_ordered_list.xlsx"

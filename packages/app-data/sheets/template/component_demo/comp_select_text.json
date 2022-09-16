@@ -10,24 +10,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "user_id",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@calc(this.app_user_id)",
-            "matchedExpression": "@calc(this.app_user_id)",
-            "type": "calc",
-            "fieldName": "this.app_user_id"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@calc(this.app_user_id)": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "copy_text",
@@ -35,9 +18,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "copy_text"
+      "exclude_from_translation": true
     },
     {
       "name": "copy_icon_1",
@@ -45,9 +26,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "copy_icon_1"
+      "exclude_from_translation": true
     },
     {
       "name": "copy_icon_2",
@@ -55,9 +34,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "copy_icon_2"
+      "exclude_from_translation": true
     },
     {
       "name": "copied_text",
@@ -65,9 +42,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "copied_text"
+      "exclude_from_translation": true
     },
     {
       "name": "copied_icon_1",
@@ -75,9 +50,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "copied_icon_1"
+      "exclude_from_translation": true
     },
     {
       "name": "copied_icon_2",
@@ -85,9 +58,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "copied_icon_2"
+      "exclude_from_translation": true
     },
     {
       "type": "select_text",
@@ -96,50 +67,10 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "copy_text": "@local.copy_text",
-        "copied_text": "@local.copied_text"
-      },
-      "_nested_name": "select_text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.user_id",
-            "matchedExpression": "@local.user_id",
-            "type": "local",
-            "fieldName": "user_id"
-          }
-        ],
-        "parameter_list": {
-          "copy_text": [
-            {
-              "fullExpression": "@local.copy_text",
-              "matchedExpression": "@local.copy_text",
-              "type": "local",
-              "fieldName": "copy_text"
-            }
-          ],
-          "copied_text": [
-            {
-              "fullExpression": "@local.copied_text",
-              "matchedExpression": "@local.copied_text",
-              "type": "local",
-              "fieldName": "copied_text"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.user_id": [
-          "value"
-        ],
-        "@local.copy_text": [
-          "parameter_list.copy_text"
-        ],
-        "@local.copied_text": [
-          "parameter_list.copied_text"
-        ]
-      }
+      "parameter_list": [
+        "copy_text: @local.copy_text",
+        "copied_text: @local.copied_text"
+      ]
     },
     {
       "type": "select_text",
@@ -148,50 +79,10 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "copy_icon": "@local.copy_icon_1",
-        "copied_text": "@local.copied_text"
-      },
-      "_nested_name": "select_text_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.user_id",
-            "matchedExpression": "@local.user_id",
-            "type": "local",
-            "fieldName": "user_id"
-          }
-        ],
-        "parameter_list": {
-          "copy_icon": [
-            {
-              "fullExpression": "@local.copy_icon_1",
-              "matchedExpression": "@local.copy_icon_1",
-              "type": "local",
-              "fieldName": "copy_icon_1"
-            }
-          ],
-          "copied_text": [
-            {
-              "fullExpression": "@local.copied_text",
-              "matchedExpression": "@local.copied_text",
-              "type": "local",
-              "fieldName": "copied_text"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.user_id": [
-          "value"
-        ],
-        "@local.copy_icon_1": [
-          "parameter_list.copy_icon"
-        ],
-        "@local.copied_text": [
-          "parameter_list.copied_text"
-        ]
-      }
+      "parameter_list": [
+        "copy_icon: @local.copy_icon_1",
+        "copied_text: @local.copied_text"
+      ]
     },
     {
       "type": "select_text",
@@ -200,50 +91,10 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "copy_text": "@local.copy_text",
-        "copied_icon": "@local.copied_icon_1"
-      },
-      "_nested_name": "select_text_3",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.user_id",
-            "matchedExpression": "@local.user_id",
-            "type": "local",
-            "fieldName": "user_id"
-          }
-        ],
-        "parameter_list": {
-          "copy_text": [
-            {
-              "fullExpression": "@local.copy_text",
-              "matchedExpression": "@local.copy_text",
-              "type": "local",
-              "fieldName": "copy_text"
-            }
-          ],
-          "copied_icon": [
-            {
-              "fullExpression": "@local.copied_icon_1",
-              "matchedExpression": "@local.copied_icon_1",
-              "type": "local",
-              "fieldName": "copied_icon_1"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.user_id": [
-          "value"
-        ],
-        "@local.copy_text": [
-          "parameter_list.copy_text"
-        ],
-        "@local.copied_icon_1": [
-          "parameter_list.copied_icon"
-        ]
-      }
+      "parameter_list": [
+        "copy_text: @local.copy_text",
+        "copied_icon: @local.copied_icon_1"
+      ]
     },
     {
       "type": "select_text",
@@ -252,50 +103,10 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "copy_icon": "@local.copy_icon_2",
-        "copied_icon": "@local.copied_icon_2"
-      },
-      "_nested_name": "select_text_4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.user_id",
-            "matchedExpression": "@local.user_id",
-            "type": "local",
-            "fieldName": "user_id"
-          }
-        ],
-        "parameter_list": {
-          "copy_icon": [
-            {
-              "fullExpression": "@local.copy_icon_2",
-              "matchedExpression": "@local.copy_icon_2",
-              "type": "local",
-              "fieldName": "copy_icon_2"
-            }
-          ],
-          "copied_icon": [
-            {
-              "fullExpression": "@local.copied_icon_2",
-              "matchedExpression": "@local.copied_icon_2",
-              "type": "local",
-              "fieldName": "copied_icon_2"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.user_id": [
-          "value"
-        ],
-        "@local.copy_icon_2": [
-          "parameter_list.copy_icon"
-        ],
-        "@local.copied_icon_2": [
-          "parameter_list.copied_icon"
-        ]
-      }
+      "parameter_list": [
+        "copy_icon: @local.copy_icon_2",
+        "copied_icon: @local.copied_icon_2"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_select_text.xlsx"

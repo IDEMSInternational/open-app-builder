@@ -41,20 +41,15 @@
               "za_zu": true
             }
           },
-          "hidden": false,
-          "type": "set_variable",
-          "_nested_name": "box_image.title"
+          "hidden": false
         },
         {
           "name": "image_src",
           "style_list": [
             "max-height: 300px"
-          ],
-          "type": "set_variable",
-          "_nested_name": "box_image.image_src"
+          ]
         }
-      ],
-      "_nested_name": "box_image"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/survey.xlsx"

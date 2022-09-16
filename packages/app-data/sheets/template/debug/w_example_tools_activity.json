@@ -31,14 +31,11 @@
               "name": "content_box",
               "value": "w_example_tools",
               "exclude_from_translation": true,
-              "rows": [],
-              "_nested_name": "tools_activity.workshop_activity.content_box"
+              "rows": []
             }
-          ],
-          "_nested_name": "tools_activity.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "tools_activity"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_workshop.xlsx"

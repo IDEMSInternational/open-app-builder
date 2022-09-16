@@ -16,24 +16,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_condition_bottom.text_result",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.radio_group_text",
-                "matchedExpression": "@local.radio_group_text",
-                "type": "local",
-                "fieldName": "radio_group_text"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.radio_group_text": [
-              "value"
-            ]
-          }
+          "exclude_from_translation": true
         },
         {
           "name": "text_reply",
@@ -42,24 +25,7 @@
             "value": {}
           },
           "condition": "@field.radio_button_field==\"name_var_1\"",
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_condition_bottom.text_reply",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@field.radio_button_field==\"name_var_1\"",
-                "matchedExpression": "@field.radio_button_field",
-                "type": "field",
-                "fieldName": "radio_button_field"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@field.radio_button_field": [
-              "condition"
-            ]
-          }
+          "exclude_from_translation": true
         },
         {
           "name": "text_reply",
@@ -68,24 +34,7 @@
             "value": {}
           },
           "condition": "@field.radio_button_field==\"name_var_2\"",
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_condition_bottom.text_reply",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@field.radio_button_field==\"name_var_2\"",
-                "matchedExpression": "@field.radio_button_field",
-                "type": "field",
-                "fieldName": "radio_button_field"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@field.radio_button_field": [
-              "condition"
-            ]
-          }
+          "exclude_from_translation": true
         },
         {
           "name": "text_reply",
@@ -94,27 +43,9 @@
             "value": {}
           },
           "condition": "@field.radio_button_field==\"name_var_3\"",
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_condition_bottom.text_reply",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@field.radio_button_field==\"name_var_3\"",
-                "matchedExpression": "@field.radio_button_field",
-                "type": "field",
-                "fieldName": "radio_button_field"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@field.radio_button_field": [
-              "condition"
-            ]
-          }
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "example_condition_bottom"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_condition.xlsx"

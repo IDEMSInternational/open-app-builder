@@ -37,18 +37,13 @@
                   "_translations": {
                     "value": {}
                   },
-                  "exclude_from_translation": true,
-                  "type": "set_variable",
-                  "_nested_name": "welcome_together.watch.workshop_activity.intro_text"
+                  "exclude_from_translation": true
                 }
-              ],
-              "_nested_name": "welcome_together.watch.workshop_activity"
+              ]
             }
-          ],
-          "_nested_name": "welcome_together.watch"
+          ]
         }
-      ],
-      "_nested_name": "welcome_together"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_workshop.xlsx"

@@ -45,9 +45,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "talk_together.workshop_activity.intro_text"
+              }
             },
             {
               "type": "nested_properties",
@@ -65,39 +63,6 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "talk_together.workshop_activity.content_box.text",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "Discuss together: \n\n* How do you think @global.w_instruct_teen_girl felt about the way @global.w_instruct_female_caregiver responded?  \n* What could @global.w_instruct_female_caregiver have done differently?",
-                        "matchedExpression": "@global.w_instruct_teen_girl",
-                        "type": "global",
-                        "fieldName": "w_instruct_teen_girl"
-                      },
-                      {
-                        "fullExpression": "Discuss together: \n\n* How do you think @global.w_instruct_teen_girl felt about the way @global.w_instruct_female_caregiver responded?  \n* What could @global.w_instruct_female_caregiver have done differently?",
-                        "matchedExpression": "@global.w_instruct_female_caregiver",
-                        "type": "global",
-                        "fieldName": "w_instruct_female_caregiver"
-                      },
-                      {
-                        "fullExpression": "Discuss together: \n\n* How do you think @global.w_instruct_teen_girl felt about the way @global.w_instruct_female_caregiver responded?  \n* What could @global.w_instruct_female_caregiver have done differently?",
-                        "matchedExpression": "@global.w_instruct_female_caregiver",
-                        "type": "global",
-                        "fieldName": "w_instruct_female_caregiver"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@global.w_instruct_teen_girl": [
-                      "value"
-                    ],
-                    "@global.w_instruct_female_caregiver": [
-                      "value",
-                      "value"
-                    ]
                   }
                 },
                 {
@@ -117,33 +82,13 @@
                       "_cleaned": "click | pop_up:w_instruct_talk_1_pop"
                     }
                   ],
-                  "hidden": false,
-                  "type": "set_variable",
-                  "_nested_name": "talk_together.workshop_activity.content_box.button_1",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "@global.ideas_short_button",
-                        "matchedExpression": "@global.ideas_short_button",
-                        "type": "global",
-                        "fieldName": "ideas_short_button"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@global.ideas_short_button": [
-                      "value"
-                    ]
-                  }
+                  "hidden": false
                 }
-              ],
-              "_nested_name": "talk_together.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "talk_together.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "talk_together"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"

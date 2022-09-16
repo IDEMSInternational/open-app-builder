@@ -25,9 +25,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "m_hp_reminder.in_week_message.text"
+              }
             },
             {
               "name": "button_1",
@@ -46,30 +44,11 @@
                   "_cleaned": "click | go_to:w_rules_try_pop"
                 }
               ],
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "m_hp_reminder.in_week_message.button_1",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@global.ideas_button",
-                    "matchedExpression": "@global.ideas_button",
-                    "type": "global",
-                    "fieldName": "ideas_button"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.ideas_button": [
-                  "value"
-                ]
-              }
+              "hidden": false
             }
-          ],
-          "_nested_name": "m_hp_reminder.in_week_message"
+          ]
         }
-      ],
-      "_nested_name": "m_hp_reminder"
+      ]
     }
   ],
   "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"

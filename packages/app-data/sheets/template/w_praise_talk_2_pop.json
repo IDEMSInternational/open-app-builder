@@ -21,23 +21,6 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "suggestions.description_text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.w_praise_female_caregiver_name praised her teens...",
-                "matchedExpression": "@global.w_praise_female_caregiver_name",
-                "type": "global",
-                "fieldName": "w_praise_female_caregiver_name"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.w_praise_female_caregiver_name": [
-              "value"
-            ]
           }
         },
         {
@@ -52,12 +35,9 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "suggestions.list_text"
+          }
         }
-      ],
-      "_nested_name": "suggestions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"

@@ -40,18 +40,14 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_title"
+          }
         },
         {
           "name": "activity_image",
           "value": "plh_images/workshop_modes/guide_2/write.svg",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_image"
+          }
         },
         {
           "name": "intro_text",
@@ -65,25 +61,19 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.intro_text"
+          }
         },
         {
           "name": "activity_banner",
-          "hidden": false,
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_banner"
+          "hidden": false
         },
         {
           "type": "nested_properties",
           "name": "content_box",
           "value": "box_duo_combo_box",
-          "rows": [],
-          "_nested_name": "workshop_activity.content_box"
+          "rows": []
         }
-      ],
-      "_nested_name": "workshop_activity"
+      ]
     }
   ],
   "_xlsxPath": "global/mode_templates/question_time.xlsx"

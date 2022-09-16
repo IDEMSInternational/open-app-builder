@@ -7,9 +7,9 @@
     {
       "type": "display_group",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "tool_1"
-      },
+      "parameter_list": [
+        "style: tool_1"
+      ],
       "style_list": [
         "padding: 10px 15px"
       ],
@@ -29,13 +29,12 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "white"
-          },
+          "parameter_list": [
+            "style: white"
+          ],
           "style_list": [
             "margin-top:20px"
-          ],
-          "_nested_name": "display_group.ft"
+          ]
         },
         {
           "type": "text",
@@ -52,15 +51,14 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "text_align": "left",
-            "style": "whiteText"
-          },
+          "parameter_list": [
+            "text_align: left",
+            "style: whiteText"
+          ],
           "style_list": [
             "margin-top: 15px",
             "max-width: 320px"
-          ],
-          "_nested_name": "display_group.ftt"
+          ]
         },
         {
           "type": "button",
@@ -70,21 +68,18 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "nested_color full-width"
-          },
-          "_nested_name": "display_group.bt_1"
+          "parameter_list": [
+            "style: nested_color full-width"
+          ]
         }
-      ],
-      "name": "display_group",
-      "_nested_name": "display_group"
+      ]
     },
     {
       "type": "display_group",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "tool_2"
-      },
+      "parameter_list": [
+        "style: tool_2"
+      ],
       "style_list": [
         "padding: 10px 15px"
       ],
@@ -104,13 +99,12 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "white"
-          },
+          "parameter_list": [
+            "style: white"
+          ],
           "style_list": [
             "margin-top:20px"
-          ],
-          "_nested_name": "display_group.ft"
+          ]
         },
         {
           "type": "subtitle",
@@ -120,13 +114,12 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "white"
-          },
+          "parameter_list": [
+            "style: white"
+          ],
           "style_list": [
             "margin-top: 15px"
-          ],
-          "_nested_name": "display_group.ss"
+          ]
         },
         {
           "type": "text",
@@ -143,15 +136,14 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "text_align": "left",
-            "style": "whiteText"
-          },
+          "parameter_list": [
+            "text_align: left",
+            "style: whiteText"
+          ],
           "style_list": [
             "margin-top: 15px",
             "max-width: 320px"
-          ],
-          "_nested_name": "display_group.ftt"
+          ]
         },
         {
           "type": "button",
@@ -161,21 +153,18 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "nested_color full-width"
-          },
-          "_nested_name": "display_group.bt_2"
+          "parameter_list": [
+            "style: nested_color full-width"
+          ]
         }
-      ],
-      "name": "display_group",
-      "_nested_name": "display_group"
+      ]
     },
     {
       "type": "display_group",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "tool_3"
-      },
+      "parameter_list": [
+        "style: tool_3"
+      ],
       "style_list": [
         "padding: 10px 15px"
       ],
@@ -195,13 +184,12 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "white"
-          },
+          "parameter_list": [
+            "style: white"
+          ],
           "style_list": [
             "margin-top:20px"
-          ],
-          "_nested_name": "display_group.ft"
+          ]
         },
         {
           "type": "subtitle",
@@ -211,13 +199,12 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "white"
-          },
+          "parameter_list": [
+            "style: white"
+          ],
           "style_list": [
             "margin-top: 15px"
-          ],
-          "_nested_name": "display_group.ss"
+          ]
         },
         {
           "type": "text",
@@ -234,15 +221,14 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "text_align": "left",
-            "style": "whiteText"
-          },
+          "parameter_list": [
+            "text_align: left",
+            "style: whiteText"
+          ],
           "style_list": [
             "margin-top: 15px",
             "max-width: 320px"
-          ],
-          "_nested_name": "display_group.ftt"
+          ]
         },
         {
           "type": "button",
@@ -252,27 +238,21 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "nested_color  full-width"
-          },
-          "_nested_name": "display_group.bt_3"
+          "parameter_list": [
+            "style: nested_color  full-width"
+          ]
         }
-      ],
-      "name": "display_group",
-      "_nested_name": "display_group"
+      ]
     },
     {
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "name": "set_variable",
-      "_nested_name": "set_variable"
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "tool_4"
-      },
+      "parameter_list": [
+        "style: tool_4"
+      ],
       "style_list": [
         "padding: 10px 15px"
       ],
@@ -292,13 +272,12 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "white"
-          },
+          "parameter_list": [
+            "style: white"
+          ],
           "style_list": [
             "margin-top:20px"
-          ],
-          "_nested_name": "display_group.ft"
+          ]
         },
         {
           "type": "subtitle",
@@ -308,13 +287,12 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "white"
-          },
+          "parameter_list": [
+            "style: white"
+          ],
           "style_list": [
             "margin-top: 15px"
-          ],
-          "_nested_name": "display_group.ss"
+          ]
         },
         {
           "type": "text",
@@ -331,15 +309,14 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "text_align": "left",
-            "style": "whiteText"
-          },
+          "parameter_list": [
+            "text_align: left",
+            "style: whiteText"
+          ],
           "style_list": [
             "margin-top: 15px",
             "max-width: 320px"
-          ],
-          "_nested_name": "display_group.ftt"
+          ]
         },
         {
           "type": "button",
@@ -349,21 +326,18 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "nested_color full-width"
-          },
-          "_nested_name": "display_group.bt_3"
+          "parameter_list": [
+            "style: nested_color full-width"
+          ]
         }
-      ],
-      "name": "display_group",
-      "_nested_name": "display_group"
+      ]
     },
     {
       "type": "display_group",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "tool_5"
-      },
+      "parameter_list": [
+        "style: tool_5"
+      ],
       "style_list": [
         "padding: 10px 15px"
       ],
@@ -383,13 +357,12 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "white"
-          },
+          "parameter_list": [
+            "style: white"
+          ],
           "style_list": [
             "margin-top:20px"
-          ],
-          "_nested_name": "display_group.ft"
+          ]
         },
         {
           "type": "subtitle",
@@ -399,13 +372,12 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "white"
-          },
+          "parameter_list": [
+            "style: white"
+          ],
           "style_list": [
             "margin-top: 15px"
-          ],
-          "_nested_name": "display_group.ss"
+          ]
         },
         {
           "type": "text",
@@ -422,15 +394,14 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "text_align": "left",
-            "style": "whiteText"
-          },
+          "parameter_list": [
+            "text_align: left",
+            "style: whiteText"
+          ],
           "style_list": [
             "margin-top: 15px",
             "max-width: 320px"
-          ],
-          "_nested_name": "display_group.ftt"
+          ]
         },
         {
           "type": "button",
@@ -440,27 +411,21 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "nested_color full-width"
-          },
-          "_nested_name": "display_group.bt_3"
+          "parameter_list": [
+            "style: nested_color full-width"
+          ]
         }
-      ],
-      "name": "display_group",
-      "_nested_name": "display_group"
+      ]
     },
     {
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "name": "set_variable",
-      "_nested_name": "set_variable"
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "tool_5"
-      },
+      "parameter_list": [
+        "style: tool_5"
+      ],
       "style_list": [
         "padding: 10px 15px"
       ],
@@ -480,13 +445,12 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "white"
-          },
+          "parameter_list": [
+            "style: white"
+          ],
           "style_list": [
             "margin-top:20px"
-          ],
-          "_nested_name": "display_group.ft"
+          ]
         },
         {
           "type": "subtitle",
@@ -496,13 +460,12 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "white"
-          },
+          "parameter_list": [
+            "style: white"
+          ],
           "style_list": [
             "margin-top: 15px"
-          ],
-          "_nested_name": "display_group.ss"
+          ]
         },
         {
           "type": "text",
@@ -519,15 +482,14 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "text_align": "left",
-            "style": "whiteText"
-          },
+          "parameter_list": [
+            "text_align: left",
+            "style: whiteText"
+          ],
           "style_list": [
             "margin-top: 15px",
             "max-width: 320px"
-          ],
-          "_nested_name": "display_group.ftt"
+          ]
         },
         {
           "type": "image",
@@ -537,21 +499,18 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "corner"
-          },
-          "_nested_name": "display_group.image"
+          "parameter_list": [
+            "style: corner"
+          ]
         }
-      ],
-      "name": "display_group",
-      "_nested_name": "display_group"
+      ]
     },
     {
       "type": "display_group",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "tool_2"
-      },
+      "parameter_list": [
+        "style: tool_2"
+      ],
       "style_list": [
         "padding: 10px 15px"
       ],
@@ -571,10 +530,9 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "white"
-          },
-          "_nested_name": "display_group.ft"
+          "parameter_list": [
+            "style: white"
+          ]
         },
         {
           "type": "text",
@@ -591,23 +549,22 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "text_align": "left",
-            "style": "whiteText"
-          },
+          "parameter_list": [
+            "text_align: left",
+            "style: whiteText"
+          ],
           "style_list": [
             "margin-top: 10px",
             "max-width: 320px"
-          ],
-          "_nested_name": "display_group.ftt"
+          ]
         },
         {
           "type": "display_group",
           "name": "bgg_1",
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "tool_1"
-          },
+          "parameter_list": [
+            "style: tool_1"
+          ],
           "style_list": [
             "maggin-top:15px"
           ],
@@ -619,22 +576,18 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "_nested_name": "display_group.bgg_1.image"
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "display_group.bgg_1"
+          ]
         }
-      ],
-      "name": "display_group",
-      "_nested_name": "display_group"
+      ]
     },
     {
       "type": "display_group",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "tool_3"
-      },
+      "parameter_list": [
+        "style: tool_3"
+      ],
       "style_list": [
         "padding: 10px 15px"
       ],
@@ -654,10 +607,9 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "white"
-          },
-          "_nested_name": "display_group.ft"
+          "parameter_list": [
+            "style: white"
+          ]
         },
         {
           "type": "text",
@@ -674,23 +626,22 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "text_align": "left",
-            "style": "whiteText"
-          },
+          "parameter_list": [
+            "text_align: left",
+            "style: whiteText"
+          ],
           "style_list": [
             "margin-top: 10px",
             "max-width: 320px"
-          ],
-          "_nested_name": "display_group.ftt"
+          ]
         },
         {
           "type": "display_group",
           "name": "bgg_1",
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "tool_2"
-          },
+          "parameter_list": [
+            "style: tool_2"
+          ],
           "style_list": [
             "maggin-top:15px"
           ],
@@ -702,15 +653,11 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "_nested_name": "display_group.bgg_1.image"
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "display_group.bgg_1"
+          ]
         }
-      ],
-      "name": "display_group",
-      "_nested_name": "display_group"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"

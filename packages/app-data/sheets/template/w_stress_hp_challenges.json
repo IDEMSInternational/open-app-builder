@@ -6,9 +6,7 @@
   "rows": [
     {
       "name": "number_of_challenges",
-      "value": 5,
-      "type": "set_variable",
-      "_nested_name": "number_of_challenges"
+      "value": 5
     },
     {
       "type": "template",
@@ -40,23 +38,6 @@
           "value": "@local.number_of_challenges",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.number_of_challenges",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.number_of_challenges",
-                "matchedExpression": "@local.number_of_challenges",
-                "type": "local",
-                "fieldName": "number_of_challenges"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.number_of_challenges": [
-              "value"
-            ]
           }
         },
         {
@@ -64,23 +45,6 @@
           "value": "@data.workshop.w_stress",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_stress",
-                "matchedExpression": "@data.workshop.w_stress",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_stress": [
-              "value"
-            ]
           }
         },
         {
@@ -88,9 +52,7 @@
           "value": "w_stress_hp_talk_mood",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.workshop_hp_mood"
+          }
         },
         {
           "name": "question_text_happy",
@@ -104,9 +66,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.question_text_happy"
+          }
         },
         {
           "name": "question_text_ok_sad",
@@ -120,9 +80,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.question_text_ok_sad"
+          }
         },
         {
           "name": "text_challenge_1",
@@ -136,9 +94,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_1"
+          }
         },
         {
           "name": "reply_challenge_1",
@@ -152,9 +108,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_1"
+          }
         },
         {
           "name": "text_challenge_2",
@@ -168,9 +122,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_2"
+          }
         },
         {
           "name": "reply_challenge_2",
@@ -184,9 +136,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_2"
+          }
         },
         {
           "name": "text_challenge_3",
@@ -200,9 +150,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_3"
+          }
         },
         {
           "name": "reply_challenge_3",
@@ -216,9 +164,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_3"
+          }
         },
         {
           "name": "text_challenge_4",
@@ -232,9 +178,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_4"
+          }
         },
         {
           "name": "reply_challenge_4",
@@ -248,9 +192,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_4"
+          }
         },
         {
           "name": "text_challenge_5",
@@ -264,9 +206,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.text_challenge_5"
+          }
         },
         {
           "name": "reply_challenge_5",
@@ -280,12 +220,9 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_challenges.reply_challenge_5"
+          }
         }
-      ],
-      "_nested_name": "home_practice_challenges"
+      ]
     }
   ],
   "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_stress_hp_review.xlsx"

@@ -10,8 +10,7 @@
       "value": "Double nested 1",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title"
+      }
     },
     {
       "type": "template",
@@ -23,9 +22,7 @@
           "value": "Text 1",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "template_1.text"
+          }
         },
         {
           "type": "nested_properties",
@@ -37,9 +34,7 @@
               "value": "Text 2",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "template_1.subtemplate_1.text"
+              }
             },
             {
               "type": "nested_properties",
@@ -51,18 +46,13 @@
                   "value": "Text 3",
                   "_translations": {
                     "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "template_1.subtemplate_1.subtemplate_1.text"
+                  }
                 }
-              ],
-              "_nested_name": "template_1.subtemplate_1.subtemplate_1"
+              ]
             }
-          ],
-          "_nested_name": "template_1.subtemplate_1"
+          ]
         }
-      ],
-      "_nested_name": "template_1"
+      ]
     },
     {
       "type": "title",
@@ -70,8 +60,7 @@
       "value": "Double nested 2",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title"
+      }
     },
     {
       "type": "template",
@@ -83,9 +72,7 @@
           "value": "Text 1",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "template_2.text"
+          }
         },
         {
           "type": "nested_properties",
@@ -97,9 +84,7 @@
               "value": "Text 2",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "template_2.subtemplate_1.text"
+              }
             },
             {
               "type": "nested_properties",
@@ -111,18 +96,13 @@
                   "value": "Text 3",
                   "_translations": {
                     "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "template_2.subtemplate_1.subtemplate_2.text"
+                  }
                 }
-              ],
-              "_nested_name": "template_2.subtemplate_1.subtemplate_2"
+              ]
             }
-          ],
-          "_nested_name": "template_2.subtemplate_1"
+          ]
         }
-      ],
-      "_nested_name": "template_2"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_nested_same_name.xlsx"

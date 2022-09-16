@@ -24,9 +24,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_1.title"
+              }
             },
             {
               "name": "text_1",
@@ -40,9 +38,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_1.text_1"
+              }
             },
             {
               "name": "button_1",
@@ -68,12 +64,9 @@
                   "_cleaned": "click | go_to:w_self_care_relax"
                 }
               ],
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_1.button_1"
+              "hidden": false
             }
-          ],
-          "_nested_name": "essential_tools.tool_1"
+          ]
         },
         {
           "type": "nested_properties",
@@ -91,9 +84,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_2.title"
+              }
             },
             {
               "name": "text_1",
@@ -107,9 +98,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_2.text_1"
+              }
             },
             {
               "name": "button_1",
@@ -135,12 +124,9 @@
                   "_cleaned": "click | go_to:w_self_care_recognise"
                 }
               ],
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_2.button_1"
+              "hidden": false
             }
-          ],
-          "_nested_name": "essential_tools.tool_2"
+          ]
         },
         {
           "type": "nested_properties",
@@ -158,9 +144,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_3.title"
+              }
             },
             {
               "name": "text_1",
@@ -174,9 +158,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_3.text_1"
+              }
             },
             {
               "name": "button_1",
@@ -202,15 +184,11 @@
                   "_cleaned": "click | go_to:w_self_care_reward"
                 }
               ],
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_3.button_1"
+              "hidden": false
             }
-          ],
-          "_nested_name": "essential_tools.tool_3"
+          ]
         }
-      ],
-      "_nested_name": "essential_tools"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"

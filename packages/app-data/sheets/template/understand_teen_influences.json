@@ -16,8 +16,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text_1"
+      }
     },
     {
       "type": "text",
@@ -32,8 +31,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text_2"
+      }
     },
     {
       "type": "text",
@@ -48,8 +46,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text_3"
+      }
     }
   ],
   "_xlsxPath": "global/top_templates/parent_centre_templates/covid/covid_reflect.xlsx"

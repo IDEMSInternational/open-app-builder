@@ -11,23 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_q1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "answer to q1 saved in field answer_q1: @field.answer_q1",
-            "matchedExpression": "@field.answer_q1",
-            "type": "field",
-            "fieldName": "answer_q1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.answer_q1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -36,23 +20,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_q2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "answer to q2 saved in field answer_q2: @field.answer_q2",
-            "matchedExpression": "@field.answer_q2",
-            "type": "field",
-            "fieldName": "answer_q2"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.answer_q2": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "title",
@@ -61,8 +29,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_1"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -72,23 +39,7 @@
         "value": {}
       },
       "hidden": "@field.answer_q1>=4",
-      "exclude_from_translation": true,
-      "_nested_name": "conditional_text_1",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@field.answer_q1>=4",
-            "matchedExpression": "@field.answer_q1",
-            "type": "field",
-            "fieldName": "answer_q1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.answer_q1": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -98,23 +49,7 @@
         "value": {}
       },
       "hidden": "@field.answer_q2>=4",
-      "exclude_from_translation": true,
-      "_nested_name": "conditional_text_2",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@field.answer_q2>=4",
-            "matchedExpression": "@field.answer_q2",
-            "type": "field",
-            "fieldName": "answer_q2"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.answer_q2": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -124,32 +59,7 @@
         "value": {}
       },
       "hidden": "@field.answer_q1<4 || @field.answer_q2<4",
-      "exclude_from_translation": true,
-      "_nested_name": "conditional_text_3",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@field.answer_q1<4 || @field.answer_q2<4",
-            "matchedExpression": "@field.answer_q1",
-            "type": "field",
-            "fieldName": "answer_q1"
-          },
-          {
-            "fullExpression": "@field.answer_q1<4 || @field.answer_q2<4",
-            "matchedExpression": "@field.answer_q2",
-            "type": "field",
-            "fieldName": "answer_q2"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.answer_q1": [
-          "hidden"
-        ],
-        "@field.answer_q2": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "title",
@@ -158,8 +68,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_2"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -169,23 +78,7 @@
         "value": {}
       },
       "condition": "@field.answer_q1>=4",
-      "exclude_from_translation": true,
-      "_nested_name": "conditional_text",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@field.answer_q1>=4",
-            "matchedExpression": "@field.answer_q1",
-            "type": "field",
-            "fieldName": "answer_q1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.answer_q1": [
-          "condition"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -195,23 +88,7 @@
         "value": {}
       },
       "condition": "!(@field.answer_q1>=4)",
-      "exclude_from_translation": true,
-      "_nested_name": "conditional_text",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "!(@field.answer_q1>=4)",
-            "matchedExpression": "@field.answer_q1",
-            "type": "field",
-            "fieldName": "answer_q1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.answer_q1": [
-          "condition"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "title",
@@ -220,8 +97,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_2"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -236,24 +112,7 @@
             "value": {}
           },
           "condition": "@field.answer_q1>=4",
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_text_1.text",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@field.answer_q1>=4",
-                "matchedExpression": "@field.answer_q1",
-                "type": "field",
-                "fieldName": "answer_q1"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@field.answer_q1": [
-              "condition"
-            ]
-          }
+          "exclude_from_translation": true
         },
         {
           "name": "text",
@@ -262,27 +121,9 @@
             "value": {}
           },
           "condition": "!(@field.answer_q1>=4)",
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_text_1.text",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "!(@field.answer_q1>=4)",
-                "matchedExpression": "@field.answer_q1",
-                "type": "field",
-                "fieldName": "answer_q1"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@field.answer_q1": [
-              "condition"
-            ]
-          }
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "example_text_1"
+      ]
     },
     {
       "type": "button",
@@ -302,8 +143,7 @@
           "_cleaned": "click | go_to:debug_conditional_messages_q2"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "back_to_q1"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -318,9 +158,7 @@
             "value": {}
           },
           "condition": "1>2",
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_text_2.text"
+          "exclude_from_translation": true
         },
         {
           "name": "text",
@@ -329,12 +167,9 @@
             "value": {}
           },
           "condition": "2>1",
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_text_2.text"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "example_text_2"
+      ]
     },
     {
       "type": "template",
@@ -349,9 +184,7 @@
             "value": {}
           },
           "condition": "2>1",
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_text_3.text"
+          "exclude_from_translation": true
         },
         {
           "name": "text",
@@ -360,12 +193,9 @@
             "value": {}
           },
           "condition": "1>2",
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_text_3.text"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "example_text_3"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_conditional_messages.xlsx"

@@ -49,9 +49,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "try_together.workshop_activity.content_box.text"
+                  }
                 },
                 {
                   "name": "button_1",
@@ -66,18 +64,13 @@
                       "_cleaned": "click | pop_up:w_consequence_try_pop"
                     }
                   ],
-                  "hidden": false,
-                  "type": "set_variable",
-                  "_nested_name": "try_together.workshop_activity.content_box.button_1"
+                  "hidden": false
                 }
-              ],
-              "_nested_name": "try_together.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "try_together.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "try_together"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"

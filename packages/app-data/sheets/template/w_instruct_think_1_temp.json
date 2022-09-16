@@ -45,9 +45,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "think.workshop_activity.intro_text"
+              }
             },
             {
               "type": "nested_properties",
@@ -64,9 +62,7 @@
                       "value": "plh_images/workshops/w_instruct/guide_2/think/slide_1.svg",
                       "_translations": {
                         "value": {}
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "think.workshop_activity.content_box.box_1.image_src"
+                      }
                     },
                     {
                       "name": "text",
@@ -80,12 +76,9 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "think.workshop_activity.content_box.box_1.text"
+                      }
                     }
-                  ],
-                  "_nested_name": "think.workshop_activity.content_box.box_1"
+                  ]
                 },
                 {
                   "type": "nested_properties",
@@ -102,9 +95,7 @@
                           "value": "plh_images/workshops/w_instruct/guide_2/think/slide_2.svg",
                           "_translations": {
                             "value": {}
-                          },
-                          "type": "set_variable",
-                          "_nested_name": "think.workshop_activity.content_box.box_2.box_1.image_src"
+                          }
                         },
                         {
                           "name": "text",
@@ -118,12 +109,9 @@
                               "za_xh": true,
                               "za_zu": true
                             }
-                          },
-                          "type": "set_variable",
-                          "_nested_name": "think.workshop_activity.content_box.box_2.box_1.text"
+                          }
                         }
-                      ],
-                      "_nested_name": "think.workshop_activity.content_box.box_2.box_1"
+                      ]
                     },
                     {
                       "type": "nested_properties",
@@ -140,9 +128,7 @@
                               "value": "plh_images/workshops/w_instruct/guide_2/think/slide_1.svg",
                               "_translations": {
                                 "value": {}
-                              },
-                              "type": "set_variable",
-                              "_nested_name": "think.workshop_activity.content_box.box_2.box_2.box_1.image_src"
+                              }
                             },
                             {
                               "name": "text",
@@ -156,12 +142,9 @@
                                   "za_xh": true,
                                   "za_zu": true
                                 }
-                              },
-                              "type": "set_variable",
-                              "_nested_name": "think.workshop_activity.content_box.box_2.box_2.box_1.text"
+                              }
                             }
-                          ],
-                          "_nested_name": "think.workshop_activity.content_box.box_2.box_2.box_1"
+                          ]
                         },
                         {
                           "type": "nested_properties",
@@ -173,9 +156,7 @@
                               "value": "plh_images/workshops/w_instruct/guide_2/think/slide_3.svg",
                               "_translations": {
                                 "value": {}
-                              },
-                              "type": "set_variable",
-                              "_nested_name": "think.workshop_activity.content_box.box_2.box_2.box_2.image_src"
+                              }
                             },
                             {
                               "name": "text",
@@ -189,27 +170,19 @@
                                   "za_xh": true,
                                   "za_zu": true
                                 }
-                              },
-                              "type": "set_variable",
-                              "_nested_name": "think.workshop_activity.content_box.box_2.box_2.box_2.text"
+                              }
                             }
-                          ],
-                          "_nested_name": "think.workshop_activity.content_box.box_2.box_2.box_2"
+                          ]
                         }
-                      ],
-                      "_nested_name": "think.workshop_activity.content_box.box_2.box_2"
+                      ]
                     }
-                  ],
-                  "_nested_name": "think.workshop_activity.content_box.box_2"
+                  ]
                 }
-              ],
-              "_nested_name": "think.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "think.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "think"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"

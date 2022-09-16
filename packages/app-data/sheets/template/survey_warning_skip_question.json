@@ -20,9 +20,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "survey_warning.title"
+          }
         },
         {
           "name": "text",
@@ -36,18 +34,13 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "survey_warning.text"
+          }
         },
         {
           "name": "checkbox",
-          "hidden": true,
-          "type": "set_variable",
-          "_nested_name": "survey_warning.checkbox"
+          "hidden": true
         }
-      ],
-      "_nested_name": "survey_warning"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/survey_warnings.xlsx"

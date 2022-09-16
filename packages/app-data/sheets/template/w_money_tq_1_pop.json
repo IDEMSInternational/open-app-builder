@@ -15,54 +15,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "suggestions.list_text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "* @global.saving_goal_1\n* @global.saving_goal_2\n* @global.saving_goal_3\n* @global.saving_goal_4",
-                "matchedExpression": "@global.saving_goal_1",
-                "type": "global",
-                "fieldName": "saving_goal_1"
-              },
-              {
-                "fullExpression": "* @global.saving_goal_1\n* @global.saving_goal_2\n* @global.saving_goal_3\n* @global.saving_goal_4",
-                "matchedExpression": "@global.saving_goal_2",
-                "type": "global",
-                "fieldName": "saving_goal_2"
-              },
-              {
-                "fullExpression": "* @global.saving_goal_1\n* @global.saving_goal_2\n* @global.saving_goal_3\n* @global.saving_goal_4",
-                "matchedExpression": "@global.saving_goal_3",
-                "type": "global",
-                "fieldName": "saving_goal_3"
-              },
-              {
-                "fullExpression": "* @global.saving_goal_1\n* @global.saving_goal_2\n* @global.saving_goal_3\n* @global.saving_goal_4",
-                "matchedExpression": "@global.saving_goal_4",
-                "type": "global",
-                "fieldName": "saving_goal_4"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.saving_goal_1": [
-              "value"
-            ],
-            "@global.saving_goal_2": [
-              "value"
-            ],
-            "@global.saving_goal_3": [
-              "value"
-            ],
-            "@global.saving_goal_4": [
-              "value"
-            ]
-          }
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "suggestions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"

@@ -16,8 +16,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text_1"
+      }
     },
     {
       "type": "text",
@@ -35,8 +34,7 @@
       },
       "style_list": [
         "overflow-wrap: anywhere"
-      ],
-      "_nested_name": "text_2"
+      ]
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"

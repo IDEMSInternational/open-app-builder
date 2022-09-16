@@ -38,9 +38,7 @@
               "value": "plh_images/workshop_modes/group/final/talk.svg",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "talk_together.workshop_activity.activity_image"
+              }
             },
             {
               "name": "intro_text",
@@ -54,9 +52,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "talk_together.workshop_activity.intro_text"
+              }
             },
             {
               "type": "nested_properties",
@@ -74,18 +70,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "talk_together.workshop_activity.content_box.text"
+                  }
                 }
-              ],
-              "_nested_name": "talk_together.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "talk_together.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "talk_together"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"

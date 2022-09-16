@@ -16,22 +16,6 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "title",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Customise your @global.parent_app",
-            "matchedExpression": "@global.parent_app",
-            "type": "global",
-            "fieldName": "parent_app"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.parent_app": [
-          "value"
-        ]
       }
     },
     {
@@ -48,34 +32,7 @@
           "za_zu": true
         }
       },
-      "condition": "!@field.survey_welcome_completed",
-      "_nested_name": "text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Now that we have built some self-care skills, let’s make sure your @global.weekly_workshops are exactly right for you.",
-            "matchedExpression": "@global.weekly_workshops",
-            "type": "global",
-            "fieldName": "weekly_workshops"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "!@field.survey_welcome_completed",
-            "matchedExpression": "!@field.survey_welcome_completed",
-            "type": "field",
-            "fieldName": "survey_welcome_completed"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.weekly_workshops": [
-          "value"
-        ],
-        "!@field.survey_welcome_completed": [
-          "condition"
-        ]
-      }
+      "condition": "!@field.survey_welcome_completed"
     },
     {
       "type": "text",
@@ -91,23 +48,7 @@
           "za_zu": true
         }
       },
-      "condition": "@field.survey_welcome_completed",
-      "_nested_name": "text",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@field.survey_welcome_completed",
-            "matchedExpression": "@field.survey_welcome_completed",
-            "type": "field",
-            "fieldName": "survey_welcome_completed"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.survey_welcome_completed": [
-          "condition"
-        ]
-      }
+      "condition": "@field.survey_welcome_completed"
     },
     {
       "type": "template",
@@ -128,9 +69,7 @@
         {
           "name": "display_back",
           "value": false,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "nav_buttons.display_back"
+          "exclude_from_translation": true
         },
         {
           "name": "button_completed",
@@ -158,35 +97,7 @@
               "_cleaned": "click | emit:completed"
             }
           ],
-          "condition": "!@field.survey_welcome_completed",
-          "type": "set_variable",
-          "_nested_name": "nav_buttons.button_completed",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.start_button",
-                "matchedExpression": "@global.start_button",
-                "type": "global",
-                "fieldName": "start_button"
-              }
-            ],
-            "condition": [
-              {
-                "fullExpression": "!@field.survey_welcome_completed",
-                "matchedExpression": "!@field.survey_welcome_completed",
-                "type": "field",
-                "fieldName": "survey_welcome_completed"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.start_button": [
-              "value"
-            ],
-            "!@field.survey_welcome_completed": [
-              "condition"
-            ]
-          }
+          "condition": "!@field.survey_welcome_completed"
         },
         {
           "name": "button_completed",
@@ -205,38 +116,9 @@
               "_cleaned": "click | emit:completed"
             }
           ],
-          "condition": "@field.survey_welcome_completed",
-          "type": "set_variable",
-          "_nested_name": "nav_buttons.button_completed",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.skip_button",
-                "matchedExpression": "@global.skip_button",
-                "type": "global",
-                "fieldName": "skip_button"
-              }
-            ],
-            "condition": [
-              {
-                "fullExpression": "@field.survey_welcome_completed",
-                "matchedExpression": "@field.survey_welcome_completed",
-                "type": "field",
-                "fieldName": "survey_welcome_completed"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.skip_button": [
-              "value"
-            ],
-            "@field.survey_welcome_completed": [
-              "condition"
-            ]
-          }
+          "condition": "@field.survey_welcome_completed"
         }
-      ],
-      "_nested_name": "nav_buttons"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"

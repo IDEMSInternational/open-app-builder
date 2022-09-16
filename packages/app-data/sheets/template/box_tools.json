@@ -7,8 +7,7 @@
       "type": "template",
       "name": "essential_tools",
       "value": "essential_tools",
-      "rows": [],
-      "_nested_name": "essential_tools"
+      "rows": []
     },
     {
       "type": "template",
@@ -34,8 +33,7 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "rows": [],
-      "_nested_name": "nav_buttons"
+      "rows": []
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_essential_tools.xlsx"

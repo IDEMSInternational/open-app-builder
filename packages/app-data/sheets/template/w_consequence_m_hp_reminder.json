@@ -25,32 +25,13 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "m_hp_reminder.in_week_message.text"
+              }
             },
             {
               "name": "habit_data",
               "value": "@data.habit.consequence",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "m_hp_reminder.in_week_message.habit_data",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.habit.consequence",
-                    "matchedExpression": "@data.habit.consequence",
-                    "type": "data",
-                    "fieldName": "habit"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@data.habit.consequence": [
-                  "value"
-                ]
               }
             },
             {
@@ -70,30 +51,11 @@
                   "_cleaned": "click | go_to:w_consequence_home_practice_pop"
                 }
               ],
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "m_hp_reminder.in_week_message.button_1",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@global.ideas_button",
-                    "matchedExpression": "@global.ideas_button",
-                    "type": "global",
-                    "fieldName": "ideas_button"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.ideas_button": [
-                  "value"
-                ]
-              }
+              "hidden": false
             }
-          ],
-          "_nested_name": "m_hp_reminder.in_week_message"
+          ]
         }
-      ],
-      "_nested_name": "m_hp_reminder"
+      ]
     }
   ],
   "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"

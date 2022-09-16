@@ -15,54 +15,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "suggestions.list_text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "* @global.savings_option_1\n* @global.savings_option_2\n* @global.savings_option_3\n* @global.savings_option_4",
-                "matchedExpression": "@global.savings_option_1",
-                "type": "global",
-                "fieldName": "savings_option_1"
-              },
-              {
-                "fullExpression": "* @global.savings_option_1\n* @global.savings_option_2\n* @global.savings_option_3\n* @global.savings_option_4",
-                "matchedExpression": "@global.savings_option_2",
-                "type": "global",
-                "fieldName": "savings_option_2"
-              },
-              {
-                "fullExpression": "* @global.savings_option_1\n* @global.savings_option_2\n* @global.savings_option_3\n* @global.savings_option_4",
-                "matchedExpression": "@global.savings_option_3",
-                "type": "global",
-                "fieldName": "savings_option_3"
-              },
-              {
-                "fullExpression": "* @global.savings_option_1\n* @global.savings_option_2\n* @global.savings_option_3\n* @global.savings_option_4",
-                "matchedExpression": "@global.savings_option_4",
-                "type": "global",
-                "fieldName": "savings_option_4"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.savings_option_1": [
-              "value"
-            ],
-            "@global.savings_option_2": [
-              "value"
-            ],
-            "@global.savings_option_3": [
-              "value"
-            ],
-            "@global.savings_option_4": [
-              "value"
-            ]
-          }
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "suggestions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"

@@ -9,23 +9,6 @@
       "value": "The man in the car was pressuring @global.w_safe_teen_girl_1 with gifts",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "answer_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "The man in the car was pressuring @global.w_safe_teen_girl_1 with gifts",
-            "matchedExpression": "@global.w_safe_teen_girl_1",
-            "type": "global",
-            "fieldName": "w_safe_teen_girl_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.w_safe_teen_girl_1": [
-          "value"
-        ]
       }
     },
     {
@@ -40,23 +23,6 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "answer_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.w_safe_teen_girl_1's friend was encouraging her",
-            "matchedExpression": "@global.w_safe_teen_girl_1",
-            "type": "global",
-            "fieldName": "w_safe_teen_girl_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.w_safe_teen_girl_1": [
-          "value"
-        ]
       }
     },
     {
@@ -71,23 +37,6 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "answer_3",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things",
-            "matchedExpression": "@global.w_safe_teen_girl_1",
-            "type": "global",
-            "fieldName": "w_safe_teen_girl_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.w_safe_teen_girl_1": [
-          "value"
-        ]
       }
     },
     {
@@ -102,9 +51,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "answer_4"
+      }
     },
     {
       "name": "answer_5",
@@ -118,23 +65,6 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "answer_5",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "There were no other trusted adults to advise @global.w_safe_teen_girl_1",
-            "matchedExpression": "@global.w_safe_teen_girl_1",
-            "type": "global",
-            "fieldName": "w_safe_teen_girl_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.w_safe_teen_girl_1": [
-          "value"
-        ]
       }
     },
     {
@@ -178,23 +108,6 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "question_time.workshop_activity.intro_text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Let's think about what happened to @global.w_safe_teen_girl_1:",
-                    "matchedExpression": "@global.w_safe_teen_girl_1",
-                    "type": "global",
-                    "fieldName": "w_safe_teen_girl_1"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.w_safe_teen_girl_1": [
-                  "value"
-                ]
               }
             },
             {
@@ -208,14 +121,10 @@
                   "_translations": {
                     "value": {}
                   },
-                  "exclude_from_translation": true,
-                  "type": "set_variable",
-                  "_nested_name": "question_time.workshop_activity.content_box.combo_box_tracker"
+                  "exclude_from_translation": true
                 },
                 {
-                  "name": "text",
-                  "type": "set_variable",
-                  "_nested_name": "question_time.workshop_activity.content_box.text"
+                  "name": "text"
                 },
                 {
                   "name": "question_text",
@@ -229,81 +138,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "question_time.workshop_activity.content_box.question_text"
+                  }
                 },
                 {
                   "name": "answer_list",
-                  "value": [
-                    "name:name_1 | text:@local.answer_1",
-                    "name:name_2 | text:@local.answer_2",
-                    "name:name_3 | text:@local.answer_3",
-                    "name:name_4 | text:@local.answer_4",
-                    "name:name_5 | text:@local.answer_5"
-                  ],
-                  "type": "set_variable",
-                  "_nested_name": "question_time.workshop_activity.content_box.answer_list",
-                  "_dynamicFields": {
-                    "value": {
-                      "0": [
-                        {
-                          "fullExpression": "name:name_1 | text:@local.answer_1",
-                          "matchedExpression": "@local.answer_1",
-                          "type": "local",
-                          "fieldName": "answer_1"
-                        }
-                      ],
-                      "1": [
-                        {
-                          "fullExpression": "name:name_2 | text:@local.answer_2",
-                          "matchedExpression": "@local.answer_2",
-                          "type": "local",
-                          "fieldName": "answer_2"
-                        }
-                      ],
-                      "2": [
-                        {
-                          "fullExpression": "name:name_3 | text:@local.answer_3",
-                          "matchedExpression": "@local.answer_3",
-                          "type": "local",
-                          "fieldName": "answer_3"
-                        }
-                      ],
-                      "3": [
-                        {
-                          "fullExpression": "name:name_4 | text:@local.answer_4",
-                          "matchedExpression": "@local.answer_4",
-                          "type": "local",
-                          "fieldName": "answer_4"
-                        }
-                      ],
-                      "4": [
-                        {
-                          "fullExpression": "name:name_5 | text:@local.answer_5",
-                          "matchedExpression": "@local.answer_5",
-                          "type": "local",
-                          "fieldName": "answer_5"
-                        }
-                      ]
-                    }
-                  },
-                  "_dynamicDependencies": {
-                    "@local.answer_1": [
-                      "value.0"
-                    ],
-                    "@local.answer_2": [
-                      "value.1"
-                    ],
-                    "@local.answer_3": [
-                      "value.2"
-                    ],
-                    "@local.answer_4": [
-                      "value.3"
-                    ],
-                    "@local.answer_5": [
-                      "value.4"
-                    ]
+                  "value": "name:name_1 | text:@local.answer_1;\nname:name_2 | text:@local.answer_2;  \nname:name_3 | text:@local.answer_3; \nname:name_4 | text:@local.answer_4;\nname:name_5 | text:@local.answer_5",
+                  "_translations": {
+                    "value": {}
                   }
                 },
                 {
@@ -318,18 +159,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "question_time.workshop_activity.content_box.reply"
+                  }
                 }
-              ],
-              "_nested_name": "question_time.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "question_time.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "question_time"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"

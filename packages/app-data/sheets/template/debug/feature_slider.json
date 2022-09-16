@@ -10,221 +10,110 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "help_text"
+      "exclude_from_translation": true
     },
     {
       "type": "slider",
       "name": "slider_with_help",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "help": "@local.help_text",
-        "min": "0",
-        "max": "7",
-        "title": "test title",
-        "min_value_label": "0",
-        "max_value_label": "7",
-        "labels_count": "8",
-        "no_value": "false"
-      },
-      "_nested_name": "slider_with_help",
-      "_dynamicFields": {
-        "parameter_list": {
-          "help": [
-            {
-              "fullExpression": "@local.help_text",
-              "matchedExpression": "@local.help_text",
-              "type": "local",
-              "fieldName": "help_text"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.help_text": [
-          "parameter_list.help"
-        ]
-      }
+      "parameter_list": [
+        "help: @local.help_text",
+        "min: 0",
+        "max: 7",
+        "title: test title",
+        "min_value_label: 0",
+        "max_value_label: 7",
+        "labels_count: 8",
+        "no_value: false"
+      ]
     },
     {
       "type": "slider",
       "name": "slider_without_help",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "min": "0",
-        "max": "7",
-        "title": "without help",
-        "min_value_label": "0",
-        "max_value_label": "7",
-        "labels_count": "8",
-        "no_value": "false"
-      },
-      "_nested_name": "slider_without_help"
+      "parameter_list": [
+        "min: 0",
+        "max: 7",
+        "title: without help",
+        "min_value_label: 0",
+        "max_value_label: 7",
+        "labels_count: 8",
+        "no_value: false"
+      ]
     },
     {
       "type": "slider",
       "name": "slider_with_value_2",
       "value": 2,
       "exclude_from_translation": true,
-      "parameter_list": {
-        "help": "@local.help_text",
-        "min": "0",
-        "max": "7",
-        "title": "with value 2",
-        "min_value_label": "0",
-        "max_value_label": "7",
-        "labels_count": "8",
-        "no_value": "false"
-      },
-      "_nested_name": "slider_with_value_2",
-      "_dynamicFields": {
-        "parameter_list": {
-          "help": [
-            {
-              "fullExpression": "@local.help_text",
-              "matchedExpression": "@local.help_text",
-              "type": "local",
-              "fieldName": "help_text"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.help_text": [
-          "parameter_list.help"
-        ]
-      }
+      "parameter_list": [
+        "help: @local.help_text",
+        "min: 0",
+        "max: 7",
+        "title: with value 2",
+        "min_value_label: 0",
+        "max_value_label: 7",
+        "labels_count: 8",
+        "no_value: false"
+      ]
     },
     {
       "type": "slider",
       "name": "slider_with_step_2",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "help": "@local.help_text",
-        "min": "0",
-        "max": "8",
-        "title": "step = 2",
-        "step": "2",
-        "min_value_label": "0",
-        "max_value_label": "8",
-        "labels_count": "8",
-        "no_value": "false"
-      },
-      "_nested_name": "slider_with_step_2",
-      "_dynamicFields": {
-        "parameter_list": {
-          "help": [
-            {
-              "fullExpression": "@local.help_text",
-              "matchedExpression": "@local.help_text",
-              "type": "local",
-              "fieldName": "help_text"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.help_text": [
-          "parameter_list.help"
-        ]
-      }
+      "parameter_list": [
+        "help: @local.help_text",
+        "min: 0",
+        "max: 8",
+        "title: step = 2",
+        "step: 2",
+        "min_value_label: 0",
+        "max_value_label: 8",
+        "labels_count: 8",
+        "no_value: false"
+      ]
     },
     {
       "type": "slider",
       "name": "slider_without_value",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "help": "@local.help_text",
-        "min": "0",
-        "max": "7",
-        "title": "no value",
-        "min_value_label": "0",
-        "max_value_label": "7",
-        "labels_count": "8",
-        "no_value": "true"
-      },
-      "_nested_name": "slider_without_value",
-      "_dynamicFields": {
-        "parameter_list": {
-          "help": [
-            {
-              "fullExpression": "@local.help_text",
-              "matchedExpression": "@local.help_text",
-              "type": "local",
-              "fieldName": "help_text"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.help_text": [
-          "parameter_list.help"
-        ]
-      }
+      "parameter_list": [
+        "help: @local.help_text",
+        "min: 0",
+        "max: 7",
+        "title: no value",
+        "min_value_label: 0",
+        "max_value_label: 7",
+        "labels_count: 8",
+        "no_value: true"
+      ]
     },
     {
       "type": "slider",
       "name": "slider_without_max_3",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "min": "0",
-        "help": "@local.help_text",
-        "max": "3",
-        "title": "with max = 3",
-        "min_value_label": "0",
-        "max_value_label": "3",
-        "labels_count": "8",
-        "no_value": "false"
-      },
-      "_nested_name": "slider_without_max_3",
-      "_dynamicFields": {
-        "parameter_list": {
-          "help": [
-            {
-              "fullExpression": "@local.help_text",
-              "matchedExpression": "@local.help_text",
-              "type": "local",
-              "fieldName": "help_text"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.help_text": [
-          "parameter_list.help"
-        ]
-      }
+      "parameter_list": [
+        "min: 0",
+        "help: @local.help_text",
+        "max: 3",
+        "title: with max = 3",
+        "min_value_label: 0",
+        "max_value_label: 3",
+        "labels_count: 8",
+        "no_value: false"
+      ]
     },
     {
       "type": "slider",
       "name": "slider_without_value_labels_1",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "min": "0",
-        "help": "@local.help_text",
-        "max": "3",
-        "title": "without value labels",
-        "no_value": "false"
-      },
-      "_nested_name": "slider_without_value_labels_1",
-      "_dynamicFields": {
-        "parameter_list": {
-          "help": [
-            {
-              "fullExpression": "@local.help_text",
-              "matchedExpression": "@local.help_text",
-              "type": "local",
-              "fieldName": "help_text"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.help_text": [
-          "parameter_list.help"
-        ]
-      }
+      "parameter_list": [
+        "min: 0",
+        "help: @local.help_text",
+        "max: 3",
+        "title: without value labels",
+        "no_value: false"
+      ]
     },
     {
       "type": "text",
@@ -233,23 +122,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Value of last slider: @local.slider_without_value_labels_1",
-            "matchedExpression": "@local.slider_without_value_labels_1",
-            "type": "local",
-            "fieldName": "slider_without_value_labels_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.slider_without_value_labels_1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "slider",
@@ -260,62 +133,20 @@
           "action_id": "set_field",
           "args": [
             "temp_slider_field",
-            "this.value"
+            "@local.slider_without_value_labels_2"
           ],
           "_raw": "changed | set_field:temp_slider_field:@local.slider_without_value_labels_2",
           "_cleaned": "changed | set_field:temp_slider_field:@local.slider_without_value_labels_2"
         }
       ],
       "exclude_from_translation": true,
-      "parameter_list": {
-        "min": "0",
-        "help": "@local.help_text",
-        "max": "3",
-        "title": "without value labels",
-        "no_value": "false"
-      },
-      "_nested_name": "slider_without_value_labels_2",
-      "_dynamicFields": {
-        "action_list": {
-          "0": {
-            "_raw": [
-              {
-                "fullExpression": "changed | set_field:temp_slider_field:@local.slider_without_value_labels_2",
-                "matchedExpression": "@local.slider_without_value_labels_2",
-                "type": "local",
-                "fieldName": "slider_without_value_labels_2"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "changed | set_field:temp_slider_field:@local.slider_without_value_labels_2",
-                "matchedExpression": "@local.slider_without_value_labels_2",
-                "type": "local",
-                "fieldName": "slider_without_value_labels_2"
-              }
-            ]
-          }
-        },
-        "parameter_list": {
-          "help": [
-            {
-              "fullExpression": "@local.help_text",
-              "matchedExpression": "@local.help_text",
-              "type": "local",
-              "fieldName": "help_text"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.slider_without_value_labels_2": [
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ],
-        "@local.help_text": [
-          "parameter_list.help"
-        ]
-      }
+      "parameter_list": [
+        "min: 0",
+        "help: @local.help_text",
+        "max: 3",
+        "title: without value labels",
+        "no_value: false"
+      ]
     },
     {
       "type": "text",
@@ -324,30 +155,13 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Value of last slider: @local.slider_without_value_labels_2",
-            "matchedExpression": "@local.slider_without_value_labels_2",
-            "type": "local",
-            "fieldName": "slider_without_value_labels_2"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.slider_without_value_labels_2": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "template",
       "name": "example_text",
       "value": "example_text",
-      "rows": [],
-      "_nested_name": "example_text"
+      "rows": []
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"

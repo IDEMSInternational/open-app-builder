@@ -34,33 +34,14 @@
           "value": "@data.workshop.w_consequence",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "reflect_together.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_consequence",
-                "matchedExpression": "@data.workshop.w_consequence",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_consequence": [
-              "value"
-            ]
           }
         },
         {
           "type": "nested_properties",
           "name": "workshop_activity",
-          "rows": [],
-          "_nested_name": "reflect_together.workshop_activity"
+          "rows": []
         }
-      ],
-      "_nested_name": "reflect_together"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"

@@ -11,23 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.individual",
-            "matchedExpression": "@global.individual",
-            "type": "global",
-            "fieldName": "individual"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.individual": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -36,23 +20,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.together",
-            "matchedExpression": "@global.together",
-            "type": "global",
-            "fieldName": "together"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.together": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "title",
@@ -62,73 +30,24 @@
         "value": {}
       },
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "text_3"
+      "parameter_list": [
+        "style:emphasised"
+      ]
     },
     {
       "name": "answer_list_1",
-      "value": [
-        "name: individual | text: @global.individual",
-        "name: together | text: @global.together"
-      ],
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "answer_list_1",
-      "_dynamicFields": {
-        "value": {
-          "0": [
-            {
-              "fullExpression": "name: individual | text: @global.individual",
-              "matchedExpression": "@global.individual",
-              "type": "global",
-              "fieldName": "individual"
-            }
-          ],
-          "1": [
-            {
-              "fullExpression": "name: together | text: @global.together",
-              "matchedExpression": "@global.together",
-              "type": "global",
-              "fieldName": "together"
-            }
-          ]
-        }
+      "value": "name: individual | text: @global.individual ;\nname: together | text: @global.together ;",
+      "_translations": {
+        "value": {}
       },
-      "_dynamicDependencies": {
-        "@global.individual": [
-          "value.0"
-        ],
-        "@global.together": [
-          "value.1"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "radio_group",
       "name": "radio_group_1",
-      "parameter_list": {
-        "answer_list": "@local.answer_list_1"
-      },
-      "_nested_name": "radio_group_1",
-      "_dynamicFields": {
-        "parameter_list": {
-          "answer_list": [
-            {
-              "fullExpression": "@local.answer_list_1",
-              "matchedExpression": "@local.answer_list_1",
-              "type": "local",
-              "fieldName": "answer_list_1"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.answer_list_1": [
-          "parameter_list.answer_list"
-        ]
-      }
+      "parameter_list": [
+        "answer_list: @local.answer_list_1"
+      ]
     },
     {
       "type": "title",
@@ -137,10 +56,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "text_4"
+      "parameter_list": [
+        "style:emphasised"
+      ]
     },
     {
       "name": "individual",
@@ -148,24 +66,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "individual",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.individual",
-            "matchedExpression": "@global.individual",
-            "type": "global",
-            "fieldName": "individual"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.individual": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "together",
@@ -173,87 +74,22 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "together",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.together",
-            "matchedExpression": "@global.together",
-            "type": "global",
-            "fieldName": "together"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.together": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "answer_list_2",
-      "value": [
-        "name: individual | text: @local.individual",
-        "name: together | text: @local.together"
-      ],
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "answer_list_2",
-      "_dynamicFields": {
-        "value": {
-          "0": [
-            {
-              "fullExpression": "name: individual | text: @local.individual",
-              "matchedExpression": "@local.individual",
-              "type": "local",
-              "fieldName": "individual"
-            }
-          ],
-          "1": [
-            {
-              "fullExpression": "name: together | text: @local.together",
-              "matchedExpression": "@local.together",
-              "type": "local",
-              "fieldName": "together"
-            }
-          ]
-        }
+      "value": "name: individual | text: @local.individual ;\nname: together | text: @local.together ;",
+      "_translations": {
+        "value": {}
       },
-      "_dynamicDependencies": {
-        "@local.individual": [
-          "value.0"
-        ],
-        "@local.together": [
-          "value.1"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "radio_group",
       "name": "radio_group_2",
-      "parameter_list": {
-        "answer_list": "@local.answer_list_2"
-      },
-      "_nested_name": "radio_group_2",
-      "_dynamicFields": {
-        "parameter_list": {
-          "answer_list": [
-            {
-              "fullExpression": "@local.answer_list_2",
-              "matchedExpression": "@local.answer_list_2",
-              "type": "local",
-              "fieldName": "answer_list_2"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.answer_list_2": [
-          "parameter_list.answer_list"
-        ]
-      }
+      "parameter_list": [
+        "answer_list: @local.answer_list_2"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_translation.xlsx"

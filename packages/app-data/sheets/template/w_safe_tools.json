@@ -25,9 +25,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_1.title"
+              }
             },
             {
               "name": "text_1",
@@ -41,9 +39,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_1.text_1"
+              }
             },
             {
               "name": "button_1",
@@ -69,12 +65,9 @@
                   "_cleaned": "click | go_to:w_safe_learn_individual_temp"
                 }
               ],
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_1.button_1"
+              "hidden": false
             }
-          ],
-          "_nested_name": "essential_tools.tool_1"
+          ]
         },
         {
           "type": "nested_properties",
@@ -92,9 +85,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_2.title"
+              }
             },
             {
               "name": "text_1",
@@ -108,9 +99,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_2.text_1"
+              }
             },
             {
               "name": "button_1",
@@ -136,12 +125,9 @@
                   "_cleaned": "click | go_to:w_rules_read_2_temp"
                 }
               ],
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_2.button_1"
+              "hidden": false
             }
-          ],
-          "_nested_name": "essential_tools.tool_2"
+          ]
         },
         {
           "type": "nested_properties",
@@ -159,9 +145,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_3.title"
+              }
             },
             {
               "name": "text_1",
@@ -175,9 +159,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_3.text_1"
+              }
             },
             {
               "name": "button_1",
@@ -203,12 +185,9 @@
                   "_cleaned": "click | go_to:w_stress_read_3_temp"
                 }
               ],
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_3.button_1"
+              "hidden": false
             }
-          ],
-          "_nested_name": "essential_tools.tool_3"
+          ]
         },
         {
           "name": "bottom_text",
@@ -223,9 +202,7 @@
               "za_zu": true
             }
           },
-          "hidden": false,
-          "type": "set_variable",
-          "_nested_name": "essential_tools.bottom_text"
+          "hidden": false
         },
         {
           "name": "button_1",
@@ -240,9 +217,7 @@
               "za_zu": true
             }
           },
-          "hidden": true,
-          "type": "set_variable",
-          "_nested_name": "essential_tools.button_1"
+          "hidden": true
         },
         {
           "name": "button_2",
@@ -257,12 +232,9 @@
               "za_zu": true
             }
           },
-          "hidden": true,
-          "type": "set_variable",
-          "_nested_name": "essential_tools.button_2"
+          "hidden": true
         }
-      ],
-      "_nested_name": "essential_tools"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"

@@ -33,27 +33,9 @@
           "value": "@data.relax.relax_21",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "relax.relax_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.relax.relax_21",
-                "matchedExpression": "@data.relax.relax_21",
-                "type": "data",
-                "fieldName": "relax"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.relax.relax_21": [
-              "value"
-            ]
           }
         }
-      ],
-      "_nested_name": "relax"
+      ]
     }
   ],
   "_xlsxPath": "global/data/relax_data_list.xlsx"

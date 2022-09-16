@@ -10,16 +10,12 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "text_2"
+      "exclude_from_translation": true
     },
     {
       "name": "text_1_toggle",
       "value": true,
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "text_1_toggle"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -28,23 +24,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "var_toggle_text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "The value of the toggle is: @local.text_1_toggle",
-            "matchedExpression": "@local.text_1_toggle",
-            "type": "local",
-            "fieldName": "text_1_toggle"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.text_1_toggle": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -53,8 +33,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "intro_1"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -70,23 +49,7 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "condition": "@local.text_1_toggle",
-          "_nested_name": "direct_template_2.child_text_1",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@local.text_1_toggle",
-                "matchedExpression": "@local.text_1_toggle",
-                "type": "local",
-                "fieldName": "text_1_toggle"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.text_1_toggle": [
-              "condition"
-            ]
-          }
+          "condition": "@local.text_1_toggle"
         },
         {
           "type": "set_variable",
@@ -96,23 +59,7 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "condition": "!@local.text_1_toggle",
-          "_nested_name": "direct_template_2.child_text_1",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "!@local.text_1_toggle",
-                "matchedExpression": "!@local.text_1_toggle",
-                "type": "local",
-                "fieldName": "text_1_toggle"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "!@local.text_1_toggle": [
-              "condition"
-            ]
-          }
+          "condition": "!@local.text_1_toggle"
         },
         {
           "type": "set_variable",
@@ -121,23 +68,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "direct_template_2.child_text_2",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "Expected: \"Success: text_2\"\nResult: @local.text_2",
-                "matchedExpression": "@local.text_2",
-                "type": "local",
-                "fieldName": "text_2"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.text_2": [
-              "value"
-            ]
-          }
+          "exclude_from_translation": true
         },
         {
           "type": "set_variable",
@@ -146,11 +77,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "direct_template_2.child_local_variable"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "direct_template_2"
+      ]
     },
     {
       "type": "button",
@@ -171,47 +100,7 @@
           "_cleaned": "click | set_local: var_toggle: !@local.var_toggle"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "toggle text",
-      "_dynamicFields": {
-        "action_list": {
-          "0": {
-            "args": {
-              "1": [
-                {
-                  "fullExpression": "!@local.var_toggle",
-                  "matchedExpression": "!@local.var_toggle",
-                  "type": "local",
-                  "fieldName": "var_toggle"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "click | set_local: var_toggle: !@local.var_toggle",
-                "matchedExpression": "!@local.var_toggle",
-                "type": "local",
-                "fieldName": "var_toggle"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "click | set_local: var_toggle: !@local.var_toggle",
-                "matchedExpression": "!@local.var_toggle",
-                "type": "local",
-                "fieldName": "var_toggle"
-              }
-            ]
-          }
-        }
-      },
-      "_dynamicDependencies": {
-        "!@local.var_toggle": [
-          "action_list.0.args.1",
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ]
-      }
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_nesting_variables.xlsx"

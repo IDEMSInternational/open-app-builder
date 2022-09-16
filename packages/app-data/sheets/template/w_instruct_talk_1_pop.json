@@ -21,23 +21,6 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "suggestions.description_text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.w_instruct_female_caregiver could have...",
-                "matchedExpression": "@global.w_instruct_female_caregiver",
-                "type": "global",
-                "fieldName": "w_instruct_female_caregiver"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.w_instruct_female_caregiver": [
-              "value"
-            ]
           }
         },
         {
@@ -52,34 +35,9 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "suggestions.list_text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "* Said something nice first \n* Spoken to @global.w_instruct_teen_girl in a calm voice \n* Told @global.w_instruct_teen_girl what she wants her to do",
-                "matchedExpression": "@global.w_instruct_teen_girl",
-                "type": "global",
-                "fieldName": "w_instruct_teen_girl"
-              },
-              {
-                "fullExpression": "* Said something nice first \n* Spoken to @global.w_instruct_teen_girl in a calm voice \n* Told @global.w_instruct_teen_girl what she wants her to do",
-                "matchedExpression": "@global.w_instruct_teen_girl",
-                "type": "global",
-                "fieldName": "w_instruct_teen_girl"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.w_instruct_teen_girl": [
-              "value",
-              "value"
-            ]
           }
         }
-      ],
-      "_nested_name": "suggestions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"

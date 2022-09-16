@@ -38,15 +38,11 @@
               "value": "plh_images/workshop_modes/group/final/talk.svg",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "care_together.workshop_activity.activity_image"
+              }
             }
-          ],
-          "_nested_name": "care_together.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "care_together"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"

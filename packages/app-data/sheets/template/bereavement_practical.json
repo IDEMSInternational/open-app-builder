@@ -13,23 +13,6 @@
           "value": "@data.bereavement.practical.title",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "banner.banner_title",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.bereavement.practical.title",
-                "matchedExpression": "@data.bereavement.practical.title",
-                "type": "data",
-                "fieldName": "bereavement"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.bereavement.practical.title": [
-              "value"
-            ]
           }
         },
         {
@@ -37,12 +20,9 @@
           "value": "plh_images/parent_centre/bereavement/practical.svg",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "banner.banner_image"
+          }
         }
-      ],
-      "_nested_name": "banner"
+      ]
     },
     {
       "type": "template",
@@ -61,9 +41,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "bereavement_section.top_text"
+          }
         },
         {
           "name": "title_1",
@@ -77,9 +55,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "bereavement_section.title_1"
+          }
         },
         {
           "name": "title_2",
@@ -92,9 +68,7 @@
               "za_tn": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "bereavement_section.title_2"
+          }
         },
         {
           "name": "text_1",
@@ -108,9 +82,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "bereavement_section.text_1"
+          }
         },
         {
           "name": "text_2",
@@ -124,12 +96,9 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "bereavement_section.text_2"
+          }
         }
-      ],
-      "_nested_name": "bereavement_section"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/parent_centre_templates/bereavement.xlsx"

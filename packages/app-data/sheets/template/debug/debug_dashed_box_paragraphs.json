@@ -9,9 +9,7 @@
       "value": "This is the first line in the first paragraph\nThis is the second line in the first paragraph.\n\nThis is the first line in the second paragraph\nThis is the second line in the second paragraph.\n\nThis is the first line in the third paragraph",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "text_paragraphs"
+      }
     },
     {
       "type": "dashed_box",
@@ -19,22 +17,6 @@
       "value": "@local.text_paragraphs",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "dashed_box_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.text_paragraphs",
-            "matchedExpression": "@local.text_paragraphs",
-            "type": "local",
-            "fieldName": "text_paragraphs"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.text_paragraphs": [
-          "value"
-        ]
       }
     },
     {
@@ -43,22 +25,6 @@
       "value": "@local.text_paragraphs",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.text_paragraphs",
-            "matchedExpression": "@local.text_paragraphs",
-            "type": "local",
-            "fieldName": "text_paragraphs"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.text_paragraphs": [
-          "value"
-        ]
       }
     }
   ],

@@ -33,9 +33,7 @@
           "value": "plh_images/workshop_modes/guide_2/wave.svg",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_image"
+          }
         },
         {
           "name": "activity_title",
@@ -49,27 +47,9 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_title",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "Customise @global.parent_app",
-                "matchedExpression": "@global.parent_app",
-                "type": "global",
-                "fieldName": "parent_app"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.parent_app": [
-              "value"
-            ]
           }
         }
-      ],
-      "_nested_name": "workshop_activity"
+      ]
     }
   ],
   "_xlsxPath": "global/mode_templates/survey_activity.xlsx"

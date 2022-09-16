@@ -6,82 +6,35 @@
   "rows": [
     {
       "name": "category_list",
-      "value": [
-        "0-10",
-        "11-20",
-        "21-30",
-        "31-40",
-        "41-50",
-        "51-60",
-        "61-70",
-        "71-80",
-        "80+"
-      ],
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "category_list"
+      "value": "0-10; 11-20; 21-30; 31-40; 41-50; 51-60; 61-70; 71-80; 80+;",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
     },
     {
       "type": "number_selector",
       "name": "number_selector",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "category_list": "@local.category_list",
-        "first_display_term": "4"
-      },
-      "_nested_name": "number_selector",
-      "_dynamicFields": {
-        "parameter_list": {
-          "category_list": [
-            {
-              "fullExpression": "@local.category_list",
-              "matchedExpression": "@local.category_list",
-              "type": "local",
-              "fieldName": "category_list"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.category_list": [
-          "parameter_list.category_list"
-        ]
-      }
+      "parameter_list": [
+        "category_list: @local.category_list",
+        "first_display_term:4"
+      ]
     },
     {
       "name": "ten",
-      "value": 10,
-      "type": "set_variable",
-      "_nested_name": "ten"
+      "value": 10
     },
     {
       "type": "set_field",
       "name": "debug_field_fifteen",
-      "value": 15,
-      "_nested_name": "debug_field_fifteen"
+      "value": 15
     },
     {
       "name": "fifteen",
       "value": "+@fields.debug_field_fifteen",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "fifteen",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "+@fields.debug_field_fifteen",
-            "matchedExpression": "@fields.debug_field_fifteen",
-            "type": "fields",
-            "fieldName": "debug_field_fifteen"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_fifteen": [
-          "value"
-        ]
       }
     },
     {
@@ -91,17 +44,15 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_1"
+      "exclude_from_translation": true
     },
     {
       "type": "number_selector",
       "name": "number_selector_1",
-      "parameter_list": {
-        "min_value": "0",
-        "max_value": "20"
-      },
-      "_nested_name": "number_selector_1"
+      "parameter_list": [
+        "min_value:0",
+        "max_value:20"
+      ]
     },
     {
       "type": "title",
@@ -110,18 +61,16 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_2"
+      "exclude_from_translation": true
     },
     {
       "type": "number_selector",
       "name": "number_selector_2",
       "value": 5,
-      "parameter_list": {
-        "min_value": "0",
-        "max_value": "20"
-      },
-      "_nested_name": "number_selector_2"
+      "parameter_list": [
+        "min_value:0",
+        "max_value:20"
+      ]
     },
     {
       "type": "title",
@@ -130,8 +79,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_3"
+      "exclude_from_translation": true
     },
     {
       "type": "number_selector",
@@ -140,26 +88,10 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "min_value": "0",
-        "max_value": "20"
-      },
-      "_nested_name": "number_selector_3",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.ten",
-            "matchedExpression": "@local.ten",
-            "type": "local",
-            "fieldName": "ten"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.ten": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "min_value:0",
+        "max_value:20"
+      ]
     },
     {
       "type": "title",
@@ -168,8 +100,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_4"
+      "exclude_from_translation": true
     },
     {
       "type": "number_selector",
@@ -178,26 +109,10 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "min_value": "0",
-        "max_value": "20"
-      },
-      "_nested_name": "number_selector_4",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "+@fields.debug_field_fifteen",
-            "matchedExpression": "@fields.debug_field_fifteen",
-            "type": "fields",
-            "fieldName": "debug_field_fifteen"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_fifteen": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "min_value:0",
+        "max_value:20"
+      ]
     },
     {
       "type": "title",
@@ -206,8 +121,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_5"
+      "exclude_from_translation": true
     },
     {
       "type": "number_selector",
@@ -216,26 +130,10 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "min_value": "0",
-        "max_value": "20"
-      },
-      "_nested_name": "number_selector_5",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.fifteen",
-            "matchedExpression": "@local.fifteen",
-            "type": "local",
-            "fieldName": "fifteen"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.fifteen": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "min_value:0",
+        "max_value:20"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"

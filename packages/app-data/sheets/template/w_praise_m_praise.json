@@ -25,30 +25,11 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "m_praise.in_week_message.text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Well done for using @global.parent_app! Remember that it’s the small things that make a big difference.",
-                    "matchedExpression": "@global.parent_app",
-                    "type": "global",
-                    "fieldName": "parent_app"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.parent_app": [
-                  "value"
-                ]
               }
             }
-          ],
-          "_nested_name": "m_praise.in_week_message"
+          ]
         }
-      ],
-      "_nested_name": "m_praise"
+      ]
     }
   ],
   "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"

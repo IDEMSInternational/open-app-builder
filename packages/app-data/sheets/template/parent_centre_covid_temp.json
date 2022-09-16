@@ -15,9 +15,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "tile_1_text"
+      }
     },
     {
       "name": "tile_2_text",
@@ -31,9 +29,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "tile_2_text"
+      }
     },
     {
       "type": "title",
@@ -42,25 +38,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "tiny"
-      },
-      "_nested_name": "title",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.parent_centre.covid.title",
-            "matchedExpression": "@data.parent_centre.covid.title",
-            "type": "data",
-            "fieldName": "parent_centre"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.parent_centre.covid.title": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "style: tiny"
+      ]
     },
     {
       "type": "text",
@@ -75,8 +55,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text_1"
+      }
     },
     {
       "type": "display_group",
@@ -100,30 +79,12 @@
             }
           ],
           "exclude_from_translation": true,
-          "parameter_list": {
-            "first_line_text": "@local.tile_1_text",
-            "left_icon_src": "globe-outline",
-            "style": "button_tile",
-            "icon_src": "chevron-forward-outline"
-          },
-          "_nested_name": "display_group.tile_1",
-          "_dynamicFields": {
-            "parameter_list": {
-              "first_line_text": [
-                {
-                  "fullExpression": "@local.tile_1_text",
-                  "matchedExpression": "@local.tile_1_text",
-                  "type": "local",
-                  "fieldName": "tile_1_text"
-                }
-              ]
-            }
-          },
-          "_dynamicDependencies": {
-            "@local.tile_1_text": [
-              "parameter_list.first_line_text"
-            ]
-          }
+          "parameter_list": [
+            "first_line_text:@local.tile_1_text",
+            "left_icon_src: globe-outline",
+            "style: button_tile",
+            "icon_src: chevron-forward-outline"
+          ]
         },
         {
           "type": "help_icon",
@@ -143,12 +104,9 @@
               "_cleaned": "click | pop_up:parent_centre_covid_who_pop_up"
             }
           ],
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.help_1"
+          "exclude_from_translation": true
         }
-      ],
-      "name": "display_group",
-      "_nested_name": "display_group"
+      ]
     },
     {
       "type": "display_group",
@@ -173,30 +131,12 @@
             }
           ],
           "exclude_from_translation": true,
-          "parameter_list": {
-            "first_line_text": "@local.tile_2_text",
-            "left_icon_src": "globe-outline",
-            "style": "button_tile",
-            "icon_src": "chevron-forward-outline"
-          },
-          "_nested_name": "display_group.tile_2",
-          "_dynamicFields": {
-            "parameter_list": {
-              "first_line_text": [
-                {
-                  "fullExpression": "@local.tile_2_text",
-                  "matchedExpression": "@local.tile_2_text",
-                  "type": "local",
-                  "fieldName": "tile_2_text"
-                }
-              ]
-            }
-          },
-          "_dynamicDependencies": {
-            "@local.tile_2_text": [
-              "parameter_list.first_line_text"
-            ]
-          }
+          "parameter_list": [
+            "first_line_text:@local.tile_2_text",
+            "left_icon_src: globe-outline",
+            "style: button_tile",
+            "icon_src: chevron-forward-outline"
+          ]
         },
         {
           "type": "help_icon",
@@ -216,12 +156,9 @@
               "_cleaned": "click | pop_up:parent_centre_covid_uni_pop_up"
             }
           ],
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.help_2"
+          "exclude_from_translation": true
         }
-      ],
-      "name": "display_group",
-      "_nested_name": "display_group"
+      ]
     },
     {
       "type": "dashed_box",
@@ -230,25 +167,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "icon_src": "plh_images/icons/globe_circle.svg"
-      },
-      "_nested_name": "warning",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.data_warning_websites",
-            "matchedExpression": "@global.data_warning_websites",
-            "type": "global",
-            "fieldName": "data_warning_websites"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.data_warning_websites": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "icon_src:plh_images/icons/globe_circle.svg"
+      ]
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"

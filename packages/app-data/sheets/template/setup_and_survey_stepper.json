@@ -44,9 +44,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "survey_stepper_actions.survey_name"
+          "exclude_from_translation": true
         },
         {
           "type": "nested_properties",
@@ -54,33 +52,15 @@
           "rows": [
             {
               "name": "nav_template_list",
-              "value": [
-                "workshop_setup_intro",
-                "workshop_setup_q_1",
-                "workshop_setup_q_2",
-                "workshop_setup_q_3",
-                "survey_welcome_intro",
-                "survey_welcome_ppf",
-                "survey_welcome_ppp",
-                "survey_welcome_ps",
-                "survey_welcome_cme",
-                "survey_welcome_fs",
-                "survey_welcome_fi",
-                "survey_welcome_cmp",
-                "survey_welcome_cs",
-                "survey_welcome_pcsap",
-                "survey_welcome_pse",
-                "survey_welcome_outro"
-              ],
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "survey_stepper_actions.survey_stepper.nav_template_list"
+              "value": "workshop_setup_intro;\nworkshop_setup_q_1;\nworkshop_setup_q_2; \nworkshop_setup_q_3;\nsurvey_welcome_intro; \nsurvey_welcome_ppf;\nsurvey_welcome_ppp;\nsurvey_welcome_ps;\nsurvey_welcome_cme;\nsurvey_welcome_fs;\nsurvey_welcome_fi;\nsurvey_welcome_cmp;\nsurvey_welcome_cs;\nsurvey_welcome_pcsap;\nsurvey_welcome_pse;\nsurvey_welcome_outro",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "survey_stepper_actions.survey_stepper"
+          ]
         }
-      ],
-      "_nested_name": "survey_stepper_actions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/merged_setup_and_survey_welcome.xlsx"

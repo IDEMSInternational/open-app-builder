@@ -45,9 +45,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_1.title"
+              }
             },
             {
               "name": "text_1",
@@ -61,9 +59,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_1.text_1"
+              }
             },
             {
               "name": "image_src",
@@ -71,12 +67,9 @@
               "_translations": {
                 "value": {}
               },
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_1.image_src"
+              "hidden": false
             }
-          ],
-          "_nested_name": "essential_tools.tool_1"
+          ]
         },
         {
           "type": "nested_properties",
@@ -94,9 +87,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_2.title"
+              }
             },
             {
               "name": "text_1",
@@ -110,9 +101,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_2.text_1"
+              }
             },
             {
               "name": "image_src",
@@ -120,12 +109,9 @@
               "_translations": {
                 "value": {}
               },
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_2.image_src"
+              "hidden": false
             }
-          ],
-          "_nested_name": "essential_tools.tool_2"
+          ]
         },
         {
           "type": "nested_properties",
@@ -143,9 +129,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_3.title"
+              }
             },
             {
               "name": "text_1",
@@ -159,9 +143,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_3.text_1"
+              }
             },
             {
               "name": "image_src",
@@ -169,12 +151,9 @@
               "_translations": {
                 "value": {}
               },
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_3.image_src"
+              "hidden": false
             }
-          ],
-          "_nested_name": "essential_tools.tool_3"
+          ]
         },
         {
           "type": "nested_properties",
@@ -193,9 +172,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_4.title"
+              }
             },
             {
               "name": "text_1",
@@ -209,23 +186,6 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_4.text_1",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Share @global.parent_app and help other families start their journey.",
-                    "matchedExpression": "@global.parent_app",
-                    "type": "global",
-                    "fieldName": "parent_app"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.parent_app": [
-                  "value"
-                ]
               }
             },
             {
@@ -234,15 +194,11 @@
               "_translations": {
                 "value": {}
               },
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_4.image_src"
+              "hidden": false
             }
-          ],
-          "_nested_name": "essential_tools.tool_4"
+          ]
         }
-      ],
-      "_nested_name": "essential_tools"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"

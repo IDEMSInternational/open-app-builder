@@ -28,8 +28,7 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "rows": [],
-      "_nested_name": "ending"
+      "rows": []
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"

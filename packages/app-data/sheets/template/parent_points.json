@@ -14,25 +14,9 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "tiny"
-          },
-          "_nested_name": "heading.title",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.parent_points",
-                "matchedExpression": "@global.parent_points",
-                "type": "global",
-                "fieldName": "parent_points"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.parent_points": [
-              "value"
-            ]
-          }
+          "parameter_list": [
+            "style: tiny"
+          ]
         },
         {
           "type": "button",
@@ -49,13 +33,11 @@
             }
           },
           "hidden": true,
-          "parameter_list": {
-            "style": "options short flexible"
-          },
-          "_nested_name": "heading.options_button"
+          "parameter_list": [
+            "style: options short flexible"
+          ]
         }
-      ],
-      "_nested_name": "heading"
+      ]
     },
     {
       "type": "display_group",
@@ -69,25 +51,9 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "make_me_smile"
-          },
-          "_nested_name": "quick_buttons.make_me_smile",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.parent_points_make_me_smile",
-                "matchedExpression": "@global.parent_points_make_me_smile",
-                "type": "global",
-                "fieldName": "parent_points_make_me_smile"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.parent_points_make_me_smile": [
-              "value"
-            ]
-          }
+          "parameter_list": [
+            "style: make_me_smile"
+          ]
         },
         {
           "type": "button",
@@ -96,35 +62,17 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "get_me_going"
-          },
-          "_nested_name": "quick_buttons.get_me_going",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.parent_points_get_me_going",
-                "matchedExpression": "@global.parent_points_get_me_going",
-                "type": "global",
-                "fieldName": "parent_points_get_me_going"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.parent_points_get_me_going": [
-              "value"
-            ]
-          }
+          "parameter_list": [
+            "style: get_me_going"
+          ]
         }
-      ],
-      "_nested_name": "quick_buttons"
+      ]
     },
     {
       "type": "template",
       "name": "parent_point_tiles",
       "value": "parent_point_tiles",
-      "rows": [],
-      "_nested_name": "parent_point_tiles"
+      "rows": []
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_parent_points.xlsx"

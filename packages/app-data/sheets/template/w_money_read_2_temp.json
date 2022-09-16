@@ -45,23 +45,6 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "read.workshop_activity.intro_text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Great work, you have completed the first 3 steps! \n\nLet's see how @global.w_money_grandma made a plan with her money, just like you are doing:",
-                    "matchedExpression": "@global.w_money_grandma",
-                    "type": "global",
-                    "fieldName": "w_money_grandma"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.w_money_grandma": [
-                  "value"
-                ]
               }
             },
             {
@@ -79,9 +62,7 @@
                       "value": "plh_images/workshops/w_money/read_3/slide_2.svg",
                       "_translations": {
                         "value": {}
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "read.workshop_activity.content_box.box_1.image_src"
+                      }
                     },
                     {
                       "name": "text",
@@ -95,12 +76,9 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "read.workshop_activity.content_box.box_1.text"
+                      }
                     }
-                  ],
-                  "_nested_name": "read.workshop_activity.content_box.box_1"
+                  ]
                 },
                 {
                   "type": "nested_properties",
@@ -117,9 +95,7 @@
                           "value": "plh_images/workshops/w_money/read_3/slide_3.svg",
                           "_translations": {
                             "value": {}
-                          },
-                          "type": "set_variable",
-                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.image_src"
+                          }
                         },
                         {
                           "name": "text",
@@ -133,12 +109,9 @@
                               "za_xh": true,
                               "za_zu": true
                             }
-                          },
-                          "type": "set_variable",
-                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.text"
+                          }
                         }
-                      ],
-                      "_nested_name": "read.workshop_activity.content_box.box_2.box_1"
+                      ]
                     },
                     {
                       "type": "nested_properties",
@@ -155,9 +128,7 @@
                               "value": "plh_images/workshops/w_money/read_3/slide_4.svg",
                               "_translations": {
                                 "value": {}
-                              },
-                              "type": "set_variable",
-                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.image_src"
+                              }
                             },
                             {
                               "name": "text",
@@ -171,12 +142,9 @@
                                   "za_xh": true,
                                   "za_zu": true
                                 }
-                              },
-                              "type": "set_variable",
-                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.text"
+                              }
                             }
-                          ],
-                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1"
+                          ]
                         },
                         {
                           "type": "nested_properties",
@@ -193,9 +161,7 @@
                                   "value": "plh_images/workshops/w_money/read_3/slide_5.svg",
                                   "_translations": {
                                     "value": {}
-                                  },
-                                  "type": "set_variable",
-                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1.image_src"
+                                  }
                                 },
                                 {
                                   "name": "text",
@@ -209,12 +175,9 @@
                                       "za_xh": true,
                                       "za_zu": true
                                     }
-                                  },
-                                  "type": "set_variable",
-                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1.text"
+                                  }
                                 }
-                              ],
-                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1"
+                              ]
                             },
                             {
                               "type": "nested_properties",
@@ -226,9 +189,7 @@
                                   "value": "plh_images/workshops/w_money/read_3/slide_6.svg",
                                   "_translations": {
                                     "value": {}
-                                  },
-                                  "type": "set_variable",
-                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.image_src"
+                                  }
                                 },
                                 {
                                   "name": "text",
@@ -242,54 +203,21 @@
                                       "za_xh": true,
                                       "za_zu": true
                                     }
-                                  },
-                                  "type": "set_variable",
-                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.text",
-                                  "_dynamicFields": {
-                                    "value": [
-                                      {
-                                        "fullExpression": "A few years later:\n\n\"Look, we reached our dreams! I didn’t borrow any money from friends or loan sharks. By saving a tiny bit each week, I managed to pay for @global.w_money_teen_boy’s high school and save some money for @global.w_money_teen_girl’s university. I am so proud of this.”",
-                                        "matchedExpression": "@global.w_money_teen_boy",
-                                        "type": "global",
-                                        "fieldName": "w_money_teen_boy"
-                                      },
-                                      {
-                                        "fullExpression": "A few years later:\n\n\"Look, we reached our dreams! I didn’t borrow any money from friends or loan sharks. By saving a tiny bit each week, I managed to pay for @global.w_money_teen_boy’s high school and save some money for @global.w_money_teen_girl’s university. I am so proud of this.”",
-                                        "matchedExpression": "@global.w_money_teen_girl",
-                                        "type": "global",
-                                        "fieldName": "w_money_teen_girl"
-                                      }
-                                    ]
-                                  },
-                                  "_dynamicDependencies": {
-                                    "@global.w_money_teen_boy": [
-                                      "value"
-                                    ],
-                                    "@global.w_money_teen_girl": [
-                                      "value"
-                                    ]
                                   }
                                 }
-                              ],
-                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2"
+                              ]
                             }
-                          ],
-                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2"
+                          ]
                         }
-                      ],
-                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2"
+                      ]
                     }
-                  ],
-                  "_nested_name": "read.workshop_activity.content_box.box_2"
+                  ]
                 }
-              ],
-              "_nested_name": "read.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "read.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "read"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"

@@ -15,12 +15,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "wrapper_template.text_1"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "wrapper_template"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_nesting_variables.xlsx"

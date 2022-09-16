@@ -8,27 +8,21 @@
       "value": "plh_images/stickers/faces/sad.svg",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "sad_face"
+      }
     },
     {
       "name": "confused_face",
       "value": "plh_images/stickers/faces/confused.svg",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "confused_face"
+      }
     },
     {
       "name": "happy_face",
       "value": "plh_images/stickers/faces/happy.svg",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "happy_face"
+      }
     },
     {
       "type": "text",
@@ -43,8 +37,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "top_text"
+      }
     },
     {
       "type": "dashed_box",
@@ -60,28 +53,10 @@
           "za_zu": true
         }
       },
-      "parameter_list": {
-        "icon_src": "@local.sad_face",
-        "icon_position": "top-left"
-      },
-      "_nested_name": "dashed_box_1",
-      "_dynamicFields": {
-        "parameter_list": {
-          "icon_src": [
-            {
-              "fullExpression": "@local.sad_face",
-              "matchedExpression": "@local.sad_face",
-              "type": "local",
-              "fieldName": "sad_face"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.sad_face": [
-          "parameter_list.icon_src"
-        ]
-      }
+      "parameter_list": [
+        "icon_src: @local.sad_face",
+        "icon_position: top-left"
+      ]
     },
     {
       "type": "accordion",
@@ -99,9 +74,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "accordion.title_1"
+          }
         },
         {
           "name": "title_2",
@@ -115,9 +88,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "accordion.title_2"
+          }
         },
         {
           "type": "accordion_section",
@@ -127,9 +98,9 @@
             {
               "type": "display_group",
               "name": "dg",
-              "parameter_list": {
-                "style": "column"
-              },
+              "parameter_list": [
+                "style: column"
+              ],
               "rows": [
                 {
                   "type": "text",
@@ -144,8 +115,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "_nested_name": "accordion.section_1.dg.text_1"
+                  }
                 },
                 {
                   "type": "dashed_box",
@@ -161,28 +131,10 @@
                       "za_zu": true
                     }
                   },
-                  "parameter_list": {
-                    "icon_src": "@local.confused_face",
-                    "icon_position": "top-left"
-                  },
-                  "_nested_name": "accordion.section_1.dg.dashed_box_2",
-                  "_dynamicFields": {
-                    "parameter_list": {
-                      "icon_src": [
-                        {
-                          "fullExpression": "@local.confused_face",
-                          "matchedExpression": "@local.confused_face",
-                          "type": "local",
-                          "fieldName": "confused_face"
-                        }
-                      ]
-                    }
-                  },
-                  "_dynamicDependencies": {
-                    "@local.confused_face": [
-                      "parameter_list.icon_src"
-                    ]
-                  }
+                  "parameter_list": [
+                    "icon_src: @local.confused_face",
+                    "icon_position: top-left"
+                  ]
                 },
                 {
                   "type": "text",
@@ -197,8 +149,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "_nested_name": "accordion.section_1.dg.text_2"
+                  }
                 },
                 {
                   "type": "text",
@@ -213,8 +164,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "_nested_name": "accordion.section_1.dg.text_3"
+                  }
                 },
                 {
                   "type": "dashed_box",
@@ -230,49 +180,14 @@
                       "za_zu": true
                     }
                   },
-                  "parameter_list": {
-                    "icon_src": "@local.happy_face",
-                    "icon_position": "top-left"
-                  },
-                  "_nested_name": "accordion.section_1.dg.dashed_box_3",
-                  "_dynamicFields": {
-                    "parameter_list": {
-                      "icon_src": [
-                        {
-                          "fullExpression": "@local.happy_face",
-                          "matchedExpression": "@local.happy_face",
-                          "type": "local",
-                          "fieldName": "happy_face"
-                        }
-                      ]
-                    }
-                  },
-                  "_dynamicDependencies": {
-                    "@local.happy_face": [
-                      "parameter_list.icon_src"
-                    ]
-                  }
+                  "parameter_list": [
+                    "icon_src: @local.happy_face",
+                    "icon_position: top-left"
+                  ]
                 }
-              ],
-              "_nested_name": "accordion.section_1.dg"
+              ]
             }
-          ],
-          "_nested_name": "accordion.section_1",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.title_1",
-                "matchedExpression": "@local.title_1",
-                "type": "local",
-                "fieldName": "title_1"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.title_1": [
-              "value"
-            ]
-          }
+          ]
         },
         {
           "type": "accordion_section",
@@ -282,9 +197,9 @@
             {
               "type": "display_group",
               "name": "dg",
-              "parameter_list": {
-                "style": "column"
-              },
+              "parameter_list": [
+                "style: column"
+              ],
               "rows": [
                 {
                   "type": "template",
@@ -303,9 +218,7 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "accordion.section_2.dg.change_1.thought_neg"
+                      }
                     },
                     {
                       "name": "thought_pos",
@@ -319,12 +232,9 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "accordion.section_2.dg.change_1.thought_pos"
+                      }
                     }
-                  ],
-                  "_nested_name": "accordion.section_2.dg.change_1"
+                  ]
                 },
                 {
                   "type": "template",
@@ -343,9 +253,7 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "accordion.section_2.dg.change_2.thought_neg"
+                      }
                     },
                     {
                       "name": "thought_pos",
@@ -359,12 +267,9 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "accordion.section_2.dg.change_2.thought_pos"
+                      }
                     }
-                  ],
-                  "_nested_name": "accordion.section_2.dg.change_2"
+                  ]
                 },
                 {
                   "type": "template",
@@ -383,9 +288,7 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "accordion.section_2.dg.change_3.thought_neg"
+                      }
                     },
                     {
                       "name": "thought_pos",
@@ -399,12 +302,9 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "accordion.section_2.dg.change_3.thought_pos"
+                      }
                     }
-                  ],
-                  "_nested_name": "accordion.section_2.dg.change_3"
+                  ]
                 },
                 {
                   "type": "template",
@@ -423,9 +323,7 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "accordion.section_2.dg.change_4.thought_neg"
+                      }
                     },
                     {
                       "name": "thought_pos",
@@ -439,36 +337,15 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "accordion.section_2.dg.change_4.thought_pos"
+                      }
                     }
-                  ],
-                  "_nested_name": "accordion.section_2.dg.change_4"
+                  ]
                 }
-              ],
-              "_nested_name": "accordion.section_2.dg"
+              ]
             }
-          ],
-          "_nested_name": "accordion.section_2",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.title_2",
-                "matchedExpression": "@local.title_2",
-                "type": "local",
-                "fieldName": "title_2"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.title_2": [
-              "value"
-            ]
-          }
+          ]
         }
-      ],
-      "_nested_name": "accordion"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/parent_centre_templates/covid/covid_reflect.xlsx"

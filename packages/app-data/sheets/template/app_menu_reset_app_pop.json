@@ -16,8 +16,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "title"
+      }
     },
     {
       "type": "text",
@@ -32,8 +31,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text_1"
+      }
     },
     {
       "type": "button",
@@ -57,8 +55,7 @@
           "_raw": "click | reset_app",
           "_cleaned": "click | reset_app"
         }
-      ],
-      "_nested_name": "button_1"
+      ]
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"

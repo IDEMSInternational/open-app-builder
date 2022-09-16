@@ -11,8 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -32,8 +31,7 @@
           "_cleaned": "click | track_event : example_event"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_track_event_1"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -58,8 +56,7 @@
         }
       ],
       "condition": false,
-      "exclude_from_translation": true,
-      "_nested_name": "button_track_event_2"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -67,8 +64,7 @@
       "value": "Documentation about the Matomo Analytics platform used can be found at:\nhttps://matomo.org/",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "info_1"
+      }
     },
     {
       "type": "text",
@@ -76,8 +72,7 @@
       "value": "Documentation about the angular integration can be found at:\nhttps://github.com/EmmanuelRoux/ngx-matomo",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "info_2"
+      }
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_analytics.xlsx"

@@ -17,8 +17,7 @@
           "_raw": "click | go_to: example_text",
           "_cleaned": "click | go_to: example_text"
         }
-      ],
-      "_nested_name": "button_default"
+      ]
     },
     {
       "type": "title",
@@ -26,32 +25,28 @@
       "value": "Square button with icon",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_2"
+      }
     },
     {
       "type": "square_button",
       "name": "square_button_par_2_1",
-      "parameter_list": {
-        "icon_src": ""
-      },
-      "_nested_name": "square_button_par_2_1"
+      "parameter_list": [
+        "icon_src:"
+      ]
     },
     {
       "type": "square_button",
       "name": "square_button_par_2_2",
-      "parameter_list": {
-        "icon_src": "plh_images/icons/play.svg"
-      },
-      "_nested_name": "square_button_par_2_2"
+      "parameter_list": [
+        "icon_src: plh_images/icons/play.svg"
+      ]
     },
     {
       "type": "square_button",
       "name": "square_button_par_2_3",
-      "parameter_list": {
-        "icon_src": "body-outline"
-      },
-      "_nested_name": "square_button_par_2_3"
+      "parameter_list": [
+        "icon_src: body-outline"
+      ]
     },
     {
       "type": "title",
@@ -59,24 +54,21 @@
       "value": "Square button colour",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_3"
+      }
     },
     {
       "type": "square_button",
       "name": "square_button_par_3_1",
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "square_button_par_3_1"
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "square_button",
       "name": "square_button_par_3_2",
-      "parameter_list": {
-        "style": "navigation"
-      },
-      "_nested_name": "square_button_par_3_2"
+      "parameter_list": [
+        "style: navigation"
+      ]
     },
     {
       "type": "title",
@@ -84,8 +76,7 @@
       "value": "To be removed",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_4"
+      }
     },
     {
       "type": "square_button",
@@ -101,10 +92,9 @@
           "_cleaned": "click | pop_up: example_text"
         }
       ],
-      "parameter_list": {
-        "disabled": "false"
-      },
-      "_nested_name": "square_button_par_4_1"
+      "parameter_list": [
+        "disabled: false"
+      ]
     },
     {
       "type": "square_button",
@@ -120,10 +110,9 @@
           "_cleaned": "click | pop_up: example_text"
         }
       ],
-      "parameter_list": {
-        "disabled": "true"
-      },
-      "_nested_name": "square_button_par_4_2"
+      "parameter_list": [
+        "disabled: true"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/component_sheets/component_square_button.xlsx"

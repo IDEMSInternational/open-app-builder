@@ -44,9 +44,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "watch.workshop_activity.activity_title"
+              }
             },
             {
               "name": "activity_image",
@@ -54,24 +52,7 @@
               "_translations": {
                 "value": {}
               },
-              "condition": "@field.do_this_workshop_together",
-              "type": "set_variable",
-              "_nested_name": "watch.workshop_activity.activity_image",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "@field.do_this_workshop_together",
-                    "matchedExpression": "@field.do_this_workshop_together",
-                    "type": "field",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@field.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "@field.do_this_workshop_together"
             },
             {
               "name": "activity_image",
@@ -79,24 +60,7 @@
               "_translations": {
                 "value": {}
               },
-              "condition": "!@field.do_this_workshop_together",
-              "type": "set_variable",
-              "_nested_name": "watch.workshop_activity.activity_image",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "!@field.do_this_workshop_together",
-                    "matchedExpression": "!@field.do_this_workshop_together",
-                    "type": "field",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "!@field.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "!@field.do_this_workshop_together"
             },
             {
               "name": "intro_title",
@@ -110,9 +74,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "watch.workshop_activity.intro_title"
+              }
             },
             {
               "name": "intro_text",
@@ -126,15 +88,11 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "watch.workshop_activity.intro_text"
+              }
             },
             {
               "name": "activity_banner",
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "watch.workshop_activity.activity_banner"
+              "hidden": false
             },
             {
               "type": "nested_properties",
@@ -145,27 +103,9 @@
                   "value": "@global.finish_with_song_button",
                   "_translations": {
                     "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "watch.workshop_activity.intro_nav_buttons.button_completed",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "@global.finish_with_song_button",
-                        "matchedExpression": "@global.finish_with_song_button",
-                        "type": "global",
-                        "fieldName": "finish_with_song_button"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@global.finish_with_song_button": [
-                      "value"
-                    ]
                   }
                 }
-              ],
-              "_nested_name": "watch.workshop_activity.intro_nav_buttons"
+              ]
             },
             {
               "type": "nested_properties",
@@ -176,18 +116,14 @@
                   "value": "plh_video/lets_slow_down.mp4",
                   "_translations": {
                     "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "watch.workshop_activity.content_box.video_src"
+                  }
                 },
                 {
                   "name": "subs_src",
                   "value": "plh_video/lets_slow_down.vtt",
                   "_translations": {
                     "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "watch.workshop_activity.content_box.subs_src"
+                  }
                 },
                 {
                   "name": "button",
@@ -211,9 +147,7 @@
                       "_cleaned": "click | pop_up : lets_slow_down_lyrics"
                     }
                   ],
-                  "hidden": false,
-                  "type": "set_variable",
-                  "_nested_name": "watch.workshop_activity.content_box.button"
+                  "hidden": false
                 },
                 {
                   "name": "bottom_text",
@@ -228,9 +162,7 @@
                       "za_zu": true
                     }
                   },
-                  "hidden": false,
-                  "type": "set_variable",
-                  "_nested_name": "watch.workshop_activity.content_box.bottom_text"
+                  "hidden": false
                 },
                 {
                   "type": "nested_properties",
@@ -241,36 +173,15 @@
                       "value": "@global.goodbye_button",
                       "_translations": {
                         "value": {}
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "watch.workshop_activity.content_box.nav_buttons.button_completed",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@global.goodbye_button",
-                            "matchedExpression": "@global.goodbye_button",
-                            "type": "global",
-                            "fieldName": "goodbye_button"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@global.goodbye_button": [
-                          "value"
-                        ]
                       }
                     }
-                  ],
-                  "_nested_name": "watch.workshop_activity.content_box.nav_buttons"
+                  ]
                 }
-              ],
-              "_nested_name": "watch.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "watch.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "watch"
+      ]
     }
   ],
   "_xlsxPath": "global/mode_templates/welcome.xlsx"

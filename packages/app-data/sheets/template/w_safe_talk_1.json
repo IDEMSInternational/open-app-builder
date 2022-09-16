@@ -45,23 +45,6 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "talk_together.workshop_activity.intro_text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Let's talk about what happened to @global.w_safe_teen_girl_1",
-                    "matchedExpression": "@global.w_safe_teen_girl_1",
-                    "type": "global",
-                    "fieldName": "w_safe_teen_girl_1"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.w_safe_teen_girl_1": [
-                  "value"
-                ]
               }
             },
             {
@@ -80,9 +63,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "talk_together.workshop_activity.content_box.text"
+                  }
                 },
                 {
                   "name": "button_1",
@@ -101,33 +82,13 @@
                       "_cleaned": "click | pop_up:w_safe_talk_1_pop"
                     }
                   ],
-                  "hidden": false,
-                  "type": "set_variable",
-                  "_nested_name": "talk_together.workshop_activity.content_box.button_1",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "@global.ideas_short_button",
-                        "matchedExpression": "@global.ideas_short_button",
-                        "type": "global",
-                        "fieldName": "ideas_short_button"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@global.ideas_short_button": [
-                      "value"
-                    ]
-                  }
+                  "hidden": false
                 }
-              ],
-              "_nested_name": "talk_together.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "talk_together.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "talk_together"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"

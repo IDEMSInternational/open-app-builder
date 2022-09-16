@@ -34,23 +34,6 @@
           "value": "@data.workshop.w_celebrate",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "welcome_individual.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_celebrate",
-                "matchedExpression": "@data.workshop.w_celebrate",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_celebrate": [
-              "value"
-            ]
           }
         },
         {
@@ -62,9 +45,7 @@
               "value": "plh_images/workshop_modes/guide_2/final/wave.svg",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "welcome_individual.workshop_activity.activity_image"
+              }
             },
             {
               "type": "nested_properties",
@@ -72,9 +53,7 @@
               "rows": [
                 {
                   "name": "text",
-                  "hidden": true,
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.text"
+                  "hidden": true
                 },
                 {
                   "name": "reply_happy",
@@ -88,9 +67,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_happy"
+                  }
                 },
                 {
                   "name": "reply_ok",
@@ -104,9 +81,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_ok"
+                  }
                 },
                 {
                   "name": "reply_sad",
@@ -120,18 +95,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_sad"
+                  }
                 }
-              ],
-              "_nested_name": "welcome_individual.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "welcome_individual.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "welcome_individual"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"

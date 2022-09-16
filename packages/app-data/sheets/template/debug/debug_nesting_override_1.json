@@ -7,8 +7,7 @@
     {
       "type": "template",
       "name": "template_wrapper",
-      "rows": [],
-      "_nested_name": "template_wrapper"
+      "rows": []
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_nesting.xlsx"

@@ -13,8 +13,7 @@
       },
       "style_list": [
         "overflow-wrap: anywhere"
-      ],
-      "_nested_name": "text"
+      ]
     },
     {
       "type": "button",
@@ -33,8 +32,7 @@
           "_raw": "click | pop_up:debug_text_wrapping_popup",
           "_cleaned": "click | pop_up:debug_text_wrapping_popup"
         }
-      ],
-      "_nested_name": "button"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/debug_text.xlsx"

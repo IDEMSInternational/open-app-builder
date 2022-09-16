@@ -25,22 +25,22 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "parameter_list": {
-        "skip_text": "Skip Intro",
-        "style": "light"
-      },
+      "parameter_list": [
+        "skip_text: Skip Intro",
+        "style:light"
+      ],
       "rows": [
         {
           "type": "animated_section",
-          "parameter_list": {
-            "duration": "3.5"
-          },
+          "parameter_list": [
+            "duration: 3.5"
+          ],
           "rows": [
             {
               "type": "display_group",
-              "parameter_list": {
-                "style": "centre_image"
-              },
+              "parameter_list": [
+                "style:centre_image"
+              ],
               "rows": [
                 {
                   "type": "image",
@@ -49,12 +49,9 @@
                   "_translations": {
                     "value": {}
                   },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.image_1"
+                  "exclude_from_translation": true
                 }
-              ],
-              "name": "display_group",
-              "_nested_name": "animated_slides.animated_section.display_group"
+              ]
             },
             {
               "type": "text",
@@ -68,26 +65,23 @@
                   "za_tn": true
                 }
               },
-              "parameter_list": {
-                "text_align": "center"
-              },
-              "_nested_name": "animated_slides.animated_section.slogan_1"
+              "parameter_list": [
+                "text_align: center"
+              ]
             }
-          ],
-          "name": "animated_section",
-          "_nested_name": "animated_slides.animated_section"
+          ]
         },
         {
           "type": "animated_section",
-          "parameter_list": {
-            "duration": "4"
-          },
+          "parameter_list": [
+            "duration: 4"
+          ],
           "rows": [
             {
               "type": "display_group",
-              "parameter_list": {
-                "style": "centre_image"
-              },
+              "parameter_list": [
+                "style:centre_image"
+              ],
               "rows": [
                 {
                   "type": "image",
@@ -96,12 +90,9 @@
                   "_translations": {
                     "value": {}
                   },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.image_2"
+                  "exclude_from_translation": true
                 }
-              ],
-              "name": "display_group",
-              "_nested_name": "animated_slides.animated_section.display_group"
+              ]
             },
             {
               "type": "text",
@@ -115,26 +106,23 @@
                   "za_tn": true
                 }
               },
-              "parameter_list": {
-                "style": "large center"
-              },
-              "_nested_name": "animated_slides.animated_section.slogan_2"
+              "parameter_list": [
+                "style:large center"
+              ]
             }
-          ],
-          "name": "animated_section",
-          "_nested_name": "animated_slides.animated_section"
+          ]
         },
         {
           "type": "animated_section",
-          "parameter_list": {
-            "duration": "3.5"
-          },
+          "parameter_list": [
+            "duration: 3.5"
+          ],
           "rows": [
             {
               "type": "display_group",
-              "parameter_list": {
-                "style": "centre_image"
-              },
+              "parameter_list": [
+                "style:centre_image"
+              ],
               "rows": [
                 {
                   "type": "image",
@@ -143,12 +131,9 @@
                   "_translations": {
                     "value": {}
                   },
-                  "exclude_from_translation": true,
-                  "_nested_name": "animated_slides.animated_section.display_group.image_3"
+                  "exclude_from_translation": true
                 }
-              ],
-              "name": "display_group",
-              "_nested_name": "animated_slides.animated_section.display_group"
+              ]
             },
             {
               "type": "text",
@@ -159,69 +144,55 @@
                   "tz_sw": true
                 }
               },
-              "parameter_list": {
-                "style": "large center"
-              },
-              "_nested_name": "animated_slides.animated_section.slogan_3"
+              "parameter_list": [
+                "style:large center"
+              ]
             }
-          ],
-          "name": "animated_section",
-          "_nested_name": "animated_slides.animated_section"
+          ]
         },
         {
           "type": "animated_section",
-          "parameter_list": {
-            "duration": "4"
-          },
+          "parameter_list": [
+            "duration: 4"
+          ],
           "rows": [
             {
               "type": "template",
               "name": "splash_partners_1",
               "value": "splash_partners_1",
-              "rows": [],
-              "_nested_name": "animated_slides.animated_section.splash_partners_1"
+              "rows": []
             }
-          ],
-          "name": "animated_section",
-          "_nested_name": "animated_slides.animated_section"
+          ]
         },
         {
           "type": "animated_section",
-          "parameter_list": {
-            "duration": "4"
-          },
+          "parameter_list": [
+            "duration: 4"
+          ],
           "rows": [
             {
               "type": "template",
               "name": "splash_partners_2",
               "value": "splash_partners_2",
-              "rows": [],
-              "_nested_name": "animated_slides.animated_section.splash_partners_2"
+              "rows": []
             }
-          ],
-          "name": "animated_section",
-          "_nested_name": "animated_slides.animated_section"
+          ]
         },
         {
           "type": "animated_section",
-          "parameter_list": {
-            "duration": "4"
-          },
+          "parameter_list": [
+            "duration: 4"
+          ],
           "rows": [
             {
               "type": "template",
               "name": "splash_funders",
               "value": "splash_funders",
-              "rows": [],
-              "_nested_name": "animated_slides.animated_section.splash_funders"
+              "rows": []
             }
-          ],
-          "name": "animated_section",
-          "_nested_name": "animated_slides.animated_section"
+          ]
         }
-      ],
-      "name": "animated_slides",
-      "_nested_name": "animated_slides"
+      ]
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"

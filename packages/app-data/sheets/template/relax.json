@@ -9,32 +9,13 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "favourite"
+      "exclude_from_translation": true
     },
     {
       "name": "workshop_data",
       "value": "@data.workshop.w_consequence",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "workshop_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_consequence",
-            "matchedExpression": "@data.workshop.w_consequence",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_consequence": [
-          "value"
-        ]
       }
     },
     {
@@ -42,23 +23,6 @@
       "value": "@local.workshop_data.relax_data",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "relax_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop_data.relax_data",
-            "matchedExpression": "@local.workshop_data.relax_data",
-            "type": "local",
-            "fieldName": "workshop_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_data.relax_data": [
-          "value"
-        ]
       }
     },
     {
@@ -66,23 +30,6 @@
       "value": "@local.relax_data.id",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "relax",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.relax_data.id",
-            "matchedExpression": "@local.relax_data.id",
-            "type": "local",
-            "fieldName": "relax_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.relax_data.id": [
-          "value"
-        ]
       }
     },
     {
@@ -90,32 +37,6 @@
       "value": "@local.relax@local.favourite",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "relax_favourite",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.relax@local.favourite",
-            "matchedExpression": "@local.relax",
-            "type": "local",
-            "fieldName": "relax"
-          },
-          {
-            "fullExpression": "@local.relax@local.favourite",
-            "matchedExpression": "@local.favourite",
-            "type": "local",
-            "fieldName": "favourite"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.relax": [
-          "value"
-        ],
-        "@local.favourite": [
-          "value"
-        ]
       }
     },
     {
@@ -123,23 +44,6 @@
       "value": "@local.relax_data.text_template",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "relax_text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.relax_data.text_template",
-            "matchedExpression": "@local.relax_data.text_template",
-            "type": "local",
-            "fieldName": "relax_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.relax_data.text_template": [
-          "value"
-        ]
       }
     },
     {
@@ -147,23 +51,6 @@
       "value": "@local.relax_data.audio_asset",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "relax_audio",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.relax_data.audio_asset",
-            "matchedExpression": "@local.relax_data.audio_asset",
-            "type": "local",
-            "fieldName": "relax_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.relax_data.audio_asset": [
-          "value"
-        ]
       }
     },
     {
@@ -194,9 +81,7 @@
         {
           "name": "include_outro",
           "value": true,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.include_outro"
+          "exclude_from_translation": true
         },
         {
           "name": "activity_image",
@@ -204,24 +89,7 @@
           "_translations": {
             "value": {}
           },
-          "condition": "@field.do_this_workshop_together",
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_image",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@field.do_this_workshop_together",
-                "matchedExpression": "@field.do_this_workshop_together",
-                "type": "field",
-                "fieldName": "do_this_workshop_together"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@field.do_this_workshop_together": [
-              "condition"
-            ]
-          }
+          "condition": "@field.do_this_workshop_together"
         },
         {
           "name": "activity_title",
@@ -236,24 +104,7 @@
               "za_zu": true
             }
           },
-          "condition": "@field.do_this_workshop_together",
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_title",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@field.do_this_workshop_together",
-                "matchedExpression": "@field.do_this_workshop_together",
-                "type": "field",
-                "fieldName": "do_this_workshop_together"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@field.do_this_workshop_together": [
-              "condition"
-            ]
-          }
+          "condition": "@field.do_this_workshop_together"
         },
         {
           "name": "activity_image",
@@ -261,24 +112,7 @@
           "_translations": {
             "value": {}
           },
-          "condition": "!@field.do_this_workshop_together",
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_image",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "!@field.do_this_workshop_together",
-                "matchedExpression": "!@field.do_this_workshop_together",
-                "type": "field",
-                "fieldName": "do_this_workshop_together"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "!@field.do_this_workshop_together": [
-              "condition"
-            ]
-          }
+          "condition": "!@field.do_this_workshop_together"
         },
         {
           "name": "activity_title",
@@ -293,24 +127,7 @@
               "za_zu": true
             }
           },
-          "condition": "!@field.do_this_workshop_together",
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_title",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "!@field.do_this_workshop_together",
-                "matchedExpression": "!@field.do_this_workshop_together",
-                "type": "field",
-                "fieldName": "do_this_workshop_together"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "!@field.do_this_workshop_together": [
-              "condition"
-            ]
-          }
+          "condition": "!@field.do_this_workshop_together"
         },
         {
           "name": "intro_text",
@@ -324,38 +141,17 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.intro_text"
+          }
         },
         {
           "name": "activity_banner",
-          "hidden": true,
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_banner"
+          "hidden": true
         },
         {
           "name": "outro_habit_data",
           "value": "@data.habit.relax",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.outro_habit_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.habit.relax",
-                "matchedExpression": "@data.habit.relax",
-                "type": "data",
-                "fieldName": "habit"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.habit.relax": [
-              "value"
-            ]
           }
         },
         {
@@ -370,23 +166,6 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.outro_toggle_bar_text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "Add this activity to @global.my_relaxes",
-                "matchedExpression": "@global.my_relaxes",
-                "type": "global",
-                "fieldName": "my_relaxes"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.my_relaxes": [
-              "value"
-            ]
           }
         },
         {
@@ -394,23 +173,6 @@
           "value": "@local.relax_favourite",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.outro_toggle_bar_field",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.relax_favourite",
-                "matchedExpression": "@local.relax_favourite",
-                "type": "local",
-                "fieldName": "relax_favourite"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.relax_favourite": [
-              "value"
-            ]
           }
         },
         {
@@ -424,9 +186,7 @@
               "_translations": {
                 "value": {}
               },
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "workshop_activity.content_box.lottie_src"
+              "hidden": false
             },
             {
               "name": "audio_title",
@@ -440,32 +200,13 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "workshop_activity.content_box.audio_title"
+              }
             },
             {
               "name": "audio_src",
               "value": "@local.relax_audio",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "workshop_activity.content_box.audio_src",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@local.relax_audio",
-                    "matchedExpression": "@local.relax_audio",
-                    "type": "local",
-                    "fieldName": "relax_audio"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.relax_audio": [
-                  "value"
-                ]
               }
             },
             {
@@ -492,51 +233,9 @@
                   "_cleaned": "click | pop_up:@local.relax_text"
                 }
               ],
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "workshop_activity.content_box.button_1",
-              "_dynamicFields": {
-                "action_list": {
-                  "0": {
-                    "args": {
-                      "0": [
-                        {
-                          "fullExpression": "@local.relax_text",
-                          "matchedExpression": "@local.relax_text",
-                          "type": "local",
-                          "fieldName": "relax_text"
-                        }
-                      ]
-                    },
-                    "_raw": [
-                      {
-                        "fullExpression": "click | pop_up:@local.relax_text",
-                        "matchedExpression": "@local.relax_text",
-                        "type": "local",
-                        "fieldName": "relax_text"
-                      }
-                    ],
-                    "_cleaned": [
-                      {
-                        "fullExpression": "click | pop_up:@local.relax_text",
-                        "matchedExpression": "@local.relax_text",
-                        "type": "local",
-                        "fieldName": "relax_text"
-                      }
-                    ]
-                  }
-                }
-              },
-              "_dynamicDependencies": {
-                "@local.relax_text": [
-                  "action_list.0.args.0",
-                  "action_list.0._raw",
-                  "action_list.0._cleaned"
-                ]
-              }
+              "hidden": false
             }
-          ],
-          "_nested_name": "workshop_activity.content_box"
+          ]
         },
         {
           "name": "outro_text",
@@ -550,9 +249,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.outro_text"
+          }
         },
         {
           "type": "nested_properties",
@@ -560,15 +257,11 @@
           "rows": [
             {
               "name": "use_short_mark_text",
-              "value": true,
-              "type": "set_variable",
-              "_nested_name": "workshop_activity.outro_habit_box.use_short_mark_text"
+              "value": true
             }
-          ],
-          "_nested_name": "workshop_activity.outro_habit_box"
+          ]
         }
-      ],
-      "_nested_name": "workshop_activity"
+      ]
     }
   ],
   "_xlsxPath": "global/mode_templates/relax.xlsx"

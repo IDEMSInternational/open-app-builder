@@ -10,18 +10,16 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "center",
-        "text_align": "center"
-      },
-      "name": "title",
-      "_nested_name": "title"
+      "parameter_list": [
+        "style: center",
+        "text_align: center"
+      ]
     },
     {
       "type": "display_group",
-      "parameter_list": {
-        "style": "two_columns_images"
-      },
+      "parameter_list": [
+        "style: two_columns_images"
+      ],
       "rows": [
         {
           "type": "image",
@@ -30,8 +28,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.funder_1"
+          "exclude_from_translation": true
         },
         {
           "type": "image",
@@ -40,8 +37,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.funder_2"
+          "exclude_from_translation": true
         },
         {
           "type": "image",
@@ -50,8 +46,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.funder_3"
+          "exclude_from_translation": true
         },
         {
           "type": "image",
@@ -60,8 +55,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.funder_4"
+          "exclude_from_translation": true
         },
         {
           "type": "image",
@@ -70,8 +64,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.funder_5"
+          "exclude_from_translation": true
         },
         {
           "type": "image",
@@ -80,8 +73,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.funder_6"
+          "exclude_from_translation": true
         },
         {
           "type": "image",
@@ -90,8 +82,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.funder_7"
+          "exclude_from_translation": true
         },
         {
           "type": "image",
@@ -100,8 +91,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.funder_8"
+          "exclude_from_translation": true
         },
         {
           "type": "image",
@@ -110,8 +100,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.funder_9"
+          "exclude_from_translation": true
         },
         {
           "type": "image",
@@ -120,12 +109,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.funder_10"
+          "exclude_from_translation": true
         }
-      ],
-      "name": "display_group",
-      "_nested_name": "display_group"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"

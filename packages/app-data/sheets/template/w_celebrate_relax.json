@@ -34,23 +34,6 @@
           "value": "@data.workshop.w_celebrate",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "relax.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_celebrate",
-                "matchedExpression": "@data.workshop.w_celebrate",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_celebrate": [
-              "value"
-            ]
           }
         },
         {
@@ -63,24 +46,7 @@
               "_translations": {
                 "value": {}
               },
-              "condition": "@field.do_this_workshop_together",
-              "type": "set_variable",
-              "_nested_name": "relax.workshop_activity.activity_image",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "@field.do_this_workshop_together",
-                    "matchedExpression": "@field.do_this_workshop_together",
-                    "type": "field",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@field.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "@field.do_this_workshop_together"
             },
             {
               "name": "activity_image",
@@ -88,30 +54,11 @@
               "_translations": {
                 "value": {}
               },
-              "condition": "!@field.do_this_workshop_together",
-              "type": "set_variable",
-              "_nested_name": "relax.workshop_activity.activity_image",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "!@field.do_this_workshop_together",
-                    "matchedExpression": "!@field.do_this_workshop_together",
-                    "type": "field",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "!@field.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "!@field.do_this_workshop_together"
             }
-          ],
-          "_nested_name": "relax.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "relax"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"

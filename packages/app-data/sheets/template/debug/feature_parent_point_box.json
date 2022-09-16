@@ -11,23 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "value 1 is @fields.demo_changed_field_parent_point",
-            "matchedExpression": "@fields.demo_changed_field_parent_point",
-            "type": "fields",
-            "fieldName": "demo_changed_field_parent_point"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.demo_changed_field_parent_point": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -36,23 +20,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "value 2 is @fields.demo_changed_field_parent_point_1",
-            "matchedExpression": "@fields.demo_changed_field_parent_point_1",
-            "type": "fields",
-            "fieldName": "demo_changed_field_parent_point_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.demo_changed_field_parent_point_1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -61,31 +29,15 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_3",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "value 3 is @fields.demo_changed_field_parent_point_2",
-            "matchedExpression": "@fields.demo_changed_field_parent_point_2",
-            "type": "fields",
-            "fieldName": "demo_changed_field_parent_point_2"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.demo_changed_field_parent_point_2": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
       "name": "dg",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "parent_point"
-      },
+      "parameter_list": [
+        "style: parent_point"
+      ],
       "style_list": [
         "flex-wrap: wrap"
       ],
@@ -93,9 +45,7 @@
         {
           "name": "init_value_1",
           "value": 2,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "dg.init_value_1"
+          "exclude_from_translation": true
         },
         {
           "name": "icon_src1",
@@ -103,9 +53,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "dg.icon_src1"
+          "exclude_from_translation": true
         },
         {
           "name": "text1",
@@ -113,9 +61,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "dg.text1"
+          "exclude_from_translation": true
         },
         {
           "type": "parent_point_box",
@@ -130,81 +76,17 @@
               "action_id": "set_field",
               "args": [
                 "demo_changed_field_parent_point",
-                "this.value"
+                "@local.points_example"
               ],
               "_raw": "changed | set_field: demo_changed_field_parent_point: @local.points_example",
               "_cleaned": "changed | set_field: demo_changed_field_parent_point: @local.points_example"
             }
           ],
           "exclude_from_translation": true,
-          "parameter_list": {
-            "icon_src": "@local.icon_src1",
-            "text": "@local.text1"
-          },
-          "_nested_name": "dg.points_example",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.init_value_1",
-                "matchedExpression": "@local.init_value_1",
-                "type": "local",
-                "fieldName": "init_value_1"
-              }
-            ],
-            "action_list": {
-              "0": {
-                "_raw": [
-                  {
-                    "fullExpression": "changed | set_field: demo_changed_field_parent_point: @local.points_example",
-                    "matchedExpression": "@local.points_example",
-                    "type": "local",
-                    "fieldName": "points_example"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "changed | set_field: demo_changed_field_parent_point: @local.points_example",
-                    "matchedExpression": "@local.points_example",
-                    "type": "local",
-                    "fieldName": "points_example"
-                  }
-                ]
-              }
-            },
-            "parameter_list": {
-              "icon_src": [
-                {
-                  "fullExpression": "@local.icon_src1",
-                  "matchedExpression": "@local.icon_src1",
-                  "type": "local",
-                  "fieldName": "icon_src1"
-                }
-              ],
-              "text": [
-                {
-                  "fullExpression": "@local.text1",
-                  "matchedExpression": "@local.text1",
-                  "type": "local",
-                  "fieldName": "text1"
-                }
-              ]
-            }
-          },
-          "_dynamicDependencies": {
-            "@local.init_value_1": [
-              "value"
-            ],
-            "@local.points_example": [
-              "action_list.0._raw",
-              "action_list.0._cleaned"
-            ],
-            "@local.icon_src1": [
-              "parameter_list.icon_src"
-            ],
-            "@local.text1": [
-              "parameter_list.text"
-            ]
-          }
+          "parameter_list": [
+            "icon_src:@local.icon_src1",
+            "text: @local.text1"
+          ]
         },
         {
           "type": "parent_point_box",
@@ -216,70 +98,17 @@
               "action_id": "set_field",
               "args": [
                 "demo_changed_field_parent_point_1",
-                "this.value"
+                "@local.points_example_1"
               ],
               "_raw": "changed | set_field: demo_changed_field_parent_point_1: @local.points_example_1",
               "_cleaned": "changed | set_field: demo_changed_field_parent_point_1: @local.points_example_1"
             }
           ],
           "exclude_from_translation": true,
-          "parameter_list": {
-            "icon_src": "@local.icon_src1",
-            "text": "@local.text1"
-          },
-          "_nested_name": "dg.points_example_1",
-          "_dynamicFields": {
-            "action_list": {
-              "0": {
-                "_raw": [
-                  {
-                    "fullExpression": "changed | set_field: demo_changed_field_parent_point_1: @local.points_example_1",
-                    "matchedExpression": "@local.points_example_1",
-                    "type": "local",
-                    "fieldName": "points_example_1"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "changed | set_field: demo_changed_field_parent_point_1: @local.points_example_1",
-                    "matchedExpression": "@local.points_example_1",
-                    "type": "local",
-                    "fieldName": "points_example_1"
-                  }
-                ]
-              }
-            },
-            "parameter_list": {
-              "icon_src": [
-                {
-                  "fullExpression": "@local.icon_src1",
-                  "matchedExpression": "@local.icon_src1",
-                  "type": "local",
-                  "fieldName": "icon_src1"
-                }
-              ],
-              "text": [
-                {
-                  "fullExpression": "@local.text1",
-                  "matchedExpression": "@local.text1",
-                  "type": "local",
-                  "fieldName": "text1"
-                }
-              ]
-            }
-          },
-          "_dynamicDependencies": {
-            "@local.points_example_1": [
-              "action_list.0._raw",
-              "action_list.0._cleaned"
-            ],
-            "@local.icon_src1": [
-              "parameter_list.icon_src"
-            ],
-            "@local.text1": [
-              "parameter_list.text"
-            ]
-          }
+          "parameter_list": [
+            "icon_src:@local.icon_src1",
+            "text: @local.text1"
+          ]
         },
         {
           "type": "parent_point_box",
@@ -291,73 +120,19 @@
               "action_id": "set_field",
               "args": [
                 "demo_changed_field_parent_point_2",
-                "this.value"
+                "@local.points_example_2"
               ],
               "_raw": "changed | set_field: demo_changed_field_parent_point_2: @local.points_example_2",
               "_cleaned": "changed | set_field: demo_changed_field_parent_point_2: @local.points_example_2"
             }
           ],
           "exclude_from_translation": true,
-          "parameter_list": {
-            "icon_src": "@local.icon_src1",
-            "text": "@local.text1"
-          },
-          "_nested_name": "dg.points_example_2",
-          "_dynamicFields": {
-            "action_list": {
-              "0": {
-                "_raw": [
-                  {
-                    "fullExpression": "changed | set_field: demo_changed_field_parent_point_2: @local.points_example_2",
-                    "matchedExpression": "@local.points_example_2",
-                    "type": "local",
-                    "fieldName": "points_example_2"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "changed | set_field: demo_changed_field_parent_point_2: @local.points_example_2",
-                    "matchedExpression": "@local.points_example_2",
-                    "type": "local",
-                    "fieldName": "points_example_2"
-                  }
-                ]
-              }
-            },
-            "parameter_list": {
-              "icon_src": [
-                {
-                  "fullExpression": "@local.icon_src1",
-                  "matchedExpression": "@local.icon_src1",
-                  "type": "local",
-                  "fieldName": "icon_src1"
-                }
-              ],
-              "text": [
-                {
-                  "fullExpression": "@local.text1",
-                  "matchedExpression": "@local.text1",
-                  "type": "local",
-                  "fieldName": "text1"
-                }
-              ]
-            }
-          },
-          "_dynamicDependencies": {
-            "@local.points_example_2": [
-              "action_list.0._raw",
-              "action_list.0._cleaned"
-            ],
-            "@local.icon_src1": [
-              "parameter_list.icon_src"
-            ],
-            "@local.text1": [
-              "parameter_list.text"
-            ]
-          }
+          "parameter_list": [
+            "icon_src:@local.icon_src1",
+            "text: @local.text1"
+          ]
         }
-      ],
-      "_nested_name": "dg"
+      ]
     },
     {
       "type": "title",
@@ -365,17 +140,15 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "name": "title",
-      "_nested_name": "title"
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
       "name": "dg",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "parent_point"
-      },
+      "parameter_list": [
+        "style: parent_point"
+      ],
       "style_list": [
         "flex-wrap: wrap"
       ],
@@ -383,9 +156,7 @@
         {
           "name": "init_value_1",
           "value": 2,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "dg.init_value_1"
+          "exclude_from_translation": true
         },
         {
           "type": "parent_point_box",
@@ -395,27 +166,11 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "lottie_src": "plh_lottie/parent_points.json",
-            "text": "no celebration",
-            "play_celebration": "false"
-          },
-          "_nested_name": "dg.points_example",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.init_value_1",
-                "matchedExpression": "@local.init_value_1",
-                "type": "local",
-                "fieldName": "init_value_1"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.init_value_1": [
-              "value"
-            ]
-          }
+          "parameter_list": [
+            "lottie_src: plh_lottie/parent_points.json",
+            "text: no celebration",
+            "play_celebration: false"
+          ]
         },
         {
           "name": "text4",
@@ -423,20 +178,17 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "dg.text4"
+          "exclude_from_translation": true
         },
         {
           "type": "parent_point_box",
           "name": "points_example_1",
           "value": 3,
           "exclude_from_translation": true,
-          "parameter_list": {
-            "lottie_src": "plh_lottie/parent_centre.json",
-            "text": "text two"
-          },
-          "_nested_name": "dg.points_example_1"
+          "parameter_list": [
+            "lottie_src:plh_lottie/parent_centre.json",
+            "text:text two"
+          ]
         },
         {
           "name": "text5",
@@ -444,20 +196,17 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "dg.text5"
+          "exclude_from_translation": true
         },
         {
           "type": "parent_point_box",
           "name": "points_example_2",
           "value": 3,
           "exclude_from_translation": true,
-          "parameter_list": {
-            "lottie_src": "plh_lottie/parent_points.json",
-            "text": "text three"
-          },
-          "_nested_name": "dg.points_example_2"
+          "parameter_list": [
+            "lottie_src:plh_lottie/parent_points.json",
+            "text: text three"
+          ]
         },
         {
           "name": "text6",
@@ -465,12 +214,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "dg.text6"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "dg"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"

@@ -33,23 +33,6 @@
           "value": "@data.workshop.w_self_care",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "topic_intro.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_self_care",
-                "matchedExpression": "@data.workshop.w_self_care",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_self_care": [
-              "value"
-            ]
           }
         },
         {
@@ -72,23 +55,6 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "topic_intro.listen.workshop_activity.intro_title",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "Why @data.workshop.w_self_care.short_title?",
-                        "matchedExpression": "@data.workshop.w_self_care.short_title",
-                        "type": "data",
-                        "fieldName": "workshop"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@data.workshop.w_self_care.short_title": [
-                      "value"
-                    ]
                   }
                 },
                 {
@@ -103,18 +69,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "topic_intro.listen.workshop_activity.intro_text"
+                  }
                 }
-              ],
-              "_nested_name": "topic_intro.listen.workshop_activity"
+              ]
             }
-          ],
-          "_nested_name": "topic_intro.listen"
+          ]
         }
-      ],
-      "_nested_name": "topic_intro"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"

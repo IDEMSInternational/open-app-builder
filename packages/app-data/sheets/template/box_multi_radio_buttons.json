@@ -12,11 +12,9 @@
           "type": "nested_properties",
           "name": "nav_buttons",
           "hidden": true,
-          "rows": [],
-          "_nested_name": "radio_buttons_1.nav_buttons"
+          "rows": []
         }
-      ],
-      "_nested_name": "radio_buttons_1"
+      ]
     },
     {
       "type": "template",
@@ -27,11 +25,9 @@
           "type": "nested_properties",
           "name": "nav_buttons",
           "hidden": true,
-          "rows": [],
-          "_nested_name": "radio_buttons_2.nav_buttons"
+          "rows": []
         }
-      ],
-      "_nested_name": "radio_buttons_2"
+      ]
     },
     {
       "type": "template",
@@ -42,11 +38,9 @@
           "type": "nested_properties",
           "name": "nav_buttons",
           "hidden": true,
-          "rows": [],
-          "_nested_name": "radio_buttons_3.nav_buttons"
+          "rows": []
         }
-      ],
-      "_nested_name": "radio_buttons_3"
+      ]
     },
     {
       "type": "template",
@@ -57,11 +51,9 @@
           "type": "nested_properties",
           "name": "nav_buttons",
           "hidden": true,
-          "rows": [],
-          "_nested_name": "radio_buttons_4.nav_buttons"
+          "rows": []
         }
-      ],
-      "_nested_name": "radio_buttons_4"
+      ]
     },
     {
       "type": "template",
@@ -87,8 +79,7 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "rows": [],
-      "_nested_name": "nav_buttons"
+      "rows": []
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"

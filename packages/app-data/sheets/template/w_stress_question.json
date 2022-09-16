@@ -16,9 +16,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "answer_1"
+      }
     },
     {
       "name": "answer_2",
@@ -32,9 +30,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "answer_2"
+      }
     },
     {
       "name": "answer_3",
@@ -48,9 +44,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "answer_3"
+      }
     },
     {
       "name": "answer_4",
@@ -64,23 +58,6 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "answer_4",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Think about solutions together with @global.w_stress_teen_boy_1",
-            "matchedExpression": "@global.w_stress_teen_boy_1",
-            "type": "global",
-            "fieldName": "w_stress_teen_boy_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.w_stress_teen_boy_1": [
-          "value"
-        ]
       }
     },
     {
@@ -95,23 +72,6 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "answer_5",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Do something positive together with @global.w_stress_teen_boy_1",
-            "matchedExpression": "@global.w_stress_teen_boy_1",
-            "type": "global",
-            "fieldName": "w_stress_teen_boy_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.w_stress_teen_boy_1": [
-          "value"
-        ]
       }
     },
     {
@@ -155,9 +115,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "question_time.workshop_activity.intro_text"
+              }
             },
             {
               "type": "nested_properties",
@@ -174,15 +132,11 @@
                       "_translations": {
                         "value": {}
                       },
-                      "exclude_from_translation": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_1.radio_group_tracker"
+                      "exclude_from_translation": true
                     },
                     {
                       "name": "text",
-                      "hidden": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_1.text"
+                      "hidden": true
                     },
                     {
                       "name": "question_text",
@@ -196,44 +150,20 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_1.question_text",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "How do you think @global.w_stress_teen_boy_1 felt?",
-                            "matchedExpression": "@global.w_stress_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_stress_teen_boy_1"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@global.w_stress_teen_boy_1": [
-                          "value"
-                        ]
                       }
                     },
                     {
                       "name": "answer_list",
-                      "value": [
-                        "name:sad | text: Sad | image:plh_images/stickers/faces/sadder.svg",
-                        "name:scared | text: Scared | image:plh_images/stickers/faces/scared.svg",
-                        "name:confused | text:Confused | image:plh_images/stickers/faces/confused.svg",
-                        "name:angry | text: Angry | image:plh_images/stickers/faces/angry.svg"
-                      ],
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_1.answer_list"
+                      "value": "name:sad | text: Sad | image:plh_images/stickers/faces/sadder.svg; \nname:scared | text: Scared | image:plh_images/stickers/faces/scared.svg; \nname:confused | text:Confused | image:plh_images/stickers/faces/confused.svg; \nname:angry | text: Angry | image:plh_images/stickers/faces/angry.svg;",
+                      "_translations": {
+                        "value": {}
+                      }
                     },
                     {
                       "name": "reply",
-                      "hidden": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_1.reply"
+                      "hidden": true
                     }
-                  ],
-                  "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_1"
+                  ]
                 },
                 {
                   "type": "nested_properties",
@@ -245,15 +175,11 @@
                       "_translations": {
                         "value": {}
                       },
-                      "exclude_from_translation": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_2.radio_group_tracker"
+                      "exclude_from_translation": true
                     },
                     {
                       "name": "text",
-                      "hidden": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_2.text"
+                      "hidden": true
                     },
                     {
                       "name": "question_text",
@@ -267,44 +193,20 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_2.question_text",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "And @global.w_stress_male_caregiver?",
-                            "matchedExpression": "@global.w_stress_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_stress_male_caregiver"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@global.w_stress_male_caregiver": [
-                          "value"
-                        ]
                       }
                     },
                     {
                       "name": "answer_list",
-                      "value": [
-                        "name:sad | text: Sad | image:plh_images/stickers/faces/sadder.svg",
-                        "name:scared | text: Scared | image:plh_images/stickers/faces/scared.svg",
-                        "name:confused | text:Confused | image:plh_images/stickers/faces/confused.svg",
-                        "name:angry | text: Angry | image:plh_images/stickers/faces/angry.svg"
-                      ],
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_2.answer_list"
+                      "value": "name:sad | text: Sad | image:plh_images/stickers/faces/sadder.svg; \nname:scared | text: Scared | image:plh_images/stickers/faces/scared.svg; \nname:confused | text:Confused | image:plh_images/stickers/faces/confused.svg; \nname:angry | text: Angry | image:plh_images/stickers/faces/angry.svg;",
+                      "_translations": {
+                        "value": {}
+                      }
                     },
                     {
                       "name": "reply",
-                      "hidden": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_2.reply"
+                      "hidden": true
                     }
-                  ],
-                  "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_2"
+                  ]
                 },
                 {
                   "type": "nested_properties",
@@ -316,15 +218,11 @@
                       "_translations": {
                         "value": {}
                       },
-                      "exclude_from_translation": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_3.radio_group_tracker"
+                      "exclude_from_translation": true
                     },
                     {
                       "name": "text",
-                      "hidden": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_3.text"
+                      "hidden": true
                     },
                     {
                       "name": "question_text",
@@ -338,35 +236,14 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_3.question_text",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "And @global.w_stress_girl?",
-                            "matchedExpression": "@global.w_stress_girl",
-                            "type": "global",
-                            "fieldName": "w_stress_girl"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@global.w_stress_girl": [
-                          "value"
-                        ]
                       }
                     },
                     {
                       "name": "answer_list",
-                      "value": [
-                        "name:sad | text: Sad | image:plh_images/stickers/faces/sadder.svg",
-                        "name:scared | text: Scared | image:plh_images/stickers/faces/scared.svg",
-                        "name:confused | text:Confused | image:plh_images/stickers/faces/confused.svg",
-                        "name:angry | text: Angry | image:plh_images/stickers/faces/angry.svg"
-                      ],
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_3.answer_list"
+                      "value": "name:sad | text: Sad | image:plh_images/stickers/faces/sadder.svg; \nname:scared | text: Scared | image:plh_images/stickers/faces/scared.svg; \nname:confused | text:Confused | image:plh_images/stickers/faces/confused.svg; \nname:angry | text: Angry | image:plh_images/stickers/faces/angry.svg;",
+                      "_translations": {
+                        "value": {}
+                      }
                     },
                     {
                       "name": "reply",
@@ -380,12 +257,9 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_3.reply"
+                      }
                     }
-                  ],
-                  "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_3"
+                  ]
                 },
                 {
                   "type": "nested_properties",
@@ -398,15 +272,11 @@
                       "_translations": {
                         "value": {}
                       },
-                      "exclude_from_translation": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_4.combo_box_tracker"
+                      "exclude_from_translation": true
                     },
                     {
                       "name": "text",
-                      "hidden": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_4.text"
+                      "hidden": true
                     },
                     {
                       "name": "question_text",
@@ -420,129 +290,37 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_4.question_text",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "What could @global.w_stress_male_caregiver have done differently?",
-                            "matchedExpression": "@global.w_stress_male_caregiver",
-                            "type": "global",
-                            "fieldName": "w_stress_male_caregiver"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@global.w_stress_male_caregiver": [
-                          "value"
-                        ]
                       }
                     },
                     {
                       "name": "answer_list",
-                      "value": [
-                        "name:name_1 | text:@local.answer_1",
-                        "name:name_2 | text:@local.answer_2",
-                        "name:name_3 | text:@local.answer_3",
-                        "name:name_4 | text:@local.answer_4",
-                        "name:name_5 | text:@local.answer_5"
-                      ],
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_4.answer_list",
-                      "_dynamicFields": {
-                        "value": {
-                          "0": [
-                            {
-                              "fullExpression": "name:name_1 | text:@local.answer_1",
-                              "matchedExpression": "@local.answer_1",
-                              "type": "local",
-                              "fieldName": "answer_1"
-                            }
-                          ],
-                          "1": [
-                            {
-                              "fullExpression": "name:name_2 | text:@local.answer_2",
-                              "matchedExpression": "@local.answer_2",
-                              "type": "local",
-                              "fieldName": "answer_2"
-                            }
-                          ],
-                          "2": [
-                            {
-                              "fullExpression": "name:name_3 | text:@local.answer_3",
-                              "matchedExpression": "@local.answer_3",
-                              "type": "local",
-                              "fieldName": "answer_3"
-                            }
-                          ],
-                          "3": [
-                            {
-                              "fullExpression": "name:name_4 | text:@local.answer_4",
-                              "matchedExpression": "@local.answer_4",
-                              "type": "local",
-                              "fieldName": "answer_4"
-                            }
-                          ],
-                          "4": [
-                            {
-                              "fullExpression": "name:name_5 | text:@local.answer_5",
-                              "matchedExpression": "@local.answer_5",
-                              "type": "local",
-                              "fieldName": "answer_5"
-                            }
-                          ]
-                        }
-                      },
-                      "_dynamicDependencies": {
-                        "@local.answer_1": [
-                          "value.0"
-                        ],
-                        "@local.answer_2": [
-                          "value.1"
-                        ],
-                        "@local.answer_3": [
-                          "value.2"
-                        ],
-                        "@local.answer_4": [
-                          "value.3"
-                        ],
-                        "@local.answer_5": [
-                          "value.4"
-                        ]
+                      "value": "name:name_1 | text:@local.answer_1;\nname:name_2 | text:@local.answer_2;  \nname:name_3 | text:@local.answer_3; \nname:name_4 | text:@local.answer_4;\nname:name_5 | text:@local.answer_5",
+                      "_translations": {
+                        "value": {}
                       }
                     },
                     {
                       "name": "input_allowed",
                       "value": false,
-                      "exclude_from_translation": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_4.input_allowed"
+                      "exclude_from_translation": true
                     },
                     {
                       "name": "reply",
-                      "hidden": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_4.reply"
+                      "hidden": true
                     },
                     {
                       "type": "nested_properties",
                       "name": "nav_buttons",
                       "hidden": true,
-                      "rows": [],
-                      "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_4.nav_buttons"
+                      "rows": []
                     }
-                  ],
-                  "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_4"
+                  ]
                 }
-              ],
-              "_nested_name": "question_time.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "question_time.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "question_time"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"

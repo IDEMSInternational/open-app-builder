@@ -10,8 +10,7 @@
       "value": "Today",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_1"
+      }
     },
     {
       "type": "text",
@@ -19,22 +18,6 @@
       "value": "Today is @fields.current_date",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Today is @fields.current_date",
-            "matchedExpression": "@fields.current_date",
-            "type": "fields",
-            "fieldName": "current_date"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.current_date": [
-          "value"
-        ]
       }
     },
     {
@@ -43,22 +26,6 @@
       "value": "@calc(Date())",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "date",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@calc(Date())",
-            "matchedExpression": "@calc(Date())",
-            "type": "calc",
-            "fieldName": "Date()"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@calc(Date())": [
-          "value"
-        ]
       }
     },
     {
@@ -67,22 +34,6 @@
       "value": "Today is @local.date",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Today is @local.date",
-            "matchedExpression": "@local.date",
-            "type": "local",
-            "fieldName": "date"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.date": [
-          "value"
-        ]
       }
     },
     {
@@ -91,22 +42,6 @@
       "value": "@calc((new Date()).getDay())",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "day",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@calc((new Date()).getDay())",
-            "matchedExpression": "@calc((new Date()).getDay())",
-            "type": "calc",
-            "fieldName": "(new Date()).getDay()"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@calc((new Date()).getDay())": [
-          "value"
-        ]
       }
     },
     {
@@ -115,22 +50,6 @@
       "value": "Today is @local.day",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_3",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Today is @local.day",
-            "matchedExpression": "@local.day",
-            "type": "local",
-            "fieldName": "day"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.day": [
-          "value"
-        ]
       }
     },
     {
@@ -139,22 +58,6 @@
       "value": "@calc(new Date(2021,12, 25))",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "christmas",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@calc(new Date(2021,12, 25))",
-            "matchedExpression": "@calc(new Date(2021,12, 25))",
-            "type": "calc",
-            "fieldName": "new Date(2021,12, 25)"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@calc(new Date(2021,12, 25))": [
-          "value"
-        ]
       }
     },
     {
@@ -163,22 +66,6 @@
       "value": "Christmas is @local.christmas",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_4",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Christmas is @local.christmas",
-            "matchedExpression": "@local.christmas",
-            "type": "local",
-            "fieldName": "christmas"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.christmas": [
-          "value"
-        ]
       }
     },
     {
@@ -187,22 +74,6 @@
       "value": "@calc((new Date(2021,12, 25)).getTime())",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "christmas_time",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@calc((new Date(2021,12, 25)).getTime())",
-            "matchedExpression": "@calc((new Date(2021,12, 25)).getTime())",
-            "type": "calc",
-            "fieldName": "(new Date(2021,12, 25)).getTime()"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@calc((new Date(2021,12, 25)).getTime())": [
-          "value"
-        ]
       }
     },
     {
@@ -211,22 +82,6 @@
       "value": "Christmas time is @local.christmas_time",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_5",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Christmas time is @local.christmas_time",
-            "matchedExpression": "@local.christmas_time",
-            "type": "local",
-            "fieldName": "christmas_time"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.christmas_time": [
-          "value"
-        ]
       }
     },
     {
@@ -235,31 +90,6 @@
       "value": "@calc( (@local.christmas_time - (new Date()).getTime())  / (1000 * 3600 * 24) )",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "days_to_christmas",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@calc( (@local.christmas_time - (new Date()).getTime())  / (1000 * 3600 * 24) )",
-            "matchedExpression": "@local.christmas_time",
-            "type": "local",
-            "fieldName": "christmas_time"
-          },
-          {
-            "fullExpression": "@calc( (@local.christmas_time - (new Date()).getTime())  / (1000 * 3600 * 24) )",
-            "matchedExpression": "@calc( (@local.christmas_time - (new Date()).getTime())  / (1000 * 3600 * 24) )",
-            "type": "calc",
-            "fieldName": " (@local.christmas_time - (new Date()).getTime())  / (1000 * 3600 * 24) "
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.christmas_time": [
-          "value"
-        ],
-        "@calc( (@local.christmas_time - (new Date()).getTime())  / (1000 * 3600 * 24) )": [
-          "value"
-        ]
       }
     },
     {
@@ -268,22 +98,6 @@
       "value": "Christmas is in @local.days_to_christmas days",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_6",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Christmas is in @local.days_to_christmas days",
-            "matchedExpression": "@local.days_to_christmas",
-            "type": "local",
-            "fieldName": "days_to_christmas"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.days_to_christmas": [
-          "value"
-        ]
       }
     },
     {
@@ -292,22 +106,6 @@
       "value": "@calc((new Date()).setHours(0,0,0,0))",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "midnight",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@calc((new Date()).setHours(0,0,0,0))",
-            "matchedExpression": "@calc((new Date()).setHours(0,0,0,0))",
-            "type": "calc",
-            "fieldName": "(new Date()).setHours(0,0,0,0)"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@calc((new Date()).setHours(0,0,0,0))": [
-          "value"
-        ]
       }
     },
     {
@@ -316,22 +114,6 @@
       "value": "Midnight was at @local.midnight",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_7",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Midnight was at @local.midnight",
-            "matchedExpression": "@local.midnight",
-            "type": "local",
-            "fieldName": "midnight"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.midnight": [
-          "value"
-        ]
       }
     },
     {
@@ -340,22 +122,6 @@
       "value": "@calc(((new Date()).setHours(0,0,0,0)))",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "midnight_time",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@calc(((new Date()).setHours(0,0,0,0)))",
-            "matchedExpression": "@calc(((new Date()).setHours(0,0,0,0)))",
-            "type": "calc",
-            "fieldName": "((new Date()).setHours(0,0,0,0))"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@calc(((new Date()).setHours(0,0,0,0)))": [
-          "value"
-        ]
       }
     },
     {
@@ -364,22 +130,6 @@
       "value": "Midnight time was @local.midnight_time",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_8",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Midnight time was @local.midnight_time",
-            "matchedExpression": "@local.midnight_time",
-            "type": "local",
-            "fieldName": "midnight_time"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.midnight_time": [
-          "value"
-        ]
       }
     }
   ],

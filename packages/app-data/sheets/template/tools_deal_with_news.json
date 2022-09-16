@@ -16,8 +16,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text"
+      }
     }
   ],
   "_xlsxPath": "global/top_templates/parent_centre_templates/covid/covid_tools.xlsx"

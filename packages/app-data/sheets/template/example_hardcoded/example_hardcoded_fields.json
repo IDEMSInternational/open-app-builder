@@ -12,8 +12,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title"
+      "exclude_from_translation": true
     },
     {
       "type": "subtitle",
@@ -22,8 +21,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "deployment_name_label"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -32,23 +30,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "deployment_name_value",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields._deployment_name",
-            "matchedExpression": "@fields._deployment_name",
-            "type": "fields",
-            "fieldName": "_deployment_name"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields._deployment_name": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "subtitle",
@@ -57,8 +39,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "server_sync_latest_label"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -67,23 +48,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "server_sync_latest_value",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields._server_sync_latest",
-            "matchedExpression": "@fields._server_sync_latest",
-            "type": "fields",
-            "fieldName": "_server_sync_latest"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields._server_sync_latest": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "subtitle",
@@ -92,8 +57,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "app_language_label"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -102,23 +66,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "app_language_value",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields._app_language",
-            "matchedExpression": "@fields._app_language",
-            "type": "fields",
-            "fieldName": "_app_language"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields._app_language": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "subtitle",
@@ -127,8 +75,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "app_version_label"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -137,23 +84,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "app_version_value",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields._app_version",
-            "matchedExpression": "@fields._app_version",
-            "type": "fields",
-            "fieldName": "_app_version"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields._app_version": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/hardcoded_variables.xlsx"

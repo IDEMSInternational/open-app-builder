@@ -11,8 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_1"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -21,15 +20,13 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
       "name": "debug_radio_group_replies_1",
       "value": "debug_radio_group_replies",
-      "rows": [],
-      "_nested_name": "debug_radio_group_replies_1"
+      "rows": []
     },
     {
       "type": "title",
@@ -38,8 +35,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_2"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -48,8 +44,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -62,9 +57,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_radio_group_replies_2.text_1_hidden"
+          "exclude_from_translation": true
         },
         {
           "name": "text_1_condition",
@@ -72,9 +65,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_radio_group_replies_2.text_1_condition"
+          "exclude_from_translation": true
         },
         {
           "name": "text_1_display_group",
@@ -82,9 +73,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_radio_group_replies_2.text_1_display_group"
+          "exclude_from_translation": true
         },
         {
           "name": "text_2_hidden",
@@ -92,9 +81,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_radio_group_replies_2.text_2_hidden"
+          "exclude_from_translation": true
         },
         {
           "name": "text_2_condition",
@@ -102,9 +89,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_radio_group_replies_2.text_2_condition"
+          "exclude_from_translation": true
         },
         {
           "name": "text_2_display_group",
@@ -112,12 +97,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_radio_group_replies_2.text_2_display_group"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "debug_radio_group_replies_2"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_overriding_value.xlsx"

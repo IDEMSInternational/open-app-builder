@@ -8,29 +8,10 @@
       "value": "@data.something_fun.co_chef",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "activity_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.something_fun.co_chef",
-            "matchedExpression": "@data.something_fun.co_chef",
-            "type": "data",
-            "fieldName": "something_fun"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.something_fun.co_chef": [
-          "value"
-        ]
       }
     },
     {
-      "name": "activity_text",
-      "type": "set_variable",
-      "_nested_name": "activity_text"
+      "name": "activity_text"
     },
     {
       "type": "template",
@@ -53,23 +34,6 @@
           "value": "@local.activity_data.title",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "library_activity.activity_title",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.activity_data.title",
-                "matchedExpression": "@local.activity_data.title",
-                "type": "local",
-                "fieldName": "activity_data"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.activity_data.title": [
-              "value"
-            ]
           }
         },
         {
@@ -77,23 +41,6 @@
           "value": "@data.habit.spend_time.image_asset",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "library_activity.activity_image",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.habit.spend_time.image_asset",
-                "matchedExpression": "@data.habit.spend_time.image_asset",
-                "type": "data",
-                "fieldName": "habit"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.habit.spend_time.image_asset": [
-              "value"
-            ]
           }
         },
         {
@@ -106,23 +53,6 @@
               "value": "@local.activity_data",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "library_activity.content_box.activity_data",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@local.activity_data",
-                    "matchedExpression": "@local.activity_data",
-                    "type": "local",
-                    "fieldName": "activity_data"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.activity_data": [
-                  "value"
-                ]
               }
             },
             {
@@ -130,30 +60,11 @@
               "value": "@local.activity_text",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "library_activity.content_box.activity_text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@local.activity_text",
-                    "matchedExpression": "@local.activity_text",
-                    "type": "local",
-                    "fieldName": "activity_text"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.activity_text": [
-                  "value"
-                ]
               }
             }
-          ],
-          "_nested_name": "library_activity.content_box"
+          ]
         }
-      ],
-      "_nested_name": "library_activity"
+      ]
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"

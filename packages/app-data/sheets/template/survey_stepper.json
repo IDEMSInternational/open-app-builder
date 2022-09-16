@@ -5,15 +5,11 @@
   "rows": [
     {
       "name": "progress_bar_value",
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "progress_bar_value"
+      "exclude_from_translation": true
     },
     {
       "name": "progress_bar_num_items",
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "progress_bar_num_items"
+      "exclude_from_translation": true
     },
     {
       "name": "progress_bar",
@@ -21,44 +17,12 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "num_items": "@local.progress_bar_num_items"
-      },
-      "type": "set_variable",
-      "_nested_name": "progress_bar",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.progress_bar_value",
-            "matchedExpression": "@local.progress_bar_value",
-            "type": "local",
-            "fieldName": "progress_bar_value"
-          }
-        ],
-        "parameter_list": {
-          "num_items": [
-            {
-              "fullExpression": "@local.progress_bar_num_items",
-              "matchedExpression": "@local.progress_bar_num_items",
-              "type": "local",
-              "fieldName": "progress_bar_num_items"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.progress_bar_value": [
-          "value"
-        ],
-        "@local.progress_bar_num_items": [
-          "parameter_list.num_items"
-        ]
-      }
+      "parameter_list": [
+        "num_items:@local.progress_bar_num_items"
+      ]
     },
     {
-      "name": "survey_name",
-      "type": "set_variable",
-      "_nested_name": "survey_name"
+      "name": "survey_name"
     },
     {
       "name": "completion_level",
@@ -66,9 +30,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "completion_level"
+      "exclude_from_translation": true
     },
     {
       "name": "current_completion_level",
@@ -76,9 +38,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "current_completion_level"
+      "exclude_from_translation": true
     },
     {
       "name": "progress_field",
@@ -86,33 +46,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "progress_field",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.survey_name@local.current_completion_level",
-            "matchedExpression": "@local.survey_name",
-            "type": "local",
-            "fieldName": "survey_name"
-          },
-          {
-            "fullExpression": "@local.survey_name@local.current_completion_level",
-            "matchedExpression": "@local.current_completion_level",
-            "type": "local",
-            "fieldName": "current_completion_level"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.survey_name": [
-          "value"
-        ],
-        "@local.current_completion_level": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "max_progress_field",
@@ -120,70 +54,15 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "max_progress_field",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.survey_name@local.completion_level",
-            "matchedExpression": "@local.survey_name",
-            "type": "local",
-            "fieldName": "survey_name"
-          },
-          {
-            "fullExpression": "@local.survey_name@local.completion_level",
-            "matchedExpression": "@local.completion_level",
-            "type": "local",
-            "fieldName": "completion_level"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.survey_name": [
-          "value"
-        ],
-        "@local.completion_level": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "nav_group",
       "name": "nav_template_list",
-      "parameter_list": {
-        "progress_field": "@local.progress_field",
-        "max_progress_field": "@local.max_progress_field"
-      },
-      "_nested_name": "nav_template_list",
-      "_dynamicFields": {
-        "parameter_list": {
-          "progress_field": [
-            {
-              "fullExpression": "@local.progress_field",
-              "matchedExpression": "@local.progress_field",
-              "type": "local",
-              "fieldName": "progress_field"
-            }
-          ],
-          "max_progress_field": [
-            {
-              "fullExpression": "@local.max_progress_field",
-              "matchedExpression": "@local.max_progress_field",
-              "type": "local",
-              "fieldName": "max_progress_field"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.progress_field": [
-          "parameter_list.progress_field"
-        ],
-        "@local.max_progress_field": [
-          "parameter_list.max_progress_field"
-        ]
-      }
+      "parameter_list": [
+        "progress_field:@local.progress_field",
+        "max_progress_field:@local.max_progress_field"
+      ]
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_surveys.xlsx"

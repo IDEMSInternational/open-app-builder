@@ -12,11 +12,9 @@
           "type": "nested_properties",
           "name": "nav_buttons",
           "hidden": true,
-          "rows": [],
-          "_nested_name": "text_box.nav_buttons"
+          "rows": []
         }
-      ],
-      "_nested_name": "text_box"
+      ]
     },
     {
       "type": "template",
@@ -27,11 +25,9 @@
           "type": "nested_properties",
           "name": "nav_buttons",
           "hidden": true,
-          "rows": [],
-          "_nested_name": "radio_buttons.nav_buttons"
+          "rows": []
         }
-      ],
-      "_nested_name": "radio_buttons"
+      ]
     },
     {
       "type": "template",
@@ -42,11 +38,9 @@
           "type": "nested_properties",
           "name": "nav_buttons",
           "hidden": true,
-          "rows": [],
-          "_nested_name": "number_selector.nav_buttons"
+          "rows": []
         }
-      ],
-      "_nested_name": "number_selector"
+      ]
     },
     {
       "type": "template",
@@ -72,8 +66,7 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "rows": [],
-      "_nested_name": "nav_buttons"
+      "rows": []
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_survey_boxes.xlsx"

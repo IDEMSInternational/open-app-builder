@@ -10,24 +10,21 @@
       "value": "False Text",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_1"
+      }
     },
     {
       "type": "toggle-bar",
       "name": "toggle-bar_par_1_1",
-      "parameter_list": {
-        "false_text": "null"
-      },
-      "_nested_name": "toggle-bar_par_1_1"
+      "parameter_list": [
+        "false_text: null"
+      ]
     },
     {
       "type": "toggle-bar",
       "name": "toggle-bar_par_1_2",
-      "parameter_list": {
-        "false_text": "string"
-      },
-      "_nested_name": "toggle-bar_par_1_2"
+      "parameter_list": [
+        "false_text: string"
+      ]
     },
     {
       "type": "title",
@@ -35,24 +32,21 @@
       "value": "True Text",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_2"
+      }
     },
     {
       "type": "toggle-bar",
       "name": "toggle-bar_par_2_1",
-      "parameter_list": {
-        "true_text": "empty string"
-      },
-      "_nested_name": "toggle-bar_par_2_1"
+      "parameter_list": [
+        "true_text: empty string"
+      ]
     },
     {
       "type": "toggle-bar",
       "name": "toggle-bar_par_2_2",
-      "parameter_list": {
-        "true_text": "string"
-      },
-      "_nested_name": "toggle-bar_par_2_2"
+      "parameter_list": [
+        "true_text: string"
+      ]
     },
     {
       "type": "title",
@@ -60,32 +54,28 @@
       "value": "Position",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_ 3"
+      }
     },
     {
       "type": "toggle-bar",
       "name": "toggle-bar_par_3_1",
-      "parameter_list": {
-        "position": "left"
-      },
-      "_nested_name": "toggle-bar_par_3_1"
+      "parameter_list": [
+        "position: left"
+      ]
     },
     {
       "type": "toggle-bar",
       "name": "toggle-bar_par_3_2",
-      "parameter_list": {
-        "position": "right"
-      },
-      "_nested_name": "toggle-bar_par_3_2"
+      "parameter_list": [
+        "position: right"
+      ]
     },
     {
       "type": "toggle-bar",
       "name": "toggle-bar_par_3_3",
-      "parameter_list": {
-        "position": "center"
-      },
-      "_nested_name": "toggle-bar_par_3_3"
+      "parameter_list": [
+        "position: center"
+      ]
     },
     {
       "type": "title",
@@ -93,24 +83,21 @@
       "value": "Show tick and cross",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_ 4"
+      }
     },
     {
       "type": "toggle-bar",
       "name": "toggle-bar_par_4_1",
-      "parameter_list": {
-        "show_tick_and_cross": "true - (default)"
-      },
-      "_nested_name": "toggle-bar_par_4_1"
+      "parameter_list": [
+        "show_tick_and_cross: true - (default)"
+      ]
     },
     {
       "type": "toggle-bar",
       "name": "toggle-bar_par_4_2",
-      "parameter_list": {
-        "show_tick_and_cross": "false"
-      },
-      "_nested_name": "toggle-bar_par_4_2"
+      "parameter_list": [
+        "show_tick_and_cross: false"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/component_sheets/component_toggle_bar.xlsx"

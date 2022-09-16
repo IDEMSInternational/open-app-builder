@@ -45,9 +45,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "read.workshop_activity.intro_text"
+              }
             },
             {
               "type": "nested_properties",
@@ -64,9 +62,7 @@
                       "value": "plh_images/workshops/w_crisis/read_2/slide_1.svg",
                       "_translations": {
                         "value": {}
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "read.workshop_activity.content_box.box_1.image_src"
+                      }
                     },
                     {
                       "name": "text",
@@ -80,36 +76,9 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "read.workshop_activity.content_box.box_1.text",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@global.w_crisis_male_caregiver_1: \"@global.w_crisis_teen_boy_1, you look worried since yesterday. What is wrong?\"",
-                            "matchedExpression": "@global.w_crisis_male_caregiver_1",
-                            "type": "global",
-                            "fieldName": "w_crisis_male_caregiver_1"
-                          },
-                          {
-                            "fullExpression": "@global.w_crisis_male_caregiver_1: \"@global.w_crisis_teen_boy_1, you look worried since yesterday. What is wrong?\"",
-                            "matchedExpression": "@global.w_crisis_teen_boy_1",
-                            "type": "global",
-                            "fieldName": "w_crisis_teen_boy_1"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@global.w_crisis_male_caregiver_1": [
-                          "value"
-                        ],
-                        "@global.w_crisis_teen_boy_1": [
-                          "value"
-                        ]
                       }
                     }
-                  ],
-                  "_nested_name": "read.workshop_activity.content_box.box_1"
+                  ]
                 },
                 {
                   "type": "nested_properties",
@@ -126,9 +95,7 @@
                           "value": "plh_images/workshops/w_crisis/read_2/slide_2.svg",
                           "_translations": {
                             "value": {}
-                          },
-                          "type": "set_variable",
-                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.image_src"
+                          }
                         },
                         {
                           "name": "text",
@@ -142,36 +109,9 @@
                               "za_xh": true,
                               "za_zu": true
                             }
-                          },
-                          "type": "set_variable",
-                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.text",
-                          "_dynamicFields": {
-                            "value": [
-                              {
-                                "fullExpression": "@global.w_crisis_teen_boy_1: \"Yesterday, my friends and I went to a soccer match. Some guys who were drunk started a fight with my friend.\"\n\n@global.w_crisis_male_caregiver_1: \"Continue, I am listening. I hope you did not fight?\"",
-                                "matchedExpression": "@global.w_crisis_teen_boy_1",
-                                "type": "global",
-                                "fieldName": "w_crisis_teen_boy_1"
-                              },
-                              {
-                                "fullExpression": "@global.w_crisis_teen_boy_1: \"Yesterday, my friends and I went to a soccer match. Some guys who were drunk started a fight with my friend.\"\n\n@global.w_crisis_male_caregiver_1: \"Continue, I am listening. I hope you did not fight?\"",
-                                "matchedExpression": "@global.w_crisis_male_caregiver_1",
-                                "type": "global",
-                                "fieldName": "w_crisis_male_caregiver_1"
-                              }
-                            ]
-                          },
-                          "_dynamicDependencies": {
-                            "@global.w_crisis_teen_boy_1": [
-                              "value"
-                            ],
-                            "@global.w_crisis_male_caregiver_1": [
-                              "value"
-                            ]
                           }
                         }
-                      ],
-                      "_nested_name": "read.workshop_activity.content_box.box_2.box_1"
+                      ]
                     },
                     {
                       "type": "nested_properties",
@@ -188,9 +128,7 @@
                               "value": "plh_images/workshops/w_crisis/read_2/slide_3.svg",
                               "_translations": {
                                 "value": {}
-                              },
-                              "type": "set_variable",
-                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.image_src"
+                              }
                             },
                             {
                               "name": "text",
@@ -204,36 +142,9 @@
                                   "za_xh": true,
                                   "za_zu": true
                                 }
-                              },
-                              "type": "set_variable",
-                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.text",
-                              "_dynamicFields": {
-                                "value": [
-                                  {
-                                    "fullExpression": "@global.w_crisis_teen_boy_1: \"I didn’t want to, but I couldn’t just stand there and let them beat up my friend, so…\"\n\n@global.w_crisis_male_caregiver_1: \"So, did you fight in order to help defend your friend?\"",
-                                    "matchedExpression": "@global.w_crisis_teen_boy_1",
-                                    "type": "global",
-                                    "fieldName": "w_crisis_teen_boy_1"
-                                  },
-                                  {
-                                    "fullExpression": "@global.w_crisis_teen_boy_1: \"I didn’t want to, but I couldn’t just stand there and let them beat up my friend, so…\"\n\n@global.w_crisis_male_caregiver_1: \"So, did you fight in order to help defend your friend?\"",
-                                    "matchedExpression": "@global.w_crisis_male_caregiver_1",
-                                    "type": "global",
-                                    "fieldName": "w_crisis_male_caregiver_1"
-                                  }
-                                ]
-                              },
-                              "_dynamicDependencies": {
-                                "@global.w_crisis_teen_boy_1": [
-                                  "value"
-                                ],
-                                "@global.w_crisis_male_caregiver_1": [
-                                  "value"
-                                ]
                               }
                             }
-                          ],
-                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1"
+                          ]
                         },
                         {
                           "type": "nested_properties",
@@ -250,9 +161,7 @@
                                   "value": "plh_images/workshops/w_crisis/read_2/slide_4.svg",
                                   "_translations": {
                                     "value": {}
-                                  },
-                                  "type": "set_variable",
-                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1.image_src"
+                                  }
                                 },
                                 {
                                   "name": "text",
@@ -266,27 +175,9 @@
                                       "za_xh": true,
                                       "za_zu": true
                                     }
-                                  },
-                                  "type": "set_variable",
-                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1.text",
-                                  "_dynamicFields": {
-                                    "value": [
-                                      {
-                                        "fullExpression": "@global.w_crisis_teen_boy_1: “Everyone was fighting. I saw someone lying on the field in a pool of blood. He looked… dead.\"",
-                                        "matchedExpression": "@global.w_crisis_teen_boy_1",
-                                        "type": "global",
-                                        "fieldName": "w_crisis_teen_boy_1"
-                                      }
-                                    ]
-                                  },
-                                  "_dynamicDependencies": {
-                                    "@global.w_crisis_teen_boy_1": [
-                                      "value"
-                                    ]
                                   }
                                 }
-                              ],
-                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1"
+                              ]
                             },
                             {
                               "type": "nested_properties",
@@ -303,9 +194,7 @@
                                       "value": "plh_images/workshops/w_crisis/read_2/slide_5.svg",
                                       "_translations": {
                                         "value": {}
-                                      },
-                                      "type": "set_variable",
-                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_1.image_src"
+                                      }
                                     },
                                     {
                                       "name": "text",
@@ -319,36 +208,9 @@
                                           "za_xh": true,
                                           "za_zu": true
                                         }
-                                      },
-                                      "type": "set_variable",
-                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_1.text",
-                                      "_dynamicFields": {
-                                        "value": [
-                                          {
-                                            "fullExpression": "@global.w_crisis_male_caregiver_1: \"I am glad you are telling me about this, @global.w_crisis_teen_boy_1. Let’s sit down together now and discuss whether we should involve the police or someone else to help.\"",
-                                            "matchedExpression": "@global.w_crisis_male_caregiver_1",
-                                            "type": "global",
-                                            "fieldName": "w_crisis_male_caregiver_1"
-                                          },
-                                          {
-                                            "fullExpression": "@global.w_crisis_male_caregiver_1: \"I am glad you are telling me about this, @global.w_crisis_teen_boy_1. Let’s sit down together now and discuss whether we should involve the police or someone else to help.\"",
-                                            "matchedExpression": "@global.w_crisis_teen_boy_1",
-                                            "type": "global",
-                                            "fieldName": "w_crisis_teen_boy_1"
-                                          }
-                                        ]
-                                      },
-                                      "_dynamicDependencies": {
-                                        "@global.w_crisis_male_caregiver_1": [
-                                          "value"
-                                        ],
-                                        "@global.w_crisis_teen_boy_1": [
-                                          "value"
-                                        ]
                                       }
                                     }
-                                  ],
-                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_1"
+                                  ]
                                 },
                                 {
                                   "type": "nested_properties",
@@ -360,9 +222,7 @@
                                       "value": "plh_images/workshops/w_crisis/read_2/slide_6.svg",
                                       "_translations": {
                                         "value": {}
-                                      },
-                                      "type": "set_variable",
-                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.image_src"
+                                      }
                                     },
                                     {
                                       "name": "text",
@@ -376,64 +236,23 @@
                                           "za_xh": true,
                                           "za_zu": true
                                         }
-                                      },
-                                      "type": "set_variable",
-                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.text",
-                                      "_dynamicFields": {
-                                        "value": [
-                                          {
-                                            "fullExpression": "@global.w_crisis_teen_boy_1: \"Thank you, @global.w_crisis_male_caregiver_1\"\n\n@global.w_crisis_male_caregiver_1: \"We will get through this. Remember, we will support you as a family.\"",
-                                            "matchedExpression": "@global.w_crisis_teen_boy_1",
-                                            "type": "global",
-                                            "fieldName": "w_crisis_teen_boy_1"
-                                          },
-                                          {
-                                            "fullExpression": "@global.w_crisis_teen_boy_1: \"Thank you, @global.w_crisis_male_caregiver_1\"\n\n@global.w_crisis_male_caregiver_1: \"We will get through this. Remember, we will support you as a family.\"",
-                                            "matchedExpression": "@global.w_crisis_male_caregiver_1",
-                                            "type": "global",
-                                            "fieldName": "w_crisis_male_caregiver_1"
-                                          },
-                                          {
-                                            "fullExpression": "@global.w_crisis_teen_boy_1: \"Thank you, @global.w_crisis_male_caregiver_1\"\n\n@global.w_crisis_male_caregiver_1: \"We will get through this. Remember, we will support you as a family.\"",
-                                            "matchedExpression": "@global.w_crisis_male_caregiver_1",
-                                            "type": "global",
-                                            "fieldName": "w_crisis_male_caregiver_1"
-                                          }
-                                        ]
-                                      },
-                                      "_dynamicDependencies": {
-                                        "@global.w_crisis_teen_boy_1": [
-                                          "value"
-                                        ],
-                                        "@global.w_crisis_male_caregiver_1": [
-                                          "value",
-                                          "value"
-                                        ]
                                       }
                                     }
-                                  ],
-                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2"
+                                  ]
                                 }
-                              ],
-                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2"
+                              ]
                             }
-                          ],
-                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2"
+                          ]
                         }
-                      ],
-                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2"
+                      ]
                     }
-                  ],
-                  "_nested_name": "read.workshop_activity.content_box.box_2"
+                  ]
                 }
-              ],
-              "_nested_name": "read.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "read.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "read"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"

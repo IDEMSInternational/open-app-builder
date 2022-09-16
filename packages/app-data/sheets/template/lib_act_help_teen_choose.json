@@ -25,12 +25,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "lib_act_covid.activity_id"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "lib_act_covid"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/parent_centre_templates/covid/databank_covid_lib_act.xlsx"

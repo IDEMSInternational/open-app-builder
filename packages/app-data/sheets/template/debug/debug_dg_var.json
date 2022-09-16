@@ -10,9 +10,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "var_1"
+      "exclude_from_translation": true
     },
     {
       "type": "title",
@@ -21,8 +19,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_1"
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
@@ -31,23 +28,20 @@
         {
           "type": "number_selector",
           "name": "number_selector_1",
-          "parameter_list": {
-            "min_value": "0",
-            "max_value": "20"
-          },
-          "_nested_name": "dg_1.number_selector_1"
+          "parameter_list": [
+            "min_value:0",
+            "max_value:20"
+          ]
         },
         {
           "type": "number_selector",
           "name": "number_selector_2",
-          "parameter_list": {
-            "min_value": "0",
-            "max_value": "20"
-          },
-          "_nested_name": "dg_1.number_selector_2"
+          "parameter_list": [
+            "min_value:0",
+            "max_value:20"
+          ]
         }
-      ],
-      "_nested_name": "dg_1"
+      ]
     },
     {
       "type": "title",
@@ -56,8 +50,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_2"
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
@@ -66,20 +59,18 @@
         {
           "type": "number_selector",
           "name": "number_selector_3",
-          "parameter_list": {
-            "min_value": "0",
-            "max_value": "20"
-          },
-          "_nested_name": "dg_2.number_selector_3"
+          "parameter_list": [
+            "min_value:0",
+            "max_value:20"
+          ]
         },
         {
           "type": "number_selector",
           "name": "number_selector_4",
-          "parameter_list": {
-            "min_value": "0",
-            "max_value": "20"
-          },
-          "_nested_name": "dg_2.number_selector_4"
+          "parameter_list": [
+            "min_value:0",
+            "max_value:20"
+          ]
         },
         {
           "name": "var_2",
@@ -87,12 +78,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "dg_2.var_2"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "dg_2"
+      ]
     },
     {
       "type": "title",
@@ -101,8 +89,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_3"
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
@@ -111,47 +98,27 @@
         {
           "type": "number_selector",
           "name": "number_selector_5",
-          "parameter_list": {
-            "min_value": "0",
-            "max_value": "20"
-          },
-          "_nested_name": "dg_3.number_selector_5"
+          "parameter_list": [
+            "min_value:0",
+            "max_value:20"
+          ]
         },
         {
           "type": "number_selector",
           "name": "number_selector_6",
-          "parameter_list": {
-            "min_value": "0",
-            "max_value": "20"
-          },
-          "_nested_name": "dg_3.number_selector_6"
+          "parameter_list": [
+            "min_value:0",
+            "max_value:20"
+          ]
         },
         {
           "name": "var_3",
           "value": "@local.var_1",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "dg_3.var_3",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.var_1",
-                "matchedExpression": "@local.var_1",
-                "type": "local",
-                "fieldName": "var_1"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.var_1": [
-              "value"
-            ]
           }
         }
-      ],
-      "_nested_name": "dg_3"
+      ]
     },
     {
       "type": "title",
@@ -159,8 +126,7 @@
       "value": "Correctly spaced dg with nested variable (this flex should be the default)",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_4"
+      }
     },
     {
       "type": "display_group",
@@ -169,20 +135,18 @@
         {
           "type": "number_selector",
           "name": "number_selector_7",
-          "parameter_list": {
-            "min_value": "0",
-            "max_value": "20"
-          },
-          "_nested_name": "dg_4.number_selector_7"
+          "parameter_list": [
+            "min_value:0",
+            "max_value:20"
+          ]
         },
         {
           "type": "number_selector",
           "name": "number_selector_8",
-          "parameter_list": {
-            "min_value": "0",
-            "max_value": "20"
-          },
-          "_nested_name": "dg_4.number_selector_8"
+          "parameter_list": [
+            "min_value:0",
+            "max_value:20"
+          ]
         },
         {
           "name": "var_4",
@@ -192,27 +156,9 @@
           },
           "style_list": [
             "flex: 0"
-          ],
-          "type": "set_variable",
-          "_nested_name": "dg_4.var_4",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.var_1",
-                "matchedExpression": "@local.var_1",
-                "type": "local",
-                "fieldName": "var_1"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.var_1": [
-              "value"
-            ]
-          }
+          ]
         }
-      ],
-      "_nested_name": "dg_4"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_dg.xlsx"

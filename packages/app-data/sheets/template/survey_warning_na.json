@@ -20,9 +20,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "survey_warning.title"
+          }
         },
         {
           "name": "text",
@@ -36,9 +34,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "survey_warning.text"
+          }
         },
         {
           "name": "checkbox_tracker",
@@ -46,36 +42,16 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "survey_warning.checkbox_tracker"
+          "exclude_from_translation": true
         },
         {
           "name": "checkbox_text",
           "value": "@global.dont_show_again",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "survey_warning.checkbox_text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.dont_show_again",
-                "matchedExpression": "@global.dont_show_again",
-                "type": "global",
-                "fieldName": "dont_show_again"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.dont_show_again": [
-              "value"
-            ]
           }
         }
-      ],
-      "_nested_name": "survey_warning"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/survey_warnings.xlsx"
