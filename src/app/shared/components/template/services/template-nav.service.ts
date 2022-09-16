@@ -62,7 +62,7 @@ export class TemplateNavService {
       // TODO - this could also be handled by having a default nav_resume action that emits force_rerender
       // force rerender on top-most template only
       if (!parent) {
-        await container.forceRerender(false);
+        await container.forceRerender(true);
       }
       // trigger any actions defined for the nav_resume trigger on all templates
       await container.templateActionService.handleActions([
