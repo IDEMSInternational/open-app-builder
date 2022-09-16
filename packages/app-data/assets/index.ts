@@ -60,6 +60,14 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 5.1,
     md5Checksum: "d5b741db3de91f7c2294abb404f3f275",
   },
+  "ae_principles/CIDSE/connectivity.png": {
+    size_kb: 632.2,
+    md5Checksum: "0e775fa1236d39ef9a8a60be6b79bbb8",
+  },
+  "ae_principles/CIDSE/recycling.png": {
+    size_kb: 1095.8,
+    md5Checksum: "49956d7eebdad3a8caefb50414e7cf80",
+  },
   "ae_principles/FAO/circular_and_solidarity_economy.png": {
     size_kb: 9.4,
     md5Checksum: "55e158fbf56c882b4d80448c26d42287",
@@ -155,6 +163,34 @@ export const ASSETS_CONTENTS_LIST = {
   "ae_principles/IFA/IFA_youth.png": {
     size_kb: 434.8,
     md5Checksum: "57c01af46bdded7e7b6efaea164d2b5b",
+  },
+  "ae_principles/community.png": {
+    size_kb: 400.2,
+    md5Checksum: "4c34e0a105a15497f016e36618d530c1",
+  },
+  "ae_principles/connectivity.png": {
+    size_kb: 632.2,
+    md5Checksum: "0e775fa1236d39ef9a8a60be6b79bbb8",
+  },
+  "ae_principles/diversity.png": {
+    size_kb: 496.8,
+    md5Checksum: "09cd7aa44e1885f26ad23e359078eee2",
+  },
+  "ae_principles/efficiency.png": {
+    size_kb: 634.6,
+    md5Checksum: "e73982de7dea2212ff621b93c9a82af7",
+  },
+  "ae_principles/food_culture.png": {
+    size_kb: 513.9,
+    md5Checksum: "de6f7613bfc34620a3023754880501c3",
+  },
+  "ae_principles/recycling.png": {
+    size_kb: 1095.8,
+    md5Checksum: "49956d7eebdad3a8caefb50414e7cf80",
+  },
+  "ae_principles/resilience.png": {
+    size_kb: 275.8,
+    md5Checksum: "e70b96cb8b66020e782291cfe9009e23",
   },
   "full/00098909911c90b53746767e94238b90a42c3f3f.jpg": {
     size_kb: 231.4,
@@ -2500,10 +2536,6 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 72.3,
     md5Checksum: "e7c7b56ec86eaf77279f4c6bb33d490c",
   },
-  "full/94b4e9d81acc7a7212ddd1c971687dc3eb896c48.jpg": {
-    size_kb: 16.8,
-    md5Checksum: "93b5ce4ff76bbca066c3417320def75e",
-  },
   "full/94eac1b31bf26bba49832f701e38fea39642eb47.jpg": {
     size_kb: 30.1,
     md5Checksum: "02f8e2e477972ef8d7ecd49528934696",
@@ -3295,6 +3327,10 @@ export const ASSETS_CONTENTS_LIST = {
   "full/cb31534e8b3fe6af1ffb12d38ff8f7d4d60d5ab9.jpg": {
     size_kb: 9.6,
     md5Checksum: "74b8d5710bd21fcd485e1efb2254cb31",
+  },
+  "full/cba68df7972d00cd28627e42b3f4ae8e342633e7.jpg": {
+    size_kb: 29.8,
+    md5Checksum: "0adeadf820e9adbd9aa2f2420da4795b",
   },
   "full/cbd5146047da89ca1d46d9d5cf71b4d8d2835d8d.jpg": {
     size_kb: 84.8,
@@ -4157,8 +4193,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "b10f4e6608ebd2f5638d26f50ad3e404",
   },
   "homepage/library.png": {
-    size_kb: 395.1,
-    md5Checksum: "2dcbd9ab50652a86f3c8c466a34b294b",
+    size_kb: 354.5,
+    md5Checksum: "5558df0e12a457a6e0e2d26bad639252",
   },
   "homepage/nutrition_grain_photo.jpg": {
     size_kb: 12.7,
@@ -4196,6 +4232,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 6.4,
     md5Checksum: "2027dec54472d8147d51de262c3d3c21",
   },
+  "homepage/principles.png": {
+    size_kb: 154.4,
+    md5Checksum: "3674a40eedca7f9a95fee9660bb94f51",
+  },
   "homepage/soil_dark_photo.jpg": {
     size_kb: 363,
     md5Checksum: "d9d99c9d946c7ceaea43fa60b09c1b0e",
@@ -4212,6 +4252,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 385.1,
     md5Checksum: "01c515d34835ee962e108351f1c75e62",
   },
+  "homepage/topics.png": {
+    size_kb: 634,
+    md5Checksum: "ea6e56c83cbd68bfc219ee00a40bc467",
+  },
   "logos/idems.png": {
     size_kb: 39.4,
     md5Checksum: "7a9836027993f71cbd19a871e16fe450",
@@ -4219,10 +4263,6 @@ export const ASSETS_CONTENTS_LIST = {
   "nutrition/Diets deficient in iron.png": {
     size_kb: 151.3,
     md5Checksum: "f6acfd3bc290a6af1d8ae6244b526a2c",
-  },
-  "nutrition/Elderly.png": {
-    size_kb: 45.9,
-    md5Checksum: "339bf23e12569ae8ba5fd5ccfa16fe1e",
   },
   "nutrition/Milk.png": {
     size_kb: 139.2,
@@ -4237,12 +4277,28 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "47145b595d5b9d5327cece05a2979e3d",
   },
   "nutrition/Untitled document.docx": {
-    size_kb: 6.1,
-    md5Checksum: "e20ed602ce9b9062f99c300035cfaed1",
+    size_kb: 6.3,
+    md5Checksum: "9e15abe1ca92ed2e8cead297a9a47815",
   },
   "nutrition/Water.png": {
     size_kb: 116.1,
     md5Checksum: "0e3d8f88f630fc477fa4e916e240e88b",
+  },
+  "nutrition/audio/glow_food.mp3": {
+    size_kb: 358,
+    md5Checksum: "c688b2706690f626003d484d6c1f6ef5",
+  },
+  "nutrition/audio/go_food.mp3": {
+    size_kb: 283.9,
+    md5Checksum: "a51af44bf5a9e4d6b612bd8283a63f78",
+  },
+  "nutrition/audio/grow_food.mp3": {
+    size_kb: 209,
+    md5Checksum: "6f2be50acc0229220f04a8def9d83c81",
+  },
+  "nutrition/calcium.png": {
+    size_kb: 162.7,
+    md5Checksum: "87874ac915b01507a25e5e8c9d5e4bb6",
   },
   "nutrition/chart_iron.png": {
     size_kb: 36.3,
@@ -4253,8 +4309,16 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "05cc0af0f9f2d05ec98c89f92da9b9d3",
   },
   "nutrition/chart_zinc.png": {
-    size_kb: 56.1,
-    md5Checksum: "074286a8637dfd707a728ddc4212c768",
+    size_kb: 61,
+    md5Checksum: "4cb33309819195003e36fa67f8b697ac",
+  },
+  "nutrition/children.png": {
+    size_kb: 532.6,
+    md5Checksum: "08620abefa669b8181589fbec7676383",
+  },
+  "nutrition/elderly.png": {
+    size_kb: 273.2,
+    md5Checksum: "e52932b1b8bc913ed25ece1ba19bee4b",
   },
   "nutrition/food_for_children.png": {
     size_kb: 170.3,
@@ -4284,6 +4348,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 285.1,
     md5Checksum: "4c6b7a5560f146e5a855aa3826b3daa8",
   },
+  "nutrition/iron.png": {
+    size_kb: 183.6,
+    md5Checksum: "178f2def5b7f3255b235645064859a28",
+  },
   "nutrition/nutrition icon.png": {
     size_kb: 247.8,
     md5Checksum: "f459a3cfe4086743bb98e4be27201e6e",
@@ -4292,9 +4360,21 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 247.8,
     md5Checksum: "f459a3cfe4086743bb98e4be27201e6e",
   },
+  "nutrition/pregnant.png": {
+    size_kb: 328.1,
+    md5Checksum: "efe37d3a7b6e33b56cd7bdac7eb96615",
+  },
+  "nutrition/protein.png": {
+    size_kb: 201.9,
+    md5Checksum: "befc6e38935a7558920088b47a31de7b",
+  },
   "nutrition/super_nutritious_new_crops.png": {
     size_kb: 196.2,
     md5Checksum: "257843f7a3360d72bb77f34b7052fbc4",
+  },
+  "nutrition/zinc.png": {
+    size_kb: 211.3,
+    md5Checksum: "be52dd4900eeee73374c52736dd0c17e",
   },
   "pests/ants_beneficials_1.png": {
     size_kb: 61.3,

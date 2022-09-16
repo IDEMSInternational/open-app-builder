@@ -14,7 +14,9 @@
         "recycling_organic_material"
       ],
       "template": "soil_principle",
-      "save_id_field": "current_soil_princ"
+      "save_id_field": "current_soil_princ",
+      "principle_id_1": "principle_recycling",
+      "principle_id_2": "principle_efficiency"
     },
     {
       "id": "princ_covercrop",
@@ -28,7 +30,8 @@
         "cover_crops_kp_soils"
       ],
       "template": "soil_principle",
-      "save_id_field": "current_soil_princ"
+      "save_id_field": "current_soil_princ",
+      "principle_id_1": "principle_resilience"
     },
     {
       "id": "princ_animaldiv",
@@ -41,7 +44,8 @@
         "animal_diversity_kp_soils"
       ],
       "template": "soil_principle",
-      "save_id_field": "current_soil_princ"
+      "save_id_field": "current_soil_princ",
+      "principle_id_1": "principle_diversity"
     },
     {
       "id": "princ_plantdiv",
@@ -55,7 +59,10 @@
         "plant_diversity_kp_soils"
       ],
       "template": "soil_principle",
-      "save_id_field": "current_soil_princ"
+      "save_id_field": "current_soil_princ",
+      "principle_id_1": "principle_diversity",
+      "principle_id_2": "principle_resilience",
+      "principle_id_3": "principle_efficiency"
     },
     {
       "id": "princ_healthsoil",

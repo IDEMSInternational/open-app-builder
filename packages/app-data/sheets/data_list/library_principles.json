@@ -1,0 +1,24 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "library_principles",
+  "status": "released",
+  "data_list_name": "library_principles",
+  "rows": [
+    {
+      "id": "fao",
+      "name": "FAO Principles",
+      "data_list_name": "ae_fao"
+    },
+    {
+      "id": "cidse",
+      "name": "CIDSE Principles",
+      "data_list_name": "ae_cidse"
+    },
+    {
+      "id": "ifa",
+      "name": "IFA Principles",
+      "data_list_name": "ae_ifa"
+    }
+  ],
+  "_xlsxPath": "data_lists/homepage/library_data_list.xlsx"
+}

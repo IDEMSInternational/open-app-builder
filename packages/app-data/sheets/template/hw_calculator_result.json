@@ -1,0 +1,687 @@
+{
+  "flow_type": "template",
+  "flow_name": "hw_calculator_result",
+  "status": "released",
+  "rows": [
+    {
+      "name": "w_suffix",
+      "value": "_weights",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "w_suffix"
+    },
+    {
+      "name": "h_suffix",
+      "value": "_heights",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "h_suffix"
+    },
+    {
+      "name": "data_list_weight",
+      "value": [
+        "@field.child_gender@local.w_suffix"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_weight",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "@field.child_gender@local.w_suffix",
+              "matchedExpression": "@field.child_gender",
+              "type": "field",
+              "fieldName": "child_gender"
+            },
+            {
+              "fullExpression": "@field.child_gender@local.w_suffix",
+              "matchedExpression": "@local.w_suffix",
+              "type": "local",
+              "fieldName": "w_suffix"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@field.child_gender": [
+          "value.0"
+        ],
+        "@local.w_suffix": [
+          "value.0"
+        ]
+      }
+    },
+    {
+      "name": "data_list_height",
+      "value": [
+        "@field.child_gender@local.h_suffix"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_height",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "@field.child_gender@local.h_suffix",
+              "matchedExpression": "@field.child_gender",
+              "type": "field",
+              "fieldName": "child_gender"
+            },
+            {
+              "fullExpression": "@field.child_gender@local.h_suffix",
+              "matchedExpression": "@local.h_suffix",
+              "type": "local",
+              "fieldName": "h_suffix"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@field.child_gender": [
+          "value.0"
+        ],
+        "@local.h_suffix": [
+          "value.0"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Results",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title"
+    },
+    {
+      "name": "days",
+      "value": "@calc(@field.child_age_years*365 + @field.child_age_years*30)",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "days",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@calc(@field.child_age_years*365 + @field.child_age_years*30)",
+            "matchedExpression": "@field.child_age_years",
+            "type": "field",
+            "fieldName": "child_age_years"
+          },
+          {
+            "fullExpression": "@calc(@field.child_age_years*365 + @field.child_age_years*30)",
+            "matchedExpression": "@field.child_age_years",
+            "type": "field",
+            "fieldName": "child_age_years"
+          },
+          {
+            "fullExpression": "@calc(@field.child_age_years*365 + @field.child_age_years*30)",
+            "matchedExpression": "@calc(@field.child_age_years*365 + @field.child_age_years*30)",
+            "type": "calc",
+            "fieldName": "@field.child_age_years*365 + @field.child_age_years*30"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@field.child_age_years": [
+          "value",
+          "value"
+        ],
+        "@calc(@field.child_age_years*365 + @field.child_age_years*30)": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "w_perc",
+      "value": "NA",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "w_perc"
+    },
+    {
+      "name": "w_worry",
+      "value": "NA",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "w_worry"
+    },
+    {
+      "type": "items",
+      "value": "@data.percentiles",
+      "rows": [
+        {
+          "name": "w_tr",
+          "value": "@data.@local.data_list_weight.@local.days.@item.id",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "items.w_tr",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.@local.data_list_weight.@local.days.@item.id",
+                "matchedExpression": "@local.data_list_weight",
+                "type": "local",
+                "fieldName": "data_list_weight"
+              },
+              {
+                "fullExpression": "@data.@local.data_list_weight.@local.days.@item.id",
+                "matchedExpression": "@local.days",
+                "type": "local",
+                "fieldName": "days"
+              },
+              {
+                "fullExpression": "@data.@local.data_list_weight.@local.days.@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.data_list_weight": [
+              "value"
+            ],
+            "@local.days": [
+              "value"
+            ],
+            "@item.id": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "w_tr",
+          "value": "@calc(Number(@local.w_tr))",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "items.w_tr",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@calc(Number(@local.w_tr))",
+                "matchedExpression": "@local.w_tr",
+                "type": "local",
+                "fieldName": "w_tr"
+              },
+              {
+                "fullExpression": "@calc(Number(@local.w_tr))",
+                "matchedExpression": "@calc(Number(@local.w_tr))",
+                "type": "calc",
+                "fieldName": "Number(@local.w_tr)"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.w_tr": [
+              "value"
+            ],
+            "@calc(Number(@local.w_tr))": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "w_perc",
+          "value": "@item.name",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "(@local.w_perc == \"NA\")&&(@local.w_tr>@field.weight)",
+          "type": "set_variable",
+          "_nested_name": "items.w_perc",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@item.name",
+                "matchedExpression": "@item.name",
+                "type": "item",
+                "fieldName": "name"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "(@local.w_perc == \"NA\")&&(@local.w_tr>@field.weight)",
+                "matchedExpression": "@local.w_perc",
+                "type": "local",
+                "fieldName": "w_perc"
+              },
+              {
+                "fullExpression": "(@local.w_perc == \"NA\")&&(@local.w_tr>@field.weight)",
+                "matchedExpression": "@local.w_tr",
+                "type": "local",
+                "fieldName": "w_tr"
+              },
+              {
+                "fullExpression": "(@local.w_perc == \"NA\")&&(@local.w_tr>@field.weight)",
+                "matchedExpression": "@field.weight",
+                "type": "field",
+                "fieldName": "weight"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.name": [
+              "value"
+            ],
+            "@local.w_perc": [
+              "condition"
+            ],
+            "@local.w_tr": [
+              "condition"
+            ],
+            "@field.weight": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "name": "w_worry",
+          "value": "@item.weight_description",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "(@local.w_worry == \"NA\")&&(@local.w_tr>@field.weight)",
+          "type": "set_variable",
+          "_nested_name": "items.w_worry",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@item.weight_description",
+                "matchedExpression": "@item.weight_description",
+                "type": "item",
+                "fieldName": "weight_description"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "(@local.w_worry == \"NA\")&&(@local.w_tr>@field.weight)",
+                "matchedExpression": "@local.w_worry",
+                "type": "local",
+                "fieldName": "w_worry"
+              },
+              {
+                "fullExpression": "(@local.w_worry == \"NA\")&&(@local.w_tr>@field.weight)",
+                "matchedExpression": "@local.w_tr",
+                "type": "local",
+                "fieldName": "w_tr"
+              },
+              {
+                "fullExpression": "(@local.w_worry == \"NA\")&&(@local.w_tr>@field.weight)",
+                "matchedExpression": "@field.weight",
+                "type": "field",
+                "fieldName": "weight"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.weight_description": [
+              "value"
+            ],
+            "@local.w_worry": [
+              "condition"
+            ],
+            "@local.w_tr": [
+              "condition"
+            ],
+            "@field.weight": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.percentiles",
+            "matchedExpression": "@data.percentiles",
+            "type": "data",
+            "fieldName": "percentiles"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.percentiles": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "final_weight",
+      "value": "Your child's weight is in the @local.w_perc",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "final_weight",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Your child's weight is in the @local.w_perc",
+            "matchedExpression": "@local.w_perc",
+            "type": "local",
+            "fieldName": "w_perc"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.w_perc": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "description_weight",
+      "value": "@local.w_worry",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "description_weight",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.w_worry",
+            "matchedExpression": "@local.w_worry",
+            "type": "local",
+            "fieldName": "w_worry"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.w_worry": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "h_perc",
+      "value": "NA",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "h_perc"
+    },
+    {
+      "name": "h_worry",
+      "value": "NA",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "h_worry"
+    },
+    {
+      "type": "items",
+      "value": "@data.percentiles",
+      "rows": [
+        {
+          "name": "h_tr",
+          "value": "@data.@local.data_list_height.@local.days.@item.id",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "items.h_tr",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.@local.data_list_height.@local.days.@item.id",
+                "matchedExpression": "@local.data_list_height",
+                "type": "local",
+                "fieldName": "data_list_height"
+              },
+              {
+                "fullExpression": "@data.@local.data_list_height.@local.days.@item.id",
+                "matchedExpression": "@local.days",
+                "type": "local",
+                "fieldName": "days"
+              },
+              {
+                "fullExpression": "@data.@local.data_list_height.@local.days.@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.data_list_height": [
+              "value"
+            ],
+            "@local.days": [
+              "value"
+            ],
+            "@item.id": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "h_tr",
+          "value": "@calc(Number(@local.h_tr))",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "items.h_tr",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@calc(Number(@local.h_tr))",
+                "matchedExpression": "@local.h_tr",
+                "type": "local",
+                "fieldName": "h_tr"
+              },
+              {
+                "fullExpression": "@calc(Number(@local.h_tr))",
+                "matchedExpression": "@calc(Number(@local.h_tr))",
+                "type": "calc",
+                "fieldName": "Number(@local.h_tr)"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.h_tr": [
+              "value"
+            ],
+            "@calc(Number(@local.h_tr))": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "h_perc",
+          "value": "@item.name",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "(@local.h_perc == \"NA\")&&(@local.h_tr>@field.height)",
+          "type": "set_variable",
+          "_nested_name": "items.h_perc",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@item.name",
+                "matchedExpression": "@item.name",
+                "type": "item",
+                "fieldName": "name"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "(@local.h_perc == \"NA\")&&(@local.h_tr>@field.height)",
+                "matchedExpression": "@local.h_perc",
+                "type": "local",
+                "fieldName": "h_perc"
+              },
+              {
+                "fullExpression": "(@local.h_perc == \"NA\")&&(@local.h_tr>@field.height)",
+                "matchedExpression": "@local.h_tr",
+                "type": "local",
+                "fieldName": "h_tr"
+              },
+              {
+                "fullExpression": "(@local.h_perc == \"NA\")&&(@local.h_tr>@field.height)",
+                "matchedExpression": "@field.height",
+                "type": "field",
+                "fieldName": "height"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.name": [
+              "value"
+            ],
+            "@local.h_perc": [
+              "condition"
+            ],
+            "@local.h_tr": [
+              "condition"
+            ],
+            "@field.height": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "name": "h_worry",
+          "value": "@item.height_description",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "(@local.h_worry == \"NA\")&&(@local.h_tr>@field.height)",
+          "type": "set_variable",
+          "_nested_name": "items.h_worry",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@item.height_description",
+                "matchedExpression": "@item.height_description",
+                "type": "item",
+                "fieldName": "height_description"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "(@local.h_worry == \"NA\")&&(@local.h_tr>@field.height)",
+                "matchedExpression": "@local.h_worry",
+                "type": "local",
+                "fieldName": "h_worry"
+              },
+              {
+                "fullExpression": "(@local.h_worry == \"NA\")&&(@local.h_tr>@field.height)",
+                "matchedExpression": "@local.h_tr",
+                "type": "local",
+                "fieldName": "h_tr"
+              },
+              {
+                "fullExpression": "(@local.h_worry == \"NA\")&&(@local.h_tr>@field.height)",
+                "matchedExpression": "@field.height",
+                "type": "field",
+                "fieldName": "height"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.height_description": [
+              "value"
+            ],
+            "@local.h_worry": [
+              "condition"
+            ],
+            "@local.h_tr": [
+              "condition"
+            ],
+            "@field.height": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.percentiles",
+            "matchedExpression": "@data.percentiles",
+            "type": "data",
+            "fieldName": "percentiles"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.percentiles": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "final_height",
+      "value": "Your child's height is in the @local.h_perc",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "final_height",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Your child's height is in the @local.h_perc",
+            "matchedExpression": "@local.h_perc",
+            "type": "local",
+            "fieldName": "h_perc"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.h_perc": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "description_height",
+      "value": "@local.h_worry",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "description_height",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.h_worry",
+            "matchedExpression": "@local.h_worry",
+            "type": "local",
+            "fieldName": "h_worry"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.h_worry": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "templates/global/nutrition_templates.xlsx"
+}

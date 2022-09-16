@@ -6,24 +6,27 @@
   "rows": [
     {
       "id": "nutrient_zinc",
+      "illustration": "nutrition/zinc.png",
       "name": "Zinc",
       "example_where_to_find": "Pumpkin seeds and lablab are examples of zinc rich foods.",
       "chart_of_foods": "nutrition/chart_zinc.png",
-      "properties": "Support growth and immune system",
+      "properties": "Supports growth and the immune system",
       "deficiency": "Zinc deficiency leads to poor immunity and diseases.",
       "symptoms_of_deficiency": "Wounds that don't heal quickly, open sores on the skin, frequent colds, frequent diarrhea, loss of appetite, brain fog, reduced taste and smell, and balding too soon in adults."
     },
     {
       "id": "nutrient_iron",
+      "illustration": "nutrition/iron.png",
       "name": "Iron",
       "example_where_to_find": "Lablab, amaranth, and soybean are examples of iron rich foods\nMeat - especially liver\nEggs\nDark leafy vegetables",
       "chart_of_foods": "nutrition/chart_iron.png",
       "properties": "Important component of blood",
-      "deficiency": "Iron deficiency leads to anemia.",
+      "deficiency": "Iron deficiency leads to anemia and feeling tired.",
       "symptoms_of_deficiency": "General body weakness, pale or yellow skin, shortness of breath, dizziness or lightheadedness, cold hands and feet, headache."
     },
     {
       "id": "nutrient_proteins",
+      "illustration": "nutrition/protein.png",
       "name": "Proteins",
       "example_where_to_find": "Soybean, groundnut, and buckweat are examples of protein rich foods.",
       "chart_of_foods": "nutrition/chart_protein.png",
@@ -33,10 +36,11 @@
     },
     {
       "id": "nutrient_calcium",
+      "illustration": "nutrition/calcium.png",
       "name": "Calcium",
-      "example_where_to_find": "Milk, dark green leafy vegetables, soybeans are rich in calcium.",
+      "example_where_to_find": "Milk, dark green leafy vegetables and soybeans are rich in calcium.",
       "chart_of_foods": "nutrition/chart_calcium.png",
-      "properties": "Important component in formation of strong bones and teeth",
+      "properties": "Makes strong bones and teeth",
       "deficiency": "Lack of calcium causes bones to become brittle and can lead to brain damage.",
       "symptoms_of_deficiency": "Numbness, tingling sensations, muscle cramps, poor appetite."
     }
