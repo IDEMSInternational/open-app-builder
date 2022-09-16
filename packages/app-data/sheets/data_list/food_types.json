@@ -9,10 +9,10 @@
       "illustration": "nutrition/go_foods.png",
       "icon": "nutrition/icon_go_foods.png",
       "heading": "Go",
-      "description": "These foods give us energy to help us 'go' and be active.",
+      "description": "These foods give us energy to help us \"go\" and be active.",
       "examples": "Potatoes, Rice, Cassava, Corn, Wheat",
-      "audio": "nutrition/audio/food_types_go_audio.mp3",
-      "audio_transcript": "Our bodies covert food such as potatoes, rice, cassava into energy used by our muscles and normal daily living activities such as waliking, running and other physical activities. Go foods are the most important source of energy for our bodies."
+      "audio": "nutrition/audio/go_food.mp3",
+      "audio_transcript": "Our bodies convert foods such as potatoes, rice, cassava into energy. Our muscles need this energy for normal daily activities like walking and running, as well as other physical activities. Go foods are the most important source of energy for our bodies."
     },
     {
       "id": "food_types_grow",
@@ -21,18 +21,18 @@
       "heading": "Grow",
       "description": "These are foods that support growth: they help build and repair our bodies.",
       "examples": "Beans, Lentils, Eggs, Milk, Chicken, Fish",
-      "audio": "nutrition/audio/food_types_grow_audio.mp3",
-      "audio_transcript": "Grow foods like milk, beans, fish, meat, eggs among others support growth.They provide the body with nutrients necessary for the development of organ and bone tissue."
+      "audio": "nutrition/audio/grow_food.mp3",
+      "audio_transcript": "Grow foods like milk, beans, fish, meat and eggs support growth.They provide the body with nutrients, which are necessary for the development of organs and bone tissue."
     },
     {
       "id": "food_types_glow",
       "illustration": "nutrition/glow_foods.png",
       "icon": "nutrition/icon_glow_foods.png",
       "heading": "Glow",
-      "description": "Glow' foods improve our health and protect our bodies from getting diseases.",
-      "examples": "Spinach, Kales, Watermelon, Orange, Pawpaw; Lettuce; Pumpkin",
-      "audio": "nutrition/audio/food_types_glow_audio.mp3",
-      "audio_transcript": "Glow foods are composed of fruits like mangoes, oranges and vegetables like Lettuce, Kales, spinach and many others. They help keep our bodies healthy by providing some nutrients which help to boost our immunity.  Other examples of Glow food include Watermelon Lettuce, avocado, pumpkin and many others."
+      "description": "\"Glow\" foods improve our health and protect our bodies from getting diseases.",
+      "examples": "Spinach, Kale, Watermelon, Orange, Pawpaw; Lettuce; Pumpkin",
+      "audio": "nutrition/audio/glow_food.mp3",
+      "audio_transcript": "Glow foods are fruit, like mangoes or oranges, and vegetables, like kale or spinach. They help keep our bodies healthy by providing some nutrients which help to boost our immunity. Other examples of glow foods include watermelon, avocado and pumpkin."
     }
   ],
   "_xlsxPath": "data_lists/nutrition/nutrition_data_lists.xlsx"
