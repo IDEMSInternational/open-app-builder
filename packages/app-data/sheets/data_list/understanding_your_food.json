@@ -20,7 +20,7 @@
       "id": "calculator_section",
       "heading": "Nutrients & Calculators",
       "description": "acsvs",
-      "template": "nutrients_caluclator_screen"
+      "template": "nutrients_calculator_screen"
     }
   ],
   "_xlsxPath": "data_lists/nutrition/nutrition_data_lists.xlsx"

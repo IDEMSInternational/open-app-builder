@@ -1,8 +1,8 @@
 {
   "flow_type": "data_list",
-  "flow_name": "soil_health_support_slides",
+  "flow_name": "soil_hlth_suppt_slides",
   "status": "released",
-  "data_list_name": "soil_health_support_slides",
+  "data_list_name": "soil_hlth_suppt_slides",
   "rows": [
     {
       "id": "prac_act_1",
@@ -17,7 +17,7 @@
       "id": "prac_act_2",
       "principle": "princ_recyc",
       "title": "Plant debris and manure are the main sources of carbon in agricultural systems",
-      "keypoints_list": [
+      "keypoint_list": [
         "The main source of carbon getting into agricultural soils is plant/crop debris and livestock wastes."
       ],
       "image_1": "soils/formation_of_carbon_matter.jpg",
@@ -28,7 +28,7 @@
       "id": "prac_act_3",
       "principle": "princ_recyc",
       "title": "Residue additions are essential to create healthy soils",
-      "keypoints_list": [
+      "keypoint_list": [
         "A soil that receives regular additions of plant and animal residues accumulates soil organic carbon."
       ],
       "data_list_name": "residue_additions_kp_soils",
@@ -49,7 +49,7 @@
       "id": "prac_act_5",
       "principle": "princ_healthsoil",
       "title": "Soil physical property",
-      "keypoints_list": [
+      "keypoint_list": [
         "Healthy soils are dark in color. The dark color indicates that the soil is rich in organic matter."
       ],
       "image_1": "soils/unhealthy_soils_colour.jpg",
@@ -62,7 +62,7 @@
       "id": "prac_act_6",
       "principle": "princ_healthsoil",
       "title": "Soil physical property",
-      "keypoints_list": [
+      "keypoint_list": [
         "*A soil that receives regular addition of residues is well aggregated.\n*Roots of crops, as well as the strands of fungi that decompose residues, together with other life in the soil, create channels in the soil and glue the soil particles loosely together.\n*Roots and water infiltrates easily."
       ],
       "image_1": "soils/porous_soil_image.jpg",
@@ -87,7 +87,7 @@
       "id": "prac_act_8",
       "principle": "princ_healthsoil",
       "title": "Soil physical property",
-      "keypoints_list": [
+      "keypoint_list": [
         "Without residue additions soil physical properties become unfavorable."
       ],
       "image_1": "soils/soil_seals_and_crusts.jpg",
@@ -99,7 +99,7 @@
       "id": "prac_act_9",
       "principle": "princ_healthsoil",
       "title": "Loss of carbon from smallholder farms in western Kenya",
-      "keypoints_list": [
+      "keypoint_list": [
         "*Crop production is greatly reduced in low carbon soils\n*Low productivity leads to competing uses for biomass (fodder, fuel….soils lose!)\n*This can quickly become a poverty trap for farmers who depend on agriculture for food and income\n*Without residue addition, crop production exploits the soil\n*When soils are degraded, residue production & retention is problematic\n*Warm temperatures and cultivation makes soil microbes use up carbon quickly, before it can build up"
       ],
       "image_1": "soils/carbon_perc_overcultivated_soil.jpg",
@@ -129,7 +129,7 @@
       "id": "prac_act_12",
       "principle": "princ_healthsoil",
       "title": "Reduce plant to plant competition",
-      "keypoints_list": [
+      "keypoint_list": [
         "Oversowing reduces plant performance due to competition for nutrients, water and sunlight."
       ],
       "image_1": "soils/reduce_plant_competition.jpg",
@@ -140,7 +140,7 @@
       "id": "prac_act_13",
       "principle": "princ_covercrop",
       "title": "Reduce nutrient losses",
-      "keypoints_list": [
+      "keypoint_list": [
         "Cover compost and manure to protect land from the sun and rain, both of which cause nutrients, especially nitrogen to be lost."
       ],
       "image_1": "soils/reduce_nutrient_loss.jpg",
@@ -151,7 +151,7 @@
       "id": "prac_act_14",
       "principle": "princ_healthsoil",
       "title": "Grow multipurpose legumes for nitrogen fixation",
-      "keypoints_list": [
+      "keypoint_list": [
         "*Special bacteria that can make nitrogen make their home, called nodules, on the roots of legumes. Nitrogen is needed to make proteins in the bodies of living things. You can tell if these bacteria are actively making nitrogen in the nodules if they are pink on the inside.\n*Because certain legumes, like lablab, soya and groundnut, leave nitrogen in the soil where they grew, farmers can take advantage of this by rotating the legumes with cereals that have a high nitrogen demand."
       ],
       "image_1": "soils/grow_multipurpose_legumes.jpg",
@@ -163,7 +163,7 @@
       "id": "prac_act_15",
       "principle": "princ_animaldiv",
       "title": "Livestock and fish",
-      "keypoints_list": [
+      "keypoint_list": [
         "By one estimate, 40-50 kg of waste are converted into 1 kg of fish."
       ],
       "image_1": "soils/livestock_and_fish.jpg",
@@ -192,7 +192,7 @@
       "id": "prac_act_18",
       "principle": "princ_healthsoil",
       "title": "Lablab- multipurpose legume",
-      "keypoints_list": [
+      "keypoint_list": [
         "The most useful types of legumes are those that produce multiple benefits for farmers. Lablab is a good example of such a legume."
       ],
       "image_1": "soils/lablab.jpg",
@@ -212,7 +212,7 @@
       "id": "prac_act_20",
       "principle": "princ_recyc",
       "title": "Degraded soils can be restored by planting crops like mucuna that can produce lots of residues under low nutrient conditions",
-      "keypoints_list": [
+      "keypoint_list": [
         "Mucuna is a legume that has the capacity to produce lots of biomass, even where soils are poor."
       ],
       "image_1": "soils/mucana.jpg",
@@ -248,7 +248,7 @@
       "id": "prac_act_24",
       "principle": "princ_covercrop",
       "title": "Control erosion",
-      "keypoints_list": [
+      "keypoint_list": [
         "It takes between 100-500 years to form one inch of topsoil in nature. We cannot afford to allow our topsoils to be washed away."
       ],
       "image_1": "soils/erosion_1.png",
@@ -260,7 +260,7 @@
       "id": "prac_act_25",
       "principle": "princ_covercrop",
       "title": "Planting arrangement & erosion!",
-      "keypoints_list": [
+      "keypoint_list": [
         "Planting up and down rather than across sloping land because “weeding is easier moving uphill” encourages erosion."
       ],
       "image_1": "soils/erosion_3.png",
@@ -271,7 +271,7 @@
       "id": "prac_act_26",
       "principle": "princ_covercrop",
       "title": "Control erosion",
-      "keypoints_list": [
+      "keypoint_list": [
         "On sloping land, use contour strips planted with useful forages such as the napier grass and desmodium shown here, which are good food for livestock."
       ],
       "image_1": "soils/erosion_4.png",
@@ -282,7 +282,7 @@
       "id": "prac_act_27",
       "principle": "princ_recyc",
       "title": "Strategic residue additions & management practices \ncan help you recreate healthy soils",
-      "keypoints_list": [
+      "keypoint_list": [
         "*Biomass production is greatly reduced in degraded soils\n*Higher temperatures and cultivation accelerates the breakdown of OM, making build up more difficult\n*Low productivity leads to insufficiencies of food, fodder, fuel > competing uses for biomass"
       ],
       "image_1": "soils/recycle_1.png",
@@ -294,7 +294,7 @@
       "id": "prac_act_28",
       "principle": "princ_recyc",
       "title": "Wise use of all the valuable resources you have on hand, like crop residues!",
-      "keypoints_list": [
+      "keypoint_list": [
         "Recycle don’t burn! Those residues are your major source of carbon for bringing your soil back to life."
       ],
       "image_1": "soils/recycle_2.png",
@@ -361,7 +361,7 @@
       "id": "prac_act_35",
       "principle": "princ_recyc",
       "title": "Farmers night paddocking system in western Zambia",
-      "keypoints_list": [
+      "keypoint_list": [
         "*Traditional method for adding nutrients and water holding capacity to extremely sandy soils, which are otherwise poorly suited to cropping.\n*Youth build temporary paddocks on crop land and confine the animals there at night. Once the soil is covered with manure, they shift the paddock to fertilize the next patch."
       ],
       "image_1": "recycle_14.png",
@@ -381,7 +381,7 @@
       "id": "prac_act_37",
       "principle": "princ_plantdiv",
       "title": "Target strategies depending on the field’s position in the farm",
-      "keypoints_list": [
+      "keypoint_list": [
         "*Grow multipurpose leguminous trees and other plants that can produce lots of residues under low nutrient conditions. These must be protected from livestock.\n*If your outfields are extremely unproductive use these plants to help them regenerate."
       ],
       "image_1": "soils/outfield.jpg",
@@ -393,7 +393,7 @@
       "id": "prac_act_38",
       "principle": "princ_plantdiv",
       "title": "Target strategies depending on the field’s position in the farm",
-      "keypoints_list": [
+      "keypoint_list": [
         "*Multipurpose grain legumes cannot grow well on the poorest soils but they can improve mid-field soils\n*Middle fields can be the best place to grow multipurpose grain legumes….for example lablab…..\n*Many legumes cannot grow well in the most degraded soils. These are likely to perform much better in the less degraded middle fields."
       ],
       "image_1": "soils/outfield.jpg",
@@ -405,7 +405,7 @@
       "id": "prac_act_39",
       "principle": "princ_plantdiv",
       "title": "Target strategies depending on the field’s position in the farm",
-      "keypoints_list": [
+      "keypoint_list": [
         "*Home fields are the most enriched soils on the farm due to regular additions of residues- household wastes including plant wastes, ash, livestock wastes etc.\n*Home fields can be best for producing high value horticultural crops, like fruit and vegetables."
       ],
       "image_1": "soils/outfield.jpg",
@@ -424,7 +424,7 @@
     {
       "id": "prac_act_41",
       "title": "Soil rehabilitation recap",
-      "keypoints_list": [
+      "keypoint_list": [
         "*Control erosion\n*Recycle all farm residues\n*Integrate crop and livestock enterprises\n*Concentrate nutrients (microdose)\n*Reduce nutrient losses (use oga?)\n*Reduce plant to plant competition\n*Grow leguminous crops for nitrogen fixation and to reduce striga infestation and impact\n*Grow crops that produce lots of residues\n*Grow varieties adapted to soil-based constraints (acid soil, P-efficient, drought, parasitic weeds and soilborne P&D)\n*Target different strategies for different parts of the farm, depending on fertility status\n*Diversify crops & rotate to reduce build up of pests and diseases"
       ],
       "template": "soil_prac_acts",

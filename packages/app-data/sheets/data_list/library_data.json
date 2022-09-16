@@ -17,6 +17,15 @@
       "data_list_name": "library_plants",
       "save_id_field": "plant_id",
       "linking_term": "Pests"
+    },
+    {
+      "id": "fao_principles"
+    },
+    {
+      "id": "cidse_principles"
+    },
+    {
+      "id": "ifa_principles"
     }
   ],
   "_xlsxPath": "data_lists/homepage/library_data_list.xlsx"
