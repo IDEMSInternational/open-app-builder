@@ -4238,7 +4238,7 @@ export const ASSETS_CONTENTS_LIST = {
   },
   "nutrition/Untitled document.docx": {
     size_kb: 6.1,
-    md5Checksum: "6fcbab7b6d745b93293efa36de27ede4",
+    md5Checksum: "e20ed602ce9b9062f99c300035cfaed1",
   },
   "nutrition/Water.png": {
     size_kb: 116.1,

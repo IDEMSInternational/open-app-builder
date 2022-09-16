@@ -1,0 +1,116 @@
+{
+  "flow_type": "template",
+  "flow_name": "nutrients_calculator_screen",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@data.understanding_your_food.calculator_section.heading",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.understanding_your_food.calculator_section.heading",
+            "matchedExpression": "@data.understanding_your_food.calculator_section.heading",
+            "type": "data",
+            "fieldName": "understanding_your_food"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.understanding_your_food.calculator_section.heading": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "description",
+      "value": "@data.understanding_your_food.calculator_section.description",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "description",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.understanding_your_food.calculator_section.description",
+            "matchedExpression": "@data.understanding_your_food.calculator_section.description",
+            "type": "data",
+            "fieldName": "understanding_your_food"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.understanding_your_food.calculator_section.description": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_nutrients",
+      "value": "Nutrients",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "nutrients_screen"
+          ],
+          "_raw": "click | go_to: nutrients_screen",
+          "_cleaned": "click | go_to: nutrients_screen"
+        }
+      ],
+      "_nested_name": "button_nutrients"
+    },
+    {
+      "type": "button",
+      "name": "button_height_weight_calculator",
+      "value": "Height Weight calculator",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "height_weight_calculator"
+          ],
+          "_raw": "click | go_to: height_weight_calculator",
+          "_cleaned": "click | go_to: height_weight_calculator"
+        }
+      ],
+      "_nested_name": "button_height_weight_calculator"
+    },
+    {
+      "type": "button",
+      "name": "button_nutrition_facts",
+      "value": "Nutrition facts",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "nutrition_facts"
+          ],
+          "_raw": "click | go_to: nutrition_facts",
+          "_cleaned": "click | go_to: nutrition_facts"
+        }
+      ],
+      "_nested_name": "button_nutrition_facts"
+    }
+  ],
+  "_xlsxPath": "templates/global/nutrition_templates.xlsx"
+}
