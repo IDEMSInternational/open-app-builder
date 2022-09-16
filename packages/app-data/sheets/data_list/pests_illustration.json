@@ -36,8 +36,8 @@
       "sub_section": "pests_pests",
       "description": "Aphids can cause rolling, twisting, or bending of leaves, and in a heavy infestation leaves can turn yellow and wilt.",
       "title": "Aphids",
-      "image_1": "pests/aphids_1.png",
-      "image_2": "pests/aphids_2.png",
+      "image_1": "pests/aphids_1.PNG",
+      "image_2": "pests/aphids_2.PNG",
       "body_type": "soft",
       "animal_type": "pest"
     },
@@ -108,7 +108,7 @@
       "sub_section": "pests_beneficials",
       "description": "Young praying mantis are smaller with no wings but otherwise identical. They eat any insect, even others of their kind.",
       "title": "Praying mantis",
-      "image_1": "pests/praying_mantis.png",
+      "image_1": "pests/praying_mantis.PNG",
       "body_type": "hard",
       "animal_type": "predator"
     },
@@ -117,7 +117,7 @@
       "sub_section": "pests_beneficials",
       "description": "Adult dragonflies eat insects of all types. They are among the most successful predators and catch over 90% of the prey they target (lions are successful less than 20% of time).",
       "title": "Dragonflies",
-      "image_1": "pests/dragon_fly.png",
+      "image_1": "pests/dragon_fly.PNG",
       "body_type": "hard",
       "animal_type": "predator"
     },
@@ -125,7 +125,7 @@
       "id": "wasps",
       "sub_section": "pests_beneficials",
       "title": "Wasps",
-      "image_1": "pests/wasp_1.png",
+      "image_1": "pests/wasp_1.PNG",
       "body_type": "hard",
       "animal_type": "predator"
     },
@@ -166,7 +166,7 @@
       "id": "other_insect_eaters",
       "sub_section": "pests_beneficials",
       "title": "Other insect eaters",
-      "image_1": "pests/other_insect_eaters.png",
+      "image_1": "pests/other_insect_eaters.PNG",
       "body_type": "hard",
       "animal_type": "predator"
     },
@@ -202,14 +202,14 @@
       "sub_section": "pests_plant_diversity",
       "description": "Allow grasses and wildflowers to grow on the margins of your fields and gardens. Don’t disturb them.",
       "title": "Wildflowers",
-      "image_1": "pests/grasses_on_edges_of_fields.png"
+      "image_1": "pests/grasses_on_edges_of_fields.PNG"
     },
     {
       "id": "flowers_on_margins",
       "sub_section": "pests_plant_diversity",
       "description": "Hedgerows, tree lines and contour lines attract beneficials provided they also include flowering plants.",
       "title": "Hedgerows",
-      "image_1": "pests/flowers_on_margins_of_fields.png"
+      "image_1": "pests/flowers_on_margins_of_fields.PNG"
     }
   ],
   "_xlsxPath": "data_lists/pests/pests_data_lists.xlsx"

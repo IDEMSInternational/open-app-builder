@@ -22,7 +22,7 @@
             {
               "type": "accordion_section",
               "name": "acc_@item.id",
-              "value": "@item.title",
+              "value": "@item.id.name",
               "rows": [
                 {
                   "type": "template",
@@ -95,10 +95,10 @@
                 ],
                 "value": [
                   {
-                    "fullExpression": "@item.title",
-                    "matchedExpression": "@item.title",
+                    "fullExpression": "@item.id.name",
+                    "matchedExpression": "@item.id.name",
                     "type": "item",
-                    "fieldName": "title"
+                    "fieldName": "id"
                   }
                 ],
                 "_nested_name": [
@@ -115,7 +115,7 @@
                   "name",
                   "_nested_name"
                 ],
-                "@item.title": [
+                "@item.id.name": [
                   "value"
                 ]
               }
