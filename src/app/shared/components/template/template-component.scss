@@ -21,13 +21,22 @@ plh-template-container {
 }
 
 /// Ensure all directly nested template rows have spacing between elements,
-/// except in case where only one row (e.g. deep-nested)
 plh-template-container > plh-template-component:not([data-hidden="true"]) {
   margin-top: 1em;
+  // except in case where component has an empty value and is of type text, image, title or subtitle
+  &[data-empty="true"] {
+    margin-top: 0;
+  }
 }
+// except in case where only one row (e.g. deep-nested)
 plh-template-container > plh-template-component:not([data-hidden="true"]):first-of-type {
   margin-top: 0;
 }
+
+// plh-template-container > plh-template-component[data-empty="true"] {
+//   margin-top: 0;
+// }
+
 /// Ensure standalone containers and components fill all available space
 plh-template-container:not([data-hidden="true"]):only-child,
 plh-template-component:not([data-hidden="true"]):only-child {
