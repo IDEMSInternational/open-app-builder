@@ -1,0 +1,40 @@
+{
+  "flow_type": "template",
+  "flow_name": "principle",
+  "status": "released",
+  "rows": [
+    {
+      "name": "principle_id",
+      "value": "princ_recyc",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "principle_id"
+    },
+    {
+      "name": "data_list_name",
+      "value": [
+        "ae_idems"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_name"
+    },
+    {
+      "type": "title",
+      "name": "title",
+      "_nested_name": "title"
+    },
+    {
+      "type": "image",
+      "name": "image",
+      "_nested_name": "image"
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "_nested_name": "text"
+    }
+  ],
+  "_xlsxPath": "templates/global/principles.xlsx"
+}

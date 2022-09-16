@@ -17,8 +17,10 @@
       "template": "needs_screen"
     },
     {
-      "id": "super_crops_section",
-      "heading": "Nutrients & Calculators"
+      "id": "calculator_section",
+      "heading": "Nutrients & Calculators",
+      "description": "acsvs",
+      "template": "nutrients_caluclator_screen"
     }
   ],
   "_xlsxPath": "data_lists/nutrition/nutrition_data_lists.xlsx"

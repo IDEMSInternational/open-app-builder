@@ -2,7 +2,6 @@
   "flow_type": "template",
   "flow_name": "needs_screen",
   "status": "released",
-  "data_list_name": "needs_screen",
   "rows": [
     {
       "type": "title",
@@ -54,7 +53,7 @@
     },
     {
       "type": "items",
-      "value": "@data.different_needs_for_different_people",
+      "value": "@data.people_needs",
       "rows": [
         {
           "type": "button",
@@ -160,15 +159,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@data.different_needs_for_different_people",
-            "matchedExpression": "@data.different_needs_for_different_people",
+            "fullExpression": "@data.people_needs",
+            "matchedExpression": "@data.people_needs",
             "type": "data",
-            "fieldName": "different_needs_for_different_people"
+            "fieldName": "people_needs"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@data.different_needs_for_different_people": [
+        "@data.people_needs": [
           "value"
         ]
       }

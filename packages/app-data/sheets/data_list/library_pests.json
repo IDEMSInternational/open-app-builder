@@ -1,0 +1,2861 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "library_pests",
+  "status": "released",
+  "data_list_name": "library_pests",
+  "rows": [
+    {
+      "id": "pest_0",
+      "name": "African armyworm",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/African-armyworm",
+      "type": "detailed",
+      "image_1": "full/7a4bc12f1ed6a41a06e7d660c5760181beb872cc.jpg",
+      "image_2": "full/6406558741ae3b397bfadf9370ffaa64132ce828.jpg",
+      "image_3": "full/a843940b539ba359407be4fede8a7b455d9dd7ef.jpg",
+      "image_4": "full/ca949c0e425dc47ffa3fe3c65f99d572c7f07ebf.jpg",
+      "image_5": "full/7a679cda14ce8fbeb8e5a01558a3f282218052b2.jpg",
+      "image_6": "full/296c3646af5c6f8270eb5e9397f1af62130c1142.jpg",
+      "image_7": "full/176e4189edcdffe274e07e8e7f5c16bfa32874dd.jpg"
+    },
+    {
+      "id": "pest_1",
+      "name": "Weeds",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Weeds",
+      "type": "detailed",
+      "image_1": "full/dbadb528e19dd07873fa1581580a26030e20dba4.jpg",
+      "image_2": "full/ca07f24eef97d5f9ccc7cb27169c8625fb45d6ea.jpg",
+      "image_3": "full/8bdd50693a581492889dd818cd11d7e41fa3feee.jpg",
+      "image_4": "full/0a6145e650b2f27ef8877084a679164174eb6dd0.jpg"
+    },
+    {
+      "id": "pest_2",
+      "name": "Turnip Mosaic Virus (TuMV)",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Turnip-Mosaic-Virus-TuMV",
+      "type": "detailed",
+      "image_1": "full/d136effb79678d4fdca4b818d25aa3edc89185fd.jpg",
+      "image_2": "full/620496770aa53ee9e34e5b03e2d1909f0f0e9454.jpg"
+    },
+    {
+      "id": "pest_3",
+      "name": "Snails (Giant East African Snail)",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Snails-Giant-East-African-Snail",
+      "type": "detailed",
+      "image_1": "full/71fecf66ba6d21d24c97d40e883966899ded1ca3.jpg",
+      "image_2": "full/b24b01a213e7d6e20bf1efecdbcbfa082d9e1810.jpg",
+      "image_3": "full/5c35e6b68db58752d58f8967a0fb59a10e880535.jpg",
+      "image_4": "full/d17d1fa3d9a2c513553d7e97eb846d3b1e7f8e83.jpg"
+    },
+    {
+      "id": "pest_4",
+      "name": "Powdery mildew",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Powdery-mildew",
+      "type": "detailed",
+      "image_1": "full/66c75b54fb8329203f7cdfb633bf92afdadaf128.jpg",
+      "image_2": "full/755c90470a1ffa2f29a131cd6ae1ac3dc0a3adf2.jpg",
+      "image_3": "full/9cad20b3eb6a3cb3dcb8d645d3efc096c7f8a0a6.jpg",
+      "image_4": "full/078b3f73595ee2b6ee18cb9600a0996e9a339d87.jpg",
+      "image_5": "full/2680d60947c7762138b9958cc1180f5a94c126b2.jpg",
+      "image_6": "full/fd0f5b72c7cebd52d6f01093f1365f4908d25ca6.jpg",
+      "image_7": "full/330f8535e612ae12f8b8dde38eb8193261edd8ef.jpg"
+    },
+    {
+      "id": "pest_5",
+      "name": "Root-knot nematodes",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Root-knot-nematodes",
+      "type": "detailed",
+      "image_1": "full/aa3d8b84e9826eaf6abbe188bbed717c453217c7.jpg",
+      "image_2": "full/ba01300f909dee5ac83fa7f066a32cc463a3de8a.jpg",
+      "image_3": "full/67f66ccf69386f0a080118bafe5adc5e69100a40.jpg",
+      "image_4": "full/2aab1d782fa8a2ce6e0e593a5aa8aec52e4e615e.jpg"
+    },
+    {
+      "id": "pest_6",
+      "name": "Storage pests",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Storage-pests",
+      "type": "detailed",
+      "image_1": "full/fc8c3e2c8195e8e95bfb8e89058ab9180f431871.jpg",
+      "image_2": "full/9e3401871c7ea862247234ee0b369361e2aa0439.jpg",
+      "image_3": "full/fe954c37bb3caea52ed9376bf631e5a0c4138e00.jpg",
+      "image_4": "full/49c0fde8f5a461b0e082458336c63ef606892f7b.jpg",
+      "image_5": "full/ad85e75226a768be201dbfd0b80ad95594c80546.jpg",
+      "image_6": "full/a6c1cfc71736656853798a39cd8928e6120bbcf7.jpg",
+      "image_7": "full/f7abedfc55cbb5e111b100e1d2c10c372e287612.jpg"
+    },
+    {
+      "id": "pest_7",
+      "name": "Spotted stemborer",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Spotted-stemborer",
+      "type": "detailed",
+      "image_1": "full/1b947984bc9a3025876073b449145ffc561d99bc.jpg",
+      "image_2": "full/9102d63f54612cb27ecc263358396c5ee02ef869.jpg",
+      "image_3": "full/afa5220104c33ed87047bf7b29bc30e1a1e4cd3d.jpg",
+      "image_4": "full/da8a2d8b4779375963b929d186deca3867b4bbad.jpg",
+      "image_5": "full/394ff4f19fcc5ab35ba928cdbd974f8c78961839.jpg",
+      "image_6": "full/422dbcbc18adc4b1b2f04e69815a2751fe1e8c00.jpg"
+    },
+    {
+      "id": "pest_8",
+      "name": "Whiteflies",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Whiteflies",
+      "type": "detailed",
+      "image_1": "full/3484d967ac66d88859ff8ef2a6dae8369b4862ff.jpg",
+      "image_2": "full/b08cda176542e7f681e1f5c1405cd2876ae1eafe.jpg",
+      "image_3": "full/fdb3ef043242a35b5a7209abbae30738c98bb5e1.jpg",
+      "image_4": "full/cf035980d3e567eacdfa71e6b01a8e0fedfdffcb.jpg",
+      "image_5": "full/4d3866523bfd2bb24c1d26d22914a517d92b7b67.jpg",
+      "image_6": "full/773c5afc397196ce367ffc25a5c59cd323ce61a4.jpg",
+      "image_7": "full/9fb4ab92b1ae186c16c7de03dffc89ec3c250e96.jpg"
+    },
+    {
+      "id": "pest_9",
+      "name": "Mealybugs",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Mealybugs",
+      "type": "detailed",
+      "image_1": "full/6572aba43d2b70fd376d85f9308f288a0a8f1663.jpg",
+      "image_2": "full/2a56300fd9003046d679c67f4a6c735928a7f7c8.jpg",
+      "image_3": "full/ccbab698ada5245bbc287481aa20156796028c38.jpg",
+      "image_4": "full/6c964ac7e6042062945f217f97ad771cc9d54bcf.jpg",
+      "image_5": "full/fc7802cafc2cd12c1626d5e0e6c55607cebe28eb.jpg",
+      "image_6": "full/b1fe9d9fa6e0f43e7106fa8e1b08c7b8b8ce931c.jpg",
+      "image_7": "full/08db3b9f6ec3df08606df68eb1ae05a4201a6c8d.jpg"
+    },
+    {
+      "id": "pest_10",
+      "name": "Termites",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Termites",
+      "type": "detailed",
+      "image_1": "full/17c13c2c0119bfa553932532ef1ccd0996b6e031.jpg",
+      "image_2": "full/ef95b01573d547910ee25fe8558500c9acb7ea6d.jpg",
+      "image_3": "full/d6245234ee525487e86850da6895cd758662ec5d.jpg",
+      "image_4": "full/989aa02dc8174f77d6adb915cc37063b2d300f9e.jpg",
+      "image_5": "full/82924aaaa7b7c9eb2d1f416312e436fae8d8e90d.jpg"
+    },
+    {
+      "id": "pest_11",
+      "name": "Thrips",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Thrips",
+      "type": "detailed",
+      "image_1": "full/2ca11d7098216302a0f020f236271a6383e5b32c.jpg",
+      "image_2": "full/560586a4a9e5dff0d7a658e5c93052d4140f3d41.jpg",
+      "image_3": "full/79cd19b0a66454a95cdd274f271de12598700a6c.jpg",
+      "image_4": "full/a4fedf19bf916b873452d3ac7b0fa1810aedf959.jpg",
+      "image_5": "full/b3e768fdc8059aedd7e74ed54f0a080db3213efa.jpg",
+      "image_6": "full/a214b75e60da06f68996da19212d079292067895.jpg",
+      "image_7": "full/e53d8f92445a243e79a534fcb782a3e645b777dc.jpg"
+    },
+    {
+      "id": "pest_12",
+      "name": "Purple witchweed",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Purple-witchweed",
+      "type": "detailed",
+      "image_1": "full/414db3433367e9a952c09e5ef15bcd368b3f630c.jpg",
+      "image_2": "full/59c296a99c375710ff720a92e9a8920e245276ec.jpg",
+      "image_3": "full/75c613ccc39ffa12131493e4b2825812841715f3.jpg",
+      "image_4": "full/72912278a7d41429f417e17808f91c32ef294de2.jpg"
+    },
+    {
+      "id": "pest_13",
+      "name": "Sweet potato weevil",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Sweet-potato-weevil",
+      "type": "detailed",
+      "image_1": "full/b179938efc12d25ab0e237bf7e1dc1f81e7d0111.jpg",
+      "image_2": "full/533d99a9116e3a4bdae04bd8d939e5e882d3c476.jpg",
+      "image_3": "full/1587a3a3aa48c8e54427f9ea7837d8ff40e8683b.jpg",
+      "image_4": "full/f39ee1c8f76c192fb7280ffaa80c6f400a9de379.jpg"
+    },
+    {
+      "id": "pest_14",
+      "name": "Tomato Yellow Leaf Curl Virus Disease (TYLCV)",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Tomato-Yellow-Leaf-Curl-Virus-Disease-TYLCV",
+      "type": "detailed",
+      "image_1": "full/1c6b92f6c05d5e92321807d2064c88c183c069d1.jpg",
+      "image_2": "full/1e444db939bfd893ef1f972ff711dc4b071bb498.jpg",
+      "image_3": "full/1fae5858a47fe3406184eedbba97a4b670f2eb9b.jpg"
+    },
+    {
+      "id": "pest_15",
+      "name": "Sedges",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Sedges",
+      "type": "detailed",
+      "image_1": "full/2b038ba65e5ec3620cb9709d41e66b9fdf679955.jpg",
+      "image_2": "full/783a65e6ba1e4c1f02f3a28470543cc058952ff2.jpg",
+      "image_3": "full/c947de8b64fb4f84e1d3a3950ed612785eddb1e4.jpg",
+      "image_4": "full/da913377cc47f62077a65827e2b344b0c2764664.jpg",
+      "image_5": "full/ee3b3e3aecac89a79abc0b98ceb11eb244555c99.jpg",
+      "image_6": "full/a743b5c58a66e0dfc9f43f9efd3037c3652b74a7.jpg",
+      "image_7": "full/2af894f139ce995e52d621312b902cd4e0838601.jpg"
+    },
+    {
+      "id": "pest_16",
+      "name": "Mango seed weevil",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Mango-seed-weevil",
+      "type": "detailed",
+      "image_1": "full/05035b4e93816df5ea31b5970d110a24a80b8d63.jpg",
+      "image_2": "full/a473c2f84e16820814bba6e32ece843224157f6b.jpg",
+      "image_3": "full/6b923f974685000a5a57cd7f9e2799d9de99e9d7.jpg",
+      "image_4": "full/2b1b9f82e5ddb0e4224381664072bf5734dc48d0.jpg",
+      "image_5": "full/e248e97313f64f7c683a1e2d7f98ac37d07f5b43.jpg"
+    },
+    {
+      "id": "pest_17",
+      "name": "Leafmining flies (Leafminers)",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Leafmining-flies-Leafminers",
+      "type": "detailed",
+      "image_1": "full/666c988dd3a1ef598ff58aa2e58324e306bd4710.jpg",
+      "image_2": "full/42220653e841d3b5bae962d0a3e83ab3683d688e.jpg",
+      "image_3": "full/9f3806f5cf7ed5330ed3f3e2e27b448f04d78175.jpg",
+      "image_4": "full/425b13bcb65b060e99ba9cd1311394fea82be95d.jpg",
+      "image_5": "full/6737fbdc4d37728df00234cc4433ad28a92a3b14.jpg",
+      "image_6": "full/14589b6d78902dc0c38a3f2f28a32e519c70ba0e.jpg",
+      "image_7": "full/7b96b96665ac0f66db1752a3600e1ef218fbdb50.jpg"
+    },
+    {
+      "id": "pest_18",
+      "name": "Cowpea seed beetle",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Cowpea-seed-beetle",
+      "type": "detailed",
+      "image_1": "full/15fb878224a18f46414ba7abb538b19b9e300576.jpg",
+      "image_2": "full/fc8c3e2c8195e8e95bfb8e89058ab9180f431871.jpg",
+      "image_3": "full/4924d8300d34d36aa5a1badfd32fb2c954780ea0.jpg"
+    },
+    {
+      "id": "pest_19",
+      "name": "Dodder",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Dodder",
+      "type": "detailed",
+      "image_1": "full/899d7783ab8f1c48bff89e7e0e0f9e89ad580f4e.jpg",
+      "image_2": "full/7d5ef12cd18e5ec046748f281360f5f85975015c.jpg",
+      "image_3": "full/37bc8efd67ba5f9caa79adcebc55d9f285f20d93.jpg",
+      "image_4": "full/97c219e8c755fc44af0c8936925aab0a5ce2dec2.jpg",
+      "image_5": "full/1b3dee2ef0bb322f5842cb30d0b0f8d56ed73cef.jpg",
+      "image_6": "full/787506af5f9da96cdbfe32cf03e3a3b2837d35dc.jpg",
+      "image_7": "full/443af0381e965d632530667bf3a137dbcc533b8b.jpg"
+    },
+    {
+      "id": "pest_20",
+      "name": "Spider mites",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Spider-mites",
+      "type": "detailed",
+      "image_1": "full/f81420f32cad6f52563db5c911398d8677569f47.jpg",
+      "image_2": "full/f02272736d3c2be3131c0d42857e33ce6107ac85.jpg",
+      "image_3": "full/965a1e74589d9a4d97aa5bd63d981dfef1da2e3f.jpg",
+      "image_4": "full/e306a62747671cdc388b78369277e2ce15b73efc.jpg",
+      "image_5": "full/dcd66922e35d94262893ddf28ac34ce679f94afb.jpg",
+      "image_6": "full/c01a6f730c2356a058c2df1639f33d5d48a83b54.jpg",
+      "image_7": "full/9b514231ca6c5ee9ea800ae7489bf98c7c556d4f.jpg"
+    },
+    {
+      "id": "pest_21",
+      "name": "Early blight",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Early-blight",
+      "type": "detailed",
+      "image_1": "full/025a799f56152161958b72da949b8a32936bb91c.jpg",
+      "image_2": "full/1008bf331e320d7b36e6b63ab467632da66cf6dd.jpg",
+      "image_3": "full/ee74c6d47f1b1a808a0d0ff1398a9b09fa9fa2dc.jpg",
+      "image_4": "full/ed694bb8bba5b201b4e67698d5a4b5a38ff12c88.jpg",
+      "image_5": "full/054b487a4aa20fc8ea16cdcb48c05c25cb78e5dd.jpg",
+      "image_6": "full/786f8ded5eb483b5c0c81db389159704663f4464.jpg",
+      "image_7": "full/8119d517cf58939ce6b792d29569bc25f5e4905a.jpg"
+    },
+    {
+      "id": "pest_22",
+      "name": "Fusarium wilt",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Fusarium-wilt",
+      "type": "detailed",
+      "image_1": "full/525a421e7a4c888ef0b14abfe03ca5232ba2f7ce.jpg",
+      "image_2": "full/fe16833a3c0662c114ccde163953e37f6de72110.jpg",
+      "image_3": "full/793542ce179f0fe29885b1de41e5d4b72597edf8.jpg",
+      "image_4": "full/2a30e942a56be19aed4f62421df83bb6463feb15.jpg",
+      "image_5": "full/0b33c147755b656b4226aa9cb04762e467421e21.jpg",
+      "image_6": "full/b3eea9b1dc8348f714641d66489d0eec2a3e4256.jpg",
+      "image_7": "full/1a0aeccb7f792bf1e330d612096c2d1e3d45dd25.jpg"
+    },
+    {
+      "id": "pest_23",
+      "name": "Late blight",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Late-blight",
+      "type": "detailed",
+      "image_1": "full/4af7fdb6227a8b3335b536883d99fdbb030c055f.jpg",
+      "image_2": "full/476d7b771f3c18bce374dafe584a2ecc5450b58c.jpg",
+      "image_3": "full/695c295b2c7e61753ea01df5979a7dd82e4d835c.jpg",
+      "image_4": "full/c7f6b8f274f61e4a58a3a821d4b9e9405e622c3e.jpg"
+    },
+    {
+      "id": "pest_24",
+      "name": "Larger grain borer (LGB)",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Larger-grain-borer-LGB",
+      "type": "detailed",
+      "image_1": "full/f0c416cca5a2fa90dbd9d99ee2ba617e43f78123.jpg",
+      "image_2": "full/6b438919cd7efe326e9167fb0eb0bfb74dcb1725.jpg",
+      "image_3": "full/b45c8b2f693c3258577c56fe6b5d1dd9d6720267.jpg",
+      "image_4": "full/e462deb5ce246b43820a40d4517dc11c5343a426.jpg",
+      "image_5": "full/c17eef1646dbf376bca45777d81ac646030d39d0.jpg",
+      "image_6": "full/964ac35d17c2ac5867a96805692ff98011a536e2.jpg",
+      "image_7": "full/1a0f1c925e1c317b076b8d4cb8b8558c23a73db7.jpg"
+    },
+    {
+      "id": "pest_25",
+      "name": "Downy mildew",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Downy-mildew",
+      "type": "detailed",
+      "image_1": "full/e5666767f687c4383e863bf395e063cb823d053f.jpg",
+      "image_2": "full/6b47a200799fa9d8c07c3d21ef24069c8c9508e1.jpg",
+      "image_3": "full/29edab1d3250a7863c2f47143d1e36d3bbe77e08.jpg"
+    },
+    {
+      "id": "pest_26",
+      "name": "Damping-off diseases",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Damping-diseases",
+      "type": "detailed",
+      "image_1": "full/63f4ebd413e197cd91e01bce0094a52e24c0a991.jpg",
+      "image_2": "full/9623c541ddde33096e65e817749f19e4504f45c7.jpg",
+      "image_3": "full/e37fb842bb0d96f6f67f4f28f1aa88b24a158b8d.jpg",
+      "image_4": "full/421011616c0359b80de05b4deffe87d6caf7b97d.jpg",
+      "image_5": "full/36dd1a4bb84c9fae90ac8ec22770eca3c05faad6.jpg",
+      "image_6": "full/899d2d210ca163d7140b979e5db1293d0de9ddc6.jpg",
+      "image_7": "full/01b2cdd28092d8f8ad5b0cf961c8e2c772e4e60d.jpg"
+    },
+    {
+      "id": "pest_27",
+      "name": "Diamondback moth (DBM)",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Diamondback-moth-DBM",
+      "type": "detailed",
+      "image_1": "full/fac3e49ceb4332cdc2593ee533d2ac5d8448f458.jpg",
+      "image_2": "full/a41fe4e33bde672bc653bc6c1d6866253e160f97.jpg",
+      "image_3": "full/642eecfa7f26c842bcd5cdf0b594eab0d9b6fe80.jpg",
+      "image_4": "full/9b68dde69c633a1bdb95ca39413677a7dbcb9b3b.jpg",
+      "image_5": "full/317148f3fb4b7c13266ad7799942051b56fcaf78.jpg",
+      "image_6": "full/6feb4e11f1674a3b80c27ba7c0d2e90986d8f4b6.jpg",
+      "image_7": "full/7ba3de76ae172d47897117940ed773a5981c6735.jpg"
+    },
+    {
+      "id": "pest_28",
+      "name": "Cutworms",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Cutworms",
+      "type": "detailed",
+      "image_1": "full/b184c0d787941b7dcf3799107b16ae9b90979b49.jpg",
+      "image_2": "full/698504ab0aa4590e4089fee45aaa2e847b9d152d.jpg",
+      "image_3": "full/76feccbfffb58f17ed2dadf04bf53d5c3ee61997.jpg",
+      "image_4": "full/caf61861ce21452ec0a503c62c2207bb464f4708.jpg"
+    },
+    {
+      "id": "pest_29",
+      "name": "Cabbage moth",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Cabbage-moth",
+      "type": "detailed",
+      "image_1": "full/def54caa73af045557dcdede1a170a73bf310087.jpg",
+      "image_2": "full/30648fa5a2dc8698298eb81526e8c78cd2dd63bf.jpg",
+      "image_3": "full/ed0a9af08b014fe1faaf7027505f704e47f17697.jpg",
+      "image_4": "full/210bf51a5236667d71e321fd5ae06452a1672f53.jpg",
+      "image_5": "full/1f6f3485399834cdb646156ea022987c5c854aa4.jpg",
+      "image_6": "full/e65485943a7d9dc00c54662d712d3a1938c87205.jpg"
+    },
+    {
+      "id": "pest_30",
+      "name": "Black rot",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Black-rot",
+      "type": "detailed",
+      "image_1": "full/13f026b6e4ab397f15d85ca9f59aa7aa045f34dc.jpg",
+      "image_2": "full/028b464eec446af65e11d89a13e378f081f7031f.jpg",
+      "image_3": "full/cfba44bc2dc8c4c979599794cf0a918ac26c9593.jpg",
+      "image_4": "full/cde41357f94b026bd7ce5e9afe47a0fa5e98da14.jpg",
+      "image_5": "full/63e161d0d61c45af8a4f144e6670cf224659e36e.jpg",
+      "image_6": "full/36e4dace67e16ec15e9ca1667e5dc5c00493135a.jpg",
+      "image_7": "full/f5dc1b4b6876061c4dfee7756ecf68387ecb9bc2.jpg"
+    },
+    {
+      "id": "pest_31",
+      "name": "Cabbage webworm",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Cabbage-webworm",
+      "type": "detailed",
+      "image_1": "full/c5c5fbc247b356b94e6b028d2c8f553747b46fbf.jpg",
+      "image_2": "full/c6e8fc06460d463c54324e814429c1d539093b6e.jpg",
+      "image_3": "full/f7e55f713adfb1d3d8fed7a8b9ebb58c45eef162.jpg",
+      "image_4": "full/41bf55a4353332b839ffc30191e5a317656cc63d.jpg",
+      "image_5": "full/374ba1606f86bcadcb1f2e9704344f63518e7fb4.jpg",
+      "image_6": "full/d17cdcc2a3fb88e0127e376f6cffb27a7edb6a54.jpg",
+      "image_7": "full/96d5085d005c13f56b4c1a2a048080c9eb08d4e9.jpg"
+    },
+    {
+      "id": "pest_32",
+      "name": "Cabbage looper",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Cabbage-looper",
+      "type": "detailed",
+      "image_1": "full/9d8948f7f36a19bc87b36e0da22c77b4dcb88c66.jpg",
+      "image_2": "full/2ae168ad752b276d1b7765ce9a57b2525ba59e81.jpg",
+      "image_3": "full/6e21182ea8e5b591ef388903b26ccc7548d00107.jpg",
+      "image_4": "full/24d2eecfa1a0efafdee327dada12d2c405298ffe.jpg",
+      "image_5": "full/062684e9f26e6fc9ee812ddba62b8a87e7944df1.jpg",
+      "image_6": "full/17a03f6cae7aec7026116fd89a97c0524b208e77.jpg"
+    },
+    {
+      "id": "pest_33",
+      "name": "Fruit flies",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Fruit-flies",
+      "type": "detailed",
+      "image_1": "full/7c0ba21f0d7f535daa1cdafb061ff587a0e8ac2d.jpg",
+      "image_2": "full/81760714edc6490c76de6d279e46a253f7c73b40.jpg",
+      "image_3": "full/d51d7de1a8c1c84f2bb8a82f71ce40bffad1cd07.jpg",
+      "image_4": "full/0b0fb707e89e82f7fe94ee6cff141c3c9ff87dc6.jpg",
+      "image_5": "full/2db7d8a8a0aa16e25eff38e413103b6e1bba3654.jpg",
+      "image_6": "full/6743a5e5d1c1a68e86ef6cc77100149c93d6fe94.jpg",
+      "image_7": "full/ccf41803c1b956a20521414006e3f6157abd6363.jpg"
+    },
+    {
+      "id": "pest_34",
+      "name": "Couch grass",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Couch-grass",
+      "type": "detailed",
+      "image_1": "full/94afc20fffc59ca1c2f4fb708025968f3e62f5a5.jpg",
+      "image_2": "full/c2f3165b3388a7f9b5d838dbd8ba7549afbc8491.jpg"
+    },
+    {
+      "id": "pest_35",
+      "name": "Broomrape",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Broomrape",
+      "type": "detailed",
+      "image_1": "full/c3001c1c0a8c1938f8299b9f006c51fbcbad1134.jpg",
+      "image_2": "full/1a2609000e698c5460b5cc8bcab7b676e8f5aa6d.jpg",
+      "image_3": "full/edfbe35afbeb3cbb5bf9e5be37162aafd4ddfaa4.jpg"
+    },
+    {
+      "id": "pest_36",
+      "name": "Bagrada bug",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Bagrada-bug",
+      "type": "detailed",
+      "image_1": "full/0f1dbc27301567afb8800eb074966925db9e0836.jpg",
+      "image_2": "full/88e66be75961dccb8f7085fb1ba3749aec6af13f.jpg",
+      "image_3": "full/f42d537ec6ebb9b8c981160deaa45cb531831c89.jpg",
+      "image_4": "full/356259c77890add92ab4f8d6f2d4d9b434e303e5.jpg",
+      "image_5": "full/2b339acf5aa566c64344d1b8a257df6e05933149.jpg",
+      "image_6": "full/5e8f3c9532e27107902b5cefa4dfc6be019bd000.jpg",
+      "image_7": "full/b1c0b39ed4086b09de71f6397d133d8040ade4c2.jpg"
+    },
+    {
+      "id": "pest_37",
+      "name": "Bacterial wilt",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Bacterial-wilt",
+      "type": "detailed",
+      "image_1": "full/205a619fae4409664b8e0cda7eab5578f1d21a89.jpg",
+      "image_2": "full/286f9202486a3513442e7d6da7257b07c2ec8a3c.jpg",
+      "image_3": "full/9d26cd4b51053f607846c18413d253d3fb39d74b.jpg",
+      "image_4": "full/2757e347f68140525d5a936212bbe95226024cdf.jpg",
+      "image_5": "full/8b1119882c87a75977a05e1adc4d0104713bda40.jpg",
+      "image_6": "full/d5154839f60c5c1598883873c2f37eed4d673e2b.jpg"
+    },
+    {
+      "id": "pest_38",
+      "name": "Banana weevil",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Banana-weevil",
+      "type": "detailed",
+      "image_1": "full/cabf763d472d7e454940f276f7f8e14ea50b459f.jpg",
+      "image_2": "full/499f5b11a5f2aa5164a4f3d02851e3329eb85521.jpg",
+      "image_3": "full/3aab3634fe140921c8ce63afd0acb560e3acc1c7.jpg",
+      "image_4": "full/1d4612de3451c031f4c7505653dbdf4b07ab5a82.jpg",
+      "image_5": "full/8565340d3ed6cf4d5e960b3ed3850580f46650fb.jpg"
+    },
+    {
+      "id": "pest_39",
+      "name": "African maize stalkborer",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/African-maize-stalkborer",
+      "type": "detailed",
+      "image_1": "full/08aeb76878da33e655e78ff64a99813fe6ff4a0e.jpg",
+      "image_2": "full/9ab71a073113bd7575361c7285de60dda37a6dcf.jpg",
+      "image_3": "full/672e690753a5c8028a0bb6e75b75c1e39a241b0b.jpg",
+      "image_4": "full/52a9fd740bb0b74db388d79e490316a437da8c64.jpg",
+      "image_5": "full/a87451fddc8d5052225a8f09a24b73fae6e36246.jpg",
+      "image_6": "full/a97f9fab38167a1f88cb4f7c0b6ceb7042dca628.jpg",
+      "image_7": "full/68f2fb2e939af529ca1ad55319219e990afcf700.jpg"
+    },
+    {
+      "id": "pest_40",
+      "name": "Anthracnose",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Anthracnose",
+      "type": "detailed",
+      "image_1": "full/74ec2fff3ed9f53807c012b38baff9166e3f2a44.jpg",
+      "image_2": "full/6b2eb44c0e1fc4862041855de6e0b53e6db996ba.jpg",
+      "image_3": "full/4489d3d59c7cfc2fafb419ad9efa4a9f296c7b63.jpg",
+      "image_4": "full/dfe567841064a403acfc80e4df844a11d679b11a.jpg",
+      "image_5": "full/c51e15b9a2d0e20230cbd1e71ad0fc2e2e2597d1.jpg",
+      "image_6": "full/0893e98150f6e50749be01d0aa6106ec22f5945a.jpg",
+      "image_7": "full/7931f257faaa7a70003c99dd39063cc7d65e838f.jpg"
+    },
+    {
+      "id": "pest_41",
+      "name": "Aphids",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/Aphids",
+      "type": "detailed",
+      "image_1": "full/512f4b253f195baf8789b88c785d00fbf45ecdc9.jpg",
+      "image_2": "full/89317c861f00edc2d85be6378930ebc830691eb9.jpg",
+      "image_3": "full/a2050022d792d320e369202c1e2fecdb7487f452.jpg",
+      "image_4": "full/7505794d7a11a30d000ebb082a9448e2fb41fe2e.jpg",
+      "image_5": "full/d86b4821153c6b75f438d4c1f5b7d1d38f304490.jpg",
+      "image_6": "full/1ccd33d064d8af93947b567674654ce9ec45e060.jpg",
+      "image_7": "full/0ff4e03a6f3814f853c22fc4c45ac3d5d86d2802.jpg"
+    },
+    {
+      "id": "pest_42",
+      "name": "African cassava mosaic virus (ACMV)",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/African-cassava-mosaic-virus-ACMV",
+      "type": "detailed",
+      "image_1": "full/766c940013d0d86a6b57e8378edc7c03125dc9a6.jpg",
+      "image_2": "full/484809425d572cc03b76c1e27c3d5b824df3c054.jpg"
+    },
+    {
+      "id": "pest_43",
+      "name": "African bollworm",
+      "url": "https://infonet-biovision.org/PlantHealth/Pests/African-bollworm",
+      "type": "detailed",
+      "image_1": "full/1af41573d75689b9b57a2851a464db77f9cfb640.jpg",
+      "image_2": "full/3db541f9cf0306e8ea60a3c3f27202d8e7966099.jpg",
+      "image_3": "full/00098909911c90b53746767e94238b90a42c3f3f.jpg",
+      "image_4": "full/5ece2a722cd91c0f47bd7a05cf6bbbf45d896d79.jpg",
+      "image_5": "full/e4ed007a402bc3d0043c59b04d4ca4627d55419b.jpg",
+      "image_6": "full/fd63efe06ed9df7ed2b98c821ebf4f73c51db94b.jpg",
+      "image_7": "full/2ba6683bee51c56dee935b71e8c62805a8a9e746.jpg"
+    },
+    {
+      "id": "pest_44",
+      "name": "False codling moth ( Cryptophlebia leucotreta )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/965.280x185.clip_.jpeg"
+    },
+    {
+      "id": "pest_45",
+      "name": "Scales",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1760_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1761_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1760_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1761_0.jpeg"
+    },
+    {
+      "id": "pest_46",
+      "name": "Thrips (e.g. the black tea thrips  Heliothrips haemorrhoidalis  and the red banded thrips  Selenothrips rubrocinctus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1776.280x185.clip_.jpeg"
+    },
+    {
+      "id": "pest_47",
+      "name": "Bugs (Coconut bugs,  Helopeltis  bugs, stink bugs)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1688.400x400_3_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1775.280x185.clip_.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1535.280x185.clip_.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1688.400x400_3_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1775.280x185.clip_.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1535.280x185.clip_.jpeg"
+    },
+    {
+      "id": "pest_48",
+      "name": "Spider mites ( Oligonychus  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1136.280x185.clip_.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1299.280x185.clip__0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1136.280x185.clip_.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1299.280x185.clip__0.jpeg"
+    },
+    {
+      "id": "pest_49",
+      "name": "Green peach aphid ( Myzus persicae )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/266.400x400_9_0.jpeg"
+    },
+    {
+      "id": "pest_50",
+      "name": "Fruit flies ( Bactrocera cucurbitae ,  Dacus  spp.,   Ceratitis capitata )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1692_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1694_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1350.400x400_9.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1692_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1694_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1350.400x400_9.jpeg"
+    },
+    {
+      "id": "pest_51",
+      "name": "Aphids ( Aphis gossypii )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1467_0.jpeg"
+    },
+    {
+      "id": "pest_52",
+      "name": "Epilachna beetle  ( Epilachna chrysomelina )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/940_0.jpeg"
+    },
+    {
+      "id": "pest_53",
+      "name": "Root-knot nematodes ( Meloidogyne  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2171_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1521_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2171_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1521_0.jpeg"
+    },
+    {
+      "id": "pest_54",
+      "name": "Aphids ( Myzus persicae ,  Macrosiphum euphorbiae ,  Aulacorthum solani ,  Aphis gossypii )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/266.400x400_9_0.jpeg"
+    },
+    {
+      "id": "pest_55",
+      "name": "Cutworms ( Agrotis  spp)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/912.400x400_18.jpeg"
+    },
+    {
+      "id": "pest_56",
+      "name": "Epilachna beetles ( Epilachna  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/940_0.jpeg"
+    },
+    {
+      "id": "pest_57",
+      "name": "Millipedes or thousand-legged worms",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1756_0.jpeg"
+    },
+    {
+      "id": "pest_58",
+      "name": "Potato cyst nematode",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/potatonematodecysts.jpg"
+    },
+    {
+      "id": "pest_59",
+      "name": "Potato tuber moth ( Phthorimaea operculella )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1753_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1754_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1758_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1755_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1753_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1754_0.jpeg",
+      "image_7": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1758_0.jpeg"
+    },
+    {
+      "id": "pest_60",
+      "name": "Greater yam beetle ( Heteroligus meles )",
+      "url": "to_be_added",
+      "type": "abridged"
+    },
+    {
+      "id": "pest_61",
+      "name": "Yam scale ( Aspidiella hartii )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/yam_scale_-iita_2012.jpg"
+    },
+    {
+      "id": "pest_62",
+      "name": "Mealybugs ( Rastrococcus  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/Mealybugs%20feeding%20on%20tomatoes_Dr.%20Jan%20Breithaupt.jpg"
+    },
+    {
+      "id": "pest_63",
+      "name": "Aphids ( Aphis  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/266.400x400_9_0.jpeg"
+    },
+    {
+      "id": "pest_64",
+      "name": "Cutworms ( Agrotis  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1248.280x185.clip_.jpeg"
+    },
+    {
+      "id": "pest_65",
+      "name": "Simsim gall midge or gall fly ( Asphondylia sesami )",
+      "url": "to_be_added",
+      "type": "abridged"
+    },
+    {
+      "id": "pest_66",
+      "name": "Whiteflies ( Bemisia tabaci )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/921.400x400_13_0.jpeg"
+    },
+    {
+      "id": "pest_67",
+      "name": "Spider mites ( Tetranychus  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/261.400x400.jpeg"
+    },
+    {
+      "id": "pest_68",
+      "name": "Nematodes ( Meloidogyne  spp.,  Pratylenchus brachyurus  and  Radopholus similis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/Root-knot%20nematodes.%20Roots%20of%20severely%20attacked%20%28left%29%20and%20healthy%20plant%20%28right%29.%20A.%20M.%20Varela%2C%20icipe..jpg"
+    },
+    {
+      "id": "pest_69",
+      "name": "Tea mites and spider mites",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/262.400x400_5.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1390_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/262.400x400_5.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1390_0.jpeg"
+    },
+    {
+      "id": "pest_70",
+      "name": "Cutworms ( Agrotis segetum )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/912.400x400_18.jpeg"
+    },
+    {
+      "id": "pest_71",
+      "name": "Crickets",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/untitled.png"
+    },
+    {
+      "id": "pest_72",
+      "name": "Cotton  Helopeltis  or mosquito bug ( Helopeltis schoutedeni )",
+      "url": "to_be_added",
+      "type": "abridged"
+    },
+    {
+      "id": "pest_73",
+      "name": "Aphids ( Toxoptera aurantii )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/266.400x400_9_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1053_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/266.400x400_9_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1053_0.jpeg"
+    },
+    {
+      "id": "pest_74",
+      "name": "Black tea thrips ( Heliothrips haemorrhoidales )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1819_0.jpeg"
+    },
+    {
+      "id": "pest_75",
+      "name": "Tea weevils ( Aperitmetus brunneus ,  Entypotrachelus meyeri )",
+      "url": "to_be_added",
+      "type": "abridged"
+    },
+    {
+      "id": "pest_76",
+      "name": "Termites ( Odontotermes  spp.,  Microtermes natalensis ,  Pseudocanthotermes militaris )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1738.400x400_6.jpeg"
+    },
+    {
+      "id": "pest_77",
+      "name": "African armyworm ( Spodoptera exempta )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/armyworm_0.jpg"
+    },
+    {
+      "id": "pest_78",
+      "name": "Epilachna beetles ( Epilachna chrysomelina, Henosepilachna elaterii  )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/940_0.jpeg"
+    },
+    {
+      "id": "pest_79",
+      "name": "Flea Beetles ( Podagrica spp. )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1526_0.jpeg"
+    },
+    {
+      "id": "pest_80",
+      "name": "Red spider mites ( Tetranychus  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/261.400x400.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1021.400x400_4.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/261.400x400.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1021.400x400_4.jpeg"
+    },
+    {
+      "id": "pest_81",
+      "name": "Fruit flies ( Bactrocera cucurbitae, Dacus spp and Ceratitis capitata )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/Fruit%20flies%20in%20watermelon%20fruit%20A.%20M.%20Varela%2C%20icipe.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/325.400x400.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/Fruit%20flies%20in%20watermelon%20fruit%20A.%20M.%20Varela%2C%20icipe.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/325.400x400.jpeg"
+    },
+    {
+      "id": "pest_82",
+      "name": "Russian wheat aphid ( Diuraphis noxia )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/4132.280x185.clip_.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/4077.280x185.clip_.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/4132.280x185.clip_.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/4077.280x185.clip_.jpeg"
+    },
+    {
+      "id": "pest_83",
+      "name": "Rats",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/3328.280x185.clip__1.jpeg"
+    },
+    {
+      "id": "pest_84",
+      "name": "Birds",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/3457.280x185.clip__0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/3458.280x185.clip__0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/3457.280x185.clip__0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/3458.280x185.clip__0.jpeg"
+    },
+    {
+      "id": "pest_85",
+      "name": "Yellow rust ( Puccinia striiformis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/wheat_yellowr_rust-a._yaqub_cimmyt_2011.jpg"
+    },
+    {
+      "id": "pest_86",
+      "name": "Brown leaf rust ( Puccinia recondita f. sp. tritici )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/wheat_rust-raska_2011.jpg"
+    },
+    {
+      "id": "pest_87",
+      "name": "Wheat bunt ( Tilletia tritici )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/wheat_common_bunt-cimmyt_2006.jpg"
+    },
+    {
+      "id": "pest_88",
+      "name": "Take-all disease ( Gaeumannomyces graminis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/wheat_take-all_disease-brown_2008.jpg"
+    },
+    {
+      "id": "pest_89",
+      "name": "Glume blotch ( Phaeosphaeria (Leptosphaeria) nodorum)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/wheat_glume_blotch-cimmyt_2006.jpg"
+    },
+    {
+      "id": "pest_90",
+      "name": "Barley yellow dwarf virus (BYDV) (luteovirus)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/barley_yellow_dwarf_virus_-_usda-ars_2008.jpg"
+    },
+    {
+      "id": "pest_91",
+      "name": "Western flower thrips ( Frankliniella occidentalis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/919_0.jpeg"
+    },
+    {
+      "id": "pest_92",
+      "name": "Bugs",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1689_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/715_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1244_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/806.280x185.clip_.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1689_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/715_0.jpeg",
+      "image_7": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1244_0.jpeg"
+    },
+    {
+      "id": "pest_93",
+      "name": "Beanflies ( Ophiomyia centrosematis  and  O. phaseoli )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1826.400x400_6_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1250.400x400_6_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1826.400x400_6_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1250.400x400_6_0.jpeg"
+    },
+    {
+      "id": "pest_94",
+      "name": "Cotton aphid ( Aphis gossypii )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1467_0.jpeg"
+    },
+    {
+      "id": "pest_95",
+      "name": "Leaf-feeding caterpillars",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1332_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/cotton_leaf_feeding_caterpillar-_david_marquina_reyes_2012.jpg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1332_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/cotton_leaf_feeding_caterpillar-_david_marquina_reyes_2012.jpg"
+    },
+    {
+      "id": "pest_96",
+      "name": "Leafmining caterpillars",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/582.400x400_3.jpeg"
+    },
+    {
+      "id": "pest_97",
+      "name": "Pod borers ( Maruca vitrata, Etiella zinckenella, Helicoverpa armigera )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1143_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1219_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1326_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1143_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1219_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1326_0.jpeg"
+    },
+    {
+      "id": "pest_98",
+      "name": "Storage pests ( Sitophilus oryzae ,  Rhyzopertha dominica )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1388_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1723.400x400_2_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1223_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1388_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1723.400x400_2_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1223_0.jpeg"
+    },
+    {
+      "id": "pest_99",
+      "name": "Cutworms ( Agrotis  spp and  Spodoptera  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/912.400x400_18.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1836.280x185.clip__0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/912.400x400_18.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1836.280x185.clip__0.jpeg"
+    },
+    {
+      "id": "pest_100",
+      "name": "Sorghum shoot fly ( Atherigona soccata )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1494.400x400_10.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2166_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1494.400x400_10.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2166_0.jpeg"
+    },
+    {
+      "id": "pest_101",
+      "name": "African bollworm ( Helicoverpa armigera )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1019_0.jpeg"
+    },
+    {
+      "id": "pest_102",
+      "name": "Stemborers: Spotted stemborer ( Chilo partellus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/519_0.jpeg"
+    },
+    {
+      "id": "pest_103",
+      "name": "Head bugs ( Calocoris angustatus  and  Eurystylus oldi )",
+      "url": "to_be_added",
+      "type": "abridged"
+    },
+    {
+      "id": "pest_104",
+      "name": "Other bugs",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1320_0.jpeg"
+    },
+    {
+      "id": "pest_105",
+      "name": "The sorghum aphid ( Melanaphis saccari ) and the maize aphid ( Rhopalosiphum maidis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2154_0.jpeg"
+    },
+    {
+      "id": "pest_106",
+      "name": "Sorghum midge ( Stenodiplosis sorghicola )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/3439.280x185.clip_.jpeg"
+    },
+    {
+      "id": "pest_107",
+      "name": "Stemborers: African maize stalkborer ( Busseola fusca )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/untitled_2.png"
+    },
+    {
+      "id": "pest_108",
+      "name": "Termites ( Coptotermes formosanus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1738.400x400_6.jpeg"
+    },
+    {
+      "id": "pest_109",
+      "name": "Epilachna beetle ( Epilachna chrysomelina )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/940_0.jpeg"
+    },
+    {
+      "id": "pest_110",
+      "name": "Fruit flies ( Bactrocera cucurbitae ,  Dacus spp. and  Ceratitis capitata )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1702.280x185.clip_.jpeg"
+    },
+    {
+      "id": "pest_111",
+      "name": "Sweet potato weevil ( Alcidodes erronus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/596_0.jpeg"
+    },
+    {
+      "id": "pest_112",
+      "name": "Millipedes",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/index.jpg"
+    },
+    {
+      "id": "pest_113",
+      "name": "Domestic and wild animals",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2308.280x185.clip_.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2346.280x185.clip_.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2308.280x185.clip_.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2346.280x185.clip_.jpeg"
+    },
+    {
+      "id": "pest_114",
+      "name": "Sweet potato butterfly ( Acraea acerata )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/sweet_potato_butterfly_acraea_acerata_0.jpg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/larvae_sweet_potato_butterfly_acraea_acerata_0.jpg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/sweet_potato_butterfly_acraea_acerata_0.jpg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/larvae_sweet_potato_butterfly_acraea_acerata_0.jpg"
+    },
+    {
+      "id": "pest_115",
+      "name": "Beet armyworm ( Spodoptera exigua )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2802.400x400.jpeg"
+    },
+    {
+      "id": "pest_116",
+      "name": "Sweet potato hornworm or the hawk moth  ( Agrius convolvuli )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1256_0.jpeg"
+    },
+    {
+      "id": "pest_117",
+      "name": "Tortoiseshell beetles ( Aspidomorpha  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1257_0.jpeg"
+    },
+    {
+      "id": "pest_118",
+      "name": "Sweet potato moth ( Omphisa anastomasalis )",
+      "url": "to_be_added",
+      "type": "abridged"
+    },
+    {
+      "id": "pest_119",
+      "name": "Aphids ( Aphis gossypii  and other species)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1467_0.jpeg"
+    },
+    {
+      "id": "pest_120",
+      "name": "Eriophyid mites ( Aceria  sp)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/untitled_0.png"
+    },
+    {
+      "id": "pest_121",
+      "name": "Aphids ( Aphis gossypii ,  Myzus persicae )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1165.400x400_4.jpeg"
+    },
+    {
+      "id": "pest_122",
+      "name": "Tobacco whitefly ( Bemisia tabaci )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1669.400x400_10.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/4120.280x185.clip_.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1669.400x400_10.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/4120.280x185.clip_.jpeg"
+    },
+    {
+      "id": "pest_123",
+      "name": "Thrips ( Thrips tabaci, Frankliniella occidentalis, F. schultzeii  and  Ceratothripoides brunneus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1061.400x400_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1601.400x400_2_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1602.400x400_1_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/4119.280x185.clip_.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1061.400x400_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1601.400x400_2_0.jpeg",
+      "image_7": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1602.400x400_1_0.jpeg"
+    },
+    {
+      "id": "pest_124",
+      "name": "Leafminers ( Liriomyza  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1729_0.jpeg"
+    },
+    {
+      "id": "pest_125",
+      "name": "Fruit borers ( Helicoverpa armiguera, Spodoptera littoralis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2217_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1059_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/2216_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2217_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1059_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/2216_0.jpeg"
+    },
+    {
+      "id": "pest_126",
+      "name": "Tomato mirid bug ( Nesidiocoris tenuis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2214_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2211_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2214_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2211_0.jpeg"
+    },
+    {
+      "id": "pest_127",
+      "name": "Tomato russet mite ( Aculops lycopersici )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/765_0.jpeg"
+    },
+    {
+      "id": "pest_128",
+      "name": "Leaf mould ( Mycovellosiella fulva )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/tomato_leaf_mold-_elizabeth_bush_virginia_polytechnic_institute_and_state_university_2013.jpg"
+    },
+    {
+      "id": "pest_129",
+      "name": "Bacterial spot ( Xanthomonas campestris  pv.  vesicatoria )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/722_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2210_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/721_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/722_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2210_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/721_0.jpeg"
+    },
+    {
+      "id": "pest_130",
+      "name": "Cabbage looper ( Trichoplusia ni )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/901_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/360.400x400.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/901_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/360.400x400.jpeg"
+    },
+    {
+      "id": "pest_131",
+      "name": "Tuta absoluta (tomato leaf miner)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/tuta_absoluta.jpg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/tomato_leaf_miner.jpg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/tuta_absoluta.jpg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/tomato_leaf_miner.jpg"
+    },
+    {
+      "id": "pest_132",
+      "name": "Nematodes ( Meloidogyne javanica  and  Pratylenchus brachyurus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/Root-knot%20nematodes.%20Roots%20of%20severely%20attacked%20%28left%29%20and%20healthy%20plant%20%28right%29.%20A.%20M.%20Varela%2C%20icipe..jpg"
+    },
+    {
+      "id": "pest_133",
+      "name": "Pineapple mealybug ( Dysmicoccus brevipes )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/693_0.jpeg"
+    },
+    {
+      "id": "pest_134",
+      "name": "Thrips ( Thrips tabaci  and   Frankliniella schultzei  )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/524.400x400_25.jpeg"
+    },
+    {
+      "id": "pest_135",
+      "name": "Stemborers",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2225_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2226_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2227_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2228_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2188_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2225_0.jpeg",
+      "image_7": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2226_0.jpeg"
+    },
+    {
+      "id": "pest_136",
+      "name": "Sugarcane scale ( Aulacaspis tegalensis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1761_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1201.400x400_6_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1761_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1201.400x400_6_0.jpeg"
+    },
+    {
+      "id": "pest_137",
+      "name": "Pink sugarcane mealybug ( Saccharicoccus sacchari )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1685.400x400.jpeg"
+    },
+    {
+      "id": "pest_138",
+      "name": "Termites ( Amitermes  spp.,  Pseudacanthotermes  spp.,  Macrotermes spp.,  Odontotermes  spp.,  Microtermes  spp. and  Ancistrotermes  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1738.400x400_6.jpeg"
+    },
+    {
+      "id": "pest_139",
+      "name": "Rats ( Rattus  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/3328.280x185.clip__1.jpeg"
+    },
+    {
+      "id": "pest_140",
+      "name": "Mealybugs ( Planococcus citri  and  P. kenya )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/pest.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1138_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/pest.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1138_0.jpeg"
+    },
+    {
+      "id": "pest_141",
+      "name": "Aphids ( Aphis gossypii  and  Myzus persicae )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/266.400x400_9_0.jpeg"
+    },
+    {
+      "id": "pest_142",
+      "name": "Leafmining flies ( Lyriomyza  spp)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/2167_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/leafminer.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/2167_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/leafminer.jpeg"
+    },
+    {
+      "id": "pest_143",
+      "name": "Fruit flies ( Bactrocera cucurbitae  and  Ceratitis capitata )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1702.280x185.clip_.jpeg"
+    },
+    {
+      "id": "pest_144",
+      "name": "Broad mite or yellow tea mite ( Polyphagotarsonemus latus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1136.280x185.clip_.jpeg"
+    },
+    {
+      "id": "pest_145",
+      "name": "Nematodes",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/Root-knot%20nematodes.%20Roots%20of%20severely%20attacked%20%28left%29%20and%20healthy%20plant%20%28right%29.%20A.%20M.%20Varela%2C%20icipe..jpg"
+    },
+    {
+      "id": "pest_146",
+      "name": "African gall midge ( Orseolia oryzivora )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1581.400x400_7.jpeg"
+    },
+    {
+      "id": "pest_147",
+      "name": "Rice-sucking bugs, stink bugs ( Aspavia  spp,  Nezera viridula ), and Alydid bugs ( Mirperus  spp.and  Riptortus  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1320_0.jpeg"
+    },
+    {
+      "id": "pest_148",
+      "name": "Rice root-knot nematode ( Meloidogyne graminicola )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1317_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1587_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1317_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1587_0.jpeg"
+    },
+    {
+      "id": "pest_149",
+      "name": "White tip nematode  ( Aphelenchoides besseyi )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1586_0.jpeg"
+    },
+    {
+      "id": "pest_150",
+      "name": "Stalk-eyed shoot flies ( Diopsis  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1318_0.jpeg"
+    },
+    {
+      "id": "pest_151",
+      "name": "Case worm ( Nymphula depunctalis - Parapoynx stagnalis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/index.jpeg"
+    },
+    {
+      "id": "pest_152",
+      "name": "Termites ( Microtermes  spp.,   Ancistrotermes  spp.,  Trinervitermes  spp.,  Macrotermes  spp., and  Odontotermes  spp.).",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1738.png"
+    },
+    {
+      "id": "pest_153",
+      "name": "Hispid beetles ( Trichispa  spp.,  Dicladispa viridicyanea, Dactylispa bayoni )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/rice-hispa-wikimedia_commons.jpg"
+    },
+    {
+      "id": "pest_154",
+      "name": "Flea beetles ( Chaetocnema  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1526_0.jpeg"
+    },
+    {
+      "id": "pest_155",
+      "name": "Rice whorl maggots (rice leafminers) ( Hydrellia  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1319_0.jpeg"
+    },
+    {
+      "id": "pest_156",
+      "name": "Cotton seed bugs ( Oxycarenus  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1537.400x400_10.jpeg"
+    },
+    {
+      "id": "pest_157",
+      "name": "Spiny bollworm or spotted bollworm ( Earias  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1532.400x400.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2141.280x185.clip_.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1536.400x400.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1052_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1532.400x400.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2141.280x185.clip_.jpeg",
+      "image_7": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1536.400x400.jpeg"
+    },
+    {
+      "id": "pest_158",
+      "name": "Thrips ( Frankliniella  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1520.400x400_0.jpeg"
+    },
+    {
+      "id": "pest_159",
+      "name": "Flea beetles ( Nisostra  spp.,  Podagrica  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1526_0.jpeg"
+    },
+    {
+      "id": "pest_160",
+      "name": "Grasshoppers",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1531_0.jpeg"
+    },
+    {
+      "id": "pest_161",
+      "name": "Leafmining flies ( Liriomyza  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1631_0.jpeg"
+    },
+    {
+      "id": "pest_162",
+      "name": "Semiloopers ( Anomis flava ) and Leafrollers ( Haritalodes derogata )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1533_0.jpeg"
+    },
+    {
+      "id": "pest_163",
+      "name": "Flower beetles ( Mylabris  spp. and  Coryna  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1630_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1222_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1630_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1222_0.jpeg"
+    },
+    {
+      "id": "pest_164",
+      "name": "Bugs: Cotton stainers ( Dysdercus  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1534_0.jpeg"
+    },
+    {
+      "id": "pest_165",
+      "name": "Bugs: Stink bugs ( Nezara viridula ,  Atelocera  sp. and  Halydicoris  sp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1535.280x185.clip_.jpeg"
+    },
+    {
+      "id": "pest_166",
+      "name": "African bollworm ( Helicoverpa armiguera ) and other caterpillars",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1326_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1332.jpg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1326_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1332.jpg"
+    },
+    {
+      "id": "pest_167",
+      "name": "Pea blue butterfly ( Lampides boeticus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1327_0.jpeg"
+    },
+    {
+      "id": "pest_168",
+      "name": "Thrips ( Sericothrips  spp,  Frankliniella occidentalis , and  Thrips tabaci",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1599_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/4113.jpg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1599_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/4113.jpg"
+    },
+    {
+      "id": "pest_169",
+      "name": "Leafminers ( Liriomyza  spp. and  Chromatomyia horticola )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1335_0.jpeg"
+    },
+    {
+      "id": "pest_170",
+      "name": "Root-know nematode ( Meloidogyne incognita, M. javanica )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/528_0.jpeg"
+    },
+    {
+      "id": "pest_171",
+      "name": "Mites",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/mushroom_mites-greg.jpg"
+    },
+    {
+      "id": "pest_172",
+      "name": "Mushroom flies",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/lycoriella_subterranea_mushroom-wikipedia.jpg"
+    },
+    {
+      "id": "pest_173",
+      "name": "False spider mite ( Brevipalpus phoenicis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/flat_mite_brevipalpus_phoenicis-wikipedia.jpg"
+    },
+    {
+      "id": "pest_174",
+      "name": "Broad mite ( Polyphagotarsonemus latus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/index3.jpg"
+    },
+    {
+      "id": "pest_175",
+      "name": "Cotton aphid ( Aphis gossypii ) and green peach aphid ( Myzus persicae )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1467_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/909_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1467_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/909_0.jpeg"
+    },
+    {
+      "id": "pest_176",
+      "name": "Systates weevil ( Systates  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/index4.jpg"
+    },
+    {
+      "id": "pest_177",
+      "name": "Root-knot nematodes ( Meloidogyne incognita )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/Root-knot%20nematodes.%20Roots%20of%20severely%20attacked%20%28left%29%20and%20healthy%20plant%20%28right%29.%20A.%20M.%20Varela%2C%20icipe..jpg"
+    },
+    {
+      "id": "pest_178",
+      "name": "Aphids ( Aphis gossypii, Myzus persicae )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/266.400x400_9_0.jpeg"
+    },
+    {
+      "id": "pest_179",
+      "name": "Cutworms ( Agrotis  spp.,  Spodoptera  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/912.400x400_18.jpeg"
+    },
+    {
+      "id": "pest_180",
+      "name": "Fruit flies ( Ceratitis  spp.,  Bactrocera  spp.,  Dacus  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1670_0.jpeg"
+    },
+    {
+      "id": "pest_181",
+      "name": "Fruit borers ( Helicoverpa  spp.;  Spodoptera  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1674_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1673_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1674_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1673_0.jpeg"
+    },
+    {
+      "id": "pest_182",
+      "name": "Leafmining flies (Leafminers)  Liriomyza  spp.",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1677_0.jpeg"
+    },
+    {
+      "id": "pest_183",
+      "name": "Thrips ( Frankliniella  spp.,  Scirtothrips dorsalis, Thrips tabaci )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1671_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/524.400x400_4.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1671_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/524.400x400_4.jpeg"
+    },
+    {
+      "id": "pest_184",
+      "name": "Whiteflies ( Bemisia tabaci, Trialeurodes vaporariorum )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1669.400x400_10.jpeg"
+    },
+    {
+      "id": "pest_185",
+      "name": "Onion thrips ( Thrips tabaci )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1848_0.jpeg"
+    },
+    {
+      "id": "pest_186",
+      "name": "Onion fly ( Delia antiqua )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/410_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/411_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/410_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/411_0.jpeg"
+    },
+    {
+      "id": "pest_187",
+      "name": "Mango fruit flies ( Ceratitis  spp./  Bactrocera invadens )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1684_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1701.400x400_2_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1724_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1684_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1701.400x400_2_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1724_0.jpeg"
+    },
+    {
+      "id": "pest_188",
+      "name": "Mango gall flies ( Erosomyia mangifera )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1838_0.jpeg"
+    },
+    {
+      "id": "pest_189",
+      "name": "Whiteflies and black flies ( Aleurocanthus woglumi )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1690_0.jpeg"
+    },
+    {
+      "id": "pest_190",
+      "name": "Mango aphid ( Toxoptera odinae )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/Mango%2Baphid%2Bon%2Bmango%2Bfruit%5B1%5D.%2BA.%2BM.%2BVarela%2C%2Bicipe..jpg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/A%20colony%20of%20mango%20aphids%20on%20a%20panicle.%20A.%20M.%20Varela%2C%20icipe.jpg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/Mango%2Baphid%2Bon%2Bmango%2Bfruit%5B1%5D.%2BA.%2BM.%2BVarela%2C%2Bicipe..jpg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/A%20colony%20of%20mango%20aphids%20on%20a%20panicle.%20A.%20M.%20Varela%2C%20icipe.jpg"
+    },
+    {
+      "id": "pest_191",
+      "name": "Mango seed weevil ( Sternochetus mangiferae )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1679.400x400_2.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1633.400x400_0_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1680.400x400.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/345.400x400.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1679.400x400_2.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1633.400x400_0_0.jpeg",
+      "image_7": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1680.400x400.jpeg"
+    },
+    {
+      "id": "pest_192",
+      "name": "Helopeltis bugs ( Helopeltis schoutedeni  and  H. anacardii )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1775.400x400.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1766_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1775.400x400.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1766_0.jpeg"
+    },
+    {
+      "id": "pest_193",
+      "name": "Mango leaf coating mite ( Cisaberoptus kenyae )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1839.400x400_7.jpeg"
+    },
+    {
+      "id": "pest_194",
+      "name": "Red banded thrips ( Selenothrips rubrocinctus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1819_0.jpeg"
+    },
+    {
+      "id": "pest_195",
+      "name": "Bark eating termites",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/soil-covered_tunnels_built_by_termites_on_a_mango_tree._a._m._varela_icipe.jpg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1738.400x400_6.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1686_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/soil-covered_tunnels_built_by_termites_on_a_mango_tree._a._m._varela_icipe.jpg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1738.400x400_6.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1686_0.jpeg"
+    },
+    {
+      "id": "pest_196",
+      "name": "Budworm ( Scrobipalpa blapsigona )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/Parasitic%20wasp%20emerged%20from%20caterpillar.%20Note%20emergence%20hole%20in%20mummified%20caterpillar.A.%20M.%20Varela..jpg"
+    },
+    {
+      "id": "pest_197",
+      "name": "Mole crickets, Tobacco Cricket ( Brachytrupes  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/tobacco_cricket_brachytrupes_membranaceus.jpg"
+    },
+    {
+      "id": "pest_198",
+      "name": "Thrips ( Thrips  spp and  Frankliniella  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1598.400x400_8_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1023_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1598.400x400_8_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1023_0.jpeg"
+    },
+    {
+      "id": "pest_199",
+      "name": "Cotton leafhoppers or jassids",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1343_0.jpeg"
+    },
+    {
+      "id": "pest_200",
+      "name": "Eggplant lace bug ( Urentius hystricellus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1046_0.jpeg"
+    },
+    {
+      "id": "pest_201",
+      "name": "Shoot and fruit borer ( Leucinodes orbonalis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/3438.jpg"
+    },
+    {
+      "id": "pest_202",
+      "name": "Leafhoppers or Jassids ( Jacobiasca lybica )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1343_0.jpeg"
+    },
+    {
+      "id": "pest_203",
+      "name": "Root-knot nematodes ( Meloidogyne incognita, M. javanica )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/Root-knot%20nematodes.%20Roots%20of%20severely%20attacked%20%28left%29%20and%20healthy%20plant%20%28right%29.%20A.%20M.%20Varela%2C%20icipe..jpg"
+    },
+    {
+      "id": "pest_204",
+      "name": "Thrips ( Megalurothrips  spp. and  Frankliniella schultzei )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/919_0.jpeg"
+    },
+    {
+      "id": "pest_205",
+      "name": "Pod borers",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1020.400x400_3_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1865_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1219_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1020.400x400_3_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1865_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1219_0.jpeg"
+    },
+    {
+      "id": "pest_206",
+      "name": "Pod fly ( Melanagromyza chalcosoma )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1215_0.jpeg"
+    },
+    {
+      "id": "pest_207",
+      "name": "Pod weevil ( Apion clavipes )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1221_0.jpeg"
+    },
+    {
+      "id": "pest_208",
+      "name": "Blister beetles ( Coryna  spp. and  Mylabris  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/blister%20beetle%20%28Mylabris%20oculata%2C%20Botha%20AD%2C%20EcoPort%29.jpg"
+    },
+    {
+      "id": "pest_209",
+      "name": "Whiteflies ( Bemisia tabaci, Trialeurodes vaporariorum  and  Aleyrodes proletella )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/index2.jpg"
+    },
+    {
+      "id": "pest_210",
+      "name": "Millet head miner ( Heliocheilus albipunctella )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/millet_head_miner_caterpillar_-cirad.jpg"
+    },
+    {
+      "id": "pest_211",
+      "name": "Shoot fly ( Atherigona soccata )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1494_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1318_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1494_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1318_0.jpeg"
+    },
+    {
+      "id": "pest_212",
+      "name": "Storage pests: The lesser grain borer ( Rhyzopertha dominica ) and the khapra beetle ( Trogoderma granarium )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1496.png"
+    },
+    {
+      "id": "pest_213",
+      "name": "Fruit flies ( Bactrocera cucurbitae ,  Dacus  spp and  Ceratitis capitata )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/938_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1350.400x400_9.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1692_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1694_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/938_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1350.400x400_9.jpeg",
+      "image_7": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1692_0.jpeg"
+    },
+    {
+      "id": "pest_214",
+      "name": "Epilachna beetles ( Epilachna chrysomelina )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/941_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1469_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/941_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1469_0.jpeg"
+    },
+    {
+      "id": "pest_215",
+      "name": "Flea beetles ( Podagrica  spp)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1526_0.jpeg"
+    },
+    {
+      "id": "pest_216",
+      "name": "Bean flies ( Ophiomyia phaseoli  and related species)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1826_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1250.400x400_6_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1826_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1250.400x400_6_0.jpeg"
+    },
+    {
+      "id": "pest_217",
+      "name": "Whiteflies (Bemisia tabaci, Aleurodicus dispersus)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/index2.jpg"
+    },
+    {
+      "id": "pest_218",
+      "name": "Foliage beetles ( Ootheca  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1519_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1018_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1519_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1018_0.jpeg"
+    },
+    {
+      "id": "pest_219",
+      "name": "Pod-borers (African bollworm, Legume pod-borer, lima pod borer)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1143_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1020_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1019_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1143_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1020_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1019_0.jpeg"
+    },
+    {
+      "id": "pest_220",
+      "name": "Pod sucking bugs",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/Spiny%20brown%20%20bug%20on%20French%20bean%20plant.%20A.%20M.%20Varela%20%20icipe..jpg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1141_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1139_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/806_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/Spiny%20brown%20%20bug%20on%20French%20bean%20plant.%20A.%20M.%20Varela%20%20icipe..jpg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1141_0.jpeg",
+      "image_7": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1139_0.jpeg"
+    },
+    {
+      "id": "pest_221",
+      "name": "Flower thrips ( Megalurothrips sjostedti )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1023_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/919_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1023_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/919_0.jpeg"
+    },
+    {
+      "id": "pest_222",
+      "name": "Cowpea weevil ( Callosobruchus maculatus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1216_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1722_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1216_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1722_0.jpeg"
+    },
+    {
+      "id": "pest_223",
+      "name": "Coconut bug ( Pseudotheraptus wayi )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1688.400x400_3_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1765_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1688.400x400_3_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1765_0.jpeg"
+    },
+    {
+      "id": "pest_224",
+      "name": "Cashew weevil ( Mecocorynus loripes )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1820_0.jpeg"
+    },
+    {
+      "id": "pest_225",
+      "name": "Red-bandet thrips ( Selenothrips rubrocinctus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1819_0.jpeg"
+    },
+    {
+      "id": "pest_226",
+      "name": "Mealybugs ( Pseudococcus longispinus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1271_0.jpeg"
+    },
+    {
+      "id": "pest_227",
+      "name": "Cashew stem girdler ( Paranaleptes reticulata )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2126_0.jpeg"
+    },
+    {
+      "id": "pest_228",
+      "name": "Adult coconut bug ( Pseudotheraptus wayi )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1068_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1095_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1068_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1095_0.jpeg"
+    },
+    {
+      "id": "pest_229",
+      "name": "African rhinoceros beetle ( Oryctes monoceros )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/3319.jpg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1099.jpg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1817.jpg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2148.jpg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2149.jpg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/3319.jpg",
+      "image_7": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1099.jpg"
+    },
+    {
+      "id": "pest_230",
+      "name": "Coconut mite ( Aceria (=Eriophyes) guerreronis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1077.jpg"
+    },
+    {
+      "id": "pest_231",
+      "name": "Coconut scale ( Aspidiotus destructor )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1100_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1505_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1100_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1505_0.jpeg"
+    },
+    {
+      "id": "pest_232",
+      "name": "African palm weevils ( Rhynchophorus phoenicis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/3320.400x400_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1229.400x400_4_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/3320.400x400_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1229.400x400_4_0.jpeg"
+    },
+    {
+      "id": "pest_233",
+      "name": "Rodents",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/3328.280x185.clip__1.jpeg"
+    },
+    {
+      "id": "pest_234",
+      "name": "White grubs ( Schyzonycha  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1836_0.jpeg"
+    },
+    {
+      "id": "pest_235",
+      "name": "Millipedes ( Peridontopyge  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1272_0.jpeg"
+    },
+    {
+      "id": "pest_236",
+      "name": "Aphids ( Aphis craccivora )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/269.400x400_3_0.jpeg"
+    },
+    {
+      "id": "pest_237",
+      "name": "Groundnut hopper ( Hilda patruelis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/groundnut_hopper_-hilda_patruelis-_icrisat.jpg"
+    },
+    {
+      "id": "pest_238",
+      "name": "Thrips ( Megalurothrips sjostedti  and  Frankliniella schultzei )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1310_0.jpeg"
+    },
+    {
+      "id": "pest_239",
+      "name": "Groundnut leafminer ( Aproaerema modicella )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/groundnut_leaf_miner_-icrisat.jpg"
+    },
+    {
+      "id": "pest_240",
+      "name": "Storage pests: moths and beetles",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1481_0.jpeg"
+    },
+    {
+      "id": "pest_241",
+      "name": "Helopeltis bugs ( Helopeltis schoutedeni )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1775.400x400.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1766_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1775.400x400.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1766_0.jpeg"
+    },
+    {
+      "id": "pest_242",
+      "name": "Pod-borers ( Characoma stictigrapta )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2143.280x185.clip_.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/2142.280x185.clip_.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2143.280x185.clip_.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/2142.280x185.clip_.jpeg"
+    },
+    {
+      "id": "pest_243",
+      "name": "Spiny bollworm ( Earias biplaga )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1532.400x400.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2141.280x185.clip_.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1532.400x400.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2141.280x185.clip_.jpeg"
+    },
+    {
+      "id": "pest_244",
+      "name": "Leafhoppers ( Empoasca  spp)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1343_0.jpeg"
+    },
+    {
+      "id": "pest_245",
+      "name": "Red-banded thrips ( Selenothrips rubrocinctus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1819_0.jpeg"
+    },
+    {
+      "id": "pest_246",
+      "name": "Root-knot nematodes  (Meloidogyne  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/Root-knot%20nematodes.%20Roots%20of%20severely%20attacked%20%28left%29%20and%20healthy%20plant%20%28right%29.%20A.%20M.%20Varela%2C%20icipe..jpg"
+    },
+    {
+      "id": "pest_247",
+      "name": "Bugs (Blue bug, cotton lygus, cotton seed bug)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1537.400x400_10.jpeg"
+    },
+    {
+      "id": "pest_248",
+      "name": "Cutworms ( Agrotis segetum  and the cotton leafworm,  Spodoptera littoralis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/912.400x400_18.jpeg"
+    },
+    {
+      "id": "pest_249",
+      "name": "Leafhoppers or Jassids ( Empoasca  spp)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1343_0.jpeg"
+    },
+    {
+      "id": "pest_250",
+      "name": "Cotton leaf roller ( Haritalodes (Sylepta) derogata )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1533_0.jpeg"
+    },
+    {
+      "id": "pest_251",
+      "name": "Spider mites ( Tetranychus  spp; cotton red mite  Oligonychus gossypii )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1299.400x400.jpeg"
+    },
+    {
+      "id": "pest_252",
+      "name": "Bollworms ( Helicoverpa armigera ,  Earias spp  and  Pectinophora gossypiella )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/3321.jpg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1532.400x400.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/443.400x400.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/3321.jpg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1532.400x400.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/443.400x400.jpeg"
+    },
+    {
+      "id": "pest_253",
+      "name": "Cotton stainers ( Dysdercus  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1534_0.jpeg"
+    },
+    {
+      "id": "pest_254",
+      "name": "Fall armyworm  (Spodoptera frugiperda)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/fall_army_worm_university_of_georgia_bugwood.org_1673007-web_0.jpg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/fall_armyworm_frank_peairs_colorado_state_university_bugwood.org_5360472-web_0.jpg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/fall_army_worm_university_of_georgia_bugwood.org_1673007-web_0.jpg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/fall_armyworm_frank_peairs_colorado_state_university_bugwood.org_5360472-web_0.jpg"
+    },
+    {
+      "id": "pest_255",
+      "name": "Cutworms ( Agrotis  spp. and other species)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/912.400x400_18.jpeg"
+    },
+    {
+      "id": "pest_256",
+      "name": "Maize aphid or corn leaf aphid ( Rhopalosiphum maidis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2154_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1142_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2155_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2154_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1142_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2155_0.jpeg"
+    },
+    {
+      "id": "pest_257",
+      "name": "Termites ( Microtermes  spp.,  Macrotermes  spp.,  Allodontermes  spp., and  Odontotermes  spp)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1738.png"
+    },
+    {
+      "id": "pest_258",
+      "name": "Grasshoppers and locusts",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2156_0.jpeg"
+    },
+    {
+      "id": "pest_259",
+      "name": "Larger grain borer ( Prostephanus truncatus ) and the grain weevils ( Sitophylus  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/316.400x400_1_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1283_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/318.400x400_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/316.400x400_1_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1283_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/318.400x400_0.jpeg"
+    },
+    {
+      "id": "pest_260",
+      "name": "Angoumois grain moth ( Sitotroga cerealella )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/685_0.jpeg"
+    },
+    {
+      "id": "pest_261",
+      "name": "White grubs",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1262_0.jpeg"
+    },
+    {
+      "id": "pest_262",
+      "name": "African bollworm  ( Helicoverpa armigera )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1019_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1326_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1019_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1326_0.jpeg"
+    },
+    {
+      "id": "pest_263",
+      "name": "Maize ladybird beetle ( Epilachna similes )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1835_0.jpeg"
+    },
+    {
+      "id": "pest_264",
+      "name": "Maize leafhoppers ( Cicadulina  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/untitled_1.png",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1263_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/untitled2.png",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/untitled_1.png",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1263_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/untitled2.png"
+    },
+    {
+      "id": "pest_265",
+      "name": "Maize plant hopper (corn lantern fly) ( Peregrinus maidis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2158_0.jpeg"
+    },
+    {
+      "id": "pest_266",
+      "name": "Coffee berry borer ( Hypothenemus hampei )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1407_0.jpeg"
+    },
+    {
+      "id": "pest_267",
+      "name": "Soft green scale ( Coccus alpinus/ C. viridis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1414_0.jpeg"
+    },
+    {
+      "id": "pest_268",
+      "name": "Coffee thrips ( Diarthrothrips coffeae )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/914.400x400.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/524.400x400_4.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/914.400x400.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/524.400x400_4.jpeg"
+    },
+    {
+      "id": "pest_269",
+      "name": "Lace bug ( Habrochila placida )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1046_0.jpeg"
+    },
+    {
+      "id": "pest_270",
+      "name": "Coffee berry moth ( Prophantis smaragdina )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/coffee_berry_moth.jpg"
+    },
+    {
+      "id": "pest_271",
+      "name": "White coffee borer ( Anthores leuconotus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2153_0.jpeg"
+    },
+    {
+      "id": "pest_272",
+      "name": "Red coffee mite ( Oligonychus coffeae )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1299.400x400.jpeg"
+    },
+    {
+      "id": "pest_273",
+      "name": "Antestia bugs ( Antestiopsis  spp)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/4184.jpg"
+    },
+    {
+      "id": "pest_274",
+      "name": "Capsid bug ( Lamprocapsidea (Lygus) coffeae )",
+      "url": "to_be_added",
+      "type": "abridged"
+    },
+    {
+      "id": "pest_275",
+      "name": "Leafmining caterpillars ( Leucoptera meyricki  and  Leucoptera caffeina )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1423_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/Coffee%20leafminer-%20Cocoon%20%20%28F.%20Haas%2C%20icipe%29.jpg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1427_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/Coffee%20leafminer%20damage%20advanced%20%28A.%20M.%20Varela%2C%20icipe%29.jpg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/coffee%20leafminder%20damage%20on%20coffee%20leaf%20%28EcoPort%29.jpg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/Coffee%20leafminer%20caterpillars%20in%20side%20blotch%20mine%20%28F.%20Haas%2C%20icipe%29.jpg",
+      "image_7": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1423_0.jpeg"
+    },
+    {
+      "id": "pest_276",
+      "name": "Leaf skeletoniser ( Leucoplema dohertyi )",
+      "url": "to_be_added",
+      "type": "abridged"
+    },
+    {
+      "id": "pest_277",
+      "name": "Giant looper ( Ascotis selenaria reciprocaria )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/giant_looper_coffee.jpg"
+    },
+    {
+      "id": "pest_278",
+      "name": "Kenya mealybug ( Planococcus kenyae )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/3479.jpg"
+    },
+    {
+      "id": "pest_279",
+      "name": "Root mealybug ( Planococcus citri )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1412_0.jpeg"
+    },
+    {
+      "id": "pest_280",
+      "name": "Star scale ( Asterolecanium coffeae )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/3456.jpg"
+    },
+    {
+      "id": "pest_281",
+      "name": "Cassava mealybug ( Phenacoccus manihoti )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/825_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1106_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/4100.png",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/825_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1106_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/4100.png"
+    },
+    {
+      "id": "pest_282",
+      "name": "Larger grain borer ( Prostephanus truncatus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/316.400x400_1_0.jpeg"
+    },
+    {
+      "id": "pest_283",
+      "name": "Birds and other vertebrate pests",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/3328.280x185.clip__0_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/3457.280x185.clip__0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/3458.280x185.clip__0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/2304.400x400_0_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2346.280x185.clip__0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/3328.280x185.clip__0_0.jpeg",
+      "image_7": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/3457.280x185.clip__0.jpeg"
+    },
+    {
+      "id": "pest_284",
+      "name": "Striped mealybug ( Ferrisia virgata )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/828_0.jpeg"
+    },
+    {
+      "id": "pest_285",
+      "name": "Cassava green spider mite ( Mononychellus tanajoa  or  M. progresivus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1892_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/888_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1892_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/888_0.jpeg"
+    },
+    {
+      "id": "pest_286",
+      "name": "Red spider mites ( Oligonychus gossypii  and  Tetranychus  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/261.400x400.jpeg"
+    },
+    {
+      "id": "pest_287",
+      "name": "Cassava scales (Aonidomytilus albus)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1201_0.jpeg"
+    },
+    {
+      "id": "pest_288",
+      "name": "Grasshoppers ( Zonocerus variegatus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/827.400x400_3_0.jpeg"
+    },
+    {
+      "id": "pest_289",
+      "name": "Whiteflies ( Bemisia tabaci ,  Aleurodicus dispersus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/4121.png",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1669.400x400_10.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/4121.png",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1669.400x400_10.jpeg"
+    },
+    {
+      "id": "pest_290",
+      "name": "The citrus rust mite ( Phyllocoptruta oleivora )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/969_0.jpeg"
+    },
+    {
+      "id": "pest_291",
+      "name": "Citrus bud mite ( Aceria sheldoni )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/998.400x400.jpeg"
+    },
+    {
+      "id": "pest_292",
+      "name": "Ants",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2134_0.jpeg"
+    },
+    {
+      "id": "pest_293",
+      "name": "Red fire ants or weaver ants ( Oecophylla longinoda )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1002_0.jpeg"
+    },
+    {
+      "id": "pest_294",
+      "name": "Citrus woolly whitefly ( Aleurothrixus floccosus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/947_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/954_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/947_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/954_0.jpeg"
+    },
+    {
+      "id": "pest_295",
+      "name": "Citrus blackflies ( Aleurocanthus woglumi  and  A. spiniferus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/949_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/2139_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/949_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/2139_0.jpeg"
+    },
+    {
+      "id": "pest_296",
+      "name": "Citrus aphids ( Toxoptera citridus  and  T. aurantii )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/950_0.jpeg"
+    },
+    {
+      "id": "pest_297",
+      "name": "Citrus leafminer  (Phyllocnistis citrella)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1000_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/999_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1000_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/999_0.jpeg"
+    },
+    {
+      "id": "pest_298",
+      "name": "African citrus psyllid ( Trioza erytreaea )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/958_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/955_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/957_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/958_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/955_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/957_0.jpeg"
+    },
+    {
+      "id": "pest_299",
+      "name": "Citrus thrips ( Scirtothrips aurantii )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/919_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/4106.jpg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/4118.jpg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/919_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/4106.jpg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/4118.jpg"
+    },
+    {
+      "id": "pest_300",
+      "name": "Fruit flies ( Bactrocera invadens, Ceratitis capitata  and   C. rosa )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/968_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1701_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/968_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/1701_0.jpeg"
+    },
+    {
+      "id": "pest_301",
+      "name": "Swallowtail butterfly ( Papilio demodocus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1004_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1003_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1004_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1003_0.jpeg"
+    },
+    {
+      "id": "pest_302",
+      "name": "Sawflies ( Athalia  spp)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/923_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/898_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/923_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/898_0.jpeg"
+    },
+    {
+      "id": "pest_303",
+      "name": "Diamondback moth (DBM) ( Plutella xylostella )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/900_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/3749.png",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/3750.png",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/899_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/900_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/3749.png",
+      "image_7": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/3750.png"
+    },
+    {
+      "id": "pest_304",
+      "name": "Cabbage webworm ( Hellula undalis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/890_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/976.400x400_0_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/903_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/890_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/976.400x400_0_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/903_0.jpeg"
+    },
+    {
+      "id": "pest_305",
+      "name": "Cabbage moth ( Crocidolomia pavonana   (= binotalis ))",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/361.400x400_1_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/917_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/364_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/pestsdiseasesweeds/916.400x400_2_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/361.400x400_1_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/917_0.jpeg",
+      "image_7": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/364_0.jpeg"
+    },
+    {
+      "id": "pest_306",
+      "name": "Bagrada bug ( Bagrada hilaris )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/906_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/904_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/959_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/906_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/904_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/959_0.jpeg"
+    },
+    {
+      "id": "pest_307",
+      "name": "Leafmining flies ( Lyriomiza brassicae )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/913_0.jpeg"
+    },
+    {
+      "id": "pest_308",
+      "name": "Thrips ( Thrips tabaci Frankliniella  spp)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/914.400x400.jpeg"
+    },
+    {
+      "id": "pest_309",
+      "name": "Burrowing nematode ( Radopholus similis )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/424.400x400_7.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/988_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/424.400x400_7.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/988_0.jpeg"
+    },
+    {
+      "id": "pest_310",
+      "name": "Banana weevil borer ( Cosmopolites sordidus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1041_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/4141.280x185.clip_.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1041_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/4141.280x185.clip_.jpeg"
+    },
+    {
+      "id": "pest_311",
+      "name": "Banana silvering thrips ( Hercinothrips bicinctus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1012_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/524.400x400_4.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1012_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/524.400x400_4.jpeg"
+    },
+    {
+      "id": "pest_312",
+      "name": "Fruit flies ( Bactrocera invadens  and  Ceratitis rosa )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1014.jpg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1015_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1700_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1014.jpg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1015_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1700_0.jpeg"
+    },
+    {
+      "id": "pest_313",
+      "name": "Banana aphid ( Pentalonia nigronervosa )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1101_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1103_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1101_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1103_0.jpeg"
+    },
+    {
+      "id": "pest_314",
+      "name": "Bean seed fly ( Delia platura )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1027.400x400_4.jpeg"
+    },
+    {
+      "id": "pest_315",
+      "name": "Whiteflies ( Bemisia tabaci  and  Trialeurodes vaporariorum )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1249.400x400_5.jpeg"
+    },
+    {
+      "id": "pest_316",
+      "name": "Flower thrips ( Frankliniella  spp. and  Megalurotrhips sjostedti )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1022_0.jpeg"
+    },
+    {
+      "id": "pest_317",
+      "name": "Flower or blister beetles ( Mylabris oculata )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1222_0.jpeg"
+    },
+    {
+      "id": "pest_318",
+      "name": "African bollworm and other pod borers",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1019_0.jpeg"
+    },
+    {
+      "id": "pest_319",
+      "name": "Storage pests: Bruchids ( Zabrotes subfasciatus ,  Acanthoscelides obtectus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/805_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2068_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2066_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2069_0.jpeg",
+      "image_5": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/805_0.jpeg",
+      "image_6": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2068_0.jpeg",
+      "image_7": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/2066_0.jpeg"
+    },
+    {
+      "id": "pest_320",
+      "name": "Bean flies ( Ophiomyia  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1826_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/1250_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1826_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/1250_0.jpeg"
+    },
+    {
+      "id": "pest_321",
+      "name": "Aphids ( Aphis fabae ) and ( Aphis craccivora )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1832_0.jpeg"
+    },
+    {
+      "id": "pest_322",
+      "name": "Foliage beetles ( Ootheca  spp.;  Monolepta  spp.)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1018_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1360.400x400_6_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1018_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1360.400x400_6_0.jpeg"
+    },
+    {
+      "id": "pest_323",
+      "name": "Striped bean weevil ( Alcidodes leucogrammus )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1017_0.jpeg",
+      "image_2": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1829_0.jpeg",
+      "image_3": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1017_0.jpeg",
+      "image_4": "https://infonet-biovision.org/sites/default/files/Plant%20Health/Crops/fruits/vegetables/1829_0.jpeg"
+    },
+    {
+      "id": "pest_324",
+      "name": "Leafmining flies ( Lyriomiza  spp)",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1026_0.jpeg"
+    },
+    {
+      "id": "pest_325",
+      "name": "Leafhoppers ( Empoasca dolichi  and  E. lybica )",
+      "url": "to_be_added",
+      "type": "abridged",
+      "image_1": "https://infonet-biovision.org/sites/default/files/plant_health/cropsfruitsvegetables/1224_0.jpeg"
+    }
+  ],
+  "_xlsxPath": "data_lists/pests/pests_data_lists.xlsx"
+}

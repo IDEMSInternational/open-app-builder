@@ -2,7 +2,6 @@
   "flow_type": "template",
   "flow_name": "food_type",
   "status": "released",
-  "data_list_name": "food_type",
   "rows": [
     {
       "name": "type_id",
@@ -386,10 +385,10 @@
           "trigger": "click",
           "action_id": "pop_up",
           "args": [
-            "transcript"
+            "food_transcript"
           ],
-          "_raw": "click | pop_up: transcript",
-          "_cleaned": "click | pop_up: transcript"
+          "_raw": "click | pop_up: food_transcript",
+          "_cleaned": "click | pop_up: food_transcript"
         }
       ],
       "_nested_name": "button_audio"
