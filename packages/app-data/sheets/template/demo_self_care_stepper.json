@@ -31,17 +31,13 @@
       "rows": [
         {
           "name": "nav_template_list",
-          "value": [
-            "w_self_care_relax",
-            "w_self_care_recognise",
-            "w_self_care_reward"
-          ],
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "workshop_stepper.nav_template_list"
+          "value": "w_self_care_relax; \nw_self_care_recognise; \nw_self_care_reward;",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "workshop_stepper"
+      ]
     }
   ],
   "_xlsxPath": "global/demo_templates/demo_navigation.xlsx"

@@ -11,23 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.example_global_constant_title",
-            "matchedExpression": "@global.example_global_constant_title",
-            "type": "global",
-            "fieldName": "example_global_constant_title"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.example_global_constant_title": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -36,23 +20,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Text that includes @global.example_global_constant_text",
-            "matchedExpression": "@global.example_global_constant_text",
-            "type": "global",
-            "fieldName": "example_global_constant_text"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.example_global_constant_text": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "image",
@@ -61,23 +29,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "image_src",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.example_global_constant_image",
-            "matchedExpression": "@global.example_global_constant_image",
-            "type": "global",
-            "fieldName": "example_global_constant_image"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.example_global_constant_image": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -86,8 +38,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_global_field.xlsx"

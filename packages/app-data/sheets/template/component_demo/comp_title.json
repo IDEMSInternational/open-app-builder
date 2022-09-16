@@ -17,24 +17,21 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "title_1"
+      }
     },
     {
       "type": "title",
       "name": "title_par_1_1",
-      "parameter_list": {
-        "help": "null"
-      },
-      "_nested_name": "title_par_1_1"
+      "parameter_list": [
+        "help: null"
+      ]
     },
     {
       "type": "title",
       "name": "title_par_1_2",
-      "parameter_list": {
-        "help": "string"
-      },
-      "_nested_name": "title_par_1_2"
+      "parameter_list": [
+        "help: string"
+      ]
     },
     {
       "type": "title",
@@ -42,24 +39,21 @@
       "value": "Tool tip position",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_2"
+      }
     },
     {
       "type": "title",
       "name": "title_par_2_1",
-      "parameter_list": {
-        "tooltip_position": "right"
-      },
-      "_nested_name": "title_par_2_1"
+      "parameter_list": [
+        "tooltip_position: right"
+      ]
     },
     {
       "type": "title",
       "name": "title_par_2_2",
-      "parameter_list": {
-        "tooltip_position": "left"
-      },
-      "_nested_name": "title_par_2_2"
+      "parameter_list": [
+        "tooltip_position: left"
+      ]
     },
     {
       "type": "title",
@@ -67,32 +61,28 @@
       "value": "Text align",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_3"
+      }
     },
     {
       "type": "title",
       "name": "title_par_3_1",
-      "parameter_list": {
-        "text align": "left"
-      },
-      "_nested_name": "title_par_3_1"
+      "parameter_list": [
+        "text align: left"
+      ]
     },
     {
       "type": "title",
       "name": "title_par_3_2",
-      "parameter_list": {
-        "text align": "center"
-      },
-      "_nested_name": "title_par_3_2"
+      "parameter_list": [
+        "text align: center"
+      ]
     },
     {
       "type": "title",
       "name": "title_par_3_3",
-      "parameter_list": {
-        "text align": "right"
-      },
-      "_nested_name": "title_par_3_3"
+      "parameter_list": [
+        "text align: right"
+      ]
     },
     {
       "type": "title",
@@ -100,72 +90,63 @@
       "value": "Style",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_4"
+      }
     },
     {
       "type": "title",
       "name": "title_par_3_1",
-      "parameter_list": {
-        "style": "tiny"
-      },
-      "_nested_name": "title_par_3_1"
+      "parameter_list": [
+        "style:  tiny"
+      ]
     },
     {
       "type": "title",
       "name": "title_par_3_2",
-      "parameter_list": {
-        "style": "standard"
-      },
-      "_nested_name": "title_par_3_2"
+      "parameter_list": [
+        "style: standard"
+      ]
     },
     {
       "type": "title",
       "name": "title_par_3_3",
-      "parameter_list": {
-        "style": "center"
-      },
-      "_nested_name": "title_par_3_3"
+      "parameter_list": [
+        "style: center"
+      ]
     },
     {
       "type": "title",
       "name": "title_par_3_4",
-      "parameter_list": {
-        "style": "left - (default)"
-      },
-      "_nested_name": "title_par_3_4"
+      "parameter_list": [
+        "style:  left - (default)"
+      ]
     },
     {
       "type": "title",
       "name": "title_par_3_5",
-      "parameter_list": {
-        "style": "right"
-      },
-      "_nested_name": "title_par_3_5"
+      "parameter_list": [
+        "style: right"
+      ]
     },
     {
       "type": "title",
       "name": "title_par_3_6",
-      "parameter_list": {
-        "style": "alternative"
-      },
-      "_nested_name": "title_par_3_6"
+      "parameter_list": [
+        "style: alternative"
+      ]
     },
     {
       "type": "title",
       "name": "title_par_3_7",
-      "parameter_list": {
-        "style": "contextual"
-      },
-      "_nested_name": "title_par_3_7"
+      "parameter_list": [
+        "style: contextual"
+      ]
     },
     {
       "type": "title",
       "name": "title_par_3_8",
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "title_par_3_8"
+      "parameter_list": [
+        "style: emphasised"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/component_sheets/component_title.xlsx"

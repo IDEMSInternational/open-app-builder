@@ -16,12 +16,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_sheet_1a.title"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "debug_sheet_1a"
+      ]
     },
     {
       "type": "template",
@@ -35,12 +32,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_sheet_2a.title"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "debug_sheet_2a"
+      ]
     },
     {
       "type": "template",
@@ -54,12 +48,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_sheet_2b.text"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "debug_sheet_2b"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_nesting.xlsx"

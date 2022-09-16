@@ -25,9 +25,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "m_hp_reminder.in_week_message.text"
+              }
             },
             {
               "name": "button_1",
@@ -46,54 +44,18 @@
                   "_cleaned": "click | go_to:w_money_tools"
                 }
               ],
-              "hidden": "FALSE",
-              "type": "set_variable",
-              "_nested_name": "m_hp_reminder.in_week_message.button_1",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.workshop.w_money.tools",
-                    "matchedExpression": "@data.workshop.w_money.tools",
-                    "type": "data",
-                    "fieldName": "workshop"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@data.workshop.w_money.tools": [
-                  "value"
-                ]
-              }
+              "hidden": "FALSE"
             },
             {
               "name": "habit_data",
               "value": "@data.habit.money",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "m_hp_reminder.in_week_message.habit_data",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.habit.money",
-                    "matchedExpression": "@data.habit.money",
-                    "type": "data",
-                    "fieldName": "habit"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@data.habit.money": [
-                  "value"
-                ]
               }
             }
-          ],
-          "_nested_name": "m_hp_reminder.in_week_message"
+          ]
         }
-      ],
-      "_nested_name": "m_hp_reminder"
+      ]
     }
   ],
   "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_money_messages.xlsx"

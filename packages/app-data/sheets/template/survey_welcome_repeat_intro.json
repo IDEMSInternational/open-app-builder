@@ -37,8 +37,7 @@
           "_cleaned": "completed | set_field: survey_welcome_started: true"
         }
       ],
-      "rows": [],
-      "_nested_name": "survey_intro"
+      "rows": []
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/survey_welcome_repeat.xlsx"

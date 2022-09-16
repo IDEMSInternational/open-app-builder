@@ -15,12 +15,10 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "emphasised center"
-          },
-          "exclude_from_translation": true,
-          "name": "subtitle",
-          "_nested_name": "dashed_box_test.subtitle"
+          "parameter_list": [
+            "style: emphasised center"
+          ],
+          "exclude_from_translation": true
         },
         {
           "type": "display_group",
@@ -33,34 +31,24 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "name": "button",
-              "_nested_name": "dashed_box_test.display_group.button"
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "dashed_box_test.display_group"
+          ]
         }
-      ],
-      "_nested_name": "dashed_box_test"
+      ]
     },
     {
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "name": "set_variable",
-      "_nested_name": "set_variable"
+      "exclude_from_translation": true
     },
     {
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "name": "set_variable",
-      "_nested_name": "set_variable"
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
       "name": "display_group",
-      "parameter_list": {
-        "style": "dashed_box"
-      },
+      "parameter_list": [
+        "style: dashed_box"
+      ],
       "exclude_from_translation": true,
       "rows": [
         {
@@ -69,40 +57,33 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "emphasised center",
-            "text_align": "center"
-          },
-          "exclude_from_translation": true,
-          "name": "subtitle",
-          "_nested_name": "display_group.subtitle"
+          "parameter_list": [
+            "style: emphasised center",
+            "text_align: center"
+          ],
+          "exclude_from_translation": true
         },
         {
           "type": "parent_point_box",
           "name": "points_example_1",
           "value": 3,
-          "parameter_list": {
-            "lottie_src": "plh_lottie/parent_centre.json",
-            "text": "text two"
-          },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.points_example_1"
+          "parameter_list": [
+            "lottie_src:plh_lottie/parent_centre.json",
+            "text:text two"
+          ],
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "display_group"
+      ]
     },
     {
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "name": "set_variable",
-      "_nested_name": "set_variable"
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
       "name": "display_group",
-      "parameter_list": {
-        "style": "dashed_box"
-      },
+      "parameter_list": [
+        "style: dashed_box"
+      ],
       "exclude_from_translation": true,
       "rows": [
         {
@@ -111,26 +92,22 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "emphasised center"
-          },
-          "exclude_from_translation": true,
-          "name": "subtitle",
-          "_nested_name": "display_group.subtitle"
+          "parameter_list": [
+            "style: emphasised center"
+          ],
+          "exclude_from_translation": true
         },
         {
           "type": "parent_point_box",
           "name": "points_example_1",
           "value": 3,
-          "parameter_list": {
-            "lottie_src": "plh_lottie/parent_centre.json",
-            "text": "text two"
-          },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.points_example_1"
+          "parameter_list": [
+            "lottie_src:plh_lottie/parent_centre.json",
+            "text:text two"
+          ],
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "display_group"
+      ]
     },
     {
       "type": "display_group",
@@ -143,27 +120,23 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "emphasised center",
-            "text_align": "center"
-          },
-          "exclude_from_translation": true,
-          "name": "subtitle",
-          "_nested_name": "display_group.subtitle"
+          "parameter_list": [
+            "style: emphasised center",
+            "text_align: center"
+          ],
+          "exclude_from_translation": true
         },
         {
           "type": "parent_point_box",
           "name": "points_example_1",
           "value": 3,
-          "parameter_list": {
-            "lottie_src": "plh_lottie/parent_centre.json",
-            "text": "text two"
-          },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.points_example_1"
+          "parameter_list": [
+            "lottie_src:plh_lottie/parent_centre.json",
+            "text:text two"
+          ],
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "display_group"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_advanced_dashed_box.xlsx"

@@ -22,8 +22,7 @@
           "_cleaned": "click | pop_up:feature_tile"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_pop_up_1"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"

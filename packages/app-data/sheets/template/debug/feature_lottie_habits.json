@@ -18,8 +18,7 @@
           "za_zu": true
         }
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_breathe"
+      "exclude_from_translation": true
     },
     {
       "type": "lottie_animation",
@@ -28,8 +27,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "animation_breathe"
+      "exclude_from_translation": true
     },
     {
       "type": "title",
@@ -45,8 +43,7 @@
           "za_zu": true
         }
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_consequence"
+      "exclude_from_translation": true
     },
     {
       "type": "lottie_animation",
@@ -55,8 +52,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "animation_consequence"
+      "exclude_from_translation": true
     },
     {
       "type": "title",
@@ -72,8 +68,7 @@
           "za_zu": true
         }
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_breathe"
+      "exclude_from_translation": true
     },
     {
       "type": "lottie_animation",
@@ -82,8 +77,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "animation_money"
+      "exclude_from_translation": true
     },
     {
       "type": "title",
@@ -99,8 +93,7 @@
           "za_zu": true
         }
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_praise_teen"
+      "exclude_from_translation": true
     },
     {
       "type": "lottie_animation",
@@ -109,8 +102,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "animation_praise_teen"
+      "exclude_from_translation": true
     },
     {
       "type": "title",
@@ -119,8 +111,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_praise_yourself"
+      "exclude_from_translation": true
     },
     {
       "type": "lottie_animation",
@@ -129,8 +120,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "animation_praise_yourself"
+      "exclude_from_translation": true
     },
     {
       "type": "title",
@@ -146,8 +136,7 @@
           "za_zu": true
         }
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_relax"
+      "exclude_from_translation": true
     },
     {
       "type": "lottie_animation",
@@ -156,8 +145,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "animation_relax"
+      "exclude_from_translation": true
     },
     {
       "type": "title",
@@ -173,8 +161,7 @@
           "za_zu": true
         }
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_safe"
+      "exclude_from_translation": true
     },
     {
       "type": "lottie_animation",
@@ -183,8 +170,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "animation_safe"
+      "exclude_from_translation": true
     },
     {
       "type": "title",
@@ -200,8 +186,7 @@
           "za_zu": true
         }
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_spend_time"
+      "exclude_from_translation": true
     },
     {
       "type": "lottie_animation",
@@ -210,8 +195,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "animation_spend_time"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_lottie_habits.xlsx"

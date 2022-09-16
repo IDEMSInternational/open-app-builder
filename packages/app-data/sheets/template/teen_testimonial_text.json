@@ -8,23 +8,6 @@
       "value": "@fields.workshop_id_temp",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "workshop_id",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields.workshop_id_temp",
-            "matchedExpression": "@fields.workshop_id_temp",
-            "type": "fields",
-            "fieldName": "workshop_id_temp"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.workshop_id_temp": [
-          "value"
-        ]
       }
     },
     {
@@ -32,23 +15,6 @@
       "value": "workshop.@local.workshop_id",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "ww_id",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "workshop.@local.workshop_id",
-            "matchedExpression": "@local.workshop_id",
-            "type": "local",
-            "fieldName": "workshop_id"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_id": [
-          "value"
-        ]
       }
     },
     {
@@ -56,23 +22,6 @@
       "value": "@data.@local.ww_id",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "workshop_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.@local.ww_id",
-            "matchedExpression": "@local.ww_id",
-            "type": "local",
-            "fieldName": "ww_id"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.ww_id": [
-          "value"
-        ]
       }
     },
     {
@@ -81,22 +30,6 @@
       "value": "@local.workshop_data.teen_testimonial_script",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop_data.teen_testimonial_script",
-            "matchedExpression": "@local.workshop_data.teen_testimonial_script",
-            "type": "local",
-            "fieldName": "workshop_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_data.teen_testimonial_script": [
-          "value"
-        ]
       }
     }
   ],

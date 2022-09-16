@@ -35,9 +35,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "workshop_stepper_actions.workshop_id"
+          "exclude_from_translation": true
         },
         {
           "type": "nested_properties",
@@ -45,72 +43,25 @@
           "rows": [
             {
               "name": "nav_template_list",
-              "value": [
-                "w_celebrate_care_together",
-                "w_celebrate_relax",
-                "w_celebrate_reflect_together",
-                "w_celebrate_intro",
-                "w_celebrate_think",
-                "w_celebrate_talk_1",
-                "w_celebrate_tools_activity",
-                "w_celebrate_talk_2",
-                "w_celebrate_ending"
-              ],
-              "condition": "@field.do_this_workshop_together",
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "@field.do_this_workshop_together",
-                    "matchedExpression": "@field.do_this_workshop_together",
-                    "type": "field",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
+              "value": "w_celebrate_care_together;\nw_celebrate_relax;\nw_celebrate_reflect_together;\nw_celebrate_intro;\nw_celebrate_think;\nw_celebrate_talk_1;\nw_celebrate_tools_activity;\nw_celebrate_talk_2;\nw_celebrate_ending",
+              "_translations": {
+                "value": {}
               },
-              "_dynamicDependencies": {
-                "@field.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "@field.do_this_workshop_together",
+              "exclude_from_translation": true
             },
             {
               "name": "nav_template_list",
-              "value": [
-                "w_celebrate_welcome_individual",
-                "w_celebrate_relax",
-                "w_celebrate_intro",
-                "w_celebrate_think",
-                "w_celebrate_survey_activity",
-                "w_celebrate_ending"
-              ],
-              "condition": "!@field.do_this_workshop_together",
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "!@field.do_this_workshop_together",
-                    "matchedExpression": "!@field.do_this_workshop_together",
-                    "type": "field",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
+              "value": "w_celebrate_welcome_individual; \nw_celebrate_relax; \nw_celebrate_intro; \nw_celebrate_think;\nw_celebrate_survey_activity;\nw_celebrate_ending",
+              "_translations": {
+                "value": {}
               },
-              "_dynamicDependencies": {
-                "!@field.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "!@field.do_this_workshop_together",
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "workshop_stepper_actions.workshop_stepper"
+          ]
         }
-      ],
-      "_nested_name": "workshop_stepper_actions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"

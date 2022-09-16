@@ -49,18 +49,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "reflect_individual.workshop_activity.content_box.bottom_text"
+                  }
                 }
-              ],
-              "_nested_name": "reflect_individual.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "reflect_individual.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "reflect_individual"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"

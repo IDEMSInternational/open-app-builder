@@ -34,9 +34,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "workshop_stepper_actions.workshop_id"
+          "exclude_from_translation": true
         },
         {
           "type": "nested_properties",
@@ -44,26 +42,15 @@
           "rows": [
             {
               "name": "nav_template_list",
-              "value": [
-                "w_self_care_welcome_individual",
-                "w_self_care_intro",
-                "w_self_care_relax",
-                "w_self_care_recognise",
-                "w_self_care_reward",
-                "w_self_care_tools_activity",
-                "w_self_care_survey_activity",
-                "w_self_care_home_practice",
-                "w_self_care_ending"
-              ],
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list"
+              "value": "w_self_care_welcome_individual; \nw_self_care_intro; \nw_self_care_relax; \nw_self_care_recognise; \nw_self_care_reward;  \nw_self_care_tools_activity; \nw_self_care_survey_activity;\nw_self_care_home_practice; \nw_self_care_ending",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "workshop_stepper_actions.workshop_stepper"
+          ]
         }
-      ],
-      "_nested_name": "workshop_stepper_actions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"

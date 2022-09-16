@@ -50,9 +50,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "learn_temp.workshop_activity.content_box.text_1"
+                  }
                 },
                 {
                   "name": "button_1",
@@ -71,33 +69,13 @@
                       "_cleaned": "click | pop_up:w_consequence_try_pop"
                     }
                   ],
-                  "hidden": false,
-                  "type": "set_variable",
-                  "_nested_name": "learn_temp.workshop_activity.content_box.button_1",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "@global.ideas_button",
-                        "matchedExpression": "@global.ideas_button",
-                        "type": "global",
-                        "fieldName": "ideas_button"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@global.ideas_button": [
-                      "value"
-                    ]
-                  }
+                  "hidden": false
                 }
-              ],
-              "_nested_name": "learn_temp.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "learn_temp.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "learn_temp"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"

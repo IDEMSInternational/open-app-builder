@@ -16,9 +16,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_pop_ups.text_1"
+          "exclude_from_translation": true
         },
         {
           "name": "text_2",
@@ -26,9 +24,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_pop_ups.text_2"
+          "exclude_from_translation": true
         },
         {
           "name": "button_pop_up_1",
@@ -36,9 +32,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_pop_ups.button_pop_up_1"
+          "exclude_from_translation": true
         },
         {
           "name": "text_3",
@@ -46,9 +40,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_pop_ups.text_3"
+          "exclude_from_translation": true
         },
         {
           "name": "button_pop_up_2",
@@ -63,9 +55,7 @@
               "_cleaned": "click | pop_up:example_text"
             }
           ],
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_pop_ups.button_pop_up_2"
+          "exclude_from_translation": true
         },
         {
           "name": "text_4",
@@ -73,12 +63,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_pop_ups.text_4"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "example_pop_ups"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_nesting.xlsx"

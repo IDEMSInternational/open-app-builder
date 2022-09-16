@@ -8,8 +8,7 @@
       "type": "template",
       "name": "lang_select",
       "value": "example_lang_select",
-      "rows": [],
-      "_nested_name": "lang_select"
+      "rows": []
     },
     {
       "type": "text",
@@ -17,22 +16,6 @@
       "value": "@global.language_global_1",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.language_global_1",
-            "matchedExpression": "@global.language_global_1",
-            "type": "global",
-            "fieldName": "language_global_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.language_global_1": [
-          "value"
-        ]
       }
     },
     {
@@ -43,314 +26,91 @@
         "value": {
           "es_sp": true
         }
-      },
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Text and @global.language_global_1",
-            "matchedExpression": "@global.language_global_1",
-            "type": "global",
-            "fieldName": "language_global_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.language_global_1": [
-          "value"
-        ]
       }
     },
     {
       "name": "answer_list_1",
-      "value": [
-        "name:happy | text:happy",
-        "name:ok | text:ok",
-        "name:sad | text:sad"
-      ],
-      "type": "set_variable",
-      "_nested_name": "answer_list_1"
+      "value": "name:happy | text:happy; \nname:ok | text:ok; \nname:sad | text:sad;",
+      "_translations": {
+        "value": {}
+      }
     },
     {
       "name": "answer_list_2",
-      "value": [
-        "name:happy | text:@global.language_global_1",
-        "name:ok | text:ok",
-        "name:sad | text:sad"
-      ],
-      "type": "set_variable",
-      "_nested_name": "answer_list_2",
-      "_dynamicFields": {
-        "value": {
-          "0": [
-            {
-              "fullExpression": "name:happy | text:@global.language_global_1",
-              "matchedExpression": "@global.language_global_1",
-              "type": "global",
-              "fieldName": "language_global_1"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@global.language_global_1": [
-          "value.0"
-        ]
+      "value": "name:happy | text:@global.language_global_1;\nname:ok | text:ok; \nname:sad | text:sad;",
+      "_translations": {
+        "value": {}
       }
     },
     {
       "name": "answer_list_3",
-      "value": [
-        "name:happy | text: Text and @global.language_global_1",
-        "name:ok | text:ok",
-        "name:sad | text:sad"
-      ],
-      "type": "set_variable",
-      "_nested_name": "answer_list_3",
-      "_dynamicFields": {
-        "value": {
-          "0": [
-            {
-              "fullExpression": "name:happy | text: Text and @global.language_global_1",
-              "matchedExpression": "@global.language_global_1",
-              "type": "global",
-              "fieldName": "language_global_1"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@global.language_global_1": [
-          "value.0"
-        ]
+      "value": "name:happy | text: Text and @global.language_global_1;\nname:ok | text:ok; \nname:sad | text:sad;",
+      "_translations": {
+        "value": {}
       }
     },
     {
       "name": "answer_list_4",
-      "value": [
-        "name:happy | text: @local.text_2",
-        "name:ok | text:ok",
-        "name:sad | text:sad"
-      ],
-      "type": "set_variable",
-      "_nested_name": "answer_list_4",
-      "_dynamicFields": {
-        "value": {
-          "0": [
-            {
-              "fullExpression": "name:happy | text: @local.text_2",
-              "matchedExpression": "@local.text_2",
-              "type": "local",
-              "fieldName": "text_2"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.text_2": [
-          "value.0"
-        ]
+      "value": "name:happy | text: @local.text_2;\nname:ok | text:ok; \nname:sad | text:sad;",
+      "_translations": {
+        "value": {}
       }
     },
     {
       "type": "radio_group",
       "name": "radio_group_1",
-      "parameter_list": {
-        "answer_list": "@local.answer_list_1"
-      },
-      "_nested_name": "radio_group_1",
-      "_dynamicFields": {
-        "parameter_list": {
-          "answer_list": [
-            {
-              "fullExpression": "@local.answer_list_1",
-              "matchedExpression": "@local.answer_list_1",
-              "type": "local",
-              "fieldName": "answer_list_1"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.answer_list_1": [
-          "parameter_list.answer_list"
-        ]
-      }
+      "parameter_list": [
+        "answer_list: @local.answer_list_1"
+      ]
     },
     {
       "type": "radio_group",
       "name": "radio_group_2",
-      "parameter_list": {
-        "answer_list": "@local.answer_list_2"
-      },
-      "_nested_name": "radio_group_2",
-      "_dynamicFields": {
-        "parameter_list": {
-          "answer_list": [
-            {
-              "fullExpression": "@local.answer_list_2",
-              "matchedExpression": "@local.answer_list_2",
-              "type": "local",
-              "fieldName": "answer_list_2"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.answer_list_2": [
-          "parameter_list.answer_list"
-        ]
-      }
+      "parameter_list": [
+        "answer_list: @local.answer_list_2"
+      ]
     },
     {
       "type": "radio_group",
       "name": "radio_group_3",
-      "parameter_list": {
-        "answer_list": "@local.answer_list_3"
-      },
-      "_nested_name": "radio_group_3",
-      "_dynamicFields": {
-        "parameter_list": {
-          "answer_list": [
-            {
-              "fullExpression": "@local.answer_list_3",
-              "matchedExpression": "@local.answer_list_3",
-              "type": "local",
-              "fieldName": "answer_list_3"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.answer_list_3": [
-          "parameter_list.answer_list"
-        ]
-      }
+      "parameter_list": [
+        "answer_list: @local.answer_list_3"
+      ]
     },
     {
       "type": "radio_group",
       "name": "radio_group_4",
-      "parameter_list": {
-        "answer_list": "@local.answer_list_4"
-      },
-      "_nested_name": "radio_group_4",
-      "_dynamicFields": {
-        "parameter_list": {
-          "answer_list": [
-            {
-              "fullExpression": "@local.answer_list_4",
-              "matchedExpression": "@local.answer_list_4",
-              "type": "local",
-              "fieldName": "answer_list_4"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.answer_list_4": [
-          "parameter_list.answer_list"
-        ]
-      }
+      "parameter_list": [
+        "answer_list: @local.answer_list_4"
+      ]
     },
     {
       "type": "combo_box",
       "name": "combo_box_1",
-      "parameter_list": {
-        "answer_list": "@local.answer_list_1"
-      },
-      "_nested_name": "combo_box_1",
-      "_dynamicFields": {
-        "parameter_list": {
-          "answer_list": [
-            {
-              "fullExpression": "@local.answer_list_1",
-              "matchedExpression": "@local.answer_list_1",
-              "type": "local",
-              "fieldName": "answer_list_1"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.answer_list_1": [
-          "parameter_list.answer_list"
-        ]
-      }
+      "parameter_list": [
+        "answer_list: @local.answer_list_1"
+      ]
     },
     {
       "type": "combo_box",
       "name": "combo_box_2",
-      "parameter_list": {
-        "answer_list": "@local.answer_list_2"
-      },
-      "_nested_name": "combo_box_2",
-      "_dynamicFields": {
-        "parameter_list": {
-          "answer_list": [
-            {
-              "fullExpression": "@local.answer_list_2",
-              "matchedExpression": "@local.answer_list_2",
-              "type": "local",
-              "fieldName": "answer_list_2"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.answer_list_2": [
-          "parameter_list.answer_list"
-        ]
-      }
+      "parameter_list": [
+        "answer_list: @local.answer_list_2"
+      ]
     },
     {
       "type": "combo_box",
       "name": "combo_box_3",
-      "parameter_list": {
-        "answer_list": "@local.answer_list_3"
-      },
-      "_nested_name": "combo_box_3",
-      "_dynamicFields": {
-        "parameter_list": {
-          "answer_list": [
-            {
-              "fullExpression": "@local.answer_list_3",
-              "matchedExpression": "@local.answer_list_3",
-              "type": "local",
-              "fieldName": "answer_list_3"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.answer_list_3": [
-          "parameter_list.answer_list"
-        ]
-      }
+      "parameter_list": [
+        "answer_list: @local.answer_list_3"
+      ]
     },
     {
       "type": "combo_box",
       "name": "combo_box_4",
-      "parameter_list": {
-        "answer_list": "@local.answer_list_4"
-      },
-      "_nested_name": "combo_box_4",
-      "_dynamicFields": {
-        "parameter_list": {
-          "answer_list": [
-            {
-              "fullExpression": "@local.answer_list_4",
-              "matchedExpression": "@local.answer_list_4",
-              "type": "local",
-              "fieldName": "answer_list_4"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.answer_list_4": [
-          "parameter_list.answer_list"
-        ]
-      }
+      "parameter_list": [
+        "answer_list: @local.answer_list_4"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_languages.xlsx"

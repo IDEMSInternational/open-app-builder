@@ -8,9 +8,9 @@
       "type": "display_group",
       "name": "example_dp_gr",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "tool_1"
-      },
+      "parameter_list": [
+        "style: tool_1"
+      ],
       "style_list": [
         "margin: 10px 15px",
         "min_height: 40px"
@@ -24,13 +24,12 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "primary"
-          },
+          "parameter_list": [
+            "style: primary"
+          ],
           "style_list": [
             "margin: 10px 10px"
-          ],
-          "_nested_name": "example_dp_gr.title_ex_s"
+          ]
         },
         {
           "type": "text",
@@ -40,21 +39,19 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "text_align": "center"
-          },
-          "_nested_name": "example_dp_gr.text_ex_text"
+          "parameter_list": [
+            "text_align: center"
+          ]
         }
-      ],
-      "_nested_name": "example_dp_gr"
+      ]
     },
     {
       "type": "display_group",
       "name": "dg_example_2",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "tool_2"
-      },
+      "parameter_list": [
+        "style: tool_2"
+      ],
       "style_list": [
         "margin: 10px 15px",
         "min_height: 40px"
@@ -68,13 +65,12 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "primary"
-          },
+          "parameter_list": [
+            "style: primary"
+          ],
           "style_list": [
             "margin: 10px 10px"
-          ],
-          "_nested_name": "dg_example_2.title_ex_s"
+          ]
         },
         {
           "type": "text",
@@ -84,21 +80,19 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "text_align": "right"
-          },
-          "_nested_name": "dg_example_2.text_ex_text"
+          "parameter_list": [
+            "text_align: right"
+          ]
         }
-      ],
-      "_nested_name": "dg_example_2"
+      ]
     },
     {
       "type": "display_group",
       "name": "dg_example_3",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "tool_3"
-      },
+      "parameter_list": [
+        "style: tool_3"
+      ],
       "style_list": [
         "margin: 10px 15px",
         "min_height: 40px"
@@ -112,13 +106,12 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "primary"
-          },
+          "parameter_list": [
+            "style: primary"
+          ],
           "style_list": [
             "margin: 10px 10px"
-          ],
-          "_nested_name": "dg_example_3.title_ex_s"
+          ]
         },
         {
           "type": "text",
@@ -128,21 +121,19 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "text_align": "left"
-          },
-          "_nested_name": "dg_example_3.text_ex_text"
+          "parameter_list": [
+            "text_align: left"
+          ]
         }
-      ],
-      "_nested_name": "dg_example_3"
+      ]
     },
     {
       "type": "display_group",
       "name": "dg_example_4",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "tool_4"
-      },
+      "parameter_list": [
+        "style: tool_4"
+      ],
       "style_list": [
         "margin: 10px 15px",
         "min_height: 40px"
@@ -156,13 +147,12 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "primary"
-          },
+          "parameter_list": [
+            "style: primary"
+          ],
           "style_list": [
             "margin: 10px 10px"
-          ],
-          "_nested_name": "dg_example_4.title_ex_s"
+          ]
         },
         {
           "type": "text",
@@ -172,21 +162,19 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "text_align": "center"
-          },
-          "_nested_name": "dg_example_4.text_ex_text"
+          "parameter_list": [
+            "text_align: center"
+          ]
         }
-      ],
-      "_nested_name": "dg_example_4"
+      ]
     },
     {
       "type": "display_group",
       "name": "dg_example_6",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "tool_5"
-      },
+      "parameter_list": [
+        "style: tool_5"
+      ],
       "style_list": [
         "margin: 10px 15px",
         "min_height: 40px"
@@ -200,13 +188,12 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "alternative"
-          },
+          "parameter_list": [
+            "style: alternative"
+          ],
           "style_list": [
             "margin: 10px 10px"
-          ],
-          "_nested_name": "dg_example_6.title_ex_s"
+          ]
         },
         {
           "type": "text",
@@ -216,22 +203,20 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "text_align": "right"
-          },
-          "_nested_name": "dg_example_6.text_ex_text"
+          "parameter_list": [
+            "text_align: right"
+          ]
         }
-      ],
-      "_nested_name": "dg_example_6"
+      ]
     },
     {
       "type": "display_group",
       "name": "dg_example_7",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "banner_active",
-        "offset": "30"
-      },
+      "parameter_list": [
+        "style: banner_active",
+        "offset: 30"
+      ],
       "style_list": [
         "margin: 10px 15px",
         "min_height: 40px"
@@ -245,13 +230,12 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "primary"
-          },
+          "parameter_list": [
+            "style: primary"
+          ],
           "style_list": [
             "margin: 10px 10px"
-          ],
-          "_nested_name": "dg_example_7.title_ex_s"
+          ]
         },
         {
           "type": "image",
@@ -263,19 +247,17 @@
           "exclude_from_translation": true,
           "style_list": [
             "max-width: 250px"
-          ],
-          "_nested_name": "dg_example_7.image"
+          ]
         }
-      ],
-      "_nested_name": "dg_example_7"
+      ]
     },
     {
       "type": "display_group",
       "name": "dg_example_8",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "white_box"
-      },
+      "parameter_list": [
+        "style: white_box"
+      ],
       "style_list": [
         "margin: 10px 15px",
         "min_height: 40px"
@@ -289,13 +271,12 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "primary"
-          },
+          "parameter_list": [
+            "style: primary"
+          ],
           "style_list": [
             "margin: 10px 10px"
-          ],
-          "_nested_name": "dg_example_8.title_ex_s"
+          ]
         },
         {
           "type": "text",
@@ -305,21 +286,19 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "text_align": "left"
-          },
-          "_nested_name": "dg_example_8.text_ex_text"
+          "parameter_list": [
+            "text_align: left"
+          ]
         }
-      ],
-      "_nested_name": "dg_example_8"
+      ]
     },
     {
       "type": "display_group",
       "name": "dg_example_8",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "white_box"
-      },
+      "parameter_list": [
+        "style: white_box"
+      ],
       "style_list": [
         "margin: 10px 15px",
         "min_height: 40px"
@@ -333,13 +312,12 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "primary"
-          },
+          "parameter_list": [
+            "style: primary"
+          ],
           "style_list": [
             "margin: 10px 10px"
-          ],
-          "_nested_name": "dg_example_8.title_ex_s"
+          ]
         },
         {
           "type": "text",
@@ -349,21 +327,19 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "text_align": "left"
-          },
-          "_nested_name": "dg_example_8.text_ex_text"
+          "parameter_list": [
+            "text_align: left"
+          ]
         }
-      ],
-      "_nested_name": "dg_example_8"
+      ]
     },
     {
       "type": "display_group",
       "name": "dg_example_8",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "navigation"
-      },
+      "parameter_list": [
+        "style: navigation"
+      ],
       "style_list": [
         "margin: 10px 15px",
         "min_height: 40px"
@@ -384,21 +360,19 @@
             }
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "blue"
-          },
-          "_nested_name": "dg_example_8.btn_example"
+          "parameter_list": [
+            "style: blue"
+          ]
         }
-      ],
-      "_nested_name": "dg_example_8"
+      ]
     },
     {
       "type": "display_group",
       "name": "dg_example_8",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "banner_welcome"
-      },
+      "parameter_list": [
+        "style: banner_welcome"
+      ],
       "style_list": [],
       "rows": [
         {
@@ -408,19 +382,17 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "dg_example_8.image"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "dg_example_8"
+      ]
     },
     {
       "type": "display_group",
       "name": "dg_example_7",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "banner_short"
-      },
+      "parameter_list": [
+        "style:banner_short"
+      ],
       "style_list": [],
       "rows": [
         {
@@ -431,10 +403,9 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "small emphasised"
-          },
-          "_nested_name": "dg_example_7.title_ex_s"
+          "parameter_list": [
+            "style:small emphasised"
+          ]
         },
         {
           "type": "image",
@@ -443,19 +414,17 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "dg_example_7.image"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "dg_example_7"
+      ]
     },
     {
       "type": "display_group",
       "name": "dg_example_7",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "banner_short"
-      },
+      "parameter_list": [
+        "style:banner_short"
+      ],
       "rows": [
         {
           "type": "subtitle",
@@ -465,10 +434,9 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "small emphasised"
-          },
-          "_nested_name": "dg_example_7.title_ex_s"
+          "parameter_list": [
+            "style:small emphasised"
+          ]
         },
         {
           "type": "image",
@@ -477,19 +445,17 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "dg_example_7.image"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "dg_example_7"
+      ]
     },
     {
       "type": "display_group",
       "name": "dg_example_7",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "banner_welcome"
-      },
+      "parameter_list": [
+        "style: banner_welcome"
+      ],
       "rows": [
         {
           "type": "image",
@@ -498,20 +464,18 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "dg_example_7.image"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "dg_example_7"
+      ]
     },
     {
       "type": "display_group",
       "name": "dg_example_dashed_box",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "dashed_box",
-        "icon_src": "plh_images/icons/star.svg"
-      },
+      "parameter_list": [
+        "style: dashed_box",
+        "icon_src: plh_images/icons/star.svg"
+      ],
       "rows": [
         {
           "type": "subtitle",
@@ -520,22 +484,19 @@
             "value": {}
           },
           "exclude_from_translation": true,
-          "parameter_list": {
-            "style": "right"
-          },
-          "name": "subtitle",
-          "_nested_name": "dg_example_dashed_box.subtitle"
+          "parameter_list": [
+            "style: right"
+          ]
         },
         {
           "type": "parent_point_box",
           "name": "points_example_1",
           "value": 3,
           "exclude_from_translation": true,
-          "parameter_list": {
-            "lottie_src": "plh_lottie/parent_centre.json",
-            "text": "text two"
-          },
-          "_nested_name": "dg_example_dashed_box.points_example_1"
+          "parameter_list": [
+            "lottie_src:plh_lottie/parent_centre.json",
+            "text:text two"
+          ]
         },
         {
           "type": "button",
@@ -551,11 +512,9 @@
               "za_zu": true
             }
           },
-          "exclude_from_translation": true,
-          "_nested_name": "dg_example_dashed_box.btn_example"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "dg_example_dashed_box"
+      ]
     },
     {
       "type": "title",
@@ -563,40 +522,36 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "name": "title",
-      "_nested_name": "title"
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
       "name": "dg_example_form",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "form",
-        "get_device_info": "true",
-        "button_text": "Send",
-        "button_go_to": "feature_audio"
-      },
+      "parameter_list": [
+        "style: form",
+        "get_device_info: true",
+        "button_text: Send",
+        "button_go_to: feature_audio"
+      ],
       "rows": [
         {
           "type": "text_box",
           "name": "user_name",
           "exclude_from_translation": true,
-          "parameter_list": {
-            "help": "some help text",
-            "placeholder": "Add your name"
-          },
-          "_nested_name": "dg_example_form.user_name"
+          "parameter_list": [
+            "help: some help text",
+            "placeholder: Add your name"
+          ]
         },
         {
           "type": "text_box",
           "name": "user_phone",
           "exclude_from_translation": true,
-          "parameter_list": {
-            "help": "some help text",
-            "placeholder": "Add your phone number"
-          },
-          "_nested_name": "dg_example_form.user_phone"
+          "parameter_list": [
+            "help: some help text",
+            "placeholder: Add your phone number"
+          ]
         },
         {
           "type": "simple_checkbox",
@@ -608,55 +563,25 @@
               "action_id": "set_field",
               "args": [
                 "demo_changed_field_checkbox",
-                "this.value"
+                "@local.checkbox_1"
               ],
               "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
               "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
             }
           ],
           "exclude_from_translation": true,
-          "parameter_list": {
-            "label_text": "Example answer?"
-          },
-          "_nested_name": "dg_example_form.checkbox_1",
-          "_dynamicFields": {
-            "action_list": {
-              "0": {
-                "_raw": [
-                  {
-                    "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                    "matchedExpression": "@local.checkbox_1",
-                    "type": "local",
-                    "fieldName": "checkbox_1"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                    "matchedExpression": "@local.checkbox_1",
-                    "type": "local",
-                    "fieldName": "checkbox_1"
-                  }
-                ]
-              }
-            }
-          },
-          "_dynamicDependencies": {
-            "@local.checkbox_1": [
-              "action_list.0._raw",
-              "action_list.0._cleaned"
-            ]
-          }
+          "parameter_list": [
+            "label_text: Example answer?"
+          ]
         },
         {
           "type": "simple_checkbox",
           "name": "checkbox_2",
           "value": true,
           "exclude_from_translation": true,
-          "parameter_list": {
-            "label_text": "Example answer?"
-          },
-          "_nested_name": "dg_example_form.checkbox_2"
+          "parameter_list": [
+            "label_text: Example answer?"
+          ]
         },
         {
           "type": "title",
@@ -664,21 +589,17 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "name": "title",
-          "_nested_name": "dg_example_form.title"
+          "exclude_from_translation": true
         },
         {
           "type": "text_area",
           "name": "text_area",
           "exclude_from_translation": true,
-          "parameter_list": {
-            "placeholder": "example placeholder"
-          },
-          "_nested_name": "dg_example_form.text_area"
+          "parameter_list": [
+            "placeholder: example placeholder"
+          ]
         }
-      ],
-      "_nested_name": "dg_example_form"
+      ]
     },
     {
       "type": "title",
@@ -686,40 +607,36 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "name": "title",
-      "_nested_name": "title"
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
       "name": "dg_example_form",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "form",
-        "get_device_info": "true",
-        "button_text": "Send",
-        "button_pop_up": "feature_audio"
-      },
+      "parameter_list": [
+        "style: form",
+        "get_device_info: true",
+        "button_text: Send",
+        "button_pop_up: feature_audio"
+      ],
       "rows": [
         {
           "type": "text_box",
           "name": "user_name",
           "exclude_from_translation": true,
-          "parameter_list": {
-            "help": "some help text",
-            "placeholder": "Add your name"
-          },
-          "_nested_name": "dg_example_form.user_name"
+          "parameter_list": [
+            "help: some help text",
+            "placeholder: Add your name"
+          ]
         },
         {
           "type": "text_box",
           "name": "user_phone",
           "exclude_from_translation": true,
-          "parameter_list": {
-            "help": "some help text",
-            "placeholder": "Add your phone number"
-          },
-          "_nested_name": "dg_example_form.user_phone"
+          "parameter_list": [
+            "help: some help text",
+            "placeholder: Add your phone number"
+          ]
         },
         {
           "type": "simple_checkbox",
@@ -731,55 +648,25 @@
               "action_id": "set_field",
               "args": [
                 "demo_changed_field_checkbox",
-                "this.value"
+                "@local.checkbox_1"
               ],
               "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
               "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
             }
           ],
           "exclude_from_translation": true,
-          "parameter_list": {
-            "label_text": "Example answer?"
-          },
-          "_nested_name": "dg_example_form.checkbox_1",
-          "_dynamicFields": {
-            "action_list": {
-              "0": {
-                "_raw": [
-                  {
-                    "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                    "matchedExpression": "@local.checkbox_1",
-                    "type": "local",
-                    "fieldName": "checkbox_1"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                    "matchedExpression": "@local.checkbox_1",
-                    "type": "local",
-                    "fieldName": "checkbox_1"
-                  }
-                ]
-              }
-            }
-          },
-          "_dynamicDependencies": {
-            "@local.checkbox_1": [
-              "action_list.0._raw",
-              "action_list.0._cleaned"
-            ]
-          }
+          "parameter_list": [
+            "label_text: Example answer?"
+          ]
         },
         {
           "type": "simple_checkbox",
           "name": "checkbox_2",
           "value": true,
           "exclude_from_translation": true,
-          "parameter_list": {
-            "label_text": "Example answer?"
-          },
-          "_nested_name": "dg_example_form.checkbox_2"
+          "parameter_list": [
+            "label_text: Example answer?"
+          ]
         },
         {
           "type": "title",
@@ -787,21 +674,17 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "name": "title",
-          "_nested_name": "dg_example_form.title"
+          "exclude_from_translation": true
         },
         {
           "type": "text_area",
           "name": "text_area",
           "exclude_from_translation": true,
-          "parameter_list": {
-            "placeholder": "example placeholder"
-          },
-          "_nested_name": "dg_example_form.text_area"
+          "parameter_list": [
+            "placeholder: example placeholder"
+          ]
         }
-      ],
-      "_nested_name": "dg_example_form"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"

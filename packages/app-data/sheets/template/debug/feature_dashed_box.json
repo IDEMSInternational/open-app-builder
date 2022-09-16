@@ -12,12 +12,11 @@
         "value": {}
       },
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "alert",
-        "icon_src": "plh_images/icons/star.svg",
-        "icon_position": "top-right"
-      },
-      "_nested_name": "dashed_box_passive"
+      "parameter_list": [
+        "style: alert",
+        "icon_src: plh_images/icons/star.svg",
+        "icon_position: top-right"
+      ]
     },
     {
       "type": "dashed_box",
@@ -27,12 +26,11 @@
         "value": {}
       },
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "default",
-        "icon_src": "plh_images/icons/star.svg",
-        "icon_position": "top-left"
-      },
-      "_nested_name": "dashed_box_active"
+      "parameter_list": [
+        "style: default",
+        "icon_src: plh_images/icons/star.svg",
+        "icon_position: top-left"
+      ]
     },
     {
       "type": "dashed_box",
@@ -42,12 +40,11 @@
         "value": {}
       },
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "alert",
-        "icon_src": "plh_images/icons/star.svg",
-        "icon_position": "bottom-left"
-      },
-      "_nested_name": "dashed_box_passive"
+      "parameter_list": [
+        "style: alert",
+        "icon_src: plh_images/icons/star.svg",
+        "icon_position: bottom-left"
+      ]
     },
     {
       "type": "dashed_box",
@@ -57,12 +54,11 @@
         "value": {}
       },
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "default",
-        "icon_src": "plh_images/icons/star.svg",
-        "icon_position": "bottom-right"
-      },
-      "_nested_name": "dashed_box_active"
+      "parameter_list": [
+        "style: default",
+        "icon_src: plh_images/icons/star.svg",
+        "icon_position: bottom-right"
+      ]
     },
     {
       "type": "dashed_box",
@@ -72,12 +68,11 @@
         "value": {}
       },
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "alert",
-        "icon_src": "plh_images/icons/star.svg",
-        "icon_position": "bottom-right"
-      },
-      "_nested_name": "dashed_box_active"
+      "parameter_list": [
+        "style: alert",
+        "icon_src: plh_images/icons/star.svg",
+        "icon_position: bottom-right"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"

@@ -33,23 +33,6 @@
           "value": "@data.workshop.w_self_care",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_self_care",
-                "matchedExpression": "@data.workshop.w_self_care",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_self_care": [
-              "value"
-            ]
           }
         },
         {
@@ -76,9 +59,7 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1"
+                      }
                     },
                     {
                       "name": "button_1",
@@ -104,9 +85,7 @@
                           "_cleaned": "click | go_to:w_self_care_relax"
                         }
                       ],
-                      "hidden": false,
-                      "type": "set_variable",
-                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_1"
+                      "hidden": false
                     },
                     {
                       "name": "button_2",
@@ -132,9 +111,7 @@
                           "_cleaned": "click | go_to:w_self_care_recognise"
                         }
                       ],
-                      "hidden": false,
-                      "type": "set_variable",
-                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_2"
+                      "hidden": false
                     },
                     {
                       "name": "button_3",
@@ -160,9 +137,7 @@
                           "_cleaned": "click | go_to:w_self_care_reward"
                         }
                       ],
-                      "hidden": false,
-                      "type": "set_variable",
-                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_3"
+                      "hidden": false
                     },
                     {
                       "name": "habit_text",
@@ -177,36 +152,15 @@
                           "za_zu": true
                         }
                       },
-                      "hidden": false,
-                      "type": "set_variable",
-                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.habit_text",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "Every time you relax, recognise something you've done well or reward yourself, tap the @global.parent_points to celebrate your success!",
-                            "matchedExpression": "@global.parent_points",
-                            "type": "global",
-                            "fieldName": "parent_points"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@global.parent_points": [
-                          "value"
-                        ]
-                      }
+                      "hidden": false
                     }
-                  ],
-                  "_nested_name": "home_practice.workshop_activity.content_box.box_1"
+                  ]
                 }
-              ],
-              "_nested_name": "home_practice.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "home_practice.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "home_practice"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"

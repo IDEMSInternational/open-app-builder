@@ -10,23 +10,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.in_week_messages",
-            "matchedExpression": "@global.in_week_messages",
-            "type": "global",
-            "fieldName": "in_week_messages"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.in_week_messages": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -46,25 +30,9 @@
           "_cleaned": "click | go_to:w_self_care_messages"
         }
       ],
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_1_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_self_care.title",
-            "matchedExpression": "@data.workshop.w_self_care.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_self_care.title": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -84,25 +52,9 @@
           "_cleaned": "click | go_to:w_1on1_messages"
         }
       ],
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_2_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_1on1.title",
-            "matchedExpression": "@data.workshop.w_1on1.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_1on1.title": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -122,25 +74,9 @@
           "_cleaned": "click | go_to:w_praise_messages"
         }
       ],
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_3_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_praise.title",
-            "matchedExpression": "@data.workshop.w_praise.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_praise.title": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -160,25 +96,9 @@
           "_cleaned": "click | go_to:w_instruct_messages"
         }
       ],
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_4_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_instruct.title",
-            "matchedExpression": "@data.workshop.w_instruct.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_instruct.title": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -198,25 +118,9 @@
           "_cleaned": "click | go_to:w_stress_messages"
         }
       ],
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_5_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_stress.title",
-            "matchedExpression": "@data.workshop.w_stress.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_stress.title": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -236,25 +140,9 @@
           "_cleaned": "click | go_to:w_money_messages"
         }
       ],
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_6_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_money.title",
-            "matchedExpression": "@data.workshop.w_money.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_money.title": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -274,25 +162,9 @@
           "_cleaned": "click | go_to:w_rules_messages"
         }
       ],
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_7_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_rules.title",
-            "matchedExpression": "@data.workshop.w_rules.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_rules.title": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -312,25 +184,9 @@
           "_cleaned": "click | go_to:w_consequence_messages"
         }
       ],
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_8_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_consequence.title",
-            "matchedExpression": "@data.workshop.w_consequence.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_consequence.title": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -350,25 +206,9 @@
           "_cleaned": "click | go_to:w_solve_messages"
         }
       ],
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_9_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_solve.title",
-            "matchedExpression": "@data.workshop.w_solve.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_solve.title": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -388,25 +228,9 @@
           "_cleaned": "click | go_to:w_safe_messages"
         }
       ],
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_10_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_safe.title",
-            "matchedExpression": "@data.workshop.w_safe.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_safe.title": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -426,25 +250,9 @@
           "_cleaned": "click | go_to:w_crisis_messages"
         }
       ],
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_11_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_crisis.title",
-            "matchedExpression": "@data.workshop.w_crisis.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_crisis.title": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     }
   ],
   "_xlsxPath": "global/in_week_messages/message_navigation.xlsx"

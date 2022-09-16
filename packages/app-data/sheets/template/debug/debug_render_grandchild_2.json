@@ -11,8 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -21,23 +20,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "(grandchild) Value of test_render_updates_field: @fields.test_render_updates_field",
-            "matchedExpression": "@fields.test_render_updates_field",
-            "type": "fields",
-            "fieldName": "test_render_updates_field"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.test_render_updates_field": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -47,23 +30,7 @@
         "value": {}
       },
       "hidden": "@fields.test_render_updates_field!=\"no\"",
-      "exclude_from_translation": true,
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@fields.test_render_updates_field!=\"no\"",
-            "matchedExpression": "@fields.test_render_updates_field",
-            "type": "fields",
-            "fieldName": "test_render_updates_field"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.test_render_updates_field": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -73,23 +40,7 @@
         "value": {}
       },
       "hidden": "@fields.test_render_updates_field!=\"yes\"",
-      "exclude_from_translation": true,
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@fields.test_render_updates_field!=\"yes\"",
-            "matchedExpression": "@fields.test_render_updates_field",
-            "type": "fields",
-            "fieldName": "test_render_updates_field"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.test_render_updates_field": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -98,8 +49,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_3"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -108,8 +58,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_4"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -118,8 +67,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_5"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_render_grandchild_2.xlsx"

@@ -28,8 +28,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "box_tools.tools_title"
+          "exclude_from_translation": true
         },
         {
           "type": "nested_properties",
@@ -42,9 +41,7 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "box_tools.tool_1.title"
+              "exclude_from_translation": true
             },
             {
               "name": "text_1",
@@ -52,9 +49,7 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "box_tools.tool_1.text_1"
+              "exclude_from_translation": true
             },
             {
               "name": "button",
@@ -63,12 +58,9 @@
                 "value": {}
               },
               "hidden": false,
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "box_tools.tool_1.button"
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "box_tools.tool_1"
+          ]
         },
         {
           "type": "nested_properties",
@@ -81,9 +73,7 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "box_tools.tool_2.title"
+              "exclude_from_translation": true
             },
             {
               "name": "subtitle_1",
@@ -92,9 +82,7 @@
                 "value": {}
               },
               "hidden": false,
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "box_tools.tool_2.subtitle_1"
+              "exclude_from_translation": true
             },
             {
               "name": "text_1",
@@ -102,9 +90,7 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "box_tools.tool_2.text_1"
+              "exclude_from_translation": true
             },
             {
               "name": "subtitle_2",
@@ -113,9 +99,7 @@
                 "value": {}
               },
               "hidden": false,
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "box_tools.tool_2.subtitle_2"
+              "exclude_from_translation": true
             },
             {
               "name": "text_2",
@@ -124,12 +108,9 @@
                 "value": {}
               },
               "hidden": false,
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "box_tools.tool_2.text_2"
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "box_tools.tool_2"
+          ]
         },
         {
           "type": "nested_properties",
@@ -142,9 +123,7 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "box_tools.tool_3.title"
+              "exclude_from_translation": true
             },
             {
               "name": "text_1",
@@ -152,9 +131,7 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "box_tools.tool_3.text_1"
+              "exclude_from_translation": true
             },
             {
               "name": "image",
@@ -163,15 +140,11 @@
                 "value": {}
               },
               "hidden": false,
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "box_tools.tool_3.image"
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "box_tools.tool_3"
+          ]
         }
-      ],
-      "_nested_name": "box_tools"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_workshop.xlsx"

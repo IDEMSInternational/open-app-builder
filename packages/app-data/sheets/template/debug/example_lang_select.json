@@ -10,19 +10,15 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "name": "title",
-      "_nested_name": "title"
+      "exclude_from_translation": true
     },
     {
       "name": "language_list",
-      "value": [
-        "name: za_en | text: English",
-        "name: es_sp | text: Español"
-      ],
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "language_list"
+      "value": "name: za_en | text: English; name: es_sp | text: Español;",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
     },
     {
       "type": "radio_group",
@@ -37,7 +33,7 @@
           "action_id": "emit",
           "args": [
             "set_language",
-            "this.value"
+            "@local.language_select"
           ],
           "_raw": "changed | emit: set_language:@local.language_select",
           "_cleaned": "changed | emit: set_language:@local.language_select"
@@ -53,62 +49,9 @@
         }
       ],
       "exclude_from_translation": true,
-      "parameter_list": {
-        "answer_list": "@local.language_list"
-      },
-      "_nested_name": "language_select",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields._app_language",
-            "matchedExpression": "@fields._app_language",
-            "type": "fields",
-            "fieldName": "_app_language"
-          }
-        ],
-        "action_list": {
-          "0": {
-            "_raw": [
-              {
-                "fullExpression": "changed | emit: set_language:@local.language_select",
-                "matchedExpression": "@local.language_select",
-                "type": "local",
-                "fieldName": "language_select"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "changed | emit: set_language:@local.language_select",
-                "matchedExpression": "@local.language_select",
-                "type": "local",
-                "fieldName": "language_select"
-              }
-            ]
-          }
-        },
-        "parameter_list": {
-          "answer_list": [
-            {
-              "fullExpression": "@local.language_list",
-              "matchedExpression": "@local.language_list",
-              "type": "local",
-              "fieldName": "language_list"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@fields._app_language": [
-          "value"
-        ],
-        "@local.language_select": [
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ],
-        "@local.language_list": [
-          "parameter_list.answer_list"
-        ]
-      }
+      "parameter_list": [
+        "answer_list: @local.language_list"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_languages.xlsx"

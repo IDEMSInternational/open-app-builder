@@ -9,9 +9,9 @@
       "name": "dg_example_dashed_box",
       "value": "dg_example_dashed_box",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "style": "dashed_box"
-      },
+      "parameter_list": [
+        "style: dashed_box"
+      ],
       "rows": [
         {
           "type": "subtitle",
@@ -19,20 +19,17 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "name": "subtitle",
-          "_nested_name": "dg_example_dashed_box.subtitle"
+          "exclude_from_translation": true
         },
         {
           "type": "parent_point_box",
           "name": "points_example_1",
           "value": 3,
           "exclude_from_translation": true,
-          "parameter_list": {
-            "lottie_src": "plh_lottie/parent_centre.json",
-            "text": "text two"
-          },
-          "_nested_name": "dg_example_dashed_box.points_example_1"
+          "parameter_list": [
+            "lottie_src:plh_lottie/parent_centre.json",
+            "text:text two"
+          ]
         },
         {
           "type": "button",
@@ -48,11 +45,9 @@
               "za_zu": true
             }
           },
-          "exclude_from_translation": true,
-          "_nested_name": "dg_example_dashed_box.btn_example"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "dg_example_dashed_box"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_dg_styles.xlsx"

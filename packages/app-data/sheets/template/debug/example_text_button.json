@@ -11,8 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -32,8 +31,7 @@
           "_cleaned": "click | emit: completed"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_condition.xlsx"

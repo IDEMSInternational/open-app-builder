@@ -13,8 +13,7 @@
       },
       "style_list": [
         "overflow-wrap: anywhere"
-      ],
-      "_nested_name": "text"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/debug_text.xlsx"

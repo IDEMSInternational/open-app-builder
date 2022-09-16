@@ -16,9 +16,7 @@
             "value": {
               "es_sp": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "example_lang_template_1.text_1"
+          }
         },
         {
           "name": "reply_happy",
@@ -27,9 +25,7 @@
             "value": {
               "es_sp": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "example_lang_template_1.reply_happy"
+          }
         },
         {
           "name": "reply_ok",
@@ -38,9 +34,7 @@
             "value": {
               "es_sp": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "example_lang_template_1.reply_ok"
+          }
         },
         {
           "name": "reply_sad",
@@ -49,9 +43,7 @@
             "value": {
               "es_sp": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "example_lang_template_1.reply_sad"
+          }
         },
         {
           "name": "subtitle_2",
@@ -60,28 +52,20 @@
             "value": {
               "es_sp": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "example_lang_template_1.subtitle_2"
+          }
         },
         {
           "name": "answer_list_2",
-          "value": [
-            "name: option_1 | text:Cats (modified text in answer list)",
-            "name: option_2 | text:Dogs (modified text in answer list)",
-            "name: option_3 | text:Chinchillas (modified text in answer list)"
-          ],
-          "type": "set_variable",
-          "_nested_name": "example_lang_template_1.answer_list_2"
+          "value": "name: option_1 | text:Cats (modified text in answer list);\nname: option_2 | text:Dogs (modified text in answer list);\nname: option_3 | text:Chinchillas (modified text in answer list);",
+          "_translations": {
+            "value": {}
+          }
         },
         {
           "name": "input_allowed",
-          "value": false,
-          "type": "set_variable",
-          "_nested_name": "example_lang_template_1.input_allowed"
+          "value": false
         }
-      ],
-      "_nested_name": "example_lang_template_1"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_languages.xlsx"

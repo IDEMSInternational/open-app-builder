@@ -38,9 +38,7 @@
               "value": "plh_images/workshop_modes/guide_2/final/star.svg",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "reflect_individual.workshop_activity.activity_image"
+              }
             },
             {
               "type": "nested_properties",
@@ -58,18 +56,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "reflect_individual.workshop_activity.content_box.bottom_text"
+                  }
                 }
-              ],
-              "_nested_name": "reflect_individual.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "reflect_individual.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "reflect_individual"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"

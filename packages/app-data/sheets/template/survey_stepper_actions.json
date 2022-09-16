@@ -5,9 +5,7 @@
   "rows": [
     {
       "name": "survey_name",
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "survey_name"
+      "exclude_from_translation": true
     },
     {
       "name": "completed",
@@ -15,41 +13,13 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "completed"
+      "exclude_from_translation": true
     },
     {
       "name": "survey_completed",
       "value": "@local.survey_name@local.completed",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "survey_completed",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.survey_name@local.completed",
-            "matchedExpression": "@local.survey_name",
-            "type": "local",
-            "fieldName": "survey_name"
-          },
-          {
-            "fullExpression": "@local.survey_name@local.completed",
-            "matchedExpression": "@local.completed",
-            "type": "local",
-            "fieldName": "completed"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.survey_name": [
-          "value"
-        ],
-        "@local.completed": [
-          "value"
-        ]
       }
     },
     {
@@ -101,66 +71,9 @@
           "value": "@local.survey_name",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "survey_stepper.survey_name",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.survey_name",
-                "matchedExpression": "@local.survey_name",
-                "type": "local",
-                "fieldName": "survey_name"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.survey_name": [
-              "value"
-            ]
           }
         }
-      ],
-      "_nested_name": "survey_stepper",
-      "_dynamicFields": {
-        "action_list": {
-          "2": {
-            "args": {
-              "0": [
-                {
-                  "fullExpression": "@local.survey_completed",
-                  "matchedExpression": "@local.survey_completed",
-                  "type": "local",
-                  "fieldName": "survey_completed"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "completed | set_field : @local.survey_completed : true",
-                "matchedExpression": "@local.survey_completed",
-                "type": "local",
-                "fieldName": "survey_completed"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "completed | set_field : @local.survey_completed : true",
-                "matchedExpression": "@local.survey_completed",
-                "type": "local",
-                "fieldName": "survey_completed"
-              }
-            ]
-          }
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.survey_completed": [
-          "action_list.2.args.0",
-          "action_list.2._raw",
-          "action_list.2._cleaned"
-        ]
-      }
+      ]
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_surveys.xlsx"

@@ -5,16 +5,14 @@
   "rows": [
     {
       "type": "text",
-      "name": "text",
-      "_nested_name": "text"
+      "name": "text"
     },
     {
       "type": "text",
       "name": "question_text",
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "question_text"
+      "parameter_list": [
+        "style: emphasised"
+      ]
     },
     {
       "type": "display_group",
@@ -28,11 +26,9 @@
               "type": "nested_properties",
               "name": "nav_buttons",
               "hidden": true,
-              "rows": [],
-              "_nested_name": "display_group.number_selector_1.nav_buttons"
+              "rows": []
             }
-          ],
-          "_nested_name": "display_group.number_selector_1"
+          ]
         },
         {
           "type": "template",
@@ -43,15 +39,11 @@
               "type": "nested_properties",
               "name": "nav_buttons",
               "hidden": true,
-              "rows": [],
-              "_nested_name": "display_group.number_selector_2.nav_buttons"
+              "rows": []
             }
-          ],
-          "_nested_name": "display_group.number_selector_2"
+          ]
         }
-      ],
-      "name": "display_group",
-      "_nested_name": "display_group"
+      ]
     },
     {
       "type": "display_group",
@@ -65,11 +57,9 @@
               "type": "nested_properties",
               "name": "nav_buttons",
               "hidden": true,
-              "rows": [],
-              "_nested_name": "display_group.number_selector_3.nav_buttons"
+              "rows": []
             }
-          ],
-          "_nested_name": "display_group.number_selector_3"
+          ]
         },
         {
           "type": "template",
@@ -80,15 +70,11 @@
               "type": "nested_properties",
               "name": "nav_buttons",
               "hidden": true,
-              "rows": [],
-              "_nested_name": "display_group.number_selector_4.nav_buttons"
+              "rows": []
             }
-          ],
-          "_nested_name": "display_group.number_selector_4"
+          ]
         }
-      ],
-      "name": "display_group",
-      "_nested_name": "display_group"
+      ]
     },
     {
       "type": "template",
@@ -114,8 +100,7 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "rows": [],
-      "_nested_name": "nav_buttons"
+      "rows": []
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_survey_boxes.xlsx"

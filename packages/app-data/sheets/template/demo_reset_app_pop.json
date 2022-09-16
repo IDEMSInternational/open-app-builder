@@ -10,23 +10,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Reset @global.parent_app",
-            "matchedExpression": "@global.parent_app",
-            "type": "global",
-            "fieldName": "parent_app"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.parent_app": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -35,8 +19,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -54,23 +37,7 @@
           "_cleaned": "click | reset_app"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Reset @global.parent_app",
-            "matchedExpression": "@global.parent_app",
-            "type": "global",
-            "fieldName": "parent_app"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.parent_app": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "global/demo_templates/demo_navigation.xlsx"

@@ -41,18 +41,13 @@
                   "value": "survey_welcome",
                   "_translations": {
                     "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "survey_welcome_cs.survey_question_cs.box_slider.survey_name"
+                  }
                 }
-              ],
-              "_nested_name": "survey_welcome_cs.survey_question_cs.box_slider"
+              ]
             }
-          ],
-          "_nested_name": "survey_welcome_cs.survey_question_cs"
+          ]
         }
-      ],
-      "_nested_name": "survey_welcome_cs"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/survey_welcome_repeat.xlsx"

@@ -34,23 +34,6 @@
           "value": "@data.workshop.w_money",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_money",
-                "matchedExpression": "@data.workshop.w_money",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_money": [
-              "value"
-            ]
           }
         },
         {
@@ -78,42 +61,7 @@
                           "za_zu": true
                         }
                       },
-                      "condition": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"alone\" || !@fields.w_money_path )",
-                      "type": "set_variable",
-                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1",
-                      "_dynamicFields": {
-                        "condition": [
-                          {
-                            "fullExpression": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"alone\" || !@fields.w_money_path )",
-                            "matchedExpression": "!@fields.do_this_workshop_together",
-                            "type": "fields",
-                            "fieldName": "do_this_workshop_together"
-                          },
-                          {
-                            "fullExpression": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"alone\" || !@fields.w_money_path )",
-                            "matchedExpression": "@fields.w_money_path",
-                            "type": "fields",
-                            "fieldName": "w_money_path"
-                          },
-                          {
-                            "fullExpression": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"alone\" || !@fields.w_money_path )",
-                            "matchedExpression": "!@fields.w_money_path",
-                            "type": "fields",
-                            "fieldName": "w_money_path"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "!@fields.do_this_workshop_together": [
-                          "condition"
-                        ],
-                        "@fields.w_money_path": [
-                          "condition"
-                        ],
-                        "!@fields.w_money_path": [
-                          "condition"
-                        ]
-                      }
+                      "condition": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"alone\" || !@fields.w_money_path )"
                     },
                     {
                       "name": "text_1",
@@ -128,24 +76,7 @@
                           "za_zu": true
                         }
                       },
-                      "condition": "@fields.do_this_workshop_together",
-                      "type": "set_variable",
-                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1",
-                      "_dynamicFields": {
-                        "condition": [
-                          {
-                            "fullExpression": "@fields.do_this_workshop_together",
-                            "matchedExpression": "@fields.do_this_workshop_together",
-                            "type": "fields",
-                            "fieldName": "do_this_workshop_together"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@fields.do_this_workshop_together": [
-                          "condition"
-                        ]
-                      }
+                      "condition": "@fields.do_this_workshop_together"
                     },
                     {
                       "name": "text_1",
@@ -160,33 +91,7 @@
                           "za_zu": true
                         }
                       },
-                      "condition": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"family\" )",
-                      "type": "set_variable",
-                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1",
-                      "_dynamicFields": {
-                        "condition": [
-                          {
-                            "fullExpression": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"family\" )",
-                            "matchedExpression": "!@fields.do_this_workshop_together",
-                            "type": "fields",
-                            "fieldName": "do_this_workshop_together"
-                          },
-                          {
-                            "fullExpression": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"family\" )",
-                            "matchedExpression": "@fields.w_money_path",
-                            "type": "fields",
-                            "fieldName": "w_money_path"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "!@fields.do_this_workshop_together": [
-                          "condition"
-                        ],
-                        "@fields.w_money_path": [
-                          "condition"
-                        ]
-                      }
+                      "condition": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"family\" )"
                     },
                     {
                       "name": "button_1",
@@ -211,9 +116,7 @@
                           "_raw": "click | go_to:lib_act_w_money",
                           "_cleaned": "click | go_to:lib_act_w_money"
                         }
-                      ],
-                      "type": "set_variable",
-                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.button_1"
+                      ]
                     },
                     {
                       "name": "habit_text",
@@ -221,36 +124,15 @@
                       "_translations": {
                         "value": {}
                       },
-                      "hidden": false,
-                      "type": "set_variable",
-                      "_nested_name": "home_practice.workshop_activity.content_box.box_1.habit_text",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@data.habit.money.mark_text",
-                            "matchedExpression": "@data.habit.money.mark_text",
-                            "type": "data",
-                            "fieldName": "habit"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@data.habit.money.mark_text": [
-                          "value"
-                        ]
-                      }
+                      "hidden": false
                     }
-                  ],
-                  "_nested_name": "home_practice.workshop_activity.content_box.box_1"
+                  ]
                 }
-              ],
-              "_nested_name": "home_practice.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "home_practice.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "home_practice"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"

@@ -9,14 +9,11 @@
       "value": "Hello",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "local_var_1"
+      }
     },
     {
       "type": "set_field",
-      "name": "debug_field_1",
-      "_nested_name": "debug_field_1"
+      "name": "debug_field_1"
     },
     {
       "type": "set_field",
@@ -24,22 +21,6 @@
       "value": "@local.local_var_1",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "debug_field_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.local_var_1",
-            "matchedExpression": "@local.local_var_1",
-            "type": "local",
-            "fieldName": "local_var_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.local_var_1": [
-          "value"
-        ]
       }
     },
     {
@@ -61,8 +42,7 @@
           "_cleaned": "click | set_field : debug_field_3 :"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_1"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -83,47 +63,7 @@
           "_cleaned": "click | set_field : debug_field_4 : @local.local_var_1"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_2",
-      "_dynamicFields": {
-        "action_list": {
-          "0": {
-            "args": {
-              "1": [
-                {
-                  "fullExpression": "@local.local_var_1",
-                  "matchedExpression": "@local.local_var_1",
-                  "type": "local",
-                  "fieldName": "local_var_1"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "click | set_field : debug_field_4 : @local.local_var_1",
-                "matchedExpression": "@local.local_var_1",
-                "type": "local",
-                "fieldName": "local_var_1"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "click | set_field : debug_field_4 : @local.local_var_1",
-                "matchedExpression": "@local.local_var_1",
-                "type": "local",
-                "fieldName": "local_var_1"
-              }
-            ]
-          }
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.local_var_1": [
-          "action_list.0.args.1",
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -144,47 +84,7 @@
           "_cleaned": "click | set_field : debug_field_5 : @local.local_var_2"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_3",
-      "_dynamicFields": {
-        "action_list": {
-          "0": {
-            "args": {
-              "1": [
-                {
-                  "fullExpression": "@local.local_var_2",
-                  "matchedExpression": "@local.local_var_2",
-                  "type": "local",
-                  "fieldName": "local_var_2"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "click | set_field : debug_field_5 : @local.local_var_2",
-                "matchedExpression": "@local.local_var_2",
-                "type": "local",
-                "fieldName": "local_var_2"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "click | set_field : debug_field_5 : @local.local_var_2",
-                "matchedExpression": "@local.local_var_2",
-                "type": "local",
-                "fieldName": "local_var_2"
-              }
-            ]
-          }
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.local_var_2": [
-          "action_list.0.args.1",
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -193,23 +93,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Value of local variable: @local.local_var_1",
-            "matchedExpression": "@local.local_var_1",
-            "type": "local",
-            "fieldName": "local_var_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.local_var_1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -218,23 +102,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Value of debug_field_1: @fields.debug_field_1",
-            "matchedExpression": "@fields.debug_field_1",
-            "type": "fields",
-            "fieldName": "debug_field_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -244,32 +112,7 @@
         "value": {}
       },
       "hidden": "!@calc(if(@fields.debug_field_1))",
-      "exclude_from_translation": true,
-      "_nested_name": "text_3",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "!@calc(if(@fields.debug_field_1))",
-            "matchedExpression": "@fields.debug_field_1",
-            "type": "fields",
-            "fieldName": "debug_field_1"
-          },
-          {
-            "fullExpression": "!@calc(if(@fields.debug_field_1))",
-            "matchedExpression": "!@calc(if(@fields.debug_field_1))",
-            "type": "calc",
-            "fieldName": "if(@fields.debug_field_1)"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_1": [
-          "hidden"
-        ],
-        "!@calc(if(@fields.debug_field_1))": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -279,32 +122,7 @@
         "value": {}
       },
       "hidden": "@calc(if(@fields.debug_field_1))",
-      "exclude_from_translation": true,
-      "_nested_name": "text_4",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@calc(if(@fields.debug_field_1))",
-            "matchedExpression": "@fields.debug_field_1",
-            "type": "fields",
-            "fieldName": "debug_field_1"
-          },
-          {
-            "fullExpression": "@calc(if(@fields.debug_field_1))",
-            "matchedExpression": "@calc(if(@fields.debug_field_1))",
-            "type": "calc",
-            "fieldName": "if(@fields.debug_field_1)"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_1": [
-          "hidden"
-        ],
-        "@calc(if(@fields.debug_field_1))": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -313,23 +131,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_5",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Value of debug_field_2: @fields.debug_field_2",
-            "matchedExpression": "@fields.debug_field_2",
-            "type": "fields",
-            "fieldName": "debug_field_2"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_2": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -339,32 +141,7 @@
         "value": {}
       },
       "hidden": "!@calc(if(@fields.debug_field_2))",
-      "exclude_from_translation": true,
-      "_nested_name": "text_6",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "!@calc(if(@fields.debug_field_2))",
-            "matchedExpression": "@fields.debug_field_2",
-            "type": "fields",
-            "fieldName": "debug_field_2"
-          },
-          {
-            "fullExpression": "!@calc(if(@fields.debug_field_2))",
-            "matchedExpression": "!@calc(if(@fields.debug_field_2))",
-            "type": "calc",
-            "fieldName": "if(@fields.debug_field_2)"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_2": [
-          "hidden"
-        ],
-        "!@calc(if(@fields.debug_field_2))": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -374,32 +151,7 @@
         "value": {}
       },
       "hidden": "@calc(if(@fields.debug_field_2))",
-      "exclude_from_translation": true,
-      "_nested_name": "text_7",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@calc(if(@fields.debug_field_2))",
-            "matchedExpression": "@fields.debug_field_2",
-            "type": "fields",
-            "fieldName": "debug_field_2"
-          },
-          {
-            "fullExpression": "@calc(if(@fields.debug_field_2))",
-            "matchedExpression": "@calc(if(@fields.debug_field_2))",
-            "type": "calc",
-            "fieldName": "if(@fields.debug_field_2)"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_2": [
-          "hidden"
-        ],
-        "@calc(if(@fields.debug_field_2))": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -408,23 +160,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_8",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Value of debug_field_3: @fields.debug_field_3",
-            "matchedExpression": "@fields.debug_field_3",
-            "type": "fields",
-            "fieldName": "debug_field_3"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_3": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -434,32 +170,7 @@
         "value": {}
       },
       "hidden": "!@calc(if(@fields.debug_field_3))",
-      "exclude_from_translation": true,
-      "_nested_name": "text_9",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "!@calc(if(@fields.debug_field_3))",
-            "matchedExpression": "@fields.debug_field_3",
-            "type": "fields",
-            "fieldName": "debug_field_3"
-          },
-          {
-            "fullExpression": "!@calc(if(@fields.debug_field_3))",
-            "matchedExpression": "!@calc(if(@fields.debug_field_3))",
-            "type": "calc",
-            "fieldName": "if(@fields.debug_field_3)"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_3": [
-          "hidden"
-        ],
-        "!@calc(if(@fields.debug_field_3))": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -469,32 +180,7 @@
         "value": {}
       },
       "hidden": "@calc(if(@fields.debug_field_3))",
-      "exclude_from_translation": true,
-      "_nested_name": "text_10",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@calc(if(@fields.debug_field_3))",
-            "matchedExpression": "@fields.debug_field_3",
-            "type": "fields",
-            "fieldName": "debug_field_3"
-          },
-          {
-            "fullExpression": "@calc(if(@fields.debug_field_3))",
-            "matchedExpression": "@calc(if(@fields.debug_field_3))",
-            "type": "calc",
-            "fieldName": "if(@fields.debug_field_3)"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_3": [
-          "hidden"
-        ],
-        "@calc(if(@fields.debug_field_3))": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -503,23 +189,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_11",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Value of debug_field_4: @fields.debug_field_4",
-            "matchedExpression": "@fields.debug_field_4",
-            "type": "fields",
-            "fieldName": "debug_field_4"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_4": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -529,32 +199,7 @@
         "value": {}
       },
       "hidden": "!@calc(if(@fields.debug_field_4))",
-      "exclude_from_translation": true,
-      "_nested_name": "text_12",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "!@calc(if(@fields.debug_field_4))",
-            "matchedExpression": "@fields.debug_field_4",
-            "type": "fields",
-            "fieldName": "debug_field_4"
-          },
-          {
-            "fullExpression": "!@calc(if(@fields.debug_field_4))",
-            "matchedExpression": "!@calc(if(@fields.debug_field_4))",
-            "type": "calc",
-            "fieldName": "if(@fields.debug_field_4)"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_4": [
-          "hidden"
-        ],
-        "!@calc(if(@fields.debug_field_4))": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -564,32 +209,7 @@
         "value": {}
       },
       "hidden": "@calc(if(@fields.debug_field_4))",
-      "exclude_from_translation": true,
-      "_nested_name": "text_13",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@calc(if(@fields.debug_field_4))",
-            "matchedExpression": "@fields.debug_field_4",
-            "type": "fields",
-            "fieldName": "debug_field_4"
-          },
-          {
-            "fullExpression": "@calc(if(@fields.debug_field_4))",
-            "matchedExpression": "@calc(if(@fields.debug_field_4))",
-            "type": "calc",
-            "fieldName": "if(@fields.debug_field_4)"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_4": [
-          "hidden"
-        ],
-        "@calc(if(@fields.debug_field_4))": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -598,23 +218,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_14",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Value of debug_field_5: @fields.debug_field_5",
-            "matchedExpression": "@fields.debug_field_5",
-            "type": "fields",
-            "fieldName": "debug_field_5"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_5": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -624,32 +228,7 @@
         "value": {}
       },
       "hidden": "!@calc(if(@fields.debug_field_5))",
-      "exclude_from_translation": true,
-      "_nested_name": "text_15",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "!@calc(if(@fields.debug_field_5))",
-            "matchedExpression": "@fields.debug_field_5",
-            "type": "fields",
-            "fieldName": "debug_field_5"
-          },
-          {
-            "fullExpression": "!@calc(if(@fields.debug_field_5))",
-            "matchedExpression": "!@calc(if(@fields.debug_field_5))",
-            "type": "calc",
-            "fieldName": "if(@fields.debug_field_5)"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_5": [
-          "hidden"
-        ],
-        "!@calc(if(@fields.debug_field_5))": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -659,32 +238,7 @@
         "value": {}
       },
       "hidden": "@calc(if(@fields.debug_field_5))",
-      "exclude_from_translation": true,
-      "_nested_name": "text_16",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@calc(if(@fields.debug_field_5))",
-            "matchedExpression": "@fields.debug_field_5",
-            "type": "fields",
-            "fieldName": "debug_field_5"
-          },
-          {
-            "fullExpression": "@calc(if(@fields.debug_field_5))",
-            "matchedExpression": "@calc(if(@fields.debug_field_5))",
-            "type": "calc",
-            "fieldName": "if(@fields.debug_field_5)"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_5": [
-          "hidden"
-        ],
-        "@calc(if(@fields.debug_field_5))": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -693,23 +247,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_17",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Value of debug_field_6: @fields.debug_field_6",
-            "matchedExpression": "@fields.debug_field_6",
-            "type": "fields",
-            "fieldName": "debug_field_6"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_6": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -719,32 +257,7 @@
         "value": {}
       },
       "hidden": "!@calc(if(@fields.debug_field_6))",
-      "exclude_from_translation": true,
-      "_nested_name": "text_18",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "!@calc(if(@fields.debug_field_6))",
-            "matchedExpression": "@fields.debug_field_6",
-            "type": "fields",
-            "fieldName": "debug_field_6"
-          },
-          {
-            "fullExpression": "!@calc(if(@fields.debug_field_6))",
-            "matchedExpression": "!@calc(if(@fields.debug_field_6))",
-            "type": "calc",
-            "fieldName": "if(@fields.debug_field_6)"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_6": [
-          "hidden"
-        ],
-        "!@calc(if(@fields.debug_field_6))": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -754,32 +267,7 @@
         "value": {}
       },
       "hidden": "@calc(if(@fields.debug_field_6))",
-      "exclude_from_translation": true,
-      "_nested_name": "text_19",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@calc(if(@fields.debug_field_6))",
-            "matchedExpression": "@fields.debug_field_6",
-            "type": "fields",
-            "fieldName": "debug_field_6"
-          },
-          {
-            "fullExpression": "@calc(if(@fields.debug_field_6))",
-            "matchedExpression": "@calc(if(@fields.debug_field_6))",
-            "type": "calc",
-            "fieldName": "if(@fields.debug_field_6)"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_field_6": [
-          "hidden"
-        ],
-        "@calc(if(@fields.debug_field_6))": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_field_null.xlsx"

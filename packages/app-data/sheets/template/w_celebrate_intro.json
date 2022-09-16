@@ -34,23 +34,6 @@
           "value": "@data.workshop.w_celebrate",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "topic_intro.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_celebrate",
-                "matchedExpression": "@data.workshop.w_celebrate",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_celebrate": [
-              "value"
-            ]
           }
         },
         {
@@ -66,23 +49,6 @@
                   "value": "@data.workshop.w_celebrate.title",
                   "_translations": {
                     "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "topic_intro.listen.workshop_activity.activity_title",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "@data.workshop.w_celebrate.title",
-                        "matchedExpression": "@data.workshop.w_celebrate.title",
-                        "type": "data",
-                        "fieldName": "workshop"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@data.workshop.w_celebrate.title": [
-                      "value"
-                    ]
                   }
                 },
                 {
@@ -90,23 +56,6 @@
                   "value": "@data.workshop.w_celebrate.title",
                   "_translations": {
                     "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "topic_intro.listen.workshop_activity.intro_title",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "@data.workshop.w_celebrate.title",
-                        "matchedExpression": "@data.workshop.w_celebrate.title",
-                        "type": "data",
-                        "fieldName": "workshop"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@data.workshop.w_celebrate.title": [
-                      "value"
-                    ]
                   }
                 },
                 {
@@ -114,9 +63,7 @@
                   "value": "plh_images/workshop_modes/guide_2/final/wave.svg",
                   "_translations": {
                     "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "topic_intro.listen.workshop_activity.activity_image"
+                  }
                 },
                 {
                   "name": "intro_text",
@@ -131,24 +78,7 @@
                       "za_zu": true
                     }
                   },
-                  "condition": "@field.do_this_workshop_together",
-                  "type": "set_variable",
-                  "_nested_name": "topic_intro.listen.workshop_activity.intro_text",
-                  "_dynamicFields": {
-                    "condition": [
-                      {
-                        "fullExpression": "@field.do_this_workshop_together",
-                        "matchedExpression": "@field.do_this_workshop_together",
-                        "type": "field",
-                        "fieldName": "do_this_workshop_together"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@field.do_this_workshop_together": [
-                      "condition"
-                    ]
-                  }
+                  "condition": "@field.do_this_workshop_together"
                 },
                 {
                   "name": "intro_text",
@@ -163,44 +93,13 @@
                       "za_zu": true
                     }
                   },
-                  "condition": "!@field.do_this_workshop_together",
-                  "type": "set_variable",
-                  "_nested_name": "topic_intro.listen.workshop_activity.intro_text",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future @global.parent_app support.",
-                        "matchedExpression": "@global.parent_app",
-                        "type": "global",
-                        "fieldName": "parent_app"
-                      }
-                    ],
-                    "condition": [
-                      {
-                        "fullExpression": "!@field.do_this_workshop_together",
-                        "matchedExpression": "!@field.do_this_workshop_together",
-                        "type": "field",
-                        "fieldName": "do_this_workshop_together"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@global.parent_app": [
-                      "value"
-                    ],
-                    "!@field.do_this_workshop_together": [
-                      "condition"
-                    ]
-                  }
+                  "condition": "!@field.do_this_workshop_together"
                 }
-              ],
-              "_nested_name": "topic_intro.listen.workshop_activity"
+              ]
             }
-          ],
-          "_nested_name": "topic_intro.listen"
+          ]
         }
-      ],
-      "_nested_name": "topic_intro"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"

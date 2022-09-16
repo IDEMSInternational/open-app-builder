@@ -10,8 +10,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -20,8 +19,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -51,16 +49,15 @@
           "_cleaned": "click | emit:force_restart"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_incorrect_code"
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
       "name": "leave_reply",
       "hidden": "!@fields.user_mode",
-      "parameter_list": {
-        "style": "column"
-      },
+      "parameter_list": [
+        "style: column"
+      ],
       "rows": [
         {
           "type": "text",
@@ -69,26 +66,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "leave_reply.text_2"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "leave_reply",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "!@fields.user_mode",
-            "matchedExpression": "!@fields.user_mode",
-            "type": "fields",
-            "fieldName": "user_mode"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "!@fields.user_mode": [
-          "hidden"
-        ]
-      }
+      ]
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"

@@ -10,88 +10,75 @@
       "value": "Style",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_1"
+      }
     },
     {
       "type": "subtitle",
       "name": "subtitle_par_1_1",
-      "parameter_list": {
-        "style": "standard"
-      },
-      "_nested_name": "subtitle_par_1_1"
+      "parameter_list": [
+        "style: standard"
+      ]
     },
     {
       "type": "subtitle",
       "name": "subtitle_par_1_2",
-      "parameter_list": {
-        "style": "medium - (default)"
-      },
-      "_nested_name": "subtitle_par_1_2"
+      "parameter_list": [
+        "style:  medium - (default)"
+      ]
     },
     {
       "type": "subtitle",
       "name": "subtitle_par_1_3",
-      "parameter_list": {
-        "style": "small"
-      },
-      "_nested_name": "subtitle_par_1_3"
+      "parameter_list": [
+        "style: small"
+      ]
     },
     {
       "type": "subtitle",
       "name": "subtitle_par_1_4",
-      "parameter_list": {
-        "style": "large"
-      },
-      "_nested_name": "subtitle_par_1_4"
+      "parameter_list": [
+        "style:  large"
+      ]
     },
     {
       "type": "subtitle",
       "name": "subtitle_par_1_5",
-      "parameter_list": {
-        "style": "center"
-      },
-      "_nested_name": "subtitle_par_1_5"
+      "parameter_list": [
+        "style: center"
+      ]
     },
     {
       "type": "subtitle",
       "name": "subtitle_par_1_6",
-      "parameter_list": {
-        "style": "left"
-      },
-      "_nested_name": "subtitle_par_1_6"
+      "parameter_list": [
+        "style: left"
+      ]
     },
     {
       "type": "subtitle",
       "name": "subtitle_par_1_7",
-      "parameter_list": {
-        "style": "right"
-      },
-      "_nested_name": "subtitle_par_1_7"
+      "parameter_list": [
+        "style: right"
+      ]
     },
     {
       "type": "subtitle",
       "name": "subtitle_par_1_8",
-      "parameter_list": {
-        "style": "alternative"
-      },
-      "_nested_name": "subtitle_par_1_8"
+      "parameter_list": [
+        "style: alternative"
+      ]
     },
     {
       "type": "subtitle",
       "name": "subtitle_par_1_9",
-      "parameter_list": {
-        "style": "contextual"
-      },
-      "_nested_name": "subtitle_par_1_9"
+      "parameter_list": [
+        "style: contextual"
+      ]
     },
     {
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "type": "set_variable",
-      "name": "set_variable",
-      "_nested_name": "set_variable"
+      "parameter_list": [
+        "style: emphasised"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/component_sheets/component_subtitle.xlsx"

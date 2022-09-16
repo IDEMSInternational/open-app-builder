@@ -35,9 +35,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "workshop_stepper_actions.workshop_id"
+          "exclude_from_translation": true
         },
         {
           "type": "nested_properties",
@@ -45,78 +43,25 @@
           "rows": [
             {
               "name": "nav_template_list",
-              "value": [
-                "w_stress_care_together",
-                "w_stress_relax",
-                "w_stress_reflect_together",
-                "w_stress_intro",
-                "w_stress_read_1_temp",
-                "w_stress_talk",
-                "w_stress_read_2_temp",
-                "w_stress_read_3_temp",
-                "w_stress_tools_activity",
-                "w_stress_home_practice",
-                "w_stress_ending"
-              ],
-              "condition": "@fields.do_this_workshop_together",
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "@fields.do_this_workshop_together",
-                    "matchedExpression": "@fields.do_this_workshop_together",
-                    "type": "fields",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
+              "value": "w_stress_care_together; w_stress_relax; w_stress_reflect_together; w_stress_intro; w_stress_read_1_temp; w_stress_talk; w_stress_read_2_temp; w_stress_read_3_temp; w_stress_tools_activity; w_stress_home_practice; w_stress_ending",
+              "_translations": {
+                "value": {}
               },
-              "_dynamicDependencies": {
-                "@fields.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "@fields.do_this_workshop_together",
+              "exclude_from_translation": true
             },
             {
               "name": "nav_template_list",
-              "value": [
-                "w_stress_welcome_individual",
-                "w_stress_relax",
-                "w_stress_intro",
-                "w_stress_read_1_temp",
-                "w_stress_question",
-                "w_stress_read_2_temp",
-                "w_stress_read_3_temp",
-                "w_stress_tools_activity",
-                "w_stress_home_practice",
-                "w_stress_ending"
-              ],
-              "condition": "!@fields.do_this_workshop_together",
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "!@fields.do_this_workshop_together",
-                    "matchedExpression": "!@fields.do_this_workshop_together",
-                    "type": "fields",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
+              "value": "w_stress_welcome_individual; \nw_stress_relax; \nw_stress_intro; \nw_stress_read_1_temp; \nw_stress_question;\nw_stress_read_2_temp; \nw_stress_read_3_temp;\nw_stress_tools_activity; \nw_stress_home_practice; \nw_stress_ending",
+              "_translations": {
+                "value": {}
               },
-              "_dynamicDependencies": {
-                "!@fields.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "!@fields.do_this_workshop_together",
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "workshop_stepper_actions.workshop_stepper"
+          ]
         }
-      ],
-      "_nested_name": "workshop_stepper_actions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"

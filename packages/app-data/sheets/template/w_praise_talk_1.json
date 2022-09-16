@@ -49,18 +49,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "talk_together.workshop_activity.content_box.text"
+                  }
                 }
-              ],
-              "_nested_name": "talk_together.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "talk_together.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "talk_together"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"

@@ -21,32 +21,6 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "suggestions.description_text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.w_rules_teen_boy knew his @global.w_rules_female_caregiver_1 appreciated him because...",
-                "matchedExpression": "@global.w_rules_teen_boy",
-                "type": "global",
-                "fieldName": "w_rules_teen_boy"
-              },
-              {
-                "fullExpression": "@global.w_rules_teen_boy knew his @global.w_rules_female_caregiver_1 appreciated him because...",
-                "matchedExpression": "@global.w_rules_female_caregiver_1",
-                "type": "global",
-                "fieldName": "w_rules_female_caregiver_1"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.w_rules_teen_boy": [
-              "value"
-            ],
-            "@global.w_rules_female_caregiver_1": [
-              "value"
-            ]
           }
         },
         {
@@ -61,12 +35,9 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "suggestions.list_text"
+          }
         }
-      ],
-      "_nested_name": "suggestions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_rules.xlsx"

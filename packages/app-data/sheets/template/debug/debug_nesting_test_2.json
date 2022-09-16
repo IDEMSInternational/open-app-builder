@@ -21,15 +21,11 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "other_name.name_1.title"
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "other_name.name_1"
+          ]
         }
-      ],
-      "_nested_name": "other_name"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_nesting.xlsx"

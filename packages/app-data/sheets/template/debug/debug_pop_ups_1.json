@@ -11,8 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -32,8 +31,7 @@
           "_cleaned": "click | pop_up:example_text"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_pop_up_1"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -42,8 +40,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_4"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -63,8 +60,7 @@
           "_cleaned": "click | pop_up:example_go_to_3"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_pop_up_3"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -73,8 +69,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_3"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -94,8 +89,7 @@
           "_cleaned": "click | pop_up:example_text_image"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_pop_up_3"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_pop_ups.xlsx"

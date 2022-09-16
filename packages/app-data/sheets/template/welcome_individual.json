@@ -8,23 +8,6 @@
       "value": "@data.workshop.w_self_care",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "workshop_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_self_care",
-            "matchedExpression": "@data.workshop.w_self_care",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_self_care": [
-          "value"
-        ]
       }
     },
     {
@@ -32,23 +15,6 @@
       "value": "@local.workshop_data.id",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "workshop",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop_data.id",
-            "matchedExpression": "@local.workshop_data.id",
-            "type": "local",
-            "fieldName": "workshop_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_data.id": [
-          "value"
-        ]
       }
     },
     {
@@ -57,9 +23,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "welcome_individual_answer"
+      "exclude_from_translation": true
     },
     {
       "name": "tracker",
@@ -67,9 +31,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "tracker"
+      "exclude_from_translation": true
     },
     {
       "name": "final",
@@ -77,9 +39,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "final"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -111,9 +71,7 @@
           "value": "plh_images/workshop_modes/guide_2/wave.svg",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_image"
+          }
         },
         {
           "name": "activity_title",
@@ -127,23 +85,6 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_title",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "Welcome @fields.user_name",
-                "matchedExpression": "@fields.user_name",
-                "type": "fields",
-                "fieldName": "user_name"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@fields.user_name": [
-              "value"
-            ]
           }
         },
         {
@@ -158,15 +99,11 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.intro_text"
+          }
         },
         {
           "name": "activity_banner",
-          "hidden": false,
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_banner"
+          "hidden": false
         },
         {
           "type": "nested_properties",
@@ -179,42 +116,7 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "workshop_activity.content_box.radio_group_tracker",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@local.workshop@local.welcome_individual_answer@local.tracker",
-                    "matchedExpression": "@local.workshop",
-                    "type": "local",
-                    "fieldName": "workshop"
-                  },
-                  {
-                    "fullExpression": "@local.workshop@local.welcome_individual_answer@local.tracker",
-                    "matchedExpression": "@local.welcome_individual_answer",
-                    "type": "local",
-                    "fieldName": "welcome_individual_answer"
-                  },
-                  {
-                    "fullExpression": "@local.workshop@local.welcome_individual_answer@local.tracker",
-                    "matchedExpression": "@local.tracker",
-                    "type": "local",
-                    "fieldName": "tracker"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.workshop": [
-                  "value"
-                ],
-                "@local.welcome_individual_answer": [
-                  "value"
-                ],
-                "@local.tracker": [
-                  "value"
-                ]
-              }
+              "exclude_from_translation": true
             },
             {
               "name": "radio_group_final",
@@ -222,42 +124,7 @@
               "_translations": {
                 "value": {}
               },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "workshop_activity.content_box.radio_group_final",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@local.workshop@local.welcome_individual_answer@local.final",
-                    "matchedExpression": "@local.workshop",
-                    "type": "local",
-                    "fieldName": "workshop"
-                  },
-                  {
-                    "fullExpression": "@local.workshop@local.welcome_individual_answer@local.final",
-                    "matchedExpression": "@local.welcome_individual_answer",
-                    "type": "local",
-                    "fieldName": "welcome_individual_answer"
-                  },
-                  {
-                    "fullExpression": "@local.workshop@local.welcome_individual_answer@local.final",
-                    "matchedExpression": "@local.final",
-                    "type": "local",
-                    "fieldName": "final"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.workshop": [
-                  "value"
-                ],
-                "@local.welcome_individual_answer": [
-                  "value"
-                ],
-                "@local.final": [
-                  "value"
-                ]
-              }
+              "exclude_from_translation": true
             },
             {
               "name": "question_text",
@@ -272,15 +139,11 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "workshop_activity.content_box.question_text"
+              }
             }
-          ],
-          "_nested_name": "workshop_activity.content_box"
+          ]
         }
-      ],
-      "_nested_name": "workshop_activity"
+      ]
     }
   ],
   "_xlsxPath": "global/mode_templates/welcome.xlsx"

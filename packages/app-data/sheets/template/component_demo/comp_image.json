@@ -10,24 +10,21 @@
       "value": "Style",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_1"
+      }
     },
     {
       "type": "image",
       "name": "image_par_1_1",
-      "parameter_list": {
-        "style": "null - (default)"
-      },
-      "_nested_name": "image_par_1_1"
+      "parameter_list": [
+        "style: null - (default)"
+      ]
     },
     {
       "type": "image",
       "name": "image_par_1_2",
-      "parameter_list": {
-        "style": "rounded_corners"
-      },
-      "_nested_name": "image_par_1_2"
+      "parameter_list": [
+        "style: rounded_corners"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/component_sheets/component_image.xlsx"

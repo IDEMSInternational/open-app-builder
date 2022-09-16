@@ -16,8 +16,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "title_1"
+      }
     },
     {
       "type": "image",
@@ -26,10 +25,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "rounded_corners"
-      },
-      "_nested_name": "image_1"
+      "parameter_list": [
+        "style: rounded_corners"
+      ]
     },
     {
       "type": "text",
@@ -44,8 +42,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text_1"
+      }
     },
     {
       "type": "title",
@@ -60,8 +57,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "title_2"
+      }
     },
     {
       "type": "image",
@@ -70,10 +66,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "rounded_corners"
-      },
-      "_nested_name": "image_2"
+      "parameter_list": [
+        "style: rounded_corners"
+      ]
     },
     {
       "type": "text",
@@ -88,8 +83,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text_2"
+      }
     },
     {
       "type": "title",
@@ -104,8 +98,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "title_3"
+      }
     },
     {
       "type": "image",
@@ -114,10 +107,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "rounded_corners"
-      },
-      "_nested_name": "image_3"
+      "parameter_list": [
+        "style: rounded_corners"
+      ]
     },
     {
       "type": "text",
@@ -132,8 +124,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text_3"
+      }
     }
   ],
   "_xlsxPath": "global/mode_templates/talk_together.xlsx"

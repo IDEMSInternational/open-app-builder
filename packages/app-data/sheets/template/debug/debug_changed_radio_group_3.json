@@ -8,18 +8,15 @@
       "type": "set_field",
       "name": "demo_changed_field_5",
       "value": false,
-      "exclude_from_translation": true,
-      "_nested_name": "demo_changed_field_5"
+      "exclude_from_translation": true
     },
     {
       "name": "answer_list_2",
-      "value": [
-        "name:name_var_1 | text:First",
-        "name:name_var_2 | text:Second"
-      ],
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "answer_list_2"
+      "value": "name:name_var_1 | text:First; \nname:name_var_2 | text:Second",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
     },
     {
       "type": "radio_group",
@@ -30,58 +27,16 @@
           "action_id": "set_field",
           "args": [
             "demo_changed_field_6",
-            "this.value"
+            "@local.radio_group"
           ],
           "_raw": "changed | set_field: demo_changed_field_6: @local.radio_group",
           "_cleaned": "changed | set_field: demo_changed_field_6: @local.radio_group"
         }
       ],
       "exclude_from_translation": true,
-      "parameter_list": {
-        "answer_list": "@local.answer_list_2"
-      },
-      "_nested_name": "radio_group",
-      "_dynamicFields": {
-        "action_list": {
-          "0": {
-            "_raw": [
-              {
-                "fullExpression": "changed | set_field: demo_changed_field_6: @local.radio_group",
-                "matchedExpression": "@local.radio_group",
-                "type": "local",
-                "fieldName": "radio_group"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "changed | set_field: demo_changed_field_6: @local.radio_group",
-                "matchedExpression": "@local.radio_group",
-                "type": "local",
-                "fieldName": "radio_group"
-              }
-            ]
-          }
-        },
-        "parameter_list": {
-          "answer_list": [
-            {
-              "fullExpression": "@local.answer_list_2",
-              "matchedExpression": "@local.answer_list_2",
-              "type": "local",
-              "fieldName": "answer_list_2"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.radio_group": [
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ],
-        "@local.answer_list_2": [
-          "parameter_list.answer_list"
-        ]
-      }
+      "parameter_list": [
+        "answer_list: @local.answer_list_2"
+      ]
     },
     {
       "type": "template",
@@ -96,60 +51,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_text_1.text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@field.demo_changed_field_5 || @field.demo_changed_field_6==\"name_var_1\"",
-                "matchedExpression": "@field.demo_changed_field_5",
-                "type": "field",
-                "fieldName": "demo_changed_field_5"
-              },
-              {
-                "fullExpression": "@field.demo_changed_field_5 || @field.demo_changed_field_6==\"name_var_1\"",
-                "matchedExpression": "@field.demo_changed_field_6",
-                "type": "field",
-                "fieldName": "demo_changed_field_6"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@field.demo_changed_field_5": [
-              "value"
-            ],
-            "@field.demo_changed_field_6": [
-              "value"
-            ]
-          }
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "example_text_1",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@field.demo_changed_field_5 || @field.demo_changed_field_6==\"name_var_1\"",
-            "matchedExpression": "@field.demo_changed_field_5",
-            "type": "field",
-            "fieldName": "demo_changed_field_5"
-          },
-          {
-            "fullExpression": "@field.demo_changed_field_5 || @field.demo_changed_field_6==\"name_var_1\"",
-            "matchedExpression": "@field.demo_changed_field_6",
-            "type": "field",
-            "fieldName": "demo_changed_field_6"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.demo_changed_field_5": [
-          "hidden"
-        ],
-        "@field.demo_changed_field_6": [
-          "hidden"
-        ]
-      }
+      ]
     },
     {
       "type": "template",
@@ -164,60 +68,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "example_text_2.text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@field.demo_changed_field_5 || @field.demo_changed_field_6==\"name_var_2\"",
-                "matchedExpression": "@field.demo_changed_field_5",
-                "type": "field",
-                "fieldName": "demo_changed_field_5"
-              },
-              {
-                "fullExpression": "@field.demo_changed_field_5 || @field.demo_changed_field_6==\"name_var_2\"",
-                "matchedExpression": "@field.demo_changed_field_6",
-                "type": "field",
-                "fieldName": "demo_changed_field_6"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@field.demo_changed_field_5": [
-              "value"
-            ],
-            "@field.demo_changed_field_6": [
-              "value"
-            ]
-          }
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "example_text_2",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@field.demo_changed_field_5 || @field.demo_changed_field_6==\"name_var_2\"",
-            "matchedExpression": "@field.demo_changed_field_5",
-            "type": "field",
-            "fieldName": "demo_changed_field_5"
-          },
-          {
-            "fullExpression": "@field.demo_changed_field_5 || @field.demo_changed_field_6==\"name_var_2\"",
-            "matchedExpression": "@field.demo_changed_field_6",
-            "type": "field",
-            "fieldName": "demo_changed_field_6"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.demo_changed_field_5": [
-          "hidden"
-        ],
-        "@field.demo_changed_field_6": [
-          "hidden"
-        ]
-      }
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_changed_radio_group.xlsx"

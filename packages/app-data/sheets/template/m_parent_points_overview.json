@@ -9,24 +9,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "pick_random",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@calc(Math.ceil(Math.random()*7))",
-            "matchedExpression": "@calc(Math.ceil(Math.random()*7))",
-            "type": "calc",
-            "fieldName": "Math.ceil(Math.random()*7)"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@calc(Math.ceil(Math.random()*7))": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "weekly_relax",
@@ -34,24 +17,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "weekly_relax",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "+@fields.weekly_parent_point_relax",
-            "matchedExpression": "@fields.weekly_parent_point_relax",
-            "type": "fields",
-            "fieldName": "weekly_parent_point_relax"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.weekly_parent_point_relax": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "weekly_treat_yourself",
@@ -59,24 +25,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "weekly_treat_yourself",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "+@fields.weekly_parent_point_treat_yourself",
-            "matchedExpression": "@fields.weekly_parent_point_treat_yourself",
-            "type": "fields",
-            "fieldName": "weekly_parent_point_treat_yourself"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.weekly_parent_point_treat_yourself": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "weekly_praise_yourself",
@@ -84,24 +33,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "weekly_praise_yourself",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "+@fields.weekly_parent_point_praise_yourself",
-            "matchedExpression": "@fields.weekly_parent_point_praise_yourself",
-            "type": "fields",
-            "fieldName": "weekly_parent_point_praise_yourself"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.weekly_parent_point_praise_yourself": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "weekly_spend_time",
@@ -109,24 +41,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "weekly_spend_time",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "+@fields.weekly_parent_point_spend_time",
-            "matchedExpression": "@fields.weekly_parent_point_spend_time",
-            "type": "fields",
-            "fieldName": "weekly_parent_point_spend_time"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.weekly_parent_point_spend_time": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "weekly_praise_teen",
@@ -134,24 +49,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "weekly_praise_teen",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "+@fields.weekly_parent_point_praise_teen",
-            "matchedExpression": "@fields.weekly_parent_point_praise_teen",
-            "type": "fields",
-            "fieldName": "weekly_parent_point_praise_teen"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.weekly_parent_point_praise_teen": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "weekly_instruct_positively",
@@ -159,24 +57,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "weekly_instruct_positively",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "+@fields.weekly_parent_point_instruct_positively",
-            "matchedExpression": "@fields.weekly_parent_point_instruct_positively",
-            "type": "fields",
-            "fieldName": "weekly_parent_point_instruct_positively"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.weekly_parent_point_instruct_positively": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "weekly_breathe",
@@ -184,24 +65,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "weekly_breathe",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "+@fields.weekly_parent_point_breathe",
-            "matchedExpression": "@fields.weekly_parent_point_breathe",
-            "type": "fields",
-            "fieldName": "weekly_parent_point_breathe"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.weekly_parent_point_breathe": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "weekly_money",
@@ -209,24 +73,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "weekly_money",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "+@fields.weekly_parent_point_money",
-            "matchedExpression": "@fields.weekly_parent_point_money",
-            "type": "fields",
-            "fieldName": "weekly_parent_point_money"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.weekly_parent_point_money": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "weekly_consequence",
@@ -234,24 +81,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "weekly_consequence",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "+@fields.weekly_parent_point_consequence",
-            "matchedExpression": "@fields.weekly_parent_point_consequence",
-            "type": "fields",
-            "fieldName": "weekly_parent_point_consequence"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.weekly_parent_point_consequence": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "weekly_safe",
@@ -259,24 +89,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "weekly_safe",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "+@fields.weekly_parent_point_safe",
-            "matchedExpression": "@fields.weekly_parent_point_safe",
-            "type": "fields",
-            "fieldName": "weekly_parent_point_safe"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.weekly_parent_point_safe": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "parent_points_weekly_max",
@@ -284,114 +97,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "parent_points_weekly_max",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@calc(Math.max(@local.weekly_relax, @local.weekly_treat_yourself, @local.weekly_praise_yourself, @local.weekly_spend_time, @local.weekly_praise_teen, @local.weekly_instruct_positively, @local.weekly_breathe, @local.weekly_money, @local.weekly_consequence, @local.weekly_safe))",
-            "matchedExpression": "@local.weekly_relax",
-            "type": "local",
-            "fieldName": "weekly_relax"
-          },
-          {
-            "fullExpression": "@calc(Math.max(@local.weekly_relax, @local.weekly_treat_yourself, @local.weekly_praise_yourself, @local.weekly_spend_time, @local.weekly_praise_teen, @local.weekly_instruct_positively, @local.weekly_breathe, @local.weekly_money, @local.weekly_consequence, @local.weekly_safe))",
-            "matchedExpression": "@local.weekly_treat_yourself",
-            "type": "local",
-            "fieldName": "weekly_treat_yourself"
-          },
-          {
-            "fullExpression": "@calc(Math.max(@local.weekly_relax, @local.weekly_treat_yourself, @local.weekly_praise_yourself, @local.weekly_spend_time, @local.weekly_praise_teen, @local.weekly_instruct_positively, @local.weekly_breathe, @local.weekly_money, @local.weekly_consequence, @local.weekly_safe))",
-            "matchedExpression": "@local.weekly_praise_yourself",
-            "type": "local",
-            "fieldName": "weekly_praise_yourself"
-          },
-          {
-            "fullExpression": "@calc(Math.max(@local.weekly_relax, @local.weekly_treat_yourself, @local.weekly_praise_yourself, @local.weekly_spend_time, @local.weekly_praise_teen, @local.weekly_instruct_positively, @local.weekly_breathe, @local.weekly_money, @local.weekly_consequence, @local.weekly_safe))",
-            "matchedExpression": "@local.weekly_spend_time",
-            "type": "local",
-            "fieldName": "weekly_spend_time"
-          },
-          {
-            "fullExpression": "@calc(Math.max(@local.weekly_relax, @local.weekly_treat_yourself, @local.weekly_praise_yourself, @local.weekly_spend_time, @local.weekly_praise_teen, @local.weekly_instruct_positively, @local.weekly_breathe, @local.weekly_money, @local.weekly_consequence, @local.weekly_safe))",
-            "matchedExpression": "@local.weekly_praise_teen",
-            "type": "local",
-            "fieldName": "weekly_praise_teen"
-          },
-          {
-            "fullExpression": "@calc(Math.max(@local.weekly_relax, @local.weekly_treat_yourself, @local.weekly_praise_yourself, @local.weekly_spend_time, @local.weekly_praise_teen, @local.weekly_instruct_positively, @local.weekly_breathe, @local.weekly_money, @local.weekly_consequence, @local.weekly_safe))",
-            "matchedExpression": "@local.weekly_instruct_positively",
-            "type": "local",
-            "fieldName": "weekly_instruct_positively"
-          },
-          {
-            "fullExpression": "@calc(Math.max(@local.weekly_relax, @local.weekly_treat_yourself, @local.weekly_praise_yourself, @local.weekly_spend_time, @local.weekly_praise_teen, @local.weekly_instruct_positively, @local.weekly_breathe, @local.weekly_money, @local.weekly_consequence, @local.weekly_safe))",
-            "matchedExpression": "@local.weekly_breathe",
-            "type": "local",
-            "fieldName": "weekly_breathe"
-          },
-          {
-            "fullExpression": "@calc(Math.max(@local.weekly_relax, @local.weekly_treat_yourself, @local.weekly_praise_yourself, @local.weekly_spend_time, @local.weekly_praise_teen, @local.weekly_instruct_positively, @local.weekly_breathe, @local.weekly_money, @local.weekly_consequence, @local.weekly_safe))",
-            "matchedExpression": "@local.weekly_money",
-            "type": "local",
-            "fieldName": "weekly_money"
-          },
-          {
-            "fullExpression": "@calc(Math.max(@local.weekly_relax, @local.weekly_treat_yourself, @local.weekly_praise_yourself, @local.weekly_spend_time, @local.weekly_praise_teen, @local.weekly_instruct_positively, @local.weekly_breathe, @local.weekly_money, @local.weekly_consequence, @local.weekly_safe))",
-            "matchedExpression": "@local.weekly_consequence",
-            "type": "local",
-            "fieldName": "weekly_consequence"
-          },
-          {
-            "fullExpression": "@calc(Math.max(@local.weekly_relax, @local.weekly_treat_yourself, @local.weekly_praise_yourself, @local.weekly_spend_time, @local.weekly_praise_teen, @local.weekly_instruct_positively, @local.weekly_breathe, @local.weekly_money, @local.weekly_consequence, @local.weekly_safe))",
-            "matchedExpression": "@local.weekly_safe",
-            "type": "local",
-            "fieldName": "weekly_safe"
-          },
-          {
-            "fullExpression": "@calc(Math.max(@local.weekly_relax, @local.weekly_treat_yourself, @local.weekly_praise_yourself, @local.weekly_spend_time, @local.weekly_praise_teen, @local.weekly_instruct_positively, @local.weekly_breathe, @local.weekly_money, @local.weekly_consequence, @local.weekly_safe))",
-            "matchedExpression": "@calc(Math.max(@local.weekly_relax, @local.weekly_treat_yourself, @local.weekly_praise_yourself, @local.weekly_spend_time, @local.weekly_praise_teen, @local.weekly_instruct_positively, @local.weekly_breathe, @local.weekly_money, @local.weekly_consequence, @local.weekly_safe))",
-            "type": "calc",
-            "fieldName": "Math.max(@local.weekly_relax, @local.weekly_treat_yourself, @local.weekly_praise_yourself, @local.weekly_spend_time, @local.weekly_praise_teen, @local.weekly_instruct_positively, @local.weekly_breathe, @local.weekly_money, @local.weekly_consequence, @local.weekly_safe)"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.weekly_relax": [
-          "value"
-        ],
-        "@local.weekly_treat_yourself": [
-          "value"
-        ],
-        "@local.weekly_praise_yourself": [
-          "value"
-        ],
-        "@local.weekly_spend_time": [
-          "value"
-        ],
-        "@local.weekly_praise_teen": [
-          "value"
-        ],
-        "@local.weekly_instruct_positively": [
-          "value"
-        ],
-        "@local.weekly_breathe": [
-          "value"
-        ],
-        "@local.weekly_money": [
-          "value"
-        ],
-        "@local.weekly_consequence": [
-          "value"
-        ],
-        "@local.weekly_safe": [
-          "value"
-        ],
-        "@calc(Math.max(@local.weekly_relax, @local.weekly_treat_yourself, @local.weekly_praise_yourself, @local.weekly_spend_time, @local.weekly_praise_teen, @local.weekly_instruct_positively, @local.weekly_breathe, @local.weekly_money, @local.weekly_consequence, @local.weekly_safe))": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "no_parent_points_this_week",
@@ -399,24 +105,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "no_parent_points_this_week",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "!@local.parent_points_weekly_max",
-            "matchedExpression": "!@local.parent_points_weekly_max",
-            "type": "local",
-            "fieldName": "parent_points_weekly_max"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "!@local.parent_points_weekly_max": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -428,23 +117,6 @@
           "value": "@global.m_parent_points_overview",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "in_week_message.title",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.m_parent_points_overview",
-                "matchedExpression": "@global.m_parent_points_overview",
-                "type": "global",
-                "fieldName": "m_parent_points_overview"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.m_parent_points_overview": [
-              "value"
-            ]
           }
         },
         {
@@ -452,9 +124,7 @@
           "value": "plh_images/workshop_modes/guide_2/star.svg",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "in_week_message.image"
+          }
         },
         {
           "name": "text",
@@ -469,35 +139,7 @@
               "za_zu": true
             }
           },
-          "condition": "!@local.no_parent_points_this_week",
-          "type": "set_variable",
-          "_nested_name": "in_week_message.text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "Hi @fields.user_name! This week you did:",
-                "matchedExpression": "@fields.user_name",
-                "type": "fields",
-                "fieldName": "user_name"
-              }
-            ],
-            "condition": [
-              {
-                "fullExpression": "!@local.no_parent_points_this_week",
-                "matchedExpression": "!@local.no_parent_points_this_week",
-                "type": "local",
-                "fieldName": "no_parent_points_this_week"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@fields.user_name": [
-              "value"
-            ],
-            "!@local.no_parent_points_this_week": [
-              "condition"
-            ]
-          }
+          "condition": "!@local.no_parent_points_this_week"
         },
         {
           "name": "text",
@@ -512,53 +154,7 @@
               "za_zu": true
             }
           },
-          "condition": "@local.no_parent_points_this_week",
-          "type": "set_variable",
-          "_nested_name": "in_week_message.text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "Hi @fields.user_name! Thank you for using @global.parent_app and committing to your parenting. \n\nRemember to tap your @global.parent_points!",
-                "matchedExpression": "@fields.user_name",
-                "type": "fields",
-                "fieldName": "user_name"
-              },
-              {
-                "fullExpression": "Hi @fields.user_name! Thank you for using @global.parent_app and committing to your parenting. \n\nRemember to tap your @global.parent_points!",
-                "matchedExpression": "@global.parent_app",
-                "type": "global",
-                "fieldName": "parent_app"
-              },
-              {
-                "fullExpression": "Hi @fields.user_name! Thank you for using @global.parent_app and committing to your parenting. \n\nRemember to tap your @global.parent_points!",
-                "matchedExpression": "@global.parent_points",
-                "type": "global",
-                "fieldName": "parent_points"
-              }
-            ],
-            "condition": [
-              {
-                "fullExpression": "@local.no_parent_points_this_week",
-                "matchedExpression": "@local.no_parent_points_this_week",
-                "type": "local",
-                "fieldName": "no_parent_points_this_week"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@fields.user_name": [
-              "value"
-            ],
-            "@global.parent_app": [
-              "value"
-            ],
-            "@global.parent_points": [
-              "value"
-            ],
-            "@local.no_parent_points_this_week": [
-              "condition"
-            ]
-          }
+          "condition": "@local.no_parent_points_this_week"
         },
         {
           "name": "button_1",
@@ -574,27 +170,9 @@
               "_raw": "click | go_to:parent_points",
               "_cleaned": "click | go_to:parent_points"
             }
-          ],
-          "type": "set_variable",
-          "_nested_name": "in_week_message.button_1",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@local.no_parent_points_this_week",
-                "matchedExpression": "@local.no_parent_points_this_week",
-                "type": "local",
-                "fieldName": "no_parent_points_this_week"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.no_parent_points_this_week": [
-              "condition"
-            ]
-          }
+          ]
         }
-      ],
-      "_nested_name": "in_week_message"
+      ]
     },
     {
       "type": "template",
@@ -605,9 +183,7 @@
         {
           "name": "hide_nav_buttons",
           "value": true,
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "box_parent_point_counter.hide_nav_buttons"
+          "exclude_from_translation": true
         },
         {
           "name": "bottom_text",
@@ -622,24 +198,7 @@
               "za_zu": true
             }
           },
-          "condition": "@local.pick_random == 1",
-          "type": "set_variable",
-          "_nested_name": "box_parent_point_counter.bottom_text",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@local.pick_random == 1",
-                "matchedExpression": "@local.pick_random",
-                "type": "local",
-                "fieldName": "pick_random"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.pick_random": [
-              "condition"
-            ]
-          }
+          "condition": "@local.pick_random == 1"
         },
         {
           "name": "bottom_text",
@@ -654,24 +213,7 @@
               "za_zu": true
             }
           },
-          "condition": "@local.pick_random == 2",
-          "type": "set_variable",
-          "_nested_name": "box_parent_point_counter.bottom_text",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@local.pick_random == 2",
-                "matchedExpression": "@local.pick_random",
-                "type": "local",
-                "fieldName": "pick_random"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.pick_random": [
-              "condition"
-            ]
-          }
+          "condition": "@local.pick_random == 2"
         },
         {
           "name": "bottom_text",
@@ -686,24 +228,7 @@
               "za_zu": true
             }
           },
-          "condition": "@local.pick_random == 3",
-          "type": "set_variable",
-          "_nested_name": "box_parent_point_counter.bottom_text",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@local.pick_random == 3",
-                "matchedExpression": "@local.pick_random",
-                "type": "local",
-                "fieldName": "pick_random"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.pick_random": [
-              "condition"
-            ]
-          }
+          "condition": "@local.pick_random == 3"
         },
         {
           "name": "bottom_text",
@@ -718,24 +243,7 @@
               "za_zu": true
             }
           },
-          "condition": "@local.pick_random == 4",
-          "type": "set_variable",
-          "_nested_name": "box_parent_point_counter.bottom_text",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@local.pick_random == 4",
-                "matchedExpression": "@local.pick_random",
-                "type": "local",
-                "fieldName": "pick_random"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.pick_random": [
-              "condition"
-            ]
-          }
+          "condition": "@local.pick_random == 4"
         },
         {
           "name": "bottom_text",
@@ -750,24 +258,7 @@
               "za_zu": true
             }
           },
-          "condition": "@local.pick_random == 5",
-          "type": "set_variable",
-          "_nested_name": "box_parent_point_counter.bottom_text",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@local.pick_random == 5",
-                "matchedExpression": "@local.pick_random",
-                "type": "local",
-                "fieldName": "pick_random"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.pick_random": [
-              "condition"
-            ]
-          }
+          "condition": "@local.pick_random == 5"
         },
         {
           "name": "bottom_text",
@@ -782,24 +273,7 @@
               "za_zu": true
             }
           },
-          "condition": "@local.pick_random == 6",
-          "type": "set_variable",
-          "_nested_name": "box_parent_point_counter.bottom_text",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@local.pick_random == 6",
-                "matchedExpression": "@local.pick_random",
-                "type": "local",
-                "fieldName": "pick_random"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.pick_random": [
-              "condition"
-            ]
-          }
+          "condition": "@local.pick_random == 6"
         },
         {
           "name": "bottom_text",
@@ -814,53 +288,9 @@
               "za_zu": true
             }
           },
-          "condition": "@local.pick_random == 7",
-          "type": "set_variable",
-          "_nested_name": "box_parent_point_counter.bottom_text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "Every @global.parent_point counts!",
-                "matchedExpression": "@global.parent_point",
-                "type": "global",
-                "fieldName": "parent_point"
-              }
-            ],
-            "condition": [
-              {
-                "fullExpression": "@local.pick_random == 7",
-                "matchedExpression": "@local.pick_random",
-                "type": "local",
-                "fieldName": "pick_random"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.parent_point": [
-              "value"
-            ],
-            "@local.pick_random": [
-              "condition"
-            ]
-          }
+          "condition": "@local.pick_random == 7"
         }
-      ],
-      "_nested_name": "box_parent_point_counter",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "!@local.no_parent_points_this_week",
-            "matchedExpression": "!@local.no_parent_points_this_week",
-            "type": "local",
-            "fieldName": "no_parent_points_this_week"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "!@local.no_parent_points_this_week": [
-          "condition"
-        ]
-      }
+      ]
     }
   ],
   "_xlsxPath": "global/in_week_messages/in_week_message_types.xlsx"

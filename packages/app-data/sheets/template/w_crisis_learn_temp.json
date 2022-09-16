@@ -45,45 +45,22 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.intro_text"
+              }
             },
             {
               "name": "activity_banner",
-              "hidden": true,
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.activity_banner"
+              "hidden": true
             },
             {
               "name": "include_outro",
               "value": true,
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.include_outro"
+              "exclude_from_translation": true
             },
             {
               "name": "outro_habit_data",
               "value": "@data.habit.breathe",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.outro_habit_data",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.habit.breathe",
-                    "matchedExpression": "@data.habit.breathe",
-                    "type": "data",
-                    "fieldName": "habit"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@data.habit.breathe": [
-                  "value"
-                ]
               }
             },
             {
@@ -101,9 +78,7 @@
                       "value": "plh_images/workshops/w_crisis/learn/slide_5.svg",
                       "_translations": {
                         "value": {}
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "learn.workshop_activity.content_box.box_1.image_src"
+                      }
                     },
                     {
                       "name": "title",
@@ -118,24 +93,7 @@
                           "za_zu": true
                         }
                       },
-                      "hidden": false,
-                      "type": "set_variable",
-                      "_nested_name": "learn.workshop_activity.content_box.box_1.title",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "Crisis 1: @global.w_crisis_teen_boy_2 fights at school",
-                            "matchedExpression": "@global.w_crisis_teen_boy_2",
-                            "type": "global",
-                            "fieldName": "w_crisis_teen_boy_2"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@global.w_crisis_teen_boy_2": [
-                          "value"
-                        ]
-                      }
+                      "hidden": false
                     },
                     {
                       "name": "text",
@@ -149,23 +107,6 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "learn.workshop_activity.content_box.box_1.text",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@global.w_crisis_teen_boy_2: \"I’ve never done this before. And now they will expel me\"",
-                            "matchedExpression": "@global.w_crisis_teen_boy_2",
-                            "type": "global",
-                            "fieldName": "w_crisis_teen_boy_2"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@global.w_crisis_teen_boy_2": [
-                          "value"
-                        ]
                       }
                     },
                     {
@@ -181,27 +122,9 @@
                           "za_zu": true
                         }
                       },
-                      "hidden": false,
-                      "type": "set_variable",
-                      "_nested_name": "learn.workshop_activity.content_box.box_1.dashed_box",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "How could you respond to @global.w_crisis_teen_boy_2?",
-                            "matchedExpression": "@global.w_crisis_teen_boy_2",
-                            "type": "global",
-                            "fieldName": "w_crisis_teen_boy_2"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@global.w_crisis_teen_boy_2": [
-                          "value"
-                        ]
-                      }
+                      "hidden": false
                     }
-                  ],
-                  "_nested_name": "learn.workshop_activity.content_box.box_1"
+                  ]
                 },
                 {
                   "type": "nested_properties",
@@ -218,9 +141,7 @@
                           "value": "plh_images/workshops/w_crisis/learn/slide_1.svg",
                           "_translations": {
                             "value": {}
-                          },
-                          "type": "set_variable",
-                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_1.image_src"
+                          }
                         },
                         {
                           "name": "title",
@@ -235,24 +156,7 @@
                               "za_zu": true
                             }
                           },
-                          "hidden": false,
-                          "type": "set_variable",
-                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_1.title",
-                          "_dynamicFields": {
-                            "value": [
-                              {
-                                "fullExpression": "Crisis 2: @global.w_crisis_teen_girl_1 gets pregnant",
-                                "matchedExpression": "@global.w_crisis_teen_girl_1",
-                                "type": "global",
-                                "fieldName": "w_crisis_teen_girl_1"
-                              }
-                            ]
-                          },
-                          "_dynamicDependencies": {
-                            "@global.w_crisis_teen_girl_1": [
-                              "value"
-                            ]
-                          }
+                          "hidden": false
                         },
                         {
                           "name": "text",
@@ -266,32 +170,6 @@
                               "za_xh": true,
                               "za_zu": true
                             }
-                          },
-                          "type": "set_variable",
-                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_1.text",
-                          "_dynamicFields": {
-                            "value": [
-                              {
-                                "fullExpression": "@global.w_crisis_teen_girl_1: \"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do\"",
-                                "matchedExpression": "@global.w_crisis_teen_girl_1",
-                                "type": "global",
-                                "fieldName": "w_crisis_teen_girl_1"
-                              },
-                              {
-                                "fullExpression": "@global.w_crisis_teen_girl_1: \"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do\"",
-                                "matchedExpression": "@global.w_crisis_male_caregiver_1",
-                                "type": "global",
-                                "fieldName": "w_crisis_male_caregiver_1"
-                              }
-                            ]
-                          },
-                          "_dynamicDependencies": {
-                            "@global.w_crisis_teen_girl_1": [
-                              "value"
-                            ],
-                            "@global.w_crisis_male_caregiver_1": [
-                              "value"
-                            ]
                           }
                         },
                         {
@@ -307,27 +185,9 @@
                               "za_zu": true
                             }
                           },
-                          "hidden": false,
-                          "type": "set_variable",
-                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_1.dashed_box",
-                          "_dynamicFields": {
-                            "value": [
-                              {
-                                "fullExpression": "How could you respond to @global.w_crisis_teen_girl_1?",
-                                "matchedExpression": "@global.w_crisis_teen_girl_1",
-                                "type": "global",
-                                "fieldName": "w_crisis_teen_girl_1"
-                              }
-                            ]
-                          },
-                          "_dynamicDependencies": {
-                            "@global.w_crisis_teen_girl_1": [
-                              "value"
-                            ]
-                          }
+                          "hidden": false
                         }
-                      ],
-                      "_nested_name": "learn.workshop_activity.content_box.box_2.box_1"
+                      ]
                     },
                     {
                       "type": "nested_properties",
@@ -344,9 +204,7 @@
                               "value": "plh_images/workshops/w_crisis/learn/slide_2.svg",
                               "_translations": {
                                 "value": {}
-                              },
-                              "type": "set_variable",
-                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.image_src"
+                              }
                             },
                             {
                               "name": "title",
@@ -361,24 +219,7 @@
                                   "za_zu": true
                                 }
                               },
-                              "hidden": false,
-                              "type": "set_variable",
-                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.title",
-                              "_dynamicFields": {
-                                "value": [
-                                  {
-                                    "fullExpression": "Crisis 3: @global.w_crisis_teen_boy_2 makes a girl pregnant",
-                                    "matchedExpression": "@global.w_crisis_teen_boy_2",
-                                    "type": "global",
-                                    "fieldName": "w_crisis_teen_boy_2"
-                                  }
-                                ]
-                              },
-                              "_dynamicDependencies": {
-                                "@global.w_crisis_teen_boy_2": [
-                                  "value"
-                                ]
-                              }
+                              "hidden": false
                             },
                             {
                               "name": "text",
@@ -392,32 +233,6 @@
                                   "za_xh": true,
                                   "za_zu": true
                                 }
-                              },
-                              "type": "set_variable",
-                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.text",
-                              "_dynamicFields": {
-                                "value": [
-                                  {
-                                    "fullExpression": "@global.w_crisis_teen_boy_2: \"@global.w_crisis_male_caregiver_2, I don’t want to have a baby\"",
-                                    "matchedExpression": "@global.w_crisis_teen_boy_2",
-                                    "type": "global",
-                                    "fieldName": "w_crisis_teen_boy_2"
-                                  },
-                                  {
-                                    "fullExpression": "@global.w_crisis_teen_boy_2: \"@global.w_crisis_male_caregiver_2, I don’t want to have a baby\"",
-                                    "matchedExpression": "@global.w_crisis_male_caregiver_2",
-                                    "type": "global",
-                                    "fieldName": "w_crisis_male_caregiver_2"
-                                  }
-                                ]
-                              },
-                              "_dynamicDependencies": {
-                                "@global.w_crisis_teen_boy_2": [
-                                  "value"
-                                ],
-                                "@global.w_crisis_male_caregiver_2": [
-                                  "value"
-                                ]
                               }
                             },
                             {
@@ -433,27 +248,9 @@
                                   "za_zu": true
                                 }
                               },
-                              "hidden": false,
-                              "type": "set_variable",
-                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.dashed_box",
-                              "_dynamicFields": {
-                                "value": [
-                                  {
-                                    "fullExpression": "How could you respond to @global.w_crisis_teen_boy_2?",
-                                    "matchedExpression": "@global.w_crisis_teen_boy_2",
-                                    "type": "global",
-                                    "fieldName": "w_crisis_teen_boy_2"
-                                  }
-                                ]
-                              },
-                              "_dynamicDependencies": {
-                                "@global.w_crisis_teen_boy_2": [
-                                  "value"
-                                ]
-                              }
+                              "hidden": false
                             }
-                          ],
-                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1"
+                          ]
                         },
                         {
                           "type": "nested_properties",
@@ -470,9 +267,7 @@
                                   "value": "plh_images/workshops/w_crisis/learn/slide_3.svg",
                                   "_translations": {
                                     "value": {}
-                                  },
-                                  "type": "set_variable",
-                                  "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.box_1.image_src"
+                                  }
                                 },
                                 {
                                   "name": "title",
@@ -487,9 +282,7 @@
                                       "za_zu": true
                                     }
                                   },
-                                  "hidden": false,
-                                  "type": "set_variable",
-                                  "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.box_1.title"
+                                  "hidden": false
                                 },
                                 {
                                   "name": "text",
@@ -503,9 +296,7 @@
                                       "za_xh": true,
                                       "za_zu": true
                                     }
-                                  },
-                                  "type": "set_variable",
-                                  "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.box_1.text"
+                                  }
                                 },
                                 {
                                   "name": "dashed_box",
@@ -520,12 +311,9 @@
                                       "za_zu": true
                                     }
                                   },
-                                  "hidden": false,
-                                  "type": "set_variable",
-                                  "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.box_1.dashed_box"
+                                  "hidden": false
                                 }
-                              ],
-                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.box_1"
+                              ]
                             },
                             {
                               "type": "nested_properties",
@@ -537,9 +325,7 @@
                                   "value": "plh_images/workshops/w_crisis/learn/slide_4.svg",
                                   "_translations": {
                                     "value": {}
-                                  },
-                                  "type": "set_variable",
-                                  "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.box_2.image_src"
+                                  }
                                 },
                                 {
                                   "name": "title",
@@ -554,24 +340,7 @@
                                       "za_zu": true
                                     }
                                   },
-                                  "hidden": false,
-                                  "type": "set_variable",
-                                  "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.box_2.title",
-                                  "_dynamicFields": {
-                                    "value": [
-                                      {
-                                        "fullExpression": "Crisis 5: @global.w_crisis_teen_girl_1 is pressured into sex by her boyfriend",
-                                        "matchedExpression": "@global.w_crisis_teen_girl_1",
-                                        "type": "global",
-                                        "fieldName": "w_crisis_teen_girl_1"
-                                      }
-                                    ]
-                                  },
-                                  "_dynamicDependencies": {
-                                    "@global.w_crisis_teen_girl_1": [
-                                      "value"
-                                    ]
-                                  }
+                                  "hidden": false
                                 },
                                 {
                                   "name": "text",
@@ -585,32 +354,6 @@
                                       "za_xh": true,
                                       "za_zu": true
                                     }
-                                  },
-                                  "type": "set_variable",
-                                  "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.box_2.text",
-                                  "_dynamicFields": {
-                                    "value": [
-                                      {
-                                        "fullExpression": "@global.w_crisis_teen_girl_1: \"I didn’t really want to. Now I will get pregnant or be ill. @global.w_crisis_female_caregiver, I’m so scared...\"",
-                                        "matchedExpression": "@global.w_crisis_teen_girl_1",
-                                        "type": "global",
-                                        "fieldName": "w_crisis_teen_girl_1"
-                                      },
-                                      {
-                                        "fullExpression": "@global.w_crisis_teen_girl_1: \"I didn’t really want to. Now I will get pregnant or be ill. @global.w_crisis_female_caregiver, I’m so scared...\"",
-                                        "matchedExpression": "@global.w_crisis_female_caregiver",
-                                        "type": "global",
-                                        "fieldName": "w_crisis_female_caregiver"
-                                      }
-                                    ]
-                                  },
-                                  "_dynamicDependencies": {
-                                    "@global.w_crisis_teen_girl_1": [
-                                      "value"
-                                    ],
-                                    "@global.w_crisis_female_caregiver": [
-                                      "value"
-                                    ]
                                   }
                                 },
                                 {
@@ -626,39 +369,17 @@
                                       "za_zu": true
                                     }
                                   },
-                                  "hidden": false,
-                                  "type": "set_variable",
-                                  "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.box_2.dashed_box",
-                                  "_dynamicFields": {
-                                    "value": [
-                                      {
-                                        "fullExpression": "How could you respond to @global.w_crisis_teen_girl_1?",
-                                        "matchedExpression": "@global.w_crisis_teen_girl_1",
-                                        "type": "global",
-                                        "fieldName": "w_crisis_teen_girl_1"
-                                      }
-                                    ]
-                                  },
-                                  "_dynamicDependencies": {
-                                    "@global.w_crisis_teen_girl_1": [
-                                      "value"
-                                    ]
-                                  }
+                                  "hidden": false
                                 }
-                              ],
-                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.box_2"
+                              ]
                             }
-                          ],
-                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2"
+                          ]
                         }
-                      ],
-                      "_nested_name": "learn.workshop_activity.content_box.box_2.box_2"
+                      ]
                     }
-                  ],
-                  "_nested_name": "learn.workshop_activity.content_box.box_2"
+                  ]
                 }
-              ],
-              "_nested_name": "learn.workshop_activity.content_box"
+              ]
             },
             {
               "name": "outro_text",
@@ -672,15 +393,11 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.outro_text"
+              }
             }
-          ],
-          "_nested_name": "learn.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "learn"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"

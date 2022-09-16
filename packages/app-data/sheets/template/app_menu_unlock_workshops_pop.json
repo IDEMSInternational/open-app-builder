@@ -16,8 +16,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "title"
+      }
     },
     {
       "type": "text",
@@ -32,8 +31,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text_1"
+      }
     },
     {
       "type": "button",
@@ -181,23 +179,7 @@
           "_cleaned": "click | set_field:unlock_workshops_confirm:true"
         }
       ],
-      "hidden": "@fields.unlock_workshops_confirm",
-      "_nested_name": "button_1",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@fields.unlock_workshops_confirm",
-            "matchedExpression": "@fields.unlock_workshops_confirm",
-            "type": "fields",
-            "fieldName": "unlock_workshops_confirm"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.unlock_workshops_confirm": [
-          "hidden"
-        ]
-      }
+      "hidden": "@fields.unlock_workshops_confirm"
     },
     {
       "type": "dashed_box",
@@ -213,23 +195,7 @@
           "za_zu": true
         }
       },
-      "hidden": "!@fields.unlock_workshops_confirm",
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "!@fields.unlock_workshops_confirm",
-            "matchedExpression": "!@fields.unlock_workshops_confirm",
-            "type": "fields",
-            "fieldName": "unlock_workshops_confirm"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "!@fields.unlock_workshops_confirm": [
-          "hidden"
-        ]
-      }
+      "hidden": "!@fields.unlock_workshops_confirm"
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"

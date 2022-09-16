@@ -45,23 +45,6 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "read.workshop_activity.intro_text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Saving is important for one more reason: emergencies! @global.w_money_grandma also learned this along the way:",
-                    "matchedExpression": "@global.w_money_grandma",
-                    "type": "global",
-                    "fieldName": "w_money_grandma"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.w_money_grandma": [
-                  "value"
-                ]
               }
             },
             {
@@ -74,9 +57,7 @@
                   "value": "plh_images/workshops/w_money/read_4/slide_1.svg",
                   "_translations": {
                     "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "read.workshop_activity.content_box.image_src"
+                  }
                 },
                 {
                   "name": "text",
@@ -90,18 +71,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "read.workshop_activity.content_box.text"
+                  }
                 }
-              ],
-              "_nested_name": "read.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "read.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "read"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"

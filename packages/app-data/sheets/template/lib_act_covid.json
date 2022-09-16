@@ -5,9 +5,7 @@
   "rows": [
     {
       "name": "activity_id",
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "activity_id"
+      "exclude_from_translation": true
     },
     {
       "name": "activity_temp",
@@ -15,24 +13,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "activity_temp",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "covid.@local.activity_id",
-            "matchedExpression": "@local.activity_id",
-            "type": "local",
-            "fieldName": "activity_id"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.activity_id": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "activity_data",
@@ -40,24 +21,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "activity_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.@local.activity_temp",
-            "matchedExpression": "@local.activity_temp",
-            "type": "local",
-            "fieldName": "activity_temp"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.activity_temp": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -80,23 +44,6 @@
           "value": "@local.activity_data.image_asset",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "library_activity.activity_image",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.activity_data.image_asset",
-                "matchedExpression": "@local.activity_data.image_asset",
-                "type": "local",
-                "fieldName": "activity_data"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.activity_data.image_asset": [
-              "value"
-            ]
           }
         },
         {
@@ -104,23 +51,6 @@
           "value": "@local.activity_data.title",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "library_activity.activity_title",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.activity_data.title",
-                "matchedExpression": "@local.activity_data.title",
-                "type": "local",
-                "fieldName": "activity_data"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.activity_data.title": [
-              "value"
-            ]
           }
         },
         {
@@ -128,27 +58,9 @@
           "value": "@local.activity_data.content_template",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "library_activity.content_template",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.activity_data.content_template",
-                "matchedExpression": "@local.activity_data.content_template",
-                "type": "local",
-                "fieldName": "activity_data"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.activity_data.content_template": [
-              "value"
-            ]
           }
         }
-      ],
-      "_nested_name": "library_activity"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/parent_centre_templates/covid/databank_covid_lib_act.xlsx"

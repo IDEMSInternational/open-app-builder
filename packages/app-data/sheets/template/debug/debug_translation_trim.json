@@ -11,10 +11,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "text_1"
+      "parameter_list": [
+        "style:emphasised"
+      ]
     },
     {
       "type": "text",
@@ -29,8 +28,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text_2"
+      }
     },
     {
       "type": "text",
@@ -39,10 +37,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "text_3"
+      "parameter_list": [
+        "style:emphasised"
+      ]
     },
     {
       "type": "text",
@@ -57,8 +54,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text_4"
+      }
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_translation.xlsx"

@@ -6,27 +6,23 @@
     {
       "type": "title",
       "name": "title",
-      "hidden": true,
-      "_nested_name": "title"
+      "hidden": true
     },
     {
       "type": "image",
       "name": "image_src",
-      "parameter_list": {
-        "style": "rounded_corners"
-      },
-      "_nested_name": "image_src"
+      "parameter_list": [
+        "style: rounded_corners"
+      ]
     },
     {
       "type": "text",
-      "name": "text",
-      "_nested_name": "text"
+      "name": "text"
     },
     {
       "type": "dashed_box",
       "name": "dashed_box",
-      "hidden": true,
-      "_nested_name": "dashed_box"
+      "hidden": true
     },
     {
       "type": "template",
@@ -58,27 +54,9 @@
           "value": "@global.more_button",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "nav_buttons.button_completed",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.more_button",
-                "matchedExpression": "@global.more_button",
-                "type": "global",
-                "fieldName": "more_button"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.more_button": [
-              "value"
-            ]
           }
         }
-      ],
-      "_nested_name": "nav_buttons"
+      ]
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"

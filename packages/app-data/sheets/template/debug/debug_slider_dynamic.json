@@ -8,10 +8,9 @@
       "type": "slider",
       "name": "slider_1",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "title": "Slider 1"
-      },
-      "_nested_name": "slider_1"
+      "parameter_list": [
+        "title: Slider 1"
+      ]
     },
     {
       "type": "text",
@@ -20,23 +19,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "local variable for slider 1: @local.slider_1",
-            "matchedExpression": "@local.slider_1",
-            "type": "local",
-            "fieldName": "slider_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.slider_1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "slider",
@@ -47,45 +30,16 @@
           "action_id": "set_field",
           "args": [
             "slider_2_field",
-            "this.value"
+            "@local.slider_2"
           ],
           "_raw": "changed | set_field:slider_2_field:@local.slider_2",
           "_cleaned": "changed | set_field:slider_2_field:@local.slider_2"
         }
       ],
       "exclude_from_translation": true,
-      "parameter_list": {
-        "title": "Slider 2"
-      },
-      "_nested_name": "slider_2",
-      "_dynamicFields": {
-        "action_list": {
-          "0": {
-            "_raw": [
-              {
-                "fullExpression": "changed | set_field:slider_2_field:@local.slider_2",
-                "matchedExpression": "@local.slider_2",
-                "type": "local",
-                "fieldName": "slider_2"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "changed | set_field:slider_2_field:@local.slider_2",
-                "matchedExpression": "@local.slider_2",
-                "type": "local",
-                "fieldName": "slider_2"
-              }
-            ]
-          }
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.slider_2": [
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ]
-      }
+      "parameter_list": [
+        "title: Slider 2"
+      ]
     },
     {
       "type": "text",
@@ -94,23 +48,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "local variable for slider 2: @local.slider_2",
-            "matchedExpression": "@local.slider_2",
-            "type": "local",
-            "fieldName": "slider_2"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.slider_2": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -119,23 +57,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_3",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "field for slider 2: @field.slider_2_field",
-            "matchedExpression": "@field.slider_2_field",
-            "type": "field",
-            "fieldName": "slider_2_field"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.slider_2_field": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_dynamic.xlsx"

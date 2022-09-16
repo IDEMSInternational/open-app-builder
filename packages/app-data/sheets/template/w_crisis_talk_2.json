@@ -45,32 +45,6 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "talk_together.workshop_activity.intro_text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "This was such a difficult situation for @global.w_crisis_teen_boy_1 and his @global.w_crisis_male_caregiver_1!",
-                    "matchedExpression": "@global.w_crisis_teen_boy_1",
-                    "type": "global",
-                    "fieldName": "w_crisis_teen_boy_1"
-                  },
-                  {
-                    "fullExpression": "This was such a difficult situation for @global.w_crisis_teen_boy_1 and his @global.w_crisis_male_caregiver_1!",
-                    "matchedExpression": "@global.w_crisis_male_caregiver_1",
-                    "type": "global",
-                    "fieldName": "w_crisis_male_caregiver_1"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.w_crisis_teen_boy_1": [
-                  "value"
-                ],
-                "@global.w_crisis_male_caregiver_1": [
-                  "value"
-                ]
               }
             },
             {
@@ -89,23 +63,6 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "talk_together.workshop_activity.content_box.text",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "What skills did @global.w_crisis_male_caregiver_1 use?",
-                        "matchedExpression": "@global.w_crisis_male_caregiver_1",
-                        "type": "global",
-                        "fieldName": "w_crisis_male_caregiver_1"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@global.w_crisis_male_caregiver_1": [
-                      "value"
-                    ]
                   }
                 },
                 {
@@ -121,18 +78,13 @@
                       "_cleaned": "click | pop_up:w_crisis_talk_1_pop"
                     }
                   ],
-                  "hidden": false,
-                  "type": "set_variable",
-                  "_nested_name": "talk_together.workshop_activity.content_box.button_1"
+                  "hidden": false
                 }
-              ],
-              "_nested_name": "talk_together.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "talk_together.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "talk_together"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"

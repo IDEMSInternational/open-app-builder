@@ -34,30 +34,21 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "box_slider.question_id"
+          "exclude_from_translation": true
         },
         {
           "name": "replies",
-          "hidden": true,
-          "type": "set_variable",
-          "_nested_name": "box_slider.replies"
+          "hidden": true
         },
         {
           "name": "unlock_when_less",
-          "value": false,
-          "type": "set_variable",
-          "_nested_name": "box_slider.unlock_when_less"
+          "value": false
         },
         {
           "name": "unlock_when_greater_equal",
-          "value": false,
-          "type": "set_variable",
-          "_nested_name": "box_slider.unlock_when_greater_equal"
+          "value": false
         }
-      ],
-      "_nested_name": "box_slider"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/survey.xlsx"

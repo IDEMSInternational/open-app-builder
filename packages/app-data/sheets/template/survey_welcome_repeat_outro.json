@@ -27,8 +27,7 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "rows": [],
-      "_nested_name": "survey_welcome_outro"
+      "rows": []
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/survey_welcome_repeat.xlsx"

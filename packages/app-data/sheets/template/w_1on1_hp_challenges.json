@@ -9,23 +9,6 @@
       "value": "@data.workshop.w_1on1",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "workshop_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_1on1",
-            "matchedExpression": "@data.workshop.w_1on1",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_1on1": [
-          "value"
-        ]
       }
     },
     {
@@ -33,23 +16,6 @@
       "value": "@local.workshop_data.id",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "workshop",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop_data.id",
-            "matchedExpression": "@local.workshop_data.id",
-            "type": "local",
-            "fieldName": "workshop_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_data.id": [
-          "value"
-        ]
       }
     },
     {
@@ -58,41 +24,13 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "hp_mood"
+      "exclude_from_translation": true
     },
     {
       "name": "workshop_hp_mood",
       "value": "@local.workshop@local.hp_mood",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "workshop_hp_mood",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop@local.hp_mood",
-            "matchedExpression": "@local.workshop",
-            "type": "local",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@local.workshop@local.hp_mood",
-            "matchedExpression": "@local.hp_mood",
-            "type": "local",
-            "fieldName": "hp_mood"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop": [
-          "value"
-        ],
-        "@local.hp_mood": [
-          "value"
-        ]
       }
     },
     {
@@ -101,9 +39,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "hp_challenge"
+      "exclude_from_translation": true
     },
     {
       "name": "workshop_hp_challenge",
@@ -111,76 +47,22 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "workshop_hp_challenge",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop@local.hp_challenge",
-            "matchedExpression": "@local.workshop",
-            "type": "local",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@local.workshop@local.hp_challenge",
-            "matchedExpression": "@local.hp_challenge",
-            "type": "local",
-            "fieldName": "hp_challenge"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop": [
-          "value"
-        ],
-        "@local.hp_challenge": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "hp_challenge_list",
-      "value": [
-        "_hp_challenge_list"
-      ],
-      "type": "set_variable",
-      "_nested_name": "hp_challenge_list"
+      "value": "_hp_challenge_list",
+      "_translations": {
+        "value": {}
+      }
     },
     {
       "name": "workshop_hp_challenge_list",
-      "value": [
-        "@local.workshop@local.hp_challenge_list"
-      ],
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "workshop_hp_challenge_list",
-      "_dynamicFields": {
-        "value": {
-          "0": [
-            {
-              "fullExpression": "@local.workshop@local.hp_challenge_list",
-              "matchedExpression": "@local.workshop",
-              "type": "local",
-              "fieldName": "workshop"
-            },
-            {
-              "fullExpression": "@local.workshop@local.hp_challenge_list",
-              "matchedExpression": "@local.hp_challenge_list",
-              "type": "local",
-              "fieldName": "hp_challenge_list"
-            }
-          ]
-        }
+      "value": "@local.workshop@local.hp_challenge_list",
+      "_translations": {
+        "value": {}
       },
-      "_dynamicDependencies": {
-        "@local.workshop": [
-          "value.0"
-        ],
-        "@local.hp_challenge_list": [
-          "value.0"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -195,8 +77,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "top_text"
+      }
     },
     {
       "type": "text",
@@ -213,32 +94,9 @@
         }
       },
       "condition": "@fields.@local.workshop_hp_mood == \"happy\" || !@fields.@local.workshop_hp_mood",
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "question_text_happy",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@fields.@local.workshop_hp_mood == \"happy\" || !@fields.@local.workshop_hp_mood",
-            "matchedExpression": "@local.workshop_hp_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_mood"
-          },
-          {
-            "fullExpression": "@fields.@local.workshop_hp_mood == \"happy\" || !@fields.@local.workshop_hp_mood",
-            "matchedExpression": "@local.workshop_hp_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_mood"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_hp_mood": [
-          "condition",
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "style:emphasised"
+      ]
     },
     {
       "type": "text",
@@ -255,32 +113,9 @@
         }
       },
       "condition": "@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\"",
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "question_text_ok_sad",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\"",
-            "matchedExpression": "@local.workshop_hp_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_mood"
-          },
-          {
-            "fullExpression": "@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\"",
-            "matchedExpression": "@local.workshop_hp_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_mood"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_hp_mood": [
-          "condition",
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "style:emphasised"
+      ]
     },
     {
       "name": "text_challenge_1",
@@ -294,9 +129,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "text_challenge_1"
+      }
     },
     {
       "name": "text_challenge_2",
@@ -310,9 +143,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "text_challenge_2"
+      }
     },
     {
       "name": "text_challenge_3",
@@ -326,9 +157,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "text_challenge_3"
+      }
     },
     {
       "name": "text_challenge_4",
@@ -342,9 +171,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "text_challenge_4"
+      }
     },
     {
       "name": "text_challenge_5",
@@ -358,9 +185,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "text_challenge_5"
+      }
     },
     {
       "name": "text_challenge_6",
@@ -374,9 +199,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "text_challenge_6"
+      }
     },
     {
       "name": "text_challenge_7",
@@ -390,9 +213,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "text_challenge_7"
+      }
     },
     {
       "name": "text_challenge_8",
@@ -406,153 +227,20 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "text_challenge_8"
+      }
     },
     {
       "name": "text_other_challenge",
       "value": "@global.challenge_not_here",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "text_other_challenge",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.challenge_not_here",
-            "matchedExpression": "@global.challenge_not_here",
-            "type": "global",
-            "fieldName": "challenge_not_here"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.challenge_not_here": [
-          "value"
-        ]
       }
     },
     {
       "name": "answer_list",
-      "value": [
-        "name:challenge_1 | text:@local.text_challenge_1",
-        "name:challenge_2 | text:@local.text_challenge_2",
-        "name:challenge_3 | text:@local.text_challenge_3",
-        "name:challenge_4 | text:@local.text_challenge_4",
-        "name:challenge_5 | text:@local.text_challenge_5",
-        "name:challenge_6 | text:@local.text_challenge_6",
-        "name:challenge_7 | text:@local.text_challenge_7",
-        "name:challenge_8 | text:@local.text_challenge_8",
-        "name:other_challenge | text: @local.text_other_challenge"
-      ],
-      "type": "set_variable",
-      "_nested_name": "answer_list",
-      "_dynamicFields": {
-        "value": {
-          "0": [
-            {
-              "fullExpression": "name:challenge_1 | text:@local.text_challenge_1",
-              "matchedExpression": "@local.text_challenge_1",
-              "type": "local",
-              "fieldName": "text_challenge_1"
-            }
-          ],
-          "1": [
-            {
-              "fullExpression": "name:challenge_2 | text:@local.text_challenge_2",
-              "matchedExpression": "@local.text_challenge_2",
-              "type": "local",
-              "fieldName": "text_challenge_2"
-            }
-          ],
-          "2": [
-            {
-              "fullExpression": "name:challenge_3 | text:@local.text_challenge_3",
-              "matchedExpression": "@local.text_challenge_3",
-              "type": "local",
-              "fieldName": "text_challenge_3"
-            }
-          ],
-          "3": [
-            {
-              "fullExpression": "name:challenge_4 | text:@local.text_challenge_4",
-              "matchedExpression": "@local.text_challenge_4",
-              "type": "local",
-              "fieldName": "text_challenge_4"
-            }
-          ],
-          "4": [
-            {
-              "fullExpression": "name:challenge_5 | text:@local.text_challenge_5",
-              "matchedExpression": "@local.text_challenge_5",
-              "type": "local",
-              "fieldName": "text_challenge_5"
-            }
-          ],
-          "5": [
-            {
-              "fullExpression": "name:challenge_6 | text:@local.text_challenge_6",
-              "matchedExpression": "@local.text_challenge_6",
-              "type": "local",
-              "fieldName": "text_challenge_6"
-            }
-          ],
-          "6": [
-            {
-              "fullExpression": "name:challenge_7 | text:@local.text_challenge_7",
-              "matchedExpression": "@local.text_challenge_7",
-              "type": "local",
-              "fieldName": "text_challenge_7"
-            }
-          ],
-          "7": [
-            {
-              "fullExpression": "name:challenge_8 | text:@local.text_challenge_8",
-              "matchedExpression": "@local.text_challenge_8",
-              "type": "local",
-              "fieldName": "text_challenge_8"
-            }
-          ],
-          "8": [
-            {
-              "fullExpression": "name:other_challenge | text: @local.text_other_challenge",
-              "matchedExpression": "@local.text_other_challenge",
-              "type": "local",
-              "fieldName": "text_other_challenge"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.text_challenge_1": [
-          "value.0"
-        ],
-        "@local.text_challenge_2": [
-          "value.1"
-        ],
-        "@local.text_challenge_3": [
-          "value.2"
-        ],
-        "@local.text_challenge_4": [
-          "value.3"
-        ],
-        "@local.text_challenge_5": [
-          "value.4"
-        ],
-        "@local.text_challenge_6": [
-          "value.5"
-        ],
-        "@local.text_challenge_7": [
-          "value.6"
-        ],
-        "@local.text_challenge_8": [
-          "value.7"
-        ],
-        "@local.text_other_challenge": [
-          "value.8"
-        ]
+      "value": "name:challenge_1 | text:@local.text_challenge_1; \nname:challenge_2 | text:@local.text_challenge_2;\nname:challenge_3 | text:@local.text_challenge_3;\nname:challenge_4 | text:@local.text_challenge_4;\nname:challenge_5 | text:@local.text_challenge_5;\nname:challenge_6 | text:@local.text_challenge_6;\nname:challenge_7 | text:@local.text_challenge_7;\nname:challenge_8 | text:@local.text_challenge_8;\nname:other_challenge | text: @local.text_other_challenge",
+      "_translations": {
+        "value": {}
       }
     },
     {
@@ -564,7 +252,7 @@
           "action_id": "set_field",
           "args": [
             "@local.workshop_hp_challenge",
-            "this.value"
+            "@local.combo_box"
           ],
           "_raw": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box",
           "_cleaned": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box"
@@ -580,175 +268,18 @@
           "_cleaned": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box"
         }
       ],
-      "parameter_list": {
-        "answer_list": "@local.answer_list",
-        "placeholder": "@global.tap_and_choose"
-      },
-      "_nested_name": "combo_box",
-      "_dynamicFields": {
-        "action_list": {
-          "0": {
-            "args": {
-              "0": [
-                {
-                  "fullExpression": "@local.workshop_hp_challenge",
-                  "matchedExpression": "@local.workshop_hp_challenge",
-                  "type": "local",
-                  "fieldName": "workshop_hp_challenge"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box",
-                "matchedExpression": "@local.workshop_hp_challenge",
-                "type": "local",
-                "fieldName": "workshop_hp_challenge"
-              },
-              {
-                "fullExpression": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box",
-                "matchedExpression": "@local.combo_box",
-                "type": "local",
-                "fieldName": "combo_box"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box",
-                "matchedExpression": "@local.workshop_hp_challenge",
-                "type": "local",
-                "fieldName": "workshop_hp_challenge"
-              },
-              {
-                "fullExpression": "changed | set_field: @local.workshop_hp_challenge: @local.combo_box",
-                "matchedExpression": "@local.combo_box",
-                "type": "local",
-                "fieldName": "combo_box"
-              }
-            ]
-          },
-          "1": {
-            "args": {
-              "0": [
-                {
-                  "fullExpression": "@local.workshop_hp_challenge_list",
-                  "matchedExpression": "@local.workshop_hp_challenge_list",
-                  "type": "local",
-                  "fieldName": "workshop_hp_challenge_list"
-                }
-              ],
-              "1": [
-                {
-                  "fullExpression": "@fields.@local.workshop_hp_challenge_list, @local.combo_box",
-                  "matchedExpression": "@local.workshop_hp_challenge_list",
-                  "type": "local",
-                  "fieldName": "workshop_hp_challenge_list"
-                },
-                {
-                  "fullExpression": "@fields.@local.workshop_hp_challenge_list, @local.combo_box",
-                  "matchedExpression": "@local.combo_box",
-                  "type": "local",
-                  "fieldName": "combo_box"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
-                "matchedExpression": "@local.workshop_hp_challenge_list",
-                "type": "local",
-                "fieldName": "workshop_hp_challenge_list"
-              },
-              {
-                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
-                "matchedExpression": "@local.workshop_hp_challenge_list",
-                "type": "local",
-                "fieldName": "workshop_hp_challenge_list"
-              },
-              {
-                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
-                "matchedExpression": "@local.combo_box",
-                "type": "local",
-                "fieldName": "combo_box"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
-                "matchedExpression": "@local.workshop_hp_challenge_list",
-                "type": "local",
-                "fieldName": "workshop_hp_challenge_list"
-              },
-              {
-                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
-                "matchedExpression": "@local.workshop_hp_challenge_list",
-                "type": "local",
-                "fieldName": "workshop_hp_challenge_list"
-              },
-              {
-                "fullExpression": "changed | set_field: @local.workshop_hp_challenge_list: @fields.@local.workshop_hp_challenge_list, @local.combo_box",
-                "matchedExpression": "@local.combo_box",
-                "type": "local",
-                "fieldName": "combo_box"
-              }
-            ]
-          }
-        },
-        "parameter_list": {
-          "answer_list": [
-            {
-              "fullExpression": "@local.answer_list",
-              "matchedExpression": "@local.answer_list",
-              "type": "local",
-              "fieldName": "answer_list"
-            }
-          ],
-          "placeholder": [
-            {
-              "fullExpression": "@global.tap_and_choose",
-              "matchedExpression": "@global.tap_and_choose",
-              "type": "global",
-              "fieldName": "tap_and_choose"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_hp_challenge": [
-          "action_list.0.args.0",
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ],
-        "@local.combo_box": [
-          "action_list.0._raw",
-          "action_list.0._cleaned",
-          "action_list.1.args.1",
-          "action_list.1._raw",
-          "action_list.1._cleaned"
-        ],
-        "@local.workshop_hp_challenge_list": [
-          "action_list.1.args.0",
-          "action_list.1.args.1",
-          "action_list.1._raw",
-          "action_list.1._raw",
-          "action_list.1._cleaned",
-          "action_list.1._cleaned"
-        ],
-        "@local.answer_list": [
-          "parameter_list.answer_list"
-        ],
-        "@global.tap_and_choose": [
-          "parameter_list.placeholder"
-        ]
-      }
+      "parameter_list": [
+        "answer_list:@local.answer_list",
+        "placeholder: @global.tap_and_choose"
+      ]
     },
     {
       "type": "display_group",
       "name": "challenge_1",
       "condition": "@local.combo_box==\"challenge_1\"",
-      "parameter_list": {
-        "style": "column"
-      },
+      "parameter_list": [
+        "style:column"
+      ],
       "rows": [
         {
           "type": "text",
@@ -763,8 +294,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "_nested_name": "challenge_1.reply_challenge_1"
+          }
         },
         {
           "type": "text",
@@ -773,84 +303,25 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "emphasised"
-          },
-          "_nested_name": "challenge_1.question_text_challenge_1",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.try_this_hp_challenge",
-                "matchedExpression": "@global.try_this_hp_challenge",
-                "type": "global",
-                "fieldName": "try_this_hp_challenge"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.try_this_hp_challenge": [
-              "value"
-            ]
-          }
+          "parameter_list": [
+            "style:emphasised"
+          ]
         },
         {
           "name": "answer_list_challenge_1",
-          "value": [
-            "name:choice_1_a | text: Think of a time each day that I can spare five minutes or a bit more time.",
-            "name:choice_1_b | text: Find a chore that we could do together in a fun way.",
-            "name:choice_1_c | text: Ask my teen or someone else to help me with a chore, so I have some extra free time."
-          ],
-          "type": "set_variable",
-          "_nested_name": "challenge_1.answer_list_challenge_1"
+          "value": "name:choice_1_a | text: Think of a time each day that I can spare five minutes or a bit more time. ;\nname:choice_1_b | text: Find a chore that we could do together in a fun way.;\nname:choice_1_c | text: Ask my teen or someone else to help me with a chore, so I have some extra free time. ;",
+          "_translations": {
+            "value": {}
+          }
         },
         {
           "type": "combo_box",
           "name": "combo_box_challenge_1",
-          "parameter_list": {
-            "text": "@global.to_solve_hp_challenge",
-            "answer_list": "@local.answer_list_challenge_1",
-            "placeholder": "@global.tap_and_choose"
-          },
-          "_nested_name": "challenge_1.combo_box_challenge_1",
-          "_dynamicFields": {
-            "parameter_list": {
-              "text": [
-                {
-                  "fullExpression": "@global.to_solve_hp_challenge",
-                  "matchedExpression": "@global.to_solve_hp_challenge",
-                  "type": "global",
-                  "fieldName": "to_solve_hp_challenge"
-                }
-              ],
-              "answer_list": [
-                {
-                  "fullExpression": "@local.answer_list_challenge_1",
-                  "matchedExpression": "@local.answer_list_challenge_1",
-                  "type": "local",
-                  "fieldName": "answer_list_challenge_1"
-                }
-              ],
-              "placeholder": [
-                {
-                  "fullExpression": "@global.tap_and_choose",
-                  "matchedExpression": "@global.tap_and_choose",
-                  "type": "global",
-                  "fieldName": "tap_and_choose"
-                }
-              ]
-            }
-          },
-          "_dynamicDependencies": {
-            "@global.to_solve_hp_challenge": [
-              "parameter_list.text"
-            ],
-            "@local.answer_list_challenge_1": [
-              "parameter_list.answer_list"
-            ],
-            "@global.tap_and_choose": [
-              "parameter_list.placeholder"
-            ]
-          }
+          "parameter_list": [
+            "text: @global.to_solve_hp_challenge",
+            "answer_list: @local.answer_list_challenge_1",
+            "placeholder: @global.tap_and_choose"
+          ]
         },
         {
           "type": "text",
@@ -866,23 +337,7 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_1!=\"choice_1_a\"",
-          "_nested_name": "challenge_1.reply_choice_1_a",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_1!=\"choice_1_a\"",
-                "matchedExpression": "@local.combo_box_challenge_1",
-                "type": "local",
-                "fieldName": "combo_box_challenge_1"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_1": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_1!=\"choice_1_a\""
         },
         {
           "type": "text",
@@ -898,23 +353,7 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_1!=\"choice_1_b\"",
-          "_nested_name": "challenge_1.reply_choice_1_b",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_1!=\"choice_1_b\"",
-                "matchedExpression": "@local.combo_box_challenge_1",
-                "type": "local",
-                "fieldName": "combo_box_challenge_1"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_1": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_1!=\"choice_1_b\""
         },
         {
           "type": "text",
@@ -930,49 +369,17 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_1!=\"choice_1_c\"",
-          "_nested_name": "challenge_1.reply_choice_1_c",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_1!=\"choice_1_c\"",
-                "matchedExpression": "@local.combo_box_challenge_1",
-                "type": "local",
-                "fieldName": "combo_box_challenge_1"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_1": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_1!=\"choice_1_c\""
         }
-      ],
-      "_nested_name": "challenge_1",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.combo_box==\"challenge_1\"",
-            "matchedExpression": "@local.combo_box",
-            "type": "local",
-            "fieldName": "combo_box"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.combo_box": [
-          "condition"
-        ]
-      }
+      ]
     },
     {
       "type": "display_group",
       "name": "challenge_2",
       "condition": "@local.combo_box==\"challenge_2\"",
-      "parameter_list": {
-        "style": "column"
-      },
+      "parameter_list": [
+        "style:column"
+      ],
       "rows": [
         {
           "type": "text",
@@ -987,8 +394,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "_nested_name": "challenge_2.reply_challenge_2"
+          }
         },
         {
           "type": "text",
@@ -997,84 +403,25 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "emphasised"
-          },
-          "_nested_name": "challenge_2.question_text_challenge_2",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.try_this_hp_challenge",
-                "matchedExpression": "@global.try_this_hp_challenge",
-                "type": "global",
-                "fieldName": "try_this_hp_challenge"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.try_this_hp_challenge": [
-              "value"
-            ]
-          }
+          "parameter_list": [
+            "style:emphasised"
+          ]
         },
         {
           "name": "answer_list_challenge_2",
-          "value": [
-            "name:choice_2_a | text: Think of a time when my teen is more open to me, like in the morning or right before bedtime.",
-            "name:choice_2_b | text: Sit next to my teen when they are doing something they enjoy and show interest in what they like.",
-            "name:choice_2_c | text: Do something fun with the whole family."
-          ],
-          "type": "set_variable",
-          "_nested_name": "challenge_2.answer_list_challenge_2"
+          "value": "name:choice_2_a | text: Think of a time when my teen is more open to me, like in the morning or right before bedtime.;\nname:choice_2_b | text: Sit next to my teen when they are doing something they enjoy and show interest in what they like. ;\nname:choice_2_c | text: Do something fun with the whole family. ;",
+          "_translations": {
+            "value": {}
+          }
         },
         {
           "type": "combo_box",
           "name": "combo_box_challenge_2",
-          "parameter_list": {
-            "text": "@global.to_solve_hp_challenge",
-            "answer_list": "@local.answer_list_challenge_2",
-            "placeholder": "@global.tap_and_choose"
-          },
-          "_nested_name": "challenge_2.combo_box_challenge_2",
-          "_dynamicFields": {
-            "parameter_list": {
-              "text": [
-                {
-                  "fullExpression": "@global.to_solve_hp_challenge",
-                  "matchedExpression": "@global.to_solve_hp_challenge",
-                  "type": "global",
-                  "fieldName": "to_solve_hp_challenge"
-                }
-              ],
-              "answer_list": [
-                {
-                  "fullExpression": "@local.answer_list_challenge_2",
-                  "matchedExpression": "@local.answer_list_challenge_2",
-                  "type": "local",
-                  "fieldName": "answer_list_challenge_2"
-                }
-              ],
-              "placeholder": [
-                {
-                  "fullExpression": "@global.tap_and_choose",
-                  "matchedExpression": "@global.tap_and_choose",
-                  "type": "global",
-                  "fieldName": "tap_and_choose"
-                }
-              ]
-            }
-          },
-          "_dynamicDependencies": {
-            "@global.to_solve_hp_challenge": [
-              "parameter_list.text"
-            ],
-            "@local.answer_list_challenge_2": [
-              "parameter_list.answer_list"
-            ],
-            "@global.tap_and_choose": [
-              "parameter_list.placeholder"
-            ]
-          }
+          "parameter_list": [
+            "text: @global.to_solve_hp_challenge",
+            "answer_list: @local.answer_list_challenge_2",
+            "placeholder: @global.tap_and_choose"
+          ]
         },
         {
           "type": "text",
@@ -1090,23 +437,7 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_2!=\"choice_2_a\"",
-          "_nested_name": "challenge_2.reply_choice_2_a",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_2!=\"choice_2_a\"",
-                "matchedExpression": "@local.combo_box_challenge_2",
-                "type": "local",
-                "fieldName": "combo_box_challenge_2"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_2": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_2!=\"choice_2_a\""
         },
         {
           "type": "text",
@@ -1122,23 +453,7 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_2!=\"choice_2_b\"",
-          "_nested_name": "challenge_2.reply_choice_2_b",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_2!=\"choice_2_b\"",
-                "matchedExpression": "@local.combo_box_challenge_2",
-                "type": "local",
-                "fieldName": "combo_box_challenge_2"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_2": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_2!=\"choice_2_b\""
         },
         {
           "type": "text",
@@ -1154,49 +469,17 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_2!=\"choice_2_c\"",
-          "_nested_name": "challenge_2.reply_choice_2_c",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_2!=\"choice_2_c\"",
-                "matchedExpression": "@local.combo_box_challenge_2",
-                "type": "local",
-                "fieldName": "combo_box_challenge_2"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_2": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_2!=\"choice_2_c\""
         }
-      ],
-      "_nested_name": "challenge_2",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.combo_box==\"challenge_2\"",
-            "matchedExpression": "@local.combo_box",
-            "type": "local",
-            "fieldName": "combo_box"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.combo_box": [
-          "condition"
-        ]
-      }
+      ]
     },
     {
       "type": "display_group",
       "name": "challenge_3",
       "condition": "@local.combo_box==\"challenge_3\"",
-      "parameter_list": {
-        "style": "column"
-      },
+      "parameter_list": [
+        "style:column"
+      ],
       "rows": [
         {
           "type": "text",
@@ -1211,8 +494,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "_nested_name": "challenge_3.reply_challenge_3"
+          }
         },
         {
           "type": "text",
@@ -1221,84 +503,25 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "emphasised"
-          },
-          "_nested_name": "challenge_3.question_text_challenge_3",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.try_this_hp_challenge",
-                "matchedExpression": "@global.try_this_hp_challenge",
-                "type": "global",
-                "fieldName": "try_this_hp_challenge"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.try_this_hp_challenge": [
-              "value"
-            ]
-          }
+          "parameter_list": [
+            "style:emphasised"
+          ]
         },
         {
           "name": "answer_list_challenge_3",
-          "value": [
-            "name:choice_3_a | text: Suggest fun things my teen and I could do together.",
-            "name:choice_3_b | text: Find something educational to do with my teen on the gadget.",
-            "name:choice_3_c | text: Ask my teen to show me how their phone/gadget works."
-          ],
-          "type": "set_variable",
-          "_nested_name": "challenge_3.answer_list_challenge_3"
+          "value": "name:choice_3_a | text: Suggest fun things my teen and I could do together.  ;\nname:choice_3_b | text: Find something educational to do with my teen on the gadget. ;\nname:choice_3_c | text: Ask my teen to show me how their phone/gadget works. ;",
+          "_translations": {
+            "value": {}
+          }
         },
         {
           "type": "combo_box",
           "name": "combo_box_challenge_3",
-          "parameter_list": {
-            "text": "@global.to_solve_hp_challenge",
-            "answer_list": "@local.answer_list_challenge_3",
-            "placeholder": "@global.tap_and_choose"
-          },
-          "_nested_name": "challenge_3.combo_box_challenge_3",
-          "_dynamicFields": {
-            "parameter_list": {
-              "text": [
-                {
-                  "fullExpression": "@global.to_solve_hp_challenge",
-                  "matchedExpression": "@global.to_solve_hp_challenge",
-                  "type": "global",
-                  "fieldName": "to_solve_hp_challenge"
-                }
-              ],
-              "answer_list": [
-                {
-                  "fullExpression": "@local.answer_list_challenge_3",
-                  "matchedExpression": "@local.answer_list_challenge_3",
-                  "type": "local",
-                  "fieldName": "answer_list_challenge_3"
-                }
-              ],
-              "placeholder": [
-                {
-                  "fullExpression": "@global.tap_and_choose",
-                  "matchedExpression": "@global.tap_and_choose",
-                  "type": "global",
-                  "fieldName": "tap_and_choose"
-                }
-              ]
-            }
-          },
-          "_dynamicDependencies": {
-            "@global.to_solve_hp_challenge": [
-              "parameter_list.text"
-            ],
-            "@local.answer_list_challenge_3": [
-              "parameter_list.answer_list"
-            ],
-            "@global.tap_and_choose": [
-              "parameter_list.placeholder"
-            ]
-          }
+          "parameter_list": [
+            "text: @global.to_solve_hp_challenge",
+            "answer_list: @local.answer_list_challenge_3",
+            "placeholder: @global.tap_and_choose"
+          ]
         },
         {
           "type": "text",
@@ -1314,23 +537,7 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_3!=\"choice_3_a\"",
-          "_nested_name": "challenge_3.reply_choice_3_a",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_3!=\"choice_3_a\"",
-                "matchedExpression": "@local.combo_box_challenge_3",
-                "type": "local",
-                "fieldName": "combo_box_challenge_3"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_3": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_3!=\"choice_3_a\""
         },
         {
           "type": "button",
@@ -1350,34 +557,7 @@
               "_cleaned": "click | pop_up:w_1on1_talk_pop"
             }
           ],
-          "hidden": "@local.combo_box_challenge_3!=\"choice_3_a\"",
-          "_nested_name": "challenge_3.button_choice_3_a",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.ideas_button",
-                "matchedExpression": "@global.ideas_button",
-                "type": "global",
-                "fieldName": "ideas_button"
-              }
-            ],
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_3!=\"choice_3_a\"",
-                "matchedExpression": "@local.combo_box_challenge_3",
-                "type": "local",
-                "fieldName": "combo_box_challenge_3"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.ideas_button": [
-              "value"
-            ],
-            "@local.combo_box_challenge_3": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_3!=\"choice_3_a\""
         },
         {
           "type": "text",
@@ -1393,23 +573,7 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_3!=\"choice_3_b\"",
-          "_nested_name": "challenge_3.reply_choice_3_b",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_3!=\"choice_3_b\"",
-                "matchedExpression": "@local.combo_box_challenge_3",
-                "type": "local",
-                "fieldName": "combo_box_challenge_3"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_3": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_3!=\"choice_3_b\""
         },
         {
           "type": "text",
@@ -1425,49 +589,17 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_3!=\"choice_3_c\"",
-          "_nested_name": "challenge_3.reply_choice_3_c",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_3!=\"choice_3_c\"",
-                "matchedExpression": "@local.combo_box_challenge_3",
-                "type": "local",
-                "fieldName": "combo_box_challenge_3"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_3": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_3!=\"choice_3_c\""
         }
-      ],
-      "_nested_name": "challenge_3",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.combo_box==\"challenge_3\"",
-            "matchedExpression": "@local.combo_box",
-            "type": "local",
-            "fieldName": "combo_box"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.combo_box": [
-          "condition"
-        ]
-      }
+      ]
     },
     {
       "type": "display_group",
       "name": "challenge_4",
       "condition": "@local.combo_box==\"challenge_4\"",
-      "parameter_list": {
-        "style": "column"
-      },
+      "parameter_list": [
+        "style:column"
+      ],
       "rows": [
         {
           "type": "text",
@@ -1482,8 +614,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "_nested_name": "challenge_4.reply_challenge_4"
+          }
         },
         {
           "type": "text",
@@ -1492,83 +623,25 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "emphasised"
-          },
-          "_nested_name": "challenge_4.question_text_challenge_3",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.try_this_hp_challenge",
-                "matchedExpression": "@global.try_this_hp_challenge",
-                "type": "global",
-                "fieldName": "try_this_hp_challenge"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.try_this_hp_challenge": [
-              "value"
-            ]
-          }
+          "parameter_list": [
+            "style:emphasised"
+          ]
         },
         {
           "name": "answer_list_challenge_4",
-          "value": [
-            "name:choice_4_a | text: Explain to my teen why their suggestion is not safe or possible and ask them for other ideas.",
-            "name:choice_4_b | text: Suggest other fun activities that we could do together."
-          ],
-          "type": "set_variable",
-          "_nested_name": "challenge_4.answer_list_challenge_4"
+          "value": "name:choice_4_a | text: Explain to my teen why their suggestion is not safe or possible and ask them for other ideas.  ;\nname:choice_4_b | text: Suggest other fun activities that we could do together. ;",
+          "_translations": {
+            "value": {}
+          }
         },
         {
           "type": "combo_box",
           "name": "combo_box_challenge_4",
-          "parameter_list": {
-            "text": "@global.to_solve_hp_challenge",
-            "answer_list": "@local.answer_list_challenge_4",
-            "placeholder": "@global.tap_and_choose"
-          },
-          "_nested_name": "challenge_4.combo_box_challenge_4",
-          "_dynamicFields": {
-            "parameter_list": {
-              "text": [
-                {
-                  "fullExpression": "@global.to_solve_hp_challenge",
-                  "matchedExpression": "@global.to_solve_hp_challenge",
-                  "type": "global",
-                  "fieldName": "to_solve_hp_challenge"
-                }
-              ],
-              "answer_list": [
-                {
-                  "fullExpression": "@local.answer_list_challenge_4",
-                  "matchedExpression": "@local.answer_list_challenge_4",
-                  "type": "local",
-                  "fieldName": "answer_list_challenge_4"
-                }
-              ],
-              "placeholder": [
-                {
-                  "fullExpression": "@global.tap_and_choose",
-                  "matchedExpression": "@global.tap_and_choose",
-                  "type": "global",
-                  "fieldName": "tap_and_choose"
-                }
-              ]
-            }
-          },
-          "_dynamicDependencies": {
-            "@global.to_solve_hp_challenge": [
-              "parameter_list.text"
-            ],
-            "@local.answer_list_challenge_4": [
-              "parameter_list.answer_list"
-            ],
-            "@global.tap_and_choose": [
-              "parameter_list.placeholder"
-            ]
-          }
+          "parameter_list": [
+            "text: @global.to_solve_hp_challenge",
+            "answer_list: @local.answer_list_challenge_4",
+            "placeholder: @global.tap_and_choose"
+          ]
         },
         {
           "type": "text",
@@ -1584,23 +657,7 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_4!=\"choice_4_a\"",
-          "_nested_name": "challenge_4.reply_choice_4_a",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_4!=\"choice_4_a\"",
-                "matchedExpression": "@local.combo_box_challenge_4",
-                "type": "local",
-                "fieldName": "combo_box_challenge_4"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_4": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_4!=\"choice_4_a\""
         },
         {
           "type": "text",
@@ -1616,60 +673,17 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_4!=\"choice_4_b\"",
-          "_nested_name": "challenge_4.reply_choice_4_b",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "This is perfect! If you need any inspiration, you can find suggestions for activities @data.parent_centre.relax_and_activities.location_text. Remember, let your teen choose the activity!",
-                "matchedExpression": "@data.parent_centre.relax_and_activities.location_text",
-                "type": "data",
-                "fieldName": "parent_centre"
-              }
-            ],
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_4!=\"choice_4_b\"",
-                "matchedExpression": "@local.combo_box_challenge_4",
-                "type": "local",
-                "fieldName": "combo_box_challenge_4"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.parent_centre.relax_and_activities.location_text": [
-              "value"
-            ],
-            "@local.combo_box_challenge_4": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_4!=\"choice_4_b\""
         }
-      ],
-      "_nested_name": "challenge_4",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.combo_box==\"challenge_4\"",
-            "matchedExpression": "@local.combo_box",
-            "type": "local",
-            "fieldName": "combo_box"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.combo_box": [
-          "condition"
-        ]
-      }
+      ]
     },
     {
       "type": "display_group",
       "name": "challenge_5",
       "condition": "@local.combo_box==\"challenge_5\"",
-      "parameter_list": {
-        "style": "column"
-      },
+      "parameter_list": [
+        "style:column"
+      ],
       "rows": [
         {
           "type": "text",
@@ -1684,8 +698,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "_nested_name": "challenge_5.reply_challenge_5"
+          }
         },
         {
           "type": "text",
@@ -1694,83 +707,25 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "emphasised"
-          },
-          "_nested_name": "challenge_5.question_text_challenge_5",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.try_this_hp_challenge",
-                "matchedExpression": "@global.try_this_hp_challenge",
-                "type": "global",
-                "fieldName": "try_this_hp_challenge"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.try_this_hp_challenge": [
-              "value"
-            ]
-          }
+          "parameter_list": [
+            "style:emphasised"
+          ]
         },
         {
           "name": "answer_list_challenge_5",
-          "value": [
-            "name:choice_5_a | text: Watch my teen do the activity and cheer them on.",
-            "name:choice_5_b | text: Suggest other fun activities we can do together."
-          ],
-          "type": "set_variable",
-          "_nested_name": "challenge_5.answer_list_challenge_5"
+          "value": "name:choice_5_a | text: Watch my teen do the activity and cheer them on.;\nname:choice_5_b | text: Suggest other fun activities we can do together.;",
+          "_translations": {
+            "value": {}
+          }
         },
         {
           "type": "combo_box",
           "name": "combo_box_challenge_5",
-          "parameter_list": {
-            "text": "@global.to_solve_hp_challenge",
-            "answer_list": "@local.answer_list_challenge_5",
-            "placeholder": "@global.tap_and_choose"
-          },
-          "_nested_name": "challenge_5.combo_box_challenge_5",
-          "_dynamicFields": {
-            "parameter_list": {
-              "text": [
-                {
-                  "fullExpression": "@global.to_solve_hp_challenge",
-                  "matchedExpression": "@global.to_solve_hp_challenge",
-                  "type": "global",
-                  "fieldName": "to_solve_hp_challenge"
-                }
-              ],
-              "answer_list": [
-                {
-                  "fullExpression": "@local.answer_list_challenge_5",
-                  "matchedExpression": "@local.answer_list_challenge_5",
-                  "type": "local",
-                  "fieldName": "answer_list_challenge_5"
-                }
-              ],
-              "placeholder": [
-                {
-                  "fullExpression": "@global.tap_and_choose",
-                  "matchedExpression": "@global.tap_and_choose",
-                  "type": "global",
-                  "fieldName": "tap_and_choose"
-                }
-              ]
-            }
-          },
-          "_dynamicDependencies": {
-            "@global.to_solve_hp_challenge": [
-              "parameter_list.text"
-            ],
-            "@local.answer_list_challenge_5": [
-              "parameter_list.answer_list"
-            ],
-            "@global.tap_and_choose": [
-              "parameter_list.placeholder"
-            ]
-          }
+          "parameter_list": [
+            "text: @global.to_solve_hp_challenge",
+            "answer_list: @local.answer_list_challenge_5",
+            "placeholder: @global.tap_and_choose"
+          ]
         },
         {
           "type": "text",
@@ -1786,23 +741,7 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_5!=\"choice_5_a\"",
-          "_nested_name": "challenge_5.reply_choice_5_a",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_5!=\"choice_5_a\"",
-                "matchedExpression": "@local.combo_box_challenge_5",
-                "type": "local",
-                "fieldName": "combo_box_challenge_5"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_5": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_5!=\"choice_5_a\""
         },
         {
           "type": "text",
@@ -1818,60 +757,17 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_5!=\"choice_5_b\"",
-          "_nested_name": "challenge_5.reply_choice_5_b",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "That’s perfect! If you need any inspiration, you can find suggestions for activities @data.parent_centre.relax_and_activities.location_text. Remember, let your teen choose the activity!",
-                "matchedExpression": "@data.parent_centre.relax_and_activities.location_text",
-                "type": "data",
-                "fieldName": "parent_centre"
-              }
-            ],
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_5!=\"choice_5_b\"",
-                "matchedExpression": "@local.combo_box_challenge_5",
-                "type": "local",
-                "fieldName": "combo_box_challenge_5"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.parent_centre.relax_and_activities.location_text": [
-              "value"
-            ],
-            "@local.combo_box_challenge_5": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_5!=\"choice_5_b\""
         }
-      ],
-      "_nested_name": "challenge_5",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.combo_box==\"challenge_5\"",
-            "matchedExpression": "@local.combo_box",
-            "type": "local",
-            "fieldName": "combo_box"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.combo_box": [
-          "condition"
-        ]
-      }
+      ]
     },
     {
       "type": "display_group",
       "name": "challenge_6",
       "condition": "@local.combo_box==\"challenge_6\"",
-      "parameter_list": {
-        "style": "column"
-      },
+      "parameter_list": [
+        "style:column"
+      ],
       "rows": [
         {
           "type": "text",
@@ -1886,8 +782,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "_nested_name": "challenge_6.reply_challenge_6"
+          }
         },
         {
           "type": "text",
@@ -1896,83 +791,25 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "emphasised"
-          },
-          "_nested_name": "challenge_6.question_text_challenge_6",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.try_this_hp_challenge",
-                "matchedExpression": "@global.try_this_hp_challenge",
-                "type": "global",
-                "fieldName": "try_this_hp_challenge"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.try_this_hp_challenge": [
-              "value"
-            ]
-          }
+          "parameter_list": [
+            "style:emphasised"
+          ]
         },
         {
           "name": "answer_list_challenge_6",
-          "value": [
-            "name:choice_6_a | text: Suggest other activities that we can do together instead of against each other.",
-            "name:choice_6_b | text: Play the activity in teams, so I can encourage my teen if our team loses."
-          ],
-          "type": "set_variable",
-          "_nested_name": "challenge_6.answer_list_challenge_6"
+          "value": "name:choice_6_a | text: Suggest other activities that we can do together instead of against each other.;\nname:choice_6_b | text: Play the activity in teams, so I can encourage my teen if our team loses.;",
+          "_translations": {
+            "value": {}
+          }
         },
         {
           "type": "combo_box",
           "name": "combo_box_challenge_6",
-          "parameter_list": {
-            "text": "@global.to_solve_hp_challenge",
-            "answer_list": "@local.answer_list_challenge_6",
-            "placeholder": "@global.tap_and_choose"
-          },
-          "_nested_name": "challenge_6.combo_box_challenge_6",
-          "_dynamicFields": {
-            "parameter_list": {
-              "text": [
-                {
-                  "fullExpression": "@global.to_solve_hp_challenge",
-                  "matchedExpression": "@global.to_solve_hp_challenge",
-                  "type": "global",
-                  "fieldName": "to_solve_hp_challenge"
-                }
-              ],
-              "answer_list": [
-                {
-                  "fullExpression": "@local.answer_list_challenge_6",
-                  "matchedExpression": "@local.answer_list_challenge_6",
-                  "type": "local",
-                  "fieldName": "answer_list_challenge_6"
-                }
-              ],
-              "placeholder": [
-                {
-                  "fullExpression": "@global.tap_and_choose",
-                  "matchedExpression": "@global.tap_and_choose",
-                  "type": "global",
-                  "fieldName": "tap_and_choose"
-                }
-              ]
-            }
-          },
-          "_dynamicDependencies": {
-            "@global.to_solve_hp_challenge": [
-              "parameter_list.text"
-            ],
-            "@local.answer_list_challenge_6": [
-              "parameter_list.answer_list"
-            ],
-            "@global.tap_and_choose": [
-              "parameter_list.placeholder"
-            ]
-          }
+          "parameter_list": [
+            "text: @global.to_solve_hp_challenge",
+            "answer_list: @local.answer_list_challenge_6",
+            "placeholder: @global.tap_and_choose"
+          ]
         },
         {
           "type": "text",
@@ -1988,34 +825,7 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_6!=\"choice_6_a\"",
-          "_nested_name": "challenge_6.reply_choice_6_a",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "Remember, let your teen choose! You can find suggestions for activities you could do with your teen @data.parent_centre.relax_and_activities.location_text, if you need it.",
-                "matchedExpression": "@data.parent_centre.relax_and_activities.location_text",
-                "type": "data",
-                "fieldName": "parent_centre"
-              }
-            ],
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_6!=\"choice_6_a\"",
-                "matchedExpression": "@local.combo_box_challenge_6",
-                "type": "local",
-                "fieldName": "combo_box_challenge_6"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.parent_centre.relax_and_activities.location_text": [
-              "value"
-            ],
-            "@local.combo_box_challenge_6": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_6!=\"choice_6_a\""
         },
         {
           "type": "text",
@@ -2031,49 +841,17 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_6!=\"choice_6_b\"",
-          "_nested_name": "challenge_6.reply_choice_6_b",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_6!=\"choice_6_b\"",
-                "matchedExpression": "@local.combo_box_challenge_6",
-                "type": "local",
-                "fieldName": "combo_box_challenge_6"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_6": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_6!=\"choice_6_b\""
         }
-      ],
-      "_nested_name": "challenge_6",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.combo_box==\"challenge_6\"",
-            "matchedExpression": "@local.combo_box",
-            "type": "local",
-            "fieldName": "combo_box"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.combo_box": [
-          "condition"
-        ]
-      }
+      ]
     },
     {
       "type": "display_group",
       "name": "challenge_7",
       "condition": "@local.combo_box==\"challenge_7\"",
-      "parameter_list": {
-        "style": "column"
-      },
+      "parameter_list": [
+        "style:column"
+      ],
       "rows": [
         {
           "type": "text",
@@ -2088,8 +866,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "_nested_name": "challenge_7.reply_challenge_7"
+          }
         },
         {
           "type": "text",
@@ -2098,84 +875,25 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "emphasised"
-          },
-          "_nested_name": "challenge_7.question_text_challenge_7",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.try_this_hp_challenge",
-                "matchedExpression": "@global.try_this_hp_challenge",
-                "type": "global",
-                "fieldName": "try_this_hp_challenge"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.try_this_hp_challenge": [
-              "value"
-            ]
-          }
+          "parameter_list": [
+            "style:emphasised"
+          ]
         },
         {
           "name": "answer_list_challenge_7",
-          "value": [
-            "name:choice_7_a | text: Say to my teen, “We have one minute before the end of one-on-one time today”, so my teen is prepared.",
-            "name:choice_7_b | text: Inform my teen of how much time I have for one-on-one time and ask them to keep track on a clock or watch.",
-            "name:choice_7_c | text: Plan one-on-one time right before another activity that my teen enjoys."
-          ],
-          "type": "set_variable",
-          "_nested_name": "challenge_7.answer_list_challenge_7"
+          "value": "name:choice_7_a | text: Say to my teen, “We have one minute before the end of one-on-one time today”, so my teen is prepared.  ;\nname:choice_7_b | text: Inform my teen of how much time I have for one-on-one time and ask them to keep track on a clock or watch. ;\nname:choice_7_c | text: Plan one-on-one time right before another activity that my teen enjoys. ;",
+          "_translations": {
+            "value": {}
+          }
         },
         {
           "type": "combo_box",
           "name": "combo_box_challenge_7",
-          "parameter_list": {
-            "text": "@global.to_solve_hp_challenge",
-            "answer_list": "@local.answer_list_challenge_7",
-            "placeholder": "@global.tap_and_choose"
-          },
-          "_nested_name": "challenge_7.combo_box_challenge_7",
-          "_dynamicFields": {
-            "parameter_list": {
-              "text": [
-                {
-                  "fullExpression": "@global.to_solve_hp_challenge",
-                  "matchedExpression": "@global.to_solve_hp_challenge",
-                  "type": "global",
-                  "fieldName": "to_solve_hp_challenge"
-                }
-              ],
-              "answer_list": [
-                {
-                  "fullExpression": "@local.answer_list_challenge_7",
-                  "matchedExpression": "@local.answer_list_challenge_7",
-                  "type": "local",
-                  "fieldName": "answer_list_challenge_7"
-                }
-              ],
-              "placeholder": [
-                {
-                  "fullExpression": "@global.tap_and_choose",
-                  "matchedExpression": "@global.tap_and_choose",
-                  "type": "global",
-                  "fieldName": "tap_and_choose"
-                }
-              ]
-            }
-          },
-          "_dynamicDependencies": {
-            "@global.to_solve_hp_challenge": [
-              "parameter_list.text"
-            ],
-            "@local.answer_list_challenge_7": [
-              "parameter_list.answer_list"
-            ],
-            "@global.tap_and_choose": [
-              "parameter_list.placeholder"
-            ]
-          }
+          "parameter_list": [
+            "text: @global.to_solve_hp_challenge",
+            "answer_list: @local.answer_list_challenge_7",
+            "placeholder: @global.tap_and_choose"
+          ]
         },
         {
           "type": "text",
@@ -2191,23 +909,7 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_7!=\"choice_7_a\"",
-          "_nested_name": "challenge_7.reply_choice_7_a",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_7!=\"choice_7_a\"",
-                "matchedExpression": "@local.combo_box_challenge_7",
-                "type": "local",
-                "fieldName": "combo_box_challenge_7"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_7": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_7!=\"choice_7_a\""
         },
         {
           "type": "text",
@@ -2223,23 +925,7 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_7!=\"choice_7_b\"",
-          "_nested_name": "challenge_7.reply_choice_7_b",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_7!=\"choice_7_b\"",
-                "matchedExpression": "@local.combo_box_challenge_7",
-                "type": "local",
-                "fieldName": "combo_box_challenge_7"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_7": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_7!=\"choice_7_b\""
         },
         {
           "type": "text",
@@ -2255,49 +941,17 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_7!=\"choice_7_c\"",
-          "_nested_name": "challenge_7.reply_choice_7_c",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_7!=\"choice_7_c\"",
-                "matchedExpression": "@local.combo_box_challenge_7",
-                "type": "local",
-                "fieldName": "combo_box_challenge_7"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_7": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_7!=\"choice_7_c\""
         }
-      ],
-      "_nested_name": "challenge_7",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.combo_box==\"challenge_7\"",
-            "matchedExpression": "@local.combo_box",
-            "type": "local",
-            "fieldName": "combo_box"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.combo_box": [
-          "condition"
-        ]
-      }
+      ]
     },
     {
       "type": "display_group",
       "name": "challenge_8",
       "condition": "@local.combo_box==\"challenge_8\"",
-      "parameter_list": {
-        "style": "column"
-      },
+      "parameter_list": [
+        "style:column"
+      ],
       "rows": [
         {
           "type": "text",
@@ -2312,8 +966,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "_nested_name": "challenge_8.reply_challenge_8"
+          }
         },
         {
           "type": "text",
@@ -2322,84 +975,25 @@
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "emphasised"
-          },
-          "_nested_name": "challenge_8.question_text_challenge_8",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.try_this_hp_challenge",
-                "matchedExpression": "@global.try_this_hp_challenge",
-                "type": "global",
-                "fieldName": "try_this_hp_challenge"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.try_this_hp_challenge": [
-              "value"
-            ]
-          }
+          "parameter_list": [
+            "style:emphasised"
+          ]
         },
         {
           "name": "answer_list_challenge_8",
-          "value": [
-            "name:choice_8_a | text: Ask another adult or older sibling to look after the younger children during the one-on-one time with my teen.",
-            "name:choice_8_b | text: Think of a time when the other children are not around and spend time with my teen then.",
-            "name:choice_8_c | text: Plan one-on-one time in a place other than at home."
-          ],
-          "type": "set_variable",
-          "_nested_name": "challenge_8.answer_list_challenge_8"
+          "value": "name:choice_8_a | text: Ask another adult or older sibling to look after the younger children during the one-on-one time with my teen.;\nname:choice_8_b | text: Think of a time when the other children are not around and spend time with my teen then.;\nname:choice_8_c | text: Plan one-on-one time in a place other than at home.;",
+          "_translations": {
+            "value": {}
+          }
         },
         {
           "type": "combo_box",
           "name": "combo_box_challenge_8",
-          "parameter_list": {
-            "text": "@global.to_solve_hp_challenge",
-            "answer_list": "@local.answer_list_challenge_8",
-            "placeholder": "@global.tap_and_choose"
-          },
-          "_nested_name": "challenge_8.combo_box_challenge_8",
-          "_dynamicFields": {
-            "parameter_list": {
-              "text": [
-                {
-                  "fullExpression": "@global.to_solve_hp_challenge",
-                  "matchedExpression": "@global.to_solve_hp_challenge",
-                  "type": "global",
-                  "fieldName": "to_solve_hp_challenge"
-                }
-              ],
-              "answer_list": [
-                {
-                  "fullExpression": "@local.answer_list_challenge_8",
-                  "matchedExpression": "@local.answer_list_challenge_8",
-                  "type": "local",
-                  "fieldName": "answer_list_challenge_8"
-                }
-              ],
-              "placeholder": [
-                {
-                  "fullExpression": "@global.tap_and_choose",
-                  "matchedExpression": "@global.tap_and_choose",
-                  "type": "global",
-                  "fieldName": "tap_and_choose"
-                }
-              ]
-            }
-          },
-          "_dynamicDependencies": {
-            "@global.to_solve_hp_challenge": [
-              "parameter_list.text"
-            ],
-            "@local.answer_list_challenge_8": [
-              "parameter_list.answer_list"
-            ],
-            "@global.tap_and_choose": [
-              "parameter_list.placeholder"
-            ]
-          }
+          "parameter_list": [
+            "text: @global.to_solve_hp_challenge",
+            "answer_list: @local.answer_list_challenge_8",
+            "placeholder: @global.tap_and_choose"
+          ]
         },
         {
           "type": "text",
@@ -2415,23 +1009,7 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_8!=\"choice_8_a\"",
-          "_nested_name": "challenge_8.reply_choice_8_a",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_8!=\"choice_8_a\"",
-                "matchedExpression": "@local.combo_box_challenge_8",
-                "type": "local",
-                "fieldName": "combo_box_challenge_8"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_8": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_8!=\"choice_8_a\""
         },
         {
           "type": "text",
@@ -2447,23 +1025,7 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_8!=\"choice_8_b\"",
-          "_nested_name": "challenge_8.reply_choice_8_b",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_8!=\"choice_8_b\"",
-                "matchedExpression": "@local.combo_box_challenge_8",
-                "type": "local",
-                "fieldName": "combo_box_challenge_8"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_8": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_8!=\"choice_8_b\""
         },
         {
           "type": "text",
@@ -2479,41 +1041,9 @@
               "za_zu": true
             }
           },
-          "hidden": "@local.combo_box_challenge_8!=\"choice_8_c\"",
-          "_nested_name": "challenge_8.reply_choice_8_c",
-          "_dynamicFields": {
-            "hidden": [
-              {
-                "fullExpression": "@local.combo_box_challenge_8!=\"choice_8_c\"",
-                "matchedExpression": "@local.combo_box_challenge_8",
-                "type": "local",
-                "fieldName": "combo_box_challenge_8"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.combo_box_challenge_8": [
-              "hidden"
-            ]
-          }
+          "hidden": "@local.combo_box_challenge_8!=\"choice_8_c\""
         }
-      ],
-      "_nested_name": "challenge_8",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.combo_box==\"challenge_8\"",
-            "matchedExpression": "@local.combo_box",
-            "type": "local",
-            "fieldName": "combo_box"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.combo_box": [
-          "condition"
-        ]
-      }
+      ]
     },
     {
       "type": "template",
@@ -2526,42 +1056,9 @@
           "value": "@local.workshop_data",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "hp_review_other_challenge.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.workshop_data",
-                "matchedExpression": "@local.workshop_data",
-                "type": "local",
-                "fieldName": "workshop_data"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.workshop_data": [
-              "value"
-            ]
           }
         }
-      ],
-      "_nested_name": "hp_review_other_challenge",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.combo_box==\"other_challenge\"",
-            "matchedExpression": "@local.combo_box",
-            "type": "local",
-            "fieldName": "combo_box"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.combo_box": [
-          "condition"
-        ]
-      }
+      ]
     },
     {
       "type": "template",
@@ -2587,8 +1084,7 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "rows": [],
-      "_nested_name": "nav_buttons"
+      "rows": []
     }
   ],
   "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"

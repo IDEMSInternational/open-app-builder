@@ -11,16 +11,14 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
       "name": "name_debug_go_to_nest_bottom",
       "value": "debug_go_to_nest_bottom",
       "exclude_from_translation": true,
-      "rows": [],
-      "_nested_name": "name_debug_go_to_nest_bottom"
+      "rows": []
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_go_to_nested.xlsx"

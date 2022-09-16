@@ -45,9 +45,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "talk_together.workshop_activity.intro_text"
+              }
             },
             {
               "type": "nested_properties",
@@ -65,9 +63,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "talk_together.workshop_activity.content_box.text"
+                  }
                 },
                 {
                   "name": "button_1",
@@ -86,33 +82,13 @@
                       "_cleaned": "click | pop_up:w_consequence_talk_3_pop"
                     }
                   ],
-                  "hidden": false,
-                  "type": "set_variable",
-                  "_nested_name": "talk_together.workshop_activity.content_box.button_1",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "@global.ideas_short_button",
-                        "matchedExpression": "@global.ideas_short_button",
-                        "type": "global",
-                        "fieldName": "ideas_short_button"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@global.ideas_short_button": [
-                      "value"
-                    ]
-                  }
+                  "hidden": false
                 }
-              ],
-              "_nested_name": "talk_together.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "talk_together.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "talk_together"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"

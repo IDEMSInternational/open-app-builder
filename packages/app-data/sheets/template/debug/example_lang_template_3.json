@@ -8,8 +8,7 @@
       "type": "template",
       "name": "lang_select",
       "value": "example_lang_select",
-      "rows": [],
-      "_nested_name": "lang_select"
+      "rows": []
     },
     {
       "type": "text",
@@ -18,23 +17,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "**@data.example_lang.example_lang_1.title**",
-            "matchedExpression": "@data.example_lang.example_lang_1.title",
-            "type": "data",
-            "fieldName": "example_lang"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.example_lang.example_lang_1.title": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -43,23 +26,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.example_lang.example_lang_1.bold_title",
-            "matchedExpression": "@data.example_lang.example_lang_1.bold_title",
-            "type": "data",
-            "fieldName": "example_lang"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.example_lang.example_lang_1.bold_title": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -68,23 +35,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_3",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.example_lang.example_lang_1.title happy",
-            "matchedExpression": "@data.example_lang.example_lang_1.title",
-            "type": "data",
-            "fieldName": "example_lang"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.example_lang.example_lang_1.title": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -93,23 +44,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_4",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.example_lang.example_lang_1.title_and_happy",
-            "matchedExpression": "@data.example_lang.example_lang_1.title_and_happy",
-            "type": "data",
-            "fieldName": "example_lang"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.example_lang.example_lang_1.title_and_happy": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_languages.xlsx"

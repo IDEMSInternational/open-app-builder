@@ -14,9 +14,7 @@
           "za_st": true,
           "za_tn": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "verse_1_1"
+      }
     },
     {
       "name": "verse_1_2",
@@ -28,9 +26,7 @@
           "za_st": true,
           "za_tn": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "verse_1_2"
+      }
     },
     {
       "name": "verse_1_3",
@@ -42,9 +38,7 @@
           "za_st": true,
           "za_tn": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "verse_1_3"
+      }
     },
     {
       "name": "verse_1_4",
@@ -56,9 +50,7 @@
           "za_st": true,
           "za_tn": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "verse_1_4"
+      }
     },
     {
       "name": "chorus_1",
@@ -70,9 +62,7 @@
           "za_st": true,
           "za_tn": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "chorus_1"
+      }
     },
     {
       "name": "chorus_2",
@@ -84,9 +74,7 @@
           "za_st": true,
           "za_tn": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "chorus_2"
+      }
     },
     {
       "name": "chorus_3",
@@ -98,9 +86,7 @@
           "za_st": true,
           "za_tn": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "chorus_3"
+      }
     },
     {
       "name": "chorus_4",
@@ -112,9 +98,7 @@
           "za_st": true,
           "za_tn": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "chorus_4"
+      }
     },
     {
       "name": "chorus_5",
@@ -126,9 +110,7 @@
           "za_st": true,
           "za_tn": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "chorus_5"
+      }
     },
     {
       "name": "chorus_6",
@@ -140,9 +122,7 @@
           "za_st": true,
           "za_tn": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "chorus_6"
+      }
     },
     {
       "name": "verse_2_1",
@@ -154,9 +134,7 @@
           "za_st": true,
           "za_tn": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "verse_2_1"
+      }
     },
     {
       "name": "verse_2_2",
@@ -168,9 +146,7 @@
           "za_st": true,
           "za_tn": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "verse_2_2"
+      }
     },
     {
       "name": "verse_2_3",
@@ -182,9 +158,7 @@
           "za_st": true,
           "za_tn": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "verse_2_3"
+      }
     },
     {
       "name": "verse_2_4",
@@ -196,9 +170,7 @@
           "za_st": true,
           "za_tn": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "verse_2_4"
+      }
     },
     {
       "type": "text",
@@ -206,230 +178,6 @@
       "value": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.verse_1_1",
-            "type": "local",
-            "fieldName": "verse_1_1"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.verse_1_2",
-            "type": "local",
-            "fieldName": "verse_1_2"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.verse_1_3",
-            "type": "local",
-            "fieldName": "verse_1_3"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.verse_1_4",
-            "type": "local",
-            "fieldName": "verse_1_4"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_1",
-            "type": "local",
-            "fieldName": "chorus_1"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_2",
-            "type": "local",
-            "fieldName": "chorus_2"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_3",
-            "type": "local",
-            "fieldName": "chorus_3"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_4",
-            "type": "local",
-            "fieldName": "chorus_4"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_5",
-            "type": "local",
-            "fieldName": "chorus_5"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_6",
-            "type": "local",
-            "fieldName": "chorus_6"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.verse_2_1",
-            "type": "local",
-            "fieldName": "verse_2_1"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.verse_2_2",
-            "type": "local",
-            "fieldName": "verse_2_2"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.verse_2_3",
-            "type": "local",
-            "fieldName": "verse_2_3"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.verse_2_4",
-            "type": "local",
-            "fieldName": "verse_2_4"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_1",
-            "type": "local",
-            "fieldName": "chorus_1"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_2",
-            "type": "local",
-            "fieldName": "chorus_2"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_3",
-            "type": "local",
-            "fieldName": "chorus_3"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_4",
-            "type": "local",
-            "fieldName": "chorus_4"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_5",
-            "type": "local",
-            "fieldName": "chorus_5"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_6",
-            "type": "local",
-            "fieldName": "chorus_6"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_1",
-            "type": "local",
-            "fieldName": "chorus_1"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_2",
-            "type": "local",
-            "fieldName": "chorus_2"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_3",
-            "type": "local",
-            "fieldName": "chorus_3"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_4",
-            "type": "local",
-            "fieldName": "chorus_4"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_5",
-            "type": "local",
-            "fieldName": "chorus_5"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_6",
-            "type": "local",
-            "fieldName": "chorus_6"
-          },
-          {
-            "fullExpression": "@local.verse_1_1\n@local.verse_1_2\n@local.verse_1_3\n@local.verse_1_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.verse_2_1\n@local.verse_2_2\n@local.verse_2_3\n@local.verse_2_4\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n\n@local.chorus_1\n@local.chorus_2\n@local.chorus_3\n@local.chorus_4\n@local.chorus_5\n@local.chorus_6\n@local.chorus_6",
-            "matchedExpression": "@local.chorus_6",
-            "type": "local",
-            "fieldName": "chorus_6"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.verse_1_1": [
-          "value"
-        ],
-        "@local.verse_1_2": [
-          "value"
-        ],
-        "@local.verse_1_3": [
-          "value"
-        ],
-        "@local.verse_1_4": [
-          "value"
-        ],
-        "@local.chorus_1": [
-          "value",
-          "value",
-          "value"
-        ],
-        "@local.chorus_2": [
-          "value",
-          "value",
-          "value"
-        ],
-        "@local.chorus_3": [
-          "value",
-          "value",
-          "value"
-        ],
-        "@local.chorus_4": [
-          "value",
-          "value",
-          "value"
-        ],
-        "@local.chorus_5": [
-          "value",
-          "value",
-          "value"
-        ],
-        "@local.chorus_6": [
-          "value",
-          "value",
-          "value",
-          "value"
-        ],
-        "@local.verse_2_1": [
-          "value"
-        ],
-        "@local.verse_2_2": [
-          "value"
-        ],
-        "@local.verse_2_3": [
-          "value"
-        ],
-        "@local.verse_2_4": [
-          "value"
-        ]
       }
     }
   ],

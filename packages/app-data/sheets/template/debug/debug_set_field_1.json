@@ -11,8 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "variable"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -21,23 +20,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Field value is @field.variable",
-            "matchedExpression": "@field.variable",
-            "type": "field",
-            "fieldName": "variable"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.variable": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_small_issues.xlsx"

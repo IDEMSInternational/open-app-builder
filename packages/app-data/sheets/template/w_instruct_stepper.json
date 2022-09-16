@@ -35,9 +35,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "workshop_stepper_actions.workshop_id"
+          "exclude_from_translation": true
         },
         {
           "type": "nested_properties",
@@ -45,81 +43,25 @@
           "rows": [
             {
               "name": "nav_template_list",
-              "value": [
-                "w_instruct_care_together",
-                "w_instruct_relax",
-                "w_instruct_reflect_together",
-                "w_instruct_intro",
-                "w_instruct_think_1_temp",
-                "w_instruct_read_1_temp",
-                "w_instruct_talk_1",
-                "w_instruct_read_2_temp",
-                "w_instruct_talk_2",
-                "w_instruct_tools_activity",
-                "w_instruct_try",
-                "w_instruct_home_practice",
-                "w_instruct_ending"
-              ],
-              "condition": "@field.do_this_workshop_together",
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "@field.do_this_workshop_together",
-                    "matchedExpression": "@field.do_this_workshop_together",
-                    "type": "field",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
+              "value": "w_instruct_care_together; \nw_instruct_relax; \nw_instruct_reflect_together; \nw_instruct_intro; \nw_instruct_think_1_temp; \nw_instruct_read_1_temp; \nw_instruct_talk_1; \nw_instruct_read_2_temp; \nw_instruct_talk_2; \nw_instruct_tools_activity; \nw_instruct_try; \nw_instruct_home_practice; \nw_instruct_ending",
+              "_translations": {
+                "value": {}
               },
-              "_dynamicDependencies": {
-                "@field.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "@field.do_this_workshop_together",
+              "exclude_from_translation": true
             },
             {
               "name": "nav_template_list",
-              "value": [
-                "w_instruct_welcome_individual",
-                "w_instruct_relax",
-                "w_instruct_intro",
-                "w_instruct_think_1_temp",
-                "w_instruct_read_1_temp",
-                "w_instruct_question_1",
-                "w_instruct_read_2_temp",
-                "w_instruct_question_2",
-                "w_instruct_tools_activity",
-                "w_instruct_home_practice",
-                "w_instruct_ending"
-              ],
-              "condition": "!@field.do_this_workshop_together",
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "!@field.do_this_workshop_together",
-                    "matchedExpression": "!@field.do_this_workshop_together",
-                    "type": "field",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
+              "value": "w_instruct_welcome_individual; \nw_instruct_relax; \nw_instruct_intro; \nw_instruct_think_1_temp; \nw_instruct_read_1_temp;\nw_instruct_question_1;\nw_instruct_read_2_temp; \nw_instruct_question_2;\nw_instruct_tools_activity; \nw_instruct_home_practice; \nw_instruct_ending",
+              "_translations": {
+                "value": {}
               },
-              "_dynamicDependencies": {
-                "!@field.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "!@field.do_this_workshop_together",
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "workshop_stepper_actions.workshop_stepper"
+          ]
         }
-      ],
-      "_nested_name": "workshop_stepper_actions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"

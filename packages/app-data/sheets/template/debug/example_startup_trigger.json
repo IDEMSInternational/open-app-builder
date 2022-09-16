@@ -10,8 +10,7 @@
       "value": "Example Startup Trigger",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "example_1"
+      }
     },
     {
       "type": "text",
@@ -19,22 +18,6 @@
       "value": "example_startup_field: @fields.example_startup_field",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "example_startup_text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "example_startup_field: @fields.example_startup_field",
-            "matchedExpression": "@fields.example_startup_field",
-            "type": "fields",
-            "fieldName": "example_startup_field"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.example_startup_field": [
-          "value"
-        ]
       }
     },
     {
@@ -63,8 +46,7 @@
           "_raw": "click | emit: force_reprocess",
           "_cleaned": "click | emit: force_reprocess"
         }
-      ],
-      "_nested_name": "trigger_1"
+      ]
     },
     {
       "type": "button",
@@ -92,8 +74,7 @@
           "_raw": "click | emit: force_reprocess",
           "_cleaned": "click | emit: force_reprocess"
         }
-      ],
-      "_nested_name": "trigger_2"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_startup.xlsx"

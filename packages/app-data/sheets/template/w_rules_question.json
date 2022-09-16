@@ -16,9 +16,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "answer_1"
+      }
     },
     {
       "name": "answer_2",
@@ -32,32 +30,6 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "answer_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
-            "matchedExpression": "@global.w_rules_female_caregiver_1",
-            "type": "global",
-            "fieldName": "w_rules_female_caregiver_1"
-          },
-          {
-            "fullExpression": "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
-            "matchedExpression": "@global.w_rules_teen_boy",
-            "type": "global",
-            "fieldName": "w_rules_teen_boy"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.w_rules_female_caregiver_1": [
-          "value"
-        ],
-        "@global.w_rules_teen_boy": [
-          "value"
-        ]
       }
     },
     {
@@ -72,9 +44,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "answer_3"
+      }
     },
     {
       "name": "answer_4",
@@ -88,32 +58,6 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "answer_4",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
-            "matchedExpression": "@global.w_rules_female_caregiver_1",
-            "type": "global",
-            "fieldName": "w_rules_female_caregiver_1"
-          },
-          {
-            "fullExpression": "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
-            "matchedExpression": "@global.w_rules_teen_boy",
-            "type": "global",
-            "fieldName": "w_rules_teen_boy"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.w_rules_female_caregiver_1": [
-          "value"
-        ],
-        "@global.w_rules_teen_boy": [
-          "value"
-        ]
       }
     },
     {
@@ -157,9 +101,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "question_time.workshop_activity.intro_text"
+              }
             },
             {
               "type": "nested_properties",
@@ -175,15 +117,11 @@
                       "_translations": {
                         "value": {}
                       },
-                      "exclude_from_translation": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.combo_box_tracker"
+                      "exclude_from_translation": true
                     },
                     {
                       "name": "text",
-                      "hidden": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.text"
+                      "hidden": true
                     },
                     {
                       "name": "question_text",
@@ -197,77 +135,19 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.question_text"
+                      }
                     },
                     {
                       "name": "answer_list",
-                      "value": [
-                        "name:name_1 | text:@local.answer_1",
-                        "name:name_2 | text:@local.answer_2",
-                        "name:name_3 | text:@local.answer_3",
-                        "name:name_4 | text:@local.answer_4"
-                      ],
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.answer_list",
-                      "_dynamicFields": {
-                        "value": {
-                          "0": [
-                            {
-                              "fullExpression": "name:name_1 | text:@local.answer_1",
-                              "matchedExpression": "@local.answer_1",
-                              "type": "local",
-                              "fieldName": "answer_1"
-                            }
-                          ],
-                          "1": [
-                            {
-                              "fullExpression": "name:name_2 | text:@local.answer_2",
-                              "matchedExpression": "@local.answer_2",
-                              "type": "local",
-                              "fieldName": "answer_2"
-                            }
-                          ],
-                          "2": [
-                            {
-                              "fullExpression": "name:name_3 | text:@local.answer_3",
-                              "matchedExpression": "@local.answer_3",
-                              "type": "local",
-                              "fieldName": "answer_3"
-                            }
-                          ],
-                          "3": [
-                            {
-                              "fullExpression": "name:name_4 | text:@local.answer_4",
-                              "matchedExpression": "@local.answer_4",
-                              "type": "local",
-                              "fieldName": "answer_4"
-                            }
-                          ]
-                        }
-                      },
-                      "_dynamicDependencies": {
-                        "@local.answer_1": [
-                          "value.0"
-                        ],
-                        "@local.answer_2": [
-                          "value.1"
-                        ],
-                        "@local.answer_3": [
-                          "value.2"
-                        ],
-                        "@local.answer_4": [
-                          "value.3"
-                        ]
+                      "value": "name:name_1 | text:@local.answer_1;\nname:name_2 | text:@local.answer_2;  \nname:name_3 | text:@local.answer_3; \nname:name_4 | text:@local.answer_4",
+                      "_translations": {
+                        "value": {}
                       }
                     },
                     {
                       "name": "input_allowed",
                       "value": false,
-                      "exclude_from_translation": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.input_allowed"
+                      "exclude_from_translation": true
                     },
                     {
                       "name": "reply",
@@ -281,19 +161,15 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.reply"
+                      }
                     },
                     {
                       "type": "nested_properties",
                       "name": "nav_buttons",
                       "hidden": true,
-                      "rows": [],
-                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.nav_buttons"
+                      "rows": []
                     }
-                  ],
-                  "_nested_name": "question_time.workshop_activity.content_box.combo_box_1"
+                  ]
                 },
                 {
                   "type": "nested_properties",
@@ -305,15 +181,11 @@
                       "_translations": {
                         "value": {}
                       },
-                      "exclude_from_translation": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.combo_box_tracker"
+                      "exclude_from_translation": true
                     },
                     {
                       "name": "text",
-                      "hidden": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.text"
+                      "hidden": true
                     },
                     {
                       "name": "question_text",
@@ -327,49 +199,19 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.question_text",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "How do you think @global.w_rules_teen_boy knew his @global.w_rules_female_caregiver_1 appreciated him?",
-                            "matchedExpression": "@global.w_rules_teen_boy",
-                            "type": "global",
-                            "fieldName": "w_rules_teen_boy"
-                          },
-                          {
-                            "fullExpression": "How do you think @global.w_rules_teen_boy knew his @global.w_rules_female_caregiver_1 appreciated him?",
-                            "matchedExpression": "@global.w_rules_female_caregiver_1",
-                            "type": "global",
-                            "fieldName": "w_rules_female_caregiver_1"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@global.w_rules_teen_boy": [
-                          "value"
-                        ],
-                        "@global.w_rules_female_caregiver_1": [
-                          "value"
-                        ]
                       }
                     },
                     {
                       "name": "answer_list",
-                      "value": [
-                        "name:name_1 | text:She praised him",
-                        "name:name_1 | text:She rewarded him when he followed the rule"
-                      ],
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.answer_list"
+                      "value": "name:name_1 | text:She praised him;\nname:name_1 | text:She rewarded him when he followed the rule",
+                      "_translations": {
+                        "value": {}
+                      }
                     },
                     {
                       "name": "input_allowed",
                       "value": false,
-                      "exclude_from_translation": true,
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.input_allowed"
+                      "exclude_from_translation": true
                     },
                     {
                       "name": "reply",
@@ -383,21 +225,15 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.reply"
+                      }
                     }
-                  ],
-                  "_nested_name": "question_time.workshop_activity.content_box.combo_box_2"
+                  ]
                 }
-              ],
-              "_nested_name": "question_time.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "question_time.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "question_time"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_rules.xlsx"

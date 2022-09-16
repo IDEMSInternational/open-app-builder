@@ -46,9 +46,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "talk_group_family.workshop_activity.intro_text"
+              }
             },
             {
               "type": "nested_properties",
@@ -66,9 +64,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "talk_group_family.workshop_activity.content_box.text"
+                  }
                 },
                 {
                   "name": "button_1",
@@ -83,42 +79,13 @@
                       "_cleaned": "click | pop_up:w_money_tq_3_pop"
                     }
                   ],
-                  "hidden": false,
-                  "type": "set_variable",
-                  "_nested_name": "talk_group_family.workshop_activity.content_box.button_1"
+                  "hidden": false
                 }
-              ],
-              "_nested_name": "talk_group_family.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "talk_group_family.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "talk_group_family",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@fields.do_this_workshop_together || @fields.w_money_path==\"family\"",
-            "matchedExpression": "@fields.do_this_workshop_together",
-            "type": "fields",
-            "fieldName": "do_this_workshop_together"
-          },
-          {
-            "fullExpression": "@fields.do_this_workshop_together || @fields.w_money_path==\"family\"",
-            "matchedExpression": "@fields.w_money_path",
-            "type": "fields",
-            "fieldName": "w_money_path"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.do_this_workshop_together": [
-          "condition"
-        ],
-        "@fields.w_money_path": [
-          "condition"
-        ]
-      }
+      ]
     },
     {
       "type": "template",
@@ -162,9 +129,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "question_alone.workshop_activity.intro_text"
+              }
             },
             {
               "type": "nested_properties",
@@ -177,9 +142,7 @@
                   "_translations": {
                     "value": {}
                   },
-                  "exclude_from_translation": true,
-                  "type": "set_variable",
-                  "_nested_name": "question_alone.workshop_activity.content_box.combo_box_tracker"
+                  "exclude_from_translation": true
                 },
                 {
                   "name": "text",
@@ -193,9 +156,7 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "question_alone.workshop_activity.content_box.text"
+                  }
                 },
                 {
                   "name": "question_text",
@@ -209,69 +170,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "question_alone.workshop_activity.content_box.question_text"
+                  }
                 },
                 {
                   "name": "answer_list",
-                  "value": [
-                    "name:name_1 | text:@global.savings_option_1",
-                    "name:name_2 | text:@global.savings_option_2",
-                    "name:name_3 | text:@global.savings_option_3",
-                    "name:name_4 | text:@global.savings_option_4"
-                  ],
-                  "type": "set_variable",
-                  "_nested_name": "question_alone.workshop_activity.content_box.answer_list",
-                  "_dynamicFields": {
-                    "value": {
-                      "0": [
-                        {
-                          "fullExpression": "name:name_1 | text:@global.savings_option_1",
-                          "matchedExpression": "@global.savings_option_1",
-                          "type": "global",
-                          "fieldName": "savings_option_1"
-                        }
-                      ],
-                      "1": [
-                        {
-                          "fullExpression": "name:name_2 | text:@global.savings_option_2",
-                          "matchedExpression": "@global.savings_option_2",
-                          "type": "global",
-                          "fieldName": "savings_option_2"
-                        }
-                      ],
-                      "2": [
-                        {
-                          "fullExpression": "name:name_3 | text:@global.savings_option_3",
-                          "matchedExpression": "@global.savings_option_3",
-                          "type": "global",
-                          "fieldName": "savings_option_3"
-                        }
-                      ],
-                      "3": [
-                        {
-                          "fullExpression": "name:name_4 | text:@global.savings_option_4",
-                          "matchedExpression": "@global.savings_option_4",
-                          "type": "global",
-                          "fieldName": "savings_option_4"
-                        }
-                      ]
-                    }
-                  },
-                  "_dynamicDependencies": {
-                    "@global.savings_option_1": [
-                      "value.0"
-                    ],
-                    "@global.savings_option_2": [
-                      "value.1"
-                    ],
-                    "@global.savings_option_3": [
-                      "value.2"
-                    ],
-                    "@global.savings_option_4": [
-                      "value.3"
-                    ]
+                  "value": "name:name_1 | text:@global.savings_option_1;\nname:name_2 | text:@global.savings_option_2;\nname:name_3 | text:@global.savings_option_3;\nname:name_4 | text:@global.savings_option_4",
+                  "_translations": {
+                    "value": {}
                   }
                 },
                 {
@@ -286,42 +191,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "question_alone.workshop_activity.content_box.reply"
+                  }
                 }
-              ],
-              "_nested_name": "question_alone.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "question_alone.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "question_alone",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "!(@fields.do_this_workshop_together || @fields.w_money_path==\"family\")",
-            "matchedExpression": "@fields.do_this_workshop_together",
-            "type": "fields",
-            "fieldName": "do_this_workshop_together"
-          },
-          {
-            "fullExpression": "!(@fields.do_this_workshop_together || @fields.w_money_path==\"family\")",
-            "matchedExpression": "@fields.w_money_path",
-            "type": "fields",
-            "fieldName": "w_money_path"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.do_this_workshop_together": [
-          "condition"
-        ],
-        "@fields.w_money_path": [
-          "condition"
-        ]
-      }
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"

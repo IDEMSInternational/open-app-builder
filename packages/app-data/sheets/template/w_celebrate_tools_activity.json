@@ -34,27 +34,9 @@
           "value": "@data.workshop.w_celebrate",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "tools_activity.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_celebrate",
-                "matchedExpression": "@data.workshop.w_celebrate",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_celebrate": [
-              "value"
-            ]
           }
         }
-      ],
-      "_nested_name": "tools_activity"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_celebrate.xlsx"

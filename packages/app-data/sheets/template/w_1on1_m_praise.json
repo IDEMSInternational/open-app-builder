@@ -25,15 +25,11 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "m_praise.in_week_message.text"
+              }
             }
-          ],
-          "_nested_name": "m_praise.in_week_message"
+          ]
         }
-      ],
-      "_nested_name": "m_praise"
+      ]
     }
   ],
   "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"

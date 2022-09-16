@@ -34,9 +34,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "survey_stepper_actions.survey_name"
+          "exclude_from_translation": true
         },
         {
           "type": "nested_properties",
@@ -44,21 +42,15 @@
           "rows": [
             {
               "name": "nav_template_list",
-              "value": [
-                "workshop_setup_intro",
-                "workshop_setup_q_1",
-                "workshop_setup_q_2",
-                "workshop_setup_q_3"
-              ],
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "survey_stepper_actions.survey_stepper.nav_template_list"
+              "value": "workshop_setup_intro; \nworkshop_setup_q_1;\nworkshop_setup_q_2; \nworkshop_setup_q_3;",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "survey_stepper_actions.survey_stepper"
+          ]
         }
-      ],
-      "_nested_name": "survey_stepper_actions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/workshop_setup.xlsx"

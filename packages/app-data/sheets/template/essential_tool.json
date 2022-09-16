@@ -9,103 +9,74 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "tool_style"
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
-      "parameter_list": {
-        "style": "column @local.tool_style"
-      },
+      "parameter_list": [
+        "style: column @local.tool_style"
+      ],
       "rows": [
         {
           "type": "title",
           "name": "title",
-          "parameter_list": {
-            "style": "alternative"
-          },
-          "_nested_name": "display_group.title"
+          "parameter_list": [
+            "style: alternative"
+          ]
         },
         {
           "type": "subtitle",
           "name": "subtitle_1",
           "hidden": true,
-          "parameter_list": {
-            "style": "alternative"
-          },
-          "_nested_name": "display_group.subtitle_1"
+          "parameter_list": [
+            "style: alternative"
+          ]
         },
         {
           "type": "text",
           "name": "text_1",
-          "parameter_list": {
-            "style": "alternative"
-          },
-          "_nested_name": "display_group.text_1"
+          "parameter_list": [
+            "style: alternative"
+          ]
         },
         {
           "type": "button",
           "name": "button_1",
           "hidden": true,
-          "parameter_list": {
-            "style": "nested_color"
-          },
-          "_nested_name": "display_group.button_1"
+          "parameter_list": [
+            "style: nested_color"
+          ]
         },
         {
           "type": "subtitle",
           "name": "subtitle_2",
           "hidden": true,
-          "parameter_list": {
-            "style": "alternative"
-          },
-          "_nested_name": "display_group.subtitle_2"
+          "parameter_list": [
+            "style: alternative"
+          ]
         },
         {
           "type": "text",
           "name": "text_2",
           "hidden": true,
-          "parameter_list": {
-            "style": "alternative"
-          },
-          "_nested_name": "display_group.text_2"
+          "parameter_list": [
+            "style: alternative"
+          ]
         },
         {
           "type": "image",
           "name": "image_src",
-          "hidden": true,
-          "_nested_name": "display_group.image_src"
+          "hidden": true
         },
         {
           "type": "button",
           "name": "button_2",
           "hidden": true,
-          "parameter_list": {
-            "style": "nested_color"
-          },
-          "_nested_name": "display_group.button_2"
-        }
-      ],
-      "name": "display_group",
-      "_nested_name": "display_group",
-      "_dynamicFields": {
-        "parameter_list": {
-          "style": [
-            {
-              "fullExpression": "column @local.tool_style",
-              "matchedExpression": "@local.tool_style",
-              "type": "local",
-              "fieldName": "tool_style"
-            }
+          "parameter_list": [
+            "style: nested_color"
           ]
         }
-      },
-      "_dynamicDependencies": {
-        "@local.tool_style": [
-          "parameter_list.style"
-        ]
-      }
+      ]
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_essential_tools.xlsx"

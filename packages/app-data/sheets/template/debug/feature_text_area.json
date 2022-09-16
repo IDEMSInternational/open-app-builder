@@ -8,10 +8,9 @@
       "type": "text_area",
       "name": "text_area",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "placeholder": "example placeholder"
-      },
-      "_nested_name": "text_area"
+      "parameter_list": [
+        "placeholder: example placeholder"
+      ]
     },
     {
       "type": "text",
@@ -20,23 +19,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "the text entered is:\n\n@local.text_area",
-            "matchedExpression": "@local.text_area",
-            "type": "local",
-            "fieldName": "text_area"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.text_area": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"

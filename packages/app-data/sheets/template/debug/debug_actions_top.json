@@ -11,8 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_0"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -26,9 +25,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_actions_middle_0.text_1"
+          "exclude_from_translation": true
         },
         {
           "name": "text_2",
@@ -36,12 +33,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_actions_middle_0.text_2"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "debug_actions_middle_0"
+      ]
     },
     {
       "type": "title",
@@ -50,8 +44,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_1"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -65,9 +58,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_actions_middle_1.text_1"
+          "exclude_from_translation": true
         },
         {
           "type": "nested_properties",
@@ -85,8 +76,7 @@
             }
           ],
           "exclude_from_translation": true,
-          "rows": [],
-          "_nested_name": "debug_actions_middle_1.debug_actions_bottom_1"
+          "rows": []
         },
         {
           "name": "text_2",
@@ -94,9 +84,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_actions_middle_1.text_2"
+          "exclude_from_translation": true
         },
         {
           "type": "nested_properties",
@@ -114,11 +102,9 @@
             }
           ],
           "exclude_from_translation": true,
-          "rows": [],
-          "_nested_name": "debug_actions_middle_1.debug_actions_bottom_2"
+          "rows": []
         }
-      ],
-      "_nested_name": "debug_actions_middle_1"
+      ]
     },
     {
       "type": "title",
@@ -127,8 +113,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_2"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -142,9 +127,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_actions_middle_2.text_1"
+          "exclude_from_translation": true
         },
         {
           "type": "nested_properties",
@@ -171,8 +154,7 @@
             }
           ],
           "exclude_from_translation": true,
-          "rows": [],
-          "_nested_name": "debug_actions_middle_2.debug_actions_bottom_1"
+          "rows": []
         },
         {
           "name": "text_2",
@@ -180,9 +162,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_actions_middle_2.text_2"
+          "exclude_from_translation": true
         },
         {
           "type": "nested_properties",
@@ -209,11 +189,9 @@
             }
           ],
           "exclude_from_translation": true,
-          "rows": [],
-          "_nested_name": "debug_actions_middle_2.debug_actions_bottom_2"
+          "rows": []
         }
-      ],
-      "_nested_name": "debug_actions_middle_2"
+      ]
     },
     {
       "type": "title",
@@ -222,8 +200,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_3"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -237,9 +214,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_actions_middle_3.text_1"
+          "exclude_from_translation": true
         },
         {
           "type": "nested_properties",
@@ -256,8 +231,7 @@
             }
           ],
           "exclude_from_translation": true,
-          "rows": [],
-          "_nested_name": "debug_actions_middle_3.debug_actions_bottom_1"
+          "rows": []
         },
         {
           "name": "text_2",
@@ -265,9 +239,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_actions_middle_3.text_2"
+          "exclude_from_translation": true
         },
         {
           "type": "nested_properties",
@@ -284,11 +256,9 @@
             }
           ],
           "exclude_from_translation": true,
-          "rows": [],
-          "_nested_name": "debug_actions_middle_3.debug_actions_bottom_2"
+          "rows": []
         }
-      ],
-      "_nested_name": "debug_actions_middle_3"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_overriding_action_list.xlsx"

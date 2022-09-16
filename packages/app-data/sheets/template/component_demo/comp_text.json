@@ -10,8 +10,7 @@
       "value": "Default",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_default"
+      }
     },
     {
       "type": "title",
@@ -19,8 +18,7 @@
       "value": "Text alignment",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_1"
+      }
     },
     {
       "type": "text",
@@ -29,10 +27,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "text_align": "left"
-      },
-      "_nested_name": "text_align_1"
+      "parameter_list": [
+        "text_align:left"
+      ]
     },
     {
       "type": "text",
@@ -41,10 +38,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "text_align": "center"
-      },
-      "_nested_name": "text_align_2"
+      "parameter_list": [
+        "text_align:center"
+      ]
     },
     {
       "type": "text",
@@ -53,10 +49,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "text_align": "right"
-      },
-      "_nested_name": "text_align_3"
+      "parameter_list": [
+        "text_align:right"
+      ]
     },
     {
       "type": "title",
@@ -64,8 +59,7 @@
       "value": "Formatting",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_2"
+      }
     },
     {
       "type": "text",
@@ -74,10 +68,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "standard"
-      },
-      "_nested_name": "text_formatting_1"
+      "parameter_list": [
+        "style:standard"
+      ]
     },
     {
       "type": "text",
@@ -86,10 +79,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "contextual"
-      },
-      "_nested_name": "text_formatting_2"
+      "parameter_list": [
+        "style: contextual"
+      ]
     },
     {
       "type": "text",
@@ -98,10 +90,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "text_formatting_3"
+      "parameter_list": [
+        "style: emphasised"
+      ]
     },
     {
       "type": "text",
@@ -110,10 +101,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "alternative"
-      },
-      "_nested_name": "text_formatting_4"
+      "parameter_list": [
+        "style:alternative"
+      ]
     },
     {
       "type": "title",
@@ -121,8 +111,7 @@
       "value": "To be removed",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_3"
+      }
     },
     {
       "type": "text",
@@ -131,10 +120,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "small"
-      },
-      "_nested_name": "text_size_1"
+      "parameter_list": [
+        "style:small"
+      ]
     },
     {
       "type": "text",
@@ -143,10 +131,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "medium"
-      },
-      "_nested_name": "text_size_2"
+      "parameter_list": [
+        "style:medium"
+      ]
     },
     {
       "type": "text",
@@ -155,10 +142,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "large"
-      },
-      "_nested_name": "text_size_3"
+      "parameter_list": [
+        "style:large"
+      ]
     },
     {
       "type": "text",
@@ -167,10 +153,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "left"
-      },
-      "_nested_name": "text_position_1"
+      "parameter_list": [
+        "style:left"
+      ]
     },
     {
       "type": "text",
@@ -179,10 +164,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "center"
-      },
-      "_nested_name": "text_position_2"
+      "parameter_list": [
+        "style:center"
+      ]
     },
     {
       "type": "text",
@@ -191,10 +175,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "right"
-      },
-      "_nested_name": "text_position_3"
+      "parameter_list": [
+        "style:right"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/component_sheets/component_text.xlsx"

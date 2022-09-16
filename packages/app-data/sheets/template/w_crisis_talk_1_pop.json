@@ -15,63 +15,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "suggestions.list_text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "* @global.crisis_skill_1\n* @global.crisis_skill_2\n* @global.crisis_skill_3\n* @global.crisis_skill_4\n* @global.crisis_skill_5",
-                "matchedExpression": "@global.crisis_skill_1",
-                "type": "global",
-                "fieldName": "crisis_skill_1"
-              },
-              {
-                "fullExpression": "* @global.crisis_skill_1\n* @global.crisis_skill_2\n* @global.crisis_skill_3\n* @global.crisis_skill_4\n* @global.crisis_skill_5",
-                "matchedExpression": "@global.crisis_skill_2",
-                "type": "global",
-                "fieldName": "crisis_skill_2"
-              },
-              {
-                "fullExpression": "* @global.crisis_skill_1\n* @global.crisis_skill_2\n* @global.crisis_skill_3\n* @global.crisis_skill_4\n* @global.crisis_skill_5",
-                "matchedExpression": "@global.crisis_skill_3",
-                "type": "global",
-                "fieldName": "crisis_skill_3"
-              },
-              {
-                "fullExpression": "* @global.crisis_skill_1\n* @global.crisis_skill_2\n* @global.crisis_skill_3\n* @global.crisis_skill_4\n* @global.crisis_skill_5",
-                "matchedExpression": "@global.crisis_skill_4",
-                "type": "global",
-                "fieldName": "crisis_skill_4"
-              },
-              {
-                "fullExpression": "* @global.crisis_skill_1\n* @global.crisis_skill_2\n* @global.crisis_skill_3\n* @global.crisis_skill_4\n* @global.crisis_skill_5",
-                "matchedExpression": "@global.crisis_skill_5",
-                "type": "global",
-                "fieldName": "crisis_skill_5"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.crisis_skill_1": [
-              "value"
-            ],
-            "@global.crisis_skill_2": [
-              "value"
-            ],
-            "@global.crisis_skill_3": [
-              "value"
-            ],
-            "@global.crisis_skill_4": [
-              "value"
-            ],
-            "@global.crisis_skill_5": [
-              "value"
-            ]
-          }
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "suggestions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"

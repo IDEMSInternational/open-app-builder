@@ -10,22 +10,6 @@
       "value": "@data.example_lang.example_lang_1.title",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.example_lang.example_lang_1.title",
-            "matchedExpression": "@data.example_lang.example_lang_1.title",
-            "type": "data",
-            "fieldName": "example_lang"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.example_lang.example_lang_1.title": [
-          "value"
-        ]
       }
     },
     {
@@ -34,22 +18,6 @@
       "value": "@data.example_lang.example_lang_1.text",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.example_lang.example_lang_1.text",
-            "matchedExpression": "@data.example_lang.example_lang_1.text",
-            "type": "data",
-            "fieldName": "example_lang"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.example_lang.example_lang_1.text": [
-          "value"
-        ]
       }
     },
     {
@@ -58,22 +26,6 @@
       "value": "@data.example_lang.example_lang_1.image_asset",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "image_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.example_lang.example_lang_1.image_asset",
-            "matchedExpression": "@data.example_lang.example_lang_1.image_asset",
-            "type": "data",
-            "fieldName": "example_lang"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.example_lang.example_lang_1.image_asset": [
-          "value"
-        ]
       }
     },
     {
@@ -82,22 +34,6 @@
       "value": "@data.example_lang.example_lang_1.lottie_asset",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "lottie_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.example_lang.example_lang_1.lottie_asset",
-            "matchedExpression": "@data.example_lang.example_lang_1.lottie_asset",
-            "type": "data",
-            "fieldName": "example_lang"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.example_lang.example_lang_1.lottie_asset": [
-          "value"
-        ]
       }
     }
   ],

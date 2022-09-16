@@ -34,9 +34,7 @@
           "name": "workshop_activity",
           "rows": [
             {
-              "name": "intro_text",
-              "type": "set_variable",
-              "_nested_name": "talk_together.workshop_activity.intro_text"
+              "name": "intro_text"
             },
             {
               "type": "nested_properties",
@@ -54,18 +52,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "talk_together.workshop_activity.content_box.text"
+                  }
                 }
-              ],
-              "_nested_name": "talk_together.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "talk_together.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "talk_together"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"

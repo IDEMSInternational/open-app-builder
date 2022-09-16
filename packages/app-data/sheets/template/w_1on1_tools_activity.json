@@ -28,36 +28,18 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "parameter_list": {
-        "style": "active"
-      },
+      "parameter_list": [
+        "style: active"
+      ],
       "rows": [
         {
           "name": "workshop_data",
           "value": "@data.workshop.w_1on1",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "tools_activity.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_1on1",
-                "matchedExpression": "@data.workshop.w_1on1",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_1on1": [
-              "value"
-            ]
           }
         }
-      ],
-      "_nested_name": "tools_activity"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_1on1.xlsx"

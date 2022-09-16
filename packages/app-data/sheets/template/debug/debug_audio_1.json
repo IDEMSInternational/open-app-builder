@@ -12,10 +12,9 @@
         "value": {}
       },
       "exclude_from_translation": true,
-      "parameter_list": {
-        "title": "Test title"
-      },
-      "_nested_name": "audio_src"
+      "parameter_list": [
+        "title:  Test title"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_small_issues.xlsx"

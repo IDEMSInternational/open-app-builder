@@ -16,8 +16,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "testimony_1"
+      }
     },
     {
       "type": "text",
@@ -32,8 +31,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "testimony_2"
+      }
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"

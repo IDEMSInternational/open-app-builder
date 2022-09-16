@@ -1,5 +1,6 @@
 {
   "flow_name": "example_pipe_uncompleted",
+  "data_list_name": "example_pipe_uncompleted",
   "flow_subtype": "generated",
   "flow_type": "data_list",
   "rows": [

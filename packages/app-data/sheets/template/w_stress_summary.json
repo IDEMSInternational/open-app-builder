@@ -21,9 +21,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "suggestions.description_text"
+          }
         },
         {
           "name": "list_text",
@@ -38,24 +36,7 @@
               "za_zu": true
             }
           },
-          "condition": "@fields.do_this_workshop_together",
-          "type": "set_variable",
-          "_nested_name": "suggestions.list_text",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "@fields.do_this_workshop_together",
-                "matchedExpression": "@fields.do_this_workshop_together",
-                "type": "fields",
-                "fieldName": "do_this_workshop_together"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@fields.do_this_workshop_together": [
-              "condition"
-            ]
-          }
+          "condition": "@fields.do_this_workshop_together"
         },
         {
           "name": "list_text",
@@ -70,27 +51,9 @@
               "za_zu": true
             }
           },
-          "condition": "!@fields.do_this_workshop_together",
-          "type": "set_variable",
-          "_nested_name": "suggestions.list_text",
-          "_dynamicFields": {
-            "condition": [
-              {
-                "fullExpression": "!@fields.do_this_workshop_together",
-                "matchedExpression": "!@fields.do_this_workshop_together",
-                "type": "fields",
-                "fieldName": "do_this_workshop_together"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "!@fields.do_this_workshop_together": [
-              "condition"
-            ]
-          }
+          "condition": "!@fields.do_this_workshop_together"
         }
-      ],
-      "_nested_name": "suggestions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"

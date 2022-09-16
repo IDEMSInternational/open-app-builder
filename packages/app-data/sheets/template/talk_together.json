@@ -40,18 +40,14 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_title"
+          }
         },
         {
           "name": "activity_image",
           "value": "plh_images/workshop_modes/group/talk.svg",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_image"
+          }
         },
         {
           "name": "intro_text",
@@ -65,15 +61,11 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.intro_text"
+          }
         },
         {
           "name": "activity_banner",
-          "hidden": false,
-          "type": "set_variable",
-          "_nested_name": "workshop_activity.activity_banner"
+          "hidden": false
         },
         {
           "type": "nested_properties",
@@ -81,39 +73,18 @@
           "value": "box_timer",
           "rows": [
             {
-              "name": "text",
-              "type": "set_variable",
-              "_nested_name": "workshop_activity.content_box.text"
+              "name": "text"
             },
             {
               "name": "button_1",
               "value": "@global.ideas_button",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "workshop_activity.content_box.button_1",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@global.ideas_button",
-                    "matchedExpression": "@global.ideas_button",
-                    "type": "global",
-                    "fieldName": "ideas_button"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.ideas_button": [
-                  "value"
-                ]
               }
             }
-          ],
-          "_nested_name": "workshop_activity.content_box"
+          ]
         }
-      ],
-      "_nested_name": "workshop_activity"
+      ]
     }
   ],
   "_xlsxPath": "global/mode_templates/talk_together.xlsx"

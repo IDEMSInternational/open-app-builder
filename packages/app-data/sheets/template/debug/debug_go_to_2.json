@@ -11,8 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text"
+      "exclude_from_translation": true
     },
     {
       "type": "text_box",
@@ -27,53 +26,13 @@
           "action_id": "set_field",
           "args": [
             "debug_go_to_field",
-            "this.value"
+            "@local.debug_text_box"
           ],
           "_raw": "changed | set_field:debug_go_to_field:@local.debug_text_box",
           "_cleaned": "changed | set_field:debug_go_to_field:@local.debug_text_box"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "debug_text_box",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields.debug_go_to_field",
-            "matchedExpression": "@fields.debug_go_to_field",
-            "type": "fields",
-            "fieldName": "debug_go_to_field"
-          }
-        ],
-        "action_list": {
-          "0": {
-            "_raw": [
-              {
-                "fullExpression": "changed | set_field:debug_go_to_field:@local.debug_text_box",
-                "matchedExpression": "@local.debug_text_box",
-                "type": "local",
-                "fieldName": "debug_text_box"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "changed | set_field:debug_go_to_field:@local.debug_text_box",
-                "matchedExpression": "@local.debug_text_box",
-                "type": "local",
-                "fieldName": "debug_text_box"
-              }
-            ]
-          }
-        }
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_go_to_field": [
-          "value"
-        ],
-        "@local.debug_text_box": [
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -82,32 +41,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "go_to_field",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Value of debug_go_to_field: \nlocal: @local.debug_text_box;\nfield: @fields.debug_go_to_field",
-            "matchedExpression": "@local.debug_text_box",
-            "type": "local",
-            "fieldName": "debug_text_box"
-          },
-          {
-            "fullExpression": "Value of debug_go_to_field: \nlocal: @local.debug_text_box;\nfield: @fields.debug_go_to_field",
-            "matchedExpression": "@fields.debug_go_to_field",
-            "type": "fields",
-            "fieldName": "debug_go_to_field"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.debug_text_box": [
-          "value"
-        ],
-        "@fields.debug_go_to_field": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -127,8 +61,7 @@
           "_cleaned": "click | go_to:debug_go_to_3"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_go_to_1"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -148,8 +81,7 @@
           "_cleaned": "click | emit:completed"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_completed"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_double_go_to.xlsx"

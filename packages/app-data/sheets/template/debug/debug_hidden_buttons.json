@@ -11,14 +11,12 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
       "name": "button_1",
-      "exclude_from_translation": true,
-      "_nested_name": "button_1"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -27,8 +25,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -38,8 +35,7 @@
         "value": {}
       },
       "hidden": true,
-      "exclude_from_translation": true,
-      "_nested_name": "button_2"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -48,8 +44,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_3"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_small_issues.xlsx"

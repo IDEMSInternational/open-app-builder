@@ -11,8 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -32,8 +31,7 @@
           "_cleaned": "click | go_to:debug_go_to_2"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_go_to_1"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -42,23 +40,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "go_to_field",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Value of debug_go_to_field: @fields.debug_go_to_field",
-            "matchedExpression": "@fields.debug_go_to_field",
-            "type": "fields",
-            "fieldName": "debug_go_to_field"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_go_to_field": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_double_go_to.xlsx"

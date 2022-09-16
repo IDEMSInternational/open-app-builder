@@ -24,9 +24,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_1.title"
+              }
             },
             {
               "name": "text_1",
@@ -40,12 +38,9 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_1.text_1"
+              }
             }
-          ],
-          "_nested_name": "essential_tools.tool_1"
+          ]
         },
         {
           "type": "nested_properties",
@@ -63,9 +58,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_2.title"
+              }
             },
             {
               "name": "text_1",
@@ -79,12 +72,9 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_2.text_1"
+              }
             }
-          ],
-          "_nested_name": "essential_tools.tool_2"
+          ]
         },
         {
           "type": "nested_properties",
@@ -102,9 +92,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_3.title"
+              }
             },
             {
               "name": "text_1",
@@ -118,12 +106,9 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_3.text_1"
+              }
             }
-          ],
-          "_nested_name": "essential_tools.tool_3"
+          ]
         },
         {
           "type": "nested_properties",
@@ -142,9 +127,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_4.title"
+              }
             },
             {
               "name": "text_1",
@@ -158,21 +141,15 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "essential_tools.tool_4.text_1"
+              }
             }
-          ],
-          "_nested_name": "essential_tools.tool_4"
+          ]
         },
         {
           "name": "tip_text",
-          "hidden": true,
-          "type": "set_variable",
-          "_nested_name": "essential_tools.tip_text"
+          "hidden": true
         }
-      ],
-      "_nested_name": "essential_tools"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/parent_centre_templates/covid/covid_tools.xlsx"

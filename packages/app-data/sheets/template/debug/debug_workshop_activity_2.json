@@ -10,19 +10,16 @@
       "value": "Intro",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "intro_title"
+      }
     },
     {
       "type": "text",
-      "name": "intro_text",
-      "_nested_name": "intro_text"
+      "name": "intro_text"
     },
     {
       "type": "template",
       "name": "content_box",
-      "rows": [],
-      "_nested_name": "content_box"
+      "rows": []
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_hp_review_2.xlsx"

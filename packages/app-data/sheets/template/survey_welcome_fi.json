@@ -37,9 +37,7 @@
               "value": "survey_welcome",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "survey_question_fi.box_slider.survey_name"
+              }
             },
             {
               "name": "reply_less",
@@ -53,9 +51,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "survey_question_fi.box_slider.reply_less"
+              }
             },
             {
               "name": "reply_greater_equal",
@@ -69,30 +65,11 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "survey_question_fi.box_slider.reply_greater_equal",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Money stress can be overwhelming. \n\nWe have a workshop on family budgeting in five weeks, but you can already access some core family budgeting tips under @data.parent_centre.my_tips.location_text!",
-                    "matchedExpression": "@data.parent_centre.my_tips.location_text",
-                    "type": "data",
-                    "fieldName": "parent_centre"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@data.parent_centre.my_tips.location_text": [
-                  "value"
-                ]
               }
             }
-          ],
-          "_nested_name": "survey_question_fi.box_slider"
+          ]
         }
-      ],
-      "_nested_name": "survey_question_fi"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/survey_welcome.xlsx"

@@ -10,14 +10,12 @@
       "value": "Initial text",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text"
+      }
     },
     {
       "type": "template",
       "name": "subtemplate_1",
-      "rows": [],
-      "_nested_name": "subtemplate_1"
+      "rows": []
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_nested_same_name.xlsx"

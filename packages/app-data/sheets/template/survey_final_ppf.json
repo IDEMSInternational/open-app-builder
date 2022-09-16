@@ -37,9 +37,7 @@
               "value": "survey_final",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "survey_question_ppf.box_slider.survey_name"
+              }
             },
             {
               "name": "reply_less",
@@ -53,32 +51,6 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "survey_question_ppf.box_slider.reply_less",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "We know this is hard. You can review some helpful tips on how you can spend time with your teen under @data.parent_centre.my_tips.location_text or you can have another look at the @data.workshop.w_1on1.in_text_title.",
-                    "matchedExpression": "@data.parent_centre.my_tips.location_text",
-                    "type": "data",
-                    "fieldName": "parent_centre"
-                  },
-                  {
-                    "fullExpression": "We know this is hard. You can review some helpful tips on how you can spend time with your teen under @data.parent_centre.my_tips.location_text or you can have another look at the @data.workshop.w_1on1.in_text_title.",
-                    "matchedExpression": "@data.workshop.w_1on1.in_text_title",
-                    "type": "data",
-                    "fieldName": "workshop"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@data.parent_centre.my_tips.location_text": [
-                  "value"
-                ],
-                "@data.workshop.w_1on1.in_text_title": [
-                  "value"
-                ]
               }
             },
             {
@@ -93,30 +65,11 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "survey_question_ppf.box_slider.reply_greater_equal",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Well done for laying such a good foundation! You can always review the @data.workshop.w_1on1.in_text_title to get more ideas on how to spend time together.",
-                    "matchedExpression": "@data.workshop.w_1on1.in_text_title",
-                    "type": "data",
-                    "fieldName": "workshop"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@data.workshop.w_1on1.in_text_title": [
-                  "value"
-                ]
               }
             }
-          ],
-          "_nested_name": "survey_question_ppf.box_slider"
+          ]
         }
-      ],
-      "_nested_name": "survey_question_ppf"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/survey_final.xlsx"

@@ -10,9 +10,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "label_text"
+      "exclude_from_translation": true
     },
     {
       "type": "simple_checkbox",
@@ -24,46 +22,17 @@
           "action_id": "set_field",
           "args": [
             "demo_changed_field_checkbox",
-            "this.value"
+            "@local.checkbox_1"
           ],
           "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
           "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
         }
       ],
       "exclude_from_translation": true,
-      "parameter_list": {
-        "label_text": "Reverse true",
-        "reverse": "true"
-      },
-      "_nested_name": "checkbox_1",
-      "_dynamicFields": {
-        "action_list": {
-          "0": {
-            "_raw": [
-              {
-                "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                "matchedExpression": "@local.checkbox_1",
-                "type": "local",
-                "fieldName": "checkbox_1"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                "matchedExpression": "@local.checkbox_1",
-                "type": "local",
-                "fieldName": "checkbox_1"
-              }
-            ]
-          }
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.checkbox_1": [
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ]
-      }
+      "parameter_list": [
+        "label_text: Reverse true",
+        "reverse:true"
+      ]
     },
     {
       "type": "text",
@@ -72,23 +41,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "checkbox field: @field.demo_changed_field_checkbox",
-            "matchedExpression": "@field.demo_changed_field_checkbox",
-            "type": "field",
-            "fieldName": "demo_changed_field_checkbox"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.demo_changed_field_checkbox": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -97,34 +50,17 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "checkbox local: @local.checkbox_1",
-            "matchedExpression": "@local.checkbox_1",
-            "type": "local",
-            "fieldName": "checkbox_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.checkbox_1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "simple_checkbox",
       "name": "checkbox_2",
       "value": true,
       "exclude_from_translation": true,
-      "parameter_list": {
-        "label_text": "Example answer?",
-        "align": "left"
-      },
-      "_nested_name": "checkbox_2"
+      "parameter_list": [
+        "label_text: Example answer?",
+        "align: left"
+      ]
     },
     {
       "type": "text",
@@ -133,23 +69,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_3",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "checkbox local: @local.checkbox_2",
-            "matchedExpression": "@local.checkbox_2",
-            "type": "local",
-            "fieldName": "checkbox_2"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.checkbox_2": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "simple_checkbox",
@@ -159,40 +79,22 @@
         "value": {}
       },
       "exclude_from_translation": true,
-      "parameter_list": {
-        "label_text": "Example answer?",
-        "align": "center"
-      },
-      "_nested_name": "checkbox_3",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@field.demo_changed_field_checkbox",
-            "matchedExpression": "@field.demo_changed_field_checkbox",
-            "type": "field",
-            "fieldName": "demo_changed_field_checkbox"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@field.demo_changed_field_checkbox": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "label_text: Example answer?",
+        "align: center"
+      ]
     },
     {
       "type": "simple_checkbox",
       "name": "checkbox_4",
       "value": false,
-      "exclude_from_translation": true,
-      "_nested_name": "checkbox_4"
+      "exclude_from_translation": true
     },
     {
       "type": "simple_checkbox",
       "name": "checkbox_5",
       "value": true,
-      "exclude_from_translation": true,
-      "_nested_name": "checkbox_5"
+      "exclude_from_translation": true
     },
     {
       "type": "simple_checkbox",
@@ -201,23 +103,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "checkbox_6",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.checkbox_4",
-            "matchedExpression": "@local.checkbox_4",
-            "type": "local",
-            "fieldName": "checkbox_4"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.checkbox_4": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -226,35 +112,16 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_4"
+      "exclude_from_translation": true
     },
     {
       "type": "simple_checkbox",
       "name": "checkbox_7",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "label_text": "@local.label_text",
-        "align": "right"
-      },
-      "_nested_name": "checkbox_7",
-      "_dynamicFields": {
-        "parameter_list": {
-          "label_text": [
-            {
-              "fullExpression": "@local.label_text",
-              "matchedExpression": "@local.label_text",
-              "type": "local",
-              "fieldName": "label_text"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.label_text": [
-          "parameter_list.label_text"
-        ]
-      }
+      "parameter_list": [
+        "label_text: @local.label_text",
+        "align: right"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"

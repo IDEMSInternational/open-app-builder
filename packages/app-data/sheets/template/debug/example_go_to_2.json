@@ -11,8 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -32,8 +31,7 @@
           "_cleaned": "click | go_to: example_emit"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_go_to_1"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -42,8 +40,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -72,8 +69,7 @@
           "_cleaned": "click | emit:completed"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_go_to_2"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_actions.xlsx"

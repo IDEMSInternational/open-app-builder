@@ -34,23 +34,6 @@
           "value": "@data.workshop.w_money",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "home_practice_review.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.workshop.w_money",
-                "matchedExpression": "@data.workshop.w_money",
-                "type": "data",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.workshop.w_money": [
-              "value"
-            ]
           }
         },
         {
@@ -62,23 +45,6 @@
               "value": "@data.habit.money",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "home_practice_review.workshop_activity.outro_habit_data",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.habit.money",
-                    "matchedExpression": "@data.habit.money",
-                    "type": "data",
-                    "fieldName": "habit"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@data.habit.money": [
-                  "value"
-                ]
               }
             },
             {
@@ -95,9 +61,7 @@
                       "_translations": {
                         "value": {}
                       },
-                      "exclude_from_translation": true,
-                      "type": "set_variable",
-                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.parent_point"
+                      "exclude_from_translation": true
                     },
                     {
                       "name": "text_done",
@@ -111,32 +75,13 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.text_done"
+                      }
                     },
                     {
                       "name": "reply_happy",
                       "value": "@data.praise.hp_praise_message_14.text",
                       "_translations": {
                         "value": {}
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.reply_happy",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@data.praise.hp_praise_message_14.text",
-                            "matchedExpression": "@data.praise.hp_praise_message_14.text",
-                            "type": "data",
-                            "fieldName": "praise"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@data.praise.hp_praise_message_14.text": [
-                          "value"
-                        ]
                       }
                     },
                     {
@@ -144,23 +89,6 @@
                       "value": "@data.praise.hp_praise_message_15.text",
                       "_translations": {
                         "value": {}
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.reply_ok",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@data.praise.hp_praise_message_15.text",
-                            "matchedExpression": "@data.praise.hp_praise_message_15.text",
-                            "type": "data",
-                            "fieldName": "praise"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@data.praise.hp_praise_message_15.text": [
-                          "value"
-                        ]
                       }
                     },
                     {
@@ -168,37 +96,17 @@
                       "value": "@data.praise.hp_praise_message_15.text",
                       "_translations": {
                         "value": {}
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.reply_sad",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@data.praise.hp_praise_message_15.text",
-                            "matchedExpression": "@data.praise.hp_praise_message_15.text",
-                            "type": "data",
-                            "fieldName": "praise"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@data.praise.hp_praise_message_15.text": [
-                          "value"
-                        ]
                       }
                     }
-                  ],
-                  "_nested_name": "home_practice_review.workshop_activity.content_box.box_1"
+                  ]
                 },
                 {
                   "type": "nested_properties",
                   "name": "box_2",
                   "value": "w_money_hp_challenges",
-                  "rows": [],
-                  "_nested_name": "home_practice_review.workshop_activity.content_box.box_2"
+                  "rows": []
                 }
-              ],
-              "_nested_name": "home_practice_review.workshop_activity.content_box"
+              ]
             },
             {
               "name": "outro_text",
@@ -212,15 +120,11 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "home_practice_review.workshop_activity.outro_text"
+              }
             }
-          ],
-          "_nested_name": "home_practice_review.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "home_practice_review"
+      ]
     }
   ],
   "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_money_hp_review.xlsx"

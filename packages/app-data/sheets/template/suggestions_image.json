@@ -5,21 +5,18 @@
   "rows": [
     {
       "type": "title",
-      "name": "title",
-      "_nested_name": "title"
+      "name": "title"
     },
     {
       "type": "image",
       "name": "image",
-      "parameter_list": {
-        "style": "rounded_corners"
-      },
-      "_nested_name": "image"
+      "parameter_list": [
+        "style: rounded_corners"
+      ]
     },
     {
       "type": "text",
-      "name": "text",
-      "_nested_name": "text"
+      "name": "text"
     }
   ],
   "_xlsxPath": "global/mode_templates/talk_together.xlsx"

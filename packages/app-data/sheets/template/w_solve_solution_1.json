@@ -34,9 +34,7 @@
           "value": "plh_images/workshops/w_solve/read_3/slide_1.svg",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "box_image.image_src"
+          }
         },
         {
           "name": "title",
@@ -51,24 +49,7 @@
               "za_zu": true
             }
           },
-          "hidden": false,
-          "type": "set_variable",
-          "_nested_name": "box_image.title",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "Ground @global.w_solve_teen_girl for a month",
-                "matchedExpression": "@global.w_solve_teen_girl",
-                "type": "global",
-                "fieldName": "w_solve_teen_girl"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.w_solve_teen_girl": [
-              "value"
-            ]
-          }
+          "hidden": false
         },
         {
           "name": "text",
@@ -82,23 +63,6 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "box_image.text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.w_solve_female_caregiver_1: “You can’t go out for the next month”",
-                "matchedExpression": "@global.w_solve_female_caregiver_1",
-                "type": "global",
-                "fieldName": "w_solve_female_caregiver_1"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.w_solve_female_caregiver_1": [
-              "value"
-            ]
           }
         },
         {
@@ -115,22 +79,18 @@
             }
           },
           "hidden": false,
-          "parameter_list": {
-            "icon_src": "plh_images/icons/cross_circle.svg",
-            "icon_position": "top-left"
-          },
-          "type": "set_variable",
-          "_nested_name": "box_image.dashed_box"
+          "parameter_list": [
+            "icon_src:plh_images/icons/cross_circle.svg",
+            "icon_position:top-left"
+          ]
         },
         {
           "type": "nested_properties",
           "name": "nav_buttons",
           "hidden": true,
-          "rows": [],
-          "_nested_name": "box_image.nav_buttons"
+          "rows": []
         }
-      ],
-      "_nested_name": "box_image"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"

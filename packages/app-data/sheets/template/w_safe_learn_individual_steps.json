@@ -39,9 +39,7 @@
               "value": "plh_images/workshops/w_safe/learn/slide_1.svg",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "pair.box_1.image_src"
+              }
             },
             {
               "name": "title",
@@ -56,9 +54,7 @@
                   "za_zu": true
                 }
               },
-              "hidden": false,
-              "type": "set_variable",
-              "_nested_name": "pair.box_1.title"
+              "hidden": false
             },
             {
               "name": "text",
@@ -72,12 +68,9 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "pair.box_1.text"
+              }
             }
-          ],
-          "_nested_name": "pair.box_1"
+          ]
         },
         {
           "type": "nested_properties",
@@ -94,9 +87,7 @@
                   "value": "plh_images/workshops/w_safe/learn/slide_2.svg",
                   "_translations": {
                     "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "pair.box_2.box_1.image_src"
+                  }
                 },
                 {
                   "name": "title",
@@ -111,9 +102,7 @@
                       "za_zu": true
                     }
                   },
-                  "hidden": false,
-                  "type": "set_variable",
-                  "_nested_name": "pair.box_2.box_1.title"
+                  "hidden": false
                 },
                 {
                   "name": "text",
@@ -128,24 +117,7 @@
                       "za_zu": true
                     }
                   },
-                  "condition": "@field.w_safe_path ==\"family\"",
-                  "type": "set_variable",
-                  "_nested_name": "pair.box_2.box_1.text",
-                  "_dynamicFields": {
-                    "condition": [
-                      {
-                        "fullExpression": "@field.w_safe_path ==\"family\"",
-                        "matchedExpression": "@field.w_safe_path",
-                        "type": "field",
-                        "fieldName": "w_safe_path"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@field.w_safe_path": [
-                      "condition"
-                    ]
-                  }
+                  "condition": "@field.w_safe_path ==\"family\""
                 },
                 {
                   "name": "text",
@@ -160,27 +132,9 @@
                       "za_zu": true
                     }
                   },
-                  "condition": "@field.w_safe_path ==\"alone\"",
-                  "type": "set_variable",
-                  "_nested_name": "pair.box_2.box_1.text",
-                  "_dynamicFields": {
-                    "condition": [
-                      {
-                        "fullExpression": "@field.w_safe_path ==\"alone\"",
-                        "matchedExpression": "@field.w_safe_path",
-                        "type": "field",
-                        "fieldName": "w_safe_path"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@field.w_safe_path": [
-                      "condition"
-                    ]
-                  }
+                  "condition": "@field.w_safe_path ==\"alone\""
                 }
-              ],
-              "_nested_name": "pair.box_2.box_1"
+              ]
             },
             {
               "type": "nested_properties",
@@ -198,9 +152,7 @@
                       "_translations": {
                         "value": {}
                       },
-                      "hidden": false,
-                      "type": "set_variable",
-                      "_nested_name": "pair.box_2.box_2.box_1.image_src"
+                      "hidden": false
                     },
                     {
                       "name": "title",
@@ -215,9 +167,7 @@
                           "za_zu": true
                         }
                       },
-                      "hidden": false,
-                      "type": "set_variable",
-                      "_nested_name": "pair.box_2.box_2.box_1.title"
+                      "hidden": false
                     },
                     {
                       "name": "text_1",
@@ -232,24 +182,7 @@
                           "za_zu": true
                         }
                       },
-                      "condition": "@field.w_safe_path ==\"family\"",
-                      "type": "set_variable",
-                      "_nested_name": "pair.box_2.box_2.box_1.text_1",
-                      "_dynamicFields": {
-                        "condition": [
-                          {
-                            "fullExpression": "@field.w_safe_path ==\"family\"",
-                            "matchedExpression": "@field.w_safe_path",
-                            "type": "field",
-                            "fieldName": "w_safe_path"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@field.w_safe_path": [
-                          "condition"
-                        ]
-                      }
+                      "condition": "@field.w_safe_path ==\"family\""
                     },
                     {
                       "name": "text_1",
@@ -264,24 +197,7 @@
                           "za_zu": true
                         }
                       },
-                      "condition": "@field.w_safe_path ==\"alone\"",
-                      "type": "set_variable",
-                      "_nested_name": "pair.box_2.box_2.box_1.text_1",
-                      "_dynamicFields": {
-                        "condition": [
-                          {
-                            "fullExpression": "@field.w_safe_path ==\"alone\"",
-                            "matchedExpression": "@field.w_safe_path",
-                            "type": "field",
-                            "fieldName": "w_safe_path"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@field.w_safe_path": [
-                          "condition"
-                        ]
-                      }
+                      "condition": "@field.w_safe_path ==\"alone\""
                     },
                     {
                       "name": "button_1",
@@ -296,12 +212,9 @@
                           "za_zu": true
                         }
                       },
-                      "hidden": true,
-                      "type": "set_variable",
-                      "_nested_name": "pair.box_2.box_2.box_1.button_1"
+                      "hidden": true
                     }
-                  ],
-                  "_nested_name": "pair.box_2.box_2.box_1"
+                  ]
                 },
                 {
                   "type": "nested_properties",
@@ -314,9 +227,7 @@
                       "_translations": {
                         "value": {}
                       },
-                      "hidden": false,
-                      "type": "set_variable",
-                      "_nested_name": "pair.box_2.box_2.box_2.image_src"
+                      "hidden": false
                     },
                     {
                       "name": "title",
@@ -331,9 +242,7 @@
                           "za_zu": true
                         }
                       },
-                      "hidden": false,
-                      "type": "set_variable",
-                      "_nested_name": "pair.box_2.box_2.box_2.title"
+                      "hidden": false
                     },
                     {
                       "name": "text_1",
@@ -348,24 +257,7 @@
                           "za_zu": true
                         }
                       },
-                      "condition": "@field.w_safe_path ==\"family\"",
-                      "type": "set_variable",
-                      "_nested_name": "pair.box_2.box_2.box_2.text_1",
-                      "_dynamicFields": {
-                        "condition": [
-                          {
-                            "fullExpression": "@field.w_safe_path ==\"family\"",
-                            "matchedExpression": "@field.w_safe_path",
-                            "type": "field",
-                            "fieldName": "w_safe_path"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@field.w_safe_path": [
-                          "condition"
-                        ]
-                      }
+                      "condition": "@field.w_safe_path ==\"family\""
                     },
                     {
                       "name": "text_1",
@@ -380,24 +272,7 @@
                           "za_zu": true
                         }
                       },
-                      "condition": "@field.w_safe_path ==\"alone\"",
-                      "type": "set_variable",
-                      "_nested_name": "pair.box_2.box_2.box_2.text_1",
-                      "_dynamicFields": {
-                        "condition": [
-                          {
-                            "fullExpression": "@field.w_safe_path ==\"alone\"",
-                            "matchedExpression": "@field.w_safe_path",
-                            "type": "field",
-                            "fieldName": "w_safe_path"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@field.w_safe_path": [
-                          "condition"
-                        ]
-                      }
+                      "condition": "@field.w_safe_path ==\"alone\""
                     },
                     {
                       "name": "button_1",
@@ -412,21 +287,15 @@
                           "za_zu": true
                         }
                       },
-                      "hidden": true,
-                      "type": "set_variable",
-                      "_nested_name": "pair.box_2.box_2.box_2.button_1"
+                      "hidden": true
                     }
-                  ],
-                  "_nested_name": "pair.box_2.box_2.box_2"
+                  ]
                 }
-              ],
-              "_nested_name": "pair.box_2.box_2"
+              ]
             }
-          ],
-          "_nested_name": "pair.box_2"
+          ]
         }
-      ],
-      "_nested_name": "pair"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"

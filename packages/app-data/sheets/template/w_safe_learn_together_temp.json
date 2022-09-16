@@ -45,9 +45,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.intro_title"
+              }
             },
             {
               "name": "intro_text",
@@ -61,46 +59,23 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.intro_text"
+              }
             },
             {
               "name": "include_outro",
               "value": true,
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.include_outro"
+              "exclude_from_translation": true
             },
             {
               "name": "outro_habit_data",
               "value": "@data.habit.safe",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.outro_habit_data",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.habit.safe",
-                    "matchedExpression": "@data.habit.safe",
-                    "type": "data",
-                    "fieldName": "habit"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@data.habit.safe": [
-                  "value"
-                ]
               }
             },
             {
               "name": "activity_banner",
-              "hidden": true,
-              "type": "set_variable",
-              "_nested_name": "learn.workshop_activity.activity_banner"
+              "hidden": true
             },
             {
               "type": "nested_properties",
@@ -117,9 +92,7 @@
                       "value": "plh_images/workshops/w_safe/learn/slide_1.svg",
                       "_translations": {
                         "value": {}
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "learn.workshop_activity.content_box.box_1.image_src"
+                      }
                     },
                     {
                       "name": "title",
@@ -134,9 +107,7 @@
                           "za_zu": true
                         }
                       },
-                      "hidden": false,
-                      "type": "set_variable",
-                      "_nested_name": "learn.workshop_activity.content_box.box_1.title"
+                      "hidden": false
                     },
                     {
                       "name": "text",
@@ -150,12 +121,9 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "learn.workshop_activity.content_box.box_1.text"
+                      }
                     }
-                  ],
-                  "_nested_name": "learn.workshop_activity.content_box.box_1"
+                  ]
                 },
                 {
                   "type": "nested_properties",
@@ -172,9 +140,7 @@
                           "value": "plh_images/workshops/w_safe/learn/slide_2.svg",
                           "_translations": {
                             "value": {}
-                          },
-                          "type": "set_variable",
-                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_1.image_src"
+                          }
                         },
                         {
                           "name": "title",
@@ -189,9 +155,7 @@
                               "za_zu": true
                             }
                           },
-                          "hidden": false,
-                          "type": "set_variable",
-                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_1.title"
+                          "hidden": false
                         },
                         {
                           "name": "text",
@@ -205,12 +169,9 @@
                               "za_xh": true,
                               "za_zu": true
                             }
-                          },
-                          "type": "set_variable",
-                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_1.text"
+                          }
                         }
-                      ],
-                      "_nested_name": "learn.workshop_activity.content_box.box_2.box_1"
+                      ]
                     },
                     {
                       "type": "nested_properties",
@@ -228,9 +189,7 @@
                               "_translations": {
                                 "value": {}
                               },
-                              "hidden": false,
-                              "type": "set_variable",
-                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.image_src"
+                              "hidden": false
                             },
                             {
                               "name": "title",
@@ -245,9 +204,7 @@
                                   "za_zu": true
                                 }
                               },
-                              "hidden": false,
-                              "type": "set_variable",
-                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.title"
+                              "hidden": false
                             },
                             {
                               "name": "text_1",
@@ -261,9 +218,7 @@
                                   "za_xh": true,
                                   "za_zu": true
                                 }
-                              },
-                              "type": "set_variable",
-                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.text_1"
+                              }
                             },
                             {
                               "name": "button_1",
@@ -278,12 +233,9 @@
                                   "za_zu": true
                                 }
                               },
-                              "hidden": true,
-                              "type": "set_variable",
-                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.button_1"
+                              "hidden": true
                             }
-                          ],
-                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1"
+                          ]
                         },
                         {
                           "type": "nested_properties",
@@ -296,9 +248,7 @@
                               "_translations": {
                                 "value": {}
                               },
-                              "hidden": false,
-                              "type": "set_variable",
-                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.image_src"
+                              "hidden": false
                             },
                             {
                               "name": "title",
@@ -313,9 +263,7 @@
                                   "za_zu": true
                                 }
                               },
-                              "hidden": false,
-                              "type": "set_variable",
-                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.title"
+                              "hidden": false
                             },
                             {
                               "name": "text_1",
@@ -329,9 +277,7 @@
                                   "za_xh": true,
                                   "za_zu": true
                                 }
-                              },
-                              "type": "set_variable",
-                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.text_1"
+                              }
                             },
                             {
                               "name": "button_1",
@@ -345,27 +291,19 @@
                                   "za_xh": true,
                                   "za_zu": true
                                 }
-                              },
-                              "type": "set_variable",
-                              "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2.button_1"
+                              }
                             }
-                          ],
-                          "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_2"
+                          ]
                         }
-                      ],
-                      "_nested_name": "learn.workshop_activity.content_box.box_2.box_2"
+                      ]
                     }
-                  ],
-                  "_nested_name": "learn.workshop_activity.content_box.box_2"
+                  ]
                 }
-              ],
-              "_nested_name": "learn.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "learn.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "learn"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"

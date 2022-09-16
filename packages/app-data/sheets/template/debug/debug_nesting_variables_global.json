@@ -10,9 +10,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "var_text_2"
+      "exclude_from_translation": true
     },
     {
       "name": "var_text_4",
@@ -20,9 +18,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "var_text_4"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -36,9 +32,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_two_texts.child_text_1"
+          "exclude_from_translation": true
         },
         {
           "name": "child_text_2",
@@ -46,27 +40,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "debug_two_texts.child_text_2",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@global.teen_girl_1 overridden by calling a variable",
-                "matchedExpression": "@global.teen_girl_1",
-                "type": "global",
-                "fieldName": "teen_girl_1"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.teen_girl_1": [
-              "value"
-            ]
-          }
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "debug_two_texts"
+      ]
     },
     {
       "type": "text",
@@ -75,8 +51,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_3"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -85,23 +60,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_4",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.var_text_4 calling a variable",
-            "matchedExpression": "@local.var_text_4",
-            "type": "local",
-            "fieldName": "var_text_4"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.var_text_4": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_nesting_variables.xlsx"

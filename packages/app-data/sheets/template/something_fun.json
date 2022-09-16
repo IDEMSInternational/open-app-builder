@@ -8,23 +8,6 @@
       "value": "@data.something_fun.co_chef",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "activity_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.something_fun.co_chef",
-            "matchedExpression": "@data.something_fun.co_chef",
-            "type": "data",
-            "fieldName": "something_fun"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.something_fun.co_chef": [
-          "value"
-        ]
       }
     },
     {
@@ -33,9 +16,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "favourite"
+      "exclude_from_translation": true
     },
     {
       "name": "activity",
@@ -43,62 +24,18 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "activity",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "activity_@local.activity_data.id",
-            "matchedExpression": "@local.activity_data.id",
-            "type": "local",
-            "fieldName": "activity_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.activity_data.id": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "activity_favourite",
       "value": "@local.activity@local.favourite",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "activity_favourite",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.activity@local.favourite",
-            "matchedExpression": "@local.activity",
-            "type": "local",
-            "fieldName": "activity"
-          },
-          {
-            "fullExpression": "@local.activity@local.favourite",
-            "matchedExpression": "@local.favourite",
-            "type": "local",
-            "fieldName": "favourite"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.activity": [
-          "value"
-        ],
-        "@local.favourite": [
-          "value"
-        ]
       }
     },
     {
       "type": "text",
-      "name": "activity_text",
-      "_nested_name": "activity_text"
+      "name": "activity_text"
     },
     {
       "name": "toggle_bar_text",
@@ -112,23 +49,6 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "toggle_bar_text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Add this activity to @global.my_activities",
-            "matchedExpression": "@global.my_activities",
-            "type": "global",
-            "fieldName": "my_activities"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.my_activities": [
-          "value"
-        ]
       }
     },
     {
@@ -141,27 +61,9 @@
           "value": "@data.habit.spend_time",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "habit_box.habit_1_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.habit.spend_time",
-                "matchedExpression": "@data.habit.spend_time",
-                "type": "data",
-                "fieldName": "habit"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@data.habit.spend_time": [
-              "value"
-            ]
           }
         }
-      ],
-      "_nested_name": "habit_box"
+      ]
     },
     {
       "type": "toggle_bar",
@@ -176,103 +78,16 @@
           "action_id": "set_field",
           "args": [
             "@local.activity_favourite",
-            "this.value"
+            "@local.toggle_bar"
           ],
           "_raw": "changed | set_field:@local.activity_favourite : @local.toggle_bar",
           "_cleaned": "changed | set_field:@local.activity_favourite : @local.toggle_bar"
         }
       ],
-      "parameter_list": {
-        "true_text": "@local.toggle_bar_text",
-        "false_text": "@local.toggle_bar_text"
-      },
-      "_nested_name": "toggle_bar",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields.@local.activity_favourite",
-            "matchedExpression": "@local.activity_favourite",
-            "type": "local",
-            "fieldName": "activity_favourite"
-          }
-        ],
-        "action_list": {
-          "0": {
-            "args": {
-              "0": [
-                {
-                  "fullExpression": "@local.activity_favourite",
-                  "matchedExpression": "@local.activity_favourite",
-                  "type": "local",
-                  "fieldName": "activity_favourite"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "changed | set_field:@local.activity_favourite : @local.toggle_bar",
-                "matchedExpression": "@local.activity_favourite",
-                "type": "local",
-                "fieldName": "activity_favourite"
-              },
-              {
-                "fullExpression": "changed | set_field:@local.activity_favourite : @local.toggle_bar",
-                "matchedExpression": "@local.toggle_bar",
-                "type": "local",
-                "fieldName": "toggle_bar"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "changed | set_field:@local.activity_favourite : @local.toggle_bar",
-                "matchedExpression": "@local.activity_favourite",
-                "type": "local",
-                "fieldName": "activity_favourite"
-              },
-              {
-                "fullExpression": "changed | set_field:@local.activity_favourite : @local.toggle_bar",
-                "matchedExpression": "@local.toggle_bar",
-                "type": "local",
-                "fieldName": "toggle_bar"
-              }
-            ]
-          }
-        },
-        "parameter_list": {
-          "true_text": [
-            {
-              "fullExpression": "@local.toggle_bar_text",
-              "matchedExpression": "@local.toggle_bar_text",
-              "type": "local",
-              "fieldName": "toggle_bar_text"
-            }
-          ],
-          "false_text": [
-            {
-              "fullExpression": "@local.toggle_bar_text",
-              "matchedExpression": "@local.toggle_bar_text",
-              "type": "local",
-              "fieldName": "toggle_bar_text"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.activity_favourite": [
-          "value",
-          "action_list.0.args.0",
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ],
-        "@local.toggle_bar": [
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ],
-        "@local.toggle_bar_text": [
-          "parameter_list.true_text",
-          "parameter_list.false_text"
-        ]
-      }
+      "parameter_list": [
+        "true_text: @local.toggle_bar_text",
+        "false_text: @local.toggle_bar_text"
+      ]
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"

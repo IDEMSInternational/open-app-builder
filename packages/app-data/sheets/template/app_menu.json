@@ -11,23 +11,7 @@
         "value": {}
       },
       "condition": "!@fields.user_mode",
-      "exclude_from_translation": true,
-      "_nested_name": "debug_toggle_bar",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "!@fields.user_mode",
-            "matchedExpression": "!@fields.user_mode",
-            "type": "fields",
-            "fieldName": "user_mode"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "!@fields.user_mode": [
-          "condition"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -54,10 +38,9 @@
           "_cleaned": "click | go_to:/home"
         }
       ],
-      "parameter_list": {
-        "text_align": "centre"
-      },
-      "_nested_name": "button_1"
+      "parameter_list": [
+        "text_align: centre"
+      ]
     },
     {
       "type": "button",
@@ -84,25 +67,9 @@
           "_cleaned": "click | go_to:app_menu_plh"
         }
       ],
-      "parameter_list": {
-        "text_align": "centre"
-      },
-      "_nested_name": "button_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "About @global.parent_app",
-            "matchedExpression": "@global.parent_app",
-            "type": "global",
-            "fieldName": "parent_app"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.parent_app": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "text_align: centre"
+      ]
     },
     {
       "type": "button",
@@ -129,10 +96,9 @@
           "_cleaned": "click | go_to:app_menu_settings"
         }
       ],
-      "parameter_list": {
-        "text_align": "centre"
-      },
-      "_nested_name": "button_3"
+      "parameter_list": [
+        "text_align: centre"
+      ]
     },
     {
       "type": "button",
@@ -160,25 +126,9 @@
         }
       ],
       "condition": "!@fields.user_mode",
-      "parameter_list": {
-        "text_align": "centre"
-      },
-      "_nested_name": "button_4",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "!@fields.user_mode",
-            "matchedExpression": "!@fields.user_mode",
-            "type": "fields",
-            "fieldName": "user_mode"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "!@fields.user_mode": [
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "text_align: centre"
+      ]
     },
     {
       "type": "button",
@@ -203,25 +153,9 @@
           "_cleaned": "click | start_tour:home_screen_tour_menu"
         }
       ],
-      "parameter_list": {
-        "text_align": "centre"
-      },
-      "_nested_name": "button_5",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "How to use @global.parent_app",
-            "matchedExpression": "@global.parent_app",
-            "type": "global",
-            "fieldName": "parent_app"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.parent_app": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "text_align: centre"
+      ]
     },
     {
       "type": "button",
@@ -249,25 +183,9 @@
         }
       ],
       "condition": "!@fields.user_mode",
-      "parameter_list": {
-        "text_align": "centre"
-      },
-      "_nested_name": "button_6",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "!@fields.user_mode",
-            "matchedExpression": "!@fields.user_mode",
-            "type": "fields",
-            "fieldName": "user_mode"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "!@fields.user_mode": [
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "text_align: centre"
+      ]
     },
     {
       "type": "button",
@@ -295,25 +213,9 @@
         }
       ],
       "condition": "!@fields.user_mode",
-      "parameter_list": {
-        "text_align": "centre"
-      },
-      "_nested_name": "button_7",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "!@fields.user_mode",
-            "matchedExpression": "!@fields.user_mode",
-            "type": "fields",
-            "fieldName": "user_mode"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "!@fields.user_mode": [
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "text_align: centre"
+      ]
     },
     {
       "type": "button",
@@ -341,25 +243,9 @@
         }
       ],
       "condition": "!@fields.user_mode",
-      "parameter_list": {
-        "text_align": "centre"
-      },
-      "_nested_name": "button_notifications",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "!@fields.user_mode",
-            "matchedExpression": "!@fields.user_mode",
-            "type": "fields",
-            "fieldName": "user_mode"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "!@fields.user_mode": [
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "text_align: centre"
+      ]
     },
     {
       "type": "button",
@@ -379,25 +265,9 @@
           "_cleaned": "click | go_to:app_menu_privacy_policy"
         }
       ],
-      "parameter_list": {
-        "text_align": "centre"
-      },
-      "_nested_name": "button_8",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.privacy_policy",
-            "matchedExpression": "@global.privacy_policy",
-            "type": "global",
-            "fieldName": "privacy_policy"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.privacy_policy": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "text_align: centre"
+      ]
     },
     {
       "type": "button",
@@ -417,25 +287,9 @@
           "_cleaned": "click | go_to:app_menu_terms"
         }
       ],
-      "parameter_list": {
-        "text_align": "centre"
-      },
-      "_nested_name": "button_9",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.terms_and_conditions",
-            "matchedExpression": "@global.terms_and_conditions",
-            "type": "global",
-            "fieldName": "terms_and_conditions"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.terms_and_conditions": [
-          "value"
-        ]
-      }
+      "parameter_list": [
+        "text_align: centre"
+      ]
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_menu.xlsx"

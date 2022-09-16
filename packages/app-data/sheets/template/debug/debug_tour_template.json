@@ -10,8 +10,7 @@
       "value": "Debug Tour",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_1"
+      }
     },
     {
       "type": "button",
@@ -30,8 +29,7 @@
           "_raw": "click | start_tour: debug_tour",
           "_cleaned": "click | start_tour: debug_tour"
         }
-      ],
-      "_nested_name": "button"
+      ]
     },
     {
       "type": "text",
@@ -39,22 +37,6 @@
       "value": "global: @global.parent_app",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "global: @global.parent_app",
-            "matchedExpression": "@global.parent_app",
-            "type": "global",
-            "fieldName": "parent_app"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.parent_app": [
-          "value"
-        ]
       }
     },
     {
@@ -63,22 +45,6 @@
       "value": "data: @data.example.example1.text",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "data: @data.example.example1.text",
-            "matchedExpression": "@data.example.example1.text",
-            "type": "data",
-            "fieldName": "example"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.example.example1.text": [
-          "value"
-        ]
       }
     }
   ],

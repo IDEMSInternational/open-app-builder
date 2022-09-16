@@ -16,23 +16,6 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "idea_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.w_consequence_male_caregiver was angry",
-            "matchedExpression": "@global.w_consequence_male_caregiver",
-            "type": "global",
-            "fieldName": "w_consequence_male_caregiver"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.w_consequence_male_caregiver": [
-          "value"
-        ]
       }
     },
     {
@@ -47,32 +30,6 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "idea_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
-            "matchedExpression": "@global.w_consequence_male_caregiver",
-            "type": "global",
-            "fieldName": "w_consequence_male_caregiver"
-          },
-          {
-            "fullExpression": "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain",
-            "matchedExpression": "@global.w_consequence_teen_boy_1",
-            "type": "global",
-            "fieldName": "w_consequence_teen_boy_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.w_consequence_male_caregiver": [
-          "value"
-        ],
-        "@global.w_consequence_teen_boy_1": [
-          "value"
-        ]
       }
     },
     {
@@ -87,23 +44,6 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "idea_3",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
-            "matchedExpression": "@global.w_consequence_teen_boy_1",
-            "type": "global",
-            "fieldName": "w_consequence_teen_boy_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.w_consequence_teen_boy_1": [
-          "value"
-        ]
       }
     },
     {
@@ -118,9 +58,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "type": "set_variable",
-      "_nested_name": "idea_4"
+      }
     },
     {
       "type": "template",
@@ -163,9 +101,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "question_time.workshop_activity.intro_text"
+              }
             },
             {
               "type": "nested_properties",
@@ -178,15 +114,11 @@
                   "_translations": {
                     "value": {}
                   },
-                  "exclude_from_translation": true,
-                  "type": "set_variable",
-                  "_nested_name": "question_time.workshop_activity.content_box.combo_box_tracker"
+                  "exclude_from_translation": true
                 },
                 {
                   "name": "text",
-                  "hidden": true,
-                  "type": "set_variable",
-                  "_nested_name": "question_time.workshop_activity.content_box.text"
+                  "hidden": true
                 },
                 {
                   "name": "question_text",
@@ -200,69 +132,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "question_time.workshop_activity.content_box.question_text"
+                  }
                 },
                 {
                   "name": "answer_list",
-                  "value": [
-                    "name:name_1 | text:@local.idea_1",
-                    "name:name_2 | text:@local.idea_2",
-                    "name:name_3 | text:@local.idea_3",
-                    "name:name_4 | text:@local.idea_4"
-                  ],
-                  "type": "set_variable",
-                  "_nested_name": "question_time.workshop_activity.content_box.answer_list",
-                  "_dynamicFields": {
-                    "value": {
-                      "0": [
-                        {
-                          "fullExpression": "name:name_1 | text:@local.idea_1",
-                          "matchedExpression": "@local.idea_1",
-                          "type": "local",
-                          "fieldName": "idea_1"
-                        }
-                      ],
-                      "1": [
-                        {
-                          "fullExpression": "name:name_2 | text:@local.idea_2",
-                          "matchedExpression": "@local.idea_2",
-                          "type": "local",
-                          "fieldName": "idea_2"
-                        }
-                      ],
-                      "2": [
-                        {
-                          "fullExpression": "name:name_3 | text:@local.idea_3",
-                          "matchedExpression": "@local.idea_3",
-                          "type": "local",
-                          "fieldName": "idea_3"
-                        }
-                      ],
-                      "3": [
-                        {
-                          "fullExpression": "name:name_4 | text:@local.idea_4",
-                          "matchedExpression": "@local.idea_4",
-                          "type": "local",
-                          "fieldName": "idea_4"
-                        }
-                      ]
-                    }
-                  },
-                  "_dynamicDependencies": {
-                    "@local.idea_1": [
-                      "value.0"
-                    ],
-                    "@local.idea_2": [
-                      "value.1"
-                    ],
-                    "@local.idea_3": [
-                      "value.2"
-                    ],
-                    "@local.idea_4": [
-                      "value.3"
-                    ]
+                  "value": "name:name_1 | text:@local.idea_1;\nname:name_2 | text:@local.idea_2;\nname:name_3 | text:@local.idea_3;\nname:name_4 | text:@local.idea_4",
+                  "_translations": {
+                    "value": {}
                   }
                 },
                 {
@@ -278,18 +154,13 @@
                       "za_zu": true
                     }
                   },
-                  "hidden": true,
-                  "type": "set_variable",
-                  "_nested_name": "question_time.workshop_activity.content_box.reply"
+                  "hidden": true
                 }
-              ],
-              "_nested_name": "question_time.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "question_time.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "question_time"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"

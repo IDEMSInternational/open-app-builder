@@ -10,22 +10,6 @@
       "value": "@global.parent_app-based learning",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.parent_app-based learning",
-            "matchedExpression": "@global.parent_app",
-            "type": "global",
-            "fieldName": "parent_app"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.parent_app": [
-          "value"
-        ]
       }
     },
     {
@@ -34,8 +18,7 @@
       "value": "Works in gb_en",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_1"
+      }
     },
     {
       "type": "title",
@@ -50,22 +33,6 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "title_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Your @global.parent_app Code",
-            "matchedExpression": "@global.parent_app",
-            "type": "global",
-            "fieldName": "parent_app"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.parent_app": [
-          "value"
-        ]
       }
     },
     {
@@ -74,8 +41,7 @@
       "value": "Works in gb_en and in za_af",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text_2"
+      }
     },
     {
       "type": "button",
@@ -94,8 +60,7 @@
           "_raw": "click | start_tour: debug_tour_var_hyphen",
           "_cleaned": "click | start_tour: debug_tour_var_hyphen"
         }
-      ],
-      "_nested_name": "button"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_global.xlsx"

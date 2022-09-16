@@ -7,16 +7,12 @@
     {
       "name": "hide_intro",
       "value": false,
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "hide_intro"
+      "exclude_from_translation": true
     },
     {
       "name": "hide_content",
       "value": true,
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "hide_content"
+      "exclude_from_translation": true
     },
     {
       "type": "animated_section",
@@ -29,13 +25,11 @@
           "value": "Intro",
           "_translations": {
             "value": {}
-          },
-          "_nested_name": "intro.intro_title"
+          }
         },
         {
           "type": "text",
-          "name": "intro_text",
-          "_nested_name": "intro.intro_text"
+          "name": "intro_text"
         },
         {
           "type": "round_button",
@@ -62,29 +56,12 @@
               "_cleaned": "click | set_local:hide_intro:true"
             }
           ],
-          "parameter_list": {
-            "icon_src": "chevron-forward",
-            "style": "navigation"
-          },
-          "_nested_name": "intro.button_completed_chevron"
+          "parameter_list": [
+            "icon_src: chevron-forward",
+            "style: navigation"
+          ]
         }
-      ],
-      "_nested_name": "intro",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@local.hide_intro",
-            "matchedExpression": "@local.hide_intro",
-            "type": "local",
-            "fieldName": "hide_intro"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.hide_intro": [
-          "hidden"
-        ]
-      }
+      ]
     },
     {
       "type": "animated_section",
@@ -94,8 +71,7 @@
         {
           "type": "template",
           "name": "content_box",
-          "rows": [],
-          "_nested_name": "content.content_box"
+          "rows": []
         },
         {
           "type": "round_button",
@@ -122,29 +98,12 @@
               "_cleaned": "click | set_local:hide_content:true"
             }
           ],
-          "parameter_list": {
-            "icon_src": "chevron-back",
-            "style": "navigation"
-          },
-          "_nested_name": "content.button_uncompleted_chevron"
+          "parameter_list": [
+            "icon_src: chevron-back",
+            "style: navigation"
+          ]
         }
-      ],
-      "_nested_name": "content",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@local.hide_content",
-            "matchedExpression": "@local.hide_content",
-            "type": "local",
-            "fieldName": "hide_content"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.hide_content": [
-          "hidden"
-        ]
-      }
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_hp_review.xlsx"

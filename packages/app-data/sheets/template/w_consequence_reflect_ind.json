@@ -36,14 +36,11 @@
             {
               "type": "nested_properties",
               "name": "content_box",
-              "rows": [],
-              "_nested_name": "reflect_individual.workshop_activity.content_box"
+              "rows": []
             }
-          ],
-          "_nested_name": "reflect_individual.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "reflect_individual"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"

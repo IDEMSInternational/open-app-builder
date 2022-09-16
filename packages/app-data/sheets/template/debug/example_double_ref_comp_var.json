@@ -9,16 +9,14 @@
       "name": "first_template",
       "value": "example_component_variables",
       "exclude_from_translation": true,
-      "rows": [],
-      "_nested_name": "first_template"
+      "rows": []
     },
     {
       "type": "template",
       "name": "second_template",
       "value": "example_component_variables",
       "exclude_from_translation": true,
-      "rows": [],
-      "_nested_name": "second_template"
+      "rows": []
     },
     {
       "type": "text",
@@ -27,8 +25,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_with_double_ref_options"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_component_variables.xlsx"

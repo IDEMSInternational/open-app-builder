@@ -6,8 +6,7 @@
     {
       "type": "template",
       "name": "box_1",
-      "rows": [],
-      "_nested_name": "box_1"
+      "rows": []
     },
     {
       "type": "template",
@@ -32,8 +31,7 @@
           "_cleaned": "uncompleted | emit:uncompleted"
         }
       ],
-      "rows": [],
-      "_nested_name": "box_2"
+      "rows": []
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"

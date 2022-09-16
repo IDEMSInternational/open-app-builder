@@ -11,8 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -21,16 +20,14 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "intro_text"
+      "exclude_from_translation": true
     },
     {
       "type": "template",
       "name": "example_lang_select",
       "value": "example_lang_select",
       "exclude_from_translation": true,
-      "rows": [],
-      "_nested_name": "example_lang_select"
+      "rows": []
     },
     {
       "type": "text",
@@ -39,23 +36,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "enabled_text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Translator Mode Enabled: @fields._translator_mode_enabled",
-            "matchedExpression": "@fields._translator_mode_enabled",
-            "type": "fields",
-            "fieldName": "_translator_mode_enabled"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields._translator_mode_enabled": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -75,8 +56,7 @@
           "_cleaned": "click | emit: translator_mode_toggle"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "toggle_button"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -92,8 +72,7 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "translated_text"
+      }
     },
     {
       "type": "text",
@@ -102,8 +81,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "untranslated_text"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_languages.xlsx"

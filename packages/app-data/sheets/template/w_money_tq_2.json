@@ -37,9 +37,7 @@
             {
               "name": "include_outro",
               "value": true,
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "talk_group_family.workshop_activity.include_outro"
+              "exclude_from_translation": true
             },
             {
               "name": "intro_text",
@@ -53,9 +51,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "talk_group_family.workshop_activity.intro_text"
+              }
             },
             {
               "type": "nested_properties",
@@ -73,23 +69,6 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "talk_group_family.workshop_activity.content_box.text",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "For @global.w_money_grandma, a storm happened. \n\nWhat other emergencies could come up for us?",
-                        "matchedExpression": "@global.w_money_grandma",
-                        "type": "global",
-                        "fieldName": "w_money_grandma"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@global.w_money_grandma": [
-                      "value"
-                    ]
                   }
                 },
                 {
@@ -105,12 +84,9 @@
                       "_cleaned": "click | pop_up:w_money_tq_2_pop"
                     }
                   ],
-                  "hidden": false,
-                  "type": "set_variable",
-                  "_nested_name": "talk_group_family.workshop_activity.content_box.button_1"
+                  "hidden": false
                 }
-              ],
-              "_nested_name": "talk_group_family.workshop_activity.content_box"
+              ]
             },
             {
               "name": "outro_text",
@@ -124,39 +100,11 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "talk_group_family.workshop_activity.outro_text"
+              }
             }
-          ],
-          "_nested_name": "talk_group_family.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "talk_group_family",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@fields.do_this_workshop_together || @fields.w_money_path==\"family\"",
-            "matchedExpression": "@fields.do_this_workshop_together",
-            "type": "fields",
-            "fieldName": "do_this_workshop_together"
-          },
-          {
-            "fullExpression": "@fields.do_this_workshop_together || @fields.w_money_path==\"family\"",
-            "matchedExpression": "@fields.w_money_path",
-            "type": "fields",
-            "fieldName": "w_money_path"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.do_this_workshop_together": [
-          "condition"
-        ],
-        "@fields.w_money_path": [
-          "condition"
-        ]
-      }
+      ]
     },
     {
       "type": "template",
@@ -200,9 +148,7 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "question_alone.workshop_activity.intro_text"
+              }
             },
             {
               "type": "nested_properties",
@@ -215,9 +161,7 @@
                   "_translations": {
                     "value": {}
                   },
-                  "exclude_from_translation": true,
-                  "type": "set_variable",
-                  "_nested_name": "question_alone.workshop_activity.content_box.combo_box_tracker"
+                  "exclude_from_translation": true
                 },
                 {
                   "name": "text",
@@ -231,23 +175,6 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "question_alone.workshop_activity.content_box.text",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "For @global.w_money_grandma, a storm happened.",
-                        "matchedExpression": "@global.w_money_grandma",
-                        "type": "global",
-                        "fieldName": "w_money_grandma"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@global.w_money_grandma": [
-                      "value"
-                    ]
                   }
                 },
                 {
@@ -262,93 +189,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "question_alone.workshop_activity.content_box.question_text"
+                  }
                 },
                 {
                   "name": "answer_list",
-                  "value": [
-                    "name:name_1 | text:@global.financial_emergency_1",
-                    "name:name_2 | text:@global.financial_emergency_2",
-                    "name:name_3 | text:@global.financial_emergency_3",
-                    "name:name_4 | text:@global.financial_emergency_4",
-                    "name:name_5 | text:@global.financial_emergency_5",
-                    "name:name_6 | text:@global.financial_emergency_6"
-                  ],
-                  "type": "set_variable",
-                  "_nested_name": "question_alone.workshop_activity.content_box.answer_list",
-                  "_dynamicFields": {
-                    "value": {
-                      "0": [
-                        {
-                          "fullExpression": "name:name_1 | text:@global.financial_emergency_1",
-                          "matchedExpression": "@global.financial_emergency_1",
-                          "type": "global",
-                          "fieldName": "financial_emergency_1"
-                        }
-                      ],
-                      "1": [
-                        {
-                          "fullExpression": "name:name_2 | text:@global.financial_emergency_2",
-                          "matchedExpression": "@global.financial_emergency_2",
-                          "type": "global",
-                          "fieldName": "financial_emergency_2"
-                        }
-                      ],
-                      "2": [
-                        {
-                          "fullExpression": "name:name_3 | text:@global.financial_emergency_3",
-                          "matchedExpression": "@global.financial_emergency_3",
-                          "type": "global",
-                          "fieldName": "financial_emergency_3"
-                        }
-                      ],
-                      "3": [
-                        {
-                          "fullExpression": "name:name_4 | text:@global.financial_emergency_4",
-                          "matchedExpression": "@global.financial_emergency_4",
-                          "type": "global",
-                          "fieldName": "financial_emergency_4"
-                        }
-                      ],
-                      "4": [
-                        {
-                          "fullExpression": "name:name_5 | text:@global.financial_emergency_5",
-                          "matchedExpression": "@global.financial_emergency_5",
-                          "type": "global",
-                          "fieldName": "financial_emergency_5"
-                        }
-                      ],
-                      "5": [
-                        {
-                          "fullExpression": "name:name_6 | text:@global.financial_emergency_6",
-                          "matchedExpression": "@global.financial_emergency_6",
-                          "type": "global",
-                          "fieldName": "financial_emergency_6"
-                        }
-                      ]
-                    }
-                  },
-                  "_dynamicDependencies": {
-                    "@global.financial_emergency_1": [
-                      "value.0"
-                    ],
-                    "@global.financial_emergency_2": [
-                      "value.1"
-                    ],
-                    "@global.financial_emergency_3": [
-                      "value.2"
-                    ],
-                    "@global.financial_emergency_4": [
-                      "value.3"
-                    ],
-                    "@global.financial_emergency_5": [
-                      "value.4"
-                    ],
-                    "@global.financial_emergency_6": [
-                      "value.5"
-                    ]
+                  "value": "name:name_1 | text:@global.financial_emergency_1;\nname:name_2 | text:@global.financial_emergency_2;\nname:name_3 | text:@global.financial_emergency_3;\nname:name_4 | text:@global.financial_emergency_4;\nname:name_5 | text:@global.financial_emergency_5;\nname:name_6 | text:@global.financial_emergency_6;",
+                  "_translations": {
+                    "value": {}
                   }
                 },
                 {
@@ -363,42 +210,13 @@
                       "za_xh": true,
                       "za_zu": true
                     }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "question_alone.workshop_activity.content_box.reply"
+                  }
                 }
-              ],
-              "_nested_name": "question_alone.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "question_alone.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "question_alone",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "!(@fields.do_this_workshop_together || @fields.w_money_path==\"family\")",
-            "matchedExpression": "@fields.do_this_workshop_together",
-            "type": "fields",
-            "fieldName": "do_this_workshop_together"
-          },
-          {
-            "fullExpression": "!(@fields.do_this_workshop_together || @fields.w_money_path==\"family\")",
-            "matchedExpression": "@fields.w_money_path",
-            "type": "fields",
-            "fieldName": "w_money_path"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.do_this_workshop_together": [
-          "condition"
-        ],
-        "@fields.w_money_path": [
-          "condition"
-        ]
-      }
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"

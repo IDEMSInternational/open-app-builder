@@ -49,33 +49,13 @@
                       "za_zu": true
                     }
                   },
-                  "condition": "@field.do_workshops_together",
-                  "type": "set_variable",
-                  "_nested_name": "ending.watch.workshop_activity.intro_text",
-                  "_dynamicFields": {
-                    "condition": [
-                      {
-                        "fullExpression": "@field.do_workshops_together",
-                        "matchedExpression": "@field.do_workshops_together",
-                        "type": "field",
-                        "fieldName": "do_workshops_together"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@field.do_workshops_together": [
-                      "condition"
-                    ]
-                  }
+                  "condition": "@field.do_workshops_together"
                 }
-              ],
-              "_nested_name": "ending.watch.workshop_activity"
+              ]
             }
-          ],
-          "_nested_name": "ending.watch"
+          ]
         }
-      ],
-      "_nested_name": "ending"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"

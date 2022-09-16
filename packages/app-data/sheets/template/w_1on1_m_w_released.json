@@ -9,23 +9,6 @@
       "value": "@fields.do_workshops_together",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "do_workshops_together",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields.do_workshops_together",
-            "matchedExpression": "@fields.do_workshops_together",
-            "type": "fields",
-            "fieldName": "do_workshops_together"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.do_workshops_together": [
-          "value"
-        ]
       }
     },
     {
@@ -33,23 +16,6 @@
       "value": "@data.workshop.w_1on1",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "workshop_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_1on1",
-            "matchedExpression": "@data.workshop.w_1on1",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_1on1": [
-          "value"
-        ]
       }
     },
     {
@@ -62,23 +28,6 @@
           "value": "@local.workshop_data",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "m_workshop_released.workshop_data",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.workshop_data",
-                "matchedExpression": "@local.workshop_data",
-                "type": "local",
-                "fieldName": "workshop_data"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.workshop_data": [
-              "value"
-            ]
           }
         },
         {
@@ -97,23 +46,6 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "m_workshop_released.in_week_message.title",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "First @global.weekly_workshop!",
-                    "matchedExpression": "@global.weekly_workshop",
-                    "type": "global",
-                    "fieldName": "weekly_workshop"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.weekly_workshop": [
-                  "value"
-                ]
               }
             },
             {
@@ -129,44 +61,7 @@
                   "za_zu": true
                 }
               },
-              "condition": "!@local.do_workshops_together",
-              "type": "set_variable",
-              "_nested_name": "m_workshop_released.in_week_message.text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Hi @fields.user_name. Your @local.workshop_data.in_text_title is ready for you.",
-                    "matchedExpression": "@fields.user_name",
-                    "type": "fields",
-                    "fieldName": "user_name"
-                  },
-                  {
-                    "fullExpression": "Hi @fields.user_name. Your @local.workshop_data.in_text_title is ready for you.",
-                    "matchedExpression": "@local.workshop_data.in_text_title",
-                    "type": "local",
-                    "fieldName": "workshop_data"
-                  }
-                ],
-                "condition": [
-                  {
-                    "fullExpression": "!@local.do_workshops_together",
-                    "matchedExpression": "!@local.do_workshops_together",
-                    "type": "local",
-                    "fieldName": "do_workshops_together"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@fields.user_name": [
-                  "value"
-                ],
-                "@local.workshop_data.in_text_title": [
-                  "value"
-                ],
-                "!@local.do_workshops_together": [
-                  "condition"
-                ]
-              }
+              "condition": "!@local.do_workshops_together"
             },
             {
               "name": "text",
@@ -181,50 +76,11 @@
                   "za_zu": true
                 }
               },
-              "condition": "@local.do_workshops_together",
-              "type": "set_variable",
-              "_nested_name": "m_workshop_released.in_week_message.text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Hi @fields.group_name. Your @local.workshop_data.in_text_title is ready for you.",
-                    "matchedExpression": "@fields.group_name",
-                    "type": "fields",
-                    "fieldName": "group_name"
-                  },
-                  {
-                    "fullExpression": "Hi @fields.group_name. Your @local.workshop_data.in_text_title is ready for you.",
-                    "matchedExpression": "@local.workshop_data.in_text_title",
-                    "type": "local",
-                    "fieldName": "workshop_data"
-                  }
-                ],
-                "condition": [
-                  {
-                    "fullExpression": "@local.do_workshops_together",
-                    "matchedExpression": "@local.do_workshops_together",
-                    "type": "local",
-                    "fieldName": "do_workshops_together"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@fields.group_name": [
-                  "value"
-                ],
-                "@local.workshop_data.in_text_title": [
-                  "value"
-                ],
-                "@local.do_workshops_together": [
-                  "condition"
-                ]
-              }
+              "condition": "@local.do_workshops_together"
             }
-          ],
-          "_nested_name": "m_workshop_released.in_week_message"
+          ]
         }
-      ],
-      "_nested_name": "m_workshop_released"
+      ]
     }
   ],
   "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"

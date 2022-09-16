@@ -10,9 +10,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "name": "title",
-      "_nested_name": "title"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -20,9 +18,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "name": "text",
-      "_nested_name": "text"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -30,40 +26,21 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "name": "text",
-      "_nested_name": "text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Value of debug_render_updates_field: \nfield: @fields.debug_render_updates_field",
-            "matchedExpression": "@fields.debug_render_updates_field",
-            "type": "fields",
-            "fieldName": "debug_render_updates_field"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.debug_render_updates_field": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "template",
       "name": "debug_render_updates_child_1",
       "value": "debug_render_updates_child_1",
       "exclude_from_translation": true,
-      "rows": [],
-      "_nested_name": "debug_render_updates_child_1"
+      "rows": []
     },
     {
       "type": "template",
       "name": "debug_render_updates_child_2",
       "value": "debug_render_updates_child_2",
       "exclude_from_translation": true,
-      "rows": [],
-      "_nested_name": "debug_render_updates_child_2"
+      "rows": []
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_render_updates.xlsx"

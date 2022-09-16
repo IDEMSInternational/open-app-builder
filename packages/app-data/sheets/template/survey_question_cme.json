@@ -34,18 +34,14 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "box_slider.question_id"
+          "exclude_from_translation": true
         },
         {
           "name": "relevant_workshop",
           "value": "w_stress",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "box_slider.relevant_workshop"
+          }
         },
         {
           "name": "image_src",
@@ -53,15 +49,11 @@
           "_translations": {
             "value": {}
           },
-          "hidden": false,
-          "type": "set_variable",
-          "_nested_name": "box_slider.image_src"
+          "hidden": false
         },
         {
           "name": "unlock_when_less",
-          "value": false,
-          "type": "set_variable",
-          "_nested_name": "box_slider.unlock_when_less"
+          "value": false
         },
         {
           "name": "reply_less",
@@ -75,12 +67,9 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "box_slider.reply_less"
+          }
         }
-      ],
-      "_nested_name": "box_slider"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/survey.xlsx"

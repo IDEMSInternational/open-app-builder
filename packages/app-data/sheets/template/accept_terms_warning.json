@@ -9,8 +9,7 @@
       "value": "You can only move on and access the app if you provide your consent.",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "text"
+      }
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"

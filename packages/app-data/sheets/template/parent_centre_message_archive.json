@@ -8,23 +8,6 @@
       "value": "@fields.workshop_number",
       "_translations": {
         "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "workshop_number",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields.workshop_number",
-            "matchedExpression": "@fields.workshop_number",
-            "type": "fields",
-            "fieldName": "workshop_number"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.workshop_number": [
-          "value"
-        ]
       }
     },
     {
@@ -34,23 +17,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.in_week_messages",
-            "matchedExpression": "@global.in_week_messages",
-            "type": "global",
-            "fieldName": "in_week_messages"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.in_week_messages": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -66,32 +33,7 @@
           "za_zu": true
         }
       },
-      "condition": "@data.workshop.w_self_care.number == @local.workshop_number",
-      "_nested_name": "text",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@data.workshop.w_self_care.number == @local.workshop_number",
-            "matchedExpression": "@data.workshop.w_self_care.number",
-            "type": "data",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@data.workshop.w_self_care.number == @local.workshop_number",
-            "matchedExpression": "@local.workshop_number",
-            "type": "local",
-            "fieldName": "workshop_number"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_self_care.number": [
-          "condition"
-        ],
-        "@local.workshop_number": [
-          "condition"
-        ]
-      }
+      "condition": "@data.workshop.w_self_care.number == @local.workshop_number"
     },
     {
       "type": "button",
@@ -112,45 +54,9 @@
         }
       ],
       "condition": "@data.workshop.w_self_care.number < @local.workshop_number",
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_1_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_self_care.title",
-            "matchedExpression": "@data.workshop.w_self_care.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@data.workshop.w_self_care.number < @local.workshop_number",
-            "matchedExpression": "@data.workshop.w_self_care.number",
-            "type": "data",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@data.workshop.w_self_care.number < @local.workshop_number",
-            "matchedExpression": "@local.workshop_number",
-            "type": "local",
-            "fieldName": "workshop_number"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_self_care.title": [
-          "value"
-        ],
-        "@data.workshop.w_self_care.number": [
-          "condition"
-        ],
-        "@local.workshop_number": [
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -171,45 +77,9 @@
         }
       ],
       "condition": "@data.workshop.w_1on1.number < @local.workshop_number",
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_2_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_1on1.title",
-            "matchedExpression": "@data.workshop.w_1on1.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@data.workshop.w_1on1.number < @local.workshop_number",
-            "matchedExpression": "@data.workshop.w_1on1.number",
-            "type": "data",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@data.workshop.w_1on1.number < @local.workshop_number",
-            "matchedExpression": "@local.workshop_number",
-            "type": "local",
-            "fieldName": "workshop_number"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_1on1.title": [
-          "value"
-        ],
-        "@data.workshop.w_1on1.number": [
-          "condition"
-        ],
-        "@local.workshop_number": [
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -230,45 +100,9 @@
         }
       ],
       "condition": "@data.workshop.w_praise.number < @local.workshop_number",
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_3_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_praise.title",
-            "matchedExpression": "@data.workshop.w_praise.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@data.workshop.w_praise.number < @local.workshop_number",
-            "matchedExpression": "@data.workshop.w_praise.number",
-            "type": "data",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@data.workshop.w_praise.number < @local.workshop_number",
-            "matchedExpression": "@local.workshop_number",
-            "type": "local",
-            "fieldName": "workshop_number"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_praise.title": [
-          "value"
-        ],
-        "@data.workshop.w_praise.number": [
-          "condition"
-        ],
-        "@local.workshop_number": [
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -289,45 +123,9 @@
         }
       ],
       "condition": "@data.workshop.w_instruct.number < @local.workshop_number",
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_4_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_instruct.title",
-            "matchedExpression": "@data.workshop.w_instruct.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@data.workshop.w_instruct.number < @local.workshop_number",
-            "matchedExpression": "@data.workshop.w_instruct.number",
-            "type": "data",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@data.workshop.w_instruct.number < @local.workshop_number",
-            "matchedExpression": "@local.workshop_number",
-            "type": "local",
-            "fieldName": "workshop_number"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_instruct.title": [
-          "value"
-        ],
-        "@data.workshop.w_instruct.number": [
-          "condition"
-        ],
-        "@local.workshop_number": [
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -348,45 +146,9 @@
         }
       ],
       "condition": "@data.workshop.w_stress.number < @local.workshop_number",
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_5_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_stress.title",
-            "matchedExpression": "@data.workshop.w_stress.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@data.workshop.w_stress.number < @local.workshop_number",
-            "matchedExpression": "@data.workshop.w_stress.number",
-            "type": "data",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@data.workshop.w_stress.number < @local.workshop_number",
-            "matchedExpression": "@local.workshop_number",
-            "type": "local",
-            "fieldName": "workshop_number"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_stress.title": [
-          "value"
-        ],
-        "@data.workshop.w_stress.number": [
-          "condition"
-        ],
-        "@local.workshop_number": [
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -407,45 +169,9 @@
         }
       ],
       "condition": "@data.workshop.w_money.number < @local.workshop_number",
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_6_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_money.title",
-            "matchedExpression": "@data.workshop.w_money.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@data.workshop.w_money.number < @local.workshop_number",
-            "matchedExpression": "@data.workshop.w_money.number",
-            "type": "data",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@data.workshop.w_money.number < @local.workshop_number",
-            "matchedExpression": "@local.workshop_number",
-            "type": "local",
-            "fieldName": "workshop_number"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_money.title": [
-          "value"
-        ],
-        "@data.workshop.w_money.number": [
-          "condition"
-        ],
-        "@local.workshop_number": [
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -466,45 +192,9 @@
         }
       ],
       "condition": "@data.workshop.w_rules.number < @local.workshop_number",
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_7_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_rules.title",
-            "matchedExpression": "@data.workshop.w_rules.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@data.workshop.w_rules.number < @local.workshop_number",
-            "matchedExpression": "@data.workshop.w_rules.number",
-            "type": "data",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@data.workshop.w_rules.number < @local.workshop_number",
-            "matchedExpression": "@local.workshop_number",
-            "type": "local",
-            "fieldName": "workshop_number"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_rules.title": [
-          "value"
-        ],
-        "@data.workshop.w_rules.number": [
-          "condition"
-        ],
-        "@local.workshop_number": [
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -525,45 +215,9 @@
         }
       ],
       "condition": "@data.workshop.w_consequence.number < @local.workshop_number",
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_8_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_consequence.title",
-            "matchedExpression": "@data.workshop.w_consequence.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@data.workshop.w_consequence.number < @local.workshop_number",
-            "matchedExpression": "@data.workshop.w_consequence.number",
-            "type": "data",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@data.workshop.w_consequence.number < @local.workshop_number",
-            "matchedExpression": "@local.workshop_number",
-            "type": "local",
-            "fieldName": "workshop_number"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_consequence.title": [
-          "value"
-        ],
-        "@data.workshop.w_consequence.number": [
-          "condition"
-        ],
-        "@local.workshop_number": [
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -584,45 +238,9 @@
         }
       ],
       "condition": "@data.workshop.w_solve.number < @local.workshop_number",
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_9_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_solve.title",
-            "matchedExpression": "@data.workshop.w_solve.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@data.workshop.w_solve.number < @local.workshop_number",
-            "matchedExpression": "@data.workshop.w_solve.number",
-            "type": "data",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@data.workshop.w_solve.number < @local.workshop_number",
-            "matchedExpression": "@local.workshop_number",
-            "type": "local",
-            "fieldName": "workshop_number"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_solve.title": [
-          "value"
-        ],
-        "@data.workshop.w_solve.number": [
-          "condition"
-        ],
-        "@local.workshop_number": [
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -643,45 +261,9 @@
         }
       ],
       "condition": "@data.workshop.w_safe.number < @local.workshop_number",
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_10_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_safe.title",
-            "matchedExpression": "@data.workshop.w_safe.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@data.workshop.w_safe.number < @local.workshop_number",
-            "matchedExpression": "@data.workshop.w_safe.number",
-            "type": "data",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@data.workshop.w_safe.number < @local.workshop_number",
-            "matchedExpression": "@local.workshop_number",
-            "type": "local",
-            "fieldName": "workshop_number"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_safe.title": [
-          "value"
-        ],
-        "@data.workshop.w_safe.number": [
-          "condition"
-        ],
-        "@local.workshop_number": [
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     },
     {
       "type": "button",
@@ -702,45 +284,9 @@
         }
       ],
       "condition": "@data.workshop.w_crisis.number < @local.workshop_number",
-      "parameter_list": {
-        "style": "information"
-      },
-      "_nested_name": "week_11_messages",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.workshop.w_crisis.title",
-            "matchedExpression": "@data.workshop.w_crisis.title",
-            "type": "data",
-            "fieldName": "workshop"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@data.workshop.w_crisis.number < @local.workshop_number",
-            "matchedExpression": "@data.workshop.w_crisis.number",
-            "type": "data",
-            "fieldName": "workshop"
-          },
-          {
-            "fullExpression": "@data.workshop.w_crisis.number < @local.workshop_number",
-            "matchedExpression": "@local.workshop_number",
-            "type": "local",
-            "fieldName": "workshop_number"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.workshop.w_crisis.title": [
-          "value"
-        ],
-        "@data.workshop.w_crisis.number": [
-          "condition"
-        ],
-        "@local.workshop_number": [
-          "condition"
-        ]
-      }
+      "parameter_list": [
+        "style: information"
+      ]
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"

@@ -32,33 +32,14 @@
               "za_zu": true
             }
           },
-          "hidden": false,
-          "type": "set_variable",
-          "_nested_name": "box_image.title",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "Customise your @global.parent_app",
-                "matchedExpression": "@global.parent_app",
-                "type": "global",
-                "fieldName": "parent_app"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.parent_app": [
-              "value"
-            ]
-          }
+          "hidden": false
         },
         {
           "name": "image_src",
           "value": "plh_images/survey/workshop_setup/high_five.svg",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "box_image.image_src"
+          }
         },
         {
           "name": "text",
@@ -72,9 +53,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "box_image.text"
+          }
         },
         {
           "type": "nested_properties",
@@ -85,30 +64,11 @@
               "value": "@global.lets_go_button",
               "_translations": {
                 "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "box_image.nav_buttons.button_completed",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@global.lets_go_button",
-                    "matchedExpression": "@global.lets_go_button",
-                    "type": "global",
-                    "fieldName": "lets_go_button"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.lets_go_button": [
-                  "value"
-                ]
               }
             }
-          ],
-          "_nested_name": "box_image.nav_buttons"
+          ]
         }
-      ],
-      "_nested_name": "box_image"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/workshop_setup.xlsx"

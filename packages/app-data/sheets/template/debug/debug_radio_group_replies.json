@@ -6,39 +6,19 @@
   "rows": [
     {
       "name": "answer_list",
-      "value": [
-        "name:name_var_1 | text:First",
-        "name:name_var_2 | text:Second"
-      ],
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "answer_list"
+      "value": "name:name_var_1 | text:First; \nname:name_var_2 | text:Second",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
     },
     {
       "type": "radio_group",
       "name": "radio_group",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "answer_list": "@local.answer_list"
-      },
-      "_nested_name": "radio_group",
-      "_dynamicFields": {
-        "parameter_list": {
-          "answer_list": [
-            {
-              "fullExpression": "@local.answer_list",
-              "matchedExpression": "@local.answer_list",
-              "type": "local",
-              "fieldName": "answer_list"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.answer_list": [
-          "parameter_list.answer_list"
-        ]
-      }
+      "parameter_list": [
+        "answer_list: @local.answer_list"
+      ]
     },
     {
       "type": "text",
@@ -48,23 +28,7 @@
         "value": {}
       },
       "hidden": "@local.radio_group != \"name_var_1\"",
-      "exclude_from_translation": true,
-      "_nested_name": "text_1_hidden",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@local.radio_group != \"name_var_1\"",
-            "matchedExpression": "@local.radio_group",
-            "type": "local",
-            "fieldName": "radio_group"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.radio_group": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -74,23 +38,7 @@
         "value": {}
       },
       "condition": "@local.radio_group == \"name_var_1\"",
-      "exclude_from_translation": true,
-      "_nested_name": "text_1_condition",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.radio_group == \"name_var_1\"",
-            "matchedExpression": "@local.radio_group",
-            "type": "local",
-            "fieldName": "radio_group"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.radio_group": [
-          "condition"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
@@ -104,26 +52,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "dg_1.text_1_display_group"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "dg_1",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@local.radio_group != \"name_var_1\"",
-            "matchedExpression": "@local.radio_group",
-            "type": "local",
-            "fieldName": "radio_group"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.radio_group": [
-          "hidden"
-        ]
-      }
+      ]
     },
     {
       "type": "text",
@@ -133,23 +64,7 @@
         "value": {}
       },
       "hidden": "@local.radio_group != \"name_var_2\"",
-      "exclude_from_translation": true,
-      "_nested_name": "text_2_hidden",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@local.radio_group != \"name_var_2\"",
-            "matchedExpression": "@local.radio_group",
-            "type": "local",
-            "fieldName": "radio_group"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.radio_group": [
-          "hidden"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -159,23 +74,7 @@
         "value": {}
       },
       "condition": "@local.radio_group == \"name_var_2\"",
-      "exclude_from_translation": true,
-      "_nested_name": "text_2_condition",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.radio_group == \"name_var_2\"",
-            "matchedExpression": "@local.radio_group",
-            "type": "local",
-            "fieldName": "radio_group"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.radio_group": [
-          "condition"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "display_group",
@@ -189,26 +88,9 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "_nested_name": "dg_2.text_2_display_group"
+          "exclude_from_translation": true
         }
-      ],
-      "_nested_name": "dg_2",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@local.radio_group != \"name_var_2\"",
-            "matchedExpression": "@local.radio_group",
-            "type": "local",
-            "fieldName": "radio_group"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.radio_group": [
-          "hidden"
-        ]
-      }
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_overriding_value.xlsx"

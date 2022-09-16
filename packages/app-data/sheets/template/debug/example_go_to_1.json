@@ -5,10 +5,7 @@
   "flow_subtype": "debug",
   "rows": [
     {
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "name": "set_variable",
-      "_nested_name": "set_variable"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -17,8 +14,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -38,8 +34,7 @@
           "_cleaned": "click | go_to:example_emit"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_go_to_1"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -68,8 +63,7 @@
           "_cleaned": "click | emit:completed"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_go_to_2"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -98,8 +92,7 @@
           "_cleaned": "completed | emit:completed"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_go_to_3"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -128,8 +121,7 @@
           "_cleaned": "uncompleted | emit:completed"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_go_to_4"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_actions.xlsx"

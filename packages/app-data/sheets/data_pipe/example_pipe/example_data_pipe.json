@@ -32,7 +32,7 @@
         "completed"
       ],
       "input_source": "intermediate_list",
-      "output_target": "completed_list"
+      "output_target": "example_pipe_completed"
     },
     {
       "operation": "filter",
@@ -40,12 +40,12 @@
         "!completed"
       ],
       "input_source": "intermediate_list",
-      "output_target": "uncompleted_list"
+      "output_target": "example_pipe_uncompleted"
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes.xlsx",
   "_processed": {
-    "completed_list": [
+    "example_pipe_completed": [
       {
         "id": "id_5",
         "value": 5,
@@ -61,7 +61,7 @@
         "Label": "Another column"
       }
     ],
-    "uncompleted_list": [
+    "example_pipe_uncompleted": [
       {
         "id": "id_2",
         "value": 2,

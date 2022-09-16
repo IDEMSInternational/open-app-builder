@@ -35,9 +35,7 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
-          "type": "set_variable",
-          "_nested_name": "workshop_stepper_actions.workshop_id"
+          "exclude_from_translation": true
         },
         {
           "type": "nested_properties",
@@ -45,79 +43,25 @@
           "rows": [
             {
               "name": "nav_template_list",
-              "value": [
-                "w_solve_care_together",
-                "w_solve_relax",
-                "w_solve_reflect_together",
-                "w_solve_intro",
-                "w_solve_read_1_temp",
-                "w_solve_tools_activity",
-                "w_solve_read_2_temp",
-                "w_solve_talk",
-                "w_solve_learn_temp",
-                "w_solve_try",
-                "w_solve_home_practice",
-                "w_solve_ending"
-              ],
-              "condition": "@field.do_this_workshop_together",
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "@field.do_this_workshop_together",
-                    "matchedExpression": "@field.do_this_workshop_together",
-                    "type": "field",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
+              "value": "w_solve_care_together;\nw_solve_relax;\nw_solve_reflect_together;\nw_solve_intro;\nw_solve_read_1_temp;\nw_solve_tools_activity;\nw_solve_read_2_temp;\nw_solve_talk;\nw_solve_learn_temp;\nw_solve_try;\nw_solve_home_practice;\nw_solve_ending",
+              "_translations": {
+                "value": {}
               },
-              "_dynamicDependencies": {
-                "@field.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "@field.do_this_workshop_together",
+              "exclude_from_translation": true
             },
             {
               "name": "nav_template_list",
-              "value": [
-                "w_solve_welcome_individual",
-                "w_solve_relax",
-                "w_solve_intro",
-                "w_solve_read_1_temp",
-                "w_solve_tools_activity",
-                "w_solve_read_2_temp",
-                "w_solve_think",
-                "w_solve_learn_temp",
-                "w_solve_home_practice",
-                "w_solve_ending"
-              ],
-              "condition": "!@field.do_this_workshop_together",
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list",
-              "_dynamicFields": {
-                "condition": [
-                  {
-                    "fullExpression": "!@field.do_this_workshop_together",
-                    "matchedExpression": "!@field.do_this_workshop_together",
-                    "type": "field",
-                    "fieldName": "do_this_workshop_together"
-                  }
-                ]
+              "value": "w_solve_welcome_individual;\nw_solve_relax;\nw_solve_intro;\nw_solve_read_1_temp;\nw_solve_tools_activity;\nw_solve_read_2_temp;\nw_solve_think;\nw_solve_learn_temp;\nw_solve_home_practice;\nw_solve_ending",
+              "_translations": {
+                "value": {}
               },
-              "_dynamicDependencies": {
-                "!@field.do_this_workshop_together": [
-                  "condition"
-                ]
-              }
+              "condition": "!@field.do_this_workshop_together",
+              "exclude_from_translation": true
             }
-          ],
-          "_nested_name": "workshop_stepper_actions.workshop_stepper"
+          ]
         }
-      ],
-      "_nested_name": "workshop_stepper_actions"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"

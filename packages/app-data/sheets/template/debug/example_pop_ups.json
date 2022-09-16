@@ -11,8 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -21,8 +20,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -42,8 +40,7 @@
           "_cleaned": "click | pop_up:example_text"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_pop_up_1"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -52,8 +49,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_3"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -73,8 +69,7 @@
           "_cleaned": "click | pop_up:example_go_to_2"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_pop_up_2"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -83,8 +78,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_4"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -113,8 +107,7 @@
           "_cleaned": "completed | emit:completed"
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_pop_up_3"
+      "exclude_from_translation": true
     },
     {
       "type": "title",
@@ -123,8 +116,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "full_screen"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -133,8 +125,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_4"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -157,8 +148,7 @@
           }
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_pop_up_4"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -167,8 +157,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_5"
+      "exclude_from_translation": true
     },
     {
       "type": "button",
@@ -192,8 +181,7 @@
           }
         }
       ],
-      "exclude_from_translation": true,
-      "_nested_name": "button_pop_up_5"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_actions.xlsx"

@@ -45,23 +45,6 @@
                   "za_xh": true,
                   "za_zu": true
                 }
-              },
-              "type": "set_variable",
-              "_nested_name": "read.workshop_activity.intro_text",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "Praise really is powerful. \n\nLet’s look at the example of @global.w_praise_female_caregiver_name and her daughters:",
-                    "matchedExpression": "@global.w_praise_female_caregiver_name",
-                    "type": "global",
-                    "fieldName": "w_praise_female_caregiver_name"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@global.w_praise_female_caregiver_name": [
-                  "value"
-                ]
               }
             },
             {
@@ -79,9 +62,7 @@
                       "value": "plh_images/workshops/w_praise/read/slide_1.svg",
                       "_translations": {
                         "value": {}
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "read.workshop_activity.content_box.box_1.image_src"
+                      }
                     },
                     {
                       "name": "text",
@@ -95,27 +76,9 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "read.workshop_activity.content_box.box_1.text",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "When @global.w_praise_female_caregiver_name is busy, her two daughters often fight. But today, her older daughter actually helped her sister with her schoolwork!",
-                            "matchedExpression": "@global.w_praise_female_caregiver_name",
-                            "type": "global",
-                            "fieldName": "w_praise_female_caregiver_name"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@global.w_praise_female_caregiver_name": [
-                          "value"
-                        ]
                       }
                     }
-                  ],
-                  "_nested_name": "read.workshop_activity.content_box.box_1"
+                  ]
                 },
                 {
                   "type": "nested_properties",
@@ -127,9 +90,7 @@
                       "value": "plh_images/workshops/w_praise/read/slide_2.svg",
                       "_translations": {
                         "value": {}
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "read.workshop_activity.content_box.box_2.image_src"
+                      }
                     },
                     {
                       "name": "text",
@@ -143,54 +104,15 @@
                           "za_xh": true,
                           "za_zu": true
                         }
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "read.workshop_activity.content_box.box_2.text",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@global.w_praise_female_caregiver_name: \"Thank you for doing your schoolwork, @global.w_praise_girl, and thank you for helping your sister,  @global.w_praise_teen_girl. I'm so proud of you!\"",
-                            "matchedExpression": "@global.w_praise_female_caregiver_name",
-                            "type": "global",
-                            "fieldName": "w_praise_female_caregiver_name"
-                          },
-                          {
-                            "fullExpression": "@global.w_praise_female_caregiver_name: \"Thank you for doing your schoolwork, @global.w_praise_girl, and thank you for helping your sister,  @global.w_praise_teen_girl. I'm so proud of you!\"",
-                            "matchedExpression": "@global.w_praise_girl",
-                            "type": "global",
-                            "fieldName": "w_praise_girl"
-                          },
-                          {
-                            "fullExpression": "@global.w_praise_female_caregiver_name: \"Thank you for doing your schoolwork, @global.w_praise_girl, and thank you for helping your sister,  @global.w_praise_teen_girl. I'm so proud of you!\"",
-                            "matchedExpression": "@global.w_praise_teen_girl",
-                            "type": "global",
-                            "fieldName": "w_praise_teen_girl"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@global.w_praise_female_caregiver_name": [
-                          "value"
-                        ],
-                        "@global.w_praise_girl": [
-                          "value"
-                        ],
-                        "@global.w_praise_teen_girl": [
-                          "value"
-                        ]
                       }
                     }
-                  ],
-                  "_nested_name": "read.workshop_activity.content_box.box_2"
+                  ]
                 }
-              ],
-              "_nested_name": "read.workshop_activity.content_box"
+              ]
             }
-          ],
-          "_nested_name": "read.workshop_activity"
+          ]
         }
-      ],
-      "_nested_name": "read"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"

@@ -21,9 +21,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "suggestions_ticks.text_1"
+          }
         },
         {
           "name": "dashed_box_1",
@@ -38,12 +36,10 @@
               "za_zu": true
             }
           },
-          "parameter_list": {
-            "icon_src": "plh_images/icons/cross_circle.svg",
-            "icon_position": "top-left"
-          },
-          "type": "set_variable",
-          "_nested_name": "suggestions_ticks.dashed_box_1"
+          "parameter_list": [
+            "icon_src:plh_images/icons/cross_circle.svg",
+            "icon_position:top-left"
+          ]
         },
         {
           "name": "text_2",
@@ -57,9 +53,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "suggestions_ticks.text_2"
+          }
         },
         {
           "name": "dashed_box_2",
@@ -74,12 +68,10 @@
               "za_zu": true
             }
           },
-          "parameter_list": {
-            "icon_src": "plh_images/icons/cross_circle.svg",
-            "icon_position": "top-left"
-          },
-          "type": "set_variable",
-          "_nested_name": "suggestions_ticks.dashed_box_2"
+          "parameter_list": [
+            "icon_src:plh_images/icons/cross_circle.svg",
+            "icon_position:top-left"
+          ]
         },
         {
           "name": "text_3",
@@ -93,9 +85,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "suggestions_ticks.text_3"
+          }
         },
         {
           "name": "dashed_box_3",
@@ -110,15 +100,12 @@
               "za_zu": true
             }
           },
-          "parameter_list": {
-            "icon_src": "plh_images/icons/tick_circle.svg",
-            "icon_position": "top-left"
-          },
-          "type": "set_variable",
-          "_nested_name": "suggestions_ticks.dashed_box_3"
+          "parameter_list": [
+            "icon_src:plh_images/icons/tick_circle.svg",
+            "icon_position:top-left"
+          ]
         }
-      ],
-      "_nested_name": "suggestions_ticks"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"

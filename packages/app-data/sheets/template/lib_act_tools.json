@@ -5,9 +5,7 @@
   "rows": [
     {
       "name": "workshop_data",
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "workshop_data"
+      "exclude_from_translation": true
     },
     {
       "name": "workshop_id",
@@ -15,24 +13,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "workshop_id",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop_data.id",
-            "matchedExpression": "@local.workshop_data.id",
-            "type": "local",
-            "fieldName": "workshop_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_data.id": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "name": "tools",
@@ -40,9 +21,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "tools"
+      "exclude_from_translation": true
     },
     {
       "name": "workshop_tools",
@@ -50,33 +29,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "workshop_tools",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop_id@local.tools",
-            "matchedExpression": "@local.workshop_id",
-            "type": "local",
-            "fieldName": "workshop_id"
-          },
-          {
-            "fullExpression": "@local.workshop_id@local.tools",
-            "matchedExpression": "@local.tools",
-            "type": "local",
-            "fieldName": "tools"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_id": [
-          "value"
-        ],
-        "@local.tools": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "template",
@@ -99,23 +52,6 @@
           "value": "@local.workshop_data.image_asset",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "library_activity.activity_image",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.workshop_data.image_asset",
-                "matchedExpression": "@local.workshop_data.image_asset",
-                "type": "local",
-                "fieldName": "workshop_data"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.workshop_data.image_asset": [
-              "value"
-            ]
           }
         },
         {
@@ -123,49 +59,15 @@
           "value": "@local.workshop_data.tools",
           "_translations": {
             "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "library_activity.activity_title",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.workshop_data.tools",
-                "matchedExpression": "@local.workshop_data.tools",
-                "type": "local",
-                "fieldName": "workshop_data"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.workshop_data.tools": [
-              "value"
-            ]
           }
         },
         {
           "type": "nested_properties",
           "name": "content_box",
           "value": "@local.workshop_tools",
-          "rows": [],
-          "_nested_name": "library_activity.content_box",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@local.workshop_tools",
-                "matchedExpression": "@local.workshop_tools",
-                "type": "local",
-                "fieldName": "workshop_tools"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.workshop_tools": [
-              "value"
-            ]
-          }
+          "rows": []
         }
-      ],
-      "_nested_name": "library_activity"
+      ]
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_essential_tools.xlsx"

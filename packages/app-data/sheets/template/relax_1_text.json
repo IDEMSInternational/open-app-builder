@@ -20,9 +20,7 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "relax_text.activity_text"
+          }
         },
         {
           "name": "outro_text",
@@ -36,12 +34,9 @@
               "za_xh": true,
               "za_zu": true
             }
-          },
-          "type": "set_variable",
-          "_nested_name": "relax_text.outro_text"
+          }
         }
-      ],
-      "_nested_name": "relax_text"
+      ]
     }
   ],
   "_xlsxPath": "global/top_templates/parent_centre_templates/databank_relax.xlsx"

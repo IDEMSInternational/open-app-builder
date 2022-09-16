@@ -8,11 +8,10 @@
       "type": "timer",
       "name": "timer",
       "exclude_from_translation": true,
-      "parameter_list": {
-        "duration_extension": "1",
-        "duration": "10"
-      },
-      "_nested_name": "timer"
+      "parameter_list": [
+        "duration_extension:1",
+        "duration:10"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_small_issues.xlsx"

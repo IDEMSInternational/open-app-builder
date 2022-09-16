@@ -8,8 +8,7 @@
       "type": "advanced_dashed_box",
       "name": "dashed_box",
       "exclude_from_translation": true,
-      "rows": [],
-      "_nested_name": "dashed_box"
+      "rows": []
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_advanced_dashed_box.xlsx"

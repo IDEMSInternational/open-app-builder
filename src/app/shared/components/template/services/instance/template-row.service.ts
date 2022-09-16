@@ -3,7 +3,7 @@ import { FlowTypes } from "src/app/shared/model";
 import { booleanStringToBoolean } from "src/app/shared/utils";
 import { ItemProcessor } from "../../processors/item";
 import { TemplateContainerComponent } from "../../template-container.component";
-import { mergeTemplateRows } from "../../utils/template-utils";
+import { mergeTemplateRows, objectToArray } from "../../utils/template-utils";
 import { TemplateFieldService } from "../template-field.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { TemplateVariablesService } from "../template-variables.service";
@@ -261,8 +261,13 @@ export class TemplateRowService extends TemplateInstanceService {
     // Instead of returning themselves items looped child rows
     if (type === "items") {
       // extract raw parameter list
+      console.log("row:", row);
       const itemDataList: { [id: string]: any } = row.value;
+      console.log("itemDataList:", itemDataList);
+      const itemsToIterateOver = objectToArray(row.value);
+      console.log("itemsToIterateOver:", itemsToIterateOver);
       const parameterList = this.hackUnparseItemParameterList(row);
+      console.log("parameterList:", parameterList);
       const parsedItemDataList = await this.parseDataList(itemDataList);
       const itemRows = new ItemProcessor(parsedItemDataList, parameterList).process(row.rows);
       const parsedItemRows = await this.processRows(itemRows, isNestedTemplate, row.name);
@@ -334,6 +339,10 @@ export class TemplateRowService extends TemplateInstanceService {
   private async parseDataList(dataList: { [id: string]: any }) {
     const parsed: { [id: string]: any } = {};
     for (const [listKey, listValue] of Object.entries(dataList)) {
+      if (typeof listValue === "string") {
+        console.log("listValue: ", listValue);
+        console.log("dataList: ", dataList);
+      }
       parsed[listKey] = listValue;
       for (const [itemKey, itemValue] of Object.entries(listValue)) {
         if (typeof itemValue === "string") {

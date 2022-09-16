@@ -11,10 +11,9 @@
       "_translations": {
         "value": {}
       },
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "text_1"
+      "parameter_list": [
+        "style:emphasised"
+      ]
     },
     {
       "type": "text",
@@ -29,22 +28,6 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "You can always find these tools in the @global.parent_centre",
-            "matchedExpression": "@global.parent_centre",
-            "type": "global",
-            "fieldName": "parent_centre"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.parent_centre": [
-          "value"
-        ]
       }
     },
     {
@@ -60,22 +43,6 @@
           "za_xh": true,
           "za_zu": true
         }
-      },
-      "_nested_name": "text_3",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Welcome @fields.user_name",
-            "matchedExpression": "@fields.user_name",
-            "type": "fields",
-            "fieldName": "user_name"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.user_name": [
-          "value"
-        ]
       }
     },
     {
@@ -95,8 +62,7 @@
           "_raw": "click | emit: force_reprocess",
           "_cleaned": "click | emit: force_reprocess"
         }
-      ],
-      "_nested_name": "force_reprocess"
+      ]
     },
     {
       "type": "button",
@@ -115,8 +81,7 @@
           "_raw": "click | emit: force_reload",
           "_cleaned": "click | emit: force_reload"
         }
-      ],
-      "_nested_name": "force_reload"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_translation.xlsx"

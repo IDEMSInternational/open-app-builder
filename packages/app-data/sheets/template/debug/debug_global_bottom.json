@@ -11,23 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.debug_item_1",
-            "matchedExpression": "@global.debug_item_1",
-            "type": "global",
-            "fieldName": "debug_item_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.debug_item_1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -36,23 +20,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.debug_item_1",
-            "matchedExpression": "@global.debug_item_1",
-            "type": "global",
-            "fieldName": "debug_item_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.debug_item_1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -61,23 +29,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_3",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.debug_item_1",
-            "matchedExpression": "@global.debug_item_1",
-            "type": "global",
-            "fieldName": "debug_item_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.debug_item_1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -86,23 +38,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_4",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.debug_item_1",
-            "matchedExpression": "@global.debug_item_1",
-            "type": "global",
-            "fieldName": "debug_item_1"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.debug_item_1": [
-          "value"
-        ]
-      }
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -111,8 +47,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_5"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -121,8 +56,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_6"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -131,8 +65,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_7"
+      "exclude_from_translation": true
     },
     {
       "type": "text",
@@ -141,8 +74,7 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_8"
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_global.xlsx"

@@ -10,24 +10,21 @@
       "value": "Icon Source",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_1"
+      }
     },
     {
       "type": "parent_point_counter",
       "name": "parent_point_counter_par_1_1",
-      "parameter_list": {
-        "icon_src": "null - (default)"
-      },
-      "_nested_name": "parent_point_counter_par_1_1"
+      "parameter_list": [
+        "icon_src: null - (default)"
+      ]
     },
     {
       "type": "parent_point_counter",
       "name": "parent_point_counter_par_1_2",
-      "parameter_list": {
-        "icon_src": "string"
-      },
-      "_nested_name": "parent_point_counter_par_1_2"
+      "parameter_list": [
+        "icon_src: string"
+      ]
     },
     {
       "type": "title",
@@ -35,24 +32,21 @@
       "value": "Count",
       "_translations": {
         "value": {}
-      },
-      "_nested_name": "title_2"
+      }
     },
     {
       "type": "parent_point_counter",
       "name": "parent_point_counter_par_2_1",
-      "parameter_list": {
-        "count": "null - (default)"
-      },
-      "_nested_name": "parent_point_counter_par_2_1"
+      "parameter_list": [
+        "count: null - (default)"
+      ]
     },
     {
       "type": "parent_point_counter",
       "name": "parent_point_counter_par_2_2",
-      "parameter_list": {
-        "count": "rounded_corners"
-      },
-      "_nested_name": "parent_point_counter_par_2_2"
+      "parameter_list": [
+        "count: rounded_corners"
+      ]
     }
   ],
   "_xlsxPath": "quality_assurance/component_sheets/component_parent_point_counter.xlsx"
