@@ -1,11 +1,11 @@
 {
   "flow_type": "data_list",
-  "flow_name": "ae_principles_data",
+  "flow_name": "ae_fao",
   "status": "released",
-  "data_list_name": "ae_principles",
+  "data_list_name": "ae_fao",
   "rows": [
     {
-      "id": "principle_diversity",
+      "id": "principle_diversity2",
       "principle_no": 1,
       "illustration": "ae_principles/diversity.png",
       "principle_title": "Diversity",
@@ -26,21 +26,21 @@
       "principle_details": "Building synergies enhances key functions across food systems, supporting production and multiple ecosystem services"
     },
     {
-      "id": "principle_efficiency",
+      "id": "principle_efficiency2",
       "principle_no": 4,
       "illustration": "ae_principles/efficiency.png",
       "principle_title": "Efficiency",
       "principle_details": "Innovative agroecological practices produce more using less external resources."
     },
     {
-      "id": "principle_recycling",
+      "id": "principle_recycling2",
       "principle_no": 5,
       "illustration": "ae_principles/recycling.png",
       "principle_title": "Recycling",
       "principle_details": "More recycling means agricultural production with lower economic and environmental costs."
     },
     {
-      "id": "principle_resilience",
+      "id": "principle_resilience2",
       "principle_no": 6,
       "illustration": "ae_principles/resilience.png",
       "principle_title": "Resilience",

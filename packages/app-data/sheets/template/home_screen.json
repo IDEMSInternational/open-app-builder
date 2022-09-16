@@ -97,10 +97,6 @@
         {
           "type": "image",
           "name": "image_topics",
-          "value": "homepage/topics.png",
-          "_translations": {
-            "value": {}
-          },
           "_nested_name": "tile_topics.image_topics"
         },
         {
@@ -140,10 +136,6 @@
         {
           "type": "image",
           "name": "image_topics",
-          "value": "homepage/principles.png",
-          "_translations": {
-            "value": {}
-          },
           "_nested_name": "tile_topics.image_topics"
         },
         {

@@ -1,0 +1,504 @@
+{
+  "flow_type": "template",
+  "flow_name": "nutrient",
+  "status": "released",
+  "rows": [
+    {
+      "name": "nutrient_id",
+      "value": "@fields.current_nutrient",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "nutrient_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.current_nutrient",
+            "matchedExpression": "@fields.current_nutrient",
+            "type": "fields",
+            "fieldName": "current_nutrient"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.current_nutrient": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "name",
+      "value": ".name",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "name"
+    },
+    {
+      "name": "nutrient_name",
+      "value": "nutrients.@local.nutrient_id@local.name",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "nutrient_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "nutrients.@local.nutrient_id@local.name",
+            "matchedExpression": "@local.nutrient_id",
+            "type": "local",
+            "fieldName": "nutrient_id"
+          },
+          {
+            "fullExpression": "nutrients.@local.nutrient_id@local.name",
+            "matchedExpression": "@local.name",
+            "type": "local",
+            "fieldName": "name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.nutrient_id": [
+          "value"
+        ],
+        "@local.name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "properties",
+      "value": ".properties",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "properties"
+    },
+    {
+      "name": "nutrient_properties",
+      "value": "nutrients.@local.nutrient_id@local.properties",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "nutrient_properties",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "nutrients.@local.nutrient_id@local.properties",
+            "matchedExpression": "@local.nutrient_id",
+            "type": "local",
+            "fieldName": "nutrient_id"
+          },
+          {
+            "fullExpression": "nutrients.@local.nutrient_id@local.properties",
+            "matchedExpression": "@local.properties",
+            "type": "local",
+            "fieldName": "properties"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.nutrient_id": [
+          "value"
+        ],
+        "@local.properties": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "example",
+      "value": ".example_where_to_find",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "example"
+    },
+    {
+      "name": "nutrient_example",
+      "value": "nutrients.@local.nutrient_id@local.example",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "nutrient_example",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "nutrients.@local.nutrient_id@local.example",
+            "matchedExpression": "@local.nutrient_id",
+            "type": "local",
+            "fieldName": "nutrient_id"
+          },
+          {
+            "fullExpression": "nutrients.@local.nutrient_id@local.example",
+            "matchedExpression": "@local.example",
+            "type": "local",
+            "fieldName": "example"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.nutrient_id": [
+          "value"
+        ],
+        "@local.example": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "chart",
+      "value": ".chart_of_foods",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "chart"
+    },
+    {
+      "name": "nutrient_chart",
+      "value": "nutrients.@local.nutrient_id@local.chart",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "nutrient_chart",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "nutrients.@local.nutrient_id@local.chart",
+            "matchedExpression": "@local.nutrient_id",
+            "type": "local",
+            "fieldName": "nutrient_id"
+          },
+          {
+            "fullExpression": "nutrients.@local.nutrient_id@local.chart",
+            "matchedExpression": "@local.chart",
+            "type": "local",
+            "fieldName": "chart"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.nutrient_id": [
+          "value"
+        ],
+        "@local.chart": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "deficiency",
+      "value": ".deficiency",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "deficiency"
+    },
+    {
+      "name": "nutrient_deficiency",
+      "value": "nutrients.@local.nutrient_id@local.deficiency",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "nutrient_deficiency",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "nutrients.@local.nutrient_id@local.deficiency",
+            "matchedExpression": "@local.nutrient_id",
+            "type": "local",
+            "fieldName": "nutrient_id"
+          },
+          {
+            "fullExpression": "nutrients.@local.nutrient_id@local.deficiency",
+            "matchedExpression": "@local.deficiency",
+            "type": "local",
+            "fieldName": "deficiency"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.nutrient_id": [
+          "value"
+        ],
+        "@local.deficiency": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "symptoms",
+      "value": ".symptoms_of_deficiency",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "symptoms"
+    },
+    {
+      "name": "nutrient_symptoms",
+      "value": "nutrients.@local.nutrient_id@local.symptoms",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "nutrient_symptoms",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "nutrients.@local.nutrient_id@local.symptoms",
+            "matchedExpression": "@local.nutrient_id",
+            "type": "local",
+            "fieldName": "nutrient_id"
+          },
+          {
+            "fullExpression": "nutrients.@local.nutrient_id@local.symptoms",
+            "matchedExpression": "@local.symptoms",
+            "type": "local",
+            "fieldName": "symptoms"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.nutrient_id": [
+          "value"
+        ],
+        "@local.symptoms": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@data.@local.nutrient_name",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.nutrient_name",
+            "matchedExpression": "@local.nutrient_name",
+            "type": "local",
+            "fieldName": "nutrient_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.nutrient_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_properties",
+          "value": "Properties",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "display_group.title_properties"
+        },
+        {
+          "type": "text",
+          "name": "properties",
+          "value": "@data.@local.nutrient_properties",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "display_group.properties",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.@local.nutrient_properties",
+                "matchedExpression": "@local.nutrient_properties",
+                "type": "local",
+                "fieldName": "nutrient_properties"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.nutrient_properties": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "name": "display_group",
+      "_nested_name": "display_group"
+    },
+    {
+      "type": "display_group",
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_example",
+          "value": "Where to find it",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "display_group.title_example"
+        },
+        {
+          "type": "text",
+          "name": "example_where",
+          "value": "@data.@local.nutrient_example",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "display_group.example_where",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.@local.nutrient_example",
+                "matchedExpression": "@local.nutrient_example",
+                "type": "local",
+                "fieldName": "nutrient_example"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.nutrient_example": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "image",
+          "name": "chart",
+          "value": "@data.@local.nutrient_chart",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "display_group.chart",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.@local.nutrient_chart",
+                "matchedExpression": "@local.nutrient_chart",
+                "type": "local",
+                "fieldName": "nutrient_chart"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.nutrient_chart": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "name": "display_group",
+      "_nested_name": "display_group"
+    },
+    {
+      "type": "display_group",
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_deficiency",
+          "value": "Deficiency",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "display_group.title_deficiency"
+        },
+        {
+          "type": "text",
+          "name": "deficiency",
+          "value": "@data.@local.nutrient_deficiency",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "display_group.deficiency",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.@local.nutrient_deficiency",
+                "matchedExpression": "@local.nutrient_deficiency",
+                "type": "local",
+                "fieldName": "nutrient_deficiency"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.nutrient_deficiency": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "name": "display_group",
+      "_nested_name": "display_group"
+    },
+    {
+      "type": "display_group",
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_symptoms",
+          "value": "Symptoms of deficiency",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "display_group.title_symptoms"
+        },
+        {
+          "type": "text",
+          "name": "symptoms",
+          "value": "@data.@local.nutrient_symptoms",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "display_group.symptoms",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.@local.nutrient_symptoms",
+                "matchedExpression": "@local.nutrient_symptoms",
+                "type": "local",
+                "fieldName": "nutrient_symptoms"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.nutrient_symptoms": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "name": "display_group",
+      "_nested_name": "display_group"
+    }
+  ],
+  "_xlsxPath": "templates/global/nutrition_templates.xlsx"
+}

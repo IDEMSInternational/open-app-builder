@@ -70,14 +70,6 @@
       }
     },
     {
-      "name": "data_list_name",
-      "value": [
-        ".data_list_name"
-      ],
-      "type": "set_variable",
-      "_nested_name": "data_list_name"
-    },
-    {
       "name": "template",
       "value": ".template",
       "_translations": {
@@ -85,39 +77,6 @@
       },
       "type": "set_variable",
       "_nested_name": "template"
-    },
-    {
-      "name": "sect_template",
-      "value": "library.@local.sect_id@local.template",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "sect_template",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "library.@local.sect_id@local.template",
-            "matchedExpression": "@local.sect_id",
-            "type": "local",
-            "fieldName": "sect_id"
-          },
-          {
-            "fullExpression": "library.@local.sect_id@local.template",
-            "matchedExpression": "@local.template",
-            "type": "local",
-            "fieldName": "template"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.sect_id": [
-          "value"
-        ],
-        "@local.template": [
-          "value"
-        ]
-      }
     },
     {
       "name": "save_id_field",
@@ -162,13 +121,45 @@
       }
     },
     {
-      "name": "topic_data",
+      "name": "eval_sect_save_id_field",
+      "value": "@data.@local.sect_save_id_field",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "eval_sect_save_id_field",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.sect_save_id_field",
+            "matchedExpression": "@local.sect_save_id_field",
+            "type": "local",
+            "fieldName": "sect_save_id_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.sect_save_id_field": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "data_list_name",
+      "value": [
+        ".data_list_name"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_name"
+    },
+    {
+      "name": "sect_data",
       "value": "library.@local.sect_id@local.data_list_name",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "topic_data",
+      "_nested_name": "sect_data",
       "_dynamicFields": {
         "value": [
           {
@@ -191,6 +182,56 @@
         ],
         "@local.data_list_name": [
           "value"
+        ]
+      }
+    },
+    {
+      "name": "eval_sect_template",
+      "value": "lib_pest",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@local.sect_id==\"pests\"",
+      "type": "set_variable",
+      "_nested_name": "eval_sect_template",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.sect_id==\"pests\"",
+            "matchedExpression": "@local.sect_id",
+            "type": "local",
+            "fieldName": "sect_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.sect_id": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "eval_sect_template",
+      "value": "lib_plant",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@local.sect_id==\"plants\"",
+      "type": "set_variable",
+      "_nested_name": "eval_sect_template",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.sect_id==\"plants\"",
+            "matchedExpression": "@local.sect_id",
+            "type": "local",
+            "fieldName": "sect_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.sect_id": [
+          "condition"
         ]
       }
     },
@@ -219,198 +260,207 @@
       }
     },
     {
-      "type": "items",
-      "value": "@data.@data.@local.sect_data",
+      "type": "display_group",
+      "name": "tiles",
+      "parameter_list": {
+        "style": "parent_point"
+      },
       "rows": [
         {
-          "type": "tile_component",
-          "name": "tile_@item.id",
-          "action_list": [
+          "type": "items",
+          "value": "@data.@data.@local.sect_data",
+          "rows": [
             {
-              "trigger": "click",
-              "action_id": "set_field",
-              "args": [
-                "@data.@local.sect_save_id_field",
-                "@item.id"
-              ],
-              "_raw": "click | set_field: @data.@local.sect_save_id_field: @item.id",
-              "_cleaned": "click | set_field: @data.@local.sect_save_id_field: @item.id"
-            },
-            {
-              "trigger": "click",
-              "action_id": "go_to",
-              "args": [
-                "@data.@local.sect_template"
-              ],
-              "_raw": "click | go_to: @data.@local.sect_template",
-              "_cleaned": "click | go_to: @data.@local.sect_template"
-            }
-          ],
-          "hidden": true,
-          "parameter_list": {
-            "first_line_text": "@item.name",
-            "style": "workshop_page",
-            "icon_src": "@item.image"
-          },
-          "_nested_name": "items.tile_@item.id",
-          "_dynamicFields": {
-            "name": [
-              {
-                "fullExpression": "tile_@item.id",
-                "matchedExpression": "@item.id",
-                "type": "item",
-                "fieldName": "id"
-              }
-            ],
-            "action_list": {
-              "0": {
-                "args": {
-                  "0": [
-                    {
-                      "fullExpression": "@data.@local.sect_save_id_field",
-                      "matchedExpression": "@local.sect_save_id_field",
-                      "type": "local",
-                      "fieldName": "sect_save_id_field"
-                    }
+              "type": "tile_component",
+              "name": "tile_@item.id",
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "@local.eval_sect_save_id_field",
+                    "@item.id"
                   ],
-                  "1": [
-                    {
-                      "fullExpression": "@item.id",
-                      "matchedExpression": "@item.id",
-                      "type": "item",
-                      "fieldName": "id"
-                    }
-                  ]
+                  "_raw": "click | set_field: @local.eval_sect_save_id_field: @item.id",
+                  "_cleaned": "click | set_field: @local.eval_sect_save_id_field: @item.id"
                 },
-                "_raw": [
+                {
+                  "trigger": "click",
+                  "action_id": "go_to",
+                  "args": [
+                    "@local.eval_sect_template"
+                  ],
+                  "_raw": "click | go_to: @local.eval_sect_template",
+                  "_cleaned": "click | go_to: @local.eval_sect_template"
+                }
+              ],
+              "parameter_list": {
+                "first_line_text": "@item.name",
+                "style": "workshop_page",
+                "icon_src": "@item.image_1"
+              },
+              "_nested_name": "tiles.items.tile_@item.id",
+              "_dynamicFields": {
+                "name": [
                   {
-                    "fullExpression": "click | set_field: @data.@local.sect_save_id_field: @item.id",
-                    "matchedExpression": "@local.sect_save_id_field",
-                    "type": "local",
-                    "fieldName": "sect_save_id_field"
-                  },
-                  {
-                    "fullExpression": "click | set_field: @data.@local.sect_save_id_field: @item.id",
+                    "fullExpression": "tile_@item.id",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
                   }
                 ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "click | set_field: @data.@local.sect_save_id_field: @item.id",
-                    "matchedExpression": "@local.sect_save_id_field",
-                    "type": "local",
-                    "fieldName": "sect_save_id_field"
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.eval_sect_save_id_field",
+                          "matchedExpression": "@local.eval_sect_save_id_field",
+                          "type": "local",
+                          "fieldName": "eval_sect_save_id_field"
+                        }
+                      ],
+                      "1": [
+                        {
+                          "fullExpression": "@item.id",
+                          "matchedExpression": "@item.id",
+                          "type": "item",
+                          "fieldName": "id"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | set_field: @local.eval_sect_save_id_field: @item.id",
+                        "matchedExpression": "@local.eval_sect_save_id_field",
+                        "type": "local",
+                        "fieldName": "eval_sect_save_id_field"
+                      },
+                      {
+                        "fullExpression": "click | set_field: @local.eval_sect_save_id_field: @item.id",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | set_field: @local.eval_sect_save_id_field: @item.id",
+                        "matchedExpression": "@local.eval_sect_save_id_field",
+                        "type": "local",
+                        "fieldName": "eval_sect_save_id_field"
+                      },
+                      {
+                        "fullExpression": "click | set_field: @local.eval_sect_save_id_field: @item.id",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
                   },
+                  "1": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.eval_sect_template",
+                          "matchedExpression": "@local.eval_sect_template",
+                          "type": "local",
+                          "fieldName": "eval_sect_template"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | go_to: @local.eval_sect_template",
+                        "matchedExpression": "@local.eval_sect_template",
+                        "type": "local",
+                        "fieldName": "eval_sect_template"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | go_to: @local.eval_sect_template",
+                        "matchedExpression": "@local.eval_sect_template",
+                        "type": "local",
+                        "fieldName": "eval_sect_template"
+                      }
+                    ]
+                  }
+                },
+                "parameter_list": {
+                  "first_line_text": [
+                    {
+                      "fullExpression": "@item.name",
+                      "matchedExpression": "@item.name",
+                      "type": "item",
+                      "fieldName": "name"
+                    }
+                  ],
+                  "icon_src": [
+                    {
+                      "fullExpression": "@item.image_1",
+                      "matchedExpression": "@item.image_1",
+                      "type": "item",
+                      "fieldName": "image_1"
+                    }
+                  ]
+                },
+                "_nested_name": [
                   {
-                    "fullExpression": "click | set_field: @data.@local.sect_save_id_field: @item.id",
+                    "fullExpression": "tiles.items.tile_@item.id",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
                   }
                 ]
               },
-              "1": {
-                "args": {
-                  "0": [
-                    {
-                      "fullExpression": "@data.@local.sect_template",
-                      "matchedExpression": "@local.sect_template",
-                      "type": "local",
-                      "fieldName": "sect_template"
-                    }
-                  ]
-                },
-                "_raw": [
-                  {
-                    "fullExpression": "click | go_to: @data.@local.sect_template",
-                    "matchedExpression": "@local.sect_template",
-                    "type": "local",
-                    "fieldName": "sect_template"
-                  }
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "action_list.0.args.1",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned",
+                  "_nested_name"
                 ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "click | go_to: @data.@local.sect_template",
-                    "matchedExpression": "@local.sect_template",
-                    "type": "local",
-                    "fieldName": "sect_template"
-                  }
+                "@local.eval_sect_save_id_field": [
+                  "action_list.0.args.0",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned"
+                ],
+                "@local.eval_sect_template": [
+                  "action_list.1.args.0",
+                  "action_list.1._raw",
+                  "action_list.1._cleaned"
+                ],
+                "@item.name": [
+                  "parameter_list.first_line_text"
+                ],
+                "@item.image_1": [
+                  "parameter_list.icon_src"
                 ]
               }
-            },
-            "parameter_list": {
-              "first_line_text": [
-                {
-                  "fullExpression": "@item.name",
-                  "matchedExpression": "@item.name",
-                  "type": "item",
-                  "fieldName": "name"
-                }
-              ],
-              "icon_src": [
-                {
-                  "fullExpression": "@item.image",
-                  "matchedExpression": "@item.image",
-                  "type": "item",
-                  "fieldName": "image"
-                }
-              ]
-            },
-            "_nested_name": [
+            }
+          ],
+          "name": "items",
+          "_nested_name": "tiles.items",
+          "_dynamicFields": {
+            "value": [
               {
-                "fullExpression": "items.tile_@item.id",
-                "matchedExpression": "@item.id",
-                "type": "item",
-                "fieldName": "id"
+                "fullExpression": "@data.@data.@local.sect_data",
+                "matchedExpression": "@local.sect_data",
+                "type": "local",
+                "fieldName": "sect_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@item.id": [
-              "name",
-              "action_list.0.args.1",
-              "action_list.0._raw",
-              "action_list.0._cleaned",
-              "_nested_name"
-            ],
-            "@local.sect_save_id_field": [
-              "action_list.0.args.0",
-              "action_list.0._raw",
-              "action_list.0._cleaned"
-            ],
-            "@local.sect_template": [
-              "action_list.1.args.0",
-              "action_list.1._raw",
-              "action_list.1._cleaned"
-            ],
-            "@item.name": [
-              "parameter_list.first_line_text"
-            ],
-            "@item.image": [
-              "parameter_list.icon_src"
+            "@local.sect_data": [
+              "value"
             ]
           }
         }
       ],
-      "name": "items",
-      "_nested_name": "items",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.@data.@local.sect_data",
-            "matchedExpression": "@local.sect_data",
-            "type": "local",
-            "fieldName": "sect_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.sect_data": [
-          "value"
-        ]
-      }
+      "_nested_name": "tiles"
     }
   ],
   "_xlsxPath": "templates/global/library.xlsx"

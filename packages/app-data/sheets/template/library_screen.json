@@ -17,42 +17,6 @@
       "value": "@data.library",
       "rows": [
         {
-          "name": "icon_src",
-          "value": "@item.illustration",
-          "_translations": {
-            "value": {}
-          },
-          "condition": "!!@item.illustration",
-          "type": "set_variable",
-          "_nested_name": "items.icon_src",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@item.illustration",
-                "matchedExpression": "@item.illustration",
-                "type": "item",
-                "fieldName": "illustration"
-              }
-            ],
-            "condition": [
-              {
-                "fullExpression": "!!@item.illustration",
-                "matchedExpression": "!@item.illustration",
-                "type": "item",
-                "fieldName": "illustration"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@item.illustration": [
-              "value"
-            ],
-            "!@item.illustration": [
-              "condition"
-            ]
-          }
-        },
-        {
           "name": "tile_text",
           "value": "@item.title",
           "_translations": {
@@ -101,9 +65,8 @@
             }
           ],
           "parameter_list": {
-            "icon_src": "@local.icon_src",
             "first_line_text": "@local.tile_text",
-            "style": "quick_start_dark"
+            "style": "quick_start"
           },
           "_nested_name": "items.tile_@item.id",
           "_dynamicFields": {
@@ -146,14 +109,6 @@
               }
             },
             "parameter_list": {
-              "icon_src": [
-                {
-                  "fullExpression": "@local.icon_src",
-                  "matchedExpression": "@local.icon_src",
-                  "type": "local",
-                  "fieldName": "icon_src"
-                }
-              ],
               "first_line_text": [
                 {
                   "fullExpression": "@local.tile_text",
@@ -179,9 +134,6 @@
               "action_list.0._raw",
               "action_list.0._cleaned",
               "_nested_name"
-            ],
-            "@local.icon_src": [
-              "parameter_list.icon_src"
             ],
             "@local.tile_text": [
               "parameter_list.first_line_text"

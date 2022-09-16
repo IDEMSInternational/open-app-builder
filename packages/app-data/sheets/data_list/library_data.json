@@ -7,14 +7,16 @@
     {
       "id": "pests",
       "title": "Pests",
-      "data_list_name": "experimental_library_pests",
-      "template": "lib_pests"
+      "data_list_name": "library_pests",
+      "save_id_field": "pest_id",
+      "linking_term": "Host plants"
     },
     {
       "id": "plants",
       "title": "Plants",
-      "data_list_name": "experimental_library_plants",
-      "template": "lib_plants"
+      "data_list_name": "library_plants",
+      "save_id_field": "plant_id",
+      "linking_term": "Pests"
     }
   ],
   "_xlsxPath": "data_lists/homepage/library_data_list.xlsx"

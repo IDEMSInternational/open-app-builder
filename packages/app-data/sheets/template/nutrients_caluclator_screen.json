@@ -1,12 +1,12 @@
 {
   "flow_type": "template",
-  "flow_name": "food_types_screen",
+  "flow_name": "nutrients_caluclator_screen",
   "status": "released",
   "rows": [
     {
       "type": "title",
       "name": "title",
-      "value": "@data.understanding_your_food.food_types_section.heading",
+      "value": "@data.understanding_your_food.calculator_section.heading",
       "_translations": {
         "value": {}
       },
@@ -14,15 +14,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@data.understanding_your_food.food_types_section.heading",
-            "matchedExpression": "@data.understanding_your_food.food_types_section.heading",
+            "fullExpression": "@data.understanding_your_food.calculator_section.heading",
+            "matchedExpression": "@data.understanding_your_food.calculator_section.heading",
             "type": "data",
             "fieldName": "understanding_your_food"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@data.understanding_your_food.food_types_section.heading": [
+        "@data.understanding_your_food.calculator_section.heading": [
           "value"
         ]
       }

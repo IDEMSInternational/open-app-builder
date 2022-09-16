@@ -1,0 +1,19 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "women_nutrients",
+  "status": "released",
+  "data_list_name": "women_nutrients",
+  "rows": [
+    {
+      "id": "women_nutrient_iron",
+      "nutrient_id": "nutrient_iron",
+      "why_nutrient": "Iron helps to prevent anemia, which is when blood does not have enough iron. Menstruation means that women of child-birthing age need more iron."
+    },
+    {
+      "id": "women_nutrient_proteins",
+      "nutrient_id": "nutrient_proteins",
+      "why_nutrient": "Proteins help to grow a baby's muscles, organs and brain."
+    }
+  ],
+  "_xlsxPath": "data_lists/nutrition/nutrition_data_lists.xlsx"
+}

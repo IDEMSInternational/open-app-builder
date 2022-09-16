@@ -2,7 +2,6 @@
   "flow_type": "template",
   "flow_name": "individual_need",
   "status": "released",
-  "data_list_name": "individual_need",
   "rows": [
     {
       "name": "type_id",
@@ -39,7 +38,7 @@
     },
     {
       "name": "type_heading",
-      "value": "different_needs_for_different_people.@local.type_id@local.heading",
+      "value": "people_needs.@local.type_id@local.heading",
       "_translations": {
         "value": {}
       },
@@ -48,13 +47,13 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "different_needs_for_different_people.@local.type_id@local.heading",
+            "fullExpression": "people_needs.@local.type_id@local.heading",
             "matchedExpression": "@local.type_id",
             "type": "local",
             "fieldName": "type_id"
           },
           {
-            "fullExpression": "different_needs_for_different_people.@local.type_id@local.heading",
+            "fullExpression": "people_needs.@local.type_id@local.heading",
             "matchedExpression": "@local.heading",
             "type": "local",
             "fieldName": "heading"
@@ -81,7 +80,7 @@
     },
     {
       "name": "type_go_why",
-      "value": "different_needs_for_different_people.@local.type_id@local.go_why",
+      "value": "people_needs.@local.type_id@local.go_why",
       "_translations": {
         "value": {}
       },
@@ -90,13 +89,13 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "different_needs_for_different_people.@local.type_id@local.go_why",
+            "fullExpression": "people_needs.@local.type_id@local.go_why",
             "matchedExpression": "@local.type_id",
             "type": "local",
             "fieldName": "type_id"
           },
           {
-            "fullExpression": "different_needs_for_different_people.@local.type_id@local.go_why",
+            "fullExpression": "people_needs.@local.type_id@local.go_why",
             "matchedExpression": "@local.go_why",
             "type": "local",
             "fieldName": "go_why"
@@ -123,7 +122,7 @@
     },
     {
       "name": "type_grow_why",
-      "value": "different_needs_for_different_people.@local.type_id@local.grow_why",
+      "value": "people_needs.@local.type_id@local.grow_why",
       "_translations": {
         "value": {}
       },
@@ -132,13 +131,13 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "different_needs_for_different_people.@local.type_id@local.grow_why",
+            "fullExpression": "people_needs.@local.type_id@local.grow_why",
             "matchedExpression": "@local.type_id",
             "type": "local",
             "fieldName": "type_id"
           },
           {
-            "fullExpression": "different_needs_for_different_people.@local.type_id@local.grow_why",
+            "fullExpression": "people_needs.@local.type_id@local.grow_why",
             "matchedExpression": "@local.grow_why",
             "type": "local",
             "fieldName": "grow_why"
@@ -165,7 +164,7 @@
     },
     {
       "name": "type_glow_why",
-      "value": "different_needs_for_different_people.@local.type_id@local.glow_why",
+      "value": "people_needs.@local.type_id@local.glow_why",
       "_translations": {
         "value": {}
       },
@@ -174,13 +173,13 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "different_needs_for_different_people.@local.type_id@local.glow_why",
+            "fullExpression": "people_needs.@local.type_id@local.glow_why",
             "matchedExpression": "@local.type_id",
             "type": "local",
             "fieldName": "type_id"
           },
           {
-            "fullExpression": "different_needs_for_different_people.@local.type_id@local.glow_why",
+            "fullExpression": "people_needs.@local.type_id@local.glow_why",
             "matchedExpression": "@local.glow_why",
             "type": "local",
             "fieldName": "glow_why"
@@ -192,6 +191,89 @@
           "value"
         ],
         "@local.glow_why": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "description",
+      "value": ".description",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "description"
+    },
+    {
+      "name": "type_description",
+      "value": "people_needs.@local.type_id@local.description",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "type_description",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "people_needs.@local.type_id@local.description",
+            "matchedExpression": "@local.type_id",
+            "type": "local",
+            "fieldName": "type_id"
+          },
+          {
+            "fullExpression": "people_needs.@local.type_id@local.description",
+            "matchedExpression": "@local.description",
+            "type": "local",
+            "fieldName": "description"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.type_id": [
+          "value"
+        ],
+        "@local.description": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "data_list_name",
+      "value": [
+        ".nutrients_data_list"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_name"
+    },
+    {
+      "name": "type_nutrient_data",
+      "value": "people_needs.@local.type_id@local.data_list_name",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "type_nutrient_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "people_needs.@local.type_id@local.data_list_name",
+            "matchedExpression": "@local.type_id",
+            "type": "local",
+            "fieldName": "type_id"
+          },
+          {
+            "fullExpression": "people_needs.@local.type_id@local.data_list_name",
+            "matchedExpression": "@local.data_list_name",
+            "type": "local",
+            "fieldName": "data_list_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.type_id": [
+          "value"
+        ],
+        "@local.data_list_name": [
           "value"
         ]
       }
@@ -221,179 +303,548 @@
       }
     },
     {
+      "type": "text",
+      "name": "description",
+      "value": "@data.@local.type_description",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "description",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.type_description",
+            "matchedExpression": "@local.type_description",
+            "type": "local",
+            "fieldName": "type_description"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.type_description": [
+          "value"
+        ]
+      }
+    },
+    {
       "type": "accordion",
       "rows": [
         {
           "type": "accordion_section",
+          "name": "acc_go",
           "value": "Go foods",
           "rows": [
             {
-              "type": "image",
-              "name": "image_go",
-              "value": "@data.food_types.food_types_go.illustration",
-              "_translations": {
-                "value": {}
+              "type": "display_group",
+              "parameter_list": {
+                "style": "column"
               },
-              "_nested_name": "accordion.accordion_section.image_go",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.food_types.food_types_go.illustration",
-                    "matchedExpression": "@data.food_types.food_types_go.illustration",
-                    "type": "data",
-                    "fieldName": "food_types"
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "image_go",
+                  "value": "@data.food_types.food_types_go.illustration",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "accordion.acc_go.display_group.image_go",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@data.food_types.food_types_go.illustration",
+                        "matchedExpression": "@data.food_types.food_types_go.illustration",
+                        "type": "data",
+                        "fieldName": "food_types"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@data.food_types.food_types_go.illustration": [
+                      "value"
+                    ]
                   }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@data.food_types.food_types_go.illustration": [
-                  "value"
-                ]
-              }
-            },
-            {
-              "type": "text",
-              "name": "text_go",
-              "value": "@data.@local.type_go_why",
-              "_translations": {
-                "value": {}
-              },
-              "_nested_name": "accordion.accordion_section.text_go",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.@local.type_go_why",
-                    "matchedExpression": "@local.type_go_why",
-                    "type": "local",
-                    "fieldName": "type_go_why"
+                },
+                {
+                  "type": "text",
+                  "name": "text_go",
+                  "value": "@data.@local.type_go_why",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "accordion.acc_go.display_group.text_go",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@data.@local.type_go_why",
+                        "matchedExpression": "@local.type_go_why",
+                        "type": "local",
+                        "fieldName": "type_go_why"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.type_go_why": [
+                      "value"
+                    ]
                   }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.type_go_why": [
-                  "value"
-                ]
-              }
+                }
+              ],
+              "name": "display_group",
+              "_nested_name": "accordion.acc_go.display_group"
             }
           ],
-          "name": "accordion_section",
-          "_nested_name": "accordion.accordion_section"
+          "_nested_name": "accordion.acc_go"
         },
         {
           "type": "accordion_section",
+          "name": "acc_grow",
           "value": "Grow foods",
           "rows": [
             {
-              "type": "image",
-              "name": "image_grow",
-              "value": "@data.food_types.food_types_grow.illustration",
-              "_translations": {
-                "value": {}
+              "type": "display_group",
+              "parameter_list": {
+                "style": "column"
               },
-              "_nested_name": "accordion.accordion_section.image_grow",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.food_types.food_types_grow.illustration",
-                    "matchedExpression": "@data.food_types.food_types_grow.illustration",
-                    "type": "data",
-                    "fieldName": "food_types"
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "image_grow",
+                  "value": "@data.food_types.food_types_grow.illustration",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "accordion.acc_grow.display_group.image_grow",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@data.food_types.food_types_grow.illustration",
+                        "matchedExpression": "@data.food_types.food_types_grow.illustration",
+                        "type": "data",
+                        "fieldName": "food_types"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@data.food_types.food_types_grow.illustration": [
+                      "value"
+                    ]
                   }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@data.food_types.food_types_grow.illustration": [
-                  "value"
-                ]
-              }
-            },
-            {
-              "type": "text",
-              "name": "text_grow",
-              "value": "@data.@local.type_grow_why",
-              "_translations": {
-                "value": {}
-              },
-              "_nested_name": "accordion.accordion_section.text_grow",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.@local.type_grow_why",
-                    "matchedExpression": "@local.type_grow_why",
-                    "type": "local",
-                    "fieldName": "type_grow_why"
+                },
+                {
+                  "type": "text",
+                  "name": "text_grow",
+                  "value": "@data.@local.type_grow_why",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "accordion.acc_grow.display_group.text_grow",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@data.@local.type_grow_why",
+                        "matchedExpression": "@local.type_grow_why",
+                        "type": "local",
+                        "fieldName": "type_grow_why"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.type_grow_why": [
+                      "value"
+                    ]
                   }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.type_grow_why": [
-                  "value"
-                ]
-              }
+                }
+              ],
+              "name": "display_group",
+              "_nested_name": "accordion.acc_grow.display_group"
             }
           ],
-          "name": "accordion_section",
-          "_nested_name": "accordion.accordion_section"
+          "_nested_name": "accordion.acc_grow"
         },
         {
           "type": "accordion_section",
+          "name": "acc_glow",
           "value": "Glow foods",
           "rows": [
             {
-              "type": "image",
-              "name": "image_glow",
-              "value": "@data.food_types.food_types_glow.illustration",
-              "_translations": {
-                "value": {}
+              "type": "display_group",
+              "parameter_list": {
+                "style": "column"
               },
-              "_nested_name": "accordion.accordion_section.image_glow",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.food_types.food_types_glow.illustration",
-                    "matchedExpression": "@data.food_types.food_types_glow.illustration",
-                    "type": "data",
-                    "fieldName": "food_types"
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "image_glow",
+                  "value": "@data.food_types.food_types_glow.illustration",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "accordion.acc_glow.display_group.image_glow",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@data.food_types.food_types_glow.illustration",
+                        "matchedExpression": "@data.food_types.food_types_glow.illustration",
+                        "type": "data",
+                        "fieldName": "food_types"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@data.food_types.food_types_glow.illustration": [
+                      "value"
+                    ]
                   }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@data.food_types.food_types_glow.illustration": [
-                  "value"
-                ]
-              }
-            },
-            {
-              "type": "text",
-              "name": "text_glow",
-              "value": "@data.@local.type_glow_why",
-              "_translations": {
-                "value": {}
-              },
-              "_nested_name": "accordion.accordion_section.text_glow",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.@local.type_glow_why",
-                    "matchedExpression": "@local.type_glow_why",
-                    "type": "local",
-                    "fieldName": "type_glow_why"
+                },
+                {
+                  "type": "text",
+                  "name": "text_glow",
+                  "value": "@data.@local.type_glow_why",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "accordion.acc_glow.display_group.text_glow",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@data.@local.type_glow_why",
+                        "matchedExpression": "@local.type_glow_why",
+                        "type": "local",
+                        "fieldName": "type_glow_why"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.type_glow_why": [
+                      "value"
+                    ]
                   }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.type_glow_why": [
-                  "value"
-                ]
-              }
+                }
+              ],
+              "name": "display_group",
+              "_nested_name": "accordion.acc_glow.display_group"
             }
           ],
-          "name": "accordion_section",
-          "_nested_name": "accordion.accordion_section"
+          "_nested_name": "accordion.acc_glow"
         }
       ],
       "name": "accordion",
       "_nested_name": "accordion"
+    },
+    {
+      "type": "title",
+      "name": "nutrients_subtitle",
+      "value": "Important nutrients",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "nutrients_subtitle"
+    },
+    {
+      "type": "items",
+      "value": "@data.@data.@local.type_nutrient_data",
+      "rows": [
+        {
+          "name": "name",
+          "value": ".name",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "items.name"
+        },
+        {
+          "name": "nutrients_name",
+          "value": "nutrients.@item.nutrient_id@local.name",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "items.nutrients_name",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "nutrients.@item.nutrient_id@local.name",
+                "matchedExpression": "@item.nutrient_id",
+                "type": "item",
+                "fieldName": "nutrient_id"
+              },
+              {
+                "fullExpression": "nutrients.@item.nutrient_id@local.name",
+                "matchedExpression": "@local.name",
+                "type": "local",
+                "fieldName": "name"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.nutrient_id": [
+              "value"
+            ],
+            "@local.name": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "display_group",
+          "name": "dg_nutrient_@item.id",
+          "parameter_list": {
+            "style": "dashed_box"
+          },
+          "rows": [
+            {
+              "type": "title",
+              "name": "title_nutrient_@item.id",
+              "value": "@data.@local.nutrients_name",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "items.dg_nutrient_@item.id.title_nutrient_@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "title_nutrient_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@data.@local.nutrients_name",
+                    "matchedExpression": "@local.nutrients_name",
+                    "type": "local",
+                    "fieldName": "nutrients_name"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.dg_nutrient_@item.id.title_nutrient_@item.id",
+                    "matchedExpression": "@item.id.title_nutrient_",
+                    "type": "item",
+                    "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "items.dg_nutrient_@item.id.title_nutrient_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ],
+                "@local.nutrients_name": [
+                  "value"
+                ],
+                "@item.id.title_nutrient_": [
+                  "_nested_name"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "name": "why_nutrient_@item.id",
+              "value": "@item.why_nutrient",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "items.dg_nutrient_@item.id.why_nutrient_@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "why_nutrient_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@item.why_nutrient",
+                    "matchedExpression": "@item.why_nutrient",
+                    "type": "item",
+                    "fieldName": "why_nutrient"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.dg_nutrient_@item.id.why_nutrient_@item.id",
+                    "matchedExpression": "@item.id.why_nutrient_",
+                    "type": "item",
+                    "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "items.dg_nutrient_@item.id.why_nutrient_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ],
+                "@item.why_nutrient": [
+                  "value"
+                ],
+                "@item.id.why_nutrient_": [
+                  "_nested_name"
+                ]
+              }
+            },
+            {
+              "type": "button",
+              "name": "button_nutrient_@item.id",
+              "value": "Learn more",
+              "_translations": {
+                "value": {}
+              },
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "current_nutrient",
+                    "@item.nutrient_id"
+                  ],
+                  "_raw": "click | set_field: current_nutrient: @item.nutrient_id",
+                  "_cleaned": "click | set_field: current_nutrient: @item.nutrient_id"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "go_to",
+                  "args": [
+                    "nutrient"
+                  ],
+                  "_raw": "click | go_to: nutrient",
+                  "_cleaned": "click | go_to: nutrient"
+                }
+              ],
+              "style_list": [
+                "style: short"
+              ],
+              "_nested_name": "items.dg_nutrient_@item.id.button_nutrient_@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "button_nutrient_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "1": [
+                        {
+                          "fullExpression": "@item.nutrient_id",
+                          "matchedExpression": "@item.nutrient_id",
+                          "type": "item",
+                          "fieldName": "nutrient_id"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | set_field: current_nutrient: @item.nutrient_id",
+                        "matchedExpression": "@item.nutrient_id",
+                        "type": "item",
+                        "fieldName": "nutrient_id"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | set_field: current_nutrient: @item.nutrient_id",
+                        "matchedExpression": "@item.nutrient_id",
+                        "type": "item",
+                        "fieldName": "nutrient_id"
+                      }
+                    ]
+                  }
+                },
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.dg_nutrient_@item.id.button_nutrient_@item.id",
+                    "matchedExpression": "@item.id.button_nutrient_",
+                    "type": "item",
+                    "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "items.dg_nutrient_@item.id.button_nutrient_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ],
+                "@item.nutrient_id": [
+                  "action_list.0.args.1",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned"
+                ],
+                "@item.id.button_nutrient_": [
+                  "_nested_name"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "items.dg_nutrient_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "dg_nutrient_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.dg_nutrient_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "_nested_name"
+            ]
+          }
+        }
+      ],
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@data.@local.type_nutrient_data",
+            "matchedExpression": "@local.type_nutrient_data",
+            "type": "local",
+            "fieldName": "type_nutrient_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.type_nutrient_data": [
+          "value"
+        ]
+      }
     }
   ],
   "_xlsxPath": "templates/global/nutrition_templates.xlsx"
