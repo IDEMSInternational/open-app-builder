@@ -1,6 +1,6 @@
 {
   "flow_type": "template",
-  "flow_name": "food_type",
+  "flow_name": "lib_principles_screen",
   "status": "released",
   "rows": [
     {
@@ -28,35 +28,35 @@
       }
     },
     {
-      "name": "heading",
-      "value": ".heading",
+      "name": "title",
+      "value": ".title",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "heading"
+      "_nested_name": "title"
     },
     {
-      "name": "type_heading",
-      "value": "food_types.@local.type_id@local.heading",
+      "name": "type_title",
+      "value": "food_types.@local.type_id@local.principle_title",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "type_heading",
+      "_nested_name": "type_title",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "food_types.@local.type_id@local.heading",
+            "fullExpression": "food_types.@local.type_id@local.principle_title",
             "matchedExpression": "@local.type_id",
             "type": "local",
             "fieldName": "type_id"
           },
           {
-            "fullExpression": "food_types.@local.type_id@local.heading",
-            "matchedExpression": "@local.heading",
+            "fullExpression": "food_types.@local.type_id@local.principle_title",
+            "matchedExpression": "@local.principle_title",
             "type": "local",
-            "fieldName": "heading"
+            "fieldName": "principle_title"
           }
         ]
       },
@@ -64,7 +64,7 @@
         "@local.type_id": [
           "value"
         ],
-        "@local.heading": [
+        "@local.principle_title": [
           "value"
         ]
       }
@@ -332,67 +332,7 @@
           "value"
         ]
       }
-    },
-    {
-      "type": "audio",
-      "name": "audio_1",
-      "value": "@data.@local.type_audio",
-      "_translations": {
-        "value": {}
-      },
-      "parameter_list": {
-        "title": "Learn more about @data.@local.type_heading foods"
-      },
-      "_nested_name": "audio_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.@local.type_audio",
-            "matchedExpression": "@local.type_audio",
-            "type": "local",
-            "fieldName": "type_audio"
-          }
-        ],
-        "parameter_list": {
-          "title": [
-            {
-              "fullExpression": "Learn more about @data.@local.type_heading foods",
-              "matchedExpression": "@local.type_heading",
-              "type": "local",
-              "fieldName": "type_heading"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.type_audio": [
-          "value"
-        ],
-        "@local.type_heading": [
-          "parameter_list.title"
-        ]
-      }
-    },
-    {
-      "type": "button",
-      "name": "button_audio",
-      "value": "Click here to read more",
-      "_translations": {
-        "value": {}
-      },
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "pop_up",
-          "args": [
-            "transcript"
-          ],
-          "_raw": "click | pop_up: transcript",
-          "_cleaned": "click | pop_up: transcript"
-        }
-      ],
-      "_nested_name": "button_audio"
     }
   ],
-  "_xlsxPath": "templates/global/nutrition_templates.xlsx"
+  "_xlsxPath": "templates/global/library.xlsx"
 }

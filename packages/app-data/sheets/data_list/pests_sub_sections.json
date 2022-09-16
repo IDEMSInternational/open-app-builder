@@ -16,7 +16,11 @@
       "section": "section_insects",
       "title": "Beneficials",
       "introduction": "Beneficials are insects or animals that eat insects.",
-      "content_1": "Birds, bats, and types of rodents are animals that eat insects. There are also insects that eat other insects."
+      "content_1": "Birds, bats, and types of rodents are animals that eat insects. There are also insects that eat other insects.",
+      "principle_id_1": "principle_resilience",
+      "principle_id_2": "principle_efficiency",
+      "principle_id_3": "principle_recycling",
+      "principle_id_4": "principle_collaborating_and_connecting"
     },
     {
       "id": "pests_monoculture",
@@ -31,13 +35,16 @@
       "title": "Plant Diversity",
       "introduction": "Plant diversity is when there is a variety of species and crops planted. This allows natural processes to keep harmful insect populations in check.",
       "content_1": "Most beneficials are attracted to flowers because the adults feed on pollen and nectar. Flowers made up of many small flowers are the most attractive.",
-      "content_2": "* Ornamental plants attract beneficials. \n* Food crops that have flowers can attract many beneficial insects.\n* Use pesticidal plants like tephrosia or tithonia if pest populations start getting out of control.\n* Plant flower strips on edges of veg and field crops. * Allow grasses and wildflowers to grow on the margins of your fields and gardens. Don’t disturb them.\n* Hedgerows, tree lines and contour lines attract beneficials provided they also include flowering plants."
+      "content_2": "* Ornamental plants attract beneficials. \n* Food crops that have flowers can attract many beneficial insects.\n* Use pesticidal plants like tephrosia or tithonia if pest populations start getting out of control.\n* Plant flower strips on edges of veg and field crops. \n* Allow grasses and wildflowers to grow on the margins of your fields and gardens. Don’t disturb them.\n* Hedgerows, tree lines and contour lines attract beneficials provided they also include flowering plants.",
+      "principle_id_1": "principle_diversity",
+      "principle_id_2": "principle_resilience",
+      "principle_id_3": "principle_efficiency"
     },
     {
       "id": "pests_toxic",
       "section": "section_pesticides",
       "title": "Chemical Pesticides",
-      "introduction": "Chemical pesticides are ...",
+      "introduction": "Chemical pesticides kill pests, but they also kill beneficials.",
       "content_1": "Toxic pesticides can be harmful to people, the environment, and can kill beneficials."
     },
     {
@@ -45,10 +52,10 @@
       "section": "section_pesticides",
       "title": "Non-toxic Pesticides",
       "introduction": "Less toxic products reduce harmful pest populations when there is an outbreak.",
-      "content_1": "Insects breathe through airholes on the sides of their bodies called spiracles. A vegetable oil spray blocks these airholes and the insect suffocates. This works for aphids and other soft bodied insect pests that the oil contacts directly. One solution to make the vegetable oil spray is:\n* 3 tablespoons of liquid vegetable oil in 4 litres of water.\n* Add 0.5 teaspoon of liquid soap.\n* Shake well and use."
-    },
-    {
-      "content_2": "Hedgerows, tree lines and contour lines attract beneficials provided they also include flowering plants."
+      "content_1": "Insects breathe through airholes on the sides of their bodies called spiracles. A vegetable oil spray blocks these airholes and the insect suffocates. This works for aphids and other soft bodied insect pests that the oil contacts directly. One solution to make the vegetable oil spray is:\n* 3 tablespoons of liquid vegetable oil in 4 litres of water.\n* Add 0.5 teaspoon of liquid soap.\n* Shake well and use.",
+      "content_2": "principle_resilience",
+      "principle_id_1": "principle_efficiency",
+      "principle_id_2": "principle_diversity"
     }
   ],
   "_xlsxPath": "data_lists/pests/pests_data_lists.xlsx"

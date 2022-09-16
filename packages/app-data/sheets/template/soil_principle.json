@@ -368,36 +368,12 @@
     },
     {
       "name": "image_title_2_name",
-      "value": "principles_soil_health.@local.soil_princ_id@local.var_image_title_2",
+      "value": "",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "image_title_2_name",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_image_title_2",
-            "matchedExpression": "@local.soil_princ_id",
-            "type": "local",
-            "fieldName": "soil_princ_id"
-          },
-          {
-            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_image_title_2",
-            "matchedExpression": "@local.var_image_title_2",
-            "type": "local",
-            "fieldName": "var_image_title_2"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.soil_princ_id": [
-          "value"
-        ],
-        "@local.var_image_title_2": [
-          "value"
-        ]
-      }
+      "_nested_name": "image_title_2_name"
     },
     {
       "type": "text",
@@ -646,21 +622,13 @@
         },
         {
           "type": "text",
-          "name": "subtext_@item.id",
+          "name": "text",
           "value": "@item.subtext",
           "_translations": {
             "value": {}
           },
-          "_nested_name": "items.subtext_@item.id",
+          "_nested_name": "items.text",
           "_dynamicFields": {
-            "name": [
-              {
-                "fullExpression": "subtext_@item.id",
-                "matchedExpression": "@item.id",
-                "type": "item",
-                "fieldName": "id"
-              }
-            ],
             "value": [
               {
                 "fullExpression": "@item.subtext",
@@ -668,21 +636,9 @@
                 "type": "item",
                 "fieldName": "subtext"
               }
-            ],
-            "_nested_name": [
-              {
-                "fullExpression": "items.subtext_@item.id",
-                "matchedExpression": "@item.id",
-                "type": "item",
-                "fieldName": "id"
-              }
             ]
           },
           "_dynamicDependencies": {
-            "@item.id": [
-              "name",
-              "_nested_name"
-            ],
             "@item.subtext": [
               "value"
             ]
@@ -703,6 +659,233 @@
       },
       "_dynamicDependencies": {
         "@local.keypoint_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "value": "@data.soil_hlth_suppt_slides",
+      "rows": [
+        {
+          "type": "display_group",
+          "name": "dg_nutrient_@item.id",
+          "condition": "@item.principle == @local.soil_princ_id",
+          "parameter_list": {
+            "style": "dashed_box"
+          },
+          "rows": [
+            {
+              "type": "title",
+              "name": "title_@item.id",
+              "value": "@item.title",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "items.dg_nutrient_@item.id.title_@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "title_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@item.title",
+                    "matchedExpression": "@item.title",
+                    "type": "item",
+                    "fieldName": "title"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.dg_nutrient_@item.id.title_@item.id",
+                    "matchedExpression": "@item.id.title_",
+                    "type": "item",
+                    "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "items.dg_nutrient_@item.id.title_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ],
+                "@item.title": [
+                  "value"
+                ],
+                "@item.id.title_": [
+                  "_nested_name"
+                ]
+              }
+            },
+            {
+              "type": "button",
+              "name": "button_@item.id",
+              "value": "Practice",
+              "_translations": {
+                "value": {}
+              },
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "current_soil_practical_action",
+                    "@item.id"
+                  ],
+                  "_raw": "click | set_field: current_soil_practical_action: @item.id",
+                  "_cleaned": "click | set_field: current_soil_practical_action: @item.id"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "go_to",
+                  "args": [
+                    "soil_prac_acts"
+                  ],
+                  "_raw": "click | go_to: soil_prac_acts",
+                  "_cleaned": "click | go_to: soil_prac_acts"
+                }
+              ],
+              "_nested_name": "items.dg_nutrient_@item.id.button_@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "button_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "1": [
+                        {
+                          "fullExpression": "@item.id",
+                          "matchedExpression": "@item.id",
+                          "type": "item",
+                          "fieldName": "id"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | set_field: current_soil_practical_action: @item.id",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | set_field: current_soil_practical_action: @item.id",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  }
+                },
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.dg_nutrient_@item.id.button_@item.id",
+                    "matchedExpression": "@item.id.button_",
+                    "type": "item",
+                    "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "items.dg_nutrient_@item.id.button_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "action_list.0.args.1",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned",
+                  "_nested_name"
+                ],
+                "@item.id.button_": [
+                  "_nested_name"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "items.dg_nutrient_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "dg_nutrient_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@item.principle == @local.soil_princ_id",
+                "matchedExpression": "@item.principle",
+                "type": "item",
+                "fieldName": "principle"
+              },
+              {
+                "fullExpression": "@item.principle == @local.soil_princ_id",
+                "matchedExpression": "@local.soil_princ_id",
+                "type": "local",
+                "fieldName": "soil_princ_id"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.dg_nutrient_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "_nested_name"
+            ],
+            "@item.principle": [
+              "condition"
+            ],
+            "@local.soil_princ_id": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.soil_hlth_suppt_slides",
+            "matchedExpression": "@data.soil_hlth_suppt_slides",
+            "type": "data",
+            "fieldName": "soil_hlth_suppt_slides"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.soil_hlth_suppt_slides": [
           "value"
         ]
       }
