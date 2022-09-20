@@ -2,7 +2,7 @@ ion-content.background-secondary {
   --background: var(--ion-color-secondary);
 }
 ion-content.background-primary-lighter {
-  --background: var(--ion-color-primary-lighter);
+  --background: var(--ion-color-primary-50);
 }
 ion-content.background-white {
   --background: white;
@@ -11,14 +11,14 @@ ion-content.background-white {
   background: var(--ion-color-secondary);
 }
 .background-primary-lighter {
-  background: var(--ion-color-primary-lighter);
+  background: var(--ion-color-primary-50);
 }
 .background-white {
   background: white;
 }
 
 button.alert-button.alert-delete-button {
-  color: var(--ion-color-danger);
+  color: var(--ion-color-red);
 }
 // ion-alerts
 .alert-wrapper {

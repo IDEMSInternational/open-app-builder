@@ -3,17 +3,13 @@ import { extractDynamicFields } from "data-models";
 import { DefaultParser } from "../default/default.parser";
 import {
   arrayToHashmap,
-  flattenJson,
+  extractDynamicDependencies,
   logWarning,
   parseAppDataCollectionString,
   parseAppDataListString,
 } from "../../utils";
 
 export class TemplateParser extends DefaultParser {
-  constructor() {
-    super();
-    this.groupSuffix = "";
-  }
   postProcess(row: FlowTypes.TemplateRow, nestedPath?: string) {
     // remove empty rows
     if (Object.keys(row).length === 0) {
@@ -58,7 +54,7 @@ export class TemplateParser extends DefaultParser {
     const dynamicFields = extractDynamicFields(row);
     if (dynamicFields) {
       row._dynamicFields = dynamicFields;
-      row._dynamicDependencies = this.extractDynamicDependencies(dynamicFields);
+      row._dynamicDependencies = extractDynamicDependencies(dynamicFields);
     }
 
     // handle nested rows in same way
@@ -119,18 +115,6 @@ export class TemplateParser extends DefaultParser {
     return result;
   }
 
-  private extractDynamicDependencies(dynamicFields: FlowTypes.TemplateRow["_dynamicFields"]) {
-    const dynamicDependencies = {};
-    const flatFields = flattenJson<FlowTypes.TemplateRowDynamicEvaluator[]>(dynamicFields);
-    Object.entries(flatFields).forEach(([key, fields]) => {
-      fields.forEach((field) => {
-        const deps = dynamicDependencies[field.matchedExpression] || [];
-        dynamicDependencies[field.matchedExpression] = [...deps, key];
-      });
-    });
-    return dynamicDependencies;
-  }
-
   /**
    *  HACK - refactor self-referencing actions so that the dynamic value can be updated at runtime
    *  TODO - will no longer be required if dynamic deps system updated to self populate in realtime (not template parser)
@@ -139,6 +123,10 @@ export class TemplateParser extends DefaultParser {
     action_list: FlowTypes.TemplateRow["action_list"],
     rowName: string
   ) {
+    // Ignore case where action list not array, such as when dynamic reference to @item.action_list
+    if (!Array.isArray(action_list)) {
+      return action_list;
+    }
     return action_list.map((action) => {
       if (rowName && Array.isArray(action.args)) {
         action.args = action.args.map((arg) => {

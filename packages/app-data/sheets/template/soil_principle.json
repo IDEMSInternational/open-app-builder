@@ -1,0 +1,895 @@
+{
+  "flow_type": "template",
+  "flow_name": "soil_principle",
+  "status": "released",
+  "rows": [
+    {
+      "name": "soil_princ_id",
+      "value": "@fields.current_soil_princ",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "soil_princ_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.current_soil_princ",
+            "matchedExpression": "@fields.current_soil_princ",
+            "type": "fields",
+            "fieldName": "current_soil_princ"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.current_soil_princ": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "var_heading",
+      "value": ".heading",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "var_heading"
+    },
+    {
+      "name": "heading_name",
+      "value": "principles_soil_health.@local.soil_princ_id@local.var_heading",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "heading_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_heading",
+            "matchedExpression": "@local.soil_princ_id",
+            "type": "local",
+            "fieldName": "soil_princ_id"
+          },
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_heading",
+            "matchedExpression": "@local.var_heading",
+            "type": "local",
+            "fieldName": "var_heading"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.soil_princ_id": [
+          "value"
+        ],
+        "@local.var_heading": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "heading",
+      "value": "@data.@local.heading_name",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "heading",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.heading_name",
+            "matchedExpression": "@local.heading_name",
+            "type": "local",
+            "fieldName": "heading_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.heading_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "var_title",
+      "value": ".title",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "var_title"
+    },
+    {
+      "name": "title_name",
+      "value": "principles_soil_health.@local.soil_princ_id@local.var_title",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "title_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_title",
+            "matchedExpression": "@local.soil_princ_id",
+            "type": "local",
+            "fieldName": "soil_princ_id"
+          },
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_title",
+            "matchedExpression": "@local.var_title",
+            "type": "local",
+            "fieldName": "var_title"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.soil_princ_id": [
+          "value"
+        ],
+        "@local.var_title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "title",
+      "value": "@data.@local.title_name",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.title_name",
+            "matchedExpression": "@local.title_name",
+            "type": "local",
+            "fieldName": "title_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.title_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "var_image_1",
+      "value": ".image_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "var_image_1"
+    },
+    {
+      "name": "image_1_name",
+      "value": "principles_soil_health.@local.soil_princ_id@local.var_image_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_1_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_image_1",
+            "matchedExpression": "@local.soil_princ_id",
+            "type": "local",
+            "fieldName": "soil_princ_id"
+          },
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_image_1",
+            "matchedExpression": "@local.var_image_1",
+            "type": "local",
+            "fieldName": "var_image_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.soil_princ_id": [
+          "value"
+        ],
+        "@local.var_image_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "name": "image_1",
+      "value": "@data.@local.image_1_name",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "image_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.image_1_name",
+            "matchedExpression": "@local.image_1_name",
+            "type": "local",
+            "fieldName": "image_1_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.image_1_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "var_image_title_1",
+      "value": ".image_title_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "var_image_title_1"
+    },
+    {
+      "name": "image_title_1_name",
+      "value": "principles_soil_health.@local.soil_princ_id@local.var_image_title_1",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_title_1_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_image_title_1",
+            "matchedExpression": "@local.soil_princ_id",
+            "type": "local",
+            "fieldName": "soil_princ_id"
+          },
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_image_title_1",
+            "matchedExpression": "@local.var_image_title_1",
+            "type": "local",
+            "fieldName": "var_image_title_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.soil_princ_id": [
+          "value"
+        ],
+        "@local.var_image_title_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "image_title_1",
+      "value": "@data.@local.image_title_1_name",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "image_title_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.image_title_1_name",
+            "matchedExpression": "@local.image_title_1_name",
+            "type": "local",
+            "fieldName": "image_title_1_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.image_title_1_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "var_image_2",
+      "value": ".image_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "var_image_2"
+    },
+    {
+      "name": "image_2_name",
+      "value": "principles_soil_health.@local.soil_princ_id@local.var_image_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_2_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_image_2",
+            "matchedExpression": "@local.soil_princ_id",
+            "type": "local",
+            "fieldName": "soil_princ_id"
+          },
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_image_2",
+            "matchedExpression": "@local.var_image_2",
+            "type": "local",
+            "fieldName": "var_image_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.soil_princ_id": [
+          "value"
+        ],
+        "@local.var_image_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "name": "image_2",
+      "value": "@data.@local.image_2_name",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "image_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.image_2_name",
+            "matchedExpression": "@local.image_2_name",
+            "type": "local",
+            "fieldName": "image_2_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.image_2_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "var_image_title_2",
+      "value": ".image_title_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "var_image_title_2"
+    },
+    {
+      "name": "image_title_2_name",
+      "value": "",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_title_2_name"
+    },
+    {
+      "type": "text",
+      "name": "image_title_2",
+      "value": "@data.@local.image_title_2_name",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "image_title_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.image_title_2_name",
+            "matchedExpression": "@local.image_title_2_name",
+            "type": "local",
+            "fieldName": "image_title_2_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.image_title_2_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "var_image_3",
+      "value": ".image_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "var_image_3"
+    },
+    {
+      "name": "image_3_name",
+      "value": "principles_soil_health.@local.soil_princ_id@local.var_image_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_3_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_image_3",
+            "matchedExpression": "@local.soil_princ_id",
+            "type": "local",
+            "fieldName": "soil_princ_id"
+          },
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_image_3",
+            "matchedExpression": "@local.var_image_3",
+            "type": "local",
+            "fieldName": "var_image_3"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.soil_princ_id": [
+          "value"
+        ],
+        "@local.var_image_3": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "name": "image_3",
+      "value": "@data.@local.image_3_name",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "image_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.image_3_name",
+            "matchedExpression": "@local.image_3_name",
+            "type": "local",
+            "fieldName": "image_3_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.image_3_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "var_image_title_3",
+      "value": ".image_title_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "var_image_title_3"
+    },
+    {
+      "name": "image_title_3_name",
+      "value": "principles_soil_health.@local.soil_princ_id@local.var_image_title_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_title_3_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_image_title_3",
+            "matchedExpression": "@local.soil_princ_id",
+            "type": "local",
+            "fieldName": "soil_princ_id"
+          },
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_image_title_3",
+            "matchedExpression": "@local.var_image_title_3",
+            "type": "local",
+            "fieldName": "var_image_title_3"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.soil_princ_id": [
+          "value"
+        ],
+        "@local.var_image_title_3": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "image_title_3",
+      "value": "@data.@local.image_title_3_name",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "image_title_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.image_title_3_name",
+            "matchedExpression": "@local.image_title_3_name",
+            "type": "local",
+            "fieldName": "image_title_3_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.image_title_3_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "var_keypoint_list",
+      "value": [
+        ".keypoint_list"
+      ],
+      "type": "set_variable",
+      "_nested_name": "var_keypoint_list"
+    },
+    {
+      "name": "keypoint_name",
+      "value": "principles_soil_health.@local.soil_princ_id@local.var_keypoint_list",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "keypoint_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_keypoint_list",
+            "matchedExpression": "@local.soil_princ_id",
+            "type": "local",
+            "fieldName": "soil_princ_id"
+          },
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_keypoint_list",
+            "matchedExpression": "@local.var_keypoint_list",
+            "type": "local",
+            "fieldName": "var_keypoint_list"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.soil_princ_id": [
+          "value"
+        ],
+        "@local.var_keypoint_list": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "value": "@data.@data.@local.keypoint_name",
+      "rows": [
+        {
+          "type": "text",
+          "name": "text_@item.id",
+          "value": "@item.text",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "items.text_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "text_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@item.text",
+                "matchedExpression": "@item.text",
+                "type": "item",
+                "fieldName": "text"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.text_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "_nested_name"
+            ],
+            "@item.text": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "text",
+          "value": "@item.subtext",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "items.text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@item.subtext",
+                "matchedExpression": "@item.subtext",
+                "type": "item",
+                "fieldName": "subtext"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.subtext": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@data.@local.keypoint_name",
+            "matchedExpression": "@local.keypoint_name",
+            "type": "local",
+            "fieldName": "keypoint_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.keypoint_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "value": "@data.soil_hlth_suppt_slides",
+      "rows": [
+        {
+          "type": "display_group",
+          "name": "dg_nutrient_@item.id",
+          "condition": "@item.principle == @local.soil_princ_id",
+          "parameter_list": {
+            "style": "dashed_box"
+          },
+          "rows": [
+            {
+              "type": "title",
+              "name": "title_@item.id",
+              "value": "@item.title",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "items.dg_nutrient_@item.id.title_@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "title_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@item.title",
+                    "matchedExpression": "@item.title",
+                    "type": "item",
+                    "fieldName": "title"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.dg_nutrient_@item.id.title_@item.id",
+                    "matchedExpression": "@item.id.title_",
+                    "type": "item",
+                    "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "items.dg_nutrient_@item.id.title_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ],
+                "@item.title": [
+                  "value"
+                ],
+                "@item.id.title_": [
+                  "_nested_name"
+                ]
+              }
+            },
+            {
+              "type": "button",
+              "name": "button_@item.id",
+              "value": "Practice",
+              "_translations": {
+                "value": {}
+              },
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "current_soil_practical_action",
+                    "@item.id"
+                  ],
+                  "_raw": "click | set_field: current_soil_practical_action: @item.id",
+                  "_cleaned": "click | set_field: current_soil_practical_action: @item.id"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "go_to",
+                  "args": [
+                    "soil_prac_acts"
+                  ],
+                  "_raw": "click | go_to: soil_prac_acts",
+                  "_cleaned": "click | go_to: soil_prac_acts"
+                }
+              ],
+              "_nested_name": "items.dg_nutrient_@item.id.button_@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "button_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "1": [
+                        {
+                          "fullExpression": "@item.id",
+                          "matchedExpression": "@item.id",
+                          "type": "item",
+                          "fieldName": "id"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | set_field: current_soil_practical_action: @item.id",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | set_field: current_soil_practical_action: @item.id",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  }
+                },
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.dg_nutrient_@item.id.button_@item.id",
+                    "matchedExpression": "@item.id.button_",
+                    "type": "item",
+                    "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "items.dg_nutrient_@item.id.button_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "action_list.0.args.1",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned",
+                  "_nested_name"
+                ],
+                "@item.id.button_": [
+                  "_nested_name"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "items.dg_nutrient_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "dg_nutrient_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@item.principle == @local.soil_princ_id",
+                "matchedExpression": "@item.principle",
+                "type": "item",
+                "fieldName": "principle"
+              },
+              {
+                "fullExpression": "@item.principle == @local.soil_princ_id",
+                "matchedExpression": "@local.soil_princ_id",
+                "type": "local",
+                "fieldName": "soil_princ_id"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.dg_nutrient_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "_nested_name"
+            ],
+            "@item.principle": [
+              "condition"
+            ],
+            "@local.soil_princ_id": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.soil_hlth_suppt_slides",
+            "matchedExpression": "@data.soil_hlth_suppt_slides",
+            "type": "data",
+            "fieldName": "soil_hlth_suppt_slides"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.soil_hlth_suppt_slides": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "templates/global/soil_navigation.xlsx"
+}

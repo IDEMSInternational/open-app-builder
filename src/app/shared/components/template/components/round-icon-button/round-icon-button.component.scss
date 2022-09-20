@@ -1,12 +1,28 @@
 @use "/src/theme/mixins";
 
+$background-primary: var(--button-background-primary, var(--gradient-primary-mid-vertical));
+$background-secondary: var(--button-background-secondary, var(--gradient-secondary-mid-vertical));
+$background-option: (--button-background-option, var(--gradient-primary-dark-vertical));
+$background-secondary-light: var(
+  --round-button-background-secondary-light,
+  var(--ion-color-secondary-200)
+);
+$background-secondary-mid: var(
+  --round-button-background-secondary-mid,
+  var(--ion-color-secondary-400)
+);
+$background-secondary-dark: var(
+  --round-button-background-secondary-dark,
+  var(--ion-color-secondary-600)
+);
+
 ion-tab-button {
   color: var(--ion-color-primary-contrast);
   text-transform: none;
   white-space: pre-line;
   min-height: var(--round-button-min-height);
-  background: var(--ion-btn-primary);
-  box-shadow: var(--ion-btn-dark-box-shadow);
+  background: $background-primary;
+  box-shadow: var(--ion-default-box-shadow);
   width: var(--round-button-width);
   margin: 0 auto;
   padding: 0;
@@ -73,7 +89,7 @@ ion-tab-button {
   width: var(--round-button-wrapper-width);
   height: var(--round-button-wrapper-height);
   border-radius: var(--ion-border-radius-rounded);
-  background: var(--ion-color-quaternary);
+  background: var(--ion-background-color);
   position: relative;
   margin-left: auto;
   margin-right: -13px;
@@ -83,37 +99,37 @@ ion-tab-button {
   }
 }
 .yellow {
-  background: var(--round-icon-button-light);
+  background: $background-secondary-light;
 }
 .orange {
-  background: var(--round-icon-button);
+  background: $background-secondary-mid;
 }
 .dark_orange {
-  background: var(--round-icon-button-dark);
+  background: $background-secondary-dark;
 }
 
 .navigation {
   width: var(--round-button-navigation-width);
   min-height: var(--round-button-navigation-min-height);
-  background: var(--ion-btn-secondary);
+  background: $background-secondary;
 }
 
 .information {
-  background: var(--ion-btn-primary);
+  background: $background-primary;
 }
 
 .make_me_smile {
-  background: var(--ion-btn-primary);
+  background: $background-primary;
   color: var(--ion-color-primary-contrast);
 }
 
 .get_me_going {
-  background: var(--ion-btn-secondary);
+  background: $background-secondary;
   color: var(--ion-color-primary-contrast);
 }
 
 .options {
-  background: var(--ion-gradient-option-btn);
+  background: $background-option;
   color: var(--ion-color-primary-contrast);
 }
 

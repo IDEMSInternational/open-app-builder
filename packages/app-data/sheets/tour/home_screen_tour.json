@@ -1,0 +1,41 @@
+{
+  "flow_type": "tour",
+  "flow_name": "home_screen_tour",
+  "status": "released",
+  "rows": [
+    {
+      "type": "step",
+      "title": "Farming Topics",
+      "_translations": {
+        "title": {},
+        "message_text": {}
+      },
+      "message_text": "The topics section covers soil health by outlining how to identify your soil and improve its health, manage pests in the fields, and understand your food to meet the nutrition needs of your families.",
+      "template_component_name": "tile_topics",
+      "route": "template/home_screen"
+    },
+    {
+      "type": "step",
+      "title": "AE Principles",
+      "_translations": {
+        "title": {},
+        "message_text": {}
+      },
+      "message_text": "Here you will be presented with a simplified presentation of agroecological principles in ways that can benefit farmers.",
+      "template_component_name": "tile_principles",
+      "route": "template/home_screen"
+    },
+    {
+      "type": "step",
+      "title": "Library",
+      "_translations": {
+        "title": {},
+        "message_text": {}
+      },
+      "message_text": "Discover detailed additional information on pests and plants!",
+      "template_component_name": "tile_library",
+      "route": "template/home_screen"
+    }
+  ],
+  "_xlsxPath": "tours/global/navigation_tours.xlsx"
+}

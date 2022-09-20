@@ -1,0 +1,45 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "people_needs",
+  "status": "released",
+  "data_list_name": "people_needs",
+  "rows": [
+    {
+      "id": "needs_children",
+      "heading": "Food for children",
+      "icon": "nutrition/children.png",
+      "description": "Children need lots of “grow” and ”glow” foods to reach their full physical and mental potential. Avoid overdependence on “go” foods",
+      "go_food_why": "Children are very active so they require foods that can provide them with energy.",
+      "grow_food_why": "Children need more grow foods to reach their full physical and mental potential. Grow foods are important in preventing stunted growth.\n[ADD LINK TO GROWTH CALCULATOR]",
+      "glow_food_why": "Glow foods provide vitamins that help children's bodies fight sickness and conditions like constipation and rickets.",
+      "nutrients_data_list": [
+        "children_nutrients"
+      ]
+    },
+    {
+      "id": "needs_women",
+      "heading": "Food for pregnant women",
+      "icon": "nutrition/pregnant.png",
+      "description": "Pregnant and nursing mothers require lots of grow and glow foods. They should also drink plenty of water.",
+      "go_food_why": "Pregnant mothers need a regular supply of energy for their changing body processes and to support the growth of their unborn baby.",
+      "grow_food_why": "Pregnant women need more grow food to assist proper forming and development of the baby's tissues and organs. It also improves the blood circulation and growth of breast and womb tissue.",
+      "glow_food_why": "Glow foods help prevent anemia, a common issue for pregnant women.",
+      "nutrients_data_list": [
+        "women_nutrients"
+      ]
+    },
+    {
+      "id": "needs_elderly",
+      "heading": "Food for the elderly",
+      "icon": "nutrition/elderly.png",
+      "description": "Older people require more grow foods which have calcium. This help them  to combat brittle bones. They also need  glow foods to help boost their immunity",
+      "go_food_why": "The elderly can benefit from foods which boost their energy and support their memory.",
+      "grow_food_why": "Grow food helps them to maintain bone and muscle health.",
+      "glow_food_why": "Elderly people need more glow food diversity, that is a variety of fruit and vegetables, to help boost their immunity.",
+      "nutrients_data_list": [
+        "elderly_nutrients"
+      ]
+    }
+  ],
+  "_xlsxPath": "data_lists/nutrition/nutrition_data_lists.xlsx"
+}
