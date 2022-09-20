@@ -1,12 +1,38 @@
+$background-banner-primary: var(
+  --display-group-background-banner-primary,
+  var(--gradient-primary-light-vertical)
+);
+$background-banner-secondary: var(
+  --display-group-background-banner-secondary,
+  var(--gradient-yellow-vertical)
+);
+$background-tool-1: var(--display-group-background-tool-1, var(--ion-color-secondary-400));
+$background-tool-2: var(--display-group-background-tool-2, var(--ion-color-secondary-500));
+$background-tool-3: var(--display-group-background-tool-3, var(--ion-color-primary-600));
+$background-tool-4: var(--display-group-background-tool-4, var(--ion-color-primary-700));
+$background-tool-5: var(--display-group-background-tool-5, var(--ion-color-primary));
+$background-home-light: var(
+  --display-group-background-home-light,
+  var(--gradient-primary-light-horizontal)
+);
+$background-home-mid: var(
+  --display-group-background-home-mid,
+  var(--gradient-primary-mid-horizontal)
+);
+$background-home-dark: var(
+  --display-group-background-home-dark,
+  var(--gradient-primary-dark-horizontal)
+);
+
 // background colours
 plh-tmpl-display-group .display-group-wrapper[data-param-style~="light"] {
-  background: var(--home-screen-light-bg);
+  background: $background-home-light;
 }
 plh-tmpl-display-group .display-group-wrapper[data-param-style~="shade"] {
-  background: var(--home-screen-shade-bg);
+  background: $background-home-mid;
 }
 plh-tmpl-display-group .display-group-wrapper[data-param-style~="dark"] {
-  background: var(--home-screen-dark-bg);
+  background: $background-home-dark;
 }
 
 /// Wrap parent_point display groups in grid
@@ -56,9 +82,9 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
     }
   }
   &[data-param-style~="grid-spacing-sm"] {
-    grid-gap: 16px;
+    grid-gap: 0px;
     @media (max-width: 375px) {
-      grid-gap: 8px;
+      grid-gap: 0px;
     }
     plh-template-component {
       max-height: 80px;
@@ -67,6 +93,9 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
   }
   .tmpl-image-container {
     padding: 0 !important;
+    img {
+      padding: 0 !important;
+    }
   }
 }
 
@@ -104,16 +133,16 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
   margin-top: var(--regular-margin);
   padding: var(--regular-padding);
   border-radius: var(--ion-border-radius-secondary);
-  background: var(--ion-dg-bg-default);
+  background: $background-banner-primary;
   margin-bottom: var(--regular-margin);
 }
 
 .display-group-wrapper[data-param-style~="banner_active"] {
-  background: var(--ion-banner-secondary);
+  background: $background-banner-secondary;
   @include banner;
 }
 .display-group-wrapper[data-param-style~="banner_passive"] {
-  background: var(--ion-banner-primary);
+  background: $background-banner-primary;
   @include banner;
 }
 .display-group-wrapper[data-param-style~="banner_light"] {
@@ -127,7 +156,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
   width: 100%;
   margin-bottom: var(--small-margin) !important;
   padding: 0 var(--large-padding);
-  background: var(--ion-dg-bg-default);
+  background: $background-banner-primary;
   height: var(--banner-short-height);
   /// short banner title
   plh-template-component[data-type="subtitle"] {
@@ -153,7 +182,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
   border-radius: var(--ion-border-radius-secondary);
   width: 100%;
   margin-bottom: var(--largest-margin) !important;
-  background: var(--ion-dg-bg-default);
+  background: $background-banner-primary;
   justify-content: center;
 
   plh-template-component > plh-tmpl-image > .tmpl-image-container {
@@ -174,23 +203,23 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
 
 .display-group-wrapper[data-param-style~="tool_1"] {
   @include essential-tool;
-  background: var(--tool-one-bg);
+  background: $background-tool-1;
 }
 .display-group-wrapper[data-param-style~="tool_2"] {
   @include essential-tool;
-  background: var(--tool-two-bg);
+  background: $background-tool-2;
 }
 .display-group-wrapper[data-param-style~="tool_3"] {
   @include essential-tool;
-  background: var(--tool-three-bg);
+  background: $background-tool-3;
 }
 .display-group-wrapper[data-param-style~="tool_4"] {
   @include essential-tool;
-  background: var(--tool-four-bg);
+  background: $background-tool-4;
 }
 .display-group-wrapper[data-param-style~="tool_5"] {
   @include essential-tool;
-  background: var(--tool-five-bg);
+  background: $background-tool-5;
 }
 .display-group-wrapper[data-param-style~="white_box"] {
   @include essential-tool;

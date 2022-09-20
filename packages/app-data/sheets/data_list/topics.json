@@ -1,0 +1,32 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "topics",
+  "status": "released",
+  "data_list_name": "topics",
+  "rows": [
+    {
+      "id": "soils",
+      "title": "Soil Health",
+      "illustration": "soils/soils_icon.png",
+      "data_list_name": "principles_soil_health",
+      "template": "soils_screen"
+    },
+    {
+      "id": "pests",
+      "title": "Pest Control",
+      "illustration": "pests/pests_icon.png",
+      "description": "Managing pests",
+      "data_list_name": "pests_sections",
+      "template": "pests_screen"
+    },
+    {
+      "id": "nutrition",
+      "title": "Nutrition",
+      "illustration": "nutrition/nutrition_icon.png",
+      "description": "Understanding your food",
+      "data_list_name": "understanding_your_food",
+      "template": "nutrition_screen"
+    }
+  ],
+  "_xlsxPath": "data_lists/homepage/topics_data_list.xlsx"
+}

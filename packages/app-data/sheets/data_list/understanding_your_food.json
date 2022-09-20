@@ -1,0 +1,34 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "understanding_your_food",
+  "status": "released",
+  "data_list_name": "understanding_your_food",
+  "rows": [
+    {
+      "id": "food_types_section",
+      "heading": "Food types",
+      "description": "All food can be categorized into 3 types",
+      "template": "food_types_screen",
+      "priniciple_1": "principle_culture",
+      "priniciple_2": "principle_resilience"
+    },
+    {
+      "id": "needs_section",
+      "heading": "Different needs for different people",
+      "description": "Depending on age, various foods are necessary",
+      "template": "needs_screen",
+      "priniciple_1": "principle_culture",
+      "priniciple_2": "principle_communities",
+      "priniciple_3": "principle_resilience"
+    },
+    {
+      "id": "calculator_section",
+      "heading": "Nutrients & Calculators",
+      "description": "Nutrients & Calculators",
+      "template": "nutrients_calculator_screen",
+      "priniciple_1": "principle_culture",
+      "priniciple_2": "principle_resilience"
+    }
+  ],
+  "_xlsxPath": "data_lists/nutrition/nutrition_data_lists.xlsx"
+}

@@ -1,0 +1,99 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "percentiles",
+  "status": "released",
+  "data_list_name": "percentiles",
+  "rows": [
+    {
+      "id": "p01",
+      "name": "0th Percentile",
+      "weight_description": "should worry [add description]",
+      "height_description": "should worry [add description]"
+    },
+    {
+      "id": "p1",
+      "name": "1st Percentile",
+      "weight_description": "should worry [add description]",
+      "height_description": "should worry [add description]"
+    },
+    {
+      "id": "p3",
+      "name": "3rd Percentile",
+      "weight_description": "should worry [add description]",
+      "height_description": "should worry [add description]"
+    },
+    {
+      "id": "p5",
+      "name": "5th Percentile",
+      "weight_description": "should worry [add description]",
+      "height_description": "should worry [add description]"
+    },
+    {
+      "id": "p10",
+      "name": "10th Percentile",
+      "weight_description": "not problematic [add description]",
+      "height_description": "not problematic [add description]"
+    },
+    {
+      "id": "p15",
+      "name": "15th Percentile",
+      "weight_description": "not problematic [add description]",
+      "height_description": "not problematic [add description]"
+    },
+    {
+      "id": "p25",
+      "name": "25th Percentile",
+      "weight_description": "not problematic [add description]",
+      "height_description": "not problematic [add description]"
+    },
+    {
+      "id": "p50",
+      "name": "50th Percentile",
+      "weight_description": "not problematic [add description]",
+      "height_description": "not problematic [add description]"
+    },
+    {
+      "id": "p75",
+      "name": "75th Percentile",
+      "weight_description": "not problematic [add description]",
+      "height_description": "not problematic [add description]"
+    },
+    {
+      "id": "p85",
+      "name": "85th Percentile",
+      "weight_description": "not problematic [add description]",
+      "height_description": "not problematic [add description]"
+    },
+    {
+      "id": "p90",
+      "name": "90th Percentile",
+      "weight_description": "not problematic [add description]",
+      "height_description": "not problematic [add description]"
+    },
+    {
+      "id": "p95",
+      "name": "95th Percentile",
+      "weight_description": "not problematic [add description]",
+      "height_description": "not problematic [add description]"
+    },
+    {
+      "id": "p97",
+      "name": "97th Percentile",
+      "weight_description": "not problematic [add description]",
+      "height_description": "not problematic [add description]"
+    },
+    {
+      "id": "p99",
+      "name": "99th Percentile",
+      "weight_description": "not problematic [add description]",
+      "height_description": "not problematic [add description]"
+    },
+    {
+      "id": "p999",
+      "name": "999th Percentile",
+      "weight_description": "not problematic [add description]",
+      "height_description": "not problematic [add description]"
+    }
+  ],
+  "_xlsxPath": "data_lists/nutrition/nutrition_data_lists.xlsx"
+}

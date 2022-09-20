@@ -1,0 +1,34 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "pests_sections",
+  "status": "released",
+  "data_list_name": "pests_sections",
+  "rows": [
+    {
+      "id": "section_insects",
+      "heading": "Are insects bad?",
+      "child_1": "sections.pests_pests",
+      "child_2": "sections.pests_beneficials",
+      "template": "pests_sub_templates",
+      "save_id_field": "current_pest_tab"
+    },
+    {
+      "id": "section_planting",
+      "heading": "Planting affects pests!",
+      "child_1": "sections.pests_monoculture",
+      "child_2": "sections.pests_plant_diversity",
+      "template": "pests_sub_templates",
+      "save_id_field": "current_pest_tab"
+    },
+    {
+      "id": "section_pesticides",
+      "heading": "Using pesticides",
+      "illustration": "pests/pesticides.png",
+      "child_1": "sections.pests_toxic",
+      "child_2": "sections.pests_nontoxic",
+      "template": "pests_sub_templates",
+      "save_id_field": "current_pest_tab"
+    }
+  ],
+  "_xlsxPath": "data_lists/pests/pests_data_lists.xlsx"
+}

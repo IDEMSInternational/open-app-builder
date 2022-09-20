@@ -9,6 +9,7 @@ export const IDEMS_APP_CONFIG = {
 };
 
 export const SCRIPTS_WORKSPACE_PATH = path.join(ROOT_DIR, "packages/scripts");
+export const SCRIPTS_LOGS_DIR = path.join(SCRIPTS_WORKSPACE_PATH, "logs");
 export const DATA_MODELS_WORKSPACE_PATH = path.join(ROOT_DIR, "packages/data-models");
 
 export const CONFIG_FOLDER_PATH = path.join(SCRIPTS_WORKSPACE_PATH, "config");
