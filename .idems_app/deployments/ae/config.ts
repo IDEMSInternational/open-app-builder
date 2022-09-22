@@ -4,7 +4,7 @@ import { getDefaultAppConstants } from "data-models/constants";
 const app_constants = getDefaultAppConstants();
 
 const config: IDeploymentConfig = {
-  name: "ae_soils",
+  name: "ae",
   app_constants,
   google_drive: {
     sheets_folder_id: "1oHUHuZBh1Hi4TaSkZik5vnJxWtisSqRR",
