@@ -261,10 +261,7 @@ export class TemplateRowService extends TemplateInstanceService {
     // Instead of returning themselves items looped child rows
     if (type === "items") {
       // extract raw parameter list
-      let itemDataList: { [id: string]: any } = row.value;
-      if (typeof itemDataList === "string") {
-        itemDataList = await this.templateVariablesService.evaluateConditionString(itemDataList);
-      }
+      const itemDataList: { [id: string]: any } = row.value;
       const parameterList = this.hackUnparseItemParameterList(row);
       const parsedItemDataList = await this.parseDataList(itemDataList);
       const itemRows = new ItemProcessor(parsedItemDataList, parameterList).process(row.rows);
