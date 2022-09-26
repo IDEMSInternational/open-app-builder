@@ -109,6 +109,7 @@ class AppDataCopy {
   private assetsGenerateIndex(baseFolder: string) {
     const topLevelFolders = listFolderNames(baseFolder);
     const languageFolders = topLevelFolders.filter((name) => isCountryLanguageCode(name));
+    const themeFolders = topLevelFolders.filter((name) => name.startsWith("theme_"));
 
     // TODO - ideally "global" folder should sit at top level but refactoring required so for now use filter
     const globalAssetsFolder = path.join(baseFolder, ASSETS_GLOBAL_FOLDER_NAME);
@@ -130,6 +131,22 @@ class AppDataCopy {
         }
       });
     }
+
+    // populate tracked and untracked theme assets
+    for (const themeFolder of themeFolders) {
+      const themeFolderPath = path.resolve(baseFolder, themeFolder);
+      const themeAssets = generateFolderFlatMap(themeFolderPath);
+      Object.entries(themeAssets).forEach(([name, value]) => {
+        name = name.replace(`${ASSETS_GLOBAL_FOLDER_NAME}/`, "");
+        if (globalAssets.hasOwnProperty(name)) {
+          globalAssets[name].themeVariations = globalAssets[name].translations || {};
+          globalAssets[name].themeVariations[themeFolder] = value as IContentsEntry;
+        } else {
+          untrackedAssets.push(`${themeFolder}/${name}`);
+        }
+      });
+    }
+
     // clean output to exclude modifiedTime and relativePath fields. Track totals
     // TODO - size calcs could be tidied to own function
     const cleanedContents: { [relative_path: string]: Partial<IAssetEntry> } = {};
@@ -145,6 +162,15 @@ class AppDataCopy {
           cleanedContents[key].translations[translated_key] = translatedFieldsToKeep as any;
           if (!sizeTotals[translated_key]) sizeTotals[translated_key] = 0;
           sizeTotals[translated_key] += Math.round(translatedEntry.size_kb / 102.4) / 10;
+        });
+      }
+      // repeat for nested theme entries
+      if (entry.themeVariations) {
+        Object.entries(entry.themeVariations).forEach(([theme_key, themeEntry]) => {
+          const { modifiedTime, relativePath, ...themeFieldsToKeep } = themeEntry;
+          cleanedContents[key].themeVariations[theme_key] = themeFieldsToKeep as any;
+          if (!sizeTotals[theme_key]) sizeTotals[theme_key] = 0;
+          sizeTotals[theme_key] += Math.round(themeEntry.size_kb / 102.4) / 10;
         });
       }
     });
@@ -350,4 +376,5 @@ function runPrettierCodeTidy(folderPath: string) {
 /**  Subset of IContentsEntry (with additional translations) */
 interface IAssetEntry extends IContentsEntry {
   translations?: { [language_code: string]: IContentsEntry };
+  themeVariations?: { [theme_name: string]: IContentsEntry };
 }
