@@ -79,6 +79,11 @@ export class DefaultParser<
     return flow;
   }
 
+  /** Postprocess an array of flows */
+  public postProcessFlows(flows: FlowType[]) {
+    return flows;
+  }
+
   /** If any flows have a first row that starts `@default` return values */
   private extractRowDefaultValues(flow: FlowType) {
     const firstRow = flow.rows?.[0] || {};
