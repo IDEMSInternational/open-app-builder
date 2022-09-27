@@ -10,7 +10,7 @@ import {
 } from "../../../utils";
 
 export class TemplateParser extends DefaultParser {
-  postProcess(row: FlowTypes.TemplateRow, nestedPath?: string) {
+  postProcessRow(row: FlowTypes.TemplateRow, nestedPath?: string) {
     // remove empty rows
     if (Object.keys(row).length === 0) {
       return;
@@ -59,7 +59,7 @@ export class TemplateParser extends DefaultParser {
 
     // handle nested rows in same way
     if (row.rows) {
-      row.rows = row.rows.map((r) => this.postProcess(r, row._nested_name));
+      row.rows = row.rows.map((r) => this.postProcessRow(r, row._nested_name));
     }
 
     if (row.exclude_from_translation) {
