@@ -21,7 +21,7 @@ You must optain a `private.key` file from the development team which you can cop
 Once the file is copied run the following command:
 
 ```
-yarn scripts decrypt-config
+yarn scripts config decrypt
 ```
 
 You will see additional files populate to the `scripts/config` folder such as they become decrypted
