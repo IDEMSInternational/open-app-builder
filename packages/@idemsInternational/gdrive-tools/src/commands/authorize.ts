@@ -1,7 +1,6 @@
 import fs from "fs";
 import chalk from "chalk";
 import { driveactivity_v2, drive_v3, google } from "googleapis";
-// import * as http from 'http';
 import http from "http";
 import opn from "open";
 import url from "url";
