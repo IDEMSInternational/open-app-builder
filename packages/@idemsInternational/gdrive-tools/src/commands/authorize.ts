@@ -1,6 +1,11 @@
 import fs from "fs";
-import readline from "readline";
+import chalk from "chalk";
 import { driveactivity_v2, drive_v3, google } from "googleapis";
+// import * as http from 'http';
+import http from "http";
+import opn from "open";
+import url from "url";
+import destroyer from "server-destroy";
 require("dotenv").config();
 
 /***************************************************************************************
@@ -62,7 +67,7 @@ export function authorizeGDrive(
       console.warn("Error authorizing google drive access", ex);
       reject(ex);
     }
-  });
+  }).then((settled) => process.exit());
 }
 
 /** Authorize access to the GdriveActivity api and return client */
@@ -123,7 +128,7 @@ function authorize(
   scopes: string[],
   callback: (authClient: OAuth2Client) => void
 ) {
-  const { client_secret, client_id, redirect_uris } = credentials.installed;
+  const { client_secret, client_id, redirect_uris } = credentials.web || credentials.installed;
   const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
   // Check if we have previously stored a token.
   const token = getJSONFromEnvOrFile("GDRIVE_OAUTH_TOKEN", tokenPath);
@@ -148,27 +153,52 @@ function getAccessToken(
   tokenPath: string,
   callback: (client: OAuth2Client) => void
 ) {
+  // Generate the url that will be used for the consent dialog.
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: "offline",
     scope: scopes,
   });
-  console.log("Authorize this app by visiting:\n");
-  console.log("\x1b[36m" + authUrl + "\n" + "\x1b[0m");
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-  rl.question("Enter the code from that page here: ", (code) => {
-    rl.close();
-    oAuth2Client.getToken(code, (err, token) => {
-      if (err) return console.error("Error retrieving access token", err);
-      oAuth2Client.setCredentials(token);
-      // Store the token to disk for later program executions
-      fs.writeFileSync(tokenPath, JSON.stringify(token));
-      console.log("Token stored to", tokenPath);
-      callback(oAuth2Client);
+  console.log(
+    chalk.yellow(
+      "Authorize this app in your browser. If not automatically redirected, please manually visit:\n"
+    )
+  );
+  console.log(chalk.blue(authUrl + "\n"));
+
+  // Open an http server to accept the oauth callback.
+  const server = http
+    .createServer(async (req, res) => {
+      try {
+        // The request endpoint of "/oauth2callback" is configured
+        // within Google Cloud's API Console Credentials page
+        if (req.url.indexOf("/oauth2callback") > -1) {
+          const qs = new url.URL(req.url, "http://localhost:8080").searchParams;
+          res.end(
+            "Authentication successful! Please close this browser window and return to the console."
+          );
+          destroyer(server);
+          const { tokens } = await oAuth2Client.getToken(qs.get("code"));
+          oAuth2Client.setCredentials(tokens);
+          console.log(chalk.yellow("Authentication successful, saving token in local storage."));
+          // Store the token to disk for later program executions
+          fs.writeFileSync(tokenPath, JSON.stringify(tokens));
+          console.log(chalk.yellow("Token stored to", tokenPath));
+          console.log(chalk.green("Authentication Complete."));
+          callback(oAuth2Client);
+        }
+      } catch (e) {
+        logError({
+          msg1: "Error authenticating with Google",
+          msg2: e,
+        });
+        return res.end(e);
+      }
+    })
+    .listen(8080, () => {
+      // open the browser to the authorize url to start the workflow
+      opn(authUrl, { wait: false }).then((cp) => cp.unref());
     });
-  });
+  destroyer(server);
 }
 
 /** Check if generated token scope has access to all required scopes */

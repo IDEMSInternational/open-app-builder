@@ -13651,6 +13651,7 @@ __metadata:
     nouislider: ^14.6.3
     prettier: 2.4.1
     rxjs: ^6.6.7
+    server-destroy: ^1.0.1
     shared: "workspace:*"
     stacktrace-js: ^2.0.2
     typescript: 4.4.2
@@ -23655,6 +23656,13 @@ __metadata:
   bin:
     serve: bin/serve.js
   checksum: abc6ad27d5702f1311c18f185666f674e1df3fc80cf025ae75c3fd679275b4652f0cd55a718d6bdc2435702387b6d7ae0c54c1425fe347f61255430b13365e04
+  languageName: node
+  linkType: hard
+
+"server-destroy@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "server-destroy@npm:1.0.1"
+  checksum: cbc19d4f92d25a0a34430c6a09faccbea77d1a69563560eefe883feb67c14c3fb3a1c5af1affae0e82d537886ea0f91d317e39e46b5d6425de3acf57a3ab13e3
   languageName: node
   linkType: hard
 
