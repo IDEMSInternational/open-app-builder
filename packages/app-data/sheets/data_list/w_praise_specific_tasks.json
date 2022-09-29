@@ -1,0 +1,54 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_praise_specific_tasks",
+  "status": "released",
+  "data_list_name": "w_praise_specific_tasks",
+  "rows": [
+    {
+      "id": "question_1",
+      "individual": true,
+      "together": false,
+      "priority": 11,
+      "template": "w_praise_question_1"
+    },
+    {
+      "id": "talk_1",
+      "individual": false,
+      "together": true,
+      "priority": 11,
+      "template": "w_praise_talk_1"
+    },
+    {
+      "id": "read",
+      "individual": true,
+      "together": true,
+      "priority": 12,
+      "template": "w_praise_read",
+      "subtask_group": "read"
+    },
+    {
+      "id": "question_2",
+      "individual": true,
+      "together": false,
+      "priority": 13,
+      "template": "w_praise_question_2",
+      "subtask_group": "read"
+    },
+    {
+      "id": "talk_2",
+      "individual": false,
+      "together": true,
+      "priority": 13,
+      "template": "w_praise_talk_2",
+      "subtask_group": "read"
+    },
+    {
+      "id": "try",
+      "individual": false,
+      "together": true,
+      "priority": 71,
+      "template": "w_praise_try"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
+}

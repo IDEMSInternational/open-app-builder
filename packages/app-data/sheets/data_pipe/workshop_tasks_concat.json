@@ -1,0 +1,85 @@
+{
+  "flow_type": "data_pipe",
+  "flow_name": "workshop_tasks_concat",
+  "status": "released",
+  "rows": [
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_self_care_common_tasks",
+        "w_self_care_specific_tasks"
+      ],
+      "input_source": false,
+      "output_target": "w_self_care_tasks"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks_concat.xlsx",
+  "_processed": {
+    "w_self_care_tasks": [
+      {
+        "id": "welcome_individual",
+        "individual": true,
+        "together": false,
+        "priority": 1
+      },
+      {
+        "id": "care_together",
+        "individual": false,
+        "together": true,
+        "priority": 2
+      },
+      {
+        "id": "intro",
+        "individual": true,
+        "together": true,
+        "priority": 5
+      },
+      {
+        "id": "tools_activity",
+        "individual": true,
+        "together": true,
+        "priority": 70
+      },
+      {
+        "id": "home_practice",
+        "individual": true,
+        "together": true,
+        "priority": 80
+      },
+      {
+        "id": "ending",
+        "individual": true,
+        "together": true,
+        "priority": 90
+      },
+      {
+        "id": "relax",
+        "individual": true,
+        "together": true,
+        "priority": 11,
+        "template": "w_self_care_relax"
+      },
+      {
+        "id": "recognise",
+        "individual": true,
+        "together": true,
+        "priority": 12,
+        "template": "w_self_care_recognise"
+      },
+      {
+        "id": "reward",
+        "individual": true,
+        "together": true,
+        "priority": 13,
+        "template": "w_self_care_reward"
+      },
+      {
+        "id": "survey_activity",
+        "individual": true,
+        "together": false,
+        "priority": 71,
+        "template": "w_self_care_survey_activity"
+      }
+    ]
+  }
+}
