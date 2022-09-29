@@ -1,0 +1,173 @@
+{
+  "flow_type": "data_pipe",
+  "flow_name": "workshop_tasks_concat_6",
+  "status": "released",
+  "rows": [
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_money_common_tasks",
+        "w_money_specific_tasks"
+      ],
+      "input_source": false,
+      "output_target": "w_money_tasks"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks_concat.xlsx",
+  "_processed": {
+    "w_money_tasks": [
+      {
+        "id": "welcome_individual",
+        "individual": true,
+        "together": false,
+        "priority": 1
+      },
+      {
+        "id": "care_together",
+        "individual": false,
+        "together": true,
+        "priority": 2
+      },
+      {
+        "id": "relax",
+        "individual": true,
+        "together": true,
+        "priority": 3
+      },
+      {
+        "id": "reflect_together",
+        "individual": false,
+        "together": true,
+        "priority": 4
+      },
+      {
+        "id": "intro",
+        "individual": true,
+        "together": true,
+        "priority": 5
+      },
+      {
+        "id": "tools_activity",
+        "individual": true,
+        "together": true,
+        "priority": 70
+      },
+      {
+        "id": "home_practice",
+        "individual": true,
+        "together": true,
+        "priority": 80
+      },
+      {
+        "id": "ending",
+        "individual": true,
+        "together": true,
+        "priority": 90
+      },
+      {
+        "id": "hp_review",
+        "individual": true,
+        "together": true,
+        "priority": 91
+      },
+      {
+        "id": "read_1",
+        "individual": true,
+        "together": true,
+        "priority": 11,
+        "template": "w_money_read_1"
+      },
+      {
+        "id": "learn_1",
+        "individual": true,
+        "together": true,
+        "priority": 12,
+        "template": "w_money_learn_1"
+      },
+      {
+        "id": "learn_2",
+        "individual": true,
+        "together": true,
+        "priority": 13,
+        "template": "w_money_learn_2"
+      },
+      {
+        "id": "learn_3",
+        "individual": true,
+        "together": true,
+        "priority": 14,
+        "template": "w_money_learn_3"
+      },
+      {
+        "id": "learn_4",
+        "individual": true,
+        "together": true,
+        "priority": 15,
+        "template": "w_money_learn_4"
+      },
+      {
+        "id": "read_2",
+        "individual": true,
+        "together": true,
+        "priority": 16,
+        "template": "w_money_read_2"
+      },
+      {
+        "id": "question_1",
+        "individual": true,
+        "together": false,
+        "priority": 17,
+        "template": "w_money_tq_1"
+      },
+      {
+        "id": "talk_1",
+        "individual": false,
+        "together": true,
+        "priority": 17,
+        "template": "w_money_tq_1"
+      },
+      {
+        "id": "read_3",
+        "individual": true,
+        "together": true,
+        "priority": 18,
+        "template": "w_money_read_3"
+      },
+      {
+        "id": "question_2",
+        "individual": true,
+        "together": false,
+        "priority": 19,
+        "template": "w_money_tq_2"
+      },
+      {
+        "id": "talk_2",
+        "individual": false,
+        "together": true,
+        "priority": 19,
+        "template": "w_money_tq_2"
+      },
+      {
+        "id": "question_3",
+        "individual": true,
+        "together": false,
+        "priority": 20,
+        "template": "w_money_tq_3"
+      },
+      {
+        "id": "talk_3",
+        "individual": false,
+        "together": true,
+        "priority": 20,
+        "template": "w_money_tq_3"
+      },
+      {
+        "id": "learn_5",
+        "individual": true,
+        "together": true,
+        "priority": 21,
+        "template": "w_money_learn_5"
+      }
+    ]
+  }
+}
