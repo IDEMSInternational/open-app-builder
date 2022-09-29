@@ -1,4 +1,19 @@
-export const UNTRACKED_ASSETS = ["es_sp/quality_assurance/test_image_untracked.png"];
+export const UNTRACKED_ASSETS = [
+  "es_sp/quality_assurance/test_image_untracked.png",
+  "theme_flat/global/plh_images/welcome.svg",
+  "theme_flat/global/plh_images/workshops/w_1on1/tools.svg",
+  "theme_flat/global/plh_images/workshops/w_celebrate/tools.svg",
+  "theme_flat/global/plh_images/workshops/w_consequence/tools.svg",
+  "theme_flat/global/plh_images/workshops/w_crisis/tools.svg",
+  "theme_flat/global/plh_images/workshops/w_instruct/tools.svg",
+  "theme_flat/global/plh_images/workshops/w_money/tools.svg",
+  "theme_flat/global/plh_images/workshops/w_praise/tools.svg",
+  "theme_flat/global/plh_images/workshops/w_rules/tools.svg",
+  "theme_flat/global/plh_images/workshops/w_safe/tools.svg",
+  "theme_flat/global/plh_images/workshops/w_self_care/tools.svg",
+  "theme_flat/global/plh_images/workshops/w_solve/tools.svg",
+  "theme_flat/global/plh_images/workshops/w_stress/tools.svg",
+];
 export const ASSETS_CONTENTS_LIST = {
   "android/icon-background.png": {
     size_kb: 6.4,
@@ -1632,6 +1647,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 68.7,
     md5Checksum: "7ba000baf996668a493b0af9a4bfa698",
   },
+  "plh_images/logos/wellspring.png": {
+    size_kb: 65.4,
+    md5Checksum: "e9e4f5d3205a0befe50dc8f219f65cb2",
+  },
   "plh_images/logos/who.png": {
     size_kb: 108,
     md5Checksum: "297544696aaa8a242ac36ffd19f06849",
@@ -2727,10 +2746,6 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshop_modes/guide_2/write.svg": {
     size_kb: 3.8,
     md5Checksum: "d85011b09a2953d05a49e784995492d3",
-  },
-  "plh_images_human/workshops/w_self_care.svg": {
-    size_kb: 8.8,
-    md5Checksum: "78c195ccd45042016c0a6c4a666ab170",
   },
   "plh_lottie/habits/cascading_stars.json": {
     size_kb: 140.5,

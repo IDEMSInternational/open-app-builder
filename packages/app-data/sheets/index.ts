@@ -256,6 +256,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "nf_schedule_inactive",
       _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
     },
+    common_workshop_tasks: {
+      flow_type: "data_list",
+      flow_name: "common_workshop_tasks",
+      data_list_name: "common_workshop_tasks",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks.xlsx",
+    },
     covid_data_list: {
       flow_type: "data_list",
       flow_name: "covid_data_list",
@@ -352,6 +358,24 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "example_data_pipe_list",
       _xlsxPath: "quality_assurance/example_sheets/example_data_pipes.xlsx",
     },
+    example_data_pipe_list_1: {
+      flow_type: "data_list",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_list_1",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes_join.xlsx",
+    },
+    example_data_pipe_list_2: {
+      flow_type: "data_list",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_list_2",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes_join.xlsx",
+    },
+    example_data_pipe_list_3: {
+      flow_type: "data_list",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_list_3",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes_join.xlsx",
+    },
     example_sheet_defaults_list: {
       flow_type: "data_list",
       flow_name: "example_sheet_defaults_list",
@@ -363,6 +387,151 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "funders_data_list",
       data_list_name: "funders",
       _xlsxPath: "global/data/partners_data_lists.xlsx",
+    },
+    double_example_data_pipe_list: {
+      flow_name: "double_example_data_pipe_list",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    example_data_pipe_concat_1_3: {
+      flow_name: "example_data_pipe_concat_1_3",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    example_pipe_completed: {
+      flow_name: "example_pipe_completed",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    example_pipe_uncompleted: {
+      flow_name: "example_pipe_uncompleted",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    prefix_example_data_pipe_list: {
+      flow_name: "prefix_example_data_pipe_list",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_1on1_common_tasks: {
+      flow_name: "w_1on1_common_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_1on1_tasks: {
+      flow_name: "w_1on1_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_celebrate_common_tasks: {
+      flow_name: "w_celebrate_common_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_celebrate_tasks: {
+      flow_name: "w_celebrate_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_consequence_common_tasks: {
+      flow_name: "w_consequence_common_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_consequence_tasks: {
+      flow_name: "w_consequence_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_crisis_common_tasks: {
+      flow_name: "w_crisis_common_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_crisis_tasks: {
+      flow_name: "w_crisis_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_instruct_common_tasks: {
+      flow_name: "w_instruct_common_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_instruct_tasks: {
+      flow_name: "w_instruct_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_money_common_tasks: {
+      flow_name: "w_money_common_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_money_tasks: {
+      flow_name: "w_money_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_praise_common_tasks: {
+      flow_name: "w_praise_common_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_praise_tasks: {
+      flow_name: "w_praise_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_rules_common_tasks: {
+      flow_name: "w_rules_common_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_rules_tasks: {
+      flow_name: "w_rules_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_safe_common_tasks: {
+      flow_name: "w_safe_common_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_safe_tasks: {
+      flow_name: "w_safe_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_self_care_common_tasks: {
+      flow_name: "w_self_care_common_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_self_care_tasks: {
+      flow_name: "w_self_care_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_solve_common_tasks: {
+      flow_name: "w_solve_common_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_solve_tasks: {
+      flow_name: "w_solve_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_stress_common_tasks: {
+      flow_name: "w_stress_common_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    w_stress_tasks: {
+      flow_name: "w_stress_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
     },
     habit_data_list: {
       flow_type: "data_list",
@@ -441,6 +610,78 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "survey_data_list",
       data_list_name: "survey",
       _xlsxPath: "global/data/survey_data_list.xlsx",
+    },
+    w_1on1_specific_tasks: {
+      flow_type: "data_list",
+      flow_name: "w_1on1_specific_tasks",
+      data_list_name: "w_1on1_specific_tasks",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks.xlsx",
+    },
+    w_celebrate_specific_tasks: {
+      flow_type: "data_list",
+      flow_name: "w_celebrate_specific_tasks",
+      data_list_name: "w_celebrate_specific_tasks",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks.xlsx",
+    },
+    w_consequence_specific_tasks: {
+      flow_type: "data_list",
+      flow_name: "w_consequence_specific_tasks",
+      data_list_name: "w_consequence_specific_tasks",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks.xlsx",
+    },
+    w_crisis_specific_tasks: {
+      flow_type: "data_list",
+      flow_name: "w_crisis_specific_tasks",
+      data_list_name: "w_crisis_specific_tasks",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks.xlsx",
+    },
+    w_instruct_specific_tasks: {
+      flow_type: "data_list",
+      flow_name: "w_instruct_specific_tasks",
+      data_list_name: "w_instruct_specific_tasks",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks.xlsx",
+    },
+    w_money_specific_tasks: {
+      flow_type: "data_list",
+      flow_name: "w_money_specific_tasks",
+      data_list_name: "w_money_specific_tasks",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks.xlsx",
+    },
+    w_praise_specific_tasks: {
+      flow_type: "data_list",
+      flow_name: "w_praise_specific_tasks",
+      data_list_name: "w_praise_specific_tasks",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks.xlsx",
+    },
+    w_rules_specific_tasks: {
+      flow_type: "data_list",
+      flow_name: "w_rules_specific_tasks",
+      data_list_name: "w_rules_specific_tasks",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks.xlsx",
+    },
+    w_safe_specific_tasks: {
+      flow_type: "data_list",
+      flow_name: "w_safe_specific_tasks",
+      data_list_name: "w_safe_specific_tasks",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks.xlsx",
+    },
+    w_self_care_specific_tasks: {
+      flow_type: "data_list",
+      flow_name: "w_self_care_specific_tasks",
+      data_list_name: "w_self_care_specific_tasks",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks.xlsx",
+    },
+    w_solve_specific_tasks: {
+      flow_type: "data_list",
+      flow_name: "w_solve_specific_tasks",
+      data_list_name: "w_solve_specific_tasks",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks.xlsx",
+    },
+    w_stress_specific_tasks: {
+      flow_type: "data_list",
+      flow_name: "w_stress_specific_tasks",
+      data_list_name: "w_stress_specific_tasks",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks.xlsx",
     },
     workshop_data: {
       flow_type: "data_list",
@@ -1281,9 +1522,9 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_title.xlsx",
     },
-    "comp_toggle-bar": {
+    comp_toggle_bar: {
       flow_type: "template",
-      flow_name: "comp_toggle-bar",
+      flow_name: "comp_toggle_bar",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_toggle_bar.xlsx",
     },
@@ -2014,6 +2255,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/debug_text.xlsx",
     },
+    debug_theme_assets: {
+      flow_type: "template",
+      flow_name: "debug_theme_assets",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_theme_assets.xlsx",
+    },
     debug_tile_text: {
       flow_type: "template",
       flow_name: "debug_tile_text",
@@ -2357,6 +2604,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "example_items",
       _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
     },
+    example_items_generated: {
+      flow_type: "template",
+      flow_subtype: "debug",
+      flow_name: "example_items_generated",
+      _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
+    },
     example_items_nav: {
       flow_type: "template",
       flow_subtype: "debug",
@@ -2500,9 +2753,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "example_temp_override_default",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
-      _overrides: {
-        example_temp_override_es_sp: '@fields._app_language.startsWith("es")',
-      },
     },
     example_temp_override_es_sp: {
       flow_type: "template",
@@ -2940,10 +3190,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "language_select",
       _xlsxPath: "global/core_templates/core_templates_settings.xlsx",
-      _overrides: {
-        language_select_za: '@fields._deployment_name == "plh_za"',
-        language_select_tz: '@fields._deployment_name == "plh_tz"',
-      },
     },
     language_select_tz: {
       flow_type: "template",
@@ -3138,10 +3384,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "organisation_registration",
       _xlsxPath: "global/core_templates/core_templates_settings.xlsx",
-      _overrides: {
-        organisation_registration_za: '@fields._deployment_name == "plh_za"',
-        organisation_registration_tz: '@fields._deployment_name == "plh_tz"',
-      },
     },
     organisation_registration_tz: {
       flow_type: "template",
@@ -6312,6 +6554,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "workshop_stepper_actions",
       _xlsxPath: "global/core_templates/core_templates_workshops.xlsx",
     },
+    workshop_tasks_test: {
+      flow_type: "template",
+      flow_name: "workshop_tasks_test",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_templates.xlsx",
+    },
     workshop_unlock: {
       flow_type: "template",
       flow_name: "workshop_unlock",
@@ -6364,5 +6611,95 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       _xlsxPath: "global/tours/weekly_workshops_tour.xlsx",
     },
   },
-  data_pipe:{}
+  data_pipe: {
+    common_workshop_tasks_filter: {
+      flow_type: "data_pipe",
+      flow_name: "common_workshop_tasks_filter",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks.xlsx",
+    },
+    example_data_pipe: {
+      flow_type: "data_pipe",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes.xlsx",
+    },
+    example_data_pipe_concat: {
+      flow_type: "data_pipe",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_concat",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes.xlsx",
+    },
+    example_data_pipe_concat_2: {
+      flow_type: "data_pipe",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_concat_2",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes_join.xlsx",
+    },
+    example_data_pipe_map: {
+      flow_type: "data_pipe",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_map",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes.xlsx",
+    },
+    workshop_tasks_concat: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_tasks_concat",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_concat.xlsx",
+    },
+    workshop_tasks_concat_10: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_tasks_concat_10",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_concat.xlsx",
+    },
+    workshop_tasks_concat_11: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_tasks_concat_11",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_concat.xlsx",
+    },
+    workshop_tasks_concat_12: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_tasks_concat_12",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_concat.xlsx",
+    },
+    workshop_tasks_concat_2: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_tasks_concat_2",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_concat.xlsx",
+    },
+    workshop_tasks_concat_3: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_tasks_concat_3",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_concat.xlsx",
+    },
+    workshop_tasks_concat_4: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_tasks_concat_4",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_concat.xlsx",
+    },
+    workshop_tasks_concat_5: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_tasks_concat_5",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_concat.xlsx",
+    },
+    workshop_tasks_concat_6: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_tasks_concat_6",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_concat.xlsx",
+    },
+    workshop_tasks_concat_7: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_tasks_concat_7",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_concat.xlsx",
+    },
+    workshop_tasks_concat_8: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_tasks_concat_8",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_concat.xlsx",
+    },
+    workshop_tasks_concat_9: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_tasks_concat_9",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_concat.xlsx",
+    },
+  },
 };
