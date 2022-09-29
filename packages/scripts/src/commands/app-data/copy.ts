@@ -133,7 +133,7 @@ class AppDataCopy {
       });
     }
 
-    // populate tracked and untracked theme assets
+    // populate tracked and untracked theme-specific assets
     for (const themeFolder of themeFolders) {
       const themeFolderPath = path.resolve(baseFolder, themeFolder);
       const themeAssets = generateFolderFlatMap(themeFolderPath);
