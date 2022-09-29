@@ -6,6 +6,7 @@ import { Command } from "commander";
 import {
   generateFolderFlatMap,
   isCountryLanguageCode,
+  isThemeAssetsFolderName,
   listFolderNames,
   logError,
   readContentsFile,
@@ -109,7 +110,7 @@ class AppDataCopy {
   private assetsGenerateIndex(baseFolder: string) {
     const topLevelFolders = listFolderNames(baseFolder);
     const languageFolders = topLevelFolders.filter((name) => isCountryLanguageCode(name));
-    const themeFolders = topLevelFolders.filter((name) => name.startsWith("theme_"));
+    const themeFolders = topLevelFolders.filter((name) => isThemeAssetsFolderName(name));
 
     // TODO - ideally "global" folder should sit at top level but refactoring required so for now use filter
     const globalAssetsFolder = path.join(baseFolder, ASSETS_GLOBAL_FOLDER_NAME);
@@ -139,7 +140,7 @@ class AppDataCopy {
       Object.entries(themeAssets).forEach(([name, value]) => {
         name = name.replace(`${ASSETS_GLOBAL_FOLDER_NAME}/`, "");
         if (globalAssets.hasOwnProperty(name)) {
-          globalAssets[name].themeVariations = globalAssets[name].translations || {};
+          globalAssets[name].themeVariations = globalAssets[name].themeVariations || {};
           globalAssets[name].themeVariations[themeFolder] = value as IContentsEntry;
         } else {
           untrackedAssets.push(`${themeFolder}/${name}`);
@@ -236,13 +237,23 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
 
   /** Ensure asset folders are named correctly */
   private assetsQualityCheck(sourceFolder: string) {
-    const output = { hasGlobalFolder: false, languageFolders: [], invalidFolders: [] };
+    const output = {
+      hasGlobalFolder: false,
+      languageFolders: [],
+      themeFolders: [],
+      invalidFolders: [],
+    };
     const topLevelFolders = listFolderNames(sourceFolder);
     for (const folderName of topLevelFolders) {
       if (folderName === ASSETS_GLOBAL_FOLDER_NAME) output.hasGlobalFolder = true;
       else {
-        if (isCountryLanguageCode(folderName)) output.languageFolders.push(folderName);
-        else output.invalidFolders.push(folderName);
+        if (isCountryLanguageCode(folderName)) {
+          output.languageFolders.push(folderName);
+        } else if (isThemeAssetsFolderName(folderName)) {
+          output.themeFolders.push(folderName);
+        } else {
+          output.invalidFolders.push(folderName);
+        }
       }
     }
     if (!output.hasGlobalFolder) {
