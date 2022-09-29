@@ -69,21 +69,6 @@ export class DefaultParser<
     return this.flow;
   }
 
-  /** If extending the class add additional postprocess pipeline here */
-  public postProcessRow(row: any) {
-    return row;
-  }
-
-  /** Postprocess an individual flow */
-  public postProcessFlow(flow: FlowType) {
-    return flow;
-  }
-
-  /** Postprocess an array of flows */
-  public postProcessFlows(flows: FlowType[]) {
-    return flows;
-  }
-
   /** If any flows have a first row that starts `@default` return values */
   private extractRowDefaultValues(flow: FlowType) {
     const firstRow = flow.rows?.[0] || {};
@@ -92,6 +77,30 @@ export class DefaultParser<
       delete firstRow[defaultKey];
       return firstRow;
     }
+  }
+
+  /***************************************************************************************
+   * Postprocess Pipeline
+   * If extending the class, override these default methods to add additional
+   * postprocess pipeline. By default, each method just returns its input.
+   **************************************************************************************/
+
+  /** Overridable method called by parser to apply any additional processing
+   * on each individual row. By default the original row is simply returned */
+  public postProcessRow(row: any) {
+    return row;
+  }
+
+  /** Overridable method called by parser to apply any additional processing
+   * on each individual flow. By default the original flow is simply returned */
+  public postProcessFlow(flow: FlowType) {
+    return flow;
+  }
+
+  /** Overridable method called by parser to apply any additional processing on the
+   * array of all processed flows. By default the original list is simply returned */
+  public postProcessFlows(flows: FlowType[]) {
+    return flows;
   }
 }
 
