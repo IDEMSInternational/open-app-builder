@@ -1,0 +1,43 @@
+{
+  "flow_name": "w_self_care_common_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome_individual",
+      "individual": true,
+      "together": false,
+      "priority": 1
+    },
+    {
+      "id": "care_together",
+      "individual": false,
+      "together": true,
+      "priority": 2
+    },
+    {
+      "id": "intro",
+      "individual": true,
+      "together": true,
+      "priority": 5
+    },
+    {
+      "id": "tools_activity",
+      "individual": true,
+      "together": true,
+      "priority": 70
+    },
+    {
+      "id": "home_practice",
+      "individual": true,
+      "together": true,
+      "priority": 80
+    },
+    {
+      "id": "ending",
+      "individual": true,
+      "together": true,
+      "priority": 90
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_consequence_specific_tasks",
+  "status": "released",
+  "data_list_name": "w_consequence_specific_tasks",
+  "rows": [
+    {
+      "id": "read_1",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "template": "w_consequence_read_1",
+      "subtask_group": "read_1"
+    },
+    {
+      "id": "question_1",
+      "individual": true,
+      "together": false,
+      "priority": 12,
+      "template": "w_consequence_question_1",
+      "subtask_group": "read_1"
+    },
+    {
+      "id": "talk_1",
+      "individual": false,
+      "together": true,
+      "priority": 12,
+      "template": "w_consequence_talk_1",
+      "subtask_group": "read_1"
+    },
+    {
+      "id": "learn_1",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "template": "w_consequence_learn_1"
+    },
+    {
+      "id": "talk_2",
+      "individual": false,
+      "together": true,
+      "priority": 71,
+      "template": "w_consequence_talk_2"
+    },
+    {
+      "id": "read_3",
+      "individual": true,
+      "together": true,
+      "priority": 72,
+      "template": "w_consequence_read_3"
+    },
+    {
+      "id": "question_2",
+      "individual": true,
+      "together": false,
+      "priority": 73,
+      "template": "w_consequence_question_2"
+    },
+    {
+      "id": "talk_3",
+      "individual": false,
+      "together": true,
+      "priority": 73,
+      "template": "w_consequence_talk_3"
+    },
+    {
+      "id": "learn_2",
+      "individual": true,
+      "together": false,
+      "priority": 74,
+      "template": "w_consequence_learn_2"
+    },
+    {
+      "id": "try",
+      "individual": false,
+      "together": true,
+      "priority": 75,
+      "template": "w_consequence_try"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
+}

@@ -35,6 +35,11 @@
       "image_asset": "plh_images/logos/university_of_oxford.png"
     },
     {
+      "id": "wellspring",
+      "name": "Wellspring Philanthropic Fund",
+      "image_asset": "plh_images/logos/wellspring.png"
+    },
+    {
       "id": "private_family_foundation",
       "description": "A private family foundation which wishes to remain anonymous"
     }
