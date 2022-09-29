@@ -84,7 +84,6 @@
     "ngx-lottie": "^7.0.4",
     "nouislider": "^14.6.3",
     "rxjs": "^6.6.7",
-    "server-destroy": "^1.0.1",
     "shared": "workspace:*",
     "stacktrace-js": "^2.0.2",
     "zone.js": "~0.11.4"

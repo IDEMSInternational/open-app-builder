@@ -4,7 +4,6 @@ import { driveactivity_v2, drive_v3, google } from "googleapis";
 import http from "http";
 import opn from "open";
 import url from "url";
-import destroyer from "server-destroy";
 require("dotenv").config();
 
 /***************************************************************************************
@@ -171,11 +170,11 @@ function getAccessToken(
         // The request endpoint of "/oauth2callback" is configured
         // within Google Cloud's API Console Credentials page
         if (req.url.indexOf("/oauth2callback") > -1) {
-          const qs = new url.URL(req.url, "http://localhost:8080").searchParams;
+          const qs = new url.URL(req.url, "http://localhost:3003").searchParams;
           res.end(
             "Authentication successful! Please close this browser window and return to the console."
           );
-          destroyer(server);
+          server.close();
           const { tokens } = await oAuth2Client.getToken(qs.get("code"));
           oAuth2Client.setCredentials(tokens);
           console.log(chalk.yellow("Authentication successful, saving token in local storage."));
@@ -186,6 +185,7 @@ function getAccessToken(
           callback(oAuth2Client);
         }
       } catch (e) {
+        server.close();
         logError({
           msg1: "Error authenticating with Google",
           msg2: e,
@@ -193,11 +193,10 @@ function getAccessToken(
         return res.end(e);
       }
     })
-    .listen(8080, () => {
+    .listen(3003, () => {
       // open the browser to the authorize url to start the workflow
       opn(authUrl, { wait: false }).then((cp) => cp.unref());
     });
-  destroyer(server);
 }
 
 /** Check if generated token scope has access to all required scopes */
