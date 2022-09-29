@@ -65,7 +65,7 @@ export function authorizeGDrive(
       console.warn("Error authorizing google drive access", ex);
       reject(ex);
     }
-  }).then((settled) => process.exit());
+  });
 }
 
 /** Authorize access to the GdriveActivity api and return client */
@@ -183,6 +183,7 @@ function getAccessToken(
           console.log(chalk.yellow("Token stored to", tokenPath));
           console.log(chalk.green("Authentication Complete."));
           callback(oAuth2Client);
+          process.exit();
         }
       } catch (e) {
         server.close();
