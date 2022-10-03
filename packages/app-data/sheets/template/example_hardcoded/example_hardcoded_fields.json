@@ -17,6 +17,41 @@
     },
     {
       "type": "subtitle",
+      "name": "current_theme_label",
+      "value": "_current_theme",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "current_theme_label"
+    },
+    {
+      "type": "text",
+      "name": "current_theme_value",
+      "value": "@fields._current_theme",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "current_theme_value",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields._current_theme",
+            "matchedExpression": "@fields._current_theme",
+            "type": "fields",
+            "fieldName": "_current_theme"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._current_theme": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
       "name": "deployment_name_label",
       "value": "_deployment_name",
       "_translations": {
