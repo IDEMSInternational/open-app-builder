@@ -2,6 +2,9 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { THEMES } from "src/theme/themes";
+import { APP_CONSTANTS } from "src/app/data";
+
+const { APP_FIELDS } = APP_CONSTANTS;
 
 @Injectable({
   providedIn: "root",
@@ -26,14 +29,14 @@ export class ThemeService {
       document.body.dataset.theme = themeName;
       this.currentTheme$.next(themeName);
       // Use local storage so that the current theme persists across app launches
-      this.localStorageService.setString("_current_theme", themeName);
+      this.localStorageService.setString(APP_FIELDS.CURRENT_THEME, themeName);
     } else {
       console.error(`No theme found with name "${themeName}"`);
     }
   }
 
   public getCurrentTheme() {
-    return this.localStorageService.getString("_current_theme");
+    return this.localStorageService.getString(APP_FIELDS.CURRENT_THEME);
   }
 
   public getAllThemes() {

@@ -134,10 +134,13 @@ class AppDataCopy {
     }
 
     // populate tracked and untracked theme-specific assets
+    // TODO - Handle case of translated theme assets. None currently
+    // exists so this approach is temporarily acceptable - JM 03-10-2022
     for (const themeFolder of themeFolders) {
       const themeFolderPath = path.resolve(baseFolder, themeFolder);
       const themeAssets = generateFolderFlatMap(themeFolderPath);
       Object.entries(themeAssets).forEach(([name, value]) => {
+        // TODO - Should handle multiple folders named with language codes.
         name = name.replace(`${ASSETS_GLOBAL_FOLDER_NAME}/`, "");
         if (globalAssets.hasOwnProperty(name)) {
           globalAssets[name].themeVariations = globalAssets[name].themeVariations || {};
