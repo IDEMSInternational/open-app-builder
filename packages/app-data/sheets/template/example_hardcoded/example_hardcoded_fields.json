@@ -17,35 +17,35 @@
     },
     {
       "type": "subtitle",
-      "name": "current_theme_label",
-      "value": "_current_theme",
+      "name": "app_theme_label",
+      "value": "_app_theme",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
-      "_nested_name": "current_theme_label"
+      "_nested_name": "app_theme_label"
     },
     {
       "type": "text",
-      "name": "current_theme_value",
-      "value": "@fields._current_theme",
+      "name": "app_theme_value",
+      "value": "@fields._app_theme",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
-      "_nested_name": "current_theme_value",
+      "_nested_name": "app_theme_value",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@fields._current_theme",
-            "matchedExpression": "@fields._current_theme",
+            "fullExpression": "@fields._app_theme",
+            "matchedExpression": "@fields._app_theme",
             "type": "fields",
-            "fieldName": "_current_theme"
+            "fieldName": "_app_theme"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@fields._current_theme": [
+        "@fields._app_theme": [
           "value"
         ]
       }
