@@ -23,6 +23,7 @@ export class ThemeService {
 
   public setTheme(themeName: string) {
     if (this.availableThemes.includes(themeName)) {
+      console.log("[SET THEME]", themeName);
       document.body.dataset.theme = themeName;
       this.currentTheme$.next(themeName);
       // Use local storage so that the current theme persists across app launches
