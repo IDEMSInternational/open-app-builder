@@ -13,11 +13,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_1.sent",
+            "nf_inactive_1_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_1.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_1.sent : true"
+          "_raw": "sent | set_field: nf_inactive_1_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_1_sent : true"
         }
       ],
       "priority": 1,
@@ -44,11 +44,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_2.sent",
+            "nf_inactive_2_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_2.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_2.sent : true"
+          "_raw": "sent | set_field: nf_inactive_2_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_2_sent : true"
         }
       ],
       "priority": 1,
@@ -75,11 +75,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_3.sent",
+            "nf_inactive_3_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_3.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_3.sent : true"
+          "_raw": "sent | set_field: nf_inactive_3_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_3_sent : true"
         }
       ],
       "priority": 1,
@@ -106,11 +106,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_4.sent",
+            "nf_inactive_4_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_4.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_4.sent : true"
+          "_raw": "sent | set_field: nf_inactive_4_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_4_sent : true"
         }
       ],
       "priority": 1,
@@ -137,11 +137,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_5.sent",
+            "nf_inactive_5_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_5.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_5.sent : true"
+          "_raw": "sent | set_field: nf_inactive_5_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_5_sent : true"
         }
       ],
       "priority": 1,
@@ -168,11 +168,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_6.sent",
+            "nf_inactive_6_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_6.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_6.sent : true"
+          "_raw": "sent | set_field: nf_inactive_6_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_6_sent : true"
         }
       ],
       "priority": 1,
@@ -199,11 +199,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_7.sent",
+            "nf_inactive_7_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_7.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_7.sent : true"
+          "_raw": "sent | set_field: nf_inactive_7_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_7_sent : true"
         }
       ],
       "priority": 1,
@@ -230,11 +230,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_8.sent",
+            "nf_inactive_8_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_8.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_8.sent : true"
+          "_raw": "sent | set_field: nf_inactive_8_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_8_sent : true"
         }
       ],
       "priority": 1,
@@ -261,11 +261,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_9.sent",
+            "nf_inactive_9_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_9.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_9.sent : true"
+          "_raw": "sent | set_field: nf_inactive_9_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_9_sent : true"
         }
       ],
       "priority": 1,
@@ -292,11 +292,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_10.sent",
+            "nf_inactive_10_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_10.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_10.sent : true"
+          "_raw": "sent | set_field: nf_inactive_10_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_10_sent : true"
         }
       ],
       "priority": 1,
@@ -323,11 +323,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_11.sent",
+            "nf_inactive_11_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_11.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_11.sent : true"
+          "_raw": "sent | set_field: nf_inactive_11_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_11_sent : true"
         }
       ],
       "priority": 1,
@@ -354,11 +354,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_12.sent",
+            "nf_inactive_12_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_12.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_12.sent : true"
+          "_raw": "sent | set_field: nf_inactive_12_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_12_sent : true"
         }
       ],
       "priority": 1,
@@ -385,11 +385,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_13.sent",
+            "nf_inactive_13_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_13.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_13.sent : true"
+          "_raw": "sent | set_field: nf_inactive_13_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_13_sent : true"
         }
       ],
       "priority": 1,
@@ -416,11 +416,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_14.sent",
+            "nf_inactive_14_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_14.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_14.sent : true"
+          "_raw": "sent | set_field: nf_inactive_14_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_14_sent : true"
         }
       ],
       "priority": 1,
@@ -447,11 +447,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_15.sent",
+            "nf_inactive_15_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_15.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_15.sent : true"
+          "_raw": "sent | set_field: nf_inactive_15_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_15_sent : true"
         }
       ],
       "priority": 1,
@@ -478,11 +478,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_16.sent",
+            "nf_inactive_16_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_16.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_16.sent : true"
+          "_raw": "sent | set_field: nf_inactive_16_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_16_sent : true"
         }
       ],
       "priority": 1,
@@ -509,11 +509,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_17.sent",
+            "nf_inactive_17_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_17.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_17.sent : true"
+          "_raw": "sent | set_field: nf_inactive_17_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_17_sent : true"
         }
       ],
       "priority": 1,
@@ -540,11 +540,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_18.sent",
+            "nf_inactive_18_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_18.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_18.sent : true"
+          "_raw": "sent | set_field: nf_inactive_18_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_18_sent : true"
         }
       ],
       "priority": 1,
@@ -571,11 +571,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_19.sent",
+            "nf_inactive_19_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_19.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_19.sent : true"
+          "_raw": "sent | set_field: nf_inactive_19_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_19_sent : true"
         }
       ],
       "priority": 1,
@@ -602,11 +602,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_20.sent",
+            "nf_inactive_20_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_20.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_20.sent : true"
+          "_raw": "sent | set_field: nf_inactive_20_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_20_sent : true"
         }
       ],
       "priority": 1,

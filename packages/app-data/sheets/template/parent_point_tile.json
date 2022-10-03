@@ -253,30 +253,6 @@
       }
     },
     {
-      "type": "text",
-      "name": "text",
-      "value": "@fields._current_theme",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "text",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields._current_theme",
-            "matchedExpression": "@fields._current_theme",
-            "type": "fields",
-            "fieldName": "_current_theme"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields._current_theme": [
-          "value"
-        ]
-      }
-    },
-    {
       "type": "parent_point_box",
       "name": "parent_point_box",
       "value": "@local.weekly_habit_count",
@@ -305,7 +281,7 @@
           "_cleaned": "click | set_field: @local.weekly_habit_field: @local.weekly_habit_count+1"
         }
       ],
-      "condition": "@fields._current_theme == \"professional\"",
+      "condition": "@fields._app_theme == \"professional\"",
       "parameter_list": {
         "text": "@local.habit_data.title",
         "icon_src": "@local.habit_data.image_asset"
@@ -420,10 +396,10 @@
         },
         "condition": [
           {
-            "fullExpression": "@fields._current_theme == \"professional\"",
-            "matchedExpression": "@fields._current_theme",
+            "fullExpression": "@fields._app_theme == \"professional\"",
+            "matchedExpression": "@fields._app_theme",
             "type": "fields",
-            "fieldName": "_current_theme"
+            "fieldName": "_app_theme"
           }
         ],
         "parameter_list": {
@@ -467,7 +443,7 @@
           "action_list.1._raw",
           "action_list.1._cleaned"
         ],
-        "@fields._current_theme": [
+        "@fields._app_theme": [
           "condition"
         ],
         "@local.habit_data.title": [
@@ -507,7 +483,7 @@
           "_cleaned": "click | set_field: @local.weekly_habit_field: @local.weekly_habit_count+1"
         }
       ],
-      "condition": "@fields._current_theme != \"professional\"",
+      "condition": "@fields._app_theme != \"professional\"",
       "parameter_list": {
         "text": "@local.habit_data.title",
         "lottie_src": "@local.habit_data.lottie_asset"
@@ -622,10 +598,10 @@
         },
         "condition": [
           {
-            "fullExpression": "@fields._current_theme != \"professional\"",
-            "matchedExpression": "@fields._current_theme",
+            "fullExpression": "@fields._app_theme != \"professional\"",
+            "matchedExpression": "@fields._app_theme",
             "type": "fields",
-            "fieldName": "_current_theme"
+            "fieldName": "_app_theme"
           }
         ],
         "parameter_list": {
@@ -669,7 +645,7 @@
           "action_list.1._raw",
           "action_list.1._cleaned"
         ],
-        "@fields._current_theme": [
+        "@fields._app_theme": [
           "condition"
         ],
         "@local.habit_data.title": [

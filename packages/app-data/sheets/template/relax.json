@@ -424,48 +424,48 @@
               "_translations": {
                 "value": {}
               },
-              "condition": "@fields._current_theme != \"professional\"",
+              "condition": "@fields._app_theme != \"professional\"",
               "hidden": false,
               "type": "set_variable",
               "_nested_name": "workshop_activity.content_box.lottie_src",
               "_dynamicFields": {
                 "condition": [
                   {
-                    "fullExpression": "@fields._current_theme != \"professional\"",
-                    "matchedExpression": "@fields._current_theme",
+                    "fullExpression": "@fields._app_theme != \"professional\"",
+                    "matchedExpression": "@fields._app_theme",
                     "type": "fields",
-                    "fieldName": "_current_theme"
+                    "fieldName": "_app_theme"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@fields._current_theme": [
+                "@fields._app_theme": [
                   "condition"
                 ]
               }
             },
             {
               "name": "image_src",
-              "value": "plh_images/breathe.svg",
+              "value": "plh_images/workshop_modes/guide_2/breathe.svg",
               "_translations": {
                 "value": {}
               },
-              "condition": "@fields._current_theme == \"professional\"",
+              "condition": "@fields._app_theme == \"professional\"",
               "hidden": false,
               "type": "set_variable",
               "_nested_name": "workshop_activity.content_box.image_src",
               "_dynamicFields": {
                 "condition": [
                   {
-                    "fullExpression": "@fields._current_theme == \"professional\"",
-                    "matchedExpression": "@fields._current_theme",
+                    "fullExpression": "@fields._app_theme == \"professional\"",
+                    "matchedExpression": "@fields._app_theme",
                     "type": "fields",
-                    "fieldName": "_current_theme"
+                    "fieldName": "_app_theme"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@fields._current_theme": [
+                "@fields._app_theme": [
                   "condition"
                 ]
               }
