@@ -2753,6 +2753,9 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "example_temp_override_default",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
+      _overrides: {
+        example_temp_override_es_sp: '@fields._app_language.startsWith("es")',
+      },
     },
     example_temp_override_es_sp: {
       flow_type: "template",
@@ -3190,6 +3193,10 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "language_select",
       _xlsxPath: "global/core_templates/core_templates_settings.xlsx",
+      _overrides: {
+        language_select_za: '@fields._deployment_name == "plh_za"',
+        language_select_tz: '@fields._deployment_name == "plh_tz"',
+      },
     },
     language_select_tz: {
       flow_type: "template",
@@ -3384,6 +3391,10 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "organisation_registration",
       _xlsxPath: "global/core_templates/core_templates_settings.xlsx",
+      _overrides: {
+        organisation_registration_za: '@fields._deployment_name == "plh_za"',
+        organisation_registration_tz: '@fields._deployment_name == "plh_tz"',
+      },
     },
     organisation_registration_tz: {
       flow_type: "template",
