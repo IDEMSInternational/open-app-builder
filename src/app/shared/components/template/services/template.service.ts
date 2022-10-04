@@ -11,6 +11,7 @@ import { IFlowEvent } from "data-models/db.model";
 import { TemplateVariablesService } from "./template-variables.service";
 import { TemplateFieldService } from "./template-field.service";
 import { arrayToHashmap } from "src/app/shared/utils";
+import { SkinService } from "src/app/shared/services/skin/skin.service";
 
 @Injectable({
   providedIn: "root",
@@ -23,7 +24,8 @@ export class TemplateService {
     private modalCtrl: ModalController,
     private translateService: TemplateTranslateService,
     private templateVariablesService: TemplateVariablesService,
-    private templateFieldService: TemplateFieldService
+    private templateFieldService: TemplateFieldService,
+    private skinService: SkinService
   ) {}
 
   /** Initialise global and startup templates */
@@ -33,6 +35,10 @@ export class TemplateService {
     await this.initialiseDefaultFieldAndGlobals();
     // Update default values when language changed to allow for global translations
     this.translateService.app_language$.subscribe(async (lang) => {
+      await this.initialiseDefaultFieldAndGlobals();
+    });
+    // Update default values when skin changed to allow for skin-specific global overrides
+    this.skinService.currentSkin$.subscribe(async (skin) => {
       await this.initialiseDefaultFieldAndGlobals();
     });
   }
