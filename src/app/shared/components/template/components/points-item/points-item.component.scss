@@ -35,7 +35,6 @@ $item-background: var(--points-item-background, var(--ion-color-primary-200));
       }
     }
     .info-button {
-      // @include mixins.flex-centered;
       position: absolute;
       right: 6px;
       top: 6px;
