@@ -599,6 +599,18 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "relax",
       _xlsxPath: "global/data/relax_data_list.xlsx",
     },
+    safeguarding_categories_tz: {
+      flow_type: "data_list",
+      flow_name: "safeguarding_categories_tz",
+      data_list_name: "safeguarding_categories_tz",
+      _xlsxPath: "tz/data/safeguarding_data_tz.xlsx",
+    },
+    safeguarding_contacts_tz: {
+      flow_type: "data_list",
+      flow_name: "safeguarding_contacts_tz",
+      data_list_name: "safeguarding_contacts_tz",
+      _xlsxPath: "tz/data/safeguarding_data_tz.xlsx",
+    },
     story_data: {
       flow_type: "data_list",
       flow_name: "story_data",
@@ -758,6 +770,14 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       override_target: "example_glob_override_default",
       override_condition: '@fields._app_language.startsWith("es")',
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
+    },
+    example_glob_override_modular: {
+      flow_type: "global",
+      flow_name: "example_glob_override_modular",
+      flow_subtype: "debug",
+      override_target: "example_glob_override_default",
+      override_condition: '@fields._app_skin == "modular"',
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
     },
     example_initialise_global: {
@@ -1472,7 +1492,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "comp_select_text",
       flow_subtype: "component_demo",
-      _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_select_text.xlsx",
+      _xlsxPath: "quality_assurance/component_sheets/component_select_text.xlsx",
     },
     comp_slider: {
       flow_type: "template",
@@ -2712,6 +2732,18 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_new_nav_buttons.xlsx",
     },
+    example_parent_point_box: {
+      flow_type: "template",
+      flow_name: "example_parent_point_box",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_parent_point_box.xlsx",
+    },
+    example_parent_point_box_info: {
+      flow_type: "template",
+      flow_name: "example_parent_point_box_info",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_parent_point_box.xlsx",
+    },
     example_pop_ups: {
       flow_type: "template",
       flow_name: "example_pop_ups",
@@ -2746,13 +2778,25 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "example_skin_override_default",
       flow_subtype: "debug",
-      override_target: "example_skin_override_default",
-      override_condition: '@fields._app_skin === "modular"',
-      comments: 'condition used to apply override when the skin is changed to "modular"',
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
       _overrides: {
-        example_skin_override_default: '@fields._app_skin === "modular"',
+        example_skin_override_modular: '@fields._app_skin == "modular"',
       },
+    },
+    example_skin_override_modular: {
+      flow_type: "template",
+      flow_name: "example_skin_override_modular",
+      flow_subtype: "debug",
+      override_target: "example_skin_override_default",
+      override_condition: '@fields._app_skin == "modular"',
+      comments: 'condition used to apply override when the skin is changed to "modular"',
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
+    },
+    example_skin_select: {
+      flow_type: "template",
+      flow_name: "example_skin_select",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
     },
     example_startup_trigger: {
       flow_type: "template",
@@ -3511,6 +3555,26 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "parent_centre_relaxes",
       _xlsxPath: "global/core_templates/core_templates_relax_and_activities.xlsx",
+    },
+    parent_centre_support_category: {
+      flow_type: "template",
+      flow_name: "parent_centre_support_category",
+      _xlsxPath: "global/core_templates/core_templates_parent_centre.xlsx",
+    },
+    parent_centre_support_con: {
+      flow_type: "template",
+      flow_name: "parent_centre_support_con",
+      _xlsxPath: "global/core_templates/core_templates_parent_centre.xlsx",
+      _overrides: {
+        parent_centre_support_con_tz: '@fields._deployment_name == "plh_tz"',
+      },
+    },
+    parent_centre_support_con_tz: {
+      flow_type: "template",
+      flow_name: "parent_centre_support_con_tz",
+      override_target: "parent_centre_support_con",
+      override_condition: '@fields._deployment_name == "plh_tz"',
+      _xlsxPath: "tz/core_templates/core_templates_parent_centre_tz.xlsx",
     },
     parent_centre_technical_support: {
       flow_type: "template",
