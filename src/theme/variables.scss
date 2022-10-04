@@ -10,7 +10,7 @@
 // https://sass-lang.com/documentation/modules/color
 
 @include themes.theme-default;
-@include themes.theme-flat;
+@include themes.theme-professional;
 
 // WiP - system to generate colours from base colour
 $primary: hsl(203, 76%, 21%); // 0d3f5e

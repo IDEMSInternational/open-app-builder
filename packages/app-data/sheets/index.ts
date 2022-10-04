@@ -2742,6 +2742,18 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_global_field.xlsx",
     },
+    example_skin_override_default: {
+      flow_type: "template",
+      flow_name: "example_skin_override_default",
+      flow_subtype: "debug",
+      override_target: "example_skin_override_default",
+      override_condition: '@fields._app_skin === "modular"',
+      comments: 'condition used to apply override when the skin is changed to "modular"',
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
+      _overrides: {
+        example_skin_override_default: '@fields._app_skin === "modular"',
+      },
+    },
     example_startup_trigger: {
       flow_type: "template",
       flow_subtype: "debug",
