@@ -1,8 +1,8 @@
 @use "./utils";
 @use "sass:color";
 
-@mixin theme-flat {
-  [data-theme="flat"] {
+@mixin theme-professional {
+  [data-theme="professional"] {
     /** Authoring variables **/
     $color-primary: hsl(203, 76%, 21%); // #0d3f5e
     $color-secondary: hsl(31, 100%, 57%); // #fa9529
