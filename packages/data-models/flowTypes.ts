@@ -338,7 +338,8 @@ export namespace FlowTypes {
     | "audio_end"
     | "audio_first_start"
     | "nav_resume" // return to template after navigation or popup close;
-    | "sent"; // notification sent
+    | "sent" // notification sent
+    | "info_click";
 
   export interface TemplateRowAction {
     /** actions have an associated trigger */
