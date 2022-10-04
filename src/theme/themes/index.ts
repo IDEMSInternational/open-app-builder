@@ -1,1 +1,1 @@
-export const THEMES = ["default", "flat"];
+export const THEMES = ["default", "professional"];
