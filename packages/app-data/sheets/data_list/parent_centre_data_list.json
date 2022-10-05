@@ -364,8 +364,9 @@
     },
     {
       "id": "support_contacts",
-      "show": false,
+      "show": "@fields._deployment_name == \"plh_tz\"",
       "icon_asset": "plh_images/icons/hands_support_heart_white.svg",
+      "template": "parent_centre_support_con",
       "tile_style": "parent_centre_1",
       "click_count_field": "click_pc_support_contacts_count",
       "title": "Support Contacts",
