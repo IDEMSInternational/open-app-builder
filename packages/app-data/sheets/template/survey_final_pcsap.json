@@ -1,0 +1,118 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_final_pcsap",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "survey_question_pcsap",
+      "value": "survey_question_pcsap",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "box_slider",
+          "rows": [
+            {
+              "name": "survey_name",
+              "value": "survey_final",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_pcsap.box_slider.survey_name"
+            },
+            {
+              "name": "reply_less",
+              "value": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you!\n\nRemember, you can find focused tools, extra content and resources on this in the @global.parent_centre at any time. You can also review core tips on safety planning under @data.parent_centre.my_tips.location_text.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_pcsap.box_slider.reply_less",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you!\n\nRemember, you can find focused tools, extra content and resources on this in the @global.parent_centre at any time. You can also review core tips on safety planning under @data.parent_centre.my_tips.location_text.",
+                    "matchedExpression": "@global.parent_centre",
+                    "type": "global",
+                    "fieldName": "parent_centre"
+                  },
+                  {
+                    "fullExpression": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you!\n\nRemember, you can find focused tools, extra content and resources on this in the @global.parent_centre at any time. You can also review core tips on safety planning under @data.parent_centre.my_tips.location_text.",
+                    "matchedExpression": "@data.parent_centre.my_tips.location_text",
+                    "type": "data",
+                    "fieldName": "parent_centre"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.parent_centre": [
+                  "value"
+                ],
+                "@data.parent_centre.my_tips.location_text": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "reply_greater_equal",
+              "value": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nRemember, you can find more support on this in the @data.workshop.w_safe.in_text_title whenever you need it!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_pcsap.box_slider.reply_greater_equal",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nRemember, you can find more support on this in the @data.workshop.w_safe.in_text_title whenever you need it!",
+                    "matchedExpression": "@data.workshop.w_safe.in_text_title",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_safe.in_text_title": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "survey_question_pcsap.box_slider"
+        }
+      ],
+      "_nested_name": "survey_question_pcsap"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey_final.xlsx"
+}

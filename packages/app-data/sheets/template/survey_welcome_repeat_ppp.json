@@ -1,0 +1,59 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_welcome_repeat_ppp",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "survey_welcome_ppp",
+      "value": "survey_welcome_ppp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "survey_question_ppp",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "box_slider",
+              "rows": [
+                {
+                  "name": "survey_name",
+                  "value": "survey_welcome",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "survey_welcome_ppp.survey_question_ppp.box_slider.survey_name"
+                }
+              ],
+              "_nested_name": "survey_welcome_ppp.survey_question_ppp.box_slider"
+            }
+          ],
+          "_nested_name": "survey_welcome_ppp.survey_question_ppp"
+        }
+      ],
+      "_nested_name": "survey_welcome_ppp"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey_welcome_repeat.xlsx"
+}

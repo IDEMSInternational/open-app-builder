@@ -1,0 +1,64 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_question_pse",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "box_slider",
+      "value": "box_slider",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "question_id",
+          "value": "pse",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "box_slider.question_id"
+        },
+        {
+          "name": "replies",
+          "hidden": true,
+          "type": "set_variable",
+          "_nested_name": "box_slider.replies"
+        },
+        {
+          "name": "unlock_when_less",
+          "value": false,
+          "type": "set_variable",
+          "_nested_name": "box_slider.unlock_when_less"
+        },
+        {
+          "name": "unlock_when_greater_equal",
+          "value": false,
+          "type": "set_variable",
+          "_nested_name": "box_slider.unlock_when_greater_equal"
+        }
+      ],
+      "_nested_name": "box_slider"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey.xlsx"
+}

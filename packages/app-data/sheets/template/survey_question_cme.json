@@ -1,0 +1,87 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_question_cme",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "box_slider",
+      "value": "box_slider",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "question_id",
+          "value": "cme",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "box_slider.question_id"
+        },
+        {
+          "name": "relevant_workshop",
+          "value": "w_stress",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "box_slider.relevant_workshop"
+        },
+        {
+          "name": "image_src",
+          "value": "plh_images/survey/welcome/guide_2_argument.svg",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": false,
+          "type": "set_variable",
+          "_nested_name": "box_slider.image_src"
+        },
+        {
+          "name": "unlock_when_less",
+          "value": false,
+          "type": "set_variable",
+          "_nested_name": "box_slider.unlock_when_less"
+        },
+        {
+          "name": "reply_less",
+          "value": "Well done. Brain science shows that controlling your anger improves your teen’s brain development. Be proud of yourself.",
+          "_translations": {
+            "value": {
+              "tz_sw": true,
+              "za_af": true,
+              "za_st": true,
+              "za_tn": true,
+              "za_xh": true,
+              "za_zu": true
+            }
+          },
+          "type": "set_variable",
+          "_nested_name": "box_slider.reply_less"
+        }
+      ],
+      "_nested_name": "box_slider"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey.xlsx"
+}

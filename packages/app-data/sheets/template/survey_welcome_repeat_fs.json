@@ -1,0 +1,59 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_welcome_repeat_fs",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "survey_welcome_fs",
+      "value": "survey_welcome_fs",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "survey_question_fs",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "box_slider",
+              "rows": [
+                {
+                  "name": "survey_name",
+                  "value": "survey_welcome",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "survey_welcome_fs.survey_question_fs.box_slider.survey_name"
+                }
+              ],
+              "_nested_name": "survey_welcome_fs.survey_question_fs.box_slider"
+            }
+          ],
+          "_nested_name": "survey_welcome_fs.survey_question_fs"
+        }
+      ],
+      "_nested_name": "survey_welcome_fs"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey_welcome_repeat.xlsx"
+}

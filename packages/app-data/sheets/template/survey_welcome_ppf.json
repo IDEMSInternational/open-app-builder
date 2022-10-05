@@ -1,0 +1,132 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_welcome_ppf",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "survey_question_ppf",
+      "value": "survey_question_ppf",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "box_slider",
+          "rows": [
+            {
+              "name": "survey_name",
+              "value": "survey_welcome",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_ppf.box_slider.survey_name"
+            },
+            {
+              "name": "reply_less",
+              "value": "We know this is hard. We have added some helpful tips on how you can spend time with your teen to @data.parent_centre.my_tips.location_text, so you can access it right away. \n\nBecause @data.workshop.w_1on1.title builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_ppf.box_slider.reply_less",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "We know this is hard. We have added some helpful tips on how you can spend time with your teen to @data.parent_centre.my_tips.location_text, so you can access it right away. \n\nBecause @data.workshop.w_1on1.title builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!",
+                    "matchedExpression": "@data.parent_centre.my_tips.location_text",
+                    "type": "data",
+                    "fieldName": "parent_centre"
+                  },
+                  {
+                    "fullExpression": "We know this is hard. We have added some helpful tips on how you can spend time with your teen to @data.parent_centre.my_tips.location_text, so you can access it right away. \n\nBecause @data.workshop.w_1on1.title builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!",
+                    "matchedExpression": "@data.workshop.w_1on1.title",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  },
+                  {
+                    "fullExpression": "We know this is hard. We have added some helpful tips on how you can spend time with your teen to @data.parent_centre.my_tips.location_text, so you can access it right away. \n\nBecause @data.workshop.w_1on1.title builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!",
+                    "matchedExpression": "@global.weekly_workshop",
+                    "type": "global",
+                    "fieldName": "weekly_workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.parent_centre.my_tips.location_text": [
+                  "value"
+                ],
+                "@data.workshop.w_1on1.title": [
+                  "value"
+                ],
+                "@global.weekly_workshop": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "reply_greater_equal",
+              "value": "Well done! Our next @global.weekly_workshop  will give you more ideas for this, as a foundation for all the other parenting tools. But you already have a great start!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_ppf.box_slider.reply_greater_equal",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Well done! Our next @global.weekly_workshop  will give you more ideas for this, as a foundation for all the other parenting tools. But you already have a great start!",
+                    "matchedExpression": "@global.weekly_workshop",
+                    "type": "global",
+                    "fieldName": "weekly_workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.weekly_workshop": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "survey_question_ppf.box_slider"
+        }
+      ],
+      "_nested_name": "survey_question_ppf"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey_welcome.xlsx"
+}

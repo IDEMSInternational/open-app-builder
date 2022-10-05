@@ -1,0 +1,133 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_welcome_ps",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "survey_question_ps",
+      "value": "survey_question_ps",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "box_slider",
+          "rows": [
+            {
+              "name": "survey_name",
+              "value": "survey_welcome",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_ps.box_slider.survey_name"
+            },
+            {
+              "name": "reply_zero",
+              "value": "Great that this has been a good week!\n\nWe will remind you regularly to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_ps.box_slider.reply_zero"
+            },
+            {
+              "name": "reply_less",
+              "value": "Great that you felt calm most of the week! \n\nWe will remind you regularly to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_ps.box_slider.reply_less"
+            },
+            {
+              "name": "reply_greater_equal",
+              "value": "We understand how stressful life can be. We will remind you regularly to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops - but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get you started!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "survey_question_ps.box_slider.reply_greater_equal",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "We understand how stressful life can be. We will remind you regularly to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops - but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get you started!",
+                    "matchedExpression": "@data.workshop.w_stress.number",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  },
+                  {
+                    "fullExpression": "We understand how stressful life can be. We will remind you regularly to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops - but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get you started!",
+                    "matchedExpression": "@global.weekly_workshops",
+                    "type": "global",
+                    "fieldName": "weekly_workshops"
+                  },
+                  {
+                    "fullExpression": "We understand how stressful life can be. We will remind you regularly to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops - but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get you started!",
+                    "matchedExpression": "@data.parent_centre.my_tips.location_text",
+                    "type": "data",
+                    "fieldName": "parent_centre"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_stress.number": [
+                  "value"
+                ],
+                "@global.weekly_workshops": [
+                  "value"
+                ],
+                "@data.parent_centre.my_tips.location_text": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "survey_question_ps.box_slider"
+        }
+      ],
+      "_nested_name": "survey_question_ps"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey_welcome.xlsx"
+}

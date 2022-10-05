@@ -10,12 +10,14 @@ import { Injector } from "@angular/core";
 import { TemplateInstanceService } from "./template-instance.service";
 import { TemplateNavService } from "../template-nav.service";
 import { TemplateService } from "../template.service";
-import { TourService } from "src/app/shared/services/tour/tour.service";
+import { TourService } from "src/app/feature/tour/tour.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { TemplateFieldService } from "../template-field.service";
 import { EventService } from "src/app/shared/services/event/event.service";
 import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
+import { SkinService } from "src/app/shared/services/skin/skin.service";
+import { ThemeService } from "src/app/feature/theme/services/theme.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -42,6 +44,8 @@ export class TemplateActionService extends TemplateInstanceService {
   private eventService: EventService;
   private dbSyncService: DBSyncService;
   private authService: AuthService;
+  private skinService: SkinService;
+  private themeService: ThemeService;
 
   constructor(injector: Injector, public container?: TemplateContainerComponent) {
     super(injector);
@@ -56,6 +60,8 @@ export class TemplateActionService extends TemplateInstanceService {
     this.eventService = this.getGlobalService(EventService);
     this.dbSyncService = this.getGlobalService(DBSyncService);
     this.authService = this.getGlobalService(AuthService);
+    this.skinService = this.getGlobalService(SkinService);
+    this.themeService = this.getGlobalService(ThemeService);
   }
 
   /** Public method to add actions to processing queue and process */
@@ -154,8 +160,10 @@ export class TemplateActionService extends TemplateInstanceService {
       case "set_field":
         console.log("[SET FIELD]", key, value);
         return this.templateFieldService.setField(key, value);
-      case "set_theme":
-        return this.templateService.setTheme(this.container?.template, "set_theme", action.args);
+      case "toggle_field":
+        const currentValue = this.templateFieldService.getField(key);
+        const toggleValue = !currentValue;
+        return this.templateFieldService.setField(key, `${toggleValue}`);
       case "start_tour":
         return this.tourService.startTour(key);
       case "feedback": {
@@ -210,6 +218,12 @@ export class TemplateActionService extends TemplateInstanceService {
         }
         if (emit_value === "set_language") {
           this.templateTranslateService.setLanguage(args[1]);
+        }
+        if (emit_value === "set_skin") {
+          this.skinService.setSkin(args[1]);
+        }
+        if (emit_value === "set_theme") {
+          this.themeService.setTheme(args[1]);
         }
         if (emit_value === "server_sync") {
           await this.serverService.syncUserData();

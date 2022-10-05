@@ -33,4 +33,4 @@ These can be authored in the [components_demo](https://drive.google.com/drive/fo
 ## Create documentation
 All components should have documentation added to the `documentation` folder. 
 
-Follow authoring instructions in [Adding Documentation](../../contributors/adding-documentation/#component-docs) and see demos in the local `documentation/docs/components` folder
+Follow authoring instructions in [Adding Documentation](../../contributors/documentation/authoring/#component-docs) and see demos in the local `documentation/docs/components` folder
