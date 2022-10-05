@@ -1,1 +1,6 @@
-<p>Completed: {{ subtasksCompleted }}/{{ subtasksTotal }}</p>
+<div class="progress-bar-wrapper">
+  <p class="tiny">{{ subtasksTotal }} sections</p>
+  <div class="progress-bar-background">
+    <div class="progress-bar" [style.width]="progressPercentage + '%'"></div>
+  </div>
+</div>

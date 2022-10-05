@@ -11,10 +11,10 @@ import { TemplateFieldService } from "../../services/template-field.service";
 })
 export class TmplTaskProgressBarComponent extends TemplateBaseComponent implements OnInit {
   @Input() taskGroupId: string | null;
+  @Input() highlighted: boolean | null;
   subtasksTotal: number;
   subtasksCompleted: number;
   completed: boolean;
-  highlighted: boolean;
 
   constructor(
     private taskService: TaskService,
@@ -34,6 +34,10 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
     if (this._row) {
       this.taskGroupId = getStringParamFromTemplateRow(this._row, "taskGroupId", null);
     }
+  }
+
+  get progressPercentage() {
+    return (this.subtasksCompleted / this.subtasksTotal) * 100;
   }
 
   // Unfinished code for getting data relating to a given task group

@@ -18,12 +18,16 @@
           </h1>
         </div>
         <div *ngIf="subtitle" class="subtitle-wrapper">
-          <h2 class="normal">
+          <p class="normal">
             {{ subtitle }}
-          </h2>
+          </p>
         </div>
+        <!-- If a taskGroupId is provided, show the progress bar for the relevant task group -->
         <div *ngIf="taskGroupId">
-          <plh-task-progress-bar [taskGroupId]="taskGroupId"></plh-task-progress-bar>
+          <plh-task-progress-bar
+            [taskGroupId]="taskGroupId"
+            [highlighted]="highlighted"
+          ></plh-task-progress-bar>
         </div>
       </div>
       <div *ngIf="image" class="image-wrapper">

@@ -4,6 +4,7 @@
   border: 1px solid black;
   border-radius: var(--ion-border-radius-secondary);
   padding: var(--regular-padding);
+  padding-right: var(--tiny-padding);
   &.landscape {
     width: 90%;
   }
@@ -38,7 +39,7 @@
       }
       color: var(--ion-color-primary);
       .subtitle-wrapper {
-        padding: var(--small-padding) 0;
+        padding: 0;
       }
       h2 {
         line-height: var(--line-height-text);
@@ -48,7 +49,8 @@
     }
 
     .image-wrapper {
-      width: 40%;
+      width: 45%;
+      padding-left: var(--small-padding);
     }
   }
 }
