@@ -1,0 +1,362 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Fathers_Advice_data",
+  "status": "released",
+  "data_list_name": "Fathers_Advice_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-FA-1.jpg",
+      "story_text": "Once upon a time, there was a farmer who had two sons.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Once upon a time, there was a farmer who had two sons."
+        },
+        "annotation_1": {
+          "eng": "The round thatched roofs of the houses are cone shaped. What other cone shapes do you see in this picture?"
+        },
+        "annotation_2": {
+          "eng": "What other cone shaped things have you seen in your life? (Ice cream cone, fir trees, traffic cone, funnel)"
+        },
+        "annotation_3": {
+          "eng": "A rectangle is a shape with four straight sides like this page. Find as many rectangles as you can in this picture."
+        }
+      },
+      "annotation_1": "The round thatched roofs of the houses are cone shaped. What other cone shapes do you see in this picture?",
+      "annotation_2": "What other cone shaped things have you seen in your life? (Ice cream cone, fir trees, traffic cone, funnel)",
+      "annotation_3": "A rectangle is a shape with four straight sides like this page. Find as many rectangles as you can in this picture."
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-FA-2.jpg",
+      "story_text": "One day, he called his sons and said, \"I am old and will die soon. But before I die, I want to see you in your own homes. You have one month to each make your own home. I want to see you back here after the month.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "One day, he called his sons and said, \"I am old and will die soon. But before I die, I want to see you in your own homes. You have one month to each make your own home. I want to see you back here after the month.\""
+        },
+        "annotation_1": {
+          "eng": "You can find out how many feet they have all together by skip counting by 2's three times or skip counting by 3's two times. How many are there?"
+        },
+        "annotation_2": {
+          "eng": "To find out how many limbs (legs and arms) they have, what number would you skip count by? How many limbs are there?"
+        },
+        "annotation_3": {
+          "eng": "Guess why the father has that long stick. Is it because he has trouble walking, or is it to signal that he should get respect as an older person, or perhaps both?"
+        }
+      },
+      "annotation_1": "You can find out how many feet they have all together by skip counting by 2's three times or skip counting by 3's two times. How many are there?",
+      "annotation_2": "To find out how many limbs (legs and arms) they have, what number would you skip count by? How many limbs are there?",
+      "annotation_3": "Guess why the father has that long stick. Is it because he has trouble walking, or is it to signal that he should get respect as an older person, or perhaps both?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-FA-3.jpg",
+      "story_text": "The two sons rushed out. The first one went to the roadside. He cut down trees and began to build a big compound for himself.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The two sons rushed out. The first one went to the roadside. He cut down trees and began to build a big compound for himself."
+        },
+        "annotation_1": {
+          "eng": "Sometimes you can find faces in the clouds, in the moon, or other places. Do you see the face in the tree?"
+        },
+        "annotation_2": {
+          "eng": "Have you ever seen a face in the clouds or someplace else when it wasn't really a face?"
+        },
+        "annotation_3": {
+          "eng": "How many trees has this son cut down to make these houses?"
+        }
+      },
+      "annotation_1": "Sometimes you can find faces in the clouds, in the moon, or other places. Do you see the face in the tree?",
+      "annotation_2": "Have you ever seen a face in the clouds or someplace else when it wasn't really a face?",
+      "annotation_3": "How many trees has this son cut down to make these houses?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-FA-4.jpg",
+      "story_text": "The second one, however, went out and started forming special relationships with other families. He went to different people, and he became like their foster child.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The second one, however, went out and started forming special relationships with other families. He went to different people, and he became like their foster child."
+        },
+        "annotation_1": {
+          "eng": "This second son is greeting someone in a friendly way with his hands. Copy this hand gesture with the person you are with now."
+        },
+        "annotation_2": {
+          "eng": "How do you greet people differently when they are in your family and when they are a friend?"
+        },
+        "annotation_3": {
+          "eng": "Look at the shadows in this picture. Point to where you think the sun is in the sky. Guess what time of day it is."
+        }
+      },
+      "annotation_1": "This second son is greeting someone in a friendly way with his hands. Copy this hand gesture with the person you are with now.",
+      "annotation_2": "How do you greet people differently when they are in your family and when they are a friend?",
+      "annotation_3": "Look at the shadows in this picture. Point to where you think the sun is in the sky. Guess what time of day it is."
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-FA-5.jpg",
+      "story_text": "After a month, the two brothers came back to their father. The father said, \"Well, have you built your homes?\" And both of the brothers said, \"Yes.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "After a month, the two brothers came back to their father. The father said, \"Well, have you built your homes?\" And both of the brothers said, \"Yes.\""
+        },
+        "annotation_1": {
+          "eng": "Vertical lines go up and down. Although you can't see them all, how many vertical planks in the door do you think there are?"
+        },
+        "annotation_2": {
+          "eng": "Horizontal lines go from side to side. If you add the one horizontal plank to the vertical planks, how many planks are there all together?"
+        },
+        "annotation_3": {
+          "eng": "A month can be 28, 29, 30, or 31 days. Do you think someone could make their home in about 30 days? What month of the year is it for you right now?"
+        }
+      },
+      "annotation_1": "Vertical lines go up and down. Although you can't see them all, how many vertical planks in the door do you think there are?",
+      "annotation_2": "Horizontal lines go from side to side. If you add the one horizontal plank to the vertical planks, how many planks are there all together?",
+      "annotation_3": "A month can be 28, 29, 30, or 31 days. Do you think someone could make their home in about 30 days? What month of the year is it for you right now?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-FA-6.jpg",
+      "story_text": "The father went with his eldest son. He saw that the son had built many huts. As he walked by each hut, he asked, \"Is there anybody in this hut?\" Each time, the son replied, \"No.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The father went with his eldest son. He saw that the son had built many huts. As he walked by each hut, he asked, \"Is there anybody in this hut?\" Each time, the son replied, \"No.\""
+        },
+        "annotation_1": {
+          "eng": "There is a new word that the father uses for these buildings. How is a hut different from a home?"
+        },
+        "annotation_2": {
+          "eng": "Have you ever made a real or pretend hut, house, or fort? What did you use to make it?"
+        },
+        "annotation_3": {
+          "eng": "Count how many huts there are in this picture. If there is no one in a hut, how many people is that? (0 – zero)"
+        }
+      },
+      "annotation_1": "There is a new word that the father uses for these buildings. How is a hut different from a home?",
+      "annotation_2": "Have you ever made a real or pretend hut, house, or fort? What did you use to make it?",
+      "annotation_3": "Count how many huts there are in this picture. If there is no one in a hut, how many people is that? (0 – zero)"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-FA-7.jpg",
+      "story_text": "The father would ask, \"Is there anybody in this hut?\" And the son would reply, \"No.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The father would ask, \"Is there anybody in this hut?\" And the son would reply, \"No.\""
+        },
+        "annotation_1": {
+          "eng": "Count all the rectangles you can find in this picture."
+        },
+        "annotation_2": {
+          "eng": "A right angle is formed when two lines cross each other like the corner of this page. Horizontal lines form right angles with vertical lines. Point out some right angles in this picture."
+        },
+        "annotation_3": {
+          "eng": "There are probably lots of right angles where you are. Can you count them all, or are there too many?"
+        }
+      },
+      "annotation_1": "Count all the rectangles you can find in this picture.",
+      "annotation_2": "A right angle is formed when two lines cross each other like the corner of this page. Horizontal lines form right angles with vertical lines. Point out some right angles in this picture.",
+      "annotation_3": "There are probably lots of right angles where you are. Can you count them all, or are there too many?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-FA-8.jpg",
+      "story_text": "The father became hungry, but there was no one to serve food to him. He said, \"Let's go home.\" So they went home.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The father became hungry, but there was no one to serve food to him. He said, \"Let's go home.\" So they went home."
+        },
+        "annotation_1": {
+          "eng": "People usually offer visitors something to eat or drink. All these huts are unwelcoming, with nothing to offer to a visitor."
+        },
+        "annotation_2": {
+          "eng": "Notice that the father has turned his back on his son. What message do you give someone when you turn your back on them?"
+        },
+        "annotation_3": {
+          "eng": "As the father walks away, what do you think he is feeling?"
+        }
+      },
+      "annotation_1": "People usually offer visitors something to eat or drink. All these huts are unwelcoming, with nothing to offer to a visitor.",
+      "annotation_2": "Notice that the father has turned his back on his son. What message do you give someone when you turn your back on them?",
+      "annotation_3": "As the father walks away, what do you think he is feeling?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-FA-9.jpg",
+      "story_text": "The second brother took them to the first family he had adopted. He introduced them, \"Here is my father and my brother.\" The family welcomed the men. They slaughtered a sheep and gave them a big feast.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The second brother took them to the first family he had adopted. He introduced them, \"Here is my father and my brother.\" The family welcomed the men. They slaughtered a sheep and gave them a big feast."
+        },
+        "annotation_1": {
+          "eng": "This family gave the father a feast! Why did they do that?"
+        },
+        "annotation_2": {
+          "eng": "How do you think the father is feeling about this?"
+        },
+        "annotation_3": {
+          "eng": "What do you think will happen with the next family they visit?"
+        }
+      },
+      "annotation_1": "This family gave the father a feast! Why did they do that?",
+      "annotation_2": "How do you think the father is feeling about this?",
+      "annotation_3": "What do you think will happen with the next family they visit?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-FA-10.jpg",
+      "story_text": "They went to the second family the younger son had adopted. He introduced his father and brother and they were given another feast.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "They went to the second family the younger son had adopted. He introduced his father and brother and they were given another feast."
+        },
+        "annotation_1": {
+          "eng": "Notice how the people are looking at each other. How are they feeling?"
+        },
+        "annotation_2": {
+          "eng": "What do you think the small child and the second son are saying to each other as they meet?"
+        },
+        "annotation_3": {
+          "eng": "Their clothes have many soft hues. Describe some of the different colors that you see."
+        }
+      },
+      "annotation_1": "Notice how the people are looking at each other. How are they feeling?",
+      "annotation_2": "What do you think the small child and the second son are saying to each other as they meet?",
+      "annotation_3": "Their clothes have many soft hues. Describe some of the different colors that you see."
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-FA-11.jpg",
+      "story_text": "Father and brother were welcomed in all the places where the younger son was adopted. They ate and were satisfied. Then they left for home.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Father and brother were welcomed in all the places where the younger son was adopted. They ate and were satisfied. Then they left for home."
+        },
+        "annotation_1": {
+          "eng": "Some of the cone-shaped roofs are steeper than others. Why is it helpful to have a steep roof?"
+        },
+        "annotation_2": {
+          "eng": "Can you think of any disadvantages of having a steep roof? (It would take more material.)"
+        },
+        "annotation_3": {
+          "eng": "What things about the father tell you that he is feeling very tired?"
+        }
+      },
+      "annotation_1": "Some of the cone-shaped roofs are steeper than others. Why is it helpful to have a steep roof?",
+      "annotation_2": "Can you think of any disadvantages of having a steep roof? (It would take more material.)",
+      "annotation_3": "What things about the father tell you that he is feeling very tired?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-FA-12.jpg",
+      "story_text": "The father said, \"This is what I meant when I said you should make yourself a home. A home is more than many huts or a big expensive house. It is love, warmth and friendship with other people.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The father said, \"This is what I meant when I said you should make yourself a home. A home is more than many huts or a big expensive house. It is love, warmth and friendship with other people."
+        },
+        "annotation_1": {
+          "eng": "A home is not just a roof or walls or doors. In the place where you live, what kinds of things make it a home to you?"
+        },
+        "annotation_2": {
+          "eng": "Which of these three is the tallest and which is the shortest?"
+        },
+        "annotation_3": {
+          "eng": "Which do you think is more helpful – to have lots of people who care about you or to have lots of buildings?"
+        }
+      },
+      "annotation_1": "A home is not just a roof or walls or doors. In the place where you live, what kinds of things make it a home to you?",
+      "annotation_2": "Which of these three is the tallest and which is the shortest?",
+      "annotation_3": "Which do you think is more helpful – to have lots of people who care about you or to have lots of buildings?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-FA-13.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

@@ -1,0 +1,536 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Fati_And_The_Green_Snake_data",
+  "status": "released",
+  "data_list_name": "Fati_And_The_Green_Snake_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-1.jpg",
+      "story_text": "Fati was a little girl who ran like the wind.\n\nShe loved to laugh, and always tried hard to do as she was told.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Fati was a little girl who ran like the wind.\n\nShe loved to laugh, and always tried hard to do as she was told."
+        },
+        "annotation_1": {
+          "eng": "It can be hard sometimes to do what you are told. Are you good at following directions?"
+        },
+        "annotation_2": {
+          "eng": "How do you feel when you don't do as you are told?"
+        },
+        "annotation_3": {
+          "eng": "Does Fati have more, or less,  limbs (arms and legs) than there are ends to her stick?"
+        }
+      },
+      "annotation_1": "It can be hard sometimes to do what you are told. Are you good at following directions?",
+      "annotation_2": "How do you feel when you don't do as you are told?",
+      "annotation_3": "Does Fati have more, or less,  limbs (arms and legs) than there are ends to her stick?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-2.jpg",
+      "story_text": "One day, Fati went with her mother and father to look for firewood.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "One day, Fati went with her mother and father to look for firewood."
+        },
+        "annotation_1": {
+          "eng": "Have you ever tried to balance something on your head the way Fati's mother is doing? What sorts of things do people carry on their heads?"
+        },
+        "annotation_2": {
+          "eng": "Looking at Fati's head and shoulders, what do you think she is feeling?"
+        },
+        "annotation_3": {
+          "eng": "Count together the people in this picture."
+        }
+      },
+      "annotation_1": "Have you ever tried to balance something on your head the way Fati's mother is doing? What sorts of things do people carry on their heads?",
+      "annotation_2": "Looking at Fati's head and shoulders, what do you think she is feeling?",
+      "annotation_3": "Count together the people in this picture."
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-3.jpg",
+      "story_text": "Fati liked to help her mother and father, but there was so much to do and so much to see.\n\nThere were birds, monkeys, and the sky!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Fati liked to help her mother and father, but there was so much to do and so much to see.\n\nThere were birds, monkeys, and the sky!"
+        },
+        "annotation_1": {
+          "eng": "When you are outside, what do you like to look at in the sky?"
+        },
+        "annotation_2": {
+          "eng": "How many birds is Fati looking at?"
+        },
+        "annotation_3": {
+          "eng": "Count together all the ends of the sticks in this picture."
+        }
+      },
+      "annotation_1": "When you are outside, what do you like to look at in the sky?",
+      "annotation_2": "How many birds is Fati looking at?",
+      "annotation_3": "Count together all the ends of the sticks in this picture."
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-4.jpg",
+      "story_text": "Mother said, \"Fati, please listen! You can look for firewood here and you can look for firewood there.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Mother said, \"Fati, please listen! You can look for firewood here and you can look for firewood there.\""
+        },
+        "annotation_1": {
+          "eng": "Fati and her mother are holding outdoor tools. Have you used tools, such as a broom, to do work outside?"
+        },
+        "annotation_2": {
+          "eng": "Fati's mother's dress has a design on it. Count together how many times the design is repeated. Can you count that high? If not, count just one leg."
+        },
+        "annotation_3": {
+          "eng": "Two people have a total of two heads. Together, how many legs, arms, eyes, and ears do these two people have?"
+        }
+      },
+      "annotation_1": "Fati and her mother are holding outdoor tools. Have you used tools, such as a broom, to do work outside?",
+      "annotation_2": "Fati's mother's dress has a design on it. Count together how many times the design is repeated. Can you count that high? If not, count just one leg.",
+      "annotation_3": "Two people have a total of two heads. Together, how many legs, arms, eyes, and ears do these two people have?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-5.jpg",
+      "story_text": "But Fati, please watch where you go and be very careful.\"\n\nShe replied, \"Yes, mother.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "But Fati, please watch where you go and be very careful.\"\n\nShe replied, \"Yes, mother.\""
+        },
+        "annotation_1": {
+          "eng": "What kinds of things might be dangerous for Fati while out collecting firewood?"
+        },
+        "annotation_2": {
+          "eng": "Which sorts of things are you warned to be careful about?"
+        },
+        "annotation_3": {
+          "eng": "Do you listen to those warnings? Do you think Fati will listen?"
+        }
+      },
+      "annotation_1": "What kinds of things might be dangerous for Fati while out collecting firewood?",
+      "annotation_2": "Which sorts of things are you warned to be careful about?",
+      "annotation_3": "Do you listen to those warnings? Do you think Fati will listen?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-6.jpg",
+      "story_text": "Soon Fati's mother and father were very busy.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Soon Fati's mother and father were very busy."
+        },
+        "annotation_1": {
+          "eng": "There are many reasons people wear hats. Why is Fati's father wearing a hat?"
+        },
+        "annotation_2": {
+          "eng": "Fati's father uses a hat to work outside in the sun. Can you think of other clothes that have special uses for certain occasions?"
+        },
+        "annotation_3": {
+          "eng": "Fati's family is gathering firewood. Other than keeping warm, what are some ways people use fires?"
+        }
+      },
+      "annotation_1": "There are many reasons people wear hats. Why is Fati's father wearing a hat?",
+      "annotation_2": "Fati's father uses a hat to work outside in the sun. Can you think of other clothes that have special uses for certain occasions?",
+      "annotation_3": "Fati's family is gathering firewood. Other than keeping warm, what are some ways people use fires?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-7.jpg",
+      "story_text": "They found big pieces of firewood.\n\nThey found small pieces of firewood.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "They found big pieces of firewood.\n\nThey found small pieces of firewood."
+        },
+        "annotation_1": {
+          "eng": "Do the different sizes of firewood have different uses?"
+        },
+        "annotation_2": {
+          "eng": "Count how many pieces of firewood there are."
+        },
+        "annotation_3": {
+          "eng": "Compare the thickness of the biggest pieces of firewood to Fati's father's leg. Which is wider and which is narrower?"
+        }
+      },
+      "annotation_1": "Do the different sizes of firewood have different uses?",
+      "annotation_2": "Count how many pieces of firewood there are.",
+      "annotation_3": "Compare the thickness of the biggest pieces of firewood to Fati's father's leg. Which is wider and which is narrower?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-8.jpg",
+      "story_text": "Fati was also very busy.\n\nShe found small pieces of firewood.\n\nShe found very small pieces of firewood.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Fati was also very busy.\n\nShe found small pieces of firewood.\n\nShe found very small pieces of firewood."
+        },
+        "annotation_1": {
+          "eng": "Why do you think Fati found such small pieces of firewood?"
+        },
+        "annotation_2": {
+          "eng": "In making a fire, having a variety of sizes of wood is useful. The small pieces help get the fire going, and the big pieces can make it last a long time."
+        },
+        "annotation_3": {
+          "eng": "Count together how many pieces of firewood Fati has found. It's tricky to tell because her wood is all jumbled together."
+        }
+      },
+      "annotation_1": "Why do you think Fati found such small pieces of firewood?",
+      "annotation_2": "In making a fire, having a variety of sizes of wood is useful. The small pieces help get the fire going, and the big pieces can make it last a long time.",
+      "annotation_3": "Count together how many pieces of firewood Fati has found. It's tricky to tell because her wood is all jumbled together."
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-9.jpg",
+      "story_text": "Then Fati looked up.\n\nShe saw a red bird in the tall grass.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Then Fati looked up.\n\nShe saw a red bird in the tall grass."
+        },
+        "annotation_1": {
+          "eng": "Lots of animals have things in common, such as a mouth and a heart. Guess what birds have that no other animal has. (feathers)"
+        },
+        "annotation_2": {
+          "eng": "Fati is having too much fun looking at special things to worry about looking for dangers. Is she being careless?"
+        },
+        "annotation_3": {
+          "eng": "Does the bird's red color blend in with the colors in the tall grass?"
+        }
+      },
+      "annotation_1": "Lots of animals have things in common, such as a mouth and a heart. Guess what birds have that no other animal has. (feathers)",
+      "annotation_2": "Fati is having too much fun looking at special things to worry about looking for dangers. Is she being careless?",
+      "annotation_3": "Does the bird's red color blend in with the colors in the tall grass?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-10.jpg",
+      "story_text": "Next, Fati looked down.\n\nShe saw a brown ant on the dusty path.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Next, Fati looked down.\n\nShe saw a brown ant on the dusty path."
+        },
+        "annotation_1": {
+          "eng": "The largest ants are about the same length as your finger. Do you think the artist got a little carried away drawing this ant?"
+        },
+        "annotation_2": {
+          "eng": "Ants have six legs. How many legs does this ant have?"
+        },
+        "annotation_3": {
+          "eng": "If ants should have six legs, how many legs is this ant missing?"
+        }
+      },
+      "annotation_1": "The largest ants are about the same length as your finger. Do you think the artist got a little carried away drawing this ant?",
+      "annotation_2": "Ants have six legs. How many legs does this ant have?",
+      "annotation_3": "If ants should have six legs, how many legs is this ant missing?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-11.jpg",
+      "story_text": "Fati saw a beautiful leaf. The leaf was shiny and green.\n\nShe put one finger on the beautiful leaf.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Fati saw a beautiful leaf. The leaf was shiny and green.\n\nShe put one finger on the beautiful leaf."
+        },
+        "annotation_1": {
+          "eng": "What do you think will happen next with this strange leaf?"
+        },
+        "annotation_2": {
+          "eng": "What is different about the \"leaf\" that Fati is touching?"
+        },
+        "annotation_3": {
+          "eng": "An estimate is an educated guess. Make an estimate of how many leaves are in this picture. Is it a number bigger than you know?"
+        }
+      },
+      "annotation_1": "What do you think will happen next with this strange leaf?",
+      "annotation_2": "What is different about the \"leaf\" that Fati is touching?",
+      "annotation_3": "An estimate is an educated guess. Make an estimate of how many leaves are in this picture. Is it a number bigger than you know?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-12.jpg",
+      "story_text": "Fati said, \"This does not feel like a leaf.\"\n\nSuddenly, the beautiful leaf moved!\n\nFati said, \"This is not a beautiful leaf. This is a green snake!\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Fati said, \"This does not feel like a leaf.\"\n\nSuddenly, the beautiful leaf moved!\n\nFati said, \"This is not a beautiful leaf. This is a green snake!\""
+        },
+        "annotation_1": {
+          "eng": "Which of her five senses did Fati use to notice the snake?"
+        },
+        "annotation_2": {
+          "eng": "If you remove one of the five senses, how many are left?"
+        },
+        "annotation_3": {
+          "eng": "Can you name all five of your senses?"
+        }
+      },
+      "annotation_1": "Which of her five senses did Fati use to notice the snake?",
+      "annotation_2": "If you remove one of the five senses, how many are left?",
+      "annotation_3": "Can you name all five of your senses?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-13.jpg",
+      "story_text": "Fati screamed, \"EII!\"\n\nShe ran very fast to look for her mother and father.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Fati screamed, \"EII!\"\n\nShe ran very fast to look for her mother and father."
+        },
+        "annotation_1": {
+          "eng": "Fati screamed and ran. When you are surprised and scared, what do you do?"
+        },
+        "annotation_2": {
+          "eng": "Do you like to hide in your bed or maybe under your bed? What is your favorite hiding spot?"
+        },
+        "annotation_3": {
+          "eng": "Fati is running so fast that she doesn't notice something. What is it?"
+        }
+      },
+      "annotation_1": "Fati screamed and ran. When you are surprised and scared, what do you do?",
+      "annotation_2": "Do you like to hide in your bed or maybe under your bed? What is your favorite hiding spot?",
+      "annotation_3": "Fati is running so fast that she doesn't notice something. What is it?"
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-14.jpg",
+      "story_text": "Fati saw her father and shouted, \"A snake! A snake!\"\n\nFather said, \"Where? Where?\"\n\nFati said, \"There! There!\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Fati saw her father and shouted, \"A snake! A snake!\"\n\nFather said, \"Where? Where?\"\n\nFati said, \"There! There!\""
+        },
+        "annotation_1": {
+          "eng": "Do you think her father is angry that she wondered away, happy that she is okay, or both?"
+        },
+        "annotation_2": {
+          "eng": "Her father has two shoes. How many shoes does Fati have and how many is she missing?"
+        },
+        "annotation_3": {
+          "eng": "Together they have one more shoe than her father has. What is one more than two?"
+        }
+      },
+      "annotation_1": "Do you think her father is angry that she wondered away, happy that she is okay, or both?",
+      "annotation_2": "Her father has two shoes. How many shoes does Fati have and how many is she missing?",
+      "annotation_3": "Together they have one more shoe than her father has. What is one more than two?"
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-15.jpg",
+      "story_text": "Then her father chased the green snake with a stick.\n\nThe green snake slithered away.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Then her father chased the green snake with a stick.\n\nThe green snake slithered away."
+        },
+        "annotation_1": {
+          "eng": "Have you ever seen a snake outside on the ground or in a bush?"
+        },
+        "annotation_2": {
+          "eng": "Some snakes are very dangerous, and many others are safe. Do some snakes do good things?"
+        },
+        "annotation_3": {
+          "eng": "What do you know about snakes?"
+        }
+      },
+      "annotation_1": "Have you ever seen a snake outside on the ground or in a bush?",
+      "annotation_2": "Some snakes are very dangerous, and many others are safe. Do some snakes do good things?",
+      "annotation_3": "What do you know about snakes?"
+    },
+    {
+      "id": "page_16",
+      "page_no": 16,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-16.jpg",
+      "story_text": "Father said, \"Fati, you are safe.\"\n\nLet's go to mother and tell her about the green snake.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Father said, \"Fati, you are safe.\"\n\nLet's go to mother and tell her about the green snake.\""
+        },
+        "annotation_1": {
+          "eng": "What are Fati and her father feeling in this picture?"
+        },
+        "annotation_2": {
+          "eng": "What do you think her mother will say?"
+        },
+        "annotation_3": {
+          "eng": "Fati got back her other shoe. Now she and her father have one more than three shoes. How many shoes is that?"
+        }
+      },
+      "annotation_1": "What are Fati and her father feeling in this picture?",
+      "annotation_2": "What do you think her mother will say?",
+      "annotation_3": "Fati got back her other shoe. Now she and her father have one more than three shoes. How many shoes is that?"
+    },
+    {
+      "id": "page_17",
+      "page_no": 17,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-17.jpg",
+      "story_text": "Mother said, \"Fati, I am happy the green snake did not bite you.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Mother said, \"Fati, I am happy the green snake did not bite you.\""
+        },
+        "annotation_1": {
+          "eng": "Are you surprised that her mother is not angry?"
+        },
+        "annotation_2": {
+          "eng": "Count together the number of many kinds of things in this picture."
+        },
+        "annotation_3": {
+          "eng": "Are there more pants or dresses? Are there more sandals or boots?"
+        }
+      },
+      "annotation_1": "Are you surprised that her mother is not angry?",
+      "annotation_2": "Count together the number of many kinds of things in this picture.",
+      "annotation_3": "Are there more pants or dresses? Are there more sandals or boots?"
+    },
+    {
+      "id": "page_18",
+      "page_no": 18,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-18.jpg",
+      "story_text": "But next time, please, look where you go, and be more careful.\n\nAnd that was the end of that.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "But next time, please, look where you go, and be more careful.\n\nAnd that was the end of that."
+        },
+        "annotation_1": {
+          "eng": "What does the story mean by \"And that was the end of that.\" ?"
+        },
+        "annotation_2": {
+          "eng": "The three of them have three pairs of shoes. How many is that?"
+        },
+        "annotation_3": {
+          "eng": "You can count all their shoes by counting by 2's -- 2, 4, 6. Or, you could think of it as twice the number of people -- 3, 6. Which way is easier for you?"
+        }
+      },
+      "annotation_1": "What does the story mean by \"And that was the end of that.\" ?",
+      "annotation_2": "The three of them have three pairs of shoes. How many is that?",
+      "annotation_3": "You can count all their shoes by counting by 2's -- 2, 4, 6. Or, you could think of it as twice the number of people -- 3, 6. Which way is easier for you?"
+    },
+    {
+      "id": "page_19",
+      "page_no": 19,
+      "illustration": "EFMStorybooks/EFM-SB-FATGS-19.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

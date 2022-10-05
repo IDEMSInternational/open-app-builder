@@ -1,0 +1,362 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Horses_Of_Debre_Birhan_data",
+  "status": "released",
+  "data_list_name": "Horses_Of_Debre_Birhan_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-HODB-1.jpg",
+      "story_text": "Chalew is a horse that pulls a cart.\n\nHe carries heavy loads along the gravel roads of Debre Birhan.\n\nHe works from morning to evening.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Chalew is a horse that pulls a cart.\n\nHe carries heavy loads along the gravel roads of Debre Birhan.\n\nHe works from morning to evening."
+        },
+        "annotation_1": {
+          "eng": "Chalew pulls heavy loads and does a difficult job. Have you seen any animals that have to do work?"
+        },
+        "annotation_2": {
+          "eng": "A rectangle is a shape with four straight sides like the shape of this page. Point out some shapes in this picture that are rectangles and some that are round."
+        },
+        "annotation_3": {
+          "eng": "How many rectangles can you find in the place where you are now?"
+        }
+      },
+      "annotation_1": "Chalew pulls heavy loads and does a difficult job. Have you seen any animals that have to do work?",
+      "annotation_2": "A rectangle is a shape with four straight sides like the shape of this page. Point out some shapes in this picture that are rectangles and some that are round.",
+      "annotation_3": "How many rectangles can you find in the place where you are now?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-HODB-2.jpg",
+      "story_text": "Chalew does not get enough time to rest.\n\nHe does not get enough food to eat.\n\nThe driver of the cart beats him to go faster.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Chalew does not get enough time to rest.\n\nHe does not get enough food to eat.\n\nThe driver of the cart beats him to go faster."
+        },
+        "annotation_1": {
+          "eng": "How do you feel about the way the driver treats Chalew?"
+        },
+        "annotation_2": {
+          "eng": "What are some ways to treat animals, or people, to try to get them to do what you want? For people, you can say \"please,\" and that works sometimes."
+        },
+        "annotation_3": {
+          "eng": "What makes you want to do things for other people?"
+        }
+      },
+      "annotation_1": "How do you feel about the way the driver treats Chalew?",
+      "annotation_2": "What are some ways to treat animals, or people, to try to get them to do what you want? For people, you can say \"please,\" and that works sometimes.",
+      "annotation_3": "What makes you want to do things for other people?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-HODB-3.jpg",
+      "story_text": "One day, all the cart drivers gathered for a funeral.\n\nThe cart horses were left to graze in a nearby field.\n\nThey began to talk about their terrible conditions.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "One day, all the cart drivers gathered for a funeral.\n\nThe cart horses were left to graze in a nearby field.\n\nThey began to talk about their terrible conditions."
+        },
+        "annotation_1": {
+          "eng": "Count the number of people and the number of horses. Are there more people or horses? How many more?"
+        },
+        "annotation_2": {
+          "eng": "Use skip counting by 2's to count how many legs the people have. Can you skip count that high?"
+        },
+        "annotation_3": {
+          "eng": "What would you skip count by to count the number of legs the horses have? That's a pretty big number. Can you skip count that high?"
+        }
+      },
+      "annotation_1": "Count the number of people and the number of horses. Are there more people or horses? How many more?",
+      "annotation_2": "Use skip counting by 2's to count how many legs the people have. Can you skip count that high?",
+      "annotation_3": "What would you skip count by to count the number of legs the horses have? That's a pretty big number. Can you skip count that high?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-HODB-4.jpg",
+      "story_text": "My harness doesn't fit me. It is too tight and cuts my skin, said one horse.\n\n\"Me too, me too,\" another agreed.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "My harness doesn't fit me. It is too tight and cuts my skin, said one horse.\n\n\"Me too, me too,\" another agreed."
+        },
+        "annotation_1": {
+          "eng": "How do real horses talk with each other?"
+        },
+        "annotation_2": {
+          "eng": "Which parts of a horse come in pairs, and which don't?"
+        },
+        "annotation_3": {
+          "eng": "The body parts that pair up show up on opposite sides of the horse's body. Can you think of other animals like that? Can you think of any that aren't like that?"
+        }
+      },
+      "annotation_1": "How do real horses talk with each other?",
+      "annotation_2": "Which parts of a horse come in pairs, and which don't?",
+      "annotation_3": "The body parts that pair up show up on opposite sides of the horse's body. Can you think of other animals like that? Can you think of any that aren't like that?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-HODB-5.jpg",
+      "story_text": "An old horse spoke. \"I'm almost lame because of the nails they hammer into my hooves.\"\n\nMore horses nodded in agreement.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "An old horse spoke. \"I'm almost lame because of the nails they hammer into my hooves.\"\n\nMore horses nodded in agreement."
+        },
+        "annotation_1": {
+          "eng": "Why do you think the owners have been so bad to the horses? Were the owners mean on purpose and did they not realize what they were doing?"
+        },
+        "annotation_2": {
+          "eng": "What do you think the horses should do about being treated so badly?"
+        },
+        "annotation_3": {
+          "eng": "There are five horses. How many tails, ears, and legs are there? Did you skip count to find the ears and legs, or did you start with the number of tails and double things?"
+        }
+      },
+      "annotation_1": "Why do you think the owners have been so bad to the horses? Were the owners mean on purpose and did they not realize what they were doing?",
+      "annotation_2": "What do you think the horses should do about being treated so badly?",
+      "annotation_3": "There are five horses. How many tails, ears, and legs are there? Did you skip count to find the ears and legs, or did you start with the number of tails and double things?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-HODB-6.jpg",
+      "story_text": "We work very hard, but most of our owners treat us badly. Many do not know how to look after us, said Chalew.\n\nAll of the horses agreed.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "We work very hard, but most of our owners treat us badly. Many do not know how to look after us, said Chalew.\n\nAll of the horses agreed."
+        },
+        "annotation_1": {
+          "eng": "What do you think Chalew is going to suggest that they do about their bad situation?"
+        },
+        "annotation_2": {
+          "eng": "In this picture, the five horses are paired up into two pairs with one left over. Is there any way to pair these five horses into pairs all at the same time? When there are a number of things that can't all be paired up, that's called on odd number."
+        },
+        "annotation_3": {
+          "eng": "Think of some other odd numbers. When you have two people and an odd number of things, it is impossible to give them the same number, so you can't share the things equally."
+        }
+      },
+      "annotation_1": "What do you think Chalew is going to suggest that they do about their bad situation?",
+      "annotation_2": "In this picture, the five horses are paired up into two pairs with one left over. Is there any way to pair these five horses into pairs all at the same time? When there are a number of things that can't all be paired up, that's called on odd number.",
+      "annotation_3": "Think of some other odd numbers. When you have two people and an odd number of things, it is impossible to give them the same number, so you can't share the things equally."
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-HODB-7.jpg",
+      "story_text": "We need better conditions. Let's go on strike! declared Chalew. The horses cheered!\n\nThey decided to stay in the field until the cart drivers agreed to change.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "We need better conditions. Let's go on strike! declared Chalew. The horses cheered!\n\nThey decided to stay in the field until the cart drivers agreed to change."
+        },
+        "annotation_1": {
+          "eng": "A strike occurs when a group of workers refuse to work and insist on getting treated better by their company. People sometimes go on strike to get better working conditions, and sometimes they do it to get paid more."
+        },
+        "annotation_2": {
+          "eng": "What is risky for a person when they strike? (They might not get paid for a long time and they might lose their job.)"
+        },
+        "annotation_3": {
+          "eng": "Numbers that can be pair up are called even numbers. There are six horses in this picture. Can you pair them all up? Is six an odd or even number?"
+        }
+      },
+      "annotation_1": "A strike occurs when a group of workers refuse to work and insist on getting treated better by their company. People sometimes go on strike to get better working conditions, and sometimes they do it to get paid more.",
+      "annotation_2": "What is risky for a person when they strike? (They might not get paid for a long time and they might lose their job.)",
+      "annotation_3": "Numbers that can be pair up are called even numbers. There are six horses in this picture. Can you pair them all up? Is six an odd or even number?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-HODB-8.jpg",
+      "story_text": "The cart drivers did not know what to do.\n\n\"I can get another horse,\" boasted one driver.\n\nBut most of the drivers needed their horses to earn a living.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The cart drivers did not know what to do.\n\n\"I can get another horse,\" boasted one driver.\n\nBut most of the drivers needed their horses to earn a living."
+        },
+        "annotation_1": {
+          "eng": "How many people are in this picture? If you take away (subtract off) the two who are sitting down, how many are standing up?"
+        },
+        "annotation_2": {
+          "eng": "Are there an odd or even number of people in the room? Can they be split into two equal groups? If you can, it's an even number and otherwise it's an odd number."
+        },
+        "annotation_3": {
+          "eng": "What worries the owners? Are they worried about how the horses feel or are they worried about their businesses?"
+        }
+      },
+      "annotation_1": "How many people are in this picture? If you take away (subtract off) the two who are sitting down, how many are standing up?",
+      "annotation_2": "Are there an odd or even number of people in the room? Can they be split into two equal groups? If you can, it's an even number and otherwise it's an odd number.",
+      "annotation_3": "What worries the owners? Are they worried about how the horses feel or are they worried about their businesses?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-HODB-9.jpg",
+      "story_text": "The drivers held a meeting to discuss the strike. They argued for a long time.\n\n\"Maybe the horses are right,\" said one man. \"Why should they get better conditions?\" asked another.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The drivers held a meeting to discuss the strike. They argued for a long time.\n\n\"Maybe the horses are right,\" said one man. \"Why should they get better conditions?\" asked another."
+        },
+        "annotation_1": {
+          "eng": "Estimate how many people are crowded into the room and then count, as best you can, how people there are. An estimate is an educated guess based on partial information, such as a quick glance."
+        },
+        "annotation_2": {
+          "eng": "Making estimates can be a fun game. When you're walking around, have everyone make an estimate of a group of things, then carefully count how many there are, and see who is closest to the right answer."
+        },
+        "annotation_3": {
+          "eng": "How do the owners know what the horses want? Did the horses talk to them?"
+        }
+      },
+      "annotation_1": "Estimate how many people are crowded into the room and then count, as best you can, how people there are. An estimate is an educated guess based on partial information, such as a quick glance.",
+      "annotation_2": "Making estimates can be a fun game. When you're walking around, have everyone make an estimate of a group of things, then carefully count how many there are, and see who is closest to the right answer.",
+      "annotation_3": "How do the owners know what the horses want? Did the horses talk to them?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-HODB-10.jpg",
+      "story_text": "The horses' strike spread from the town of Debre Birhan across Ethiopia.\n\nNearly three million horses refused to work.\n\n\"We have had enough! Treat us fairly!\" they said.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The horses' strike spread from the town of Debre Birhan across Ethiopia.\n\nNearly three million horses refused to work.\n\n\"We have had enough! Treat us fairly!\" they said."
+        },
+        "annotation_1": {
+          "eng": "Three million is a lot of horses! Can you think of something around you that there are more than one hundred of? More than a thousand?"
+        },
+        "annotation_2": {
+          "eng": "Have you heard of working people going on strike near you? Did the strike work, or did the strikers give up before getting what they wanted?"
+        },
+        "annotation_3": {
+          "eng": "What do you do when you really want something and it doesn't seem like you are going to get it? Does it work?"
+        }
+      },
+      "annotation_1": "Three million is a lot of horses! Can you think of something around you that there are more than one hundred of? More than a thousand?",
+      "annotation_2": "Have you heard of working people going on strike near you? Did the strike work, or did the strikers give up before getting what they wanted?",
+      "annotation_3": "What do you do when you really want something and it doesn't seem like you are going to get it? Does it work?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-HODB-11.jpg",
+      "story_text": "So, the cart drivers were forced to change.\n\nThey agreed to better conditions and fair treatment for all horses.\n\nThey learned how to look after the horses, and keep them healthy.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "So, the cart drivers were forced to change.\n\nThey agreed to better conditions and fair treatment for all horses.\n\nThey learned how to look after the horses, and keep them healthy."
+        },
+        "annotation_1": {
+          "eng": "Taking better care of the horses is the right thing to do for the horses, and it's the smart thing to do to get the horses to do better work!"
+        },
+        "annotation_2": {
+          "eng": "If it's a good idea to take better care of the horses, why weren't the drivers doing this all along?"
+        },
+        "annotation_3": {
+          "eng": "Sometimes people do something that seems easy, but is a bad idea in the long run. Have you ever put off doing something that you wished you hadn't?"
+        }
+      },
+      "annotation_1": "Taking better care of the horses is the right thing to do for the horses, and it's the smart thing to do to get the horses to do better work!",
+      "annotation_2": "If it's a good idea to take better care of the horses, why weren't the drivers doing this all along?",
+      "annotation_3": "Sometimes people do something that seems easy, but is a bad idea in the long run. Have you ever put off doing something that you wished you hadn't?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-HODB-12.jpg",
+      "story_text": "Slowly, the horses' lives improved.\n\nThey got enough food and rest. Their harnesses fitted. They got better shoes for their hooves.\n\nOld Chalew became a hero to all horses!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Slowly, the horses' lives improved.\n\nThey got enough food and rest. Their harnesses fitted. They got better shoes for their hooves.\n\nOld Chalew became a hero to all horses!"
+        },
+        "annotation_1": {
+          "eng": "Chalew took a risk and helped an important cause. Can you think of a person who has done that?"
+        },
+        "annotation_2": {
+          "eng": "Have you ever gone out of your way to help a person or group of people who needed help? Did you make a difference for them?"
+        },
+        "annotation_3": {
+          "eng": "How does it feel when you help others?"
+        }
+      },
+      "annotation_1": "Chalew took a risk and helped an important cause. Can you think of a person who has done that?",
+      "annotation_2": "Have you ever gone out of your way to help a person or group of people who needed help? Did you make a difference for them?",
+      "annotation_3": "How does it feel when you help others?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-HODB-13.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

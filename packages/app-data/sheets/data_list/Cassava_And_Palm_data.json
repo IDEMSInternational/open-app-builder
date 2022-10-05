@@ -1,0 +1,478 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Cassava_And_Palm_data",
+  "status": "released",
+  "data_list_name": "Cassava_And_Palm_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-1.jpg",
+      "story_text": "Long time ago, Cassava and Palm lived in a village called Koowa. They were very good friends. They visited each other every day. They were farmers. They worked very hard on their farms.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Long time ago, Cassava and Palm lived in a village called Koowa. They were very good friends. They visited each other every day. They were farmers. They worked very hard on their farms."
+        },
+        "annotation_1": {
+          "eng": "These are two talking plants! Use your imagination to suggest what they might be saying to each other."
+        },
+        "annotation_2": {
+          "eng": "Palm is a kind of tree that doesn't have branches like other trees -- it has leaves, called fronds, that are held together by a rib in the middle."
+        },
+        "annotation_3": {
+          "eng": "Count how many ribbed fronds you see. How does the rib on the fronds compare to your own ribs?"
+        }
+      },
+      "annotation_1": "These are two talking plants! Use your imagination to suggest what they might be saying to each other.",
+      "annotation_2": "Palm is a kind of tree that doesn't have branches like other trees -- it has leaves, called fronds, that are held together by a rib in the middle.",
+      "annotation_3": "Count how many ribbed fronds you see. How does the rib on the fronds compare to your own ribs?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-2.jpg",
+      "story_text": "In a certain year, there was no rain. The crops did not grow well. All the plants dried up. People did not have any food to eat.\n\nCassava and Palm decided to travel to another village to look for work.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "In a certain year, there was no rain. The crops did not grow well. All the plants dried up. People did not have any food to eat.\n\nCassava and Palm decided to travel to another village to look for work."
+        },
+        "annotation_1": {
+          "eng": "How have Palm's fronds and Cassava's leaves changed now that the weather has been so dry?"
+        },
+        "annotation_2": {
+          "eng": "The plants in the ground are very thirsty. Have you ever been very, very thirsty? When you were extremely thirsty, how much did you drink? 1 cup? 2 cups? 3 cups? more?"
+        },
+        "annotation_3": {
+          "eng": "All the little plants are dying! How many of them can you count? Can you count that high?"
+        }
+      },
+      "annotation_1": "How have Palm's fronds and Cassava's leaves changed now that the weather has been so dry?",
+      "annotation_2": "The plants in the ground are very thirsty. Have you ever been very, very thirsty? When you were extremely thirsty, how much did you drink? 1 cup? 2 cups? 3 cups? more?",
+      "annotation_3": "All the little plants are dying! How many of them can you count? Can you count that high?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-3.jpg",
+      "story_text": "On their way, they met a woman. \"Good afternoon,\" they greeted her.\n\nShe responded, \"Where are you going?\" \"We are going to the next village to look for work,\" said Palm.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "On their way, they met a woman. \"Good afternoon,\" they greeted her.\n\nShe responded, \"Where are you going?\" \"We are going to the next village to look for work,\" said Palm."
+        },
+        "annotation_1": {
+          "eng": "Cassava has what are called tuber roots that help it stand up. How many tuber roots do you see?"
+        },
+        "annotation_2": {
+          "eng": "Count the fingers on the woman's hands. How many fingers do most people have? How many does she seem to be missing?"
+        },
+        "annotation_3": {
+          "eng": "Notice everyone's arms in this picture. Copy each one with your own arms. Arm positions can tell us a lot about what a person is thinking or feeling. What do these arm positions say to you?"
+        }
+      },
+      "annotation_1": "Cassava has what are called tuber roots that help it stand up. How many tuber roots do you see?",
+      "annotation_2": "Count the fingers on the woman's hands. How many fingers do most people have? How many does she seem to be missing?",
+      "annotation_3": "Notice everyone's arms in this picture. Copy each one with your own arms. Arm positions can tell us a lot about what a person is thinking or feeling. What do these arm positions say to you?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-4.jpg",
+      "story_text": "What work can you do? the woman asked. The friends responded, \"We can provide food for your family and animals.\"\n\nThe woman asked, \"What do you need to provide the food?\" \"Give us land, water and good care,\" they replied.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "What work can you do? the woman asked. The friends responded, \"We can provide food for your family and animals.\"\n\nThe woman asked, \"What do you need to provide the food?\" \"Give us land, water and good care,\" they replied."
+        },
+        "annotation_1": {
+          "eng": "Most of our food comes from plants. What are some of your favorite foods that come from trees? From bushes? From vines? (berries, tomatoes, beans, squash)"
+        },
+        "annotation_2": {
+          "eng": "Rectangles are shapes with four straight sides, like this page. Count the rectangles on this page."
+        },
+        "annotation_3": {
+          "eng": "These roofs are made of straw. The roof of the round building is shaped like a cone. The roofs of the other two buildings are somewhat like two sides of a triangle."
+        }
+      },
+      "annotation_1": "Most of our food comes from plants. What are some of your favorite foods that come from trees? From bushes? From vines? (berries, tomatoes, beans, squash)",
+      "annotation_2": "Rectangles are shapes with four straight sides, like this page. Count the rectangles on this page.",
+      "annotation_3": "These roofs are made of straw. The roof of the round building is shaped like a cone. The roofs of the other two buildings are somewhat like two sides of a triangle."
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-5.jpg",
+      "story_text": "The woman took them home with her.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The woman took them home with her."
+        },
+        "annotation_1": {
+          "eng": "Palm and Cassava have very different bodies. Describe the shape, color, and size of the scales covering Palm's body."
+        },
+        "annotation_2": {
+          "eng": "How many of the bricks on the side of the house can you count? Are there more leaves on Cassava or bricks on the house? How many more?"
+        },
+        "annotation_3": {
+          "eng": "What is the shape of the side of a brick? Do you see any other objects with that shape in this picture?"
+        }
+      },
+      "annotation_1": "Palm and Cassava have very different bodies. Describe the shape, color, and size of the scales covering Palm's body.",
+      "annotation_2": "How many of the bricks on the side of the house can you count? Are there more leaves on Cassava or bricks on the house? How many more?",
+      "annotation_3": "What is the shape of the side of a brick? Do you see any other objects with that shape in this picture?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-6.jpg",
+      "story_text": "One afternoon, Palm tree and Cassava had an argument. Cassava said he was more important than Palm.\n\nPalm said he was more important than Cassava.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "One afternoon, Palm tree and Cassava had an argument. Cassava said he was more important than Palm.\n\nPalm said he was more important than Cassava."
+        },
+        "annotation_1": {
+          "eng": "Palm and Cassava want to feel important. What are some ways you feel important?"
+        },
+        "annotation_2": {
+          "eng": "There are many ways someone might feel important. Perhaps they are important to someone, or because they can do something really well, or maybe because someone or something needs them."
+        },
+        "annotation_3": {
+          "eng": "Use the shadows on the ground to guess where the sun is. Point to the corner of the picture where the sun is."
+        }
+      },
+      "annotation_1": "Palm and Cassava want to feel important. What are some ways you feel important?",
+      "annotation_2": "There are many ways someone might feel important. Perhaps they are important to someone, or because they can do something really well, or maybe because someone or something needs them.",
+      "annotation_3": "Use the shadows on the ground to guess where the sun is. Point to the corner of the picture where the sun is."
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-7.jpg",
+      "story_text": "The woman heard them from her room. She came out and asked \"Why are you fighting?\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The woman heard them from her room. She came out and asked \"Why are you fighting?\""
+        },
+        "annotation_1": {
+          "eng": "Rectangles with four equal sides are called squares. Point out squares and rectangles in this picture."
+        },
+        "annotation_2": {
+          "eng": "Palm and Cassava are arguing. What do you think will happen next? Will they stop being friends?"
+        },
+        "annotation_3": {
+          "eng": "Is it possible to disagree with someone and still be friends?"
+        }
+      },
+      "annotation_1": "Rectangles with four equal sides are called squares. Point out squares and rectangles in this picture.",
+      "annotation_2": "Palm and Cassava are arguing. What do you think will happen next? Will they stop being friends?",
+      "annotation_3": "Is it possible to disagree with someone and still be friends?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-8.jpg",
+      "story_text": "Cassava spoke first. \"I am more important than Palm tree. I provide tubers for your fufu, gari, boiled cassava and cassava dough.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cassava spoke first. \"I am more important than Palm tree. I provide tubers for your fufu, gari, boiled cassava and cassava dough.\""
+        },
+        "annotation_1": {
+          "eng": "Fufu is mashed cassava that people put in soups. Which kinds of soup have you eaten?"
+        },
+        "annotation_2": {
+          "eng": "These food containers are all round in some way. How are the shapes of these containers alike and how are they different?"
+        },
+        "annotation_3": {
+          "eng": "The world has about 8 billion people. Almost 1 billion people eat food from cassava. The country where people eat the most cassava is Nigeria, in Africa."
+        }
+      },
+      "annotation_1": "Fufu is mashed cassava that people put in soups. Which kinds of soup have you eaten?",
+      "annotation_2": "These food containers are all round in some way. How are the shapes of these containers alike and how are they different?",
+      "annotation_3": "The world has about 8 billion people. Almost 1 billion people eat food from cassava. The country where people eat the most cassava is Nigeria, in Africa."
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-9.jpg",
+      "story_text": "My stems are used for planting. My leaves and peels feed your animals. What does Palm tree do? asked Cassava.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "My stems are used for planting. My leaves and peels feed your animals. What does Palm tree do? asked Cassava."
+        },
+        "annotation_1": {
+          "eng": "Not all shapes are simple and regular. There are several large, irregularly-shaped dark patches on the goat. How many?"
+        },
+        "annotation_2": {
+          "eng": "The pig seems to be enjoying the peels of the cassava plant. Which kinds of foods do we eat after peeling them?"
+        },
+        "annotation_3": {
+          "eng": "It's fun to make animal sounds. Can you make a noise like a pig or a goat? Any others?"
+        }
+      },
+      "annotation_1": "Not all shapes are simple and regular. There are several large, irregularly-shaped dark patches on the goat. How many?",
+      "annotation_2": "The pig seems to be enjoying the peels of the cassava plant. Which kinds of foods do we eat after peeling them?",
+      "annotation_3": "It's fun to make animal sounds. Can you make a noise like a pig or a goat? Any others?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-10.jpg",
+      "story_text": "Palm tree laughed, shook his head and said, \"Woman, do you remember the palm soup you enjoy so much? I provide that.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Palm tree laughed, shook his head and said, \"Woman, do you remember the palm soup you enjoy so much? I provide that.\""
+        },
+        "annotation_1": {
+          "eng": "Some kinds of palm trees produce coconuts and some produce palm nuts. Palm nuts hold the seeds for new palm trees."
+        },
+        "annotation_2": {
+          "eng": "The recipe for palm soup uses palm nuts AND fufu made from cassava. These two friends belong together!"
+        },
+        "annotation_3": {
+          "eng": "Palm is laughing so hard that spit is flying from his mouth! Did you ever laugh that hard?"
+        }
+      },
+      "annotation_1": "Some kinds of palm trees produce coconuts and some produce palm nuts. Palm nuts hold the seeds for new palm trees.",
+      "annotation_2": "The recipe for palm soup uses palm nuts AND fufu made from cassava. These two friends belong together!",
+      "annotation_3": "Palm is laughing so hard that spit is flying from his mouth! Did you ever laugh that hard?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-11.jpg",
+      "story_text": "I provide the palm oil for preparing the kpokpoi and the palm kernel oil for frying fish and meat. How would you prepare stews and gravies without oil?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I provide the palm oil for preparing the kpokpoi and the palm kernel oil for frying fish and meat. How would you prepare stews and gravies without oil?"
+        },
+        "annotation_1": {
+          "eng": "People fry many kinds of food in oil. Name some kinds of fried food you have eaten."
+        },
+        "annotation_2": {
+          "eng": "If every person in the family eats one of these fish, how many people are in the family?"
+        },
+        "annotation_3": {
+          "eng": "Suppose each person eats two fish, how many people would there be? What if each person eats half a fish?"
+        }
+      },
+      "annotation_1": "People fry many kinds of food in oil. Name some kinds of fried food you have eaten.",
+      "annotation_2": "If every person in the family eats one of these fish, how many people are in the family?",
+      "annotation_3": "Suppose each person eats two fish, how many people would there be? What if each person eats half a fish?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-12.jpg",
+      "story_text": "In addition, my friends provide shade for your huts. You cool your heart with my sweet, rich, foamy palm wine after your hard day's work.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "In addition, my friends provide shade for your huts. You cool your heart with my sweet, rich, foamy palm wine after your hard day's work."
+        },
+        "annotation_1": {
+          "eng": "The poles that hold up the palm frond roof are vertical -- they are straight up and down. The edge of the wall behind the people is horizontal -- it goes from side to side. Point out vertical and horizontal lines around you."
+        },
+        "annotation_2": {
+          "eng": "The places where the poles meet the wall make right angles – angles like the corner of this page. Point out right angles in the picture and where you are."
+        },
+        "annotation_3": {
+          "eng": "Most drink containers are round. Why do you suppose that is?"
+        }
+      },
+      "annotation_1": "The poles that hold up the palm frond roof are vertical -- they are straight up and down. The edge of the wall behind the people is horizontal -- it goes from side to side. Point out vertical and horizontal lines around you.",
+      "annotation_2": "The places where the poles meet the wall make right angles – angles like the corner of this page. Point out right angles in the picture and where you are.",
+      "annotation_3": "Most drink containers are round. Why do you suppose that is?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-13.jpg",
+      "story_text": "Above all, the brooms that are used to sweep the rooms and compounds come from me, concluded Palm.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Above all, the brooms that are used to sweep the rooms and compounds come from me, concluded Palm."
+        },
+        "annotation_1": {
+          "eng": "People tie palm fronds tightly together to make brooms. A dust broom is a really short broom for sweeping small areas. Do you have a dust broom?"
+        },
+        "annotation_2": {
+          "eng": "Do you suppose they are sweeping up bits of cassava peels and palm nut shells? Have you ever used a tall broom or a dust broom?"
+        },
+        "annotation_3": {
+          "eng": "Point out the vertical and horizontal lines in this picture."
+        }
+      },
+      "annotation_1": "People tie palm fronds tightly together to make brooms. A dust broom is a really short broom for sweeping small areas. Do you have a dust broom?",
+      "annotation_2": "Do you suppose they are sweeping up bits of cassava peels and palm nut shells? Have you ever used a tall broom or a dust broom?",
+      "annotation_3": "Point out the vertical and horizontal lines in this picture."
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-14.jpg",
+      "story_text": "Hmmm! sighed the woman. \"All right friends, I have heard you. I will settle this problem.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Hmmm! sighed the woman. \"All right friends, I have heard you. I will settle this problem.\""
+        },
+        "annotation_1": {
+          "eng": "The woman says, \"I have heard you.\" She listened carefully to both of them. It really helps when people listen closely to what people care about."
+        },
+        "annotation_2": {
+          "eng": "She is holding her hands with her palms up. Sometimes that gesture means \"Here's the answer!\" and sometimes it means \"I don't know.\" What does it mean here?"
+        },
+        "annotation_3": {
+          "eng": "How many bumps do you see on Palm's body? Can you count that high?"
+        }
+      },
+      "annotation_1": "The woman says, \"I have heard you.\" She listened carefully to both of them. It really helps when people listen closely to what people care about.",
+      "annotation_2": "She is holding her hands with her palms up. Sometimes that gesture means \"Here's the answer!\" and sometimes it means \"I don't know.\" What does it mean here?",
+      "annotation_3": "How many bumps do you see on Palm's body? Can you count that high?"
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-15.jpg",
+      "story_text": "Both of you are very important to me. The two of you together make a delicious meal, fufu and palm nut soup! said the woman.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Both of you are very important to me. The two of you together make a delicious meal, fufu and palm nut soup! said the woman."
+        },
+        "annotation_1": {
+          "eng": "Giving a new way to look at something can resolve an argument. What did she say that made them both happy?"
+        },
+        "annotation_2": {
+          "eng": "The woman is wearing lots of colors. What are they? Do you have a favorite color?"
+        },
+        "annotation_3": {
+          "eng": "There are fabric curtains at the windows and wooden shutters on the outside of the windows. When do you think they close the shutters? Why?"
+        }
+      },
+      "annotation_1": "Giving a new way to look at something can resolve an argument. What did she say that made them both happy?",
+      "annotation_2": "The woman is wearing lots of colors. What are they? Do you have a favorite color?",
+      "annotation_3": "There are fabric curtains at the windows and wooden shutters on the outside of the windows. When do you think they close the shutters? Why?"
+    },
+    {
+      "id": "page_16",
+      "page_no": 16,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-16.jpg",
+      "story_text": "The woman prepared palm nut soup with fufu from cassavas. She invited her friends to eat with her. They enjoyed the meal very much.\n\nSince then, Cassava and Palm tree have remained good friends.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The woman prepared palm nut soup with fufu from cassavas. She invited her friends to eat with her. They enjoyed the meal very much.\n\nSince then, Cassava and Palm tree have remained good friends."
+        },
+        "annotation_1": {
+          "eng": "How many people are sharing the meal? Who do you think is the oldest and who is the youngest?"
+        },
+        "annotation_2": {
+          "eng": "Are they eating inside or outside the house? Which do you like to do better – eat inside or outside?"
+        },
+        "annotation_3": {
+          "eng": "We can't see the face of the person in the green shirt. Why? Have you ever licked a plate clean because you liked the food so much?"
+        }
+      },
+      "annotation_1": "How many people are sharing the meal? Who do you think is the oldest and who is the youngest?",
+      "annotation_2": "Are they eating inside or outside the house? Which do you like to do better – eat inside or outside?",
+      "annotation_3": "We can't see the face of the person in the green shirt. Why? Have you ever licked a plate clean because you liked the food so much?"
+    },
+    {
+      "id": "page_17",
+      "page_no": 17,
+      "illustration": "EFMStorybooks/EFM-SB-CAP-17.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

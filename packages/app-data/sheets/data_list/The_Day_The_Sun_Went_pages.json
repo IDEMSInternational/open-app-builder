@@ -1,0 +1,362 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "The_Day_The_Sun_Went_pages",
+  "status": "released",
+  "data_list_name": "The_Day_The_Sun_Went_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-TDTSWA-1.jpg",
+      "story_text": "Mother Sun decided to visit her sister, the moon. Sister Moon lives on the other side of the sky. \"I will be back soon,\" said Sun to the clouds.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Mother Sun decided to visit her sister, the moon. Sister Moon lives on the other side of the sky. \"I will be back soon,\" said Sun to the clouds."
+        },
+        "annotation_1": {
+          "eng": "What will change for the clouds and the mountains when the Sun goes away?"
+        },
+        "annotation_2": {
+          "eng": "Have you ever imagined faces on the clouds and mountains?"
+        },
+        "annotation_3": {
+          "eng": "There are five things in the sky. When the sun goes away, how many will be left? What is one less than five?"
+        }
+      },
+      "annotation_1": "What will change for the clouds and the mountains when the Sun goes away?",
+      "annotation_2": "Have you ever imagined faces on the clouds and mountains?",
+      "annotation_3": "There are five things in the sky. When the sun goes away, how many will be left? What is one less than five?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-TDTSWA-2.jpg",
+      "story_text": "When Sun left, the mountains put on their white scarves.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "When Sun left, the mountains put on their white scarves."
+        },
+        "annotation_1": {
+          "eng": "Why did the mountains put on white scarves when the Sun went away?"
+        },
+        "annotation_2": {
+          "eng": "How many clouds are there? Are there more mountains or clouds on this page?"
+        },
+        "annotation_3": {
+          "eng": "What are the clouds doing and what do you think they are feeling?"
+        }
+      },
+      "annotation_1": "Why did the mountains put on white scarves when the Sun went away?",
+      "annotation_2": "How many clouds are there? Are there more mountains or clouds on this page?",
+      "annotation_3": "What are the clouds doing and what do you think they are feeling?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-TDTSWA-3.jpg",
+      "story_text": "Wind had an argument with the trees. The trees became angry. They threw their leaves all over the place.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Wind had an argument with the trees. The trees became angry. They threw their leaves all over the place."
+        },
+        "annotation_1": {
+          "eng": "Guess how many leaves there are blowing around. Do you know numbers that are that big?"
+        },
+        "annotation_2": {
+          "eng": "Notice how hard the wind is blowing. The leaves are blowing everywhere!"
+        },
+        "annotation_3": {
+          "eng": "The wind is blowing so hard that the trees are bending over. Have you ever been outside when the wind blew so hard that you had trouble walking?"
+        }
+      },
+      "annotation_1": "Guess how many leaves there are blowing around. Do you know numbers that are that big?",
+      "annotation_2": "Notice how hard the wind is blowing. The leaves are blowing everywhere!",
+      "annotation_3": "The wind is blowing so hard that the trees are bending over. Have you ever been outside when the wind blew so hard that you had trouble walking?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-TDTSWA-4.jpg",
+      "story_text": "The sky started to grumble.\n\nShe turned grey.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The sky started to grumble.\n\nShe turned grey."
+        },
+        "annotation_1": {
+          "eng": "The clouds are worried and anxious. What do you think is about to happen?"
+        },
+        "annotation_2": {
+          "eng": "Count the faces on the clouds. They are in three groups: groups of two, four, and one. How many is that all together?"
+        },
+        "annotation_3": {
+          "eng": "Counting the trees, the mountains, and the groups of clouds, there are all the numbers from one to five -- can you find them all?"
+        }
+      },
+      "annotation_1": "The clouds are worried and anxious. What do you think is about to happen?",
+      "annotation_2": "Count the faces on the clouds. They are in three groups: groups of two, four, and one. How many is that all together?",
+      "annotation_3": "Counting the trees, the mountains, and the groups of clouds, there are all the numbers from one to five -- can you find them all?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-TDTSWA-5.jpg",
+      "story_text": "The clouds were sad to see all this. They started crying. There were many tears.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The clouds were sad to see all this. They started crying. There were many tears."
+        },
+        "annotation_1": {
+          "eng": "The clouds may have made rain because they were sad, but some people enjoy watching and listening to the rain. How does the rain make you feel?"
+        },
+        "annotation_2": {
+          "eng": "There are a great many raindrops. Can you count them all, or is it too many?"
+        },
+        "annotation_3": {
+          "eng": "Think of something else that there are too many to count."
+        }
+      },
+      "annotation_1": "The clouds may have made rain because they were sad, but some people enjoy watching and listening to the rain. How does the rain make you feel?",
+      "annotation_2": "There are a great many raindrops. Can you count them all, or is it too many?",
+      "annotation_3": "Think of something else that there are too many to count."
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-TDTSWA-6.jpg",
+      "story_text": "The whole world began to sink under water.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The whole world began to sink under water."
+        },
+        "annotation_1": {
+          "eng": "Trees need water, but do you think they like having this much water? The faces on the trees look a little anxious or sad."
+        },
+        "annotation_2": {
+          "eng": "How many trees do you count in this picture?"
+        },
+        "annotation_3": {
+          "eng": "Is the world sinking under the water, or is the water filling up on top of it?"
+        }
+      },
+      "annotation_1": "Trees need water, but do you think they like having this much water? The faces on the trees look a little anxious or sad.",
+      "annotation_2": "How many trees do you count in this picture?",
+      "annotation_3": "Is the world sinking under the water, or is the water filling up on top of it?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-TDTSWA-7.jpg",
+      "story_text": "Meanwhile, on the other side of the sky, Sun was ready to leave her sister. She kissed the moon goodbye and went home.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Meanwhile, on the other side of the sky, Sun was ready to leave her sister. She kissed the moon goodbye and went home."
+        },
+        "annotation_1": {
+          "eng": "Do you think it is possible for the Sun to kiss the Moon?"
+        },
+        "annotation_2": {
+          "eng": "Have you ever seen stars near the moon or the sun?"
+        },
+        "annotation_3": {
+          "eng": "A sphere is a shape like a ball -- it is round in all directions. The moon and the sun are shaped like spheres, though the moon doesn't always look like it."
+        }
+      },
+      "annotation_1": "Do you think it is possible for the Sun to kiss the Moon?",
+      "annotation_2": "Have you ever seen stars near the moon or the sun?",
+      "annotation_3": "A sphere is a shape like a ball -- it is round in all directions. The moon and the sun are shaped like spheres, though the moon doesn't always look like it."
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-TDTSWA-8.jpg",
+      "story_text": "Sky was so happy to see Sun that she turned bright blue. The mountains put on their pretty green dresses.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Sky was so happy to see Sun that she turned bright blue. The mountains put on their pretty green dresses."
+        },
+        "annotation_1": {
+          "eng": "What is the green dress on the mountains made of?"
+        },
+        "annotation_2": {
+          "eng": "How many clouds are there now? What happened to the other clouds?"
+        },
+        "annotation_3": {
+          "eng": "Compare the number of things in the sky to the number of mountains with faces. One of them is one more than the other, and one of them is one less than the other -- which is which?"
+        }
+      },
+      "annotation_1": "What is the green dress on the mountains made of?",
+      "annotation_2": "How many clouds are there now? What happened to the other clouds?",
+      "annotation_3": "Compare the number of things in the sky to the number of mountains with faces. One of them is one more than the other, and one of them is one less than the other -- which is which?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-TDTSWA-9.jpg",
+      "story_text": "The wind went to sleep. The trees stretched their branches and smiled.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The wind went to sleep. The trees stretched their branches and smiled."
+        },
+        "annotation_1": {
+          "eng": "The mountains and trees like the warm weather. Do you like warmer or cooler weather?"
+        },
+        "annotation_2": {
+          "eng": "A cylinder is a shape like a tube or a straw. A broom handle is often a cylinder. The trunks of these trees between the ground and their first branches are cylinders."
+        },
+        "annotation_3": {
+          "eng": "What other things around you are in the shape of a cylinder?"
+        }
+      },
+      "annotation_1": "The mountains and trees like the warm weather. Do you like warmer or cooler weather?",
+      "annotation_2": "A cylinder is a shape like a tube or a straw. A broom handle is often a cylinder. The trunks of these trees between the ground and their first branches are cylinders.",
+      "annotation_3": "What other things around you are in the shape of a cylinder?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-TDTSWA-10.jpg",
+      "story_text": "The clouds were very happy to see Mother Sun again. They went away to play.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The clouds were very happy to see Mother Sun again. They went away to play."
+        },
+        "annotation_1": {
+          "eng": "There are five clouds in the sky. If you add one more for the sun, how many things are in the sky?"
+        },
+        "annotation_2": {
+          "eng": "Two pages ago there were two clouds. How many more clouds are there now?"
+        },
+        "annotation_3": {
+          "eng": "If the clouds were happy to see the Sun, why did they go away?"
+        }
+      },
+      "annotation_1": "There are five clouds in the sky. If you add one more for the sun, how many things are in the sky?",
+      "annotation_2": "Two pages ago there were two clouds. How many more clouds are there now?",
+      "annotation_3": "If the clouds were happy to see the Sun, why did they go away?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-TDTSWA-11.jpg",
+      "story_text": "Lots of little plants popped out of the earth to say, \"Hello.\" The whole world sparkled.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Lots of little plants popped out of the earth to say, \"Hello.\" The whole world sparkled."
+        },
+        "annotation_1": {
+          "eng": "There are butterflies, flowers, stems, and lots of little plants. Count some of these things together."
+        },
+        "annotation_2": {
+          "eng": "Which group of things are there the most of and which group has the least?"
+        },
+        "annotation_3": {
+          "eng": "What are some things that plants need to make them happy and grow?"
+        }
+      },
+      "annotation_1": "There are butterflies, flowers, stems, and lots of little plants. Count some of these things together.",
+      "annotation_2": "Which group of things are there the most of and which group has the least?",
+      "annotation_3": "What are some things that plants need to make them happy and grow?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-TDTSWA-12.jpg",
+      "story_text": "Mother Sun shined her light everywhere. \"I told you I would be back,\" she beamed.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Mother Sun shined her light everywhere. \"I told you I would be back,\" she beamed."
+        },
+        "annotation_1": {
+          "eng": "The rays of the Sun extend very far on this page. Are there days when the rays of the Sun seem to reach all the way to you?"
+        },
+        "annotation_2": {
+          "eng": "Which are there the least of on this page: trees, mountains, or things in the sky?"
+        },
+        "annotation_3": {
+          "eng": "Which are there the most of? Sometimes there are two things with the same amount with the most -- that's okay, just say both of them."
+        }
+      },
+      "annotation_1": "The rays of the Sun extend very far on this page. Are there days when the rays of the Sun seem to reach all the way to you?",
+      "annotation_2": "Which are there the least of on this page: trees, mountains, or things in the sky?",
+      "annotation_3": "Which are there the most of? Sometimes there are two things with the same amount with the most -- that's okay, just say both of them."
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-TDTSWA-13.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

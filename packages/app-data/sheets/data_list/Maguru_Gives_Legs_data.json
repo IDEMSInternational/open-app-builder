@@ -1,0 +1,478 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Maguru_Gives_Legs_data",
+  "status": "released",
+  "data_list_name": "Maguru_Gives_Legs_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-1.jpg",
+      "story_text": "Long time ago, animals had no legs.\n\nThey all used to crawl.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Long time ago, animals had no legs.\n\nThey all used to crawl."
+        },
+        "annotation_1": {
+          "eng": "Imagine if you had to crawl everywhere. How hard would that be?"
+        },
+        "annotation_2": {
+          "eng": "An estimate is an educated guess. Without counting, estimate how many spots the giraffe has. Now count the spots and see how close you came."
+        },
+        "annotation_3": {
+          "eng": "Do the estimation game with a friend. When you see a group of things, both of you make a quick estimate for the count. Now count the things and see which of you was closer."
+        }
+      },
+      "annotation_1": "Imagine if you had to crawl everywhere. How hard would that be?",
+      "annotation_2": "An estimate is an educated guess. Without counting, estimate how many spots the giraffe has. Now count the spots and see how close you came.",
+      "annotation_3": "Do the estimation game with a friend. When you see a group of things, both of you make a quick estimate for the count. Now count the things and see which of you was closer."
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-2.jpg",
+      "story_text": "Only people had legs, which Maguru gave to them.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Only people had legs, which Maguru gave to them."
+        },
+        "annotation_1": {
+          "eng": "Arms and legs are called limbs. How many limbs does one person have? How many limbs do two people have?"
+        },
+        "annotation_2": {
+          "eng": "To find all the limbs for two people, you can count them by 4's as four plus four more. Another way is to count the pairs of limbs by 2's as 2, 4, 6, 8. Of course you can just count them all one at a time. Which way do you like best?"
+        },
+        "annotation_3": {
+          "eng": "There are lots of colors in this picture. Which colors of the rainbow are missing?"
+        }
+      },
+      "annotation_1": "Arms and legs are called limbs. How many limbs does one person have? How many limbs do two people have?",
+      "annotation_2": "To find all the limbs for two people, you can count them by 4's as four plus four more. Another way is to count the pairs of limbs by 2's as 2, 4, 6, 8. Of course you can just count them all one at a time. Which way do you like best?",
+      "annotation_3": "There are lots of colors in this picture. Which colors of the rainbow are missing?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-3.jpg",
+      "story_text": "One day, Maguru decided to give legs to every animal. He wanted them to walk.\n\nHe told them about it.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "One day, Maguru decided to give legs to every animal. He wanted them to walk.\n\nHe told them about it."
+        },
+        "annotation_1": {
+          "eng": "Count as many round shapes in this picture as you can."
+        },
+        "annotation_2": {
+          "eng": "A round shape that comes to a point is called a cone. The megaphone and the tops of the houses are all cones. Have you ever had food, such as ice cream, out of a cone?"
+        },
+        "annotation_3": {
+          "eng": "Maguru's hand has an unusual number of fingers. Who has more fingers, you or Maguru?"
+        }
+      },
+      "annotation_1": "Count as many round shapes in this picture as you can.",
+      "annotation_2": "A round shape that comes to a point is called a cone. The megaphone and the tops of the houses are all cones. Have you ever had food, such as ice cream, out of a cone?",
+      "annotation_3": "Maguru's hand has an unusual number of fingers. Who has more fingers, you or Maguru?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-4.jpg",
+      "story_text": "The animals said, \"It will be very nice to have legs.\"\n\nThey sang and danced.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The animals said, \"It will be very nice to have legs.\"\n\nThey sang and danced."
+        },
+        "annotation_1": {
+          "eng": "You can dance sitting down and you can dance lying down. Have you ever tried dancing on your knees?"
+        },
+        "annotation_2": {
+          "eng": "These animals can be grouped in many ways. Some have ears and some do not seem to. Some have bodies with just one color and others do not. Some have skinny tails and others do not. Can you think of some other groupings?"
+        },
+        "annotation_3": {
+          "eng": "Grouping things using their properties is an important way we understand things in the world. What are some of your most important properties?"
+        }
+      },
+      "annotation_1": "You can dance sitting down and you can dance lying down. Have you ever tried dancing on your knees?",
+      "annotation_2": "These animals can be grouped in many ways. Some have ears and some do not seem to. Some have bodies with just one color and others do not. Some have skinny tails and others do not. Can you think of some other groupings?",
+      "annotation_3": "Grouping things using their properties is an important way we understand things in the world. What are some of your most important properties?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-5.jpg",
+      "story_text": "The animals said it was hard to crawl.\n\nThey felt pain.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The animals said it was hard to crawl.\n\nThey felt pain."
+        },
+        "annotation_1": {
+          "eng": "Would you rather crawl or walk?"
+        },
+        "annotation_2": {
+          "eng": "Do you think the mouse will get legs long enough to put him in the clouds?"
+        },
+        "annotation_3": {
+          "eng": "Why do you think the crocodile has band-aids on?"
+        }
+      },
+      "annotation_1": "Would you rather crawl or walk?",
+      "annotation_2": "Do you think the mouse will get legs long enough to put him in the clouds?",
+      "annotation_3": "Why do you think the crocodile has band-aids on?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-6.jpg",
+      "story_text": "When the day came, many animals went to Maguru's house.\n\nGiraffes, lions, elephants, rabbits, crocodiles, and birds stood in a line.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "When the day came, many animals went to Maguru's house.\n\nGiraffes, lions, elephants, rabbits, crocodiles, and birds stood in a line."
+        },
+        "annotation_1": {
+          "eng": "That's a very long line! Estimate how many animals are in that line."
+        },
+        "annotation_2": {
+          "eng": "Count all the animals and see how close your estimate was. Can you count that high? Was it too high, too low, or exactly right?"
+        },
+        "annotation_3": {
+          "eng": "Do you see any animals going down? Do you think there is a different path on the backside of the mountain for going down?"
+        }
+      },
+      "annotation_1": "That's a very long line! Estimate how many animals are in that line.",
+      "annotation_2": "Count all the animals and see how close your estimate was. Can you count that high? Was it too high, too low, or exactly right?",
+      "annotation_3": "Do you see any animals going down? Do you think there is a different path on the backside of the mountain for going down?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-7.jpg",
+      "story_text": "Each animal was given four legs.\n\nBirds were given two legs each.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Each animal was given four legs.\n\nBirds were given two legs each."
+        },
+        "annotation_1": {
+          "eng": "Birds are animals, so why are they being treated differently than the other animals?"
+        },
+        "annotation_2": {
+          "eng": "How many fewer feet did birds get than the other animals?"
+        },
+        "annotation_3": {
+          "eng": "If you were a bird, would you feel short-changed getting only two feet, or do you think having two feet is more fun than having four?"
+        }
+      },
+      "annotation_1": "Birds are animals, so why are they being treated differently than the other animals?",
+      "annotation_2": "How many fewer feet did birds get than the other animals?",
+      "annotation_3": "If you were a bird, would you feel short-changed getting only two feet, or do you think having two feet is more fun than having four?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-8.jpg",
+      "story_text": "Everything was different after they got legs.\n\nSome danced for joy. Others fell down.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Everything was different after they got legs.\n\nSome danced for joy. Others fell down."
+        },
+        "annotation_1": {
+          "eng": "Look at their faces. What are the different feelings these animals have?"
+        },
+        "annotation_2": {
+          "eng": "Some of the animals are having trouble with their new legs. Is it fun for you when you try something new, or is it frustrating sometimes? What is something new you tried that was difficult for you?"
+        },
+        "annotation_3": {
+          "eng": "How many of these animals have four legs and how many have two? What is the total number of legs on this page?"
+        }
+      },
+      "annotation_1": "Look at their faces. What are the different feelings these animals have?",
+      "annotation_2": "Some of the animals are having trouble with their new legs. Is it fun for you when you try something new, or is it frustrating sometimes? What is something new you tried that was difficult for you?",
+      "annotation_3": "How many of these animals have four legs and how many have two? What is the total number of legs on this page?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-9.jpg",
+      "story_text": "They went to show people.\n\nThe animals said, \"We will never crawl again.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "They went to show people.\n\nThe animals said, \"We will never crawl again.\""
+        },
+        "annotation_1": {
+          "eng": "People are animals and only have two legs. According to this story, does that mean that people are birds?"
+        },
+        "annotation_2": {
+          "eng": "Is it possible for two types of animals to have a property in common, such as having two legs, and still be different? How much do two things have to have in common to be the same?"
+        },
+        "annotation_3": {
+          "eng": "One of these animals has four legs, but it is standing on two of them. Which one is it?"
+        }
+      },
+      "annotation_1": "People are animals and only have two legs. According to this story, does that mean that people are birds?",
+      "annotation_2": "Is it possible for two types of animals to have a property in common, such as having two legs, and still be different? How much do two things have to have in common to be the same?",
+      "annotation_3": "One of these animals has four legs, but it is standing on two of them. Which one is it?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-10.jpg",
+      "story_text": "The last one in the line was Millipede. Maguru asked, \"Is there anyone else after you?\"\n\nMillipede answered, \"No, I am the last one.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The last one in the line was Millipede. Maguru asked, \"Is there anyone else after you?\"\n\nMillipede answered, \"No, I am the last one.\""
+        },
+        "annotation_1": {
+          "eng": "When you are in line and there is no one after you, you are the last one. Where are you in line if there is no one before you?"
+        },
+        "annotation_2": {
+          "eng": "Why was it important to Maguru that Millipede is last? Do you think Maguru is tired of giving legs to animals?"
+        },
+        "annotation_3": {
+          "eng": "What do you think will happen next?"
+        }
+      },
+      "annotation_1": "When you are in line and there is no one after you, you are the last one. Where are you in line if there is no one before you?",
+      "annotation_2": "Why was it important to Maguru that Millipede is last? Do you think Maguru is tired of giving legs to animals?",
+      "annotation_3": "What do you think will happen next?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-11.jpg",
+      "story_text": "Maguru thought, \"He is the last one. What will I do with the rest of the legs?\"\n\nMaguru gave Millipede all the remaining legs.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Maguru thought, \"He is the last one. What will I do with the rest of the legs?\"\n\nMaguru gave Millipede all the remaining legs."
+        },
+        "annotation_1": {
+          "eng": "Millipede looks very happy to have so many legs. Would you like to have that many legs?"
+        },
+        "annotation_2": {
+          "eng": "If you had so many legs, think of all the shoes you would need. Tying your shoes in the morning would take forever!"
+        },
+        "annotation_3": {
+          "eng": "Can you count high enough to count all of Millipede's feet? Millipede's name means \"thousand feet.\" The record for a millipede is 750 feet, so the name is not exactly correct."
+        }
+      },
+      "annotation_1": "Millipede looks very happy to have so many legs. Would you like to have that many legs?",
+      "annotation_2": "If you had so many legs, think of all the shoes you would need. Tying your shoes in the morning would take forever!",
+      "annotation_3": "Can you count high enough to count all of Millipede's feet? Millipede's name means \"thousand feet.\" The record for a millipede is 750 feet, so the name is not exactly correct."
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-12.jpg",
+      "story_text": "Millipede was very happy. He said, \"I will move faster than others.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Millipede was very happy. He said, \"I will move faster than others.\""
+        },
+        "annotation_1": {
+          "eng": "Do you think an animal moves faster because it has more feet? Can you think of four-legged animals that move more slowly than people?"
+        },
+        "annotation_2": {
+          "eng": "Have you ever seen a millipede? They do not move very quickly at all! Why do you suppose they are so slow?"
+        },
+        "annotation_3": {
+          "eng": "Clouds often look like the clouds in this picture; they have flat bottoms and fluffy tops. Do you have any ideas on why that would be?"
+        }
+      },
+      "annotation_1": "Do you think an animal moves faster because it has more feet? Can you think of four-legged animals that move more slowly than people?",
+      "annotation_2": "Have you ever seen a millipede? They do not move very quickly at all! Why do you suppose they are so slow?",
+      "annotation_3": "Clouds often look like the clouds in this picture; they have flat bottoms and fluffy tops. Do you have any ideas on why that would be?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-13.jpg",
+      "story_text": "After Millipede left, Snake came to Maguru's house. He said to Maguru, \"Please give me some legs.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "After Millipede left, Snake came to Maguru's house. He said to Maguru, \"Please give me some legs.\""
+        },
+        "annotation_1": {
+          "eng": "Uh oh! There are no more legs and Snake needs some. How would you solve this problem?"
+        },
+        "annotation_2": {
+          "eng": "Rectangles are shapes with four straight sides that look like this page. How many rectangles can you find on this page?"
+        },
+        "annotation_3": {
+          "eng": "Squares are rectangles with four equal sides. Can you find the rectangle on this page that is a square?"
+        }
+      },
+      "annotation_1": "Uh oh! There are no more legs and Snake needs some. How would you solve this problem?",
+      "annotation_2": "Rectangles are shapes with four straight sides that look like this page. How many rectangles can you find on this page?",
+      "annotation_3": "Squares are rectangles with four equal sides. Can you find the rectangle on this page that is a square?"
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-14.jpg",
+      "story_text": "Maguru said, \"I have given out all the legs. Where were you?\"\n\nSnake answered, \"I overslept.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Maguru said, \"I have given out all the legs. Where were you?\"\n\nSnake answered, \"I overslept.\""
+        },
+        "annotation_1": {
+          "eng": "Look at their faces. How do they feel?"
+        },
+        "annotation_2": {
+          "eng": "Have you ever overslept? Was it fun to sleep in, or did you feel guilty about sleeping so long?"
+        },
+        "annotation_3": {
+          "eng": "Can you count all the stripes on this page? Can you count that high?"
+        }
+      },
+      "annotation_1": "Look at their faces. How do they feel?",
+      "annotation_2": "Have you ever overslept? Was it fun to sleep in, or did you feel guilty about sleeping so long?",
+      "annotation_3": "Can you count all the stripes on this page? Can you count that high?"
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-15.jpg",
+      "story_text": "Maguru looked to see if there were legs remaining.\n\nHe did not find any.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Maguru looked to see if there were legs remaining.\n\nHe did not find any."
+        },
+        "annotation_1": {
+          "eng": "Describe some of the rectangles on this page. Are any of  them squares?"
+        },
+        "annotation_2": {
+          "eng": "When you can only see part of something that has a stripe, it can look like a rectangle. Describe a few of those on this page."
+        },
+        "annotation_3": {
+          "eng": "There are no legs where Maguru looked. When you have none of something, you have 0 of them. Zero is a very useful number for describing not having anything. Name some silly things that you have zero of!"
+        }
+      },
+      "annotation_1": "Describe some of the rectangles on this page. Are any of  them squares?",
+      "annotation_2": "When you can only see part of something that has a stripe, it can look like a rectangle. Describe a few of those on this page.",
+      "annotation_3": "There are no legs where Maguru looked. When you have none of something, you have 0 of them. Zero is a very useful number for describing not having anything. Name some silly things that you have zero of!"
+    },
+    {
+      "id": "page_16",
+      "page_no": 16,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-16.jpg",
+      "story_text": "Maguru said to Snake, \"Sorry. There are no legs left.\" Snake crawled home without legs.\n\nFrom that day, Snake does not sleep much. He is waiting to be first in line to get legs.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Maguru said to Snake, \"Sorry. There are no legs left.\" Snake crawled home without legs.\n\nFrom that day, Snake does not sleep much. He is waiting to be first in line to get legs."
+        },
+        "annotation_1": {
+          "eng": "It is a very sad day for Snake! Have you ever been sad that others got something that you did not? Were you happy for the others, or just sad that you were left out?"
+        },
+        "annotation_2": {
+          "eng": "Can you think of some other animals that have zero legs?"
+        },
+        "annotation_3": {
+          "eng": "There is a cloud next to Maguru that is quite strange! The cloud is between Snake and Maguru's home. It must be a very tiny cloud!"
+        }
+      },
+      "annotation_1": "It is a very sad day for Snake! Have you ever been sad that others got something that you did not? Were you happy for the others, or just sad that you were left out?",
+      "annotation_2": "Can you think of some other animals that have zero legs?",
+      "annotation_3": "There is a cloud next to Maguru that is quite strange! The cloud is between Snake and Maguru's home. It must be a very tiny cloud!"
+    },
+    {
+      "id": "page_17",
+      "page_no": 17,
+      "illustration": "EFMStorybooks/EFM-SB-MGL-17.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

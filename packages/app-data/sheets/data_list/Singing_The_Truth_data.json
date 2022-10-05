@@ -23,14 +23,14 @@
           "eng": "She is sitting on a three-legged stool. Most chairs have four legs. What is better about having three legs?"
         },
         "annotation_2": {
-          "eng": "This story has lots of rectangles. A rectangle is a shape with four straight sides and corners that right angles, like the corners of this page. Point to some rectangles in this picture."
+          "eng": "This story has lots of rectangles. A rectangle is a shape with four straight sides and corners that are right angles, like the corners of this page. Point to some rectangles in this picture."
         },
         "annotation_3": {
           "eng": "There are rectangles all around you. Point to some rectangles where you are."
         }
       },
       "annotation_1": "She is sitting on a three-legged stool. Most chairs have four legs. What is better about having three legs?",
-      "annotation_2": "This story has lots of rectangles. A rectangle is a shape with four straight sides and corners that right angles, like the corners of this page. Point to some rectangles in this picture.",
+      "annotation_2": "This story has lots of rectangles. A rectangle is a shape with four straight sides and corners that are right angles, like the corners of this page. Point to some rectangles in this picture.",
       "annotation_3": "There are rectangles all around you. Point to some rectangles where you are."
     },
     {
@@ -252,7 +252,7 @@
           "eng": "People all over the world heard my story. My songs and my story helped many to see how there was no fairness in South Africa for those with black skin. I decided to go on singing and telling the truth about my country, no matter what."
         },
         "annotation_1": {
-          "eng": "Have you ever done something that some people thought was a bad idea, but you knew it was the right things to do? What was it? Were you glad you stood up for what you believed in?"
+          "eng": "Have you ever done something that some people thought was a bad idea, but you knew it was the right thing to do? What was it? Were you glad you stood up for what you believed in?"
         },
         "annotation_2": {
           "eng": "How do the eyebrows and mouths in this picture show that the people are dismayed?"
@@ -261,7 +261,7 @@
           "eng": "Use your eyebrows to show different feelings. Try to show that you are happy, sad, surprised, or worried."
         }
       },
-      "annotation_1": "Have you ever done something that some people thought was a bad idea, but you knew it was the right things to do? What was it? Were you glad you stood up for what you believed in?",
+      "annotation_1": "Have you ever done something that some people thought was a bad idea, but you knew it was the right thing to do? What was it? Were you glad you stood up for what you believed in?",
       "annotation_2": "How do the eyebrows and mouths in this picture show that the people are dismayed?",
       "annotation_3": "Use your eyebrows to show different feelings. Try to show that you are happy, sad, surprised, or worried."
     },
@@ -339,7 +339,7 @@
           "eng": "After that, I could sing in a free, fair country. People of different colors could enjoy music together. I helped make this happen because I was brave and strong. I sang the truth in all of my songs."
         },
         "annotation_1": {
-          "eng": "What are some times when you have been brave and strong. How did you feel?"
+          "eng": "What are some times when you have been brave and strong? How did you feel?"
         },
         "annotation_2": {
           "eng": "Count together all the people on this page. If you take away the people on the stage, how many are left?"
@@ -348,7 +348,7 @@
           "eng": "How wonderful to see all these people enjoying Miriam's music and dancing together!"
         }
       },
-      "annotation_1": "What are some times when you have been brave and strong. How did you feel?",
+      "annotation_1": "What are some times when you have been brave and strong? How did you feel?",
       "annotation_2": "Count together all the people on this page. If you take away the people on the stage, how many are left?",
       "annotation_3": "How wonderful to see all these people enjoying Miriam's music and dancing together!"
     },

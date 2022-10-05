@@ -1,0 +1,246 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Palm_Tree_pages",
+  "status": "released",
+  "data_list_name": "Palm_Tree_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-PT-1.jpg",
+      "story_text": "Let me tell you about the palm tree.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Let me tell you about the palm tree."
+        },
+        "annotation_1": {
+          "eng": "Do you have palm trees where you live? There are many kinds of palm trees -- perhaps yours look different than these."
+        },
+        "annotation_2": {
+          "eng": "His necklace has a repeating pattern of yellow and red beads. Count the beads by using the pattern to count by 2's."
+        },
+        "annotation_3": {
+          "eng": "He has loops for his ears. How many looping pieces of clothing does he have? Be sure to look all over."
+        }
+      },
+      "annotation_1": "Do you have palm trees where you live? There are many kinds of palm trees -- perhaps yours look different than these.",
+      "annotation_2": "His necklace has a repeating pattern of yellow and red beads. Count the beads by using the pattern to count by 2's.",
+      "annotation_3": "He has loops for his ears. How many looping pieces of clothing does he have? Be sure to look all over."
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-PT-2.jpg",
+      "story_text": "This tree lives when everything else is dry.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "This tree lives when everything else is dry."
+        },
+        "annotation_1": {
+          "eng": "Water is needed by most living things. Palm trees are smart about using very little water in a dry place."
+        },
+        "annotation_2": {
+          "eng": "The branches split into two branches as they go up. Count the branches at the top of what we can see before the leaves."
+        },
+        "annotation_3": {
+          "eng": "Count the bones and stones on the ground."
+        }
+      },
+      "annotation_1": "Water is needed by most living things. Palm trees are smart about using very little water in a dry place.",
+      "annotation_2": "The branches split into two branches as they go up. Count the branches at the top of what we can see before the leaves.",
+      "annotation_3": "Count the bones and stones on the ground."
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-PT-3.jpg",
+      "story_text": "The shade from a palm tree is always cool.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The shade from a palm tree is always cool."
+        },
+        "annotation_1": {
+          "eng": "Is there something special about the shade of a palm tree that makes it cool?"
+        },
+        "annotation_2": {
+          "eng": "Is the shade of all trees cool?"
+        },
+        "annotation_3": {
+          "eng": "This person barely fits inside this shade. Why did he pick such a small tree? Maybe there aren't any other trees nearby?"
+        }
+      },
+      "annotation_1": "Is there something special about the shade of a palm tree that makes it cool?",
+      "annotation_2": "Is the shade of all trees cool?",
+      "annotation_3": "This person barely fits inside this shade. Why did he pick such a small tree? Maybe there aren't any other trees nearby?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-PT-4.jpg",
+      "story_text": "We eat fruit from the palm tree.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "We eat fruit from the palm tree."
+        },
+        "annotation_1": {
+          "eng": "Name and count the kinds of fruit you like to eat."
+        },
+        "annotation_2": {
+          "eng": "Their hair is braided into rows. Which one has more rows that you can see? What is the difference between the two numbers -- how many more?"
+        },
+        "annotation_3": {
+          "eng": "Does it make sense that the bigger person would have the bigger number of hair rows?"
+        }
+      },
+      "annotation_1": "Name and count the kinds of fruit you like to eat.",
+      "annotation_2": "Their hair is braided into rows. Which one has more rows that you can see? What is the difference between the two numbers -- how many more?",
+      "annotation_3": "Does it make sense that the bigger person would have the bigger number of hair rows?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-PT-5.jpg",
+      "story_text": "We use palm leaves to thatch our houses.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "We use palm leaves to thatch our houses."
+        },
+        "annotation_1": {
+          "eng": "This house has a round shape. Round houses are easier to build and enclose more space."
+        },
+        "annotation_2": {
+          "eng": "Do you have any round buildings where you live?"
+        },
+        "annotation_3": {
+          "eng": "Balls and light bulbs are usually round. What are some round things around you?"
+        }
+      },
+      "annotation_1": "This house has a round shape. Round houses are easier to build and enclose more space.",
+      "annotation_2": "Do you have any round buildings where you live?",
+      "annotation_3": "Balls and light bulbs are usually round. What are some round things around you?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-PT-6.jpg",
+      "story_text": "We make brooms and mats from palm leaves.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "We make brooms and mats from palm leaves."
+        },
+        "annotation_1": {
+          "eng": "Of the things around you, which of them look like they are made directly from trees or other natural materials?"
+        },
+        "annotation_2": {
+          "eng": "Count together the number of different things in this picture that are made from a palm."
+        },
+        "annotation_3": {
+          "eng": "Count the number of loops that she is wearing. Is the number more or less than the man had on an earlier page?"
+        }
+      },
+      "annotation_1": "Of the things around you, which of them look like they are made directly from trees or other natural materials?",
+      "annotation_2": "Count together the number of different things in this picture that are made from a palm.",
+      "annotation_3": "Count the number of loops that she is wearing. Is the number more or less than the man had on an earlier page?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-PT-7.jpg",
+      "story_text": "We use palm tree seeds for fuel.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "We use palm tree seeds for fuel."
+        },
+        "annotation_1": {
+          "eng": "Burning palm tree seeds is one of many possible sources of heat. How do you get heat where you live?"
+        },
+        "annotation_2": {
+          "eng": "What are other uses for heat besides cooking?"
+        },
+        "annotation_3": {
+          "eng": "An estimate is an educated guess based on partial information. Estimate the number of seeds in that basket. Is it a bigger number than you know?"
+        }
+      },
+      "annotation_1": "Burning palm tree seeds is one of many possible sources of heat. How do you get heat where you live?",
+      "annotation_2": "What are other uses for heat besides cooking?",
+      "annotation_3": "An estimate is an educated guess based on partial information. Estimate the number of seeds in that basket. Is it a bigger number than you know?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-PT-8.jpg",
+      "story_text": "Do you see why the palm tree is important?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Do you see why the palm tree is important?"
+        },
+        "annotation_1": {
+          "eng": "List and count how many ways the palm tree is useful to them."
+        },
+        "annotation_2": {
+          "eng": "What are some trees where you live that have important uses?"
+        },
+        "annotation_3": {
+          "eng": "Whether useful or not, what are some of your favorite trees near you?"
+        }
+      },
+      "annotation_1": "List and count how many ways the palm tree is useful to them.",
+      "annotation_2": "What are some trees where you live that have important uses?",
+      "annotation_3": "Whether useful or not, what are some of your favorite trees near you?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-PT-9.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

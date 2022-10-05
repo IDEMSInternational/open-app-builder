@@ -239,6 +239,7 @@
         "text_align": "center",
         "style": "small"
       },
+      "exclude_from_translation": true,
       "_nested_name": "chapter_section",
       "_dynamicFields": {
         "value": [
@@ -285,6 +286,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "find_next_and_prev.act_type",
           "_dynamicFields": {
@@ -309,6 +311,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "find_next_and_prev.ok_type",
           "_dynamicFields": {
@@ -333,6 +336,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "find_next_and_prev.do_ids_match",
           "_dynamicFields": {
@@ -366,6 +370,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "find_next_and_prev.has_activity_been_seen",
           "_dynamicFields": {
@@ -400,6 +405,7 @@
             "value": {}
           },
           "condition": "@local.ok_type && !@local.do_ids_match && !@local.has_activity_been_seen",
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "find_next_and_prev.prev_activity",
           "_dynamicFields": {
@@ -454,6 +460,7 @@
             "value": {}
           },
           "condition": "@local.ok_type && !@local.do_ids_match && @local.has_activity_been_seen && !@local.next_activity",
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "find_next_and_prev.next_activity",
           "_dynamicFields": {
@@ -570,6 +577,7 @@
           "style_list": [
             "flex: 30"
           ],
+          "exclude_from_translation": true,
           "_nested_name": "display_group.prev_button_1",
           "_dynamicFields": {
             "action_list": {
@@ -711,6 +719,7 @@
           "style_list": [
             "flex: 30"
           ],
+          "exclude_from_translation": true,
           "_nested_name": "display_group.next_button_1",
           "_dynamicFields": {
             "action_list": {

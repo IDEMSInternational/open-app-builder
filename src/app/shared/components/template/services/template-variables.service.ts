@@ -340,7 +340,7 @@ export class TemplateVariablesService {
       // TODO - ideally campaign lookup should be merged into data list lookup with additional query/params
       // e.g. evaluate conditions, take first etc.
       case "campaign":
-        parsedValue = (await this.campaignService.getNextCampaignRows(fieldName))[0];
+        parsedValue = (await this.campaignService.getNextCampaignRows(fieldName))?.[0];
         break;
       case "calc":
         const expression = fieldName.replace(/@/gi, "this.");
@@ -375,7 +375,7 @@ export class TemplateVariablesService {
    * TODO - could also merge with standalone global method
    */
   private ensureValueTranslated(value: any) {
-    // If translatable value should be an object with _tranlsations property
+    // If translatable value should be an object with _translations property
     // TODO - check if case needs to be added to translate arrays
     if (value && typeof value === "object" && !Array.isArray(value)) {
       if (value.hasOwnProperty("_translations")) {

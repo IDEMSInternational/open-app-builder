@@ -1,0 +1,362 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "A_Dancers_Tale_data",
+  "status": "released",
+  "data_list_name": "A_Dancers_Tale_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-ADT-1.jpg",
+      "story_text": "Once upon a time, in Joburg's Orange Grove, a little girl called Phyllis was born into the world. Two people in love, hugged their sweet little babe. No one knew then, what a dancer they'd made.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Once upon a time, in Joburg's Orange Grove, a little girl called Phyllis was born into the world. Two people in love, hugged their sweet little babe. No one knew then, what a dancer they'd made."
+        },
+        "annotation_1": {
+          "eng": "There are three people here. Which one is the smallest? Count their eyes together. If there are three people, how many eyes will they have?"
+        },
+        "annotation_2": {
+          "eng": "There are some circles and partial circles in this picture. Partial circles are called arcs. Point to some of the arcs and make an arc with your arms."
+        },
+        "annotation_3": {
+          "eng": "This story is a biography -- it is a true story about the life of a real person. Pick a person you know and tell a biography story about them -- talk about their family and some things they have done."
+        }
+      },
+      "annotation_1": "There are three people here. Which one is the smallest? Count their eyes together. If there are three people, how many eyes will they have?",
+      "annotation_2": "There are some circles and partial circles in this picture. Partial circles are called arcs. Point to some of the arcs and make an arc with your arms.",
+      "annotation_3": "This story is a biography -- it is a true story about the life of a real person. Pick a person you know and tell a biography story about them -- talk about their family and some things they have done."
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-ADT-2.jpg",
+      "story_text": "By the time she was four, she had learned very quick. She impressed all her teachers, with her ducky feet flicks! Before school and after, she danced every day. Nothing pleased Phyllis, more than ballet.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "By the time she was four, she had learned very quick. She impressed all her teachers, with her ducky feet flicks! Before school and after, she danced every day. Nothing pleased Phyllis, more than ballet."
+        },
+        "annotation_1": {
+          "eng": "This story has lots of words that rhyme -- the ends of the words sound the same. On each page, find some of the rhyming words."
+        },
+        "annotation_2": {
+          "eng": "Phyllis' face looks full of joy! What do you think she is feeling as she dances?"
+        },
+        "annotation_3": {
+          "eng": "Think of a time when you were moving that made you feel such joy. Perhaps you were running, dancing, jumping, or riding a bike."
+        }
+      },
+      "annotation_1": "This story has lots of words that rhyme -- the ends of the words sound the same. On each page, find some of the rhyming words.",
+      "annotation_2": "Phyllis' face looks full of joy! What do you think she is feeling as she dances?",
+      "annotation_3": "Think of a time when you were moving that made you feel such joy. Perhaps you were running, dancing, jumping, or riding a bike."
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-ADT-3.jpg",
+      "story_text": "When the world was ready for Phyllis at fifteen, she arrived in big, old London, ready to live her dream. She said goodbye to all her friends. She was ready to start fresh. Watch out Royal Ballet School! Phyllis is here to impress.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "When the world was ready for Phyllis at fifteen, she arrived in big, old London, ready to live her dream. She said goodbye to all her friends. She was ready to start fresh. Watch out Royal Ballet School! Phyllis is here to impress."
+        },
+        "annotation_1": {
+          "eng": "In a real sky, there are too many stars to count. Point to the stars in this picture as you count them."
+        },
+        "annotation_2": {
+          "eng": "A rectangle is a shape with four straight sides like this page. Find all the rectangles on this page. Point to all the rectangles around where you are."
+        },
+        "annotation_3": {
+          "eng": "It takes 11 hours to fly from Johannesburg in the south of Africa to London on the western side of Europe. Compare that to how long it takes to go to the store or to visit a friend or relative. Which of these is shortest and which is longest?"
+        }
+      },
+      "annotation_1": "In a real sky, there are too many stars to count. Point to the stars in this picture as you count them.",
+      "annotation_2": "A rectangle is a shape with four straight sides like this page. Find all the rectangles on this page. Point to all the rectangles around where you are.",
+      "annotation_3": "It takes 11 hours to fly from Johannesburg in the south of Africa to London on the western side of Europe. Compare that to how long it takes to go to the store or to visit a friend or relative. Which of these is shortest and which is longest?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-ADT-4.jpg",
+      "story_text": "When Phyllis danced Swan Lake, it was fit to show the Queen! After years of pirouetting, she was ready to be seen. Dancing for the audience, she turned and twirled about. Look! Everyone is smiling! See how they clap and shout!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "When Phyllis danced Swan Lake, it was fit to show the Queen! After years of pirouetting, she was ready to be seen. Dancing for the audience, she turned and twirled about. Look! Everyone is smiling! See how they clap and shout!"
+        },
+        "annotation_1": {
+          "eng": "Body position is important in ballet. Notice the male dancer's upper arm and opposite leg point in opposite directions almost making a straight, diagonal line."
+        },
+        "annotation_2": {
+          "eng": "Notice how Phyllis' legs almost make a straight line. Can you make a straight line with your arms or legs?"
+        },
+        "annotation_3": {
+          "eng": "Phyllis has become a very good dancer at this point in the story. What do you think will happen next? Make your own version of the second half of this story."
+        }
+      },
+      "annotation_1": "Body position is important in ballet. Notice the male dancer's upper arm and opposite leg point in opposite directions almost making a straight, diagonal line.",
+      "annotation_2": "Notice how Phyllis' legs almost make a straight line. Can you make a straight line with your arms or legs?",
+      "annotation_3": "Phyllis has become a very good dancer at this point in the story. What do you think will happen next? Make your own version of the second half of this story."
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-ADT-5.jpg",
+      "story_text": "From Mexico to Canada. From the USA to France. Phyllis travelled far and wide, so the world could see her dance. With the Royal Ballet Company, and her ballerina friends, she spread her love for ballet. She never wanted it to end.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "From Mexico to Canada. From the USA to France. Phyllis travelled far and wide, so the world could see her dance. With the Royal Ballet Company, and her ballerina friends, she spread her love for ballet. She never wanted it to end."
+        },
+        "annotation_1": {
+          "eng": "Do you see a diagonal line in Phyllis' body position? Trace that line with your finger."
+        },
+        "annotation_2": {
+          "eng": "There are lots of rectangles in this picture. Point to as many as you can and count them together."
+        },
+        "annotation_3": {
+          "eng": "Some of the rectangles are flags on the bottom of Phyllis' dress. What are the colors on those flags? Do you recognize the flag of any country you know?"
+        }
+      },
+      "annotation_1": "Do you see a diagonal line in Phyllis' body position? Trace that line with your finger.",
+      "annotation_2": "There are lots of rectangles in this picture. Point to as many as you can and count them together.",
+      "annotation_3": "Some of the rectangles are flags on the bottom of Phyllis' dress. What are the colors on those flags? Do you recognize the flag of any country you know?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-ADT-6.jpg",
+      "story_text": "Phyllis always knew, that dance was in her heart. But she longed to return home again, and make a fresh new start. So she leaped and bounded, back to her beautiful land. Her ballerina roots were regrown. She was once more South African.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Phyllis always knew, that dance was in her heart. But she longed to return home again, and make a fresh new start. So she leaped and bounded, back to her beautiful land. Her ballerina roots were regrown. She was once more South African."
+        },
+        "annotation_1": {
+          "eng": "Phyllis has the flag of South Africa. How many colors are on this flag? Can you see some of those colors where you are?"
+        },
+        "annotation_2": {
+          "eng": "Point to the triangle on the flag. What shape is the green region on the flag?"
+        },
+        "annotation_3": {
+          "eng": "Have you ever traveled away from home? Was it exciting to be away, or did you miss your home?"
+        }
+      },
+      "annotation_1": "Phyllis has the flag of South Africa. How many colors are on this flag? Can you see some of those colors where you are?",
+      "annotation_2": "Point to the triangle on the flag. What shape is the green region on the flag?",
+      "annotation_3": "Have you ever traveled away from home? Was it exciting to be away, or did you miss your home?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-ADT-7.jpg",
+      "story_text": "Dancing wasn't just for fun, as Phyllis always knew. She'd work at dancing day and night, and with hard work she grew. Always smiling, always trying, through good times and through tough, Phyllis always did her best. She couldn't get enough.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Dancing wasn't just for fun, as Phyllis always knew. She'd work at dancing day and night, and with hard work she grew. Always smiling, always trying, through good times and through tough, Phyllis always did her best. She couldn't get enough."
+        },
+        "annotation_1": {
+          "eng": "Phyllis' legs are at a right angle to each other -- they make an angle like the corner of this page. Make a right angle with your arms or legs."
+        },
+        "annotation_2": {
+          "eng": "Phyllis and her partner are performing in this picture. How can you tell?"
+        },
+        "annotation_3": {
+          "eng": "Have you ever worked really hard at something? How did you feel about doing that?"
+        }
+      },
+      "annotation_1": "Phyllis' legs are at a right angle to each other -- they make an angle like the corner of this page. Make a right angle with your arms or legs.",
+      "annotation_2": "Phyllis and her partner are performing in this picture. How can you tell?",
+      "annotation_3": "Have you ever worked really hard at something? How did you feel about doing that?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-ADT-8.jpg",
+      "story_text": "Romeo and Juliet, Swan Lake and Giselle. Phyllis danced these for the people: graceful, tireless, well. With partners Gary Burne and Eduard Greyling too, her magnificence inspired the audience. To her, flowers they threw.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Romeo and Juliet, Swan Lake and Giselle. Phyllis danced these for the people: graceful, tireless, well. With partners Gary Burne and Eduard Greyling too, her magnificence inspired the audience. To her, flowers they threw."
+        },
+        "annotation_1": {
+          "eng": "Phyllis' body is pictured inside a clock. Go around the clock saying and pointing at each number."
+        },
+        "annotation_2": {
+          "eng": "The numbers on the clock increase from 1 to 12 in what is called the clockwise direction."
+        },
+        "annotation_3": {
+          "eng": "Each of Phyllis' hands and feet point at a number. What are they?"
+        }
+      },
+      "annotation_1": "Phyllis' body is pictured inside a clock. Go around the clock saying and pointing at each number.",
+      "annotation_2": "The numbers on the clock increase from 1 to 12 in what is called the clockwise direction.",
+      "annotation_3": "Each of Phyllis' hands and feet point at a number. What are they?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-ADT-9.jpg",
+      "story_text": "Reward comes easily, when you put yourself to the test. Phyllis came to realize this, once she was called 'The Best.' She was awarded 'Prima Ballerina Assoluta.' The greatest dancer of them all! Phyllis would be forever known. She wanted nothing more.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Reward comes easily, when you put yourself to the test. Phyllis came to realize this, once she was called 'The Best.' She was awarded 'Prima Ballerina Assoluta.' The greatest dancer of them all! Phyllis would be forever known. She wanted nothing more."
+        },
+        "annotation_1": {
+          "eng": "The story rhymes \"test\" with \"best.\" It doesn't rhyme any word with \"more.\" Think of some words that rhyme with \"more.\""
+        },
+        "annotation_2": {
+          "eng": "She is standing on her toes. Ballerinas wear special shoes, toe shoes, to help them do that."
+        },
+        "annotation_3": {
+          "eng": "If you try to stand on your toes, do your toes curl under? It is very hard to be on your toes."
+        }
+      },
+      "annotation_1": "The story rhymes \"test\" with \"best.\" It doesn't rhyme any word with \"more.\" Think of some words that rhyme with \"more.\"",
+      "annotation_2": "She is standing on her toes. Ballerinas wear special shoes, toe shoes, to help them do that.",
+      "annotation_3": "If you try to stand on your toes, do your toes curl under? It is very hard to be on your toes."
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-ADT-10.jpg",
+      "story_text": "Goodness! What a catch! Phyllis met her loving partner. His name was Phillip Boyd. He was another dancer. Together they were married. And together they would dance. No one could be better matched, given half the chance!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Goodness! What a catch! Phyllis met her loving partner. His name was Phillip Boyd. He was another dancer. Together they were married. And together they would dance. No one could be better matched, given half the chance!"
+        },
+        "annotation_1": {
+          "eng": "The word \"catch\" has two meanings here. A ballerina might leap or spin and her partner would catch her. It can also mean that romantic partners catch each other and become a couple."
+        },
+        "annotation_2": {
+          "eng": "There are a lot of red flowers. How many do you see?"
+        },
+        "annotation_3": {
+          "eng": "The green leaves are in the shape of a heart. Which side of the heart has more red flowers?"
+        }
+      },
+      "annotation_1": "The word \"catch\" has two meanings here. A ballerina might leap or spin and her partner would catch her. It can also mean that romantic partners catch each other and become a couple.",
+      "annotation_2": "There are a lot of red flowers. How many do you see?",
+      "annotation_3": "The green leaves are in the shape of a heart. Which side of the heart has more red flowers?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-ADT-11.jpg",
+      "story_text": "Though they had no children, Phyllis and Phillip were never sad. The two of them found another way to help other Mums and Dads. They started Dance for All, a special school for dance. So that children with no money, could also learn to prance!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Though they had no children, Phyllis and Phillip were never sad. The two of them found another way to help other Mums and Dads. They started Dance for All, a special school for dance. So that children with no money, could also learn to prance!"
+        },
+        "annotation_1": {
+          "eng": "How many arms and legs can you count all together in this picture?"
+        },
+        "annotation_2": {
+          "eng": "Phyllis and Phillip helped children learn to dance even when their families couldn't pay. It's a good feeling helping others."
+        },
+        "annotation_3": {
+          "eng": "Have you ever helped a person or animal that needed something? Even little things count, like opening a door or sharing some food. How did you feel?"
+        }
+      },
+      "annotation_1": "How many arms and legs can you count all together in this picture?",
+      "annotation_2": "Phyllis and Phillip helped children learn to dance even when their families couldn't pay. It's a good feeling helping others.",
+      "annotation_3": "Have you ever helped a person or animal that needed something? Even little things count, like opening a door or sharing some food. How did you feel?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-ADT-12.jpg",
+      "story_text": "She left a legacy of dance, and incredible success. Her magic was passed on to others to help them become their best. Her students spread across the world, inspired by her ducky feet. They dance on while we watch, dreaming from our seats.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "She left a legacy of dance, and incredible success. Her magic was passed on to others to help them become their best. Her students spread across the world, inspired by her ducky feet. They dance on while we watch, dreaming from our seats."
+        },
+        "annotation_1": {
+          "eng": "How many dancers do you see here? Don't forget to count Phyllis."
+        },
+        "annotation_2": {
+          "eng": "Describe all the different body positions you see. Make some of these shapes with your body."
+        },
+        "annotation_3": {
+          "eng": "Ballet is not a sport. However, dancers are athletes, and they form a team, and their teachers are like coaches. Did this story make you want to become a dancer?"
+        }
+      },
+      "annotation_1": "How many dancers do you see here? Don't forget to count Phyllis.",
+      "annotation_2": "Describe all the different body positions you see. Make some of these shapes with your body.",
+      "annotation_3": "Ballet is not a sport. However, dancers are athletes, and they form a team, and their teachers are like coaches. Did this story make you want to become a dancer?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-ADT-13.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

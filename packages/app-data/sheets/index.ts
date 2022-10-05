@@ -4,15 +4,15 @@ type ISheetContents = {
 };
 export const SHEETS_CONTENT_LIST: ISheetContents = {
   data_list: {
-    A_Dancers_Tale_story_data: {
+    A_Dancers_Tale_data: {
       flow_type: "data_list",
-      flow_name: "A_Dancers_Tale_story_data",
+      flow_name: "A_Dancers_Tale_data",
       data_list_name: "A_Dancers_Tale_storybook",
       _xlsxPath: "EFM_storybooks_intermediate.xlsx",
     },
-    A_Fish_And_A_Gift_story_data: {
+    A_Fish_And_A_Gift_data: {
       flow_type: "data_list",
-      flow_name: "A_Fish_And_A_Gift_story_data",
+      flow_name: "A_Fish_And_A_Gift_data",
       data_list_name: "A_Fish_And_A_Gift_storybook",
       _xlsxPath: "EFM_storybooks_intermediate.xlsx",
     },
@@ -28,9 +28,15 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "Akadelis_Lucky_Day_storybook",
       _xlsxPath: "EFM_storybooks_beginning.xlsx",
     },
-    Amazing_Daisy_story_data: {
+    Aku_The_Sun_Maker_data: {
       flow_type: "data_list",
-      flow_name: "Amazing_Daisy_story_data",
+      flow_name: "Aku_The_Sun_Maker_data",
+      data_list_name: "Aku_The_Sun_Maker_storybook",
+      _xlsxPath: "EFM_storybooks_intermediate.xlsx",
+    },
+    Amazing_Daisy_data: {
+      flow_type: "data_list",
+      flow_name: "Amazing_Daisy_data",
       data_list_name: "Amazing_Daisy_storybook",
       _xlsxPath: "EFM_storybooks_intermediate.xlsx",
     },
@@ -39,6 +45,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "Can_We_Count_Our_Cats_pages",
       data_list_name: "Can_We_Count_Our_Cats_storybook",
       _xlsxPath: "EFM_storybooks_beginning.xlsx",
+    },
+    Cassava_And_Palm_data: {
+      flow_type: "data_list",
+      flow_name: "Cassava_And_Palm_data",
+      data_list_name: "Cassava_And_Palm_storybook",
+      _xlsxPath: "EFM_storybooks_intermediate.xlsx",
     },
     Cat_And_Dog_And_The_Ball_pages: {
       flow_type: "data_list",
@@ -82,16 +94,94 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "Colors_Of_A_Rainbow_storybook",
       _xlsxPath: "EFM_storybooks_beginning.xlsx",
     },
+    Counting_Animals_pages: {
+      flow_type: "data_list",
+      flow_name: "Counting_Animals_pages",
+      data_list_name: "Counting_Animals_storybook",
+      _xlsxPath: "EFM_storybooks_beginning.xlsx",
+    },
     Creature_With_Two_pages: {
       flow_type: "data_list",
       flow_name: "Creature_With_Two_pages",
       data_list_name: "Creature_With_Two_storybook",
       _xlsxPath: "EFM_storybooks_beginning.xlsx",
     },
+    Curious_Baby_Elephant_data: {
+      flow_type: "data_list",
+      flow_name: "Curious_Baby_Elephant_data",
+      data_list_name: "Curious_Baby_Elephant_storybook",
+      _xlsxPath: "EFM_storybooks_intermediate.xlsx",
+    },
+    Drum_pages: {
+      flow_type: "data_list",
+      flow_name: "Drum_pages",
+      data_list_name: "Drum_storybook",
+      _xlsxPath: "EFM_storybooks_beginning.xlsx",
+    },
+    Fana_Loves_Animals_pages: {
+      flow_type: "data_list",
+      flow_name: "Fana_Loves_Animals_pages",
+      data_list_name: "Fana_Loves_Animals_storybook",
+      _xlsxPath: "EFM_storybooks_beginning.xlsx",
+    },
+    Fathers_Advice_data: {
+      flow_type: "data_list",
+      flow_name: "Fathers_Advice_data",
+      data_list_name: "Fathers_Advice_storybook",
+      _xlsxPath: "EFM_storybooks_intermediate.xlsx",
+    },
+    Fati_And_The_Green_Snake_data: {
+      flow_type: "data_list",
+      flow_name: "Fati_And_The_Green_Snake_data",
+      data_list_name: "Fati_And_The_Green_Snake_storybook",
+      _xlsxPath: "EFM_storybooks_intermediate.xlsx",
+    },
+    Feelings_pages: {
+      flow_type: "data_list",
+      flow_name: "Feelings_pages",
+      data_list_name: "Feelings_storybook",
+      _xlsxPath: "EFM_storybooks_beginning.xlsx",
+    },
+    Flower_Blind_pages: {
+      flow_type: "data_list",
+      flow_name: "Flower_Blind_pages",
+      data_list_name: "Flower_Blind_storybook",
+      _xlsxPath: "EFM_storybooks_beginning.xlsx",
+    },
+    Friends_pages: {
+      flow_type: "data_list",
+      flow_name: "Friends_pages",
+      data_list_name: "Friends_storybook",
+      _xlsxPath: "EFM_storybooks_beginning.xlsx",
+    },
+    Horses_Of_Debre_Birhan_data: {
+      flow_type: "data_list",
+      flow_name: "Horses_Of_Debre_Birhan_data",
+      data_list_name: "Horses_Of_Debre_Birhan_storybook",
+      _xlsxPath: "EFM_storybooks_intermediate.xlsx",
+    },
     How_Many_data: {
       flow_type: "data_list",
       flow_name: "How_Many_data",
       data_list_name: "How_Many_storybook",
+      _xlsxPath: "EFM_storybooks_intermediate.xlsx",
+    },
+    How_The_Toad_Got_Skin_pages: {
+      flow_type: "data_list",
+      flow_name: "How_The_Toad_Got_Skin_pages",
+      data_list_name: "How_The_Toad_Got_Skin_storybook",
+      _xlsxPath: "EFM_storybooks_beginning.xlsx",
+    },
+    Hyena_And_Tortoise_data: {
+      flow_type: "data_list",
+      flow_name: "Hyena_And_Tortoise_data",
+      data_list_name: "Hyena_And_Tortoise_storybook",
+      _xlsxPath: "EFM_storybooks_intermediate.xlsx",
+    },
+    I_Love_Forests_data: {
+      flow_type: "data_list",
+      flow_name: "I_Love_Forests_data",
+      data_list_name: "I_Love_Forests_storybook",
       _xlsxPath: "EFM_storybooks_intermediate.xlsx",
     },
     Is_There_Anyone_Like_Me_data: {
@@ -112,11 +202,41 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "Little_Jojos_Tale_storybook",
       _xlsxPath: "EFM_storybooks_intermediate.xlsx",
     },
+    Look_At_The_Animals_pages: {
+      flow_type: "data_list",
+      flow_name: "Look_At_The_Animals_pages",
+      data_list_name: "Look_At_The_Animals_storybook",
+      _xlsxPath: "EFM_storybooks_beginning.xlsx",
+    },
     Lory_Dory_data: {
       flow_type: "data_list",
       flow_name: "Lory_Dory_data",
       data_list_name: "Lory_Dory_storybook",
       _xlsxPath: "EFM_storybooks_intermediate.xlsx",
+    },
+    Maguru_Gives_Legs_data: {
+      flow_type: "data_list",
+      flow_name: "Maguru_Gives_Legs_data",
+      data_list_name: "Maguru_Gives_Legs_storybook",
+      _xlsxPath: "EFM_storybooks_intermediate.xlsx",
+    },
+    My_School_Clothes_pages: {
+      flow_type: "data_list",
+      flow_name: "My_School_Clothes_pages",
+      data_list_name: "My_School_Clothes_storybook",
+      _xlsxPath: "EFM_storybooks_beginning.xlsx",
+    },
+    Palm_Tree_pages: {
+      flow_type: "data_list",
+      flow_name: "Palm_Tree_pages",
+      data_list_name: "Palm_Tree_storybook",
+      _xlsxPath: "EFM_storybooks_beginning.xlsx",
+    },
+    Pendo_Our_Cow_pages: {
+      flow_type: "data_list",
+      flow_name: "Pendo_Our_Cow_pages",
+      data_list_name: "Pendo_Our_Cow_storybook",
+      _xlsxPath: "EFM_storybooks_beginning.xlsx",
     },
     Singing_The_Truth_data: {
       flow_type: "data_list",
@@ -124,16 +244,40 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "Singing_The_Truth_storybook",
       _xlsxPath: "EFM_storybooks_intermediate.xlsx",
     },
+    Sun_Moon_And_Water_data: {
+      flow_type: "data_list",
+      flow_name: "Sun_Moon_And_Water_data",
+      data_list_name: "Sun_Moon_And_Water_storybook",
+      _xlsxPath: "EFM_storybooks_intermediate.xlsx",
+    },
+    The_Day_The_Sun_Went_pages: {
+      flow_type: "data_list",
+      flow_name: "The_Day_The_Sun_Went_pages",
+      data_list_name: "The_Day_The_Sun_Went_storybook",
+      _xlsxPath: "EFM_storybooks_beginning.xlsx",
+    },
     Tortoise_Finds_His_House_data: {
       flow_type: "data_list",
       flow_name: "Tortoise_Finds_His_House_data",
       data_list_name: "Tortoise_Finds_His_House_storybook",
       _xlsxPath: "EFM_storybooks_intermediate.xlsx",
     },
+    Visiting_Grandmother_pages: {
+      flow_type: "data_list",
+      flow_name: "Visiting_Grandmother_pages",
+      data_list_name: "Visiting_Grandmother_storybook",
+      _xlsxPath: "EFM_storybooks_beginning.xlsx",
+    },
     Where_Is_Lulu_pages: {
       flow_type: "data_list",
       flow_name: "Where_Is_Lulu_pages",
       data_list_name: "Where_Is_Lulu_storybook",
+      _xlsxPath: "EFM_storybooks_beginning.xlsx",
+    },
+    Where_Is_My_Bat_pages: {
+      flow_type: "data_list",
+      flow_name: "Where_Is_My_Bat_pages",
+      data_list_name: "Where_Is_My_Bat_storybook",
       _xlsxPath: "EFM_storybooks_beginning.xlsx",
     },
     Where_Is_My_Cat_pages: {
@@ -1540,4 +1684,5 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       _xlsxPath: "EFM_tours.xlsx",
     },
   },
+  data_pipe: {},
 };

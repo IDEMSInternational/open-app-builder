@@ -1,0 +1,159 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Feelings_pages",
+  "status": "released",
+  "data_list_name": "Feelings_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-FEEL-1.jpg",
+      "story_text": "My heart feels a lot of things.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "My heart feels a lot of things."
+        },
+        "annotation_1": {
+          "eng": "Think of different feelings you have. How many can you think of?"
+        },
+        "annotation_2": {
+          "eng": "Tell a story about a time when you felt one of those feelings."
+        },
+        "annotation_3": {
+          "eng": "Do your feelings fit into a few groups? For example, are they all happy or sad feelings?"
+        }
+      },
+      "annotation_1": "Think of different feelings you have. How many can you think of?",
+      "annotation_2": "Tell a story about a time when you felt one of those feelings.",
+      "annotation_3": "Do your feelings fit into a few groups? For example, are they all happy or sad feelings?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-FEEL-2.jpg",
+      "story_text": "I feel happy when my granny tells us stories in the evening.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I feel happy when my granny tells us stories in the evening."
+        },
+        "annotation_1": {
+          "eng": "Do you know a special person who loves to tell you stories? Does it make you feel good to hear that person tell stories?"
+        },
+        "annotation_2": {
+          "eng": "Count together how many children are listening to granny's story. If you add granny to that count, it will be one more -- how many would that make?"
+        },
+        "annotation_3": {
+          "eng": "Do these children look happy? How can you tell?"
+        }
+      },
+      "annotation_1": "Do you know a special person who loves to tell you stories? Does it make you feel good to hear that person tell stories?",
+      "annotation_2": "Count together how many children are listening to granny's story. If you add granny to that count, it will be one more -- how many would that make?",
+      "annotation_3": "Do these children look happy? How can you tell?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-FEEL-3.jpg",
+      "story_text": "I feel silly when I play with my friend.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I feel silly when I play with my friend."
+        },
+        "annotation_1": {
+          "eng": "What things do you do when you are being silly?"
+        },
+        "annotation_2": {
+          "eng": "Count together the hands, feet, eyes, noses, fingers, toes, or anything else you see."
+        },
+        "annotation_3": {
+          "eng": "Which group of things has the biggest number and which one has the smallest?"
+        }
+      },
+      "annotation_1": "What things do you do when you are being silly?",
+      "annotation_2": "Count together the hands, feet, eyes, noses, fingers, toes, or anything else you see.",
+      "annotation_3": "Which group of things has the biggest number and which one has the smallest?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-FEEL-4.jpg",
+      "story_text": "I feel bad when my dad says he does not have money.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I feel bad when my dad says he does not have money."
+        },
+        "annotation_1": {
+          "eng": "What sorts of things make you sad?"
+        },
+        "annotation_2": {
+          "eng": "Point to and name the colors of their different pieces of clothing."
+        },
+        "annotation_3": {
+          "eng": "Count the number of buttons on her dress."
+        }
+      },
+      "annotation_1": "What sorts of things make you sad?",
+      "annotation_2": "Point to and name the colors of their different pieces of clothing.",
+      "annotation_3": "Count the number of buttons on her dress."
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-FEEL-5.jpg",
+      "story_text": "I feel loved when my mom gives me a hug.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I feel loved when my mom gives me a hug."
+        },
+        "annotation_1": {
+          "eng": "What are some special moments that make you feel loved?"
+        },
+        "annotation_2": {
+          "eng": "What do you do to let others know you feel love for them?"
+        },
+        "annotation_3": {
+          "eng": "The mother's clothing has stripes and the girl's has stars. Do you have some clothes with stars or some other shapes on them?"
+        }
+      },
+      "annotation_1": "What are some special moments that make you feel loved?",
+      "annotation_2": "What do you do to let others know you feel love for them?",
+      "annotation_3": "The mother's clothing has stripes and the girl's has stars. Do you have some clothes with stars or some other shapes on them?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-FEEL-6.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

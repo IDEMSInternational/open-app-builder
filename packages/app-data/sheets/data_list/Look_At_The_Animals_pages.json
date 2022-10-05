@@ -1,0 +1,246 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Look_At_The_Animals_pages",
+  "status": "released",
+  "data_list_name": "Look_At_The_Animals_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-LATA-1.jpg",
+      "story_text": "Look at the animals.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Look at the animals."
+        },
+        "annotation_1": {
+          "eng": "Count and name together all the animals you see."
+        },
+        "annotation_2": {
+          "eng": "What are all the animals looking at?"
+        },
+        "annotation_3": {
+          "eng": "Do the animals want something from the farmer?"
+        }
+      },
+      "annotation_1": "Count and name together all the animals you see.",
+      "annotation_2": "What are all the animals looking at?",
+      "annotation_3": "Do the animals want something from the farmer?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-LATA-2.jpg",
+      "story_text": "The cow says, \"Moo.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The cow says, \"Moo.\""
+        },
+        "annotation_1": {
+          "eng": "The cow is looking at an empty trough. What do you think \"Moo\" means?"
+        },
+        "annotation_2": {
+          "eng": "If you only have one word (\"Moo\"), you have to say it in different ways to have it mean different things. What do you think the cow wants?"
+        },
+        "annotation_3": {
+          "eng": "Some of the cow's black spots are small and some are large. Count how many spots the cow has."
+        }
+      },
+      "annotation_1": "The cow is looking at an empty trough. What do you think \"Moo\" means?",
+      "annotation_2": "If you only have one word (\"Moo\"), you have to say it in different ways to have it mean different things. What do you think the cow wants?",
+      "annotation_3": "Some of the cow's black spots are small and some are large. Count how many spots the cow has."
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-LATA-3.jpg",
+      "story_text": "The goat says, \"Meh, meh.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The goat says, \"Meh, meh.\""
+        },
+        "annotation_1": {
+          "eng": "Why is the goat looking at the drip of water from the faucet?"
+        },
+        "annotation_2": {
+          "eng": "Is the goat thirsty, hungry, or both?"
+        },
+        "annotation_3": {
+          "eng": "How many horns does a goat have? Name some other animals that have two hard things growing on their head."
+        }
+      },
+      "annotation_1": "Why is the goat looking at the drip of water from the faucet?",
+      "annotation_2": "Is the goat thirsty, hungry, or both?",
+      "annotation_3": "How many horns does a goat have? Name some other animals that have two hard things growing on their head."
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-LATA-4.jpg",
+      "story_text": "The horse says, \"Neigh.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The horse says, \"Neigh.\""
+        },
+        "annotation_1": {
+          "eng": "The horse is also looking at an empty trough. What is the horse pointing at with its front left leg?"
+        },
+        "annotation_2": {
+          "eng": "Count together the horse's legs. Can you think of a farm animal that has only two legs?"
+        },
+        "annotation_3": {
+          "eng": "Are there animals that have any other number of legs than two or four? What about insects or spiders? -- do you know how many legs they have?"
+        }
+      },
+      "annotation_1": "The horse is also looking at an empty trough. What is the horse pointing at with its front left leg?",
+      "annotation_2": "Count together the horse's legs. Can you think of a farm animal that has only two legs?",
+      "annotation_3": "Are there animals that have any other number of legs than two or four? What about insects or spiders? -- do you know how many legs they have?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-LATA-5.jpg",
+      "story_text": "The pig says, \"Grunt.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The pig says, \"Grunt.\""
+        },
+        "annotation_1": {
+          "eng": "Some people think that pigs say \"Oink.\" What do you think they say?"
+        },
+        "annotation_2": {
+          "eng": "The pig has two ears, two eyes, and two nostrils. Imagine what it would be like if it had two mouths!"
+        },
+        "annotation_3": {
+          "eng": "Count together the posts that make up the fence in front of the pig."
+        }
+      },
+      "annotation_1": "Some people think that pigs say \"Oink.\" What do you think they say?",
+      "annotation_2": "The pig has two ears, two eyes, and two nostrils. Imagine what it would be like if it had two mouths!",
+      "annotation_3": "Count together the posts that make up the fence in front of the pig."
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-LATA-6.jpg",
+      "story_text": "The chicken says, \"Cluck.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The chicken says, \"Cluck.\""
+        },
+        "annotation_1": {
+          "eng": "A chicken is a farm animal with just two legs. Are there any others?"
+        },
+        "annotation_2": {
+          "eng": "Count the baby chicks and count how many chickens there are all together."
+        },
+        "annotation_3": {
+          "eng": "One more than three makes how many?"
+        }
+      },
+      "annotation_1": "A chicken is a farm animal with just two legs. Are there any others?",
+      "annotation_2": "Count the baby chicks and count how many chickens there are all together.",
+      "annotation_3": "One more than three makes how many?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-LATA-7.jpg",
+      "story_text": "The dog says, \"Woof.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The dog says, \"Woof.\""
+        },
+        "annotation_1": {
+          "eng": "The dog bowl is empty and the dog looks hungry."
+        },
+        "annotation_2": {
+          "eng": "Count together the number of bags by the fence."
+        },
+        "annotation_3": {
+          "eng": "Count together the number of tines on the rake in the corner. Can you find other things to count?"
+        }
+      },
+      "annotation_1": "The dog bowl is empty and the dog looks hungry.",
+      "annotation_2": "Count together the number of bags by the fence.",
+      "annotation_3": "Count together the number of tines on the rake in the corner. Can you find other things to count?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-LATA-8.jpg",
+      "story_text": "The farmer says, \"Shhh!\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The farmer says, \"Shhh!\""
+        },
+        "annotation_1": {
+          "eng": "Why does the farmer say \"Shhh?\"  Is the farmer tired of being pestered by the animals?"
+        },
+        "annotation_2": {
+          "eng": "What are the animals waiting for?"
+        },
+        "annotation_3": {
+          "eng": "How many animals are waiting for their food?"
+        }
+      },
+      "annotation_1": "Why does the farmer say \"Shhh?\"  Is the farmer tired of being pestered by the animals?",
+      "annotation_2": "What are the animals waiting for?",
+      "annotation_3": "How many animals are waiting for their food?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-LATA-9.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

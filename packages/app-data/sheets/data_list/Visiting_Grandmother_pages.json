@@ -1,0 +1,565 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Visiting_Grandmother_pages",
+  "status": "released",
+  "data_list_name": "Visiting_Grandmother_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-VG-1.jpg",
+      "story_text": "Odongo and Apiyo waited for the school holidays to come.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Odongo and Apiyo waited for the school holidays to come."
+        },
+        "annotation_1": {
+          "eng": "They look excited. Do you suppose they have big plans for their holidays?"
+        },
+        "annotation_2": {
+          "eng": "Are there holidays that you get excited about?"
+        },
+        "annotation_3": {
+          "eng": "Tell a story about something you did during a recent holiday."
+        }
+      },
+      "annotation_1": "They look excited. Do you suppose they have big plans for their holidays?",
+      "annotation_2": "Are there holidays that you get excited about?",
+      "annotation_3": "Tell a story about something you did during a recent holiday."
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-VG-2.jpg",
+      "story_text": "It was time for them to visit their grandmother.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "It was time for them to visit their grandmother."
+        },
+        "annotation_1": {
+          "eng": "Did you ever get so excited about something that you had trouble sleeping?"
+        },
+        "annotation_2": {
+          "eng": "Rectangles are shapes with four straight sides and corners like those on this page. Point to all the rectangles you can find on this page."
+        },
+        "annotation_3": {
+          "eng": "Point to some of the rectangles around where you are."
+        }
+      },
+      "annotation_1": "Did you ever get so excited about something that you had trouble sleeping?",
+      "annotation_2": "Rectangles are shapes with four straight sides and corners like those on this page. Point to all the rectangles you can find on this page.",
+      "annotation_3": "Point to some of the rectangles around where you are."
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-VG-3.jpg",
+      "story_text": "They drove past mountains, wild animals, and farms.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "They drove past mountains, wild animals, and farms."
+        },
+        "annotation_1": {
+          "eng": "Count together all the wild animals you see on this page."
+        },
+        "annotation_2": {
+          "eng": "When you add two children to the five other animals, how many animals are there all together? What is two more than five?"
+        },
+        "annotation_3": {
+          "eng": "Point to and describe the pairs of animals here."
+        }
+      },
+      "annotation_1": "Count together all the wild animals you see on this page.",
+      "annotation_2": "When you add two children to the five other animals, how many animals are there all together? What is two more than five?",
+      "annotation_3": "Point to and describe the pairs of animals here."
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-VG-4.jpg",
+      "story_text": "After a while, Odongo and Apiyo fell asleep.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "After a while, Odongo and Apiyo fell asleep."
+        },
+        "annotation_1": {
+          "eng": "Some people have trouble sleeping sitting up. Can you fall asleep while you're sitting?"
+        },
+        "annotation_2": {
+          "eng": "The girl is sleeping with her mouth open -- do you think she is snoring?"
+        },
+        "annotation_3": {
+          "eng": "Describe the colors of some of the strips in this picture. There are yellows, blues, and greens on the bag, and yellows, oranges, and reds on their seat."
+        }
+      },
+      "annotation_1": "Some people have trouble sleeping sitting up. Can you fall asleep while you're sitting?",
+      "annotation_2": "The girl is sleeping with her mouth open -- do you think she is snoring?",
+      "annotation_3": "Describe the colors of some of the strips in this picture. There are yellows, blues, and greens on the bag, and yellows, oranges, and reds on their seat."
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-VG-5.jpg",
+      "story_text": "They found their grandmother resting under a tree.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "They found their grandmother resting under a tree."
+        },
+        "annotation_1": {
+          "eng": "Do you have friends or relatives you like to go on trips to visit?"
+        },
+        "annotation_2": {
+          "eng": "Remember a happy visit you had. What do you like to do when you visit someone?"
+        },
+        "annotation_3": {
+          "eng": "What will these two do with their grandmother? Will they hear stories, cook meals, and go on walks together?"
+        }
+      },
+      "annotation_1": "Do you have friends or relatives you like to go on trips to visit?",
+      "annotation_2": "Remember a happy visit you had. What do you like to do when you visit someone?",
+      "annotation_3": "What will these two do with their grandmother? Will they hear stories, cook meals, and go on walks together?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-VG-6.jpg",
+      "story_text": "Grandmother danced and sang. The children gave her presents.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Grandmother danced and sang. The children gave her presents."
+        },
+        "annotation_1": {
+          "eng": "What do you like to get as a present?"
+        },
+        "annotation_2": {
+          "eng": "What feels so good about getting a present from someone?"
+        },
+        "annotation_3": {
+          "eng": "The background on the last page had blues and greens. This one has yellows and oranges. What feels different to you when you see the colors on these two pages?"
+        }
+      },
+      "annotation_1": "What do you like to get as a present?",
+      "annotation_2": "What feels so good about getting a present from someone?",
+      "annotation_3": "The background on the last page had blues and greens. This one has yellows and oranges. What feels different to you when you see the colors on these two pages?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-VG-7.jpg",
+      "story_text": "Grandmother blessed Odongo and Apiyo in a traditional way.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Grandmother blessed Odongo and Apiyo in a traditional way."
+        },
+        "annotation_1": {
+          "eng": "Giving a blessing is a solemn and dear thing."
+        },
+        "annotation_2": {
+          "eng": "The background color has changed again. How does it make you feel?"
+        },
+        "annotation_3": {
+          "eng": "Is this an exciting or calm part of the story? Does the blue color enhance that feeling?"
+        }
+      },
+      "annotation_1": "Giving a blessing is a solemn and dear thing.",
+      "annotation_2": "The background color has changed again. How does it make you feel?",
+      "annotation_3": "Is this an exciting or calm part of the story? Does the blue color enhance that feeling?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-VG-8.jpg",
+      "story_text": "Odongo and Apiyo played with butterflies and birds.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Odongo and Apiyo played with butterflies and birds."
+        },
+        "annotation_1": {
+          "eng": "Have you ever seen birds and butterflies with so many colors?"
+        },
+        "annotation_2": {
+          "eng": "Can you count the number of butterflies, or is that a bigger number than you can count?"
+        },
+        "annotation_3": {
+          "eng": "The colors in the background form ever larger circles -- they are called concentric circles. How do all these colors together make you feel?"
+        }
+      },
+      "annotation_1": "Have you ever seen birds and butterflies with so many colors?",
+      "annotation_2": "Can you count the number of butterflies, or is that a bigger number than you can count?",
+      "annotation_3": "The colors in the background form ever larger circles -- they are called concentric circles. How do all these colors together make you feel?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-VG-9.jpg",
+      "story_text": "They climbed trees.\n\nThey splashed in the water of the lake.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "They climbed trees.\n\nThey splashed in the water of the lake."
+        },
+        "annotation_1": {
+          "eng": "How did Odongo get up into a tree with no low branches?"
+        },
+        "annotation_2": {
+          "eng": "How many branches are on this tree? Did you count all of them including the small ones, or just the large ones?"
+        },
+        "annotation_3": {
+          "eng": "Do you go in a lake or pond with your shoes on? Why do you suppose Apiyo did that?"
+        }
+      },
+      "annotation_1": "How did Odongo get up into a tree with no low branches?",
+      "annotation_2": "How many branches are on this tree? Did you count all of them including the small ones, or just the large ones?",
+      "annotation_3": "Do you go in a lake or pond with your shoes on? Why do you suppose Apiyo did that?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-VG-10.jpg",
+      "story_text": "They were tired.\n\nThey fell asleep before finishing their dinner.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "They were tired.\n\nThey fell asleep before finishing their dinner."
+        },
+        "annotation_1": {
+          "eng": "Have you ever been so tired that you fell asleep in the middle of eating?"
+        },
+        "annotation_2": {
+          "eng": "Do you think they slept at the table all night?"
+        },
+        "annotation_3": {
+          "eng": "Some of the lines in this picture are straight, like the boards on the table, and some are curved, like the edges of the bowls. Look around you. Do you mostly see straight or curved lines?"
+        }
+      },
+      "annotation_1": "Have you ever been so tired that you fell asleep in the middle of eating?",
+      "annotation_2": "Do you think they slept at the table all night?",
+      "annotation_3": "Some of the lines in this picture are straight, like the boards on the table, and some are curved, like the edges of the bowls. Look around you. Do you mostly see straight or curved lines?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-VG-11.jpg",
+      "story_text": "They helped grandmother.\n\nThey collected eggs and picked vegetables.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "They helped grandmother.\n\nThey collected eggs and picked vegetables."
+        },
+        "annotation_1": {
+          "eng": "Point at and describe all the pairs of things in this picture."
+        },
+        "annotation_2": {
+          "eng": "Of the eggs Apiyo is holding, how many can you see?"
+        },
+        "annotation_3": {
+          "eng": "Do you like helping out with chores?"
+        }
+      },
+      "annotation_1": "Point at and describe all the pairs of things in this picture.",
+      "annotation_2": "Of the eggs Apiyo is holding, how many can you see?",
+      "annotation_3": "Do you like helping out with chores?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-VG-12.jpg",
+      "story_text": "Grandmother taught Odongo and Apiyo how to cook different foods.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Grandmother taught Odongo and Apiyo how to cook different foods."
+        },
+        "annotation_1": {
+          "eng": "Do you like helping with the cooking sometimes?"
+        },
+        "annotation_2": {
+          "eng": "Do you have any favorite foods you like to help with?"
+        },
+        "annotation_3": {
+          "eng": "One of the pleasures of traveling is getting to eat new foods. Do you like eating new foods?"
+        }
+      },
+      "annotation_1": "Do you like helping with the cooking sometimes?",
+      "annotation_2": "Do you have any favorite foods you like to help with?",
+      "annotation_3": "One of the pleasures of traveling is getting to eat new foods. Do you like eating new foods?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-VG-13.jpg",
+      "story_text": "Odongo took grandmother's cows to graze.\n\nThey ate a neighbor's crops.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Odongo took grandmother's cows to graze.\n\nThey ate a neighbor's crops."
+        },
+        "annotation_1": {
+          "eng": "Looking at Odongo, the neighbor, and the cows, what is each of them feeling?"
+        },
+        "annotation_2": {
+          "eng": "Do you think Odongo will be given a second chance after this mistake?"
+        },
+        "annotation_3": {
+          "eng": "When you make mistakes, are you given another chance?"
+        }
+      },
+      "annotation_1": "Looking at Odongo, the neighbor, and the cows, what is each of them feeling?",
+      "annotation_2": "Do you think Odongo will be given a second chance after this mistake?",
+      "annotation_3": "When you make mistakes, are you given another chance?"
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-VG-14.jpg",
+      "story_text": "They went to their grandmother's stall at the market.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "They went to their grandmother's stall at the market."
+        },
+        "annotation_1": {
+          "eng": "Who is the new woman in this picture and what is she doing?"
+        },
+        "annotation_2": {
+          "eng": "What is grandmother's umbrella for? Is it raining?"
+        },
+        "annotation_3": {
+          "eng": "Count all the different kinds of food grandmother is selling."
+        }
+      },
+      "annotation_1": "Who is the new woman in this picture and what is she doing?",
+      "annotation_2": "What is grandmother's umbrella for? Is it raining?",
+      "annotation_3": "Count all the different kinds of food grandmother is selling."
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-VG-15.jpg",
+      "story_text": "In the evening, they helped grandmother to count her money.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "In the evening, they helped grandmother to count her money."
+        },
+        "annotation_1": {
+          "eng": "Can you tell that it is evening from this picture?"
+        },
+        "annotation_2": {
+          "eng": "Do you sometimes get to count money? If you do, is it fun to do?"
+        },
+        "annotation_3": {
+          "eng": "When you count things, do you come up with faster ways to do it? For example, counting things in pairs can be twice as fast."
+        }
+      },
+      "annotation_1": "Can you tell that it is evening from this picture?",
+      "annotation_2": "Do you sometimes get to count money? If you do, is it fun to do?",
+      "annotation_3": "When you count things, do you come up with faster ways to do it? For example, counting things in pairs can be twice as fast."
+    },
+    {
+      "id": "page_16",
+      "page_no": 16,
+      "illustration": "EFMStorybooks/EFM-SB-VG-16.jpg",
+      "story_text": "Soon, the holidays were over.\n\nGrandmother packed food for their journey.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Soon, the holidays were over.\n\nGrandmother packed food for their journey."
+        },
+        "annotation_1": {
+          "eng": "The children look happy. Are they happy about leaving?"
+        },
+        "annotation_2": {
+          "eng": "This is the first time we're seeing Odongo's hat. Is it a present from his grandmother?"
+        },
+        "annotation_3": {
+          "eng": "Their clothes have lots of colors. How many colors are in the clothes you are wearing?"
+        }
+      },
+      "annotation_1": "The children look happy. Are they happy about leaving?",
+      "annotation_2": "This is the first time we're seeing Odongo's hat. Is it a present from his grandmother?",
+      "annotation_3": "Their clothes have lots of colors. How many colors are in the clothes you are wearing?"
+    },
+    {
+      "id": "page_17",
+      "page_no": 17,
+      "illustration": "EFMStorybooks/EFM-SB-VG-17.jpg",
+      "story_text": "The children did not want to leave.\n\n\"Grandmother, come with us.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The children did not want to leave.\n\n\"Grandmother, come with us.\""
+        },
+        "annotation_1": {
+          "eng": "What are the children feeling in this picture?"
+        },
+        "annotation_2": {
+          "eng": "What did their grandmother say when the children asked her to come with them?"
+        },
+        "annotation_3": {
+          "eng": "The children and their father make three people. When you add one more for their grandmother, how many people is that all together?"
+        }
+      },
+      "annotation_1": "What are the children feeling in this picture?",
+      "annotation_2": "What did their grandmother say when the children asked her to come with them?",
+      "annotation_3": "The children and their father make three people. When you add one more for their grandmother, how many people is that all together?"
+    },
+    {
+      "id": "page_18",
+      "page_no": 18,
+      "illustration": "EFMStorybooks/EFM-SB-VG-18.jpg",
+      "story_text": "Odongo and Apiyo hugged grandmother.\n\n\"Goodbye, grandmother,\" they said.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Odongo and Apiyo hugged grandmother.\n\n\"Goodbye, grandmother,\" they said."
+        },
+        "annotation_1": {
+          "eng": "Do you have a hard time saying goodbye to people you care a lot about? Does it make you feel sad?"
+        },
+        "annotation_2": {
+          "eng": "Their arms and legs come in pairs. Count them by counting by 2's."
+        },
+        "annotation_3": {
+          "eng": "How do the number of arms compare to the number of legs?"
+        }
+      },
+      "annotation_1": "Do you have a hard time saying goodbye to people you care a lot about? Does it make you feel sad?",
+      "annotation_2": "Their arms and legs come in pairs. Count them by counting by 2's.",
+      "annotation_3": "How do the number of arms compare to the number of legs?"
+    },
+    {
+      "id": "page_19",
+      "page_no": 19,
+      "illustration": "EFMStorybooks/EFM-SB-VG-19.jpg",
+      "story_text": "What is better, city life or village life?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "What is better, city life or village life?"
+        },
+        "annotation_1": {
+          "eng": "How do the number of girls compare to the number of boys?"
+        },
+        "annotation_2": {
+          "eng": "If you combine the three girls with the three boys, how many children are there? What is three more than three?"
+        },
+        "annotation_3": {
+          "eng": "Instead of counting them as three plus three more, count them by 2's and see if you get the same number."
+        }
+      },
+      "annotation_1": "How do the number of girls compare to the number of boys?",
+      "annotation_2": "If you combine the three girls with the three boys, how many children are there? What is three more than three?",
+      "annotation_3": "Instead of counting them as three plus three more, count them by 2's and see if you get the same number."
+    },
+    {
+      "id": "page_20",
+      "page_no": 20,
+      "illustration": "EFMStorybooks/EFM-SB-VG-20.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

@@ -1,0 +1,594 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Amazing_Daisy_data",
+  "status": "released",
+  "data_list_name": "Amazing_Daisy_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-AD-1.jpg",
+      "story_text": "Once upon a time on a little farm near a little village.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Once upon a time on a little farm near a little village."
+        },
+        "annotation_1": {
+          "eng": "Farms can grow crops and raise animals, such as chickens. What are some things on a farm that you are curious about?"
+        },
+        "annotation_2": {
+          "eng": "There are some groups of three things here. What do you see?"
+        },
+        "annotation_3": {
+          "eng": "What are the different things these chickens are doing?"
+        }
+      },
+      "annotation_1": "Farms can grow crops and raise animals, such as chickens. What are some things on a farm that you are curious about?",
+      "annotation_2": "There are some groups of three things here. What do you see?",
+      "annotation_3": "What are the different things these chickens are doing?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-AD-2.jpg",
+      "story_text": "There lived a little chicken called Daisy.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "There lived a little chicken called Daisy."
+        },
+        "annotation_1": {
+          "eng": "Count together the claws that Daisy has on each leg and all together."
+        },
+        "annotation_2": {
+          "eng": "Daisy's claws spread out to help her balance. How long can you balance on one leg?"
+        },
+        "annotation_3": {
+          "eng": "Can you balance on one leg long enough to count to five? To ten?"
+        }
+      },
+      "annotation_1": "Count together the claws that Daisy has on each leg and all together.",
+      "annotation_2": "Daisy's claws spread out to help her balance. How long can you balance on one leg?",
+      "annotation_3": "Can you balance on one leg long enough to count to five? To ten?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-AD-3.jpg",
+      "story_text": "\"When I grow up, I want to fly high, high into the sky,\" Daisy said.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "\"When I grow up, I want to fly high, high into the sky,\" Daisy said."
+        },
+        "annotation_1": {
+          "eng": "Count together all the circles on their faces. Don't forget to count the pupils in the middle of the eyes."
+        },
+        "annotation_2": {
+          "eng": "How can you tell that the other chickens are not as happy as Daisy?"
+        },
+        "annotation_3": {
+          "eng": "What are these other chicken's thinking?"
+        }
+      },
+      "annotation_1": "Count together all the circles on their faces. Don't forget to count the pupils in the middle of the eyes.",
+      "annotation_2": "How can you tell that the other chickens are not as happy as Daisy?",
+      "annotation_3": "What are these other chicken's thinking?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-AD-4.jpg",
+      "story_text": "But all the other chickens laughed at her.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "But all the other chickens laughed at her."
+        },
+        "annotation_1": {
+          "eng": "Their eyes are now closed. We close our eyes when we are asleep and at other times. Why are these chicken's eyes closed?"
+        },
+        "annotation_2": {
+          "eng": "Sometimes people laugh AT other people, and sometimes they laugh WITH other people. What is the difference?"
+        },
+        "annotation_3": {
+          "eng": "Do you think the shape of the big cloud looks like their mouths?"
+        }
+      },
+      "annotation_1": "Their eyes are now closed. We close our eyes when we are asleep and at other times. Why are these chicken's eyes closed?",
+      "annotation_2": "Sometimes people laugh AT other people, and sometimes they laugh WITH other people. What is the difference?",
+      "annotation_3": "Do you think the shape of the big cloud looks like their mouths?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-AD-5.jpg",
+      "story_text": "\"You are so weird,\" they said. \"We won't play with you anymore.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "\"You are so weird,\" they said. \"We won't play with you anymore.\""
+        },
+        "annotation_1": {
+          "eng": "Now that their mouths have changed, do you think the cloud changed shape too?"
+        },
+        "annotation_2": {
+          "eng": "Can you use your mouth to copy the shape of each chicken's mouth? Can you guess and copy the sound each chicken is making?"
+        },
+        "annotation_3": {
+          "eng": "Why are they calling Daisy a mean name?"
+        }
+      },
+      "annotation_1": "Now that their mouths have changed, do you think the cloud changed shape too?",
+      "annotation_2": "Can you use your mouth to copy the shape of each chicken's mouth? Can you guess and copy the sound each chicken is making?",
+      "annotation_3": "Why are they calling Daisy a mean name?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-AD-6.jpg",
+      "story_text": "\"Daisy, we can all flap our wings, but it's very difficult for chickens to fly,\" Mama told her.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "\"Daisy, we can all flap our wings, but it's very difficult for chickens to fly,\" Mama told her."
+        },
+        "annotation_1": {
+          "eng": "Discuss what is similar about Daisy and her mother, and how they look different from the other chickens."
+        },
+        "annotation_2": {
+          "eng": "What is Daisy's mother doing to help Daisy feel better?"
+        },
+        "annotation_3": {
+          "eng": "Sometimes we feel better when someone pats us or holds our hand. Have you ever tried to help a friend feel better with a friendly touch?"
+        }
+      },
+      "annotation_1": "Discuss what is similar about Daisy and her mother, and how they look different from the other chickens.",
+      "annotation_2": "What is Daisy's mother doing to help Daisy feel better?",
+      "annotation_3": "Sometimes we feel better when someone pats us or holds our hand. Have you ever tried to help a friend feel better with a friendly touch?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-AD-7.jpg",
+      "story_text": "Daisy wouldn't give up. Every day she practiced by herself, flapping her wings. Flap, flap, flap, she would flap her wings but she couldn't lift off the ground.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Daisy wouldn't give up. Every day she practiced by herself, flapping her wings. Flap, flap, flap, she would flap her wings but she couldn't lift off the ground."
+        },
+        "annotation_1": {
+          "eng": "So far, this is a sad story for Daisy. Make up your own ending. Is it a happy or sad ending?"
+        },
+        "annotation_2": {
+          "eng": "Is Daisy too heavy to fly? Think of something that is as heavy as Daisy looks. Do you think that thing is too heavy to fly?"
+        },
+        "annotation_3": {
+          "eng": "A rectangle is a shape with four straight sides and corners like the corners of this page. Although they are slanted, find and point to the many rectangles on this page."
+        }
+      },
+      "annotation_1": "So far, this is a sad story for Daisy. Make up your own ending. Is it a happy or sad ending?",
+      "annotation_2": "Is Daisy too heavy to fly? Think of something that is as heavy as Daisy looks. Do you think that thing is too heavy to fly?",
+      "annotation_3": "A rectangle is a shape with four straight sides and corners like the corners of this page. Although they are slanted, find and point to the many rectangles on this page."
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-AD-8.jpg",
+      "story_text": "While she practiced, she imagined herself flying high into the sky and looking at the chickens below. She imagined herself flying past the sparrows and past the swallows. \"Wow!\" The birds would say, \"A chicken that can fly!\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "While she practiced, she imagined herself flying high into the sky and looking at the chickens below. She imagined herself flying past the sparrows and past the swallows. \"Wow!\" The birds would say, \"A chicken that can fly!\""
+        },
+        "annotation_1": {
+          "eng": "Count together the birds in this picture. Don't forget the ones on the ground."
+        },
+        "annotation_2": {
+          "eng": "What effect is caused by having some of the birds drawn so small?"
+        },
+        "annotation_3": {
+          "eng": "Describe a memory of looking at something big that was far away and looked tiny."
+        }
+      },
+      "annotation_1": "Count together the birds in this picture. Don't forget the ones on the ground.",
+      "annotation_2": "What effect is caused by having some of the birds drawn so small?",
+      "annotation_3": "Describe a memory of looking at something big that was far away and looked tiny."
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-AD-9.jpg",
+      "story_text": "So flap, flap, flap, every day Daisy would flap her wings.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "So flap, flap, flap, every day Daisy would flap her wings."
+        },
+        "annotation_1": {
+          "eng": "Count together the little lines coming from Daisy showing her squawking."
+        },
+        "annotation_2": {
+          "eng": "Daisy has too many red speckles to count, but you can count together the groups of speckles all over her body."
+        },
+        "annotation_3": {
+          "eng": "Daisy looks surprised. What do you think will happen next?"
+        }
+      },
+      "annotation_1": "Count together the little lines coming from Daisy showing her squawking.",
+      "annotation_2": "Daisy has too many red speckles to count, but you can count together the groups of speckles all over her body.",
+      "annotation_3": "Daisy looks surprised. What do you think will happen next?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-AD-10.jpg",
+      "story_text": "She would lift off the ground but fall down again.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "She would lift off the ground but fall down again."
+        },
+        "annotation_1": {
+          "eng": "How high do you think she got? A grownup is often 5 to 6 feet tall -- do you think she got that high?"
+        },
+        "annotation_2": {
+          "eng": "How many lines are there above her and below her? When you combine them, how many are there in all?"
+        },
+        "annotation_3": {
+          "eng": "What do the lines below her show?"
+        }
+      },
+      "annotation_1": "How high do you think she got? A grownup is often 5 to 6 feet tall -- do you think she got that high?",
+      "annotation_2": "How many lines are there above her and below her? When you combine them, how many are there in all?",
+      "annotation_3": "What do the lines below her show?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-AD-11.jpg",
+      "story_text": "\"I'm never going to fly!\" Daisy cried to Mama. \"The others are right.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "\"I'm never going to fly!\" Daisy cried to Mama. \"The others are right.\""
+        },
+        "annotation_1": {
+          "eng": "Describe some times when you got discouraged like Daisy."
+        },
+        "annotation_2": {
+          "eng": "Daisy is trying the same thing over and over. Is she showing strong will or is she being stubbornly foolish?"
+        },
+        "annotation_3": {
+          "eng": "What new ideas might Daisy try to figure out how to fly?"
+        }
+      },
+      "annotation_1": "Describe some times when you got discouraged like Daisy.",
+      "annotation_2": "Daisy is trying the same thing over and over. Is she showing strong will or is she being stubbornly foolish?",
+      "annotation_3": "What new ideas might Daisy try to figure out how to fly?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-AD-12.jpg",
+      "story_text": "\"Daisy, you are different from the other chickens. They don't want to fly but you do! You can do it.\" Mama said.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "\"Daisy, you are different from the other chickens. They don't want to fly but you do! You can do it.\" Mama said."
+        },
+        "annotation_1": {
+          "eng": "How can you tell from Daisy's face that she is getting a new idea?"
+        },
+        "annotation_2": {
+          "eng": "Think of a problem you solved by coming up with a new way to do it after the old way kept failing."
+        },
+        "annotation_3": {
+          "eng": "Daisy's body is made up of pairs of things, such as her eyes, and single things, such as her tail. Name all the pairs you can and then all the singles you can."
+        }
+      },
+      "annotation_1": "How can you tell from Daisy's face that she is getting a new idea?",
+      "annotation_2": "Think of a problem you solved by coming up with a new way to do it after the old way kept failing.",
+      "annotation_3": "Daisy's body is made up of pairs of things, such as her eyes, and single things, such as her tail. Name all the pairs you can and then all the singles you can."
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-AD-13.jpg",
+      "story_text": "The following day Daisy climbed to the top of the chicken coop and flap, flap, flap, she flapped her wings. She flew into the air and flapped her wings and flapped her wings and flapped her wings and ...",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The following day Daisy climbed to the top of the chicken coop and flap, flap, flap, she flapped her wings. She flew into the air and flapped her wings and flapped her wings and flapped her wings and ..."
+        },
+        "annotation_1": {
+          "eng": "There are lots of straight lines here. Some are vertical -- they go up and down. Some are horizontal -- they go side to side. Find some vertical and horizontal lines where you are."
+        },
+        "annotation_2": {
+          "eng": "What do the curved lines next to Daisy's body indicate?"
+        },
+        "annotation_3": {
+          "eng": "Daisy's face is very expressive. What does her face show this time?"
+        }
+      },
+      "annotation_1": "There are lots of straight lines here. Some are vertical -- they go up and down. Some are horizontal -- they go side to side. Find some vertical and horizontal lines where you are.",
+      "annotation_2": "What do the curved lines next to Daisy's body indicate?",
+      "annotation_3": "Daisy's face is very expressive. What does her face show this time?"
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-AD-14.jpg",
+      "story_text": "BAM!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "BAM!"
+        },
+        "annotation_1": {
+          "eng": "How is Daisy feeling right now?"
+        },
+        "annotation_2": {
+          "eng": "What is the other chicken doing?"
+        },
+        "annotation_3": {
+          "eng": "A kind and thoughtful chicken might go over and console and cheer Daisy up. Why isn't this chicken doing that?"
+        }
+      },
+      "annotation_1": "How is Daisy feeling right now?",
+      "annotation_2": "What is the other chicken doing?",
+      "annotation_3": "A kind and thoughtful chicken might go over and console and cheer Daisy up. Why isn't this chicken doing that?"
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-AD-15.jpg",
+      "story_text": "The other chickens laughed out loud. \"Ha ha ha! We told you! Chickens can't fly!\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The other chickens laughed out loud. \"Ha ha ha! We told you! Chickens can't fly!\""
+        },
+        "annotation_1": {
+          "eng": "There is one thick vertical line in this picture. Do you see any other vertical or horizontal lines?"
+        },
+        "annotation_2": {
+          "eng": "Is the laughing chicken walking or running? How can you tell?"
+        },
+        "annotation_3": {
+          "eng": "Do you think Daisy will give up after this bad fall? When you have a failure, is it hard for you to keep trying?"
+        }
+      },
+      "annotation_1": "There is one thick vertical line in this picture. Do you see any other vertical or horizontal lines?",
+      "annotation_2": "Is the laughing chicken walking or running? How can you tell?",
+      "annotation_3": "Do you think Daisy will give up after this bad fall? When you have a failure, is it hard for you to keep trying?"
+    },
+    {
+      "id": "page_16",
+      "page_no": 16,
+      "illustration": "EFMStorybooks/EFM-SB-AD-16.jpg",
+      "story_text": "But the next day Daisy climbed even higher, right up to the top of the hut. Flap, flap, flap, Daisy flapped her wings.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "But the next day Daisy climbed even higher, right up to the top of the hut. Flap, flap, flap, Daisy flapped her wings."
+        },
+        "annotation_1": {
+          "eng": "Daisy is determined. Can you think of a time when you kept trying even after several failures?"
+        },
+        "annotation_2": {
+          "eng": "Daisy is trying to solve her problem. What have been some of her new ideas for this problem?"
+        },
+        "annotation_3": {
+          "eng": "Why did they show Daisy twice in this picture? Why does Daisy look big and the other chickens look so small?"
+        }
+      },
+      "annotation_1": "Daisy is determined. Can you think of a time when you kept trying even after several failures?",
+      "annotation_2": "Daisy is trying to solve her problem. What have been some of her new ideas for this problem?",
+      "annotation_3": "Why did they show Daisy twice in this picture? Why does Daisy look big and the other chickens look so small?"
+    },
+    {
+      "id": "page_17",
+      "page_no": 17,
+      "illustration": "EFMStorybooks/EFM-SB-AD-17.jpg",
+      "story_text": "She flew into the air and flapped her wings and flapped her wings and flapped her wings and ...",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "She flew into the air and flapped her wings and flapped her wings and flapped her wings and ..."
+        },
+        "annotation_1": {
+          "eng": "At last, Daisy is successful! How does that make you feel? It feels good to share the successes of others."
+        },
+        "annotation_2": {
+          "eng": "How can you tell from the drawing that she is flying upward?"
+        },
+        "annotation_3": {
+          "eng": "Look at the movement lines drawn around her body. How are the movement lines in this picture different from the ones on the last page?"
+        }
+      },
+      "annotation_1": "At last, Daisy is successful! How does that make you feel? It feels good to share the successes of others.",
+      "annotation_2": "How can you tell from the drawing that she is flying upward?",
+      "annotation_3": "Look at the movement lines drawn around her body. How are the movement lines in this picture different from the ones on the last page?"
+    },
+    {
+      "id": "page_18",
+      "page_no": 18,
+      "illustration": "EFMStorybooks/EFM-SB-AD-18.jpg",
+      "story_text": "She kept flying! The wind beneath her wings grew stronger and she flew higher and higher! The sparrows and the swallows said, \"Amazing! A flying chicken!\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "She kept flying! The wind beneath her wings grew stronger and she flew higher and higher! The sparrows and the swallows said, \"Amazing! A flying chicken!\""
+        },
+        "annotation_1": {
+          "eng": "How does Daisy's flying body look different from the other birds in the sky?"
+        },
+        "annotation_2": {
+          "eng": "How is Daisy feeling now that all of her hard work has paid off?"
+        },
+        "annotation_3": {
+          "eng": "What are the other chickens thinking now?"
+        }
+      },
+      "annotation_1": "How does Daisy's flying body look different from the other birds in the sky?",
+      "annotation_2": "How is Daisy feeling now that all of her hard work has paid off?",
+      "annotation_3": "What are the other chickens thinking now?"
+    },
+    {
+      "id": "page_19",
+      "page_no": 19,
+      "illustration": "EFMStorybooks/EFM-SB-AD-19.jpg",
+      "story_text": "And the other chickens wanted to be just like her.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "And the other chickens wanted to be just like her."
+        },
+        "annotation_1": {
+          "eng": "Use your arms to copy the positions of the wings of these chickens."
+        },
+        "annotation_2": {
+          "eng": "What are these chickens feeling now that Daisy is successful?"
+        },
+        "annotation_3": {
+          "eng": "Do you think the other chickens will learn to fly someday?"
+        }
+      },
+      "annotation_1": "Use your arms to copy the positions of the wings of these chickens.",
+      "annotation_2": "What are these chickens feeling now that Daisy is successful?",
+      "annotation_3": "Do you think the other chickens will learn to fly someday?"
+    },
+    {
+      "id": "page_20",
+      "page_no": 20,
+      "illustration": "EFMStorybooks/EFM-SB-AD-20.jpg",
+      "story_text": "They said, \"Oh Daisy, you're amazing!\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "They said, \"Oh Daisy, you're amazing!\""
+        },
+        "annotation_1": {
+          "eng": "What happens next in Daisy's story after this book?"
+        },
+        "annotation_2": {
+          "eng": "Have you ever wished that you could fly?"
+        },
+        "annotation_3": {
+          "eng": "Where would you go if you could fly? What would you like to look at if you could get way up in the sky above it?"
+        }
+      },
+      "annotation_1": "What happens next in Daisy's story after this book?",
+      "annotation_2": "Have you ever wished that you could fly?",
+      "annotation_3": "Where would you go if you could fly? What would you like to look at if you could get way up in the sky above it?"
+    },
+    {
+      "id": "page_21",
+      "page_no": 21,
+      "illustration": "EFMStorybooks/EFM-SB-AD-21.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

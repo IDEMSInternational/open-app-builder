@@ -1,0 +1,478 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Friends_pages",
+  "status": "released",
+  "data_list_name": "Friends_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-1.jpg",
+      "story_text": "My name is Simo.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "My name is Simo."
+        },
+        "annotation_1": {
+          "eng": "Count together the different colors of stripes on Simo's shirt."
+        },
+        "annotation_2": {
+          "eng": "Simo's ball has two colors and is round. A pentagon is a five-sided shape. Point at the dark pentagons on Simo's ball. Do you see any pentagons around you?"
+        },
+        "annotation_3": {
+          "eng": "A hexagon is a six-sided shape. Point at the hexagons on the ball. Hexagons are often used in tiling patterns. Do you see any hexagons around you?"
+        }
+      },
+      "annotation_1": "Count together the different colors of stripes on Simo's shirt.",
+      "annotation_2": "Simo's ball has two colors and is round. A pentagon is a five-sided shape. Point at the dark pentagons on Simo's ball. Do you see any pentagons around you?",
+      "annotation_3": "A hexagon is a six-sided shape. Point at the hexagons on the ball. Hexagons are often used in tiling patterns. Do you see any hexagons around you?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-2.jpg",
+      "story_text": "I have four friends.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I have four friends."
+        },
+        "annotation_1": {
+          "eng": "When you put Simo together with his four friends, how many is that all together? Another way to ask this is: \"What is 1 more than 4?\""
+        },
+        "annotation_2": {
+          "eng": "How many of them have striped shirts and how many have solid shirts? That means that 2 more than 3 is 5."
+        },
+        "annotation_3": {
+          "eng": "That's two different ways of getting five! If you take one more than four you get the same thing as two more than three!"
+        }
+      },
+      "annotation_1": "When you put Simo together with his four friends, how many is that all together? Another way to ask this is: \"What is 1 more than 4?\"",
+      "annotation_2": "How many of them have striped shirts and how many have solid shirts? That means that 2 more than 3 is 5.",
+      "annotation_3": "That's two different ways of getting five! If you take one more than four you get the same thing as two more than three!"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-3.jpg",
+      "story_text": "Their names are Zizo, Lele, Sisa, and Ayanda.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Their names are Zizo, Lele, Sisa, and Ayanda."
+        },
+        "annotation_1": {
+          "eng": "Can you guess who has which name? We'll learn about each one soon."
+        },
+        "annotation_2": {
+          "eng": "Make up a story about one of them. Perhaps one of them likes cats or going on long walks?"
+        },
+        "annotation_3": {
+          "eng": "Of the four, one of them likes soccer, one likes swimming, another likes hide-and-seek, and one likes reading -- guess which one is which."
+        }
+      },
+      "annotation_1": "Can you guess who has which name? We'll learn about each one soon.",
+      "annotation_2": "Make up a story about one of them. Perhaps one of them likes cats or going on long walks?",
+      "annotation_3": "Of the four, one of them likes soccer, one likes swimming, another likes hide-and-seek, and one likes reading -- guess which one is which."
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-4.jpg",
+      "story_text": "My friend Zizo likes to play soccer.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "My friend Zizo likes to play soccer."
+        },
+        "annotation_1": {
+          "eng": "Simo and Zizo have soccer in common. Which parts of their clothes are similar to each other?"
+        },
+        "annotation_2": {
+          "eng": "Simo and Zizo have stripes on different parts of their clothing. How are their stripes different?"
+        },
+        "annotation_3": {
+          "eng": "Zizo seems to like shades of red. Do you? What is your favorite color?"
+        }
+      },
+      "annotation_1": "Simo and Zizo have soccer in common. Which parts of their clothes are similar to each other?",
+      "annotation_2": "Simo and Zizo have stripes on different parts of their clothing. How are their stripes different?",
+      "annotation_3": "Zizo seems to like shades of red. Do you? What is your favorite color?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-5.jpg",
+      "story_text": "My friend Lele likes to swim.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "My friend Lele likes to swim."
+        },
+        "annotation_1": {
+          "eng": "Point at and name the beautiful greens, blue greens, and blues in this picture."
+        },
+        "annotation_2": {
+          "eng": "Count the fingers on Lele's left hand. Is she missing a finger or was the artist careless when drawing this picture?"
+        },
+        "annotation_3": {
+          "eng": "It can be dangerous to swim by yourself. To be safe, always swim with a buddy."
+        }
+      },
+      "annotation_1": "Point at and name the beautiful greens, blue greens, and blues in this picture.",
+      "annotation_2": "Count the fingers on Lele's left hand. Is she missing a finger or was the artist careless when drawing this picture?",
+      "annotation_3": "It can be dangerous to swim by yourself. To be safe, always swim with a buddy."
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-6.jpg",
+      "story_text": "My friend Sisa likes to play hide-and-seek.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "My friend Sisa likes to play hide-and-seek."
+        },
+        "annotation_1": {
+          "eng": "Is Sisa \"it\" or is Sisa hiding? It is easy to see Sisa. Is Sisa hiding behind the tree?"
+        },
+        "annotation_2": {
+          "eng": "They say zebras have stripes to help them hide among trees. Do the stripes on Sisa's shirt make Sisa hard to see?"
+        },
+        "annotation_3": {
+          "eng": "When playing hide-and-seek, the \"it\" person usually counts up to some number before looking for people. How high do you think the person should count?"
+        }
+      },
+      "annotation_1": "Is Sisa \"it\" or is Sisa hiding? It is easy to see Sisa. Is Sisa hiding behind the tree?",
+      "annotation_2": "They say zebras have stripes to help them hide among trees. Do the stripes on Sisa's shirt make Sisa hard to see?",
+      "annotation_3": "When playing hide-and-seek, the \"it\" person usually counts up to some number before looking for people. How high do you think the person should count?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-7.jpg",
+      "story_text": "My friend Ayanda likes to read.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "My friend Ayanda likes to read."
+        },
+        "annotation_1": {
+          "eng": "The other people picked sports and games they like to play. Is reading a sport or game?"
+        },
+        "annotation_2": {
+          "eng": "Can you read with other people, or must you read by yourself?"
+        },
+        "annotation_3": {
+          "eng": "Ayanda looks like she enjoys shades of orange. Name some things around you that are shades of orange."
+        }
+      },
+      "annotation_1": "The other people picked sports and games they like to play. Is reading a sport or game?",
+      "annotation_2": "Can you read with other people, or must you read by yourself?",
+      "annotation_3": "Ayanda looks like she enjoys shades of orange. Name some things around you that are shades of orange."
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-8.jpg",
+      "story_text": "Me? I like to do the things they like to do.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Me? I like to do the things they like to do."
+        },
+        "annotation_1": {
+          "eng": "Does Simo like doing all the things, or is he just being agreeable so he can be with everyone?"
+        },
+        "annotation_2": {
+          "eng": "Did you notice that the stripes on his shirt have changed? How have they changed?"
+        },
+        "annotation_3": {
+          "eng": "Of the four activities, how many do you like?"
+        }
+      },
+      "annotation_1": "Does Simo like doing all the things, or is he just being agreeable so he can be with everyone?",
+      "annotation_2": "Did you notice that the stripes on his shirt have changed? How have they changed?",
+      "annotation_3": "Of the four activities, how many do you like?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-9.jpg",
+      "story_text": "I play soccer with Zizo.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I play soccer with Zizo."
+        },
+        "annotation_1": {
+          "eng": "Count the fingers on Zizo's left hand. Is Zizo missing a finger, or was the artist being careless again?"
+        },
+        "annotation_2": {
+          "eng": "Some people are born with six fingers on a hand. What is one less than six? What is two less than six? How many fingers seems like a good number to you?"
+        },
+        "annotation_3": {
+          "eng": "Zizo has a solid shirt with striped socks, while Simo has a striped shirt with solid socks. Which way do you like better?"
+        }
+      },
+      "annotation_1": "Count the fingers on Zizo's left hand. Is Zizo missing a finger, or was the artist being careless again?",
+      "annotation_2": "Some people are born with six fingers on a hand. What is one less than six? What is two less than six? How many fingers seems like a good number to you?",
+      "annotation_3": "Zizo has a solid shirt with striped socks, while Simo has a striped shirt with solid socks. Which way do you like better?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-10.jpg",
+      "story_text": "I swim with Lele.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I swim with Lele."
+        },
+        "annotation_1": {
+          "eng": "Count the fingers on Lele's left hand. She has one more finger than she had before! Did she grow a finger?"
+        },
+        "annotation_2": {
+          "eng": "Talk about the shades of green in this picture. Some shades are darker, some yellower, and some bluer."
+        },
+        "annotation_3": {
+          "eng": "Lele is swimming with a buddy now -- that is much safer (and more fun)!"
+        }
+      },
+      "annotation_1": "Count the fingers on Lele's left hand. She has one more finger than she had before! Did she grow a finger?",
+      "annotation_2": "Talk about the shades of green in this picture. Some shades are darker, some yellower, and some bluer.",
+      "annotation_3": "Lele is swimming with a buddy now -- that is much safer (and more fun)!"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-11.jpg",
+      "story_text": "I play hide-and-seek with Sisa.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I play hide-and-seek with Sisa."
+        },
+        "annotation_1": {
+          "eng": "Why did Simo take his shoes off?"
+        },
+        "annotation_2": {
+          "eng": "Who do you think is hiding and who is seeking in this picture?"
+        },
+        "annotation_3": {
+          "eng": "Which of these two can hide better in this place -- whose clothes blend in better with the surrounding colors?"
+        }
+      },
+      "annotation_1": "Why did Simo take his shoes off?",
+      "annotation_2": "Who do you think is hiding and who is seeking in this picture?",
+      "annotation_3": "Which of these two can hide better in this place -- whose clothes blend in better with the surrounding colors?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-12.jpg",
+      "story_text": "Come, friend, what do you like?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Come, friend, what do you like?"
+        },
+        "annotation_1": {
+          "eng": "What are some of your favorite activities?"
+        },
+        "annotation_2": {
+          "eng": "Count together the different activities in this story. Of these, which one would you pick?"
+        },
+        "annotation_3": {
+          "eng": "There were four activities and you picked your favorite. What is one less than four? Of the remaining activities, which one is your least favorite?"
+        }
+      },
+      "annotation_1": "What are some of your favorite activities?",
+      "annotation_2": "Count together the different activities in this story. Of these, which one would you pick?",
+      "annotation_3": "There were four activities and you picked your favorite. What is one less than four? Of the remaining activities, which one is your least favorite?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-13.jpg",
+      "story_text": "Come, play soccer with us.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Come, play soccer with us."
+        },
+        "annotation_1": {
+          "eng": "Are they playing on teams, or are they just kicking the ball around?"
+        },
+        "annotation_2": {
+          "eng": "There are five people. Can you split them into two teams with the same number of people?"
+        },
+        "annotation_3": {
+          "eng": "Whose shoes are the worst for playing soccer?"
+        }
+      },
+      "annotation_1": "Are they playing on teams, or are they just kicking the ball around?",
+      "annotation_2": "There are five people. Can you split them into two teams with the same number of people?",
+      "annotation_3": "Whose shoes are the worst for playing soccer?"
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-14.jpg",
+      "story_text": "Come, swim with us.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Come, swim with us."
+        },
+        "annotation_1": {
+          "eng": "There are two pairs of children and one child alone. Can you put them all into pairs so no one is left out?"
+        },
+        "annotation_2": {
+          "eng": "A number is said to be \"odd\" if there is no way of splitting that many things into pairs. It is also \"odd\" if that number of things cannot be split into two equal groups."
+        },
+        "annotation_3": {
+          "eng": "Why are the two ideas for \"odd\" the same? Why is being able to split something into pairs the same as being able to split it into two equal groups?"
+        }
+      },
+      "annotation_1": "There are two pairs of children and one child alone. Can you put them all into pairs so no one is left out?",
+      "annotation_2": "A number is said to be \"odd\" if there is no way of splitting that many things into pairs. It is also \"odd\" if that number of things cannot be split into two equal groups.",
+      "annotation_3": "Why are the two ideas for \"odd\" the same? Why is being able to split something into pairs the same as being able to split it into two equal groups?"
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-15.jpg",
+      "story_text": "Come, play hide-and-seek with us.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Come, play hide-and-seek with us."
+        },
+        "annotation_1": {
+          "eng": "It looks like Simo is \"it.\" Will he have a hard time finding the other children?"
+        },
+        "annotation_2": {
+          "eng": "Count the children on top of the branch and the number hiding on the other side of the tree. Do they add up to four children?"
+        },
+        "annotation_3": {
+          "eng": "There is one in the tree, one counting, and three behind the tree. You can get five in many ways from this. One way is to start with three, add one more, and then add one more. Think together of other ways to get five."
+        }
+      },
+      "annotation_1": "It looks like Simo is \"it.\" Will he have a hard time finding the other children?",
+      "annotation_2": "Count the children on top of the branch and the number hiding on the other side of the tree. Do they add up to four children?",
+      "annotation_3": "There is one in the tree, one counting, and three behind the tree. You can get five in many ways from this. One way is to start with three, add one more, and then add one more. Think together of other ways to get five."
+    },
+    {
+      "id": "page_16",
+      "page_no": 16,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-16.jpg",
+      "story_text": "Come, read with us!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Come, read with us!"
+        },
+        "annotation_1": {
+          "eng": "One person is reading alone, and the rest are reading in pairs."
+        },
+        "annotation_2": {
+          "eng": "They all seem very happy together, no matter which activity they do. Do you have some friends you like to do things with?"
+        },
+        "annotation_3": {
+          "eng": "One of the children only has four fingers on a hand -- which one?"
+        }
+      },
+      "annotation_1": "One person is reading alone, and the rest are reading in pairs.",
+      "annotation_2": "They all seem very happy together, no matter which activity they do. Do you have some friends you like to do things with?",
+      "annotation_3": "One of the children only has four fingers on a hand -- which one?"
+    },
+    {
+      "id": "page_17",
+      "page_no": 17,
+      "illustration": "EFMStorybooks/EFM-SB-FRIENDS-17.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

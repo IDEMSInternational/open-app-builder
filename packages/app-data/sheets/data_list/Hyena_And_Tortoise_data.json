@@ -1,0 +1,477 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Hyena_And_Tortoise_data",
+  "status": "released",
+  "data_list_name": "Hyena_And_Tortoise_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-HAT-1.jpg",
+      "story_text": "A long time ago, there was a greedy hyena.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "A long time ago, there was a greedy hyena."
+        },
+        "annotation_1": {
+          "eng": "These houses seem very smoky. How many houses do you see in Hyena's village?"
+        },
+        "annotation_2": {
+          "eng": "Each house is round with round roof going up to a point. Each roof is in the shape of a cone. Do you see any cone-shaped things around you?"
+        },
+        "annotation_3": {
+          "eng": "Count the toes on each of Hyena's legs. Hyenas have the same number of toes on all their legs -- is that what the picture shows?"
+        }
+      },
+      "annotation_1": "These houses seem very smoky. How many houses do you see in Hyena's village?",
+      "annotation_2": "Each house is round with round roof going up to a point. Each roof is in the shape of a cone. Do you see any cone-shaped things around you?",
+      "annotation_3": "Count the toes on each of Hyena's legs. Hyenas have the same number of toes on all their legs -- is that what the picture shows?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-HAT-2.jpg",
+      "story_text": "There was also Tortoise. Hyena and Tortoise were friends.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "There was also Tortoise. Hyena and Tortoise were friends."
+        },
+        "annotation_1": {
+          "eng": "How many houses are in Tortoise's village? How many houses are in the two villages combined?"
+        },
+        "annotation_2": {
+          "eng": "Which village has more houses, or are they equal?"
+        },
+        "annotation_3": {
+          "eng": "What is different about the roofs in Tortoise/s village compared to Hyena's village? Why do you suppose that is?"
+        }
+      },
+      "annotation_1": "How many houses are in Tortoise's village? How many houses are in the two villages combined?",
+      "annotation_2": "Which village has more houses, or are they equal?",
+      "annotation_3": "What is different about the roofs in Tortoise/s village compared to Hyena's village? Why do you suppose that is?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-HAT-3.jpg",
+      "story_text": "Hyena told Tortoise, \"Let us search for honey.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Hyena told Tortoise, \"Let us search for honey.\""
+        },
+        "annotation_1": {
+          "eng": "Compare the drawing of the houses with the first page. Whose house are they in front of?"
+        },
+        "annotation_2": {
+          "eng": "Hyena and Tortoise seem like unlikely friends. What do you think will happen to their friendship by the end of the story?"
+        },
+        "annotation_3": {
+          "eng": "Do you have friends that are different from you? Do your differences help make your friendship weaker or stronger?"
+        }
+      },
+      "annotation_1": "Compare the drawing of the houses with the first page. Whose house are they in front of?",
+      "annotation_2": "Hyena and Tortoise seem like unlikely friends. What do you think will happen to their friendship by the end of the story?",
+      "annotation_3": "Do you have friends that are different from you? Do your differences help make your friendship weaker or stronger?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-HAT-4.jpg",
+      "story_text": "Hyena ran fast. Tortoise followed slowly. He was afraid.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Hyena ran fast. Tortoise followed slowly. He was afraid."
+        },
+        "annotation_1": {
+          "eng": "These animals travel at very different speeds. Have you gone for a walk with someone who is a lot faster or slower than you? How did the two of you work out having two different speeds?"
+        },
+        "annotation_2": {
+          "eng": "Real hyenas and tortoises don't look like these two. What are the differences? Those differences will be important later in the story!"
+        },
+        "annotation_3": {
+          "eng": "Tortoise is looking backward. What is Tortoise looking for?"
+        }
+      },
+      "annotation_1": "These animals travel at very different speeds. Have you gone for a walk with someone who is a lot faster or slower than you? How did the two of you work out having two different speeds?",
+      "annotation_2": "Real hyenas and tortoises don't look like these two. What are the differences? Those differences will be important later in the story!",
+      "annotation_3": "Tortoise is looking backward. What is Tortoise looking for?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-HAT-5.jpg",
+      "story_text": "They crossed a river. They got wet.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "They crossed a river. They got wet."
+        },
+        "annotation_1": {
+          "eng": "They got wet seems like an understatement for how they look in the picture. Hyenas are excellent swimmers, so it is surprising that Hyena looks so unhappy."
+        },
+        "annotation_2": {
+          "eng": "Do you like swimming? Have you ever gone swimming in rivers or other natural bodies of water?"
+        },
+        "annotation_3": {
+          "eng": "Which direction do you think the water is flowing? How can you tell?"
+        }
+      },
+      "annotation_1": "They got wet seems like an understatement for how they look in the picture. Hyenas are excellent swimmers, so it is surprising that Hyena looks so unhappy.",
+      "annotation_2": "Do you like swimming? Have you ever gone swimming in rivers or other natural bodies of water?",
+      "annotation_3": "Which direction do you think the water is flowing? How can you tell?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-HAT-6.jpg",
+      "story_text": "Then they saw beehives. Hyena ran to the hives.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Then they saw beehives. Hyena ran to the hives."
+        },
+        "annotation_1": {
+          "eng": "There are a lot of hives in those trees. Sometimes a swarm will fly around looking for a new home. Have you ever seen a swarm of bees?"
+        },
+        "annotation_2": {
+          "eng": "Do you like bees or are you afraid of them? What are some things you are afraid of?"
+        },
+        "annotation_3": {
+          "eng": "Hyena is pictured with four toes on his front legs and three toes on his back legs. How many more fingers do you have on your arms? How many more toes do you have on your legs?"
+        }
+      },
+      "annotation_1": "There are a lot of hives in those trees. Sometimes a swarm will fly around looking for a new home. Have you ever seen a swarm of bees?",
+      "annotation_2": "Do you like bees or are you afraid of them? What are some things you are afraid of?",
+      "annotation_3": "Hyena is pictured with four toes on his front legs and three toes on his back legs. How many more fingers do you have on your arms? How many more toes do you have on your legs?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-HAT-7.jpg",
+      "story_text": "Hyena told Tortoise, \"Climb up and get the beehive.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Hyena told Tortoise, \"Climb up and get the beehive.\""
+        },
+        "annotation_1": {
+          "eng": "It is difficult to imagine Tortoise climbing a tree. Why would Hyena be a better tree climber than Tortoise?"
+        },
+        "annotation_2": {
+          "eng": "Why did Hyena tell Tortoise to climb up and get the beehive?"
+        },
+        "annotation_3": {
+          "eng": "A hexagon is a shape with six straight sides. If the sides are all the same length, it is called a regular hexagon. Each of the little cells in a beehive is a regular hexagon. Do you know of any designs around you that are made of hexagons?"
+        }
+      },
+      "annotation_1": "It is difficult to imagine Tortoise climbing a tree. Why would Hyena be a better tree climber than Tortoise?",
+      "annotation_2": "Why did Hyena tell Tortoise to climb up and get the beehive?",
+      "annotation_3": "A hexagon is a shape with six straight sides. If the sides are all the same length, it is called a regular hexagon. Each of the little cells in a beehive is a regular hexagon. Do you know of any designs around you that are made of hexagons?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-HAT-8.jpg",
+      "story_text": "Tortoise climbed slowly. Hyena was angry. He shouted at Tortoise.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Tortoise climbed slowly. Hyena was angry. He shouted at Tortoise."
+        },
+        "annotation_1": {
+          "eng": "Why was Hyena shouting? Did Hyena's shouting help Tortoise climb the tree?"
+        },
+        "annotation_2": {
+          "eng": "Do you ever get angry and start shouting? Did your shouting help make the situation better?"
+        },
+        "annotation_3": {
+          "eng": "Tiles that are regular hexagons fit together to make beautiful tile floors and walls. Tiles in the shape of squares (shapes with four equal straight sides and square corners) fit together well too. Describe any other tiling patterns on floors or walls that you have seen."
+        }
+      },
+      "annotation_1": "Why was Hyena shouting? Did Hyena's shouting help Tortoise climb the tree?",
+      "annotation_2": "Do you ever get angry and start shouting? Did your shouting help make the situation better?",
+      "annotation_3": "Tiles that are regular hexagons fit together to make beautiful tile floors and walls. Tiles in the shape of squares (shapes with four equal straight sides and square corners) fit together well too. Describe any other tiling patterns on floors or walls that you have seen."
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-HAT-9.jpg",
+      "story_text": "Tortoise touched the beehive. Bees swarmed in the air.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Tortoise touched the beehive. Bees swarmed in the air."
+        },
+        "annotation_1": {
+          "eng": "Why was Tortoise safe from the bees and Hyena was not?"
+        },
+        "annotation_2": {
+          "eng": "An estimate is an educated guess when there are too many things to count easily. What is your estimate of how many bees there are?"
+        },
+        "annotation_3": {
+          "eng": "Do your best to count the bees. How far off was your quick estimate?"
+        }
+      },
+      "annotation_1": "Why was Tortoise safe from the bees and Hyena was not?",
+      "annotation_2": "An estimate is an educated guess when there are too many things to count easily. What is your estimate of how many bees there are?",
+      "annotation_3": "Do your best to count the bees. How far off was your quick estimate?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-HAT-10.jpg",
+      "story_text": "Tortoise fell. The beehive fell on him. Hyena licked the honey.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Tortoise fell. The beehive fell on him. Hyena licked the honey."
+        },
+        "annotation_1": {
+          "eng": "Hyena was so focused on the honey that he didn't help Tortoise. Can you think of a time you were so focused on one thing that you completely forgot something else you should have done?"
+        },
+        "annotation_2": {
+          "eng": "Hyena should have helped his friend. Is Hyena a very good friend?"
+        },
+        "annotation_3": {
+          "eng": "Do you think this page shows more or fewer bees than on the last page?"
+        }
+      },
+      "annotation_1": "Hyena was so focused on the honey that he didn't help Tortoise. Can you think of a time you were so focused on one thing that you completely forgot something else you should have done?",
+      "annotation_2": "Hyena should have helped his friend. Is Hyena a very good friend?",
+      "annotation_3": "Do you think this page shows more or fewer bees than on the last page?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-HAT-11.jpg",
+      "story_text": "The bees stung Hyena. He ran. The bees followed him.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The bees stung Hyena. He ran. The bees followed him."
+        },
+        "annotation_1": {
+          "eng": "Why did the bees chase and sting Hyena?"
+        },
+        "annotation_2": {
+          "eng": "A beehive is the home for the bees. Is it okay for people to take honey from beehives, or should we leave their homes untouched?"
+        },
+        "annotation_3": {
+          "eng": "Have you ever tried to outrun a bee or some other stinging insect? Were you able to do it?"
+        }
+      },
+      "annotation_1": "Why did the bees chase and sting Hyena?",
+      "annotation_2": "A beehive is the home for the bees. Is it okay for people to take honey from beehives, or should we leave their homes untouched?",
+      "annotation_3": "Have you ever tried to outrun a bee or some other stinging insect? Were you able to do it?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-HAT-12.jpg",
+      "story_text": "Hyena ran into the river. The bees still followed him.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Hyena ran into the river. The bees still followed him."
+        },
+        "annotation_1": {
+          "eng": "Why did the Hyena go into the river? Did it work?"
+        },
+        "annotation_2": {
+          "eng": "The bees can't go into the water, but Hyena can't stay under the water for long. What do you think Hyena should do?"
+        },
+        "annotation_3": {
+          "eng": "Poor Hyena must be miserable. Have you ever had a bee sting or some other kind of sting? If so, did it hurt a lot?"
+        }
+      },
+      "annotation_1": "Why did the Hyena go into the river? Did it work?",
+      "annotation_2": "The bees can't go into the water, but Hyena can't stay under the water for long. What do you think Hyena should do?",
+      "annotation_3": "Poor Hyena must be miserable. Have you ever had a bee sting or some other kind of sting? If so, did it hurt a lot?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-HAT-13.jpg",
+      "story_text": "The beehive and the honey dried on Tortoise's back.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The beehive and the honey dried on Tortoise's back."
+        },
+        "annotation_1": {
+          "eng": "All the bees went after Hyena and left Tortoise alone."
+        },
+        "annotation_2": {
+          "eng": "Tortoise looks pretty safe sitting quietly under that layer of drying honey. Do you have a quiet place where you feel safe and peaceful? Perhaps it is a place no one else knows about."
+        },
+        "annotation_3": {
+          "eng": "What does his face tell you about how he is feeling?"
+        }
+      },
+      "annotation_1": "All the bees went after Hyena and left Tortoise alone.",
+      "annotation_2": "Tortoise looks pretty safe sitting quietly under that layer of drying honey. Do you have a quiet place where you feel safe and peaceful? Perhaps it is a place no one else knows about.",
+      "annotation_3": "What does his face tell you about how he is feeling?"
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-HAT-14.jpg",
+      "story_text": "Tortoise got a shell to protect himself. He went home.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Tortoise got a shell to protect himself. He went home."
+        },
+        "annotation_1": {
+          "eng": "The honey dried on Tortoise in a beautiful pattern. Can you think of some interesting natural patterns around you?"
+        },
+        "annotation_2": {
+          "eng": "People also make a lot of patterns when they build things. Tiles are often laid out to make interesting designs. Do you see any any tiling patterns near you?"
+        },
+        "annotation_3": {
+          "eng": "What do you think -- how easy is it to sit in that chair with a big shell on your back?"
+        }
+      },
+      "annotation_1": "The honey dried on Tortoise in a beautiful pattern. Can you think of some interesting natural patterns around you?",
+      "annotation_2": "People also make a lot of patterns when they build things. Tiles are often laid out to make interesting designs. Do you see any any tiling patterns near you?",
+      "annotation_3": "What do you think -- how easy is it to sit in that chair with a big shell on your back?"
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-HAT-15.jpg",
+      "story_text": "The stings caused patches on Hyena's body.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The stings caused patches on Hyena's body."
+        },
+        "annotation_1": {
+          "eng": "Now Hyena has lots of spots on him, just like hyenas we see today."
+        },
+        "annotation_2": {
+          "eng": "Make a quick estimate how many spots he has and then try to count them. How close was your estimate?"
+        },
+        "annotation_3": {
+          "eng": "Making quick estimates is a fun game two people can play. Whose estimate will be the closest?"
+        }
+      },
+      "annotation_1": "Now Hyena has lots of spots on him, just like hyenas we see today.",
+      "annotation_2": "Make a quick estimate how many spots he has and then try to count them. How close was your estimate?",
+      "annotation_3": "Making quick estimates is a fun game two people can play. Whose estimate will be the closest?"
+    },
+    {
+      "id": "page_16",
+      "page_no": 16,
+      "story_text": "Tortoise and Hyena are no longer friends.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Tortoise and Hyena are no longer friends."
+        },
+        "annotation_1": {
+          "eng": "Tortoise and Hyena always seemed like unlikely friends. What happened in the story that caused them to stop being friends?"
+        },
+        "annotation_2": {
+          "eng": "Have you ever had something that caused you to stop being friends with someone?"
+        },
+        "annotation_3": {
+          "eng": "Do you think Tortoise and Hyena will return to being friends someday?"
+        }
+      },
+      "annotation_1": "Tortoise and Hyena always seemed like unlikely friends. What happened in the story that caused them to stop being friends?",
+      "annotation_2": "Have you ever had something that caused you to stop being friends with someone?",
+      "annotation_3": "Do you think Tortoise and Hyena will return to being friends someday?"
+    },
+    {
+      "id": "page_17",
+      "page_no": 17,
+      "illustration": "EFMStorybooks/EFM-SB-HAT-17.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}
