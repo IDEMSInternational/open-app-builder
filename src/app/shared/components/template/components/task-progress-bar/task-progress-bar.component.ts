@@ -15,6 +15,8 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
   subtasksTotal: number;
   subtasksCompleted: number;
   completed: boolean;
+  showText = true;
+  sectionsName = "sections";
 
   constructor(
     private taskService: TaskService,

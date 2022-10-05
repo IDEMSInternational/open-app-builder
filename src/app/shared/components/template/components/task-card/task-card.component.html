@@ -1,5 +1,5 @@
 <div [class]="'card-wrapper ' + style">
-  <span *ngIf="highlighted" class="highlighted-badge"> Active </span>
+  <span *ngIf="highlighted" class="highlighted-badge"> {{ highlightedText }} </span>
   <div class="content-wrapper">
     <ng-container *ngIf="!title">
       <plh-template-component

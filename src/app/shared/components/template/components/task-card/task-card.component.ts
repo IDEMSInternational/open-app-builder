@@ -13,6 +13,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
   style: string;
   displayType: "landscape" | "portrait";
   highlighted: boolean = true;
+  highlightedText = "Active";
   taskGroupId: string | null;
   taskId: string | null;
   title: string | null;
