@@ -130,6 +130,7 @@
       "type": "combo_box",
       "name": "combo_box_par_3_1",
       "parameter_list": {
+        "input_allowed": "true",
         "input_position": "top",
         "answer_list": "@local.answer_list_1"
       },
@@ -156,6 +157,7 @@
       "type": "combo_box",
       "name": "combo_box_par_3_2",
       "parameter_list": {
+        "input_allowed": "true",
         "input_position": "bottom",
         "answer_list": "@local.answer_list_1"
       },
