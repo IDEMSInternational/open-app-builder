@@ -115,8 +115,8 @@ export class TmplParentPointBoxComponent
   }
 
   async clickInfo(event) {
-    await this.triggerActions("info_click");
     event.stopPropagation();
+    await this.triggerActions("info_click");
   }
 
   getScaleFactor(): number {
