@@ -1,0 +1,362 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "How_The_Toad_Got_Skin_pages",
+  "status": "released",
+  "data_list_name": "How_The_Toad_Got_Skin_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-HTTGIS-1.jpg",
+      "story_text": "Mod the toad was tired of living in water.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Mod the toad was tired of living in water."
+        },
+        "annotation_1": {
+          "eng": "Why do you think Mod was tired of water?"
+        },
+        "annotation_2": {
+          "eng": "Mod has four \"fingers\" on each leg. Who has more fingers -- you or Mod? How many more?"
+        },
+        "annotation_3": {
+          "eng": "With four fingers on each leg, how many fingers does Mod have all together? You can count them by 1's, 2's, or 4's. Is it too high for you to count?"
+        }
+      },
+      "annotation_1": "Why do you think Mod was tired of water?",
+      "annotation_2": "Mod has four \"fingers\" on each leg. Who has more fingers -- you or Mod? How many more?",
+      "annotation_3": "With four fingers on each leg, how many fingers does Mod have all together? You can count them by 1's, 2's, or 4's. Is it too high for you to count?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-HTTGIS-2.jpg",
+      "story_text": "Be careful, said the turtle. \"Your skin will dry out.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Be careful, said the turtle. \"Your skin will dry out.\""
+        },
+        "annotation_1": {
+          "eng": "Why don't turtles worry about their skin drying out?"
+        },
+        "annotation_2": {
+          "eng": "Do you think a big turtle would be able to climb onto a narrow log like that?"
+        },
+        "annotation_3": {
+          "eng": "Do you think toads and turtles talk to each other?"
+        }
+      },
+      "annotation_1": "Why don't turtles worry about their skin drying out?",
+      "annotation_2": "Do you think a big turtle would be able to climb onto a narrow log like that?",
+      "annotation_3": "Do you think toads and turtles talk to each other?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-HTTGIS-3.jpg",
+      "story_text": "But Mod was curious. She hopped away.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "But Mod was curious. She hopped away."
+        },
+        "annotation_1": {
+          "eng": "Mod looks very excited to be going on an adventure!"
+        },
+        "annotation_2": {
+          "eng": "Have you ever done something even though you were told it was a bad idea? Were you glad you did it?"
+        },
+        "annotation_3": {
+          "eng": "Do you think Mod had ever been out of the river before? Are there places you would like to explore?"
+        }
+      },
+      "annotation_1": "Mod looks very excited to be going on an adventure!",
+      "annotation_2": "Have you ever done something even though you were told it was a bad idea? Were you glad you did it?",
+      "annotation_3": "Do you think Mod had ever been out of the river before? Are there places you would like to explore?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-HTTGIS-4.jpg",
+      "story_text": "She looked all around.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "She looked all around."
+        },
+        "annotation_1": {
+          "eng": "Count the trees in the background behind Mod."
+        },
+        "annotation_2": {
+          "eng": "Is it easier for you to count the trees one at a time or to count them by 2's?"
+        },
+        "annotation_3": {
+          "eng": "Notice the shades of colors. Mod's colors go from light yellow to dark brown. The grass goes from very light yellow to the yellow greens of the tree tops to the darker shades directly beneath the tree canopy."
+        }
+      },
+      "annotation_1": "Count the trees in the background behind Mod.",
+      "annotation_2": "Is it easier for you to count the trees one at a time or to count them by 2's?",
+      "annotation_3": "Notice the shades of colors. Mod's colors go from light yellow to dark brown. The grass goes from very light yellow to the yellow greens of the tree tops to the darker shades directly beneath the tree canopy."
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-HTTGIS-5.jpg",
+      "story_text": "She met a purple chameleon next to a puddle of water.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "She met a purple chameleon next to a puddle of water."
+        },
+        "annotation_1": {
+          "eng": "Mod looks surprised to see the chameleon!"
+        },
+        "annotation_2": {
+          "eng": "Why is the chameleon holding that bug? Do you eat insects sometimes?"
+        },
+        "annotation_3": {
+          "eng": "Count the bugs flying around. If you add one more for the one the chameleon is holding, how many does that make in total?"
+        }
+      },
+      "annotation_1": "Mod looks surprised to see the chameleon!",
+      "annotation_2": "Why is the chameleon holding that bug? Do you eat insects sometimes?",
+      "annotation_3": "Count the bugs flying around. If you add one more for the one the chameleon is holding, how many does that make in total?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-HTTGIS-6.jpg",
+      "story_text": "The chameleon started turning pink! Mod jumped away.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The chameleon started turning pink! Mod jumped away."
+        },
+        "annotation_1": {
+          "eng": "Chameleons and some other animals can change colors to blend in."
+        },
+        "annotation_2": {
+          "eng": "Do you think this chameleon is blending in?"
+        },
+        "annotation_3": {
+          "eng": "Do you think Mod knew the chameleon could change colors? Mod looks surprised and afraid!"
+        }
+      },
+      "annotation_1": "Chameleons and some other animals can change colors to blend in.",
+      "annotation_2": "Do you think this chameleon is blending in?",
+      "annotation_3": "Do you think Mod knew the chameleon could change colors? Mod looks surprised and afraid!"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-HTTGIS-7.jpg",
+      "story_text": "Then she saw a hyena starting a fire.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Then she saw a hyena starting a fire."
+        },
+        "annotation_1": {
+          "eng": "It's silly to think that hyenas go around starting fires with torches."
+        },
+        "annotation_2": {
+          "eng": "If they could do it, why would they want to?"
+        },
+        "annotation_3": {
+          "eng": "Hyenas are sometimes described as bad characters in stories. Do you think hyenas would go to all the trouble to start a fire just to be mean?"
+        }
+      },
+      "annotation_1": "It's silly to think that hyenas go around starting fires with torches.",
+      "annotation_2": "If they could do it, why would they want to?",
+      "annotation_3": "Hyenas are sometimes described as bad characters in stories. Do you think hyenas would go to all the trouble to start a fire just to be mean?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-HTTGIS-8.jpg",
+      "story_text": "The fire spread around Mod. She was afraid.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The fire spread around Mod. She was afraid."
+        },
+        "annotation_1": {
+          "eng": "Have you ever seen or been near a big wildfire? If so, how did you feel about it?"
+        },
+        "annotation_2": {
+          "eng": "Did Mod pick a good place to hide?"
+        },
+        "annotation_3": {
+          "eng": "What do you think will happen to Mod -- is Mod in a safe place?"
+        }
+      },
+      "annotation_1": "Have you ever seen or been near a big wildfire? If so, how did you feel about it?",
+      "annotation_2": "Did Mod pick a good place to hide?",
+      "annotation_3": "What do you think will happen to Mod -- is Mod in a safe place?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-HTTGIS-9.jpg",
+      "story_text": "The fire burned her skin. She jumped back, into the puddle.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The fire burned her skin. She jumped back, into the puddle."
+        },
+        "annotation_1": {
+          "eng": "Getting burned hurts a lot! Have you ever been burned or known someone who was?"
+        },
+        "annotation_2": {
+          "eng": "Why did Mod cover her eyes?"
+        },
+        "annotation_3": {
+          "eng": "Finding something cool to put on your wound is often a very good idea to stop further burning inside the wound."
+        }
+      },
+      "annotation_1": "Getting burned hurts a lot! Have you ever been burned or known someone who was?",
+      "annotation_2": "Why did Mod cover her eyes?",
+      "annotation_3": "Finding something cool to put on your wound is often a very good idea to stop further burning inside the wound."
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-HTTGIS-10.jpg",
+      "story_text": "But her skin was already full of blisters.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "But her skin was already full of blisters."
+        },
+        "annotation_1": {
+          "eng": "When Mod splashed, what shape were the ripples in the water around where Mod went in?"
+        },
+        "annotation_2": {
+          "eng": "Have you ever watched the ripples a stone makes when it falls into quiet water?"
+        },
+        "annotation_3": {
+          "eng": "Those ripples are circles that have a common center point. Such circles are called concentric."
+        }
+      },
+      "annotation_1": "When Mod splashed, what shape were the ripples in the water around where Mod went in?",
+      "annotation_2": "Have you ever watched the ripples a stone makes when it falls into quiet water?",
+      "annotation_3": "Those ripples are circles that have a common center point. Such circles are called concentric."
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-HTTGIS-11.jpg",
+      "story_text": "Mod found a home under a rock. Her new skin was dry and rough.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Mod found a home under a rock. Her new skin was dry and rough."
+        },
+        "annotation_1": {
+          "eng": "Even if things did not go so well, she had some interesting experiences. Do you think Mod regrets her adventure?"
+        },
+        "annotation_2": {
+          "eng": "Do you think toads have homes with doors, windows, and tables?"
+        },
+        "annotation_3": {
+          "eng": "It looks like Mod has three fingers now. Is that more or less than she had before?"
+        }
+      },
+      "annotation_1": "Even if things did not go so well, she had some interesting experiences. Do you think Mod regrets her adventure?",
+      "annotation_2": "Do you think toads have homes with doors, windows, and tables?",
+      "annotation_3": "It looks like Mod has three fingers now. Is that more or less than she had before?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-HTTGIS-12.jpg",
+      "story_text": "Now only frogs have smooth skin and live near water.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Now only frogs have smooth skin and live near water."
+        },
+        "annotation_1": {
+          "eng": "Did you know that there are differences between frogs and toads?"
+        },
+        "annotation_2": {
+          "eng": "Have you ever seen a frog or toad? Could you tell which one it was?"
+        },
+        "annotation_3": {
+          "eng": "Have you ever gone to a pond, river, or lake to explore water life?"
+        }
+      },
+      "annotation_1": "Did you know that there are differences between frogs and toads?",
+      "annotation_2": "Have you ever seen a frog or toad? Could you tell which one it was?",
+      "annotation_3": "Have you ever gone to a pond, river, or lake to explore water life?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-HTTGIS-13.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

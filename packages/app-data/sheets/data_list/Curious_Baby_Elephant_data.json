@@ -1,0 +1,594 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Curious_Baby_Elephant_data",
+  "status": "released",
+  "data_list_name": "Curious_Baby_Elephant_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-1.jpg",
+      "story_text": "Everyone knows that the elephant has a very long nose.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Everyone knows that the elephant has a very long nose."
+        },
+        "annotation_1": {
+          "eng": "Elephants live in many places in Africa and Asia. What are some things you know about elephants?"
+        },
+        "annotation_2": {
+          "eng": "Have you ever seen an elephant? If so, did it look like this?"
+        },
+        "annotation_3": {
+          "eng": "There are two patches of hair on this elephant. Do elephants actually have hair like this?"
+        }
+      },
+      "annotation_1": "Elephants live in many places in Africa and Asia. What are some things you know about elephants?",
+      "annotation_2": "Have you ever seen an elephant? If so, did it look like this?",
+      "annotation_3": "There are two patches of hair on this elephant. Do elephants actually have hair like this?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-2.jpg",
+      "story_text": "But a long time ago, the elephant's nose was short and fat. Like a shoe in the middle of its face.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "But a long time ago, the elephant's nose was short and fat. Like a shoe in the middle of its face."
+        },
+        "annotation_1": {
+          "eng": "Elephants have 5 toes on each foot. How many toes in total? One way to figure this out is to skip count by 5's -- 5, 10, 15, 20."
+        },
+        "annotation_2": {
+          "eng": "Elephants have large ears and can hear sounds up to six miles away."
+        },
+        "annotation_3": {
+          "eng": "Elephants also use their ears to keep cool."
+        }
+      },
+      "annotation_1": "Elephants have 5 toes on each foot. How many toes in total? One way to figure this out is to skip count by 5's -- 5, 10, 15, 20.",
+      "annotation_2": "Elephants have large ears and can hear sounds up to six miles away.",
+      "annotation_3": "Elephants also use their ears to keep cool."
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-3.jpg",
+      "story_text": "One day a baby elephant was born. She was curious about everything. She had a question for every animal.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "One day a baby elephant was born. She was curious about everything. She had a question for every animal."
+        },
+        "annotation_1": {
+          "eng": "Even numbers are numbers that can be split evenly in two. Odd numbers can't. The elephant has 2 eyes, 2 ears, and four legs -- all even numbers."
+        },
+        "annotation_2": {
+          "eng": "Find some things in this picture that there are an odd number of."
+        },
+        "annotation_3": {
+          "eng": "Notice that all the body parts that there are an odd number of are in the middle of the elephant's body."
+        }
+      },
+      "annotation_1": "Even numbers are numbers that can be split evenly in two. Odd numbers can't. The elephant has 2 eyes, 2 ears, and four legs -- all even numbers.",
+      "annotation_2": "Find some things in this picture that there are an odd number of.",
+      "annotation_3": "Notice that all the body parts that there are an odd number of are in the middle of the elephant's body."
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-4.jpg",
+      "story_text": "She was curious about Giraffe. \"Why do you have a long neck?\" she asked.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "She was curious about Giraffe. \"Why do you have a long neck?\" she asked."
+        },
+        "annotation_1": {
+          "eng": "Can you count the Giraffe's dark spots, or are there too many to count?"
+        },
+        "annotation_2": {
+          "eng": "No two giraffe's have the same pattern of dark spots!"
+        },
+        "annotation_3": {
+          "eng": "Do you think it takes a giraffe a long time to swallow its food because it has such a long neck?"
+        }
+      },
+      "annotation_1": "Can you count the Giraffe's dark spots, or are there too many to count?",
+      "annotation_2": "No two giraffe's have the same pattern of dark spots!",
+      "annotation_3": "Do you think it takes a giraffe a long time to swallow its food because it has such a long neck?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-5.jpg",
+      "story_text": "She was curious about Rhino. \"Why does your horn have a sharp point?\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "She was curious about Rhino. \"Why does your horn have a sharp point?\""
+        },
+        "annotation_1": {
+          "eng": "A rhino can run about half as fast as a car on a highway."
+        },
+        "annotation_2": {
+          "eng": "A rhino can run three times faster than a person, so don't try to run away from one!"
+        },
+        "annotation_3": {
+          "eng": "The elephant was curious about the rhino. Are you? What would you like to ask the rhino?"
+        }
+      },
+      "annotation_1": "A rhino can run about half as fast as a car on a highway.",
+      "annotation_2": "A rhino can run three times faster than a person, so don't try to run away from one!",
+      "annotation_3": "The elephant was curious about the rhino. Are you? What would you like to ask the rhino?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-6.jpg",
+      "story_text": "She was curious about Hippo. \"Why do you have red eyes?\" she asked.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "She was curious about Hippo. \"Why do you have red eyes?\" she asked."
+        },
+        "annotation_1": {
+          "eng": "Hippos can fill up on grass and then not eat for three weeks! How many days is that? Hint: Skip count by 7's."
+        },
+        "annotation_2": {
+          "eng": "How long can you go without eating?"
+        },
+        "annotation_3": {
+          "eng": "Every animal we've seen has a bit of hair at the end of its tail. They are all mammals, and mammals have hair! Even the bowhead whale has hair on its lips, chin, snout, and behind its blowhole."
+        }
+      },
+      "annotation_1": "Hippos can fill up on grass and then not eat for three weeks! How many days is that? Hint: Skip count by 7's.",
+      "annotation_2": "How long can you go without eating?",
+      "annotation_3": "Every animal we've seen has a bit of hair at the end of its tail. They are all mammals, and mammals have hair! Even the bowhead whale has hair on its lips, chin, snout, and behind its blowhole."
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-7.jpg",
+      "story_text": "And she was VERY curious about Crocodile. \"What does Crocodile eat for dinner?\" she asked.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "And she was VERY curious about Crocodile. \"What does Crocodile eat for dinner?\" she asked."
+        },
+        "annotation_1": {
+          "eng": "How many teeth can you see? If it has the same number of teeth on the other side of its mouth, how many would that be all together?"
+        },
+        "annotation_2": {
+          "eng": "What do you think is on his dinner plate under the cover?"
+        },
+        "annotation_3": {
+          "eng": "Which is more and which is less: Crocodile's teeth or the bumps on Crocodile's tail?"
+        }
+      },
+      "annotation_1": "How many teeth can you see? If it has the same number of teeth on the other side of its mouth, how many would that be all together?",
+      "annotation_2": "What do you think is on his dinner plate under the cover?",
+      "annotation_3": "Which is more and which is less: Crocodile's teeth or the bumps on Crocodile's tail?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-8.jpg",
+      "story_text": "Never ask a question like that! said her mother. Then she walked off, frowning.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Never ask a question like that! said her mother. Then she walked off, frowning."
+        },
+        "annotation_1": {
+          "eng": "There are many groups of things in this picture, such as groups of ears, eyes, and eyelashes. How many different groups can you find?"
+        },
+        "annotation_2": {
+          "eng": "Why did the mother say not to ask such a question?"
+        },
+        "annotation_3": {
+          "eng": "Count the eyelashes on both elephants by skip counting by 3's. What would you skip count by to count their feet?"
+        }
+      },
+      "annotation_1": "There are many groups of things in this picture, such as groups of ears, eyes, and eyelashes. How many different groups can you find?",
+      "annotation_2": "Why did the mother say not to ask such a question?",
+      "annotation_3": "Count the eyelashes on both elephants by skip counting by 3's. What would you skip count by to count their feet?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-9.jpg",
+      "story_text": "Quickly Crow flew down to baby elephant. \"Follow me to the river. There you will see what Crocodile eats for dinner,\" squawked Crow.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Quickly Crow flew down to baby elephant. \"Follow me to the river. There you will see what Crocodile eats for dinner,\" squawked Crow."
+        },
+        "annotation_1": {
+          "eng": "Do you think Crow wants to help, or is Crow going to play a trick on Baby Elephant?"
+        },
+        "annotation_2": {
+          "eng": "Would you follow Crow?"
+        },
+        "annotation_3": {
+          "eng": "For each of the numbers from one to four, find a group in this picture with that many things in it."
+        }
+      },
+      "annotation_1": "Do you think Crow wants to help, or is Crow going to play a trick on Baby Elephant?",
+      "annotation_2": "Would you follow Crow?",
+      "annotation_3": "For each of the numbers from one to four, find a group in this picture with that many things in it."
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-10.jpg",
+      "story_text": "So the baby elephant followed Crow down to the river.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "So the baby elephant followed Crow down to the river."
+        },
+        "annotation_1": {
+          "eng": "The yellow path looks narrower in the distance. Things far away often look smaller."
+        },
+        "annotation_2": {
+          "eng": "How would you describe the look on Baby Elephant's face?"
+        },
+        "annotation_3": {
+          "eng": "Imagine if you had four feet to control to walk like Baby Elephant. Would it be easier or harder than walking on two feet?"
+        }
+      },
+      "annotation_1": "The yellow path looks narrower in the distance. Things far away often look smaller.",
+      "annotation_2": "How would you describe the look on Baby Elephant's face?",
+      "annotation_3": "Imagine if you had four feet to control to walk like Baby Elephant. Would it be easier or harder than walking on two feet?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-11.jpg",
+      "story_text": "She pushed through the reeds and stood on the bank. She looked into the water. Where was Crocodile?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "She pushed through the reeds and stood on the bank. She looked into the water. Where was Crocodile?"
+        },
+        "annotation_1": {
+          "eng": "There are the same things on each side of baby elephant. This is called mirror symmetry, or simply symmetry."
+        },
+        "annotation_2": {
+          "eng": "Faces often have mirror symmetry. The flower on baby elephant's face breaks the mirror symmetry of her face."
+        },
+        "annotation_3": {
+          "eng": "With mirror symmetry, body parts not on the midline show up in pairs -- for example, two ears, two eyes, and two arms. Because of this, there will be an even number of them."
+        }
+      },
+      "annotation_1": "There are the same things on each side of baby elephant. This is called mirror symmetry, or simply symmetry.",
+      "annotation_2": "Faces often have mirror symmetry. The flower on baby elephant's face breaks the mirror symmetry of her face.",
+      "annotation_3": "With mirror symmetry, body parts not on the midline show up in pairs -- for example, two ears, two eyes, and two arms. Because of this, there will be an even number of them."
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-12.jpg",
+      "story_text": "Hello, said a stone near the river bank. \"Hello,\" said Baby Elephant. \"Can you tell me what Crocodile eats for dinner?\" she asked.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Hello, said a stone near the river bank. \"Hello,\" said Baby Elephant. \"Can you tell me what Crocodile eats for dinner?\" she asked."
+        },
+        "annotation_1": {
+          "eng": "Is Baby Elephant talking to a stone or to Crocodile?"
+        },
+        "annotation_2": {
+          "eng": "Why is it useful to a crocodile to have its eyes stick up above the water when the rest of its body is below the water?"
+        },
+        "annotation_3": {
+          "eng": "Count all the circles in this picture. Some parts of some of the circles are blocked from view."
+        }
+      },
+      "annotation_1": "Is Baby Elephant talking to a stone or to Crocodile?",
+      "annotation_2": "Why is it useful to a crocodile to have its eyes stick up above the water when the rest of its body is below the water?",
+      "annotation_3": "Count all the circles in this picture. Some parts of some of the circles are blocked from view."
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-13.jpg",
+      "story_text": "Bend down and I will tell you,\" said the stone. \"Lower, lower,\" said the stone. So Baby Elephant bent down lower, and lower.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Bend down and I will tell you,\" said the stone. \"Lower, lower,\" said the stone. So Baby Elephant bent down lower, and lower."
+        },
+        "annotation_1": {
+          "eng": "Uh oh! Why does Crocodile want Baby Elephant to get closer?"
+        },
+        "annotation_2": {
+          "eng": "What do you think will happen next?"
+        },
+        "annotation_3": {
+          "eng": "Can the crocodile eat Baby Elephant? Baby Elephant is much bigger than crocodile."
+        }
+      },
+      "annotation_1": "Uh oh! Why does Crocodile want Baby Elephant to get closer?",
+      "annotation_2": "What do you think will happen next?",
+      "annotation_3": "Can the crocodile eat Baby Elephant? Baby Elephant is much bigger than crocodile."
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-14.jpg",
+      "story_text": "Then suddenly, \"Snap!\" Baby Elephant's nose was caught in Crocodile's jaws. \"Crocodile will eat YOU for dinner!\" squawked Crow, and flew away.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Then suddenly, \"Snap!\" Baby Elephant's nose was caught in Crocodile's jaws. \"Crocodile will eat YOU for dinner!\" squawked Crow, and flew away."
+        },
+        "annotation_1": {
+          "eng": "Crow tricked Baby Elephant. Can you think of any stories where someone played a trick on someone else?"
+        },
+        "annotation_2": {
+          "eng": "Can you think of a time when someone tricked you?"
+        },
+        "annotation_3": {
+          "eng": "Have you noticed the ground Baby Elephant stands on keeps changing color? Which colors have been used so far?"
+        }
+      },
+      "annotation_1": "Crow tricked Baby Elephant. Can you think of any stories where someone played a trick on someone else?",
+      "annotation_2": "Can you think of a time when someone tricked you?",
+      "annotation_3": "Have you noticed the ground Baby Elephant stands on keeps changing color? Which colors have been used so far?"
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-15.jpg",
+      "story_text": "Baby Elephant sat back on her strong legs and pulled. She pulled, and pulled. But Crocodile did not let go of her nose.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Baby Elephant sat back on her strong legs and pulled. She pulled, and pulled. But Crocodile did not let go of her nose."
+        },
+        "annotation_1": {
+          "eng": "What is Baby Elephant feeling right now?"
+        },
+        "annotation_2": {
+          "eng": "What is Crocodile feeling right now?"
+        },
+        "annotation_3": {
+          "eng": "Baby Elephant's nose was described as a shoe in the middle of its face at the start of the story. What does it look like now?"
+        }
+      },
+      "annotation_1": "What is Baby Elephant feeling right now?",
+      "annotation_2": "What is Crocodile feeling right now?",
+      "annotation_3": "Baby Elephant's nose was described as a shoe in the middle of its face at the start of the story. What does it look like now?"
+    },
+    {
+      "id": "page_16",
+      "page_no": 16,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-16.jpg",
+      "story_text": "Baby Elephant's nose stretched, and stretched, and stretched. Then, \"Thud!\" she fell on her back.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Baby Elephant's nose stretched, and stretched, and stretched. Then, \"Thud!\" she fell on her back."
+        },
+        "annotation_1": {
+          "eng": "Have you ever lost your balance and flipped over with a \"Thud\"?"
+        },
+        "annotation_2": {
+          "eng": "Notice the lines that curl and swerve in the picture. What are they telling us?"
+        },
+        "annotation_3": {
+          "eng": "Point to and count all the extra lines added to the picture."
+        }
+      },
+      "annotation_1": "Have you ever lost your balance and flipped over with a \"Thud\"?",
+      "annotation_2": "Notice the lines that curl and swerve in the picture. What are they telling us?",
+      "annotation_3": "Point to and count all the extra lines added to the picture."
+    },
+    {
+      "id": "page_17",
+      "page_no": 17,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-17.jpg",
+      "story_text": "Crocodile sunk back into the water. He was cross about losing his dinner.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Crocodile sunk back into the water. He was cross about losing his dinner."
+        },
+        "annotation_1": {
+          "eng": "Is this pond big enough for Crocodile, or is it too small?"
+        },
+        "annotation_2": {
+          "eng": "Is Crocodile's body curled into a ball so that it fits in the pond?"
+        },
+        "annotation_3": {
+          "eng": "There are three plants near Crocodile. There is another group of three things that shows us how Crocodile is feeling -- where are they?"
+        }
+      },
+      "annotation_1": "Is this pond big enough for Crocodile, or is it too small?",
+      "annotation_2": "Is Crocodile's body curled into a ball so that it fits in the pond?",
+      "annotation_3": "There are three plants near Crocodile. There is another group of three things that shows us how Crocodile is feeling -- where are they?"
+    },
+    {
+      "id": "page_18",
+      "page_no": 18,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-18.jpg",
+      "story_text": "Baby Elephant looked at her nose. It was stretched very long. She could not see where it ended!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Baby Elephant looked at her nose. It was stretched very long. She could not see where it ended!"
+        },
+        "annotation_1": {
+          "eng": "How is Baby Elephant feeling about her nose?"
+        },
+        "annotation_2": {
+          "eng": "It can be difficult to accept changes in how you look. Have your looks changed?"
+        },
+        "annotation_3": {
+          "eng": "When Baby Elephant stands up, do you think her trunk will touch the ground?"
+        }
+      },
+      "annotation_1": "How is Baby Elephant feeling about her nose?",
+      "annotation_2": "It can be difficult to accept changes in how you look. Have your looks changed?",
+      "annotation_3": "When Baby Elephant stands up, do you think her trunk will touch the ground?"
+    },
+    {
+      "id": "page_19",
+      "page_no": 19,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-19.jpg",
+      "story_text": "Her nose was so long she could pick fruit from high branches.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Her nose was so long she could pick fruit from high branches."
+        },
+        "annotation_1": {
+          "eng": "Her nose has turned into a long trunk. An elephant's trunk has lots of muscles and is very strong."
+        },
+        "annotation_2": {
+          "eng": "What are some ways that a long trunk is useful? Do you wish you had one?"
+        },
+        "annotation_3": {
+          "eng": "Sometimes a change that seemed bad at first turns out to be a good thing. Has something like that happened to you?"
+        }
+      },
+      "annotation_1": "Her nose has turned into a long trunk. An elephant's trunk has lots of muscles and is very strong.",
+      "annotation_2": "What are some ways that a long trunk is useful? Do you wish you had one?",
+      "annotation_3": "Sometimes a change that seemed bad at first turns out to be a good thing. Has something like that happened to you?"
+    },
+    {
+      "id": "page_20",
+      "page_no": 20,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-20.jpg",
+      "story_text": "Her nose was so long she could shower her back with water. From that day, all elephants have had long and useful trunks.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Her nose was so long she could shower her back with water. From that day, all elephants have had long and useful trunks."
+        },
+        "annotation_1": {
+          "eng": "If all elephants have long trunks after this, did each one have to get their nose stretched by a crocodile?"
+        },
+        "annotation_2": {
+          "eng": "Do you think Baby Elephant should be friends with Crow ever again?"
+        },
+        "annotation_3": {
+          "eng": "Make up a story like this that explains how the giraffe got such a long neck."
+        }
+      },
+      "annotation_1": "If all elephants have long trunks after this, did each one have to get their nose stretched by a crocodile?",
+      "annotation_2": "Do you think Baby Elephant should be friends with Crow ever again?",
+      "annotation_3": "Make up a story like this that explains how the giraffe got such a long neck."
+    },
+    {
+      "id": "page_21",
+      "page_no": 21,
+      "illustration": "EFMStorybooks/EFM-SB-CBE-21.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

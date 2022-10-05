@@ -1,0 +1,362 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "A_Fish_And_A_Gift_data",
+  "status": "released",
+  "data_list_name": "A_Fish_And_A_Gift_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-AFAAG-1.jpg",
+      "story_text": "One special Friday, Yusuf's father gets dressed before a flicker of light brightens the sky. He pulls on his heavy weather-proof jacket and the green woolen cap that covers his ears. He waves his boy goodbye. Yusuf's eyes brighten when Papa says, \"Today is the day I will catch a fish and bring a gift for you.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "One special Friday, Yusuf's father gets dressed before a flicker of light brightens the sky. He pulls on his heavy weather-proof jacket and the green woolen cap that covers his ears. He waves his boy goodbye. Yusuf's eyes brighten when Papa says, \"Today is the day I will catch a fish and bring a gift for you.\""
+        },
+        "annotation_1": {
+          "eng": "His father got up while it was still dark. Daylight starts much earlier in the day during the summer than in the winter."
+        },
+        "annotation_2": {
+          "eng": "Have you gotten up while it was still dark? Was it in summer or in winter?"
+        },
+        "annotation_3": {
+          "eng": "What do you think the gift will be?"
+        }
+      },
+      "annotation_1": "His father got up while it was still dark. Daylight starts much earlier in the day during the summer than in the winter.",
+      "annotation_2": "Have you gotten up while it was still dark? Was it in summer or in winter?",
+      "annotation_3": "What do you think the gift will be?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-AFAAG-2.jpg",
+      "story_text": "A fish and a gift? Oh, what will it be? Papa cycles down to Muizenberg Beach. Squeak squeak go the wheels all the way to Surfer's Corner. Gulls circle the sky. \"Whaaat? Whaaat? Whaaat?\" they cry. \"What will you bring back for Yusuf?\" Papa rings his bell. \"Wait and see what it will be!\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "A fish and a gift? Oh, what will it be? Papa cycles down to Muizenberg Beach. Squeak squeak go the wheels all the way to Surfer's Corner. Gulls circle the sky. \"Whaaat? Whaaat? Whaaat?\" they cry. \"What will you bring back for Yusuf?\" Papa rings his bell. \"Wait and see what it will be!\""
+        },
+        "annotation_1": {
+          "eng": "Papa is riding downhill to the beach. Going downhill he might end up going faster and faster. He might need to use his brakes so he doesn't go into the water!"
+        },
+        "annotation_2": {
+          "eng": "How many gulls do you see? If you take away the one gull on the beach, how many are left?"
+        },
+        "annotation_3": {
+          "eng": "The gulls in the sky sound like they are asking Papa questions. What do you think they are doing as they are circling in the sky?"
+        }
+      },
+      "annotation_1": "Papa is riding downhill to the beach. Going downhill he might end up going faster and faster. He might need to use his brakes so he doesn't go into the water!",
+      "annotation_2": "How many gulls do you see? If you take away the one gull on the beach, how many are left?",
+      "annotation_3": "The gulls in the sky sound like they are asking Papa questions. What do you think they are doing as they are circling in the sky?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-AFAAG-3.jpg",
+      "story_text": "The fishermen watch the sun rise. They check their nets. They check their oars. They listen to the wind. They drag their boats down to the water. Yusuf's grandfather, Oupa Salie was a treknet fisherman. Before him his father, Oupagrootjie Ridwaan, knew the sea too.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The fishermen watch the sun rise. They check their nets. They check their oars. They listen to the wind. They drag their boats down to the water. Yusuf's grandfather, Oupa Salie was a treknet fisherman. Before him his father, Oupagrootjie Ridwaan, knew the sea too."
+        },
+        "annotation_1": {
+          "eng": "In this view, the line where the sea meets the sky is called the horizon. A horizontal line is like the horizon line, it goes straight across from side to side. Point out some horizontal lines near you."
+        },
+        "annotation_2": {
+          "eng": "Yusuf's father, grandfather, and great-grandfather were all fishermen. Do you know anyone who does the same job as one of their parents?"
+        },
+        "annotation_3": {
+          "eng": "People are many different ages. Suppose Papa is 25, Papa's father is 50, and Papa's grandfather is 75. How old are you? How many years until you are 25?"
+        }
+      },
+      "annotation_1": "In this view, the line where the sea meets the sky is called the horizon. A horizontal line is like the horizon line, it goes straight across from side to side. Point out some horizontal lines near you.",
+      "annotation_2": "Yusuf's father, grandfather, and great-grandfather were all fishermen. Do you know anyone who does the same job as one of their parents?",
+      "annotation_3": "People are many different ages. Suppose Papa is 25, Papa's father is 50, and Papa's grandfather is 75. How old are you? How many years until you are 25?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-AFAAG-4.jpg",
+      "story_text": "The boat rides into the waves. Papa's arms stretch to the oar. His leg braces against the side. His neck strains, his back muscles ripple. Papa sings as he works: \"Drop and swish. Find a fish. Pull and plop. Don't you stop.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The boat rides into the waves. Papa's arms stretch to the oar. His leg braces against the side. His neck strains, his back muscles ripple. Papa sings as he works: \"Drop and swish. Find a fish. Pull and plop. Don't you stop.\""
+        },
+        "annotation_1": {
+          "eng": "People sit backwards in rowboats when they row. The pointed end of this boat is much higher than the flat end -- it looks like a pretty rough ride!"
+        },
+        "annotation_2": {
+          "eng": "Papa's muscles are working very hard. Have you ever felt your muscles strain trying to lift or pull something?"
+        },
+        "annotation_3": {
+          "eng": "The words \"fish\" and \"swish\" rhyme. Think of some other words that rhyme with those words (dish, wish, squish)."
+        }
+      },
+      "annotation_1": "People sit backwards in rowboats when they row. The pointed end of this boat is much higher than the flat end -- it looks like a pretty rough ride!",
+      "annotation_2": "Papa's muscles are working very hard. Have you ever felt your muscles strain trying to lift or pull something?",
+      "annotation_3": "The words \"fish\" and \"swish\" rhyme. Think of some other words that rhyme with those words (dish, wish, squish)."
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-AFAAG-5.jpg",
+      "story_text": "All day long Yusuf looks at the sky. It is bright and clear and windless. A fish and a gift! What will Papa bring home from the sea? Sometimes he brings a beautiful shell. Sometimes he brings a jewel green bottle rinsed by the waves.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "All day long Yusuf looks at the sky. It is bright and clear and windless. A fish and a gift! What will Papa bring home from the sea? Sometimes he brings a beautiful shell. Sometimes he brings a jewel green bottle rinsed by the waves."
+        },
+        "annotation_1": {
+          "eng": "Yusuf has many gifts. There is a connection between one of his gifts and something outside the window -- can you figure out what it is?"
+        },
+        "annotation_2": {
+          "eng": "Count together all the horizontal lines in this picture."
+        },
+        "annotation_3": {
+          "eng": "Which horizontal line is the longest?"
+        }
+      },
+      "annotation_1": "Yusuf has many gifts. There is a connection between one of his gifts and something outside the window -- can you figure out what it is?",
+      "annotation_2": "Count together all the horizontal lines in this picture.",
+      "annotation_3": "Which horizontal line is the longest?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-AFAAG-6.jpg",
+      "story_text": "Some days Yusuf's father brings a story. Like the time they found sea turtles on the sand, hundreds washed up in a storm. \"Whaaat? Whaaat? Whaaat?\" cried the gulls. \"What will you do to help the turtles?\" Papa said, \"We saved those turtles, I tell you straight. We sent them back to the ocean, every last one.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Some days Yusuf's father brings a story. Like the time they found sea turtles on the sand, hundreds washed up in a storm. \"Whaaat? Whaaat? Whaaat?\" cried the gulls. \"What will you do to help the turtles?\" Papa said, \"We saved those turtles, I tell you straight. We sent them back to the ocean, every last one.\""
+        },
+        "annotation_1": {
+          "eng": "Sea turtles come out of the sea to lay eggs on the shore. Every turtle has four flippers. How many flippers do you see?"
+        },
+        "annotation_2": {
+          "eng": "Can you skip count by 4's to figure out how many flippers these turtles have?"
+        },
+        "annotation_3": {
+          "eng": "A grown turtle can weigh up to 100 pounds. These turtles probably weigh 10 pounds each. Skip count by 10's to see how much these turtles weigh all together."
+        }
+      },
+      "annotation_1": "Sea turtles come out of the sea to lay eggs on the shore. Every turtle has four flippers. How many flippers do you see?",
+      "annotation_2": "Can you skip count by 4's to figure out how many flippers these turtles have?",
+      "annotation_3": "A grown turtle can weigh up to 100 pounds. These turtles probably weigh 10 pounds each. Skip count by 10's to see how much these turtles weigh all together."
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-AFAAG-7.jpg",
+      "story_text": "Always Papa brings a song. He sings the song while he pulls the oars. He sings the song while he pulls the nets. He sings the song as he winds the ropes. He sings the song as he cycles home. \"Drop and swish. Find a fish. Pull and plop. Don't you stop.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Always Papa brings a song. He sings the song while he pulls the oars. He sings the song while he pulls the nets. He sings the song as he winds the ropes. He sings the song as he cycles home. \"Drop and swish. Find a fish. Pull and plop. Don't you stop.\""
+        },
+        "annotation_1": {
+          "eng": "People often sing or hum as they do something. Do you do this?"
+        },
+        "annotation_2": {
+          "eng": "It is hard work pulling a wet fishing net out of the water. How many fishermen are pulling? Do they all pull together or take turns?"
+        },
+        "annotation_3": {
+          "eng": "Are there more gulls or fishermen in this picture? How many more?"
+        }
+      },
+      "annotation_1": "People often sing or hum as they do something. Do you do this?",
+      "annotation_2": "It is hard work pulling a wet fishing net out of the water. How many fishermen are pulling? Do they all pull together or take turns?",
+      "annotation_3": "Are there more gulls or fishermen in this picture? How many more?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-AFAAG-8.jpg",
+      "story_text": "Ouma Safiya wants a nice fat yellowtail for her supper. \"But we'll be lucky if they catch even a tiny crab. More likely it will be fish tail Friday. There's not so many fish left in the sea,\" says Ouma shaking her head. Yusuf holds Ouma's hand. They cross the road at the bathing cabins. \"Whaaat? Whaaat? Whaaat?\" cry the gulls perched on the bright rooftops. \"What is for supper?\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Ouma Safiya wants a nice fat yellowtail for her supper. \"But we'll be lucky if they catch even a tiny crab. More likely it will be fish tail Friday. There's not so many fish left in the sea,\" says Ouma shaking her head. Yusuf holds Ouma's hand. They cross the road at the bathing cabins. \"Whaaat? Whaaat? Whaaat?\" cry the gulls perched on the bright rooftops. \"What is for supper?\""
+        },
+        "annotation_1": {
+          "eng": "Ouma means grandmother. Do you have favorite names for people you are close to?"
+        },
+        "annotation_2": {
+          "eng": "The people and the seagulls want the same things for dinner -- maybe a yellowtail or a crab. How many different kinds of fish do you know?"
+        },
+        "annotation_3": {
+          "eng": "A rectangle is a shape with four straight sides like this page. The doors and roofs of the buildings are rectangles. How many rectangles do you see in this picture? How many rectangles do you see where you are?"
+        }
+      },
+      "annotation_1": "Ouma means grandmother. Do you have favorite names for people you are close to?",
+      "annotation_2": "The people and the seagulls want the same things for dinner -- maybe a yellowtail or a crab. How many different kinds of fish do you know?",
+      "annotation_3": "A rectangle is a shape with four straight sides like this page. The doors and roofs of the buildings are rectangles. How many rectangles do you see in this picture? How many rectangles do you see where you are?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-AFAAG-9.jpg",
+      "story_text": "Last year the fishermen fought with the surfers. Angry fists and shouting words. \"Whaaat? Whaaat? Whaaat?\" cried the gulls. \"There's enough sea for everybody,\" said Yusuf's father. He showed them the fishing license that had been Oupa Salie's. \"Waves for all. Water for free.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Last year the fishermen fought with the surfers. Angry fists and shouting words. \"Whaaat? Whaaat? Whaaat?\" cried the gulls. \"There's enough sea for everybody,\" said Yusuf's father. He showed them the fishing license that had been Oupa Salie's. \"Waves for all. Water for free.\""
+        },
+        "annotation_1": {
+          "eng": "What were the fishermen and surfers arguing about? What bad things might happen if they are in the same place?"
+        },
+        "annotation_2": {
+          "eng": "People have disagreements, and then they find ways to resolve them. Think of a disagreement you had with someone. How did you solve that problem?"
+        },
+        "annotation_3": {
+          "eng": "What feelings do you have when you get into an argument with someone?"
+        }
+      },
+      "annotation_1": "What were the fishermen and surfers arguing about? What bad things might happen if they are in the same place?",
+      "annotation_2": "People have disagreements, and then they find ways to resolve them. Think of a disagreement you had with someone. How did you solve that problem?",
+      "annotation_3": "What feelings do you have when you get into an argument with someone?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-AFAAG-10.jpg",
+      "story_text": "Ouma Safiya watches through her binoculars, her fingers curled in curiosity. The shark siren sounds. Swimmers run back to the sand and grab their towels. Surfers rush to the shore, carrying their boards under their arms. Under the showers they strip off their wetsuits. \"Whaaat? Whaaat? Whaaat?\" cry the gulls. \"What will Yusuf's father bring from the ocean?\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Ouma Safiya watches through her binoculars, her fingers curled in curiosity. The shark siren sounds. Swimmers run back to the sand and grab their towels. Surfers rush to the shore, carrying their boards under their arms. Under the showers they strip off their wetsuits. \"Whaaat? Whaaat? Whaaat?\" cry the gulls. \"What will Yusuf's father bring from the ocean?\""
+        },
+        "annotation_1": {
+          "eng": "There are hundreds of kinds of sharks in the world. Here are a few of those kinds: Great White Shark, Tiger Shark, Hammerhead Shark, Lemon Shark, and Nurse Shark."
+        },
+        "annotation_2": {
+          "eng": "Some sharks are dangerous. Others have no interest in people, such as nurse sharks. A leopard shark has never attacked a person and they just hunt for crabs."
+        },
+        "annotation_3": {
+          "eng": "Goblin sharks are not very aggressive. They have not attacked a person, partly because they are so far out in the deep ocean."
+        }
+      },
+      "annotation_1": "There are hundreds of kinds of sharks in the world. Here are a few of those kinds: Great White Shark, Tiger Shark, Hammerhead Shark, Lemon Shark, and Nurse Shark.",
+      "annotation_2": "Some sharks are dangerous. Others have no interest in people, such as nurse sharks. A leopard shark has never attacked a person and they just hunt for crabs.",
+      "annotation_3": "Goblin sharks are not very aggressive. They have not attacked a person, partly because they are so far out in the deep ocean."
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-AFAAG-11.jpg",
+      "story_text": "Yusuf's father and uncle and cousins heave and pull. A little shark has been caught. Yusuf's father untangles the nets, singing to the shark: \"Drop and swish. Find a fish. Pull and plop. Don't you stop.\" When the shark at last is free it streaks back into the waves, leaving only one fat yellowtail in the net. Ouma Safiya will be pleased.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Yusuf's father and uncle and cousins heave and pull. A little shark has been caught. Yusuf's father untangles the nets, singing to the shark: \"Drop and swish. Find a fish. Pull and plop. Don't you stop.\" When the shark at last is free it streaks back into the waves, leaving only one fat yellowtail in the net. Ouma Safiya will be pleased."
+        },
+        "annotation_1": {
+          "eng": "Why does Yusuf's father let the little shark go free?"
+        },
+        "annotation_2": {
+          "eng": "The fin in the shape of a triangle on a shark's back is called a dorsal fin. It helps keep the shark upright in the water and it also helps it make quick turns."
+        },
+        "annotation_3": {
+          "eng": "The net in the picture has circular objects shaped like donuts on its edge. They're not donuts! What do you think they are for?"
+        }
+      },
+      "annotation_1": "Why does Yusuf's father let the little shark go free?",
+      "annotation_2": "The fin in the shape of a triangle on a shark's back is called a dorsal fin. It helps keep the shark upright in the water and it also helps it make quick turns.",
+      "annotation_3": "The net in the picture has circular objects shaped like donuts on its edge. They're not donuts! What do you think they are for?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-AFAAG-12.jpg",
+      "story_text": "The men pull the boat in and coil up the cables. A hard white triangle catches Papa's finger. \"Whaaat? Whaaat\" Whaaat?\" cry the gulls. \"What did you bring back for Yusuf?\" As the sun goes down, Papa answers the gulls. \"A lucky shark tooth for my boy.\" At home Yusuf holds his gift up to the stars.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The men pull the boat in and coil up the cables. A hard white triangle catches Papa's finger. \"Whaaat? Whaaat\" Whaaat?\" cry the gulls. \"What did you bring back for Yusuf?\" As the sun goes down, Papa answers the gulls. \"A lucky shark tooth for my boy.\" At home Yusuf holds his gift up to the stars."
+        },
+        "annotation_1": {
+          "eng": "The shark's tooth is a hard, white triangle. Do you remember another triangle on the shark's body? Do you see any triangles around you now?"
+        },
+        "annotation_2": {
+          "eng": "Do you remember what some of the other gifts were from earlier in the story?"
+        },
+        "annotation_3": {
+          "eng": "Do you have special things you've found that you like to keep? Perhaps you found a pretty rock or a bird's feather that you liked a lot?"
+        }
+      },
+      "annotation_1": "The shark's tooth is a hard, white triangle. Do you remember another triangle on the shark's body? Do you see any triangles around you now?",
+      "annotation_2": "Do you remember what some of the other gifts were from earlier in the story?",
+      "annotation_3": "Do you have special things you've found that you like to keep? Perhaps you found a pretty rock or a bird's feather that you liked a lot?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-AFAAG-13.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

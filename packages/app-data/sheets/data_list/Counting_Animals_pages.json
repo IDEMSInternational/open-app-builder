@@ -1,0 +1,246 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Counting_Animals_pages",
+  "status": "released",
+  "data_list_name": "Counting_Animals_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-CA-1.jpg",
+      "story_text": "One elephant is going to drink water.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "One elephant is going to drink water."
+        },
+        "annotation_1": {
+          "eng": "Count together the elephants, the tusks, the feet, the eyes, and the tails."
+        },
+        "annotation_2": {
+          "eng": "Which items are there the most of and which are there the least of?"
+        },
+        "annotation_3": {
+          "eng": "What do you think the elephant is about to do?"
+        }
+      },
+      "annotation_1": "Count together the elephants, the tusks, the feet, the eyes, and the tails.",
+      "annotation_2": "Which items are there the most of and which are there the least of?",
+      "annotation_3": "What do you think the elephant is about to do?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-CA-2.jpg",
+      "story_text": "Two giraffes are going to drink water.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Two giraffes are going to drink water."
+        },
+        "annotation_1": {
+          "eng": "Each giraffe has four feet. Count the number of giraffes and the number of feet."
+        },
+        "annotation_2": {
+          "eng": "The giraffes are very tall. They must bend way down to get to the water."
+        },
+        "annotation_3": {
+          "eng": "Two giraffes are one more animal than one elephant. What is one more animal than two animals?"
+        }
+      },
+      "annotation_1": "Each giraffe has four feet. Count the number of giraffes and the number of feet.",
+      "annotation_2": "The giraffes are very tall. They must bend way down to get to the water.",
+      "annotation_3": "Two giraffes are one more animal than one elephant. What is one more animal than two animals?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-CA-3.jpg",
+      "story_text": "Three buffaloes and four birds are also going to drink water.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Three buffaloes and four birds are also going to drink water."
+        },
+        "annotation_1": {
+          "eng": "Count together the buffaloes, the birds, the horns, and the tails."
+        },
+        "annotation_2": {
+          "eng": "When there is one source of water, all the thirsty animals come to that one place. If a lion wants to hunt animals, this is a good place to find them!"
+        },
+        "annotation_3": {
+          "eng": "Three buffaloes is one less animal than four animals. What is one less animal than three animals?"
+        }
+      },
+      "annotation_1": "Count together the buffaloes, the birds, the horns, and the tails.",
+      "annotation_2": "When there is one source of water, all the thirsty animals come to that one place. If a lion wants to hunt animals, this is a good place to find them!",
+      "annotation_3": "Three buffaloes is one less animal than four animals. What is one less animal than three animals?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-CA-4.jpg",
+      "story_text": "Five antelopes and six warthogs are walking to the water.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Five antelopes and six warthogs are walking to the water."
+        },
+        "annotation_1": {
+          "eng": "Count the antelopes and the warthogs. How many of the warthogs are babies?"
+        },
+        "annotation_2": {
+          "eng": "Some of the antelopes are looking around rather than looking at each other. The pack stays safe by having some of them looking for danger!"
+        },
+        "annotation_3": {
+          "eng": "Of antelopes and warthogs, which are there more of and which are there less of?"
+        }
+      },
+      "annotation_1": "Count the antelopes and the warthogs. How many of the warthogs are babies?",
+      "annotation_2": "Some of the antelopes are looking around rather than looking at each other. The pack stays safe by having some of them looking for danger!",
+      "annotation_3": "Of antelopes and warthogs, which are there more of and which are there less of?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-CA-5.jpg",
+      "story_text": "Seven zebras are running to the water.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Seven zebras are running to the water."
+        },
+        "annotation_1": {
+          "eng": "Count the zebras and the trees."
+        },
+        "annotation_2": {
+          "eng": "How can you tell that the zebras have been running? They must be very thirsty to be running to the water!"
+        },
+        "annotation_3": {
+          "eng": "Try counting the black stripes on some of the zebras. Do some zebras have more stripes than others?"
+        }
+      },
+      "annotation_1": "Count the zebras and the trees.",
+      "annotation_2": "How can you tell that the zebras have been running? They must be very thirsty to be running to the water!",
+      "annotation_3": "Try counting the black stripes on some of the zebras. Do some zebras have more stripes than others?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-CA-6.jpg",
+      "story_text": "Eight frogs and nine fish are swimming in the water.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Eight frogs and nine fish are swimming in the water."
+        },
+        "annotation_1": {
+          "eng": "Count together the frogs and the fish. Can you count that high?"
+        },
+        "annotation_2": {
+          "eng": "They are packed very tightly together. Do you think they feel crowded or do they like having the company?"
+        },
+        "annotation_3": {
+          "eng": "What is one more than eight frogs? What is one less than nine fish?"
+        }
+      },
+      "annotation_1": "Count together the frogs and the fish. Can you count that high?",
+      "annotation_2": "They are packed very tightly together. Do you think they feel crowded or do they like having the company?",
+      "annotation_3": "What is one more than eight frogs? What is one less than nine fish?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-CA-7.jpg",
+      "story_text": "How many different kinds of animals can you count?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "How many different kinds of animals can you count?"
+        },
+        "annotation_1": {
+          "eng": "One lion roars. He also wants to drink. Who is afraid of the lion?"
+        },
+        "annotation_2": {
+          "eng": "Count together the lions, warthogs, birds, zebras, antelopes, giraffes, water buffaloes, and elephants. That's a lot of counting!"
+        },
+        "annotation_3": {
+          "eng": "Most of the animals start to run away from the lion. Which animals will stay?"
+        }
+      },
+      "annotation_1": "One lion roars. He also wants to drink. Who is afraid of the lion?",
+      "annotation_2": "Count together the lions, warthogs, birds, zebras, antelopes, giraffes, water buffaloes, and elephants. That's a lot of counting!",
+      "annotation_3": "Most of the animals start to run away from the lion. Which animals will stay?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-CA-8.jpg",
+      "story_text": "One elephant is drinking water with the lion.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "One elephant is drinking water with the lion."
+        },
+        "annotation_1": {
+          "eng": "The elephant, birds, fish, and frogs did not run away."
+        },
+        "annotation_2": {
+          "eng": "Would you run away from a lion?"
+        },
+        "annotation_3": {
+          "eng": "Would it be fun to go for a swim in this watering hole?"
+        }
+      },
+      "annotation_1": "The elephant, birds, fish, and frogs did not run away.",
+      "annotation_2": "Would you run away from a lion?",
+      "annotation_3": "Would it be fun to go for a swim in this watering hole?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-CA-9.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

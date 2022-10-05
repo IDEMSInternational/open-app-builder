@@ -37,7 +37,10 @@
 
 @import "~nouislider/distribute/nouislider.min.css";
 
-$tour-next-button-background: var(--tour-next-button-background, var(--gradient-secondary-mid-vertical));
+$tour-next-button-background: var(
+  --tour-next-button-background,
+  var(--gradient-secondary-mid-vertical)
+);
 
 .slide-up-modal {
   .modal-wrapper {

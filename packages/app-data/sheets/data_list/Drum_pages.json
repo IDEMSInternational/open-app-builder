@@ -1,0 +1,246 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Drum_pages",
+  "status": "released",
+  "data_list_name": "Drum_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-D-1.jpg",
+      "story_text": "The drum has always been an important musical instrument in our community. We love drums!\n\nWe have drums of different sizes: big, medium-sized, and small.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The drum has always been an important musical instrument in our community. We love drums!\n\nWe have drums of different sizes: big, medium-sized, and small."
+        },
+        "annotation_1": {
+          "eng": "Think of things that have the same shape with different sizes. Perhaps one big and one small, or three with big, medium, and small."
+        },
+        "annotation_2": {
+          "eng": "Think of stories about three things. Some examples are: The Three Little Pigs and Goldilocks."
+        },
+        "annotation_3": {
+          "eng": "Have you ever beat on a drum? Which of these three would you choose?"
+        }
+      },
+      "annotation_1": "Think of things that have the same shape with different sizes. Perhaps one big and one small, or three with big, medium, and small.",
+      "annotation_2": "Think of stories about three things. Some examples are: The Three Little Pigs and Goldilocks.",
+      "annotation_3": "Have you ever beat on a drum? Which of these three would you choose?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-D-2.jpg",
+      "story_text": "We play drums using beaters, or with our fingers.\n\nWe play drums for various reasons: We play drums with songs and dances, for feasts, and in bad times.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "We play drums using beaters, or with our fingers.\n\nWe play drums for various reasons: We play drums with songs and dances, for feasts, and in bad times."
+        },
+        "annotation_1": {
+          "eng": "People use drums to make rhythms. Make up your own rhythm and count it. For example:  (clapping for each number) \"1, 2, pause, 3, 1, 2, pause 3.\""
+        },
+        "annotation_2": {
+          "eng": "How do you suppose a beater sounds different than using fingers?"
+        },
+        "annotation_3": {
+          "eng": "How does the small drum sound different than the large one?"
+        }
+      },
+      "annotation_1": "People use drums to make rhythms. Make up your own rhythm and count it. For example:  (clapping for each number) \"1, 2, pause, 3, 1, 2, pause 3.\"",
+      "annotation_2": "How do you suppose a beater sounds different than using fingers?",
+      "annotation_3": "How does the small drum sound different than the large one?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-D-3.jpg",
+      "story_text": "Drums enrich songs and make people want to dance. Drums make ceremonies colorful.\n\nWe play drums during ceremonies for marriage and child naming. We play drums when celebrating a new harvest or a twin birth.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Drums enrich songs and make people want to dance. Drums make ceremonies colorful.\n\nWe play drums during ceremonies for marriage and child naming. We play drums when celebrating a new harvest or a twin birth."
+        },
+        "annotation_1": {
+          "eng": "People are wearing special wedding clothes. Count together the people wearing orange."
+        },
+        "annotation_2": {
+          "eng": "Which color are the drummers wearing?"
+        },
+        "annotation_3": {
+          "eng": "Count together all the people at the wedding. Can you count that high?"
+        }
+      },
+      "annotation_1": "People are wearing special wedding clothes. Count together the people wearing orange.",
+      "annotation_2": "Which color are the drummers wearing?",
+      "annotation_3": "Count together all the people at the wedding. Can you count that high?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-D-4.jpg",
+      "story_text": "We sound drums to announce grief and call people when death occurs.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "We sound drums to announce grief and call people when death occurs."
+        },
+        "annotation_1": {
+          "eng": "What does sad drumming sound like? Can you make a soft, sad rhythm with your hands?"
+        },
+        "annotation_2": {
+          "eng": "There are many kinds of drumming, such as soft background rhythms or fast loud rhythms. Which kinds of drumming have you heard?"
+        },
+        "annotation_3": {
+          "eng": "Does a drumbeat make you want to dance?"
+        }
+      },
+      "annotation_1": "What does sad drumming sound like? Can you make a soft, sad rhythm with your hands?",
+      "annotation_2": "There are many kinds of drumming, such as soft background rhythms or fast loud rhythms. Which kinds of drumming have you heard?",
+      "annotation_3": "Does a drumbeat make you want to dance?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-D-5.jpg",
+      "story_text": "We sound drums to call people to clean wells, clear roads, or to build a hut for a needy old person.\n\nWe sound drums to call people when cattle are stolen in our village.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "We sound drums to call people to clean wells, clear roads, or to build a hut for a needy old person.\n\nWe sound drums to call people when cattle are stolen in our village."
+        },
+        "annotation_1": {
+          "eng": "Where you live, what sound or method do people use to call people together for food, school, or special events?"
+        },
+        "annotation_2": {
+          "eng": "Would you rather beat the drum or do the work?"
+        },
+        "annotation_3": {
+          "eng": "Count together the number of tools people are using in this picture."
+        }
+      },
+      "annotation_1": "Where you live, what sound or method do people use to call people together for food, school, or special events?",
+      "annotation_2": "Would you rather beat the drum or do the work?",
+      "annotation_3": "Count together the number of tools people are using in this picture."
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-D-6.jpg",
+      "story_text": "We sound drums to gather for meetings at our chief's palace.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "We sound drums to gather for meetings at our chief's palace."
+        },
+        "annotation_1": {
+          "eng": "What is something in this picture that shows this is a special place?"
+        },
+        "annotation_2": {
+          "eng": "How many people are gathering in this picture?"
+        },
+        "annotation_3": {
+          "eng": "Where do you think the chief will sit?"
+        }
+      },
+      "annotation_1": "What is something in this picture that shows this is a special place?",
+      "annotation_2": "How many people are gathering in this picture?",
+      "annotation_3": "Where do you think the chief will sit?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-D-7.jpg",
+      "story_text": "Drums call people to go to church for prayers on Sundays and other prayer days.\n\nWe also play drums to enrich songs when singing in churches.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Drums call people to go to church for prayers on Sundays and other prayer days.\n\nWe also play drums to enrich songs when singing in churches."
+        },
+        "annotation_1": {
+          "eng": "Items made from wood come from trees. Which items in this picture are made of wood?"
+        },
+        "annotation_2": {
+          "eng": "Which things are made of wood where you are?"
+        },
+        "annotation_3": {
+          "eng": "There are straps on the drums in each picture. Why are the straps useful?"
+        }
+      },
+      "annotation_1": "Items made from wood come from trees. Which items in this picture are made of wood?",
+      "annotation_2": "Which things are made of wood where you are?",
+      "annotation_3": "There are straps on the drums in each picture. Why are the straps useful?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-D-8.jpg",
+      "story_text": "The big drum sounds, \"An a bul mba, an a bul mba, an a bul mba-mba-mba-mba bul.\"\n\nThe small drums sing in their high pitches, \"Tindiri, tindiri tindiri ti.\"\n\nTogether they chorus, \"Tindiri mba, tindiri mba, tindiri mba-mba-mba-mba, tindiri ti!\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The big drum sounds, \"An a bul mba, an a bul mba, an a bul mba-mba-mba-mba bul.\"\n\nThe small drums sing in their high pitches, \"Tindiri, tindiri tindiri ti.\"\n\nTogether they chorus, \"Tindiri mba, tindiri mba, tindiri mba-mba-mba-mba, tindiri ti!\""
+        },
+        "annotation_1": {
+          "eng": "A duet is when two intruments are played together. Have you sung duets with your family or friends?"
+        },
+        "annotation_2": {
+          "eng": "Make up a clapping duet. One person starts with a clapping pattern, and then the other person creates a clapping pattern that goes well with it."
+        },
+        "annotation_3": {
+          "eng": "When you hear music, listen for the instruments that create the beat."
+        }
+      },
+      "annotation_1": "A duet is when two intruments are played together. Have you sung duets with your family or friends?",
+      "annotation_2": "Make up a clapping duet. One person starts with a clapping pattern, and then the other person creates a clapping pattern that goes well with it.",
+      "annotation_3": "When you hear music, listen for the instruments that create the beat."
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-D-9.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

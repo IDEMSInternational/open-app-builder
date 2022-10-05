@@ -1,0 +1,222 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Where_Is_My_Bat_pages",
+  "status": "released",
+  "data_list_name": "Where_Is_My_Bat_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-WIMB-1.jpg",
+      "story_text": "I have lost my bat, and I cannot find it.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I have lost my bat, and I cannot find it."
+        },
+        "annotation_1": {
+          "eng": "Though you can only see five of them, there are six panes in the window. What else is there six of?"
+        },
+        "annotation_2": {
+          "eng": "The number of rungs on the ladder is one more than the number of panes -- how many? The number of panes you can see is five, which is one less than the total number of panes."
+        },
+        "annotation_3": {
+          "eng": "Rectangles have four straight sides and corners like those on this page. Point to and describe the rectangles in the picture."
+        }
+      },
+      "annotation_1": "Though you can only see five of them, there are six panes in the window. What else is there six of?",
+      "annotation_2": "The number of rungs on the ladder is one more than the number of panes -- how many? The number of panes you can see is five, which is one less than the total number of panes.",
+      "annotation_3": "Rectangles have four straight sides and corners like those on this page. Point to and describe the rectangles in the picture."
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-WIMB-2.jpg",
+      "story_text": "I looked behind the door. It was not there.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I looked behind the door. It was not there."
+        },
+        "annotation_1": {
+          "eng": "Did you notice the girl outside the window?"
+        },
+        "annotation_2": {
+          "eng": "The bat is not behind the door -- could it be inside the box?"
+        },
+        "annotation_3": {
+          "eng": "A box is a 3-dimensional shape with rectangles on every side. Do you see anything else similar to a box? (the door)"
+        }
+      },
+      "annotation_1": "Did you notice the girl outside the window?",
+      "annotation_2": "The bat is not behind the door -- could it be inside the box?",
+      "annotation_3": "A box is a 3-dimensional shape with rectangles on every side. Do you see anything else similar to a box? (the door)"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-WIMB-3.jpg",
+      "story_text": "I looked for it on the shelf. I could not find it there.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I looked for it on the shelf. I could not find it there."
+        },
+        "annotation_1": {
+          "eng": "The window bangs into the shelf when it opens. That seems like a bad design!"
+        },
+        "annotation_2": {
+          "eng": "Do you think this shelf is too high for a child's room?"
+        },
+        "annotation_3": {
+          "eng": "There's that girl riding around again. Notice that the buildings behind her are shaped like big boxes. A lot of buildings are."
+        }
+      },
+      "annotation_1": "The window bangs into the shelf when it opens. That seems like a bad design!",
+      "annotation_2": "Do you think this shelf is too high for a child's room?",
+      "annotation_3": "There's that girl riding around again. Notice that the buildings behind her are shaped like big boxes. A lot of buildings are."
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-WIMB-4.jpg",
+      "story_text": "I looked for it under the bed. Not there either.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I looked for it under the bed. Not there either."
+        },
+        "annotation_1": {
+          "eng": "The girl's dress matches the bag hanging by the door. Do you think the bag is hers?"
+        },
+        "annotation_2": {
+          "eng": "Can you think of a place the boy hasn't looked?"
+        },
+        "annotation_3": {
+          "eng": "Vertical lines are lines that go up and down. How many vertical pieces are there to the blue frame on the side of the bed? The number of spaces between those vertical pieces is one less. How many is that?"
+        }
+      },
+      "annotation_1": "The girl's dress matches the bag hanging by the door. Do you think the bag is hers?",
+      "annotation_2": "Can you think of a place the boy hasn't looked?",
+      "annotation_3": "Vertical lines are lines that go up and down. How many vertical pieces are there to the blue frame on the side of the bed? The number of spaces between those vertical pieces is one less. How many is that?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-WIMB-5.jpg",
+      "story_text": "I searched inside the box. There was no sign of it.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I searched inside the box. There was no sign of it."
+        },
+        "annotation_1": {
+          "eng": "The boy's shirt has a stripe on it. Do you see other stripes in this picture? Do you see stripes around where you are?"
+        },
+        "annotation_2": {
+          "eng": "Pink is a light shade of red. If you include pink, how many things are red in this picture?"
+        },
+        "annotation_3": {
+          "eng": "If you don't count pink, you get one less thing that is red. How many is that?"
+        }
+      },
+      "annotation_1": "The boy's shirt has a stripe on it. Do you see other stripes in this picture? Do you see stripes around where you are?",
+      "annotation_2": "Pink is a light shade of red. If you include pink, how many things are red in this picture?",
+      "annotation_3": "If you don't count pink, you get one less thing that is red. How many is that?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-WIMB-6.jpg",
+      "story_text": "I searched the attic. It was not there.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I searched the attic. It was not there."
+        },
+        "annotation_1": {
+          "eng": "The boy has looked in a lot of places. How long do you look for something before you give up?"
+        },
+        "annotation_2": {
+          "eng": "When you have trouble finding something, what are some places you end up finding it?"
+        },
+        "annotation_3": {
+          "eng": "Notice that the window no longer bangs into the shelf. Did the shelf move?"
+        }
+      },
+      "annotation_1": "The boy has looked in a lot of places. How long do you look for something before you give up?",
+      "annotation_2": "When you have trouble finding something, what are some places you end up finding it?",
+      "annotation_3": "Notice that the window no longer bangs into the shelf. Did the shelf move?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-WIMB-7.jpg",
+      "story_text": "I looked here, there, and everywhere. I could not find it anywhere.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I looked here, there, and everywhere. I could not find it anywhere."
+        },
+        "annotation_1": {
+          "eng": "Looking at his face, what do you think the boy is feeling?"
+        },
+        "annotation_2": {
+          "eng": "Have you ever lost something and never found it?"
+        },
+        "annotation_3": {
+          "eng": "The girl is smiling in the window. Do you think she knows where the bat is?"
+        }
+      },
+      "annotation_1": "Looking at his face, what do you think the boy is feeling?",
+      "annotation_2": "Have you ever lost something and never found it?",
+      "annotation_3": "The girl is smiling in the window. Do you think she knows where the bat is?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-WIMB-8.jpg"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-WIMB-9.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

@@ -1,0 +1,362 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Sun_Moon_And_Water_data",
+  "status": "released",
+  "data_list_name": "Sun_Moon_And_Water_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-SMAW-1.jpg",
+      "story_text": "Many years ago, Sun and Water were great friends. Both lived on earth together.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Many years ago, Sun and Water were great friends. Both lived on earth together."
+        },
+        "annotation_1": {
+          "eng": "Have you ever thought of Sun, Moon, and Water as beings that could talk to each other?"
+        },
+        "annotation_2": {
+          "eng": "What would it be like if the sun were not in the sky? What do you think would change?"
+        },
+        "annotation_3": {
+          "eng": "There are many colors in this picture. Can you name them all?"
+        }
+      },
+      "annotation_1": "Have you ever thought of Sun, Moon, and Water as beings that could talk to each other?",
+      "annotation_2": "What would it be like if the sun were not in the sky? What do you think would change?",
+      "annotation_3": "There are many colors in this picture. Can you name them all?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-SMAW-2.jpg",
+      "story_text": "Sun used to visit Water very often, but Water never went to visit Sun.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Sun used to visit Water very often, but Water never went to visit Sun."
+        },
+        "annotation_1": {
+          "eng": "Sun is very hot! What do you think would happen to Water if Sun got close to it?"
+        },
+        "annotation_2": {
+          "eng": "Sun's shape is drawn as a circle. A partial circle is called an arc. Many of the parts of Sun's face are drawn as arcs. See if you can find some circles and arcs around where you are now."
+        },
+        "annotation_3": {
+          "eng": "There are many colors of the rainbow in this picture. Are any rainbow colors missing?"
+        }
+      },
+      "annotation_1": "Sun is very hot! What do you think would happen to Water if Sun got close to it?",
+      "annotation_2": "Sun's shape is drawn as a circle. A partial circle is called an arc. Many of the parts of Sun's face are drawn as arcs. See if you can find some circles and arcs around where you are now.",
+      "annotation_3": "There are many colors of the rainbow in this picture. Are any rainbow colors missing?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-SMAW-3.jpg",
+      "story_text": "At last Sun asked Water why he never came to visit.\n\nWater replied that Sun's house was too small. \"If I come with my family we will drive you out,\" he said.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "At last Sun asked Water why he never came to visit.\n\nWater replied that Sun's house was too small. \"If I come with my family we will drive you out,\" he said."
+        },
+        "annotation_1": {
+          "eng": "Which colors do you see on this page that you didn't see on the previous two pages?"
+        },
+        "annotation_2": {
+          "eng": "Do you recognize something familiar inside Sun's house?"
+        },
+        "annotation_3": {
+          "eng": "Polygons are flat shapes with straight sides. Sun's house is made up of polygons. Find as many rectangles (polygons with four sides and square corners) and pentagons (polygons with five sides) as you can."
+        }
+      },
+      "annotation_1": "Which colors do you see on this page that you didn't see on the previous two pages?",
+      "annotation_2": "Do you recognize something familiar inside Sun's house?",
+      "annotation_3": "Polygons are flat shapes with straight sides. Sun's house is made up of polygons. Find as many rectangles (polygons with four sides and square corners) and pentagons (polygons with five sides) as you can."
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-SMAW-4.jpg",
+      "story_text": "Then Water said, \"If you wish me to visit you, build a very large compound. My people are very many, and take up a lot of room.\"\n\nSun promised to build a very big compound.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Then Water said, \"If you wish me to visit you, build a very large compound. My people are very many, and take up a lot of room.\"\n\nSun promised to build a very big compound."
+        },
+        "annotation_1": {
+          "eng": "The story is leading up to Water coming to visit Sun's home. On the previous page Water said \"we will drive you out.\" What problem may occur when Water comes to visit?"
+        },
+        "annotation_2": {
+          "eng": "How do you think this story will end after Water comes to visit?"
+        },
+        "annotation_3": {
+          "eng": "Who do you think is in Water's family? Why does Water describe his family as being big?"
+        }
+      },
+      "annotation_1": "The story is leading up to Water coming to visit Sun's home. On the previous page Water said \"we will drive you out.\" What problem may occur when Water comes to visit?",
+      "annotation_2": "How do you think this story will end after Water comes to visit?",
+      "annotation_3": "Who do you think is in Water's family? Why does Water describe his family as being big?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-SMAW-5.jpg",
+      "story_text": "Sun returned home to his wife, Moon, who greeted him with a broad smile. Sun told Moon what he had promised Water.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Sun returned home to his wife, Moon, who greeted him with a broad smile. Sun told Moon what he had promised Water."
+        },
+        "annotation_1": {
+          "eng": "When you can only see part of Moon like this, it is called a crescent moon. The outline of a crescent moon is made of two arcs."
+        },
+        "annotation_2": {
+          "eng": "When you look at a crescent moon in the sky, you are only seeing part of the moon. What happened to the part of the moon you don't see? Has that part disappeared, or is something going on that makes that part hard to see?"
+        },
+        "annotation_3": {
+          "eng": "It's fun to start tracking the relationship of the sun and the moon. For example, where is the sun relative to the moon when the moon is full?"
+        }
+      },
+      "annotation_1": "When you can only see part of Moon like this, it is called a crescent moon. The outline of a crescent moon is made of two arcs.",
+      "annotation_2": "When you look at a crescent moon in the sky, you are only seeing part of the moon. What happened to the part of the moon you don't see? Has that part disappeared, or is something going on that makes that part hard to see?",
+      "annotation_3": "It's fun to start tracking the relationship of the sun and the moon. For example, where is the sun relative to the moon when the moon is full?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-SMAW-6.jpg",
+      "story_text": "The next day he started building a huge compound in which to entertain his friend.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The next day he started building a huge compound in which to entertain his friend."
+        },
+        "annotation_1": {
+          "eng": "Sun is building a very large wall. Will it be big enough to hold Water and all Water's friends?"
+        },
+        "annotation_2": {
+          "eng": "Sun's wall is straight up and down, but follows a curved path. Have you ever seen a wall near you that follows a curved path?"
+        },
+        "annotation_3": {
+          "eng": "The wall is made of bricks that are shaped like boxes. How many sides does a brick have? Name the shapes you see on the sides of a brick."
+        }
+      },
+      "annotation_1": "Sun is building a very large wall. Will it be big enough to hold Water and all Water's friends?",
+      "annotation_2": "Sun's wall is straight up and down, but follows a curved path. Have you ever seen a wall near you that follows a curved path?",
+      "annotation_3": "The wall is made of bricks that are shaped like boxes. How many sides does a brick have? Name the shapes you see on the sides of a brick."
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-SMAW-7.jpg",
+      "story_text": "As soon as the compound was completed, he asked Water to come and visit them.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "As soon as the compound was completed, he asked Water to come and visit them."
+        },
+        "annotation_1": {
+          "eng": "The pictures of the wall are a little confusing. On this page the wall looks a little taller than the house. On other pages, the wall looks about half as high as the house. Which do you think it is?"
+        },
+        "annotation_2": {
+          "eng": "Why do you think Sun made some of the wall straight and some of it curved?"
+        },
+        "annotation_3": {
+          "eng": "It's time for Water to visit. What do you think will happen next?"
+        }
+      },
+      "annotation_1": "The pictures of the wall are a little confusing. On this page the wall looks a little taller than the house. On other pages, the wall looks about half as high as the house. Which do you think it is?",
+      "annotation_2": "Why do you think Sun made some of the wall straight and some of it curved?",
+      "annotation_3": "It's time for Water to visit. What do you think will happen next?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-SMAW-8.jpg",
+      "story_text": "When Water arrived, he asked Sun whether it would be safe for him to enter.\n\n\"Yes, come in, my friend,\" Sun answered.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "When Water arrived, he asked Sun whether it would be safe for him to enter.\n\n\"Yes, come in, my friend,\" Sun answered."
+        },
+        "annotation_1": {
+          "eng": "Water is bringing lots of friends. What are some plants and animals that like to live in water?"
+        },
+        "annotation_2": {
+          "eng": "If a lot of water comes into our houses, we say that they are flooded. Why is having too much water in a house bad for most houses?"
+        },
+        "annotation_3": {
+          "eng": "Do you like to swim? With all the water near their home, it looks like Sun and Moon had better like to swim!"
+        }
+      },
+      "annotation_1": "Water is bringing lots of friends. What are some plants and animals that like to live in water?",
+      "annotation_2": "If a lot of water comes into our houses, we say that they are flooded. Why is having too much water in a house bad for most houses?",
+      "annotation_3": "Do you like to swim? With all the water near their home, it looks like Sun and Moon had better like to swim!"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-SMAW-9.jpg",
+      "story_text": "Water began to flow in.\n\nHe was accompanied by crocodiles, fish, frogs, snakes, snails, flukes, turtles, and all the water animals.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Water began to flow in.\n\nHe was accompanied by crocodiles, fish, frogs, snakes, snails, flukes, turtles, and all the water animals."
+        },
+        "annotation_1": {
+          "eng": "That's a lot of animals! All those animals coming into the house look very happy to be there!"
+        },
+        "annotation_2": {
+          "eng": "How many animals do you see in this picture? How many more are coming? Do you think they will all fit?"
+        },
+        "annotation_3": {
+          "eng": "Sun and Moon are very welcoming! Perhaps they are too welcoming?"
+        }
+      },
+      "annotation_1": "That's a lot of animals! All those animals coming into the house look very happy to be there!",
+      "annotation_2": "How many animals do you see in this picture? How many more are coming? Do you think they will all fit?",
+      "annotation_3": "Sun and Moon are very welcoming! Perhaps they are too welcoming?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-SMAW-10.jpg",
+      "story_text": "Very soon Water was knee-deep. He asked Sun if it was still safe.\n\n\"Yes,\" Sun again answered. So more of water's people came in.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Very soon Water was knee-deep. He asked Sun if it was still safe.\n\n\"Yes,\" Sun again answered. So more of water's people came in."
+        },
+        "annotation_1": {
+          "eng": "Count how many animals are in the house and how many are still on their way in. How many animals does that make in total?"
+        },
+        "annotation_2": {
+          "eng": "Sun still looks happy. Does Moon feel the same way? How can you tell?"
+        },
+        "annotation_3": {
+          "eng": "Have you ever told someone it was okay for them to do something and then regretted it? Did you do anything about it?"
+        }
+      },
+      "annotation_1": "Count how many animals are in the house and how many are still on their way in. How many animals does that make in total?",
+      "annotation_2": "Sun still looks happy. Does Moon feel the same way? How can you tell?",
+      "annotation_3": "Have you ever told someone it was okay for them to do something and then regretted it? Did you do anything about it?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-SMAW-11.jpg",
+      "story_text": "Water reached the level of the top of a person's head. He asked Sun, \"Can more of my people come in?\" Sun and Moon both answered, \"Yes.\"\n\nWater flowed on, until Sun and Moon had to perch themselves on the top of the roof.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Water reached the level of the top of a person's head. He asked Sun, \"Can more of my people come in?\" Sun and Moon both answered, \"Yes.\"\n\nWater flowed on, until Sun and Moon had to perch themselves on the top of the roof."
+        },
+        "annotation_1": {
+          "eng": "Sun and Moon both said yes, but they don't look entirely happy about having to move to their roof!"
+        },
+        "annotation_2": {
+          "eng": "Sun and Moon had to move to the roof. If Water gets any higher, where will they be able to go next?"
+        },
+        "annotation_3": {
+          "eng": "Before you turn the page, how do you think this story ends?"
+        }
+      },
+      "annotation_1": "Sun and Moon both said yes, but they don't look entirely happy about having to move to their roof!",
+      "annotation_2": "Sun and Moon had to move to the roof. If Water gets any higher, where will they be able to go next?",
+      "annotation_3": "Before you turn the page, how do you think this story ends?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-SMAW-12.jpg",
+      "story_text": "Water's people continued to rush in. Very soon they reached the top of the roof.\n\nSun and Moon were forced to go up to the sky. They have remained in the sky ever since.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Water's people continued to rush in. Very soon they reached the top of the roof.\n\nSun and Moon were forced to go up to the sky. They have remained in the sky ever since."
+        },
+        "annotation_1": {
+          "eng": "There are many things in the sky other than Sun and Moon. Make up a story about how the stars ended up in the sky and why there are so many of them."
+        },
+        "annotation_2": {
+          "eng": "It's fun to make up stories about why something came to be the way it is. Perhaps you have a favorite tree, rock, lake, or mountain you can think of a story for?"
+        },
+        "annotation_3": {
+          "eng": "Sun and Moon look happy together in the sky. When they are close to each other in the sky the moon is a new moon and can barely be seen. From now on you can look up and see Sun and Moon in a new way!"
+        }
+      },
+      "annotation_1": "There are many things in the sky other than Sun and Moon. Make up a story about how the stars ended up in the sky and why there are so many of them.",
+      "annotation_2": "It's fun to make up stories about why something came to be the way it is. Perhaps you have a favorite tree, rock, lake, or mountain you can think of a story for?",
+      "annotation_3": "Sun and Moon look happy together in the sky. When they are close to each other in the sky the moon is a new moon and can barely be seen. From now on you can look up and see Sun and Moon in a new way!"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-SMAW-13.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

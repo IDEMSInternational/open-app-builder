@@ -1,0 +1,245 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "I_Love_Forests_data",
+  "status": "released",
+  "data_list_name": "I_Love_Forests_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-ILF-1.jpg",
+      "story_text": "I love forests!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I love forests!"
+        },
+        "annotation_1": {
+          "eng": "What are some great things about forests?"
+        },
+        "annotation_2": {
+          "eng": "There are many types of places. For example, there are deserts, hills, beaches, canyons, mesas, and mountain slopes. What are some of your favorite places?"
+        },
+        "annotation_3": {
+          "eng": "How many of the trees in this picture can you count? Can you count that high?"
+        }
+      },
+      "annotation_1": "What are some great things about forests?",
+      "annotation_2": "There are many types of places. For example, there are deserts, hills, beaches, canyons, mesas, and mountain slopes. What are some of your favorite places?",
+      "annotation_3": "How many of the trees in this picture can you count? Can you count that high?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-ILF-2.jpg",
+      "story_text": "Last week I went to Kibale forest.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Last week I went to Kibale forest."
+        },
+        "annotation_1": {
+          "eng": "Kibale National Park is a rain forest in Western Uganda near the center of Africa. It is a sanctuary for a large variety of primates, wildlife, and vegetation."
+        },
+        "annotation_2": {
+          "eng": "Are there parks or natural areas that you like to visit?"
+        },
+        "annotation_3": {
+          "eng": "Which do you find more interesting to see: plants and trees or lots of animals?"
+        }
+      },
+      "annotation_1": "Kibale National Park is a rain forest in Western Uganda near the center of Africa. It is a sanctuary for a large variety of primates, wildlife, and vegetation.",
+      "annotation_2": "Are there parks or natural areas that you like to visit?",
+      "annotation_3": "Which do you find more interesting to see: plants and trees or lots of animals?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-ILF-3.jpg",
+      "story_text": "I saw many trees. I saw Fig, Muvule, Palm, and Ebony trees.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I saw many trees. I saw Fig, Muvule, Palm, and Ebony trees."
+        },
+        "annotation_1": {
+          "eng": "This picture shows plains with mountains in the distance. Do you think a mixture of living areas will be good for creating a mixture of plants and animals for the park?"
+        },
+        "annotation_2": {
+          "eng": "The story mentions four types of trees in the park. Do you see four types in this picture?"
+        },
+        "annotation_3": {
+          "eng": "How many types of trees can you think of near where you live?"
+        }
+      },
+      "annotation_1": "This picture shows plains with mountains in the distance. Do you think a mixture of living areas will be good for creating a mixture of plants and animals for the park?",
+      "annotation_2": "The story mentions four types of trees in the park. Do you see four types in this picture?",
+      "annotation_3": "How many types of trees can you think of near where you live?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-ILF-4.jpg",
+      "story_text": "I saw chimpanzees, baboons, and monkeys.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I saw chimpanzees, baboons, and monkeys."
+        },
+        "annotation_1": {
+          "eng": "These adult animals are sitting in pairs, which makes them easy to count by 2's - 2, 4, 6. Adding in one more baby makes 7!"
+        },
+        "annotation_2": {
+          "eng": "One more than the 6 adults is 7. If you take away the one baby, how many is one less than 7?"
+        },
+        "annotation_3": {
+          "eng": "Do you think this mixture of animals would naturally be together like this, or did the artist take some liberties with the picture?"
+        }
+      },
+      "annotation_1": "These adult animals are sitting in pairs, which makes them easy to count by 2's - 2, 4, 6. Adding in one more baby makes 7!",
+      "annotation_2": "One more than the 6 adults is 7. If you take away the one baby, how many is one less than 7?",
+      "annotation_3": "Do you think this mixture of animals would naturally be together like this, or did the artist take some liberties with the picture?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-ILF-5.jpg",
+      "story_text": "I saw different birds. I saw crested cranes, eagles, and owls.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I saw different birds. I saw crested cranes, eagles, and owls."
+        },
+        "annotation_1": {
+          "eng": "What about this picture -- do you think these birds would all be together like this?"
+        },
+        "annotation_2": {
+          "eng": "There are four birds and one fish. How many animals is that all together? How many is one more than four?"
+        },
+        "annotation_3": {
+          "eng": "The story mentions three types of birds and shows us four birds. Do you think two of these birds are of the same type? If so, which two?"
+        }
+      },
+      "annotation_1": "What about this picture -- do you think these birds would all be together like this?",
+      "annotation_2": "There are four birds and one fish. How many animals is that all together? How many is one more than four?",
+      "annotation_3": "The story mentions three types of birds and shows us four birds. Do you think two of these birds are of the same type? If so, which two?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-ILF-6.jpg",
+      "story_text": "I laughed when I saw a big elephant with a little tail.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I laughed when I saw a big elephant with a little tail."
+        },
+        "annotation_1": {
+          "eng": "Why do you think such a large animal has such a little tail?"
+        },
+        "annotation_2": {
+          "eng": "The parts the elephant has two of (ears, tusks, pairs of legs, and eyes) are on opposite sides of its body, and the parts it has one of (mouth, tail, and trunk) are in the middle of its body. Are all animals like this?"
+        },
+        "annotation_3": {
+          "eng": "Can you think of an animal that doesn't have its parts  arranged about a middle line?"
+        }
+      },
+      "annotation_1": "Why do you think such a large animal has such a little tail?",
+      "annotation_2": "The parts the elephant has two of (ears, tusks, pairs of legs, and eyes) are on opposite sides of its body, and the parts it has one of (mouth, tail, and trunk) are in the middle of its body. Are all animals like this?",
+      "annotation_3": "Can you think of an animal that doesn't have its parts  arranged about a middle line?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-ILF-7.jpg",
+      "story_text": "I saw so many different animals, birds, and plants.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I saw so many different animals, birds, and plants."
+        },
+        "annotation_1": {
+          "eng": "Describe the animals by where they are in the picture -- some are in the air, the trees, the water, and in the grass."
+        },
+        "annotation_2": {
+          "eng": "Count each group and then count them all together -- do you get the same result?"
+        },
+        "annotation_3": {
+          "eng": "Which group has the most animals in it? Which has the least?"
+        }
+      },
+      "annotation_1": "Describe the animals by where they are in the picture -- some are in the air, the trees, the water, and in the grass.",
+      "annotation_2": "Count each group and then count them all together -- do you get the same result?",
+      "annotation_3": "Which group has the most animals in it? Which has the least?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "story_text": "Kibale forest is a good place to visit. I love forests! Do you?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Kibale forest is a good place to visit. I love forests! Do you?"
+        },
+        "annotation_1": {
+          "eng": "Do you like to visit forests?"
+        },
+        "annotation_2": {
+          "eng": "What is your favorite place to visit away from where you live?"
+        },
+        "annotation_3": {
+          "eng": "What is your favorite spot to go to around where you live?"
+        }
+      },
+      "annotation_1": "Do you like to visit forests?",
+      "annotation_2": "What is your favorite place to visit away from where you live?",
+      "annotation_3": "What is your favorite spot to go to around where you live?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-ILF-9.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

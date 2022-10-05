@@ -1,0 +1,246 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "My_School_Clothes_pages",
+  "status": "released",
+  "data_list_name": "My_School_Clothes_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-MSC-1.jpg",
+      "story_text": "My sister's dress is too big for me!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "My sister's dress is too big for me!"
+        },
+        "annotation_1": {
+          "eng": "Do you sometimes wear someone else's clothes? Is it fun to imagine you are that other person when you do it?"
+        },
+        "annotation_2": {
+          "eng": "How can you tell the dress and belt are too big?"
+        },
+        "annotation_3": {
+          "eng": "A rectangle is a four-sided shape like this page. Point to rectangles in the picture. Do you see any rectangles where you are?"
+        }
+      },
+      "annotation_1": "Do you sometimes wear someone else's clothes? Is it fun to imagine you are that other person when you do it?",
+      "annotation_2": "How can you tell the dress and belt are too big?",
+      "annotation_3": "A rectangle is a four-sided shape like this page. Point to rectangles in the picture. Do you see any rectangles where you are?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-MSC-2.jpg",
+      "story_text": "My brother's jersey is also too big for me.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "My brother's jersey is also too big for me."
+        },
+        "annotation_1": {
+          "eng": "Looking at her face, how does she feel about having a jersey that is too big?"
+        },
+        "annotation_2": {
+          "eng": "Is the orange dress she has on the right size for her?"
+        },
+        "annotation_3": {
+          "eng": "Notice the new rectangles in this picture."
+        }
+      },
+      "annotation_1": "Looking at her face, how does she feel about having a jersey that is too big?",
+      "annotation_2": "Is the orange dress she has on the right size for her?",
+      "annotation_3": "Notice the new rectangles in this picture."
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-MSC-3.jpg",
+      "story_text": "My bag is big.\n\nBut not too big!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "My bag is big.\n\nBut not too big!"
+        },
+        "annotation_1": {
+          "eng": "Is this bag too big for her?"
+        },
+        "annotation_2": {
+          "eng": "Count together the clasps on the bag."
+        },
+        "annotation_3": {
+          "eng": "What would you put in this bag if it were yours?"
+        }
+      },
+      "annotation_1": "Is this bag too big for her?",
+      "annotation_2": "Count together the clasps on the bag.",
+      "annotation_3": "What would you put in this bag if it were yours?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-MSC-4.jpg",
+      "story_text": "This old belt is too small for me.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "This old belt is too small for me."
+        },
+        "annotation_1": {
+          "eng": "Why might this child's old belt from when she was younger be too small for her?"
+        },
+        "annotation_2": {
+          "eng": "What does the expression on her face tell you about how she is feeling about the belt?"
+        },
+        "annotation_3": {
+          "eng": "How many pieces of clothing has she tried on?"
+        }
+      },
+      "annotation_1": "Why might this child's old belt from when she was younger be too small for her?",
+      "annotation_2": "What does the expression on her face tell you about how she is feeling about the belt?",
+      "annotation_3": "How many pieces of clothing has she tried on?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-MSC-5.jpg",
+      "story_text": "This is my doll's hat.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "This is my doll's hat."
+        },
+        "annotation_1": {
+          "eng": "This is the fourth piece of clothing that is a bad fit for her. How does she feel about it? Do you think she is feeling discouraged?"
+        },
+        "annotation_2": {
+          "eng": "Count together the number of pieces of wood that make up the back of the chair."
+        },
+        "annotation_3": {
+          "eng": "She has two eyes, ears, and arms, but only one mouth and nose. Where do the body parts that she has one of line up on her body?"
+        }
+      },
+      "annotation_1": "This is the fourth piece of clothing that is a bad fit for her. How does she feel about it? Do you think she is feeling discouraged?",
+      "annotation_2": "Count together the number of pieces of wood that make up the back of the chair.",
+      "annotation_3": "She has two eyes, ears, and arms, but only one mouth and nose. Where do the body parts that she has one of line up on her body?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-MSC-6.jpg",
+      "story_text": "My socks are the right size.\n\nBut the wrong color!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "My socks are the right size.\n\nBut the wrong color!"
+        },
+        "annotation_1": {
+          "eng": "Including her hair ties, which colors is she wearing?"
+        },
+        "annotation_2": {
+          "eng": "Do you think her socks are the wrong color?"
+        },
+        "annotation_3": {
+          "eng": "The picture of the chair is made up of several rectangles. How many can you find?"
+        }
+      },
+      "annotation_1": "Including her hair ties, which colors is she wearing?",
+      "annotation_2": "Do you think her socks are the wrong color?",
+      "annotation_3": "The picture of the chair is made up of several rectangles. How many can you find?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-MSC-7.jpg",
+      "story_text": "These are my new shoes.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "These are my new shoes."
+        },
+        "annotation_1": {
+          "eng": "After all the other clothes, do you think these shoes will fit?"
+        },
+        "annotation_2": {
+          "eng": "Where did she go?"
+        },
+        "annotation_3": {
+          "eng": "These shoes must be in a different room -- the door and windows are a different color. What colors were they before?"
+        }
+      },
+      "annotation_1": "After all the other clothes, do you think these shoes will fit?",
+      "annotation_2": "Where did she go?",
+      "annotation_3": "These shoes must be in a different room -- the door and windows are a different color. What colors were they before?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-MSC-8.jpg",
+      "story_text": "They fit me very well.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "They fit me very well."
+        },
+        "annotation_1": {
+          "eng": "Is her hat the same as her doll's hat? Does it seem too small to you?"
+        },
+        "annotation_2": {
+          "eng": "Do you think she needs a belt with her dress?"
+        },
+        "annotation_3": {
+          "eng": "Is she ready for school now?"
+        }
+      },
+      "annotation_1": "Is her hat the same as her doll's hat? Does it seem too small to you?",
+      "annotation_2": "Do you think she needs a belt with her dress?",
+      "annotation_3": "Is she ready for school now?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-MSC-9.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

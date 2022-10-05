@@ -1,0 +1,362 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Aku_The_Sun_Maker_data",
+  "status": "released",
+  "data_list_name": "Aku_The_Sun_Maker_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-ATSM-1.jpg",
+      "story_text": "Long ago, in a town call Sunland, lived a girl with very long legs. Aku was her name.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Long ago, in a town call Sunland, lived a girl with very long legs. Aku was her name."
+        },
+        "annotation_1": {
+          "eng": "There are three round houses with thatched roofs. Thatch is a mix of dead and living plant material, usually grass. A thatch room can help keep a house cool or warm. From the distance, those roofs look like triangles."
+        },
+        "annotation_2": {
+          "eng": "Think of some reasons why these houses with thatched roofs are round."
+        },
+        "annotation_3": {
+          "eng": "Notice Aku's face and the position of her arms. We can learn a lot about how someone is feeling by their body position. What do you think she is feeling?"
+        }
+      },
+      "annotation_1": "There are three round houses with thatched roofs. Thatch is a mix of dead and living plant material, usually grass. A thatch room can help keep a house cool or warm. From the distance, those roofs look like triangles.",
+      "annotation_2": "Think of some reasons why these houses with thatched roofs are round.",
+      "annotation_3": "Notice Aku's face and the position of her arms. We can learn a lot about how someone is feeling by their body position. What do you think she is feeling?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-ATSM-2.jpg",
+      "story_text": "Aku wondered about a lot of things.\n\nSometimes Aku's father, Ataa Ankra, a fisherman, let her go to the river with him to fish in his canoe. While Aku fished with her father, she wondered why the sun always looked at her from the sky.\n\nSometimes Aku helped her mother, A'anua, to cook. Aku wondered why palm oil looked red in calabash but yellow in yam pottage.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Aku wondered about a lot of things.\n\nSometimes Aku's father, Ataa Ankra, a fisherman, let her go to the river with him to fish in his canoe. While Aku fished with her father, she wondered why the sun always looked at her from the sky.\n\nSometimes Aku helped her mother, A'anua, to cook. Aku wondered why palm oil looked red in calabash but yellow in yam pottage."
+        },
+        "annotation_1": {
+          "eng": "Being curious and asking questions is an important way we learn new things. What are some things you are curious about right now?"
+        },
+        "annotation_2": {
+          "eng": "Aku feels a special connection to the sun. Some people feel a connection to the moon or a star. Do you notice things about the sun, such as where it is in the morning or evening?"
+        },
+        "annotation_3": {
+          "eng": "One thing about the sun is what happens when it shines through rain. This creates a beautiful arc, which is part of a circle, in the sky. Can you name the colors of the rainbow?"
+        }
+      },
+      "annotation_1": "Being curious and asking questions is an important way we learn new things. What are some things you are curious about right now?",
+      "annotation_2": "Aku feels a special connection to the sun. Some people feel a connection to the moon or a star. Do you notice things about the sun, such as where it is in the morning or evening?",
+      "annotation_3": "One thing about the sun is what happens when it shines through rain. This creates a beautiful arc, which is part of a circle, in the sky. Can you name the colors of the rainbow?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-ATSM-3.jpg",
+      "story_text": "And Aku wondered why Oti, her brother, and the other boys would not let her play football (soccer) with them. Once, Aku asked the boys why. They only laughed and told her to go and play with the girls.\n\nThe girls too would not play with Aku. \"Your legs are too long,\" they always said.\n\nAku was left lonely. She had no one to share her many thoughts with.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "And Aku wondered why Oti, her brother, and the other boys would not let her play football (soccer) with them. Once, Aku asked the boys why. They only laughed and told her to go and play with the girls.\n\nThe girls too would not play with Aku. \"Your legs are too long,\" they always said.\n\nAku was left lonely. She had no one to share her many thoughts with."
+        },
+        "annotation_1": {
+          "eng": "Is football (soccer) a game that only boys can play? Are there any sports that only boys or only girls can play?"
+        },
+        "annotation_2": {
+          "eng": "Point at matching colors in the clothes in this picture. Are there any colors that don't have a match?"
+        },
+        "annotation_3": {
+          "eng": "Many time people get excluded from a group because there are different in some way. Did you ever see someone excluded like this? It's a mean thing to do!"
+        }
+      },
+      "annotation_1": "Is football (soccer) a game that only boys can play? Are there any sports that only boys or only girls can play?",
+      "annotation_2": "Point at matching colors in the clothes in this picture. Are there any colors that don't have a match?",
+      "annotation_3": "Many time people get excluded from a group because there are different in some way. Did you ever see someone excluded like this? It's a mean thing to do!"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-ATSM-4.jpg",
+      "story_text": "But Aku soon became friends with the sun.\n\nShe looked forward to seeing the sun every morning when she woke up. The cocks crowed to announce sunrise. Aku loved to dance in the early morning sun, her shadow dancing with her. The tweeting of birds made the cock crow music sweeter.\n\nThen sun filled Aku with happiness. The sun made Aku smile a lot.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "But Aku soon became friends with the sun.\n\nShe looked forward to seeing the sun every morning when she woke up. The cocks crowed to announce sunrise. Aku loved to dance in the early morning sun, her shadow dancing with her. The tweeting of birds made the cock crow music sweeter.\n\nThen sun filled Aku with happiness. The sun made Aku smile a lot."
+        },
+        "annotation_1": {
+          "eng": "Birds often chirp and roosters crow right before the sun rises. Have you noticed special morning sounds when you wake up early?"
+        },
+        "annotation_2": {
+          "eng": "Notice the shadows that the sun makes on this page and many of the other pages."
+        },
+        "annotation_3": {
+          "eng": "The sun creates longer shadows in the morning and late afternoon, and very short shadows at midday. Have you played with your own shadow as it copies you and follows you?"
+        }
+      },
+      "annotation_1": "Birds often chirp and roosters crow right before the sun rises. Have you noticed special morning sounds when you wake up early?",
+      "annotation_2": "Notice the shadows that the sun makes on this page and many of the other pages.",
+      "annotation_3": "The sun creates longer shadows in the morning and late afternoon, and very short shadows at midday. Have you played with your own shadow as it copies you and follows you?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-ATSM-5.jpg",
+      "story_text": "But one day, the sun did not rise. Aku waited for the cocks to crow. They did not. The birds too did not tweet.\n\nAnd without the sun in Sunland, people could not go about their daily activities. Farmers could not go to tend their crops. And the sky was grey and sad. Ataa Ankra could not go fishing. Children too could not prepare for school. And women could not go to the market to haggle over the prices of soap and kerosene.\n\nAku missed all these. She missed the cock crows and bird tweets too. And she missed the sunrise more.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "But one day, the sun did not rise. Aku waited for the cocks to crow. They did not. The birds too did not tweet.\n\nAnd without the sun in Sunland, people could not go about their daily activities. Farmers could not go to tend their crops. And the sky was grey and sad. Ataa Ankra could not go fishing. Children too could not prepare for school. And women could not go to the market to haggle over the prices of soap and kerosene.\n\nAku missed all these. She missed the cock crows and bird tweets too. And she missed the sunrise more."
+        },
+        "annotation_1": {
+          "eng": "A rectangle is a shape with four straight sides, like this page. How many rectangles can you find in this picture?"
+        },
+        "annotation_2": {
+          "eng": "If it is dark when you get up, what kinds of things can you do without the sun in the sky?"
+        },
+        "annotation_3": {
+          "eng": "If you didn't see the sun one dark morning, what would you think?"
+        }
+      },
+      "annotation_1": "A rectangle is a shape with four straight sides, like this page. How many rectangles can you find in this picture?",
+      "annotation_2": "If it is dark when you get up, what kinds of things can you do without the sun in the sky?",
+      "annotation_3": "If you didn't see the sun one dark morning, what would you think?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-ATSM-6.jpg",
+      "story_text": "Everyone wanted to know where the sun went. \"Maybe the sun is dead,\" some people said. \"The sun has travelled,\" said others.\n\nAku disagreed, \"No, the sun is not dead. And the sun has not travelled. Or it would have first told me.\"\n\nSome people chuckled at what Aku said. She continued anyway, \"I tell the truth. The sun is my friend. The sun is not dead. It is only —\". But no one would hear anymore. Everyone forgot about the sun. They laughed hard at Aku. The children laughed too. The children's laughter pained Aku the most.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Everyone wanted to know where the sun went. \"Maybe the sun is dead,\" some people said. \"The sun has travelled,\" said others.\n\nAku disagreed, \"No, the sun is not dead. And the sun has not travelled. Or it would have first told me.\"\n\nSome people chuckled at what Aku said. She continued anyway, \"I tell the truth. The sun is my friend. The sun is not dead. It is only —\". But no one would hear anymore. Everyone forgot about the sun. They laughed hard at Aku. The children laughed too. The children's laughter pained Aku the most."
+        },
+        "annotation_1": {
+          "eng": "There are 6 children in this picture. How many of their limbs (arms and legs) can you see?"
+        },
+        "annotation_2": {
+          "eng": "Skip count by 4's six times to count how many limbs these 6 children have. You can also skip count by 6's four times to get this same number. Why does that work?"
+        },
+        "annotation_3": {
+          "eng": "How many more limbs do they have than the number you can see?"
+        }
+      },
+      "annotation_1": "There are 6 children in this picture. How many of their limbs (arms and legs) can you see?",
+      "annotation_2": "Skip count by 4's six times to count how many limbs these 6 children have. You can also skip count by 6's four times to get this same number. Why does that work?",
+      "annotation_3": "How many more limbs do they have than the number you can see?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-ATSM-7.jpg",
+      "story_text": "Sad like the sky, Aku hastened into her house.\n\nOn the way, she accidentally kicked her brother's football. The ball rolled into the kitchen. There was a calabash of palm oil in a corner of the kitchen. The ball hit the calabash. The calabash was toppled.\n\nThe palm oil on it spilled. The palm oil soiled the ball.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Sad like the sky, Aku hastened into her house.\n\nOn the way, she accidentally kicked her brother's football. The ball rolled into the kitchen. There was a calabash of palm oil in a corner of the kitchen. The ball hit the calabash. The calabash was toppled.\n\nThe palm oil on it spilled. The palm oil soiled the ball."
+        },
+        "annotation_1": {
+          "eng": "What do you think Aku's brother will do when he sees that his ball has oil all over it?"
+        },
+        "annotation_2": {
+          "eng": "The calabash is the bowl that was holding the oil. How did all that oil fit in that calabash?"
+        },
+        "annotation_3": {
+          "eng": "Did you ever spill a small glass of water or milk and watch it spread out on the floor? A little bit can cover a lot of floor!"
+        }
+      },
+      "annotation_1": "What do you think Aku's brother will do when he sees that his ball has oil all over it?",
+      "annotation_2": "The calabash is the bowl that was holding the oil. How did all that oil fit in that calabash?",
+      "annotation_3": "Did you ever spill a small glass of water or milk and watch it spread out on the floor? A little bit can cover a lot of floor!"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-ATSM-8.jpg",
+      "story_text": "Oti came into the house with one of his friends to fetch his ball. He saw the toppled calabash, the spilled palm oil. He saw his soiled ball too.\n\nBefore he could run out to tell A'nua what Aku had done, Aku picked up the ball and ran off. The boys followed Aku. They all met A'anua outside the house. A'anua saw Aku holding the ball. Before she could call Aku and scold her, Aku ran past her.\n\nOti, A'anua and all the people of Sunland watched Aku run away. They wondered what she would do with the soiled ball.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Oti came into the house with one of his friends to fetch his ball. He saw the toppled calabash, the spilled palm oil. He saw his soiled ball too.\n\nBefore he could run out to tell A'nua what Aku had done, Aku picked up the ball and ran off. The boys followed Aku. They all met A'anua outside the house. A'anua saw Aku holding the ball. Before she could call Aku and scold her, Aku ran past her.\n\nOti, A'anua and all the people of Sunland watched Aku run away. They wondered what she would do with the soiled ball."
+        },
+        "annotation_1": {
+          "eng": "Many ten-year olds can run a mile in ten minutes. Aku is extra fast. How many minutes do you think it takes her to run a mile? 2 minutes? 5 minutes? 8 minutes?"
+        },
+        "annotation_2": {
+          "eng": "What about Aku allows her to run so fast?"
+        },
+        "annotation_3": {
+          "eng": "The sun is gone, people are laughing at Aku, and Aku has a dirty ball. How do you think the story will resolve all these problems?"
+        }
+      },
+      "annotation_1": "Many ten-year olds can run a mile in ten minutes. Aku is extra fast. How many minutes do you think it takes her to run a mile? 2 minutes? 5 minutes? 8 minutes?",
+      "annotation_2": "What about Aku allows her to run so fast?",
+      "annotation_3": "The sun is gone, people are laughing at Aku, and Aku has a dirty ball. How do you think the story will resolve all these problems?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-ATSM-9.jpg",
+      "story_text": "Aku stopped when she got to the middle of the town square. She put the ball on the ground.\n\nWith a mighty swing of her hands and a swift pull of one long leg behind the other, Aku kicked the ball. The ball turned round on the ground, spinning towards the edge of the town square. It hit the roots of the palm tree at one end of the town square.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Aku stopped when she got to the middle of the town square. She put the ball on the ground.\n\nWith a mighty swing of her hands and a swift pull of one long leg behind the other, Aku kicked the ball. The ball turned round on the ground, spinning towards the edge of the town square. It hit the roots of the palm tree at one end of the town square."
+        },
+        "annotation_1": {
+          "eng": "What in the picture tells you that the ball is flying fast?"
+        },
+        "annotation_2": {
+          "eng": "Why is the path of the ball curved instead of straight?"
+        },
+        "annotation_3": {
+          "eng": "Why did Aku need to swing her hands to kick the ball hard? Notice how many other parts of your body are involved with action of just one part."
+        }
+      },
+      "annotation_1": "What in the picture tells you that the ball is flying fast?",
+      "annotation_2": "Why is the path of the ball curved instead of straight?",
+      "annotation_3": "Why did Aku need to swing her hands to kick the ball hard? Notice how many other parts of your body are involved with action of just one part."
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-ATSM-10.jpg",
+      "story_text": "The ball shot into the sad sky. With mouths opened wide, the people of Sunland gazed after the flying ball. The ball flew beyond the clouds, beyond the gaze of the eyes.\n\nEverything was still. All was quiet.\n\nSuddenly, the sky cleared. The clouds became white, round and fluffy. Then a big ball came from behind the clouds. The ball was bright. And it was red and yellow like palm oil. The ball was the sun. Aku's sun.\n\nEverything stirred. The quietness left.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The ball shot into the sad sky. With mouths opened wide, the people of Sunland gazed after the flying ball. The ball flew beyond the clouds, beyond the gaze of the eyes.\n\nEverything was still. All was quiet.\n\nSuddenly, the sky cleared. The clouds became white, round and fluffy. Then a big ball came from behind the clouds. The ball was bright. And it was red and yellow like palm oil. The ball was the sun. Aku's sun.\n\nEverything stirred. The quietness left."
+        },
+        "annotation_1": {
+          "eng": "How many different colors of clothes do you see here? Which colors of the rainbow are missing?"
+        },
+        "annotation_2": {
+          "eng": "Do the colors of the clothes you are wearing match any of these clothes?"
+        },
+        "annotation_3": {
+          "eng": "Finding what is the same and what is different is an important way we understand the things in our world."
+        }
+      },
+      "annotation_1": "How many different colors of clothes do you see here? Which colors of the rainbow are missing?",
+      "annotation_2": "Do the colors of the clothes you are wearing match any of these clothes?",
+      "annotation_3": "Finding what is the same and what is different is an important way we understand the things in our world."
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-ATSM-11.jpg",
+      "story_text": "Soon, everyone was rushing home to prepare for their daily activities. \\PARA Ataa Ankra looked for his fish bucket. Farmers took their hoes. Children bathed and dressed, ready to go to school. Women tied monies at the ends of their cover cloths. They carried their basins and baskets and hurried to the market.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Soon, everyone was rushing home to prepare for their daily activities. \\PARA Ataa Ankra looked for his fish bucket. Farmers took their hoes. Children bathed and dressed, ready to go to school. Women tied monies at the ends of their cover cloths. They carried their basins and baskets and hurried to the market."
+        },
+        "annotation_1": {
+          "eng": "It is dangerous to look at the sun, but we can still notice its changes. Depending on the weather and the time of day, the sun can look glowing yellow, hot white, orange, and even brown."
+        },
+        "annotation_2": {
+          "eng": "What do you do during the day that you can't do at night?"
+        },
+        "annotation_3": {
+          "eng": "The story mentioned farmers working, people going to market, and children going to school. What other adult things only happen when the sun is out?"
+        }
+      },
+      "annotation_1": "It is dangerous to look at the sun, but we can still notice its changes. Depending on the weather and the time of day, the sun can look glowing yellow, hot white, orange, and even brown.",
+      "annotation_2": "What do you do during the day that you can't do at night?",
+      "annotation_3": "The story mentioned farmers working, people going to market, and children going to school. What other adult things only happen when the sun is out?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-ATSM-12.jpg",
+      "story_text": "The sun returned to Sunland. Aku made it. A new day began ...",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The sun returned to Sunland. Aku made it. A new day began ..."
+        },
+        "annotation_1": {
+          "eng": "Why did Aku kick the ball into the sky? Did she do it to make the sun come out, or did she do it for some other reason?"
+        },
+        "annotation_2": {
+          "eng": "The sun was Aku's only friend. She paid the sun a lot of attention, and the sun stayed with her without making fun of her long legs. Which things do you think make friendships work?"
+        },
+        "annotation_3": {
+          "eng": "Sometimes, when some experience bothers two friends, it can get between them so they can't see each other. Has that happened to you with one of your friends? Did you find a way to fix things?"
+        }
+      },
+      "annotation_1": "Why did Aku kick the ball into the sky? Did she do it to make the sun come out, or did she do it for some other reason?",
+      "annotation_2": "The sun was Aku's only friend. She paid the sun a lot of attention, and the sun stayed with her without making fun of her long legs. Which things do you think make friendships work?",
+      "annotation_3": "Sometimes, when some experience bothers two friends, it can get between them so they can't see each other. Has that happened to you with one of your friends? Did you find a way to fix things?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-ATSM-13.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}
