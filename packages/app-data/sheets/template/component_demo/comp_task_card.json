@@ -1,77 +1,9 @@
 {
   "flow_type": "template",
-  "flow_name": "comp_card",
+  "flow_name": "comp_task_card",
   "status": "released",
   "flow_subtype": "component_demo",
   "rows": [
-    {
-      "type": "title",
-      "value": "Card containing components (custom content)",
-      "_translations": {
-        "value": {}
-      },
-      "name": "title",
-      "_nested_name": "title"
-    },
-    {
-      "type": "task_card",
-      "name": "card_1",
-      "rows": [
-        {
-          "type": "display_group",
-          "parameter_list": {
-            "style": "column"
-          },
-          "rows": [
-            {
-              "type": "title",
-              "value": "One-on-One Time",
-              "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
-              },
-              "name": "title",
-              "_nested_name": "card_1.display_group.title"
-            },
-            {
-              "type": "subtitle",
-              "value": "One-on-one time helps build a positive, trusting relationship",
-              "_translations": {
-                "value": {}
-              },
-              "name": "subtitle",
-              "_nested_name": "card_1.display_group.subtitle"
-            },
-            {
-              "type": "progress_bar",
-              "parameter_list": {
-                "task_group": "w_1on1"
-              },
-              "name": "progress_bar",
-              "_nested_name": "card_1.display_group.progress_bar"
-            }
-          ],
-          "name": "display_group",
-          "_nested_name": "card_1.display_group"
-        },
-        {
-          "type": "image",
-          "value": "plh_images_human/workshops/w_self_care.svg",
-          "_translations": {
-            "value": {}
-          },
-          "name": "image",
-          "_nested_name": "card_1.image"
-        }
-      ],
-      "_nested_name": "card_1"
-    },
     {
       "type": "title",
       "value": "Card with content from parameters",
@@ -88,7 +20,7 @@
         "task_id": "w_1on1",
         "title": "One-on-One Time",
         "subtitle": "One-on-one time helps build a positive, trusting relationship",
-        "image": "plh_images_human/workshops/w_self_care.svg",
+        "image": "plh_images/workshops/w_self_care/tools.svg",
         "style": "landscape"
       },
       "_nested_name": "card_params_1"
@@ -138,7 +70,7 @@
     },
     {
       "name": "card_image",
-      "value": "plh_images_human/workshops/w_self_care.svg",
+      "value": "plh_images/workshops/w_self_care/tools.svg",
       "_translations": {
         "value": {}
       },
@@ -206,7 +138,75 @@
           "parameter_list.image"
         ]
       }
+    },
+    {
+      "type": "title",
+      "value": "Card containing components (custom content)",
+      "_translations": {
+        "value": {}
+      },
+      "name": "title",
+      "_nested_name": "title"
+    },
+    {
+      "type": "task_card",
+      "name": "card_1",
+      "rows": [
+        {
+          "type": "display_group",
+          "parameter_list": {
+            "style": "column"
+          },
+          "rows": [
+            {
+              "type": "title",
+              "value": "One-on-One Time",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "name": "title",
+              "_nested_name": "card_1.display_group.title"
+            },
+            {
+              "type": "subtitle",
+              "value": "One-on-one time helps build a positive, trusting relationship",
+              "_translations": {
+                "value": {}
+              },
+              "name": "subtitle",
+              "_nested_name": "card_1.display_group.subtitle"
+            },
+            {
+              "type": "progress_bar",
+              "parameter_list": {
+                "task_group": "w_1on1"
+              },
+              "name": "progress_bar",
+              "_nested_name": "card_1.display_group.progress_bar"
+            }
+          ],
+          "name": "display_group",
+          "_nested_name": "card_1.display_group"
+        },
+        {
+          "type": "image",
+          "value": "plh_images_human/workshops/w_self_care.svg",
+          "_translations": {
+            "value": {}
+          },
+          "name": "image",
+          "_nested_name": "card_1.image"
+        }
+      ],
+      "_nested_name": "card_1"
     }
   ],
-  "_xlsxPath": "quality_assurance/component_sheets/component_card.xlsx"
+  "_xlsxPath": "quality_assurance/component_sheets/component_task_card.xlsx"
 }
