@@ -1404,18 +1404,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_button.xlsx",
     },
-    comp_card: {
-      flow_type: "template",
-      flow_name: "comp_card",
-      flow_subtype: "component_demo",
-      _xlsxPath: "quality_assurance/component_sheets/component_card.xlsx",
-    },
-    comp_card_params: {
-      flow_type: "template",
-      flow_name: "comp_card_params",
-      flow_subtype: "component_demo",
-      _xlsxPath: "quality_assurance/component_sheets/component_card.xlsx",
-    },
     comp_checkbox: {
       flow_type: "template",
       flow_name: "comp_checkbox",
@@ -1511,6 +1499,18 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "comp_subtitle",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_subtitle.xlsx",
+    },
+    comp_task_card: {
+      flow_type: "template",
+      flow_name: "comp_task_card",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_task_card.xlsx",
+    },
+    comp_task_card_params: {
+      flow_type: "template",
+      flow_name: "comp_task_card_params",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_task_card.xlsx",
     },
     comp_text: {
       flow_type: "template",
@@ -3589,6 +3589,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     parent_point_dashed_box: {
       flow_type: "template",
       flow_name: "parent_point_dashed_box",
+      _xlsxPath: "global/core_templates/core_templates_parent_points.xlsx",
+    },
+    parent_point_info: {
+      flow_type: "template",
+      flow_name: "parent_point_info",
       _xlsxPath: "global/core_templates/core_templates_parent_points.xlsx",
     },
     parent_point_tile: {
