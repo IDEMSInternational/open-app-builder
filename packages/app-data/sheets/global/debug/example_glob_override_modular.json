@@ -1,15 +1,15 @@
 {
   "flow_type": "global",
-  "flow_name": "example_glob_override_es_sp",
+  "flow_name": "example_glob_override_modular",
   "status": "released",
   "flow_subtype": "debug",
   "override_target": "example_glob_override_default",
-  "override_condition": "@fields._app_language.startsWith(\"es\")",
+  "override_condition": "@fields._app_skin == \"modular\"",
   "rows": [
     {
       "type": "declare_global_constant",
       "name": "example_glob_override",
-      "value": "Overridden value, es_sp",
+      "value": "Overridden value, modular skin",
       "_translations": {
         "value": {}
       },
