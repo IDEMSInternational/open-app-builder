@@ -22,6 +22,10 @@
     "color-red": #eb445a,
     "color-gray-light": hsl(0, 0%, 93%),
     "default-box-shadow": 0 4px 4px rgba(0, 0, 0, 0.25),
+    // Used for activated/focused/hover states of ion-button – may only be visible in web preview
+    // TODO: Remove when migrating away from ionic
+    "color-primary-shade": color.adjust($primary, $lightness: -10%),
+    "color-primary-tint": color.adjust($primary, $lightness: 10%),
   );
 
   // Generate variants of base colours based on given weights and add to map

@@ -39,6 +39,8 @@ const APP_FIELDS = {
   DEPLOYMENT_NAME: `${FIELD_PREFIX}._deployment_name`,
   APP_VERSION: `${FIELD_PREFIX}._app_version`,
   APP_AUTH_USER: `${FIELD_PREFIX}._app_auth_user`,
+  APP_SKIN: `${FIELD_PREFIX}._app_skin`,
+  APP_THEME: `${FIELD_PREFIX}._app_theme`,
 };
 
 const APP_LANGUAGES = {

@@ -1,0 +1,91 @@
+{
+  "flow_type": "data_pipe",
+  "flow_name": "workshop_tasks_concat_12",
+  "status": "released",
+  "rows": [
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_celebrate_common_tasks",
+        "w_celebrate_specific_tasks"
+      ],
+      "input_source": false,
+      "output_target": "w_celebrate_tasks"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks_concat.xlsx",
+  "_processed": {
+    "w_celebrate_tasks": [
+      {
+        "id": "welcome_individual",
+        "individual": true,
+        "together": false,
+        "priority": 1
+      },
+      {
+        "id": "care_together",
+        "individual": false,
+        "together": true,
+        "priority": 2
+      },
+      {
+        "id": "relax",
+        "individual": true,
+        "together": true,
+        "priority": 3
+      },
+      {
+        "id": "reflect_together",
+        "individual": false,
+        "together": true,
+        "priority": 4
+      },
+      {
+        "id": "intro",
+        "individual": true,
+        "together": true,
+        "priority": 5
+      },
+      {
+        "id": "tools_activity",
+        "individual": true,
+        "together": true,
+        "priority": 70
+      },
+      {
+        "id": "ending",
+        "individual": true,
+        "together": true,
+        "priority": 90
+      },
+      {
+        "id": "think",
+        "individual": true,
+        "together": true,
+        "priority": 11,
+        "template": "w_celebrate_think"
+      },
+      {
+        "id": "survey_activity",
+        "individual": true,
+        "together": false,
+        "priority": 12,
+        "template": "w_celebrate_survey_activity"
+      },
+      {
+        "id": "talk_1",
+        "individual": false,
+        "together": true,
+        "priority": 12,
+        "template": "w_celebrate_talk_1"
+      },
+      {
+        "id": "talk_2",
+        "individual": false,
+        "together": true,
+        "priority": 71,
+        "template": "w_celebrate_talk_2"
+      }
+    ]
+  }
+}
