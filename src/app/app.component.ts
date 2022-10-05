@@ -5,6 +5,7 @@ import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
 import { DbService } from "./shared/services/db/db.service";
+import { SkinService } from "./shared/services/skin/skin.service";
 import { ThemeService } from "./feature/theme/services/theme.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
@@ -51,7 +52,8 @@ export class AppComponent {
     private dbService: DbService,
     private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
-    public themeService: ThemeService,
+    private themeService: ThemeService,
+    private skinService: SkinService,
     private tourService: TourService,
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
@@ -131,6 +133,7 @@ export class AppComponent {
     await this.dbService.init();
     await this.userMetaService.init();
     this.themeService.init();
+    this.skinService.init();
     /** CC 2021-05-14 - disabling reminders service until decide on full implementation (ideally not requiring evaluation of all reminders on init) */
     // this.remindersService.init();
     await this.appEventService.init();
