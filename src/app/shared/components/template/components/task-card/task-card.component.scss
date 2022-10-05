@@ -1,10 +1,13 @@
 .card-wrapper {
   position: relative;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid var(--ion-color-gray-light);
   border-radius: var(--ion-border-radius-secondary);
   padding: var(--regular-padding);
   padding-right: var(--tiny-padding);
+  max-width: 400px;
+  filter: drop-shadow(var(--ion-default-box-shadow));
+
   &.landscape {
     width: 90%;
   }
@@ -17,6 +20,7 @@
     background: var(--ion-color-secondary);
     color: white;
     font-weight: var(--font-weight-bold);
+    filter: drop-shadow(var(--ion-default-box-shadow));
   }
   .content-wrapper {
     height: 100%;

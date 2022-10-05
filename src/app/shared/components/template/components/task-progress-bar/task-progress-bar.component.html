@@ -1,5 +1,5 @@
-<div class="progress-bar-wrapper">
-  <p class="tiny">{{ subtasksTotal }} sections</p>
+<div class="progress-bar-wrapper" [class.highlighted]="highlighted" [class.completed]="completed">
+  <p *ngIf="showText" class="tiny progress-text">{{ subtasksTotal + " " + sectionsName }}</p>
   <div class="progress-bar-background">
     <div class="progress-bar" [style.width]="progressPercentage + '%'"></div>
   </div>
