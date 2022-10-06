@@ -48,6 +48,11 @@ const APP_LANGUAGES = {
   default: "gb_en",
 };
 
+const APP_SKINS = {
+  /** Default skin used if none other is explicitly set */
+  default_skin_name: "weekly_workshop",
+};
+
 /**
  * WiP - App strings will be defined from global config
  * Temporarily just re-export to allow override from deployment in same way as rest of constants
@@ -154,6 +159,7 @@ const APP_CONSTANTS = {
   APP_INITIALISATION_DEFAULTS,
   APP_AUTHENTICATION_DEFAULTS,
   APP_LANGUAGES,
+  APP_SKINS,
   APP_ROUTE_DEFAULTS,
   APP_SIDEMENU_DEFAULTS,
   APP_STRINGS,

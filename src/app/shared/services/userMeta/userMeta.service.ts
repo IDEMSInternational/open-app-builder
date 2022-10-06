@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Device } from "@capacitor/device";
 import { DbService } from "../db/db.service";
+import { APP_CONSTANTS } from "src/app/data";
 
 @Injectable({ providedIn: "root" })
 export class UserMetaService {
@@ -45,14 +46,14 @@ export interface IUserMeta {
   uuid_temp?: string; // legacy id that previously may have been set
   first_app_open: isostring;
   current_date: isostring;
-  app_skin: "MODULE_FOCUS_SKIN" | "BLOBS" | "BUTTONS";
+  app_skin: string;
 }
 
 type isostring = string;
 const USER_DEFAULTS: IUserMeta = {
   // TODO - better to use different service to ensure UUID unique
   uuid: null,
-  app_skin: "MODULE_FOCUS_SKIN",
+  app_skin: APP_CONSTANTS.APP_SKINS.default_skin_name,
   first_app_open: null,
   current_date: null,
 };
