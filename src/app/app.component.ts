@@ -6,6 +6,7 @@ import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
 import { DbService } from "./shared/services/db/db.service";
 import { SkinService } from "./shared/services/skin/skin.service";
+import { IAppSkin } from "src/skins/skin.model";
 import { ThemeService } from "./feature/theme/services/theme.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
@@ -31,7 +32,7 @@ import { AppDataService } from "./shared/services/data/app-data.service";
 import { AuthService } from "./shared/services/auth/auth.service";
 import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
 
-const { APP_FIELDS, APP_SIDEMENU_DEFAULTS, APP_AUTHENTICATION_DEFAULTS } = APP_CONSTANTS;
+const { APP_FIELDS, APP_SIDEMENU_DEFAULTS, APP_AUTHENTICATION_DEFAULTS, APP_SKINS } = APP_CONSTANTS;
 
 @Component({
   selector: "app-root",
@@ -42,6 +43,7 @@ export class AppComponent {
   APP_VERSION = environment.version;
   DEPLOYMENT_NAME = environment.deploymentName;
   sideMenuDefaults = APP_SIDEMENU_DEFAULTS;
+  currentSkin: IAppSkin;
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
 
@@ -81,6 +83,9 @@ export class AppComponent {
       // ensure deployment field set correctly for use in any startup services or templates
       localStorage.setItem(APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
       localStorage.setItem(APP_FIELDS.APP_VERSION, this.APP_VERSION);
+      this.skinService.currentSkin$.subscribe((skin) => {
+        this.currentSkin = skin;
+      });
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
