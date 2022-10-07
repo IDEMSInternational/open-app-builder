@@ -131,7 +131,6 @@ function authorize(
     clientId: client_id,
     clientSecret: client_secret,
     redirectUri: redirect_uris[0],
-    forceRefreshOnFailure: true,
   });
   // Check if we have previously stored a token.
   const token = getJSONFromEnvOrFile("GDRIVE_OAUTH_TOKEN", tokenPath);
