@@ -1,0 +1,37 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_self_care_specific_tasks",
+  "status": "released",
+  "data_list_name": "w_self_care_specific_tasks",
+  "rows": [
+    {
+      "id": "relax",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "template": "w_self_care_relax"
+    },
+    {
+      "id": "recognise",
+      "individual": true,
+      "together": true,
+      "priority": 12,
+      "template": "w_self_care_recognise"
+    },
+    {
+      "id": "reward",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "template": "w_self_care_reward"
+    },
+    {
+      "id": "survey_activity",
+      "individual": true,
+      "together": false,
+      "priority": 71,
+      "template": "w_self_care_survey_activity"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
+}

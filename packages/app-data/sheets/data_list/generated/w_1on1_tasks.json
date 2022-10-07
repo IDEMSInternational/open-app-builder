@@ -1,0 +1,69 @@
+{
+  "flow_name": "w_1on1_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "welcome_individual",
+      "individual": true,
+      "together": false,
+      "priority": 1
+    },
+    {
+      "id": "care_together",
+      "individual": false,
+      "together": true,
+      "priority": 2
+    },
+    {
+      "id": "relax",
+      "individual": true,
+      "together": true,
+      "priority": 3
+    },
+    {
+      "id": "intro",
+      "individual": true,
+      "together": true,
+      "priority": 5
+    },
+    {
+      "id": "tools_activity",
+      "individual": true,
+      "together": true,
+      "priority": 70
+    },
+    {
+      "id": "home_practice",
+      "individual": true,
+      "together": true,
+      "priority": 80
+    },
+    {
+      "id": "ending",
+      "individual": true,
+      "together": true,
+      "priority": 90
+    },
+    {
+      "id": "hp_review",
+      "individual": true,
+      "together": true,
+      "priority": 91
+    },
+    {
+      "id": "question",
+      "individual": true,
+      "together": false,
+      "priority": 14,
+      "template": "w_1on1_question"
+    },
+    {
+      "id": "talk",
+      "individual": false,
+      "together": true,
+      "priority": 14,
+      "template": "w_1on1_talk"
+    }
+  ]
+}

@@ -67,6 +67,11 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
    */
   public async postProcess(flows: FlowTypes.FlowTypeWithData[]): Promise<IParsedWorkbookData> {
     const flowsByType: IParsedWorkbookData = groupJsonByKey(flows, "flow_type");
+    for (const [flowType, parser] of Object.entries(this.parsers)) {
+      if (flowsByType[flowType]) {
+        flowsByType[flowType] = parser.postProcessFlows(flowsByType[flowType]);
+      }
+    }
     const flowTypesWithGenerated: IParsedWorkbookData =
       this.populateDataPipeGeneratedFlows(flowsByType);
     return flowTypesWithGenerated;

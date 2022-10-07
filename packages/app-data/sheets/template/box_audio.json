@@ -23,6 +23,15 @@
       "_nested_name": "text"
     },
     {
+      "type": "image",
+      "name": "image_src",
+      "hidden": true,
+      "parameter_list": {
+        "style": "rounded_corners"
+      },
+      "_nested_name": "image_src"
+    },
+    {
       "type": "lottie_animation",
       "name": "lottie_src",
       "hidden": true,
