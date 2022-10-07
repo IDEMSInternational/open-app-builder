@@ -118,6 +118,14 @@
           "_nested_name": "dg.text1"
         },
         {
+          "name": "icon_button_action_list",
+          "value": [
+            "click | set_field : something : dsfsd"
+          ],
+          "type": "set_variable",
+          "_nested_name": "dg.icon_button_action_list"
+        },
+        {
           "type": "parent_point_box",
           "name": "points_example",
           "value": "@local.init_value_1",
@@ -139,7 +147,7 @@
           "exclude_from_translation": true,
           "parameter_list": {
             "icon_src": "@local.icon_src1",
-            "text": "@local.text1"
+            "info_button_action_list": "@local.icon_button_action_list\ntext"
           },
           "_nested_name": "dg.points_example",
           "_dynamicFields": {
@@ -180,12 +188,12 @@
                   "fieldName": "icon_src1"
                 }
               ],
-              "text": [
+              "info_button_action_list": [
                 {
-                  "fullExpression": "@local.text1",
-                  "matchedExpression": "@local.text1",
+                  "fullExpression": "@local.icon_button_action_list\ntext",
+                  "matchedExpression": "@local.icon_button_action_list",
                   "type": "local",
-                  "fieldName": "text1"
+                  "fieldName": "icon_button_action_list"
                 }
               ]
             }
@@ -201,8 +209,8 @@
             "@local.icon_src1": [
               "parameter_list.icon_src"
             ],
-            "@local.text1": [
-              "parameter_list.text"
+            "@local.icon_button_action_list": [
+              "parameter_list.info_button_action_list"
             ]
           }
         },
