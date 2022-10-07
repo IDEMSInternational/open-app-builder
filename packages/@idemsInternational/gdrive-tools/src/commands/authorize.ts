@@ -127,11 +127,7 @@ function authorize(
   callback: (authClient: OAuth2Client) => void
 ) {
   const { client_secret, client_id, redirect_uris } = credentials.web || credentials.installed;
-  const oAuth2Client = new google.auth.OAuth2({
-    clientId: client_id,
-    clientSecret: client_secret,
-    redirectUri: redirect_uris[0],
-  });
+  const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
   // Check if we have previously stored a token.
   const token = getJSONFromEnvOrFile("GDRIVE_OAUTH_TOKEN", tokenPath);
   if (!token) {
