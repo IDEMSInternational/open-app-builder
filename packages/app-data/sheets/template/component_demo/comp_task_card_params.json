@@ -1,6 +1,6 @@
 {
   "flow_type": "template",
-  "flow_name": "comp_card_params",
+  "flow_name": "comp_task_card_params",
   "status": "released",
   "flow_subtype": "component_demo",
   "rows": [
@@ -64,5 +64,5 @@
       }
     }
   ],
-  "_xlsxPath": "quality_assurance/component_sheets/component_card.xlsx"
+  "_xlsxPath": "quality_assurance/component_sheets/component_task_card.xlsx"
 }
