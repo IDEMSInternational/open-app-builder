@@ -6,7 +6,7 @@
     {
       "type": "set_field",
       "name": "current_survey_name",
-      "value": "survey_welcome_and_setup",
+      "value": "survey_welcome",
       "_translations": {
         "value": {}
       },
