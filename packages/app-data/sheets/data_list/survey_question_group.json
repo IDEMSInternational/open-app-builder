@@ -34,14 +34,14 @@
       "unlock_universal": false,
       "unlock_less": true,
       "unlock_greater_equal": false,
-      "reply_less": "It’s not always easy to praise. You’ll learn this skill in the @data.workshop.w_praise.in_text_title. If you want help right away, you can find it in @data.parent_centre.my_tips.location_text.",
+      "reply_less": "It’s not always easy to praise. You’ll learn more about this skill in the @data.workshop.w_praise.in_text_title. If you want help right away, you can find it in @data.parent_centre.my_tips.location_text.",
       "_translations": {
         "reply_less": {},
         "reply_greater_equal": {}
       },
       "_translatedFields": {
         "reply_less": {
-          "eng": "It’s not always easy to praise. You’ll learn this skill in the @data.workshop.w_praise.in_text_title. If you want help right away, you can find it in @data.parent_centre.my_tips.location_text."
+          "eng": "It’s not always easy to praise. You’ll learn more about this skill in the @data.workshop.w_praise.in_text_title. If you want help right away, you can find it in @data.parent_centre.my_tips.location_text."
         },
         "reply_greater_equal": {
           "eng": "Wonderful that you are praising your teen! This helps them feel valued."
@@ -175,10 +175,10 @@
           "eng": "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!"
         },
         "reply_greater_equal": {
-          "eng": "We all feel overwhelmed sometimes. The information in @data.workshop.w_consequence.in_text_title will help you feel less stressed and show you effective ways to teach your children the right behaviour. If you want help right away, you can also find it in @data.parent_centre.my_tips.location_text."
+          "eng": "We all feel overwhelmed sometimes. The information in the @data.workshop.w_consequence.in_text_title will help you feel less stressed and show you effective ways to teach your children the right behaviour. If you want help right away, you can also find it in @data.parent_centre.my_tips.location_text."
         }
       },
-      "reply_greater_equal": "We all feel overwhelmed sometimes. The information in @data.workshop.w_consequence.in_text_title will help you feel less stressed and show you effective ways to teach your children the right behaviour. If you want help right away, you can also find it in @data.parent_centre.my_tips.location_text."
+      "reply_greater_equal": "We all feel overwhelmed sometimes. The information in the @data.workshop.w_consequence.in_text_title will help you feel less stressed and show you effective ways to teach your children the right behaviour. If you want help right away, you can also find it in @data.parent_centre.my_tips.location_text."
     },
     {
       "id": "psu",
