@@ -8,7 +8,7 @@
       "id": "police",
       "category": "emergency",
       "contact_number_1": 112,
-      "contact_number_2": "(255) 222117362",
+      "contact_number_2": "0222 117 362",
       "title": "Police",
       "_translations": {
         "title": {},
@@ -51,7 +51,7 @@
     {
       "id": "ambulance",
       "category": "emergency",
-      "contact_number_1": "(255) 754760790",
+      "contact_number_1": "0754 760 790",
       "title": "Ambulance",
       "_translations": {
         "title": {}
@@ -63,30 +63,11 @@
       }
     },
     {
-      "id": "cipla",
-      "category": "substance_abuse",
-      "contact_number_1": "(27) 768 822 775",
-      "title": "Cipla WhatsApp Chat Line",
-      "_translations": {
-        "title": {},
-        "description": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Cipla WhatsApp Chat Line"
-        },
-        "description": {
-          "eng": "You can chat online with a counsellor 7 days a week from 9am - 4pm."
-        }
-      },
-      "description": "You can chat online with a counsellor 7 days a week from 9am - 4pm."
-    },
-    {
       "id": "aa",
       "category": "substance_abuse",
-      "contact_number_1": "(255) 689 297 702",
-      "contact_number_2": "(255) 782 638 607",
-      "contact_number_3": "(255) 754 752 705",
+      "contact_number_1": "0689 297 702",
+      "contact_number_2": "0782 638 607",
+      "contact_number_3": "0754 752 705",
       "title": "Alcoholics Anonymous (AA)",
       "_translations": {
         "title": {},
@@ -105,8 +86,8 @@
     {
       "id": "tanlap",
       "category": "legal",
-      "contact_number_1": "(255) 222 761 806",
-      "contact_number_2": "(255) 746 237 265",
+      "contact_number_1": "0222 761 806",
+      "contact_number_2": "0746 237 265",
       "title": "Tanzania Legal Aid (TANLAP)",
       "_translations": {
         "title": {},
@@ -125,7 +106,7 @@
     {
       "id": "wlc",
       "category": "violence",
-      "contact_number_1": "0800 780100",
+      "contact_number_1": "0800 780 100",
       "title": "Women's Legal Aid Centre",
       "_translations": {
         "title": {},
@@ -149,9 +130,9 @@
     {
       "id": "caflo",
       "category": "family_support",
-      "contact_number_1": "(255) 754 833 145",
-      "contact_number_2": "(255) 717 977 370",
-      "contact_number_3": "(255) 787 889 981",
+      "contact_number_1": "0754 833 145",
+      "contact_number_2": "0717 977 370",
+      "contact_number_3": "0787 889 981",
       "title": "Counselling and Family Life Organisation (CAFLO)",
       "_translations": {
         "title": {},
@@ -170,7 +151,7 @@
     {
       "id": "mhat",
       "category": "mental_health",
-      "contact_number_1": "(255) 757 528 295",
+      "contact_number_1": "0757 528 295",
       "title": "Mental Health Association of Tanzania",
       "_translations": {
         "title": {},
@@ -189,8 +170,8 @@
     {
       "id": "tewwy",
       "category": "mental_health",
-      "contact_number_1": "(255) 737 773 982",
-      "contact_number_2": "(255) 757 327 878",
+      "contact_number_1": "0737 773 982",
+      "contact_number_2": "0757 327 878",
       "title": "Tap Elderly Women's Wisdom for Youth (TEWWY)",
       "_translations": {
         "title": {},

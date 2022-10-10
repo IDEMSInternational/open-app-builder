@@ -1,0 +1,43 @@
+{
+  "flow_type": "template",
+  "flow_name": "navigation_bar",
+  "status": "released",
+  "rows": [
+    {
+      "name": "button_list",
+      "value": [
+        "text: Home | image: plh_images/icons/house_white.svg | target_template: home_screen",
+        "name: parent_points_button | text: Parent Points | image: plh_images/icons/parent_child_white.svg | target_template: parent_points",
+        "name: parent_library_button | text: Parent Library | image: plh_images/icons/book_white.svg | target_template: parent_centre"
+      ],
+      "type": "set_variable",
+      "_nested_name": "button_list"
+    },
+    {
+      "type": "navigation_bar",
+      "parameter_list": {
+        "button_list": "@local.button_list"
+      },
+      "name": "navigation_bar",
+      "_nested_name": "navigation_bar",
+      "_dynamicFields": {
+        "parameter_list": {
+          "button_list": [
+            {
+              "fullExpression": "@local.button_list",
+              "matchedExpression": "@local.button_list",
+              "type": "local",
+              "fieldName": "button_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.button_list": [
+          "parameter_list.button_list"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/example_skins.xlsx"
+}
