@@ -1336,7 +1336,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     box_story: {
       flow_type: "template",
       flow_name: "box_story",
-      _xlsxPath: "global_modular/core_templates/box_story.xlsx",
+      _xlsxPath: "global/core_templates/core_templates_workshop_boxes.xlsx",
     },
     box_story_pages: {
       flow_type: "template",
