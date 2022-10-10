@@ -1,12 +1,12 @@
 {
   "flow_type": "template",
-  "flow_name": "survey_question_ps",
+  "flow_name": "survey_question_orp",
   "status": "released",
   "rows": [
     {
       "type": "template",
-      "name": "box_slider",
-      "value": "box_slider",
+      "name": "box_survey_question",
+      "value": "box_survey_question",
       "action_list": [
         {
           "trigger": "completed",
@@ -29,38 +29,17 @@
       ],
       "rows": [
         {
-          "name": "question_id",
-          "value": "ps",
+          "name": "question_group_id",
+          "value": "orp",
           "_translations": {
             "value": {}
           },
           "exclude_from_translation": true,
           "type": "set_variable",
-          "_nested_name": "box_slider.question_id"
-        },
-        {
-          "name": "relevant_workshop",
-          "value": "w_stress",
-          "_translations": {
-            "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "box_slider.relevant_workshop"
-        },
-        {
-          "name": "unlock_when_less",
-          "value": false,
-          "type": "set_variable",
-          "_nested_name": "box_slider.unlock_when_less"
-        },
-        {
-          "name": "less_includes_zero",
-          "value": false,
-          "type": "set_variable",
-          "_nested_name": "box_slider.less_includes_zero"
+          "_nested_name": "box_survey_question.question_group_id"
         }
       ],
-      "_nested_name": "box_slider"
+      "_nested_name": "box_survey_question"
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/survey.xlsx"
