@@ -1,8 +1,4 @@
-export const UNTRACKED_ASSETS = [
-  "es_sp/quality_assurance/test_image_untracked.png",
-  "theme_professional/plh_images/welcome.svg",
-  "theme_professional/plh_images/workshops/w_instruct/read_2/slide_1_a.svg",
-];
+export const UNTRACKED_ASSETS = [];
 export const ASSETS_CONTENTS_LIST = {
   "android/icon-background.png": {
     size_kb: 6.4,
@@ -961,102 +957,42 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/habits/habit_breathe.svg": {
     size_kb: 2.3,
     md5Checksum: "284285870cd683c71190ab4004cf4d70",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 22.8,
-        md5Checksum: "e5ad9d538d089c88e131ab8d7722e903",
-      },
-    },
   },
   "plh_images/habits/habit_consequence.svg": {
     size_kb: 5.3,
     md5Checksum: "f262bbeb5717f1e7b944c52b900c082d",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 23.4,
-        md5Checksum: "543c4c6863150a9e4bbfd640d1735cbe",
-      },
-    },
   },
   "plh_images/habits/habit_instruct_positively.svg": {
     size_kb: 6.6,
     md5Checksum: "cfdd6ddb459a6e5c8c8d8b1f1b23db98",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 34.1,
-        md5Checksum: "237a20e68e9b8292b9c1d19606192a96",
-      },
-    },
   },
   "plh_images/habits/habit_money.svg": {
     size_kb: 6.3,
     md5Checksum: "3a0ce0a8eccb4ebb780b0bbd1de2d518",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 9.8,
-        md5Checksum: "cfec9744fba16fa141fc22173a05ec5d",
-      },
-    },
   },
   "plh_images/habits/habit_praise_teen.svg": {
     size_kb: 8.1,
     md5Checksum: "05172e7b645fa68c76f7dc3dcc61fd16",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 40.5,
-        md5Checksum: "4a6153ba427aa82b42e5d650b3a94b93",
-      },
-    },
   },
   "plh_images/habits/habit_praise_yourself.svg": {
     size_kb: 3.2,
     md5Checksum: "19ecd9abda2b29944c950c4b0a7620ec",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 16.7,
-        md5Checksum: "e45773c0b86afbca0f02789beb131c00",
-      },
-    },
   },
   "plh_images/habits/habit_relax.svg": {
     size_kb: 3.4,
     md5Checksum: "a5471b72e965e5cc243da1dfa92eb32e",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 15.5,
-        md5Checksum: "f63124cd38d7fb49dd569e5c56cecd30",
-      },
-    },
   },
   "plh_images/habits/habit_safe.svg": {
     size_kb: 24.3,
     md5Checksum: "e5e16e9747ef24e401a5d8d5ee4fe419",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 23.2,
-        md5Checksum: "60891fb68f24bafd6208045b6ba7f5a1",
-      },
-    },
   },
   "plh_images/habits/habit_spend_time.svg": {
     size_kb: 7.1,
     md5Checksum: "e020b7920c72ab109569dea86e863147",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 23.3,
-        md5Checksum: "99176158a8f1a3ae98bc6e785f0c40b8",
-      },
-    },
   },
   "plh_images/habits/habit_treat_yourself.svg": {
     size_kb: 3.9,
     md5Checksum: "07d5cec72df949bb4b0f9d92431e3908",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 14.9,
-        md5Checksum: "635c7f0c3150827268c39a7a9ce92176",
-      },
-    },
   },
   "plh_images/habits/relax_chair.gif": {
     size_kb: 207.8,
@@ -1617,72 +1553,30 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/stickers/faces/happier.svg": {
     size_kb: 1.6,
     md5Checksum: "3566fd7a04f57339d7cfcb3892ec106a",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 0.5,
-        md5Checksum: "0ff00ec4309554a1a0132a20271a8ecd",
-      },
-    },
   },
   "plh_images/stickers/faces/happiest.svg": {
     size_kb: 0.8,
     md5Checksum: "ad04574a244f87eb5e4b4e5098d2032f",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 0.6,
-        md5Checksum: "58e883ae90549e1e46f462e3be6157eb",
-      },
-    },
   },
   "plh_images/stickers/faces/happy.svg": {
     size_kb: 0.9,
     md5Checksum: "a7b9e40d88b585db367be8a766280b03",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 0.5,
-        md5Checksum: "2405a8c3be43542e483ef206f0fa694b",
-      },
-    },
   },
   "plh_images/stickers/faces/neutral.svg": {
     size_kb: 1.6,
     md5Checksum: "c5c06b436223337c72b3f9f0f0efdab6",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 0.4,
-        md5Checksum: "a80a83665a9f57afd7e13c20580a15e7",
-      },
-    },
   },
   "plh_images/stickers/faces/sad.svg": {
     size_kb: 1.3,
     md5Checksum: "5b7f24f15fcb959463c2505aa57b67d5",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 0.5,
-        md5Checksum: "93b584ea16291508621e1d4d55eb3b97",
-      },
-    },
   },
   "plh_images/stickers/faces/sadder.svg": {
     size_kb: 1.8,
     md5Checksum: "e7c00a5eab887ebe1d5ae258c03c2fd1",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 0.5,
-        md5Checksum: "e4ede97fa176d67ee98630cd70eb8405",
-      },
-    },
   },
   "plh_images/stickers/faces/saddest.svg": {
     size_kb: 1.2,
     md5Checksum: "96087c1704506ae5591860dd9b6b70e5",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 0.5,
-        md5Checksum: "21ae58bb86a69ebf61edc706acb96857",
-      },
-    },
   },
   "plh_images/stickers/faces/scared.svg": {
     size_kb: 1.8,
@@ -1695,22 +1589,10 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/survey/welcome/busy.svg": {
     size_kb: 22.5,
     md5Checksum: "a29aa4d7d1cd62b7dec1c970fe00efac",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 58.6,
-        md5Checksum: "ce6f313ece29dd20d17d88e7ee049072",
-      },
-    },
   },
   "plh_images/survey/welcome/coffee.svg": {
     size_kb: 4.4,
     md5Checksum: "2d70896bbb01107b0f7c078d8a53765c",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 12.7,
-        md5Checksum: "7f8cd56c88c9adb4359d19ad2a55eb6a",
-      },
-    },
   },
   "plh_images/survey/welcome/guide_1_argument.svg": {
     size_kb: 9.4,
@@ -1719,12 +1601,6 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/survey/welcome/guide_1_frustrated.svg": {
     size_kb: 13.4,
     md5Checksum: "160a753ba2b73c2ad88f979ccc2b770d",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 41.1,
-        md5Checksum: "24d9965041cb9de69688c92551a09a05",
-      },
-    },
   },
   "plh_images/survey/welcome/guide_1_key.svg": {
     size_kb: 4.2,
@@ -1733,12 +1609,6 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/survey/welcome/guide_1_nervous.svg": {
     size_kb: 3.2,
     md5Checksum: "7ef07ef283fec83f61b37d648d08493b",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 16.3,
-        md5Checksum: "722b7fe4c99ac50fb6936257e1726c66",
-      },
-    },
   },
   "plh_images/survey/welcome/guide_1_worried.svg": {
     size_kb: 2.8,
@@ -1747,12 +1617,6 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/survey/welcome/guide_2_argument.svg": {
     size_kb: 7.5,
     md5Checksum: "118787ffc4af0f0ba4594e3febbc5bc4",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 31.7,
-        md5Checksum: "22b3c0b7aa0cba4f697f4bda3df73259",
-      },
-    },
   },
   "plh_images/survey/welcome/guide_2_frustrated.svg": {
     size_kb: 16.5,
@@ -1761,12 +1625,6 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/survey/welcome/guide_2_key.svg": {
     size_kb: 4.1,
     md5Checksum: "cffd391706ed7fb4740c625e0dba6b3e",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 22.6,
-        md5Checksum: "410a56770329d3a5eecd4445738e1676",
-      },
-    },
   },
   "plh_images/survey/welcome/guide_2_nervous.svg": {
     size_kb: 3.1,
@@ -1779,12 +1637,6 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/survey/workshop_setup/adults.svg": {
     size_kb: 7.6,
     md5Checksum: "51d018205f5a79ea5be088f32fe1af5a",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 36.9,
-        md5Checksum: "5cb3e6c2c728f5fbcfa22b1c4822d93a",
-      },
-    },
   },
   "plh_images/survey/workshop_setup/age_image.svg": {
     size_kb: 12.2,
@@ -1793,22 +1645,10 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/survey/workshop_setup/babies.svg": {
     size_kb: 5.2,
     md5Checksum: "f2912796b782f7665896559d447df010",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 12.7,
-        md5Checksum: "c54244310d13db192fba448b1c4360ed",
-      },
-    },
   },
   "plh_images/survey/workshop_setup/children.svg": {
     size_kb: 7.2,
     md5Checksum: "055295df4acc07a21fd0d7666ec4cb98",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 31.2,
-        md5Checksum: "14e60138d7b8164c45df872ee874c8ea",
-      },
-    },
   },
   "plh_images/survey/workshop_setup/high_five.svg": {
     size_kb: 6,
@@ -1817,442 +1657,178 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/survey/workshop_setup/teens.svg": {
     size_kb: 7.1,
     md5Checksum: "d31a8c5417063c62eed128e98c530367",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 26.9,
-        md5Checksum: "dea4ef69d77458e989575ee3b713a88c",
-      },
-    },
   },
   "plh_images/workshops/options/individual.svg": {
     size_kb: 3.6,
     md5Checksum: "05efc1145c695a3cb2e512235a8f0206",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 28.3,
-        md5Checksum: "bbfd0f81cb79c65da846f4370e736c29",
-      },
-    },
   },
   "plh_images/workshops/options/together.svg": {
     size_kb: 138.7,
     md5Checksum: "6caaf8bf847e7bec5f8e83ce656d533f",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 31.9,
-        md5Checksum: "9cc914b4711e11ccd2ad9b4b899252fa",
-      },
-    },
   },
   "plh_images/workshops/w_1on1/tools.svg": {
     size_kb: 6.5,
     md5Checksum: "73fa7ff26e4700c9ca379f473781de74",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 51.1,
-        md5Checksum: "79573ea144de581deeebf42da2d6888c",
-      },
-    },
   },
   "plh_images/workshops/w_celebrate/read/slide_1.svg": {
     size_kb: 101.6,
     md5Checksum: "44744c00550af7954c90ca14eccbdc7e",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 152.3,
-        md5Checksum: "7bdcfc256ce3a7ffe9cf7115d9efbd68",
-      },
-    },
   },
   "plh_images/workshops/w_celebrate/read/slide_2.svg": {
     size_kb: 6.4,
     md5Checksum: "cb963e84d52a0be168632a0ed7877158",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 34.9,
-        md5Checksum: "74b185a86a389a3f4292bcf941687680",
-      },
-    },
   },
   "plh_images/workshops/w_celebrate/read/slide_3.svg": {
     size_kb: 7.2,
     md5Checksum: "7ed5739bfb9cab4b337dea4c6007fde3",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 89.6,
-        md5Checksum: "a933d251cafacb24d1c3c7de394b1f7f",
-      },
-    },
   },
   "plh_images/workshops/w_celebrate/read/slide_4.svg": {
     size_kb: 16.4,
     md5Checksum: "a82455b066c7d27ab92bcc4328539da3",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 166.6,
-        md5Checksum: "c5b513b36219519e35cd305b1f59a172",
-      },
-    },
   },
   "plh_images/workshops/w_celebrate/tools.svg": {
     size_kb: 65.6,
     md5Checksum: "d174a38918eb7e8d3da081239eabc711",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 49.2,
-        md5Checksum: "9f68864937ce4d22f3fafcc51db47d3a",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/read_1/slide_1.svg": {
     size_kb: 7.4,
     md5Checksum: "9adada1a627a28e2cc4bea77efba3b02",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 72.4,
-        md5Checksum: "7040133bb17ce167b4ba776fb08d8ba6",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/read_1/slide_2.svg": {
     size_kb: 6.4,
     md5Checksum: "88c78683801849e556a2dd74c17bbf22",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 46.5,
-        md5Checksum: "61c512edcea84a7f8f08e720df9f7c64",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/read_1/slide_3.svg": {
     size_kb: 5.5,
     md5Checksum: "cc6252f60461d819f698dcb4745811bb",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 51.3,
-        md5Checksum: "cefc86dfb7182a49015655bbf3ec5ad9",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/read_1/slide_4.svg": {
     size_kb: 5.6,
     md5Checksum: "5a6ae89e93e12707fce80018c2beeb7c",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 46.4,
-        md5Checksum: "b876dae82ca1a7c3b319b2953092cb89",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/read_2/slide_1.svg": {
     size_kb: 6.6,
     md5Checksum: "ce28a7931d27997a6e1707a68ae4ba3b",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 73,
-        md5Checksum: "fc530b474db06087dadcd249c02c988f",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/read_2/slide_2.svg": {
     size_kb: 12.3,
     md5Checksum: "5066b8ac03c1f7e0dcf227ed98624c2e",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 46.7,
-        md5Checksum: "05b60cb01d4d947e27922678c0270c91",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/read_2/slide_3.svg": {
     size_kb: 6.9,
     md5Checksum: "404cd530d1d497ad8d89d9d062482e1d",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 117.4,
-        md5Checksum: "f833bf8bb6043d20c638c39ffe8a4ebd",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/read_3/slide_1.svg": {
     size_kb: 7,
     md5Checksum: "366d250ef5c4c9f4de01037a3d02158b",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 56,
-        md5Checksum: "50991d49400abc863cb23a276b560021",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/read_3/slide_2.svg": {
     size_kb: 7.6,
     md5Checksum: "78d4e14cf36489060b24efa1e53ff900",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 61.2,
-        md5Checksum: "bb7a6df925242a0fccb5f5c458617fcb",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/read_3/slide_3.svg": {
     size_kb: 6,
     md5Checksum: "a40884c0370aaad6b6ce7326bfb6ce32",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 56.1,
-        md5Checksum: "1a0b20d9b7c99079315890bb4cf8c4c9",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/read_3/slide_4.svg": {
     size_kb: 6,
     md5Checksum: "70c491f40874abeb99e3e66ec3bf516b",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 57.4,
-        md5Checksum: "b2401018a6250a573c594bae72266215",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/read_3/slide_5.svg": {
     size_kb: 6.6,
     md5Checksum: "139c50b1168a0c6ce75ba56a604e6db3",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 66.2,
-        md5Checksum: "587cca22fc92a06f4d0686464473eb9c",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/read_3/slide_6.svg": {
     size_kb: 5.5,
     md5Checksum: "9a22f64d6aa10290e9ed7b7e2e9131cf",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 47.1,
-        md5Checksum: "585067902f000ac2f8f831007cb5e57c",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/read_3/slide_7.svg": {
     size_kb: 5.5,
     md5Checksum: "ea150fc7a10c2bb6c7e66dc1f18045f1",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 48.4,
-        md5Checksum: "1ef162e426aa4dd1038aa9350e10a5aa",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/read_3/slide_8.svg": {
     size_kb: 5.6,
     md5Checksum: "267e5f0cf8af301c0f9e8638187630b7",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 47.1,
-        md5Checksum: "1e4c29fe72b0829846cd4b3f37b39024",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/read_3/slide_9.svg": {
     size_kb: 48.7,
     md5Checksum: "153799c983867a1d9b7bfea89ad032ef",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 53.1,
-        md5Checksum: "712ccb3833ac6c0befcaf8d78d32ceec",
-      },
-    },
   },
   "plh_images/workshops/w_consequence/tools.svg": {
     size_kb: 9.9,
     md5Checksum: "e47046d8530f041f4b5e5a669ee8aa20",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 24.8,
-        md5Checksum: "543caf49b28e3dd89cdfe7fc71cdb1a2",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/learn/slide_1.svg": {
     size_kb: 6.5,
     md5Checksum: "f8525c1b856cdcd03aa4195e8cb091bd",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 42,
-        md5Checksum: "2927c69dff6270c415f122353ee9cb27",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/learn/slide_2.svg": {
     size_kb: 7.7,
     md5Checksum: "ceea5abe414793397d12ffde4261f92c",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 74.4,
-        md5Checksum: "ce44889f285faecb3ffec7be61057247",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/learn/slide_3.svg": {
     size_kb: 7.5,
     md5Checksum: "c739ec53c5c813e5a3449ba39415c948",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 38.5,
-        md5Checksum: "6181f6897c5de4efffd7089d345e440d",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/learn/slide_4.svg": {
     size_kb: 8.7,
     md5Checksum: "36c2566f1ec362da2aa91273591a011f",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 81.6,
-        md5Checksum: "d816a0fd6b53cfd9a9a67a662c422b0b",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/learn/slide_5.svg": {
     size_kb: 6.2,
     md5Checksum: "129c6e369d1f7be6c9c8bc5d478bc82d",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 41.4,
-        md5Checksum: "3d9382856f1675506ffe21c4f72b640b",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/read_1/slide_1.svg": {
     size_kb: 8.8,
     md5Checksum: "905ce2e34449b66f3820ac748e256ce7",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 36.7,
-        md5Checksum: "9665fc4838a6fd5f821ab5afbb1bfe18",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/read_1/slide_2.svg": {
     size_kb: 8,
     md5Checksum: "2308522ef3b37829891da711e790ba27",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 33.4,
-        md5Checksum: "1a0647306bc6c7981e61de95a1d66ba5",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/read_1/slide_3.svg": {
     size_kb: 7.3,
     md5Checksum: "07b202d53762673ed5bb876cb621ca8e",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 36.6,
-        md5Checksum: "44c2f05e85b6e25377642232bbc33b20",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/read_1/slide_4.svg": {
     size_kb: 6.5,
     md5Checksum: "f1119565e17c281b1373aeb91677e6b1",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 34.3,
-        md5Checksum: "540276a1735fd2ce4fd861e6c9099060",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/read_1/slide_5.svg": {
     size_kb: 6.8,
     md5Checksum: "1d4a26d6a854bc0b8c65692354ed3a1b",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 37,
-        md5Checksum: "97b05eb521512ca84135e986137f9565",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/read_1/slide_6.svg": {
     size_kb: 47.9,
     md5Checksum: "6d11e158015d3e86259802f3c8ab1a13",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 27.7,
-        md5Checksum: "7f4dc2d0dffd99103cf484f0411b5b5f",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/read_2/slide_1.svg": {
     size_kb: 5.5,
     md5Checksum: "e5c9a8c3b44ba35326e34ad7c3f95973",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 77.2,
-        md5Checksum: "2d3deba1efb0bd1ba4914dd2715a7470",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/read_2/slide_2.svg": {
     size_kb: 6.1,
     md5Checksum: "8036f779552ef710689a58a331780cf4",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 54.6,
-        md5Checksum: "ac88c338323484abad01f2ae6505da63",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/read_2/slide_3.svg": {
     size_kb: 6.1,
     md5Checksum: "e75f6aa65cc75a987dfc0afa9d61e03a",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 58,
-        md5Checksum: "b0ad2f83e82eaac42a3aa4a48ccb4c7d",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/read_2/slide_4.svg": {
     size_kb: 7,
     md5Checksum: "11f0d6e69ae898591e0a64e5948ae282",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 55.5,
-        md5Checksum: "b80618520e8aad57bd8bac7b8118024e",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/read_2/slide_5.svg": {
     size_kb: 7,
     md5Checksum: "368f0ffabb9cb38048feaee9a532d12a",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 55.5,
-        md5Checksum: "76f2a353fda7f4de6d962ee4a5043cf5",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/read_2/slide_6.svg": {
     size_kb: 6.2,
     md5Checksum: "3d753b8316141a2890bc3fc00a4ca789",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 56,
-        md5Checksum: "5604a9cac4e9968542de188bd0fe007f",
-      },
-    },
   },
   "plh_images/workshops/w_crisis/tools.svg": {
     size_kb: 6.3,
     md5Checksum: "61bf31672e88435f3293b3e6ff164689",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 56.2,
-        md5Checksum: "bcd98f1f4ea655b63785b30e7fa3f987",
-      },
-    },
   },
   "plh_images/workshops/w_instruct/guide_1/teen_phone_1.svg": {
     size_kb: 6.6,
@@ -2285,162 +1861,66 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshops/w_instruct/guide_2/think/slide_1.svg": {
     size_kb: 3.8,
     md5Checksum: "2273e90af65b4e4c24c6e23c3f146a43",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 7.9,
-        md5Checksum: "fe3ba5f73c0903d7f95b2c527815be07",
-      },
-    },
   },
   "plh_images/workshops/w_instruct/guide_2/think/slide_2.svg": {
     size_kb: 6.1,
     md5Checksum: "930b7dd12a840820828fcc63ab18ff8e",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 9.1,
-        md5Checksum: "aba26746ca4a06171364415b927b6bed",
-      },
-    },
   },
   "plh_images/workshops/w_instruct/guide_2/think/slide_3.svg": {
     size_kb: 23.3,
     md5Checksum: "44867e50635910762876f447985cc4d2",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 26.5,
-        md5Checksum: "f527e415cab1c2b41c028424e08155a5",
-      },
-    },
   },
   "plh_images/workshops/w_instruct/read_1/slide_1.svg": {
     size_kb: 13.6,
     md5Checksum: "2352ea623847d91a32ba02acaba08cdb",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 47.3,
-        md5Checksum: "6977de3cad285ec09b7c6cb5a21f70e9",
-      },
-    },
   },
   "plh_images/workshops/w_instruct/read_1/slide_2.svg": {
     size_kb: 13.2,
     md5Checksum: "e25a55eaa80bf7408ceaf22173c23a54",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 37.4,
-        md5Checksum: "9089d28b3cfce97ec2d46043fe77b07a",
-      },
-    },
   },
   "plh_images/workshops/w_instruct/read_1/slide_3.svg": {
     size_kb: 13.3,
     md5Checksum: "1719e7341ed6f66b47f5d0dd5b75fcbe",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 42.6,
-        md5Checksum: "c88d9ab48b3b500c338845f8f5f1b7c1",
-      },
-    },
   },
   "plh_images/workshops/w_instruct/read_2/slide_1.svg": {
     size_kb: 13.7,
     md5Checksum: "8a783f018b98f3e7741d08ab782b4a2b",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 47,
-        md5Checksum: "e459870f9f56c5db85be8fe8ef600c48",
-      },
-    },
   },
   "plh_images/workshops/w_instruct/read_2/slide_2.svg": {
     size_kb: 13.2,
     md5Checksum: "57831972a8564f3cf949026a70ab8fc9",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 43.4,
-        md5Checksum: "a34d93aec47f4dcd9a015bf9e3d966d5",
-      },
-    },
   },
   "plh_images/workshops/w_instruct/read_2/slide_3.svg": {
     size_kb: 11,
     md5Checksum: "43a3bad70ebe57788bbc7efcbb8eb501",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 42.5,
-        md5Checksum: "476a66b3dd60ca5de7d735a2dce648e4",
-      },
-    },
   },
   "plh_images/workshops/w_instruct/read_2/slide_4.svg": {
     size_kb: 10.4,
     md5Checksum: "2ac7364286f00393a236404e22dbdec7",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 53.4,
-        md5Checksum: "136750deb5d97ef1eaf47598aff65a2d",
-      },
-    },
   },
   "plh_images/workshops/w_instruct/tools.svg": {
     size_kb: 9.6,
     md5Checksum: "be953cb1a0f7dae1956aaf76862c3faa",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 24.9,
-        md5Checksum: "ceaed2757884b74d53bf85ae86f3079d",
-      },
-    },
   },
   "plh_images/workshops/w_money/learn/slide_1.svg": {
     size_kb: 948.9,
     md5Checksum: "fd30ef763b2ba38286fe790336f1a918",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 702.9,
-        md5Checksum: "765c284f07bf0a9bb1ab7fdf4743ffd9",
-      },
-    },
   },
   "plh_images/workshops/w_money/learn/slide_2.svg": {
     size_kb: 40,
     md5Checksum: "6fff099bc6031d2c5879e32d23c9e2be",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 61.8,
-        md5Checksum: "87be48edaaf39faab85f5e500076c1ad",
-      },
-    },
   },
   "plh_images/workshops/w_money/learn/slide_3.svg": {
     size_kb: 1266.8,
     md5Checksum: "5cb6e031a601976c2c5a9dacde1cc38c",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 717.1,
-        md5Checksum: "7e7ce2a505ab75e2e869095e805d7ff9",
-      },
-    },
   },
   "plh_images/workshops/w_money/learn/slide_4.svg": {
     size_kb: 1269.9,
     md5Checksum: "82bfc942d7f0fa9c8f5175d85ce05314",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 721.6,
-        md5Checksum: "3c4db1843f2afa027a8d706513f00150",
-      },
-    },
   },
   "plh_images/workshops/w_money/read_1/slide_1.svg": {
     size_kb: 36.8,
     md5Checksum: "d35d65d66e927bebeb71212ba13771df",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 44.9,
-        md5Checksum: "15d2158383f9367cba7d36a7bdcf7069",
-      },
-    },
   },
   "plh_images/workshops/w_money/read_1/slide_2.svg": {
     size_kb: 3.1,
@@ -2449,12 +1929,6 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshops/w_money/read_2/slide_1.svg": {
     size_kb: 92.7,
     md5Checksum: "89527e7d37980f73134f8887ac8cb38b",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 38.9,
-        md5Checksum: "b45987866cd3ef0f1839c12f2a482799",
-      },
-    },
   },
   "plh_images/workshops/w_money/read_2/slide_2.svg": {
     size_kb: 31.9,
@@ -2467,92 +1941,38 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshops/w_money/read_3/slide_2.svg": {
     size_kb: 11.5,
     md5Checksum: "4b2732913aaf69a7d9e619b60a43c854",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 35.3,
-        md5Checksum: "c007c6c8bdca5fe95dd232a1056ea9d5",
-      },
-    },
   },
   "plh_images/workshops/w_money/read_3/slide_3.svg": {
     size_kb: 18.3,
     md5Checksum: "f3d08f6abbfffe6c1e65ddebe4f02dad",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 65,
-        md5Checksum: "4bac645041f65f12aa13fe1a692f2265",
-      },
-    },
   },
   "plh_images/workshops/w_money/read_3/slide_4.svg": {
     size_kb: 8.4,
     md5Checksum: "018270b873c91c7448bab867b7ebf863",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 17.8,
-        md5Checksum: "95114326e00faa6192bda3732c194c50",
-      },
-    },
   },
   "plh_images/workshops/w_money/read_3/slide_5.svg": {
     size_kb: 43.1,
     md5Checksum: "6fe986fa7a4b09493580bfe5a03915aa",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 58.2,
-        md5Checksum: "3dd39fbac80ce1f5135a20cdfc71b22c",
-      },
-    },
   },
   "plh_images/workshops/w_money/read_3/slide_6.svg": {
     size_kb: 91,
     md5Checksum: "cd331d34ec95f2a267616198bc272755",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 51.9,
-        md5Checksum: "e7875b5c1ee30d137221874c69943c51",
-      },
-    },
   },
   "plh_images/workshops/w_money/read_4/slide_1.svg": {
     size_kb: 27.5,
     md5Checksum: "ab043bb71c85a071254cf552981990e1",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 47.1,
-        md5Checksum: "341208ab432e7b2b9e1f17b1e9c34423",
-      },
-    },
   },
   "plh_images/workshops/w_money/tools.svg": {
     size_kb: 15.5,
     md5Checksum: "1019da9152557bade59a3a1c852c377b",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 53,
-        md5Checksum: "bba4198030e6efac29377a3603c8afad",
-      },
-    },
   },
   "plh_images/workshops/w_praise/read/slide_1.svg": {
     size_kb: 16.2,
     md5Checksum: "3861bcfd3f13b77d90266731755b888a",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 164.8,
-        md5Checksum: "9d2b90604d379b24816e04ce136d31ff",
-      },
-    },
   },
   "plh_images/workshops/w_praise/read/slide_2.svg": {
     size_kb: 761.1,
     md5Checksum: "eaa20b358c00a63aa6e25d54d7e5c59d",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 44.8,
-        md5Checksum: "b61b7b9fa390f802f89be5810cd20fdf",
-      },
-    },
   },
   "plh_images/workshops/w_praise/reflect_together/slide_1.svg": {
     size_kb: 14.4,
@@ -2569,282 +1989,114 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshops/w_praise/tools.svg": {
     size_kb: 5.8,
     md5Checksum: "c1361f5a07783b5901d6f4a7fce13210",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 36.3,
-        md5Checksum: "270b0f948ee51b3776890ea7f8cd65de",
-      },
-    },
   },
   "plh_images/workshops/w_rules/read_1/slide_1.svg": {
     size_kb: 8.2,
     md5Checksum: "62a23a6a871b1bd3e9b0766ba4885a9b",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 30.5,
-        md5Checksum: "4e302e3930b961ae68a92610456de44c",
-      },
-    },
   },
   "plh_images/workshops/w_rules/read_1/slide_3.svg": {
     size_kb: 7.4,
     md5Checksum: "b61185658f2e4352a61b756801a97e5a",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 32.1,
-        md5Checksum: "86c8eb3f20dbc38974cc700b55de8223",
-      },
-    },
   },
   "plh_images/workshops/w_rules/read_1/slide_4.svg": {
     size_kb: 7.5,
     md5Checksum: "19609316ca4d9ebb2bd3aa278a097333",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 29.6,
-        md5Checksum: "9386b38541a578ad2919dccded907440",
-      },
-    },
   },
   "plh_images/workshops/w_rules/read_1/slide_5.svg": {
     size_kb: 7.5,
     md5Checksum: "ffc0ea6eb046ae71dfcfa3127dbfe6e2",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 29.5,
-        md5Checksum: "735170346d23cf06f23f902990574d31",
-      },
-    },
   },
   "plh_images/workshops/w_rules/read_1/slide_6.svg": {
     size_kb: 7.6,
     md5Checksum: "cee09fe970424d41350add3b36c893a5",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 27.7,
-        md5Checksum: "88ec1339cf1eeb7480e8aecb6e35c54a",
-      },
-    },
   },
   "plh_images/workshops/w_rules/read_1/slide_7.svg": {
     size_kb: 44.1,
     md5Checksum: "0dfcd94f6d55e7fc5a536e48ce68a1be",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 23.3,
-        md5Checksum: "ac4f43f990c4ff584bad392c22da996b",
-      },
-    },
   },
   "plh_images/workshops/w_rules/read_1/slide_8.svg": {
     size_kb: 7.5,
     md5Checksum: "a6a15529528eb9ec674038d12c1bff9a",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 35.2,
-        md5Checksum: "4b16c9bee11a9d44a5057aa57b3279d9",
-      },
-    },
   },
   "plh_images/workshops/w_rules/read_2/slide_1.svg": {
     size_kb: 7.1,
     md5Checksum: "72b8bdf8c551bccbb697a4f72d179b9f",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 417.7,
-        md5Checksum: "2624d29ba5c8151e50d8b3b3b8c0229d",
-      },
-    },
   },
   "plh_images/workshops/w_rules/read_2/slide_2.svg": {
     size_kb: 6.5,
     md5Checksum: "9eafea48b3be6b581a14212a373959d3",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 233.3,
-        md5Checksum: "329d295c0f94bb6289427b73dad95538",
-      },
-    },
   },
   "plh_images/workshops/w_rules/read_2/slide_3.svg": {
     size_kb: 6.5,
     md5Checksum: "b4cb2ee458af1abc22b58e6969fd4f54",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 231.7,
-        md5Checksum: "62e80537fa73018fc0ee93bf6871e666",
-      },
-    },
   },
   "plh_images/workshops/w_rules/read_2/slide_4.svg": {
     size_kb: 66.2,
     md5Checksum: "fbbaec539740fd64e409073d0e2c9cb7",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 164.6,
-        md5Checksum: "c0382cc8964258c13c816709b4cba340",
-      },
-    },
   },
   "plh_images/workshops/w_rules/read_2/slide_5.svg": {
     size_kb: 6.9,
     md5Checksum: "c427f203f1915bcd0302921fc35d729a",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 423.6,
-        md5Checksum: "566f2545b8e17c0fe80b221e1be1b8d2",
-      },
-    },
   },
   "plh_images/workshops/w_rules/tools.svg": {
     size_kb: 9.1,
     md5Checksum: "4d74cd467f5f816face62deadc63aaf6",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 39.4,
-        md5Checksum: "7e2cd3324df554df7f281ea3e35dd97a",
-      },
-    },
   },
   "plh_images/workshops/w_safe/learn/slide_1.svg": {
     size_kb: 1114.8,
     md5Checksum: "c72385f05bd96def84ea4d5fa6896397",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 1365.4,
-        md5Checksum: "3d22ff11baa8a8ddbe16beeb1c942786",
-      },
-    },
   },
   "plh_images/workshops/w_safe/learn/slide_2.svg": {
     size_kb: 1378.6,
     md5Checksum: "b1b50acd3c0d1ad56daa5ffe7b3f6741",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 1560.3,
-        md5Checksum: "ea07eb7b0918b57b08362c31f0666079",
-      },
-    },
   },
   "plh_images/workshops/w_safe/learn/slide_3.svg": {
     size_kb: 1744.2,
     md5Checksum: "62b09f506cc9ee746ad103044cf149b0",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 1991.8,
-        md5Checksum: "d6ee6efdb30cde4d8ea2a294810f1ade",
-      },
-    },
   },
   "plh_images/workshops/w_safe/learn/slide_4.svg": {
     size_kb: 821.6,
     md5Checksum: "3ba9ac6fd9f023049b463b72342af1f8",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 926.4,
-        md5Checksum: "085c27d74f5c3eece0db91f24f68972d",
-      },
-    },
   },
   "plh_images/workshops/w_safe/read_1/slide_1.svg": {
     size_kb: 7.4,
     md5Checksum: "4523d5af947cbc7d01ce70ae989adf1a",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 32.5,
-        md5Checksum: "a8fbfcb74a8a0d4b26c7c7e1a025eaad",
-      },
-    },
   },
   "plh_images/workshops/w_safe/read_1/slide_2.svg": {
     size_kb: 47.9,
     md5Checksum: "b120e564c9cd533631513d880667a882",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 68.7,
-        md5Checksum: "74124ce17d3b3a05ea2e83dded6dff70",
-      },
-    },
   },
   "plh_images/workshops/w_safe/read_1/slide_3.svg": {
     size_kb: 46.6,
     md5Checksum: "29988e93edf0db46fb602bb03292e188",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 64.3,
-        md5Checksum: "960ae7a334601c470b4833e1c17aca32",
-      },
-    },
   },
   "plh_images/workshops/w_safe/read_1/slide_4.svg": {
     size_kb: 10.6,
     md5Checksum: "e662be8ac20f7719ebbdba7006341ef6",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 41,
-        md5Checksum: "dccb53edd2fb759f8db985285f087f23",
-      },
-    },
   },
   "plh_images/workshops/w_safe/read_1/slide_5.svg": {
     size_kb: 10.5,
     md5Checksum: "911d552ba9b992e500b4fa231fd5663a",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 41,
-        md5Checksum: "5dbf40b19aedb99608263255e36536b3",
-      },
-    },
   },
   "plh_images/workshops/w_safe/read_1/slide_6.svg": {
     size_kb: 6.9,
     md5Checksum: "93a85ef9d94586f6a46e57b4f2942ece",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 32.8,
-        md5Checksum: "daeadb17f758886b28521dcb6d6a3515",
-      },
-    },
   },
   "plh_images/workshops/w_safe/read_2/slide_1.svg": {
     size_kb: 7.4,
     md5Checksum: "c400d59db95b04a49111b447c127ecef",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 32.2,
-        md5Checksum: "f0e4b68b8c10861143869615870c64af",
-      },
-    },
   },
   "plh_images/workshops/w_safe/read_2/slide_2.svg": {
     size_kb: 7.5,
     md5Checksum: "a4aba4c7a277d151a038465d35abda5c",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 35,
-        md5Checksum: "932a38e2a7c24ae4633c00406a81ec4d",
-      },
-    },
   },
   "plh_images/workshops/w_safe/read_2/slide_3.svg": {
     size_kb: 6.9,
     md5Checksum: "9f29cf4275c53513dc01df2bf5ad28d4",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 33,
-        md5Checksum: "d4a6a0744c97c27965c391c46665102d",
-      },
-    },
   },
   "plh_images/workshops/w_safe/tools.svg": {
     size_kb: 7.1,
     md5Checksum: "fe8e84f3f2b124d7a71a30dea507f9e7",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 24.3,
-        md5Checksum: "3e029ab5e5902c86f82b524642197aa1",
-      },
-    },
   },
   "plh_images/workshops/w_self_care/guide_1/recognise.svg": {
     size_kb: 6.9,
@@ -2865,402 +2117,162 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshops/w_self_care/tools.svg": {
     size_kb: 7.5,
     md5Checksum: "3298c27b7df419a0fc43a59d22b37b81",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 10.2,
-        md5Checksum: "e51a8c6f8c9cc740964a66214bda6593",
-      },
-    },
   },
   "plh_images/workshops/w_solve/read_1/slide_1.svg": {
     size_kb: 6.5,
     md5Checksum: "5373ec46be6f68b78e0910fe012d289b",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 35.6,
-        md5Checksum: "899e3f6a17f07d24544561cbfc198d0c",
-      },
-    },
   },
   "plh_images/workshops/w_solve/read_1/slide_2.svg": {
     size_kb: 6.5,
     md5Checksum: "66c0284c41e74b3fb0f4349b1006fb78",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 33.4,
-        md5Checksum: "596513cb7d271e8c8fa4e7cebbd432ab",
-      },
-    },
   },
   "plh_images/workshops/w_solve/read_1/slide_3.svg": {
     size_kb: 6.5,
     md5Checksum: "8f79134327f463694f40ba50c4ac865e",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 33.6,
-        md5Checksum: "8bb025dac71cb07c137b54d1dcca5644",
-      },
-    },
   },
   "plh_images/workshops/w_solve/read_2/slide_1.svg": {
     size_kb: 12.2,
     md5Checksum: "3d69f149beb7c00133d740484a8f5fa2",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 49.2,
-        md5Checksum: "a46a9d0c38dcad7df22d60c8fcc567fb",
-      },
-    },
   },
   "plh_images/workshops/w_solve/read_2/slide_10.svg": {
     size_kb: 51.9,
     md5Checksum: "1a45611d92cb8c7312fc0b5a9089048f",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 25.9,
-        md5Checksum: "29338a585138f05f6d08a73335c02e3f",
-      },
-    },
   },
   "plh_images/workshops/w_solve/read_2/slide_11.svg": {
     size_kb: 8.4,
     md5Checksum: "2177ef892e58c1ae192ce444a387fc5a",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 34.5,
-        md5Checksum: "22984eff1011b29e916f6219ce910fe7",
-      },
-    },
   },
   "plh_images/workshops/w_solve/read_2/slide_12.svg": {
     size_kb: 7.3,
     md5Checksum: "9731db03ed8617bdc1b0c3d194e161d8",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 25.7,
-        md5Checksum: "4c2ab428accebcabe44c95a51fd33ff0",
-      },
-    },
   },
   "plh_images/workshops/w_solve/read_2/slide_2.svg": {
     size_kb: 11,
     md5Checksum: "2ed6bb078003b85f5e8edcb431040edd",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 46.3,
-        md5Checksum: "8d97b5a04e321548281234c9557b1f53",
-      },
-    },
   },
   "plh_images/workshops/w_solve/read_2/slide_3.svg": {
     size_kb: 28.3,
     md5Checksum: "f19438f969c1ba9b1809a1709085e54d",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 59.6,
-        md5Checksum: "44bce638752d01e69f914c5723ded612",
-      },
-    },
   },
   "plh_images/workshops/w_solve/read_2/slide_4.svg": {
     size_kb: 28.2,
     md5Checksum: "27808bec9405582fc9f03e82fdd21a53",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 29.8,
-        md5Checksum: "00d9edffd01ad1f491948e019c2ff736",
-      },
-    },
   },
   "plh_images/workshops/w_solve/read_2/slide_5.svg": {
     size_kb: 7.2,
     md5Checksum: "45da09c31dd75b1dade5e26702860fb4",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 33.1,
-        md5Checksum: "c9b96f9d2b5dbe8eb8ae52266e195d58",
-      },
-    },
   },
   "plh_images/workshops/w_solve/read_2/slide_6.svg": {
     size_kb: 7.3,
     md5Checksum: "713c923cfc5be0b06d35b84047f11167",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 33.8,
-        md5Checksum: "bb316aef4ae7d048b1ef1f1e8140145e",
-      },
-    },
   },
   "plh_images/workshops/w_solve/read_2/slide_7.svg": {
     size_kb: 7.3,
     md5Checksum: "b26d74f238f93e952c79c7e5c6540729",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 34.7,
-        md5Checksum: "164018cb66e0ec14f71f13fa5b06172d",
-      },
-    },
   },
   "plh_images/workshops/w_solve/read_2/slide_8.svg": {
     size_kb: 7.2,
     md5Checksum: "f87c3c249f11da64be038ce829fea009",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 38.3,
-        md5Checksum: "49c6cecd2a5af1f8ebae1bdae068bc1e",
-      },
-    },
   },
   "plh_images/workshops/w_solve/read_2/slide_9.svg": {
     size_kb: 7.1,
     md5Checksum: "52f505b176de78c901c5eab7a116d830",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 33.5,
-        md5Checksum: "ec4b8e228363bd564e1b88524daefee4",
-      },
-    },
   },
   "plh_images/workshops/w_solve/tools/tool_1.svg": {
     size_kb: 23.9,
     md5Checksum: "2146c95f6b02a306a68525a3cf632187",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 42.1,
-        md5Checksum: "6e02fee362cb8d39f1f5890c76427bb0",
-      },
-    },
   },
   "plh_images/workshops/w_solve/tools/tool_2.svg": {
     size_kb: 40.1,
     md5Checksum: "80f47d033e2c1c0c609c61f3718b8434",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 75.3,
-        md5Checksum: "2b94a897942da380fb0cc8f858eda672",
-      },
-    },
   },
   "plh_images/workshops/w_solve/tools/tool_3.svg": {
     size_kb: 21.9,
     md5Checksum: "75d3c84ac20906956e7df9d0d3e4dc1e",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 39.4,
-        md5Checksum: "41ae24895ac002a548de6ac26a94a65b",
-      },
-    },
   },
   "plh_images/workshops/w_solve/tools/tool_4.svg": {
     size_kb: 18,
     md5Checksum: "26644ce6c4e959ef94ec48044b8d14b3",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 33.5,
-        md5Checksum: "b4cc98066901046ef059cdad20f30a4b",
-      },
-    },
   },
   "plh_images/workshops/w_solve/tools.svg": {
     size_kb: 7.1,
     md5Checksum: "26faa69fe9cf041c664a3e57a1a0e096",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 24.8,
-        md5Checksum: "6442ade0a5565c45edf56cee74e03f04",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_1/slide_1.svg": {
     size_kb: 3.8,
     md5Checksum: "e08535d4d76dd927805b5e73f5bc53fd",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 61.1,
-        md5Checksum: "7a93680c1decf961ed2062ca3cc54bee",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_1/slide_2.svg": {
     size_kb: 6.1,
     md5Checksum: "6ee483d983b4e938f5bb81e5b0933150",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 75.3,
-        md5Checksum: "9c437e166e2d77eee71b4075a9bd650f",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_1/slide_3.svg": {
     size_kb: 8.2,
     md5Checksum: "01c66ddb9a924ee7f233f5ebe3f2fedd",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 54.7,
-        md5Checksum: "5c36b4846cd942b4dae46f2f1620539b",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_1/slide_4.svg": {
     size_kb: 62.4,
     md5Checksum: "fb8009b6a94e90294d64bd1b09ff293d",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 243.7,
-        md5Checksum: "70509dcfd1b001c388d5a6ddb5cd41f7",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_1/slide_5.svg": {
     size_kb: 63.3,
     md5Checksum: "6fa52f7adadc2036af8503ce705dd2c7",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 228.4,
-        md5Checksum: "e9a19fb57b8d597f307e969c36243c56",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_1/slide_6.svg": {
     size_kb: 9.8,
     md5Checksum: "752730c4dbe86d018bc990f39886f08d",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 72.3,
-        md5Checksum: "9f012196bc84088aae3fd89cda416747",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_2/slide_1.svg": {
     size_kb: 3.8,
     md5Checksum: "3f0e521672d9ea9a13ff52c5ac14f5ea",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 60.6,
-        md5Checksum: "5850cf7ca3c4dc183eb560d33160be72",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_2/slide_2.svg": {
     size_kb: 7.9,
     md5Checksum: "d185406b3e42bb12ede584d926587406",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 75.1,
-        md5Checksum: "ddc3c22457b8be7265ddd131d526d3ef",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_2/slide_3.svg": {
     size_kb: 6.5,
     md5Checksum: "657487acaa66e464338f9d0659836af8",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 59.4,
-        md5Checksum: "9cb040fc1e45a4cf8d0add4146e86e55",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_2/slide_4.svg": {
     size_kb: 6.4,
     md5Checksum: "f692ea3dbfc9c250cb0177d60359a476",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 55.3,
-        md5Checksum: "8066e4c91f8a8e0f11cbfa5fd61621b6",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_2/slide_5.svg": {
     size_kb: 112.9,
     md5Checksum: "1ef4b0d4790c13cea8c4c8e5d3bbf501",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 55.6,
-        md5Checksum: "e5ae64b5af3371f03b6eadb37da3fd32",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_3/slide_1.svg": {
     size_kb: 5.5,
     md5Checksum: "a9b51ccb5348160e9acbbfd95ba26e5f",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 24.3,
-        md5Checksum: "7cc1ef73878be4d04d4c5a79ecba1372",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_3/slide_2.svg": {
     size_kb: 10.7,
     md5Checksum: "641a9c66cf08b7a66db39f6c78c7c671",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 42,
-        md5Checksum: "d3053ef4fce4967ca28227e95a730401",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_3/slide_3.svg": {
     size_kb: 9.3,
     md5Checksum: "8f0efce15850644762cfc0b6bc983ba0",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 39.6,
-        md5Checksum: "7d1b3edcc1ef1c069d16d9b04dea7feb",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_3/slide_4.svg": {
     size_kb: 35.4,
     md5Checksum: "32b7bdb827a67fd6cd8696d86f9aa504",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 103.5,
-        md5Checksum: "f5fd2b009d3908fa07cc19a29bdce97a",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_3/slide_5.svg": {
     size_kb: 9.1,
     md5Checksum: "16c5e7e893a1fc0e53a85ecc659f8707",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 42.2,
-        md5Checksum: "8538aa770c1e1fb11b673a7922cda585",
-      },
-    },
   },
   "plh_images/workshops/w_stress/read_3/slide_6.svg": {
     size_kb: 10.3,
     md5Checksum: "cc2a3d7312025e21a1b1025bb7533c50",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 24.2,
-        md5Checksum: "af9157e52811cd2d09cf54969811822f",
-      },
-    },
   },
   "plh_images/workshops/w_stress/tools.svg": {
     size_kb: 6.3,
     md5Checksum: "fc0219dbf6b39c6fe7eeaa36cc40c4cc",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 10,
-        md5Checksum: "bfa1481824dc135d25527d63175fb4df",
-      },
-    },
   },
   "plh_images/workshop_modes/group/cup.svg": {
     size_kb: 149.5,
     md5Checksum: "08eed96abcb06128573e5ccbf01c3616",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 62.6,
-        md5Checksum: "499b147bf02ce8088d9e18a65a989109",
-      },
-    },
   },
   "plh_images/workshop_modes/group/final/cup.svg": {
     size_kb: 145.7,
@@ -3289,62 +2301,26 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshop_modes/group/light_bulb.svg": {
     size_kb: 143.6,
     md5Checksum: "d0174c8ca586c73cf5c05c52138854bf",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 65.4,
-        md5Checksum: "0bc3c68e2ab9190f74eed77d32856f47",
-      },
-    },
   },
   "plh_images/workshop_modes/group/notes.svg": {
     size_kb: 142.2,
     md5Checksum: "657c4a42011d747d0e3c1939edebfd54",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 58.1,
-        md5Checksum: "c891d836ddf679ac1099ad2173d00ced",
-      },
-    },
   },
   "plh_images/workshop_modes/group/read.svg": {
     size_kb: 143.2,
     md5Checksum: "d518d1d0a2325d11d813ba71c5a128aa",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 57.6,
-        md5Checksum: "c7ebbd1d55aa2254e7c44461a2e845dd",
-      },
-    },
   },
   "plh_images/workshop_modes/group/relax.svg": {
     size_kb: 140.7,
     md5Checksum: "da1e1ee4e68ef744eb917c128ce426ff",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 51.4,
-        md5Checksum: "30749bcecc6b620ec003ae7efd601ba9",
-      },
-    },
   },
   "plh_images/workshop_modes/group/talk.svg": {
     size_kb: 140.7,
     md5Checksum: "c31e79168837723e0becf5210fd673b3",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 31.9,
-        md5Checksum: "9cc914b4711e11ccd2ad9b4b899252fa",
-      },
-    },
   },
   "plh_images/workshop_modes/group/with_teen.svg": {
     size_kb: 5.4,
     md5Checksum: "d0f425c460bff0adf11be5bed24d483e",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 27.7,
-        md5Checksum: "94367372937e9d4b13b9a87ff5982bf6",
-      },
-    },
   },
   "plh_images/workshop_modes/guide_1/cup.svg": {
     size_kb: 5.5,
@@ -3421,22 +2397,10 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshop_modes/guide_2/breathe.svg": {
     size_kb: 2.3,
     md5Checksum: "284285870cd683c71190ab4004cf4d70",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 13.1,
-        md5Checksum: "f0cd9c2695cc4611b182296ea1c8c4ac",
-      },
-    },
   },
   "plh_images/workshop_modes/guide_2/cup.svg": {
     size_kb: 5.8,
     md5Checksum: "6549a769cb31d831ef27234f91756041",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 17.2,
-        md5Checksum: "522066b5a23cecbc23c4f2f1181e683a",
-      },
-    },
   },
   "plh_images/workshop_modes/guide_2/final/cup.svg": {
     size_kb: 10.3,
@@ -3469,22 +2433,10 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshop_modes/guide_2/light_bulb.svg": {
     size_kb: 4.6,
     md5Checksum: "056e44ecd0260d2d4f09be31031d3ab4",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 22.2,
-        md5Checksum: "6b3751b1167400ef034497eec0fb3a71",
-      },
-    },
   },
   "plh_images/workshop_modes/guide_2/notes.svg": {
     size_kb: 56.6,
     md5Checksum: "3c7d0fa4ee0e4443428a99b7a8c79249",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 10.1,
-        md5Checksum: "4f85a332834dfa5a10a3b6f69474fc8f",
-      },
-    },
   },
   "plh_images/workshop_modes/guide_2/notes_left.svg": {
     size_kb: 56.4,
@@ -3493,22 +2445,10 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshop_modes/guide_2/read.svg": {
     size_kb: 3.7,
     md5Checksum: "37004d531d300bcba599761b8fde65c3",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 12.5,
-        md5Checksum: "7b47d7981fda92b1b5f1aed38685b7d8",
-      },
-    },
   },
   "plh_images/workshop_modes/guide_2/relax.svg": {
     size_kb: 2.8,
     md5Checksum: "671efe03765bebc98d71aa3ea3af095a",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 12.3,
-        md5Checksum: "912746d09cacd98919d4b4d134d503b8",
-      },
-    },
   },
   "plh_images/workshop_modes/guide_2/star.svg": {
     size_kb: 3.7,
@@ -3521,32 +2461,14 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshop_modes/guide_2/wave.svg": {
     size_kb: 3,
     md5Checksum: "be9901f233124ed4a8ad189b219cc957",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 8.4,
-        md5Checksum: "7950fda347f0c3dd71608fd3a4f48028",
-      },
-    },
   },
   "plh_images/workshop_modes/guide_2/with_teen.svg": {
     size_kb: 6.1,
     md5Checksum: "f4808b91a9a6b24c0a8ee3f1c826fc94",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 27.3,
-        md5Checksum: "b330d13dc11bce8e8255f1e079c29a72",
-      },
-    },
   },
   "plh_images/workshop_modes/guide_2/write.svg": {
     size_kb: 3.8,
     md5Checksum: "d85011b09a2953d05a49e784995492d3",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 13.5,
-        md5Checksum: "e0814e02d1098cc763f44e72b64d42d4",
-      },
-    },
   },
   "plh_lottie/habits/cascading_stars.json": {
     size_kb: 140.5,
