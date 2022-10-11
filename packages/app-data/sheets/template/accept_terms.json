@@ -20,7 +20,9 @@
       "name": "text_1",
       "value": "By providing your consent below you acknowledge reading and accepting the @global.terms_and_conditions and @global.privacy_policy. The most important commitments are:\n1. This is, and will always be, a fully free app.\n2. Your data will never be sold. We are not for profit.\n3. By using the app you are helping to make the app better for you and others.\n4. Your anonymised data may be used for research purposes by our @global.parent_app team.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "text_1",
       "_dynamicFields": {
@@ -132,7 +134,9 @@
       "name": "text_2",
       "value": "These policies are still under construction. We value advice and input to improve them.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "text_2"
     },
@@ -140,7 +144,9 @@
       "name": "consent_text",
       "value": "I consent to the commitments stated above.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "consent_text"

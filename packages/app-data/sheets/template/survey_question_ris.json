@@ -1,12 +1,12 @@
 {
   "flow_type": "template",
-  "flow_name": "survey_question_pse",
+  "flow_name": "survey_question_ris",
   "status": "released",
   "rows": [
     {
       "type": "template",
-      "name": "box_slider",
-      "value": "box_slider",
+      "name": "box_survey_question",
+      "value": "box_survey_question",
       "action_list": [
         {
           "trigger": "completed",
@@ -25,39 +25,39 @@
           ],
           "_raw": "uncompleted | emit:uncompleted",
           "_cleaned": "uncompleted | emit:uncompleted"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "server_sync"
+          ],
+          "_raw": "completed | emit: server_sync",
+          "_cleaned": "completed | emit: server_sync"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "server_sync"
+          ],
+          "_raw": "uncompleted | emit: server_sync",
+          "_cleaned": "uncompleted | emit: server_sync"
         }
       ],
       "rows": [
         {
-          "name": "question_id",
-          "value": "pse",
+          "name": "question_group_id",
+          "value": "ris",
           "_translations": {
             "value": {}
           },
           "exclude_from_translation": true,
           "type": "set_variable",
-          "_nested_name": "box_slider.question_id"
-        },
-        {
-          "name": "replies",
-          "hidden": true,
-          "type": "set_variable",
-          "_nested_name": "box_slider.replies"
-        },
-        {
-          "name": "unlock_when_less",
-          "value": false,
-          "type": "set_variable",
-          "_nested_name": "box_slider.unlock_when_less"
-        },
-        {
-          "name": "unlock_when_greater_equal",
-          "value": false,
-          "type": "set_variable",
-          "_nested_name": "box_slider.unlock_when_greater_equal"
+          "_nested_name": "box_survey_question.question_group_id"
         }
       ],
-      "_nested_name": "box_slider"
+      "_nested_name": "box_survey_question"
     }
   ],
   "_xlsxPath": "global/top_templates/survey_templates/survey.xlsx"
