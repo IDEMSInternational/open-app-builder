@@ -32,9 +32,15 @@
       "feedback_worse::4": "Finding time to do something fun with your child can be hard, I understand! The great thing is that spending time together will make other things go easier – you will see!",
       "intro_text": "It is hard to find time to do something nice with your teenager.",
       "_translations": {
-        "intro_text": {},
-        "question": {},
-        "range_description": {}
+        "intro_text": {
+          "tz_sw": true
+        },
+        "question": {
+          "tz_sw": true
+        },
+        "range_description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "intro_text": {
@@ -86,8 +92,12 @@
           "za_xh": true,
           "za_zu": true
         },
-        "question": {},
-        "range_description": {}
+        "question": {
+          "tz_sw": true
+        },
+        "range_description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "intro_text": {
@@ -131,9 +141,15 @@
       "feedback_worse::4": "It is okay to feel overwhelmed from time to time, we all do! Take a deep breath and remember that we are here to help.",
       "intro_text": "Being a parent can be stressful.",
       "_translations": {
-        "intro_text": {},
-        "question": {},
-        "range_description": {}
+        "intro_text": {
+          "tz_sw": true
+        },
+        "question": {
+          "tz_sw": true
+        },
+        "range_description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "intro_text": {
@@ -163,8 +179,12 @@
       "parent_text": false,
       "intro_text": "There are days in our lives where we feel sad and down, and days where we feel happy.",
       "_translations": {
-        "intro_text": {},
-        "question": {},
+        "intro_text": {
+          "tz_sw": true
+        },
+        "question": {
+          "tz_sw": true
+        },
         "range_description": {
           "tz_sw": true,
           "za_af": true,
@@ -202,7 +222,9 @@
       "parent_text": false,
       "question": "How many days in the past week have you felt that everything you did was an effort?",
       "_translations": {
-        "question": {},
+        "question": {
+          "tz_sw": true
+        },
         "range_description": {
           "tz_sw": true,
           "za_af": true,
@@ -236,7 +258,9 @@
       "parent_text": false,
       "question": "How many days in the past week have you felt hopeful for the future?",
       "_translations": {
-        "question": {},
+        "question": {
+          "tz_sw": true
+        },
         "range_description": {
           "tz_sw": true,
           "za_af": true,
@@ -295,8 +319,12 @@
           "za_xh": true,
           "za_zu": true
         },
-        "question": {},
-        "range_description": {}
+        "question": {
+          "tz_sw": true
+        },
+        "range_description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "intro_text": {
@@ -328,8 +356,12 @@
       "parent_text": false,
       "question": "How many times in the past month did you insult your teen or call them names or stupid?",
       "_translations": {
-        "question": {},
-        "range_description": {}
+        "question": {
+          "tz_sw": true
+        },
+        "range_description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question": {
@@ -361,8 +393,12 @@
         "intro_text": {
           "tz_sw": true
         },
-        "question": {},
-        "range_description": {}
+        "question": {
+          "tz_sw": true
+        },
+        "range_description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "intro_text": {
@@ -433,8 +469,12 @@
       "parent_text": false,
       "intro_text": "Families also have difficult experiences like sickness and losing loved ones.",
       "_translations": {
-        "intro_text": {},
-        "question": {}
+        "intro_text": {
+          "tz_sw": true
+        },
+        "question": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "intro_text": {
@@ -459,7 +499,9 @@
       "parent_text": false,
       "question": "Did they pass away in the last 3 years?",
       "_translations": {
-        "question": {}
+        "question": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question": {
@@ -506,8 +548,12 @@
           "za_xh": true,
           "za_zu": true
         },
-        "question": {},
-        "range_description": {}
+        "question": {
+          "tz_sw": true
+        },
+        "range_description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "intro_text": {
@@ -539,8 +585,12 @@
       "parent_text": false,
       "question": "How many times in the past month did you discipline your teen with a push or grab?",
       "_translations": {
-        "question": {},
-        "range_description": {}
+        "question": {
+          "tz_sw": true
+        },
+        "range_description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question": {
@@ -569,9 +619,15 @@
       "parent_text_question": "-",
       "intro_text": "It’s hard to keep track of our teenagers when they are becoming more independent.",
       "_translations": {
-        "intro_text": {},
-        "question": {},
-        "range_description": {}
+        "intro_text": {
+          "tz_sw": true
+        },
+        "question": {
+          "tz_sw": true
+        },
+        "range_description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "intro_text": {
@@ -603,8 +659,12 @@
       "parent_text": false,
       "question": "How many times in the past month did your teen go out with friends you don’t know?",
       "_translations": {
-        "question": {},
-        "range_description": {}
+        "question": {
+          "tz_sw": true
+        },
+        "range_description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question": {
@@ -632,8 +692,12 @@
       "parent_text": false,
       "question": "How many times in the past month did your teen not let you know where they were going?",
       "_translations": {
-        "question": {},
-        "range_description": {}
+        "question": {
+          "tz_sw": true
+        },
+        "range_description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question": {
@@ -660,8 +724,12 @@
       "improvement (condition on diff to get fb_better)": ">",
       "intro_text": "Sometimes teenagers are hard to talk to.",
       "_translations": {
-        "intro_text": {},
-        "question": {}
+        "intro_text": {
+          "tz_sw": true
+        },
+        "question": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "intro_text": {
@@ -689,9 +757,15 @@
       "parent_text": false,
       "intro_text": "Well done for talking to your teen about keeping safe.",
       "_translations": {
-        "intro_text": {},
-        "question": {},
-        "range_description": {}
+        "intro_text": {
+          "tz_sw": true
+        },
+        "question": {
+          "tz_sw": true
+        },
+        "range_description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "intro_text": {
@@ -721,8 +795,12 @@
       "parent_text": false,
       "question": "How many times in the past month has your teen walked home alone, taken a lift with someone they don’t know or hung out in a place that made you worried for their safety?",
       "_translations": {
-        "question": {},
-        "range_description": {}
+        "question": {
+          "tz_sw": true
+        },
+        "range_description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question": {
