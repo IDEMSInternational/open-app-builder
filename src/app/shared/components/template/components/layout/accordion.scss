@@ -1,6 +1,9 @@
 @use "/src/theme/mixins";
 
-$background-highlight: var(--accordion-background-highlight, var(--gradient-primary-light-vertical));
+$background-highlight: var(
+  --accordion-background-highlight,
+  var(--gradient-primary-light-vertical)
+);
 
 .workshops-accordion {
   position: relative;
