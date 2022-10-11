@@ -19,23 +19,7 @@ import { Device } from "@capacitor/device";
     </plh-template-component>
     <ion-button (click)="submit()">{{ button_text }}</ion-button>
   </div>`,
-  styles: [
-    `
-      ion-button {
-        font-size: 25px;
-        font-weight: 500;
-        color: var(--ion-color-primary-contrast);
-        text-transform: none;
-        white-space: pre-line;
-        min-height: 71px;
-        padding: var(--regular-margin) var(--regular-padding) 0;
-        --border-radius: 15px;
-        --box-shadow: var(--ion-btn-dark-box-shadow);
-        min-width: 100%;
-        --background: var(--ion-btn-primary);
-      }
-    `,
-  ],
+  styleUrls: ["./form.scss"],
 })
 export class FormComponent extends TemplateBaseComponent implements OnInit {
   @Input() inputRow: FlowTypes.TemplateRow;

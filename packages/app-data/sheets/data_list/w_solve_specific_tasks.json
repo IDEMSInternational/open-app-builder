@@ -1,0 +1,54 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_solve_specific_tasks",
+  "status": "released",
+  "data_list_name": "w_solve_specific_tasks",
+  "rows": [
+    {
+      "id": "read_1",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "template": "w_solve_read_1"
+    },
+    {
+      "id": "read_2",
+      "individual": true,
+      "together": true,
+      "priority": 71,
+      "template": "w_solve_read_2",
+      "subtask_group": "read_2"
+    },
+    {
+      "id": "think",
+      "individual": true,
+      "together": false,
+      "priority": 72,
+      "template": "w_solve_think",
+      "subtask_group": "read_2"
+    },
+    {
+      "id": "talk",
+      "individual": false,
+      "together": true,
+      "priority": 73,
+      "template": "w_solve_talk",
+      "subtask_group": "read_2"
+    },
+    {
+      "id": "learn",
+      "individual": true,
+      "together": true,
+      "priority": 74,
+      "template": "w_solve_learn"
+    },
+    {
+      "id": "try",
+      "individual": false,
+      "together": true,
+      "priority": 75,
+      "template": "w_solve_try"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
+}
