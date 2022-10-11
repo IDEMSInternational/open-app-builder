@@ -764,6 +764,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 3.9,
     md5Checksum: "07d5cec72df949bb4b0f9d92431e3908",
   },
+  "plh_images/habits/relax_chair.gif": {
+    size_kb: 207.8,
+    md5Checksum: "ccecd1d6b280fa6e10b3964c61864f60",
+  },
   "plh_images/home_screen/parent_centre.svg": {
     size_kb: 5.7,
     md5Checksum: "aeb66979a24176e0ff745925b58e84c9",
@@ -807,6 +811,14 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/icons/bell_white.svg": {
     size_kb: 1.2,
     md5Checksum: "bd1a62fc8c4d3cbd2b3ff5f303d99903",
+  },
+  "plh_images/icons/book.svg": {
+    size_kb: 0.7,
+    md5Checksum: "1b287c85e36a3375196a2a6ee7a0bca3",
+  },
+  "plh_images/icons/book_white.svg": {
+    size_kb: 0.7,
+    md5Checksum: "12c477faa57812b7a16bc6a0d0424c06",
   },
   "plh_images/icons/cogwheel.svg": {
     size_kb: 1.7,
@@ -860,6 +872,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 0.6,
     md5Checksum: "870d6d4afc2a52aaa37e01460f5efc45",
   },
+  "plh_images/icons/house.svg": {
+    size_kb: 0.6,
+    md5Checksum: "9d7892c6dd14f51c1b51e303e8e87933",
+  },
   "plh_images/icons/house_circle.svg": {
     size_kb: 1.4,
     md5Checksum: "5ce770fe6db43c80a07cb0ca583e0300",
@@ -871,6 +887,10 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/icons/house_heart_white.svg": {
     size_kb: 1.1,
     md5Checksum: "1da725ad4fbf5359351ad80e0d9c8046",
+  },
+  "plh_images/icons/house_white.svg": {
+    size_kb: 0.6,
+    md5Checksum: "f65ea96d7ff53e9bed8613e7f2fe3302",
   },
   "plh_images/icons/hug_heart.svg": {
     size_kb: 2.1,
@@ -948,6 +968,14 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 0.9,
     md5Checksum: "628f519c6ce2529b71d6ec00beaddc99",
   },
+  "plh_images/icons/parent_child.svg": {
+    size_kb: 2,
+    md5Checksum: "99747503b2023a185d20be8e5c7d8076",
+  },
+  "plh_images/icons/parent_child_white.svg": {
+    size_kb: 2,
+    md5Checksum: "5b0134d8d260ac9b7455aad15db462f8",
+  },
   "plh_images/icons/parent_heart.svg": {
     size_kb: 0.9,
     md5Checksum: "45a1616c608c4ef9c3517d78bfb714d4",
@@ -975,6 +1003,14 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/icons/pause_white.svg": {
     size_kb: 0.7,
     md5Checksum: "f6989826fb94a865281b035fa155689d",
+  },
+  "plh_images/icons/person.svg": {
+    size_kb: 0.5,
+    md5Checksum: "444b0881c42e0de9f28495b05de5db0c",
+  },
+  "plh_images/icons/person_white.svg": {
+    size_kb: 0.5,
+    md5Checksum: "33f7d11059237e08c71f3266a622c864",
   },
   "plh_images/icons/phone_heart.svg": {
     size_kb: 1.3,
@@ -1077,40 +1113,40 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "b2baf969abbe27383327d1d82f6a644c",
   },
   "plh_images/logos/cwb.png": {
-    size_kb: 28.3,
-    md5Checksum: "4813caff2be00e158e6f0d3fec5df6a2",
+    size_kb: 56.3,
+    md5Checksum: "96ca4be5f77d2647764c06c51bc5411f",
   },
   "plh_images/logos/erc.png": {
-    size_kb: 63.3,
-    md5Checksum: "4cd542dfa425f700924d1b823d047573",
+    size_kb: 96.4,
+    md5Checksum: "55f8f51b3463f962b3689b1dd7805d49",
   },
   "plh_images/logos/gcrf.png": {
-    size_kb: 27.2,
-    md5Checksum: "2df9eff2c10512be23db96dda5f8b712",
+    size_kb: 56.4,
+    md5Checksum: "68a32997af07aa3c721d318f7fa90050",
   },
   "plh_images/logos/gisp.png": {
-    size_kb: 34.3,
-    md5Checksum: "5ce0882cda6ff387f3bb664d9cb75a1d",
+    size_kb: 53.9,
+    md5Checksum: "413bbb0015d29c1201961bfbd5b05e09",
   },
   "plh_images/logos/ics.png": {
-    size_kb: 317.2,
-    md5Checksum: "99446a9409eafa3ee111b9c6b7f650d5",
+    size_kb: 153,
+    md5Checksum: "0cf239a90bf039f26613d4386db43a66",
   },
   "plh_images/logos/idems.png": {
-    size_kb: 17.3,
-    md5Checksum: "963f0b32ea26bd9fdfddf47f0d42f340",
+    size_kb: 39.4,
+    md5Checksum: "7a9836027993f71cbd19a871e16fe450",
   },
   "plh_images/logos/lego_foundation.png": {
-    size_kb: 14.3,
-    md5Checksum: "7fcc41d9c3df90a74bfd0e05e8acc4e5",
+    size_kb: 39.3,
+    md5Checksum: "a1de5d3618c53d5a7016f2b67e4819bf",
   },
   "plh_images/logos/nimr.png": {
-    size_kb: 287.4,
-    md5Checksum: "fd69a0b61a447efcae27cbaa0f74d79f",
+    size_kb: 222.6,
+    md5Checksum: "4937f247b3e71fa05eb9885beb40c66f",
   },
   "plh_images/logos/oak_foundation.png": {
-    size_kb: 21.7,
-    md5Checksum: "33c25310845e91c8b6034ee6c9113682",
+    size_kb: 48.2,
+    md5Checksum: "091e9aafa6eec611dd6717ee2583cfcb",
   },
   "plh_images/logos/old/end_violence_against_children.png": {
     size_kb: 21.4,
@@ -1124,41 +1160,49 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 14.3,
     md5Checksum: "97c52b2da9fc03641461ce8aa0174f36",
   },
+  "plh_images/logos/oxford.png": {
+    size_kb: 71.2,
+    md5Checksum: "0009af508ce7eb45c677828c7f9e4395",
+  },
   "plh_images/logos/plh.png": {
-    size_kb: 66.5,
-    md5Checksum: "4cc18480bb1e712fa397cbe2ff130021",
+    size_kb: 163.3,
+    md5Checksum: "63e24b7c8b6f77e1bb13546059203075",
   },
   "plh_images/logos/tz_government.png": {
-    size_kb: 416.1,
-    md5Checksum: "c32f205f332c4f9f10b6a256d1ea873a",
+    size_kb: 443.2,
+    md5Checksum: "38351450d8ecaa1f131635937750b03f",
   },
   "plh_images/logos/uct.png": {
-    size_kb: 283.7,
-    md5Checksum: "1f2656a3271ef01c5e04a8460bf9e841",
+    size_kb: 131.5,
+    md5Checksum: "00601e7a7eb016aa58cfd841d55219ab",
   },
   "plh_images/logos/ukri.png": {
-    size_kb: 17,
-    md5Checksum: "a4122de03ae40177cd218dd37abb3b2d",
+    size_kb: 37.6,
+    md5Checksum: "321908826b3a1465ac61d4d4d80dfa3b",
   },
   "plh_images/logos/unicef.png": {
-    size_kb: 29.9,
-    md5Checksum: "0c9fb229c82fd604b1ad9b23a64804e8",
+    size_kb: 49.3,
+    md5Checksum: "893d4022f7d8ff914c4d5917efaf0356",
   },
   "plh_images/logos/university_of_oxford.png": {
-    size_kb: 42,
-    md5Checksum: "a738b0e0c6d5601cac1d4ea299ee4281",
+    size_kb: 71.2,
+    md5Checksum: "0009af508ce7eb45c677828c7f9e4395",
   },
   "plh_images/logos/usaid.png": {
-    size_kb: 38.3,
-    md5Checksum: "fc3fbd8224a815dd75f89348fbf79dba",
+    size_kb: 68.7,
+    md5Checksum: "7ba000baf996668a493b0af9a4bfa698",
+  },
+  "plh_images/logos/wellspring.png": {
+    size_kb: 65.4,
+    md5Checksum: "e9e4f5d3205a0befe50dc8f219f65cb2",
   },
   "plh_images/logos/who.png": {
-    size_kb: 42.9,
-    md5Checksum: "f05f8934b9b7f5565c2d9a589086de96",
+    size_kb: 108,
+    md5Checksum: "297544696aaa8a242ac36ffd19f06849",
   },
   "plh_images/logos/za_dsd.png": {
-    size_kb: 80.9,
-    md5Checksum: "8a4c8ce58e2fe176318107ce599277ec",
+    size_kb: 112.5,
+    md5Checksum: "186e0729316e0bad64ede2908da972d4",
   },
   "plh_images/parent_centre/ask.svg": {
     size_kb: 1,
@@ -1312,38 +1356,6 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 1.8,
     md5Checksum: "1843c40d0c0b2f2116ca440e93578db3",
   },
-  "plh_images/stickers/faces_yellow/happier.svg": {
-    size_kb: 0.5,
-    md5Checksum: "0ff00ec4309554a1a0132a20271a8ecd",
-  },
-  "plh_images/stickers/faces_yellow/happiest.svg": {
-    size_kb: 0.6,
-    md5Checksum: "58e883ae90549e1e46f462e3be6157eb",
-  },
-  "plh_images/stickers/faces_yellow/happy.svg": {
-    size_kb: 0.5,
-    md5Checksum: "2405a8c3be43542e483ef206f0fa694b",
-  },
-  "plh_images/stickers/faces_yellow/neutral.svg": {
-    size_kb: 0.4,
-    md5Checksum: "a80a83665a9f57afd7e13c20580a15e7",
-  },
-  "plh_images/stickers/faces_yellow/sad.svg": {
-    size_kb: 0.5,
-    md5Checksum: "93b584ea16291508621e1d4d55eb3b97",
-  },
-  "plh_images/stickers/faces_yellow/sadder.svg": {
-    size_kb: 0.5,
-    md5Checksum: "e4ede97fa176d67ee98630cd70eb8405",
-  },
-  "plh_images/stickers/faces_yellow/saddest.svg": {
-    size_kb: 0.5,
-    md5Checksum: "21ae58bb86a69ebf61edc706acb96857",
-  },
-  "plh_images/stickers/sticker01.jpg": {
-    size_kb: 138.3,
-    md5Checksum: "7a0b28b310b289f09ac55160853711c2",
-  },
   "plh_images/survey/welcome/busy.svg": {
     size_kb: 22.5,
     md5Checksum: "a29aa4d7d1cd62b7dec1c970fe00efac",
@@ -1476,14 +1488,6 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 6.9,
     md5Checksum: "404cd530d1d497ad8d89d9d062482e1d",
   },
-  "plh_images/workshops/w_consequence/read_3/Calm conseqences_new image 1.svg": {
-    size_kb: 6.6,
-    md5Checksum: "139c50b1168a0c6ce75ba56a604e6db3",
-  },
-  "plh_images/workshops/w_consequence/read_3/Calm conseqences_new image 2.svg": {
-    size_kb: 5.5,
-    md5Checksum: "9a22f64d6aa10290e9ed7b7e2e9131cf",
-  },
   "plh_images/workshops/w_consequence/read_3/slide_1.svg": {
     size_kb: 7,
     md5Checksum: "366d250ef5c4c9f4de01037a3d02158b",
@@ -1501,12 +1505,12 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "70c491f40874abeb99e3e66ec3bf516b",
   },
   "plh_images/workshops/w_consequence/read_3/slide_5.svg": {
-    size_kb: 7.4,
-    md5Checksum: "98bc21fc0ae64ea8aabc03eaf9cd1441",
+    size_kb: 6.6,
+    md5Checksum: "139c50b1168a0c6ce75ba56a604e6db3",
   },
   "plh_images/workshops/w_consequence/read_3/slide_6.svg": {
-    size_kb: 5.6,
-    md5Checksum: "560d12de275c234c193b657be66ab286",
+    size_kb: 5.5,
+    md5Checksum: "9a22f64d6aa10290e9ed7b7e2e9131cf",
   },
   "plh_images/workshops/w_consequence/read_3/slide_7.svg": {
     size_kb: 5.5,
@@ -1813,12 +1817,12 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "c72385f05bd96def84ea4d5fa6896397",
   },
   "plh_images/workshops/w_safe/learn/slide_2.svg": {
-    size_kb: 1744.2,
-    md5Checksum: "62b09f506cc9ee746ad103044cf149b0",
-  },
-  "plh_images/workshops/w_safe/learn/slide_3.svg": {
     size_kb: 1378.6,
     md5Checksum: "b1b50acd3c0d1ad56daa5ffe7b3f6741",
+  },
+  "plh_images/workshops/w_safe/learn/slide_3.svg": {
+    size_kb: 1744.2,
+    md5Checksum: "62b09f506cc9ee746ad103044cf149b0",
   },
   "plh_images/workshops/w_safe/learn/slide_4.svg": {
     size_kb: 821.6,
@@ -1944,18 +1948,6 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 7.1,
     md5Checksum: "52f505b176de78c901c5eab7a116d830",
   },
-  "plh_images/workshops/w_solve/read_3/slide_1.svg": {
-    size_kb: 6.6,
-    md5Checksum: "e413d37ea5a999964f29d0c156baae87",
-  },
-  "plh_images/workshops/w_solve/read_3/slide_2.svg": {
-    size_kb: 7.5,
-    md5Checksum: "e9a7e9234f1cae498ca65e2a049f551f",
-  },
-  "plh_images/workshops/w_solve/read_3/slide_3.svg": {
-    size_kb: 7.5,
-    md5Checksum: "e9a7e9234f1cae498ca65e2a049f551f",
-  },
   "plh_images/workshops/w_solve/tools/tool_1.svg": {
     size_kb: 23.9,
     md5Checksum: "2146c95f6b02a306a68525a3cf632187",
@@ -1967,10 +1959,6 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshops/w_solve/tools/tool_3.svg": {
     size_kb: 21.9,
     md5Checksum: "75d3c84ac20906956e7df9d0d3e4dc1e",
-  },
-  "plh_images/workshops/w_solve/tools/tool_3_alternative.svg": {
-    size_kb: 24.3,
-    md5Checksum: "41610c268611c9f961bb596a87864428",
   },
   "plh_images/workshops/w_solve/tools/tool_4.svg": {
     size_kb: 18,
@@ -2175,6 +2163,10 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshop_modes/guide_1/write.svg": {
     size_kb: 3.8,
     md5Checksum: "d7859ca5ef124a376a5cf6a638ee3623",
+  },
+  "plh_images/workshop_modes/guide_2/breathe.svg": {
+    size_kb: 2.3,
+    md5Checksum: "284285870cd683c71190ab4004cf4d70",
   },
   "plh_images/workshop_modes/guide_2/cup.svg": {
     size_kb: 5.8,

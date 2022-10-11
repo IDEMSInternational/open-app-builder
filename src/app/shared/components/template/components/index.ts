@@ -127,7 +127,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nested_properties: null as any,
   set_field: null as any,
   set_local: null as any,
-  set_theme: null as any,
   combo_box: TmplComboBoxComponent,
   set_default: null as any,
   update_action_list: null as any,

@@ -1,3 +1,6 @@
+$background-primary: var(--button-background-primary, var(--gradient-primary-mid-vertical));
+$background-secondary: var(--button-background-secondary, var(--gradient-secondary-mid-vertical));
+
 :host {
   width: 100%;
   ion-button {
@@ -17,7 +20,7 @@ ion-button {
   min-height: var(--buttons-min-height);
   padding: var(--regular-margin) var(--tiny-padding) 0;
   --border-radius: var(--ion-border-radius-standard);
-  --box-shadow: var(--ion-btn-dark-box-shadow);
+  --box-shadow: var(--ion-default-box-shadow);
   display: flex;
   width: fit-content;
   margin: 0 auto;
@@ -40,29 +43,29 @@ ion-button[data-param-style~="nested_color"] {
 /// TODO CC-2021-12-19 - the code below should likely be refactored to param selectors and moved
 
 .navigation {
-  --background: var(--ion-btn-secondary);
+  --background: #{$background-secondary};
 }
 
 .information {
-  --background: var(--ion-btn-primary);
+  --background: #{$background-primary};
 }
 
 .make_me_smile {
   min-height: 80px !important;
   max-width: fit-content;
-  --background: var(--ion-btn-primary);
+  --background: #{$background-primary};
   color: var(--ion-color-primary-contrast);
 }
 
 .get_me_going {
   min-height: 80px !important;
   max-width: fit-content;
-  --background: var(--ion-btn-secondary);
+  --background: #{$background-secondary};
   color: var(--ion-color-primary-contrast);
 }
 
 .options {
-  --background: var(--ion-btn-primary);
+  --background: #{$background-primary};
   color: var(--ion-color-primary-contrast);
 }
 

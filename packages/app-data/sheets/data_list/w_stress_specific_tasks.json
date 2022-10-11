@@ -1,0 +1,47 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_stress_specific_tasks",
+  "status": "released",
+  "data_list_name": "w_stress_specific_tasks",
+  "rows": [
+    {
+      "id": "read_1",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "template": "w_stress_read_1",
+      "subtask_group": "read_1"
+    },
+    {
+      "id": "question",
+      "individual": true,
+      "together": false,
+      "priority": 12,
+      "template": "w_stress_question_1",
+      "subtask_group": "read_1"
+    },
+    {
+      "id": "talk",
+      "individual": false,
+      "together": true,
+      "priority": 12,
+      "template": "w_stress_talk_1",
+      "subtask_group": "read_1"
+    },
+    {
+      "id": "read_2",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "template": "w_stress_read_2"
+    },
+    {
+      "id": "read_3",
+      "individual": true,
+      "together": true,
+      "priority": 14,
+      "template": "w_stress_read_3"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
+}
