@@ -25,9 +25,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "description": {
-          "tz_sw": true
-        },
+        "description": {},
         "mark_text": {
           "za_af": true,
           "za_st": true,
@@ -86,9 +84,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "description": {
-          "tz_sw": true
-        },
+        "description": {},
         "mark_text": {
           "za_af": true,
           "za_st": true,
@@ -147,9 +143,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "description": {
-          "tz_sw": true
-        },
+        "description": {},
         "mark_text": {
           "za_af": true,
           "za_st": true,
@@ -208,9 +202,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "description": {
-          "tz_sw": true
-        },
+        "description": {},
         "mark_text": {
           "za_af": true,
           "za_st": true,
@@ -269,9 +261,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "description": {
-          "tz_sw": true
-        },
+        "description": {},
         "mark_text": {
           "za_af": true,
           "za_st": true,
@@ -316,15 +306,9 @@
       "lottie_asset": "plh_lottie/habits/habit_instruct_positively.json",
       "title": "Positive instructions",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
+        "title": {},
+        "in_text_title": {},
+        "description": {},
         "mark_text": {
           "za_af": true,
           "za_st": true,
@@ -369,15 +353,9 @@
       "lottie_asset": "plh_lottie/habits/habit_breathe.json",
       "title": "Respond calmly",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
+        "title": {},
+        "in_text_title": {},
+        "description": {},
         "mark_text": {
           "za_af": true,
           "za_st": true,
@@ -436,9 +414,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "description": {
-          "tz_sw": true
-        },
+        "description": {},
         "mark_text": {
           "za_af": true,
           "za_st": true,
@@ -497,9 +473,7 @@
           "za_xh": true,
           "za_zu": true
         },
-        "description": {
-          "tz_sw": true
-        },
+        "description": {},
         "mark_text": {
           "za_af": true,
           "za_st": true,
@@ -544,15 +518,9 @@
       "lottie_asset": "plh_lottie/habits/habit_safe.json",
       "title": "Keep your teen safe",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
+        "title": {},
+        "in_text_title": {},
+        "description": {},
         "mark_text": {
           "za_af": true,
           "za_st": true,

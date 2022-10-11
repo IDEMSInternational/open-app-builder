@@ -8,9 +8,7 @@
       "name": "answer_1",
       "value": "The man in the car was pressuring @global.w_safe_teen_girl_1 with gifts",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_1",
@@ -35,7 +33,6 @@
       "value": "@global.w_safe_teen_girl_1's friend was encouraging her",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -66,7 +63,6 @@
       "value": "Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -97,7 +93,6 @@
       "value": "Many girls in our communities get pregnant or catch HIV from older men",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -113,7 +108,6 @@
       "value": "There were no other trusted adults to advise @global.w_safe_teen_girl_1",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

@@ -64,9 +64,7 @@
       "name": "workshops",
       "value": "workshops",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       }
     },
     {
@@ -74,9 +72,7 @@
       "name": "workshop",
       "value": "workshop",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       }
     },
     {

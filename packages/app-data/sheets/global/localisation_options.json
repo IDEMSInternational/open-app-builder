@@ -17,9 +17,7 @@
       "name": "whatsapp",
       "value": "WhatsApp",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "exclude_from_translation": true
     },
