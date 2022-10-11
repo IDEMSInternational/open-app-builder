@@ -35,12 +35,7 @@
       "value": "@global.w_safe_teen_girl_1's friend was encouraging her",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",
@@ -66,12 +61,7 @@
       "value": "Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",
@@ -97,12 +87,7 @@
       "value": "Many girls in our communities get pregnant or catch HIV from older men",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",
@@ -113,12 +98,7 @@
       "value": "There were no other trusted adults to advise @global.w_safe_teen_girl_1",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",

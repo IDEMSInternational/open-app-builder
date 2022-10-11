@@ -36,47 +36,7 @@
           },
           "exclude_from_translation": true,
           "type": "set_variable",
-<<<<<<< HEAD
-          "_nested_name": "box_slider.question_id"
-        },
-        {
-          "name": "relevant_workshop",
-          "value": "w_stress",
-          "_translations": {
-            "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "box_slider.relevant_workshop"
-        },
-        {
-          "name": "image_src",
-          "value": "plh_images/survey/welcome/guide_2_argument.svg",
-          "_translations": {
-            "value": {}
-          },
-          "hidden": false,
-          "type": "set_variable",
-          "_nested_name": "box_slider.image_src"
-        },
-        {
-          "name": "unlock_when_less",
-          "value": false,
-          "type": "set_variable",
-          "_nested_name": "box_slider.unlock_when_less"
-        },
-        {
-          "name": "reply_less",
-          "value": "Well done. Brain science shows that controlling your anger improves your teen’s brain development. Be proud of yourself.",
-          "_translations": {
-            "value": {
-              "tz_sw": true
-            }
-          },
-          "type": "set_variable",
-          "_nested_name": "box_slider.reply_less"
-=======
           "_nested_name": "box_survey_question.question_group_id"
->>>>>>> ce94196e6b5a5bdefae86e45a9e434fc75cf3791
         }
       ],
       "_nested_name": "box_survey_question"

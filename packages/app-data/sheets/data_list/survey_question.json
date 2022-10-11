@@ -85,12 +85,7 @@
       "intro_text": "In our busy lives it’s hard to focus on the positive.",
       "_translations": {
         "intro_text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         },
         "question": {
           "tz_sw": true
@@ -186,12 +181,7 @@
           "tz_sw": true
         },
         "range_description": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -226,12 +216,7 @@
           "tz_sw": true
         },
         "range_description": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -262,12 +247,7 @@
           "tz_sw": true
         },
         "range_description": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -312,12 +292,7 @@
       "intro_text": "Sometimes our children make us really upset.",
       "_translations": {
         "intro_text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         },
         "question": {
           "tz_sw": true
@@ -431,20 +406,10 @@
       "question": "How many days in the past month (30 days) did you run out of money to pay for food?",
       "_translations": {
         "question": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         },
         "range_description": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -541,12 +506,7 @@
       "intro_text": "It is so stressful when children misbehave.",
       "_translations": {
         "intro_text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         },
         "question": {
           "tz_sw": true
