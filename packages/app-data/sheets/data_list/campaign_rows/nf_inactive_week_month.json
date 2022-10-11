@@ -27,7 +27,9 @@
       ],
       "text": "Parenting can be hard, but @global.parent_app is here to help you win. Tap here to find practical tips for you and your family.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -58,7 +60,9 @@
       ],
       "text": "Do you ever feel stressed as a parent? @global.parent_app is here to help you feel more calm and focused. Tap here to find out more.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -89,7 +93,9 @@
       ],
       "text": "Millions of parents found the tips in @global.parent_app useful, and you can access them too. Tap here to explore.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -120,7 +126,9 @@
       ],
       "text": "Need some help with your teen's behaviour? @global.parent_app is here for you. Tap here to check it out.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -151,7 +159,9 @@
       ],
       "text": "Want to invest in yourself and your family? 1 minute in @global.parent_app already makes a difference! Tap here to find out more.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -182,7 +192,9 @@
       ],
       "text": "Want to set your teen and family up for success? Get practical tips and more in @global.parent_app.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -213,7 +225,9 @@
       ],
       "text": "Remember to take care of yourself too - it will help you AND your family! Get your tips and more in @global.parent_app.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -244,7 +258,9 @@
       ],
       "text": "@global.parent_app is here to support you. Tap here and check it out now.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -275,7 +291,9 @@
       ],
       "text": "Do you want to enjoy family life more? Tap here and find practical tips in @global.parent_app.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -306,7 +324,9 @@
       ],
       "text": "You are not alone! @global.parent_app has lots of tips and activities that will help you and your family. Tap here to explore.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -337,7 +357,9 @@
       ],
       "text": "We all need a break sometimes - and you can get one right now in @global.parent_app! Tap here to find relaxation activities and more.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -368,7 +390,9 @@
       ],
       "text": "Do you have five minutes to learn about parenting? @global.parent_app is here to help!",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -399,7 +423,9 @@
       ],
       "text": "Looking for help with your teen? @global.parent_app is here for you!",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -430,7 +456,9 @@
       ],
       "text": "It’s time to learn about parenting, use @global.parent_app now for useful tips for your family.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -461,7 +489,9 @@
       ],
       "text": "Parents are the best! Tap here to find tips to help you with your teen.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -492,7 +522,9 @@
       ],
       "text": "Teens can turn your day upside down. Let @global.parent_app help you create a happy and peaceful home.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -523,7 +555,9 @@
       ],
       "text": "Family is everything. @global.parent_app is here with many tips and activities to help you and your family.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -554,7 +588,9 @@
       ],
       "text": "Spending 1 minute learning about parenting makes a world of difference. Jump back into @global.parent_app here.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -585,7 +621,9 @@
       ],
       "text": "You are doing amazing, keep up the good work. @global.parent_app is full of tips on how to look after yourself and your family.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -616,7 +654,9 @@
       ],
       "text": "Wow, your teen is so lucky to have you as a parent. Learn more about parenting your teen with @global.parent_app.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
