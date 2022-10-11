@@ -13,8 +13,12 @@
       "unlock_greater_equal": false,
       "reply_less": "Spending time with your teen is not always easy. You’ll find ideas about how to do this in the @data.workshop.w_1on1.in_text_title. You can also find information in @data.parent_centre.my_tips.location_text.",
       "_translations": {
-        "reply_less": {},
-        "reply_greater_equal": {}
+        "reply_less": {
+          "tz_sw": true
+        },
+        "reply_greater_equal": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "reply_less": {
@@ -36,8 +40,12 @@
       "unlock_greater_equal": false,
       "reply_less": "It’s not always easy to praise. You’ll learn more about this skill in the @data.workshop.w_praise.in_text_title. If you want help right away, you can find it in @data.parent_centre.my_tips.location_text.",
       "_translations": {
-        "reply_less": {},
-        "reply_greater_equal": {}
+        "reply_less": {
+          "tz_sw": true
+        },
+        "reply_greater_equal": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "reply_less": {
@@ -59,8 +67,12 @@
       "unlock_greater_equal": true,
       "reply_less": "Great job managing your stress. You'll learn more about how to relax, recognise and reward yourself in the @data.workshop.w_self_care.in_text_title.",
       "_translations": {
-        "reply_less": {},
-        "reply_greater_equal": {}
+        "reply_less": {
+          "tz_sw": true
+        },
+        "reply_greater_equal": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "reply_less": {
@@ -80,7 +92,9 @@
       "unlock_greater_equal": false,
       "reply_universal": "Thank you for answering these questions. When life gets difficult, it’s easy to forget about the good. You are the best parent your teen could have!",
       "_translations": {
-        "reply_universal": {}
+        "reply_universal": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "reply_universal": {
@@ -99,8 +113,12 @@
       "unlock_greater_equal": true,
       "reply_less": "Well done for controlling your anger. You'll learn more about how to respond calmly in the @data.workshop.w_self_care.in_text_title.",
       "_translations": {
-        "reply_less": {},
-        "reply_greater_equal": {}
+        "reply_less": {
+          "tz_sw": true
+        },
+        "reply_greater_equal": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "reply_less": {
@@ -121,8 +139,12 @@
       "unlock_greater_equal": true,
       "reply_less": "Money stress can affect any family. You can learn more about budgeting in the @data.workshop.w_money.in_text_title to help with money stress and reduce money-related arguments.",
       "_translations": {
-        "reply_less": {},
-        "reply_greater_equal": {}
+        "reply_less": {
+          "tz_sw": true
+        },
+        "reply_greater_equal": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "reply_less": {
@@ -142,7 +164,9 @@
       "unlock_greater_equal": false,
       "reply_universal": "Losing loved ones is hard. You can find ways to help you and your teen cope with grief in @data.parent_centre.bereavement.location_text.",
       "_translations": {
-        "reply_universal": {}
+        "reply_universal": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "reply_universal": {
@@ -168,7 +192,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_greater_equal": {}
+        "reply_greater_equal": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "reply_less": {
@@ -191,8 +217,12 @@
       "unlock_greater_equal": true,
       "reply_less": "Great job keeping your teen safe. You’ll learn more about this in the @data.workshop.w_safe.in_text_title.",
       "_translations": {
-        "reply_less": {},
-        "reply_greater_equal": {}
+        "reply_less": {
+          "tz_sw": true
+        },
+        "reply_greater_equal": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "reply_less": {
@@ -213,7 +243,9 @@
       "unlock_greater_equal": false,
       "reply_universal": "It can be difficult to know how to keep our teens safe. We often feel powerless as parents. You can get essential tools to help with safety planning in @data.parent_centre.my_tips.location_text at any time.",
       "_translations": {
-        "reply_universal": {}
+        "reply_universal": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "reply_universal": {
@@ -230,7 +262,9 @@
       "unlock_greater_equal": false,
       "reply_universal": "It can be hard to know what your teen is doing and parents worry about their safety. You can get essential tools to help with safety planning in @data.parent_centre.my_tips.location_text at any time.",
       "_translations": {
-        "reply_universal": {}
+        "reply_universal": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "reply_universal": {

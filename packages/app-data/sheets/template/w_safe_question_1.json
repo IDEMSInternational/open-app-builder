@@ -8,7 +8,9 @@
       "name": "answer_1",
       "value": "The man in the car was pressuring @global.w_safe_teen_girl_1 with gifts",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "answer_1",
