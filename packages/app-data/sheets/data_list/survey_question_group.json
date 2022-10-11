@@ -1,0 +1,5187 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "survey_question_group",
+  "status": "released",
+  "data_list_name": "survey_question_group",
+  "rows": [
+    {
+      "id": "ppf",
+      "outcome": "Positive parenting (fun)",
+      "workshop_1": "w_1on1",
+      "unlock_universal": false,
+      "unlock_less": true,
+      "unlock_greater_equal": false,
+      "reply_less": "Spending time with your teen is not always easy. You’ll find ideas about how to do this in the @data.workshop.w_1on1.in_text_title. You can also find information in @data.parent_centre.my_tips.location_text.",
+      "_translations": {
+        "reply_less": {
+          "tz_sw": true
+        },
+        "reply_greater_equal": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "reply_less": {
+          "eng": "Spending time with your teen is not always easy. You’ll find ideas about how to do this in the @data.workshop.w_1on1.in_text_title. You can also find information in @data.parent_centre.my_tips.location_text."
+        },
+        "reply_greater_equal": {
+          "eng": "Well done! You’ll find more ideas about how to do this in  the @data.workshop.w_1on1.in_text_title."
+        }
+      },
+      "reply_greater_equal": "Well done! You’ll find more ideas about how to do this in  the @data.workshop.w_1on1.in_text_title."
+    },
+    {
+      "id": "ppp",
+      "outcome": "Positive parenting (praise)",
+      "image_asset": "plh_images/survey/welcome/guide_1_frustrated.svg",
+      "workshop_1": "w_praise",
+      "unlock_universal": false,
+      "unlock_less": true,
+      "unlock_greater_equal": false,
+      "reply_less": "It’s not always easy to praise. You’ll learn more about this skill in the @data.workshop.w_praise.in_text_title. If you want help right away, you can find it in @data.parent_centre.my_tips.location_text.",
+      "_translations": {
+        "reply_less": {
+          "tz_sw": true
+        },
+        "reply_greater_equal": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "reply_less": {
+          "eng": "It’s not always easy to praise. You’ll learn more about this skill in the @data.workshop.w_praise.in_text_title. If you want help right away, you can find it in @data.parent_centre.my_tips.location_text."
+        },
+        "reply_greater_equal": {
+          "eng": "Wonderful that you are praising your teen! This helps them feel valued."
+        }
+      },
+      "reply_greater_equal": "Wonderful that you are praising your teen! This helps them feel valued."
+    },
+    {
+      "id": "pst",
+      "outcome": "Parenting stress",
+      "workshop_1": "w_self_care",
+      "workshop_2": "w_stress",
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": true,
+      "reply_less": "Great job managing your stress. You'll learn more about how to relax, recognise and reward yourself in the @data.workshop.w_self_care.in_text_title.",
+      "_translations": {
+        "reply_less": {
+          "tz_sw": true
+        },
+        "reply_greater_equal": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "reply_less": {
+          "eng": "Great job managing your stress. You'll learn more about how to relax, recognise and reward yourself in the @data.workshop.w_self_care.in_text_title."
+        },
+        "reply_greater_equal": {
+          "eng": "Life can definitely get stressful. You'll learn more about taking care of yourself well in the @data.workshop.w_self_care.in_text_title and about managing stress in the @data.workshop.w_stress.in_text_title. If you want help right away, you can find it in @data.parent_centre.my_tips.location_text."
+        }
+      },
+      "reply_greater_equal": "Life can definitely get stressful. You'll learn more about taking care of yourself well in the @data.workshop.w_self_care.in_text_title and about managing stress in the @data.workshop.w_stress.in_text_title. If you want help right away, you can find it in @data.parent_centre.my_tips.location_text."
+    },
+    {
+      "id": "pde",
+      "outcome": "Parental depression",
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false,
+      "reply_universal": "Thank you for answering these questions. When life gets difficult, it’s easy to forget about the good. You are the best parent your teen could have!",
+      "_translations": {
+        "reply_universal": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "reply_universal": {
+          "eng": "Thank you for answering these questions. When life gets difficult, it’s easy to forget about the good. You are the best parent your teen could have!"
+        }
+      }
+    },
+    {
+      "id": "cme",
+      "outcome": "Child maltreatment (emotional)",
+      "image_asset": "plh_images/survey/welcome/guide_2_argument.svg",
+      "combination_method": "less_is_all_less",
+      "workshop_1": "w_consequence",
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": true,
+      "reply_less": "Well done for controlling your anger. You'll learn more about how to respond calmly in the @data.workshop.w_self_care.in_text_title.",
+      "_translations": {
+        "reply_less": {
+          "tz_sw": true
+        },
+        "reply_greater_equal": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "reply_less": {
+          "eng": "Well done for controlling your anger. You'll learn more about how to respond calmly in the @data.workshop.w_self_care.in_text_title."
+        },
+        "reply_greater_equal": {
+          "eng": "All parents use certain methods to teach children how to behave. Sometimes our children make us really angry or upset and we do things we wish we hadn’t.  You’ll learn more effective methods to respond to your teen and help them behave well in the @data.workshop.w_consequence.in_text_title. If you want help right away, you can also find it in @data.parent_centre.my_tips.location_text."
+        }
+      },
+      "reply_greater_equal": "All parents use certain methods to teach children how to behave. Sometimes our children make us really angry or upset and we do things we wish we hadn’t.  You’ll learn more effective methods to respond to your teen and help them behave well in the @data.workshop.w_consequence.in_text_title. If you want help right away, you can also find it in @data.parent_centre.my_tips.location_text."
+    },
+    {
+      "id": "fin",
+      "outcome": "Finance",
+      "workshop_1": "w_money",
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": true,
+      "reply_less": "Money stress can affect any family. You can learn more about budgeting in the @data.workshop.w_money.in_text_title to help with money stress and reduce money-related arguments.",
+      "_translations": {
+        "reply_less": {
+          "tz_sw": true
+        },
+        "reply_greater_equal": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "reply_less": {
+          "eng": "Money stress can affect any family. You can learn more about budgeting in the @data.workshop.w_money.in_text_title to help with money stress and reduce money-related arguments."
+        },
+        "reply_greater_equal": {
+          "eng": "Money stress can be overwhelming. The @data.workshop.w_money.in_text_title includes information that will help with budgeting. If you want help right away, you can also find it in @data.parent_centre.my_tips.location_text."
+        }
+      },
+      "reply_greater_equal": "Money stress can be overwhelming. The @data.workshop.w_money.in_text_title includes information that will help with budgeting. If you want help right away, you can also find it in @data.parent_centre.my_tips.location_text."
+    },
+    {
+      "id": "orp",
+      "outcome": "Orphanhood",
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false,
+      "reply_universal": "Losing loved ones is hard. You can find ways to help you and your teen cope with grief in @data.parent_centre.bereavement.location_text.",
+      "_translations": {
+        "reply_universal": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "reply_universal": {
+          "eng": "Losing loved ones is hard. You can find ways to help you and your teen cope with grief in @data.parent_centre.bereavement.location_text."
+        }
+      }
+    },
+    {
+      "id": "cmp",
+      "outcome": "Child maltreatment (physical)",
+      "combination_method": "less_is_all_less",
+      "workshop_1": "w_consequence",
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": true,
+      "reply_less": "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!",
+      "_translations": {
+        "reply_less": {
+          "tz_sw": true
+        },
+        "reply_greater_equal": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "reply_less": {
+          "eng": "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!"
+        },
+        "reply_greater_equal": {
+          "eng": "We all feel overwhelmed sometimes. The information in the @data.workshop.w_consequence.in_text_title will help you feel less stressed and show you effective ways to teach your children the right behaviour. If you want help right away, you can also find it in @data.parent_centre.my_tips.location_text."
+        }
+      },
+      "reply_greater_equal": "We all feel overwhelmed sometimes. The information in the @data.workshop.w_consequence.in_text_title will help you feel less stressed and show you effective ways to teach your children the right behaviour. If you want help right away, you can also find it in @data.parent_centre.my_tips.location_text."
+    },
+    {
+      "id": "psu",
+      "outcome": "Parental supervision",
+      "image_asset": "plh_images/survey/welcome/guide_1_nervous.svg",
+      "combination_method": "less_is_all_less",
+      "workshop_1": "w_safe",
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": true,
+      "reply_less": "Great job keeping your teen safe. You’ll learn more about this in the @data.workshop.w_safe.in_text_title.",
+      "_translations": {
+        "reply_less": {
+          "tz_sw": true
+        },
+        "reply_greater_equal": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "reply_less": {
+          "eng": "Great job keeping your teen safe. You’ll learn more about this in the @data.workshop.w_safe.in_text_title."
+        },
+        "reply_greater_equal": {
+          "eng": "Keeping track of our teens is not easy. Information in the @data.workshop.w_safe.in_text_title will support with building communication and keeping your teen safe. If you want help right away, you can also find it in @data.parent_centre.my_tips.location_text."
+        }
+      },
+      "reply_greater_equal": "Keeping track of our teens is not easy. Information in the @data.workshop.w_safe.in_text_title will support with building communication and keeping your teen safe. If you want help right away, you can also find it in @data.parent_centre.my_tips.location_text."
+    },
+    {
+      "id": "pcsap",
+      "outcome": "Parental Communication about Sexual Abuse Prevention",
+      "workshop_1": "w_safe",
+      "unlock_universal": true,
+      "unlock_less": false,
+      "unlock_greater_equal": false,
+      "reply_universal": "It can be difficult to know how to keep our teens safe. We often feel powerless as parents. You can get essential tools to help with safety planning in @data.parent_centre.my_tips.location_text at any time.",
+      "_translations": {
+        "reply_universal": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "reply_universal": {
+          "eng": "It can be difficult to know how to keep our teens safe. We often feel powerless as parents. You can get essential tools to help with safety planning in @data.parent_centre.my_tips.location_text at any time."
+        }
+      }
+    },
+    {
+      "id": "ris",
+      "outcome": "Risk",
+      "workshop_1": "w_safe",
+      "unlock_universal": true,
+      "unlock_less": false,
+      "unlock_greater_equal": false,
+      "reply_universal": "It can be hard to know what your teen is doing and parents worry about their safety. You can get essential tools to help with safety planning in @data.parent_centre.my_tips.location_text at any time.",
+      "_translations": {
+        "reply_universal": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "reply_universal": {
+          "eng": "It can be hard to know what your teen is doing and parents worry about their safety. You can get essential tools to help with safety planning in @data.parent_centre.my_tips.location_text at any time."
+        }
+      }
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    },
+    {
+      "unlock_universal": false,
+      "unlock_less": false,
+      "unlock_greater_equal": false
+    }
+  ],
+  "_xlsxPath": "global/data/survey_data_list.xlsx"
+}

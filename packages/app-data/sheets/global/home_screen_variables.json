@@ -45,6 +45,26 @@
     },
     {
       "type": "declare_global_constant",
+      "name": "workshops",
+      "value": "workshops",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "workshop",
+      "value": "workshop",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
       "name": "parent_points",
       "value": "ParentPoints",
       "_translations": {

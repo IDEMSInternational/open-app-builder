@@ -1,0 +1,37 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_celebrate_specific_tasks",
+  "status": "released",
+  "data_list_name": "w_celebrate_specific_tasks",
+  "rows": [
+    {
+      "id": "think",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "template": "w_celebrate_think"
+    },
+    {
+      "id": "survey_activity",
+      "individual": true,
+      "together": false,
+      "priority": 12,
+      "template": "w_celebrate_survey_activity"
+    },
+    {
+      "id": "talk_1",
+      "individual": false,
+      "together": true,
+      "priority": 12,
+      "template": "w_celebrate_talk_1"
+    },
+    {
+      "id": "talk_2",
+      "individual": false,
+      "together": true,
+      "priority": 71,
+      "template": "w_celebrate_talk_2"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
+}

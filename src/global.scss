@@ -37,6 +37,11 @@
 
 @import "~nouislider/distribute/nouislider.min.css";
 
+$tour-next-button-background: var(
+  --tour-next-button-background,
+  var(--gradient-secondary-mid-vertical)
+);
+
 .slide-up-modal {
   .modal-wrapper {
     max-width: 80%;
@@ -155,7 +160,7 @@
     font-size: 16px;
   }
   &.introjs-nextbutton {
-    background: var(--ion-btn-secondary);
+    background: $tour-next-button-background;
     color: var(--ion-color-primary-contrast);
     border: none;
   }

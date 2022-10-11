@@ -11,11 +11,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "default.sent",
+            "default_sent",
             true
           ],
-          "_raw": "click | set_field: default.sent : true",
-          "_cleaned": "click | set_field: default.sent : true"
+          "_raw": "click | set_field: default_sent : true",
+          "_cleaned": "click | set_field: default_sent : true"
         }
       ],
       "priority": -1,
@@ -42,11 +42,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "survey_welcome_quick_start.sent",
+            "survey_welcome_quick_start_sent",
             true
           ],
-          "_raw": "click | set_field: survey_welcome_quick_start.sent : true",
-          "_cleaned": "click | set_field: survey_welcome_quick_start.sent : true"
+          "_raw": "click | set_field: survey_welcome_quick_start_sent : true",
+          "_cleaned": "click | set_field: survey_welcome_quick_start_sent : true"
         }
       ],
       "priority": 13.2,
@@ -89,11 +89,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "survey_final_quick_start.sent",
+            "survey_final_quick_start_sent",
             true
           ],
-          "_raw": "click | set_field: survey_final_quick_start.sent : true",
-          "_cleaned": "click | set_field: survey_final_quick_start.sent : true"
+          "_raw": "click | set_field: survey_final_quick_start_sent : true",
+          "_cleaned": "click | set_field: survey_final_quick_start_sent : true"
         }
       ],
       "priority": 13.1,
@@ -136,11 +136,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_self_care_m_w_released.sent",
+            "w_self_care_m_w_released_sent",
             true
           ],
-          "_raw": "click | set_field: w_self_care_m_w_released.sent : true",
-          "_cleaned": "click | set_field: w_self_care_m_w_released.sent : true"
+          "_raw": "click | set_field: w_self_care_m_w_released_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_w_released_sent : true"
         }
       ],
       "priority": 12.99,
@@ -154,6 +154,13 @@
         }
       ],
       "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.w_self_care_m_w_released_sent"
+          },
+          "_raw": "@fields.w_self_care_m_w_released_sent"
+        },
         {
           "condition_type": "calc",
           "condition_args": {
@@ -183,11 +190,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_self_care_m_relax.sent",
+            "w_self_care_m_relax_sent",
             true
           ],
-          "_raw": "click | set_field: w_self_care_m_relax.sent : true",
-          "_cleaned": "click | set_field: w_self_care_m_relax.sent : true"
+          "_raw": "click | set_field: w_self_care_m_relax_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_relax_sent : true"
         }
       ],
       "priority": 12.9,
@@ -198,6 +205,15 @@
             "calc": "@fields.workshop_number == 1 && @fields.w_self_care_completion_level == 100"
           },
           "_raw": "@fields.workshop_number == 1 && @fields.w_self_care_completion_level == 100"
+        }
+      ],
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.w_self_care_m_relax_sent"
+          },
+          "_raw": "@fields.w_self_care_m_relax_sent"
         }
       ],
       "campaign_list": [
@@ -221,11 +237,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_self_care_m_hp_reminder.sent",
+            "w_self_care_m_hp_reminder_sent",
             true
           ],
-          "_raw": "click | set_field: w_self_care_m_hp_reminder.sent : true",
-          "_cleaned": "click | set_field: w_self_care_m_hp_reminder.sent : true"
+          "_raw": "click | set_field: w_self_care_m_hp_reminder_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_hp_reminder_sent : true"
         }
       ],
       "priority": 12.4,
@@ -236,6 +252,15 @@
             "calc": "@fields.workshop_number == 1 && @fields.w_self_care_completion_level == 100 && @fields.workshop_day == 4"
           },
           "_raw": "@fields.workshop_number == 1 && @fields.w_self_care_completion_level == 100 && @fields.workshop_day == 4"
+        }
+      ],
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.w_self_care_m_hp_reminder_sent"
+          },
+          "_raw": "@fields.w_self_care_m_hp_reminder_sent"
         }
       ],
       "campaign_list": [
@@ -259,11 +284,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_self_care_m_parent_points_overview.sent",
+            "w_self_care_m_parent_points_overview_sent",
             true
           ],
-          "_raw": "click | set_field: w_self_care_m_parent_points_overview.sent : true",
-          "_cleaned": "click | set_field: w_self_care_m_parent_points_overview.sent : true"
+          "_raw": "click | set_field: w_self_care_m_parent_points_overview_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_parent_points_overview_sent : true"
         }
       ],
       "priority": 12.3,
@@ -274,6 +299,15 @@
             "calc": "@fields.workshop_number == 1 && @fields.workshop_day == 5"
           },
           "_raw": "@fields.workshop_number == 1 && @fields.workshop_day == 5"
+        }
+      ],
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.w_self_care_m_parent_points_overview_sent"
+          },
+          "_raw": "@fields.w_self_care_m_parent_points_overview_sent"
         }
       ],
       "campaign_list": [
@@ -297,11 +331,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_self_care_m_w_tomorrow.sent",
+            "w_self_care_m_w_tomorrow_sent",
             true
           ],
-          "_raw": "click | set_field: w_self_care_m_w_tomorrow.sent : true",
-          "_cleaned": "click | set_field: w_self_care_m_w_tomorrow.sent : true"
+          "_raw": "click | set_field: w_self_care_m_w_tomorrow_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_w_tomorrow_sent : true"
         }
       ],
       "priority": 12.1,
@@ -312,6 +346,15 @@
             "calc": "@fields.workshop_number == 1 && @fields.workshop_day == 6"
           },
           "_raw": "@fields.workshop_number == 1 && @fields.workshop_day == 6"
+        }
+      ],
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.w_self_care_m_w_tomorrow_sent"
+          },
+          "_raw": "@fields.w_self_care_m_w_tomorrow_sent"
         }
       ],
       "campaign_list": [

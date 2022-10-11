@@ -279,12 +279,32 @@
           ],
           "_raw": "click | set_field: @local.weekly_habit_field: @local.weekly_habit_count+1",
           "_cleaned": "click | set_field: @local.weekly_habit_field: @local.weekly_habit_count+1"
+        },
+        {
+          "trigger": "info_click",
+          "action_id": "set_field",
+          "args": [
+            "current_parent_point",
+            "@local.habit"
+          ],
+          "_raw": "info_click | set_field: current_parent_point: @local.habit",
+          "_cleaned": "info_click | set_field: current_parent_point: @local.habit"
+        },
+        {
+          "trigger": "info_click",
+          "action_id": "pop_up",
+          "args": [
+            "parent_point_info"
+          ],
+          "_raw": "info_click | pop_up: parent_point_info",
+          "_cleaned": "info_click | pop_up: parent_point_info"
         }
       ],
+      "condition": "@fields._app_theme == \"professional\"",
       "parameter_list": {
         "text": "@local.habit_data.title",
-        "lottie_src": "@local.habit_data.lottie_asset",
-        "video_src": "@local.habit_data.video_asset"
+        "icon_src": "@local.habit_data.image_asset",
+        "info_icon_src": "plh_images/icons/question_mark.svg"
       },
       "_nested_name": "parent_point_box",
       "_dynamicFields": {
@@ -392,8 +412,44 @@
                 "fieldName": "weekly_habit_count"
               }
             ]
+          },
+          "2": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "@local.habit",
+                  "matchedExpression": "@local.habit",
+                  "type": "local",
+                  "fieldName": "habit"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "info_click | set_field: current_parent_point: @local.habit",
+                "matchedExpression": "@local.habit",
+                "type": "local",
+                "fieldName": "habit"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "info_click | set_field: current_parent_point: @local.habit",
+                "matchedExpression": "@local.habit",
+                "type": "local",
+                "fieldName": "habit"
+              }
+            ]
           }
         },
+        "condition": [
+          {
+            "fullExpression": "@fields._app_theme == \"professional\"",
+            "matchedExpression": "@fields._app_theme",
+            "type": "fields",
+            "fieldName": "_app_theme"
+          }
+        ],
         "parameter_list": {
           "text": [
             {
@@ -403,18 +459,10 @@
               "fieldName": "habit_data"
             }
           ],
-          "lottie_src": [
+          "icon_src": [
             {
-              "fullExpression": "@local.habit_data.lottie_asset",
-              "matchedExpression": "@local.habit_data.lottie_asset",
-              "type": "local",
-              "fieldName": "habit_data"
-            }
-          ],
-          "video_src": [
-            {
-              "fullExpression": "@local.habit_data.video_asset",
-              "matchedExpression": "@local.habit_data.video_asset",
+              "fullExpression": "@local.habit_data.image_asset",
+              "matchedExpression": "@local.habit_data.image_asset",
               "type": "local",
               "fieldName": "habit_data"
             }
@@ -443,14 +491,274 @@
           "action_list.1._raw",
           "action_list.1._cleaned"
         ],
+        "@local.habit": [
+          "action_list.2.args.1",
+          "action_list.2._raw",
+          "action_list.2._cleaned"
+        ],
+        "@fields._app_theme": [
+          "condition"
+        ],
+        "@local.habit_data.title": [
+          "parameter_list.text"
+        ],
+        "@local.habit_data.image_asset": [
+          "parameter_list.icon_src"
+        ]
+      }
+    },
+    {
+      "type": "parent_point_box",
+      "name": "parent_point_box",
+      "value": "@local.weekly_habit_count",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "@local.habit_field",
+            "@local.habit_count+1"
+          ],
+          "_raw": "click | set_field: @local.habit_field: @local.habit_count+1",
+          "_cleaned": "click | set_field: @local.habit_field: @local.habit_count+1"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "@local.weekly_habit_field",
+            "@local.weekly_habit_count+1"
+          ],
+          "_raw": "click | set_field: @local.weekly_habit_field: @local.weekly_habit_count+1",
+          "_cleaned": "click | set_field: @local.weekly_habit_field: @local.weekly_habit_count+1"
+        },
+        {
+          "trigger": "info_click",
+          "action_id": "set_field",
+          "args": [
+            "current_parent_point",
+            "@local.habit"
+          ],
+          "_raw": "info_click | set_field: current_parent_point: @local.habit",
+          "_cleaned": "info_click | set_field: current_parent_point: @local.habit"
+        },
+        {
+          "trigger": "info_click",
+          "action_id": "pop_up",
+          "args": [
+            "parent_point_info"
+          ],
+          "_raw": "info_click | pop_up: parent_point_info",
+          "_cleaned": "info_click | pop_up: parent_point_info"
+        }
+      ],
+      "condition": "@fields._app_theme != \"professional\"",
+      "parameter_list": {
+        "text": "@local.habit_data.title",
+        "lottie_src": "@local.habit_data.lottie_asset",
+        "info_icon_src": "plh_images/icons/question_mark.svg"
+      },
+      "_nested_name": "parent_point_box",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.weekly_habit_count",
+            "matchedExpression": "@local.weekly_habit_count",
+            "type": "local",
+            "fieldName": "weekly_habit_count"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.habit_field",
+                  "matchedExpression": "@local.habit_field",
+                  "type": "local",
+                  "fieldName": "habit_field"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@local.habit_count+1",
+                  "matchedExpression": "@local.habit_count",
+                  "type": "local",
+                  "fieldName": "habit_count"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: @local.habit_field: @local.habit_count+1",
+                "matchedExpression": "@local.habit_field",
+                "type": "local",
+                "fieldName": "habit_field"
+              },
+              {
+                "fullExpression": "click | set_field: @local.habit_field: @local.habit_count+1",
+                "matchedExpression": "@local.habit_count",
+                "type": "local",
+                "fieldName": "habit_count"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: @local.habit_field: @local.habit_count+1",
+                "matchedExpression": "@local.habit_field",
+                "type": "local",
+                "fieldName": "habit_field"
+              },
+              {
+                "fullExpression": "click | set_field: @local.habit_field: @local.habit_count+1",
+                "matchedExpression": "@local.habit_count",
+                "type": "local",
+                "fieldName": "habit_count"
+              }
+            ]
+          },
+          "1": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.weekly_habit_field",
+                  "matchedExpression": "@local.weekly_habit_field",
+                  "type": "local",
+                  "fieldName": "weekly_habit_field"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@local.weekly_habit_count+1",
+                  "matchedExpression": "@local.weekly_habit_count",
+                  "type": "local",
+                  "fieldName": "weekly_habit_count"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: @local.weekly_habit_field: @local.weekly_habit_count+1",
+                "matchedExpression": "@local.weekly_habit_field",
+                "type": "local",
+                "fieldName": "weekly_habit_field"
+              },
+              {
+                "fullExpression": "click | set_field: @local.weekly_habit_field: @local.weekly_habit_count+1",
+                "matchedExpression": "@local.weekly_habit_count",
+                "type": "local",
+                "fieldName": "weekly_habit_count"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: @local.weekly_habit_field: @local.weekly_habit_count+1",
+                "matchedExpression": "@local.weekly_habit_field",
+                "type": "local",
+                "fieldName": "weekly_habit_field"
+              },
+              {
+                "fullExpression": "click | set_field: @local.weekly_habit_field: @local.weekly_habit_count+1",
+                "matchedExpression": "@local.weekly_habit_count",
+                "type": "local",
+                "fieldName": "weekly_habit_count"
+              }
+            ]
+          },
+          "2": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "@local.habit",
+                  "matchedExpression": "@local.habit",
+                  "type": "local",
+                  "fieldName": "habit"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "info_click | set_field: current_parent_point: @local.habit",
+                "matchedExpression": "@local.habit",
+                "type": "local",
+                "fieldName": "habit"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "info_click | set_field: current_parent_point: @local.habit",
+                "matchedExpression": "@local.habit",
+                "type": "local",
+                "fieldName": "habit"
+              }
+            ]
+          }
+        },
+        "condition": [
+          {
+            "fullExpression": "@fields._app_theme != \"professional\"",
+            "matchedExpression": "@fields._app_theme",
+            "type": "fields",
+            "fieldName": "_app_theme"
+          }
+        ],
+        "parameter_list": {
+          "text": [
+            {
+              "fullExpression": "@local.habit_data.title",
+              "matchedExpression": "@local.habit_data.title",
+              "type": "local",
+              "fieldName": "habit_data"
+            }
+          ],
+          "lottie_src": [
+            {
+              "fullExpression": "@local.habit_data.lottie_asset",
+              "matchedExpression": "@local.habit_data.lottie_asset",
+              "type": "local",
+              "fieldName": "habit_data"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.weekly_habit_count": [
+          "value",
+          "action_list.1.args.1",
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ],
+        "@local.habit_field": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.habit_count": [
+          "action_list.0.args.1",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.weekly_habit_field": [
+          "action_list.1.args.0",
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ],
+        "@local.habit": [
+          "action_list.2.args.1",
+          "action_list.2._raw",
+          "action_list.2._cleaned"
+        ],
+        "@fields._app_theme": [
+          "condition"
+        ],
         "@local.habit_data.title": [
           "parameter_list.text"
         ],
         "@local.habit_data.lottie_asset": [
           "parameter_list.lottie_src"
-        ],
-        "@local.habit_data.video_asset": [
-          "parameter_list.video_src"
         ]
       }
     }

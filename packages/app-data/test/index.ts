@@ -3,7 +3,7 @@ import { SHEETS_CONTENT_LIST } from "../sheets";
 const template = Object.values(SHEETS_CONTENT_LIST.template);
 
 /** List of template flow subtypes to test */
-const TEST_FLOW_SUBTYPES = ["debug"];
+const TEST_FLOW_SUBTYPES = ["debug","component_demo"];
 
 /** List of additional template names to test */
 const ADDITIONAL_TEMPLATE_NAMES = ["home_screen", "weekly_workshops"];

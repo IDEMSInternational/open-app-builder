@@ -1,0 +1,117 @@
+{
+  "flow_type": "data_pipe",
+  "flow_name": "workshop_tasks_concat_3",
+  "status": "released",
+  "rows": [
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_praise_common_tasks",
+        "w_praise_specific_tasks"
+      ],
+      "input_source": false,
+      "output_target": "w_praise_tasks"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks_concat.xlsx",
+  "_processed": {
+    "w_praise_tasks": [
+      {
+        "id": "welcome_individual",
+        "individual": true,
+        "together": false,
+        "priority": 1
+      },
+      {
+        "id": "care_together",
+        "individual": false,
+        "together": true,
+        "priority": 2
+      },
+      {
+        "id": "relax",
+        "individual": true,
+        "together": true,
+        "priority": 3
+      },
+      {
+        "id": "reflect_together",
+        "individual": false,
+        "together": true,
+        "priority": 4
+      },
+      {
+        "id": "intro",
+        "individual": true,
+        "together": true,
+        "priority": 5
+      },
+      {
+        "id": "tools_activity",
+        "individual": true,
+        "together": true,
+        "priority": 70
+      },
+      {
+        "id": "home_practice",
+        "individual": true,
+        "together": true,
+        "priority": 80
+      },
+      {
+        "id": "ending",
+        "individual": true,
+        "together": true,
+        "priority": 90
+      },
+      {
+        "id": "hp_review",
+        "individual": true,
+        "together": true,
+        "priority": 91
+      },
+      {
+        "id": "question_1",
+        "individual": true,
+        "together": false,
+        "priority": 11,
+        "template": "w_praise_question_1"
+      },
+      {
+        "id": "talk_1",
+        "individual": false,
+        "together": true,
+        "priority": 11,
+        "template": "w_praise_talk_1"
+      },
+      {
+        "id": "read",
+        "individual": true,
+        "together": true,
+        "priority": 12,
+        "template": "w_praise_read"
+      },
+      {
+        "id": "question_2",
+        "individual": true,
+        "together": false,
+        "priority": 13,
+        "template": "w_praise_question_2"
+      },
+      {
+        "id": "talk_2",
+        "individual": false,
+        "together": true,
+        "priority": 13,
+        "template": "w_praise_talk_2"
+      },
+      {
+        "id": "try",
+        "individual": false,
+        "together": true,
+        "priority": 71,
+        "template": "w_praise_try"
+      }
+    ]
+  }
+}
