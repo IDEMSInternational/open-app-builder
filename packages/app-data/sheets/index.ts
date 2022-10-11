@@ -2643,6 +2643,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "example_items_pipe",
       _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
     },
+    example_items_pipe_2: {
+      flow_type: "template",
+      flow_subtype: "debug",
+      flow_name: "example_items_pipe_2",
+      _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
+    },
     example_items_radio: {
       flow_type: "template",
       flow_subtype: "debug",
