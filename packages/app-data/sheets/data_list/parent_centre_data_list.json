@@ -74,7 +74,7 @@
     },
     {
       "id": "customisation",
-      "show": "@fields.survey_welcome_completed",
+      "show": "!@fields.survey_welcome_completed",
       "icon_asset": "plh_images/icons/phone_heart_white.svg",
       "template": "setup_and_survey_stepper",
       "tile_style": "parent_centre_4",
@@ -108,7 +108,7 @@
     },
     {
       "id": "customise_again",
-      "show": "!@fields.survey_welcome_completed",
+      "show": "@fields.survey_welcome_completed",
       "icon_asset": "plh_images/icons/phone_heart_white.svg",
       "template": "parent_centre_customisation",
       "tile_style": "parent_centre_4",
@@ -344,8 +344,9 @@
     },
     {
       "id": "support_contacts",
-      "show": false,
+      "show": "@fields._deployment_name == \"plh_tz\"",
       "icon_asset": "plh_images/icons/hands_support_heart_white.svg",
+      "template": "parent_centre_support_con",
       "tile_style": "parent_centre_1",
       "click_count_field": "click_pc_support_contacts_count",
       "title": "Support Contacts",

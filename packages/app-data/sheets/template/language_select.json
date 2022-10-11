@@ -179,7 +179,7 @@
   ],
   "_xlsxPath": "global/core_templates/core_templates_settings.xlsx",
   "_overrides": {
-    "language_select_tz": "@fields._deployment_name == \"plh_tz\"",
-    "language_select_za": "@fields._deployment_name == \"plh_za\""
+    "language_select_za": "@fields._deployment_name == \"plh_za\"",
+    "language_select_tz": "@fields._deployment_name == \"plh_tz\""
   }
 }

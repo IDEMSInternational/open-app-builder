@@ -420,9 +420,51 @@
               "_translations": {
                 "value": {}
               },
+              "condition": "@fields._app_theme != \"professional\"",
               "hidden": false,
               "type": "set_variable",
-              "_nested_name": "workshop_activity.content_box.lottie_src"
+              "_nested_name": "workshop_activity.content_box.lottie_src",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "@fields._app_theme != \"professional\"",
+                    "matchedExpression": "@fields._app_theme",
+                    "type": "fields",
+                    "fieldName": "_app_theme"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@fields._app_theme": [
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "image_src",
+              "value": "plh_images/habits/relax_chair.gif",
+              "_translations": {
+                "value": {}
+              },
+              "condition": "@fields._app_theme == \"professional\"",
+              "hidden": false,
+              "type": "set_variable",
+              "_nested_name": "workshop_activity.content_box.image_src",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "@fields._app_theme == \"professional\"",
+                    "matchedExpression": "@fields._app_theme",
+                    "type": "fields",
+                    "fieldName": "_app_theme"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@fields._app_theme": [
+                  "condition"
+                ]
+              }
             },
             {
               "name": "audio_title",

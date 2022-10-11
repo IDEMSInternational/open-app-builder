@@ -1,5 +1,8 @@
 @use "/src/theme/mixins";
 
+$background-primary: var(--button-background-primary, var(--gradient-primary-mid-vertical));
+$background-secondary: var(--button-background-secondary, var(--gradient-secondary-mid-vertical));
+
 .wrapper {
   width: var(--square-button-min-width);
   overflow: hidden;
@@ -27,9 +30,9 @@ ion-button[disabled] {
 
 .navigation {
   min-height: var(--square-button-navigation-min-height);
-  background: var(--ion-btn-secondary);
+  background: $background-secondary;
 }
 
 .information {
-  background: var(--ion-btn-primary);
+  background: $background-primary;
 }

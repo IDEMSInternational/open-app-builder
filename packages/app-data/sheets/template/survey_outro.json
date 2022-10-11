@@ -46,6 +46,10 @@
         },
         {
           "name": "image_src",
+          "value": "plh_images/characters/neighbour/neutral.svg",
+          "_translations": {
+            "value": {}
+          },
           "style_list": [
             "max-height: 300px"
           ],

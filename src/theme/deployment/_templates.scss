@@ -9,7 +9,7 @@ plh-template-container[data-templatename="w_self_care_stepper"] {
   margin-top: -20px;
 }
 
-/// parent_center
+/// parent_centre
 plh-template-container[data-templatename="parent_centre"] {
   plh-tmpl-title {
     margin-top: 0;
@@ -29,7 +29,7 @@ plh-template-container[data-templatename="parent_points"] {
     margin-top: 0;
   }
   .display-group-wrapper[data-param-style~="parent_point"] {
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 }
 

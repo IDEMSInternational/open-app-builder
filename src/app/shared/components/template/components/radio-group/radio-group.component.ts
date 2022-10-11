@@ -48,9 +48,7 @@ export class TmplRadioGroupComponent
   windowWidth: number;
   style: string;
   destroy$ = new ReplaySubject(1);
-  imageCheckedColor = "#0D3F60";
   flexWidth: string;
-  checkIfContainsStyleParameter: boolean = false;
 
   constructor(private templateService: TemplateService) {
     super();
@@ -58,8 +56,6 @@ export class TmplRadioGroupComponent
 
   ngOnInit() {
     this.getParams();
-    this.setAutoBackground();
-    this.checkTheme();
   }
 
   getParams() {
@@ -68,11 +64,6 @@ export class TmplRadioGroupComponent
     this.radioButtonType = getParamFromTemplateRow(row, "radio_button_type", "btn_text");
     this.options_per_row = getNumberParamFromTemplateRow(this._row, "options_per_row", 3);
     this.style = getStringParamFromTemplateRow(this._row, "style", "");
-    this.checkIfContainsStyleParameter =
-      this.style.includes("active") ||
-      this.style.includes("passive") ||
-      this.style.includes("transparent");
-    this.imageCheckedColor = this.style === "active" ? "#f89b2d" : "#0D3F60";
     this.windowWidth = window.innerWidth;
 
     // convert string answer lists to formatted objects
@@ -157,24 +148,6 @@ export class TmplRadioGroupComponent
 
   getFlexWidth() {
     this.flexWidth = `0 1 ${100 / this.options_per_row - 7}%`;
-  }
-
-  setAutoBackground() {
-    if (!this.checkIfContainsStyleParameter) {
-      const currentBgColor = document.body.style
-        .getPropertyValue("--ion-background-color")
-        .toLocaleLowerCase();
-      this.style = currentBgColor === "#FFF6D6".toLocaleLowerCase() ? "active" : "passive";
-    }
-  }
-
-  checkTheme() {
-    return (
-      !this.checkIfContainsStyleParameter &&
-      this.templateService.currentTheme
-        .pipe(takeUntil(this.destroy$))
-        .subscribe((value) => (this.style = value))
-    );
   }
 
   ngOnDestroy() {

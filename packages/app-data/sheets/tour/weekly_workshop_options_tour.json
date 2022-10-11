@@ -141,5 +141,5 @@
       "route": "template/workshop_options_page"
     }
   ],
-  "_xlsxPath": "global/tutorials/weekly_workshops_tour.xlsx"
+  "_xlsxPath": "global/tours/weekly_workshops_tour.xlsx"
 }

@@ -1,3 +1,4 @@
+import type { IDataPipeOperation } from "shared/src/models/dataPipe/types";
 import type { IAppConstants } from "./constants";
 
 /*********************************************************************************************
@@ -12,7 +13,9 @@ export namespace FlowTypes {
     | "global"
     // data_lists are a general catch for any data that will be used throughout the app, but
     // without defined typings (such as habit_list).
-    | "data_list";
+    | "data_list"
+    // data_pipes are used to modify or generate new data_lists via processing methods
+    | "data_pipe";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
 
@@ -53,6 +56,8 @@ export namespace FlowTypes {
     rows: any[];
     /** Datalists populate rows as a hashmap instead to allow easier access to nested structures */
     rowsHashmap?: { [id: string]: any };
+    /** Datapipes store output from operations in a temporary field to allow data-list population */
+    _processed?: { [output_target: string]: any[] };
   }
 
   /*********************************************************************************************
@@ -61,6 +66,12 @@ export namespace FlowTypes {
   export interface Data_list extends FlowTypeWithData {
     flow_type: "data_list";
     rows: Data_listRow[];
+  }
+  export interface DataPipeFlow extends FlowTypeWithData {
+    flow_type: "data_pipe";
+    rows: IDataPipeOperation[];
+    /** Datapipes store output from operations in a temporary field to allow data-list population */
+    _processed?: { [output_target: string]: any[] };
   }
   export interface Translation_strings {
     [sourceText: string]: string;
@@ -237,7 +248,6 @@ export namespace FlowTypes {
     | "animated_section_group"
     | "display_group"
     | "set_variable"
-    | "set_theme"
     // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
     | "set_field"
     | "set_local"
@@ -328,7 +338,8 @@ export namespace FlowTypes {
     | "audio_end"
     | "audio_first_start"
     | "nav_resume" // return to template after navigation or popup close;
-    | "sent"; // notification sent
+    | "sent" // notification sent
+    | "info_click";
 
   export interface TemplateRowAction {
     /** actions have an associated trigger */
@@ -338,6 +349,7 @@ export namespace FlowTypes {
       | "" // TODO document this property for stop propogation
       | "reset_app"
       | "set_field"
+      | "toggle_field"
       | "set_local"
       | "emit"
       | "feedback"
@@ -350,7 +362,6 @@ export namespace FlowTypes {
       | "audio_play"
       | "style"
       | "close_pop_up"
-      | "set_theme"
       | "start_tour"
       | "trigger_actions"
       | "track_event"

@@ -1,0 +1,129 @@
+@use "sass:color";
+@use "sass:map";
+@use "sass:math";
+@use "./contrast-colour.scss";
+
+// Returns a map of colours based partly on Material Design's colour system
+// https://material.io/design/color/the-color-system.html
+@function getColorPalette(
+  $primary,
+  $secondary,
+  $page-background: null,
+  $weights: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900),
+  $yellow: #ffd333
+) {
+  $result: (
+    "color-primary": $primary,
+    "color-primary-contrast": contrast-colour.choose-contrast-color($primary),
+    "color-secondary": $secondary,
+    "color-secondary-contrast": contrast-colour.choose-contrast-color($secondary),
+    "background-color": color.change($primary, $lightness: 95%),
+    "color-yellow": $yellow,
+    "color-red": #eb445a,
+    "color-gray-light": hsl(0, 0%, 93%),
+    "default-box-shadow": 0 4px 4px rgba(0, 0, 0, 0.25),
+    // Used for activated/focused/hover states of ion-button – may only be visible in web preview
+    // TODO: Remove when migrating away from ionic
+    "color-primary-shade": color.adjust($primary, $lightness: -10%),
+    "color-primary-tint": color.adjust($primary, $lightness: 10%),
+  );
+
+  // Generate variants of base colours based on given weights and add to map
+  // E.g. '"color-primary-400": color.change($primary, $lightness: 60%)'
+  $result: map.merge($result, generateColourVariants($primary, "primary", $weights));
+  $result: map.merge($result, generateColourVariants($secondary, "secondary", $weights));
+  $result: map.merge($result, generateColourVariants($yellow, "yellow", $weights));
+
+  @if ($page-background != null) {
+    $result: map.set($result, "background-color", $page-background);
+  }
+  @return $result;
+}
+
+@function generateColourVariants($base, $baseName, $weights) {
+  $variants-map: ();
+  @each $weight in $weights {
+    $map: (
+      color-#{$baseName}-#{$weight}:
+        color.change($base, $lightness: math.percentage(1 - math.div($weight, 1000)))
+    );
+    $variants-map: map.merge($variants-map, $map);
+  }
+  $map: (color-#{$baseName}-transparent: rgba($base, 0.5));
+  $variants-map: map.merge($variants-map, $map);
+  @return $variants-map;
+}
+
+@function getGradientPalette($colorPalette) {
+  $baseColors: primary, secondary;
+  $gradientDirections: (
+    vertical: 175deg,
+    horizontal: 85deg,
+  );
+  $gradientPalette: ();
+  @each $baseColor in $baseColors {
+    @each $directionName, $directionValue in $gradientDirections {
+      $result: (
+        "gradient-#{$baseColor}-#{$directionName}":
+          linear-gradient(
+            $directionValue,
+            color.adjust(map.get($colorPalette, "color-#{$baseColor}"), $lightness: 10%) 30%,
+            color.adjust(map.get($colorPalette, "color-#{$baseColor}"), $lightness: -10%)
+          ),
+        "gradient-#{$baseColor}-light-#{$directionName}":
+          linear-gradient(
+            $directionValue,
+            map.get($colorPalette, "color-#{$baseColor}-200") 30%,
+            map.get($colorPalette, "color-#{$baseColor}-500")
+          ),
+        "gradient-#{$baseColor}-mid-#{$directionName}":
+          linear-gradient(
+            $directionValue,
+            map.get($colorPalette, "color-#{$baseColor}-400") 30%,
+            map.get($colorPalette, "color-#{$baseColor}-700")
+          ),
+        "gradient-#{$baseColor}-dark-#{$directionName}":
+          linear-gradient(
+            $directionValue,
+            map.get($colorPalette, "color-#{$baseColor}-700") 30%,
+            map.get($colorPalette, "color-#{$baseColor}-900")
+          ),
+      );
+      $gradientPalette: map.merge($gradientPalette, $result);
+    }
+  }
+  @return $gradientPalette;
+}
+
+@mixin generateTheme($p, $s, $bg: null) {
+  $colorPalette: getColorPalette($p, $s, $bg);
+  $gradientPalette: getGradientPalette($colorPalette);
+  @include colorVariables($colorPalette, $gradientPalette);
+}
+
+@mixin colorVariables($sourceColorPalette, $sourceGradientPalette) {
+  $colorPalette: $sourceColorPalette;
+  $gradientPalette: $sourceGradientPalette;
+
+  @each $label, $color in $colorPalette {
+    --ion-#{$label}: #{$color};
+  }
+  @each $label, $color in $gradientPalette {
+    --#{$label}: #{$color};
+  }
+
+  --ion-item-background: #{map.get($colorPalette, "color-primary-100")};
+
+  // BORDERS
+  --ion-border-standard: 2px solid #{map.get($colorPalette, "color-primary")};
+  --ion-border-thin-standard: 1px solid #{map.get($colorPalette, "color-primary")};
+  --ion-border-color-secondary: 2px solid #{map.get($colorPalette, "color-secondary")};
+  --ion-border-light: 1px solid #{map.get($colorPalette, "light")};
+  --ion-border-light-thicker: 2px solid #{map.get($colorPalette, "light")};
+  --border-dashed: 2px dashed #{map.get($colorPalette, "color-primary")};
+
+  //  GRADIENTS
+  //Gradient direction
+  $vertical: 180deg;
+  $horizontal: 90deg;
+}

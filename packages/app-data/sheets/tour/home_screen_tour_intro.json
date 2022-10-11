@@ -123,5 +123,5 @@
       "route": "template/home_screen"
     }
   ],
-  "_xlsxPath": "global/tutorials/home_screen_tour.xlsx"
+  "_xlsxPath": "global/tours/home_screen_tour.xlsx"
 }

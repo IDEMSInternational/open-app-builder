@@ -1,7 +1,8 @@
 {
   "name": "frontend",
-  "version": "0.16.4",
+  "version": "0.16.5",
   "author": "IDEMS International",
+  "license": "See LICENSE",
   "homepage": "https://idems.international/",
   "description": "",
   "workspaces": [
@@ -10,7 +11,7 @@
   ],
   "scripts": {
     "ng": "ng",
-    "start": "yarn workflow populate_src_assets && concurrently --kill-others --raw \"yarn data-models:serve\" \"yarn data:serve\" \"ng serve --open\"",
+    "start": "yarn precompile && yarn workflow populate_src_assets && concurrently --kill-others --raw \"yarn data-models:serve\" \"yarn data:serve\" \"ng serve --open\"",
     "precompile": "yarn scripts compile types",
     "build": "yarn precompile && yarn workflow populate_src_assets && ng build --prod",
     "data:serve": "yarn workspace app-data serve",
@@ -19,7 +20,8 @@
     "workflow": "yarn scripts workflow run",
     "server": "yarn workspace server",
     "translations": "yarn workspace translations start",
-    "test:unit": "ng test",
+    "test:workspaces": "yarn workspace shared test && yarn workspace scripts test",
+    "test:frontent": "ng test",
     "test:unit:ci": "ng test --no-watch --no-progress",
     "test:e2e": "yarn workspace test-e2e start",
     "lint": "ng lint",
@@ -82,6 +84,7 @@
     "ngx-lottie": "^7.0.4",
     "nouislider": "^14.6.3",
     "rxjs": "^6.6.7",
+    "shared": "workspace:*",
     "stacktrace-js": "^2.0.2",
     "zone.js": "~0.11.4"
   },
@@ -118,6 +121,7 @@
     "eslint-plugin-jsdoc": "35.4.0",
     "eslint-plugin-prefer-arrow": "1.2.3",
     "firebase-tools": "^9.14.0",
+    "husky": "^8.0.0",
     "jasmine-core": "~3.7.1",
     "jasmine-spec-reporter": "~7.0.0",
     "karma": "~6.3.4",
@@ -125,13 +129,9 @@
     "karma-coverage-istanbul-reporter": "~3.0.3",
     "karma-jasmine": "~4.0.1",
     "karma-jasmine-html-reporter": "^1.6.0",
-    "lint-staged": "^11.0.0",
+    "lint-staged": "^13.0.3",
     "prettier": "2.4.1",
-    "simple-git-hooks": "^2.4.1",
     "typescript": "4.4.2"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
     "*.{ts,scss,html}": [

@@ -194,12 +194,15 @@ class GDriveWatcher {
 
   private async handleFileChange(change: drive_v3.Schema$Change) {
     const { file } = change;
-    // TODO - see if way to check file used by app
     // filter only files modified by me
-    const { modifiedByMe, name } = file;
-    if (modifiedByMe) {
-      console.log(chalk.blue(`${formatTimestamp()} [Change] ${name}`));
-      await new GDriveDownloader(this.options).updateFileEntry(file);
+    const { name, lastModifyingUser } = file;
+    if (lastModifyingUser?.me) {
+      const gdriveDownloader = new GDriveDownloader(this.options);
+      // Filter only app cached entries (gdrive has full user drive scope)
+      if (gdriveDownloader.getCachedEntry(file)) {
+        console.log(chalk.blue(`${formatTimestamp()} [Change] ${name}`));
+        await new GDriveDownloader(this.options).updateFileEntry(file);
+      }
     }
   }
 

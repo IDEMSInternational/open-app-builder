@@ -23,11 +23,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_self_care_m_relax.sent",
+            "w_self_care_m_relax_sent",
             true
           ],
-          "_raw": "click | set_field: w_self_care_m_relax.sent : true",
-          "_cleaned": "click | set_field: w_self_care_m_relax.sent : true"
+          "_raw": "click | set_field: w_self_care_m_relax_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_relax_sent : true"
         }
       ],
       "priority": 12.9,
@@ -80,11 +80,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_self_care_m_hp_reminder.sent",
+            "w_self_care_m_hp_reminder_sent",
             true
           ],
-          "_raw": "click | set_field: w_self_care_m_hp_reminder.sent : true",
-          "_cleaned": "click | set_field: w_self_care_m_hp_reminder.sent : true"
+          "_raw": "click | set_field: w_self_care_m_hp_reminder_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_hp_reminder_sent : true"
         }
       ],
       "priority": 12.4,
@@ -151,11 +151,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "m_parent_points_overview.sent",
+            "m_parent_points_overview_sent",
             true
           ],
-          "_raw": "click | set_field: m_parent_points_overview.sent : true",
-          "_cleaned": "click | set_field: m_parent_points_overview.sent : true"
+          "_raw": "click | set_field: m_parent_points_overview_sent : true",
+          "_cleaned": "click | set_field: m_parent_points_overview_sent : true"
         }
       ],
       "priority": 12.3,
@@ -209,11 +209,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_self_care_m_w_tomorrow.sent",
+            "w_self_care_m_w_tomorrow_sent",
             true
           ],
-          "_raw": "click | set_field: w_self_care_m_w_tomorrow.sent : true",
-          "_cleaned": "click | set_field: w_self_care_m_w_tomorrow.sent : true"
+          "_raw": "click | set_field: w_self_care_m_w_tomorrow_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_w_tomorrow_sent : true"
         }
       ],
       "priority": 12.1,
@@ -279,11 +279,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_self_care_m_w_tomorrow.sent",
+            "w_self_care_m_w_tomorrow_sent",
             true
           ],
-          "_raw": "click | set_field: w_self_care_m_w_tomorrow.sent : true",
-          "_cleaned": "click | set_field: w_self_care_m_w_tomorrow.sent : true"
+          "_raw": "click | set_field: w_self_care_m_w_tomorrow_sent : true",
+          "_cleaned": "click | set_field: w_self_care_m_w_tomorrow_sent : true"
         }
       ],
       "priority": 12.1,
