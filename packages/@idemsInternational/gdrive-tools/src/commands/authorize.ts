@@ -154,6 +154,7 @@ function getAccessToken(
   // Generate the url that will be used for the consent dialog.
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: "offline",
+    prompt: "consent",
     scope: scopes,
   });
   console.log(
