@@ -1,4 +1,7 @@
 @use "/src/theme/mixins";
+
+$control-background: var(--audio-control-background, var(--ion-color-primary-500));
+
 .container-player {
   background: var(--ion-color-primary-contrast);
   border: var(--ion-border-standard);
@@ -42,7 +45,7 @@
   }
   .progress-block {
     .audio-range {
-      --bar-background-active: var(--ion-btn-control-bg);
+      --bar-background-active: #{$control-background};
       --bar-background: transparent;
       --bar-height: 4px;
       --bar-border-radius: var(--ion-border-radius-secondary);
@@ -97,7 +100,7 @@
     .play {
       .btn-play {
         @include mixins.large-square;
-        --background: var(--ion-btn-control-bg);
+        --background: #{$control-background};
         --border-radius: var(--ion-border-radius-rounded);
         --padding: 0;
         --box-shadow: var(--ion-default-box-shadow);

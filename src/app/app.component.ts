@@ -5,12 +5,13 @@ import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
 import { DbService } from "./shared/services/db/db.service";
-import { ThemeService } from "./feature/theme/theme-service/theme.service";
+import { SkinService } from "./shared/services/skin/skin.service";
+import { ThemeService } from "./feature/theme/services/theme.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
 import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
 import { AppEventService } from "./shared/services/app-events/app-events.service";
-import { TourService } from "./shared/services/tour/tour.service";
+import { TourService } from "./feature/tour/tour.service";
 import { TemplateService } from "./shared/components/template/services/template.service";
 import { CampaignService } from "./feature/campaign/campaign.service";
 import { ServerService } from "./shared/services/server/server.service";
@@ -30,12 +31,7 @@ import { AppDataService } from "./shared/services/data/app-data.service";
 import { AuthService } from "./shared/services/auth/auth.service";
 import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
 
-const {
-  APP_FIELDS,
-  APP_INITIALISATION_DEFAULTS,
-  APP_SIDEMENU_DEFAULTS,
-  APP_AUTHENTICATION_DEFAULTS,
-} = APP_CONSTANTS;
+const { APP_FIELDS, APP_SIDEMENU_DEFAULTS, APP_AUTHENTICATION_DEFAULTS } = APP_CONSTANTS;
 
 @Component({
   selector: "app-root",
@@ -57,6 +53,7 @@ export class AppComponent {
     private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
     private themeService: ThemeService,
+    private skinService: SkinService,
     private tourService: TourService,
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
@@ -136,6 +133,7 @@ export class AppComponent {
     await this.dbService.init();
     await this.userMetaService.init();
     this.themeService.init();
+    this.skinService.init();
     /** CC 2021-05-14 - disabling reminders service until decide on full implementation (ideally not requiring evaluation of all reminders on init) */
     // this.remindersService.init();
     await this.appEventService.init();
@@ -144,14 +142,16 @@ export class AppComponent {
     await this.templateTranslateService.init();
     await this.appDataService.init();
     await this.templateService.init();
-    await this.templateProcessService.init();
+    // ensure local notifications service available for campaigns service
+    await this.localNotificationService.init();
+    // ensure campaigns initialised before template_process which processes templates on startup
     await this.campaignService.init();
+    await this.templateProcessService.init();
     await this.tourService.init();
 
     // Initialise additional services in a non-blocking way
     setTimeout(async () => {
       await this.localNotificationInteractionService.init();
-      await this.localNotificationService.init();
       await this.dbSyncService.init();
       await this.analyticsService.init();
       /** CC 2022-04-01 - Disable service as not currently in use */

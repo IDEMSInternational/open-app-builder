@@ -1,0 +1,71 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_instruct_specific_tasks",
+  "status": "released",
+  "data_list_name": "w_instruct_specific_tasks",
+  "rows": [
+    {
+      "id": "think",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "template": "w_instruct_think_1"
+    },
+    {
+      "id": "read_1",
+      "individual": true,
+      "together": true,
+      "priority": 12,
+      "template": "w_instruct_read_1",
+      "subtask_group": "read_1"
+    },
+    {
+      "id": "question_1",
+      "individual": true,
+      "together": false,
+      "priority": 13,
+      "template": "w_instruct_question_1",
+      "subtask_group": "read_1"
+    },
+    {
+      "id": "talk_1",
+      "individual": false,
+      "together": true,
+      "priority": 13,
+      "template": "w_instruct_talk_1",
+      "subtask_group": "read_1"
+    },
+    {
+      "id": "read_2",
+      "individual": true,
+      "together": true,
+      "priority": 14,
+      "template": "w_instruct_read_2",
+      "subtask_group": "read_2"
+    },
+    {
+      "id": "question_2",
+      "individual": true,
+      "together": false,
+      "priority": 15,
+      "template": "w_instruct_question_2",
+      "subtask_group": "read_2"
+    },
+    {
+      "id": "talk_2",
+      "individual": false,
+      "together": true,
+      "priority": 15,
+      "template": "w_instruct_talk_2",
+      "subtask_group": "read_2"
+    },
+    {
+      "id": "try",
+      "individual": false,
+      "together": true,
+      "priority": 71,
+      "template": "w_instruct_try"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
+}
