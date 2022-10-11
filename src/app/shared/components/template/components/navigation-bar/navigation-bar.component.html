@@ -2,6 +2,7 @@
   <div
     *ngFor="let button of buttonList"
     class="button-wrapper"
+    [class.selected]="button.target_template === currentTemplate"
     (click)="goToTargetTemplate(button.target_template)"
   >
     <div class="image-wrapper">

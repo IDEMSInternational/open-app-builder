@@ -323,3 +323,8 @@ export async function asyncEvery(arr: any[], predicate: Function) {
   }
   return true;
 }
+
+/** Extract template name from a full router url */
+export function getTemplateNameFromUrl(urlString: string) {
+  return urlString.split(/[?#]/)[0].replace(/^(\/template\/)/, "");
+}
