@@ -1,4 +1,4 @@
-import { DataFrame } from "danfojs";
+import { DataFrame, toJSON } from "danfojs";
 import { DataPipe } from "../pipe";
 import testData from "../testData.spec";
 import concat from "./concat";
@@ -40,4 +40,84 @@ describe("Concat Operator", () => {
     const expectedCols = ["id", "first_name", "last_name", "year_of_birth", "additonal_field"];
     expect(output.columns).toEqual(expectedCols);
   });
+  it("concatenates complex example", () => {
+    const { debugData1, debugData2, outputExpected } = DEBUG_TEST_DATA();
+    (testData as any).debugData1 = debugData1;
+    (testData as any).debugData2 = debugData2;
+    const output = new concat(emptyDf, ["debugData1", "debugData2"], testPipe).apply();
+    expect(toJSON(output)).toEqual(outputExpected);
+  });
 });
+
+/** Example concatenating 2 lists containing irregular shaped data */
+function DEBUG_TEST_DATA() {
+  const debugData1 = [
+    {
+      id: "welcome_individual",
+      individual: true,
+      together: false,
+      priority: 1,
+    },
+    {
+      id: "care_together",
+      individual: false,
+      together: true,
+      priority: 2,
+    },
+  ];
+  // Importantly debugData2's first entry does not contain all columns (requires normalising)
+  // and contains columns in different order to debugData1
+  const debugData2 = [
+    {
+      id: "question_1",
+      template: "w_praise_question_1",
+      individual: true,
+      together: false,
+      priority: 11,
+    },
+    {
+      id: "read",
+      subtask_group: "read",
+      template: "w_praise_read",
+      individual: true,
+      together: true,
+      priority: 12,
+    },
+  ];
+  // concatenated data should contain all rows and fill missing values
+  const outputExpected = [
+    {
+      id: "welcome_individual",
+      individual: true,
+      together: false,
+      priority: 1,
+      template: undefined,
+      subtask_group: undefined,
+    },
+    {
+      id: "care_together",
+      individual: false,
+      together: true,
+      priority: 2,
+      template: undefined,
+      subtask_group: undefined,
+    },
+    {
+      id: "question_1",
+      individual: true,
+      together: false,
+      priority: 11,
+      template: "w_praise_question_1",
+      subtask_group: undefined,
+    },
+    {
+      id: "read",
+      individual: true,
+      together: true,
+      priority: 12,
+      template: "w_praise_read",
+      subtask_group: "read",
+    },
+  ];
+  return { debugData1, debugData2, outputExpected };
+}
