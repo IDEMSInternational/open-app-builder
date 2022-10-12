@@ -1,4 +1,5 @@
 import { DataFrame, concat } from "danfojs";
+import { normalizeData } from "..";
 import type { DataPipe } from "../pipe";
 import { setIndexColumn } from "../utils";
 import BaseOperator from "./base";
@@ -28,7 +29,7 @@ class ConcatOperator extends BaseOperator {
     return this.df;
   }
   private applyConcat(data: any): DataFrame {
-    let concatDf = new DataFrame(data);
+    let concatDf = new DataFrame(normalizeData(data));
     // empty dataframes throw error on concat, so just return the other (or existing) dataframe instead
     if (this.df.index.length === 0) return concatDf;
     if (concatDf.index.length === 0) return this.df;
