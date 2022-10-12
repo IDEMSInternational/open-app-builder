@@ -40,10 +40,6 @@ export class SkinService {
     return skinName in this.availableSkins;
   }
 
-  public getSkinFromName(skinName: string) {
-    return this.availableSkins[skinName];
-  }
-
   /** Get the name of the current skin, as saved in local storage */
   public getCurrentSkinName() {
     return this.localStorageService.getString(APP_FIELDS.APP_SKIN);

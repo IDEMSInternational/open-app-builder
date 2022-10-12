@@ -1,6 +1,7 @@
 import { IAppSkin } from "./skin.model";
 import { arrayToHashmap } from "src/app/shared/utils";
 
+// TODO: Eventually these skins should be authored from templates
 const skins: IAppSkin[] = [
   { name: "weekly_workshop" },
   {
