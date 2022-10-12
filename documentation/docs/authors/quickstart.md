@@ -33,7 +33,7 @@ All users need to connect to their personal Google Drive account to access files
 To connect to your Google account you must run:
 
 ```
-yarn scripts app-data download --authorize
+yarn workflow sync_authorize
 ```
 
 You will be prompted to sign into your Google account in a browser window and grant the app access. You may see a warning message to connect the unverified app. Use the advanced dropdown to accept.
