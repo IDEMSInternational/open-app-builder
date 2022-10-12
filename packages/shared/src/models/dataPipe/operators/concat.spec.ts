@@ -31,7 +31,7 @@ describe("Concat Operator", () => {
   it("Throws if concatenating lists with duplicate ids", () => {
     const duplicateDf = new DataFrame([{ id: "id_3", first_name: "Duplicated" }]);
     expect(() => new concat(duplicateDf, ["names"], testPipe).apply()).toThrowError(
-      "Multiple entries exist for index: id_3"
+      "names\nMultiple entries exist for index: id_3"
     );
   });
   it("concatenates multiple lists", () => {
