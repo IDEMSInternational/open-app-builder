@@ -5,6 +5,7 @@ import { NumberingPipe } from "./numbering.pipe";
 import { PLHAssetPipe } from "./plh-asset.pipe";
 import { StyleListPipe } from "./styleList.pipe";
 import { TranslatePipe } from "./translate.pipe";
+import { QRCodePipe } from "./qr-code.pipe";
 
 export const TEMPLATE_PIPES = [
   FilterDisplayComponentPipe,
@@ -14,4 +15,5 @@ export const TEMPLATE_PIPES = [
   StyleListPipe,
   TranslatePipe,
   LatexPipe,
+  QRCodePipe,
 ];

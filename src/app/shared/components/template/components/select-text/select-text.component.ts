@@ -26,6 +26,7 @@ export class SelectTextComponent
   public isNumberInput: boolean | any;
   public prioritisePlaceholder: boolean | any;
   public toggle: boolean = false;
+  QRCodeValue: string = null;
 
   //emit after 1 second
   public source = timer(1000);
@@ -47,6 +48,7 @@ export class SelectTextComponent
       "prioritise_placeholder",
       false
     );
+    this.QRCodeValue = getStringParamFromTemplateRow(this._row, "qr_code", null);
   }
 
   async triggerCopyContent($event: MouseEvent, _row: FlowTypes.TemplateRow) {
