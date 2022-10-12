@@ -72,6 +72,16 @@ describe("Data Pipe", () => {
     const pipe = new DataPipe(operations, testData);
     expect(() => pipe.run()).toThrowError("Input sources missing for data pipe: nationalities");
   });
+  it("Empties input source when specified as FALSE", () => {
+    const operations: IDataPipeOperation[] = [
+      { input_source: "names", operation: "filter", args_list: [], output_target: "names" },
+      { input_source: false as any, operation: "filter", output_target: "empty", args_list: [] },
+    ];
+    const pipe = new DataPipe(operations, testData);
+    pipe.run();
+    expect(pipe.outputTargets.names.length === 2);
+    expect(pipe.outputTargets.empty.length === 0);
+  });
   it("Throw on invalid operation", () => {
     const invalidOp = { operation: "invalid_op" };
     expect(() => new DataPipe([invalidOp as any]).run()).toThrowError(
