@@ -17,10 +17,7 @@ export class DataPipe {
       throw new Error("Input sources missing for data pipe: " + missingInputs);
     }
     for (const step of this.steps) {
-      // assign input if specified (default to previous output)
-      if (step.input_source) {
-        this.setInputSource(step.input_source);
-      }
+      this.setInputSource(step.input_source);
       // validate operator
       const operator = OPERATORS[step.operation] as IBaseOperator;
       if (!operator) {
@@ -47,11 +44,22 @@ export class DataPipe {
     }
   }
 
-  setInputSource(name: string) {
-    if (!this.inputSources.hasOwnProperty(name)) {
-      throw new Error(`Data source not found: ${name}`);
+  /**
+   * Assign input if specified (default to previous output)
+   * @param name if specified will populate from named datalist
+   * @note if FALSE provided will clear current dataframe to empty instead
+   */
+  setInputSource(name?: string | boolean) {
+    if (typeof name === "string") {
+      if (!this.inputSources.hasOwnProperty(name)) {
+        throw new Error(`Data source not found: ${name}`);
+      }
+      this.df = new DataFrame(this.inputSources[name]);
     }
-    this.df = new DataFrame(this.inputSources[name]);
+    // specifying FALSE in name column loads an empty dataset
+    if (name === false) {
+      this.df = new DataFrame([]);
+    }
   }
 
   /** Extract a list of all required input sources and check to see if they already exist or will be generated */
