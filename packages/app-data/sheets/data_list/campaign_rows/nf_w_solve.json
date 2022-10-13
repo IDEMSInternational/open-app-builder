@@ -66,17 +66,22 @@
       "title": "@global.m_w_released",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
+        }
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.user_name! You are making such good progress! \n\nHaving a teen means having lots of unexpected problems. This @global.workshop will show you how to deal with them."
+          "eng": "Hi @fields.user_name! You are making such good progress! \n\nHaving a teen means having lots of unexpected problems. This workshop will show you how to deal with them."
         }
       },
-      "text": "Hi @fields.user_name! You are making such good progress! \n\nHaving a teen means having lots of unexpected problems. This @global.workshop will show you how to deal with them."
+      "text": "Hi @fields.user_name! You are making such good progress! \n\nHaving a teen means having lots of unexpected problems. This workshop will show you how to deal with them."
     },
     {
       "id": "w_released_w_solve_tog",
@@ -140,17 +145,22 @@
       "title": "@global.m_w_released",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
+        }
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.group_name! You are making such good progress!\n\nHaving a teen means having a lot of unexpected problems to deal with. This @global.workshop will show you all how to deal with them."
+          "eng": "Hi @fields.group_name! You are making such good progress!\n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you all how to deal with them."
         }
       },
-      "text": "Hi @fields.group_name! You are making such good progress!\n\nHaving a teen means having a lot of unexpected problems to deal with. This @global.workshop will show you all how to deal with them."
+      "text": "Hi @fields.group_name! You are making such good progress!\n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you all how to deal with them."
     },
     {
       "id": "relax_w_solve",
@@ -383,17 +393,22 @@
       "title": "@global.m_w_reminder",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
+        }
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_reminder"
         },
         "text": {
-          "eng": "Unexpected problems arise when we have teens. \n \nLearn how to address them in the next @global.workshop."
+          "eng": "Unexpected problems arise when we have teens. \n \nLearn how to address them in the next workshop."
         }
       },
-      "text": "Unexpected problems arise when we have teens. \n \nLearn how to address them in the next @global.workshop."
+      "text": "Unexpected problems arise when we have teens. \n \nLearn how to address them in the next workshop."
     },
     {
       "id": "w_in_progress_w_solve",
@@ -722,17 +737,22 @@
       "title": "@global.m_w_tomorrow",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
+        }
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Great! You completed the @data.workshop.w_solve.in_text_title. Tomorrow, a new @global.workshop is unlocked to help you keep your teen safe."
+          "eng": "Great! You completed the @data.workshop.w_solve.in_text_title. Tomorrow, a new workshop is unlocked to help you keep your teen safe."
         }
       },
-      "text": "Great! You completed the @data.workshop.w_solve.in_text_title. Tomorrow, a new @global.workshop is unlocked to help you keep your teen safe."
+      "text": "Great! You completed the @data.workshop.w_solve.in_text_title. Tomorrow, a new workshop is unlocked to help you keep your teen safe."
     },
     {
       "id": "w_tomorrow_w_solve_incompl",
@@ -789,17 +809,22 @@
       "title": "@global.m_w_tomorrow",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
+        }
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Access a new @global.workshop tomorrow! \n \n By completing the @data.workshop.w_solve.in_text_title first, you'll know how to solve problems together."
+          "eng": "Access a new workshop tomorrow! \n \n By completing the @data.workshop.w_solve.in_text_title first, you'll know how to solve problems together."
         }
       },
-      "text": "Access a new @global.workshop tomorrow! \n \n By completing the @data.workshop.w_solve.in_text_title first, you'll know how to solve problems together."
+      "text": "Access a new workshop tomorrow! \n \n By completing the @data.workshop.w_solve.in_text_title first, you'll know how to solve problems together."
     }
   ],
   "_xlsxPath": "global/campaigns/notifications_in_week_messages.xlsx"
