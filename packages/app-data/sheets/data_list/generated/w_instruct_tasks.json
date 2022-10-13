@@ -69,42 +69,48 @@
       "individual": true,
       "together": true,
       "priority": 12,
-      "template": "w_instruct_read_1"
+      "template": "w_instruct_read_1",
+      "subtask_group": "read_1"
     },
     {
       "id": "question_1",
       "individual": true,
       "together": false,
       "priority": 13,
-      "template": "w_instruct_question_1"
+      "template": "w_instruct_question_1",
+      "subtask_group": "read_1"
     },
     {
       "id": "talk_1",
       "individual": false,
       "together": true,
       "priority": 13,
-      "template": "w_instruct_talk_1"
+      "template": "w_instruct_talk_1",
+      "subtask_group": "read_1"
     },
     {
       "id": "read_2",
       "individual": true,
       "together": true,
       "priority": 14,
-      "template": "w_instruct_read_2"
+      "template": "w_instruct_read_2",
+      "subtask_group": "read_2"
     },
     {
       "id": "question_2",
       "individual": true,
       "together": false,
       "priority": 15,
-      "template": "w_instruct_question_2"
+      "template": "w_instruct_question_2",
+      "subtask_group": "read_2"
     },
     {
       "id": "talk_2",
       "individual": false,
       "together": true,
       "priority": 15,
-      "template": "w_instruct_talk_2"
+      "template": "w_instruct_talk_2",
+      "subtask_group": "read_2"
     },
     {
       "id": "try",

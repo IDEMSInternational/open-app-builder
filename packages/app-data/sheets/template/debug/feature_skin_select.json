@@ -17,12 +17,29 @@
     {
       "name": "skins_list",
       "value": [
-        "name: weekly_workshop | text: Weekly Workshop (default)",
+        "name: weekly_workshop | text: @global.weekly_workshop (default)",
         "name: modular | text: Modular"
       ],
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "skins_list"
+      "_nested_name": "skins_list",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "name: weekly_workshop | text: @global.weekly_workshop (default)",
+              "matchedExpression": "@global.weekly_workshop",
+              "type": "global",
+              "fieldName": "weekly_workshop"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@global.weekly_workshop": [
+          "value.0"
+        ]
+      }
     },
     {
       "type": "radio_group",
