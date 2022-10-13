@@ -393,17 +393,22 @@
       "title": "@global.m_w_reminder",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
+        }
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_reminder"
         },
         "text": {
-          "eng": "Teens don’t always listen. Look at this week's @global.workshop to learn how positive instructions can help."
+          "eng": "Teens don’t always listen. Look at this week's workshop to learn how positive instructions can help."
         }
       },
-      "text": "Teens don’t always listen. Look at this week's @global.workshop to learn how positive instructions can help."
+      "text": "Teens don’t always listen. Look at this week's workshop to learn how positive instructions can help."
     },
     {
       "id": "w_in_progress_w_instruct",
@@ -819,17 +824,22 @@
       "title": "@global.m_w_tomorrow",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
+        }
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Congratulations, you completed the @data.workshop.w_instruct.in_text_title.\n\nTomorrow, a new @global.workshop is ready for you. See a big difference by making small changes!"
+          "eng": "Congratulations, you completed the @data.workshop.w_instruct.in_text_title.\n\nTomorrow, a new workshop is ready for you. See a big difference by making small changes!"
         }
       },
-      "text": "Congratulations, you completed the @data.workshop.w_instruct.in_text_title.\n\nTomorrow, a new @global.workshop is ready for you. See a big difference by making small changes!"
+      "text": "Congratulations, you completed the @data.workshop.w_instruct.in_text_title.\n\nTomorrow, a new workshop is ready for you. See a big difference by making small changes!"
     },
     {
       "id": "w_tomorrow_w_instruct_incompl",

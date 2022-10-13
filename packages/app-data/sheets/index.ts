@@ -1465,12 +1465,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_parent_point_counter.xlsx",
     },
-    comp_qr_code: {
-      flow_type: "template",
-      flow_name: "comp_qr_code",
-      flow_subtype: "component_demo",
-      _xlsxPath: "quality_assurance/component_sheets/component_qr_code.xlsx",
-    },
     comp_radio_group: {
       flow_type: "template",
       flow_name: "comp_radio_group",
@@ -2647,12 +2641,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_subtype: "debug",
       flow_name: "example_items_pipe",
-      _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
-    },
-    example_items_pipe_2: {
-      flow_type: "template",
-      flow_subtype: "debug",
-      flow_name: "example_items_pipe_2",
       _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
     },
     example_items_radio: {

@@ -66,9 +66,16 @@
     {
       "type": "button",
       "name": "button_2",
-      "value": "@global.weekly_workshop_options",
+      "value": "Workshop Options",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
       },
       "action_list": [
         {
@@ -84,22 +91,7 @@
       "parameter_list": {
         "text_align": "centre"
       },
-      "_nested_name": "button_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.weekly_workshop_options",
-            "matchedExpression": "@global.weekly_workshop_options",
-            "type": "global",
-            "fieldName": "weekly_workshop_options"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.weekly_workshop_options": [
-          "value"
-        ]
-      }
+      "_nested_name": "button_2"
     },
     {
       "type": "button",

@@ -146,9 +146,16 @@
     {
       "type": "button",
       "name": "button_3",
-      "value": "Update my @global.workshop options",
+      "value": "Update my workshop options",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
       },
       "action_list": [
         {
@@ -161,22 +168,7 @@
           "_cleaned": "click | go_to:workshop_options_page"
         }
       ],
-      "_nested_name": "button_3",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Update my @global.workshop options",
-            "matchedExpression": "@global.workshop",
-            "type": "global",
-            "fieldName": "workshop"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.workshop": [
-          "value"
-        ]
-      }
+      "_nested_name": "button_3"
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
