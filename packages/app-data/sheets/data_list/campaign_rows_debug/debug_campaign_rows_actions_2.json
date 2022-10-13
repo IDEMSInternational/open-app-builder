@@ -129,7 +129,7 @@
       "campaign_list": [
         "debug_actions_2"
       ],
-      "text": "Go to the workshop stepper",
+      "text": "Go to the @global.workshop stepper",
       "title": "Debug 1on1 stepper"
     }
   ],
