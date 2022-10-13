@@ -10,7 +10,7 @@
       "together": true,
       "priority": 11,
       "template": "w_rules_read_1",
-      "subtask_group": "read_1"
+      "group": "read_1"
     },
     {
       "id": "question",
@@ -18,7 +18,7 @@
       "together": false,
       "priority": 12,
       "template": "w_rules_question",
-      "subtask_group": "read_1"
+      "group": "read_1"
     },
     {
       "id": "talk",
@@ -26,7 +26,7 @@
       "together": true,
       "priority": 12,
       "template": "w_rules_talk",
-      "subtask_group": "read_1"
+      "group": "read_1"
     },
     {
       "id": "read_2",
