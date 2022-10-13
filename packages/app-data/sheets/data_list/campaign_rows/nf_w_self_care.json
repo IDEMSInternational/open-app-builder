@@ -243,17 +243,23 @@
       "title": "@global.m_w_tomorrow",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_zu": true
+        }
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Start a brand new @global.parent_app @global.workshop tomorrow. You'll see great results!"
+          "eng": "Start a brand new @global.parent_app workshop tomorrow. You'll see great results!"
         }
       },
-      "text": "Start a brand new @global.parent_app @global.workshop tomorrow. You'll see great results!"
+      "text": "Start a brand new @global.parent_app workshop tomorrow. You'll see great results!"
     },
     {
       "id": "w_tomorrow_w_self_care_tog",
@@ -310,17 +316,23 @@
       "title": "@global.m_w_tomorrow",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_zu": true
+        }
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Remember to tell your @global.parent_app partners about the app. Tomorrow, you can start doing @global.parent_app @global.workshops together!"
+          "eng": "Remember to tell your @global.parent_app partners about the app. Tomorrow, you can start doing @global.parent_app workshops together!"
         }
       },
-      "text": "Remember to tell your @global.parent_app partners about the app. Tomorrow, you can start doing @global.parent_app @global.workshops together!"
+      "text": "Remember to tell your @global.parent_app partners about the app. Tomorrow, you can start doing @global.parent_app workshops together!"
     },
     {
       "activation_condition_list": []

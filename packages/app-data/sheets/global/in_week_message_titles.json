@@ -6,9 +6,16 @@
     {
       "type": "declare_global_constant",
       "name": "m_w_tomorrow",
-      "value": "New @global.workshop ready tomorrow!",
+      "value": "New workshop ready tomorrow!",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
       }
     },
     {
@@ -29,9 +36,16 @@
     {
       "type": "declare_global_constant",
       "name": "m_w_reminder",
-      "value": "@global.workshop_capital Reminder",
+      "value": "Workshop Reminder",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
       }
     },
     {
