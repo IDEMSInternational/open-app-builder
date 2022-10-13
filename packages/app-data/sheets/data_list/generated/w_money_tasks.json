@@ -97,56 +97,64 @@
       "individual": true,
       "together": true,
       "priority": 16,
-      "template": "w_money_read_2"
+      "template": "w_money_read_2",
+      "subtask_group": "read_2"
     },
     {
       "id": "question_1",
       "individual": true,
       "together": false,
       "priority": 17,
-      "template": "w_money_tq_1"
+      "template": "w_money_tq_1",
+      "subtask_group": "read_2"
     },
     {
       "id": "talk_1",
       "individual": false,
       "together": true,
       "priority": 17,
-      "template": "w_money_tq_1"
+      "template": "w_money_tq_1",
+      "subtask_group": "read_2"
     },
     {
       "id": "read_3",
       "individual": true,
       "together": true,
       "priority": 18,
-      "template": "w_money_read_3"
+      "template": "w_money_read_3",
+      "subtask_group": "read_3"
     },
     {
       "id": "question_2",
       "individual": true,
       "together": false,
       "priority": 19,
-      "template": "w_money_tq_2"
+      "template": "w_money_tq_2",
+      "subtask_group": "read_3"
     },
     {
       "id": "talk_2",
       "individual": false,
       "together": true,
       "priority": 19,
-      "template": "w_money_tq_2"
+      "template": "w_money_tq_2",
+      "subtask_group": "read_3"
     },
     {
       "id": "question_3",
       "individual": true,
       "together": false,
       "priority": 20,
-      "template": "w_money_tq_3"
+      "template": "w_money_tq_3",
+      "subtask_group": "read_3"
     },
     {
       "id": "talk_3",
       "individual": false,
       "together": true,
       "priority": 20,
-      "template": "w_money_tq_3"
+      "template": "w_money_tq_3",
+      "subtask_group": "read_3"
     },
     {
       "id": "learn_5",
