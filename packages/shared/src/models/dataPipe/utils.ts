@@ -37,14 +37,14 @@ export function normalizeData(data: { [key: string]: any }[], missingValueReplac
     }
   }
   const columns = Object.keys(columnsHashmap);
-  // Replace missing values
+  // Replace missing values and order columns consistently
   return data.map((entry) => {
+    const normalised = {};
     for (const column of columns) {
-      if (!entry.hasOwnProperty(column)) {
-        entry[column] = missingValueReplacement;
-      }
+      const value = entry.hasOwnProperty(column) ? entry[column] : missingValueReplacement;
+      normalised[column] = value;
     }
-    return entry;
+    return normalised;
   });
 }
 
