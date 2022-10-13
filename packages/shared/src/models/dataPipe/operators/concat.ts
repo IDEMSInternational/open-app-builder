@@ -1,4 +1,5 @@
 import { DataFrame, concat } from "danfojs";
+import { normalizeData } from "..";
 import type { DataPipe } from "../pipe";
 import { setIndexColumn } from "../utils";
 import BaseOperator from "./base";
@@ -6,15 +7,21 @@ import BaseOperator from "./base";
 type ILoadedDatalist = any; // datalist
 
 class ConcatOperator extends BaseOperator {
-  public args_list: string[];
+  public args_list: { data: any; name: string }[];
   private indexColumn = "id";
+  /** When processing arg keep track of active for logging purposes */
+  private activeArg: { data: any; name: string };
   constructor(df: DataFrame, args_list: any, pipe: DataPipe) {
     super(df, args_list, pipe);
   }
 
   // load input data list from arg, populate error object if not exist for use in validation step
   parseArg(arg: any): ILoadedDatalist {
-    return this.pipe.inputSources[arg] ?? { error: `Data list does not exists: ${arg}` };
+    const data = this.pipe.inputSources[arg];
+    if (!data) {
+      return { error: `Data list does not exists: ${arg}` };
+    }
+    return { data, name: arg };
   }
 
   validateArg(datalist: ILoadedDatalist) {
@@ -22,13 +29,14 @@ class ConcatOperator extends BaseOperator {
   }
 
   apply() {
-    for (const dataList of this.args_list) {
-      this.df = this.applyConcat(dataList);
+    for (const arg of this.args_list) {
+      this.activeArg = arg;
+      this.df = this.applyConcat(arg.data);
     }
     return this.df;
   }
   private applyConcat(data: any): DataFrame {
-    let concatDf = new DataFrame(data);
+    let concatDf = new DataFrame(normalizeData(data));
     // empty dataframes throw error on concat, so just return the other (or existing) dataframe instead
     if (this.df.index.length === 0) return concatDf;
     if (concatDf.index.length === 0) return this.df;
@@ -68,11 +76,10 @@ class ConcatOperator extends BaseOperator {
   private checkDuplicateRows(df1: DataFrame, df2: DataFrame) {
     const duplicateIndex = df1.index.find((index) => df2.index.includes(index));
     if (duplicateIndex) {
-      throw new Error("Multiple entries exist for index: " + duplicateIndex);
+      throw new Error(
+        `${this.activeArg.name}\nMultiple entries exist for index: ${duplicateIndex}`
+      );
     }
   }
-
-  /** Concatenate two identically-shaped data frames */
-  private concatDfs(df1: DataFrame, df2: DataFrame) {}
 }
 export default ConcatOperator;
