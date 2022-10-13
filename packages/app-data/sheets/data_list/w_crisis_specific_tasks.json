@@ -10,7 +10,7 @@
       "together": true,
       "priority": 11,
       "template": "w_crisis_read_1",
-      "subtask_group": "read_1"
+      "group": "read_1"
     },
     {
       "id": "question_1",
@@ -18,7 +18,7 @@
       "together": false,
       "priority": 12,
       "template": "w_crisis_question_1",
-      "subtask_group": "read_1"
+      "group": "read_1"
     },
     {
       "id": "talk_1",
@@ -26,7 +26,7 @@
       "together": true,
       "priority": 12,
       "template": "w_crisis_talk_1",
-      "subtask_group": "read_1"
+      "group": "read_1"
     },
     {
       "id": "read_2",
@@ -34,7 +34,7 @@
       "together": true,
       "priority": 13,
       "template": "w_crisis_read_2",
-      "subtask_group": "read_2"
+      "group": "read_2"
     },
     {
       "id": "question_2",
@@ -42,7 +42,7 @@
       "together": false,
       "priority": 14,
       "template": "w_crisis_question_2",
-      "subtask_group": "read_2"
+      "group": "read_2"
     },
     {
       "id": "talk_2",
@@ -50,7 +50,7 @@
       "together": true,
       "priority": 14,
       "template": "w_crisis_talk_2",
-      "subtask_group": "read_2"
+      "group": "read_2"
     },
     {
       "id": "learn",
