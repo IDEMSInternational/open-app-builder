@@ -66,22 +66,17 @@
       "title": "@global.m_w_released",
       "_translations": {
         "title": {},
-        "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.user_name! Amazing, this is your second month with @global.parent_app.\n\nMost families struggle with money. This workshop will give you tools to plan your expenses to help you through the month."
+          "eng": "Hi @fields.user_name! Amazing, this is your second month with @global.parent_app.\n\nMost families struggle with money. This @global.workshop will give you tools to plan your expenses to help you through the month."
         }
       },
-      "text": "Hi @fields.user_name! Amazing, this is your second month with @global.parent_app.\n\nMost families struggle with money. This workshop will give you tools to plan your expenses to help you through the month."
+      "text": "Hi @fields.user_name! Amazing, this is your second month with @global.parent_app.\n\nMost families struggle with money. This @global.workshop will give you tools to plan your expenses to help you through the month."
     },
     {
       "id": "w_released_w_money_tog",
@@ -145,22 +140,17 @@
       "title": "@global.m_w_released",
       "_translations": {
         "title": {},
-        "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.group_name! Amazing, this is your second month with @global.parent_app. \n\nMost families struggle with money. This workshop will give you tools to plan your expenses to help you through the month."
+          "eng": "Hi @fields.group_name! Amazing, this is your second month with @global.parent_app. \n\nMost families struggle with money. This @global.workshop will give you tools to plan your expenses to help you through the month."
         }
       },
-      "text": "Hi @fields.group_name! Amazing, this is your second month with @global.parent_app. \n\nMost families struggle with money. This workshop will give you tools to plan your expenses to help you through the month."
+      "text": "Hi @fields.group_name! Amazing, this is your second month with @global.parent_app. \n\nMost families struggle with money. This @global.workshop will give you tools to plan your expenses to help you through the month."
     },
     {
       "id": "relax_w_money",
@@ -739,22 +729,17 @@
       "title": "@global.m_w_tomorrow",
       "_translations": {
         "title": {},
-        "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Great, you completed the @data.workshop.w_money.in_text_title! Tomorrow, access a new workshop to help you set family rules that work."
+          "eng": "Great, you completed the @data.workshop.w_money.in_text_title! Tomorrow, access a new @global.workshop to help you set family rules that work."
         }
       },
-      "text": "Great, you completed the @data.workshop.w_money.in_text_title! Tomorrow, access a new workshop to help you set family rules that work."
+      "text": "Great, you completed the @data.workshop.w_money.in_text_title! Tomorrow, access a new @global.workshop to help you set family rules that work."
     },
     {
       "id": "w_tomorrow_w_money_incompl",
