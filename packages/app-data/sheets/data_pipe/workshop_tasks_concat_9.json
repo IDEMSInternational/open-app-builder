@@ -82,21 +82,24 @@
         "individual": true,
         "together": true,
         "priority": 71,
-        "template": "w_solve_read_2"
+        "template": "w_solve_read_2",
+        "subtask_group": "read_2"
       },
       {
         "id": "think",
         "individual": true,
         "together": false,
         "priority": 72,
-        "template": "w_solve_think"
+        "template": "w_solve_think",
+        "subtask_group": "read_2"
       },
       {
         "id": "talk",
         "individual": false,
         "together": true,
         "priority": 73,
-        "template": "w_solve_talk"
+        "template": "w_solve_talk",
+        "subtask_group": "read_2"
       },
       {
         "id": "learn",
