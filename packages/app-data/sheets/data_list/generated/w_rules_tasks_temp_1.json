@@ -1,5 +1,5 @@
 {
-  "flow_name": "w_rules_tasks",
+  "flow_name": "w_rules_tasks_temp_1",
   "flow_subtype": "generated",
   "flow_type": "data_list",
   "rows": [
@@ -7,64 +7,55 @@
       "id": "welcome_individual",
       "individual": true,
       "together": false,
-      "priority": 1,
-      "completed_field": "task_w_rules_@row.id_completed"
+      "priority": 1
     },
     {
       "id": "care_together",
       "individual": false,
       "together": true,
-      "priority": 2,
-      "completed_field": "task_w_rules_@row.id_completed"
+      "priority": 2
     },
     {
       "id": "relax",
       "individual": true,
       "together": true,
-      "priority": 3,
-      "completed_field": "task_w_rules_@row.id_completed"
+      "priority": 3
     },
     {
       "id": "reflect_together",
       "individual": false,
       "together": true,
-      "priority": 4,
-      "completed_field": "task_w_rules_@row.id_completed"
+      "priority": 4
     },
     {
       "id": "intro",
       "individual": true,
       "together": true,
-      "priority": 5,
-      "completed_field": "task_w_rules_@row.id_completed"
+      "priority": 5
     },
     {
       "id": "tools_activity",
       "individual": true,
       "together": true,
-      "priority": 70,
-      "completed_field": "task_w_rules_@row.id_completed"
+      "priority": 70
     },
     {
       "id": "home_practice",
       "individual": true,
       "together": true,
-      "priority": 80,
-      "completed_field": "task_w_rules_@row.id_completed"
+      "priority": 80
     },
     {
       "id": "ending",
       "individual": true,
       "together": true,
-      "priority": 90,
-      "completed_field": "task_w_rules_@row.id_completed"
+      "priority": 90
     },
     {
       "id": "hp_review",
       "individual": true,
       "together": true,
-      "priority": 91,
-      "completed_field": "task_w_rules_@row.id_completed"
+      "priority": 91
     },
     {
       "id": "read_1",
@@ -72,8 +63,7 @@
       "together": true,
       "priority": 11,
       "template": "w_rules_read_1",
-      "group": "read_1",
-      "completed_field": "task_w_rules_@row.id_completed"
+      "group": "read_1"
     },
     {
       "id": "question",
@@ -81,8 +71,7 @@
       "together": false,
       "priority": 12,
       "template": "w_rules_question",
-      "group": "read_1",
-      "completed_field": "task_w_rules_@row.id_completed"
+      "group": "read_1"
     },
     {
       "id": "talk",
@@ -90,32 +79,28 @@
       "together": true,
       "priority": 12,
       "template": "w_rules_talk",
-      "group": "read_1",
-      "completed_field": "task_w_rules_@row.id_completed"
+      "group": "read_1"
     },
     {
       "id": "read_2",
       "individual": true,
       "together": true,
       "priority": 71,
-      "template": "w_rules_read_2",
-      "completed_field": "task_w_rules_@row.id_completed"
+      "template": "w_rules_read_2"
     },
     {
       "id": "learn",
       "individual": true,
       "together": false,
       "priority": 72,
-      "template": "w_rules_learn",
-      "completed_field": "task_w_rules_@row.id_completed"
+      "template": "w_rules_learn"
     },
     {
       "id": "try",
       "individual": false,
       "together": true,
       "priority": 73,
-      "template": "w_rules_try",
-      "completed_field": "task_w_rules_@row.id_completed"
+      "template": "w_rules_try"
     }
   ]
 }
