@@ -110,6 +110,10 @@ const APP_SIDEMENU_DEFAULTS = {
   should_show_deployment_name: false,
 };
 
+const APP_SKIN_DEFAULTS = {
+  name: "weekly_workshop",
+};
+
 const APP_AUTHENTICATION_DEFAULTS = {
   enforceLogin: false,
   signInTemplate: "sign_in",
@@ -157,6 +161,7 @@ const APP_CONSTANTS = {
   APP_ROUTE_DEFAULTS,
   APP_SIDEMENU_DEFAULTS,
   APP_STRINGS,
+  APP_SKIN_DEFAULTS,
   DYNAMIC_PREFIXES,
   FEEDBACK_MODULE_DEFAULTS,
   FIELD_PREFIX,
