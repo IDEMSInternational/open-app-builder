@@ -393,17 +393,22 @@
       "title": "@global.m_w_reminder",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
+        }
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_reminder"
         },
         "text": {
-          "eng": "Well done - you’ve gained 6 parenting tools already! Do the next @global.workshop to get more!"
+          "eng": "Well done - you’ve gained 6 parenting tools already! Do the next workshop to get more!"
         }
       },
-      "text": "Well done - you’ve gained 6 parenting tools already! Do the next @global.workshop to get more!"
+      "text": "Well done - you’ve gained 6 parenting tools already! Do the next workshop to get more!"
     },
     {
       "id": "w_in_progress_w_consequence",
@@ -466,17 +471,22 @@
       "title": "@global.m_w_in_progress",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
+        }
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_in_progress"
         },
         "text": {
-          "eng": "Complete the @global.workshop and talk with your teen about a positive and a negative consequence of a behaviour."
+          "eng": "Complete the workshop and talk with your teen about a positive and a negative consequence of a behaviour."
         }
       },
-      "text": "Complete the @global.workshop and talk with your teen about a positive and a negative consequence of a behaviour."
+      "text": "Complete the workshop and talk with your teen about a positive and a negative consequence of a behaviour."
     },
     {
       "id": "hp_reminder_w_consequence",
@@ -727,17 +737,22 @@
       "title": "@global.m_w_tomorrow",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
+        }
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Well done for completing the @data.workshop.w_consequence.in_text_title. Access a new @global.workshop tomorrow to help you enjoy and learn useful skills!"
+          "eng": "Well done for completing the @data.workshop.w_consequence.in_text_title. Access a new workshop tomorrow to help you enjoy and learn useful skills!"
         }
       },
-      "text": "Well done for completing the @data.workshop.w_consequence.in_text_title. Access a new @global.workshop tomorrow to help you enjoy and learn useful skills!"
+      "text": "Well done for completing the @data.workshop.w_consequence.in_text_title. Access a new workshop tomorrow to help you enjoy and learn useful skills!"
     },
     {
       "id": "w_tomorrow_w_consequence_incompl",
