@@ -1,5 +1,5 @@
 {
-  "flow_name": "w_crisis_tasks",
+  "flow_name": "w_crisis_tasks_temp_1",
   "flow_subtype": "generated",
   "flow_type": "data_list",
   "rows": [
@@ -7,64 +7,55 @@
       "id": "welcome_individual",
       "individual": true,
       "together": false,
-      "priority": 1,
-      "completed_field": "task_w_crisis_@row.id_completed"
+      "priority": 1
     },
     {
       "id": "care_together",
       "individual": false,
       "together": true,
-      "priority": 2,
-      "completed_field": "task_w_crisis_@row.id_completed"
+      "priority": 2
     },
     {
       "id": "relax",
       "individual": true,
       "together": true,
-      "priority": 3,
-      "completed_field": "task_w_crisis_@row.id_completed"
+      "priority": 3
     },
     {
       "id": "reflect_together",
       "individual": false,
       "together": true,
-      "priority": 4,
-      "completed_field": "task_w_crisis_@row.id_completed"
+      "priority": 4
     },
     {
       "id": "intro",
       "individual": true,
       "together": true,
-      "priority": 5,
-      "completed_field": "task_w_crisis_@row.id_completed"
+      "priority": 5
     },
     {
       "id": "tools_activity",
       "individual": true,
       "together": true,
-      "priority": 70,
-      "completed_field": "task_w_crisis_@row.id_completed"
+      "priority": 70
     },
     {
       "id": "home_practice",
       "individual": true,
       "together": true,
-      "priority": 80,
-      "completed_field": "task_w_crisis_@row.id_completed"
+      "priority": 80
     },
     {
       "id": "ending",
       "individual": true,
       "together": true,
-      "priority": 90,
-      "completed_field": "task_w_crisis_@row.id_completed"
+      "priority": 90
     },
     {
       "id": "hp_review",
       "individual": true,
       "together": true,
-      "priority": 91,
-      "completed_field": "task_w_crisis_@row.id_completed"
+      "priority": 91
     },
     {
       "id": "read_1",
@@ -72,8 +63,7 @@
       "together": true,
       "priority": 11,
       "template": "w_crisis_read_1",
-      "group": "read_1",
-      "completed_field": "task_w_crisis_@row.id_completed"
+      "group": "read_1"
     },
     {
       "id": "question_1",
@@ -81,8 +71,7 @@
       "together": false,
       "priority": 12,
       "template": "w_crisis_question_1",
-      "group": "read_1",
-      "completed_field": "task_w_crisis_@row.id_completed"
+      "group": "read_1"
     },
     {
       "id": "talk_1",
@@ -90,8 +79,7 @@
       "together": true,
       "priority": 12,
       "template": "w_crisis_talk_1",
-      "group": "read_1",
-      "completed_field": "task_w_crisis_@row.id_completed"
+      "group": "read_1"
     },
     {
       "id": "read_2",
@@ -99,8 +87,7 @@
       "together": true,
       "priority": 13,
       "template": "w_crisis_read_2",
-      "group": "read_2",
-      "completed_field": "task_w_crisis_@row.id_completed"
+      "group": "read_2"
     },
     {
       "id": "question_2",
@@ -108,8 +95,7 @@
       "together": false,
       "priority": 14,
       "template": "w_crisis_question_2",
-      "group": "read_2",
-      "completed_field": "task_w_crisis_@row.id_completed"
+      "group": "read_2"
     },
     {
       "id": "talk_2",
@@ -117,16 +103,14 @@
       "together": true,
       "priority": 14,
       "template": "w_crisis_talk_2",
-      "group": "read_2",
-      "completed_field": "task_w_crisis_@row.id_completed"
+      "group": "read_2"
     },
     {
       "id": "learn",
       "individual": true,
       "together": true,
       "priority": 71,
-      "template": "w_crisis_learn",
-      "completed_field": "task_w_crisis_@row.id_completed"
+      "template": "w_crisis_learn"
     }
   ]
 }
