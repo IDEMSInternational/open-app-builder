@@ -143,7 +143,7 @@
       "id": "w_rules_online_safety",
       "workshop": "w_rules",
       "suffix": "online_safety",
-      "intro_text": "Rules are important to keep your teens safe - also online. There’s more about this in the @global.weekly_workshop on safety planning, but let’s already have a first look now!",
+      "intro_text": "Rules are important to keep your teens safe - also online. There’s more about this in the Weekly Workshop on safety planning, but let’s already have a first look now!",
       "outro_habit_data": "@data.habit.safe",
       "image_1": "plh_images/workshops/w_rules/read_2/slide_1.svg",
       "text_1": "@global.w_rules_female_caregiver_2: \"@global.w_rules_teen_girl, have you done your homework?\"\n\n@global.w_rules_teen_girl: \"Just a minute @global.w_rules_female_caregiver_2, I’m finishing this @global.teen_social_medium video\"",

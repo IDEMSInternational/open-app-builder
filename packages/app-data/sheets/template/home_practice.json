@@ -263,27 +263,19 @@
         },
         {
           "name": "intro_text",
-          "value": "Small actions, big results! Parents who practice their @global.workshop skills at home get better results.",
+          "value": "Small actions, big results! Parents who practice their workshop skills at home get better results.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true,
+              "za_af": true,
+              "za_st": true,
+              "za_tn": true,
+              "za_xh": true,
+              "za_zu": true
+            }
           },
           "type": "set_variable",
-          "_nested_name": "workshop_activity.intro_text",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "Small actions, big results! Parents who practice their @global.workshop skills at home get better results.",
-                "matchedExpression": "@global.workshop",
-                "type": "global",
-                "fieldName": "workshop"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@global.workshop": [
-              "value"
-            ]
-          }
+          "_nested_name": "workshop_activity.intro_text"
         },
         {
           "name": "activity_banner",

@@ -393,17 +393,22 @@
       "title": "@global.m_w_reminder",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
+        }
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_reminder"
         },
         "text": {
-          "eng": "Think about all the parenting skills you've already gained!\n\nComplete the next @global.workshop to get more."
+          "eng": "Think about all the parenting skills you've already gained!\n\nComplete the next workshop to get more."
         }
       },
-      "text": "Think about all the parenting skills you've already gained!\n\nComplete the next @global.workshop to get more."
+      "text": "Think about all the parenting skills you've already gained!\n\nComplete the next workshop to get more."
     },
     {
       "id": "w_in_progress_w_safe",
@@ -734,17 +739,22 @@
       "title": "@global.m_w_tomorrow",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true
+        }
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Congratulations, you completed @data.workshop.w_safe.in_text_title. A new @global.workshop is ready tomorrow to help your family deal with any situation – together you can do so much!"
+          "eng": "Congratulations, you completed @data.workshop.w_safe.in_text_title. A new workshop is ready tomorrow to help your family deal with any situation – together you can do so much!"
         }
       },
-      "text": "Congratulations, you completed @data.workshop.w_safe.in_text_title. A new @global.workshop is ready tomorrow to help your family deal with any situation – together you can do so much!"
+      "text": "Congratulations, you completed @data.workshop.w_safe.in_text_title. A new workshop is ready tomorrow to help your family deal with any situation – together you can do so much!"
     },
     {
       "id": "w_tomorrow_w_safe_incompl",

@@ -63,9 +63,14 @@
           "rows": [
             {
               "name": "text",
-              "value": "Hi @fields.user_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis @global.workshop will show you how.",
+              "value": "Hi @fields.user_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true
+                }
               },
               "condition": "!@local.do_workshops_together",
               "type": "set_variable",
@@ -73,16 +78,10 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Hi @fields.user_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis @global.workshop will show you how.",
+                    "fullExpression": "Hi @fields.user_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
                     "matchedExpression": "@fields.user_name",
                     "type": "fields",
                     "fieldName": "user_name"
-                  },
-                  {
-                    "fullExpression": "Hi @fields.user_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis @global.workshop will show you how.",
-                    "matchedExpression": "@global.workshop",
-                    "type": "global",
-                    "fieldName": "workshop"
                   }
                 ],
                 "condition": [
@@ -98,9 +97,6 @@
                 "@fields.user_name": [
                   "value"
                 ],
-                "@global.workshop": [
-                  "value"
-                ],
                 "!@local.do_workshops_together": [
                   "condition"
                 ]
@@ -108,9 +104,14 @@
             },
             {
               "name": "text",
-              "value": "Hi @fields.group_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis @global.workshop will show you how.",
+              "value": "Hi @fields.group_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true
+                }
               },
               "condition": "@local.do_workshops_together",
               "type": "set_variable",
@@ -118,16 +119,10 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Hi @fields.group_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis @global.workshop will show you how.",
+                    "fullExpression": "Hi @fields.group_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
                     "matchedExpression": "@fields.group_name",
                     "type": "fields",
                     "fieldName": "group_name"
-                  },
-                  {
-                    "fullExpression": "Hi @fields.group_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis @global.workshop will show you how.",
-                    "matchedExpression": "@global.workshop",
-                    "type": "global",
-                    "fieldName": "workshop"
                   }
                 ],
                 "condition": [
@@ -141,9 +136,6 @@
               },
               "_dynamicDependencies": {
                 "@fields.group_name": [
-                  "value"
-                ],
-                "@global.workshop": [
                   "value"
                 ],
                 "@local.do_workshops_together": [
