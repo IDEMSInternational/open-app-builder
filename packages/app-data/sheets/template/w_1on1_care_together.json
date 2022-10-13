@@ -143,23 +143,22 @@
                   "rows": [
                     {
                       "name": "text_1",
-                      "value": "You always can change your workshop day and your group name in the @global.weekly_workshop_options.",
+                      "value": "You always can change your @global.workshop day and your group name in the @global.weekly_workshop_options.",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "care_together.workshop_activity.content_box.box_2.text_1",
                       "_dynamicFields": {
                         "value": [
                           {
-                            "fullExpression": "You always can change your workshop day and your group name in the @global.weekly_workshop_options.",
+                            "fullExpression": "You always can change your @global.workshop day and your group name in the @global.weekly_workshop_options.",
+                            "matchedExpression": "@global.workshop",
+                            "type": "global",
+                            "fieldName": "workshop"
+                          },
+                          {
+                            "fullExpression": "You always can change your @global.workshop day and your group name in the @global.weekly_workshop_options.",
                             "matchedExpression": "@global.weekly_workshop_options",
                             "type": "global",
                             "fieldName": "weekly_workshop_options"
@@ -167,6 +166,9 @@
                         ]
                       },
                       "_dynamicDependencies": {
+                        "@global.workshop": [
+                          "value"
+                        ],
                         "@global.weekly_workshop_options": [
                           "value"
                         ]
