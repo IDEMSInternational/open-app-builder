@@ -37,8 +37,8 @@ export class AppConfigService {
       appConfigWithDeploymentOverrides,
       this.appConfigSkinOverrides
     );
-    this.appConfig$.next(appConfigWithSkinOverrides);
     this.APP_CONFIG = appConfigWithSkinOverrides;
+    this.appConfig$.next(appConfigWithSkinOverrides);
   }
 
   private applyAppConfigOverrides(appConfig: IAppConstants, overrides: IAppConstantsOverride) {
