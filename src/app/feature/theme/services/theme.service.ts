@@ -2,9 +2,9 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { THEMES } from "src/theme/themes";
-import { APP_CONSTANTS } from "src/app/data";
+import { APP_CONFIG } from "src/app/data";
 
-const { APP_FIELDS } = APP_CONSTANTS;
+const { APP_FIELDS } = APP_CONFIG;
 
 @Injectable({
   providedIn: "root",
