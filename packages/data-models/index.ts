@@ -4,4 +4,4 @@ export { IDeploymentWorkflows, IWorkflow, IWorkflowContext, WORKFLOW_DEFAULTS } 
 export { IDeploymentConfig, DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS } from "./deployment.model";
 
 export { getDefaultAppConstants } from "./constants";
-export type { IAppConstants } from "./constants";
+export type { IAppConstants, IAppConstantsOverride } from "./constants";

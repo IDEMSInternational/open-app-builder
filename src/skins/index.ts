@@ -2,12 +2,31 @@ import { IAppSkin } from "./skin.model";
 import { arrayToHashmap } from "src/app/shared/utils";
 
 // TODO: Eventually these skins should be authored from templates
+/** A list of skins that can be applied to an app to override the core APP_CONFIG.
+ * For example:
+ * {
+ *  name: "no_sidemenu",
+ *  appConfig: {
+ *    APP_SIDEMENU_DEFAULTS: {
+ *      enable_sidemenu: false
+ *    }
+ *    APP_HEADER_DEFAULTS: {
+ *      should_show_menu_button: false
+ *    }
+ *  }
+ *}
+ *
+ * TODO: Eventually these skins should be authored from templates */
 const skins: IAppSkin[] = [
   { name: "default" },
   { name: "weekly_workshop" },
   {
     name: "modular",
-    footerTemplateName: "navigation_bar",
+    // appConfig: {
+    //   APP_HEADER_DEFAULTS: {
+    //     title: "test"
+    //   }
+    // }
   },
 ];
 
