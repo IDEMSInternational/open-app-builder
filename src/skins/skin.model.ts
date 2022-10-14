@@ -1,4 +1,6 @@
+import { IAppConstantsOverride } from "packages/data-models";
+
 export interface IAppSkin {
   name: string;
-  footerTemplateName?: string;
+  appConfig?: IAppConstantsOverride;
 }

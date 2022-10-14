@@ -4,9 +4,8 @@ import { NavigationEnd, NavigationStart, Router } from "@angular/router";
 import { App } from "@capacitor/app";
 import { Capacitor, PluginListenerHandle } from "@capacitor/core";
 import { Subscription } from "rxjs";
-import { APP_CONSTANTS } from "src/app/data";
-
-const { APP_HEADER_DEFAULTS } = APP_CONSTANTS;
+import { IAppConstants } from "../model";
+import { AppConfigService } from "../services/app-config/app-config.service";
 
 @Component({
   selector: "plh-main-header",
@@ -29,7 +28,8 @@ const { APP_HEADER_DEFAULTS } = APP_CONSTANTS;
   </ion-header>`,
 })
 export class PLHMainHeaderComponent implements OnInit, OnDestroy {
-  title = APP_HEADER_DEFAULTS.title;
+  appConfig: IAppConstants;
+  title: string;
   showMenuButton = false;
   showBackButton = false;
 
@@ -38,8 +38,14 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
   hardwareBackButton$: PluginListenerHandle;
   /** track if navigation has been used to handle back button click behaviour */
   hasBackHistory = false;
-  constructor(private router: Router, private location: Location) {}
+  constructor(
+    private router: Router,
+    private location: Location,
+    private appConfigService: AppConfigService
+  ) {}
   async ngOnInit() {
+    this.appConfig = this.appConfigService.APP_CONFIG;
+    this.title = this.appConfig.APP_HEADER_DEFAULTS.title;
     // subscribe to and handle route changes
     this.routeChanges$ = this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
@@ -77,14 +83,14 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
    * It cannot subscribe to standard router methods as sits outside ion-router-outlet
    */
   private handleRouteChange() {
-    const { should_show_back_button, should_show_menu_button } = APP_HEADER_DEFAULTS;
+    const { should_show_back_button, should_show_menu_button } = this.appConfig.APP_HEADER_DEFAULTS;
     this.showBackButton = should_show_back_button(location);
     this.showMenuButton = should_show_menu_button(location);
   }
 
   /** When device back button evaluate conditions to handle app minimise */
   private handleHardwareBackPress() {
-    const { should_minimize_app_on_back } = APP_HEADER_DEFAULTS;
+    const { should_minimize_app_on_back } = this.appConfig.APP_HEADER_DEFAULTS;
     if (should_minimize_app_on_back(location)) {
       App.minimizeApp();
     }

@@ -106,6 +106,7 @@ const APP_HEADER_DEFAULTS = {
 };
 
 const APP_SIDEMENU_DEFAULTS = {
+  enable_sidemenu: true,
   title: "App",
   // name of template to display in sidebar
   template_name: "app_menu",
@@ -173,3 +174,11 @@ const APP_CONSTANTS = {
 // Export as a clone to avoid risk one import could alter another
 export const getDefaultAppConstants = () => clone(APP_CONSTANTS);
 export type IAppConstants = typeof APP_CONSTANTS;
+
+/** A recursive version of Partial, making all properties, included nested ones, optional.
+ * Copied from https://stackoverflow.com/a/47914631
+ */
+type RecursivePartial<T> = {
+  [P in keyof T]?: RecursivePartial<T[P]>;
+};
+export type IAppConstantsOverride = RecursivePartial<IAppConstants>;
