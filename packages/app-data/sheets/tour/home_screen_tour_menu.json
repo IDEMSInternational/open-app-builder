@@ -19,28 +19,18 @@
     },
     {
       "type": "step",
-      "message_text": "<p> Each week you will unlock a new workshop focusing on a different parenting skill. </p>",
+      "message_text": "<p> Each week you will unlock a new @global.workshop focusing on a different parenting skill. </p>",
       "_translations": {
-        "message_text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "message_text": {}
       },
       "template_component_name": "tile_weekly_workshops",
       "route": "template/home_screen"
     },
     {
       "type": "step",
-      "message_text": "<p>The round button appears when a new workshop is ready for you.</p>",
+      "message_text": "<p>The round button appears when a new @global.workshop is ready for you.</p>",
       "_translations": {
-        "message_text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "message_text": {}
       },
       "template_component_name": "tile_weekly_workshops",
       "route": "template/home_screen"
