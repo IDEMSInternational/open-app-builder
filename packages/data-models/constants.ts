@@ -48,9 +48,9 @@ const APP_LANGUAGES = {
   default: "gb_en",
 };
 
-const APP_SKIN_DEFAULTS = {
+const APP_SKINS_CONFIG = {
   default: "default",
-  available: [] as string[],
+  enabled: [] as string[],
 };
 
 /**
@@ -163,7 +163,7 @@ const APP_CONSTANTS = {
   APP_ROUTE_DEFAULTS,
   APP_SIDEMENU_DEFAULTS,
   APP_STRINGS,
-  APP_SKIN_DEFAULTS,
+  APP_SKINS_CONFIG,
   DYNAMIC_PREFIXES,
   FEEDBACK_MODULE_DEFAULTS,
   FIELD_PREFIX,

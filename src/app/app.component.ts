@@ -33,7 +33,9 @@ import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lif
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
 import { IAppConstants } from "./shared/model";
 
-const { APP_FIELDS, APP_SIDEMENU_DEFAULTS, APP_AUTHENTICATION_DEFAULTS } = APP_CONSTANTS;
+// TODO - The APP_FIELDS should come from appConfigService.APP_CONFIG,
+// but currently they are being used before the core services are intialised
+const { APP_FIELDS } = APP_CONSTANTS;
 
 @Component({
   selector: "app-root",
@@ -44,7 +46,7 @@ export class AppComponent {
   APP_VERSION = environment.version;
   DEPLOYMENT_NAME = environment.deploymentName;
   appConfig: IAppConstants;
-  appAuthenticaiontDefaults;
+  appAuthenticationDefaults;
   sideMenuDefaults;
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
@@ -92,7 +94,7 @@ export class AppComponent {
       const user = this.userMetaService.userMeta;
       // Authentication requires verified domain and app ids populated to firebase console
       // Currently only run on native where specified (but can comment out for testing locally)
-      if (this.appAuthenticaiontDefaults.enforceLogin && Capacitor.isNativePlatform()) {
+      if (this.appAuthenticationDefaults.enforceLogin && Capacitor.isNativePlatform()) {
         await this.ensureUserSignedIn();
       }
       if (!user.first_app_open) {
@@ -116,7 +118,7 @@ export class AppComponent {
   async ensureUserSignedIn() {
     const authUser = await this.authService.getCurrentUser();
     if (!authUser) {
-      const templatename = APP_AUTHENTICATION_DEFAULTS.signInTemplate;
+      const templatename = this.appAuthenticationDefaults.signInTemplate;
       const { modal } = await this.templateService.runStandaloneTemplate(templatename, {
         showCloseButton: false,
         waitForDismiss: false,
@@ -139,11 +141,11 @@ export class AppComponent {
     await this.userMetaService.init();
     this.themeService.init();
     this.skinService.init();
-    // initialise appConfig and set properties
+    // initialise appConfig and set dependent properties
     this.appConfigService.init();
     this.appConfig = this.appConfigService.APP_CONFIG;
     this.sideMenuDefaults = this.appConfig.APP_SIDEMENU_DEFAULTS;
-    this.appAuthenticaiontDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
+    this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
     /** CC 2021-05-14 - disabling reminders service until decide on full implementation (ideally not requiring evaluation of all reminders on init) */
     // this.remindersService.init();
     await this.appEventService.init();
