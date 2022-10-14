@@ -30,7 +30,7 @@
     {
       "type": "text",
       "name": "task_id",
-      "value": "Task id: @local.task_data.id",
+      "value": "id: @local.task_data.id",
       "_translations": {
         "value": {}
       },
@@ -38,7 +38,7 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "Task id: @local.task_data.id",
+            "fullExpression": "id: @local.task_data.id",
             "matchedExpression": "@local.task_data.id",
             "type": "local",
             "fieldName": "task_data"
@@ -78,7 +78,7 @@
     {
       "type": "text",
       "name": "print_task_completed_field",
-      "value": "@local.task_completed_field",
+      "value": "completed_field: @local.task_completed_field",
       "_translations": {
         "value": {}
       },
@@ -86,7 +86,7 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.task_completed_field",
+            "fullExpression": "completed_field: @local.task_completed_field",
             "matchedExpression": "@local.task_completed_field",
             "type": "local",
             "fieldName": "task_completed_field"
@@ -101,16 +101,16 @@
     },
     {
       "type": "text",
-      "name": "task_completed",
-      "value": "@fields.@local.task_completed_field",
+      "name": "task_completed_field",
+      "value": "completed from field: @fields.@local.task_completed_field",
       "_translations": {
         "value": {}
       },
-      "_nested_name": "task_completed",
+      "_nested_name": "task_completed_field",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@fields.@local.task_completed_field",
+            "fullExpression": "completed from field: @fields.@local.task_completed_field",
             "matchedExpression": "@local.task_completed_field",
             "type": "local",
             "fieldName": "task_completed_field"
@@ -119,6 +119,30 @@
       },
       "_dynamicDependencies": {
         "@local.task_completed_field": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "task_completed_data",
+      "value": "completed from data list: @local.task_data.completed",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "task_completed_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "completed from data list: @local.task_data.completed",
+            "matchedExpression": "@local.task_data.completed",
+            "type": "local",
+            "fieldName": "task_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.task_data.completed": [
           "value"
         ]
       }

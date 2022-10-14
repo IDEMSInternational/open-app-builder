@@ -7,55 +7,64 @@
       "id": "welcome_individual",
       "individual": true,
       "together": false,
-      "priority": 1
+      "priority": 1,
+      "template": "w_stress_welcome_individual"
     },
     {
       "id": "care_together",
       "individual": false,
       "together": true,
-      "priority": 2
+      "priority": 2,
+      "template": "w_stress_care_together"
     },
     {
       "id": "relax",
       "individual": true,
       "together": true,
-      "priority": 3
+      "priority": 3,
+      "template": "w_stress_relax"
     },
     {
       "id": "reflect_together",
       "individual": false,
       "together": true,
-      "priority": 4
+      "priority": 4,
+      "template": "w_stress_reflect_together"
     },
     {
       "id": "intro",
       "individual": true,
       "together": true,
-      "priority": 5
+      "priority": 5,
+      "template": "w_stress_intro"
     },
     {
       "id": "tools_activity",
       "individual": true,
       "together": true,
-      "priority": 70
+      "priority": 70,
+      "template": "w_stress_tools_activity"
     },
     {
       "id": "home_practice",
       "individual": true,
       "together": true,
-      "priority": 80
+      "priority": 80,
+      "template": "w_stress_home_practice"
     },
     {
       "id": "ending",
       "individual": true,
       "together": true,
-      "priority": 90
+      "priority": 90,
+      "template": "w_stress_ending"
     },
     {
       "id": "hp_review",
       "individual": true,
       "together": true,
-      "priority": 91
+      "priority": 91,
+      "template": "w_stress_hp_review"
     }
   ]
 }
