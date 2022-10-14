@@ -279,12 +279,32 @@
           ],
           "_raw": "click | set_field: @local.weekly_habit_field: @local.weekly_habit_count+1",
           "_cleaned": "click | set_field: @local.weekly_habit_field: @local.weekly_habit_count+1"
+        },
+        {
+          "trigger": "info_click",
+          "action_id": "set_field",
+          "args": [
+            "current_parent_point",
+            "@local.habit"
+          ],
+          "_raw": "info_click | set_field: current_parent_point: @local.habit",
+          "_cleaned": "info_click | set_field: current_parent_point: @local.habit"
+        },
+        {
+          "trigger": "info_click",
+          "action_id": "pop_up",
+          "args": [
+            "parent_point_info"
+          ],
+          "_raw": "info_click | pop_up: parent_point_info",
+          "_cleaned": "info_click | pop_up: parent_point_info"
         }
       ],
       "condition": "@fields._app_theme == \"professional\"",
       "parameter_list": {
         "text": "@local.habit_data.title",
-        "icon_src": "@local.habit_data.image_asset"
+        "icon_src": "@local.habit_data.image_asset",
+        "info_icon_src": "plh_images/icons/question_mark.svg"
       },
       "_nested_name": "parent_point_box",
       "_dynamicFields": {
@@ -390,6 +410,34 @@
                 "matchedExpression": "@local.weekly_habit_count",
                 "type": "local",
                 "fieldName": "weekly_habit_count"
+              }
+            ]
+          },
+          "2": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "@local.habit",
+                  "matchedExpression": "@local.habit",
+                  "type": "local",
+                  "fieldName": "habit"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "info_click | set_field: current_parent_point: @local.habit",
+                "matchedExpression": "@local.habit",
+                "type": "local",
+                "fieldName": "habit"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "info_click | set_field: current_parent_point: @local.habit",
+                "matchedExpression": "@local.habit",
+                "type": "local",
+                "fieldName": "habit"
               }
             ]
           }
@@ -443,6 +491,11 @@
           "action_list.1._raw",
           "action_list.1._cleaned"
         ],
+        "@local.habit": [
+          "action_list.2.args.1",
+          "action_list.2._raw",
+          "action_list.2._cleaned"
+        ],
         "@fields._app_theme": [
           "condition"
         ],
@@ -481,12 +534,32 @@
           ],
           "_raw": "click | set_field: @local.weekly_habit_field: @local.weekly_habit_count+1",
           "_cleaned": "click | set_field: @local.weekly_habit_field: @local.weekly_habit_count+1"
+        },
+        {
+          "trigger": "info_click",
+          "action_id": "set_field",
+          "args": [
+            "current_parent_point",
+            "@local.habit"
+          ],
+          "_raw": "info_click | set_field: current_parent_point: @local.habit",
+          "_cleaned": "info_click | set_field: current_parent_point: @local.habit"
+        },
+        {
+          "trigger": "info_click",
+          "action_id": "pop_up",
+          "args": [
+            "parent_point_info"
+          ],
+          "_raw": "info_click | pop_up: parent_point_info",
+          "_cleaned": "info_click | pop_up: parent_point_info"
         }
       ],
       "condition": "@fields._app_theme != \"professional\"",
       "parameter_list": {
         "text": "@local.habit_data.title",
-        "lottie_src": "@local.habit_data.lottie_asset"
+        "lottie_src": "@local.habit_data.lottie_asset",
+        "info_icon_src": "plh_images/icons/question_mark.svg"
       },
       "_nested_name": "parent_point_box",
       "_dynamicFields": {
@@ -594,6 +667,34 @@
                 "fieldName": "weekly_habit_count"
               }
             ]
+          },
+          "2": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "@local.habit",
+                  "matchedExpression": "@local.habit",
+                  "type": "local",
+                  "fieldName": "habit"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "info_click | set_field: current_parent_point: @local.habit",
+                "matchedExpression": "@local.habit",
+                "type": "local",
+                "fieldName": "habit"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "info_click | set_field: current_parent_point: @local.habit",
+                "matchedExpression": "@local.habit",
+                "type": "local",
+                "fieldName": "habit"
+              }
+            ]
           }
         },
         "condition": [
@@ -644,6 +745,11 @@
           "action_list.1.args.0",
           "action_list.1._raw",
           "action_list.1._cleaned"
+        ],
+        "@local.habit": [
+          "action_list.2.args.1",
+          "action_list.2._raw",
+          "action_list.2._cleaned"
         ],
         "@fields._app_theme": [
           "condition"

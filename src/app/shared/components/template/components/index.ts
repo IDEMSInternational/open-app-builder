@@ -51,6 +51,7 @@ import { TmplLatexComponent } from "./latex/latex.component";
 import { TmplAnimatedSlidesComponent } from "./animated-slides/animated-slides.component";
 import { TmplTaskCardComponent } from "./task-card/task-card.component";
 import { TmplTaskProgressBarComponent } from "./task-progress-bar/task-progress-bar.component";
+import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -99,6 +100,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplAnimatedSlidesComponent,
   TmplTaskCardComponent,
   TmplTaskProgressBarComponent,
+  TmplQRCodeComponent,
 ];
 
 /***************************************************************************************
@@ -162,4 +164,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   animated_slides: TmplAnimatedSlidesComponent,
   task_card: TmplTaskCardComponent,
   task_progress_bar: TmplTaskProgressBarComponent,
+  qr_code: TmplQRCodeComponent,
 };

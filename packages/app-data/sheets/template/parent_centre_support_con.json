@@ -38,7 +38,9 @@
       "name": "text",
       "value": "I need help with:",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "text"
     },

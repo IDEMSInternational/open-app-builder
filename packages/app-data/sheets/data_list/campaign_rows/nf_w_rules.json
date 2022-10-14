@@ -66,22 +66,17 @@
       "title": "@global.m_w_released",
       "_translations": {
         "title": {},
-        "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.user_name! New week, new workshop! Learn to set household rules that your teen understands and follows."
+          "eng": "Hi @fields.user_name! New week, new @global.workshop! Learn to set household rules that your teen understands and follows."
         }
       },
-      "text": "Hi @fields.user_name! New week, new workshop! Learn to set household rules that your teen understands and follows."
+      "text": "Hi @fields.user_name! New week, new @global.workshop! Learn to set household rules that your teen understands and follows."
     },
     {
       "id": "w_released_w_rules_tog",
@@ -145,22 +140,17 @@
       "title": "@global.m_w_released",
       "_translations": {
         "title": {},
-        "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.group_name! New week, new workshop! Learn to set household rules that your teen understands and follows."
+          "eng": "Hi @fields.group_name! New week, new @global.workshop! Learn to set household rules that your teen understands and follows."
         }
       },
-      "text": "Hi @fields.group_name! New week, new workshop! Learn to set household rules that your teen understands and follows."
+      "text": "Hi @fields.group_name! New week, new @global.workshop! Learn to set household rules that your teen understands and follows."
     },
     {
       "id": "relax_w_rules",
@@ -737,22 +727,17 @@
       "title": "@global.m_w_tomorrow",
       "_translations": {
         "title": {},
-        "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Congratulations, you completed the @local.workshop_data.in_text_title.\n \nTomorrow, access a new workshop! It will show you what to do when teens display bad (or good) behaviour!"
+          "eng": "Congratulations, you completed the @local.workshop_data.in_text_title.\n \nTomorrow, access a new @global.workshop! It will show you what to do when teens display bad (or good) behaviour!"
         }
       },
-      "text": "Congratulations, you completed the @local.workshop_data.in_text_title.\n \nTomorrow, access a new workshop! It will show you what to do when teens display bad (or good) behaviour!"
+      "text": "Congratulations, you completed the @local.workshop_data.in_text_title.\n \nTomorrow, access a new @global.workshop! It will show you what to do when teens display bad (or good) behaviour!"
     },
     {
       "id": "w_tomorrow_w_rules_incompl",
@@ -809,22 +794,17 @@
       "title": "@global.m_w_tomorrow",
       "_translations": {
         "title": {},
-        "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "A brand-new workshop unlocks tomorrow!\n \nComplete the @local.workshop_data.in_text_title before moving on. Just a few more minutes to help your teen follow your rules!"
+          "eng": "A brand-new @global.workshop unlocks tomorrow!\n \nComplete the @local.workshop_data.in_text_title before moving on. Just a few more minutes to help your teen follow your rules!"
         }
       },
-      "text": "A brand-new workshop unlocks tomorrow!\n \nComplete the @local.workshop_data.in_text_title before moving on. Just a few more minutes to help your teen follow your rules!"
+      "text": "A brand-new @global.workshop unlocks tomorrow!\n \nComplete the @local.workshop_data.in_text_title before moving on. Just a few more minutes to help your teen follow your rules!"
     }
   ],
   "_xlsxPath": "global/campaigns/notifications_in_week_messages.xlsx"

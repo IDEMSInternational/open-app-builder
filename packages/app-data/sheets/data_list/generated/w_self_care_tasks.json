@@ -7,65 +7,75 @@
       "id": "welcome_individual",
       "individual": true,
       "together": false,
-      "priority": 1
+      "priority": 1,
+      "completed_field": "task_w_self_care_@row.id_completed"
     },
     {
       "id": "care_together",
       "individual": false,
       "together": true,
-      "priority": 2
+      "priority": 2,
+      "completed_field": "task_w_self_care_@row.id_completed"
     },
     {
       "id": "intro",
       "individual": true,
       "together": true,
-      "priority": 5
+      "priority": 5,
+      "completed_field": "task_w_self_care_@row.id_completed"
     },
     {
       "id": "tools_activity",
       "individual": true,
       "together": true,
-      "priority": 70
+      "priority": 70,
+      "completed_field": "task_w_self_care_@row.id_completed"
     },
     {
       "id": "home_practice",
       "individual": true,
       "together": true,
-      "priority": 80
+      "priority": 80,
+      "completed_field": "task_w_self_care_@row.id_completed"
     },
     {
       "id": "ending",
       "individual": true,
       "together": true,
-      "priority": 90
+      "priority": 90,
+      "completed_field": "task_w_self_care_@row.id_completed"
     },
     {
       "id": "relax",
       "individual": true,
       "together": true,
       "priority": 11,
-      "template": "w_self_care_relax"
+      "template": "w_self_care_relax",
+      "completed_field": "task_w_self_care_@row.id_completed"
     },
     {
       "id": "recognise",
       "individual": true,
       "together": true,
       "priority": 12,
-      "template": "w_self_care_recognise"
+      "template": "w_self_care_recognise",
+      "completed_field": "task_w_self_care_@row.id_completed"
     },
     {
       "id": "reward",
       "individual": true,
       "together": true,
       "priority": 13,
-      "template": "w_self_care_reward"
+      "template": "w_self_care_reward",
+      "completed_field": "task_w_self_care_@row.id_completed"
     },
     {
       "id": "survey_activity",
       "individual": true,
       "together": false,
       "priority": 71,
-      "template": "w_self_care_survey_activity"
+      "template": "w_self_care_survey_activity",
+      "completed_field": "task_w_self_care_@row.id_completed"
     }
   ]
 }

@@ -7,153 +7,184 @@
       "id": "welcome_individual",
       "individual": true,
       "together": false,
-      "priority": 1
+      "priority": 1,
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "care_together",
       "individual": false,
       "together": true,
-      "priority": 2
+      "priority": 2,
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "relax",
       "individual": true,
       "together": true,
-      "priority": 3
+      "priority": 3,
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "reflect_together",
       "individual": false,
       "together": true,
-      "priority": 4
+      "priority": 4,
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "intro",
       "individual": true,
       "together": true,
-      "priority": 5
+      "priority": 5,
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "tools_activity",
       "individual": true,
       "together": true,
-      "priority": 70
+      "priority": 70,
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "home_practice",
       "individual": true,
       "together": true,
-      "priority": 80
+      "priority": 80,
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "ending",
       "individual": true,
       "together": true,
-      "priority": 90
+      "priority": 90,
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "hp_review",
       "individual": true,
       "together": true,
-      "priority": 91
+      "priority": 91,
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "read_1",
       "individual": true,
       "together": true,
       "priority": 11,
-      "template": "w_money_read_1"
+      "template": "w_money_read_1",
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "learn_1",
       "individual": true,
       "together": true,
       "priority": 12,
-      "template": "w_money_learn_1"
+      "template": "w_money_learn_1",
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "learn_2",
       "individual": true,
       "together": true,
       "priority": 13,
-      "template": "w_money_learn_2"
+      "template": "w_money_learn_2",
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "learn_3",
       "individual": true,
       "together": true,
       "priority": 14,
-      "template": "w_money_learn_3"
+      "template": "w_money_learn_3",
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "learn_4",
       "individual": true,
       "together": true,
       "priority": 15,
-      "template": "w_money_learn_4"
+      "template": "w_money_learn_4",
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "read_2",
       "individual": true,
       "together": true,
       "priority": 16,
-      "template": "w_money_read_2"
+      "template": "w_money_read_2",
+      "group": "read_2",
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "question_1",
       "individual": true,
       "together": false,
       "priority": 17,
-      "template": "w_money_tq_1"
+      "template": "w_money_tq_1",
+      "group": "read_2",
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "talk_1",
       "individual": false,
       "together": true,
       "priority": 17,
-      "template": "w_money_tq_1"
+      "template": "w_money_tq_1",
+      "group": "read_2",
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "read_3",
       "individual": true,
       "together": true,
       "priority": 18,
-      "template": "w_money_read_3"
+      "template": "w_money_read_3",
+      "group": "read_3",
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "question_2",
       "individual": true,
       "together": false,
       "priority": 19,
-      "template": "w_money_tq_2"
+      "template": "w_money_tq_2",
+      "group": "read_3",
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "talk_2",
       "individual": false,
       "together": true,
       "priority": 19,
-      "template": "w_money_tq_2"
+      "template": "w_money_tq_2",
+      "group": "read_3",
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "question_3",
       "individual": true,
       "together": false,
       "priority": 20,
-      "template": "w_money_tq_3"
+      "template": "w_money_tq_3",
+      "group": "read_3",
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "talk_3",
       "individual": false,
       "together": true,
       "priority": 20,
-      "template": "w_money_tq_3"
+      "template": "w_money_tq_3",
+      "group": "read_3",
+      "completed_field": "task_w_money_@row.id_completed"
     },
     {
       "id": "learn_5",
       "individual": true,
       "together": true,
       "priority": 21,
-      "template": "w_money_learn_5"
+      "template": "w_money_learn_5",
+      "completed_field": "task_w_money_@row.id_completed"
     }
   ]
 }
