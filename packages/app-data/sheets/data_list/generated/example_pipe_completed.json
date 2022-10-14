@@ -9,7 +9,7 @@
       "completed": true,
       "Text": "Hello id_5",
       "Label": "Another column",
-      "Field": "example_@row.id_field"
+      "Field": "example_id_5_field"
     },
     {
       "id": "id_6",
@@ -17,7 +17,7 @@
       "completed": true,
       "Text": "Hello id_6",
       "Label": "Another column",
-      "Field": "example_@row.id_field"
+      "Field": "example_id_6_field"
     }
   ]
 }

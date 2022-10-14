@@ -8,48 +8,48 @@
       "individual": true,
       "together": false,
       "priority": 1,
-      "completed_field": "task_w_self_care_@row.id_completed",
-      "completed": "@fields.task_w_self_care_@row.id_completed"
+      "completed_field": "task_w_self_care_welcome_individual_completed",
+      "completed": "@fields.task_w_self_care_welcome_individual_completed"
     },
     {
       "id": "care_together",
       "individual": false,
       "together": true,
       "priority": 2,
-      "completed_field": "task_w_self_care_@row.id_completed",
-      "completed": "@fields.task_w_self_care_@row.id_completed"
+      "completed_field": "task_w_self_care_care_together_completed",
+      "completed": "@fields.task_w_self_care_care_together_completed"
     },
     {
       "id": "intro",
       "individual": true,
       "together": true,
       "priority": 5,
-      "completed_field": "task_w_self_care_@row.id_completed",
-      "completed": "@fields.task_w_self_care_@row.id_completed"
+      "completed_field": "task_w_self_care_intro_completed",
+      "completed": "@fields.task_w_self_care_intro_completed"
     },
     {
       "id": "tools_activity",
       "individual": true,
       "together": true,
       "priority": 70,
-      "completed_field": "task_w_self_care_@row.id_completed",
-      "completed": "@fields.task_w_self_care_@row.id_completed"
+      "completed_field": "task_w_self_care_tools_activity_completed",
+      "completed": "@fields.task_w_self_care_tools_activity_completed"
     },
     {
       "id": "home_practice",
       "individual": true,
       "together": true,
       "priority": 80,
-      "completed_field": "task_w_self_care_@row.id_completed",
-      "completed": "@fields.task_w_self_care_@row.id_completed"
+      "completed_field": "task_w_self_care_home_practice_completed",
+      "completed": "@fields.task_w_self_care_home_practice_completed"
     },
     {
       "id": "ending",
       "individual": true,
       "together": true,
       "priority": 90,
-      "completed_field": "task_w_self_care_@row.id_completed",
-      "completed": "@fields.task_w_self_care_@row.id_completed"
+      "completed_field": "task_w_self_care_ending_completed",
+      "completed": "@fields.task_w_self_care_ending_completed"
     },
     {
       "id": "relax",
@@ -57,8 +57,8 @@
       "together": true,
       "priority": 11,
       "template": "w_self_care_relax",
-      "completed_field": "task_w_self_care_@row.id_completed",
-      "completed": "@fields.task_w_self_care_@row.id_completed"
+      "completed_field": "task_w_self_care_relax_completed",
+      "completed": "@fields.task_w_self_care_relax_completed"
     },
     {
       "id": "recognise",
@@ -66,8 +66,8 @@
       "together": true,
       "priority": 12,
       "template": "w_self_care_recognise",
-      "completed_field": "task_w_self_care_@row.id_completed",
-      "completed": "@fields.task_w_self_care_@row.id_completed"
+      "completed_field": "task_w_self_care_recognise_completed",
+      "completed": "@fields.task_w_self_care_recognise_completed"
     },
     {
       "id": "reward",
@@ -75,8 +75,8 @@
       "together": true,
       "priority": 13,
       "template": "w_self_care_reward",
-      "completed_field": "task_w_self_care_@row.id_completed",
-      "completed": "@fields.task_w_self_care_@row.id_completed"
+      "completed_field": "task_w_self_care_reward_completed",
+      "completed": "@fields.task_w_self_care_reward_completed"
     },
     {
       "id": "survey_activity",
@@ -84,8 +84,8 @@
       "together": false,
       "priority": 71,
       "template": "w_self_care_survey_activity",
-      "completed_field": "task_w_self_care_@row.id_completed",
-      "completed": "@fields.task_w_self_care_@row.id_completed"
+      "completed_field": "task_w_self_care_survey_activity_completed",
+      "completed": "@fields.task_w_self_care_survey_activity_completed"
     }
   ]
 }

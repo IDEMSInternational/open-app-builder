@@ -14,9 +14,9 @@
     {
       "operation": "append_columns",
       "args_list": [
-        "Text: Hello @row.id",
+        "Text: Hello {@row.id}",
         "Label: Another column",
-        "Field: example_@row.id_field"
+        "Field: example_{@row.id}_field"
       ]
     },
     {
