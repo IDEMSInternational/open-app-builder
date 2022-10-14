@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { APP_CONSTANTS } from "src/app/data";
-import { AVAILABLE_APP_SKINS } from "src/skins";
+import { APP_SKINS } from "src/skins";
 import { IAppSkin } from "src/skins/skin.model";
 
 const { APP_FIELDS, APP_SKIN_DEFAULTS } = APP_CONSTANTS;
@@ -11,46 +11,43 @@ const { APP_FIELDS, APP_SKIN_DEFAULTS } = APP_CONSTANTS;
   providedIn: "root",
 })
 export class SkinService {
-  availableSkins = AVAILABLE_APP_SKINS;
-  currentSkin$ = new BehaviorSubject<IAppSkin>(AVAILABLE_APP_SKINS[APP_SKIN_DEFAULTS.name]);
+  // A hashmap of all app skins, filtered to include only those
+  // that are "default" or "available" to the active deployment
+  availableSkins = Object.fromEntries(
+    Object.entries(APP_SKINS).filter(([skinName]) => {
+      return [...APP_SKIN_DEFAULTS.available, APP_SKIN_DEFAULTS.default].includes(skinName);
+    })
+  );
+  activeSkin$ = new BehaviorSubject<IAppSkin>(APP_SKINS[APP_SKIN_DEFAULTS.default]);
 
   constructor(private localStorageService: LocalStorageService) {}
 
   init() {
     // Retrieve the last active skin with default fallback
-    const activeSkinName = this.getCurrentSkinName() ?? APP_SKIN_DEFAULTS.name;
+    const activeSkinName = this.getActiveSkinName() ?? APP_SKIN_DEFAULTS.default;
     // Set active skin
     this.setSkin(activeSkinName);
   }
 
   public setSkin(skinName: string) {
-    if (this.skinExists(skinName)) {
+    if (skinName in this.availableSkins) {
       console.log("[SET SKIN]", skinName);
-      this.currentSkin$.next(this.availableSkins[skinName]);
-      // Use local storage so that the current skin persists across app launches
+      this.activeSkin$.next(this.availableSkins[skinName]);
+      // Use local storage so that the active skin persists across app launches
       this.localStorageService.setString(APP_FIELDS.APP_SKIN, skinName);
     } else {
       console.error(`No skin found with name "${skinName}"`);
     }
   }
 
-  private skinExists(skinName: string) {
-    return skinName in this.availableSkins;
-  }
-
-  /** Get the name of the current skin, as saved in local storage */
-  public getCurrentSkinName() {
+  /** Get the name of the active skin, as saved in local storage */
+  public getActiveSkinName() {
     return this.localStorageService.getString(APP_FIELDS.APP_SKIN);
   }
 
-  /** Get the full current skin, from the skin name saved in local storage */
-  public getCurrentSkin() {
-    const currentSkinName = this.getCurrentSkinName();
-    return this.availableSkins[currentSkinName];
-  }
-
-  /** Get a hashmap of all the skins that are available to be applied */
-  public getAllSkins() {
-    return this.availableSkins;
+  /** Get the full active skin, from the skin name saved in local storage */
+  public getActiveSkin() {
+    const activeSkinName = this.getActiveSkin();
+    return this.availableSkins[activeSkinName];
   }
 }
