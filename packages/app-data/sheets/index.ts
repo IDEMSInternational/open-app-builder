@@ -3921,6 +3921,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "sign_in",
       _xlsxPath: "global/core_templates/core_templates_app_launch.xlsx",
     },
+    skin_select: {
+      flow_type: "template",
+      flow_name: "skin_select",
+      _xlsxPath: "global/core_templates/core_templates_settings.xlsx",
+    },
     something_fun: {
       flow_type: "template",
       flow_name: "something_fun",
