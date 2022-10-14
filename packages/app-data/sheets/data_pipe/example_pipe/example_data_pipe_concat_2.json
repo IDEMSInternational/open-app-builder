@@ -14,24 +14,5 @@
       "output_target": "example_data_pipe_concat_1_3"
     }
   ],
-  "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes_join.xlsx",
-  "_processed": {
-    "example_data_pipe_concat_1_3": [
-      {
-        "id": "id_1",
-        "column_a": 1,
-        "column_b": 1
-      },
-      {
-        "id": "id_2",
-        "column_a": 1,
-        "column_b": 1
-      },
-      {
-        "id": "id_3",
-        "column_b": 2,
-        "column_c": 2
-      }
-    ]
-  }
+  "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes_join.xlsx"
 }

@@ -306,11 +306,26 @@
     {
       "type": "title",
       "name": "workshop_example",
-      "value": "Workshop Example",
+      "value": "@global.workshop_capital Example",
       "_translations": {
         "value": {}
       },
-      "_nested_name": "workshop_example"
+      "_nested_name": "workshop_example",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.workshop_capital Example",
+            "matchedExpression": "@global.workshop_capital",
+            "type": "global",
+            "fieldName": "workshop_capital"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.workshop_capital": [
+          "value"
+        ]
+      }
     },
     {
       "type": "items",
