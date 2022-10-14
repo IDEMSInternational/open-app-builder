@@ -38,7 +38,7 @@ export class TemplateService {
       await this.initialiseDefaultFieldAndGlobals();
     });
     // Update default values when skin changed to allow for skin-specific global overrides
-    this.skinService.currentSkin$.subscribe(async (skin) => {
+    this.skinService.activeSkin$.subscribe(async (skin) => {
       await this.initialiseDefaultFieldAndGlobals();
     });
   }

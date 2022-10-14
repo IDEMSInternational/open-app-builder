@@ -3,6 +3,7 @@ import { arrayToHashmap } from "src/app/shared/utils";
 
 // TODO: Eventually these skins should be authored from templates
 const skins: IAppSkin[] = [
+  { name: "default" },
   { name: "weekly_workshop" },
   {
     name: "modular",
@@ -10,4 +11,4 @@ const skins: IAppSkin[] = [
   },
 ];
 
-export const AVAILABLE_APP_SKINS: { [name: string]: IAppSkin } = arrayToHashmap(skins, "name");
+export const APP_SKINS: { [name: string]: IAppSkin } = arrayToHashmap(skins, "name");
