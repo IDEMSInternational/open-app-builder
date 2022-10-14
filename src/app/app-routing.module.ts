@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, Route, RouterModule, Routes } from "@angular/router";
-import { APP_CONSTANTS } from "./data";
+import { APP_CONFIG } from "./data";
 import { TourComponent } from "./feature/tour/tour.component";
 
-const { APP_ROUTE_DEFAULTS } = APP_CONSTANTS;
+const { APP_ROUTE_DEFAULTS } = APP_CONFIG;
 
 /** Routes specified from data-models */
 const DataRoutes: Routes = [

@@ -8,12 +8,12 @@ import {
   IDBServerUserRecord,
   IDBTable,
 } from "packages/data-models/db.model";
-import { APP_CONSTANTS } from "src/app/data";
+import { APP_CONFIG } from "src/app/data";
 import { environment } from "src/environments/environment";
 import { UserMetaService } from "../userMeta/userMeta.service";
 import { DbService } from "./db.service";
 
-const { SERVER_SYNC_FREQUENCY_MS } = APP_CONSTANTS;
+const { SERVER_SYNC_FREQUENCY_MS } = APP_CONFIG;
 
 @Injectable({ providedIn: "root" })
 /**

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { APP_CONSTANTS } from "src/app/data";
+import { APP_CONFIG } from "src/app/data";
 import { APP_SKINS } from "src/skins";
 import { IAppSkin } from "src/skins/skin.model";
 
@@ -9,7 +9,7 @@ import { IAppSkin } from "src/skins/skin.model";
 // appDataService would cause a circular dependency. Possible solution: limit
 // the config settings that can be overridden at the skin level (a skin
 // overriding APP_SKINS_CONFIG wouldn't make sense anyway)
-const { APP_FIELDS, APP_SKINS_CONFIG } = APP_CONSTANTS;
+const { APP_FIELDS, APP_SKINS_CONFIG } = APP_CONFIG;
 
 @Injectable({
   providedIn: "root",

@@ -4,7 +4,7 @@ import { NavigationEnd, NavigationStart, Router } from "@angular/router";
 import { App } from "@capacitor/app";
 import { Capacitor, PluginListenerHandle } from "@capacitor/core";
 import { Subscription } from "rxjs";
-import { IAppConstants } from "../model";
+import { IAppConfig } from "../model";
 import { AppConfigService } from "../services/app-config/app-config.service";
 
 @Component({
@@ -28,7 +28,7 @@ import { AppConfigService } from "../services/app-config/app-config.service";
   </ion-header>`,
 })
 export class PLHMainHeaderComponent implements OnInit, OnDestroy {
-  appConfig: IAppConstants;
+  appConfig: IAppConfig;
   title: string;
   showMenuButton = false;
   showBackButton = false;

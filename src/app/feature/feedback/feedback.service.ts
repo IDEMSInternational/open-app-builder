@@ -23,9 +23,9 @@ import {
   IFeedbackMetadata,
   ITemplateTargetEntry,
 } from "./feedback.types";
-import { APP_CONSTANTS } from "src/app/data";
+import { APP_CONFIG } from "src/app/data";
 
-const { FEEDBACK_MODULE_DEFAULTS, APP_STRINGS } = APP_CONSTANTS;
+const { FEEDBACK_MODULE_DEFAULTS, APP_STRINGS } = APP_CONFIG;
 
 const FEEDBACK_BUTTONS: IFeedbackContextMenuButton[] = FEEDBACK_MODULE_DEFAULTS.buttons;
 

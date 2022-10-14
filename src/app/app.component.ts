@@ -25,17 +25,17 @@ import { TemplateTranslateService } from "./shared/components/template/services/
 import { LocalNotificationInteractionService } from "./shared/services/notification/local-notification-interaction.service";
 import { DBSyncService } from "./shared/services/db/db-sync.service";
 
-import { APP_CONSTANTS } from "./data";
+import { APP_CONFIG } from "./data";
 import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
 import { AppDataService } from "./shared/services/data/app-data.service";
 import { AuthService } from "./shared/services/auth/auth.service";
 import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
-import { IAppConstants } from "./shared/model";
+import { IAppConfig } from "./shared/model";
 
 // TODO - The APP_FIELDS should come from appConfigService.APP_CONFIG,
 // but currently they are being used before the core services are intialised
-const { APP_FIELDS } = APP_CONSTANTS;
+const { APP_FIELDS } = APP_CONFIG;
 
 @Component({
   selector: "app-root",
@@ -45,7 +45,7 @@ const { APP_FIELDS } = APP_CONSTANTS;
 export class AppComponent {
   APP_VERSION = environment.version;
   DEPLOYMENT_NAME = environment.deploymentName;
-  appConfig: IAppConstants;
+  appConfig: IAppConfig;
   appAuthenticationDefaults;
   sideMenuDefaults;
   /** Track when app ready to render sidebar and route templates */

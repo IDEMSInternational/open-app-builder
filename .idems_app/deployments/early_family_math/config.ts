@@ -1,5 +1,5 @@
 import { IDeploymentConfig } from "data-models";
-import { getDefaultAppConstants } from "data-models";
+import { getDefaultAppConfig } from "data-models";
 /**
  * The default config should ideally be a superset of any extended configs
  * to allow for easier post-processing
@@ -16,12 +16,12 @@ const config: IDeploymentConfig = {
     translated_strings_path: "packages/app-data/translations_source/from_translators",
     source_strings_path: "packages/app-data/translations_source/to_translate",
   },
-  app_constants: getDefaultAppConstants(),
+  app_config: getDefaultAppConfig(),
 };
 // Override constants
-config.app_constants.APP_LANGUAGES.default = "us_en";
-config.app_constants.APP_HEADER_DEFAULTS.title = "Early Family Math";
-config.app_constants.APP_SIDEMENU_DEFAULTS.title = "EFM";
-config.app_constants.NOTIFICATION_DEFAULTS.text = "You have a new message from Early Family Math";
+config.app_config.APP_LANGUAGES.default = "us_en";
+config.app_config.APP_HEADER_DEFAULTS.title = "Early Family Math";
+config.app_config.APP_SIDEMENU_DEFAULTS.title = "EFM";
+config.app_config.NOTIFICATION_DEFAULTS.text = "You have a new message from Early Family Math";
 
 export default config;

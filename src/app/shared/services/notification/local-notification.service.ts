@@ -9,11 +9,11 @@ import {
 import { addSeconds } from "date-fns";
 import { interval } from "rxjs";
 import { BehaviorSubject } from "rxjs";
-import { APP_CONSTANTS } from "src/app/data";
+import { APP_CONFIG } from "src/app/data";
 import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
 
-const { NOTIFICATION_DEFAULTS, NOTIFICATIONS_SYNC_FREQUENCY_MS } = APP_CONSTANTS;
+const { NOTIFICATION_DEFAULTS, NOTIFICATIONS_SYNC_FREQUENCY_MS } = APP_CONFIG;
 
 /** Utility type to assert local notification has extra and schedule defined */
 export interface ILocalNotification extends LocalNotificationSchema {

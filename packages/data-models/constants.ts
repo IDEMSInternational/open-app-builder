@@ -5,7 +5,7 @@ import clone from "clone";
  *  Constants used throughout the app
  *
  * NOTE - this file should not be edited directly. All constants can be overridden
- * via the `app_constants` field in deployment configs
+ * via the `app_config` field in deployment configs
  *
  * NOTE - as these are merged when setting deployment, avoid `_path` suffix as that has
  * special use case for relative paths
@@ -154,7 +154,7 @@ const FEEDBACK_MODULE_DEFAULTS = {
   selected_text_field: "_feedback_selected_text",
 };
 
-const APP_CONSTANTS = {
+const APP_CONFIG = {
   APP_FIELDS,
   APP_HEADER_DEFAULTS,
   APP_INITIALISATION_DEFAULTS,
@@ -172,8 +172,8 @@ const APP_CONSTANTS = {
   SERVER_SYNC_FREQUENCY_MS,
 };
 // Export as a clone to avoid risk one import could alter another
-export const getDefaultAppConstants = () => clone(APP_CONSTANTS);
-export type IAppConstants = typeof APP_CONSTANTS;
+export const getDefaultAppConfig = () => clone(APP_CONFIG);
+export type IAppConfig = typeof APP_CONFIG;
 
 /** A recursive version of Partial, making all properties, included nested ones, optional.
  * Copied from https://stackoverflow.com/a/47914631
@@ -181,4 +181,4 @@ export type IAppConstants = typeof APP_CONSTANTS;
 type RecursivePartial<T> = {
   [P in keyof T]?: RecursivePartial<T[P]>;
 };
-export type IAppConstantsOverride = RecursivePartial<IAppConstants>;
+export type IAppConfigOverride = RecursivePartial<IAppConfig>;

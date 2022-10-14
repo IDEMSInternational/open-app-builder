@@ -1,7 +1,7 @@
 import { IDeploymentConfig } from "data-models";
-import { getDefaultAppConstants } from "data-models/constants";
+import { getDefaultAppConfig } from "data-models/constants";
 
-const app_constants = getDefaultAppConstants();
+const app_config = getDefaultAppConfig();
 
 /**
  * The default config should ideally be a superset of any extended configs
@@ -9,7 +9,7 @@ const app_constants = getDefaultAppConstants();
  */
 const config: IDeploymentConfig = {
   name: "plh_global",
-  app_constants,
+  app_config,
   google_drive: {
     sheets_folder_id: "1n221Zv9LYuwxmjhiboq8vhQg67_K9L5f",
     assets_folder_id: "1dp9QAQ84m8pm0IBQTSPXe1ramyynKPNn",
@@ -28,12 +28,12 @@ const config: IDeploymentConfig = {
   _version: 1.0,
 };
 
-config.app_constants.APP_LANGUAGES.default = "gb_en";
-config.app_constants.APP_SIDEMENU_DEFAULTS.title = "ParentApp";
-config.app_constants.APP_HEADER_DEFAULTS.title = "ParentApp";
-config.app_constants.NOTIFICATION_DEFAULTS.title = "New message from PLH";
-config.app_constants.NOTIFICATION_DEFAULTS.text = "You have a new message from ParentApp";
-config.app_constants.APP_SKINS_CONFIG.default = "weekly_workshop"
-config.app_constants.APP_SKINS_CONFIG.enabled = ["modular"]
+config.app_config.APP_LANGUAGES.default = "gb_en";
+config.app_config.APP_SIDEMENU_DEFAULTS.title = "ParentApp";
+config.app_config.APP_HEADER_DEFAULTS.title = "ParentApp";
+config.app_config.NOTIFICATION_DEFAULTS.title = "New message from PLH";
+config.app_config.NOTIFICATION_DEFAULTS.text = "You have a new message from ParentApp";
+config.app_config.APP_SKINS_CONFIG.default = "weekly_workshop"
+config.app_config.APP_SKINS_CONFIG.enabled = ["modular"]
 
 export default config;

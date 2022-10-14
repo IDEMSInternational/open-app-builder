@@ -3,7 +3,7 @@ import { Auth } from "@angular/fire/auth";
 import { FirebaseAuthentication, User } from "@capacitor-firebase/authentication";
 import { BehaviorSubject } from "rxjs";
 import { first, filter } from "rxjs/operators";
-import { APP_CONSTANTS } from "src/app/data";
+import { APP_CONFIG } from "src/app/data";
 
 @Injectable({
   providedIn: "root",
@@ -50,7 +50,7 @@ export class AuthService {
 
   /** Keep a subset of auth user info in contact fields for db lookup*/
   private addStorageEntry(user?: User) {
-    const { APP_AUTH_USER } = APP_CONSTANTS.APP_FIELDS;
+    const { APP_AUTH_USER } = APP_CONFIG.APP_FIELDS;
     if (user) {
       const { uid } = user;
       localStorage.setItem(APP_AUTH_USER, JSON.stringify({ uid }));
