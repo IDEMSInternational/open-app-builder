@@ -30,7 +30,9 @@ export class DataPipeParser extends DefaultParser<FlowTypes.DataPipeFlow> {
     // store generated outputs to flow
     this.flow._processed = outputs;
     // also populate generated outputs to be available for future input sources
-    this.flowProcessor.processedFlowHashmap.data_list ?? {};
+    if (!this.flowProcessor.processedFlowHashmap.data_list) {
+      this.flowProcessor.processedFlowHashmap.data_list = {};
+    }
     for (const [flow_name, rows] of Object.entries(outputs)) {
       this.flowProcessor.processedFlowHashmap.data_list[flow_name] = rows;
     }
