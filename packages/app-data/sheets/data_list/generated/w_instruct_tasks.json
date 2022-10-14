@@ -8,63 +8,72 @@
       "individual": true,
       "together": false,
       "priority": 1,
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     },
     {
       "id": "care_together",
       "individual": false,
       "together": true,
       "priority": 2,
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     },
     {
       "id": "relax",
       "individual": true,
       "together": true,
       "priority": 3,
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     },
     {
       "id": "reflect_together",
       "individual": false,
       "together": true,
       "priority": 4,
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     },
     {
       "id": "intro",
       "individual": true,
       "together": true,
       "priority": 5,
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     },
     {
       "id": "tools_activity",
       "individual": true,
       "together": true,
       "priority": 70,
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     },
     {
       "id": "home_practice",
       "individual": true,
       "together": true,
       "priority": 80,
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     },
     {
       "id": "ending",
       "individual": true,
       "together": true,
       "priority": 90,
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     },
     {
       "id": "hp_review",
       "individual": true,
       "together": true,
       "priority": 91,
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     },
     {
       "id": "think",
@@ -72,7 +81,8 @@
       "together": true,
       "priority": 11,
       "template": "w_instruct_think_1",
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     },
     {
       "id": "read_1",
@@ -81,7 +91,8 @@
       "priority": 12,
       "template": "w_instruct_read_1",
       "group": "read_1",
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     },
     {
       "id": "question_1",
@@ -90,7 +101,8 @@
       "priority": 13,
       "template": "w_instruct_question_1",
       "group": "read_1",
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     },
     {
       "id": "talk_1",
@@ -99,7 +111,8 @@
       "priority": 13,
       "template": "w_instruct_talk_1",
       "group": "read_1",
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     },
     {
       "id": "read_2",
@@ -108,7 +121,8 @@
       "priority": 14,
       "template": "w_instruct_read_2",
       "group": "read_2",
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     },
     {
       "id": "question_2",
@@ -117,7 +131,8 @@
       "priority": 15,
       "template": "w_instruct_question_2",
       "group": "read_2",
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     },
     {
       "id": "talk_2",
@@ -126,7 +141,8 @@
       "priority": 15,
       "template": "w_instruct_talk_2",
       "group": "read_2",
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     },
     {
       "id": "try",
@@ -134,7 +150,8 @@
       "together": true,
       "priority": 71,
       "template": "w_instruct_try",
-      "completed_field": "task_w_instruct_@row.id_completed"
+      "completed_field": "task_w_instruct_@row.id_completed",
+      "completed": "@fields.task_w_instruct_@row.id_completed"
     }
   ]
 }

@@ -8,56 +8,64 @@
       "individual": true,
       "together": false,
       "priority": 1,
-      "completed_field": "task_w_1on1_@row.id_completed"
+      "completed_field": "task_w_1on1_@row.id_completed",
+      "completed": "@fields.task_w_1on1_@row.id_completed"
     },
     {
       "id": "care_together",
       "individual": false,
       "together": true,
       "priority": 2,
-      "completed_field": "task_w_1on1_@row.id_completed"
+      "completed_field": "task_w_1on1_@row.id_completed",
+      "completed": "@fields.task_w_1on1_@row.id_completed"
     },
     {
       "id": "relax",
       "individual": true,
       "together": true,
       "priority": 3,
-      "completed_field": "task_w_1on1_@row.id_completed"
+      "completed_field": "task_w_1on1_@row.id_completed",
+      "completed": "@fields.task_w_1on1_@row.id_completed"
     },
     {
       "id": "intro",
       "individual": true,
       "together": true,
       "priority": 5,
-      "completed_field": "task_w_1on1_@row.id_completed"
+      "completed_field": "task_w_1on1_@row.id_completed",
+      "completed": "@fields.task_w_1on1_@row.id_completed"
     },
     {
       "id": "tools_activity",
       "individual": true,
       "together": true,
       "priority": 70,
-      "completed_field": "task_w_1on1_@row.id_completed"
+      "completed_field": "task_w_1on1_@row.id_completed",
+      "completed": "@fields.task_w_1on1_@row.id_completed"
     },
     {
       "id": "home_practice",
       "individual": true,
       "together": true,
       "priority": 80,
-      "completed_field": "task_w_1on1_@row.id_completed"
+      "completed_field": "task_w_1on1_@row.id_completed",
+      "completed": "@fields.task_w_1on1_@row.id_completed"
     },
     {
       "id": "ending",
       "individual": true,
       "together": true,
       "priority": 90,
-      "completed_field": "task_w_1on1_@row.id_completed"
+      "completed_field": "task_w_1on1_@row.id_completed",
+      "completed": "@fields.task_w_1on1_@row.id_completed"
     },
     {
       "id": "hp_review",
       "individual": true,
       "together": true,
       "priority": 91,
-      "completed_field": "task_w_1on1_@row.id_completed"
+      "completed_field": "task_w_1on1_@row.id_completed",
+      "completed": "@fields.task_w_1on1_@row.id_completed"
     },
     {
       "id": "question",
@@ -65,7 +73,8 @@
       "together": false,
       "priority": 14,
       "template": "w_1on1_question",
-      "completed_field": "task_w_1on1_@row.id_completed"
+      "completed_field": "task_w_1on1_@row.id_completed",
+      "completed": "@fields.task_w_1on1_@row.id_completed"
     },
     {
       "id": "talk",
@@ -73,7 +82,8 @@
       "together": true,
       "priority": 14,
       "template": "w_1on1_talk",
-      "completed_field": "task_w_1on1_@row.id_completed"
+      "completed_field": "task_w_1on1_@row.id_completed",
+      "completed": "@fields.task_w_1on1_@row.id_completed"
     }
   ]
 }
