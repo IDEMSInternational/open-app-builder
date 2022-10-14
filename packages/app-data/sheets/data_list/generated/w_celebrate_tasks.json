@@ -8,49 +8,56 @@
       "individual": true,
       "together": false,
       "priority": 1,
-      "completed_field": "task_w_celebrate_@row.id_completed"
+      "completed_field": "task_w_celebrate_@row.id_completed",
+      "completed": "@fields.task_w_celebrate_@row.id_completed"
     },
     {
       "id": "care_together",
       "individual": false,
       "together": true,
       "priority": 2,
-      "completed_field": "task_w_celebrate_@row.id_completed"
+      "completed_field": "task_w_celebrate_@row.id_completed",
+      "completed": "@fields.task_w_celebrate_@row.id_completed"
     },
     {
       "id": "relax",
       "individual": true,
       "together": true,
       "priority": 3,
-      "completed_field": "task_w_celebrate_@row.id_completed"
+      "completed_field": "task_w_celebrate_@row.id_completed",
+      "completed": "@fields.task_w_celebrate_@row.id_completed"
     },
     {
       "id": "reflect_together",
       "individual": false,
       "together": true,
       "priority": 4,
-      "completed_field": "task_w_celebrate_@row.id_completed"
+      "completed_field": "task_w_celebrate_@row.id_completed",
+      "completed": "@fields.task_w_celebrate_@row.id_completed"
     },
     {
       "id": "intro",
       "individual": true,
       "together": true,
       "priority": 5,
-      "completed_field": "task_w_celebrate_@row.id_completed"
+      "completed_field": "task_w_celebrate_@row.id_completed",
+      "completed": "@fields.task_w_celebrate_@row.id_completed"
     },
     {
       "id": "tools_activity",
       "individual": true,
       "together": true,
       "priority": 70,
-      "completed_field": "task_w_celebrate_@row.id_completed"
+      "completed_field": "task_w_celebrate_@row.id_completed",
+      "completed": "@fields.task_w_celebrate_@row.id_completed"
     },
     {
       "id": "ending",
       "individual": true,
       "together": true,
       "priority": 90,
-      "completed_field": "task_w_celebrate_@row.id_completed"
+      "completed_field": "task_w_celebrate_@row.id_completed",
+      "completed": "@fields.task_w_celebrate_@row.id_completed"
     },
     {
       "id": "think",
@@ -58,7 +65,8 @@
       "together": true,
       "priority": 11,
       "template": "w_celebrate_think",
-      "completed_field": "task_w_celebrate_@row.id_completed"
+      "completed_field": "task_w_celebrate_@row.id_completed",
+      "completed": "@fields.task_w_celebrate_@row.id_completed"
     },
     {
       "id": "survey_activity",
@@ -66,7 +74,8 @@
       "together": false,
       "priority": 12,
       "template": "w_celebrate_survey_activity",
-      "completed_field": "task_w_celebrate_@row.id_completed"
+      "completed_field": "task_w_celebrate_@row.id_completed",
+      "completed": "@fields.task_w_celebrate_@row.id_completed"
     },
     {
       "id": "talk_1",
@@ -74,7 +83,8 @@
       "together": true,
       "priority": 12,
       "template": "w_celebrate_talk_1",
-      "completed_field": "task_w_celebrate_@row.id_completed"
+      "completed_field": "task_w_celebrate_@row.id_completed",
+      "completed": "@fields.task_w_celebrate_@row.id_completed"
     },
     {
       "id": "talk_2",
@@ -82,7 +92,8 @@
       "together": true,
       "priority": 71,
       "template": "w_celebrate_talk_2",
-      "completed_field": "task_w_celebrate_@row.id_completed"
+      "completed_field": "task_w_celebrate_@row.id_completed",
+      "completed": "@fields.task_w_celebrate_@row.id_completed"
     }
   ]
 }
