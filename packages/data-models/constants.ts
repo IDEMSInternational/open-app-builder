@@ -100,6 +100,10 @@ const APP_HEADER_DEFAULTS = {
     location.pathname == APP_ROUTE_DEFAULTS.home_route,
 };
 
+const APP_FOOTER_DEFAULTS = {
+  templateName: null,
+};
+
 const APP_SIDEMENU_DEFAULTS = {
   title: "App",
   // name of template to display in sidebar
@@ -156,6 +160,7 @@ const APP_CONSTANTS = {
   APP_LANGUAGES,
   APP_ROUTE_DEFAULTS,
   APP_SIDEMENU_DEFAULTS,
+  APP_FOOTER_DEFAULTS,
   APP_STRINGS,
   DYNAMIC_PREFIXES,
   FEEDBACK_MODULE_DEFAULTS,
