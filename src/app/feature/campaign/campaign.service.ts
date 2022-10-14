@@ -8,7 +8,6 @@ import { TemplateActionService } from "src/app/shared/components/template/servic
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
 import { TemplateVariablesService } from "src/app/shared/components/template/services/template-variables.service";
 import { FlowTypes } from "src/app/shared/model";
-import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import {
@@ -21,6 +20,8 @@ import {
   shuffleArray,
   stringToIntegerHash,
 } from "src/app/shared/utils";
+
+const { NOTIFICATION_DEFAULTS } = APP_CONFIG;
 
 type ICampaignHashmap = {
   [campaign_id: string]: FlowTypes.Campaign_listRow[];
@@ -37,7 +38,6 @@ export class CampaignService {
   allCampaigns: ICampaignHashmap = {};
   scheduledCampaigns: IScheduledCampaignsHashmap = {};
   scheduledNotifications: IScheduledNotificationsHashmap = {};
-  notificationDefaults;
 
   private _handledNotifications = {};
   private _notificationUpdates$: Subscription;
@@ -48,11 +48,8 @@ export class CampaignService {
     private localNotificationService: LocalNotificationService,
     private templateTranslateService: TemplateTranslateService,
     private appDataService: AppDataService,
-    private appConfigService: AppConfigService,
     private injector: Injector
-  ) {
-    this.notificationDefaults = this.appConfigService.APP_CONFIG.NOTIFICATION_DEFAULTS;
-  }
+  ) {}
 
   /**
    * make a dynamic call to TemplateVariablesService as it also has handling
@@ -244,10 +241,10 @@ export class CampaignService {
 
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
-      body: row.text || this.notificationDefaults.text,
-      largeBody: row.text || this.notificationDefaults.text,
+      body: row.text || NOTIFICATION_DEFAULTS.text,
+      largeBody: row.text || NOTIFICATION_DEFAULTS.text,
       summaryText: "",
-      title: row.title || this.notificationDefaults.title,
+      title: row.title || NOTIFICATION_DEFAULTS.title,
       extra: { ...row, campaign_id },
       id: stringToIntegerHash(row.id),
     };
@@ -397,7 +394,7 @@ export class CampaignService {
    */
   private evaluateSchedule(scheduleRow: FlowTypes.Campaign_Schedule, earliestStart?: Date) {
     // apply default settings
-    scheduleRow.time = scheduleRow.time || this.notificationDefaults.time;
+    scheduleRow.time = scheduleRow.time || NOTIFICATION_DEFAULTS.time;
     const { time, delay } = scheduleRow;
     const schedule: FlowTypes.Campaign_Schedule["schedule"] = scheduleRow.schedule || {};
     let d = earliestStart ? new Date(earliestStart) : new Date();
