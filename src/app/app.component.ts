@@ -31,7 +31,8 @@ import { AppDataService } from "./shared/services/data/app-data.service";
 import { AuthService } from "./shared/services/auth/auth.service";
 import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
 
-const { APP_FIELDS, APP_SIDEMENU_DEFAULTS, APP_AUTHENTICATION_DEFAULTS } = APP_CONSTANTS;
+const { APP_FIELDS, APP_SIDEMENU_DEFAULTS, APP_AUTHENTICATION_DEFAULTS, APP_FOOTER_DEFAULTS } =
+  APP_CONSTANTS;
 
 @Component({
   selector: "app-root",
@@ -42,6 +43,7 @@ export class AppComponent {
   APP_VERSION = environment.version;
   DEPLOYMENT_NAME = environment.deploymentName;
   sideMenuDefaults = APP_SIDEMENU_DEFAULTS;
+  footerDefaults = APP_FOOTER_DEFAULTS;
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
 
