@@ -285,7 +285,8 @@ export namespace FlowTypes {
     | "latex"
     | "animated_slides"
     | "task_card"
-    | "task_progress_bar";
+    | "task_progress_bar"
+    | "qr_code";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;

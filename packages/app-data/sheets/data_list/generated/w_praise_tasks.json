@@ -7,97 +7,115 @@
       "id": "welcome_individual",
       "individual": true,
       "together": false,
-      "priority": 1
+      "priority": 1,
+      "completed_field": "task_w_praise_@row.id_completed"
     },
     {
       "id": "care_together",
       "individual": false,
       "together": true,
-      "priority": 2
+      "priority": 2,
+      "completed_field": "task_w_praise_@row.id_completed"
     },
     {
       "id": "relax",
       "individual": true,
       "together": true,
-      "priority": 3
+      "priority": 3,
+      "completed_field": "task_w_praise_@row.id_completed"
     },
     {
       "id": "reflect_together",
       "individual": false,
       "together": true,
-      "priority": 4
+      "priority": 4,
+      "completed_field": "task_w_praise_@row.id_completed"
     },
     {
       "id": "intro",
       "individual": true,
       "together": true,
-      "priority": 5
+      "priority": 5,
+      "completed_field": "task_w_praise_@row.id_completed"
     },
     {
       "id": "tools_activity",
       "individual": true,
       "together": true,
-      "priority": 70
+      "priority": 70,
+      "completed_field": "task_w_praise_@row.id_completed"
     },
     {
       "id": "home_practice",
       "individual": true,
       "together": true,
-      "priority": 80
+      "priority": 80,
+      "completed_field": "task_w_praise_@row.id_completed"
     },
     {
       "id": "ending",
       "individual": true,
       "together": true,
-      "priority": 90
+      "priority": 90,
+      "completed_field": "task_w_praise_@row.id_completed"
     },
     {
       "id": "hp_review",
       "individual": true,
       "together": true,
-      "priority": 91
+      "priority": 91,
+      "completed_field": "task_w_praise_@row.id_completed"
     },
     {
       "id": "question_1",
       "individual": true,
       "together": false,
       "priority": 11,
-      "template": "w_praise_question_1"
+      "template": "w_praise_question_1",
+      "completed_field": "task_w_praise_@row.id_completed"
     },
     {
       "id": "talk_1",
       "individual": false,
       "together": true,
       "priority": 11,
-      "template": "w_praise_talk_1"
+      "template": "w_praise_talk_1",
+      "completed_field": "task_w_praise_@row.id_completed"
     },
     {
       "id": "read",
       "individual": true,
       "together": true,
       "priority": 12,
-      "template": "w_praise_read"
+      "template": "w_praise_read",
+      "group": "read",
+      "completed_field": "task_w_praise_@row.id_completed"
     },
     {
       "id": "question_2",
       "individual": true,
       "together": false,
       "priority": 13,
-      "template": "w_praise_question_2"
+      "template": "w_praise_question_2",
+      "group": "read",
+      "completed_field": "task_w_praise_@row.id_completed"
     },
     {
       "id": "talk_2",
       "individual": false,
       "together": true,
       "priority": 13,
-      "template": "w_praise_talk_2"
+      "template": "w_praise_talk_2",
+      "group": "read",
+      "completed_field": "task_w_praise_@row.id_completed"
     },
     {
       "id": "try",
       "individual": false,
       "together": true,
       "priority": 71,
-      "template": "w_praise_try"
+      "template": "w_praise_try",
+      "completed_field": "task_w_praise_@row.id_completed"
     }
   ]
 }

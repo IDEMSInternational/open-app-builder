@@ -13,19 +13,19 @@
   },
   {
     "SourceText": "When all the frustrations are beginning to start",
-    "text": "Wakati kuchanganyikiwa kote kunaanza kutokea",
+    "text": "Wakati kuchanganyikiwa kote kunapoanza kutokea",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Remember that you have a choice",
-    "text": "Kumbuka kwamba unalo chaguo",
+    "text": "Kumbuka kwamba una chaguo",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Remember all we have to be grateful for",
-    "text": "Kumbuka tunatakiwa kushukuru kwa kila kitu",
+    "text": "Kumbuka yote tuliyonayo tunayoweza kujivunia",
     "type": "template",
     "note": ""
   },
@@ -43,7 +43,7 @@
   },
   {
     "SourceText": "Because I really couldn't love you more",
-    "text": "Kwa sababu siwezi kuendelea kukupenda zaidi",
+    "text": "Kwa sababu siwezi kukupenda zaidi",
     "type": "template",
     "note": ""
   },
@@ -68,6 +68,30 @@
   {
     "SourceText": "Remember you're not the only one",
     "text": "Kumbuka siyo wewe peke yako",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "By providing your consent below you acknowledge reading and accepting the @global.terms_and_conditions and @global.privacy_policy. The most important commitments are:\n1. This is, and will always be, a fully free app.\n2. Your data will never be sold. We are not for profit.\n3. By using the app you are helping to make the app better for you and others.\n4. Your anonymised data may be used for research purposes by our @global.parent_app team.",
+    "text": "Kwa kutoa ridhaa hii hapa chini unakubali kusoma na kukubali @global.terms_and_conditions na @global.privacy_policy. Mambo muhimu ya kukubaliana nayo:\n1. Hii ni na itazidi kuwa programu tumishi inayopatikana bure.\n2. Taarifa zako kamwe hazitouzwa. Sisi hatupo kwa faida ya kifedha.\n3. Kwa kutumia programu tumishi unasaidia kuiboresha programu tumishi kwa ajili yako na wengine. \n4. Taarifa zisizo na utambulisho zitatumika kwa ajili ya utafiti na timu yetu ya @global.parent_app.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@global.terms_and_conditions\n@global.privacy_policy\n@global.parent_app"
+  },
+  {
+    "SourceText": "These policies are still under construction. We value advice and input to improve them.",
+    "text": "Sera hizi bado zinatungwa. Tunathamini ushauri na nyongeza wa kuziboresha.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "I consent to the commitments stated above.",
+    "text": "Ninaridhia na makubaliano yalioorodheshwa hapo juu.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "You can only move on and access the app if you provide your consent.",
+    "text": "Utaweza kuendelea kutumia programu tumishi endapo utatoa ridhaa yako.",
     "type": "template",
     "note": ""
   },
@@ -212,12 +236,6 @@
   {
     "SourceText": "* Ask each other questions. They can be any questions about things you like or what you did today.\n* The only rule is that you can’t answer “Yes”, “No” or “Maybe”.\n* How long can you last? How creative can you get with your answers?\n* Swap over and play again!",
     "text": "* Ulizaneni maswali. Yanaweza kuwa maswali yoyote kuhusu mambo mnayopenda au kile mlichofanya leo.\n* Sheria pekee ya mchezo huu ni kwamba huwezi kujibu \"Ndiyo\", \"Hapana\" au \"Labda\".\n* Je, unaweza kuendelea kufanya hivyo kwa muda gani? Je, majibu yako yanaweza kuwa na ubunifu kiasi gani?\n* Badilishaneni zamu za kuuliza na kujibu na mcheze tena!",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Home",
-    "text": "Mwanzo",
     "type": "template",
     "note": ""
   },
@@ -496,18 +514,6 @@
     "text": "Video",
     "type": "template",
     "note": ""
-  },
-  {
-    "SourceText": "@local.relevant_content_title added to @data.parent_centre.my_tips.title.",
-    "text": "@local.relevant_content_title imeongezwa kwenye @data.parent_centre.my_tips.title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@local.relevant_content_title\n@data.parent_centre.my_tips.title"
-  },
-  {
-    "SourceText": "You selected less than @local.threshold",
-    "text": "Umechagua pungufu ya @local.threshold",
-    "type": "template",
-    "note": "The string @local.threshold should not be translated."
   },
   {
     "SourceText": "Start Positively Together",
@@ -894,6 +900,24 @@
     "note": ""
   },
   {
+    "SourceText": "Home",
+    "text": "Mwanzo",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Parent Points",
+    "text": "Alama za Mzazi",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Parent Library",
+    "text": "Maktaba ya Mzazi",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "How did you hear about @global.parent_app?",
     "text": "Uliijuaje @global.parent_app?",
     "type": "template",
@@ -902,6 +926,12 @@
   {
     "SourceText": "Other",
     "text": "Njia nyingine",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "By selecting this organisation you are allowing them to have access to your anonymous usage data so that they can support you on this journey.",
+    "text": "Kwa kuchagua taasisi hii unawaruhusu kutumia taarifa zako zilizoondolewa utambulisho ili waweze kukusaidia katika safari hii.",
     "type": "template",
     "note": ""
   },
@@ -1262,6 +1292,12 @@
   {
     "SourceText": "Something fun to do with your teen",
     "text": "Kitu cha kufurahisha cha kufanya na kijana wako",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "I need help with:",
+    "text": "Ninahitaji msaada na:",
     "type": "template",
     "note": ""
   },
@@ -1722,94 +1758,10 @@
     "note": "The string @global.parent_app should not be translated."
   },
   {
-    "SourceText": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.",
-    "text": "Asante kwa kuwa mkweli. Inaweza kuwa changamoto kudhibiti msongo wa mawazo. Tutaendelea kukukumbusha kujipumzisha, kujitambua na kujipongeza Ili uweze kujithamini na kuhisi utulivu zaidi pindi mambo yanapokuwa magumu. Wewe ni mtu muhimu!\n\nUnaweza kupata maoni zaidi kuhusu kudhibiti msongo wa mawazo kwenye @global.weekly_workshop au kwenye @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and continuing to use @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.",
-    "text": "Asante kwa kuwa mkweli – na tunasikitika kuona unapata wakati mgumu kwa kijana wako.\n\nWakati mwingine, sisi sote tunahisi kuzidiwa, na kuendelea kutumia @global.parent_app ni hatua nzuri sana ya kukusaidia wewe na familia yako!\n\nNyenzo zetu zimesaidia maelfu ya wazazi na familia kupunguza msongo wa mawazo na kuwa na wakati mzuri zaidi pamoja. Tuko hapa kukusaidia.",
-    "type": "template",
-    "note": "The string @global.parent_app should not be translated."
-  },
-  {
-    "SourceText": "This is a real concern for parents everywhere. Remember to use your new skills to continue to build good communication with your teen. \n\nYou can review core tips on planning for your teen’s safety in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text!",
-    "text": "Hili ni tatizo kubwa kwa wazazi kila mahali. Kumbuka kutumia ujuzi wako mpya ili kuendelea kujenga mawasiliano mazuri na kijana wako.\n\nUnaweza kupitia tena vidokezo vya msingi kuhusu mpango wa usalama kwa kijana wako kwenye @global.weekly_workshop au kwenye @data.parent_centre.my_tips.location_text!",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Great. If any stress or disagreements around money do come up in your family in the future, you can always review the @data.workshop.w_money.in_text_title or @data.parent_centre.my_tips.location_text!",
-    "text": "Safi sana! Kama kwenye familia yako kutatokea kutokukubaliana kuhusu masuala ya pesa, unaweza kupitia @data.workshop.w_money.in_text_title au @data.parent_centre.my_tips.location_text wakati wowote!",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_money.in_text_title\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Money stress can be overwhelming. \n\nWhenever stress or disagreements around money come up in your family, you can find tips in the @data.workshop.w_money.in_text_title or under @data.parent_centre.my_tips.location_text!",
-    "text": "Msongo wa mawazo kuhusu pesa unaweza kuzidi mno.\n\nWakati wowote kukitokea msongo wa mawazo au kutokukubaliana kuhusu masuala ya pesa kwenye familia yako, unaweza kupata vidokezo kwenye @data.workshop.w_money.in_text_title au kwenye @data.parent_centre.my_tips.location_text!",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_money.in_text_title\n@data.parent_centre.my_tips.location_text"
-  },
-  {
     "SourceText": "Remember you can access lots of helpful tips and resources in the @global.parent_centre - this is available for you at any time!",
     "text": "Kumbuka unaweza kupata vidokezo na rasilimali nyingi za kukusaidia kwenye @global.parent_centre – zinapatikana kwa ajili yako wakati wowote!",
     "type": "template",
     "note": "The string @global.parent_centre should not be translated."
-  },
-  {
-    "SourceText": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you!\n\nRemember, you can find focused tools, extra content and resources on this in the @global.parent_centre at any time. You can also review core tips on safety planning under @data.parent_centre.my_tips.location_text.",
-    "text": "Kuwa mzazi siyo kitu rahisi. Inaweza kuwa vigumu kujua jinsi ya kuwaweka vijana wetu salama. Kama wazazi mara nyingi tunajihisi kuishiwa nguvu katika hili, lakini tuko hapa kukusaidia!\n\nKumbuka, unaweza kupata nyenzo makhususi, maudhui na rasirimali za ziada katika hili kwenye @global.parent_centre wakati wowote. Pia unaweza kupitia dondoo muhimu za mpango wa usalama katika @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.parent_centre\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nRemember, you can find more support on this in the @data.workshop.w_safe.in_text_title whenever you need it!",
-    "text": "Kuwa mzazi si jambo rahisi. Hongera kwa kuadhimia kumweka salama kijana wako.\n\nKumbuka, unaweza kupata msaada zaidi kuhusu suala hili kwenye @data.workshop.w_safe.in_text_title wakati wowote unapouhitaji!",
-    "type": "template",
-    "note": "The string @data.workshop.w_safe.in_text_title should not be translated."
-  },
-  {
-    "SourceText": "We know this is hard. You can review some helpful tips on how you can spend time with your teen under @data.parent_centre.my_tips.location_text or you can have another look at the @data.workshop.w_1on1.in_text_title.",
-    "text": "Tunajua jambo hili ni gumu. Unaweza kupitia vidokezo kadhaa vya kukusaidia jinsi unavyoweza kutumia muda ukiwa na kijana wako kwenye @data.parent_centre.my_tips.location_text au unaweza kuangalia tena @data.workshop.w_1on1.in_text_title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.parent_centre.my_tips.location_text\n@data.workshop.w_1on1.in_text_title"
-  },
-  {
-    "SourceText": "Well done for laying such a good foundation! You can always review the @data.workshop.w_1on1.in_text_title to get more ideas on how to spend time together.",
-    "text": "Hongera kwa kujiwekea msingi mzuri sana! Wakati wote unaweza kupitia tena @data.workshop.w_1on1.in_text_title ili kupata maoni zaidi kuhusu jinsi ya kutumia muda pamoja.",
-    "type": "template",
-    "note": "The string @data.workshop.w_1on1.in_text_title should not be translated."
-  },
-  {
-    "SourceText": "Using this app shows that you care about your teen. You can review how to use praise under @data.parent_centre.my_tips.location_text.\n\nFor more tips on how to use this skill well, you can also have another look at the @data.workshop.w_praise.in_text_title.",
-    "text": "Kutumia programu hii kunaonesha kuwa unamjali kijana wako. Unaweza kupitia tena jinsi ya kumsifia kijana wako kwenye @data.parent_centre.my_tips.location_text.\n\nKwa vidokezo zaidi kuhusu jinsi ya kutumia ujuzi huu vizuri, unaweza pia kuangalia zaidi hapa @data.workshop.w_praise.in_text_title.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.parent_centre.my_tips.location_text\n@data.workshop.w_praise.in_text_title"
-  },
-  {
-    "SourceText": "Wonderful that you are praising your teen! This helps them feel valued – your encouragement means a lot. \n\nYou can always have another look at the @data.workshop.w_praise.in_text_title for more tips on how to use this skill well.",
-    "text": "Inavutia sana kuona unamsifia kijana wako! Kufanya hivyo kunamsaidia kuhisi anathaminiwa – unapomtia moyo kunajenga maana kubwa sana.\n\nUnaweza kupitia tena @data.workshop.w_praise.in_text_title ili kupata vidokezo zaidi kuhusu jinsi ya kutumia vizuri ujuzi huu.",
-    "type": "template",
-    "note": "The string @data.workshop.w_praise.in_text_title should not be translated."
-  },
-  {
-    "SourceText": "Great that this has been a good week!\n\nWe will keep reminding you to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.",
-    "text": "Ni jambo zuri sana kwamba wiki hii imeenda vizuri!\n\nTutaendelea kukukumbusha kujipumzisha, kujitambua na kujipongeza ili kukusaidia uendelee kudhibiti msongo wa mawazo na kuhisi utulivu.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Great that you felt calm most of the week! \n\nWe will keep reminding you to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.",
-    "text": "Ni jambo zuri sana kwamba ulihisi utulivu wakati mwingi wa wiki hii!\n\nTutaendelea kukukumbusha kujipumzisha, kujitambua na kujipongeza ili kukusaidia uendelee kudhibiti msongo wa mawazo na kuhisi utulivu.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "We understand how stressful life can be. We will keep reminding you to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.",
-    "text": "Tunaelewa jinsi maisha yanavyoweza kuleta msongo wa mawazo. Tutaendelea kukukumbusha kujipumzisha, kujitambua na kujipongeza ili kukusaidia kudhibiti msongo wa mawazo na kuhisi utulivu zaidi.\n\nUnaweza kupata maoni zaidi kuhusu kudhibiti msongo wa mawazo kwenye @global.weekly_workshop au kwenye @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
   },
   {
     "SourceText": "Customise for your needs",
@@ -1826,18 +1778,6 @@
   {
     "SourceText": "Thank you for being honest",
     "text": "Asante kwa kuwa mkweli",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!",
-    "text": "Inafurahisha sana kuona unajibu kwa utulivu licha ya kijana wako kufanya jambo la kufadhaisha. Anaweza kujifunza mambo mengi sana kutoka kwako!",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Great that you are aware of what your teen is doing. Parenting is hard, but you’re really succeeding in this to keep them safe.",
-    "text": "Ni jambo zuri sana kuona kwamba unajua kile anachokifanya kijana wako. Malezi ni jambo gumu, lakini unafanikiwa sana kwenye jambo hili ili kumweka salama.",
     "type": "template",
     "note": ""
   },
@@ -1890,100 +1830,10 @@
     "note": ""
   },
   {
-    "SourceText": "Well done. Brain science shows that controlling your anger improves your teen’s brain development. Be proud of yourself.",
-    "text": "Vizuri. Sayansi ya ubongo inaonyesha kuwa kudhibiti hasira zako kunaboresha ukuaji wa ubongo wa kijana wako. Jionee fahari.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we’ll remind you regularly to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops, but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get started.",
-    "text": "Asante kwa kuwa mkweli. Kudhibiti msongo wa mawazo yetu kunaweza kuwa jambo gumu sana. Ili uweze kujithamini na tuweze kukusaidia uhisi utulivu zaidi wakati mambo yanapokuwa magumu, tutaendelea kukukumbusha kujipumzisha, kujitambua na kujipongeza. Wewe ni mtu muhimu!\n\nTutajifunza zaidi kuhusu kudhibiti msongo wa mawazo katika wiki ya @data.workshop.w_stress.number ya @global.weekly_workshops, lakini tayari unaweza kupata baadhi ya nyenzo zinazofaa kwenye @data.parent_centre.my_tips.location_text za kukusaidia kuanza.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_stress.number\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and using @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.",
-    "text": "Hongera kwa kuwa mkweli – na tunasikitika kwamba unapata wakati mgumu kwa kijana wako.\n\nWakati mwingine, sisi sote tunahisi kuzidiwa na mambo. Kutumia @global.parent_app ni hatua nzuri ya kukusaidia wewe na familia yako!\n\nTaarifa zetu zimesaidia maelfu ya wazazi na familia kupunguza msongo wa mawazo na kuwa na wakati chanya zaidi pamoja. Tuko hapa kukusaidia.",
-    "type": "template",
-    "note": "The string @global.parent_app should not be translated."
-  },
-  {
-    "SourceText": "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. \n\nWe’ll talk more about planning for your teen’s safety later in the @global.weekly_workshops, but you can already access some first core tips to keep your teen safe under @data.parent_centre.my_tips.location_text!",
-    "text": "Hili ni tatizo kubwa kwa wazazi kila mahali. Tutahakikisha unapata msaada kwa kujenga mawasiliano.\n\nTutazungumza zaidi juu ya kupanga usalama wa kijana wako baadaye kwenye @global.weekly_workshops, lakini tayari unaweza kupata vidokezo vya kwanza vya msingi ili kumweka salama kijana wako kwenye @data.parent_centre.my_tips.location_text!",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Great. We have a workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments.",
-    "text": "Safi sana! Tuna warsha kuhusu kutengeneza bajeti ya familia inayoweza kukusaidia kwenye msongo wa mawazo kutokana na pesa kwa jumla, na kupunguza ugomvi unaohusiana na pesa.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Money stress can be overwhelming. \n\nWe have a workshop on family budgeting in five weeks, but you can already access some core family budgeting tips under @data.parent_centre.my_tips.location_text!",
-    "text": "Msongo wa mawazo kutokana na pesa unaweza kuzidi mno.\n\nTuna warsha kuhusu kutengeneza bajeti ya familia baada ya wiki tano, lakini tayari unaweza kupata vidokezo vya msingi kuhusu kutengeneza bajeti ya familia kwenye @data.parent_centre.my_tips.location_text!",
-    "type": "template",
-    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
-  },
-  {
     "SourceText": "Content unlocked by these questions is now accessible under @data.parent_centre.my_tips.location_text.",
     "text": "Maudhui yaliyofunguliwa na maswali haya sasa yanapatikana kwenye @data.parent_centre.my_tips.location_text.",
     "type": "template",
     "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
-  },
-  {
-    "SourceText": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can already access some first core tips which will help with safety planning under @data.parent_centre.my_tips.location_text.",
-    "text": "Kuwa mzazi si jambo rahisi. Kujua jinsi ya kuwaweka vijana wetu salama linaweza kuwa jambo gumu. Kama wazazi, mara nyingi tunajisikia kukosa uwezo kwenye jambo hili, lakini tuko hapa kukusaidia! Wakati wowote unaweza kupata nyenzo muhimu, maudhui ya ziada na rasilimali zinazohusu suala hili kwenye @global.parent_centre.\n\nTayari unaweza kupata vidokezo vya kwanza vya msingi vitakavyosaidia kuweka sheria na kupanga usalama kwenye @data.parent_centre.my_tips.location_text.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.parent_centre\n@data.parent_centre.my_tips.location_text"
-  },
-  {
-    "SourceText": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nWe’ll have more support for you on this in the later @global.weekly_workshops if you’d like to know even more!",
-    "text": "Kuwa mzazi si jambo rahisi. Hongera kwa kuadhimia kumweka salama kijana wako.\n\nTutakupa msaada zaidi kwenye jambo hili katika @global.weekly_workshops za baadaye kama utapenda kujua zaidi!",
-    "type": "template",
-    "note": "The string @global.weekly_workshops should not be translated."
-  },
-  {
-    "SourceText": "We know this is hard. We have added some helpful tips on how you can spend time with your teen to @data.parent_centre.my_tips.location_text, so you can access it right away. \n\nBecause @data.workshop.w_1on1.title builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!",
-    "text": "Tunajua jambo hili ni gumu. Tumeongeza vidokezo vya kukusaidia jinsi unavyoweza kutumia muda ukiwa na kijana wako kwenye @data.parent_centre.my_tips.location_text, ili uweze kuvipata mara moja.\n\nKwa kuwa @data.workshop.w_1on1.title inajenga msingi wa nyenzo nyingine zote za malezi, wiki ijayo utapokea @global.weekly_workshop!",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.parent_centre.my_tips.location_text\n@data.workshop.w_1on1.title\n@global.weekly_workshop"
-  },
-  {
-    "SourceText": "Well done! Our next @global.weekly_workshop  will give you more ideas for this, as a foundation for all the other parenting tools. But you already have a great start!",
-    "text": "Vizuri! @global.weekly_workshop yetu ijayo itakupa maoni zaidi kuhusu jambo hili, kama msingi wa nyenzo nyingine zote za malezi. Lakini tayari umeanza vizuri!",
-    "type": "template",
-    "note": "The string @global.weekly_workshop should not be translated."
-  },
-  {
-    "SourceText": "Using this app shows that you care about your teen. We have added some essential tools on how to use praise to @data.parent_centre.my_tips.location_text for quick access.\n\nIn our @data.workshop.w_praise.in_text_title you will learn even more on how to use this skill well.",
-    "text": "Kutumia programu hii kunaonyesha kuwa unamjali kijana wako. Tumeongeza nyenzo muhimu za namna ya kutumia usifiaji kwenye @data.parent_centre.my_tips.location_text ili uzipate haraka.\n\nKwenye @data.workshop.w_praise.in_text_title utajifunza zaidi namna ya kutumia vizuri ujuzi huu.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.parent_centre.my_tips.location_text\n@data.workshop.w_praise.in_text_title"
-  },
-  {
-    "SourceText": "Wonderful that you are praising your teen! This helps them feel valued – your encouragement means a lot. In our @data.workshop.w_praise.in_text_title you will learn even more how to use this skill well.",
-    "text": "Inavutia sana kuona unamsifia kijana wako! Kufanya hivyo kunamsaidia kuhisi anathaminiwa – kumtia moyo kuna maana kubwa sana. Kwenye @data.workshop.w_praise.in_text_title utajifunza zaidi namna ya kutumia vizuri ujuzi huu.",
-    "type": "template",
-    "note": "The string @data.workshop.w_praise.in_text_title should not be translated."
-  },
-  {
-    "SourceText": "Great that this has been a good week!\n\nWe will remind you regularly to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.",
-    "text": "Ni jambo zuri sana kwamba wiki hii imeenda vizuri!\n\nTutakukumbusha mara kwa mara kujipumzisha, kujitambua na kujipongeza ili kukusaidia uendelee kudhibiti msongo wa mawazo na kuhisi utulivu.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Great that you felt calm most of the week! \n\nWe will remind you regularly to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.",
-    "text": "Ni jambo zuri sana kwamba ulihisi utulivu wakati mwingi wa wiki!\n\nTutakukumbusha mara kwa mara kujipumzisha, kujitambua na kujipongeza ili kukusaidia uendelee kudhibiti msongo wa mawazo na kuhisi utulivu.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "We understand how stressful life can be. We will remind you regularly to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops - but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get you started!",
-    "text": "Tunaelewa jinsi maisha yanavyoweza kuleta msongo wa mawazo. Tutaendelea kukukumbusha kujipumzisha, kujitambua na kujipongeza ili kukusaidia kudhibiti msongo wa mawazo na kuhisi utulivu zaidi.\n\nTutajifunza zaidi kuhusu kudhibiti msongo wa mawazo katika wiki ya @data.workshop.w_stress.number ya @global.weekly_workshops – lakini tayari unaweza kupata baadhi ya nyenzo zinazofaa kwenye @data.parent_centre.my_tips.location_text za kukusaidia kuanza!",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@data.workshop.w_stress.number\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
   },
   {
     "SourceText": "Talk Together",
@@ -4297,7 +4147,7 @@
   },
   {
     "SourceText": "Hi @fields.user_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
-    "text": "Habari @fields.user_name! Matatizo yanaweza kumtokea mtu yeyote – kujiandaa mapema husaidia sana.\n\nWarsha hii itakuonyesha jinsi ya kujiandaa mapema.",
+    "text": "Habari @fields.user_name! janga linaweza kumtokea mtu yeyote – kujiandaa mapema husaidia sana.\n\nWarsha hii itakuonyesha jinsi ya kujiandaa mapema.",
     "type": "template",
     "note": "The string @fields.user_name should not be translated."
   },
@@ -4764,6 +4614,24 @@
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
+    "SourceText": "Said something nice first",
+    "text": "Alisema kitu kizuri kwanza",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Spoken to @global.w_instruct_teen_girl in a calm voice",
+    "text": "Ameongea na @global.w_instruct_teen_girl kwa sauti ya utulivu",
+    "type": "template",
+    "note": "The string @global.w_instruct_teen_girl should not be translated."
+  },
+  {
+    "SourceText": "Told @global.w_instruct_teen_girl what she wants her to do",
+    "text": "Alimwambia @global.w_instruct_teen_girl kile anachotaka afanye",
+    "type": "template",
+    "note": "The string @global.w_instruct_teen_girl should not be translated."
+  },
+  {
     "SourceText": "How do you think @global.w_instruct_teen_girl felt about the way @global.w_instruct_female_caregiver responded?",
     "text": "Je, unafikiri @global.w_instruct_teen_girl alijisikiaje namna @global.w_instruct_female_caregiver alivyojibu?",
     "type": "template",
@@ -4776,22 +4644,22 @@
     "note": "The string @global.w_instruct_female_caregiver should not be translated."
   },
   {
-    "SourceText": "Said something nice first",
-    "text": "Alisema kitu kizuri kwanza",
+    "SourceText": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
+    "text": "@global.w_instruct_teen_girl alihisi kuheshimiwa na kupendwa na @global.w_instruct_female_caregiver wake",
     "type": "template",
-    "note": ""
+    "note": "The following strings should not be translated:\n@global.w_instruct_teen_girl\n@global.w_instruct_female_caregiver"
   },
   {
-    "SourceText": "Spoken to @global.w_instruct_teen_girl in a calm voice",
-    "text": "Ameongea na @global.w_instruct_teen_girl kwa sauti ya utulivu",
+    "SourceText": "@global.w_instruct_female_caregiver was able to stay calm",
+    "text": "@global.w_instruct_female_caregiver aliweza kutulia",
     "type": "template",
-    "note": ""
+    "note": "The string @global.w_instruct_female_caregiver should not be translated."
   },
   {
-    "SourceText": "Told @global.w_instruct_teen_girl what she wants her to do",
-    "text": "Alimwambia @global.w_instruct_teen_girl kile anachotaka afanye",
+    "SourceText": "@global.w_instruct_female_caregiver kept a positive attitude",
+    "text": "@global.w_instruct_female_caregiver alikuwa na mtazamo chanya",
     "type": "template",
-    "note": ""
+    "note": "The string @global.w_instruct_female_caregiver should not be translated."
   },
   {
     "SourceText": "How did @global.w_instruct_teen_girl and @global.w_instruct_female_caregiver feel now?",
@@ -4804,24 +4672,6 @@
     "text": "Je, kwa nini unadhani mambo yalimwendea vizuri @global.w_instruct_female_caregiver mara hii?",
     "type": "template",
     "note": "The string @global.w_instruct_female_caregiver should not be translated."
-  },
-  {
-    "SourceText": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
-    "text": "@global.w_instruct_teen_girl alihisi kuheshimiwa na kupendwa na @global.w_instruct_female_caregiver wake",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@global.w_instruct_female_caregiver was able to stay calm",
-    "text": "@global.w_instruct_female_caregiver aliweza kutulia",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@global.w_instruct_female_caregiver kept a positive attitude",
-    "text": "@global.w_instruct_female_caregiver alikuwa na mtazamo chanya",
-    "type": "template",
-    "note": ""
   },
   {
     "SourceText": "Let’s see what happens if @global.w_instruct_female_caregiver tells @global.w_instruct_teen_girl \"DON'T\":",
@@ -6219,7 +6069,7 @@
     "SourceText": "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
     "text": "@global.w_rules_female_caregiver_1 alisikiliza maoni ya @global.w_rules_teen_boy",
     "type": "template",
-    "note": ""
+    "note": "The following strings should not be translated:\n@global.w_rules_female_caregiver_1\n@global.w_rules_teen_boy"
   },
   {
     "SourceText": "The rule was clear, specific and fair",
@@ -6231,7 +6081,7 @@
     "SourceText": "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
     "text": "@global.w_rules_female_caregiver_1 alimsifia @global.w_rules_teen_boy kwa kusaidia kuweka sheria",
     "type": "template",
-    "note": ""
+    "note": "The following strings should not be translated:\n@global.w_rules_female_caregiver_1\n@global.w_rules_teen_boy"
   },
   {
     "SourceText": "That's right, making clear rules together in a calm and positive way works so well!",
@@ -6751,13 +6601,13 @@
   },
   {
     "SourceText": "Hi @fields.user_name! You are nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. \n\nThis week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
-    "text": "Habari @fields.user_name! Unakaribia kumaliza warsha zako za @global.parent_app! Hongera kwa kujitolea kwako kwa dhati kwa muda mrefu.\n\nWarsha ya wiki hii inahusu kuwaweka salama vijana wetu, mtandaoni na katika jamii. Furahia!",
+    "text": "Habari @fields.user_name! Unakaribia kumaliza warsha zako za @global.parent_app! Asante kwa kujitolea kwako kwa dhati kwa muda mrefu.\n\nWarsha ya wiki hii inahusu kuwaweka salama vijana wetu, mtandaoni na katika jamii. Furahia!",
     "type": "template",
     "note": "The following strings should not be translated:\n@fields.user_name\n@global.parent_app"
   },
   {
     "SourceText": "Hi @fields.group_name! You are all nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. \n\nThis week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
-    "text": "Habari @fields.group_name! unakaribia kumaliza warsha zako za @global.parent_app! Hongera kwa kujitolea kwako kwa dhati kwa muda mrefu.\n\nWarsha ya wiki hii inahusu kuwaweka salama vijana wetu, mtandaoni na katika jamii. Furahia!",
+    "text": "Habari @fields.group_name! unakaribia kumaliza warsha zako za @global.parent_app! Asante kwa kujitolea kwako kwa dhati kwa muda mrefu.\n\nWarsha ya wiki hii inahusu kuwaweka salama vijana wetu, mtandaoni na katika jamii. Furahia!",
     "type": "template",
     "note": "The following strings should not be translated:\n@fields.group_name\n@global.parent_app"
   },
@@ -6780,6 +6630,36 @@
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
+    "SourceText": "The man in the car was pressuring @global.w_safe_teen_girl_1 with gifts",
+    "text": "Mwanaume ndani ya gari alikuwa akimshinikiza @global.w_safe_teen_girl_1 kwa zawadi",
+    "type": "template",
+    "note": "The string @global.w_safe_teen_girl_1 should not be translated."
+  },
+  {
+    "SourceText": "@global.w_safe_teen_girl_1's friend was encouraging her",
+    "text": "Rafiki yake @global.w_safe_teen_girl_1 alikuwa akimtia moyo",
+    "type": "template",
+    "note": "The string @global.w_safe_teen_girl_1 should not be translated."
+  },
+  {
+    "SourceText": "Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things",
+    "text": "Kwenda na mwanaume mwenye umri mkubwa kunamweka @global.w_safe_teen_girl_1 kwenye hali ya hatari kwani anaweza kuumizwa au kulazimishwa kufanya mambo fulani",
+    "type": "template",
+    "note": "The string @global.w_safe_teen_girl_1 should not be translated."
+  },
+  {
+    "SourceText": "Many girls in our communities get pregnant or catch HIV from older men",
+    "text": "Wasichana wengi katika jamii zetu wanapata mimba au kuambukizwa VVU na wanaume wenye umri mkubwa",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "There were no other trusted adults to advise @global.w_safe_teen_girl_1",
+    "text": "Hakukuwa na watu wazima wengine wanaoaminika wa kumshauri @global.w_safe_teen_girl_1",
+    "type": "template",
+    "note": "The string @global.w_safe_teen_girl_1 should not be translated."
+  },
+  {
     "SourceText": "Let's think about what happened to @global.w_safe_teen_girl_1:",
     "text": "Hebu tufikirie kuhusu kile kilichotokea kwa @global.w_safe_teen_girl_1:",
     "type": "template",
@@ -6792,50 +6672,8 @@
     "note": ""
   },
   {
-    "SourceText": "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts",
-    "text": "Mwanaume wa ndani ya gari alikuwa akimshinikiza @global.w_safe_teen_girl_1 kwa zawadi",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "@global.w_safe_teen_girl_1's friend was encouraging her",
-    "text": "Rafiki yake @global.w_safe_teen_girl_1 alikuwa akimtia moyo",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things",
-    "text": "Kwenda na mwanaume mwenye umri mkubwa kunamweka @global.w_safe_teen_girl_1 kwenye hali ya hatari kwani anaweza kuumizwa au kulazimishwa kufanya mambo fulani",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Many girls in our communities get pregnant or catch HIV from older men",
-    "text": "Wasichana wengi katika jamii zetu wanapata mimba au kuambukizwa VVU na wanaume wenye umri mkubwa",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "There were no other trusted adults to advise @global.w_safe_teen_girl_1",
-    "text": "Hakukuwa na watu wazima wengine wanaoaminika wa kumshauri @global.w_safe_teen_girl_1",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "All those things are true!",
     "text": "Mambo yote hayo ni ya kweli!",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Let's think about our teens' online safety.",
-    "text": "Hebu tufikirie usalama wa vijana wetu mtandaoni.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "What is the biggest online risk for teens these days?",
-    "text": "Je, ipi ni hatari iliyo kubwa zaidi kwa vijana mtandaoni siku hizi?",
     "type": "template",
     "note": ""
   },
@@ -6866,6 +6704,18 @@
   {
     "SourceText": "People can often be nasty to teenagers online – they feel like they can bully people safely",
     "text": "Mara nyingi watu wanaweza kuwafanyia ubaya vijana mtandaoni – wanahisi kama wanaweza kuwaonea watu halafu wao wakabaki salama",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Let's think about our teens' online safety.",
+    "text": "Hebu tufikirie usalama wa vijana wetu mtandaoni.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "What is the biggest online risk for teens these days?",
+    "text": "Je, ipi ni hatari iliyo kubwa zaidi kwa vijana mtandaoni siku hizi?",
     "type": "template",
     "note": ""
   },
@@ -8124,6 +7974,36 @@
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
+    "SourceText": "Recognise why he feels stressed",
+    "text": "Kutambua kwa nini anahisi msongo wa mawazo",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Take a deep breath and speak calmly",
+    "text": "Kuvuta pumzi ndefu na kuzungumza kwa utulivu",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Show he understands his teen’s feelings",
+    "text": "Kuonesha kuwa anaelewa hisia za kijana wake",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Think about solutions together with @global.w_stress_teen_boy_1",
+    "text": "Kufikiria utatuzi pamoja na @global.w_stress_teen_boy_1",
+    "type": "template",
+    "note": "The string @global.w_stress_teen_boy_1 should not be translated."
+  },
+  {
+    "SourceText": "Do something positive together with @global.w_stress_teen_boy_1",
+    "text": "Kufanya kitu chanya pamoja na @global.w_stress_teen_boy_1",
+    "type": "template",
+    "note": "The string @global.w_stress_teen_boy_1 should not be translated."
+  },
+  {
     "SourceText": "Let's think about what happened in this story.",
     "text": "Hebu tufikirie kuhusu kilichotokea kwenye Hadithi hii.",
     "type": "template",
@@ -8182,36 +8062,6 @@
     "text": "Je, @global.w_stress_male_caregiver angeweza kufanyaje tofauti?",
     "type": "template",
     "note": "The string @global.w_stress_male_caregiver should not be translated."
-  },
-  {
-    "SourceText": "Recognise why he feels stressed",
-    "text": "Kutambua kwa nini anahisi msongo wa mawazo",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Take a deep breath and speak calmly",
-    "text": "Kuvuta pumzi ndefu na kuzungumza kwa utulivu",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Show he understands his teen’s feelings",
-    "text": "Kuonesha kuwa anaelewa hisia za kijana wake",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Think about solutions together with @global.w_stress_teen_boy_1",
-    "text": "Kufikiria utatuzi pamoja na @global.w_stress_teen_boy_1",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Do something positive together with @global.w_stress_teen_boy_1",
-    "text": "Kufanya kitu chanya pamoja na @global.w_stress_teen_boy_1",
-    "type": "template",
-    "note": ""
   },
   {
     "SourceText": "Let’s look at an example of how stress can sometimes just get too much, for all of us:",
@@ -8790,6 +8640,18 @@
     "note": ""
   },
   {
+    "SourceText": "workshops",
+    "text": "warsha/vipindi",
+    "type": "global",
+    "note": ""
+  },
+  {
+    "SourceText": "workshop",
+    "text": "warsha/vipindi",
+    "type": "global",
+    "note": ""
+  },
+  {
     "SourceText": "ParentPoints",
     "text": "Alama za Mzazi",
     "type": "global",
@@ -9175,7 +9037,7 @@
   },
   {
     "SourceText": "<p>Use @global.parent_points to celebrate your achievements!</p>",
-    "text": "<p>Tumia @global.parent_points kusherekea mafanikio yako!</p>",
+    "text": "<p>Tumia @global.parent_points kusherehekea mafanikio yako!</p>",
     "type": "tour",
     "note": "The string @global.parent_points should not be translated."
   },
@@ -9187,7 +9049,7 @@
   },
   {
     "SourceText": "<p>Check out the extra relaxation and parenting activities!</p>\n\n<p>You can also get quick parenting tips and technical support.</p>",
-    "text": "<p> Angalia kazi za ziada za kukufanya upumzike na za malezi!</p>\n\n<p> Unaweza pia kupata dondoo za malezi na msaada wa kiufundi kwa haraka.</p>",
+    "text": "<p> Angalia shughuli za ziada za kupumzika na malezi!</p>\n\n<p> Unaweza pia kupata dondoo za malezi na msaada wa kiufundi kwa haraka.</p>",
     "type": "tour",
     "note": ""
   },
@@ -9480,10 +9342,10 @@
     "note": "The string @global.parent_point should not be translated."
   },
   {
-    "SourceText": "Doing a relaxation activity",
-    "text": "Kufanya shughuli ya kuburudisha",
+    "SourceText": "Do a short relaxation activity: Take a deep breath or open one of the relaxation activities in @global.parent_app. You can do this anytime or anywhere. Taking care of yourself helps you to take care of others.",
+    "text": "Fanya zoezi fupi la kukutiliza: Vuta pumzi ndefu au fungua zoezi moja wapo la kukutuliza kwenye @global.parent_app. Unaweza kufanya hivi saa yoyote au mahali popote. Kujijali inakusaidia kuwajali wengine.",
     "type": "data_list",
-    "note": ""
+    "note": "The string @global.parent_app. should not be translated."
   },
   {
     "SourceText": "Every time you do a relax, tap the @global.parent_point and celebrate your success!",
@@ -9504,8 +9366,8 @@
     "note": "The string @global.parent_point should not be translated."
   },
   {
-    "SourceText": "Doing something they like for themselves",
-    "text": "Kufanya kitu wanachopenda wao wenyewe",
+    "SourceText": "Even a bit of time for yourself will make a big difference in how you feel and respond in day-to-day life!\n\nDo something that makes you feel good: Have a hot drink, call a friend or relative, have a relaxing bath, read, or watch your favourite series.",
+    "text": "Hata muda mchache kwa ajili yako mwenyewe italeta tofauti kubwa katika namna unavyohisi na unavyokabiliana na maisha ya kila siku!\n\nFanya kitu kitachokufanya uhisi vizuri: Kunywa kinywaji cha moto, mpigie rafiki au jamaa, oga kwa ajili ya kutulia, soma au tazama kipindi ukipendacho.",
     "type": "data_list",
     "note": ""
   },
@@ -9522,8 +9384,8 @@
     "note": "The string @global.parent_point should not be translated."
   },
   {
-    "SourceText": "Praising themselves",
-    "text": "Kujisifia mwenyewe",
+    "SourceText": "Notice when you do something well and take a moment to appreciate yourself for it. Life can be challenging, but you are moving forward - you deserve praise for the big and the small things!",
+    "text": "Zingatia unapofanya kitu vizuri na uchukue muda kujipongeza. Maisha yanaweza kuwa magumu, lakini wasonga mbele - unastahili pongezi kwa makubwa na madogo!",
     "type": "data_list",
     "note": ""
   },
@@ -9546,8 +9408,8 @@
     "note": "The string @global.parent_point should not be translated."
   },
   {
-    "SourceText": "Spending time with their teen",
-    "text": "Kutumia muda pamoja na kijana wako",
+    "SourceText": "Spend uninterrupted time together with your teen, doing something that THEY want or like to do. The more you do it the stronger your relationship gets.",
+    "text": "Tumia muda na kijana bila kuingiliwa, fanya kitu anachokitaka au anapenda kufanya. Kadiri mnapofanya zaidi ndivyo mahusiano yanaimarika.",
     "type": "data_list",
     "note": ""
   },
@@ -9570,8 +9432,8 @@
     "note": "The string @global.parent_point should not be translated."
   },
   {
-    "SourceText": "Praising their teen when they did positive thing",
-    "text": "Kumsifia kijana wako alipofanya jambo chanya",
+    "SourceText": "Notice when your teen does something well and praise them right away - be specific and use their name. You can even praise them for trying.\n\nThe more you praise, the more positive behaviour you will see!",
+    "text": "Zingatia pale kijana wako anapofanya kitu vyema na umsifie papo hapo - kwa jambo maalumu alilolifanya na utumie jina lake. Unaweza ukamsifia kwa kujaribu.\n\nKadiri unavyo kumsifia, ndivyo utavyozidi kuona tabia chanya!",
     "type": "data_list",
     "note": ""
   },
@@ -9582,20 +9444,20 @@
     "note": "The string @global.parent_point should not be translated."
   },
   {
-    "SourceText": "Get positive",
-    "text": "Kuwa na mtazamo chanya",
+    "SourceText": "Positive instructions",
+    "text": "Maelekezo chanya",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "**Get positive** @global.parent_point",
-    "text": "@global.parent_point ya **Kuwa na mtazamo chanya**",
+    "SourceText": "**Positive instructions** @global.parent_point",
+    "text": "**Maelekezo chanya** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
   {
-    "SourceText": "Giving their teen a positive instruction",
-    "text": "Kuwapa vijana wake maelekezo chanya",
+    "SourceText": "Tell your teen what you DO want them to do, instead of what you DON'T want them to do. Be realistic, positive and specific when you give your teen instructions.",
+    "text": "Mwambie kijana wako kile unachotaka akifanye badala ya kile usichotaka akifanye. Unapompa kijana wako maelekezo kuwa halisi, chanya na bayana.",
     "type": "data_list",
     "note": ""
   },
@@ -9606,20 +9468,20 @@
     "note": "The string @global.parent_point should not be translated."
   },
   {
-    "SourceText": "Breathe not yell",
-    "text": "Vuta pumzi, usifoke",
+    "SourceText": "Respond calmly",
+    "text": "Itikia kwa utulivu",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "**Breathe not yell** @global.parent_point",
-    "text": "@global.parent_point ya **Vuta pumzi, usifoke**",
+    "SourceText": "**Respond calmly** @global.parent_point",
+    "text": "**Itikia kwa utulivu** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
   {
-    "SourceText": "Taking a pause before responding",
-    "text": "Kutulia kabla ya kujibu",
+    "SourceText": "When you are feeling angry or stressed, choose to take a breath, share how you feel and respond calmly.",
+    "text": "Wakati unapohisi hasira au mfadhaiko, chagua kuvuta pumzi, mshirikishe unavyohisi na itikia kwa utulivu.",
     "type": "data_list",
     "note": ""
   },
@@ -9642,8 +9504,8 @@
     "note": "The string @global.parent_point should not be translated."
   },
   {
-    "SourceText": "Keeping the budget",
-    "text": "Kutumia bajeti",
+    "SourceText": "Make one of these good money choices:\n* Spend money according to your family budget. \n* Save extra money this week.\n* Respond well to a crisis that involves money.\n* Help a family member stick to your family budget.\n* Recognise something is a 'want' instead of a 'need'.",
+    "text": "Fanya mojawapo ya maamuzi haya mazuri ya kifedha: \n*Tumia fedha kulingana na bajeti ya familia yako.\n*Tunza fedha ya ziada wiki hii.\n*Itikia vyema katika changamoto zinazohusu fedha. \n*Msaidie mwana familia kuzingatia bajeti ya familia. \n*Tambua kitu ni 'tamanio' badala ya 'hitaji'.",
     "type": "data_list",
     "note": ""
   },
@@ -9666,8 +9528,8 @@
     "note": "The string @global.parent_point should not be translated."
   },
   {
-    "SourceText": "Giving their teen a consequence in a calm way",
-    "text": "Kuamuru kwa utulivu kijana wake afanye athari",
+    "SourceText": "When your child is behaving badly, take a deep breath and give a consequence in a calm way.\n\nAgree on the calm consequence with your teen before the negative behaviour happens. Make sure it is realistic, manageable and fits the behaviour you are trying to correct.",
+    "text": "Pale mtoto wako anapokuwa na tabia mbaya, vuta pumzi ndefu na mpe adhabu kwa namna ya utulivu. \n\nKubaliana na kijana wako adhabu nyepesi kabla tabia mbaya haijatokea. Hakikisha kuwa ni halisi, inafanyika na inaendana na ile tabia unayojaribu kurekebisha.",
     "type": "data_list",
     "note": ""
   },
@@ -9678,20 +9540,20 @@
     "note": "The string @global.parent_point should not be translated."
   },
   {
-    "SourceText": "Safe",
-    "text": "Salama",
+    "SourceText": "Keep your teen safe",
+    "text": "Muweke kijana wako salama",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "**Safe** @global.parent_point",
-    "text": "@global.parent_point **Salama**",
+    "SourceText": "**Keep your teen safe** @global.parent_point",
+    "text": "**Muweke kijana wako salama** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
   {
-    "SourceText": "Planning or keeping a family safety plan",
-    "text": "Kupanga au kutumia mpango wa usalama wa familia",
+    "SourceText": "Help your teen stay safe by doing one of these things:\n* Map out or talk about safe and unsafe spaces in your community.\n* Map out or talk about safe and unsafe spaces online.\n* Make rules with your teen about how they can stay safe in the community and online.\n* Explain, remind, or use your teen's 'Safety Amnesty': Your teen can always tell you if they are in a dangerous or difficult situation, and you won't get angry or punish them.",
+    "text": "Msaidie kijana wako kuwa salama kwa kufanya mojawapo ya vitu hivi:\n*Tambua au zungumza kuhusu sehemu salama na zisizo salama katika jamii yako.\n*Tambua au zungumza kuhusu sehemu salama na zisizo salama mtandaoni.\n* Tengeneza sheria na kijana wako kuhusu jinsi wanavyoweza kuwa salama katika jamii na mtandaoni.\n* Mueleze, mkumbushe au na tumia 'Msamaha wa Usalama': Kijana wako anaweza kukuambia kila wakati iwapo yupo katika hali hatarishi au ngumu, na hutokasirika au kuwaadhibu.",
     "type": "data_list",
     "note": ""
   },
@@ -10140,14 +10002,146 @@
     "note": ""
   },
   {
-    "SourceText": "It is hard to find time to have fun with your teenager.",
-    "text": "Ni vigumu kupata muda wa kufurahi na kijana wako.",
+    "SourceText": "Police",
+    "text": "Askari",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "How many days in the past week were you able to do something fun together?",
-    "text": "Je, ni siku ngapi katika wiki iliyopita mliweza kufanya kitu cha furahisha pamoja?",
+    "SourceText": "National Child Helpline",
+    "text": "Nambari ya Kitaifa ya msaada kwa Mtoto",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "This helpline is free, available 24/7, and connects you with a professional that can help.",
+    "text": "Namba hii ya msaada ni bure, inapatikana 24/7 na inakuunganisha na mtaalam atakaeweza kukusaidia.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Toll free",
+    "text": "Bila malipo",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Ambulance",
+    "text": "Gari la kusafirishia wagonjwa",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Alcoholics Anonymous (AA)",
+    "text": "Kikundi cha siri cha walevi (AA)",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "AA supports men and women to help them recover from alcoholism. This service is free and completely anonymous.",
+    "text": "AA husaidia wanaume na wanawake kupata nafuu kutokana na uraibu wa ulevi. Huduma hii ni bure na ya siri.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Tanzania Legal Aid (TANLAP)",
+    "text": "Msaada wa Kisheria Tanzania(TANLAP)",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "TANLAP connects you to groups providing affordable legal aid in Tanzania.",
+    "text": "TANLAP inakuunganisha na makundi yanayotoa msaada nafuu wa kisheria nchini Tanzania.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Women's Legal Aid Centre",
+    "text": "Kituo cha Msaada wa Kisheria wa Wanawake (WLC)",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "WLC is a non-profit organisation that helps to empower women to secure their rights across Tanzania.",
+    "text": "WLC ni shirika lisilo la faida linalosaidia kuwawezesha wanawake kupata haki zao nchini kote Tanzania.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Helpline",
+    "text": "Namba ya Msaada",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Counselling and Family Life Organisation (CAFLO)",
+    "text": "Shirika la Ushauri na Maisha ya Kifamilia (CAFLO)",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "CAFLO offers counseling, empowerment and advocacy for families in Tanzania.",
+    "text": "CAFLO hutoa ushauri, uwezeshaji na utetezi wa familia nchini Tanzania.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Mental Health Association of Tanzania",
+    "text": "Chama cha Afya ya Akili Tanzania",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Professional organisation with a long history of supporting mental health services in Tanzania.",
+    "text": "Shirika la kitaaluma lenye historia ndefu ya kusaidia huduma za afya ya akili nchini Tanzania.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Tap Elderly Women's Wisdom for Youth (TEWWY)",
+    "text": "Tap Elderly Women's Wisdom for Youth (TEWWY) - Shirika la ushauri kwa vijana kutoka kwa wanawake waliozeeka",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "TEWWY has local Wisdom & Wellness Counselors who provide free and accessible mental health services, support and resources in their communities.",
+    "text": "TEWWY ina washauri wa hekima na ubora katika jamii wanaotoa bure msaada na rasilimali za huduma za afya ya akili zinazofikika katika jamii zao.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "WhatsApp",
+    "text": "WhatsApp",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Call",
+    "text": "Piga",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "TEWWY's Mental Health Q&A booklet",
+    "text": "Kijitabu cha \"maswali na majibu\" ya Afya ya Akili cha TEWWY",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "This booklet answers some common questions about mental health and provides information that could be helpful for you or your loved one.",
+    "text": "Kijitabu hiki kinajibu baadhi ya maswali ya kawaida kuhusu afya ya akili na hutoa taarifa inayoweza kuwa ya msaada kwako wewe au mpendwa wako.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "It is hard to find time to do something nice with your teenager.",
+    "text": "Ni ngumu kupata muda wa kufanya kitu kizuri na kijana wako.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many times in the past month did you get involved in activities that your teen likes?",
+    "text": "Ni mara ngapi kwa mwezi uliopita ulijihusisha na shughuli ambazo kijana wako anapenda?",
     "type": "data_list",
     "note": ""
   },
@@ -10158,74 +10152,44 @@
     "note": ""
   },
   {
-    "SourceText": "How many days in the past week have you praised your teen?",
-    "text": "Je, ni siku ngapi katika wiki iliyopita ulimsifia kijana wako?",
+    "SourceText": "How many times in the past month have you praised your teen?",
+    "text": "Ni mara ngapi katika mwezi uliopita ulimsifia kijana wako?",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "This is a very stressful time for families.",
-    "text": "Huu ni muda wenye msongo mkubwa wa mawazo kwa familia.",
+    "SourceText": "Being a parent can be stressful.",
+    "text": "Kuwa mzazi inaweza ikaleta mfadhaiko.",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "How many days in the past week did you feel very stressed as a parent/caregiver?",
-    "text": "Je, ni siku ngapi katika wiki iliyopita ulihisi kuwa na msongo mkubwa wa mawazo kama mzazi/mlezi?",
+    "SourceText": "How many times in the past month did caring for your children make you feel very stressed?",
+    "text": "Ni mara ngapi katika mwezi uliopita kuwajali watoto wako kulikufanya uhisi mfadhaiko?",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "Sometimes our children make us really upset.",
-    "text": "Wakati mwingine watoto wetu hutukasirisha sana.",
+    "SourceText": "There are days in our lives where we feel sad and down, and days where we feel happy.",
+    "text": "Kuna siku maishani mwetu tunahisi huzuni na tunakuwa wanyonge na kunasiku ambazo tunahisi furaha.",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "How many days in the past week did you shout, scream or yell at your teen?",
-    "text": "Je, ni siku ngapi katika wiki iliyopita ulimfokea kijana wako?",
+    "SourceText": "How many days in the past week have you felt depressed?",
+    "text": "Ni siku ngapi katika wiki iliyopita umehisi kisonona?",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "Money is one of the biggest stresses for families.",
-    "text": "Pesa ni miongoni mwa vyanzo vikubwa zaidi vya msongo wa mawazo katika familia.",
+    "SourceText": "How many days in the past week have you felt that everything you did was an effort?",
+    "text": "Ni siku ngapi katika wiki iliyopita ulihisi kuwa kila kitu ulichofanya ulitumia jitihada?",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "How many days in the past week have you felt worried or anxious about money?",
-    "text": "Je, ni siku ngapi katika wiki iliyopita ulikuwa na wasiwasi au hofu kuhusu pesa?",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past month (30 days) did you run out of money to pay for food?",
-    "text": "Je, ni siku ngapi katika mwezi uliopita (siku 30) ulikosa pesa za kununulia chakula?",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "It is so stressful when children misbehave.",
-    "text": "Watoto wanapokuwa na tabia mbaya wanaleta msongo wa mawazo.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past week did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?",
-    "text": "Ni siku ngapi katika wiki iliyopita uliwaadhibu watoto wako kwa kuwachapa au kuwapiga makofi au kuwapiga kwa fimbo au mkanda?",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "It’s hard to keep track of your teenagers when they are becoming independent.",
-    "text": "Ni vigumu kuwafuatilia vijana wako wanapojitegemea.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "How many days in the past week did you know what your teen was doing and who they were with?",
-    "text": "Ni siku ngapi katika wiki iliyopita ulijua vitu kijana wako alikuwa anafanya na alikuwa na nani?",
+    "SourceText": "How many days in the past week have you felt hopeful for the future?",
+    "text": "Ni siku ngapi katika wiki iliyopita ulikuwa na matumaini kwa ajili ya wakati ujao?",
     "type": "data_list",
     "note": ""
   },
@@ -10236,32 +10200,140 @@
     "note": ""
   },
   {
-    "SourceText": "We all want to keep our children safe.",
-    "text": "Wote tunataka kuwaweka watoto wetu salama.",
+    "SourceText": "Sometimes our children make us really upset.",
+    "text": "Wakati mwingine watoto wetu hutukasirisha sana.",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "In the past month, did you talk with your teen about keeping safe from sexual violence online or offline?",
-    "text": "Katika mwezi uliopita, ulizungumza na kijana wako kuhusu kujilinda dhidi ya ukatili wa kingono mtandaoni au nje ya mtandao?",
+    "SourceText": "How many times in the past month did you shout, scream or yell at your teen?",
+    "text": "Ni mara ngapi katika mwezi uliopita umempayukia, umepigia kelele au kumfokea kijana wako?",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "This could be about going out with friends or about the websites and apps they use.",
-    "text": "Hii inaweza kuhusisha kutoka na marafiki au tovuti na programu wanazotumia.",
+    "SourceText": "How many times in the past month did you insult your teen or call them names or stupid?",
+    "text": "Ni mara ngapi katika mwezi uliopita ulimtukana kijana wako au kumuita mjinga au majina mabaya?",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "How many days have you had a talk like this?",
-    "text": "Je, ni siku ngapi mmefanya maongezi kama haya?",
+    "SourceText": "Money is one of the biggest stresses for families.",
+    "text": "Pesa ni miongoni mwa vyanzo vikubwa zaidi vya msongo wa mawazo katika familia.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many times in the past month have you felt worried or anxious about money?",
+    "text": "Ni mara ngapi katika mwezi uliopita ulihisi wasiwasi au uwoga kuhusu fedha?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many days in the past month (30 days) did you run out of money to pay for food?",
+    "text": "Je, ni siku ngapi katika mwezi uliopita (siku 30) ulikosa pesa za kununulia chakula?",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "Days in the past month",
     "text": "Siku za mwezi uliopita",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Families also have difficult experiences like sickness and losing loved ones.",
+    "text": "Familia pia hupitia wakati mgumu kama ugonjwa na kupoteza wapendwa wao.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Has a caregiver of your teen (like a parent or grandparent) ever passed away?",
+    "text": "Je kuna mlezi wa kijana wako (kama mzazi au bibi/babu) ambae amefariki?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Did they pass away in the last 3 years?",
+    "text": "Je alifariki katika kipindi cha miaka mitatu iliyopita?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "It is so stressful when children misbehave.",
+    "text": "Watoto wanapokuwa na tabia mbaya wanaleta msongo wa mawazo.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many times in the past month did you physically discipline your teen by hitting, spanking, or slapping with your hand or and object like a stick or belt?",
+    "text": "Ni mara ngapi katika mwezi uliopita ulimpatia mwanao adhabu za mwilini kwa kumpiga, kumchapa makalioni au kumpiga kofi au na kitu kama fimbo au mkanda?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many times in the past month did you discipline your teen with a push or grab?",
+    "text": "Ni mara ngapi katika wiki iliyopita ulimuadhibu kwa kumsukuma au kumkamata kwa nguvu?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "It’s hard to keep track of our teenagers when they are becoming more independent.",
+    "text": "Ni ngumu kuwafuatilia vijana wetu pale wanapoanza kuwa na uhuru.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many times in the past month did your teen stay out in the evening past the time that they are supposed to be home?",
+    "text": "Ni mara ngapi katika mwezi uliopita, kijana wako alikaa nje mida ya jioni zaidi ya muda anaotakiwa kuwepo nyumbani?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many times in the past month did your teen go out with friends you don’t know?",
+    "text": "Je, ni mara ngapi katika mwezi uliopita, kijana wako alitoka na marafiki usiowajua?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many times in the past month did your teen not let you know where they were going?",
+    "text": "Je, mara ngapi katika mwezi uliopita kijana wako hakukuambia wapi wanapoenda?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Sometimes teenagers are hard to talk to.",
+    "text": "Muda mwingine ni vigumu kuongea na vijana.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Have you ever talked with your teen about ways to avoid being touched or made to do sexual things with people or online?",
+    "text": "Uliwahi kuongea na kijana wako kuhusiana na njia za kuzuia kushikwa au kulazimishwa kufanya matendo ya kingono na watu au mitandaoni?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Well done for talking to your teen about keeping safe.",
+    "text": "Vizuri kwa kuongea na kijana wako kuhusu kujiweka salama.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many times in the last month have you had a talk like this?",
+    "text": "Ni mara ngapi katika mwezi uliopita mliweza kuwa na maongezi kama haya?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How many times in the past month has your teen walked home alone, taken a lift with someone they don’t know or hung out in a place that made you worried for their safety?",
+    "text": "Ni mara ngapi katika mwezi uliopita kijana wako alirudi nyumbani akiwa peke yake, kupewa lifti na mtu usiyemjua au kuwapo sehemu iliokufanya uwe na mashaka juu ya usalama wao?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Times in the past month",
+    "text": "Nyakati katika mwezi uliopita",
     "type": "data_list",
     "note": ""
   },
@@ -10278,16 +10350,112 @@
     "note": ""
   },
   {
-    "SourceText": "Not confident",
-    "text": "Sijiamini",
+    "SourceText": "Spending time with your teen is not always easy. You’ll find ideas about how to do this in the @data.workshop.w_1on1.in_text_title. You can also find information in @data.parent_centre.my_tips.location_text.",
+    "text": "Kutumia muda na kijana wako daima sio rahisi  . Unaweza kupata vidokezo ya namna ya kufanya hivi kupitia @data.workshop.w_1on1.in_text_title. Unaweza kutafuta taarifa katika @data.parent_centre.my_tips.location_text.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@data.workshop.w_1on1.in_text_title.\n@data.parent_centre.my_tips.location_text."
+  },
+  {
+    "SourceText": "Well done! You’ll find more ideas about how to do this in  the @data.workshop.w_1on1.in_text_title.",
+    "text": "Vizuri! Utakuta namna nyingi zaidi kuhusu jinsi ya kufanya hizi kupitia @data.workshop.w_1on1.in_text_title.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_1on1.in_text_title. should not be translated."
+  },
+  {
+    "SourceText": "It’s not always easy to praise. You’ll learn more about this skill in the @data.workshop.w_praise.in_text_title. If you want help right away, you can find it in @data.parent_centre.my_tips.location_text.",
+    "text": "Sio rahisi kusifia kila mara. Utajifunza ujuzi huu kupitia @data.workshop.w_praise.in_text_title. Ikiwa unataka msaada wa papo kwa hapo, unaweza ukaupata ndani ya @data.parent_centre.my_tips.location_text.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@data.workshop.w_praise.in_text_title.\n@data.parent_centre.my_tips.location_text."
+  },
+  {
+    "SourceText": "Wonderful that you are praising your teen! This helps them feel valued.",
+    "text": "Vizuri kuwa unawasifia vijana wako. Hii itasaidia wajihisi wanathaminiwa.",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "Extremely confident",
-    "text": "Najiamini sana",
+    "SourceText": "Great job managing your stress. You'll learn more about how to relax, recognise and reward yourself in the @data.workshop.w_self_care.in_text_title.",
+    "text": "Kazi nzuri katika kudhibiti mafadhaiko yako. Utajifunza zaidi jinsi ya kutulia, kutambua na kujipongeza ndani ya @data.workshop.w_self_care.in_text_title.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_self_care.in_text_title. should not be translated."
+  },
+  {
+    "SourceText": "Life can definitely get stressful. You'll learn more about taking care of yourself well in the @data.workshop.w_self_care.in_text_title and about managing stress in the @data.workshop.w_stress.in_text_title. If you want help right away, you can find it in @data.parent_centre.my_tips.location_text.",
+    "text": "Maisha yanaweza yakawa ya mafadhaiko. Utajifunza zaidi namna ya kujithamini vizuri ndani ya @data.workshop.w_self_care.in_text_title. Kama ukihitaji msaada wa papo kwa hapo unaweza ukaupata ndani ya @data.parent_centre.my_tips.location_text.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@data.workshop.w_self_care.in_text_title\n@data.workshop.w_stress.in_text_title.\n@data.parent_centre.my_tips.location_text."
+  },
+  {
+    "SourceText": "Thank you for answering these questions. When life gets difficult, it’s easy to forget about the good. You are the best parent your teen could have!",
+    "text": "Nashukuru kwa kujibu haya maswali. Maisha yanapokuwa magumu, ni rahisi kusahau mazuri. Wewe ni mzazi mzuri kijana wako anayeweza kuwa nae!",
     "type": "data_list",
     "note": ""
+  },
+  {
+    "SourceText": "Well done for controlling your anger. You'll learn more about how to respond calmly in the @data.workshop.w_self_care.in_text_title.",
+    "text": "Vizuri sana kwa kudhibiti hasira yako. Utajifunza zaidi jinsi ya kujibu kwa utulivu ndani ya @data.workshop.w_self_care.in_text_title.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_self_care.in_text_title. should not be translated."
+  },
+  {
+    "SourceText": "All parents use certain methods to teach children how to behave. Sometimes our children make us really angry or upset and we do things we wish we hadn’t.  You’ll learn more effective methods to respond to your teen and help them behave well in the @data.workshop.w_consequence.in_text_title. If you want help right away, you can also find it in @data.parent_centre.my_tips.location_text.",
+    "text": "Wazazi wote hutumia njia flani kuwafundisha watoto namna tabia zao zinapaswa kuwa. Wakati mwengine watoto wetu hutukasirisha sana na tunafanya vitu tunatamani tusingefanya. Utajifunza njia zenye matokeo za kukabiliana na kijana wako na kumsaidia kuwa na tabia njema ndani ya @data.workshop.w_consequence.in_text_title. Ikiwa unahitaji msaada wa papo kwa hapo unaweza pia ukaupata ndani ya @data.parent_centre.my_tips.location_text.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@data.workshop.w_consequence.in_text_title.\n@data.parent_centre.my_tips.location_text."
+  },
+  {
+    "SourceText": "Money stress can affect any family. You can learn more about budgeting in the @data.workshop.w_money.in_text_title to help with money stress and reduce money-related arguments.",
+    "text": "Mfadhaiko wa kifedha unaweza kuathiri familia yoyote. Unaweza ukajifunza zaidi kuhusu kubajeti ndani ya @data.workshop.w_money.in_text_title kusaidia na mfadhaiko wa kifedha na kupunguza ugomvi unaohusiana na maswala ya kifedha.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_money.in_text_title should not be translated."
+  },
+  {
+    "SourceText": "Money stress can be overwhelming. The @data.workshop.w_money.in_text_title includes information that will help with budgeting. If you want help right away, you can also find it in @data.parent_centre.my_tips.location_text.",
+    "text": "Mafadhaiko ya kifedha yanaweza kukusonga. @data.workshop.w_money.in_text_title inajumuisha taarifa ambazo zitasaidia na kubajeti. Ikiwa unahitaji msaada wa papo kwa hapo unaweza pia ukaupata ndani ya @data.parent_centre.my_tips.location_text.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@data.workshop.w_money.in_text_title\n@data.parent_centre.my_tips.location_text."
+  },
+  {
+    "SourceText": "Losing loved ones is hard. You can find ways to help you and your teen cope with grief in @data.parent_centre.bereavement.location_text.",
+    "text": "Kuwapoteza wapendwa ni ngumu. Unaweza ukapata njia za kukusaidia wewe na kijana wako kukabiliana na majonzi @data.parent_centre.bereavement.location_text.",
+    "type": "data_list",
+    "note": "The string @data.parent_centre.bereavement.location_text. should not be translated."
+  },
+  {
+    "SourceText": "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!",
+    "text": "Inafurahisha sana kuona unajibu kwa utulivu licha ya kijana wako kufanya jambo la kufadhaisha. Anaweza kujifunza mambo mengi sana kutoka kwako!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "We all feel overwhelmed sometimes. The information in the @data.workshop.w_consequence.in_text_title will help you feel less stressed and show you effective ways to teach your children the right behaviour. If you want help right away, you can also find it in @data.parent_centre.my_tips.location_text.",
+    "text": "Muda mwingine sote tunahisi kusongwa. Taarifa ndani ya @data.workshop.w_consequence.in_text_title itakusaidia kupunguza mfadhaiko na kuonyesha njia bora ya kumfundisha kijana wako tabia njema. Kama unahitaji msaada wa papo kwa hapo, unaweza pia ukaupata ndani ya @data.parent_centre.my_tips.location_text.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@data.workshop.w_consequence.in_text_title\n@data.parent_centre.my_tips.location_text."
+  },
+  {
+    "SourceText": "Great job keeping your teen safe. You’ll learn more about this in the @data.workshop.w_safe.in_text_title.",
+    "text": "Ni kazi nzuri kumuweka kijana wako salama. Utajifunza zaidi kuhusu hili ndani ya @data.workshop.w_safe.in_text_title.",
+    "type": "data_list",
+    "note": "The string @data.workshop.w_safe.in_text_title. should not be translated."
+  },
+  {
+    "SourceText": "Keeping track of our teens is not easy. Information in the @data.workshop.w_safe.in_text_title will support with building communication and keeping your teen safe. If you want help right away, you can also find it in @data.parent_centre.my_tips.location_text.",
+    "text": "Kuwafuatilia vijana wetu si kazi rahisi. Taarifa ndani ya @data.workshop.w_safe.in_text_title itakusaidia kujenga mahusiano na kumuweka kijana wako salama. Ukihitaji msaada wa papo kwa hapo, unaweza ukaupata ndani ya @data.parent_centre.my_tips.location_text.",
+    "type": "data_list",
+    "note": "The following strings should not be translated:\n@data.workshop.w_safe.in_text_title\n@data.parent_centre.my_tips.location_text."
+  },
+  {
+    "SourceText": "It can be difficult to know how to keep our teens safe. We often feel powerless as parents. You can get essential tools to help with safety planning in @data.parent_centre.my_tips.location_text at any time.",
+    "text": "Ni vigumu kujua namna ya kuweka vijana wetu salama. Mara nyingi wazazi tunahisi hatuna nguvu. Unaweza pata nyenzo muhimu kukusaidia kupanga usalama ndani ya @data.parent_centre.my_tips.location_text muda wowote.",
+    "type": "data_list",
+    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
+  },
+  {
+    "SourceText": "It can be hard to know what your teen is doing and parents worry about their safety. You can get essential tools to help with safety planning in @data.parent_centre.my_tips.location_text at any time.",
+    "text": "Ni vigumu kujua namna ya kuweka vijana wetu salama. Mara nyingi wazazi tunahisi hatuna nguvu. Unaweza pata nyenzo muhimu kukusaidia kupanga usalama ndani ya @data.parent_centre.my_tips.location_text muda wowote.",
+    "type": "data_list",
+    "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
   },
   {
     "SourceText": "Welcome and Self-Care",
@@ -10296,10 +10464,16 @@
     "note": ""
   },
   {
-    "SourceText": "**Welcome and Self-Care** workshop",
-    "text": "Warsha ya **Makaribisho na Ujitunzaji**",
+    "SourceText": "**Welcome and Self-Care** @global.workshop",
+    "text": "**Kukaribisha na kujithamini**@global.workshop",
     "type": "data_list",
-    "note": ""
+    "note": "The string @global.workshop should not be translated."
+  },
+  {
+    "SourceText": "This @global.weekly_workshop is about YOU. Looking after yourself is essential for a happy family.",
+    "text": "Hii @global.weekly_workshop inakuhusu wewe. Kujithamini ni muhimu kwa ajili ya furaha ya familia.",
+    "type": "data_list",
+    "note": "The string @global.weekly_workshop should not be translated."
   },
   {
     "SourceText": "Self-Care",
@@ -10332,8 +10506,14 @@
     "note": ""
   },
   {
-    "SourceText": "**One-on-One Time** workshop",
-    "text": "Warsha ya **Muda wa Pamoja Wawili**",
+    "SourceText": "**One-on-One Time** @global.workshop",
+    "text": "**Muda wa pamoja**@global.workshop",
+    "type": "data_list",
+    "note": "The string @global.workshop should not be translated."
+  },
+  {
+    "SourceText": "Spending time with your teen builds a positive relationship.",
+    "text": "Kutumia muda pamoja na kijana wako hujenga mahusiano chanya.",
     "type": "data_list",
     "note": ""
   },
@@ -10362,8 +10542,14 @@
     "note": ""
   },
   {
-    "SourceText": "**Praise** workshop",
-    "text": "Warsha ya **Usifiaji**",
+    "SourceText": "**Praise** @global.workshop",
+    "text": "**Kusifia**@global.workshop",
+    "type": "data_list",
+    "note": "The string @global.workshop should not be translated."
+  },
+  {
+    "SourceText": "Praise helps teens show more positive behaviour.",
+    "text": "Kusifia husaidia vijana kuwa na tabia chanya.",
     "type": "data_list",
     "note": ""
   },
@@ -10392,8 +10578,14 @@
     "note": ""
   },
   {
-    "SourceText": "**Positive Instructions** workshop",
-    "text": "Warsha ya **Maagizo Chanya**",
+    "SourceText": "**Positive Instructions** @global.workshop",
+    "text": "**Maelekezo chanya**@global.workshop",
+    "type": "data_list",
+    "note": "The string @global.workshop should not be translated."
+  },
+  {
+    "SourceText": "Teens follow instructions that are positive more easily.",
+    "text": "Vijana hufuata maelekezo chanya kwa urahisi zaidi.",
     "type": "data_list",
     "note": ""
   },
@@ -10422,8 +10614,14 @@
     "note": ""
   },
   {
-    "SourceText": "**Managing Stress** workshop",
-    "text": "Warsha ya **Kudhibiti Msongo wa Mawazo**",
+    "SourceText": "**Managing Stress** @global.workshop",
+    "text": "**Kukabili msongo wa mawazo**@global.workshop",
+    "type": "data_list",
+    "note": "The string @global.workshop should not be translated."
+  },
+  {
+    "SourceText": "Life is stressful. Staying calm helps us handle any situation better.",
+    "text": "Maisha ni ya mafadhaiko. Kuwa na utulivu husaidia kukabiliana na hali yoyote vyema.",
     "type": "data_list",
     "note": ""
   },
@@ -10452,8 +10650,14 @@
     "note": ""
   },
   {
-    "SourceText": "**Family Budgets** workshop",
-    "text": "Warsha ya **Bajeti za Familia**",
+    "SourceText": "**Family Budgets** @global.workshop",
+    "text": "**Bajeti za Familia**@global.workshop",
+    "type": "data_list",
+    "note": "The string @global.workshop should not be translated."
+  },
+  {
+    "SourceText": "Making a plan to budget and save as a family prevents disagreements.",
+    "text": "Kupanga bajeti na kuweka akiba kama familia husaidia kupunguza hali ya kutokuelewana.",
     "type": "data_list",
     "note": ""
   },
@@ -10482,8 +10686,14 @@
     "note": ""
   },
   {
-    "SourceText": "**Rules** workshop",
-    "text": "Warsha ya **Sheria**",
+    "SourceText": "**Rules** @global.workshop",
+    "text": "**Sheria**@global.workshop",
+    "type": "data_list",
+    "note": "The string @global.workshop should not be translated."
+  },
+  {
+    "SourceText": "Teens follow rules more when you create them together.",
+    "text": "Vijana hufuata sheria zaidi pale unapotengeneza nao pamoja.",
     "type": "data_list",
     "note": ""
   },
@@ -10512,8 +10722,14 @@
     "note": ""
   },
   {
-    "SourceText": "**Calm Consequences** workshop",
-    "text": "Kipindi cha  **Athari Nyepesi**",
+    "SourceText": "**Calm Consequences** @global.workshop",
+    "text": "**Adhabu nyepesi** @global.workshop",
+    "type": "data_list",
+    "note": "The string @global.workshop should not be translated."
+  },
+  {
+    "SourceText": "Consequences help us discipline our teens in a calm way – it works.",
+    "text": "Athari husaidia kuadabisha vijana wetu kwa namna ya utuilivu - inafanya kazi.",
     "type": "data_list",
     "note": ""
   },
@@ -10542,8 +10758,14 @@
     "note": ""
   },
   {
-    "SourceText": "**Problem Solving** workshop",
-    "text": "Warsha ya **Kutatua Matatizo**",
+    "SourceText": "**Problem Solving** @global.workshop",
+    "text": "**Kutatua matatizo**@global.workshop",
+    "type": "data_list",
+    "note": "The string @global.workshop should not be translated."
+  },
+  {
+    "SourceText": "Together with your teen, you can handle any challenge.",
+    "text": "Pamoja na kijana wako mnaweza kutatua changamoto yoyote.",
     "type": "data_list",
     "note": ""
   },
@@ -10572,8 +10794,14 @@
     "note": ""
   },
   {
-    "SourceText": "**Teen Safety** workshop",
-    "text": "Warsha ya **Usalama wa Vijana**",
+    "SourceText": "**Teen Safety** @global.workshop",
+    "text": "**Usalama wa kijana**@global.workshop",
+    "type": "data_list",
+    "note": "The string @global.workshop should not be translated."
+  },
+  {
+    "SourceText": "Talking and planning helps prevent dangerous situations, in-person and online.",
+    "text": "Kuongea na kupanga husaidia kuzuia hali hatarishi, ana kwa ana na mtandaoni.",
     "type": "data_list",
     "note": ""
   },
@@ -10602,8 +10830,14 @@
     "note": ""
   },
   {
-    "SourceText": "**Dealing with Crisis** workshop",
-    "text": "Warsha ya **Kushughulikia Hali ya Hatari**",
+    "SourceText": "**Dealing with Crisis** @global.workshop",
+    "text": "**Kukabiliana na mgogoro** @global.workshop",
+    "type": "data_list",
+    "note": "The string @global.workshop should not be translated."
+  },
+  {
+    "SourceText": "A crisis can happen in any family. You can be prepared.",
+    "text": "Matatizo yanaweza kutokea katika familia yoyote. Unaweza kuwa tayari.",
     "type": "data_list",
     "note": ""
   },
@@ -10632,8 +10866,14 @@
     "note": ""
   },
   {
-    "SourceText": "**Celebration and Next Steps** workshop",
-    "text": "Warsha ya **Kusherehekea na Hatua Zinazofuata**",
+    "SourceText": "**Celebration and Next Steps** @global.workshop",
+    "text": "**Sherehe na hatua zinazofuata** @global.workshop",
+    "type": "data_list",
+    "note": "The string @global.workshop should not be translated."
+  },
+  {
+    "SourceText": "Celebrate everything you learned and continue to support your family.",
+    "text": "Sherehekea kila unachojifunza na uendelee kusaidia familia yako.",
     "type": "data_list",
     "note": ""
   },
@@ -10656,76 +10896,130 @@
     "note": ""
   },
   {
-    "SourceText": "Hi great parent, remember to take care of yourself too - it will help you AND your family! Get your tips and more in @global.parent_app.",
-    "text": "Habari mzazi, kumbuka kujithamini mwenyewe pia - itakusaidia wewe na familia yako! Pata dondoo zaidi katika programu ya @global.parent_app.",
-    "type": "data_list",
-    "note": "The string @global.parent_app. should not be translated."
-  },
-  {
-    "SourceText": "Hi great parent! Remember, you can find lots of helpful tips in @global.parent_app.",
-    "text": "Habari mzazi! Kumbuka, unaweza kupata vidokezo vingi vya kukusaidia katika programu ya @global.parent_app.",
-    "type": "data_list",
-    "note": "The string @global.parent_app. should not be translated."
-  },
-  {
-    "SourceText": "Hi great parent! @global.parent_app is here to support you. Check it out now!",
-    "text": "Habari mzazi! Programu ya @global.parent_app ipo hapa kukusaidia. Itazame sasa!",
-    "type": "data_list",
-    "note": "The string @global.parent_app should not be translated."
-  },
-  {
     "SourceText": "Welcome to @global.parent_app. Click here to start your journey!",
     "text": "Karibu kwenye @global.parent_app. Bonyeza hapa kuanza safari yako!",
     "type": "data_list",
     "note": "The string @global.parent_app. should not be translated."
   },
   {
-    "SourceText": "Hi! Is everything OK? It seems you haven’t opened @global.parent_app lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
-    "text": "Habari! Kuna tatizo lolote? Inaonekana haujafungua @global.parent_app hivi karibuni. Hebu ijaribu! Mamilioni ya wazazi wamegundua kuwa taarifa hizi zinasaidia. Bado tuko hapa ili kukusaidia.",
+    "SourceText": "Parenting can be hard, but @global.parent_app is here to help you win. Tap here to find practical tips for you and your family.",
+    "text": "Malezi yanaweza kuwa magumu, lakini @global.parent_app ipo hapa kukusaidia kushinda. Bonyeza hapa kupata vidokezo muhimu kwa ajili yako na familia yako.",
     "type": "data_list",
     "note": "The string @global.parent_app should not be translated."
   },
   {
-    "SourceText": "@global.parent_app misses you! There is a lot to explore. We are still here to support you.",
-    "text": "@global.parent_app inakupenza! Kuna mengi ya kujifunza. Bado tuko hapa ili kukusaidia.",
+    "SourceText": "Do you ever feel stressed as a parent? @global.parent_app is here to help you feel more calm and focused. Tap here to find out more.",
+    "text": "Je, ushawahi kuhisi msongo wa mawazo kama mzazi? @global.parent_app ipo hapa kukusaidia kuhisi utulivu na umakini zaidi. Bonyeza hapa kujua zaidi.",
     "type": "data_list",
     "note": "The string @global.parent_app should not be translated."
   },
   {
-    "SourceText": "Hope you are feeling OK. We know parenting is hard - use @global.parent_app to prepare your teen for success in life.",
-    "text": "Tunatumaini kuwa haujambo. Tunajua malezi ni magumu – tumia @global.parent_app kumwandaa kijana wako afanikiwe maishani.",
+    "SourceText": "Millions of parents found the tips in @global.parent_app useful, and you can access them too. Tap here to explore.",
+    "text": "Mamilioni ya wazazi walipata vidokezo ndani ya @global.parent_app kuwa muhimu, na unaweza kuzipata pia. Bonyeza hapa kuchunguza.",
     "type": "data_list",
     "note": "The string @global.parent_app should not be translated."
   },
   {
-    "SourceText": "Hope you are feeling OK. We know parenting is hard - use @global.parent_app to bond with your teen again!",
-    "text": "Tunatumaini kuwa haujambo. Tunajua malezi ni magumu – tumia @global.parent_app kupatana tena na kijana wako!",
+    "SourceText": "Need some help with your teen's behaviour? @global.parent_app is here for you. Tap here to check it out.",
+    "text": "Unahitaji msaada kwa tabia za kijana wako? @global.parent_app ipo hapa kwa ajili yako. Bonyeza hapa kuangalia.",
     "type": "data_list",
     "note": "The string @global.parent_app should not be translated."
   },
   {
-    "SourceText": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your @global.parent_app journey!",
-    "text": "Tunatumaini kuwa haujambo. Kulea ni kugumu, lakini usichoke kuanza tena kwa ajili ya kijana wako. Warsha yako ya kwanza ya malezi iko tayari kwa ajili yako! Bonyeza hapa kuanza safari yako ya @global.parent_app!",
+    "SourceText": "Want to invest in yourself and your family? 1 minute in @global.parent_app already makes a difference! Tap here to find out more.",
+    "text": "Unataka kuwekeza kwa ajili yako na familia yako? Dakika 1 ndani ya @global.parent_app tayari inaleta utofauti! Bonyeza hapa na kujua zaidi.",
     "type": "data_list",
     "note": "The string @global.parent_app should not be translated."
   },
   {
-    "SourceText": "Hope you are feeling OK. We know parenting is hard - use @global.parent_app to help you manage parenting stress.",
-    "text": "Tunatumaini kuwa haujambo. Tunajua malezi ni magumu – tumia @global.parent_app ikusaidie kudhibiti msongo wa mawazo kutokana na malezi.",
+    "SourceText": "Want to set your teen and family up for success? Get practical tips and more in @global.parent_app.",
+    "text": "Je, unataka kumuweka kijana wako na familia yako kwa ajili ya mafanikio? Pata vidokezo na mengineyo ndani ya @global.parent_app.",
+    "type": "data_list",
+    "note": "The string @global.parent_app. should not be translated."
+  },
+  {
+    "SourceText": "Remember to take care of yourself too - it will help you AND your family! Get your tips and more in @global.parent_app.",
+    "text": "Kumbuka kujithamini mwenyewe - itakusaidia wewe na familia yako! Pata vidokezo na mengineyo ndani ya @global.parent_app.",
+    "type": "data_list",
+    "note": "The string @global.parent_app. should not be translated."
+  },
+  {
+    "SourceText": "@global.parent_app is here to support you. Tap here and check it out now.",
+    "text": "@global.parent_app ipo hapa kukusaidia. Bonyeza hapa na uangalie sasa.",
     "type": "data_list",
     "note": "The string @global.parent_app should not be translated."
   },
   {
-    "SourceText": "Hello again! It’s never too late to use @global.parent_app and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
-    "text": "Habari kwa mara nyingine! Hata haujachelewa kutumia @global.parent_app ili kupata msaada stahiki wa malezi. Kwa nini usiijaribu unaposafiri kwenda kazini au unaposubiri chakula kiive? Mamilioni ya wazazi wameona kuwa taarifa zetu zinasaidia.",
+    "SourceText": "Do you want to enjoy family life more? Tap here and find practical tips in @global.parent_app.",
+    "text": "Je, unataka kufurahia maisha ya familia zaidi? Bonyeza hapa na upate vidokezo ndani ya @global.parent_app.",
+    "type": "data_list",
+    "note": "The string @global.parent_app. should not be translated."
+  },
+  {
+    "SourceText": "You are not alone! @global.parent_app has lots of tips and activities that will help you and your family. Tap here to explore.",
+    "text": "Haupo peke yako! @global.parent_app ina vidokezo vingi na shughuli zitakazo kusaidia wewe na familia yako. Bonyeza hapa kuchunguza.",
     "type": "data_list",
     "note": "The string @global.parent_app should not be translated."
   },
   {
-    "SourceText": "Hope you are feeling OK. We know parenting is hard - use @global.parent_app to help you manage your teen's behaviour.",
-    "text": "Tunatumaini kuwa haujambo. Tunajua malezi ni magumu – tumia @global.parent_app ikusaidie kudhibiti tabia za kijana wako.",
+    "SourceText": "We all need a break sometimes - and you can get one right now in @global.parent_app! Tap here to find relaxation activities and more.",
+    "text": "Sote tunahitaji mapumziko wakati mwingine - na unaweza pata mojawapo wakati huu ndani ya @global.parent_app! Bonyeza hapa kupata vidokezo vya shughuli za kujituliza na zaidi.",
+    "type": "data_list",
+    "note": "The string @global.parent_app! should not be translated."
+  },
+  {
+    "SourceText": "Do you have five minutes to learn about parenting? @global.parent_app is here to help!",
+    "text": "Je una dakika tano za kujifunza kuhusu malezi? @global.parent_app ipo hapa kukusaidia!",
     "type": "data_list",
     "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "Looking for help with your teen? @global.parent_app is here for you!",
+    "text": "Je, unatafuta msaada kwa ajili ya kijana wako? @global.parent_app ipo hapa kwa ajili yako!",
+    "type": "data_list",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "It’s time to learn about parenting, use @global.parent_app now for useful tips for your family.",
+    "text": "Ni wakati wa kujifunza kuhusu malezi, tumia @global.parent_app sasa kwa vidokezo muhimu kwa ajili ya familia yako.",
+    "type": "data_list",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "Parents are the best! Tap here to find tips to help you with your teen.",
+    "text": "Wazazi ni wazuri! Bonyeza hapa kupata vidokezo vya kukusaidia kwa ajili ya kijana wako.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Teens can turn your day upside down. Let @global.parent_app help you create a happy and peaceful home.",
+    "text": "Vijana wanaweza kuharibu siku yako. Acha @global.parent_app ikusaidie kutengeneza mazingira ya furaha na amani nyumbani.",
+    "type": "data_list",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "Family is everything. @global.parent_app is here with many tips and activities to help you and your family.",
+    "text": "Familia ni kila kitu. @global.parent_app ipo hapa na vidokezo pamoja na shughuli za kukusaidia wewe na familia yako.",
+    "type": "data_list",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "Spending 1 minute learning about parenting makes a world of difference. Jump back into @global.parent_app here.",
+    "text": "Kutumia dakika 1 kujifunza kuhusu malezi inafanya ulimwengu wa utofauti. Rudi nyuma kwenye @global.parent_app hapa.",
+    "type": "data_list",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "You are doing amazing, keep up the good work. @global.parent_app is full of tips on how to look after yourself and your family.",
+    "text": "Unafanya vyema, endelea kufanya kazi nzuri. @global.parent_app imejaa vidokezo vya kujitunza wewe na familia yako.",
+    "type": "data_list",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "Wow, your teen is so lucky to have you as a parent. Learn more about parenting your teen with @global.parent_app.",
+    "text": "Hongera, kijana wako anabahati kuwa na mzazi kama wewe. Jifunze mengi kuhusu malezi ya kijana wako kwa @global.parent_app.",
+    "type": "data_list",
+    "note": "The string @global.parent_app. should not be translated."
   },
   {
     "SourceText": "Hi @fields.user_name. Your @data.workshop.w_1on1.in_text_title is ready for you.",

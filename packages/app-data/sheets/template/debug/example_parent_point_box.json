@@ -29,14 +29,13 @@
           "_cleaned": "click | set_field: @local.example_count: @local.example_count+1"
         },
         {
-          "trigger": "click",
-          "action_id": "info_click",
-          "args": [],
+          "trigger": "info_click",
+          "action_id": "pop_up",
+          "args": [
+            "example_parent_point_box_info"
+          ],
           "_raw": "info_click | pop_up: example_parent_point_box_info",
-          "_cleaned": "click | info_click | pop_up: example_parent_point_box_info",
-          "params": {
-            "pop_up": "example_parent_point_box_info"
-          }
+          "_cleaned": "info_click | pop_up: example_parent_point_box_info"
         }
       ],
       "parameter_list": {
@@ -114,6 +113,45 @@
           "action_list.0._raw",
           "action_list.0._cleaned",
           "action_list.0._cleaned"
+        ]
+      }
+    },
+    {
+      "type": "parent_point_box",
+      "name": "parent_point_box_set_field",
+      "value": "@local.example_count",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "info_click",
+          "action_id": "set_field",
+          "args": [
+            "example_field",
+            "parent_point_box_value"
+          ],
+          "_raw": "info_click | set_field: example_field: parent_point_box_value",
+          "_cleaned": "info_click | set_field: example_field: parent_point_box_value"
+        }
+      ],
+      "parameter_list": {
+        "info_icon_src": "plh_images/icons/question_mark.svg"
+      },
+      "_nested_name": "parent_point_box_set_field",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.example_count",
+            "matchedExpression": "@local.example_count",
+            "type": "local",
+            "fieldName": "example_count"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.example_count": [
+          "value"
         ]
       }
     }

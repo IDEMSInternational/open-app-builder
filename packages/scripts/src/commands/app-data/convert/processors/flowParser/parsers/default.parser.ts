@@ -256,6 +256,9 @@ class RowProcessor {
 
   /** replace any self references, i.e "hello @row.id" => "hello some_id"   */
   private replaceRowSelfReferences() {
+    // Hack - avoid replacing @row statements in data pipes as they refer to row on data source instead
+    if (this.parent.flow.flow_type === "data_pipe") return this.row;
+    // Handle replacements
     const context = { row: this.row };
     return new TemplatedData({ context, initialValue: this.row }).parse();
   }

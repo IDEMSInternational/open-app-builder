@@ -59,29 +59,28 @@
         },
         {
           "name": "text_not_completed",
-          "value": "Tomorrow the final @global.parent_app workshop is ready for you. \n\nTry to complete @local.workshop_data.in_text_title before starting the new workshop. That way, you can complete your set of parenting skills and decide what to do next!",
+          "value": "Tomorrow the final @global.parent_app @global.workshop is ready for you. \n\nTry to complete @local.workshop_data.in_text_title before starting the new workshop. That way, you can complete your set of parenting skills and decide what to do next!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "m_workshop_tomorrow.text_not_completed",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "Tomorrow the final @global.parent_app workshop is ready for you. \n\nTry to complete @local.workshop_data.in_text_title before starting the new workshop. That way, you can complete your set of parenting skills and decide what to do next!",
+                "fullExpression": "Tomorrow the final @global.parent_app @global.workshop is ready for you. \n\nTry to complete @local.workshop_data.in_text_title before starting the new workshop. That way, you can complete your set of parenting skills and decide what to do next!",
                 "matchedExpression": "@global.parent_app",
                 "type": "global",
                 "fieldName": "parent_app"
               },
               {
-                "fullExpression": "Tomorrow the final @global.parent_app workshop is ready for you. \n\nTry to complete @local.workshop_data.in_text_title before starting the new workshop. That way, you can complete your set of parenting skills and decide what to do next!",
+                "fullExpression": "Tomorrow the final @global.parent_app @global.workshop is ready for you. \n\nTry to complete @local.workshop_data.in_text_title before starting the new workshop. That way, you can complete your set of parenting skills and decide what to do next!",
+                "matchedExpression": "@global.workshop",
+                "type": "global",
+                "fieldName": "workshop"
+              },
+              {
+                "fullExpression": "Tomorrow the final @global.parent_app @global.workshop is ready for you. \n\nTry to complete @local.workshop_data.in_text_title before starting the new workshop. That way, you can complete your set of parenting skills and decide what to do next!",
                 "matchedExpression": "@local.workshop_data.in_text_title",
                 "type": "local",
                 "fieldName": "workshop_data"
@@ -92,6 +91,9 @@
             "@global.parent_app": [
               "value"
             ],
+            "@global.workshop": [
+              "value"
+            ],
             "@local.workshop_data.in_text_title": [
               "value"
             ]
@@ -99,29 +101,28 @@
         },
         {
           "name": "text_completed",
-          "value": "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access the final workshop to reflect on your @global.parent_app journey and on what you can do next!",
+          "value": "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access the final @global.workshop to reflect on your @global.parent_app journey and on what you can do next!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "m_workshop_tomorrow.text_completed",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access the final workshop to reflect on your @global.parent_app journey and on what you can do next!",
+                "fullExpression": "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access the final @global.workshop to reflect on your @global.parent_app journey and on what you can do next!",
                 "matchedExpression": "@local.workshop_data.in_text_title",
                 "type": "local",
                 "fieldName": "workshop_data"
               },
               {
-                "fullExpression": "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access the final workshop to reflect on your @global.parent_app journey and on what you can do next!",
+                "fullExpression": "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access the final @global.workshop to reflect on your @global.parent_app journey and on what you can do next!",
+                "matchedExpression": "@global.workshop",
+                "type": "global",
+                "fieldName": "workshop"
+              },
+              {
+                "fullExpression": "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access the final @global.workshop to reflect on your @global.parent_app journey and on what you can do next!",
                 "matchedExpression": "@global.parent_app",
                 "type": "global",
                 "fieldName": "parent_app"
@@ -130,6 +131,9 @@
           },
           "_dynamicDependencies": {
             "@local.workshop_data.in_text_title": [
+              "value"
+            ],
+            "@global.workshop": [
               "value"
             ],
             "@global.parent_app": [
