@@ -202,20 +202,21 @@
     {
       "type": "dashed_box",
       "name": "text_2",
-      "value": "All workshops are now unlocked.",
+      "value": "All @global.workshops are now unlocked.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "hidden": "!@fields.unlock_workshops_confirm",
       "_nested_name": "text_2",
       "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "All @global.workshops are now unlocked.",
+            "matchedExpression": "@global.workshops",
+            "type": "global",
+            "fieldName": "workshops"
+          }
+        ],
         "hidden": [
           {
             "fullExpression": "!@fields.unlock_workshops_confirm",
@@ -226,6 +227,9 @@
         ]
       },
       "_dynamicDependencies": {
+        "@global.workshops": [
+          "value"
+        ],
         "!@fields.unlock_workshops_confirm": [
           "hidden"
         ]
