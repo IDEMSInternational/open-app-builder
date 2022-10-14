@@ -8,72 +8,72 @@
       "individual": true,
       "together": false,
       "priority": 1,
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_welcome_individual_completed",
+      "completed": "@fields.task_w_money_welcome_individual_completed"
     },
     {
       "id": "care_together",
       "individual": false,
       "together": true,
       "priority": 2,
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_care_together_completed",
+      "completed": "@fields.task_w_money_care_together_completed"
     },
     {
       "id": "relax",
       "individual": true,
       "together": true,
       "priority": 3,
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_relax_completed",
+      "completed": "@fields.task_w_money_relax_completed"
     },
     {
       "id": "reflect_together",
       "individual": false,
       "together": true,
       "priority": 4,
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_reflect_together_completed",
+      "completed": "@fields.task_w_money_reflect_together_completed"
     },
     {
       "id": "intro",
       "individual": true,
       "together": true,
       "priority": 5,
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_intro_completed",
+      "completed": "@fields.task_w_money_intro_completed"
     },
     {
       "id": "tools_activity",
       "individual": true,
       "together": true,
       "priority": 70,
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_tools_activity_completed",
+      "completed": "@fields.task_w_money_tools_activity_completed"
     },
     {
       "id": "home_practice",
       "individual": true,
       "together": true,
       "priority": 80,
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_home_practice_completed",
+      "completed": "@fields.task_w_money_home_practice_completed"
     },
     {
       "id": "ending",
       "individual": true,
       "together": true,
       "priority": 90,
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_ending_completed",
+      "completed": "@fields.task_w_money_ending_completed"
     },
     {
       "id": "hp_review",
       "individual": true,
       "together": true,
       "priority": 91,
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_hp_review_completed",
+      "completed": "@fields.task_w_money_hp_review_completed"
     },
     {
       "id": "read_1",
@@ -81,8 +81,8 @@
       "together": true,
       "priority": 11,
       "template": "w_money_read_1",
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_read_1_completed",
+      "completed": "@fields.task_w_money_read_1_completed"
     },
     {
       "id": "learn_1",
@@ -90,8 +90,8 @@
       "together": true,
       "priority": 12,
       "template": "w_money_learn_1",
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_learn_1_completed",
+      "completed": "@fields.task_w_money_learn_1_completed"
     },
     {
       "id": "learn_2",
@@ -99,8 +99,8 @@
       "together": true,
       "priority": 13,
       "template": "w_money_learn_2",
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_learn_2_completed",
+      "completed": "@fields.task_w_money_learn_2_completed"
     },
     {
       "id": "learn_3",
@@ -108,8 +108,8 @@
       "together": true,
       "priority": 14,
       "template": "w_money_learn_3",
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_learn_3_completed",
+      "completed": "@fields.task_w_money_learn_3_completed"
     },
     {
       "id": "learn_4",
@@ -117,8 +117,8 @@
       "together": true,
       "priority": 15,
       "template": "w_money_learn_4",
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_learn_4_completed",
+      "completed": "@fields.task_w_money_learn_4_completed"
     },
     {
       "id": "read_2",
@@ -127,8 +127,8 @@
       "priority": 16,
       "template": "w_money_read_2",
       "group": "read_2",
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_read_2_completed",
+      "completed": "@fields.task_w_money_read_2_completed"
     },
     {
       "id": "question_1",
@@ -137,8 +137,8 @@
       "priority": 17,
       "template": "w_money_tq_1",
       "group": "read_2",
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_question_1_completed",
+      "completed": "@fields.task_w_money_question_1_completed"
     },
     {
       "id": "talk_1",
@@ -147,8 +147,8 @@
       "priority": 17,
       "template": "w_money_tq_1",
       "group": "read_2",
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_talk_1_completed",
+      "completed": "@fields.task_w_money_talk_1_completed"
     },
     {
       "id": "read_3",
@@ -157,8 +157,8 @@
       "priority": 18,
       "template": "w_money_read_3",
       "group": "read_3",
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_read_3_completed",
+      "completed": "@fields.task_w_money_read_3_completed"
     },
     {
       "id": "question_2",
@@ -167,8 +167,8 @@
       "priority": 19,
       "template": "w_money_tq_2",
       "group": "read_3",
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_question_2_completed",
+      "completed": "@fields.task_w_money_question_2_completed"
     },
     {
       "id": "talk_2",
@@ -177,8 +177,8 @@
       "priority": 19,
       "template": "w_money_tq_2",
       "group": "read_3",
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_talk_2_completed",
+      "completed": "@fields.task_w_money_talk_2_completed"
     },
     {
       "id": "question_3",
@@ -187,8 +187,8 @@
       "priority": 20,
       "template": "w_money_tq_3",
       "group": "read_3",
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_question_3_completed",
+      "completed": "@fields.task_w_money_question_3_completed"
     },
     {
       "id": "talk_3",
@@ -197,8 +197,8 @@
       "priority": 20,
       "template": "w_money_tq_3",
       "group": "read_3",
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_talk_3_completed",
+      "completed": "@fields.task_w_money_talk_3_completed"
     },
     {
       "id": "learn_5",
@@ -206,8 +206,8 @@
       "together": true,
       "priority": 21,
       "template": "w_money_learn_5",
-      "completed_field": "task_w_money_@row.id_completed",
-      "completed": "@fields.task_w_money_@row.id_completed"
+      "completed_field": "task_w_money_learn_5_completed",
+      "completed": "@fields.task_w_money_learn_5_completed"
     }
   ]
 }
