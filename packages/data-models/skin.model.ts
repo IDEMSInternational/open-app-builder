@@ -1,4 +1,4 @@
-import { IAppConfigOverride } from "packages/data-models";
+import { IAppConfigOverride } from ".";
 
 export interface IAppSkin {
   name: string;
