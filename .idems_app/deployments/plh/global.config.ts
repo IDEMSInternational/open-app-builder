@@ -1,6 +1,6 @@
 import { IDeploymentConfig } from "data-models";
 import { getDefaultAppConfig } from "data-models/constants";
-import { weekly_workshop, modular } from "./skins";
+import * as SKINS from "./skins";
 
 const app_config = getDefaultAppConfig();
 
@@ -34,7 +34,7 @@ config.app_config.APP_SIDEMENU_DEFAULTS.title = "ParentApp";
 config.app_config.APP_HEADER_DEFAULTS.title = "ParentApp";
 config.app_config.NOTIFICATION_DEFAULTS.title = "New message from PLH";
 config.app_config.NOTIFICATION_DEFAULTS.text = "You have a new message from ParentApp";
-config.app_config.APP_SKINS.default = weekly_workshop
-config.app_config.APP_SKINS.available = [modular]
+config.app_config.APP_SKINS.default = SKINS.weekly_workshop
+config.app_config.APP_SKINS.available = [SKINS.modular]
 
 export default config;
