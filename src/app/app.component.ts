@@ -140,12 +140,14 @@ export class AppComponent {
     await this.dbService.init();
     await this.userMetaService.init();
     this.themeService.init();
-    this.skinService.init();
     // initialise appConfig and set dependent properties
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.appConfig = appConfig;
+      this.sideMenuDefaults = appConfig.APP_SIDEMENU_DEFAULTS;
+      this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
+    });
     this.appConfigService.init();
-    this.appConfig = this.appConfigService.APP_CONFIG;
-    this.sideMenuDefaults = this.appConfig.APP_SIDEMENU_DEFAULTS;
-    this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
+    this.skinService.init();
     /** CC 2021-05-14 - disabling reminders service until decide on full implementation (ideally not requiring evaluation of all reminders on init) */
     // this.remindersService.init();
     await this.appEventService.init();

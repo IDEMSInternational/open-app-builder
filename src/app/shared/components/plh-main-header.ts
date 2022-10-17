@@ -44,8 +44,10 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
     private appConfigService: AppConfigService
   ) {}
   async ngOnInit() {
-    this.appConfig = this.appConfigService.APP_CONFIG;
-    this.title = this.appConfig.APP_HEADER_DEFAULTS.title;
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.appConfig = appConfig;
+      this.title = this.appConfig.APP_HEADER_DEFAULTS.title;
+    });
     // subscribe to and handle route changes
     this.routeChanges$ = this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {

@@ -3,7 +3,7 @@ import { getDefaultAppConfig, IAppConfig, IAppConfigOverride } from "data-models
 import { BehaviorSubject } from "rxjs";
 import { environment } from "src/environments/environment";
 import { deepMergeObjects } from "../../utils";
-import { SkinService } from "../skin/skin.service";
+import clone from "clone";
 
 @Injectable({
   providedIn: "root",
@@ -17,28 +17,23 @@ export class AppConfigService {
   /** Static value to be read by methods that are not responsive to changes
    * TODO: migrate all consumers of this value to be responsive to appConfig$ */
   APP_CONFIG: IAppConfig;
-
-  constructor(private skinService: SkinService) {}
+  deploymentAppConfig: IAppConfig;
 
   init() {
-    this.updateAppConfig();
-    this.skinService.activeSkin$.subscribe((activeSkin) => {
-      this.appConfigSkinOverrides = activeSkin.appConfig;
-      this.updateAppConfig();
-    });
-  }
-
-  updateAppConfig() {
-    const appConfigWithDeploymentOverrides = this.applyAppConfigOverrides(
-      getDefaultAppConfig(),
+    this.APP_CONFIG = getDefaultAppConfig();
+    this.deploymentAppConfig = this.applyAppConfigOverrides(
+      this.APP_CONFIG,
       this.appConfigDeploymentOverrides
     );
-    const appConfigWithSkinOverrides = this.applyAppConfigOverrides(
-      appConfigWithDeploymentOverrides,
-      this.appConfigSkinOverrides
-    );
-    this.APP_CONFIG = appConfigWithSkinOverrides;
-    this.appConfig$.next(appConfigWithSkinOverrides);
+    this.updateAppConfig(this.appConfigDeploymentOverrides);
+  }
+
+  public updateAppConfig(overrides: IAppConfigOverride) {
+    // Clone this.deploymentAppConfig so that the original is unaffected by deepMergeObjects()
+    const deploymentAppConfig = clone(this.deploymentAppConfig);
+    const appConfigWithOverrides = this.applyAppConfigOverrides(deploymentAppConfig, overrides);
+    this.APP_CONFIG = appConfigWithOverrides;
+    this.appConfig$.next(appConfigWithOverrides);
   }
 
   private applyAppConfigOverrides(appConfig: IAppConfig, overrides: IAppConfigOverride) {
