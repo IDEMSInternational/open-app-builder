@@ -33,10 +33,6 @@ import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lif
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
 import { IAppConfig } from "./shared/model";
 
-// TODO - The APP_FIELDS should come from appConfigService.APP_CONFIG,
-// but currently they are being used before the core services are intialised
-const { APP_FIELDS } = APP_CONFIG;
-
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
@@ -85,9 +81,10 @@ export class AppComponent {
 
   async initializeApp() {
     this.platform.ready().then(async () => {
+      this.initialiseAppConfig();
       // ensure deployment field set correctly for use in any startup services or templates
-      localStorage.setItem(APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
-      localStorage.setItem(APP_FIELDS.APP_VERSION, this.APP_VERSION);
+      localStorage.setItem(this.appConfig.APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
+      localStorage.setItem(this.appConfig.APP_FIELDS.APP_VERSION, this.APP_VERSION);
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
@@ -128,6 +125,16 @@ export class AppComponent {
     }
   }
 
+  /** Initialise appConfig and set dependent properties */
+  initialiseAppConfig() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.appConfig = appConfig;
+      this.sideMenuDefaults = this.appConfig.APP_SIDEMENU_DEFAULTS;
+      this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
+    });
+    // this.appConfigService.init();
+  }
+
   /**
    * Various services set core app data which may be used in templates such as current app day,
    * user id etc. Make sure these services have run their initialisation logic before proceeding.
@@ -140,13 +147,6 @@ export class AppComponent {
     await this.dbService.init();
     await this.userMetaService.init();
     this.themeService.init();
-    // initialise appConfig and set dependent properties
-    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.appConfig = appConfig;
-      this.sideMenuDefaults = appConfig.APP_SIDEMENU_DEFAULTS;
-      this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
-    });
-    this.appConfigService.init();
     this.skinService.init();
     /** CC 2021-05-14 - disabling reminders service until decide on full implementation (ideally not requiring evaluation of all reminders on init) */
     // this.remindersService.init();

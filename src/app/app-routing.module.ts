@@ -3,6 +3,7 @@ import { PreloadAllModules, Route, RouterModule, Routes } from "@angular/router"
 import { APP_CONFIG } from "./data";
 import { TourComponent } from "./feature/tour/tour.component";
 
+// TODO: These should come from the appConfigService
 const { APP_ROUTE_DEFAULTS } = APP_CONFIG;
 
 /** Routes specified from data-models */
