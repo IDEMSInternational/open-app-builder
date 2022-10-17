@@ -4,26 +4,26 @@ import { LocalStorageService } from "src/app/shared/services/local-storage/local
 import { APP_CONFIG } from "src/app/data";
 import { IAppSkin } from "data-models";
 import { arrayToHashmap } from "../../utils";
-
-// TODO - The skin service needs these values, but getting them from the
-// appDataService would cause a circular dependency. Possible solution: limit
-// the config settings that can be overridden at the skin level (a skin
-// overriding APP_SKINS wouldn't make sense anyway)
-const { APP_FIELDS, APP_SKINS } = APP_CONFIG;
+import { AppConfigService } from "../app-config/app-config.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class SkinService {
   // A hashmap of all skins available to the current deployment
-  availableSkins = arrayToHashmap([...APP_SKINS.available, APP_SKINS.default], "name");
-  activeSkin$ = new BehaviorSubject<IAppSkin>(APP_SKINS.default);
+  availableSkins: { [skinName: string]: IAppSkin };
+  activeSkin$ = new BehaviorSubject<IAppSkin | {}>({});
 
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(
+    private localStorageService: LocalStorageService,
+    private appConfigService: AppConfigService
+  ) {}
 
   init() {
+    const skinsConfig = this.appConfigService.APP_CONFIG.APP_SKINS;
+    this.availableSkins = arrayToHashmap([...skinsConfig.available, skinsConfig.default], "name");
     // Retrieve the last active skin with default fallback
-    const activeSkinName = this.getActiveSkinName() ?? APP_SKINS.default.name;
+    const activeSkinName = this.getActiveSkinName() ?? skinsConfig.default.name;
     // Set active skin
     this.setSkin(activeSkinName);
   }
@@ -31,9 +31,15 @@ export class SkinService {
   public setSkin(skinName: string) {
     if (skinName in this.availableSkins) {
       console.log("[SET SKIN]", skinName);
-      this.activeSkin$.next(this.availableSkins[skinName]);
+      const targetSkin = this.availableSkins[skinName];
+      this.activeSkin$.next(targetSkin);
+      // Update appConfig to reflect any overrides defined by the skin
+      this.appConfigService.updateAppConfig(targetSkin.appConfig);
       // Use local storage so that the active skin persists across app launches
-      this.localStorageService.setString(APP_FIELDS.APP_SKIN, skinName);
+      this.localStorageService.setString(
+        this.appConfigService.APP_CONFIG.APP_FIELDS.APP_SKIN,
+        targetSkin.name
+      );
     } else {
       console.error(`No skin found with name "${skinName}"`);
     }
@@ -41,7 +47,7 @@ export class SkinService {
 
   /** Get the name of the active skin, as saved in local storage */
   public getActiveSkinName() {
-    return this.localStorageService.getString(APP_FIELDS.APP_SKIN);
+    return this.localStorageService.getString(this.appConfigService.APP_CONFIG.APP_FIELDS.APP_SKIN);
   }
 
   /** Get the full active skin, from the skin name saved in local storage */
