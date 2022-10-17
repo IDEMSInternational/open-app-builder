@@ -17,7 +17,7 @@ export class AppConfigService {
   APP_CONFIG: IAppConfig;
   deploymentAppConfig: IAppConfig;
 
-  init() {
+  constructor() {
     this.APP_CONFIG = getDefaultAppConfig();
     // Store app config with deployment overrides applied, to be merged with additional overrides when applied
     this.deploymentAppConfig = this.applyAppConfigOverrides(
