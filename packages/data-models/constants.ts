@@ -48,9 +48,12 @@ const APP_LANGUAGES = {
   default: "gb_en",
 };
 
+/** Refers to the skins available to the current app build.
+ * "default": the name of the skin used by default for a given build
+ * "available": an array of names of other skins that are available to the current build */
 const APP_SKINS_CONFIG = {
   default: "default",
-  enabled: [] as string[],
+  available: [] as string[],
 };
 
 /**
@@ -106,7 +109,7 @@ const APP_HEADER_DEFAULTS = {
 };
 
 const APP_SIDEMENU_DEFAULTS = {
-  enable_sidemenu: true,
+  enabled: true,
   title: "App",
   // name of template to display in sidebar
   template_name: "app_menu",

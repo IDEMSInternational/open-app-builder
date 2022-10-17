@@ -16,10 +16,10 @@ const { APP_FIELDS, APP_SKINS_CONFIG } = APP_CONFIG;
 })
 export class SkinService {
   // A hashmap of all app skins, filtered to include only those
-  // that are "default" for or "enabled" by the active deployment
-  enabledSkins = Object.fromEntries(
+  // that are "default" for or "available" by the active deployment
+  availableSkins = Object.fromEntries(
     Object.entries(APP_SKINS).filter(([skinName]) => {
-      return [...APP_SKINS_CONFIG.enabled, APP_SKINS_CONFIG.default].includes(skinName);
+      return [...APP_SKINS_CONFIG.available, APP_SKINS_CONFIG.default].includes(skinName);
     })
   );
   activeSkin$ = new BehaviorSubject<IAppSkin>(APP_SKINS[APP_SKINS_CONFIG.default]);
@@ -34,9 +34,9 @@ export class SkinService {
   }
 
   public setSkin(skinName: string) {
-    if (skinName in this.enabledSkins) {
+    if (skinName in this.availableSkins) {
       console.log("[SET SKIN]", skinName);
-      this.activeSkin$.next(this.enabledSkins[skinName]);
+      this.activeSkin$.next(this.availableSkins[skinName]);
       // Use local storage so that the active skin persists across app launches
       this.localStorageService.setString(APP_FIELDS.APP_SKIN, skinName);
     } else {
@@ -52,6 +52,6 @@ export class SkinService {
   /** Get the full active skin, from the skin name saved in local storage */
   public getActiveSkin() {
     const activeSkinName = this.getActiveSkin();
-    return this.enabledSkins[activeSkinName];
+    return this.availableSkins[activeSkinName];
   }
 }
