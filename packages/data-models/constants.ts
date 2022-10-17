@@ -1,6 +1,8 @@
 /// <reference lib="dom" />
 import APP_CONFIG_GLOBALS from "./app-config/globals";
 import clone from "clone";
+import { IAppSkin } from "./skin.model";
+
 /*********************************************************************************************
  *  Constants used throughout the app
  *
@@ -48,12 +50,12 @@ const APP_LANGUAGES = {
   default: "gb_en",
 };
 
-/** Refers to the skins available to the current app build.
- * "default": the name of the skin used by default for a given build
- * "available": an array of names of other skins that are available to the current build */
-const APP_SKINS_CONFIG = {
-  default: "default",
-  available: [] as string[],
+/** Specifies the skins available to the current app build.
+ * "default": the skin used by default for a given build
+ * "available": an array of additional skins that are available to the current build */
+const APP_SKINS: { default: IAppSkin; available: IAppSkin[] } = {
+  default: { name: "default" },
+  available: [] as IAppSkin[],
 };
 
 /**
@@ -166,7 +168,7 @@ const APP_CONFIG = {
   APP_ROUTE_DEFAULTS,
   APP_SIDEMENU_DEFAULTS,
   APP_STRINGS,
-  APP_SKINS_CONFIG,
+  APP_SKINS,
   DYNAMIC_PREFIXES,
   FEEDBACK_MODULE_DEFAULTS,
   FIELD_PREFIX,
