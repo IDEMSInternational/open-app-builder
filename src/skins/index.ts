@@ -8,7 +8,7 @@ import { arrayToHashmap } from "src/app/shared/utils";
  *  name: "no_sidemenu",
  *  appConfig: {
  *    APP_SIDEMENU_DEFAULTS: {
- *      enable_sidemenu: false
+ *      enabled: false
  *    }
  *    APP_HEADER_DEFAULTS: {
  *      should_show_menu_button: false

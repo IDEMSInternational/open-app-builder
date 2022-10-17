@@ -1,5 +1,5 @@
 import clone from "clone";
-import type { IAppConfig } from "./constants";
+import type { IAppConfigOverride } from "./constants";
 
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
@@ -26,7 +26,7 @@ export interface IDeploymentConfig {
     icon_asset_background_path?: string;
   };
   /** Optional override of any provided constants from data-models/constants */
-  app_config?: Partial<IAppConfig>;
+  app_config?: IAppConfigOverride;
   app_data?: {
     /** processed sheets for use in app. Default `packages/app-data/sheets` */
     sheets_output_path?: string;

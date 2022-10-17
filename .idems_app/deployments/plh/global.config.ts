@@ -34,6 +34,6 @@ config.app_config.APP_HEADER_DEFAULTS.title = "ParentApp";
 config.app_config.NOTIFICATION_DEFAULTS.title = "New message from PLH";
 config.app_config.NOTIFICATION_DEFAULTS.text = "You have a new message from ParentApp";
 config.app_config.APP_SKINS_CONFIG.default = "weekly_workshop"
-config.app_config.APP_SKINS_CONFIG.enabled = ["modular"]
+config.app_config.APP_SKINS_CONFIG.available = ["modular"]
 
 export default config;
