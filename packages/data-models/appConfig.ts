@@ -4,10 +4,10 @@ import clone from "clone";
 import { IAppSkin } from "./skin.model";
 
 /*********************************************************************************************
- *  Constants used throughout the app
+ * Values used throughout the app
  *
  * NOTE - this file should not be edited directly. All constants can be overridden
- * via the `app_config` field in deployment configs
+ * via the `app_config` field in deployment configs, or by the `appConfig` of an applied skin
  *
  * NOTE - as these are merged when setting deployment, avoid `_path` suffix as that has
  * special use case for relative paths
@@ -53,9 +53,9 @@ const APP_LANGUAGES = {
 /** Specifies the skins available to the current app build.
  * "default": the skin used by default for a given build
  * "available": an array of additional skins that are available to the current build */
-const APP_SKINS: { default: IAppSkin; available: IAppSkin[] } = {
-  default: { name: "default" },
-  available: [] as IAppSkin[],
+const APP_SKINS: { defaultSkinName: string; available: IAppSkin[] } = {
+  defaultSkinName: "default",
+  available: [{ name: "default" }],
 };
 
 /**

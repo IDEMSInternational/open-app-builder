@@ -1,5 +1,5 @@
 import clone from "clone";
-import type { IAppConfigOverride } from "./constants";
+import type { IAppConfigOverride } from "./appConfig";
 
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */

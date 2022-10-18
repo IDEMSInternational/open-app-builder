@@ -1,5 +1,5 @@
 import type { IDataPipeOperation } from "shared/src/models/dataPipe/types";
-import type { IAppConfig } from "./constants";
+import type { IAppConfig } from "./appConfig";
 
 /*********************************************************************************************
  *  Base flow types

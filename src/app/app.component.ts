@@ -42,8 +42,9 @@ export class AppComponent {
   APP_VERSION = environment.version;
   DEPLOYMENT_NAME = environment.deploymentName;
   appConfig: IAppConfig;
-  appAuthenticationDefaults;
-  sideMenuDefaults;
+  appFields: IAppConfig["APP_FIELDS"];
+  appAuthenticationDefaults: IAppConfig["APP_AUTHENTICATION_DEFAULTS"];
+  sideMenuDefaults: IAppConfig["APP_SIDEMENU_DEFAULTS"];
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
 
@@ -70,7 +71,7 @@ export class AppComponent {
     private crashlyticsService: CrashlyticsService,
     private appDataService: AppDataService,
     private authService: AuthService,
-    public appConfigService: AppConfigService,
+    private appConfigService: AppConfigService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
     public lifecycleActionsService: LifecycleActionsService,
@@ -81,10 +82,10 @@ export class AppComponent {
 
   async initializeApp() {
     this.platform.ready().then(async () => {
-      this.initialiseAppConfig();
+      this.subscribeToAppConfigChanges();
       // ensure deployment field set correctly for use in any startup services or templates
-      localStorage.setItem(this.appConfig.APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
-      localStorage.setItem(this.appConfig.APP_FIELDS.APP_VERSION, this.APP_VERSION);
+      localStorage.setItem(this.appFields.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
+      localStorage.setItem(this.appFields.APP_VERSION, this.APP_VERSION);
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
@@ -126,13 +127,13 @@ export class AppComponent {
   }
 
   /** Initialise appConfig and set dependent properties */
-  initialiseAppConfig() {
+  subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
       this.appConfig = appConfig;
       this.sideMenuDefaults = this.appConfig.APP_SIDEMENU_DEFAULTS;
       this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
+      this.appFields = this.appConfig.APP_FIELDS;
     });
-    // this.appConfigService.init();
   }
 
   /**

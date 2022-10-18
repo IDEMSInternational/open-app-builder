@@ -47,11 +47,7 @@ export class FeedbackService {
     private dbSyncService: DBSyncService,
     private appConfigService: AppConfigService
   ) {
-    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.feedbackModuleDefaults = appConfig.FEEDBACK_MODULE_DEFAULTS;
-      this.appStrings = appConfig.APP_STRINGS;
-      this.feedbackButtons = appConfig.FEEDBACK_MODULE_DEFAULTS.buttons;
-    });
+    this.subscribeToAppConfigChanges();
     // retrieve device info for passing in metadata
     Device.getInfo().then((deviceInfo) => {
       this.deviceInfo = deviceInfo;
@@ -59,6 +55,14 @@ export class FeedbackService {
     // Handle enabling/disabling context menu actions depending on whether review mode enabled
     this.isReviewingMode$.subscribe((isReviewMode) => {
       this.setContextMenuActions(isReviewMode);
+    });
+  }
+
+  private subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.feedbackModuleDefaults = appConfig.FEEDBACK_MODULE_DEFAULTS;
+      this.appStrings = appConfig.APP_STRINGS;
+      this.feedbackButtons = appConfig.FEEDBACK_MODULE_DEFAULTS.buttons;
     });
   }
 
