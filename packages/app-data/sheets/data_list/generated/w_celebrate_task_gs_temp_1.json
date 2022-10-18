@@ -8,91 +8,99 @@
       "individual": true,
       "together": false,
       "priority": 1,
-      "title": "How are you?"
+      "title": "How are you?",
+      "has_single_task": true,
+      "template": "w_celebrate_welcome_individual"
     },
     {
       "id": "care_together",
       "individual": false,
       "together": true,
       "priority": 2,
-      "title": "How are you?"
+      "title": "How are you?",
+      "has_single_task": true,
+      "template": "w_celebrate_care_together"
     },
     {
       "id": "relax",
       "individual": true,
       "together": true,
       "priority": 3,
-      "title": "Relax"
+      "title": "Relax",
+      "has_single_task": true,
+      "template": "w_celebrate_relax"
     },
     {
       "id": "reflect_together",
       "individual": false,
       "together": true,
       "priority": 4,
-      "title": "Reflect"
+      "title": "Reflect",
+      "has_single_task": true,
+      "template": "w_celebrate_reflect_together"
     },
     {
       "id": "intro",
       "individual": true,
       "together": true,
       "priority": 5,
-      "title": "Intro to ..."
+      "title": "Intro to ...",
+      "has_single_task": true,
+      "template": "w_celebrate_intro"
     },
     {
       "id": "tools_activity",
       "individual": true,
       "together": true,
       "priority": 70,
-      "title": "How to ..."
-    },
-    {
-      "id": "home_practice",
-      "individual": true,
-      "together": true,
-      "priority": 80,
-      "title": "Home Practice"
+      "title": "How to ...",
+      "has_single_task": true,
+      "template": "w_celebrate_tools_activity"
     },
     {
       "id": "ending",
       "individual": true,
       "together": true,
       "priority": 90,
-      "title": "Well done!"
-    },
-    {
-      "id": "hp_review",
-      "individual": true,
-      "together": true,
-      "priority": 91,
-      "title": "Home Practice Review"
+      "title": "Well done!",
+      "has_single_task": true,
+      "template": "w_celebrate_ending"
     },
     {
       "id": "think",
       "individual": true,
       "together": true,
       "priority": 11,
-      "title": "Think"
+      "title": "Think",
+      "has_single_task": true,
+      "template": "w_celebrate_think"
     },
     {
       "id": "survey_activity",
       "individual": true,
       "together": false,
       "priority": 12,
-      "title": "Survey"
+      "title": "Survey",
+      "has_single_task": true,
+      "template": "w_celebrate_survey_activity"
     },
     {
       "id": "talk_1",
       "individual": false,
       "together": true,
       "priority": 12,
-      "title": "Talk Together"
+      "title": "Talk Together",
+      "has_single_task": true,
+      "template": "w_celebrate_talk_1"
     },
     {
       "id": "talk_2",
       "individual": false,
       "together": true,
       "priority": 71,
-      "title": "Talk Together"
+      "title": "Talk Together",
+      "has_single_task": true,
+      "template": "w_celebrate_talk_2"
     }
   ]
 }
