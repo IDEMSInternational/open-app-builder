@@ -4,36 +4,50 @@ import { LocalStorageService } from "src/app/shared/services/local-storage/local
 import { IAppSkin } from "data-models";
 import { arrayToHashmap } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
+import { TemplateService } from "../../components/template/services/template.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class SkinService {
   // A hashmap of all skins available to the current deployment
-  availableSkins: { [skinName: string]: IAppSkin };
+  availableSkins: Record<string, IAppSkin>;
   activeSkin$ = new BehaviorSubject<IAppSkin | {}>({});
 
   constructor(
     private localStorageService: LocalStorageService,
-    private appConfigService: AppConfigService
-  ) {}
-
-  init() {
+    private appConfigService: AppConfigService,
+    private templateService: TemplateService
+  ) {
     const skinsConfig = this.appConfigService.APP_CONFIG.APP_SKINS;
     this.availableSkins = arrayToHashmap(skinsConfig.available, "name");
     // Retrieve the last active skin with default fallback
     const activeSkinName = this.getActiveSkinName() ?? skinsConfig.defaultSkinName;
     // Set active skin
-    this.setSkin(activeSkinName);
+    this.setSkin(activeSkinName, true);
   }
 
-  public setSkin(skinName: string) {
+  init() {
+    // const skinsConfig = this.appConfigService.APP_CONFIG.APP_SKINS;
+    // this.availableSkins = arrayToHashmap(skinsConfig.available, "name");
+    // // Retrieve the last active skin with default fallback
+    // const activeSkinName = this.getActiveSkinName() ?? skinsConfig.defaultSkinName;
+    // // Set active skin
+    // this.setSkin(activeSkinName, true);
+  }
+
+  public setSkin(skinName: string, isInit = false) {
     if (skinName in this.availableSkins) {
       console.log("[SET SKIN]", skinName);
       const targetSkin = this.availableSkins[skinName];
       this.activeSkin$.next(targetSkin);
       // Update appConfig to reflect any overrides defined by the skin
       this.appConfigService.updateAppConfig(targetSkin.appConfig);
+      // Update default values when skin changed to allow for skin-specific global overrides
+      // Don't run on initialisation, since the skin and appConfig services must init before the template service and its dependencies
+      if (!isInit) {
+        this.templateService.initialiseDefaultFieldAndGlobals();
+      }
       // Use local storage so that the active skin persists across app launches
       this.localStorageService.setString(
         this.appConfigService.APP_CONFIG.APP_FIELDS.APP_SKIN,

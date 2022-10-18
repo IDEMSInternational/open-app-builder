@@ -24,8 +24,6 @@ import { TemplateFieldService } from "./shared/components/template/services/temp
 import { TemplateTranslateService } from "./shared/components/template/services/template-translate.service";
 import { LocalNotificationInteractionService } from "./shared/services/notification/local-notification-interaction.service";
 import { DBSyncService } from "./shared/services/db/db-sync.service";
-
-import { APP_CONFIG } from "./data";
 import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
 import { AppDataService } from "./shared/services/data/app-data.service";
 import { AuthService } from "./shared/services/auth/auth.service";
