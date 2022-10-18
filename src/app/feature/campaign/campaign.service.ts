@@ -50,9 +50,7 @@ export class CampaignService {
     private appConfigService: AppConfigService,
     private injector: Injector
   ) {
-    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.notificationDefaults = appConfig.NOTIFICATION_DEFAULTS;
-    });
+    this.subscribeToAppConfigChanges();
   }
 
   /**
@@ -106,6 +104,13 @@ export class CampaignService {
         }
       }
     );
+  }
+
+  // TODO: Should this also be unsubscribing from existing subscriptions?
+  private subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.notificationDefaults = appConfig.NOTIFICATION_DEFAULTS;
+    });
   }
 
   private async handledTriggeredNotifications(

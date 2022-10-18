@@ -1,5 +1,5 @@
 // import const from app-data directly as typings can sometimes break otherwise
-import { getDefaultAppConfig } from "./constants";
+import { getDefaultAppConfig } from "./appConfig";
 import { FlowTypes } from "./flowTypes";
 
 /**

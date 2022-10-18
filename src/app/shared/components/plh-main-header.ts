@@ -21,18 +21,17 @@ import { AppConfigService } from "../services/app-config/app-config.service";
         </ion-button>
       </ion-buttons>
       <ion-title style="text-align: center" routerLink="/">
-        <span>{{ title }}</span>
+        <span>{{ headerConfig.title }}</span>
       </ion-title>
       <ion-buttons slot="end"> </ion-buttons>
     </ion-toolbar>
   </ion-header>`,
 })
 export class PLHMainHeaderComponent implements OnInit, OnDestroy {
-  appConfig: IAppConfig;
-  title: string;
   showMenuButton = false;
   showBackButton = false;
-
+  appConfigChanges$: Subscription;
+  headerConfig: IAppConfig["APP_HEADER_DEFAULTS"];
   routeChanges$: Subscription;
   /** listen to hardware back button presses (on android device only) */
   hardwareBackButton$: PluginListenerHandle;
@@ -43,10 +42,10 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
     private location: Location,
     private appConfigService: AppConfigService
   ) {}
+
   async ngOnInit() {
-    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.appConfig = appConfig;
-      this.title = this.appConfig.APP_HEADER_DEFAULTS.title;
+    this.appConfigChanges$ = this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.headerConfig = appConfig.APP_HEADER_DEFAULTS;
     });
     // subscribe to and handle route changes
     this.routeChanges$ = this.router.events.subscribe((e) => {
@@ -66,6 +65,7 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
     }
   }
   ngOnDestroy() {
+    this.appConfigChanges$.unsubscribe();
     this.routeChanges$.unsubscribe();
     if (this.hardwareBackButton$) {
       this.hardwareBackButton$.remove();
@@ -85,14 +85,14 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
    * It cannot subscribe to standard router methods as sits outside ion-router-outlet
    */
   private handleRouteChange() {
-    const { should_show_back_button, should_show_menu_button } = this.appConfig.APP_HEADER_DEFAULTS;
+    const { should_show_back_button, should_show_menu_button } = this.headerConfig;
     this.showBackButton = should_show_back_button(location);
     this.showMenuButton = should_show_menu_button(location);
   }
 
   /** When device back button evaluate conditions to handle app minimise */
   private handleHardwareBackPress() {
-    const { should_minimize_app_on_back } = this.appConfig.APP_HEADER_DEFAULTS;
+    const { should_minimize_app_on_back } = this.headerConfig;
     if (should_minimize_app_on_back(location)) {
       App.minimizeApp();
     }

@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { APP_CONFIG } from "src/app/data";
 import { IAppSkin } from "data-models";
 import { arrayToHashmap } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
@@ -21,9 +20,9 @@ export class SkinService {
 
   init() {
     const skinsConfig = this.appConfigService.APP_CONFIG.APP_SKINS;
-    this.availableSkins = arrayToHashmap([...skinsConfig.available, skinsConfig.default], "name");
+    this.availableSkins = arrayToHashmap(skinsConfig.available, "name");
     // Retrieve the last active skin with default fallback
-    const activeSkinName = this.getActiveSkinName() ?? skinsConfig.default.name;
+    const activeSkinName = this.getActiveSkinName() ?? skinsConfig.defaultSkinName;
     // Set active skin
     this.setSkin(activeSkinName);
   }

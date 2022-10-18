@@ -3,7 +3,6 @@ import { LocalStorageService } from "src/app/shared/services/local-storage/local
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "src/app/shared/model";
-import { BehaviorSubject } from "rxjs";
 import { ModalController } from "@ionic/angular";
 import { ITemplatePopupComponentProps, TemplatePopupComponent } from "../components/layout/popup";
 import { TemplateTranslateService } from "./template-translate.service";
