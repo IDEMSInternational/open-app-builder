@@ -1,7 +1,7 @@
 {
+  "flow_name": "w_praise_task_gs_temp_1",
+  "flow_subtype": "generated",
   "flow_type": "data_list",
-  "flow_name": "common_workshop_task_gs",
-  "status": "released",
   "rows": [
     {
       "id": "welcome_individual",
@@ -65,7 +65,34 @@
       "together": true,
       "priority": 91,
       "title": "Home Practice Review"
+    },
+    {
+      "id": "question_1",
+      "individual": true,
+      "together": false,
+      "priority": 11,
+      "title": "Question"
+    },
+    {
+      "id": "talk_1",
+      "individual": false,
+      "together": true,
+      "priority": 11,
+      "title": "Talk Together"
+    },
+    {
+      "id": "read",
+      "individual": true,
+      "together": true,
+      "priority": 12,
+      "title": "Story"
+    },
+    {
+      "id": "try",
+      "individual": false,
+      "together": true,
+      "priority": 71,
+      "title": "Try it out!"
     }
-  ],
-  "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"
+  ]
 }

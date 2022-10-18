@@ -1,7 +1,7 @@
 {
+  "flow_name": "w_consequence_task_gs_temp_1",
+  "flow_subtype": "generated",
   "flow_type": "data_list",
-  "flow_name": "common_workshop_task_gs",
-  "status": "released",
   "rows": [
     {
       "id": "welcome_individual",
@@ -65,7 +65,48 @@
       "together": true,
       "priority": 91,
       "title": "Home Practice Review"
+    },
+    {
+      "id": "read_1",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "title": "Story 1"
+    },
+    {
+      "id": "learn_1",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "title": "Learn"
+    },
+    {
+      "id": "talk_2",
+      "individual": false,
+      "together": true,
+      "priority": 71,
+      "title": "Talk Together"
+    },
+    {
+      "id": "read_2",
+      "individual": true,
+      "together": true,
+      "priority": 72,
+      "title": "Story 2"
+    },
+    {
+      "id": "learn_2",
+      "individual": true,
+      "together": false,
+      "priority": 74,
+      "title": "Learn"
+    },
+    {
+      "id": "try",
+      "individual": false,
+      "together": true,
+      "priority": 75,
+      "title": "Try it out!"
     }
-  ],
-  "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"
+  ]
 }
