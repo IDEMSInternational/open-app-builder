@@ -1,6 +1,6 @@
 {
   "flow_type": "data_pipe",
-  "flow_name": "workshop_tasks_concat_desired",
+  "flow_name": "workshop_tasks_concat",
   "status": "released",
   "rows": [
     {
@@ -112,5 +112,5 @@
       "output_target": "w_celebrate_tasks_temp_1"
     }
   ],
-  "_xlsxPath": "global/data/workshop_data/workshop_tasks_concat.xlsx"
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks_data_pipes.xlsx"
 }

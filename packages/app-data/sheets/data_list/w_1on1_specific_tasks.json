@@ -2,20 +2,19 @@
   "flow_type": "data_list",
   "flow_name": "w_1on1_specific_tasks",
   "status": "released",
-  "data_list_name": "w_1on1_specific_tasks",
   "rows": [
     {
       "id": "question",
+      "group": "question",
       "individual": true,
       "together": false,
-      "priority": 14,
       "template": "w_1on1_question"
     },
     {
       "id": "talk",
+      "group": "talk",
       "individual": false,
       "together": true,
-      "priority": 14,
       "template": "w_1on1_talk"
     }
   ],

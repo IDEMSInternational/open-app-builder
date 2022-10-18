@@ -1,0 +1,53 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_stress_specific_task_gs",
+  "status": "released",
+  "rows": [
+    {
+      "id": "read_1",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "title": "Story 1",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Story 1"
+        }
+      }
+    },
+    {
+      "id": "read_2",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "title": "Story 2",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Story 2"
+        }
+      }
+    },
+    {
+      "id": "read_3",
+      "individual": true,
+      "together": true,
+      "priority": 14,
+      "title": "Story 3",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Story 3"
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"
+}
