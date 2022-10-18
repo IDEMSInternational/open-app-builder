@@ -27,15 +27,6 @@ export class SkinService {
     this.setSkin(activeSkinName, true);
   }
 
-  init() {
-    // const skinsConfig = this.appConfigService.APP_CONFIG.APP_SKINS;
-    // this.availableSkins = arrayToHashmap(skinsConfig.available, "name");
-    // // Retrieve the last active skin with default fallback
-    // const activeSkinName = this.getActiveSkinName() ?? skinsConfig.defaultSkinName;
-    // // Set active skin
-    // this.setSkin(activeSkinName, true);
-  }
-
   public setSkin(skinName: string, isInit = false) {
     if (skinName in this.availableSkins) {
       console.log("[SET SKIN]", skinName);
