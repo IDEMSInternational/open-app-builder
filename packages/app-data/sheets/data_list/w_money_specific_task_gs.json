@@ -8,120 +8,56 @@
       "individual": true,
       "together": true,
       "priority": 11,
-      "title": "Story 1",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Story 1"
-        }
-      }
+      "title": "Story 1"
     },
     {
       "id": "learn_1",
       "individual": true,
       "together": true,
       "priority": 12,
-      "title": "Learn 1",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Learn 1"
-        }
-      }
+      "title": "Learn 1"
     },
     {
       "id": "learn_2",
       "individual": true,
       "together": true,
       "priority": 13,
-      "title": "Learn 2",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Learn 2"
-        }
-      }
+      "title": "Learn 2"
     },
     {
       "id": "learn_3",
       "individual": true,
       "together": true,
       "priority": 14,
-      "title": "Learn 3",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Learn 3"
-        }
-      }
+      "title": "Learn 3"
     },
     {
       "id": "learn_4",
       "individual": true,
       "together": true,
       "priority": 15,
-      "title": "Learn 4",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Learn 4"
-        }
-      }
+      "title": "Learn 4"
     },
     {
       "id": "read_2",
       "individual": true,
       "together": true,
       "priority": 16,
-      "title": "Story 2",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Story 2"
-        }
-      }
+      "title": "Story 2"
     },
     {
       "id": "read_3",
       "individual": true,
       "together": true,
       "priority": 18,
-      "title": "Story 3",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Story 3"
-        }
-      }
+      "title": "Story 3"
     },
     {
       "id": "learn_5",
       "individual": true,
       "together": true,
       "priority": 21,
-      "title": "Learn 5",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Learn 5"
-        }
-      }
+      "title": "Learn 5"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"

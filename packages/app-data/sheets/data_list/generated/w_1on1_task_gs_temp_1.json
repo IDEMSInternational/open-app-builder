@@ -1,7 +1,7 @@
 {
+  "flow_name": "w_1on1_task_gs_temp_1",
+  "flow_subtype": "generated",
   "flow_type": "data_list",
-  "flow_name": "common_workshop_task_gs",
-  "status": "released",
   "rows": [
     {
       "id": "welcome_individual",
@@ -65,7 +65,20 @@
       "together": true,
       "priority": 91,
       "title": "Home Practice Review"
+    },
+    {
+      "id": "question",
+      "individual": true,
+      "together": false,
+      "priority": 14,
+      "title": "Question"
+    },
+    {
+      "id": "talk",
+      "individual": false,
+      "together": true,
+      "priority": 14,
+      "title": "Talk Together"
     }
-  ],
-  "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"
+  ]
 }

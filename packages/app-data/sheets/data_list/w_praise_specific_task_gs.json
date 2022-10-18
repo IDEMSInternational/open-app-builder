@@ -8,67 +8,28 @@
       "individual": true,
       "together": false,
       "priority": 11,
-      "title": "Question",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Question"
-        }
-      }
+      "title": "Question"
     },
     {
       "id": "talk_1",
       "individual": false,
       "together": true,
       "priority": 11,
-      "title": "Talk Together",
-      "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Talk Together"
-        }
-      }
+      "title": "Talk Together"
     },
     {
       "id": "read",
       "individual": true,
       "together": true,
       "priority": 12,
-      "title": "Story",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Story"
-        }
-      }
+      "title": "Story"
     },
     {
       "id": "try",
       "individual": false,
       "together": true,
       "priority": 71,
-      "title": "Try it out!",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Try it out!"
-        }
-      }
+      "title": "Try it out!"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"

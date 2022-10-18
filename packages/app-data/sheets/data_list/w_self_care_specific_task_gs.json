@@ -8,81 +8,28 @@
       "individual": true,
       "together": true,
       "priority": 11,
-      "title": "Relax",
-      "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Relax"
-        }
-      }
+      "title": "Relax"
     },
     {
       "id": "recognise",
       "individual": true,
       "together": true,
       "priority": 12,
-      "title": "Recognise",
-      "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Recognise"
-        }
-      }
+      "title": "Recognise"
     },
     {
       "id": "reward",
       "individual": true,
       "together": true,
       "priority": 13,
-      "title": "Reward",
-      "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Reward"
-        }
-      }
+      "title": "Reward"
     },
     {
       "id": "survey_activity",
       "individual": true,
       "together": false,
       "priority": 71,
-      "title": "Survey",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Survey"
-        }
-      }
+      "title": "Survey"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"
