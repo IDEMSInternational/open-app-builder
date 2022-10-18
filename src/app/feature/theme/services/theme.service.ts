@@ -2,9 +2,8 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { THEMES } from "src/theme/themes";
-import { APP_CONFIG } from "src/app/data";
-
-const { APP_FIELDS } = APP_CONFIG;
+import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
+import { IAppConfig } from "packages/data-models";
 
 @Injectable({
   providedIn: "root",
@@ -12,8 +11,14 @@ const { APP_FIELDS } = APP_CONFIG;
 export class ThemeService {
   currentTheme$ = new BehaviorSubject<string>(null);
   availableThemes = THEMES;
+  appFields: IAppConfig["APP_FIELDS"];
 
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(
+    private localStorageService: LocalStorageService,
+    private appConfigService: AppConfigService
+  ) {
+    this.subscribeToAppConfigChanges();
+  }
 
   init() {
     const currentThemeName = this.getCurrentTheme();
@@ -30,14 +35,14 @@ export class ThemeService {
       document.body.dataset.theme = themeName;
       this.currentTheme$.next(themeName);
       // Use local storage so that the current theme persists across app launches
-      this.localStorageService.setString(APP_FIELDS.APP_THEME, themeName);
+      this.localStorageService.setString(this.appFields.APP_THEME, themeName);
     } else {
       console.error(`No theme found with name "${themeName}"`);
     }
   }
 
   public getCurrentTheme() {
-    return this.localStorageService.getString(APP_FIELDS.APP_THEME);
+    return this.localStorageService.getString(this.appFields.APP_THEME);
   }
 
   public getAllThemes() {
@@ -81,4 +86,10 @@ export class ThemeService {
   /** Determine if style is local styleblock or from stylesheet on same domain */
   private isSameDomain = (styleSheet: CSSStyleSheet) =>
     styleSheet.href ? styleSheet.href.startsWith(location.origin) : true;
+
+  subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.appFields = appConfig.APP_FIELDS;
+    });
+  }
 }

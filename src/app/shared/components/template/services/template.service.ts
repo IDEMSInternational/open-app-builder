@@ -10,7 +10,6 @@ import { IFlowEvent } from "data-models/db.model";
 import { TemplateVariablesService } from "./template-variables.service";
 import { TemplateFieldService } from "./template-field.service";
 import { arrayToHashmap } from "src/app/shared/utils";
-import { SkinService } from "src/app/shared/services/skin/skin.service";
 
 @Injectable({
   providedIn: "root",
@@ -23,8 +22,7 @@ export class TemplateService {
     private modalCtrl: ModalController,
     private translateService: TemplateTranslateService,
     private templateVariablesService: TemplateVariablesService,
-    private templateFieldService: TemplateFieldService,
-    private skinService: SkinService
+    private templateFieldService: TemplateFieldService
   ) {}
 
   /** Initialise global and startup templates */
@@ -34,10 +32,6 @@ export class TemplateService {
     await this.initialiseDefaultFieldAndGlobals();
     // Update default values when language changed to allow for global translations
     this.translateService.app_language$.subscribe(async (lang) => {
-      await this.initialiseDefaultFieldAndGlobals();
-    });
-    // Update default values when skin changed to allow for skin-specific global overrides
-    this.skinService.activeSkin$.subscribe(async (skin) => {
       await this.initialiseDefaultFieldAndGlobals();
     });
   }
@@ -81,7 +75,7 @@ export class TemplateService {
    * NOTE - globals will always show the latest value as defined in app sheets (with any translations processed)
    * NOTE - fields will not update if already set
    */
-  private async initialiseDefaultFieldAndGlobals() {
+  public async initialiseDefaultFieldAndGlobals() {
     // Evaluate overrides
     // TODO - should be generalised with other template and datalist retrieval methods
     const allGlobals = await this.appDataService.getSheetsWithData<FlowTypes.Global>("global");
