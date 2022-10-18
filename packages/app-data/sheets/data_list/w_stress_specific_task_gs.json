@@ -8,21 +8,26 @@
       "individual": true,
       "together": true,
       "priority": 11,
-      "title": "Story 1"
+      "title": "Story 1",
+      "has_single_task": false
     },
     {
       "id": "read_2",
       "individual": true,
       "together": true,
       "priority": 13,
-      "title": "Story 2"
+      "title": "Story 2",
+      "has_single_task": true,
+      "template": "w_stress_read_2_temp"
     },
     {
       "id": "read_3",
       "individual": true,
       "together": true,
       "priority": 14,
-      "title": "Story 3"
+      "title": "Story 3",
+      "has_single_task": true,
+      "template": "w_stress_read_3_temp"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"

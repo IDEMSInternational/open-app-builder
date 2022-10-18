@@ -8,14 +8,18 @@
       "individual": true,
       "together": false,
       "priority": 14,
-      "title": "Question"
+      "title": "Question",
+      "has_single_task": true,
+      "template": "w_1on1_question"
     },
     {
       "id": "talk",
       "individual": false,
       "together": true,
       "priority": 14,
-      "title": "Talk Together"
+      "title": "Talk Together",
+      "has_single_task": true,
+      "template": "w_1on1_talk"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"

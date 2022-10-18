@@ -8,28 +8,36 @@
       "individual": true,
       "together": true,
       "priority": 11,
-      "title": "Relax"
+      "title": "Relax",
+      "has_single_task": true,
+      "template": "w_self_care_relax"
     },
     {
       "id": "recognise",
       "individual": true,
       "together": true,
       "priority": 12,
-      "title": "Recognise"
+      "title": "Recognise",
+      "has_single_task": true,
+      "template": "w_self_care_recognise"
     },
     {
       "id": "reward",
       "individual": true,
       "together": true,
       "priority": 13,
-      "title": "Reward"
+      "title": "Reward",
+      "has_single_task": true,
+      "template": "w_self_care_reward"
     },
     {
       "id": "survey_activity",
       "individual": true,
       "together": false,
       "priority": 71,
-      "title": "Survey"
+      "title": "Survey",
+      "has_single_task": true,
+      "template": "w_self_care_survey_activity"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"

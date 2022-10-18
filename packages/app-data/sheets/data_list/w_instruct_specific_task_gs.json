@@ -8,28 +8,34 @@
       "individual": true,
       "together": true,
       "priority": 11,
-      "title": "Think"
+      "title": "Think",
+      "has_single_task": true,
+      "template": "w_instruct_think_1_temp"
     },
     {
       "id": "read_1",
       "individual": true,
       "together": true,
       "priority": 12,
-      "title": "Story 1"
+      "title": "Story 1",
+      "has_single_task": false
     },
     {
       "id": "read_2",
       "individual": true,
       "together": true,
       "priority": 14,
-      "title": "Story 2"
+      "title": "Story 2",
+      "has_single_task": false
     },
     {
       "id": "try",
       "individual": false,
       "together": true,
       "priority": 71,
-      "title": "Try it out!"
+      "title": "Try it out!",
+      "has_single_task": true,
+      "template": "w_instruct_try"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"

@@ -8,28 +8,35 @@
       "individual": true,
       "together": true,
       "priority": 11,
-      "title": "Story 1"
+      "title": "Story 1",
+      "has_single_task": true,
+      "template": "w_solve_read_1_temp"
     },
     {
       "id": "read_2",
       "individual": true,
       "together": true,
       "priority": 71,
-      "title": "Story 2"
+      "title": "Story 2",
+      "has_single_task": false
     },
     {
       "id": "learn",
       "individual": true,
       "together": true,
       "priority": 74,
-      "title": "Learn"
+      "title": "Learn",
+      "has_single_task": true,
+      "template": "w_solve_learn_temp"
     },
     {
       "id": "try",
       "individual": false,
       "together": true,
       "priority": 75,
-      "title": "Try"
+      "title": "Try",
+      "has_single_task": true,
+      "template": "w_solve_try"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"

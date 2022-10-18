@@ -417,6 +417,146 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "generated",
       flow_type: "data_list",
     },
+    tg_w_consequence_read_1_ind: {
+      flow_name: "tg_w_consequence_read_1_ind",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_consequence_read_1_tog: {
+      flow_name: "tg_w_consequence_read_1_tog",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_consequence_read_2_ind: {
+      flow_name: "tg_w_consequence_read_2_ind",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_consequence_read_2_tog: {
+      flow_name: "tg_w_consequence_read_2_tog",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_crisis_read_1_ind: {
+      flow_name: "tg_w_crisis_read_1_ind",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_crisis_read_1_tog: {
+      flow_name: "tg_w_crisis_read_1_tog",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_crisis_read_2_ind: {
+      flow_name: "tg_w_crisis_read_2_ind",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_crisis_read_2_tog: {
+      flow_name: "tg_w_crisis_read_2_tog",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_instruct_read_1_ind: {
+      flow_name: "tg_w_instruct_read_1_ind",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_instruct_read_1_tog: {
+      flow_name: "tg_w_instruct_read_1_tog",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_instruct_read_2_ind: {
+      flow_name: "tg_w_instruct_read_2_ind",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_instruct_read_2_tog: {
+      flow_name: "tg_w_instruct_read_2_tog",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_money_read_2_ind: {
+      flow_name: "tg_w_money_read_2_ind",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_money_read_2_tog: {
+      flow_name: "tg_w_money_read_2_tog",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_money_read_3_ind: {
+      flow_name: "tg_w_money_read_3_ind",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_money_read_3_tog: {
+      flow_name: "tg_w_money_read_3_tog",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_praise_read_ind: {
+      flow_name: "tg_w_praise_read_ind",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_praise_read_tog: {
+      flow_name: "tg_w_praise_read_tog",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_rules_read_1_ind: {
+      flow_name: "tg_w_rules_read_1_ind",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_rules_read_1_tog: {
+      flow_name: "tg_w_rules_read_1_tog",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_safe_read_1_ind: {
+      flow_name: "tg_w_safe_read_1_ind",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_safe_read_1_tog: {
+      flow_name: "tg_w_safe_read_1_tog",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_safe_read_2_ind: {
+      flow_name: "tg_w_safe_read_2_ind",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_safe_read_2_tog: {
+      flow_name: "tg_w_safe_read_2_tog",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_solve_read_2_ind: {
+      flow_name: "tg_w_solve_read_2_ind",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_solve_read_2_tog: {
+      flow_name: "tg_w_solve_read_2_tog",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_stress_read_1_ind: {
+      flow_name: "tg_w_stress_read_1_ind",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    tg_w_stress_read_1_tog: {
+      flow_name: "tg_w_stress_read_1_tog",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
     w_1on1_common_task_gs: {
       flow_name: "w_1on1_common_task_gs",
       flow_subtype: "generated",
@@ -4338,6 +4478,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "talk_together",
       _xlsxPath: "global/mode_templates/talk_together.xlsx",
     },
+    task_group_stepper: {
+      flow_type: "template",
+      flow_name: "task_group_stepper",
+      _xlsxPath: "global/core_templates/core_templates_workshops.xlsx",
+    },
     teen_testimonial_text: {
       flow_type: "template",
       flow_name: "teen_testimonial_text",
@@ -6826,6 +6971,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "workshop_stepper_actions",
       _xlsxPath: "global/core_templates/core_templates_workshops.xlsx",
     },
+    workshop_task_groups_test: {
+      flow_type: "template",
+      flow_name: "workshop_task_groups_test",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_testing_templates.xlsx",
+    },
     workshop_unlock: {
       flow_type: "template",
       flow_name: "workshop_unlock",
@@ -6912,6 +7062,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "example_pipe",
       flow_name: "example_data_pipe_map",
       _xlsxPath: "quality_assurance/example_sheets/example_data_pipes.xlsx",
+    },
+    single_tg_filter: {
+      flow_type: "data_pipe",
+      flow_name: "single_tg_filter",
+      _xlsxPath: "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx",
     },
     workshop_task_gs_append: {
       flow_type: "data_pipe",
