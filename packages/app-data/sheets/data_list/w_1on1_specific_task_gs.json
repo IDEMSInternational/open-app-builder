@@ -1,0 +1,45 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_1on1_specific_task_gs",
+  "status": "released",
+  "rows": [
+    {
+      "id": "question",
+      "individual": true,
+      "together": false,
+      "priority": 14,
+      "title": "Question",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Question"
+        }
+      }
+    },
+    {
+      "id": "talk",
+      "individual": false,
+      "together": true,
+      "priority": 14,
+      "title": "Talk Together",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Talk Together"
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"
+}
