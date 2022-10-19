@@ -5,138 +5,141 @@
   "rows": [
     {
       "id": "welcome_individual",
+      "group": "welcome_individual",
       "individual": true,
       "together": false,
-      "priority": 1,
       "template": "w_consequence_welcome_individual"
     },
     {
       "id": "care_together",
+      "group": "care_together",
       "individual": false,
       "together": true,
-      "priority": 2,
       "template": "w_consequence_care_together"
     },
     {
       "id": "relax",
+      "group": "relax",
       "individual": true,
       "together": true,
-      "priority": 3,
       "template": "w_consequence_relax"
     },
     {
       "id": "reflect_together",
+      "group": "reflect_together",
       "individual": false,
       "together": true,
-      "priority": 4,
       "template": "w_consequence_reflect_together"
     },
     {
       "id": "intro",
+      "group": "intro",
       "individual": true,
       "together": true,
-      "priority": 5,
       "template": "w_consequence_intro"
     },
     {
       "id": "tools_activity",
+      "group": "tools_activity",
       "individual": true,
       "together": true,
-      "priority": 70,
       "template": "w_consequence_tools_activity"
     },
     {
       "id": "home_practice",
+      "group": "home_practice",
       "individual": true,
       "together": true,
-      "priority": 80,
       "template": "w_consequence_home_practice"
     },
     {
       "id": "ending",
+      "group": "ending",
       "individual": true,
       "together": true,
-      "priority": 90,
       "template": "w_consequence_ending"
     },
     {
       "id": "hp_review",
+      "group": "hp_review",
       "individual": true,
       "together": true,
-      "priority": 91,
       "template": "w_consequence_hp_review"
     },
     {
       "id": "read_1",
+      "group": "read_1",
       "individual": true,
       "together": true,
-      "priority": 11,
-      "template": "w_consequence_read_1",
-      "group": "read_1"
+      "template": "w_consequence_read_1_temp",
+      "rel_priority": 1
     },
     {
       "id": "question_1",
+      "group": "read_1",
       "individual": true,
       "together": false,
-      "priority": 12,
       "template": "w_consequence_question_1",
-      "group": "read_1"
+      "rel_priority": 2
     },
     {
       "id": "talk_1",
+      "group": "read_1",
       "individual": false,
       "together": true,
-      "priority": 12,
       "template": "w_consequence_talk_1",
-      "group": "read_1"
+      "rel_priority": 3
     },
     {
       "id": "learn_1",
+      "group": "learn_1",
       "individual": true,
       "together": true,
-      "priority": 13,
-      "template": "w_consequence_learn_1"
+      "template": "w_consequence_learn_1_temp"
     },
     {
       "id": "talk_2",
+      "group": "talk_2",
       "individual": false,
       "together": true,
-      "priority": 71,
       "template": "w_consequence_talk_2"
     },
     {
-      "id": "read_3",
+      "id": "read_2",
+      "group": "read_2",
       "individual": true,
       "together": true,
-      "priority": 72,
-      "template": "w_consequence_read_3"
+      "template": "w_consequence_read_3_temp",
+      "rel_priority": 1
     },
     {
       "id": "question_2",
+      "group": "read_2",
       "individual": true,
       "together": false,
-      "priority": 73,
-      "template": "w_consequence_question_2"
+      "template": "w_consequence_question_2",
+      "rel_priority": 2
     },
     {
       "id": "talk_3",
+      "group": "read_2",
       "individual": false,
       "together": true,
-      "priority": 73,
-      "template": "w_consequence_talk_3"
+      "template": "w_consequence_talk_3",
+      "rel_priority": 3
     },
     {
       "id": "learn_2",
+      "group": "learn_2",
       "individual": true,
       "together": false,
-      "priority": 74,
-      "template": "w_consequence_learn_2"
+      "template": "w_consequence_learn_2_temp"
     },
     {
       "id": "try",
+      "group": "try",
       "individual": false,
       "together": true,
-      "priority": 75,
       "template": "w_consequence_try"
     }
   ]

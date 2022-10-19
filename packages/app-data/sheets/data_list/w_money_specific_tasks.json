@@ -2,113 +2,112 @@
   "flow_type": "data_list",
   "flow_name": "w_money_specific_tasks",
   "status": "released",
-  "data_list_name": "w_money_specific_tasks",
   "rows": [
     {
       "id": "read_1",
+      "group": "read_1",
       "individual": true,
       "together": true,
-      "priority": 11,
-      "template": "w_money_read_1"
+      "template": "w_money_read_1_temp"
     },
     {
       "id": "learn_1",
+      "group": "learn_1",
       "individual": true,
       "together": true,
-      "priority": 12,
-      "template": "w_money_learn_1"
+      "template": "w_money_learn_1_temp"
     },
     {
       "id": "learn_2",
+      "group": "learn_2",
       "individual": true,
       "together": true,
-      "priority": 13,
-      "template": "w_money_learn_2"
+      "template": "w_money_learn_2_temp"
     },
     {
       "id": "learn_3",
+      "group": "learn_3",
       "individual": true,
       "together": true,
-      "priority": 14,
-      "template": "w_money_learn_3"
+      "template": "w_money_learn_3_temp"
     },
     {
       "id": "learn_4",
+      "group": "learn_4",
       "individual": true,
       "together": true,
-      "priority": 15,
-      "template": "w_money_learn_4"
+      "template": "w_money_learn_4_temp"
     },
     {
       "id": "read_2",
+      "group": "read_2",
+      "rel_priority": 1,
       "individual": true,
       "together": true,
-      "priority": 16,
-      "template": "w_money_read_2",
-      "group": "read_2"
+      "template": "w_money_read_2_temp"
     },
     {
       "id": "question_1",
+      "group": "read_2",
+      "rel_priority": 2,
       "individual": true,
       "together": false,
-      "priority": 17,
-      "template": "w_money_tq_1",
-      "group": "read_2"
+      "template": "w_money_tq_1"
     },
     {
       "id": "talk_1",
+      "group": "read_2",
+      "rel_priority": 3,
       "individual": false,
       "together": true,
-      "priority": 17,
-      "template": "w_money_tq_1",
-      "group": "read_2"
+      "template": "w_money_tq_1"
     },
     {
       "id": "read_3",
+      "group": "read_3",
+      "rel_priority": 1,
       "individual": true,
       "together": true,
-      "priority": 18,
-      "template": "w_money_read_3",
-      "group": "read_3"
+      "template": "w_money_read_3_temp"
     },
     {
       "id": "question_2",
+      "group": "read_3",
+      "rel_priority": 2,
       "individual": true,
       "together": false,
-      "priority": 19,
-      "template": "w_money_tq_2",
-      "group": "read_3"
+      "template": "w_money_tq_2"
     },
     {
       "id": "talk_2",
+      "group": "read_3",
+      "rel_priority": 3,
       "individual": false,
       "together": true,
-      "priority": 19,
-      "template": "w_money_tq_2",
-      "group": "read_3"
+      "template": "w_money_tq_2"
     },
     {
       "id": "question_3",
+      "group": "read_3",
+      "rel_priority": 4,
       "individual": true,
       "together": false,
-      "priority": 20,
-      "template": "w_money_tq_3",
-      "group": "read_3"
+      "template": "w_money_tq_3"
     },
     {
       "id": "talk_3",
+      "group": "read_3",
+      "rel_priority": 5,
       "individual": false,
       "together": true,
-      "priority": 20,
-      "template": "w_money_tq_3",
-      "group": "read_3"
+      "template": "w_money_tq_3"
     },
     {
       "id": "learn_5",
+      "group": "learn_5",
       "individual": true,
       "together": true,
-      "priority": 21,
-      "template": "w_money_learn_5"
+      "template": "w_money_learn_5_temp"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"

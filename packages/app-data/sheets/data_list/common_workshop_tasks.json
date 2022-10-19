@@ -2,61 +2,60 @@
   "flow_type": "data_list",
   "flow_name": "common_workshop_tasks",
   "status": "released",
-  "data_list_name": "common_workshop_tasks",
   "rows": [
     {
       "id": "welcome_individual",
+      "group": "welcome_individual",
       "individual": true,
-      "together": false,
-      "priority": 1
+      "together": false
     },
     {
       "id": "care_together",
+      "group": "care_together",
       "individual": false,
-      "together": true,
-      "priority": 2
+      "together": true
     },
     {
       "id": "relax",
+      "group": "relax",
       "individual": true,
-      "together": true,
-      "priority": 3
+      "together": true
     },
     {
       "id": "reflect_together",
+      "group": "reflect_together",
       "individual": false,
-      "together": true,
-      "priority": 4
+      "together": true
     },
     {
       "id": "intro",
+      "group": "intro",
       "individual": true,
-      "together": true,
-      "priority": 5
+      "together": true
     },
     {
       "id": "tools_activity",
+      "group": "tools_activity",
       "individual": true,
-      "together": true,
-      "priority": 70
+      "together": true
     },
     {
       "id": "home_practice",
+      "group": "home_practice",
       "individual": true,
-      "together": true,
-      "priority": 80
+      "together": true
     },
     {
       "id": "ending",
+      "group": "ending",
       "individual": true,
-      "together": true,
-      "priority": 90
+      "together": true
     },
     {
       "id": "hp_review",
+      "group": "hp_review",
       "individual": true,
-      "together": true,
-      "priority": 91
+      "together": true
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
