@@ -1,0 +1,42 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "w_safe_specific_task_gs",
+  "status": "released",
+  "rows": [
+    {
+      "id": "read_1",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "title": "Story 1",
+      "has_single_task": false
+    },
+    {
+      "id": "read_2",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "title": "Story 2",
+      "has_single_task": false
+    },
+    {
+      "id": "learn_ind",
+      "individual": true,
+      "together": false,
+      "priority": 15,
+      "title": "Learn",
+      "has_single_task": true,
+      "template": "w_safe_learn_individual_temp"
+    },
+    {
+      "id": "learn_tog",
+      "individual": false,
+      "together": true,
+      "priority": 15,
+      "title": "Learn",
+      "has_single_task": true,
+      "template": "w_safe_learn_together_temp"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"
+}
