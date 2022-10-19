@@ -14,11 +14,13 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
   displayType: "landscape" | "portrait";
   highlighted: boolean = true;
   highlightedText = "Active";
+  completed: boolean = false;
   taskGroupId: string | null;
   taskId: string | null;
   title: string | null;
   subtitle: string | null;
   image: string | null;
+  completedIcon: string;
 
   constructor(private taskService: TaskService) {
     super();
@@ -26,7 +28,8 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
 
   ngOnInit() {
     this.getParams();
-    // this.highlighted = this.taskService.checkHighlightedTask(this.taskGroupId || this.taskId)
+    // TODO: Commented out for testing (highlighted task is never currently set)
+    // this.highlighted = this.taskService.checkHighlightedTask(this.taskId || this.taskGroupId)
   }
 
   getParams() {
@@ -36,6 +39,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
     this.subtitle = getStringParamFromTemplateRow(this._row, "subtitle", null);
     this.image = getStringParamFromTemplateRow(this._row, "image", null);
     this.style = getStringParamFromTemplateRow(this._row, "style", "landscape");
+    this.completedIcon = getStringParamFromTemplateRow(this._row, "completed_icon", null);
     this.displayType = this.getTypeFromStyles(this.style);
   }
 

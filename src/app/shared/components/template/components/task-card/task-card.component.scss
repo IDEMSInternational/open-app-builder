@@ -11,16 +11,22 @@
   &.landscape {
     width: 90%;
   }
-  .highlighted-badge {
+  .badge {
     position: absolute;
     top: -10px;
-    right: -10px;
-    padding: 5px 10px;
-    border-radius: var(--ion-border-radius-small);
-    background: var(--ion-color-secondary);
-    color: white;
-    font-weight: var(--font-weight-bold);
     filter: drop-shadow(var(--ion-default-box-shadow));
+    &.highlighted-badge {
+      right: -10px;
+      padding: 5px 10px;
+      border-radius: var(--ion-border-radius-small);
+      background: var(--ion-color-secondary);
+      color: white;
+      font-weight: var(--font-weight-bold);
+    }
+    &.completed-badge {
+      right: -12px;
+      width: 36px;
+    }
   }
   .content-wrapper {
     height: 100%;
