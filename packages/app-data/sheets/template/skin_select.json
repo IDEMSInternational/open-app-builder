@@ -13,46 +13,28 @@
       "_nested_name": "title"
     },
     {
-      "name": "workshop_skin_name",
-      "value": "weekly_workshop",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "workshop_skin_name"
-    },
-    {
-      "name": "module_skin_name",
-      "value": "modular",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "module_skin_name"
-    },
-    {
-      "name": "workshop_skin_text",
+      "name": "workshop_skin",
       "value": "Workshop",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "workshop_skin_text"
+      "_nested_name": "workshop_skin"
     },
     {
-      "name": "module_skin_text",
+      "name": "module_skin",
       "value": "Module",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "module_skin_text"
+      "_nested_name": "module_skin"
     },
     {
       "name": "skins_list",
       "value": [
-        "name: @local.workshop_skin_name | text: @local.workshop_skin_text",
-        "name: @local.module_skin_name | text: @local.module_skin_text"
+        "name: default | text: @local.workshop_skin",
+        "name: modular | text: @local.module_skin"
       ],
       "type": "set_variable",
       "_nested_name": "skins_list",
@@ -60,45 +42,27 @@
         "value": {
           "0": [
             {
-              "fullExpression": "name: @local.workshop_skin_name | text: @local.workshop_skin_text",
-              "matchedExpression": "@local.workshop_skin_name",
+              "fullExpression": "name: default | text: @local.workshop_skin",
+              "matchedExpression": "@local.workshop_skin",
               "type": "local",
-              "fieldName": "workshop_skin_name"
-            },
-            {
-              "fullExpression": "name: @local.workshop_skin_name | text: @local.workshop_skin_text",
-              "matchedExpression": "@local.workshop_skin_text",
-              "type": "local",
-              "fieldName": "workshop_skin_text"
+              "fieldName": "workshop_skin"
             }
           ],
           "1": [
             {
-              "fullExpression": "name: @local.module_skin_name | text: @local.module_skin_text",
-              "matchedExpression": "@local.module_skin_name",
+              "fullExpression": "name: modular | text: @local.module_skin",
+              "matchedExpression": "@local.module_skin",
               "type": "local",
-              "fieldName": "module_skin_name"
-            },
-            {
-              "fullExpression": "name: @local.module_skin_name | text: @local.module_skin_text",
-              "matchedExpression": "@local.module_skin_text",
-              "type": "local",
-              "fieldName": "module_skin_text"
+              "fieldName": "module_skin"
             }
           ]
         }
       },
       "_dynamicDependencies": {
-        "@local.workshop_skin_name": [
+        "@local.workshop_skin": [
           "value.0"
         ],
-        "@local.workshop_skin_text": [
-          "value.0"
-        ],
-        "@local.module_skin_name": [
-          "value.1"
-        ],
-        "@local.module_skin_text": [
+        "@local.module_skin": [
           "value.1"
         ]
       }
