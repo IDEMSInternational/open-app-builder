@@ -22,3 +22,5 @@ export class TaskService {
     return taskId === this.getHighlightedTask();
   }
 }
+
+export type IProgressStatus = "notStarted" | "inProgress" | "completed";

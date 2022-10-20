@@ -4,6 +4,7 @@ import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 import { TemplateFieldService } from "../../services/template-field.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
+import { IProgressStatus } from "src/app/shared/services/task/task.service";
 
 @Component({
   selector: "plh-task-progress-bar",
@@ -13,8 +14,8 @@ import { AppDataService } from "src/app/shared/services/data/app-data.service";
 export class TmplTaskProgressBarComponent extends TemplateBaseComponent implements OnInit {
   @Input() taskGroupId: string | null;
   @Input() highlighted: boolean | null;
-  @Input() completed: boolean | null;
-  @Output() completedChange = new EventEmitter<boolean>();
+  @Input() progressStatus: IProgressStatus;
+  @Output() progressStatusChange = new EventEmitter<IProgressStatus>();
   subtasksTotal: number;
   subtasksCompleted: number;
   showText = true;
@@ -53,8 +54,8 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
       this.templateFieldService.getField(task.completed_field)
     ).length;
     if (this.subtasksCompleted === this.subtasksTotal) {
-      this.completed = true;
-      this.completedChange.emit(this.completed);
+      this.progressStatus = "completed";
+      this.progressStatusChange.emit(this.progressStatus);
       // Check whether task group has already been completed
       if (this.templateFieldService.getField(`${taskGroupId}_completed`) !== true) {
         // If not, set completed field to "true" and emit "completed"
@@ -64,6 +65,9 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
         // Currently the task-progress-bar cannot trigger actions, since it is only instantiated inside
         // the task-card so has now "_row"
       }
+    } else if (this.subtasksCompleted) {
+      this.progressStatus = "inProgress";
+      this.progressStatusChange.emit(this.progressStatus);
     }
   }
 

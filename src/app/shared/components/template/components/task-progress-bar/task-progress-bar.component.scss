@@ -8,29 +8,26 @@
   }
   .progress-bar-background {
     width: 100%;
-    background-color: var(--ion-color-secondary-100);
     border-radius: var(--ion-border-radius-small);
+    background-color: var(--ion-color-gray-100);
   }
-
   .progress-bar {
     width: 1%;
     height: 5px;
-    background-color: var(--ion-color-secondary);
     border-radius: var(--ion-border-radius-small);
+    background-color: var(--ion-color-gray-400);
   }
-
+  &.completed {
+    .progress-bar {
+      background-color: var(--ion-color-green);
+    }
+  }
   &.highlighted {
     .progress-bar-background {
       background-color: var(--ion-color-secondary-100);
     }
     .progress-bar {
       background-color: var(--ion-color-secondary);
-    }
-  }
-
-  &.completed {
-    .progress-bar {
-      background-color: var(--ion-color-green);
     }
   }
 }

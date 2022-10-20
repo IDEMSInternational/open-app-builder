@@ -1,10 +1,24 @@
 <div [class]="'card-wrapper ' + style" (click)="triggerActions('click')">
-  <span *ngIf="highlighted && !completed" class="badge highlighted-badge">
-    {{ highlightedText }}
-  </span>
-  <span *ngIf="completed" class="badge completed-badge">
-    <img src="{{ completedIcon | plhAsset }}" />
-  </span>
+  <ng-container *ngIf="highlighted; else showProgress">
+    <span class="badge highlighted-badge">
+      {{ highlightedText }}
+    </span>
+  </ng-container>
+  <ng-template #showProgress>
+    <span class="badge progress-badge">
+      <span class="circle" [class]="progressStatus"></span>
+      <img
+        *ngIf="progressStatus === 'inProgress'"
+        class="icon"
+        src="{{ inProgressIcon | plhAsset }}"
+      />
+      <img
+        *ngIf="progressStatus === 'completed'"
+        class="icon"
+        src="{{ completedIcon | plhAsset }}"
+      />
+    </span>
+  </ng-template>
   <div class="content-wrapper">
     <ng-container *ngIf="!title">
       <plh-template-component
@@ -32,7 +46,7 @@
           <plh-task-progress-bar
             [taskGroupId]="taskGroupId"
             [highlighted]="highlighted"
-            [(completed)]="completed"
+            [(progressStatus)]="progressStatus"
           ></plh-task-progress-bar>
         </div>
       </div>
