@@ -1,4 +1,4 @@
-import { DataFrame, Series } from "danfojs";
+import { DataFrame } from "danfojs";
 
 /**
  * Replace NaN values with replacement value. Similar to danfo.js replace method except
