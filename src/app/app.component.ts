@@ -133,6 +133,7 @@ export class AppComponent {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
       this.appConfig = appConfig;
       this.sideMenuDefaults = this.appConfig.APP_SIDEMENU_DEFAULTS;
+      this.footerDefaults = this.appConfig.APP_FOOTER_DEFAULTS;
       this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
       this.appFields = this.appConfig.APP_FIELDS;
     });
