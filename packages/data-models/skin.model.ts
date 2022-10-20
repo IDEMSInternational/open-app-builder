@@ -21,4 +21,5 @@ import { IAppConfigOverride } from "./appConfig";
 export interface IAppSkin {
   name: string;
   appConfig?: IAppConfigOverride;
+  availableThemes?: string[];
 }

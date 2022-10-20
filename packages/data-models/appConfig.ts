@@ -51,11 +51,19 @@ const APP_LANGUAGES = {
 };
 
 /** Specifies the skins available to the current app build.
- * "default": the skin used by default for a given build
- * "available": an array of additional skins that are available to the current build */
+ * "defaultSkinName": the name of the skin used by default for a given build
+ * "available": an array of all skins that are available to the current build */
 const APP_SKINS: { defaultSkinName: string; available: IAppSkin[] } = {
   defaultSkinName: "default",
   available: [{ name: "default" }],
+};
+
+/** Specifies the themes available to the current app build.
+ * "defaultThemeName": the theme used by default for a given build
+ * "available": an array of all skins that are available to the current build */
+const APP_THEMES = {
+  defaultThemeName: "default",
+  available: ["default"],
 };
 
 /**
@@ -169,6 +177,7 @@ const APP_CONFIG = {
   APP_SIDEMENU_DEFAULTS,
   APP_STRINGS,
   APP_SKINS,
+  APP_THEMES,
   DYNAMIC_PREFIXES,
   FEEDBACK_MODULE_DEFAULTS,
   FIELD_PREFIX,
