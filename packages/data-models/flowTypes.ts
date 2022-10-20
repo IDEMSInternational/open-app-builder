@@ -1,5 +1,5 @@
 import type { IDataPipeOperation } from "shared/src/models/dataPipe/types";
-import type { IAppConstants } from "./constants";
+import type { IAppConfig } from "./appConfig";
 
 /*********************************************************************************************
  *  Base flow types
@@ -314,7 +314,7 @@ export namespace FlowTypes {
   }
   export type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
-  type IDynamicPrefix = IAppConstants["DYNAMIC_PREFIXES"][number];
+  type IDynamicPrefix = IAppConfig["DYNAMIC_PREFIXES"][number];
 
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {

@@ -1,48 +1,69 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { APP_CONSTANTS } from "src/app/data";
-
-const { APP_FIELDS } = APP_CONSTANTS;
-
-// TODO - Where should these live and be added to? Should ultimately come from sheets?
-// Could live at deployment level, e.g. app_constants.compatible_skins
-const SKINS = ["default", "modular"];
+import { IAppSkin } from "data-models";
+import { arrayToHashmap } from "../../utils";
+import { AppConfigService } from "../app-config/app-config.service";
+import { TemplateService } from "../../components/template/services/template.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class SkinService {
-  currentSkin$ = new BehaviorSubject<string>(null);
-  availableSkins = SKINS;
+  // A hashmap of all skins available to the current deployment
+  private availableSkins: Record<string, IAppSkin>;
+  private activeSkin$ = new BehaviorSubject<IAppSkin | undefined>(undefined);
 
-  constructor(private localStorageService: LocalStorageService) {}
+  constructor(
+    private localStorageService: LocalStorageService,
+    private appConfigService: AppConfigService,
+    private templateService: TemplateService
+  ) {
+    // eagerly initialise so that updated appConfig is available to other services
+    this.init();
+  }
 
-  init() {
-    const currentSkinName = this.getCurrentSkin();
-    if (currentSkinName) {
-      this.setSkin(currentSkinName);
+  private init() {
+    const skinsConfig = this.appConfigService.APP_CONFIG.APP_SKINS;
+    this.availableSkins = arrayToHashmap(skinsConfig.available, "name");
+    // Retrieve the last active skin with default fallback
+    const activeSkinName = this.getActiveSkinName() ?? skinsConfig.defaultSkinName;
+    // Set active skin
+    this.setSkin(activeSkinName, true);
+  }
+
+  public setSkin(skinName: string, isInit = false) {
+    if (skinName in this.availableSkins) {
+      const targetSkin = this.availableSkins[skinName];
+      console.log("[SET SKIN]", skinName, targetSkin);
+      this.activeSkin$.next(targetSkin);
+      // Update appConfig to reflect any overrides defined by the skin
+      this.appConfigService.updateAppConfig(targetSkin.appConfig);
+      // Update default values when skin changed to allow for skin-specific global overrides
+      // Don't run on initialisation, since the skin and appConfig services must init before the template service and its dependencies
+      if (!isInit) {
+        this.templateService.initialiseDefaultFieldAndGlobals();
+      }
+      // Use local storage so that the active skin persists across app launches
+      this.localStorageService.setString(
+        this.appConfigService.APP_CONFIG.APP_FIELDS.APP_SKIN,
+        targetSkin.name
+      );
     } else {
-      this.setSkin("default");
+      console.error(`No skin found with name "${skinName}"`, {
+        availableSkins: this.availableSkins,
+      });
     }
   }
 
-  public setSkin(skinName: string) {
-    if (this.availableSkins.includes(skinName)) {
-      console.log("[SET SKIN]", skinName);
-      this.currentSkin$.next(skinName);
-      // Use local storage so that the current skin persists across app launches
-      this.localStorageService.setString(APP_FIELDS.APP_SKIN, skinName);
-    } else {
-      console.error(`No skin found with name "${skinName}"`);
-    }
+  /** Get the name of the active skin, as saved in local storage */
+  public getActiveSkinName() {
+    return this.localStorageService.getString(this.appConfigService.APP_CONFIG.APP_FIELDS.APP_SKIN);
   }
 
-  public getCurrentSkin() {
-    return this.localStorageService.getString(APP_FIELDS.APP_SKIN);
-  }
-
-  public getAllSkins() {
-    return this.availableSkins;
+  /** Get the full active skin, from the skin name saved in local storage */
+  public getActiveSkin() {
+    const activeSkinName = this.getActiveSkin();
+    return this.availableSkins[activeSkinName];
   }
 }

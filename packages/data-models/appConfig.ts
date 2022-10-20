@@ -1,11 +1,13 @@
 /// <reference lib="dom" />
 import APP_CONFIG_GLOBALS from "./app-config/globals";
 import clone from "clone";
+import { IAppSkin } from "./skin.model";
+
 /*********************************************************************************************
- *  Constants used throughout the app
+ * Values used throughout the app
  *
  * NOTE - this file should not be edited directly. All constants can be overridden
- * via the `app_constants` field in deployment configs
+ * via the `app_config` field in deployment configs, or by the `appConfig` of an applied skin
  *
  * NOTE - as these are merged when setting deployment, avoid `_path` suffix as that has
  * special use case for relative paths
@@ -46,6 +48,14 @@ const APP_FIELDS = {
 const APP_LANGUAGES = {
   /** Language used during first load. If translations do not exist will default to source strings (gb_en) */
   default: "gb_en",
+};
+
+/** Specifies the skins available to the current app build.
+ * "default": the skin used by default for a given build
+ * "available": an array of additional skins that are available to the current build */
+const APP_SKINS: { defaultSkinName: string; available: IAppSkin[] } = {
+  defaultSkinName: "default",
+  available: [{ name: "default" }],
 };
 
 /**
@@ -101,6 +111,7 @@ const APP_HEADER_DEFAULTS = {
 };
 
 const APP_SIDEMENU_DEFAULTS = {
+  enabled: true,
   title: "App",
   // name of template to display in sidebar
   template_name: "app_menu",
@@ -148,7 +159,7 @@ const FEEDBACK_MODULE_DEFAULTS = {
   selected_text_field: "_feedback_selected_text",
 };
 
-const APP_CONSTANTS = {
+const APP_CONFIG = {
   APP_FIELDS,
   APP_HEADER_DEFAULTS,
   APP_INITIALISATION_DEFAULTS,
@@ -157,6 +168,7 @@ const APP_CONSTANTS = {
   APP_ROUTE_DEFAULTS,
   APP_SIDEMENU_DEFAULTS,
   APP_STRINGS,
+  APP_SKINS,
   DYNAMIC_PREFIXES,
   FEEDBACK_MODULE_DEFAULTS,
   FIELD_PREFIX,
@@ -165,5 +177,13 @@ const APP_CONSTANTS = {
   SERVER_SYNC_FREQUENCY_MS,
 };
 // Export as a clone to avoid risk one import could alter another
-export const getDefaultAppConstants = () => clone(APP_CONSTANTS);
-export type IAppConstants = typeof APP_CONSTANTS;
+export const getDefaultAppConfig = () => clone(APP_CONFIG);
+export type IAppConfig = typeof APP_CONFIG;
+
+/** A recursive version of Partial, making all properties, included nested ones, optional.
+ * Copied from https://stackoverflow.com/a/47914631
+ */
+type RecursivePartial<T> = {
+  [P in keyof T]?: RecursivePartial<T[P]>;
+};
+export type IAppConfigOverride = RecursivePartial<IAppConfig>;
