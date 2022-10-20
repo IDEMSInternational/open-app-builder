@@ -39,6 +39,7 @@ export class JSEvaluator {
    **/
   setGlobalContext(context: { functions?: IFunctionHashmap; constants?: IConstantHashmap }) {
     const constantString = Object.entries(context.constants ?? {})
+      .filter(([name]) => this.isValidVariableName(name))
       .map(
         ([name, value]) =>
           // convert global constants to variable strings, adding quotation marks for string types
@@ -70,6 +71,13 @@ export class JSEvaluator {
       // still throw error so that calling function can decide how to handle, e.g. attempt string replace
       throw error;
     }
+  }
+
+  /** Check if a proposed variable name is valid in javascript */
+  private isValidVariableName(name: string) {
+    // adapted from https://stackoverflow.com/a/1661249/5693245
+    const regex = /^[a-z_$][0-9a-z_$]*$/i;
+    return regex.test(name);
   }
 }
 
