@@ -3,9 +3,19 @@ import { IAppSkin } from "data-models";
 // PLH-specific skins
 
 export const weekly_workshop: IAppSkin = {
-  name: "weekly_workshop"
+  name: "weekly_workshop",
+  appConfig: {
+    APP_THEMES: {
+      defaultThemeName: "default"
+    }
+  }
 }
 
 export const modular: IAppSkin = {
-  name: "modular"
+  name: "modular",
+  appConfig: {
+    APP_THEMES: {
+      defaultThemeName: "professional"
+    }
+  }
 }

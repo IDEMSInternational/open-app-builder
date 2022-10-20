@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { THEMES } from "src/theme/themes";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { IAppConfig } from "packages/data-models";
 
@@ -10,8 +9,9 @@ import { IAppConfig } from "packages/data-models";
 })
 export class ThemeService {
   currentTheme$ = new BehaviorSubject<string>(null);
-  availableThemes = THEMES;
+  availableThemes: IAppConfig["APP_THEMES"]["available"];
   appFields: IAppConfig["APP_FIELDS"];
+  defaultThemeName: string;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -21,12 +21,9 @@ export class ThemeService {
   }
 
   init() {
-    const currentThemeName = this.getCurrentTheme();
-    if (currentThemeName) {
-      this.setTheme(currentThemeName);
-    } else {
-      this.setTheme("default");
-    }
+    // Retrieve the last active theme with default fallback
+    const currentThemeName = this.getCurrentTheme() ?? this.defaultThemeName;
+    this.setTheme(currentThemeName);
   }
 
   public setTheme(themeName: string) {
@@ -43,10 +40,6 @@ export class ThemeService {
 
   public getCurrentTheme() {
     return this.localStorageService.getString(this.appFields.APP_THEME);
-  }
-
-  public getAllThemes() {
-    return this.availableThemes;
   }
 
   /** Calculate all custom properties inherited for a particular element */
@@ -90,6 +83,8 @@ export class ThemeService {
   subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
       this.appFields = appConfig.APP_FIELDS;
+      this.availableThemes = appConfig.APP_THEMES.available;
+      this.defaultThemeName = appConfig.APP_THEMES.defaultThemeName;
     });
   }
 }
