@@ -47,6 +47,11 @@ export class AppComponent {
   public renderAppTemplates = false;
 
   constructor(
+    // services with constructor-enabled init functions (load eagerly)
+    public skinService: SkinService,
+    public appConfigService: AppConfigService,
+
+    // other services
     private platform: Platform,
     private menuController: MenuController,
     private router: Router,
@@ -54,7 +59,6 @@ export class AppComponent {
     private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
     private themeService: ThemeService,
-    private skinService: SkinService,
     private tourService: TourService,
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
@@ -69,7 +73,6 @@ export class AppComponent {
     private crashlyticsService: CrashlyticsService,
     private appDataService: AppDataService,
     private authService: AuthService,
-    private appConfigService: AppConfigService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
     public lifecycleActionsService: LifecycleActionsService,
@@ -146,7 +149,7 @@ export class AppComponent {
     await this.dbService.init();
     await this.userMetaService.init();
     this.themeService.init();
-    this.skinService.init();
+
     /** CC 2021-05-14 - disabling reminders service until decide on full implementation (ideally not requiring evaluation of all reminders on init) */
     // this.remindersService.init();
     await this.appEventService.init();

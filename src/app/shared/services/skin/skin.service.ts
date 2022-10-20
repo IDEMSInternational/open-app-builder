@@ -11,14 +11,19 @@ import { TemplateService } from "../../components/template/services/template.ser
 })
 export class SkinService {
   // A hashmap of all skins available to the current deployment
-  availableSkins: Record<string, IAppSkin>;
-  activeSkin$ = new BehaviorSubject<IAppSkin | {}>({});
+  private availableSkins: Record<string, IAppSkin>;
+  private activeSkin$ = new BehaviorSubject<IAppSkin | undefined>(undefined);
 
   constructor(
     private localStorageService: LocalStorageService,
     private appConfigService: AppConfigService,
     private templateService: TemplateService
   ) {
+    // eagerly initialise so that updated appConfig is available to other services
+    this.init();
+  }
+
+  private init() {
     const skinsConfig = this.appConfigService.APP_CONFIG.APP_SKINS;
     this.availableSkins = arrayToHashmap(skinsConfig.available, "name");
     // Retrieve the last active skin with default fallback
@@ -27,19 +32,10 @@ export class SkinService {
     this.setSkin(activeSkinName, true);
   }
 
-  init() {
-    // const skinsConfig = this.appConfigService.APP_CONFIG.APP_SKINS;
-    // this.availableSkins = arrayToHashmap(skinsConfig.available, "name");
-    // // Retrieve the last active skin with default fallback
-    // const activeSkinName = this.getActiveSkinName() ?? skinsConfig.defaultSkinName;
-    // // Set active skin
-    // this.setSkin(activeSkinName, true);
-  }
-
   public setSkin(skinName: string, isInit = false) {
     if (skinName in this.availableSkins) {
-      console.log("[SET SKIN]", skinName);
       const targetSkin = this.availableSkins[skinName];
+      console.log("[SET SKIN]", skinName, targetSkin);
       this.activeSkin$.next(targetSkin);
       // Update appConfig to reflect any overrides defined by the skin
       this.appConfigService.updateAppConfig(targetSkin.appConfig);
@@ -54,7 +50,9 @@ export class SkinService {
         targetSkin.name
       );
     } else {
-      console.error(`No skin found with name "${skinName}"`);
+      console.error(`No skin found with name "${skinName}"`, {
+        availableSkins: this.availableSkins,
+      });
     }
   }
 
