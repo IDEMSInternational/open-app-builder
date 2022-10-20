@@ -110,7 +110,7 @@ const APP_HEADER_DEFAULTS = {
     location.pathname == APP_ROUTE_DEFAULTS.home_route,
 };
 
-const APP_FOOTER_DEFAULTS = {
+const APP_FOOTER_DEFAULTS: { templateName: string | null } = {
   templateName: null,
 };
 
