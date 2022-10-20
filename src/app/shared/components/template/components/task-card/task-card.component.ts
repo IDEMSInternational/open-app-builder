@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { TaskService } from "src/app/shared/services/task/task.service";
 import { getStringParamFromTemplateRow } from "src/app/shared/utils";
-import { TemplateFieldService } from "../../services/template-field.service";
 import { TemplateBaseComponent } from "../base";
+import { IProgressStatus } from "src/app/shared/services/task/task.service";
 
 @Component({
   selector: "plh-task-card",
@@ -14,13 +14,14 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
   displayType: "landscape" | "portrait";
   highlighted: boolean = true;
   highlightedText = "Active";
-  completed: boolean = false;
+  progressStatus: IProgressStatus = "notStarted";
   taskGroupId: string | null;
   taskId: string | null;
   title: string | null;
   subtitle: string | null;
   image: string | null;
   completedIcon: string;
+  inProgressIcon: string;
 
   constructor(private taskService: TaskService) {
     super();
@@ -40,6 +41,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
     this.image = getStringParamFromTemplateRow(this._row, "image", null);
     this.style = getStringParamFromTemplateRow(this._row, "style", "landscape");
     this.completedIcon = getStringParamFromTemplateRow(this._row, "completed_icon", null);
+    this.inProgressIcon = getStringParamFromTemplateRow(this._row, "in_progress_icon", null);
     this.displayType = this.getTypeFromStyles(this.style);
   }
 
