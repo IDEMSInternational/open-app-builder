@@ -33,6 +33,7 @@ export class DataPipe {
           this.setOutputTarget(step.output_target);
         }
       } catch (error) {
+        // add additional step context to error message when thrown
         error.message = JSON.stringify({ message: error.message, step }, null, 2);
         throw error;
       }
