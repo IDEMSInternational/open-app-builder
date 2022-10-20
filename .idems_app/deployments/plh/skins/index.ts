@@ -1,11 +1,5 @@
-import { IAppSkin } from "data-models";
+import weekly_workshop from "./weely_workshop";
+import modular from "./modular";
+import debug from "./debug";
 
-// PLH-specific skins
-
-export const weekly_workshop: IAppSkin = {
-  name: "weekly_workshop"
-}
-
-export const modular: IAppSkin = {
-  name: "modular"
-}
+export const SKINS = { weekly_workshop, modular, debug };
