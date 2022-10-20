@@ -36,7 +36,7 @@
     },
     {
       "name": "task_group_id",
-      "value": "w_1on1",
+      "value": "w_self_care",
       "_translations": {
         "value": {}
       },
@@ -197,7 +197,7 @@
         },
         {
           "type": "image",
-          "value": "plh_images_human/workshops/w_self_care.svg",
+          "value": "plh_images/workshops/w_self_care/tools.svg",
           "_translations": {
             "value": {}
           },

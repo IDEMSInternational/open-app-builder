@@ -1,0 +1,80 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "common_workshop_task_gs",
+  "status": "released",
+  "rows": [
+    {
+      "id": "welcome_individual",
+      "individual": true,
+      "together": false,
+      "priority": 1,
+      "title": "How are you?",
+      "has_single_task": true
+    },
+    {
+      "id": "care_together",
+      "individual": false,
+      "together": true,
+      "priority": 2,
+      "title": "How are you?",
+      "has_single_task": true
+    },
+    {
+      "id": "relax",
+      "individual": true,
+      "together": true,
+      "priority": 3,
+      "title": "Relax",
+      "has_single_task": true
+    },
+    {
+      "id": "reflect_together",
+      "individual": false,
+      "together": true,
+      "priority": 4,
+      "title": "Reflect",
+      "has_single_task": true
+    },
+    {
+      "id": "intro",
+      "individual": true,
+      "together": true,
+      "priority": 5,
+      "title": "Intro to ...",
+      "has_single_task": true
+    },
+    {
+      "id": "tools_activity",
+      "individual": true,
+      "together": true,
+      "priority": 70,
+      "title": "How to ...",
+      "has_single_task": true
+    },
+    {
+      "id": "home_practice",
+      "individual": true,
+      "together": true,
+      "priority": 80,
+      "title": "Home Practice",
+      "has_single_task": true
+    },
+    {
+      "id": "ending",
+      "individual": true,
+      "together": true,
+      "priority": 90,
+      "title": "Well done!",
+      "has_single_task": true
+    },
+    {
+      "id": "hp_review",
+      "individual": true,
+      "together": true,
+      "priority": 91,
+      "title": "Home Practice Review",
+      "has_single_task": true
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"
+}

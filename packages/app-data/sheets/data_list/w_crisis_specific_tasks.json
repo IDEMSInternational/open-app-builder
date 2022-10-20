@@ -2,62 +2,61 @@
   "flow_type": "data_list",
   "flow_name": "w_crisis_specific_tasks",
   "status": "released",
-  "data_list_name": "w_crisis_specific_tasks",
   "rows": [
     {
       "id": "read_1",
+      "group": "read_1",
+      "rel_priority": 1,
       "individual": true,
       "together": true,
-      "priority": 11,
-      "template": "w_crisis_read_1",
-      "group": "read_1"
+      "template": "w_crisis_read_1_temp"
     },
     {
       "id": "question_1",
+      "group": "read_1",
+      "rel_priority": 2,
       "individual": true,
       "together": false,
-      "priority": 12,
-      "template": "w_crisis_question_1",
-      "group": "read_1"
+      "template": "w_crisis_question_1"
     },
     {
       "id": "talk_1",
+      "group": "read_1",
+      "rel_priority": 3,
       "individual": false,
       "together": true,
-      "priority": 12,
-      "template": "w_crisis_talk_1",
-      "group": "read_1"
+      "template": "w_crisis_talk_1"
     },
     {
       "id": "read_2",
+      "group": "read_2",
+      "rel_priority": 1,
       "individual": true,
       "together": true,
-      "priority": 13,
-      "template": "w_crisis_read_2",
-      "group": "read_2"
+      "template": "w_crisis_read_2_temp"
     },
     {
       "id": "question_2",
+      "group": "read_2",
+      "rel_priority": 2,
       "individual": true,
       "together": false,
-      "priority": 14,
-      "template": "w_crisis_question_2",
-      "group": "read_2"
+      "template": "w_crisis_question_2"
     },
     {
       "id": "talk_2",
+      "group": "read_2",
+      "rel_priority": 3,
       "individual": false,
       "together": true,
-      "priority": 14,
-      "template": "w_crisis_talk_2",
-      "group": "read_2"
+      "template": "w_crisis_talk_2"
     },
     {
       "id": "learn",
+      "group": "learn",
       "individual": true,
       "together": true,
-      "priority": 71,
-      "template": "w_crisis_learn"
+      "template": "w_crisis_learn_temp"
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
