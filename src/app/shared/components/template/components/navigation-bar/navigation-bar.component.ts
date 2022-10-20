@@ -8,6 +8,7 @@ interface IButton {
   image: string | null;
   text: string | null;
   target_template: string | null;
+  name: string | null;
 }
 
 @Component({
