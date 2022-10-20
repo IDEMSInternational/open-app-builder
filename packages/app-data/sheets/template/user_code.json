@@ -67,6 +67,24 @@
       "_nested_name": "sync_button_clicked"
     },
     {
+      "name": "copy",
+      "value": "Copy code",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "copy"
+    },
+    {
+      "name": "copied",
+      "value": "Copied!",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "copied"
+    },
+    {
       "type": "title",
       "name": "title",
       "value": "@global.uuid_title",
@@ -130,8 +148,8 @@
             "value": {}
           },
           "parameter_list": {
-            "copy_text": "Copy code",
-            "copied_text": "Copied!"
+            "copy_text": "@local.copy",
+            "copied_text": "@local.copied"
           },
           "_nested_name": "has_ever_been_synced.user_code",
           "_dynamicFields": {
@@ -142,11 +160,35 @@
                 "type": "local",
                 "fieldName": "user_id"
               }
-            ]
+            ],
+            "parameter_list": {
+              "copy_text": [
+                {
+                  "fullExpression": "@local.copy",
+                  "matchedExpression": "@local.copy",
+                  "type": "local",
+                  "fieldName": "copy"
+                }
+              ],
+              "copied_text": [
+                {
+                  "fullExpression": "@local.copied",
+                  "matchedExpression": "@local.copied",
+                  "type": "local",
+                  "fieldName": "copied"
+                }
+              ]
+            }
           },
           "_dynamicDependencies": {
             "@local.user_id": [
               "value"
+            ],
+            "@local.copy": [
+              "parameter_list.copy_text"
+            ],
+            "@local.copied": [
+              "parameter_list.copied_text"
             ]
           }
         },

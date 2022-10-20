@@ -14,8 +14,9 @@
     {
       "operation": "append_columns",
       "args_list": [
-        "Text: Hello @row.id",
-        "Label: Another column"
+        "Text: Hello {@row.id}",
+        "Label: Another column",
+        "Field: example_{@row.id}_field"
       ]
     },
     {
@@ -43,45 +44,5 @@
       "output_target": "example_pipe_uncompleted"
     }
   ],
-  "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes.xlsx",
-  "_processed": {
-    "example_pipe_completed": [
-      {
-        "id": "id_5",
-        "value": 5,
-        "completed": true,
-        "Text": "Hello id_5",
-        "Label": "Another column"
-      },
-      {
-        "id": "id_6",
-        "value": 6,
-        "completed": true,
-        "Text": "Hello id_6",
-        "Label": "Another column"
-      }
-    ],
-    "example_pipe_uncompleted": [
-      {
-        "id": "id_2",
-        "value": 2,
-        "completed": false,
-        "Text": "Hello id_2",
-        "Label": "Another column"
-      },
-      {
-        "id": "id_4",
-        "value": 4,
-        "Text": "Hello id_4",
-        "Label": "Another column"
-      },
-      {
-        "id": "id_8",
-        "value": 8,
-        "completed": false,
-        "Text": "Hello id_8",
-        "Label": "Another column"
-      }
-    ]
-  }
+  "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes.xlsx"
 }
