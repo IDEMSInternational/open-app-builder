@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "toilet_screen",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "topic_screen",
+      "value": "topic_screen",
+      "rows": [
+        {
+          "name": "topic_id",
+          "value": "Toilet",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "topic_screen.topic_id"
+        }
+      ],
+      "_nested_name": "topic_screen"
+    }
+  ],
+  "_xlsxPath": "templates/global/navigation.xlsx"
+}
