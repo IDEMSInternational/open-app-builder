@@ -23,4 +23,9 @@ describe("JS Evaluator", () => {
     evaluator.setGlobalContext({ constants: { ...invalidConstants, ...constants } });
     expect(evaluator.evaluate("Math.min(a,b)")).toEqual(1);
   });
+  it("throws when using reserved names for variables", () => {
+    const invalidConstants = { default: "hello", new: "test" };
+    evaluator.setGlobalContext({ constants: { ...invalidConstants, ...constants } });
+    expect(() => evaluator.evaluate("Math.min(a,b)")).toThrowError("Unexpected token 'default'");
+  });
 });
