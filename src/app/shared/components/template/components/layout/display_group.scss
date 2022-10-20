@@ -1,5 +1,3 @@
-@use "src/theme/mixins";
-
 :host {
   width: 100%;
 }
@@ -22,28 +20,6 @@
 }
 .display-group-wrapper[data-param-style~="wrap"] {
   flex-wrap: wrap;
-}
-
-.display-group-wrapper[data-param-style~="nav_bar"] {
-  @include mixins.flex-space-between;
-  height: 80px;
-  margin: var(--tiny-margin) var(--tiny-margin);
-}
-.display-group-wrapper[data-param-style~="nav_bar"] > plh-template-component {
-  height: 70%;
-  width: 30%;
-}
-
-.display-group-wrapper[data-param-style~="nav_bar_button"] {
-  flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
-  height: 100%;
-  // width: 30%;
-  // opacity: 50%;
-  // &.selected {
-  //   opacity: 100%;
-  // }
 }
 
 // Default spacing within display groups. Adapted from `template-component.scss`

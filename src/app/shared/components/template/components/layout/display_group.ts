@@ -4,7 +4,35 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
 
 @Component({
   selector: "plh-tmpl-display-group",
-  templateUrl: "./display_group.html",
+  template: ` <div
+    (click)="clickDisplayGroup()"
+    class="display-group-wrapper"
+    [attr.data-param-style]="params.style"
+    [attr.data-rowname]="_row.name"
+    [style.marginBottom.px]="params.offset"
+    [ngSwitch]="type"
+    [style]="_row.style_list | styleList"
+  >
+    <!-- Default Layout -->
+    <ng-container *ngSwitchDefault>
+      <plh-template-component
+        *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
+        [row]="childRow"
+        [parent]="parent"
+        [attr.data-rowname]="_row.name"
+      >
+      </plh-template-component>
+    </ng-container>
+    <!-- Dashed-box -->
+    <plh-advanced-dashed-box
+      *ngSwitchCase="'dashed_box'"
+      [inputRow]="_row"
+      [parent]="parent"
+      style="flex:1"
+    ></plh-advanced-dashed-box>
+    <!-- Form layout -->
+    <plh-tmpl-form *ngSwitchCase="'form'" [inputRow]="_row" [parent]="parent"></plh-tmpl-form>
+  </div>`,
   styleUrls: ["../tmpl-components-common.scss", "./display_group.scss"],
 })
 export class TmplDisplayGroupComponent extends TemplateBaseComponent implements OnInit {
