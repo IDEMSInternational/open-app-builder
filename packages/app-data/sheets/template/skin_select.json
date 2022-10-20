@@ -13,28 +13,46 @@
       "_nested_name": "title"
     },
     {
-      "name": "workshop_skin",
+      "name": "workshop_skin_name",
+      "value": "weekly_workshop",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "workshop_skin_name"
+    },
+    {
+      "name": "module_skin_name",
+      "value": "modular",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "module_skin_name"
+    },
+    {
+      "name": "workshop_skin_text",
       "value": "Workshop",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "workshop_skin"
+      "_nested_name": "workshop_skin_text"
     },
     {
-      "name": "module_skin",
+      "name": "module_skin_text",
       "value": "Module",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "module_skin"
+      "_nested_name": "module_skin_text"
     },
     {
       "name": "skins_list",
       "value": [
-        "name: default | text: @local.workshop_skin",
-        "name: modular | text: @local.module_skin"
+        "name: @local.workshop_skin_name | text: @local.workshop_skin_text",
+        "name: @local.module_skin_name | text: @local.module_skin_text"
       ],
       "type": "set_variable",
       "_nested_name": "skins_list",
@@ -42,27 +60,45 @@
         "value": {
           "0": [
             {
-              "fullExpression": "name: default | text: @local.workshop_skin",
-              "matchedExpression": "@local.workshop_skin",
+              "fullExpression": "name: @local.workshop_skin_name | text: @local.workshop_skin_text",
+              "matchedExpression": "@local.workshop_skin_name",
               "type": "local",
-              "fieldName": "workshop_skin"
+              "fieldName": "workshop_skin_name"
+            },
+            {
+              "fullExpression": "name: @local.workshop_skin_name | text: @local.workshop_skin_text",
+              "matchedExpression": "@local.workshop_skin_text",
+              "type": "local",
+              "fieldName": "workshop_skin_text"
             }
           ],
           "1": [
             {
-              "fullExpression": "name: modular | text: @local.module_skin",
-              "matchedExpression": "@local.module_skin",
+              "fullExpression": "name: @local.module_skin_name | text: @local.module_skin_text",
+              "matchedExpression": "@local.module_skin_name",
               "type": "local",
-              "fieldName": "module_skin"
+              "fieldName": "module_skin_name"
+            },
+            {
+              "fullExpression": "name: @local.module_skin_name | text: @local.module_skin_text",
+              "matchedExpression": "@local.module_skin_text",
+              "type": "local",
+              "fieldName": "module_skin_text"
             }
           ]
         }
       },
       "_dynamicDependencies": {
-        "@local.workshop_skin": [
+        "@local.workshop_skin_name": [
           "value.0"
         ],
-        "@local.module_skin": [
+        "@local.workshop_skin_text": [
+          "value.0"
+        ],
+        "@local.module_skin_name": [
+          "value.1"
+        ],
+        "@local.module_skin_text": [
           "value.1"
         ]
       }
