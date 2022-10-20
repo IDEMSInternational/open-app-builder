@@ -90,31 +90,33 @@
         },
         {
           "name": "text_completed",
-          "value": "Great that you completed @local.workshop_data.in_text_title. Tomorrow, a new workshop is unlocked to help you set family rules that work.",
+          "value": "Great that you completed @local.workshop_data.in_text_title. Tomorrow, a new @global.workshop is unlocked to help you set family rules that work.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "m_workshop_tomorrow.text_completed",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "Great that you completed @local.workshop_data.in_text_title. Tomorrow, a new workshop is unlocked to help you set family rules that work.",
+                "fullExpression": "Great that you completed @local.workshop_data.in_text_title. Tomorrow, a new @global.workshop is unlocked to help you set family rules that work.",
                 "matchedExpression": "@local.workshop_data.in_text_title",
                 "type": "local",
                 "fieldName": "workshop_data"
+              },
+              {
+                "fullExpression": "Great that you completed @local.workshop_data.in_text_title. Tomorrow, a new @global.workshop is unlocked to help you set family rules that work.",
+                "matchedExpression": "@global.workshop",
+                "type": "global",
+                "fieldName": "workshop"
               }
             ]
           },
           "_dynamicDependencies": {
             "@local.workshop_data.in_text_title": [
+              "value"
+            ],
+            "@global.workshop": [
               "value"
             ]
           }

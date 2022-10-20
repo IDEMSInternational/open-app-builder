@@ -58,16 +58,9 @@
       "title": "@global.weekly_workshop_options",
       "_translations": {
         "title": {},
-        "message_text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "message_text": {}
       },
-      "message_text": "<p>Use the @global.weekly_workshop_options to change your workshop settings. </p>",
+      "message_text": "<p>Use the @global.weekly_workshop_options to change your @global.workshop settings. </p>",
       "route": "template/workshop_options_page"
     },
     {

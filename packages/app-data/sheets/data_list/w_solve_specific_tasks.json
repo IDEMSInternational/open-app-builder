@@ -2,51 +2,50 @@
   "flow_type": "data_list",
   "flow_name": "w_solve_specific_tasks",
   "status": "released",
-  "data_list_name": "w_solve_specific_tasks",
   "rows": [
     {
       "id": "read_1",
+      "group": "read_1",
       "individual": true,
       "together": true,
-      "priority": 11,
-      "template": "w_solve_read_1"
+      "template": "w_solve_read_1_temp"
     },
     {
       "id": "read_2",
+      "group": "read_2",
+      "rel_priority": 1,
       "individual": true,
       "together": true,
-      "priority": 71,
-      "template": "w_solve_read_2",
-      "subtask_group": "read_2"
+      "template": "w_solve_read_2_temp"
     },
     {
       "id": "think",
+      "group": "read_2",
+      "rel_priority": 2,
       "individual": true,
       "together": false,
-      "priority": 72,
-      "template": "w_solve_think",
-      "subtask_group": "read_2"
+      "template": "w_solve_think"
     },
     {
       "id": "talk",
+      "group": "read_2",
+      "rel_priority": 3,
       "individual": false,
       "together": true,
-      "priority": 73,
-      "template": "w_solve_talk",
-      "subtask_group": "read_2"
+      "template": "w_solve_talk"
     },
     {
       "id": "learn",
+      "group": "learn",
       "individual": true,
       "together": true,
-      "priority": 74,
-      "template": "w_solve_learn"
+      "template": "w_solve_learn_temp"
     },
     {
       "id": "try",
+      "group": "try",
       "individual": false,
       "together": true,
-      "priority": 75,
       "template": "w_solve_try"
     }
   ],

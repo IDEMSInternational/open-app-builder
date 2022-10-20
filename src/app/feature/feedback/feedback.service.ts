@@ -23,11 +23,8 @@ import {
   IFeedbackMetadata,
   ITemplateTargetEntry,
 } from "./feedback.types";
-import { APP_CONSTANTS } from "src/app/data";
-
-const { FEEDBACK_MODULE_DEFAULTS, APP_STRINGS } = APP_CONSTANTS;
-
-const FEEDBACK_BUTTONS: IFeedbackContextMenuButton[] = FEEDBACK_MODULE_DEFAULTS.buttons;
+import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
+import { IAppConfig } from "packages/data-models";
 
 @Injectable({
   providedIn: "root",
@@ -36,6 +33,9 @@ export class FeedbackService {
   public isReviewingMode$ = new BehaviorSubject(false);
 
   private deviceInfo: DeviceInfo;
+  feedbackModuleDefaults;
+  appStrings;
+  feedbackButtons: IFeedbackContextMenuButton[];
 
   constructor(
     private contextMenuService: ContextMenuService,
@@ -44,8 +44,10 @@ export class FeedbackService {
     private userMetaService: UserMetaService,
     private toastController: ToastController,
     private dbService: DbService,
-    private dbSyncService: DBSyncService
+    private dbSyncService: DBSyncService,
+    private appConfigService: AppConfigService
   ) {
+    this.subscribeToAppConfigChanges();
     // retrieve device info for passing in metadata
     Device.getInfo().then((deviceInfo) => {
       this.deviceInfo = deviceInfo;
@@ -53,6 +55,14 @@ export class FeedbackService {
     // Handle enabling/disabling context menu actions depending on whether review mode enabled
     this.isReviewingMode$.subscribe((isReviewMode) => {
       this.setContextMenuActions(isReviewMode);
+    });
+  }
+
+  private subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.feedbackModuleDefaults = appConfig.FEEDBACK_MODULE_DEFAULTS;
+      this.appStrings = appConfig.APP_STRINGS;
+      this.feedbackButtons = appConfig.FEEDBACK_MODULE_DEFAULTS.buttons;
     });
   }
 
@@ -95,15 +105,15 @@ export class FeedbackService {
     await this.dbService.table("feedback").add(dbEntry);
     const syncTableResponse = await this.dbSyncService.syncTable("feedback");
     if (syncTableResponse.error) {
-      await this.presentToast(APP_STRINGS.feedback_unsent_text, { duration: 5000 });
+      await this.presentToast(this.appStrings.feedback_unsent_text, { duration: 5000 });
     } else {
-      await this.presentToast(APP_STRINGS.feedback_sent_text);
+      await this.presentToast(this.appStrings.feedback_sent_text);
     }
   }
 
   /** Handle registration of all defined feedback actions to the relevant context menus */
   private setContextMenuActions(isReviewMode: boolean) {
-    for (const feedbackButton of FEEDBACK_BUTTONS) {
+    for (const feedbackButton of this.feedbackButtons) {
       const action: IContextMenuAction = {
         ...feedbackButton,
         actionHandler: async (ev, data) =>
@@ -130,7 +140,7 @@ export class FeedbackService {
     contextData: IContextMenuActionData = {}
   ) {
     // set selected text to field for access in templates
-    const { selected_text_field } = FEEDBACK_MODULE_DEFAULTS;
+    const { selected_text_field } = this.feedbackModuleDefaults;
     if (contextData?.selectedText) {
       await this.templateFieldService.setField(selected_text_field, contextData.selectedText);
     }
