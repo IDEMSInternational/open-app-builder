@@ -13,7 +13,7 @@ describe("Filter", () => {
     const outputIDs = output.column("id").values;
     expect(outputIDs).toEqual(["id_3"]);
   });
-  it("Filters datawith ANY condition", () => {
+  it("Filters data with ANY condition", () => {
     const testDf = new DataFrame(testData.names);
     const output = new filter_any(testDf, [
       "last_name.startsWith('B')",
