@@ -4,6 +4,7 @@
     class="button-wrapper"
     [class.selected]="button.target_template === currentTemplate"
     (click)="goToTargetTemplate(button.target_template)"
+    [attr.data-name]="button.name"
   >
     <div class="image-wrapper">
       <img [src]="button.image | plhAsset" />
