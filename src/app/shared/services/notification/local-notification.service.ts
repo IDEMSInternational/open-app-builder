@@ -87,9 +87,6 @@ export class LocalNotificationService {
 
   subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      console.log("appConfig updated");
-      console.log("LOCAL_NOTIFICATION_DEFAULTS.title:", appConfig.NOTIFICATION_DEFAULTS.title);
-      console.log("LOCAL_NOTIFICATION_DEFAULTS.text:", appConfig.NOTIFICATION_DEFAULTS.text);
       this.notificationDefaults = appConfig.NOTIFICATION_DEFAULTS;
       this.syncSchedule = interval(appConfig.NOTIFICATIONS_SYNC_FREQUENCY_MS);
       this.localNotificationDefaults = {
@@ -200,9 +197,6 @@ export class LocalNotificationService {
    * see named actions below for configurations
    */
   public async scheduleNotification(notification: ILocalNotification, reloadNotifications = true) {
-    console.log("scheduling notification");
-    console.log("this.localNotificationDefaults.title:", this.localNotificationDefaults.title);
-    console.log("this.localNotificationDefaults.body:", this.localNotificationDefaults.body);
     if (!this.permissionGranted) return;
     // add default values
     Object.entries(this.localNotificationDefaults).forEach(([key, value]) => {
