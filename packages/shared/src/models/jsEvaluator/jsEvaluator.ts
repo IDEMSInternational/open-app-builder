@@ -78,6 +78,7 @@ export class JSEvaluator {
     // adapted from https://stackoverflow.com/a/1661249/5693245
     const regex = /^[a-z_$][0-9a-z_$]*$/i;
     return regex.test(name);
+    // TODO - could also check to ensure not a reserved word (https://www.w3schools.com/js/js_reserved.asp)
   }
 }
 
