@@ -61,7 +61,6 @@ export class SkinService {
       // If setTheme OR if the current theme is not available in the target skin,
       // then set the theme to the targetSkin's default theme
       if (setTheme || !this.isCurrentThemeAvailableInTargetSkin(targetSkin)) {
-        console.log("hi");
         this.themeService.setTheme(this.appConfigService.APP_CONFIG.APP_THEMES.defaultThemeName);
       }
       // Use local storage so that the active skin persists across app launches
