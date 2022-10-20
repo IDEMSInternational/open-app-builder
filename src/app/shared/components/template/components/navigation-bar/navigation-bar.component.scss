@@ -1,0 +1,34 @@
+@use "src/theme/mixins";
+
+.navigation-bar-wrapper {
+  @include mixins.flex-space-between;
+  height: 80px;
+  margin: var(--tiny-margin) var(--tiny-margin);
+
+  .button-wrapper {
+    @include mixins.flex-centered;
+    flex-direction: column;
+    height: 80%;
+    width: 30%;
+    opacity: 50%;
+    &.selected {
+      opacity: 100%;
+    }
+
+    .image-wrapper {
+      @include mixins.flex-centered;
+      height: 50%;
+      width: 80%;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    p {
+      text-align: center;
+      font-size: var(--font-size-text-tiny);
+      margin-bottom: 0;
+    }
+  }
+}
