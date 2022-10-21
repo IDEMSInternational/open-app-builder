@@ -324,7 +324,9 @@ export async function asyncEvery(arr: any[], predicate: Function) {
   return true;
 }
 
-/** Extract template name from a full router url */
-export function getTemplateNameFromUrl(urlString: string) {
-  return urlString.split(/[?#]/)[0].replace(/^(\/template\/)/, "");
-}
+/** A recursive version of Partial, making all properties, included nested ones, optional.
+ * Copied from https://stackoverflow.com/a/47914631
+ */
+export type RecursivePartial<T> = {
+  [P in keyof T]?: RecursivePartial<T[P]>;
+};
