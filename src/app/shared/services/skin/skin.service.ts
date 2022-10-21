@@ -88,7 +88,7 @@ export class SkinService {
       this.themeService.setTheme(targetSkinDefaultTheme);
     }
     // If target skin has no default theme and the current theme is not available in the target skin,
-    // then set theme to the first available skin of the target theme
+    // then set theme to the first available theme of the target skin
     else if (!this.isCurrentThemeAvailableInTargetSkin()) {
       this.themeService.setTheme(this.appConfigService.APP_CONFIG.APP_THEMES.available[0]);
     }
