@@ -32,8 +32,6 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
   ngOnInit() {
     this.getParams();
     this.getTaskGroupData(this.taskGroupId);
-    // this.highlighted = this.taskService.checkHighlightedTask(this.taskGroupId);
-    // this.hackExampleData();
   }
 
   getParams() {
@@ -75,10 +73,5 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
     const completedField = `${taskGroupId}_completed`;
     console.log(`Setting ${completedField} to true`);
     return this.templateFieldService.setField(completedField, "true");
-  }
-
-  hackExampleData() {
-    this.subtasksTotal = 10;
-    this.subtasksCompleted = 4;
   }
 }
