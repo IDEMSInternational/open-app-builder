@@ -12,6 +12,7 @@ export class TaskService {
   }
 
   public setHighlightedTask(taskId: string) {
+    console.log("[SET HIGHLIGHTED TASK] - ", taskId);
     return this.templateFieldService.setField("highlighted_task", taskId);
   }
 
