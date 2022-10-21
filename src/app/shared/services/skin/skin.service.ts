@@ -37,14 +37,7 @@ export class SkinService {
   /**
    * Set the active skin
    * @param skinName The name of the target skin
-   * @param {boolean} [isInit=false] Whether the fucntion is being triggered by the service's initialisaion
-   * @param {boolean} [setTheme=true] Set the theme to the target skin's default
-   *
-   * This is currently distinguished in emit statements as
-   * ```
-   * emit:set_skin    // set skin, set theme to target skin's default theme
-   * emit:set_skin_only   // set skin, leaving theme unchanged if possible, otherwise fall back target skin's default
-   * ```
+   * @param {boolean} [isInit=false] Whether the function is being triggered by the service's initialisaion
    * */
   public setSkin(skinName: string, isInit = false) {
     if (skinName in this.availableSkins) {
