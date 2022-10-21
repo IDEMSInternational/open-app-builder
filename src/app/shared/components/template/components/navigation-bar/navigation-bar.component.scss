@@ -11,7 +11,7 @@
     height: 80%;
     width: 30%;
     opacity: 50%;
-    &.selected {
+    &.active-link {
       opacity: 100%;
     }
 
@@ -26,6 +26,7 @@
     }
 
     p {
+      color: var(--ion-color-primary-contrast);
       text-align: center;
       font-size: var(--font-size-text-tiny);
       margin-bottom: 0;
