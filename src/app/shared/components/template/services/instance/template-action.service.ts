@@ -222,9 +222,6 @@ export class TemplateActionService extends TemplateInstanceService {
         if (emit_value === "set_skin") {
           this.skinService.setSkin(args[1]);
         }
-        if (emit_value === "set_skin_only") {
-          this.skinService.setSkin(args[1], false, false);
-        }
         if (emit_value === "set_theme") {
           this.themeService.setTheme(args[1]);
         }

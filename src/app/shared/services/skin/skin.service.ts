@@ -46,7 +46,7 @@ export class SkinService {
    * emit:set_skin_only   // set skin, leaving theme unchanged if possible, otherwise fall back target skin's default
    * ```
    * */
-  public setSkin(skinName: string, isInit = false, setTheme = true) {
+  public setSkin(skinName: string, isInit = false) {
     if (skinName in this.availableSkins) {
       const targetSkin = this.availableSkins[skinName];
       console.log("[SET SKIN]", skinName, targetSkin);
@@ -58,11 +58,7 @@ export class SkinService {
       if (!isInit) {
         this.templateService.initialiseDefaultFieldAndGlobals();
       }
-      // If setTheme OR if the current theme is not available in the target skin,
-      // then set the theme to the targetSkin's default theme
-      if (setTheme || !this.isCurrentThemeAvailableInTargetSkin(targetSkin)) {
-        this.themeService.setTheme(this.appConfigService.APP_CONFIG.APP_THEMES.defaultThemeName);
-      }
+      this.applySkinThemeChanges();
       // Use local storage so that the active skin persists across app launches
       this.localStorageService.setString(
         this.appConfigService.APP_CONFIG.APP_FIELDS.APP_SKIN,
@@ -86,7 +82,19 @@ export class SkinService {
     return this.availableSkins[activeSkinName];
   }
 
-  private isCurrentThemeAvailableInTargetSkin(targetSkin: IAppSkin) {
+  private applySkinThemeChanges() {
+    const targetSkinDefaultTheme = this.appConfigService.APP_CONFIG.APP_THEMES.defaultThemeName;
+    if (targetSkinDefaultTheme) {
+      this.themeService.setTheme(targetSkinDefaultTheme);
+    }
+    // If target skin has no default theme and the current theme is not available in the target skin,
+    // then set theme to the first available skin of the target theme
+    else if (!this.isCurrentThemeAvailableInTargetSkin()) {
+      this.themeService.setTheme(this.appConfigService.APP_CONFIG.APP_THEMES.available[0]);
+    }
+  }
+
+  private isCurrentThemeAvailableInTargetSkin() {
     const currentTheme = this.themeService.getCurrentTheme();
     return this.appConfigService.APP_CONFIG.APP_THEMES.available.includes(currentTheme);
   }
