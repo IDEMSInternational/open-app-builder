@@ -3254,12 +3254,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       comments: 'condition used to apply override when the skin is changed to "modular"',
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
     },
-    example_skin_select: {
-      flow_type: "template",
-      flow_name: "example_skin_select",
-      flow_subtype: "debug",
-      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
-    },
     example_startup_trigger: {
       flow_type: "template",
       flow_subtype: "debug",
@@ -3689,6 +3683,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "example_sheet_defaults",
       flow_subtype: "example_sheet_defaults",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_sheet_defaults.xlsx",
+    },
+    footer: {
+      flow_type: "template",
+      flow_name: "footer",
+      _xlsxPath: "global_modular/core_templates/footer.xlsx",
     },
     home_practice: {
       flow_type: "template",
