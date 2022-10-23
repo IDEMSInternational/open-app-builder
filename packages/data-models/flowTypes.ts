@@ -284,7 +284,8 @@ export namespace FlowTypes {
     | "html"
     | "latex"
     | "animated_slides"
-    | "qr_code";
+    | "qr_code"
+    | "carousel";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
