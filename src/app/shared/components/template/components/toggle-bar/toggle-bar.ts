@@ -5,7 +5,6 @@ import {
   getStringParamFromTemplateRow,
   getBooleanParamFromTemplateRow,
 } from "src/app/shared/utils";
-import { IonToggle } from "@ionic/angular";
 
 @Component({
   selector: "plh-tmpl-toggle-bar",
@@ -47,10 +46,6 @@ export class TmplToggleBarComponent
   public async handleChange(isChecked: boolean) {
     await this.setValue(isChecked);
     this.triggerActions("changed");
-  }
-
-  onClick(event) {
-    event.stopPropagation();
   }
 
   getParams() {
