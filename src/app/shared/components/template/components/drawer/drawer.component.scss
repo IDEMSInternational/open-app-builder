@@ -1,0 +1,38 @@
+@use "/src/theme/mixins";
+
+$handle-height: var(--bottom-drawer-height);
+
+.drawer {
+  position: absolute;
+  width: 100%;
+  // transform: translateY(calc(100% - $handle-height));
+  // top: calc(100vh - 90px - $handle-height);
+  // bottom: $handle-height;
+  border-style: solid;
+  border-color: var(--ion-color-primary);
+  border-radius: var(--ion-border-radius-standard) var(--ion-border-radius-standard) 0 0;
+  background-color: var(--ion-background-color);
+
+  .handle {
+    height: $handle-height;
+    @include mixins.flex-centered;
+    flex-direction: column;
+    p {
+      text-align: center;
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-subtitle-small);
+      color: var(--ion-color-primary);
+      margin: 0px;
+    }
+  }
+  .handle-icon {
+    width: 50px;
+    height: 2px;
+    margin: var(--tiny-margin);
+    background-color: var(--ion-color-primary);
+  }
+
+  .content {
+    margin: var(--tiny-margin) var(--regular-margin);
+  }
+}
