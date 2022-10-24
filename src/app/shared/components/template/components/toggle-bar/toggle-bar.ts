@@ -16,6 +16,7 @@ import {
           [checked]="_row.value"
           #toggleEl
           (ionChange)="handleChange(toggleEl.checked)"
+          (click)="handleClick($event, toggleEl.checked)"
         >
         </ion-toggle>
       </div>
@@ -46,6 +47,14 @@ export class TmplToggleBarComponent
   public async handleChange(isChecked: boolean) {
     await this.setValue(isChecked);
     this.triggerActions("changed");
+  }
+  /**
+   * As its not possible to stop click events bubbling from the ionChange event,
+   * include an additional click event handler to trigger the toggle change without bubbling
+   */
+  public async handleClick(e: Event, isChecked: boolean) {
+    e.stopImmediatePropagation();
+    this._row.value = !isChecked;
   }
 
   getParams() {
