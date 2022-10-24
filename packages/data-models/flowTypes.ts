@@ -284,9 +284,10 @@ export namespace FlowTypes {
     | "html"
     | "latex"
     | "animated_slides"
+    | "qr_code"
+    | "navigation_bar"
     | "task_card"
-    | "task_progress_bar"
-    | "qr_code";
+    | "task_progress_bar";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
