@@ -49,6 +49,8 @@ import { TemplateHTMLComponent } from "./html/html.component";
 import { TmplAccordionComponent } from "./accordion/accordion.component";
 import { TmplLatexComponent } from "./latex/latex.component";
 import { TmplAnimatedSlidesComponent } from "./animated-slides/animated-slides.component";
+import { TmplTaskCardComponent } from "./task-card/task-card.component";
+import { TmplTaskProgressBarComponent } from "./task-progress-bar/task-progress-bar.component";
 import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
 import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.component";
 
@@ -97,6 +99,8 @@ export const TEMPLATE_COMPONENTS = [
   TmplAccordionComponent,
   TmplLatexComponent,
   TmplAnimatedSlidesComponent,
+  TmplTaskCardComponent,
+  TmplTaskProgressBarComponent,
   TmplQRCodeComponent,
   TmplNavigationBarComponent,
 ];
@@ -160,6 +164,8 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   html: TemplateHTMLComponent,
   latex: TmplLatexComponent,
   animated_slides: TmplAnimatedSlidesComponent,
+  task_card: TmplTaskCardComponent,
+  task_progress_bar: TmplTaskProgressBarComponent,
   qr_code: TmplQRCodeComponent,
   navigation_bar: TmplNavigationBarComponent,
 };
