@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { SwiperOptions } from "swiper";
-import { getNumberParamFromTemplateRow } from "src/app/shared/utils";
+import {
+  getBooleanParamFromTemplateRow,
+  getNumberParamFromTemplateRow,
+} from "src/app/shared/utils";
 
 @Component({
   selector: "plh-carousel",
@@ -17,7 +20,13 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
   }
 
   getParams() {
-    this.config.slidesPerView = getNumberParamFromTemplateRow(this._row, "slidesPerView", 2.5);
+    this.config.slidesPerView =
+      getNumberParamFromTemplateRow(this._row, "slidesPerView", null) || "auto";
     this.config.spaceBetween = getNumberParamFromTemplateRow(this._row, "spaceBetween", 10);
+    this.config.loop = getBooleanParamFromTemplateRow(this._row, "loop", false);
+    // "loopedSlides" is required in the Slider config iff "loop" is true
+    if (this.config.loop) {
+      this.config.loopedSlides = this._row.rows.length;
+    }
   }
 }
