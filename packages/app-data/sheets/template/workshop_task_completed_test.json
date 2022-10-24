@@ -1,0 +1,231 @@
+{
+  "flow_type": "template",
+  "flow_name": "workshop_task_completed_test",
+  "status": "released",
+  "rows": [
+    {
+      "name": "task_data",
+      "value": "@data.w_1on1_tasks.question",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "task_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.w_1on1_tasks.question",
+            "matchedExpression": "@data.w_1on1_tasks.question",
+            "type": "data",
+            "fieldName": "w_1on1_tasks"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.w_1on1_tasks.question": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "task_id",
+      "value": "id: @local.task_data.id",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "task_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "id: @local.task_data.id",
+            "matchedExpression": "@local.task_data.id",
+            "type": "local",
+            "fieldName": "task_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.task_data.id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "task_completed_field",
+      "value": "@local.task_data.completed_field",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "task_completed_field",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.task_data.completed_field",
+            "matchedExpression": "@local.task_data.completed_field",
+            "type": "local",
+            "fieldName": "task_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.task_data.completed_field": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "print_task_completed_field",
+      "value": "completed_field: @local.task_completed_field",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "print_task_completed_field",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "completed_field: @local.task_completed_field",
+            "matchedExpression": "@local.task_completed_field",
+            "type": "local",
+            "fieldName": "task_completed_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.task_completed_field": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "task_completed_field",
+      "value": "completed from field: @fields.@local.task_completed_field",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "task_completed_field",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "completed from field: @fields.@local.task_completed_field",
+            "matchedExpression": "@local.task_completed_field",
+            "type": "local",
+            "fieldName": "task_completed_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.task_completed_field": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "task_completed_data",
+      "value": "completed from data list: @local.task_data.completed",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "task_completed_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "completed from data list: @local.task_data.completed",
+            "matchedExpression": "@local.task_data.completed",
+            "type": "local",
+            "fieldName": "task_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.task_data.completed": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "toggle_bar",
+      "name": "toggle_bar",
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.task_data.completed_field",
+            "this.value"
+          ],
+          "_raw": "changed | set_field: @local.task_data.completed_field: @local.toggle_bar",
+          "_cleaned": "changed | set_field: @local.task_data.completed_field: @local.toggle_bar"
+        }
+      ],
+      "exclude_from_translation": true,
+      "_nested_name": "toggle_bar",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.task_data.completed_field",
+                  "matchedExpression": "@local.task_data.completed_field",
+                  "type": "local",
+                  "fieldName": "task_data"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: @local.task_data.completed_field: @local.toggle_bar",
+                "matchedExpression": "@local.task_data.completed_field",
+                "type": "local",
+                "fieldName": "task_data"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.task_data.completed_field: @local.toggle_bar",
+                "matchedExpression": "@local.toggle_bar",
+                "type": "local",
+                "fieldName": "toggle_bar"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: @local.task_data.completed_field: @local.toggle_bar",
+                "matchedExpression": "@local.task_data.completed_field",
+                "type": "local",
+                "fieldName": "task_data"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.task_data.completed_field: @local.toggle_bar",
+                "matchedExpression": "@local.toggle_bar",
+                "type": "local",
+                "fieldName": "toggle_bar"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.task_data.completed_field": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.toggle_bar": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks_testing_templates.xlsx"
+}
