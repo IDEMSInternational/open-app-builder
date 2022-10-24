@@ -20,6 +20,7 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
   innerHTML: SafeHtml;
   scaleFactor: number = 1;
   windowWidth: number;
+  icon: string;
   constructor(private elRef: ElementRef, private domSanitizer: DomSanitizer) {
     super();
   }
@@ -47,6 +48,7 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
     }
     this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", "left");
     this.buttonAlign = getStringParamFromTemplateRow(this._row, "button_align", "center");
+    this.icon = getStringParamFromTemplateRow(this._row, "icon", null);
   }
 
   private isTwoColumns(): boolean {

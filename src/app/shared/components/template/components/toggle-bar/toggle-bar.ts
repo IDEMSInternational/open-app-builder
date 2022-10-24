@@ -5,11 +5,12 @@ import {
   getStringParamFromTemplateRow,
   getBooleanParamFromTemplateRow,
 } from "src/app/shared/utils";
+import { IonToggle } from "@ionic/angular";
 
 @Component({
   selector: "plh-tmpl-toggle-bar",
   template: `
-    <div class="container" [class]="position">
+    <div class="container" [class]="position" [attr.data-param-style]="style">
       <div class="toggle_wrapper" [class.show-tick-cross]="showTickAndCross">
         <ion-toggle
           mode="md"
@@ -37,6 +38,7 @@ export class TmplToggleBarComponent
   public true_text: string;
   public position: string;
   public showTickAndCross: boolean;
+  style: string;
 
   ngOnInit() {
     this.getParams();
@@ -47,10 +49,15 @@ export class TmplToggleBarComponent
     this.triggerActions("changed");
   }
 
+  onClick(event) {
+    event.stopPropagation();
+  }
+
   getParams() {
     this.false_text = getStringParamFromTemplateRow(this._row, "false_text", "");
     this.true_text = getStringParamFromTemplateRow(this._row, "true_text", "");
     this.position = getStringParamFromTemplateRow(this._row, "position", "left");
     this.showTickAndCross = getBooleanParamFromTemplateRow(this._row, "show_tick_and_cross", true);
+    this.style = getStringParamFromTemplateRow(this._row, "style", "");
   }
 }
