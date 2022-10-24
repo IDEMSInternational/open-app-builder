@@ -3,5 +3,6 @@
 }
 
 .swiper-slide {
-  // Add any styling for the individual slides here
+  padding: var(--small-padding);
+  width: fit-content;
 }
