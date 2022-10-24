@@ -354,7 +354,7 @@
                   "_translations": {
                     "value": {}
                   },
-                  "condition": "@item.contact_description_1",
+                  "condition": "@item.contact_description_1 && @item.contact_number_1",
                   "style_list": [
                     "flex:1"
                   ],
@@ -378,10 +378,16 @@
                     ],
                     "condition": [
                       {
-                        "fullExpression": "@item.contact_description_1",
+                        "fullExpression": "@item.contact_description_1 && @item.contact_number_1",
                         "matchedExpression": "@item.contact_description_1",
                         "type": "item",
                         "fieldName": "contact_description_1"
+                      },
+                      {
+                        "fullExpression": "@item.contact_description_1 && @item.contact_number_1",
+                        "matchedExpression": "@item.contact_number_1",
+                        "type": "item",
+                        "fieldName": "contact_number_1"
                       }
                     ],
                     "_nested_name": [
@@ -412,6 +418,9 @@
                     ],
                     "@item.contact_description_1": [
                       "value",
+                      "condition"
+                    ],
+                    "@item.contact_number_1": [
                       "condition"
                     ],
                     "@item.id.dg_contact_1_": [
@@ -523,13 +532,27 @@
                   }
                 },
                 {
-                  "type": "text",
+                  "type": "tile_component",
                   "name": "contact_link_1_@item.id",
-                  "value": "@item.contact_link_1",
-                  "_translations": {
-                    "value": {}
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "go_to_url",
+                      "args": [
+                        "@item.contact_link_1"
+                      ],
+                      "_raw": "click | go_to_url: @item.contact_link_1",
+                      "_cleaned": "click | go_to_url: @item.contact_link_1"
+                    }
+                  ],
+                  "parameter_list": {
+                    "first_line_text": "@item.contact_description_1",
+                    "left_icon_src": "globe-outline",
+                    "style": "button_tile",
+                    "icon_src": "chevron-forward-outline"
                   },
                   "condition": "@item.contact_link_1",
+                  "exclude_from_translation": true,
                   "_nested_name": "items.condition_@item.id.dg_contact_1_@item.id.contact_link_1_@item.id",
                   "_dynamicFields": {
                     "name": [
@@ -540,14 +563,46 @@
                         "fieldName": "id"
                       }
                     ],
-                    "value": [
-                      {
-                        "fullExpression": "@item.contact_link_1",
-                        "matchedExpression": "@item.contact_link_1",
-                        "type": "item",
-                        "fieldName": "contact_link_1"
+                    "action_list": {
+                      "0": {
+                        "args": {
+                          "0": [
+                            {
+                              "fullExpression": "@item.contact_link_1",
+                              "matchedExpression": "@item.contact_link_1",
+                              "type": "item",
+                              "fieldName": "contact_link_1"
+                            }
+                          ]
+                        },
+                        "_raw": [
+                          {
+                            "fullExpression": "click | go_to_url: @item.contact_link_1",
+                            "matchedExpression": "@item.contact_link_1",
+                            "type": "item",
+                            "fieldName": "contact_link_1"
+                          }
+                        ],
+                        "_cleaned": [
+                          {
+                            "fullExpression": "click | go_to_url: @item.contact_link_1",
+                            "matchedExpression": "@item.contact_link_1",
+                            "type": "item",
+                            "fieldName": "contact_link_1"
+                          }
+                        ]
                       }
-                    ],
+                    },
+                    "parameter_list": {
+                      "first_line_text": [
+                        {
+                          "fullExpression": "@item.contact_description_1",
+                          "matchedExpression": "@item.contact_description_1",
+                          "type": "item",
+                          "fieldName": "contact_description_1"
+                        }
+                      ]
+                    },
                     "condition": [
                       {
                         "fullExpression": "@item.contact_link_1",
@@ -583,8 +638,13 @@
                       "_nested_name"
                     ],
                     "@item.contact_link_1": [
-                      "value",
+                      "action_list.0.args.0",
+                      "action_list.0._raw",
+                      "action_list.0._cleaned",
                       "condition"
+                    ],
+                    "@item.contact_description_1": [
+                      "parameter_list.first_line_text"
                     ],
                     "@item.id.dg_contact_1_": [
                       "_nested_name"
@@ -641,7 +701,7 @@
                   "_translations": {
                     "value": {}
                   },
-                  "condition": "@item.contact_description_2",
+                  "condition": "@item.contact_description_2 && @item.contact_number_2",
                   "style_list": [
                     "flex:1"
                   ],
@@ -665,10 +725,16 @@
                     ],
                     "condition": [
                       {
-                        "fullExpression": "@item.contact_description_2",
+                        "fullExpression": "@item.contact_description_2 && @item.contact_number_2",
                         "matchedExpression": "@item.contact_description_2",
                         "type": "item",
                         "fieldName": "contact_description_2"
+                      },
+                      {
+                        "fullExpression": "@item.contact_description_2 && @item.contact_number_2",
+                        "matchedExpression": "@item.contact_number_2",
+                        "type": "item",
+                        "fieldName": "contact_number_2"
                       }
                     ],
                     "_nested_name": [
@@ -699,6 +765,9 @@
                     ],
                     "@item.contact_description_2": [
                       "value",
+                      "condition"
+                    ],
+                    "@item.contact_number_2": [
                       "condition"
                     ],
                     "@item.id.dg_contact_2_": [
@@ -810,13 +879,27 @@
                   }
                 },
                 {
-                  "type": "text",
+                  "type": "tile_component",
                   "name": "contact_link_2_@item.id",
-                  "value": "@item.contact_link_2",
-                  "_translations": {
-                    "value": {}
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "go_to_url",
+                      "args": [
+                        "@item.contact_link_2"
+                      ],
+                      "_raw": "click | go_to_url: @item.contact_link_2",
+                      "_cleaned": "click | go_to_url: @item.contact_link_2"
+                    }
+                  ],
+                  "parameter_list": {
+                    "first_line_text": "@item.contact_description_2",
+                    "left_icon_src": "globe-outline",
+                    "style": "button_tile",
+                    "icon_src": "chevron-forward-outline"
                   },
                   "condition": "@item.contact_link_2",
+                  "exclude_from_translation": true,
                   "_nested_name": "items.condition_@item.id.dg_contact_2_@item.id.contact_link_2_@item.id",
                   "_dynamicFields": {
                     "name": [
@@ -827,14 +910,46 @@
                         "fieldName": "id"
                       }
                     ],
-                    "value": [
-                      {
-                        "fullExpression": "@item.contact_link_2",
-                        "matchedExpression": "@item.contact_link_2",
-                        "type": "item",
-                        "fieldName": "contact_link_2"
+                    "action_list": {
+                      "0": {
+                        "args": {
+                          "0": [
+                            {
+                              "fullExpression": "@item.contact_link_2",
+                              "matchedExpression": "@item.contact_link_2",
+                              "type": "item",
+                              "fieldName": "contact_link_2"
+                            }
+                          ]
+                        },
+                        "_raw": [
+                          {
+                            "fullExpression": "click | go_to_url: @item.contact_link_2",
+                            "matchedExpression": "@item.contact_link_2",
+                            "type": "item",
+                            "fieldName": "contact_link_2"
+                          }
+                        ],
+                        "_cleaned": [
+                          {
+                            "fullExpression": "click | go_to_url: @item.contact_link_2",
+                            "matchedExpression": "@item.contact_link_2",
+                            "type": "item",
+                            "fieldName": "contact_link_2"
+                          }
+                        ]
                       }
-                    ],
+                    },
+                    "parameter_list": {
+                      "first_line_text": [
+                        {
+                          "fullExpression": "@item.contact_description_2",
+                          "matchedExpression": "@item.contact_description_2",
+                          "type": "item",
+                          "fieldName": "contact_description_2"
+                        }
+                      ]
+                    },
                     "condition": [
                       {
                         "fullExpression": "@item.contact_link_2",
@@ -870,8 +985,13 @@
                       "_nested_name"
                     ],
                     "@item.contact_link_2": [
-                      "value",
+                      "action_list.0.args.0",
+                      "action_list.0._raw",
+                      "action_list.0._cleaned",
                       "condition"
+                    ],
+                    "@item.contact_description_2": [
+                      "parameter_list.first_line_text"
                     ],
                     "@item.id.dg_contact_2_": [
                       "_nested_name"
@@ -928,7 +1048,7 @@
                   "_translations": {
                     "value": {}
                   },
-                  "condition": "@item.contact_description_3",
+                  "condition": "@item.contact_description_3 && @item.contact_number_3",
                   "style_list": [
                     "flex:1"
                   ],
@@ -952,10 +1072,16 @@
                     ],
                     "condition": [
                       {
-                        "fullExpression": "@item.contact_description_3",
+                        "fullExpression": "@item.contact_description_3 && @item.contact_number_3",
                         "matchedExpression": "@item.contact_description_3",
                         "type": "item",
                         "fieldName": "contact_description_3"
+                      },
+                      {
+                        "fullExpression": "@item.contact_description_3 && @item.contact_number_3",
+                        "matchedExpression": "@item.contact_number_3",
+                        "type": "item",
+                        "fieldName": "contact_number_3"
                       }
                     ],
                     "_nested_name": [
@@ -986,6 +1112,9 @@
                     ],
                     "@item.contact_description_3": [
                       "value",
+                      "condition"
+                    ],
+                    "@item.contact_number_3": [
                       "condition"
                     ],
                     "@item.id.dg_contact_3_": [
@@ -1097,13 +1226,27 @@
                   }
                 },
                 {
-                  "type": "text",
+                  "type": "tile_component",
                   "name": "contact_link_3_@item.id",
-                  "value": "@item.contact_link_3",
-                  "_translations": {
-                    "value": {}
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "go_to_url",
+                      "args": [
+                        "@item.contact_link_3"
+                      ],
+                      "_raw": "click | go_to_url: @item.contact_link_3",
+                      "_cleaned": "click | go_to_url: @item.contact_link_3"
+                    }
+                  ],
+                  "parameter_list": {
+                    "first_line_text": "@item.contact_description_3",
+                    "left_icon_src": "globe-outline",
+                    "style": "button_tile",
+                    "icon_src": "chevron-forward-outline"
                   },
                   "condition": "@item.contact_link_3",
+                  "exclude_from_translation": true,
                   "_nested_name": "items.condition_@item.id.dg_contact_3_@item.id.contact_link_3_@item.id",
                   "_dynamicFields": {
                     "name": [
@@ -1114,14 +1257,46 @@
                         "fieldName": "id"
                       }
                     ],
-                    "value": [
-                      {
-                        "fullExpression": "@item.contact_link_3",
-                        "matchedExpression": "@item.contact_link_3",
-                        "type": "item",
-                        "fieldName": "contact_link_3"
+                    "action_list": {
+                      "0": {
+                        "args": {
+                          "0": [
+                            {
+                              "fullExpression": "@item.contact_link_3",
+                              "matchedExpression": "@item.contact_link_3",
+                              "type": "item",
+                              "fieldName": "contact_link_3"
+                            }
+                          ]
+                        },
+                        "_raw": [
+                          {
+                            "fullExpression": "click | go_to_url: @item.contact_link_3",
+                            "matchedExpression": "@item.contact_link_3",
+                            "type": "item",
+                            "fieldName": "contact_link_3"
+                          }
+                        ],
+                        "_cleaned": [
+                          {
+                            "fullExpression": "click | go_to_url: @item.contact_link_3",
+                            "matchedExpression": "@item.contact_link_3",
+                            "type": "item",
+                            "fieldName": "contact_link_3"
+                          }
+                        ]
                       }
-                    ],
+                    },
+                    "parameter_list": {
+                      "first_line_text": [
+                        {
+                          "fullExpression": "@item.contact_description_3",
+                          "matchedExpression": "@item.contact_description_3",
+                          "type": "item",
+                          "fieldName": "contact_description_3"
+                        }
+                      ]
+                    },
                     "condition": [
                       {
                         "fullExpression": "@item.contact_link_3",
@@ -1157,8 +1332,13 @@
                       "_nested_name"
                     ],
                     "@item.contact_link_3": [
-                      "value",
+                      "action_list.0.args.0",
+                      "action_list.0._raw",
+                      "action_list.0._cleaned",
                       "condition"
+                    ],
+                    "@item.contact_description_3": [
+                      "parameter_list.first_line_text"
                     ],
                     "@item.id.dg_contact_3_": [
                       "_nested_name"
