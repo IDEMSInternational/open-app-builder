@@ -11,7 +11,7 @@ import { IProgressStatus } from "src/app/shared/services/task/task.service";
 })
 export class TmplTaskCardComponent extends TemplateBaseComponent implements OnInit {
   style: string;
-  displayType: "landscape" | "portrait";
+  orientation: "landscape" | "portrait";
   highlighted: boolean = true;
   highlightedText = "Active";
   progressStatus: IProgressStatus = "notStarted";
@@ -41,13 +41,5 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
     this.style = getStringParamFromTemplateRow(this._row, "style", "landscape");
     this.completedIcon = getStringParamFromTemplateRow(this._row, "completed_icon", null);
     this.inProgressIcon = getStringParamFromTemplateRow(this._row, "in_progress_icon", null);
-    this.displayType = this.getTypeFromStyles(this.style);
-  }
-
-  private getTypeFromStyles(styles: string) {
-    if (styles) {
-      if (styles.includes("portrait")) return "portrait";
-    }
-    return "landscape";
   }
 }

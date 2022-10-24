@@ -1,4 +1,4 @@
-<div [class]="'card-wrapper ' + style" (click)="triggerActions('click')">
+<div [class]="'card-wrapper landscape ' + style" (click)="triggerActions('click')">
   <ng-container *ngIf="highlighted; else showProgress">
     <span class="badge highlighted-badge">
       {{ highlightedText }}
@@ -37,7 +37,7 @@
           </h1>
         </div>
         <div *ngIf="subtitle" class="subtitle-wrapper">
-          <p class="normal">
+          <p>
             {{ subtitle }}
           </p>
         </div>

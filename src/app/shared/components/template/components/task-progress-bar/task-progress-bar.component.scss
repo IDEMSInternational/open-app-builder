@@ -5,6 +5,7 @@
 
   .progress-text {
     padding-right: var(--tiny-padding);
+    white-space: nowrap;
   }
   .progress-bar-background {
     width: 100%;

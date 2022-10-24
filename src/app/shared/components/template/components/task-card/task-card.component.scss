@@ -11,6 +11,57 @@
   &.landscape {
     width: 90%;
   }
+  &.portrait {
+    width: 160px;
+    padding: var(--small-padding);
+    .content-wrapper {
+      flex-direction: column-reverse;
+      .text-wrapper {
+        width: 95%;
+        .subtitle-wrapper {
+          p {
+            line-height: inherit;
+            margin: var(--small-margin) 0px 0px 0px;
+            font-size: var(--font-size-text-tiny);
+          }
+        }
+      }
+      .image-wrapper {
+        width: 85%;
+      }
+    }
+  }
+  .content-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .text-wrapper {
+      width: 60%;
+      h1 {
+        margin: 0;
+        line-height: var(--line-height-text-largest);
+        font-weight: var(--font-weight-bold);
+        @media (max-width: 375px) {
+          font-size: var(--font-size-title-tiny);
+        }
+        @media (max-width: 320px) {
+          font-size: var(--font-size-title-small-device);
+        }
+      }
+      color: var(--ion-color-primary);
+      .subtitle-wrapper {
+        padding: 0;
+      }
+    }
+
+    .image-wrapper {
+      width: 45%;
+      padding-left: var(--small-padding);
+    }
+  }
+
   .badge {
     position: absolute;
     top: -10px;
@@ -48,41 +99,6 @@
         top: 2px;
         padding: 8px;
       }
-    }
-  }
-  .content-wrapper {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-
-    .text-wrapper {
-      width: 60%;
-      h1 {
-        margin: 0;
-        line-height: var(--line-height-text-largest);
-        font-weight: var(--font-weight-bold);
-        @media (max-width: 375px) {
-          font-size: var(--font-size-title-tiny);
-        }
-        @media (max-width: 320px) {
-          font-size: var(--font-size-title-small-device);
-        }
-      }
-      color: var(--ion-color-primary);
-      .subtitle-wrapper {
-        padding: 0;
-      }
-      h2 {
-        line-height: var(--line-height-text);
-        margin: 0;
-        font-size: var(--font-size-subtitle-small);
-      }
-    }
-
-    .image-wrapper {
-      width: 45%;
-      padding-left: var(--small-padding);
     }
   }
 }
