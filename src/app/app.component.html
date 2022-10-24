@@ -31,4 +31,12 @@
       <ion-router-outlet id="main-content"></ion-router-outlet>
     </div>
   </div>
+  <ion-footer *ngIf="footerDefaults.templateName">
+    <ion-toolbar color="primary">
+      <plh-template-container
+        [templatename]="footerDefaults.templateName"
+        [ignoreQueryParamChanges]="true"
+      ></plh-template-container>
+    </ion-toolbar>
+  </ion-footer>
 </ion-app>

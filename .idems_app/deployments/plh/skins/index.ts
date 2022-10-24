@@ -7,5 +7,10 @@ export const weekly_workshop: IAppSkin = {
 }
 
 export const modular: IAppSkin = {
-  name: "modular"
+  name: "modular",
+  appConfig: {
+    APP_FOOTER_DEFAULTS: {
+      templateName: "footer"
+    }
+  }
 }
