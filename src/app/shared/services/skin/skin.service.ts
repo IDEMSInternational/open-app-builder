@@ -5,6 +5,7 @@ import { IAppSkin } from "data-models";
 import { arrayToHashmap } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
 import { TemplateService } from "../../components/template/services/template.service";
+import { ThemeService } from "src/app/feature/theme/services/theme.service";
 
 @Injectable({
   providedIn: "root",
@@ -17,7 +18,8 @@ export class SkinService {
   constructor(
     private localStorageService: LocalStorageService,
     private appConfigService: AppConfigService,
-    private templateService: TemplateService
+    private templateService: TemplateService,
+    private themeService: ThemeService
   ) {
     // eagerly initialise so that updated appConfig is available to other services
     this.init();
@@ -32,6 +34,11 @@ export class SkinService {
     this.setSkin(activeSkinName, true);
   }
 
+  /**
+   * Set the active skin
+   * @param skinName The name of the target skin
+   * @param {boolean} [isInit=false] Whether the function is being triggered by the service's initialisaion
+   * */
   public setSkin(skinName: string, isInit = false) {
     if (skinName in this.availableSkins) {
       const targetSkin = this.availableSkins[skinName];
@@ -44,6 +51,7 @@ export class SkinService {
       if (!isInit) {
         this.templateService.initialiseDefaultFieldAndGlobals();
       }
+      this.applySkinThemeChanges();
       // Use local storage so that the active skin persists across app launches
       this.localStorageService.setString(
         this.appConfigService.APP_CONFIG.APP_FIELDS.APP_SKIN,
@@ -65,5 +73,22 @@ export class SkinService {
   public getActiveSkin() {
     const activeSkinName = this.getActiveSkin();
     return this.availableSkins[activeSkinName];
+  }
+
+  private applySkinThemeChanges() {
+    const targetSkinDefaultTheme = this.appConfigService.APP_CONFIG.APP_THEMES.defaultThemeName;
+    if (targetSkinDefaultTheme) {
+      this.themeService.setTheme(targetSkinDefaultTheme);
+    }
+    // If target skin has no default theme and the current theme is not available in the target skin,
+    // then set theme to the first available theme of the target skin
+    else if (!this.isCurrentThemeAvailableInTargetSkin()) {
+      this.themeService.setTheme(this.appConfigService.APP_CONFIG.APP_THEMES.available[0]);
+    }
+  }
+
+  private isCurrentThemeAvailableInTargetSkin() {
+    const currentTheme = this.themeService.getCurrentTheme();
+    return this.appConfigService.APP_CONFIG.APP_THEMES.available.includes(currentTheme);
   }
 }
