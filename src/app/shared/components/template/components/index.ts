@@ -50,6 +50,7 @@ import { TmplAccordionComponent } from "./accordion/accordion.component";
 import { TmplLatexComponent } from "./latex/latex.component";
 import { TmplAnimatedSlidesComponent } from "./animated-slides/animated-slides.component";
 import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
+import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -97,6 +98,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplLatexComponent,
   TmplAnimatedSlidesComponent,
   TmplQRCodeComponent,
+  TmplNavigationBarComponent,
 ];
 
 /***************************************************************************************
@@ -159,4 +161,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   latex: TmplLatexComponent,
   animated_slides: TmplAnimatedSlidesComponent,
   qr_code: TmplQRCodeComponent,
+  navigation_bar: TmplNavigationBarComponent,
 };
