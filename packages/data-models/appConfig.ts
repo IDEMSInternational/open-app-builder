@@ -118,6 +118,10 @@ const APP_HEADER_DEFAULTS = {
     location.pathname == APP_ROUTE_DEFAULTS.home_route,
 };
 
+const APP_FOOTER_DEFAULTS: { templateName: string | null } = {
+  templateName: null,
+};
+
 const APP_SIDEMENU_DEFAULTS = {
   enabled: true,
   title: "App",
@@ -175,6 +179,7 @@ const APP_CONFIG = {
   APP_LANGUAGES,
   APP_ROUTE_DEFAULTS,
   APP_SIDEMENU_DEFAULTS,
+  APP_FOOTER_DEFAULTS,
   APP_STRINGS,
   APP_SKINS,
   APP_THEMES,

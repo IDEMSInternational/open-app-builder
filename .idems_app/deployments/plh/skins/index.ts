@@ -16,6 +16,9 @@ export const modular: IAppSkin = {
   appConfig: {
     APP_THEMES: {
       defaultThemeName: "professional"
+    },
+    APP_FOOTER_DEFAULTS: {
+      templateName: "footer"
     }
   }
 }
