@@ -42,7 +42,7 @@
       "id": "app_start_accept_terms",
       "priority": 2,
       "condition_list": [
-        "!@fields.terms_v20200916_accepted"
+        "!@fields.terms_v20221018_accepted"
       ],
       "action_list": [
         {
