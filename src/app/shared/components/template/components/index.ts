@@ -54,6 +54,7 @@ import { TmplTaskProgressBarComponent } from "./task-progress-bar/task-progress-
 import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
 import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.component";
 import { TmplCarouselComponent } from "./carousel/carousel.component";
+import { TmplDrawerComponent } from "./drawer/drawer.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -105,6 +106,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplQRCodeComponent,
   TmplNavigationBarComponent,
   TmplCarouselComponent,
+  TmplDrawerComponent,
 ];
 
 /***************************************************************************************
@@ -171,4 +173,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   qr_code: TmplQRCodeComponent,
   navigation_bar: TmplNavigationBarComponent,
   carousel: TmplCarouselComponent,
+  drawer: TmplDrawerComponent,
 };
