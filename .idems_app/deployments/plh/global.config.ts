@@ -36,5 +36,6 @@ config.app_config.NOTIFICATION_DEFAULTS.title = "New message from PLH";
 config.app_config.NOTIFICATION_DEFAULTS.text = "You have a new message from ParentApp";
 config.app_config.APP_SKINS.defaultSkinName = SKINS.weekly_workshop.name
 config.app_config.APP_SKINS.available = [SKINS.modular, SKINS.weekly_workshop]
+config.app_config.APP_THEMES.available = ["default", "professional"]
 
 export default config;
