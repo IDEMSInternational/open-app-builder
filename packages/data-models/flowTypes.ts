@@ -284,7 +284,10 @@ export namespace FlowTypes {
     | "html"
     | "latex"
     | "animated_slides"
-    | "qr_code";
+    | "qr_code"
+    | "navigation_bar"
+    | "task_card"
+    | "task_progress_bar";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
@@ -367,7 +370,8 @@ export namespace FlowTypes {
       | "trigger_actions"
       | "track_event"
       | "process_template"
-      | "google_auth";
+      | "google_auth"
+      | "set_highlighted_task";
     args: any[]; // should be string | boolean, but breaks type-checking for templates;
     params?: any; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params
