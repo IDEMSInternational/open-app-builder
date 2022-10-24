@@ -3678,6 +3678,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "example_sheet_defaults",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_sheet_defaults.xlsx",
     },
+    footer: {
+      flow_type: "template",
+      flow_name: "footer",
+      _xlsxPath: "global_modular/core_templates/footer.xlsx",
+    },
     home_practice: {
       flow_type: "template",
       flow_name: "home_practice",
