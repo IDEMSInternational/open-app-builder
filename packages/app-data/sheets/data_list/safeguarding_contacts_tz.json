@@ -250,7 +250,8 @@
         },
         "description": {
           "tz_sw": true
-        }
+        },
+        "contact_description_1": {}
       },
       "_translatedFields": {
         "title": {
@@ -258,9 +259,13 @@
         },
         "description": {
           "eng": "This booklet answers some common questions about mental health and provides information that could be helpful for you or your loved one."
+        },
+        "contact_description_1": {
+          "eng": "Booklet"
         }
       },
-      "description": "This booklet answers some common questions about mental health and provides information that could be helpful for you or your loved one."
+      "description": "This booklet answers some common questions about mental health and provides information that could be helpful for you or your loved one.",
+      "contact_description_1": "Booklet"
     }
   ],
   "_xlsxPath": "tz/data/safeguarding_data_tz.xlsx"

@@ -1,0 +1,59 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_carousel_content",
+  "status": "released",
+  "flow_subtype": "component_demo",
+  "rows": [
+    {
+      "type": "display_group",
+      "rows": [
+        {
+          "type": "title",
+          "value": "Title 1",
+          "_translations": {
+            "value": {}
+          },
+          "name": "title",
+          "_nested_name": "display_group.title"
+        },
+        {
+          "type": "text",
+          "value": "Paragraph 1",
+          "_translations": {
+            "value": {}
+          },
+          "name": "text",
+          "_nested_name": "display_group.text"
+        }
+      ],
+      "name": "display_group",
+      "_nested_name": "display_group"
+    },
+    {
+      "type": "display_group",
+      "rows": [
+        {
+          "type": "title",
+          "value": "Title 2",
+          "_translations": {
+            "value": {}
+          },
+          "name": "title",
+          "_nested_name": "display_group.title"
+        },
+        {
+          "type": "text",
+          "value": "Paragraph 2",
+          "_translations": {
+            "value": {}
+          },
+          "name": "text",
+          "_nested_name": "display_group.text"
+        }
+      ],
+      "name": "display_group",
+      "_nested_name": "display_group"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/component_sheets/component_carousel.xlsx"
+}
