@@ -1842,6 +1842,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_button.xlsx",
     },
+    comp_carousel: {
+      flow_type: "template",
+      flow_name: "comp_carousel",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_carousel.xlsx",
+    },
     comp_checkbox: {
       flow_type: "template",
       flow_name: "comp_checkbox",
@@ -1865,6 +1871,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "comp_dashed_box",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_dashed_box.xlsx",
+    },
+    comp_drawer: {
+      flow_type: "template",
+      flow_name: "comp_drawer",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_drawer.xlsx",
     },
     comp_form: {
       flow_type: "template",
@@ -1997,6 +2009,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "comp_video",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_video.xlsx",
+    },
+    example_carousel_content: {
+      flow_type: "template",
+      flow_name: "example_carousel_content",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_carousel.xlsx",
     },
     feat_animated_slides: {
       flow_type: "template",
