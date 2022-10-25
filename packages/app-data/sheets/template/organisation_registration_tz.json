@@ -48,6 +48,15 @@
       "_nested_name": "organisation_1"
     },
     {
+      "name": "organisation_2",
+      "value": "NIMR",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "organisation_2"
+    },
+    {
       "type": "template",
       "name": "organisation_registration",
       "value": "organisation_registration",
@@ -89,11 +98,36 @@
           }
         },
         {
+          "name": "organisation_2",
+          "value": "@local.organisation_2",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "organisation_registration.organisation_2",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.organisation_2",
+                "matchedExpression": "@local.organisation_2",
+                "type": "local",
+                "fieldName": "organisation_2"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.organisation_2": [
+              "value"
+            ]
+          }
+        },
+        {
           "name": "answer_list",
           "value": [
             "name:myself | text:@local.myself",
             "name:friend | text: @local.friend",
-            "name:organisation_1 | text: @local.organisation_1"
+            "name:organisation_1 | text: @local.organisation_1",
+            "name:organisation_2 | text: @local.organisation_2"
           ],
           "type": "set_variable",
           "_nested_name": "organisation_registration.answer_list",
@@ -122,6 +156,14 @@
                   "type": "local",
                   "fieldName": "organisation_1"
                 }
+              ],
+              "3": [
+                {
+                  "fullExpression": "name:organisation_2 | text: @local.organisation_2",
+                  "matchedExpression": "@local.organisation_2",
+                  "type": "local",
+                  "fieldName": "organisation_2"
+                }
               ]
             }
           },
@@ -134,6 +176,9 @@
             ],
             "@local.organisation_1": [
               "value.2"
+            ],
+            "@local.organisation_2": [
+              "value.3"
             ]
           }
         }

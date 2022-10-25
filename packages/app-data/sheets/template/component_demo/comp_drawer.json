@@ -1,0 +1,26 @@
+{
+  "flow_type": "template",
+  "flow_name": "comp_drawer",
+  "status": "released",
+  "flow_subtype": "component_demo",
+  "rows": [
+    {
+      "type": "drawer",
+      "value": "Things to do",
+      "rows": [
+        {
+          "type": "button",
+          "value": "test",
+          "_translations": {
+            "value": {}
+          },
+          "name": "button",
+          "_nested_name": "drawer.button"
+        }
+      ],
+      "name": "drawer",
+      "_nested_name": "drawer"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/component_sheets/component_drawer.xlsx"
+}
