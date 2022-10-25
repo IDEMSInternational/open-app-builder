@@ -99,10 +99,10 @@
     },
     {
       "type": "template",
-      "name": "example_skin_select",
-      "value": "example_skin_select",
+      "name": "skin_select",
+      "value": "skin_select",
       "rows": [],
-      "_nested_name": "example_skin_select"
+      "_nested_name": "skin_select"
     }
   ],
   "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",

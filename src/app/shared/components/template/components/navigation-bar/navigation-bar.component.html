@@ -1,0 +1,14 @@
+<div class="navigation-bar-wrapper">
+  <a
+    *ngFor="let button of buttonList"
+    class="button-wrapper"
+    routerLinkActive="active-link"
+    [routerLink]="'template/' + button.target_template"
+    [attr.data-name]="button.name"
+  >
+    <div class="image-wrapper">
+      <img [src]="button.image | plhAsset" />
+    </div>
+    <p>{{ button.text }}</p>
+  </a>
+</div>

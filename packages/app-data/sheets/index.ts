@@ -1842,6 +1842,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_button.xlsx",
     },
+    comp_carousel: {
+      flow_type: "template",
+      flow_name: "comp_carousel",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_carousel.xlsx",
+    },
     comp_checkbox: {
       flow_type: "template",
       flow_name: "comp_checkbox",
@@ -1865,6 +1871,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "comp_dashed_box",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_dashed_box.xlsx",
+    },
+    comp_drawer: {
+      flow_type: "template",
+      flow_name: "comp_drawer",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_drawer.xlsx",
     },
     comp_form: {
       flow_type: "template",
@@ -1956,12 +1968,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_task_card.xlsx",
     },
-    comp_task_card_params: {
-      flow_type: "template",
-      flow_name: "comp_task_card_params",
-      flow_subtype: "component_demo",
-      _xlsxPath: "quality_assurance/component_sheets/component_task_card.xlsx",
-    },
     comp_text: {
       flow_type: "template",
       flow_name: "comp_text",
@@ -2003,6 +2009,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "comp_video",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_video.xlsx",
+    },
+    example_carousel_content: {
+      flow_type: "template",
+      flow_name: "example_carousel_content",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_carousel.xlsx",
     },
     feat_animated_slides: {
       flow_type: "template",
@@ -3254,12 +3266,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       comments: 'condition used to apply override when the skin is changed to "modular"',
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
     },
-    example_skin_select: {
-      flow_type: "template",
-      flow_name: "example_skin_select",
-      flow_subtype: "debug",
-      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
-    },
     example_startup_trigger: {
       flow_type: "template",
       flow_subtype: "debug",
@@ -3450,6 +3456,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx",
     },
+    feature_highlighted_task: {
+      flow_type: "template",
+      flow_name: "feature_highlighted_task",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_tasks.xlsx",
+    },
     feature_home: {
       flow_type: "template",
       flow_name: "feature_home",
@@ -3503,12 +3515,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "feature_radio_group_2",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx",
-    },
-    feature_skin_select: {
-      flow_type: "template",
-      flow_name: "feature_skin_select",
-      flow_subtype: "debug",
-      _xlsxPath: "quality_assurance/example_sheets/example_skins.xlsx",
     },
     feature_slider: {
       flow_type: "template",
@@ -3689,6 +3695,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "example_sheet_defaults",
       flow_subtype: "example_sheet_defaults",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_sheet_defaults.xlsx",
+    },
+    footer: {
+      flow_type: "template",
+      flow_name: "footer",
+      _xlsxPath: "global_modular/core_templates/footer.xlsx",
     },
     home_practice: {
       flow_type: "template",
@@ -6971,9 +6982,24 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "workshop_stepper_actions",
       _xlsxPath: "global/core_templates/core_templates_workshops.xlsx",
     },
+    workshop_task_completed_test: {
+      flow_type: "template",
+      flow_name: "workshop_task_completed_test",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_testing_templates.xlsx",
+    },
     workshop_task_groups_test: {
       flow_type: "template",
       flow_name: "workshop_task_groups_test",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_testing_templates.xlsx",
+    },
+    workshop_tasks_completed_test: {
+      flow_type: "template",
+      flow_name: "workshop_tasks_completed_test",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_testing_templates.xlsx",
+    },
+    workshop_tasks_test: {
+      flow_type: "template",
+      flow_name: "workshop_tasks_test",
       _xlsxPath: "global/data/workshop_data/workshop_tasks_testing_templates.xlsx",
     },
     workshop_unlock: {

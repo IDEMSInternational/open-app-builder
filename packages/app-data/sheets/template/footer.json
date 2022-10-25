@@ -1,8 +1,7 @@
 {
   "flow_type": "template",
-  "flow_name": "navigation_bar",
+  "flow_name": "footer",
   "status": "released",
-  "flow_subtype": "debug",
   "rows": [
     {
       "name": "button_list",
@@ -79,5 +78,5 @@
       }
     }
   ],
-  "_xlsxPath": "quality_assurance/example_sheets/example_footer.xlsx"
+  "_xlsxPath": "global_modular/core_templates/footer.xlsx"
 }
