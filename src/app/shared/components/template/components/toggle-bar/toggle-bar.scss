@@ -47,7 +47,7 @@ ion-toggle {
 .container[data-param-style~="in_button"] {
   flex-direction: row-reverse;
   ion-toggle {
-    padding: 0px;
+    transform: translate($togglePadding, $togglePadding);
   }
 }
 
