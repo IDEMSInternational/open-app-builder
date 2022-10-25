@@ -1,14 +1,12 @@
 import {
   Component,
   ElementRef,
-  OnInit,
   Output,
   ViewChild,
   EventEmitter,
   AfterViewInit,
 } from "@angular/core";
-import { GestureController, Platform } from "@ionic/angular";
-import { getStringParamFromTemplateRow } from "src/app/shared/utils";
+import { GestureController } from "@ionic/angular";
 import { TemplateBaseComponent } from "../base";
 
 @Component({
@@ -23,15 +21,18 @@ export class TmplDrawerComponent extends TemplateBaseComponent implements AfterV
   isOpen = false;
   openHeight = 0;
 
-  constructor(private platform: Platform, private gestureCtrl: GestureController) {
+  constructor(private gestureCtrl: GestureController) {
     super();
   }
 
   async ngAfterViewInit() {
-    const drawer = this.drawer.nativeElement;
-    const handle = drawer.children[0];
-    this.openHeight = drawer.offsetHeight - handle.offsetHeight;
-    // await this.enableGestures()
+    // hack to only get element heights after they've rendered
+    setTimeout(async () => {
+      const drawer = this.drawer.nativeElement;
+      const handle = drawer.children[0];
+      this.openHeight = drawer.offsetHeight - handle.offsetHeight;
+      console.log(this.openHeight);
+    }, 100);
   }
 
   toggleDrawer() {
@@ -39,11 +40,11 @@ export class TmplDrawerComponent extends TemplateBaseComponent implements AfterV
     this.openStateChanged.emit(!this.isOpen);
 
     if (this.isOpen) {
-      drawer.style.transition = ".3s ease-out";
+      drawer.style.transition = "transform .3s ease-out";
       drawer.style.transform = "";
       this.isOpen = false;
     } else {
-      drawer.style.transition = ".3s ease-out";
+      drawer.style.transition = "transform .3s ease-out";
       drawer.style.transform = `translateY(${-this.openHeight}px)`;
       this.openStateChanged.emit(true);
       this.isOpen = true;
@@ -51,34 +52,34 @@ export class TmplDrawerComponent extends TemplateBaseComponent implements AfterV
   }
 
   // WIP: open and close drawer with a swipe
-  async enableGestures() {
-    const drawer = this.drawer.nativeElement;
+  // async enableGestures() {
+  //   const drawer = this.drawer.nativeElement;
 
-    const gesture = await this.gestureCtrl.create({
-      el: drawer,
-      gestureName: "swipe",
-      direction: "y",
-      onMove: (event) => {
-        console.log("deltaY:", event.deltaY);
-        if (event.deltaY < -this.openHeight) {
-          return;
-        } else drawer.style.transform = `translateY(${event.deltaY}px)`;
-      },
-      onEnd: (event) => {
-        console.log("end", event);
-        if (event.deltaY < -50 && !this.isOpen) {
-          drawer.style.transition = ".4s ease-out";
-          drawer.style.transform = `translateY(${-this.openHeight}px)`;
-          this.openStateChanged.emit(true);
-          this.isOpen = true;
-        } else if (event.deltaY > 50 && this.isOpen) {
-          drawer.style.transition = ".4s ease-out";
-          drawer.style.transform = "";
-          this.openStateChanged.emit(false);
-          this.isOpen = false;
-        }
-      },
-    });
-    gesture.enable(true);
-  }
+  //   const gesture = await this.gestureCtrl.create({
+  //     el: drawer,
+  //     gestureName: "swipe",
+  //     direction: "y",
+  //     onMove: (event) => {
+  //       console.log("deltaY:", event.deltaY);
+  //       if (event.deltaY < -this.openHeight) {
+  //         return;
+  //       } else drawer.style.transform = `translateY(${event.deltaY}px)`;
+  //     },
+  //     onEnd: (event) => {
+  //       console.log("end", event);
+  //       if (event.deltaY < -50 && !this.isOpen) {
+  //         drawer.style.transition = "transform .4s ease-out";
+  //         drawer.style.transform = `translateY(${-this.openHeight}px)`;
+  //         this.openStateChanged.emit(true);
+  //         this.isOpen = true;
+  //       } else if (event.deltaY > 50 && this.isOpen) {
+  //         drawer.style.transition = ".4s ease-out";
+  //         drawer.style.transform = "";
+  //         this.openStateChanged.emit(false);
+  //         this.isOpen = false;
+  //       }
+  //     },
+  //   });
+  //   gesture.enable(true);
+  // }
 }

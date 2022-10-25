@@ -32,11 +32,6 @@
     </div>
   </div>
   <ion-footer *ngIf="footerDefaults.templateName">
-    <plh-template-container
-      [templatename]="'comp_drawer'"
-      [ignoreQueryParamChanges]="true"
-    ></plh-template-container>
-    <ion-toolbar class="bottom-drawer-cover"> </ion-toolbar>
     <ion-toolbar color="primary">
       <plh-template-container
         [templatename]="footerDefaults.templateName"
