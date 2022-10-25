@@ -6,7 +6,6 @@ import {
   EventEmitter,
   AfterViewInit,
 } from "@angular/core";
-import { GestureController } from "@ionic/angular";
 import { TemplateBaseComponent } from "../base";
 
 @Component({
@@ -20,10 +19,6 @@ export class TmplDrawerComponent extends TemplateBaseComponent implements AfterV
 
   isOpen = false;
   openHeight = 0;
-
-  constructor(private gestureCtrl: GestureController) {
-    super();
-  }
 
   async ngAfterViewInit() {
     // hack to only get element heights after they've rendered
@@ -52,6 +47,7 @@ export class TmplDrawerComponent extends TemplateBaseComponent implements AfterV
   }
 
   // WIP: open and close drawer with a swipe
+  // Requires `gestureCtrl: GestureController` in constructor
   // async enableGestures() {
   //   const drawer = this.drawer.nativeElement;
 
