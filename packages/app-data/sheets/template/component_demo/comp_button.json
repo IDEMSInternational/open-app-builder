@@ -26,6 +26,62 @@
     },
     {
       "type": "title",
+      "name": "title_0",
+      "value": "Button card",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title_0"
+    },
+    {
+      "type": "button",
+      "value": "Why self care",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "card",
+        "icon": "plh_images/workshops/w_self_care/tools.svg"
+      },
+      "name": "button",
+      "_nested_name": "button"
+    },
+    {
+      "type": "button",
+      "value": "Relax",
+      "parameter_list": {
+        "style": "card",
+        "icon": "plh_images/icons/parent_child.svg"
+      },
+      "rows": [
+        {
+          "type": "toggle_bar",
+          "name": "toggle_bar",
+          "parameter_list": {
+            "position": "right",
+            "style": "in_button"
+          },
+          "_nested_name": "button.toggle_bar"
+        }
+      ],
+      "name": "button",
+      "_nested_name": "button"
+    },
+    {
+      "type": "button",
+      "value": "Something fun",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "card",
+        "icon": "plh_images/icons/book.svg"
+      },
+      "name": "button",
+      "_nested_name": "button"
+    },
+    {
+      "type": "title",
       "name": "title_1",
       "value": "Disabled parameter",
       "_translations": {

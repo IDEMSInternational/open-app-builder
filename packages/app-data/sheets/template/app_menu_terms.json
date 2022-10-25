@@ -4,44 +4,13 @@
   "status": "released",
   "rows": [
     {
-      "name": "link_1_text",
-      "value": "Google Play Services",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "link_1_text"
-    },
-    {
-      "name": "link_2_text",
-      "value": "Google Analytics for Firebase",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "link_2_text"
-    },
-    {
-      "name": "link_3_text",
-      "value": "Sentry",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "link_3_text"
-    },
-    {
       "type": "title",
-      "name": "title_1",
+      "name": "title_0",
       "value": "@global.terms_and_conditions",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_1",
+      "_nested_name": "title_0",
       "_dynamicFields": {
         "value": [
           {
@@ -59,62 +28,453 @@
       }
     },
     {
-      "type": "text",
-      "name": "text_1",
-      "value": "By downloading or using the app, these terms will automatically apply to you – you should make sure therefore that you read them carefully before using the app. You’re not allowed to copy, or modify the app, any part of the app, or our trademarks in any way. You’re not allowed to attempt to extract the source code of the app, and you also shouldn’t try to translate the app into other languages, or make derivative versions. The app itself, and all the trade marks, copyright, database rights and other intellectual property rights related to it, still belong to IDEMS International.",
+      "type": "subtitle",
+      "name": "title_1",
+      "value": "1. User Agreement",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_1"
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_1"
+    },
+    {
+      "type": "text",
+      "name": "text_1_1",
+      "value": "These @global.terms_and_conditions are an agreement between you and international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) which furthermore sets out the rules for your use of @global.parent_app.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_1_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "These @global.terms_and_conditions are an agreement between you and international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) which furthermore sets out the rules for your use of @global.parent_app.",
+            "matchedExpression": "@global.terms_and_conditions",
+            "type": "global",
+            "fieldName": "terms_and_conditions"
+          },
+          {
+            "fullExpression": "These @global.terms_and_conditions are an agreement between you and international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) which furthermore sets out the rules for your use of @global.parent_app.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          },
+          {
+            "fullExpression": "These @global.terms_and_conditions are an agreement between you and international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) which furthermore sets out the rules for your use of @global.parent_app.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.terms_and_conditions": [
+          "value"
+        ],
+        "@global.parent_app": [
+          "value",
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_1_2",
+      "value": "@global.parent_app is a free app version of the Parenting for Lifelong Health for Parents and Teens programme designed for parents and caregivers of adolescents aged 10 to 17 years.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_1_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.parent_app is a free app version of the Parenting for Lifelong Health for Parents and Teens programme designed for parents and caregivers of adolescents aged 10 to 17 years.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_1_3",
+      "value": "@global.parent_app is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.parent_app team’).",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_1_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.parent_app is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.parent_app team’).",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          },
+          {
+            "fullExpression": "@global.parent_app is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.parent_app team’).",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value",
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_1_4",
+      "value": "Please read these @global.terms_and_conditions carefully. By downloading or using the app, you agree that you have read, understood, and accepted the @global.terms_and_conditions contained below.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_1_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Please read these @global.terms_and_conditions carefully. By downloading or using the app, you agree that you have read, understood, and accepted the @global.terms_and_conditions contained below.",
+            "matchedExpression": "@global.terms_and_conditions",
+            "type": "global",
+            "fieldName": "terms_and_conditions"
+          },
+          {
+            "fullExpression": "Please read these @global.terms_and_conditions carefully. By downloading or using the app, you agree that you have read, understood, and accepted the @global.terms_and_conditions contained below.",
+            "matchedExpression": "@global.terms_and_conditions",
+            "type": "global",
+            "fieldName": "terms_and_conditions"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.terms_and_conditions": [
+          "value",
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_1_5",
+      "value": "Your privacy is important to us – please also read our @global.privacy_policy, which will detail how we collect, store and use the information that you provide to us. By using @global.parent_app you are confirming to us that you are further agreeing to our @global.privacy_policy, as set out separately.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_1_5",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Your privacy is important to us – please also read our @global.privacy_policy, which will detail how we collect, store and use the information that you provide to us. By using @global.parent_app you are confirming to us that you are further agreeing to our @global.privacy_policy, as set out separately.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          },
+          {
+            "fullExpression": "Your privacy is important to us – please also read our @global.privacy_policy, which will detail how we collect, store and use the information that you provide to us. By using @global.parent_app you are confirming to us that you are further agreeing to our @global.privacy_policy, as set out separately.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          },
+          {
+            "fullExpression": "Your privacy is important to us – please also read our @global.privacy_policy, which will detail how we collect, store and use the information that you provide to us. By using @global.parent_app you are confirming to us that you are further agreeing to our @global.privacy_policy, as set out separately.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value",
+          "value"
+        ],
+        "@global.parent_app": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "title_2",
+      "value": "2. Rules of Usage",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_2"
     },
     {
       "type": "text",
       "name": "text_2",
-      "value": "IDEMS International is committed to ensuring that the app is as useful and efficient as possible. For that reason, we reserve the right to make changes to the app or to charge for its services, at any time and for any reason. We will never charge you for the app or its services without making it very clear to you exactly what you’re paying for.",
+      "value": "@global.parent_app is open source and therefore its source code is available on GitHub for the usage and adaption by the wider software community. Nevertheless, you are not allowed to modify the existing app as is or its contents or copy any @global.parent_app team trademarks. Whilst open source, you should not translate the app into other languages or make derivative versions without acknowledging the @global.parent_app team in your efforts. Attempts to obtain sensitive account information or other personal data is not permitted. You should also not falsely represent yourself in the use of the app, make wrongful claims of affiliations to the app or make misleading reports of app misconduct. Use of the app must not also be in breach of any applicable laws or regulations. Finally in accessing and using the app, we believe you not to be a minor in your country of residence.",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_2"
+      "_nested_name": "text_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.parent_app is open source and therefore its source code is available on GitHub for the usage and adaption by the wider software community. Nevertheless, you are not allowed to modify the existing app as is or its contents or copy any @global.parent_app team trademarks. Whilst open source, you should not translate the app into other languages or make derivative versions without acknowledging the @global.parent_app team in your efforts. Attempts to obtain sensitive account information or other personal data is not permitted. You should also not falsely represent yourself in the use of the app, make wrongful claims of affiliations to the app or make misleading reports of app misconduct. Use of the app must not also be in breach of any applicable laws or regulations. Finally in accessing and using the app, we believe you not to be a minor in your country of residence.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          },
+          {
+            "fullExpression": "@global.parent_app is open source and therefore its source code is available on GitHub for the usage and adaption by the wider software community. Nevertheless, you are not allowed to modify the existing app as is or its contents or copy any @global.parent_app team trademarks. Whilst open source, you should not translate the app into other languages or make derivative versions without acknowledging the @global.parent_app team in your efforts. Attempts to obtain sensitive account information or other personal data is not permitted. You should also not falsely represent yourself in the use of the app, make wrongful claims of affiliations to the app or make misleading reports of app misconduct. Use of the app must not also be in breach of any applicable laws or regulations. Finally in accessing and using the app, we believe you not to be a minor in your country of residence.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          },
+          {
+            "fullExpression": "@global.parent_app is open source and therefore its source code is available on GitHub for the usage and adaption by the wider software community. Nevertheless, you are not allowed to modify the existing app as is or its contents or copy any @global.parent_app team trademarks. Whilst open source, you should not translate the app into other languages or make derivative versions without acknowledging the @global.parent_app team in your efforts. Attempts to obtain sensitive account information or other personal data is not permitted. You should also not falsely represent yourself in the use of the app, make wrongful claims of affiliations to the app or make misleading reports of app misconduct. Use of the app must not also be in breach of any applicable laws or regulations. Finally in accessing and using the app, we believe you not to be a minor in your country of residence.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value",
+          "value",
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "title_3",
+      "value": "3. Content Changes",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_3"
     },
     {
       "type": "text",
-      "name": "text_3",
-      "value": "The international.idems.plh_teens app stores and processes personal data that you have provided to us, in order to provide our Service. It’s your responsibility to keep your phone and access to the app secure. We therefore recommend that you do not jailbreak or root your phone, which is the process of removing software restrictions and limitations imposed by the official operating system of your device. It could make your phone vulnerable to malware/viruses/malicious programs, compromise your phone’s security features and it could mean that the international.idems.plh_teens app won’t work properly or at all.",
+      "name": "text_3_1",
+      "value": "The @global.parent_app team is committed to ensuring that the app is as useful and user friendly as possible. For that reason, we reserve the right to make changes to the app which will be delivered through updates. At present the app is free of charge and our intention is for it to stay that way.",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_3"
+      "_nested_name": "text_3_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "The @global.parent_app team is committed to ensuring that the app is as useful and user friendly as possible. For that reason, we reserve the right to make changes to the app which will be delivered through updates. At present the app is free of charge and our intention is for it to stay that way.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_3_2",
+      "value": "In the future it is possible that some services may be offered that would incur a cost. We will never charge you for the app or its services without clearly making known to you first any access charges applicable.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_3_2"
+    },
+    {
+      "type": "subtitle",
+      "name": "title_4",
+      "value": "4. Intellectual property",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_4"
     },
     {
       "type": "text",
       "name": "text_4",
-      "value": "The app does use third party services that declare their own Terms and Conditions.",
+      "value": "The app itself, the trademarks, copyright, database rights and other intellectual property rights related to it, belong to or are licensed to the various applicable collaborators of the @global.parent_app team (noting that code is covered under GPL 3 and content by CC BY). The use of names and emblems/logos of collaborating institutions are the exclusive property of those institutions and are protected under international and national laws. Unauthorised use is prohibited. They may not be copied or reproduced in any way without the prior written permission of said institution.",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_4"
+      "_nested_name": "text_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "The app itself, the trademarks, copyright, database rights and other intellectual property rights related to it, belong to or are licensed to the various applicable collaborators of the @global.parent_app team (noting that code is covered under GPL 3 and content by CC BY). The use of names and emblems/logos of collaborating institutions are the exclusive property of those institutions and are protected under international and national laws. Unauthorised use is prohibited. They may not be copied or reproduced in any way without the prior written permission of said institution.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "title_5",
+      "value": "5. Submissions",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_5"
     },
     {
       "type": "text",
       "name": "text_5",
-      "value": "Link to Terms and Conditions of third party service providers used by the app:",
+      "value": "Your feedback on the app is appreciated. So that we can improve, any comments are not considered confidential and will become available for further lawful use without additional approval or compensation. We shall therefore own exclusive rights and believe any feedback that you have made is original by you.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_5"
+    },
+    {
+      "type": "subtitle",
+      "name": "title_6",
+      "value": "6. Security",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_6"
+    },
+    {
+      "type": "text",
+      "name": "text_6_1",
+      "value": "Our app stores and processes personal data that you have provided to us, in order to offer our services. It is your responsibility to keep your phone and access to the app secure. Removal of software restrictions and limitations imposed by the official operating system of your device is therefore not recommended. Doing so could make your phone vulnerable to malware, viruses, malicious programs as well as compromise your phone’s security features and could mean that the app will not work properly or at all.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_6_1"
+    },
+    {
+      "type": "text",
+      "name": "text_6_2",
+      "value": "To see how we handle your personal information, please see our @global.privacy_policy.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_6_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "To see how we handle your personal information, please see our @global.privacy_policy.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "title_7",
+      "value": "7. External links and resources",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_7"
+    },
+    {
+      "type": "text",
+      "name": "text_7_1",
+      "value": "The app uses third party services that declare their own @global.terms_and_conditions and may link to other websites and resources that are not under the app’s control.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_7_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "The app uses third party services that declare their own @global.terms_and_conditions and may link to other websites and resources that are not under the app’s control.",
+            "matchedExpression": "@global.terms_and_conditions",
+            "type": "global",
+            "fieldName": "terms_and_conditions"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.terms_and_conditions": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_7_2",
+      "value": "Link to @global.terms_and_conditions of third party service providers used by the app include:",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_7_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Link to @global.terms_and_conditions of third party service providers used by the app include:",
+            "matchedExpression": "@global.terms_and_conditions",
+            "type": "global",
+            "fieldName": "terms_and_conditions"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.terms_and_conditions": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "link_7_1_text",
+      "value": "Google Play Services",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
-      "_nested_name": "text_5"
+      "type": "set_variable",
+      "_nested_name": "link_7_1_text"
     },
     {
       "type": "tile_component",
-      "name": "link_1",
-      "value": "tile_1",
-      "_translations": {
-        "value": {}
-      },
+      "name": "link_7_1",
       "action_list": [
         {
           "trigger": "click",
@@ -123,43 +483,49 @@
             "https",
             "//policies.google.com/terms"
           ],
-          "_raw": "click | go_to_url:https://policies.google.com/terms",
-          "_cleaned": "click | go_to_url:https://policies.google.com/terms"
+          "_raw": "click | go_to_url: https://policies.google.com/terms",
+          "_cleaned": "click | go_to_url: https://policies.google.com/terms"
         }
       ],
       "exclude_from_translation": true,
       "parameter_list": {
-        "first_line_text": "@local.link_1_text",
+        "first_line_text": "@local.link_7_1_text",
         "left_icon_src": "globe-outline",
         "style": "button_tile",
         "icon_src": "chevron-forward-outline"
       },
-      "_nested_name": "link_1",
+      "_nested_name": "link_7_1",
       "_dynamicFields": {
         "parameter_list": {
           "first_line_text": [
             {
-              "fullExpression": "@local.link_1_text",
-              "matchedExpression": "@local.link_1_text",
+              "fullExpression": "@local.link_7_1_text",
+              "matchedExpression": "@local.link_7_1_text",
               "type": "local",
-              "fieldName": "link_1_text"
+              "fieldName": "link_7_1_text"
             }
           ]
         }
       },
       "_dynamicDependencies": {
-        "@local.link_1_text": [
+        "@local.link_7_1_text": [
           "parameter_list.first_line_text"
         ]
       }
     },
     {
-      "type": "tile_component",
-      "name": "link_2",
-      "value": "tile_2",
+      "name": "link_7_2_text",
+      "value": "Google Analytics for Firebase",
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "link_7_2_text"
+    },
+    {
+      "type": "tile_component",
+      "name": "link_7_2",
       "action_list": [
         {
           "trigger": "click",
@@ -168,43 +534,49 @@
             "https",
             "//firebase.google.com/terms/analytics"
           ],
-          "_raw": "click | go_to_url:https://firebase.google.com/terms/analytics",
-          "_cleaned": "click | go_to_url:https://firebase.google.com/terms/analytics"
+          "_raw": "click | go_to_url: https://firebase.google.com/terms/analytics",
+          "_cleaned": "click | go_to_url: https://firebase.google.com/terms/analytics"
         }
       ],
       "exclude_from_translation": true,
       "parameter_list": {
-        "first_line_text": "@local.link_2_text",
+        "first_line_text": "@local.link_7_2_text",
         "left_icon_src": "globe-outline",
         "style": "button_tile",
         "icon_src": "chevron-forward-outline"
       },
-      "_nested_name": "link_2",
+      "_nested_name": "link_7_2",
       "_dynamicFields": {
         "parameter_list": {
           "first_line_text": [
             {
-              "fullExpression": "@local.link_2_text",
-              "matchedExpression": "@local.link_2_text",
+              "fullExpression": "@local.link_7_2_text",
+              "matchedExpression": "@local.link_7_2_text",
               "type": "local",
-              "fieldName": "link_2_text"
+              "fieldName": "link_7_2_text"
             }
           ]
         }
       },
       "_dynamicDependencies": {
-        "@local.link_2_text": [
+        "@local.link_7_2_text": [
           "parameter_list.first_line_text"
         ]
       }
     },
     {
-      "type": "tile_component",
-      "name": "link_3",
-      "value": "tile_3",
+      "name": "link_7_3_text",
+      "value": "Sentry",
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "link_7_3_text"
+    },
+    {
+      "type": "tile_component",
+      "name": "link_7_3",
       "action_list": [
         {
           "trigger": "click",
@@ -213,145 +585,280 @@
             "https",
             "//sentry.io/terms/"
           ],
-          "_raw": "click | go_to_url:https://sentry.io/terms/",
-          "_cleaned": "click | go_to_url:https://sentry.io/terms/"
+          "_raw": "click | go_to_url: https://sentry.io/terms/",
+          "_cleaned": "click | go_to_url: https://sentry.io/terms/"
         }
       ],
       "exclude_from_translation": true,
       "parameter_list": {
-        "first_line_text": "@local.link_3_text",
+        "first_line_text": "@local.link_7_3_text",
         "left_icon_src": "globe-outline",
         "style": "button_tile",
         "icon_src": "chevron-forward-outline"
       },
-      "_nested_name": "link_3",
+      "_nested_name": "link_7_3",
       "_dynamicFields": {
         "parameter_list": {
           "first_line_text": [
             {
-              "fullExpression": "@local.link_3_text",
-              "matchedExpression": "@local.link_3_text",
+              "fullExpression": "@local.link_7_3_text",
+              "matchedExpression": "@local.link_7_3_text",
               "type": "local",
-              "fieldName": "link_3_text"
+              "fieldName": "link_7_3_text"
             }
           ]
         }
       },
       "_dynamicDependencies": {
-        "@local.link_3_text": [
+        "@local.link_7_3_text": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "name": "link_7_4_text",
+      "value": "Matomo",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "link_7_4_text"
+    },
+    {
+      "type": "tile_component",
+      "name": "link_7_4",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "https",
+            "//matomo.org/matomo-cloud-terms-of-service/"
+          ],
+          "_raw": "click | go_to_url: https://matomo.org/matomo-cloud-terms-of-service/",
+          "_cleaned": "click | go_to_url: https://matomo.org/matomo-cloud-terms-of-service/"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "first_line_text": "@local.link_7_4_text",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "_nested_name": "link_7_4",
+      "_dynamicFields": {
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.link_7_4_text",
+              "matchedExpression": "@local.link_7_4_text",
+              "type": "local",
+              "fieldName": "link_7_4_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.link_7_4_text": [
           "parameter_list.first_line_text"
         ]
       }
     },
     {
       "type": "text",
-      "name": "text_6",
-      "value": "You should be aware that there are certain things that IDEMS International will not take responsibility for. Certain functions of the app will require the app to have an active internet connection. The connection can be Wi-Fi, or provided by your mobile network provider, but IDEMS International cannot take responsibility for the app not working at full functionality if you don’t have access to Wi-Fi, and you don’t have any of your data allowance left.",
+      "name": "text_7_3",
+      "value": "The inclusion of such links does not imply an endorsement or approval by the app and/or its partners of any website, product, or service. Similarly, the app and the @global.parent_app Team affiliated developers and collaborators do not assume any responsibility or liability in respect of such websites, product, or service, including, for example, responsibility or liability for the accuracy or reliability of any information, data, opinions, advice or statements made on those web sites.",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_6"
+      "_nested_name": "text_7_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "The inclusion of such links does not imply an endorsement or approval by the app and/or its partners of any website, product, or service. Similarly, the app and the @global.parent_app Team affiliated developers and collaborators do not assume any responsibility or liability in respect of such websites, product, or service, including, for example, responsibility or liability for the accuracy or reliability of any information, data, opinions, advice or statements made on those web sites.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value"
+        ]
+      }
     },
     {
-      "type": "text",
-      "name": "text_7",
-      "value": "If you’re using the app outside of an area with Wi-Fi, you should remember that your terms of the agreement with your mobile network provider will still apply. As a result, you may be charged by your mobile provider for the cost of data for the duration of the connection while accessing the app, or other third party charges. In using the app, you’re accepting responsibility for any such charges, including roaming data charges if you use the app outside of your home territory (i.e. region or country) without turning off data roaming. If you are not the bill payer for the device on which you’re using the app, please be aware that we assume that you have received permission from the bill payer for using the app.",
+      "type": "subtitle",
+      "name": "title_8",
+      "value": "8. Disclaimer",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_7"
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_8"
     },
     {
       "type": "text",
       "name": "text_8",
-      "value": "Along the same lines, IDEMS International cannot always take responsibility for the way you use the app i.e. You need to make sure that your device stays charged – if it runs out of battery and you can’t turn it on to avail the Service, IDEMS International cannot accept responsibility.",
+      "value": "Please be aware that the @global.parent_app team exclude responsibility for the following:\n1. Certain functions of the app will require the app to have an active internet connection. IDEMS International cannot take responsibility for the app not working at full functionality if you do not have access to Wi-Fi, or you do not have any of your data allowance left.\n2. Using the app outside of an area with Wi-Fi, will mean that your terms of agreement with your mobile network provider will still apply. As a result, you may be charged by your mobile provider for the cost of data for the duration of the connection while accessing the app, or other third party charges. In using the app, you accept responsibility for any such charges, including roaming data charges if you use the app outside of your home territory (i.e. region or country) without turning off data roaming. If you are not the bill payer for the device on which you are using the app, please be aware that we assume that you have received permission from the bill payer for using the app.\n3. Although we endeavour to ensure that the app is updated and its content accurate, we do rely on third parties to provide information to us so that we can make it available to you. We do not regularly check out all of the external sites and cannot guarantee that they are always accurate or reliable.\n4. The @global.parent_app team accepts no liability for any damage or loss, direct or indirect, you experience as a result of using the app, or arising from any reliance you may place on advice or information provided from the app. You should always exercise your own discretion and judgement appropriate to your own circumstances in relation to any advice or information provided from the app.\n5. Any instances of software bugs, viruses or other malicious material transmitted by a third party through our site are a regret, but we are devoid of responsibility.\n6. Updates to the app occur regularly in order to improve performance and content. The app is available on Android – the requirements for this system (and for any additional systems we decide to extend the availability of the app to) may change. It is your responsibility to download app updates to keep using the app. The @global.parent_app team does not promise that it will always update the app so that it is relevant to you and/or works with the Android version that you have installed on your device. However, you agree to always accept updates to the application when offered to you.\n7. The app site might not be available at all times for reasons of maintenance or trouble with associated software or hardware. Whilst we apologise for inconveniences, we are not liable for any loss you may incur should the site not be accessible or is withdrawn. Equally, we have the right and choice to terminate your access and use of the app (including availability of captured data) at any time, without warning. Unless we tell you otherwise, upon any termination, (a) the rights and licences granted to you in these terms will end; (b) you must stop using the app, and (if needed) delete it from your device.\n8. You agree to indemnify, at your own expense, the @global.parent_app team, its officials, employees, consultants and agents, against any claims, including your costs and expenses, by any third party, resulting from your use of the app.\n9. Companies or products associated with the app should not be interpreted as endorsement by the app or the @global.parent_app team or demonstrate an intention to infringe proprietary rights.",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_8"
+      "_nested_name": "text_8",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Please be aware that the @global.parent_app team exclude responsibility for the following:\n1. Certain functions of the app will require the app to have an active internet connection. IDEMS International cannot take responsibility for the app not working at full functionality if you do not have access to Wi-Fi, or you do not have any of your data allowance left.\n2. Using the app outside of an area with Wi-Fi, will mean that your terms of agreement with your mobile network provider will still apply. As a result, you may be charged by your mobile provider for the cost of data for the duration of the connection while accessing the app, or other third party charges. In using the app, you accept responsibility for any such charges, including roaming data charges if you use the app outside of your home territory (i.e. region or country) without turning off data roaming. If you are not the bill payer for the device on which you are using the app, please be aware that we assume that you have received permission from the bill payer for using the app.\n3. Although we endeavour to ensure that the app is updated and its content accurate, we do rely on third parties to provide information to us so that we can make it available to you. We do not regularly check out all of the external sites and cannot guarantee that they are always accurate or reliable.\n4. The @global.parent_app team accepts no liability for any damage or loss, direct or indirect, you experience as a result of using the app, or arising from any reliance you may place on advice or information provided from the app. You should always exercise your own discretion and judgement appropriate to your own circumstances in relation to any advice or information provided from the app.\n5. Any instances of software bugs, viruses or other malicious material transmitted by a third party through our site are a regret, but we are devoid of responsibility.\n6. Updates to the app occur regularly in order to improve performance and content. The app is available on Android – the requirements for this system (and for any additional systems we decide to extend the availability of the app to) may change. It is your responsibility to download app updates to keep using the app. The @global.parent_app team does not promise that it will always update the app so that it is relevant to you and/or works with the Android version that you have installed on your device. However, you agree to always accept updates to the application when offered to you.\n7. The app site might not be available at all times for reasons of maintenance or trouble with associated software or hardware. Whilst we apologise for inconveniences, we are not liable for any loss you may incur should the site not be accessible or is withdrawn. Equally, we have the right and choice to terminate your access and use of the app (including availability of captured data) at any time, without warning. Unless we tell you otherwise, upon any termination, (a) the rights and licences granted to you in these terms will end; (b) you must stop using the app, and (if needed) delete it from your device.\n8. You agree to indemnify, at your own expense, the @global.parent_app team, its officials, employees, consultants and agents, against any claims, including your costs and expenses, by any third party, resulting from your use of the app.\n9. Companies or products associated with the app should not be interpreted as endorsement by the app or the @global.parent_app team or demonstrate an intention to infringe proprietary rights.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          },
+          {
+            "fullExpression": "Please be aware that the @global.parent_app team exclude responsibility for the following:\n1. Certain functions of the app will require the app to have an active internet connection. IDEMS International cannot take responsibility for the app not working at full functionality if you do not have access to Wi-Fi, or you do not have any of your data allowance left.\n2. Using the app outside of an area with Wi-Fi, will mean that your terms of agreement with your mobile network provider will still apply. As a result, you may be charged by your mobile provider for the cost of data for the duration of the connection while accessing the app, or other third party charges. In using the app, you accept responsibility for any such charges, including roaming data charges if you use the app outside of your home territory (i.e. region or country) without turning off data roaming. If you are not the bill payer for the device on which you are using the app, please be aware that we assume that you have received permission from the bill payer for using the app.\n3. Although we endeavour to ensure that the app is updated and its content accurate, we do rely on third parties to provide information to us so that we can make it available to you. We do not regularly check out all of the external sites and cannot guarantee that they are always accurate or reliable.\n4. The @global.parent_app team accepts no liability for any damage or loss, direct or indirect, you experience as a result of using the app, or arising from any reliance you may place on advice or information provided from the app. You should always exercise your own discretion and judgement appropriate to your own circumstances in relation to any advice or information provided from the app.\n5. Any instances of software bugs, viruses or other malicious material transmitted by a third party through our site are a regret, but we are devoid of responsibility.\n6. Updates to the app occur regularly in order to improve performance and content. The app is available on Android – the requirements for this system (and for any additional systems we decide to extend the availability of the app to) may change. It is your responsibility to download app updates to keep using the app. The @global.parent_app team does not promise that it will always update the app so that it is relevant to you and/or works with the Android version that you have installed on your device. However, you agree to always accept updates to the application when offered to you.\n7. The app site might not be available at all times for reasons of maintenance or trouble with associated software or hardware. Whilst we apologise for inconveniences, we are not liable for any loss you may incur should the site not be accessible or is withdrawn. Equally, we have the right and choice to terminate your access and use of the app (including availability of captured data) at any time, without warning. Unless we tell you otherwise, upon any termination, (a) the rights and licences granted to you in these terms will end; (b) you must stop using the app, and (if needed) delete it from your device.\n8. You agree to indemnify, at your own expense, the @global.parent_app team, its officials, employees, consultants and agents, against any claims, including your costs and expenses, by any third party, resulting from your use of the app.\n9. Companies or products associated with the app should not be interpreted as endorsement by the app or the @global.parent_app team or demonstrate an intention to infringe proprietary rights.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          },
+          {
+            "fullExpression": "Please be aware that the @global.parent_app team exclude responsibility for the following:\n1. Certain functions of the app will require the app to have an active internet connection. IDEMS International cannot take responsibility for the app not working at full functionality if you do not have access to Wi-Fi, or you do not have any of your data allowance left.\n2. Using the app outside of an area with Wi-Fi, will mean that your terms of agreement with your mobile network provider will still apply. As a result, you may be charged by your mobile provider for the cost of data for the duration of the connection while accessing the app, or other third party charges. In using the app, you accept responsibility for any such charges, including roaming data charges if you use the app outside of your home territory (i.e. region or country) without turning off data roaming. If you are not the bill payer for the device on which you are using the app, please be aware that we assume that you have received permission from the bill payer for using the app.\n3. Although we endeavour to ensure that the app is updated and its content accurate, we do rely on third parties to provide information to us so that we can make it available to you. We do not regularly check out all of the external sites and cannot guarantee that they are always accurate or reliable.\n4. The @global.parent_app team accepts no liability for any damage or loss, direct or indirect, you experience as a result of using the app, or arising from any reliance you may place on advice or information provided from the app. You should always exercise your own discretion and judgement appropriate to your own circumstances in relation to any advice or information provided from the app.\n5. Any instances of software bugs, viruses or other malicious material transmitted by a third party through our site are a regret, but we are devoid of responsibility.\n6. Updates to the app occur regularly in order to improve performance and content. The app is available on Android – the requirements for this system (and for any additional systems we decide to extend the availability of the app to) may change. It is your responsibility to download app updates to keep using the app. The @global.parent_app team does not promise that it will always update the app so that it is relevant to you and/or works with the Android version that you have installed on your device. However, you agree to always accept updates to the application when offered to you.\n7. The app site might not be available at all times for reasons of maintenance or trouble with associated software or hardware. Whilst we apologise for inconveniences, we are not liable for any loss you may incur should the site not be accessible or is withdrawn. Equally, we have the right and choice to terminate your access and use of the app (including availability of captured data) at any time, without warning. Unless we tell you otherwise, upon any termination, (a) the rights and licences granted to you in these terms will end; (b) you must stop using the app, and (if needed) delete it from your device.\n8. You agree to indemnify, at your own expense, the @global.parent_app team, its officials, employees, consultants and agents, against any claims, including your costs and expenses, by any third party, resulting from your use of the app.\n9. Companies or products associated with the app should not be interpreted as endorsement by the app or the @global.parent_app team or demonstrate an intention to infringe proprietary rights.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          },
+          {
+            "fullExpression": "Please be aware that the @global.parent_app team exclude responsibility for the following:\n1. Certain functions of the app will require the app to have an active internet connection. IDEMS International cannot take responsibility for the app not working at full functionality if you do not have access to Wi-Fi, or you do not have any of your data allowance left.\n2. Using the app outside of an area with Wi-Fi, will mean that your terms of agreement with your mobile network provider will still apply. As a result, you may be charged by your mobile provider for the cost of data for the duration of the connection while accessing the app, or other third party charges. In using the app, you accept responsibility for any such charges, including roaming data charges if you use the app outside of your home territory (i.e. region or country) without turning off data roaming. If you are not the bill payer for the device on which you are using the app, please be aware that we assume that you have received permission from the bill payer for using the app.\n3. Although we endeavour to ensure that the app is updated and its content accurate, we do rely on third parties to provide information to us so that we can make it available to you. We do not regularly check out all of the external sites and cannot guarantee that they are always accurate or reliable.\n4. The @global.parent_app team accepts no liability for any damage or loss, direct or indirect, you experience as a result of using the app, or arising from any reliance you may place on advice or information provided from the app. You should always exercise your own discretion and judgement appropriate to your own circumstances in relation to any advice or information provided from the app.\n5. Any instances of software bugs, viruses or other malicious material transmitted by a third party through our site are a regret, but we are devoid of responsibility.\n6. Updates to the app occur regularly in order to improve performance and content. The app is available on Android – the requirements for this system (and for any additional systems we decide to extend the availability of the app to) may change. It is your responsibility to download app updates to keep using the app. The @global.parent_app team does not promise that it will always update the app so that it is relevant to you and/or works with the Android version that you have installed on your device. However, you agree to always accept updates to the application when offered to you.\n7. The app site might not be available at all times for reasons of maintenance or trouble with associated software or hardware. Whilst we apologise for inconveniences, we are not liable for any loss you may incur should the site not be accessible or is withdrawn. Equally, we have the right and choice to terminate your access and use of the app (including availability of captured data) at any time, without warning. Unless we tell you otherwise, upon any termination, (a) the rights and licences granted to you in these terms will end; (b) you must stop using the app, and (if needed) delete it from your device.\n8. You agree to indemnify, at your own expense, the @global.parent_app team, its officials, employees, consultants and agents, against any claims, including your costs and expenses, by any third party, resulting from your use of the app.\n9. Companies or products associated with the app should not be interpreted as endorsement by the app or the @global.parent_app team or demonstrate an intention to infringe proprietary rights.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          },
+          {
+            "fullExpression": "Please be aware that the @global.parent_app team exclude responsibility for the following:\n1. Certain functions of the app will require the app to have an active internet connection. IDEMS International cannot take responsibility for the app not working at full functionality if you do not have access to Wi-Fi, or you do not have any of your data allowance left.\n2. Using the app outside of an area with Wi-Fi, will mean that your terms of agreement with your mobile network provider will still apply. As a result, you may be charged by your mobile provider for the cost of data for the duration of the connection while accessing the app, or other third party charges. In using the app, you accept responsibility for any such charges, including roaming data charges if you use the app outside of your home territory (i.e. region or country) without turning off data roaming. If you are not the bill payer for the device on which you are using the app, please be aware that we assume that you have received permission from the bill payer for using the app.\n3. Although we endeavour to ensure that the app is updated and its content accurate, we do rely on third parties to provide information to us so that we can make it available to you. We do not regularly check out all of the external sites and cannot guarantee that they are always accurate or reliable.\n4. The @global.parent_app team accepts no liability for any damage or loss, direct or indirect, you experience as a result of using the app, or arising from any reliance you may place on advice or information provided from the app. You should always exercise your own discretion and judgement appropriate to your own circumstances in relation to any advice or information provided from the app.\n5. Any instances of software bugs, viruses or other malicious material transmitted by a third party through our site are a regret, but we are devoid of responsibility.\n6. Updates to the app occur regularly in order to improve performance and content. The app is available on Android – the requirements for this system (and for any additional systems we decide to extend the availability of the app to) may change. It is your responsibility to download app updates to keep using the app. The @global.parent_app team does not promise that it will always update the app so that it is relevant to you and/or works with the Android version that you have installed on your device. However, you agree to always accept updates to the application when offered to you.\n7. The app site might not be available at all times for reasons of maintenance or trouble with associated software or hardware. Whilst we apologise for inconveniences, we are not liable for any loss you may incur should the site not be accessible or is withdrawn. Equally, we have the right and choice to terminate your access and use of the app (including availability of captured data) at any time, without warning. Unless we tell you otherwise, upon any termination, (a) the rights and licences granted to you in these terms will end; (b) you must stop using the app, and (if needed) delete it from your device.\n8. You agree to indemnify, at your own expense, the @global.parent_app team, its officials, employees, consultants and agents, against any claims, including your costs and expenses, by any third party, resulting from your use of the app.\n9. Companies or products associated with the app should not be interpreted as endorsement by the app or the @global.parent_app team or demonstrate an intention to infringe proprietary rights.",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value",
+          "value",
+          "value",
+          "value",
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "title_9",
+      "value": "9. Changes to the @global.terms_and_conditions",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_9",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "9. Changes to the @global.terms_and_conditions",
+            "matchedExpression": "@global.terms_and_conditions",
+            "type": "global",
+            "fieldName": "terms_and_conditions"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.terms_and_conditions": [
+          "value"
+        ]
+      }
     },
     {
       "type": "text",
       "name": "text_9",
-      "value": "With respect to IDEMS International’s responsibility for your use of the app, when you’re using the app, it’s important to bear in mind that although we endeavour to ensure that it is updated and correct at all times, we do rely on third parties to provide information to us so that we can make it available to you. IDEMS International accepts no liability for any loss, direct or indirect, you experience as a result of relying wholly on this functionality of the app.",
+      "value": "We may update our @global.terms_and_conditions from time to time. You waive your right to be notified directly of changes and are advised to review this page periodically for any updates. Your continued use of the app suggests you agree to subsequent revisions of the @global.terms_and_conditions.",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_9"
+      "_nested_name": "text_9",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "We may update our @global.terms_and_conditions from time to time. You waive your right to be notified directly of changes and are advised to review this page periodically for any updates. Your continued use of the app suggests you agree to subsequent revisions of the @global.terms_and_conditions.",
+            "matchedExpression": "@global.terms_and_conditions",
+            "type": "global",
+            "fieldName": "terms_and_conditions"
+          },
+          {
+            "fullExpression": "We may update our @global.terms_and_conditions from time to time. You waive your right to be notified directly of changes and are advised to review this page periodically for any updates. Your continued use of the app suggests you agree to subsequent revisions of the @global.terms_and_conditions.",
+            "matchedExpression": "@global.terms_and_conditions",
+            "type": "global",
+            "fieldName": "terms_and_conditions"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.terms_and_conditions": [
+          "value",
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "title_10",
+      "value": "10. Contact Us",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "title_10"
     },
     {
       "type": "text",
-      "name": "text_10",
-      "value": "At some point, we may wish to update the app. The app is currently available on Android & iOS – the requirements for both systems (and for any additional systems we decide to extend the availability of the app to) may change, and you’ll need to download the updates if you want to keep using the app. IDEMS International does not promise that it will always update the app so that it is relevant to you and/or works with the Android & iOS version that you have installed on your device. However, you promise to always accept updates to the application when offered to you. We may also wish to stop providing the app, and may terminate use of it at any time without giving notice of termination to you. Unless we tell you otherwise, upon any termination, (a) the rights and licenses granted to you in these terms will end; (b) you must stop using the app, and (if needed) delete it from your device.",
+      "name": "text_10_1",
+      "value": "If you have any questions or suggestions about our @global.terms_and_conditions, do not hesitate to contact us at apps@idems.international.",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_10"
-    },
-    {
-      "type": "title",
-      "name": "title_2",
-      "value": "Changes to This Terms and Conditions",
-      "_translations": {
-        "value": {}
+      "_nested_name": "text_10_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "If you have any questions or suggestions about our @global.terms_and_conditions, do not hesitate to contact us at apps@idems.international.",
+            "matchedExpression": "@global.terms_and_conditions",
+            "type": "global",
+            "fieldName": "terms_and_conditions"
+          }
+        ]
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_2"
-    },
-    {
-      "type": "text",
-      "name": "text_11",
-      "value": "We may update our Terms and Conditions from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Terms and Conditions on this page.",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "_nested_name": "text_11"
+      "_dynamicDependencies": {
+        "@global.terms_and_conditions": [
+          "value"
+        ]
+      }
     },
     {
       "type": "text",
-      "name": "text_12",
-      "value": "These terms and conditions are effective as of 2020-09-16",
+      "name": "text_10_2",
+      "value": "Last updated: 18 October 2022",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
-      "_nested_name": "text_12"
-    },
-    {
-      "type": "title",
-      "name": "title_3",
-      "value": "Contact Us",
-      "_translations": {
-        "value": {}
+      "parameter_list": {
+        "style": "emphasised"
       },
-      "exclude_from_translation": true,
-      "_nested_name": "title_3"
-    },
-    {
-      "type": "text",
-      "name": "text_13",
-      "value": "If you have any questions or suggestions about our Terms and Conditions, do not hesitate to contact us at apps@idems.international.",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "_nested_name": "text_13"
-    },
-    {
-      "type": "text",
-      "name": "text_14",
-      "value": "This Terms and Conditions page was generated by App Privacy Policy Generator.",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "_nested_name": "text_14"
+      "_nested_name": "text_10_2"
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_menu.xlsx"
