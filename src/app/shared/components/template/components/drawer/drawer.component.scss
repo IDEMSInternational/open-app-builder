@@ -1,17 +1,26 @@
 @use "/src/theme/mixins";
 
+$navigation-bar-height: var(--navigation-bar-height);
 $handle-height: var(--bottom-drawer-height);
+// The value of the property --min-height applied to ion-toolbar, not directly accessible
+$header-height: 56px;
+
+// Element to remain inline within scrollable content to ensure no content lost behind drawer handle
+.bottom-spacer {
+  width: 100%;
+  height: $handle-height;
+}
 
 .drawer {
-  position: absolute;
+  position: fixed;
+  top: calc(100vh - $header-height - $navigation-bar-height - $handle-height);
+  left: 0px;
   width: 100%;
-  // transform: translateY(calc(100% - $handle-height));
-  // top: calc(100vh - 90px - $handle-height);
-  // bottom: $handle-height;
-  border-style: solid;
+  border-style: solid solid none solid;
   border-color: var(--ion-color-primary);
   border-radius: var(--ion-border-radius-standard) var(--ion-border-radius-standard) 0 0;
   background-color: var(--ion-background-color);
+  z-index: 100;
 
   .handle {
     height: $handle-height;
@@ -34,5 +43,8 @@ $handle-height: var(--bottom-drawer-height);
 
   .content {
     margin: var(--tiny-margin) var(--regular-margin);
+  }
+  &:active {
+    background-color: var(--ion-color-gray-100);
   }
 }
