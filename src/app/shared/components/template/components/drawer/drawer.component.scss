@@ -42,7 +42,7 @@ $header-height: 56px;
   }
 
   .content {
-    margin: var(--tiny-margin) var(--regular-margin);
+    padding: var(--tiny-padding) var(--regular-padding) 30px;
   }
   &:active {
     background-color: var(--ion-color-gray-100);

@@ -25,7 +25,7 @@ export class TmplDrawerComponent extends TemplateBaseComponent implements AfterV
     setTimeout(async () => {
       const drawer = this.drawer.nativeElement;
       const handle = drawer.children[0];
-      this.openHeight = drawer.offsetHeight - handle.offsetHeight;
+      this.openHeight = drawer.offsetHeight - handle.offsetHeight - 10;
       console.log(this.openHeight);
     }, 100);
   }
