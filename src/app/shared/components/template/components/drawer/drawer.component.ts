@@ -15,7 +15,6 @@ import { TemplateBaseComponent } from "../base";
 })
 export class TmplDrawerComponent extends TemplateBaseComponent implements AfterViewInit {
   @ViewChild("drawer", { read: ElementRef }) drawer: ElementRef;
-  @Output() openStateChanged = new EventEmitter<boolean>();
 
   isOpen = false;
   openHeight = 0;
@@ -32,7 +31,6 @@ export class TmplDrawerComponent extends TemplateBaseComponent implements AfterV
 
   toggleDrawer() {
     const drawer = this.drawer.nativeElement;
-    this.openStateChanged.emit(!this.isOpen);
 
     if (this.isOpen) {
       drawer.style.transition = "transform .3s ease-out";
@@ -41,7 +39,6 @@ export class TmplDrawerComponent extends TemplateBaseComponent implements AfterV
     } else {
       drawer.style.transition = "transform .3s ease-out";
       drawer.style.transform = `translateY(${-this.openHeight}px)`;
-      this.openStateChanged.emit(true);
       this.isOpen = true;
     }
   }
@@ -66,12 +63,10 @@ export class TmplDrawerComponent extends TemplateBaseComponent implements AfterV
   //       if (event.deltaY < -50 && !this.isOpen) {
   //         drawer.style.transition = "transform .4s ease-out";
   //         drawer.style.transform = `translateY(${-this.openHeight}px)`;
-  //         this.openStateChanged.emit(true);
   //         this.isOpen = true;
   //       } else if (event.deltaY > 50 && this.isOpen) {
   //         drawer.style.transition = ".4s ease-out";
   //         drawer.style.transform = "";
-  //         this.openStateChanged.emit(false);
   //         this.isOpen = false;
   //       }
   //     },
