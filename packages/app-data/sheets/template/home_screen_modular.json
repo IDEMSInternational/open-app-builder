@@ -1,0 +1,96 @@
+{
+  "flow_type": "template",
+  "flow_name": "home_screen_modular",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "value": "Example Home Screen",
+      "_translations": {
+        "value": {}
+      },
+      "name": "title",
+      "_nested_name": "title"
+    },
+    {
+      "type": "template",
+      "value": "example_task_card",
+      "rows": [],
+      "name": "example_task_card",
+      "_nested_name": "example_task_card"
+    },
+    {
+      "type": "template",
+      "value": "example_carousel",
+      "rows": [],
+      "name": "example_carousel",
+      "_nested_name": "example_carousel"
+    },
+    {
+      "type": "drawer",
+      "value": "Things to do",
+      "rows": [
+        {
+          "type": "display_group",
+          "parameter_list": {
+            "style": "column"
+          },
+          "rows": [
+            {
+              "type": "button",
+              "value": "Why self care",
+              "_translations": {
+                "value": {}
+              },
+              "parameter_list": {
+                "style": "card",
+                "icon": "plh_images/workshops/w_self_care/tools.svg"
+              },
+              "name": "button",
+              "_nested_name": "drawer.display_group.button"
+            },
+            {
+              "type": "button",
+              "value": "Relax",
+              "parameter_list": {
+                "style": "card",
+                "icon": "plh_images/icons/parent_child.svg"
+              },
+              "rows": [
+                {
+                  "type": "toggle_bar",
+                  "name": "toggle_bar",
+                  "parameter_list": {
+                    "position": "right",
+                    "style": "in_button"
+                  },
+                  "_nested_name": "drawer.display_group.button.toggle_bar"
+                }
+              ],
+              "name": "button",
+              "_nested_name": "drawer.display_group.button"
+            },
+            {
+              "type": "button",
+              "value": "Something fun",
+              "_translations": {
+                "value": {}
+              },
+              "parameter_list": {
+                "style": "card",
+                "icon": "plh_images/icons/book.svg"
+              },
+              "name": "button",
+              "_nested_name": "drawer.display_group.button"
+            }
+          ],
+          "name": "display_group",
+          "_nested_name": "drawer.display_group"
+        }
+      ],
+      "name": "drawer",
+      "_nested_name": "drawer"
+    }
+  ],
+  "_xlsxPath": "global_modular/core_templates/home_screen_modular.xlsx"
+}
