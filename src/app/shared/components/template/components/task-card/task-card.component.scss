@@ -1,5 +1,6 @@
 .card-wrapper {
   position: relative;
+  margin: auto;
   background-color: white;
   border: 1px solid var(--ion-color-gray-light);
   border-radius: var(--ion-border-radius-secondary);
@@ -8,9 +9,6 @@
   max-width: 400px;
   filter: drop-shadow(var(--ion-default-box-shadow));
 
-  &.landscape {
-    width: 90%;
-  }
   &.portrait {
     width: 160px;
     padding: var(--small-padding);
