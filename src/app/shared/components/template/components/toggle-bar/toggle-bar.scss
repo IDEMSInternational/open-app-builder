@@ -44,6 +44,13 @@ ion-toggle {
   justify-content: space-between;
 }
 
+.container[data-param-style~="in_button"] {
+  flex-direction: row-reverse;
+  ion-toggle {
+    transform: translate($togglePadding, $togglePadding);
+  }
+}
+
 .label {
   margin-left: var(--small-margin);
   margin-right: var(--small-margin);
