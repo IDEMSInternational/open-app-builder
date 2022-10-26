@@ -21,8 +21,8 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
 
   getParams() {
     this.config.slidesPerView =
-      getNumberParamFromTemplateRow(this._row, "slidesPerView", null) || "auto";
-    this.config.spaceBetween = getNumberParamFromTemplateRow(this._row, "spaceBetween", 10);
+      getNumberParamFromTemplateRow(this._row, "slides_per_view", null) || "auto";
+    this.config.spaceBetween = getNumberParamFromTemplateRow(this._row, "space_between", 10);
     this.config.loop = getBooleanParamFromTemplateRow(this._row, "loop", false);
     // "loopedSlides" is required in the Slider config iff "loop" is true
     if (this.config.loop) {
