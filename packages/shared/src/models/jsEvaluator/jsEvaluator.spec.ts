@@ -1,7 +1,11 @@
 import { JSEvaluator } from "./jsEvaluator";
 
 describe("JS Evaluator", () => {
-  const constants = { a: 1, b: 2 };
+  const constants = {
+    a: 1,
+    b: 2,
+    nestedConstant: { array: [1] },
+  };
   const functions = {
     isEven: (n) => n % 2 === 0,
   };
@@ -17,6 +21,9 @@ describe("JS Evaluator", () => {
     expect(evaluator.evaluate("'Hello '+this.nested.name", { nested: { name: "Ada" } })).toEqual(
       "Hello Ada"
     );
+  });
+  it("Supports parse of nested global constants", () => {
+    expect(evaluator.evaluate("JSON.parse(nestedConstant).array[0]")).toEqual(1);
   });
   it("ignores invalid names for context variables", () => {
     const invalidConstants = { "invalid:name": "ignored", "invalid-name": "ignored" };
