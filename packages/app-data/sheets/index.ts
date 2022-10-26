@@ -3731,10 +3731,15 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "home_screen",
       _xlsxPath: "global/core_templates/core_templates_navigation.xlsx",
+      _overrides: {
+        home_screen_modular: '@fields._app_skin == "modular"',
+      },
     },
     home_screen_modular: {
       flow_type: "template",
       flow_name: "home_screen_modular",
+      override_target: "home_screen",
+      override_condition: '@fields._app_skin == "modular"',
       _xlsxPath: "global_modular/core_templates/home_screen_modular.xlsx",
     },
     hp_review_other_challenge: {
@@ -3944,6 +3949,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "message_navigation",
       _xlsxPath: "global/in_week_messages/message_navigation.xlsx",
+    },
+    module_card: {
+      flow_type: "template",
+      flow_name: "module_card",
+      _xlsxPath: "global_modular/core_templates/module_cards.xlsx",
     },
     nav_buttons: {
       flow_type: "template",
