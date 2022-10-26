@@ -56,22 +56,21 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
       this.progressStatusChange.emit(this.progressStatus);
       // Check whether task group has already been completed
       if (this.templateFieldService.getField(`${taskGroupId}_completed`) !== true) {
-        // If not, set completed field to "true" and emit "completed"
-        this.setTaskGroupCompleted(taskGroupId);
-        // TODO? Alternatively, leave setting the field to the template, and just emit "completed", i.e.
-        // this.triggerActions("completed")
-        // Currently the task-progress-bar cannot trigger actions, since it is only instantiated inside
-        // the task-card so has now "_row"
+        // If not, set completed field to "true"
+        this.setTaskGroupCompletedStatus(taskGroupId, true);
       }
-    } else if (this.subtasksCompleted) {
-      this.progressStatus = "inProgress";
-      this.progressStatusChange.emit(this.progressStatus);
+    } else {
+      this.setTaskGroupCompletedStatus(taskGroupId, false);
+      if (this.subtasksCompleted) {
+        this.progressStatus = "inProgress";
+        this.progressStatusChange.emit(this.progressStatus);
+      }
     }
   }
 
-  setTaskGroupCompleted(taskGroupId: string) {
+  setTaskGroupCompletedStatus(taskGroupId: string, completed: boolean) {
     const completedField = `${taskGroupId}_completed`;
-    console.log(`Setting ${completedField} to true`);
-    return this.templateFieldService.setField(completedField, "true");
+    console.log(`Setting ${completedField} to ${completed}`);
+    return this.templateFieldService.setField(completedField, `${completed}`);
   }
 }

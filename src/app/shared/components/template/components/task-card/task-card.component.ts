@@ -12,7 +12,7 @@ import { IProgressStatus } from "src/app/shared/services/task/task.service";
 export class TmplTaskCardComponent extends TemplateBaseComponent implements OnInit {
   style: string;
   orientation: "landscape" | "portrait";
-  highlighted: boolean = true;
+  highlighted: boolean;
   highlightedText = "Active";
   progressStatus: IProgressStatus = "notStarted";
   taskGroupId: string | null;
@@ -29,7 +29,13 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
 
   ngOnInit() {
     this.getParams();
-    this.highlighted = this.taskService.checkHighlightedTask(this.taskId || this.taskGroupId);
+    console.log(
+      "should be highlighted:",
+      this.taskService.checkHighlightedTaskGroup(this.taskGroupId)
+    );
+    this.highlighted = this.taskGroupId
+      ? this.taskService.checkHighlightedTaskGroup(this.taskGroupId)
+      : false;
   }
 
   getParams() {
