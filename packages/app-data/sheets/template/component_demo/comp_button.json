@@ -35,7 +35,7 @@
     },
     {
       "type": "button",
-      "value": "Why self care",
+      "value": "With icon",
       "_translations": {
         "value": {}
       },
@@ -48,7 +48,7 @@
     },
     {
       "type": "button",
-      "value": "Relax",
+      "value": "Icon and toggle",
       "parameter_list": {
         "style": "card",
         "icon": "plh_images/icons/parent_child.svg"
@@ -64,19 +64,6 @@
           "_nested_name": "button.toggle_bar"
         }
       ],
-      "name": "button",
-      "_nested_name": "button"
-    },
-    {
-      "type": "button",
-      "value": "Something fun",
-      "_translations": {
-        "value": {}
-      },
-      "parameter_list": {
-        "style": "card",
-        "icon": "plh_images/icons/book.svg"
-      },
       "name": "button",
       "_nested_name": "button"
     },
