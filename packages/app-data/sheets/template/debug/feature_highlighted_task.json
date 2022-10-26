@@ -94,19 +94,19 @@
     {
       "type": "radio_group",
       "name": "highlighted_task_select",
-      "value": "@fields.highlighted_task",
+      "value": "@fields._highlighted_task_group",
       "_translations": {
         "value": {}
       },
       "action_list": [
         {
           "trigger": "changed",
-          "action_id": "set_highlighted_task",
+          "action_id": "set_highlighted_task_group",
           "args": [
             "this.value"
           ],
-          "_raw": "changed | set_highlighted_task:@local.highlighted_task_select",
-          "_cleaned": "changed | set_highlighted_task:@local.highlighted_task_select"
+          "_raw": "changed | set_highlighted_task_group:@local.highlighted_task_select",
+          "_cleaned": "changed | set_highlighted_task_group:@local.highlighted_task_select"
         }
       ],
       "parameter_list": {
@@ -117,17 +117,17 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@fields.highlighted_task",
-            "matchedExpression": "@fields.highlighted_task",
+            "fullExpression": "@fields._highlighted_task_group",
+            "matchedExpression": "@fields._highlighted_task_group",
             "type": "fields",
-            "fieldName": "highlighted_task"
+            "fieldName": "_highlighted_task_group"
           }
         ],
         "action_list": {
           "0": {
             "_raw": [
               {
-                "fullExpression": "changed | set_highlighted_task:@local.highlighted_task_select",
+                "fullExpression": "changed | set_highlighted_task_group:@local.highlighted_task_select",
                 "matchedExpression": "@local.highlighted_task_select",
                 "type": "local",
                 "fieldName": "highlighted_task_select"
@@ -135,7 +135,7 @@
             ],
             "_cleaned": [
               {
-                "fullExpression": "changed | set_highlighted_task:@local.highlighted_task_select",
+                "fullExpression": "changed | set_highlighted_task_group:@local.highlighted_task_select",
                 "matchedExpression": "@local.highlighted_task_select",
                 "type": "local",
                 "fieldName": "highlighted_task_select"
@@ -155,7 +155,7 @@
         }
       },
       "_dynamicDependencies": {
-        "@fields.highlighted_task": [
+        "@fields._highlighted_task_group": [
           "value"
         ],
         "@local.highlighted_task_select": [
