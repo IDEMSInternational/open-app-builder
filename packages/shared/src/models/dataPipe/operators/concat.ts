@@ -77,7 +77,7 @@ class ConcatOperator extends BaseOperator {
     const duplicateIndex = df1.index.find((index) => df2.index.includes(index));
     if (duplicateIndex) {
       throw new Error(
-        `${this.activeArg.name}\nMultiple entries exist for index: ${duplicateIndex}`
+        `[${this.activeArg.name}] Multiple entries exist for index: ${duplicateIndex}`
       );
     }
   }
