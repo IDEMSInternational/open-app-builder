@@ -37,13 +37,13 @@ export class JSEvaluator {
    *  functions:{ isEven: (n) => n%2 === 0 }
    * }
    **/
-  setGlobalContext(context: { functions?: IFunctionHashmap; constants?: IConstantHashmap }) {
+  setGlobalContext(context: { functions?: IFunctionHashmap; constants?: any }) {
     const constantString = Object.entries(context.constants ?? {})
       .filter(([name]) => this.isValidVariableName(name))
       .map(
         ([name, value]) =>
           // convert global constants to variable strings, adding quotation marks for string types
-          `var ${name} = ${typeof value === "string" ? `'${value}'` : value}`
+          `var ${name} = ${this.parseContextValue(value)}`
       )
       .join(";");
     // convert global functions to variable strings. Note, cannot simply parse function.toString() as optimiser
@@ -79,6 +79,15 @@ export class JSEvaluator {
     const regex = /^[a-z_$][0-9a-z_$]*$/i;
     return regex.test(name);
     // TODO - could also check to ensure not a reserved word (https://www.w3schools.com/js/js_reserved.asp)
+  }
+
+  /** When evaluating function constants any strings should be quoted and object/arrays stringified */
+  private parseContextValue(value: any) {
+    if (value) {
+      if (typeof value === "object") value = JSON.stringify(value);
+      if (typeof value === "string") return `'${value}'`;
+    }
+    return value;
   }
 }
 

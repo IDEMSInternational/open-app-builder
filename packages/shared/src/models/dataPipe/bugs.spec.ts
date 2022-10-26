@@ -8,12 +8,14 @@ const testData = {
       first_name: "Ada",
       "first_name::eng": "Ada",
       last_name: "Lovelace",
+      _translatedFields: { first_name: {} },
     },
     {
       id: "id_2",
       first_name: "Blaise",
       "first_name::eng": "Blaise",
       last_name: "Pascal",
+      _translatedFields: { first_name: {} },
     },
   ],
 };
