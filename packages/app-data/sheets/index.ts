@@ -917,6 +917,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "generated",
       flow_type: "data_list",
     },
+    workshop_tasks: {
+      flow_name: "workshop_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
     habit_data_list: {
       flow_type: "data_list",
       flow_name: "habit_data_list",
@@ -7104,6 +7109,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "data_pipe",
       flow_name: "single_tg_filter",
       _xlsxPath: "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx",
+    },
+    workshop_data_pipe: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_data_pipe",
+      _xlsxPath: "global/data/workshop_data/workshop_data_pipes.xlsx",
     },
     workshop_task_gs_append: {
       flow_type: "data_pipe",
