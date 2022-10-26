@@ -166,6 +166,7 @@ export class TemplateActionService extends TemplateInstanceService {
       case "toggle_field":
         const currentValue = this.templateFieldService.getField(key);
         const toggleValue = !currentValue;
+        console.log("[SET FIELD]", key, `${toggleValue}`);
         return this.templateFieldService.setField(key, `${toggleValue}`);
       case "start_tour":
         return this.tourService.startTour(key);
@@ -193,8 +194,8 @@ export class TemplateActionService extends TemplateInstanceService {
         return processor.processTemplateWithoutRender(templateToProcess);
       case "google_auth":
         return await this.authService.signInWithGoogle();
-      case "set_highlighted_task":
-        return this.taskService.setHighlightedTask(args[0]);
+      case "set_highlighted_task_group":
+        return this.taskService.setHighlightedTaskGroup(args[0]);
       case "emit":
         const [emit_value, emit_data] = args;
         const container: TemplateContainerComponent = this.container;
