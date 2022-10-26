@@ -917,6 +917,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "generated",
       flow_type: "data_list",
     },
+    workshop_tasks: {
+      flow_name: "workshop_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
     habit_data_list: {
       flow_type: "data_list",
       flow_name: "habit_data_list",
@@ -2010,11 +2015,17 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_video.xlsx",
     },
-    example_carousel_content: {
+    example_carousel: {
       flow_type: "template",
-      flow_name: "example_carousel_content",
+      flow_name: "example_carousel",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_carousel.xlsx",
+    },
+    example_task_card: {
+      flow_type: "template",
+      flow_name: "example_task_card",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_task_card.xlsx",
     },
     feat_animated_slides: {
       flow_type: "template",
@@ -3720,6 +3731,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "home_screen",
       _xlsxPath: "global/core_templates/core_templates_navigation.xlsx",
+    },
+    home_screen_modular: {
+      flow_type: "template",
+      flow_name: "home_screen_modular",
+      _xlsxPath: "global_modular/core_templates/home_screen_modular.xlsx",
     },
     hp_review_other_challenge: {
       flow_type: "template",
@@ -7093,6 +7109,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "data_pipe",
       flow_name: "single_tg_filter",
       _xlsxPath: "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx",
+    },
+    workshop_data_pipe: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_data_pipe",
+      _xlsxPath: "global/data/workshop_data/workshop_data_pipes.xlsx",
     },
     workshop_task_gs_append: {
       flow_type: "data_pipe",
