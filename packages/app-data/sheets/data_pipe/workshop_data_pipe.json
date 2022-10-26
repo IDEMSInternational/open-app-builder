@@ -7,6 +7,7 @@
       "operation": "append_columns",
       "args_list": [
         "completed_field: task_{@row.id}_completed",
+        "completed: @fields.@row.completed_field",
         "skipped_field: task_{@row.id}_skipped"
       ],
       "input_source": "workshop_data",
