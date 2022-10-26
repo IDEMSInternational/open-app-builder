@@ -47,6 +47,12 @@ const FeatureRoutes: Routes = [
     loadChildren: () => import("./feature/feedback/feedback.module").then((m) => m.FeedbackModule),
     outlet: "sidebar",
   },
+  {
+    path: "template",
+    loadChildren: () =>
+      import("./feature/template/template.module").then((m) => m.TemplatePageModule),
+    outlet: "sidebar",
+  },
 ];
 
 @NgModule({
