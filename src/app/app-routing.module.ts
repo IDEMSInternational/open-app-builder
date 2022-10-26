@@ -41,9 +41,11 @@ const FeatureRoutes: Routes = [
     path: "tour/:tourName",
     component: TourComponent,
   },
+  // Routes to show in sidebar routing
   {
     path: "feedback",
     loadChildren: () => import("./feature/feedback/feedback.module").then((m) => m.FeedbackModule),
+    outlet: "sidebar",
   },
 ];
 
