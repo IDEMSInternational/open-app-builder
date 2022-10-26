@@ -2,29 +2,275 @@
   "flow_type": "template",
   "flow_name": "home_screen_modular",
   "status": "released",
+  "override_target": "home_screen",
+  "override_condition": "@fields._app_skin == \"modular\"",
   "rows": [
     {
-      "type": "title",
-      "value": "Example Home Screen",
+      "name": "highlighted_module",
+      "value": "@fields._highlighted_task_group",
       "_translations": {
         "value": {}
       },
-      "name": "title",
-      "_nested_name": "title"
+      "condition": false,
+      "type": "set_variable",
+      "_nested_name": "highlighted_module",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields._highlighted_task_group",
+            "matchedExpression": "@fields._highlighted_task_group",
+            "type": "fields",
+            "fieldName": "_highlighted_task_group"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._highlighted_task_group": [
+          "value"
+        ]
+      }
     },
     {
       "type": "template",
-      "value": "example_task_card",
-      "rows": [],
-      "name": "example_task_card",
-      "_nested_name": "example_task_card"
+      "name": "highlighted_module",
+      "value": "module_card",
+      "rows": [
+        {
+          "name": "workshop_id",
+          "value": "@local.highlighted_module",
+          "_translations": {
+            "value": {}
+          },
+          "condition": false,
+          "type": "set_variable",
+          "_nested_name": "highlighted_module.workshop_id",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.highlighted_module",
+                "matchedExpression": "@local.highlighted_module",
+                "type": "local",
+                "fieldName": "highlighted_module"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.highlighted_module": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "card_style",
+          "value": "landscape",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "highlighted_module.card_style"
+        }
+      ],
+      "_nested_name": "highlighted_module"
     },
     {
-      "type": "template",
-      "value": "example_carousel",
-      "rows": [],
-      "name": "example_carousel",
-      "_nested_name": "example_carousel"
+      "type": "display_group",
+      "name": "dg_uncompleted",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_uncompleted",
+          "value": "Upcoming modules",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "dg_uncompleted.title_uncompleted"
+        },
+        {
+          "type": "carousel",
+          "name": "carousel_uncompleted",
+          "parameter_list": {
+            "space_between": "8"
+          },
+          "rows": [
+            {
+              "type": "items",
+              "value": "@data.workshop_tasks",
+              "parameter_list": {
+                "filter": "!@item.completed"
+              },
+              "rows": [
+                {
+                  "type": "template",
+                  "name": "uncompleted_modules",
+                  "value": "module_card",
+                  "rows": [
+                    {
+                      "name": "workshop_id",
+                      "value": "@item.id",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "dg_uncompleted.carousel_uncompleted.items.uncompleted_modules.workshop_id",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@item.id",
+                            "matchedExpression": "@item.id",
+                            "type": "item",
+                            "fieldName": "id"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@item.id": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "dg_uncompleted.carousel_uncompleted.items.uncompleted_modules"
+                }
+              ],
+              "name": "items",
+              "_nested_name": "dg_uncompleted.carousel_uncompleted.items",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.workshop_tasks",
+                    "matchedExpression": "@data.workshop_tasks",
+                    "type": "data",
+                    "fieldName": "workshop_tasks"
+                  }
+                ],
+                "parameter_list": {
+                  "filter": [
+                    {
+                      "fullExpression": "!@item.completed",
+                      "matchedExpression": "!@item.completed",
+                      "type": "item",
+                      "fieldName": "completed"
+                    }
+                  ]
+                }
+              },
+              "_dynamicDependencies": {
+                "@data.workshop_tasks": [
+                  "value"
+                ],
+                "!@item.completed": [
+                  "parameter_list.filter"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "dg_uncompleted.carousel_uncompleted"
+        }
+      ],
+      "_nested_name": "dg_uncompleted"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_completed",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_completed",
+          "value": "Completed modules",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "dg_completed.title_completed"
+        },
+        {
+          "type": "carousel",
+          "name": "carousel_completed",
+          "parameter_list": {
+            "space_between": "8"
+          },
+          "rows": [
+            {
+              "type": "items",
+              "value": "@data.workshop_tasks",
+              "parameter_list": {
+                "filter": "@item.completed"
+              },
+              "rows": [
+                {
+                  "type": "template",
+                  "name": "completed_modules",
+                  "value": "module_card",
+                  "rows": [
+                    {
+                      "name": "workshop_id",
+                      "value": "@item.id",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "dg_completed.carousel_completed.items.completed_modules.workshop_id",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@item.id",
+                            "matchedExpression": "@item.id",
+                            "type": "item",
+                            "fieldName": "id"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@item.id": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "dg_completed.carousel_completed.items.completed_modules"
+                }
+              ],
+              "name": "items",
+              "_nested_name": "dg_completed.carousel_completed.items",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.workshop_tasks",
+                    "matchedExpression": "@data.workshop_tasks",
+                    "type": "data",
+                    "fieldName": "workshop_tasks"
+                  }
+                ],
+                "parameter_list": {
+                  "filter": [
+                    {
+                      "fullExpression": "@item.completed",
+                      "matchedExpression": "@item.completed",
+                      "type": "item",
+                      "fieldName": "completed"
+                    }
+                  ]
+                }
+              },
+              "_dynamicDependencies": {
+                "@data.workshop_tasks": [
+                  "value"
+                ],
+                "@item.completed": [
+                  "parameter_list.filter"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "dg_completed.carousel_completed"
+        }
+      ],
+      "_nested_name": "dg_completed"
     },
     {
       "type": "drawer",
