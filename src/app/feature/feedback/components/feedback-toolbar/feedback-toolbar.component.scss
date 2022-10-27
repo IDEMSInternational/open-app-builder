@@ -1,0 +1,25 @@
+.toolbar-container {
+  display: flex;
+  gap: 8px;
+}
+.suffix {
+  opacity: 0.5;
+  &.stacked-label {
+    position: absolute;
+    right: 16px;
+    bottom: 4px;
+  }
+}
+
+ion-item {
+  --background: white;
+  --border-color: var(--color-primary);
+  --border-width: 1px;
+  --min-height: 100%;
+}
+ion-checkbox {
+  margin: 8px 0;
+}
+.width-input {
+  max-width: 60px;
+}
