@@ -36,7 +36,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
 
   getParams() {
     this.taskGroupId = getStringParamFromTemplateRow(this._row, "task_group_id", null);
-    this.taskGroupDataList = getStringParamFromTemplateRow(this._row, "task_group_data_list", null);
+    this.taskGroupDataList = getStringParamFromTemplateRow(this._row, "task_group_data", null);
     this.taskGroupCompletedField = getStringParamFromTemplateRow(
       this._row,
       "completed_field",
