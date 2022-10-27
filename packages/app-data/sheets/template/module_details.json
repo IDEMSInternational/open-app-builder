@@ -390,6 +390,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "tog_or_ind",
       "_dynamicFields": {
@@ -414,6 +415,7 @@
         "style": "column"
       },
       "condition": "@fields.workshop_path == \"individual\"",
+      "exclude_from_translation": true,
       "rows": [
         {
           "type": "items",
@@ -422,11 +424,13 @@
             "filter": "@item.individual",
             "sort": "priority"
           },
+          "exclude_from_translation": true,
           "rows": [
             {
               "type": "template",
               "name": "card_@item.id",
               "value": "task_card",
+              "exclude_from_translation": true,
               "rows": [
                 {
                   "name": "workshop_id",
@@ -434,6 +438,7 @@
                   "_translations": {
                     "value": {}
                   },
+                  "exclude_from_translation": true,
                   "type": "set_variable",
                   "_nested_name": "display_group.items.card_@item.id.workshop_id",
                   "_dynamicFields": {
@@ -469,6 +474,7 @@
                   "_translations": {
                     "value": {}
                   },
+                  "exclude_from_translation": true,
                   "type": "set_variable",
                   "_nested_name": "display_group.items.card_@item.id.task_id",
                   "_dynamicFields": {
@@ -582,6 +588,7 @@
         "style": "column"
       },
       "condition": "@fields.workshop_path == \"together\"",
+      "exclude_from_translation": true,
       "rows": [
         {
           "type": "items",
@@ -590,11 +597,13 @@
             "filter": "@item.together",
             "sort": "priority"
           },
+          "exclude_from_translation": true,
           "rows": [
             {
               "type": "template",
               "name": "card_@item.id",
               "value": "task_card",
+              "exclude_from_translation": true,
               "rows": [
                 {
                   "name": "workshop_id",
@@ -602,6 +611,7 @@
                   "_translations": {
                     "value": {}
                   },
+                  "exclude_from_translation": true,
                   "type": "set_variable",
                   "_nested_name": "display_group.items.card_@item.id.workshop_id",
                   "_dynamicFields": {
@@ -637,6 +647,7 @@
                   "_translations": {
                     "value": {}
                   },
+                  "exclude_from_translation": true,
                   "type": "set_variable",
                   "_nested_name": "display_group.items.card_@item.id.task_id",
                   "_dynamicFields": {
