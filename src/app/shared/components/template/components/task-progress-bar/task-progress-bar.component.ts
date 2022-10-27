@@ -69,12 +69,12 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
       if (this.templateFieldService.getField(this.taskGroupCompletedField) !== true) {
         // If not, set completed field to "true"
         this.setTaskGroupCompletedStatus(this.taskGroupCompletedField, true);
-      } else {
-        this.setTaskGroupCompletedStatus(this.taskGroupCompletedField, false);
-        if (this.subtasksCompleted) {
-          this.progressStatus = "inProgress";
-          this.progressStatusChange.emit(this.progressStatus);
-        }
+      }
+    } else {
+      this.setTaskGroupCompletedStatus(this.taskGroupCompletedField, false);
+      if (this.subtasksCompleted) {
+        this.progressStatus = "inProgress";
+        this.progressStatusChange.emit(this.progressStatus);
       }
     }
   }
