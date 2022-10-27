@@ -26,7 +26,12 @@ class FilterOperator extends BaseOperator {
     evaluator.setGlobalContext({ constants: row });
     return this.filterConditions.every((condition) => {
       try {
-        const result = evaluator.evaluate(condition);
+        /**
+         * row fields can be accessed both from global and local context, e.g.
+         * `id === 'some_id' and `this.id === 'some_id'`. This is to enable access to
+         * nested data objects which are stringified global context
+         */
+        const result = evaluator.evaluate(condition, row);
         return result;
       } catch (error) {
         console.error("Filter evaluation failed", { row, condition, error });
@@ -43,7 +48,7 @@ class FilterAnyOperator extends FilterOperator {
     return (
       this.filterConditions.find((condition) => {
         try {
-          const result = evaluator.evaluate(condition);
+          const result = evaluator.evaluate(condition, row);
           return result;
         } catch (error) {
           console.error("Filter evaluation failed", { row, condition, error });
