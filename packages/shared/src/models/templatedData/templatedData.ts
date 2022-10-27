@@ -85,8 +85,11 @@ export class TemplatedData {
    * Will convert non-delimited strings to delimted, extract list of variables and parse
    */
   private parseTemplatedString(value: string) {
-    value = addStringDelimiters(value, this.contextPrefixes);
-    const extractedData = extractDelimitedTemplateString({ value });
+    const delimited = addStringDelimiters(value, this.contextPrefixes);
+    const extractedData = extractDelimitedTemplateString(
+      { value: delimited },
+      this.contextPrefixes
+    );
     const parsedValue = this.parseExtractedString(extractedData);
     return parsedValue;
   }
