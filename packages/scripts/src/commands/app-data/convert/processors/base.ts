@@ -10,7 +10,7 @@ import chalk from "chalk";
 
 class BaseProcessor<T = any, V = any> {
   /** Used to invalidate cache */
-  public cacheVersion = 20220823;
+  public cacheVersion = 20221026.0;
 
   public logger: Logger;
 
