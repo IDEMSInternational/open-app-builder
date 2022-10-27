@@ -25,6 +25,10 @@ import {
 } from "./feedback.types";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { IAppConfig } from "packages/data-models";
+import { NavigationStart, Router } from "@angular/router";
+import { Subject } from "rxjs";
+import { takeUntil, takeWhile } from "rxjs/operators";
+import { fromEvent } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -33,6 +37,10 @@ export class FeedbackService {
   public isReviewingMode$ = new BehaviorSubject(false);
 
   private deviceInfo: DeviceInfo;
+  /** Track content el style to allow revert on component destroy */
+  private initialContentStyle?: CSSStyleDeclaration;
+  private enableRouting$ = new Subject<boolean>();
+
   feedbackModuleDefaults;
   appStrings;
   feedbackButtons: IFeedbackContextMenuButton[];
@@ -45,7 +53,8 @@ export class FeedbackService {
     private toastController: ToastController,
     private dbService: DbService,
     private dbSyncService: DBSyncService,
-    private appConfigService: AppConfigService
+    private appConfigService: AppConfigService,
+    private router: Router
   ) {
     this.subscribeToAppConfigChanges();
     // retrieve device info for passing in metadata
@@ -54,8 +63,23 @@ export class FeedbackService {
     });
     // Handle enabling/disabling context menu actions depending on whether review mode enabled
     this.isReviewingMode$.subscribe((isReviewMode) => {
+      this._WIP_trackContentClicks(isReviewMode);
       this.setContextMenuActions(isReviewMode);
     });
+  }
+
+  /**
+   * Work in progress - provide template and component information on click
+   * in feedback mode
+   */
+  private _WIP_trackContentClicks(isReviewMode: boolean) {
+    if (isReviewMode) {
+      fromEvent<PointerEvent>(document, "click")
+        .pipe(takeWhile(() => this.isReviewingMode$.value === true))
+        .subscribe((e) => {
+          const meta = this.generateFeedbackTemplateMeta(e);
+        });
+    }
   }
 
   private subscribeToAppConfigChanges() {
@@ -108,6 +132,41 @@ export class FeedbackService {
       await this.presentToast(this.appStrings.feedback_unsent_text, { duration: 5000 });
     } else {
       await this.presentToast(this.appStrings.feedback_sent_text);
+    }
+  }
+
+  /** Set the width of the main content */
+  public setContentPageWidth(width?: number) {
+    const contentEl = document.getElementById("main");
+    if (!contentEl) {
+      console.error("Main content element not found, cannot set width");
+      return;
+    }
+    if (!this.initialContentStyle) {
+      this.initialContentStyle = contentEl.style;
+    }
+    if (width) {
+      contentEl.style.width = `${width}px`;
+      contentEl.style.maxWidth = `${width}px`;
+      contentEl.style.margin = `auto`;
+    } else {
+      contentEl.style.width = this.initialContentStyle.width;
+      contentEl.style.maxWidth = this.initialContentStyle.maxWidth;
+      contentEl.style.margin = this.initialContentStyle.margin;
+    }
+  }
+
+  /** Intercept router events and optionally block navigation */
+  public setNavigationEnabled(enabled?: boolean) {
+    if (enabled) {
+      this.enableRouting$.next(true);
+    } else {
+      this.router.events.pipe(takeUntil(this.enableRouting$)).subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          // silently redirect navigation to current location instead of changing
+          this.router.navigateByUrl(location.pathname, { skipLocationChange: true });
+        }
+      });
     }
   }
 

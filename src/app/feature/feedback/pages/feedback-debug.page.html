@@ -1,19 +1,13 @@
 <ion-content class="ion-padding">
-  <div style="display: flex; align-items: center">
-    <h2 style="flex: 1">Feedback</h2>
-    <ion-item class="clear">
-      <ion-label>Enabled</ion-label>
-      <ion-toggle
-        #toggle
-        [checked]="feedbackService.isReviewingMode$ | async"
-        (ionChange)="feedbackService.setReviewMode(toggle.checked)"
-      ></ion-toggle>
-    </ion-item>
-  </div>
+  <h2>Feedback</h2>
+  <!-- Feedback Tools -->
+  <plh-feedback-toolbar></plh-feedback-toolbar>
   <hr class="spacer" />
+  <!-- Feedback Template (not currently in use)-->
+  <!-- <plh-template-container templatename="feature_feedback_debug"></plh-template-container> -->
+  <!-- <hr class="spacer" /> -->
 
-  <plh-template-container templatename="feature_feedback_debug"></plh-template-container>
-  <hr class="spacer" />
+  <!-- Feedback DB -->
   <div style="display: flex">
     <h3 style="flex: 1">Database Pending ({{feedbackPending.length}})</h3>
     <ion-button (click)="syncFeedback()">Sync</ion-button>
