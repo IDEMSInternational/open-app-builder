@@ -45,7 +45,7 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
   }
 
   async getTaskGroupData(taskGroupId: string) {
-    const dataList = await this.appDataService.getSheet("data_list", `${taskGroupId}_tasks`);
+    const dataList = await this.appDataService.getSheet("data_list", `${taskGroupId}_task_gs`);
     const subtasks = dataList.rows;
     this.subtasksTotal = subtasks.length;
     this.subtasksCompleted = subtasks.filter((task) =>
@@ -56,12 +56,8 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
       this.progressStatusChange.emit(this.progressStatus);
       // Check whether task group has already been completed
       if (this.templateFieldService.getField(`${taskGroupId}_completed`) !== true) {
-        // If not, set completed field to "true" and emit "completed"
+        // If not, set completed field to "true"
         this.setTaskGroupCompleted(taskGroupId);
-        // TODO? Alternatively, leave setting the field to the template, and just emit "completed", i.e.
-        // this.triggerActions("completed")
-        // Currently the task-progress-bar cannot trigger actions, since it is only instantiated inside
-        // the task-card so has now "_row"
       }
     } else if (this.subtasksCompleted) {
       this.progressStatus = "inProgress";
