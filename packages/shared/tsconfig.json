@@ -5,6 +5,7 @@
     "moduleResolution": "node",
     "module": "commonjs",
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     // Global type definitions.
     "typeRoots": ["./node_modules/@types"]
   },
