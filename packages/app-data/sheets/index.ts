@@ -279,6 +279,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_data_lists.xlsx",
     },
+    debug_delimeters_list: {
+      flow_type: "data_list",
+      flow_name: "debug_delimeters_list",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/debug_sheets/debug_delimiters.xlsx",
+    },
     debug_variable_data: {
       flow_type: "data_list",
       flow_name: "debug_variable_data",
@@ -2219,6 +2225,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "debug_data_top",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_data_lists.xlsx",
+    },
+    debug_delimeters: {
+      flow_type: "template",
+      flow_name: "debug_delimeters",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/debug_sheets/debug_delimiters.xlsx",
     },
     debug_dg_button: {
       flow_type: "template",

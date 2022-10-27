@@ -10,6 +10,7 @@
         "value": {}
       },
       "condition": "@fields._highlighted_task_group",
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "workshop_id",
       "_dynamicFields": {
@@ -43,6 +44,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "workshop_id"
     },
@@ -52,6 +54,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "task_groups"
     },
@@ -61,6 +64,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "task_group_data",
       "_dynamicFields": {
@@ -94,6 +98,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "ww_id",
       "_dynamicFields": {
@@ -118,6 +123,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "workshop_data",
       "_dynamicFields": {
@@ -142,6 +148,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "workshop_image",
       "_dynamicFields": {
@@ -167,6 +174,7 @@
         "style": "column"
       },
       "condition": "@fields.workshop_path == \"individual\"",
+      "exclude_from_translation": true,
       "rows": [
         {
           "type": "items",
@@ -176,6 +184,7 @@
             "sort": "priority",
             "limit": "1"
           },
+          "exclude_from_translation": true,
           "rows": [
             {
               "type": "button",
@@ -209,6 +218,7 @@
                 "style": "card",
                 "icon": "@local.workshop_image"
               },
+              "exclude_from_translation": true,
               "_nested_name": "dg_individual.items.button_module",
               "_dynamicFields": {
                 "value": [
@@ -373,6 +383,7 @@
         "style": "column"
       },
       "condition": "@fields.workshop_path == \"together\"",
+      "exclude_from_translation": true,
       "rows": [
         {
           "type": "items",
@@ -382,6 +393,7 @@
             "sort": "priority",
             "limit": "1"
           },
+          "exclude_from_translation": true,
           "rows": [
             {
               "type": "button",
@@ -415,6 +427,7 @@
                 "style": "card",
                 "icon": "@local.workshop_image"
               },
+              "exclude_from_translation": true,
               "_nested_name": "dg_together.items.button_module",
               "_dynamicFields": {
                 "value": [
@@ -579,6 +592,7 @@
         "filter": "!@item.completed",
         "limit": "1"
       },
+      "exclude_from_translation": true,
       "rows": [
         {
           "type": "button",
@@ -612,6 +626,7 @@
             "style": "card",
             "icon": "plh_images/icons/star_outline.svg"
           },
+          "exclude_from_translation": true,
           "_nested_name": "items.button_parent_point",
           "_dynamicFields": {
             "value": [
@@ -736,6 +751,7 @@
         "filter": "!@item.completed",
         "limit": "1"
       },
+      "exclude_from_translation": true,
       "rows": [
         {
           "type": "button",
@@ -769,6 +785,7 @@
             "style": "card",
             "icon": "plh_images/icons/book.svg"
           },
+          "exclude_from_translation": true,
           "_nested_name": "items.button_parent_centre",
           "_dynamicFields": {
             "value": [

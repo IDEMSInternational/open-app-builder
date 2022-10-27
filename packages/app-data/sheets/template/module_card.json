@@ -6,6 +6,7 @@
     {
       "name": "with_image_and_subtitle",
       "value": true,
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "with_image_and_subtitle"
     },
@@ -79,6 +80,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "completed"
     },
@@ -88,6 +90,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "completed_field",
       "_dynamicFields": {
