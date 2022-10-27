@@ -392,6 +392,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "funders",
       _xlsxPath: "global/data/partners_data_lists.xlsx",
     },
+    debug_filtered: {
+      flow_name: "debug_filtered",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
     double_example_data_pipe_list: {
       flow_name: "double_example_data_pipe_list",
       flow_subtype: "generated",
@@ -1246,6 +1251,13 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "home_screen_variables",
       _xlsxPath: "global/data/navigation_globals.xlsx",
     },
+    home_screen_variables_mod: {
+      flow_type: "global",
+      flow_name: "home_screen_variables_mod",
+      override_target: "home_screen_variables",
+      override_condition: '@fields._app_skin == "modular"',
+      _xlsxPath: "global_modular/data/navigation_globals_modular.xlsx",
+    },
     hp_review_phrases: {
       flow_type: "global",
       flow_name: "hp_review_phrases",
@@ -2015,17 +2027,17 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_video.xlsx",
     },
-    example_carousel: {
-      flow_type: "template",
-      flow_name: "example_carousel",
-      flow_subtype: "component_demo",
-      _xlsxPath: "quality_assurance/component_sheets/component_carousel.xlsx",
-    },
     example_task_card: {
       flow_type: "template",
       flow_name: "example_task_card",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_task_card.xlsx",
+    },
+    example_task_carousel: {
+      flow_type: "template",
+      flow_name: "example_task_carousel",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_carousel.xlsx",
     },
     feat_animated_slides: {
       flow_type: "template",
@@ -3953,7 +3965,17 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     module_card: {
       flow_type: "template",
       flow_name: "module_card",
-      _xlsxPath: "global_modular/core_templates/module_cards.xlsx",
+      _xlsxPath: "global_modular/core_templates/module_navigation.xlsx",
+    },
+    module_details: {
+      flow_type: "template",
+      flow_name: "module_details",
+      _xlsxPath: "global_modular/core_templates/module_navigation.xlsx",
+    },
+    module_overview: {
+      flow_type: "template",
+      flow_name: "module_overview",
+      _xlsxPath: "global_modular/core_templates/module_navigation.xlsx",
     },
     nav_buttons: {
       flow_type: "template",
@@ -4515,6 +4537,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "talk_together",
       _xlsxPath: "global/mode_templates/talk_together.xlsx",
     },
+    task_card: {
+      flow_type: "template",
+      flow_name: "task_card",
+      _xlsxPath: "global_modular/core_templates/module_navigation.xlsx",
+    },
     task_group_stepper: {
       flow_type: "template",
       flow_name: "task_group_stepper",
@@ -4524,6 +4551,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "teen_testimonial_text",
       _xlsxPath: "global/mode_templates/listen.xlsx",
+    },
+    things_to_do: {
+      flow_type: "template",
+      flow_name: "things_to_do",
+      _xlsxPath: "global_modular/core_templates/home_screen_modular.xlsx",
     },
     think_temp: {
       flow_type: "template",
@@ -7090,6 +7122,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "data_pipe",
       flow_name: "common_workshop_tasks_filter",
       _xlsxPath: "global/data/workshop_data/workshop_tasks_data_pipes.xlsx",
+    },
+    debug_data_pipe_translate: {
+      flow_type: "data_pipe",
+      flow_name: "debug_data_pipe_translate",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_data_lists.xlsx",
     },
     example_data_pipe: {
       flow_type: "data_pipe",
