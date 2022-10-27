@@ -311,7 +311,7 @@
     {
       "type": "text",
       "name": "text_1_1_5",
-      "value": "The @global.parent_app Team legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
+      "value": "The @global.parent_app team legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
       "_translations": {
         "value": {}
       },
@@ -319,7 +319,7 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "The @global.parent_app Team legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
+            "fullExpression": "The @global.parent_app team legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
             "matchedExpression": "@global.parent_app",
             "type": "global",
             "fieldName": "parent_app"
@@ -804,13 +804,13 @@
       }
     },
     {
+      "type": "text",
+      "name": "text_3_4",
       "value": "This app may contain links to other sites that are not covered by this @global.privacy_policy. If you click on a third-party link, you will be directed to that site. This @global.privacy_policy applies only to the processing of your information by this app. It does not address, and we are not responsible for, the privacy, information, or other practices of any third parties, including any third party operating any site or service to which this app links to.",
       "_translations": {
         "value": {}
       },
-      "type": "set_variable",
-      "name": "set_variable",
-      "_nested_name": "set_variable",
+      "_nested_name": "text_3_4",
       "_dynamicFields": {
         "value": [
           {

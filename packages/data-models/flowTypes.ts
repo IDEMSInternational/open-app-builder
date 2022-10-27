@@ -288,7 +288,8 @@ export namespace FlowTypes {
     | "navigation_bar"
     | "task_card"
     | "task_progress_bar"
-    | "carousel";
+    | "carousel"
+    | "drawer";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
