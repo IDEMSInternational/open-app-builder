@@ -11,8 +11,7 @@ import {
   template: `
     <div class="container" [class]="position" [attr.data-param-style]="style">
       <div class="toggle_wrapper" [class.show-tick-cross]="showTickAndCross">
-        <ion-toggle mode="md" [checked]="_row.value" #toggleEl (click)="handleClick($event)">
-        </ion-toggle>
+        <ion-toggle mode="md" [checked]="_row.value" (click)="handleClick($event)"> </ion-toggle>
       </div>
       <span
         class="label"
