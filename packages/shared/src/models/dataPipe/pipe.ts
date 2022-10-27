@@ -25,11 +25,17 @@ export class DataPipe {
       }
       // apply operation
       const instance = new operator(this.df, step.args_list, this);
-      const output = instance.apply();
-      // Assign output as next input. Populate as named input/output if specified
-      this.df = output;
-      if (step.output_target) {
-        this.setOutputTarget(step.output_target);
+      try {
+        const output = instance.apply();
+        // Assign output as next input. Populate as named input/output if specified
+        this.df = output;
+        if (step.output_target) {
+          this.setOutputTarget(step.output_target);
+        }
+      } catch (error) {
+        // add additional step context to error message when thrown
+        error.message = JSON.stringify({ message: error.message, step }, null, 2);
+        throw error;
       }
     }
     return this.outputTargets;
