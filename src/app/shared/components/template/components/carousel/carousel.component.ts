@@ -38,7 +38,7 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
       this.config.loopedSlides = this._row.rows.length;
     }
     this.config.centeredSlides = getBooleanParamFromTemplateRow(this._row, "centered_slides", true);
-    this.taskGroupsList = getStringParamFromTemplateRow(this._row, "task_groups_list", null);
+    this.taskGroupsList = getStringParamFromTemplateRow(this._row, "task_groups_data", null);
     if (this.taskGroupsList) {
       const indexOfHighlightedTask = await this.taskService.getHighlightedTaskGroupIndex(
         this.taskGroupsList
