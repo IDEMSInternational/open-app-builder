@@ -62,6 +62,15 @@ export class TaskService {
     return this.templateFieldService.getField(this.appFields.HIGHLIGHTED_DATA_ID);
   }
 
+  /** For a given task groups list, @return the index of the highlighted task within that list */
+  public async getHighlightedTaskGroupIndex(taskGroupsList: string) {
+    const taskGroupsDataList = await this.appDataService.getSheet("data_list", taskGroupsList);
+    const arrayOfIds = taskGroupsDataList.rows.map((taskGroup) => taskGroup.id);
+    console.log("arrayOfIds:", arrayOfIds);
+    console.log("HighlightedTaskGroup:", this.getHighlightedTaskGroup());
+    return arrayOfIds.indexOf(this.getHighlightedTaskGroup());
+  }
+
   /** Set the value of the skipped field to true for all uncompleted tasks groups with
    * a priority lower than the target task group. Then re-evaluate the highlighted task group
    * NB "highest priority" is defined as having the lowest numerical value for the "number" column */
@@ -77,13 +86,13 @@ export class TaskService {
         this.templateFieldService.setField(taskGroup.skipped_field, "true");
       }
       // Case: "skipping backward" – target task group is higher in priority than current highlighted task,
-      // so "un-skip" all tasks with higher priority than target task
-      if (taskGroup.number > targetTaskGroupPriority) {
+      // so "un-skip" all tasks with equal or higher priority than target task (including target task)
+      if (taskGroup.number >= targetTaskGroupPriority) {
         this.templateFieldService.setField(taskGroup.skipped_field, "false");
       }
     });
-    this.templateFieldService.setField(this.appFields.HIGHLIGHTED_DATA_ID, targetTaskGroupId);
-    console.log("[HIGHLIGHTED TASK GROUP] - ", targetTaskGroupId);
+    // Re-evaluate highlighted task group
+    this.evaluateHighlightedTaskGroup();
   }
 
   /**
