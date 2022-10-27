@@ -29,10 +29,6 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
 
   ngOnInit() {
     this.getParams();
-    console.log(
-      "should be highlighted:",
-      this.taskService.checkHighlightedTaskGroup(this.taskGroupId)
-    );
     this.highlighted = this.taskGroupId
       ? this.taskService.checkHighlightedTaskGroup(this.taskGroupId)
       : false;
