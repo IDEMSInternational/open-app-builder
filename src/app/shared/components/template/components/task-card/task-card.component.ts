@@ -16,6 +16,8 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
   highlightedText = "Active";
   progressStatus: IProgressStatus = "notStarted";
   taskGroupId: string | null;
+  taskGroupDataList: string | null;
+  taskGroupCompletedField: string | null;
   taskId: string | null;
   title: string | null;
   subtitle: string | null;
@@ -34,6 +36,12 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
 
   getParams() {
     this.taskGroupId = getStringParamFromTemplateRow(this._row, "task_group_id", null);
+    this.taskGroupDataList = getStringParamFromTemplateRow(this._row, "task_group_data", null);
+    this.taskGroupCompletedField = getStringParamFromTemplateRow(
+      this._row,
+      "completed_field",
+      null
+    );
     this.taskId = getStringParamFromTemplateRow(this._row, "task_id", null);
     this.title = getStringParamFromTemplateRow(this._row, "title", null);
     this.subtitle = getStringParamFromTemplateRow(this._row, "subtitle", null);
