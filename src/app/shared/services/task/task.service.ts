@@ -46,6 +46,11 @@ export class TaskService {
         !this.templateFieldService.getField(taskGroup.skipped_field)
       );
     });
+    // If all task groups are completed or skipped (e.g. when user completes final task group),
+    // then set highlighted task group to undefined
+    if (taskGroupsNotCompletedAndNotSkipped.length === 0) {
+      this.templateFieldService.setField(this.appFields.HIGHLIGHTED_DATA_ID, "undefined");
+    }
     const highestPriorityTaskGroup = taskGroupsNotCompletedAndNotSkipped.reduce(
       (highestPriority, taskGroup) => {
         return highestPriority.number < taskGroup.number ? highestPriority : taskGroup;
