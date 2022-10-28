@@ -23,37 +23,18 @@
       "completed": "@fields.task_gp_w_self_care_welcome_individual_completed"
     },
     {
-      "id": "care_together",
-      "individual": false,
-      "together": true,
-      "priority": 2,
-      "has_single_task": true,
-      "title": "How are you?",
-      "_translations": {
-        "title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "How are you?"
-        }
-      },
-      "template": "w_self_care_care_together",
-      "completed_field": "task_gp_w_self_care_care_together_completed",
-      "completed": "@fields.task_gp_w_self_care_care_together_completed"
-    },
-    {
       "id": "intro",
       "individual": true,
       "together": true,
       "priority": 5,
       "has_single_task": true,
-      "title": "Why?",
+      "title": "@data.workshop[@fields.current_workshop].intro_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Why?"
+          "eng": "@data.workshop[@fields.current_workshop].intro_title"
         }
       },
       "template": "w_self_care_intro",
@@ -66,13 +47,13 @@
       "together": true,
       "priority": 70,
       "has_single_task": true,
-      "title": "@data.parent_centre.essential_tools.title",
+      "title": "@data.workshop[@fields.current_workshop].tools",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.parent_centre.essential_tools.title"
+          "eng": "@data.workshop[@fields.current_workshop].tools"
         }
       },
       "template": "w_self_care_tools_activity",
