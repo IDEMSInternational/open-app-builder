@@ -62,12 +62,12 @@
           "action_list": [
             {
               "trigger": "click",
-              "action_id": "set_highlighted_task_group",
+              "action_id": "task_group_set_highlighted",
               "args": [
                 "@item.id"
               ],
-              "_raw": "click | set_highlighted_task_group:@item.id",
-              "_cleaned": "click | set_highlighted_task_group:@item.id"
+              "_raw": "click | task_group_set_highlighted:@item.id",
+              "_cleaned": "click | task_group_set_highlighted:@item.id"
             },
             {
               "trigger": "click",
@@ -104,7 +104,7 @@
                 },
                 "_raw": [
                   {
-                    "fullExpression": "click | set_highlighted_task_group:@item.id",
+                    "fullExpression": "click | task_group_set_highlighted:@item.id",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
@@ -112,7 +112,7 @@
                 ],
                 "_cleaned": [
                   {
-                    "fullExpression": "click | set_highlighted_task_group:@item.id",
+                    "fullExpression": "click | task_group_set_highlighted:@item.id",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
