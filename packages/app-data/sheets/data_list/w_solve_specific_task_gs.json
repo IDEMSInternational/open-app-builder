@@ -8,35 +8,74 @@
       "individual": true,
       "together": true,
       "priority": 11,
-      "title": "Story 1",
       "has_single_task": true,
-      "template": "w_solve_read_1_temp"
+      "template": "w_solve_read_1_temp",
+      "title": "Story",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Story"
+        }
+      }
     },
     {
       "id": "read_2",
       "individual": true,
       "together": true,
       "priority": 71,
-      "title": "Story 2",
-      "has_single_task": false
+      "has_single_task": false,
+      "title": "Story",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Story"
+        }
+      }
     },
     {
       "id": "learn",
       "individual": true,
       "together": true,
       "priority": 74,
-      "title": "Learn",
       "has_single_task": true,
-      "template": "w_solve_learn_temp"
+      "template": "w_solve_learn_temp",
+      "title": "Learn",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Learn"
+        }
+      }
     },
     {
       "id": "try",
       "individual": false,
       "together": true,
       "priority": 75,
-      "title": "Try",
       "has_single_task": true,
-      "template": "w_solve_try"
+      "template": "w_solve_try",
+      "title": "Try",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Try"
+        }
+      }
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"
