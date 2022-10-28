@@ -1,4 +1,5 @@
 import { DataFrame, toJSON } from "danfojs";
+import { normalizeData } from ".";
 import { IBaseOperator, OPERATORS } from "./operators";
 import type { IDataPipeOperation } from "./types";
 
@@ -7,8 +8,13 @@ export class DataPipe {
   public outputTargets: { [key: string]: any } = {};
   public inputSources: { [key: string]: any } = {};
 
-  constructor(private steps: IDataPipeOperation[], inputSources = {}) {
-    this.inputSources = inputSources;
+  constructor(private steps: IDataPipeOperation[], inputSources: Record<string, any> = {}) {
+    // normalise all input data
+    let normalisedInputs = inputSources;
+    for (const [key, data] of Object.entries(inputSources)) {
+      normalisedInputs[key] = normalizeData(data);
+    }
+    this.inputSources = normalisedInputs;
   }
 
   run() {
