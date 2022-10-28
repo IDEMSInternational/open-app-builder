@@ -10,7 +10,7 @@ import { arrayToHashmap } from "../../utils";
   providedIn: "root",
 })
 export class TaskService {
-  appFields: IAppConfig["APP_FIELDS"];
+  highlightedTaskFieldName: string;
   taskGroups: any[];
   taskGroupsHashmap: Record<string, any>;
   constructor(
@@ -47,33 +47,32 @@ export class TaskService {
       );
     });
     // If all task groups are completed or skipped (e.g. when user completes final task group),
-    // then set highlighted task group to undefined
+    // then un-set highlighted task group
     if (taskGroupsNotCompletedAndNotSkipped.length === 0) {
-      this.templateFieldService.setField(this.appFields.HIGHLIGHTED_DATA_ID, "undefined");
+      this.templateFieldService.setField(this.highlightedTaskFieldName, "");
     }
     const highestPriorityTaskGroup = taskGroupsNotCompletedAndNotSkipped.reduce(
       (highestPriority, taskGroup) => {
         return highestPriority.number < taskGroup.number ? highestPriority : taskGroup;
       }
     );
-    this.templateFieldService.setField(
-      this.appFields.HIGHLIGHTED_DATA_ID,
-      highestPriorityTaskGroup.id
-    );
+    this.templateFieldService.setField(this.highlightedTaskFieldName, highestPriorityTaskGroup.id);
     console.log("[HIGHLIGHTED TASK GROUP] - ", highestPriorityTaskGroup.id);
   }
 
-  public getHighlightedTaskGroup() {
-    return this.templateFieldService.getField(this.appFields.HIGHLIGHTED_DATA_ID);
+  private getHighlightedTaskGroup() {
+    return this.templateFieldService.getField(this.highlightedTaskFieldName);
   }
 
-  /** For a given task groups list, @return the index of the highlighted task within that list */
+  /** For a given task groups list, @return the index of the highlighted task group within that list.
+   * If there is no highlighted task group, or it does not appear in the given list, @returns 0.*/
   public async getHighlightedTaskGroupIndex(taskGroupsList: string) {
+    const highlightedTaskGroup = this.getHighlightedTaskGroup();
+    if (!highlightedTaskGroup) return 0;
     const taskGroupsDataList = await this.appDataService.getSheet("data_list", taskGroupsList);
     const arrayOfIds = taskGroupsDataList.rows.map((taskGroup) => taskGroup.id);
-    console.log("arrayOfIds:", arrayOfIds);
-    console.log("HighlightedTaskGroup:", this.getHighlightedTaskGroup());
-    return arrayOfIds.indexOf(this.getHighlightedTaskGroup());
+    const indexOfHighlightedTask = arrayOfIds.indexOf(this.getHighlightedTaskGroup());
+    return indexOfHighlightedTask === -1 ? 0 : indexOfHighlightedTask;
   }
 
   /** Set the value of the skipped field to true for all uncompleted tasks groups with
@@ -110,7 +109,7 @@ export class TaskService {
 
   private subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.appFields = appConfig.APP_FIELDS;
+      this.highlightedTaskFieldName = `${appConfig.FIELD_PREFIX}._highlighted_task_group`;
     });
   }
 }

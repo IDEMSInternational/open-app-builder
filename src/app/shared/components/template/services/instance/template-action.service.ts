@@ -194,7 +194,7 @@ export class TemplateActionService extends TemplateInstanceService {
         return processor.processTemplateWithoutRender(templateToProcess);
       case "google_auth":
         return await this.authService.signInWithGoogle();
-      case "set_highlighted_task_group":
+      case "task_group_set_highlighted":
         return this.taskService.setHighlightedTaskGroup(args[0]);
       case "emit":
         const [emit_value, emit_data] = args;

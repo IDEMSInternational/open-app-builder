@@ -43,7 +43,6 @@ const APP_FIELDS = {
   APP_AUTH_USER: `${FIELD_PREFIX}._app_auth_user`,
   APP_SKIN: `${FIELD_PREFIX}._app_skin`,
   APP_THEME: `${FIELD_PREFIX}._app_theme`,
-  HIGHLIGHTED_DATA_ID: `${FIELD_PREFIX}._highlighted_data_id`,
 };
 
 const APP_LANGUAGES = {
