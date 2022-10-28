@@ -30,6 +30,7 @@ import { AuthService } from "./shared/services/auth/auth.service";
 import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
 import { IAppConfig } from "./shared/model";
+import { TaskService } from "./shared/services/task/task.service";
 
 @Component({
   selector: "app-root",
@@ -74,6 +75,7 @@ export class AppComponent {
     private crashlyticsService: CrashlyticsService,
     private appDataService: AppDataService,
     private authService: AuthService,
+    private taskService: TaskService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
     public lifecycleActionsService: LifecycleActionsService,
@@ -166,6 +168,7 @@ export class AppComponent {
     await this.campaignService.init();
     await this.templateProcessService.init();
     await this.tourService.init();
+    await this.taskService.init();
 
     // Initialise additional services in a non-blocking way
     setTimeout(async () => {

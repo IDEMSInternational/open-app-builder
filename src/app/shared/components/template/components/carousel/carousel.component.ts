@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { SwiperOptions } from "swiper";
+import { SwiperOptions, Swiper } from "swiper";
 import {
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
+  getStringParamFromTemplateRow,
 } from "src/app/shared/utils";
+import { TaskService } from "src/app/shared/services/task/task.service";
 
 @Component({
   selector: "plh-carousel",
@@ -14,12 +16,19 @@ import {
 })
 export class TmplCarouselComponent extends TemplateBaseComponent implements OnInit {
   config: SwiperOptions = {};
+  swiper: Swiper;
+  taskGroupsList: string;
+  initialSlide: number;
 
-  ngOnInit() {
-    this.getParams();
+  constructor(private taskService: TaskService) {
+    super();
   }
 
-  getParams() {
+  async ngOnInit() {
+    await this.getParams();
+  }
+
+  async getParams() {
     this.config.slidesPerView =
       getNumberParamFromTemplateRow(this._row, "slides_per_view", null) || "auto";
     this.config.spaceBetween = getNumberParamFromTemplateRow(this._row, "space_between", 10);
@@ -28,5 +37,20 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
     if (this.config.loop) {
       this.config.loopedSlides = this._row.rows.length;
     }
+    this.config.centeredSlides = getBooleanParamFromTemplateRow(this._row, "centered_slides", true);
+    this.taskGroupsList = getStringParamFromTemplateRow(this._row, "task_group_data", null);
+    if (this.taskGroupsList) {
+      const indexOfHighlightedTask = await this.taskService.getHighlightedTaskGroupIndex(
+        this.taskGroupsList
+      );
+      this.initialSlide = indexOfHighlightedTask;
+    } else {
+      this.initialSlide = getNumberParamFromTemplateRow(this._row, "initial_slide_index", 0);
+    }
+  }
+
+  initialiseSwiper(swiper: Swiper) {
+    this.swiper = swiper;
+    this.swiper.slideTo(this.initialSlide, 0, false);
   }
 }
