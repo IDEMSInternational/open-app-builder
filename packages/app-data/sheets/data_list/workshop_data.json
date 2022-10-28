@@ -24,9 +24,7 @@
         "in_text_title": {
           "tz_sw": true
         },
-        "description": {
-          "tz_sw": true
-        },
+        "description": {},
         "short_title": {
           "tz_sw": true,
           "za_af": true,
@@ -64,7 +62,7 @@
           "eng": "**Welcome and Self-Care** @global.workshop"
         },
         "description": {
-          "eng": "This @global.weekly_workshop is about YOU. Looking after yourself is essential for a happy family."
+          "eng": "This @global.workshop is about YOU. Looking after yourself is essential for a happy family."
         },
         "short_title": {
           "eng": "Self-Care"
@@ -80,7 +78,7 @@
         }
       },
       "in_text_title": "**Welcome and Self-Care** @global.workshop",
-      "description": "This @global.weekly_workshop is about YOU. Looking after yourself is essential for a happy family.",
+      "description": "This @global.workshop is about YOU. Looking after yourself is essential for a happy family.",
       "short_title": "Self-Care",
       "tools": "How to do self-care",
       "caregiver_testimonial_script": "For me as a parent, it was almost impossible to find time for myself. I was always busy taking care of everyone else. Through @global.parent_app, I realised how important it is to take care of myself. It helps me AND my family! \n\nHaving a moment for myself helps me to breathe and notice how I feel. Even 5 minutes to have a cup of tea makes a big difference. Now I can deal with my stress better.",

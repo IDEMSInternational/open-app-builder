@@ -11,7 +11,7 @@
       "_translations": {
         "value": {}
       },
-      "condition": false,
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "highlighted_module",
       "_dynamicFields": {
@@ -34,6 +34,7 @@
       "type": "template",
       "name": "highlighted_module",
       "value": "module_card",
+      "exclude_from_translation": true,
       "rows": [
         {
           "name": "workshop_id",
@@ -41,7 +42,7 @@
           "_translations": {
             "value": {}
           },
-          "condition": false,
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "highlighted_module.workshop_id",
           "_dynamicFields": {
@@ -66,6 +67,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "highlighted_module.card_style"
         }
@@ -73,268 +75,153 @@
       "_nested_name": "highlighted_module"
     },
     {
-      "type": "display_group",
-      "name": "dg_uncompleted",
-      "parameter_list": {
-        "style": "column"
+      "type": "title",
+      "name": "title",
+      "value": "All @global.workshops_capital",
+      "_translations": {
+        "value": {}
       },
-      "rows": [
-        {
-          "type": "title",
-          "name": "title_uncompleted",
-          "value": "Upcoming modules",
-          "_translations": {
-            "value": {}
-          },
-          "_nested_name": "dg_uncompleted.title_uncompleted"
-        },
-        {
-          "type": "carousel",
-          "name": "carousel_uncompleted",
-          "parameter_list": {
-            "space_between": "8"
-          },
-          "rows": [
-            {
-              "type": "items",
-              "value": "@data.workshop_tasks",
-              "parameter_list": {
-                "filter": "!@item.completed"
-              },
-              "rows": [
-                {
-                  "type": "template",
-                  "name": "uncompleted_modules",
-                  "value": "module_card",
-                  "rows": [
-                    {
-                      "name": "workshop_id",
-                      "value": "@item.id",
-                      "_translations": {
-                        "value": {}
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "dg_uncompleted.carousel_uncompleted.items.uncompleted_modules.workshop_id",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@item.id",
-                            "matchedExpression": "@item.id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@item.id": [
-                          "value"
-                        ]
-                      }
-                    }
-                  ],
-                  "_nested_name": "dg_uncompleted.carousel_uncompleted.items.uncompleted_modules"
-                }
-              ],
-              "name": "items",
-              "_nested_name": "dg_uncompleted.carousel_uncompleted.items",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@data.workshop_tasks",
-                    "matchedExpression": "@data.workshop_tasks",
-                    "type": "data",
-                    "fieldName": "workshop_tasks"
-                  }
-                ],
-                "parameter_list": {
-                  "filter": [
-                    {
-                      "fullExpression": "!@item.completed",
-                      "matchedExpression": "!@item.completed",
-                      "type": "item",
-                      "fieldName": "completed"
-                    }
-                  ]
-                }
-              },
-              "_dynamicDependencies": {
-                "@data.workshop_tasks": [
-                  "value"
-                ],
-                "!@item.completed": [
-                  "parameter_list.filter"
-                ]
-              }
-            }
-          ],
-          "_nested_name": "dg_uncompleted.carousel_uncompleted"
-        }
-      ],
-      "_nested_name": "dg_uncompleted"
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "All @global.workshops_capital",
+            "matchedExpression": "@global.workshops_capital",
+            "type": "global",
+            "fieldName": "workshops_capital"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.workshops_capital": [
+          "value"
+        ]
+      }
     },
     {
-      "type": "display_group",
-      "name": "dg_completed",
+      "type": "carousel",
+      "name": "carousel",
       "parameter_list": {
-        "style": "column"
+        "space_between": "8"
       },
+      "exclude_from_translation": true,
       "rows": [
         {
-          "type": "title",
-          "name": "title_completed",
-          "value": "Completed modules",
-          "_translations": {
-            "value": {}
-          },
-          "_nested_name": "dg_completed.title_completed"
-        },
-        {
-          "type": "carousel",
-          "name": "carousel_completed",
-          "parameter_list": {
-            "space_between": "8"
-          },
+          "type": "items",
+          "value": "@data.workshop_tasks",
+          "exclude_from_translation": true,
           "rows": [
             {
-              "type": "items",
-              "value": "@data.workshop_tasks",
-              "parameter_list": {
-                "filter": "@item.completed"
-              },
+              "type": "template",
+              "name": "module_card_@item.id",
+              "value": "module_card",
+              "exclude_from_translation": true,
               "rows": [
                 {
-                  "type": "template",
-                  "name": "completed_modules",
-                  "value": "module_card",
-                  "rows": [
-                    {
-                      "name": "workshop_id",
-                      "value": "@item.id",
-                      "_translations": {
-                        "value": {}
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "dg_completed.carousel_completed.items.completed_modules.workshop_id",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@item.id",
-                            "matchedExpression": "@item.id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@item.id": [
-                          "value"
-                        ]
+                  "name": "workshop_id",
+                  "value": "@item.id",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "type": "set_variable",
+                  "_nested_name": "carousel.items.module_card_@item.id.workshop_id",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@item.id",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
                       }
-                    }
-                  ],
-                  "_nested_name": "dg_completed.carousel_completed.items.completed_modules"
+                    ],
+                    "_nested_name": [
+                      {
+                        "fullExpression": "carousel.items.module_card_@item.id.workshop_id",
+                        "matchedExpression": "@item.id.workshop_id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@item.id": [
+                      "value"
+                    ],
+                    "@item.id.workshop_id": [
+                      "_nested_name"
+                    ]
+                  }
                 }
               ],
-              "name": "items",
-              "_nested_name": "dg_completed.carousel_completed.items",
+              "_nested_name": "carousel.items.module_card_@item.id",
               "_dynamicFields": {
-                "value": [
+                "name": [
                   {
-                    "fullExpression": "@data.workshop_tasks",
-                    "matchedExpression": "@data.workshop_tasks",
-                    "type": "data",
-                    "fieldName": "workshop_tasks"
+                    "fullExpression": "module_card_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
                   }
                 ],
-                "parameter_list": {
-                  "filter": [
-                    {
-                      "fullExpression": "@item.completed",
-                      "matchedExpression": "@item.completed",
-                      "type": "item",
-                      "fieldName": "completed"
-                    }
-                  ]
-                }
+                "_nested_name": [
+                  {
+                    "fullExpression": "carousel.items.module_card_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
               },
               "_dynamicDependencies": {
-                "@data.workshop_tasks": [
-                  "value"
-                ],
-                "@item.completed": [
-                  "parameter_list.filter"
+                "@item.id": [
+                  "name",
+                  "_nested_name"
                 ]
               }
             }
           ],
-          "_nested_name": "dg_completed.carousel_completed"
+          "name": "items",
+          "_nested_name": "carousel.items",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop_tasks",
+                "matchedExpression": "@data.workshop_tasks",
+                "type": "data",
+                "fieldName": "workshop_tasks"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop_tasks": [
+              "value"
+            ]
+          }
         }
       ],
-      "_nested_name": "dg_completed"
+      "_nested_name": "carousel"
+    },
+    {
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "name": "set_variable",
+      "_nested_name": "set_variable"
     },
     {
       "type": "drawer",
+      "name": "drawer",
       "value": "Things to do",
       "rows": [
         {
-          "type": "display_group",
-          "parameter_list": {
-            "style": "column"
-          },
-          "rows": [
-            {
-              "type": "button",
-              "value": "Why self care",
-              "_translations": {
-                "value": {}
-              },
-              "parameter_list": {
-                "style": "card",
-                "icon": "plh_images/workshops/w_self_care/tools.svg"
-              },
-              "name": "button",
-              "_nested_name": "drawer.display_group.button"
-            },
-            {
-              "type": "button",
-              "value": "Relax",
-              "parameter_list": {
-                "style": "card",
-                "icon": "plh_images/icons/parent_child.svg"
-              },
-              "rows": [
-                {
-                  "type": "toggle_bar",
-                  "name": "toggle_bar",
-                  "parameter_list": {
-                    "position": "right",
-                    "style": "in_button"
-                  },
-                  "_nested_name": "drawer.display_group.button.toggle_bar"
-                }
-              ],
-              "name": "button",
-              "_nested_name": "drawer.display_group.button"
-            },
-            {
-              "type": "button",
-              "value": "Something fun",
-              "_translations": {
-                "value": {}
-              },
-              "parameter_list": {
-                "style": "card",
-                "icon": "plh_images/icons/book.svg"
-              },
-              "name": "button",
-              "_nested_name": "drawer.display_group.button"
-            }
-          ],
-          "name": "display_group",
-          "_nested_name": "drawer.display_group"
+          "type": "template",
+          "name": "things_to_do",
+          "value": "things_to_do",
+          "exclude_from_translation": true,
+          "rows": [],
+          "_nested_name": "drawer.things_to_do"
         }
       ],
-      "name": "drawer",
       "_nested_name": "drawer"
     }
   ],
