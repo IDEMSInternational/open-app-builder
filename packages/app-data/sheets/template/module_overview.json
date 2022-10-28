@@ -5,6 +5,7 @@
   "rows": [
     {
       "name": "empty_string",
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "empty_string"
     },
@@ -374,10 +375,12 @@
       "type": "template",
       "name": "full_module",
       "value": "module_card",
+      "exclude_from_translation": true,
       "rows": [
         {
           "name": "with_image_and_subtitle",
           "value": false,
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "full_module.with_image_and_subtitle"
         },
@@ -387,6 +390,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "full_module.card_style"
         },
@@ -396,6 +400,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "full_module.workshop_id",
           "_dynamicFields": {
@@ -420,6 +425,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "full_module.card_title",
           "_dynamicFields": {
@@ -444,6 +450,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "full_module.click_template"
         }
@@ -454,6 +461,7 @@
       "type": "template",
       "name": "card_tools",
       "value": "task_card",
+      "exclude_from_translation": true,
       "rows": [
         {
           "name": "workshop_id",
@@ -461,6 +469,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "card_tools.workshop_id",
           "_dynamicFields": {
@@ -485,6 +494,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "card_tools.task_id"
         }
@@ -495,6 +505,7 @@
       "type": "template",
       "name": "card_hp",
       "value": "task_card",
+      "exclude_from_translation": true,
       "rows": [
         {
           "name": "workshop_id",
@@ -502,6 +513,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "card_hp.workshop_id",
           "_dynamicFields": {
@@ -526,6 +538,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "card_hp.task_id"
         }
