@@ -1,21 +1,23 @@
 {
   "flow_type": "template",
-  "flow_name": "debug_delimeters",
+  "flow_name": "debug_delimiters",
   "status": "released",
   "flow_subtype": "debug",
   "rows": [
     {
       "name": "list_id",
-      "value": "debug_delimeters_list",
+      "value": "debug_delimiters_list",
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "list_id"
     },
     {
       "name": "target_row",
       "value": 1,
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "target_row"
     },
@@ -32,23 +34,24 @@
     {
       "type": "text",
       "name": "answer",
-      "value": "expected: @data.debug_delimeters_list.1.text",
+      "value": "expected: @data.debug_delimiters_list.1.text",
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "_nested_name": "answer",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "expected: @data.debug_delimeters_list.1.text",
-            "matchedExpression": "@data.debug_delimeters_list.1.text",
+            "fullExpression": "expected: @data.debug_delimiters_list.1.text",
+            "matchedExpression": "@data.debug_delimiters_list.1.text",
             "type": "data",
-            "fieldName": "debug_delimeters_list"
+            "fieldName": "debug_delimiters_list"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@data.debug_delimeters_list.1.text": [
+        "@data.debug_delimiters_list.1.text": [
           "value"
         ]
       }
@@ -56,7 +59,7 @@
     {
       "type": "text",
       "name": "text_1",
-      "value": "1. @data.debug_delimeters_list.1.@local.target_field",
+      "value": "1. @data.debug_delimiters_list.1.{@local.target_field}",
       "_translations": {
         "value": {}
       },
@@ -65,13 +68,13 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "1. @data.debug_delimeters_list.1.@local.target_field",
-            "matchedExpression": "@data.debug_delimeters_list.1",
+            "fullExpression": "1. @data.debug_delimiters_list.1.{@local.target_field}",
+            "matchedExpression": "@data.debug_delimiters_list.1",
             "type": "data",
-            "fieldName": "debug_delimeters_list"
+            "fieldName": "debug_delimiters_list"
           },
           {
-            "fullExpression": "1. @data.debug_delimeters_list.1.@local.target_field",
+            "fullExpression": "1. @data.debug_delimiters_list.1.{@local.target_field}",
             "matchedExpression": "@local.target_field",
             "type": "local",
             "fieldName": "target_field"
@@ -79,7 +82,7 @@
         ]
       },
       "_dynamicDependencies": {
-        "@data.debug_delimeters_list.1": [
+        "@data.debug_delimiters_list.1": [
           "value"
         ],
         "@local.target_field": [
@@ -90,7 +93,7 @@
     {
       "type": "text",
       "name": "text_2",
-      "value": "2. @data.debug_delimeters_list.1[@local.target_field]",
+      "value": "2. @data.debug_delimiters_list.1[@local.target_field]",
       "_translations": {
         "value": {}
       },
@@ -99,13 +102,13 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "2. @data.debug_delimeters_list.1[@local.target_field]",
-            "matchedExpression": "@data.debug_delimeters_list.1",
+            "fullExpression": "2. @data.debug_delimiters_list.1[@local.target_field]",
+            "matchedExpression": "@data.debug_delimiters_list.1",
             "type": "data",
-            "fieldName": "debug_delimeters_list"
+            "fieldName": "debug_delimiters_list"
           },
           {
-            "fullExpression": "2. @data.debug_delimeters_list.1[@local.target_field]",
+            "fullExpression": "2. @data.debug_delimiters_list.1[@local.target_field]",
             "matchedExpression": "@local.target_field",
             "type": "local",
             "fieldName": "target_field"
@@ -113,7 +116,7 @@
         ]
       },
       "_dynamicDependencies": {
-        "@data.debug_delimeters_list.1": [
+        "@data.debug_delimiters_list.1": [
           "value"
         ],
         "@local.target_field": [
@@ -124,7 +127,7 @@
     {
       "type": "text",
       "name": "text_3",
-      "value": "3. @data.debug_delimeters_list.@local.target_row.@local.target_field",
+      "value": "3. @data.debug_delimiters_list.{@local.target_row}.{@local.target_field}",
       "_translations": {
         "value": {}
       },
@@ -133,19 +136,19 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "3. @data.debug_delimeters_list.@local.target_row.@local.target_field",
-            "matchedExpression": "@data.debug_delimeters_list",
+            "fullExpression": "3. @data.debug_delimiters_list.{@local.target_row}.{@local.target_field}",
+            "matchedExpression": "@data.debug_delimiters_list",
             "type": "data",
-            "fieldName": "debug_delimeters_list"
+            "fieldName": "debug_delimiters_list"
           },
           {
-            "fullExpression": "3. @data.debug_delimeters_list.@local.target_row.@local.target_field",
+            "fullExpression": "3. @data.debug_delimiters_list.{@local.target_row}.{@local.target_field}",
             "matchedExpression": "@local.target_row",
             "type": "local",
             "fieldName": "target_row"
           },
           {
-            "fullExpression": "3. @data.debug_delimeters_list.@local.target_row.@local.target_field",
+            "fullExpression": "3. @data.debug_delimiters_list.{@local.target_row}.{@local.target_field}",
             "matchedExpression": "@local.target_field",
             "type": "local",
             "fieldName": "target_field"
@@ -153,7 +156,7 @@
         ]
       },
       "_dynamicDependencies": {
-        "@data.debug_delimeters_list": [
+        "@data.debug_delimiters_list": [
           "value"
         ],
         "@local.target_row": [
@@ -167,7 +170,7 @@
     {
       "type": "text",
       "name": "text_4",
-      "value": "4. @data.debug_delimeters_list[@local.target_row][@local.target_field]",
+      "value": "4. @data.debug_delimiters_list[@local.target_row][@local.target_field]",
       "_translations": {
         "value": {}
       },
@@ -176,19 +179,19 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "4. @data.debug_delimeters_list[@local.target_row][@local.target_field]",
-            "matchedExpression": "@data.debug_delimeters_list",
+            "fullExpression": "4. @data.debug_delimiters_list[@local.target_row][@local.target_field]",
+            "matchedExpression": "@data.debug_delimiters_list",
             "type": "data",
-            "fieldName": "debug_delimeters_list"
+            "fieldName": "debug_delimiters_list"
           },
           {
-            "fullExpression": "4. @data.debug_delimeters_list[@local.target_row][@local.target_field]",
+            "fullExpression": "4. @data.debug_delimiters_list[@local.target_row][@local.target_field]",
             "matchedExpression": "@local.target_row",
             "type": "local",
             "fieldName": "target_row"
           },
           {
-            "fullExpression": "4. @data.debug_delimeters_list[@local.target_row][@local.target_field]",
+            "fullExpression": "4. @data.debug_delimiters_list[@local.target_row][@local.target_field]",
             "matchedExpression": "@local.target_field",
             "type": "local",
             "fieldName": "target_field"
@@ -196,7 +199,7 @@
         ]
       },
       "_dynamicDependencies": {
-        "@data.debug_delimeters_list": [
+        "@data.debug_delimiters_list": [
           "value"
         ],
         "@local.target_row": [
@@ -210,7 +213,7 @@
     {
       "type": "text",
       "name": "text_5",
-      "value": "@data.debug_delimeters_list.1.@local.target_field",
+      "value": "@data.debug_delimiters_list.1.{@local.target_field}",
       "_translations": {
         "value": {}
       },
@@ -219,13 +222,13 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@data.debug_delimeters_list.1.@local.target_field",
-            "matchedExpression": "@data.debug_delimeters_list.1",
+            "fullExpression": "@data.debug_delimiters_list.1.{@local.target_field}",
+            "matchedExpression": "@data.debug_delimiters_list.1",
             "type": "data",
-            "fieldName": "debug_delimeters_list"
+            "fieldName": "debug_delimiters_list"
           },
           {
-            "fullExpression": "@data.debug_delimeters_list.1.@local.target_field",
+            "fullExpression": "@data.debug_delimiters_list.1.{@local.target_field}",
             "matchedExpression": "@local.target_field",
             "type": "local",
             "fieldName": "target_field"
@@ -233,7 +236,7 @@
         ]
       },
       "_dynamicDependencies": {
-        "@data.debug_delimeters_list.1": [
+        "@data.debug_delimiters_list.1": [
           "value"
         ],
         "@local.target_field": [
@@ -244,7 +247,7 @@
     {
       "type": "text",
       "name": "text_6",
-      "value": "@data.debug_delimeters_list.1.[@local.target_field]",
+      "value": "@data.debug_delimiters_list.1.[@local.target_field]",
       "_translations": {
         "value": {}
       },
@@ -253,13 +256,13 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@data.debug_delimeters_list.1.[@local.target_field]",
-            "matchedExpression": "@data.debug_delimeters_list.1",
+            "fullExpression": "@data.debug_delimiters_list.1.[@local.target_field]",
+            "matchedExpression": "@data.debug_delimiters_list.1",
             "type": "data",
-            "fieldName": "debug_delimeters_list"
+            "fieldName": "debug_delimiters_list"
           },
           {
-            "fullExpression": "@data.debug_delimeters_list.1.[@local.target_field]",
+            "fullExpression": "@data.debug_delimiters_list.1.[@local.target_field]",
             "matchedExpression": "@local.target_field",
             "type": "local",
             "fieldName": "target_field"
@@ -267,7 +270,7 @@
         ]
       },
       "_dynamicDependencies": {
-        "@data.debug_delimeters_list.1": [
+        "@data.debug_delimiters_list.1": [
           "value"
         ],
         "@local.target_field": [
@@ -278,7 +281,7 @@
     {
       "type": "text",
       "name": "text_7",
-      "value": "@data.debug_delimeters_list.@local.target_row.@local.target_field",
+      "value": "@data.debug_delimiters_list.{@local.target_row}.{@local.target_field}",
       "_translations": {
         "value": {}
       },
@@ -287,19 +290,19 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@data.debug_delimeters_list.@local.target_row.@local.target_field",
-            "matchedExpression": "@data.debug_delimeters_list",
+            "fullExpression": "@data.debug_delimiters_list.{@local.target_row}.{@local.target_field}",
+            "matchedExpression": "@data.debug_delimiters_list",
             "type": "data",
-            "fieldName": "debug_delimeters_list"
+            "fieldName": "debug_delimiters_list"
           },
           {
-            "fullExpression": "@data.debug_delimeters_list.@local.target_row.@local.target_field",
+            "fullExpression": "@data.debug_delimiters_list.{@local.target_row}.{@local.target_field}",
             "matchedExpression": "@local.target_row",
             "type": "local",
             "fieldName": "target_row"
           },
           {
-            "fullExpression": "@data.debug_delimeters_list.@local.target_row.@local.target_field",
+            "fullExpression": "@data.debug_delimiters_list.{@local.target_row}.{@local.target_field}",
             "matchedExpression": "@local.target_field",
             "type": "local",
             "fieldName": "target_field"
@@ -307,7 +310,7 @@
         ]
       },
       "_dynamicDependencies": {
-        "@data.debug_delimeters_list": [
+        "@data.debug_delimiters_list": [
           "value"
         ],
         "@local.target_row": [
@@ -321,7 +324,7 @@
     {
       "type": "text",
       "name": "text_8",
-      "value": "@data.debug_delimeters_list[@local.target_row][@local.target_field]",
+      "value": "@data.debug_delimiters_list[@local.target_row][@local.target_field]",
       "_translations": {
         "value": {}
       },
@@ -330,19 +333,19 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@data.debug_delimeters_list[@local.target_row][@local.target_field]",
-            "matchedExpression": "@data.debug_delimeters_list",
+            "fullExpression": "@data.debug_delimiters_list[@local.target_row][@local.target_field]",
+            "matchedExpression": "@data.debug_delimiters_list",
             "type": "data",
-            "fieldName": "debug_delimeters_list"
+            "fieldName": "debug_delimiters_list"
           },
           {
-            "fullExpression": "@data.debug_delimeters_list[@local.target_row][@local.target_field]",
+            "fullExpression": "@data.debug_delimiters_list[@local.target_row][@local.target_field]",
             "matchedExpression": "@local.target_row",
             "type": "local",
             "fieldName": "target_row"
           },
           {
-            "fullExpression": "@data.debug_delimeters_list[@local.target_row][@local.target_field]",
+            "fullExpression": "@data.debug_delimiters_list[@local.target_row][@local.target_field]",
             "matchedExpression": "@local.target_field",
             "type": "local",
             "fieldName": "target_field"
@@ -350,7 +353,7 @@
         ]
       },
       "_dynamicDependencies": {
-        "@data.debug_delimeters_list": [
+        "@data.debug_delimiters_list": [
           "value"
         ],
         "@local.target_row": [

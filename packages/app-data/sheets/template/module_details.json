@@ -351,221 +351,15 @@
       "_nested_name": "task_groups"
     },
     {
-      "name": "task_group_data",
-      "value": "@local.workshop_id@local.task_groups",
+      "name": "path",
+      "value": "_ind",
       "_translations": {
         "value": {}
-      },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "task_group_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop_id@local.task_groups",
-            "matchedExpression": "@local.workshop_id",
-            "type": "local",
-            "fieldName": "workshop_id"
-          },
-          {
-            "fullExpression": "@local.workshop_id@local.task_groups",
-            "matchedExpression": "@local.task_groups",
-            "type": "local",
-            "fieldName": "task_groups"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_id": [
-          "value"
-        ],
-        "@local.task_groups": [
-          "value"
-        ]
-      }
-    },
-    {
-      "name": "tog_or_ind",
-      "value": "@fields.workshop_path",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "tog_or_ind",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields.workshop_path",
-            "matchedExpression": "@fields.workshop_path",
-            "type": "fields",
-            "fieldName": "workshop_path"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.workshop_path": [
-          "value"
-        ]
-      }
-    },
-    {
-      "type": "display_group",
-      "parameter_list": {
-        "style": "column"
       },
       "condition": "@fields.workshop_path == \"individual\"",
       "exclude_from_translation": true,
-      "rows": [
-        {
-          "type": "items",
-          "value": "@data.@local.task_group_data",
-          "parameter_list": {
-            "filter": "@item.individual",
-            "sort": "priority"
-          },
-          "exclude_from_translation": true,
-          "rows": [
-            {
-              "type": "template",
-              "name": "card_@item.id",
-              "value": "task_card",
-              "exclude_from_translation": true,
-              "rows": [
-                {
-                  "name": "workshop_id",
-                  "value": "@local.workshop_id",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "type": "set_variable",
-                  "_nested_name": "display_group.items.card_@item.id.workshop_id",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "@local.workshop_id",
-                        "matchedExpression": "@local.workshop_id",
-                        "type": "local",
-                        "fieldName": "workshop_id"
-                      }
-                    ],
-                    "_nested_name": [
-                      {
-                        "fullExpression": "display_group.items.card_@item.id.workshop_id",
-                        "matchedExpression": "@item.id.workshop_id",
-                        "type": "item",
-                        "fieldName": "id"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@local.workshop_id": [
-                      "value"
-                    ],
-                    "@item.id.workshop_id": [
-                      "_nested_name"
-                    ]
-                  }
-                },
-                {
-                  "name": "task_id",
-                  "value": "@item.id",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "type": "set_variable",
-                  "_nested_name": "display_group.items.card_@item.id.task_id",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "@item.id",
-                        "matchedExpression": "@item.id",
-                        "type": "item",
-                        "fieldName": "id"
-                      }
-                    ],
-                    "_nested_name": [
-                      {
-                        "fullExpression": "display_group.items.card_@item.id.task_id",
-                        "matchedExpression": "@item.id.task_id",
-                        "type": "item",
-                        "fieldName": "id"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@item.id": [
-                      "value"
-                    ],
-                    "@item.id.task_id": [
-                      "_nested_name"
-                    ]
-                  }
-                }
-              ],
-              "_nested_name": "display_group.items.card_@item.id",
-              "_dynamicFields": {
-                "name": [
-                  {
-                    "fullExpression": "card_@item.id",
-                    "matchedExpression": "@item.id",
-                    "type": "item",
-                    "fieldName": "id"
-                  }
-                ],
-                "_nested_name": [
-                  {
-                    "fullExpression": "display_group.items.card_@item.id",
-                    "matchedExpression": "@item.id",
-                    "type": "item",
-                    "fieldName": "id"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@item.id": [
-                  "name",
-                  "_nested_name"
-                ]
-              }
-            }
-          ],
-          "name": "items",
-          "_nested_name": "display_group.items",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.@local.task_group_data",
-                "matchedExpression": "@local.task_group_data",
-                "type": "local",
-                "fieldName": "task_group_data"
-              }
-            ],
-            "parameter_list": {
-              "filter": [
-                {
-                  "fullExpression": "@item.individual",
-                  "matchedExpression": "@item.individual",
-                  "type": "item",
-                  "fieldName": "individual"
-                }
-              ]
-            }
-          },
-          "_dynamicDependencies": {
-            "@local.task_group_data": [
-              "value"
-            ],
-            "@item.individual": [
-              "parameter_list.filter"
-            ]
-          }
-        }
-      ],
-      "name": "display_group",
-      "_nested_name": "display_group",
+      "type": "set_variable",
+      "_nested_name": "path",
       "_dynamicFields": {
         "condition": [
           {
@@ -583,106 +377,137 @@
       }
     },
     {
-      "type": "display_group",
-      "parameter_list": {
-        "style": "column"
+      "name": "path",
+      "value": "_tog",
+      "_translations": {
+        "value": {}
       },
-      "condition": "@fields.workshop_path == \"together\"",
+      "condition": "!@fields.workshop_path == \"individual\"",
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "path",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@fields.workshop_path == \"individual\"",
+            "matchedExpression": "!@fields.workshop_path",
+            "type": "fields",
+            "fieldName": "workshop_path"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@fields.workshop_path": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "task_group_data",
+      "value": "@local.workshop_id@local.path@local.task_groups",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "task_group_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop_id@local.path@local.task_groups",
+            "matchedExpression": "@local.workshop_id",
+            "type": "local",
+            "fieldName": "workshop_id"
+          },
+          {
+            "fullExpression": "@local.workshop_id@local.path@local.task_groups",
+            "matchedExpression": "@local.path",
+            "type": "local",
+            "fieldName": "path"
+          },
+          {
+            "fullExpression": "@local.workshop_id@local.path@local.task_groups",
+            "matchedExpression": "@local.task_groups",
+            "type": "local",
+            "fieldName": "task_groups"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_id": [
+          "value"
+        ],
+        "@local.path": [
+          "value"
+        ],
+        "@local.task_groups": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "value": "@data.@local.task_group_data",
+      "parameter_list": {
+        "sort": "priority"
+      },
       "exclude_from_translation": true,
       "rows": [
         {
-          "type": "items",
-          "value": "@data.@local.task_group_data",
-          "parameter_list": {
-            "filter": "@item.together",
-            "sort": "priority"
-          },
+          "type": "template",
+          "name": "card_@item.id",
+          "value": "task_card",
           "exclude_from_translation": true,
           "rows": [
             {
-              "type": "template",
-              "name": "card_@item.id",
-              "value": "task_card",
+              "name": "workshop_id",
+              "value": "@local.workshop_id",
+              "_translations": {
+                "value": {}
+              },
               "exclude_from_translation": true,
-              "rows": [
-                {
-                  "name": "workshop_id",
-                  "value": "@local.workshop_id",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "type": "set_variable",
-                  "_nested_name": "display_group.items.card_@item.id.workshop_id",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "@local.workshop_id",
-                        "matchedExpression": "@local.workshop_id",
-                        "type": "local",
-                        "fieldName": "workshop_id"
-                      }
-                    ],
-                    "_nested_name": [
-                      {
-                        "fullExpression": "display_group.items.card_@item.id.workshop_id",
-                        "matchedExpression": "@item.id.workshop_id",
-                        "type": "item",
-                        "fieldName": "id"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@local.workshop_id": [
-                      "value"
-                    ],
-                    "@item.id.workshop_id": [
-                      "_nested_name"
-                    ]
-                  }
-                },
-                {
-                  "name": "task_id",
-                  "value": "@item.id",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "exclude_from_translation": true,
-                  "type": "set_variable",
-                  "_nested_name": "display_group.items.card_@item.id.task_id",
-                  "_dynamicFields": {
-                    "value": [
-                      {
-                        "fullExpression": "@item.id",
-                        "matchedExpression": "@item.id",
-                        "type": "item",
-                        "fieldName": "id"
-                      }
-                    ],
-                    "_nested_name": [
-                      {
-                        "fullExpression": "display_group.items.card_@item.id.task_id",
-                        "matchedExpression": "@item.id.task_id",
-                        "type": "item",
-                        "fieldName": "id"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@item.id": [
-                      "value"
-                    ],
-                    "@item.id.task_id": [
-                      "_nested_name"
-                    ]
-                  }
-                }
-              ],
-              "_nested_name": "display_group.items.card_@item.id",
+              "type": "set_variable",
+              "_nested_name": "items.card_@item.id.workshop_id",
               "_dynamicFields": {
-                "name": [
+                "value": [
                   {
-                    "fullExpression": "card_@item.id",
+                    "fullExpression": "@local.workshop_id",
+                    "matchedExpression": "@local.workshop_id",
+                    "type": "local",
+                    "fieldName": "workshop_id"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.card_@item.id.workshop_id",
+                    "matchedExpression": "@item.id.workshop_id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.workshop_id": [
+                  "value"
+                ],
+                "@item.id.workshop_id": [
+                  "_nested_name"
+                ]
+              }
+            },
+            {
+              "name": "task_id",
+              "value": "@item.id",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "items.card_@item.id.task_id",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@item.id",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
@@ -690,8 +515,8 @@
                 ],
                 "_nested_name": [
                   {
-                    "fullExpression": "display_group.items.card_@item.id",
-                    "matchedExpression": "@item.id",
+                    "fullExpression": "items.card_@item.id.task_id",
+                    "matchedExpression": "@item.id.task_id",
                     "type": "item",
                     "fieldName": "id"
                   }
@@ -699,59 +524,56 @@
               },
               "_dynamicDependencies": {
                 "@item.id": [
-                  "name",
+                  "value"
+                ],
+                "@item.id.task_id": [
                   "_nested_name"
                 ]
               }
             }
           ],
-          "name": "items",
-          "_nested_name": "display_group.items",
+          "_nested_name": "items.card_@item.id",
           "_dynamicFields": {
-            "value": [
+            "name": [
               {
-                "fullExpression": "@data.@local.task_group_data",
-                "matchedExpression": "@local.task_group_data",
-                "type": "local",
-                "fieldName": "task_group_data"
+                "fullExpression": "card_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
               }
             ],
-            "parameter_list": {
-              "filter": [
-                {
-                  "fullExpression": "@item.together",
-                  "matchedExpression": "@item.together",
-                  "type": "item",
-                  "fieldName": "together"
-                }
-              ]
-            }
+            "_nested_name": [
+              {
+                "fullExpression": "items.card_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
           },
           "_dynamicDependencies": {
-            "@local.task_group_data": [
-              "value"
-            ],
-            "@item.together": [
-              "parameter_list.filter"
+            "@item.id": [
+              "name",
+              "_nested_name"
             ]
           }
         }
       ],
-      "name": "display_group",
-      "_nested_name": "display_group",
+      "name": "items",
+      "_nested_name": "items",
       "_dynamicFields": {
-        "condition": [
+        "value": [
           {
-            "fullExpression": "@fields.workshop_path == \"together\"",
-            "matchedExpression": "@fields.workshop_path",
-            "type": "fields",
-            "fieldName": "workshop_path"
+            "fullExpression": "@data.@local.task_group_data",
+            "matchedExpression": "@local.task_group_data",
+            "type": "local",
+            "fieldName": "task_group_data"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@fields.workshop_path": [
-          "condition"
+        "@local.task_group_data": [
+          "value"
         ]
       }
     }
