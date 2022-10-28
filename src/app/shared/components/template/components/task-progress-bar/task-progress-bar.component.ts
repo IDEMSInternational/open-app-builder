@@ -52,7 +52,7 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
 
   async evaluateTaskGroupData() {
     const dataList = await this.appDataService.getSheet("data_list", this.taskGroupDataList);
-    const subtasks = dataList.rows;
+    const subtasks = dataList?.rows || [];
     this.subtasksTotal = subtasks.length;
     this.subtasksCompleted = subtasks.filter((task) =>
       this.templateFieldService.getField(task.completed_field)
@@ -72,7 +72,7 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
         this.progressStatusChange.emit(this.progressStatus);
       }
     }
-    await this.taskService.evaluateHighlightedTaskGroup();
+    this.taskService.evaluateHighlightedTaskGroup();
   }
 
   async setTaskGroupCompletedStatus(taskGroupCompletedField: string, isCompleted: boolean) {
