@@ -1,7 +1,5 @@
 import { Injectable } from "@angular/core";
-import { IAppConfig } from "packages/data-models";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
-import { AppConfigService } from "../app-config/app-config.service";
 import { AppDataService } from "../data/app-data.service";
 import clone from "clone";
 import { arrayToHashmap } from "../../utils";
@@ -10,16 +8,13 @@ import { arrayToHashmap } from "../../utils";
   providedIn: "root",
 })
 export class TaskService {
-  highlightedTaskFieldName: string;
+  highlightedTaskFieldName = "_highlighted_task_group";
   taskGroups: any[];
   taskGroupsHashmap: Record<string, any>;
   constructor(
     private templateFieldService: TemplateFieldService,
-    private appConfigService: AppConfigService,
     private appDataService: AppDataService
-  ) {
-    this.subscribeToAppConfigChanges();
-  }
+  ) {}
 
   async init() {
     await this.getListOfTaskGroups();
@@ -40,6 +35,7 @@ export class TaskService {
    * NB "highest priority" is defined as having the lowest numerical value for the "number" column
    */
   public async evaluateHighlightedTaskGroup() {
+    const previousHighlightedTaskGroup = this.getHighlightedTaskGroup();
     const taskGroupsNotCompletedAndNotSkipped = clone(this.taskGroups).filter((taskGroup) => {
       return (
         !this.templateFieldService.getField(taskGroup.completed_field) &&
@@ -56,7 +52,12 @@ export class TaskService {
         return highestPriority.number < taskGroup.number ? highestPriority : taskGroup;
       }
     );
-    this.templateFieldService.setField(this.highlightedTaskFieldName, highestPriorityTaskGroup.id);
+    if (highestPriorityTaskGroup.id !== previousHighlightedTaskGroup) {
+      this.templateFieldService.setField(
+        this.highlightedTaskFieldName,
+        highestPriorityTaskGroup.id
+      );
+    }
     console.log("[HIGHLIGHTED TASK GROUP] - ", highestPriorityTaskGroup.id);
   }
 
@@ -105,12 +106,6 @@ export class TaskService {
   public checkHighlightedTaskGroup(taskGroupId: string) {
     if (!taskGroupId) return false;
     return taskGroupId === this.getHighlightedTaskGroup();
-  }
-
-  private subscribeToAppConfigChanges() {
-    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.highlightedTaskFieldName = `${appConfig.FIELD_PREFIX}._highlighted_task_group`;
-    });
   }
 }
 
