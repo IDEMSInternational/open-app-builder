@@ -11,6 +11,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "highlighted_module",
       "_dynamicFields": {
@@ -33,6 +34,7 @@
       "type": "template",
       "name": "highlighted_module",
       "value": "module_card",
+      "exclude_from_translation": true,
       "rows": [
         {
           "name": "workshop_id",
@@ -40,6 +42,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "highlighted_module.workshop_id",
           "_dynamicFields": {
@@ -64,6 +67,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "highlighted_module.card_style"
         }
@@ -100,15 +104,18 @@
       "parameter_list": {
         "space_between": "8"
       },
+      "exclude_from_translation": true,
       "rows": [
         {
           "type": "items",
           "value": "@data.workshop_tasks",
+          "exclude_from_translation": true,
           "rows": [
             {
               "type": "template",
               "name": "module_card_@item.id",
               "value": "module_card",
+              "exclude_from_translation": true,
               "rows": [
                 {
                   "name": "workshop_id",
@@ -116,6 +123,7 @@
                   "_translations": {
                     "value": {}
                   },
+                  "exclude_from_translation": true,
                   "type": "set_variable",
                   "_nested_name": "carousel.items.module_card_@item.id.workshop_id",
                   "_dynamicFields": {
@@ -195,6 +203,12 @@
       "_nested_name": "carousel"
     },
     {
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "name": "set_variable",
+      "_nested_name": "set_variable"
+    },
+    {
       "type": "drawer",
       "name": "drawer",
       "value": "Things to do",
@@ -203,6 +217,7 @@
           "type": "template",
           "name": "things_to_do",
           "value": "things_to_do",
+          "exclude_from_translation": true,
           "rows": [],
           "_nested_name": "drawer.things_to_do"
         }
