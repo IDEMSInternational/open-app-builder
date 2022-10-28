@@ -279,9 +279,9 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_data_lists.xlsx",
     },
-    debug_delimeters_list: {
+    debug_delimiters_list: {
       flow_type: "data_list",
-      flow_name: "debug_delimeters_list",
+      flow_name: "debug_delimiters_list",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/debug_delimiters.xlsx",
     },
@@ -2346,9 +2346,9 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_data_lists.xlsx",
     },
-    debug_delimeters: {
+    debug_delimiters: {
       flow_type: "template",
-      flow_name: "debug_delimeters",
+      flow_name: "debug_delimiters",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/debug_delimiters.xlsx",
     },
@@ -3257,6 +3257,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_subtype: "debug",
       flow_name: "example_items_nav",
+      _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
+    },
+    example_items_operations: {
+      flow_type: "template",
+      flow_subtype: "debug",
+      flow_name: "example_items_operations",
       _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
     },
     example_items_pipe: {
