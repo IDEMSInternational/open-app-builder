@@ -37,11 +37,7 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
 
   getParams() {
     if (this._row) {
-      this.taskGroupDataList = getStringParamFromTemplateRow(
-        this._row,
-        "task_group_data_list",
-        null
-      );
+      this.taskGroupDataList = getStringParamFromTemplateRow(this._row, "task_group_data", null);
       this.taskGroupCompletedField = getStringParamFromTemplateRow(
         this._row,
         "completed_field",
