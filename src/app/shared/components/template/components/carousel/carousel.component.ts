@@ -17,7 +17,6 @@ import { TaskService } from "src/app/shared/services/task/task.service";
 export class TmplCarouselComponent extends TemplateBaseComponent implements OnInit {
   config: SwiperOptions = {};
   swiper: Swiper;
-  taskGroupsList: string;
   initialSlide: number;
 
   constructor(private taskService: TaskService) {
@@ -26,6 +25,7 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
 
   async ngOnInit() {
     await this.getParams();
+    await this.hackSetHighlightedTask();
   }
 
   async getParams() {
@@ -38,19 +38,26 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
       this.config.loopedSlides = this._row.rows.length;
     }
     this.config.centeredSlides = getBooleanParamFromTemplateRow(this._row, "centered_slides", true);
-    this.taskGroupsList = getStringParamFromTemplateRow(this._row, "task_group_data", null);
-    if (this.taskGroupsList) {
-      const indexOfHighlightedTask = await this.taskService.getHighlightedTaskGroupIndex(
-        this.taskGroupsList
-      );
-      this.initialSlide = indexOfHighlightedTask;
-    } else {
-      this.initialSlide = getNumberParamFromTemplateRow(this._row, "initial_slide_index", 0);
-    }
+    this.initialSlide = getNumberParamFromTemplateRow(this._row, "initial_slide_index", 0);
   }
 
-  initialiseSwiper(swiper: Swiper) {
+  /** Event emitter called when swiper initialised */
+  public handleSwiperInitialised(swiper: Swiper) {
     this.swiper = swiper;
     this.swiper.slideTo(this.initialSlide, 0, false);
+  }
+
+  /** When using carousel within task_group context set additional highlighted slide from task data */
+  private async hackSetHighlightedTask() {
+    const taskGroupsList = getStringParamFromTemplateRow(this._row, "task_group_data", null);
+    if (taskGroupsList) {
+      const highlightedTaskGroup = this.taskService.getHighlightedTaskGroup();
+      if (highlightedTaskGroup) {
+        this.initialSlide = await this.taskService.getHighlightedTaskGroupIndex(
+          highlightedTaskGroup,
+          taskGroupsList
+        );
+      }
+    }
   }
 }

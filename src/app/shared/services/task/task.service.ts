@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
 import { AppDataService } from "../data/app-data.service";
-import clone from "clone";
 import { arrayToHashmap } from "../../utils";
 
 @Injectable({
@@ -26,17 +25,18 @@ export class TaskService {
     // TODO: This should be set from the template/skin level
     const taskGroupsListName = "workshop_tasks";
     const taskGroupsDataList = await this.appDataService.getSheet("data_list", taskGroupsListName);
-    this.taskGroups = taskGroupsDataList.rows;
+    this.taskGroups = taskGroupsDataList?.rows || [];
     this.taskGroupsHashmap = arrayToHashmap(this.taskGroups, "id");
   }
 
-  /** The highlighted task group should always be the ID of the highest
+  /**
+   * The highlighted task group should always be the ID of the highest
    * priority task_group that is not completed and not skipped
    * NB "highest priority" is defined as having the lowest numerical value for the "number" column
    */
-  public async evaluateHighlightedTaskGroup() {
+  public evaluateHighlightedTaskGroup() {
     const previousHighlightedTaskGroup = this.getHighlightedTaskGroup();
-    const taskGroupsNotCompletedAndNotSkipped = clone(this.taskGroups).filter((taskGroup) => {
+    const taskGroupsNotCompletedAndNotSkipped = this.taskGroups.filter((taskGroup) => {
       return (
         !this.templateFieldService.getField(taskGroup.completed_field) &&
         !this.templateFieldService.getField(taskGroup.skipped_field)
@@ -61,26 +61,30 @@ export class TaskService {
     console.log("[HIGHLIGHTED TASK GROUP] - ", highestPriorityTaskGroup.id);
   }
 
-  private getHighlightedTaskGroup() {
+  /** Get the id of the task group stored as higlighted */
+  public getHighlightedTaskGroup() {
     return this.templateFieldService.getField(this.highlightedTaskFieldName);
   }
 
-  /** For a given task groups list, @return the index of the highlighted task group within that list.
-   * If there is no highlighted task group, or it does not appear in the given list, @returns 0.*/
-  public async getHighlightedTaskGroupIndex(taskGroupsList: string) {
-    const highlightedTaskGroup = this.getHighlightedTaskGroup();
-    if (!highlightedTaskGroup) return 0;
+  /**
+   * For a given task groups list, lookup the current highlighted task group and return the index
+   * of the highlighted task within it
+   * @return the index of the highlighted task group within that list, or 0 if not found
+   * */
+  public async getHighlightedTaskGroupIndex(highlightedTaskGroup: string, taskGroupsList: string) {
     const taskGroupsDataList = await this.appDataService.getSheet("data_list", taskGroupsList);
     const arrayOfIds = taskGroupsDataList.rows.map((taskGroup) => taskGroup.id);
-    const indexOfHighlightedTask = arrayOfIds.indexOf(this.getHighlightedTaskGroup());
+    const indexOfHighlightedTask = arrayOfIds.indexOf(highlightedTaskGroup);
     return indexOfHighlightedTask === -1 ? 0 : indexOfHighlightedTask;
   }
 
-  /** Set the value of the skipped field to true for all uncompleted tasks groups with
+  /**
+   * Set the value of the skipped field to true for all uncompleted tasks groups with
    * a priority lower than the target task group. Then re-evaluate the highlighted task group
-   * NB "highest priority" is defined as having the lowest numerical value for the "number" column */
+   * NB "highest priority" is defined as having the lowest numerical value for the "number" column
+   **/
   public setHighlightedTaskGroup(targetTaskGroupId: string) {
-    const taskGroupsNotCompleted = clone(this.taskGroups).filter((taskGroup) => {
+    const taskGroupsNotCompleted = this.taskGroups.filter((taskGroup) => {
       return !this.templateFieldService.getField(taskGroup.completed_field);
     });
     const targetTaskGroupPriority = this.taskGroupsHashmap[targetTaskGroupId].number;
