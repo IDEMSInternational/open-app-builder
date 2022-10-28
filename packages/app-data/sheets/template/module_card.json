@@ -41,8 +41,60 @@
       "_nested_name": "task_groups"
     },
     {
+      "name": "path",
+      "value": "_ind",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@fields.workshop_path = \"individual\"",
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "path",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.workshop_path = \"individual\"",
+            "matchedExpression": "@fields.workshop_path",
+            "type": "fields",
+            "fieldName": "workshop_path"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.workshop_path": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "path",
+      "value": "_tog",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!@fields.workshop_path = \"individual\"",
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "path",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@fields.workshop_path = \"individual\"",
+            "matchedExpression": "!@fields.workshop_path",
+            "type": "fields",
+            "fieldName": "workshop_path"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@fields.workshop_path": [
+          "condition"
+        ]
+      }
+    },
+    {
       "name": "task_group_data",
-      "value": "@local.workshop_id@local.task_groups",
+      "value": "@local.workshop_id@local.path@local.task_groups",
       "_translations": {
         "value": {}
       },
@@ -52,13 +104,19 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.workshop_id@local.task_groups",
+            "fullExpression": "@local.workshop_id@local.path@local.task_groups",
             "matchedExpression": "@local.workshop_id",
             "type": "local",
             "fieldName": "workshop_id"
           },
           {
-            "fullExpression": "@local.workshop_id@local.task_groups",
+            "fullExpression": "@local.workshop_id@local.path@local.task_groups",
+            "matchedExpression": "@local.path",
+            "type": "local",
+            "fieldName": "path"
+          },
+          {
+            "fullExpression": "@local.workshop_id@local.path@local.task_groups",
             "matchedExpression": "@local.task_groups",
             "type": "local",
             "fieldName": "task_groups"
@@ -67,6 +125,9 @@
       },
       "_dynamicDependencies": {
         "@local.workshop_id": [
+          "value"
+        ],
+        "@local.path": [
           "value"
         ],
         "@local.task_groups": [
