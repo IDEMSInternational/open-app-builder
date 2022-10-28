@@ -77,6 +77,7 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
 
   setTaskGroupCompletedStatus(taskGroupCompletedField: string, isCompleted: boolean) {
     console.log(`Setting ${taskGroupCompletedField} to ${isCompleted}`);
-    return this.templateFieldService.setField(taskGroupCompletedField, `${isCompleted}`);
+    this.templateFieldService.setField(taskGroupCompletedField, `${isCompleted}`);
+    this.taskService.evaluateHighlightedTaskGroup();
   }
 }
