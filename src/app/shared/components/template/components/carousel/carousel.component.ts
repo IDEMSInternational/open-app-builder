@@ -43,8 +43,7 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
       const indexOfHighlightedTask = await this.taskService.getHighlightedTaskGroupIndex(
         this.taskGroupsList
       );
-      // If index is -1, i.e. taskGroup is not in list, default initial slide to 0
-      this.initialSlide = indexOfHighlightedTask === -1 ? 0 : indexOfHighlightedTask;
+      this.initialSlide = indexOfHighlightedTask;
     } else {
       this.initialSlide = getNumberParamFromTemplateRow(this._row, "initial_slide_index", 0);
     }
