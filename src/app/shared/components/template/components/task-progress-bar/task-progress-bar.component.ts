@@ -32,7 +32,7 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
 
   ngOnInit() {
     this.getParams();
-    this.getTaskGroupData();
+    this.evaluateTaskGroupData();
   }
 
   getParams() {
@@ -50,7 +50,7 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
     return (this.subtasksCompleted / this.subtasksTotal) * 100;
   }
 
-  async getTaskGroupData() {
+  async evaluateTaskGroupData() {
     const dataList = await this.appDataService.getSheet("data_list", this.taskGroupDataList);
     const subtasks = dataList.rows;
     this.subtasksTotal = subtasks.length;
@@ -63,21 +63,20 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
       // Check whether task group has already been completed
       if (this.templateFieldService.getField(this.taskGroupCompletedField) !== true) {
         // If not, set completed field to "true"
-        this.setTaskGroupCompletedStatus(this.taskGroupCompletedField, true);
+        await this.setTaskGroupCompletedStatus(this.taskGroupCompletedField, true);
       }
     } else {
-      this.setTaskGroupCompletedStatus(this.taskGroupCompletedField, false);
+      await this.setTaskGroupCompletedStatus(this.taskGroupCompletedField, false);
       if (this.subtasksCompleted) {
         this.progressStatus = "inProgress";
         this.progressStatusChange.emit(this.progressStatus);
       }
     }
-    this.taskService.evaluateHighlightedTaskGroup();
+    await this.taskService.evaluateHighlightedTaskGroup();
   }
 
-  setTaskGroupCompletedStatus(taskGroupCompletedField: string, isCompleted: boolean) {
+  async setTaskGroupCompletedStatus(taskGroupCompletedField: string, isCompleted: boolean) {
     console.log(`Setting ${taskGroupCompletedField} to ${isCompleted}`);
-    this.templateFieldService.setField(taskGroupCompletedField, `${isCompleted}`);
-    this.taskService.evaluateHighlightedTaskGroup();
+    await this.templateFieldService.setField(taskGroupCompletedField, `${isCompleted}`);
   }
 }
