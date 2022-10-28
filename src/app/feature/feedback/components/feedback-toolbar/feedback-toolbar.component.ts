@@ -8,7 +8,7 @@ import { FeedbackService } from "../../feedback.service";
 })
 export class FeedbackToolbarComponent implements AfterViewInit {
   /** Default width to set content page when showing feedback pane */
-  public contentPageWidth = 400;
+  public contentPageWidth = 480;
   public navigationEnabled = true;
   public feedbackEnabled = true;
 
