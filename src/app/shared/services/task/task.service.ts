@@ -8,7 +8,7 @@ import { arrayToHashmap } from "../../utils";
   providedIn: "root",
 })
 export class TaskService {
-  highlightedTaskFieldName = "_highlighted_task_group";
+  highlightedTaskFieldName = "_task_highlighted_group_id";
   taskGroups: any[];
   taskGroupsHashmap: Record<string, any>;
   constructor(
@@ -30,7 +30,7 @@ export class TaskService {
     this.taskGroupsHashmap = arrayToHashmap(this.taskGroups, "id");
   }
 
-  /** The _highlighted_task_group should always be the ID of the highest
+  /** The highlighted task group should always be the ID of the highest
    * priority task_group that is not completed and not skipped
    * NB "highest priority" is defined as having the lowest numerical value for the "number" column
    */
