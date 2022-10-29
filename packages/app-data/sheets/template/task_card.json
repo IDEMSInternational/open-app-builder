@@ -289,6 +289,15 @@
         },
         {
           "trigger": "click",
+          "action_id": "emit",
+          "args": [
+            "force_reload"
+          ],
+          "_raw": "click | emit: force_reload",
+          "_cleaned": "click | emit: force_reload"
+        },
+        {
+          "trigger": "click",
           "action_id": "go_to",
           "args": [
             "@local.template"
@@ -337,7 +346,7 @@
               }
             ]
           },
-          "1": {
+          "2": {
             "args": {
               "0": [
                 {
@@ -401,9 +410,9 @@
           "parameter_list.completed_field"
         ],
         "@local.template": [
-          "action_list.1.args.0",
-          "action_list.1._raw",
-          "action_list.1._cleaned"
+          "action_list.2.args.0",
+          "action_list.2._raw",
+          "action_list.2._cleaned"
         ],
         "@local.task_id": [
           "parameter_list.task_id"

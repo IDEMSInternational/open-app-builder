@@ -13,12 +13,10 @@ export class TmplDrawerComponent extends TemplateBaseComponent implements AfterV
   openHeight = 0;
 
   async ngAfterViewInit() {
-    // Only get element heights after they've rendered
-    setTimeout(async () => {
-      const drawer = this.drawer.nativeElement;
-      const handle = drawer.children[0];
-      this.openHeight = drawer.offsetHeight - handle.offsetHeight - 10;
-    }, 100);
+    // Allow elements to render before initialising
+    setTimeout(() => {
+      this.init();
+    }, 500);
   }
 
   toggleDrawer() {
@@ -33,5 +31,11 @@ export class TmplDrawerComponent extends TemplateBaseComponent implements AfterV
       drawer.style.transform = `translateY(${-this.openHeight}px)`;
       this.isOpen = true;
     }
+  }
+
+  init() {
+    const drawer = this.drawer.nativeElement;
+    const handle = drawer.children[0];
+    this.openHeight = drawer.offsetHeight - handle.offsetHeight - 10;
   }
 }
