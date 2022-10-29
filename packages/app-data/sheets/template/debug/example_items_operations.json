@@ -17,7 +17,7 @@
       "type": "items",
       "value": "@data.example_items",
       "parameter_list": {
-        "filter": "field_value > 2"
+        "filter": "@item.field_value > 2"
       },
       "rows": [
         {
@@ -115,11 +115,24 @@
             "type": "data",
             "fieldName": "example_items"
           }
-        ]
+        ],
+        "parameter_list": {
+          "filter": [
+            {
+              "fullExpression": "@item.field_value > 2",
+              "matchedExpression": "@item.field_value",
+              "type": "item",
+              "fieldName": "field_value"
+            }
+          ]
+        }
       },
       "_dynamicDependencies": {
         "@data.example_items": [
           "value"
+        ],
+        "@item.field_value": [
+          "parameter_list.filter"
         ]
       }
     },
@@ -136,7 +149,7 @@
       "type": "items",
       "value": "@data.example_items",
       "parameter_list": {
-        "filter": "field_value > 2",
+        "filter": "@item.field_value > 2",
         "sort": "field_value"
       },
       "rows": [
@@ -235,11 +248,24 @@
             "type": "data",
             "fieldName": "example_items"
           }
-        ]
+        ],
+        "parameter_list": {
+          "filter": [
+            {
+              "fullExpression": "@item.field_value > 2",
+              "matchedExpression": "@item.field_value",
+              "type": "item",
+              "fieldName": "field_value"
+            }
+          ]
+        }
       },
       "_dynamicDependencies": {
         "@data.example_items": [
           "value"
+        ],
+        "@item.field_value": [
+          "parameter_list.filter"
         ]
       }
     },
@@ -256,7 +282,7 @@
       "type": "items",
       "value": "@data.example_items",
       "parameter_list": {
-        "filter": "field_value > 2",
+        "filter": "@item.field_value > 2",
         "sort": "field_value",
         "reverse": "true"
       },
@@ -356,11 +382,24 @@
             "type": "data",
             "fieldName": "example_items"
           }
-        ]
+        ],
+        "parameter_list": {
+          "filter": [
+            {
+              "fullExpression": "@item.field_value > 2",
+              "matchedExpression": "@item.field_value",
+              "type": "item",
+              "fieldName": "field_value"
+            }
+          ]
+        }
       },
       "_dynamicDependencies": {
         "@data.example_items": [
           "value"
+        ],
+        "@item.field_value": [
+          "parameter_list.filter"
         ]
       }
     },
@@ -377,7 +416,7 @@
       "type": "items",
       "value": "@data.example_items",
       "parameter_list": {
-        "filter": "field_value > 2",
+        "filter": "@item.field_value > 2",
         "shuffle": "true"
       },
       "rows": [
@@ -476,11 +515,24 @@
             "type": "data",
             "fieldName": "example_items"
           }
-        ]
+        ],
+        "parameter_list": {
+          "filter": [
+            {
+              "fullExpression": "@item.field_value > 2",
+              "matchedExpression": "@item.field_value",
+              "type": "item",
+              "fieldName": "field_value"
+            }
+          ]
+        }
       },
       "_dynamicDependencies": {
         "@data.example_items": [
           "value"
+        ],
+        "@item.field_value": [
+          "parameter_list.filter"
         ]
       }
     },
@@ -517,7 +569,7 @@
       "type": "items",
       "value": "@data.example_items",
       "parameter_list": {
-        "filter": "field_value > 2",
+        "filter": "@item.field_value > 2",
         "shuffle": "true",
         "limit": "1"
       },
@@ -617,11 +669,24 @@
             "type": "data",
             "fieldName": "example_items"
           }
-        ]
+        ],
+        "parameter_list": {
+          "filter": [
+            {
+              "fullExpression": "@item.field_value > 2",
+              "matchedExpression": "@item.field_value",
+              "type": "item",
+              "fieldName": "field_value"
+            }
+          ]
+        }
       },
       "_dynamicDependencies": {
         "@data.example_items": [
           "value"
+        ],
+        "@item.field_value": [
+          "parameter_list.filter"
         ]
       }
     }
