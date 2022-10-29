@@ -1,6 +1,6 @@
 {
   "flow_type": "data_list",
-  "flow_name": "debug_delimeters_list",
+  "flow_name": "debug_delimiters_list",
   "status": "released",
   "flow_subtype": "debug",
   "rows": [

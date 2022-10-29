@@ -10,12 +10,17 @@
   filter: drop-shadow(var(--ion-default-box-shadow));
 
   &.portrait {
-    width: 160px;
+    width: 165px;
     padding: var(--small-padding);
     .content-wrapper {
       flex-direction: column-reverse;
       .text-wrapper {
         width: 95%;
+        h1 {
+          padding-top: var(--tiny-padding);
+          font-size: var(--font-size-subtitle-small);
+          line-height: var(--line-height-text-small);
+        }
         .subtitle-wrapper {
           p {
             line-height: inherit;
