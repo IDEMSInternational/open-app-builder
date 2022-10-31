@@ -12,7 +12,6 @@ import { TemplateFieldService } from "../../services/template-field.service";
 })
 export class TmplTaskCardComponent extends TemplateBaseComponent implements OnInit {
   style: string;
-  orientation: "landscape" | "portrait";
   highlighted: boolean;
   highlightedText = "Active";
   progressStatus: IProgressStatus = "notStarted";
@@ -25,6 +24,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
   image: string | null;
   completedIcon: string;
   inProgressIcon: string;
+  isButton: boolean;
 
   constructor(
     private taskService: TaskService,
@@ -50,6 +50,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
     this.subtitle = getStringParamFromTemplateRow(this._row, "subtitle", null);
     this.image = getStringParamFromTemplateRow(this._row, "image", null);
     this.style = getStringParamFromTemplateRow(this._row, "style", "landscape");
+    this.isButton = this.style.includes("button");
     this.completedIcon = getStringParamFromTemplateRow(this._row, "completed_icon", null);
     this.inProgressIcon = getStringParamFromTemplateRow(this._row, "in_progress_icon", null);
   }
