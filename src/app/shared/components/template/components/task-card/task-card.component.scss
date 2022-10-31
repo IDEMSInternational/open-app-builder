@@ -34,6 +34,36 @@
       }
     }
   }
+
+  &.button {
+    padding: 0px 8px 0px;
+    height: 56px;
+    .content-wrapper {
+      height: 100%;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      .image-wrapper {
+        height: 36px;
+        width: 48px;
+        padding: 0px 4px;
+        img {
+          height: 100%;
+        }
+      }
+      .text-wrapper {
+        h1 {
+          padding: 0px;
+          font-size: var(--font-size-subtitle-medium);
+          line-height: var(--line-height-text-small);
+        }
+      }
+      .button-content {
+        width: fit-content;
+        margin-left: auto;
+      }
+    }
+  }
+
   .content-wrapper {
     height: 100%;
     width: 100%;
