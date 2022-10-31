@@ -1,5 +1,5 @@
 <div class="carousel-wrapper">
-  <swiper (swiper)="initialiseSwiper($event)" [config]="config">
+  <swiper (swiper)="handleSwiperInitialised($event)" [config]="config">
     <ng-template
       swiperSlide
       *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
