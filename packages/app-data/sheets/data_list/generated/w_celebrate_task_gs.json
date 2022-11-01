@@ -126,12 +126,7 @@
       "title": "Well done!",
       "_translations": {
         "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -152,12 +147,7 @@
       "title": "Think",
       "_translations": {
         "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -197,12 +187,7 @@
       "title": "Talk Together",
       "_translations": {
         "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -223,12 +208,7 @@
       "title": "Talk Together",
       "_translations": {
         "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {

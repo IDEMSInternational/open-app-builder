@@ -88,12 +88,7 @@
       "title": "Well done!",
       "_translations": {
         "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -114,12 +109,7 @@
       "title": "Relax",
       "_translations": {
         "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -140,12 +130,7 @@
       "title": "Recognise",
       "_translations": {
         "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -166,12 +151,7 @@
       "title": "Reward",
       "_translations": {
         "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
