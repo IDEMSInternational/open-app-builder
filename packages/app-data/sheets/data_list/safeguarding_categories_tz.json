@@ -8,8 +8,12 @@
       "id": "emergency",
       "title": "An emergency",
       "_translations": {
-        "title": {},
-        "description": {}
+        "title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -25,8 +29,12 @@
       "id": "substance_abuse",
       "title": "A challenge with alcohol or drugs",
       "_translations": {
-        "title": {},
-        "description": {}
+        "title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -42,8 +50,12 @@
       "id": "legal",
       "title": "A legal problem",
       "_translations": {
-        "title": {},
-        "description": {}
+        "title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -59,8 +71,12 @@
       "id": "violence",
       "title": "Feeling unsafe at home or in my relationship",
       "_translations": {
-        "title": {},
-        "description": {}
+        "title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -76,8 +92,12 @@
       "id": "family_support",
       "title": "A challenge in my family",
       "_translations": {
-        "title": {},
-        "description": {}
+        "title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -93,8 +113,12 @@
       "id": "mental_health",
       "title": "Feeling anxious or sad",
       "_translations": {
-        "title": {},
-        "description": {}
+        "title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -110,8 +134,12 @@
       "id": "mental_health_support",
       "title": "A loved one feeling anxious or sad",
       "_translations": {
-        "title": {},
-        "description": {}
+        "title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

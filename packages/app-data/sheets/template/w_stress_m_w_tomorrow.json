@@ -61,7 +61,9 @@
           "name": "text_not_completed",
           "value": "Tomorrow a brand new @global.parent_app @global.workshop is ready for you. \n\nBy completing the @local.workshop_data.in_text_title first, you lay a really important foundation: If you feel good, your family will do better too!",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "m_workshop_tomorrow.text_not_completed",

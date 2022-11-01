@@ -111,7 +111,9 @@
       "name": "workshops_capital",
       "value": "Workshops",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -119,7 +121,9 @@
       "name": "workshop_capital",
       "value": "Workshop",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {

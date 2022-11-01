@@ -151,7 +151,9 @@
       "has_single_task": true,
       "title": "Story",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -274,7 +276,9 @@
       "has_single_task": false,
       "title": "Story",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -292,7 +296,9 @@
       "has_single_task": false,
       "title": "Story",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
