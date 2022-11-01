@@ -17,6 +17,7 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
   @Input() highlighted: boolean | null;
   @Input() progressStatus: IProgressStatus;
   @Output() progressStatusChange = new EventEmitter<IProgressStatus>();
+  @Output() newlyCompleted = new EventEmitter<boolean>();
   subtasksTotal: number;
   subtasksCompleted: number;
   showText = true;
@@ -64,6 +65,7 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
       if (this.templateFieldService.getField(this.taskGroupCompletedField) !== true) {
         // If not, set completed field to "true"
         await this.setTaskGroupCompletedStatus(this.taskGroupCompletedField, true);
+        this.newlyCompleted.emit(true);
       }
     } else {
       await this.setTaskGroupCompletedStatus(this.taskGroupCompletedField, false);
