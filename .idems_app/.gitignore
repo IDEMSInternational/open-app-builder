@@ -1,5 +1,8 @@
-deployments/**/*
+*
+!.gitignore
+!*/
 !deployments/example/config.ts
 !deployments/family-based-math/config.ts
 !deployments/plh/*.ts
 !deployments/early_family_math/*.ts
+!deployments/*/skins/*.ts

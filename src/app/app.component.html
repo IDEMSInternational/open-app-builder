@@ -1,5 +1,11 @@
 <ion-app *ngIf="renderAppTemplates">
-  <ion-menu #menu side="start" menuId="main-side-menu" contentId="main-content">
+  <ion-menu
+    *ngIf="sideMenuDefaults.enabled"
+    #menu
+    side="start"
+    menuId="main-side-menu"
+    contentId="main-content"
+  >
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>{{ sideMenuDefaults.title }}</ion-title>
@@ -25,4 +31,12 @@
       <ion-router-outlet id="main-content"></ion-router-outlet>
     </div>
   </div>
+  <ion-footer *ngIf="footerDefaults.templateName">
+    <ion-toolbar color="primary">
+      <plh-template-container
+        [templatename]="footerDefaults.templateName"
+        [ignoreQueryParamChanges]="true"
+      ></plh-template-container>
+    </ion-toolbar>
+  </ion-footer>
 </ion-app>

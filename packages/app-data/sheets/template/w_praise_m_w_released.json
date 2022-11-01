@@ -63,7 +63,7 @@
           "rows": [
             {
               "name": "text",
-              "value": "Hi @fields.user_name! Congratulations for starting your third  @global.parent_app week. \n\nA new workshop awaits you! Can you guess the topic of the workshop from this picture?",
+              "value": "Hi @fields.user_name! Congratulations for starting your third  @global.parent_app week. \n\nA new @global.workshop awaits you! Can you guess the topic of the @global.workshop from this picture?",
               "_translations": {
                 "value": {
                   "tz_sw": true
@@ -75,16 +75,28 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Hi @fields.user_name! Congratulations for starting your third  @global.parent_app week. \n\nA new workshop awaits you! Can you guess the topic of the workshop from this picture?",
+                    "fullExpression": "Hi @fields.user_name! Congratulations for starting your third  @global.parent_app week. \n\nA new @global.workshop awaits you! Can you guess the topic of the @global.workshop from this picture?",
                     "matchedExpression": "@fields.user_name",
                     "type": "fields",
                     "fieldName": "user_name"
                   },
                   {
-                    "fullExpression": "Hi @fields.user_name! Congratulations for starting your third  @global.parent_app week. \n\nA new workshop awaits you! Can you guess the topic of the workshop from this picture?",
+                    "fullExpression": "Hi @fields.user_name! Congratulations for starting your third  @global.parent_app week. \n\nA new @global.workshop awaits you! Can you guess the topic of the @global.workshop from this picture?",
                     "matchedExpression": "@global.parent_app",
                     "type": "global",
                     "fieldName": "parent_app"
+                  },
+                  {
+                    "fullExpression": "Hi @fields.user_name! Congratulations for starting your third  @global.parent_app week. \n\nA new @global.workshop awaits you! Can you guess the topic of the @global.workshop from this picture?",
+                    "matchedExpression": "@global.workshop",
+                    "type": "global",
+                    "fieldName": "workshop"
+                  },
+                  {
+                    "fullExpression": "Hi @fields.user_name! Congratulations for starting your third  @global.parent_app week. \n\nA new @global.workshop awaits you! Can you guess the topic of the @global.workshop from this picture?",
+                    "matchedExpression": "@global.workshop",
+                    "type": "global",
+                    "fieldName": "workshop"
                   }
                 ],
                 "condition": [
@@ -103,6 +115,10 @@
                 "@global.parent_app": [
                   "value"
                 ],
+                "@global.workshop": [
+                  "value",
+                  "value"
+                ],
                 "!@local.do_workshops_together": [
                   "condition"
                 ]
@@ -110,7 +126,7 @@
             },
             {
               "name": "text",
-              "value": "Hi @fields.group_name! Congratulations for starting your third  @global.parent_app week. \n\nA new workshop awaits you! Can you guess the topic of the workshop from this picture?",
+              "value": "Hi @fields.group_name! Congratulations for starting your third  @global.parent_app week. \n\nA new @global.workshop awaits you! Can you guess the topic of the @global.workshop from this picture?",
               "_translations": {
                 "value": {
                   "tz_sw": true
@@ -122,16 +138,28 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Hi @fields.group_name! Congratulations for starting your third  @global.parent_app week. \n\nA new workshop awaits you! Can you guess the topic of the workshop from this picture?",
+                    "fullExpression": "Hi @fields.group_name! Congratulations for starting your third  @global.parent_app week. \n\nA new @global.workshop awaits you! Can you guess the topic of the @global.workshop from this picture?",
                     "matchedExpression": "@fields.group_name",
                     "type": "fields",
                     "fieldName": "group_name"
                   },
                   {
-                    "fullExpression": "Hi @fields.group_name! Congratulations for starting your third  @global.parent_app week. \n\nA new workshop awaits you! Can you guess the topic of the workshop from this picture?",
+                    "fullExpression": "Hi @fields.group_name! Congratulations for starting your third  @global.parent_app week. \n\nA new @global.workshop awaits you! Can you guess the topic of the @global.workshop from this picture?",
                     "matchedExpression": "@global.parent_app",
                     "type": "global",
                     "fieldName": "parent_app"
+                  },
+                  {
+                    "fullExpression": "Hi @fields.group_name! Congratulations for starting your third  @global.parent_app week. \n\nA new @global.workshop awaits you! Can you guess the topic of the @global.workshop from this picture?",
+                    "matchedExpression": "@global.workshop",
+                    "type": "global",
+                    "fieldName": "workshop"
+                  },
+                  {
+                    "fullExpression": "Hi @fields.group_name! Congratulations for starting your third  @global.parent_app week. \n\nA new @global.workshop awaits you! Can you guess the topic of the @global.workshop from this picture?",
+                    "matchedExpression": "@global.workshop",
+                    "type": "global",
+                    "fieldName": "workshop"
                   }
                 ],
                 "condition": [
@@ -148,6 +176,10 @@
                   "value"
                 ],
                 "@global.parent_app": [
+                  "value"
+                ],
+                "@global.workshop": [
+                  "value",
                   "value"
                 ],
                 "@local.do_workshops_together": [
