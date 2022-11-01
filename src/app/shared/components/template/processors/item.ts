@@ -1,5 +1,6 @@
 // TODO - shared package name conflicts with local shared
 import { AppStringEvaluator } from "packages/shared";
+import { shuffleArray } from "src/app/shared/utils";
 import { FlowTypes } from "../models";
 import { objectToArray } from "../utils";
 
@@ -78,6 +79,9 @@ class ItemDataPipe {
   }
 
   private operations = {
+    shuffle: (items: any[] = []) => {
+      return shuffleArray(items);
+    },
     sort: (items: any[] = [], sortField: string) => {
       if (!sortField) return items;
       return items.sort((a, b) => (a[sortField] > b[sortField] ? 1 : -1));
