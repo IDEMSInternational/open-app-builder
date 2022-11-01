@@ -21,7 +21,21 @@ export function setIndexColumn(df: DataFrame, name: string) {
     const columnList = df.columns.join(", ");
     throw new Error(`Column [${name}] does not exist in data\nColumns: ${columnList}`);
   }
-  df.setIndex({ column: name, inplace: true });
+  try {
+    df.setIndex({ column: name, inplace: true });
+  } catch (error) {
+    // track specific non-unique values in thrown error
+    if (error.message === "IndexError: Row index must contain unique values") {
+      const nonUniqueValues = findNonUniqueValues(df, name);
+      throw new Error("Duplicate ids found for entries: " + nonUniqueValues.join(", "));
+    }
+    // pass any other errors back with additional meta (e.g. non-unique values)
+    throw error;
+  }
+}
+
+function findNonUniqueValues(df: DataFrame, column: string) {
+  return df.column(column).dropDuplicates().values;
 }
 
 /**

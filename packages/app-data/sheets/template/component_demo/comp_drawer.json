@@ -9,13 +9,32 @@
       "value": "Things to do",
       "rows": [
         {
-          "type": "button",
-          "value": "test",
-          "_translations": {
-            "value": {}
+          "type": "display_group",
+          "parameter_list": {
+            "style": "column"
           },
-          "name": "button",
-          "_nested_name": "drawer.button"
+          "rows": [
+            {
+              "type": "button",
+              "value": "button1",
+              "_translations": {
+                "value": {}
+              },
+              "name": "button",
+              "_nested_name": "drawer.display_group.button"
+            },
+            {
+              "type": "button",
+              "value": "button2",
+              "_translations": {
+                "value": {}
+              },
+              "name": "button",
+              "_nested_name": "drawer.display_group.button"
+            }
+          ],
+          "name": "display_group",
+          "_nested_name": "drawer.display_group"
         }
       ],
       "name": "drawer",

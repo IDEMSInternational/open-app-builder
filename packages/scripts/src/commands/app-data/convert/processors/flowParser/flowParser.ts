@@ -5,7 +5,7 @@ import { arrayToHashmap, groupJsonByKey, IContentsEntry } from "../../utils";
 import BaseProcessor from "../base";
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
-  public cacheVersion = 20221013.3;
+  public cacheVersion = 20221026.1;
 
   public parsers: { [flowType in FlowTypes.FlowType]: Parsers.DefaultParser } = {
     template: new Parsers.TemplateParser(this),

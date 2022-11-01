@@ -14,77 +14,32 @@
       "_nested_name": "title"
     },
     {
-      "name": "task_id_1",
-      "value": "w_self_care",
+      "type": "text",
+      "value": "Highlighted task group: @field._highlighted_task_group",
       "_translations": {
         "value": {}
       },
-      "type": "set_variable",
-      "_nested_name": "task_id_1"
-    },
-    {
-      "name": "task_id_2",
-      "value": "w_1on1",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "task_id_2"
-    },
-    {
-      "name": "tasks_list",
-      "value": [
-        "name: @local.task_id_1 | text: @local.task_id_1",
-        "name: @local.task_id_2 | text: @local.task_id_2"
-      ],
-      "type": "set_variable",
-      "_nested_name": "tasks_list",
+      "name": "text",
+      "_nested_name": "text",
       "_dynamicFields": {
-        "value": {
-          "0": [
-            {
-              "fullExpression": "name: @local.task_id_1 | text: @local.task_id_1",
-              "matchedExpression": "@local.task_id_1",
-              "type": "local",
-              "fieldName": "task_id_1"
-            },
-            {
-              "fullExpression": "name: @local.task_id_1 | text: @local.task_id_1",
-              "matchedExpression": "@local.task_id_1",
-              "type": "local",
-              "fieldName": "task_id_1"
-            }
-          ],
-          "1": [
-            {
-              "fullExpression": "name: @local.task_id_2 | text: @local.task_id_2",
-              "matchedExpression": "@local.task_id_2",
-              "type": "local",
-              "fieldName": "task_id_2"
-            },
-            {
-              "fullExpression": "name: @local.task_id_2 | text: @local.task_id_2",
-              "matchedExpression": "@local.task_id_2",
-              "type": "local",
-              "fieldName": "task_id_2"
-            }
-          ]
-        }
+        "value": [
+          {
+            "fullExpression": "Highlighted task group: @field._highlighted_task_group",
+            "matchedExpression": "@field._highlighted_task_group",
+            "type": "field",
+            "fieldName": "_highlighted_task_group"
+          }
+        ]
       },
       "_dynamicDependencies": {
-        "@local.task_id_1": [
-          "value.0",
-          "value.0"
-        ],
-        "@local.task_id_2": [
-          "value.1",
-          "value.1"
+        "@field._highlighted_task_group": [
+          "value"
         ]
       }
     },
     {
       "type": "text",
-      "value": "Set highlighted task to the following:",
+      "value": "Set highlighted task group to the following:",
       "_translations": {
         "value": {}
       },
@@ -92,78 +47,118 @@
       "_nested_name": "text"
     },
     {
-      "type": "radio_group",
-      "name": "highlighted_task_select",
-      "value": "@fields.highlighted_task",
-      "_translations": {
-        "value": {}
+      "type": "items",
+      "value": "@data.workshop_tasks",
+      "parameter_list": {
+        "filter": "!@item.completed"
       },
-      "action_list": [
+      "rows": [
         {
-          "trigger": "changed",
-          "action_id": "set_highlighted_task",
-          "args": [
-            "this.value"
+          "type": "button",
+          "value": "@item.id",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "task_group_set_highlighted",
+              "args": [
+                "@item.id"
+              ],
+              "_raw": "click | task_group_set_highlighted:@item.id",
+              "_cleaned": "click | task_group_set_highlighted:@item.id"
+            },
+            {
+              "trigger": "click",
+              "action_id": "emit",
+              "args": [
+                "force_reload"
+              ],
+              "_raw": "click | emit:force_reload",
+              "_cleaned": "click | emit:force_reload"
+            }
           ],
-          "_raw": "changed | set_highlighted_task:@local.highlighted_task_select",
-          "_cleaned": "changed | set_highlighted_task:@local.highlighted_task_select"
+          "name": "button",
+          "_nested_name": "items.button",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@item.id",
+                      "matchedExpression": "@item.id",
+                      "type": "item",
+                      "fieldName": "id"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | task_group_set_highlighted:@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | task_group_set_highlighted:@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              }
+            }
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "value",
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ]
+          }
         }
       ],
-      "parameter_list": {
-        "answer_list": "@local.tasks_list",
-        "options_per_row": "2"
-      },
-      "_nested_name": "highlighted_task_select",
+      "name": "items",
+      "_nested_name": "items",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@fields.highlighted_task",
-            "matchedExpression": "@fields.highlighted_task",
-            "type": "fields",
-            "fieldName": "highlighted_task"
+            "fullExpression": "@data.workshop_tasks",
+            "matchedExpression": "@data.workshop_tasks",
+            "type": "data",
+            "fieldName": "workshop_tasks"
           }
         ],
-        "action_list": {
-          "0": {
-            "_raw": [
-              {
-                "fullExpression": "changed | set_highlighted_task:@local.highlighted_task_select",
-                "matchedExpression": "@local.highlighted_task_select",
-                "type": "local",
-                "fieldName": "highlighted_task_select"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "changed | set_highlighted_task:@local.highlighted_task_select",
-                "matchedExpression": "@local.highlighted_task_select",
-                "type": "local",
-                "fieldName": "highlighted_task_select"
-              }
-            ]
-          }
-        },
         "parameter_list": {
-          "answer_list": [
+          "filter": [
             {
-              "fullExpression": "@local.tasks_list",
-              "matchedExpression": "@local.tasks_list",
-              "type": "local",
-              "fieldName": "tasks_list"
+              "fullExpression": "!@item.completed",
+              "matchedExpression": "!@item.completed",
+              "type": "item",
+              "fieldName": "completed"
             }
           ]
         }
       },
       "_dynamicDependencies": {
-        "@fields.highlighted_task": [
+        "@data.workshop_tasks": [
           "value"
         ],
-        "@local.highlighted_task_select": [
-          "action_list.0._raw",
-          "action_list.0._cleaned"
-        ],
-        "@local.tasks_list": [
-          "parameter_list.answer_list"
+        "!@item.completed": [
+          "parameter_list.filter"
         ]
       }
     }

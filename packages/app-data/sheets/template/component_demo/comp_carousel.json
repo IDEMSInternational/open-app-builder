@@ -111,7 +111,7 @@
             },
             {
               "type": "text",
-              "value": "Paragraph 1",
+              "value": "Paragraph 3",
               "_translations": {
                 "value": {}
               },
@@ -198,7 +198,7 @@
     },
     {
       "type": "text",
-      "value": "Parameters: spaceBetween: 8;",
+      "value": "Parameters: space_between: 8;",
       "_translations": {
         "value": {}
       },
@@ -208,7 +208,7 @@
     {
       "type": "carousel",
       "parameter_list": {
-        "spaceBetween": "8"
+        "space_between": "8"
       },
       "rows": [
         {

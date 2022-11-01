@@ -8,35 +8,74 @@
       "individual": true,
       "together": false,
       "priority": 11,
-      "title": "Question",
       "has_single_task": true,
-      "template": "w_praise_question_1"
+      "template": "w_praise_question_1",
+      "title": "Question",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Question"
+        }
+      }
     },
     {
       "id": "talk_1",
       "individual": false,
       "together": true,
       "priority": 11,
-      "title": "Talk Together",
       "has_single_task": true,
-      "template": "w_praise_talk_1"
+      "template": "w_praise_talk_1",
+      "title": "Talk Together",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Talk Together"
+        }
+      }
     },
     {
       "id": "read",
       "individual": true,
       "together": true,
       "priority": 12,
+      "has_single_task": false,
       "title": "Story",
-      "has_single_task": false
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Story"
+        }
+      }
     },
     {
       "id": "try",
       "individual": false,
       "together": true,
       "priority": 71,
-      "title": "Try it out!",
       "has_single_task": true,
-      "template": "w_praise_try"
+      "template": "w_praise_try",
+      "title": "Try it out!",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Try it out!"
+        }
+      }
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"

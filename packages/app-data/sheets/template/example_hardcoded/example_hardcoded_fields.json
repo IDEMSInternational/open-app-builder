@@ -17,6 +17,41 @@
     },
     {
       "type": "subtitle",
+      "name": "highlighted_task_group_label",
+      "value": "_task_highlighted_group_id",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "highlighted_task_group_label"
+    },
+    {
+      "type": "text",
+      "name": "highlighted_task_group_value",
+      "value": "@fields._task_highlighted_group_id",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "highlighted_task_group_value",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields._task_highlighted_group_id",
+            "matchedExpression": "@fields._task_highlighted_group_id",
+            "type": "fields",
+            "fieldName": "_task_highlighted_group_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._task_highlighted_group_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
       "name": "app_theme_label",
       "value": "_app_theme",
       "_translations": {
