@@ -7,6 +7,9 @@
     {
       "type": "drawer",
       "value": "Things to do",
+      "parameter_list": {
+        "style": "secondary"
+      },
       "rows": [
         {
           "type": "display_group",

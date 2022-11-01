@@ -363,6 +363,49 @@
           "value"
         ]
       }
+    },
+    {
+      "type": "text",
+      "name": "text_9",
+      "value": "Text and @data.debug_delimiters_list[@local.target_row][@local.target_field]",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_9",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Text and @data.debug_delimiters_list[@local.target_row][@local.target_field]",
+            "matchedExpression": "@data.debug_delimiters_list",
+            "type": "data",
+            "fieldName": "debug_delimiters_list"
+          },
+          {
+            "fullExpression": "Text and @data.debug_delimiters_list[@local.target_row][@local.target_field]",
+            "matchedExpression": "@local.target_row",
+            "type": "local",
+            "fieldName": "target_row"
+          },
+          {
+            "fullExpression": "Text and @data.debug_delimiters_list[@local.target_row][@local.target_field]",
+            "matchedExpression": "@local.target_field",
+            "type": "local",
+            "fieldName": "target_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.debug_delimiters_list": [
+          "value"
+        ],
+        "@local.target_row": [
+          "value"
+        ],
+        "@local.target_field": [
+          "value"
+        ]
+      }
     }
   ],
   "_xlsxPath": "quality_assurance/debug_sheets/debug_delimiters.xlsx"
