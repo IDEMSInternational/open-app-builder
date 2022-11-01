@@ -58,7 +58,7 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
 
   checkProgressStatus() {
     if (this.taskId) {
-      if (this.templateFieldService.getField(this.completedField))
+      if (this.completedField && this.templateFieldService.getField(this.completedField))
         this.progressStatus = "completed";
     }
   }
