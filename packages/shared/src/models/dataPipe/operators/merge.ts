@@ -1,6 +1,6 @@
 import { DataFrame, merge, toJSON } from "danfojs";
 import { DataPipe } from "../pipe";
-import { normalizeData, replaceNaN, arrayToHashmap, setIndexColumn } from "../utils";
+import { replaceNaN, arrayToHashmap, setIndexColumn } from "../utils";
 import BaseOperator from "./base";
 
 type ILoadedDatalist = any; // datalist
@@ -33,7 +33,7 @@ class MergeOperator extends BaseOperator {
   /** Join any new columns from right dataframe into left dataframe by merge key **/
   private joinNewColumns(data: any[]) {
     const left = this.df;
-    const joinDf = new DataFrame(normalizeData(data));
+    const joinDf = new DataFrame(data);
     setIndexColumn(joinDf, this.indexColumn);
 
     // Drop columns from joinDf that already exists in left (except merge key)
@@ -48,7 +48,7 @@ class MergeOperator extends BaseOperator {
 
   /** Replace any values updated from the data in the original dataframe **/
   private replaceUpdatedValues(data: any[]) {
-    const replacments = new DataFrame(normalizeData(data));
+    const replacments = new DataFrame(data);
     setIndexColumn(replacments, this.indexColumn);
 
     // remove any columns that does not exist in left

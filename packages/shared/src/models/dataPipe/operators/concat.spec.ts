@@ -1,4 +1,5 @@
 import { DataFrame, toJSON } from "danfojs";
+import { normalizeData } from "..";
 import { DataPipe } from "../pipe";
 import testData from "../testData.spec";
 import concat from "./concat";
@@ -31,7 +32,7 @@ describe("Concat Operator", () => {
   it("Throws if concatenating lists with duplicate ids", () => {
     const duplicateDf = new DataFrame([{ id: "id_3", first_name: "Duplicated" }]);
     expect(() => new concat(duplicateDf, ["names"], testPipe).apply()).toThrowError(
-      "names\nMultiple entries exist for index: id_3"
+      "[names] Multiple entries exist for index: id_3"
     );
   });
   it("concatenates multiple lists", () => {
@@ -67,7 +68,8 @@ function DEBUG_TEST_DATA() {
   ];
   // Importantly debugData2's first entry does not contain all columns (requires normalising)
   // and contains columns in different order to debugData1
-  const debugData2 = [
+  // NOTE - ordinarily this will be normalised during inputSources parsing
+  const debugData2 = normalizeData([
     {
       id: "question_1",
       template: "w_praise_question_1",
@@ -83,9 +85,9 @@ function DEBUG_TEST_DATA() {
       together: true,
       priority: 12,
     },
-  ];
+  ]);
   // concatenated data should contain all rows and fill missing values
-  const outputExpected = [
+  const outputExpected = normalizeData([
     {
       id: "welcome_individual",
       individual: true,
@@ -118,6 +120,6 @@ function DEBUG_TEST_DATA() {
       template: "w_praise_read",
       subtask_group: "read",
     },
-  ];
+  ]);
   return { debugData1, debugData2, outputExpected };
 }

@@ -8,8 +8,16 @@
       "individual": true,
       "together": false,
       "priority": 1,
-      "title": "How are you?",
       "has_single_task": true,
+      "title": "How are you?",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      },
       "template": "w_1on1_welcome_individual",
       "completed_field": "task_gp_w_1on1_welcome_individual_completed",
       "completed": "@fields.task_gp_w_1on1_welcome_individual_completed"
@@ -19,8 +27,16 @@
       "individual": false,
       "together": true,
       "priority": 2,
-      "title": "How are you?",
       "has_single_task": true,
+      "title": "How are you?",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      },
       "template": "w_1on1_care_together",
       "completed_field": "task_gp_w_1on1_care_together_completed",
       "completed": "@fields.task_gp_w_1on1_care_together_completed"
@@ -30,8 +46,16 @@
       "individual": true,
       "together": true,
       "priority": 3,
-      "title": "Relax",
       "has_single_task": true,
+      "title": "@data.workshop[@fields.current_workshop].relax_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop[@fields.current_workshop].relax_title"
+        }
+      },
       "template": "w_1on1_relax",
       "completed_field": "task_gp_w_1on1_relax_completed",
       "completed": "@fields.task_gp_w_1on1_relax_completed"
@@ -41,8 +65,16 @@
       "individual": true,
       "together": true,
       "priority": 5,
-      "title": "Intro to ...",
       "has_single_task": true,
+      "title": "@data.workshop[@fields.current_workshop].intro_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop[@fields.current_workshop].intro_title"
+        }
+      },
       "template": "w_1on1_intro",
       "completed_field": "task_gp_w_1on1_intro_completed",
       "completed": "@fields.task_gp_w_1on1_intro_completed"
@@ -52,8 +84,16 @@
       "individual": true,
       "together": true,
       "priority": 70,
-      "title": "How to ...",
       "has_single_task": true,
+      "title": "@data.workshop[@fields.current_workshop].tools",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop[@fields.current_workshop].tools"
+        }
+      },
       "template": "w_1on1_tools_activity",
       "completed_field": "task_gp_w_1on1_tools_activity_completed",
       "completed": "@fields.task_gp_w_1on1_tools_activity_completed"
@@ -63,8 +103,16 @@
       "individual": true,
       "together": true,
       "priority": 80,
-      "title": "Home Practice",
       "has_single_task": true,
+      "title": "@global.home_practice",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.home_practice"
+        }
+      },
       "template": "w_1on1_home_practice",
       "completed_field": "task_gp_w_1on1_home_practice_completed",
       "completed": "@fields.task_gp_w_1on1_home_practice_completed"
@@ -74,8 +122,23 @@
       "individual": true,
       "together": true,
       "priority": 90,
-      "title": "Well done!",
       "has_single_task": true,
+      "title": "Well done!",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Well done!"
+        }
+      },
       "template": "w_1on1_ending",
       "completed_field": "task_gp_w_1on1_ending_completed",
       "completed": "@fields.task_gp_w_1on1_ending_completed"
@@ -85,8 +148,16 @@
       "individual": true,
       "together": true,
       "priority": 91,
-      "title": "Home Practice Review",
       "has_single_task": true,
+      "title": "@global.hp_review",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.hp_review"
+        }
+      },
       "template": "w_1on1_hp_review",
       "completed_field": "task_gp_w_1on1_hp_review_completed",
       "completed": "@fields.task_gp_w_1on1_hp_review_completed"
@@ -96,8 +167,16 @@
       "individual": true,
       "together": false,
       "priority": 14,
-      "title": "Question",
       "has_single_task": true,
+      "title": "Question",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Question"
+        }
+      },
       "template": "w_1on1_question",
       "completed_field": "task_gp_w_1on1_question_completed",
       "completed": "@fields.task_gp_w_1on1_question_completed"
@@ -107,8 +186,23 @@
       "individual": false,
       "together": true,
       "priority": 14,
-      "title": "Talk Together",
       "has_single_task": true,
+      "title": "Talk Together",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Talk Together"
+        }
+      },
       "template": "w_1on1_talk",
       "completed_field": "task_gp_w_1on1_talk_completed",
       "completed": "@fields.task_gp_w_1on1_talk_completed"

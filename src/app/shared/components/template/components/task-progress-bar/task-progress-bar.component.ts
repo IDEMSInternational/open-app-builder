@@ -12,7 +12,8 @@ import { IProgressStatus } from "src/app/shared/services/task/task.service";
   styleUrls: ["./task-progress-bar.component.scss"],
 })
 export class TmplTaskProgressBarComponent extends TemplateBaseComponent implements OnInit {
-  @Input() taskGroupId: string | null;
+  @Input() taskGroupDataList: string | null;
+  @Input() taskGroupCompletedField: string | null;
   @Input() highlighted: boolean | null;
   @Input() progressStatus: IProgressStatus;
   @Output() progressStatusChange = new EventEmitter<IProgressStatus>();
@@ -31,12 +32,17 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
 
   ngOnInit() {
     this.getParams();
-    this.getTaskGroupData(this.taskGroupId);
+    this.evaluateTaskGroupData();
   }
 
   getParams() {
     if (this._row) {
-      this.taskGroupId = getStringParamFromTemplateRow(this._row, "taskGroupId", null);
+      this.taskGroupDataList = getStringParamFromTemplateRow(this._row, "task_group_data", null);
+      this.taskGroupCompletedField = getStringParamFromTemplateRow(
+        this._row,
+        "completed_field",
+        null
+      );
     }
   }
 
@@ -44,9 +50,9 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
     return (this.subtasksCompleted / this.subtasksTotal) * 100;
   }
 
-  async getTaskGroupData(taskGroupId: string) {
-    const dataList = await this.appDataService.getSheet("data_list", `${taskGroupId}_tasks`);
-    const subtasks = dataList.rows;
+  async evaluateTaskGroupData() {
+    const dataList = await this.appDataService.getSheet("data_list", this.taskGroupDataList);
+    const subtasks = dataList?.rows || [];
     this.subtasksTotal = subtasks.length;
     this.subtasksCompleted = subtasks.filter((task) =>
       this.templateFieldService.getField(task.completed_field)
@@ -55,23 +61,22 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
       this.progressStatus = "completed";
       this.progressStatusChange.emit(this.progressStatus);
       // Check whether task group has already been completed
-      if (this.templateFieldService.getField(`${taskGroupId}_completed`) !== true) {
-        // If not, set completed field to "true" and emit "completed"
-        this.setTaskGroupCompleted(taskGroupId);
-        // TODO? Alternatively, leave setting the field to the template, and just emit "completed", i.e.
-        // this.triggerActions("completed")
-        // Currently the task-progress-bar cannot trigger actions, since it is only instantiated inside
-        // the task-card so has now "_row"
+      if (this.templateFieldService.getField(this.taskGroupCompletedField) !== true) {
+        // If not, set completed field to "true"
+        await this.setTaskGroupCompletedStatus(this.taskGroupCompletedField, true);
       }
-    } else if (this.subtasksCompleted) {
-      this.progressStatus = "inProgress";
-      this.progressStatusChange.emit(this.progressStatus);
+    } else {
+      await this.setTaskGroupCompletedStatus(this.taskGroupCompletedField, false);
+      if (this.subtasksCompleted) {
+        this.progressStatus = "inProgress";
+        this.progressStatusChange.emit(this.progressStatus);
+      }
     }
+    this.taskService.evaluateHighlightedTaskGroup();
   }
 
-  setTaskGroupCompleted(taskGroupId: string) {
-    const completedField = `${taskGroupId}_completed`;
-    console.log(`Setting ${completedField} to true`);
-    return this.templateFieldService.setField(completedField, "true");
+  async setTaskGroupCompletedStatus(taskGroupCompletedField: string, isCompleted: boolean) {
+    console.log(`Setting ${taskGroupCompletedField} to ${isCompleted}`);
+    await this.templateFieldService.setField(taskGroupCompletedField, `${isCompleted}`);
   }
 }

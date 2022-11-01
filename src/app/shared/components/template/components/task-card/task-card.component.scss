@@ -1,5 +1,6 @@
 .card-wrapper {
   position: relative;
+  margin: auto;
   background-color: white;
   border: 1px solid var(--ion-color-gray-light);
   border-radius: var(--ion-border-radius-secondary);
@@ -8,16 +9,18 @@
   max-width: 400px;
   filter: drop-shadow(var(--ion-default-box-shadow));
 
-  &.landscape {
-    width: 90%;
-  }
   &.portrait {
-    width: 160px;
+    width: 165px;
     padding: var(--small-padding);
     .content-wrapper {
       flex-direction: column-reverse;
       .text-wrapper {
         width: 95%;
+        h1 {
+          padding-top: var(--tiny-padding);
+          font-size: var(--font-size-subtitle-small);
+          line-height: var(--line-height-text-small);
+        }
         .subtitle-wrapper {
           p {
             line-height: inherit;
