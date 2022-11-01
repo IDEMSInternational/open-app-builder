@@ -2,7 +2,86 @@
   "flow_type": "template",
   "flow_name": "task_group_stepper",
   "status": "released",
+  "comments": "buggy",
   "rows": [
+    {
+      "name": "progress_field",
+      "value": "temp_progress_field",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "progress_field"
+    },
+    {
+      "name": "max_progress_field",
+      "value": "temp_max_progress_field",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "max_progress_field"
+    },
+    {
+      "type": "set_field",
+      "name": "@local.progress_field",
+      "value": 0,
+      "_nested_name": "@local.progress_field",
+      "_dynamicFields": {
+        "name": [
+          {
+            "fullExpression": "@local.progress_field",
+            "matchedExpression": "@local.progress_field",
+            "type": "local",
+            "fieldName": "progress_field"
+          }
+        ],
+        "_nested_name": [
+          {
+            "fullExpression": "@local.progress_field",
+            "matchedExpression": "@local.progress_field",
+            "type": "local",
+            "fieldName": "progress_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.progress_field": [
+          "name",
+          "_nested_name"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "@local.max_progress_field",
+      "value": 0,
+      "_nested_name": "@local.max_progress_field",
+      "_dynamicFields": {
+        "name": [
+          {
+            "fullExpression": "@local.max_progress_field",
+            "matchedExpression": "@local.max_progress_field",
+            "type": "local",
+            "fieldName": "max_progress_field"
+          }
+        ],
+        "_nested_name": [
+          {
+            "fullExpression": "@local.max_progress_field",
+            "matchedExpression": "@local.max_progress_field",
+            "type": "local",
+            "fieldName": "max_progress_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.max_progress_field": [
+          "name",
+          "_nested_name"
+        ]
+      }
+    },
     {
       "name": "workshop_id",
       "value": "@fields.current_workshop",
@@ -174,6 +253,10 @@
         "@data.@local.task_group"
       ],
       "exclude_from_translation": true,
+      "parameter_list": {
+        "progress_field": "@local.progress_field",
+        "max_progress_field": "@local.max_progress_field"
+      },
       "_nested_name": "nav_template_list",
       "_dynamicFields": {
         "value": {
@@ -185,11 +268,35 @@
               "fieldName": "task_group"
             }
           ]
+        },
+        "parameter_list": {
+          "progress_field": [
+            {
+              "fullExpression": "@local.progress_field",
+              "matchedExpression": "@local.progress_field",
+              "type": "local",
+              "fieldName": "progress_field"
+            }
+          ],
+          "max_progress_field": [
+            {
+              "fullExpression": "@local.max_progress_field",
+              "matchedExpression": "@local.max_progress_field",
+              "type": "local",
+              "fieldName": "max_progress_field"
+            }
+          ]
         }
       },
       "_dynamicDependencies": {
         "@local.task_group": [
           "value.0"
+        ],
+        "@local.progress_field": [
+          "parameter_list.progress_field"
+        ],
+        "@local.max_progress_field": [
+          "parameter_list.max_progress_field"
         ]
       }
     }
