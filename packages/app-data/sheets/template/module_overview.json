@@ -4,10 +4,21 @@
   "status": "released",
   "rows": [
     {
-      "name": "empty_string",
+      "type": "update_action_list",
+      "name": "custom_actions_1",
+      "action_list": [
+        {
+          "trigger": "nav_resume",
+          "action_id": "emit",
+          "args": [
+            "force_reload"
+          ],
+          "_raw": "nav_resume | emit: force_reload",
+          "_cleaned": "nav_resume | emit: force_reload"
+        }
+      ],
       "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "empty_string"
+      "_nested_name": "custom_actions_1"
     },
     {
       "name": "workshop_id",

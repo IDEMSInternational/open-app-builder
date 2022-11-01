@@ -29,6 +29,30 @@
       }
     },
     {
+      "type": "set_field",
+      "name": "current_workshop",
+      "value": "@local.workshop_id",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "current_workshop",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop_id",
+            "matchedExpression": "@local.workshop_id",
+            "type": "local",
+            "fieldName": "workshop_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_id": [
+          "value"
+        ]
+      }
+    },
+    {
       "name": "task_groups",
       "value": "_task_gs",
       "_translations": {
