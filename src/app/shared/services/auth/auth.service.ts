@@ -3,16 +3,19 @@ import { Auth } from "@angular/fire/auth";
 import { FirebaseAuthentication, User } from "@capacitor-firebase/authentication";
 import { BehaviorSubject } from "rxjs";
 import { first, filter } from "rxjs/operators";
-import { APP_CONSTANTS } from "src/app/data";
+import { IAppConfig } from "../../model";
+import { AppConfigService } from "../app-config/app-config.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
   private authUser$ = new BehaviorSubject<User | null>(null);
+  appFields: IAppConfig["APP_FIELDS"];
 
   // include auth import to ensure app registered
-  constructor(auth: Auth) {
+  constructor(auth: Auth, private appConfigService: AppConfigService) {
+    this.subscribeToAppConfigChanges();
     this.addAuthListeners();
   }
 
@@ -50,12 +53,17 @@ export class AuthService {
 
   /** Keep a subset of auth user info in contact fields for db lookup*/
   private addStorageEntry(user?: User) {
-    const { APP_AUTH_USER } = APP_CONSTANTS.APP_FIELDS;
     if (user) {
       const { uid } = user;
-      localStorage.setItem(APP_AUTH_USER, JSON.stringify({ uid }));
+      localStorage.setItem(this.appFields.APP_AUTH_USER, JSON.stringify({ uid }));
     } else {
-      localStorage.removeItem(APP_AUTH_USER);
+      localStorage.removeItem(this.appFields.APP_AUTH_USER);
     }
+  }
+
+  subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.appFields = appConfig.APP_FIELDS;
+    });
   }
 }

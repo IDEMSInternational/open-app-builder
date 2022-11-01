@@ -10,76 +10,107 @@
         "w_self_care_specific_tasks"
       ],
       "input_source": false,
-      "output_target": "w_self_care_tasks"
+      "output_target": "w_self_care_tasks_temp_1"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_1on1_common_tasks",
+        "w_1on1_specific_tasks"
+      ],
+      "input_source": false,
+      "output_target": "w_1on1_tasks_temp_1"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_praise_common_tasks",
+        "w_praise_specific_tasks"
+      ],
+      "input_source": false,
+      "output_target": "w_praise_tasks_temp_1"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_instruct_common_tasks",
+        "w_instruct_specific_tasks"
+      ],
+      "input_source": false,
+      "output_target": "w_instruct_tasks_temp_1"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_stress_common_tasks",
+        "w_stress_specific_tasks"
+      ],
+      "input_source": false,
+      "output_target": "w_stress_tasks_temp_1"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_money_common_tasks",
+        "w_money_specific_tasks"
+      ],
+      "input_source": false,
+      "output_target": "w_money_tasks_temp_1"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_rules_common_tasks",
+        "w_rules_specific_tasks"
+      ],
+      "input_source": false,
+      "output_target": "w_rules_tasks_temp_1"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_consequence_common_tasks",
+        "w_consequence_specific_tasks"
+      ],
+      "input_source": false,
+      "output_target": "w_consequence_tasks_temp_1"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_solve_common_tasks",
+        "w_solve_specific_tasks"
+      ],
+      "input_source": false,
+      "output_target": "w_solve_tasks_temp_1"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_safe_common_tasks",
+        "w_safe_specific_tasks"
+      ],
+      "input_source": false,
+      "output_target": "w_safe_tasks_temp_1"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_crisis_common_tasks",
+        "w_crisis_specific_tasks"
+      ],
+      "input_source": false,
+      "output_target": "w_crisis_tasks_temp_1"
+    },
+    {
+      "operation": "concat",
+      "args_list": [
+        "w_celebrate_common_tasks",
+        "w_celebrate_specific_tasks"
+      ],
+      "input_source": false,
+      "output_target": "w_celebrate_tasks_temp_1"
     }
   ],
-  "_xlsxPath": "global/data/workshop_data/workshop_tasks_concat.xlsx",
-  "_processed": {
-    "w_self_care_tasks": [
-      {
-        "id": "welcome_individual",
-        "individual": true,
-        "together": false,
-        "priority": 1
-      },
-      {
-        "id": "care_together",
-        "individual": false,
-        "together": true,
-        "priority": 2
-      },
-      {
-        "id": "intro",
-        "individual": true,
-        "together": true,
-        "priority": 5
-      },
-      {
-        "id": "tools_activity",
-        "individual": true,
-        "together": true,
-        "priority": 70
-      },
-      {
-        "id": "home_practice",
-        "individual": true,
-        "together": true,
-        "priority": 80
-      },
-      {
-        "id": "ending",
-        "individual": true,
-        "together": true,
-        "priority": 90
-      },
-      {
-        "id": "relax",
-        "individual": true,
-        "together": true,
-        "priority": 11,
-        "template": "w_self_care_relax"
-      },
-      {
-        "id": "recognise",
-        "individual": true,
-        "together": true,
-        "priority": 12,
-        "template": "w_self_care_recognise"
-      },
-      {
-        "id": "reward",
-        "individual": true,
-        "together": true,
-        "priority": 13,
-        "template": "w_self_care_reward"
-      },
-      {
-        "id": "survey_activity",
-        "individual": true,
-        "together": false,
-        "priority": 71,
-        "template": "w_self_care_survey_activity"
-      }
-    ]
-  }
+  "_xlsxPath": "global/data/workshop_data/workshop_tasks_data_pipes.xlsx"
 }

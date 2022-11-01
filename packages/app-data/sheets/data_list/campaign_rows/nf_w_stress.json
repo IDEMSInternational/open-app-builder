@@ -75,10 +75,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.user_name! Congratulations for starting week 5.\n\nA new workshop awaits with tips on staying calm and in control when our teens drive us crazy."
+          "eng": "Hi @fields.user_name! Congratulations for starting week 5.\n\nA new @global.workshop awaits with tips on staying calm and in control when our teens drive us crazy."
         }
       },
-      "text": "Hi @fields.user_name! Congratulations for starting week 5.\n\nA new workshop awaits with tips on staying calm and in control when our teens drive us crazy."
+      "text": "Hi @fields.user_name! Congratulations for starting week 5.\n\nA new @global.workshop awaits with tips on staying calm and in control when our teens drive us crazy."
     },
     {
       "id": "w_released_w_stress_tog",
@@ -151,10 +151,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.group_name! Congratulations for starting week 5.\n\nA new workshop awaits with tips on staying calm and in control when our teens drive us crazy."
+          "eng": "Hi @fields.group_name! Congratulations for starting week 5.\n\nA new @global.workshop awaits with tips on staying calm and in control when our teens drive us crazy."
         }
       },
-      "text": "Hi @fields.group_name! Congratulations for starting week 5.\n\nA new workshop awaits with tips on staying calm and in control when our teens drive us crazy."
+      "text": "Hi @fields.group_name! Congratulations for starting week 5.\n\nA new @global.workshop awaits with tips on staying calm and in control when our teens drive us crazy."
     },
     {
       "id": "relax_w_stress",
@@ -325,10 +325,10 @@
           "eng": "@global.m_praise"
         },
         "text": {
-          "eng": "Manage anger and stress with this new workshop. It helps you take better care of yourself."
+          "eng": "Manage anger and stress with this new @global.workshop. It helps you take better care of yourself."
         }
       },
-      "text": "Manage anger and stress with this new workshop. It helps you take better care of yourself."
+      "text": "Manage anger and stress with this new @global.workshop. It helps you take better care of yourself."
     },
     {
       "id": "w_reminder_w_stress",
@@ -393,10 +393,10 @@
           "eng": "@global.m_w_reminder"
         },
         "text": {
-          "eng": "Manage anger and stress with this new workshop. It helps you take better care of yourself."
+          "eng": "Manage anger and stress with this new @global.workshop. It helps you take better care of yourself."
         }
       },
-      "text": "Manage anger and stress with this new workshop. It helps you take better care of yourself."
+      "text": "Manage anger and stress with this new @global.workshop. It helps you take better care of yourself."
     },
     {
       "id": "w_in_progress_w_stress",
@@ -812,10 +812,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Well done for completing the @data.workshop.w_stress.in_text_title. Tomorrow, access a new workshop to help you relax and build valuable skills!"
+          "eng": "Well done for completing the @data.workshop.w_stress.in_text_title. Tomorrow, access a new @global.workshop to help you relax and build valuable skills!"
         }
       },
-      "text": "Well done for completing the @data.workshop.w_stress.in_text_title. Tomorrow, access a new workshop to help you relax and build valuable skills!"
+      "text": "Well done for completing the @data.workshop.w_stress.in_text_title. Tomorrow, access a new @global.workshop to help you relax and build valuable skills!"
     },
     {
       "id": "w_tomorrow_w_stress_incompl",
@@ -881,10 +881,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Get ready for a new workshop tomorrow. \n \n By completing the @data.workshop.w_stress.in_text_title first, you lay a key foundation: If you feel good, your family will too!"
+          "eng": "Get ready for a new @global.workshop tomorrow. \n \n By completing the @data.workshop.w_stress.in_text_title first, you lay a key foundation: If you feel good, your family will too!"
         }
       },
-      "text": "Get ready for a new workshop tomorrow. \n \n By completing the @data.workshop.w_stress.in_text_title first, you lay a key foundation: If you feel good, your family will too!"
+      "text": "Get ready for a new @global.workshop tomorrow. \n \n By completing the @data.workshop.w_stress.in_text_title first, you lay a key foundation: If you feel good, your family will too!"
     }
   ],
   "_xlsxPath": "global/campaigns/notifications_in_week_messages.xlsx"

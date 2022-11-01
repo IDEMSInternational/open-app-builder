@@ -720,10 +720,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Well done for completing the @data.workshop.w_1on1.in_text_title. Tomorrow, you can access a new workshop to help you relax, enjoy and learn new skills!"
+          "eng": "Well done for completing the @data.workshop.w_1on1.in_text_title. Tomorrow, you can access a new @global.workshop to help you relax, enjoy and learn new skills!"
         }
       },
-      "text": "Well done for completing the @data.workshop.w_1on1.in_text_title. Tomorrow, you can access a new workshop to help you relax, enjoy and learn new skills!"
+      "text": "Well done for completing the @data.workshop.w_1on1.in_text_title. Tomorrow, you can access a new @global.workshop to help you relax, enjoy and learn new skills!"
     },
     {
       "id": "w_tomorrow_w_1on1_incompl",

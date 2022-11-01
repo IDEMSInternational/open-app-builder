@@ -18,6 +18,7 @@ import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { SkinService } from "src/app/shared/services/skin/skin.service";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
+import { TaskService } from "src/app/shared/services/task/task.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -46,6 +47,7 @@ export class TemplateActionService extends TemplateInstanceService {
   private authService: AuthService;
   private skinService: SkinService;
   private themeService: ThemeService;
+  private taskService: TaskService;
 
   constructor(injector: Injector, public container?: TemplateContainerComponent) {
     super(injector);
@@ -62,6 +64,7 @@ export class TemplateActionService extends TemplateInstanceService {
     this.authService = this.getGlobalService(AuthService);
     this.skinService = this.getGlobalService(SkinService);
     this.themeService = this.getGlobalService(ThemeService);
+    this.taskService = this.getGlobalService(TaskService);
   }
 
   /** Public method to add actions to processing queue and process */
@@ -163,6 +166,7 @@ export class TemplateActionService extends TemplateInstanceService {
       case "toggle_field":
         const currentValue = this.templateFieldService.getField(key);
         const toggleValue = !currentValue;
+        console.log("[SET FIELD]", key, toggleValue);
         return this.templateFieldService.setField(key, `${toggleValue}`);
       case "start_tour":
         return this.tourService.startTour(key);
@@ -190,6 +194,8 @@ export class TemplateActionService extends TemplateInstanceService {
         return processor.processTemplateWithoutRender(templateToProcess);
       case "google_auth":
         return await this.authService.signInWithGoogle();
+      case "task_group_set_highlighted":
+        return this.taskService.setHighlightedTaskGroup(args[0]);
       case "emit":
         const [emit_value, emit_data] = args;
         const container: TemplateContainerComponent = this.container;

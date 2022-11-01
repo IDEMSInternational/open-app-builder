@@ -101,7 +101,7 @@
             },
             {
               "name": "text",
-              "value": "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app workshops together!",
+              "value": "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app @global.workshops together!",
               "_translations": {
                 "value": {
                   "tz_sw": true
@@ -113,16 +113,22 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app workshops together!",
+                    "fullExpression": "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app @global.workshops together!",
                     "matchedExpression": "@global.parent_app",
                     "type": "global",
                     "fieldName": "parent_app"
                   },
                   {
-                    "fullExpression": "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app workshops together!",
+                    "fullExpression": "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app @global.workshops together!",
                     "matchedExpression": "@global.parent_app",
                     "type": "global",
                     "fieldName": "parent_app"
+                  },
+                  {
+                    "fullExpression": "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app @global.workshops together!",
+                    "matchedExpression": "@global.workshops",
+                    "type": "global",
+                    "fieldName": "workshops"
                   }
                 ],
                 "condition": [
@@ -137,6 +143,9 @@
               "_dynamicDependencies": {
                 "@global.parent_app": [
                   "value",
+                  "value"
+                ],
+                "@global.workshops": [
                   "value"
                 ],
                 "@local.do_workshops_together": [

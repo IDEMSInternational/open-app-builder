@@ -5,130 +5,180 @@
   "rows": [
     {
       "id": "welcome_individual",
+      "group": "welcome_individual",
       "individual": true,
       "together": false,
-      "priority": 1
+      "template": "w_consequence_welcome_individual",
+      "completed_field": "task_w_consequence_welcome_individual_completed",
+      "completed": "@fields.task_w_consequence_welcome_individual_completed"
     },
     {
       "id": "care_together",
+      "group": "care_together",
       "individual": false,
       "together": true,
-      "priority": 2
+      "template": "w_consequence_care_together",
+      "completed_field": "task_w_consequence_care_together_completed",
+      "completed": "@fields.task_w_consequence_care_together_completed"
     },
     {
       "id": "relax",
+      "group": "relax",
       "individual": true,
       "together": true,
-      "priority": 3
+      "template": "w_consequence_relax",
+      "completed_field": "task_w_consequence_relax_completed",
+      "completed": "@fields.task_w_consequence_relax_completed"
     },
     {
       "id": "reflect_together",
+      "group": "reflect_together",
       "individual": false,
       "together": true,
-      "priority": 4
+      "template": "w_consequence_reflect_together",
+      "completed_field": "task_w_consequence_reflect_together_completed",
+      "completed": "@fields.task_w_consequence_reflect_together_completed"
     },
     {
       "id": "intro",
+      "group": "intro",
       "individual": true,
       "together": true,
-      "priority": 5
+      "template": "w_consequence_intro",
+      "completed_field": "task_w_consequence_intro_completed",
+      "completed": "@fields.task_w_consequence_intro_completed"
     },
     {
       "id": "tools_activity",
+      "group": "tools_activity",
       "individual": true,
       "together": true,
-      "priority": 70
+      "template": "w_consequence_tools_activity",
+      "completed_field": "task_w_consequence_tools_activity_completed",
+      "completed": "@fields.task_w_consequence_tools_activity_completed"
     },
     {
       "id": "home_practice",
+      "group": "home_practice",
       "individual": true,
       "together": true,
-      "priority": 80
+      "template": "w_consequence_home_practice",
+      "completed_field": "task_w_consequence_home_practice_completed",
+      "completed": "@fields.task_w_consequence_home_practice_completed"
     },
     {
       "id": "ending",
+      "group": "ending",
       "individual": true,
       "together": true,
-      "priority": 90
+      "template": "w_consequence_ending",
+      "completed_field": "task_w_consequence_ending_completed",
+      "completed": "@fields.task_w_consequence_ending_completed"
     },
     {
       "id": "hp_review",
+      "group": "hp_review",
       "individual": true,
       "together": true,
-      "priority": 91
+      "template": "w_consequence_hp_review",
+      "completed_field": "task_w_consequence_hp_review_completed",
+      "completed": "@fields.task_w_consequence_hp_review_completed"
     },
     {
       "id": "read_1",
+      "group": "read_1",
       "individual": true,
       "together": true,
-      "priority": 11,
-      "template": "w_consequence_read_1",
-      "subtask_group": "read_1"
+      "template": "w_consequence_read_1_temp",
+      "rel_priority": 1,
+      "completed_field": "task_w_consequence_read_1_completed",
+      "completed": "@fields.task_w_consequence_read_1_completed"
     },
     {
       "id": "question_1",
+      "group": "read_1",
       "individual": true,
       "together": false,
-      "priority": 12,
       "template": "w_consequence_question_1",
-      "subtask_group": "read_1"
+      "rel_priority": 2,
+      "completed_field": "task_w_consequence_question_1_completed",
+      "completed": "@fields.task_w_consequence_question_1_completed"
     },
     {
       "id": "talk_1",
+      "group": "read_1",
       "individual": false,
       "together": true,
-      "priority": 12,
       "template": "w_consequence_talk_1",
-      "subtask_group": "read_1"
+      "rel_priority": 3,
+      "completed_field": "task_w_consequence_talk_1_completed",
+      "completed": "@fields.task_w_consequence_talk_1_completed"
     },
     {
       "id": "learn_1",
+      "group": "learn_1",
       "individual": true,
       "together": true,
-      "priority": 13,
-      "template": "w_consequence_learn_1"
+      "template": "w_consequence_learn_1_temp",
+      "completed_field": "task_w_consequence_learn_1_completed",
+      "completed": "@fields.task_w_consequence_learn_1_completed"
     },
     {
       "id": "talk_2",
+      "group": "talk_2",
       "individual": false,
       "together": true,
-      "priority": 71,
-      "template": "w_consequence_talk_2"
+      "template": "w_consequence_talk_2",
+      "completed_field": "task_w_consequence_talk_2_completed",
+      "completed": "@fields.task_w_consequence_talk_2_completed"
     },
     {
-      "id": "read_3",
+      "id": "read_2",
+      "group": "read_2",
       "individual": true,
       "together": true,
-      "priority": 72,
-      "template": "w_consequence_read_3"
+      "template": "w_consequence_read_3_temp",
+      "rel_priority": 1,
+      "completed_field": "task_w_consequence_read_2_completed",
+      "completed": "@fields.task_w_consequence_read_2_completed"
     },
     {
       "id": "question_2",
+      "group": "read_2",
       "individual": true,
       "together": false,
-      "priority": 73,
-      "template": "w_consequence_question_2"
+      "template": "w_consequence_question_2",
+      "rel_priority": 2,
+      "completed_field": "task_w_consequence_question_2_completed",
+      "completed": "@fields.task_w_consequence_question_2_completed"
     },
     {
       "id": "talk_3",
+      "group": "read_2",
       "individual": false,
       "together": true,
-      "priority": 73,
-      "template": "w_consequence_talk_3"
+      "template": "w_consequence_talk_3",
+      "rel_priority": 3,
+      "completed_field": "task_w_consequence_talk_3_completed",
+      "completed": "@fields.task_w_consequence_talk_3_completed"
     },
     {
       "id": "learn_2",
+      "group": "learn_2",
       "individual": true,
       "together": false,
-      "priority": 74,
-      "template": "w_consequence_learn_2"
+      "template": "w_consequence_learn_2_temp",
+      "completed_field": "task_w_consequence_learn_2_completed",
+      "completed": "@fields.task_w_consequence_learn_2_completed"
     },
     {
       "id": "try",
+      "group": "try",
       "individual": false,
       "together": true,
-      "priority": 75,
-      "template": "w_consequence_try"
+      "template": "w_consequence_try",
+      "completed_field": "task_w_consequence_try_completed",
+      "completed": "@fields.task_w_consequence_try_completed"
     }
   ]
 }
