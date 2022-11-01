@@ -75,10 +75,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.user_name! You're starting your third  @global.parent_app week. \n\nA new workshop is ready!"
+          "eng": "Hi @fields.user_name! You're starting your third  @global.parent_app week. \n\nA new @global.workshop is ready!"
         }
       },
-      "text": "Hi @fields.user_name! You're starting your third  @global.parent_app week. \n\nA new workshop is ready!"
+      "text": "Hi @fields.user_name! You're starting your third  @global.parent_app week. \n\nA new @global.workshop is ready!"
     },
     {
       "id": "w_released_w_praise_tog",
@@ -151,10 +151,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.group_name! You're starting your third  @global.parent_app week. \n\nA new workshop is ready!"
+          "eng": "Hi @fields.group_name! You're starting your third  @global.parent_app week. \n\nA new @global.workshop is ready!"
         }
       },
-      "text": "Hi @fields.group_name! You're starting your third  @global.parent_app week. \n\nA new workshop is ready!"
+      "text": "Hi @fields.group_name! You're starting your third  @global.parent_app week. \n\nA new @global.workshop is ready!"
     },
     {
       "id": "relax_w_praise",
@@ -728,10 +728,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Amazing, you completed the @data.workshop.w_praise.in_text_title. A new workshop is ready tomorrow. Try it - you will see a change in your teen’s behaviour."
+          "eng": "Amazing, you completed the @data.workshop.w_praise.in_text_title. A new @global.workshop is ready tomorrow. Try it - you will see a change in your teen’s behaviour."
         }
       },
-      "text": "Amazing, you completed the @data.workshop.w_praise.in_text_title. A new workshop is ready tomorrow. Try it - you will see a change in your teen’s behaviour."
+      "text": "Amazing, you completed the @data.workshop.w_praise.in_text_title. A new @global.workshop is ready tomorrow. Try it - you will see a change in your teen’s behaviour."
     },
     {
       "id": "w_tomorrow_w_praise_incompl",
@@ -797,10 +797,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Hi @global.user_name, a new workshop awaits you tomorrow!\n\nIt seems like you haven’t finished the @data.workshop.w_praise.in_text_title. It’s short (promise!) – give it a go when you have a few minutes."
+          "eng": "Hi @global.user_name, a new @global.workshop awaits you tomorrow!\n\nIt seems like you haven’t finished the @data.workshop.w_praise.in_text_title. It’s short (promise!) – give it a go when you have a few minutes."
         }
       },
-      "text": "Hi @global.user_name, a new workshop awaits you tomorrow!\n\nIt seems like you haven’t finished the @data.workshop.w_praise.in_text_title. It’s short (promise!) – give it a go when you have a few minutes."
+      "text": "Hi @global.user_name, a new @global.workshop awaits you tomorrow!\n\nIt seems like you haven’t finished the @data.workshop.w_praise.in_text_title. It’s short (promise!) – give it a go when you have a few minutes."
     }
   ],
   "_xlsxPath": "global/campaigns/notifications_in_week_messages.xlsx"

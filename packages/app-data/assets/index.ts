@@ -1,4 +1,7 @@
-export const UNTRACKED_ASSETS = [];
+export const UNTRACKED_ASSETS = [
+  "es_sp/quality_assurance/test_image_untracked.png",
+  "theme_professional/plh_images/workshops/w_instruct/read_2/slide_1_a.svg",
+];
 export const ASSETS_CONTENTS_LIST = {
   "android/icon-background.png": {
     size_kb: 6.4,
@@ -695,6 +698,16 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/characters/neighbour/sad.svg": {
     size_kb: 3.1,
     md5Checksum: "f546109cb2c902dd5b905953e4f3ae4a",
+  },
+  "plh_images/family.svg": {
+    size_kb: 864.1,
+    md5Checksum: "4a88fa5e3141147eaac754f65d17342d",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 45.3,
+        md5Checksum: "6b480cdb1b435f40059c705a3a9e5b38",
+      },
+    },
   },
   "plh_images/first_app_launch/frustrated.svg": {
     size_kb: 11.9,

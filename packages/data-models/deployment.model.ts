@@ -1,5 +1,5 @@
 import clone from "clone";
-import type { IAppConstants } from "./constants";
+import type { IAppConfigOverride } from "./appConfig";
 
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
@@ -26,7 +26,7 @@ export interface IDeploymentConfig {
     icon_asset_background_path?: string;
   };
   /** Optional override of any provided constants from data-models/constants */
-  app_constants?: Partial<IAppConstants>;
+  app_config?: IAppConfigOverride;
   app_data?: {
     /** processed sheets for use in app. Default `packages/app-data/sheets` */
     sheets_output_path?: string;
@@ -81,7 +81,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     assets_filter_function: (gdriveEntry) => true,
   },
   android: {},
-  app_constants: {},
+  app_config: {},
   app_data: {
     sheets_output_path: "packages/app-data/sheets",
     converter_cache_path: "./cache/converter",

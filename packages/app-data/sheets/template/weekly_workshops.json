@@ -300,11 +300,9 @@
         {
           "type": "button",
           "name": "options_button",
-          "value": "Options",
+          "value": "@global.options",
           "_translations": {
-            "value": {
-              "tz_sw": true
-            }
+            "value": {}
           },
           "action_list": [
             {
@@ -320,7 +318,22 @@
           "style_list": [
             "flex: 1"
           ],
-          "_nested_name": "heading.options_button"
+          "_nested_name": "heading.options_button",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.options",
+                "matchedExpression": "@global.options",
+                "type": "global",
+                "fieldName": "options"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.options": [
+              "value"
+            ]
+          }
         }
       ],
       "_nested_name": "heading"

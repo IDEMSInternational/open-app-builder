@@ -88,4 +88,16 @@ describe("Data Pipe", () => {
       `No pipeline operator exists: ${invalidOp.operation}`
     );
   });
+  it("Provides step context when throwing on error", () => {
+    // concatenating a list with itself should throw error due to duplicate ids
+    const operations: IDataPipeOperation[] = [
+      { input_source: "names", operation: "concat", args_list: ["names"], output_target: "names" },
+    ];
+    try {
+      new DataPipe(operations, testData).run();
+    } catch (error) {
+      const { step } = JSON.parse(error.message);
+      expect(step).toEqual(operations[0]);
+    }
+  });
 });

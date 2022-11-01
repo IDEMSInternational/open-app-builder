@@ -58,14 +58,27 @@
           "rows": [
             {
               "name": "intro_text",
-              "value": "Welcome! It’s great to have you here. This week is about YOU. \n\nIn this welcome workshop you will: \n* Get tools to care for yourself \n* Customise the app for your needs",
+              "value": "Welcome! It’s great to have you here. This week is about YOU. \n\nIn this welcome @global.workshop you will: \n* Get tools to care for yourself \n* Customise the app for your needs",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "type": "set_variable",
-              "_nested_name": "welcome_individual.workshop_activity.intro_text"
+              "_nested_name": "welcome_individual.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Welcome! It’s great to have you here. This week is about YOU. \n\nIn this welcome @global.workshop you will: \n* Get tools to care for yourself \n* Customise the app for your needs",
+                    "matchedExpression": "@global.workshop",
+                    "type": "global",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.workshop": [
+                  "value"
+                ]
+              }
             },
             {
               "type": "nested_properties",

@@ -1,0 +1,67 @@
+@use "/src/theme/mixins";
+
+$navigation-bar-height: var(--navigation-bar-height);
+$handle-height: var(--drawer-handle-height);
+// The value of the property --min-height applied to ion-toolbar, not directly accessible
+$header-height: 56px;
+
+// Element to remain inline within scrollable content to ensure no content lost behind drawer handle
+.bottom-spacer {
+  width: 100%;
+  height: $handle-height;
+}
+
+.drawer {
+  position: fixed;
+  top: calc(100vh - $header-height - $navigation-bar-height - $handle-height);
+  left: 0px;
+  width: 100%;
+  border-style: solid solid none solid;
+  border-color: var(--ion-color-primary);
+  border-radius: var(--ion-border-radius-standard) var(--ion-border-radius-standard) 0 0;
+  background-color: var(--ion-background-color);
+  z-index: 100;
+
+  &.secondary {
+    background-color: var(--ion-color-secondary);
+    border: none;
+    .handle {
+      &:active {
+        background-color: var(--ion-color-secondary-600);
+      }
+      p {
+        color: white;
+      }
+      .handle-icon {
+        background-color: white;
+      }
+    }
+  }
+
+  .handle {
+    height: $handle-height;
+    @include mixins.flex-centered;
+    flex-direction: column;
+    border-radius: var(--ion-border-radius-standard) var(--ion-border-radius-standard) 0 0;
+    p {
+      text-align: center;
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-subtitle-small);
+      color: var(--ion-color-primary);
+      margin: 0px;
+    }
+    .handle-icon {
+      width: 50px;
+      height: 2px;
+      margin: 8px 0;
+      background-color: var(--ion-color-primary);
+    }
+    &:active {
+      background-color: var(--ion-color-gray-100);
+    }
+  }
+
+  .content {
+    padding: var(--regular-padding) var(--regular-padding) 30px;
+  }
+}
