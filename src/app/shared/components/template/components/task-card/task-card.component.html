@@ -59,6 +59,7 @@
             [taskGroupCompletedField]="completedField"
             [highlighted]="highlighted"
             [(progressStatus)]="progressStatus"
+            (newlyCompleted)="handleNewlyCompleted($event)"
           ></plh-task-progress-bar>
         </div>
       </div>
