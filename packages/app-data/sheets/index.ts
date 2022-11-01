@@ -4682,6 +4682,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     task_group_stepper: {
       flow_type: "template",
       flow_name: "task_group_stepper",
+      comments: "buggy",
       _xlsxPath: "global/core_templates/core_templates_workshops.xlsx",
     },
     teen_testimonial_text: {
@@ -7176,6 +7177,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "workshop_stepper_actions",
       _xlsxPath: "global/core_templates/core_templates_workshops.xlsx",
+    },
+    workshop_task_groups_test: {
+      flow_type: "template",
+      flow_name: "workshop_task_groups_test",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_testing_templates.xlsx",
     },
     workshop_unlock: {
       flow_type: "template",
