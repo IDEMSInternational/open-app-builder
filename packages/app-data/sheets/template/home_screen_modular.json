@@ -6,6 +6,22 @@
   "override_condition": "@fields._app_skin == \"modular\"",
   "rows": [
     {
+      "type": "update_action_list",
+      "name": "custom_actions_1",
+      "action_list": [
+        {
+          "trigger": "nav_resume",
+          "action_id": "emit",
+          "args": [
+            "force_reload"
+          ],
+          "_raw": "nav_resume | emit: force_reload",
+          "_cleaned": "nav_resume | emit: force_reload"
+        }
+      ],
+      "_nested_name": "custom_actions_1"
+    },
+    {
       "name": "highlighted_module",
       "value": "@fields._task_highlighted_group_id",
       "_translations": {
@@ -204,15 +220,13 @@
       "_nested_name": "carousel"
     },
     {
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "name": "set_variable",
-      "_nested_name": "set_variable"
-    },
-    {
       "type": "drawer",
       "name": "drawer",
       "value": "Things to do",
+      "parameter_list": {
+        "style": "secondary"
+      },
+      "exclude_from_translation": true,
       "rows": [
         {
           "type": "template",

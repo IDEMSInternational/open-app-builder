@@ -65,7 +65,9 @@
               "name": "text",
               "value": "Hi @fields.user_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis @global.workshop will show you how.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "condition": "!@local.do_workshops_together",
               "type": "set_variable",
@@ -110,7 +112,9 @@
               "name": "text",
               "value": "Hi @fields.group_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis @global.workshop will show you how.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "condition": "@local.do_workshops_together",
               "type": "set_variable",

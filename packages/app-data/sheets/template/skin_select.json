@@ -7,7 +7,9 @@
       "type": "title",
       "value": "App Skin",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "name": "title",
       "_nested_name": "title"
@@ -34,7 +36,9 @@
       "name": "workshop_skin_text",
       "value": "Workshop",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "workshop_skin_text"
@@ -43,7 +47,9 @@
       "name": "module_skin_text",
       "value": "Module",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "module_skin_text"

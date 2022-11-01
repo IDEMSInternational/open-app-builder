@@ -37,7 +37,9 @@
           "name": "text_not_completed",
           "value": "As usual, you can access a new workshop tomorrow. It will help to complete the previous @global.workshop before then.  \n\nSome parents are using the app while commuting to work. Why don’t you use the app when you have a few minutes? \n\nThank you again for using @global.parent_app.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "m_workshop_tomorrow.text_not_completed",
@@ -70,7 +72,9 @@
           "name": "text_completed",
           "value": "Congratulations, you completed the @local.workshop_data.in_text_title.\n\nTomorrow, a new @global.workshop is ready for you: you will see a big difference by making small changes!",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "m_workshop_tomorrow.text_completed",
