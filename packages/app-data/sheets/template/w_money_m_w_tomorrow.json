@@ -92,7 +92,9 @@
           "name": "text_completed",
           "value": "Great that you completed @local.workshop_data.in_text_title. Tomorrow, a new @global.workshop is unlocked to help you set family rules that work.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "m_workshop_tomorrow.text_completed",

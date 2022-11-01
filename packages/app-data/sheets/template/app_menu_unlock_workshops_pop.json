@@ -204,7 +204,9 @@
       "name": "text_2",
       "value": "All @global.workshops are now unlocked.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "hidden": "!@fields.unlock_workshops_confirm",
       "_nested_name": "text_2",

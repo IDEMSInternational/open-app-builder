@@ -66,7 +66,9 @@
       "title": "@global.m_w_released",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -140,7 +142,9 @@
       "title": "@global.m_w_released",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -727,7 +731,9 @@
       "title": "@global.m_w_tomorrow",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -794,7 +800,9 @@
       "title": "@global.m_w_tomorrow",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
