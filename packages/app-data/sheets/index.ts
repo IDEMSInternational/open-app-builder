@@ -4679,10 +4679,9 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "task_card",
       _xlsxPath: "global_modular/core_templates/module_navigation.xlsx",
     },
-    task_group_stepper: {
+    task_group_pair: {
       flow_type: "template",
-      flow_name: "task_group_stepper",
-      comments: "buggy",
+      flow_name: "task_group_pair",
       _xlsxPath: "global/core_templates/core_templates_workshops.xlsx",
     },
     teen_testimonial_text: {

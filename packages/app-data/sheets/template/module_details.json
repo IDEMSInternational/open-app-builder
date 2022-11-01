@@ -460,41 +460,6 @@
           "exclude_from_translation": true,
           "rows": [
             {
-              "name": "has_subtasks",
-              "value": "@item.has_subtasks",
-              "_translations": {
-                "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "items.card_@item.id.has_subtasks",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@item.has_subtasks",
-                    "matchedExpression": "@item.has_subtasks",
-                    "type": "item",
-                    "fieldName": "has_subtasks"
-                  }
-                ],
-                "_nested_name": [
-                  {
-                    "fullExpression": "items.card_@item.id.has_subtasks",
-                    "matchedExpression": "@item.id.has_subtasks",
-                    "type": "item",
-                    "fieldName": "id"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@item.has_subtasks": [
-                  "value"
-                ],
-                "@item.id.has_subtasks": [
-                  "_nested_name"
-                ]
-              }
-            },
-            {
               "name": "workshop_id",
               "value": "@local.workshop_id",
               "_translations": {
