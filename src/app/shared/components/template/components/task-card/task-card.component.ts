@@ -60,4 +60,10 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
         this.progressStatus = "completed";
     }
   }
+
+  handleNewlyCompleted(isNewlyCompleted: boolean) {
+    if (isNewlyCompleted) {
+      this.triggerActions("completed");
+    }
+  }
 }
