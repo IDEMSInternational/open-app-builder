@@ -362,6 +362,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_items.xlsx",
     },
+    encouraging_messages: {
+      flow_type: "data_list",
+      flow_name: "encouraging_messages",
+      _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
+    },
     example_data_pipe_list: {
       flow_type: "data_list",
       flow_subtype: "example_pipe",
@@ -2152,12 +2157,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "comp_video",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_video.xlsx",
-    },
-    example_task_card: {
-      flow_type: "template",
-      flow_name: "example_task_card",
-      flow_subtype: "component_demo",
-      _xlsxPath: "quality_assurance/component_sheets/component_task_card.xlsx",
     },
     example_task_carousel: {
       flow_type: "template",
@@ -7177,26 +7176,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "workshop_stepper_actions",
       _xlsxPath: "global/core_templates/core_templates_workshops.xlsx",
-    },
-    workshop_task_completed_test: {
-      flow_type: "template",
-      flow_name: "workshop_task_completed_test",
-      _xlsxPath: "global/data/workshop_data/workshop_tasks_testing_templates.xlsx",
-    },
-    workshop_task_groups_test: {
-      flow_type: "template",
-      flow_name: "workshop_task_groups_test",
-      _xlsxPath: "global/data/workshop_data/workshop_tasks_testing_templates.xlsx",
-    },
-    workshop_tasks_completed_test: {
-      flow_type: "template",
-      flow_name: "workshop_tasks_completed_test",
-      _xlsxPath: "global/data/workshop_data/workshop_tasks_testing_templates.xlsx",
-    },
-    workshop_tasks_test: {
-      flow_type: "template",
-      flow_name: "workshop_tasks_test",
-      _xlsxPath: "global/data/workshop_data/workshop_tasks_testing_templates.xlsx",
     },
     workshop_unlock: {
       flow_type: "template",

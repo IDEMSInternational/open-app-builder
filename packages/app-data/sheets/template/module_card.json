@@ -375,6 +375,15 @@
           "trigger": "completed",
           "action_id": "emit",
           "args": [
+            "force_reload"
+          ],
+          "_raw": "completed | emit: force_reload",
+          "_cleaned": "completed | emit: force_reload"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
             "server_sync"
           ],
           "_raw": "completed | emit: server_sync",
@@ -578,6 +587,15 @@
           ],
           "_raw": "click | go_to: @local.click_template",
           "_cleaned": "click | go_to: @local.click_template"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "force_reload"
+          ],
+          "_raw": "completed | emit: force_reload",
+          "_cleaned": "completed | emit: force_reload"
         },
         {
           "trigger": "completed",
