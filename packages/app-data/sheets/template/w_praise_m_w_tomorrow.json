@@ -61,7 +61,9 @@
           "name": "text_not_completed",
           "value": "Hi @global.user_name, a new @global.workshop awaits you tomorrow. It seems like you haven’t finished the @local.workshop_data.in_text_title yet. It’s really a short one (promise!) – you can even complete it while waiting for dinner to cook. Why don’t you go through it when you have a few minutes?\n\nThank you again for using @global.parent_app.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "m_workshop_tomorrow.text_not_completed",
@@ -112,7 +114,9 @@
           "name": "text_completed",
           "value": "Great that you completed the @local.workshop_data.in_text_title. Tomorrow, a new @global.workshop is unlocked. Try it - you will see the difference in your teen’s behaviour.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "m_workshop_tomorrow.text_completed",

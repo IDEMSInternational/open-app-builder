@@ -108,7 +108,9 @@
               "name": "text",
               "value": "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app @global.workshops together!",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "condition": "@local.do_workshops_together",
               "type": "set_variable",

@@ -200,7 +200,9 @@
       "name": "text_2",
       "value": "All @global.workshops are now unlocked.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "exclude_from_translation": true,
       "hidden": "!@fields.unlock_workshops_confirm",
