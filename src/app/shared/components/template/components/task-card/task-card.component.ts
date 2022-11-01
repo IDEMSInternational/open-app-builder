@@ -60,4 +60,25 @@ export class TmplTaskCardComponent extends TemplateBaseComponent implements OnIn
         this.progressStatus = "completed";
     }
   }
+
+  /**
+   * Hack to handle the case where the task_group has been completed:
+   * the whole page must be reprocessed for all task-cards on the page to update
+   * to reflect the new completed status
+   * */
+  hackHandleNewlyCompleted(isNewlyCompleted: boolean) {
+    if (isNewlyCompleted) {
+      this.parent.handleActions(
+        [
+          {
+            action_id: "emit",
+            args: ["force_reload"],
+            trigger: "completed",
+            _triggeredBy: this._row,
+          },
+        ],
+        this._row
+      );
+    }
+  }
 }
