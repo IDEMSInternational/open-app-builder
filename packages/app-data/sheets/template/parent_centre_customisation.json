@@ -131,7 +131,7 @@
     {
       "type": "button",
       "name": "button_3",
-      "value": "Update my workshop options",
+      "value": "Update my @global.workshop options",
       "_translations": {
         "value": {
           "tz_sw": true
@@ -148,7 +148,22 @@
           "_cleaned": "click | go_to:workshop_options_page"
         }
       ],
-      "_nested_name": "button_3"
+      "_nested_name": "button_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Update my @global.workshop options",
+            "matchedExpression": "@global.workshop",
+            "type": "global",
+            "fieldName": "workshop"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.workshop": [
+          "value"
+        ]
+      }
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"

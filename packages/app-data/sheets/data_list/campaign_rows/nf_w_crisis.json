@@ -75,10 +75,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.user_name! Crises happen to anyone - being ready helps a lot. \n\nThis workshop will show you how."
+          "eng": "Hi @fields.user_name! Crises happen to anyone - being ready helps a lot. \n\nThis @global.workshop will show you how."
         }
       },
-      "text": "Hi @fields.user_name! Crises happen to anyone - being ready helps a lot. \n\nThis workshop will show you how."
+      "text": "Hi @fields.user_name! Crises happen to anyone - being ready helps a lot. \n\nThis @global.workshop will show you how."
     },
     {
       "id": "w_released_w_crisis_tog",
@@ -151,10 +151,10 @@
           "eng": "@global.m_w_released"
         },
         "text": {
-          "eng": "Hi @fields.group_name! Crises happen to anyone - being ready helps a lot. \n\nThis workshop will show you how."
+          "eng": "Hi @fields.group_name! Crises happen to anyone - being ready helps a lot. \n\nThis @global.workshop will show you how."
         }
       },
-      "text": "Hi @fields.group_name! Crises happen to anyone - being ready helps a lot. \n\nThis workshop will show you how."
+      "text": "Hi @fields.group_name! Crises happen to anyone - being ready helps a lot. \n\nThis @global.workshop will show you how."
     },
     {
       "id": "relax_w_crisis",
@@ -393,10 +393,10 @@
           "eng": "@global.m_w_reminder"
         },
         "text": {
-          "eng": "Crises may happen, and we CAN be prepared!\n\nStart the next workshop to see how with your teen."
+          "eng": "Crises may happen, and we CAN be prepared!\n\nStart the next @global.workshop to see how with your teen."
         }
       },
-      "text": "Crises may happen, and we CAN be prepared!\n\nStart the next workshop to see how with your teen."
+      "text": "Crises may happen, and we CAN be prepared!\n\nStart the next @global.workshop to see how with your teen."
     },
     {
       "id": "w_in_progress_w_crisis",
@@ -728,10 +728,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Well done for finishing the @data.workshop.w_crisis. Tomorrow, you can access the final workshop to reflect on your journey and plan what to do next!"
+          "eng": "Well done for finishing the @data.workshop.w_crisis. Tomorrow, you can access the final @global.workshop to reflect on your journey and plan what to do next!"
         }
       },
-      "text": "Well done for finishing the @data.workshop.w_crisis. Tomorrow, you can access the final workshop to reflect on your journey and plan what to do next!"
+      "text": "Well done for finishing the @data.workshop.w_crisis. Tomorrow, you can access the final @global.workshop to reflect on your journey and plan what to do next!"
     },
     {
       "id": "w_tomorrow_w_crisis_incompl",
@@ -797,10 +797,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "The final workshop unlocks tomorrow!\n\nFirst try to finish the @data.workshop.w_crisis.in_text_title. That way, you can complete your set of parenting skills and decide what to do next."
+          "eng": "The final @global.workshop unlocks tomorrow!\n\nFirst try to finish the @data.workshop.w_crisis.in_text_title. That way, you can complete your set of parenting skills and decide what to do next."
         }
       },
-      "text": "The final workshop unlocks tomorrow!\n\nFirst try to finish the @data.workshop.w_crisis.in_text_title. That way, you can complete your set of parenting skills and decide what to do next."
+      "text": "The final @global.workshop unlocks tomorrow!\n\nFirst try to finish the @data.workshop.w_crisis.in_text_title. That way, you can complete your set of parenting skills and decide what to do next."
     }
   ],
   "_xlsxPath": "global/campaigns/notifications_in_week_messages.xlsx"

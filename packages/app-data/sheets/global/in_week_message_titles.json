@@ -6,7 +6,7 @@
     {
       "type": "declare_global_constant",
       "name": "m_w_tomorrow",
-      "value": "New workshop ready tomorrow!",
+      "value": "New @global.workshop ready tomorrow!",
       "_translations": {
         "value": {
           "tz_sw": true
@@ -26,7 +26,7 @@
     {
       "type": "declare_global_constant",
       "name": "m_w_reminder",
-      "value": "Workshop Reminder",
+      "value": "@global.workshop_capital Reminder",
       "_translations": {
         "value": {
           "tz_sw": true

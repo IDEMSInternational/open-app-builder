@@ -1,0 +1,148 @@
+{
+  "flow_name": "w_self_care_tog_task_gs",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "intro",
+      "individual": true,
+      "together": true,
+      "priority": 5,
+      "has_single_task": true,
+      "title": "@data.workshop[@fields.current_workshop].intro_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop[@fields.current_workshop].intro_title"
+        }
+      },
+      "template": "w_self_care_intro",
+      "completed_field": "task_gp_w_self_care_intro_completed",
+      "completed": "@fields.task_gp_w_self_care_intro_completed"
+    },
+    {
+      "id": "tools_activity",
+      "individual": true,
+      "together": true,
+      "priority": 70,
+      "has_single_task": true,
+      "title": "@data.workshop[@fields.current_workshop].tools",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop[@fields.current_workshop].tools"
+        }
+      },
+      "template": "w_self_care_tools_activity",
+      "completed_field": "task_gp_w_self_care_tools_activity_completed",
+      "completed": "@fields.task_gp_w_self_care_tools_activity_completed"
+    },
+    {
+      "id": "home_practice",
+      "individual": true,
+      "together": true,
+      "priority": 80,
+      "has_single_task": true,
+      "title": "@global.home_practice",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.home_practice"
+        }
+      },
+      "template": "w_self_care_home_practice",
+      "completed_field": "task_gp_w_self_care_home_practice_completed",
+      "completed": "@fields.task_gp_w_self_care_home_practice_completed"
+    },
+    {
+      "id": "ending",
+      "individual": true,
+      "together": true,
+      "priority": 90,
+      "has_single_task": true,
+      "title": "Well done!",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Well done!"
+        }
+      },
+      "template": "w_self_care_ending",
+      "completed_field": "task_gp_w_self_care_ending_completed",
+      "completed": "@fields.task_gp_w_self_care_ending_completed"
+    },
+    {
+      "id": "relax",
+      "individual": true,
+      "together": true,
+      "priority": 11,
+      "has_single_task": true,
+      "title": "Relax",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Relax"
+        }
+      },
+      "template": "w_self_care_relax",
+      "completed_field": "task_gp_w_self_care_relax_completed",
+      "completed": "@fields.task_gp_w_self_care_relax_completed"
+    },
+    {
+      "id": "recognise",
+      "individual": true,
+      "together": true,
+      "priority": 12,
+      "has_single_task": true,
+      "title": "Recognise",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Recognise"
+        }
+      },
+      "template": "w_self_care_recognise",
+      "completed_field": "task_gp_w_self_care_recognise_completed",
+      "completed": "@fields.task_gp_w_self_care_recognise_completed"
+    },
+    {
+      "id": "reward",
+      "individual": true,
+      "together": true,
+      "priority": 13,
+      "has_single_task": true,
+      "title": "Reward",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Reward"
+        }
+      },
+      "template": "w_self_care_reward",
+      "completed_field": "task_gp_w_self_care_reward_completed",
+      "completed": "@fields.task_gp_w_self_care_reward_completed"
+    }
+  ]
+}

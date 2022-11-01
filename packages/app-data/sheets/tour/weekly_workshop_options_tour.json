@@ -42,7 +42,7 @@
           "tz_sw": true
         }
       },
-      "message_text": "<p>Use the @global.weekly_workshop_options to change your workshop settings. </p>",
+      "message_text": "<p>Use the @global.weekly_workshop_options to change your @global.workshop settings. </p>",
       "route": "template/workshop_options_page"
     },
     {

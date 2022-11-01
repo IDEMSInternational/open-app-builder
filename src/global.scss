@@ -35,7 +35,9 @@
 @import "./theme/variables.scss";
 @import "./theme/deployment/deployment.scss";
 
+/* Styles for 3rd prty libraries */
 @import "~nouislider/distribute/nouislider.min.css";
+@import "~swiper/scss";
 
 $tour-next-button-background: var(
   --tour-next-button-background,
