@@ -811,7 +811,9 @@
           "name": "text_group",
           "value": "Great! We will unlock a new @global.workshop for your group every week. This allows all of you to try what you learned with your families before building the next skill.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "condition": "@local.radio_group==\"together\"",
           "_nested_name": "combo_box_replies.text_group",
@@ -847,7 +849,9 @@
           "name": "text_individual",
           "value": "Great! We will unlock a new @global.workshop for you every week. This allows you to try what you learned with your family before building the next skill.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "condition": "@local.radio_group==\"individual\"",
           "_nested_name": "combo_box_replies.text_individual",

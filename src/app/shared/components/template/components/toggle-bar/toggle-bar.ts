@@ -11,14 +11,7 @@ import {
   template: `
     <div class="container" [class]="position" [attr.data-param-style]="style">
       <div class="toggle_wrapper" [class.show-tick-cross]="showTickAndCross">
-        <ion-toggle
-          mode="md"
-          [checked]="_row.value"
-          #toggleEl
-          (ionChange)="handleChange(toggleEl.checked)"
-          (click)="handleClick($event, toggleEl.checked)"
-        >
-        </ion-toggle>
+        <ion-toggle mode="md" [checked]="_row.value" (click)="handleClick($event)"> </ion-toggle>
       </div>
       <span
         class="label"
@@ -44,17 +37,14 @@ export class TmplToggleBarComponent
     this.getParams();
   }
 
-  public async handleChange(isChecked: boolean) {
-    await this.setValue(isChecked);
-    this.triggerActions("changed");
-  }
   /**
    * As its not possible to stop click events bubbling from the ionChange event,
-   * include an additional click event handler to trigger the toggle change without bubbling
+   * use click handlers to handle state change
    */
-  public async handleClick(e: Event, isChecked: boolean) {
+  public async handleClick(e: Event) {
     e.stopImmediatePropagation();
-    this._row.value = !isChecked;
+    await this.setValue(!this._row.value);
+    this.triggerActions("changed");
   }
 
   getParams() {

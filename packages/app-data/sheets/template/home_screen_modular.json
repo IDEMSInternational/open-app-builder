@@ -6,8 +6,24 @@
   "override_condition": "@fields._app_skin == \"modular\"",
   "rows": [
     {
+      "type": "update_action_list",
+      "name": "custom_actions_1",
+      "action_list": [
+        {
+          "trigger": "nav_resume",
+          "action_id": "emit",
+          "args": [
+            "force_reload"
+          ],
+          "_raw": "nav_resume | emit: force_reload",
+          "_cleaned": "nav_resume | emit: force_reload"
+        }
+      ],
+      "_nested_name": "custom_actions_1"
+    },
+    {
       "name": "highlighted_module",
-      "value": "@fields._highlighted_task_group",
+      "value": "@fields._task_highlighted_group_id",
       "_translations": {
         "value": {}
       },
@@ -17,22 +33,22 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@fields._highlighted_task_group",
-            "matchedExpression": "@fields._highlighted_task_group",
+            "fullExpression": "@fields._task_highlighted_group_id",
+            "matchedExpression": "@fields._task_highlighted_group_id",
             "type": "fields",
-            "fieldName": "_highlighted_task_group"
+            "fieldName": "_task_highlighted_group_id"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@fields._highlighted_task_group": [
+        "@fields._task_highlighted_group_id": [
           "value"
         ]
       }
     },
     {
       "type": "template",
-      "name": "highlighted_module",
+      "name": "highlighted_module_card",
       "value": "module_card",
       "exclude_from_translation": true,
       "rows": [
@@ -44,7 +60,7 @@
           },
           "exclude_from_translation": true,
           "type": "set_variable",
-          "_nested_name": "highlighted_module.workshop_id",
+          "_nested_name": "highlighted_module_card.workshop_id",
           "_dynamicFields": {
             "value": [
               {
@@ -69,10 +85,10 @@
           },
           "exclude_from_translation": true,
           "type": "set_variable",
-          "_nested_name": "highlighted_module.card_style"
+          "_nested_name": "highlighted_module_card.card_style"
         }
       ],
-      "_nested_name": "highlighted_module"
+      "_nested_name": "highlighted_module_card"
     },
     {
       "type": "title",
@@ -102,7 +118,8 @@
       "type": "carousel",
       "name": "carousel",
       "parameter_list": {
-        "space_between": "8"
+        "space_between": "8",
+        "task_group_data": "workshop_tasks"
       },
       "exclude_from_translation": true,
       "rows": [
@@ -203,15 +220,13 @@
       "_nested_name": "carousel"
     },
     {
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "name": "set_variable",
-      "_nested_name": "set_variable"
-    },
-    {
       "type": "drawer",
       "name": "drawer",
       "value": "Things to do",
+      "parameter_list": {
+        "style": "secondary"
+      },
+      "exclude_from_translation": true,
       "rows": [
         {
           "type": "template",

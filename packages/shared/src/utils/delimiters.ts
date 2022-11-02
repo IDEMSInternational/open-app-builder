@@ -53,6 +53,7 @@ function shouldAddDelimiter(expression: string) {
 /**
 * Take a string and extract any dynamic text listed within delimiter tags
 * Provides recursive support for deeply nested expressions
+* @param contextPrefixes - list of prefixes used in templated strings, e.g. ["row"] for `@row`
 * 
 * @example
 * ```
@@ -89,6 +90,7 @@ function shouldAddDelimiter(expression: string) {
 */
 export function extractDelimitedTemplateString(
   data: ITemplatedStringVariable,
+  contextPrefixes: string[],
   nestedName = ""
 ): ITemplatedStringVariable {
   let value = data.value;
@@ -102,15 +104,27 @@ export function extractDelimitedTemplateString(
       const { src } = parseUntil(value, endDelimiter, {
         start: startIndex + 1,
       });
+
       const variableNumber = Object.keys(variables).length + 1;
       const variableName = `${varPrefix}${nestedName}${variableNumber}${varSuffix}`;
-      value = value.replace(`{${src}}`, variableName);
-      variables[variableName] = {
-        value: src,
-      };
-      // Run again to extract any sibling values
 
-      const sibling = extractDelimitedTemplateString({ value, variables }, nestedName);
+      // now we have matched src like "{@row.some_field}" replace the expression with a
+      // variables like `[$1]` if `row` statements are included in prefix list, or `{[$1]}`
+      // if not to retain delimited form when evaluated
+      const prefix = src.split(".")[0].replace("@", "");
+      if (contextPrefixes.includes(prefix)) {
+        value = value.replace(`{${src}}`, variableName);
+      } else {
+        value = value.replace(`${src}`, variableName);
+      }
+      variables[variableName] = { value: src };
+
+      // Run again to extract any sibling values
+      const sibling = extractDelimitedTemplateString(
+        { value, variables },
+        contextPrefixes,
+        nestedName
+      );
       if (sibling) {
         value = sibling.value;
         variables = { ...variables, ...sibling.variables };
@@ -127,6 +141,7 @@ export function extractDelimitedTemplateString(
     for (const [key, parent] of Object.entries(variables)) {
       const nested = extractDelimitedTemplateString(
         { value: parent.value, variables: {} },
+        contextPrefixes,
         nestedName
       );
       const { variables: nestedVariables } = nested;

@@ -18,7 +18,7 @@
       "group": "read_1",
       "individual": false,
       "together": true,
-      "template": "w_stress_talk_1",
+      "template": "w_stress_talk",
       "rel_priority": 3,
       "completed_field": "task_w_stress_talk_completed",
       "completed": "@fields.task_w_stress_talk_completed"

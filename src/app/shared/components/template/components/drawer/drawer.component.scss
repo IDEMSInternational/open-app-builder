@@ -22,10 +22,27 @@ $header-height: 56px;
   background-color: var(--ion-background-color);
   z-index: 100;
 
+  &.secondary {
+    background-color: var(--ion-color-secondary);
+    border: none;
+    .handle {
+      &:active {
+        background-color: var(--ion-color-secondary-600);
+      }
+      p {
+        color: white;
+      }
+      .handle-icon {
+        background-color: white;
+      }
+    }
+  }
+
   .handle {
     height: $handle-height;
     @include mixins.flex-centered;
     flex-direction: column;
+    border-radius: var(--ion-border-radius-standard) var(--ion-border-radius-standard) 0 0;
     p {
       text-align: center;
       font-weight: var(--font-weight-bold);

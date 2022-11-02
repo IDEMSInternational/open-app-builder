@@ -12,8 +12,6 @@ export class AppConfigService {
   deploymentOverrides: IAppConfigOverride = (environment.deploymentConfig as any).app_config || {};
   /** List of constants provided by data-models combined with deployment-specific overrides and skin-specific overrides */
   appConfig$ = new BehaviorSubject<IAppConfig | {}>({});
-  /** Static value to be read by methods that are not responsive to changes
-   * TODO: migrate all consumers of this value to be responsive to appConfig$ */
   APP_CONFIG: IAppConfig;
   deploymentAppConfig: IAppConfig;
 
