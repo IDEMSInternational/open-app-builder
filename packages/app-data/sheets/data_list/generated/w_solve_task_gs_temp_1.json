@@ -230,13 +230,13 @@
       "together": true,
       "priority": 75,
       "has_single_task": true,
-      "title": "Try",
+      "title": "Try it out!",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Try"
+          "eng": "Try it out!"
         }
       },
       "template": "w_solve_try"
