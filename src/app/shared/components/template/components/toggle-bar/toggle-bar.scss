@@ -68,16 +68,14 @@ ion-toggle {
   max-width: calc(50% - 45px);
 }
 
-.right .label {
-  order: 1;
-  text-align: left;
+.right {
+  flex-direction: row-reverse;
+  .label {
+    text-align: left;
+  }
 }
 
 .toggle_wrapper {
   align-self: baseline;
   margin-top: 5px;
-}
-
-.right .toggle_wrapper {
-  order: 2;
 }

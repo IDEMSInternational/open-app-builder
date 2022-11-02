@@ -17,6 +17,7 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
   @Input() highlighted: boolean | null;
   @Input() progressStatus: IProgressStatus;
   @Output() progressStatusChange = new EventEmitter<IProgressStatus>();
+  @Output() newlyCompleted = new EventEmitter<boolean>();
   subtasksTotal: number;
   subtasksCompleted: number;
   showText = true;
@@ -32,7 +33,7 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
 
   ngOnInit() {
     this.getParams();
-    this.getTaskGroupData();
+    this.evaluateTaskGroupData();
   }
 
   getParams() {
@@ -50,10 +51,9 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
     return (this.subtasksCompleted / this.subtasksTotal) * 100;
   }
 
-  async getTaskGroupData() {
+  async evaluateTaskGroupData() {
     const dataList = await this.appDataService.getSheet("data_list", this.taskGroupDataList);
-    const subtasks = dataList.rows;
-    console.log(this.taskGroupDataList, subtasks);
+    const subtasks = dataList?.rows || [];
     this.subtasksTotal = subtasks.length;
     this.subtasksCompleted = subtasks.filter((task) =>
       this.templateFieldService.getField(task.completed_field)
@@ -64,16 +64,21 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
       // Check whether task group has already been completed
       if (this.templateFieldService.getField(this.taskGroupCompletedField) !== true) {
         // If not, set completed field to "true"
-        this.setTaskGroupCompleted(this.taskGroupCompletedField);
+        await this.setTaskGroupCompletedStatus(this.taskGroupCompletedField, true);
+        this.newlyCompleted.emit(true);
       }
-    } else if (this.subtasksCompleted) {
-      this.progressStatus = "inProgress";
-      this.progressStatusChange.emit(this.progressStatus);
+    } else {
+      await this.setTaskGroupCompletedStatus(this.taskGroupCompletedField, false);
+      if (this.subtasksCompleted) {
+        this.progressStatus = "inProgress";
+        this.progressStatusChange.emit(this.progressStatus);
+      }
     }
+    this.taskService.evaluateHighlightedTaskGroup();
   }
 
-  setTaskGroupCompleted(taskGroupCompletedField: string) {
-    console.log(`Setting ${taskGroupCompletedField} to true`);
-    return this.templateFieldService.setField(taskGroupCompletedField, "true");
+  async setTaskGroupCompletedStatus(taskGroupCompletedField: string, isCompleted: boolean) {
+    console.log(`Setting ${taskGroupCompletedField} to ${isCompleted}`);
+    await this.templateFieldService.setField(taskGroupCompletedField, `${isCompleted}`);
   }
 }

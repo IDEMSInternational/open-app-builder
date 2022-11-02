@@ -41,7 +41,9 @@
               "name": "text",
               "value": "We have a new @global.workshop available for you about managing anger and stress. It will help you take better care of yourself.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "type": "set_variable",
               "_nested_name": "m_workshop_reminder.in_week_message.text",

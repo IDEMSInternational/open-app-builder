@@ -47,20 +47,13 @@
       "together": true,
       "priority": 3,
       "has_single_task": true,
-      "title": "Relax",
+      "title": "@data.workshop[@fields.current_workshop].relax_title",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Relax"
+          "eng": "@data.workshop[@fields.current_workshop].relax_title"
         }
       },
       "template": "w_rules_relax",
@@ -92,13 +85,13 @@
       "together": true,
       "priority": 5,
       "has_single_task": true,
-      "title": "Why?",
+      "title": "@data.workshop[@fields.current_workshop].intro_title",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Why?"
+          "eng": "@data.workshop[@fields.current_workshop].intro_title"
         }
       },
       "template": "w_rules_intro",
@@ -111,13 +104,13 @@
       "together": true,
       "priority": 70,
       "has_single_task": true,
-      "title": "@data.parent_centre.essential_tools.title",
+      "title": "@data.workshop[@fields.current_workshop].tools",
       "_translations": {
         "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "@data.parent_centre.essential_tools.title"
+          "eng": "@data.workshop[@fields.current_workshop].tools"
         }
       },
       "template": "w_rules_tools_activity",
@@ -196,7 +189,9 @@
       "has_single_task": false,
       "title": "Story",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -214,7 +209,9 @@
       "has_single_task": true,
       "title": "Story",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

@@ -48,7 +48,9 @@
       "name": "weekly_workshop",
       "value": "Module",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -103,7 +105,9 @@
       "name": "workshop_capital",
       "value": "Module",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {

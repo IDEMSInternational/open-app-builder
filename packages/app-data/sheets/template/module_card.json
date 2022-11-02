@@ -46,14 +46,14 @@
       "_translations": {
         "value": {}
       },
-      "condition": "@fields.workshop_path = \"individual\"",
+      "condition": "@fields.workshop_path == \"individual\"",
       "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "path",
       "_dynamicFields": {
         "condition": [
           {
-            "fullExpression": "@fields.workshop_path = \"individual\"",
+            "fullExpression": "@fields.workshop_path == \"individual\"",
             "matchedExpression": "@fields.workshop_path",
             "type": "fields",
             "fieldName": "workshop_path"
@@ -72,14 +72,14 @@
       "_translations": {
         "value": {}
       },
-      "condition": "!@fields.workshop_path = \"individual\"",
+      "condition": "!@fields.workshop_path == \"individual\"",
       "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "path",
       "_dynamicFields": {
         "condition": [
           {
-            "fullExpression": "!@fields.workshop_path = \"individual\"",
+            "fullExpression": "!@fields.workshop_path == \"individual\"",
             "matchedExpression": "!@fields.workshop_path",
             "type": "fields",
             "fieldName": "workshop_path"
@@ -375,6 +375,15 @@
           "trigger": "completed",
           "action_id": "emit",
           "args": [
+            "force_reload"
+          ],
+          "_raw": "completed | emit: force_reload",
+          "_cleaned": "completed | emit: force_reload"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
             "server_sync"
           ],
           "_raw": "completed | emit: server_sync",
@@ -578,6 +587,15 @@
           ],
           "_raw": "click | go_to: @local.click_template",
           "_cleaned": "click | go_to: @local.click_template"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "force_reload"
+          ],
+          "_raw": "completed | emit: force_reload",
+          "_cleaned": "completed | emit: force_reload"
         },
         {
           "trigger": "completed",

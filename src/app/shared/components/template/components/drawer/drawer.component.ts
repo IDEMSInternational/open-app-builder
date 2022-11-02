@@ -1,4 +1,5 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from "@angular/core";
+import { Component, ElementRef, ViewChild, AfterViewInit, OnInit } from "@angular/core";
+import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 
 @Component({
@@ -6,19 +7,26 @@ import { TemplateBaseComponent } from "../base";
   templateUrl: "./drawer.component.html",
   styleUrls: ["./drawer.component.scss"],
 })
-export class TmplDrawerComponent extends TemplateBaseComponent implements AfterViewInit {
+export class TmplDrawerComponent extends TemplateBaseComponent implements OnInit, AfterViewInit {
   @ViewChild("drawer", { read: ElementRef }) drawer: ElementRef;
 
   isOpen = false;
   openHeight = 0;
+  style: string;
+
+  ngOnInit() {
+    this.getParams();
+  }
 
   async ngAfterViewInit() {
-    // Only get element heights after they've rendered
-    setTimeout(async () => {
-      const drawer = this.drawer.nativeElement;
-      const handle = drawer.children[0];
-      this.openHeight = drawer.offsetHeight - handle.offsetHeight - 10;
-    }, 100);
+    // Allow elements to render before initialising
+    setTimeout(() => {
+      this.init();
+    }, 500);
+  }
+
+  getParams() {
+    this.style = getStringParamFromTemplateRow(this._row, "style", null);
   }
 
   toggleDrawer() {
@@ -33,5 +41,11 @@ export class TmplDrawerComponent extends TemplateBaseComponent implements AfterV
       drawer.style.transform = `translateY(${-this.openHeight}px)`;
       this.isOpen = true;
     }
+  }
+
+  init() {
+    const drawer = this.drawer.nativeElement;
+    const handle = drawer.children[0];
+    this.openHeight = drawer.offsetHeight - handle.offsetHeight - 10;
   }
 }

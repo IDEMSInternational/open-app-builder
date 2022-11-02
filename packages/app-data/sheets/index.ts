@@ -279,9 +279,9 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_data_lists.xlsx",
     },
-    debug_delimeters_list: {
+    debug_delimiters_list: {
       flow_type: "data_list",
-      flow_name: "debug_delimeters_list",
+      flow_name: "debug_delimiters_list",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/debug_delimiters.xlsx",
     },
@@ -361,6 +361,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "feature_items_data",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_items.xlsx",
+    },
+    encouraging_messages: {
+      flow_type: "data_list",
+      flow_name: "encouraging_messages",
+      _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
     },
     example_data_pipe_list: {
       flow_type: "data_list",
@@ -2153,12 +2158,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_video.xlsx",
     },
-    example_task_card: {
-      flow_type: "template",
-      flow_name: "example_task_card",
-      flow_subtype: "component_demo",
-      _xlsxPath: "quality_assurance/component_sheets/component_task_card.xlsx",
-    },
     example_task_carousel: {
       flow_type: "template",
       flow_name: "example_task_carousel",
@@ -2346,9 +2345,9 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_data_lists.xlsx",
     },
-    debug_delimeters: {
+    debug_delimiters: {
       flow_type: "template",
-      flow_name: "debug_delimeters",
+      flow_name: "debug_delimiters",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/debug_delimiters.xlsx",
     },
@@ -3257,6 +3256,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_subtype: "debug",
       flow_name: "example_items_nav",
+      _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
+    },
+    example_items_operations: {
+      flow_type: "template",
+      flow_subtype: "debug",
+      flow_name: "example_items_operations",
       _xlsxPath: "quality_assurance/example_sheets/example_items.xlsx",
     },
     example_items_pipe: {
@@ -4674,9 +4679,9 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "task_card",
       _xlsxPath: "global_modular/core_templates/module_navigation.xlsx",
     },
-    task_group_stepper: {
+    task_group_pair: {
       flow_type: "template",
-      flow_name: "task_group_stepper",
+      flow_name: "task_group_pair",
       _xlsxPath: "global/core_templates/core_templates_workshops.xlsx",
     },
     teen_testimonial_text: {
@@ -7172,24 +7177,9 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "workshop_stepper_actions",
       _xlsxPath: "global/core_templates/core_templates_workshops.xlsx",
     },
-    workshop_task_completed_test: {
-      flow_type: "template",
-      flow_name: "workshop_task_completed_test",
-      _xlsxPath: "global/data/workshop_data/workshop_tasks_testing_templates.xlsx",
-    },
     workshop_task_groups_test: {
       flow_type: "template",
       flow_name: "workshop_task_groups_test",
-      _xlsxPath: "global/data/workshop_data/workshop_tasks_testing_templates.xlsx",
-    },
-    workshop_tasks_completed_test: {
-      flow_type: "template",
-      flow_name: "workshop_tasks_completed_test",
-      _xlsxPath: "global/data/workshop_data/workshop_tasks_testing_templates.xlsx",
-    },
-    workshop_tasks_test: {
-      flow_type: "template",
-      flow_name: "workshop_tasks_test",
       _xlsxPath: "global/data/workshop_data/workshop_tasks_testing_templates.xlsx",
     },
     workshop_unlock: {

@@ -1,5 +1,5 @@
 <div class="bottom-spacer"></div>
-<div class="drawer" #drawer>
+<div [class]="'drawer ' + style" #drawer>
   <div class="handle" (click)="toggleDrawer()">
     <div class="handle-icon"></div>
     <p>{{ _row.value }}</p>
