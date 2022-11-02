@@ -16,12 +16,12 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
   @Input() taskGroupCompletedField: string | null;
   @Input() highlighted: boolean | null;
   @Input() progressStatus: IProgressStatus;
+  @Input() subtasksText: string;
   @Output() progressStatusChange = new EventEmitter<IProgressStatus>();
   @Output() newlyCompleted = new EventEmitter<boolean>();
   subtasksTotal: number;
   subtasksCompleted: number;
   showText = true;
-  sectionsName = "sections";
 
   constructor(
     private taskService: TaskService,
@@ -44,6 +44,7 @@ export class TmplTaskProgressBarComponent extends TemplateBaseComponent implemen
         "completed_field",
         null
       );
+      this.subtasksText = getStringParamFromTemplateRow(this._row, "subtasks_text", "sections");
     }
   }
 
