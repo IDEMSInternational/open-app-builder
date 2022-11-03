@@ -1,0 +1,32 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "habits_data_list",
+  "data_list_name": "habits_data_list",
+  "status": "released",
+  "rows": [
+    {
+      "id": "hygiene_handwashing",
+      "habit_no": 1,
+      "habit_title": "Hygiene and Handwashing",
+      "habit_details": "Handwashing is one of the ways of preventing yourself from getting sick.\nIt prevents the sharing of germs from one person to another, or from one person to food or water.",
+      "child_1": "sections.when_to_wash",
+      "child_2": "sections.rules_hand_hygiene",
+      "child_3": "sections.how_to_wash"
+    },
+    {
+      "id": "environmental_cleanliness",
+      "habit_no": 2,
+      "habit_title": "Environmental cleanliness",
+      "habit_details": "Cleaning the environment is the key to the existence and survival of life on planet earth. Maintaining a clean environment reduces pollution, preserves our biosphere, protects endangered species, and also helps preserve the earth's natural resources.",
+      "child_1": "sections.how_to_clean"
+    },
+    {
+      "id": "food_cleanliness",
+      "habit_no": 3,
+      "habit_title": "Food cleanliness and sanitation",
+      "habit_details": "Food sanitation is the practice of following certain rules and procedures to prevent the contamination of food, keeping it safe to eat prevent the occurrence of food-related diseases.",
+      "child_1": "section.food_rules"
+    }
+  ],
+  "_xlsxPath": "data_lists/habits/wash_habits_data_lists.xlsx"
+}

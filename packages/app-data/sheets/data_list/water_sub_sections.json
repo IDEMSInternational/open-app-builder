@@ -1,0 +1,38 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "water_sub_sections",
+  "status": "released",
+  "data_list_name": "water_sub_sections",
+  "rows": [
+    {
+      "id": "water_safety_measures",
+      "title": "Water Safety Measures",
+      "content_1": "*Ensure you watch children when they are in or around water by keeping them within arm's reach of an adult at all times because they can drown in as little as one inch of water. \n*Empty all buckets, tubs and other containers immediately after use. Keep them out of children's reach and store them upside down.\n*Surround pools with a fence. A pool fence should have self-closing and self-latching gates, encircle the pool on all sides, and be at least four feet tall.\n*Learn CPR and the fundamentals of water rescue. It's critical to understand how to react in an emergency without endangering oneself."
+    },
+    {
+      "id": "water_clean_and_safe",
+      "title": "Ways to keep water clean and safe.",
+      "content_1": "*Recycle all the used containers .\n*Reduce water usage by only using the water you need.\n*Keeping running water minimal.\n*Reusing water to avoid wastage.\n*Avoid dumping anything near rivers and streams, and if you notice trash dumped nearby, attempt to clean it up."
+    },
+    {
+      "id": "storage_methods",
+      "title": "Tips on water storage methods",
+      "content_1": "*Use clean, covered and well maintained containers which are free from any cracks or leaks. \n*The containers should also allow for water to be extracted without hands or other potentially contaminated surfaces from touching the water (i.e. through use of a tap)."
+    },
+    {
+      "id": "treatment_methods",
+      "title": "Water treatment methods.",
+      "content_1": "*Filtering\nThis is the process of passing water through a filter designed to remove impurities from the water. These filters are made of gravel, sand, or occasionally crushed anthracite. Filtering collects contaminants that float on water and increases the power of disinfection.\n*Boiling \nThe most common and effective method for killing disease-causing germs, such as viruses, bacteria, and parasites, is to boil or heat water.\n\nProcedure for boiling water:\n1. For 1 minute, bring clear water to a boil (at elevations above 6,500 feet, boil for 3 minutes).\n2. Allow the water to cool after it has boiled before using it.\n3. Boiling water should be stored in clean, sanitized containers with tight-fitting lids.\n*Coagulation/Flocculation\nCoagulation-flocculation is a chemical water treatment technique that is typically used prior to sedimentation and filtration (e.g., rapid sand filtration) to improve the ability of a treatment process to remove particles. Coagulation is a process that uses gelatinous mass to trap (or bridge) particles, forming a mass large enough to settle or be trapped in the filter. Flocculation is the gentle stirring or agitation that encourages the particles formed to agglomerate into masses large enough to settle or be filtered from solution.\n*Solar\nSolar disinfection is a method of killing bacteria and parasites in water by using heat and UV radiation. Solar disinfection works by placing contaminated water in a clear container and exposing it to direct sunlight for 6 to 8 hours if it is sunny, or 2 days if it is cloudy (if cloudy). When the water is clear and clean, and transparent containers for treatment are available, this method is ideal. \n*Chlorine (for non-turbid water)\n The process of adding chlorine to drinking water to kill parasites, bacteria, and viruses is known as chlorination. To achieve safe levels of chlorine in drinking water, various processes can be used. Using or drinking water containing trace amounts of chlorine has no negative health consequences and protects against waterborne disease outbreaks."
+    },
+    {
+      "id": "water_sources",
+      "title": "Sources of water.",
+      "content_1": "Water must come from a reliable source like ; \n* A well \n* Tap \n* Pump",
+      "content_2": "Water must also be free from stool and chemical contamination i.e readily available for at least 12hours a day and located near a child's household or within a reasonable reach for easy access."
+    },
+    {
+      "title": ""
+    }
+  ],
+  "_xlsxPath": "data_lists/water/water_data_list.xlsx"
+}

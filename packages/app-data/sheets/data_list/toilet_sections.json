@@ -1,0 +1,24 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "toilet_sections",
+  "status": "released",
+  "data_list_name": "toilet_sections",
+  "rows": [
+    {
+      "id": "section_importance",
+      "heading": "Importance of toilets",
+      "description": "* It promotes health because they allow people to dispose of their waste appropriately. \n* It prevents contamination of the environment."
+    },
+    {
+      "id": "section_disadvantages",
+      "heading": "The disadvantage of not using toilets",
+      "description": "* It results in an unhealthy environment contaminated by human waste. \n* It contributes to the spread of many diseases that can cause widespread illness and death."
+    },
+    {
+      "id": "section_safety",
+      "heading": "How to maintain toilets",
+      "description": "* Clean it regularly with detergents, antiseptic toilet cleaner, and brushes to scrub away the dirt on the surface. \n* Make sure you leave the latrine door open for about ten minutes after cleaning to allow in the fresh air. \n* Keep the floor dry. \n* Wash hands thoroughly with soap and water before stepping out."
+    }
+  ],
+  "_xlsxPath": "data_lists/toilet/toilet_data_list.xlsx"
+}

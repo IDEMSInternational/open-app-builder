@@ -1,0 +1,33 @@
+{
+  "flow_type": "template",
+  "flow_name": "toilet_screen",
+  "status": "released",
+  "rows": [
+    {
+      "*": "begin_template",
+      "name": "topic_screen",
+      "value": "topic_screen",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "topic_screen"
+    },
+    {
+      "name": "topic_id",
+      "value": "Toilet",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "topic_id"
+    },
+    {
+      "*": "end_template",
+      "type": "set_variable",
+      "name": "set_variable",
+      "_nested_name": "set_variable"
+    }
+  ],
+  "_xlsxPath": "templates/global/navigation.xlsx"
+}

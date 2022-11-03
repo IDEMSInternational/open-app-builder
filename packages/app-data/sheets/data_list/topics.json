@@ -1,0 +1,43 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "topics",
+  "status": "released",
+  "data_list_name": "topics",
+  "rows": [
+    {
+      "id": "water",
+      "title": "Water",
+      "description": "* Water sanitation is the way of cleaning and purifying water so that it's safe for use.                                                                                              * An example of water sanitation is filtering which removes impurities (dirt) in water.",
+      "data_list_name": "water_sections",
+      "template": "water_screen"
+    },
+    {
+      "id": "toilet",
+      "title": "Toilet",
+      "data_list_name": "toilet_sections",
+      "template": "toilet_screen"
+    },
+    {
+      "id": "waste_mgmt",
+      "title": "Waste Managment",
+      "description": "Waste management is a process that combines all the activities necessary for managing waste – collection of garbage, transportation, and disposal of trash. Its primary purpose is to lessen the waste of unusable materials and avoid potential environmental and health risks.",
+      "data_list_name": "waste_management_sections",
+      "template": "waste_mgmt_screen"
+    },
+    {
+      "id": "deworming",
+      "title": "Deworming",
+      "description": "Deworming is the process of expelling intestinal worms or parasitic worms from the body by administering an anthelmintic medicine/drug.",
+      "data_list_name": "deworming_sections",
+      "template": "deworming_screen"
+    },
+    {
+      "id": "menstrual_hygiene",
+      "title": "Menstrual Hygiene",
+      "description": "The onset of menstruation means a new phase and new vulnerabilities in the lives of adolescents.",
+      "data_list_name": "menstrual_hygiene_sections",
+      "template": "menstrual_hygiene_screen"
+    }
+  ],
+  "_xlsxPath": "data_lists/homepage/topics_data_list.xlsx"
+}

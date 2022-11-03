@@ -1,0 +1,62 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "water_sections",
+  "status": "released",
+  "data_list_name": "water_sections",
+  "rows": [
+    {
+      "id": "section_importance",
+      "heading": "Importance of water",
+      "description": "*Getting enough water every day is important for your health.                                                                                                                                                     *Drinking water can prevent dehydration, a condition that can cause unclear thinking, result in mood change, cause your body to overheat, and lead to constipation and kidney stones.",
+      "template": "water_sub_templates",
+      "save_id_field": "current_water_tab"
+    },
+    {
+      "id": "section_uses",
+      "heading": "Uses of water",
+      "description": "*drinking\n*personal hygiene including hand washing and bathing\n*washing utensils\n*cooking\n*laundry(washing clothes)\n*cleaning the house and the surroundings around\n*cleaning wounds\n*irrigation of crops",
+      "template": "water_sub_templates",
+      "save_id_field": "current_water_tab"
+    },
+    {
+      "id": "section_safety",
+      "heading": "Water Safety",
+      "description": "Water safety refers to the procedures, precautions and policies associated with safety in, on, and around bodies of water, where there is a risk of injury or drowning.",
+      "child_1": "sections.water_safety_measures",
+      "child_2": "sections.water_clean_and_safe",
+      "template": "water_sub_templates",
+      "save_id_field": "current_water_tab"
+    },
+    {
+      "id": "section_storage",
+      "heading": "Water Storage",
+      "description": "Storage tanks/reservoirs should be kept clean and have a tight lid.",
+      "child_1": "sections.storage_methods",
+      "template": "water_sub_templates",
+      "save_id_field": "current_water_tab"
+    },
+    {
+      "id": "section_treatment",
+      "heading": "WaterTreatment",
+      "description": "*Water should be treated and collected for drinking with a proven technology since many people rely on water sources that are at high risks of poop contamination due to lack of toilets or poor sewer systems. \n*Even water that is safe at its source(for example,from a water treatment plant or well) is at risk of becoming contaminated unless it is treated ,transported,stored and handled safely.",
+      "child_1": "sections.treatment_methods",
+      "template": "water_sub_templates",
+      "save_id_field": "current_water_tab"
+    },
+    {
+      "heading": "Tips on how to improve the quality of water in our homes.",
+      "description": "* Use of water filters \n* Use of clean water aerators \n* Keeping of your pipes,and other plumbing devices well maintained \n* Proper disposal of the hazardous waste on your environment\n* Keep all storm drains clear \n* Maintaining of the septic tanks",
+      "template": "water_sub_templates",
+      "save_id_field": "current_water_tab"
+    },
+    {
+      "id": "section_availability",
+      "heading": "Water Availability",
+      "description": "Water availability is not enough to keep children healthy, it must also be clean and affordable.",
+      "child_1": "sections.water_sources",
+      "template": "water_sub_templates",
+      "save_id_field": "current_water_tab"
+    }
+  ],
+  "_xlsxPath": "data_lists/water/water_data_list.xlsx"
+}
