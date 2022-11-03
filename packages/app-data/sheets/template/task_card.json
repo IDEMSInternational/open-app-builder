@@ -293,6 +293,41 @@
       }
     },
     {
+      "name": "completed_field",
+      "value": "survey_welcome_completed",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@local.task_id == \"survey\" && @local.workshop_id == \"w_self_care\"",
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "completed_field",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.task_id == \"survey\" && @local.workshop_id == \"w_self_care\"",
+            "matchedExpression": "@local.task_id",
+            "type": "local",
+            "fieldName": "task_id"
+          },
+          {
+            "fullExpression": "@local.task_id == \"survey\" && @local.workshop_id == \"w_self_care\"",
+            "matchedExpression": "@local.workshop_id",
+            "type": "local",
+            "fieldName": "workshop_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.task_id": [
+          "condition"
+        ],
+        "@local.workshop_id": [
+          "condition"
+        ]
+      }
+    },
+    {
       "name": "card_title",
       "value": "@local.tgd.title",
       "_translations": {
@@ -322,6 +357,30 @@
       "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "card_image"
+    },
+    {
+      "type": "text",
+      "name": "print_comp_field",
+      "value": "@local.completed_field",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "print_comp_field",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.completed_field",
+            "matchedExpression": "@local.completed_field",
+            "type": "local",
+            "fieldName": "completed_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.completed_field": [
+          "value"
+        ]
+      }
     },
     {
       "type": "task_card",
