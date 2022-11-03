@@ -1,6 +1,17 @@
 {
   "hosting": [
     {
+      "target": "ae",
+      "public": "www",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
       "target": "app",
       "public": "www",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
