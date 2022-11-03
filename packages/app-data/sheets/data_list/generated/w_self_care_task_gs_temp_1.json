@@ -168,7 +168,7 @@
       "template": "w_self_care_reward"
     },
     {
-      "id": "survey_activity",
+      "id": "survey",
       "individual": true,
       "together": false,
       "priority": 71,
@@ -182,7 +182,7 @@
           "eng": "Survey"
         }
       },
-      "template": "w_self_care_survey_activity"
+      "template": "setup_and_survey_stepper"
     }
   ]
 }
