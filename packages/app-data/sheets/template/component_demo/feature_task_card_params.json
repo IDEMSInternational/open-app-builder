@@ -170,7 +170,7 @@
         "in_progress_icon": "plh_images/icons/in_progress.svg",
         "completed_icon": "plh_images/icons/tick_white.svg",
         "highlighted_text": "@local.highlighted_text",
-        "subtasks_text": "@local.subtasks_text"
+        "progress_units_name": "@local.subtasks_text"
       },
       "_nested_name": "card_params_1",
       "_dynamicFields": {
@@ -271,7 +271,7 @@
               "fieldName": "highlighted_text"
             }
           ],
-          "subtasks_text": [
+          "progress_units_name": [
             {
               "fullExpression": "@local.subtasks_text",
               "matchedExpression": "@local.subtasks_text",
@@ -309,7 +309,7 @@
           "parameter_list.highlighted_text"
         ],
         "@local.subtasks_text": [
-          "parameter_list.subtasks_text"
+          "parameter_list.progress_units_name"
         ]
       }
     },
