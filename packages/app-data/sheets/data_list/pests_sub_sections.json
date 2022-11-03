@@ -53,9 +53,9 @@
       "title": "Non-toxic Pesticides",
       "introduction": "Less toxic products reduce harmful pest populations when there is an outbreak.",
       "content_1": "Insects breathe through airholes on the sides of their bodies called spiracles. A vegetable oil spray blocks these airholes and the insect suffocates. This works for aphids and other soft bodied insect pests that the oil contacts directly. One solution to make the vegetable oil spray is:\n* 3 tablespoons of liquid vegetable oil in 4 litres of water.\n* Add 0.5 teaspoon of liquid soap.\n* Shake well and use.",
-      "content_2": "principle_resilience",
       "principle_id_1": "principle_efficiency",
-      "principle_id_2": "principle_diversity"
+      "principle_id_2": "principle_diversity",
+      "principle_id_3": "principle_resilience"
     }
   ],
   "_xlsxPath": "data_lists/pests/pests_data_lists.xlsx"

@@ -10,6 +10,7 @@
       "description": "Spider mites cause yellow dots on leaves, and in a severe infestation leaves may loose their green color.",
       "title": "Spider mites",
       "image_1": "pests/spidermite_2.png",
+      "image_2": "pests/spidermites_1.png",
       "body_type": "soft",
       "animal_type": "pest"
     },
@@ -44,6 +45,7 @@
     {
       "id": "mealy_bugs",
       "sub_section": "pests_pests",
+      "description": "Mealybugs damage plants by sucking sap from leaves, roots, and leaves. They excrete honeydew on which sooty mould develops. Ants feed on the honeydew, protecting mealy bugs from natural enemies.",
       "title": "Mealy bugs",
       "image_1": "pests/mealy_bug_effect.png",
       "body_type": "soft",
@@ -52,6 +54,7 @@
     {
       "id": "leafminers",
       "sub_section": "pests_pests",
+      "description": "Leafminers feed within leaves, producing large patches or winding tunnels of dead tissue.",
       "title": "Leafminers",
       "image_1": "pests/leafminer_adult.png",
       "image_2": "pests/leafminer_larvae.png",
@@ -124,6 +127,7 @@
     {
       "id": "wasps",
       "sub_section": "pests_beneficials",
+      "description": "Wasps eat other insects such as aphids, caterpillars, and flies.",
       "title": "Wasps",
       "image_1": "pests/wasp_1.PNG",
       "body_type": "hard",
@@ -132,6 +136,7 @@
     {
       "id": "ants",
       "sub_section": "pests_beneficials",
+      "description": "Ants are natural predators of many insect pests including caterpillars, termites and, fly and flea larvae. However, they can increase the abundance of honeydew-producing pests like mealy bugs.",
       "title": "Ants",
       "image_1": "pests/ants_beneficials_1.png",
       "body_type": "hard",
@@ -140,7 +145,7 @@
     {
       "id": "spiders",
       "sub_section": "pests_beneficials",
-      "description": "Spiders eat up to 880 million tons of insects each year.",
+      "description": "Spiders can eat up to 880 million tons of insects each year.",
       "title": "Spiders",
       "image_1": "pests/spider_predators.png",
       "body_type": "hard",
