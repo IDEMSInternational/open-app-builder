@@ -28,8 +28,9 @@
       "id": "nutrient_proteins",
       "illustration": "nutrition/protein.png",
       "name": "Proteins",
-      "example_where_to_find": "Soybean, groundnut, and buckweat are examples of protein rich foods.",
-      "chart_of_foods": "nutrition/chart_protein.png",
+      "example_where_to_find": "How well/ poorly a protein can perform its metabolic function in the body is defined by the protein quality in a substance. Some of the proteins with high quality are from animal sources like eggs, milk, meat, fish and poultry. Other examples like Soybean, groundnut, and buckweat are examples of protein rich foods.",
+      "chart_of_foods": "nutrition/protein_quality.PNG",
+      "chart_of_foods_2": "nutrition/protein_quantity.PNG",
       "properties": "Important for body repair and making new cells",
       "deficiency": "Lack of protein leads to kwashiorkor and marasmus.",
       "symptoms_of_deficiency": "Stunted growth in children, loss of appetite, hair loss, fatigue."
@@ -43,6 +44,22 @@
       "properties": "Makes strong bones and teeth",
       "deficiency": "Lack of calcium causes bones to become brittle and can lead to brain damage.",
       "symptoms_of_deficiency": "Numbness, tingling sensations, muscle cramps, poor appetite."
+    },
+    {
+      "id": "nutrient_vitamin_A",
+      "name": "Vitamin A",
+      "example_where_to_find": "Vitamin A can be found in liver, fish, spinach.eggs, carrots and in dairy products such as milk and yoghurt.",
+      "properties": "Plays a role in maintaining vision, body growth, immunity and reproductive health.",
+      "deficiency": "Lack of vitamin A can lead to blindness, increased skin infections, pregnacy complications.",
+      "symptoms_of_deficiency": "night blindness, skin irritation, staunted growth and bitot spots in the eyes."
+    },
+    {
+      "id": "nutrient_vitamin_C",
+      "name": "Vitamin C",
+      "example_where_to_find": "It's mainy in present in fruits and vegetables like oranges and also in potatoes.",
+      "properties": "It helps in the development and repair of body tissues.",
+      "deficiency": "Deficiency in Vitamin C can cause scurvy.",
+      "symptoms_of_deficiency": "Hair loss, delay in the healing of skin wounds, swelling or bleeding gums."
     }
   ],
   "_xlsxPath": "data_lists/nutrition/nutrition_data_lists.xlsx"
