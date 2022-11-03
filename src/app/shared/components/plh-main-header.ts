@@ -12,7 +12,7 @@ import { AppConfigService } from "../services/app-config/app-config.service";
   template: `<ion-header>
     <ion-toolbar color="primary">
       <ion-buttons slot="start" style="position:absolute">
-        <ion-menu-button *ngIf="showMenuButton"></ion-menu-button>
+        <ion-menu-button *ngIf="showMenuButton" autoHide="false" menu="start"></ion-menu-button>
         <ion-button
           [style.display]="showBackButton ? 'block' : 'none'"
           (click)="handleBackButtonClick()"
