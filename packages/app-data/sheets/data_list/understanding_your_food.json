@@ -7,7 +7,7 @@
     {
       "id": "food_types_section",
       "heading": "Food types",
-      "description": "All food can be categorized into 3 types",
+      "description": "* All food can be categorized into 3 types the Go, Grow and Glow.\n* Nutritional problems arise due to lack of balance in these foods as people are occassionaly eating more of the Go foods and not enough Grow and Glow foods.",
       "template": "food_types_screen",
       "priniciple_1": "principle_culture",
       "priniciple_2": "principle_resilience"

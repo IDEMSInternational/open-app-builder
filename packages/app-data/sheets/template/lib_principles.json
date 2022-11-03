@@ -4,144 +4,256 @@
   "status": "released",
   "rows": [
     {
-      "type": "title",
-      "name": "title",
-      "value": "Principles",
+      "name": "principle_id",
+      "value": "principle_diversity2",
       "_translations": {
         "value": {}
       },
-      "_nested_name": "title"
+      "type": "set_variable",
+      "_nested_name": "principle_id"
     },
     {
-      "type": "accordion",
+      "name": "data_list_name",
+      "value": [
+        "ae_fao"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_name"
+    },
+    {
+      "name": "illustration",
+      "value": ".illustration",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "illustration"
+    },
+    {
+      "name": "principle_title",
+      "value": ".principle_title",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "principle_title"
+    },
+    {
+      "name": "principle_details",
+      "value": ".principle_details",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "principle_details"
+    },
+    {
+      "name": "comp_illustration",
+      "value": "@local.data_list_name.@local.principle_id@local.illustration",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "comp_illustration",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.data_list_name.@local.principle_id@local.illustration",
+            "matchedExpression": "@local.data_list_name",
+            "type": "local",
+            "fieldName": "data_list_name"
+          },
+          {
+            "fullExpression": "@local.data_list_name.@local.principle_id@local.illustration",
+            "matchedExpression": "@local.principle_id",
+            "type": "local",
+            "fieldName": "principle_id"
+          },
+          {
+            "fullExpression": "@local.data_list_name.@local.principle_id@local.illustration",
+            "matchedExpression": "@local.illustration",
+            "type": "local",
+            "fieldName": "illustration"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name": [
+          "value"
+        ],
+        "@local.principle_id": [
+          "value"
+        ],
+        "@local.illustration": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "comp_principle_title",
+      "value": "@local.data_list_name.@local.principle_id@local.principle_title",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "comp_principle_title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.data_list_name.@local.principle_id@local.principle_title",
+            "matchedExpression": "@local.data_list_name",
+            "type": "local",
+            "fieldName": "data_list_name"
+          },
+          {
+            "fullExpression": "@local.data_list_name.@local.principle_id@local.principle_title",
+            "matchedExpression": "@local.principle_id",
+            "type": "local",
+            "fieldName": "principle_id"
+          },
+          {
+            "fullExpression": "@local.data_list_name.@local.principle_id@local.principle_title",
+            "matchedExpression": "@local.principle_title",
+            "type": "local",
+            "fieldName": "principle_title"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name": [
+          "value"
+        ],
+        "@local.principle_id": [
+          "value"
+        ],
+        "@local.principle_title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "comp_principle_details",
+      "value": "@local.data_list_name.@local.principle_id@local.principle_details",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "comp_principle_details",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.data_list_name.@local.principle_id@local.principle_details",
+            "matchedExpression": "@local.data_list_name",
+            "type": "local",
+            "fieldName": "data_list_name"
+          },
+          {
+            "fullExpression": "@local.data_list_name.@local.principle_id@local.principle_details",
+            "matchedExpression": "@local.principle_id",
+            "type": "local",
+            "fieldName": "principle_id"
+          },
+          {
+            "fullExpression": "@local.data_list_name.@local.principle_id@local.principle_details",
+            "matchedExpression": "@local.principle_details",
+            "type": "local",
+            "fieldName": "principle_details"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name": [
+          "value"
+        ],
+        "@local.principle_id": [
+          "value"
+        ],
+        "@local.principle_details": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "parameter_list": {
+        "style": "column"
+      },
       "rows": [
         {
-          "type": "items",
-          "value": "@data.library_principles",
-          "rows": [
-            {
-              "type": "accordion_section",
-              "name": "acc_@item.id",
-              "value": "@item.id.name",
-              "rows": [
-                {
-                  "type": "template",
-                  "value": "lib_principles_screen",
-                  "rows": [
-                    {
-                      "name": "type_id",
-                      "value": "@item.id",
-                      "_translations": {
-                        "value": {}
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "accordion.items.acc_@item.id.lib_principles_screen.type_id",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@item.id",
-                            "matchedExpression": "@item.id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ],
-                        "_nested_name": [
-                          {
-                            "fullExpression": "accordion.items.acc_@item.id.lib_principles_screen.type_id",
-                            "matchedExpression": "@item.id.lib_principles_screen.type_id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@item.id": [
-                          "value"
-                        ],
-                        "@item.id.lib_principles_screen.type_id": [
-                          "_nested_name"
-                        ]
-                      }
-                    }
-                  ],
-                  "name": "lib_principles_screen",
-                  "_nested_name": "accordion.items.acc_@item.id.lib_principles_screen",
-                  "_dynamicFields": {
-                    "_nested_name": [
-                      {
-                        "fullExpression": "accordion.items.acc_@item.id.lib_principles_screen",
-                        "matchedExpression": "@item.id.lib_principles_screen",
-                        "type": "item",
-                        "fieldName": "id"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@item.id.lib_principles_screen": [
-                      "_nested_name"
-                    ]
-                  }
-                }
-              ],
-              "_nested_name": "accordion.items.acc_@item.id",
-              "_dynamicFields": {
-                "name": [
-                  {
-                    "fullExpression": "acc_@item.id",
-                    "matchedExpression": "@item.id",
-                    "type": "item",
-                    "fieldName": "id"
-                  }
-                ],
-                "value": [
-                  {
-                    "fullExpression": "@item.id.name",
-                    "matchedExpression": "@item.id.name",
-                    "type": "item",
-                    "fieldName": "id"
-                  }
-                ],
-                "_nested_name": [
-                  {
-                    "fullExpression": "accordion.items.acc_@item.id",
-                    "matchedExpression": "@item.id",
-                    "type": "item",
-                    "fieldName": "id"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@item.id": [
-                  "name",
-                  "_nested_name"
-                ],
-                "@item.id.name": [
-                  "value"
-                ]
-              }
-            }
-          ],
-          "name": "items",
-          "_nested_name": "accordion.items",
+          "type": "title",
+          "name": "title",
+          "value": "@data.@local.comp_principle_title",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "display_group.title",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@data.library_principles",
-                "matchedExpression": "@data.library_principles",
-                "type": "data",
-                "fieldName": "library_principles"
+                "fullExpression": "@data.@local.comp_principle_title",
+                "matchedExpression": "@local.comp_principle_title",
+                "type": "local",
+                "fieldName": "comp_principle_title"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@data.library_principles": [
+            "@local.comp_principle_title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "image",
+          "name": "image",
+          "value": "@data.@local.comp_illustration",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "display_group.image",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.@local.comp_illustration",
+                "matchedExpression": "@local.comp_illustration",
+                "type": "local",
+                "fieldName": "comp_illustration"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.comp_illustration": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "text",
+          "value": "@data.@local.comp_principle_details",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "display_group.text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.@local.comp_principle_details",
+                "matchedExpression": "@local.comp_principle_details",
+                "type": "local",
+                "fieldName": "comp_principle_details"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.comp_principle_details": [
               "value"
             ]
           }
         }
       ],
-      "name": "accordion",
-      "_nested_name": "accordion"
+      "name": "display_group",
+      "_nested_name": "display_group"
     }
   ],
   "_xlsxPath": "templates/global/library.xlsx"
