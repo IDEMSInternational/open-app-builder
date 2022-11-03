@@ -2,6 +2,153 @@
   "flow_type": "template",
   "flow_name": "lib_principles_screen",
   "status": "released",
-  "rows": [],
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Principles",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title"
+    },
+    {
+      "name": "data_list_name",
+      "value": [
+        "ae_fao"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_name"
+    },
+    {
+      "type": "items",
+      "value": "@data.@local.data_list_name",
+      "rows": [
+        {
+          "type": "template",
+          "name": "principle_@item.id",
+          "value": "principle",
+          "parameter_list": {
+            "style": "column"
+          },
+          "rows": [
+            {
+              "name": "principle_id",
+              "value": "@item.id",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "items.principle_@item.id.principle_id",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.principle_@item.id.principle_id",
+                    "matchedExpression": "@item.id.principle_id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "value"
+                ],
+                "@item.id.principle_id": [
+                  "_nested_name"
+                ]
+              }
+            },
+            {
+              "name": "data_list_name",
+              "value": [
+                "@local.data_list_name"
+              ],
+              "type": "set_variable",
+              "_nested_name": "items.principle_@item.id.data_list_name",
+              "_dynamicFields": {
+                "value": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.data_list_name",
+                      "matchedExpression": "@local.data_list_name",
+                      "type": "local",
+                      "fieldName": "data_list_name"
+                    }
+                  ]
+                },
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.principle_@item.id.data_list_name",
+                    "matchedExpression": "@item.id.data_list_name",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.data_list_name": [
+                  "value.0"
+                ],
+                "@item.id.data_list_name": [
+                  "_nested_name"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "items.principle_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "principle_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.principle_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "_nested_name"
+            ]
+          }
+        }
+      ],
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.data_list_name",
+            "matchedExpression": "@local.data_list_name",
+            "type": "local",
+            "fieldName": "data_list_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name": [
+          "value"
+        ]
+      }
+    }
+  ],
   "_xlsxPath": "templates/global/library.xlsx"
 }

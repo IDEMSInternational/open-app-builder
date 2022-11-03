@@ -4277,8 +4277,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "47145b595d5b9d5327cece05a2979e3d",
   },
   "nutrition/Untitled document.docx": {
-    size_kb: 6.3,
-    md5Checksum: "a6eb161b70c87b0dc309616c0b1927ae",
+    size_kb: 6,
+    md5Checksum: "61785ab3b54c429740e3e733ab96b732",
   },
   "nutrition/Water.png": {
     size_kb: 116.1,
@@ -4367,6 +4367,14 @@ export const ASSETS_CONTENTS_LIST = {
   "nutrition/protein.png": {
     size_kb: 201.9,
     md5Checksum: "befc6e38935a7558920088b47a31de7b",
+  },
+  "nutrition/protein_quality.PNG": {
+    size_kb: 28.2,
+    md5Checksum: "71d5423b8a62f843f5f5f10784ff683b",
+  },
+  "nutrition/protein_quantity.PNG": {
+    size_kb: 25.5,
+    md5Checksum: "44ebbb5c7a0fa7faec76c4b517a65047",
   },
   "nutrition/super_nutritious_new_crops.png": {
     size_kb: 196.2,

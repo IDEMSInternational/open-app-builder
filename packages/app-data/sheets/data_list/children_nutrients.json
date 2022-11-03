@@ -5,9 +5,9 @@
   "data_list_name": "children_nutrients",
   "rows": [
     {
-      "id": "child_nutrient_zinc",
-      "nutrient_id": "nutrient_zinc",
-      "why_nutrient": "Zinc supports cell growth and boosts immunity to illnesses."
+      "id": "child_nutrient_proteins",
+      "nutrient_id": "nutrient_proteins",
+      "why_nutrient": "Proteins help children to build their tissues, muscles and supports their growth."
     },
     {
       "id": "child_nutrient_calcium",
@@ -15,9 +15,19 @@
       "why_nutrient": "Calcium supports the development of healthy bones, teeth and muscles."
     },
     {
-      "id": "child_nutrient_proteins",
-      "nutrient_id": "nutrient_proteins",
-      "why_nutrient": "Proteins help children to build their tissues, muscles and supports their growth."
+      "id": "child_nutrient_zinc",
+      "nutrient_id": "nutrient_zinc",
+      "why_nutrient": "Zinc supports cell growth and boosts immunity to illnesses."
+    },
+    {
+      "id": "child_nutrient_vitamin_A",
+      "nutrient_id": "nutrient_vitamin_A",
+      "why_nutrient": "Vitamin A helps in maintaining eye vision, body growth and immunity in children."
+    },
+    {
+      "id": "child_nutrient_vitamin_C",
+      "nutrient_id": "nutrient_vitamin_C",
+      "why_nutrient": "Vitamin C is useful for the growth, development and repair of body tissues."
     }
   ],
   "_xlsxPath": "data_lists/nutrition/nutrition_data_lists.xlsx"
