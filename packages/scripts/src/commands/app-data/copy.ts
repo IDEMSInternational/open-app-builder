@@ -216,7 +216,9 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
       // language filter
       if (filterLanguages) {
         const [lang_folder] = fileEntry.relativePath.split("/");
-        if (!filterLanguages.includes(lang_folder)) return false;
+        // Theme asset folders live at the same level as language asset folders, so allow them to pass through filter
+        if (!(filterLanguages.includes(lang_folder) || isThemeAssetsFolderName(lang_folder)))
+          return false;
       }
       // global filter
       return assets_filter_function(fileEntry);
