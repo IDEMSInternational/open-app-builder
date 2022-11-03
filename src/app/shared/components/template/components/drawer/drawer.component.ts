@@ -8,16 +8,10 @@ import { TemplateBaseComponent } from "../base";
   styleUrls: ["./drawer.component.scss"],
 })
 export class TmplDrawerComponent extends TemplateBaseComponent implements OnInit {
-  @ViewChild("drawer", { read: ElementRef, static: false }) drawer: ElementRef;
+  @ViewChild("drawer") drawer: ElementRef;
 
   isOpen = false;
   style: string;
-
-  get openHeight() {
-    const drawer = this.drawer.nativeElement;
-    const handle = drawer.children[0];
-    return drawer.offsetHeight - handle.offsetHeight - 10;
-  }
 
   ngOnInit() {
     this.getParams();
@@ -35,8 +29,14 @@ export class TmplDrawerComponent extends TemplateBaseComponent implements OnInit
       this.isOpen = false;
     } else {
       drawer.style.transition = "transform .3s ease-out";
-      drawer.style.transform = `translateY(${-this.openHeight}px)`;
+      drawer.style.transform = `translateY(${-this.getOpenHeight()}px)`;
       this.isOpen = true;
     }
+  }
+
+  private getOpenHeight() {
+    const drawer = this.drawer.nativeElement;
+    const handle = drawer.children[0];
+    return drawer.offsetHeight - handle.offsetHeight - 10;
   }
 }
