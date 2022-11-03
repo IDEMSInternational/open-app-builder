@@ -84,7 +84,8 @@
       "value": "@global.weekly_workshop @global.options",
       "_translations": {
         "value": {}
-      }
+      },
+      "exclude_from_translation": true
     },
     {
       "type": "declare_global_constant",
