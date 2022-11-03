@@ -22,23 +22,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "ae_idems",
       _xlsxPath: "data_lists/ae_principles/ae_principles_data_lists.xlsx",
     },
-    animal_diversity_kp_soils: {
-      flow_type: "data_list",
-      flow_name: "animal_diversity_kp_soils",
-      data_list_name: "animal_diversity_kp_soils",
-      _xlsxPath: "data_lists/soils/soils_health.xlsx",
-    },
     children_nutrients: {
       flow_type: "data_list",
       flow_name: "children_nutrients",
       data_list_name: "children_nutrients",
       _xlsxPath: "data_lists/nutrition/nutrition_data_lists.xlsx",
-    },
-    cover_crops_kp_soils: {
-      flow_type: "data_list",
-      flow_name: "cover_crops_kp_soils",
-      data_list_name: "cover_crops_kp_soils",
-      _xlsxPath: "data_lists/soils/soils_health.xlsx",
     },
     example_calc_data_list: {
       flow_type: "data_list",
@@ -118,18 +106,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "food_types",
       _xlsxPath: "data_lists/nutrition/nutrition_data_lists.xlsx",
     },
-    formation_of_organic_matter: {
-      flow_type: "data_list",
-      flow_name: "formation_of_organic_matter",
-      data_list_name: "formation_of_organic_matter",
-      _xlsxPath: "data_lists/soils/soils_health.xlsx",
-    },
-    healthy_soils_kp_soils: {
-      flow_type: "data_list",
-      flow_name: "healthy_soils_kp_soils",
-      data_list_name: "healthy_soils_kp_soils",
-      _xlsxPath: "data_lists/soils/soils_health.xlsx",
-    },
     library_data: {
       flow_type: "data_list",
       flow_name: "library_data",
@@ -207,48 +183,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "pests_sub_sections",
       data_list_name: "pest_sub_sections",
       _xlsxPath: "data_lists/pests/pests_data_lists.xlsx",
-    },
-    plant_diversity_kp_soils: {
-      flow_type: "data_list",
-      flow_name: "plant_diversity_kp_soils",
-      data_list_name: "plant_diversity_kp_soils",
-      _xlsxPath: "data_lists/soils/soils_health.xlsx",
-    },
-    principles_soil_health: {
-      flow_type: "data_list",
-      flow_name: "principles_soil_health",
-      data_list_name: "principles_soil_health",
-      _xlsxPath: "data_lists/soils/soils_health.xlsx",
-    },
-    recycling_organic_material: {
-      flow_type: "data_list",
-      flow_name: "recycling_organic_material",
-      data_list_name: "recycling_organic_material",
-      _xlsxPath: "data_lists/soils/soils_health.xlsx",
-    },
-    residue_additions_kp_soils: {
-      flow_type: "data_list",
-      flow_name: "residue_additions_kp_soils",
-      data_list_name: "residue_additions_kp_soils",
-      _xlsxPath: "data_lists/soils/soils_health.xlsx",
-    },
-    soil_hlth_suppt_slides: {
-      flow_type: "data_list",
-      flow_name: "soil_hlth_suppt_slides",
-      data_list_name: "soil_hlth_suppt_slides",
-      _xlsxPath: "data_lists/soils/soils_health.xlsx",
-    },
-    soil_seals_and_crusts_kp_soils: {
-      flow_type: "data_list",
-      flow_name: "soil_seals_and_crusts_kp_soils",
-      data_list_name: "soil_seals_and_crusts_kp_soils",
-      _xlsxPath: "data_lists/soils/soils_health.xlsx",
-    },
-    soil_tilth_kp_soils: {
-      flow_type: "data_list",
-      flow_name: "soil_tilth_kp_soils",
-      data_list_name: "soil_tilth_kp_soils",
-      _xlsxPath: "data_lists/soils/soils_health.xlsx",
     },
     topics: {
       flow_type: "data_list",

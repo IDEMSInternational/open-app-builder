@@ -368,12 +368,36 @@
     },
     {
       "name": "image_title_2_name",
-      "value": "",
+      "value": "principles_soil_health.@local.soil_princ_id@local.var_image_title_2",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "image_title_2_name"
+      "_nested_name": "image_title_2_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_image_title_2",
+            "matchedExpression": "@local.soil_princ_id",
+            "type": "local",
+            "fieldName": "soil_princ_id"
+          },
+          {
+            "fullExpression": "principles_soil_health.@local.soil_princ_id@local.var_image_title_2",
+            "matchedExpression": "@local.var_image_title_2",
+            "type": "local",
+            "fieldName": "var_image_title_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.soil_princ_id": [
+          "value"
+        ],
+        "@local.var_image_title_2": [
+          "value"
+        ]
+      }
     },
     {
       "type": "text",
@@ -730,7 +754,7 @@
             },
             {
               "type": "button",
-              "name": "button_@item.id",
+              "name": "1shQGHnFuOZkOThqvXCpjxrbHixqPxytovIRim12i",
               "value": "Practice",
               "_translations": {
                 "value": {}
@@ -756,16 +780,8 @@
                   "_cleaned": "click | go_to: soil_prac_acts"
                 }
               ],
-              "_nested_name": "items.dg_nutrient_@item.id.button_@item.id",
+              "_nested_name": "items.dg_nutrient_@item.id.1shQGHnFuOZkOThqvXCpjxrbHixqPxytovIRim12i",
               "_dynamicFields": {
-                "name": [
-                  {
-                    "fullExpression": "button_@item.id",
-                    "matchedExpression": "@item.id",
-                    "type": "item",
-                    "fieldName": "id"
-                  }
-                ],
                 "action_list": {
                   "0": {
                     "args": {
@@ -798,14 +814,8 @@
                 },
                 "_nested_name": [
                   {
-                    "fullExpression": "items.dg_nutrient_@item.id.button_@item.id",
-                    "matchedExpression": "@item.id.button_",
-                    "type": "item",
-                    "fieldName": "id"
-                  },
-                  {
-                    "fullExpression": "items.dg_nutrient_@item.id.button_@item.id",
-                    "matchedExpression": "@item.id",
+                    "fullExpression": "items.dg_nutrient_@item.id.1shQGHnFuOZkOThqvXCpjxrbHixqPxytovIRim12i",
+                    "matchedExpression": "@item.id.1shQGHnFuOZkOThqvXCpjxrbHixqPxytovIRim12i",
                     "type": "item",
                     "fieldName": "id"
                   }
@@ -813,13 +823,11 @@
               },
               "_dynamicDependencies": {
                 "@item.id": [
-                  "name",
                   "action_list.0.args.1",
                   "action_list.0._raw",
-                  "action_list.0._cleaned",
-                  "_nested_name"
+                  "action_list.0._cleaned"
                 ],
-                "@item.id.button_": [
+                "@item.id.1shQGHnFuOZkOThqvXCpjxrbHixqPxytovIRim12i": [
                   "_nested_name"
                 ]
               }
