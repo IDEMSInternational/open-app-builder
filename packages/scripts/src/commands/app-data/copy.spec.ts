@@ -55,7 +55,7 @@ describe("App Data Converter", () => {
   });
 
   /** Mock setup testing (can be removed once working consistenctly) */
-  fit("mocks file system for testing", () => {
+  it("mocks file system for testing", () => {
     const contents = fs.readdirSync(mockDirs.localAssetsFolder);
     expect(contents).toEqual(Object.keys(mockDirContents["mock/localAssetsFolder"]));
     const testFilePath = path.resolve(mockDirs.localAssetsFolder, "global", "some_file.jpg");
@@ -63,7 +63,7 @@ describe("App Data Converter", () => {
   });
 
   /** Main tests */
-  fit("Copies assets from local to app", () => {
+  it("Copies assets from local to app", () => {
     stubDeploymentConfig();
     const copyCmd = new AppDataCopy(mockDirs);
     copyCmd.run();
@@ -73,7 +73,7 @@ describe("App Data Converter", () => {
   });
 
   /** QA tests */
-  fit("throws error when global assets not found", () => {
+  it("throws error when global assets not found", () => {
     console.log("global missing test");
     fs.emptyDirSync(mockDirs.localAssetsFolder);
     stubDeploymentConfig({
@@ -93,8 +93,8 @@ describe("App Data Converter", () => {
 
 type IAssetsFilterFunction = IDeploymentConfigJson["app_data"]["assets_filter_function"];
 /**
- * Alloy populating mock deployment json when getActiveDeployment method called
- * Includes override just of methods used in the main copy methods
+ * Populated mock values when getActiveDeployment method called from main command
+ * Limited to just values referenced in the copy method
  **/
 function stubDeploymentConfig(
   stub: {
