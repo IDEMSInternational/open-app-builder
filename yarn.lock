@@ -18920,6 +18920,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mock-fs@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "mock-fs@npm:5.2.0"
+  checksum: c25835247bd26fa4e0189addd61f98973f61a72741e4d2a5694b143a2069b84978443a7ac0fdb1a71aead99273ec22ff4e9c968de11bbd076db020264c5b8312
+  languageName: node
+  linkType: hard
+
 "moment-timezone@npm:^0.5.31":
   version: 0.5.34
   resolution: "moment-timezone@npm:0.5.34"
@@ -23443,6 +23450,7 @@ __metadata:
     jasmine: ^3.99.0
     jasmine-spec-reporter: ^7.0.0
     jasmine-ts: ^0.4.0
+    mock-fs: ^5.2.0
     node-rsa: ^1.1.1
     nodemon: ^2.0.19
     p-queue: ^6.6.2
