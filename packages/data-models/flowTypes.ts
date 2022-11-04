@@ -1,5 +1,5 @@
 import type { IDataPipeOperation } from "shared/src/models/dataPipe/types";
-import type { IAppConstants } from "./constants";
+import type { IAppConfig } from "./appConfig";
 
 /*********************************************************************************************
  *  Base flow types
@@ -283,7 +283,13 @@ export namespace FlowTypes {
     | "select_text"
     | "html"
     | "latex"
-    | "animated_slides";
+    | "animated_slides"
+    | "qr_code"
+    | "navigation_bar"
+    | "task_card"
+    | "task_progress_bar"
+    | "carousel"
+    | "drawer";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
@@ -313,7 +319,7 @@ export namespace FlowTypes {
   }
   export type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
-  type IDynamicPrefix = IAppConstants["DYNAMIC_PREFIXES"][number];
+  type IDynamicPrefix = IAppConfig["DYNAMIC_PREFIXES"][number];
 
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
@@ -366,7 +372,8 @@ export namespace FlowTypes {
       | "trigger_actions"
       | "track_event"
       | "process_template"
-      | "google_auth";
+      | "google_auth"
+      | "task_group_set_highlighted";
     args: any[]; // should be string | boolean, but breaks type-checking for templates;
     params?: any; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params

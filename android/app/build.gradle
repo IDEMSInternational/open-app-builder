@@ -6,8 +6,8 @@ android {
         applicationId "international.idems.early_family_math"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 16004
-        versionName "0.16.4"
+        versionCode 16007
+        versionName "0.16.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

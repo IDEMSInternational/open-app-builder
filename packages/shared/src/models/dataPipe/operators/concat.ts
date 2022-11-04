@@ -6,15 +6,21 @@ import BaseOperator from "./base";
 type ILoadedDatalist = any; // datalist
 
 class ConcatOperator extends BaseOperator {
-  public args_list: string[];
+  public args_list: { data: any; name: string }[];
   private indexColumn = "id";
+  /** When processing arg keep track of active for logging purposes */
+  private activeArg: { data: any; name: string };
   constructor(df: DataFrame, args_list: any, pipe: DataPipe) {
     super(df, args_list, pipe);
   }
 
   // load input data list from arg, populate error object if not exist for use in validation step
   parseArg(arg: any): ILoadedDatalist {
-    return this.pipe.inputSources[arg] ?? { error: `Data list does not exists: ${arg}` };
+    const data = this.pipe.inputSources[arg];
+    if (!data) {
+      return { error: `Data list does not exists: ${arg}` };
+    }
+    return { data, name: arg };
   }
 
   validateArg(datalist: ILoadedDatalist) {
@@ -22,8 +28,9 @@ class ConcatOperator extends BaseOperator {
   }
 
   apply() {
-    for (const dataList of this.args_list) {
-      this.df = this.applyConcat(dataList);
+    for (const arg of this.args_list) {
+      this.activeArg = arg;
+      this.df = this.applyConcat(arg.data);
     }
     return this.df;
   }
@@ -68,11 +75,10 @@ class ConcatOperator extends BaseOperator {
   private checkDuplicateRows(df1: DataFrame, df2: DataFrame) {
     const duplicateIndex = df1.index.find((index) => df2.index.includes(index));
     if (duplicateIndex) {
-      throw new Error("Multiple entries exist for index: " + duplicateIndex);
+      throw new Error(
+        `[${this.activeArg.name}] Multiple entries exist for index: ${duplicateIndex}`
+      );
     }
   }
-
-  /** Concatenate two identically-shaped data frames */
-  private concatDfs(df1: DataFrame, df2: DataFrame) {}
 }
 export default ConcatOperator;

@@ -1,11 +1,11 @@
 import { FlowTypes } from "data-models";
 import * as Parsers from "./parsers";
 import { IConverterPaths, IParsedWorkbookData } from "../../types";
-import { groupJsonByKey, IContentsEntry } from "../../utils";
+import { arrayToHashmap, groupJsonByKey, IContentsEntry } from "../../utils";
 import BaseProcessor from "../base";
 
 export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithData> {
-  public cacheVersion = 20220831.1;
+  public cacheVersion = 20221026.1;
 
   public parsers: { [flowType in FlowTypes.FlowType]: Parsers.DefaultParser } = {
     template: new Parsers.TemplateParser(this),
@@ -83,27 +83,32 @@ export class FlowParserProcessor extends BaseProcessor<FlowTypes.FlowTypeWithDat
    */
   private populateDataPipeGeneratedFlows(flowsByType: IParsedWorkbookData) {
     if (flowsByType.data_pipe) {
-      flowsByType.data_list ?? {};
+      const dataPipeHashmap = {};
+      const dataListHashmap = arrayToHashmap(flowsByType.data_list || [], "flow_name");
       for (const flow of flowsByType.data_pipe) {
-        const dataPipeFlow = flow as FlowTypes.DataPipeFlow;
-        if (dataPipeFlow._processed) {
-          for (const [flow_name, rows] of Object.entries(dataPipeFlow._processed)) {
+        const { _processed, ...rest } = flow as FlowTypes.DataPipeFlow;
+        if (_processed) {
+          for (const [flow_name, rows] of Object.entries(_processed)) {
             const datalist: FlowTypes.Data_list = {
               flow_name,
               flow_subtype: "generated",
               flow_type: "data_list",
               rows,
             };
-            if (flowsByType.data_list[flow_name]) {
+            if (dataListHashmap[flow_name]) {
               this.logger.error({
                 message: "Generated datalist will override existing datalist",
                 details: [flow_name],
               });
             }
-            flowsByType.data_list[flow_name] = datalist;
+            dataListHashmap[flow_name] = datalist;
           }
         }
+        // Populate rest of data pipe (without _processed) to main flows list
+        dataPipeHashmap[flow.flow_name] = rest;
       }
+      flowsByType.data_pipe = Object.values(dataPipeHashmap);
+      flowsByType.data_list = Object.values(dataListHashmap);
     }
     return flowsByType;
   }
