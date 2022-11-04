@@ -1019,7 +1019,7 @@
     {
       "id": "efm_sb_Singing_The_Truth",
       "pages": "data.Singing_The_Truth_storybook",
-      "cover": "EFMStorybooks/EFM-SB-STT.jpg",
+      "cover": "EFMStorybooks/EFM-SB-STT-Cover.jpg",
       "author": "Jade Mathieson",
       "illustrator": "Louwrisa Blaauw",
       "intro_level": "advanced",
@@ -1065,7 +1065,7 @@
     {
       "id": "efm_sb_Tortoise_Finds_His_House",
       "pages": "data.Tortoise_Finds_His_House_storybook",
-      "cover": "EFMStorybooks/EFM-SB-TFHH.jpg",
+      "cover": "EFMStorybooks/EFM-SB-TFHH-Cover.jpg",
       "author": "Maya Fowler",
       "illustrator": "Katrin Coetzer",
       "intro_level": "advanced",
@@ -1088,7 +1088,7 @@
     {
       "id": "efm_sb_Who_Can_Count_To_Ten",
       "pages": "data.Who_Can_Count_To_Ten_storybook",
-      "cover": "EFMStorybooks/EFM-SB-WCCTT.jpg",
+      "cover": "EFMStorybooks/EFM-SB-WCCTT-Cover.jpg",
       "author": "Athieno Gertrude",
       "illustrator": "Salim Kasamba",
       "intro_level": "advanced",

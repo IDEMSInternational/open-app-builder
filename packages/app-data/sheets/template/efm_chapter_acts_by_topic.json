@@ -119,6 +119,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
           "_nested_name": "activity_buttons.activity_type",
           "_dynamicFields": {
