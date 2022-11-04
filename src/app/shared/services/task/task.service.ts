@@ -7,7 +7,10 @@ import { arrayToHashmap } from "../../utils";
   providedIn: "root",
 })
 export class TaskService {
+  // TODO: These should be set from the deployment/skin level (ultimately should come from templates)
   highlightedTaskFieldName = "_task_highlighted_group_id";
+  taskGroupsListName = "workshop_tasks";
+
   taskGroups: any[];
   taskGroupsHashmap: Record<string, any>;
   constructor(
@@ -17,14 +20,17 @@ export class TaskService {
 
   async init() {
     await this.getListOfTaskGroups();
-    this.evaluateHighlightedTaskGroup();
+    if (this.taskGroups.length) {
+      this.evaluateHighlightedTaskGroup();
+    }
   }
 
   /** Get the list of highlight-able task groups, from the relevant data_list */
   private async getListOfTaskGroups() {
-    // TODO: This should be set from the template/skin level
-    const taskGroupsListName = "workshop_tasks";
-    const taskGroupsDataList = await this.appDataService.getSheet("data_list", taskGroupsListName);
+    const taskGroupsDataList = await this.appDataService.getSheet(
+      "data_list",
+      this.taskGroupsListName
+    );
     this.taskGroups = taskGroupsDataList?.rows || [];
     this.taskGroupsHashmap = arrayToHashmap(this.taskGroups, "id");
   }
