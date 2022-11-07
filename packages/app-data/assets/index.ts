@@ -3170,8 +3170,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "681910eca8201998e670a0f3caffa9e7",
     themeVariations: {
       theme_professional: {
-        size_kb: 12.7,
-        md5Checksum: "340dc0cd22ef431e6d09f9af4b643640",
+        size_kb: 27.9,
+        md5Checksum: "51cccd20e23c68953db28b1361ef5a7f",
       },
     },
   },
