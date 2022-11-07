@@ -29,3 +29,11 @@ export function isCountryLanguageCode(str: string) {
 export function isThemeAssetsFolderName(str: string) {
   return str.startsWith("theme_");
 }
+
+/**
+ * For a given theme asset folder name, return the name of the respective theme.
+ * Expected format of the theme asset folder name is "theme_<theme_name>"
+ */
+export function getThemeNameFromThemeAssetFolderName(str: string) {
+  return str.replace("theme_", "");
+}

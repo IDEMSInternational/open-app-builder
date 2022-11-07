@@ -14,6 +14,7 @@ import {
   logOutput,
   recursiveFindByExtension,
   replicateDir,
+  getThemeNameFromThemeAssetFolderName,
 } from "../../utils";
 import { spawnSync } from "child_process";
 
@@ -208,16 +209,20 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
     const assetFiles = readContentsFile(sourceFolder);
     const { assets_filter_function } = this.activeDeployment.app_data;
     const filterLanguages = this.activeDeployment.translations?.filter_language_codes;
+    const filterThemes = this.activeDeployment.app_config.APP_THEMES.available;
 
-    if (filterLanguages) {
-      filterLanguages.push("global");
-    }
     const filteredFiles = assetFiles.filter((fileEntry) => {
+      const [parent_folder] = fileEntry.relativePath.split("/");
       // language filter
-      if (filterLanguages) {
-        const [lang_folder] = fileEntry.relativePath.split("/");
-        if (!filterLanguages.includes(lang_folder)) return false;
+      if (isCountryLanguageCode(parent_folder) && filterLanguages) {
+        if (!filterLanguages.includes(parent_folder)) return false;
       }
+      // theme filter
+      if (
+        isThemeAssetsFolderName(parent_folder) &&
+        !filterThemes.includes(getThemeNameFromThemeAssetFolderName(parent_folder))
+      )
+        return false;
       // global filter
       return assets_filter_function(fileEntry);
     });
