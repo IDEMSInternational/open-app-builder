@@ -41,7 +41,6 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
       "_nested_name": "title"
     },
     {
@@ -51,7 +50,6 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
       "_nested_name": "text_1",
       "_dynamicFields": {
         "value": [

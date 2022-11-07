@@ -11,7 +11,9 @@
       "has_single_task": true,
       "title": "How are you?",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -139,7 +141,9 @@
       "has_single_task": true,
       "title": "Survey",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

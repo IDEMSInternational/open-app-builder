@@ -95,7 +95,9 @@
       "name": "title",
       "value": "All @global.workshops_capital",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "title",
       "_dynamicFields": {
