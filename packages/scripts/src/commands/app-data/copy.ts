@@ -60,7 +60,7 @@ export default program
 /**
  *
  **/
-class AppDataCopy {
+export class AppDataCopy {
   private activeDeployment = getActiveDeployment();
   constructor(private options: IProgramOptions) {}
 
@@ -74,7 +74,7 @@ class AppDataCopy {
       const sheetContents = this.sheetsGenerateContents(localSheetsFolder);
       this.sheetsWriteContents(localSheetsFolder, sheetContents);
       this.sheetsCopyFiles(localSheetsFolder, appSheetsFolder);
-      runPrettierCodeTidy(appSheetsFolder);
+      this.runPrettierCodeTidy(appSheetsFolder);
     }
 
     // Sheet Translations (applied if sheets are copied)
@@ -84,7 +84,7 @@ class AppDataCopy {
       // Handle Copy
       this.translationsWriteIndex(localTranslationsFolder);
       this.translationsCopyFiles(localTranslationsFolder, appTranslationsFolder);
-      runPrettierCodeTidy(appTranslationsFolder);
+      this.runPrettierCodeTidy(appTranslationsFolder);
     }
 
     // Assets
@@ -95,7 +95,7 @@ class AppDataCopy {
       this.assetsQualityCheck(localAssetsFolder);
       this.assetsCopyFiles(localAssetsFolder, appAssetsFolder);
       this.assetsGenerateIndex(appAssetsFolder);
-      runPrettierCodeTidy(appAssetsFolder);
+      this.runPrettierCodeTidy(appAssetsFolder);
     }
     console.log(chalk.green("Copy Complete"));
   }
@@ -374,6 +374,15 @@ export const SHEETS_CONTENT_LIST:ISheetContents = ${contentsString}
     fs.emptyDirSync(targetFolder);
     fs.copySync(sourceFolder, targetFolder);
   }
+
+  /**
+   * Run prettier to automatically format code in given folder path
+   * NOTE - by default will only format .ts files
+   */
+  private runPrettierCodeTidy(folderPath: string) {
+    const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${folderPath}/**/*.ts --loglevel error`;
+    return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
+  }
 }
 
 /**********************************************************************************************************
@@ -382,15 +391,6 @@ export const SHEETS_CONTENT_LIST:ISheetContents = ${contentsString}
 type ISheetContents = {
   [flow_type in FlowTypes.FlowType]: { [flow_name: string]: FlowTypes.FlowTypeBase };
 };
-
-/**
- * Run prettier to automatically format code in given folder path
- * NOTE - by default will only format .ts files
- */
-function runPrettierCodeTidy(folderPath: string) {
-  const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${folderPath}/**/*.ts --loglevel error`;
-  return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
-}
 
 /**  Subset of IContentsEntry (with additional translations) */
 interface IAssetEntry extends IContentsEntry {
