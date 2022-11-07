@@ -6,7 +6,10 @@
     {
       "type": "declare_field_default",
       "name": "iwm_as_notifications",
-      "value": true
+      "value": "@fields._app_skin != \"modular\"",
+      "_translations": {
+        "value": {}
+      }
     }
   ],
   "_xlsxPath": "global/data/in_week_message_globals.xlsx"
