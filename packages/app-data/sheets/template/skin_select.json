@@ -61,7 +61,6 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
           "_nested_name": "not_first_access.text_1",
           "_dynamicFields": {
             "value": [
@@ -235,24 +234,6 @@
       },
       "rows": [
         {
-          "name": "workshop_skin_name",
-          "value": "weekly_workshop",
-          "_translations": {
-            "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "dg_correct.workshop_skin_name"
-        },
-        {
-          "name": "module_skin_name",
-          "value": "modular",
-          "_translations": {
-            "value": {}
-          },
-          "type": "set_variable",
-          "_nested_name": "dg_correct.module_skin_name"
-        },
-        {
           "name": "workshop_skin_text",
           "value": "Workshop",
           "_translations": {
@@ -277,8 +258,8 @@
         {
           "name": "skins_list",
           "value": [
-            "name: @local.workshop_skin_name | text: @local.workshop_skin_text",
-            "name: @local.module_skin_name | text: @local.module_skin_text"
+            "name: weekly_workshop | text: @local.workshop_skin_text",
+            "name: modular | text: @local.module_skin_text"
           ],
           "type": "set_variable",
           "_nested_name": "dg_correct.skins_list",
@@ -286,13 +267,7 @@
             "value": {
               "0": [
                 {
-                  "fullExpression": "name: @local.workshop_skin_name | text: @local.workshop_skin_text",
-                  "matchedExpression": "@local.workshop_skin_name",
-                  "type": "local",
-                  "fieldName": "workshop_skin_name"
-                },
-                {
-                  "fullExpression": "name: @local.workshop_skin_name | text: @local.workshop_skin_text",
+                  "fullExpression": "name: weekly_workshop | text: @local.workshop_skin_text",
                   "matchedExpression": "@local.workshop_skin_text",
                   "type": "local",
                   "fieldName": "workshop_skin_text"
@@ -300,13 +275,7 @@
               ],
               "1": [
                 {
-                  "fullExpression": "name: @local.module_skin_name | text: @local.module_skin_text",
-                  "matchedExpression": "@local.module_skin_name",
-                  "type": "local",
-                  "fieldName": "module_skin_name"
-                },
-                {
-                  "fullExpression": "name: @local.module_skin_name | text: @local.module_skin_text",
+                  "fullExpression": "name: modular | text: @local.module_skin_text",
                   "matchedExpression": "@local.module_skin_text",
                   "type": "local",
                   "fieldName": "module_skin_text"
@@ -315,14 +284,8 @@
             }
           },
           "_dynamicDependencies": {
-            "@local.workshop_skin_name": [
-              "value.0"
-            ],
             "@local.workshop_skin_text": [
               "value.0"
-            ],
-            "@local.module_skin_name": [
-              "value.1"
             ],
             "@local.module_skin_text": [
               "value.1"

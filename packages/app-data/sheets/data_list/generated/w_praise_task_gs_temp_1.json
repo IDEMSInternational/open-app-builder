@@ -11,7 +11,9 @@
       "has_single_task": true,
       "title": "How are you?",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -28,7 +30,9 @@
       "has_single_task": true,
       "title": "How are you?",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -171,7 +175,9 @@
       "has_single_task": true,
       "title": "Question",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -230,7 +236,9 @@
       "has_single_task": true,
       "title": "Try it out!",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

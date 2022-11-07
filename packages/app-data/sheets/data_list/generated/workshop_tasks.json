@@ -25,7 +25,9 @@
         "in_text_title": {
           "tz_sw": true
         },
-        "description": {},
+        "description": {
+          "tz_sw": true
+        },
         "short_title": {
           "tz_sw": true,
           "za_af": true,

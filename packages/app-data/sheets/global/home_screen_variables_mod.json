@@ -40,7 +40,9 @@
       "name": "weekly_workshops",
       "value": "Modules",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -82,7 +84,9 @@
       "name": "workshops",
       "value": "modules",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -90,7 +94,9 @@
       "name": "workshop",
       "value": "module",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -98,7 +104,9 @@
       "name": "workshops_capital",
       "value": "Modules",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
