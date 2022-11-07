@@ -11,8 +11,8 @@ export class TaskService {
   highlightedTaskFieldName = "_task_highlighted_group_id";
   taskGroupsListName = "workshop_tasks";
 
-  taskGroups: any[];
-  taskGroupsHashmap: Record<string, any>;
+  taskGroups: any[] = [];
+  taskGroupsHashmap: Record<string, any> = {};
   constructor(
     private templateFieldService: TemplateFieldService,
     private appDataService: AppDataService
@@ -20,7 +20,7 @@ export class TaskService {
 
   async init() {
     await this.getListOfTaskGroups();
-    if (this.taskGroups.length) {
+    if (this.taskGroups.length > 0) {
       this.evaluateHighlightedTaskGroup();
     }
   }
