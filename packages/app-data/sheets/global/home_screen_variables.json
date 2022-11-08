@@ -186,6 +186,16 @@
           "za_zu": true
         }
       }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "things_to_do",
+      "value": "Things to do",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
     }
   ],
   "_xlsxPath": "global/data/navigation_globals.xlsx"
