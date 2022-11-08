@@ -3336,14 +3336,14 @@
     "note": ""
   },
   {
-    "SourceText": "My group is now doing the @global.workshop...",
-    "text": "Sasa kikundi changu kinafanya @global.workshop...",
+    "SourceText": "My group is now doing the @global.workshop:",
+    "text": "Sasa kikundi changu kinafanya @global.workshop:",
     "type": "template",
     "note": "The string @global.workshop.. should not be translated."
   },
   {
-    "SourceText": "I am now doing the @global.workshop...",
-    "text": "Sasa ninafanya @global.workshop...",
+    "SourceText": "I am now doing the @global.workshop:",
+    "text": "Sasa ninafanya @global.workshop",
     "type": "template",
     "note": "The string @global.workshop.. should not be translated."
   },
