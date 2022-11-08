@@ -23,11 +23,11 @@ import {
   IFeedbackMetadata,
   ITemplateTargetEntry,
 } from "./feedback.types";
+import { RouterDisableGuard, RouterEnableGuard } from "./routeGuards";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
 import { IAppConfig } from "packages/data-models";
-import { NavigationStart, Router } from "@angular/router";
-import { Subject } from "rxjs";
-import { takeUntil, takeWhile } from "rxjs/operators";
+import { Router } from "@angular/router";
+import { takeWhile } from "rxjs/operators";
 import { fromEvent } from "rxjs";
 
 @Injectable({
@@ -39,7 +39,6 @@ export class FeedbackService {
   private deviceInfo: DeviceInfo;
   /** Track content el style to allow revert on component destroy */
   private initialContentStyle?: CSSStyleDeclaration;
-  private enableRouting$ = new Subject<boolean>();
 
   feedbackModuleDefaults;
   appStrings;
@@ -161,18 +160,16 @@ export class FeedbackService {
     }
   }
 
-  /** Intercept router events and optionally block navigation */
+  /** Progamatically set router guards to enable/disable navigation */
   public setNavigationEnabled(enabled?: boolean) {
-    if (enabled) {
-      this.enableRouting$.next(true);
-    } else {
-      this.router.events.pipe(takeUntil(this.enableRouting$)).subscribe((event) => {
-        if (event instanceof NavigationStart) {
-          // silently redirect navigation to current location instead of changing
-          this.router.navigateByUrl(location.pathname, { skipLocationChange: true });
+    this.router.resetConfig(
+      this.router.config.map((r) => {
+        if (!r.redirectTo) {
+          r.canActivate = enabled ? [RouterEnableGuard] : [RouterDisableGuard];
         }
-      });
-    }
+        return r;
+      })
+    );
   }
 
   /** Handle registration of all defined feedback actions to the relevant context menus */
