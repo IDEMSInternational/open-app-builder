@@ -232,11 +232,11 @@
       "rows": [
         {
           "type": "template",
-          "name": "things_to_do",
+          "name": "things_to_do_temp",
           "value": "things_to_do",
           "exclude_from_translation": true,
           "rows": [],
-          "_nested_name": "drawer.things_to_do"
+          "_nested_name": "drawer.things_to_do_temp"
         }
       ],
       "_nested_name": "drawer",
