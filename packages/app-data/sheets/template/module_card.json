@@ -349,6 +349,28 @@
       "_nested_name": "click_template"
     },
     {
+      "name": "highlighted_text",
+      "value": "Active",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "highlighted_text"
+    },
+    {
+      "name": "progress_units_name",
+      "value": "sections",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "progress_units_name"
+    },
+    {
       "type": "task_card",
       "name": "task_card",
       "action_list": [
@@ -399,7 +421,9 @@
         "image": "@local.card_image",
         "style": "@local.card_style",
         "in_progress_icon": "plh_images/icons/in_progress.svg",
-        "completed_icon": "plh_images/icons/tick_white.svg"
+        "completed_icon": "plh_images/icons/tick_white.svg",
+        "highlighted_text": "@local.highlighted_text",
+        "progress_units_name": "@local.progress_units_name"
       },
       "condition": "@local.with_image_and_subtitle",
       "exclude_from_translation": true,
@@ -519,6 +543,22 @@
               "type": "local",
               "fieldName": "card_style"
             }
+          ],
+          "highlighted_text": [
+            {
+              "fullExpression": "@local.highlighted_text",
+              "matchedExpression": "@local.highlighted_text",
+              "type": "local",
+              "fieldName": "highlighted_text"
+            }
+          ],
+          "progress_units_name": [
+            {
+              "fullExpression": "@local.progress_units_name",
+              "matchedExpression": "@local.progress_units_name",
+              "type": "local",
+              "fieldName": "progress_units_name"
+            }
           ]
         },
         "condition": [
@@ -559,6 +599,12 @@
         ],
         "@local.card_style": [
           "parameter_list.style"
+        ],
+        "@local.highlighted_text": [
+          "parameter_list.highlighted_text"
+        ],
+        "@local.progress_units_name": [
+          "parameter_list.progress_units_name"
         ],
         "@local.with_image_and_subtitle": [
           "condition"
@@ -614,7 +660,9 @@
         "title": "@local.card_title",
         "style": "@local.card_style",
         "in_progress_icon": "plh_images/icons/in_progress.svg",
-        "completed_icon": "plh_images/icons/tick_white.svg"
+        "completed_icon": "plh_images/icons/tick_white.svg",
+        "highlighted_text": "@local.highlighted_text",
+        "progress_units_name": "@local.progress_units_name"
       },
       "condition": "!@local.with_image_and_subtitle",
       "exclude_from_translation": true,
@@ -718,6 +766,22 @@
               "type": "local",
               "fieldName": "card_style"
             }
+          ],
+          "highlighted_text": [
+            {
+              "fullExpression": "@local.highlighted_text",
+              "matchedExpression": "@local.highlighted_text",
+              "type": "local",
+              "fieldName": "highlighted_text"
+            }
+          ],
+          "progress_units_name": [
+            {
+              "fullExpression": "@local.progress_units_name",
+              "matchedExpression": "@local.progress_units_name",
+              "type": "local",
+              "fieldName": "progress_units_name"
+            }
           ]
         },
         "condition": [
@@ -752,6 +816,12 @@
         ],
         "@local.card_style": [
           "parameter_list.style"
+        ],
+        "@local.highlighted_text": [
+          "parameter_list.highlighted_text"
+        ],
+        "@local.progress_units_name": [
+          "parameter_list.progress_units_name"
         ],
         "!@local.with_image_and_subtitle": [
           "condition"
