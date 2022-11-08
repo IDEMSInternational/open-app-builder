@@ -13468,5 +13468,11 @@
     "text": "Ili kuzindua programu katika hali ya kubuni, weka msimbo wako wa kubuni kwenye kisanduku kilicho hapa chini na ubonyeze @global.submit_button.",
     "type": "template",
     "note": ""
+  },
+  {
+    "SourceText": "Things to do",
+    "text": "Vitu vya kufanya",
+    "type": "global",
+    "note": ""
   }
 ]
