@@ -2040,5 +2040,6 @@
   "Well done for completing the @data.workshop.w_stress.in_text_title. Tomorrow, access a new @global.workshop to help you relax and build valuable skills!": "Hongera kwa kumaliza @data.workshop.w_stress.in_text_title. Kesho, utaweza kupata @global.workshop mpya itakayokusaidia kupumzika na kujifunza ujuzi muhimu sana!",
   "Get ready for a new @global.workshop tomorrow. \n \n By completing the @data.workshop.w_stress.in_text_title first, you lay a key foundation: If you feel good, your family will too!": "Kuwa tayari kwa @global.workshop mpya kesho.\n\nKwa kukamilishawarsha kwanza @data.workshop.w_stress.in_text_title. Unaweka msingi muhimu. Kama unajisikia vizuri, familia yako itajisikia vizuri pia!",
   "To get access to changing the app skin, enter your developer code in the box below and press @global.submit_button.": "Ili kupata uwezo wa kubadilisha kipindi, weka msimbo wako wa kubuni kwenye kisanduku kilicho hapa chini na ubonyeze @global.submit_button.",
-  "To launch the app in developer mode, enter your developer code in the box below and press @global.submit_button.": "Ili kuzindua programu katika hali ya kubuni, weka msimbo wako wa kubuni kwenye kisanduku kilicho hapa chini na ubonyeze @global.submit_button."
+  "To launch the app in developer mode, enter your developer code in the box below and press @global.submit_button.": "Ili kuzindua programu katika hali ya kubuni, weka msimbo wako wa kubuni kwenye kisanduku kilicho hapa chini na ubonyeze @global.submit_button.",
+  "Things to do": "Vitu vya kufanya"
 }
