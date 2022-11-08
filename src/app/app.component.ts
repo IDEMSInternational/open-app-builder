@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { ChangeDetectorRef, Component } from "@angular/core";
 import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
@@ -55,6 +55,7 @@ export class AppComponent {
 
     // other services
     private platform: Platform,
+    private cdr: ChangeDetectorRef,
     private menuController: MenuController,
     private router: Router,
     private dbService: DbService,
@@ -113,6 +114,8 @@ export class AppComponent {
       }
       // Show main template
       this.renderAppTemplates = true;
+      // Detect changes in case expression changed prior to render (e.g. feedback sidebar)
+      this.cdr.detectChanges();
       this.scheduleReinitialisation();
     });
   }
