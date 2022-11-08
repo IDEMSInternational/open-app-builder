@@ -61,15 +61,17 @@
       }
     },
     {
-      "id": "survey_activity",
+      "id": "survey",
       "individual": true,
       "together": false,
       "priority": 71,
       "has_single_task": true,
-      "template": "w_self_care_survey_activity",
+      "template": "setup_and_survey_stepper",
       "title": "Survey",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

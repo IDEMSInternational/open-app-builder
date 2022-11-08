@@ -95,7 +95,9 @@
       "name": "title",
       "value": "All @global.workshops_capital",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "title",
       "_dynamicFields": {
@@ -222,7 +224,7 @@
     {
       "type": "drawer",
       "name": "drawer",
-      "value": "Things to do",
+      "value": "@global.things_to_do",
       "parameter_list": {
         "style": "secondary"
       },
@@ -237,7 +239,22 @@
           "_nested_name": "drawer.things_to_do"
         }
       ],
-      "_nested_name": "drawer"
+      "_nested_name": "drawer",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.things_to_do",
+            "matchedExpression": "@global.things_to_do",
+            "type": "global",
+            "fieldName": "things_to_do"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.things_to_do": [
+          "value"
+        ]
+      }
     }
   ],
   "_xlsxPath": "global_modular/core_templates/home_screen_modular.xlsx"

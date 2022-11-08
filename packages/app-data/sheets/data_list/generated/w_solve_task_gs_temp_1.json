@@ -11,7 +11,9 @@
       "has_single_task": true,
       "title": "How are you?",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -28,7 +30,9 @@
       "has_single_task": true,
       "title": "How are you?",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -220,13 +224,15 @@
       "together": true,
       "priority": 75,
       "has_single_task": true,
-      "title": "Try",
+      "title": "Try it out!",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
-          "eng": "Try"
+          "eng": "Try it out!"
         }
       },
       "template": "w_solve_try"

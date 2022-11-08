@@ -243,5 +243,15 @@
     "SourceText": "Text and @global.language_global_1",
     "text": "Texto y @global.language_global_1",
     "type": "template"
+  },
+  {
+    "SourceText": "activities",
+    "text": "actividades",
+    "type": "template"
+  },
+  {
+    "SourceText": "Featured",
+    "text": "Destacado",
+    "type": "template"
   }
 ]
