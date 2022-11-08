@@ -688,7 +688,7 @@
     {
       "type": "text",
       "name": "text_workshop_path",
-      "value": "I do the @global.workshops...",
+      "value": "I do the @global.workshops:",
       "_translations": {
         "value": {
           "tz_sw": true
@@ -701,15 +701,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "I do the @global.workshops...",
-            "matchedExpression": "@global.workshops..",
+            "fullExpression": "I do the @global.workshops:",
+            "matchedExpression": "@global.workshops",
             "type": "global",
             "fieldName": "workshops"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.workshops..": [
+        "@global.workshops": [
           "value"
         ]
       }
