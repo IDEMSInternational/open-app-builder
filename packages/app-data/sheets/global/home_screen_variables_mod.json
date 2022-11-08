@@ -30,7 +30,9 @@
       "name": "weekly_workshops",
       "value": "Modules",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -59,14 +61,17 @@
       "value": "@global.weekly_workshop @global.options",
       "_translations": {
         "value": {}
-      }
+      },
+      "exclude_from_translation": true
     },
     {
       "type": "declare_global_constant",
       "name": "workshops",
       "value": "modules",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -74,7 +79,9 @@
       "name": "workshop",
       "value": "module",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -82,7 +89,9 @@
       "name": "workshops_capital",
       "value": "Modules",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {

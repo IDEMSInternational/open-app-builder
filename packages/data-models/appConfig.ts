@@ -109,13 +109,18 @@ const APP_HEADER_DEFAULTS = {
   title: "App",
   // default only show menu button on home screen
   should_show_menu_button: (location: Location) =>
-    location.pathname == APP_ROUTE_DEFAULTS.home_route,
+    activeRoute(location) === APP_ROUTE_DEFAULTS.home_route,
   // default show back button on all screens except home screen
   should_show_back_button: (location: Location) =>
-    location.pathname !== APP_ROUTE_DEFAULTS.home_route,
+    activeRoute(location) !== APP_ROUTE_DEFAULTS.home_route,
   // on device minimize app when back button pressed from home screen
   should_minimize_app_on_back: (location: Location) =>
-    location.pathname == APP_ROUTE_DEFAULTS.home_route,
+    activeRoute(location) === APP_ROUTE_DEFAULTS.home_route,
+};
+
+/** Utility function to return the active pathname without any sidebar routing e.g. /home(sidebar:alt)  */
+const activeRoute = (location: Location) => {
+  return location.pathname.replace(/\(.+\)/, "");
 };
 
 const APP_FOOTER_DEFAULTS: { templateName: string | null } = {

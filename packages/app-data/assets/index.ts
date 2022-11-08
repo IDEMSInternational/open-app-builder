@@ -1,6 +1,5 @@
 export const UNTRACKED_ASSETS = [
-  "es_sp/quality_assurance/test_image_untracked.png",
-  "theme_professional/plh_images/workshops/w_instruct/read_2/slide_1_a.svg",
+  "theme_professional/plh_images/workshops/w_rules/read_2/side_5.svg",
 ];
 export const ASSETS_CONTENTS_LIST = {
   "android/icon-background.png": {
@@ -39,18 +38,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 596.3,
         md5Checksum: "4917b991b1da9d8dfb62b4cbea086b9a",
       },
-      za_af: {
-        size_kb: 425.5,
-        md5Checksum: "f67195b5b8b16e13c27bea30e3daa3bf",
-      },
-      za_st: {
-        size_kb: 570,
-        md5Checksum: "661d966ecd4c3ac069007d4bf29d0a40",
-      },
-      za_tn: {
-        size_kb: 521.3,
-        md5Checksum: "e50dbc959585eb83480887c083816412",
-      },
     },
   },
   "plh_audio/relax/relax_10.mp3": {
@@ -60,18 +47,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 849.4,
         md5Checksum: "193cd2d42fab0d4ae887ff38cc2bb0a2",
-      },
-      za_af: {
-        size_kb: 804.3,
-        md5Checksum: "cb18fd93fb545ea1d800f554d21e47fd",
-      },
-      za_st: {
-        size_kb: 942,
-        md5Checksum: "690673d3804c5e2f5a96fc698910f854",
-      },
-      za_tn: {
-        size_kb: 813.8,
-        md5Checksum: "b5dbea4ae785d3be159e155753815d39",
       },
     },
   },
@@ -83,18 +58,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 613.2,
         md5Checksum: "d717d9a3698d6bd50133b32042ada9e2",
       },
-      za_af: {
-        size_kb: 712.9,
-        md5Checksum: "d13d03fbf1cafa04bda723afc4dfaa7c",
-      },
-      za_st: {
-        size_kb: 867,
-        md5Checksum: "e0c4ac6bde25cd8b7c1a10410905b1dc",
-      },
-      za_tn: {
-        size_kb: 701.3,
-        md5Checksum: "a2159af546cd63070cb48050aeeb46af",
-      },
     },
   },
   "plh_audio/relax/relax_12.mp3": {
@@ -104,18 +67,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 906.4,
         md5Checksum: "f66b6cca6464032961e27798b622f1fe",
-      },
-      za_af: {
-        size_kb: 1152.9,
-        md5Checksum: "38d7b22471d79595b0a00756e4cf5f9c",
-      },
-      za_st: {
-        size_kb: 1002,
-        md5Checksum: "90cd0e96caf4f8981c463f0f05e89447",
-      },
-      za_tn: {
-        size_kb: 537,
-        md5Checksum: "5fa21dee0c45a913b505e63b200ab528",
       },
     },
   },
@@ -127,18 +78,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 853.9,
         md5Checksum: "93094bc353df67e1d0fb2325ecb173bd",
       },
-      za_af: {
-        size_kb: 728.4,
-        md5Checksum: "88aecc28aeb0f09d5986557c30f0d902",
-      },
-      za_st: {
-        size_kb: 805.2,
-        md5Checksum: "b72428408ed5603d5f29c9beb80c2cc2",
-      },
-      za_tn: {
-        size_kb: 727.5,
-        md5Checksum: "c18869efccd20b619546d194e63a8ac7",
-      },
     },
   },
   "plh_audio/relax/relax_14.mp3": {
@@ -148,18 +87,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 375,
         md5Checksum: "5d1bec8ce69159b55aa40e8f29565296",
-      },
-      za_af: {
-        size_kb: 550,
-        md5Checksum: "8de339d77e769aa27c3dc44073ee95f0",
-      },
-      za_st: {
-        size_kb: 459.4,
-        md5Checksum: "280835b8bca8e1537e33949ccb0c6b55",
-      },
-      za_tn: {
-        size_kb: 338.3,
-        md5Checksum: "f3702f201ab1b56c014462b33a0b9e0d",
       },
     },
   },
@@ -171,18 +98,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 578.3,
         md5Checksum: "c53c3327bc791a666dd2122d7e9b09b9",
       },
-      za_af: {
-        size_kb: 626,
-        md5Checksum: "226c3ceaa03d9531483ad2aeef04ea8d",
-      },
-      za_st: {
-        size_kb: 648.8,
-        md5Checksum: "cffb2b0b3e141b3b3f44af3642e516a9",
-      },
-      za_tn: {
-        size_kb: 490.2,
-        md5Checksum: "93fbc698201eef2b010899d77286efe3",
-      },
     },
   },
   "plh_audio/relax/relax_16.mp3": {
@@ -192,18 +107,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 613.2,
         md5Checksum: "f6890d3d324b7675e20feb4ac5cc6410",
-      },
-      za_af: {
-        size_kb: 483.1,
-        md5Checksum: "e2c9b173f2299a19300dda3297f0f49d",
-      },
-      za_st: {
-        size_kb: 647.7,
-        md5Checksum: "fa9f97cad1a7ecd52e41a3862a42386d",
-      },
-      za_tn: {
-        size_kb: 428.3,
-        md5Checksum: "53c8f5f83ba4e4f756626dcbf35f54c6",
       },
     },
   },
@@ -215,18 +118,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 563.3,
         md5Checksum: "c6e2994ac5324b110c6006d4236eacf6",
       },
-      za_af: {
-        size_kb: 586.4,
-        md5Checksum: "c3d9a77031fdea831f4d43069abf71c3",
-      },
-      za_st: {
-        size_kb: 825.8,
-        md5Checksum: "f5827ce4ba50660584b8c78b3f1f1f17",
-      },
-      za_tn: {
-        size_kb: 585.8,
-        md5Checksum: "a29c36d1737e88714957a1ba7a56d7df",
-      },
     },
   },
   "plh_audio/relax/relax_18.mp3": {
@@ -236,18 +127,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 1241.3,
         md5Checksum: "d703ab3f87d24d51345c1f4a82197c08",
-      },
-      za_af: {
-        size_kb: 1384.3,
-        md5Checksum: "1d14318decf022374f050d4087e0b4b1",
-      },
-      za_st: {
-        size_kb: 1096.9,
-        md5Checksum: "304e682f2240cd8f2dd525a0367a2e1c",
-      },
-      za_tn: {
-        size_kb: 840,
-        md5Checksum: "7c4834c346ced3d97fbe20fac7a697ea",
       },
     },
   },
@@ -259,18 +138,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 1708.9,
         md5Checksum: "042bb2801502595e7098cce2781ed0c1",
       },
-      za_af: {
-        size_kb: 2019.8,
-        md5Checksum: "6788460a6f2759c8832f4ea4b144d16b",
-      },
-      za_st: {
-        size_kb: 2070,
-        md5Checksum: "108d12711b2f9e1fd57a281c7f7934de",
-      },
-      za_tn: {
-        size_kb: 1796.3,
-        md5Checksum: "e1d123c1eb56892fcd7ed298a13b3879",
-      },
     },
   },
   "plh_audio/relax/relax_2.mp3": {
@@ -280,18 +147,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 829.5,
         md5Checksum: "96ff16bcf5744f87e1a355093750d4a0",
-      },
-      za_af: {
-        size_kb: 688.8,
-        md5Checksum: "0afb1376968ba8140816e7ddc69b9850",
-      },
-      za_st: {
-        size_kb: 710.7,
-        md5Checksum: "d3ca3563a325e1a327f3c96aab1923bc",
-      },
-      za_tn: {
-        size_kb: 742.5,
-        md5Checksum: "f02eddda65275a9c0047faeb4e7948ba",
       },
     },
   },
@@ -303,18 +158,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 1527,
         md5Checksum: "6aab73a8d8fe40e01fcc3223f0899f0e",
       },
-      za_af: {
-        size_kb: 1847.3,
-        md5Checksum: "f56c7a4ce615ca6d13d8cec8f8961315",
-      },
-      za_st: {
-        size_kb: 2477.7,
-        md5Checksum: "981654ab1fe076d0e903ca3287d18d2b",
-      },
-      za_tn: {
-        size_kb: 1816.9,
-        md5Checksum: "dcd84b8b857ea1c3b3f0503d77db1a95",
-      },
     },
   },
   "plh_audio/relax/relax_21.mp3": {
@@ -324,18 +167,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 537,
         md5Checksum: "880420297e583d3efb575a1cd8d6b927",
-      },
-      za_af: {
-        size_kb: 611,
-        md5Checksum: "753bd581f48c1b6af40f5fa13e03922b",
-      },
-      za_st: {
-        size_kb: 878.3,
-        md5Checksum: "d73af6510293a35dddc6efb4e9d4e214",
-      },
-      za_tn: {
-        size_kb: 607.5,
-        md5Checksum: "edb41d0680a5a555eab7137cb470e7a3",
       },
     },
   },
@@ -347,18 +178,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 341.3,
         md5Checksum: "f1d49bcf33ef8fe6f181f09ab3e44d35",
       },
-      za_af: {
-        size_kb: 377.8,
-        md5Checksum: "e4fad5a480de91bbf860007ebf3fa24d",
-      },
-      za_st: {
-        size_kb: 547.5,
-        md5Checksum: "645385ea855acd711ade67bbdd67a8d6",
-      },
-      za_tn: {
-        size_kb: 328.2,
-        md5Checksum: "6f1ab9b6bd86483ddf26b0537e55b200",
-      },
     },
   },
   "plh_audio/relax/relax_23.mp3": {
@@ -368,18 +187,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 397.5,
         md5Checksum: "961bf53b510dfa1df727c5e684e6b3e9",
-      },
-      za_af: {
-        size_kb: 360.6,
-        md5Checksum: "0236b01f2f4b43d1f31bdcdfbf9a697b",
-      },
-      za_st: {
-        size_kb: 459.4,
-        md5Checksum: "62a89f08e6dad8b3906f1aba7bd410b8",
-      },
-      za_tn: {
-        size_kb: 358.2,
-        md5Checksum: "6d51ee3f24248f30384b8b5c3ca0aaea",
       },
     },
   },
@@ -391,18 +198,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 351.4,
         md5Checksum: "974a4c38faeb1390184d22890c9656d9",
       },
-      za_af: {
-        size_kb: 404.3,
-        md5Checksum: "0403dd9016c3147205a1f62a0bccfa2a",
-      },
-      za_st: {
-        size_kb: 521.3,
-        md5Checksum: "6c8cc306f42e53b311554d10e7f2f47f",
-      },
-      za_tn: {
-        size_kb: 371.3,
-        md5Checksum: "3912c232fce1a5e531673ccc32acffc0",
-      },
     },
   },
   "plh_audio/relax/relax_3.mp3": {
@@ -412,18 +207,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 301.9,
         md5Checksum: "973eb0d71cdfa5028f27f7d8865abb56",
-      },
-      za_af: {
-        size_kb: 264.7,
-        md5Checksum: "66efb06717ae2e4fedc5b8cd0a3663f6",
-      },
-      za_st: {
-        size_kb: 425.7,
-        md5Checksum: "95988499b97fa9fc84f2caa41fee57b1",
-      },
-      za_tn: {
-        size_kb: 296.3,
-        md5Checksum: "bc4af987d0a159c48d0df284b412dc92",
       },
     },
   },
@@ -435,18 +218,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 676.9,
         md5Checksum: "6b23dc2a2b3390f0f12ab6f758eb6123",
       },
-      za_af: {
-        size_kb: 862.4,
-        md5Checksum: "3cbc4995eb3cbcee1df0aa870588519c",
-      },
-      za_st: {
-        size_kb: 996.4,
-        md5Checksum: "709a455fe792883a25085e205e04dbc3",
-      },
-      za_tn: {
-        size_kb: 600.8,
-        md5Checksum: "841f5fd8836bc8b24b65c19f4291e175",
-      },
     },
   },
   "plh_audio/relax/relax_5.mp3": {
@@ -456,18 +227,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 358.9,
         md5Checksum: "141b2e52096a5e1d9190781e05b929df",
-      },
-      za_af: {
-        size_kb: 590,
-        md5Checksum: "c7c181194e648ddb9b2c4b7dc28465d3",
-      },
-      za_st: {
-        size_kb: 450.8,
-        md5Checksum: "1878a8b2fbb03cb9803099230a02cd6d",
-      },
-      za_tn: {
-        size_kb: 291.4,
-        md5Checksum: "ad5435c21ec653ff99976a45d1df5e0f",
       },
     },
   },
@@ -479,18 +238,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 439.5,
         md5Checksum: "0a8a22e454c127feddf6931edeb9b568",
       },
-      za_af: {
-        size_kb: 499,
-        md5Checksum: "07ef8abe6d925b00d18e9ccb6a92fe15",
-      },
-      za_st: {
-        size_kb: 606.4,
-        md5Checksum: "77bdf5152bb13e4608228f87a994a2ae",
-      },
-      za_tn: {
-        size_kb: 393.8,
-        md5Checksum: "f14f7e11292d3c00d67023d40c5b19a7",
-      },
     },
   },
   "plh_audio/relax/relax_7.mp3": {
@@ -500,18 +247,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 424.5,
         md5Checksum: "034ebacb13487a1a52936dbce0b500ed",
-      },
-      za_af: {
-        size_kb: 412.1,
-        md5Checksum: "64f40e3f980f0e827c0c37aea29f9051",
-      },
-      za_st: {
-        size_kb: 536.3,
-        md5Checksum: "eaf8ee0a20e047e137564430b0646fc5",
-      },
-      za_tn: {
-        size_kb: 388.2,
-        md5Checksum: "0daf6960bbd80a6b43b5193b77abcb97",
       },
     },
   },
@@ -523,18 +258,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 499.5,
         md5Checksum: "f4099a1de4e09f42a2cb1d802b8fadf5",
       },
-      za_af: {
-        size_kb: 574.9,
-        md5Checksum: "7d6358c593e39b4dfda57c9c47e19d22",
-      },
-      za_st: {
-        size_kb: 708.8,
-        md5Checksum: "c76c825f6c9cc8048cfd2826a966800f",
-      },
-      za_tn: {
-        size_kb: 493.2,
-        md5Checksum: "de634a9ac19d4ba72622b969a2c7ca4c",
-      },
     },
   },
   "plh_audio/relax/relax_9.mp3": {
@@ -544,18 +267,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 1137,
         md5Checksum: "5e32d64ac15fcb6a21279576631facd3",
-      },
-      za_af: {
-        size_kb: 1040.2,
-        md5Checksum: "956e35d8c688220448011c98f03eab8f",
-      },
-      za_st: {
-        size_kb: 1290,
-        md5Checksum: "ef63484981f74f4a776705fe1aed576c",
-      },
-      za_tn: {
-        size_kb: 990.8,
-        md5Checksum: "8a5b0e6e6df556fb596471e748a98a13",
       },
     },
   },
@@ -693,18 +404,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 1245,
         md5Checksum: "7bfa7ab8fd751da76319b879127beec5",
       },
-      za_af: {
-        size_kb: 1158.2,
-        md5Checksum: "49d34276a5a04b73a330d5b972b0dee1",
-      },
-      za_st: {
-        size_kb: 1175.7,
-        md5Checksum: "10a1b7763d64c7c809c0db38baa37205",
-      },
-      za_tn: {
-        size_kb: 1003.9,
-        md5Checksum: "e051706763b9593134cc68a319939bcc",
-      },
     },
   },
   "plh_audio/topic_intros/w_1on1_intro.mp3": {
@@ -714,18 +413,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 343.9,
         md5Checksum: "e4c71e1a9779b795b555a1dfd4d1cfaf",
-      },
-      za_af: {
-        size_kb: 406,
-        md5Checksum: "811cfc764585c5ab79c1340886891419",
-      },
-      za_st: {
-        size_kb: 460.2,
-        md5Checksum: "6e2634ee14900dae30ae2f1669450868",
-      },
-      za_tn: {
-        size_kb: 331.9,
-        md5Checksum: "2eb1661c3f3fc1a878282c4dbf88b820",
       },
     },
   },
@@ -737,18 +424,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 380.7,
         md5Checksum: "fddd25202ea375063f7034ff532bad4e",
       },
-      za_af: {
-        size_kb: 399.8,
-        md5Checksum: "923ceea57639cb2b2e696246ab015a11",
-      },
-      za_st: {
-        size_kb: 466.9,
-        md5Checksum: "9eb739df0b814a4cde2d8172a30d13dc",
-      },
-      za_tn: {
-        size_kb: 432,
-        md5Checksum: "1159eb2c500d833c6cb0616be545d458",
-      },
     },
   },
   "plh_audio/topic_intros/w_consequence_intro.mp3": {
@@ -758,18 +433,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 501.4,
         md5Checksum: "c3d140c0f60861809665bfc0784fd081",
-      },
-      za_af: {
-        size_kb: 615.3,
-        md5Checksum: "095b73ace2faa99ccc1dc253b61b4c58",
-      },
-      za_st: {
-        size_kb: 651.4,
-        md5Checksum: "dad77e92a12f98471f5b5085220bd63b",
-      },
-      za_tn: {
-        size_kb: 620.7,
-        md5Checksum: "ed915fcd8f82d7b1cdb3d20f8cff4952",
       },
     },
   },
@@ -781,18 +444,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 748.9,
         md5Checksum: "9b751a9456997ff55c1e97a2b313f328",
       },
-      za_af: {
-        size_kb: 748.5,
-        md5Checksum: "823d431ece7fcd6882e9c07bdb5267d0",
-      },
-      za_st: {
-        size_kb: 807,
-        md5Checksum: "08e1d61b052e3981eddc970f391d3569",
-      },
-      za_tn: {
-        size_kb: 766.9,
-        md5Checksum: "27b3edaba4bb792f8181baebe18544aa",
-      },
     },
   },
   "plh_audio/topic_intros/w_instruct_intro.mp3": {
@@ -802,18 +453,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 371.3,
         md5Checksum: "8ae1a4ebaa2886edd1a8790d814c76eb",
-      },
-      za_af: {
-        size_kb: 434.5,
-        md5Checksum: "ea9b68aeb6f2fc03548589783f53473a",
-      },
-      za_st: {
-        size_kb: 472.5,
-        md5Checksum: "7d1e2f4bb8b8f775319bb82d4561a972",
-      },
-      za_tn: {
-        size_kb: 443.3,
-        md5Checksum: "63f4abdac9002f7716be0fb941f22d25",
       },
     },
   },
@@ -825,18 +464,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 516.4,
         md5Checksum: "7e86548bd22ab5ce97955f596c6cdd37",
       },
-      za_af: {
-        size_kb: 519,
-        md5Checksum: "275a64674025711675c8a8123952b7cc",
-      },
-      za_st: {
-        size_kb: 643.2,
-        md5Checksum: "5d1a7d71c0cbb527f1648dcfbfefb94c",
-      },
-      za_tn: {
-        size_kb: 571.9,
-        md5Checksum: "0a06cd3165613b3ae00f5414e64f0f57",
-      },
     },
   },
   "plh_audio/topic_intros/w_praise_intro.mp3": {
@@ -846,18 +473,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 341.3,
         md5Checksum: "130555d0bc02cc219005190ccabba218",
-      },
-      za_af: {
-        size_kb: 386,
-        md5Checksum: "871c092067d1ff6c8f46880f8947eb5e",
-      },
-      za_st: {
-        size_kb: 423.8,
-        md5Checksum: "5ae1f0b5e553300cb63a5a9e949acbdd",
-      },
-      za_tn: {
-        size_kb: 313.2,
-        md5Checksum: "85c3ac0e46e8db5432d3fb34a716bec6",
       },
     },
   },
@@ -869,18 +484,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 390.8,
         md5Checksum: "a93189816550e5ef31896105daba8f98",
       },
-      za_af: {
-        size_kb: 441.1,
-        md5Checksum: "6788de1f7c6de9c59b7f1048db2b3455",
-      },
-      za_st: {
-        size_kb: 493.9,
-        md5Checksum: "c0f2db025179b3d886542931ab88b3ac",
-      },
-      za_tn: {
-        size_kb: 511.9,
-        md5Checksum: "aa011ca8d7561151ce0a54ccb64aa159",
-      },
     },
   },
   "plh_audio/topic_intros/w_safe_intro.mp3": {
@@ -890,18 +493,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 665.7,
         md5Checksum: "979e2ac924073029250d80be46f79f7e",
-      },
-      za_af: {
-        size_kb: 812.5,
-        md5Checksum: "61fa78463d22adadfd3d589a6949f49a",
-      },
-      za_st: {
-        size_kb: 806.3,
-        md5Checksum: "29bd2544fc0dd1a56a483e54d4857d01",
-      },
-      za_tn: {
-        size_kb: 793.9,
-        md5Checksum: "8df3db10e43cfcc23164ccb627de2d00",
       },
     },
   },
@@ -913,18 +504,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 555.8,
         md5Checksum: "4b7d74b30f8a0c6f2599ea21daeae3cb",
       },
-      za_af: {
-        size_kb: 620.8,
-        md5Checksum: "f04da451ee1d6509b72d3f777ba0785e",
-      },
-      za_st: {
-        size_kb: 637.5,
-        md5Checksum: "576de9754b768f09c6f2941dfca5e91e",
-      },
-      za_tn: {
-        size_kb: 589.5,
-        md5Checksum: "977f095f8358295dfab2182785456aa3",
-      },
     },
   },
   "plh_audio/topic_intros/w_solve_intro.mp3": {
@@ -934,18 +513,6 @@ export const ASSETS_CONTENTS_LIST = {
       tz_sw: {
         size_kb: 782.7,
         md5Checksum: "ec78f5b1c067c9f4087db4fb05ee5f2e",
-      },
-      za_af: {
-        size_kb: 941.5,
-        md5Checksum: "0d79fdb3c445a883c4a3ce1beec1c9a5",
-      },
-      za_st: {
-        size_kb: 868.9,
-        md5Checksum: "672779e0fc71e00ac9bc98b49ffc0ea6",
-      },
-      za_tn: {
-        size_kb: 874.5,
-        md5Checksum: "d03247d4b9a6cb33910e58ffefa8749a",
       },
     },
   },
@@ -957,18 +524,6 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 609.4,
         md5Checksum: "feec35b3113d6b9e8e04f9bd9d8ee8b4",
       },
-      za_af: {
-        size_kb: 598.6,
-        md5Checksum: "2b0927863333c42ed1d4164c55bd53ca",
-      },
-      za_st: {
-        size_kb: 744.4,
-        md5Checksum: "374ebfa0bc1748f3cc5645ee1d00190c",
-      },
-      za_tn: {
-        size_kb: 628.9,
-        md5Checksum: "949c4032e5b3b288cf291734e67159a8",
-      },
     },
   },
   "plh_images/characters/elder/happy.svg": {
@@ -978,6 +533,12 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/characters/elder/large.svg": {
     size_kb: 3.1,
     md5Checksum: "aeda19589a78302bfd121a9bca1269ac",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 8.6,
+        md5Checksum: "5385148ef8aa32142adc3ad5bae77150",
+      },
+    },
   },
   "plh_images/characters/elder/neutral.svg": {
     size_kb: 3,
@@ -1138,6 +699,12 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/characters/neighbour/neutral.svg": {
     size_kb: 3.1,
     md5Checksum: "2c3360153880d1737d7c13b8728975d2",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 11.4,
+        md5Checksum: "8872a54ec15b8148b36382c161721d4e",
+      },
+    },
   },
   "plh_images/characters/neighbour/sad.svg": {
     size_kb: 3.1,
@@ -1421,13 +988,9 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 0.7,
     md5Checksum: "7b986b40add926369cceb28cec562094",
   },
-  "plh_images/icons/info_phone.svg": {
-    size_kb: 1,
-    md5Checksum: "c27473153ef232f797f0cecd231134a9",
-  },
   "plh_images/icons/info_phone_white.svg": {
-    size_kb: 1,
-    md5Checksum: "5285def8bda5af7280b384c35196d7ca",
+    size_kb: 1.4,
+    md5Checksum: "db231c074da114915aabd6211993a14a",
   },
   "plh_images/icons/info_white.svg": {
     size_kb: 0.7,
@@ -1732,14 +1295,32 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/parent_centre/bereavement/practical.svg": {
     size_kb: 6.8,
     md5Checksum: "825f6d3d64262bb41abd986094828da6",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 27.2,
+        md5Checksum: "5e9397b0a722852fac6ca85586773c09",
+      },
+    },
   },
   "plh_images/parent_centre/bereavement/self.svg": {
     size_kb: 3.9,
     md5Checksum: "16ff8218ee6023f4e390a17219019d96",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 15.4,
+        md5Checksum: "e276ce62651e73296471523156c3bba3",
+      },
+    },
   },
   "plh_images/parent_centre/bereavement/teen.svg": {
     size_kb: 4.5,
     md5Checksum: "dc6214c976df912b76fe3fa1331862f0",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 22,
+        md5Checksum: "bc4cd6fd486efa806e4d90722474fa94",
+      },
+    },
   },
   "plh_images/parent_centre/covid/change_thoughts.svg": {
     size_kb: 3.3,
@@ -1756,14 +1337,32 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/parent_centre/covid/main.svg": {
     size_kb: 6.1,
     md5Checksum: "50366ba83be0d3bbdce07a43a94b4abc",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 23.1,
+        md5Checksum: "5bbca46cfcf2b8ef3b106e6383703235",
+      },
+    },
   },
   "plh_images/parent_centre/covid/talk_to_teen.svg": {
     size_kb: 6,
     md5Checksum: "bc05d895bd500c636a2deacdc1f975b3",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 39.2,
+        md5Checksum: "498c37573338e606712274917b9feba2",
+      },
+    },
   },
   "plh_images/parent_centre/covid/teen_feelings.svg": {
     size_kb: 4.9,
     md5Checksum: "365fb9924dd72a28d130cd13708dee75",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 23.7,
+        md5Checksum: "146fdaf5c2ed41550302694c83e13c4a",
+      },
+    },
   },
   "plh_images/parent_centre/covid/teen_influences.svg": {
     size_kb: 7.3,
@@ -1828,6 +1427,12 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/stickers/faces/angry.svg": {
     size_kb: 1.6,
     md5Checksum: "4b611cabdc397449fde8d6ad00572514",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 1.1,
+        md5Checksum: "6d192431f48bbb8af4b206967053796e",
+      },
+    },
   },
   "plh_images/stickers/faces/confused.svg": {
     size_kb: 2.5,
@@ -1836,14 +1441,20 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/stickers/faces/confused_question_mark.svg": {
     size_kb: 1.9,
     md5Checksum: "c0dcce9c87ac4126703a88949c1ec241",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 1.9,
+        md5Checksum: "2304dec77199f522899f7765b96e114e",
+      },
+    },
   },
   "plh_images/stickers/faces/happier.svg": {
     size_kb: 1.6,
     md5Checksum: "3566fd7a04f57339d7cfcb3892ec106a",
     themeVariations: {
       theme_professional: {
-        size_kb: 0.5,
-        md5Checksum: "0ff00ec4309554a1a0132a20271a8ecd",
+        size_kb: 1.3,
+        md5Checksum: "971f8d822fb3d3d79163d0ed327b052d",
       },
     },
   },
@@ -1852,8 +1463,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "ad04574a244f87eb5e4b4e5098d2032f",
     themeVariations: {
       theme_professional: {
-        size_kb: 0.6,
-        md5Checksum: "58e883ae90549e1e46f462e3be6157eb",
+        size_kb: 1.6,
+        md5Checksum: "895e666c011de147560520819eda519b",
       },
     },
   },
@@ -1862,8 +1473,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "a7b9e40d88b585db367be8a766280b03",
     themeVariations: {
       theme_professional: {
-        size_kb: 0.5,
-        md5Checksum: "2405a8c3be43542e483ef206f0fa694b",
+        size_kb: 0.7,
+        md5Checksum: "944098603096a04cd988ebf9554aba5f",
       },
     },
   },
@@ -1872,8 +1483,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "c5c06b436223337c72b3f9f0f0efdab6",
     themeVariations: {
       theme_professional: {
-        size_kb: 0.4,
-        md5Checksum: "a80a83665a9f57afd7e13c20580a15e7",
+        size_kb: 0.5,
+        md5Checksum: "adc1012f5de15b8a2462eaca6cedcb36",
       },
     },
   },
@@ -1882,8 +1493,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "5b7f24f15fcb959463c2505aa57b67d5",
     themeVariations: {
       theme_professional: {
-        size_kb: 0.5,
-        md5Checksum: "93b584ea16291508621e1d4d55eb3b97",
+        size_kb: 0.7,
+        md5Checksum: "78c6d7693501b2e62af8ca9af4e0f92a",
       },
     },
   },
@@ -1892,8 +1503,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "e7c00a5eab887ebe1d5ae258c03c2fd1",
     themeVariations: {
       theme_professional: {
-        size_kb: 0.5,
-        md5Checksum: "e4ede97fa176d67ee98630cd70eb8405",
+        size_kb: 1.1,
+        md5Checksum: "9399ec18c80f26a1567df0ad709b0db6",
       },
     },
   },
@@ -1902,18 +1513,30 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "96087c1704506ae5591860dd9b6b70e5",
     themeVariations: {
       theme_professional: {
-        size_kb: 0.5,
-        md5Checksum: "21ae58bb86a69ebf61edc706acb96857",
+        size_kb: 1.6,
+        md5Checksum: "14da2e51687b6ac5b5929665fa4a38e3",
       },
     },
   },
   "plh_images/stickers/faces/scared.svg": {
     size_kb: 1.8,
     md5Checksum: "17a1d4f582bcc1bda88eedee1c53a851",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 1.8,
+        md5Checksum: "e42757c3a1b799ff614fa6845e78a59e",
+      },
+    },
   },
   "plh_images/stickers/faces/tired.svg": {
     size_kb: 1.8,
     md5Checksum: "1843c40d0c0b2f2116ca440e93578db3",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 2.4,
+        md5Checksum: "db13dd14dbc30defa2633ae82b8bfc7b",
+      },
+    },
   },
   "plh_images/survey/welcome/busy.svg": {
     size_kb: 22.5,
@@ -2012,6 +1635,12 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/survey/workshop_setup/age_image.svg": {
     size_kb: 12.2,
     md5Checksum: "f1411ce479a9e92b6a8dd891c84ca6da",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 87.9,
+        md5Checksum: "506105c4a957f1717b9a8b70ec8b9bd6",
+      },
+    },
   },
   "plh_images/survey/workshop_setup/babies.svg": {
     size_kb: 5.2,
@@ -2036,6 +1665,12 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/survey/workshop_setup/high_five.svg": {
     size_kb: 6,
     md5Checksum: "39a9246a112f8ea116487ed0731eb44b",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 40.5,
+        md5Checksum: "4a6153ba427aa82b42e5d650b3a94b93",
+      },
+    },
   },
   "plh_images/survey/workshop_setup/teens.svg": {
     size_kb: 7.1,
@@ -2575,6 +2210,16 @@ export const ASSETS_CONTENTS_LIST = {
       },
     },
   },
+  "plh_images/workshops/w_instruct/read_2/slide_1_a.svg": {
+    size_kb: 13.1,
+    md5Checksum: "0fecc8dc1e3f3f3881de2bbd5c234c5b",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 39.7,
+        md5Checksum: "2b5f1b573da0cd9d6ebe9b06b96f116b",
+      },
+    },
+  },
   "plh_images/workshops/w_instruct/read_2/slide_2.svg": {
     size_kb: 13.2,
     md5Checksum: "57831972a8564f3cf949026a70ab8fc9",
@@ -2912,12 +2557,6 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshops/w_rules/read_2/slide_5.svg": {
     size_kb: 6.9,
     md5Checksum: "c427f203f1915bcd0302921fc35d729a",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 423.6,
-        md5Checksum: "566f2545b8e17c0fe80b221e1be1b8d2",
-      },
-    },
   },
   "plh_images/workshops/w_rules/tools.svg": {
     size_kb: 9.1,
@@ -3084,6 +2723,12 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshops/w_self_care/guide_2/reward.svg": {
     size_kb: 7.9,
     md5Checksum: "681910eca8201998e670a0f3caffa9e7",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 27.9,
+        md5Checksum: "51cccd20e23c68953db28b1361ef5a7f",
+      },
+    },
   },
   "plh_images/workshops/w_self_care/tools.svg": {
     size_kb: 7.5,
@@ -3280,8 +2925,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "26644ce6c4e959ef94ec48044b8d14b3",
     themeVariations: {
       theme_professional: {
-        size_kb: 33.5,
-        md5Checksum: "b4cc98066901046ef059cdad20f30a4b",
+        size_kb: 33.4,
+        md5Checksum: "63058b01d65e5d7ea7a62db2f81fc6c1",
       },
     },
   },
@@ -3480,8 +3125,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "08eed96abcb06128573e5ccbf01c3616",
     themeVariations: {
       theme_professional: {
-        size_kb: 62.6,
-        md5Checksum: "499b147bf02ce8088d9e18a65a989109",
+        size_kb: 60.9,
+        md5Checksum: "74aa5202ef046297670ac09f91afc5b0",
       },
     },
   },
@@ -3514,8 +3159,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "d0174c8ca586c73cf5c05c52138854bf",
     themeVariations: {
       theme_professional: {
-        size_kb: 65.4,
-        md5Checksum: "0bc3c68e2ab9190f74eed77d32856f47",
+        size_kb: 63.9,
+        md5Checksum: "a8372110fb41a71e4cdb54ef16f7343c",
       },
     },
   },
@@ -3524,8 +3169,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "657c4a42011d747d0e3c1939edebfd54",
     themeVariations: {
       theme_professional: {
-        size_kb: 58.1,
-        md5Checksum: "c891d836ddf679ac1099ad2173d00ced",
+        size_kb: 56.4,
+        md5Checksum: "8e63744098880f686dd4c1cca7667475",
       },
     },
   },
@@ -3534,8 +3179,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "d518d1d0a2325d11d813ba71c5a128aa",
     themeVariations: {
       theme_professional: {
-        size_kb: 57.6,
-        md5Checksum: "c7ebbd1d55aa2254e7c44461a2e845dd",
+        size_kb: 55.9,
+        md5Checksum: "58cd8718803d98dc74deb88eb4ebce52",
       },
     },
   },
@@ -3544,8 +3189,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "da1e1ee4e68ef744eb917c128ce426ff",
     themeVariations: {
       theme_professional: {
-        size_kb: 51.4,
-        md5Checksum: "30749bcecc6b620ec003ae7efd601ba9",
+        size_kb: 50.8,
+        md5Checksum: "f3a762477e7dafb81f1925fa8a43232c",
       },
     },
   },
@@ -3554,8 +3199,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "c31e79168837723e0becf5210fd673b3",
     themeVariations: {
       theme_professional: {
-        size_kb: 31.9,
-        md5Checksum: "9cc914b4711e11ccd2ad9b4b899252fa",
+        size_kb: 33.5,
+        md5Checksum: "beb4b6142432d3b8679fc0863b1d1804",
       },
     },
   },
@@ -3564,8 +3209,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "d0f425c460bff0adf11be5bed24d483e",
     themeVariations: {
       theme_professional: {
-        size_kb: 27.7,
-        md5Checksum: "94367372937e9d4b13b9a87ff5982bf6",
+        size_kb: 27.8,
+        md5Checksum: "7a412215418ac645681a008c8efcfa36",
       },
     },
   },
@@ -3657,7 +3302,7 @@ export const ASSETS_CONTENTS_LIST = {
     themeVariations: {
       theme_professional: {
         size_kb: 17.2,
-        md5Checksum: "522066b5a23cecbc23c4f2f1181e683a",
+        md5Checksum: "7291bc613660827496ef59ad0f2f3165",
       },
     },
   },
@@ -3694,8 +3339,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "056e44ecd0260d2d4f09be31031d3ab4",
     themeVariations: {
       theme_professional: {
-        size_kb: 22.2,
-        md5Checksum: "6b3751b1167400ef034497eec0fb3a71",
+        size_kb: 22.3,
+        md5Checksum: "d99df483690a5e9a4785525b2e08b369",
       },
     },
   },
@@ -3705,7 +3350,7 @@ export const ASSETS_CONTENTS_LIST = {
     themeVariations: {
       theme_professional: {
         size_kb: 10.1,
-        md5Checksum: "4f85a332834dfa5a10a3b6f69474fc8f",
+        md5Checksum: "f74bb1894585d20e1f62f8f90f05a7ad",
       },
     },
   },
@@ -3719,7 +3364,7 @@ export const ASSETS_CONTENTS_LIST = {
     themeVariations: {
       theme_professional: {
         size_kb: 12.5,
-        md5Checksum: "7b47d7981fda92b1b5f1aed38685b7d8",
+        md5Checksum: "fcb06063ba82edb33d5e290bd102d546",
       },
     },
   },
@@ -3729,7 +3374,7 @@ export const ASSETS_CONTENTS_LIST = {
     themeVariations: {
       theme_professional: {
         size_kb: 12.3,
-        md5Checksum: "912746d09cacd98919d4b4d134d503b8",
+        md5Checksum: "f84e8b05ea5165608a57ead92ce4b661",
       },
     },
   },
@@ -3747,7 +3392,7 @@ export const ASSETS_CONTENTS_LIST = {
     themeVariations: {
       theme_professional: {
         size_kb: 8.4,
-        md5Checksum: "7950fda347f0c3dd71608fd3a4f48028",
+        md5Checksum: "1cacc15a821bfab3a7bf32464b5b746d",
       },
     },
   },
@@ -3757,7 +3402,7 @@ export const ASSETS_CONTENTS_LIST = {
     themeVariations: {
       theme_professional: {
         size_kb: 27.3,
-        md5Checksum: "b330d13dc11bce8e8255f1e079c29a72",
+        md5Checksum: "53f93b67dac06d7c5594979469817a48",
       },
     },
   },
@@ -3767,7 +3412,7 @@ export const ASSETS_CONTENTS_LIST = {
     themeVariations: {
       theme_professional: {
         size_kb: 13.5,
-        md5Checksum: "e0814e02d1098cc763f44e72b64d42d4",
+        md5Checksum: "2ce163413ce7658ede7acc8b9265eebc",
       },
     },
   },
@@ -3863,39 +3508,15 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 1.7,
         md5Checksum: "863b1dc416755fd6e7075e9da48862d4",
       },
-      za_af: {
-        size_kb: 2,
-        md5Checksum: "bc171b6b66335b3ebb3e6e641bde0b78",
-      },
-      za_st: {
-        size_kb: 2,
-        md5Checksum: "0a82badf875cce535d3ed0504dd053fd",
-      },
-      za_tn: {
-        size_kb: 1.9,
-        md5Checksum: "1108e9d18835084b836c046d82b443f3",
-      },
     },
   },
   "quality_assurance/test_audio.mp3": {
     size_kb: 43.4,
     md5Checksum: "5ddddf934d2187d084c75b7e27797fae",
-    translations: {
-      es_sp: {
-        size_kb: 33.6,
-        md5Checksum: "a53e8b35c7985e051a7b9b9742879b03",
-      },
-    },
   },
   "quality_assurance/test_image.png": {
     size_kb: 2,
     md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
-    translations: {
-      es_sp: {
-        size_kb: 1.8,
-        md5Checksum: "f44069fc2c1d641dae929631c17fdbec",
-      },
-    },
   },
   "quality_assurance/test_image_no_translations.png": {
     size_kb: 2.8,

@@ -335,7 +335,9 @@
       "name": "text_1_1_5",
       "value": "The @global.parent_app team legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "text_1_1_5",
       "_dynamicFields": {

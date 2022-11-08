@@ -41,7 +41,6 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
       "_nested_name": "title"
     },
     {
@@ -49,9 +48,10 @@
       "name": "text_1",
       "value": "To launch the app in developer mode, enter your developer code in the box below and press @global.submit_button.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
-      "exclude_from_translation": true,
       "_nested_name": "text_1",
       "_dynamicFields": {
         "value": [

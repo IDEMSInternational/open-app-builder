@@ -31,7 +31,9 @@
       "template": "w_celebrate_survey_activity",
       "title": "Survey",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
