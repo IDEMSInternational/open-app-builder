@@ -31,10 +31,10 @@
   <ng-template #feedbackItem let-feedback="feedback">
     <div style="flex: 1">{{feedback.user_feedback}}</div>
     <div style="font-size: small">{{feedback._created}}</div>
+    <div *ngIf="feedback.additional" style="flex: 1; margin-top: 1em">
+      {{feedback.additional | json}}
+    </div>
     <div style="display: flex">
-      <div *ngIf="feedback.additional" style="flex: 1; margin-top: 1em">
-        {{feedback.additional | json}}
-      </div>
       <ion-button
         fill="clear"
         size="small"
@@ -42,6 +42,7 @@
         (click)="logFeedback(feedback)"
         >Log</ion-button
       >
+      <ion-button fill="clear" size="small" (click)="deleteFeedback(feedback)">Delete</ion-button>
     </div>
   </ng-template>
 </ion-content>

@@ -15,11 +15,7 @@ export class FeedbackDebugPage implements OnInit, OnDestroy {
   private destroyed$ = new Subject<boolean>();
   public feedbackPending: IFeedbackEntryDB[] = [];
   public feedbackSent: IFeedbackEntryDB[] = [];
-  constructor(
-    public feedbackService: FeedbackService,
-    private dbService: DbService,
-    private dbSyncService: DBSyncService
-  ) {}
+  constructor(public feedbackService: FeedbackService, private dbService: DbService) {}
 
   ngOnDestroy() {
     this.destroyed$.next(true);
@@ -41,7 +37,11 @@ export class FeedbackDebugPage implements OnInit, OnDestroy {
     console.log(feedback);
   }
   public async syncFeedback() {
-    await this.dbSyncService.syncTable("feedback");
+    await this.feedbackService.syncFeedback();
+  }
+  public async deleteFeedback(feedback: IFeedbackEntryDB) {
+    await this.feedbackService.deleteFeedback(feedback.id);
+    await this.loadDBFeedback();
   }
 
   private async loadDBFeedback() {
