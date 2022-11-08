@@ -1,6 +1,6 @@
 export const UNTRACKED_ASSETS = [
   "es_sp/quality_assurance/test_image_untracked.png",
-  "theme_professional/plh_images/workshops/w_instruct/read_2/slide_1_a.svg",
+  "theme_professional/plh_images/workshops/w_rules/read_2/side_5.svg",
 ];
 export const ASSETS_CONTENTS_LIST = {
   "android/icon-background.png": {
@@ -978,6 +978,12 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/characters/elder/large.svg": {
     size_kb: 3.1,
     md5Checksum: "aeda19589a78302bfd121a9bca1269ac",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 8.6,
+        md5Checksum: "5385148ef8aa32142adc3ad5bae77150",
+      },
+    },
   },
   "plh_images/characters/elder/neutral.svg": {
     size_kb: 3,
@@ -1138,6 +1144,12 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/characters/neighbour/neutral.svg": {
     size_kb: 3.1,
     md5Checksum: "2c3360153880d1737d7c13b8728975d2",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 11.4,
+        md5Checksum: "8872a54ec15b8148b36382c161721d4e",
+      },
+    },
   },
   "plh_images/characters/neighbour/sad.svg": {
     size_kb: 3.1,
@@ -1421,13 +1433,9 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 0.7,
     md5Checksum: "7b986b40add926369cceb28cec562094",
   },
-  "plh_images/icons/info_phone.svg": {
-    size_kb: 1,
-    md5Checksum: "c27473153ef232f797f0cecd231134a9",
-  },
   "plh_images/icons/info_phone_white.svg": {
-    size_kb: 1,
-    md5Checksum: "5285def8bda5af7280b384c35196d7ca",
+    size_kb: 1.4,
+    md5Checksum: "db231c074da114915aabd6211993a14a",
   },
   "plh_images/icons/info_white.svg": {
     size_kb: 0.7,
@@ -1732,14 +1740,32 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/parent_centre/bereavement/practical.svg": {
     size_kb: 6.8,
     md5Checksum: "825f6d3d64262bb41abd986094828da6",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 27.2,
+        md5Checksum: "5e9397b0a722852fac6ca85586773c09",
+      },
+    },
   },
   "plh_images/parent_centre/bereavement/self.svg": {
     size_kb: 3.9,
     md5Checksum: "16ff8218ee6023f4e390a17219019d96",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 15.4,
+        md5Checksum: "e276ce62651e73296471523156c3bba3",
+      },
+    },
   },
   "plh_images/parent_centre/bereavement/teen.svg": {
     size_kb: 4.5,
     md5Checksum: "dc6214c976df912b76fe3fa1331862f0",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 22,
+        md5Checksum: "bc4cd6fd486efa806e4d90722474fa94",
+      },
+    },
   },
   "plh_images/parent_centre/covid/change_thoughts.svg": {
     size_kb: 3.3,
@@ -1756,14 +1782,32 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/parent_centre/covid/main.svg": {
     size_kb: 6.1,
     md5Checksum: "50366ba83be0d3bbdce07a43a94b4abc",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 23.1,
+        md5Checksum: "5bbca46cfcf2b8ef3b106e6383703235",
+      },
+    },
   },
   "plh_images/parent_centre/covid/talk_to_teen.svg": {
     size_kb: 6,
     md5Checksum: "bc05d895bd500c636a2deacdc1f975b3",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 39.2,
+        md5Checksum: "498c37573338e606712274917b9feba2",
+      },
+    },
   },
   "plh_images/parent_centre/covid/teen_feelings.svg": {
     size_kb: 4.9,
     md5Checksum: "365fb9924dd72a28d130cd13708dee75",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 23.7,
+        md5Checksum: "146fdaf5c2ed41550302694c83e13c4a",
+      },
+    },
   },
   "plh_images/parent_centre/covid/teen_influences.svg": {
     size_kb: 7.3,
@@ -1828,6 +1872,12 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/stickers/faces/angry.svg": {
     size_kb: 1.6,
     md5Checksum: "4b611cabdc397449fde8d6ad00572514",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 1.1,
+        md5Checksum: "6d192431f48bbb8af4b206967053796e",
+      },
+    },
   },
   "plh_images/stickers/faces/confused.svg": {
     size_kb: 2.5,
@@ -1836,14 +1886,20 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/stickers/faces/confused_question_mark.svg": {
     size_kb: 1.9,
     md5Checksum: "c0dcce9c87ac4126703a88949c1ec241",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 1.9,
+        md5Checksum: "2304dec77199f522899f7765b96e114e",
+      },
+    },
   },
   "plh_images/stickers/faces/happier.svg": {
     size_kb: 1.6,
     md5Checksum: "3566fd7a04f57339d7cfcb3892ec106a",
     themeVariations: {
       theme_professional: {
-        size_kb: 0.5,
-        md5Checksum: "0ff00ec4309554a1a0132a20271a8ecd",
+        size_kb: 1.3,
+        md5Checksum: "971f8d822fb3d3d79163d0ed327b052d",
       },
     },
   },
@@ -1852,8 +1908,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "ad04574a244f87eb5e4b4e5098d2032f",
     themeVariations: {
       theme_professional: {
-        size_kb: 0.6,
-        md5Checksum: "58e883ae90549e1e46f462e3be6157eb",
+        size_kb: 1.6,
+        md5Checksum: "895e666c011de147560520819eda519b",
       },
     },
   },
@@ -1862,8 +1918,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "a7b9e40d88b585db367be8a766280b03",
     themeVariations: {
       theme_professional: {
-        size_kb: 0.5,
-        md5Checksum: "2405a8c3be43542e483ef206f0fa694b",
+        size_kb: 0.7,
+        md5Checksum: "944098603096a04cd988ebf9554aba5f",
       },
     },
   },
@@ -1872,8 +1928,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "c5c06b436223337c72b3f9f0f0efdab6",
     themeVariations: {
       theme_professional: {
-        size_kb: 0.4,
-        md5Checksum: "a80a83665a9f57afd7e13c20580a15e7",
+        size_kb: 0.5,
+        md5Checksum: "adc1012f5de15b8a2462eaca6cedcb36",
       },
     },
   },
@@ -1882,8 +1938,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "5b7f24f15fcb959463c2505aa57b67d5",
     themeVariations: {
       theme_professional: {
-        size_kb: 0.5,
-        md5Checksum: "93b584ea16291508621e1d4d55eb3b97",
+        size_kb: 0.7,
+        md5Checksum: "78c6d7693501b2e62af8ca9af4e0f92a",
       },
     },
   },
@@ -1892,8 +1948,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "e7c00a5eab887ebe1d5ae258c03c2fd1",
     themeVariations: {
       theme_professional: {
-        size_kb: 0.5,
-        md5Checksum: "e4ede97fa176d67ee98630cd70eb8405",
+        size_kb: 1.1,
+        md5Checksum: "9399ec18c80f26a1567df0ad709b0db6",
       },
     },
   },
@@ -1902,18 +1958,30 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "96087c1704506ae5591860dd9b6b70e5",
     themeVariations: {
       theme_professional: {
-        size_kb: 0.5,
-        md5Checksum: "21ae58bb86a69ebf61edc706acb96857",
+        size_kb: 1.6,
+        md5Checksum: "14da2e51687b6ac5b5929665fa4a38e3",
       },
     },
   },
   "plh_images/stickers/faces/scared.svg": {
     size_kb: 1.8,
     md5Checksum: "17a1d4f582bcc1bda88eedee1c53a851",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 1.8,
+        md5Checksum: "e42757c3a1b799ff614fa6845e78a59e",
+      },
+    },
   },
   "plh_images/stickers/faces/tired.svg": {
     size_kb: 1.8,
     md5Checksum: "1843c40d0c0b2f2116ca440e93578db3",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 2.4,
+        md5Checksum: "db13dd14dbc30defa2633ae82b8bfc7b",
+      },
+    },
   },
   "plh_images/survey/welcome/busy.svg": {
     size_kb: 22.5,
@@ -2012,6 +2080,12 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/survey/workshop_setup/age_image.svg": {
     size_kb: 12.2,
     md5Checksum: "f1411ce479a9e92b6a8dd891c84ca6da",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 87.9,
+        md5Checksum: "506105c4a957f1717b9a8b70ec8b9bd6",
+      },
+    },
   },
   "plh_images/survey/workshop_setup/babies.svg": {
     size_kb: 5.2,
@@ -2036,6 +2110,12 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/survey/workshop_setup/high_five.svg": {
     size_kb: 6,
     md5Checksum: "39a9246a112f8ea116487ed0731eb44b",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 40.5,
+        md5Checksum: "4a6153ba427aa82b42e5d650b3a94b93",
+      },
+    },
   },
   "plh_images/survey/workshop_setup/teens.svg": {
     size_kb: 7.1,
@@ -2575,6 +2655,16 @@ export const ASSETS_CONTENTS_LIST = {
       },
     },
   },
+  "plh_images/workshops/w_instruct/read_2/slide_1_a.svg": {
+    size_kb: 13.1,
+    md5Checksum: "0fecc8dc1e3f3f3881de2bbd5c234c5b",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 39.7,
+        md5Checksum: "2b5f1b573da0cd9d6ebe9b06b96f116b",
+      },
+    },
+  },
   "plh_images/workshops/w_instruct/read_2/slide_2.svg": {
     size_kb: 13.2,
     md5Checksum: "57831972a8564f3cf949026a70ab8fc9",
@@ -2912,12 +3002,6 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshops/w_rules/read_2/slide_5.svg": {
     size_kb: 6.9,
     md5Checksum: "c427f203f1915bcd0302921fc35d729a",
-    themeVariations: {
-      theme_professional: {
-        size_kb: 423.6,
-        md5Checksum: "566f2545b8e17c0fe80b221e1be1b8d2",
-      },
-    },
   },
   "plh_images/workshops/w_rules/tools.svg": {
     size_kb: 9.1,
@@ -3084,6 +3168,12 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshops/w_self_care/guide_2/reward.svg": {
     size_kb: 7.9,
     md5Checksum: "681910eca8201998e670a0f3caffa9e7",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 27.9,
+        md5Checksum: "51cccd20e23c68953db28b1361ef5a7f",
+      },
+    },
   },
   "plh_images/workshops/w_self_care/tools.svg": {
     size_kb: 7.5,
@@ -3280,8 +3370,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "26644ce6c4e959ef94ec48044b8d14b3",
     themeVariations: {
       theme_professional: {
-        size_kb: 33.5,
-        md5Checksum: "b4cc98066901046ef059cdad20f30a4b",
+        size_kb: 33.4,
+        md5Checksum: "63058b01d65e5d7ea7a62db2f81fc6c1",
       },
     },
   },
@@ -3480,8 +3570,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "08eed96abcb06128573e5ccbf01c3616",
     themeVariations: {
       theme_professional: {
-        size_kb: 62.6,
-        md5Checksum: "499b147bf02ce8088d9e18a65a989109",
+        size_kb: 60.9,
+        md5Checksum: "74aa5202ef046297670ac09f91afc5b0",
       },
     },
   },
@@ -3514,8 +3604,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "d0174c8ca586c73cf5c05c52138854bf",
     themeVariations: {
       theme_professional: {
-        size_kb: 65.4,
-        md5Checksum: "0bc3c68e2ab9190f74eed77d32856f47",
+        size_kb: 63.9,
+        md5Checksum: "a8372110fb41a71e4cdb54ef16f7343c",
       },
     },
   },
@@ -3524,8 +3614,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "657c4a42011d747d0e3c1939edebfd54",
     themeVariations: {
       theme_professional: {
-        size_kb: 58.1,
-        md5Checksum: "c891d836ddf679ac1099ad2173d00ced",
+        size_kb: 56.4,
+        md5Checksum: "8e63744098880f686dd4c1cca7667475",
       },
     },
   },
@@ -3534,8 +3624,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "d518d1d0a2325d11d813ba71c5a128aa",
     themeVariations: {
       theme_professional: {
-        size_kb: 57.6,
-        md5Checksum: "c7ebbd1d55aa2254e7c44461a2e845dd",
+        size_kb: 55.9,
+        md5Checksum: "58cd8718803d98dc74deb88eb4ebce52",
       },
     },
   },
@@ -3544,8 +3634,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "da1e1ee4e68ef744eb917c128ce426ff",
     themeVariations: {
       theme_professional: {
-        size_kb: 51.4,
-        md5Checksum: "30749bcecc6b620ec003ae7efd601ba9",
+        size_kb: 50.8,
+        md5Checksum: "f3a762477e7dafb81f1925fa8a43232c",
       },
     },
   },
@@ -3554,8 +3644,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "c31e79168837723e0becf5210fd673b3",
     themeVariations: {
       theme_professional: {
-        size_kb: 31.9,
-        md5Checksum: "9cc914b4711e11ccd2ad9b4b899252fa",
+        size_kb: 33.5,
+        md5Checksum: "beb4b6142432d3b8679fc0863b1d1804",
       },
     },
   },
@@ -3564,8 +3654,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "d0f425c460bff0adf11be5bed24d483e",
     themeVariations: {
       theme_professional: {
-        size_kb: 27.7,
-        md5Checksum: "94367372937e9d4b13b9a87ff5982bf6",
+        size_kb: 27.8,
+        md5Checksum: "7a412215418ac645681a008c8efcfa36",
       },
     },
   },
@@ -3657,7 +3747,7 @@ export const ASSETS_CONTENTS_LIST = {
     themeVariations: {
       theme_professional: {
         size_kb: 17.2,
-        md5Checksum: "522066b5a23cecbc23c4f2f1181e683a",
+        md5Checksum: "7291bc613660827496ef59ad0f2f3165",
       },
     },
   },
@@ -3694,8 +3784,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "056e44ecd0260d2d4f09be31031d3ab4",
     themeVariations: {
       theme_professional: {
-        size_kb: 22.2,
-        md5Checksum: "6b3751b1167400ef034497eec0fb3a71",
+        size_kb: 22.3,
+        md5Checksum: "d99df483690a5e9a4785525b2e08b369",
       },
     },
   },
@@ -3705,7 +3795,7 @@ export const ASSETS_CONTENTS_LIST = {
     themeVariations: {
       theme_professional: {
         size_kb: 10.1,
-        md5Checksum: "4f85a332834dfa5a10a3b6f69474fc8f",
+        md5Checksum: "f74bb1894585d20e1f62f8f90f05a7ad",
       },
     },
   },
@@ -3719,7 +3809,7 @@ export const ASSETS_CONTENTS_LIST = {
     themeVariations: {
       theme_professional: {
         size_kb: 12.5,
-        md5Checksum: "7b47d7981fda92b1b5f1aed38685b7d8",
+        md5Checksum: "fcb06063ba82edb33d5e290bd102d546",
       },
     },
   },
@@ -3729,7 +3819,7 @@ export const ASSETS_CONTENTS_LIST = {
     themeVariations: {
       theme_professional: {
         size_kb: 12.3,
-        md5Checksum: "912746d09cacd98919d4b4d134d503b8",
+        md5Checksum: "f84e8b05ea5165608a57ead92ce4b661",
       },
     },
   },
@@ -3747,7 +3837,7 @@ export const ASSETS_CONTENTS_LIST = {
     themeVariations: {
       theme_professional: {
         size_kb: 8.4,
-        md5Checksum: "7950fda347f0c3dd71608fd3a4f48028",
+        md5Checksum: "1cacc15a821bfab3a7bf32464b5b746d",
       },
     },
   },
@@ -3757,7 +3847,7 @@ export const ASSETS_CONTENTS_LIST = {
     themeVariations: {
       theme_professional: {
         size_kb: 27.3,
-        md5Checksum: "b330d13dc11bce8e8255f1e079c29a72",
+        md5Checksum: "53f93b67dac06d7c5594979469817a48",
       },
     },
   },
@@ -3767,7 +3857,7 @@ export const ASSETS_CONTENTS_LIST = {
     themeVariations: {
       theme_professional: {
         size_kb: 13.5,
-        md5Checksum: "e0814e02d1098cc763f44e72b64d42d4",
+        md5Checksum: "2ce163413ce7658ede7acc8b9265eebc",
       },
     },
   },

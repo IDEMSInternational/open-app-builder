@@ -2170,6 +2170,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/feature_sheets/feature_animated_slides.xlsx",
     },
+    feature_task_card_params: {
+      flow_type: "template",
+      flow_name: "feature_task_card_params",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_task_card.xlsx",
+    },
     bug_dashed_box: {
       flow_type: "template",
       flow_name: "bug_dashed_box",
