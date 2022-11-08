@@ -553,7 +553,7 @@
   "We will need to cover other parenting issues before we can start working on @local.workshop_data.title.\n\nYou can get essential tools on @local.workshop_data.title via the @global.parent_centre.": "Tutahitaji kushughulikia masuala mengine ya malezi kabla ya kuanza kufanya kazi kwenye @local.workshop_data.title.\n\nUnaweza kupata nyenzo muhimu kwenye @local.workshop_data.title kupitia @global.parent_centre.",
   "My name": "Jina langu",
   "@global.weekly_workshop day": "Siku ya @global.weekly_workshop",
-  "I do the @global.workshops...": "Ninafanya @global.workshops...",
+  "I do the @global.workshops:": "Ninafanya @global.workshops:",
   "My group's name": "Jina la kikundi changu",
   "My group is now doing the @global.workshop:": "Sasa kikundi changu kinafanya @global.workshop:",
   "I am now doing the @global.workshop:": "Sasa ninafanya @global.workshop",

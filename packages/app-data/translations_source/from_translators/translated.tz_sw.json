@@ -3324,8 +3324,8 @@
     "note": "The string @global.weekly_workshop should not be translated."
   },
   {
-    "SourceText": "I do the @global.workshops...",
-    "text": "Ninafanya @global.workshops...",
+    "SourceText": "I do the @global.workshops:",
+    "text": "Ninafanya @global.workshops:",
     "type": "template",
     "note": "The string @global.workshops.. should not be translated."
   },
