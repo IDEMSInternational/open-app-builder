@@ -59,7 +59,9 @@
           "name": "text_1",
           "value": "To get access to changing the app skin, enter your developer code in the box below and press @global.submit_button.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "_nested_name": "not_first_access.text_1",
           "_dynamicFields": {
