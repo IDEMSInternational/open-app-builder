@@ -123,16 +123,21 @@ export class FeedbackService {
     }
   }
 
-  /** Save feedback to local db. Will automatically be synced to server DB */
+  /** Save feedback to local db. Will sync on dmeand */
   public async saveFeedback(entry: IFeedbackEntry) {
     const dbEntry: IFeedbackEntryDB = { ...this.dbService.generateDBMeta(), ...entry };
     await this.dbService.table("feedback").add(dbEntry);
+  }
+  public async syncFeedback() {
     const syncTableResponse = await this.dbSyncService.syncTable("feedback");
     if (syncTableResponse.error) {
       await this.presentToast(this.appStrings.feedback_unsent_text, { duration: 5000 });
     } else {
       await this.presentToast(this.appStrings.feedback_sent_text);
     }
+  }
+  public async deleteFeedback(id: number) {
+    await this.dbService.table("feedback").delete(id);
   }
 
   /** Set the width of the main content */
