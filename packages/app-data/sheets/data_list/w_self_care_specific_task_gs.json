@@ -84,7 +84,9 @@
       "template": "setup_and_survey_stepper",
       "title": "Survey",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
