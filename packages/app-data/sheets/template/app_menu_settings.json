@@ -389,23 +389,7 @@
           "_cleaned": "click | go_to: skin_select"
         }
       ],
-      "condition": "!@fields.user_mode",
-      "_nested_name": "button_10",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "!@fields.user_mode",
-            "matchedExpression": "!@fields.user_mode",
-            "type": "fields",
-            "fieldName": "user_mode"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "!@fields.user_mode": [
-          "condition"
-        ]
-      }
+      "_nested_name": "button_10"
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"

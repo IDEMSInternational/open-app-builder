@@ -9,7 +9,8 @@
       "value": "@fields._app_skin != \"modular\"",
       "_translations": {
         "value": {}
-      }
+      },
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "global/data/in_week_message_globals.xlsx"
