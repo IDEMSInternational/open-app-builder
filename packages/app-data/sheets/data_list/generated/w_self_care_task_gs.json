@@ -11,7 +11,9 @@
       "has_single_task": true,
       "title": "How are you?",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -164,23 +166,25 @@
       "completed": "@fields.task_gp_w_self_care_reward_completed"
     },
     {
-      "id": "survey_activity",
+      "id": "survey",
       "individual": true,
       "together": false,
       "priority": 71,
       "has_single_task": true,
       "title": "Survey",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
           "eng": "Survey"
         }
       },
-      "template": "w_self_care_survey_activity",
-      "completed_field": "task_gp_w_self_care_survey_activity_completed",
-      "completed": "@fields.task_gp_w_self_care_survey_activity_completed"
+      "template": "setup_and_survey_stepper",
+      "completed_field": "task_gp_w_self_care_survey_completed",
+      "completed": "@fields.task_gp_w_self_care_survey_completed"
     }
   ]
 }

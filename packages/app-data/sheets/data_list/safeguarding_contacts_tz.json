@@ -251,7 +251,9 @@
         "description": {
           "tz_sw": true
         },
-        "contact_description_1": {}
+        "contact_description_1": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

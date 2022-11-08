@@ -168,6 +168,7 @@
           "_cleaned": "click | start_tour:home_screen_tour_menu"
         }
       ],
+      "condition": "@fields._app_skin == \"default\"",
       "_nested_name": "button_5",
       "_dynamicFields": {
         "value": [
@@ -177,11 +178,22 @@
             "type": "global",
             "fieldName": "parent_app"
           }
+        ],
+        "condition": [
+          {
+            "fullExpression": "@fields._app_skin == \"default\"",
+            "matchedExpression": "@fields._app_skin",
+            "type": "fields",
+            "fieldName": "_app_skin"
+          }
         ]
       },
       "_dynamicDependencies": {
         "@global.parent_app": [
           "value"
+        ],
+        "@fields._app_skin": [
+          "condition"
         ]
       }
     },
