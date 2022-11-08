@@ -12,7 +12,9 @@
       "template": "w_1on1_question",
       "title": "Question",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

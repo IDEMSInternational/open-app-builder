@@ -105,7 +105,9 @@
       "template": "w_consequence_try",
       "title": "Try it out!",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

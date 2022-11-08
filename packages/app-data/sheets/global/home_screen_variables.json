@@ -59,7 +59,8 @@
       "value": "@global.weekly_workshop @global.options",
       "_translations": {
         "value": {}
-      }
+      },
+      "exclude_from_translation": true
     },
     {
       "type": "declare_global_constant",
@@ -135,6 +136,16 @@
       "type": "declare_global_constant",
       "name": "in_week_messages",
       "value": "In-Week Messages",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "things_to_do",
+      "value": "Things to do",
       "_translations": {
         "value": {
           "tz_sw": true

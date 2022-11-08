@@ -68,7 +68,9 @@
       "template": "w_rules_try",
       "title": "Try it out!",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
