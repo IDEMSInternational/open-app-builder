@@ -100,16 +100,19 @@ function stubDeploymentConfig(
   stub: {
     filter_language_codes?: string[];
     assets_filter_function?: IAssetsFilterFunction;
+    app_themes_available?: string[];
   } = {}
 ) {
   const filter_language_codes = stub.filter_language_codes ?? [];
   const assets_filter_function = stub.assets_filter_function
     ? stub.assets_filter_function
     : () => true;
+  const app_themes_available = stub.app_themes_available ?? [];
 
   const stubDeployment: Partial<IDeploymentConfigJson> = {
     app_data: { assets_filter_function },
     translations: { filter_language_codes },
+    app_config: { APP_THEMES: { available: app_themes_available } },
   };
   spyOn(spyDeployment, "getActiveDeployment").and.returnValue(
     stubDeployment as IDeploymentConfigJson
