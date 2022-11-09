@@ -16,6 +16,7 @@
     "build": "yarn precompile && yarn workflow populate_src_assets && ng build --prod",
     "data:serve": "yarn workspace app-data serve",
     "data-models:serve": "yarn workspace data-models serve",
+    "docs:component:dev": "compodoc --serve --watch",
     "scripts": "yarn workspace scripts start",
     "workflow": "yarn scripts workflow run",
     "server": "yarn workspace server",
