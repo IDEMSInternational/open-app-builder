@@ -9,7 +9,9 @@
       "number": 1,
       "title": "Chapter 1 — I Can Hear You!",
       "_translations": {
-        "title": {}
+        "title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -22,7 +24,9 @@
       "number": 2,
       "title": "Chapter 2 — I Can Count to 5!",
       "_translations": {
-        "title": {}
+        "title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -35,7 +39,9 @@
       "number": 3,
       "title": "Chapter 3 — I Can Count to 10!",
       "_translations": {
-        "title": {}
+        "title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -48,7 +54,9 @@
       "number": 4,
       "title": "Chapter 4 — I Can Count to 20!",
       "_translations": {
-        "title": {}
+        "title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -61,7 +69,9 @@
       "number": 5,
       "title": "Chapter 5 — I Can Count to 100!",
       "_translations": {
-        "title": {}
+        "title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {

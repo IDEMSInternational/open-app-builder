@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "Use four tokens each of four different types. For example, use different colored gummy bears. We have used orange triangles, blue squares, red circles, and purple diamonds. To create one of these puzzles, start with the answer – this will be a pattern of tokens with one of each kind in each row and column, and one of each kind in each 2 by 2 corner box of the grid.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -39,7 +41,9 @@
           "name": "text_bottom_1",
           "value": "Once you have the “answer,” pull off some of the tokens and place them in a pile to the side. Finally, give the puzzle to your child to figure out how to put back the tokens that were pulled off.\n\nAlthough you can remove any set of tokens you feel will make a good puzzle, there are some simple strategies for creating puzzles: remove one token from each row; remove all of one kind of token and one each of the other tokens; or remove one entire row and column.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"

@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "The DiffTriangles puzzles have triangles and squares that share sides. A triangle always has exactly two squares on its sides, and the remaining side has either a triangle or is empty. A triangle’s number is the difference of the two adjoining squares. The challenge is to supply the missing numbers.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -39,7 +41,9 @@
           "name": "text_bottom_1",
           "value": "SumTriangles puzzles use addition in place of subtraction. The value of a triangle is the sum of its two or three square neighbors.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"
@@ -66,7 +70,9 @@
           "name": "text_bottom_2",
           "value": "Making puzzles without loops is easy. Draw an alternating sequence of squares and triangles, and then put in numbers starting at one end working your way to the far end. When you are done, remove some of the numbers. Look at the Bonus Material for ideas on how to make these puzzles with loops.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_2"

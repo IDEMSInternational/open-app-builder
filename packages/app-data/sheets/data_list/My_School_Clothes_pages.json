@@ -10,10 +10,18 @@
       "illustration": "EFMStorybooks/EFM-SB-MSC-1.jpg",
       "story_text": "My sister's dress is too big for me!",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -39,10 +47,18 @@
       "illustration": "EFMStorybooks/EFM-SB-MSC-2.jpg",
       "story_text": "My brother's jersey is also too big for me.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -68,10 +84,18 @@
       "illustration": "EFMStorybooks/EFM-SB-MSC-3.jpg",
       "story_text": "My bag is big.\n\nBut not too big!",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -97,10 +121,18 @@
       "illustration": "EFMStorybooks/EFM-SB-MSC-4.jpg",
       "story_text": "This old belt is too small for me.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -126,10 +158,18 @@
       "illustration": "EFMStorybooks/EFM-SB-MSC-5.jpg",
       "story_text": "This is my doll's hat.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -155,10 +195,18 @@
       "illustration": "EFMStorybooks/EFM-SB-MSC-6.jpg",
       "story_text": "My socks are the right size.\n\nBut the wrong color!",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -184,10 +232,18 @@
       "illustration": "EFMStorybooks/EFM-SB-MSC-7.jpg",
       "story_text": "These are my new shoes.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -213,10 +269,18 @@
       "illustration": "EFMStorybooks/EFM-SB-MSC-8.jpg",
       "story_text": "They fit me very well.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {

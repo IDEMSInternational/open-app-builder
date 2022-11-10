@@ -10,10 +10,18 @@
       "illustration": "EFMStorybooks/EFM-SB-FB-1.jpg",
       "story_text": "Chat was born blind.\n\nHer eyes had never seen her parents, or her brother and sisters. She knew their faces by touch.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -39,10 +47,18 @@
       "illustration": "EFMStorybooks/EFM-SB-FB-2.jpg",
       "story_text": "One day, Chat was strolling in the garden.\n\nShe liked the sweet scent of flowers.\n\nShe loved to touch their soft petals.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -68,10 +84,18 @@
       "illustration": "EFMStorybooks/EFM-SB-FB-3.jpg",
       "story_text": "Chat wished she could see flowers, just once.\n\n\"They are lovely,\" she said to herself.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -97,10 +121,18 @@
       "illustration": "EFMStorybooks/EFM-SB-FB-4.jpg",
       "story_text": "Every day, Chat walked in the garden. She knew her way around.\n\nToday, she raised her head to the skies.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -126,10 +158,18 @@
       "illustration": "EFMStorybooks/EFM-SB-FB-5.jpg",
       "story_text": "Suddenly, she heard thunder and lightning.\n\n\"I need to hurry back to the house,\" Chat thought.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -155,10 +195,18 @@
       "illustration": "EFMStorybooks/EFM-SB-FB-6.jpg",
       "story_text": "Rain began to fall.\n\nChat slipped, lost her balance and fell.\n\nShe hit her head on a stone.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -184,10 +232,18 @@
       "illustration": "EFMStorybooks/EFM-SB-FB-7.jpg",
       "story_text": "When Chat woke up, there were people around her.\n\n\"What happened?\" she asked.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -213,10 +269,18 @@
       "illustration": "EFMStorybooks/EFM-SB-FB-8.jpg",
       "story_text": "You fell and bumped your head, her father said.\n\n\"We are so thankful that you are fine,\" said her mother.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -242,10 +306,18 @@
       "illustration": "EFMStorybooks/EFM-SB-FB-9.jpg",
       "story_text": "Daddy, mummy? asked Chat. She also called the names of her brothers and sisters. \"Please, get me a flower.\" Everyone was surprised.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -271,10 +343,18 @@
       "illustration": "EFMStorybooks/EFM-SB-FB-10.jpg",
       "story_text": "Her sister returned with a flower.\n\nChat held it gently. \"It is so lovely,\" she said.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -300,10 +380,18 @@
       "illustration": "EFMStorybooks/EFM-SB-FB-11.jpg",
       "story_text": "Her family looked at one another.\n\n\"Chat, can you see the flower?\" her mother asked.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -329,10 +417,18 @@
       "illustration": "EFMStorybooks/EFM-SB-FB-12.jpg",
       "story_text": "Chat played with the flower in her hand.\n\n\"You are all so beautiful, just like this flower,\" she smiled.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {

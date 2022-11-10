@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "These puzzles show how compensation creates easier problems. The challenge is to find a path that connects all the islands with the same answer. Two islands can only connect if their problem’s numbers differ by 1. Only some of the islands will be on the path.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -39,7 +41,9 @@
           "name": "text_bottom_1",
           "value": "Make these puzzles by starting with about ten empty circles with some connections. Identify a path from one edge of the islands to the other. Along that path, put in problems whose numbers differ from each other by one. In the nearby islands, put problems with small changes that have different answers.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"

@@ -10,10 +10,18 @@
       "illustration": "EFMStorybooks/EFM-SB-ILF-1.jpg",
       "story_text": "I love forests!",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -39,10 +47,18 @@
       "illustration": "EFMStorybooks/EFM-SB-ILF-2.jpg",
       "story_text": "Last week I went to Kibale forest.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -68,10 +84,18 @@
       "illustration": "EFMStorybooks/EFM-SB-ILF-3.jpg",
       "story_text": "I saw many trees. I saw Fig, Muvule, Palm, and Ebony trees.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -97,10 +121,18 @@
       "illustration": "EFMStorybooks/EFM-SB-ILF-4.jpg",
       "story_text": "I saw chimpanzees, baboons, and monkeys.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -126,10 +158,18 @@
       "illustration": "EFMStorybooks/EFM-SB-ILF-5.jpg",
       "story_text": "I saw different birds. I saw crested cranes, eagles, and owls.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -155,10 +195,18 @@
       "illustration": "EFMStorybooks/EFM-SB-ILF-6.jpg",
       "story_text": "I laughed when I saw a big elephant with a little tail.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -184,10 +232,18 @@
       "illustration": "EFMStorybooks/EFM-SB-ILF-7.jpg",
       "story_text": "I saw so many different animals, birds, and plants.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -212,10 +268,18 @@
       "page_no": 8,
       "story_text": "Kibale forest is a good place to visit. I love forests! Do you?",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {

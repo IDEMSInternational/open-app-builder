@@ -10,10 +10,18 @@
       "illustration": "EFMStorybooks/EFM-SB-CAP-1.jpg",
       "story_text": "Long time ago, Cassava and Palm lived in a village called Koowa. They were very good friends. They visited each other every day. They were farmers. They worked very hard on their farms.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -39,10 +47,18 @@
       "illustration": "EFMStorybooks/EFM-SB-CAP-2.jpg",
       "story_text": "In a certain year, there was no rain. The crops did not grow well. All the plants dried up. People did not have any food to eat.\n\nCassava and Palm decided to travel to another village to look for work.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -68,10 +84,18 @@
       "illustration": "EFMStorybooks/EFM-SB-CAP-3.jpg",
       "story_text": "On their way, they met a woman. \"Good afternoon,\" they greeted her.\n\nShe responded, \"Where are you going?\" \"We are going to the next village to look for work,\" said Palm.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -97,10 +121,18 @@
       "illustration": "EFMStorybooks/EFM-SB-CAP-4.jpg",
       "story_text": "What work can you do? the woman asked. The friends responded, \"We can provide food for your family and animals.\"\n\nThe woman asked, \"What do you need to provide the food?\" \"Give us land, water and good care,\" they replied.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -126,10 +158,18 @@
       "illustration": "EFMStorybooks/EFM-SB-CAP-5.jpg",
       "story_text": "The woman took them home with her.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -155,10 +195,18 @@
       "illustration": "EFMStorybooks/EFM-SB-CAP-6.jpg",
       "story_text": "One afternoon, Palm tree and Cassava had an argument. Cassava said he was more important than Palm.\n\nPalm said he was more important than Cassava.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -184,10 +232,18 @@
       "illustration": "EFMStorybooks/EFM-SB-CAP-7.jpg",
       "story_text": "The woman heard them from her room. She came out and asked \"Why are you fighting?\"",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -213,10 +269,18 @@
       "illustration": "EFMStorybooks/EFM-SB-CAP-8.jpg",
       "story_text": "Cassava spoke first. \"I am more important than Palm tree. I provide tubers for your fufu, gari, boiled cassava and cassava dough.\"",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -242,10 +306,18 @@
       "illustration": "EFMStorybooks/EFM-SB-CAP-9.jpg",
       "story_text": "My stems are used for planting. My leaves and peels feed your animals. What does Palm tree do? asked Cassava.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -271,10 +343,18 @@
       "illustration": "EFMStorybooks/EFM-SB-CAP-10.jpg",
       "story_text": "Palm tree laughed, shook his head and said, \"Woman, do you remember the palm soup you enjoy so much? I provide that.\"",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -300,10 +380,18 @@
       "illustration": "EFMStorybooks/EFM-SB-CAP-11.jpg",
       "story_text": "I provide the palm oil for preparing the kpokpoi and the palm kernel oil for frying fish and meat. How would you prepare stews and gravies without oil?",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -329,10 +417,18 @@
       "illustration": "EFMStorybooks/EFM-SB-CAP-12.jpg",
       "story_text": "In addition, my friends provide shade for your huts. You cool your heart with my sweet, rich, foamy palm wine after your hard day's work.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -358,10 +454,18 @@
       "illustration": "EFMStorybooks/EFM-SB-CAP-13.jpg",
       "story_text": "Above all, the brooms that are used to sweep the rooms and compounds come from me, concluded Palm.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -387,10 +491,18 @@
       "illustration": "EFMStorybooks/EFM-SB-CAP-14.jpg",
       "story_text": "Hmmm! sighed the woman. \"All right friends, I have heard you. I will settle this problem.\"",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -416,10 +528,18 @@
       "illustration": "EFMStorybooks/EFM-SB-CAP-15.jpg",
       "story_text": "Both of you are very important to me. The two of you together make a delicious meal, fufu and palm nut soup! said the woman.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -445,10 +565,18 @@
       "illustration": "EFMStorybooks/EFM-SB-CAP-16.jpg",
       "story_text": "The woman prepared palm nut soup with fufu from cassavas. She invited her friends to eat with her. They enjoyed the meal very much.\n\nSince then, Cassava and Palm tree have remained good friends.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {

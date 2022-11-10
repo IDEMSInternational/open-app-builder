@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "Pushing your child on the swings is a perfect opportunity to count with your child. With each push, count “1, 2, 3, 4, 5.”",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -39,7 +41,9 @@
           "name": "text_bottom_1",
           "value": "After your child starts learning how to count to 5, counting down from 5 is also a good idea. Start or end at 0 sometimes.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"

@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "Create an empty 5 by 5 grid using five horizontal and vertical lines.  Players take turns putting their tokens on points where the lines cross in the grid. The first player with four tokens on the corners of a square of any size wins.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -39,7 +41,9 @@
           "name": "text_bottom_1",
           "value": "As your child gets experienced with this, change the rules to allow squares with diagonal sides.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"

@@ -36,7 +36,9 @@
           "name": "text_upside_1",
           "value": "While you are traveling, there are many opportunities to talk mathematically with your child.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_upside_1"
@@ -45,7 +47,9 @@
           "name": "text_side_1",
           "value": "For example, if you see a somewhat unusual red car, you can point that out and count together other red cars that are like it. Similarly, you might see a big truck and start counting those. You might see a circle in a design in a building and ask your child to point out other circles they see.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_side_1"
@@ -102,7 +106,9 @@
           "name": "text_downside_1",
           "value": "There is no end to the shapes, colors, and counting that you can find and talk about once you get used to looking for them.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_downside_1"

@@ -12,7 +12,9 @@
           "name": "spacer",
           "value": "Storybooks",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "style_list": [
             "flex:1"
@@ -53,7 +55,9 @@
       "name": "description_begin",
       "value": "Beginning",
       "_translations": {
-        "value": {}
+        "value": {
+          "es_sp": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "description_begin"
@@ -62,7 +66,9 @@
       "name": "description_intermed",
       "value": "Intermediate",
       "_translations": {
-        "value": {}
+        "value": {
+          "es_sp": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "description_intermed"
@@ -173,7 +179,9 @@
           "name": "begin_sb_text",
           "value": "**Beginning Storybooks**",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "_nested_name": "dg_beginning_sb.begin_sb_text"
         },
@@ -327,7 +335,9 @@
           "name": "intermed_sb_text",
           "value": "**Intermediate Storybooks**",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "_nested_name": "dg_intermediate_sb.intermed_sb_text"
         },

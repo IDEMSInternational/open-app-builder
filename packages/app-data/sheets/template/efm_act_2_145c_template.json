@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "Develop a sense of quantities by seeing who can make the best estimate for the size of a group, such as a group of people standing in line. Force yourselves to make a quick estimate so no one gets an advantage by doing a partial count. After everyone gives an estimate, count the objects and reward the person who is the closest.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"

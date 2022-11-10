@@ -12,7 +12,9 @@
           "name": "activity_title",
           "value": "Cutting Symmetric Shapes",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.activity_title"
@@ -21,7 +23,9 @@
           "name": "activity_type",
           "value": "Activity",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.activity_type"
@@ -30,7 +34,9 @@
           "name": "title1",
           "value": "Introduction",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.title1"
@@ -39,7 +45,9 @@
           "name": "text1",
           "value": "Create designs by folding a piece of paper and cutting the paper while it is folded. This is called Kirigami.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text1"
@@ -48,7 +56,9 @@
           "name": "title2",
           "value": "One Fold",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.title2"
@@ -57,7 +67,9 @@
           "name": "text2",
           "value": "Folding the paper once and cutting it creates a design with one side the mirror image of the other. Experiment with cutting out faces, lamps, or geometric shapes. The star and tree were produced with a single fold, which is shown on the left, and then the unfolded paper is shown on the right.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text2"
@@ -84,7 +96,9 @@
           "name": "title4",
           "value": "Two Folds",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.title4"
@@ -93,7 +107,9 @@
           "name": "text4",
           "value": "Folding the paper once, and then folding once more in the opposite direction, will produce figures with two lines of mirror images. This makes it easy to create designs such as flowers. The figure on the left is the paper folded twice and cut to leave the blue area, and the figure on the right shows the unfolded paper.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text4"
@@ -111,7 +127,9 @@
           "name": "title5",
           "value": "Three Folds",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.title5"
@@ -120,7 +138,9 @@
           "name": "text5",
           "value": "Experiment with various folds and cuts. This figure was created by taking a twice folded piece of paper and then folding it once more diagonally through the corner of the previous folds.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text5"
@@ -138,7 +158,9 @@
           "name": "title6",
           "value": "Snowflakes",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.title6"
@@ -147,7 +169,9 @@
           "name": "text6",
           "value": "This is a sequence of folds for creating 6-point snowflakes. Though it takes a few steps, don’t be put off by them - with a little practice they become quick and easy. \n\nStart by taking a standard sheet of paper and folding at one of the corners so the sides marked A and B meet. Leave the fold in place and cut along the line marked C.\n\nTake the triangle produced and fold it in half so that sides AB and C overlap.\n\nPut a temporary fold in this triangle and use the fold to mark the middle of side ABC. Undo the temporary fold.\n\nMake a fold over F. When you fold over F, you will be looking to have G placed so that G breaks the angle in half. \n\nFold along G - do this fold underneath so that this new folded piece is underneath the other paper.\n\nAlthough not strictly necessary, it is a good idea to slice off the top of this figure. Otherwise, you might be tempted to use the region above the red dotted line without realizing that there isn’t paper on all levels.\n\nLastly, fold this triangle in half. At last you are all set to do the cutting of your design!\n\nHave fun experimenting with many different combinations of cuts and colors!",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text6"

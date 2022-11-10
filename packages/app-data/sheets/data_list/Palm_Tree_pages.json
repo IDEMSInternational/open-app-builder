@@ -10,10 +10,18 @@
       "illustration": "EFMStorybooks/EFM-SB-PT-1.jpg",
       "story_text": "Let me tell you about the palm tree.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -39,10 +47,18 @@
       "illustration": "EFMStorybooks/EFM-SB-PT-2.jpg",
       "story_text": "This tree lives when everything else is dry.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -68,10 +84,18 @@
       "illustration": "EFMStorybooks/EFM-SB-PT-3.jpg",
       "story_text": "The shade from a palm tree is always cool.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -97,10 +121,18 @@
       "illustration": "EFMStorybooks/EFM-SB-PT-4.jpg",
       "story_text": "We eat fruit from the palm tree.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -126,10 +158,18 @@
       "illustration": "EFMStorybooks/EFM-SB-PT-5.jpg",
       "story_text": "We use palm leaves to thatch our houses.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -155,10 +195,18 @@
       "illustration": "EFMStorybooks/EFM-SB-PT-6.jpg",
       "story_text": "We make brooms and mats from palm leaves.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -184,10 +232,18 @@
       "illustration": "EFMStorybooks/EFM-SB-PT-7.jpg",
       "story_text": "We use palm tree seeds for fuel.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -213,10 +269,18 @@
       "illustration": "EFMStorybooks/EFM-SB-PT-8.jpg",
       "story_text": "Do you see why the palm tree is important?",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {

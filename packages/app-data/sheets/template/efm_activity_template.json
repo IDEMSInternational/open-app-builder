@@ -223,7 +223,9 @@
       "name": "chapter",
       "value": "Chapter",
       "_translations": {
-        "value": {}
+        "value": {
+          "es_sp": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "chapter"

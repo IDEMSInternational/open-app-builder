@@ -79,7 +79,9 @@
       "name": "no_match",
       "value": "No Match",
       "_translations": {
-        "value": {}
+        "value": {
+          "es_sp": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "no_match"

@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "Each Shape Card has three properties:\n\n*shape (circle, triangle, or square)\n*count (one, two, or three)\n*color (red, blue, or black)\n\nDeal five cards to each player, with the remaining cards face-down in a draw pile. Turn the draw pile’s top card face-up to begin a new stack. Take turns placing a card on the stack – the new card must match two features of the top card.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -39,7 +41,9 @@
           "name": "text_bottom_1",
           "value": "If you cannot play a card on your turn, draw a card from the draw pile and end your turn. \nThe first person to run out of cards is the winner. If the draw pile runs out, the player with the fewest cards in their hand wins. \n\nSimplify the game by only requiring a match of one property with the top card. Another variation is to allow a player to place more than one card on a turn as long as each card is a legal play on top of the previous card.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"

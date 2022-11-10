@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "Create a set of “tiles” from cardboard or stiff paper. Use one color for each shape (red squares, blue triangles, etc.). Watch your child make patterns fitting the tiles together. Name the shapes and colors as they go.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -45,7 +47,9 @@
           "name": "text_side_1",
           "value": "With older children, talk about patterns in the tiling that repeat. Also, talk about symmetries in the overall design. Some designs have one side that is the reflection of the other side, and that is called mirror symmetry. \n\nAfter your child has made a few designs, start pointing out patterns in the tiled floors and buildings that you see.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_side_1"

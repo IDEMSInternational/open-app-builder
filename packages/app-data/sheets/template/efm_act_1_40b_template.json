@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "With some food item you have a lot of, make a 21-piece triangle with 1 piece in the top row, 2 pieces in the next, up to 6 pieces in the last row.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -39,7 +41,9 @@
           "name": "text_bottom_1",
           "value": "Take turns with your child rolling a die. Each time the count of a roll matches a row that is still in the triangle, the player gets to remove that row and either eat it (yum) or put it in their personal pile.\n\nBeginning players can do a 1-to-1 match of the dots on the die with the food pieces in a row. The player with the bigger pile of food wins!",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"

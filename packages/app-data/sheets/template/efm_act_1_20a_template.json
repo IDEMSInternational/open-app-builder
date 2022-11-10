@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "Help your child explore the physical relationships between shapes by providing an environment rich in opportunities.\n\nCut holes (square, circle, triangle) in a box and watch your child fit toys through them.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -45,7 +47,9 @@
           "name": "text_side_1",
           "value": "Add different colors to outline the holes (red triangle, blue circle, yellow square) and name the shape of the hole when your child puts the toy through.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_side_1"

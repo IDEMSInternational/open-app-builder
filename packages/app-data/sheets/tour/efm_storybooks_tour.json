@@ -7,8 +7,12 @@
       "type": "step",
       "title": "Storybooks",
       "_translations": {
-        "title": {},
-        "message_text": {}
+        "title": {
+          "es_sp": true
+        },
+        "message_text": {
+          "es_sp": true
+        }
       },
       "message_text": "Reading with your child is a wonderful experience! Adding math comments and questions to your reading helps your child grow mathematically, and creates strong associations of math with this happy, cozy experience.",
       "route": "template/efm_storybooks"
@@ -17,7 +21,9 @@
       "type": "step",
       "message_text": "Please select the kinds of stories you would like to choose from.",
       "_translations": {
-        "message_text": {}
+        "message_text": {
+          "es_sp": true
+        }
       },
       "template_component_name": "dg_options",
       "route": "template/efm_storybooks"
@@ -26,8 +32,12 @@
       "type": "step",
       "title": "Beginning Storybooks",
       "_translations": {
-        "title": {},
-        "message_text": {}
+        "title": {
+          "es_sp": true
+        },
+        "message_text": {
+          "es_sp": true
+        }
       },
       "message_text": "Talk with your child before they can talk or even understand the words. Point at, name, and describe things you see, such as shapes, colors, comparisons, and quantities. As your child begins to understand words, ask about a thing and have your child point at it. As your child begins to understand and say words, mix in simple questions.",
       "template_component_name": "dg_box_beginner",
@@ -37,8 +47,12 @@
       "type": "step",
       "title": "Intermediate Storybooks",
       "_translations": {
-        "title": {},
-        "message_text": {}
+        "title": {
+          "es_sp": true
+        },
+        "message_text": {
+          "es_sp": true
+        }
       },
       "message_text": "These storybooks are somewhat longer, have slightly more complex story lines, and involve more sophisticated ideas. Your child is now able to talk and reason about more things in the world.",
       "template_component_name": "dg_box_intermediate",
@@ -48,8 +62,12 @@
       "type": "step",
       "title": "Help",
       "_translations": {
-        "title": {},
-        "message_text": {}
+        "title": {
+          "es_sp": true
+        },
+        "message_text": {
+          "es_sp": true
+        }
       },
       "message_text": "If you ever want to see this introduction again, just click on the question mark.",
       "template_component_name": "dg_help",

@@ -10,10 +10,18 @@
       "illustration": "EFMStorybooks/EFM-SB-HODB-1.jpg",
       "story_text": "Chalew is a horse that pulls a cart.\n\nHe carries heavy loads along the gravel roads of Debre Birhan.\n\nHe works from morning to evening.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -39,10 +47,18 @@
       "illustration": "EFMStorybooks/EFM-SB-HODB-2.jpg",
       "story_text": "Chalew does not get enough time to rest.\n\nHe does not get enough food to eat.\n\nThe driver of the cart beats him to go faster.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -68,10 +84,18 @@
       "illustration": "EFMStorybooks/EFM-SB-HODB-3.jpg",
       "story_text": "One day, all the cart drivers gathered for a funeral.\n\nThe cart horses were left to graze in a nearby field.\n\nThey began to talk about their terrible conditions.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -97,10 +121,18 @@
       "illustration": "EFMStorybooks/EFM-SB-HODB-4.jpg",
       "story_text": "My harness doesn't fit me. It is too tight and cuts my skin, said one horse.\n\n\"Me too, me too,\" another agreed.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -126,10 +158,18 @@
       "illustration": "EFMStorybooks/EFM-SB-HODB-5.jpg",
       "story_text": "An old horse spoke. \"I'm almost lame because of the nails they hammer into my hooves.\"\n\nMore horses nodded in agreement.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -155,10 +195,18 @@
       "illustration": "EFMStorybooks/EFM-SB-HODB-6.jpg",
       "story_text": "We work very hard, but most of our owners treat us badly. Many do not know how to look after us, said Chalew.\n\nAll of the horses agreed.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -184,10 +232,18 @@
       "illustration": "EFMStorybooks/EFM-SB-HODB-7.jpg",
       "story_text": "We need better conditions. Let's go on strike! declared Chalew. The horses cheered!\n\nThey decided to stay in the field until the cart drivers agreed to change.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -213,10 +269,18 @@
       "illustration": "EFMStorybooks/EFM-SB-HODB-8.jpg",
       "story_text": "The cart drivers did not know what to do.\n\n\"I can get another horse,\" boasted one driver.\n\nBut most of the drivers needed their horses to earn a living.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -242,10 +306,18 @@
       "illustration": "EFMStorybooks/EFM-SB-HODB-9.jpg",
       "story_text": "The drivers held a meeting to discuss the strike. They argued for a long time.\n\n\"Maybe the horses are right,\" said one man. \"Why should they get better conditions?\" asked another.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -271,10 +343,18 @@
       "illustration": "EFMStorybooks/EFM-SB-HODB-10.jpg",
       "story_text": "The horses' strike spread from the town of Debre Birhan across Ethiopia.\n\nNearly three million horses refused to work.\n\n\"We have had enough! Treat us fairly!\" they said.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -300,10 +380,18 @@
       "illustration": "EFMStorybooks/EFM-SB-HODB-11.jpg",
       "story_text": "So, the cart drivers were forced to change.\n\nThey agreed to better conditions and fair treatment for all horses.\n\nThey learned how to look after the horses, and keep them healthy.",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {
@@ -329,10 +417,18 @@
       "illustration": "EFMStorybooks/EFM-SB-HODB-12.jpg",
       "story_text": "Slowly, the horses' lives improved.\n\nThey got enough food and rest. Their harnesses fitted. They got better shoes for their hooves.\n\nOld Chalew became a hero to all horses!",
       "_translations": {
-        "story_text": {},
-        "annotation_1": {},
-        "annotation_2": {},
-        "annotation_3": {}
+        "story_text": {
+          "es_sp": true
+        },
+        "annotation_1": {
+          "es_sp": true
+        },
+        "annotation_2": {
+          "es_sp": true
+        },
+        "annotation_3": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "story_text": {

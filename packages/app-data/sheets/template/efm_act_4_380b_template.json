@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "Your child already knows how to multiply by 2 by simply doubling. This is an exciting time when your child learns a lot more about multiplication.\n\nBy now, your child is so familiar with addition that it’s no surprise that 2 + 3 is the same as 3 + 2.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -39,7 +41,9 @@
           "name": "text_bottom_1",
           "value": "Although not as obvious, the same is true for multiplication. This illustration should make it easy to see that two rows of three is the same as three rows of two – you’re just changing your point of view!\n\nIt doesn’t matter which order you multiply two numbers – you get the same answer either way!\n\nIn addition to being cool in a nerdy way, it also means that your child needs to master only about half as many multiplication facts – once your child knows 3 x 4, they also know 4 x 3.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"

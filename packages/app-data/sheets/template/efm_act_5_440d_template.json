@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "Create these by taking a simple addition or subtraction equation and leaving out some of the digits. For example, the following two problems are turned into Missing Number puzzles by leaving out a couple digits.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -39,7 +41,9 @@
           "name": "text_bottom_1",
           "value": "After getting comfortable with these, your child may enjoy doing some Letter Substitution puzzles that are described on a later Adding and Subtracting page in this chapter.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"

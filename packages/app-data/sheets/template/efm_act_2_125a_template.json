@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "Each player has two number lines, one for their battleships and one for their guesses. These number lines are drawn on paper and go from 0 to 12 (or higher if the children can count higher). Out of sight, on their battleship number line, each player places tokens on two numbers that will be their battleships. \n\nAfter the setup, the players take turns guessing numbers. When a player makes a guess, the other player says how close the guess was to the nearest target - the guesser then marks down that information on their second number line. The first person to get all the targets wins.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -39,7 +41,9 @@
           "name": "text_bottom_1",
           "value": "There are several variations to make this more challenging. A wider range of numbers can be used. The response to a guess can be a range of distances rather than an exact amount - for example: “the nearest ship is 1 or 2 away.” Another variation is to have ships that are two or three spaces in length.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"

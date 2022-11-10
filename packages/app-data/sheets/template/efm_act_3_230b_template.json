@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "Each player draws a staircase with anywhere from 4 to 10 steps (more steps for older players).",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -39,7 +41,9 @@
           "name": "text_bottom_1",
           "value": "Create a number using Number Cards numbered from 0 to 9. The first selection will be from the cards 0 to 1, and this is the tens digit. Then select a ones digit from all the cards. The two digits together form the number. If possible, the player must place this number on their steps. The first player to fill their steps in increasing order from bottom to top wins. Make it easier by allowing neighboring steps to have the same value.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"

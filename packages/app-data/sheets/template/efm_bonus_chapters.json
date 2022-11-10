@@ -8,7 +8,9 @@
       "name": "title",
       "value": "Activities – Bonus Material",
       "_translations": {
-        "value": {}
+        "value": {
+          "es_sp": true
+        }
       },
       "_nested_name": "title"
     },

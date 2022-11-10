@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "These two puzzles have the usual additional Sudoku restriction that the numbers must occur exactly once in each marked subregion.\n\nFor Even-Odd Sudoku puzzles, the squares for even numbers are greyed in. This makes them generally easier than regular Sudoku and it reinforces even and odd numbers.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -39,7 +41,9 @@
           "name": "text_bottom_1",
           "value": "Kropki Sudoku is the same as regular Sudoku except two types of dots placed between cells are added. If the dot is hollow, then the two numbers are one apart. If the dot is filled in, then one number is half the other number.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"

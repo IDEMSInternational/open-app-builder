@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "There are many things to count or describe when you shop in a store.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -39,7 +41,9 @@
           "name": "text_bottom_1",
           "value": "Count the apples you buy or the people in line in front of you. Point out the shapes of fruit or pictures on food boxes.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"

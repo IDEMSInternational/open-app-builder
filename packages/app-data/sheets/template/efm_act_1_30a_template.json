@@ -30,7 +30,9 @@
           "name": "text_top_1",
           "value": "Let’s sort laundry! \n\nWhat a great way to find properties that make things the same or different. \n1. Sort by colors to be washed together.\n2. Sort by type (and size) when clean.\n3. Talk about why socks make a pair.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"

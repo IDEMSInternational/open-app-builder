@@ -12,7 +12,9 @@
           "name": "spacer",
           "value": "Activities",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "style_list": [
             "flex:1"
@@ -60,7 +62,9 @@
           "name": "description_1",
           "value": "Introductions",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "dg_types.description_1"
@@ -69,7 +73,9 @@
           "name": "description_2",
           "value": "Games",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "dg_types.description_2"
@@ -78,7 +84,9 @@
           "name": "description_3",
           "value": "Puzzles",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "dg_types.description_3"
@@ -87,7 +95,9 @@
           "name": "description_4",
           "value": "Activities",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "dg_types.description_4"
@@ -96,7 +106,9 @@
           "name": "description_5",
           "value": "Investigations",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "dg_types.description_5"
@@ -574,7 +586,9 @@
           "name": "radio_description_1",
           "value": "Individually",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "dg_view.radio_description_1"
@@ -583,7 +597,9 @@
           "name": "radio_description_2",
           "value": "By topic",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "dg_view.radio_description_2"
@@ -750,7 +766,9 @@
           "name": "chapter_select",
           "value": "**Chapters**",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "_nested_name": "dg_chapters.chapter_select"
         },
@@ -924,7 +942,9 @@
           "name": "act_text",
           "value": "**Bonus Material**",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "style_list": [
             "flex: 1"
@@ -963,7 +983,9 @@
           "name": "button_activities",
           "value": "Bonus Material — Activities",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "action_list": [
             {

@@ -236,7 +236,9 @@
       "name": "bonus_button_text",
       "value": "Read Bonus Material",
       "_translations": {
-        "value": {}
+        "value": {
+          "es_sp": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "bonus_button_text"

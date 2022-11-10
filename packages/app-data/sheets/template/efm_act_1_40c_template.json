@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "As understanding of the first few numbers grows, ask your child questions about one more or one less. Without talking about how many items there currently are, ask “Would you like one more?” or “Would you like one less?”",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -39,7 +41,9 @@
           "name": "text_bottom_1",
           "value": "Slowly, start emphasizing the current quantity and how it changes. Count the number of items together, perhaps two apple slices on your child’s plate. Summarize saying there are two apple slices, and ask if your child would like one more apple slice or perhaps one less. If the amount does change, end by asking how many apple slices there are now.\n\nSimilarly, when you are walking about, pick out things to count. Suppose there are three people in line in front of you. Count them together and ask how many there will be when one leaves and there will be one less.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"

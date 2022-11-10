@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "This is a group game that starts with each player thinking of a number for that round. When everyone is ready, the adult starts slowly counting aloud from 1. With the announcement of each number, any children who were thinking of that number call out. If more than one child calls out, those children are \"out\" and the adult continues to count. If only one child calls out, that child is the winner of the round.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -45,7 +47,9 @@
           "name": "text_side_1",
           "value": "This is also a quick, fun game to play with a large group of adults — it can be quite funny when no one picks a particular low number (such as two).",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_side_1"
@@ -54,7 +58,9 @@
           "name": "text_bottom_1",
           "value": "Make this an active game as follows. With two to four children, play it like Rock, Paper, Scissors. Have the children raise some number of fingers on one or two hands behind their backs. At the count of three, everyone brings their hands out and the game is played as described above. With more children, have them thinking of their number while crouched down in a ball on the floor, looking at the floor. When the adult calls their number, they get to pop up, and the  game is played as described above.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"

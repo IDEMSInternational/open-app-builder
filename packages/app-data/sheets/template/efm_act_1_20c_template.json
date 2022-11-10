@@ -36,7 +36,9 @@
           "name": "text_side_1",
           "value": "Make a puzzle for your child to play with. Have your child paint or draw on a piece of cardboard or stiff paper.\n\nCut the paper into large pieces. Jigsaw puzzle!",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_side_1"

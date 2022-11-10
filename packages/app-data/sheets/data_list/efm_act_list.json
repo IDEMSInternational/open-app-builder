@@ -10,9 +10,15 @@
       "chapter": 1,
       "title": "CHAPTER 1 – I CAN HEAR YOU!",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -34,9 +40,15 @@
       "chapter": 1,
       "title": "MATH OUT LOUD – GENERAL",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -58,9 +70,15 @@
       "chapter": 1,
       "title": "INTERACTIVE READ OUT LOUD",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -82,9 +100,15 @@
       "chapter": 1,
       "title": "MATH OUT LOUD – SWINGS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -106,9 +130,15 @@
       "chapter": 1,
       "title": "MATH OUT LOUD – SHOPPING",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -130,9 +160,15 @@
       "chapter": 1,
       "title": "MATH OUT LOUD – TRAVELING",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -154,9 +190,15 @@
       "chapter": 1,
       "title": "SHAPES INSIDE SHAPES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -178,9 +220,15 @@
       "chapter": 1,
       "title": "SHAPES HUNT",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -202,9 +250,15 @@
       "chapter": 1,
       "title": "CREATE A JIGSAW PUZZLE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -226,9 +280,15 @@
       "chapter": 1,
       "title": "COLORED TILINGS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -250,9 +310,15 @@
       "chapter": 1,
       "title": "LAUNDRY SORTING",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -274,9 +340,15 @@
       "chapter": 1,
       "title": "OBJECT HUNT",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -298,9 +370,15 @@
       "chapter": 1,
       "title": "PATTERNS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -322,9 +400,15 @@
       "chapter": 1,
       "title": "NUMBER HUNT",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -346,9 +430,15 @@
       "chapter": 1,
       "title": "NUMBER GOBBLER",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -370,9 +460,15 @@
       "chapter": 1,
       "title": "ONE MORE ONE LESS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -394,9 +490,15 @@
       "chapter": 1,
       "title": "MATERIALS AND NUMBER CARDS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -418,9 +520,15 @@
       "chapter": 1,
       "title": "MAKE A SHAPE DECK",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -442,9 +550,15 @@
       "chapter": 1,
       "title": "NUMBER LINE ON THE WALL",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -466,9 +580,15 @@
       "chapter": 1,
       "title": "YOUR OWN STORE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -490,9 +610,15 @@
       "chapter": 1,
       "title": "IN THE OTHER HAND",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -514,9 +640,15 @@
       "chapter": 1,
       "title": "HOPSCOTCH",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -538,9 +670,15 @@
       "chapter": 1,
       "title": "GOING IN CIRCLES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -562,9 +700,15 @@
       "chapter": 1,
       "title": "SAME AND DIFFERENT",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -586,9 +730,15 @@
       "chapter": 1,
       "title": "ONE OF THESE IS NOT LIKE THE OTHERS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -610,9 +760,15 @@
       "chapter": 2,
       "title": "CHAPTER 2 – I CAN COUNT TO 5!",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -634,9 +790,15 @@
       "chapter": 2,
       "title": "CONNECT THE DOTS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -658,9 +820,15 @@
       "chapter": 2,
       "title": "ISLAND HOPPING – COUNTING",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -682,9 +850,15 @@
       "chapter": 2,
       "title": "STRING NUMBER LINE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -706,9 +880,15 @@
       "chapter": 2,
       "title": "CUTTING SYMMETRIC SHAPES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -730,9 +910,15 @@
       "chapter": 2,
       "title": "SHAPES ON THE FLOOR",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -754,9 +940,15 @@
       "chapter": 2,
       "title": "STEALING BONES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -778,9 +970,15 @@
       "chapter": 2,
       "title": "DOMINOES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -802,9 +1000,15 @@
       "chapter": 2,
       "title": "MEMORY CHALLENGE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -826,9 +1030,15 @@
       "chapter": 2,
       "title": "GO FISH!",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -850,9 +1060,15 @@
       "chapter": 2,
       "title": "BINGO! WITH CARDS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -874,9 +1090,15 @@
       "chapter": 2,
       "title": "WITHIN ONE OR TWO",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -898,9 +1120,15 @@
       "chapter": 2,
       "title": "INVISIBLE ADDING AND SUBTRACTING",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -922,9 +1150,15 @@
       "chapter": 2,
       "title": "NIM WITH ONE AND TWO",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -946,9 +1180,15 @@
       "chapter": 2,
       "title": "FEATURE MATCHING GAME",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -970,9 +1210,15 @@
       "chapter": 2,
       "title": "FEATURE MATCHING PUZZLE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -994,9 +1240,15 @@
       "chapter": 2,
       "title": "TRIPLET",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1018,9 +1270,15 @@
       "chapter": 2,
       "title": "WAR – SINGLE-DIGIT COMPARING",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1042,9 +1300,15 @@
       "chapter": 2,
       "title": "FITTING IN",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1066,9 +1330,15 @@
       "chapter": 2,
       "title": "SMALLEST SINGLE NUMBER",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1090,9 +1360,15 @@
       "chapter": 2,
       "title": "NUMBER LINE BATTLESHIP",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1114,9 +1390,15 @@
       "chapter": 2,
       "title": "I’M THINKING OF A NUMBER",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1138,9 +1420,15 @@
       "chapter": 2,
       "title": "MAGIC HANDS – ADD AND SUBTRACT",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1162,9 +1450,15 @@
       "chapter": 2,
       "title": "FLASH NUMBERS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1186,9 +1480,15 @@
       "chapter": 2,
       "title": "WHAT’S MISSING",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1210,9 +1510,15 @@
       "chapter": 2,
       "title": "FINDING SQUARES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1234,9 +1540,15 @@
       "chapter": 2,
       "title": "CONNECT THE DOTS  — STRING ART",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1258,9 +1570,15 @@
       "chapter": 2,
       "title": "SHAPE SUDOKU",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1282,9 +1600,15 @@
       "chapter": 2,
       "title": "I’M THINKING OF A NUMBER",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1306,9 +1630,15 @@
       "chapter": 2,
       "title": "BAG GAME – ADD AND SUBTRACT",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1330,9 +1660,15 @@
       "chapter": 2,
       "title": "MATH STORIES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1354,9 +1690,15 @@
       "chapter": 2,
       "title": "GET OUT OF MY HOUSE – 1 MORE/LESS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1378,9 +1720,15 @@
       "chapter": 2,
       "title": "THE IN-BETWEEN GAME",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1402,9 +1750,15 @@
       "chapter": 2,
       "title": "ESTIMATION GAME",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1426,9 +1780,15 @@
       "chapter": 2,
       "title": "NUMBER SUDOKU",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1450,9 +1810,15 @@
       "chapter": 2,
       "title": "SUDOKU – COMPARING",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1474,9 +1840,15 @@
       "chapter": 2,
       "title": "MAKE ME A LIAR",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1498,9 +1870,15 @@
       "chapter": 2,
       "title": "CODEBREAKER",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1522,9 +1900,15 @@
       "chapter": 2,
       "title": "15 SLIDING PUZZLE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1546,9 +1930,15 @@
       "chapter": 2,
       "title": "FINGER ADDITION TO 10",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1570,9 +1960,15 @@
       "chapter": 2,
       "title": "FINGER SUBTRACTION TO 10",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1594,9 +1990,15 @@
       "chapter": 3,
       "title": "CHAPTER 3 – I CAN COUNT TO 10!",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1618,9 +2020,15 @@
       "chapter": 3,
       "title": "CHOPSTICKS HAND GAME",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1642,9 +2050,15 @@
       "chapter": 3,
       "title": "MYSTERY CHANGE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1666,9 +2080,15 @@
       "chapter": 3,
       "title": "SHAPE SUMS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1690,9 +2110,15 @@
       "chapter": 3,
       "title": "INTRODUCING 10’S",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1714,9 +2140,15 @@
       "chapter": 3,
       "title": "MAKING NUMBER CARDS 1 TO 20",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1738,9 +2170,15 @@
       "chapter": 3,
       "title": "BINGO WITH 10",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1762,9 +2200,15 @@
       "chapter": 3,
       "title": "MEMORY CHALLENGE – 10’S",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1786,9 +2230,15 @@
       "chapter": 3,
       "title": "GEOMETRIC ART",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1810,9 +2260,15 @@
       "chapter": 3,
       "title": "SIM TRIANGLE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1834,9 +2290,15 @@
       "chapter": 3,
       "title": "NUMBER SHAPES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1858,9 +2320,15 @@
       "chapter": 3,
       "title": "MULTIPLYING BY 2",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1882,9 +2350,15 @@
       "chapter": 3,
       "title": "NIM – DOUBLING THE LIMIT",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1906,9 +2380,15 @@
       "chapter": 3,
       "title": "COUNTING EVENS AND ODDS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1930,9 +2410,15 @@
       "chapter": 3,
       "title": "SKIP COUNTING BY 2’s",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1954,9 +2440,15 @@
       "chapter": 3,
       "title": "HALVES AND HALF NOTS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -1978,9 +2470,15 @@
       "chapter": 3,
       "title": "SUM GROUPS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2002,9 +2500,15 @@
       "chapter": 3,
       "title": "GO FISH WITH SUMS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2026,9 +2530,15 @@
       "chapter": 3,
       "title": "WHICH NUMBER AM I",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2050,9 +2560,15 @@
       "chapter": 3,
       "title": "GOING UP",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2074,9 +2590,15 @@
       "chapter": 3,
       "title": "GOING UP SOME MORE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2098,9 +2620,15 @@
       "chapter": 3,
       "title": "CREATING ORDER",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2122,9 +2650,15 @@
       "chapter": 3,
       "title": "CLOSEST TO 10",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2146,9 +2680,15 @@
       "chapter": 3,
       "title": "ZOO RESCUE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2170,9 +2710,15 @@
       "chapter": 3,
       "title": "COMMON SUMS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2194,9 +2740,15 @@
       "chapter": 3,
       "title": "SUDOKU VARIATIONS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2218,9 +2770,15 @@
       "chapter": 3,
       "title": "EVEN-ODD AND KROPKI SUDOKU",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2242,9 +2800,15 @@
       "chapter": 3,
       "title": "SUMDOKU, DIFFDOKU, SUMDIFFDOKU",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2266,9 +2830,15 @@
       "chapter": 3,
       "title": "SHUT THE BOX",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2290,9 +2860,15 @@
       "chapter": 3,
       "title": "HIT THE TARGET",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2314,9 +2890,15 @@
       "chapter": 3,
       "title": "HOT POTATO WITH SUMS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2338,9 +2920,15 @@
       "chapter": 3,
       "title": "HOW MANY WAYS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2362,9 +2950,15 @@
       "chapter": 3,
       "title": "ANY WHICH WAY",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2386,9 +2980,15 @@
       "chapter": 3,
       "title": "HOW CAN I MAKE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2410,9 +3010,15 @@
       "chapter": 3,
       "title": "NUMBER SCRAMBLE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2434,9 +3040,15 @@
       "chapter": 3,
       "title": "PYRAMID SOLITAIRE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2458,9 +3070,15 @@
       "chapter": 3,
       "title": "CARD DECK ORDERING",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2482,9 +3100,15 @@
       "chapter": 3,
       "title": "DIFFERENCE PYRAMID",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2506,9 +3130,15 @@
       "chapter": 3,
       "title": "STRATEGY GAMES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2530,9 +3160,15 @@
       "chapter": 3,
       "title": "TAPATAN",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2554,9 +3190,15 @@
       "chapter": 3,
       "title": "DOTS AND BOXES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2578,9 +3220,15 @@
       "chapter": 3,
       "title": "PENTE OR GOMOKU",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2602,9 +3250,15 @@
       "chapter": 4,
       "title": "CHAPTER 4 – I CAN COUNT TO 20!",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2626,9 +3280,15 @@
       "chapter": 4,
       "title": "FINGER ADDITION W/ COMPENSATION",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2650,9 +3310,15 @@
       "chapter": 4,
       "title": "FINGER ADDITION THE EASY WAY",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2674,9 +3340,15 @@
       "chapter": 4,
       "title": "FINGER SUBTRACTION THE EASY WAY",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2698,9 +3370,15 @@
       "chapter": 4,
       "title": "ENCLOSED SUMS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2722,9 +3400,15 @@
       "chapter": 4,
       "title": "PIG",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2746,9 +3430,15 @@
       "chapter": 4,
       "title": "DON’T GO OVER",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2770,9 +3460,15 @@
       "chapter": 4,
       "title": "ISLAND HOPPING – COMPENSATION",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2794,9 +3490,15 @@
       "chapter": 4,
       "title": "WAR – ADDITION AND SUBTRACTION",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2818,9 +3520,15 @@
       "chapter": 4,
       "title": "TARGET GIN RUMMY",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2842,9 +3550,15 @@
       "chapter": 4,
       "title": "DIFFTRIANGLES AND SUMTRIANGLES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2866,9 +3580,15 @@
       "chapter": 4,
       "title": "FLASH CARDS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2890,9 +3610,15 @@
       "chapter": 4,
       "title": "REVIEWING ADDITION SKILLS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2914,9 +3640,15 @@
       "chapter": 4,
       "title": "ADDITION COMPENSATION",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2938,9 +3670,15 @@
       "chapter": 4,
       "title": "REVIEWING SUBTRACTION SKILLS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2962,9 +3700,15 @@
       "chapter": 4,
       "title": "USING 10 AS AN INTERMEDIATE STOP",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -2986,9 +3730,15 @@
       "chapter": 4,
       "title": "SUBTRACTION COMPENSATION",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3010,9 +3760,15 @@
       "chapter": 4,
       "title": "CARDS TO A TARGET",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3034,9 +3790,15 @@
       "chapter": 4,
       "title": "COMBO DOMINOES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3058,9 +3820,15 @@
       "chapter": 4,
       "title": "PART-WHOLE TRIANGLES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3082,9 +3850,15 @@
       "chapter": 4,
       "title": "GET OUT OF MY HOUSE – ADD/SUB",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3106,9 +3880,15 @@
       "chapter": 4,
       "title": "SKIP COUNTING",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3130,9 +3910,15 @@
       "chapter": 4,
       "title": "SHORT STEPS TO A TARGET",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3154,9 +3940,15 @@
       "chapter": 4,
       "title": "ISLAND HOPPING – SKIP COUNTING",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3178,9 +3970,15 @@
       "chapter": 4,
       "title": "MATH TIC TAC TOE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3202,9 +4000,15 @@
       "chapter": 4,
       "title": "MEMORY CHALLENGE REVISITED",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3226,9 +4030,15 @@
       "chapter": 4,
       "title": "PAIRING DOWN",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3250,9 +4060,15 @@
       "chapter": 4,
       "title": "FIX IT",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3274,9 +4090,15 @@
       "chapter": 4,
       "title": "FOLDING EXPANDED FORM",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3298,9 +4120,15 @@
       "chapter": 4,
       "title": "I’M THINKING OF A NUMBER",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3322,9 +4150,15 @@
       "chapter": 4,
       "title": "MEMORY GAME – EXPANDED FORM",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3346,9 +4180,15 @@
       "chapter": 4,
       "title": "ISLAND HOPPING BY ONES AND TENS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3370,9 +4210,15 @@
       "chapter": 4,
       "title": "GET CLOSEST",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3394,9 +4240,15 @@
       "chapter": 4,
       "title": "WAR – DOUBLE-DIGIT COMPARISON",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3418,9 +4270,15 @@
       "chapter": 4,
       "title": "MATH BLACKJACK",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3442,9 +4300,15 @@
       "chapter": 4,
       "title": "FILL IN THE BLANKS COMPARISON",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3466,9 +4330,15 @@
       "chapter": 4,
       "title": "TARGET O’s AND X’s",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3490,9 +4360,15 @@
       "chapter": 4,
       "title": "TERMINATOR 2",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3514,9 +4390,15 @@
       "chapter": 4,
       "title": "POISON NUMBERS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3538,9 +4420,15 @@
       "chapter": 4,
       "title": "MAGIC TRIANGLES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3562,9 +4450,15 @@
       "chapter": 4,
       "title": "MAGIC DESIGNS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3586,9 +4480,15 @@
       "chapter": 4,
       "title": "GRABBING 10’S",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3610,9 +4510,15 @@
       "chapter": 4,
       "title": "3 x 4 = 4 x 3",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3634,9 +4540,15 @@
       "chapter": 4,
       "title": "SKIP COUNTING IS MULTIPLICATION",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3658,9 +4570,15 @@
       "chapter": 4,
       "title": "MULTIPLYING BY 3 AND 4",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3682,9 +4600,15 @@
       "chapter": 4,
       "title": "SUM SQUARE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3706,9 +4630,15 @@
       "chapter": 4,
       "title": "SUM DIFFERENCE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3730,9 +4660,15 @@
       "chapter": 4,
       "title": "ADDITION PYRAMID",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3754,9 +4690,15 @@
       "chapter": 4,
       "title": "INVESTIGATIONS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3778,9 +4720,15 @@
       "chapter": 4,
       "title": "FLOWER PETALS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3802,9 +4750,15 @@
       "chapter": 4,
       "title": "CLIMBING STEPS – HOW MANY WAYS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3826,9 +4780,15 @@
       "chapter": 4,
       "title": "BALANCE SCALE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3850,9 +4810,15 @@
       "chapter": 5,
       "title": "CHAPTER 5 – I CAN COUNT TO 100!",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3874,9 +4840,15 @@
       "chapter": 5,
       "title": "MENTAL MULTIPLICATION",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3898,9 +4870,15 @@
       "chapter": 5,
       "title": "3 x 4 = 4 x 3",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3922,9 +4900,15 @@
       "chapter": 5,
       "title": "SKIP COUNTING IS MULTIPLICATION",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3946,9 +4930,15 @@
       "chapter": 5,
       "title": "MULTIPLICATION TECHNIQUES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3970,9 +4960,15 @@
       "chapter": 5,
       "title": "MAKING 100",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -3994,9 +4990,15 @@
       "chapter": 5,
       "title": "STAKE YOUR CLAIM",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4018,9 +5020,15 @@
       "chapter": 5,
       "title": "BONDED GROUPS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4042,9 +5050,15 @@
       "chapter": 5,
       "title": "MISSING NUMBERS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4066,9 +5080,15 @@
       "chapter": 5,
       "title": "MAKING MULTIPLICATION CARDS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4090,9 +5110,15 @@
       "chapter": 5,
       "title": "REVEALING PRODUCTS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4114,9 +5140,15 @@
       "chapter": 5,
       "title": "COVER FACTORS AND MULTIPLES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4138,9 +5170,15 @@
       "chapter": 5,
       "title": "NIM WITH FACTORS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4162,9 +5200,15 @@
       "chapter": 5,
       "title": "SIEVE OF ERATOSTHENES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4186,9 +5230,15 @@
       "chapter": 5,
       "title": "MIX IT UP",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4210,9 +5260,15 @@
       "chapter": 5,
       "title": "SECRET OPS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4234,9 +5290,15 @@
       "chapter": 5,
       "title": "PARENTHESES PUZZLES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4258,9 +5320,15 @@
       "chapter": 5,
       "title": "LEVER BALANCE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4282,9 +5350,15 @@
       "chapter": 5,
       "title": "WAR – MULTIPLICATION",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4306,9 +5380,15 @@
       "chapter": 5,
       "title": "BEEP",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4330,9 +5410,15 @@
       "chapter": 5,
       "title": "3 IN A ROW",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4354,9 +5440,15 @@
       "chapter": 5,
       "title": "TURNING THE TABLES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4378,9 +5470,15 @@
       "chapter": 5,
       "title": "RECTANGLE AREA",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4402,9 +5500,15 @@
       "chapter": 5,
       "title": "NUMBER SHAPES REVISITED",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4426,9 +5530,15 @@
       "chapter": 5,
       "title": "THE PADDOCK GAME",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4450,9 +5560,15 @@
       "chapter": 5,
       "title": "DIVIDE UP THE BOX",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4474,9 +5590,15 @@
       "chapter": 5,
       "title": "A DEFINITION AND A RULE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4498,9 +5620,15 @@
       "chapter": 5,
       "title": "REUSE OLD ADDITION ACTIVITIES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4522,9 +5650,15 @@
       "chapter": 5,
       "title": "PRACTICE PRIME FACTORIZATIONS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4546,9 +5680,15 @@
       "chapter": 5,
       "title": "FACTOR TREES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4570,9 +5710,15 @@
       "chapter": 5,
       "title": "PRODUCT PYRAMID",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4594,9 +5740,15 @@
       "chapter": 5,
       "title": "100 LAUGHS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4618,9 +5770,15 @@
       "chapter": 5,
       "title": "5-CARD DRAW TO A TARGET",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4642,9 +5800,15 @@
       "chapter": 5,
       "title": "LETTER SUBSTITUTION",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4666,9 +5830,15 @@
       "chapter": 5,
       "title": "BOUNCING BILLIARD BALL",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4690,9 +5860,15 @@
       "chapter": 5,
       "title": "FILLING REGIONS WITH SHAPES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4714,9 +5890,15 @@
       "chapter": 5,
       "title": "FILLING SQUARES WITH SQUARES",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4738,9 +5920,15 @@
       "chapter": 5,
       "title": "THE PRODUCT GAME",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4762,9 +5950,15 @@
       "chapter": 5,
       "title": "ISLAND HOPPING WITH PRODUCTS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4786,9 +5980,15 @@
       "chapter": 5,
       "title": "CHECKERS MATH",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4810,9 +6010,15 @@
       "chapter": 5,
       "title": "COUNTING NEIGHBORS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4834,9 +6040,15 @@
       "chapter": 5,
       "title": "MAKING A MOBILE",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4858,9 +6070,15 @@
       "chapter": 5,
       "title": "LIMITED CALCULATORS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4882,9 +6100,15 @@
       "chapter": 5,
       "title": "GRABBING FACTORS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4906,9 +6130,15 @@
       "chapter": 5,
       "title": "DOUBLE OR NOTHING",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4930,9 +6160,15 @@
       "chapter": 5,
       "title": "FACTOR WAR",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4954,9 +6190,15 @@
       "chapter": 5,
       "title": "MULTIPLICATION BINGO",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -4978,9 +6220,15 @@
       "chapter": 5,
       "title": "CROSSING THE VOLCANO",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -5002,9 +6250,15 @@
       "chapter": 5,
       "title": "CROSS PRODUCTS",
       "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        },
+        "page_title": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {

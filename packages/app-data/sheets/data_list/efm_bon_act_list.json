@@ -10,8 +10,12 @@
       "chapter": 1,
       "title": "One of These is Not Like the Others",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -29,8 +33,12 @@
       "chapter": 2,
       "title": "Island Hopping – Counting",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -48,8 +56,12 @@
       "chapter": 2,
       "title": "Cutting Symmetric Shapes",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -67,8 +79,12 @@
       "chapter": 2,
       "title": "Nim With One and Two",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -86,8 +102,12 @@
       "chapter": 2,
       "title": "Connect The Dots",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -105,8 +125,12 @@
       "chapter": 2,
       "title": "Shape Sudoku",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -124,8 +148,12 @@
       "chapter": 2,
       "title": "Number Sudoku With Jigsaws",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -143,8 +171,12 @@
       "chapter": 2,
       "title": "Greater Than Sudoku",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -162,8 +194,12 @@
       "chapter": 2,
       "title": "Make Me a Liar",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -181,8 +217,12 @@
       "chapter": 2,
       "title": "15-Sliding Puzzle",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -200,8 +240,12 @@
       "chapter": 3,
       "title": "Shape Sums",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -219,8 +263,12 @@
       "chapter": 3,
       "title": "Nim – Doubling the Limit",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -238,8 +286,12 @@
       "chapter": 3,
       "title": "Counting Evens and Odds",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -257,8 +309,12 @@
       "chapter": 3,
       "title": "Sum Groups",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -276,8 +332,12 @@
       "chapter": 3,
       "title": "Zoo Rescue",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -295,8 +355,12 @@
       "chapter": 3,
       "title": "Common Sums",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -314,8 +378,12 @@
       "chapter": 3,
       "title": "Sudoku Variations",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -333,8 +401,12 @@
       "chapter": 3,
       "title": "How Many Ways?",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -352,8 +424,12 @@
       "chapter": 3,
       "title": "Card Deck Ordering",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -371,8 +447,12 @@
       "chapter": 3,
       "title": "Difference Pyramid",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -390,8 +470,12 @@
       "chapter": 4,
       "title": "Enclosed Sums",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -409,8 +493,12 @@
       "chapter": 4,
       "title": "Island Hopping – Compensation",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -428,8 +516,12 @@
       "chapter": 4,
       "title": "DiffTriangles and SumTriangles",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -447,8 +539,12 @@
       "chapter": 4,
       "title": "Island Hopping – Skip Counting",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -466,8 +562,12 @@
       "chapter": 4,
       "title": "Fix It",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -485,8 +585,12 @@
       "chapter": 4,
       "title": "Island Hopping by Ones and Tens",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -504,8 +608,12 @@
       "chapter": 4,
       "title": "Solitaire Shape Puzzles",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -523,8 +631,12 @@
       "chapter": 4,
       "title": "Sum Square",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -542,8 +654,12 @@
       "chapter": 4,
       "title": "Addition Pyramid",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -561,8 +677,12 @@
       "chapter": 4,
       "title": "Investigations",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -580,8 +700,12 @@
       "chapter": 5,
       "title": "Nim With Factors",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -599,8 +723,12 @@
       "chapter": 5,
       "title": "Sieve of Eratosthenes",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -618,8 +746,12 @@
       "chapter": 5,
       "title": "Levers and Mobiles",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -637,8 +769,12 @@
       "chapter": 5,
       "title": "Divide Up the Box",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -656,8 +792,12 @@
       "chapter": 5,
       "title": "Letter Substitution Puzzles",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -675,8 +815,12 @@
       "chapter": 5,
       "title": "Bouncing Billiard Ball",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -694,8 +838,12 @@
       "chapter": 5,
       "title": "Playing With Shapes",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -713,8 +861,12 @@
       "chapter": 5,
       "title": "Product Game",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -732,8 +884,12 @@
       "chapter": 5,
       "title": "Limited Calculators",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -751,8 +907,12 @@
       "chapter": 5,
       "title": "Double or Nothing",
       "_translations": {
-        "title": {},
-        "type_name": {}
+        "title": {
+          "es_sp": true
+        },
+        "type_name": {
+          "es_sp": true
+        }
       },
       "_translatedFields": {
         "title": {

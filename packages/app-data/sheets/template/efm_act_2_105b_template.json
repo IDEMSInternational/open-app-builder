@@ -12,7 +12,9 @@
           "name": "text_top_1",
           "value": "Remove cards above the highest number your child is comfortable with. If there are more than two players and you have restricted the numbers significantly, you may need to use several decks.\n\nStart by dealing 5 cards to each player and put the remaining cards in a common draw pile. During a turn, a player “fishes” by asking any player if they have a card matching one of their cards – if they do, they hand over the card, and if they don’t, they say “Go FIsh!” and the player must pick a card from the draw pile.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_top_1"
@@ -39,7 +41,9 @@
           "name": "text_bottom_1",
           "value": "When a player has a pair of matching cards, those cards are placed in a “book” in front of them. The game is over after all the cards have been put into books. The player with the most books wins.",
           "_translations": {
-            "value": {}
+            "value": {
+              "es_sp": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"
