@@ -23,5 +23,6 @@ config.app_config.APP_LANGUAGES.default = "us_en";
 config.app_config.APP_HEADER_DEFAULTS.title = "Early Family Math";
 config.app_config.APP_SIDEMENU_DEFAULTS.title = "EFM";
 config.app_config.NOTIFICATION_DEFAULTS.text = "You have a new message from Early Family Math";
+config.app_config.APP_THEMES.available = ["default", "professional"]
 
 export default config;
