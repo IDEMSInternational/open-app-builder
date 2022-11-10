@@ -222,9 +222,20 @@
       "_nested_name": "carousel"
     },
     {
+      "name": "text_things_to_do",
+      "value": "Things to do",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "text_things_to_do"
+    },
+    {
       "type": "drawer",
       "name": "drawer",
-      "value": "@global.things_to_do",
+      "value": "@local.text_things_to_do",
       "parameter_list": {
         "style": "secondary"
       },
@@ -232,26 +243,26 @@
       "rows": [
         {
           "type": "template",
-          "name": "things_to_do",
+          "name": "things_to_do_temp",
           "value": "things_to_do",
           "exclude_from_translation": true,
           "rows": [],
-          "_nested_name": "drawer.things_to_do"
+          "_nested_name": "drawer.things_to_do_temp"
         }
       ],
       "_nested_name": "drawer",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@global.things_to_do",
-            "matchedExpression": "@global.things_to_do",
-            "type": "global",
-            "fieldName": "things_to_do"
+            "fullExpression": "@local.text_things_to_do",
+            "matchedExpression": "@local.text_things_to_do",
+            "type": "local",
+            "fieldName": "text_things_to_do"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.things_to_do": [
+        "@local.text_things_to_do": [
           "value"
         ]
       }

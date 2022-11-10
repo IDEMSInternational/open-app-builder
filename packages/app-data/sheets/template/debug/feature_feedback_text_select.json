@@ -43,8 +43,27 @@
     {
       "type": "text_area",
       "name": "feedback",
+      "value": "@fields._feedback_selected_text",
+      "_translations": {
+        "value": {}
+      },
       "exclude_from_translation": true,
-      "_nested_name": "feedback"
+      "_nested_name": "feedback",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields._feedback_selected_text",
+            "matchedExpression": "@fields._feedback_selected_text",
+            "type": "fields",
+            "fieldName": "_feedback_selected_text"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._feedback_selected_text": [
+          "value"
+        ]
+      }
     },
     {
       "type": "display_group",
