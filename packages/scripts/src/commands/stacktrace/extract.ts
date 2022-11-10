@@ -59,15 +59,16 @@ async function extract() {
   const mappedItems = await Promise.all(
     stack.items.map<Promise<NullableMappedPosition>>(async (element) => {
       const { line, column, fileRelative } = element;
-      const sourcemapPath = path.resolve(ROOT_DIR, "www", fileRelative.replace(".js", ".js.map"));
-      if (existsSync(sourcemapPath)) {
-        const data2 = readJSONSync(sourcemapPath);
-        data2.sourceRoot = path.resolve(ROOT_DIR);
-        const consumer = await new SourceMapConsumer(data2);
-        return consumer.originalPositionFor({ line, column });
-      } else {
-        return { column, line, name: null, source: fileRelative };
+      if (fileRelative) {
+        const sourcemapPath = path.resolve(ROOT_DIR, "www", fileRelative.replace(".js", ".js.map"));
+        if (existsSync(sourcemapPath)) {
+          const data2 = readJSONSync(sourcemapPath);
+          data2.sourceRoot = path.resolve(ROOT_DIR);
+          const consumer = await new SourceMapConsumer(data2);
+          return consumer.originalPositionFor({ line, column });
+        }
       }
+      return { column, line, name: null, source: fileRelative };
     })
   );
   const stackStr = mappedItems.map(formatMappedPosition).join("\n").trim();

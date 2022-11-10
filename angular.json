@@ -69,12 +69,7 @@
                 }
               ],
               "outputHashing": "all",
-              "sourceMap": {
-                "scripts": true,
-                "styles": false,
-                "hidden": true,
-                "vendor": false
-              },
+              "sourceMap": false,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
