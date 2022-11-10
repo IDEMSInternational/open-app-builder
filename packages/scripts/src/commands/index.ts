@@ -7,6 +7,7 @@ import compileCmd from "./compile";
 import e2eDataCmd from "./e2e-data";
 import configCmd from "./config";
 import deploymentCmd from "./deployment";
+import stacktraceCmd from "./stacktrace";
 import versionCmd from "./version";
 import workflowCmd from "./workflow";
 import { logWarning, logProgramHelp } from "../utils/logging.utils";
@@ -43,6 +44,7 @@ program.addCommand(compileCmd);
 program.addCommand(e2eDataCmd);
 program.addCommand(configCmd);
 program.addCommand(deploymentCmd);
+program.addCommand(stacktraceCmd);
 program.addCommand(versionCmd);
 program.addCommand(workflowCmd);
 
