@@ -20794,5 +20794,11 @@
     "text": "Un grupo de personas a menudo piensa en algo de la misma manera y pierde una buena manera de resolver un problema. ¡Los buenos solucionadores de problemas descubren nuevas formas de abordar los problemas!",
     "type": "data_list",
     "note": ""
+  },
+  {
+    "SourceText": "Language",
+    "text": "Idioma",
+    "type": "template",
+    "note": ""
   }
 ]

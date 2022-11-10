@@ -13,7 +13,7 @@
           "value": "Use a shared piece of paper filled out as follows:",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "The first player moves a token onto any number from 1 to 9 in the 1-9 squares. The second player puts another token on one of the 1-9 squares and claims the product in the 6 by 6 grid. From then on, each player chooses to move either of the two tokens and claims the product (if they can). The first player to claim 3 squares in a row wins.\n\nMix up the product numbers to give your child better practice identifying the products. See the Chapter 5 Bonus Material for designs of larger boards with larger ranges.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

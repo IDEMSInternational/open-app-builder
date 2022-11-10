@@ -13,7 +13,7 @@
           "value": "There are many games similar to this one - games such as Rota, 9 Holes, and 3 Men’s Morris. In this version, there are 9 points connected in a grid by 3 horizontal and 3 vertical lines. Each player has three identical tokens to play with. The goal of the game is to get your three tokens in a line.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "There are two phases of play. During the first phase, the placement phase, the players take turns placing their tokens one at a time on vacant points. After all the tokens have been placed, the second phase, the movement phase, begins. During this phase, players take turns moving their tokens to empty adjacent points. An alternative rule is that pieces can be moved to any empty point, not just adjacent points.\n\nThe game is over when one player wins or when the same position occurs three times, in which case it is a tie game.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

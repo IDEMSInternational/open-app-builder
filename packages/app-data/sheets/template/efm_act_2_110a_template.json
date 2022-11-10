@@ -13,7 +13,7 @@
           "value": "Create a stack of Number Cards with a range of quantities your child is comfortable with. Split the cards evenly between two players and place the cards face down. The players take turns placing a single card on the stack in the middle between them. If the card is one more, same, or one less than the previous card, the first player to yell out the relationship claims the whole pile.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "This can be extended to include the relationships of two more or two less as options. Another variation is to use a target sum, say 10 – yell out whenever the top two cards add up to the target.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

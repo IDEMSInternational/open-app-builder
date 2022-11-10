@@ -13,7 +13,7 @@
           "value": "This satisfying game starts with a rectangular grid of dots - say 3 by 4. During a turn, a player draws a horizontal or vertical line connecting two unjoined adjacent dots. If the new line completes a 1 by 1 box, the player earns a point and draws another line. When no more lines can be drawn, the player with the most points wins. An easy way to keep track of points is to put an initial inside each earned box.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "Although this is traditionally played with little squares, it can also be played with dots in a pattern to produce triangles or hexagons - it’s just a bit harder to draw.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

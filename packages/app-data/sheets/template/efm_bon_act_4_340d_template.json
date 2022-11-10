@@ -13,7 +13,7 @@
           "value": "Fix It",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -24,7 +24,7 @@
           "value": "Puzzle",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -35,7 +35,7 @@
           "value": "Start with a 4 by 4 grid of numbers with a target sum. The challenge is to find entries to remove so that the sum of the remaining numbers in every row and column is the target. An alternative version uses individual target sums for each row and column.\n\nMake these puzzles by putting in pairs or triples of numbers that sum to the target sum. Then fill in the remaining spaces with decoy numbers. You can make these trickier by having alternative pairs or triples of numbers that partially work. If your child is enjoying these, but finding them too easy, you can always make larger ones that are 4 by 5, 5 by 5, or even larger.\n\nRed stars have been added here to show which entries would be removed to make the puzzles work.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -64,7 +64,7 @@
           "value": "Here are two puzzles using individual target sums for the rows and columns.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

@@ -13,7 +13,7 @@
           "value": "Use a grid of numbers with a target sum. Find groups of two or three numbers that add up to the target. The members of a group must share sides. Use tokens, such as different types of food items, to identify each group within the puzzle. When complete, the entire puzzle will be made up of identified groups.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "Create these puzzles by starting with an empty grid and working your way around the grid using pairs and triples that add up to the target sum. It’s more fun if the puzzle has just one solution, but don’t worry about it.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

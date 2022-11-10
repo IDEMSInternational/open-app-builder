@@ -13,7 +13,7 @@
           "value": "Each player starts with a 4 by 4 grid of numbers that are possible multiplication products - these numbers can either be randomly assigned or carefully chosen by the player.\n\nTo start, two cards are dealt and put face up on the table. If either player has the product of those two numbers, they cover it. From then on, the players take turns taking the top card from the draw pile and choosing which of the two cards to replace. All players who have a match with the product cover it. The first player to get 4 in a row wins.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

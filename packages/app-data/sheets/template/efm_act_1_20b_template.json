@@ -37,7 +37,7 @@
           "value": "Similar to I Spy, play this game anywhere!\nPlayer 1: “I’m thinking of a large blue circle.”\nPlayer 2: “I see it! It’s the clock!”",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -48,7 +48,7 @@
           "value": "Take turns with your child observing and finding.\n\nStart with simple shapes, add size and color, and then add shape inside of shape or other arrangements.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

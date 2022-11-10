@@ -37,7 +37,7 @@
           "value": "Select two or four sets of the Number Cards and remove numbers above your child’s comfort level. Place the cards face down in a 3 by 3 grid, with the remaining cards put in a draw pile. Take turns flipping two cards face-up. If the cards match, the player gets to keep the cards, replaces the two cards from the draw pile, and continues their turn. If the cards don’t match, the player flips the cards back over and ends their turn. The game ends when the last pair of cards is taken. The player with the most cards wins.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -48,7 +48,7 @@
           "value": "One variation allows at most one match per turn. Another option is to have a target sum, larger than the largest card used, and then two cards match when their sum is the target.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

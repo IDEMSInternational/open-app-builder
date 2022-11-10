@@ -13,7 +13,7 @@
           "value": "Sum Groups",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -24,7 +24,7 @@
           "value": "Puzzle",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -35,7 +35,7 @@
           "value": "Introduction",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -46,7 +46,7 @@
           "value": "These puzzles use a grid of numbers with a target sum. Find groups of two, three, or four numbers that add up to the target. The members of a group must share sides. Use tokens, such as different types of food items, to identify each group within the puzzle. When complete, the entire puzzle will be made up of identified groups.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -66,7 +66,7 @@
           "value": "These puzzles provide particularly good practice with number bonds. By using tokens instead of a pencil, you can use puzzle sheets over and over.\n\nCreate these puzzles by starting with an empty grid and putting in numbers around the grid using pairs and triples that add up to the target sum. It’s more fun if the puzzle has just one solution, but don’t worry about it.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

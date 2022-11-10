@@ -13,7 +13,7 @@
           "value": "Levers and Mobiles",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -24,7 +24,7 @@
           "value": "Investigation",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -35,7 +35,7 @@
           "value": "Levers",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -46,7 +46,7 @@
           "value": "The lever principle states that the force exerted on one side of a lever by a mass is equal to the mass times its distance from the pivot point, the fulcrum.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -75,7 +75,7 @@
           "value": "In the lever above, the 3 on the left side is a distance of 5 from the fulcrum, so its force is 3 x 5 = 15. The 5 on the right side is a distance of 3 from the fulcrum, so its force is 5 x 3 = 15. This lever is in balance.\n\nIf there is more than one weight on a side, the forces will add up.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -104,7 +104,7 @@
           "value": "In this lever, there is 3 x 4 + 1 x 2 + 1 x 1 = 15 on the left side, and 5 x 3 = 15 on the right side. So it is in balance.\n\nWe will restrict these problems to only use whole numbers. You can decide whether you allow multiple weights to be hung off of the same point – we will assume it’s okay to do multiple weights in the discussion that follows.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -115,7 +115,7 @@
           "value": "Lever Puzzles",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -126,7 +126,7 @@
           "value": "You have a 3-unit weight and a 5-unit weight to put on opposite sides of the fulcrum. Where should they be put to balance? The answer to this can be the distances 5 and 3, but it can also be 10 and 6, or even larger answers such as 15 and 9. Be open to discussing whatever your child comes up with. \n\nIf you have a 3-unit and a 5-unit weight to put on one side of a lever, which weights can you put at which distances on the other side? This question continues the questions on the Make It Count page at the end of Chapter 4. As before, explore different combinations of weights. What happens if 3 and 5 are replaced by 4 and 5, 4 and 9, or 6 and 9?\n\nHow does this last problem change if we put the 3-unit and 5-unit weights on opposite sides of the fulcrum? Now it is easy to weigh a 1-unit weight by using 3 x 2 = 5 x 1 + 1 x 1. What other weights can you weigh this way?",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -137,7 +137,7 @@
           "value": "Mobiles",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -148,7 +148,7 @@
           "value": "You are given some weights and a design for a mobile that has some attach points. The challenge is to put at most one weight per attach point so the mobile will balance along every arm. For the sake of these problems, we will assume the wires that create the mobile are weightless. Each arm in the mobile is a lever that needs balancing, so these puzzles are an extension of the Lever Balance - practice those puzzles before starting these.\n\nStart with the simplest mobiles, which are just levers in the air. Here is a solution for putting the weights from 1 to 4 on this mobile to balance it. This works as a lever with the fulcrum at the hanging point. For this mobile we have 2 x 4 + 1 x 2 = 4 x 1 + 3 x 2.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -177,7 +177,7 @@
           "value": "If there is more than one level to the mobile, then each individual arm on each level must balance as a lever. For this next mobile, the two bottom arms balance because 1 x 3 = 3 x 1 and 4 x 1 = 2 x 2. For the next level up, you just add up the weights below it. For example, the weight on the left side is 1 + 3 = 4 – as far as the next level up is concerned, it does not matter where on that bottom arm the weights are located. So, for the next level up, (1 + 3) x 3 = (4 + 2) x 2 = 12, so the top level balances as well.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -206,7 +206,7 @@
           "value": "Have fun making mobile puzzles for each other. Here is a last one to play with using each of the numbers from 1 to 6. Don’t worry about being fancy and using each number once. Any completed puzzle will be fun. Checking the levels we have: 2 x 2 = 4 x 1; 1 x 4 + (2 + 4) x 1 = 5 x 2; 3 x 2 = 6 x 1; and (1 + 2 + 4 + 5) x 3 = (3 + 6) x 4.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

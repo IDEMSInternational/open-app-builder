@@ -13,7 +13,7 @@
           "value": "This starts with a 4 by 4 grid of numbers with a target sum. The challenge is to find entries to remove so that the sum of the remaining numbers in every row and column is the target. An alternative version uses individual target sums for each row and column.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "Make these puzzles by putting in pairs or triples of numbers that sum to the target sum. Then fill in the remaining spaces with decoy numbers.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

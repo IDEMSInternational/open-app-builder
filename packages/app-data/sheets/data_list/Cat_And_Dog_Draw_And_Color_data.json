@@ -11,16 +11,16 @@
       "story_text": "This is Cat.\n\nThis is Dog.",
       "_translations": {
         "story_text": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_1": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_2": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_3": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "_translatedFields": {
@@ -48,16 +48,16 @@
       "story_text": "Cat and Dog want to draw.\n\nCat and Dog want to color.\n\nCat and Dog want to make art.\n\nDog starts.\n\nHe takes a pencil and he takes a paper. The paper is a square.",
       "_translations": {
         "story_text": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_1": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_2": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_3": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "_translatedFields": {
@@ -85,16 +85,16 @@
       "story_text": "First, Dog draws an oval.\n\nThe oval is the body of Cat.\n\nWow, that is simple!",
       "_translations": {
         "story_text": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_1": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_2": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_3": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "_translatedFields": {
@@ -122,16 +122,16 @@
       "story_text": "Then he draws two triangles on top of the oval.\n\nThe two triangles are the ears of Cat and he draws a black triangle in the oval.\n\nThe black triangle is the nose of Cat and he draws a line above the nose.",
       "_translations": {
         "story_text": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_1": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_2": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_3": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "_translatedFields": {
@@ -159,16 +159,16 @@
       "story_text": "Now he draws the eyes and the eyebrows of Cat.\n\nThe eyes are two dots.\n\nThe eyebrows are two lines.\n\nWow, that is easy!",
       "_translations": {
         "story_text": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_1": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_2": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_3": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "_translatedFields": {
@@ -196,16 +196,16 @@
       "story_text": "Then he draws the mouth of Cat.\n\nThe mouth is a line.\n\nIt looks like the letter 'w' and he draws the hairs of Cat.\n\nThree hairs on the left side and three hairs on the right side.",
       "_translations": {
         "story_text": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_1": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_2": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_3": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "_translatedFields": {
@@ -233,16 +233,16 @@
       "story_text": "The drawing is almost finished.\n\nHe draws the arms and legs of Cat.\n\nThe arms and legs are lines and he draws the toes of Cat.\n\nThe toes are circles and he draws the tail of Cat.\n\nThe tail is a long line.",
       "_translations": {
         "story_text": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_1": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_2": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_3": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "_translatedFields": {
@@ -270,16 +270,16 @@
       "story_text": "At last he draws some stripes on the body of Cat and colors the body orange.\n\nThe drawing is finished.\n\nWow, that is beautiful!",
       "_translations": {
         "story_text": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_1": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_2": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_3": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "_translatedFields": {
@@ -307,16 +307,16 @@
       "story_text": "Now it is Cat's turn.\n\nHe takes a pencil and he takes a paper.\n\nThe paper is a rectangle.",
       "_translations": {
         "story_text": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_1": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_2": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_3": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "_translatedFields": {
@@ -344,16 +344,16 @@
       "story_text": "First, Cat draws an oval.\n\nThe oval is the body of Dog.\n\nWow, that is good!",
       "_translations": {
         "story_text": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_1": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_2": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_3": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "_translatedFields": {
@@ -381,16 +381,16 @@
       "story_text": "Then he draws two black forms on top of the oval.\n\nThe two black forms are the ears of Dog and he draws a black circle in the oval.\n\nThe black circle is the nose of Dog and he draws a line above the nose.",
       "_translations": {
         "story_text": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_1": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_2": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_3": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "_translatedFields": {
@@ -418,16 +418,16 @@
       "story_text": "Now he draws the eyes and the eyebrows of Dog.\n\nThe eyes are two dots.\n\nThe eyebrows are two lines.\n\nWow, that is perfect!",
       "_translations": {
         "story_text": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_1": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_2": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_3": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "_translatedFields": {
@@ -455,16 +455,16 @@
       "story_text": "Then he draws the mouth of Dog.\n\nThe mouth is a line.\n\nThe shape is again the letter 'w' and he draws some dots around the mouth of Dog.\n\nThree on the left side and three on the right side.",
       "_translations": {
         "story_text": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_1": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_2": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_3": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "_translatedFields": {
@@ -492,16 +492,16 @@
       "story_text": "The drawing is almost finished.\n\nHe draws the arms and legs of Dog.\n\nThe arms and legs are lines and he draws the toes of Dog.\n\nThe toes are circles and he draws the tail of Dog.\n\nThe tail looks like a flower.",
       "_translations": {
         "story_text": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_1": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_2": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_3": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "_translatedFields": {
@@ -529,16 +529,16 @@
       "story_text": "At last he draws some black circles on the body of Dog and he colors the body yellow.\n\nThen the drawing is finished.\n\nWow, that is wonderful!",
       "_translations": {
         "story_text": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_1": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_2": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_3": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "_translatedFields": {
@@ -566,16 +566,16 @@
       "story_text": "Bye bye Cat.\n\nBye bye drawing of Cat.\n\nBye bye Dog.\n\nBye bye drawing of Dog.",
       "_translations": {
         "story_text": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_1": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_2": {
-          "es_sp": true
+          "es_es": true
         },
         "annotation_3": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "_translatedFields": {

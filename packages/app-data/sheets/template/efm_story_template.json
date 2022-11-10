@@ -369,7 +369,7 @@
       "value": "Story text",
       "_translations": {
         "value": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "type": "set_variable",
@@ -380,7 +380,7 @@
       "value": "First reading",
       "_translations": {
         "value": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "type": "set_variable",
@@ -391,7 +391,7 @@
       "value": "Second reading",
       "_translations": {
         "value": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "type": "set_variable",
@@ -402,7 +402,7 @@
       "value": "Third reading",
       "_translations": {
         "value": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "type": "set_variable",

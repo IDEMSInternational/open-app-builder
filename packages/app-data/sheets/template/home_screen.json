@@ -36,7 +36,7 @@
           "value": "Welcome!",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "style_list": [
@@ -103,7 +103,7 @@
           "value": "Storybooks",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "action_list": [
@@ -155,7 +155,7 @@
           "value": "Storybooks",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "action_list": [
@@ -204,7 +204,7 @@
           "value": "Activities",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "action_list": [
@@ -256,7 +256,7 @@
           "value": "Activities",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "action_list": [

@@ -37,7 +37,7 @@
           "value": "Make a puzzle for your child to play with. Have your child paint or draw on a piece of cardboard or stiff paper.\n\nCut the paper into large pieces. Jigsaw puzzle!",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

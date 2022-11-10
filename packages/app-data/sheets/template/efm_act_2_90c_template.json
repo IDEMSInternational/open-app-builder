@@ -13,7 +13,7 @@
           "value": "In addition to putting a number line on a piece of paper on a wall, create a number line using a string. Tie or clip a section of string between two objects. Use paper clips to attach sliding Number Cards from 0 to 10 along the string in order.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "Here are some things you can do with this. You and your child will probably discover many more.\n* Switch two numbers and have your child find the mistake.\n* Leave out a number and have your child find which one is missing.\n* Practice adding. For example, to do 4 + 2, slide over the first 4 numbers and then slide over the next 2.\n* Practice subtracting. To do 6 - 2, slide over to the left the first 6 cards and then slide 2 of those back to the right.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

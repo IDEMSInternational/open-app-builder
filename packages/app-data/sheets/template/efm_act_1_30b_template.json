@@ -13,7 +13,7 @@
           "value": "Version one:\nGuesser -- finds a specific object.\nPuzzler -- describes the object.\n\nVersion two:\nGuesser -- asks questions about the object until they guess what it is. \nPuzzler -- answers yes/no questions.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "Incorporate concepts into the game that your child is learning, such as color, size (large, medium, small), weight (heavy, light), quantity, and relationship (inside, on top of, below).",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

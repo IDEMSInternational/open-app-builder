@@ -13,7 +13,7 @@
           "value": "DiffTriangles and SumTriangles",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -24,7 +24,7 @@
           "value": "Puzzle",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -35,7 +35,7 @@
           "value": "DiffTriangles",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -46,7 +46,7 @@
           "value": "DiffTriangles puzzles have triangles and squares that share sides. A triangle always has exactly two squares on its sides, and the remaining side has either a triangle or is empty. A triangle’s number is the difference of the two adjoining squares. The challenge is to supply the missing numbers.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -75,7 +75,7 @@
           "value": "**Constructing Puzzles** Making puzzles without loops is easy. Draw an alternating sequence of squares and triangles, put in numbers starting at one end, and then work your way to the far end. When you are done, remove some of the numbers. Making puzzles with loops or more complicated interactions is trickier; however, the effort pays off with some challenging puzzles!\n\nWhen your child gets very comfortable with these, they may want to take a turn creating some new puzzles of their own. They should have fun and learn a lot by figuring out how the numbers fit together.\n\n**Strategies for Solving** The places to do first are any triangles between two filled in squares. Another easy case is a square next to a filled triangle that has a smaller filled square next to it - in this case, because we are not working with negative numbers, there is only one choice for filling in the empty square. The most common case is a square that has two possible values looking in one direction, and two other possibilities looking in the other direction - there is usually only one number that overlaps in those possibilities.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -104,7 +104,7 @@
           "value": "Here are some examples with lots of interconnections.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -133,7 +133,7 @@
           "value": "SumTriangles",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -144,7 +144,7 @@
           "value": "SumTriangles puzzles are just like DiffTriangles only they use addition in place of subtraction. The value of a triangle is the sum of its two or three square neighbors. Make these puzzles using methods similar to DiffTriangles. SumTriangles puzzles are typically simpler to solve than DiffTriangles.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

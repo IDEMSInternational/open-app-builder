@@ -13,7 +13,7 @@
           "value": "By now, your child is so familiar with addition that it’s no surprise that 2 + 3 is the same as 3 + 2. Although not as obvious, the same is true for multiplication. This illustration makes it easy to see that two rows of three is the same as three rows of two – you just change your point of view! It doesn’t matter which order you multiply two numbers – you get the same answer either way!",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "In addition to being cool in a nerdy way, it also means that your child needs to master only about half as many multiplication facts – once your child knows 3 x 4, they also know 4 x 3.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

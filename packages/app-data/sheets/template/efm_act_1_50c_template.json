@@ -31,7 +31,7 @@
           "value": "Place a number line on a wall to let your child see the numbers and how they grow. The number line should start at 0 and go to at least 20, with the numbers increasing as they go to the right. Make it from regular paper and use tick marks and large numbers.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

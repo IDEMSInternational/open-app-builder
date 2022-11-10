@@ -13,7 +13,7 @@
           "value": "Draw a tic-tac-toe grid big enough to hold a Shape Card in each square. Choose 8 of the Shape Cards that have two of each property. For example, pick the 8 cards that are either a triangle or square, have one or two figures, and are either red or blue. Place these 8 cards around the outside of the board.\n\nPlayers take turns picking an unused card for their opponent to place on the board. The first player to place a card that completes 3 cards in a row which have at least one property in common wins!  If all the cards are played without a winner, it's a tie game. Here are some examples of ways to win:",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "Simplify the game and add an element of luck by placing the cards face down and having each player play the top card.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

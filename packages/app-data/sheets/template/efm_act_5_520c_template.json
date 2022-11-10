@@ -13,7 +13,7 @@
           "value": "Once your child becomes comfortable with the Missing Number puzzles from a few pages earlier in this chapter, they can start these puzzles. In these, one or more of the digits are replaced by letters. The three rules for letters are: \n\n* A given letter is always the same digit\n* The leftmost digit of a number is never 0\n* Different letters must be different digits\n\nCreate these puzzles by taking an addition or subtraction problem and replacing one or more of the digits, as in the following examples:",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "The puzzles can also be created to make interesting problem-solving challenges for your child. Note that the values of the letters do not carry over from puzzle to puzzle.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

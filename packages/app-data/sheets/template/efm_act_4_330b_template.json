@@ -13,7 +13,7 @@
           "value": "Create a random 2-digit starting number using two playing cards from 1 to 9 - the first card will give you the tens place and the other the ones place. Starting at that number, you are allowed to use a total of 5 jumps each of which is either by 1 or 10. The goal is to get as close to 50 as possible, and the score is the difference from 50. The lowest total score after several rounds wins.\n\nYoung players benefit from referring to a 100-chart. Using that chart will also emphasize place value as they go up or down by 10.\n\nYou can vary this game by allowing steps of 1, 2 or 10, or steps of 1, 2, 5, or 10. Also, use target numbers other than 50 sometimes.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

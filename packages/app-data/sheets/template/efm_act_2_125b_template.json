@@ -13,7 +13,7 @@
           "value": "This is an introductory, warmup version of a fun game we will revisit again soon.\n\nThere are two people involved. The Puzzler thinks of a number and the Questioner discovers the number. The Puzzler declares, “I am thinking of a number from 0 to 8” (or whatever upper limit they like). The Questioner then asks questions of the form “How does your number compare to 3?” The Puzzler answers that the number is smaller, equal to, or larger than that number. \n\nHere is an example of a game with a target of 5:\n\nPuzzler: I’m thinking of a number from 0 to 8. Question: How does your number compare to 3?\nPuzzler: My number is larger than 3.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "Question: How does your number compare to 6?\nPuzzler: My number is smaller than 6.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -71,7 +71,7 @@
           "value": "Question: How does your number compare to 5?\nPuzzler: Well done! My number is equal to 5.\n\nWith younger children, you can play this game with counting cards from 0 to 8 (or whatever the limits are) placed face up in order on the table. Under one of the cards you hide a star or whatever is fun. After each guess, the child (Questioner) turns over all the cards that have been eliminated until the star is discovered.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

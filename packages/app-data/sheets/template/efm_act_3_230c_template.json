@@ -13,7 +13,7 @@
           "value": "Start with a deck of Number Cards that go from 0 to 40 (higher with more players). Deal ten cards to each player (fewer cards for younger players). The dealt cards are placed in front of each player in the order they are dealt. The remaining cards are placed face down in a draw pile. The top card is placed facing up as the first card in a discard pile. The goal of the game is to get the cards in ascending order from left to right.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "During a turn, a player may select either the top card of the discard pile or the draw pile - this card must be used to replace one of the cards in front of the player, and the replaced card is put face up on the top of the discard pile.\n\nYou can play that the first player to get their cards in order wins, and that’s all there is to it. Or, you can use a point system for each round of play. In this system, the winner receives 15 points. The other players receive one point for every card they have in order starting with their lowest card.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

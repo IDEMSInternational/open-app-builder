@@ -13,7 +13,7 @@
           "value": "Have your child count some small number of objects. While they look away, change the number of objects. When they look back, ask what change you made. They can test their theory by reenacting what they think happened. \n\nOnce this becomes easy, you can have them be more creative with their answers. For example, if 4 became 6, the answer might be that you doubled the 4 and then took 2 away.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

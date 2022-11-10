@@ -13,7 +13,7 @@
           "value": "Playing strategy games will help your child immensely with many reasoning, planning, and problem solving skills. There are dozens of such games - such as tic-tac-toe, 9 Men’s Morris, Fox and Geese, Dara, Connect Four, Mancala, Checkers, Go, Chess - far too many to cover here.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

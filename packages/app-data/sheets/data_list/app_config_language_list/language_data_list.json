@@ -1,0 +1,28 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "language_data_list",
+  "data_list_name": "language",
+  "status": "released",
+  "flow_subtype": "app_config_language_list",
+  "rows": [
+    {
+      "id": "us_en",
+      "country_code": "us",
+      "country_label": "United States",
+      "language_code": "en",
+      "language_label": "English",
+      "name": "us_en",
+      "text": "English"
+    },
+    {
+      "id": "es_es",
+      "country_code": "es",
+      "country_label": "Spain",
+      "language_code": "es",
+      "language_label": "Español",
+      "name": "es_es",
+      "text": "Español"
+    }
+  ],
+  "_xlsxPath": "EFM_high_level_sheets.xlsx"
+}

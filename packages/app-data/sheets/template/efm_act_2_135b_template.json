@@ -13,7 +13,7 @@
           "value": "String Art - Make abstract drawings by connecting points with the same number along opposite sides of an angle.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "A second way is to put some dots, say 8, evenly spaced on a circle. Play with creating different patterns by connecting the dots in order, or connecting every second dot, or every third dot.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

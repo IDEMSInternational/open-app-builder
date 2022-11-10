@@ -13,7 +13,7 @@
           "value": "These puzzles are the multiplicative version of the Addition Pyramids seen in Chapter 4. You are supplied with a target number and a pyramid of numbers. The challenge is to find a path of connected numbers down the pyramid so the product of the selected numbers is the target.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "The target is 36 in this pyramid and the red lines indicate the path that works. Your child may notice that these puzzles are much easier if they start by doing the prime factorization of the target. Because 36 = 2 x 2 x 3 x 3, they know they must pick up those prime factors along the path and this helps guide the search. Having the adult know about prime factorizations also makes it much easier to create these puzzles.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

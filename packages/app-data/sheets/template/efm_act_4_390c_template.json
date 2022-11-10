@@ -13,7 +13,7 @@
           "value": "A pyramid of 10 numbers placed in 4 rows is given with a target number. The challenge is to find a path through the pyramid using one number from each row so that the sum of the numbers is the target number. The numbers on the path must connect to each other.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "Make one of these puzzles by filling in the numbers that you want to form the path, and record the sum of those numbers. Then fill in the remaining decoy numbers in the pyramid.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

@@ -13,7 +13,7 @@
           "value": "Number Sudoku With Jigsaws",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -24,7 +24,7 @@
           "value": "Puzzle",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -35,7 +35,7 @@
           "value": "Introduction",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -46,7 +46,7 @@
           "value": "This is similar to the Shape Sudoku puzzles, only now it uses numbers. If your child is not ready to recognize numerals yet, you can use quantities of dots instead. To avoid erasing, use numbered (or dotted) slips of paper to solve the puzzles.\n\nFor a 4 by 4 puzzle, each row and column has the numbers from 1 to 4 once. Also, each marked subregion has the numbers from 1 to 4 once.\n\nCreate these puzzles for your child by starting with a completed puzzle with moveable pieces of numbered paper and then removing some of the pieces of paper.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -57,7 +57,7 @@
           "value": "4 by 4 Puzzles",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -68,7 +68,7 @@
           "value": "The 4 by 4 puzzles with subregions that are the 2 by 2 corners are exactly the same as the Shape Sudoku puzzles given before. You can go back to that page in these Resources to see solved versions of those puzzles. To create a numbered version of them, replace each colored shape by a number. For example, red circles could be 1, orange triangles 2, purple diamonds 3, and blue squares 4.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -88,7 +88,7 @@
           "value": "5 by 5 Puzzles",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -99,7 +99,7 @@
           "value": "There are too many of these puzzles to come anywhere close to showing all the possible jigsaw geometries. These are here just to suggest what is possible. Your child may enjoy finding different ways of carving up a 5 by 5 square into pieces that have 5 small squares. \n\nPieces that consist of 5 little squares are called “pentominoes.” Making shapes with pentominoes can be lots of fun. Maybe cut out some pentomino shapes out of stiff thick colored paper and see what designs you can make!",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -119,7 +119,7 @@
           "value": "6 by 6 Puzzles",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -130,7 +130,7 @@
           "value": "Okay, you are getting the idea. There are a lot of these! Here are just a few 6 by 6 puzzles to give you some ideas for what is possible. As always, play around with your child with these puzzle pieces and numbers. Perhaps design a few of these together.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

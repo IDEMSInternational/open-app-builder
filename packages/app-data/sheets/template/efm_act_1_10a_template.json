@@ -37,7 +37,7 @@
           "value": "At these early ages, it is all about exposure! Your child is being exposed to a wide array of experiences and is discovering patterns. Expose your child to math and play with math together.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -48,7 +48,7 @@
           "value": "Start this even before your child seems to understand what you are saying. Your child is a sponge who will eventually understand your words.\n\nMake a habit of pointing at things your child is interacting with and describing them with words involving numbers, shapes, and colors. If you are dealing with a small set of things, count them out loud to your child.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

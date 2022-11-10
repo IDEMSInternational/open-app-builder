@@ -13,7 +13,7 @@
           "value": "Choose a target number, say 100. Each player picks up five random cards from 0 to 9. Two 2-digit numbers are made out of these numbers, the fifth card is unused. The two numbers are added and the player closest to the target wins a point for that round. The highest number of points after a fixed number of rounds wins.\n\nOne option is to use three-digit numbers, a target number of 1000, and each player receives seven cards. Another option is to use subtraction with a smaller target number.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

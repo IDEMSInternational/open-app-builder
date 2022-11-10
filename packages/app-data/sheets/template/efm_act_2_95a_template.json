@@ -13,7 +13,7 @@
           "value": "Create designs by folding a piece of paper and cutting the paper while it is folded. This is called Kirigami. Folding the paper once and cutting it creates a design with one side the mirror image of the other. Experiment with cutting out faces, lamps, or geometric shapes.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "If your child makes two intersecting folds, cutting this paper creates designs that are mirror images in two directions. This makes it easy to create designs such as flowers.\n\nExperiment with various folds and cuts. Create snowflake designs by starting with the same two folds as in the last example, and then doing two more folds that split the folded paper into thirds.\n \nMake a game of this by working backwards - draw a symmetrical shape on a piece of paper and challenge your child to cut a folded piece of paper to create that shape.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

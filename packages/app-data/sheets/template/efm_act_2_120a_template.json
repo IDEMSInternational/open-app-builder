@@ -13,7 +13,7 @@
           "value": "Remove the cards from two, four, or six Number Decks outside your child’s comfort range. Split the cards evenly in two piles face down. Flip over the top cards and the player with the larger card keeps both cards. If the cards match, flip the next two cards and the winner gets all four cards. The player with the most cards after one or more runs through all the cards is the winner.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "To change things up, sometimes play that the smaller of the two cards wins.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

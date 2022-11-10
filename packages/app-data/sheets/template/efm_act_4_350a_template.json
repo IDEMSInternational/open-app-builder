@@ -13,7 +13,7 @@
           "value": "This helpful device shows how two-digit numbers are formed from tens and ones.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "Take a piece of paper that exactly fits four Number Cards side by side. Mark the paper with: <space> - “0” - “+” - <space>. It should have vertical folds on both sides of the “+” sign. Paper clip numbers to the two spaces. For example, if you use 2 and 3, folded up this looks like 23, but unfolded this becomes 20+3.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

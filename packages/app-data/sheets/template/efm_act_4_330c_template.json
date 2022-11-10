@@ -13,7 +13,7 @@
           "value": "These puzzles have islands (circles) connected by bridges (lines). In this version, the connections are made by skip counting. Some of the islands have numbers written on them and some will start off blank. Above the puzzle is the starting number, ending number, and the skip amount. The challenge is to fill in the missing numbers and find the path. You can also place the numbers and blanks on the floor to make a stepping puzzle.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "As with the Skip Counting activity, create puzzles to practice going forward or backward starting at a variety of numbers, not just numbers that are a multiple of the skip amount. \n\nCreate these puzzles by making the islands first, filling in the skip counting numbers, connecting those islands in the correct order, and then adding some additional connections to help make a puzzle out of it. In the version you give your child, remove some numbers leaving enough of the numbers so that it can still be figured out.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

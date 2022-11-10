@@ -13,7 +13,7 @@
           "value": "The area of a rectangle is its length times its width. That dry statement can be made tangible to your child in at least two ways. The first is to show a rectangle broken into a collection of squares.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "The second is to use number shapes to show how a quantity, such as 12, can be placed into an array - 3 by 4, 2 by 6, or 1 by 12. Playing with rectangle areas gives us a fun arena in which to play around with multiplication and factoring!",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

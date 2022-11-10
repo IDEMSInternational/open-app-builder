@@ -13,7 +13,7 @@
           "value": "There are many things to count or describe when you shop in a store.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "Count the apples you buy or the people in line in front of you. Point out the shapes of fruit or pictures on food boxes.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

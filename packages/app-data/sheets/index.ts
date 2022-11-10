@@ -292,6 +292,13 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "Who_Can_Count_To_Ten_storybook",
       _xlsxPath: "EFM_storybooks_intermediate.xlsx",
     },
+    language_data_list: {
+      flow_type: "data_list",
+      flow_name: "language_data_list",
+      data_list_name: "language",
+      flow_subtype: "app_config_language_list",
+      _xlsxPath: "EFM_high_level_sheets.xlsx",
+    },
     efm_act_list: {
       flow_type: "data_list",
       flow_name: "efm_act_list",
@@ -334,6 +341,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     app_menu: {
       flow_type: "template",
       flow_name: "app_menu",
+      _xlsxPath: "EFM_high_level_sheets.xlsx",
+    },
+    app_menu_language: {
+      flow_type: "template",
+      flow_name: "app_menu_language",
       _xlsxPath: "EFM_high_level_sheets.xlsx",
     },
     app_menu_privacy_policy: {

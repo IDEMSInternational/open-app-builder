@@ -13,7 +13,7 @@
           "value": "Place all the dominoes, also known as bones, face up between the players. For a turn, a player rolls two dice. If the domino that matches the two dice is available, the player claims it and moves it to their own pile — an alternative rule is that, even if a domino has already been claimed by one player, it can be stolen by another player.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "For two players, the first player to claim ten dominoes wins. For more than two players, the first player with six dominoes wins.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

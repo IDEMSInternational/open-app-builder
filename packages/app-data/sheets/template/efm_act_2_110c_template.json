@@ -13,7 +13,7 @@
           "value": "A target number, say 10, is chosen. Let your child choose whether to go first or second. The total starts at 0. During a turn, a person chooses to add 1 or 2 to the current total. The first person to reach the target wins. Once children learn to play this verbally, it is a great travel game.\n\nFor younger children, use  an actual pile of objects to play with instead of writing anything down. In this case, a player would add one or two objects to the pile on their turn until the target quantity is reached. Similarly, a number line to the target number could be used and a marker could be advanced along the line one or two spaces during each move.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "This game can also be played with subtraction. In this version, the starting total starts at the target, which in this example is 10. On a given turn the player chooses whether to subtract 1 or 2. The first person to reach 0 wins.\n\nThere are many variations to this popular game. You can use larger target numbers as your child’s skills improve. One variation is that instead of winning, the player forced to hit or go beyond the target number loses. You can also experiment with what happens if you allow a player to add (or subtract) 1, 2, or 3 for each turn.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

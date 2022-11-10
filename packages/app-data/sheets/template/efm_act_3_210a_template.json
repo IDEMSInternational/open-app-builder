@@ -13,7 +13,7 @@
           "value": "Very gradually, introduce multiplication to your child by a small change in language - start referring to doubling a number as taking “two of it” or as “multiplying it by 2.”",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

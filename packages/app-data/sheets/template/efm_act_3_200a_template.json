@@ -13,7 +13,7 @@
           "value": "Here are some geometric concepts your child can play around with. The first is the idea of similarity. Two shapes are similar if they have the same shape except that one is smaller or larger than the other. Challenge your child to pick a picture and draw it twice as big or twice as small.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "Another geometric concept to play with is mirror symmetry. Your child can see this by taking a mirror with a flat side and putting it down along its edge on a drawing or photo and seeing what the mirror image looks like. Once your child has the idea, give your child half of a picture and challenge them to draw the mirror image.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

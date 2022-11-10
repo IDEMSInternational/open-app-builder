@@ -13,7 +13,7 @@
           "value": "Imagine a billiard table that has a pocket in each of the four corners. When a ball bounces off the side of the table, it bounces away at the same angle it came in at. This investigation looks at the question: If we shoot a ball at a 45 degree angle from one corner, where will it end up? The answer depends on the size of the table. This is what happens on a 3 by 4 table.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "After playing with several of these, challenge your child to predict what the answer is in advance. Starting in the bottom left corner, which corner will be hit first and how many bounces will it take?",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

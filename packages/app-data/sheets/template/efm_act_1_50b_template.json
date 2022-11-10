@@ -13,7 +13,7 @@
           "value": "There are a few games and puzzles that involve a Shape Deck of 27 cards in the Shape Deck Games page. If you happen to have a set of 81 cards from the game of SET, you can use 27 of those cards that have solid colors as a Shape Deck.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "Start with some stiff paper such as card stock if you can. Regular paper will work, it’s just not as easy to handle or as durable.\n\nEach of the 27 cards of the Shape Deck has three properties: a shape (circle, triangle, or square), a count (one, two, or three) and a color (red, blue, or black). The 27 cards are pictured below. Use the pdf supplied in Resources or draw your own.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

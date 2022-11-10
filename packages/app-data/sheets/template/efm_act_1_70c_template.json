@@ -13,7 +13,7 @@
           "value": "Use a set of four items or drawings where one of the four is the odd one out. Challenge your child to identify the one that is not like the others and to explain why – accept any reason that makes sense; your child may have an unusual reason.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "Suppose the four items are a red triangle, a red square with a hole, a green square, and solid red square. Your child may choose the green square because it’s the only one that is not red. Or, your child may choose the red square with a hole because it’s the only one with a hole. Or, the red triangle might be chosen because it’s the only shape that isn’t a square. \n\nThere isn’t always more than one good answer, but you should always be open to surprising ideas.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

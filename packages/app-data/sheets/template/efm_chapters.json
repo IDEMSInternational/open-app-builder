@@ -13,7 +13,7 @@
           "value": "Activities",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "style_list": [
@@ -63,7 +63,7 @@
           "value": "Introductions",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -74,7 +74,7 @@
           "value": "Games",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -85,7 +85,7 @@
           "value": "Puzzles",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -96,7 +96,7 @@
           "value": "Activities",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -107,7 +107,7 @@
           "value": "Investigations",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -587,7 +587,7 @@
           "value": "Individually",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -598,7 +598,7 @@
           "value": "By topic",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -767,7 +767,7 @@
           "value": "**Chapters**",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "_nested_name": "dg_chapters.chapter_select"
@@ -943,7 +943,7 @@
           "value": "**Bonus Material**",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "style_list": [
@@ -984,7 +984,7 @@
           "value": "Bonus Material — Activities",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "action_list": [

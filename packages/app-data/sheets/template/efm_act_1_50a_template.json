@@ -13,7 +13,7 @@
           "value": "You only need a few materials for these Early Family Math activities, and they are all very inexpensive and easy to get. \n\nHere’s a short list:\n* Five dice\n* A deck of playing cards\n* String\n* Sidewalk chalk\n* Some stiff paper in various colors \n\nMany of our activities can be played using decks of playing cards. However, using a Number Card deck will help your child practice ideas that will not be emphasized with regular playing cards.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "Make your own using card stock or any thick paper. You can either use the pdf supplied in Resources or draw your own.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

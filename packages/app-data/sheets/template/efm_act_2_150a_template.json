@@ -13,7 +13,7 @@
           "value": "This is similar to the Shape Sudoku puzzles, only now it uses numbers (or quantities of dots). To avoid erasing, use numbered (or dotted) slips of paper to solve the puzzles.\n\nFor a 4 by 4 puzzle, each row and column has the numbers from 1 to 4 once. Also, each marked subregion has the numbers from 1 to 4 once. That’s it! Create these puzzles for your child by starting with a completed puzzle and removing some of the pieces of paper.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "For variety, you can use irregularly-sized subregions. You can also create puzzles of larger size (two 5 by 5 puzzles are shown).",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

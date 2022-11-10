@@ -13,7 +13,7 @@
           "value": "In which ways can you fill a square with other squares, where the other squares need not all be the same size? However, the side length of each square must be some whole number multiple of a fixed length. The question to investigate is: What are all the numbers of squares that are possible? If you know a number is possible, is there an easy way to describe how to do it?\n\nLet your child play with it over many days and don’t be in a hurry to get to the answer. Here is a diagram showing how 6 is possible.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "If your child enjoys exploring that question, explore variations on this theme. Suppose you only allow squares of certain sizes - such as 1 by 1, 2 by 2, and 3 by 3. Another direction to look at is  filling other figures with figures that have the same shape. For example, ask the same question for regular triangles (triangles with all their sides the same length). Some figures are interesting to investigate in this way, and some are not interesting at all - which ones?",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

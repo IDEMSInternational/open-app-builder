@@ -13,7 +13,7 @@
           "value": "A rectangular grid of numbers is given with some of the numbers filled in. The challenge is to fill in the remaining numbers so that any two numbers that share a side only differ in a single place, and the difference of the digits in that place is 1 (including going between 0 and 9). No number may be used more than once in the grid. Using a 100-Chart may be helpful for beginning solvers.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "Make this puzzle by taking an empty grid and filling it with numbers, with no number repeated. Next, remove some of the numbers, making sure that it is not too hard for your child. In the example, the red numbers are the missing ones.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

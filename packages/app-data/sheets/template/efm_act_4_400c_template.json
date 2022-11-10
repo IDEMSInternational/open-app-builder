@@ -13,7 +13,7 @@
           "value": "Suppose your child likes to take steps two at a time sometimes, but one at a time other times. If your child wants to go up some steps, a natural question is: How many ways can this be done?\n\nFor example, for 0 steps there is just one way - you just stand there. For 1 step there is one way. For two steps, you can either take a one double step or two single steps. \n\nYour child should carefully count many cases of this and then make a table of the results (when there is lots of information, a table often helps). The start of the table would look like this:",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "After looking at these numbers, your child may notice that each pair of numbers adds up to the next number. Why does this happen? These numbers are called Fibonacci Numbers.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

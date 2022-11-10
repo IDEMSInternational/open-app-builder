@@ -13,7 +13,7 @@
           "value": "Depending on how many children are playing, there are two ways to play this.\n\nAdult with two children: Each child draws a card and places it on their forehead facing out without seeing it. You announce the sum of the cards and the children are challenged to figure out their own card by looking at the other child’s card.\n\nAdult with one child: Create several pairs of cards in advance where each pair of cards has the same total known to all. The unused cards are moved to the side. Pick up one random pair of cards, place the cards on your foreheads, and figure out each card by looking at the other person’s card.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

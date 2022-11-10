@@ -31,7 +31,7 @@
           "value": "Start with a bowl of small pieces of food. Have your child count out loud a few items from the bowl, say 5, and give them to you. Secretly divide these items between your hands and then hold both hands out with one hand open and the other closed. Your child now counts aloud the items in the open hand and then chooses which hand to “steal” from. Have your child predict how many items will be stolen before you open your hand.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

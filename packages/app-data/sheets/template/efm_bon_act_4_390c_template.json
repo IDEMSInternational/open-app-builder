@@ -13,7 +13,7 @@
           "value": "Addition Pyramid",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -24,7 +24,7 @@
           "value": "Puzzle",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -35,7 +35,7 @@
           "value": "Introduction",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -46,7 +46,7 @@
           "value": "A pyramid of 10 numbers placed in 4 rows is given with a target number. The challenge is to find a path through the pyramid using one number from each row so that the sum of the numbers is the target number. The numbers on the path must touch each other.\n\nMake one of these puzzles by filling in the numbers that you want to form the path, and record the sum of those numbers. Then fill in the remaining decoy numbers in the pyramid. The number of possible paths through the pyramid doubles with the addition of each row, so making larger pyramids is a way to challenge a child who finds the 10-number puzzle  easy. For a child who finds a 10-number puzzle hard, start with 6-number puzzles until they become easy and quick to solve.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -66,7 +66,7 @@
           "value": "For larger puzzles, it can be a challenge for the puzzle maker to ensure that there is only one correct path through the pyramid. Don’t concern yourself too much with that. Even though it’s nice if there is only one path, your child will enjoy showing you that there is more than one way to solve it.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

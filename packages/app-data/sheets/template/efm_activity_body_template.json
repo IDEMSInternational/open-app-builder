@@ -237,7 +237,7 @@
       "value": "Read Bonus Material",
       "_translations": {
         "value": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "type": "set_variable",

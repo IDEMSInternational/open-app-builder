@@ -13,7 +13,7 @@
           "value": "Start with a number line that goes from 1 to some number, say 20. During a turn, choose two numbers and a result, none of which have been crossed out, and write down an addition or subtraction equation that involves those numbers. The two numbers in the equation are crossed off, and the result is circled. \n\nThe next player must use the result as one of the two numbers. If it is played competitively, the winner is the last player with a legal move. It can also be played cooperatively to see how few numbers are left untouched.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

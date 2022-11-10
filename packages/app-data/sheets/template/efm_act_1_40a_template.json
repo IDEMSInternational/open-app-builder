@@ -13,7 +13,7 @@
           "value": "Pick a number, say 2. Challenge your child to go on a treasure hunt to find as many ways as possible that 2 shows up around you. It may show up as the numeral 2 on a wall, sign, or building, or it may show up as two of something, such as two chairs or two dishes.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

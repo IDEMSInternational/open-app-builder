@@ -13,7 +13,7 @@
           "value": "Choose one of the Shape Cards - this is your starting card. Create a sequence of 4 to 8 cards that can legally be played in sequence on that starting card – each card must have two properties in common with the previous card.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "When you’re done, separate the starting card and shuffle the other cards. The challenge is to take the shuffled cards and place them in a series of legal moves on the starting card.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

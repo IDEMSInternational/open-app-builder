@@ -13,7 +13,7 @@
           "value": "Product Game",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -24,7 +24,7 @@
           "value": "Game",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -35,7 +35,7 @@
           "value": "Introduction",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -46,7 +46,7 @@
           "value": "Use a shared piece of paper filled out as follows:",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -75,7 +75,7 @@
           "value": "The first player moves a token onto any number from 1 to 9 in the 1-9 squares on the bottom row. The second player puts another token on one of the 1-9 squares on the bottom row and claims the product in the 6 by 6 grid. From then on, each player chooses to move one of the two tokens and claim the product (if they can). The first player to claim 3 squares in a row wins. Mix up the product numbers in the 6 by 6 grid to give your child better practice identifying the products.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -86,7 +86,7 @@
           "value": "Bigger Boards",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -97,7 +97,7 @@
           "value": "These playing boards can be made as large as you like, though they do get to be quite large pretty quickly. Here are a few larger boards with the corresponding larger number ranges beneath them.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -126,7 +126,7 @@
           "value": "The squares with red stars are “free” squares and may be used by either side as needed.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",

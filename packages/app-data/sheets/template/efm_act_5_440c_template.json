@@ -13,7 +13,7 @@
           "value": "There are two versions of this. The first is the same as the Sum Groups puzzle in Chapter 3, only now the target sums can be bigger.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
@@ -42,7 +42,7 @@
           "value": "The other version uses a 4 by 4 board with a target number, say 20. As in Sum Groups, the board is filled with pairs and triples of numbers that add up to the target. However, now there will be one square not involved in any of those groups. The challenge is to find that number.",
           "_translations": {
             "value": {
-              "es_sp": true
+              "es_es": true
             }
           },
           "type": "set_variable",
