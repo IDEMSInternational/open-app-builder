@@ -12,7 +12,7 @@ const config: IDeploymentConfig = {
   },
   app_data: {},
   translations: {
-    filter_language_codes: ["us_en"],
+    filter_language_codes: ["us_en", "es_sp"],
     translated_strings_path: "packages/app-data/translations_source/from_translators",
     source_strings_path: "packages/app-data/translations_source/to_translate",
   },
