@@ -17,6 +17,17 @@ export class CrashlyticsService {
       await this.setEnabled({ enabled: true });
       const { uuid } = await Device.getId();
       await this.setUserId({ userId: uuid });
+      const { webViewVersion } = await Device.getInfo();
+      await this.setContext({
+        key: "userAgent",
+        type: "string",
+        value: navigator.userAgent || "",
+      });
+      await this.setContext({
+        key: "webViewVersion",
+        type: "string",
+        value: webViewVersion || "",
+      });
       this.sendUnsentReports();
     }
   }
