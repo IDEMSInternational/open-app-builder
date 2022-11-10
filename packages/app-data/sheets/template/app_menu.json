@@ -11,10 +11,32 @@
     {
       "type": "button",
       "name": "button_privacy",
+      "value": "Language",
+      "_translations": {
+        "value": {
+          "es_es": true
+        }
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "app_menu_language"
+          ],
+          "_raw": "click | go_to: app_menu_language",
+          "_cleaned": "click | go_to: app_menu_language"
+        }
+      ],
+      "_nested_name": "button_privacy"
+    },
+    {
+      "type": "button",
+      "name": "button_privacy",
       "value": "Privacy policy",
       "_translations": {
         "value": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "action_list": [
@@ -36,7 +58,7 @@
       "value": "Template list",
       "_translations": {
         "value": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "action_list": [
@@ -58,7 +80,7 @@
       "value": "Tour list",
       "_translations": {
         "value": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "action_list": [
@@ -80,7 +102,7 @@
       "value": "Reset app",
       "_translations": {
         "value": {
-          "es_sp": true
+          "es_es": true
         }
       },
       "action_list": [
