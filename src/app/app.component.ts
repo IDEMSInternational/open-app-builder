@@ -156,10 +156,13 @@ export class AppComponent {
    * (e.g. notifications before campaigns that require notifications)
    **/
   private async initialiseCoreServices() {
-    // TODO
+    // log all init logs in a group (any logs called outside will be from nonBlocking services)
+    // that call blocking in their constructor methods
+    console.group("Core Services");
     // use a single async service base to ensure all others created
     this.crashlyticsService.ready(); // Start init but do not need to wait for complete
 
+    const start = performance.now();
     const nonBlockingServices: SyncServiceBase[] = [
       this.skinService,
       this.appConfigService,
@@ -193,14 +196,8 @@ export class AppComponent {
       this.campaignService,
     ];
     await Promise.all(blockingServices.map(async (service) => await service.ready()));
-
-    setTimeout(async () => {
-      await Promise.all(
-        [this.localNotificationInteractionService, this.dbSyncService, this.analyticsService].map(
-          async (service) => await service.ready()
-        )
-      );
-    }, 500);
+    console.log("Total time:", Math.round(performance.now() - start) + "ms");
+    console.groupEnd();
   }
 
   private clickOnMenuItem(id: string) {

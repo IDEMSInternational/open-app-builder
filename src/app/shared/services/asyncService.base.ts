@@ -56,7 +56,7 @@ export class AsyncServiceBase {
     else {
       setTimeout(() => {
         this.callInitFunction();
-      }, 5 + Math.random() * 5000);
+      }, 5000 + Math.random() * 5000);
     }
   }
 

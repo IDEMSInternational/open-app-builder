@@ -81,8 +81,8 @@ export class CampaignService extends AsyncServiceBase {
     this.scheduledCampaigns = scheduledCampaigns;
     this.allCampaigns = allCampaigns;
 
-    console.log("[Scheduled Campaigns]", this.scheduledCampaigns);
-    console.log("[All Campaigns]", this.allCampaigns);
+    // console.log("[Scheduled Campaigns]", this.scheduledCampaigns);
+    // console.log("[All Campaigns]", this.allCampaigns);
 
     await this.scheduleCampaignNotifications();
 
