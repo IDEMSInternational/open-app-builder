@@ -8,6 +8,7 @@ import { ITemplateRowMap } from "./instance/template-row.service";
 import { extractDynamicEvaluators } from "data-models";
 import { TemplateFieldService } from "./template-field.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
+import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 const SHOW_DEBUG_LOGS = false;
@@ -29,7 +30,7 @@ export interface IVariableContext {
 }
 
 @Injectable({ providedIn: "root" })
-export class TemplateVariablesService {
+export class TemplateVariablesService extends AsyncServiceBase {
   /**
    * The template variable service handles the processing and evaluation of dynamic variables, such as
    * @local.some_value or @campaign.my_campaign.
@@ -43,7 +44,20 @@ export class TemplateVariablesService {
     private templateTranslateService: TemplateTranslateService,
     private templateCalcService: TemplateCalcService,
     private appDataService: AppDataService
-  ) {}
+  ) {
+    super("TemplateVariables");
+    this.registerInitFunction(this.initialise);
+  }
+
+  private async initialise() {
+    await this.ensureAsyncServicesReady([
+      this.templateFieldService,
+      // this.campaignService, // checked during method call to avoid circular init
+      this.templateTranslateService,
+      this.templateCalcService,
+    ]);
+    this.ensureSyncServicesReady([this.appDataService]);
+  }
 
   /**
    * Data populated in PLH fields may contain references to specific helper or lookup functions,
@@ -340,6 +354,7 @@ export class TemplateVariablesService {
       // TODO - ideally campaign lookup should be merged into data list lookup with additional query/params
       // e.g. evaluate conditions, take first etc.
       case "campaign":
+        await this.campaignService.ready();
         parsedValue = (await this.campaignService.getNextCampaignRows(fieldName))?.[0];
         break;
       case "calc":

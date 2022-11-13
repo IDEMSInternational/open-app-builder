@@ -2,11 +2,12 @@ import { Injectable } from "@angular/core";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
 import { AppDataService } from "../data/app-data.service";
 import { arrayToHashmap } from "../../utils";
+import { AsyncServiceBase } from "../asyncService.base";
 
 @Injectable({
   providedIn: "root",
 })
-export class TaskService {
+export class TaskService extends AsyncServiceBase {
   // TODO: These should be set from the deployment/skin level (ultimately should come from templates)
   highlightedTaskFieldName = "_task_highlighted_group_id";
   taskGroupsListName = "workshop_tasks";
@@ -16,9 +17,14 @@ export class TaskService {
   constructor(
     private templateFieldService: TemplateFieldService,
     private appDataService: AppDataService
-  ) {}
+  ) {
+    super("Task");
+    this.registerInitFunction(this.initialise);
+  }
 
-  async init() {
+  private async initialise() {
+    await this.ensureAsyncServicesReady([this.templateFieldService]);
+    this.ensureSyncServicesReady([this.appDataService]);
     await this.getListOfTaskGroups();
     if (this.taskGroups.length > 0) {
       this.evaluateHighlightedTaskGroup();
@@ -64,7 +70,7 @@ export class TaskService {
         highestPriorityTaskGroup.id
       );
     }
-    console.log("[HIGHLIGHTED TASK GROUP] - ", highestPriorityTaskGroup.id);
+    // console.log("[HIGHLIGHTED TASK GROUP] - ", highestPriorityTaskGroup.id);
   }
 
   /** Get the id of the task group stored as higlighted */

@@ -1,5 +1,8 @@
 import { Injector } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
+import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
+import { getGlobalService } from "src/app/shared/services/global.service";
+import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { booleanStringToBoolean } from "src/app/shared/utils";
 import { ItemProcessor } from "../../processors/item";
 import { TemplateContainerComponent } from "../../template-container.component";
@@ -7,7 +10,6 @@ import { mergeTemplateRows } from "../../utils/template-utils";
 import { TemplateFieldService } from "../template-field.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { TemplateVariablesService } from "../template-variables.service";
-import { TemplateInstanceService } from "./template-instance.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -29,20 +31,38 @@ export type ITemplateRowMap = { [row_nested_name: string]: FlowTypes.TemplateRow
  * NOTE - the service is not injected as every template should instantiate their own copy
  * for processed row tracking *
  */
-export class TemplateRowService extends TemplateInstanceService {
+export class TemplateRowService extends SyncServiceBase {
   /** List of overrides set by parent templates for access during parent processing */
   /** Hashmap of all rows keyed by nested row name (e.g. contentBox1.row1.title)  */
   public templateRowMap: ITemplateRowMap = {};
   public renderedRows: FlowTypes.TemplateRow[]; // rows processed and filtered by condition
 
-  private templateVariablesService: TemplateVariablesService;
-  private templateTranslateService: TemplateTranslateService;
-  private templateFieldService: TemplateFieldService;
-  constructor(injector: Injector, public container: TemplateContainerComponent) {
-    super(injector);
-    this.templateVariablesService = this.getGlobalService(TemplateVariablesService);
-    this.templateTranslateService = this.getGlobalService(TemplateTranslateService);
-    this.templateFieldService = this.getGlobalService(TemplateFieldService);
+  constructor(private injector: Injector, public container: TemplateContainerComponent) {
+    super("TemplateRow");
+    /**
+     * Avoid initialisation logic and prefer to ensure services ready
+     * on demand to avoid cyclic issues
+     * Instead services are checked before public method calls
+     * */
+  }
+
+  private get templateVariablesService() {
+    return getGlobalService(this.injector, TemplateVariablesService);
+  }
+  private get templateTranslateService() {
+    return getGlobalService(this.injector, TemplateTranslateService);
+  }
+  private get templateFieldService() {
+    return getGlobalService(this.injector, TemplateFieldService);
+  }
+
+  /** Ensure services are intialised before being called from public methods */
+  private async ensurePublicMethodServices() {
+    await this.ensureAsyncServicesReady([
+      this.templateVariablesService,
+      this.templateTranslateService,
+      this.templateFieldService,
+    ]);
   }
 
   /***************************************************************************************
@@ -54,6 +74,7 @@ export class TemplateRowService extends TemplateInstanceService {
    * process dynamic variables and filter conditions
    */
   public async processContainerTemplateRows() {
+    await this.ensurePublicMethodServices();
     const { name, template, row } = this.container;
     log_group("[Rows Init]", name, row?.value || "");
     const overrides = this.getParentOverridesHashmap(row?.rows, name);
@@ -324,6 +345,7 @@ export class TemplateRowService extends TemplateInstanceService {
    * TODO - Design more efficient way to determine if re-rendering necessary
    */
   public async processRowUpdates() {
+    await this.ensurePublicMethodServices();
     return this.processRows(this.container.template.rows);
   }
 

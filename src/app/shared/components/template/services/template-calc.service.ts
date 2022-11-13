@@ -4,16 +4,24 @@ import { Injectable } from "@angular/core";
 import * as date_fns from "date-fns";
 import { ServerService } from "src/app/shared/services/server/server.service";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
+import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 
 @Injectable({ providedIn: "root" })
-export class TemplateCalcService {
+export class TemplateCalcService extends AsyncServiceBase {
   /** list of all variables accessible directly within calculations */
   private calcContext: ICalcContext;
 
   constructor(
     private serverService: ServerService,
     private dataEvaluationService: DataEvaluationService
-  ) {}
+  ) {
+    super("TemplateCalc");
+    this.registerInitFunction(this.initialise);
+  }
+  private async initialise() {
+    this.ensureSyncServicesReady([this.serverService]);
+    await this.ensureAsyncServicesReady([this.dataEvaluationService]);
+  }
 
   /** Provide calc context, initialising only once */
   public getCalcContext() {
