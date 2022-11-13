@@ -163,39 +163,68 @@ export class AppComponent {
     this.crashlyticsService.ready(); // Start init but do not need to wait for complete
 
     const start = performance.now();
-    const nonBlockingServices: SyncServiceBase[] = [
-      this.skinService,
-      this.appConfigService,
-      this.themeService,
-      this.templateService,
-      this.templateProcessService,
-      this.analyticsService,
-      this.appDataService,
-      this.authService,
-      this.lifecycleActionsService,
-      this.serverService,
-    ];
-    for (const service of nonBlockingServices) {
+
+    const services: {
+      eager: (AsyncServiceBase | SyncServiceBase)[];
+      blocking: AsyncServiceBase[];
+      nonBlocking: SyncServiceBase[];
+      deferred: (AsyncServiceBase | SyncServiceBase)[];
+      implicit: (AsyncServiceBase | SyncServiceBase)[];
+      deprecated: (AsyncServiceBase | SyncServiceBase)[];
+    } = {
+      // services that should be called early but don't need to be waited for
+      eager: [this.crashlyticsService],
+      // services that require async init and may be depended on by other services
+      blocking: [
+        this.dbSyncService,
+        this.userMetaService,
+        this.tourService,
+        this.localNotificationService,
+        this.localNotificationInteractionService,
+        this.taskService,
+        this.taskActions,
+        this.campaignService,
+      ],
+      // services that handle own init in synchronous function
+      nonBlocking: [
+        this.skinService,
+        this.appConfigService,
+        this.themeService,
+        this.templateService,
+        this.templateProcessService,
+        this.analyticsService,
+        this.appDataService,
+        this.authService,
+        this.serverService,
+      ],
+      // services that should be initialised lazily
+      deferred: [],
+      // services intialised but other services (do not need explicit call, kept for ref)
+      implicit: [
+        this.dbService,
+        this.templateTranslateService,
+        this.templateFieldService,
+        this.dataEvaluationService,
+        this.appEventService,
+      ],
+      // services not currently in use (to be organised)
+      deprecated: [this.lifecycleActionsService],
+    };
+
+    for (const service of services.eager) {
+      service.ready();
+    }
+    await Promise.all(services.blocking.map(async (service) => await service.ready()));
+    for (const service of services.nonBlocking) {
       service.ready();
     }
 
-    const blockingServices: AsyncServiceBase[] = [
-      this.dbService,
-      this.dataEvaluationService,
-      this.dbSyncService,
-      this.userMetaService,
-      this.tourService,
-      this.templateFieldService,
-      this.appEventService,
-      this.localNotificationService,
-      this.localNotificationInteractionService,
-      this.templateTranslateService,
-      this.crashlyticsService,
-      this.taskService,
-      this.taskActions,
-      this.campaignService,
-    ];
-    await Promise.all(blockingServices.map(async (service) => await service.ready()));
+    setTimeout(() => {
+      for (const service of services.deferred) {
+        service.ready();
+      }
+    }, 5000);
+
     console.log("Total time:", Math.round(performance.now() - start) + "ms");
     console.groupEnd();
   }
