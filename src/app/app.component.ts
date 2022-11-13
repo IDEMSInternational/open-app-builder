@@ -55,7 +55,7 @@ export class AppComponent {
     private platform: Platform,
     private menuController: MenuController,
     private router: Router,
-
+    // App services
     private skinService: SkinService,
     private appConfigService: AppConfigService,
     private dbService: DbService,
@@ -156,25 +156,22 @@ export class AppComponent {
    * (e.g. notifications before campaigns that require notifications)
    **/
   private async initialiseCoreServices() {
-    // log all init logs in a group (any logs called outside will be from nonBlocking services)
-    // that call blocking in their constructor methods
-    console.group("Core Services");
-    // use a single async service base to ensure all others created
-    this.crashlyticsService.ready(); // Start init but do not need to wait for complete
-
-    const start = performance.now();
-
+    // Organise all services into groups
     const services: {
-      eager: (AsyncServiceBase | SyncServiceBase)[];
+      /** should be called early but don't need to be waited for */
+      eager: AsyncServiceBase[];
+      /** require async init and may be depended on by other services */
       blocking: AsyncServiceBase[];
+      /** handle own init in synchronous function (will be ready on inject) */
       nonBlocking: SyncServiceBase[];
+      /** async but not depended on for init of other services (can be intialised after timeout) */
       deferred: (AsyncServiceBase | SyncServiceBase)[];
+      /** do not strictly need to be initialised as done by other services (but kept for reference) */
       implicit: (AsyncServiceBase | SyncServiceBase)[];
+      /** likely no longer required, should be removed in future (impact can be tested by moving into group) */
       deprecated: (AsyncServiceBase | SyncServiceBase)[];
     } = {
-      // services that should be called early but don't need to be waited for
       eager: [this.crashlyticsService],
-      // services that require async init and may be depended on by other services
       blocking: [
         this.dbSyncService,
         this.userMetaService,
@@ -185,21 +182,17 @@ export class AppComponent {
         this.taskActions,
         this.campaignService,
       ],
-      // services that handle own init in synchronous function
       nonBlocking: [
         this.skinService,
         this.appConfigService,
         this.themeService,
         this.templateService,
         this.templateProcessService,
-        this.analyticsService,
         this.appDataService,
         this.authService,
         this.serverService,
       ],
-      // services that should be initialised lazily
-      deferred: [],
-      // services intialised but other services (do not need explicit call, kept for ref)
+      deferred: [this.analyticsService],
       implicit: [
         this.dbService,
         this.templateTranslateService,
@@ -207,10 +200,14 @@ export class AppComponent {
         this.dataEvaluationService,
         this.appEventService,
       ],
-      // services not currently in use (to be organised)
       deprecated: [this.lifecycleActionsService],
     };
 
+    // log all init logs in a group. Note, some services may sit outside this group in cases
+    // where non-blocking services import blocking (non-blocking call init on import into constructor).
+    // could be resolved by importing via injector instead of constructor (assumed not very important)
+    console.group("Core Services");
+    const start = performance.now();
     for (const service of services.eager) {
       service.ready();
     }
@@ -218,13 +215,11 @@ export class AppComponent {
     for (const service of services.nonBlocking) {
       service.ready();
     }
-
     setTimeout(() => {
       for (const service of services.deferred) {
         service.ready();
       }
     }, 5000);
-
     console.log("Total time:", Math.round(performance.now() - start) + "ms");
     console.groupEnd();
   }
