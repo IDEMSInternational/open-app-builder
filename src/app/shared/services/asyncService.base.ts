@@ -1,5 +1,7 @@
-import { filter, first } from "rxjs/operators";
+import { filter, first, map, tap, timeoutWith } from "rxjs/operators";
 import { BehaviorSubject } from "rxjs";
+import { of } from "rxjs";
+import type { SyncServiceBase } from "./syncService.base";
 
 /**
  * Base class for service with async init method
@@ -32,9 +34,8 @@ export class AsyncServiceBase {
 
   /**
    * @param serviceName Name of child service for use in logging
-   * @param eager Call init function immediately on import (default false, defer until first `ready()` called)
    */
-  protected constructor(private serviceName: string, private eager = false) {}
+  protected constructor(private serviceName: string) {}
 
   /**
    * When calling the inherited init function from the base class the context will be set incorrectly,
@@ -43,19 +44,28 @@ export class AsyncServiceBase {
    *
    * On the plus side it means extended class init methods can be marked as private and do not have
    * to be called init
+   *
+   * @param callImmediately Call init function immediately (default false, defer until first `ready()` called)
    */
-  public registerInitFunction(fn: () => Promise<void>) {
+  public registerInitFunction(fn: () => Promise<void>, callImmediately = false) {
     this.initFunction = fn;
-    if (this.eager) {
+    if (callImmediately) {
       this.callInitFunction();
+    }
+    // HACK - until code a bit tidier ensure all services still register after random timeout (5-10s)
+    else {
+      setTimeout(() => {
+        this.callInitFunction();
+      }, 5 + Math.random() * 5000);
     }
   }
 
   /**
-   * public function to check if service async init method has been completed
+   * public function to check if service async init method has been completed and wait if not
+   * @param timeout ms to wait before silently failing (default 10s)
    * @returns Promise<boolean>
    */
-  public async ready(): Promise<boolean> {
+  public async ready(timeout = 10 * 1000): Promise<boolean> {
     if (!this.initCalled) {
       this.callInitFunction();
     }
@@ -64,23 +74,37 @@ export class AsyncServiceBase {
     return this.initialised$
       .pipe(
         filter((v) => v === true),
-        first()
+        first(),
+        timeoutWith(
+          timeout,
+          of(true).pipe(
+            tap(() => {
+              console.log(`%c ${this.serviceName || ""} `, "background: #bd8173; color: black");
+            })
+          )
+        )
       )
       .toPromise();
 
     // RXJS7 Version (future upgrade)
     // return firstValueFrom(this.initialised$.pipe(filter((v: boolean) => v === true)));
   }
+  /** Synchronous method to check current ready state */
+  isReady = () => this.initialised$.value === true;
 
   /**
    * Utility method to wait for `ready` promise from multiple services
    */
-  public ensureServicesReady(services: AsyncServiceBase[]) {
+  public ensureAsyncServicesReady(services: AsyncServiceBase[]) {
     return Promise.all(
       services.map(async (service) => {
         await service.ready();
       })
     );
+  }
+  /** Syntactic sugar just to keep track of sync services which will self-init */
+  public ensureSyncServicesReady(services: SyncServiceBase[]) {
+    return services.map((service) => service.ready());
   }
 
   /** Call the provided init method */
@@ -88,11 +112,17 @@ export class AsyncServiceBase {
     if (!this.initFunction) {
       throw new Error("Must call registerInitFunction in extended class");
     }
-    console.log(`%c ${this.serviceName || ""} `, "background: #deaa50; color: black");
+    if (this.initCalled) {
+      return;
+    }
     this.initCalled = true;
+    const startTime = performance.now();
+    console.log(`%c ${this.serviceName || ""} `, "background: #deaa50; color: black");
     await this.initFunction();
     this.initialised$.next(true);
-    console.log(`%c ${this.serviceName || ""} `, "background: #7ebd73; color: black");
+    const endTime = performance.now();
+    const totalTime = Math.round(endTime - startTime);
+    console.log(`%c ${this.serviceName} (${totalTime}ms) `, "background: #7ebd73; color: black");
   }
 
   /**

@@ -31,6 +31,8 @@ import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lif
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
 import { IAppConfig } from "./shared/model";
 import { TaskService } from "./shared/services/task/task.service";
+import { AsyncServiceBase } from "./shared/services/asyncService.base";
+import { SyncServiceBase } from "./shared/services/syncService.base";
 
 @Component({
   selector: "app-root",
@@ -49,14 +51,13 @@ export class AppComponent {
   public renderAppTemplates = false;
 
   constructor(
-    // services with constructor-enabled init functions (load eagerly)
-    public skinService: SkinService,
-    public appConfigService: AppConfigService,
-
-    // other services
+    // 3rd Party Services
     private platform: Platform,
     private menuController: MenuController,
     private router: Router,
+
+    private skinService: SkinService,
+    private appConfigService: AppConfigService,
     private dbService: DbService,
     private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
@@ -77,14 +78,14 @@ export class AppComponent {
     private authService: AuthService,
     private taskService: TaskService,
     /** Inject in the main app component to start tracking actions immediately */
-    public taskActions: TaskActionService,
-    public lifecycleActionsService: LifecycleActionsService,
-    public serverService: ServerService
+    private taskActions: TaskActionService,
+    private lifecycleActionsService: LifecycleActionsService,
+    private serverService: ServerService
   ) {
     this.initializeApp();
   }
 
-  async initializeApp() {
+  private async initializeApp() {
     this.platform.ready().then(async () => {
       this.subscribeToAppConfigChanges();
       // ensure deployment field set correctly for use in any startup services or templates
@@ -103,7 +104,13 @@ export class AppComponent {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
       }
       // Run app-specific launch tasks
+
+      // Re-initialise default field and globals on init in case sheets have been updated
+      // TODO - ideally this should just be triggered on first launch of new app update
+      await this.templateService.initialiseDefaultFieldAndGlobals();
+      await this.templateProcessService.initialiseStartupTemplates();
       await this.lifecycleActionsService.handleLaunchActions();
+
       this.menuController.enable(true, "main-side-menu");
       if (Capacitor.isNativePlatform()) {
         if (!isDeveloperMode) {
@@ -117,7 +124,7 @@ export class AppComponent {
     });
   }
 
-  async ensureUserSignedIn() {
+  private async ensureUserSignedIn() {
     const authUser = await this.authService.getCurrentUser();
     if (!authUser) {
       const templatename = this.appAuthenticationDefaults.signInTemplate;
@@ -131,7 +138,7 @@ export class AppComponent {
   }
 
   /** Initialise appConfig and set dependent properties */
-  subscribeToAppConfigChanges() {
+  private subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
       this.appConfig = appConfig;
       this.sideMenuDefaults = this.appConfig.APP_SIDEMENU_DEFAULTS;
@@ -148,39 +155,55 @@ export class AppComponent {
    * Note - For some of these services order will be important
    * (e.g. notifications before campaigns that require notifications)
    **/
-  async initialiseCoreServices() {
-    this.crashlyticsService.init(); // Start init but do not need to wait for complete
-    await this.dbService.init();
-    await this.userMetaService.init();
-    this.themeService.init();
+  private async initialiseCoreServices() {
+    // TODO
+    // use a single async service base to ensure all others created
+    this.crashlyticsService.ready(); // Start init but do not need to wait for complete
 
-    /** CC 2021-05-14 - disabling reminders service until decide on full implementation (ideally not requiring evaluation of all reminders on init) */
-    // this.remindersService.init();
-    await this.appEventService.init();
-    await this.serverService.init();
-    await this.dataEvaluationService.refreshDBCache();
-    await this.templateTranslateService.init();
-    await this.appDataService.init();
-    await this.templateService.init();
-    // ensure local notifications service available for campaigns service
-    await this.localNotificationService.init();
-    // ensure campaigns initialised before template_process which processes templates on startup
-    await this.campaignService.init();
-    await this.templateProcessService.init();
-    await this.tourService.init();
-    await this.taskService.init();
+    const nonBlockingServices: SyncServiceBase[] = [
+      this.skinService,
+      this.appConfigService,
+      this.themeService,
+      this.templateService,
+      this.templateProcessService,
+      this.analyticsService,
+      this.appDataService,
+      this.authService,
+      this.lifecycleActionsService,
+      this.serverService,
+    ];
+    for (const service of nonBlockingServices) {
+      service.ready();
+    }
 
-    // Initialise additional services in a non-blocking way
+    const blockingServices: AsyncServiceBase[] = [
+      this.dbService,
+      this.dataEvaluationService,
+      this.dbSyncService,
+      this.userMetaService,
+      this.tourService,
+      this.templateFieldService,
+      this.appEventService,
+      this.localNotificationService,
+      this.localNotificationInteractionService,
+      this.templateTranslateService,
+      this.crashlyticsService,
+      this.taskService,
+      this.taskActions,
+      this.campaignService,
+    ];
+    await Promise.all(blockingServices.map(async (service) => await service.ready()));
+
     setTimeout(async () => {
-      await this.localNotificationInteractionService.init();
-      await this.dbSyncService.init();
-      await this.analyticsService.init();
-      /** CC 2022-04-01 - Disable service as not currently in use */
-      // await this.pushNotificationService.init();
-    }, 1000);
+      await Promise.all(
+        [this.localNotificationInteractionService, this.dbSyncService, this.analyticsService].map(
+          async (service) => await service.ready()
+        )
+      );
+    }, 500);
   }
 
-  clickOnMenuItem(id: string) {
+  private clickOnMenuItem(id: string) {
     this.menuController.close("main-side-menu");
     this.router.navigateByUrl("/" + id);
   }

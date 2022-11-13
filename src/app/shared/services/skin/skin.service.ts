@@ -6,11 +6,12 @@ import { arrayToHashmap } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
 import { TemplateService } from "../../components/template/services/template.service";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
+import { SyncServiceBase } from "../syncService.base";
 
 @Injectable({
   providedIn: "root",
 })
-export class SkinService {
+export class SkinService extends SyncServiceBase {
   // A hashmap of all skins available to the current deployment
   private availableSkins: Record<string, IAppSkin>;
   private activeSkin$ = new BehaviorSubject<IAppSkin | undefined>(undefined);
@@ -21,11 +22,17 @@ export class SkinService {
     private templateService: TemplateService,
     private themeService: ThemeService
   ) {
-    // eagerly initialise so that updated appConfig is available to other services
-    this.init();
+    super("Skin Service");
+    this.initialise();
   }
 
-  private init() {
+  private async initialise() {
+    this.ensureSyncServicesReady([
+      this.localStorageService,
+      this.appConfigService,
+      this.themeService,
+      this.templateService,
+    ]);
     const skinsConfig = this.appConfigService.APP_CONFIG.APP_SKINS;
     this.availableSkins = arrayToHashmap(skinsConfig.available, "name");
     // Retrieve the last active skin with default fallback
@@ -42,7 +49,7 @@ export class SkinService {
   public setSkin(skinName: string, isInit = false) {
     if (skinName in this.availableSkins) {
       const targetSkin = this.availableSkins[skinName];
-      console.log("[SET SKIN]", skinName, targetSkin);
+      // console.log("[SET SKIN]", skinName, targetSkin);
       this.activeSkin$.next(targetSkin);
       // Update appConfig to reflect any overrides defined by the skin
       this.appConfigService.updateAppConfig(targetSkin.appConfig);
