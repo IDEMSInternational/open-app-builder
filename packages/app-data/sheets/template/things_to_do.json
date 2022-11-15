@@ -94,22 +94,22 @@
       "_translations": {
         "value": {}
       },
-      "condition": "!@fields.workshop_path == \"individual\"",
+      "condition": "!(@fields.workshop_path == \"individual\")",
       "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "path",
       "_dynamicFields": {
         "condition": [
           {
-            "fullExpression": "!@fields.workshop_path == \"individual\"",
-            "matchedExpression": "!@fields.workshop_path",
+            "fullExpression": "!(@fields.workshop_path == \"individual\")",
+            "matchedExpression": "@fields.workshop_path",
             "type": "fields",
             "fieldName": "workshop_path"
           }
         ]
       },
       "_dynamicDependencies": {
-        "!@fields.workshop_path": [
+        "@fields.workshop_path": [
           "condition"
         ]
       }
