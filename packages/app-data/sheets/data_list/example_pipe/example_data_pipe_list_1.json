@@ -1,0 +1,19 @@
+{
+  "flow_type": "data_list",
+  "flow_subtype": "example_pipe",
+  "flow_name": "example_data_pipe_list_1",
+  "status": "released",
+  "rows": [
+    {
+      "id": "id_1",
+      "column_a": 1,
+      "column_b": 1
+    },
+    {
+      "id": "id_2",
+      "column_a": 1,
+      "column_b": 1
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes_join.xlsx"
+}

@@ -82,6 +82,35 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "elderly_nutrients",
       _xlsxPath: "data_lists/nutrition/nutrition_data_lists.xlsx",
     },
+    encouraging_messages: {
+      flow_type: "data_list",
+      flow_name: "encouraging_messages",
+      _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
+    },
+    example_data_pipe_list: {
+      flow_type: "data_list",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_list",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes.xlsx",
+    },
+    example_data_pipe_list_1: {
+      flow_type: "data_list",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_list_1",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes_join.xlsx",
+    },
+    example_data_pipe_list_2: {
+      flow_type: "data_list",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_list_2",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes_join.xlsx",
+    },
+    example_data_pipe_list_3: {
+      flow_type: "data_list",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_list_3",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes_join.xlsx",
+    },
     example_sheet_defaults_list: {
       flow_type: "data_list",
       flow_name: "example_sheet_defaults_list",
@@ -836,6 +865,78 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "tour",
       flow_name: "home_screen_tour",
       _xlsxPath: "tours/global/navigation_tours.xlsx",
+    },
+  },
+  data_pipe: {
+    common_workshop_task_gs_filter: {
+      flow_type: "data_pipe",
+      flow_name: "common_workshop_task_gs_filter",
+      _xlsxPath: "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx",
+    },
+    common_workshop_tasks_filter: {
+      flow_type: "data_pipe",
+      flow_name: "common_workshop_tasks_filter",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_data_pipes.xlsx",
+    },
+    debug_data_pipe_translate: {
+      flow_type: "data_pipe",
+      flow_name: "debug_data_pipe_translate",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_data_lists.xlsx",
+    },
+    example_data_pipe: {
+      flow_type: "data_pipe",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes.xlsx",
+    },
+    example_data_pipe_concat: {
+      flow_type: "data_pipe",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_concat",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes.xlsx",
+    },
+    example_data_pipe_concat_2: {
+      flow_type: "data_pipe",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_concat_2",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes_join.xlsx",
+    },
+    example_data_pipe_map: {
+      flow_type: "data_pipe",
+      flow_subtype: "example_pipe",
+      flow_name: "example_data_pipe_map",
+      _xlsxPath: "quality_assurance/example_sheets/example_data_pipes.xlsx",
+    },
+    single_tg_filter: {
+      flow_type: "data_pipe",
+      flow_name: "single_tg_filter",
+      _xlsxPath: "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx",
+    },
+    workshop_data_pipe: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_data_pipe",
+      _xlsxPath: "global/data/workshop_data/workshop_data_pipes.xlsx",
+    },
+    workshop_task_gs_append: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_task_gs_append",
+      _xlsxPath: "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx",
+    },
+    workshop_task_gs_concat: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_task_gs_concat",
+      _xlsxPath: "global/data/workshop_data/workshop_task_groups_data_pipes.xlsx",
+    },
+    workshop_tasks_append: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_tasks_append",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_data_pipes.xlsx",
+    },
+    workshop_tasks_concat: {
+      flow_type: "data_pipe",
+      flow_name: "workshop_tasks_concat",
+      _xlsxPath: "global/data/workshop_data/workshop_tasks_data_pipes.xlsx",
     },
   },
 };

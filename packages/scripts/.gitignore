@@ -6,3 +6,4 @@ build
 exec
 
 test/data/cache
+test/data/output

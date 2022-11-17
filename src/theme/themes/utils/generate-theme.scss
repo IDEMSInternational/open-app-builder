@@ -10,7 +10,8 @@
   $secondary,
   $page-background: null,
   $weights: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900),
-  $yellow: #ffd333
+  $yellow: #ffd333,
+  $gray: hsl(0, 0%, 93%)
 ) {
   $result: (
     "color-primary": $primary,
@@ -20,8 +21,13 @@
     "background-color": color.change($primary, $lightness: 95%),
     "color-yellow": $yellow,
     "color-red": #eb445a,
-    "color-gray-light": hsl(0, 0%, 93%),
+    "color-green": #92cb44,
+    "color-gray-light": $gray,
     "default-box-shadow": 0 4px 4px rgba(0, 0, 0, 0.25),
+    // Used for activated/focused/hover states of ion-button – may only be visible in web preview
+    // TODO: Remove when migrating away from ionic
+    "color-primary-shade": color.adjust($primary, $lightness: -10%),
+    "color-primary-tint": color.adjust($primary, $lightness: 10%),
   );
 
   // Generate variants of base colours based on given weights and add to map
@@ -29,6 +35,7 @@
   $result: map.merge($result, generateColourVariants($primary, "primary", $weights));
   $result: map.merge($result, generateColourVariants($secondary, "secondary", $weights));
   $result: map.merge($result, generateColourVariants($yellow, "yellow", $weights));
+  $result: map.merge($result, generateColourVariants($gray, "gray", $weights));
 
   @if ($page-background != null) {
     $result: map.set($result, "background-color", $page-background);

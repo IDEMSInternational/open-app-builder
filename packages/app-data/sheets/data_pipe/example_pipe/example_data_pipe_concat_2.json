@@ -1,0 +1,18 @@
+{
+  "flow_type": "data_pipe",
+  "flow_subtype": "example_pipe",
+  "flow_name": "example_data_pipe_concat_2",
+  "status": "released",
+  "rows": [
+    {
+      "operation": "concat",
+      "args_list": [
+        "example_data_pipe_list_1",
+        "example_data_pipe_list_3"
+      ],
+      "input_source": false,
+      "output_target": "example_data_pipe_concat_1_3"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes_join.xlsx"
+}

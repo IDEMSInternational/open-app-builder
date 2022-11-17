@@ -17,6 +17,111 @@
     },
     {
       "type": "subtitle",
+      "name": "highlighted_task_group_label",
+      "value": "_task_highlighted_group_id",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "highlighted_task_group_label"
+    },
+    {
+      "type": "text",
+      "name": "highlighted_task_group_value",
+      "value": "@fields._task_highlighted_group_id",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "highlighted_task_group_value",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields._task_highlighted_group_id",
+            "matchedExpression": "@fields._task_highlighted_group_id",
+            "type": "fields",
+            "fieldName": "_task_highlighted_group_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._task_highlighted_group_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "app_theme_label",
+      "value": "_app_theme",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "app_theme_label"
+    },
+    {
+      "type": "text",
+      "name": "app_theme_value",
+      "value": "@fields._app_theme",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "app_theme_value",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields._app_theme",
+            "matchedExpression": "@fields._app_theme",
+            "type": "fields",
+            "fieldName": "_app_theme"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._app_theme": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "app_skin_label",
+      "value": "_app_skin",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "app_skin_label"
+    },
+    {
+      "type": "text",
+      "name": "app_skin_value",
+      "value": "@fields._app_skin",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "app_skin_value",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields._app_skin",
+            "matchedExpression": "@fields._app_skin",
+            "type": "fields",
+            "fieldName": "_app_skin"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._app_skin": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
       "name": "deployment_name_label",
       "value": "_deployment_name",
       "_translations": {
