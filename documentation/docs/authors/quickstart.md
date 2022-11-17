@@ -14,29 +14,29 @@ yarn install
 
 ### Setup required configuration
 
-All configuration is pre-established in the `packages/scripts/config` folder, however is encrypted to avoid sharing sensitive information publically.
+All configuration is pre-established in the `scripts/config` folder, however is encrypted to avoid sharing sensitive information publically.
 
 You must optain a `private.key` file from the development team which you can copy into the `scripts/config` folder.
 
 Once the file is copied run the following command:
 
 ```
-yarn scripts decrypt-config
+yarn scripts config decrypt
 ```
 
 You will see additional files populate to the `scripts/config` folder such as they become decrypted
 
 ### Connect to Google Drive
 
-All users need to connect to their personal google drive account to access files shared in content folders. This only has to be done once to grant permission to read files and file metadata (e.g. dates modified) from the google drive.
+All users need to connect to their personal Google Drive account to access files shared in content folders. This only has to be done once to grant permission to read files and file metadata (e.g. dates modified) from the google drive.
 
-To connect to your google account you must run:
+To connect to your Google account you must run:
 
 ```
-yarn scripts gdrive-auth
+yarn workflow sync_authorize
 ```
 
-You will see a warning message to connect the unverified app. Use the advanced dropdown to accept.
+You will be prompted to sign into your Google account in a browser window and grant the app access. You may see a warning message to connect the unverified app. Use the advanced dropdown to accept.
 
 ## Working with Content
 
