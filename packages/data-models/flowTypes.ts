@@ -1,4 +1,5 @@
-import type { IAppConstants } from "./constants";
+import type { IDataPipeOperation } from "shared/src/models/dataPipe/types";
+import type { IAppConfig } from "./appConfig";
 
 /*********************************************************************************************
  *  Base flow types
@@ -12,7 +13,9 @@ export namespace FlowTypes {
     | "global"
     // data_lists are a general catch for any data that will be used throughout the app, but
     // without defined typings (such as habit_list).
-    | "data_list";
+    | "data_list"
+    // data_pipes are used to modify or generate new data_lists via processing methods
+    | "data_pipe";
 
   // NOTE - most of these types are duplicated in src/data, should eventually refactor to common libs
 
@@ -53,6 +56,8 @@ export namespace FlowTypes {
     rows: any[];
     /** Datalists populate rows as a hashmap instead to allow easier access to nested structures */
     rowsHashmap?: { [id: string]: any };
+    /** Datapipes store output from operations in a temporary field to allow data-list population */
+    _processed?: { [output_target: string]: any[] };
   }
 
   /*********************************************************************************************
@@ -61,6 +66,12 @@ export namespace FlowTypes {
   export interface Data_list extends FlowTypeWithData {
     flow_type: "data_list";
     rows: Data_listRow[];
+  }
+  export interface DataPipeFlow extends FlowTypeWithData {
+    flow_type: "data_pipe";
+    rows: IDataPipeOperation[];
+    /** Datapipes store output from operations in a temporary field to allow data-list population */
+    _processed?: { [output_target: string]: any[] };
   }
   export interface Translation_strings {
     [sourceText: string]: string;
@@ -272,7 +283,13 @@ export namespace FlowTypes {
     | "select_text"
     | "html"
     | "latex"
-    | "animated_slides";
+    | "animated_slides"
+    | "qr_code"
+    | "navigation_bar"
+    | "task_card"
+    | "task_progress_bar"
+    | "carousel"
+    | "drawer";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
@@ -302,7 +319,7 @@ export namespace FlowTypes {
   }
   export type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
-  type IDynamicPrefix = IAppConstants["DYNAMIC_PREFIXES"][number];
+  type IDynamicPrefix = IAppConfig["DYNAMIC_PREFIXES"][number];
 
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
@@ -327,7 +344,8 @@ export namespace FlowTypes {
     | "audio_end"
     | "audio_first_start"
     | "nav_resume" // return to template after navigation or popup close;
-    | "sent"; // notification sent
+    | "sent" // notification sent
+    | "info_click";
 
   export interface TemplateRowAction {
     /** actions have an associated trigger */
@@ -337,6 +355,7 @@ export namespace FlowTypes {
       | "" // TODO document this property for stop propogation
       | "reset_app"
       | "set_field"
+      | "toggle_field"
       | "set_local"
       | "emit"
       | "feedback"
@@ -353,7 +372,8 @@ export namespace FlowTypes {
       | "trigger_actions"
       | "track_event"
       | "process_template"
-      | "google_auth";
+      | "google_auth"
+      | "task_group_set_highlighted";
     args: any[]; // should be string | boolean, but breaks type-checking for templates;
     params?: any; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params

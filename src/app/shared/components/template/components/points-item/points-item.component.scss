@@ -20,7 +20,7 @@ $item-background: var(--points-item-background, var(--ion-color-primary-200));
     .star {
       @include mixins.flex-centered;
       position: absolute;
-      right: -12px;
+      left: -12px;
       top: -16px;
       .star-value {
         padding-top: 4px;
@@ -32,6 +32,15 @@ $item-background: var(--points-item-background, var(--ion-color-primary-200));
       img {
         width: calc(47px * var(--scale-factor--point));
         height: calc(47px * var(--scale-factor--point));
+      }
+    }
+    .info-button {
+      position: absolute;
+      right: 6px;
+      top: 6px;
+      img {
+        width: calc(28px * var(--scale-factor--point));
+        height: calc(28px * var(--scale-factor--point));
       }
     }
     .image {

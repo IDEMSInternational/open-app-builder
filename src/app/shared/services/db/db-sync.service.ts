@@ -8,12 +8,11 @@ import {
   IDBServerUserRecord,
   IDBTable,
 } from "packages/data-models/db.model";
-import { APP_CONSTANTS } from "src/app/data";
 import { environment } from "src/environments/environment";
+import { IAppConfig } from "../../model";
+import { AppConfigService } from "../app-config/app-config.service";
 import { UserMetaService } from "../userMeta/userMeta.service";
 import { DbService } from "./db.service";
-
-const { SERVER_SYNC_FREQUENCY_MS } = APP_CONSTANTS;
 
 @Injectable({ providedIn: "root" })
 /**
@@ -24,12 +23,16 @@ const { SERVER_SYNC_FREQUENCY_MS } = APP_CONSTANTS;
  * - 2-way sync (possibly via sync protocol)
  */
 export class DBSyncService {
-  private syncSchedule = interval(SERVER_SYNC_FREQUENCY_MS);
+  syncSchedule;
   constructor(
     private dbService: DbService,
     private http: HttpClient,
-    private userMetaService: UserMetaService
-  ) {}
+    private userMetaService: UserMetaService,
+    private appConfigService: AppConfigService
+  ) {
+    this.subscribeToAppConfigChanges();
+  }
+
   public async init() {
     // Automatically sync data periodically
     if (environment.production) {
@@ -85,5 +88,11 @@ export class DBSyncService {
       return serverRecord;
     }
     return record;
+  }
+
+  subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.syncSchedule = interval(appConfig.SERVER_SYNC_FREQUENCY_MS);
+    });
   }
 }

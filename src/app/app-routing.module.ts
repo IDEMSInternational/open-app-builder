@@ -1,9 +1,10 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, Route, RouterModule, Routes } from "@angular/router";
-import { APP_CONSTANTS } from "./data";
+import { APP_CONFIG } from "./data";
 import { TourComponent } from "./feature/tour/tour.component";
 
-const { APP_ROUTE_DEFAULTS } = APP_CONSTANTS;
+// TODO: These should come from the appConfigService
+const { APP_ROUTE_DEFAULTS } = APP_CONFIG;
 
 /** Routes specified from data-models */
 const DataRoutes: Routes = [
@@ -40,9 +41,17 @@ const FeatureRoutes: Routes = [
     path: "tour/:tourName",
     component: TourComponent,
   },
+  // Routes to show in sidebar routing
   {
     path: "feedback",
     loadChildren: () => import("./feature/feedback/feedback.module").then((m) => m.FeedbackModule),
+    outlet: "sidebar",
+  },
+  {
+    path: "template",
+    loadChildren: () =>
+      import("./feature/template/template.module").then((m) => m.TemplatePageModule),
+    outlet: "sidebar",
   },
 ];
 

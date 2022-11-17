@@ -44,6 +44,13 @@ ion-toggle {
   justify-content: space-between;
 }
 
+.container[data-param-style~="in_button"] {
+  flex-direction: row-reverse;
+  ion-toggle {
+    transform: translate($togglePadding, $togglePadding);
+  }
+}
+
 .label {
   margin-left: var(--small-margin);
   margin-right: var(--small-margin);
@@ -61,16 +68,14 @@ ion-toggle {
   max-width: calc(50% - 45px);
 }
 
-.right .label {
-  order: 1;
-  text-align: left;
+.right {
+  flex-direction: row-reverse;
+  .label {
+    text-align: left;
+  }
 }
 
 .toggle_wrapper {
   align-self: baseline;
   margin-top: 5px;
-}
-
-.right .toggle_wrapper {
-  order: 2;
 }

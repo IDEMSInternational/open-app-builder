@@ -5,6 +5,7 @@ import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
 import { DbService } from "./shared/services/db/db.service";
+import { SkinService } from "./shared/services/skin/skin.service";
 import { ThemeService } from "./feature/theme/services/theme.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
@@ -23,14 +24,13 @@ import { TemplateFieldService } from "./shared/components/template/services/temp
 import { TemplateTranslateService } from "./shared/components/template/services/template-translate.service";
 import { LocalNotificationInteractionService } from "./shared/services/notification/local-notification-interaction.service";
 import { DBSyncService } from "./shared/services/db/db-sync.service";
-
-import { APP_CONSTANTS } from "./data";
 import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
 import { AppDataService } from "./shared/services/data/app-data.service";
 import { AuthService } from "./shared/services/auth/auth.service";
 import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lifecycle-actions.service";
-
-const { APP_FIELDS, APP_SIDEMENU_DEFAULTS, APP_AUTHENTICATION_DEFAULTS } = APP_CONSTANTS;
+import { AppConfigService } from "./shared/services/app-config/app-config.service";
+import { IAppConfig } from "./shared/model";
+import { TaskService } from "./shared/services/task/task.service";
 
 @Component({
   selector: "app-root",
@@ -40,18 +40,27 @@ const { APP_FIELDS, APP_SIDEMENU_DEFAULTS, APP_AUTHENTICATION_DEFAULTS } = APP_C
 export class AppComponent {
   APP_VERSION = environment.version;
   DEPLOYMENT_NAME = environment.deploymentName;
-  sideMenuDefaults = APP_SIDEMENU_DEFAULTS;
+  appConfig: IAppConfig;
+  appFields: IAppConfig["APP_FIELDS"];
+  appAuthenticationDefaults: IAppConfig["APP_AUTHENTICATION_DEFAULTS"];
+  sideMenuDefaults: IAppConfig["APP_SIDEMENU_DEFAULTS"];
+  footerDefaults: IAppConfig["APP_FOOTER_DEFAULTS"];
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
 
   constructor(
+    // services with constructor-enabled init functions (load eagerly)
+    public skinService: SkinService,
+    public appConfigService: AppConfigService,
+
+    // other services
     private platform: Platform,
     private menuController: MenuController,
     private router: Router,
     private dbService: DbService,
     private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
-    public themeService: ThemeService,
+    private themeService: ThemeService,
     private tourService: TourService,
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
@@ -66,6 +75,7 @@ export class AppComponent {
     private crashlyticsService: CrashlyticsService,
     private appDataService: AppDataService,
     private authService: AuthService,
+    private taskService: TaskService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
     public lifecycleActionsService: LifecycleActionsService,
@@ -76,16 +86,17 @@ export class AppComponent {
 
   async initializeApp() {
     this.platform.ready().then(async () => {
+      this.subscribeToAppConfigChanges();
       // ensure deployment field set correctly for use in any startup services or templates
-      localStorage.setItem(APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
-      localStorage.setItem(APP_FIELDS.APP_VERSION, this.APP_VERSION);
+      localStorage.setItem(this.appFields.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
+      localStorage.setItem(this.appFields.APP_VERSION, this.APP_VERSION);
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
       // Authentication requires verified domain and app ids populated to firebase console
       // Currently only run on native where specified (but can comment out for testing locally)
-      if (APP_AUTHENTICATION_DEFAULTS.enforceLogin && Capacitor.isNativePlatform()) {
+      if (this.appAuthenticationDefaults.enforceLogin && Capacitor.isNativePlatform()) {
         await this.ensureUserSignedIn();
       }
       if (!user.first_app_open) {
@@ -109,7 +120,7 @@ export class AppComponent {
   async ensureUserSignedIn() {
     const authUser = await this.authService.getCurrentUser();
     if (!authUser) {
-      const templatename = APP_AUTHENTICATION_DEFAULTS.signInTemplate;
+      const templatename = this.appAuthenticationDefaults.signInTemplate;
       const { modal } = await this.templateService.runStandaloneTemplate(templatename, {
         showCloseButton: false,
         waitForDismiss: false,
@@ -117,6 +128,17 @@ export class AppComponent {
       await this.authService.waitForSignInComplete();
       await modal.dismiss();
     }
+  }
+
+  /** Initialise appConfig and set dependent properties */
+  subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.appConfig = appConfig;
+      this.sideMenuDefaults = this.appConfig.APP_SIDEMENU_DEFAULTS;
+      this.footerDefaults = this.appConfig.APP_FOOTER_DEFAULTS;
+      this.appAuthenticationDefaults = this.appConfig.APP_AUTHENTICATION_DEFAULTS;
+      this.appFields = this.appConfig.APP_FIELDS;
+    });
   }
 
   /**
@@ -131,6 +153,7 @@ export class AppComponent {
     await this.dbService.init();
     await this.userMetaService.init();
     this.themeService.init();
+
     /** CC 2021-05-14 - disabling reminders service until decide on full implementation (ideally not requiring evaluation of all reminders on init) */
     // this.remindersService.init();
     await this.appEventService.init();
@@ -145,6 +168,7 @@ export class AppComponent {
     await this.campaignService.init();
     await this.templateProcessService.init();
     await this.tourService.init();
+    await this.taskService.init();
 
     // Initialise additional services in a non-blocking way
     setTimeout(async () => {

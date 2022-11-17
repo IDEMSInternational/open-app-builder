@@ -1,18 +1,46 @@
 import { Injectable } from "@angular/core";
-import { IpcService } from "src/app/shared/services/ipc/ipc.service";
+import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { BASE_THEME, BUILT_IN_EDITABLE_THEMES } from "../built-in-themes";
-import { AppTheme } from "../theme.model";
+import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
+import { IAppConfig } from "packages/data-models";
 
 @Injectable({
   providedIn: "root",
 })
 export class ThemeService {
-  static THEME_UPDATE_CHANNEL = "THEME_UPDATE_CHANNEL";
+  currentTheme$ = new BehaviorSubject<string>(null);
+  availableThemes: IAppConfig["APP_THEMES"]["available"];
+  appFields: IAppConfig["APP_FIELDS"];
+  defaultThemeName: string;
 
-  currentTheme: AppTheme;
+  constructor(
+    private localStorageService: LocalStorageService,
+    private appConfigService: AppConfigService
+  ) {
+    this.subscribeToAppConfigChanges();
+  }
 
-  constructor(private ipcService: IpcService, private localStorageService: LocalStorageService) {}
+  init() {
+    // Retrieve the last active theme with default fallback
+    const currentThemeName = this.getCurrentTheme() ?? this.defaultThemeName;
+    this.setTheme(currentThemeName);
+  }
+
+  public setTheme(themeName: string) {
+    if (this.availableThemes.includes(themeName)) {
+      console.log("[SET THEME]", themeName);
+      document.body.dataset.theme = themeName;
+      this.currentTheme$.next(themeName);
+      // Use local storage so that the current theme persists across app launches
+      this.localStorageService.setString(this.appFields.APP_THEME, themeName);
+    } else {
+      console.error(`No theme found with name "${themeName}"`);
+    }
+  }
+
+  public getCurrentTheme() {
+    return this.localStorageService.getString(this.appFields.APP_THEME);
+  }
 
   /** Calculate all custom properties inherited for a particular element */
   public calculateElCustomProperties(el: Element) {
@@ -52,105 +80,11 @@ export class ThemeService {
   private isSameDomain = (styleSheet: CSSStyleSheet) =>
     styleSheet.href ? styleSheet.href.startsWith(location.origin) : true;
 
-  /*********************************************************************************
-   *  LEGACY CODE (2022-08-07) - To be reviewed
-   *  Removals: 2022-08-09 PR 1471
-   *********************************************************************************/
-
-  init() {
-    // Listens on IPC for updates to current theme
-    this.ipcService.listen(ThemeService.THEME_UPDATE_CHANNEL).subscribe((themeName: string) => {
-      let themeMap = this.getThemeMap();
-      this.currentTheme = themeMap[themeName];
+  subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.appFields = appConfig.APP_FIELDS;
+      this.availableThemes = appConfig.APP_THEMES.available;
+      this.defaultThemeName = appConfig.APP_THEMES.defaultThemeName;
     });
-
-    this.currentTheme = this.getCurrentTheme();
-    this.applyTheme(this.currentTheme.name);
-  }
-
-  public applyTheme(themeName: string) {
-    document.body.dataset.theme = themeName;
-  }
-
-  private getThemeMap(): { [themeName: string]: AppTheme } {
-    let editableThemeMap = this.localStorageService.getJSON("editableThemes");
-    if (!editableThemeMap || Object.keys(editableThemeMap).length < 1) {
-      editableThemeMap = {};
-      BUILT_IN_EDITABLE_THEMES.forEach((theme) => {
-        editableThemeMap[theme.name] = this.populateWithDefaults(theme);
-      });
-      this.localStorageService.setJSON("editableThemes", editableThemeMap);
-    }
-    return editableThemeMap;
-  }
-
-  private saveThemeMap(themeMap: { [themeName: string]: AppTheme }) {
-    this.localStorageService.setJSON("editableThemes", themeMap);
-  }
-
-  public getCurrentTheme(): AppTheme {
-    const themeMap = this.getThemeMap();
-    const currentThemeName = this.localStorageService.getString("currentThemeName");
-    if (currentThemeName) {
-      this.currentTheme = themeMap[currentThemeName];
-    } else {
-      this.currentTheme = { ...BASE_THEME };
-    }
-
-    return this.currentTheme;
-  }
-
-  public setCurrentTheme(themeName: string) {
-    let themeMap = this.getThemeMap();
-    if (themeMap[themeName]) {
-      this.currentTheme = themeMap[themeName];
-    } else {
-      this.currentTheme = BASE_THEME;
-    }
-    this.applyTheme(this.currentTheme.name);
-    this.localStorageService.setString("currentThemeName", this.currentTheme.name);
-    this.ipcService.send(ThemeService.THEME_UPDATE_CHANNEL, themeName);
-  }
-
-  public createNewTheme(themeName: string) {
-    let themeMap = this.getThemeMap();
-    let newTheme: AppTheme = { ...BASE_THEME, name: themeName, editable: true };
-    themeMap[newTheme.name] = newTheme;
-    this.saveThemeMap(themeMap);
-  }
-
-  public updateTheme(theme: AppTheme) {
-    let themeMap = this.getThemeMap();
-    themeMap[theme.name] = theme;
-    this.saveThemeMap(themeMap);
-    if (theme.name === this.currentTheme.name) {
-      this.currentTheme = theme;
-      this.localStorageService.setJSON("currentTheme", theme);
-    }
-    this.ipcService.send(ThemeService.THEME_UPDATE_CHANNEL, theme.name);
-  }
-
-  public populateWithDefaults(theme: AppTheme): AppTheme {
-    let newTheme = { ...theme };
-    Object.keys(BASE_THEME.colors).forEach((colorId) => {
-      if (!newTheme.colors[colorId]) {
-        newTheme.colors[colorId] = BASE_THEME.colors[colorId];
-      }
-      if (newTheme.colors[colorId].lightValue && !newTheme.colors[colorId].darkValue) {
-        newTheme.colors[colorId].darkValue = newTheme.colors[colorId].lightValue;
-      }
-      if (newTheme.colors[colorId].darkValue && !newTheme.colors[colorId].lightValue) {
-        newTheme.colors[colorId].lightValue = newTheme.colors[colorId].darkValue;
-      }
-    });
-    return newTheme;
-  }
-
-  public getThemes(): AppTheme[] {
-    const themeMap = this.getThemeMap();
-    const populatedThemes = Object.keys(themeMap).map((themeName) => {
-      return this.populateWithDefaults(themeMap[themeName]);
-    });
-    return populatedThemes;
   }
 }

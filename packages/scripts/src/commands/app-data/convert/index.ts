@@ -17,8 +17,9 @@ import {
   logError,
   getLogFiles,
   logWarning,
+  clearLogs,
 } from "./utils";
-import { FlowParserProcessor } from "./processors/flowParser";
+import { FlowParserProcessor } from "./processors/flowParser/flowParser";
 
 /***************************************************************************************
  * CLI
@@ -53,7 +54,7 @@ export default program
  */
 export class AppDataConverter {
   /** Change version to invalidate all underlying caches */
-  public version = 20220823.0;
+  public version = 20221027.0;
 
   public activeDeployment = getActiveDeployment();
 
@@ -132,6 +133,7 @@ export class AppDataConverter {
     ];
     let input: any;
     let output: any;
+    clearLogs();
     for (const step of processPipeline) {
       output = await step.fn(input);
       this.logger.debug({ step: step.name, output });
@@ -180,7 +182,8 @@ export class AppDataConverter {
       .filter((flow) => sheets_filter_function(flow as any));
     // sort by flow type and so that data pipes are processed last (depend on other lists)
     const sorted = filtered.sort((a, b) => {
-      if (b.flow_type === ("data_pipe" as any)) return 1;
+      if (a.flow_type === "data_pipe") return 1;
+      if (b.flow_type === "data_pipe") return -1;
       return a.flow_type > b.flow_type ? 1 : -1;
     });
     return sorted;

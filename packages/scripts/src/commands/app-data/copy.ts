@@ -6,6 +6,7 @@ import { Command } from "commander";
 import {
   generateFolderFlatMap,
   isCountryLanguageCode,
+  isThemeAssetsFolderName,
   listFolderNames,
   logError,
   readContentsFile,
@@ -13,6 +14,7 @@ import {
   logOutput,
   recursiveFindByExtension,
   replicateDir,
+  getThemeNameFromThemeAssetFolderName,
 } from "../../utils";
 import { spawnSync } from "child_process";
 
@@ -58,7 +60,7 @@ export default program
 /**
  *
  **/
-class AppDataCopy {
+export class AppDataCopy {
   private activeDeployment = getActiveDeployment();
   constructor(private options: IProgramOptions) {}
 
@@ -72,7 +74,7 @@ class AppDataCopy {
       const sheetContents = this.sheetsGenerateContents(localSheetsFolder);
       this.sheetsWriteContents(localSheetsFolder, sheetContents);
       this.sheetsCopyFiles(localSheetsFolder, appSheetsFolder);
-      runPrettierCodeTidy(appSheetsFolder);
+      this.runPrettierCodeTidy(appSheetsFolder);
     }
 
     // Sheet Translations (applied if sheets are copied)
@@ -82,7 +84,7 @@ class AppDataCopy {
       // Handle Copy
       this.translationsWriteIndex(localTranslationsFolder);
       this.translationsCopyFiles(localTranslationsFolder, appTranslationsFolder);
-      runPrettierCodeTidy(appTranslationsFolder);
+      this.runPrettierCodeTidy(appTranslationsFolder);
     }
 
     // Assets
@@ -93,7 +95,7 @@ class AppDataCopy {
       this.assetsQualityCheck(localAssetsFolder);
       this.assetsCopyFiles(localAssetsFolder, appAssetsFolder);
       this.assetsGenerateIndex(appAssetsFolder);
-      runPrettierCodeTidy(appAssetsFolder);
+      this.runPrettierCodeTidy(appAssetsFolder);
     }
     console.log(chalk.green("Copy Complete"));
   }
@@ -109,6 +111,7 @@ class AppDataCopy {
   private assetsGenerateIndex(baseFolder: string) {
     const topLevelFolders = listFolderNames(baseFolder);
     const languageFolders = topLevelFolders.filter((name) => isCountryLanguageCode(name));
+    const themeFolders = topLevelFolders.filter((name) => isThemeAssetsFolderName(name));
 
     // TODO - ideally "global" folder should sit at top level but refactoring required so for now use filter
     const globalAssetsFolder = path.join(baseFolder, ASSETS_GLOBAL_FOLDER_NAME);
@@ -130,6 +133,25 @@ class AppDataCopy {
         }
       });
     }
+
+    // populate tracked and untracked theme-specific assets
+    // TODO - Handle case of translated theme assets. None currently
+    // exists so this approach is temporarily acceptable - JM 03-10-2022
+    for (const themeFolder of themeFolders) {
+      const themeFolderPath = path.resolve(baseFolder, themeFolder);
+      const themeAssets = generateFolderFlatMap(themeFolderPath);
+      Object.entries(themeAssets).forEach(([name, value]) => {
+        // TODO - Should handle multiple folders named with language codes.
+        name = name.replace(`${ASSETS_GLOBAL_FOLDER_NAME}/`, "");
+        if (globalAssets.hasOwnProperty(name)) {
+          globalAssets[name].themeVariations = globalAssets[name].themeVariations || {};
+          globalAssets[name].themeVariations[themeFolder] = value as IContentsEntry;
+        } else {
+          untrackedAssets.push(`${themeFolder}/${name}`);
+        }
+      });
+    }
+
     // clean output to exclude modifiedTime and relativePath fields. Track totals
     // TODO - size calcs could be tidied to own function
     const cleanedContents: { [relative_path: string]: Partial<IAssetEntry> } = {};
@@ -145,6 +167,15 @@ class AppDataCopy {
           cleanedContents[key].translations[translated_key] = translatedFieldsToKeep as any;
           if (!sizeTotals[translated_key]) sizeTotals[translated_key] = 0;
           sizeTotals[translated_key] += Math.round(translatedEntry.size_kb / 102.4) / 10;
+        });
+      }
+      // repeat for nested theme entries
+      if (entry.themeVariations) {
+        Object.entries(entry.themeVariations).forEach(([theme_key, themeEntry]) => {
+          const { modifiedTime, relativePath, ...themeFieldsToKeep } = themeEntry;
+          cleanedContents[key].themeVariations[theme_key] = themeFieldsToKeep as any;
+          if (!sizeTotals[theme_key]) sizeTotals[theme_key] = 0;
+          sizeTotals[theme_key] += Math.round(themeEntry.size_kb / 102.4) / 10;
         });
       }
     });
@@ -178,16 +209,20 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
     const assetFiles = readContentsFile(sourceFolder);
     const { assets_filter_function } = this.activeDeployment.app_data;
     const filterLanguages = this.activeDeployment.translations?.filter_language_codes;
+    const filterThemes = this.activeDeployment.app_config.APP_THEMES.available;
 
-    if (filterLanguages) {
-      filterLanguages.push("global");
-    }
     const filteredFiles = assetFiles.filter((fileEntry) => {
+      const [parent_folder] = fileEntry.relativePath.split("/");
       // language filter
-      if (filterLanguages) {
-        const [lang_folder] = fileEntry.relativePath.split("/");
-        if (!filterLanguages.includes(lang_folder)) return false;
+      if (isCountryLanguageCode(parent_folder) && filterLanguages) {
+        if (!filterLanguages.includes(parent_folder)) return false;
       }
+      // theme filter
+      if (
+        isThemeAssetsFolderName(parent_folder) &&
+        !filterThemes.includes(getThemeNameFromThemeAssetFolderName(parent_folder))
+      )
+        return false;
       // global filter
       return assets_filter_function(fileEntry);
     });
@@ -210,13 +245,23 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
 
   /** Ensure asset folders are named correctly */
   private assetsQualityCheck(sourceFolder: string) {
-    const output = { hasGlobalFolder: false, languageFolders: [], invalidFolders: [] };
+    const output = {
+      hasGlobalFolder: false,
+      languageFolders: [],
+      themeFolders: [],
+      invalidFolders: [],
+    };
     const topLevelFolders = listFolderNames(sourceFolder);
     for (const folderName of topLevelFolders) {
       if (folderName === ASSETS_GLOBAL_FOLDER_NAME) output.hasGlobalFolder = true;
       else {
-        if (isCountryLanguageCode(folderName)) output.languageFolders.push(folderName);
-        else output.invalidFolders.push(folderName);
+        if (isCountryLanguageCode(folderName)) {
+          output.languageFolders.push(folderName);
+        } else if (isThemeAssetsFolderName(folderName)) {
+          output.themeFolders.push(folderName);
+        } else {
+          output.invalidFolders.push(folderName);
+        }
       }
     }
     if (!output.hasGlobalFolder) {
@@ -247,7 +292,13 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
   /** Extract a list of all sheets by type including flow contents */
   private sheetsGenerateContents(baseFolder: string) {
     // Generate contents
-    const contents: ISheetContents = { data_list: {}, global: {}, template: {}, tour: {} };
+    const contents: ISheetContents = {
+      data_list: {},
+      global: {},
+      template: {},
+      tour: {},
+      data_pipe: {},
+    };
     const sheetPaths = recursiveFindByExtension(baseFolder, "json").sort();
     for (const sheetPath of sheetPaths) {
       const filePath = path.resolve(baseFolder, sheetPath);
@@ -261,7 +312,7 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
 
   private extractContentsData(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeBase {
     // remove rows property (if exists)
-    const { rows, status, ...keptFields } = flow;
+    const { rows, status, _processed, ...keptFields } = flow;
     return keptFields as FlowTypes.FlowTypeBase;
   }
   private sheetsWriteContents(baseFolder: string, contents: ISheetContents) {
@@ -323,6 +374,15 @@ export const SHEETS_CONTENT_LIST:ISheetContents = ${contentsString}
     fs.emptyDirSync(targetFolder);
     fs.copySync(sourceFolder, targetFolder);
   }
+
+  /**
+   * Run prettier to automatically format code in given folder path
+   * NOTE - by default will only format .ts files
+   */
+  private runPrettierCodeTidy(folderPath: string) {
+    const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${folderPath}/**/*.ts --loglevel error`;
+    return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
+  }
 }
 
 /**********************************************************************************************************
@@ -332,16 +392,8 @@ type ISheetContents = {
   [flow_type in FlowTypes.FlowType]: { [flow_name: string]: FlowTypes.FlowTypeBase };
 };
 
-/**
- * Run prettier to automatically format code in given folder path
- * NOTE - by default will only format .ts files
- */
-function runPrettierCodeTidy(folderPath: string) {
-  const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${folderPath}/**/*.ts --loglevel error`;
-  return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
-}
-
 /**  Subset of IContentsEntry (with additional translations) */
 interface IAssetEntry extends IContentsEntry {
   translations?: { [language_code: string]: IContentsEntry };
+  themeVariations?: { [theme_name: string]: IContentsEntry };
 }

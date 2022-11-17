@@ -838,4 +838,5 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       _xlsxPath: "tours/global/navigation_tours.xlsx",
     },
   },
+  data_pipe: {},
 };
