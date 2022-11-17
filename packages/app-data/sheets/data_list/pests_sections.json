@@ -6,7 +6,7 @@
   "rows": [
     {
       "id": "section_insects",
-      "heading": "Are insects bad?",
+      "heading": "Insects",
       "child_1": "sections.pests_pests",
       "child_2": "sections.pests_beneficials",
       "template": "pests_sub_templates",
@@ -14,7 +14,7 @@
     },
     {
       "id": "section_planting",
-      "heading": "Planting affects pests!",
+      "heading": "Farm Practices",
       "child_1": "sections.pests_monoculture",
       "child_2": "sections.pests_plant_diversity",
       "template": "pests_sub_templates",
@@ -22,7 +22,7 @@
     },
     {
       "id": "section_pesticides",
-      "heading": "Using pesticides",
+      "heading": "Pesticides",
       "illustration": "pests/pesticides.png",
       "child_1": "sections.pests_toxic",
       "child_2": "sections.pests_nontoxic",
