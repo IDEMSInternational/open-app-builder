@@ -1,7 +1,8 @@
 {
   "name": "frontend",
-  "version": "0.16.4",
+  "version": "0.16.8",
   "author": "IDEMS International",
+  "license": "See LICENSE",
   "homepage": "https://idems.international/",
   "description": "",
   "workspaces": [
@@ -82,8 +83,11 @@
     "ngx-color": "^6.1.0",
     "ngx-lottie": "^7.0.4",
     "nouislider": "^14.6.3",
+    "qrcode": "^1.5.1",
     "rxjs": "^6.6.7",
+    "shared": "workspace:*",
     "stacktrace-js": "^2.0.2",
+    "swiper": "^8.4.4",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

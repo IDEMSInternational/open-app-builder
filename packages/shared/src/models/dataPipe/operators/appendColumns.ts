@@ -8,11 +8,11 @@ interface IParsedArg {
 }
 
 class AppendColumnsOperator extends BaseOperator {
-  public args: IParsedArg[];
+  public args_list: IParsedArg[];
   /** Tracking hashmap used in extended map operator to remove non-mapped columns after */
   public mappedColumns: { [key: string]: boolean } = {};
-  constructor(df: DataFrame, args: any) {
-    super(df, args);
+  constructor(df: DataFrame, args_list: any) {
+    super(df, args_list);
   }
   // args are simply evaluated as JS statements and do not require additional parsing
   parseArg(arg: string): IParsedArg {
@@ -24,7 +24,7 @@ class AppendColumnsOperator extends BaseOperator {
   }
   apply() {
     const evaluator = new AppStringEvaluator();
-    for (const { key, valueExpression } of this.args) {
+    for (const { key, valueExpression } of this.args_list) {
       const rows = toJSON(this.df) as any[];
       const appendValues = rows.map((row) => {
         evaluator.setExecutionContext({ row });

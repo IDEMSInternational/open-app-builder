@@ -16,6 +16,9 @@ import { TemplateFieldService } from "../template-field.service";
 import { EventService } from "src/app/shared/services/event/event.service";
 import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
+import { SkinService } from "src/app/shared/services/skin/skin.service";
+import { ThemeService } from "src/app/feature/theme/services/theme.service";
+import { TaskService } from "src/app/shared/services/task/task.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -42,6 +45,9 @@ export class TemplateActionService extends TemplateInstanceService {
   private eventService: EventService;
   private dbSyncService: DBSyncService;
   private authService: AuthService;
+  private skinService: SkinService;
+  private themeService: ThemeService;
+  private taskService: TaskService;
 
   constructor(injector: Injector, public container?: TemplateContainerComponent) {
     super(injector);
@@ -56,6 +62,9 @@ export class TemplateActionService extends TemplateInstanceService {
     this.eventService = this.getGlobalService(EventService);
     this.dbSyncService = this.getGlobalService(DBSyncService);
     this.authService = this.getGlobalService(AuthService);
+    this.skinService = this.getGlobalService(SkinService);
+    this.themeService = this.getGlobalService(ThemeService);
+    this.taskService = this.getGlobalService(TaskService);
   }
 
   /** Public method to add actions to processing queue and process */
@@ -154,6 +163,11 @@ export class TemplateActionService extends TemplateInstanceService {
       case "set_field":
         console.log("[SET FIELD]", key, value);
         return this.templateFieldService.setField(key, value);
+      case "toggle_field":
+        const currentValue = this.templateFieldService.getField(key);
+        const toggleValue = !currentValue;
+        console.log("[SET FIELD]", key, toggleValue);
+        return this.templateFieldService.setField(key, `${toggleValue}`);
       case "start_tour":
         return this.tourService.startTour(key);
       case "feedback": {
@@ -180,6 +194,8 @@ export class TemplateActionService extends TemplateInstanceService {
         return processor.processTemplateWithoutRender(templateToProcess);
       case "google_auth":
         return await this.authService.signInWithGoogle();
+      case "task_group_set_highlighted":
+        return this.taskService.setHighlightedTaskGroup(args[0]);
       case "emit":
         const [emit_value, emit_data] = args;
         const container: TemplateContainerComponent = this.container;
@@ -208,6 +224,12 @@ export class TemplateActionService extends TemplateInstanceService {
         }
         if (emit_value === "set_language") {
           this.templateTranslateService.setLanguage(args[1]);
+        }
+        if (emit_value === "set_skin") {
+          this.skinService.setSkin(args[1]);
+        }
+        if (emit_value === "set_theme") {
+          this.themeService.setTheme(args[1]);
         }
         if (emit_value === "server_sync") {
           await this.serverService.syncUserData();

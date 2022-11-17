@@ -18,7 +18,8 @@ export class XLSXWorkbookProcessor extends BaseProcessor<IContentsEntry> {
     const inputFolder = this.context.paths.SHEETS_INPUT_FOLDER;
     const xlsxPath = path.resolve(inputFolder, relativePath);
     if (!existsSync(xlsxPath)) {
-      throw new Error(`Xlsx not found: ${relativePath}`);
+      this.logger.error({ message: `Xlsx not found: ${relativePath}` });
+      return;
     }
     // convert and merge contents sheet
     const json = this.convertXLSXSheetsToJson(xlsxPath);
