@@ -1,7 +1,7 @@
 @use "sass:color";
 @use "sass:map";
 @use "./breakpoints";
-@use "./themes/default.scss";
+@use "./themes/index" as themes;
 
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
@@ -9,7 +9,8 @@
 // https://sass-lang.com/documentation/breaking-changes/css-vars
 // https://sass-lang.com/documentation/modules/color
 
-@include default.theme-default;
+@include themes.theme-default;
+@include themes.theme-professional;
 
 // WiP - system to generate colours from base colour
 $primary: hsl(203, 76%, 21%); // 0d3f5e
@@ -200,4 +201,7 @@ $horizontal: 90deg;
   --tile-parent-point-height: 104px;
   --tile-image-text-width: 176px;
   --tile-button-style-height: 60px;
+
+  --drawer-handle-height: 42px;
+  --navigation-bar-height: 90px;
 }

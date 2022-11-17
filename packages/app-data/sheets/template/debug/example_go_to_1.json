@@ -104,7 +104,7 @@
     {
       "type": "button",
       "name": "button_go_to_4",
-      "value": "Go to x and come back if x completed",
+      "value": "Go to x and come back if x completed.",
       "_translations": {
         "value": {}
       },

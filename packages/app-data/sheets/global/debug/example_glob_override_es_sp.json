@@ -9,7 +9,7 @@
     {
       "type": "declare_global_constant",
       "name": "example_glob_override",
-      "value": "Overridden value",
+      "value": "Overridden value, es_sp",
       "_translations": {
         "value": {}
       },
