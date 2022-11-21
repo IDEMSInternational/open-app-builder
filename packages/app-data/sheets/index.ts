@@ -22,6 +22,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "ae_idems",
       _xlsxPath: "data_lists/ae_principles/ae_principles_data_lists.xlsx",
     },
+    ae_ifa: {
+      flow_type: "data_list",
+      flow_name: "ae_ifa",
+      data_list_name: "ae_ifa",
+      _xlsxPath: "data_lists/ae_principles/ae_principles_data_lists.xlsx",
+    },
     children_nutrients: {
       flow_type: "data_list",
       flow_name: "children_nutrients",
