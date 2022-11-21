@@ -1,13 +1,12 @@
 import path from "path";
 import { XLSXWorkbookProcessor } from "./xlsxWorkbook";
 
-import { SCRIPTS_WORKSPACE_PATH } from "../../../../paths";
-import { IContentsEntry } from "../utils";
-const testDataDir = path.resolve(SCRIPTS_WORKSPACE_PATH, "test", "data");
+import { SCRIPTS_TEST_DATA_DIR } from "../../../../paths";
+import { clearLogs, getLogs, IContentsEntry } from "../utils";
 const paths = {
-  SHEETS_CACHE_FOLDER: path.resolve(testDataDir, "cache"),
-  SHEETS_INPUT_FOLDER: path.resolve(testDataDir, "input"),
-  SHEETS_OUTPUT_FOLDER: path.resolve(testDataDir, "output"),
+  SHEETS_CACHE_FOLDER: path.resolve(SCRIPTS_TEST_DATA_DIR, "cache"),
+  SHEETS_INPUT_FOLDER: path.resolve(SCRIPTS_TEST_DATA_DIR, "input", "sheets"),
+  SHEETS_OUTPUT_FOLDER: path.resolve(SCRIPTS_TEST_DATA_DIR, "output", "sheets"),
 };
 
 const testInputs: IContentsEntry[] = [
@@ -15,7 +14,7 @@ const testInputs: IContentsEntry[] = [
     modifiedTime: "2021-08-20T09:55:53.006Z",
     size_kb: 2717,
     md5Checksum: "123456789abcd",
-    relativePath: "sheets/test_input.xlsx",
+    relativePath: "test_input.xlsx",
   },
 ];
 
@@ -37,18 +36,36 @@ describe("XLSX Workbook Processor", () => {
     expect(outputs.length).toEqual(testInputs.length);
     // each entry may contain multiple sheets from workbook
     const testInputsheets = outputs[0];
-    // 3 test sheets exist
-    expect(testInputsheets.length).toEqual(4);
+    expect(testInputsheets.length).toEqual(5);
     expect(testInputsheets[0].flow_type).toEqual("data_list");
   });
   it("throws on missing file", async () => {
+    clearLogs();
     const missingInput = { ...testInputs[0], relativePath: "missing.xlsx" };
-    await processor.process([missingInput]).catch((err) => {
-      expect(err.message).toEqual("Xlsx not found: missing.xlsx");
-    });
+    await processor.process([missingInput]);
+    const errLogs = getLogs("error");
+    expect(errLogs).toEqual([
+      {
+        level: "error",
+        message: "Xlsx not found: missing.xlsx",
+        source: "xlsxWorkbookProcessor",
+      },
+    ]);
   });
   it("Uses cache", () => {
     const cacheName = processor.cache.generateCacheEntryName(testInputs[0]);
     expect(processor.cache.get(cacheName)).toBeTruthy();
   });
 });
+
+/** Utility class to allow direct access to parsed flows for use in tests */
+export class TestXLSXWorkbookProcessor extends XLSXWorkbookProcessor {
+  constructor() {
+    super(paths);
+  }
+  async getProcessed(sheetPath: string, flowname: string) {
+    const parsedWorkbooks = await this.process([{ relativePath: sheetPath } as any]);
+    const matchingFlow = parsedWorkbooks[0].find((f) => f.flow_name === flowname);
+    return matchingFlow;
+  }
+}

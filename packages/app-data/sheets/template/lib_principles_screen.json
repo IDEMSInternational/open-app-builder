@@ -4,150 +4,169 @@
   "status": "released",
   "rows": [
     {
-      "type": "title",
-      "name": "title",
-      "value": "Principles",
+      "name": "current_principles",
+      "value": "@fields.current_principles",
       "_translations": {
         "value": {}
       },
+      "type": "set_variable",
+      "_nested_name": "current_principles",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.current_principles",
+            "matchedExpression": "@fields.current_principles",
+            "type": "fields",
+            "fieldName": "current_principles"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.current_principles": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "title",
+      "value": "title",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
       "_nested_name": "title"
+    },
+    {
+      "name": "principles_title",
+      "value": "library_principles.@local.current_principles.@local.title",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "principles_title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "library_principles.@local.current_principles.@local.title",
+            "matchedExpression": "@local.current_principles",
+            "type": "local",
+            "fieldName": "current_principles"
+          },
+          {
+            "fullExpression": "library_principles.@local.current_principles.@local.title",
+            "matchedExpression": "@local.title",
+            "type": "local",
+            "fieldName": "title"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.current_principles": [
+          "value"
+        ],
+        "@local.title": [
+          "value"
+        ]
+      }
     },
     {
       "name": "data_list_name",
       "value": [
-        "ae_fao"
+        "data_list_name"
       ],
       "type": "set_variable",
       "_nested_name": "data_list_name"
     },
     {
-      "type": "items",
-      "value": "@data.@local.data_list_name",
-      "rows": [
-        {
-          "type": "template",
-          "name": "principle_@item.id",
-          "value": "principle",
-          "parameter_list": {
-            "style": "column"
-          },
-          "rows": [
+      "name": "principles_data_list_name",
+      "value": [
+        "library_principles.@local.current_principles.@local.data_list_name"
+      ],
+      "type": "set_variable",
+      "_nested_name": "principles_data_list_name",
+      "_dynamicFields": {
+        "value": {
+          "0": [
             {
-              "name": "principle_id",
-              "value": "@item.id",
-              "_translations": {
-                "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "items.principle_@item.id.principle_id",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@item.id",
-                    "matchedExpression": "@item.id",
-                    "type": "item",
-                    "fieldName": "id"
-                  }
-                ],
-                "_nested_name": [
-                  {
-                    "fullExpression": "items.principle_@item.id.principle_id",
-                    "matchedExpression": "@item.id.principle_id",
-                    "type": "item",
-                    "fieldName": "id"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@item.id": [
-                  "value"
-                ],
-                "@item.id.principle_id": [
-                  "_nested_name"
-                ]
-              }
+              "fullExpression": "library_principles.@local.current_principles.@local.data_list_name",
+              "matchedExpression": "@local.current_principles",
+              "type": "local",
+              "fieldName": "current_principles"
             },
             {
-              "name": "data_list_name",
-              "value": [
-                "@local.data_list_name"
-              ],
-              "type": "set_variable",
-              "_nested_name": "items.principle_@item.id.data_list_name",
-              "_dynamicFields": {
-                "value": {
-                  "0": [
-                    {
-                      "fullExpression": "@local.data_list_name",
-                      "matchedExpression": "@local.data_list_name",
-                      "type": "local",
-                      "fieldName": "data_list_name"
-                    }
-                  ]
-                },
-                "_nested_name": [
-                  {
-                    "fullExpression": "items.principle_@item.id.data_list_name",
-                    "matchedExpression": "@item.id.data_list_name",
-                    "type": "item",
-                    "fieldName": "id"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.data_list_name": [
-                  "value.0"
-                ],
-                "@item.id.data_list_name": [
-                  "_nested_name"
-                ]
-              }
+              "fullExpression": "library_principles.@local.current_principles.@local.data_list_name",
+              "matchedExpression": "@local.data_list_name",
+              "type": "local",
+              "fieldName": "data_list_name"
             }
-          ],
-          "_nested_name": "items.principle_@item.id",
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.current_principles": [
+          "value.0"
+        ],
+        "@local.data_list_name": [
+          "value.0"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "principles_screen",
+      "value": "principles_screen",
+      "rows": [
+        {
+          "name": "title",
+          "value": "@data.@local.principles_title",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "principles_screen.title",
           "_dynamicFields": {
-            "name": [
+            "value": [
               {
-                "fullExpression": "principle_@item.id",
-                "matchedExpression": "@item.id",
-                "type": "item",
-                "fieldName": "id"
-              }
-            ],
-            "_nested_name": [
-              {
-                "fullExpression": "items.principle_@item.id",
-                "matchedExpression": "@item.id",
-                "type": "item",
-                "fieldName": "id"
+                "fullExpression": "@data.@local.principles_title",
+                "matchedExpression": "@local.principles_title",
+                "type": "local",
+                "fieldName": "principles_title"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@item.id": [
-              "name",
-              "_nested_name"
+            "@local.principles_title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "data_list_name",
+          "value": [
+            "@data.@local.principles_data_list_name"
+          ],
+          "type": "set_variable",
+          "_nested_name": "principles_screen.data_list_name",
+          "_dynamicFields": {
+            "value": {
+              "0": [
+                {
+                  "fullExpression": "@data.@local.principles_data_list_name",
+                  "matchedExpression": "@local.principles_data_list_name",
+                  "type": "local",
+                  "fieldName": "principles_data_list_name"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.principles_data_list_name": [
+              "value.0"
             ]
           }
         }
       ],
-      "name": "items",
-      "_nested_name": "items",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.@local.data_list_name",
-            "matchedExpression": "@local.data_list_name",
-            "type": "local",
-            "fieldName": "data_list_name"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.data_list_name": [
-          "value"
-        ]
-      }
+      "_nested_name": "principles_screen"
     }
   ],
   "_xlsxPath": "templates/global/library.xlsx"

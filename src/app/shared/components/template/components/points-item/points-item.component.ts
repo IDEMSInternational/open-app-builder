@@ -27,6 +27,7 @@ export class TmplParentPointBoxComponent
   @ViewChild("star", { static: false }) star: ElementRef;
   @ViewChild("item", { static: false }) item: ElementRef;
   icon_src: string | null;
+  info_icon_src: string | null;
   lottie_src: string | null;
   video_src: string | null;
   windowWidth: number;
@@ -80,6 +81,7 @@ export class TmplParentPointBoxComponent
   getParams() {
     this.video_src = getStringParamFromTemplateRow(this._row, "video_src", null);
     this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", null);
+    this.info_icon_src = getStringParamFromTemplateRow(this._row, "info_icon_src", null);
     this.lottie_src = getStringParamFromTemplateRow(this._row, "lottie_src", null);
     this.play_celebration = getBooleanParamFromTemplateRow(this._row, "play_celebration", true);
     this.text = getStringParamFromTemplateRow(this._row, "text", null);
@@ -110,6 +112,11 @@ export class TmplParentPointBoxComponent
     await this.setValue(this.value);
     await this.triggerActions("click");
     await this.triggerActions("changed");
+  }
+
+  async clickInfo(event) {
+    event.stopPropagation();
+    await this.triggerActions("info_click");
   }
 
   getScaleFactor(): number {

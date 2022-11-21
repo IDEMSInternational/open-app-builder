@@ -43,7 +43,7 @@
         },
         {
           "name": "go_to_template",
-          "value": "lib_principles",
+          "value": "lib_principles_screen",
           "_translations": {
             "value": {}
           },

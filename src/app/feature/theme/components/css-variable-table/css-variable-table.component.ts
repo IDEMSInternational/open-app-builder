@@ -22,6 +22,7 @@ export class CssVariableTableComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.loadElementCustomVariables();
+    this.themeService.currentTheme$.subscribe(() => this.loadElementCustomVariables());
   }
 
   /** Generate a list of all custom style variables applied to the table element */
