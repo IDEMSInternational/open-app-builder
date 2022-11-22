@@ -21,12 +21,17 @@ export class ThemeService {
   }
 
   init() {
-    // Retrieve the last active theme and apply it, with default fallback
-    const currentThemeName = this.getCurrentTheme() ?? this.defaultThemeName;
-    this.setTheme(currentThemeName, true);
+    // Retrieve the last active theme and apply it. Fallback on default theme
+    // if there is no last active theme, or if it is not "available" in current appConfig
+    const lastActiveTheme = this.getCurrentTheme();
+    const targetTheme =
+      lastActiveTheme && this.availableThemes.includes(lastActiveTheme)
+        ? lastActiveTheme
+        : this.defaultThemeName;
+    this.setTheme(targetTheme);
   }
 
-  public setTheme(themeName: string, isInit = false) {
+  public setTheme(themeName: string) {
     if (this.availableThemes.includes(themeName)) {
       console.log("[SET THEME]", themeName);
       document.body.dataset.theme = themeName;
@@ -35,9 +40,6 @@ export class ThemeService {
       this.localStorageService.setString(this.appFields.APP_THEME, themeName);
     } else {
       console.error(`No theme found with name "${themeName}"`);
-      if (isInit) {
-        this.setTheme(this.defaultThemeName);
-      }
     }
   }
 
