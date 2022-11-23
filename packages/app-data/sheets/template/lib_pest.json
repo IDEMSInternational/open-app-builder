@@ -136,37 +136,23 @@
       }
     },
     {
-      "type": "display_group",
-      "name": "dg_image_1",
+      "type": "image",
+      "name": "display_image_1",
+      "value": "@data.@local.pest_image_1",
+      "_translations": {
+        "value": {}
+      },
       "condition": "!!@data.@local.pest_image_1",
-      "rows": [
-        {
-          "type": "image",
-          "name": "display_image_1",
-          "value": "@data.@local.pest_image_1",
-          "_translations": {
-            "value": {}
-          },
-          "_nested_name": "dg_image_1.display_image_1",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "@data.@local.pest_image_1",
-                "matchedExpression": "@local.pest_image_1",
-                "type": "local",
-                "fieldName": "pest_image_1"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@local.pest_image_1": [
-              "value"
-            ]
-          }
-        }
-      ],
-      "_nested_name": "dg_image_1",
+      "_nested_name": "display_image_1",
       "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.pest_image_1",
+            "matchedExpression": "@local.pest_image_1",
+            "type": "local",
+            "fieldName": "pest_image_1"
+          }
+        ],
         "condition": [
           {
             "fullExpression": "!!@data.@local.pest_image_1",
@@ -178,7 +164,260 @@
       },
       "_dynamicDependencies": {
         "@local.pest_image_1": [
+          "value",
           "condition"
+        ]
+      }
+    },
+    {
+      "name": "image_2",
+      "value": ".image_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_2"
+    },
+    {
+      "name": "pest_image_2",
+      "value": "library_pests.@local.pest_id@local.image_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "pest_image_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "library_pests.@local.pest_id@local.image_2",
+            "matchedExpression": "@local.pest_id",
+            "type": "local",
+            "fieldName": "pest_id"
+          },
+          {
+            "fullExpression": "library_pests.@local.pest_id@local.image_2",
+            "matchedExpression": "@local.image_2",
+            "type": "local",
+            "fieldName": "image_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.pest_id": [
+          "value"
+        ],
+        "@local.image_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "image_3",
+      "value": ".image_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_3"
+    },
+    {
+      "name": "pest_image_3",
+      "value": "library_pests.@local.pest_id@local.image_3",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "pest_image_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "library_pests.@local.pest_id@local.image_3",
+            "matchedExpression": "@local.pest_id",
+            "type": "local",
+            "fieldName": "pest_id"
+          },
+          {
+            "fullExpression": "library_pests.@local.pest_id@local.image_3",
+            "matchedExpression": "@local.image_3",
+            "type": "local",
+            "fieldName": "image_3"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.pest_id": [
+          "value"
+        ],
+        "@local.image_3": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "image_4",
+      "value": ".image_4",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_4"
+    },
+    {
+      "name": "pest_image_4",
+      "value": "library_pests.@local.pest_id@local.image_4",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "pest_image_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "library_pests.@local.pest_id@local.image_4",
+            "matchedExpression": "@local.pest_id",
+            "type": "local",
+            "fieldName": "pest_id"
+          },
+          {
+            "fullExpression": "library_pests.@local.pest_id@local.image_4",
+            "matchedExpression": "@local.image_4",
+            "type": "local",
+            "fieldName": "image_4"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.pest_id": [
+          "value"
+        ],
+        "@local.image_4": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "image_5",
+      "value": ".image_5",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_5"
+    },
+    {
+      "name": "pest_image_5",
+      "value": "library_pests.@local.pest_id@local.image_5",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "pest_image_5",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "library_pests.@local.pest_id@local.image_5",
+            "matchedExpression": "@local.pest_id",
+            "type": "local",
+            "fieldName": "pest_id"
+          },
+          {
+            "fullExpression": "library_pests.@local.pest_id@local.image_5",
+            "matchedExpression": "@local.image_5",
+            "type": "local",
+            "fieldName": "image_5"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.pest_id": [
+          "value"
+        ],
+        "@local.image_5": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "image_6",
+      "value": ".image_6",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_6"
+    },
+    {
+      "name": "pest_image_6",
+      "value": "library_pests.@local.pest_id@local.image_6",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "pest_image_6",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "library_pests.@local.pest_id@local.image_6",
+            "matchedExpression": "@local.pest_id",
+            "type": "local",
+            "fieldName": "pest_id"
+          },
+          {
+            "fullExpression": "library_pests.@local.pest_id@local.image_6",
+            "matchedExpression": "@local.image_6",
+            "type": "local",
+            "fieldName": "image_6"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.pest_id": [
+          "value"
+        ],
+        "@local.image_6": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "image_7",
+      "value": ".image_7",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_7"
+    },
+    {
+      "name": "pest_image_7",
+      "value": "library_pests.@local.pest_id@local.image_7",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "pest_image_7",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "library_pests.@local.pest_id@local.image_7",
+            "matchedExpression": "@local.pest_id",
+            "type": "local",
+            "fieldName": "pest_id"
+          },
+          {
+            "fullExpression": "library_pests.@local.pest_id@local.image_7",
+            "matchedExpression": "@local.image_7",
+            "type": "local",
+            "fieldName": "image_7"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.pest_id": [
+          "value"
+        ],
+        "@local.image_7": [
+          "value"
         ]
       }
     },
@@ -189,6 +428,7 @@
           "type": "accordion_section",
           "name": "acc_images",
           "value": "More images",
+          "condition": "!!@data.@local.pest_image_2 || !!@data.@local.pest_image_3 || !!@data.@local.pest_image_4 || !!@data.@local.pest_image_5 || !!@data.@local.pest_image_6 || !!@data.@local.pest_image_7",
           "rows": [
             {
               "type": "display_group",
@@ -198,79 +438,23 @@
               },
               "rows": [
                 {
+                  "type": "image",
                   "name": "display_image_2",
-                  "value": ".image_2",
+                  "value": "@data.@local.pest_image_2",
                   "_translations": {
                     "value": {}
                   },
-                  "type": "set_variable",
-                  "_nested_name": "accordion.acc_images.more_images.display_image_2"
-                },
-                {
-                  "name": "pest_image_2",
-                  "value": "library_pests.@local.pest_id@local.image_2",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "accordion.acc_images.more_images.pest_image_2",
+                  "condition": "!!@data.@local.pest_image_2",
+                  "_nested_name": "accordion.acc_images.more_images.display_image_2",
                   "_dynamicFields": {
                     "value": [
                       {
-                        "fullExpression": "library_pests.@local.pest_id@local.image_2",
-                        "matchedExpression": "@local.pest_id",
+                        "fullExpression": "@data.@local.pest_image_2",
+                        "matchedExpression": "@local.pest_image_2",
                         "type": "local",
-                        "fieldName": "pest_id"
-                      },
-                      {
-                        "fullExpression": "library_pests.@local.pest_id@local.image_2",
-                        "matchedExpression": "@local.image_2",
-                        "type": "local",
-                        "fieldName": "image_2"
+                        "fieldName": "pest_image_2"
                       }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@local.pest_id": [
-                      "value"
                     ],
-                    "@local.image_2": [
-                      "value"
-                    ]
-                  }
-                },
-                {
-                  "type": "display_group",
-                  "name": "dg_image_2",
-                  "condition": "!!@data.@local.pest_image_2",
-                  "rows": [
-                    {
-                      "type": "image",
-                      "name": "image_2",
-                      "value": "@data.@local.pest_image_2",
-                      "_translations": {
-                        "value": {}
-                      },
-                      "_nested_name": "accordion.acc_images.more_images.dg_image_2.image_2",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@data.@local.pest_image_2",
-                            "matchedExpression": "@local.pest_image_2",
-                            "type": "local",
-                            "fieldName": "pest_image_2"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@local.pest_image_2": [
-                          "value"
-                        ]
-                      }
-                    }
-                  ],
-                  "_nested_name": "accordion.acc_images.more_images.dg_image_2",
-                  "_dynamicFields": {
                     "condition": [
                       {
                         "fullExpression": "!!@data.@local.pest_image_2",
@@ -282,84 +466,29 @@
                   },
                   "_dynamicDependencies": {
                     "@local.pest_image_2": [
+                      "value",
                       "condition"
                     ]
                   }
                 },
                 {
-                  "name": "image_3",
-                  "value": ".image_3",
+                  "type": "image",
+                  "name": "display_image_3",
+                  "value": "@data.@local.pest_image_3",
                   "_translations": {
                     "value": {}
                   },
-                  "type": "set_variable",
-                  "_nested_name": "accordion.acc_images.more_images.image_3"
-                },
-                {
-                  "name": "pest_image_3",
-                  "value": "library_pests.@local.pest_id@local.image_3",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "accordion.acc_images.more_images.pest_image_3",
+                  "condition": "!!@data.@local.pest_image_3",
+                  "_nested_name": "accordion.acc_images.more_images.display_image_3",
                   "_dynamicFields": {
                     "value": [
                       {
-                        "fullExpression": "library_pests.@local.pest_id@local.image_3",
-                        "matchedExpression": "@local.pest_id",
+                        "fullExpression": "@data.@local.pest_image_3",
+                        "matchedExpression": "@local.pest_image_3",
                         "type": "local",
-                        "fieldName": "pest_id"
-                      },
-                      {
-                        "fullExpression": "library_pests.@local.pest_id@local.image_3",
-                        "matchedExpression": "@local.image_3",
-                        "type": "local",
-                        "fieldName": "image_3"
+                        "fieldName": "pest_image_3"
                       }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@local.pest_id": [
-                      "value"
                     ],
-                    "@local.image_3": [
-                      "value"
-                    ]
-                  }
-                },
-                {
-                  "type": "display_group",
-                  "name": "dg_image_3",
-                  "condition": "!!@data.@local.pest_image_3",
-                  "rows": [
-                    {
-                      "type": "image",
-                      "name": "display_image_3",
-                      "value": "@data.@local.pest_image_3",
-                      "_translations": {
-                        "value": {}
-                      },
-                      "_nested_name": "accordion.acc_images.more_images.dg_image_3.display_image_3",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@data.@local.pest_image_3",
-                            "matchedExpression": "@local.pest_image_3",
-                            "type": "local",
-                            "fieldName": "pest_image_3"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@local.pest_image_3": [
-                          "value"
-                        ]
-                      }
-                    }
-                  ],
-                  "_nested_name": "accordion.acc_images.more_images.dg_image_3",
-                  "_dynamicFields": {
                     "condition": [
                       {
                         "fullExpression": "!!@data.@local.pest_image_3",
@@ -371,84 +500,29 @@
                   },
                   "_dynamicDependencies": {
                     "@local.pest_image_3": [
+                      "value",
                       "condition"
                     ]
                   }
                 },
                 {
-                  "name": "image_4",
-                  "value": ".image_4",
+                  "type": "image",
+                  "name": "display_image_4",
+                  "value": "@data.@local.pest_image_4",
                   "_translations": {
                     "value": {}
                   },
-                  "type": "set_variable",
-                  "_nested_name": "accordion.acc_images.more_images.image_4"
-                },
-                {
-                  "name": "pest_image_4",
-                  "value": "library_pests.@local.pest_id@local.image_4",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "accordion.acc_images.more_images.pest_image_4",
+                  "condition": "!!@data.@local.pest_image_4",
+                  "_nested_name": "accordion.acc_images.more_images.display_image_4",
                   "_dynamicFields": {
                     "value": [
                       {
-                        "fullExpression": "library_pests.@local.pest_id@local.image_4",
-                        "matchedExpression": "@local.pest_id",
+                        "fullExpression": "@data.@local.pest_image_4",
+                        "matchedExpression": "@local.pest_image_4",
                         "type": "local",
-                        "fieldName": "pest_id"
-                      },
-                      {
-                        "fullExpression": "library_pests.@local.pest_id@local.image_4",
-                        "matchedExpression": "@local.image_4",
-                        "type": "local",
-                        "fieldName": "image_4"
+                        "fieldName": "pest_image_4"
                       }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@local.pest_id": [
-                      "value"
                     ],
-                    "@local.image_4": [
-                      "value"
-                    ]
-                  }
-                },
-                {
-                  "type": "display_group",
-                  "name": "dg_image_4",
-                  "condition": "!!@data.@local.pest_image_4",
-                  "rows": [
-                    {
-                      "type": "image",
-                      "name": "display_image_4",
-                      "value": "@data.@local.pest_image_4",
-                      "_translations": {
-                        "value": {}
-                      },
-                      "_nested_name": "accordion.acc_images.more_images.dg_image_4.display_image_4",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@data.@local.pest_image_4",
-                            "matchedExpression": "@local.pest_image_4",
-                            "type": "local",
-                            "fieldName": "pest_image_4"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@local.pest_image_4": [
-                          "value"
-                        ]
-                      }
-                    }
-                  ],
-                  "_nested_name": "accordion.acc_images.more_images.dg_image_4",
-                  "_dynamicFields": {
                     "condition": [
                       {
                         "fullExpression": "!!@data.@local.pest_image_4",
@@ -460,84 +534,29 @@
                   },
                   "_dynamicDependencies": {
                     "@local.pest_image_4": [
+                      "value",
                       "condition"
                     ]
                   }
                 },
                 {
-                  "name": "image_5",
-                  "value": ".image_5",
+                  "type": "image",
+                  "name": "display_image_5",
+                  "value": "@data.@local.pest_image_5",
                   "_translations": {
                     "value": {}
                   },
-                  "type": "set_variable",
-                  "_nested_name": "accordion.acc_images.more_images.image_5"
-                },
-                {
-                  "name": "pest_image_5",
-                  "value": "library_pests.@local.pest_id@local.image_5",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "accordion.acc_images.more_images.pest_image_5",
+                  "condition": "!!@data.@local.pest_image_5",
+                  "_nested_name": "accordion.acc_images.more_images.display_image_5",
                   "_dynamicFields": {
                     "value": [
                       {
-                        "fullExpression": "library_pests.@local.pest_id@local.image_5",
-                        "matchedExpression": "@local.pest_id",
+                        "fullExpression": "@data.@local.pest_image_5",
+                        "matchedExpression": "@local.pest_image_5",
                         "type": "local",
-                        "fieldName": "pest_id"
-                      },
-                      {
-                        "fullExpression": "library_pests.@local.pest_id@local.image_5",
-                        "matchedExpression": "@local.image_5",
-                        "type": "local",
-                        "fieldName": "image_5"
+                        "fieldName": "pest_image_5"
                       }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@local.pest_id": [
-                      "value"
                     ],
-                    "@local.image_5": [
-                      "value"
-                    ]
-                  }
-                },
-                {
-                  "type": "display_group",
-                  "name": "dg_image_5",
-                  "condition": "!!@data.@local.pest_image_5",
-                  "rows": [
-                    {
-                      "type": "image",
-                      "name": "display_image_5",
-                      "value": "@data.@local.pest_image_5",
-                      "_translations": {
-                        "value": {}
-                      },
-                      "_nested_name": "accordion.acc_images.more_images.dg_image_5.display_image_5",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@data.@local.pest_image_5",
-                            "matchedExpression": "@local.pest_image_5",
-                            "type": "local",
-                            "fieldName": "pest_image_5"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@local.pest_image_5": [
-                          "value"
-                        ]
-                      }
-                    }
-                  ],
-                  "_nested_name": "accordion.acc_images.more_images.dg_image_5",
-                  "_dynamicFields": {
                     "condition": [
                       {
                         "fullExpression": "!!@data.@local.pest_image_5",
@@ -549,84 +568,29 @@
                   },
                   "_dynamicDependencies": {
                     "@local.pest_image_5": [
+                      "value",
                       "condition"
                     ]
                   }
                 },
                 {
-                  "name": "image_6",
-                  "value": ".image_6",
+                  "type": "image",
+                  "name": "display_image_6",
+                  "value": "@data.@local.pest_image_6",
                   "_translations": {
                     "value": {}
                   },
-                  "type": "set_variable",
-                  "_nested_name": "accordion.acc_images.more_images.image_6"
-                },
-                {
-                  "name": "pest_image_6",
-                  "value": "library_pests.@local.pest_id@local.image_6",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "accordion.acc_images.more_images.pest_image_6",
+                  "condition": "!!@data.@local.pest_image_6",
+                  "_nested_name": "accordion.acc_images.more_images.display_image_6",
                   "_dynamicFields": {
                     "value": [
                       {
-                        "fullExpression": "library_pests.@local.pest_id@local.image_6",
-                        "matchedExpression": "@local.pest_id",
+                        "fullExpression": "@data.@local.pest_image_6",
+                        "matchedExpression": "@local.pest_image_6",
                         "type": "local",
-                        "fieldName": "pest_id"
-                      },
-                      {
-                        "fullExpression": "library_pests.@local.pest_id@local.image_6",
-                        "matchedExpression": "@local.image_6",
-                        "type": "local",
-                        "fieldName": "image_6"
+                        "fieldName": "pest_image_6"
                       }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@local.pest_id": [
-                      "value"
                     ],
-                    "@local.image_6": [
-                      "value"
-                    ]
-                  }
-                },
-                {
-                  "type": "display_group",
-                  "name": "dg_image_6",
-                  "condition": "!!@data.@local.pest_image_6",
-                  "rows": [
-                    {
-                      "type": "image",
-                      "name": "display_image_6",
-                      "value": "@data.@local.pest_image_6",
-                      "_translations": {
-                        "value": {}
-                      },
-                      "_nested_name": "accordion.acc_images.more_images.dg_image_6.display_image_6",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@data.@local.pest_image_6",
-                            "matchedExpression": "@local.pest_image_6",
-                            "type": "local",
-                            "fieldName": "pest_image_6"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@local.pest_image_6": [
-                          "value"
-                        ]
-                      }
-                    }
-                  ],
-                  "_nested_name": "accordion.acc_images.more_images.dg_image_6",
-                  "_dynamicFields": {
                     "condition": [
                       {
                         "fullExpression": "!!@data.@local.pest_image_6",
@@ -638,84 +602,29 @@
                   },
                   "_dynamicDependencies": {
                     "@local.pest_image_6": [
+                      "value",
                       "condition"
                     ]
                   }
                 },
                 {
-                  "name": "image_7",
-                  "value": ".image_7",
+                  "type": "image",
+                  "name": "display_image_7",
+                  "value": "@data.@local.pest_image_7",
                   "_translations": {
                     "value": {}
                   },
-                  "type": "set_variable",
-                  "_nested_name": "accordion.acc_images.more_images.image_7"
-                },
-                {
-                  "name": "pest_image_7",
-                  "value": "library_pests.@local.pest_id@local.image_7",
-                  "_translations": {
-                    "value": {}
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "accordion.acc_images.more_images.pest_image_7",
+                  "condition": "!!@data.@local.pest_image_7",
+                  "_nested_name": "accordion.acc_images.more_images.display_image_7",
                   "_dynamicFields": {
                     "value": [
                       {
-                        "fullExpression": "library_pests.@local.pest_id@local.image_7",
-                        "matchedExpression": "@local.pest_id",
+                        "fullExpression": "@data.@local.pest_image_7",
+                        "matchedExpression": "@local.pest_image_7",
                         "type": "local",
-                        "fieldName": "pest_id"
-                      },
-                      {
-                        "fullExpression": "library_pests.@local.pest_id@local.image_7",
-                        "matchedExpression": "@local.image_7",
-                        "type": "local",
-                        "fieldName": "image_7"
+                        "fieldName": "pest_image_7"
                       }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@local.pest_id": [
-                      "value"
                     ],
-                    "@local.image_7": [
-                      "value"
-                    ]
-                  }
-                },
-                {
-                  "type": "display_group",
-                  "name": "dg_image_7",
-                  "condition": "!!@data.@local.pest_image_7",
-                  "rows": [
-                    {
-                      "type": "image",
-                      "name": "display_image_7",
-                      "value": "@data.@local.pest_image_7",
-                      "_translations": {
-                        "value": {}
-                      },
-                      "_nested_name": "accordion.acc_images.more_images.dg_image_7.display_image_7",
-                      "_dynamicFields": {
-                        "value": [
-                          {
-                            "fullExpression": "@data.@local.pest_image_7",
-                            "matchedExpression": "@local.pest_image_7",
-                            "type": "local",
-                            "fieldName": "pest_image_7"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@local.pest_image_7": [
-                          "value"
-                        ]
-                      }
-                    }
-                  ],
-                  "_nested_name": "accordion.acc_images.more_images.dg_image_7",
-                  "_dynamicFields": {
                     "condition": [
                       {
                         "fullExpression": "!!@data.@local.pest_image_7",
@@ -727,6 +636,7 @@
                   },
                   "_dynamicDependencies": {
                     "@local.pest_image_7": [
+                      "value",
                       "condition"
                     ]
                   }
@@ -735,7 +645,67 @@
               "_nested_name": "accordion.acc_images.more_images"
             }
           ],
-          "_nested_name": "accordion.acc_images"
+          "_nested_name": "accordion.acc_images",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!!@data.@local.pest_image_2 || !!@data.@local.pest_image_3 || !!@data.@local.pest_image_4 || !!@data.@local.pest_image_5 || !!@data.@local.pest_image_6 || !!@data.@local.pest_image_7",
+                "matchedExpression": "@local.pest_image_2",
+                "type": "local",
+                "fieldName": "pest_image_2"
+              },
+              {
+                "fullExpression": "!!@data.@local.pest_image_2 || !!@data.@local.pest_image_3 || !!@data.@local.pest_image_4 || !!@data.@local.pest_image_5 || !!@data.@local.pest_image_6 || !!@data.@local.pest_image_7",
+                "matchedExpression": "@local.pest_image_3",
+                "type": "local",
+                "fieldName": "pest_image_3"
+              },
+              {
+                "fullExpression": "!!@data.@local.pest_image_2 || !!@data.@local.pest_image_3 || !!@data.@local.pest_image_4 || !!@data.@local.pest_image_5 || !!@data.@local.pest_image_6 || !!@data.@local.pest_image_7",
+                "matchedExpression": "@local.pest_image_4",
+                "type": "local",
+                "fieldName": "pest_image_4"
+              },
+              {
+                "fullExpression": "!!@data.@local.pest_image_2 || !!@data.@local.pest_image_3 || !!@data.@local.pest_image_4 || !!@data.@local.pest_image_5 || !!@data.@local.pest_image_6 || !!@data.@local.pest_image_7",
+                "matchedExpression": "@local.pest_image_5",
+                "type": "local",
+                "fieldName": "pest_image_5"
+              },
+              {
+                "fullExpression": "!!@data.@local.pest_image_2 || !!@data.@local.pest_image_3 || !!@data.@local.pest_image_4 || !!@data.@local.pest_image_5 || !!@data.@local.pest_image_6 || !!@data.@local.pest_image_7",
+                "matchedExpression": "@local.pest_image_6",
+                "type": "local",
+                "fieldName": "pest_image_6"
+              },
+              {
+                "fullExpression": "!!@data.@local.pest_image_2 || !!@data.@local.pest_image_3 || !!@data.@local.pest_image_4 || !!@data.@local.pest_image_5 || !!@data.@local.pest_image_6 || !!@data.@local.pest_image_7",
+                "matchedExpression": "@local.pest_image_7",
+                "type": "local",
+                "fieldName": "pest_image_7"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.pest_image_2": [
+              "condition"
+            ],
+            "@local.pest_image_3": [
+              "condition"
+            ],
+            "@local.pest_image_4": [
+              "condition"
+            ],
+            "@local.pest_image_5": [
+              "condition"
+            ],
+            "@local.pest_image_6": [
+              "condition"
+            ],
+            "@local.pest_image_7": [
+              "condition"
+            ]
+          }
         },
         {
           "type": "accordion_section",
@@ -836,10 +806,10 @@
                               "trigger": "click",
                               "action_id": "go_to",
                               "args": [
-                                "lib_plant"
+                                "lib_plant_with_pest"
                               ],
-                              "_raw": "click | go_to: lib_plant",
-                              "_cleaned": "click | go_to: lib_plant"
+                              "_raw": "click | go_to: lib_plant_with_pest",
+                              "_cleaned": "click | go_to: lib_plant_with_pest"
                             }
                           ],
                           "parameter_list": {

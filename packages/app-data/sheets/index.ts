@@ -720,6 +720,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "lib_plant",
       _xlsxPath: "templates/global/library.xlsx",
     },
+    lib_plant_with_pest: {
+      flow_type: "template",
+      flow_name: "lib_plant_with_pest",
+      _xlsxPath: "templates/global/library.xlsx",
+    },
     lib_principles: {
       flow_type: "template",
       flow_name: "lib_principles",

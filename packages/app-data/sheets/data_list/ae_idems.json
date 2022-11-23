@@ -7,49 +7,49 @@
     {
       "id": "principle_diversity",
       "principle_no": 1,
-      "illustration": "ae_principles/diversity.png",
+      "illustration": "ae_principles/idems/diversity.png",
       "principle_title": "Diversity",
       "principle_details": "Diversification is key to agroecological transitions to ensure food security and nutrition while conserving, protecting and enhancing natural resources."
     },
     {
       "id": "principle_collaborating_and_connecting",
       "principle_no": 2,
-      "illustration": "ae_principles/connectivity.png",
+      "illustration": "ae_principles/idems/connectivity.png",
       "principle_title": "Collaborating and Connecting",
       "principle_details": "Sharing knowledge and creating connections between agro-ecosystems \n(plants, animals, ...) strengthens agriculture."
     },
     {
       "id": "principle_resilience",
       "principle_no": 3,
-      "illustration": "ae_principles/resilience.png",
+      "illustration": "ae_principles/idems/resilience.png",
       "principle_title": "Resilience",
       "principle_details": "Enhanced resilience of people, communities and ecosystems is key to sustainable food and agricultural systems."
     },
     {
       "id": "principle_efficiency",
       "principle_no": 4,
-      "illustration": "ae_principles/efficiency.png",
+      "illustration": "ae_principles/idems/efficiency.png",
       "principle_title": "Efficiency",
       "principle_details": "Innovative agroecological practices produce more using less external resources."
     },
     {
       "id": "principle_recycling",
       "principle_no": 5,
-      "illustration": "ae_principles/recycling.png",
+      "illustration": "ae_principles/idems/recycling.png",
       "principle_title": "Recycling",
       "principle_details": "More recycling means agricultural production with lower economic and environmental costs."
     },
     {
       "id": "principle_communities",
       "principle_no": 6,
-      "illustration": "ae_principles/community.png",
+      "illustration": "ae_principles/idems/community.png",
       "principle_title": "Responsible communities",
       "principle_details": "Achieving sustainable human and agricultural development requires effective and responsible governance mechanisms that prioritise social well-being through solidarity and equity.\n\nCloser ties between producers and consumers can protect rural livelihoods and strengthen communities."
     },
     {
       "id": "principle_culture",
       "principle_no": 7,
-      "illustration": "ae_principles/food_culture.png",
+      "illustration": "ae_principles/idems/food_culture.png",
       "principle_title": "Culture and food traditions",
       "principle_details": "By supporting healthy, diversified and culturally appropriate diets, agroecology contributes to food security and nutrition while maintaining the health of ecosystems."
     }

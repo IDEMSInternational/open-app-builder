@@ -7,70 +7,70 @@
     {
       "id": "principle_resistance",
       "principle_no": 1,
-      "illustration": "IFA_resistance",
-      "principle_title": "*Resistance to an economic system that puts profit before life.\n*The means to produce and consume food into something better for humanity and our Mother Earth.",
+      "illustration": "ae_principles/ifa//ifa_resistance",
+      "principle_title": "* Resistance to an economic system that puts profit before life.\n* The means to produce and consume food into something better for humanity and our Mother Earth.",
       "principle_details": "The production practices of agroecology are based on ecological principles like building life in the soil, recycling nutrients, biodiversity and energy conservation at all scales.\n\nAgroecology promotes local knowledge, social justice, culture, and strengthens the economic viability of rural areas."
     },
     {
       "id": "principle_territories",
       "principle_no": 2,
-      "illustration": "IFA_territories",
+      "illustration": "ae_principles/ifa//ifa_territories",
       "principle_title": "Territories are a fundamental pillar of agroecology.",
       "principle_details": "Peoples and communities have the right to maintain their own spiritual and material relationships to their lands.\n\nThis implies the full recognition of their laws, traditions, customs, tenure systems, and institutions, and constitutes the recognition of the self-determination and autonomy of peoples."
     },
     {
       "id": "principle_rights",
       "principle_no": 3,
-      "illustration": "IFA_rights",
+      "illustration": "ae_principles/ifa//ifa_rights",
       "principle_title": "Collective rights and access to the commons.",
       "principle_details": "We share access to territories that are the home to many different peer groups, and we have sophisticated customary systems for regulating access and avoiding conflicts that we want to preserve and to strengthen."
     },
     {
       "id": "principle_knowing",
       "principle_no": 4,
-      "illustration": "IFA_knowing",
+      "illustration": "ae_principles/ifa//ifa_knowing",
       "principle_title": "The diverse knowledges and ways of knowing of our peoples are fundamental to agroecology.",
       "principle_details": "We develop our ways of knowing through dialogue. Our learning processes are horizontal and peer-to-peer, based on popular education. Agroecology is developed through our own innovation, research, and crop and livestock selection and breeding."
     },
     {
       "id": "principle_cosmovision",
       "principle_no": 5,
-      "illustration": "IFA_cosmovision",
+      "illustration": "ae_principles/ifa//ifa_cosmovision",
       "principle_title": "The core of our cosmovisions is the necessary equilibrium between nature, the cosmos and human beings.",
       "principle_details": "We recognize that as humans we are but a part of nature and the cosmos. We reject the commodification of all forms of life."
     },
     {
       "id": "principle_movements",
       "principle_no": 6,
-      "illustration": "IFA_movements",
+      "illustration": "ae_principles/ifa//ifa_movements",
       "principle_title": "Families, communities, collectives, organizations and movements are the fertile soil in which agroecology flourishes.",
       "principle_details": "Solidarity, collective self-organization and action are what make it possible to scale-up agroecology, build local food systems, and challenge corporate control."
     },
     {
       "id": "principle_autonomy",
       "principle_no": 7,
-      "illustration": "IFA_autonomy",
+      "illustration": "ae_principles/ifa//ifa_autonomy",
       "principle_title": "The autonomy of agroecology displaces the control of global markets and generates self-governance by communities.",
       "principle_details": "It promotes direct and fair short distribution chains. It implies a transparent relationship between producers and consumers, and is based on the solidarity of shared risks and benefits."
     },
     {
       "id": "principle_political",
       "principle_no": 8,
-      "illustration": "IFA_political",
+      "illustration": "ae_principles/ifa//ifa_political",
       "principle_title": "Agroecology is political; it requires us to challenge and transform structures of power in society.",
       "principle_details": "We need to put the control of seeds, biodiversity, land and territories, waters, knowledge, culture and the commons in the hands of people."
     },
     {
       "id": "principle_women",
       "principle_no": 9,
-      "illustration": "IFA_women",
+      "illustration": "ae_principles/ifa//ifa_women",
       "principle_title": "Women and their knowledge, values, vision and leadership are critical for moving forward.",
       "principle_details": "Migration and globalization mean that women’s work is increasing, yet women have far less access to resources than men.\n\nFor agroecology to achieve its full potential, there must be equal distribution of power, tasks, decision-making and remuneration."
     },
     {
       "id": "principle_youth",
       "principle_no": 10,
-      "illustration": "IFA_youth",
+      "illustration": "ae_principles/ifa//ifa_youth",
       "principle_title": "Agroecology can provide a radical space for young people to contribute to the social and ecological transformation that is underway in many of our societies.",
       "principle_details": "Youth, together with women are the stewards of agroecology for future generations.\n\nAgroecology must create a territorial and social dynamic that creates opportunities for rural youth and values women’s leadership."
     }

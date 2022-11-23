@@ -7,105 +7,105 @@
     {
       "id": "principle_economy",
       "principle_no": 1,
-      "illustration": "CIDSE_economy",
+      "illustration": "ae_principles/cidse/cidse_economy",
       "principle_title": "Economic",
       "principle_details": "Promotes fair, short, distribution webs, with producers and consumers working together"
     },
     {
       "id": "principle_economic_resilience",
       "principle_no": 2,
-      "illustration": "CIDSE_economic_resilience",
+      "illustration": "ae_principles/cidse/cidse_economic_resilience",
       "principle_title": "Economic",
       "principle_details": "Increases resilience through diversification of farm incomes and strengthens community autonomy"
     },
     {
       "id": "principle_economic_solidarity",
       "principle_no": 3,
-      "illustration": "CIDSE_economic_solidarity",
+      "illustration": "ae_principles/cidse/cidse_economic_solidarity",
       "principle_title": "Economic",
       "principle_details": "Aims to enhance the power of local markets and build on a social and solidarity economy vision"
     },
     {
       "id": "principle_rights",
       "principle_no": 4,
-      "illustration": "CIDSE_rights",
+      "illustration": "ae_principles/cidse/cidse_rights",
       "principle_title": "Political",
       "principle_details": "Aims to put control of seeds, land and territories in the hands of people"
     },
     {
       "id": "principle_food_governance",
       "principle_no": 5,
-      "illustration": "CIDSE_food_governance",
+      "illustration": "ae_principles/cidse/cidse_food_governance",
       "principle_title": "Political",
       "principle_details": "Encourages new forms of decentralized, collective, participatory governance of food systems"
     },
     {
       "id": "principle_policies",
       "principle_no": 6,
-      "illustration": "CIDSE_policies",
+      "illustration": "ae_principles/cidse/cidse_policies",
       "principle_title": "Political",
       "principle_details": "Requires supportive public policies and investments"
     },
     {
       "id": "principle_decision_making",
       "principle_no": 7,
-      "illustration": "CIDSE_decision_making",
+      "illustration": "ae_principles/cidse/cidse_decision_making",
       "principle_title": "Political",
       "principle_details": "Encourages stronger participation of food producers/consumers in decision making"
     },
     {
       "id": "principle_climate_change",
       "principle_no": 8,
-      "illustration": "CIDSE_climate_change",
+      "illustration": "ae_principles/cidse/cidse_climate_change",
       "principle_title": "Environmental",
       "principle_details": "Supports resilience and adaptation to climate change"
     },
     {
       "id": "principle_biodiversity",
       "principle_no": 9,
-      "illustration": "CIDSE_biodiversity",
+      "illustration": "ae_principles/cidse/cidse_biodiversity",
       "principle_title": "Environmental",
       "principle_details": "Nourishes biodiversity and soils"
     },
     {
       "id": "principle_agrochemicals",
       "principle_no": 10,
-      "illustration": "CIDSE_agrochemicals",
+      "illustration": "ae_principles/cidse/cidse_agrochemicals",
       "principle_title": "Environmental",
       "principle_details": "Eliminates use of and dependence on agrochemicals"
     },
     {
       "id": "principle_integration",
       "principle_no": 11,
-      "illustration": "CIDSE_integration",
+      "illustration": "ae_principles/cidse/cidse_integration",
       "principle_title": "Environmental",
       "principle_details": "Enhances integration of various elements of agro-ecosystems (plants, animals, ...)"
     },
     {
       "id": "principle_knowledge",
       "principle_no": 12,
-      "illustration": "CIDSE_knowledge",
+      "illustration": "ae_principles/cidse/cidse_knowledge",
       "principle_title": "Socio-cultural",
       "principle_details": "Promotes farmer to farmer exchanges for sharing knowledge"
     },
     {
       "id": "principle_communities",
       "principle_no": 13,
-      "illustration": "CIDSE_communities",
+      "illustration": "ae_principles/cidse/cidse_communities",
       "principle_title": "Socio-cultural",
       "principle_details": "Strengthens food producers, local communities, culture, knowledge, spirituality"
     },
     {
       "id": "principle_diets",
       "principle_no": 14,
-      "illustration": "CIDSE_diets",
+      "illustration": "ae_principles/cidse/cidse_diets",
       "principle_title": "Socio-cultural",
       "principle_details": "Promotes healthy diets and livelihoods"
     },
     {
       "id": "principle_empowerment",
       "principle_no": 15,
-      "illustration": "CIDSE_empowerment",
+      "illustration": "ae_principles/cidse/cidse_empowerment",
       "principle_title": "Socio-cultural",
       "principle_details": "Encourages diversity and solidarity among peoples, encourages women and youth empowerment"
     }

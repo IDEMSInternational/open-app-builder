@@ -7,70 +7,70 @@
     {
       "id": "principle_diversity2",
       "principle_no": 1,
-      "illustration": "ae_principles/diversity.png",
+      "illustration": "ae_principles/fao/fao/fao_diversity.png",
       "principle_title": "Diversity",
       "principle_details": "Diversification is key to agroecological transitions to ensure food security and nutrition while conserving, protecting and enhancing natural resources."
     },
     {
       "id": "principle_co_creation",
       "principle_no": 2,
-      "illustration": "ae_principles/co_creating_knowledge.png",
+      "illustration": "ae_principles/fao/fao_co_creating_knowledge.png",
       "principle_title": "Co-creation and sharing of knowledge",
       "principle_details": "Agricultural innovations respond better to local challenges when they are co-created through participatory processes."
     },
     {
       "id": "principle_synergy",
       "principle_no": 3,
-      "illustration": "ae_principles/synergies.png",
+      "illustration": "ae_principles/fao/fao_synergies.png",
       "principle_title": "Synergies",
       "principle_details": "Building synergies enhances key functions across food systems, supporting production and multiple ecosystem services"
     },
     {
       "id": "principle_efficiency2",
       "principle_no": 4,
-      "illustration": "ae_principles/efficiency.png",
+      "illustration": "ae_principles/fao/fao_efficiency.png",
       "principle_title": "Efficiency",
       "principle_details": "Innovative agroecological practices produce more using less external resources."
     },
     {
       "id": "principle_recycling2",
       "principle_no": 5,
-      "illustration": "ae_principles/recycling.png",
+      "illustration": "ae_principles/fao/fao_recycling.png",
       "principle_title": "Recycling",
       "principle_details": "More recycling means agricultural production with lower economic and environmental costs."
     },
     {
       "id": "principle_resilience2",
       "principle_no": 6,
-      "illustration": "ae_principles/resilience.png",
+      "illustration": "ae_principles/fao/fao_resilience.png",
       "principle_title": "Resilience",
       "principle_details": "Enhanced resilience of people, communities and ecosystems is key to sustainable food and agricultural systems."
     },
     {
       "id": "principle_social_values",
       "principle_no": 7,
-      "illustration": "ae_principles/human_and_social_values.png",
+      "illustration": "ae_principles/fao/fao_human_and_social_values.png",
       "principle_title": "Human and social values",
       "principle_details": "Protecting and improving rural livelihoods, equity and social well-being is essential for sustainable food and agricultural systems."
     },
     {
       "id": "principle_culture",
       "principle_no": 8,
-      "illustration": "ae_principles/culture_and_food_traditions.png",
+      "illustration": "ae_principles/fao/fao_culture_and_food_traditions.png",
       "principle_title": "Culture and food traditions",
       "principle_details": "By supporting healthy, diversified and culturally appropriate diets, agroecology contributes to food security and nutrition while maintaining the health of ecosystems."
     },
     {
       "id": "principle_governance",
       "principle_no": 9,
-      "illustration": "ae_principles/responsible_governance.png",
+      "illustration": "ae_principles/fao/fao_responsible_governance.png",
       "principle_title": "Responsible governance",
       "principle_details": "Sustainable food and agriculture requires responsible and effective governance mechanisms at different scales – from local to national to global."
     },
     {
       "id": "principle_solidarity",
       "principle_no": 10,
-      "illustration": "ae_principles/circular_and_solidarity_economy.png",
+      "illustration": "ae_principles/fao/fao_circular_and_solidarity_economy.png",
       "principle_title": "Circular and solidarity economy",
       "principle_details": "Circular and solidarity economies that reconnect producers and consumers provide innovative solutions for living within our planetary boundaries while ensuring the social foundation for inclusive and sustainable development."
     }
