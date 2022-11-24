@@ -125,6 +125,18 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
   },
+  sync_authorize: {
+    label: "Authorize Google Drive for content sync",
+    steps: [
+      {
+        name: "authorize",
+        function: async ({ tasks }) => {
+          tasks.gdrive.authorize();
+          process.exit(0);
+        },
+      },
+    ],
+  },
 };
 
 export default workflows;

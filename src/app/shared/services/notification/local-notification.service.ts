@@ -9,11 +9,10 @@ import {
 import { addSeconds } from "date-fns";
 import { interval } from "rxjs";
 import { BehaviorSubject } from "rxjs";
-import { APP_CONSTANTS } from "src/app/data";
+import { IAppConfig } from "../../model";
 import { generateTimestamp } from "../../utils";
+import { AppConfigService } from "../app-config/app-config.service";
 import { DbService } from "../db/db.service";
-
-const { NOTIFICATION_DEFAULTS, NOTIFICATIONS_SYNC_FREQUENCY_MS } = APP_CONSTANTS;
 
 /** Utility type to assert local notification has extra and schedule defined */
 export interface ILocalNotification extends LocalNotificationSchema {
@@ -61,9 +60,13 @@ export class LocalNotificationService {
   private sessionStartTime = new Date().getTime();
 
   /** How frequently to re-evaluate notification schedule for cases such as changing fields */
-  private syncSchedule = interval(NOTIFICATIONS_SYNC_FREQUENCY_MS);
+  private syncSchedule;
+  notificationDefaults: IAppConfig["NOTIFICATION_DEFAULTS"];
+  /** Default settings used where otherwise not specified */
+  localNotificationDefaults: LocalNotificationSchema;
 
-  constructor(dbService: DbService) {
+  constructor(dbService: DbService, private appConfigService: AppConfigService) {
+    this.subscribeToAppConfigChanges();
     this.db = dbService.table<ILocalNotification>("local_notifications");
   }
 
@@ -80,6 +83,24 @@ export class LocalNotificationService {
       await this.loadNotifications();
       this.syncSchedule.subscribe(() => this.loadNotifications());
     }
+  }
+
+  subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.notificationDefaults = appConfig.NOTIFICATION_DEFAULTS;
+      this.syncSchedule = interval(appConfig.NOTIFICATIONS_SYNC_FREQUENCY_MS);
+      this.localNotificationDefaults = {
+        id: new Date().getUTCMilliseconds(),
+        title: this.notificationDefaults.title,
+        body: this.notificationDefaults.text,
+        sound: null,
+        attachments: null,
+        // actionTypeId: "action_1", // Currently no action buttons included
+        extra: null,
+        // Note, we don't want android to remove notification as we will handle in db
+        autoCancel: false,
+      };
+    });
   }
 
   public async requestPermission(): Promise<boolean> {
@@ -178,7 +199,7 @@ export class LocalNotificationService {
   public async scheduleNotification(notification: ILocalNotification, reloadNotifications = true) {
     if (!this.permissionGranted) return;
     // add default values
-    Object.entries(LOCAL_NOTIFICATION_DEFAULTS).forEach(([key, value]) => {
+    Object.entries(this.localNotificationDefaults).forEach(([key, value]) => {
       if (!notification.hasOwnProperty(key)) {
         notification[key] = value;
       }
@@ -337,19 +358,4 @@ const NOTIFICATION_ACTIONS: {
       },
     ],
   },
-};
-
-/**
- * Default settings used where otherwise not specified
- */
-const LOCAL_NOTIFICATION_DEFAULTS: LocalNotificationSchema = {
-  id: new Date().getUTCMilliseconds(),
-  title: NOTIFICATION_DEFAULTS.title,
-  body: NOTIFICATION_DEFAULTS.text,
-  sound: null,
-  attachments: null,
-  // actionTypeId: "action_1", // Currently no action buttons included
-  extra: null,
-  // Note, we don't want android to remove notification as we will handle in db
-  autoCancel: false,
 };

@@ -809,20 +809,23 @@
         {
           "type": "text",
           "name": "text_group",
-          "value": "Great! We will unlock a new workshop for your group every week. This allows all of you to try what you learned with your families before building the next skill.",
+          "value": "Great! We will unlock a new @global.workshop for your group every week. This allows all of you to try what you learned with your families before building the next skill.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "condition": "@local.radio_group==\"together\"",
           "_nested_name": "combo_box_replies.text_group",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "Great! We will unlock a new @global.workshop for your group every week. This allows all of you to try what you learned with your families before building the next skill.",
+                "matchedExpression": "@global.workshop",
+                "type": "global",
+                "fieldName": "workshop"
+              }
+            ],
             "condition": [
               {
                 "fullExpression": "@local.radio_group==\"together\"",
@@ -833,6 +836,9 @@
             ]
           },
           "_dynamicDependencies": {
+            "@global.workshop": [
+              "value"
+            ],
             "@local.radio_group": [
               "condition"
             ]
@@ -841,20 +847,23 @@
         {
           "type": "text",
           "name": "text_individual",
-          "value": "Great! We will unlock a new workshop for you every week. This allows you to try what you learned with your family before building the next skill.",
+          "value": "Great! We will unlock a new @global.workshop for you every week. This allows you to try what you learned with your family before building the next skill.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "condition": "@local.radio_group==\"individual\"",
           "_nested_name": "combo_box_replies.text_individual",
           "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "Great! We will unlock a new @global.workshop for you every week. This allows you to try what you learned with your family before building the next skill.",
+                "matchedExpression": "@global.workshop",
+                "type": "global",
+                "fieldName": "workshop"
+              }
+            ],
             "condition": [
               {
                 "fullExpression": "@local.radio_group==\"individual\"",
@@ -865,6 +874,9 @@
             ]
           },
           "_dynamicDependencies": {
+            "@global.workshop": [
+              "value"
+            ],
             "@local.radio_group": [
               "condition"
             ]

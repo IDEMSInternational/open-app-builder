@@ -42,7 +42,7 @@
       "id": "app_start_accept_terms",
       "priority": 2,
       "condition_list": [
-        "!@fields.terms_v20200916_accepted"
+        "!@fields.terms_v20221018_accepted"
       ],
       "action_list": [
         {
@@ -95,8 +95,41 @@
     },
     {
       "lifecycle_event": "app_start",
-      "id": "app_start_organisation_registration",
+      "id": "app_start_skin_select",
       "priority": 4,
+      "condition_list": [
+        "!@fields.skin_selected"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "skin_select"
+          ],
+          "_raw": "pop_up: skin_select | fullscreen: true, showCloseButton: false",
+          "_cleaned": "click | pop_up: skin_select | fullscreen: true, showCloseButton: false",
+          "params": {
+            "fullscreen": true,
+            "showCloseButton": false
+          }
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "skin_selected",
+            true
+          ],
+          "_raw": "set_field: skin_selected: true",
+          "_cleaned": "click | set_field: skin_selected: true"
+        }
+      ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "id": "app_start_organisation_registration",
+      "priority": 5,
       "condition_list": [
         "!@fields.organisation_registration_completed"
       ],
@@ -129,9 +162,9 @@
     {
       "lifecycle_event": "app_start",
       "id": "app_start_home_screen_tour",
-      "priority": 5,
+      "priority": 6,
       "condition_list": [
-        "!@fields.home_screen_tour_viewed"
+        "!@fields.home_screen_tour_viewed && @fields._app_skin ==\"weekly_workshop\""
       ],
       "action_list": [
         {

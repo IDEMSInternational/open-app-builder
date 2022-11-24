@@ -31,7 +31,7 @@ export class ConversionActionQueue {
       logUpdate(chalk.blue(`${total - this.queue.size - this.queue.pending}/${total} processed`));
     });
     this.queue.start();
-    await this.queue.onEmpty();
+    await this.queue.onIdle();
   }
 
   private queueIgnoreActions(entries: IGDriveContentsEntry[]) {

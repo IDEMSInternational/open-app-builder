@@ -13,11 +13,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_1.sent",
+            "nf_inactive_1_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_1.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_1.sent : true"
+          "_raw": "sent | set_field: nf_inactive_1_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_1_sent : true"
         }
       ],
       "priority": 1,
@@ -27,7 +27,9 @@
       ],
       "text": "Parenting can be hard, but @global.parent_app is here to help you win. Tap here to find practical tips for you and your family.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -44,11 +46,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_2.sent",
+            "nf_inactive_2_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_2.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_2.sent : true"
+          "_raw": "sent | set_field: nf_inactive_2_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_2_sent : true"
         }
       ],
       "priority": 1,
@@ -58,7 +60,9 @@
       ],
       "text": "Do you ever feel stressed as a parent? @global.parent_app is here to help you feel more calm and focused. Tap here to find out more.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -75,11 +79,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_3.sent",
+            "nf_inactive_3_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_3.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_3.sent : true"
+          "_raw": "sent | set_field: nf_inactive_3_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_3_sent : true"
         }
       ],
       "priority": 1,
@@ -89,7 +93,9 @@
       ],
       "text": "Millions of parents found the tips in @global.parent_app useful, and you can access them too. Tap here to explore.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -106,11 +112,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_4.sent",
+            "nf_inactive_4_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_4.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_4.sent : true"
+          "_raw": "sent | set_field: nf_inactive_4_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_4_sent : true"
         }
       ],
       "priority": 1,
@@ -120,7 +126,9 @@
       ],
       "text": "Need some help with your teen's behaviour? @global.parent_app is here for you. Tap here to check it out.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -137,11 +145,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_5.sent",
+            "nf_inactive_5_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_5.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_5.sent : true"
+          "_raw": "sent | set_field: nf_inactive_5_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_5_sent : true"
         }
       ],
       "priority": 1,
@@ -151,7 +159,9 @@
       ],
       "text": "Want to invest in yourself and your family? 1 minute in @global.parent_app already makes a difference! Tap here to find out more.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -168,11 +178,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_6.sent",
+            "nf_inactive_6_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_6.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_6.sent : true"
+          "_raw": "sent | set_field: nf_inactive_6_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_6_sent : true"
         }
       ],
       "priority": 1,
@@ -182,7 +192,9 @@
       ],
       "text": "Want to set your teen and family up for success? Get practical tips and more in @global.parent_app.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -199,11 +211,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_7.sent",
+            "nf_inactive_7_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_7.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_7.sent : true"
+          "_raw": "sent | set_field: nf_inactive_7_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_7_sent : true"
         }
       ],
       "priority": 1,
@@ -213,7 +225,9 @@
       ],
       "text": "Remember to take care of yourself too - it will help you AND your family! Get your tips and more in @global.parent_app.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -230,11 +244,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_8.sent",
+            "nf_inactive_8_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_8.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_8.sent : true"
+          "_raw": "sent | set_field: nf_inactive_8_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_8_sent : true"
         }
       ],
       "priority": 1,
@@ -244,7 +258,9 @@
       ],
       "text": "@global.parent_app is here to support you. Tap here and check it out now.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -261,11 +277,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_9.sent",
+            "nf_inactive_9_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_9.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_9.sent : true"
+          "_raw": "sent | set_field: nf_inactive_9_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_9_sent : true"
         }
       ],
       "priority": 1,
@@ -275,7 +291,9 @@
       ],
       "text": "Do you want to enjoy family life more? Tap here and find practical tips in @global.parent_app.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -292,11 +310,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_10.sent",
+            "nf_inactive_10_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_10.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_10.sent : true"
+          "_raw": "sent | set_field: nf_inactive_10_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_10_sent : true"
         }
       ],
       "priority": 1,
@@ -306,7 +324,9 @@
       ],
       "text": "You are not alone! @global.parent_app has lots of tips and activities that will help you and your family. Tap here to explore.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -323,11 +343,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_11.sent",
+            "nf_inactive_11_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_11.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_11.sent : true"
+          "_raw": "sent | set_field: nf_inactive_11_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_11_sent : true"
         }
       ],
       "priority": 1,
@@ -337,7 +357,9 @@
       ],
       "text": "We all need a break sometimes - and you can get one right now in @global.parent_app! Tap here to find relaxation activities and more.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -354,11 +376,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_12.sent",
+            "nf_inactive_12_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_12.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_12.sent : true"
+          "_raw": "sent | set_field: nf_inactive_12_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_12_sent : true"
         }
       ],
       "priority": 1,
@@ -368,7 +390,9 @@
       ],
       "text": "Do you have five minutes to learn about parenting? @global.parent_app is here to help!",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -385,11 +409,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_13.sent",
+            "nf_inactive_13_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_13.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_13.sent : true"
+          "_raw": "sent | set_field: nf_inactive_13_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_13_sent : true"
         }
       ],
       "priority": 1,
@@ -399,7 +423,9 @@
       ],
       "text": "Looking for help with your teen? @global.parent_app is here for you!",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -416,11 +442,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_14.sent",
+            "nf_inactive_14_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_14.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_14.sent : true"
+          "_raw": "sent | set_field: nf_inactive_14_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_14_sent : true"
         }
       ],
       "priority": 1,
@@ -430,7 +456,9 @@
       ],
       "text": "It’s time to learn about parenting, use @global.parent_app now for useful tips for your family.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -447,11 +475,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_15.sent",
+            "nf_inactive_15_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_15.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_15.sent : true"
+          "_raw": "sent | set_field: nf_inactive_15_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_15_sent : true"
         }
       ],
       "priority": 1,
@@ -461,7 +489,9 @@
       ],
       "text": "Parents are the best! Tap here to find tips to help you with your teen.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -478,11 +508,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_16.sent",
+            "nf_inactive_16_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_16.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_16.sent : true"
+          "_raw": "sent | set_field: nf_inactive_16_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_16_sent : true"
         }
       ],
       "priority": 1,
@@ -492,7 +522,9 @@
       ],
       "text": "Teens can turn your day upside down. Let @global.parent_app help you create a happy and peaceful home.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -509,11 +541,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_17.sent",
+            "nf_inactive_17_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_17.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_17.sent : true"
+          "_raw": "sent | set_field: nf_inactive_17_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_17_sent : true"
         }
       ],
       "priority": 1,
@@ -523,7 +555,9 @@
       ],
       "text": "Family is everything. @global.parent_app is here with many tips and activities to help you and your family.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -540,11 +574,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_18.sent",
+            "nf_inactive_18_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_18.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_18.sent : true"
+          "_raw": "sent | set_field: nf_inactive_18_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_18_sent : true"
         }
       ],
       "priority": 1,
@@ -554,7 +588,9 @@
       ],
       "text": "Spending 1 minute learning about parenting makes a world of difference. Jump back into @global.parent_app here.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -571,11 +607,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_19.sent",
+            "nf_inactive_19_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_19.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_19.sent : true"
+          "_raw": "sent | set_field: nf_inactive_19_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_19_sent : true"
         }
       ],
       "priority": 1,
@@ -585,7 +621,9 @@
       ],
       "text": "You are doing amazing, keep up the good work. @global.parent_app is full of tips on how to look after yourself and your family.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -602,11 +640,11 @@
           "trigger": "sent",
           "action_id": "set_field",
           "args": [
-            "nf_inactive_20.sent",
+            "nf_inactive_20_sent",
             true
           ],
-          "_raw": "sent | set_field: nf_inactive_20.sent : true",
-          "_cleaned": "sent | set_field: nf_inactive_20.sent : true"
+          "_raw": "sent | set_field: nf_inactive_20_sent : true",
+          "_cleaned": "sent | set_field: nf_inactive_20_sent : true"
         }
       ],
       "priority": 1,
@@ -616,7 +654,9 @@
       ],
       "text": "Wow, your teen is so lucky to have you as a parent. Learn more about parenting your teen with @global.parent_app.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "text": {
