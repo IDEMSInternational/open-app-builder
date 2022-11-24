@@ -33,15 +33,6 @@
           "name": "box_image",
           "rows": [
             {
-              "name": "image_src",
-              "value": "plh_images/characters/neighbour/neutral.svg",
-              "_translations": {
-                "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "survey_outro.box_image.image_src"
-            },
-            {
               "name": "text",
               "value": "Remember you can access lots of helpful tips and resources in the @global.parent_centre - this is available for you at any time!",
               "_translations": {

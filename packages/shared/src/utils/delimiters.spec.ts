@@ -76,6 +76,21 @@ const parseTests: IParseTestData[] = [
       },
     },
   },
+  // mixed contexts (rows parsed, fields ignored)
+  {
+    delimited: "{@fields.{@row.first_name}}",
+    extracted: {
+      value: "{[$1]}",
+      variables: {
+        "[$1]": {
+          value: "@fields.[$1.1]",
+          variables: {
+            "[$1.1]": { value: "@row.first_name" },
+          },
+        },
+      },
+    },
+  },
 ];
 
 describe("Converts non-delimited variables", () => {
@@ -108,7 +123,7 @@ describe("Parses delimiters", () => {
     const { delimited, extracted } = testData;
     if (extracted) {
       it(JSON.stringify(delimited), () => {
-        const parsed = Delimiters.extractDelimitedTemplateString({ value: delimited });
+        const parsed = Delimiters.extractDelimitedTemplateString({ value: delimited }, ["row"]);
         expect(parsed).toEqual(extracted);
         process.nextTick(() => console.log(`      ${JSON.stringify(parsed)}\n`));
         // NOTE - in case of errors additional tests can be carried out just on intermediate

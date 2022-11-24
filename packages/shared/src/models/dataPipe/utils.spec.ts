@@ -38,4 +38,10 @@ describe("DataPipe Utils: Set Index Column", () => {
     const errMsg = "Column [missing_col] does not exist in data\nColumns: id, value";
     expect(() => DataPipeUtils.setIndexColumn(df, "missing_col")).toThrowError(errMsg);
   });
+  const nonUniqueDf = new DataFrame([...input, ...input]);
+  it("Throws on non-unique index values", () => {
+    expect(() => DataPipeUtils.setIndexColumn(nonUniqueDf, "id")).toThrowError(
+      `Duplicate ids found for entries: id_2, id_1`
+    );
+  });
 });

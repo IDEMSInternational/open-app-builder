@@ -24,11 +24,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_consequence_m_w_released.sent",
+            "w_consequence_m_w_released_sent",
             true
           ],
-          "_raw": "click | set_field: w_consequence_m_w_released.sent : true",
-          "_cleaned": "click | set_field: w_consequence_m_w_released.sent : true"
+          "_raw": "click | set_field: w_consequence_m_w_released_sent : true",
+          "_cleaned": "click | set_field: w_consequence_m_w_released_sent : true"
         }
       ],
       "priority": 5.99,
@@ -103,11 +103,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_consequence_m_w_released.sent",
+            "w_consequence_m_w_released_sent",
             true
           ],
-          "_raw": "click | set_field: w_consequence_m_w_released.sent : true",
-          "_cleaned": "click | set_field: w_consequence_m_w_released.sent : true"
+          "_raw": "click | set_field: w_consequence_m_w_released_sent : true",
+          "_cleaned": "click | set_field: w_consequence_m_w_released_sent : true"
         }
       ],
       "priority": 5.99,
@@ -181,11 +181,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_consequence_m_relax.sent",
+            "w_consequence_m_relax_sent",
             true
           ],
-          "_raw": "click | set_field: w_consequence_m_relax.sent : true",
-          "_cleaned": "click | set_field: w_consequence_m_relax.sent : true"
+          "_raw": "click | set_field: w_consequence_m_relax_sent : true",
+          "_cleaned": "click | set_field: w_consequence_m_relax_sent : true"
         }
       ],
       "priority": 5.9,
@@ -239,11 +239,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_consequence_m_something_fun.sent",
+            "w_consequence_m_something_fun_sent",
             true
           ],
-          "_raw": "click | set_field: w_consequence_m_something_fun.sent : true",
-          "_cleaned": "click | set_field: w_consequence_m_something_fun.sent : true"
+          "_raw": "click | set_field: w_consequence_m_something_fun_sent : true",
+          "_cleaned": "click | set_field: w_consequence_m_something_fun_sent : true"
         }
       ],
       "priority": 5.8,
@@ -296,11 +296,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_consequence_m_praise.sent",
+            "w_consequence_m_praise_sent",
             true
           ],
-          "_raw": "click | set_field: w_consequence_m_praise.sent : true",
-          "_cleaned": "click | set_field: w_consequence_m_praise.sent : true"
+          "_raw": "click | set_field: w_consequence_m_praise_sent : true",
+          "_cleaned": "click | set_field: w_consequence_m_praise_sent : true"
         }
       ],
       "priority": 5.7,
@@ -358,11 +358,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_consequence_m_w_reminder.sent",
+            "w_consequence_m_w_reminder_sent",
             true
           ],
-          "_raw": "click | set_field: w_consequence_m_w_reminder.sent : true",
-          "_cleaned": "click | set_field: w_consequence_m_w_reminder.sent : true"
+          "_raw": "click | set_field: w_consequence_m_w_reminder_sent : true",
+          "_cleaned": "click | set_field: w_consequence_m_w_reminder_sent : true"
         }
       ],
       "priority": 5.6,
@@ -394,10 +394,7 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -405,10 +402,10 @@
           "eng": "@global.m_w_reminder"
         },
         "text": {
-          "eng": "Well done - you’ve gained 6 parenting tools already! Do the next workshop to get more!"
+          "eng": "Well done - you’ve gained 6 parenting tools already! Do the next @global.workshop to get more!"
         }
       },
-      "text": "Well done - you’ve gained 6 parenting tools already! Do the next workshop to get more!"
+      "text": "Well done - you’ve gained 6 parenting tools already! Do the next @global.workshop to get more!"
     },
     {
       "id": "w_in_progress_w_consequence",
@@ -429,11 +426,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_consequence_m_w_in_progress.sent",
+            "w_consequence_m_w_in_progress_sent",
             true
           ],
-          "_raw": "click | set_field: w_consequence_m_w_in_progress.sent : true",
-          "_cleaned": "click | set_field: w_consequence_m_w_in_progress.sent : true"
+          "_raw": "click | set_field: w_consequence_m_w_in_progress_sent : true",
+          "_cleaned": "click | set_field: w_consequence_m_w_in_progress_sent : true"
         }
       ],
       "priority": 5.5,
@@ -472,10 +469,7 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -483,10 +477,10 @@
           "eng": "@global.m_w_in_progress"
         },
         "text": {
-          "eng": "Complete the workshop and talk with your teen about a positive and a negative consequence of a behaviour."
+          "eng": "Complete the @global.workshop and talk with your teen about a positive and a negative consequence of a behaviour."
         }
       },
-      "text": "Complete the workshop and talk with your teen about a positive and a negative consequence of a behaviour."
+      "text": "Complete the @global.workshop and talk with your teen about a positive and a negative consequence of a behaviour."
     },
     {
       "id": "hp_reminder_w_consequence",
@@ -507,11 +501,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_consequence_m_hp_reminder.sent",
+            "w_consequence_m_hp_reminder_sent",
             true
           ],
-          "_raw": "click | set_field: w_consequence_m_hp_reminder.sent : true",
-          "_cleaned": "click | set_field: w_consequence_m_hp_reminder.sent : true"
+          "_raw": "click | set_field: w_consequence_m_hp_reminder_sent : true",
+          "_cleaned": "click | set_field: w_consequence_m_hp_reminder_sent : true"
         }
       ],
       "priority": 5.4,
@@ -578,11 +572,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "m_parent_points_overview.sent",
+            "m_parent_points_overview_sent",
             true
           ],
-          "_raw": "click | set_field: m_parent_points_overview.sent : true",
-          "_cleaned": "click | set_field: m_parent_points_overview.sent : true"
+          "_raw": "click | set_field: m_parent_points_overview_sent : true",
+          "_cleaned": "click | set_field: m_parent_points_overview_sent : true"
         }
       ],
       "priority": 5.3,
@@ -635,11 +629,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_consequence_hp_review.sent",
+            "w_consequence_hp_review_sent",
             true
           ],
-          "_raw": "click | set_field: w_consequence_hp_review.sent : true",
-          "_cleaned": "click | set_field: w_consequence_hp_review.sent : true"
+          "_raw": "click | set_field: w_consequence_hp_review_sent : true",
+          "_cleaned": "click | set_field: w_consequence_hp_review_sent : true"
         }
       ],
       "priority": 5.2,
@@ -702,11 +696,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_consequence_m_w_tomorrow.sent",
+            "w_consequence_m_w_tomorrow_sent",
             true
           ],
-          "_raw": "click | set_field: w_consequence_m_w_tomorrow.sent : true",
-          "_cleaned": "click | set_field: w_consequence_m_w_tomorrow.sent : true"
+          "_raw": "click | set_field: w_consequence_m_w_tomorrow_sent : true",
+          "_cleaned": "click | set_field: w_consequence_m_w_tomorrow_sent : true"
         }
       ],
       "priority": 5.1,
@@ -738,10 +732,7 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -749,10 +740,10 @@
           "eng": "@global.m_w_tomorrow"
         },
         "text": {
-          "eng": "Well done for completing the @data.workshop.w_consequence.in_text_title. Access a new workshop tomorrow to help you enjoy and learn useful skills!"
+          "eng": "Well done for completing the @data.workshop.w_consequence.in_text_title. Access a new @global.workshop tomorrow to help you enjoy and learn useful skills!"
         }
       },
-      "text": "Well done for completing the @data.workshop.w_consequence.in_text_title. Access a new workshop tomorrow to help you enjoy and learn useful skills!"
+      "text": "Well done for completing the @data.workshop.w_consequence.in_text_title. Access a new @global.workshop tomorrow to help you enjoy and learn useful skills!"
     },
     {
       "id": "w_tomorrow_w_consequence_incompl",
@@ -774,11 +765,11 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "w_consequence_m_w_tomorrow.sent",
+            "w_consequence_m_w_tomorrow_sent",
             true
           ],
-          "_raw": "click | set_field: w_consequence_m_w_tomorrow.sent : true",
-          "_cleaned": "click | set_field: w_consequence_m_w_tomorrow.sent : true"
+          "_raw": "click | set_field: w_consequence_m_w_tomorrow_sent : true",
+          "_cleaned": "click | set_field: w_consequence_m_w_tomorrow_sent : true"
         }
       ],
       "priority": 5.1,

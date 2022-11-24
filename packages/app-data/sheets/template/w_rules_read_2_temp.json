@@ -82,19 +82,29 @@
             },
             {
               "name": "intro_text",
-              "value": "Rules are important to keep your teens safe - also online. There’s more about this in the Weekly Workshop on safety planning, but let’s already have a first look now!",
+              "value": "Rules are important to keep your teens safe - also online. There’s more about this in the @global.weekly_workshop on safety planning, but let’s already have a first look now!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
-              "_nested_name": "read.workshop_activity.intro_text"
+              "_nested_name": "read.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Rules are important to keep your teens safe - also online. There’s more about this in the @global.weekly_workshop on safety planning, but let’s already have a first look now!",
+                    "matchedExpression": "@global.weekly_workshop",
+                    "type": "global",
+                    "fieldName": "weekly_workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.weekly_workshop": [
+                  "value"
+                ]
+              }
             },
             {
               "type": "nested_properties",

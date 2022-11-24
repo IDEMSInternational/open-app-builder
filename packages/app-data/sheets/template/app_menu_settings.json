@@ -24,13 +24,10 @@
           "args": [
             "setup_and_survey_stepper"
           ],
-          "_raw": "click | go_to:setup_and_survey_stepper",
-          "_cleaned": "click | go_to:setup_and_survey_stepper"
+          "_raw": "click | go_to: setup_and_survey_stepper",
+          "_cleaned": "click | go_to: setup_and_survey_stepper"
         }
       ],
-      "parameter_list": {
-        "text_align": "centre"
-      },
       "_nested_name": "button_1"
     },
     {
@@ -54,28 +51,18 @@
           "args": [
             "language_select"
           ],
-          "_raw": "click | go_to:language_select",
-          "_cleaned": "click | go_to:language_select"
+          "_raw": "click | go_to: language_select",
+          "_cleaned": "click | go_to: language_select"
         }
       ],
-      "parameter_list": {
-        "text_align": "centre"
-      },
       "_nested_name": "language_select"
     },
     {
       "type": "button",
       "name": "button_2",
-      "value": "Workshop Options",
+      "value": "@global.weekly_workshop_options",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "action_list": [
         {
@@ -84,14 +71,26 @@
           "args": [
             "workshop_options_page"
           ],
-          "_raw": "click | go_to:workshop_options_page",
-          "_cleaned": "click | go_to:workshop_options_page"
+          "_raw": "click | go_to: workshop_options_page",
+          "_cleaned": "click | go_to: workshop_options_page"
         }
       ],
-      "parameter_list": {
-        "text_align": "centre"
+      "_nested_name": "button_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.weekly_workshop_options",
+            "matchedExpression": "@global.weekly_workshop_options",
+            "type": "global",
+            "fieldName": "weekly_workshop_options"
+          }
+        ]
       },
-      "_nested_name": "button_2"
+      "_dynamicDependencies": {
+        "@global.weekly_workshop_options": [
+          "value"
+        ]
+      }
     },
     {
       "type": "button",
@@ -119,9 +118,6 @@
         }
       ],
       "condition": "!@fields.user_mode",
-      "parameter_list": {
-        "text_align": "centre"
-      },
       "_nested_name": "button_3",
       "_dynamicFields": {
         "condition": [
@@ -165,9 +161,6 @@
         }
       ],
       "condition": "!@fields.user_mode",
-      "parameter_list": {
-        "text_align": "centre"
-      },
       "_nested_name": "button_4",
       "_dynamicFields": {
         "condition": [
@@ -206,14 +199,11 @@
           "args": [
             "demo_navigation"
           ],
-          "_raw": "click | go_to:demo_navigation",
-          "_cleaned": "click | go_to:demo_navigation"
+          "_raw": "click | go_to: demo_navigation",
+          "_cleaned": "click | go_to: demo_navigation"
         }
       ],
       "condition": "!@fields.user_mode",
-      "parameter_list": {
-        "text_align": "centre"
-      },
       "_nested_name": "button_5",
       "_dynamicFields": {
         "condition": [
@@ -245,13 +235,10 @@
           "args": [
             "user_code"
           ],
-          "_raw": "click | go_to:user_code",
-          "_cleaned": "click | go_to:user_code"
+          "_raw": "click | go_to: user_code",
+          "_cleaned": "click | go_to: user_code"
         }
       ],
-      "parameter_list": {
-        "text_align": "centre"
-      },
       "_nested_name": "button_7",
       "_dynamicFields": {
         "value": [
@@ -290,13 +277,10 @@
           "args": [
             "organisation_registration"
           ],
-          "_raw": "click | go_to:organisation_registration",
-          "_cleaned": "click | go_to:organisation_registration"
+          "_raw": "click | go_to: organisation_registration",
+          "_cleaned": "click | go_to: organisation_registration"
         }
       ],
-      "parameter_list": {
-        "text_align": "centre"
-      },
       "_nested_name": "button_6"
     },
     {
@@ -320,14 +304,11 @@
           "args": [
             "app_menu_enter_dev_mode"
           ],
-          "_raw": "click | go_to:app_menu_enter_dev_mode",
-          "_cleaned": "click | go_to:app_menu_enter_dev_mode"
+          "_raw": "click | go_to: app_menu_enter_dev_mode",
+          "_cleaned": "click | go_to: app_menu_enter_dev_mode"
         }
       ],
       "condition": "@fields.user_mode",
-      "parameter_list": {
-        "text_align": "centre"
-      },
       "_nested_name": "button_8",
       "_dynamicFields": {
         "condition": [
@@ -366,14 +347,11 @@
           "args": [
             "app_menu_exit_dev_mode"
           ],
-          "_raw": "click | go_to:app_menu_exit_dev_mode",
-          "_cleaned": "click | go_to:app_menu_exit_dev_mode"
+          "_raw": "click | go_to: app_menu_exit_dev_mode",
+          "_cleaned": "click | go_to: app_menu_exit_dev_mode"
         }
       ],
       "condition": "!@fields.user_mode",
-      "parameter_list": {
-        "text_align": "centre"
-      },
       "_nested_name": "button_9",
       "_dynamicFields": {
         "condition": [
@@ -390,6 +368,28 @@
           "condition"
         ]
       }
+    },
+    {
+      "type": "button",
+      "name": "button_10",
+      "value": "Select Skin",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "skin_select"
+          ],
+          "_raw": "click | go_to: skin_select",
+          "_cleaned": "click | go_to: skin_select"
+        }
+      ],
+      "_nested_name": "button_10"
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
