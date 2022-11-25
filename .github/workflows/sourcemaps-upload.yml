@@ -1,0 +1,56 @@
+# Secrets
+# SENTRY_AUTH_TOKEN
+
+# Upload build sourcemaps to 3rd party error monitoring service
+# NOTE - likely will merge with deploy code unless can find a tidy way to link
+name: Sourcemaps Upload
+on:
+  push:
+    branches:
+      - feat/glitchtip-error-logs
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+      # HACK - hardcode plh_za for testing
+      - name: Set Environment Deployment
+        run: echo "DEPLOYMENT_NAME=plh_za" >> $GITHUB_ENV;
+        shell: bash
+      - name: set_version
+        run: echo "APP_VERSION=$(echo "$(cat package.json | jq -r '.version')")" >> $GITHUB_ENV
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: ./.yarn/cache
+          # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v1-
+      - name: Populate firebaseConfig.ts
+        env:
+          FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
+        run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
+      - run: yarn install
+      - name: Set Scripts Deployment
+        run: yarn scripts deployment set $DEPLOYMENT_NAME
+      - run: yarn build --source-map=true
+      - name: Upload sourcemaps
+        run: 'npx @sentry/cli releases files ${DEPLOYMENT_NAME}-${APP_VERSION} upload-sourcemaps www/'
+        env:
+          - SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN}}
+          - SENTRY_URL: https://app.glitchtip.com/
+          - SENTRY_ORG: c2dev
+          - SENTRY_PROJECT: ${{env.DEPLOYMENT_NAME}}
+      - name: Remove sourcemaps from build
+        run: |
+          echo $(ls www)
+          find . -name "*.map" -type f -delete
+          echo $(ls www)
+        
