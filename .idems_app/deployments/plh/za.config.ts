@@ -14,6 +14,6 @@ config.translations.filter_language_codes = ["za_en", "za_zu", "za_xh", "za_tn",
 // Override constants
 config.app_config.APP_LANGUAGES.default = "za_en";
 config.app_config.APP_SIDEMENU_DEFAULTS.title = "ParentApp (ZA)";
-config.error_logging = {dsn:'https://932cb627be21488eb91af6658225c6ce@app.glitchtip.com/2133'}
+config.error_logging = {dsn:'https://bf9d568425e646dfa6abcbdebc55acfc@app.glitchtip.com/2194'}
 
 export default config;

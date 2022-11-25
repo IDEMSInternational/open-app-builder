@@ -10,7 +10,6 @@ import { CrashlyticsService } from "../crashlytics/crashlytics.service";
 })
 export class ErrorHandlerService extends ErrorHandler {
   private initialised = false;
-
   private sentryEnabled = false;
 
   // Error handling is important and needs to be loaded first.
@@ -19,11 +18,16 @@ export class ErrorHandlerService extends ErrorHandler {
     super();
   }
 
+  /**
+   * TODO - can likely refactor method after #1664 merge
+   * (TBC - as cannot extend multiple services at same time)
+   */
   private async initialise() {
     const { production, deploymentConfig } = environment;
     if (production && deploymentConfig?.error_logging?.dsn) {
       await this.initialiseSentry();
     }
+    this.initialised = true;
   }
 
   /**
