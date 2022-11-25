@@ -374,7 +374,9 @@
       "name": "button_10",
       "value": "Select Skin",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "action_list": [
         {

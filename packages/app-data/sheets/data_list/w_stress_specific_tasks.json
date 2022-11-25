@@ -17,7 +17,7 @@
       "rel_priority": 2,
       "individual": true,
       "together": false,
-      "template": "w_stress_question_1"
+      "template": "w_stress_question"
     },
     {
       "id": "talk",
@@ -25,7 +25,7 @@
       "rel_priority": 3,
       "individual": false,
       "together": true,
-      "template": "w_stress_talk_1"
+      "template": "w_stress_talk"
     },
     {
       "id": "read_2",

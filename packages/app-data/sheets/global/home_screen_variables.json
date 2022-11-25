@@ -84,7 +84,8 @@
       "value": "@global.weekly_workshop @global.options",
       "_translations": {
         "value": {}
-      }
+      },
+      "exclude_from_translation": true
     },
     {
       "type": "declare_global_constant",
@@ -111,7 +112,9 @@
       "name": "workshops_capital",
       "value": "Workshops",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -119,7 +122,9 @@
       "name": "workshop_capital",
       "value": "Workshop",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -179,6 +184,16 @@
           "za_tn": true,
           "za_xh": true,
           "za_zu": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "things_to_do",
+      "value": "Things to do",
+      "_translations": {
+        "value": {
+          "tz_sw": true
         }
       }
     }

@@ -8,26 +8,35 @@
       "individual": true,
       "together": false,
       "priority": 1,
-      "title": "How are you?",
       "has_single_task": true,
+      "title": "How are you?",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      },
       "template": "w_self_care_welcome_individual"
-    },
-    {
-      "id": "care_together",
-      "individual": false,
-      "together": true,
-      "priority": 2,
-      "title": "How are you?",
-      "has_single_task": true,
-      "template": "w_self_care_care_together"
     },
     {
       "id": "intro",
       "individual": true,
       "together": true,
       "priority": 5,
-      "title": "Intro to ...",
       "has_single_task": true,
+      "title": "@data.workshop[@fields.current_workshop].intro_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop[@fields.current_workshop].intro_title"
+        }
+      },
       "template": "w_self_care_intro"
     },
     {
@@ -35,8 +44,16 @@
       "individual": true,
       "together": true,
       "priority": 70,
-      "title": "How to ...",
       "has_single_task": true,
+      "title": "@data.workshop[@fields.current_workshop].tools",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop[@fields.current_workshop].tools"
+        }
+      },
       "template": "w_self_care_tools_activity"
     },
     {
@@ -44,8 +61,16 @@
       "individual": true,
       "together": true,
       "priority": 80,
-      "title": "Home Practice",
       "has_single_task": true,
+      "title": "@global.home_practice",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.home_practice"
+        }
+      },
       "template": "w_self_care_home_practice"
     },
     {
@@ -53,8 +78,23 @@
       "individual": true,
       "together": true,
       "priority": 90,
-      "title": "Well done!",
       "has_single_task": true,
+      "title": "Well done!",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Well done!"
+        }
+      },
       "template": "w_self_care_ending"
     }
   ]

@@ -1,0 +1,43 @@
+{
+  "flow_type": "template",
+  "flow_name": "footer",
+  "status": "released",
+  "rows": [
+    {
+      "name": "button_list",
+      "value": [
+        "image: plh_images/icons/house_white.svg | target_template: home_screen",
+        "image: plh_images/icons/star_white.svg | target_template: parent_points",
+        "image: plh_images/icons/book_white.svg | target_template: parent_centre"
+      ],
+      "type": "set_variable",
+      "_nested_name": "button_list"
+    },
+    {
+      "type": "navigation_bar",
+      "parameter_list": {
+        "button_list": "@local.button_list"
+      },
+      "name": "navigation_bar",
+      "_nested_name": "navigation_bar",
+      "_dynamicFields": {
+        "parameter_list": {
+          "button_list": [
+            {
+              "fullExpression": "@local.button_list",
+              "matchedExpression": "@local.button_list",
+              "type": "local",
+              "fieldName": "button_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.button_list": [
+          "parameter_list.button_list"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global_modular/core_templates/footer.xlsx"
+}

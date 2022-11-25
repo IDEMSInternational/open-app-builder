@@ -51,11 +51,19 @@ const APP_LANGUAGES = {
 };
 
 /** Specifies the skins available to the current app build.
- * "default": the skin used by default for a given build
- * "available": an array of additional skins that are available to the current build */
+ * "defaultSkinName": the name of the skin used by default for a given build
+ * "available": an array of all skins that are available to the current build */
 const APP_SKINS: { defaultSkinName: string; available: IAppSkin[] } = {
   defaultSkinName: "default",
   available: [{ name: "default" }],
+};
+
+/** Specifies the themes available to the current app build.
+ * "defaultThemeName": the theme used by default for a given build
+ * "available": an array of all skins that are available to the current build */
+const APP_THEMES = {
+  defaultThemeName: "default",
+  available: ["default"],
 };
 
 /**
@@ -101,13 +109,22 @@ const APP_HEADER_DEFAULTS = {
   title: "App",
   // default only show menu button on home screen
   should_show_menu_button: (location: Location) =>
-    location.pathname == APP_ROUTE_DEFAULTS.home_route,
+    activeRoute(location) === APP_ROUTE_DEFAULTS.home_route,
   // default show back button on all screens except home screen
   should_show_back_button: (location: Location) =>
-    location.pathname !== APP_ROUTE_DEFAULTS.home_route,
+    activeRoute(location) !== APP_ROUTE_DEFAULTS.home_route,
   // on device minimize app when back button pressed from home screen
   should_minimize_app_on_back: (location: Location) =>
-    location.pathname == APP_ROUTE_DEFAULTS.home_route,
+    activeRoute(location) === APP_ROUTE_DEFAULTS.home_route,
+};
+
+/** Utility function to return the active pathname without any sidebar routing e.g. /home(sidebar:alt)  */
+const activeRoute = (location: Location) => {
+  return location.pathname.replace(/\(.+\)/, "");
+};
+
+const APP_FOOTER_DEFAULTS: { templateName: string | null } = {
+  templateName: null,
 };
 
 const APP_SIDEMENU_DEFAULTS = {
@@ -167,8 +184,10 @@ const APP_CONFIG = {
   APP_LANGUAGES,
   APP_ROUTE_DEFAULTS,
   APP_SIDEMENU_DEFAULTS,
+  APP_FOOTER_DEFAULTS,
   APP_STRINGS,
   APP_SKINS,
+  APP_THEMES,
   DYNAMIC_PREFIXES,
   FEEDBACK_MODULE_DEFAULTS,
   FIELD_PREFIX,

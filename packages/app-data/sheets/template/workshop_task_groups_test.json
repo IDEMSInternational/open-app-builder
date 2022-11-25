@@ -167,6 +167,7 @@
         {
           "type": "display_group",
           "name": "dg_@item.id",
+          "exclude_from_translation": true,
           "rows": [
             {
               "type": "display_group",
@@ -174,6 +175,7 @@
               "parameter_list": {
                 "style": "column"
               },
+              "exclude_from_translation": true,
               "rows": [
                 {
                   "type": "items",
@@ -182,6 +184,7 @@
                     "filter": "@item.individual",
                     "sort": "priority"
                   },
+                  "exclude_from_translation": true,
                   "rows": [
                     {
                       "name": "task_group_id",
@@ -189,6 +192,7 @@
                       "_translations": {
                         "value": {}
                       },
+                      "exclude_from_translation": true,
                       "type": "set_variable",
                       "_nested_name": "items.dg_@item.id.dg_1_@item.id.items.task_group_id",
                       "_dynamicFields": {
@@ -392,10 +396,10 @@
                           "trigger": "click",
                           "action_id": "go_to",
                           "args": [
-                            "task_group_stepper"
+                            "task_group_pair"
                           ],
-                          "_raw": "click | go_to: task_group_stepper",
-                          "_cleaned": "click | go_to: task_group_stepper"
+                          "_raw": "click | go_to: task_group_pair",
+                          "_cleaned": "click | go_to: task_group_pair"
                         }
                       ],
                       "_nested_name": "items.dg_@item.id.dg_1_@item.id.items.text_ind_@item.id",
@@ -626,6 +630,7 @@
               "parameter_list": {
                 "style": "column"
               },
+              "exclude_from_translation": true,
               "rows": [
                 {
                   "type": "items",
@@ -634,6 +639,7 @@
                     "filter": "@item.together",
                     "sort": "priority"
                   },
+                  "exclude_from_translation": true,
                   "rows": [
                     {
                       "name": "task_group_id",
@@ -641,6 +647,7 @@
                       "_translations": {
                         "value": {}
                       },
+                      "exclude_from_translation": true,
                       "type": "set_variable",
                       "_nested_name": "items.dg_@item.id.dg_2_@item.id.items.task_group_id",
                       "_dynamicFields": {
@@ -844,10 +851,10 @@
                           "trigger": "click",
                           "action_id": "go_to",
                           "args": [
-                            "task_group_stepper"
+                            "task_group_pair"
                           ],
-                          "_raw": "click | go_to: task_group_stepper",
-                          "_cleaned": "click | go_to: task_group_stepper"
+                          "_raw": "click | go_to: task_group_pair",
+                          "_cleaned": "click | go_to: task_group_pair"
                         }
                       ],
                       "_nested_name": "items.dg_@item.id.dg_2_@item.id.items.text_tog_@item.id",

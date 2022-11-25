@@ -1,0 +1,72 @@
+<div [class]="'card-wrapper landscape ' + style" (click)="triggerActions('click')">
+  <ng-container *ngIf="highlighted; else showProgress">
+    <span class="badge highlighted-badge">
+      {{ highlightedText }}
+    </span>
+  </ng-container>
+  <ng-template #showProgress>
+    <span class="badge progress-badge">
+      <span class="circle" [class]="progressStatus"></span>
+      <img
+        *ngIf="progressStatus === 'inProgress'"
+        class="icon"
+        src="{{ inProgressIcon | plhAsset }}"
+      />
+      <img
+        *ngIf="progressStatus === 'completed'"
+        class="icon completed"
+        src="{{ completedIcon | plhAsset }}"
+      />
+    </span>
+  </ng-template>
+  <div class="content-wrapper">
+    <ng-container *ngIf="!title">
+      <plh-template-component
+        *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
+        [row]="childRow"
+        [parent]="parent"
+        [attr.data-rowname]="_row.name"
+      >
+      </plh-template-component>
+    </ng-container>
+    <ng-container *ngIf="title">
+      <ng-container *ngIf="isButton">
+        <div class="button-content">
+          <plh-template-component
+            *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
+            [row]="childRow"
+            [parent]="parent"
+            [attr.data-rowname]="_row.name"
+          >
+          </plh-template-component>
+        </div>
+      </ng-container>
+      <div class="text-wrapper">
+        <div *ngIf="title" class="title-wrapper">
+          <h1>
+            {{ title }}
+          </h1>
+        </div>
+        <div *ngIf="subtitle" class="subtitle-wrapper">
+          <p>
+            {{ subtitle }}
+          </p>
+        </div>
+        <!-- If a taskGroupId is provided, show the progress bar for the relevant task group -->
+        <div *ngIf="taskGroupId && !taskId">
+          <plh-task-progress-bar
+            [taskGroupDataList]="taskGroupDataList"
+            [taskGroupCompletedField]="completedField"
+            [highlighted]="highlighted"
+            [progressUnitsName]="progressUnitsName"
+            [(progressStatus)]="progressStatus"
+            (newlyCompleted)="handleNewlyCompleted($event)"
+          ></plh-task-progress-bar>
+        </div>
+      </div>
+      <div *ngIf="image" class="image-wrapper">
+        <img [src]="image | plhAsset" />
+      </div>
+    </ng-container>
+  </div>
+</div>

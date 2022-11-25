@@ -79,7 +79,7 @@
       "group": "read_1",
       "individual": true,
       "together": false,
-      "template": "w_stress_question_1",
+      "template": "w_stress_question",
       "rel_priority": 2
     },
     {
@@ -87,7 +87,7 @@
       "group": "read_1",
       "individual": false,
       "together": true,
-      "template": "w_stress_talk_1",
+      "template": "w_stress_talk",
       "rel_priority": 3
     },
     {

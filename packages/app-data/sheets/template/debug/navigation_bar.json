@@ -5,14 +5,14 @@
   "flow_subtype": "debug",
   "rows": [
     {
-      "name": "button_list_1",
+      "name": "button_list",
       "value": [
         "name: home_screen_button | text: @global.home_screen | image: plh_images/icons/house_white.svg | target_template: home_screen",
         "name: parent_points_button | text: @global.parent_points | image: plh_images/icons/parent_child_white.svg | target_template: parent_points",
         "name: parent_library_button | text: @global.parent_centre | image: plh_images/icons/book_white.svg | target_template: parent_centre"
       ],
       "type": "set_variable",
-      "_nested_name": "button_list_1",
+      "_nested_name": "button_list",
       "_dynamicFields": {
         "value": {
           "0": [
@@ -54,19 +54,9 @@
       }
     },
     {
-      "name": "button_list_2",
-      "value": [
-        "image: plh_images/icons/house_white.svg | target_template: home_screen",
-        "image: plh_images/icons/star_white.svg | target_template: parent_points",
-        "image: plh_images/icons/book_white.svg | target_template: parent_centre"
-      ],
-      "type": "set_variable",
-      "_nested_name": "button_list_2"
-    },
-    {
       "type": "navigation_bar",
       "parameter_list": {
-        "button_list": "@local.button_list_1"
+        "button_list": "@local.button_list"
       },
       "name": "navigation_bar",
       "_nested_name": "navigation_bar",
@@ -74,16 +64,16 @@
         "parameter_list": {
           "button_list": [
             {
-              "fullExpression": "@local.button_list_1",
-              "matchedExpression": "@local.button_list_1",
+              "fullExpression": "@local.button_list",
+              "matchedExpression": "@local.button_list",
               "type": "local",
-              "fieldName": "button_list_1"
+              "fieldName": "button_list"
             }
           ]
         }
       },
       "_dynamicDependencies": {
-        "@local.button_list_1": [
+        "@local.button_list": [
           "parameter_list.button_list"
         ]
       }

@@ -148,7 +148,9 @@
       "name": "button_3",
       "value": "Update my @global.workshop options",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "action_list": [
         {

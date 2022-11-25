@@ -14,6 +14,7 @@ import {
   logOutput,
   recursiveFindByExtension,
   replicateDir,
+  getThemeNameFromThemeAssetFolderName,
 } from "../../utils";
 import { spawnSync } from "child_process";
 
@@ -59,7 +60,7 @@ export default program
 /**
  *
  **/
-class AppDataCopy {
+export class AppDataCopy {
   private activeDeployment = getActiveDeployment();
   constructor(private options: IProgramOptions) {}
 
@@ -73,7 +74,7 @@ class AppDataCopy {
       const sheetContents = this.sheetsGenerateContents(localSheetsFolder);
       this.sheetsWriteContents(localSheetsFolder, sheetContents);
       this.sheetsCopyFiles(localSheetsFolder, appSheetsFolder);
-      runPrettierCodeTidy(appSheetsFolder);
+      this.runPrettierCodeTidy(appSheetsFolder);
     }
 
     // Sheet Translations (applied if sheets are copied)
@@ -83,7 +84,7 @@ class AppDataCopy {
       // Handle Copy
       this.translationsWriteIndex(localTranslationsFolder);
       this.translationsCopyFiles(localTranslationsFolder, appTranslationsFolder);
-      runPrettierCodeTidy(appTranslationsFolder);
+      this.runPrettierCodeTidy(appTranslationsFolder);
     }
 
     // Assets
@@ -94,7 +95,7 @@ class AppDataCopy {
       this.assetsQualityCheck(localAssetsFolder);
       this.assetsCopyFiles(localAssetsFolder, appAssetsFolder);
       this.assetsGenerateIndex(appAssetsFolder);
-      runPrettierCodeTidy(appAssetsFolder);
+      this.runPrettierCodeTidy(appAssetsFolder);
     }
     console.log(chalk.green("Copy Complete"));
   }
@@ -208,16 +209,20 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
     const assetFiles = readContentsFile(sourceFolder);
     const { assets_filter_function } = this.activeDeployment.app_data;
     const filterLanguages = this.activeDeployment.translations?.filter_language_codes;
+    const filterThemes = this.activeDeployment.app_config.APP_THEMES.available;
 
-    if (filterLanguages) {
-      filterLanguages.push("global");
-    }
     const filteredFiles = assetFiles.filter((fileEntry) => {
+      const [parent_folder] = fileEntry.relativePath.split("/");
       // language filter
-      if (filterLanguages) {
-        const [lang_folder] = fileEntry.relativePath.split("/");
-        if (!filterLanguages.includes(lang_folder)) return false;
+      if (isCountryLanguageCode(parent_folder) && filterLanguages) {
+        if (!filterLanguages.includes(parent_folder)) return false;
       }
+      // theme filter
+      if (
+        isThemeAssetsFolderName(parent_folder) &&
+        !filterThemes.includes(getThemeNameFromThemeAssetFolderName(parent_folder))
+      )
+        return false;
       // global filter
       return assets_filter_function(fileEntry);
     });
@@ -369,6 +374,15 @@ export const SHEETS_CONTENT_LIST:ISheetContents = ${contentsString}
     fs.emptyDirSync(targetFolder);
     fs.copySync(sourceFolder, targetFolder);
   }
+
+  /**
+   * Run prettier to automatically format code in given folder path
+   * NOTE - by default will only format .ts files
+   */
+  private runPrettierCodeTidy(folderPath: string) {
+    const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${folderPath}/**/*.ts --loglevel error`;
+    return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
+  }
 }
 
 /**********************************************************************************************************
@@ -377,15 +391,6 @@ export const SHEETS_CONTENT_LIST:ISheetContents = ${contentsString}
 type ISheetContents = {
   [flow_type in FlowTypes.FlowType]: { [flow_name: string]: FlowTypes.FlowTypeBase };
 };
-
-/**
- * Run prettier to automatically format code in given folder path
- * NOTE - by default will only format .ts files
- */
-function runPrettierCodeTidy(folderPath: string) {
-  const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${folderPath}/**/*.ts --loglevel error`;
-  return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
-}
 
 /**  Subset of IContentsEntry (with additional translations) */
 interface IAssetEntry extends IContentsEntry {

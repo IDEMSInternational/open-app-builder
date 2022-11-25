@@ -6574,7 +6574,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn-walk@npm:^8.0.2, acorn-walk@npm:^8.1.1":
+"acorn-walk@npm:^8.0.2, acorn-walk@npm:^8.1.1, acorn-walk@npm:^8.2.0":
   version: 8.2.0
   resolution: "acorn-walk@npm:8.2.0"
   checksum: 1715e76c01dd7b2d4ca472f9c58968516a4899378a63ad5b6c2d668bba8da21a71976c14ec5f5b75f887b6317c4ae0b897ab141c831d741dc76024d8745f1ad1
@@ -10985,6 +10985,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dom7@npm:^4.0.4":
+  version: 4.0.4
+  resolution: "dom7@npm:4.0.4"
+  dependencies:
+    ssr-window: ^4.0.0
+  checksum: b38604f74e915b4d05b6634f9ff239a708c468180f498a28ff67f2a61233697d9bd7192703b788a24541c3591e7f1a6e83a2cbf70bc871a85e033f82e19abc31
+  languageName: node
+  linkType: hard
+
 "domain-browser@npm:^4.16.0":
   version: 4.22.0
   resolution: "domain-browser@npm:4.22.0"
@@ -13668,6 +13677,7 @@ __metadata:
     rxjs: ^6.6.7
     shared: "workspace:*"
     stacktrace-js: ^2.0.2
+    swiper: ^8.4.4
     typescript: 4.4.2
     zone.js: ~0.11.4
   languageName: unknown
@@ -18910,6 +18920,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mock-fs@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "mock-fs@npm:5.2.0"
+  checksum: c25835247bd26fa4e0189addd61f98973f61a72741e4d2a5694b143a2069b84978443a7ac0fdb1a71aead99273ec22ff4e9c968de11bbd076db020264c5b8312
+  languageName: node
+  linkType: hard
+
 "moment-timezone@npm:^0.5.31":
   version: 0.5.34
   resolution: "moment-timezone@npm:0.5.34"
@@ -18920,9 +18937,9 @@ __metadata:
   linkType: hard
 
 "moment@npm:>= 2.9.0, moment@npm:^2.26.0":
-  version: 2.29.1
-  resolution: "moment@npm:2.29.1"
-  checksum: 1e14d5f422a2687996be11dd2d50c8de3bd577c4a4ca79ba5d02c397242a933e5b941655de6c8cb90ac18f01cc4127e55b4a12ae3c527a6c0a274e455979345e
+  version: 2.29.4
+  resolution: "moment@npm:2.29.4"
+  checksum: 0ec3f9c2bcba38dc2451b1daed5daded747f17610b92427bebe1d08d48d8b7bdd8d9197500b072d14e326dd0ccf3e326b9e3d07c5895d3d49e39b6803b76e80e
   languageName: node
   linkType: hard
 
@@ -23433,6 +23450,7 @@ __metadata:
     jasmine: ^3.99.0
     jasmine-spec-reporter: ^7.0.0
     jasmine-ts: ^0.4.0
+    mock-fs: ^5.2.0
     node-rsa: ^1.1.1
     nodemon: ^2.0.19
     p-queue: ^6.6.2
@@ -24473,6 +24491,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ssr-window@npm:^4.0.0, ssr-window@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "ssr-window@npm:4.0.2"
+  checksum: df182600927f4f3225224cf8c02338ea637c9750519505bbfb9a9236741a2a7ec088386fb948bca7b447b8303d9109e7dc7672e3de041c79ac2a0e03665af7d2
+  languageName: node
+  linkType: hard
+
 "ssri@npm:^8.0.0, ssri@npm:^8.0.1":
   version: 8.0.1
   resolution: "ssri@npm:8.0.1"
@@ -25129,6 +25154,16 @@ __metadata:
   peerDependencies:
     express: ">=4.0.0"
   checksum: aff79812940fa1e693eb9a9f2abd7f6e38d62a9d60b9a70fc90749e572d997d70f4cc110b791774f09c5197f8da32941bec25da780ab4c6d58593df23628d735
+  languageName: node
+  linkType: hard
+
+"swiper@npm:^8.4.4":
+  version: 8.4.4
+  resolution: "swiper@npm:8.4.4"
+  dependencies:
+    dom7: ^4.0.4
+    ssr-window: ^4.0.2
+  checksum: 1b016e2be22573f764d00963c919dc3338a47e261bce3d5b50d6e2abb5e1760c606441739b789c96a777675457e85595d76d851a80c3d34417e0c78c9886cb93
   languageName: node
   linkType: hard
 
@@ -26789,11 +26824,14 @@ __metadata:
   linkType: hard
 
 "vm2@npm:^3.9.3":
-  version: 3.9.5
-  resolution: "vm2@npm:3.9.5"
+  version: 3.9.11
+  resolution: "vm2@npm:3.9.11"
+  dependencies:
+    acorn: ^8.7.0
+    acorn-walk: ^8.2.0
   bin:
     vm2: bin/vm2
-  checksum: d83dbe929ca4d1c9fca71cda34a5aee9a6b4bdc1de1ddb11777c4f6e1e48a471764195258dbf608f962df1a1c3d6ae917c9755f11a8f37b9e0bbf691313a725c
+  checksum: aab39e6e4b59146d24abacd79f490e854a6e058a8b23d93d2be5aca7720778e2605d2cc028ccc4a5f50d3d91b0c38be9a6247a80d2da1a6de09425cc437770b4
   languageName: node
   linkType: hard
 
