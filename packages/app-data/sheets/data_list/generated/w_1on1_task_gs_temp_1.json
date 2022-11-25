@@ -8,8 +8,18 @@
       "individual": true,
       "together": false,
       "priority": 1,
-      "title": "How are you?",
       "has_single_task": true,
+      "title": "How are you?",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      },
       "template": "w_1on1_welcome_individual"
     },
     {
@@ -17,8 +27,18 @@
       "individual": false,
       "together": true,
       "priority": 2,
-      "title": "How are you?",
       "has_single_task": true,
+      "title": "How are you?",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      },
       "template": "w_1on1_care_together"
     },
     {
@@ -26,8 +46,16 @@
       "individual": true,
       "together": true,
       "priority": 3,
-      "title": "Relax",
       "has_single_task": true,
+      "title": "@data.workshop[@fields.current_workshop].relax_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop[@fields.current_workshop].relax_title"
+        }
+      },
       "template": "w_1on1_relax"
     },
     {
@@ -35,8 +63,16 @@
       "individual": true,
       "together": true,
       "priority": 5,
-      "title": "Intro to ...",
       "has_single_task": true,
+      "title": "@data.workshop[@fields.current_workshop].intro_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop[@fields.current_workshop].intro_title"
+        }
+      },
       "template": "w_1on1_intro"
     },
     {
@@ -44,8 +80,16 @@
       "individual": true,
       "together": true,
       "priority": 70,
-      "title": "How to ...",
       "has_single_task": true,
+      "title": "@data.workshop[@fields.current_workshop].tools",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop[@fields.current_workshop].tools"
+        }
+      },
       "template": "w_1on1_tools_activity"
     },
     {
@@ -53,8 +97,16 @@
       "individual": true,
       "together": true,
       "priority": 80,
-      "title": "Home Practice",
       "has_single_task": true,
+      "title": "@global.home_practice",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.home_practice"
+        }
+      },
       "template": "w_1on1_home_practice"
     },
     {
@@ -62,8 +114,23 @@
       "individual": true,
       "together": true,
       "priority": 90,
-      "title": "Well done!",
       "has_single_task": true,
+      "title": "Well done!",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Well done!"
+        }
+      },
       "template": "w_1on1_ending"
     },
     {
@@ -71,8 +138,16 @@
       "individual": true,
       "together": true,
       "priority": 91,
-      "title": "Home Practice Review",
       "has_single_task": true,
+      "title": "@global.hp_review",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.hp_review"
+        }
+      },
       "template": "w_1on1_hp_review"
     },
     {
@@ -80,8 +155,18 @@
       "individual": true,
       "together": false,
       "priority": 14,
-      "title": "Question",
       "has_single_task": true,
+      "title": "Question",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Question"
+        }
+      },
       "template": "w_1on1_question"
     },
     {
@@ -89,8 +174,23 @@
       "individual": false,
       "together": true,
       "priority": 14,
-      "title": "Talk Together",
       "has_single_task": true,
+      "title": "Talk Together",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Talk Together"
+        }
+      },
       "template": "w_1on1_talk"
     }
   ]

@@ -9,7 +9,8 @@
       "args_list": [
         "id != \"relax\"",
         "id != \"reflect_together\"",
-        "id != \"hp_review\""
+        "id != \"hp_review\"",
+        "id != \"care_together\""
       ]
     },
     {

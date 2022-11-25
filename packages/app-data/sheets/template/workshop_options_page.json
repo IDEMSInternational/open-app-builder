@@ -733,21 +733,29 @@
     {
       "type": "text",
       "name": "text_workshop_path",
-      "value": "I do the workshops...",
+      "value": "I do the @global.workshops:",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
       },
-      "_nested_name": "text_workshop_path"
+      "_nested_name": "text_workshop_path",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "I do the @global.workshops:",
+            "matchedExpression": "@global.workshops",
+            "type": "global",
+            "fieldName": "workshops"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.workshops": [
+          "value"
+        ]
+      }
     },
     {
       "type": "radio_group",
@@ -1012,16 +1020,9 @@
     {
       "type": "text",
       "name": "text_what_group_workshop",
-      "value": "My group is now doing the workshop...",
+      "value": "My group is now doing the @global.workshop:",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "condition": "@local.radio_group_1==\"together\"",
       "parameter_list": {
@@ -1029,6 +1030,14 @@
       },
       "_nested_name": "text_what_group_workshop",
       "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "My group is now doing the @global.workshop:",
+            "matchedExpression": "@global.workshop",
+            "type": "global",
+            "fieldName": "workshop"
+          }
+        ],
         "condition": [
           {
             "fullExpression": "@local.radio_group_1==\"together\"",
@@ -1039,6 +1048,9 @@
         ]
       },
       "_dynamicDependencies": {
+        "@global.workshop": [
+          "value"
+        ],
         "@local.radio_group_1": [
           "condition"
         ]
@@ -1047,16 +1059,9 @@
     {
       "type": "text",
       "name": "text_what_individual_workshop",
-      "value": "I am now doing the workshop...",
+      "value": "I am now doing the @global.workshop:",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "condition": "@local.radio_group_1==\"individual\"",
       "parameter_list": {
@@ -1064,6 +1069,14 @@
       },
       "_nested_name": "text_what_individual_workshop",
       "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "I am now doing the @global.workshop:",
+            "matchedExpression": "@global.workshop",
+            "type": "global",
+            "fieldName": "workshop"
+          }
+        ],
         "condition": [
           {
             "fullExpression": "@local.radio_group_1==\"individual\"",
@@ -1074,6 +1087,9 @@
         ]
       },
       "_dynamicDependencies": {
+        "@global.workshop": [
+          "value"
+        ],
         "@local.radio_group_1": [
           "condition"
         ]

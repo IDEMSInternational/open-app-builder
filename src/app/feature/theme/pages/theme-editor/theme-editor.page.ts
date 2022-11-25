@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { IAppConfig } from "packages/data-models/appConfig";
 import { ThemeService } from "../../services/theme.service";
 
 @Component({
@@ -7,13 +8,13 @@ import { ThemeService } from "../../services/theme.service";
   styleUrls: ["./theme-editor.page.scss"],
 })
 export class ThemeEditorPage implements OnInit {
-  availableThemes: string[];
+  availableThemes: IAppConfig["APP_THEMES"]["available"];
   currentTheme: string;
 
   constructor(private themeService: ThemeService) {}
 
   ngOnInit(): void {
-    this.availableThemes = this.themeService.getAllThemes();
+    this.availableThemes = this.themeService.availableThemes;
     this.themeService.currentTheme$.subscribe((currentTheme) => (this.currentTheme = currentTheme));
   }
 

@@ -8,8 +8,18 @@
       "individual": true,
       "together": false,
       "priority": 1,
-      "title": "How are you?",
       "has_single_task": true,
+      "title": "How are you?",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      },
       "template": "w_money_welcome_individual"
     },
     {
@@ -17,8 +27,18 @@
       "individual": false,
       "together": true,
       "priority": 2,
-      "title": "How are you?",
       "has_single_task": true,
+      "title": "How are you?",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      },
       "template": "w_money_care_together"
     },
     {
@@ -26,8 +46,16 @@
       "individual": true,
       "together": true,
       "priority": 3,
-      "title": "Relax",
       "has_single_task": true,
+      "title": "@data.workshop[@fields.current_workshop].relax_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop[@fields.current_workshop].relax_title"
+        }
+      },
       "template": "w_money_relax"
     },
     {
@@ -35,8 +63,16 @@
       "individual": false,
       "together": true,
       "priority": 4,
-      "title": "Reflect",
       "has_single_task": true,
+      "title": "@global.home_practice_problem_solving",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.home_practice_problem_solving"
+        }
+      },
       "template": "w_money_reflect_together"
     },
     {
@@ -44,8 +80,16 @@
       "individual": true,
       "together": true,
       "priority": 5,
-      "title": "Intro to ...",
       "has_single_task": true,
+      "title": "@data.workshop[@fields.current_workshop].intro_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop[@fields.current_workshop].intro_title"
+        }
+      },
       "template": "w_money_intro"
     },
     {
@@ -53,8 +97,16 @@
       "individual": true,
       "together": true,
       "priority": 70,
-      "title": "How to ...",
       "has_single_task": true,
+      "title": "@data.workshop[@fields.current_workshop].tools",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop[@fields.current_workshop].tools"
+        }
+      },
       "template": "w_money_tools_activity"
     },
     {
@@ -62,8 +114,16 @@
       "individual": true,
       "together": true,
       "priority": 80,
-      "title": "Home Practice",
       "has_single_task": true,
+      "title": "@global.home_practice",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.home_practice"
+        }
+      },
       "template": "w_money_home_practice"
     },
     {
@@ -71,8 +131,23 @@
       "individual": true,
       "together": true,
       "priority": 90,
-      "title": "Well done!",
       "has_single_task": true,
+      "title": "Well done!",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Well done!"
+        }
+      },
       "template": "w_money_ending"
     },
     {
@@ -80,8 +155,16 @@
       "individual": true,
       "together": true,
       "priority": 91,
-      "title": "Home Practice Review",
       "has_single_task": true,
+      "title": "@global.hp_review",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.hp_review"
+        }
+      },
       "template": "w_money_hp_review"
     },
     {
@@ -89,8 +172,18 @@
       "individual": true,
       "together": true,
       "priority": 11,
-      "title": "Story 1",
       "has_single_task": true,
+      "title": "Story",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Story"
+        }
+      },
       "template": "w_money_read_1_temp"
     },
     {
@@ -98,8 +191,23 @@
       "individual": true,
       "together": true,
       "priority": 12,
-      "title": "Learn 1",
       "has_single_task": true,
+      "title": "Learn",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Learn"
+        }
+      },
       "template": "w_money_learn_1_temp"
     },
     {
@@ -107,8 +215,23 @@
       "individual": true,
       "together": true,
       "priority": 13,
-      "title": "Learn 2",
       "has_single_task": true,
+      "title": "Learn",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Learn"
+        }
+      },
       "template": "w_money_learn_2_temp"
     },
     {
@@ -116,8 +239,23 @@
       "individual": true,
       "together": true,
       "priority": 14,
-      "title": "Learn 3",
       "has_single_task": true,
+      "title": "Learn",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Learn"
+        }
+      },
       "template": "w_money_learn_3_temp"
     },
     {
@@ -125,8 +263,23 @@
       "individual": true,
       "together": true,
       "priority": 15,
-      "title": "Learn 4",
       "has_single_task": true,
+      "title": "Learn",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Learn"
+        }
+      },
       "template": "w_money_learn_4_temp"
     },
     {
@@ -134,24 +287,59 @@
       "individual": true,
       "together": true,
       "priority": 16,
-      "title": "Story 2",
-      "has_single_task": false
+      "has_single_task": false,
+      "title": "Story",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Story"
+        }
+      }
     },
     {
       "id": "read_3",
       "individual": true,
       "together": true,
       "priority": 18,
-      "title": "Story 3",
-      "has_single_task": false
+      "has_single_task": false,
+      "title": "Story",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Story"
+        }
+      }
     },
     {
       "id": "learn_5",
       "individual": true,
       "together": true,
       "priority": 21,
-      "title": "Learn 5",
       "has_single_task": true,
+      "title": "Learn",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Learn"
+        }
+      },
       "template": "w_money_learn_5_temp"
     }
   ]

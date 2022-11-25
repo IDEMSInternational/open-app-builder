@@ -289,7 +289,7 @@
             },
             {
               "name": "activity_image",
-              "value": "@data.habit.treat_yourself.image_asset",
+              "value": "@data.habit.praise_yourself.image_asset",
               "_translations": {
                 "value": {}
               },
@@ -298,15 +298,15 @@
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "@data.habit.treat_yourself.image_asset",
-                    "matchedExpression": "@data.habit.treat_yourself.image_asset",
+                    "fullExpression": "@data.habit.praise_yourself.image_asset",
+                    "matchedExpression": "@data.habit.praise_yourself.image_asset",
                     "type": "data",
                     "fieldName": "habit"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@data.habit.treat_yourself.image_asset": [
+                "@data.habit.praise_yourself.image_asset": [
                   "value"
                 ]
               }

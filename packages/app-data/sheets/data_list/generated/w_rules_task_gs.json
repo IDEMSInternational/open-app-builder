@@ -8,8 +8,18 @@
       "individual": true,
       "together": false,
       "priority": 1,
-      "title": "How are you?",
       "has_single_task": true,
+      "title": "How are you?",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      },
       "template": "w_rules_welcome_individual",
       "completed_field": "task_gp_w_rules_welcome_individual_completed",
       "completed": "@fields.task_gp_w_rules_welcome_individual_completed"
@@ -19,8 +29,18 @@
       "individual": false,
       "together": true,
       "priority": 2,
-      "title": "How are you?",
       "has_single_task": true,
+      "title": "How are you?",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      },
       "template": "w_rules_care_together",
       "completed_field": "task_gp_w_rules_care_together_completed",
       "completed": "@fields.task_gp_w_rules_care_together_completed"
@@ -30,8 +50,16 @@
       "individual": true,
       "together": true,
       "priority": 3,
-      "title": "Relax",
       "has_single_task": true,
+      "title": "@data.workshop[@fields.current_workshop].relax_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop[@fields.current_workshop].relax_title"
+        }
+      },
       "template": "w_rules_relax",
       "completed_field": "task_gp_w_rules_relax_completed",
       "completed": "@fields.task_gp_w_rules_relax_completed"
@@ -41,8 +69,16 @@
       "individual": false,
       "together": true,
       "priority": 4,
-      "title": "Reflect",
       "has_single_task": true,
+      "title": "@global.home_practice_problem_solving",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.home_practice_problem_solving"
+        }
+      },
       "template": "w_rules_reflect_together",
       "completed_field": "task_gp_w_rules_reflect_together_completed",
       "completed": "@fields.task_gp_w_rules_reflect_together_completed"
@@ -52,8 +88,16 @@
       "individual": true,
       "together": true,
       "priority": 5,
-      "title": "Intro to ...",
       "has_single_task": true,
+      "title": "@data.workshop[@fields.current_workshop].intro_title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop[@fields.current_workshop].intro_title"
+        }
+      },
       "template": "w_rules_intro",
       "completed_field": "task_gp_w_rules_intro_completed",
       "completed": "@fields.task_gp_w_rules_intro_completed"
@@ -63,8 +107,16 @@
       "individual": true,
       "together": true,
       "priority": 70,
-      "title": "How to ...",
       "has_single_task": true,
+      "title": "@data.workshop[@fields.current_workshop].tools",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.workshop[@fields.current_workshop].tools"
+        }
+      },
       "template": "w_rules_tools_activity",
       "completed_field": "task_gp_w_rules_tools_activity_completed",
       "completed": "@fields.task_gp_w_rules_tools_activity_completed"
@@ -74,8 +126,16 @@
       "individual": true,
       "together": true,
       "priority": 80,
-      "title": "Home Practice",
       "has_single_task": true,
+      "title": "@global.home_practice",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.home_practice"
+        }
+      },
       "template": "w_rules_home_practice",
       "completed_field": "task_gp_w_rules_home_practice_completed",
       "completed": "@fields.task_gp_w_rules_home_practice_completed"
@@ -85,8 +145,23 @@
       "individual": true,
       "together": true,
       "priority": 90,
-      "title": "Well done!",
       "has_single_task": true,
+      "title": "Well done!",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Well done!"
+        }
+      },
       "template": "w_rules_ending",
       "completed_field": "task_gp_w_rules_ending_completed",
       "completed": "@fields.task_gp_w_rules_ending_completed"
@@ -96,8 +171,16 @@
       "individual": true,
       "together": true,
       "priority": 91,
-      "title": "Home Practice Review",
       "has_single_task": true,
+      "title": "@global.hp_review",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@global.hp_review"
+        }
+      },
       "template": "w_rules_hp_review",
       "completed_field": "task_gp_w_rules_hp_review_completed",
       "completed": "@fields.task_gp_w_rules_hp_review_completed"
@@ -107,8 +190,18 @@
       "individual": true,
       "together": true,
       "priority": 11,
-      "title": "Story 1",
       "has_single_task": false,
+      "title": "Story",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Story"
+        }
+      },
       "completed_field": "task_gp_w_rules_read_1_completed",
       "completed": "@fields.task_gp_w_rules_read_1_completed"
     },
@@ -117,8 +210,18 @@
       "individual": true,
       "together": true,
       "priority": 71,
-      "title": "Story 2",
       "has_single_task": true,
+      "title": "Story",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Story"
+        }
+      },
       "template": "w_rules_read_2_temp",
       "completed_field": "task_gp_w_rules_read_2_completed",
       "completed": "@fields.task_gp_w_rules_read_2_completed"
@@ -128,8 +231,23 @@
       "individual": true,
       "together": false,
       "priority": 72,
-      "title": "Learn",
       "has_single_task": true,
+      "title": "Learn",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Learn"
+        }
+      },
       "template": "w_rules_learn_temp",
       "completed_field": "task_gp_w_rules_learn_completed",
       "completed": "@fields.task_gp_w_rules_learn_completed"
@@ -139,8 +257,18 @@
       "individual": false,
       "together": true,
       "priority": 73,
-      "title": "Try it out!",
       "has_single_task": true,
+      "title": "Try it out!",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Try it out!"
+        }
+      },
       "template": "w_rules_try",
       "completed_field": "task_gp_w_rules_try_completed",
       "completed": "@fields.task_gp_w_rules_try_completed"
