@@ -44,10 +44,10 @@ jobs:
       - name: Upload sourcemaps
         run: 'npx @sentry/cli releases files ${DEPLOYMENT_NAME}-${APP_VERSION} upload-sourcemaps www/'
         env:
-          - SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN}}
-          - SENTRY_URL: https://app.glitchtip.com/
-          - SENTRY_ORG: c2dev
-          - SENTRY_PROJECT: ${{env.DEPLOYMENT_NAME}}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN}}
+          SENTRY_URL: https://app.glitchtip.com/
+          SENTRY_ORG: c2dev
+          SENTRY_PROJECT: ${{env.DEPLOYMENT_NAME}}
       - name: Remove sourcemaps from build
         run: |
           echo $(ls www)
