@@ -210,6 +210,9 @@
           "_translations": {
             "value": {}
           },
+          "style_list": [
+            "150px"
+          ],
           "_nested_name": "display_group.image",
           "_dynamicFields": {
             "value": [
