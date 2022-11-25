@@ -768,7 +768,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     nutrition_screen: {
       flow_type: "template",
       flow_name: "nutrition_screen",
-      _xlsxPath: "templates/global/soil_navigation.xlsx",
+      _xlsxPath: "templates/global/navigation.xlsx",
+    },
+    pest_home_screen: {
+      flow_type: "template",
+      flow_name: "pest_home_screen",
+      _xlsxPath: "templates/global/pests_template.xlsx",
     },
     pests_content_templates: {
       flow_type: "template",
@@ -783,7 +788,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     pests_screen: {
       flow_type: "template",
       flow_name: "pests_screen",
-      _xlsxPath: "templates/global/soil_navigation.xlsx",
+      _xlsxPath: "templates/global/navigation.xlsx",
     },
     pests_sub_templates: {
       flow_type: "template",
@@ -818,7 +823,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     soils_screen: {
       flow_type: "template",
       flow_name: "soils_screen",
-      _xlsxPath: "templates/global/soil_navigation.xlsx",
+      _xlsxPath: "templates/global/navigation.xlsx",
     },
     topic_screen: {
       flow_type: "template",
@@ -829,6 +834,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "topics_screen",
       _xlsxPath: "templates/global/navigation.xlsx",
+    },
+    understanding_pests_sheet: {
+      flow_type: "template",
+      flow_name: "understanding_pests_sheet",
+      _xlsxPath: "templates/global/pests_template.xlsx",
     },
   },
   tour: {

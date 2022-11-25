@@ -1,0 +1,44 @@
+{
+  "flow_type": "template",
+  "flow_name": "pest_home_screen",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Managing and Controlling Pests.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title"
+    },
+    {
+      "type": "button",
+      "name": "button_insects",
+      "value": "Insects",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "button_insects"
+    },
+    {
+      "type": "button",
+      "name": "button_planting",
+      "value": "Farm Practices",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "button_planting"
+    },
+    {
+      "type": "button",
+      "name": "button_pesticides",
+      "value": "Pesticides",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "button_pesticides"
+    }
+  ],
+  "_xlsxPath": "templates/global/pests_template.xlsx"
+}

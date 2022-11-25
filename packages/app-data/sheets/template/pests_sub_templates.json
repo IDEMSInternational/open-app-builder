@@ -109,6 +109,27 @@
               "_translations": {
                 "value": {}
               },
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "current_pest_content",
+                    "@item.id"
+                  ],
+                  "_raw": "click | set_field: current_pest_content: @item.id",
+                  "_cleaned": "click | set_field: current_pest_content: @item.id"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "go_to",
+                  "args": [
+                    "pests_content_templates"
+                  ],
+                  "_raw": "click | go_to: pests_content_templates",
+                  "_cleaned": "click | go_to: pests_content_templates"
+                }
+              ],
               "_nested_name": "items.dg_@item.id.button_@item.id",
               "_dynamicFields": {
                 "name": [
@@ -127,6 +148,36 @@
                     "fieldName": "title"
                   }
                 ],
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "1": [
+                        {
+                          "fullExpression": "@item.id",
+                          "matchedExpression": "@item.id",
+                          "type": "item",
+                          "fieldName": "id"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | set_field: current_pest_content: @item.id",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | set_field: current_pest_content: @item.id",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  }
+                },
                 "_nested_name": [
                   {
                     "fullExpression": "items.dg_@item.id.button_@item.id",
@@ -145,6 +196,9 @@
               "_dynamicDependencies": {
                 "@item.id": [
                   "name",
+                  "action_list.0.args.1",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned",
                   "_nested_name"
                 ],
                 "@item.title": [

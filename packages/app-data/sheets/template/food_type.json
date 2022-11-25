@@ -238,13 +238,12 @@
       }
     },
     {
-      "7": "title",
+      "type": "title",
       "name": "title",
       "value": "@data.@local.type_heading Foods",
       "_translations": {
         "value": {}
       },
-      "type": "set_variable",
       "_nested_name": "title",
       "_dynamicFields": {
         "value": [
@@ -263,13 +262,12 @@
       }
     },
     {
-      "7": "image",
+      "type": "image",
       "name": "image",
       "value": "@data.@local.type_illustration",
       "_translations": {
         "value": {}
       },
-      "type": "set_variable",
       "_nested_name": "image",
       "_dynamicFields": {
         "value": [
@@ -288,13 +286,12 @@
       }
     },
     {
-      "7": "text",
+      "type": "text",
       "name": "description",
       "value": "@data.@local.type_description",
       "_translations": {
         "value": {}
       },
-      "type": "set_variable",
       "_nested_name": "description",
       "_dynamicFields": {
         "value": [
@@ -313,13 +310,12 @@
       }
     },
     {
-      "7": "text",
+      "type": "text",
       "name": "examples",
       "value": "Examples: @data.@local.type_examples",
       "_translations": {
         "value": {}
       },
-      "type": "set_variable",
       "_nested_name": "examples",
       "_dynamicFields": {
         "value": [
@@ -338,7 +334,7 @@
       }
     },
     {
-      "7": "audio",
+      "type": "audio",
       "name": "audio_1",
       "value": "@data.@local.type_audio",
       "_translations": {
@@ -347,7 +343,6 @@
       "parameter_list": {
         "title": "Learn more about @data.@local.type_heading foods"
       },
-      "type": "set_variable",
       "_nested_name": "audio_1",
       "_dynamicFields": {
         "value": [
@@ -379,7 +374,7 @@
       }
     },
     {
-      "7": "button",
+      "type": "button",
       "name": "button_audio",
       "value": "Click here to read more",
       "_translations": {
@@ -396,7 +391,6 @@
           "_cleaned": "click | pop_up: food_transcript"
         }
       ],
-      "type": "set_variable",
       "_nested_name": "button_audio"
     }
   ],
