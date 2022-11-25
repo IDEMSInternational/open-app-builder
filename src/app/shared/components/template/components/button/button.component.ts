@@ -1,5 +1,4 @@
-import { Component, ElementRef, HostBinding, HostListener, OnInit, ViewChild } from "@angular/core";
-import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
+import { Component, ElementRef, OnInit } from "@angular/core";
 import {
   getStringParamFromTemplateRow,
   getBooleanParamFromTemplateRow,
@@ -31,37 +30,20 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
   /** TEMPLATE PARAMATER: "text_align" */
   textAlign: "left" | "centre" | "right" = "left";
   /** TEMPLATE PARAMATER: "button_align" */
-  buttonAlign: "left" | "centre" | "right";
+  buttonAlign: "left" | "centre" | "right" = "centre";
   /** TEMPLATE PARAMATER: "icon". The path to an icon asset */
   icon: string;
+
   /** @ignore */
-  innerHTML: SafeHtml;
-  /** @ignore */
-  scaleFactor: number = 1;
-  /** @ignore */
-  windowWidth: number;
-  /** @ignore */
-  constructor(private elRef: ElementRef, private domSanitizer: DomSanitizer) {
+  constructor(private elRef: ElementRef) {
     super();
   }
-  /** @ignore */
-  @HostListener("window:resize", ["$event"]) onResize(event) {
-    this.windowWidth = event.target.innerWidth - 10;
-    this.getScaleFactor();
-  }
-  /** @ignore */
-  @HostBinding("style.--scale-factor-btn") get scale() {
-    return this.scaleFactor;
-  }
-  /** @ignore */
-  @ViewChild("ionButton", { static: true }) btn: any;
+
   ngOnInit() {
     this.getParams();
-    this.getScaleFactor();
-    this.innerHTML = this.domSanitizer.bypassSecurityTrustHtml(this._row.value);
   }
 
-  getParams() {
+  private getParams() {
     this.style = `${getStringParamFromTemplateRow(this._row, "style", "information")} ${
       this.isTwoColumns() ? "two_columns" : ""
     }` as any;
@@ -82,11 +64,5 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
     } else {
       return false;
     }
-  }
-
-  /** Set the scale factor for the button based on window width */
-  getScaleFactor(): number {
-    this.scaleFactor = this.windowWidth / 470 > 1 ? 1 : this.windowWidth / ((220 + 20) * 2);
-    return this.scaleFactor;
   }
 }
