@@ -237,12 +237,12 @@
     },
     {
       "type": "title",
-      "name": "tile_text",
+      "name": "title_text",
       "value": "@data.@local.sect_title",
       "_translations": {
         "value": {}
       },
-      "_nested_name": "tile_text",
+      "_nested_name": "title_text",
       "_dynamicFields": {
         "value": [
           {
@@ -261,6 +261,9 @@
     },
     {
       "type": "display_group",
+      "parameter_list": {
+        "style": "parent_point"
+      },
       "rows": [
         {
           "type": "items",
@@ -291,7 +294,8 @@
                 }
               ],
               "parameter_list": {
-                "first_line_text": "@local.tile_text",
+                "first_line_text": "@item.name",
+                "style": "workshop_page",
                 "icon_src": "@item.image_1"
               },
               "_nested_name": "display_group.items.tile_@item.id",
@@ -385,10 +389,10 @@
                 "parameter_list": {
                   "first_line_text": [
                     {
-                      "fullExpression": "@local.tile_text",
-                      "matchedExpression": "@local.tile_text",
-                      "type": "local",
-                      "fieldName": "tile_text"
+                      "fullExpression": "@item.name",
+                      "matchedExpression": "@item.name",
+                      "type": "item",
+                      "fieldName": "name"
                     }
                   ],
                   "icon_src": [
@@ -427,7 +431,7 @@
                   "action_list.1._raw",
                   "action_list.1._cleaned"
                 ],
-                "@local.tile_text": [
+                "@item.name": [
                   "parameter_list.first_line_text"
                 ],
                 "@item.image_1": [

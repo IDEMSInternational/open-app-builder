@@ -23,27 +23,96 @@
     {
       "type": "items",
       "value": "@data.@local.data_list_name",
-      "parameter_list": {
-        "style": "column"
-      },
       "rows": [
         {
-          "type": "template",
-          "name": "principle_@item.id",
-          "value": "principle",
+          "type": "display_group",
+          "name": "dg_column",
+          "parameter_list": {
+            "style": "column"
+          },
           "rows": [
             {
-              "name": "principle_id",
-              "value": "@item.id",
-              "_translations": {
-                "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "items.principle_@item.id.principle_id",
+              "type": "template",
+              "name": "principle_@item.id",
+              "value": "principle",
+              "rows": [
+                {
+                  "name": "principle_id",
+                  "value": "@item.id",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "items.dg_column.principle_@item.id.principle_id",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@item.id",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ],
+                    "_nested_name": [
+                      {
+                        "fullExpression": "items.dg_column.principle_@item.id.principle_id",
+                        "matchedExpression": "@item.id.principle_id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@item.id": [
+                      "value"
+                    ],
+                    "@item.id.principle_id": [
+                      "_nested_name"
+                    ]
+                  }
+                },
+                {
+                  "name": "data_list_name",
+                  "value": [
+                    "@local.data_list_name"
+                  ],
+                  "type": "set_variable",
+                  "_nested_name": "items.dg_column.principle_@item.id.data_list_name",
+                  "_dynamicFields": {
+                    "value": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.data_list_name",
+                          "matchedExpression": "@local.data_list_name",
+                          "type": "local",
+                          "fieldName": "data_list_name"
+                        }
+                      ]
+                    },
+                    "_nested_name": [
+                      {
+                        "fullExpression": "items.dg_column.principle_@item.id.data_list_name",
+                        "matchedExpression": "@item.id.data_list_name",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.data_list_name": [
+                      "value.0"
+                    ],
+                    "@item.id.data_list_name": [
+                      "_nested_name"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "items.dg_column.principle_@item.id",
               "_dynamicFields": {
-                "value": [
+                "name": [
                   {
-                    "fullExpression": "@item.id",
+                    "fullExpression": "principle_@item.id",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
@@ -51,8 +120,8 @@
                 ],
                 "_nested_name": [
                   {
-                    "fullExpression": "items.principle_@item.id.principle_id",
-                    "matchedExpression": "@item.id.principle_id",
+                    "fullExpression": "items.dg_column.principle_@item.id",
+                    "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
                   }
@@ -60,75 +129,13 @@
               },
               "_dynamicDependencies": {
                 "@item.id": [
-                  "value"
-                ],
-                "@item.id.principle_id": [
-                  "_nested_name"
-                ]
-              }
-            },
-            {
-              "name": "data_list_name",
-              "value": [
-                "@local.data_list_name"
-              ],
-              "type": "set_variable",
-              "_nested_name": "items.principle_@item.id.data_list_name",
-              "_dynamicFields": {
-                "value": {
-                  "0": [
-                    {
-                      "fullExpression": "@local.data_list_name",
-                      "matchedExpression": "@local.data_list_name",
-                      "type": "local",
-                      "fieldName": "data_list_name"
-                    }
-                  ]
-                },
-                "_nested_name": [
-                  {
-                    "fullExpression": "items.principle_@item.id.data_list_name",
-                    "matchedExpression": "@item.id.data_list_name",
-                    "type": "item",
-                    "fieldName": "id"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.data_list_name": [
-                  "value.0"
-                ],
-                "@item.id.data_list_name": [
+                  "name",
                   "_nested_name"
                 ]
               }
             }
           ],
-          "_nested_name": "items.principle_@item.id",
-          "_dynamicFields": {
-            "name": [
-              {
-                "fullExpression": "principle_@item.id",
-                "matchedExpression": "@item.id",
-                "type": "item",
-                "fieldName": "id"
-              }
-            ],
-            "_nested_name": [
-              {
-                "fullExpression": "items.principle_@item.id",
-                "matchedExpression": "@item.id",
-                "type": "item",
-                "fieldName": "id"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "@item.id": [
-              "name",
-              "_nested_name"
-            ]
-          }
+          "_nested_name": "items.dg_column"
         }
       ],
       "name": "items",

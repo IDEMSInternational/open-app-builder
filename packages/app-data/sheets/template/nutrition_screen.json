@@ -19,7 +19,16 @@
         }
       ],
       "_nested_name": "topic_screen"
+    },
+    {
+      "type": "text",
+      "name": "special",
+      "value": "I'm special",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "special"
     }
   ],
-  "_xlsxPath": "templates/global/soil_navigation.xlsx"
+  "_xlsxPath": "templates/global/navigation.xlsx"
 }

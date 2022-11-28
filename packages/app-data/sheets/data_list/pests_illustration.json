@@ -7,10 +7,10 @@
     {
       "id": "spider_mites",
       "sub_section": "pests_pests",
-      "description": "Spider mites cause yellow dots on leaves, and in a severe infestation leaves may loose their green color.",
+      "description": "Spider mites are nearly too tiny to see with the naked eye but they cause yellow dots on leaves, and in a severe infestation leaves may lose their green colour. This image is highly magnified because you would not see this, you'll see the dots.",
       "title": "Spider mites",
       "image_1": "pests/spidermite_2.png",
-      "image_2": "pests/spidermites_1.png",
+      "image_2": "pests/spidermite_1.png",
       "body_type": "soft",
       "animal_type": "pest"
     },
@@ -155,7 +155,7 @@
       "id": "ground_beetle_predators",
       "sub_section": "pests_beneficials",
       "title": "Ground beetle predators",
-      "image_1": "pests/ground_beetle.png",
+      "image_1": "pests/ground_beetle.PNG",
       "body_type": "hard",
       "animal_type": "predator"
     },
@@ -163,7 +163,8 @@
       "id": "predator_flies",
       "sub_section": "pests_beneficials",
       "title": "Predator flies (robber flies)",
-      "image_1": "pests/robber_flies.png",
+      "image_1": "pests/robber_flies_1.png",
+      "image_2": "pests/robber_flies_2.png",
       "body_type": "hard",
       "animal_type": "predator"
     },
