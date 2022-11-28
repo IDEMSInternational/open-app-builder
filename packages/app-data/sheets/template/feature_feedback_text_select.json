@@ -1,14 +1,13 @@
 {
   "flow_type": "template",
-  "flow_name": "feature_feedback_default",
+  "flow_name": "feature_feedback_text_select",
   "status": "released",
-  "flow_subtype": "debug",
-  "comments": "Default general feedback form",
+  "comments": "Default text-select feedback form",
   "rows": [
     {
       "type": "title",
       "name": "title_1",
-      "value": "Feedback",
+      "value": "Suggest Change",
       "_translations": {
         "value": {}
       },
@@ -16,13 +15,54 @@
       "_nested_name": "title_1"
     },
     {
+      "type": "text",
+      "name": "selected_text",
+      "value": "@fields._feedback_selected_text",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "selected_text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields._feedback_selected_text",
+            "matchedExpression": "@fields._feedback_selected_text",
+            "type": "fields",
+            "fieldName": "_feedback_selected_text"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._feedback_selected_text": [
+          "value"
+        ]
+      }
+    },
+    {
       "type": "text_area",
       "name": "feedback",
-      "exclude_from_translation": true,
-      "parameter_list": {
-        "placeholder": "Write feedback here"
+      "value": "@fields._feedback_selected_text",
+      "_translations": {
+        "value": {}
       },
-      "_nested_name": "feedback"
+      "exclude_from_translation": true,
+      "_nested_name": "feedback",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields._feedback_selected_text",
+            "matchedExpression": "@fields._feedback_selected_text",
+            "type": "fields",
+            "fieldName": "_feedback_selected_text"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._feedback_selected_text": [
+          "value"
+        ]
+      }
     },
     {
       "type": "display_group",
