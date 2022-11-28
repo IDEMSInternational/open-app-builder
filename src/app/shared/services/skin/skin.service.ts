@@ -31,10 +31,14 @@ export class SkinService {
   private init() {
     const skinsConfig = this.appConfigService.APP_CONFIG.APP_SKINS;
     this.availableSkins = arrayToHashmap(skinsConfig.available, "name");
-    // Retrieve the last active skin with default fallback
-    const activeSkinName = this.getActiveSkinName() ?? skinsConfig.defaultSkinName;
-    // Set active skin
-    this.setSkin(activeSkinName, true);
+    // Retrieve the last active skin and apply it. Fallback on deployment's default skin
+    // if there is no last active skin, or if it is not "available" in current appConfig
+    const lastActiveSkinName = this.getActiveSkinName();
+    const targetSkinName =
+      lastActiveSkinName && this.availableSkins.hasOwnProperty(lastActiveSkinName)
+        ? lastActiveSkinName
+        : skinsConfig.defaultSkinName;
+    this.setSkin(targetSkinName, true);
   }
 
   /**
@@ -43,6 +47,7 @@ export class SkinService {
    * @param {boolean} [isInit=false] Whether or not the function is being triggered by the service's initialisation
    * */
   public setSkin(skinName: string, isInit = false) {
+    console.log("availableSkins:", this.availableSkins);
     if (skinName in this.availableSkins) {
       const oldSkin = this.activeSkin$.value;
       const targetSkin = this.availableSkins[skinName];
@@ -77,7 +82,10 @@ export class SkinService {
       const { APP_ROUTE_DEFAULTS: oldRouteDefaults } = oldSkin?.appConfig || APP_CONFIG;
       // Replace default home route
       // { path: "", redirectTo: APP_ROUTE_DEFAULTS.home_route, pathMatch: "full" },
-      if (newRouteDefaults.home_route !== oldRouteDefaults.home_route) {
+      if (
+        newRouteDefaults.home_route &&
+        newRouteDefaults.home_route !== oldRouteDefaults.home_route
+      ) {
         const homeRouteIndex = routes.findIndex((route) => route.path === "");
         if (homeRouteIndex > -1) {
           routes[homeRouteIndex].redirectTo = newRouteDefaults.home_route;
@@ -85,19 +93,22 @@ export class SkinService {
       }
       // Replace fallbackRoute
       // { path: "**", redirectTo: APP_ROUTE_DEFAULTS.fallback_route };
-      if (newRouteDefaults.fallback_route !== oldRouteDefaults.fallback_route) {
+      if (
+        newRouteDefaults.fallback_route &&
+        newRouteDefaults.fallback_route !== oldRouteDefaults.fallback_route
+      ) {
         const fallbackRouteIndex = routes.findIndex((route) => route.path === "**");
         if (fallbackRouteIndex > -1) {
           routes[fallbackRouteIndex].redirectTo = newRouteDefaults.fallback_route;
         }
       }
-      // Remove old
-      if (oldRouteDefaults.redirects) {
-        const redirectedPaths = oldRouteDefaults.redirects.map((route) => route.path);
-        routes = routes.filter((route) => !redirectedPaths.includes(route.path));
-      }
-      // Add new redirects
       if (newRouteDefaults.redirects) {
+        // Remove old redirects
+        if (oldRouteDefaults.redirects) {
+          const redirectedPaths = oldRouteDefaults.redirects.map((route) => route.path);
+          routes = routes.filter((route) => !redirectedPaths.includes(route.path));
+        }
+        // Add new redirects
         for (const { path, redirectTo } of newRouteDefaults.redirects) {
           routes.push({ path, redirectTo });
         }
