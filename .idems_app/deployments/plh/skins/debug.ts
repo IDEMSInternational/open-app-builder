@@ -1,14 +1,18 @@
-import { getDefaultAppConfig, IAppSkin } from "data-models";
-
-const appConfig = getDefaultAppConfig();
-
-appConfig.APP_SIDEMENU_DEFAULTS.title = "Debug";
-appConfig.APP_HEADER_DEFAULTS.title = "Debug Skin";
-
-appConfig.APP_ROUTE_DEFAULTS.home_route = "/template/test";
+import { IAppSkin } from "data-models";
 
 const debug: IAppSkin = {
   name: "debug",
-  appConfig,
+  appConfig: {
+    APP_SIDEMENU_DEFAULTS: {
+      title: "Debug Skin"
+    },
+    APP_HEADER_DEFAULTS:
+    {
+      title: "Debug Skin"
+    },
+    APP_ROUTE_DEFAULTS: {
+      home_route: "/template/test"
+    }
+  },
 };
 export default debug;
