@@ -47,7 +47,6 @@ export class SkinService {
    * @param {boolean} [isInit=false] Whether or not the function is being triggered by the service's initialisation
    * */
   public setSkin(skinName: string, isInit = false) {
-    console.log("availableSkins:", this.availableSkins);
     if (skinName in this.availableSkins) {
       const oldSkin = this.activeSkin$.value;
       const targetSkin = this.availableSkins[skinName];
