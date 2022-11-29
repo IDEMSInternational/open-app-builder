@@ -12,19 +12,6 @@
 @include themes.theme-default;
 @include themes.theme-professional;
 
-// WiP - system to generate colours from base colour
-$primary: hsl(203, 76%, 21%); // 0d3f5e
-$primary-light: color.change($primary, $lightness: 80%);
-$primary-lighter: color.change($primary, $lightness: 95%); // #e9f5fc
-
-$secondary: hsl(31, 95%, 57%); // #fa9529
-
-$tertiary: hsl(47, 100%, 92%); // #fff6d6
-
-/** Gradient direction **/
-$vertical: 180deg;
-$horizontal: 90deg;
-
 /** Ionic CSS Variables **/
 :root {
   // Margins //
@@ -201,4 +188,7 @@ $horizontal: 90deg;
   --tile-parent-point-height: 104px;
   --tile-image-text-width: 176px;
   --tile-button-style-height: 60px;
+
+  --drawer-handle-height: 42px;
+  --navigation-bar-height: 90px;
 }

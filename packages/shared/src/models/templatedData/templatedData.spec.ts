@@ -91,6 +91,11 @@ const tests: ITestData[] = [
     input: "{@row.first_name}_{@row.last_name}_completed",
     output: "Ada_Lovelace_completed",
   },
+  // Missing contexts ignored (field variables preserved, row evaluated)
+  {
+    input: "Text @data.workshop.{@fields.current_workshop}.title @row.first_name?",
+    output: "Text @data.workshop.{@fields.current_workshop}.title Ada?",
+  },
 ];
 
 describe("Templated Data Parsing", () => {
