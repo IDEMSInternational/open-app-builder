@@ -174,7 +174,7 @@
           "eng": "Survey"
         }
       },
-      "template": "w_celebrate_survey_activity"
+      "template": "survey_final_stepper"
     },
     {
       "id": "talk_1",
