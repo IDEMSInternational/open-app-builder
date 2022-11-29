@@ -1,6 +1,5 @@
 import { Injector } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
-import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { getGlobalService } from "src/app/shared/services/global.service";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { booleanStringToBoolean } from "src/app/shared/utils";
