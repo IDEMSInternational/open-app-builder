@@ -1,0 +1,230 @@
+{
+  "flow_type": "template",
+  "flow_name": "library_screen",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Library",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title"
+    },
+    {
+      "type": "items",
+      "value": "@data.library",
+      "rows": [
+        {
+          "name": "go_to_template",
+          "value": "library_collection",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@item.id != \"water\"",
+          "type": "set_variable",
+          "_nested_name": "items.go_to_template",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@item.id != \"water\"",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "name": "go_to_template",
+          "value": "water_lib_screen",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@item.id == \"water\"",
+          "type": "set_variable",
+          "_nested_name": "items.go_to_template",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@item.id == \"water\"",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "name": "tile_text",
+          "value": "@item.title",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "items.tile_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@item.title",
+                "matchedExpression": "@item.title",
+                "type": "item",
+                "fieldName": "title"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "tile_component",
+          "name": "tile_@item.id",
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "current_lib_sect",
+                "@item.id"
+              ],
+              "_raw": "click | set_field: current_lib_sect: @item.id",
+              "_cleaned": "click | set_field: current_lib_sect: @item.id"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.go_to_template"
+              ],
+              "_raw": "click | go_to: @local.go_to_template",
+              "_cleaned": "click | go_to: @local.go_to_template"
+            }
+          ],
+          "_nested_name": "items.tile_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "tile_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "1": [
+                    {
+                      "fullExpression": "@item.id",
+                      "matchedExpression": "@item.id",
+                      "type": "item",
+                      "fieldName": "id"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | set_field: current_lib_sect: @item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | set_field: current_lib_sect: @item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "1": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.go_to_template",
+                      "matchedExpression": "@local.go_to_template",
+                      "type": "local",
+                      "fieldName": "go_to_template"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.go_to_template",
+                    "matchedExpression": "@local.go_to_template",
+                    "type": "local",
+                    "fieldName": "go_to_template"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.go_to_template",
+                    "matchedExpression": "@local.go_to_template",
+                    "type": "local",
+                    "fieldName": "go_to_template"
+                  }
+                ]
+              }
+            },
+            "_nested_name": [
+              {
+                "fullExpression": "items.tile_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
+              "_nested_name"
+            ],
+            "@local.go_to_template": [
+              "action_list.1.args.0",
+              "action_list.1._raw",
+              "action_list.1._cleaned"
+            ]
+          }
+        }
+      ],
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.library",
+            "matchedExpression": "@data.library",
+            "type": "data",
+            "fieldName": "library"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.library": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "templates/global/library_navigation.xlsx"
+}

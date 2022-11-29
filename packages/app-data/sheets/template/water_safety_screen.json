@@ -1,0 +1,309 @@
+{
+  "flow_type": "template",
+  "flow_name": "water_safety_screen",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@data.water_topics.section_safety.heading",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.water_topics.section_safety.heading",
+            "matchedExpression": "@data.water_topics.section_safety.heading",
+            "type": "data",
+            "fieldName": "water_topics"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.water_topics.section_safety.heading": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "description",
+      "value": "@data.water_topics.section_safety.description",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "description",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.water_topics.section_safety.description",
+            "matchedExpression": "@data.water_topics.section_safety.description",
+            "type": "data",
+            "fieldName": "water_topics"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.water_topics.section_safety.description": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "accordion",
+      "condition": false,
+      "rows": [
+        {
+          "type": "items",
+          "value": "@data.water_safety",
+          "rows": [
+            {
+              "type": "accordion_section",
+              "name": "acc_@item.id",
+              "value": "@item.heading",
+              "rows": [
+                {
+                  "type": "template",
+                  "value": "water_safety",
+                  "rows": [
+                    {
+                      "name": "type_id",
+                      "value": "@item.id",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "accordion.items.acc_@item.id.water_safety.type_id",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@item.id",
+                            "matchedExpression": "@item.id",
+                            "type": "item",
+                            "fieldName": "id"
+                          }
+                        ],
+                        "_nested_name": [
+                          {
+                            "fullExpression": "accordion.items.acc_@item.id.water_safety.type_id",
+                            "matchedExpression": "@item.id.water_safety.type_id",
+                            "type": "item",
+                            "fieldName": "id"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@item.id": [
+                          "value"
+                        ],
+                        "@item.id.water_safety.type_id": [
+                          "_nested_name"
+                        ]
+                      }
+                    }
+                  ],
+                  "name": "water_safety",
+                  "_nested_name": "accordion.items.acc_@item.id.water_safety",
+                  "_dynamicFields": {
+                    "_nested_name": [
+                      {
+                        "fullExpression": "accordion.items.acc_@item.id.water_safety",
+                        "matchedExpression": "@item.id.water_safety",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@item.id.water_safety": [
+                      "_nested_name"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "accordion.items.acc_@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "acc_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@item.heading",
+                    "matchedExpression": "@item.heading",
+                    "type": "item",
+                    "fieldName": "heading"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "accordion.items.acc_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ],
+                "@item.heading": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "name": "items",
+          "_nested_name": "accordion.items",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.water_safety",
+                "matchedExpression": "@data.water_safety",
+                "type": "data",
+                "fieldName": "water_safety"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.water_safety": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "name": "accordion",
+      "_nested_name": "accordion"
+    },
+    {
+      "type": "items",
+      "value": "@data.water_safety",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_@item.id",
+          "value": "@item.heading",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "current_type",
+                "@item.id"
+              ],
+              "_raw": "click | set_field: current_type: @item.id",
+              "_cleaned": "click | set_field: current_type: @item.id"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "water_safety"
+              ],
+              "_raw": "click | go_to: water_safety",
+              "_cleaned": "click | go_to: water_safety"
+            }
+          ],
+          "_nested_name": "items.button_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@item.heading",
+                "matchedExpression": "@item.heading",
+                "type": "item",
+                "fieldName": "heading"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "1": [
+                    {
+                      "fullExpression": "@item.id",
+                      "matchedExpression": "@item.id",
+                      "type": "item",
+                      "fieldName": "id"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | set_field: current_type: @item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | set_field: current_type: @item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              }
+            },
+            "_nested_name": [
+              {
+                "fullExpression": "items.button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
+              "_nested_name"
+            ],
+            "@item.heading": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.water_safety",
+            "matchedExpression": "@data.water_safety",
+            "type": "data",
+            "fieldName": "water_safety"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.water_safety": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "templates/global/water_navigation.xlsx"
+}

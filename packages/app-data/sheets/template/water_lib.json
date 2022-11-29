@@ -1,0 +1,284 @@
+{
+  "flow_type": "template",
+  "flow_name": "water_lib",
+  "status": "released",
+  "rows": [
+    {
+      "name": "type_id",
+      "value": "@fields.type_id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "type_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.type_id",
+            "matchedExpression": "@fields.type_id",
+            "type": "fields",
+            "fieldName": "type_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.type_id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "name",
+      "value": ".name",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "name"
+    },
+    {
+      "name": "type_name",
+      "value": "water_lib@local.type_id@local.name",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "type_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "water_lib@local.type_id@local.name",
+            "matchedExpression": "@local.type_id",
+            "type": "local",
+            "fieldName": "type_id"
+          },
+          {
+            "fullExpression": "water_lib@local.type_id@local.name",
+            "matchedExpression": "@local.name",
+            "type": "local",
+            "fieldName": "name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.type_id": [
+          "value"
+        ],
+        "@local.name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@data.@local.type_name",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.type_name",
+            "matchedExpression": "@local.type_name",
+            "type": "local",
+            "fieldName": "type_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.type_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "accordion",
+      "action_list": false,
+      "rows": [
+        {
+          "type": "items",
+          "value": "@data.water_lib",
+          "rows": [
+            {
+              "type": "accordion_section",
+              "name": "acc_@item.id",
+              "value": "@item.heading",
+              "rows": [
+                {
+                  "type": "template",
+                  "value": "water_lib",
+                  "rows": [
+                    {
+                      "name": "type_id",
+                      "value": "@item.id",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "accordion.items.acc_@item.id.water_lib.type_id",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@item.id",
+                            "matchedExpression": "@item.id",
+                            "type": "item",
+                            "fieldName": "id"
+                          }
+                        ],
+                        "_nested_name": [
+                          {
+                            "fullExpression": "accordion.items.acc_@item.id.water_lib.type_id",
+                            "matchedExpression": "@item.id.water_lib.type_id",
+                            "type": "item",
+                            "fieldName": "id"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@item.id": [
+                          "value"
+                        ],
+                        "@item.id.water_lib.type_id": [
+                          "_nested_name"
+                        ]
+                      }
+                    }
+                  ],
+                  "name": "water_lib",
+                  "_nested_name": "accordion.items.acc_@item.id.water_lib",
+                  "_dynamicFields": {
+                    "_nested_name": [
+                      {
+                        "fullExpression": "accordion.items.acc_@item.id.water_lib",
+                        "matchedExpression": "@item.id.water_lib",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@item.id.water_lib": [
+                      "_nested_name"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "accordion.items.acc_@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "acc_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@item.heading",
+                    "matchedExpression": "@item.heading",
+                    "type": "item",
+                    "fieldName": "heading"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "accordion.items.acc_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ],
+                "@item.heading": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "name": "items",
+          "_nested_name": "accordion.items",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.water_lib",
+                "matchedExpression": "@data.water_lib",
+                "type": "data",
+                "fieldName": "water_lib"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.water_lib": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "name": "accordion",
+      "_nested_name": "accordion"
+    },
+    {
+      "type": "button",
+      "name": "button_@item.id",
+      "value": "@item.heading",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "click | set_field: current_type: @item.id;\nclick | go_to: water_lib",
+      "_nested_name": "button_@item.id",
+      "_dynamicFields": {
+        "name": [
+          {
+            "fullExpression": "button_@item.id",
+            "matchedExpression": "@item.id",
+            "type": "item",
+            "fieldName": "id"
+          }
+        ],
+        "value": [
+          {
+            "fullExpression": "@item.heading",
+            "matchedExpression": "@item.heading",
+            "type": "item",
+            "fieldName": "heading"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "click | set_field: current_type: @item.id;\nclick | go_to: water_lib",
+            "matchedExpression": "@item.id",
+            "type": "item",
+            "fieldName": "id"
+          }
+        ],
+        "_nested_name": [
+          {
+            "fullExpression": "button_@item.id",
+            "matchedExpression": "@item.id",
+            "type": "item",
+            "fieldName": "id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@item.id": [
+          "name",
+          "condition",
+          "_nested_name"
+        ],
+        "@item.heading": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "templates/global/library_navigation.xlsx"
+}

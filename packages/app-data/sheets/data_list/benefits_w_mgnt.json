@@ -1,0 +1,34 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "benefits_w_mgnt",
+  "data_list_name": "benefits_waste_management",
+  "status": "released",
+  "rows": [
+    {
+      "id": "benefit_better_environment",
+      "heading": "Better Environment",
+      "description": "A clean and green environment to breathe in is what everyone wishes for, and waste management has a considerable contribution to the well-being of the environment and the people. Placing multiple waste disposals in cities will help the environment stay cleaner and maintain proper sanitation in the city."
+    },
+    {
+      "id": "benefit_reduced_pollution",
+      "heading": "Reduced Pollution",
+      "description": "Waste management does not merely reduce waste from the environment but also eliminates the impact of harmful greenhouse gases like methane, carbon monoxide, and carbon dioxide. This decreases the reliance on landfills for waste deposit that adversely affects the environment."
+    },
+    {
+      "id": "benefit_energy_conservation",
+      "heading": "Energy Conservation",
+      "description": "Recycling is a big part of waste management. One classic example of saving the environment with recycling is traced back to the practice of recycling paper. If used paper is recycled, the need to cut down more trees reduces. This helps in conserving energy and reducing carbon footprints."
+    },
+    {
+      "id": "benefit_increases_employment",
+      "heading": "Increases Employment Opportunities",
+      "description": "If more people start adopting waste management practices, it creates a need for organizations to sell recycled products. This creates several employment opportunities for people."
+    },
+    {
+      "id": "benefit_create_change",
+      "heading": "Helps Create a Change",
+      "description": "Although you cannot completely get rid of waste, you can reduce the waste by recycling it through Eco-friendly practices. This creates a classic example for people around you to adopt the change and embrace a more sustainable approach."
+    }
+  ],
+  "_xlsxPath": "data_lists/waste management/waste_management_data_list.xlsx"
+}

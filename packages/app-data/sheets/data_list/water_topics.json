@@ -1,0 +1,44 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "water_topics",
+  "status": "released",
+  "data_list_name": "water_topics",
+  "rows": [
+    {
+      "id": "section_safety",
+      "heading": "Water Safety",
+      "description": "Water safety refers to the procedures, precautions and policies associated with safety in, on, and around bodies of water, where there is a risk of injury or drowning.",
+      "template": "water_safety_screen",
+      "save_id_field": "current_water_tab"
+    },
+    {
+      "id": "section_storage",
+      "heading": "Water Storage",
+      "description": "Storage tanks/reservoirs should be kept clean and have a tight lid.",
+      "template": "water_storage_screen",
+      "save_id_field": "current_water_tab"
+    },
+    {
+      "id": "section_treatment",
+      "heading": "Water Treatment",
+      "description": "* Water should be treated and collected for drinking with a proven technology since many people rely on water sources that are at high risk of poop contamination due to lack of toilets or poor sewer systems.\n \n* Even water that is safe at its source(for example, from a water treatment plant or well) is at risk of becoming contaminated unless it is treated, transported, stored, and handled safely.",
+      "template": "water_treatment_screen",
+      "save_id_field": "current_water_tab"
+    },
+    {
+      "id": "section_quality",
+      "heading": "Water Quality Improvement",
+      "description": "Tips to improve the quality of water in our homes.",
+      "template": "water_quality_screen",
+      "save_id_field": "current_water_tab"
+    },
+    {
+      "id": "section_availability",
+      "heading": "Water Availability",
+      "description": "Water availability is not enough to keep children healthy, it must also be clean and affordable.",
+      "template": "water_sources_screen",
+      "save_id_field": "current_water_tab"
+    }
+  ],
+  "_xlsxPath": "data_lists/water/water_data_list.xlsx"
+}

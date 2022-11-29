@@ -1,0 +1,14 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "menstrual_facilities",
+  "status": "released",
+  "data_list_name": "menstrual_facilities",
+  "rows": [
+    {
+      "id": "menstrual_facilities",
+      "heading": "Menstrual tips.",
+      "description": "* Dispose of sanitary pads properly.\nSanitary pads must never be flushed down the toilet since they could clog the drainage system and cause an overflow instead you should wrap it with a newspaper or toilet paper and dispose of it in the biohazard bin or a latrine after use.\n\n* Changing the sanitary pad regularly to keep good hygiene during the period time.\nA tampon should not be worn for more than 8 hours.\n\n* Wash yourself properly from front to back and clean the undergarments to avoid reproductive and urinary tract infections which can result in future infertility and birth complications.\n\n* Wash your hands after disposing of the used pad. \nNeglecting to wash hands after changing menstrual products can spread infections, such as hepatitis B and thrush.\n\n*Light exercise can improve mental, physical, and menstrual health. Through guided dynamic stretching, you assist reduce stress and increase blood flow, which will lessen the severity of period cramps and pain."
+    }
+  ],
+  "_xlsxPath": "data_lists/menstrual hygiene/menstrual_data_list.xlsx"
+}

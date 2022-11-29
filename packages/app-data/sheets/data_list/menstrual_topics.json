@@ -1,0 +1,44 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "menstrual_topics",
+  "status": "released",
+  "data_list_name": "menstrual_topics",
+  "rows": [
+    {
+      "id": "section_impact",
+      "heading": "Impact of menstrual cycles to the youth",
+      "description": "Menstruation can cause disruption to daily life if it is not well managed. Particularly painful phases that adolescents go through can have an impact on their school attendance and performance.\n\nGirls leave school due to a variety of factors, including inadequate resources and facilities, restrictions on girls' mobility during their periods, and feelings of shame or being \"unclean.\"\n\nMenstruation-related taboos, misconceptions, and shame can cause teasing, humiliation, exclusion from social activities, and other problems that are detrimental to girls' feelings of dignity.",
+      "template": "menstrual_impact_screen"
+    },
+    {
+      "id": "section_key_areas",
+      "heading": "Key areas to improve menstrual health",
+      "template": "menstrual_topics_screen"
+    },
+    {
+      "id": "section_support",
+      "heading": "Social support",
+      "description": "Social support is an interchange of resources between at least two people that the giver or recipient believes is meant to improve the recipient's health.",
+      "template": "menstrual_support_screen"
+    },
+    {
+      "id": "section_knowledge",
+      "heading": "Knowledge and skills",
+      "description": "Poor knowledge and understanding of menstruation may lead to\nunsafe hygienic practice that in turn increases the risk of reproductive and\ngenito_urinary tract infections, cervical cancer, school dropout, poor\nacademic performance and overall poor quality of life.",
+      "template": "menstrual_topics_screen"
+    },
+    {
+      "id": "section_facilities",
+      "heading": "Facilities and services",
+      "description": "During the menstruation period the following tips are to be observed.",
+      "template": "menstrual_facilities_screen"
+    },
+    {
+      "id": "sections_materials",
+      "heading": "Access to absorbent materials and supportive supplies.",
+      "description": "In addition to materials, women and girls require access to private and secure areas where they can change their menstrual products, wash any reusable dry products, and wash their bodies with soap and water.\nWashrooms and supplementary infrastructure are therefore crucial enablers.",
+      "template": "menstrual_topics_screen"
+    }
+  ],
+  "_xlsxPath": "data_lists/menstrual hygiene/menstrual_data_list.xlsx"
+}

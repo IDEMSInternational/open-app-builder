@@ -1,0 +1,309 @@
+{
+  "flow_type": "template",
+  "flow_name": "menstrual_topics_screen",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@data.menstrual_topics.heading",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.menstrual_topics.heading",
+            "matchedExpression": "@data.menstrual_topics.heading",
+            "type": "data",
+            "fieldName": "menstrual_topics"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.menstrual_topics.heading": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "description",
+      "value": "@data.menstrual_topics.description",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "description",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.menstrual_topics.description",
+            "matchedExpression": "@data.menstrual_topics.description",
+            "type": "data",
+            "fieldName": "menstrual_topics"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.menstrual_topics.description": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "accordion",
+      "condition": false,
+      "rows": [
+        {
+          "type": "items",
+          "value": "@data.menstrual_topics",
+          "rows": [
+            {
+              "type": "accordion_section",
+              "name": "acc_@item.id",
+              "value": "@item.heading",
+              "rows": [
+                {
+                  "type": "template",
+                  "value": "menstrual_topics",
+                  "rows": [
+                    {
+                      "name": "type_id",
+                      "value": "@item.id",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "accordion.items.acc_@item.id.menstrual_topics.type_id",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@item.id",
+                            "matchedExpression": "@item.id",
+                            "type": "item",
+                            "fieldName": "id"
+                          }
+                        ],
+                        "_nested_name": [
+                          {
+                            "fullExpression": "accordion.items.acc_@item.id.menstrual_topics.type_id",
+                            "matchedExpression": "@item.id.menstrual_topics.type_id",
+                            "type": "item",
+                            "fieldName": "id"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@item.id": [
+                          "value"
+                        ],
+                        "@item.id.menstrual_topics.type_id": [
+                          "_nested_name"
+                        ]
+                      }
+                    }
+                  ],
+                  "name": "menstrual_topics",
+                  "_nested_name": "accordion.items.acc_@item.id.menstrual_topics",
+                  "_dynamicFields": {
+                    "_nested_name": [
+                      {
+                        "fullExpression": "accordion.items.acc_@item.id.menstrual_topics",
+                        "matchedExpression": "@item.id.menstrual_topics",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@item.id.menstrual_topics": [
+                      "_nested_name"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "accordion.items.acc_@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "acc_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@item.heading",
+                    "matchedExpression": "@item.heading",
+                    "type": "item",
+                    "fieldName": "heading"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "accordion.items.acc_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ],
+                "@item.heading": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "name": "items",
+          "_nested_name": "accordion.items",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.menstrual_topics",
+                "matchedExpression": "@data.menstrual_topics",
+                "type": "data",
+                "fieldName": "menstrual_topics"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.menstrual_topics": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "name": "accordion",
+      "_nested_name": "accordion"
+    },
+    {
+      "type": "items",
+      "value": "@data.menstrual_topics",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_@item.id",
+          "value": "@item.heading",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "current_type",
+                "@item.id"
+              ],
+              "_raw": "click | set_field: current_type: @item.id",
+              "_cleaned": "click | set_field: current_type: @item.id"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "menstrual_topics"
+              ],
+              "_raw": "click | go_to: menstrual_topics",
+              "_cleaned": "click | go_to: menstrual_topics"
+            }
+          ],
+          "_nested_name": "items.button_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@item.heading",
+                "matchedExpression": "@item.heading",
+                "type": "item",
+                "fieldName": "heading"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "1": [
+                    {
+                      "fullExpression": "@item.id",
+                      "matchedExpression": "@item.id",
+                      "type": "item",
+                      "fieldName": "id"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | set_field: current_type: @item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | set_field: current_type: @item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              }
+            },
+            "_nested_name": [
+              {
+                "fullExpression": "items.button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
+              "_nested_name"
+            ],
+            "@item.heading": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.menstrual_topics",
+            "matchedExpression": "@data.menstrual_topics",
+            "type": "data",
+            "fieldName": "menstrual_topics"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.menstrual_topics": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "templates/global/menstrual_navigation.xlsx"
+}

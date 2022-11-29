@@ -1,0 +1,14 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "water_storage",
+  "status": "released",
+  "data_list_name": "water_storage",
+  "rows": [
+    {
+      "id": "storage_methods",
+      "heading": "Water storage tips",
+      "description": "* Use clean, covered, and well-maintained containers which are free from any cracks or leaks.\n\n* The containers should also allow for water to be extracted without hands or other potentially contaminated surfaces from touching the water (i.e. through use of a tap)."
+    }
+  ],
+  "_xlsxPath": "data_lists/water/water_data_list.xlsx"
+}

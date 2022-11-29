@@ -1,0 +1,14 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "water_quality",
+  "status": "released",
+  "data_list_name": "water_quality",
+  "rows": [
+    {
+      "id": "water_quality",
+      "heading": "Improving the quality of water in our homes.",
+      "description": "* Use of water filters.\n \n* Use of clean water aerators.\n\n* Keeping your pipes, and other plumbing devices well maintained.\n \n* Proper disposal of hazardous waste in your environment.\n\n* Keep all storm drains clear.\n \n* Maintaining the septic tanks"
+    }
+  ],
+  "_xlsxPath": "data_lists/water/water_data_list.xlsx"
+}

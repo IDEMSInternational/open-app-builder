@@ -1,0 +1,183 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_nav",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "id",
+      "value": "@fields.debug_nav_field",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.debug_nav_field",
+            "matchedExpression": "@fields.debug_nav_field",
+            "type": "fields",
+            "fieldName": "debug_nav_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.debug_nav_field": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "text",
+      "value": ".text",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "text"
+    },
+    {
+      "name": "data_text",
+      "value": "debug_nav_list.@local.id@local.text",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "data_text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "debug_nav_list.@local.id@local.text",
+            "matchedExpression": "@local.id",
+            "type": "local",
+            "fieldName": "id"
+          },
+          {
+            "fullExpression": "debug_nav_list.@local.id@local.text",
+            "matchedExpression": "@local.text",
+            "type": "local",
+            "fieldName": "text"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.id": [
+          "value"
+        ],
+        "@local.text": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "value": "Example Page",
+      "_translations": {
+        "value": {}
+      },
+      "name": "title",
+      "_nested_name": "title"
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "@data.debug_nav_list.1.text",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.debug_nav_list.1.text",
+            "matchedExpression": "@data.debug_nav_list.1.text",
+            "type": "data",
+            "fieldName": "debug_nav_list"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.debug_nav_list.1.text": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "value": "@data.@local.data_text",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.data_text",
+            "matchedExpression": "@local.data_text",
+            "type": "local",
+            "fieldName": "data_text"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_text": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "value": "Go to another page",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "debug_nav_field_2",
+            "1"
+          ],
+          "_raw": "click | set_field: debug_nav_field_2: 1",
+          "_cleaned": "click | set_field: debug_nav_field_2: 1"
+        },
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "debug_nav_2"
+          ],
+          "_raw": "click | go_to: debug_nav_2",
+          "_cleaned": "click | go_to: debug_nav_2"
+        }
+      ],
+      "name": "button",
+      "_nested_name": "button"
+    },
+    {
+      "type": "button",
+      "value": "Set field",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "debug_nav_field",
+            "2"
+          ],
+          "_raw": "click | set_field: debug_nav_field: 2",
+          "_cleaned": "click | set_field: debug_nav_field: 2"
+        }
+      ],
+      "name": "button",
+      "_nested_name": "button"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/debug_nav.xlsx"
+}

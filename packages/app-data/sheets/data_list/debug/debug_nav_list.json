@@ -1,0 +1,17 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "debug_nav_list",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "id": 1,
+      "text": "Text 1"
+    },
+    {
+      "id": 2,
+      "text": "Text 2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/debug_nav.xlsx"
+}

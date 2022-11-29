@@ -1,0 +1,14 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "deworming_effects",
+  "status": "released",
+  "data_list_name": "deworming_effects\n",
+  "rows": [
+    {
+      "id": "worm_effects",
+      "heading": "Effects of worms",
+      "description": "Parasitic worms can lead to malnutrition (imbalances in a person's intake of energy\nand/or nutrients)."
+    }
+  ],
+  "_xlsxPath": "data_lists/deworming/deworming_data_list.xlsx"
+}

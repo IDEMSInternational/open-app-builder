@@ -3,7 +3,164 @@ type ISheetContents = {
   [flow_type in FlowTypes.FlowType]: { [flow_name: string]: FlowTypes.FlowTypeBase };
 };
 export const SHEETS_CONTENT_LIST: ISheetContents = {
-  data_list: {},
+  data_list: {
+    benefits_w_mgnt: {
+      flow_type: "data_list",
+      flow_name: "benefits_w_mgnt",
+      data_list_name: "benefits_waste_management",
+      _xlsxPath: "data_lists/waste management/waste_management_data_list.xlsx",
+    },
+    debug_nav_list: {
+      flow_type: "data_list",
+      flow_name: "debug_nav_list",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/debug_sheets/debug_nav.xlsx",
+    },
+    deworming_causes: {
+      flow_type: "data_list",
+      flow_name: "deworming_causes",
+      data_list_name: "deworming_causes",
+      _xlsxPath: "data_lists/deworming/deworming_data_list.xlsx",
+    },
+    deworming_effects: {
+      flow_type: "data_list",
+      flow_name: "deworming_effects",
+      data_list_name: "deworming_effects\n",
+      _xlsxPath: "data_lists/deworming/deworming_data_list.xlsx",
+    },
+    deworming_prevention: {
+      flow_type: "data_list",
+      flow_name: "deworming_prevention",
+      data_list_name: "deworming_prevention\n",
+      _xlsxPath: "data_lists/deworming/deworming_data_list.xlsx",
+    },
+    deworming_symptoms: {
+      flow_type: "data_list",
+      flow_name: "deworming_symptoms",
+      data_list_name: "deworming_symptoms",
+      _xlsxPath: "data_lists/deworming/deworming_data_list.xlsx",
+    },
+    deworming_topics: {
+      flow_type: "data_list",
+      flow_name: "deworming_topics",
+      data_list_name: "deworming_topics\n",
+      _xlsxPath: "data_lists/deworming/deworming_data_list.xlsx",
+    },
+    deworming_treatment: {
+      flow_type: "data_list",
+      flow_name: "deworming_treatment",
+      data_list_name: "deworming_treatment\n",
+      _xlsxPath: "data_lists/deworming/deworming_data_list.xlsx",
+    },
+    effective_w_mgnt: {
+      flow_type: "data_list",
+      flow_name: "effective_w_mgnt",
+      data_list_name: "effective_waste_management",
+      _xlsxPath: "data_lists/waste management/waste_management_data_list.xlsx",
+    },
+    habits_data_list: {
+      flow_type: "data_list",
+      flow_name: "habits_data_list",
+      data_list_name: "habits_data_list",
+      _xlsxPath: "data_lists/habits/wash_habits_data_lists.xlsx",
+    },
+    lib_topics: {
+      flow_type: "data_list",
+      flow_name: "lib_topics",
+      data_list_name: "lib_topics",
+      _xlsxPath: "data_lists/homepage/lib_topics_data_list.xlsx",
+    },
+    library_data: {
+      flow_type: "data_list",
+      flow_name: "library_data",
+      data_list_name: "library",
+      _xlsxPath: "data_lists/library/library_data_list.xlsx",
+    },
+    menstrual_facilities: {
+      flow_type: "data_list",
+      flow_name: "menstrual_facilities",
+      data_list_name: "menstrual_facilities",
+      _xlsxPath: "data_lists/menstrual hygiene/menstrual_data_list.xlsx",
+    },
+    menstrual_support: {
+      flow_type: "data_list",
+      flow_name: "menstrual_support",
+      data_list_name: "menstrual_support",
+      _xlsxPath: "data_lists/menstrual hygiene/menstrual_data_list.xlsx",
+    },
+    menstrual_topics: {
+      flow_type: "data_list",
+      flow_name: "menstrual_topics",
+      data_list_name: "menstrual_topics",
+      _xlsxPath: "data_lists/menstrual hygiene/menstrual_data_list.xlsx",
+    },
+    sub_section: {
+      flow_type: "data_list",
+      flow_name: "sub_section",
+      data_list_name: "sub_section",
+      _xlsxPath: "data_lists/habits/wash_habits_data_lists.xlsx",
+    },
+    toilet_topics: {
+      flow_type: "data_list",
+      flow_name: "toilet_topics",
+      data_list_name: "toilet_topics",
+      _xlsxPath: "data_lists/toilet/toilet_data_list.xlsx",
+    },
+    topics: {
+      flow_type: "data_list",
+      flow_name: "topics",
+      data_list_name: "topics",
+      _xlsxPath: "data_lists/homepage/topics_data_list.xlsx",
+    },
+    waste_mgnt_topics: {
+      flow_type: "data_list",
+      flow_name: "waste_mgnt_topics",
+      data_list_name: "waste_management_sections",
+      _xlsxPath: "data_lists/waste management/waste_management_data_list.xlsx",
+    },
+    wastebin_types: {
+      flow_type: "data_list",
+      flow_name: "wastebin_types",
+      data_list_name: "wastebin_types",
+      _xlsxPath: "data_lists/waste management/waste_management_data_list.xlsx",
+    },
+    water_quality: {
+      flow_type: "data_list",
+      flow_name: "water_quality",
+      data_list_name: "water_quality",
+      _xlsxPath: "data_lists/water/water_data_list.xlsx",
+    },
+    water_safety: {
+      flow_type: "data_list",
+      flow_name: "water_safety",
+      data_list_name: "water_safety",
+      _xlsxPath: "data_lists/water/water_data_list.xlsx",
+    },
+    water_sources: {
+      flow_type: "data_list",
+      flow_name: "water_sources",
+      data_list_name: "water_sources",
+      _xlsxPath: "data_lists/water/water_data_list.xlsx",
+    },
+    water_storage: {
+      flow_type: "data_list",
+      flow_name: "water_storage",
+      data_list_name: "water_storage",
+      _xlsxPath: "data_lists/water/water_data_list.xlsx",
+    },
+    water_topics: {
+      flow_type: "data_list",
+      flow_name: "water_topics",
+      data_list_name: "water_topics",
+      _xlsxPath: "data_lists/water/water_data_list.xlsx",
+    },
+    water_treatment: {
+      flow_type: "data_list",
+      flow_name: "water_treatment",
+      data_list_name: "water_treatment",
+      _xlsxPath: "data_lists/water/water_data_list.xlsx",
+    },
+  },
   global: {},
   template: {
     app_menu: {
@@ -11,10 +168,106 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "app_menu",
       _xlsxPath: "templates/global/navigation.xlsx",
     },
+    benefits_w_mgnt: {
+      flow_type: "template",
+      flow_name: "benefits_w_mgnt",
+      data_list_name: "benefits_w_mgnt",
+      _xlsxPath: "templates/global/waste_mgnt_navigation.xlsx",
+    },
+    benefits_w_mgnt_screen: {
+      flow_type: "template",
+      flow_name: "benefits_w_mgnt_screen",
+      data_list_name: "benefits_w_mgnt_screen",
+      _xlsxPath: "templates/global/waste_mgnt_navigation.xlsx",
+    },
+    debug_nav: {
+      flow_type: "template",
+      flow_name: "debug_nav",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/debug_sheets/debug_nav.xlsx",
+    },
+    debug_nav_2: {
+      flow_type: "template",
+      flow_name: "debug_nav_2",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/debug_sheets/debug_nav.xlsx",
+    },
+    deworming_causes: {
+      flow_type: "template",
+      flow_name: "deworming_causes",
+      _xlsxPath: "templates/global/deworming_navigation.xlsx",
+    },
+    deworming_causes_screen: {
+      flow_type: "template",
+      flow_name: "deworming_causes_screen",
+      _xlsxPath: "templates/global/deworming_navigation.xlsx",
+    },
+    deworming_effects: {
+      flow_type: "template",
+      flow_name: "deworming_effects",
+      _xlsxPath: "templates/global/deworming_navigation.xlsx",
+    },
+    deworming_effects_screen: {
+      flow_type: "template",
+      flow_name: "deworming_effects_screen",
+      _xlsxPath: "templates/global/deworming_navigation.xlsx",
+    },
+    deworming_prevention: {
+      flow_type: "template",
+      flow_name: "deworming_prevention",
+      _xlsxPath: "templates/global/deworming_navigation.xlsx",
+    },
+    deworming_prevention_screen: {
+      flow_type: "template",
+      flow_name: "deworming_prevention_screen",
+      _xlsxPath: "templates/global/deworming_navigation.xlsx",
+    },
     deworming_screen: {
       flow_type: "template",
       flow_name: "deworming_screen",
       _xlsxPath: "templates/global/navigation.xlsx",
+    },
+    deworming_symptoms: {
+      flow_type: "template",
+      flow_name: "deworming_symptoms",
+      _xlsxPath: "templates/global/deworming_navigation.xlsx",
+    },
+    deworming_symptoms_screen: {
+      flow_type: "template",
+      flow_name: "deworming_symptoms_screen",
+      _xlsxPath: "templates/global/deworming_navigation.xlsx",
+    },
+    deworming_treatment: {
+      flow_type: "template",
+      flow_name: "deworming_treatment",
+      _xlsxPath: "templates/global/deworming_navigation.xlsx",
+    },
+    deworming_treatment_screen: {
+      flow_type: "template",
+      flow_name: "deworming_treatment_screen",
+      _xlsxPath: "templates/global/deworming_navigation.xlsx",
+    },
+    effective_w_mgnt: {
+      flow_type: "template",
+      flow_name: "effective_w_mgnt",
+      data_list_name: "effective_w_mgnt",
+      _xlsxPath: "templates/global/waste_mgnt_navigation.xlsx",
+    },
+    effective_w_mgnt_screen: {
+      flow_type: "template",
+      flow_name: "effective_w_mgnt_screen",
+      data_list_name: "effective_w_mgnt_screen",
+      _xlsxPath: "templates/global/waste_mgnt_navigation.xlsx",
+    },
+    habits: {
+      flow_type: "template",
+      flow_name: "habits",
+      _xlsxPath: "templates/global/wash_habits_navigation.xlsx",
+    },
+    habits_screen: {
+      flow_type: "template",
+      flow_name: "habits_screen",
+      _xlsxPath: "templates/global/wash_habits_navigation.xlsx",
     },
     help_banner: {
       flow_type: "template",
@@ -26,15 +279,75 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "home_screen",
       _xlsxPath: "templates/global/navigation.xlsx",
     },
+    library_collection: {
+      flow_type: "template",
+      flow_name: "library_collection",
+      _xlsxPath: "templates/global/library_navigation.xlsx",
+    },
+    library_screen: {
+      flow_type: "template",
+      flow_name: "library_screen",
+      _xlsxPath: "templates/global/library_navigation.xlsx",
+    },
+    menstrual_facilities: {
+      flow_type: "template",
+      flow_name: "menstrual_facilities",
+      _xlsxPath: "templates/global/menstrual_navigation.xlsx",
+    },
+    menstrual_facilities_screen: {
+      flow_type: "template",
+      flow_name: "menstrual_facilities_screen",
+      _xlsxPath: "templates/global/menstrual_navigation.xlsx",
+    },
     menstrual_hygiene_screen: {
       flow_type: "template",
       flow_name: "menstrual_hygiene_screen",
       _xlsxPath: "templates/global/navigation.xlsx",
     },
+    menstrual_impact: {
+      flow_type: "template",
+      flow_name: "menstrual_impact",
+      _xlsxPath: "templates/global/menstrual_navigation.xlsx",
+    },
+    menstrual_impact_screen: {
+      flow_type: "template",
+      flow_name: "menstrual_impact_screen",
+      _xlsxPath: "templates/global/menstrual_navigation.xlsx",
+    },
+    menstrual_support: {
+      flow_type: "template",
+      flow_name: "menstrual_support",
+      _xlsxPath: "templates/global/menstrual_navigation.xlsx",
+    },
+    menstrual_support_screen: {
+      flow_type: "template",
+      flow_name: "menstrual_support_screen",
+      _xlsxPath: "templates/global/menstrual_navigation.xlsx",
+    },
+    menstrual_topics: {
+      flow_type: "template",
+      flow_name: "menstrual_topics",
+      _xlsxPath: "templates/global/menstrual_navigation.xlsx",
+    },
+    menstrual_topics_screen: {
+      flow_type: "template",
+      flow_name: "menstrual_topics_screen",
+      _xlsxPath: "templates/global/menstrual_navigation.xlsx",
+    },
     toilet_screen: {
       flow_type: "template",
       flow_name: "toilet_screen",
       _xlsxPath: "templates/global/navigation.xlsx",
+    },
+    toilet_topics: {
+      flow_type: "template",
+      flow_name: "toilet_topics",
+      _xlsxPath: "templates/global/toilet_navigation.xlsx",
+    },
+    toilet_topics_screen: {
+      flow_type: "template",
+      flow_name: "toilet_topics_screen",
+      _xlsxPath: "templates/global/toilet_navigation.xlsx",
     },
     topic_screen: {
       flow_type: "template",
@@ -46,10 +359,82 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "topics_screen",
       _xlsxPath: "templates/global/navigation.xlsx",
     },
+    waste_mgmt_screen: {
+      flow_type: "template",
+      flow_name: "waste_mgmt_screen",
+      _xlsxPath: "templates/global/navigation.xlsx",
+    },
+    wastebin_types: {
+      flow_type: "template",
+      flow_name: "wastebin_types",
+      data_list_name: "wastebin_types",
+      _xlsxPath: "templates/global/waste_mgnt_navigation.xlsx",
+    },
+    wastebin_types_screen: {
+      flow_type: "template",
+      flow_name: "wastebin_types_screen",
+      data_list_name: "wastebin_types_screen",
+      _xlsxPath: "templates/global/waste_mgnt_navigation.xlsx",
+    },
+    water_lib: {
+      flow_type: "template",
+      flow_name: "water_lib",
+      _xlsxPath: "templates/global/library_navigation.xlsx",
+    },
+    water_quality: {
+      flow_type: "template",
+      flow_name: "water_quality",
+      _xlsxPath: "templates/global/water_navigation.xlsx",
+    },
+    water_quality_screen: {
+      flow_type: "template",
+      flow_name: "water_quality_screen",
+      _xlsxPath: "templates/global/water_navigation.xlsx",
+    },
+    water_safety: {
+      flow_type: "template",
+      flow_name: "water_safety",
+      _xlsxPath: "templates/global/water_navigation.xlsx",
+    },
+    water_safety_screen: {
+      flow_type: "template",
+      flow_name: "water_safety_screen",
+      _xlsxPath: "templates/global/water_navigation.xlsx",
+    },
     water_screen: {
       flow_type: "template",
       flow_name: "water_screen",
       _xlsxPath: "templates/global/navigation.xlsx",
+    },
+    water_sources: {
+      flow_type: "template",
+      flow_name: "water_sources",
+      _xlsxPath: "templates/global/water_navigation.xlsx",
+    },
+    water_sources_screen: {
+      flow_type: "template",
+      flow_name: "water_sources_screen",
+      _xlsxPath: "templates/global/water_navigation.xlsx",
+    },
+    water_storage: {
+      flow_type: "template",
+      flow_name: "water_storage",
+      _xlsxPath: "templates/global/water_navigation.xlsx",
+    },
+    water_storage_screen: {
+      flow_type: "template",
+      flow_name: "water_storage_screen",
+      _xlsxPath: "templates/global/water_navigation.xlsx",
+    },
+    water_treatment: {
+      flow_type: "template",
+      flow_name: "water_treatment",
+      _xlsxPath: "templates/global/water_navigation.xlsx",
+    },
+    water_treatment_screen: {
+      flow_type: "template",
+      flow_name: "water_treatment_screen",
+      _xlsxPath: "templates/global/water_navigation.xlsx",
     },
   },
   tour: {},

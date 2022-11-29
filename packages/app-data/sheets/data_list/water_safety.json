@@ -1,0 +1,19 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "water_safety",
+  "status": "released",
+  "data_list_name": "water_safety",
+  "rows": [
+    {
+      "id": "water_safety_measures",
+      "heading": "Water Safety Measures",
+      "description": "* Ensure you watch children when they are in or around water by keeping them within arm's reach of an adult at all times because they can drown in as little as one inch of water. \n\n* Empty all buckets, tubs, and other containers immediately after use. Keep them out of children's reach and store them upside down.\n\n* Surround pools with a fence. A pool fence should have self-closing and self-latching gates, encircle the pool on all sides, and be at least four feet tall.\n\n* Learn CPR and the fundamentals of water rescue. It's critical to understand how to react in an emergency without endangering oneself."
+    },
+    {
+      "id": "water_clean_and_safe",
+      "heading": "Ways to keep water clean and safe.",
+      "description": "* Recycle all the used containers.\n\n* Reduce water usage by only using the water you need.\n\n* Keeping running water minimal.\n\n* Reusing water to avoid wastage.\n\n* Avoid dumping anything near rivers and streams, and if you notice trash dumped nearby, attempt to clean it up."
+    }
+  ],
+  "_xlsxPath": "data_lists/water/water_data_list.xlsx"
+}

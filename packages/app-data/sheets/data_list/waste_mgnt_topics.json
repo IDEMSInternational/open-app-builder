@@ -1,0 +1,27 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "waste_mgnt_topics",
+  "data_list_name": "waste_management_sections",
+  "status": "released",
+  "rows": [
+    {
+      "id": "section_benefits",
+      "heading": "Benefits of Waste Management",
+      "description": "Let’s take a closer look at all the advantages that the process of waste management serves:",
+      "template": "benefits_w_mgnt_screen"
+    },
+    {
+      "id": "section_effective",
+      "heading": "Effective solid waste disposal and management methods",
+      "description": "Depending on age, various foods are necessary",
+      "template": "effective_w_mgnt_screen"
+    },
+    {
+      "id": "section_wastebin",
+      "heading": "Types of waste bin",
+      "description": "Below are the seven effective methods of solid waste disposal and management:",
+      "template": "wastebin_types_screen"
+    }
+  ],
+  "_xlsxPath": "data_lists/waste management/waste_management_data_list.xlsx"
+}

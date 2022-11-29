@@ -1,0 +1,14 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "deworming_causes",
+  "status": "released",
+  "data_list_name": "deworming_causes",
+  "rows": [
+    {
+      "id": "worm_causes",
+      "heading": "Causes of worms",
+      "description": "* Drinking water that is not filtered or boiled \n* Eating fruits and vegetables that are not washed properly \n* Eating meat that hasn’t been cooked well \n* Not washing utensils properly \n* Playing or walking barefoot \n* Not washing hands before food and after playing \n* Not washing the hands after playing with pets \n* Not washing hands after using the toilet \n* Sharing clothes with friends (This point is especially for the kids who stay in hostels) \n* Swimming in water bodies that aren’t clean \n* Contact with kids or adults who are infected"
+    }
+  ],
+  "_xlsxPath": "data_lists/deworming/deworming_data_list.xlsx"
+}
