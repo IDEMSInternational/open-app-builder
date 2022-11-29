@@ -2,7 +2,6 @@
   "flow_type": "template",
   "flow_name": "feature_feedback_debug",
   "status": "released",
-  "flow_subtype": "debug",
   "comments": "Used in /feedback debug page",
   "rows": [
     {

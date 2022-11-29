@@ -190,7 +190,7 @@
           "eng": "Survey"
         }
       },
-      "template": "w_celebrate_survey_activity",
+      "template": "survey_final_stepper",
       "completed_field": "task_gp_w_celebrate_survey_activity_completed",
       "completed": "@fields.task_gp_w_celebrate_survey_activity_completed"
     },
