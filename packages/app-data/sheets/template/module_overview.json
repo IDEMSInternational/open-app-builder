@@ -516,6 +516,7 @@
       "type": "template",
       "name": "card_hp",
       "value": "task_card",
+      "condition": "@local.workshop_id != \"w_celebrate\"",
       "exclude_from_translation": true,
       "rows": [
         {
@@ -554,7 +555,22 @@
           "_nested_name": "card_hp.task_id"
         }
       ],
-      "_nested_name": "card_hp"
+      "_nested_name": "card_hp",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.workshop_id != \"w_celebrate\"",
+            "matchedExpression": "@local.workshop_id",
+            "type": "local",
+            "fieldName": "workshop_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_id": [
+          "condition"
+        ]
+      }
     }
   ],
   "_xlsxPath": "global_modular/core_templates/module_navigation.xlsx"
