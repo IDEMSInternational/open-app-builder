@@ -1,0 +1,280 @@
+{
+  "flow_type": "template",
+  "flow_name": "toilet_sub_templates",
+  "status": "released",
+  "rows": [
+    {
+      "name": "toilet_id",
+      "value": "@fields.current_toilet_tab",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "toilet_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.current_toilet_tab",
+            "matchedExpression": "@fields.current_toilet_tab",
+            "type": "fields",
+            "fieldName": "current_toilet_tab"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.current_toilet_tab": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "var_title",
+      "value": ".heading",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "var_title"
+    },
+    {
+      "name": "comp_var_title",
+      "value": "toilet_sections.@local.toilet_id@local.var_title",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "comp_var_title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "toilet_sections.@local.toilet_id@local.var_title",
+            "matchedExpression": "@local.toilet_id",
+            "type": "local",
+            "fieldName": "toilet_id"
+          },
+          {
+            "fullExpression": "toilet_sections.@local.toilet_id@local.var_title",
+            "matchedExpression": "@local.var_title",
+            "type": "local",
+            "fieldName": "var_title"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.toilet_id": [
+          "value"
+        ],
+        "@local.var_title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@data.@local.comp_var_title",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.comp_var_title",
+            "matchedExpression": "@local.comp_var_title",
+            "type": "local",
+            "fieldName": "comp_var_title"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.comp_var_title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "value": "@data.toilet_sub_sections",
+      "rows": [
+        {
+          "type": "display_group",
+          "name": "dg_@item.id",
+          "condition": "@item.section == @local.toilet_id",
+          "rows": [
+            {
+              "type": "button",
+              "name": "button_@item.id",
+              "value": "@item.title",
+              "_translations": {
+                "value": {}
+              },
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "current_toilet_content",
+                    "@item.id"
+                  ],
+                  "_raw": "click | set_field: current_toilet_content: @item.id",
+                  "_cleaned": "click | set_field: current_toilet_content: @item.id"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "go_to",
+                  "args": [
+                    "toilet_content_templates"
+                  ],
+                  "_raw": "click | go_to: toilet_content_templates",
+                  "_cleaned": "click | go_to: toilet_content_templates"
+                }
+              ],
+              "_nested_name": "items.dg_@item.id.button_@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "button_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@item.title",
+                    "matchedExpression": "@item.title",
+                    "type": "item",
+                    "fieldName": "title"
+                  }
+                ],
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "1": [
+                        {
+                          "fullExpression": "@item.id",
+                          "matchedExpression": "@item.id",
+                          "type": "item",
+                          "fieldName": "id"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | set_field: current_toilet_content: @item.id",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | set_field: current_toilet_content: @item.id",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  }
+                },
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.dg_@item.id.button_@item.id",
+                    "matchedExpression": "@item.id.button_",
+                    "type": "item",
+                    "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "items.dg_@item.id.button_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "action_list.0.args.1",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned",
+                  "_nested_name"
+                ],
+                "@item.title": [
+                  "value"
+                ],
+                "@item.id.button_": [
+                  "_nested_name"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "items.dg_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "dg_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@item.section == @local.toilet_id",
+                "matchedExpression": "@item.section",
+                "type": "item",
+                "fieldName": "section"
+              },
+              {
+                "fullExpression": "@item.section == @local.toilet_id",
+                "matchedExpression": "@local.toilet_id",
+                "type": "local",
+                "fieldName": "toilet_id"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.dg_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "_nested_name"
+            ],
+            "@item.section": [
+              "condition"
+            ],
+            "@local.toilet_id": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.toilet_sub_sections",
+            "matchedExpression": "@data.toilet_sub_sections",
+            "type": "data",
+            "fieldName": "toilet_sub_sections"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.toilet_sub_sections": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "templates/global/toilet_navigation.xlsx"
+}
