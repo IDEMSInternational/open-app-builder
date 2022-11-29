@@ -25,9 +25,14 @@ export class ThemeService extends SyncServiceBase {
   private initialise() {
     this.ensureSyncServicesReady([this.localStorageService, this.appConfigService]);
     this.subscribeToAppConfigChanges();
-    // Retrieve the last active theme with default fallback
-    const currentThemeName = this.getCurrentTheme() ?? this.defaultThemeName;
-    this.setTheme(currentThemeName);
+    // Retrieve the last active theme and apply it. Fallback on default theme
+    // if there is no last active theme, or if it is not "available" in current appConfig
+    const lastActiveTheme = this.getCurrentTheme();
+    const targetTheme =
+      lastActiveTheme && this.availableThemes.includes(lastActiveTheme)
+        ? lastActiveTheme
+        : this.defaultThemeName;
+    this.setTheme(targetTheme);
   }
 
   public setTheme(themeName: string) {
