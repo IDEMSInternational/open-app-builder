@@ -9,14 +9,13 @@ import { TemplateLayoutComponent } from "./layout";
       *ngFor="let childRow of _row.rows; trackBy: trackByRow"
       [row]="childRow"
       [parent]="parent"
-      [@faseSection]="_row?.hidden ? 'out' : 'in'"
-      [attr.data-hidden]="false"
+      [@fadeSection]="_row?.hidden ? 'out' : 'in'"
     ></plh-template-component>
   `,
   animations: [
     // HACK - rough copy of shared fadeInOut method
     // Would work better if all sections grouped to apply transition across sections (support fade out as well as in)
-    trigger("faseSection", [
+    trigger("fadeSection", [
       state("in", style({ opacity: 1 })),
       state("out", style({ opacity: 0 })),
       // when fading in include 1s delay for previous animations to complete
