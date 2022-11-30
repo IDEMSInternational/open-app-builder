@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit } from "@angular/core";
+import { animate, state, style, transition, trigger } from "@angular/animations";
+import { Component, OnInit } from "@angular/core";
 import { TemplateLayoutComponent } from "./layout";
 
 @Component({
@@ -8,18 +9,23 @@ import { TemplateLayoutComponent } from "./layout";
       *ngFor="let childRow of _row.rows; trackBy: trackByRow"
       [row]="childRow"
       [parent]="parent"
+      [@faseSection]="_row?.hidden ? 'out' : 'in'"
+      [attr.data-hidden]="false"
     ></plh-template-component>
   `,
-  styles: [
-    `
-      :host {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-      }
-    `,
+  animations: [
+    // HACK - rough copy of shared fadeInOut method
+    // Would work better if all sections grouped to apply transition across sections (support fade out as well as in)
+    trigger("faseSection", [
+      state("in", style({ opacity: 1 })),
+      state("out", style({ opacity: 0 })),
+      // when fading in include 1s delay for previous animations to complete
+      transition("* => in", [animate("1s ease-in-out")]),
+      // transition("in => out", [animate("0.3s ease-out")]),
+      // TODO - fade out not possible as parent block display set to hidden before time to watch
+    ]),
   ],
+  styleUrls: ["./animated-section.scss"],
 })
 export class AnimatedSectionComponent extends TemplateLayoutComponent implements OnInit {
   ngOnInit() {
