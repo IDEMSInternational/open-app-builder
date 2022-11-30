@@ -8,7 +8,9 @@ import {
 } from "@capacitor/local-notifications";
 import { addSeconds } from "date-fns";
 import { interval } from "rxjs";
+import { Subscription } from "rxjs";
 import { BehaviorSubject } from "rxjs";
+import { debounceTime } from "rxjs/operators";
 import { IAppConfig } from "../../model";
 import { generateTimestamp } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
@@ -60,8 +62,12 @@ export class LocalNotificationService extends AsyncServiceBase {
   /** Track session start time to resolve list of notifications processed during session */
   private sessionStartTime = new Date().getTime();
 
-  /** How frequently to re-evaluate notification schedule for cases such as changing fields */
-  private syncSchedule;
+  /** Resync notifications periodically using timer */
+  private syncTimer$: Subscription;
+
+  /** Use a subject to trigger notification reload to allow debounce */
+  private notificationsLoader$ = new BehaviorSubject(true);
+
   notificationDefaults: IAppConfig["NOTIFICATION_DEFAULTS"];
   /** Default settings used where otherwise not specified */
   localNotificationDefaults: LocalNotificationSchema;
@@ -84,28 +90,12 @@ export class LocalNotificationService extends AsyncServiceBase {
           types: Object.values(NOTIFICATION_ACTIONS),
         });
       }
-      this._addListeners();
-      await this.loadNotifications();
-      this.syncSchedule.subscribe(() => this.loadNotifications());
+      this.addLocalNotificationInteractionListeners();
+      // defer and debounce any calls to load notifications to avoid duplicate processing
+      this.notificationsLoader$.pipe(debounceTime(5000)).subscribe(() => {
+        this.handleNotificationLoad();
+      });
     }
-  }
-
-  subscribeToAppConfigChanges() {
-    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      this.notificationDefaults = appConfig.NOTIFICATION_DEFAULTS;
-      this.syncSchedule = interval(appConfig.NOTIFICATIONS_SYNC_FREQUENCY_MS);
-      this.localNotificationDefaults = {
-        id: new Date().getUTCMilliseconds(),
-        title: this.notificationDefaults.title,
-        body: this.notificationDefaults.text,
-        sound: null,
-        attachments: null,
-        // actionTypeId: "action_1", // Currently no action buttons included
-        extra: null,
-        // Note, we don't want android to remove notification as we will handle in db
-        autoCancel: false,
-      };
-    });
   }
 
   public async requestPermission(): Promise<boolean> {
@@ -128,13 +118,53 @@ export class LocalNotificationService extends AsyncServiceBase {
     // console.log("[Notifications Enabled]", granted);
     return granted;
   }
+  /** Trigger notification loader to reprocess on next defer cycle */
+  private loadNotifications() {
+    this.notificationsLoader$.next(true);
+  }
+
+  /**
+   * Handle notification default and resync initialisation depending on app config changes
+   * Includes initial value subscription to set initial values as first update
+   */
+  private subscribeToAppConfigChanges() {
+    this.appConfigService.changesWithInitialValue$.subscribe((appConfig) => {
+      if (appConfig.NOTIFICATION_DEFAULTS) {
+        this.setNotificationDefaults(appConfig.NOTIFICATION_DEFAULTS as any);
+      }
+      if (appConfig.NOTIFICATIONS_SYNC_FREQUENCY_MS) {
+        this.setNotificationSyncFrequency(appConfig.NOTIFICATIONS_SYNC_FREQUENCY_MS);
+      }
+    });
+  }
+
+  private setNotificationDefaults(defaults: IAppConfig["NOTIFICATION_DEFAULTS"]) {
+    this.notificationDefaults = defaults;
+    this.localNotificationDefaults = {
+      id: new Date().getUTCMilliseconds(),
+      title: defaults.title,
+      body: defaults.text,
+      sound: null,
+      attachments: null,
+      // actionTypeId: "action_1", // Currently no action buttons included
+      extra: null,
+      // Note, we don't want android to remove notification as we will handle in db
+      autoCancel: false,
+    };
+  }
+  private setNotificationSyncFrequency(frequency: number) {
+    if (this.syncTimer$ && !this.syncTimer$.closed) {
+      this.syncTimer$.unsubscribe();
+    }
+    this.syncTimer$ = interval(frequency).subscribe(() => this.loadNotifications());
+  }
 
   /**
    * Retrieve a list of pending notification IDs read from the notifications API plugin
    * and compare against list saved in database.
    * Use to resolve list of upcoming notifications and any been sent but not triggered in the app.
    */
-  private async loadNotifications() {
+  private async handleNotificationLoad() {
     await this.rescheduleMissingNotifications();
 
     await this.handleUnprocessedNotifications();
@@ -296,7 +326,7 @@ export class LocalNotificationService extends AsyncServiceBase {
    *
    * TODO - handle removal/re-init methods to avoid memory leaks
    */
-  private async _addListeners() {
+  private async addLocalNotificationInteractionListeners() {
     LocalNotifications.addListener(
       "localNotificationActionPerformed",
       async (action) => {
