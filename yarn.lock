@@ -12175,6 +12175,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"deep-object-diff@npm:^1.1.9":
+  version: 1.1.9
+  resolution: "deep-object-diff@npm:1.1.9"
+  checksum: ecd42455e4773f653595d28070295e7aaa8402db5f8ab21d0bec115a7cb4de5e207a5665514767da5f025c96597f1d3a0a4888aeb4dd49e03c996871a3aa05ef
+  languageName: node
+  linkType: hard
+
 "deepmerge@npm:^4.2.2":
   version: 4.2.2
   resolution: "deepmerge@npm:4.2.2"
@@ -15493,6 +15500,7 @@ __metadata:
     cordova-res: ^0.15.4
     data-models: "workspace:*"
     date-fns: ^2.22.1
+    deep-object-diff: ^1.1.9
     dexie: ^3.0.3
     dexie-observable: 3.0.0-beta.11
     dexie-syncable: ^3.0.0-beta.10
