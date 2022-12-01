@@ -19,7 +19,7 @@ jobs:
           lfs: true
       - name: Set Environment Deployment
         # HACK - pr preview brnach only, should replace before merge
-        run: echo "DEPLOYMENT_NAME=plh_global"
+        run: echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV
         # run: |
         #   if [ "$GITHUB_REF" = "refs/heads/master" ];                \
         #   then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;          \
