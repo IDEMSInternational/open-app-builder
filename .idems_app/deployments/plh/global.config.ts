@@ -26,9 +26,11 @@ const config: IDeploymentConfig = {
     translated_strings_path: "packages/app-data/translations_source/from_translators",
     source_strings_path: "packages/app-data/translations_source/to_translate",
   },
+  error_logging:{
+    dsn:'https://a8b2897d48e84c5fa4398b4eb6158480@app.glitchtip.com/2230'
+  },
   _version: 1.0,
 };
-
 config.app_config.APP_LANGUAGES.default = "gb_en";
 config.app_config.APP_SIDEMENU_DEFAULTS.title = "ParentApp";
 config.app_config.APP_HEADER_DEFAULTS.title = "ParentApp";

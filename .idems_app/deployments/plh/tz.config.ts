@@ -15,5 +15,6 @@ config.translations.filter_language_codes = ["tz_en", "tz_sw"];
 config.app_config.APP_LANGUAGES.default = "tz_sw";
 config.app_config.APP_SIDEMENU_DEFAULTS.title = "ParentApp (TZ)";
 config.app_config.APP_AUTHENTICATION_DEFAULTS.enforceLogin = true;
+config.error_logging!.dsn=''
 
 export default config;
