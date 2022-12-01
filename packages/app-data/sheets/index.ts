@@ -1319,9 +1319,9 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "data_warnings",
       _xlsxPath: "global/data/app_menu_globals.xlsx",
     },
-    debug_full_stop_golbals: {
+    debug_full_stop_globals: {
       flow_type: "global",
-      flow_name: "debug_full_stop_golbals",
+      flow_name: "debug_full_stop_globals",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_full_stop_after_var.xlsx",
     },
@@ -1336,6 +1336,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "debug_some_globals",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_global.xlsx",
+    },
+    example_field_array_global: {
+      flow_type: "global",
+      flow_subtype: "debug",
+      flow_name: "example_field_array_global",
+      _xlsxPath: "quality_assurance/example_sheets/example_field_array.xlsx",
     },
     example_glob_override_default: {
       flow_type: "global",
@@ -3222,6 +3228,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_actions.xlsx",
     },
+    example_field_array: {
+      flow_type: "template",
+      flow_subtype: "debug",
+      flow_name: "example_field_array",
+      _xlsxPath: "quality_assurance/example_sheets/example_field_array.xlsx",
+    },
     example_footer: {
       flow_type: "template",
       flow_name: "example_footer",
@@ -3595,27 +3607,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx",
     },
-    feature_feedback_debug: {
-      flow_type: "template",
-      flow_name: "feature_feedback_debug",
-      flow_subtype: "debug",
-      comments: "Used in /feedback debug page",
-      _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_feedback.xlsx",
-    },
-    feature_feedback_default: {
-      flow_type: "template",
-      flow_name: "feature_feedback_default",
-      flow_subtype: "debug",
-      comments: "Default general feedback form",
-      _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_feedback.xlsx",
-    },
-    feature_feedback_text_select: {
-      flow_type: "template",
-      flow_name: "feature_feedback_text_select",
-      flow_subtype: "debug",
-      comments: "Default text-select feedback form",
-      _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_feedback.xlsx",
-    },
     feature_formatting: {
       flow_type: "template",
       flow_name: "feature_formatting",
@@ -3861,6 +3852,24 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "example_sheet_defaults",
       flow_subtype: "example_sheet_defaults",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_sheet_defaults.xlsx",
+    },
+    feature_feedback_debug: {
+      flow_type: "template",
+      flow_name: "feature_feedback_debug",
+      comments: "Used in /feedback debug page",
+      _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_feedback.xlsx",
+    },
+    feature_feedback_default: {
+      flow_type: "template",
+      flow_name: "feature_feedback_default",
+      comments: "Default general feedback form",
+      _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_feedback.xlsx",
+    },
+    feature_feedback_text_select: {
+      flow_type: "template",
+      flow_name: "feature_feedback_text_select",
+      comments: "Default text-select feedback form",
+      _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_feedback.xlsx",
     },
     footer: {
       flow_type: "template",

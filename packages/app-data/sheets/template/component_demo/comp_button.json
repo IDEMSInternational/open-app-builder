@@ -276,30 +276,6 @@
       "_nested_name": "title_6"
     },
     {
-      "type": "button",
-      "name": "button_par_2_10",
-      "value": "Style parameter Medium Round",
-      "_translations": {
-        "value": {}
-      },
-      "parameter_list": {
-        "style": "medium round"
-      },
-      "_nested_name": "button_par_2_10"
-    },
-    {
-      "type": "button",
-      "name": "button_par_2_11",
-      "value": "Style parameter No shadow",
-      "_translations": {
-        "value": {}
-      },
-      "parameter_list": {
-        "style": "no shadow"
-      },
-      "_nested_name": "button_par_2_11"
-    },
-    {
       "type": "title",
       "name": "title_7",
       "value": "Text alignment",
