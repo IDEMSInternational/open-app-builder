@@ -2417,6 +2417,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_emit.xlsx",
     },
+    debug_error_logging: {
+      flow_type: "template",
+      flow_name: "debug_error_logging",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/debug_sheets/debug_errors.xlsx",
+    },
     debug_evaluate_hidden: {
       flow_type: "template",
       flow_name: "debug_evaluate_hidden",
