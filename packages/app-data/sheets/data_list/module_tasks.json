@@ -7,7 +7,23 @@
     {
       "id": "clean_water",
       "title": "Clean water",
-      "text": "Clean water saves money and improves health. Clean water comes from a safe source or from boiling."
+      "text_introduction": "Clean water saves money and improves health. Clean water comes from a safe source or from boiling.",
+      "illustration": "modules/clean_water_1.png"
+    },
+    {
+      "id": "drying_racks",
+      "title": "Drying Racks",
+      "text_introduction": "Healthy homes have good water containers that are easy to use"
+    },
+    {
+      "id": "handwashing",
+      "title": "Handwashing",
+      "text_introduction": "Healthy families wash their hands to be clean and strong"
+    },
+    {
+      "id": "Menstrual_hygiene",
+      "title": "Menstrual Hygiene",
+      "text_introduction": "Healthy women keep themselves clean and smart"
     }
   ],
   "_xlsxPath": "data_lists/homepage/module_tasks.xlsx"

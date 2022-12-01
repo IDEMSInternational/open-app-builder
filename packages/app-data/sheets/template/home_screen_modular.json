@@ -2,8 +2,6 @@
   "flow_type": "template",
   "flow_name": "home_screen_modular",
   "status": "released",
-  "override_target": "home_screen",
-  "override_condition": "@fields._app_skin == \"modular\"",
   "rows": [
     {
       "type": "update_action_list",
@@ -23,28 +21,13 @@
     },
     {
       "name": "highlighted_module",
-      "value": "@fields._task_highlighted_group_id",
+      "value": "clean_water",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "highlighted_module",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@fields._task_highlighted_group_id",
-            "matchedExpression": "@fields._task_highlighted_group_id",
-            "type": "fields",
-            "fieldName": "_task_highlighted_group_id"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields._task_highlighted_group_id": [
-          "value"
-        ]
-      }
+      "_nested_name": "highlighted_module"
     },
     {
       "type": "template",
@@ -53,14 +36,14 @@
       "exclude_from_translation": true,
       "rows": [
         {
-          "name": "workshop_id",
+          "name": "module_id",
           "value": "@local.highlighted_module",
           "_translations": {
             "value": {}
           },
           "exclude_from_translation": true,
           "type": "set_variable",
-          "_nested_name": "highlighted_module_card.workshop_id",
+          "_nested_name": "highlighted_module_card.module_id",
           "_dynamicFields": {
             "value": [
               {
@@ -93,41 +76,24 @@
     {
       "type": "title",
       "name": "title",
-      "value": "All @global.workshops_capital",
+      "value": "All Modules",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
-      "_nested_name": "title",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "All @global.workshops_capital",
-            "matchedExpression": "@global.workshops_capital",
-            "type": "global",
-            "fieldName": "workshops_capital"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.workshops_capital": [
-          "value"
-        ]
-      }
+      "_nested_name": "title"
     },
     {
       "type": "carousel",
       "name": "carousel",
       "parameter_list": {
         "space_between": "8",
-        "task_group_data": "workshop_tasks"
+        "task_group_data": "module_tasks"
       },
       "exclude_from_translation": true,
       "rows": [
         {
           "type": "items",
-          "value": "@data.workshop_tasks",
+          "value": "@data.module_tasks",
           "exclude_from_translation": true,
           "rows": [
             {
@@ -137,14 +103,14 @@
               "exclude_from_translation": true,
               "rows": [
                 {
-                  "name": "workshop_id",
+                  "name": "module_id",
                   "value": "@item.id",
                   "_translations": {
                     "value": {}
                   },
                   "exclude_from_translation": true,
                   "type": "set_variable",
-                  "_nested_name": "carousel.items.module_card_@item.id.workshop_id",
+                  "_nested_name": "carousel.items.module_card_@item.id.module_id",
                   "_dynamicFields": {
                     "value": [
                       {
@@ -156,8 +122,8 @@
                     ],
                     "_nested_name": [
                       {
-                        "fullExpression": "carousel.items.module_card_@item.id.workshop_id",
-                        "matchedExpression": "@item.id.workshop_id",
+                        "fullExpression": "carousel.items.module_card_@item.id.module_id",
+                        "matchedExpression": "@item.id.module_id",
                         "type": "item",
                         "fieldName": "id"
                       }
@@ -167,7 +133,7 @@
                     "@item.id": [
                       "value"
                     ],
-                    "@item.id.workshop_id": [
+                    "@item.id.module_id": [
                       "_nested_name"
                     ]
                   }
@@ -205,68 +171,22 @@
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@data.workshop_tasks",
-                "matchedExpression": "@data.workshop_tasks",
+                "fullExpression": "@data.module_tasks",
+                "matchedExpression": "@data.module_tasks",
                 "type": "data",
-                "fieldName": "workshop_tasks"
+                "fieldName": "module_tasks"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@data.workshop_tasks": [
+            "@data.module_tasks": [
               "value"
             ]
           }
         }
       ],
       "_nested_name": "carousel"
-    },
-    {
-      "name": "text_things_to_do",
-      "value": "Things to do",
-      "_translations": {
-        "value": {
-          "tz_sw": true
-        }
-      },
-      "type": "set_variable",
-      "_nested_name": "text_things_to_do"
-    },
-    {
-      "type": "drawer",
-      "name": "drawer",
-      "value": "@local.text_things_to_do",
-      "parameter_list": {
-        "style": "secondary"
-      },
-      "exclude_from_translation": true,
-      "rows": [
-        {
-          "type": "template",
-          "name": "things_to_do_temp",
-          "value": "things_to_do",
-          "exclude_from_translation": true,
-          "rows": [],
-          "_nested_name": "drawer.things_to_do_temp"
-        }
-      ],
-      "_nested_name": "drawer",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.text_things_to_do",
-            "matchedExpression": "@local.text_things_to_do",
-            "type": "local",
-            "fieldName": "text_things_to_do"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.text_things_to_do": [
-          "value"
-        ]
-      }
     }
   ],
-  "_xlsxPath": "global_modular/core_templates/home_screen_modular.xlsx"
+  "_xlsxPath": "templates/global/navigation_modular.xlsx"
 }
