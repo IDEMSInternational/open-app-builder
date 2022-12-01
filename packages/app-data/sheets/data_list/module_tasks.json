@@ -1,0 +1,14 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "module_tasks",
+  "status": "released",
+  "data_list_name": "module_tasks",
+  "rows": [
+    {
+      "id": "clean_water",
+      "title": "Clean water",
+      "text": "Clean water saves money and improves health. Clean water comes from a safe source or from boiling."
+    }
+  ],
+  "_xlsxPath": "data_lists/homepage/module_tasks.xlsx"
+}

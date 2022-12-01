@@ -3,12 +3,6 @@
   "flow_name": "water_treatment",
   "status": "released",
   "data_list_name": "water_treatment",
-  "rows": [
-    {
-      "id": "treatment_methods",
-      "heading": "Water treatment methods.",
-      "description": "* Filtering\n\nThis is the process of passing water through a filter designed to remove impurities from the water. These filters are made of gravel, sand, or occasionally crushed anthracite. Filtering collects contaminants that float on water and increases the power of disinfection.\n\n* Boiling\n\nThe most common and effective method for killing disease-causing germs, such as viruses, bacteria, and parasites, is to boil or heat water.\n\nProcedure for boiling water:\n1. For 1 minute, bring clear water to a boil (at elevations above 6,500 feet, boil for 3 minutes).\n2. Allow the water to cool after it has boiled before using it.\n3. Boiling water should be stored in clean, sanitized containers with tight-fitting lids.\n\n* Coagulation/Flocculation\n\nCoagulation-flocculation is a chemical water treatment technique that is typically used prior to sedimentation and filtration (e.g., rapid sand filtration) to improve the ability of a treatment process to remove particles. Coagulation is a process that uses gelatinous mass to trap (or bridge) particles, forming a mass large enough to settle or be trapped in the filter. Flocculation is the gentle stirring or agitation that encourages the particles formed to agglomerate into masses large enough to settle or be filtered from the solution.\n\n* Solar\n\nSolar disinfection is a method of killing bacteria and parasites in water by using heat and UV radiation. Solar disinfection works by placing contaminated water in a clear container and exposing it to direct sunlight for 6 to 8 hours if it is sunny, or 2 days if it is cloudy (if cloudy). When the water is clear and clean, and transparent containers for treatment are available, this method is ideal.\n \n* Chlorine (for non-turbid water)\n\nThe process of adding chlorine to drinking water to kill parasites, bacteria, and viruses is known as chlorination. To achieve safe levels of chlorine in drinking water, various processes can be used. Using or drinking water containing trace amounts of chlorine has no negative health consequences and protects against waterborne disease outbreaks."
-    }
-  ],
+  "rows": [],
   "_xlsxPath": "data_lists/water/water_data_list.xlsx"
 }

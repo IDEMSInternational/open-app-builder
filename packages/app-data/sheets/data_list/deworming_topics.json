@@ -34,5 +34,5 @@
       "template": "deworming_treatment_screen"
     }
   ],
-  "_xlsxPath": "data_lists/deworming/deworming_data_list.xlsx"
+  "_xlsxPath": "data_lists/hygiene/deworming/deworming_data_list.xlsx"
 }
