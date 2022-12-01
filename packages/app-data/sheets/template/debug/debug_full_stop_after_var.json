@@ -165,6 +165,31 @@
       }
     },
     {
+      "type": "text",
+      "name": "text_7",
+      "value": "This string ends with a global constant followed by three dots: @global.global_full_stop...",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_7",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "This string ends with a global constant followed by three dots: @global.global_full_stop...",
+            "matchedExpression": "@global.global_full_stop..",
+            "type": "global",
+            "fieldName": "global_full_stop"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.global_full_stop..": [
+          "value"
+        ]
+      }
+    },
+    {
       "type": "title",
       "value": "Dynamic Texts",
       "_translations": {
@@ -209,7 +234,7 @@
     {
       "type": "text",
       "name": "text_7",
-      "value": "Dyanmic with full stop: @local.dynamic_text_1.",
+      "value": "Dynamic with full stop: @local.dynamic_text_1.",
       "_translations": {
         "value": {}
       },
@@ -218,7 +243,7 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "Dyanmic with full stop: @local.dynamic_text_1.",
+            "fullExpression": "Dynamic with full stop: @local.dynamic_text_1.",
             "matchedExpression": "@local.dynamic_text_1",
             "type": "local",
             "fieldName": "dynamic_text_1"
