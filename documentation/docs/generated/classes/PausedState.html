@@ -1,0 +1,862 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li >PausedState</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/shared/components/template/components/timer/timer.component.ts</code>
+        </p>
+
+
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                        <code><a href="../classes/State.html" target="_self" >State</a></code>
+            </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#timer" >timer</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#clickLeftButton" >clickLeftButton</a>
+                            </li>
+                            <li>
+                                <a href="#clickRightButton" >clickRightButton</a>
+                            </li>
+                            <li>
+                                <a href="#callOnInit" >callOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#clickTimer" >clickTimer</a>
+                            </li>
+                            <li>
+                                <a href="#editTimer" >editTimer</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(timer: <a href="../components/TmplTimerComponent.html" target="_self">TmplTimerComponent</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="273" class="link-to-prism">src/app/shared/components/template/components/timer/timer.component.ts:273</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>timer</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../components/TmplTimerComponent.html" target="_self" >TmplTimerComponent</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="timer"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>timer</b></span>
+                        <a href="#timer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/TmplTimerComponent.html" target="_self" >TmplTimerComponent</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Inherited from         <code><a href="../classes/State.html" target="_self" >State</a></code>
+</div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in         <code><a href="../classes/State.html#source" target="_self" >State:209</a></code>
+</div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clickLeftButton"></a>
+                    <span class="name">
+                        <span ><b>clickLeftButton</b></span>
+                        <a href="#clickLeftButton"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clickLeftButton()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/State.html" target="_self" >State</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/State.html#source" target="_self" >State:286</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clickRightButton"></a>
+                    <span class="name">
+                        <span ><b>clickRightButton</b></span>
+                        <a href="#clickRightButton"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clickRightButton()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/State.html" target="_self" >State</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/State.html#source" target="_self" >State:290</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="callOnInit"></a>
+                    <span class="name">
+                        <span ><b>callOnInit</b></span>
+                        <a href="#callOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>callOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/State.html" target="_self" >State</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/State.html#source" target="_self" >State:232</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clickTimer"></a>
+                    <span class="name">
+                        <span ><b>clickTimer</b></span>
+                        <a href="#clickTimer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clickTimer()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/State.html" target="_self" >State</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/State.html#source" target="_self" >State:215</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editTimer"></a>
+                    <span class="name">
+                        <span ><b>editTimer</b></span>
+                        <a href="#editTimer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editTimer(val: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, type: "mm" | "ss")</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/State.html" target="_self" >State</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/State.html#source" target="_self" >State:217</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>val</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>type</td>
+                                    <td>
+                                            <code>&quot;mm&quot; | &quot;ss&quot;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, Input, OnInit, ViewChild } from &quot;@angular/core&quot;;
+import { FlowTypes } from &quot;data-models&quot;;
+import {
+  getBooleanParamFromTemplateRow,
+  getNumberParamFromTemplateRow,
+  getStringParamFromTemplateRow,
+} from &quot;../../../../utils&quot;;
+import { PickerController, Platform } from &quot;@ionic/angular&quot;;
+import { TemplateBaseComponent } from &quot;../base&quot;;
+import { ITemplateRowProps } from &quot;../../models&quot;;
+import { AudioService } from &quot;src/app/shared/services/audio/audio.service&quot;;
+import { AudioPlayer } from &quot;src/app/shared/services/audio/audio.player&quot;;
+import { TemplateAssetService } from &quot;../../services/template-asset.service&quot;;
+
+@Component({
+  selector: &quot;plh-timer&quot;,
+  templateUrl: &quot;./timer.component.html&quot;,
+  styleUrls: [&quot;./timer.component.scss&quot;],
+})
+export class TmplTimerComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
+  _row: FlowTypes.TemplateRow;
+  @Input() set row(value: FlowTypes.TemplateRow) {
+    this._row &#x3D; value;
+  }
+  @Input() template: FlowTypes.Template;
+  @ViewChild(&quot;min&quot;, { static: false }) minInput: ElementRef;
+  @ViewChild(&quot;sec&quot;, { static: false }) secInput: ElementRef;
+  state: TimerState;
+  leftButtonAction: string;
+  leftButtonIcon: string;
+  leftButtonName: string;
+  rightButtonAction: string;
+  rightButtonIcon: string;
+  rightButtonName: string;
+  isTimerEditable: boolean;
+  is_editable_on_playing: boolean;
+  timerStarted &#x3D; false;
+  timerDurationExtension: number &#x3D; 1 * 60;
+  help: string | null &#x3D; null;
+  title: string;
+  _value: number;
+  starting_minutes: number;
+  starting_seconds: number;
+  minutes: string;
+  seconds: string;
+  ping: string | null;
+  player: AudioPlayer | null;
+  timeValues &#x3D; () &#x3D;&gt; {
+    const data &#x3D; [];
+    for (let i &#x3D; 0; i &lt;&#x3D; 9; i++) {
+      data.push(i);
+    }
+    return [data.slice(0, 6), data, data.slice(0, 6), data];
+  };
+
+  get value() {
+    return this._value;
+  }
+
+  set value(val: number) {
+    if (!val) val &#x3D; 0;
+
+    this._value &#x3D; val;
+
+    const _seconds &#x3D; val % 60;
+    const _minutes &#x3D; Math.floor(val / 60);
+    this.seconds &#x3D; _seconds &lt; 10 ? &#x60;0${_seconds}&#x60; : String(_seconds);
+    this.minutes &#x3D; _minutes &lt; 10 ? &#x60;0${_minutes}&#x60; : String(_minutes);
+  }
+
+  constructor(
+    private pickerController: PickerController,
+    private platform: Platform,
+    private audioService: AudioService,
+    private templateAssetService: TemplateAssetService
+  ) {
+    super();
+    this.changeState(new PausedState(this));
+  }
+
+  ngOnInit() {
+    this.getParams();
+    this.state.callOnInit();
+    if (this.ping) {
+      const pingSrc &#x3D; this.templateAssetService.getTranslatedAssetPath(this.ping);
+      this.player &#x3D; this.audioService.createPlayer(pingSrc);
+    }
+  }
+
+  changeState(state: TimerState) {
+    this.state &#x3D; state;
+  }
+
+  getParams() {
+    this.title &#x3D; getStringParamFromTemplateRow(this._row, &quot;title&quot;, &quot;Timer&quot;);
+    this.help &#x3D; getStringParamFromTemplateRow(this._row, &quot;help&quot;, null);
+    this.ping &#x3D; getStringParamFromTemplateRow(this._row, &quot;ping&quot;, null);
+    this.timerDurationExtension &#x3D;
+      getNumberParamFromTemplateRow(this._row, &quot;duration_extension&quot;, 1) * 60;
+    this.is_editable_on_playing &#x3D; getBooleanParamFromTemplateRow(
+      this._row,
+      &quot;is_editable_on_playing&quot;,
+      false
+    );
+    this.starting_minutes &#x3D; getNumberParamFromTemplateRow(this._row, &quot;starting_minutes&quot;, 10);
+    this.starting_seconds &#x3D; getNumberParamFromTemplateRow(this._row, &quot;starting_seconds&quot;, 0);
+    this.value &#x3D; this.getDurationFromParams();
+  }
+
+  getDurationFromParams() {
+    return this._row.value ? this._row.value : this.starting_minutes * 60 + this.starting_seconds;
+  }
+
+  clickLeftButton() {
+    this.state.clickLeftButton();
+  }
+
+  clickRightButton() {
+    this.state.clickRightButton();
+  }
+
+  openPicker() {
+    if (this.isTimerEditable) {
+      const numColumns &#x3D; 4;
+      const columnOptions &#x3D; this.timeValues();
+      this.pickerController
+        .create({
+          mode: this.platform.is(&quot;android&quot;) ? &quot;md&quot; : &quot;ios&quot; || &quot;ios&quot;,
+          columns: this.getColumns(numColumns, columnOptions),
+          buttons: [
+            {
+              text: &quot;Cancel&quot;,
+              role: &quot;cancel&quot;,
+              handler: (_) &#x3D;&gt; (this.timerStarted ? this.state.clickLeftButton() : null),
+            },
+            {
+              text: &quot;Confirm&quot;,
+              handler: (value) &#x3D;&gt; {
+                const min &#x3D;
+                  Object.values(value[&quot;col-0&quot;]).toString().split(&quot;,&quot;)[0].trim() +
+                  Object.values(value[&quot;col-1&quot;]).toString().split(&quot;,&quot;)[0].trim();
+                const sec &#x3D;
+                  Object.values(value[&quot;col-2&quot;]).toString().split(&quot;,&quot;)[0].trim() +
+                  Object.values(value[&quot;col-3&quot;]).toString().split(&quot;,&quot;)[0].trim();
+                this.state.editTimer(min, &quot;mm&quot;);
+                this.state.editTimer(sec, &quot;ss&quot;);
+              },
+            },
+          ],
+          cssClass: &quot;picker&quot;,
+        })
+        .then((e) &#x3D;&gt; e.present());
+    }
+  }
+
+  getColumns(numColumns, columnOptions) {
+    let columns &#x3D; [];
+    for (let i &#x3D; 0; i &lt; numColumns; i++) {
+      columns.push({
+        name: &#x60;col-${i}&#x60;,
+        options: this.getColumnOptions(i, i % 2 &#x3D;&#x3D;&#x3D; 0 ? 6 : 10, columnOptions),
+        selectedIndex: getIndex(i, this.minutes, this.seconds),
+      });
+    }
+
+    function getIndex(index: number, minutes: string, seconds: string): number {
+      switch (index) {
+        case 0:
+          return Number(minutes.charAt(0));
+        case 1:
+          return Number(minutes.charAt(1));
+        case 2:
+          return Number(seconds.charAt(0));
+        case 3:
+          return Number(seconds.charAt(1));
+        default:
+          return 0;
+      }
+    }
+
+    return columns;
+  }
+
+  getColumnOptions(columnIndex, numOptions, columnOptions) {
+    let options &#x3D; [];
+    for (let i &#x3D; 0; i &lt; numOptions; i++) {
+      options.push({
+        text: columnOptions[columnIndex][i % numOptions],
+        value: i,
+      });
+    }
+    return options;
+  }
+}
+
+interface TimerState {
+  timer: TmplTimerComponent;
+
+  clickLeftButton(): void;
+
+  clickRightButton(): void;
+
+  editTimer(val: string, type: &quot;mm&quot; | &quot;ss&quot;): void;
+
+  callOnInit(): void;
+}
+
+abstract class State {
+  constructor(public timer: TmplTimerComponent) {}
+
+  clickLeftButton() {}
+
+  clickRightButton() {}
+
+  clickTimer() {}
+
+  editTimer(val: string, type: &quot;mm&quot; | &quot;ss&quot;) {
+    val &#x3D; val.replace(/^0/, &quot;&quot;);
+    let valNumber &#x3D; Number.parseInt(val);
+
+    if (Number.isNaN(valNumber)) return;
+
+    if (type &#x3D;&#x3D;&#x3D; &quot;mm&quot;) {
+      this.timer.minInput.nativeElement.value &#x3D; val;
+      this.timer.value &#x3D; valNumber * 60 + Number(this.timer.seconds.replace(/^0/, &quot;&quot;));
+    } else if (type &#x3D;&#x3D;&#x3D; &quot;ss&quot;) {
+      this.timer.secInput.nativeElement.value &#x3D; val;
+      this.timer.value &#x3D; valNumber + Number(this.timer.minutes.replace(/^0/, &quot;&quot;)) * 60;
+    }
+  }
+
+  callOnInit() {}
+}
+
+class PlayingState extends State {
+  private intervalRef;
+
+  constructor(timer: TmplTimerComponent) {
+    super(timer);
+    this.timer.leftButtonAction &#x3D; &quot;pause&quot;;
+    this.timer.leftButtonIcon &#x3D; &quot;pause-outline&quot;;
+    this.timer.leftButtonName &#x3D; &quot;pause_timer&quot;;
+    this.timer.rightButtonAction &#x3D; &quot;increase&quot;;
+    this.timer.rightButtonIcon &#x3D; &quot;reload-outline&quot;;
+    this.timer.rightButtonName &#x3D; &quot;increase_timer&quot;;
+    this.timer.timerStarted &#x3D; true;
+    this.timer.isTimerEditable &#x3D; this.timer.is_editable_on_playing;
+    this.countDown();
+  }
+
+  clickLeftButton() {
+    clearInterval(this.intervalRef);
+    this.timer.changeState(new PausedState(this.timer));
+  }
+
+  clickRightButton() {
+    this.timer.value +&#x3D; this.timer.timerDurationExtension;
+  }
+
+  countDown() {
+    this.intervalRef &#x3D; setInterval(() &#x3D;&gt; {
+      if (this.timer.value &#x3D;&#x3D;&#x3D; 0) {
+        clearInterval(this.intervalRef);
+        this.timer.changeState(new PausedState(this.timer));
+        if (this.timer.player) this.timer.player.play();
+        return;
+      }
+      this.timer.value -&#x3D; 1;
+    }, 1000);
+  }
+}
+
+class PausedState extends State {
+  constructor(timer: TmplTimerComponent) {
+    super(timer);
+    this.timer.leftButtonAction &#x3D; &quot;play&quot;;
+    this.timer.leftButtonIcon &#x3D; &quot;play-outline&quot;;
+    this.timer.leftButtonName &#x3D; &quot;play_timer&quot;;
+    this.timer.rightButtonAction &#x3D; &quot;refresh&quot;;
+    this.timer.rightButtonIcon &#x3D; &quot;sync-outline&quot;;
+    this.timer.rightButtonName &#x3D; &quot;refresh_timer&quot;;
+    this.timer.timerStarted &#x3D; false;
+    this.timer.isTimerEditable &#x3D; true;
+  }
+
+  clickLeftButton() {
+    this.timer.changeState(new PlayingState(this.timer));
+  }
+
+  clickRightButton() {
+    this.timer.value &#x3D; this.timer.getDurationFromParams();
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'PausedState.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -46,12 +46,13 @@ export class SkinService {
       this.activeSkin$.next(targetSkin);
       // Update appConfig to reflect any overrides defined by the skin
       this.appConfigService.updateAppConfig(targetSkin.appConfig);
-      // Update default values when skin changed to allow for skin-specific global overrides
-      // Don't run on initialisation, since the skin and appConfig services must init before the template service and its dependencies
       if (!isInit) {
+        // Update default values when skin changed to allow for skin-specific global overrides
+        // Don't run on initialisation, since the skin and appConfig services must init before the template service and its dependencies
         this.templateService.initialiseDefaultFieldAndGlobals();
+        // Do not apply skin theme changes on init, to avoid resetting the theme to the active skin's default on app reload
+        this.applySkinThemeChanges();
       }
-      this.applySkinThemeChanges();
       // Use local storage so that the active skin persists across app launches
       this.localStorageService.setString(
         this.appConfigService.APP_CONFIG.APP_FIELDS.APP_SKIN,
