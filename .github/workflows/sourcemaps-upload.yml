@@ -18,11 +18,13 @@ jobs:
         with:
           lfs: true
       - name: Set Environment Deployment
-        run: |
-          if [ "$GITHUB_REF" = "refs/heads/master" ];                \
-          then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;          \
-          else echo "DEPLOYMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV;   \
-          fi;
+        # HACK - pr preview brnach only, should replace before merge
+        run: echo "DEPLOYMENT_NAME=plh_global"
+        # run: |
+        #   if [ "$GITHUB_REF" = "refs/heads/master" ];                \
+        #   then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;          \
+        #   else echo "DEPLOYMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV;   \
+        #   fi;
         shell: bash
       - name: set_version
         run: echo "APP_VERSION=$(echo "$(cat package.json | jq -r '.version')")" >> $GITHUB_ENV
