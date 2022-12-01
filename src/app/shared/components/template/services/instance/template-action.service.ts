@@ -256,8 +256,7 @@ export class TemplateActionService extends TemplateInstanceService {
         this.container?.emittedValue.next({ emit_value, emit_data });
         break;
       default:
-        console.warn("[W] No handler for action", { action_id, args });
-        return;
+        throw new Error(`No handler for action [${action_id}][${args.join(", ")}]`);
     }
   }
 

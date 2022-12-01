@@ -11,6 +11,7 @@ import { CrashlyticsService } from "../crashlytics/crashlytics.service";
 export class ErrorHandlerService extends ErrorHandler {
   private initialised = false;
   private sentryEnabled = false;
+  private crashlyticsEnabled = false;
 
   // Error handling is important and needs to be loaded first.
   // Because of this we should manually inject the services with Injector.
@@ -19,13 +20,21 @@ export class ErrorHandlerService extends ErrorHandler {
   }
 
   /**
-   * TODO - can likely refactor method after #1664 merge
-   * (TBC - as cannot extend multiple services at same time)
+   * Initialise error logging services crashlytics and sentry/glitchtip
+   * if keys provided
+   *
+   * TODO - can possibly refactor init methods to extend syncBase after #1664 merge
+   * (although workaround required as cannot extend multiple services)
    */
   private async initialise() {
-    const { production, deploymentConfig } = environment;
+    const { production, deploymentConfig, firebaseConfig } = environment;
     if (production && deploymentConfig?.error_logging?.dsn) {
       await this.initialiseSentry();
+      this.sentryEnabled = true;
+    }
+    if (production && firebaseConfig?.apiKey) {
+      // crashlytics initialised in app component so omitted here
+      this.crashlyticsEnabled = true;
     }
     this.initialised = true;
   }
@@ -40,6 +49,9 @@ export class ErrorHandlerService extends ErrorHandler {
     }
     if (this.sentryEnabled) {
       Sentry.captureException(error);
+    }
+    if (this.crashlyticsEnabled) {
+      this.logToCrashlytics(error);
     }
     super.handleError(error);
   }
@@ -66,7 +78,6 @@ export class ErrorHandlerService extends ErrorHandler {
     });
     const { uuid } = await Device.getId();
     Sentry.setUser({ id: uuid });
-    this.sentryEnabled = true;
   }
 
   private async logToCrashlytics(error: Error) {
