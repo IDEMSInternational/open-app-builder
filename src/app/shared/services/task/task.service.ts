@@ -54,8 +54,8 @@ export class TaskService {
       this.templateFieldService.setField(this.highlightedTaskFieldName, "");
       console.log("[HIGHLIGHTED TASK GROUP] - No highlighted task group is set");
     }
-    // Else find set the highlighted task group to the task group with the highest priority
-    // that is not completed or skipped
+    // Else set the highlighted task group to the task group with the highest priority of those
+    // not completed or skipped
     else {
       const highestPriorityTaskGroup = taskGroupsNotCompletedAndNotSkipped.reduce(
         (highestPriority, taskGroup) => {
