@@ -7,9 +7,9 @@
 # NOTE - currently only used for debugging as methods are integrated into build scripts
 name: Sourcemaps Upload
 on:
-  push:
-    branches:
-      - feat/glitchtip-error-logs
+  # push:
+  #   branches:
+  #     - feat/glitchtip-error-logs
 jobs:
   sourcemaps_upload:
     runs-on: ubuntu-latest
@@ -65,11 +65,6 @@ jobs:
           find . -name "*.map" -type f -delete
           echo $(ls www)
         
-# HACK - sourcemap upload will fail if a release already exists
-# E.g. manually remove and re-upload:
-
+# NOTE - if testing locally equivalent commands can also be passed as args
 # npx @sentry/cli --url https://app.glitchtip.com login
 # npx @sentry/cli --url https://app.glitchtip.com releases list --org idems
-# npx @sentry/cli --url https://app.glitchtip.com releases delete plh_global-0.16.10 --org idems
-
-# npx @sentry/cli --url https://app.glitchtip.com releases files plh_global-0.16.10 upload-sourcemaps www/ --org idems --project plh_global
