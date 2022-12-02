@@ -2,7 +2,6 @@
   "flow_type": "template",
   "flow_name": "debug_error_logging",
   "status": "released",
-  "flow_subtype": "debug",
   "rows": [
     {
       "type": "title",
