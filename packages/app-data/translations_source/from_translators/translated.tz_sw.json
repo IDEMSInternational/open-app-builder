@@ -2220,15 +2220,12 @@
     "note": "The string @global.submit_button should not be translated."
   },
   {
-<<<<<<< HEAD
-=======
     "SourceText": "You have entered an incorrect code.",
     "text": "Umeingiza namba isiyo sahihi.",
     "type": "template",
     "note": ""
   },
   {
->>>>>>> 8b265d58684d151709b4052c168ff23effff3773
     "SourceText": "Workshop",
     "text": "Warsha",
     "type": "template",
@@ -2866,11 +2863,7 @@
   },
   {
     "SourceText": "I am now doing the @global.workshop:",
-<<<<<<< HEAD
-    "text": "Sasa ninafanya @global.workshop",
-=======
     "text": "Kwa sasa ninafanya @global.workshop:",
->>>>>>> 8b265d58684d151709b4052c168ff23effff3773
     "type": "template",
     "note": "The string @global.workshop should not be translated."
   },
