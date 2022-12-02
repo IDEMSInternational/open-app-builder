@@ -168,7 +168,6 @@
         {
           "type": "animated_section",
           "name": "intro",
-          "value": "fade_in_out",
           "hidden": "@local.hide_intro",
           "exclude_from_translation": true,
           "rows": [
@@ -534,7 +533,6 @@
         {
           "type": "animated_section",
           "name": "outro",
-          "value": "fade_in_out",
           "hidden": "@local.hide_outro",
           "condition": "@local.include_outro",
           "exclude_from_translation": true,
