@@ -48,8 +48,11 @@ jobs:
       - name: Set Scripts Deployment
         run: yarn scripts deployment set $DEPLOYMENT_NAME
       - run: yarn build --source-map=true
+      # If sourcemaps already exist for version upload will fail, so attempt to remove (ignored if they don't exist)
+      - name: Remove any old sourcemaps
+        run: npx @sentry/cli releases delete ${DEPLOYMENT_NAME}-${APP_VERSION}
       - name: Upload sourcemaps
-        run: 'npx @sentry/cli releases files ${DEPLOYMENT_NAME}-${APP_VERSION} upload-sourcemaps www/'
+        run: npx @sentry/cli releases files ${DEPLOYMENT_NAME}-${APP_VERSION} upload-sourcemaps www/
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN}}
           SENTRY_URL: https://app.glitchtip.com/
@@ -61,3 +64,11 @@ jobs:
           find . -name "*.map" -type f -delete
           echo $(ls www)
         
+# HACK - sourcemap upload will fail if a release already exists
+# E.g. manually remove and re-upload:
+
+# npx @sentry/cli --url https://app.glitchtip.com login
+# npx @sentry/cli --url https://app.glitchtip.com releases list --org idems
+# npx @sentry/cli --url https://app.glitchtip.com releases delete plh_global-0.16.10 --org idems
+
+# npx @sentry/cli --url https://app.glitchtip.com releases files plh_global-0.16.10 upload-sourcemaps www/ --org idems --project plh_global
