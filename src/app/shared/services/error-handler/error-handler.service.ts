@@ -1,4 +1,5 @@
 import { ErrorHandler, Injectable, Injector } from "@angular/core";
+import { Capacitor } from "@capacitor/core";
 import { Device } from "@capacitor/device";
 import * as Sentry from "@sentry/angular";
 import { environment } from "src/environments/environment";
@@ -32,7 +33,7 @@ export class ErrorHandlerService extends ErrorHandler {
       await this.initialiseSentry();
       this.sentryEnabled = true;
     }
-    if (production && firebaseConfig?.apiKey) {
+    if (production && firebaseConfig?.apiKey && Capacitor.isNativePlatform()) {
       // crashlytics initialised in app component so omitted here
       this.crashlyticsEnabled = true;
     }
