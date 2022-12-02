@@ -3800,6 +3800,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "w_example_welcome_together",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_workshop.xlsx",
     },
+    debug_error_logging: {
+      flow_type: "template",
+      flow_name: "debug_error_logging",
+      _xlsxPath: "quality_assurance/debug_sheets/debug_errors.xlsx",
+    },
     demo_emo_check_in: {
       flow_type: "template",
       flow_name: "demo_emo_check_in",
