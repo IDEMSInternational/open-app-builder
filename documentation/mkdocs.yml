@@ -27,6 +27,7 @@ nav:
       - developers/deployments.md
       - developers/device-testing.md
       - developers/android-assets.md
+      - developers/error-logs.md
   - Display Components:
       - components/audio.md
       - components/html.md
