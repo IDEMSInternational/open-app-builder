@@ -4,25 +4,6 @@
   "flow_type": "data_list",
   "rows": [
     {
-      "id": "welcome_individual",
-      "individual": true,
-      "together": false,
-      "priority": 1,
-      "has_single_task": true,
-      "title": "How are you?",
-      "_translations": {
-        "title": {
-          "tz_sw": true
-        }
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "How are you?"
-        }
-      },
-      "template": "w_consequence_welcome_individual"
-    },
-    {
       "id": "care_together",
       "individual": false,
       "together": true,
@@ -166,6 +147,25 @@
         }
       },
       "template": "w_consequence_hp_review"
+    },
+    {
+      "id": "welcome_individual",
+      "individual": true,
+      "together": false,
+      "priority": 1,
+      "has_single_task": true,
+      "title": "How are you?",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How are you?"
+        }
+      },
+      "template": "w_consequence_welcome_ind"
     },
     {
       "id": "read_1",
