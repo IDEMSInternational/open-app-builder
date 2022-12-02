@@ -1,0 +1,21 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "clean_water",
+  "status": "released",
+  "data_list_name": "clean_water",
+  "rows": [
+    {
+      "id": "water_treatment",
+      "title": "Water Treatment"
+    },
+    {
+      "id": "water_storage",
+      "title": "Water Storage"
+    },
+    {
+      "id": "water_availability",
+      "title": "Water Availability"
+    }
+  ],
+  "_xlsxPath": "data_lists/homepage/clean_water.xlsx"
+}

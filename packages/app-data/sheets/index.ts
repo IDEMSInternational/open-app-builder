@@ -10,6 +10,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "benefits_waste_management",
       _xlsxPath: "data_lists/sanitation/waste management/waste_management_data_list.xlsx",
     },
+    clean_water: {
+      flow_type: "data_list",
+      flow_name: "clean_water",
+      data_list_name: "clean_water",
+      _xlsxPath: "data_lists/homepage/clean_water.xlsx",
+    },
     debug_nav_list: {
       flow_type: "data_list",
       flow_name: "debug_nav_list",
@@ -348,6 +354,16 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     module_card: {
       flow_type: "template",
       flow_name: "module_card",
+      _xlsxPath: "templates/global/navigation_modular.xlsx",
+    },
+    module_overview: {
+      flow_type: "template",
+      flow_name: "module_overview",
+      _xlsxPath: "templates/global/navigation_modular.xlsx",
+    },
+    task_card: {
+      flow_type: "template",
+      flow_name: "task_card",
       _xlsxPath: "templates/global/navigation_modular.xlsx",
     },
     toilet_screen: {
