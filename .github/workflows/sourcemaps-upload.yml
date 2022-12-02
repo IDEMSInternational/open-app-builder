@@ -3,13 +3,13 @@
 
 # Upload build sourcemaps to 3rd party error monitoring service
 # NOTE - likely will merge with deploy code unless can find a tidy way to link
+
+# NOTE - currently only used for debugging as methods are integrated into build scripts
 name: Sourcemaps Upload
 on:
   push:
     branches:
       - feat/glitchtip-error-logs
-      - deployment/*
-      - master
 jobs:
   sourcemaps_upload:
     runs-on: ubuntu-latest
@@ -26,8 +26,6 @@ jobs:
         #   else echo "DEPLOYMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV;   \
         #   fi;
         shell: bash
-      - name: set_version
-        run: echo "APP_VERSION=$(echo "$(cat package.json | jq -r '.version')")" >> $GITHUB_ENV
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -47,17 +45,20 @@ jobs:
       - run: yarn install
       - name: Set Scripts Deployment
         run: yarn scripts deployment set $DEPLOYMENT_NAME
+      ### Generate and upload sourcemaps ###
       - run: yarn build --source-map=true
-      # If sourcemaps already exist for version upload will fail, so attempt to remove (ignored if they don't exist)
-      - name: Remove any old sourcemaps
-        run: npx @sentry/cli releases delete ${DEPLOYMENT_NAME}-${APP_VERSION}
+      - name: set app version
+        run: echo "APP_VERSION=$(echo "$(cat package.json | jq -r '.version')")" >> $GITHUB_ENV
       - name: Upload sourcemaps
-        run: npx @sentry/cli releases files ${DEPLOYMENT_NAME}-${APP_VERSION} upload-sourcemaps www/
+        run: |
+          npx @sentry/cli releases delete ${DEPLOYMENT_NAME}-${APP_VERSION}
+          npx @sentry/cli releases files ${DEPLOYMENT_NAME}-${APP_VERSION} upload-sourcemaps www/
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN}}
           SENTRY_URL: https://app.glitchtip.com/
           SENTRY_ORG: idems
           SENTRY_PROJECT: ${{env.DEPLOYMENT_NAME}}
+        continue-on-error: true
       - name: Remove sourcemaps from build
         run: |
           echo $(ls www)
