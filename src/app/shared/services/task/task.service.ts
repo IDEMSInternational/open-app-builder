@@ -52,19 +52,24 @@ export class TaskService {
     // then un-set highlighted task group
     if (taskGroupsNotCompletedAndNotSkipped.length === 0) {
       this.templateFieldService.setField(this.highlightedTaskFieldName, "");
+      console.log("[HIGHLIGHTED TASK GROUP] - No highlighted task group is set");
     }
-    const highestPriorityTaskGroup = taskGroupsNotCompletedAndNotSkipped.reduce(
-      (highestPriority, taskGroup) => {
-        return highestPriority.number < taskGroup.number ? highestPriority : taskGroup;
-      }
-    );
-    if (highestPriorityTaskGroup.id !== previousHighlightedTaskGroup) {
-      this.templateFieldService.setField(
-        this.highlightedTaskFieldName,
-        highestPriorityTaskGroup.id
+    // Else set the highlighted task group to the task group with the highest priority of those
+    // not completed or skipped
+    else {
+      const highestPriorityTaskGroup = taskGroupsNotCompletedAndNotSkipped.reduce(
+        (highestPriority, taskGroup) => {
+          return highestPriority.number < taskGroup.number ? highestPriority : taskGroup;
+        }
       );
+      if (highestPriorityTaskGroup.id !== previousHighlightedTaskGroup) {
+        this.templateFieldService.setField(
+          this.highlightedTaskFieldName,
+          highestPriorityTaskGroup.id
+        );
+      }
+      console.log("[HIGHLIGHTED TASK GROUP] - ", highestPriorityTaskGroup.id);
     }
-    console.log("[HIGHLIGHTED TASK GROUP] - ", highestPriorityTaskGroup.id);
   }
 
   /** Get the id of the task group stored as higlighted */

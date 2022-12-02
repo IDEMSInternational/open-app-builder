@@ -28,7 +28,7 @@
       "together": false,
       "priority": 12,
       "has_single_task": true,
-      "template": "w_celebrate_survey_activity",
+      "template": "survey_final_stepper",
       "title": "Survey",
       "_translations": {
         "title": {
