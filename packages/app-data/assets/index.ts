@@ -3133,10 +3133,22 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshop_modes/group/final/cup.svg": {
     size_kb: 145.7,
     md5Checksum: "317e835859b4faa82591e38e7f2cd4ad",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 106.5,
+        md5Checksum: "286727168b16df1ec23dd855ff048cd5",
+      },
+    },
   },
   "plh_images/workshop_modes/group/final/light_bulb.svg": {
     size_kb: 147.3,
     md5Checksum: "1083d38169935a6fc6dd69b0d2fbbfee",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 109.9,
+        md5Checksum: "3cb3f010fb7e7b91d141b16136d06fd0",
+      },
+    },
   },
   "plh_images/workshop_modes/group/final/notes.svg": {
     size_kb: 145.9,
@@ -3149,10 +3161,22 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshop_modes/group/final/relax.svg": {
     size_kb: 144.4,
     md5Checksum: "fdc0856e935e7d246401af6169a06e61",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 97.9,
+        md5Checksum: "d93fbd88c0ec3bfba0b3ada47ca3dcc2",
+      },
+    },
   },
   "plh_images/workshop_modes/group/final/talk.svg": {
     size_kb: 144.3,
     md5Checksum: "1bc7bf19c6f052cdb64a3d5e505b4df3",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 80.3,
+        md5Checksum: "a011afe34f59406a41e368048c566f9d",
+      },
+    },
   },
   "plh_images/workshop_modes/group/light_bulb.svg": {
     size_kb: 143.6,
@@ -3309,10 +3333,22 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshop_modes/guide_2/final/cup.svg": {
     size_kb: 10.3,
     md5Checksum: "54b84af382b03708d44ad0846572fe13",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 34.6,
+        md5Checksum: "f933c3c7096d6de72e8458f435956fd3",
+      },
+    },
   },
   "plh_images/workshop_modes/guide_2/final/light_bulb.svg": {
     size_kb: 5.6,
     md5Checksum: "698fdc0e47cc97fc378ddaafbbe9c698",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 35.5,
+        md5Checksum: "5acf57a7c40154a855827ba195b9a5c4",
+      },
+    },
   },
   "plh_images/workshop_modes/guide_2/final/notes.svg": {
     size_kb: 57.5,
@@ -3321,10 +3357,22 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshop_modes/guide_2/final/relax.svg": {
     size_kb: 3.8,
     md5Checksum: "af45d95d4d9d7b5be6055cd90b0d6c33",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 30.9,
+        md5Checksum: "393917e9773438716526d42f396d31aa",
+      },
+    },
   },
   "plh_images/workshop_modes/guide_2/final/star.svg": {
     size_kb: 4.7,
     md5Checksum: "627c2d07c624f9c4194c9967705f774d",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 30.8,
+        md5Checksum: "499328575c1b029aecf9dcbfd458b270",
+      },
+    },
   },
   "plh_images/workshop_modes/guide_2/final/thumbs_up.svg": {
     size_kb: 4.4,
@@ -3333,6 +3381,12 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshop_modes/guide_2/final/wave.svg": {
     size_kb: 4,
     md5Checksum: "fbd12bcc51d17917bc96fa76fb8567ac",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 27.8,
+        md5Checksum: "2cdae9f5840511b3fe87527728bfee4f",
+      },
+    },
   },
   "plh_images/workshop_modes/guide_2/light_bulb.svg": {
     size_kb: 4.6,
@@ -3381,6 +3435,12 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshop_modes/guide_2/star.svg": {
     size_kb: 3.7,
     md5Checksum: "50d12cee9cfc9ef994ca3de0d636e56b",
+    themeVariations: {
+      theme_professional: {
+        size_kb: 11.1,
+        md5Checksum: "66c5dbf212697d2ebf2dba63d4e57dc3",
+      },
+    },
   },
   "plh_images/workshop_modes/guide_2/thumbs_up.svg": {
     size_kb: 3.4,

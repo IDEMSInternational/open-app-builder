@@ -1799,6 +1799,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "common_with_parent_text",
       _xlsxPath: "global/mode_templates/welcome.xlsx",
     },
+    debug_error_logging: {
+      flow_type: "template",
+      flow_name: "debug_error_logging",
+      _xlsxPath: "quality_assurance/debug_sheets/debug_errors.xlsx",
+    },
     demo_emo_check_in: {
       flow_type: "template",
       flow_name: "demo_emo_check_in",
@@ -1844,6 +1849,24 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "example_sheet_defaults",
       flow_subtype: "example_sheet_defaults",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_sheet_defaults.xlsx",
+    },
+    feature_feedback_debug: {
+      flow_type: "template",
+      flow_name: "feature_feedback_debug",
+      comments: "Used in /feedback debug page",
+      _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_feedback.xlsx",
+    },
+    feature_feedback_default: {
+      flow_type: "template",
+      flow_name: "feature_feedback_default",
+      comments: "Default general feedback form",
+      _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_feedback.xlsx",
+    },
+    feature_feedback_text_select: {
+      flow_type: "template",
+      flow_name: "feature_feedback_text_select",
+      comments: "Default text-select feedback form",
+      _xlsxPath: "quality_assurance/feature_sheets/to_be_sorted/feature_feedback.xlsx",
     },
     footer: {
       flow_type: "template",
