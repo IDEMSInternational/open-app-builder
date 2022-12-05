@@ -12,7 +12,7 @@ public class MainActivity extends BridgeActivity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    // https://github.com/baumblatt/capacitor-firebase-auth/issues/170
     registerPlugin(CapacitorFirebaseAuth.class);
-     super.onCreate(savedInstanceState);
   }
 }
