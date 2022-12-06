@@ -1,6 +1,6 @@
 {
   "flow_type": "global",
-  "flow_name": "debug_full_stop_golbals",
+  "flow_name": "debug_full_stop_globals",
   "status": "released",
   "flow_subtype": "debug",
   "rows": [
