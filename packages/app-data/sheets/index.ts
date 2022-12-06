@@ -1319,9 +1319,9 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "data_warnings",
       _xlsxPath: "global/data/app_menu_globals.xlsx",
     },
-    debug_full_stop_golbals: {
+    debug_full_stop_globals: {
       flow_type: "global",
-      flow_name: "debug_full_stop_golbals",
+      flow_name: "debug_full_stop_globals",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_full_stop_after_var.xlsx",
     },
@@ -1336,6 +1336,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "debug_some_globals",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_global.xlsx",
+    },
+    example_field_array_global: {
+      flow_type: "global",
+      flow_subtype: "debug",
+      flow_name: "example_field_array_global",
+      _xlsxPath: "quality_assurance/example_sheets/example_field_array.xlsx",
     },
     example_glob_override_default: {
       flow_type: "global",
@@ -3222,6 +3228,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_actions.xlsx",
     },
+    example_field_array: {
+      flow_type: "template",
+      flow_subtype: "debug",
+      flow_name: "example_field_array",
+      _xlsxPath: "quality_assurance/example_sheets/example_field_array.xlsx",
+    },
     example_footer: {
       flow_type: "template",
       flow_name: "example_footer",
@@ -3787,6 +3799,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       flow_name: "w_example_welcome_together",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_workshop.xlsx",
+    },
+    debug_error_logging: {
+      flow_type: "template",
+      flow_name: "debug_error_logging",
+      _xlsxPath: "quality_assurance/debug_sheets/debug_errors.xlsx",
     },
     demo_emo_check_in: {
       flow_type: "template",
