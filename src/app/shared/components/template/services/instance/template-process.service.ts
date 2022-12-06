@@ -1,10 +1,11 @@
 import { Injectable, Injector } from "@angular/core";
 import { FlowTypes } from "data-models";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
+import { getGlobalService } from "src/app/shared/services/global.service";
+import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { TemplateContainerComponent } from "../../template-container.component";
 import { TemplateNavService } from "../template-nav.service";
 import { TemplateService } from "../template.service";
-import { TemplateInstanceService } from "./template-instance.service";
 
 /**
  * The template process service is a slightly hacky wrapper around the template container component so that
@@ -14,30 +15,46 @@ import { TemplateInstanceService } from "./template-instance.service";
  * component extending it (instead of vice-versa)
  */
 @Injectable({ providedIn: "root" })
-export class TemplateProcessService extends TemplateInstanceService {
+export class TemplateProcessService extends SyncServiceBase {
   container: TemplateContainerComponent;
-  templateService: TemplateService;
-  templateNavService: TemplateNavService;
-  appDataService: AppDataService;
-  constructor(injector: Injector) {
-    super(injector);
-    this.templateService = this.getGlobalService(TemplateService);
-    this.templateNavService = this.getGlobalService(TemplateNavService);
-    this.appDataService = this.getGlobalService(AppDataService);
-    // Create mock template container component
-    this.container = new TemplateContainerComponent(
-      this.templateService,
-      this.templateNavService,
-      injector
-    );
+  constructor(private injector: Injector) {
+    super("TemplateProcess");
+    /**
+     * Avoid initialisation logic and prefer to ensure services ready
+     * on demand to avoid cyclic issues
+     * Instead services are checked before public method calls
+     * */
   }
 
-  public async init() {
-    await this.initialiseStartupTemplates();
+  private get templateService() {
+    return getGlobalService(this.injector, TemplateService);
+  }
+  private get templateNavService() {
+    return getGlobalService(this.injector, TemplateNavService);
+  }
+  private get appDataService() {
+    return getGlobalService(this.injector, AppDataService);
+  }
+
+  /** Ensure services are intialised before being called from public methods  */
+  private async ensurePublicMethodServices() {
+    await this.ensureAsyncServicesReady([]); // currently all child deps synchronous
+    this.ensureSyncServicesReady([
+      this.templateNavService,
+      this.appDataService,
+      this.templateService,
+    ]);
   }
 
   public async processTemplateWithoutRender(template: FlowTypes.Template) {
     console.log("[Template Process]", template.flow_name);
+    this.ensurePublicMethodServices();
+    // Create mock template container component
+    this.container = new TemplateContainerComponent(
+      this.templateService,
+      this.templateNavService,
+      this.injector
+    );
     // this.container.name = this.container.name || this.templatename;
     // this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
     this.container.template = template;
@@ -48,7 +65,9 @@ export class TemplateProcessService extends TemplateInstanceService {
     await this.container.templateRowService.processContainerTemplateRows();
   }
 
-  private async initialiseStartupTemplates() {
+  public async initialiseStartupTemplates() {
+    console.log("[Startup Templates]");
+    await this.ensurePublicMethodServices();
     const startupTemplates = await this.appDataService.getSheetsWithData<FlowTypes.Template>(
       "template",
       (t) => (t.process_on_start ? true : false)
