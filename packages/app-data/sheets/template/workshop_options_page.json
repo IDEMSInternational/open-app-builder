@@ -735,7 +735,9 @@
       "name": "text_workshop_path",
       "value": "I do the @global.workshops:",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "parameter_list": {
         "style": "emphasised"
@@ -1022,7 +1024,9 @@
       "name": "text_what_group_workshop",
       "value": "My group is now doing the @global.workshop:",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "condition": "@local.radio_group_1==\"together\"",
       "parameter_list": {
@@ -1061,7 +1065,9 @@
       "name": "text_what_individual_workshop",
       "value": "I am now doing the @global.workshop:",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "condition": "@local.radio_group_1==\"individual\"",
       "parameter_list": {
