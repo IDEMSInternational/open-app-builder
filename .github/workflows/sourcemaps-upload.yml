@@ -6,7 +6,7 @@
 
 # NOTE - currently only used for debugging as methods are integrated into build scripts
 name: Sourcemaps Upload
-on:
+# on:
   # push:
   #   branches:
   #     - feat/glitchtip-error-logs
