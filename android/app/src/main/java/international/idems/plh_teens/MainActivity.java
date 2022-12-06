@@ -11,7 +11,9 @@ import com.baumblatt.capacitor.firebase.auth.CapacitorFirebaseAuth;
 public class MainActivity extends BridgeActivity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+    // https://github.com/baumblatt/capacitor-firebase-auth/issues/170
+    // https://capacitorjs.com/docs/updating/4-0#change-registerplugin-order
     registerPlugin(CapacitorFirebaseAuth.class);
+    super.onCreate(savedInstanceState);
   }
 }
