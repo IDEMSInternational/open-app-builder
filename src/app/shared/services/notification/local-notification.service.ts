@@ -15,6 +15,9 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 
+// Notification ids must be +/- 2^31-1 as per capacitor docs
+const NOTIFICATION_ID_MAX = 2147483647;
+
 /** Utility type to assert local notification has extra and schedule defined */
 export interface ILocalNotification extends LocalNotificationSchema {
   schedule: LocalNotificationSchema["schedule"];
@@ -95,7 +98,7 @@ export class LocalNotificationService extends AsyncServiceBase {
       this.notificationDefaults = appConfig.NOTIFICATION_DEFAULTS;
       this.syncSchedule = interval(appConfig.NOTIFICATIONS_SYNC_FREQUENCY_MS);
       this.localNotificationDefaults = {
-        id: new Date().getUTCMilliseconds(),
+        id: null, // will be populated during schedule
         title: this.notificationDefaults.title,
         body: this.notificationDefaults.text,
         sound: null,
@@ -209,6 +212,8 @@ export class LocalNotificationService extends AsyncServiceBase {
         notification[key] = value;
       }
     });
+    // Use a random integer as id
+    notification.id = Math.floor(Math.random() * NOTIFICATION_ID_MAX);
     // HACK - for some reason largebody not always passed (possibly from schedule immediate) so reassign
     notification.largeBody = notification.largeBody || notification.body;
     await LocalNotifications.schedule({ notifications: [notification] });
@@ -247,7 +252,6 @@ export class LocalNotificationService extends AsyncServiceBase {
     const immediateNotification = {
       ...notification,
       schedule: { at: notificationDeliveryTime },
-      id: new Date().getTime(),
     };
     await this.scheduleNotification(immediateNotification, false);
     if (Capacitor.isNative && forceBackground) {

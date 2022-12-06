@@ -20,7 +20,7 @@
     {
       "type": "animated_section",
       "name": "animated_section_1",
-      "condition": "@local.show_animated_section_1",
+      "hidden": "!@local.show_animated_section_1",
       "rows": [
         {
           "type": "template",
@@ -62,25 +62,25 @@
       ],
       "_nested_name": "animated_section_1",
       "_dynamicFields": {
-        "condition": [
+        "hidden": [
           {
-            "fullExpression": "@local.show_animated_section_1",
-            "matchedExpression": "@local.show_animated_section_1",
+            "fullExpression": "!@local.show_animated_section_1",
+            "matchedExpression": "!@local.show_animated_section_1",
             "type": "local",
             "fieldName": "show_animated_section_1"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.show_animated_section_1": [
-          "condition"
+        "!@local.show_animated_section_1": [
+          "hidden"
         ]
       }
     },
     {
       "type": "animated_section",
       "name": "animated_section_2",
-      "condition": "@local.show_animated_section_2",
+      "hidden": "!@local.show_animated_section_2",
       "rows": [
         {
           "type": "template",
@@ -122,18 +122,18 @@
       ],
       "_nested_name": "animated_section_2",
       "_dynamicFields": {
-        "condition": [
+        "hidden": [
           {
-            "fullExpression": "@local.show_animated_section_2",
-            "matchedExpression": "@local.show_animated_section_2",
+            "fullExpression": "!@local.show_animated_section_2",
+            "matchedExpression": "!@local.show_animated_section_2",
             "type": "local",
             "fieldName": "show_animated_section_2"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.show_animated_section_2": [
-          "condition"
+        "!@local.show_animated_section_2": [
+          "hidden"
         ]
       }
     }
