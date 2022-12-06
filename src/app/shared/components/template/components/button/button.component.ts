@@ -14,7 +14,7 @@ import { TemplateBaseComponent } from "../base";
   styleUrls: ["./button.component.scss"],
 })
 export class TmplButtonComponent extends TemplateBaseComponent implements OnInit {
-  /** TEMPLATE PARAMATER: "style" */
+  /** TEMPLATE PARAMETER: "style" */
   style:
     | "information"
     | "navigation"
@@ -25,13 +25,13 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
     | "tall"
     | "standard"
     | "alternative" = "information";
-  /** TEMPLATE PARAMATER: "disabled". If true, button is disabled and greyed out */
+  /** TEMPLATE PARAMETER: "disabled". If true, button is disabled and greyed out */
   disabled: boolean = false;
-  /** TEMPLATE PARAMATER: "text_align" */
+  /** TEMPLATE PARAMETER: "text_align" */
   textAlign: "left" | "centre" | "right" = "left";
-  /** TEMPLATE PARAMATER: "button_align" */
+  /** TEMPLATE PARAMETER: "button_align" */
   buttonAlign: "left" | "centre" | "right" = "centre";
-  /** TEMPLATE PARAMATER: "icon". The path to an icon asset */
+  /** TEMPLATE PARAMETER: "icon". The path to an icon asset */
   icon: string;
 
   /** @ignore */
