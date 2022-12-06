@@ -63,7 +63,7 @@ export class CampaignDebugPage implements OnInit {
   public setDebugCampaignOptIn(value: boolean) {
     this.templateFieldService.setField("debug_campaigns_enabled", `${value}`);
     this.debugCampaignsEnabled = this.templateFieldService.getField("debug_campaigns_enabled");
-    this.campaignService.init();
+    this.campaignService.reInitialise();
   }
 
   /**
