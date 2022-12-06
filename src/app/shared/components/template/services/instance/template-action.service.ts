@@ -7,7 +7,6 @@ import { TemplateProcessService } from "./template-process.service";
 import { ServerService } from "src/app/shared/services/server/server.service";
 import { AnalyticsService } from "src/app/shared/services/analytics/analytics.service";
 import { Injector } from "@angular/core";
-import { TemplateInstanceService } from "./template-instance.service";
 import { TemplateNavService } from "../template-nav.service";
 import { TemplateService } from "../template.service";
 import { TourService } from "src/app/feature/tour/tour.service";
@@ -19,6 +18,8 @@ import { AuthService } from "src/app/shared/services/auth/auth.service";
 import { SkinService } from "src/app/shared/services/skin/skin.service";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { TaskService } from "src/app/shared/services/task/task.service";
+import { getGlobalService } from "src/app/shared/services/global.service";
+import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -30,41 +31,76 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
  *
  *
  */
-export class TemplateActionService extends TemplateInstanceService {
+export class TemplateActionService extends SyncServiceBase {
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
-  private settingsService: SettingsService;
-  private serverService: ServerService;
-  private analyticsService: AnalyticsService;
-  private templateNavService: TemplateNavService;
-  private templateService: TemplateService;
-  private tourService: TourService;
-  private templateTranslateService: TemplateTranslateService;
-  private templateFieldService: TemplateFieldService;
-  private eventService: EventService;
-  private dbSyncService: DBSyncService;
-  private authService: AuthService;
-  private skinService: SkinService;
-  private themeService: ThemeService;
-  private taskService: TaskService;
+  constructor(private injector: Injector, public container?: TemplateContainerComponent) {
+    super("TemplateAction");
+  }
+  // Retrive all services on demand from global injector
+  private get settingsService() {
+    return getGlobalService(this.injector, SettingsService);
+  }
+  private get serverService() {
+    return getGlobalService(this.injector, ServerService);
+  }
+  private get analyticsService() {
+    return getGlobalService(this.injector, AnalyticsService);
+  }
+  private get templateNavService() {
+    return getGlobalService(this.injector, TemplateNavService);
+  }
+  private get templateService() {
+    return getGlobalService(this.injector, TemplateService);
+  }
+  private get tourService() {
+    return getGlobalService(this.injector, TourService);
+  }
+  private get templateFieldService() {
+    return getGlobalService(this.injector, TemplateFieldService);
+  }
+  private get templateTranslateService() {
+    return getGlobalService(this.injector, TemplateTranslateService);
+  }
+  private get eventService() {
+    return getGlobalService(this.injector, EventService);
+  }
+  private get dbSyncService() {
+    return getGlobalService(this.injector, DBSyncService);
+  }
+  private get authService() {
+    return getGlobalService(this.injector, AuthService);
+  }
+  private get skinService() {
+    return getGlobalService(this.injector, SkinService);
+  }
+  private get themeService() {
+    return getGlobalService(this.injector, ThemeService);
+  }
+  private get taskService() {
+    return getGlobalService(this.injector, TaskService);
+  }
 
-  constructor(injector: Injector, public container?: TemplateContainerComponent) {
-    super(injector);
-    this.settingsService = this.getGlobalService(SettingsService);
-    this.serverService = this.getGlobalService(ServerService);
-    this.analyticsService = this.getGlobalService(AnalyticsService);
-    this.templateNavService = this.getGlobalService(TemplateNavService);
-    this.templateService = this.getGlobalService(TemplateService);
-    this.tourService = this.getGlobalService(TourService);
-    this.templateFieldService = this.getGlobalService(TemplateFieldService);
-    this.templateTranslateService = this.getGlobalService(TemplateTranslateService);
-    this.eventService = this.getGlobalService(EventService);
-    this.dbSyncService = this.getGlobalService(DBSyncService);
-    this.authService = this.getGlobalService(AuthService);
-    this.skinService = this.getGlobalService(SkinService);
-    this.themeService = this.getGlobalService(ThemeService);
-    this.taskService = this.getGlobalService(TaskService);
+  private async ensurePublicServicesReady() {
+    await this.ensureAsyncServicesReady([
+      this.tourService,
+      this.templateTranslateService,
+      this.templateFieldService,
+      this.dbSyncService,
+      this.taskService,
+    ]);
+    this.ensureSyncServicesReady([
+      this.serverService,
+      this.templateNavService,
+      this.themeService,
+      this.settingsService,
+      this.analyticsService,
+      this.templateService,
+      this.eventService,
+      this.authService,
+      this.skinService,
+    ]);
   }
 
   /** Public method to add actions to processing queue and process */
@@ -72,6 +108,7 @@ export class TemplateActionService extends TemplateInstanceService {
     actions: FlowTypes.TemplateRowAction[] = [],
     _triggeredBy?: FlowTypes.TemplateRow
   ) {
+    await this.ensurePublicServicesReady();
     const unhandledActions = await this.handleActionsInterceptor(actions);
     unhandledActions.forEach((action) => this.actionsQueue.push({ ...action, _triggeredBy }));
     const res = await this.processActionQueue();

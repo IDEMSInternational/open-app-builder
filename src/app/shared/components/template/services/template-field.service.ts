@@ -5,16 +5,25 @@ import { DbService } from "src/app/shared/services/db/db.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { booleanStringToBoolean } from "src/app/shared/utils";
 import { TemplateTranslateService } from "./template-translate.service";
+import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 
 @Injectable({ providedIn: "root" })
-export class TemplateFieldService {
+export class TemplateFieldService extends AsyncServiceBase {
   globals: { [name: string]: FlowTypes.GlobalRow } = {};
 
   constructor(
     private localStorageService: LocalStorageService,
     private dbService: DbService,
     private translateService: TemplateTranslateService
-  ) {}
+  ) {
+    super("TemplateField");
+    this.registerInitFunction(this.initialise);
+  }
+
+  private async initialise() {
+    await this.ensureAsyncServicesReady([this.dbService, this.translateService]);
+    this.ensureSyncServicesReady([this.localStorageService]);
+  }
   /**
    * Retrieve fields from localstorage. These are automatically prefixed with 'rp-contact-field'
    * and will be returned as string or boolean

@@ -4,11 +4,12 @@ import { BehaviorSubject } from "rxjs";
 import { environment } from "src/environments/environment";
 import { deepMergeObjects } from "../../utils";
 import clone from "clone";
+import { SyncServiceBase } from "../syncService.base";
 
 @Injectable({
   providedIn: "root",
 })
-export class AppConfigService {
+export class AppConfigService extends SyncServiceBase {
   deploymentOverrides: IAppConfigOverride = (environment.deploymentConfig as any).app_config || {};
   /** List of constants provided by data-models combined with deployment-specific overrides and skin-specific overrides */
   appConfig$ = new BehaviorSubject<IAppConfig | {}>({});
@@ -16,11 +17,11 @@ export class AppConfigService {
   deploymentAppConfig: IAppConfig;
 
   constructor() {
-    // eagerly initialise so that updated appConfig is available to other services
-    this.init();
+    super("AppConfig");
+    this.initialise();
   }
 
-  private init() {
+  private initialise() {
     this.APP_CONFIG = getDefaultAppConfig();
     // Store app config with deployment overrides applied, to be merged with additional overrides when applied
     this.deploymentAppConfig = this.applyAppConfigOverrides(
