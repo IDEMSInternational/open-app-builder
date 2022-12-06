@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ASSETS_CONTENTS_LIST } from "app-data";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
+import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { TemplateTranslateService } from "./template-translate.service";
 
 /** Synced assets are automatically copied during build to asset subfolder */
@@ -10,11 +11,19 @@ const ASSETS_BASE = `assets/app_data/assets`;
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
 @Injectable({ providedIn: "root" })
-export class TemplateAssetService {
+export class TemplateAssetService extends AsyncServiceBase {
   constructor(
     private translateService: TemplateTranslateService,
     private themeService: ThemeService
-  ) {}
+  ) {
+    super("TemplateAsset");
+    this.registerInitFunction(this.initialise);
+  }
+
+  private async initialise() {
+    await this.ensureAsyncServicesReady([this.translateService]);
+    this.ensureSyncServicesReady([this.themeService]);
+  }
 
   getAbsoluteAssetPath(value: string) {
     const assetName = this.cleanAssetName(value);

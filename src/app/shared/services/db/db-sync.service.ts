@@ -11,6 +11,7 @@ import {
 import { environment } from "src/environments/environment";
 import { IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
+import { AsyncServiceBase } from "../asyncService.base";
 import { UserMetaService } from "../userMeta/userMeta.service";
 import { DbService } from "./db.service";
 
@@ -22,7 +23,7 @@ import { DbService } from "./db.service";
  * - Websocket connect
  * - 2-way sync (possibly via sync protocol)
  */
-export class DBSyncService {
+export class DBSyncService extends AsyncServiceBase {
   syncSchedule;
   constructor(
     private dbService: DbService,
@@ -30,10 +31,14 @@ export class DBSyncService {
     private userMetaService: UserMetaService,
     private appConfigService: AppConfigService
   ) {
-    this.subscribeToAppConfigChanges();
+    super("DB Sync");
+    this.registerInitFunction(this.inititialise);
   }
 
-  public async init() {
+  private async inititialise() {
+    await this.ensureAsyncServicesReady([this.dbService, this.userMetaService]);
+    this.ensureSyncServicesReady([this.appConfigService]);
+    this.subscribeToAppConfigChanges();
     // Automatically sync data periodically
     if (environment.production) {
       this.syncToServer();

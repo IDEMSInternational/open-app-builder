@@ -3,13 +3,17 @@ import { Injectable } from "@angular/core";
 import { SHEETS_CONTENT_LIST, TRANSLATIONS_CONTENT_LIST } from "app-data";
 import { FlowTypes } from "../../model";
 import { arrayToHashmap } from "../../utils";
+import { SyncServiceBase } from "../syncService.base";
 
 /** Default folder app_data copied into (as defined in angular.json) */
 const APP_DATA_BASE = "assets/app_data";
 
 @Injectable({ providedIn: "root" })
-export class AppDataService {
-  constructor(private http: HttpClient) {}
+export class AppDataService extends SyncServiceBase {
+  constructor(private http: HttpClient) {
+    super("AppData");
+    this.initialise();
+  }
   private sheetContents = SHEETS_CONTENT_LIST;
   private translationContents = TRANSLATIONS_CONTENT_LIST;
   public appDataCache: IAppDataCache = {
@@ -20,7 +24,7 @@ export class AppDataService {
     tour: {},
   };
 
-  public async init() {
+  private initialise() {
     this.addDataListMappings();
   }
 

@@ -12,6 +12,7 @@ import { BehaviorSubject } from "rxjs";
 import { IAppConfig } from "../../model";
 import { generateTimestamp } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
+import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
 
 // Notification ids must be +/- 2^31-1 as per capacitor docs
@@ -44,7 +45,7 @@ export interface ILocalNotification extends LocalNotificationSchema {
  * TODO - improve logging methods
  *
  */
-export class LocalNotificationService {
+export class LocalNotificationService extends AsyncServiceBase {
   /**
    * Observable list of all notifications processed since app load, so additional services can respond to updates
    * Includes any notifications previously scheduled but no longer present (e.g dismissed while app closed)
@@ -68,12 +69,16 @@ export class LocalNotificationService {
   /** Default settings used where otherwise not specified */
   localNotificationDefaults: LocalNotificationSchema;
 
-  constructor(dbService: DbService, private appConfigService: AppConfigService) {
-    this.subscribeToAppConfigChanges();
-    this.db = dbService.table<ILocalNotification>("local_notifications");
+  constructor(private dbService: DbService, private appConfigService: AppConfigService) {
+    super("Local Notifications");
+    this.registerInitFunction(this.init);
   }
 
-  public async init() {
+  private async init() {
+    await this.ensureAsyncServicesReady([this.dbService]);
+    this.ensureSyncServicesReady([this.appConfigService]);
+    this.subscribeToAppConfigChanges();
+    this.db = this.dbService.table<ILocalNotification>("local_notifications");
     this.sessionStartTime = new Date().getTime();
     this.permissionGranted = await this.requestPermission();
     if (this.permissionGranted) {
@@ -123,7 +128,7 @@ export class LocalNotificationService {
         resolve(display === "granted");
       }),
     ]);
-    console.log("[Notifications Enabled]", granted);
+    // console.log("[Notifications Enabled]", granted);
     return granted;
   }
 
