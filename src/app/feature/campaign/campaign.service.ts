@@ -8,6 +8,7 @@ import { TemplateTranslateService } from "src/app/shared/components/template/ser
 import { TemplateVariablesService } from "src/app/shared/components/template/services/template-variables.service";
 import { FlowTypes } from "src/app/shared/model";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
+import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import {
@@ -32,7 +33,7 @@ type IScheduledNotificationsHashmap = {
 };
 
 @Injectable({ providedIn: "root" })
-export class CampaignService {
+export class CampaignService extends AsyncServiceBase {
   allCampaigns: ICampaignHashmap = {};
   scheduledCampaigns: IScheduledCampaignsHashmap = {};
   scheduledNotifications: IScheduledNotificationsHashmap = {};
@@ -50,7 +51,8 @@ export class CampaignService {
     private appConfigService: AppConfigService,
     private injector: Injector
   ) {
-    this.subscribeToAppConfigChanges();
+    super("Campaigns");
+    this.registerInitFunction(this.inititialise);
   }
 
   /**
@@ -61,7 +63,15 @@ export class CampaignService {
     return this.injector.get(TemplateVariablesService);
   }
 
-  public async init() {
+  private async inititialise() {
+    await this.ensureAsyncServicesReady([
+      this.localNotificationService,
+      this.templateTranslateService,
+      this.templateVariablesService,
+      this.dataEvaluationService,
+    ]);
+    this.ensureSyncServicesReady([this.appConfigService]);
+    this.subscribeToAppConfigChanges();
     await this.hackDeactivateAllNotifications();
 
     const schedules = await this.loadCampaignSchedules();
@@ -71,12 +81,15 @@ export class CampaignService {
     this.scheduledCampaigns = scheduledCampaigns;
     this.allCampaigns = allCampaigns;
 
-    console.log("[Scheduled Campaigns]", this.scheduledCampaigns);
-    console.log("[All Campaigns]", this.allCampaigns);
+    // console.log("[Scheduled Campaigns]", this.scheduledCampaigns);
+    // console.log("[All Campaigns]", this.allCampaigns);
 
     await this.scheduleCampaignNotifications();
 
     this._subscribeToNotificationUpdates();
+  }
+  public reInitialise() {
+    return this.inititialise();
   }
 
   /**
