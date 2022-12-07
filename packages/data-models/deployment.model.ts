@@ -57,6 +57,11 @@ export interface IDeploymentConfig {
     /** path for task working directory. Default `./tasks` */
     task_cache_path?: string;
   };
+  /** 3rd party integration for logging services */
+  error_logging?: {
+    /** sentry/glitchtip logging dsn */
+    dsn: string;
+  };
   /** optional version number to force recompile */
   _version?: number;
 }

@@ -1,32 +1,31 @@
-# Deploy to firebase hosting on PR merge
-# Specifies deployment target based on branch
-# Master -> plh_global
-# Deployment/{deployment_name} -> {deployment_name}
-name: Deployment Hosting
-on:
-  push:
-    branches:
-      - deployment/*
-      - master
+# Secrets
+# SENTRY_AUTH_TOKEN
+
+# Upload build sourcemaps to 3rd party error monitoring service
+# NOTE - likely will merge with deploy code unless can find a tidy way to link
+
+# NOTE - currently only used for debugging as methods are integrated into build scripts
+name: Sourcemaps Upload
+# on:
+  # push:
+  #   branches:
+  #     - feat/glitchtip-error-logs
 jobs:
-  build_and_deploy:
+  sourcemaps_upload:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           lfs: true
-      # Extract deployment name as the slug of target PR branch via string operators, e.g. /deployment/plh_tz -> plh_tz
-      # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
       - name: Set Environment Deployment
-        run: |
-          if [ "$GITHUB_REF" = "refs/heads/master" ];                \
-          then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;          \
-          else echo "DEPLOYMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV;   \
-          fi;
+        # HACK - pr preview brnach only, should replace before merge
+        run: echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV
+        # run: |
+        #   if [ "$GITHUB_REF" = "refs/heads/master" ];                \
+        #   then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;          \
+        #   else echo "DEPLOYMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV;   \
+        #   fi;
         shell: bash
-      - run: |
-          echo $GITHUB_REF
-          echo $DEPLOYMENT_NAME
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -65,15 +64,7 @@ jobs:
           echo $(ls www)
           find . -name "*.map" -type f -delete
           echo $(ls www)
-      ###   Deploy  ###
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLH_TEENS_APP1 }}"
-          projectId: plh-teens-app1
-          # NOTE - deployment target should be set in firebase.json and .firebaserc
-          target: "${{env.DEPLOYMENT_NAME}}"
-          channelId: live
-      # Known issue - success message does not specify correct deployment url
-      # Not used anywhere else so assume fine for now (only gh action output incorrect)
-      # https://github.com/FirebaseExtended/action-hosting-deploy/issues/126
+        
+# NOTE - if testing locally equivalent commands can also be passed as args
+# npx @sentry/cli --url https://app.glitchtip.com login
+# npx @sentry/cli --url https://app.glitchtip.com releases list --org idems
