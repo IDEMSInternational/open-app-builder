@@ -22,6 +22,18 @@ export class CrashlyticsService extends AsyncServiceBase {
       await this.setEnabled({ enabled: true });
       const { uuid } = await Device.getId();
       await this.setUserId({ userId: uuid });
+      // populate webview useragent info
+      const { webViewVersion } = await Device.getInfo();
+      await this.setContext({
+        key: "userAgent",
+        type: "string",
+        value: navigator.userAgent || "",
+      });
+      await this.setContext({
+        key: "webViewVersion",
+        type: "string",
+        value: webViewVersion || "",
+      });
       this.sendUnsentReports();
     }
   }
