@@ -113,7 +113,8 @@ export class LocalNotificationService extends AsyncServiceBase {
   private async setApiNotifications() {
     const existingNotifications = await LocalNotifications.getPending();
     await LocalNotifications.cancel({ notifications: existingNotifications.notifications });
-    await LocalNotifications.schedule({ notifications: this.pendingNotifications$.value });
+    const toSchedule = this.pendingNotifications$.value;
+    await LocalNotifications.schedule({ notifications: toSchedule });
   }
 
   public async requestPermission(): Promise<boolean> {
@@ -301,6 +302,8 @@ export class LocalNotificationService extends AsyncServiceBase {
       schedule: { at: notificationDeliveryTime },
     };
     await this.scheduleNotification(immediateNotification);
+    // ensure api notificaiton scheduled immediately
+    await LocalNotifications.schedule({ notifications: [immediateNotification] });
     if (Capacitor.isNative && forceBackground) {
       // Ideally we want to minimise the app to see response when app is in background,
       // although the method appears inconsistent. Alternative minimiseApp proposed:
