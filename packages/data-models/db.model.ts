@@ -21,7 +21,7 @@ export const DB_TABLES = {
   /** Long term tracking of changes to user data, such as contact fields */
   data_events: "++id," + FLOW_EVENT_INDEXES,
   /** Scheduled and sent local notifications, including whether the app has had chance to process callbacks */
-  local_notifications: "id,_created,_callbacks_processed",
+  local_notifications: "id,_created,_callbacks_processed,_row_id",
   /** Subset of notifications shared with server (for ease of processings) */
   local_notifications_interaction: `++id,&notification_id,${SYNC_INDEX}`,
 
@@ -109,7 +109,7 @@ export interface IDBDoc {
  * e.g. v0.1.0 => 000001000
  * e.g. v0.10.4 => 000010004
  */
-export const DB_VERSION = 14003;
+export const DB_VERSION = 16009;
 
 export interface IDBEvent {
   topic: "DB";
