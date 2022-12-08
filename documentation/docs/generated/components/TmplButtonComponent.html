@@ -219,7 +219,7 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>TEMPLATE PARAMATER: &quot;button_align&quot;</p>
+                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;button_align&quot;</p>
 </div>
                 </td>
             </tr>
@@ -256,7 +256,7 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>TEMPLATE PARAMATER: &quot;disabled&quot;. If true, button is disabled and greyed out</p>
+                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;disabled&quot;. If true, button is disabled and greyed out</p>
 </div>
                 </td>
             </tr>
@@ -288,7 +288,7 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>TEMPLATE PARAMATER: &quot;icon&quot;. The path to an icon asset</p>
+                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;icon&quot;. The path to an icon asset</p>
 </div>
                 </td>
             </tr>
@@ -325,7 +325,7 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>TEMPLATE PARAMATER: &quot;style&quot;</p>
+                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;style&quot;</p>
 </div>
                 </td>
             </tr>
@@ -362,7 +362,7 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>TEMPLATE PARAMATER: &quot;text_align&quot;</p>
+                    <div class="io-description"><p>TEMPLATE PARAMETER: &quot;text_align&quot;</p>
 </div>
                 </td>
             </tr>
@@ -529,7 +529,7 @@ import { TemplateBaseComponent } from &quot;../base&quot;;
   styleUrls: [&quot;./button.component.scss&quot;],
 })
 export class TmplButtonComponent extends TemplateBaseComponent implements OnInit {
-  /** TEMPLATE PARAMATER: &quot;style&quot; */
+  /** TEMPLATE PARAMETER: &quot;style&quot; */
   style:
     | &quot;information&quot;
     | &quot;navigation&quot;
@@ -540,13 +540,13 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
     | &quot;tall&quot;
     | &quot;standard&quot;
     | &quot;alternative&quot; &#x3D; &quot;information&quot;;
-  /** TEMPLATE PARAMATER: &quot;disabled&quot;. If true, button is disabled and greyed out */
+  /** TEMPLATE PARAMETER: &quot;disabled&quot;. If true, button is disabled and greyed out */
   disabled: boolean &#x3D; false;
-  /** TEMPLATE PARAMATER: &quot;text_align&quot; */
+  /** TEMPLATE PARAMETER: &quot;text_align&quot; */
   textAlign: &quot;left&quot; | &quot;centre&quot; | &quot;right&quot; &#x3D; &quot;left&quot;;
-  /** TEMPLATE PARAMATER: &quot;button_align&quot; */
+  /** TEMPLATE PARAMETER: &quot;button_align&quot; */
   buttonAlign: &quot;left&quot; | &quot;centre&quot; | &quot;right&quot; &#x3D; &quot;centre&quot;;
-  /** TEMPLATE PARAMATER: &quot;icon&quot;. The path to an icon asset */
+  /** TEMPLATE PARAMETER: &quot;icon&quot;. The path to an icon asset */
   icon: string;
 
   /** @ignore */

@@ -7,6 +7,7 @@ import { throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { generateTimestamp } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
+import { SyncServiceBase } from "../syncService.base";
 
 /**
  * Backend API
@@ -18,7 +19,7 @@ import { AppConfigService } from "../app-config/app-config.service";
  *
  **/
 @Injectable({ providedIn: "root" })
-export class ServerService {
+export class ServerService extends SyncServiceBase {
   app_user_id: string;
   device_info: DeviceInfo;
   syncSchedule;
@@ -26,13 +27,13 @@ export class ServerService {
   //   Requires update (?) - https://angular.io/api/common/http/HttpContext
   //   context =  new HttpContext().set(SERVER_API, true),
   constructor(private http: HttpClient, private appConfigService: AppConfigService) {
-    this.subscribeToAppConfigChanges();
+    super("Server");
+    this.initialise();
   }
 
-  async init() {
-    this.device_info = await Device.getInfo();
-    const { uuid } = await Device.getId();
-    this.app_user_id = uuid;
+  private initialise() {
+    this.ensureSyncServicesReady([this.appConfigService]);
+    this.subscribeToAppConfigChanges();
     if (environment.production) {
       this.syncUserData();
       this.syncSchedule.subscribe(() => {
@@ -41,7 +42,7 @@ export class ServerService {
     }
   }
 
-  getServerStatus() {
+  private getServerStatus() {
     const endpoint = "/status";
     console.log("[SERVER] get status");
     this.http
@@ -49,7 +50,14 @@ export class ServerService {
       .subscribe((res) => console.log("[SERVER] status", res));
   }
 
-  syncUserData() {
+  public async syncUserData() {
+    if (!this.device_info) {
+      this.device_info = await Device.getInfo();
+    }
+    if (!this.app_user_id) {
+      const { uuid } = await Device.getId();
+      this.app_user_id = uuid;
+    }
     console.log("[SERVER] sync data");
     const contact_fields = this.getUserStorageData();
 

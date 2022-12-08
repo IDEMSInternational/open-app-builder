@@ -31,6 +31,8 @@ import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lif
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
 import { IAppConfig } from "./shared/model";
 import { TaskService } from "./shared/services/task/task.service";
+import { AsyncServiceBase } from "./shared/services/asyncService.base";
+import { SyncServiceBase } from "./shared/services/syncService.base";
 
 @Component({
   selector: "app-root",
@@ -49,14 +51,13 @@ export class AppComponent {
   public renderAppTemplates = false;
 
   constructor(
-    // services with constructor-enabled init functions (load eagerly)
-    public skinService: SkinService,
-    public appConfigService: AppConfigService,
-
-    // other services
+    // 3rd Party Services
     private platform: Platform,
     private menuController: MenuController,
     private router: Router,
+    // App services
+    private skinService: SkinService,
+    private appConfigService: AppConfigService,
     private dbService: DbService,
     private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
@@ -77,14 +78,14 @@ export class AppComponent {
     private authService: AuthService,
     private taskService: TaskService,
     /** Inject in the main app component to start tracking actions immediately */
-    public taskActions: TaskActionService,
-    public lifecycleActionsService: LifecycleActionsService,
-    public serverService: ServerService
+    private taskActions: TaskActionService,
+    private lifecycleActionsService: LifecycleActionsService,
+    private serverService: ServerService
   ) {
     this.initializeApp();
   }
 
-  async initializeApp() {
+  private async initializeApp() {
     this.platform.ready().then(async () => {
       this.subscribeToAppConfigChanges();
       // ensure deployment field set correctly for use in any startup services or templates
@@ -103,7 +104,13 @@ export class AppComponent {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
       }
       // Run app-specific launch tasks
+
+      // Re-initialise default field and globals on init in case sheets have been updated
+      // TODO - ideally this should just be triggered on first launch of new app update
+      await this.templateService.initialiseDefaultFieldAndGlobals();
+      await this.templateProcessService.initialiseStartupTemplates();
       await this.lifecycleActionsService.handleLaunchActions();
+
       this.menuController.enable(true, "main-side-menu");
       if (Capacitor.isNativePlatform()) {
         if (!isDeveloperMode) {
@@ -117,7 +124,7 @@ export class AppComponent {
     });
   }
 
-  async ensureUserSignedIn() {
+  private async ensureUserSignedIn() {
     const authUser = await this.authService.getCurrentUser();
     if (!authUser) {
       const templatename = this.appAuthenticationDefaults.signInTemplate;
@@ -131,7 +138,7 @@ export class AppComponent {
   }
 
   /** Initialise appConfig and set dependent properties */
-  subscribeToAppConfigChanges() {
+  private subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
       this.appConfig = appConfig;
       this.sideMenuDefaults = this.appConfig.APP_SIDEMENU_DEFAULTS;
@@ -148,39 +155,76 @@ export class AppComponent {
    * Note - For some of these services order will be important
    * (e.g. notifications before campaigns that require notifications)
    **/
-  async initialiseCoreServices() {
-    this.crashlyticsService.init(); // Start init but do not need to wait for complete
-    await this.dbService.init();
-    await this.userMetaService.init();
-    this.themeService.init();
+  private async initialiseCoreServices() {
+    // Organise all services into groups
+    const services: {
+      /** should be called early but don't need to be waited for */
+      eager: AsyncServiceBase[];
+      /** require async init and may be depended on by other services */
+      blocking: AsyncServiceBase[];
+      /** handle own init in synchronous function (will be ready on inject) */
+      nonBlocking: SyncServiceBase[];
+      /** async but not depended on for init of other services (can be intialised after timeout) */
+      deferred: (AsyncServiceBase | SyncServiceBase)[];
+      /** do not strictly need to be initialised as done by other services (but kept for reference) */
+      implicit: (AsyncServiceBase | SyncServiceBase)[];
+      /** likely no longer required, should be removed in future (impact can be tested by moving into group) */
+      deprecated: (AsyncServiceBase | SyncServiceBase)[];
+    } = {
+      eager: [this.crashlyticsService],
+      blocking: [
+        this.dbSyncService,
+        this.userMetaService,
+        this.tourService,
+        this.localNotificationService,
+        this.localNotificationInteractionService,
+        this.taskService,
+        this.taskActions,
+        this.campaignService,
+      ],
+      nonBlocking: [
+        this.skinService,
+        this.appConfigService,
+        this.themeService,
+        this.templateService,
+        this.templateProcessService,
+        this.appDataService,
+        this.authService,
+        this.serverService,
+      ],
+      deferred: [this.analyticsService],
+      implicit: [
+        this.dbService,
+        this.templateTranslateService,
+        this.templateFieldService,
+        this.dataEvaluationService,
+        this.appEventService,
+      ],
+      deprecated: [this.lifecycleActionsService],
+    };
 
-    /** CC 2021-05-14 - disabling reminders service until decide on full implementation (ideally not requiring evaluation of all reminders on init) */
-    // this.remindersService.init();
-    await this.appEventService.init();
-    await this.serverService.init();
-    await this.dataEvaluationService.refreshDBCache();
-    await this.templateTranslateService.init();
-    await this.appDataService.init();
-    await this.templateService.init();
-    // ensure local notifications service available for campaigns service
-    await this.localNotificationService.init();
-    // ensure campaigns initialised before template_process which processes templates on startup
-    await this.campaignService.init();
-    await this.templateProcessService.init();
-    await this.tourService.init();
-    await this.taskService.init();
-
-    // Initialise additional services in a non-blocking way
-    setTimeout(async () => {
-      await this.localNotificationInteractionService.init();
-      await this.dbSyncService.init();
-      await this.analyticsService.init();
-      /** CC 2022-04-01 - Disable service as not currently in use */
-      // await this.pushNotificationService.init();
-    }, 1000);
+    // log all init logs in a group. Note, some services may sit outside this group in cases
+    // where non-blocking services import blocking (non-blocking call init on import into constructor).
+    // could be resolved by importing via injector instead of constructor (assumed not very important)
+    console.group("Core Services");
+    const start = performance.now();
+    for (const service of services.eager) {
+      service.ready();
+    }
+    await Promise.all(services.blocking.map(async (service) => await service.ready()));
+    for (const service of services.nonBlocking) {
+      service.ready();
+    }
+    setTimeout(() => {
+      for (const service of services.deferred) {
+        service.ready();
+      }
+    }, 5000);
+    console.log("Total time:", Math.round(performance.now() - start) + "ms");
+    console.groupEnd();
   }
 
-  clickOnMenuItem(id: string) {
+  private clickOnMenuItem(id: string) {
     this.menuController.close("main-side-menu");
     this.router.navigateByUrl("/" + id);
   }

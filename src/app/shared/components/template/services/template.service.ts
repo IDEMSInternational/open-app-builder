@@ -10,11 +10,12 @@ import { IFlowEvent } from "data-models/db.model";
 import { TemplateVariablesService } from "./template-variables.service";
 import { TemplateFieldService } from "./template-field.service";
 import { arrayToHashmap } from "src/app/shared/utils";
+import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 
 @Injectable({
   providedIn: "root",
 })
-export class TemplateService {
+export class TemplateService extends SyncServiceBase {
   constructor(
     private localStorageService: LocalStorageService,
     private appDataService: AppDataService,
@@ -23,17 +24,31 @@ export class TemplateService {
     private translateService: TemplateTranslateService,
     private templateVariablesService: TemplateVariablesService,
     private templateFieldService: TemplateFieldService
-  ) {}
+  ) {
+    super("TemplateService");
+    this.initialise();
+    /**
+     * Avoid initialisation logic and prefer to ensure services ready
+     * on demand to avoid cyclic issues
+     * Instead services are checked before public method calls
+     * */
+  }
 
-  /** Initialise global and startup templates */
-  async init() {
-    // Re-initialise default field and globals on init in case sheets have been updated
-    // TODO - ideally this should just be triggered on first launch of new app update
-    await this.initialiseDefaultFieldAndGlobals();
+  private async initialise() {
     // Update default values when language changed to allow for global translations
     this.translateService.app_language$.subscribe(async (lang) => {
       await this.initialiseDefaultFieldAndGlobals();
     });
+  }
+
+  private async ensurePublicServicesReady() {
+    await this.ensureAsyncServicesReady([
+      this.dbService,
+      this.translateService,
+      this.templateVariablesService,
+      this.templateFieldService,
+    ]);
+    this.ensureSyncServicesReady([this.localStorageService, this.appDataService]);
   }
 
   /**
@@ -46,6 +61,7 @@ export class TemplateService {
     templatename: string,
     options: Partial<ITemplatePopupComponentProps> = {}
   ) {
+    await this.ensurePublicServicesReady();
     const props: ITemplatePopupComponentProps = {
       name: templatename,
       templatename,
@@ -76,6 +92,7 @@ export class TemplateService {
    * NOTE - fields will not update if already set
    */
   public async initialiseDefaultFieldAndGlobals() {
+    await this.ensurePublicServicesReady();
     // Evaluate overrides
     // TODO - should be generalised with other template and datalist retrieval methods
     const allGlobals = await this.appDataService.getSheetsWithData<FlowTypes.Global>("global");
@@ -123,6 +140,7 @@ export class TemplateService {
     templateName: string,
     is_override_target: boolean
   ): Promise<FlowTypes.Template> {
+    await this.ensurePublicServicesReady();
     const foundTemplate = await this.appDataService.getSheet<FlowTypes.Template>(
       "template",
       templateName

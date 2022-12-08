@@ -12,7 +12,11 @@ import { BehaviorSubject } from "rxjs";
 import { IAppConfig } from "../../model";
 import { generateTimestamp } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
+import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
+
+// Notification ids must be +/- 2^31-1 as per capacitor docs
+const NOTIFICATION_ID_MAX = 2147483647;
 
 /** Utility type to assert local notification has extra and schedule defined */
 export interface ILocalNotification extends LocalNotificationSchema {
@@ -41,7 +45,7 @@ export interface ILocalNotification extends LocalNotificationSchema {
  * TODO - improve logging methods
  *
  */
-export class LocalNotificationService {
+export class LocalNotificationService extends AsyncServiceBase {
   /**
    * Observable list of all notifications processed since app load, so additional services can respond to updates
    * Includes any notifications previously scheduled but no longer present (e.g dismissed while app closed)
@@ -65,12 +69,16 @@ export class LocalNotificationService {
   /** Default settings used where otherwise not specified */
   localNotificationDefaults: LocalNotificationSchema;
 
-  constructor(dbService: DbService, private appConfigService: AppConfigService) {
-    this.subscribeToAppConfigChanges();
-    this.db = dbService.table<ILocalNotification>("local_notifications");
+  constructor(private dbService: DbService, private appConfigService: AppConfigService) {
+    super("Local Notifications");
+    this.registerInitFunction(this.init);
   }
 
-  public async init() {
+  private async init() {
+    await this.ensureAsyncServicesReady([this.dbService]);
+    this.ensureSyncServicesReady([this.appConfigService]);
+    this.subscribeToAppConfigChanges();
+    this.db = this.dbService.table<ILocalNotification>("local_notifications");
     this.sessionStartTime = new Date().getTime();
     this.permissionGranted = await this.requestPermission();
     if (this.permissionGranted) {
@@ -90,7 +98,7 @@ export class LocalNotificationService {
       this.notificationDefaults = appConfig.NOTIFICATION_DEFAULTS;
       this.syncSchedule = interval(appConfig.NOTIFICATIONS_SYNC_FREQUENCY_MS);
       this.localNotificationDefaults = {
-        id: new Date().getUTCMilliseconds(),
+        id: null, // will be populated during schedule
         title: this.notificationDefaults.title,
         body: this.notificationDefaults.text,
         sound: null,
@@ -120,7 +128,7 @@ export class LocalNotificationService {
         resolve(display === "granted");
       }),
     ]);
-    console.log("[Notifications Enabled]", granted);
+    // console.log("[Notifications Enabled]", granted);
     return granted;
   }
 
@@ -204,6 +212,8 @@ export class LocalNotificationService {
         notification[key] = value;
       }
     });
+    // Use a random integer as id
+    notification.id = Math.floor(Math.random() * NOTIFICATION_ID_MAX);
     // HACK - for some reason largebody not always passed (possibly from schedule immediate) so reassign
     notification.largeBody = notification.largeBody || notification.body;
     await LocalNotifications.schedule({ notifications: [notification] });
@@ -242,7 +252,6 @@ export class LocalNotificationService {
     const immediateNotification = {
       ...notification,
       schedule: { at: notificationDeliveryTime },
-      id: new Date().getTime(),
     };
     await this.scheduleNotification(immediateNotification, false);
     if (Capacitor.isNative && forceBackground) {
