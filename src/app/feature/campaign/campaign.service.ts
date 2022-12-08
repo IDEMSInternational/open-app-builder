@@ -194,8 +194,8 @@ export class CampaignService extends AsyncServiceBase {
       if (campaign._active) {
         const nextRows = await this.getNextCampaignRows(campaign.id, campaign.schedule?.batch_size);
         if (nextRows) {
-          let earliestStart = new Date();
           // add new notifications
+          let earliestStart = new Date();
           for (const nextRow of nextRows) {
             const schedule = await this.scheduleNotification(nextRow, campaign.id, earliestStart);
             scheduled[campaign.id][nextRow.id] = schedule;
@@ -296,9 +296,9 @@ export class CampaignService extends AsyncServiceBase {
     const deactivatedNotifications = pendingNotifications.filter(
       (n) => n.extra.campaign_id === campaign_id
     );
-    for (const notification of deactivatedNotifications) {
-      await this.localNotificationService.removeNotification(notification.id);
-    }
+    await this.localNotificationService.removeNotifications(
+      deactivatedNotifications.map((n) => n.id)
+    );
   }
 
   /**
@@ -309,9 +309,7 @@ export class CampaignService extends AsyncServiceBase {
    */
   private async hackDeactivateAllNotifications() {
     const pendingNotifications = this.localNotificationService.pendingNotifications$.value;
-    for (const notification of pendingNotifications) {
-      await this.localNotificationService.removeNotification(notification.id);
-    }
+    await this.localNotificationService.removeNotifications(pendingNotifications.map((n) => n.id));
   }
 
   /**
