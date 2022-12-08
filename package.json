@@ -67,6 +67,7 @@
     "cordova-res": "^0.15.4",
     "data-models": "workspace:*",
     "date-fns": "^2.22.1",
+    "deep-object-diff": "^1.1.9",
     "dexie": "^3.0.3",
     "dexie-observable": "3.0.0-beta.11",
     "dexie-syncable": "^3.0.0-beta.10",
