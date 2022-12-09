@@ -6,6 +6,7 @@ import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 import { TemplateContainerComponent } from "../../template-container.component";
 import { TemplateNavService } from "../template-nav.service";
 import { TemplateService } from "../template.service";
+import { CampaignService } from "src/app/feature/campaign/campaign.service";
 
 /**
  * The template process service is a slightly hacky wrapper around the template container component so that
@@ -34,6 +35,9 @@ export class TemplateProcessService extends SyncServiceBase {
   }
   private get appDataService() {
     return getGlobalService(this.injector, AppDataService);
+  }
+  private get campaignService() {
+    return getGlobalService(this.injector, CampaignService);
   }
 
   /** Ensure services are intialised before being called from public methods  */
@@ -82,5 +86,13 @@ export class TemplateProcessService extends SyncServiceBase {
       const templateCopy = JSON.parse(JSON.stringify(template));
       await this.processTemplateWithoutRender(templateCopy);
     }
+    this.hackReinitialiseCampaignService();
+  }
+
+  /** Campaign notifications may have changed based on startup templates,
+   * so reinitialise after processing to schedule up-to-date notifications
+   */
+  private hackReinitialiseCampaignService() {
+    setTimeout(() => this.campaignService.reInitialise(), 5000);
   }
 }
