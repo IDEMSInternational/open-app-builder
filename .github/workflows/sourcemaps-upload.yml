@@ -6,10 +6,10 @@
 
 # NOTE - currently only used for debugging as methods are integrated into build scripts
 name: Sourcemaps Upload
-# on:
-  # push:
-  #   branches:
-  #     - feat/glitchtip-error-logs
+on:
+  push:
+    branches:
+      - master
 jobs:
   sourcemaps_upload:
     runs-on: ubuntu-latest
