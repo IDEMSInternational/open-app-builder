@@ -14,9 +14,9 @@ yarn install
 
 ### Setup required configuration
 
-All configuration is pre-established in the `scripts/config` folder, however is encrypted to avoid sharing sensitive information publically.
+All configuration is pre-established in the `packages/scripts/config` folder, however is encrypted to avoid sharing sensitive information publically.
 
-You must optain a `private.key` file from the development team which you can copy into the `scripts/config` folder.
+You must optain a `private.key` file from the development team which you can copy into the `packages/scripts/config` folder.
 
 Once the file is copied run the following command:
 
@@ -24,7 +24,7 @@ Once the file is copied run the following command:
 yarn scripts config decrypt
 ```
 
-You will see additional files populate to the `scripts/config` folder such as they become decrypted
+You will see additional files populate to the `packages/scripts/config` folder such as they become decrypted
 
 ### Connect to Google Drive
 
