@@ -6,10 +6,7 @@
 
 # NOTE - currently only used for debugging as methods are integrated into build scripts
 name: Sourcemaps Upload
-on:
-  push:
-    branches:
-      - master
+on: workflow_dispatch
 jobs:
   sourcemaps_upload:
     runs-on: ubuntu-latest
