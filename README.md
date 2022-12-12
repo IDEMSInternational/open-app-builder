@@ -51,8 +51,7 @@ the online database and authentication methods.
 ```
 $ cp src/environments/firebaseConfig.sample.ts src/environments/firebaseConfig.ts
 ```
-The default file is blank and so some features may not be availabe (e.g. testing google sign-in)
-It can be replaced with a version requested from the dev team.
+The default file is blank. It should be replaced with a version requested from the dev team.
 
 (Note - this process will likely be simplified in the future)
 
