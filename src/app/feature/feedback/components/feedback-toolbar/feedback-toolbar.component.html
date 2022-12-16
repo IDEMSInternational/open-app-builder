@@ -2,15 +2,15 @@
   <ion-item lines="none" style="flex: 1">
     <ion-label class="tool-label" position="stacked">Enabled</ion-label>
     <ion-checkbox
-      [(ngModel)]="feedbackEnabled"
-      (ionChange)="feedbackService.setReviewMode(feedbackEnabled)"
+      [(ngModel)]="feedbackService.options.enabled"
+      (ionChange)="feedbackService.setEnabled(feedbackService.options.enabled)"
     ></ion-checkbox>
   </ion-item>
   <ion-item lines="none" style="flex: 1">
     <ion-label class="tool-label" position="stacked">Navigation</ion-label>
     <ion-checkbox
-      [(ngModel)]="navigationEnabled"
-      (ionChange)="feedbackService.setNavigationEnabled(navigationEnabled)"
+      [(ngModel)]="feedbackService.options.navigationEnabled"
+      (ionChange)="feedbackService.setNavigationEnabled(feedbackService.options.navigationEnabled)"
     ></ion-checkbox>
   </ion-item>
   <ion-item lines="none" style="flex: 2">
@@ -23,8 +23,8 @@
       [min]="320"
       [max]="1280"
       [step]="160"
-      [(ngModel)]="contentPageWidth"
-      (ionChange)="feedbackService.setContentPageWidth(contentPageWidth)"
+      [(ngModel)]="feedbackService.options.contentPageWidth"
+      (ionChange)="feedbackService.setContentPageWidth(feedbackService.options.contentPageWidth)"
     >
     </ion-range>
   </ion-item>
