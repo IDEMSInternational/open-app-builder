@@ -214,9 +214,11 @@ export class FeedbackService {
     if (contextData?.selectedText) {
       await this.templateFieldService.setField(selected_text_field, contextData.selectedText);
     }
-    // launch feedback template
+    // launch feedback template, disable feedback mode to prevent actions on feedback poup
     const additional = { ...contextData, id: feedbackButton.id };
+    await this.setEnabled(false);
     await this.runFeedbackTemplate(feedbackButton.displayedTemplate, additional, ev);
+    await this.setEnabled(true);
 
     // clear previously set field
     await this.templateFieldService.setField(selected_text_field, null);
@@ -271,6 +273,7 @@ export class FeedbackService {
       ...opts,
     });
     toast.present();
+    await toast.onDidDismiss();
   }
 }
 
