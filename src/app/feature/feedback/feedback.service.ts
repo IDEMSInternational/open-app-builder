@@ -29,6 +29,8 @@ import { IAppConfig } from "packages/data-models";
 import { Router } from "@angular/router";
 import { takeWhile } from "rxjs/operators";
 import { fromEvent } from "rxjs";
+import { ThemeService } from "../theme/services/theme.service";
+import { SkinService } from "src/app/shared/services/skin/skin.service";
 
 @Injectable({
   providedIn: "root",
@@ -59,7 +61,9 @@ export class FeedbackService {
     private dbService: DbService,
     private dbSyncService: DBSyncService,
     private appConfigService: AppConfigService,
-    private router: Router
+    private router: Router,
+    private themeService: ThemeService,
+    private skinService: SkinService
   ) {
     this.subscribeToAppConfigChanges();
     // retrieve device info for passing in metadata
@@ -262,6 +266,8 @@ export class FeedbackService {
       timestamp: generateTimestamp(),
       app_version: environment.version,
       app_deployment_name: environment.deploymentName,
+      app_theme: this.themeService.getCurrentTheme(),
+      app_skin: this.skinService.getActiveSkinName(),
     };
     return metadata;
   }
