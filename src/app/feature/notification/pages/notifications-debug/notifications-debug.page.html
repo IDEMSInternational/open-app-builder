@@ -43,7 +43,7 @@
     <ng-template>
       <ion-content>
         <ion-datetime
-          (ionChange)="setCustomNotificationSchedule(picker.value)"
+          (ionChange)="setCustomNotificationSchedule($any(picker.value))"
           #picker
           locale="en-GB-u-hc-h12"
           [value]="pickerValue"
