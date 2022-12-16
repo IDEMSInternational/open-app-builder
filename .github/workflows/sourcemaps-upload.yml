@@ -11,7 +11,7 @@ jobs:
   sourcemaps_upload:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           lfs: true
       - name: Set Environment Deployment
@@ -24,9 +24,9 @@ jobs:
         #   fi;
         shell: bash
       - name: Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 16
       - name: Cache node modules
         uses: actions/cache@v2
         with:

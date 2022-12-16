@@ -9,14 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [16]
 
     steps:
       - name: Install crcmod
         run: |
           sudo apt-get install gcc python-dev python-setuptools
           sudo pip install -I --no-cache-dir -U crcmod
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
         with:
           lfs: true
       - name: Checkout LFS objects
@@ -29,7 +29,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-yarn-
       - name: Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
       - name: Setup GCloud
