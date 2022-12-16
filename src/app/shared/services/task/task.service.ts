@@ -2,11 +2,12 @@ import { Injectable } from "@angular/core";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
 import { AppDataService } from "../data/app-data.service";
 import { arrayToHashmap } from "../../utils";
+import { AsyncServiceBase } from "../asyncService.base";
 
 @Injectable({
   providedIn: "root",
 })
-export class TaskService {
+export class TaskService extends AsyncServiceBase {
   // TODO: These should be set from the deployment/skin level (ultimately should come from templates)
   highlightedTaskFieldName = "_task_highlighted_group_id";
   taskGroupsListName = "workshop_tasks";
@@ -16,9 +17,14 @@ export class TaskService {
   constructor(
     private templateFieldService: TemplateFieldService,
     private appDataService: AppDataService
-  ) {}
+  ) {
+    super("Task");
+    this.registerInitFunction(this.initialise);
+  }
 
-  async init() {
+  private async initialise() {
+    await this.ensureAsyncServicesReady([this.templateFieldService]);
+    this.ensureSyncServicesReady([this.appDataService]);
     await this.getListOfTaskGroups();
     if (this.taskGroups.length > 0) {
       this.evaluateHighlightedTaskGroup();
@@ -52,19 +58,24 @@ export class TaskService {
     // then un-set highlighted task group
     if (taskGroupsNotCompletedAndNotSkipped.length === 0) {
       this.templateFieldService.setField(this.highlightedTaskFieldName, "");
+      console.log("[HIGHLIGHTED TASK GROUP] - No highlighted task group is set");
     }
-    const highestPriorityTaskGroup = taskGroupsNotCompletedAndNotSkipped.reduce(
-      (highestPriority, taskGroup) => {
-        return highestPriority.number < taskGroup.number ? highestPriority : taskGroup;
-      }
-    );
-    if (highestPriorityTaskGroup.id !== previousHighlightedTaskGroup) {
-      this.templateFieldService.setField(
-        this.highlightedTaskFieldName,
-        highestPriorityTaskGroup.id
+    // Else set the highlighted task group to the task group with the highest priority of those
+    // not completed or skipped
+    else {
+      const highestPriorityTaskGroup = taskGroupsNotCompletedAndNotSkipped.reduce(
+        (highestPriority, taskGroup) => {
+          return highestPriority.number < taskGroup.number ? highestPriority : taskGroup;
+        }
       );
+      if (highestPriorityTaskGroup.id !== previousHighlightedTaskGroup) {
+        this.templateFieldService.setField(
+          this.highlightedTaskFieldName,
+          highestPriorityTaskGroup.id
+        );
+      }
+      console.log("[HIGHLIGHTED TASK GROUP] - ", highestPriorityTaskGroup.id);
     }
-    console.log("[HIGHLIGHTED TASK GROUP] - ", highestPriorityTaskGroup.id);
   }
 
   /** Get the id of the task group stored as higlighted */
