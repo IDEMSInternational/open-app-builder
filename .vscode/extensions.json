@@ -1,8 +1,10 @@
 {
   "recommendations": [
-    "dbaeumer.vscode-eslint", 
+    "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "Syler.sass-indented",
-    "Angular.ng-template"
+    "Angular.ng-template",
+    "nrwl.angular-console",
+    "angular.ng-template"
   ]
 }
