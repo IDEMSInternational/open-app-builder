@@ -31,14 +31,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: ./.yarn/cache
-          # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
-          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-v1-
+          cache: 'yarn'      
       - name: Populate firebaseConfig.ts
         env:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
