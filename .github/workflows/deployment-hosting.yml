@@ -46,7 +46,26 @@ jobs:
       - run: yarn install
       - name: Set Scripts Deployment
         run: yarn scripts deployment set $DEPLOYMENT_NAME
-      - run: yarn build
+      ### Generate and upload sourcemaps ###
+      - run: yarn build --source-map=true
+      - name: set app version
+        run: echo "APP_VERSION=$(echo "$(cat package.json | jq -r '.version')")" >> $GITHUB_ENV
+      - name: Upload sourcemaps
+        run: |
+          npx @sentry/cli releases delete ${DEPLOYMENT_NAME}-${APP_VERSION}
+          npx @sentry/cli releases files ${DEPLOYMENT_NAME}-${APP_VERSION} upload-sourcemaps www/
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN}}
+          SENTRY_URL: https://app.glitchtip.com/
+          SENTRY_ORG: idems
+          SENTRY_PROJECT: ${{env.DEPLOYMENT_NAME}}
+        continue-on-error: true
+      - name: Remove sourcemaps from build
+        run: |
+          echo $(ls www)
+          find . -name "*.map" -type f -delete
+          echo $(ls www)
+      ###   Deploy  ###
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"

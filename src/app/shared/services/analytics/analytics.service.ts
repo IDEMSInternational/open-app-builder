@@ -1,18 +1,23 @@
 import { Injectable } from "@angular/core";
 import { Device } from "@capacitor/device";
 import { MatomoTracker } from "@ngx-matomo/tracker";
+import { SyncServiceBase } from "../syncService.base";
 
 @Injectable({ providedIn: "root" })
-export class AnalyticsService {
-  constructor(private readonly matomoTracker: MatomoTracker) {}
+export class AnalyticsService extends SyncServiceBase {
+  constructor(private readonly matomoTracker: MatomoTracker) {
+    super("Analytics");
+    this.initialise();
+  }
 
-  public async init() {
+  private initialise() {
     // analytics are hosted on different url to site so allow cookies cross-origin
     this.matomoTracker.setCookieSameSite("Lax");
 
-    // set user id
-    const { uuid } = await Device.getId();
-    this.matomoTracker.setUserId(uuid);
+    // set user id whenever ready
+    Device.getId().then(({ uuid }) => {
+      this.matomoTracker.setUserId(uuid);
+    });
   }
 
   public trackEvent(name: string, value = null, category = "default", action = "default") {

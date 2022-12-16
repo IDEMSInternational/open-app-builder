@@ -1,6 +1,6 @@
 import { IDeploymentConfig } from "data-models";
 import { getDefaultAppConfig } from "data-models/appConfig";
-import * as SKINS from "./skins";
+import { SKINS } from "./skins";
 
 const app_config = getDefaultAppConfig();
 
@@ -26,16 +26,19 @@ const config: IDeploymentConfig = {
     translated_strings_path: "packages/app-data/translations_source/from_translators",
     source_strings_path: "packages/app-data/translations_source/to_translate",
   },
+  error_logging:{
+    dsn:'https://a8b2897d48e84c5fa4398b4eb6158480@app.glitchtip.com/2230'
+  },
   _version: 1.0,
 };
 
-config.app_config.APP_LANGUAGES.default = "gb_en";
-config.app_config.APP_SIDEMENU_DEFAULTS.title = "ParentApp";
-config.app_config.APP_HEADER_DEFAULTS.title = "ParentApp";
-config.app_config.NOTIFICATION_DEFAULTS.title = "New message from PLH";
-config.app_config.NOTIFICATION_DEFAULTS.text = "You have a new message from ParentApp";
-config.app_config.APP_SKINS.defaultSkinName = SKINS.weekly_workshop.name
-config.app_config.APP_SKINS.available = [SKINS.modular, SKINS.weekly_workshop]
-config.app_config.APP_THEMES.available = ["default", "professional"]
+config.app_config!.APP_LANGUAGES!.default = "gb_en";
+config.app_config!.APP_SIDEMENU_DEFAULTS!.title = "ParentApp";
+config.app_config!.APP_HEADER_DEFAULTS!.title = "ParentApp";
+config.app_config!.NOTIFICATION_DEFAULTS!.title = "New message from PLH";
+config.app_config!.NOTIFICATION_DEFAULTS!.text = "You have a new message from ParentApp";
+config.app_config!.APP_SKINS!.defaultSkinName = SKINS.weekly_workshop.name
+config.app_config!.APP_SKINS!.available = [SKINS.modular, SKINS.weekly_workshop]
+config.app_config!.APP_THEMES!.available = ["default", "professional"]
 
 export default config;

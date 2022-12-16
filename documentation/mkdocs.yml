@@ -27,6 +27,7 @@ nav:
       - developers/deployments.md
       - developers/device-testing.md
       - developers/android-assets.md
+      - developers/error-logs.md
   - Display Components:
       - components/audio.md
       - components/html.md
@@ -46,6 +47,8 @@ nav:
       - questions/positioning_components.md
       - questions/hidden_condition.md
       - questions/dynamic_content.md
+  - External:
+      - 'Compodoc Generated': ./generated/components/TmplButtonComponent.html" target="_blank
 # Enable all extension for authoring as per https://squidfunk.github.io/mkdocs-material/setup/extensions/
 
 markdown_extensions:

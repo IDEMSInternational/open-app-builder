@@ -1,4 +1,7 @@
 import { format } from "date-fns";
+import { diff } from "deep-object-diff";
+import { Observable } from "rxjs";
+import { map, pairwise, filter, share } from "rxjs/operators";
 import { FlowTypes } from "../model";
 
 /**
@@ -308,6 +311,10 @@ export function deepMergeObjects(target: any, ...sources: any) {
   return deepMergeObjects(target, ...sources);
 }
 
+export function deepDiffObjects<T extends Object, U extends Object>(a: T, b: U) {
+  return diff(a, b) as RecursivePartial<T | U>;
+}
+
 export function isObject(item: any) {
   return item && typeof item === "object" && !Array.isArray(item);
 }
@@ -322,6 +329,20 @@ export async function asyncEvery(arr: any[], predicate: Function) {
     if (!(await predicate(el))) return false;
   }
   return true;
+}
+
+/** Create a subject that only emits deep object diff of values for an input observable */
+export function trackObservableObjectChanges<T extends Object>(subject: Observable<T>) {
+  // pairwise() operator keeps a [before,after] array of the observable
+  // map() operator converts [before,after] to deep object diff
+  // filter() operator only emits if changes exist
+  // share() operator enables observable to be subscribed by multiple subscribers (i.e. like an RXJS Subject)
+  return subject.pipe(
+    pairwise(),
+    map(([before, after]) => deepDiffObjects(before, after)),
+    filter((v) => Object.keys(v).length > 0),
+    share()
+  );
 }
 
 /** A recursive version of Partial, making all properties, included nested ones, optional.
