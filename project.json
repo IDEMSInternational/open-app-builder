@@ -1,0 +1,192 @@
+{
+  "name": "app",
+  "sourceRoot": "src",
+  "projectType": "application",
+  "prefix": "plh",
+  "generators": {},
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "aot": true,
+        "outputPath": "www",
+        "index": "src/index.html",
+        "main": "src/main.ts",
+        "polyfills": "src/polyfills.ts",
+        "tsConfig": "tsconfig.app.json",
+        "optimization": {
+          "scripts": false,
+          "fonts": false,
+          "styles": false
+        },
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "src/assets",
+            "output": "assets"
+          },
+          {
+            "glob": "**/*.svg",
+            "input": "node_modules/ionicons/dist/ionicons/svg",
+            "output": "./svg"
+          }
+        ],
+        "styles": [
+          "./node_modules/intro.js/introjs.css",
+          "./node_modules/katex/dist/katex.min.css",
+          {
+            "input": "src/theme/variables.scss",
+            "inject": true
+          },
+          {
+            "input": "src/global.scss",
+            "inject": true
+          }
+        ],
+        "scripts": ["./node_modules/intro.js/intro.js"],
+        "allowedCommonJsDependencies": [
+          "lottie-web",
+          "firebase/app",
+          "@firebase/auth",
+          "clone",
+          "howler",
+          "dompurify",
+          "extract-math",
+          "marked",
+          "app-data",
+          "stacktrace-js",
+          "intro.js",
+          "qrcode"
+        ]
+      },
+      "configurations": {
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "src/environments/environment.ts",
+              "with": "src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "aot": true,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "optimization": {
+            "scripts": true,
+            "styles": {
+              "minify": true,
+              "inlineCritical": false
+            },
+            "fonts": true
+          },
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "850kb",
+              "maximumError": "4mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "3kb",
+              "maximumError": "16kb"
+            }
+          ]
+        },
+        "ci": {
+          "budgets": [
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb"
+            }
+          ],
+          "progress": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "app:build:development"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "app:build:production"
+        },
+        "ci": {
+          "progress": false
+        }
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "app:build"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "src/test.ts",
+        "polyfills": "src/polyfills.ts",
+        "tsConfig": "tsconfig.spec.json",
+        "karmaConfig": "karma.conf.js",
+        "styles": [],
+        "scripts": [],
+        "assets": [
+          {
+            "glob": "favicon.ico",
+            "input": "src/",
+            "output": "/"
+          },
+          {
+            "glob": "**/*",
+            "input": "src/assets",
+            "output": "/assets"
+          }
+        ]
+      },
+      "configurations": {
+        "ci": {
+          "progress": false,
+          "watch": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@angular-eslint/builder:lint",
+      "options": {
+        "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+      }
+    },
+    "e2e": {
+      "executor": "@angular-devkit/build-angular:protractor",
+      "options": {
+        "protractorConfig": "e2e/protractor.conf.js",
+        "devServerTarget": "app:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "app:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "app:serve:ci"
+        }
+      }
+    },
+    "deploy": {
+      "executor": "@angular/fire:deploy",
+      "options": {}
+    }
+  }
+}
