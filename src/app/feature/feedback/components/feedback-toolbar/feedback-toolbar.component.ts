@@ -7,22 +7,18 @@ import { FeedbackService } from "../../feedback.service";
   styleUrls: ["./feedback-toolbar.component.scss"],
 })
 export class FeedbackToolbarComponent implements AfterViewInit {
-  /** Default width to set content page when showing feedback pane */
-  public contentPageWidth = 480;
-  public navigationEnabled = true;
-  public feedbackEnabled = true;
-
   constructor(public feedbackService: FeedbackService) {}
 
   ngAfterViewInit(): void {
-    this.feedbackService.setContentPageWidth(this.contentPageWidth);
-    this.feedbackService.setReviewMode(this.feedbackEnabled);
-    this.feedbackService.setNavigationEnabled(this.navigationEnabled);
+    const { contentPageWidth, enabled, navigationEnabled } = this.feedbackService.options;
+    this.feedbackService.setContentPageWidth(contentPageWidth);
+    this.feedbackService.setEnabled(enabled);
+    this.feedbackService.setNavigationEnabled(navigationEnabled);
   }
 
   ngOnDetroy() {
     this.feedbackService.setContentPageWidth(null);
-    this.feedbackService.setReviewMode(false);
+    this.feedbackService.setEnabled(false);
     this.feedbackService.setNavigationEnabled(true);
   }
 }

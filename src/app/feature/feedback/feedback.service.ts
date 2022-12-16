@@ -36,6 +36,12 @@ import { fromEvent } from "rxjs";
 export class FeedbackService {
   public isReviewingMode$ = new BehaviorSubject(false);
 
+  public options = {
+    contentPageWidth: 480,
+    navigationEnabled: true,
+    enabled: true,
+  };
+
   private deviceInfo: DeviceInfo;
   /** Track content el style to allow revert on component destroy */
   private initialContentStyle?: CSSStyleDeclaration;
@@ -89,7 +95,8 @@ export class FeedbackService {
     });
   }
 
-  public async setReviewMode(isEnabled = false) {
+  public async setEnabled(isEnabled = false) {
+    this.options.enabled = isEnabled;
     if (this.isReviewingMode$.value !== isEnabled) {
       this.isReviewingMode$.next(isEnabled);
     }
@@ -150,6 +157,7 @@ export class FeedbackService {
       this.initialContentStyle = contentEl.style;
     }
     if (width) {
+      this.options.contentPageWidth = width;
       contentEl.style.width = `${width}px`;
       contentEl.style.maxWidth = `${width}px`;
       contentEl.style.margin = `auto`;
@@ -162,6 +170,7 @@ export class FeedbackService {
 
   /** Progamatically set router guards to enable/disable navigation */
   public setNavigationEnabled(enabled?: boolean) {
+    this.options.navigationEnabled = enabled;
     this.router.resetConfig(
       this.router.config.map((r) => {
         if (!r.redirectTo) {
