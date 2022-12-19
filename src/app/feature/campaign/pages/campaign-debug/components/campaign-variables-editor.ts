@@ -34,7 +34,7 @@ import { TemplateFieldService } from "src/app/shared/components/template/service
         </ion-label>
         <ion-datetime
           #firstLaunch
-          (ionChange)="setAppLaunchData(firstLaunch.value, appDay.value)"
+          (ionChange)="setAppLaunchData($any(firstLaunch.value), appDay.value)"
           [value]="dbData.first_app_launch"
         ></ion-datetime>
       </ion-item>
@@ -45,7 +45,7 @@ import { TemplateFieldService } from "src/app/shared/components/template/service
           type="number"
           [value]="dbData.app_day"
           style="text-align: right"
-          (ionBlur)="setAppLaunchData(firstLaunch.value, appDay.value)"
+          (ionBlur)="setAppLaunchData($any(firstLaunch.value), appDay.value)"
         ></ion-input>
       </ion-item>
       <h4>Field Variables</h4>
@@ -56,12 +56,12 @@ import { TemplateFieldService } from "src/app/shared/components/template/service
           #fieldFirst
           placeholder="Set First"
           [value]="row.current_value_first"
-          (ionChange)="setField(row.field, select.value, fieldFirst.value)"
+          (ionChange)="setField(row.field, select.value, $any(fieldFirst.value))"
         ></ion-datetime>
         <ion-select
           #select
           [value]="row.current_value"
-          (ionChange)="setField(row.field, select.value, fieldFirst.value)"
+          (ionChange)="setField(row.field, select.value, $any(fieldFirst.value))"
           [compareWith]="compareFieldValue"
           placeholder="Set Value"
         >

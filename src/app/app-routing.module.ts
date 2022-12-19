@@ -61,7 +61,6 @@ const FeatureRoutes: Routes = [
       preloadingStrategy: PreloadAllModules,
       useHash: false,
       anchorScrolling: "enabled",
-      relativeLinkResolution: "legacy",
     }),
   ],
   exports: [RouterModule],

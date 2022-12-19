@@ -14,7 +14,7 @@ jobs:
     if: contains(github.event.pull_request.labels.*.name, 'Test - preview')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           lfs: true
       # Extract deployment name as the slug of target PR branch via string operators, e.g. /deployment/plh_tz -> plh_tz
@@ -30,17 +30,10 @@ jobs:
           echo $GITHUB_BASE_REF
           echo $DEPLOYMENT_NAME
       - name: Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: 16.x
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: ./.yarn/cache
-          # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
-          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-v1-
+          node-version: 16
+          cache: 'yarn'
       - name: Populate firebaseConfig.ts
         env:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
