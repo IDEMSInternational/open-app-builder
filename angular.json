@@ -50,7 +50,20 @@
               }
             ],
             "scripts": ["./node_modules/intro.js/intro.js"],
-            "allowedCommonJsDependencies": ["lottie-web", "firebase/app", "@firebase/auth"]
+            "allowedCommonJsDependencies": [
+              "lottie-web",
+              "firebase/app",
+              "@firebase/auth",
+              "clone",
+              "howler",
+              "dompurify",
+              "extract-math",
+              "marked",
+              "app-data",
+              "stacktrace-js",
+              "intro.js",
+              "qrcode"
+            ]
           },
           "configurations": {
             "development": {
@@ -91,7 +104,7 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
+                  "maximumWarning": "3kb",
                   "maximumError": "16kb"
                 }
               ]
