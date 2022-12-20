@@ -8,7 +8,6 @@ import {
 } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 import { FlowTypes, ITemplateRowProps } from "../../models";
-// RxJS v6+
 
 @Component({
   selector: "plh-select-text",

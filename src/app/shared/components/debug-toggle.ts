@@ -44,14 +44,14 @@ import { takeUntil } from "rxjs/operators";
 export class PLHDebugToggleComponent implements OnInit, OnDestroy {
   debugMode = false;
   showDebugToggle = true;
-  componentDestroyed$ = new Subject();
+  private componentDestroyed$ = new Subject<boolean>();
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.subscribeToQueryParamChanges();
   }
   ngOnDestroy() {
-    this.componentDestroyed$.next();
+    this.componentDestroyed$.next(true);
     this.componentDestroyed$.unsubscribe();
   }
 
