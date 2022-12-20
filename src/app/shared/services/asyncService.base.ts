@@ -1,6 +1,5 @@
-import { filter, first, map, tap, timeoutWith } from "rxjs/operators";
-import { BehaviorSubject } from "rxjs";
-import { of } from "rxjs";
+import { filter, first, tap, timeoutWith, timeout } from "rxjs/operators";
+import { BehaviorSubject, of, firstValueFrom } from "rxjs";
 import type { SyncServiceBase } from "./syncService.base";
 
 /**
@@ -65,29 +64,27 @@ export class AsyncServiceBase {
    * @param timeout ms to wait before silently failing (default 10s)
    * @returns Promise<boolean>
    */
-  public async ready(timeout = 10 * 1000): Promise<boolean> {
+  public async ready(timeoutValue = 10 * 1000): Promise<boolean> {
     if (!this.initCalled) {
       this.callInitFunction();
     }
     // Convert subject to promise by subscribing only to the first value emitted
     // and filtering to only emit value when initialised true
-    return this.initialised$
-      .pipe(
+    return firstValueFrom(
+      this.initialised$.pipe(
         filter((v) => v === true),
         first(),
-        timeoutWith(
-          timeout,
-          of(true).pipe(
-            tap(() => {
-              console.log(`%c ${this.serviceName || ""} `, "background: #bd8173; color: black");
-            })
-          )
-        )
+        timeout({
+          each: timeoutValue,
+          with: () =>
+            of(true).pipe(
+              tap(() => {
+                console.log(`%c ${this.serviceName || ""} `, "background: #bd8173; color: black");
+              })
+            ),
+        })
       )
-      .toPromise();
-
-    // RXJS7 Version (future upgrade)
-    // return firstValueFrom(this.initialised$.pipe(filter((v: boolean) => v === true)));
+    );
   }
   /** Synchronous method to check current ready state */
   isReady = () => this.initialised$.value === true;
