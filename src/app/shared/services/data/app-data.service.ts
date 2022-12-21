@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { SHEETS_CONTENT_LIST, TRANSLATIONS_CONTENT_LIST } from "app-data";
+import { lastValueFrom } from "rxjs";
 import { FlowTypes } from "../../model";
 import { arrayToHashmap } from "../../utils";
 import { SyncServiceBase } from "../syncService.base";
@@ -34,7 +35,7 @@ export class AppDataService extends SyncServiceBase {
     if (contents) {
       const { filename } = contents;
       const assetPath = `${APP_DATA_BASE}/translations/${filename}`;
-      const strings = await this.http.get(assetPath).toPromise();
+      const strings = await lastValueFrom(this.http.get(assetPath));
       return strings as { [source_string: string]: string };
     } else {
       console.error("No translations exist for language", language_code);
@@ -98,7 +99,7 @@ export class AppDataService extends SyncServiceBase {
     if (flow_subtype) type_path += `/${flow_subtype}`;
     const path = `${APP_DATA_BASE}/sheets/${type_path}/${flow_name}.json`;
     try {
-      const data = await this.http.get(path).toPromise();
+      const data = await lastValueFrom(this.http.get(path));
       return data as T;
     } catch (error) {
       // Sheet no longer in assets folder. This typically only happens
