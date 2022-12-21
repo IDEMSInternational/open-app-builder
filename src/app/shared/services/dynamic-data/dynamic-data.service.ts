@@ -17,6 +17,11 @@ import { DynamicDataMemoryDB } from "./adapters/memoryDB";
  * for storing user changes
  */
 export class DynamicDataService extends AsyncServiceBase {
+  // TODO - refactor into 3 layers and add persistence separate
+  private baseLayer; // only for tracking loaded sheets
+  private writeLayer; //
+  private mergeLayer; //
+
   /**
    * The memory DB stores the rows of any requested sheets, merged with user writes
    *

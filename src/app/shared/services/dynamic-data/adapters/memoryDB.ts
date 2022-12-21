@@ -61,11 +61,16 @@ export class DynamicDataMemoryDB {
     RxStorageMemoryInstanceCreationOptions
   >;
 
-  public async create() {
+  public async create(options?: { persistDB?: boolean }) {
     this.db = await createRxDatabase({
       name: `${environment.deploymentName}`,
       storage: getRxStorageMemory(),
     });
+    if (options.persistDB) {
+      this.db.$.subscribe((change) => {
+        console.log("persisting change", change);
+      });
+    }
     return this;
   }
 
