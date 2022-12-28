@@ -7,8 +7,8 @@ import { environment } from "src/environments/environment";
 import { AppDataService } from "../data/app-data.service";
 import { AsyncServiceBase } from "../asyncService.base";
 import { arrayToHashmap, deepMergeObjects } from "../../utils";
-import { DynamicDataPersistedDB } from "./adapters/persistedDB";
-import { DynamicDataMemoryDB } from "./adapters/memoryDB";
+import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
+import { ReactiveMemoryAdapater } from "./adapters/reactiveMemory";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -17,18 +17,13 @@ import { DynamicDataMemoryDB } from "./adapters/memoryDB";
  * for storing user changes
  */
 export class DynamicDataService extends AsyncServiceBase {
-  // TODO - refactor into 3 layers and add persistence separate
-  private baseLayer; // only for tracking loaded sheets
-  private writeLayer; //
-  private mergeLayer; //
-
   /**
    * The memory DB stores the rows of any requested sheets, merged with user writes
    *
    * Each flow is represented in its own collection, and populated as requested.
    * This allows users to query and subscribe to data changes in an efficient way
    */
-  private memoryDB: DynamicDataMemoryDB;
+  private data$: ReactiveMemoryAdapater;
 
   /**
    * Any user edits flow data is retained in its own layer, initially in memory
@@ -40,7 +35,7 @@ export class DynamicDataService extends AsyncServiceBase {
    * As each collection would create a standalone indexeddb, data is instead grouped by
    * flow type so that all data_list updates are stored in a single table
    */
-  private persistedDB: DynamicDataPersistedDB;
+  private writeCache: PersistedMemoryAdapter;
 
   constructor(private appDataService: AppDataService) {
     super("Dynamic Data");
@@ -55,8 +50,8 @@ export class DynamicDataService extends AsyncServiceBase {
         addRxPlugin(module.RxDBDevModePlugin);
       });
     }
-    this.persistedDB = await new DynamicDataPersistedDB().create();
-    this.memoryDB = await new DynamicDataMemoryDB().create();
+    this.writeCache = await new PersistedMemoryAdapter().create();
+    this.data$ = await new ReactiveMemoryAdapater().create();
 
     setTimeout(() => {
       this.test();
@@ -67,11 +62,11 @@ export class DynamicDataService extends AsyncServiceBase {
   public async watch(flow_type: FlowTypes.FlowType, flow_name: string) {
     const collectionName = this.normaliseCollectionName(flow_type, flow_name);
     // create new memory collection on demand if does not exist,
-    if (!this.memoryDB.hasCollection(collectionName)) {
+    if (!this.data$.hasCollection(collectionName)) {
       const initialData = await this.getInitialData(flow_type, flow_name);
-      await this.memoryDB.createCollection(collectionName, initialData);
+      await this.data$.createCollection(collectionName, initialData);
     }
-    return this.memoryDB.subscribe(collectionName).pipe(map((v) => v.documentData));
+    return this.data$.subscribe(collectionName).pipe(map((v) => v.documentData));
   }
 
   public async update<T extends { id: string }>(
@@ -83,17 +78,18 @@ export class DynamicDataService extends AsyncServiceBase {
       const { id, ...data } = update;
       // update memory db
       const collectionName = this.normaliseCollectionName(flow_type, flow_name);
-      await this.memoryDB.update({ collectionName, id, data });
+      await this.data$.update({ collectionName, id, data });
       // update persisted db
-      this.persistedDB.update({ flow_name, flow_type, id, data });
+      this.writeCache.update({ flow_name, flow_type, id, data });
     }
   }
 
   /** Retrive json sheet data and merge with any user writes */
   private async getInitialData(flow_type: FlowTypes.FlowType, flow_name: string) {
     const flowData = await this.appDataService.getSheet(flow_type, flow_name);
-    const writeData = this.persistedDB.get(flow_type, flow_name);
-    const mergedData = this.mergeData(flowData?.rows, writeData?.docs);
+    const writeData = this.writeCache.get(flow_type, flow_name);
+    const writeDataArray = Object.entries(writeData || {}).map(([id, v]) => ({ ...v, id }));
+    const mergedData = this.mergeData(flowData?.rows, writeDataArray);
     return mergedData;
   }
 

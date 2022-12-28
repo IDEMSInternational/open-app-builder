@@ -52,7 +52,7 @@ interface IDataUpdate {
   data?: Record<string, any>;
 }
 
-export class DynamicDataMemoryDB {
+export class ReactiveMemoryAdapater {
   private db: RxDatabase<
     {
       [key: string]: RxCollection<any, {}, {}, {}>;
@@ -61,16 +61,11 @@ export class DynamicDataMemoryDB {
     RxStorageMemoryInstanceCreationOptions
   >;
 
-  public async create(options?: { persistDB?: boolean }) {
+  public async create() {
     this.db = await createRxDatabase({
       name: `${environment.deploymentName}`,
       storage: getRxStorageMemory(),
     });
-    if (options.persistDB) {
-      this.db.$.subscribe((change) => {
-        console.log("persisting change", change);
-      });
-    }
     return this;
   }
 
