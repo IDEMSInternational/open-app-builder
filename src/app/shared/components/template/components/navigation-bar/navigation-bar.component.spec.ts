@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
-import { NavigationBarComponent } from "./navigation-bar.component";
+import { TmplNavigationBarComponent } from "./navigation-bar.component";
 
 describe("NavigationBarComponent", () => {
-  let component: NavigationBarComponent;
-  let fixture: ComponentFixture<NavigationBarComponent>;
+  let component: TmplNavigationBarComponent;
+  let fixture: ComponentFixture<TmplNavigationBarComponent>;
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [NavigationBarComponent],
+        declarations: [TmplNavigationBarComponent],
         imports: [IonicModule.forRoot()],
       }).compileComponents();
 
-      fixture = TestBed.createComponent(NavigationBarComponent);
+      fixture = TestBed.createComponent(TmplNavigationBarComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
     })
