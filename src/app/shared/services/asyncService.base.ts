@@ -1,4 +1,4 @@
-import { filter, first, tap, timeoutWith, timeout } from "rxjs/operators";
+import { filter, first, tap, timeout } from "rxjs/operators";
 import { BehaviorSubject, of, firstValueFrom } from "rxjs";
 import type { SyncServiceBase } from "./syncService.base";
 
@@ -61,10 +61,10 @@ export class AsyncServiceBase {
 
   /**
    * public function to check if service async init method has been completed and wait if not
-   * @param timeout ms to wait before silently failing (default 10s)
+   * @param timeout ms to wait before silently failing (default 60s)
    * @returns Promise<boolean>
    */
-  public async ready(timeoutValue = 10 * 1000): Promise<boolean> {
+  public async ready(timeout = 60 * 1000): Promise<boolean> {
     if (!this.initCalled) {
       this.callInitFunction();
     }
