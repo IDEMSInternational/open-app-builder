@@ -65,6 +65,7 @@ export class ReactiveMemoryAdapater {
     this.db = await createRxDatabase({
       name: `${environment.deploymentName}`,
       storage: getRxStorageMemory(),
+      ignoreDuplicate: true,
     });
     return this;
   }
