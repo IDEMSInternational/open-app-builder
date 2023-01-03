@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.12",
-    "@types/inquirer": "^7.3.3",
+    "@types/inquirer": "^8.1.2",
     "@types/node": "^15.12.4",
     "app-data": "workspace:*",
     "chalk": "^4.1.1",
