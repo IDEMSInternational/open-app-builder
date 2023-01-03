@@ -1,4 +1,4 @@
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, lastValueFrom } from "rxjs";
 import { takeWhile } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
 import { TemplateContainerComponent } from "../../template-container.component";
@@ -147,7 +147,9 @@ export class TemplateActionService extends SyncServiceBase {
       log_groupEnd();
     }
     // resolve once full queue processed
-    await this.actionsQueueProcessing$.pipe(takeWhile((v) => v === true)).toPromise();
+    await lastValueFrom(this.actionsQueueProcessing$.pipe(takeWhile((v) => v === true)), {
+      defaultValue: "No action queue",
+    });
     // once all actions have been processed re-render rows (ignore if running standalone without container)
     if (processedActions.length > 0 && this.container) {
       // assume rows might need re-evaluation if actions contain set_field or set_local
