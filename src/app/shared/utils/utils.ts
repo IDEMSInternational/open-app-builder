@@ -41,7 +41,7 @@ export function arrayToHashmap<T>(arr: T[], keyfield: string): { [key: string]: 
  * @param keyfield any unique field which all array objects contain to use as hash keys (e.g. 'id')
  */
 export function arrayToHashmapArray<T>(arr: T[], keyfield: keyof T) {
-  const hashmap: { [key: string]: T[] } = {};
+  const hashmap: Record<string, T[]> = {};
   for (const el of arr) {
     if (el.hasOwnProperty(keyfield)) {
       if (!hashmap[el[keyfield as string]]) {
