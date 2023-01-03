@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Auth } from "@angular/fire/auth";
 import { FirebaseAuthentication, User } from "@capacitor-firebase/authentication";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, firstValueFrom } from "rxjs";
 import { first, filter } from "rxjs/operators";
 import { IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
@@ -26,12 +26,7 @@ export class AuthService extends SyncServiceBase {
 
   /** Return a promise that resolves after a signed in user defined */
   public async waitForSignInComplete() {
-    return this.authUser$
-      .pipe(
-        filter((value?: User | null) => !!value),
-        first()
-      )
-      .toPromise();
+    return firstValueFrom(this.authUser$.pipe(filter((value?: User | null) => !!value)));
   }
 
   public async signInWithGoogle() {
