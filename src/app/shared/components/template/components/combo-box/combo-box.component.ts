@@ -11,7 +11,6 @@ import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 import { TemplateService } from "../../services/template.service";
 import { ReplaySubject } from "rxjs";
-import { takeUntil } from "rxjs/operators";
 
 @Component({
   selector: "plh-combo-box",
@@ -28,7 +27,7 @@ export class TmplComboBoxComponent
   style: string;
   text = "";
   customAnswerSelected: boolean = false;
-  destroy$ = new ReplaySubject(1);
+  private componentDestroyed$ = new ReplaySubject(1);
   constructor(private modalController: ModalController, private templateService: TemplateService) {
     super();
   }
@@ -97,7 +96,7 @@ export class TmplComboBoxComponent
   }
 
   ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
+    this.componentDestroyed$.next(true);
+    this.componentDestroyed$.complete();
   }
 }
