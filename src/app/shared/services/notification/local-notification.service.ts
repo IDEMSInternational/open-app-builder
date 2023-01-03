@@ -7,6 +7,7 @@ import {
   ActionPerformed,
 } from "@capacitor/local-notifications";
 import { addSeconds } from "date-fns";
+import type { Table } from "dexie";
 import { interval } from "rxjs";
 import { Subscription } from "rxjs";
 import { BehaviorSubject } from "rxjs";
@@ -59,7 +60,7 @@ export class LocalNotificationService extends AsyncServiceBase {
   public interactedNotification$ = new BehaviorSubject<ActionPerformed>(null);
 
   /** Typed wrapper around database table used to store local notifications */
-  private db: Dexie.Table<ILocalNotification, number>;
+  private db: Table<ILocalNotification, number>;
 
   /** Track session start time to resolve list of notifications processed during session */
   private sessionStartTime = new Date().getTime();
@@ -207,7 +208,7 @@ export class LocalNotificationService extends AsyncServiceBase {
    */
   private async cleanDBNotifications() {
     const dbNotifications = await this.getDBNotifications();
-    const duplicatesByRowId = arrayToHashmapArray(dbNotifications, "_row_id");
+    const duplicatesByRowId = arrayToHashmapArray<any>(dbNotifications, "_row_id");
     const removeIds: number[] = [];
     // in case multiple entries scheduled for a given row notification id
     // retain only the most recently interacted with (if exists), or can just pick any one

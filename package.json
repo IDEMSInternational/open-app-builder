@@ -65,6 +65,7 @@
     "app-data": "workspace:*",
     "capacitor-firebase-auth": "^3.0.0",
     "cordova-res": "^0.15.4",
+    "core-js": "^3.27.1",
     "data-models": "workspace:*",
     "date-fns": "^2.22.1",
     "deep-object-diff": "^1.1.9",
@@ -129,7 +130,7 @@
     "eslint-plugin-jsdoc": "35.4.0",
     "eslint-plugin-prefer-arrow": "1.2.3",
     "firebase-tools": "^9.14.0",
-    "husky": "^8.0.0",
+    "husky": "^8.0.2",
     "jasmine-core": "~3.7.1",
     "jasmine-spec-reporter": "~7.0.0",
     "karma": "~6.3.4",
@@ -149,5 +150,5 @@
   "engines": {
     "node": ">=14.20.0"
   },
-  "packageManager": "yarn@3.1.0"
+  "packageManager": "yarn@3.3.1"
 }
