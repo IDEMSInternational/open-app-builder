@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import type { Table } from "dexie";
 import { IDBMeta } from "packages/data-models/db.model";
 import { BehaviorSubject } from "rxjs";
 import { interval } from "rxjs";
@@ -29,7 +30,7 @@ export type ILocalNotificationInteractionDB = ILocalNotificationInteraction & ID
  */
 export class LocalNotificationInteractionService extends AsyncServiceBase {
   /** Typed wrapper around database table used to store local notifications */
-  private db: Dexie.Table<ILocalNotificationInteractionDB, number>;
+  private db: Table<ILocalNotificationInteractionDB, number>;
   /**  */
   public interactedNotifications$ = new BehaviorSubject<ILocalNotificationInteractionDB[]>([]);
 
