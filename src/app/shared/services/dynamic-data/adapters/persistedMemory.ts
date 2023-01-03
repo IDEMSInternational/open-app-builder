@@ -62,6 +62,7 @@ export class PersistedMemoryAdapter {
     this.db = await createRxDatabase({
       name: `${environment.deploymentName}_user`,
       storage: getRxStorageDexie({ autoOpen: true }),
+      ignoreDuplicate: true,
     });
     if (!this.collection) {
       await this.db.addCollections({ user: { schema: SCHEMA_BASE } });

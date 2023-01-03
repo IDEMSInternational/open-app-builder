@@ -52,10 +52,6 @@ export class DynamicDataService extends AsyncServiceBase {
     }
     this.writeCache = await new PersistedMemoryAdapter().create();
     this.data$ = await new ReactiveMemoryAdapater().create();
-
-    setTimeout(() => {
-      this.test();
-    }, 2000);
   }
 
   /** Watch for changes to a specific flow */
