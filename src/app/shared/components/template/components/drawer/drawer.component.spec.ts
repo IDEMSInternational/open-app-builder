@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
-import { DrawerComponent } from "./drawer.component";
+import { TmplDrawerComponent } from "./drawer.component";
 
 describe("DrawerComponent", () => {
-  let component: DrawerComponent;
-  let fixture: ComponentFixture<DrawerComponent>;
+  let component: TmplDrawerComponent;
+  let fixture: ComponentFixture<TmplDrawerComponent>;
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [DrawerComponent],
+        declarations: [TmplDrawerComponent],
         imports: [IonicModule.forRoot()],
       }).compileComponents();
 
-      fixture = TestBed.createComponent(DrawerComponent);
+      fixture = TestBed.createComponent(TmplDrawerComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
     })
