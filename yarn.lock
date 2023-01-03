@@ -5713,6 +5713,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lokijs@npm:^1.5.7":
+  version: 1.5.7
+  resolution: "@types/lokijs@npm:1.5.7"
+  checksum: 6f96f139d12364583909b72526e98cc0b7af45d1001d54c25d3453858e165ffc81bbbee3dd008bd540f0f3ebfc39fbc8894e3c46d490de444d500667ddb608c9
+  languageName: node
+  linkType: hard
+
 "@types/long@npm:^4.0.0, @types/long@npm:^4.0.1":
   version: 4.0.1
   resolution: "@types/long@npm:4.0.1"
@@ -13908,6 +13915,7 @@ __metadata:
     "@types/intro.js": ^3.0.1
     "@types/jasmine": ~3.7.7
     "@types/jasminewd2": ~2.0.9
+    "@types/lokijs": ^1.5.7
     "@types/marked": ^2.0.3
     "@types/node": ^16.18.9
     "@types/nouislider": ^15.0.0
@@ -13959,7 +13967,7 @@ __metadata:
     nouislider: ^14.6.3
     prettier: 2.4.1
     qrcode: ^1.5.1
-    rxjs: ^6.6.7
+    rxjs: ^7.8.0
     shared: "workspace:*"
     stacktrace-js: ^2.0.2
     swiper: ^8.4.4
@@ -23079,7 +23087,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:6.6.7, rxjs@npm:^6.4.0, rxjs@npm:^6.5.3, rxjs@npm:^6.6.0, rxjs@npm:^6.6.2, rxjs@npm:^6.6.3, rxjs@npm:^6.6.6, rxjs@npm:^6.6.7":
+"rxjs@npm:6.6.7, rxjs@npm:^6.4.0, rxjs@npm:^6.5.3, rxjs@npm:^6.6.0, rxjs@npm:^6.6.2, rxjs@npm:^6.6.3, rxjs@npm:^6.6.6":
   version: 6.6.7
   resolution: "rxjs@npm:6.6.7"
   dependencies:
@@ -23103,6 +23111,15 @@ __metadata:
   dependencies:
     tslib: ^2.1.0
   checksum: e034f60805210cce756dd2f49664a8108780b117cf5d0e2281506e9e6387f7b4f1532d974a8c8b09314fa7a16dd2f6cff3462072a5789672b5dcb45c4173f3c6
+  languageName: node
+  linkType: hard
+
+"rxjs@npm:^7.8.0":
+  version: 7.8.0
+  resolution: "rxjs@npm:7.8.0"
+  dependencies:
+    tslib: ^2.1.0
+  checksum: 61b4d4fd323c1043d8d6ceb91f24183b28bcf5def4f01ca111511d5c6b66755bc5578587fe714ef5d67cf4c9f2e26f4490d4e1d8cabf9bd5967687835e9866a2
   languageName: node
   linkType: hard
 
