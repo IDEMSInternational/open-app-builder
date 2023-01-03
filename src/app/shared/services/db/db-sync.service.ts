@@ -8,6 +8,7 @@ import {
   IDBServerUserRecord,
   IDBTable,
 } from "packages/data-models/db.model";
+import { lastValueFrom } from "rxjs";
 import { environment } from "src/environments/environment";
 import { IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
@@ -67,7 +68,7 @@ export class DBSyncService extends AsyncServiceBase {
         const endpoint = api_endpoint(record);
         try {
           // Use api endpoint to post update, and if successful update sync status
-          await this.http.post(endpoint, serverRecord).toPromise();
+          await lastValueFrom(this.http.post(endpoint, serverRecord));
           const _sync_status: IDBMeta["_sync_status"] = "synced";
           await this.dbService.table(table_id).update(record, { _sync_status });
           return { success: true };
