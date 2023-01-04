@@ -42,6 +42,7 @@ export class DynamicDataService extends AsyncServiceBase {
   constructor(private appDataService: AppDataService) {
     super("Dynamic Data");
     this.registerInitFunction(this.initialise);
+    this.registerTemplateActionHandlers();
   }
 
   private async initialise() {
@@ -54,6 +55,14 @@ export class DynamicDataService extends AsyncServiceBase {
     }
     this.writeCache = await new PersistedMemoryAdapter().create();
     this.db = await new ReactiveMemoryAdapater().createDB();
+  }
+  private registerTemplateActionHandlers() {
+    // TODO - pending merge of related PR
+    // this.templateActionRegistry.register({
+    //   set_data: async (args) => {
+    //     console.log("setting data", args);
+    //   },
+    // });
   }
 
   /** Watch for changes to a specific flow */
