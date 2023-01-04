@@ -80,6 +80,7 @@ export class PersistedMemoryAdapter {
 
   /**
    * Provide a partial data update. Will be merged with existing data
+   * Any fields marked as `undefined` will be removed
    */
   public update(update: IDataUpdate) {
     const { flow_name, flow_type, id, data } = update;
@@ -87,6 +88,12 @@ export class PersistedMemoryAdapter {
     if (!this.state[flow_type][flow_name]) this.state[flow_type][flow_name] = {};
     const existingData = this.state[flow_type][flow_name][id];
     const merged = deepMergeObjects(existingData, data);
+    // Remove any values marked as undefined
+    for (const [key, value] of Object.entries(merged)) {
+      if (value === undefined) {
+        delete merged[key];
+      }
+    }
     this.state[flow_type][flow_name][id] = merged;
     // TODO - debounce write to disk
     this.persistStateToDB();
