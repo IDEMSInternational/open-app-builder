@@ -7,6 +7,7 @@ import { FlowTypes } from "data-models";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
+import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 
 @Injectable({
   providedIn: "root",
@@ -21,15 +22,22 @@ export class TourService extends AsyncServiceBase {
     private router: Router,
     private templateFieldService: TemplateFieldService,
     private translateService: TemplateTranslateService,
-    private appDataService: AppDataService
+    private appDataService: AppDataService,
+    private templateActionRegistry: TemplateActionRegistry
   ) {
     super("Tour");
     this.registerInitFunction(this.initialise);
+    this.registerTemplateActionHandlers();
   }
   private async initialise() {
     await this.ensureAsyncServicesReady([this.templateFieldService, this.translateService]);
     this.ensureSyncServicesReady([this.appDataService]);
     this.toursList = this.appDataService.listSheetsByType("tour");
+  }
+  private registerTemplateActionHandlers() {
+    this.templateActionRegistry.register({
+      start_tour: async (action) => this.startTour(action.args[0]),
+    });
   }
 
   /**
