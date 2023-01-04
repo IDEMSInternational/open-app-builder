@@ -1,7 +1,7 @@
 import {
   addRxPlugin,
   createRxDatabase,
-  RxChangeEvent,
+  MangoQuery,
   RxCollection,
   RxCollectionCreator,
   RxDatabase,
@@ -19,7 +19,7 @@ import { RxDBMigrationPlugin } from "rxdb/plugins/migration";
 addRxPlugin(RxDBMigrationPlugin);
 import { RxDBUpdatePlugin } from "rxdb/plugins/update";
 addRxPlugin(RxDBUpdatePlugin);
-import { Observable } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 
 import { environment } from "src/environments/environment";
 
@@ -61,7 +61,7 @@ export class ReactiveMemoryAdapater {
     RxStorageMemoryInstanceCreationOptions
   >;
 
-  public async create() {
+  public async createDB() {
     this.db = await createRxDatabase({
       name: `${environment.deploymentName}`,
       storage: getRxStorageMemory(),
@@ -70,36 +70,56 @@ export class ReactiveMemoryAdapater {
     return this;
   }
 
-  public subscribe(name: string) {
-    if (!this.hasCollection(name)) {
-      console.error("No db entry to subscribe to", name);
-      const emptyObserver: Observable<RxChangeEvent<any>> = new Observable();
-      return emptyObserver;
+  public getCollection(name: string) {
+    return this.db.collections[name];
+  }
+
+  public async getDoc<T>(collectionName: string, docId: string) {
+    const collection = this.getCollection(collectionName);
+    if (!collection) {
+      return undefined;
     }
-    console.log("subscribing", this.db.collections[name]);
-    return this.db.collections[name].$;
+    const matchedDocs = await collection.findByIds([docId]);
+    const existingDoc: RxDocument<T> = matchedDocs.get(docId);
+    return existingDoc;
   }
 
-  public hasCollection(name: string) {
-    return this.db.collections[name] ? true : false;
-  }
-
-  public async createCollection(name: string, initialData: any[]) {
-    if (!this.db.collections[name]) {
-      await this.addCollections(this.db, [name]);
+  public query(name: string, queryObj?: MangoQuery) {
+    const collection = this.getCollection(name);
+    if (!collection) {
+      console.error("No db entry", name);
+      return new BehaviorSubject([]);
     }
-    await this.db.collections[name].bulkInsert(initialData);
+    return collection.find(queryObj).$;
   }
 
-  public async update(update: IDataUpdate) {
+  public async createCollection(name: string, initialData?: any[]) {
+    await this.addCollections(this.db, [name]);
+    if (initialData) {
+      await this.db.collections[name].bulkInsert(initialData);
+    }
+  }
+
+  public async updateDoc(update: IDataUpdate) {
     const { collectionName, id, data } = update;
-    // const dbName = await this.ensureDataLoaded({ flow_type, flow_name });
-    const collection = this.db[collectionName];
+
+    let collection = this.getCollection(collectionName);
+    if (!collection) {
+      await this.createCollection(collectionName);
+      collection = this.getCollection(collectionName);
+    }
+
     const matchedDocs = await collection.findByIds([id]);
     const existingDoc: RxDocument = matchedDocs.get(id);
     if (existingDoc) {
-      await existingDoc.update({ $set: data });
-      return existingDoc.toJSON();
+      // Remove any values marked as undefined
+      for (const [key, value] of Object.entries(data)) {
+        if (value === undefined) {
+          delete data[key];
+        }
+      }
+      const updatedDoc = await existingDoc.atomicPatch({ data });
+      return updatedDoc.toJSON();
     } else {
       await collection.insert(update);
       return update;
