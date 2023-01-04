@@ -8,9 +8,6 @@ type IHandlers = Record<IActionId, (action: FlowTypes.TemplateRowAction) => Prom
 /**
  * The template action registry goes alongside the default template action service
  * to allow external modules to register their own action handlers.
- *
- * TODO - Refactor all global handlers to use registry instead of direct import in service
- * NOTE - specific instance handlers will need to remain in service (e.g. set_local)
  */
 export class TemplateActionRegistry {
   private handlers: Partial<IHandlers> = {};
