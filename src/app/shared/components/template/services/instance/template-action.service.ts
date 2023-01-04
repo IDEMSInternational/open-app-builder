@@ -180,6 +180,9 @@ export class TemplateActionService extends SyncServiceBase {
       return this.templateActionRegistry.trigger(action);
     }
 
+    // Handle specific actions
+    // TODO - Refactor action handlers that call global services to use registry instead
+    // NOTE - instance-specific handlers will likely need to remain in service (e.g. set_local)
     switch (action_id) {
       case "reset_app":
         return this.settingsService.resetApp();
