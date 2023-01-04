@@ -9,7 +9,6 @@ import { AnalyticsService } from "src/app/shared/services/analytics/analytics.se
 import { Injector } from "@angular/core";
 import { TemplateNavService } from "../template-nav.service";
 import { TemplateService } from "../template.service";
-import { TourService } from "src/app/feature/tour/tour.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { TemplateFieldService } from "../template-field.service";
 import { EventService } from "src/app/shared/services/event/event.service";
@@ -20,6 +19,7 @@ import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { TaskService } from "src/app/shared/services/task/task.service";
 import { getGlobalService } from "src/app/shared/services/global.service";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
+import { TemplateActionRegistry } from "./template-action.registry";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -54,9 +54,6 @@ export class TemplateActionService extends SyncServiceBase {
   private get templateService() {
     return getGlobalService(this.injector, TemplateService);
   }
-  private get tourService() {
-    return getGlobalService(this.injector, TourService);
-  }
   private get templateFieldService() {
     return getGlobalService(this.injector, TemplateFieldService);
   }
@@ -81,10 +78,13 @@ export class TemplateActionService extends SyncServiceBase {
   private get taskService() {
     return getGlobalService(this.injector, TaskService);
   }
+  private get templateActionRegistry() {
+    // HACK - as only service that does not extend sync/async base just return
+    return this.injector.get(TemplateActionRegistry);
+  }
 
   private async ensurePublicServicesReady() {
     await this.ensureAsyncServicesReady([
-      this.tourService,
       this.templateTranslateService,
       this.templateFieldService,
       this.dbSyncService,
@@ -175,6 +175,14 @@ export class TemplateActionService extends SyncServiceBase {
     });
     let [key, value] = args;
 
+    // Call any action registered with global handler
+    if (this.templateActionRegistry.has(action_id)) {
+      return this.templateActionRegistry.trigger(action);
+    }
+
+    // Handle specific actions
+    // TODO - Refactor action handlers that call global services to use registry instead
+    // NOTE - instance-specific handlers will likely need to remain in service (e.g. set_local)
     switch (action_id) {
       case "reset_app":
         return this.settingsService.resetApp();
@@ -207,8 +215,6 @@ export class TemplateActionService extends SyncServiceBase {
         const toggleValue = !currentValue;
         console.log("[SET FIELD]", key, toggleValue);
         return this.templateFieldService.setField(key, `${toggleValue}`);
-      case "start_tour":
-        return this.tourService.startTour(key);
       case "feedback": {
         const [subtopic, ...payload] = args;
         return this.eventService.publish({ topic: "FEEDBACK", subtopic, payload });
