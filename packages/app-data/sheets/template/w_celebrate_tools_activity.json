@@ -52,6 +52,63 @@
               "value"
             ]
           }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "activity_image",
+              "value": "plh_images/workshop_modes/group/final/light_bulb.svg",
+              "_translations": {
+                "value": {}
+              },
+              "condition": "@field.do_this_workshop_together",
+              "type": "set_variable",
+              "_nested_name": "tools_activity.workshop_activity.activity_image",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "@field.do_this_workshop_together",
+                    "matchedExpression": "@field.do_this_workshop_together",
+                    "type": "field",
+                    "fieldName": "do_this_workshop_together"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@field.do_this_workshop_together": [
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "activity_image",
+              "value": "plh_images/workshop_modes/guide_2/final/light_bulb.svg",
+              "_translations": {
+                "value": {}
+              },
+              "condition": "!@field.do_this_workshop_together",
+              "type": "set_variable",
+              "_nested_name": "tools_activity.workshop_activity.activity_image",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "!@field.do_this_workshop_together",
+                    "matchedExpression": "!@field.do_this_workshop_together",
+                    "type": "field",
+                    "fieldName": "do_this_workshop_together"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "!@field.do_this_workshop_together": [
+                  "condition"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tools_activity.workshop_activity"
         }
       ],
       "_nested_name": "tools_activity"
