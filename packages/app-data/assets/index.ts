@@ -2378,8 +2378,8 @@ export const ASSETS_CONTENTS_LIST = {
     },
   },
   "plh_images/workshops/w_crisis/learn/slide_1.svg": {
-    size_kb: 6.5,
-    md5Checksum: "f8525c1b856cdcd03aa4195e8cb091bd",
+    size_kb: 6.2,
+    md5Checksum: "129c6e369d1f7be6c9c8bc5d478bc82d",
     themeVariations: {
       theme_professional: {
         size_kb: 42,
@@ -2388,8 +2388,8 @@ export const ASSETS_CONTENTS_LIST = {
     },
   },
   "plh_images/workshops/w_crisis/learn/slide_2.svg": {
-    size_kb: 7.7,
-    md5Checksum: "ceea5abe414793397d12ffde4261f92c",
+    size_kb: 6.5,
+    md5Checksum: "f8525c1b856cdcd03aa4195e8cb091bd",
     themeVariations: {
       theme_professional: {
         size_kb: 74.4,
@@ -2398,8 +2398,8 @@ export const ASSETS_CONTENTS_LIST = {
     },
   },
   "plh_images/workshops/w_crisis/learn/slide_3.svg": {
-    size_kb: 7.5,
-    md5Checksum: "c739ec53c5c813e5a3449ba39415c948",
+    size_kb: 7.7,
+    md5Checksum: "ceea5abe414793397d12ffde4261f92c",
     themeVariations: {
       theme_professional: {
         size_kb: 38.5,
@@ -2408,8 +2408,8 @@ export const ASSETS_CONTENTS_LIST = {
     },
   },
   "plh_images/workshops/w_crisis/learn/slide_4.svg": {
-    size_kb: 8.7,
-    md5Checksum: "36c2566f1ec362da2aa91273591a011f",
+    size_kb: 7.5,
+    md5Checksum: "c739ec53c5c813e5a3449ba39415c948",
     themeVariations: {
       theme_professional: {
         size_kb: 81.6,
@@ -2418,8 +2418,8 @@ export const ASSETS_CONTENTS_LIST = {
     },
   },
   "plh_images/workshops/w_crisis/learn/slide_5.svg": {
-    size_kb: 6.2,
-    md5Checksum: "129c6e369d1f7be6c9c8bc5d478bc82d",
+    size_kb: 8.7,
+    md5Checksum: "36c2566f1ec362da2aa91273591a011f",
     themeVariations: {
       theme_professional: {
         size_kb: 41.4,
