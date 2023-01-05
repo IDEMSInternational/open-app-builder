@@ -101,6 +101,47 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
   },
+  sync_local: {
+    label: "Sync direct edits to local sheets",
+    steps: [
+      {
+        name: "sheets_process",
+        function: async ({ tasks, config }) =>
+          tasks.template.process({ inputFolder: config.local_drive.sheets_path }),
+      },
+      // NOTE - translations not currently included in local version
+      {
+        name: "app_copy_data",
+        function: async ({ tasks, workflow, config }) => {
+          // copy files
+          tasks.appData.copy({
+            localSheetsFolder: workflow.sheets_process.output,
+            appSheetsFolder: config.app_data.sheets_output_path,
+            // TODO - add support for assets
+            // localAssetsFolder : config.local_drive.assets_path,
+            // appAssetsFolder: config.app_data.assets_output_path,
+          });
+        },
+      },
+      {
+        name: "watch_changes",
+        function: async ({ tasks, workflow, config }) =>
+          tasks.file.watchFolder({
+            src: [config.local_drive.assets_path, config.local_drive.sheets_path],
+            // HACK - want to just call same as above but hard to do and not cause multiple listeners
+            onUpdate: async () => {
+              const output = tasks.template.process({
+                inputFolder: config.local_drive.sheets_path,
+              });
+              tasks.appData.copy({
+                localSheetsFolder: output,
+                appSheetsFolder: config.app_data.sheets_output_path,
+              });
+            },
+          }),
+      },
+    ],
+  },
   sync_watch: {
     label: "View options for sync live reload (🧪 experimental)",
     steps: [
