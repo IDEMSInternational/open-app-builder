@@ -673,6 +673,116 @@ export const ASSETS_CONTENTS_LIST = {
       },
     },
   },
+  "plh_audio/testimonials/teen/teen_test_w_1on1.mp3": {
+    size_kb: 727.5,
+    md5Checksum: "886782df5e6190139686e1c98e79cced",
+    translations: {
+      tz_sw: {
+        size_kb: 850.2,
+        md5Checksum: "15eac715a662812f835b33d73ed4e5f3",
+      },
+    },
+  },
+  "plh_audio/testimonials/teen/teen_test_w_consequence.mp3": {
+    size_kb: 701.3,
+    md5Checksum: "f3b2affc778840616ce13204d4f3831a",
+    translations: {
+      tz_sw: {
+        size_kb: 715.2,
+        md5Checksum: "536438fdfddc3715139085f89f68e79b",
+      },
+    },
+  },
+  "plh_audio/testimonials/teen/teen_test_w_crisis.mp3": {
+    size_kb: 641.3,
+    md5Checksum: "3f28f38e13d9a877c83fe5392a07ded6",
+    translations: {
+      tz_sw: {
+        size_kb: 664.5,
+        md5Checksum: "cb8b280f53034660e015b00dc1e07765",
+      },
+    },
+  },
+  "plh_audio/testimonials/teen/teen_test_w_instruct.mp3": {
+    size_kb: 656.3,
+    md5Checksum: "f3e26c8ca87e9b80f20cb7512af72ef9",
+    translations: {
+      tz_sw: {
+        size_kb: 874.5,
+        md5Checksum: "c61bd72db174a8fc546e14cf34b85dd3",
+      },
+    },
+  },
+  "plh_audio/testimonials/teen/teen_test_w_money.mp3": {
+    size_kb: 895.2,
+    md5Checksum: "9eca027a2d822de03602edc7c7da1ef4",
+    translations: {
+      tz_sw: {
+        size_kb: 1073.3,
+        md5Checksum: "8d822632c0c5407b43cdc9d6f119bdc5",
+      },
+    },
+  },
+  "plh_audio/testimonials/teen/teen_test_w_praise.mp3": {
+    size_kb: 627.9,
+    md5Checksum: "e1d3d018b6504d55b4319b0be983247b",
+    translations: {
+      tz_sw: {
+        size_kb: 943.2,
+        md5Checksum: "086429c5bab7a30163bfb02836f36231",
+      },
+    },
+  },
+  "plh_audio/testimonials/teen/teen_test_w_rules.mp3": {
+    size_kb: 476.4,
+    md5Checksum: "ead0d9c8db7ae7bc37d1b5d0f09e8f42",
+    translations: {
+      tz_sw: {
+        size_kb: 673.2,
+        md5Checksum: "a3be23673be75e12d2e1a882ae45c72e",
+      },
+    },
+  },
+  "plh_audio/testimonials/teen/teen_test_w_safe.mp3": {
+    size_kb: 543.9,
+    md5Checksum: "2acc28ceb14813ab3aeda1e2611928ba",
+    translations: {
+      tz_sw: {
+        size_kb: 727.5,
+        md5Checksum: "29e95aedc7172aef57ab77baf9bfa5f2",
+      },
+    },
+  },
+  "plh_audio/testimonials/teen/teen_test_w_self_care.mp3": {
+    size_kb: 727.5,
+    md5Checksum: "391db824eecc4e32c782db868152fe3c",
+    translations: {
+      tz_sw: {
+        size_kb: 708.8,
+        md5Checksum: "99e2b7d10fd985b194e31595d0668f94",
+      },
+    },
+  },
+  "plh_audio/testimonials/teen/teen_test_w_solve.mp3": {
+    size_kb: 823.9,
+    md5Checksum: "5d683d6511cba0ae73bd52582769511c",
+    translations: {
+      tz_sw: {
+        size_kb: 803.3,
+        md5Checksum: "47735a7a44f02bc59104c5a441bbff45",
+      },
+    },
+  },
+  "plh_audio/testimonials/teen/teen_test_w_stress.mp3": {
+    size_kb: 864.4,
+    md5Checksum: "62563cf30d74b03e727e3b0507994e1b",
+    translations: {
+      tz_sw: {
+        size_kb: 687,
+        md5Checksum: "89ed4b16385bdf9418d43f14a7b3be6a",
+      },
+    },
+  },
   "plh_audio/timer/bell_1.mp3": {
     size_kb: 121.6,
     md5Checksum: "19700b739837b47ca934707f1c16e7b7",
