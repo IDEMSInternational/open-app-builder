@@ -375,7 +375,6 @@
           "_translations": {
             "value": {}
           },
-          "exclude_from_translation": true,
           "_nested_name": "reply_no_dg.reply_no"
         }
       ],
