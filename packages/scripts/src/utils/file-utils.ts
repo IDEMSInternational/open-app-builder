@@ -160,13 +160,29 @@ export interface IContentsEntry {
   modifiedTime: string;
   md5Checksum: string;
 }
-
+/** Generate md5 checksum for file */
 export function getFileMD5Checksum(filePath: string) {
   const hash = createHash("md5", {});
   const fileBuffer = fs.readFileSync(filePath);
   hash.update(fileBuffer);
   const checksum = hash.digest("hex");
   return checksum;
+}
+/** Generate md5 checksum for arbitrary data */
+export function getDataMD5Checsum(data: any) {
+  if (data) {
+    if (typeof data === "object") {
+      data = JSON.stringify(data);
+    } else {
+      data = `${data}`;
+    }
+    const hash = createHash("md5");
+    hash.update(data);
+    const checksum = hash.digest("hex");
+    return checksum;
+  } else {
+    throw new Error(`Cannot generate hash from data: ${data}`);
+  }
 }
 
 /**
@@ -428,6 +444,8 @@ export function replicateDir(
     fs.copyFileSync(srcPath, targetPath);
     fs.utimesSync(targetPath, mtime, mtime);
   });
+  // remove hanging directories
+  cleanupEmptyFolders(target);
   return ops;
 }
 
@@ -438,3 +456,23 @@ export function createTemporaryFolder() {
   fs.ensureDirSync(folderPath);
   return folderPath;
 }
+
+/**
+ * Recursively remove any empty folders
+ * https://gist.github.com/arnoson/3237697e8c61dfaf0356f814b1500d7b
+ */
+export const cleanupEmptyFolders = (folder: string) => {
+  if (!fs.statSync(folder).isDirectory()) return;
+  let files = fs.readdirSync(folder);
+
+  if (files.length > 0) {
+    files.forEach((file) => cleanupEmptyFolders(path.join(folder, file)));
+    // Re-evaluate files; after deleting subfolders we may have an empty parent
+    // folder now.
+    files = fs.readdirSync(folder);
+  }
+
+  if (files.length === 0) {
+    fs.rmdirSync(folder);
+  }
+};
