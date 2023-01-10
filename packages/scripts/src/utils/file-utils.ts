@@ -243,6 +243,9 @@ export function arrayToHashmap<T>(arr: T[], keyfield: string): { [key: string]: 
 }
 
 export function listFolderNames(folderPath: string) {
+  if (!fs.existsSync(folderPath)) {
+    return [];
+  }
   return fs
     .readdirSync(folderPath, { withFileTypes: true })
     .filter((v) => v.isDirectory())
@@ -339,11 +342,14 @@ function isObject(item: any) {
 
 /** Search a folder for a file ending _contents and return parsed json  */
 export function readContentsFile(folderPath: string) {
+  console.log("read contents file", folderPath, fs.existsSync(folderPath));
   if (!fs.existsSync(folderPath)) {
     logWarning({ msg1: "Folder path does not exist", msg2: folderPath });
     return [];
   }
+
   const contentsFilePath = fs.readdirSync(folderPath).find((f) => f.endsWith("_contents.json"));
+  console.log("contentsFilePath", contentsFilePath);
   if (!contentsFilePath) {
     logWarning({ msg1: "Contents file not found in folder", msg2: folderPath });
     return [];
@@ -396,6 +402,7 @@ export function replicateDir(
 ) {
   fs.ensureDirSync(src);
   fs.ensureDirSync(target);
+  console.log("replicate dir", { src, target });
   const srcFiles = generateFolderFlatMap(src, true);
   const targetFiles = generateFolderFlatMap(target, true);
 
@@ -446,6 +453,7 @@ export function replicateDir(
   });
   // remove hanging directories
   cleanupEmptyFolders(target);
+  console.log("cleaned", ops);
   return ops;
 }
 
@@ -462,6 +470,7 @@ export function createTemporaryFolder() {
  * https://gist.github.com/arnoson/3237697e8c61dfaf0356f814b1500d7b
  */
 export const cleanupEmptyFolders = (folder: string) => {
+  if (!fs.existsSync(folder)) return;
   if (!fs.statSync(folder).isDirectory()) return;
   let files = fs.readdirSync(folder);
 
