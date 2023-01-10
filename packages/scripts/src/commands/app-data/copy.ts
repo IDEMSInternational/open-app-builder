@@ -112,9 +112,9 @@ export class AppDataCopy {
     const topLevelFolders = listFolderNames(baseFolder);
     const languageFolders = topLevelFolders.filter((name) => isCountryLanguageCode(name));
     const themeFolders = topLevelFolders.filter((name) => isThemeAssetsFolderName(name));
-
     // TODO - ideally "global" folder should sit at top level but refactoring required so for now use filter
     const globalAssetsFolder = path.join(baseFolder, ASSETS_GLOBAL_FOLDER_NAME);
+    fs.ensureDirSync(globalAssetsFolder);
     const globalAssets = generateFolderFlatMap(globalAssetsFolder, true) as {
       [relative_path: string]: IAssetEntry;
     };
