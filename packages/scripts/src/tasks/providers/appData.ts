@@ -1,7 +1,8 @@
 import { spawnSync } from "child_process";
+import { writeFileSync } from "fs-extra";
 import path from "path";
 import { ROOT_DIR } from "../../paths";
-import { IContentsEntry, replicateDir } from "../../utils";
+import { replicateDir } from "../../utils";
 
 // const qualityCheckAssets = () => {};
 
@@ -54,20 +55,26 @@ const populateSrcAssets = (options: {
   appTranslationsFolder?: string;
 }) => {
   const { appSheetsFolder, appAssetsFolder, appTranslationsFolder } = options;
-  // omit index files
-  const filter_fn = (entry: IContentsEntry) => entry.relativePath !== "index.ts";
   if (appSheetsFolder) {
     const targetFolder = path.resolve(ROOT_DIR, "src", "assets", "app_data", "sheets");
-    replicateDir(appSheetsFolder, targetFolder, filter_fn);
+    replicateDir(appSheetsFolder, targetFolder);
   }
   if (appAssetsFolder) {
     const targetFolder = path.resolve(ROOT_DIR, "src", "assets", "app_data", "assets");
-    replicateDir(appAssetsFolder, targetFolder, filter_fn);
+    replicateDir(appAssetsFolder, targetFolder);
   }
   if (appTranslationsFolder) {
     const targetFolder = path.resolve(ROOT_DIR, "src", "assets", "app_data", "translations");
-    replicateDir(appTranslationsFolder, targetFolder, filter_fn);
+    replicateDir(appTranslationsFolder, targetFolder);
   }
+  // HACK - Angular webpack won't always live-reload when changes only made to asset files
+  // so write an arbitrary variable that can be imported into the app and will trigger reload
+  // https://github.com/angular/angular-cli/issues/22751
+  // https://github.com/webpack/webpack-dev-server/issues/3794
+  writeFileSync(
+    path.resolve(ROOT_DIR, "src", "assets", "app_data", "index.ts"),
+    `export const DEV_COMPILE_TIME = ${new Date().getTime()}`
+  );
 };
 
 export default { copy, populateSrcAssets };
