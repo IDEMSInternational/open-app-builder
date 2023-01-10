@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ASSETS_CONTENTS_LIST } from "app-data";
+import { ASSETS_CONTENTS_LIST } from "src/app/data";
 import { ThemeService } from "src/app/feature/theme/services/theme.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { TemplateTranslateService } from "./template-translate.service";

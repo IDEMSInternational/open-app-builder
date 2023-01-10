@@ -12,7 +12,7 @@
     "dev": "ts-node-dev --respawn --watch src/**/*.ts src/commands/index.ts",
     "test": "jasmine-ts --config=jasmine.json",
     "test:watch": "nodemon --ext ts --exec 'jasmine-ts --config=jasmine.json'",
-    "build": "esbuild src/commands/index.ts --bundle --platform=node --target=node12.22 --outfile=build/commands.js",
+    "build": "esbuild src/commands/index.ts --bundle --platform=node --target=node16 --outfile=build/commands.js",
     "pkg": "pkg . --output ./exec/idems-app-scripts"
   },
   "pkg": {
