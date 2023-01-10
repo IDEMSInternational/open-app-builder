@@ -402,7 +402,6 @@ export function replicateDir(
 ) {
   fs.ensureDirSync(src);
   fs.ensureDirSync(target);
-  console.log("replicate dir", { src, target });
   const srcFiles = generateFolderFlatMap(src, true);
   const targetFiles = generateFolderFlatMap(target, true);
 
@@ -453,7 +452,6 @@ export function replicateDir(
   });
   // remove hanging directories
   cleanupEmptyFolders(target);
-  console.log("cleaned", ops);
   return ops;
 }
 
