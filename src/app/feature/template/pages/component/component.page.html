@@ -1,0 +1,19 @@
+<!-- Individual component page (not currently used) -->
+<ion-content *ngIf="selectedComponent else componentList">
+  <h2>{{selectedComponent}}</h2>
+</ion-content>
+
+<!-- All components list -->
+<ng-template #componentList>
+  <ion-content>
+    <ion-list>
+      <ion-item
+        *ngFor="let component of components"
+        [routerLink]="component.template"
+        [disabled]="!component.template"
+      >
+        <ion-label>{{component.name}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ng-template>

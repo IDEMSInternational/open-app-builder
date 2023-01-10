@@ -1,6 +1,6 @@
 {
   "flow_type": "template",
-  "flow_name": "comp_checkbox",
+  "flow_name": "comp_simple_checkbox",
   "status": "released",
   "flow_subtype": "component_demo",
   "rows": [
