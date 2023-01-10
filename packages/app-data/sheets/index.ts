@@ -2002,12 +2002,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_carousel.xlsx",
     },
-    comp_checkbox: {
-      flow_type: "template",
-      flow_name: "comp_checkbox",
-      flow_subtype: "component_demo",
-      _xlsxPath: "quality_assurance/component_sheets/component_simple_checkbox .xlsx",
-    },
     comp_colour_palette: {
       flow_type: "template",
       flow_name: "comp_colour_palette",
@@ -2097,6 +2091,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "comp_select_text",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_select_text.xlsx",
+    },
+    comp_simple_checkbox: {
+      flow_type: "template",
+      flow_name: "comp_simple_checkbox",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_simple_checkbox .xlsx",
     },
     comp_slider: {
       flow_type: "template",
