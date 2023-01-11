@@ -11,6 +11,8 @@ import { TemplateVariablesService } from "./template-variables.service";
 import { TemplateFieldService } from "./template-field.service";
 import { arrayToHashmap } from "src/app/shared/utils";
 import { SyncServiceBase } from "src/app/shared/services/syncService.base";
+import { TemplateHostDirective } from "../directives/templateHost.directive";
+import { TEMLATE_CONTAINERS } from "../containers";
 
 @Injectable({
   providedIn: "root",
@@ -83,6 +85,25 @@ export class TemplateService extends SyncServiceBase {
       dismissData = data;
     }
     return { modal, ...dismissData };
+  }
+
+  /** Dynamically inject a template within a given host container */
+  public async injectTemplate(name: string, host: TemplateHostDirective) {
+    const template = await this.getTemplateByName(name, false);
+    const viewContainerRef = host.viewContainerRef;
+    viewContainerRef.clear();
+    // WiP - Experimental new format
+    if (template.template_type === "dynamic") {
+      const container = TEMLATE_CONTAINERS.dynamic;
+      const componentRef = viewContainerRef.createComponent(container);
+      componentRef.instance.template = template;
+    }
+    // Standard template container
+    else {
+      const container = TEMLATE_CONTAINERS.default;
+      const componentRef = viewContainerRef.createComponent(container);
+      componentRef.instance.templatename = name;
+    }
   }
 
   /**
