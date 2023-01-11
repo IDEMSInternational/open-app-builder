@@ -312,7 +312,8 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
 
   private extractContentsData(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeBase {
     // remove rows property (if exists)
-    const { rows, status, _processed, ...keptFields } = flow;
+    const { rows, status, _processed, ...templateFields } = flow;
+    const { template_type, ...keptFields } = templateFields as FlowTypes.Template;
     return keptFields as FlowTypes.FlowTypeBase;
   }
   private sheetsWriteContents(baseFolder: string, contents: ISheetContents) {

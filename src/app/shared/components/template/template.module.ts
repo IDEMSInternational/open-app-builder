@@ -16,6 +16,10 @@ import { TmplCompHostDirective, TemplateComponent } from "./template-component";
 
 import { appendStyleSvgDirective } from "./directives/shadowStyleSvg.directive";
 import { createCustomElement } from "@angular/elements";
+import { TemplateDynamicComponent } from "./containers/template-dynamic/template-dynamic.component";
+import { TemplateHostDirective } from "./directives/templateHost.directive";
+
+const TEMPLATE_DIRECTIVES = [TemplateHostDirective, appendStyleSvgDirective];
 
 @NgModule({
   imports: [
@@ -29,15 +33,21 @@ import { createCustomElement } from "@angular/elements";
     RouterModule,
     SwiperModule,
   ],
-  exports: [...TEMPLATE_COMPONENTS, ...TEMPLATE_PIPES, TemplateContainerComponent],
+  exports: [
+    ...TEMPLATE_COMPONENTS,
+    ...TEMPLATE_DIRECTIVES,
+    ...TEMPLATE_PIPES,
+    TemplateContainerComponent,
+  ],
   declarations: [
     TmplCompHostDirective,
     TemplateComponent,
     TooltipDirective,
     ...TEMPLATE_COMPONENTS,
+    ...TEMPLATE_DIRECTIVES,
     ...TEMPLATE_PIPES,
     TemplateContainerComponent,
-    appendStyleSvgDirective,
+    TemplateDynamicComponent,
   ],
   // Include the container component as an entry component so that we can a custom elements for it (see below)
   entryComponents: [TemplateContainerComponent],
