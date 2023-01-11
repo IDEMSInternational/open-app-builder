@@ -1,6 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { FlowTypes } from "packages/data-models";
+import { TemplateHostDirective } from "src/app/shared/components/template/directives/templateHost.directive";
+import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 
 @Component({
@@ -13,14 +15,27 @@ export class TemplatePage implements OnInit {
   filterTerm: string;
   allTemplates: FlowTypes.FlowTypeBase[] = [];
   filteredTemplates: FlowTypes.FlowTypeBase[] = [];
-  constructor(private route: ActivatedRoute, private appDataService: AppDataService) {}
+
+  @ViewChild(TemplateHostDirective, { static: true }) templateHost!: TemplateHostDirective;
+
+  constructor(
+    private route: ActivatedRoute,
+    private appDataService: AppDataService,
+    private templateService: TemplateService
+  ) {}
 
   ngOnInit() {
-    this.templateName = this.route.snapshot.params.templateName;
-    const allTemplates = this.appDataService.listSheetsByType("template");
-
-    this.allTemplates = allTemplates.sort((a, b) => (a.flow_name > b.flow_name ? 1 : -1));
-    this.filteredTemplates = allTemplates;
+    const templateName = this.route.snapshot.params.templateName;
+    if (templateName) {
+      this.templateName = templateName;
+      this.templateService.injectTemplate(templateName, this.templateHost);
+    }
+    // Display list of all templates if not specified
+    else {
+      const allTemplates = this.appDataService.listSheetsByType("template");
+      this.allTemplates = allTemplates.sort((a, b) => (a.flow_name > b.flow_name ? 1 : -1));
+      this.filteredTemplates = allTemplates;
+    }
   }
 
   search() {

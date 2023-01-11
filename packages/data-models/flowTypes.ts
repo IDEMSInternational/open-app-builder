@@ -229,6 +229,8 @@ export namespace FlowTypes {
     flow_type: "template";
     rows: TemplateRow[];
     comments?: string;
+    /** Optional display type override to render template in experimental format */
+    template_type?: "default" | "dynamic";
   }
 
   export type TemplateRowType =
