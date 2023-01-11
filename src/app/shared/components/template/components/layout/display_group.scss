@@ -27,8 +27,8 @@
 .display-group-wrapper[data-param-style~="row"] > plh-template-component:not([data-hidden="true"]) {
   margin: 0;
 }
-// apply left margin to every non-hidden child element but the first. Complex selector must be used in order
-// to take account of "hidden" data param, see https://stackoverflow.com/a/29422984
+// Apply left margin to every non-hidden child element but the first. Complex selector must be used in order
+// to take account of "hidden" data attribute, see https://stackoverflow.com/a/29422984
 .display-group-wrapper[data-param-style~="row"]
   > plh-template-component:not([data-hidden="true"])
   ~ plh-template-component:not([data-hidden="true"]) {
