@@ -62,11 +62,17 @@ export class DynamicDataService extends AsyncServiceBase {
     this.db = await new ReactiveMemoryAdapater().createDB();
   }
   private registerTemplateActionHandlers() {
-    // TODO - pending merge of related PR
     this.templateActionRegistry.register({
       set_item: async ({ args, params }) => {
         const [flow_name, row_id] = args;
         await this.update("data_list", flow_name, row_id, params);
+      },
+      set_items: async ({ args, params }) => {
+        const [flow_name, row_ids] = args;
+        // Hack, no current method for bulk update so make successive (changes debounced in component)
+        for (const row_id of row_ids) {
+          await this.update("data_list", flow_name, row_id, params);
+        }
       },
     });
   }

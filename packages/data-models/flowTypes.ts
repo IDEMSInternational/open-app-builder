@@ -359,6 +359,7 @@ export namespace FlowTypes {
       | "toggle_field"
       | "set_local"
       | "set_item"
+      | "set_items"
       | "emit"
       | "feedback"
       | "changed"

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector } from "@angular/core";
+import { debounceTime } from "rxjs";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { FlowTypes } from "../../models";
 import { ItemProcessor } from "../../processors/item";
@@ -23,9 +24,6 @@ import { TemplateBaseComponent } from "../base";
  */
 export class TmplDataItemsComponent extends TemplateBaseComponent {
   public itemRows: FlowTypes.TemplateRow[] = [];
-
-  public parent = this as any;
-
   private dataListName: string;
 
   constructor(
@@ -42,7 +40,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
       const parameterList = this.hackGetRawParameterList(this._row);
       await this.dynamicDataService.ready();
       const query = await this.dynamicDataService.query$("data_list", this.dataListName);
-      query.subscribe(async (data) => {
+      query.pipe(debounceTime(50)).subscribe(async (data) => {
         await this.renderItems(data, this._row.rows, parameterList);
       });
     }
@@ -56,19 +54,32 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
     const parsedItemDataList = await this.parseDataList(itemDataList);
     const itemRows = new ItemProcessor(parsedItemDataList, parameterList).process(rows);
     const parsedItemRows = await this.hackProcessRows(itemRows);
-    const replacedActionRows = this.setActionListMeta(parsedItemRows);
+    const replacedActionRows = this.setActionListMeta(parsedItemRows, parsedItemDataList);
     // TODO - deep diff and only update changed
     this.itemRows = replacedActionRows;
     this.cdr.markForCheck();
   }
 
-  /** Update any action list set_item args to contain name of current data list and item id */
-  private setActionListMeta(rows: FlowTypes.TemplateRow[]) {
+  /**
+   * Update any action list set_item args to contain name of current data list and item id
+   * and set_items action to include all currently displayed rows
+   * */
+  private setActionListMeta(
+    rows: FlowTypes.TemplateRow[],
+    dataList: {
+      [index: string]: any;
+    }
+  ) {
     return rows.map((r) => {
       if (r.action_list) {
         r.action_list = r.action_list.map((a) => {
-          if (a.action_id === ("set_item" as any)) {
+          if (a.action_id === "set_item") {
             a.args = [this.dataListName, r._evalContext.itemContext.id];
+          }
+          if (a.action_id === "set_items") {
+            // TODO - add a check for @item refs and replace parameter list with correct values
+            // for each individual item (default will be just to pick the first)
+            a.args = [this.dataListName, Object.values(dataList).map((v) => v.id)];
           }
           return a;
         });
