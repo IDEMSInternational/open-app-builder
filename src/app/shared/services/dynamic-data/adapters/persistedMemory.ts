@@ -30,7 +30,8 @@ interface IPersistedDoc {
   data: any;
 }
 
-const SCHEMA_BASE: RxJsonSchema<any> = {
+/** The full schema is provided for persisted memory */
+const SCHEMA: RxJsonSchema<any> = {
   title: "base schema for id-primary key data",
   // NOTE - important to start at 0 and not timestamp (e.g. 20221220) as will check
   // for migration strategies for each version which is hugely inefficient
@@ -84,7 +85,7 @@ export class PersistedMemoryAdapter {
       ignoreDuplicate: true,
     });
     if (!this.collection) {
-      await this.db.addCollections({ user: { schema: SCHEMA_BASE } });
+      await this.db.addCollections({ user: { schema: SCHEMA } });
     }
     await this.mapDBToState();
     return this;
@@ -113,6 +114,13 @@ export class PersistedMemoryAdapter {
     this.state[flow_type][flow_name][id] = merged;
     // TODO - debounce write to disk
     this.persistStateToDB();
+  }
+
+  public delete(flow_type: FlowTypes.FlowType, flow_name: string) {
+    if (this.get(flow_type, flow_name)) {
+      delete this.state[flow_type][flow_name];
+      this.persistStateToDB();
+    }
   }
 
   /**

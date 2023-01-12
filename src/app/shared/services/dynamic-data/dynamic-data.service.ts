@@ -8,8 +8,9 @@ import { AppDataService } from "../data/app-data.service";
 import { AsyncServiceBase } from "../asyncService.base";
 import { arrayToHashmap, deepMergeObjects } from "../../utils";
 import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
-import { ReactiveMemoryAdapater } from "./adapters/reactiveMemory";
+import { ReactiveMemoryAdapater, REACTIVE_SCHEMA_BASE } from "./adapters/reactiveMemory";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
+import { TopLevelProperty } from "rxdb/dist/types/types";
 
 type IDocWithID = { id: string };
 
@@ -76,14 +77,7 @@ export class DynamicDataService extends AsyncServiceBase {
     flow_name: string,
     queryObj?: MangoQuery
   ) {
-    const collectionName = this.normaliseCollectionName(flow_type, flow_name);
-    // create new memory collection on demand if does not exist,
-    if (!this.db.getCollection(collectionName)) {
-      const initialData = await this.getInitialData(flow_type, flow_name);
-      const schema = this.db.inferSchema(initialData[0]);
-      await this.db.createCollection(collectionName, schema);
-      await this.db.bulkInsert(collectionName, initialData);
-    }
+    const { collectionName } = await this.ensureCollection(flow_type, flow_name);
     // use a live query to return all documents in the collection, converting
     // from reactive documents to json data instead
     let query = this.db.query(collectionName, queryObj);
@@ -109,27 +103,42 @@ export class DynamicDataService extends AsyncServiceBase {
     flow_type: FlowTypes.FlowType,
     flow_name: string,
     row_id: string,
-    update?: Partial<T>
+    update: Partial<T>
   ) {
     if (update) {
-      const collectionName = this.normaliseCollectionName(flow_type, flow_name);
-      if (!this.db.getCollection(collectionName)) {
-        const schema = this.db.inferSchema(update);
-        await this.db.createCollection(collectionName, schema);
-      }
-      // TODO - merge with existing data
+      const { collectionName } = await this.ensureCollection(flow_type, flow_name);
       const existingDoc = await this.db.getDoc<any>(collectionName, row_id);
+
       if (existingDoc) {
         const data = existingDoc.toMutableJSON();
         update = deepMergeObjects(data, update);
       } else {
-        // TODO - can likely move the insert error check logic here and keep adapter simple
+        throw new Error(`cannot update row that does not exist: [${flow_name}]:[${row_id}]`);
       }
       // update memory db
       await this.db.updateDoc({ collectionName, id: row_id, data: update });
       // update persisted db
       this.writeCache.update({ flow_name, flow_type, id: row_id, data: update });
     }
+  }
+
+  public async clearCache(flow_type: FlowTypes.FlowType, flow_name: string) {
+    this.writeCache.delete(flow_type, flow_name);
+  }
+
+  /** Ensure a collection exists, creating if not and populating with corresponding list data */
+  private async ensureCollection(flow_type: FlowTypes.FlowType, flow_name: string) {
+    const collectionName = this.normaliseCollectionName(flow_type, flow_name);
+    if (!this.db.getCollection(collectionName)) {
+      const initialData = await this.getInitialData(flow_type, flow_name);
+      if (initialData.length === 0) {
+        throw new Error(`No data exists for collection [${flow_name}], cannot initialise`);
+      }
+      const schema = this.inferSchema(initialData[0]);
+      await this.db.createCollection(collectionName, schema);
+      await this.db.bulkInsert(collectionName, initialData);
+    }
+    return { collectionName };
   }
 
   /** Retrive json sheet data and merge with any user writes */
@@ -151,5 +160,31 @@ export class DynamicDataService extends AsyncServiceBase {
     const dbDataHashmap = arrayToHashmap(dbData, "id");
     const merged = deepMergeObjects(flowHashmap, dbDataHashmap);
     return Object.values(merged) as T[];
+  }
+
+  /**
+   * Any fields that will be used in querying need to have defined properties for each field
+   * Use an example data entry to try and infer schema from datatypes present in that row
+   *
+   * TODO - ideally better if schmea can also be defined using an `@schema` row or similar
+   */
+  private inferSchema(data: any) {
+    const { id, ...fields } = data;
+    // TODO - could make QC check in parser instead of at runtime
+    if (!id) {
+      throw new Error("Cannot create dynamic data without id column", data);
+    }
+    if (typeof id !== "string") {
+      throw new Error("ID column must be formatted as a string", data);
+    }
+    const schema = REACTIVE_SCHEMA_BASE;
+    for (const [key, value] of Object.entries(fields)) {
+      if (!schema.properties[key]) {
+        const type = typeof value;
+        const entry: TopLevelProperty = { type };
+        schema.properties[key] = entry;
+      }
+    }
+    return schema;
   }
 }

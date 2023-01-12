@@ -1,4 +1,4 @@
-import { Component, Injector } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector } from "@angular/core";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { FlowTypes } from "../../models";
 import { ItemProcessor } from "../../processors/item";
@@ -10,8 +10,11 @@ import { TemplateBaseComponent } from "../base";
   selector: "plh-data-items",
   templateUrl: "./data-items.component.html",
   styleUrls: ["./data-items.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 /**
+ * Data Items are a structural row component that subscribes to a dynamic data list
+ * and re-renders child components on change
  *
  * TODO
  * - Would be better if can render children without container (like regular items)
@@ -28,12 +31,12 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
   constructor(
     private dynamicDataService: DynamicDataService,
     private templateVariablesService: TemplateVariablesService,
-    private injector: Injector
+    private injector: Injector,
+    private cdr: ChangeDetectorRef
   ) {
     super();
   }
   async ngOnInit() {
-    // extract raw parameter list
     this.dataListName = this.hackGetRawDataList(this._row);
     if (this.dataListName) {
       const parameterList = this.hackGetRawParameterList(this._row);
@@ -53,12 +56,14 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
     const parsedItemDataList = await this.parseDataList(itemDataList);
     const itemRows = new ItemProcessor(parsedItemDataList, parameterList).process(rows);
     const parsedItemRows = await this.hackProcessRows(itemRows);
-    const replacedActionRows = this.hackSetActionArgs(parsedItemRows);
+    const replacedActionRows = this.setActionListMeta(parsedItemRows);
+    // TODO - deep diff and only update changed
     this.itemRows = replacedActionRows;
+    this.cdr.markForCheck();
   }
 
-  /**  */
-  private hackSetActionArgs(rows: FlowTypes.TemplateRow[]) {
+  /** Update any action list set_item args to contain name of current data list and item id */
+  private setActionListMeta(rows: FlowTypes.TemplateRow[]) {
     return rows.map((r) => {
       if (r.action_list) {
         r.action_list = r.action_list.map((a) => {
@@ -72,7 +77,10 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
     });
   }
 
-  /** */
+  /**
+   * Ordinarily rows would be processed as part of the regular template processing,
+   * however this must be bypassed to allow multiple reprocessing on item updates
+   */
   private async hackProcessRows(rows) {
     const processor = new TemplateRowService(this.injector, {
       name: "",
@@ -87,7 +95,10 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
     return processor.renderedRows;
   }
 
-  /**  */
+  /**
+   * Datalists are already parsed when rendering the component,
+   * so use raw data to extract the original name of the list
+   * */
   private hackGetRawDataList(row: FlowTypes.TemplateRow) {
     return row._dynamicFields?.value?.[0]?.fieldName;
   }
