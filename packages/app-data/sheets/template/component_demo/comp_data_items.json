@@ -24,7 +24,7 @@
     },
     {
       "type": "data_items",
-      "value": "@data.data_items_list",
+      "value": "@data.comp_data_items_list",
       "rows": [
         {
           "type": "text",
@@ -198,15 +198,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@data.data_items_list",
-            "matchedExpression": "@data.data_items_list",
+            "fullExpression": "@data.comp_data_items_list",
+            "matchedExpression": "@data.comp_data_items_list",
             "type": "data",
-            "fieldName": "data_items_list"
+            "fieldName": "comp_data_items_list"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@data.data_items_list": [
+        "@data.comp_data_items_list": [
           "value"
         ]
       }
@@ -222,7 +222,7 @@
     },
     {
       "type": "data_items",
-      "value": "@data.data_items_list",
+      "value": "@data.comp_data_items_list",
       "parameter_list": {
         "filter": "@item.completed"
       },
@@ -399,10 +399,10 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@data.data_items_list",
-            "matchedExpression": "@data.data_items_list",
+            "fullExpression": "@data.comp_data_items_list",
+            "matchedExpression": "@data.comp_data_items_list",
             "type": "data",
-            "fieldName": "data_items_list"
+            "fieldName": "comp_data_items_list"
           }
         ],
         "parameter_list": {
@@ -417,7 +417,7 @@
         }
       },
       "_dynamicDependencies": {
-        "@data.data_items_list": [
+        "@data.comp_data_items_list": [
           "value"
         ],
         "@item.completed": [
@@ -436,7 +436,7 @@
     },
     {
       "type": "data_items",
-      "value": "@data.data_items_list",
+      "value": "@data.comp_data_items_list",
       "parameter_list": {
         "limit": "1"
       },
@@ -528,15 +528,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@data.data_items_list",
-            "matchedExpression": "@data.data_items_list",
+            "fullExpression": "@data.comp_data_items_list",
+            "matchedExpression": "@data.comp_data_items_list",
             "type": "data",
-            "fieldName": "data_items_list"
+            "fieldName": "comp_data_items_list"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@data.data_items_list": [
+        "@data.comp_data_items_list": [
           "value"
         ]
       }
