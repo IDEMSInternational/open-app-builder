@@ -9,6 +9,7 @@ import { AsyncServiceBase } from "../asyncService.base";
 import { arrayToHashmap, deepMergeObjects } from "../../utils";
 import { PersistedMemoryAdapter } from "./adapters/persistedMemory";
 import { ReactiveMemoryAdapater } from "./adapters/reactiveMemory";
+import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
 
 type IDocWithID = { id: string };
 
@@ -39,7 +40,10 @@ export class DynamicDataService extends AsyncServiceBase {
    */
   private writeCache: PersistedMemoryAdapter;
 
-  constructor(private appDataService: AppDataService) {
+  constructor(
+    private appDataService: AppDataService,
+    private templateActionRegistry: TemplateActionRegistry
+  ) {
     super("Dynamic Data");
     this.registerInitFunction(this.initialise);
     this.registerTemplateActionHandlers();
@@ -58,11 +62,12 @@ export class DynamicDataService extends AsyncServiceBase {
   }
   private registerTemplateActionHandlers() {
     // TODO - pending merge of related PR
-    // this.templateActionRegistry.register({
-    //   set_data: async (args) => {
-    //     console.log("setting data", args);
-    //   },
-    // });
+    this.templateActionRegistry.register({
+      set_item: async ({ args, params }) => {
+        const [flow_name, row_id] = args;
+        await this.update("data_list", flow_name, row_id, params);
+      },
+    });
   }
 
   /** Watch for changes to a specific flow */
@@ -75,7 +80,9 @@ export class DynamicDataService extends AsyncServiceBase {
     // create new memory collection on demand if does not exist,
     if (!this.db.getCollection(collectionName)) {
       const initialData = await this.getInitialData(flow_type, flow_name);
-      await this.db.createCollection(collectionName, initialData);
+      const schema = this.db.inferSchema(initialData[0]);
+      await this.db.createCollection(collectionName, schema);
+      await this.db.bulkInsert(collectionName, initialData);
     }
     // use a live query to return all documents in the collection, converting
     // from reactive documents to json data instead
@@ -84,8 +91,8 @@ export class DynamicDataService extends AsyncServiceBase {
       map((v) => {
         const docs = v as RxDocument<T>[];
         return docs.map((doc) => {
-          const data = doc.get("data");
-          data.id = doc.id;
+          // we need mutable json so that we can replace dynamic references as required
+          const data = doc.toMutableJSON();
           return data as T;
         });
       })
@@ -107,14 +114,14 @@ export class DynamicDataService extends AsyncServiceBase {
     if (update) {
       const collectionName = this.normaliseCollectionName(flow_type, flow_name);
       if (!this.db.getCollection(collectionName)) {
-        await this.db.createCollection(collectionName);
+        const schema = this.db.inferSchema(update);
+        await this.db.createCollection(collectionName, schema);
       }
       // TODO - merge with existing data
       const existingDoc = await this.db.getDoc<any>(collectionName, row_id);
       if (existingDoc) {
-        const { data } = existingDoc.toJSON();
-        update = deepMergeObjects({}, data, update);
-        console.log("merged update", update);
+        const data = existingDoc.toMutableJSON();
+        update = deepMergeObjects(data, update);
       } else {
         // TODO - can likely move the insert error check logic here and keep adapter simple
       }
