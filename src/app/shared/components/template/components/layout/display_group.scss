@@ -34,9 +34,10 @@
 
 .display-group-wrapper[data-param-style~="column"]
   > plh-template-component:not([data-hidden="true"]) {
-  margin: 1em 0 0 0;
+  margin: 0;
 }
 .display-group-wrapper[data-param-style~="column"]
-  > plh-template-component:not([data-hidden="true"]):first-of-type {
-  margin: 0;
+  > plh-template-component:not([data-hidden="true"])
+  ~ plh-template-component:not([data-hidden="true"]) {
+  margin: 1em 0 0 0;
 }
