@@ -266,6 +266,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "common_workshop_tasks",
       _xlsxPath: "global/data/workshop_data/workshop_tasks.xlsx",
     },
+    comp_data_items_list: {
+      flow_type: "data_list",
+      flow_name: "comp_data_items_list",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_data_items.xlsx",
+    },
     covid_data_list: {
       flow_type: "data_list",
       flow_name: "covid_data_list",
@@ -2019,6 +2025,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "comp_dashed_box",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_dashed_box.xlsx",
+    },
+    comp_data_items: {
+      flow_type: "template",
+      flow_name: "comp_data_items",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_data_items.xlsx",
     },
     comp_drawer: {
       flow_type: "template",
