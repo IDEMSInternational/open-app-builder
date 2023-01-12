@@ -1,8 +1,10 @@
+$border: var(--task-card-border, var(--ion-color-shade));
+
 .card-wrapper {
   position: relative;
   margin: auto;
   background-color: white;
-  border: 1px solid var(--ion-color-gray-light);
+  border: 1px solid $border;
   border-radius: var(--ion-border-radius-secondary);
   padding: var(--regular-padding);
   padding-right: var(--tiny-padding);
