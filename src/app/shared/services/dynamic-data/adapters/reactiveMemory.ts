@@ -28,7 +28,7 @@ import { environment } from "src/environments/environment";
  * NOTE - by default assumes data has an id field which will be used as primary key
  * https://rxdb.info/rx-schema.html
  */
-const SCHEMA_BASE: RxJsonSchema<any> = {
+export const REACTIVE_SCHEMA_BASE: RxJsonSchema<any> = {
   title: "base schema for id-primary key data",
   // NOTE - important to start at 0 and not timestamp (e.g. 20221220) as will check
   // for migration strategies for each version which is hugely inefficient
@@ -103,7 +103,7 @@ export class ReactiveMemoryAdapater {
 
   public async bulkInsert(name: string, docs: any[]) {
     const { error, success } = await this.db.collections[name].bulkInsert(docs);
-    if (error) {
+    if (error.length > 0) {
       console.warn(`[DB] could not insert docs into [${name}]`, docs);
       console.error(error);
     }
@@ -114,9 +114,7 @@ export class ReactiveMemoryAdapater {
     const { collectionName, id, data } = update;
     let collection = this.getCollection(collectionName);
     if (!collection) {
-      const schema = this.inferSchema(update);
-      await this.createCollection(collectionName, schema);
-      collection = this.getCollection(collectionName);
+      throw new Error("Collection does not exist: " + collectionName);
     }
     const matchedDocs = await collection.findByIds([id]);
     const existingDoc: RxDocument = matchedDocs.get(id);
@@ -133,31 +131,5 @@ export class ReactiveMemoryAdapater {
       await collection.insert(update);
       return update;
     }
-  }
-
-  /**
-   *
-   * @param data
-   * @returns
-   *
-   * TODO - ideally better if schmea can also be defined using an `@schema` row or similar
-   */
-  public inferSchema(data: any) {
-    // TODO - could make QC check in parser instead of at runtime
-    if (!data.id) {
-      throw new Error("Cannot create dynamic data without id column", data);
-    }
-    if (typeof data.id !== "string") {
-      throw new Error("ID column must be formatted as a string", data);
-    }
-    const schema = SCHEMA_BASE;
-    for (const [key, value] of Object.entries(data)) {
-      if (!schema.properties[key]) {
-        schema.properties[key] = {
-          type: typeof value,
-        };
-      }
-    }
-    return schema;
   }
 }
