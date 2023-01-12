@@ -40,10 +40,9 @@ const SCHEMA_BASE: RxJsonSchema<any> = {
       type: "string",
       maxLength: 128, // <- the primary key must have set maxLength
     },
-    flow_name: { type: "string", maxLength: 64 },
   },
-  required: ["id", "flow_name"],
-  indexes: ["flow_name"],
+  required: ["id"],
+  indexes: [],
 };
 
 interface IDataUpdate {
@@ -93,22 +92,32 @@ export class ReactiveMemoryAdapater {
     return collection.find(queryObj).$;
   }
 
-  public async createCollection(name: string, initialData?: any[]) {
-    await this.addCollections(this.db, [name]);
-    if (initialData) {
-      await this.db.collections[name].bulkInsert(initialData);
+  /**
+   * @param dataSample row of data used to infer schema types
+   */
+  public async createCollection(name: string, schema: RxJsonSchema<any>) {
+    const collections: { [x: string]: RxCollectionCreator<any> } = {};
+    collections[name] = { schema };
+    await this.db.addCollections(collections);
+  }
+
+  public async bulkInsert(name: string, docs: any[]) {
+    const { error, success } = await this.db.collections[name].bulkInsert(docs);
+    if (error) {
+      console.warn(`[DB] could not insert docs into [${name}]`, docs);
+      console.error(error);
     }
+    return success;
   }
 
   public async updateDoc(update: IDataUpdate) {
     const { collectionName, id, data } = update;
-
     let collection = this.getCollection(collectionName);
     if (!collection) {
-      await this.createCollection(collectionName);
+      const schema = this.inferSchema(update);
+      await this.createCollection(collectionName, schema);
       collection = this.getCollection(collectionName);
     }
-
     const matchedDocs = await collection.findByIds([id]);
     const existingDoc: RxDocument = matchedDocs.get(id);
     if (existingDoc) {
@@ -118,19 +127,37 @@ export class ReactiveMemoryAdapater {
           delete data[key];
         }
       }
-      const updatedDoc = await existingDoc.atomicPatch({ data });
-      return updatedDoc.toJSON();
+      const updatedDoc = await existingDoc.atomicPatch(data);
+      return updatedDoc.toMutableJSON();
     } else {
       await collection.insert(update);
       return update;
     }
   }
 
-  private async addCollections(db: RxDatabase, names: string[]) {
-    const collections: { [x: string]: RxCollectionCreator<any> } = {};
-    for (const name of names) {
-      collections[name] = { schema: SCHEMA_BASE };
+  /**
+   *
+   * @param data
+   * @returns
+   *
+   * TODO - ideally better if schmea can also be defined using an `@schema` row or similar
+   */
+  public inferSchema(data: any) {
+    // TODO - could make QC check in parser instead of at runtime
+    if (!data.id) {
+      throw new Error("Cannot create dynamic data without id column", data);
     }
-    return db.addCollections(collections);
+    if (typeof data.id !== "string") {
+      throw new Error("ID column must be formatted as a string", data);
+    }
+    const schema = SCHEMA_BASE;
+    for (const [key, value] of Object.entries(data)) {
+      if (!schema.properties[key]) {
+        schema.properties[key] = {
+          type: typeof value,
+        };
+      }
+    }
+    return schema;
   }
 }
