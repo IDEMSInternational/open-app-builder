@@ -22,11 +22,11 @@ plh-template-container {
 
 /// Ensure all directly nested non-hidden template rows have spacing between elements,
 /// except in case where only one row (e.g. deep-nested).
-// Complex selector must be used in order to take account of "hidden" data attribute
-// when applying margin to all but first child, see https://stackoverflow.com/a/29422984
+// Apply 0 margin to all children
 plh-template-container > plh-template-component:not([data-hidden="true"]) {
   margin-top: 0;
 }
+// Apply 1em margin to all non-hidden children but the first, see https://stackoverflow.com/a/29422984
 plh-template-container
   > plh-template-component:not([data-hidden="true"])
   ~ plh-template-component:not([data-hidden="true"]) {
