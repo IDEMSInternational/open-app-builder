@@ -38,6 +38,11 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
       this.config.loopedSlides = this._row.rows.length;
     }
     this.config.centeredSlides = getBooleanParamFromTemplateRow(this._row, "centered_slides", true);
+    this.config.centeredSlidesBounds = !getBooleanParamFromTemplateRow(
+      this._row,
+      "centre_first_and_last",
+      false
+    );
     this.initialSlide = getNumberParamFromTemplateRow(this._row, "initial_slide_index", 0);
   }
 
