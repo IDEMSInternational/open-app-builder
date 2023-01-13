@@ -5,7 +5,6 @@ $item-background-complete: var(
   --points-item-background-complete,
   var(--ion-color-primary-contrast)
 );
-$item-border: var(--points-item-border, none);
 
 .wrapper-point {
   padding: calc(var(--regular-padding) * var(--scale-factor--point))
@@ -18,7 +17,7 @@ $item-border: var(--points-item-border, none);
     height: calc(var(--points-item-height) * var(--scale-factor--point));
     background: $item-background;
     filter: drop-shadow(var(--ion-default-box-shadow));
-    border: 1px solid $item-border;
+    border: 1px solid rgba(black, 0.07);
     border-radius: var(--ion-border-radius-standard);
     position: relative;
     flex-direction: column;
