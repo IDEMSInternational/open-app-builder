@@ -1,7 +1,7 @@
 *
 !.gitignore
 !*/
-!deployments/example/config.ts
+!deployments/local/config.ts
 !deployments/plh/*.ts
 !deployments/early_family_math/*.ts
 !deployments/wash/*.ts

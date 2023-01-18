@@ -6,15 +6,12 @@
 
 # NOTE - currently only used for debugging as methods are integrated into build scripts
 name: Sourcemaps Upload
-# on:
-  # push:
-  #   branches:
-  #     - feat/glitchtip-error-logs
+on: workflow_dispatch
 jobs:
   sourcemaps_upload:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           lfs: true
       - name: Set Environment Deployment
@@ -27,17 +24,10 @@ jobs:
         #   fi;
         shell: bash
       - name: Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: 16.x
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: ./.yarn/cache
-          # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
-          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-v1-
+          node-version: 16
+          cache: 'yarn'
       - name: Populate firebaseConfig.ts
         env:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
