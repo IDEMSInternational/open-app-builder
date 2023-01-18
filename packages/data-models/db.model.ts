@@ -103,13 +103,10 @@ export interface IDBDoc {
 
 /**
  * All databases must contain an incremented version number, and any migration logic
- * required between versions. Currently using app version number to track when the
+ * required between versions. Currently using datestamp to track when the
  * breaking changes occurred (does not need to be updated every version)
- * e.g. v1.5.3 => 100500300
- * e.g. v0.1.0 => 000001000
- * e.g. v0.10.4 => 000010004
  */
-export const DB_VERSION = 16009;
+export const DB_VERSION = 20230109;
 
 export interface IDBEvent {
   topic: "DB";

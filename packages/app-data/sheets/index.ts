@@ -2002,6 +2002,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/component_sheets/component_button.xlsx",
     },
+    comp_calendar: {
+      flow_type: "template",
+      flow_name: "comp_calendar",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_calendar.xlsx",
+    },
     comp_carousel: {
       flow_type: "template",
       flow_name: "comp_carousel",
@@ -2519,6 +2525,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_go_to_nested.xlsx",
     },
+    debug_go_to_url: {
+      flow_type: "template",
+      flow_name: "debug_go_to_url",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/debug_sheets/debug_go_to_url.xlsx",
+    },
     debug_hidden_buttons: {
       flow_type: "template",
       flow_name: "debug_hidden_buttons",
@@ -2872,6 +2884,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "debug_stepper_step_4",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/to_be_sorted/debug_stepper.xlsx",
+    },
+    debug_teen_ages: {
+      flow_type: "template",
+      flow_name: "debug_teen_ages",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/debug_sheets/debug_items_fields.xlsx",
     },
     debug_text: {
       flow_type: "template",
@@ -3841,6 +3859,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "demo_workshop_unlock_pop",
       _xlsxPath: "global/demo_templates/demo_navigation.xlsx",
+    },
+    demographics_teen_age: {
+      flow_type: "template",
+      flow_name: "demographics_teen_age",
+      _xlsxPath: "global/top_templates/survey_templates/workshop_setup.xlsx",
     },
     ending: {
       flow_type: "template",
