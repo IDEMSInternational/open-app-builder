@@ -1,0 +1,22 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "comp_data_items_list",
+  "status": "released",
+  "flow_subtype": "component_demo",
+  "rows": [
+    {
+      "id": "id_1",
+      "label": "Task 1",
+      "completed": false,
+      "id_1": "id_1",
+      "user_value_1": "a"
+    },
+    {
+      "id": "id_2",
+      "label": "Task 2",
+      "completed": true,
+      "id_1": "id_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/component_sheets/component_data_items.xlsx"
+}
