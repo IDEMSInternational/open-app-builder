@@ -121,6 +121,9 @@ export class AppComponent {
       // Show main template
       this.renderAppTemplates = true;
       this.scheduleReinitialisation();
+
+      // Testing
+      this.templateFieldService.getSnapshot();
     });
   }
 

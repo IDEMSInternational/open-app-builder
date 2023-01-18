@@ -89,4 +89,32 @@ export class TemplateFieldService extends AsyncServiceBase {
   public setGlobal(row: FlowTypes.GlobalRow) {
     this.globals[row.name] = row;
   }
+
+  /**
+   * WiP
+   * Create a snapshot of the current state of app variables
+   */
+  public getSnapshot() {
+    const snapshot: Record<string, string> = {};
+    for (const [key, value] of Object.entries(localStorage)) {
+      if (key.startsWith("rp-contact-field.")) {
+        // stripping name helps reduce size
+        const snapshotKey = key.replace("rp-contact-field.", "");
+        // omit metadata fields
+        if (!snapshotKey.startsWith("_")) {
+          // HACK - omit any falsy values to reduce size
+          // URLs have max 2048 chars, plh raw more like 14,000
+          // 20k -> 14k -> 2k (->1k if also omit "true")
+          // TODO - could expose as config option
+          if (!["false", "undefined", "0", "null"].includes(value)) {
+            snapshot[snapshotKey] = value;
+          }
+        }
+      }
+    }
+    console.log({ snapshot });
+    return snapshot;
+    // TODO - warn in snapshot more than 2048 chars
+    // TODO - better to filter to just those needed by template (future parser)
+  }
 }
