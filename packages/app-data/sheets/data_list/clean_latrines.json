@@ -1,0 +1,30 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "clean_latrines",
+  "status": "released",
+  "data_list_name": "clean_toilets",
+  "rows": [
+    {
+      "id": "clean_latrines_what",
+      "title": "What is a Clean Latrine?",
+      "text": "A clean latrine is one that separates you from your poop (excreta) and urine.",
+      "reference": "Guidelines on sanitation and health. Geneva: World Health Organization; 2018. Licence: CC BY-NC-SA 3.0 IGO.\nExtract - Safely managed sanitation for households includes:\n\nUse of improved facilities that are not shared with other households and where excreta are safely disposed of in situ or transported and treated off-site.",
+      "reference_link_title": "Guidelines on sanitation and health. Geneva: World Health Organization; 2018. Licence: CC BY-NC-SA 3.0 IGO",
+      "reference_link": "www.who.int/publications/i/item/9789241514705"
+    },
+    {
+      "id": "clean_latrines_motivators",
+      "title": "Importance of Clean Latrines",
+      "text": "Keep your latrines clean and your neighbours will be impressed.  Besides, you don't want to be stepping on poop (excreta) or urine whilst toileting.  Cleaning your latrines will also stop the spread of diseases.  You can do it!  Keep them clean for you, your family and your neighbours.",
+      "context  (not for App but to support content development)": "Malima, G., Mshida, H., Machunda, R., Moyo, F., Banzi, J., Gautam, O. P., Mbeguere, M., Smith, K., Cairncross, S., & Njau, K. N. (2022). What influences individuals to invest in improved sanitation services and hygiene behaviours in a small town? A formative research study in Babati, Tanzania. PLOS ONE, 17(7), e0270688. <span>https://doi.org/10.1371/journal.pone.0270688</span><br/><span><b>FGDs unveiled four motives for cleaning latrines. First, social influence or the feeling of being embarrassed by neighbours. Second, fear of being fined by health officers, who occasionally inspects households and fine those whose latrines are found to be dirty. Third, the feeling of disgust when using a latrine with visible faeces and urine, and fourth, fear of contracting diseases from a dirty latrine.</b></span> For barriers, FGDs revealed two key factors, namely poorly maintained floors and limited water availability. Most of the latrines had mud or wooden slabs which cannot be easily washed or cleaned using water. Households that had installed pour-flush or flush toilets also identified a lack of water as the main reason for having dirty latrines. FGD participants stated fear of contracting urinary tract infections (UTIs) and fungal diseases while using flush toilets when water is limited."
+    },
+    {
+      "id": "clean_latrines_tips",
+      "title": "Tips for a Clean Latrine",
+      "text": "1.  Sweep your latrine, the area around it and pathway to it daily.\n2.  Use soap/ash to get rid of any urine stains or feces.\n3.  Ash in the pit can also stop smells.\n4.  Always remember to cover your latrine hole - this will stop the flies!\n5.  Throw your toilet paper into the latrine pit.\n6.  Check your latrines regularly.  Make any repairs quickly.",
+      "template": "essential_tools/clean_latrine.png",
+      "reference": "Community WASH Conversations.  Arkansas:  LifeWater. Mar 2022.  License:  CC BY-NC-SA 3.0"
+    }
+  ],
+  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+}

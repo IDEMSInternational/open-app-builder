@@ -65,7 +65,86 @@
         }
       ],
       "_nested_name": "button_reset"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_references",
+      "rows": [
+        {
+          "type": "toggle_bar",
+          "name": "toggle_references",
+          "value": "@fields.show_references",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "changed",
+              "action_id": "set_field",
+              "args": [
+                "show_references",
+                "this.value"
+              ],
+              "_raw": "changed | set_field: show_references: @local.toggle_references",
+              "_cleaned": "changed | set_field: show_references: @local.toggle_references"
+            }
+          ],
+          "_nested_name": "dg_references.toggle_references",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@fields.show_references",
+                "matchedExpression": "@fields.show_references",
+                "type": "fields",
+                "fieldName": "show_references"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "_raw": [
+                  {
+                    "fullExpression": "changed | set_field: show_references: @local.toggle_references",
+                    "matchedExpression": "@local.toggle_references",
+                    "type": "local",
+                    "fieldName": "toggle_references"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "changed | set_field: show_references: @local.toggle_references",
+                    "matchedExpression": "@local.toggle_references",
+                    "type": "local",
+                    "fieldName": "toggle_references"
+                  }
+                ]
+              }
+            }
+          },
+          "_dynamicDependencies": {
+            "@fields.show_references": [
+              "value"
+            ],
+            "@local.toggle_references": [
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "value": "Show references",
+          "_translations": {
+            "value": {}
+          },
+          "style_list": [
+            "flex: 1"
+          ],
+          "name": "text",
+          "_nested_name": "dg_references.text"
+        }
+      ],
+      "_nested_name": "dg_references"
     }
   ],
-  "_xlsxPath": "templates/global/navigation.xlsx"
+  "_xlsxPath": "templates/global/navigation_modular.xlsx"
 }

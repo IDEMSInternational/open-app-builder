@@ -1,0 +1,34 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "breastfeeding",
+  "status": "released",
+  "data_list_name": "breastfeeding",
+  "rows": [
+    {
+      "id": "breastfeeding_why",
+      "title": "Why breastfeed?",
+      "text": "Breastfeeding keeps a baby strong and protects the child from illness.",
+      "illustration": "essential_tools/breastfeeding2_license_needed.png",
+      "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF 2020.  \nExtract:  Breastfeeding protects against the two leading causes of death in children under 5 years – pneumonia and diarrhea.",
+      "reference_link_title": "Baby WASH Programming",
+      "reference_link": "www.unicef.org/esa/reports/baby-wash-programming"
+    },
+    {
+      "id": "breastfeeding_materials",
+      "title": "Caring for your baby",
+      "text": "Mothers should have access to clean water for both bathing and handwashing.  Don't forget to wash your babies face!",
+      "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF 2020.  \nExtract:  Provide access to sufficient clean water, pre- and post-delivery, particularly to facilitate\nbathing and hand washing of mother and baby.",
+      "reference_link_title": "Baby WASH Programming",
+      "reference_link": "www.unicef.org/esa/reports/baby-wash-programming"
+    },
+    {
+      "id": "breastfeeding_tip",
+      "title": "Breastfeeding Tips",
+      "text": "Remember, your baby loves to explore, but also important is to keep your baby's mouth and hands clean.",
+      "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF 2020. \nExtract:  Care should be taken to keep contamination from other areas away from the baby’s\nmouth and hands.",
+      "reference_link_title": "Baby WASH Programming",
+      "reference_link": "www.unicef.org/esa/reports/baby-wash-programming"
+    }
+  ],
+  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+}

@@ -3,6 +3,52 @@
   "flow_name": "water_treatment",
   "status": "released",
   "data_list_name": "water_treatment",
-  "rows": [],
-  "_xlsxPath": "data_lists/water/water_data_list.xlsx"
+  "rows": [
+    {
+      "id": "treatment_why",
+      "title": "Why should we treat water",
+      "text": "Water treatment makes water safe and easy to drink by killing germs that cause diseases and infections.",
+      "illustration": "essential_tools/water_germs_license_needed.png",
+      "reference": "United Nations Children’s Fund and World Health Organization: Water, Sanitation, and Hygiene for School Children, UNICEF, New York, 2021.\n\nExtract:\nWater treatment makes water safe and pleasant to drink.",
+      "reference_link_title": "Water, Sanitation, and Hygiene for School Children",
+      "reference_link": "www.unicef.org/kyrgyzstan/media/1586/file/WASH%20Guidebook-Eng_0.pdf%20.pdf",
+      "context  (not for App but to support content development)": "Mushi, M. F., Mpelasoka, O. E., Mazigo, H. D., McLeod, L., Moremi, N., Mirambo, M. M., & Mshana, S. E. (2018). High rate of drinking water contamination due to poor storage in squatter settlements in Mwanza, Tanzania. Tanzania Journal of Health Research, 20(3). <span>https://doi.org/10.4314/thrb.v20i3.7<br/></span><br/>Source of drinking water in the squatters of Mwanza city - All  households  used  tap  water  as  the  source  of  their  drinking  water.    A  total  of  157  (75.84%) respondents, reported treating their water for drinking using boiling, 119 (57.49%) leaving the water to stand and settle, 23 (11.11%) used chlorination and 15 (9.6%) strain through cloth (Table1).  The majority of households 202 (97.58%) stored their drinking water; of these 200 (98.55%) used a clay pot. Only 2 (1%) used buckets with cover and spigot as storage container of drinking water.<br/><br/>Malima, G., Mshida, H., Machunda, R., Moyo, F., Banzi, J., Gautam, O. P., Mbeguere, M., Smith, K., Cairncross, S., & Njau, K. N. (2022). What influences individuals to invest in improved sanitation services and hygiene behaviours in a small town? A formative research study in Babati, Tanzania. PLOS ONE, 17(7), e0270688. <span>https://doi.org/10.1371/journal.pone.0270688</span><br/>FDGs revealed several motives and barriers for households to treat water. First, <span><b>FGDs showed that fear of contracting water-borne diseases such as cholera and diarrhoea served as a motive for households to treat drinking water. </b></span>Second, the type of water source used by the household, acted as both a barrier and motive for a household to treat drinking water. Households that were collecting water from sources that are considered to be contaminated such as a river or a lake where animals also drink from, felt the need to treat water before drinking. However, households that were collecting water from the town water supply authority source (piped water), did not feel the need to treat the water because the source was considered to be clean and safe. Third, the cost of treating water (financial constraints) was another barrier. Fuel cost i.e. cost of firewood, charcoal or gas used to boil water, and cost of buying water treatment chemicals impeded households to treat drinking water."
+    },
+    {
+      "id": "treatment_types",
+      "title": "Types of water treatment",
+      "text": "You can treat water by:\n    * Use of chemicals (chlorine), boiling or sunlight.\n    * Filtration by passing the water through a ceramic or sand filter.",
+      "illustration": "essential_tools/ways_of_treating_water.jpg",
+      "reference": "United Nations Children’s Fund and World Health Organization: Water, Sanitation, and Hygiene for School Children, UNICEF, New York, 2021.\n\nExtract:\nDepending on local circumstances,two types of treatment are common:\nDisinfection by heat (boiling), chemicals (chlorine) or sunlight.\nFiltration by passing the water through a ceramic or sand filter.",
+      "reference_link_title": "Water, Sanitation, and Hygiene for School Children",
+      "reference_link": "www.unicef.org/kyrgyzstan/media/1586/file/WASH%20Guidebook-Eng_0.pdf%20.pdf"
+    },
+    {
+      "id": "treatment_disinfect",
+      "title": "How to treat water",
+      "text": "There are many ways of treating water to make it safe for use. Some of these include:\n*a) One can use chemicals (chlorine) to treat water. Always follow the instructions on the chemicals packet in order to use it safely.\n\n*b) Heat can also be used treat water.  \n*Let the water sit for sometime until the dirt settles at the bottom then pour it into a pot and boil it for at least 10 minutes to make sure all germs (pathogens) are killed before use. The water should be drunk within 24 hours .  This helps to keep it fresh and free from further germs (pathogens).  \n\n*c) Sunlight can aslo be used to clean small amounts of water. Whie using this method, the bottles should be filled with pre-filtered, clear water. The bottles should then be set out in the sun (usually on rooftops) for at least 6 hours before the water is drank.",
+      "illustration": "essential_tools/ways_of_treating_water.jpg\nessential_tools/water_treatement_SODIS.png",
+      "reference": "United Nations Children’s Fund and World Health Organization: Water, Sanitation, and Hygiene for School Children, UNICEF, New York, 2021.\n\nExtract\nWhichever method is used locally, children should learn how to treat water for drinking. If chlorine tablets are used, children should know the recommended dosage and treatment procedure. If using heat to disinfect, the water should be boiled and remain boiling for at least 10 minutes to make sure all pathogens are killed before use. Boiled water should be stored, handled carefully and consumed within 24 hours to avoid recontamination. If sunlight is used to disinfect small quantities of water, the bottles should be filled with pre-filtered, clear water and set out in the sun (usually on rooftops) for 6 hours.",
+      "reference_link_title": "Water, Sanitation, and Hygiene for School Children",
+      "reference_link": "www.unicef.org/kyrgyzstan/media/1586/file/WASH%20Guidebook-Eng_0.pdf%20.pdf"
+    },
+    {
+      "id": "treatment_filter",
+      "title": "How to filter water",
+      "text": "Collect water, pour the dirty water into a filter and collect it into a clean container.  Examples of filters include, candle filters, sand filters, or the two clay-pot systems.",
+      "illustration": "essential_tools/water_filter.png",
+      "reference": "United Nations Children’s Fund and World Health Organization: Water, Sanitation, and Hygiene for School Children, UNICEF, New York, 2021.\n\nExtract\nWhere filtration is used, for example, candle filters, sand filters or the two clay-pot system, the filters must be cleaned regularly.",
+      "reference_link_title": "Water, Sanitation, and Hygiene for School Children",
+      "reference_link": "www.unicef.org/kyrgyzstan/media/1586/file/WASH%20Guidebook-Eng_0.pdf%20.pdf"
+    },
+    {
+      "id": "treatment_clean_filter",
+      "title": "How to clean a filter",
+      "text": "Remember, filters must be cleaned often by rinsing with clean boiled water (do not wash it with soap).  Containers on the other hand, used to collect and store water however can be cleaned with soap.  Don't forget to wash your hands before cleaning your filter or container!  Nice job cleaning.",
+      "reference": "Community WASH Conversations.  Arkansas:  LifeWater. Mar 2022.  License:  CC BY-NC-SA 3.0",
+      "reference_link_title": "Community WASH Conversations",
+      "reference_link": "lifewater.org/wp-content/uploads/2022/06/Community-WASH-Conversations-Public.pdf"
+    }
+  ],
+  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
 }

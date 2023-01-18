@@ -1,0 +1,57 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "waste_management",
+  "status": "released",
+  "data_list_name": "waste_management",
+  "rows": [
+    {
+      "id": "waste_mgnt_why",
+      "title": "Why should we manage our waste?",
+      "text": "* Reduce breeding grounds for bugs, rodents, mosquitos, snakes, and other animals which can spread diseases  \n* Protect the environment and water sources  \n* Waste can block drainage canals and contribute to flooding  \n* Rotting waste produces air pollution, which is harmful to your health  \n* Using more waste requires the making of new products, which is bad for the environment \n* Hazardous waste can be dangerous  \n* Visible pollution",
+      "reference": "Centre for Affordable Water and Sanitation Technology: Community WASH Promotion, 2017",
+      "reference_link_title": "Community WASH Promotion",
+      "reference_link": "cdn.sanity.io/files/r8bm187e/production/ec2f1615fae8971ff69114f6274d47536213e608.pdf"
+    },
+    {
+      "id": "waste_mgnt_how",
+      "title": "How to manage solid waste.",
+      "text": "The disposal/treatment methods of solid waste depend on the type and amount of waste generated. Suggestions for disposal could include:\n* Paper waste can be buried or burned in an incinerator/burning chamber made from an oil drum. \n* Organic materials can be composted, for instance in big cement rings or log boxes/containers, and used as fertilizers/soil conditioners for trees and plants in the school compound.\n* Plastic waste can be collected and buried or recycled.\n* Disposal through the Council/Public solid waste management system if this exists.",
+      "reference": "Ministry of Education, Science and Technology, National Guideline for Water, Sanitation and Hygiene for Tanzania Schools, 2016",
+      "reference_link_title": "National Guideline for Water, Sanitation and Hygiene for Tanzania Schools,2016",
+      "reference_link": "www.unicef.org/tanzania/media/1526/file/National%20Guideline%20for%20Water,%20Sanitation%20and%20Hygiene%20for%20Tanzania%20Schools.pdf"
+    },
+    {
+      "id": "waste_mgnt_generate",
+      "title": "Ways to reduce the amount of waste we generate.",
+      "text": "* Don’t take a plastic bag when you buy something from a shop  \n* Use reusable containers, like plastic bottles rather than buying new ones  \n* Try to fix or repair things when they break",
+      "reference": "Centre for Affordable Water and Sanitation Technology: Community WASH Promotion, 2017",
+      "reference_link_title": "Community WASH Promotion",
+      "reference_link": "cdn.sanity.io/files/r8bm187e/production/ec2f1615fae8971ff69114f6274d47536213e608.pdf"
+    },
+    {
+      "id": "waste_mgnt_hazardous",
+      "title": "How to handle hazardous waste materials",
+      "text": "* Do not reuse containers that held hazardous material  \n* Do not burn hazardous waste  \n* Do not dispose of hazardous waste in latrines, drainage channels, water sources, or on the ground  \n* Use less hazardous materials as substitutes  \n* Separate hazardous waste from general household waste  \n* Use better storage before and during the collection of hazardous waste  \n* Dispose of hazardous waste in a separate landfill site from general household waste \n* Take medical waste to a local health care facility for disposal, if available",
+      "reference": "Centre for Affordable Water and Sanitation Technology: Community WASH Promotion, 2017",
+      "reference_link_title": "Community WASH Promotion",
+      "reference_link": "cdn.sanity.io/files/r8bm187e/production/ec2f1615fae8971ff69114f6274d47536213e608.pdf"
+    },
+    {
+      "id": "waste_mgnt_recycling",
+      "title": "Recycling and its benefits.",
+      "text": "Recycling is taking a product, breaking it down from its current form, and making something new from the same material. Some of the items that can be recycled are paper, metal, plastic, and glass.\nRecycling is good for the environment and uses fewer raw materials.",
+      "reference": "Centre for Affordable Water and Sanitation Technology: Community WASH Promotion, 2017",
+      "reference_link_title": "Community WASH Promotion",
+      "reference_link": "cdn.sanity.io/files/r8bm187e/production/ec2f1615fae8971ff69114f6274d47536213e608.pdf"
+    },
+    {
+      "id": "waste_mgnt_composting",
+      "title": "Benefits of composting",
+      "text": "* Reduces the amount of waste to be collected and transported  \n* Creates valuable resources for agriculture, including a home garden  \n* Soil holds water better  \n* Enhances the effectiveness of fertilizer  \n* Can be done at home  \n* Costs very little to get started and nothing to operate",
+      "reference": "Centre for Affordable Water and Sanitation Technology: Community WASH Promotion, 2017",
+      "reference_link_title": "Community WASH Promotion",
+      "reference_link": "cdn.sanity.io/files/r8bm187e/production/ec2f1615fae8971ff69114f6274d47536213e608.pdf"
+    }
+  ],
+  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+}

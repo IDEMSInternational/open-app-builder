@@ -4,151 +4,189 @@
   "status": "released",
   "rows": [
     {
+      "type": "update_action_list",
+      "name": "custom_actions_1",
+      "action_list": [
+        {
+          "trigger": "nav_resume",
+          "action_id": "emit",
+          "args": [
+            "force_reload"
+          ],
+          "_raw": "nav_resume | emit: force_reload",
+          "_cleaned": "nav_resume | emit: force_reload"
+        }
+      ],
+      "_nested_name": "custom_actions_1"
+    },
+    {
+      "name": "highlighted_module",
+      "value": "handwashing",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "highlighted_module"
+    },
+    {
       "type": "template",
-      "name": "help_banner",
-      "value": "help_banner",
+      "name": "highlighted_module_card",
+      "value": "module_card",
+      "exclude_from_translation": true,
       "rows": [
         {
-          "name": "tour_name",
-          "value": "home_screen_tour",
+          "name": "module_id",
+          "value": "@local.highlighted_module",
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
-          "_nested_name": "help_banner.tour_name"
-        }
-      ],
-      "_nested_name": "help_banner"
-    },
-    {
-      "type": "display_group",
-      "name": "tile_topics",
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "go_to",
-          "args": [
-            "topics_screen"
-          ],
-          "_raw": "click | go_to: topics_screen",
-          "_cleaned": "click | go_to: topics_screen"
-        }
-      ],
-      "parameter_list": {
-        "style": "home_screen light"
-      },
-      "rows": [
-        {
-          "type": "image",
-          "name": "image_topics",
-          "value": "homepage/topics.png",
-          "_translations": {
-            "value": {}
+          "_nested_name": "highlighted_module_card.module_id",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.highlighted_module",
+                "matchedExpression": "@local.highlighted_module",
+                "type": "local",
+                "fieldName": "highlighted_module"
+              }
+            ]
           },
-          "_nested_name": "tile_topics.image_topics"
+          "_dynamicDependencies": {
+            "@local.highlighted_module": [
+              "value"
+            ]
+          }
         },
         {
-          "type": "title",
-          "name": "title_topics",
-          "value": "Wash Topics",
+          "name": "card_style",
+          "value": "landscape",
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "style": "alternative",
-            "text_align": "center"
-          },
-          "_nested_name": "tile_topics.title_topics"
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "highlighted_module_card.card_style"
         }
       ],
-      "_nested_name": "tile_topics"
+      "_nested_name": "highlighted_module_card"
     },
     {
-      "type": "display_group",
-      "name": "tile_principles",
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "go_to",
-          "args": [
-            "habits_screen"
-          ],
-          "_raw": "click | go_to: habits_screen",
-          "_cleaned": "click | go_to: habits_screen"
-        }
-      ],
-      "parameter_list": {
-        "style": "home_screen shade"
+      "type": "title",
+      "name": "title",
+      "value": "All Modules",
+      "_translations": {
+        "value": {}
       },
-      "rows": [
-        {
-          "type": "image",
-          "name": "image_principles",
-          "value": "homepage/habits.png",
-          "_translations": {
-            "value": {}
-          },
-          "_nested_name": "tile_principles.image_principles"
-        },
-        {
-          "type": "title",
-          "name": "title_principles",
-          "value": "Wash habits",
-          "_translations": {
-            "value": {}
-          },
-          "parameter_list": {
-            "style": "alternative",
-            "text_align": "center"
-          },
-          "_nested_name": "tile_principles.title_principles"
-        }
-      ],
-      "_nested_name": "tile_principles"
+      "_nested_name": "title"
     },
     {
-      "type": "display_group",
-      "name": "tile_library",
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "go_to",
-          "args": [
-            "library_screen"
-          ],
-          "_raw": "click | go_to: library_screen",
-          "_cleaned": "click | go_to: library_screen"
-        }
-      ],
+      "type": "carousel",
+      "name": "carousel",
       "parameter_list": {
-        "style": "home_screen dark"
+        "space_between": "8",
+        "task_group_data": "module_tasks"
       },
+      "exclude_from_translation": true,
       "rows": [
         {
-          "type": "image",
-          "name": "image_library",
-          "value": "homepage/library.png",
-          "_translations": {
-            "value": {}
+          "type": "items",
+          "value": "@data.module_tasks",
+          "exclude_from_translation": true,
+          "rows": [
+            {
+              "type": "template",
+              "name": "module_card_@item.id",
+              "value": "module_card",
+              "exclude_from_translation": true,
+              "rows": [
+                {
+                  "name": "module_id",
+                  "value": "@item.id",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "type": "set_variable",
+                  "_nested_name": "carousel.items.module_card_@item.id.module_id",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@item.id",
+                        "matchedExpression": "@item.id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ],
+                    "_nested_name": [
+                      {
+                        "fullExpression": "carousel.items.module_card_@item.id.module_id",
+                        "matchedExpression": "@item.id.module_id",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@item.id": [
+                      "value"
+                    ],
+                    "@item.id.module_id": [
+                      "_nested_name"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "carousel.items.module_card_@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "module_card_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "carousel.items.module_card_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ]
+              }
+            }
+          ],
+          "name": "items",
+          "_nested_name": "carousel.items",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.module_tasks",
+                "matchedExpression": "@data.module_tasks",
+                "type": "data",
+                "fieldName": "module_tasks"
+              }
+            ]
           },
-          "_nested_name": "tile_library.image_library"
-        },
-        {
-          "type": "title",
-          "name": "title_library",
-          "value": "Library",
-          "_translations": {
-            "value": {}
-          },
-          "parameter_list": {
-            "style": "alternative",
-            "text_align": "center"
-          },
-          "_nested_name": "tile_library.title_library"
+          "_dynamicDependencies": {
+            "@data.module_tasks": [
+              "value"
+            ]
+          }
         }
       ],
-      "_nested_name": "tile_library"
+      "_nested_name": "carousel"
     }
   ],
-  "_xlsxPath": "templates/global/navigation.xlsx"
+  "_xlsxPath": "templates/global/navigation_modular.xlsx"
 }

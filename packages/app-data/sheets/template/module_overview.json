@@ -259,6 +259,39 @@
       }
     },
     {
+      "name": "card_tools_title",
+      "value": "@local.module_data.tools_title",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "card_tools_title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.module_data.tools_title",
+            "matchedExpression": "@local.module_data.tools_title",
+            "type": "local",
+            "fieldName": "module_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.module_data.tools_title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "template",
+      "value": "module_tool",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "template"
+    },
+    {
       "type": "display_group",
       "name": "top",
       "exclude_from_translation": true,
@@ -271,7 +304,7 @@
             "value": {}
           },
           "style_list": [
-            "flex: 1"
+            "flex: 3"
           ],
           "exclude_from_translation": true,
           "_nested_name": "top.title",
@@ -352,107 +385,182 @@
       "value": "@data.@local.module_id",
       "rows": [
         {
-          "type": "template",
-          "name": "task_card_@item.id",
-          "value": "task_card",
-          "exclude_from_translation": true,
-          "rows": [
+          "type": "task_card",
+          "name": "task_card",
+          "action_list": [
             {
-              "name": "module_id",
-              "value": "@local.module_id",
-              "_translations": {
-                "value": {}
-              },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "items.task_card_@item.id.module_id",
-              "_dynamicFields": {
-                "value": [
-                  {
-                    "fullExpression": "@local.module_id",
-                    "matchedExpression": "@local.module_id",
-                    "type": "local",
-                    "fieldName": "module_id"
-                  }
-                ],
-                "_nested_name": [
-                  {
-                    "fullExpression": "items.task_card_@item.id.module_id",
-                    "matchedExpression": "@item.id.module_id",
-                    "type": "item",
-                    "fieldName": "id"
-                  }
-                ]
-              },
-              "_dynamicDependencies": {
-                "@local.module_id": [
-                  "value"
-                ],
-                "@item.id.module_id": [
-                  "_nested_name"
-                ]
-              }
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "@local.completed_field",
+                true
+              ],
+              "_raw": "click | set_field: @local.completed_field: true",
+              "_cleaned": "click | set_field: @local.completed_field: true"
             },
             {
-              "name": "task_id",
-              "value": "@item.id",
-              "_translations": {
-                "value": {}
-              },
-              "exclude_from_translation": true,
-              "type": "set_variable",
-              "_nested_name": "items.task_card_@item.id.task_id",
-              "_dynamicFields": {
-                "value": [
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "current_tool",
+                "@item.id"
+              ],
+              "_raw": "click | set_field: current_tool: @item.id",
+              "_cleaned": "click | set_field: current_tool: @item.id"
+            },
+            {
+              "trigger": "click",
+              "action_id": "emit",
+              "args": [
+                "force_reload"
+              ],
+              "_raw": "click | emit: force_reload",
+              "_cleaned": "click | emit: force_reload"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "@local.template"
+              ],
+              "_raw": "click | go_to: @local.template",
+              "_cleaned": "click | go_to: @local.template"
+            }
+          ],
+          "parameter_list": {
+            "completed_field": "@local.completed_field",
+            "title": "@item.title",
+            "style": "button",
+            "in_progress_icon": "icons/in_progress_white.svg",
+            "completed_icon": "icons/tick_white.svg"
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "items.task_card",
+          "_dynamicFields": {
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.completed_field",
+                      "matchedExpression": "@local.completed_field",
+                      "type": "local",
+                      "fieldName": "completed_field"
+                    }
+                  ]
+                },
+                "_raw": [
                   {
-                    "fullExpression": "@item.id",
+                    "fullExpression": "click | set_field: @local.completed_field: true",
+                    "matchedExpression": "@local.completed_field",
+                    "type": "local",
+                    "fieldName": "completed_field"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | set_field: @local.completed_field: true",
+                    "matchedExpression": "@local.completed_field",
+                    "type": "local",
+                    "fieldName": "completed_field"
+                  }
+                ]
+              },
+              "1": {
+                "args": {
+                  "1": [
+                    {
+                      "fullExpression": "@item.id",
+                      "matchedExpression": "@item.id",
+                      "type": "item",
+                      "fieldName": "id"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | set_field: current_tool: @item.id",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
                   }
                 ],
-                "_nested_name": [
+                "_cleaned": [
                   {
-                    "fullExpression": "items.task_card_@item.id.task_id",
-                    "matchedExpression": "@item.id.task_id",
+                    "fullExpression": "click | set_field: current_tool: @item.id",
+                    "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
                   }
                 ]
               },
-              "_dynamicDependencies": {
-                "@item.id": [
-                  "value"
+              "3": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.template",
+                      "matchedExpression": "@local.template",
+                      "type": "local",
+                      "fieldName": "template"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to: @local.template",
+                    "matchedExpression": "@local.template",
+                    "type": "local",
+                    "fieldName": "template"
+                  }
                 ],
-                "@item.id.task_id": [
-                  "_nested_name"
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to: @local.template",
+                    "matchedExpression": "@local.template",
+                    "type": "local",
+                    "fieldName": "template"
+                  }
                 ]
               }
+            },
+            "parameter_list": {
+              "completed_field": [
+                {
+                  "fullExpression": "@local.completed_field",
+                  "matchedExpression": "@local.completed_field",
+                  "type": "local",
+                  "fieldName": "completed_field"
+                }
+              ],
+              "title": [
+                {
+                  "fullExpression": "@item.title",
+                  "matchedExpression": "@item.title",
+                  "type": "item",
+                  "fieldName": "title"
+                }
+              ]
             }
-          ],
-          "_nested_name": "items.task_card_@item.id",
-          "_dynamicFields": {
-            "name": [
-              {
-                "fullExpression": "task_card_@item.id",
-                "matchedExpression": "@item.id",
-                "type": "item",
-                "fieldName": "id"
-              }
-            ],
-            "_nested_name": [
-              {
-                "fullExpression": "items.task_card_@item.id",
-                "matchedExpression": "@item.id",
-                "type": "item",
-                "fieldName": "id"
-              }
-            ]
           },
           "_dynamicDependencies": {
+            "@local.completed_field": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
+              "parameter_list.completed_field"
+            ],
             "@item.id": [
-              "name",
-              "_nested_name"
+              "action_list.1.args.1",
+              "action_list.1._raw",
+              "action_list.1._cleaned"
+            ],
+            "@local.template": [
+              "action_list.3.args.0",
+              "action_list.3._raw",
+              "action_list.3._cleaned"
+            ],
+            "@item.title": [
+              "parameter_list.title"
             ]
           }
         }
