@@ -4,7 +4,7 @@ import { getDefaultAppConfig } from "data-models/appConfig";
 const app_config = getDefaultAppConfig();
 
 const config: IDeploymentConfig = {
-  name: "WASH App",
+  name: "wash",
   app_config,
   google_drive: {
     sheets_folder_id: "1AQqtRLoNuhbHP3KPzzQqzZcjdttT0rr8",
