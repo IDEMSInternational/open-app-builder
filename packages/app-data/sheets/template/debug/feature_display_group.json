@@ -12,7 +12,6 @@
         "style": "tool_1"
       },
       "style_list": [
-        "margin: 10px 15px",
         "min_height: 40px"
       ],
       "rows": [
@@ -56,7 +55,6 @@
         "style": "tool_2"
       },
       "style_list": [
-        "margin: 10px 15px",
         "min_height: 40px"
       ],
       "rows": [
@@ -100,7 +98,6 @@
         "style": "tool_3"
       },
       "style_list": [
-        "margin: 10px 15px",
         "min_height: 40px"
       ],
       "rows": [
@@ -144,7 +141,6 @@
         "style": "tool_4"
       },
       "style_list": [
-        "margin: 10px 15px",
         "min_height: 40px"
       ],
       "rows": [
@@ -188,7 +184,6 @@
         "style": "tool_5"
       },
       "style_list": [
-        "margin: 10px 15px",
         "min_height: 40px"
       ],
       "rows": [
@@ -233,7 +228,6 @@
         "offset": "30"
       },
       "style_list": [
-        "margin: 10px 15px",
         "min_height: 40px"
       ],
       "rows": [
@@ -277,7 +271,6 @@
         "style": "white_box"
       },
       "style_list": [
-        "margin: 10px 15px",
         "min_height: 40px"
       ],
       "rows": [
@@ -321,7 +314,6 @@
         "style": "white_box"
       },
       "style_list": [
-        "margin: 10px 15px",
         "min_height: 40px"
       ],
       "rows": [
@@ -365,7 +357,6 @@
         "style": "navigation"
       },
       "style_list": [
-        "margin: 10px 15px",
         "min_height: 40px"
       ],
       "rows": [

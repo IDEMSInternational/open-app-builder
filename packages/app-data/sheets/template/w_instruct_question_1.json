@@ -180,7 +180,7 @@
                       "name": "answer_list",
                       "value": [
                         "name:sad | text: Sad |  image:plh_images/stickers/faces/sadder.svg | image_checked: plh_images/stickers/faces/sadder.svg",
-                        "name:confused | text:Confused | image:plh_images/stickers/faces/confused.svg | image_checked:plh_images/stickers/faces/confused.svg",
+                        "name:confused | text:Confused | image:plh_images/stickers/faces/confused_question_mark.svg | image_checked:plh_images/stickers/faces/confused_question_mark.svg",
                         "name:angry | text: Angry | image:plh_images/stickers/faces/angry.svg | image_checked:plh_images/stickers/faces/angry.svg"
                       ],
                       "type": "set_variable",
