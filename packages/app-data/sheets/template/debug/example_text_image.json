@@ -6,7 +6,7 @@
   "rows": [
     {
       "type": "image",
-      "name": "image",
+      "name": "image_1",
       "value": "plh_images/workshop_modes/guide_2/wave.svg",
       "_translations": {
         "value": {}
@@ -14,7 +14,28 @@
       "style_list": [
         "height: 100px"
       ],
-      "_nested_name": "image"
+      "_nested_name": "image_1"
+    },
+    {
+      "type": "image",
+      "name": "image_2",
+      "value": "plh_images/workshop_modes/guide_2/wave.svg",
+      "_translations": {
+        "value": {}
+      },
+      "style_list": [
+        "height: 50%"
+      ],
+      "_nested_name": "image_2"
+    },
+    {
+      "type": "image",
+      "name": "image_3",
+      "value": "plh_images/workshop_modes/guide_2/wave.svg",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "image_3"
     },
     {
       "type": "text",
