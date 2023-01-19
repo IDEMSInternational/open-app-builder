@@ -46,37 +46,35 @@
       }
     },
     {
-      "name": "task_groups",
-      "value": "_task_gs",
+      "name": "tasks",
+      "value": "_tasks",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "task_groups"
+      "_nested_name": "tasks"
     },
     {
-      "name": "task_group_data",
-      "value": "@local.module_id@local.task_groups",
+      "name": "module_tasks",
+      "value": "@local.module_id@local.tasks",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "task_group_data",
+      "_nested_name": "module_tasks",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.module_id@local.task_groups",
+            "fullExpression": "@local.module_id@local.tasks",
             "matchedExpression": "@local.module_id",
             "type": "local",
             "fieldName": "module_id"
           },
           {
-            "fullExpression": "@local.module_id@local.task_groups",
-            "matchedExpression": "@local.task_groups",
+            "fullExpression": "@local.module_id@local.tasks",
+            "matchedExpression": "@local.tasks",
             "type": "local",
-            "fieldName": "task_groups"
+            "fieldName": "tasks"
           }
         ]
       },
@@ -84,7 +82,7 @@
         "@local.module_id": [
           "value"
         ],
-        "@local.task_groups": [
+        "@local.tasks": [
           "value"
         ]
       }
@@ -98,40 +96,6 @@
       "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "completed"
-    },
-    {
-      "name": "completed_field",
-      "value": "task_@local.module_id@local.completed",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "completed_field",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "task_@local.module_id@local.completed",
-            "matchedExpression": "@local.module_id",
-            "type": "local",
-            "fieldName": "module_id"
-          },
-          {
-            "fullExpression": "task_@local.module_id@local.completed",
-            "matchedExpression": "@local.completed",
-            "type": "local",
-            "fieldName": "completed"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.module_id": [
-          "value"
-        ],
-        "@local.completed": [
-          "value"
-        ]
-      }
     },
     {
       "name": "ww_id",
@@ -382,22 +346,12 @@
     },
     {
       "type": "items",
-      "value": "@data.@local.module_id",
+      "value": "@data.@local.module_tasks",
       "rows": [
         {
           "type": "task_card",
           "name": "task_card",
           "action_list": [
-            {
-              "trigger": "click",
-              "action_id": "set_field",
-              "args": [
-                "@local.completed_field",
-                true
-              ],
-              "_raw": "click | set_field: @local.completed_field: true",
-              "_cleaned": "click | set_field: @local.completed_field: true"
-            },
             {
               "trigger": "click",
               "action_id": "set_field",
@@ -428,7 +382,8 @@
             }
           ],
           "parameter_list": {
-            "completed_field": "@local.completed_field",
+            "task_id": "@item.id",
+            "completed_field": "@item.completed_field",
             "title": "@item.title",
             "style": "button",
             "in_progress_icon": "icons/in_progress_white.svg",
@@ -439,34 +394,6 @@
           "_dynamicFields": {
             "action_list": {
               "0": {
-                "args": {
-                  "0": [
-                    {
-                      "fullExpression": "@local.completed_field",
-                      "matchedExpression": "@local.completed_field",
-                      "type": "local",
-                      "fieldName": "completed_field"
-                    }
-                  ]
-                },
-                "_raw": [
-                  {
-                    "fullExpression": "click | set_field: @local.completed_field: true",
-                    "matchedExpression": "@local.completed_field",
-                    "type": "local",
-                    "fieldName": "completed_field"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "click | set_field: @local.completed_field: true",
-                    "matchedExpression": "@local.completed_field",
-                    "type": "local",
-                    "fieldName": "completed_field"
-                  }
-                ]
-              },
-              "1": {
                 "args": {
                   "1": [
                     {
@@ -494,7 +421,7 @@
                   }
                 ]
               },
-              "3": {
+              "2": {
                 "args": {
                   "0": [
                     {
@@ -524,11 +451,19 @@
               }
             },
             "parameter_list": {
+              "task_id": [
+                {
+                  "fullExpression": "@item.id",
+                  "matchedExpression": "@item.id",
+                  "type": "item",
+                  "fieldName": "id"
+                }
+              ],
               "completed_field": [
                 {
-                  "fullExpression": "@local.completed_field",
-                  "matchedExpression": "@local.completed_field",
-                  "type": "local",
+                  "fullExpression": "@item.completed_field",
+                  "matchedExpression": "@item.completed_field",
+                  "type": "item",
                   "fieldName": "completed_field"
                 }
               ],
@@ -543,21 +478,19 @@
             }
           },
           "_dynamicDependencies": {
-            "@local.completed_field": [
-              "action_list.0.args.0",
+            "@item.id": [
+              "action_list.0.args.1",
               "action_list.0._raw",
               "action_list.0._cleaned",
-              "parameter_list.completed_field"
-            ],
-            "@item.id": [
-              "action_list.1.args.1",
-              "action_list.1._raw",
-              "action_list.1._cleaned"
+              "parameter_list.task_id"
             ],
             "@local.template": [
-              "action_list.3.args.0",
-              "action_list.3._raw",
-              "action_list.3._cleaned"
+              "action_list.2.args.0",
+              "action_list.2._raw",
+              "action_list.2._cleaned"
+            ],
+            "@item.completed_field": [
+              "parameter_list.completed_field"
             ],
             "@item.title": [
               "parameter_list.title"
@@ -570,15 +503,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@data.@local.module_id",
-            "matchedExpression": "@local.module_id",
+            "fullExpression": "@data.@local.module_tasks",
+            "matchedExpression": "@local.module_tasks",
             "type": "local",
-            "fieldName": "module_id"
+            "fieldName": "module_tasks"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.module_id": [
+        "@local.module_tasks": [
           "value"
         ]
       }

@@ -1,14 +1,14 @@
 {
+  "flow_name": "water_containers_tasks",
+  "flow_subtype": "generated",
   "flow_type": "data_list",
-  "flow_name": "water_containers",
-  "status": "released",
-  "data_list_name": "water_containers",
   "rows": [
     {
       "id": "why",
       "title": "Why is a safe container important?",
       "text": "Making sure that water that is transported and stored, does not come into contact with hands, dirt and insects will keep you strong!",
-      "illustration": "essential_tools/jerrycan.svg"
+      "illustration": "essential_tools/jerrycan.svg",
+      "completed_field": "water_containers_why_completed"
     },
     {
       "id": "what",
@@ -19,7 +19,8 @@
       "reference_link_title": "Guidelines for drinking-water quality",
       "reference_link": "www.who.int/publications/i/item/9789240045064",
       "context  (not for App but to support content development)": "<span>Mushi, M. F., Mpelasoka, O. E., Mazigo, H. D., McLeod, L., Moremi, N., Mirambo, M. M., & Mshana, S. E. (2018). High rate of drinking water contamination due to poor storage in squatter settlements in Mwanza, Tanzania. Tanzania Journal of Health Research, 20(3). </span><span>https://doi.org/10.4314/thrb.v20i3.7</span><span><br/><br/>Source of drinking water in the squatters of Mwanza city - All  households  used  tap  water  as  the  source  of  their  drinking  water.    A  total  of  157  (75.84%) respondents, reported treating their water for drinking using boiling, 119 (57.49%) leaving the water to stand and settle, 23 (11.11%) used chlorination and 15 (9.6%) strain through cloth (Table1).  </span><span><b>The majority of households 202 (97.58%) stored their drinking water; of these 200 (98.55%) used a clay pot. </b></span><span>Only 2 (1%) used buckets with cover and spigot as storage container of drinking water.</span>",
-      "other notes (not for App but to support content development)": "LInks to images:https://sswm.info/sswm-solutions-bop-markets/affordable-wash-services-and-products/affordable-water-supply/household-water-treatment-and-safe-storage-%28hwts%29"
+      "other notes (not for App but to support content development)": "LInks to images:https://sswm.info/sswm-solutions-bop-markets/affordable-wash-services-and-products/affordable-water-supply/household-water-treatment-and-safe-storage-%28hwts%29",
+      "completed_field": "water_containers_what_completed"
     },
     {
       "id": "tips",
@@ -28,8 +29,8 @@
       "illustration": "essential_tools/cleancontainer.svg",
       "reference": "Community WASH Conversations.  Arkansas:  LifeWater. Mar 2022.  License:  CC BY-NC-SA 3.0",
       "reference_link_title": "Community WASH Conversations",
-      "reference_link": "lifewater.org/wp-content/uploads/2022/06/Community-WASH-Conversations-Public.pdf"
+      "reference_link": "lifewater.org/wp-content/uploads/2022/06/Community-WASH-Conversations-Public.pdf",
+      "completed_field": "water_containers_tips_completed"
     }
-  ],
-  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+  ]
 }

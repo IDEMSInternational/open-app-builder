@@ -1,13 +1,13 @@
 {
+  "flow_name": "healthy_homes_tasks",
+  "flow_subtype": "generated",
   "flow_type": "data_list",
-  "flow_name": "healthy_homes",
-  "status": "released",
-  "data_list_name": "healthy_homes",
   "rows": [
     {
       "id": "what",
       "title": "What is a healthy home?",
-      "text": "Keeping our homes and the area around it clean, will keep us healthy!  We should all have safe places to play free of garbage and waste water."
+      "text": "Keeping our homes and the area around it clean, will keep us healthy!  We should all have safe places to play free of garbage and waste water.",
+      "completed_field": "healthy_homes_what_completed"
     },
     {
       "id": "how",
@@ -15,17 +15,18 @@
       "text": "Always clean areas of animal and children poop (excreta), using detergent where you can!  Children's poop should be thrown away in a latrine or a covered pit.",
       "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF 2020.  \n\nExtract: \nRegularly clear external areas of any animal or child faeces, and clean contaminated\nareas immediately. \n\nRegular cleaning of floors with soap and water (and bleach if available).\n\nSafely dispose of child faeces, either in a latrine or a covered garbage pit.",
       "reference_link_title": "Baby WASH Programming",
-      "reference_link": "www.unicef.org/esa/reports/baby-wash-programming"
+      "reference_link": "www.unicef.org/esa/reports/baby-wash-programming",
+      "completed_field": "healthy_homes_how_completed"
     },
     {
       "id": "tips",
       "title": "More tips to keeping a clean home!",
       "text": "Control the number of pests in your home (these insects often carry disease).  Protect food and throw garbage in a covered pit, flies like those!  Find places where mosquitoes like to live, such as water that is not moving which include open containers and puddles (covering or emtying if you can).",
-      "illustration": "essential_tools/housing.svg",
       "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF 2020.  \n\nExtract:\nControl disease vectors such as flies, mosquitoes, cockroaches and rats by removing\nbreeding spots, covering food, improving drainage and safely disposing of garbage\ninto a waste receptacle or protected pit.",
       "reference_link_title": "Baby WASH Programming",
-      "reference_link": "www.unicef.org/esa/reports/baby-wash-programming"
+      "reference_link": "www.unicef.org/esa/reports/baby-wash-programming",
+      "illustration": "essential_tools/housing.svg",
+      "completed_field": "healthy_homes_tips_completed"
     }
-  ],
-  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+  ]
 }

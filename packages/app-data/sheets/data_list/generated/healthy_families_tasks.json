@@ -1,8 +1,7 @@
 {
+  "flow_name": "healthy_families_tasks",
+  "flow_subtype": "generated",
   "flow_type": "data_list",
-  "flow_name": "healthy_families",
-  "status": "released",
-  "data_list_name": "healthy_families",
   "rows": [
     {
       "id": "why",
@@ -10,16 +9,18 @@
       "text": "Healthy families are strong, practicing safe water, clean latrines and handwashing habits.  Poor practices can lead to diarrhoea, under nutrition, and other diseases involving worms (such as shistosomiasis and soil-transmitted helminths) as well as those involving bugs (bacteria such as trachoma).",
       "reference": "Preventing diarrhoea through better water, sanitation and hygiene.  Geneva; WHO; 2014.\n\nExtract: Earlier work showed that poor water, sanitation, and hygiene have a major impact on undernutrition, and also on a\nnumber of neglected tropical diseases including schistosomiasis, trachoma and soil-transmitted helminths (intestinal\nworms).",
       "reference_link_title": "Preventing diarrhoea through better water, sanitation and hygiene",
-      "reference_link": "www.who.int/publications/i/item/9789241564823"
+      "reference_link": "www.who.int/publications/i/item/9789241564823",
+      "completed_field": "healthy_families_why_completed"
     },
     {
       "id": "diarrhoea",
       "title": "Diarrhoea",
       "text": "Diarrhoea can be prevented but can be serious especially when the body loses a lot of water.  Diarrhoea is when you have three or more loose or liquid poop (stools) per day.  It is often a sign that your body has a bug (bacterial, viral or parasitic infection).  \n\nRemember to handwash often and practice safe food and clean water habits.",
-      "illustration": "essential_tools/stomach_ache_license_needed.png",
       "reference": "Diarrhoeal disease - WHO Factsheet - 2017\n\nExtract:\n-  Diarrhoeal disease is the second leading cause of death in children under five years old. It is both preventable and treatable.\n-  Diarrhoea is defined as the passage of three or more loose or liquid stools per day (or more frequent passage than is normal for the individual).\n-  Diarrhoea is usually a symptom of an infection in the intestinal tract, which can be caused by a variety of bacterial, viral and parasitic organisms. Infection is spread through contaminated food or drinking-water, or from person-to-person as a result of poor hygiene.",
       "reference_link_title": "Diarrhoeal disease - WHO Factsheet - 2017",
-      "reference_link": "www.who.int/news-room/fact-sheets/detail/diarrhoeal-disease"
+      "reference_link": "www.who.int/news-room/fact-sheets/detail/diarrhoeal-disease",
+      "illustration": "essential_tools/stomach_ache_license_needed.png",
+      "completed_field": "healthy_families_diarrhoea_completed"
     },
     {
       "id": "shistosomiasis",
@@ -29,7 +30,8 @@
       "reference_link_title": "Shistosomiasis - WHO Factsheet - 2022",
       "reference_link": "www.who.int/news-room/fact-sheets/detail/schistosomiasis#:~:text=The%20WHO%20strategy%20for%20schistosomiasis,of%20all%20at%2Drisk%20groups.",
       "reference_link_title_2": "Ending the neglect to attain the Sustainable Development Goals: a global strategy on water, sanitation and hygiene to combat neglected tropical diseases, 2021-2030. Geneva: World Health Organization; 2021. Licence: CC BY-NC-SA 3.0 IGO",
-      "reference_link_2": "www.who.int/publications/i/item/9789240022782"
+      "reference_link_2": "www.who.int/publications/i/item/9789240022782",
+      "completed_field": "healthy_families_shistosomiasis_completed"
     },
     {
       "id": "helminths",
@@ -39,24 +41,26 @@
       "reference_link_title": "Soil Transmitted Helminth Infections - WHO Factsheet - 2022",
       "reference_link": "www.who.int/news-room/fact-sheets/detail/soil-transmitted-helminth-infections",
       "reference_link_title_2": "Ending the neglect to attain the Sustainable Development Goals: a global strategy on water, sanitation and hygiene to combat neglected tropical diseases,\r\n2021-2030. Geneva: World Health Organization; 2021. Licence: CC BY-NC-SA 3.0 IGO",
-      "reference_link_2": "www.who.int/publications/i/item/9789240022782"
+      "reference_link_2": "www.who.int/publications/i/item/9789240022782",
+      "completed_field": "healthy_families_helminths_completed"
     },
     {
       "id": "trachoma",
       "title": "Trachoma",
       "text": "Trachoma is a disease of the eye through an infection with the bacterium Chlamydia trachomatis.  Trachoma can cause blindness that cannot be fixed and is passed by personal contact and flies.  \n\nHandwashing, clean latrines and homes, as well as regular bathing/handwashing stop the spread of trachoma.",
-      "illustration": "essential_tools/eye_pain_license_needed.png",
       "reference": "Trachoma - WHO Fact Sheet - 2022\n\nExtract:\n-  Trachoma is a disease of the eye caused by infection with the bacterium Chlamydia trachomatis.\n-  The infection is transmitted by direct or indirect transfer of eye and nose discharges of infected people, particularly young children who harbour the principal reservoir of infection. These discharges can be spread by particular species of flies. \n\nEnding the neglect to attain the Sustainable Development Goals: a global strategy on water, sanitation and hygiene to combat neglected tropical diseases,\n2021-2030. Geneva: World Health Organization; 2021. Licence: CC BY-NC-SA 3.0 IGO. \n\nExtract:\nTrachoma can be tackled through the following WASH behaviour:\n-  Facial cleanliness\n-  Overall personal hygiene (laundry, handwashing)\n-  Exclusive use, cleanliness and maintenance of toilets and safe disposal of child faeces",
       "reference_link_title": "Trachoma - WHO Fact Sheet - 2022",
       "reference_link": "www.who.int/news-room/fact-sheets/detail/trachoma#:~:text=Trachoma%20is%20a%20disease%20of,Blindness%20from%20trachoma%20is%20irreversible.",
+      "illustration": "essential_tools/eye_pain_license_needed.png",
       "reference_link_title_2": "Ending the neglect to attain the Sustainable Development Goals: a global strategy on water, sanitation and hygiene to combat neglected tropical diseases,\r\n2021-2030. Geneva: World Health Organization; 2021. Licence: CC BY-NC-SA 3.0 IGO",
-      "reference_link_2": "www.who.int/publications/i/item/9789240022782"
+      "reference_link_2": "www.who.int/publications/i/item/9789240022782",
+      "completed_field": "healthy_families_trachoma_completed"
     },
     {
       "id": "doctor",
       "title": "See your doctor!",
-      "text": "If you feel unwell it is important to see your doctor.  They can help!"
+      "text": "If you feel unwell it is important to see your doctor.  They can help!",
+      "completed_field": "healthy_families_doctor_completed"
     }
-  ],
-  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+  ]
 }

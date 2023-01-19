@@ -1,14 +1,14 @@
 {
+  "flow_name": "handwashing_tasks",
+  "flow_subtype": "generated",
   "flow_type": "data_list",
-  "flow_name": "handwashing",
-  "status": "released",
-  "data_list_name": "handwashing",
   "rows": [
     {
       "id": "why",
       "title": "Why do we wash hands?",
       "text": "Good hand hygiene stops passing germs from person to person (like COVID) or from person to food or water! Handwashing is one of the best ways to protect yourself and your family from getting sick.",
-      "illustration": "essential_tools/handwashing2.png"
+      "illustration": "essential_tools/handwashing2.png",
+      "completed_field": "handwashing_why_completed"
     },
     {
       "id": "materials",
@@ -17,7 +17,8 @@
       "illustration": "essential_tools/hands_with_soap.jpg",
       "reference": "United Nations Children’s Fund and World Health Organization, State of the World’s Hand Hygiene: A global call to action to make hand hygiene a priority in policy and practice, UNICEF, New York, 2021.\n\nExtract:\nSustainble Development Goal - Service Ladder for Hygiene in Households:\nBasic - Availability of a handwashing facility on premises with soap and water.\nLimited - Availability of a handwashing facility on premises lacking soap and/or water.\nNo Facility - No handwashing facility on premises.\n\n* In some cultures, ash, soil, sand or other materials are used as handwashing agents, but these are less effective than soap and are therefore counted as a limited service.",
       "reference_link_title": "State of the World’s Hand Hygiene: A global call to action to make hand hygiene a priority in policy and practice",
-      "reference_link": "www.who.int/publications/i/item/9789240036444"
+      "reference_link": "www.who.int/publications/i/item/9789240036444",
+      "completed_field": "handwashing_materials_completed"
     },
     {
       "id": "when",
@@ -27,15 +28,17 @@
       "reference": "<span>United Nations Children’s Fund, Handwashing Promotion Monitoring and Evaluation Module, UNICEF, New York, </span><span><b>2013</b></span><span>.<br/><br/>Extract:<br/>Critical events include:<br/>- After toileting<br/>- After contact with human or animal faeces:<br/>    * After cleaning a child’s anus<br/>    * After removing child’s faeces from the yard<br/>    * After contact with animal dung<br/>- Before preparing food<br/>- Before serving food<br/>- Before eating<br/>- Before feeding a child/breastfeeding<br/>- After coughing or sneezing<br/>- After blowing nose<br/>- Other:<br/>    * After eating<br/>    * After handling livestock<br/>    * After cleaning or sweeping inside or outside the house</span>",
       "reference_link_title": "Handwashing Promotion Monitoring and Evaluation Module",
       "reference_link": "www.unicef.org/documents/handwashing-promotion-monitoring-and-evaluation-module",
-      "other notes (not for App but to support content development)": "https://www.unwater.org/sites/default/files/app/uploads/2020/06/JMP-2020-COVID-global-hygiene-snapshot.pdf\n\nCorrect knowledge of critical times to wash hands does not reflect actual handwashing\npractices. There is no evidence that supports an association between handwashing related\nknowledge and handwashing behaviour or improved health outcomes. Knowledge can be considered necessary to improve or change handwashing practices but is often considered insufficient to do so."
+      "other notes (not for App but to support content development)": "https://www.unwater.org/sites/default/files/app/uploads/2020/06/JMP-2020-COVID-global-hygiene-snapshot.pdf\n\nCorrect knowledge of critical times to wash hands does not reflect actual handwashing\npractices. There is no evidence that supports an association between handwashing related\nknowledge and handwashing behaviour or improved health outcomes. Knowledge can be considered necessary to improve or change handwashing practices but is often considered insufficient to do so.",
+      "completed_field": "handwashing_when_completed"
     },
     {
       "id": "handwashing_motivators",
       "title": "Importance of handwashing",
       "text": "Even if your hands look clean you could be eating poop off them, especially if you haven't hand washed!  And don't forget, you are setting an example for your child, who will be following you.  Teach them good manners, and they will grow to be happy, safe and successful.  Besides, do you want them to eat poop too (by not hand washing)?",
-      "text_new": "Our hands constantly touch dirt as we work or interact with other people. You and your family members need to wash hands with soap frequently to prevent diseases such as diarrhea.",
       "illustration": "essential_tools/handgerms.svg",
-      "other notes (not for App but to support content development)": "Malima, G., Mshida, H., Machunda, R., Moyo, F., Banzi, J., Gautam, O. P., Mbeguere, M., Smith, K., Cairncross, S., & Njau, K. N. (2022). What influences individuals to invest in improved sanitation services and hygiene behaviours in a small town? A formative research study in Babati, Tanzania. PLOS ONE, 17(7), e0270688. https://doi.org/10.1371/journal.pone.0270688<br/>The fear of contracting diseases motivated people to practice handwashing, however, this is mostly done when there are disease outbreaks in town. Previous studies also identified fear as one of the key motives for uptalking WASH behaviour [9, 32, 33]. However, previous evidence shows that fear is a temporary stimulus to change behaviours as when fear disappears so does the behaviours too [34]. <span><b>The feeling of disgust due to the presence of dirt/dust in hands, bad smell in the latrine, protecting children and their future by washing hands (nurture) and the wish to look smart and clean also motivate individuals to wash hands.</b></span> These emotional push factors can also be exploited in promotional campaigns to promote handwashing practices.<br/><br/>Tough, H., Abdallah, A.-K., Zemp, E., & Molesworth, K. (2022). Gender dynamics of community-led total sanitation interventions in Mpwapwa District, Tanzania. Global Public Health, 1–15<span>. </span><span>https://doi.org/10.1080/17441692.2022.2053733<br/></span>Women placed importance on intrinsic factors such as shame, disgust, privacy, responsibility for care giving and hygiene within the household, while men gave more importance to extrinsic factors such as prestige, social status and law enforcement. A third of all women mentioned the health of their children as their main motivating factor for participating in the HPSS-supported CLTS initiatives"
+      "other notes (not for App but to support content development)": "Malima, G., Mshida, H., Machunda, R., Moyo, F., Banzi, J., Gautam, O. P., Mbeguere, M., Smith, K., Cairncross, S., & Njau, K. N. (2022). What influences individuals to invest in improved sanitation services and hygiene behaviours in a small town? A formative research study in Babati, Tanzania. PLOS ONE, 17(7), e0270688. https://doi.org/10.1371/journal.pone.0270688<br/>The fear of contracting diseases motivated people to practice handwashing, however, this is mostly done when there are disease outbreaks in town. Previous studies also identified fear as one of the key motives for uptalking WASH behaviour [9, 32, 33]. However, previous evidence shows that fear is a temporary stimulus to change behaviours as when fear disappears so does the behaviours too [34]. <span><b>The feeling of disgust due to the presence of dirt/dust in hands, bad smell in the latrine, protecting children and their future by washing hands (nurture) and the wish to look smart and clean also motivate individuals to wash hands.</b></span> These emotional push factors can also be exploited in promotional campaigns to promote handwashing practices.<br/><br/>Tough, H., Abdallah, A.-K., Zemp, E., & Molesworth, K. (2022). Gender dynamics of community-led total sanitation interventions in Mpwapwa District, Tanzania. Global Public Health, 1–15<span>. </span><span>https://doi.org/10.1080/17441692.2022.2053733<br/></span>Women placed importance on intrinsic factors such as shame, disgust, privacy, responsibility for care giving and hygiene within the household, while men gave more importance to extrinsic factors such as prestige, social status and law enforcement. A third of all women mentioned the health of their children as their main motivating factor for participating in the HPSS-supported CLTS initiatives",
+      "text_new": "Our hands constantly touch dirt as we work or interact with other people. You and your family members need to wash hands with soap frequently to prevent diseases such as diarrhea.",
+      "completed_field": "handwashing_handwashing_motivators_completed"
     },
     {
       "id": "handwashing_tips",
@@ -44,8 +47,8 @@
       "illustration": "essential_tools/handwashing_steps.svg",
       "reference_link_title": "How to teach your kids handwashing. (n.d.). UNICEF Parenting.",
       "reference_link": "https://www.unicef.org/parenting/health/how-to-teach-your-kids-handwashing",
-      "other notes (not for App but to support content development)": "United Nations Children’s Fund and World Health Organization, State of the World’s Hand Hygiene: A global call to action to make hand hygiene a priority in policy and practice, UNICEF, New York, 2021.\nHouseholds can invest in handwashing facilities, which can be as simple\nas a jug and a bowl, and purchase soap.\nrefrence link for image: https://www.unicef.org/uganda/key-practice-hand-washing-soap-and-water"
+      "other notes (not for App but to support content development)": "United Nations Children’s Fund and World Health Organization, State of the World’s Hand Hygiene: A global call to action to make hand hygiene a priority in policy and practice, UNICEF, New York, 2021.\nHouseholds can invest in handwashing facilities, which can be as simple\nas a jug and a bowl, and purchase soap.\nrefrence link for image: https://www.unicef.org/uganda/key-practice-hand-washing-soap-and-water",
+      "completed_field": "handwashing_handwashing_tips_completed"
     }
-  ],
-  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+  ]
 }

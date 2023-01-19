@@ -10,7 +10,7 @@ import { AsyncServiceBase } from "../asyncService.base";
 export class TaskService extends AsyncServiceBase {
   // TODO: These should be set from the deployment/skin level (ultimately should come from templates)
   highlightedTaskFieldName = "_task_highlighted_group_id";
-  taskGroupsListName = "workshop_tasks";
+  taskGroupsListName = "module_tasks";
 
   taskGroups: any[] = [];
   taskGroupsHashmap: Record<string, any> = {};

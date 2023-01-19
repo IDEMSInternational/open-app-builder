@@ -1,8 +1,7 @@
 {
+  "flow_name": "breastfeeding_tasks",
+  "flow_subtype": "generated",
   "flow_type": "data_list",
-  "flow_name": "breastfeeding",
-  "status": "released",
-  "data_list_name": "breastfeeding",
   "rows": [
     {
       "id": "why",
@@ -11,7 +10,8 @@
       "illustration": "essential_tools/breastfeeding2_license_needed.png",
       "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF 2020.  \n\nExtract:  Breastfeeding protects against the two leading causes of death in children under 5 years – pneumonia and diarrhea.",
       "reference_link_title": "Baby WASH Programming",
-      "reference_link": "www.unicef.org/esa/reports/baby-wash-programming"
+      "reference_link": "www.unicef.org/esa/reports/baby-wash-programming",
+      "completed_field": "breastfeeding_why_completed"
     },
     {
       "id": "tips",
@@ -21,7 +21,8 @@
       "reference_link_title": "Baby WASH Programming",
       "reference_link": "www.unicef.org/esa/reports/baby-wash-programming",
       "reference_link_title_2": "WHO Breastfeeding Recommendations",
-      "reference_link_2": "https://www.who.int/health-topics/breastfeeding#tab=tab_2"
+      "reference_link_2": "https://www.who.int/health-topics/breastfeeding#tab=tab_2",
+      "completed_field": "breastfeeding_tips_completed"
     },
     {
       "id": "materials",
@@ -29,8 +30,8 @@
       "text": "Mothers should have access to clean water for both bathing and handwashing.  Don't forget to wash your babies face!",
       "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF 2020.  \n\nExtract:  Provide access to sufficient clean water, pre- and post-delivery, particularly to facilitate bathing and hand washing of mother and baby.",
       "reference_link_title": "Baby WASH Programming",
-      "reference_link": "www.unicef.org/esa/reports/baby-wash-programming"
+      "reference_link": "www.unicef.org/esa/reports/baby-wash-programming",
+      "completed_field": "breastfeeding_materials_completed"
     }
-  ],
-  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+  ]
 }
