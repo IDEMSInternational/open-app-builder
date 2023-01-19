@@ -31,6 +31,10 @@ import { takeWhile } from "rxjs/operators";
 import { fromEvent } from "rxjs";
 import { ThemeService } from "../theme/services/theme.service";
 import { SkinService } from "src/app/shared/services/skin/skin.service";
+import {
+  IActionHandlers,
+  TemplateActionRegistry,
+} from "src/app/shared/components/template/services/instance/template-action.registry";
 
 @Injectable({
   providedIn: "root",
@@ -48,6 +52,9 @@ export class FeedbackService {
   /** Track content el style to allow revert on component destroy */
   private initialContentStyle?: CSSStyleDeclaration;
 
+  /** Track template action defaults to restore after disable */
+  private actionListDefault: Partial<IActionHandlers>;
+
   feedbackModuleDefaults;
   appStrings;
   feedbackButtons: IFeedbackContextMenuButton[];
@@ -63,7 +70,8 @@ export class FeedbackService {
     private appConfigService: AppConfigService,
     private router: Router,
     private themeService: ThemeService,
-    private skinService: SkinService
+    private skinService: SkinService,
+    private templateActionRegistry: TemplateActionRegistry
   ) {
     this.subscribeToAppConfigChanges();
     // retrieve device info for passing in metadata
@@ -86,7 +94,7 @@ export class FeedbackService {
       fromEvent<PointerEvent>(document, "click")
         .pipe(takeWhile(() => this.isReviewingMode$.value === true))
         .subscribe((e) => {
-          const meta = this.generateFeedbackTemplateMeta(e);
+          // const meta = this.generateFeedbackTemplateMeta(e);
         });
     }
   }
@@ -183,6 +191,27 @@ export class FeedbackService {
         return r;
       })
     );
+    // also update actions to match navigation state (e.g. prevent popup and set actions)
+    this.setActionsEnabled(enabled);
+  }
+
+  public setActionsEnabled(enabled?: boolean) {
+    if (enabled) {
+      if (this.actionListDefault) {
+        this.templateActionRegistry.register(this.actionListDefault, true);
+      }
+    } else {
+      const existingActions = this.templateActionRegistry.list();
+      this.actionListDefault = existingActions;
+      const emptyActions: Partial<IActionHandlers> = {};
+      for (const key of Object.keys(existingActions)) {
+        emptyActions[key] = () => null;
+      }
+      // TODO - only actions registered in global registry will be disabled
+      // Will need to refactor to include more actions in the future
+      console.log("disabling actions", Object.keys(existingActions));
+      this.templateActionRegistry.register(emptyActions, true);
+    }
   }
 
   /** Handle registration of all defined feedback actions to the relevant context menus */
