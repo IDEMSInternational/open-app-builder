@@ -1,5 +1,11 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector } from "@angular/core";
-import { debounceTime } from "rxjs";
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Injector,
+  Input,
+} from "@angular/core";
+import { debounceTime, Subscription } from "rxjs";
 import { DynamicDataService } from "src/app/shared/services/dynamic-data/dynamic-data.service";
 import { FlowTypes } from "../../models";
 import { ItemProcessor } from "../../processors/item";
@@ -24,7 +30,18 @@ import { TemplateBaseComponent } from "../base";
  */
 export class TmplDataItemsComponent extends TemplateBaseComponent {
   public itemRows: FlowTypes.TemplateRow[] = [];
+
   private dataListName: string;
+  private parameterList: Record<string, string>;
+
+  private dataQuery$: Subscription;
+
+  @Input() set row(row: FlowTypes.TemplateRow) {
+    this._row = row;
+    this.dataListName = this.hackGetRawDataList(row);
+    this.parameterList = this.hackGetRawParameterList(row);
+    this.subscribeToData();
+  }
 
   constructor(
     private dynamicDataService: DynamicDataService,
@@ -34,15 +51,19 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
   ) {
     super();
   }
-  async ngOnInit() {
-    this.dataListName = this.hackGetRawDataList(this._row);
+
+  private async subscribeToData() {
+    if (this.dataQuery$) {
+      this.dataQuery$.unsubscribe();
+    }
     if (this.dataListName) {
-      const parameterList = this.hackGetRawParameterList(this._row);
       await this.dynamicDataService.ready();
       const query = await this.dynamicDataService.query$("data_list", this.dataListName);
-      query.pipe(debounceTime(50)).subscribe(async (data) => {
-        await this.renderItems(data, this._row.rows, parameterList);
+      this.dataQuery$ = query.pipe(debounceTime(50)).subscribe(async (data) => {
+        await this.renderItems(data, this._row.rows, this.parameterList);
       });
+    } else {
+      await this.renderItems([], [], {});
     }
   }
 
@@ -107,10 +128,20 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
   }
 
   /**
-   * Datalists are already parsed when rendering the component,
-   * so use raw data to extract the original name of the list
+   * If datalist referenced as @data.some_list it will already be parsed, so extract
+   * name from raw values.
+   * Alternatively any list provided as a string value can be returned directly
    * */
   private hackGetRawDataList(row: FlowTypes.TemplateRow) {
+    if (!row.value) return;
+    if (typeof row.value === "string") {
+      return row.value;
+    }
+    // HACK - if list name contains '_list' template.parser will parse as an array instead of string
+    if (Array.isArray(row.value)) {
+      return row.value[0];
+    }
+    // Extract raw name in case full datalist object supplied in place of name
     return row._dynamicFields?.value?.[0]?.fieldName;
   }
 
