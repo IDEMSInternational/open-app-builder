@@ -15,7 +15,531 @@
     },
     {
       "type": "text",
-      "value": "Parameters: loop: true;",
+      "value": "Parameters:\ncentred_slides: true (default);\ncentre_first_and_last: false (default);",
+      "_translations": {
+        "value": {}
+      },
+      "name": "text",
+      "_nested_name": "text"
+    },
+    {
+      "type": "carousel",
+      "parameter_list": {
+        "centred_slides": "true",
+        "centre_first_and_last": "false"
+      },
+      "rows": [
+        {
+          "type": "display_group",
+          "name": "slide_1",
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "border-style: solid"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "value": "Title 1",
+              "_translations": {
+                "value": {}
+              },
+              "name": "title",
+              "_nested_name": "carousel.slide_1.title"
+            },
+            {
+              "type": "text",
+              "value": "Paragraph 1",
+              "_translations": {
+                "value": {}
+              },
+              "name": "text",
+              "_nested_name": "carousel.slide_1.text"
+            }
+          ],
+          "_nested_name": "carousel.slide_1"
+        },
+        {
+          "type": "display_group",
+          "name": "slide_2",
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "border-style: solid"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "value": "Title 2",
+              "_translations": {
+                "value": {}
+              },
+              "name": "title",
+              "_nested_name": "carousel.slide_2.title"
+            },
+            {
+              "type": "text",
+              "value": "Paragraph 2",
+              "_translations": {
+                "value": {}
+              },
+              "name": "text",
+              "_nested_name": "carousel.slide_2.text"
+            }
+          ],
+          "_nested_name": "carousel.slide_2"
+        },
+        {
+          "type": "display_group",
+          "name": "slide_3",
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "border-style: solid"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "value": "Title 3",
+              "_translations": {
+                "value": {}
+              },
+              "name": "title",
+              "_nested_name": "carousel.slide_3.title"
+            },
+            {
+              "type": "text",
+              "value": "Paragraph 3",
+              "_translations": {
+                "value": {}
+              },
+              "name": "text",
+              "_nested_name": "carousel.slide_3.text"
+            }
+          ],
+          "_nested_name": "carousel.slide_3"
+        },
+        {
+          "type": "display_group",
+          "name": "slide_4",
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "border-style: solid"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "value": "Title 4",
+              "_translations": {
+                "value": {}
+              },
+              "name": "title",
+              "_nested_name": "carousel.slide_4.title"
+            },
+            {
+              "type": "text",
+              "value": "Paragraph 4",
+              "_translations": {
+                "value": {}
+              },
+              "name": "text",
+              "_nested_name": "carousel.slide_4.text"
+            }
+          ],
+          "_nested_name": "carousel.slide_4"
+        },
+        {
+          "type": "display_group",
+          "name": "slide_5",
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "border-style: solid"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "value": "Title 5",
+              "_translations": {
+                "value": {}
+              },
+              "name": "title",
+              "_nested_name": "carousel.slide_5.title"
+            },
+            {
+              "type": "text",
+              "value": "Paragraph 5",
+              "_translations": {
+                "value": {}
+              },
+              "name": "text",
+              "_nested_name": "carousel.slide_5.text"
+            }
+          ],
+          "_nested_name": "carousel.slide_5"
+        }
+      ],
+      "name": "carousel",
+      "_nested_name": "carousel"
+    },
+    {
+      "type": "text",
+      "value": "Parameters:\ncentred_slides: true (default);\ncentre_first_and_last: true;",
+      "_translations": {
+        "value": {}
+      },
+      "name": "text",
+      "_nested_name": "text"
+    },
+    {
+      "type": "carousel",
+      "parameter_list": {
+        "centred_slides": "true",
+        "centre_first_and_last": "true"
+      },
+      "rows": [
+        {
+          "type": "display_group",
+          "name": "slide_1",
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "border-style: solid"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "value": "Title 1",
+              "_translations": {
+                "value": {}
+              },
+              "name": "title",
+              "_nested_name": "carousel.slide_1.title"
+            },
+            {
+              "type": "text",
+              "value": "Paragraph 1",
+              "_translations": {
+                "value": {}
+              },
+              "name": "text",
+              "_nested_name": "carousel.slide_1.text"
+            }
+          ],
+          "_nested_name": "carousel.slide_1"
+        },
+        {
+          "type": "display_group",
+          "name": "slide_2",
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "border-style: solid"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "value": "Title 2",
+              "_translations": {
+                "value": {}
+              },
+              "name": "title",
+              "_nested_name": "carousel.slide_2.title"
+            },
+            {
+              "type": "text",
+              "value": "Paragraph 2",
+              "_translations": {
+                "value": {}
+              },
+              "name": "text",
+              "_nested_name": "carousel.slide_2.text"
+            }
+          ],
+          "_nested_name": "carousel.slide_2"
+        },
+        {
+          "type": "display_group",
+          "name": "slide_3",
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "border-style: solid"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "value": "Title 3",
+              "_translations": {
+                "value": {}
+              },
+              "name": "title",
+              "_nested_name": "carousel.slide_3.title"
+            },
+            {
+              "type": "text",
+              "value": "Paragraph 3",
+              "_translations": {
+                "value": {}
+              },
+              "name": "text",
+              "_nested_name": "carousel.slide_3.text"
+            }
+          ],
+          "_nested_name": "carousel.slide_3"
+        },
+        {
+          "type": "display_group",
+          "name": "slide_4",
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "border-style: solid"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "value": "Title 4",
+              "_translations": {
+                "value": {}
+              },
+              "name": "title",
+              "_nested_name": "carousel.slide_4.title"
+            },
+            {
+              "type": "text",
+              "value": "Paragraph 4",
+              "_translations": {
+                "value": {}
+              },
+              "name": "text",
+              "_nested_name": "carousel.slide_4.text"
+            }
+          ],
+          "_nested_name": "carousel.slide_4"
+        },
+        {
+          "type": "display_group",
+          "name": "slide_5",
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "border-style: solid"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "value": "Title 5",
+              "_translations": {
+                "value": {}
+              },
+              "name": "title",
+              "_nested_name": "carousel.slide_5.title"
+            },
+            {
+              "type": "text",
+              "value": "Paragraph 5",
+              "_translations": {
+                "value": {}
+              },
+              "name": "text",
+              "_nested_name": "carousel.slide_5.text"
+            }
+          ],
+          "_nested_name": "carousel.slide_5"
+        }
+      ],
+      "name": "carousel",
+      "_nested_name": "carousel"
+    },
+    {
+      "type": "text",
+      "value": "Parameters:\ncentred_slides: false;",
+      "_translations": {
+        "value": {}
+      },
+      "name": "text",
+      "_nested_name": "text"
+    },
+    {
+      "type": "carousel",
+      "parameter_list": {
+        "centred_slides": "false"
+      },
+      "rows": [
+        {
+          "type": "display_group",
+          "name": "slide_1",
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "border-style: solid"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "value": "Title 1",
+              "_translations": {
+                "value": {}
+              },
+              "name": "title",
+              "_nested_name": "carousel.slide_1.title"
+            },
+            {
+              "type": "text",
+              "value": "Paragraph 1",
+              "_translations": {
+                "value": {}
+              },
+              "name": "text",
+              "_nested_name": "carousel.slide_1.text"
+            }
+          ],
+          "_nested_name": "carousel.slide_1"
+        },
+        {
+          "type": "display_group",
+          "name": "slide_2",
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "border-style: solid"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "value": "Title 2",
+              "_translations": {
+                "value": {}
+              },
+              "name": "title",
+              "_nested_name": "carousel.slide_2.title"
+            },
+            {
+              "type": "text",
+              "value": "Paragraph 2",
+              "_translations": {
+                "value": {}
+              },
+              "name": "text",
+              "_nested_name": "carousel.slide_2.text"
+            }
+          ],
+          "_nested_name": "carousel.slide_2"
+        },
+        {
+          "type": "display_group",
+          "name": "slide_3",
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "border-style: solid"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "value": "Title 3",
+              "_translations": {
+                "value": {}
+              },
+              "name": "title",
+              "_nested_name": "carousel.slide_3.title"
+            },
+            {
+              "type": "text",
+              "value": "Paragraph 3",
+              "_translations": {
+                "value": {}
+              },
+              "name": "text",
+              "_nested_name": "carousel.slide_3.text"
+            }
+          ],
+          "_nested_name": "carousel.slide_3"
+        },
+        {
+          "type": "display_group",
+          "name": "slide_4",
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "border-style: solid"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "value": "Title 4",
+              "_translations": {
+                "value": {}
+              },
+              "name": "title",
+              "_nested_name": "carousel.slide_4.title"
+            },
+            {
+              "type": "text",
+              "value": "Paragraph 4",
+              "_translations": {
+                "value": {}
+              },
+              "name": "text",
+              "_nested_name": "carousel.slide_4.text"
+            }
+          ],
+          "_nested_name": "carousel.slide_4"
+        },
+        {
+          "type": "display_group",
+          "name": "slide_5",
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "border-style: solid"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "value": "Title 5",
+              "_translations": {
+                "value": {}
+              },
+              "name": "title",
+              "_nested_name": "carousel.slide_5.title"
+            },
+            {
+              "type": "text",
+              "value": "Paragraph 5",
+              "_translations": {
+                "value": {}
+              },
+              "name": "text",
+              "_nested_name": "carousel.slide_5.text"
+            }
+          ],
+          "_nested_name": "carousel.slide_5"
+        }
+      ],
+      "name": "carousel",
+      "_nested_name": "carousel"
+    },
+    {
+      "type": "text",
+      "value": "Parameters:\nloop: true;",
       "_translations": {
         "value": {}
       },
@@ -198,7 +722,7 @@
     },
     {
       "type": "text",
-      "value": "Parameters: space_between: 8;",
+      "value": "Parameters:\nspace_between: 8;",
       "_translations": {
         "value": {}
       },
