@@ -1,0 +1,112 @@
+{
+  "flow_type": "data_pipe",
+  "flow_name": "module_task_completion",
+  "status": "released",
+  "rows": [
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: {@row.id}_completed"
+      ],
+      "input_source": "module",
+      "output_target": "module_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: handwashing_{@row.id}_completed"
+      ],
+      "input_source": "handwashing",
+      "output_target": "handwashing_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: water_source_{@row.id}_completed"
+      ],
+      "input_source": "water_source",
+      "output_target": "water_source_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: water_containers_{@row.id}_completed"
+      ],
+      "input_source": "water_containers",
+      "output_target": "water_containers_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: water_treatment_{@row.id}_completed"
+      ],
+      "input_source": "water_treatment",
+      "output_target": "water_treatment_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: clean_latrines_{@row.id}_completed"
+      ],
+      "input_source": "clean_latrines",
+      "output_target": "clean_latrines_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: healthy_homes_{@row.id}_completed"
+      ],
+      "input_source": "healthy_homes",
+      "output_target": "healthy_homes_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: healthy_families_{@row.id}_completed"
+      ],
+      "input_source": "healthy_families",
+      "output_target": "healthy_families_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: menstrual_hygiene_{@row.id}_completed"
+      ],
+      "input_source": "menstrual_hygiene",
+      "output_target": "menstrual_hygiene_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: waste_{@row.id}_completed"
+      ],
+      "input_source": "waste",
+      "output_target": "waste_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: safe_food_{@row.id}_completed"
+      ],
+      "input_source": "safe_food",
+      "output_target": "safe_food_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: breastfeeding_{@row.id}_completed"
+      ],
+      "input_source": "breastfeeding",
+      "output_target": "breastfeeding_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: bathing_shelters_{@row.id}_completed"
+      ],
+      "input_source": "bathing_shelters",
+      "output_target": "bathing_shelters_tasks"
+    }
+  ],
+  "_xlsxPath": "data_lists/homepage/module_tasks.xlsx"
+}

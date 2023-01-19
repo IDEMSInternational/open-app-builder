@@ -1,25 +1,25 @@
 {
   "flow_type": "data_list",
-  "flow_name": "bathing_shelter",
+  "flow_name": "bathing_shelters",
   "status": "released",
-  "data_list_name": "bathing_shelter",
+  "data_list_name": "bathing_shelters",
   "rows": [
     {
-      "id": "bathing_shelters_why",
+      "id": "why",
       "title": "Why do we need to be clean?",
-      "text": "Clean bodies keep us healthy and free from disease.",
+      "text": "Clean bodies keep us healthy and free from disease.  Use a bathing shelter.",
       "illustration": "essential_tools/soap.png"
     },
     {
-      "id": "bathing_shelters_motivators",
+      "id": "motivators",
       "title": "Importance of bathing and washing",
-      "text": "It's important to use clean water to wash our bodies and faces so we don't get diseases like trachoma (which causes blindness forever). Also wash your children, others might see you as lazy.  You can do it for your family!",
+      "text": "It's important to use clean water to wash our bodies and faces so we don't get diseases like trachoma (which can lead to blindness). Also wash your children often, let's not be seen to be lazy.  You can do it for your family.",
       "context  (not for App but to support content development)": "<span>Rog, M., Swenor, B., Cajas-Monson, L. C., Mchiwe, W., Kiboko, S., Mkocha, H., & West, S. (2011). A cross-sectional survey of water and clean faces in trachoma endemic communities in Tanzania. BMC Public Health, 11(1). https://doi.org/10.1186/1471-2458-11-495<br/><br/>Face washing appears to have moved up as a household water use priority. Previous studies indicated that the major impediment to face washing was the mother's perception that face washing required a lot of water and was not as important as other household water uses such as cooking and drinking [9]. In this study on the other hand, the vast majority of households spontaneously listed washing as one of the major uses of their water and many households reported washing their children more than once per day. There appeared to be a general consensus that washing the faces of young children was an important priority. These results are in contrast to previous studies where women reported not wanting to wash their children's faces for fear of appearing that they were trying to be superior to their neighbors (9).</span><span><b> In fact, many respondents in this study reported thinking that mothers who did not wash their children were lazy. This prioritization of face washing to the point of thinking that others who do not do so are lazy was significantly associated with a reduction in unclean faces, indicating the shift in village norms with respect to attitudes about face washing. </b></span>"
     },
     {
-      "id": "bathing_shelters_tips",
+      "id": "tips",
       "title": "Bathing and washing tips",
-      "text": "Access a bathing shelter which should have a drain (so water does not build up) and often has a floor made of grass, rocks or dirt.  A shelter can have soap (which is best), whilst others use a jerrycan full of water.  Be sure to scrub your face and all your other body bits.  You will feel great after!",
+      "text": "Be sure to wash with soap your face and all your other body bits (underarms and genitals).  You will feel great after!",
       "reference": "Community WASH Conversations.  Arkansas:  LifeWater. Mar 2022.  License:  CC BY-NC-SA 3.0",
       "reference_link_title": "Community WASH Conversations",
       "reference_link": "lifewater.org/wp-content/uploads/2022/06/Community-WASH-Conversations-Public.pdf"

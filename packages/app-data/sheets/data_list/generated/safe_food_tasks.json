@@ -1,8 +1,7 @@
 {
+  "flow_name": "safe_food_tasks",
+  "flow_subtype": "generated",
   "flow_type": "data_list",
-  "flow_name": "safe_food",
-  "status": "released",
-  "data_list_name": "safe_food",
   "rows": [
     {
       "id": "why",
@@ -10,7 +9,8 @@
       "text": "People become infected with intestinal worms (also known as parasitic helminths) by eating unsafe food. Diseases such as typhoid fever (bacteria infection) can also happen by eating unsafe food or water.",
       "reference": "UNICEF Eastern and Southern Africa Learning Note 2020: Baby WASH Programming\nIntegrating water, sanitation and hygiene interventions\nacross sectors to impact child health outcomes\n\nExtract\nPeople become infected with intestinal\nparasitic worms (also known as helminths)\nby eating contaminated food or through\ncontact with contaminated soil (see below). \n\n Diseases such as typhoid fever –\na bacterial infection – are also caused by\ningesting contaminated food or water9\n.",
       "reference_link_title": "WASH Programming Integrating water, sanitation, and hygiene interventions across sectors to impact child health outcomes",
-      "reference_link": "www.unicef.org/esa/media/7076/file/UNICEF-ESA-Baby-WASH-Programming-2020.pdf"
+      "reference_link": "www.unicef.org/esa/media/7076/file/UNICEF-ESA-Baby-WASH-Programming-2020.pdf",
+      "completed_field": "safe_food_why_completed"
     },
     {
       "id": "keys",
@@ -18,7 +18,8 @@
       "text": "* Keep clean.\n* Separate raw and cooked food.  \n* Cook thoroughly.\n* Keep food at a safe temperature. \n* Use safe water and raw materials.",
       "reference": "5 Keys to Safer Food Manual.  WHO. Geneva. 2016",
       "reference_link_title": "Five Keys to Saver Food Manual.",
-      "reference_link": "Five keys to safer food manual (who.int)"
+      "reference_link": "Five keys to safer food manual (who.int)",
+      "completed_field": "safe_food_keys_completed"
     },
     {
       "id": "clean",
@@ -26,7 +27,8 @@
       "text": "* Handwash before and during touching food for cooking.\n* Don't forget as well to wash your hands after going to the toilet.\n* Clean your cooking space and tools.\n* Keep bugs, pests, and other animals away from the cooking area.  Cover food and use bug nets if you can!",
       "reference": "5 Keys to Safer Food Manual.  WHO. Geneva. 2016\n\nExtract\nKeep Clean\ni. Wash your hands before handling food and often during food preparation\nii. Wash your hands after going to the toilet\niii. Wash and sanitize all surfaces and equipment used for food preparation\niv. Protect kitchen areas and food from insects, pests, and other animals",
       "reference_link_title": "Five Keys to Saver Food Manual.",
-      "reference_link": "Five keys to safer food manual (who.int)"
+      "reference_link": "Five keys to safer food manual (who.int)",
+      "completed_field": "safe_food_clean_completed"
     },
     {
       "id": "separate",
@@ -34,7 +36,8 @@
       "text": "* Separate raw meat, chicken, and seafood from other foods (using different knives and chopping boards from other foods).\n* Store food in containers where you can!  This will keep it safe from pests, moisture, rot, and also to stop mixing of raw and prepared foods.",
       "reference": "5 Keys to Safer Food Manual.  WHO. Geneva. 2016\n\nExtract\nSeparate raw and cooked\ni.  Separate raw meat, poultry, and seafood from other foods\nii.  Use separate equipment and utensils, such as  knives and cutting boards, for handling raw foods\niii.  Store food in containers to avoid contact between raw and prepared foods",
       "reference_link_title": "Five Keys to Saver Food Manual.",
-      "reference_link": "Five keys to safer food manual (who.int)"
+      "reference_link": "Five keys to safer food manual (who.int)",
+      "completed_field": "safe_food_separate_completed"
     },
     {
       "id": "safe_food_cook",
@@ -42,7 +45,8 @@
       "text": "* Clean up your ingredients, especially raw meat.\n* Cook food thoroughly, especially meat, chicken, eggs, and seafood.  For meat and chicken, check that their juice is clear rather than pink or bloody. \n* When making stews, remember to bring them to a boil.\n* Reheat cooked food thoroughly.\n* Boil water used to make baby foods and drinks; this may be done during cooking",
       "reference": "5 Keys to Safer Food Manual.  WHO. Geneva. 2016\n\nExtract\ni. Cook food thoroughly, especially meat, poultry, eggs, and seafood\nii. Bring food like soups and stews to boil to make sure they have reached 70 degrees Celsius. For meat and poultry, make sure that juices are clear, not pink. Ideally, use a thermometer.\niii. Reheat cooked food thoroughly",
       "reference_link_title": "Five Keys to Saver Food Manual.",
-      "reference_link": "Five keys to safer food manual (who.int)"
+      "reference_link": "Five keys to safer food manual (who.int)",
+      "completed_field": "safe_food_safe_food_cook_completed"
     },
     {
       "id": "safe_food_temperature",
@@ -50,7 +54,8 @@
       "text": "* Don't eat cooked food that has been left out for more than two hours.\n* Keep cooked food really hot before feeding your family",
       "reference": "5 Keys to Safer Food Manual.  WHO. Geneva. 2016\n\nExtract\nKeep food at a safe temperature\ni. Do not leave cooked food at room temperature for more than 2 hours\nii. Refrigerate promptly all cooked food and food that can go bad\n(preferably below 5 degrees Celsius)\niii.  Keep cooked food piping hot (more than 60°C) prior to serving\niv. Do not store food too long even in the refrigerator\nv. Do not thaw frozen food at room temperature",
       "reference_link_title": "Five Keys to Saver Food Manual.",
-      "reference_link": "Five keys to safer food manual (who.int)"
+      "reference_link": "Five keys to safer food manual (who.int)",
+      "completed_field": "safe_food_safe_food_temperature_completed"
     },
     {
       "id": "safe_food_water and raw materials",
@@ -58,8 +63,8 @@
       "text": "*  Use safe water (see our modules on water for more tips).  Even though your water might look clean, it's still important to treat it.\n*  Remember to wash your fruits and vegetables.",
       "reference": "5 Keys to Safer Food Manual.  WHO. Geneva. 2016\n\nExtract\ni. Use safe water or treat it to make it safe\nii. Select fresh and wholesome foods \niii. Choose foods processed for safety, such as pasteurized milk\niv. Wash fruits and vegetables, especially if eaten raw\nv. Do not use food beyond its expiry date",
       "reference_link_title": "Five Keys to Saver Food Manual.",
-      "reference_link": "Five keys to safer food manual (who.int)"
+      "reference_link": "Five keys to safer food manual (who.int)",
+      "completed_field": "safe_food_safe_food_water and raw materials_completed"
     }
-  ],
-  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+  ]
 }

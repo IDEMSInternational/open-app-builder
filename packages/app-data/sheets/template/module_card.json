@@ -15,7 +15,7 @@
     },
     {
       "name": "module_id",
-      "value": "w_self_care",
+      "value": "handwashing",
       "_translations": {
         "value": {}
       },
@@ -24,109 +24,13 @@
       "_nested_name": "module_id"
     },
     {
-      "name": "task_groups",
-      "value": "_task_gs",
+      "name": "tasks",
+      "value": "_tasks",
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "task_groups"
-    },
-    {
-      "name": "path",
-      "value": "_ind",
-      "_translations": {
-        "value": {}
-      },
-      "condition": "@fields.module_path == \"individual\"",
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "path",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@fields.module_path == \"individual\"",
-            "matchedExpression": "@fields.module_path",
-            "type": "fields",
-            "fieldName": "module_path"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.module_path": [
-          "condition"
-        ]
-      }
-    },
-    {
-      "name": "path",
-      "value": "_tog",
-      "_translations": {
-        "value": {}
-      },
-      "condition": "!(@fields.module_path == \"individual\")",
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "path",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "!(@fields.module_path == \"individual\")",
-            "matchedExpression": "@fields.module_path",
-            "type": "fields",
-            "fieldName": "module_path"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@fields.module_path": [
-          "condition"
-        ]
-      }
-    },
-    {
-      "name": "task_group_data",
-      "value": "@local.module_id@local.path@local.task_groups",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "task_group_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.module_id@local.path@local.task_groups",
-            "matchedExpression": "@local.module_id",
-            "type": "local",
-            "fieldName": "module_id"
-          },
-          {
-            "fullExpression": "@local.module_id@local.path@local.task_groups",
-            "matchedExpression": "@local.path",
-            "type": "local",
-            "fieldName": "path"
-          },
-          {
-            "fullExpression": "@local.module_id@local.path@local.task_groups",
-            "matchedExpression": "@local.task_groups",
-            "type": "local",
-            "fieldName": "task_groups"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.module_id": [
-          "value"
-        ],
-        "@local.path": [
-          "value"
-        ],
-        "@local.task_groups": [
-          "value"
-        ]
-      }
+      "_nested_name": "tasks"
     },
     {
       "name": "completed",
@@ -140,7 +44,7 @@
     },
     {
       "name": "completed_field",
-      "value": "task_@local.module_id@local.completed",
+      "value": "@local.module_id@local.completed",
       "_translations": {
         "value": {}
       },
@@ -150,13 +54,13 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "task_@local.module_id@local.completed",
+            "fullExpression": "@local.module_id@local.completed",
             "matchedExpression": "@local.module_id",
             "type": "local",
             "fieldName": "module_id"
           },
           {
-            "fullExpression": "task_@local.module_id@local.completed",
+            "fullExpression": "@local.module_id@local.completed",
             "matchedExpression": "@local.completed",
             "type": "local",
             "fieldName": "completed"
@@ -367,9 +271,9 @@
         }
       ],
       "parameter_list": {
-        "task_group_id": "@local.module_id",
-        "task_group_data": "@local.task_group_data",
-        "completed_field": "@local.completed_field",
+        "task_group_id": "@local.module_id@local.tasks",
+        "task_group_data": "@local.module_id@local.tasks",
+        "completed_field": "@local.module_data.completed_field",
         "title": "@local.card_title",
         "subtitle": "@local.card_subtitle",
         "image": "@local.card_image",
@@ -443,26 +347,38 @@
         "parameter_list": {
           "task_group_id": [
             {
-              "fullExpression": "@local.module_id",
+              "fullExpression": "@local.module_id@local.tasks",
               "matchedExpression": "@local.module_id",
               "type": "local",
               "fieldName": "module_id"
+            },
+            {
+              "fullExpression": "@local.module_id@local.tasks",
+              "matchedExpression": "@local.tasks",
+              "type": "local",
+              "fieldName": "tasks"
             }
           ],
           "task_group_data": [
             {
-              "fullExpression": "@local.task_group_data",
-              "matchedExpression": "@local.task_group_data",
+              "fullExpression": "@local.module_id@local.tasks",
+              "matchedExpression": "@local.module_id",
               "type": "local",
-              "fieldName": "task_group_data"
+              "fieldName": "module_id"
+            },
+            {
+              "fullExpression": "@local.module_id@local.tasks",
+              "matchedExpression": "@local.tasks",
+              "type": "local",
+              "fieldName": "tasks"
             }
           ],
           "completed_field": [
             {
-              "fullExpression": "@local.completed_field",
-              "matchedExpression": "@local.completed_field",
+              "fullExpression": "@local.module_data.completed_field",
+              "matchedExpression": "@local.module_data.completed_field",
               "type": "local",
-              "fieldName": "completed_field"
+              "fieldName": "module_data"
             }
           ],
           "title": [
@@ -520,17 +436,19 @@
           "action_list.0.args.1",
           "action_list.0._raw",
           "action_list.0._cleaned",
-          "parameter_list.task_group_id"
+          "parameter_list.task_group_id",
+          "parameter_list.task_group_data"
         ],
         "@local.click_template": [
           "action_list.1.args.0",
           "action_list.1._raw",
           "action_list.1._cleaned"
         ],
-        "@local.task_group_data": [
+        "@local.tasks": [
+          "parameter_list.task_group_id",
           "parameter_list.task_group_data"
         ],
-        "@local.completed_field": [
+        "@local.module_data.completed_field": [
           "parameter_list.completed_field"
         ],
         "@local.card_title": [

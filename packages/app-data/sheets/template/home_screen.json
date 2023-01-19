@@ -87,7 +87,8 @@
       "name": "carousel",
       "parameter_list": {
         "space_between": "8",
-        "task_group_data": "module_tasks"
+        "task_group_data": "module_tasks",
+        "loop": "true"
       },
       "exclude_from_translation": true,
       "rows": [
