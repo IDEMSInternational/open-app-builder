@@ -222,7 +222,207 @@
     },
     {
       "type": "data_items",
-      "value": "@data.comp_data_items_list",
+      "value": "comp_data_items_list",
+      "parameter_list": {
+        "filter": "@item.completed"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "id_@item.id",
+          "value": "@item.id",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "data_items.id_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "id_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "data_items.id_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "value",
+              "_nested_name"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "text_completed_@item.id",
+          "value": "Completed: @item.completed",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "data_items.text_completed_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "text_completed_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "Completed: @item.completed",
+                "matchedExpression": "@item.completed",
+                "type": "item",
+                "fieldName": "completed"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "data_items.text_completed_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "_nested_name"
+            ],
+            "@item.completed": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "name": "data_items",
+      "_nested_name": "data_items",
+      "_dynamicFields": {
+        "parameter_list": {
+          "filter": [
+            {
+              "fullExpression": "@item.completed",
+              "matchedExpression": "@item.completed",
+              "type": "item",
+              "fieldName": "completed"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@item.completed": [
+          "parameter_list.filter"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "example_2_b",
+      "value": "Example 2 b: data list set through local variable",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "example_2_b"
+    },
+    {
+      "name": "data_list_name",
+      "type": "set_variable",
+      "_nested_name": "data_list_name"
+    },
+    {
+      "type": "button",
+      "name": "data_list_set",
+      "value": [
+        "Set data list"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_local",
+          "args": [
+            "data_list_name",
+            "comp_data_items_list"
+          ],
+          "_raw": "click | set_local : data_list_name : comp_data_items_list",
+          "_cleaned": "click | set_local : data_list_name : comp_data_items_list"
+        }
+      ],
+      "condition": "!@local.data_list_name",
+      "_nested_name": "data_list_set",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@local.data_list_name",
+            "matchedExpression": "!@local.data_list_name",
+            "type": "local",
+            "fieldName": "data_list_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@local.data_list_name": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "data_list_unset",
+      "value": [
+        "Unset data list"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_local",
+          "args": [
+            "data_list_name",
+            ""
+          ],
+          "_raw": "click | set_local : data_list_name :",
+          "_cleaned": "click | set_local : data_list_name :"
+        }
+      ],
+      "condition": "@local.data_list_name",
+      "_nested_name": "data_list_unset",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.data_list_name",
+            "matchedExpression": "@local.data_list_name",
+            "type": "local",
+            "fieldName": "data_list_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_name": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "data_items",
+      "value": "@local.data_list_name",
       "parameter_list": {
         "filter": "@item.completed"
       },
@@ -319,10 +519,10 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@data.comp_data_items_list",
-            "matchedExpression": "@data.comp_data_items_list",
-            "type": "data",
-            "fieldName": "comp_data_items_list"
+            "fullExpression": "@local.data_list_name",
+            "matchedExpression": "@local.data_list_name",
+            "type": "local",
+            "fieldName": "data_list_name"
           }
         ],
         "parameter_list": {
@@ -337,7 +537,7 @@
         }
       },
       "_dynamicDependencies": {
-        "@data.comp_data_items_list": [
+        "@local.data_list_name": [
           "value"
         ],
         "@item.completed": [
