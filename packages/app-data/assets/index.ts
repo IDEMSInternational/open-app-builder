@@ -1,5 +1,9 @@
 export const UNTRACKED_ASSETS = [];
 export const ASSETS_CONTENTS_LIST = {
+  "essential_tools/Archive/handwashing.png": {
+    size_kb: 54.3,
+    md5Checksum: "cf356a8f0997a9cd60e5e8f25470bb0c",
+  },
   "essential_tools/Archive/handwashing_steps.png": {
     size_kb: 284.4,
     md5Checksum: "d3e6d0264bcfabd12fe5d71252468792",
@@ -20,10 +24,6 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 172,
     md5Checksum: "3a095e3d3e005436832e8f8b7be8b06a",
   },
-  "essential_tools/containers.svg": {
-    size_kb: 368.8,
-    md5Checksum: "0c38aca3b13cf19349eecbbaabb77407",
-  },
   "essential_tools/eye_pain_license_needed.png": {
     size_kb: 62.9,
     md5Checksum: "21876bb4a5e789309112b142f5a00940",
@@ -36,9 +36,9 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 105.8,
     md5Checksum: "5a195c6e638e776c4f50aaf2f40d1ebd",
   },
-  "essential_tools/handwashing.png": {
-    size_kb: 54.3,
-    md5Checksum: "cf356a8f0997a9cd60e5e8f25470bb0c",
+  "essential_tools/handwashing2.svg": {
+    size_kb: 526.3,
+    md5Checksum: "1a7415dbd0e3340c514f317a9dacb0e8",
   },
   "essential_tools/HandwashingDisgust.png": {
     size_kb: 77,
@@ -84,6 +84,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 105,
     md5Checksum: "5af2692ae7bb97ea64f0d922ae4934c1",
   },
+  "essential_tools/home_handwashing.svg": {
+    size_kb: 527.7,
+    md5Checksum: "6b3dc444976429fcda65563de5a054c5",
+  },
   "essential_tools/home_healthy_homes.png": {
     size_kb: 504.3,
     md5Checksum: "6f701bc8ada6933152269cf179d8a314",
@@ -104,6 +108,14 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 41.9,
     md5Checksum: "01afdabc5d45155c2cb4cabf145f9118",
   },
+  "essential_tools/home_shower.svg": {
+    size_kb: 372.8,
+    md5Checksum: "7f9661fd4bd0735c4d244a88fb9714e7",
+  },
+  "essential_tools/home_waste.svg": {
+    size_kb: 827,
+    md5Checksum: "b0e0a615e6ebd6caf14025a9d04cebbe",
+  },
   "essential_tools/home_waste_license_needed.png": {
     size_kb: 88.3,
     md5Checksum: "4b4c990f19a0a479c1ef4c34c07e70ad",
@@ -112,9 +124,17 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 268.2,
     md5Checksum: "b9d3306ea813cecdcb01f25278e1e132",
   },
+  "essential_tools/home_water_containers.svg": {
+    size_kb: 368.8,
+    md5Checksum: "0c38aca3b13cf19349eecbbaabb77407",
+  },
   "essential_tools/home_water_source.png": {
     size_kb: 71.8,
     md5Checksum: "402b2ab53805c84ff3c4d0155b8d6869",
+  },
+  "essential_tools/home_water_source.svg": {
+    size_kb: 351.8,
+    md5Checksum: "b8d8102bceacac4626d5fa6da46d6cb2",
   },
   "essential_tools/home_water_treatment_license_needed.png": {
     size_kb: 189.7,
@@ -148,6 +168,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 988.5,
     md5Checksum: "59306eb0d091b14da2bbb9fde9d42020",
   },
+  "essential_tools/safe_food.svg": {
+    size_kb: 304.6,
+    md5Checksum: "71918bdb576c24bc9446571ca4767678",
+  },
   "essential_tools/safe_storage_of_treated_water.png": {
     size_kb: 475.3,
     md5Checksum: "e92984e0bbf136215951bd9ec81d9ca0",
@@ -155,6 +179,10 @@ export const ASSETS_CONTENTS_LIST = {
   "essential_tools/soap.png": {
     size_kb: 47.3,
     md5Checksum: "065fd6de72cf42ba1494d5fb7839807e",
+  },
+  "essential_tools/soap.svg": {
+    size_kb: 257.6,
+    md5Checksum: "e6231b510c69701aee2e161fcf313447",
   },
   "essential_tools/sources_of_safe_water.png": {
     size_kb: 817.8,
@@ -167,14 +195,6 @@ export const ASSETS_CONTENTS_LIST = {
   "essential_tools/store_treated_water_safely.png": {
     size_kb: 110.5,
     md5Checksum: "5302030042883ed22b4594af244f43ef",
-  },
-  "essential_tools/WashApp Priority Images.xlsx": {
-    size_kb: 10.3,
-    md5Checksum: "bee7d6bb6e9ed7c2ca00dcfe12d05268",
-  },
-  "essential_tools/waste.svg": {
-    size_kb: 827,
-    md5Checksum: "b0e0a615e6ebd6caf14025a9d04cebbe",
   },
   "essential_tools/waterfilter.svg": {
     size_kb: 447.5,

@@ -398,6 +398,7 @@
           "_translations": {
             "value": {}
           },
+          "condition": "!!@local.tool_data.illustration",
           "style_list": [
             "height: 200px"
           ],
@@ -410,11 +411,22 @@
                 "type": "local",
                 "fieldName": "tool_data"
               }
+            ],
+            "condition": [
+              {
+                "fullExpression": "!!@local.tool_data.illustration",
+                "matchedExpression": "!@local.tool_data.illustration",
+                "type": "local",
+                "fieldName": "tool_data"
+              }
             ]
           },
           "_dynamicDependencies": {
             "@local.tool_data.illustration": [
               "value"
+            ],
+            "!@local.tool_data.illustration": [
+              "condition"
             ]
           }
         }

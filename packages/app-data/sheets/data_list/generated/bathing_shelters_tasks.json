@@ -7,7 +7,7 @@
       "id": "why",
       "title": "Why do we need to be clean?",
       "text": "Clean bodies keep us healthy and free from disease.  Use a bathing shelter.",
-      "illustration": "essential_tools/soap.png",
+      "illustration": "essential_tools/soap.svg",
       "completed_field": "bathing_shelters_why_completed"
     },
     {

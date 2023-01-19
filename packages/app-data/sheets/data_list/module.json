@@ -8,31 +8,31 @@
       "id": "handwashing",
       "title": "Handwashing",
       "text_introduction": "Good hand hygiene stops the passing of germs from person to person or from person to food or water",
-      "Suggestion": "Good hand hygiene stops the passing of germs from person to person or from person to food or water",
+      "suggestion": "Good hand hygiene stops the passing of germs from person to person or from person to food or water",
       "tools_title": "Handwashing",
-      "illustration": "essential_tools/home_handwashing.png"
+      "illustration": "essential_tools/home_handwashing.svg"
     },
     {
       "id": "water_source",
       "title": "Safe Water Source",
       "text_introduction": "Clean water saves money and improves health.  Making sure you collect water from a safe source is the start!",
-      "Suggestion": "Clean water saves money and improves health.  Making sure you collect water from a safe source is the start!",
+      "suggestion": "Clean water saves money and improves health.  Making sure you collect water from a safe source is the start!",
       "tools_title": "Safe Water Source",
-      "illustration": "essential_tools/home_water_source.png"
+      "illustration": "essential_tools/home_water_source.svg"
     },
     {
       "id": "water_containers",
       "title": "Water Containers",
       "text_introduction": "Keep strong with clean water.  Healthy homes have good water containers that are easy to use.",
-      "Suggestion": "Keep strong with clean water.  Healthy homes have good water containers that are easy to use.",
+      "suggestion": "Keep strong with clean water.  Healthy homes have good water containers that are easy to use.",
       "tools_title": "Water Containers",
-      "illustration": "essential_tools/home_water_containers.png"
+      "illustration": "essential_tools/home_water_containers.svg"
     },
     {
       "id": "water_treatment",
       "title": "Water Treatment",
       "text_introduction": "Never believe all water is safe to drink – always treat it.",
-      "Suggestion": "Never believe all water is safe to drink – always treat it.",
+      "suggestion": "Never believe all water is safe to drink – always treat it.",
       "tools_title": "Water Treatment",
       "illustration": "essential_tools/home_boiling_water.svg"
     },
@@ -40,7 +40,7 @@
       "id": "clean_latrines",
       "title": "Clean Latrines",
       "text_introduction": "A clean latrine means good hygiene. Good hygiene means diseases will not spread from a dirty latrine.",
-      "Suggestion": "A clean latrine means good hygiene.  A dirty one can mean disease.",
+      "suggestion": "A clean latrine means good hygiene.  A dirty one can mean disease.",
       "tools_title": "Clean Latrines",
       "illustration": "essential_tools/home_latrines.png"
     },
@@ -48,7 +48,7 @@
       "id": "healthy_homes",
       "title": "Healthy Homes",
       "text_introduction": "A clean healthy home makes everyone happy. Clean healthy homes reduce your family’s risk of exposure to bacteria and diseases. A clean house is also less inviting to pests.",
-      "Suggestion": "A safe place to play is possible when your home and its surrounds are clean.  Clean for your family!",
+      "suggestion": "A safe place to play is possible when your home and its surrounds are clean.  Clean for your family!",
       "tools_title": "Healthy Homes",
       "illustration": "essential_tools/home_healthy_homes.png"
     },
@@ -56,7 +56,7 @@
       "id": "healthy_families",
       "title": "Healthy Families",
       "text_introduction": "With a clean place to stay, you and your family members can avoid various diseases, and therefore be very happy.",
-      "Suggestion": "Healthy habits can stop diarrhoea, diseases caused by worms and undernutrition.  Keep your family healthy.",
+      "suggestion": "Healthy habits can stop diarrhoea, diseases caused by worms and undernutrition.  Keep your family healthy.",
       "tools_title": "Healthy Families",
       "illustration": "essential_tools/home_family.png"
     },
@@ -64,7 +64,7 @@
       "id": "menstrual_hygiene",
       "title": "Menstrual Hygiene",
       "text_introduction": "With good mentrual hygiene, girls can maintain their body hygiene and health. This gives them confidence and dignity. It also means that girls do not miss school during menstruation.",
-      "Suggestion": "With good menstrual hygiene girls can keep up their health.  Confident and with dignity, they shall not miss school during menstruation.",
+      "suggestion": "With good menstrual hygiene girls can keep up their health.  Confident and with dignity, they shall not miss school during menstruation.",
       "tools_title": "Menstrual Hygiene",
       "illustration": "essential_tools/home_menstruation.png",
       "reference": "https://www.who.int/news-room/feature-stories/detail/strengthening-primary-health-care-sri-lanka, https://www.who.int/news/item/22-06-2021-unesco-and-who-urge-countries-to-make-every-school-a-health-promoting-school"
@@ -73,15 +73,15 @@
       "id": "waste",
       "title": "Waste management",
       "text_introduction": "Poor solid waste management could cause many problems including clogging of pipes and drainage systems and the creation of breeding sites for flies or insects which contribute to disease spread.",
-      "Suggestion": "STILL TO COMPLETE",
+      "suggestion": "STILL TO COMPLETE",
       "tools_title": "Waste management",
-      "illustration": "essential_tools/home_waste_license_needed.png"
+      "illustration": "essential_tools/home_waste.svg"
     },
     {
       "id": "safe_food",
       "title": "Safe Food",
       "text_introduction": "Food can become contaminated with germs and bacteria during slaughtering, while harvesting from the filed, during storage and transportation, and also while cooking.\n\nBy following good food hygiene practices, we can prevent food from becoming contaminated and causing food poisoning. This ensures families eat safe and healthy meals. refers to the conditions and measures necessary to ensure the safety of food from the moment you are cooking it to when you eat it.\n\nBy",
-      "Suggestion": "There are 5 keys to safe food.  Know what they are!",
+      "suggestion": "There are 5 keys to safe food.  Know what they are!",
       "tools_title": "Safe Food",
       "illustration": "essential_tools/home_safe_food.png"
     },
@@ -89,7 +89,7 @@
       "id": "breastfeeding",
       "title": "Breastfeeding",
       "text_introduction": "Breastfeeding is one of the most effective ways to ensure child health and survival. A safe, clean and healthy environment can help protect a mother and her child from many common childhood and maternal illnesses.",
-      "Suggestion": "Breastfeeding can keep your baby strong!  Clean water and safe food for the mother and other healthy habits are important.",
+      "suggestion": "Breastfeeding can keep your baby strong!  Clean water and safe food for the mother and other healthy habits are important.",
       "tools_title": "Breastfeeding",
       "illustration": "essential_tools/home_breastfeeding_license_needed.png",
       "reference": "https://www.who.int/health-topics/breastfeeding#tab=tab_1"
@@ -98,9 +98,9 @@
       "id": "bathing_shelters",
       "title": "Bathing Shelters",
       "text_introduction": "A clean healthy bathing place is relaxing and comfortable to use. (Sometimes, you can even sing while bathing!!)",
-      "Suggestion": "Wash often in a clean private bathing place (Sometimes, you can even sing while bathing!!)",
+      "suggestion": "Wash often in a clean private bathing place (Sometimes, you can even sing while bathing!!)",
       "tools_title": "Bathing Shelters",
-      "illustration": "essential_tools/home_shower.png",
+      "illustration": "essential_tools/home_shower.svg",
       "reference": "https://www.newhealthadvisor.org/importance-of-bathing.html"
     }
   ],

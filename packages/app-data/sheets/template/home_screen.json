@@ -21,13 +21,28 @@
     },
     {
       "name": "highlighted_module",
-      "value": "handwashing",
+      "value": "@fields._task_highlighted_group_id",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "type": "set_variable",
-      "_nested_name": "highlighted_module"
+      "_nested_name": "highlighted_module",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields._task_highlighted_group_id",
+            "matchedExpression": "@fields._task_highlighted_group_id",
+            "type": "fields",
+            "fieldName": "_task_highlighted_group_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._task_highlighted_group_id": [
+          "value"
+        ]
+      }
     },
     {
       "type": "template",
@@ -87,8 +102,7 @@
       "name": "carousel",
       "parameter_list": {
         "space_between": "8",
-        "task_group_data": "module_tasks",
-        "loop": "true"
+        "task_group_data": "module_tasks"
       },
       "exclude_from_translation": true,
       "rows": [

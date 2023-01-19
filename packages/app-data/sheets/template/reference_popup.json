@@ -53,54 +53,6 @@
       }
     },
     {
-      "name": "task_group_data",
-      "value": "@local.tool_id",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "task_group_data",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.tool_id",
-            "matchedExpression": "@local.tool_id",
-            "type": "local",
-            "fieldName": "tool_id"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.tool_id": [
-          "value"
-        ]
-      }
-    },
-    {
-      "name": "ww_id",
-      "value": "module_tasks.@local.tool_id",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "ww_id",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "module_tasks.@local.tool_id",
-            "matchedExpression": "@local.tool_id",
-            "type": "local",
-            "fieldName": "tool_id"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.tool_id": [
-          "value"
-        ]
-      }
-    },
-    {
       "name": "tool",
       "value": "@local.module_id.@local.tool_id",
       "_translations": {
@@ -201,6 +153,54 @@
       },
       "_dynamicDependencies": {
         "@local.tool_data.reference_link": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "url_2_description",
+      "value": "@local.tool_data.reference_link_title_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "url_2_description",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.tool_data.reference_link_title_2",
+            "matchedExpression": "@local.tool_data.reference_link_title_2",
+            "type": "local",
+            "fieldName": "tool_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.tool_data.reference_link_title_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "url_2",
+      "value": "@local.tool_data.reference_link_2",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "url_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.tool_data.reference_link_2",
+            "matchedExpression": "@local.tool_data.reference_link_2",
+            "type": "local",
+            "fieldName": "tool_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.tool_data.reference_link_2": [
           "value"
         ]
       }
@@ -321,6 +321,92 @@
           "parameter_list.first_line_text"
         ],
         "!@local.url": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "tile_component",
+      "name": "reference_2",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "@local.url_2"
+          ],
+          "_raw": "click | go_to_url: @local.url_2",
+          "_cleaned": "click | go_to_url: @local.url_2"
+        }
+      ],
+      "parameter_list": {
+        "first_line_text": "@local.url_2_description",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "condition": "!!@local.url_2",
+      "_nested_name": "reference_2",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.url_2",
+                  "matchedExpression": "@local.url_2",
+                  "type": "local",
+                  "fieldName": "url_2"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | go_to_url: @local.url_2",
+                "matchedExpression": "@local.url_2",
+                "type": "local",
+                "fieldName": "url_2"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | go_to_url: @local.url_2",
+                "matchedExpression": "@local.url_2",
+                "type": "local",
+                "fieldName": "url_2"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.url_2_description",
+              "matchedExpression": "@local.url_2_description",
+              "type": "local",
+              "fieldName": "url_2_description"
+            }
+          ]
+        },
+        "condition": [
+          {
+            "fullExpression": "!!@local.url_2",
+            "matchedExpression": "!@local.url_2",
+            "type": "local",
+            "fieldName": "url_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.url_2": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.url_2_description": [
+          "parameter_list.first_line_text"
+        ],
+        "!@local.url_2": [
           "condition"
         ]
       }
