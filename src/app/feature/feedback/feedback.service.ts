@@ -1,8 +1,13 @@
 import { Injectable } from "@angular/core";
-
+import { Router } from "@angular/router";
 import { ToastController, ToastOptions } from "@ionic/angular";
 import { BehaviorSubject } from "rxjs";
 import { Device, DeviceInfo } from "@capacitor/device";
+import { takeWhile } from "rxjs/operators";
+import { fromEvent } from "rxjs";
+
+import { FlowTypes, IAppConfig } from "data-models";
+
 import { ContextMenuService } from "src/app/shared/modules/context-menu/context-menu.service";
 import {
   IContextMenuAction,
@@ -25,10 +30,6 @@ import {
 } from "./feedback.types";
 import { RouterDisableGuard, RouterEnableGuard } from "./routeGuards";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
-import { IAppConfig } from "packages/data-models";
-import { Router } from "@angular/router";
-import { takeWhile } from "rxjs/operators";
-import { fromEvent } from "rxjs";
 import { ThemeService } from "../theme/services/theme.service";
 import { SkinService } from "src/app/shared/services/skin/skin.service";
 import {
@@ -195,22 +196,28 @@ export class FeedbackService {
     this.setActionsEnabled(enabled);
   }
 
+  /**
+   * When feedback mode is enabled we don't want interactions with elements to trigger any actions
+   * Actions can be registered in 2 different ways (on global registry or within an action service instance),
+   * so we need to both backup/override all global actions as well as create/delete global overrides for local actions
+   */
   public setActionsEnabled(enabled?: boolean) {
+    const actionsIDs = [...FlowTypes.ACTION_ID_LIST];
     if (enabled) {
       if (this.actionListDefault) {
+        // remove global overrides and restore previous global
+        this.templateActionRegistry.unregister(actionsIDs);
         this.templateActionRegistry.register(this.actionListDefault, true);
       }
     } else {
+      // backup global and override all actions with dummy list
       const existingActions = this.templateActionRegistry.list();
       this.actionListDefault = existingActions;
-      const emptyActions: Partial<IActionHandlers> = {};
-      for (const key of Object.keys(existingActions)) {
-        emptyActions[key] = () => null;
+      const dummyActionList = {};
+      for (const actionID of actionsIDs) {
+        dummyActionList[actionID] = () => null;
       }
-      // TODO - only actions registered in global registry will be disabled
-      // Will need to refactor to include more actions in the future
-      console.log("disabling actions", Object.keys(existingActions));
-      this.templateActionRegistry.register(emptyActions, true);
+      this.templateActionRegistry.register(dummyActionList, true);
     }
   }
 
