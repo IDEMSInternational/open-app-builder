@@ -2,7 +2,7 @@
   "flow_type": "data_list",
   "flow_name": "clean_latrines",
   "status": "released",
-  "data_list_name": "clean_toilets",
+  "data_list_name": "clean_latrines",
   "rows": [
     {
       "id": "what",

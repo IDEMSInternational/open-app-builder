@@ -2,7 +2,7 @@
   "flow_type": "data_list",
   "flow_name": "water_source",
   "status": "released",
-  "data_list_name": "safe_water_source",
+  "data_list_name": "water_source",
   "rows": [
     {
       "id": "what",

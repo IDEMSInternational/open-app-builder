@@ -2,7 +2,7 @@
   "flow_type": "data_list",
   "flow_name": "healthy_homes",
   "status": "released",
-  "data_list_name": "healthy_home",
+  "data_list_name": "healthy_homes",
   "rows": [
     {
       "id": "what",

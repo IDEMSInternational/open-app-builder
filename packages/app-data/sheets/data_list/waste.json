@@ -2,7 +2,7 @@
   "flow_type": "data_list",
   "flow_name": "waste",
   "status": "released",
-  "data_list_name": "waste_management",
+  "data_list_name": "waste",
   "rows": [
     {
       "id": "what",
@@ -26,7 +26,7 @@
       "id": "how",
       "title": "How to manage solid waste.",
       "text": "The disposal/treatment methods of solid waste depend on the type and amount of waste generated. Suggestions for disposal could include:\n* Paper waste can be buried or burned in an incinerator/burning chamber made from an oil drum. \n* Organic materials can be composted, for instance in big cement rings or log boxes/containers, and used as fertilizers/soil conditioners for trees and plants in the school compound.\n* Plastic waste can be collected and buried or recycled.\n* Disposal through the Council/Public solid waste management system if this exists.",
-      "suggestion": "The disposal/treatment of solid waste depends on the type and amount of waste generated. Suggestions for disposal could include:\n* Paper waste can be buried or burned in an incinerator/burning chamber made from an oil drum. \n* Organic materials can be composted, for instance in big cement rings or log boxes/containers, and used as fertilizers/soil conditioners for trees and plants in the school compound.\n* Plastic waste can be collected and buried or recycled.\n* Disposal through the Council/Public solid waste management system if this exists.",
+      "suggestion": "The disposal/treatment of solid waste depends on the type and amount of waste made. To throw your waste:\n* Paper waste can be buried or burned in an incinerator/burning chamber made from an oil drum. \n* Organic materials can be composted, for instance in big cement rings or log boxes/containers, and used as fertilizers/soil conditioners for trees and plants in the school compound.\n* Plastic waste can be collected and buried or recycled.\n* Disposal through the Council/Public solid waste management system if this exists.",
       "reference": "Ministry of Education, Science and Technology, National Guideline for Water, Sanitation and Hygiene for Tanzania Schools, 2016",
       "reference_link_title": "National Guideline for Water, Sanitation and Hygiene for Tanzania Schools,2016",
       "reference_link": "www.unicef.org/tanzania/media/1526/file/National%20Guideline%20for%20Water,%20Sanitation%20and%20Hygiene%20for%20Tanzania%20Schools.pdf"
