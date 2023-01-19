@@ -1110,6 +1110,186 @@
     },
     {
       "type": "task_card",
+      "name": "card_button_3",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "@local.task_completed_field",
+            true
+          ],
+          "_raw": "click | set_field: @local.task_completed_field: true",
+          "_cleaned": "click | set_field: @local.task_completed_field: true"
+        },
+        {
+          "trigger": "click",
+          "action_id": "emit",
+          "args": [
+            "force_reload"
+          ],
+          "_raw": "click | emit: force_reload",
+          "_cleaned": "click | emit: force_reload"
+        },
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "@local.task_group_id@local.join@local.task_id"
+          ],
+          "_raw": "click | go_to:@local.task_group_id@local.join@local.task_id",
+          "_cleaned": "click | go_to:@local.task_group_id@local.join@local.task_id"
+        }
+      ],
+      "parameter_list": {
+        "task_id": "@local.task_id",
+        "completed_field": "@local.task_completed_field",
+        "title": "Example long title (wraps over multiple lines)",
+        "style": "button",
+        "completed_icon": "plh_images/icons/tick_white.svg"
+      },
+      "_nested_name": "card_button_3",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.task_completed_field",
+                  "matchedExpression": "@local.task_completed_field",
+                  "type": "local",
+                  "fieldName": "task_completed_field"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: @local.task_completed_field: true",
+                "matchedExpression": "@local.task_completed_field",
+                "type": "local",
+                "fieldName": "task_completed_field"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: @local.task_completed_field: true",
+                "matchedExpression": "@local.task_completed_field",
+                "type": "local",
+                "fieldName": "task_completed_field"
+              }
+            ]
+          },
+          "2": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.task_group_id@local.join@local.task_id",
+                  "matchedExpression": "@local.task_group_id",
+                  "type": "local",
+                  "fieldName": "task_group_id"
+                },
+                {
+                  "fullExpression": "@local.task_group_id@local.join@local.task_id",
+                  "matchedExpression": "@local.join",
+                  "type": "local",
+                  "fieldName": "join"
+                },
+                {
+                  "fullExpression": "@local.task_group_id@local.join@local.task_id",
+                  "matchedExpression": "@local.task_id",
+                  "type": "local",
+                  "fieldName": "task_id"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | go_to:@local.task_group_id@local.join@local.task_id",
+                "matchedExpression": "@local.task_group_id",
+                "type": "local",
+                "fieldName": "task_group_id"
+              },
+              {
+                "fullExpression": "click | go_to:@local.task_group_id@local.join@local.task_id",
+                "matchedExpression": "@local.join",
+                "type": "local",
+                "fieldName": "join"
+              },
+              {
+                "fullExpression": "click | go_to:@local.task_group_id@local.join@local.task_id",
+                "matchedExpression": "@local.task_id",
+                "type": "local",
+                "fieldName": "task_id"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | go_to:@local.task_group_id@local.join@local.task_id",
+                "matchedExpression": "@local.task_group_id",
+                "type": "local",
+                "fieldName": "task_group_id"
+              },
+              {
+                "fullExpression": "click | go_to:@local.task_group_id@local.join@local.task_id",
+                "matchedExpression": "@local.join",
+                "type": "local",
+                "fieldName": "join"
+              },
+              {
+                "fullExpression": "click | go_to:@local.task_group_id@local.join@local.task_id",
+                "matchedExpression": "@local.task_id",
+                "type": "local",
+                "fieldName": "task_id"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "task_id": [
+            {
+              "fullExpression": "@local.task_id",
+              "matchedExpression": "@local.task_id",
+              "type": "local",
+              "fieldName": "task_id"
+            }
+          ],
+          "completed_field": [
+            {
+              "fullExpression": "@local.task_completed_field",
+              "matchedExpression": "@local.task_completed_field",
+              "type": "local",
+              "fieldName": "task_completed_field"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.task_completed_field": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned",
+          "parameter_list.completed_field"
+        ],
+        "@local.task_group_id": [
+          "action_list.2.args.0",
+          "action_list.2._raw",
+          "action_list.2._cleaned"
+        ],
+        "@local.join": [
+          "action_list.2.args.0",
+          "action_list.2._raw",
+          "action_list.2._cleaned"
+        ],
+        "@local.task_id": [
+          "action_list.2.args.0",
+          "action_list.2._raw",
+          "action_list.2._cleaned",
+          "parameter_list.task_id"
+        ]
+      }
+    },
+    {
+      "type": "task_card",
       "name": "card_button_toggle_1",
       "action_list": [
         {
