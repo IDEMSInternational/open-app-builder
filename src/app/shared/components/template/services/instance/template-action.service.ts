@@ -10,7 +10,6 @@ import { Injector } from "@angular/core";
 import { TemplateNavService } from "../template-nav.service";
 import { TemplateService } from "../template.service";
 import { TemplateTranslateService } from "../template-translate.service";
-import { TemplateFieldService } from "../template-field.service";
 import { EventService } from "src/app/shared/services/event/event.service";
 import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 import { AuthService } from "src/app/shared/services/auth/auth.service";
@@ -54,9 +53,6 @@ export class TemplateActionService extends SyncServiceBase {
   private get templateService() {
     return getGlobalService(this.injector, TemplateService);
   }
-  private get templateFieldService() {
-    return getGlobalService(this.injector, TemplateFieldService);
-  }
   private get templateTranslateService() {
     return getGlobalService(this.injector, TemplateTranslateService);
   }
@@ -86,7 +82,6 @@ export class TemplateActionService extends SyncServiceBase {
   private async ensurePublicServicesReady() {
     await this.ensureAsyncServicesReady([
       this.templateTranslateService,
-      this.templateFieldService,
       this.dbSyncService,
       this.taskService,
     ]);
@@ -207,14 +202,6 @@ export class TemplateActionService extends SyncServiceBase {
           return this.templateService.runStandaloneTemplate(action.args[0], action.params);
         }
         return this.templateNavService.handlePopupAction(action, this.container);
-      case "set_field":
-        console.log("[SET FIELD]", key, value);
-        return this.templateFieldService.setField(key, value);
-      case "toggle_field":
-        const currentValue = this.templateFieldService.getField(key);
-        const toggleValue = !currentValue;
-        console.log("[SET FIELD]", key, toggleValue);
-        return this.templateFieldService.setField(key, `${toggleValue}`);
       case "feedback": {
         const [subtopic, ...payload] = args;
         return this.eventService.publish({ topic: "FEEDBACK", subtopic, payload });

@@ -6,6 +6,7 @@ import { LocalStorageService } from "src/app/shared/services/local-storage/local
 import { booleanStringToBoolean } from "src/app/shared/utils";
 import { TemplateTranslateService } from "./template-translate.service";
 import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
+import { TemplateActionRegistry } from "./instance/template-action.registry";
 
 @Injectable({ providedIn: "root" })
 export class TemplateFieldService extends AsyncServiceBase {
@@ -14,16 +15,34 @@ export class TemplateFieldService extends AsyncServiceBase {
   constructor(
     private localStorageService: LocalStorageService,
     private dbService: DbService,
-    private translateService: TemplateTranslateService
+    private translateService: TemplateTranslateService,
+    private templateActionRegistry: TemplateActionRegistry
   ) {
     super("TemplateField");
     this.registerInitFunction(this.initialise);
+    this.registerTemplateActionHandlers();
   }
 
   private async initialise() {
     await this.ensureAsyncServicesReady([this.dbService, this.translateService]);
     this.ensureSyncServicesReady([this.localStorageService]);
   }
+
+  private registerTemplateActionHandlers() {
+    this.templateActionRegistry.register({
+      set_field: async ({ args }) => {
+        const [key, value] = args;
+        return this.setField(key, value);
+      },
+      toggle_field: async ({ args }) => {
+        const [key] = args;
+        const currentValue = this.getField(key);
+        const toggleValue = !currentValue;
+        return this.setField(key, `${toggleValue}`);
+      },
+    });
+  }
+
   /**
    * Retrieve fields from localstorage. These are automatically prefixed with 'rp-contact-field'
    * and will be returned as string or boolean
@@ -51,6 +70,7 @@ export class TemplateFieldService extends AsyncServiceBase {
    * available in local storage so does not require await for further processing
    * */
   public setField(key: string, value: string) {
+    console.log("[SET FIELD]", key, value);
     if (typeof value === "object") {
       console.warn("Warning - expected string field but received", { key, value });
       try {
