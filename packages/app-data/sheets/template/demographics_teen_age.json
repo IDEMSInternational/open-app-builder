@@ -1,8 +1,7 @@
 {
   "flow_type": "template",
-  "flow_name": "debug_teen_ages",
+  "flow_name": "demographics_teen_age",
   "status": "released",
-  "flow_subtype": "debug",
   "rows": [
     {
       "name": "teens_word",
@@ -572,5 +571,5 @@
       "_nested_name": "nav_buttons"
     }
   ],
-  "_xlsxPath": "quality_assurance/debug_sheets/debug_items_fields.xlsx"
+  "_xlsxPath": "global/top_templates/survey_templates/workshop_setup.xlsx"
 }
