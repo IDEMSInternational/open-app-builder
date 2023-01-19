@@ -43,4 +43,12 @@ export class TemplateActionRegistry {
       }
     }
   }
+
+  public unregister(triggers: IActionId[]) {
+    for (const trigger of triggers) {
+      if (this.has(trigger)) {
+        delete this.handlers[trigger];
+      }
+    }
+  }
 }
