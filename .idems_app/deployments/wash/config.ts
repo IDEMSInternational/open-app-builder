@@ -16,6 +16,5 @@ config.app_config!.APP_SIDEMENU_DEFAULTS!.title = "WASH App";
 config.app_config!.APP_HEADER_DEFAULTS!.title = "WASH App";
 config.app_config!.NOTIFICATION_DEFAULTS!.title = "New message from WASH App";
 config.app_config!.NOTIFICATION_DEFAULTS!.text = "You have a new message from WASH App";
-config.error_logging!.dsn="https://976f6a201e1049fdb65d3f642724f0f9@app.glitchtip.com/2444"
 
 export default config;
