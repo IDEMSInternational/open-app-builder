@@ -6,6 +6,7 @@ import { FormsModule } from "@angular/forms";
 import { FeedbackRoutingModule } from "./feedback-routing.module";
 import { FeedbackActionsService } from "./feedback.actions";
 import { TemplateComponentsModule } from "src/app/shared/components/template/template.module";
+import { FeedbackComponentsModule } from "./components";
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { TemplateComponentsModule } from "src/app/shared/components/template/tem
     FormsModule,
     FeedbackRoutingModule,
     TemplateComponentsModule,
+    FeedbackComponentsModule,
   ],
   declarations: [FeedbackDebugPage],
   exports: [],
