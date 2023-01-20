@@ -1,0 +1,7 @@
+<plh-template-component
+  *ngFor="let row of itemRows"
+  [row]="row"
+  [parent]="parent"
+  [attr.data-rowname]="row.name"
+  trackBy:row.name
+></plh-template-component>

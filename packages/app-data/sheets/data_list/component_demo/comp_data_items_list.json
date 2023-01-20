@@ -7,15 +7,12 @@
     {
       "id": "id_1",
       "label": "Task 1",
-      "completed": false,
-      "id_1": "id_1",
-      "user_value_1": "a"
+      "completed": false
     },
     {
       "id": "id_2",
       "label": "Task 2",
-      "completed": true,
-      "id_1": "id_2"
+      "completed": true
     }
   ],
   "_xlsxPath": "quality_assurance/component_sheets/component_data_items.xlsx"
