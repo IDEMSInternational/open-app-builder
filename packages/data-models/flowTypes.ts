@@ -280,6 +280,7 @@ export namespace FlowTypes {
     | "parent_point_box"
     | "debug_toggle"
     | "items"
+    | "data_items"
     | "select_text"
     | "html"
     | "latex"
@@ -365,6 +366,8 @@ export namespace FlowTypes {
     "process_template",
     "reset_app",
     "set_field",
+    "set_item",
+    "set_items",
     "set_local",
     "style",
     "start_tour",
@@ -378,7 +381,6 @@ export namespace FlowTypes {
     /** actions have an associated trigger */
     trigger: TemplateRowActionTrigger;
     action_id: typeof ACTION_ID_LIST[number];
-
     args: any[]; // should be string | boolean, but breaks type-checking for templates;
     params?: any; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params
