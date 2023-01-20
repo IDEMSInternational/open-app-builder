@@ -88,6 +88,7 @@
     "ngx-lottie": "^7.0.4",
     "nouislider": "^14.6.3",
     "qrcode": "^1.5.1",
+    "rxdb": "^13.15.3",
     "rxjs": "^7.8.0",
     "shared": "workspace:*",
     "stacktrace-js": "^2.0.2",
@@ -144,6 +145,10 @@
     "*.{ts,scss,html}": [
       "prettier --write"
     ]
+  },
+  "browser": {
+    "__hack__": "add support for lokijs in browser by ignoring fs",
+    "fs": false
   },
   "engines": {
     "node": ">=14.20.0"
