@@ -16,6 +16,7 @@ import { TemplateService } from "./shared/components/template/services/template.
 import { CampaignService } from "./feature/campaign/campaign.service";
 import { ServerService } from "./shared/services/server/server.service";
 import { DataEvaluationService } from "./shared/services/data/data-evaluation.service";
+import { DynamicDataService } from "./shared/services/dynamic-data/dynamic-data.service";
 import { TemplateProcessService } from "./shared/components/template/services/instance/template-process.service";
 import { isSameDay } from "date-fns";
 import { AnalyticsService } from "./shared/services/analytics/analytics.service";
@@ -59,6 +60,7 @@ export class AppComponent {
     // App services
     private skinService: SkinService,
     private appConfigService: AppConfigService,
+    private dynamicDataService: DynamicDataService,
     private dbService: DbService,
     private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
@@ -177,6 +179,7 @@ export class AppComponent {
       eager: [this.crashlyticsService],
       blocking: [
         this.dbSyncService,
+        this.dynamicDataService,
         this.userMetaService,
         this.tourService,
         this.localNotificationService,
