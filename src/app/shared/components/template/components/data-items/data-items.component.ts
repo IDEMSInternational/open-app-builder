@@ -38,7 +38,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
 
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row = row;
-    this.dataListName = this.hackGetRawDataList(row);
+    this.dataListName = this.hackGetRawDataListName(row);
     this.parameterList = this.hackGetRawParameterList(row);
     this.subscribeToData();
   }
@@ -132,7 +132,7 @@ export class TmplDataItemsComponent extends TemplateBaseComponent {
    * name from raw values.
    * Alternatively any list provided as a string value can be returned directly
    * */
-  private hackGetRawDataList(row: FlowTypes.TemplateRow) {
+  private hackGetRawDataListName(row: FlowTypes.TemplateRow) {
     if (!row.value) return;
     if (typeof row.value === "string") {
       return row.value;
