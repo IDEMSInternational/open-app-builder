@@ -93,4 +93,7 @@ describe("DynamicDataService", () => {
     });
     expect(errMsg).toBe("cannot update row that does not exist: [test_flow]:[missing_row]");
   });
+  it("ignores cached data where initial data no longer exists", async () => {
+    // TODO - add methods that ignore rows from cached data if row id deleted from source data_list
+  });
 });
