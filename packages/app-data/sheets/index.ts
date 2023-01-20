@@ -4,10 +4,10 @@ type ISheetContents = {
 };
 export const SHEETS_CONTENT_LIST: ISheetContents = {
   data_list: {
-    bathing_shelters: {
+    bathing: {
       flow_type: "data_list",
-      flow_name: "bathing_shelters",
-      data_list_name: "bathing_shelters",
+      flow_name: "bathing",
+      data_list_name: "bathing",
       _xlsxPath: "data_lists/homepage/module_details.xlsx",
     },
     breastfeeding: {
@@ -28,8 +28,8 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_sheets/debug_nav.xlsx",
     },
-    bathing_shelters_tasks: {
-      flow_name: "bathing_shelters_tasks",
+    bathing_tasks: {
+      flow_name: "bathing_tasks",
       flow_subtype: "generated",
       flow_type: "data_list",
     },

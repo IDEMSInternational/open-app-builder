@@ -7,8 +7,8 @@
       "id": "what",
       "title": "What is a Clean Latrine?",
       "text": "A clean latrine is one that separates you from your poop (excreta) and urine.",
-      "reference": "Guidelines on sanitation and health. Geneva: World Health Organization; 2018. Licence: CC BY-NC-SA 3.0 IGO.\nExtract - Safely managed sanitation for households includes:\n\nUse of improved facilities that are not shared with other households and where excreta are safely disposed of in situ or transported and treated off-site.",
-      "reference_link_title": "Guidelines on sanitation and health. Geneva: World Health Organization; 2018. Licence: CC BY-NC-SA 3.0 IGO",
+      "reference": "Guidelines on sanitation and health. Geneva: World Health Organization; 2018. Licence: CC BY-NC-SA 3.0 IGO.\n\nExtract:\nSafely managed sanitation for households includes - \nUse of improved facilities that are not shared with other households and where excreta are safely disposed of in situ or transported and treated off-site.",
+      "reference_link_title": "Guidelines on sanitation and health. WHO; 2018.",
       "reference_link": "www.who.int/publications/i/item/9789241514705",
       "completed_field": "clean_latrines_what_completed"
     },
@@ -23,7 +23,8 @@
       "id": "tips",
       "title": "Tips for a Clean Latrine",
       "text": "* Sweep your latrine, the area around it and pathway to it daily.\n* Use soap/ash to get rid of any urine stains or feces.\n* Ash in the pit can also stop smells.\n* Always remember to cover your latrine hole - this will stop the flies!\n* Throw your toilet paper into the latrine pit.\n* Check your latrines regularly.  Make any repairs quickly.",
-      "reference": "Community WASH Conversations.  Arkansas:  LifeWater. Mar 2022.  License:  CC BY-NC-SA 3.0",
+      "reference_link_title": "Community WASH Conversations.  Arkansas:  LifeWater. Mar 2022;  License:  CC BY-NC-SA 3.0",
+      "reference_link": "https://lifewater.org/wp-content/uploads/2022/06/Community-WASH-Conversations-Public.pdf",
       "template": "essential_tools/clean_latrine.png",
       "completed_field": "clean_latrines_tips_completed"
     }

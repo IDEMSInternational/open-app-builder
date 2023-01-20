@@ -6,40 +6,37 @@
     {
       "id": "what",
       "title": "What is solid waste?",
-      "text": "Waste can be everything from:\n* Paper waste\n* Organic materials\n* Plastic waste",
-      "suggestion": "Solid waste can be everything from:\n* Paper waste (paper bags???)\n* Organic materials (food)\n* Plastic waste (bottles)",
-      "reference": "Ministry of Education, Science and Technology, National Guideline for Water, Sanitation and Hygiene for Tanzania Schools, 2016\n\nExtract\nSanitation/environmental sanitation\nIs the hygienic means of preventing human contact from hazards of wastes to promote health. Hazards can be physical, microbiological, biological or chemical agents of disease. Subsets of this category are:\ni. safe collection, storage, treatment and disposal/re-use/recycling of human excreta (faeces and urine);\nii. management/re-use/recycling of solid wastes (trash or rubbish);\niii. drainage and disposal/re-use/recycling of household wastewater (often referred to as sullage or wastewater);\niv. drainage of storm-water;\nv. treatment and disposal/re-use/recycling of sewage effluents;\r\nvi. collection and management of industrial waste products;\r\nvii. air and noise pollution; and\r\nviii. management of hazardous wastes including hospital wastes, and chemical/radioactive and other dangerous substances.",
-      "reference_link_title": "National Guideline for Water, Sanitation and Hygiene for Tanzania Schools,2016",
+      "original (revised)": "Waste can be everything from:\n* Paper waste\n* Organic materials\n* Plastic waste",
+      "text": "Solid waste can be everything from:\n* Paper waste (paper bags???)\n* Organic materials (food)\n* Plastic waste (bottles)",
+      "reference": "Ministry of Education, Science and Technology, National Guideline for Water, Sanitation and Hygiene for Tanzania Schools; 2016.\n\nExtract:\nSanitation/environmental sanitation is the hygienic means of preventing human contact from hazards of wastes to promote health. Hazards can be physical, microbiological, biological or chemical agents of disease. Subsets of this category are:\ni. safe collection, storage, treatment and disposal/re-use/recycling of human excreta (faeces and urine);\nii. management/re-use/recycling of solid wastes (trash or rubbish);\niii. drainage and disposal/re-use/recycling of household wastewater (often referred to as sullage or wastewater);\niv. drainage of storm-water;\nv. treatment and disposal/re-use/recycling of sewage effluents;\nvi. collection and management of industrial waste products;\nvii. air and noise pollution; and\nviii. management of hazardous wastes including hospital wastes, and chemical/radioactive and other dangerous substances.",
+      "reference_link_title": "National Guideline for Water, Sanitation and Hygiene for Tanzania Schools. MoEST; 2016.",
       "reference_link": "www.unicef.org/tanzania/media/1526/file/National%20Guideline%20for%20Water,%20Sanitation%20and%20Hygiene%20for%20Tanzania%20Schools.pdf",
       "completed_field": "waste_what_completed"
     },
     {
       "id": "why",
       "title": "Why should we manage our waste?",
-      "text": "* Reduce breeding grounds for bugs, rodents, mosquitos, snakes, and other animals which can spread diseases  \n* Protect the environment and water sources  \n* Waste can block drainage canals and contribute to flooding  \n* Rotting waste produces air pollution, which is harmful to your health  \n* Using more waste requires the making of new products, which is bad for the environment \n* Hazardous waste can be dangerous  \n* Visible pollution",
-      "suggestion": "* Reduce breeding grounds for bugs, rodents, mosquitos, snakes, and other animals which can spread diseases  \n* Protect the environment and water sources  \n* Waste can block drains and causes flooding  \n* Rotting waste leads to air pollution, which is harmful to your health  \n* It really isn't nice to look at!",
-      "reference": "Centre for Affordable Water and Sanitation Technology: Community WASH Promotion, 2017",
-      "reference_link_title": "Community WASH Promotion",
+      "original (revised)": "* Reduce breeding grounds for bugs, rodents, mosquitos, snakes, and other animals which can spread diseases  \n* Protect the environment and water sources  \n* Waste can block drainage canals and contribute to flooding  \n* Rotting waste produces air pollution, which is harmful to your health  \n* Using more waste requires the making of new products, which is bad for the environment \n* Hazardous waste can be dangerous  \n* Visible pollution",
+      "text": "* Reduce breeding grounds for bugs, rodents, mosquitos, snakes, and other animals which can spread diseases  \n* Protect the environment and water sources  \n* Waste can block drains and causes flooding  \n* Rotting waste leads to air pollution, which is harmful to your health  \n* It really isn't nice to look at!",
+      "reference_link_title": "Centre for Affordable Water and Sanitation Technology: Community WASH Promotion; 2017.",
       "reference_link": "cdn.sanity.io/files/r8bm187e/production/ec2f1615fae8971ff69114f6274d47536213e608.pdf",
       "completed_field": "waste_why_completed"
     },
     {
       "id": "how",
       "title": "How to manage solid waste.",
-      "text": "The disposal/treatment methods of solid waste depend on the type and amount of waste generated. Suggestions for disposal could include:\n* Paper waste can be buried or burned in an incinerator/burning chamber made from an oil drum. \n* Organic materials can be composted, for instance in big cement rings or log boxes/containers, and used as fertilizers/soil conditioners for trees and plants in the school compound.\n* Plastic waste can be collected and buried or recycled.\n* Disposal through the Council/Public solid waste management system if this exists.",
-      "suggestion": "The disposal/treatment of solid waste depends on the type and amount of waste made. To throw your waste:\n* Paper waste can be buried or burned in an incinerator/burning chamber made from an oil drum. \n* Organic materials can be composted, for instance in big cement rings or log boxes/containers, and used as fertilizers/soil conditioners for trees and plants around your home.\n* Plastic waste can be collected and buried or recycled.\n* And if your waste is picked up by the council - you can throw your waste out this way too.",
-      "reference": "Ministry of Education, Science and Technology, National Guideline for Water, Sanitation and Hygiene for Tanzania Schools, 2016",
-      "reference_link_title": "National Guideline for Water, Sanitation and Hygiene for Tanzania Schools,2016",
+      "original (revised)": "The disposal/treatment methods of solid waste depend on the type and amount of waste generated. Suggestions for disposal could include:\n* Paper waste can be buried or burned in an incinerator/burning chamber made from an oil drum. \n* Organic materials can be composted, for instance in big cement rings or log boxes/containers, and used as fertilizers/soil conditioners for trees and plants in the school compound.\n* Plastic waste can be collected and buried or recycled.\n* Disposal through the Council/Public solid waste management system if this exists.",
+      "text": "The disposal/treatment of solid waste depends on the type and amount of waste made. To throw your waste:\n* Paper waste can be buried or burned in an incinerator/burning chamber made from an oil drum. \n* Organic materials can be composted, for instance in big cement rings or log boxes/containers, and used as fertilizers/soil conditioners for trees and plants around your home.\n* Plastic waste can be collected and buried or recycled.\n* And if your waste is picked up by the council - you can throw your waste out this way too.",
+      "reference_link_title": "National Guideline for Water, Sanitation and Hygiene for Tanzania Schools. MoEST; 2016.",
       "reference_link": "www.unicef.org/tanzania/media/1526/file/National%20Guideline%20for%20Water,%20Sanitation%20and%20Hygiene%20for%20Tanzania%20Schools.pdf",
       "completed_field": "waste_how_completed"
     },
     {
       "id": "reduce",
       "title": "Ways to reduce the amount of waste we generate.",
-      "text": "* Don’t take a plastic bag when you buy something from a shop  \n* Use reusable containers, like plastic bottles rather than buying new ones  \n* Try to fix or repair things when they break",
-      "suggestion": "* Don’t take a plastic bag when you buy something from a shop  \n* Use reusable containers, like plastic bottles rather than buying new ones  \n* Try to fix or repair things when they break!",
-      "reference": "Centre for Affordable Water and Sanitation Technology: Community WASH Promotion, 2017",
-      "reference_link_title": "Community WASH Promotion",
+      "original (revised)": "* Don’t take a plastic bag when you buy something from a shop  \n* Use reusable containers, like plastic bottles rather than buying new ones  \n* Try to fix or repair things when they break",
+      "text": "* Don’t take a plastic bag when you buy something from a shop  \n* Use reusable containers, like plastic bottles rather than buying new ones  \n* Try to fix or repair things when they break!",
+      "reference_link_title": "Centre for Affordable Water and Sanitation Technology: Community WASH Promotion; 2017.",
       "reference_link": "cdn.sanity.io/files/r8bm187e/production/ec2f1615fae8971ff69114f6274d47536213e608.pdf",
       "completed_field": "waste_reduce_completed"
     }

@@ -102,10 +102,10 @@
     {
       "operation": "append_columns",
       "args_list": [
-        "completed_field: bathing_shelters_{@row.id}_completed"
+        "completed_field: bathing_{@row.id}_completed"
       ],
-      "input_source": "bathing_shelters",
-      "output_target": "bathing_shelters_tasks"
+      "input_source": "bathing",
+      "output_target": "bathing_tasks"
     }
   ],
   "_xlsxPath": "data_lists/homepage/module_tasks.xlsx"
