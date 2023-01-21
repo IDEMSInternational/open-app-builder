@@ -342,7 +342,6 @@ function isObject(item: any) {
 
 /** Search a folder for a file ending _contents and return parsed json  */
 export function readContentsFile(folderPath: string) {
-  console.log("read contents file", folderPath, fs.existsSync(folderPath));
   if (!fs.existsSync(folderPath)) {
     logWarning({ msg1: "Folder path does not exist", msg2: folderPath });
     return [];
