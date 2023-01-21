@@ -160,15 +160,14 @@ export class TemplateActionService extends SyncServiceBase {
     }
   }
   private async processAction(action: FlowTypes.TemplateRowAction) {
-    let { action_id, args } = action;
-    args = args.map((arg) => {
+    action.args = action.args.map((arg) => {
       // HACK - update any self referenced values (see note from template.parser method)
       if (arg === "this.value") {
         arg = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.value;
       }
       return arg;
     });
-    let [key, value] = args;
+    const { action_id, args } = action;
 
     // Call any action registered with global handler
     if (this.templateActionRegistry.has(action_id)) {
@@ -178,6 +177,7 @@ export class TemplateActionService extends SyncServiceBase {
     // Handle specific actions
     // TODO - Refactor action handlers that call global services to use registry instead
     // NOTE - instance-specific handlers will likely need to remain in service (e.g. set_local)
+    let [key, value] = args;
     switch (action_id) {
       case "reset_app":
         return this.settingsService.resetApp();
