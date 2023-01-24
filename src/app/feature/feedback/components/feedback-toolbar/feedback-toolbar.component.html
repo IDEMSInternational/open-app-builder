@@ -1,0 +1,31 @@
+<div class="toolbar-container">
+  <ion-item lines="none" style="flex: 1">
+    <ion-label class="tool-label" position="stacked">Enabled</ion-label>
+    <ion-checkbox
+      [(ngModel)]="feedbackService.options.enabled"
+      (ionChange)="feedbackService.setEnabled(feedbackService.options.enabled)"
+    ></ion-checkbox>
+  </ion-item>
+  <ion-item lines="none" style="flex: 1">
+    <ion-label class="tool-label" position="stacked">Navigation</ion-label>
+    <ion-checkbox
+      [(ngModel)]="feedbackService.options.navigationEnabled"
+      (ionChange)="feedbackService.setNavigationEnabled(feedbackService.options.navigationEnabled)"
+    ></ion-checkbox>
+  </ion-item>
+  <ion-item lines="none" style="flex: 2">
+    <ion-label class="tool-label" position="stacked">Page Width</ion-label>
+    <ion-range
+      class="width-select"
+      [pin]="true"
+      [ticks]="true"
+      [snaps]="true"
+      [min]="320"
+      [max]="1280"
+      [step]="160"
+      [(ngModel)]="feedbackService.options.contentPageWidth"
+      (ionChange)="feedbackService.setContentPageWidth(feedbackService.options.contentPageWidth)"
+    >
+    </ion-range>
+  </ion-item>
+</div>
