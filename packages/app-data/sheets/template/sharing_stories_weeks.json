@@ -30,7 +30,6 @@
     {
       "type": "items",
       "value": "@data.all_weeks",
-      "condition": false,
       "rows": [
         {
           "type": "button",
@@ -44,11 +43,11 @@
               "trigger": "click",
               "action_id": "set_field",
               "args": [
-                "current_week",
+                "selected_week",
                 "@item.id"
               ],
-              "_raw": "click | set_field: current_week: @item.id",
-              "_cleaned": "click | set_field: current_week: @item.id"
+              "_raw": "click | set_field: selected_week: @item.id",
+              "_cleaned": "click | set_field: selected_week: @item.id"
             },
             {
               "trigger": "click",
@@ -60,7 +59,6 @@
               "_cleaned": "click | go_to: sharing_stories_week"
             }
           ],
-          "condition": false,
           "_nested_name": "items.button_@item.id",
           "_dynamicFields": {
             "name": [
@@ -93,7 +91,7 @@
                 },
                 "_raw": [
                   {
-                    "fullExpression": "click | set_field: current_week: @item.id",
+                    "fullExpression": "click | set_field: selected_week: @item.id",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
@@ -101,7 +99,7 @@
                 ],
                 "_cleaned": [
                   {
-                    "fullExpression": "click | set_field: current_week: @item.id",
+                    "fullExpression": "click | set_field: selected_week: @item.id",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"

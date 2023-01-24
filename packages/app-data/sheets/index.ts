@@ -8,7 +8,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "data_list",
       flow_name: "all_weeks",
       data_list_name: "all_weeks",
-      _xlsxPath: "data_lists/sharing_stories_content_blocks.xlsx",
+      _xlsxPath: "data_lists/sharing_stories.xlsx",
     },
     baib_components: {
       flow_type: "data_list",
@@ -19,7 +19,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "data_list",
       flow_name: "content_blocks",
       data_list_name: "content_blocks",
-      _xlsxPath: "data_lists/sharing_stories_content_blocks.xlsx",
+      _xlsxPath: "data_lists/sharing_stories.xlsx",
     },
     crawling: {
       flow_type: "data_list",
@@ -45,6 +45,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "data_list",
       flow_name: "initial_observation",
       _xlsxPath: "data_lists/baib_components.xlsx",
+    },
+    numbers: {
+      flow_type: "data_list",
+      flow_name: "numbers",
+      data_list_name: "numbers",
+      _xlsxPath: "data_lists/sharing_stories.xlsx",
     },
     rooting_and_sucking: {
       flow_type: "data_list",
@@ -80,13 +86,13 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "data_list",
       flow_name: "week_1",
       data_list_name: "week_1",
-      _xlsxPath: "data_lists/sharing_stories_content_blocks.xlsx",
+      _xlsxPath: "data_lists/sharing_stories.xlsx",
     },
     week_2: {
       flow_type: "data_list",
       flow_name: "week_2",
       data_list_name: "week_2",
-      _xlsxPath: "data_lists/sharing_stories_content_blocks.xlsx",
+      _xlsxPath: "data_lists/sharing_stories.xlsx",
     },
   },
   global: {

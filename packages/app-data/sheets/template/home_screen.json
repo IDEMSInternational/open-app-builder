@@ -14,30 +14,6 @@
     },
     {
       "type": "button",
-      "name": "button_2",
-      "value": "@global.baib",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "button_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.baib",
-            "matchedExpression": "@global.baib",
-            "type": "global",
-            "fieldName": "baib"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.baib": [
-          "value"
-        ]
-      }
-    },
-    {
-      "type": "button",
       "name": "button_1",
       "value": "@global.sharing_stories",
       "_translations": {
@@ -67,6 +43,30 @@
       },
       "_dynamicDependencies": {
         "@global.sharing_stories": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_2",
+      "value": "@global.baib",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "button_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.baib",
+            "matchedExpression": "@global.baib",
+            "type": "global",
+            "fieldName": "baib"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.baib": [
           "value"
         ]
       }
