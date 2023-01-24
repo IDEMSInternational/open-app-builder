@@ -13,9 +13,9 @@ const config: IDeploymentConfig = {
   }
 };
 // Override constants
-config.app_config!.APP_HEADER_DEFAULTS!.title = "Perinatal App";
-config.app_config!.APP_SIDEMENU_DEFAULTS!.title = "Perinatal App";
-config.app_config!.NOTIFICATION_DEFAULTS!.title = "New message from Perinatal App";
-config.app_config!.NOTIFICATION_DEFAULTS!.text = "You have a new message from Perinatal App";
+config.app_config!.APP_HEADER_DEFAULTS!.title = "ParentApp";
+config.app_config!.APP_SIDEMENU_DEFAULTS!.title = "ParentApp";
+config.app_config!.NOTIFICATION_DEFAULTS!.title = "New message from ParentApp";
+config.app_config!.NOTIFICATION_DEFAULTS!.text = "You have a new message from ParentApp";
 
 export default config;
