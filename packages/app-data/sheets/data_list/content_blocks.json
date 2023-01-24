@@ -1,0 +1,170 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "content_blocks",
+  "status": "released",
+  "data_list_name": "content_blocks",
+  "rows": [
+    {
+      "id": "welcome_1",
+      "image_1": "picture_1_w1_eng_mon.png",
+      "audio_1": "voicenote_1_w1_nya_mon.mp3",
+      "audio_transcript_1": "Moni! Takulandilani ku Project Sharing Stories! Ndife okondwa kuti mudzakhala nawo pantchito yosangalatsayi ndipo tikukulandirani ku gulu la osamalira.\r\n\r\n\r\nMfundo yoti mwavomera kukhala mbali ya Sharing Stories Project ikutanthauza kuti ana anu, moyo wawo wabwino komanso chitukuko chawo ndi chofunikira kwa inu. Munthawi zamasiku ano sizophweka kudziwa zomwe ndi zinthu 'zoyenera' kuchita tsogolo la ana athu. Cholinga cha ntchitoyi ndikuwongolera ndikukuthandizani munjira imodzi yotsimikizika, Kugawana Nkhani, yomwe timadziwa phindu lina kwa ana."
+    },
+    {
+      "id": "facilitators_intro_1",
+      "text_1": "We want to introduce you to your facilitators who will be supporting you during the project:",
+      "image_2": "picture_2_w1_eng_mon.png",
+      "text_3": "Please listen to the voice note for a welcome message from your facilitators:",
+      "audio_2": "voicenote_2_w1_nya_mon.mp3",
+      "audio_transcript_2": "“Ntchitoyi ikukhudzana ndi momwe mungakuthandizireni posamalira mwana wamng'ono. Palibe kholo kapena womusamalira amene akufuna kuti mwana wawo apulumuke. Tikufuna ana athu kuti akule bwino kuthekera kwathunthu ndikukhala opambana m'moyo.\r\n\r\n\r\nKugawana nawo zithunzi zamankhwala ndi imodzi mwanjira zabwino kwambiri zothandizira mwana wanu kukula ndi kuphunzira. Itha kuthandiza mwana wanu kuphunzira mawu atsopano, kuphunzira za dziko lapansi komanso za anthu ena. Iyi ndi njira yofunikira yokonzekeretsa ana kusukulu ndikuwathandiza kukhala ophunzira opambana.\r\n\r\n\r\n\"Kuthandiza kuphunzira kwa mwana wanu ndikofunikira, koma kofunikira kwambiri, ndi momwe mumadzisamalirira ndikuwonetsetsa kuti muli ndi chithandizo chomwe INU mukufunika. Monga gawo la ntchitoyi, tikuthandizani kupeza njira zothetsera mavuto ena omwe mungakumane nawo. ”\r\n\r\n\r\n\"Takonzeka kugwira nanu ntchito!\""
+    },
+    {
+      "id": "participant_intro_1",
+      "text_1": "First, we would love to know a bit more about you! If you like, send us a message with the following information:",
+      "image_2": "picture 3_w1_eng_mon.png",
+      "text_3": "Thank you for sharing that with us! We are excited to have you part of our caregiver community."
+    },
+    {
+      "id": "week_overview_1",
+      "text_1": "Here’s what will be happening over the next six weeks",
+      "audio_2": "voicenote_3_w1_nya_mon.mp3",
+      "audio_transcript_2": "Pa milungu isanu ndi umodzi (6 weeks) ikubwerayi, muphunzira za Kugawana Nkhani - ntchito yosangalatsa yomwe imathandiza mwana wanu kuphunzira ndikukula. Tidzagwiritsa ntchito gululi la WhatsApp kugawana nanu malingaliro amomwe mungagwiritsire ntchito mabuku azithunzi pafoni yanu kuti mupange zokumana nazo zosangalatsa ndikupanga ubale wapamtima ndi mwana wanu.\n\n\nTidzakutumizirani mabuku azithunzi awiri sabata iliyonse omwe mungagwiritse ntchito ndi mwana wanu, ndipo tikuwonetsani momwe mungawagwiritsire ntchito pothandizira maphunziro a mwana wanu. \"\n\nTipatsananso maupangiri okuthandizani kuthana ndi kupsinjika ndi kukuthandizani pantchito yanu yosamalira. Mawa, tidzakhala tikucheza pagulu la WhatsApp komwe mungadziwe zambiri Zogawana Nkhani ndi momwe zimagwirira ntchito.\r\n\r\n\r\nPokambirana pagulu la WhatsApp mawa, tidzakhala tikugawana nanu mavidiyo, zithunzi ndi mauthenga. Padzakhala mwayi woti mulembe mafunso kapena ndemanga zathu pagawoli. Tikukuuzani nthawi yomwe mungachite.\r\n\r\n\r\nMutha kuchita zambiri kapena zochepa momwe mungafunire pagulu - kufunsa mafunso, kugawana zokumana nazo - kapena kungosankha kukhala wowonera komanso wophunzira. Zili ndi inu."
+    },
+    {
+      "id": "next_day_preview_1",
+      "text_1": "If you are interested to know more about Sharing Stories before tomorrow’s session, you can watch this video.",
+      "video_1": "video_1_nyanja_mon.mp4",
+      "text_3": "We look forward to chatting more with you during tomorrow’s session"
+    },
+    {
+      "id": "group_chat_1",
+      "text_1": "We are getting ready to start the first group chat in the Sharing Stories Project! The group chat will start in 30 minutes.",
+      "expiration_time": "30 mins",
+      "text_2": "Let’s start our group chat!",
+      "text_3": "Welcome to the first group chat in the Sharing Stories Project! We will be holding these group chats every week for the next six weeks.\n\nWe need your help to make this a safe and supportive chat for all group members. Here are the group guidelines for everyone to follow",
+      "image_3": "picture_1_w1_eng_tue.png"
+    },
+    {
+      "id": "quality_time_1",
+      "text_1": "Today we will be discussing how you can support your child’s learning and development by spending “quality time” together",
+      "text_2": "We know that as a caregiver, there are many demands on your time.",
+      "image_2": "picture_2_w1_eng_tue.png",
+      "text_3": "Spending quality time with your child – even if only for 10 minutes a day – can make the world of difference to your relationship and your child’s development.",
+      "text_4": "What does quality time look like, and how can it benefit my child?",
+      "text_5": "Good question! This is quality time",
+      "image_4": "picture_3_w1_eng_tue.png",
+      "text_6": "The benefits of quality time",
+      "image_5": "picture_4_w1_eng_tue.png",
+      "image_6": "picture_5_w1_eng_tue.png"
+    },
+    {
+      "id": "story_intro_1",
+      "text_1": "Can you also do Sharing Stories with children as young as 9 months?",
+      "text_2": "While the idea of looking at pictures or books with very young babies might seem a bit strange at first, we know that they benefit hugely from it and enjoy the experience. In fact, we know that as soon as babies can sit they love to look at pictures and books!",
+      "text_3": "That’s so cool! I think we often underestimate what babies know and what they can do.\n\nWhat if we don’t have picture books at home?",
+      "text_4": "The good news is that you don’t need “actual” picture books for this activity – you can use a phone to look at pictures or digital books with your child.\n\nAs part of the Sharing Stories Project we will be sending you two digital picture books every week.",
+      "image_4": "picture 6_w1_eng_tue.png",
+      "text_6": "Watch this video to see how you can use your phone to share a digital book with your child",
+      "video_2": "video_1_w1_nya_tue.mp4"
+    },
+    {
+      "id": "picture_books_1",
+      "text_1": "So, if you want to look at picture books with your child – whether a real book or a digital book –  how do you get started?",
+      "text_2": "That is a really good question! The first thing to do is",
+      "image_2": "picture_7_w1_eng_tue.png",
+      "image_3": "picture_8_w1_eng_tue.png",
+      "text_4": "What is a good way to sit together when Sharing Stories?",
+      "text_5": "First, find a comfortable way to sit together with your child. You can sit side-by-side, or with your child on your lap. There are many ways to sit, and you can do what suits you best.",
+      "image_4": "picture_9_w1_eng_tue.png",
+      "audio_3": "voicenote_1_w1_eng_tue.m4a",
+      "audio_transcript_3": "Make sure that you sit in a way that your child is clearly able to see the pictures or digital book on the phone. It also helps to sit in a way that you are able to see your child’s face. This will help you notice what your child is looking at and what they find interesting.",
+      "text_6": "Here’s an example",
+      "video_2": "video_2_w1_nya_tue.mp4",
+      "text_7": "Did you see how the caregiver looks up from the picture every now and again to look at her child’s face? This helps her see what her child is looking at or interested in."
+    },
+    {
+      "id": "picture_books_next_1",
+      "text_1": "Okay, so now we are sitting close together – what do I do next?",
+      "image_2": "picture_10_w1_eng_tue.png",
+      "text_3": "You can use a lively, playful voice as a way to make it fun",
+      "text_4": "Watch this video for an example of a lively voice. \n\nEven if you might not understand the language, you will be able to hear from the sound of her voice how to make it lively and playful.",
+      "video_2": "video_3_w1_nya_tue.mp4"
+    },
+    {
+      "id": "picture_books_activity_1",
+      "text_1": "Do you think your child will enjoy this activity?",
+      "text_2": "Learning something new can be a bit scary and even intimidating while at the same time exciting. How are you feeling about trying this out?",
+      "image_2": "[add emojis]",
+      "audio_2": "voicenote_2_w1_eng_tue.m4a",
+      "audio_transcript_2": "“If you are feeling nervous or stressed about trying these new things – it is okay! This is a learning experience for you and your child. The more you practice, the easier it will become. Your child will enjoy being close to you, even if you don’t do things exactly right.”",
+      "text_4": "Do you have any questions about how to sit, or how to use a lively voice?"
+    },
+    {
+      "id": "self_care_1",
+      "text_1": "While making time for your child and supporting your child’s learning is important, so is making sure you have time for yourself and that you take care of yourself too.",
+      "image_2": "picture_11_w1_eng_tue.png",
+      "text_3": "One way to think of your wellbeing is as a cup full of water",
+      "image_3": "picture_12_w1_eng_tue.png",
+      "text_4": "So fill your own cup first. Take care of yourself and make sure you have the support YOU need. That will make it possible for you to support your child in a meaningful way.\n\nWhat are some examples of ways that we can fill our own cups and care for ourselves?",
+      "text_5": "Great question! This image above can guide you:",
+      "image_4": "picture_13_w1_eng_tue.png"
+    },
+    {
+      "id": "participant_feedback_activity_1",
+      "text_1": "We would like to hear from you! What are some of the activities that you like to do to help you relax or to replenish your own cup?",
+      "text_2": "Great examples! Thanks to everyone who shared.\n\nBefore we end our group chat, we would like you to think of one thing that you can do this week to “fill your own cup”.\n\nMake some time this week to do something fun or relaxing for yourself. You deserve it!",
+      "text_3": "We hope you learned something new. Does anyone have any questions about what we discussed today?"
+    },
+    {
+      "id": "baby_babble",
+      "text_1": "Before we say goodbye, here is your first digital book, called Baby Babble! Babble along with baby as she eats, plays, baths and goes to bed – activities that your child will surely recognise!",
+      "story_book": "baby_babble_english.pdf",
+      "text_2": "Why don’t you try some time this week to sit together with your child and look at the pictures together on your phone? Remember to use a lively voice to make it fun for your child!",
+      "text_3": "Here is a tip to help you view the digital book on your phone:",
+      "image_3": "picture_14_w1_eng_tue.png",
+      "text_4": "If you are struggling to view your digital book, please send us a message so we can assist you.",
+      "text_5": "We wish you a pleasant week!\n\nTake Care\n\nInonge & Zondiwe & the Sharing Stories team"
+    },
+    {
+      "id": "welcome_2",
+      "image_1": "picture_1_w2_eng_mon.png",
+      "text_1": "Welcome to a new week of Sharing Stories! We hope you had a special weekend with your families!"
+    },
+    {
+      "id": "w_1_recap",
+      "text_1": "Last week, we told you about Sharing Stories – an activity that you can do with your child to help them learn and that helps you and your child develop a closer relationship.",
+      "video_1": "video_1_sharing_stories_ani_eng.mp4"
+    },
+    {
+      "id": "recap_how",
+      "text_1": "We talked about how to sit comfortably and use a lively, playful voice when Sharing Stories with your child.",
+      "image_2": "picture_2_w2_eng_mon.png"
+    },
+    {
+      "id": "recap_time",
+      "text_1": "We also spoke about finding a good time for Sharing Stories that works for you and your child, so that it can be a fun experience.",
+      "image_2": "picture_3_w2_eng_mon.png"
+    },
+    {
+      "id": "recap_self_care",
+      "text_1": "We then talked about the importance of taking care of yourself, and making sure you fill your own cup first. And how this makes it possible for you to support your child in a meaningful way.",
+      "image_2": "picture_4_w2_eng_mon.png"
+    },
+    {
+      "id": "week_overview_2a",
+      "text_1": "This week we will be showing you how to follow your child’s lead when Sharing Stories.",
+      "gif_1": "gif_1_follow_child's_lead.mp4"
+    },
+    {
+      "id": "week_overview_2b",
+      "text_1": "And how to use sharing stories to create positive experiences for your child to help them learn.",
+      "gif_1": "gif_2_positive_experiences.mp4"
+    },
+    {
+      "id": "week_overview_2c",
+      "text_1": "We will also help you find ways to praise yourself for the things you do well as a caregiver",
+      "text_2": "We look forward to chatting more with you during tomorrow’s session!"
+    }
+  ],
+  "_xlsxPath": "data_lists/sharing_stories_content_blocks.xlsx"
+}

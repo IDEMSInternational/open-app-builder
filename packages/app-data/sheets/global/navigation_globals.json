@@ -1,0 +1,80 @@
+{
+  "flow_type": "global",
+  "flow_name": "navigation_globals",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_global_constant",
+      "name": "baib",
+      "value": "BAIB",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "sharing_stories",
+      "value": "Sharing Stories",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "monday",
+      "value": "Monday",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "tuesday",
+      "value": "Tuesday",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "wednesday",
+      "value": "Wednesday",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "thursday",
+      "value": "Thursday",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "friday",
+      "value": "Friday",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "saturday",
+      "value": "Saturday",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "sunday",
+      "value": "Sunday",
+      "_translations": {
+        "value": {}
+      }
+    }
+  ],
+  "_xlsxPath": "templates/navigation.xlsx"
+}

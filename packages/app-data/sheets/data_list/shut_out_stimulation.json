@@ -1,0 +1,7 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "shut_out_stimulation",
+  "status": "released",
+  "rows": [],
+  "_xlsxPath": "data_lists/baib_components.xlsx"
+}

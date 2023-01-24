@@ -67,5 +67,5 @@
       "_nested_name": "button_reset"
     }
   ],
-  "_xlsxPath": "navigation.xlsx"
+  "_xlsxPath": "templates/navigation.xlsx"
 }

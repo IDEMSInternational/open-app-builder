@@ -1,0 +1,308 @@
+{
+  "flow_type": "template",
+  "flow_name": "sharing_stories_day",
+  "status": "released",
+  "rows": [
+    {
+      "name": "week_id",
+      "value": "@fields.current_week",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "week_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.current_week",
+            "matchedExpression": "@fields.current_week",
+            "type": "fields",
+            "fieldName": "current_week"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.current_week": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "week_title",
+      "value": "@data.all_weeks.@local.week_id.title",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "week_title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.all_weeks.@local.week_id.title",
+            "matchedExpression": "@data.all_weeks",
+            "type": "data",
+            "fieldName": "all_weeks"
+          },
+          {
+            "fullExpression": "@data.all_weeks.@local.week_id.title",
+            "matchedExpression": "@local.week_id.title",
+            "type": "local",
+            "fieldName": "week_id"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.all_weeks": [
+          "value"
+        ],
+        "@local.week_id.title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "week_data_list_name",
+      "value": [
+        "@data.all_weeks.@local.week_id.data_list_name"
+      ],
+      "type": "set_variable",
+      "_nested_name": "week_data_list_name",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "@data.all_weeks.@local.week_id.data_list_name",
+              "matchedExpression": "@data.all_weeks",
+              "type": "data",
+              "fieldName": "all_weeks"
+            },
+            {
+              "fullExpression": "@data.all_weeks.@local.week_id.data_list_name",
+              "matchedExpression": "@local.week_id.data_list_name",
+              "type": "local",
+              "fieldName": "week_id"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@data.all_weeks": [
+          "value.0"
+        ],
+        "@local.week_id.data_list_name": [
+          "value.0"
+        ]
+      }
+    },
+    {
+      "name": "day_id",
+      "value": "@fields.current_day",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "day_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.current_day",
+            "matchedExpression": "@fields.current_day",
+            "type": "fields",
+            "fieldName": "current_day"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.current_day": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "day_title",
+      "value": "@global.@local.current_day",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "day_title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.@local.current_day",
+            "matchedExpression": "@local.current_day",
+            "type": "local",
+            "fieldName": "current_day"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.current_day": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@global.sharing_stories - @local.week_title - @local.day_title",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.sharing_stories - @local.week_title - @local.day_title",
+            "matchedExpression": "@global.sharing_stories",
+            "type": "global",
+            "fieldName": "sharing_stories"
+          },
+          {
+            "fullExpression": "@global.sharing_stories - @local.week_title - @local.day_title",
+            "matchedExpression": "@local.week_title",
+            "type": "local",
+            "fieldName": "week_title"
+          },
+          {
+            "fullExpression": "@global.sharing_stories - @local.week_title - @local.day_title",
+            "matchedExpression": "@local.day_title",
+            "type": "local",
+            "fieldName": "day_title"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.sharing_stories": [
+          "value"
+        ],
+        "@local.week_title": [
+          "value"
+        ],
+        "@local.day_title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "value": "@data.@local.week_data_list_name",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_@item.id",
+          "value": "@global.@item.id",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "current_day",
+                "@item.id"
+              ],
+              "_raw": "click | set_field: current_day: @item.id",
+              "_cleaned": "click | set_field: current_day: @item.id"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "sharing_stories_day"
+              ],
+              "_raw": "click | go_to: sharing_stories_day",
+              "_cleaned": "click | go_to: sharing_stories_day"
+            }
+          ],
+          "_nested_name": "items.button_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@global.@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "1": [
+                    {
+                      "fullExpression": "@item.id",
+                      "matchedExpression": "@item.id",
+                      "type": "item",
+                      "fieldName": "id"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | set_field: current_day: @item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | set_field: current_day: @item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              }
+            },
+            "_nested_name": [
+              {
+                "fullExpression": "items.button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "value",
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned",
+              "_nested_name"
+            ]
+          }
+        }
+      ],
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.week_data_list_name",
+            "matchedExpression": "@local.week_data_list_name",
+            "type": "local",
+            "fieldName": "week_data_list_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.week_data_list_name": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "templates/navigation.xlsx"
+}

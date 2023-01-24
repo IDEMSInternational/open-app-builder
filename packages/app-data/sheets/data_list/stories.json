@@ -1,0 +1,12 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "stories",
+  "status": "released",
+  "rows": [
+    {
+      "id": "first_story_name",
+      "data_list_name": "baby_babble"
+    }
+  ],
+  "_xlsxPath": "data_lists/stories.xlsx"
+}
