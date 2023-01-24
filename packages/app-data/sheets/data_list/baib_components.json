@@ -1,0 +1,80 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "baib_components",
+  "status": "released",
+  "rows": [
+    {
+      "id": "initial_observation",
+      "number": 1,
+      "title": "Initial Observation Period",
+      "step_1": "Put the baby to sleep.\n\nDescribe the baby’s behavior, focusing on:\n* Whether or not his eyes are open or shut.\n* Whether he is in REM or NREM sleep.\n* His breathing pattern.\n* Any movements local or global, organised or spontaneous.\n* Whether he is crying or not.",
+      "subtitle_1": "What does this mean for infant care?",
+      "importance": "* Every baby will have his own sleep pattern, the differences in sleep patterns from one  baby to the next can vary widely. \n* It may be reassuring for some mothers to know that  some babies need more sleep than others, and that whereas some babies will be able  to maintain a sleep state overnight after a few months, others will take much longer. \n* The  important issue is to enable the mother to observe her own baby’s cues, showing when  he is ready to sleep (see sleep section)."
+    },
+    {
+      "id": "shut_out_stimulation",
+      "number": 2,
+      "title": "Ability to shut out stimulation when asleep",
+      "introduction": "* The need for sleep in babies is greater than in adults. The baby’s ability to shut out negative stimuli is therefore of vital importance to him. You and the mother will be able to observe the baby’s responses to  stimulation and whether or not he is able to shut out the negative stimuli. \r\n* This is not a vision or hearing test, but,  rather, an assessment of how the baby is able to protect himself from intrusive stimulation  and how he responds to stress.",
+      "step_1": "Shine a light across the baby’s eyes at a distance of approximately 22 cm. \n* Responses will either be eye tightening or furrowing of the brow, facial expressions, small hand/finger or foot movements, changes in  breathing pattern, or much more global movement such as a “startle”\n* Note if the movements are instant or delayed, increasing in amount or decreasing.\n* After the first presentation wait until all movement has stopped before  presenting the light again. This item can be presented up to 10 time\n* Once a “no  response” has been noted following previous responses, the light need only be presented  twice more to confirm that the baby has successfully shut out the intrusive light stimulus.",
+      "step_2": "Shutting out Sound \n\n    * Shake the rattle at about 25-30 cm distance from the baba’s ear. The sound  of the rattling should be sharp and abrasive: a single brisk flicking action should be used.  \n    * Note the movement if localised or global,  instant or delayed, decreasing or increasing. \n    * Present this item up to 10  times; but once a “no response” has been recorded following previous responses, it need  only be presented twice more to confirm that it has been successfully shut out. \n    * If, during either of these two items, the baby moves into state 4 or above, this part of the  assessment will have to be discontinued and you can move onto the next item.",
+      "subtitle_1": "Why is shutting out sound and shining a light important?",
+      "importance": "* If the baby is able to efficiently shut out negative stimuli, this will show robustness. The baby will be able to sleep amidst the normal hustle and bustle of home life (e.g.  vacuuming, TV., etc.). \n* However, if the baby finds it is more difficult to shut out negative stimuli, this  will alert the mother to her baby’s sensitivities. She will then be able to provide him with a more  protected environment (e.g. a quieter or semi-dark environment). \n* Babies who find it difficult to shut  out stimuli on this part of the assessment may also be generally sensitive. \n* The baby’s capacity to shut out stimulation is a demonstration to the mother that he is actively doing  something for himself (i.e. is an agent), in that he is able to regulate his own state. This may help to  reduce the mother’s anxiety and allow her to relax.",
+      "subtitle_2": "4 strategies a baby use to deal with unpleasant or inappropriate stimuli:",
+      "strategies": "1. Actively withdrawing from it for example by creating physical distance by turning the head, arching,  shrinking. \n2. Rejecting it by pushing it away with hands or feet while maintaining its position. \n3. Decreasing its power to disturb by maintaining its position but decreasing sensitivity to the stimulus - looking dull, yawning, or withdrawing into a sleep state. \n4. Signaling behaviour - fussing or crying which brings adults to him/her to help him/her to deal with the  unpleasant stimulus."
+    },
+    {
+      "id": "undressing_and_placing_supine",
+      "number": 3,
+      "title": "Uncovering, undressing and placing in supine",
+      "step_1": "Take the cover off the baby and then undress him carefully placing him in the  supine position – on his back - with his head in mid-line.",
+      "step_2": "Describe your observations, such as changes in state, alterations in colour, the baby’s efforts to  console himself (e.g. hand to mouth, focusing on an object).",
+      "subtitle_1": "What does this mean for infant care?",
+      "importance": "* Undressing a baby is a very invasive activity, involving not only handling but also a  possible drop in body temperature. \r\n* This can lead some babies to feel very vulnerable. Others cope with this potentially stressful situation more easily. \r\n* As well as assessing the baby’s general vulnerability and sensitivity, this item also presents an opportunity for you to assess the baby’s general tone by gauging the ease or resistance of the baby to being undressed and handled, and to observe whether  the baby is hypertonic (flexed), hypotonic (floppy), or relaxed at rest. \r\n* As the baby gets older, he will be able to tolerate the more invasive activities and  be left without his clothes on for longer. His tone and motor organization will also  improve."
+    },
+    {
+      "id": "rooting_and_sucking",
+      "number": 4,
+      "title": "Rooting and sucking",
+      "introduction": "Rooting is a primitive reflex that enables the baby to seek out his mother’s breast.  Following this item you will be able to help the mother to assess whether her baby is  crying because he is hungry or for some other reason.",
+      "step_1": "Gently stroke the corners of the baby’s mouth, noting any head turning, mouth  opening or tongue protrusions.",
+      "step_2": "Using your index finger (pad uppermost), place your finger into the baby’s mouth, noting the strength and rhythm of any  sucking, and the burst-pause pattern.",
+      "step_3": "Both the rooting and sucking responses will be  influenced by the mother’s obstetric medication level, the state the baby is in, and  whether or not he is hungry.",
+      "subtitle_1": "What does this mean for infant care?",
+      "importance": "* Helps prevent the  mother from feeling like a failure or frustrated if she offers her crying baby a feed and  he does not take it (with account taken of other possible factors, such as the baby’s  state, the mother’s obstetric medication, and whether or not the baby is unwell). \n* Sucking and rooting reflexes  she will be able to identify her own baby’s patterns and recognise when he is either  hungry or full."
+    },
+    {
+      "id": "ventral_suspension",
+      "number": 5,
+      "title": "Ventral suspension",
+      "subtitle_1": "What does this mean for infant care?",
+      "importance": "* In the new-born baby his head, legs and hips will “hang” either side of your hand,  giving a draped effect, although some babies will show signs of head control and  hip extension. \n* This is an opportunity for you to observe and discuss the quality of the  baby’s gross motor control and place it in the context of his developmental  progress. \n* By 6 weeks, normal developmental progress will produce an increase in  motor maturity and muscle tone resulting in the baby being able to hold his head in  line with, or higher than, his body, and with hips semi-extended. \n* You can draw the  mother’s attention to her baby’s ability or inability to control his head, and then show  her how to make appropriate interventions (especially by giving head support to  facilitate good eye contact and promote social interaction)."
+    },
+    {
+      "id": "crawling",
+      "number": 6,
+      "title": "Crawling"
+    },
+    {
+      "id": "defensive_movements",
+      "number": 7,
+      "title": "Defensive movements (cloth over face)"
+    },
+    {
+      "id": "cuddliness",
+      "number": 8,
+      "title": "Cuddliness"
+    },
+    {
+      "id": "imitation_and_responsiveness",
+      "number": 9,
+      "title": "Imitation and responsiveness"
+    },
+    {
+      "id": "social_interaction_package",
+      "number": 10,
+      "title": "Social interaction package"
+    }
+  ],
+  "_xlsxPath": "data_lists/baib_components.xlsx"
+}

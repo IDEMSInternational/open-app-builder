@@ -1,0 +1,32 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "week_2",
+  "status": "released",
+  "data_list_name": "week_2",
+  "rows": [
+    {
+      "id": "monday",
+      "content_block_1": "welcome_2",
+      "content_block_2": "w_1_recap",
+      "content_block_3": "recap_how",
+      "content_block_4": "recap_time",
+      "content_block_5": "recap_self_care",
+      "content_block_6": "week_overview_2a",
+      "content_block_7": "week_overview_2b",
+      "content_block_8": "week_overview_2c"
+    },
+    {
+      "id": "tuesday"
+    },
+    {
+      "id": "wednesday"
+    },
+    {
+      "id": "thursday"
+    },
+    {
+      "id": "friday"
+    }
+  ],
+  "_xlsxPath": "data_lists/sharing_stories.xlsx"
+}

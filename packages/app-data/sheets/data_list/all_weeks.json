@@ -1,0 +1,39 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "all_weeks",
+  "status": "released",
+  "data_list_name": "all_weeks",
+  "rows": [
+    {
+      "id": "week_1",
+      "data_list_name": "week_1",
+      "title": "Week 1"
+    },
+    {
+      "id": "week_2",
+      "data_list_name": "week_2",
+      "title": "Week 2"
+    },
+    {
+      "id": "week_3",
+      "data_list_name": "week_3",
+      "title": "Week 3"
+    },
+    {
+      "id": "week_4",
+      "data_list_name": "week_4",
+      "title": "Week 4"
+    },
+    {
+      "id": "week_5",
+      "data_list_name": "week_5",
+      "title": "Week 5"
+    },
+    {
+      "id": "week_6",
+      "data_list_name": "week_6",
+      "title": "Week 6"
+    }
+  ],
+  "_xlsxPath": "data_lists/sharing_stories.xlsx"
+}

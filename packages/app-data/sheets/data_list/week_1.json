@@ -1,0 +1,38 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "week_1",
+  "status": "released",
+  "data_list_name": "week_1",
+  "rows": [
+    {
+      "id": "monday",
+      "content_block_1": "welcome_1",
+      "content_block_2": "facilitators_intro_1",
+      "content_block_3": "participant_intro_1",
+      "content_block_4": "week_overview_1",
+      "content_block_5": "next_day_preview_1"
+    },
+    {
+      "id": "tuesday",
+      "content_block_1": "group_chat_1",
+      "content_block_2": "quality_time_1",
+      "content_block_3": "story_intro_1",
+      "content_block_4": "picture_books_1",
+      "content_block_5": "picture_books_next_1",
+      "content_block_6": "picture_books_activity_1",
+      "content_block_7": "self_care_1",
+      "content_block_8": "participant_feedback_activity_1",
+      "content_block_9": "baby_babble"
+    },
+    {
+      "id": "wednesday"
+    },
+    {
+      "id": "thursday"
+    },
+    {
+      "id": "friday"
+    }
+  ],
+  "_xlsxPath": "data_lists/sharing_stories.xlsx"
+}
