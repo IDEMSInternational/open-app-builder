@@ -118,12 +118,69 @@
     {
       "id": "baby_babble",
       "text_1": "Before we say goodbye, here is your first digital book, called Baby Babble! Babble along with baby as she eats, plays, baths and goes to bed – activities that your child will surely recognise!",
-      "story_book": "baby_babble_english.pdf",
+      "story_book_1": "baby_babble_english.pdf",
       "text_2": "Why don’t you try some time this week to sit together with your child and look at the pictures together on your phone? Remember to use a lively voice to make it fun for your child!",
       "text_3": "Here is a tip to help you view the digital book on your phone:",
       "image_3": "picture_14_w1_eng_tue.png",
       "text_4": "If you are struggling to view your digital book, please send us a message so we can assist you.",
       "text_5": "We wish you a pleasant week!\n\nTake Care\n\nInonge & Zondiwe & the Sharing Stories team"
+    },
+    {
+      "id": "checkin_1",
+      "image_1": "picture_1_w1_eng_wed.png",
+      "text_1": "Have you had a chance to look at [Baby Babble] with your child yet? The most important thing to remember, is to have fun with your child! \n\nYou can use a lively, playful voice as a way to make it fun. Listen to this audio of a lively voice.",
+      "audio_2": "voicenote_1_w1_eng_wed.m4a",
+      "text_4": "One thing you might be wondering about, is when in the day is a good time for Sharing Stories with your child.",
+      "audio_3": "voicenote_2_w1_eng_wed.ogg",
+      "audio_transcript_3": "While every child is different, here are some key things to keep in mind before starting the activity with your child: Sharing Stories work well when:\n    - It is quiet\n    - You aren’t too busy\n    - Your child isn’t hungry or tired\nWhat is important is to find a time that works for you and your child. This might be first thing in the morning, or towards the end of the day when you want your child to come in from playing outside, or just before bedtime.",
+      "text_6": "But most importantly, remember that children learn best when they have fun, so do not force your child:",
+      "image_5": "picture_2_w1_eng_wed.png"
+    },
+    {
+      "id": "baby_babble_feedback_1",
+      "text_1": "We would love to hear from you if you have had a chance to try out Sharing Stories with your child. How did it go?",
+      "text_2": "How did your child respond to the book?",
+      "text_3": "Did your child enjoy it?",
+      "text_4": "How did you experience it?",
+      "text_5": "Any questions?"
+    },
+    {
+      "id": "wed_conclusion_1",
+      "text_1": "Congratulations to everyone who tried out Sharing Stories so far! On Friday you will receive another digital book for you and your child to enjoy.",
+      "text_2": "We wish you and your family a pleasant day.\n\nTake care!"
+    },
+    {
+      "id": "self_care_reminder_1",
+      "text_1": "Good morning! A friendly reminder to make some time for yourself this week!",
+      "image_2": "picture_1_w1_eng_thur.png",
+      "text_3": "We encourage you to make some time for yourself – even if only for 10 minutes – to relax and do something you enjoy.",
+      "image_3": "picture_2_w1_eng_thur.png"
+    },
+    {
+      "id": "thur_conclusion_1",
+      "text_1": "If you want to, share with us something you are planning to do this week to relax or to replenish your own cup?",
+      "text_2": "Thanks for sharing! We wish you and your family a pleasant day.\n\nTake care!"
+    },
+    {
+      "id": "baby_babble_recap_1",
+      "text_1": "Good morning! We would love to hear from you. Have you had a chance yet to try out Sharing Stories with your child! How did it go?",
+      "text_2": "When you were Sharing Stories, how did you sit with your child? Was it side by side, or did your child sit on your lap?",
+      "text_3": "That’s great! There are many ways to sit. You can do what suits you best.",
+      "text_4": "Remember to sit in a way that your child is clearly able to see the phone. And so that you are able to see your child’s face. This will help you notice what your child is looking at and what they find interesting.",
+      "text_5": "Ngakhale mwana aliyense ndi wosiyana, Nazi zinthu zofunika kuzikumbukira musanauze Mwana Nkhani:",
+      "image_4": "picture_1_w1_eng_fri.png",
+      "text_6": "What time did you try Sharing Stories with your child this week? Did this time work for you?"
+    },
+    {
+      "id": "Shhhh!",
+      "text_1": "Here is your next digital book, called Shhhh!  Baby is trying to sleep, while Mom tries to quiet all the noise – from pots clanging, barking dogs and noisy trucks. Which noise will wake up baby?",
+      "story_book_1": "shhhhh_eng.pdf",
+      "text_2": "Why don’t you try some time this weekend to sit together with your child and look at the pictures together on your phone?",
+      "text_3": "Remember to use a lively voice to make it fun for your child!",
+      "image_3": "picture_2_w1_eng_fri.png",
+      "text_4": "Here is a tip to help you view the digital book on your phone:",
+      "image_4": "picture_3_w1_eng_fri.png",
+      "text_6": "If you are struggling to view your digital book, please send us a message so we can assist you."
     },
     {
       "id": "welcome_2",
@@ -153,12 +210,12 @@
     {
       "id": "week_overview_2a",
       "text_1": "This week we will be showing you how to follow your child’s lead when Sharing Stories.",
-      "gif_1": "gif_1_follow_child's_lead.mp4"
+      "video_1": "gif_1_follow_childs_lead.mp4"
     },
     {
       "id": "week_overview_2b",
       "text_1": "And how to use sharing stories to create positive experiences for your child to help them learn.",
-      "gif_1": "gif_2_positive_experiences.mp4"
+      "video_1": "gif_2_positive_experiences.mp4"
     },
     {
       "id": "week_overview_2c",

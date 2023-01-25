@@ -25,10 +25,15 @@
       "content_block_9": "baby_babble"
     },
     {
-      "id": "wednesday"
+      "id": "wednesday",
+      "content_block_1": "checkin_1",
+      "content_block_2": "baby_babble_feedback_1",
+      "content_block_3": "wed_conclusion_1"
     },
     {
-      "id": "thursday"
+      "id": "thursday",
+      "content_block_1": "self_care_reminder_1",
+      "content_block_2": "thur_conclusion_1"
     },
     {
       "id": "friday"

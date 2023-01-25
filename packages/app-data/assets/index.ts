@@ -8,11 +8,11 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 118.6,
     md5Checksum: "342d9740f92d81aa194d19b9c0c0f724",
   },
-  "gif_ 1_follow_child's_lead.mp4": {
+  "gif_1_follow_childs_lead.mp4": {
     size_kb: 151.5,
     md5Checksum: "c41cac1869716ba4af10d03c927e84df",
   },
-  "gif_ 2_positive_experiences.mp4": {
+  "gif_2_positive_experiences.mp4": {
     size_kb: 696.6,
     md5Checksum: "8dc5f6a7f006573d4151aeed28ec952a",
   },
@@ -44,29 +44,57 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 400,
     md5Checksum: "3831548692262f63018375273653368e",
   },
+  "picture_1_w1_eng_fri.png": {
+    size_kb: 442.5,
+    md5Checksum: "86a45a6eb1c52ae4bb84dfe92d188512",
+  },
   "picture_1_w1_eng_mon.png": {
     size_kb: 3432.1,
     md5Checksum: "8830ff46b07d24409a18c4ae0a737f91",
+  },
+  "picture_1_w1_eng_thur.png": {
+    size_kb: 1114,
+    md5Checksum: "de06dc45a8475d92d44fedaf1e30b30a",
   },
   "picture_1_w1_eng_tue.png": {
     size_kb: 304.9,
     md5Checksum: "11ecf3b9613e60c4e21ec33d6eff7283",
   },
+  "picture_1_w1_eng_wed.png": {
+    size_kb: 1120.7,
+    md5Checksum: "b3466162b21f5946f073b3bef81fe5ac",
+  },
   "picture_1_w2_eng_mon.png": {
     size_kb: 577.8,
     md5Checksum: "e3442ba507226dc61a4ce0a562dfe704",
+  },
+  "picture_2_w1_eng_fri.png": {
+    size_kb: 507.6,
+    md5Checksum: "639fcdd2c2da6e9059171bb40ce1873c",
   },
   "picture_2_w1_eng_mon.png": {
     size_kb: 5322.1,
     md5Checksum: "1722d4ed173c334a25199dfd28f31ccf",
   },
+  "picture_2_w1_eng_thur.png": {
+    size_kb: 561.9,
+    md5Checksum: "a64053aa1c0b3f0f807078ec9bddf6c4",
+  },
   "picture_2_w1_eng_tue.png": {
     size_kb: 568.7,
     md5Checksum: "97f42b58410ff67232de5b7be8d85288",
   },
+  "picture_2_w1_eng_wed.png": {
+    size_kb: 329.5,
+    md5Checksum: "e475c0f0f9a5fad9c4561e93fd95fc13",
+  },
   "picture_2_w2_eng_mon.png": {
     size_kb: 505.4,
     md5Checksum: "b21beabebca27896547ceaa37e577a62",
+  },
+  "picture_3_w1_eng_fri.png": {
+    size_kb: 327.5,
+    md5Checksum: "54aebc348aa270cb3844bb714d40a576",
   },
   "picture_3_w1_eng_tue.png": {
     size_kb: 562.2,
@@ -108,6 +136,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 0.5,
     md5Checksum: "6508bf39f8cb3c3ab0f30b96994a6cbc",
   },
+  "shhhhh_eng.pdf": {
+    size_kb: 1527.5,
+    md5Checksum: "6a462bc2e1c0c42b5c98358e9e8c84e3",
+  },
   "video_1_nyanja_mon.mp4": {
     size_kb: 22354,
     md5Checksum: "3526259017d232f5cb23fd3e1c89cb44",
@@ -132,6 +164,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 145.7,
     md5Checksum: "9348d4c2dd1a4e5188333c62d9acbce5",
   },
+  "voicenote_1_w1_eng_wed.m4a": {
+    size_kb: 296.3,
+    md5Checksum: "7d1fb50a89852e055f3704a775414c5b",
+  },
   "voicenote_1_w1_nya_mon.mp3": {
     size_kb: 946.9,
     md5Checksum: "56a3cf3871e3a0e1a06802c75219cb06",
@@ -139,6 +175,10 @@ export const ASSETS_CONTENTS_LIST = {
   "voicenote_2_w1_eng_tue.m4a": {
     size_kb: 153.3,
     md5Checksum: "c0e1b846e0023c398d0f75bcbebbedb0",
+  },
+  "voicenote_2_w1_eng_wed.ogg": {
+    size_kb: 59.3,
+    md5Checksum: "88bb04138aa5ebaabf1180204e29ecb7",
   },
   "voicenote_2_w1_nya_mon.mp3": {
     size_kb: 1520.5,

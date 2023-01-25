@@ -258,40 +258,6 @@
       }
     },
     {
-      "type": "image",
-      "name": "gif_1",
-      "value": "@local.item_composed.gif_1",
-      "_translations": {
-        "value": {}
-      },
-      "condition": "@local.item_composed.gif_1",
-      "_nested_name": "gif_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.item_composed.gif_1",
-            "matchedExpression": "@local.item_composed.gif_1",
-            "type": "local",
-            "fieldName": "item_composed"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@local.item_composed.gif_1",
-            "matchedExpression": "@local.item_composed.gif_1",
-            "type": "local",
-            "fieldName": "item_composed"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.item_composed.gif_1": [
-          "value",
-          "condition"
-        ]
-      }
-    },
-    {
       "type": "text",
       "name": "text_2",
       "value": "@local.item_composed.text_2",

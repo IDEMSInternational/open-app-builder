@@ -6,6 +6,10 @@
     {
       "id": "first_story_name",
       "data_list_name": "baby_babble"
+    },
+    {
+      "id": "second_story_name",
+      "data_list_name": "Shhhh!"
     }
   ],
   "_xlsxPath": "data_lists/stories.xlsx"
