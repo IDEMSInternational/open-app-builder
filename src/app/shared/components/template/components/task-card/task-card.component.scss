@@ -36,8 +36,10 @@
   }
 
   &.button {
-    padding: 0px 8px 0px 12px;
-    height: 56px;
+    display: flex;
+    align-items: center;
+    padding: var(--small-padding);
+    min-height: 56px;
     .content-wrapper {
       height: 100%;
       flex-direction: row-reverse;
