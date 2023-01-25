@@ -46,11 +46,13 @@
         height: 36px;
         width: 44px;
         padding-left: 4px;
+        flex-shrink: 0;
         img {
           height: 100%;
         }
       }
       .text-wrapper {
+        width: auto;
         padding-left: 8px;
         h1 {
           padding: 0px;
