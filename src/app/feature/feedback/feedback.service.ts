@@ -1,8 +1,13 @@
 import { Injectable } from "@angular/core";
-
+import { Router } from "@angular/router";
 import { ToastController, ToastOptions } from "@ionic/angular";
 import { BehaviorSubject } from "rxjs";
 import { Device, DeviceInfo } from "@capacitor/device";
+import { takeWhile } from "rxjs/operators";
+import { fromEvent } from "rxjs";
+
+import { FlowTypes, IAppConfig } from "data-models";
+
 import { ContextMenuService } from "src/app/shared/modules/context-menu/context-menu.service";
 import {
   IContextMenuAction,
@@ -23,8 +28,14 @@ import {
   IFeedbackMetadata,
   ITemplateTargetEntry,
 } from "./feedback.types";
+import { RouterDisableGuard, RouterEnableGuard } from "./routeGuards";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
-import { IAppConfig } from "packages/data-models";
+import { ThemeService } from "../theme/services/theme.service";
+import { SkinService } from "src/app/shared/services/skin/skin.service";
+import {
+  IActionHandlers,
+  TemplateActionRegistry,
+} from "src/app/shared/components/template/services/instance/template-action.registry";
 
 @Injectable({
   providedIn: "root",
@@ -32,7 +43,19 @@ import { IAppConfig } from "packages/data-models";
 export class FeedbackService {
   public isReviewingMode$ = new BehaviorSubject(false);
 
+  public options = {
+    contentPageWidth: 480,
+    navigationEnabled: true,
+    enabled: true,
+  };
+
   private deviceInfo: DeviceInfo;
+  /** Track content el style to allow revert on component destroy */
+  private initialContentStyle?: CSSStyleDeclaration;
+
+  /** Track template action defaults to restore after disable */
+  private actionListDefault: Partial<IActionHandlers>;
+
   feedbackModuleDefaults;
   appStrings;
   feedbackButtons: IFeedbackContextMenuButton[];
@@ -45,7 +68,11 @@ export class FeedbackService {
     private toastController: ToastController,
     private dbService: DbService,
     private dbSyncService: DBSyncService,
-    private appConfigService: AppConfigService
+    private appConfigService: AppConfigService,
+    private router: Router,
+    private themeService: ThemeService,
+    private skinService: SkinService,
+    private templateActionRegistry: TemplateActionRegistry
   ) {
     this.subscribeToAppConfigChanges();
     // retrieve device info for passing in metadata
@@ -54,8 +81,23 @@ export class FeedbackService {
     });
     // Handle enabling/disabling context menu actions depending on whether review mode enabled
     this.isReviewingMode$.subscribe((isReviewMode) => {
+      this._WIP_trackContentClicks(isReviewMode);
       this.setContextMenuActions(isReviewMode);
     });
+  }
+
+  /**
+   * Work in progress - provide template and component information on click
+   * in feedback mode
+   */
+  private _WIP_trackContentClicks(isReviewMode: boolean) {
+    if (isReviewMode) {
+      fromEvent<PointerEvent>(document, "click")
+        .pipe(takeWhile(() => this.isReviewingMode$.value === true))
+        .subscribe((e) => {
+          // const meta = this.generateFeedbackTemplateMeta(e);
+        });
+    }
   }
 
   private subscribeToAppConfigChanges() {
@@ -66,7 +108,8 @@ export class FeedbackService {
     });
   }
 
-  public async setReviewMode(isEnabled = false) {
+  public async setEnabled(isEnabled = false) {
+    this.options.enabled = isEnabled;
     if (this.isReviewingMode$.value !== isEnabled) {
       this.isReviewingMode$.next(isEnabled);
     }
@@ -99,15 +142,82 @@ export class FeedbackService {
     }
   }
 
-  /** Save feedback to local db. Will automatically be synced to server DB */
+  /** Save feedback to local db. Will sync on dmeand */
   public async saveFeedback(entry: IFeedbackEntry) {
     const dbEntry: IFeedbackEntryDB = { ...this.dbService.generateDBMeta(), ...entry };
     await this.dbService.table("feedback").add(dbEntry);
+  }
+  public async syncFeedback() {
     const syncTableResponse = await this.dbSyncService.syncTable("feedback");
     if (syncTableResponse.error) {
       await this.presentToast(this.appStrings.feedback_unsent_text, { duration: 5000 });
     } else {
       await this.presentToast(this.appStrings.feedback_sent_text);
+    }
+  }
+  public async deleteFeedback(id: number) {
+    await this.dbService.table("feedback").delete(id);
+  }
+
+  /** Set the width of the main content */
+  public setContentPageWidth(width?: number) {
+    const contentEl = document.getElementById("main");
+    if (!contentEl) {
+      console.error("Main content element not found, cannot set width");
+      return;
+    }
+    if (!this.initialContentStyle) {
+      this.initialContentStyle = contentEl.style;
+    }
+    if (width) {
+      this.options.contentPageWidth = width;
+      contentEl.style.width = `${width}px`;
+      contentEl.style.maxWidth = `${width}px`;
+      contentEl.style.margin = `auto`;
+    } else {
+      contentEl.style.width = this.initialContentStyle.width;
+      contentEl.style.maxWidth = this.initialContentStyle.maxWidth;
+      contentEl.style.margin = this.initialContentStyle.margin;
+    }
+  }
+
+  /** Progamatically set router guards to enable/disable navigation */
+  public setNavigationEnabled(enabled?: boolean) {
+    this.options.navigationEnabled = enabled;
+    this.router.resetConfig(
+      this.router.config.map((r) => {
+        if (!r.redirectTo) {
+          r.canActivate = enabled ? [RouterEnableGuard] : [RouterDisableGuard];
+        }
+        return r;
+      })
+    );
+    // also update actions to match navigation state (e.g. prevent popup and set actions)
+    this.setActionsEnabled(enabled);
+  }
+
+  /**
+   * When feedback mode is enabled we don't want interactions with elements to trigger any actions
+   * Actions can be registered in 2 different ways (on global registry or within an action service instance),
+   * so we need to both backup/override all global actions as well as create/delete global overrides for local actions
+   */
+  public setActionsEnabled(enabled?: boolean) {
+    const actionsIDs = [...FlowTypes.ACTION_ID_LIST];
+    if (enabled) {
+      if (this.actionListDefault) {
+        // remove global overrides and restore previous global
+        this.templateActionRegistry.unregister(actionsIDs);
+        this.templateActionRegistry.register(this.actionListDefault, true);
+      }
+    } else {
+      // backup global and override all actions with dummy list
+      const existingActions = this.templateActionRegistry.list();
+      this.actionListDefault = existingActions;
+      const dummyActionList = {};
+      for (const actionID of actionsIDs) {
+        dummyActionList[actionID] = () => null;
+      }
+      this.templateActionRegistry.register(dummyActionList, true);
     }
   }
 
@@ -144,9 +254,11 @@ export class FeedbackService {
     if (contextData?.selectedText) {
       await this.templateFieldService.setField(selected_text_field, contextData.selectedText);
     }
-    // launch feedback template
+    // launch feedback template, disable feedback mode to prevent actions on feedback poup
     const additional = { ...contextData, id: feedbackButton.id };
+    await this.setEnabled(false);
     await this.runFeedbackTemplate(feedbackButton.displayedTemplate, additional, ev);
+    await this.setEnabled(true);
 
     // clear previously set field
     await this.templateFieldService.setField(selected_text_field, null);
@@ -190,6 +302,8 @@ export class FeedbackService {
       timestamp: generateTimestamp(),
       app_version: environment.version,
       app_deployment_name: environment.deploymentName,
+      app_theme: this.themeService.getCurrentTheme(),
+      app_skin: this.skinService.getActiveSkinName(),
     };
     return metadata;
   }
@@ -201,6 +315,7 @@ export class FeedbackService {
       ...opts,
     });
     toast.present();
+    await toast.onDidDismiss();
   }
 }
 
