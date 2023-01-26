@@ -36,8 +36,10 @@
   }
 
   &.button {
-    padding: 0px 8px 0px 12px;
-    height: 56px;
+    display: flex;
+    align-items: center;
+    padding: var(--small-padding);
+    min-height: 56px;
     .content-wrapper {
       height: 100%;
       flex-direction: row-reverse;
@@ -46,12 +48,14 @@
         height: 36px;
         width: 44px;
         padding-left: 4px;
+        flex-shrink: 0;
         img {
           height: 100%;
         }
       }
       .text-wrapper {
-        padding-left: 8px;
+        width: auto;
+        padding: 6px 8px;
         h1 {
           padding: 0px;
           font-size: var(--font-size-subtitle-medium);
