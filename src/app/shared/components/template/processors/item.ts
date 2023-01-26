@@ -14,7 +14,7 @@ export class ItemProcessor {
     return itemRows;
   }
 
-  public pipeData(data: any[], parameter_list: any) {
+  private pipeData(data: any[], parameter_list: any) {
     if (parameter_list) {
       const operations = Object.entries<any>(parameter_list).map(([name, arg]) => ({
         name,

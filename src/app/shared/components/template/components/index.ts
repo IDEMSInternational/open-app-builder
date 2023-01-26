@@ -55,6 +55,7 @@ import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
 import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.component";
 import { TmplCarouselComponent } from "./carousel/carousel.component";
 import { TmplDrawerComponent } from "./drawer/drawer.component";
+import { TmplDataItemsComponent } from "./data-items/data-items.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -107,6 +108,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplNavigationBarComponent,
   TmplCarouselComponent,
   TmplDrawerComponent,
+  TmplDataItemsComponent,
 ];
 
 /***************************************************************************************
@@ -164,6 +166,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   lottie_animation: TmplLottieAnimation,
   debug_toggle: PLHDebugToggleComponent as any,
   items: null,
+  data_items: TmplDataItemsComponent,
   select_text: SelectTextComponent,
   html: TemplateHTMLComponent,
   latex: TmplLatexComponent,

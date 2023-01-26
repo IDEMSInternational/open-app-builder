@@ -280,7 +280,14 @@ export class TemplateVariablesService extends AsyncServiceBase {
     // check for new dynamic evaluators and reprocess
     const dynamicNested = extractDynamicEvaluators(evaluated);
     if (dynamicNested) {
-      return this.evaluatePLHString(dynamicNested, context);
+      // avoid infinite loop in cases such as items where the raw value is retained
+      const isOriginal = dynamicNested.every(
+        (nestedEvaluators, i) =>
+          nestedEvaluators.matchedExpression === evaluators[i]?.matchedExpression
+      );
+      if (!isOriginal) {
+        return this.evaluatePLHString(dynamicNested, context);
+      }
     }
     return evaluated;
   }
@@ -365,11 +372,11 @@ export class TemplateVariablesService extends AsyncServiceBase {
         parsedValue = evaluateJSExpression(expression, thisCtxt, globalFunctions, globalConstants);
         break;
       case "item":
-        log("evaluate item", evaluator, context);
-        try {
+        // only attempt to evaluate items if context passed, otherwise leave as original unparsed string
+        if (context?.itemContext) {
           parsedValue = context.itemContext[fieldName];
-        } catch (error) {
-          // field may not exist
+        } else {
+          parsedValue = evaluator.matchedExpression;
         }
         break;
       default:
