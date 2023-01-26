@@ -4,4 +4,5 @@
 !deployments/local/config.ts
 !deployments/plh/*.ts
 !deployments/early_family_math/*.ts
+!deployments/perinatal/*.ts
 !deployments/*/skins/*.ts
