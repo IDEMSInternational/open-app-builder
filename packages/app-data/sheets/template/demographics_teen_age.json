@@ -29,6 +29,15 @@
       "_nested_name": "teen_word"
     },
     {
+      "name": "age_of_teen",
+      "value": "Age of teen",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "age_of_teen"
+    },
+    {
       "name": "number_selector_teens_title",
       "value": "@local.teens_word (@global.teen_age_bracket)",
       "_translations": {
@@ -69,6 +78,7 @@
         "value": {}
       },
       "condition": "@fields.household_teens",
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "household_teens",
       "_dynamicFields": {
@@ -100,6 +110,7 @@
       "name": "household_teens",
       "value": 0,
       "condition": "!@fields.household_teens",
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "household_teens",
       "_dynamicFields": {
@@ -125,6 +136,7 @@
         "value": {}
       },
       "condition": "@fields.household_teens_2",
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "household_teens",
       "_dynamicFields": {
@@ -300,10 +312,11 @@
             {
               "type": "text",
               "name": "text_age_@item.id",
-              "value": "Age of teen @item.id",
+              "value": "@local.age_of_teen @item.id",
               "_translations": {
                 "value": {}
               },
+              "exclude_from_translation": true,
               "_nested_name": "items.dg_sect_@item.id.text_age_@item.id",
               "_dynamicFields": {
                 "name": [
@@ -316,7 +329,13 @@
                 ],
                 "value": [
                   {
-                    "fullExpression": "Age of teen @item.id",
+                    "fullExpression": "@local.age_of_teen @item.id",
+                    "matchedExpression": "@local.age_of_teen",
+                    "type": "local",
+                    "fieldName": "age_of_teen"
+                  },
+                  {
+                    "fullExpression": "@local.age_of_teen @item.id",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
@@ -342,6 +361,9 @@
                   "name",
                   "value",
                   "_nested_name"
+                ],
+                "@local.age_of_teen": [
+                  "value"
                 ],
                 "@item.id.text_age_": [
                   "_nested_name"
