@@ -32,6 +32,7 @@ import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lif
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
 import { IAppConfig } from "./shared/model";
 import { TaskService } from "./shared/services/task/task.service";
+import { AppUpdateService } from "./feature/app-update/app-update.service";
 import { AsyncServiceBase } from "./shared/services/asyncService.base";
 import { SyncServiceBase } from "./shared/services/syncService.base";
 
@@ -50,6 +51,7 @@ export class AppComponent {
   footerDefaults: IAppConfig["APP_FOOTER_DEFAULTS"];
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
+  appUpdateInfo: any;
 
   constructor(
     // 3rd Party Services
@@ -83,7 +85,8 @@ export class AppComponent {
     /** Inject in the main app component to start tracking actions immediately */
     private taskActions: TaskActionService,
     private lifecycleActionsService: LifecycleActionsService,
-    private serverService: ServerService
+    private serverService: ServerService,
+    private appUpdateService: AppUpdateService
   ) {
     this.initializeApp();
   }
@@ -161,6 +164,11 @@ export class AppComponent {
    * (e.g. notifications before campaigns that require notifications)
    **/
   private async initialiseCoreServices() {
+    if (Capacitor.isNativePlatform()) {
+      const appUpdateInfo = this.appUpdateService.getAppUpdateInfo();
+      this.appUpdateInfo = JSON.stringify(appUpdateInfo);
+      console.log("appUpdateInfo:", appUpdateInfo);
+    }
     // Organise all services into groups
     const services: {
       /** should be called early but don't need to be waited for */

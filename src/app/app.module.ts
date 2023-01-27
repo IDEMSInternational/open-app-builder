@@ -28,6 +28,7 @@ import { TemplateComponentsModule } from "./shared/components/template/template.
 import { ContextMenuModule } from "./shared/modules/context-menu/context-menu.module";
 import { TourModule } from "./feature/tour/tour.module";
 import { ErrorHandlerService } from "./shared/services/error-handler/error-handler.service";
+import { AppUpdateModule } from "./feature/app-update/app-update.module";
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -61,6 +62,7 @@ export function lottiePlayerFactory() {
     }),
     NgxMatomoRouterModule,
     ContextMenuModule,
+    AppUpdateModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
