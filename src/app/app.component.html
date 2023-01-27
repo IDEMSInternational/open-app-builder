@@ -31,6 +31,9 @@
     <div style="display: flex; flex-direction: column; height: 100%; width: 100%" id="main">
       <plh-main-header></plh-main-header>
       <div class="route-container">
+        <div>
+          {{ appUpdateInfo }}
+        </div>
         <ion-router-outlet id="main-content"></ion-router-outlet>
       </div>
       <ion-footer *ngIf="footerDefaults.templateName">
