@@ -1,6 +1,6 @@
 import {
   DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS,
-  getDefaultAppConstants,
+  getDefaultAppConfig,
   IDeploymentConfig,
 } from "data-models";
 import path from "path";
@@ -20,7 +20,7 @@ export interface IDeploymentConfigJson extends IDeploymentConfig {
 export function generateDeploymentConfig(name: string): IDeploymentConfig {
   const config = DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS;
   config.name = name;
-  config.app_constants = getDefaultAppConstants();
+  config.app_config = getDefaultAppConfig();
   return config;
 }
 

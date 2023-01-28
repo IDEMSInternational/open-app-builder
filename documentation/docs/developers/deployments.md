@@ -41,13 +41,13 @@ yarn workflow deployment set example
 When a deployment is created a default configuration will be created in the `.idems_app/deployments` folder. E.g. for a deployment named *example*
 
 ```ts title=".idems_app/deployments/example/config.ts"
-import { getDefaultAppConstants, IDeploymentConfig } from "data-models";
+import { getDefaultAppConfig, IDeploymentConfig } from "data-models";
 
-const app_constants = getDefaultAppConstants()
+const app_config = getDefaultAppConfig()
 
-// Override any app constants here
-app_constants.APP_HEADER_DEFAULTS.title = 'Example Deployment'
-app_constants.APP_SIDEMENU_DEFAULTS.title = 'Example Deployment'
+// Override any app config here
+app_config.APP_HEADER_DEFAULTS.title = 'Example Deployment'
+app_config.APP_SIDEMENU_DEFAULTS.title = 'Example Deployment'
 
 const config: IDeploymentConfig = {
   name: "example",
@@ -55,13 +55,13 @@ const config: IDeploymentConfig = {
     sheets_folder_id: "",
     assets_folder_id: "",
   },
-  app_constants
+  app_config
 };
 export default config;
 ```
 This configuration provides a minimal set of options to override the default header and sidemenu text, as well as configuring a remote google_drive data source (more information below)
 
-A full list of app_constants and their default values can be found in [packages/data-models/constants.ts](https://github.com/IDEMSInternational/parenting-app-ui/blob/master/packages/data-models/constants.ts)
+A full list of app_config and their default values can be found in [packages/data-models/appConfig.ts](https://github.com/IDEMSInternational/parenting-app-ui/blob/master/packages/data-models/appConfig.ts)
 
 A full list of general configuration options can be found in [packages/data-models/deployment.model.ts](https://github.com/IDEMSInternational/parenting-app-ui/blob/master/packages/data-models/deployment.model.ts)
 
