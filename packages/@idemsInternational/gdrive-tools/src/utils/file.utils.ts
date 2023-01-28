@@ -89,25 +89,21 @@ export function getFileMD5Checksum(filePath: string) {
 
 /**
  * Recursively remove any empty folders
- * https://gist.github.com/jakub-g/5903dc7e4028133704a4
+ * (duplicate from scripts file-utils)
  */
-export function removeEmptyFoldersRecursively(folderPath: string) {
-  const isDir = fs.statSync(folderPath).isDirectory();
-  if (!isDir) {
-    return;
-  }
-  let files = fs.readdirSync(folderPath);
+export const cleanupEmptyFolders = (folder: string) => {
+  if (!fs.existsSync(folder)) return;
+  if (!fs.statSync(folder).isDirectory()) return;
+  let files = fs.readdirSync(folder);
+
   if (files.length > 0) {
-    files.forEach(function (file) {
-      const fullPath = path.join(folderPath, file);
-      removeEmptyFoldersRecursively(fullPath);
-    });
-    // re-evaluate files; after deleting subfolder
-    // we may have parent folder empty now
-    files = fs.readdirSync(folderPath);
+    files.forEach((file) => cleanupEmptyFolders(path.join(folder, file)));
+    // Re-evaluate files; after deleting subfolders we may have an empty parent
+    // folder now.
+    files = fs.readdirSync(folder);
   }
+
   if (files.length === 0) {
-    fs.rmdirSync(folderPath);
-    return;
+    fs.rmdirSync(folder);
   }
-}
+};

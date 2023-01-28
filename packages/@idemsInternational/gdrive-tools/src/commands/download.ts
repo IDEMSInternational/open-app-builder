@@ -16,7 +16,7 @@ import {
   generateFolderFlatMapStats,
   ILocalFileWithStats,
   logProgramHelp,
-  removeEmptyFoldersRecursively,
+  cleanupEmptyFolders,
 } from "../utils";
 import { authorizeGDrive } from "./authorize";
 
@@ -216,7 +216,7 @@ export class GDriveDownloader {
     queue.start();
     await queue.onIdle();
     // Remove empty folders left after deletions
-    removeEmptyFoldersRecursively(this.options.outputPath);
+    cleanupEmptyFolders(this.options.outputPath);
     // Update logs
     const actionsLogPath = path.resolve(PATHS.LOGS_DIR, `${this.options.logName}.json`);
     console.log(chalk.gray(actionsLogPath));
