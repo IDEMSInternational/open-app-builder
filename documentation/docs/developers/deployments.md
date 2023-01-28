@@ -24,17 +24,17 @@ This will prompt for a deployment type
 ## Change Deployment
 To set the active deployment for the workspace run the following script:
 ```sh
-yarn workflow deployment_set
+yarn workflow deployment set
 ```
 This will present an interactive list of deployments to select from
 
 Alternative a name can be provided to select directly
 ```sh
-yarn workflow deployment_set example
+yarn workflow deployment set example
 ```
 
 !!! Tip
-    If the deployment name contains spaces use quotation marks when specifying, e.g. `yarn workflow deployment_set "another example"`
+    If the deployment name contains spaces use quotation marks when specifying, e.g. `yarn workflow deployment set "another example"`
 
 
 ## Customise Configuration
@@ -67,7 +67,7 @@ A full list of general configuration options can be found in [packages/data-mode
 
 Any configuration changes can be applied by setting the deployment
 ```
-yarn scripts deployment_set [name]
+yarn scripts deployment set [name]
 ```
 
 
@@ -103,7 +103,7 @@ yarn workflow content_release
 This will create a new git branch, apply local changes and push to github. From there a pull request can be created to merge into the main branch.
 
 !!! warning
-    If multiple authors are updating content and creating releases there is a high probability of conflicts arising. It is recommended to merge open pull requests before creating new content releases, and running the `yarn workflow deployment_set` script to ensure local content also includes the latest remote content.
+    If multiple authors are updating content and creating releases there is a high probability of conflicts arising. It is recommended to merge open pull requests before creating new content releases, and running the `yarn workflow deployment set` script to ensure local content also includes the latest remote content.
 
 ## Google Drive Managemnt
 The deployment configuration requires IDs for two created Google Drive folders, one for template sheets and one for global assets. 
