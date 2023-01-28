@@ -1,0 +1,32 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "language_data_list_tz",
+  "status": "released",
+  "data_list_name": "language_tz",
+  "flow_subtype": "app_config_language_list",
+  "rows": [
+    {
+      "id": "tz_en",
+      "country_code": "tz",
+      "country_label": "Tanzania",
+      "country_icon": "i18n/flags/tz.svg",
+      "language_code": "en",
+      "language_label": "English",
+      "name": "tz_en",
+      "text": "English",
+      "image": "i18n/flags/tz.svg"
+    },
+    {
+      "id": "tz_sw",
+      "country_code": "tz",
+      "country_label": "Tanzania",
+      "country_icon": "i18n/flags/tz.svg",
+      "language_code": "sw",
+      "language_label": "Kiswahili",
+      "name": "tz_sw",
+      "text": "Kiswahili",
+      "image": "i18n/flags/tz.svg"
+    }
+  ],
+  "_xlsxPath": "tz/app_config/language_data_list_tz.xlsx"
+}

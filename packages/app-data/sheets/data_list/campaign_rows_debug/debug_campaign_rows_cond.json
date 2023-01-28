@@ -1,0 +1,160 @@
+{
+  "flow_type": "data_list",
+  "flow_subtype": "campaign_rows_debug",
+  "flow_name": "debug_campaign_rows_cond",
+  "status": "released",
+  "rows": [
+    {
+      "id": "debug_cond_bool",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "example_text"
+          ],
+          "_raw": "click | pop_up: example_text",
+          "_cleaned": "click | pop_up: example_text"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "debug_boolean",
+            true
+          ],
+          "_raw": "click | set_field : debug_boolean : true",
+          "_cleaned": "click | set_field : debug_boolean : true"
+        }
+      ],
+      "priority": 4,
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.debug_boolean"
+          },
+          "_raw": "@fields.debug_boolean"
+        }
+      ],
+      "campaign_list": [
+        "debug_condition"
+      ]
+    },
+    {
+      "id": "debug_cond_numb",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "example_text"
+          ],
+          "_raw": "click | pop_up: example_text",
+          "_cleaned": "click | pop_up: example_text"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "debug_number",
+            "100"
+          ],
+          "_raw": "click | set_field : debug_number : 100",
+          "_cleaned": "click | set_field : debug_number : 100"
+        }
+      ],
+      "priority": 3,
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.debug_number == 100"
+          },
+          "_raw": "@fields.debug_number == 100"
+        }
+      ],
+      "campaign_list": [
+        "debug_condition"
+      ]
+    },
+    {
+      "id": "debug_cond_row_bool",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "example_text"
+          ],
+          "_raw": "click | pop_up: example_text",
+          "_cleaned": "click | pop_up: example_text"
+        },
+        {
+          "trigger": "sent",
+          "action_id": "set_field",
+          "args": [
+            "debug_cond_row_bool.sent",
+            true
+          ],
+          "_raw": "sent | set_field : debug_cond_row_bool.sent : true",
+          "_cleaned": "sent | set_field : debug_cond_row_bool.sent : true"
+        }
+      ],
+      "priority": 2,
+      "deactivation_condition_list": [
+        {
+          "condition_type": "field_evaluation",
+          "condition_args": {
+            "field_evaluation": {
+              "field": "debug_cond_row_bool.sent",
+              "value": true
+            }
+          },
+          "_raw": "get_field | debug_cond_row_bool.sent : true"
+        }
+      ],
+      "campaign_list": [
+        "debug_condition"
+      ]
+    },
+    {
+      "id": "debug_cond_string",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "example_text"
+          ],
+          "_raw": "click | pop_up: example_text",
+          "_cleaned": "click | pop_up: example_text"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "debug_string",
+            "my_phrase"
+          ],
+          "_raw": "click | set_field : debug_string : my_phrase",
+          "_cleaned": "click | set_field : debug_string : my_phrase"
+        }
+      ],
+      "priority": 1,
+      "deactivation_condition_list": [
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.debug_string == \"my_phrase\""
+          },
+          "_raw": "@fields.debug_string == \"my_phrase\""
+        }
+      ],
+      "campaign_list": [
+        "debug_condition"
+      ]
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_campaigns.xlsx"
+}

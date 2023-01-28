@@ -1,0 +1,178 @@
+{
+  "flow_type": "template",
+  "flow_subtype": "debug",
+  "flow_name": "w_example_tools",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "box_tools",
+      "value": "box_tools",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        }
+      ],
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "type": "title",
+          "name": "tools_title",
+          "value": "Example Workshop",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "box_tools.tools_title"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_1",
+          "exclude_from_translation": true,
+          "rows": [
+            {
+              "name": "title",
+              "value": "First tool",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "box_tools.tool_1.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Text describing the first tool.",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "box_tools.tool_1.text_1"
+            },
+            {
+              "name": "button",
+              "value": "Button",
+              "_translations": {
+                "value": {}
+              },
+              "hidden": false,
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "box_tools.tool_1.button"
+            }
+          ],
+          "_nested_name": "box_tools.tool_1"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_2",
+          "exclude_from_translation": true,
+          "rows": [
+            {
+              "name": "title",
+              "value": "Second tool",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "box_tools.tool_2.title"
+            },
+            {
+              "name": "subtitle_1",
+              "value": "Subtitle 1",
+              "_translations": {
+                "value": {}
+              },
+              "hidden": false,
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "box_tools.tool_2.subtitle_1"
+            },
+            {
+              "name": "text_1",
+              "value": "Some text.",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "box_tools.tool_2.text_1"
+            },
+            {
+              "name": "subtitle_2",
+              "value": "Subtitle 2",
+              "_translations": {
+                "value": {}
+              },
+              "hidden": false,
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "box_tools.tool_2.subtitle_2"
+            },
+            {
+              "name": "text_2",
+              "value": "More text.",
+              "_translations": {
+                "value": {}
+              },
+              "hidden": false,
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "box_tools.tool_2.text_2"
+            }
+          ],
+          "_nested_name": "box_tools.tool_2"
+        },
+        {
+          "type": "nested_properties",
+          "name": "tool_3",
+          "exclude_from_translation": true,
+          "rows": [
+            {
+              "name": "title",
+              "value": "Third tool",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "box_tools.tool_3.title"
+            },
+            {
+              "name": "text_1",
+              "value": "Text describing the third tool.",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "box_tools.tool_3.text_1"
+            },
+            {
+              "name": "image",
+              "value": "plh_images/modules/mod_instruct/thought_experiment/te_1.svg",
+              "_translations": {
+                "value": {}
+              },
+              "hidden": false,
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "box_tools.tool_3.image"
+            }
+          ],
+          "_nested_name": "box_tools.tool_3"
+        }
+      ],
+      "_nested_name": "box_tools"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_workshop.xlsx"
+}

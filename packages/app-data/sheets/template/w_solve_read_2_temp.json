@@ -1,0 +1,947 @@
+{
+  "flow_type": "template",
+  "module": "solve",
+  "flow_name": "w_solve_read_2_temp",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "read",
+      "value": "read_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Let’s see how problem solving works in practice.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "read.workshop_activity.intro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "pair",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "value": "box_story",
+                  "rows": [
+                    {
+                      "name": "image_src",
+                      "value": "plh_images/workshops/w_solve/read_2/slide_1.svg",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "read.workshop_activity.content_box.box_1.image_src"
+                    },
+                    {
+                      "name": "text",
+                      "value": "@global.w_solve_female_caregiver_2 is coming home from work. \n\n@global.w_solve_female_caregiver_2 (thinking): \"Ay my poor feet! I need to sit down a moment and drink a cup of coffee before I start preparing food for everyone.\"",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true,
+                          "za_af": true,
+                          "za_st": true,
+                          "za_tn": true,
+                          "za_xh": true,
+                          "za_zu": true
+                        }
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "read.workshop_activity.content_box.box_1.text",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@global.w_solve_female_caregiver_2 is coming home from work. \n\n@global.w_solve_female_caregiver_2 (thinking): \"Ay my poor feet! I need to sit down a moment and drink a cup of coffee before I start preparing food for everyone.\"",
+                            "matchedExpression": "@global.w_solve_female_caregiver_2",
+                            "type": "global",
+                            "fieldName": "w_solve_female_caregiver_2"
+                          },
+                          {
+                            "fullExpression": "@global.w_solve_female_caregiver_2 is coming home from work. \n\n@global.w_solve_female_caregiver_2 (thinking): \"Ay my poor feet! I need to sit down a moment and drink a cup of coffee before I start preparing food for everyone.\"",
+                            "matchedExpression": "@global.w_solve_female_caregiver_2",
+                            "type": "global",
+                            "fieldName": "w_solve_female_caregiver_2"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@global.w_solve_female_caregiver_2": [
+                          "value",
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "read.workshop_activity.content_box.box_1"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "box_2",
+                  "value": "pair",
+                  "rows": [
+                    {
+                      "type": "nested_properties",
+                      "name": "box_1",
+                      "value": "box_story",
+                      "rows": [
+                        {
+                          "name": "image_src",
+                          "value": "plh_images/workshops/w_solve/read_2/slide_2.svg",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.image_src"
+                        },
+                        {
+                          "name": "text",
+                          "value": "@global.w_solve_female_caregiver_2: \"@global.w_solve_teen_boy_2! What are you doing? That bread is for dinner! Now there won’t be enough for us all!\"",
+                          "_translations": {
+                            "value": {
+                              "tz_sw": true,
+                              "za_af": true,
+                              "za_st": true,
+                              "za_tn": true,
+                              "za_xh": true,
+                              "za_zu": true
+                            }
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.text",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@global.w_solve_female_caregiver_2: \"@global.w_solve_teen_boy_2! What are you doing? That bread is for dinner! Now there won’t be enough for us all!\"",
+                                "matchedExpression": "@global.w_solve_female_caregiver_2",
+                                "type": "global",
+                                "fieldName": "w_solve_female_caregiver_2"
+                              },
+                              {
+                                "fullExpression": "@global.w_solve_female_caregiver_2: \"@global.w_solve_teen_boy_2! What are you doing? That bread is for dinner! Now there won’t be enough for us all!\"",
+                                "matchedExpression": "@global.w_solve_teen_boy_2",
+                                "type": "global",
+                                "fieldName": "w_solve_teen_boy_2"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@global.w_solve_female_caregiver_2": [
+                              "value"
+                            ],
+                            "@global.w_solve_teen_boy_2": [
+                              "value"
+                            ]
+                          }
+                        }
+                      ],
+                      "_nested_name": "read.workshop_activity.content_box.box_2.box_1"
+                    },
+                    {
+                      "type": "nested_properties",
+                      "name": "box_2",
+                      "value": "pair",
+                      "rows": [
+                        {
+                          "type": "nested_properties",
+                          "name": "box_1",
+                          "value": "box_story",
+                          "rows": [
+                            {
+                              "name": "image_src",
+                              "value": "plh_images/workshops/w_solve/read_2/slide_3.svg",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.image_src"
+                            },
+                            {
+                              "name": "text",
+                              "value": "@global.w_solve_teen_boy_2: “Sorry, @global.w_solve_female_caregiver_2, I was just hungry. I can explain, you see, there is this guy at school...” \n\n@global.w_solve_female_caregiver_2 (thinking): “Take a Pause… just breathe…”",
+                              "_translations": {
+                                "value": {
+                                  "tz_sw": true,
+                                  "za_af": true,
+                                  "za_st": true,
+                                  "za_tn": true,
+                                  "za_xh": true,
+                                  "za_zu": true
+                                }
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.text",
+                              "_dynamicFields": {
+                                "value": [
+                                  {
+                                    "fullExpression": "@global.w_solve_teen_boy_2: “Sorry, @global.w_solve_female_caregiver_2, I was just hungry. I can explain, you see, there is this guy at school...” \n\n@global.w_solve_female_caregiver_2 (thinking): “Take a Pause… just breathe…”",
+                                    "matchedExpression": "@global.w_solve_teen_boy_2",
+                                    "type": "global",
+                                    "fieldName": "w_solve_teen_boy_2"
+                                  },
+                                  {
+                                    "fullExpression": "@global.w_solve_teen_boy_2: “Sorry, @global.w_solve_female_caregiver_2, I was just hungry. I can explain, you see, there is this guy at school...” \n\n@global.w_solve_female_caregiver_2 (thinking): “Take a Pause… just breathe…”",
+                                    "matchedExpression": "@global.w_solve_female_caregiver_2",
+                                    "type": "global",
+                                    "fieldName": "w_solve_female_caregiver_2"
+                                  },
+                                  {
+                                    "fullExpression": "@global.w_solve_teen_boy_2: “Sorry, @global.w_solve_female_caregiver_2, I was just hungry. I can explain, you see, there is this guy at school...” \n\n@global.w_solve_female_caregiver_2 (thinking): “Take a Pause… just breathe…”",
+                                    "matchedExpression": "@global.w_solve_female_caregiver_2",
+                                    "type": "global",
+                                    "fieldName": "w_solve_female_caregiver_2"
+                                  }
+                                ]
+                              },
+                              "_dynamicDependencies": {
+                                "@global.w_solve_teen_boy_2": [
+                                  "value"
+                                ],
+                                "@global.w_solve_female_caregiver_2": [
+                                  "value",
+                                  "value"
+                                ]
+                              }
+                            }
+                          ],
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1"
+                        },
+                        {
+                          "type": "nested_properties",
+                          "name": "box_2",
+                          "value": "pair",
+                          "rows": [
+                            {
+                              "type": "nested_properties",
+                              "name": "box_1",
+                              "value": "box_story",
+                              "rows": [
+                                {
+                                  "name": "image_src",
+                                  "value": "plh_images/workshops/w_solve/read_2/slide_4.svg",
+                                  "_translations": {
+                                    "value": {}
+                                  },
+                                  "type": "set_variable",
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1.image_src"
+                                },
+                                {
+                                  "name": "text",
+                                  "value": "@global.w_solve_female_caregiver_2: “Just give me a moment. I am tired and now worried about having enough food for dinner.” \n\n@global.w_solve_teen_boy_2: “I am sorry, @global.w_solve_female_caregiver_2\"",
+                                  "_translations": {
+                                    "value": {
+                                      "tz_sw": true,
+                                      "za_af": true,
+                                      "za_st": true,
+                                      "za_tn": true,
+                                      "za_xh": true,
+                                      "za_zu": true
+                                    }
+                                  },
+                                  "type": "set_variable",
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1.text",
+                                  "_dynamicFields": {
+                                    "value": [
+                                      {
+                                        "fullExpression": "@global.w_solve_female_caregiver_2: “Just give me a moment. I am tired and now worried about having enough food for dinner.” \n\n@global.w_solve_teen_boy_2: “I am sorry, @global.w_solve_female_caregiver_2\"",
+                                        "matchedExpression": "@global.w_solve_female_caregiver_2",
+                                        "type": "global",
+                                        "fieldName": "w_solve_female_caregiver_2"
+                                      },
+                                      {
+                                        "fullExpression": "@global.w_solve_female_caregiver_2: “Just give me a moment. I am tired and now worried about having enough food for dinner.” \n\n@global.w_solve_teen_boy_2: “I am sorry, @global.w_solve_female_caregiver_2\"",
+                                        "matchedExpression": "@global.w_solve_teen_boy_2",
+                                        "type": "global",
+                                        "fieldName": "w_solve_teen_boy_2"
+                                      },
+                                      {
+                                        "fullExpression": "@global.w_solve_female_caregiver_2: “Just give me a moment. I am tired and now worried about having enough food for dinner.” \n\n@global.w_solve_teen_boy_2: “I am sorry, @global.w_solve_female_caregiver_2\"",
+                                        "matchedExpression": "@global.w_solve_female_caregiver_2",
+                                        "type": "global",
+                                        "fieldName": "w_solve_female_caregiver_2"
+                                      }
+                                    ]
+                                  },
+                                  "_dynamicDependencies": {
+                                    "@global.w_solve_female_caregiver_2": [
+                                      "value",
+                                      "value"
+                                    ],
+                                    "@global.w_solve_teen_boy_2": [
+                                      "value"
+                                    ]
+                                  }
+                                },
+                                {
+                                  "name": "dashed_box",
+                                  "value": "Step 1: KNOW IT",
+                                  "_translations": {
+                                    "value": {
+                                      "tz_sw": true,
+                                      "za_af": true,
+                                      "za_st": true,
+                                      "za_tn": true,
+                                      "za_xh": true,
+                                      "za_zu": true
+                                    }
+                                  },
+                                  "hidden": false,
+                                  "type": "set_variable",
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1.dashed_box"
+                                }
+                              ],
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1"
+                            },
+                            {
+                              "type": "nested_properties",
+                              "name": "box_2",
+                              "value": "pair",
+                              "rows": [
+                                {
+                                  "type": "nested_properties",
+                                  "name": "box_1",
+                                  "value": "box_story",
+                                  "rows": [
+                                    {
+                                      "name": "image_src",
+                                      "value": "plh_images/workshops/w_solve/read_2/slide_5.svg",
+                                      "_translations": {
+                                        "value": {}
+                                      },
+                                      "type": "set_variable",
+                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_1.image_src"
+                                    },
+                                    {
+                                      "name": "text",
+                                      "value": "@global.w_solve_female_caregiver_2: \"Now tell me, why are you so hungry? Did you not eat your lunch at school?” \n\n@global.w_solve_teen_boy_2: \"That is the problem. There’s a guy at school who bullies me. He says if I do not give my lunch to him every day, he and his friends will hurt me. He makes me so mad!\"",
+                                      "_translations": {
+                                        "value": {
+                                          "tz_sw": true,
+                                          "za_af": true,
+                                          "za_st": true,
+                                          "za_tn": true,
+                                          "za_xh": true,
+                                          "za_zu": true
+                                        }
+                                      },
+                                      "type": "set_variable",
+                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_1.text",
+                                      "_dynamicFields": {
+                                        "value": [
+                                          {
+                                            "fullExpression": "@global.w_solve_female_caregiver_2: \"Now tell me, why are you so hungry? Did you not eat your lunch at school?” \n\n@global.w_solve_teen_boy_2: \"That is the problem. There’s a guy at school who bullies me. He says if I do not give my lunch to him every day, he and his friends will hurt me. He makes me so mad!\"",
+                                            "matchedExpression": "@global.w_solve_female_caregiver_2",
+                                            "type": "global",
+                                            "fieldName": "w_solve_female_caregiver_2"
+                                          },
+                                          {
+                                            "fullExpression": "@global.w_solve_female_caregiver_2: \"Now tell me, why are you so hungry? Did you not eat your lunch at school?” \n\n@global.w_solve_teen_boy_2: \"That is the problem. There’s a guy at school who bullies me. He says if I do not give my lunch to him every day, he and his friends will hurt me. He makes me so mad!\"",
+                                            "matchedExpression": "@global.w_solve_teen_boy_2",
+                                            "type": "global",
+                                            "fieldName": "w_solve_teen_boy_2"
+                                          }
+                                        ]
+                                      },
+                                      "_dynamicDependencies": {
+                                        "@global.w_solve_female_caregiver_2": [
+                                          "value"
+                                        ],
+                                        "@global.w_solve_teen_boy_2": [
+                                          "value"
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_1"
+                                },
+                                {
+                                  "type": "nested_properties",
+                                  "name": "box_2",
+                                  "value": "pair",
+                                  "rows": [
+                                    {
+                                      "type": "nested_properties",
+                                      "name": "box_1",
+                                      "value": "box_story",
+                                      "rows": [
+                                        {
+                                          "name": "image_src",
+                                          "value": "plh_images/workshops/w_solve/read_2/slide_6.svg",
+                                          "_translations": {
+                                            "value": {}
+                                          },
+                                          "type": "set_variable",
+                                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_1.image_src"
+                                        },
+                                        {
+                                          "name": "text",
+                                          "value": "@global.w_solve_female_caregiver_2: \"I am sorry to hear that but am glad that you told me, @global.w_solve_teen_boy_2. It doesn’t mean that you can eat everybody’s dinner. After we speak, you need to go to the shop to buy some more bread. But first: What do you think we should do about the bully problem?\"\n\n@global.w_solve_teen_boy_2: \"Well… I want to just hit him or get him back.\"",
+                                          "_translations": {
+                                            "value": {
+                                              "tz_sw": true,
+                                              "za_af": true,
+                                              "za_st": true,
+                                              "za_tn": true,
+                                              "za_xh": true,
+                                              "za_zu": true
+                                            }
+                                          },
+                                          "type": "set_variable",
+                                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_1.text",
+                                          "_dynamicFields": {
+                                            "value": [
+                                              {
+                                                "fullExpression": "@global.w_solve_female_caregiver_2: \"I am sorry to hear that but am glad that you told me, @global.w_solve_teen_boy_2. It doesn’t mean that you can eat everybody’s dinner. After we speak, you need to go to the shop to buy some more bread. But first: What do you think we should do about the bully problem?\"\n\n@global.w_solve_teen_boy_2: \"Well… I want to just hit him or get him back.\"",
+                                                "matchedExpression": "@global.w_solve_female_caregiver_2",
+                                                "type": "global",
+                                                "fieldName": "w_solve_female_caregiver_2"
+                                              },
+                                              {
+                                                "fullExpression": "@global.w_solve_female_caregiver_2: \"I am sorry to hear that but am glad that you told me, @global.w_solve_teen_boy_2. It doesn’t mean that you can eat everybody’s dinner. After we speak, you need to go to the shop to buy some more bread. But first: What do you think we should do about the bully problem?\"\n\n@global.w_solve_teen_boy_2: \"Well… I want to just hit him or get him back.\"",
+                                                "matchedExpression": "@global.w_solve_teen_boy_2",
+                                                "type": "global",
+                                                "fieldName": "w_solve_teen_boy_2"
+                                              },
+                                              {
+                                                "fullExpression": "@global.w_solve_female_caregiver_2: \"I am sorry to hear that but am glad that you told me, @global.w_solve_teen_boy_2. It doesn’t mean that you can eat everybody’s dinner. After we speak, you need to go to the shop to buy some more bread. But first: What do you think we should do about the bully problem?\"\n\n@global.w_solve_teen_boy_2: \"Well… I want to just hit him or get him back.\"",
+                                                "matchedExpression": "@global.w_solve_teen_boy_2",
+                                                "type": "global",
+                                                "fieldName": "w_solve_teen_boy_2"
+                                              }
+                                            ]
+                                          },
+                                          "_dynamicDependencies": {
+                                            "@global.w_solve_female_caregiver_2": [
+                                              "value"
+                                            ],
+                                            "@global.w_solve_teen_boy_2": [
+                                              "value",
+                                              "value"
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "name": "dashed_box",
+                                          "value": "Step 2: SOLVE IT",
+                                          "_translations": {
+                                            "value": {
+                                              "tz_sw": true,
+                                              "za_af": true,
+                                              "za_st": true,
+                                              "za_tn": true,
+                                              "za_xh": true,
+                                              "za_zu": true
+                                            }
+                                          },
+                                          "hidden": false,
+                                          "type": "set_variable",
+                                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_1.dashed_box"
+                                        }
+                                      ],
+                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_1"
+                                    },
+                                    {
+                                      "type": "nested_properties",
+                                      "name": "box_2",
+                                      "value": "pair",
+                                      "rows": [
+                                        {
+                                          "type": "nested_properties",
+                                          "name": "box_1",
+                                          "value": "box_story",
+                                          "rows": [
+                                            {
+                                              "name": "image_src",
+                                              "value": "plh_images/workshops/w_solve/read_2/slide_7.svg",
+                                              "_translations": {
+                                                "value": {}
+                                              },
+                                              "type": "set_variable",
+                                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_1.image_src"
+                                            },
+                                            {
+                                              "name": "text",
+                                              "value": "@global.w_solve_female_caregiver_2: \"Hmmm… what do you think will happen to you if you do that?\"\n\n@global.w_solve_teen_boy_2: \"I don’t know. He is bigger than me so he will probably hurt me more. And I could get into trouble at school and expelled.\"",
+                                              "_translations": {
+                                                "value": {
+                                                  "tz_sw": true,
+                                                  "za_af": true,
+                                                  "za_st": true,
+                                                  "za_tn": true,
+                                                  "za_xh": true,
+                                                  "za_zu": true
+                                                }
+                                              },
+                                              "type": "set_variable",
+                                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_1.text",
+                                              "_dynamicFields": {
+                                                "value": [
+                                                  {
+                                                    "fullExpression": "@global.w_solve_female_caregiver_2: \"Hmmm… what do you think will happen to you if you do that?\"\n\n@global.w_solve_teen_boy_2: \"I don’t know. He is bigger than me so he will probably hurt me more. And I could get into trouble at school and expelled.\"",
+                                                    "matchedExpression": "@global.w_solve_female_caregiver_2",
+                                                    "type": "global",
+                                                    "fieldName": "w_solve_female_caregiver_2"
+                                                  },
+                                                  {
+                                                    "fullExpression": "@global.w_solve_female_caregiver_2: \"Hmmm… what do you think will happen to you if you do that?\"\n\n@global.w_solve_teen_boy_2: \"I don’t know. He is bigger than me so he will probably hurt me more. And I could get into trouble at school and expelled.\"",
+                                                    "matchedExpression": "@global.w_solve_teen_boy_2",
+                                                    "type": "global",
+                                                    "fieldName": "w_solve_teen_boy_2"
+                                                  }
+                                                ]
+                                              },
+                                              "_dynamicDependencies": {
+                                                "@global.w_solve_female_caregiver_2": [
+                                                  "value"
+                                                ],
+                                                "@global.w_solve_teen_boy_2": [
+                                                  "value"
+                                                ]
+                                              }
+                                            }
+                                          ],
+                                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_1"
+                                        },
+                                        {
+                                          "type": "nested_properties",
+                                          "name": "box_2",
+                                          "value": "pair",
+                                          "rows": [
+                                            {
+                                              "type": "nested_properties",
+                                              "name": "box_1",
+                                              "value": "box_story",
+                                              "rows": [
+                                                {
+                                                  "name": "image_src",
+                                                  "value": "plh_images/workshops/w_solve/read_2/slide_8.svg",
+                                                  "_translations": {
+                                                    "value": {}
+                                                  },
+                                                  "type": "set_variable",
+                                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_1.image_src"
+                                                },
+                                                {
+                                                  "name": "text",
+                                                  "value": "@global.w_solve_female_caregiver_2: \"Yes, that could happen. What could we do instead?\"\n\n@global.w_solve_teen_boy_2: \"I guess I could tell the teacher. But then the other kids will call me a tattletale. Maybe you could talk to the teacher?\"",
+                                                  "_translations": {
+                                                    "value": {
+                                                      "tz_sw": true,
+                                                      "za_af": true,
+                                                      "za_st": true,
+                                                      "za_tn": true,
+                                                      "za_xh": true,
+                                                      "za_zu": true
+                                                    }
+                                                  },
+                                                  "type": "set_variable",
+                                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_1.text",
+                                                  "_dynamicFields": {
+                                                    "value": [
+                                                      {
+                                                        "fullExpression": "@global.w_solve_female_caregiver_2: \"Yes, that could happen. What could we do instead?\"\n\n@global.w_solve_teen_boy_2: \"I guess I could tell the teacher. But then the other kids will call me a tattletale. Maybe you could talk to the teacher?\"",
+                                                        "matchedExpression": "@global.w_solve_female_caregiver_2",
+                                                        "type": "global",
+                                                        "fieldName": "w_solve_female_caregiver_2"
+                                                      },
+                                                      {
+                                                        "fullExpression": "@global.w_solve_female_caregiver_2: \"Yes, that could happen. What could we do instead?\"\n\n@global.w_solve_teen_boy_2: \"I guess I could tell the teacher. But then the other kids will call me a tattletale. Maybe you could talk to the teacher?\"",
+                                                        "matchedExpression": "@global.w_solve_teen_boy_2",
+                                                        "type": "global",
+                                                        "fieldName": "w_solve_teen_boy_2"
+                                                      }
+                                                    ]
+                                                  },
+                                                  "_dynamicDependencies": {
+                                                    "@global.w_solve_female_caregiver_2": [
+                                                      "value"
+                                                    ],
+                                                    "@global.w_solve_teen_boy_2": [
+                                                      "value"
+                                                    ]
+                                                  }
+                                                }
+                                              ],
+                                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_1"
+                                            },
+                                            {
+                                              "type": "nested_properties",
+                                              "name": "box_2",
+                                              "value": "pair",
+                                              "rows": [
+                                                {
+                                                  "type": "nested_properties",
+                                                  "name": "box_1",
+                                                  "value": "box_story",
+                                                  "rows": [
+                                                    {
+                                                      "name": "image_src",
+                                                      "value": "plh_images/workshops/w_solve/read_2/slide_9.svg",
+                                                      "_translations": {
+                                                        "value": {}
+                                                      },
+                                                      "type": "set_variable",
+                                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_1.image_src"
+                                                    },
+                                                    {
+                                                      "name": "text",
+                                                      "value": "@global.w_solve_female_caregiver_2: \"That sounds like a better idea. I could also have a word with his parents if you want me to.\"\n\n@global.w_solve_teen_boy_2: \"Sure. If you think that would help too. Thanks, @global.w_solve_female_caregiver_2\"",
+                                                      "_translations": {
+                                                        "value": {
+                                                          "tz_sw": true,
+                                                          "za_af": true,
+                                                          "za_st": true,
+                                                          "za_tn": true,
+                                                          "za_xh": true,
+                                                          "za_zu": true
+                                                        }
+                                                      },
+                                                      "type": "set_variable",
+                                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_1.text",
+                                                      "_dynamicFields": {
+                                                        "value": [
+                                                          {
+                                                            "fullExpression": "@global.w_solve_female_caregiver_2: \"That sounds like a better idea. I could also have a word with his parents if you want me to.\"\n\n@global.w_solve_teen_boy_2: \"Sure. If you think that would help too. Thanks, @global.w_solve_female_caregiver_2\"",
+                                                            "matchedExpression": "@global.w_solve_female_caregiver_2",
+                                                            "type": "global",
+                                                            "fieldName": "w_solve_female_caregiver_2"
+                                                          },
+                                                          {
+                                                            "fullExpression": "@global.w_solve_female_caregiver_2: \"That sounds like a better idea. I could also have a word with his parents if you want me to.\"\n\n@global.w_solve_teen_boy_2: \"Sure. If you think that would help too. Thanks, @global.w_solve_female_caregiver_2\"",
+                                                            "matchedExpression": "@global.w_solve_teen_boy_2",
+                                                            "type": "global",
+                                                            "fieldName": "w_solve_teen_boy_2"
+                                                          },
+                                                          {
+                                                            "fullExpression": "@global.w_solve_female_caregiver_2: \"That sounds like a better idea. I could also have a word with his parents if you want me to.\"\n\n@global.w_solve_teen_boy_2: \"Sure. If you think that would help too. Thanks, @global.w_solve_female_caregiver_2\"",
+                                                            "matchedExpression": "@global.w_solve_female_caregiver_2",
+                                                            "type": "global",
+                                                            "fieldName": "w_solve_female_caregiver_2"
+                                                          }
+                                                        ]
+                                                      },
+                                                      "_dynamicDependencies": {
+                                                        "@global.w_solve_female_caregiver_2": [
+                                                          "value",
+                                                          "value"
+                                                        ],
+                                                        "@global.w_solve_teen_boy_2": [
+                                                          "value"
+                                                        ]
+                                                      }
+                                                    }
+                                                  ],
+                                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_1"
+                                                },
+                                                {
+                                                  "type": "nested_properties",
+                                                  "name": "box_2",
+                                                  "value": "pair",
+                                                  "rows": [
+                                                    {
+                                                      "type": "nested_properties",
+                                                      "name": "box_1",
+                                                      "value": "box_story",
+                                                      "rows": [
+                                                        {
+                                                          "name": "image_src",
+                                                          "value": "plh_images/workshops/w_solve/read_2/slide_10.svg",
+                                                          "_translations": {
+                                                            "value": {}
+                                                          },
+                                                          "type": "set_variable",
+                                                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_1.image_src"
+                                                        },
+                                                        {
+                                                          "name": "text",
+                                                          "value": "@global.w_solve_female_caregiver_2: \"Anything for you, my dear. I will do it first thing after dinner. And you know? If that doesn’t work, we can always try something else together.\"\n\n@global.w_solve_teen_boy_2: \"Thanks, @global.w_solve_female_caregiver_2\"",
+                                                          "_translations": {
+                                                            "value": {
+                                                              "tz_sw": true,
+                                                              "za_af": true,
+                                                              "za_st": true,
+                                                              "za_tn": true,
+                                                              "za_xh": true,
+                                                              "za_zu": true
+                                                            }
+                                                          },
+                                                          "type": "set_variable",
+                                                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_1.text",
+                                                          "_dynamicFields": {
+                                                            "value": [
+                                                              {
+                                                                "fullExpression": "@global.w_solve_female_caregiver_2: \"Anything for you, my dear. I will do it first thing after dinner. And you know? If that doesn’t work, we can always try something else together.\"\n\n@global.w_solve_teen_boy_2: \"Thanks, @global.w_solve_female_caregiver_2\"",
+                                                                "matchedExpression": "@global.w_solve_female_caregiver_2",
+                                                                "type": "global",
+                                                                "fieldName": "w_solve_female_caregiver_2"
+                                                              },
+                                                              {
+                                                                "fullExpression": "@global.w_solve_female_caregiver_2: \"Anything for you, my dear. I will do it first thing after dinner. And you know? If that doesn’t work, we can always try something else together.\"\n\n@global.w_solve_teen_boy_2: \"Thanks, @global.w_solve_female_caregiver_2\"",
+                                                                "matchedExpression": "@global.w_solve_teen_boy_2",
+                                                                "type": "global",
+                                                                "fieldName": "w_solve_teen_boy_2"
+                                                              },
+                                                              {
+                                                                "fullExpression": "@global.w_solve_female_caregiver_2: \"Anything for you, my dear. I will do it first thing after dinner. And you know? If that doesn’t work, we can always try something else together.\"\n\n@global.w_solve_teen_boy_2: \"Thanks, @global.w_solve_female_caregiver_2\"",
+                                                                "matchedExpression": "@global.w_solve_female_caregiver_2",
+                                                                "type": "global",
+                                                                "fieldName": "w_solve_female_caregiver_2"
+                                                              }
+                                                            ]
+                                                          },
+                                                          "_dynamicDependencies": {
+                                                            "@global.w_solve_female_caregiver_2": [
+                                                              "value",
+                                                              "value"
+                                                            ],
+                                                            "@global.w_solve_teen_boy_2": [
+                                                              "value"
+                                                            ]
+                                                          }
+                                                        },
+                                                        {
+                                                          "name": "dashed_box",
+                                                          "value": "Step 3: TRY IT",
+                                                          "_translations": {
+                                                            "value": {
+                                                              "tz_sw": true,
+                                                              "za_af": true,
+                                                              "za_st": true,
+                                                              "za_tn": true,
+                                                              "za_xh": true,
+                                                              "za_zu": true
+                                                            }
+                                                          },
+                                                          "hidden": false,
+                                                          "type": "set_variable",
+                                                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_1.dashed_box"
+                                                        }
+                                                      ],
+                                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_1"
+                                                    },
+                                                    {
+                                                      "type": "nested_properties",
+                                                      "name": "box_2",
+                                                      "value": "pair",
+                                                      "rows": [
+                                                        {
+                                                          "type": "nested_properties",
+                                                          "name": "box_1",
+                                                          "value": "box_story",
+                                                          "rows": [
+                                                            {
+                                                              "name": "image_src",
+                                                              "value": "plh_images/workshops/w_solve/read_2/slide_11.svg",
+                                                              "_translations": {
+                                                                "value": {}
+                                                              },
+                                                              "type": "set_variable",
+                                                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_1.image_src"
+                                                            },
+                                                            {
+                                                              "name": "text",
+                                                              "value": "A week later… \n\n@global.w_solve_female_caregiver_2: \"How are things going at school now?\"\n\n@global.w_solve_teen_boy_2: \"It’s going better, the boy does not take my lunch anymore. But he is still being really mean to me.\"",
+                                                              "_translations": {
+                                                                "value": {
+                                                                  "tz_sw": true,
+                                                                  "za_af": true,
+                                                                  "za_st": true,
+                                                                  "za_tn": true,
+                                                                  "za_xh": true,
+                                                                  "za_zu": true
+                                                                }
+                                                              },
+                                                              "type": "set_variable",
+                                                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_1.text",
+                                                              "_dynamicFields": {
+                                                                "value": [
+                                                                  {
+                                                                    "fullExpression": "A week later… \n\n@global.w_solve_female_caregiver_2: \"How are things going at school now?\"\n\n@global.w_solve_teen_boy_2: \"It’s going better, the boy does not take my lunch anymore. But he is still being really mean to me.\"",
+                                                                    "matchedExpression": "@global.w_solve_female_caregiver_2",
+                                                                    "type": "global",
+                                                                    "fieldName": "w_solve_female_caregiver_2"
+                                                                  },
+                                                                  {
+                                                                    "fullExpression": "A week later… \n\n@global.w_solve_female_caregiver_2: \"How are things going at school now?\"\n\n@global.w_solve_teen_boy_2: \"It’s going better, the boy does not take my lunch anymore. But he is still being really mean to me.\"",
+                                                                    "matchedExpression": "@global.w_solve_teen_boy_2",
+                                                                    "type": "global",
+                                                                    "fieldName": "w_solve_teen_boy_2"
+                                                                  }
+                                                                ]
+                                                              },
+                                                              "_dynamicDependencies": {
+                                                                "@global.w_solve_female_caregiver_2": [
+                                                                  "value"
+                                                                ],
+                                                                "@global.w_solve_teen_boy_2": [
+                                                                  "value"
+                                                                ]
+                                                              }
+                                                            },
+                                                            {
+                                                              "name": "dashed_box",
+                                                              "value": "Step 4: TEST IT",
+                                                              "_translations": {
+                                                                "value": {
+                                                                  "tz_sw": true,
+                                                                  "za_af": true,
+                                                                  "za_st": true,
+                                                                  "za_tn": true,
+                                                                  "za_xh": true,
+                                                                  "za_zu": true
+                                                                }
+                                                              },
+                                                              "hidden": false,
+                                                              "type": "set_variable",
+                                                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_1.dashed_box"
+                                                            }
+                                                          ],
+                                                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_1"
+                                                        },
+                                                        {
+                                                          "type": "nested_properties",
+                                                          "name": "box_2",
+                                                          "value": "box_image",
+                                                          "rows": [
+                                                            {
+                                                              "name": "image_src",
+                                                              "value": "plh_images/workshops/w_solve/read_2/slide_12.svg",
+                                                              "_translations": {
+                                                                "value": {}
+                                                              },
+                                                              "type": "set_variable",
+                                                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.image_src"
+                                                            },
+                                                            {
+                                                              "name": "text",
+                                                              "value": "@global.w_solve_female_caregiver_2: \"I am sorry to hear that, @global.w_solve_teen_boy_2. Shall I ask your uncle to go talk to his parents? If that does not work, we will try something else!\"\n\n@global.w_solve_teen_boy_2: \"Yes, thank you @global.w_solve_female_caregiver_2. At least I know you are on my side.\"",
+                                                              "_translations": {
+                                                                "value": {
+                                                                  "tz_sw": true,
+                                                                  "za_af": true,
+                                                                  "za_st": true,
+                                                                  "za_tn": true,
+                                                                  "za_xh": true,
+                                                                  "za_zu": true
+                                                                }
+                                                              },
+                                                              "type": "set_variable",
+                                                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.text",
+                                                              "_dynamicFields": {
+                                                                "value": [
+                                                                  {
+                                                                    "fullExpression": "@global.w_solve_female_caregiver_2: \"I am sorry to hear that, @global.w_solve_teen_boy_2. Shall I ask your uncle to go talk to his parents? If that does not work, we will try something else!\"\n\n@global.w_solve_teen_boy_2: \"Yes, thank you @global.w_solve_female_caregiver_2. At least I know you are on my side.\"",
+                                                                    "matchedExpression": "@global.w_solve_female_caregiver_2",
+                                                                    "type": "global",
+                                                                    "fieldName": "w_solve_female_caregiver_2"
+                                                                  },
+                                                                  {
+                                                                    "fullExpression": "@global.w_solve_female_caregiver_2: \"I am sorry to hear that, @global.w_solve_teen_boy_2. Shall I ask your uncle to go talk to his parents? If that does not work, we will try something else!\"\n\n@global.w_solve_teen_boy_2: \"Yes, thank you @global.w_solve_female_caregiver_2. At least I know you are on my side.\"",
+                                                                    "matchedExpression": "@global.w_solve_teen_boy_2",
+                                                                    "type": "global",
+                                                                    "fieldName": "w_solve_teen_boy_2"
+                                                                  },
+                                                                  {
+                                                                    "fullExpression": "@global.w_solve_female_caregiver_2: \"I am sorry to hear that, @global.w_solve_teen_boy_2. Shall I ask your uncle to go talk to his parents? If that does not work, we will try something else!\"\n\n@global.w_solve_teen_boy_2: \"Yes, thank you @global.w_solve_female_caregiver_2. At least I know you are on my side.\"",
+                                                                    "matchedExpression": "@global.w_solve_teen_boy_2",
+                                                                    "type": "global",
+                                                                    "fieldName": "w_solve_teen_boy_2"
+                                                                  },
+                                                                  {
+                                                                    "fullExpression": "@global.w_solve_female_caregiver_2: \"I am sorry to hear that, @global.w_solve_teen_boy_2. Shall I ask your uncle to go talk to his parents? If that does not work, we will try something else!\"\n\n@global.w_solve_teen_boy_2: \"Yes, thank you @global.w_solve_female_caregiver_2. At least I know you are on my side.\"",
+                                                                    "matchedExpression": "@global.w_solve_female_caregiver_2",
+                                                                    "type": "global",
+                                                                    "fieldName": "w_solve_female_caregiver_2"
+                                                                  }
+                                                                ]
+                                                              },
+                                                              "_dynamicDependencies": {
+                                                                "@global.w_solve_female_caregiver_2": [
+                                                                  "value",
+                                                                  "value"
+                                                                ],
+                                                                "@global.w_solve_teen_boy_2": [
+                                                                  "value",
+                                                                  "value"
+                                                                ]
+                                                              }
+                                                            }
+                                                          ],
+                                                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2"
+                                                        }
+                                                      ],
+                                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2"
+                                                    }
+                                                  ],
+                                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2"
+                                                }
+                                              ],
+                                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2.box_2"
+                                            }
+                                          ],
+                                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2.box_2"
+                                        }
+                                      ],
+                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.box_2"
+                                    }
+                                  ],
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2"
+                                }
+                              ],
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2"
+                            }
+                          ],
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2"
+                        }
+                      ],
+                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2"
+                    }
+                  ],
+                  "_nested_name": "read.workshop_activity.content_box.box_2"
+                }
+              ],
+              "_nested_name": "read.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "read.workshop_activity"
+        }
+      ],
+      "_nested_name": "read"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"
+}

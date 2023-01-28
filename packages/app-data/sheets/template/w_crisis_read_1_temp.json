@@ -1,0 +1,480 @@
+{
+  "flow_type": "template",
+  "module": "crisis",
+  "flow_name": "w_crisis_read_1_temp",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "read",
+      "value": "read_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Crisis can happen to anyone. \n\nLet's see what happened with @global.w_crisis_teen_girl_1 and @global.w_crisis_female_caregiver:",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "read.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Crisis can happen to anyone. \n\nLet's see what happened with @global.w_crisis_teen_girl_1 and @global.w_crisis_female_caregiver:",
+                    "matchedExpression": "@global.w_crisis_teen_girl_1",
+                    "type": "global",
+                    "fieldName": "w_crisis_teen_girl_1"
+                  },
+                  {
+                    "fullExpression": "Crisis can happen to anyone. \n\nLet's see what happened with @global.w_crisis_teen_girl_1 and @global.w_crisis_female_caregiver:",
+                    "matchedExpression": "@global.w_crisis_female_caregiver",
+                    "type": "global",
+                    "fieldName": "w_crisis_female_caregiver"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.w_crisis_teen_girl_1": [
+                  "value"
+                ],
+                "@global.w_crisis_female_caregiver": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "pair",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "value": "box_story",
+                  "rows": [
+                    {
+                      "name": "image_src",
+                      "value": "plh_images/workshops/w_crisis/read_1/slide_1.svg",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "read.workshop_activity.content_box.box_1.image_src"
+                    },
+                    {
+                      "name": "text",
+                      "value": "@global.w_crisis_female_caregiver: \"Shame my dear, you look really upset, do you want to tell me what happened?\"",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true,
+                          "za_af": true,
+                          "za_st": true,
+                          "za_tn": true,
+                          "za_xh": true,
+                          "za_zu": true
+                        }
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "read.workshop_activity.content_box.box_1.text",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@global.w_crisis_female_caregiver: \"Shame my dear, you look really upset, do you want to tell me what happened?\"",
+                            "matchedExpression": "@global.w_crisis_female_caregiver",
+                            "type": "global",
+                            "fieldName": "w_crisis_female_caregiver"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@global.w_crisis_female_caregiver": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "read.workshop_activity.content_box.box_1"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "box_2",
+                  "value": "pair",
+                  "rows": [
+                    {
+                      "type": "nested_properties",
+                      "name": "box_1",
+                      "value": "box_story",
+                      "rows": [
+                        {
+                          "name": "image_src",
+                          "value": "plh_images/workshops/w_crisis/read_1/slide_2.svg",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.image_src"
+                        },
+                        {
+                          "name": "text",
+                          "value": "@global.w_crisis_teen_girl_1: \"It’s my Uncle, he… he… he touched me.\"  \n\n@global.w_crisis_female_caregiver (thinking): \"Take a deep breath... What does my child need? She needs me to be calm and listen\" \n\n@global.w_crisis_female_caregiver: \"Come and sit down next to me. Take your time, I’m listening.\"",
+                          "_translations": {
+                            "value": {
+                              "tz_sw": true,
+                              "za_af": true,
+                              "za_st": true,
+                              "za_tn": true,
+                              "za_xh": true,
+                              "za_zu": true
+                            }
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.text",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@global.w_crisis_teen_girl_1: \"It’s my Uncle, he… he… he touched me.\"  \n\n@global.w_crisis_female_caregiver (thinking): \"Take a deep breath... What does my child need? She needs me to be calm and listen\" \n\n@global.w_crisis_female_caregiver: \"Come and sit down next to me. Take your time, I’m listening.\"",
+                                "matchedExpression": "@global.w_crisis_teen_girl_1",
+                                "type": "global",
+                                "fieldName": "w_crisis_teen_girl_1"
+                              },
+                              {
+                                "fullExpression": "@global.w_crisis_teen_girl_1: \"It’s my Uncle, he… he… he touched me.\"  \n\n@global.w_crisis_female_caregiver (thinking): \"Take a deep breath... What does my child need? She needs me to be calm and listen\" \n\n@global.w_crisis_female_caregiver: \"Come and sit down next to me. Take your time, I’m listening.\"",
+                                "matchedExpression": "@global.w_crisis_female_caregiver",
+                                "type": "global",
+                                "fieldName": "w_crisis_female_caregiver"
+                              },
+                              {
+                                "fullExpression": "@global.w_crisis_teen_girl_1: \"It’s my Uncle, he… he… he touched me.\"  \n\n@global.w_crisis_female_caregiver (thinking): \"Take a deep breath... What does my child need? She needs me to be calm and listen\" \n\n@global.w_crisis_female_caregiver: \"Come and sit down next to me. Take your time, I’m listening.\"",
+                                "matchedExpression": "@global.w_crisis_female_caregiver",
+                                "type": "global",
+                                "fieldName": "w_crisis_female_caregiver"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@global.w_crisis_teen_girl_1": [
+                              "value"
+                            ],
+                            "@global.w_crisis_female_caregiver": [
+                              "value",
+                              "value"
+                            ]
+                          }
+                        }
+                      ],
+                      "_nested_name": "read.workshop_activity.content_box.box_2.box_1"
+                    },
+                    {
+                      "type": "nested_properties",
+                      "name": "box_2",
+                      "value": "pair",
+                      "rows": [
+                        {
+                          "type": "nested_properties",
+                          "name": "box_1",
+                          "value": "box_story",
+                          "rows": [
+                            {
+                              "name": "image_src",
+                              "value": "plh_images/workshops/w_crisis/read_1/slide_3.svg",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.image_src"
+                            },
+                            {
+                              "name": "text",
+                              "value": "@global.w_crisis_teen_girl_1: \"It’s true, he… he… made me do it! He made me have sex with him! I didn’t want to, I swear, and I even said NO, but he told me I would be in trouble.\"\n\n@global.w_crisis_female_caregiver: \"Thank you for sharing this with me. You are not in trouble. This is not your fault.\"",
+                              "_translations": {
+                                "value": {
+                                  "tz_sw": true,
+                                  "za_af": true,
+                                  "za_st": true,
+                                  "za_tn": true,
+                                  "za_xh": true,
+                                  "za_zu": true
+                                }
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.text",
+                              "_dynamicFields": {
+                                "value": [
+                                  {
+                                    "fullExpression": "@global.w_crisis_teen_girl_1: \"It’s true, he… he… made me do it! He made me have sex with him! I didn’t want to, I swear, and I even said NO, but he told me I would be in trouble.\"\n\n@global.w_crisis_female_caregiver: \"Thank you for sharing this with me. You are not in trouble. This is not your fault.\"",
+                                    "matchedExpression": "@global.w_crisis_teen_girl_1",
+                                    "type": "global",
+                                    "fieldName": "w_crisis_teen_girl_1"
+                                  },
+                                  {
+                                    "fullExpression": "@global.w_crisis_teen_girl_1: \"It’s true, he… he… made me do it! He made me have sex with him! I didn’t want to, I swear, and I even said NO, but he told me I would be in trouble.\"\n\n@global.w_crisis_female_caregiver: \"Thank you for sharing this with me. You are not in trouble. This is not your fault.\"",
+                                    "matchedExpression": "@global.w_crisis_female_caregiver",
+                                    "type": "global",
+                                    "fieldName": "w_crisis_female_caregiver"
+                                  }
+                                ]
+                              },
+                              "_dynamicDependencies": {
+                                "@global.w_crisis_teen_girl_1": [
+                                  "value"
+                                ],
+                                "@global.w_crisis_female_caregiver": [
+                                  "value"
+                                ]
+                              }
+                            }
+                          ],
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1"
+                        },
+                        {
+                          "type": "nested_properties",
+                          "name": "box_2",
+                          "value": "pair",
+                          "rows": [
+                            {
+                              "type": "nested_properties",
+                              "name": "box_1",
+                              "value": "box_story",
+                              "rows": [
+                                {
+                                  "name": "image_src",
+                                  "value": "plh_images/workshops/w_crisis/read_1/slide_4.svg",
+                                  "_translations": {
+                                    "value": {}
+                                  },
+                                  "type": "set_variable",
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1.image_src"
+                                },
+                                {
+                                  "name": "text",
+                                  "value": "@global.w_crisis_teen_girl_1: \"Yesterday when you went to see @global.w_crisis_adult_friend. He just came and that’s when it happened.\"\n\n@global.w_crisis_female_caregiver:  \"It’s okay, I believe you my child. This is a big thing and we will find a way to get the help we need. Where could we go for help?\"\n\n@global.w_crisis_teen_girl_1: \"My school?\"",
+                                  "_translations": {
+                                    "value": {
+                                      "tz_sw": true,
+                                      "za_af": true,
+                                      "za_st": true,
+                                      "za_tn": true,
+                                      "za_xh": true,
+                                      "za_zu": true
+                                    }
+                                  },
+                                  "type": "set_variable",
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1.text",
+                                  "_dynamicFields": {
+                                    "value": [
+                                      {
+                                        "fullExpression": "@global.w_crisis_teen_girl_1: \"Yesterday when you went to see @global.w_crisis_adult_friend. He just came and that’s when it happened.\"\n\n@global.w_crisis_female_caregiver:  \"It’s okay, I believe you my child. This is a big thing and we will find a way to get the help we need. Where could we go for help?\"\n\n@global.w_crisis_teen_girl_1: \"My school?\"",
+                                        "matchedExpression": "@global.w_crisis_teen_girl_1",
+                                        "type": "global",
+                                        "fieldName": "w_crisis_teen_girl_1"
+                                      },
+                                      {
+                                        "fullExpression": "@global.w_crisis_teen_girl_1: \"Yesterday when you went to see @global.w_crisis_adult_friend. He just came and that’s when it happened.\"\n\n@global.w_crisis_female_caregiver:  \"It’s okay, I believe you my child. This is a big thing and we will find a way to get the help we need. Where could we go for help?\"\n\n@global.w_crisis_teen_girl_1: \"My school?\"",
+                                        "matchedExpression": "@global.w_crisis_adult_friend",
+                                        "type": "global",
+                                        "fieldName": "w_crisis_adult_friend"
+                                      },
+                                      {
+                                        "fullExpression": "@global.w_crisis_teen_girl_1: \"Yesterday when you went to see @global.w_crisis_adult_friend. He just came and that’s when it happened.\"\n\n@global.w_crisis_female_caregiver:  \"It’s okay, I believe you my child. This is a big thing and we will find a way to get the help we need. Where could we go for help?\"\n\n@global.w_crisis_teen_girl_1: \"My school?\"",
+                                        "matchedExpression": "@global.w_crisis_female_caregiver",
+                                        "type": "global",
+                                        "fieldName": "w_crisis_female_caregiver"
+                                      },
+                                      {
+                                        "fullExpression": "@global.w_crisis_teen_girl_1: \"Yesterday when you went to see @global.w_crisis_adult_friend. He just came and that’s when it happened.\"\n\n@global.w_crisis_female_caregiver:  \"It’s okay, I believe you my child. This is a big thing and we will find a way to get the help we need. Where could we go for help?\"\n\n@global.w_crisis_teen_girl_1: \"My school?\"",
+                                        "matchedExpression": "@global.w_crisis_teen_girl_1",
+                                        "type": "global",
+                                        "fieldName": "w_crisis_teen_girl_1"
+                                      }
+                                    ]
+                                  },
+                                  "_dynamicDependencies": {
+                                    "@global.w_crisis_teen_girl_1": [
+                                      "value",
+                                      "value"
+                                    ],
+                                    "@global.w_crisis_adult_friend": [
+                                      "value"
+                                    ],
+                                    "@global.w_crisis_female_caregiver": [
+                                      "value"
+                                    ]
+                                  }
+                                }
+                              ],
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1"
+                            },
+                            {
+                              "type": "nested_properties",
+                              "name": "box_2",
+                              "value": "pair",
+                              "rows": [
+                                {
+                                  "type": "nested_properties",
+                                  "name": "box_1",
+                                  "value": "box_story",
+                                  "rows": [
+                                    {
+                                      "name": "image_src",
+                                      "value": "plh_images/workshops/w_crisis/read_1/slide_5.svg",
+                                      "_translations": {
+                                        "value": {}
+                                      },
+                                      "type": "set_variable",
+                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_1.image_src"
+                                    },
+                                    {
+                                      "name": "text",
+                                      "value": "@global.w_crisis_female_caregiver: \"Ah I know, let’s go to the clinic. They will know what we can do to help you. Does that sound okay to you?\"\n\n@global.w_crisis_teen_girl_1: \"Yes… Okay… But will you come with me?\"",
+                                      "_translations": {
+                                        "value": {
+                                          "tz_sw": true,
+                                          "za_af": true,
+                                          "za_st": true,
+                                          "za_tn": true,
+                                          "za_xh": true,
+                                          "za_zu": true
+                                        }
+                                      },
+                                      "type": "set_variable",
+                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_1.text",
+                                      "_dynamicFields": {
+                                        "value": [
+                                          {
+                                            "fullExpression": "@global.w_crisis_female_caregiver: \"Ah I know, let’s go to the clinic. They will know what we can do to help you. Does that sound okay to you?\"\n\n@global.w_crisis_teen_girl_1: \"Yes… Okay… But will you come with me?\"",
+                                            "matchedExpression": "@global.w_crisis_female_caregiver",
+                                            "type": "global",
+                                            "fieldName": "w_crisis_female_caregiver"
+                                          },
+                                          {
+                                            "fullExpression": "@global.w_crisis_female_caregiver: \"Ah I know, let’s go to the clinic. They will know what we can do to help you. Does that sound okay to you?\"\n\n@global.w_crisis_teen_girl_1: \"Yes… Okay… But will you come with me?\"",
+                                            "matchedExpression": "@global.w_crisis_teen_girl_1",
+                                            "type": "global",
+                                            "fieldName": "w_crisis_teen_girl_1"
+                                          }
+                                        ]
+                                      },
+                                      "_dynamicDependencies": {
+                                        "@global.w_crisis_female_caregiver": [
+                                          "value"
+                                        ],
+                                        "@global.w_crisis_teen_girl_1": [
+                                          "value"
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_1"
+                                },
+                                {
+                                  "type": "nested_properties",
+                                  "name": "box_2",
+                                  "value": "box_image",
+                                  "rows": [
+                                    {
+                                      "name": "image_src",
+                                      "value": "plh_images/workshops/w_crisis/read_1/slide_6.svg",
+                                      "_translations": {
+                                        "value": {}
+                                      },
+                                      "type": "set_variable",
+                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.image_src"
+                                    },
+                                    {
+                                      "name": "text",
+                                      "value": "@global.w_crisis_female_caregiver: \"Of course I will. And @global.w_crisis_teen_girl_1? Remember this is not your fault. I love you. You are a good person. We will get through this.\"",
+                                      "_translations": {
+                                        "value": {
+                                          "tz_sw": true,
+                                          "za_af": true,
+                                          "za_st": true,
+                                          "za_tn": true,
+                                          "za_xh": true,
+                                          "za_zu": true
+                                        }
+                                      },
+                                      "type": "set_variable",
+                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.text",
+                                      "_dynamicFields": {
+                                        "value": [
+                                          {
+                                            "fullExpression": "@global.w_crisis_female_caregiver: \"Of course I will. And @global.w_crisis_teen_girl_1? Remember this is not your fault. I love you. You are a good person. We will get through this.\"",
+                                            "matchedExpression": "@global.w_crisis_female_caregiver",
+                                            "type": "global",
+                                            "fieldName": "w_crisis_female_caregiver"
+                                          },
+                                          {
+                                            "fullExpression": "@global.w_crisis_female_caregiver: \"Of course I will. And @global.w_crisis_teen_girl_1? Remember this is not your fault. I love you. You are a good person. We will get through this.\"",
+                                            "matchedExpression": "@global.w_crisis_teen_girl_1",
+                                            "type": "global",
+                                            "fieldName": "w_crisis_teen_girl_1"
+                                          }
+                                        ]
+                                      },
+                                      "_dynamicDependencies": {
+                                        "@global.w_crisis_female_caregiver": [
+                                          "value"
+                                        ],
+                                        "@global.w_crisis_teen_girl_1": [
+                                          "value"
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2"
+                                }
+                              ],
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2"
+                            }
+                          ],
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2"
+                        }
+                      ],
+                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2"
+                    }
+                  ],
+                  "_nested_name": "read.workshop_activity.content_box.box_2"
+                }
+              ],
+              "_nested_name": "read.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "read.workshop_activity"
+        }
+      ],
+      "_nested_name": "read"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"
+}

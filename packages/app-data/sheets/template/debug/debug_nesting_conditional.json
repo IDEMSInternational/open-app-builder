@@ -1,0 +1,218 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_nesting_conditional",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "text_2",
+      "value": "Success: text_2",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "text_2"
+    },
+    {
+      "name": "text_1_toggle",
+      "value": true,
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "text_1_toggle"
+    },
+    {
+      "type": "text",
+      "name": "var_toggle_text",
+      "value": "The value of the toggle is: @local.text_1_toggle",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "var_toggle_text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "The value of the toggle is: @local.text_1_toggle",
+            "matchedExpression": "@local.text_1_toggle",
+            "type": "local",
+            "fieldName": "text_1_toggle"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.text_1_toggle": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "intro_1",
+      "value": "The following template should change text_1 value depending on the value of a variable",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "intro_1"
+    },
+    {
+      "type": "template",
+      "name": "direct_template_2",
+      "value": "debug_two_texts",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "type": "set_variable",
+          "name": "child_text_1",
+          "value": "Success: text_1 - toggle TRUE",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "condition": "@local.text_1_toggle",
+          "_nested_name": "direct_template_2.child_text_1",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.text_1_toggle",
+                "matchedExpression": "@local.text_1_toggle",
+                "type": "local",
+                "fieldName": "text_1_toggle"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.text_1_toggle": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "set_variable",
+          "name": "child_text_1",
+          "value": "Success: text_1 - toggle FALSE",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "condition": "!@local.text_1_toggle",
+          "_nested_name": "direct_template_2.child_text_1",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!@local.text_1_toggle",
+                "matchedExpression": "!@local.text_1_toggle",
+                "type": "local",
+                "fieldName": "text_1_toggle"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "!@local.text_1_toggle": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "set_variable",
+          "name": "child_text_2",
+          "value": "Expected: \"Success: text_2\"\nResult: @local.text_2",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "direct_template_2.child_text_2",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "Expected: \"Success: text_2\"\nResult: @local.text_2",
+                "matchedExpression": "@local.text_2",
+                "type": "local",
+                "fieldName": "text_2"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.text_2": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "set_variable",
+          "name": "child_local_variable",
+          "value": "Success: nesting local variable",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "direct_template_2.child_local_variable"
+        }
+      ],
+      "_nested_name": "direct_template_2"
+    },
+    {
+      "type": "button",
+      "name": "toggle text",
+      "value": "Toggle value of text_1",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_local",
+          "args": [
+            "var_toggle",
+            "!@local.var_toggle"
+          ],
+          "_raw": "click | set_local: var_toggle: !@local.var_toggle",
+          "_cleaned": "click | set_local: var_toggle: !@local.var_toggle"
+        }
+      ],
+      "exclude_from_translation": true,
+      "_nested_name": "toggle text",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "!@local.var_toggle",
+                  "matchedExpression": "!@local.var_toggle",
+                  "type": "local",
+                  "fieldName": "var_toggle"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_local: var_toggle: !@local.var_toggle",
+                "matchedExpression": "!@local.var_toggle",
+                "type": "local",
+                "fieldName": "var_toggle"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_local: var_toggle: !@local.var_toggle",
+                "matchedExpression": "!@local.var_toggle",
+                "type": "local",
+                "fieldName": "var_toggle"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "!@local.var_toggle": [
+          "action_list.0.args.1",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_nesting_variables.xlsx"
+}

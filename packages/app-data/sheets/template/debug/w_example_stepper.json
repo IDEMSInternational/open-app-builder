@@ -1,0 +1,130 @@
+{
+  "flow_type": "template",
+  "flow_subtype": "debug",
+  "flow_name": "w_example_stepper",
+  "status": "released",
+  "rows": [
+    {
+      "name": "do_workshops_together",
+      "value": "@fields.do_workshops_together",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "do_workshops_together",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.do_workshops_together",
+            "matchedExpression": "@fields.do_workshops_together",
+            "type": "fields",
+            "fieldName": "do_workshops_together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.do_workshops_together": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "workshop_stepper_together",
+      "value": "workshop_stepper",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        }
+      ],
+      "hidden": "!@local.do_workshops_together",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "theme": "@global.theme"
+      },
+      "rows": [
+        {
+          "name": "nav_template_list",
+          "value": [
+            "w_example_welcome_together",
+            "w_example_listen",
+            "w_example_read",
+            "w_example_talk_together",
+            "w_example_tools_activity",
+            "w_example_home_practice",
+            "w_example_ending"
+          ],
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_stepper_together.nav_template_list"
+        }
+      ],
+      "_nested_name": "workshop_stepper_together",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "!@local.do_workshops_together",
+            "matchedExpression": "!@local.do_workshops_together",
+            "type": "local",
+            "fieldName": "do_workshops_together"
+          }
+        ],
+        "parameter_list": {
+          "theme": [
+            {
+              "fullExpression": "@global.theme",
+              "matchedExpression": "@global.theme",
+              "type": "global",
+              "fieldName": "theme"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "!@local.do_workshops_together": [
+          "hidden"
+        ],
+        "@global.theme": [
+          "parameter_list.theme"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "workshop_stepper_individual",
+      "value": "workshop_stepper",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        }
+      ],
+      "hidden": true,
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "nav_template_list",
+          "value": [
+            "w_example_listen"
+          ],
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_stepper_individual.nav_template_list"
+        }
+      ],
+      "_nested_name": "workshop_stepper_individual"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_workshop.xlsx"
+}

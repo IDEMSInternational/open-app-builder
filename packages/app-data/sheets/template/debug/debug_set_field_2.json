@@ -1,0 +1,34 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_set_field_2",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "Field value is @field.variable",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Field value is @field.variable",
+            "matchedExpression": "@field.variable",
+            "type": "field",
+            "fieldName": "variable"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@field.variable": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_small_issues.xlsx"
+}
