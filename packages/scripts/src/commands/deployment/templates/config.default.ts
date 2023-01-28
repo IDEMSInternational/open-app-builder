@@ -11,8 +11,8 @@ config.google_drive = {
 
 // Override any app constants here
 
-config.app_constants.APP_HEADER_DEFAULTS.title = "${name}"
-config.app_constants.APP_SIDEMENU_DEFAULTS.title = "${name}"
+config.app_config.APP_HEADER_DEFAULTS.title = "${name}"
+config.app_config.APP_SIDEMENU_DEFAULTS.title = "${name}"
   
 
 export default config;

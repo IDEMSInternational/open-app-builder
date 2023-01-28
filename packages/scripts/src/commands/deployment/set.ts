@@ -3,11 +3,16 @@ import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
 import { DEPLOYMENTS_PATH, ROOT_DIR } from "../../paths";
-import { promptOptions, logOutput } from "../../utils";
+import { promptOptions, logOutput, logWarning } from "../../utils";
 import { getActiveDeployment } from "./get";
 import { loadDeploymentJson } from "./utils";
 
 const program = new Command("set");
+
+interface IOptions {
+  /** Temp method to check if called from workflow or directly via scripts (prefer workflow) */
+  workflow?: string;
+}
 
 /***************************************************************************************
  * CLI
@@ -15,8 +20,16 @@ const program = new Command("set");
  *************************************************************************************/
 export default program
   .description("Set active deployment")
-  // options copied from/passed to generate
-  .action(async () => {
+  .option("-w --workflow", "Specify if script invoked from workflow")
+  .action(async (options: IOptions) => {
+    if (!options.workflow) {
+      // TODO - enforce use of workflows after all made compatible
+      // logWarning({
+      //   msg1: "[Deprecated] - Set via workflow instead",
+      //   msg2: "yarn workflow deployment set",
+      // });
+      // return;
+    }
     let [deploymentName] = program.args;
     await new DeploymentSet().setActiveDeployment(deploymentName);
   });

@@ -7,8 +7,8 @@ import { extendDeploymentConfig } from "scripts";
 const config = extendDeploymentConfig({ name: "${name}", parent: "${parent}" });
 
 // override app constants here
-config.app_constants.APP_HEADER_DEFAULTS.title = "${name}";
-config.app_constants.APP_SIDEMENU_DEFAULTS.title = "${name}";
+config.app_config.APP_HEADER_DEFAULTS.title = "${name}";
+config.app_config.APP_SIDEMENU_DEFAULTS.title = "${name}";
 
 // example filters applied to main deployment content
 config.app_data = {

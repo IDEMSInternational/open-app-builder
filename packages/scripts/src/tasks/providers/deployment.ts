@@ -9,7 +9,10 @@ class DeploymentProvider {
   }
 
   async set(name = "") {
-    spawnSync(`${scriptsExec} deployment set ${name}`, { shell: true, stdio: "inherit" });
+    spawnSync(`${scriptsExec} deployment set ${name} --workflow`, {
+      shell: true,
+      stdio: "inherit",
+    });
   }
 }
 

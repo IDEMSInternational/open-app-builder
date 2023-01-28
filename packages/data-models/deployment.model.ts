@@ -1,4 +1,4 @@
-import type { IAppConfigOverride } from "./appConfig";
+import type { IAppConfig } from "./appConfig";
 
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
@@ -30,14 +30,14 @@ export interface IDeploymentConfig {
     icon_asset_background_path?: string;
   };
   /** Optional override of any provided constants from data-models/constants */
-  app_config?: IAppConfigOverride;
+  app_config: IAppConfig;
   app_data?: {
     /** filter function that receives converted flows. Default `(flow)=>true`*/
     sheets_filter_function?: (flow: IFlowTypeBase) => boolean;
     /** filter function that receives basic file info such as relativePath and size. Default `(fileEntry)=>true`*/
     assets_filter_function?: (fileEntry: IContentsEntry) => boolean;
   };
-  git: {
+  git?: {
     /** Url of external git repo to store content */
     content_repo?: string;
     /** Current tag of content for release */
@@ -51,7 +51,7 @@ export interface IDeploymentConfig {
     /** translated string for import. Default `./app_data/translations_source/translated_strings */
     translated_strings_path?: string;
   };
-  workflows: {
+  workflows?: {
     /** path to custom workflow files to include */
     custom_ts_files?: string[];
     /** path for task working directory. Default `./tasks` */
@@ -79,7 +79,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     assets_filter_function: (gdriveEntry) => true,
   },
   android: {},
-  app_config: {},
+  app_config: {} as any, // populated by `getDefaultAppConstants()`,
   local_drive: {
     assets_path: "./assets",
     sheets_path: "./sheets",
