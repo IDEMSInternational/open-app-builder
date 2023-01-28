@@ -49,6 +49,13 @@ import { TemplateHTMLComponent } from "./html/html.component";
 import { TmplAccordionComponent } from "./accordion/accordion.component";
 import { TmplLatexComponent } from "./latex/latex.component";
 import { TmplAnimatedSlidesComponent } from "./animated-slides/animated-slides.component";
+import { TmplTaskCardComponent } from "./task-card/task-card.component";
+import { TmplTaskProgressBarComponent } from "./task-progress-bar/task-progress-bar.component";
+import { TmplQRCodeComponent } from "./qr-code/qr-code.component";
+import { TmplNavigationBarComponent } from "./navigation-bar/navigation-bar.component";
+import { TmplCarouselComponent } from "./carousel/carousel.component";
+import { TmplDrawerComponent } from "./drawer/drawer.component";
+import { TmplDataItemsComponent } from "./data-items/data-items.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -95,6 +102,13 @@ export const TEMPLATE_COMPONENTS = [
   TmplAccordionComponent,
   TmplLatexComponent,
   TmplAnimatedSlidesComponent,
+  TmplTaskCardComponent,
+  TmplTaskProgressBarComponent,
+  TmplQRCodeComponent,
+  TmplNavigationBarComponent,
+  TmplCarouselComponent,
+  TmplDrawerComponent,
+  TmplDataItemsComponent,
 ];
 
 /***************************************************************************************
@@ -127,7 +141,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   nested_properties: null as any,
   set_field: null as any,
   set_local: null as any,
-  set_theme: null as any,
   combo_box: TmplComboBoxComponent,
   set_default: null as any,
   update_action_list: null as any,
@@ -153,8 +166,15 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   lottie_animation: TmplLottieAnimation,
   debug_toggle: PLHDebugToggleComponent as any,
   items: null,
+  data_items: TmplDataItemsComponent,
   select_text: SelectTextComponent,
   html: TemplateHTMLComponent,
   latex: TmplLatexComponent,
   animated_slides: TmplAnimatedSlidesComponent,
+  task_card: TmplTaskCardComponent,
+  task_progress_bar: TmplTaskProgressBarComponent,
+  qr_code: TmplQRCodeComponent,
+  navigation_bar: TmplNavigationBarComponent,
+  carousel: TmplCarouselComponent,
+  drawer: TmplDrawerComponent,
 };

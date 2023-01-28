@@ -1,0 +1,257 @@
+[
+  {
+    "SourceText": "Example Language Template",
+    "text": "Plantilla de Ejemplo de Idioma",
+    "type": "template"
+  },
+  {
+    "SourceText": "This is a default text that needs to be translated",
+    "text": "Esto es un texto predeterminado que necesita ser traducido",
+    "type": "template"
+  },
+  {
+    "SourceText": "How are you feeling today?",
+    "text": "¿Cómo te sientes hoy?",
+    "type": "template"
+  },
+  {
+    "SourceText": "This is the default reply if the feeling response is happy, the first option.",
+    "text": "Esta es la respuesta predeterminada si la respuesta es contento, la primera opción.",
+    "type": "template"
+  },
+  {
+    "SourceText": "This is the default reply if the feeling response is ok, the second option.",
+    "text": "Esta es la respuesta predeterminada si la respuesta es normal, la segunda opción.",
+    "type": "template"
+  },
+  {
+    "SourceText": "This is the default reply if the feeling response is sad, the third option.",
+    "text": "Esta es la respuesta predeterminada si la respuesta es triste, la tercer opción.",
+    "type": "template"
+  },
+  {
+    "SourceText": "The field set through the radio group is @local.radio_group_field_name and its value is @fields.@local.radio_group_field_name.",
+    "text": "El campo determinado por medio del grupo radial es @local.radio_group_field_name y su valor es @fields.@local.radio_group_field_name.",
+    "type": "template",
+    "note": "The following strings should not be translated: \n     @local.radio_group_field_name\n     @local.radio_group_field_name"
+  },
+  {
+    "SourceText": "Select one of the following options:",
+    "text": "Selecciona una de las siguientes opciones:",
+    "type": "template"
+  },
+  {
+    "SourceText": "This is the first default option for the combo box",
+    "text": "Esta es la primera opción de la caja de combinaciones",
+    "type": "template"
+  },
+  {
+    "SourceText": "This is the second default option for the combo box",
+    "text": "Esta es la segunda opción de la caja de combinaciones",
+    "type": "template"
+  },
+  {
+    "SourceText": "This is the third default option for the combo box",
+    "text": "Esta es la tercer opción de la caja de combinaciones",
+    "type": "template"
+  },
+  {
+    "SourceText": "The option selected was @local.combo_box.",
+    "text": "La opción seleccionada fue @local.combo_box.",
+    "type": "template",
+    "note": "The string @local.combo_box should not be translated."
+  },
+  {
+    "SourceText": "The field set through the combo box is @local.combo_box_field_name and its value is @fields.@local.combo_box_field_name.",
+    "text": "El campo determinado por medio de la caja de combinaciones es @local.combo_box_field_name y su valor es @fields.@local.combo_box_field_name.",
+    "type": "template",
+    "note": "The following strings should not be translated: \n     @local.combo_box_field_name\n     @local.combo_box_field_name"
+  },
+  {
+    "SourceText": "This is a modified text that needs to be translated.\n\nThis is a nested text.",
+    "text": "Este es un texto modificado que necesita ser traducido.\n\nEste es un texto anidado.",
+    "type": "template"
+  },
+  {
+    "SourceText": "This is the modified reply if the feeling response is happy, the first option.\n\nThis is a nested text.",
+    "text": "Esta es la respuesta modificada si la respuesta es alegre, la primera opción.\n\nEste es un texto anidado.",
+    "type": "template"
+  },
+  {
+    "SourceText": "This is the modified reply if the feeling response is ok, the second option.\n\nThis is a nested text.",
+    "text": "Esta es la respuesta modificada si la respuesta es normal, la segunda opción.\n\nEste es un texto anidado.",
+    "type": "template"
+  },
+  {
+    "SourceText": "This is the modified reply if the feeling response is sad, the third option.\n\nThis is a nested text.",
+    "text": "Esta es la respuesta modificada si la respuesta es triste, la tercer opción.\n\nEste es un texto anidado.",
+    "type": "template"
+  },
+  {
+    "SourceText": "Which of the following do you like the most (this is modified)?",
+    "text": "¿Cuál de los siguientes te gusta más? (esto está modificado)?",
+    "type": "template"
+  },
+  {
+    "SourceText": "Cats (modified text in answer list)",
+    "text": "Gatos (texto modificado en la lista de respuestas)",
+    "type": "template"
+  },
+  {
+    "SourceText": "Dogs (modified text in answer list)",
+    "text": "Perros (texto modificado en la lista de respuestas)",
+    "type": "template"
+  },
+  {
+    "SourceText": "Chinchillas (modified text in answer list)",
+    "text": "Chinchillas (texto modificado en la lista de respuestas)",
+    "type": "template"
+  },
+  {
+    "SourceText": "Value of the first debug variable",
+    "text": "Valor de la primera variable debug"
+  },  
+  {
+    "SourceText": "Title: @global.debug_variable_1",
+    "text": "Título: @global.debug_variable_1"
+  },
+  {
+    "SourceText": "Text: @global.debug_variable_1",
+    "text": "Texto: @global.debug_variable_1"
+  },
+  {
+    "SourceText": "This is a global variable set in a global",
+    "text": "Esta es una variable global determinada en una planilla global",
+    "type": "global"
+  },
+  {
+    "SourceText": "This is a field set by default",
+    "text": "Este es un campo con valor predeterminado",
+    "type": "global"
+  },
+  {
+    "SourceText": "<p>Standard Template</p>",
+    "text": "<p>Plantilla estandar</p>",
+    "type": "tour"
+  },
+  {
+    "SourceText": "<p>This is a standard template that demonstrates a variety of things that would need to be translated and a few things that are excluded from translation.</p>",
+    "text": "<p>Esta es una planilla estandar que demuestra una variedad de cosas que necesitarían ser traducidas y algunas que están excluídas de la traducción.</p>",
+    "type": "tour"
+  },
+  {
+    "SourceText": "<p>Nested Template</p>",
+    "text": "<p>Plantilla Anidada</p>",
+    "type": "tour"
+  },
+  {
+    "SourceText": "<p>This is a nested template that demonstrates a variety of things that would need to be translated and a few things that are excluded from translation. This will allow us to check that the multi-lingual system works with nesting.</p>",
+    "text": "<p>Esta es una planilla anidada que demuestra una variedad de cosas que necesitarían ser traducidas y algunas que están excluídas de la traducción. Esto nos permitirá verificar que el sistema multilingual funciona cuando se anida.</p>",
+    "type": "tour"
+  },
+  {
+    "SourceText": "<p>Component to translate</p>",
+    "text": "<p>Componente para traducir</p>",
+    "type": "tour"
+  },
+  {
+    "SourceText": "<p>This is an example of a component that requires translation: the placeholder text and the selected option should be translated</p>",
+    "text": "<p>Este es un ejemplo de un componente que requiere ser traducido: el marcador de posición u la opción seleccionada deben ser traducidos</p>",
+    "type": "tour"
+  },
+  {
+    "SourceText": "<p>Component that should not be translated translate</p>",
+    "text": "<p>Component que no debe ser traducido</p>",
+    "type": "tour"
+  },
+  {
+    "SourceText": "<p>This is an example of a component that is excluded from translation. The button text should still be Pop-up 1.</p>",
+    "text": "<p>Este es un ejemplo de un componente que esta excluído de la traducción. El texto del botón debería mantenerse como Pop-up 1.</p>",
+    "type": "tour"
+  },
+  {
+    "SourceText": "Example Data List Title 1",
+    "text": "Ejemplo 1 de Título de Listado de Datos",
+    "type": "data_list"
+  },
+  {
+    "SourceText": "This text is loaded through the first data row.",
+    "text": "Este texto esta cargado por medio de la primera fila de datos.",
+    "type": "data_list"
+  },
+  {
+    "SourceText": "Example Data List Title 2",
+    "text": "Ejemplo 2 de Título de Listado de Datos",
+    "type": "data_list"
+  },
+  {
+    "SourceText": "This text is loaded through the second data row.",
+    "text": "Este texto esta cargado por medio de la segunda fila de datos.",
+    "type": "data_list"
+  },
+  {
+    "SourceText": "This text should define a default value for a field",
+    "text": "Este texto debería definir el valor predeterminado de un campo",
+    "type": "data_list"
+  },
+  {
+    "SourceText": "happy",
+    "text": "contento",
+    "type": "template"
+  },
+  {
+    "SourceText": "ok",
+    "text": "bien",
+    "type": "template"
+  },
+  {
+    "SourceText": "sad",
+    "text": "triste",
+    "type": "template"
+  },
+  {
+    "SourceText": "awesome parent",
+    "text": "Padre asombroso",
+    "type": "template"
+  },
+  {
+    "SourceText": "Audio message",
+    "text": "Mensaje de audio",
+    "type": "template"
+  },
+  {
+    "SourceText": "@global.language_global_1: \"text\"",
+    "text": "@global.language_global_1: \"texto\"",
+    "type": "template"
+  },
+  {
+    "SourceText": "@global.language_global_2: \"text\"",
+    "text": "@global.language_global_2: \"texto\"",
+    "type": "template"
+  },
+  {
+    "SourceText": "@global.language_global_1: text",
+    "text": "@global.language_global_1: texto",
+    "type": "template"
+  },
+  {
+    "SourceText": "@global.language_global_2: text",
+    "text": "@global.language_global_2: texto",
+    "type": "template"
+  },
+  {
+    "SourceText": "Text and @global.language_global_1",
+    "text": "Texto y @global.language_global_1",
+    "type": "template"
+  },
+  {
+    "SourceText": "activities",
+    "text": "actividades",
+    "type": "template"
+  },
+  {
+    "SourceText": "Featured",
+    "text": "Destacado",
+    "type": "template"
+  }
+]

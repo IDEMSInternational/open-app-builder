@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
+import { IAppConfig } from "packages/data-models";
 import { BehaviorSubject } from "rxjs";
-import { APP_CONSTANTS } from "src/app/data";
+import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
+import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { FlowTypes } from "../models";
-
-const { APP_FIELDS, APP_LANGUAGES } = APP_CONSTANTS;
 
 @Injectable({ providedIn: "root" })
 /**
@@ -13,26 +13,37 @@ const { APP_FIELDS, APP_LANGUAGES } = APP_CONSTANTS;
  * It is assumed the only translatable column is the value column, and that all translations
  * are already pre-populated in the column (so just a case to return the current language field)
  */
-export class TemplateTranslateService {
+export class TemplateTranslateService extends AsyncServiceBase {
   /**
    * Provide an observable so services can subscribe and respond to language changes
    * Formatted as country-language code, e.g. za-en
    **/
   app_language$ = new BehaviorSubject<string>(null);
-
+  appFields: IAppConfig["APP_FIELDS"];
+  appLanguages: IAppConfig["APP_LANGUAGES"];
   translation_strings = {};
 
   constructor(
     private localStorageService: LocalStorageService,
-    private appDataService: AppDataService
-  ) {}
+    private appDataService: AppDataService,
+    private appConfigService: AppConfigService
+  ) {
+    super("Template Translate");
+    this.registerInitFunction(this.init);
+  }
 
-  public async init() {
-    const currentLanguage = this.localStorageService.getString(APP_FIELDS.APP_LANGUAGE);
+  private async init() {
+    this.ensureSyncServicesReady([
+      this.localStorageService,
+      this.appDataService,
+      this.appConfigService,
+    ]);
+    this.subscribeToAppConfigChanges();
+    const currentLanguage = this.localStorageService.getString(this.appFields.APP_LANGUAGE);
     if (currentLanguage) {
       await this.setLanguage(currentLanguage, false);
     } else {
-      await this.setLanguage(APP_LANGUAGES.default, true);
+      await this.setLanguage(this.appLanguages.default, true);
     }
   }
 
@@ -44,13 +55,13 @@ export class TemplateTranslateService {
   async setLanguage(code: string, updateDB = true) {
     if (code) {
       if (updateDB) {
-        this.localStorageService.setString(APP_FIELDS.APP_LANGUAGE, code);
+        this.localStorageService.setString(this.appFields.APP_LANGUAGE, code);
       }
       const translationStrings = await this.appDataService.getTranslationStrings(code);
       this.translation_strings = translationStrings || {};
       // update observable for subscribers
       this.app_language$.next(code);
-      console.log("[Language Set]", code);
+      // console.log("[Language Set]", code);
     }
   }
 
@@ -124,5 +135,12 @@ export class TemplateTranslateService {
       // console.warn("[Translation missing]", `[${this.app_language}] ${fieldTranslations.eng}`);
     }
     return translated;
+  }
+
+  subscribeToAppConfigChanges() {
+    this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
+      this.appFields = appConfig.APP_FIELDS;
+      this.appLanguages = appConfig.APP_LANGUAGES;
+    });
   }
 }

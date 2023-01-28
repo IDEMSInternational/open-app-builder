@@ -18,6 +18,7 @@ nav:
       - Advanced:
           - authors/advanced/looping-data.md
           - authors/advanced/overrides.md
+      - authors/local-sheets.md
   - Contributors:
       - contributors/documentation/running-server.md
       - contributors/documentation/authoring.md
@@ -26,6 +27,8 @@ nav:
       - developers/adding-components.md
       - developers/deployments.md
       - developers/device-testing.md
+      - developers/android-assets.md
+      - developers/error-logs.md
   - Display Components:
       - components/audio.md
       - components/html.md
@@ -37,11 +40,16 @@ nav:
       - components/simple_checkbox.md
       - components/slider.md
       - components/video.md
+      - components/timer.md
+      - components/radio_group.md
+      - components/combo_box.md
   - Q & A:
       - questions/parameters_styles.md
       - questions/positioning_components.md
       - questions/hidden_condition.md
       - questions/dynamic_content.md
+  - External:
+      - 'Compodoc Generated': ./generated/components/TmplButtonComponent.html" target="_blank
 # Enable all extension for authoring as per https://squidfunk.github.io/mkdocs-material/setup/extensions/
 
 markdown_extensions:

@@ -1,9 +1,10 @@
-import type { IAppConstants } from "./constants";
+import type { IAppConfigOverride } from "./appConfig";
 
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
   name: string;
-  google_drive: {
+
+  google_drive?: {
     /** ID of folder containing app sheets, as seen in end of url */
     sheets_folder_id: string;
     /** ID of folder containing app assets, as seen in end of url */
@@ -15,9 +16,22 @@ export interface IDeploymentConfig {
     /** filter function applied to assets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */
     assets_filter_function?: (gdriveEntry: IGdriveEntry) => boolean;
   };
+  local_drive?: {
+    /** Location to sheets folder if working from local drive instead of google */
+    sheets_path: string;
+    /** Location to assets folder if working from local drive instead of google */
+    assets_path: string;
+  };
+  android?: {
+    /** Location of source android assets (splash and launcher source images). */
+    icon_asset_path?: string;
+    splash_asset_path?: string;
+    icon_asset_foreground_path?: string;
+    icon_asset_background_path?: string;
+  };
   /** Optional override of any provided constants from data-models/constants */
-  app_constants: IAppConstants;
-  app_data: {
+  app_config?: IAppConfigOverride;
+  app_data?: {
     /** filter function that receives converted flows. Default `(flow)=>true`*/
     sheets_filter_function?: (flow: IFlowTypeBase) => boolean;
     /** filter function that receives basic file info such as relativePath and size. Default `(fileEntry)=>true`*/
@@ -43,6 +57,11 @@ export interface IDeploymentConfig {
     /** path for task working directory. Default `./tasks` */
     task_cache_path?: string;
   };
+  /** 3rd party integration for logging services */
+  error_logging?: {
+    /** sentry/glitchtip logging dsn */
+    dsn: string;
+  };
   /** optional version number to force recompile */
   _version?: number;
   /** track parent config  */
@@ -59,7 +78,12 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     sheets_filter_function: (gdriveEntry) => true,
     assets_filter_function: (gdriveEntry) => true,
   },
-  app_constants: {} as any, // populated by `getDefaultAppConstants()`
+  android: {},
+  app_config: {},
+  local_drive: {
+    assets_path: "./assets",
+    sheets_path: "./sheets",
+  },
   app_data: {
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,

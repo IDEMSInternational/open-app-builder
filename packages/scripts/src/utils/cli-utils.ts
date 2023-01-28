@@ -24,3 +24,11 @@ export function pad(str: string | number, chars: number) {
   const padChars = Math.max(chars - str.length + 1, 0);
   return str + new Array(padChars).join(" ");
 }
+/** helper function used for dev to wait a fixed amount of time */
+export function _wait(ms: number) {
+  return new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, ms);
+  });
+}

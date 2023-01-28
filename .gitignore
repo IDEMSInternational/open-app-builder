@@ -9,6 +9,7 @@
 Thumbs.db
 UserInterfaceState.xcuserstate
 $RECYCLE.BIN/
+~$*.xlsx
 
 *.log
 log.txt
@@ -58,3 +59,6 @@ node_modules
 
 .angular
 .gradle
+
+# Ignore auto-lock-install
+yarn.auto-install

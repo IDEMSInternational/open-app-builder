@@ -51,8 +51,7 @@ the online database and authentication methods.
 ```
 $ cp src/environments/firebaseConfig.sample.ts src/environments/firebaseConfig.ts
 ```
-The default file is blank and so some features may not be availabe (e.g. testing google sign-in)
-It can be replaced with a version requested from the dev team.
+The default file is blank. It should be replaced with a version requested from the dev team.
 
 (Note - this process will likely be simplified in the future)
 
@@ -66,8 +65,8 @@ This will start a local server and serve the app in your browser on http://local
 
 # For Content Coders
 
-Please see [Quickstart Authors](https://idemsinternational.github.io/parenting-app-ui/developers/quickstart/)
+Please see [Quickstart Authors](https://idemsinternational.github.io/parenting-app-ui/authors/quickstart/)
 
 # For Developers
 
-Please see [Quickstart Developers]([/documentation/quickstart-developers.md](https://idemsinternational.github.io/parenting-app-ui/authors/quickstart/))
+Please see [Quickstart Developers](https://idemsinternational.github.io/parenting-app-ui/developers/quickstart/)

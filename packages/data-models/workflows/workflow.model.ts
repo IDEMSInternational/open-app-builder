@@ -9,14 +9,18 @@ export interface IWorkflowContext {
 
 interface IWorkflowStep {
   name: string;
-  function: (context: {
-    config: IDeploymentConfig;
-    workflow: IWorkflowContext;
-    tasks: ITasks;
-    /** Positional args passed to workflow script */
-    args: string[];
-  }) => Promise<any>;
+  condition?: (context: IWorkflowStepContext) => Promise<boolean>;
+  function: (context: IWorkflowStepContext) => Promise<any>;
 }
+interface IWorkflowStepContext {
+  config: IDeploymentConfig;
+  workflow: IWorkflowContext;
+  tasks: ITasks;
+  /** Positional args passed to workflow script */
+  args: string[];
+  options: { [optionName: string]: string | boolean };
+}
+
 export interface IWorkflow {
   /**
    * The label will be used to select the workflow from a list.
@@ -24,6 +28,7 @@ export interface IWorkflow {
    **/
   label?: string;
   steps: IWorkflowStep[];
+  options?: { flags: string; description?: string; defaultValue?: string | boolean }[];
 }
 
 export interface IDeploymentWorkflows {

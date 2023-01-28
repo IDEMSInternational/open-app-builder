@@ -1,0 +1,2243 @@
+{
+  "flow_type": "template",
+  "flow_name": "home_screen",
+  "status": "released",
+  "rows": [
+    {
+      "type": "set_field",
+      "name": "first_click_hs_weekly_workshops",
+      "value": "@fields.click_hs_weekly_workshops",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!@fields.first_click_hs_weekly_workshops",
+      "exclude_from_translation": true,
+      "_nested_name": "first_click_hs_weekly_workshops",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.click_hs_weekly_workshops",
+            "matchedExpression": "@fields.click_hs_weekly_workshops",
+            "type": "fields",
+            "fieldName": "click_hs_weekly_workshops"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!@fields.first_click_hs_weekly_workshops",
+            "matchedExpression": "!@fields.first_click_hs_weekly_workshops",
+            "type": "fields",
+            "fieldName": "first_click_hs_weekly_workshops"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.click_hs_weekly_workshops": [
+          "value"
+        ],
+        "!@fields.first_click_hs_weekly_workshops": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "first_click_hs_weekly_workshops_quick_start",
+      "value": "@fields.click_hs_weekly_workshops_quick_start",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!@fields.first_click_hs_weekly_workshops_quick_start",
+      "exclude_from_translation": true,
+      "_nested_name": "first_click_hs_weekly_workshops_quick_start",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.click_hs_weekly_workshops_quick_start",
+            "matchedExpression": "@fields.click_hs_weekly_workshops_quick_start",
+            "type": "fields",
+            "fieldName": "click_hs_weekly_workshops_quick_start"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!@fields.first_click_hs_weekly_workshops_quick_start",
+            "matchedExpression": "!@fields.first_click_hs_weekly_workshops_quick_start",
+            "type": "fields",
+            "fieldName": "first_click_hs_weekly_workshops_quick_start"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.click_hs_weekly_workshops_quick_start": [
+          "value"
+        ],
+        "!@fields.first_click_hs_weekly_workshops_quick_start": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "first_click_hs_parent_points",
+      "value": "@fields.click_hs_parent_points",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!@fields.first_click_hs_parent_points",
+      "exclude_from_translation": true,
+      "_nested_name": "first_click_hs_parent_points",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.click_hs_parent_points",
+            "matchedExpression": "@fields.click_hs_parent_points",
+            "type": "fields",
+            "fieldName": "click_hs_parent_points"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!@fields.first_click_hs_parent_points",
+            "matchedExpression": "!@fields.first_click_hs_parent_points",
+            "type": "fields",
+            "fieldName": "first_click_hs_parent_points"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.click_hs_parent_points": [
+          "value"
+        ],
+        "!@fields.first_click_hs_parent_points": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "first_click_hs_parent_points_quick_start",
+      "value": "@fields.click_hs_parent_points_quick_start",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!@fields.first_click_hs_parent_points_quick_start",
+      "exclude_from_translation": true,
+      "_nested_name": "first_click_hs_parent_points_quick_start",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.click_hs_parent_points_quick_start",
+            "matchedExpression": "@fields.click_hs_parent_points_quick_start",
+            "type": "fields",
+            "fieldName": "click_hs_parent_points_quick_start"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!@fields.first_click_hs_parent_points_quick_start",
+            "matchedExpression": "!@fields.first_click_hs_parent_points_quick_start",
+            "type": "fields",
+            "fieldName": "first_click_hs_parent_points_quick_start"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.click_hs_parent_points_quick_start": [
+          "value"
+        ],
+        "!@fields.first_click_hs_parent_points_quick_start": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "first_click_hs_parent_centre",
+      "value": "@fields.click_hs_parent_centre",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!@fields.first_click_hs_parent_centre",
+      "exclude_from_translation": true,
+      "_nested_name": "first_click_hs_parent_centre",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.click_hs_parent_centre",
+            "matchedExpression": "@fields.click_hs_parent_centre",
+            "type": "fields",
+            "fieldName": "click_hs_parent_centre"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!@fields.first_click_hs_parent_centre",
+            "matchedExpression": "!@fields.first_click_hs_parent_centre",
+            "type": "fields",
+            "fieldName": "first_click_hs_parent_centre"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.click_hs_parent_centre": [
+          "value"
+        ],
+        "!@fields.first_click_hs_parent_centre": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "first_click_hs_parent_centre_quick_start",
+      "value": "@fields.click_hs_parent_centre_quick_start",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!@fields.first_click_hs_parent_centre_quick_start",
+      "exclude_from_translation": true,
+      "_nested_name": "first_click_hs_parent_centre_quick_start",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.click_hs_parent_centre_quick_start",
+            "matchedExpression": "@fields.click_hs_parent_centre_quick_start",
+            "type": "fields",
+            "fieldName": "click_hs_parent_centre_quick_start"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!@fields.first_click_hs_parent_centre_quick_start",
+            "matchedExpression": "!@fields.first_click_hs_parent_centre_quick_start",
+            "type": "fields",
+            "fieldName": "first_click_hs_parent_centre_quick_start"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.click_hs_parent_centre_quick_start": [
+          "value"
+        ],
+        "!@fields.first_click_hs_parent_centre_quick_start": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "now",
+      "value": "@calc(timestamp())",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "now",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@calc(timestamp())",
+            "matchedExpression": "@calc(timestamp())",
+            "type": "calc",
+            "fieldName": "timestamp()"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@calc(timestamp())": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "clicks_all_time",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "name": "click_hs_weekly_workshops_count",
+          "value": "+@fields.click_hs_weekly_workshops_count",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_all_time.click_hs_weekly_workshops_count",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "+@fields.click_hs_weekly_workshops_count",
+                "matchedExpression": "@fields.click_hs_weekly_workshops_count",
+                "type": "fields",
+                "fieldName": "click_hs_weekly_workshops_count"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.click_hs_weekly_workshops_count": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "click_hs_parent_points_count",
+          "value": "+@fields.click_hs_parent_points_count",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_all_time.click_hs_parent_points_count",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "+@fields.click_hs_parent_points_count",
+                "matchedExpression": "@fields.click_hs_parent_points_count",
+                "type": "fields",
+                "fieldName": "click_hs_parent_points_count"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.click_hs_parent_points_count": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "click_hs_parent_centre_count",
+          "value": "+@fields.click_hs_parent_centre_count",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_all_time.click_hs_parent_centre_count",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "+@fields.click_hs_parent_centre_count",
+                "matchedExpression": "@fields.click_hs_parent_centre_count",
+                "type": "fields",
+                "fieldName": "click_hs_parent_centre_count"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.click_hs_parent_centre_count": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "click_hs_weekly_workshops_quick_start_count",
+          "value": "+@fields.click_hs_weekly_workshops_quick_start_count",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_all_time.click_hs_weekly_workshops_quick_start_count",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "+@fields.click_hs_weekly_workshops_quick_start_count",
+                "matchedExpression": "@fields.click_hs_weekly_workshops_quick_start_count",
+                "type": "fields",
+                "fieldName": "click_hs_weekly_workshops_quick_start_count"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.click_hs_weekly_workshops_quick_start_count": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "click_hs_parent_points_quick_start_count",
+          "value": "+@fields.click_hs_parent_points_quick_start_count",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_all_time.click_hs_parent_points_quick_start_count",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "+@fields.click_hs_parent_points_quick_start_count",
+                "matchedExpression": "@fields.click_hs_parent_points_quick_start_count",
+                "type": "fields",
+                "fieldName": "click_hs_parent_points_quick_start_count"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.click_hs_parent_points_quick_start_count": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "click_hs_parent_centre_quick_start_count",
+          "value": "+@fields.click_hs_parent_centre_quick_start_count",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_all_time.click_hs_parent_centre_quick_start_count",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "+@fields.click_hs_parent_centre_quick_start_count",
+                "matchedExpression": "@fields.click_hs_parent_centre_quick_start_count",
+                "type": "fields",
+                "fieldName": "click_hs_parent_centre_quick_start_count"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.click_hs_parent_centre_quick_start_count": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "clicks_all_time"
+    },
+    {
+      "type": "display_group",
+      "name": "clicks_this_week",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "name": "workshop_id",
+          "value": "@fields.workshop_id",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "clicks_this_week.workshop_id",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@fields.workshop_id",
+                "matchedExpression": "@fields.workshop_id",
+                "type": "fields",
+                "fieldName": "workshop_id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.workshop_id": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "weekly_click_hs_weekly_workshops_field",
+          "value": "click_hs_weekly_workshops_count_@local.workshop_id",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_this_week.weekly_click_hs_weekly_workshops_field",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "click_hs_weekly_workshops_count_@local.workshop_id",
+                "matchedExpression": "@local.workshop_id",
+                "type": "local",
+                "fieldName": "workshop_id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_id": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "weekly_click_hs_parent_points_field",
+          "value": "click_hs_parent_points_@local.workshop_id",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_this_week.weekly_click_hs_parent_points_field",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "click_hs_parent_points_@local.workshop_id",
+                "matchedExpression": "@local.workshop_id",
+                "type": "local",
+                "fieldName": "workshop_id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_id": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "weekly_click_hs_parent_centre_field",
+          "value": "click_hs_parent_centre_@local.workshop_id",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_this_week.weekly_click_hs_parent_centre_field",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "click_hs_parent_centre_@local.workshop_id",
+                "matchedExpression": "@local.workshop_id",
+                "type": "local",
+                "fieldName": "workshop_id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_id": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "weekly_click_hs_weekly_workshops_quick_start_field",
+          "value": "click_hs_weekly_workshops_quick_start_@local.workshop_id",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_this_week.weekly_click_hs_weekly_workshops_quick_start_field",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "click_hs_weekly_workshops_quick_start_@local.workshop_id",
+                "matchedExpression": "@local.workshop_id",
+                "type": "local",
+                "fieldName": "workshop_id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_id": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "weekly_click_hs_parent_points_quick_start_field",
+          "value": "click_hs_parent_points_quick_start_@local.workshop_id",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_this_week.weekly_click_hs_parent_points_quick_start_field",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "click_hs_parent_points_quick_start_@local.workshop_id",
+                "matchedExpression": "@local.workshop_id",
+                "type": "local",
+                "fieldName": "workshop_id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_id": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "weekly_click_hs_parent_centre_quick_start_field",
+          "value": "click_hs_parent_centre_quick_start_@local.workshop_id",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_this_week.weekly_click_hs_parent_centre_quick_start_field",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "click_hs_parent_centre_quick_start_@local.workshop_id",
+                "matchedExpression": "@local.workshop_id",
+                "type": "local",
+                "fieldName": "workshop_id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_id": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "weekly_click_hs_weekly_workshops_count",
+          "value": "+@fields.@local.weekly_click_hs_weekly_workshops_field",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_this_week.weekly_click_hs_weekly_workshops_count",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "+@fields.@local.weekly_click_hs_weekly_workshops_field",
+                "matchedExpression": "@local.weekly_click_hs_weekly_workshops_field",
+                "type": "local",
+                "fieldName": "weekly_click_hs_weekly_workshops_field"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.weekly_click_hs_weekly_workshops_field": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "weekly_click_hs_parent_points_count",
+          "value": "+@fields.@local.weekly_click_hs_parent_points_field",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_this_week.weekly_click_hs_parent_points_count",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "+@fields.@local.weekly_click_hs_parent_points_field",
+                "matchedExpression": "@local.weekly_click_hs_parent_points_field",
+                "type": "local",
+                "fieldName": "weekly_click_hs_parent_points_field"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.weekly_click_hs_parent_points_field": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "weekly_click_hs_parent_centre_count",
+          "value": "+@fields.@local.weekly_click_hs_parent_centre_field",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_this_week.weekly_click_hs_parent_centre_count",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "+@fields.@local.weekly_click_hs_parent_centre_field",
+                "matchedExpression": "@local.weekly_click_hs_parent_centre_field",
+                "type": "local",
+                "fieldName": "weekly_click_hs_parent_centre_field"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.weekly_click_hs_parent_centre_field": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "weekly_click_hs_weekly_workshops_quick_start_count",
+          "value": "+@fields.@local.weekly_click_hs_weekly_workshops_quick_start_field",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_this_week.weekly_click_hs_weekly_workshops_quick_start_count",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "+@fields.@local.weekly_click_hs_weekly_workshops_quick_start_field",
+                "matchedExpression": "@local.weekly_click_hs_weekly_workshops_quick_start_field",
+                "type": "local",
+                "fieldName": "weekly_click_hs_weekly_workshops_quick_start_field"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.weekly_click_hs_weekly_workshops_quick_start_field": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "weekly_click_hs_parent_points_quick_start_count",
+          "value": "+@fields.@local.weekly_click_hs_parent_points_quick_start_field",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_this_week.weekly_click_hs_parent_points_quick_start_count",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "+@fields.@local.weekly_click_hs_parent_points_quick_start_field",
+                "matchedExpression": "@local.weekly_click_hs_parent_points_quick_start_field",
+                "type": "local",
+                "fieldName": "weekly_click_hs_parent_points_quick_start_field"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.weekly_click_hs_parent_points_quick_start_field": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "weekly_click_hs_parent_centre_quick_start_count",
+          "value": "+@fields.@local.weekly_click_hs_parent_centre_quick_start_field",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "clicks_this_week.weekly_click_hs_parent_centre_quick_start_count",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "+@fields.@local.weekly_click_hs_parent_centre_quick_start_field",
+                "matchedExpression": "@local.weekly_click_hs_parent_centre_quick_start_field",
+                "type": "local",
+                "fieldName": "weekly_click_hs_parent_centre_quick_start_field"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.weekly_click_hs_parent_centre_quick_start_field": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "clicks_this_week"
+    },
+    {
+      "name": "weekly_workshops_campaign",
+      "value": "@campaign.weekly_workshops",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "weekly_workshops_campaign",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@campaign.weekly_workshops",
+            "matchedExpression": "@campaign.weekly_workshops",
+            "type": "campaign",
+            "fieldName": "weekly_workshops"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@campaign.weekly_workshops": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "parent_points_campaign",
+      "value": "@campaign.parent_points",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "parent_points_campaign",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@campaign.parent_points",
+            "matchedExpression": "@campaign.parent_points",
+            "type": "campaign",
+            "fieldName": "parent_points"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@campaign.parent_points": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "parent_centre_campaign",
+      "value": "@campaign.parent_centre",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "parent_centre_campaign",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@campaign.parent_centre",
+            "matchedExpression": "@campaign.parent_centre",
+            "type": "campaign",
+            "fieldName": "parent_centre"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@campaign.parent_centre": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "update_action_list",
+      "name": "nav_resume_actions",
+      "action_list": [
+        {
+          "trigger": "nav_resume",
+          "action_id": "emit",
+          "args": [
+            "force_reload"
+          ],
+          "_raw": "nav_resume | emit:force_reload",
+          "_cleaned": "nav_resume | emit:force_reload"
+        }
+      ],
+      "_nested_name": "nav_resume_actions"
+    },
+    {
+      "type": "display_group",
+      "name": "tile_weekly_workshops",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "weekly_workshops"
+          ],
+          "_raw": "click | go_to:weekly_workshops",
+          "_cleaned": "click | go_to:weekly_workshops"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "click_hs_weekly_workshops",
+            "@local.now"
+          ],
+          "_raw": "click | set_field: click_hs_weekly_workshops: @local.now",
+          "_cleaned": "click | set_field: click_hs_weekly_workshops: @local.now"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "click_hs_weekly_workshops_count",
+            "@local.click_hs_weekly_workshops_count +1"
+          ],
+          "_raw": "click | set_field: click_hs_weekly_workshops_count: @local.click_hs_weekly_workshops_count +1",
+          "_cleaned": "click | set_field: click_hs_weekly_workshops_count: @local.click_hs_weekly_workshops_count +1"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "@local.weekly_click_hs_weekly_workshops_field",
+            "@local.weekly_click_hs_weekly_workshops_count +1"
+          ],
+          "_raw": "click | set_field: @local.weekly_click_hs_weekly_workshops_field : @local.weekly_click_hs_weekly_workshops_count +1",
+          "_cleaned": "click | set_field: @local.weekly_click_hs_weekly_workshops_field : @local.weekly_click_hs_weekly_workshops_count +1"
+        }
+      ],
+      "parameter_list": {
+        "style": "home_screen light"
+      },
+      "rows": [
+        {
+          "type": "lottie_animation",
+          "name": "image_weekly_workshops",
+          "value": "plh_lottie/weekly_workshops.json",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "tile_weekly_workshops.image_weekly_workshops"
+        },
+        {
+          "type": "display_group",
+          "name": "dg_weekly_workshops",
+          "parameter_list": {
+            "style": "column"
+          },
+          "rows": [
+            {
+              "type": "title",
+              "name": "title_weekly_workshops",
+              "value": "@global.weekly_workshops",
+              "_translations": {
+                "value": {}
+              },
+              "parameter_list": {
+                "style": "alternative"
+              },
+              "_nested_name": "tile_weekly_workshops.dg_weekly_workshops.title_weekly_workshops",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.weekly_workshops",
+                    "matchedExpression": "@global.weekly_workshops",
+                    "type": "global",
+                    "fieldName": "weekly_workshops"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.weekly_workshops": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "round_button",
+              "name": "quick_start_weekly_workshops",
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "trigger_actions",
+                  "args": [
+                    "@local.weekly_workshops_campaign.action_list"
+                  ],
+                  "_raw": "click | trigger_actions: @local.weekly_workshops_campaign.action_list",
+                  "_cleaned": "click | trigger_actions: @local.weekly_workshops_campaign.action_list"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "click_hs_weekly_workshops_quick_start",
+                    "@local.now"
+                  ],
+                  "_raw": "click | set_field: click_hs_weekly_workshops_quick_start: @local.now",
+                  "_cleaned": "click | set_field: click_hs_weekly_workshops_quick_start: @local.now"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "click_hs_weekly_workshops_quick_start_count",
+                    "@local.click_hs_weekly_workshops_quick_start_count+1"
+                  ],
+                  "_raw": "click | set_field: click_hs_weekly_workshops_quick_start_count: @local.click_hs_weekly_workshops_quick_start_count+1",
+                  "_cleaned": "click | set_field: click_hs_weekly_workshops_quick_start_count: @local.click_hs_weekly_workshops_quick_start_count+1"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "@local.weekly_click_hs_weekly_workshops_quick_start_field",
+                    "@local.weekly_click_hs_weekly_workshops_quick_start_count+1"
+                  ],
+                  "_raw": "click | set_field: @local.weekly_click_hs_weekly_workshops_quick_start_field: @local.weekly_click_hs_weekly_workshops_quick_start_count+1",
+                  "_cleaned": "click | set_field: @local.weekly_click_hs_weekly_workshops_quick_start_field: @local.weekly_click_hs_weekly_workshops_quick_start_count+1"
+                }
+              ],
+              "hidden": "@local.weekly_workshops_campaign.id == \"default\"",
+              "exclude_from_translation": true,
+              "parameter_list": {
+                "icon_src": "@local.weekly_workshops_campaign.icon",
+                "style": "home_screen yellow"
+              },
+              "_nested_name": "tile_weekly_workshops.dg_weekly_workshops.quick_start_weekly_workshops",
+              "_dynamicFields": {
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.weekly_workshops_campaign.action_list",
+                          "matchedExpression": "@local.weekly_workshops_campaign.action_list",
+                          "type": "local",
+                          "fieldName": "weekly_workshops_campaign"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | trigger_actions: @local.weekly_workshops_campaign.action_list",
+                        "matchedExpression": "@local.weekly_workshops_campaign.action_list",
+                        "type": "local",
+                        "fieldName": "weekly_workshops_campaign"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | trigger_actions: @local.weekly_workshops_campaign.action_list",
+                        "matchedExpression": "@local.weekly_workshops_campaign.action_list",
+                        "type": "local",
+                        "fieldName": "weekly_workshops_campaign"
+                      }
+                    ]
+                  },
+                  "1": {
+                    "args": {
+                      "1": [
+                        {
+                          "fullExpression": "@local.now",
+                          "matchedExpression": "@local.now",
+                          "type": "local",
+                          "fieldName": "now"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | set_field: click_hs_weekly_workshops_quick_start: @local.now",
+                        "matchedExpression": "@local.now",
+                        "type": "local",
+                        "fieldName": "now"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | set_field: click_hs_weekly_workshops_quick_start: @local.now",
+                        "matchedExpression": "@local.now",
+                        "type": "local",
+                        "fieldName": "now"
+                      }
+                    ]
+                  },
+                  "2": {
+                    "args": {
+                      "1": [
+                        {
+                          "fullExpression": "@local.click_hs_weekly_workshops_quick_start_count+1",
+                          "matchedExpression": "@local.click_hs_weekly_workshops_quick_start_count",
+                          "type": "local",
+                          "fieldName": "click_hs_weekly_workshops_quick_start_count"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | set_field: click_hs_weekly_workshops_quick_start_count: @local.click_hs_weekly_workshops_quick_start_count+1",
+                        "matchedExpression": "@local.click_hs_weekly_workshops_quick_start_count",
+                        "type": "local",
+                        "fieldName": "click_hs_weekly_workshops_quick_start_count"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | set_field: click_hs_weekly_workshops_quick_start_count: @local.click_hs_weekly_workshops_quick_start_count+1",
+                        "matchedExpression": "@local.click_hs_weekly_workshops_quick_start_count",
+                        "type": "local",
+                        "fieldName": "click_hs_weekly_workshops_quick_start_count"
+                      }
+                    ]
+                  },
+                  "3": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.weekly_click_hs_weekly_workshops_quick_start_field",
+                          "matchedExpression": "@local.weekly_click_hs_weekly_workshops_quick_start_field",
+                          "type": "local",
+                          "fieldName": "weekly_click_hs_weekly_workshops_quick_start_field"
+                        }
+                      ],
+                      "1": [
+                        {
+                          "fullExpression": "@local.weekly_click_hs_weekly_workshops_quick_start_count+1",
+                          "matchedExpression": "@local.weekly_click_hs_weekly_workshops_quick_start_count",
+                          "type": "local",
+                          "fieldName": "weekly_click_hs_weekly_workshops_quick_start_count"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | set_field: @local.weekly_click_hs_weekly_workshops_quick_start_field: @local.weekly_click_hs_weekly_workshops_quick_start_count+1",
+                        "matchedExpression": "@local.weekly_click_hs_weekly_workshops_quick_start_field",
+                        "type": "local",
+                        "fieldName": "weekly_click_hs_weekly_workshops_quick_start_field"
+                      },
+                      {
+                        "fullExpression": "click | set_field: @local.weekly_click_hs_weekly_workshops_quick_start_field: @local.weekly_click_hs_weekly_workshops_quick_start_count+1",
+                        "matchedExpression": "@local.weekly_click_hs_weekly_workshops_quick_start_count",
+                        "type": "local",
+                        "fieldName": "weekly_click_hs_weekly_workshops_quick_start_count"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | set_field: @local.weekly_click_hs_weekly_workshops_quick_start_field: @local.weekly_click_hs_weekly_workshops_quick_start_count+1",
+                        "matchedExpression": "@local.weekly_click_hs_weekly_workshops_quick_start_field",
+                        "type": "local",
+                        "fieldName": "weekly_click_hs_weekly_workshops_quick_start_field"
+                      },
+                      {
+                        "fullExpression": "click | set_field: @local.weekly_click_hs_weekly_workshops_quick_start_field: @local.weekly_click_hs_weekly_workshops_quick_start_count+1",
+                        "matchedExpression": "@local.weekly_click_hs_weekly_workshops_quick_start_count",
+                        "type": "local",
+                        "fieldName": "weekly_click_hs_weekly_workshops_quick_start_count"
+                      }
+                    ]
+                  }
+                },
+                "hidden": [
+                  {
+                    "fullExpression": "@local.weekly_workshops_campaign.id == \"default\"",
+                    "matchedExpression": "@local.weekly_workshops_campaign.id",
+                    "type": "local",
+                    "fieldName": "weekly_workshops_campaign"
+                  }
+                ],
+                "parameter_list": {
+                  "icon_src": [
+                    {
+                      "fullExpression": "@local.weekly_workshops_campaign.icon",
+                      "matchedExpression": "@local.weekly_workshops_campaign.icon",
+                      "type": "local",
+                      "fieldName": "weekly_workshops_campaign"
+                    }
+                  ]
+                }
+              },
+              "_dynamicDependencies": {
+                "@local.weekly_workshops_campaign.action_list": [
+                  "action_list.0.args.0",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned"
+                ],
+                "@local.now": [
+                  "action_list.1.args.1",
+                  "action_list.1._raw",
+                  "action_list.1._cleaned"
+                ],
+                "@local.click_hs_weekly_workshops_quick_start_count": [
+                  "action_list.2.args.1",
+                  "action_list.2._raw",
+                  "action_list.2._cleaned"
+                ],
+                "@local.weekly_click_hs_weekly_workshops_quick_start_field": [
+                  "action_list.3.args.0",
+                  "action_list.3._raw",
+                  "action_list.3._cleaned"
+                ],
+                "@local.weekly_click_hs_weekly_workshops_quick_start_count": [
+                  "action_list.3.args.1",
+                  "action_list.3._raw",
+                  "action_list.3._cleaned"
+                ],
+                "@local.weekly_workshops_campaign.id": [
+                  "hidden"
+                ],
+                "@local.weekly_workshops_campaign.icon": [
+                  "parameter_list.icon_src"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tile_weekly_workshops.dg_weekly_workshops"
+        }
+      ],
+      "_nested_name": "tile_weekly_workshops",
+      "_dynamicFields": {
+        "action_list": {
+          "1": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "@local.now",
+                  "matchedExpression": "@local.now",
+                  "type": "local",
+                  "fieldName": "now"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: click_hs_weekly_workshops: @local.now",
+                "matchedExpression": "@local.now",
+                "type": "local",
+                "fieldName": "now"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: click_hs_weekly_workshops: @local.now",
+                "matchedExpression": "@local.now",
+                "type": "local",
+                "fieldName": "now"
+              }
+            ]
+          },
+          "2": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "@local.click_hs_weekly_workshops_count +1",
+                  "matchedExpression": "@local.click_hs_weekly_workshops_count",
+                  "type": "local",
+                  "fieldName": "click_hs_weekly_workshops_count"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: click_hs_weekly_workshops_count: @local.click_hs_weekly_workshops_count +1",
+                "matchedExpression": "@local.click_hs_weekly_workshops_count",
+                "type": "local",
+                "fieldName": "click_hs_weekly_workshops_count"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: click_hs_weekly_workshops_count: @local.click_hs_weekly_workshops_count +1",
+                "matchedExpression": "@local.click_hs_weekly_workshops_count",
+                "type": "local",
+                "fieldName": "click_hs_weekly_workshops_count"
+              }
+            ]
+          },
+          "3": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.weekly_click_hs_weekly_workshops_field",
+                  "matchedExpression": "@local.weekly_click_hs_weekly_workshops_field",
+                  "type": "local",
+                  "fieldName": "weekly_click_hs_weekly_workshops_field"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@local.weekly_click_hs_weekly_workshops_count +1",
+                  "matchedExpression": "@local.weekly_click_hs_weekly_workshops_count",
+                  "type": "local",
+                  "fieldName": "weekly_click_hs_weekly_workshops_count"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: @local.weekly_click_hs_weekly_workshops_field : @local.weekly_click_hs_weekly_workshops_count +1",
+                "matchedExpression": "@local.weekly_click_hs_weekly_workshops_field",
+                "type": "local",
+                "fieldName": "weekly_click_hs_weekly_workshops_field"
+              },
+              {
+                "fullExpression": "click | set_field: @local.weekly_click_hs_weekly_workshops_field : @local.weekly_click_hs_weekly_workshops_count +1",
+                "matchedExpression": "@local.weekly_click_hs_weekly_workshops_count",
+                "type": "local",
+                "fieldName": "weekly_click_hs_weekly_workshops_count"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: @local.weekly_click_hs_weekly_workshops_field : @local.weekly_click_hs_weekly_workshops_count +1",
+                "matchedExpression": "@local.weekly_click_hs_weekly_workshops_field",
+                "type": "local",
+                "fieldName": "weekly_click_hs_weekly_workshops_field"
+              },
+              {
+                "fullExpression": "click | set_field: @local.weekly_click_hs_weekly_workshops_field : @local.weekly_click_hs_weekly_workshops_count +1",
+                "matchedExpression": "@local.weekly_click_hs_weekly_workshops_count",
+                "type": "local",
+                "fieldName": "weekly_click_hs_weekly_workshops_count"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.now": [
+          "action_list.1.args.1",
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ],
+        "@local.click_hs_weekly_workshops_count": [
+          "action_list.2.args.1",
+          "action_list.2._raw",
+          "action_list.2._cleaned"
+        ],
+        "@local.weekly_click_hs_weekly_workshops_field": [
+          "action_list.3.args.0",
+          "action_list.3._raw",
+          "action_list.3._cleaned"
+        ],
+        "@local.weekly_click_hs_weekly_workshops_count": [
+          "action_list.3.args.1",
+          "action_list.3._raw",
+          "action_list.3._cleaned"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "tile_parent_points",
+      "value": "tile_parent_points",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "parent_points"
+          ],
+          "_raw": "click | go_to:parent_points",
+          "_cleaned": "click | go_to:parent_points"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "click_hs_parent_points",
+            "@local.now"
+          ],
+          "_raw": "click | set_field: click_hs_parent_points: @local.now",
+          "_cleaned": "click | set_field: click_hs_parent_points: @local.now"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "click_hs_parent_points_count",
+            "@local.click_hs_parent_points_count +1"
+          ],
+          "_raw": "click | set_field: click_hs_parent_points_count: @local.click_hs_parent_points_count +1",
+          "_cleaned": "click | set_field: click_hs_parent_points_count: @local.click_hs_parent_points_count +1"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "@local.weekly_click_hs_parent_points_field",
+            "@local.weekly_click_hs_parent_points_count +1"
+          ],
+          "_raw": "click | set_field: @local.weekly_click_hs_parent_points_field: @local.weekly_click_hs_parent_points_count +1",
+          "_cleaned": "click | set_field: @local.weekly_click_hs_parent_points_field: @local.weekly_click_hs_parent_points_count +1"
+        }
+      ],
+      "parameter_list": {
+        "style": "home_screen shade"
+      },
+      "rows": [
+        {
+          "type": "lottie_animation",
+          "name": "image_parent_points",
+          "value": "plh_lottie/parent_points.json",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "tile_parent_points.image_parent_points"
+        },
+        {
+          "type": "display_group",
+          "name": "dg_parent_points",
+          "parameter_list": {
+            "style": "column"
+          },
+          "rows": [
+            {
+              "type": "title",
+              "name": "title_parent_points",
+              "value": "@global.parent_points",
+              "_translations": {
+                "value": {}
+              },
+              "parameter_list": {
+                "style": "alternative"
+              },
+              "_nested_name": "tile_parent_points.dg_parent_points.title_parent_points",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.parent_points",
+                    "matchedExpression": "@global.parent_points",
+                    "type": "global",
+                    "fieldName": "parent_points"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.parent_points": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "round_button",
+              "name": "quick_start_parent_points",
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "trigger_actions",
+                  "args": [
+                    "@local.parent_points_campaign.action_list"
+                  ],
+                  "_raw": "click | trigger_actions: @local.parent_points_campaign.action_list",
+                  "_cleaned": "click | trigger_actions: @local.parent_points_campaign.action_list"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "click_hs_parent_points_quick_start",
+                    "@local.now"
+                  ],
+                  "_raw": "click | set_field: click_hs_parent_points_quick_start: @local.now",
+                  "_cleaned": "click | set_field: click_hs_parent_points_quick_start: @local.now"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "click_hs_parent_points_quick_start_count",
+                    "@local.click_hs_parent_points_quick_start_count+1"
+                  ],
+                  "_raw": "click | set_field: click_hs_parent_points_quick_start_count: @local.click_hs_parent_points_quick_start_count+1",
+                  "_cleaned": "click | set_field: click_hs_parent_points_quick_start_count: @local.click_hs_parent_points_quick_start_count+1"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "@local.weekly_click_hs_parent_points_quick_start_field",
+                    "@local.weekly_click_hs_parent_points_quick_start_count+1"
+                  ],
+                  "_raw": "click | set_field: @local.weekly_click_hs_parent_points_quick_start_field: @local.weekly_click_hs_parent_points_quick_start_count+1",
+                  "_cleaned": "click | set_field: @local.weekly_click_hs_parent_points_quick_start_field: @local.weekly_click_hs_parent_points_quick_start_count+1"
+                }
+              ],
+              "hidden": "@local.parent_points_campaign.id == \"default\"",
+              "exclude_from_translation": true,
+              "parameter_list": {
+                "icon_src": "@local.parent_points_campaign.icon",
+                "style": "home_screen orange"
+              },
+              "_nested_name": "tile_parent_points.dg_parent_points.quick_start_parent_points",
+              "_dynamicFields": {
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.parent_points_campaign.action_list",
+                          "matchedExpression": "@local.parent_points_campaign.action_list",
+                          "type": "local",
+                          "fieldName": "parent_points_campaign"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | trigger_actions: @local.parent_points_campaign.action_list",
+                        "matchedExpression": "@local.parent_points_campaign.action_list",
+                        "type": "local",
+                        "fieldName": "parent_points_campaign"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | trigger_actions: @local.parent_points_campaign.action_list",
+                        "matchedExpression": "@local.parent_points_campaign.action_list",
+                        "type": "local",
+                        "fieldName": "parent_points_campaign"
+                      }
+                    ]
+                  },
+                  "1": {
+                    "args": {
+                      "1": [
+                        {
+                          "fullExpression": "@local.now",
+                          "matchedExpression": "@local.now",
+                          "type": "local",
+                          "fieldName": "now"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | set_field: click_hs_parent_points_quick_start: @local.now",
+                        "matchedExpression": "@local.now",
+                        "type": "local",
+                        "fieldName": "now"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | set_field: click_hs_parent_points_quick_start: @local.now",
+                        "matchedExpression": "@local.now",
+                        "type": "local",
+                        "fieldName": "now"
+                      }
+                    ]
+                  },
+                  "2": {
+                    "args": {
+                      "1": [
+                        {
+                          "fullExpression": "@local.click_hs_parent_points_quick_start_count+1",
+                          "matchedExpression": "@local.click_hs_parent_points_quick_start_count",
+                          "type": "local",
+                          "fieldName": "click_hs_parent_points_quick_start_count"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | set_field: click_hs_parent_points_quick_start_count: @local.click_hs_parent_points_quick_start_count+1",
+                        "matchedExpression": "@local.click_hs_parent_points_quick_start_count",
+                        "type": "local",
+                        "fieldName": "click_hs_parent_points_quick_start_count"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | set_field: click_hs_parent_points_quick_start_count: @local.click_hs_parent_points_quick_start_count+1",
+                        "matchedExpression": "@local.click_hs_parent_points_quick_start_count",
+                        "type": "local",
+                        "fieldName": "click_hs_parent_points_quick_start_count"
+                      }
+                    ]
+                  },
+                  "3": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.weekly_click_hs_parent_points_quick_start_field",
+                          "matchedExpression": "@local.weekly_click_hs_parent_points_quick_start_field",
+                          "type": "local",
+                          "fieldName": "weekly_click_hs_parent_points_quick_start_field"
+                        }
+                      ],
+                      "1": [
+                        {
+                          "fullExpression": "@local.weekly_click_hs_parent_points_quick_start_count+1",
+                          "matchedExpression": "@local.weekly_click_hs_parent_points_quick_start_count",
+                          "type": "local",
+                          "fieldName": "weekly_click_hs_parent_points_quick_start_count"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | set_field: @local.weekly_click_hs_parent_points_quick_start_field: @local.weekly_click_hs_parent_points_quick_start_count+1",
+                        "matchedExpression": "@local.weekly_click_hs_parent_points_quick_start_field",
+                        "type": "local",
+                        "fieldName": "weekly_click_hs_parent_points_quick_start_field"
+                      },
+                      {
+                        "fullExpression": "click | set_field: @local.weekly_click_hs_parent_points_quick_start_field: @local.weekly_click_hs_parent_points_quick_start_count+1",
+                        "matchedExpression": "@local.weekly_click_hs_parent_points_quick_start_count",
+                        "type": "local",
+                        "fieldName": "weekly_click_hs_parent_points_quick_start_count"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | set_field: @local.weekly_click_hs_parent_points_quick_start_field: @local.weekly_click_hs_parent_points_quick_start_count+1",
+                        "matchedExpression": "@local.weekly_click_hs_parent_points_quick_start_field",
+                        "type": "local",
+                        "fieldName": "weekly_click_hs_parent_points_quick_start_field"
+                      },
+                      {
+                        "fullExpression": "click | set_field: @local.weekly_click_hs_parent_points_quick_start_field: @local.weekly_click_hs_parent_points_quick_start_count+1",
+                        "matchedExpression": "@local.weekly_click_hs_parent_points_quick_start_count",
+                        "type": "local",
+                        "fieldName": "weekly_click_hs_parent_points_quick_start_count"
+                      }
+                    ]
+                  }
+                },
+                "hidden": [
+                  {
+                    "fullExpression": "@local.parent_points_campaign.id == \"default\"",
+                    "matchedExpression": "@local.parent_points_campaign.id",
+                    "type": "local",
+                    "fieldName": "parent_points_campaign"
+                  }
+                ],
+                "parameter_list": {
+                  "icon_src": [
+                    {
+                      "fullExpression": "@local.parent_points_campaign.icon",
+                      "matchedExpression": "@local.parent_points_campaign.icon",
+                      "type": "local",
+                      "fieldName": "parent_points_campaign"
+                    }
+                  ]
+                }
+              },
+              "_dynamicDependencies": {
+                "@local.parent_points_campaign.action_list": [
+                  "action_list.0.args.0",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned"
+                ],
+                "@local.now": [
+                  "action_list.1.args.1",
+                  "action_list.1._raw",
+                  "action_list.1._cleaned"
+                ],
+                "@local.click_hs_parent_points_quick_start_count": [
+                  "action_list.2.args.1",
+                  "action_list.2._raw",
+                  "action_list.2._cleaned"
+                ],
+                "@local.weekly_click_hs_parent_points_quick_start_field": [
+                  "action_list.3.args.0",
+                  "action_list.3._raw",
+                  "action_list.3._cleaned"
+                ],
+                "@local.weekly_click_hs_parent_points_quick_start_count": [
+                  "action_list.3.args.1",
+                  "action_list.3._raw",
+                  "action_list.3._cleaned"
+                ],
+                "@local.parent_points_campaign.id": [
+                  "hidden"
+                ],
+                "@local.parent_points_campaign.icon": [
+                  "parameter_list.icon_src"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tile_parent_points.dg_parent_points"
+        }
+      ],
+      "_nested_name": "tile_parent_points",
+      "_dynamicFields": {
+        "action_list": {
+          "1": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "@local.now",
+                  "matchedExpression": "@local.now",
+                  "type": "local",
+                  "fieldName": "now"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: click_hs_parent_points: @local.now",
+                "matchedExpression": "@local.now",
+                "type": "local",
+                "fieldName": "now"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: click_hs_parent_points: @local.now",
+                "matchedExpression": "@local.now",
+                "type": "local",
+                "fieldName": "now"
+              }
+            ]
+          },
+          "2": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "@local.click_hs_parent_points_count +1",
+                  "matchedExpression": "@local.click_hs_parent_points_count",
+                  "type": "local",
+                  "fieldName": "click_hs_parent_points_count"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: click_hs_parent_points_count: @local.click_hs_parent_points_count +1",
+                "matchedExpression": "@local.click_hs_parent_points_count",
+                "type": "local",
+                "fieldName": "click_hs_parent_points_count"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: click_hs_parent_points_count: @local.click_hs_parent_points_count +1",
+                "matchedExpression": "@local.click_hs_parent_points_count",
+                "type": "local",
+                "fieldName": "click_hs_parent_points_count"
+              }
+            ]
+          },
+          "3": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.weekly_click_hs_parent_points_field",
+                  "matchedExpression": "@local.weekly_click_hs_parent_points_field",
+                  "type": "local",
+                  "fieldName": "weekly_click_hs_parent_points_field"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@local.weekly_click_hs_parent_points_count +1",
+                  "matchedExpression": "@local.weekly_click_hs_parent_points_count",
+                  "type": "local",
+                  "fieldName": "weekly_click_hs_parent_points_count"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: @local.weekly_click_hs_parent_points_field: @local.weekly_click_hs_parent_points_count +1",
+                "matchedExpression": "@local.weekly_click_hs_parent_points_field",
+                "type": "local",
+                "fieldName": "weekly_click_hs_parent_points_field"
+              },
+              {
+                "fullExpression": "click | set_field: @local.weekly_click_hs_parent_points_field: @local.weekly_click_hs_parent_points_count +1",
+                "matchedExpression": "@local.weekly_click_hs_parent_points_count",
+                "type": "local",
+                "fieldName": "weekly_click_hs_parent_points_count"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: @local.weekly_click_hs_parent_points_field: @local.weekly_click_hs_parent_points_count +1",
+                "matchedExpression": "@local.weekly_click_hs_parent_points_field",
+                "type": "local",
+                "fieldName": "weekly_click_hs_parent_points_field"
+              },
+              {
+                "fullExpression": "click | set_field: @local.weekly_click_hs_parent_points_field: @local.weekly_click_hs_parent_points_count +1",
+                "matchedExpression": "@local.weekly_click_hs_parent_points_count",
+                "type": "local",
+                "fieldName": "weekly_click_hs_parent_points_count"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.now": [
+          "action_list.1.args.1",
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ],
+        "@local.click_hs_parent_points_count": [
+          "action_list.2.args.1",
+          "action_list.2._raw",
+          "action_list.2._cleaned"
+        ],
+        "@local.weekly_click_hs_parent_points_field": [
+          "action_list.3.args.0",
+          "action_list.3._raw",
+          "action_list.3._cleaned"
+        ],
+        "@local.weekly_click_hs_parent_points_count": [
+          "action_list.3.args.1",
+          "action_list.3._raw",
+          "action_list.3._cleaned"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "tile_parent_centre",
+      "value": "tile_parent_centre",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "parent_centre"
+          ],
+          "_raw": "click | go_to:parent_centre",
+          "_cleaned": "click | go_to:parent_centre"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "click_hs_parent_centre",
+            "@local.now"
+          ],
+          "_raw": "click | set_field: click_hs_parent_centre: @local.now",
+          "_cleaned": "click | set_field: click_hs_parent_centre: @local.now"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "click_hs_parent_centre_count",
+            "@local.click_hs_parent_centre_count +1"
+          ],
+          "_raw": "click | set_field: click_hs_parent_centre_count: @local.click_hs_parent_centre_count +1",
+          "_cleaned": "click | set_field: click_hs_parent_centre_count: @local.click_hs_parent_centre_count +1"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "@local.weekly_click_hs_parent_centre_field",
+            "@local.weekly_click_hs_parent_centre_count +1"
+          ],
+          "_raw": "click | set_field: @local.weekly_click_hs_parent_centre_field: @local.weekly_click_hs_parent_centre_count +1",
+          "_cleaned": "click | set_field: @local.weekly_click_hs_parent_centre_field: @local.weekly_click_hs_parent_centre_count +1"
+        }
+      ],
+      "parameter_list": {
+        "style": "home_screen dark"
+      },
+      "rows": [
+        {
+          "type": "lottie_animation",
+          "name": "image_parent_centre",
+          "value": "plh_lottie/parent_centre.json",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "tile_parent_centre.image_parent_centre"
+        },
+        {
+          "type": "display_group",
+          "name": "dg_parent_centre",
+          "parameter_list": {
+            "style": "column"
+          },
+          "rows": [
+            {
+              "type": "title",
+              "name": "title_parent_centre",
+              "value": "@global.parent_centre",
+              "_translations": {
+                "value": {}
+              },
+              "parameter_list": {
+                "style": "alternative"
+              },
+              "_nested_name": "tile_parent_centre.dg_parent_centre.title_parent_centre",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.parent_centre",
+                    "matchedExpression": "@global.parent_centre",
+                    "type": "global",
+                    "fieldName": "parent_centre"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.parent_centre": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "round_button",
+              "name": "quick_start_parent_centre",
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "trigger_actions",
+                  "args": [
+                    "@local.parent_centre_campaign.action_list"
+                  ],
+                  "_raw": "click | trigger_actions: @local.parent_centre_campaign.action_list",
+                  "_cleaned": "click | trigger_actions: @local.parent_centre_campaign.action_list"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "click_hs_parent_centre_quick_start",
+                    "@local.now"
+                  ],
+                  "_raw": "click | set_field: click_hs_parent_centre_quick_start: @local.now",
+                  "_cleaned": "click | set_field: click_hs_parent_centre_quick_start: @local.now"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "click_hs_parent_centre_quick_start_count",
+                    "@local.click_hs_parent_centre_quick_start_count +1"
+                  ],
+                  "_raw": "click | set_field: click_hs_parent_centre_quick_start_count: @local.click_hs_parent_centre_quick_start_count +1",
+                  "_cleaned": "click | set_field: click_hs_parent_centre_quick_start_count: @local.click_hs_parent_centre_quick_start_count +1"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "@local.weekly_click_hs_parent_centre_quick_start_field",
+                    "@local.weekly_click_hs_parent_centre_quick_start_count +1"
+                  ],
+                  "_raw": "click | set_field: @local.weekly_click_hs_parent_centre_quick_start_field: @local.weekly_click_hs_parent_centre_quick_start_count +1",
+                  "_cleaned": "click | set_field: @local.weekly_click_hs_parent_centre_quick_start_field: @local.weekly_click_hs_parent_centre_quick_start_count +1"
+                }
+              ],
+              "hidden": "@local.parent_centre_campaign.id == \"default\"",
+              "exclude_from_translation": true,
+              "parameter_list": {
+                "icon_src": "@local.parent_centre_campaign.icon",
+                "style": "home_screen dark_orange"
+              },
+              "_nested_name": "tile_parent_centre.dg_parent_centre.quick_start_parent_centre",
+              "_dynamicFields": {
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.parent_centre_campaign.action_list",
+                          "matchedExpression": "@local.parent_centre_campaign.action_list",
+                          "type": "local",
+                          "fieldName": "parent_centre_campaign"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | trigger_actions: @local.parent_centre_campaign.action_list",
+                        "matchedExpression": "@local.parent_centre_campaign.action_list",
+                        "type": "local",
+                        "fieldName": "parent_centre_campaign"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | trigger_actions: @local.parent_centre_campaign.action_list",
+                        "matchedExpression": "@local.parent_centre_campaign.action_list",
+                        "type": "local",
+                        "fieldName": "parent_centre_campaign"
+                      }
+                    ]
+                  },
+                  "1": {
+                    "args": {
+                      "1": [
+                        {
+                          "fullExpression": "@local.now",
+                          "matchedExpression": "@local.now",
+                          "type": "local",
+                          "fieldName": "now"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | set_field: click_hs_parent_centre_quick_start: @local.now",
+                        "matchedExpression": "@local.now",
+                        "type": "local",
+                        "fieldName": "now"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | set_field: click_hs_parent_centre_quick_start: @local.now",
+                        "matchedExpression": "@local.now",
+                        "type": "local",
+                        "fieldName": "now"
+                      }
+                    ]
+                  },
+                  "2": {
+                    "args": {
+                      "1": [
+                        {
+                          "fullExpression": "@local.click_hs_parent_centre_quick_start_count +1",
+                          "matchedExpression": "@local.click_hs_parent_centre_quick_start_count",
+                          "type": "local",
+                          "fieldName": "click_hs_parent_centre_quick_start_count"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | set_field: click_hs_parent_centre_quick_start_count: @local.click_hs_parent_centre_quick_start_count +1",
+                        "matchedExpression": "@local.click_hs_parent_centre_quick_start_count",
+                        "type": "local",
+                        "fieldName": "click_hs_parent_centre_quick_start_count"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | set_field: click_hs_parent_centre_quick_start_count: @local.click_hs_parent_centre_quick_start_count +1",
+                        "matchedExpression": "@local.click_hs_parent_centre_quick_start_count",
+                        "type": "local",
+                        "fieldName": "click_hs_parent_centre_quick_start_count"
+                      }
+                    ]
+                  },
+                  "3": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.weekly_click_hs_parent_centre_quick_start_field",
+                          "matchedExpression": "@local.weekly_click_hs_parent_centre_quick_start_field",
+                          "type": "local",
+                          "fieldName": "weekly_click_hs_parent_centre_quick_start_field"
+                        }
+                      ],
+                      "1": [
+                        {
+                          "fullExpression": "@local.weekly_click_hs_parent_centre_quick_start_count +1",
+                          "matchedExpression": "@local.weekly_click_hs_parent_centre_quick_start_count",
+                          "type": "local",
+                          "fieldName": "weekly_click_hs_parent_centre_quick_start_count"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | set_field: @local.weekly_click_hs_parent_centre_quick_start_field: @local.weekly_click_hs_parent_centre_quick_start_count +1",
+                        "matchedExpression": "@local.weekly_click_hs_parent_centre_quick_start_field",
+                        "type": "local",
+                        "fieldName": "weekly_click_hs_parent_centre_quick_start_field"
+                      },
+                      {
+                        "fullExpression": "click | set_field: @local.weekly_click_hs_parent_centre_quick_start_field: @local.weekly_click_hs_parent_centre_quick_start_count +1",
+                        "matchedExpression": "@local.weekly_click_hs_parent_centre_quick_start_count",
+                        "type": "local",
+                        "fieldName": "weekly_click_hs_parent_centre_quick_start_count"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | set_field: @local.weekly_click_hs_parent_centre_quick_start_field: @local.weekly_click_hs_parent_centre_quick_start_count +1",
+                        "matchedExpression": "@local.weekly_click_hs_parent_centre_quick_start_field",
+                        "type": "local",
+                        "fieldName": "weekly_click_hs_parent_centre_quick_start_field"
+                      },
+                      {
+                        "fullExpression": "click | set_field: @local.weekly_click_hs_parent_centre_quick_start_field: @local.weekly_click_hs_parent_centre_quick_start_count +1",
+                        "matchedExpression": "@local.weekly_click_hs_parent_centre_quick_start_count",
+                        "type": "local",
+                        "fieldName": "weekly_click_hs_parent_centre_quick_start_count"
+                      }
+                    ]
+                  }
+                },
+                "hidden": [
+                  {
+                    "fullExpression": "@local.parent_centre_campaign.id == \"default\"",
+                    "matchedExpression": "@local.parent_centre_campaign.id",
+                    "type": "local",
+                    "fieldName": "parent_centre_campaign"
+                  }
+                ],
+                "parameter_list": {
+                  "icon_src": [
+                    {
+                      "fullExpression": "@local.parent_centre_campaign.icon",
+                      "matchedExpression": "@local.parent_centre_campaign.icon",
+                      "type": "local",
+                      "fieldName": "parent_centre_campaign"
+                    }
+                  ]
+                }
+              },
+              "_dynamicDependencies": {
+                "@local.parent_centre_campaign.action_list": [
+                  "action_list.0.args.0",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned"
+                ],
+                "@local.now": [
+                  "action_list.1.args.1",
+                  "action_list.1._raw",
+                  "action_list.1._cleaned"
+                ],
+                "@local.click_hs_parent_centre_quick_start_count": [
+                  "action_list.2.args.1",
+                  "action_list.2._raw",
+                  "action_list.2._cleaned"
+                ],
+                "@local.weekly_click_hs_parent_centre_quick_start_field": [
+                  "action_list.3.args.0",
+                  "action_list.3._raw",
+                  "action_list.3._cleaned"
+                ],
+                "@local.weekly_click_hs_parent_centre_quick_start_count": [
+                  "action_list.3.args.1",
+                  "action_list.3._raw",
+                  "action_list.3._cleaned"
+                ],
+                "@local.parent_centre_campaign.id": [
+                  "hidden"
+                ],
+                "@local.parent_centre_campaign.icon": [
+                  "parameter_list.icon_src"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tile_parent_centre.dg_parent_centre"
+        }
+      ],
+      "_nested_name": "tile_parent_centre",
+      "_dynamicFields": {
+        "action_list": {
+          "1": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "@local.now",
+                  "matchedExpression": "@local.now",
+                  "type": "local",
+                  "fieldName": "now"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: click_hs_parent_centre: @local.now",
+                "matchedExpression": "@local.now",
+                "type": "local",
+                "fieldName": "now"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: click_hs_parent_centre: @local.now",
+                "matchedExpression": "@local.now",
+                "type": "local",
+                "fieldName": "now"
+              }
+            ]
+          },
+          "2": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "@local.click_hs_parent_centre_count +1",
+                  "matchedExpression": "@local.click_hs_parent_centre_count",
+                  "type": "local",
+                  "fieldName": "click_hs_parent_centre_count"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: click_hs_parent_centre_count: @local.click_hs_parent_centre_count +1",
+                "matchedExpression": "@local.click_hs_parent_centre_count",
+                "type": "local",
+                "fieldName": "click_hs_parent_centre_count"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: click_hs_parent_centre_count: @local.click_hs_parent_centre_count +1",
+                "matchedExpression": "@local.click_hs_parent_centre_count",
+                "type": "local",
+                "fieldName": "click_hs_parent_centre_count"
+              }
+            ]
+          },
+          "3": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.weekly_click_hs_parent_centre_field",
+                  "matchedExpression": "@local.weekly_click_hs_parent_centre_field",
+                  "type": "local",
+                  "fieldName": "weekly_click_hs_parent_centre_field"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@local.weekly_click_hs_parent_centre_count +1",
+                  "matchedExpression": "@local.weekly_click_hs_parent_centre_count",
+                  "type": "local",
+                  "fieldName": "weekly_click_hs_parent_centre_count"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | set_field: @local.weekly_click_hs_parent_centre_field: @local.weekly_click_hs_parent_centre_count +1",
+                "matchedExpression": "@local.weekly_click_hs_parent_centre_field",
+                "type": "local",
+                "fieldName": "weekly_click_hs_parent_centre_field"
+              },
+              {
+                "fullExpression": "click | set_field: @local.weekly_click_hs_parent_centre_field: @local.weekly_click_hs_parent_centre_count +1",
+                "matchedExpression": "@local.weekly_click_hs_parent_centre_count",
+                "type": "local",
+                "fieldName": "weekly_click_hs_parent_centre_count"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | set_field: @local.weekly_click_hs_parent_centre_field: @local.weekly_click_hs_parent_centre_count +1",
+                "matchedExpression": "@local.weekly_click_hs_parent_centre_field",
+                "type": "local",
+                "fieldName": "weekly_click_hs_parent_centre_field"
+              },
+              {
+                "fullExpression": "click | set_field: @local.weekly_click_hs_parent_centre_field: @local.weekly_click_hs_parent_centre_count +1",
+                "matchedExpression": "@local.weekly_click_hs_parent_centre_count",
+                "type": "local",
+                "fieldName": "weekly_click_hs_parent_centre_count"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.now": [
+          "action_list.1.args.1",
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ],
+        "@local.click_hs_parent_centre_count": [
+          "action_list.2.args.1",
+          "action_list.2._raw",
+          "action_list.2._cleaned"
+        ],
+        "@local.weekly_click_hs_parent_centre_field": [
+          "action_list.3.args.0",
+          "action_list.3._raw",
+          "action_list.3._cleaned"
+        ],
+        "@local.weekly_click_hs_parent_centre_count": [
+          "action_list.3.args.1",
+          "action_list.3._raw",
+          "action_list.3._cleaned"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_navigation.xlsx",
+  "_overrides": {
+    "home_screen_modular": "@fields._app_skin == \"modular\""
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "safeguarding_categories_tz",
+  "status": "released",
+  "data_list_name": "safeguarding_categories_tz",
+  "rows": [
+    {
+      "id": "emergency",
+      "title": "An emergency",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "An emergency"
+        },
+        "description": {
+          "eng": "Are you in need of emergent assistance?"
+        }
+      },
+      "description": "Are you in need of emergent assistance?"
+    },
+    {
+      "id": "substance_abuse",
+      "title": "A challenge with alcohol or drugs",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "A challenge with alcohol or drugs"
+        },
+        "description": {
+          "eng": "Would you like to talk to someone about challenges you or a loved one are experiencing with alcohol or drugs?"
+        }
+      },
+      "description": "Would you like to talk to someone about challenges you or a loved one are experiencing with alcohol or drugs?"
+    },
+    {
+      "id": "legal",
+      "title": "A legal problem",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "A legal problem"
+        },
+        "description": {
+          "eng": "Do you need legal assistance?"
+        }
+      },
+      "description": "Do you need legal assistance?"
+    },
+    {
+      "id": "violence",
+      "title": "Feeling unsafe at home or in my relationship",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Feeling unsafe at home or in my relationship"
+        },
+        "description": {
+          "eng": "Would you like to talk to someone about feeling unsafe in your home or with your partner?"
+        }
+      },
+      "description": "Would you like to talk to someone about feeling unsafe in your home or with your partner?"
+    },
+    {
+      "id": "family_support",
+      "title": "A challenge in my family",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "A challenge in my family"
+        },
+        "description": {
+          "eng": "Would you like to talk to someone about difficult experiences you are having with members of your family?"
+        }
+      },
+      "description": "Would you like to talk to someone about difficult experiences you are having with members of your family?"
+    },
+    {
+      "id": "mental_health",
+      "title": "Feeling anxious or sad",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Feeling anxious or sad"
+        },
+        "description": {
+          "eng": "Would you like to talk to someone about feeling sad or anxious?"
+        }
+      },
+      "description": "Would you like to talk to someone about feeling sad or anxious?"
+    },
+    {
+      "id": "mental_health_support",
+      "title": "A loved one feeling anxious or sad",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "A loved one feeling anxious or sad"
+        },
+        "description": {
+          "eng": "Do you have questions about what to do if you or a loved one may be feeling sad or anxious?"
+        }
+      },
+      "description": "Do you have questions about what to do if you or a loved one may be feeling sad or anxious?"
+    }
+  ],
+  "_xlsxPath": "tz/data/safeguarding_data_tz.xlsx"
+}

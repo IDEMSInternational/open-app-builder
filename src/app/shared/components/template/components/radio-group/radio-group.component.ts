@@ -2,8 +2,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostBinding,
-  HostListener,
   Input,
   OnDestroy,
   OnInit,
@@ -17,9 +15,7 @@ import {
   getParamFromTemplateRow,
   getStringParamFromTemplateRow,
 } from "../../../../utils";
-import { takeUntil } from "rxjs/operators";
 import { ReplaySubject } from "rxjs";
-import { TemplateService } from "../../services/template.service";
 import { objectToArray } from "../../utils/template-utils";
 
 interface IButton {
@@ -47,19 +43,11 @@ export class TmplRadioGroupComponent
   options_per_row: number = 2;
   windowWidth: number;
   style: string;
-  destroy$ = new ReplaySubject(1);
-  imageCheckedColor = "#0D3F60";
+  private componentDestroyed$ = new ReplaySubject(1);
   flexWidth: string;
-  checkIfContainsStyleParameter: boolean = false;
-
-  constructor(private templateService: TemplateService) {
-    super();
-  }
 
   ngOnInit() {
     this.getParams();
-    this.setAutoBackground();
-    this.checkTheme();
   }
 
   getParams() {
@@ -68,11 +56,6 @@ export class TmplRadioGroupComponent
     this.radioButtonType = getParamFromTemplateRow(row, "radio_button_type", "btn_text");
     this.options_per_row = getNumberParamFromTemplateRow(this._row, "options_per_row", 3);
     this.style = getStringParamFromTemplateRow(this._row, "style", "");
-    this.checkIfContainsStyleParameter =
-      this.style.includes("active") ||
-      this.style.includes("passive") ||
-      this.style.includes("transparent");
-    this.imageCheckedColor = this.style === "active" ? "#f89b2d" : "#0D3F60";
     this.windowWidth = window.innerWidth;
 
     // convert string answer lists to formatted objects
@@ -159,26 +142,8 @@ export class TmplRadioGroupComponent
     this.flexWidth = `0 1 ${100 / this.options_per_row - 7}%`;
   }
 
-  setAutoBackground() {
-    if (!this.checkIfContainsStyleParameter) {
-      const currentBgColor = document.body.style
-        .getPropertyValue("--ion-background-color")
-        .toLocaleLowerCase();
-      this.style = currentBgColor === "#FFF6D6".toLocaleLowerCase() ? "active" : "passive";
-    }
-  }
-
-  checkTheme() {
-    return (
-      !this.checkIfContainsStyleParameter &&
-      this.templateService.currentTheme
-        .pipe(takeUntil(this.destroy$))
-        .subscribe((value) => (this.style = value))
-    );
-  }
-
   ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
+    this.componentDestroyed$.next(true);
+    this.componentDestroyed$.complete();
   }
 }
