@@ -6,11 +6,16 @@ import path from "path";
 import { Command } from "commander";
 import { IDeploymentWorkflows, IWorkflow, WORKFLOW_DEFAULTS } from "data-models";
 import ALL_TASKS from "../../tasks";
-import { logError, pad, promptOptions } from "../../utils";
+import { logError, logProgramHelp, pad, promptOptions } from "../../utils";
 import { getActiveDeployment } from "../deployment/get";
 import type { IDeploymentConfigJson } from "../deployment/common";
 
 const program = new Command("run");
+
+interface IProgramOptions {
+  parent?: string;
+  contentWatch?: boolean;
+}
 
 /***************************************************************************************
  * CLI
@@ -19,8 +24,10 @@ const program = new Command("run");
 export default program
   .description("Run a workflow")
   .argument("[name]", "Name of workflow to run")
+  .allowUnknownOption()
+  .helpOption("--helpIgnored", "will show help from child workflow instead of this")
   .option("-p --parent <string>", "Name of parent workflow triggered by")
-  .action(async (name, { parent }) => {
+  .action(async (name: string, { parent }: IProgramOptions) => {
     // pass any additional args after [name] positional argument
     const args = program.args.slice(1);
     const runner = WorkflowRunner;
@@ -37,6 +44,7 @@ export class WorkflowRunnerClass {
   workflows: IDeploymentWorkflows = {};
   config: IDeploymentConfigJson;
   activeWorkflow = {};
+  activeWorkflowOptions: { [name: string]: string | boolean } = {};
 
   /**
    *
@@ -73,11 +81,17 @@ export class WorkflowRunnerClass {
       console.log(chalk.yellow(`yarn scripts workflow run ${name}`));
     }
     const workflow = this.prepareWorkflow(name);
+
+    this.activeWorkflowOptions = this.parseWorkflowOptions(workflow);
     return this.executeWorkflow(workflow, args);
   }
 
   /** Ensure task */
   private prepareWorkflow(name: string) {
+    // include manual help logging as default ignored (so can pass to child command)
+    if (["--help", "-h"].includes(name)) {
+      logProgramHelp(program);
+    }
     const workflow = this.workflows[name];
     // Ensure workflow exists
     if (!workflow) {
@@ -87,6 +101,29 @@ export class WorkflowRunnerClass {
       logError({ msg1, msg2 });
     }
     return workflow;
+  }
+
+  /**
+   * Generate a child commander instance that can dynamically parse options as defined
+   * within a workflow
+   */
+  private parseWorkflowOptions(workflow: IWorkflow) {
+    let parsedOptions: { [name: string]: string | boolean } = {};
+    if (workflow.options) {
+      const subProgram = new Command().allowUnknownOption();
+      for (const option of workflow.options) {
+        const { flags, description, defaultValue } = option;
+        subProgram.option(flags, description, defaultValue);
+      }
+      subProgram.action((options) => {
+        parsedOptions = options;
+      });
+      if (process.argv.find((arg) => ["--help", "h"].includes(arg))) {
+        logProgramHelp(subProgram);
+      }
+      subProgram.parse(process.argv);
+    }
+    return parsedOptions;
   }
 
   private async executeWorkflow(workflow: IWorkflow, args: string[] = []) {
@@ -99,11 +136,20 @@ export class WorkflowRunnerClass {
         workflow: this.activeWorkflow,
         tasks: this.tasks,
         args,
+        options: this.activeWorkflowOptions,
       };
-      const output = await step.function(context);
-      this.activeWorkflow[step.name].output = output;
-      // re-evaluate active deployment in case step changed it
-      this.config = getActiveDeployment({ ignoreMissing: true });
+      let shouldProcess = true;
+      if (step.condition) {
+        shouldProcess = await step.condition(context);
+      }
+      if (shouldProcess) {
+        const output = await step.function(context);
+        this.activeWorkflow[step.name].output = output;
+        // re-evaluate active deployment in case step changed it
+        this.config = getActiveDeployment({ ignoreMissing: true });
+      } else {
+        console.log(chalk.gray("skipped"));
+      }
     }
   }
 

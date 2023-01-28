@@ -1,0 +1,6 @@
+@use "/src/theme/mixins";
+
+.image-wrapper {
+  @include mixins.flex-centered;
+  width: 100%;
+}

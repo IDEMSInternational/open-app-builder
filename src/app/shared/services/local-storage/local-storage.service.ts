@@ -1,10 +1,13 @@
 import { Injectable } from "@angular/core";
+import { SyncServiceBase } from "../syncService.base";
 
 @Injectable({
   providedIn: "root",
 })
-export class LocalStorageService {
-  constructor() {}
+export class LocalStorageService extends SyncServiceBase {
+  constructor() {
+    super("LocalStorage");
+  }
 
   getString(key: string): string | null {
     return localStorage.getItem(key);

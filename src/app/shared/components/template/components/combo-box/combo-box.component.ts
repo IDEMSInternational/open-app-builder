@@ -11,7 +11,6 @@ import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 import { TemplateService } from "../../services/template.service";
 import { ReplaySubject } from "rxjs";
-import { takeUntil } from "rxjs/operators";
 
 @Component({
   selector: "plh-combo-box",
@@ -28,8 +27,7 @@ export class TmplComboBoxComponent
   style: string;
   text = "";
   customAnswerSelected: boolean = false;
-  checkIfContainsDefaultStyles: boolean = false;
-  destroy$ = new ReplaySubject(1);
+  private componentDestroyed$ = new ReplaySubject(1);
   constructor(private modalController: ModalController, private templateService: TemplateService) {
     super();
   }
@@ -41,10 +39,6 @@ export class TmplComboBoxComponent
       listAnswers && this._row.value
         ? !listAnswers.find((x) => x.includes(this._row.value))
         : false;
-    if (!this.checkIfContainsDefaultStyles) {
-      this.setCustomStyle();
-    }
-    this.checkTheme();
     this.text = this.getText(this._row.value, listAnswers);
   }
 
@@ -56,8 +50,6 @@ export class TmplComboBoxComponent
       false
     );
     this.style = getStringParamFromTemplateRow(this._row, "style", "");
-    this.checkIfContainsDefaultStyles =
-      this.style.includes("active") || this.style.includes("passive");
   }
 
   getText(aValue: string, listAnswers: string[]): string {
@@ -103,38 +95,8 @@ export class TmplComboBoxComponent
     await modal.present();
   }
 
-  setCustomStyle() {
-    const currentBgColor = document.body.style
-      .getPropertyValue("--ion-background-color")
-      .toLocaleLowerCase();
-    const nameBgColor: string =
-      currentBgColor === "#FFF6D6".toLocaleLowerCase() ? "active" : "passive";
-    return this.setTheme(nameBgColor);
-  }
-
-  setTheme(themeName: string) {
-    document.body.style.setProperty(
-      `--combo-box-no-answer-bg`,
-      `var(--combo-box-${themeName}-no-answer-bg`
-    );
-    document.body.style.setProperty(
-      `--combo-box-with-answer-bg`,
-      `var(--combo-box-${themeName}-with-answer-bg`
-    );
-  }
-
-  checkTheme() {
-    return (
-      !this.checkIfContainsDefaultStyles &&
-      this.templateService.currentTheme.pipe(takeUntil(this.destroy$)).subscribe((value) => {
-        this.style = value;
-        this.setTheme(value);
-      })
-    );
-  }
-
   ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
+    this.componentDestroyed$.next(true);
+    this.componentDestroyed$.complete();
   }
 }

@@ -6,6 +6,8 @@ export const MAIN_PACKAGE_PATH = path.join(ROOT_DIR, "package.json");
 export const DEPLOYMENTS_PATH = path.resolve(ROOT_DIR, ".idems_app", "deployments");
 
 export const SCRIPTS_WORKSPACE_PATH = path.join(ROOT_DIR, "packages/scripts");
+export const SCRIPTS_TEST_DATA_DIR = path.join(SCRIPTS_WORKSPACE_PATH, "test", "data");
+export const SCRIPTS_LOGS_DIR = path.join(SCRIPTS_WORKSPACE_PATH, "logs");
 export const DATA_MODELS_WORKSPACE_PATH = path.join(ROOT_DIR, "packages/data-models");
 
 export const SRC_ASSETS_PATH = path.join(ROOT_DIR, "src", "assets");

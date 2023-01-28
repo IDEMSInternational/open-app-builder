@@ -1,0 +1,36 @@
+# env variables in this template will be 
+# https://github.com/docker-library/docs/tree/master/nginx#using-environment-variables-in-nginx-configuration-new-in-119
+
+server {
+    listen 80;
+    listen [::]:80;
+    client_max_body_size 32m;
+    server_name localhost;
+
+    # Certbot 
+    location ^~ /.well-known {
+      allow all;
+      root  /data/letsencrypt/;
+    }
+    # Redirect to https
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    client_max_body_size 32m;
+    listen 443 ssl default_server;
+    listen [::]:443 ssl default_server;
+
+    server_name ${SERVER_NAME};
+
+    ssl_certificate /etc/letsencrypt/live/${SERVER_NAME}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/${SERVER_NAME}/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/${SERVER_NAME}/chain.pem;
+    
+    # Load the Diffie-Hellman parameter.
+    ssl_dhparam /etc/letsencrypt/dhparams/dhparam.pem;
+    
+    include conf/locations.conf;
+}

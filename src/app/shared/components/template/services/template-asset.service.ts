@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
-import { ASSETS_CONTENT_LIST } from "src/app/data";
+import { ASSETS_CONTENTS_LIST } from "src/app/data";
+import { ThemeService } from "src/app/feature/theme/services/theme.service";
+import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { TemplateTranslateService } from "./template-translate.service";
 
 /** Synced assets are automatically copied during build to asset subfolder */
@@ -9,9 +11,28 @@ const ASSETS_BASE = `assets/app_data/assets`;
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
 @Injectable({ providedIn: "root" })
-export class TemplateAssetService {
-  constructor(private translateService: TemplateTranslateService) {}
+export class TemplateAssetService extends AsyncServiceBase {
+  constructor(
+    private translateService: TemplateTranslateService,
+    private themeService: ThemeService
+  ) {
+    super("TemplateAsset");
+    this.registerInitFunction(this.initialise);
+  }
 
+  private async initialise() {
+    await this.ensureAsyncServicesReady([this.translateService]);
+    this.ensureSyncServicesReady([this.themeService]);
+  }
+
+  getAbsoluteAssetPath(value: string) {
+    const assetName = this.cleanAssetName(value);
+    const assetEntry = ASSETS_CONTENTS_LIST[assetName];
+    if (!assetEntry) {
+      console.error("Asset missing", value, assetName);
+    }
+    return this.convertPLHRelativePathToAssetPath(`${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`);
+  }
   /**
    * Retrieve the path to translated version of an asset path for the current language.
    * Fallsback to original path if does not exist
@@ -19,12 +40,31 @@ export class TemplateAssetService {
   getTranslatedAssetPath(value: string) {
     const currentLanguageCode = this.translateService.app_language;
     const assetName = this.cleanAssetName(value);
-    const assetEntry = ASSETS_CONTENT_LIST[assetName];
+    const assetEntry = ASSETS_CONTENTS_LIST[assetName];
     if (!assetEntry) {
       console.error("Asset missing", value, assetName);
     }
     if (assetEntry?.translations?.[currentLanguageCode]) {
       return this.convertPLHRelativePathToAssetPath(`${currentLanguageCode}/${assetName}`);
+    }
+    return this.convertPLHRelativePathToAssetPath(`${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`);
+  }
+
+  /**
+   * Retrieve the path to theme-specific version of an asset path for the current theme.
+   * Fallsback to original path if does not exist
+   */
+  getThemeAssetPath(value: string) {
+    const themeFolderName = `theme_${this.themeService.getCurrentTheme()}`;
+    const assetName = this.cleanAssetName(value);
+    const assetEntry = ASSETS_CONTENTS_LIST[assetName];
+    if (!assetEntry) {
+      console.error("Asset missing", value, assetName);
+    }
+    if (assetEntry?.themeVariations?.[themeFolderName]) {
+      return this.convertPLHRelativePathToAssetPath(
+        `${themeFolderName}/${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`
+      );
     }
     return this.convertPLHRelativePathToAssetPath(`${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`);
   }

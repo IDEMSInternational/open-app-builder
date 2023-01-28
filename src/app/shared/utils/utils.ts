@@ -1,4 +1,7 @@
 import { format } from "date-fns";
+import { diff } from "deep-object-diff";
+import { Observable } from "rxjs";
+import { map, pairwise, filter, share } from "rxjs/operators";
 import { FlowTypes } from "../model";
 
 /**
@@ -38,7 +41,7 @@ export function arrayToHashmap<T>(arr: T[], keyfield: string): { [key: string]: 
  * @param keyfield any unique field which all array objects contain to use as hash keys (e.g. 'id')
  */
 export function arrayToHashmapArray<T>(arr: T[], keyfield: keyof T) {
-  const hashmap: { [key: string]: T[] } = {};
+  const hashmap: Record<string, T[]> = {};
   for (const el of arr) {
     if (el.hasOwnProperty(keyfield)) {
       if (!hashmap[el[keyfield as string]]) {
@@ -290,7 +293,7 @@ export function stringToIntegerHash(str: string) {
  * @param target
  * @param ...sources
  */
-export function deepMergeObjects(target: any, ...sources: any) {
+export function deepMergeObjects(target: any = {}, ...sources: any) {
   if (!sources.length) return target;
   const source = sources.shift();
 
@@ -308,7 +311,11 @@ export function deepMergeObjects(target: any, ...sources: any) {
   return deepMergeObjects(target, ...sources);
 }
 
-function isObject(item: any) {
+export function deepDiffObjects<T extends Object, U extends Object>(a: T, b: U) {
+  return diff(a, b) as RecursivePartial<T | U>;
+}
+
+export function isObject(item: any) {
   return item && typeof item === "object" && !Array.isArray(item);
 }
 
@@ -323,3 +330,24 @@ export async function asyncEvery(arr: any[], predicate: Function) {
   }
   return true;
 }
+
+/** Create a subject that only emits deep object diff of values for an input observable */
+export function trackObservableObjectChanges<T extends Object>(subject: Observable<T>) {
+  // pairwise() operator keeps a [before,after] array of the observable
+  // map() operator converts [before,after] to deep object diff
+  // filter() operator only emits if changes exist
+  // share() operator enables observable to be subscribed by multiple subscribers (i.e. like an RXJS Subject)
+  return subject.pipe(
+    pairwise(),
+    map(([before, after]) => deepDiffObjects(before, after)),
+    filter((v) => Object.keys(v).length > 0),
+    share()
+  );
+}
+
+/** A recursive version of Partial, making all properties, included nested ones, optional.
+ * Copied from https://stackoverflow.com/a/47914631
+ */
+export type RecursivePartial<T> = {
+  [P in keyof T]?: RecursivePartial<T[P]>;
+};

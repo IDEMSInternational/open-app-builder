@@ -5,6 +5,7 @@ import { createHash, randomUUID } from "crypto";
 import { logWarning } from "./logging.utils";
 import { ROOT_DIR } from "../paths";
 import { spawnSync } from "child_process";
+import { tmpdir } from "os";
 
 /**
  * Retrieve a nested property from a json object
@@ -154,31 +155,6 @@ export function generateFolderFlatMap(
   return flatMap;
 }
 
-/**
- * Recursively remove any empty folders
- * https://gist.github.com/jakub-g/5903dc7e4028133704a4
- */
-export function removeEmptyFoldersRecursively(folderPath: string) {
-  const isDir = fs.statSync(folderPath).isDirectory();
-  if (!isDir) {
-    return;
-  }
-  let files = fs.readdirSync(folderPath);
-  if (files.length > 0) {
-    files.forEach(function (file) {
-      const fullPath = path.join(folderPath, file);
-      removeEmptyFoldersRecursively(fullPath);
-    });
-    // re-evaluate files; after deleting subfolder
-    // we may have parent folder empty now
-    files = fs.readdirSync(folderPath);
-  }
-  if (files.length === 0) {
-    fs.rmdirSync(folderPath);
-    return;
-  }
-}
-
 export interface IContentsEntry {
   relativePath: string;
   size_kb: number;
@@ -188,12 +164,29 @@ export interface IContentsEntry {
 }
 export type IContentsEntryHashmap = { [relativePath: string]: IContentsEntry };
 
+/** Generate md5 checksum for file */
 export function getFileMD5Checksum(filePath: string) {
   const hash = createHash("md5", {});
   const fileBuffer = fs.readFileSync(filePath);
   hash.update(fileBuffer);
   const checksum = hash.digest("hex");
   return checksum;
+}
+/** Generate md5 checksum for arbitrary data */
+export function getDataMD5Checsum(data: any) {
+  if (data) {
+    if (typeof data === "object") {
+      data = JSON.stringify(data);
+    } else {
+      data = `${data}`;
+    }
+    const hash = createHash("md5");
+    hash.update(data);
+    const checksum = hash.digest("hex");
+    return checksum;
+  } else {
+    throw new Error(`Cannot generate hash from data: ${data}`);
+  }
 }
 
 /**
@@ -254,6 +247,9 @@ export function arrayToHashmap<T>(arr: T[], keyfield: string): { [key: string]: 
 }
 
 export function listFolderNames(folderPath: string) {
+  if (!fs.existsSync(folderPath)) {
+    return [];
+  }
   return fs
     .readdirSync(folderPath, { withFileTypes: true })
     .filter((v) => v.isDirectory())
@@ -354,7 +350,9 @@ export function readContentsFile(folderPath: string) {
     logWarning({ msg1: "Folder path does not exist", msg2: folderPath });
     return [];
   }
+
   const contentsFilePath = fs.readdirSync(folderPath).find((f) => f.endsWith("_contents.json"));
+  console.log("contentsFilePath", contentsFilePath);
   if (!contentsFilePath) {
     logWarning({ msg1: "Contents file not found in folder", msg2: folderPath });
     return [];
@@ -374,7 +372,7 @@ export function readContentsFileAsHashmap(
   options: { hashKey?: string; hashKeyFn?: (entry: any) => string }
 ) {
   const contentsJson = readContentsFile(folderPath);
-  const hashmap = {};
+  const hashmap: { [key: string]: IContentsEntry } = {};
   const { hashKey, hashKeyFn } = options;
   for (const entry of contentsJson) {
     if (hashKey) {
@@ -455,9 +453,8 @@ export function replicateDir(
     fs.copyFileSync(srcPath, targetPath);
     fs.utimesSync(targetPath, mtime, mtime);
   });
-  // HACK - delete empty folders (should ideally be handled earlier or kept in sync)
-  removeEmptyFoldersRecursively(target);
-
+  // remove hanging directories
+  cleanupEmptyFolders(target);
   return ops;
 }
 
@@ -511,3 +508,32 @@ export function runPrettierCodeTidy(folderPath: string) {
   const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${folderPath}/**/*.ts --loglevel error`;
   return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
 }
+
+/** Create a randomly-named temporary folder within the os temp directory */
+export function createTemporaryFolder() {
+  const folderName = randomUUID();
+  const folderPath = path.resolve(tmpdir(), folderName);
+  fs.ensureDirSync(folderPath);
+  return folderPath;
+}
+
+/**
+ * Recursively remove any empty folders
+ * https://gist.github.com/arnoson/3237697e8c61dfaf0356f814b1500d7b
+ */
+export const cleanupEmptyFolders = (folder: string) => {
+  if (!fs.existsSync(folder)) return;
+  if (!fs.statSync(folder).isDirectory()) return;
+  let files = fs.readdirSync(folder);
+
+  if (files.length > 0) {
+    files.forEach((file) => cleanupEmptyFolders(path.join(folder, file)));
+    // Re-evaluate files; after deleting subfolders we may have an empty parent
+    // folder now.
+    files = fs.readdirSync(folder);
+  }
+
+  if (files.length === 0) {
+    fs.rmdirSync(folder);
+  }
+};

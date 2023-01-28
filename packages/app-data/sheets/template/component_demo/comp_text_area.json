@@ -1,0 +1,34 @@
+{
+  "flow_type": "template",
+  "flow_name": "comp_text_area",
+  "status": "released",
+  "flow_subtype": "component_demo",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title_1",
+      "value": "Placeholder",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title_1"
+    },
+    {
+      "type": "text_area",
+      "name": "text_area_par_1_1",
+      "parameter_list": {
+        "placeholder": "null"
+      },
+      "_nested_name": "text_area_par_1_1"
+    },
+    {
+      "type": "text_area",
+      "name": "text_area_par_1_2",
+      "parameter_list": {
+        "placeholder": "string"
+      },
+      "_nested_name": "text_area_par_1_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/component_sheets/component_text_area.xlsx"
+}

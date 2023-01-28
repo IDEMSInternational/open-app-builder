@@ -20,8 +20,8 @@ export class FeedbackActionsService {
     this.registerActionHandlers();
   }
   private actionHandlers: IFeedbackAction.handlers = {
-    disable: () => this.feedbackService.setReviewMode(false),
-    enable: () => this.feedbackService.setReviewMode(true),
+    disable: () => this.feedbackService.setEnabled(false),
+    enable: () => this.feedbackService.setEnabled(true),
     open: ([templatename]) => {
       return this.feedbackService.runFeedbackTemplate(templatename);
     },

@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
-import { takeWhile } from "rxjs/operators";
-import { BehaviorSubject } from "rxjs";
 import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
 import { LocalStorageService } from "../local-storage/local-storage.service";
+import { AsyncServiceBase } from "../asyncService.base";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -14,31 +13,27 @@ import { LocalStorageService } from "../local-storage/local-storage.service";
  * Events are stored in the main database, and summary calculations persisted in localstorage
  * for immediate retrieval on app start
  */
-export class AppEventService {
+export class AppEventService extends AsyncServiceBase {
   /** Some computed values are stored in a cache for instant retrieval */
   summary: IAppEventSummary;
   /** Keep a copy of all app events saved in the database in memoery also, by event_id */
   appEventsById: { [key in IEventId]: IAppEvent[] };
-  /** Track locally whether initiallisation has been completed, in case required by other services */
-  private ready$ = new BehaviorSubject<boolean>(false);
 
   constructor(private db: DbService, private localStorageService: LocalStorageService) {
-    this.setAppEventsById([]);
-    this.loadSummary();
-  }
-
-  /** Provide a promise that can be used to notify components when initialisation has been completed */
-  async ready() {
-    return this.ready$.pipe(takeWhile((isReady) => isReady === false)).toPromise();
+    super("App Events");
+    this.registerInitFunction(this.intialise);
   }
 
   /** Initialise the app events service by recording an app_launch instance */
-  async init() {
+  private async intialise() {
+    await this.ensureAsyncServicesReady([this.db]);
+    this.ensureSyncServicesReady([this.localStorageService]);
+    this.setAppEventsById([]);
+    this.loadSummary();
+
     await this.loadAppEvents();
     await this.recordAppEvent("app_launch");
     this.calculateEventSummaries();
-    this.ready$.next(true);
-    return;
   }
 
   /** Write app event to db and local variable, recalculating summaries that might depend on the data */

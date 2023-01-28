@@ -1,12 +1,14 @@
 import { firebaseConfig } from "./firebaseConfig";
 import packageJson from "../../package.json";
 import deploymentJson from "../../.idems_app/deployments/activeDeployment.json";
+import type { IDeploymentConfig } from "packages/data-models";
 
 export const environment = {
   /** App version, as provided by package.json */
   version: packageJson.version,
   deploymentName: deploymentJson.name,
-  deploymentConfig: deploymentJson,
+  // HACK - json config converts functions to strings, not strongly typed
+  deploymentConfig: deploymentJson as any as IDeploymentConfig,
   production: false,
   rapidPro: {
     receiveUrl:
@@ -18,12 +20,10 @@ export const environment = {
   domains: ["plh-demo1.idems.international", "plh-demo.idems.international"],
   chatNonNavigatePaths: ["/chat/action", "/chat/msg-info"],
   variableNameFlows: ["character_names"],
-  /** Local Postgres */
-  // apiEndpoint: "http://localhost:3000",
-  /** Local Docker */
-  apiEndpoint: "http://localhost/api",
+  /** Local Settings */
+  apiEndpoint: "http://localhost:3000",
   analytics: { endpoint: "http://localhost/analytics", siteId: 1 },
-  /** production settings **/
+  /** Production Settings **/
   // apiEndpoint: "https://apps-server.idems.international/api",
   // analytics: { endpoint: "https://apps-server.idems.international/analytics", siteId: 1 },
 };
