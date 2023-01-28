@@ -80,19 +80,22 @@ export class WorkflowRunnerClass {
       name = await this.promptWorkflowSelect();
       console.log(chalk.yellow(`yarn scripts workflow run ${name}`));
     }
-    const workflow = this.prepareWorkflow(name);
+    let { workflow, args: workflowArgs } = this.prepareWorkflow(name, args);
 
     this.activeWorkflowOptions = this.parseWorkflowOptions(workflow);
-    return this.executeWorkflow(workflow, args);
+    return this.executeWorkflow(workflow, workflowArgs);
   }
 
-  /** Ensure task */
-  private prepareWorkflow(name: string) {
+  /**
+   * Ensure named workflow exists and pass back as json
+   * Additionally passes child workflow if defined from args
+   **/
+  private prepareWorkflow(name: string, args: string[] = []) {
     // include manual help logging as default ignored (so can pass to child command)
     if (["--help", "-h"].includes(name)) {
       logProgramHelp(program);
     }
-    const workflow = this.workflows[name];
+    let workflow = this.workflows[name];
     // Ensure workflow exists
     if (!workflow) {
       const available = Object.keys(this.workflows).join(", ");
@@ -100,7 +103,13 @@ export class WorkflowRunnerClass {
       const msg2 = `Available workflows: ${available}`;
       logError({ msg1, msg2 });
     }
-    return workflow;
+    // If args passed and first arg matches a child workflow name replace child workflow and args
+    const childWorkflowName = args[0];
+    if (workflow.children && childWorkflowName && childWorkflowName in workflow.children) {
+      workflow = workflow.children[childWorkflowName];
+      args = args.slice(1);
+    }
+    return { workflow, args };
   }
 
   /**

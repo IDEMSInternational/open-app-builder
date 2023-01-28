@@ -29,6 +29,8 @@ export interface IWorkflow {
   label?: string;
   steps: IWorkflowStep[];
   options?: { flags: string; description?: string; defaultValue?: string | boolean }[];
+  /** Sub workflows */
+  children?: IDeploymentWorkflows;
 }
 
 export interface IDeploymentWorkflows {
