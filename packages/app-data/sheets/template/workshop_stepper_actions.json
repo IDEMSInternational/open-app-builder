@@ -1,0 +1,108 @@
+{
+  "flow_type": "template",
+  "flow_name": "workshop_stepper_actions",
+  "status": "released",
+  "rows": [
+    {
+      "name": "workshop_id",
+      "type": "set_variable",
+      "_nested_name": "workshop_id"
+    },
+    {
+      "type": "template",
+      "name": "workshop_stepper",
+      "value": "workshop_stepper",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "process_template",
+          "args": [
+            "workshop_completed_calc"
+          ],
+          "_raw": "completed | process_template: workshop_completed_calc",
+          "_cleaned": "completed | process_template: workshop_completed_calc"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "server_sync"
+          ],
+          "_raw": "completed | emit: server_sync",
+          "_cleaned": "completed | emit: server_sync"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_id",
+          "value": "@local.workshop_id",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "workshop_stepper.workshop_id",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.workshop_id",
+                "matchedExpression": "@local.workshop_id",
+                "type": "local",
+                "fieldName": "workshop_id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_id": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "nav_template_list",
+          "value": [
+            "@local.nav_template_list"
+          ],
+          "type": "set_variable",
+          "_nested_name": "workshop_stepper.nav_template_list",
+          "_dynamicFields": {
+            "value": {
+              "0": [
+                {
+                  "fullExpression": "@local.nav_template_list",
+                  "matchedExpression": "@local.nav_template_list",
+                  "type": "local",
+                  "fieldName": "nav_template_list"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.nav_template_list": [
+              "value.0"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "workshop_stepper"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"
+}

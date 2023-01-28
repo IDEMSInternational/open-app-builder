@@ -1,0 +1,260 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_translation_radio_group",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "@global.individual",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.individual",
+            "matchedExpression": "@global.individual",
+            "type": "global",
+            "fieldName": "individual"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.individual": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "value": "@global.together",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.together",
+            "matchedExpression": "@global.together",
+            "type": "global",
+            "fieldName": "together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.together": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "text_3",
+      "value": "Radio group with globals (doesn't work)",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "text_3"
+    },
+    {
+      "name": "answer_list_1",
+      "value": [
+        "name: individual | text: @global.individual",
+        "name: together | text: @global.together"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "answer_list_1",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "name: individual | text: @global.individual",
+              "matchedExpression": "@global.individual",
+              "type": "global",
+              "fieldName": "individual"
+            }
+          ],
+          "1": [
+            {
+              "fullExpression": "name: together | text: @global.together",
+              "matchedExpression": "@global.together",
+              "type": "global",
+              "fieldName": "together"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@global.individual": [
+          "value.0"
+        ],
+        "@global.together": [
+          "value.1"
+        ]
+      }
+    },
+    {
+      "type": "radio_group",
+      "name": "radio_group_1",
+      "parameter_list": {
+        "answer_list": "@local.answer_list_1"
+      },
+      "_nested_name": "radio_group_1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list_1",
+              "matchedExpression": "@local.answer_list_1",
+              "type": "local",
+              "fieldName": "answer_list_1"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list_1": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "text_4",
+      "value": "Radio group with locals (works)",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "text_4"
+    },
+    {
+      "name": "individual",
+      "value": "@global.individual",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "individual",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.individual",
+            "matchedExpression": "@global.individual",
+            "type": "global",
+            "fieldName": "individual"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.individual": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "together",
+      "value": "@global.together",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "together",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.together",
+            "matchedExpression": "@global.together",
+            "type": "global",
+            "fieldName": "together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.together": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "answer_list_2",
+      "value": [
+        "name: individual | text: @local.individual",
+        "name: together | text: @local.together"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "answer_list_2",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "name: individual | text: @local.individual",
+              "matchedExpression": "@local.individual",
+              "type": "local",
+              "fieldName": "individual"
+            }
+          ],
+          "1": [
+            {
+              "fullExpression": "name: together | text: @local.together",
+              "matchedExpression": "@local.together",
+              "type": "local",
+              "fieldName": "together"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.individual": [
+          "value.0"
+        ],
+        "@local.together": [
+          "value.1"
+        ]
+      }
+    },
+    {
+      "type": "radio_group",
+      "name": "radio_group_2",
+      "parameter_list": {
+        "answer_list": "@local.answer_list_2"
+      },
+      "_nested_name": "radio_group_2",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list_2",
+              "matchedExpression": "@local.answer_list_2",
+              "type": "local",
+              "fieldName": "answer_list_2"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list_2": [
+          "parameter_list.answer_list"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_translation.xlsx"
+}

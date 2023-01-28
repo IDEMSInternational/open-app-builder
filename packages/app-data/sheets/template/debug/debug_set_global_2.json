@@ -1,0 +1,59 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_set_global_2",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@global.debug_variable_1",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.debug_variable_1",
+            "matchedExpression": "@global.debug_variable_1",
+            "type": "global",
+            "fieldName": "debug_variable_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.debug_variable_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "Text that includes @global.debug_variable_1",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Text that includes @global.debug_variable_1",
+            "matchedExpression": "@global.debug_variable_1",
+            "type": "global",
+            "fieldName": "debug_variable_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.debug_variable_1": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_small_issues.xlsx"
+}
