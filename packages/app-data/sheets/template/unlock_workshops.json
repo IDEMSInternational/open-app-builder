@@ -1,0 +1,144 @@
+{
+  "flow_type": "template",
+  "flow_name": "unlock_workshops",
+  "status": "released",
+  "process_on_start": 3,
+  "rows": [
+    {
+      "name": "disabled",
+      "value": "_disabled",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "disabled"
+    },
+    {
+      "name": "workshop_number",
+      "value": "+@fields.workshop_number",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "workshop_number",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "+@fields.workshop_number",
+            "matchedExpression": "@fields.workshop_number",
+            "type": "fields",
+            "fieldName": "workshop_number"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.workshop_number": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "value": "@data.workshop",
+      "rows": [
+        {
+          "type": "set_field",
+          "name": "@item.id@local.disabled",
+          "value": false,
+          "condition": "@calc(@item.number <= @local.workshop_number)",
+          "exclude_from_translation": true,
+          "_nested_name": "items.@item.id@local.disabled",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "@item.id@local.disabled",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              },
+              {
+                "fullExpression": "@item.id@local.disabled",
+                "matchedExpression": "@local.disabled",
+                "type": "local",
+                "fieldName": "disabled"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@calc(@item.number <= @local.workshop_number)",
+                "matchedExpression": "@item.number",
+                "type": "item",
+                "fieldName": "number"
+              },
+              {
+                "fullExpression": "@calc(@item.number <= @local.workshop_number)",
+                "matchedExpression": "@local.workshop_number",
+                "type": "local",
+                "fieldName": "workshop_number"
+              },
+              {
+                "fullExpression": "@calc(@item.number <= @local.workshop_number)",
+                "matchedExpression": "@calc(@item.number <= @local.workshop_number)",
+                "type": "calc",
+                "fieldName": "@item.number <= @local.workshop_number"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.@item.id@local.disabled",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              },
+              {
+                "fullExpression": "items.@item.id@local.disabled",
+                "matchedExpression": "@local.disabled",
+                "type": "local",
+                "fieldName": "disabled"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "_nested_name"
+            ],
+            "@local.disabled": [
+              "name",
+              "_nested_name"
+            ],
+            "@item.number": [
+              "condition"
+            ],
+            "@local.workshop_number": [
+              "condition"
+            ],
+            "@calc(@item.number <= @local.workshop_number)": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.workshop",
+            "matchedExpression": "@data.workshop",
+            "type": "data",
+            "fieldName": "workshop"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.workshop": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/campaigns/timing_calculations.xlsx"
+}

@@ -1,0 +1,209 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_navigation_style",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "hide_page_1",
+      "value": false,
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "hide_page_1"
+    },
+    {
+      "name": "hide_page_2",
+      "value": true,
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "hide_page_2"
+    },
+    {
+      "type": "animated_section",
+      "name": "page_1",
+      "hidden": "@local.hide_page_1",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_page_1",
+          "value": "Page 1",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "page_1.title_page_1"
+        },
+        {
+          "type": "text",
+          "name": "text_page_1",
+          "value": "This is page 1",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "page_1.text_page_1"
+        },
+        {
+          "parameter_list": {
+            "style": "navigation"
+          },
+          "type": "set_variable",
+          "name": "set_variable",
+          "_nested_name": "page_1.set_variable"
+        },
+        {
+          "type": "template",
+          "name": "page_1_nav_buttons",
+          "value": "nav_buttons",
+          "action_list": [
+            {
+              "trigger": "completed",
+              "action_id": "set_local",
+              "args": [
+                "hide_page_1",
+                true
+              ],
+              "_raw": "completed | set_local:hide_page_1:true",
+              "_cleaned": "completed | set_local:hide_page_1:true"
+            },
+            {
+              "trigger": "completed",
+              "action_id": "set_local",
+              "args": [
+                "hide_page_2",
+                false
+              ],
+              "_raw": "completed | set_local:hide_page_2:false",
+              "_cleaned": "completed | set_local:hide_page_2:false"
+            },
+            {
+              "trigger": "uncompleted",
+              "action_id": "emit",
+              "args": [
+                "uncompleted"
+              ],
+              "_raw": "uncompleted | emit:uncompleted",
+              "_cleaned": "uncompleted | emit:uncompleted"
+            }
+          ],
+          "exclude_from_translation": true,
+          "rows": [
+            {
+              "name": "button_completed",
+              "value": "Let's go!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "page_1.page_1_nav_buttons.button_completed"
+            }
+          ],
+          "_nested_name": "page_1.page_1_nav_buttons"
+        }
+      ],
+      "_nested_name": "page_1",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.hide_page_1",
+            "matchedExpression": "@local.hide_page_1",
+            "type": "local",
+            "fieldName": "hide_page_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.hide_page_1": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "animated_section",
+      "name": "page_2",
+      "hidden": "@local.hide_page_2",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_page_2",
+          "value": "Page 2",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "page_2.title_page_2"
+        },
+        {
+          "type": "text",
+          "name": "text_page_2",
+          "value": "This is page 2",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "page_2.text_page_2"
+        },
+        {
+          "type": "template",
+          "name": "page_2_nav_buttons",
+          "value": "nav_buttons",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "navigation"
+          },
+          "rows": [
+            {
+              "name": "button_completed",
+              "value": "Finish",
+              "_translations": {
+                "value": {}
+              },
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "go_to",
+                  "args": [
+                    "home_screen"
+                  ],
+                  "_raw": "click | go_to:home_screen",
+                  "_cleaned": "click | go_to:home_screen"
+                }
+              ],
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "page_2.page_2_nav_buttons.button_completed"
+            }
+          ],
+          "_nested_name": "page_2.page_2_nav_buttons"
+        }
+      ],
+      "_nested_name": "page_2",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.hide_page_2",
+            "matchedExpression": "@local.hide_page_2",
+            "type": "local",
+            "fieldName": "hide_page_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.hide_page_2": [
+          "hidden"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_navigation_style.xlsx"
+}

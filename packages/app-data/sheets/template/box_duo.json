@@ -1,0 +1,40 @@
+{
+  "flow_type": "template",
+  "flow_name": "box_duo",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "box_1",
+      "rows": [],
+      "_nested_name": "box_1"
+    },
+    {
+      "type": "template",
+      "name": "box_2",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [],
+      "_nested_name": "box_2"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"
+}

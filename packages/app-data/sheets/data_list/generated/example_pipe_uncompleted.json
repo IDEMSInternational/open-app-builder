@@ -1,0 +1,30 @@
+{
+  "flow_name": "example_pipe_uncompleted",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "id_2",
+      "value": 2,
+      "completed": false,
+      "Text": "Hello id_2",
+      "Label": "Another column",
+      "Field": "example_id_2_field"
+    },
+    {
+      "id": "id_4",
+      "value": 4,
+      "Text": "Hello id_4",
+      "Label": "Another column",
+      "Field": "example_id_4_field"
+    },
+    {
+      "id": "id_8",
+      "value": 8,
+      "completed": false,
+      "Text": "Hello id_8",
+      "Label": "Another column",
+      "Field": "example_id_8_field"
+    }
+  ]
+}

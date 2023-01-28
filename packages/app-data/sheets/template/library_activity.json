@@ -1,0 +1,155 @@
+{
+  "flow_type": "template",
+  "flow_name": "library_activity",
+  "status": "released",
+  "rows": [
+    {
+      "name": "activity_image",
+      "type": "set_variable",
+      "_nested_name": "activity_image"
+    },
+    {
+      "name": "activity_title",
+      "value": "Title of this activity",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "activity_title"
+    },
+    {
+      "name": "content_template",
+      "type": "set_variable",
+      "_nested_name": "content_template"
+    },
+    {
+      "type": "template",
+      "name": "banner",
+      "value": "banner",
+      "rows": [
+        {
+          "name": "banner_title",
+          "value": "@local.activity_title",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "banner.banner_title",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.activity_title",
+                "matchedExpression": "@local.activity_title",
+                "type": "local",
+                "fieldName": "activity_title"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.activity_title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "banner_image",
+          "value": "@local.activity_image",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "banner.banner_image",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.activity_image",
+                "matchedExpression": "@local.activity_image",
+                "type": "local",
+                "fieldName": "activity_image"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.activity_image": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "banner"
+    },
+    {
+      "type": "template",
+      "name": "content_box",
+      "value": "@local.content_template",
+      "rows": [],
+      "_nested_name": "content_box",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.content_template",
+            "matchedExpression": "@local.content_template",
+            "type": "local",
+            "fieldName": "content_template"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.content_template": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        }
+      ],
+      "rows": [
+        {
+          "name": "display_back",
+          "value": false,
+          "type": "set_variable",
+          "_nested_name": "nav_buttons.display_back"
+        },
+        {
+          "name": "button_completed",
+          "value": "@global.done_button",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "nav_buttons.button_completed",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.done_button",
+                "matchedExpression": "@global.done_button",
+                "type": "global",
+                "fieldName": "done_button"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.done_button": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "nav_buttons"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"
+}

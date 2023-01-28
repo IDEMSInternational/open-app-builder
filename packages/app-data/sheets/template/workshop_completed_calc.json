@@ -1,0 +1,444 @@
+{
+  "flow_type": "template",
+  "flow_name": "workshop_completed_calc",
+  "status": "released",
+  "rows": [
+    {
+      "name": "workshop_id",
+      "value": "@fields.workshop_id_temp",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "workshop_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.workshop_id_temp",
+            "matchedExpression": "@fields.workshop_id_temp",
+            "type": "fields",
+            "fieldName": "workshop_id_temp"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.workshop_id_temp": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "started",
+      "value": "_started",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "started"
+    },
+    {
+      "name": "completed",
+      "value": "_completed",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "completed"
+    },
+    {
+      "name": "timestamp",
+      "value": "_ts",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "timestamp"
+    },
+    {
+      "name": "workshop_started_timestamp",
+      "value": "@local.workshop_id@local.started@local.timestamp",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "workshop_started_timestamp",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop_id@local.started@local.timestamp",
+            "matchedExpression": "@local.workshop_id",
+            "type": "local",
+            "fieldName": "workshop_id"
+          },
+          {
+            "fullExpression": "@local.workshop_id@local.started@local.timestamp",
+            "matchedExpression": "@local.started",
+            "type": "local",
+            "fieldName": "started"
+          },
+          {
+            "fullExpression": "@local.workshop_id@local.started@local.timestamp",
+            "matchedExpression": "@local.timestamp",
+            "type": "local",
+            "fieldName": "timestamp"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_id": [
+          "value"
+        ],
+        "@local.started": [
+          "value"
+        ],
+        "@local.timestamp": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "workshop_completed",
+      "value": "@local.workshop_id@local.completed",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "workshop_completed",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop_id@local.completed",
+            "matchedExpression": "@local.workshop_id",
+            "type": "local",
+            "fieldName": "workshop_id"
+          },
+          {
+            "fullExpression": "@local.workshop_id@local.completed",
+            "matchedExpression": "@local.completed",
+            "type": "local",
+            "fieldName": "completed"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_id": [
+          "value"
+        ],
+        "@local.completed": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "now",
+      "value": "@calc(timestamp())",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "now",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@calc(timestamp())",
+            "matchedExpression": "@calc(timestamp())",
+            "type": "calc",
+            "fieldName": "timestamp()"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@calc(timestamp())": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "first_finish",
+      "condition": "!@fields.@local.workshop_completed",
+      "rows": [
+        {
+          "type": "set_field",
+          "name": "@local.workshop_completed",
+          "value": true,
+          "exclude_from_translation": true,
+          "_nested_name": "first_finish.@local.workshop_completed",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "@local.workshop_completed",
+                "matchedExpression": "@local.workshop_completed",
+                "type": "local",
+                "fieldName": "workshop_completed"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "first_finish.@local.workshop_completed",
+                "matchedExpression": "@local.workshop_completed",
+                "type": "local",
+                "fieldName": "workshop_completed"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_completed": [
+              "name",
+              "_nested_name"
+            ]
+          }
+        },
+        {
+          "type": "set_field",
+          "name": "@local.workshop_completed@local.timestamp",
+          "value": "@local.now",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "first_finish.@local.workshop_completed@local.timestamp",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "@local.workshop_completed@local.timestamp",
+                "matchedExpression": "@local.workshop_completed",
+                "type": "local",
+                "fieldName": "workshop_completed"
+              },
+              {
+                "fullExpression": "@local.workshop_completed@local.timestamp",
+                "matchedExpression": "@local.timestamp",
+                "type": "local",
+                "fieldName": "timestamp"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@local.now",
+                "matchedExpression": "@local.now",
+                "type": "local",
+                "fieldName": "now"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "first_finish.@local.workshop_completed@local.timestamp",
+                "matchedExpression": "@local.workshop_completed",
+                "type": "local",
+                "fieldName": "workshop_completed"
+              },
+              {
+                "fullExpression": "first_finish.@local.workshop_completed@local.timestamp",
+                "matchedExpression": "@local.timestamp",
+                "type": "local",
+                "fieldName": "timestamp"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_completed": [
+              "name",
+              "_nested_name"
+            ],
+            "@local.timestamp": [
+              "name",
+              "_nested_name"
+            ],
+            "@local.now": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "time_started",
+          "value": "@fields.@local.workshop_started_timestamp",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "first_finish.time_started",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@fields.@local.workshop_started_timestamp",
+                "matchedExpression": "@local.workshop_started_timestamp",
+                "type": "local",
+                "fieldName": "workshop_started_timestamp"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_started_timestamp": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "time_completed",
+          "value": "@local.now",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "first_finish.time_completed",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.now",
+                "matchedExpression": "@local.now",
+                "type": "local",
+                "fieldName": "now"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.now": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "diff_started_completed",
+          "value": "@calc(window.date_fns.differenceInMinutes(new Date(@local.time_completed),new Date(@local.time_started)))",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "first_finish.diff_started_completed",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@calc(window.date_fns.differenceInMinutes(new Date(@local.time_completed),new Date(@local.time_started)))",
+                "matchedExpression": "@local.time_completed",
+                "type": "local",
+                "fieldName": "time_completed"
+              },
+              {
+                "fullExpression": "@calc(window.date_fns.differenceInMinutes(new Date(@local.time_completed),new Date(@local.time_started)))",
+                "matchedExpression": "@local.time_started",
+                "type": "local",
+                "fieldName": "time_started"
+              },
+              {
+                "fullExpression": "@calc(window.date_fns.differenceInMinutes(new Date(@local.time_completed),new Date(@local.time_started)))",
+                "matchedExpression": "@calc(window.date_fns.differenceInMinutes(new Date(@local.time_completed),new Date(@local.time_started)))",
+                "type": "calc",
+                "fieldName": "window.date_fns.differenceInMinutes(new Date(@local.time_completed),new Date(@local.time_started))"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.time_completed": [
+              "value"
+            ],
+            "@local.time_started": [
+              "value"
+            ],
+            "@calc(window.date_fns.differenceInMinutes(new Date(@local.time_completed),new Date(@local.time_started)))": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "diff",
+          "value": "_diff_started_completed",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "first_finish.diff"
+        },
+        {
+          "type": "set_field",
+          "name": "@local.workshop_id@local.diff",
+          "value": "@local.diff_started_completed",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "first_finish.@local.workshop_id@local.diff",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "@local.workshop_id@local.diff",
+                "matchedExpression": "@local.workshop_id",
+                "type": "local",
+                "fieldName": "workshop_id"
+              },
+              {
+                "fullExpression": "@local.workshop_id@local.diff",
+                "matchedExpression": "@local.diff",
+                "type": "local",
+                "fieldName": "diff"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@local.diff_started_completed",
+                "matchedExpression": "@local.diff_started_completed",
+                "type": "local",
+                "fieldName": "diff_started_completed"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "first_finish.@local.workshop_id@local.diff",
+                "matchedExpression": "@local.workshop_id",
+                "type": "local",
+                "fieldName": "workshop_id"
+              },
+              {
+                "fullExpression": "first_finish.@local.workshop_id@local.diff",
+                "matchedExpression": "@local.diff",
+                "type": "local",
+                "fieldName": "diff"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_id": [
+              "name",
+              "_nested_name"
+            ],
+            "@local.diff": [
+              "name",
+              "_nested_name"
+            ],
+            "@local.diff_started_completed": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "first_finish",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@fields.@local.workshop_completed",
+            "matchedExpression": "@local.workshop_completed",
+            "type": "local",
+            "fieldName": "workshop_completed"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_completed": [
+          "condition"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"
+}

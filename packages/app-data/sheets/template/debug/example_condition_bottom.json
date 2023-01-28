@@ -1,0 +1,111 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_condition_bottom",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "answer_list",
+      "value": [
+        "name:name_var_1 | text:First",
+        "name:name_var_2 | text:Second",
+        "name:name_var_3 | text:Third"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "answer_list"
+    },
+    {
+      "name": "field_name",
+      "value": "radio_button_field",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "field_name"
+    },
+    {
+      "type": "radio_group",
+      "name": "radio_group_text",
+      "value": "nothing",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "answer_list": "@local.answer_list"
+      },
+      "_nested_name": "radio_group_text",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_result",
+      "value": "You selected @local.radio_group_text",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_result",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "You selected @local.radio_group_text",
+            "matchedExpression": "@local.radio_group_text",
+            "type": "local",
+            "fieldName": "radio_group_text"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group_text": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_reply",
+      "value": "Reply text",
+      "_translations": {
+        "value": {}
+      },
+      "hidden": "@local.radio_group_text = \"nothing\"",
+      "exclude_from_translation": true,
+      "_nested_name": "text_reply",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.radio_group_text = \"nothing\"",
+            "matchedExpression": "@local.radio_group_text",
+            "type": "local",
+            "fieldName": "radio_group_text"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group_text": [
+          "hidden"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_condition.xlsx"
+}

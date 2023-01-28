@@ -1,0 +1,31 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_update_sibling_2_a",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "template",
+      "name": "pair",
+      "value": "pair",
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "box_1",
+          "value": "debug_radio_group_2",
+          "rows": [],
+          "_nested_name": "pair.box_1"
+        },
+        {
+          "type": "nested_properties",
+          "name": "box_2",
+          "value": "debug_update_sibling_2_b",
+          "rows": [],
+          "_nested_name": "pair.box_2"
+        }
+      ],
+      "_nested_name": "pair"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_update_sibling.xlsx"
+}

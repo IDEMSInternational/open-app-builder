@@ -1,0 +1,60 @@
+{
+  "flow_type": "template",
+  "flow_name": "activity_relax_15",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "relax",
+      "value": "relax",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "relax_data",
+          "value": "@data.relax.relax_15",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "relax.relax_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.relax.relax_15",
+                "matchedExpression": "@data.relax.relax_15",
+                "type": "data",
+                "fieldName": "relax"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.relax.relax_15": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "relax"
+    }
+  ],
+  "_xlsxPath": "global/data/relax_data_list.xlsx"
+}

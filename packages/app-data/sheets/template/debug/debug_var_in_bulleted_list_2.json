@@ -1,0 +1,211 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_var_in_bulleted_list_2",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title_1",
+      "value": "List with last item global",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_1"
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "* First item\n* @global.savings_option_2",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "* First item\n* @global.savings_option_2",
+            "matchedExpression": "@global.savings_option_2",
+            "type": "global",
+            "fieldName": "savings_option_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.savings_option_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title_2",
+      "value": "List with first item global",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_2"
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "value": "* @global.savings_option_1\n* Second item",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "* @global.savings_option_1\n* Second item",
+            "matchedExpression": "@global.savings_option_1",
+            "type": "global",
+            "fieldName": "savings_option_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.savings_option_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title_4",
+      "value": "List with only global and a bit of text",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_4"
+    },
+    {
+      "type": "text",
+      "name": "text_4",
+      "value": "This is a bit of text before the list\n* @global.savings_option_1\n* @global.savings_option_2",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "This is a bit of text before the list\n* @global.savings_option_1\n* @global.savings_option_2",
+            "matchedExpression": "@global.savings_option_1",
+            "type": "global",
+            "fieldName": "savings_option_1"
+          },
+          {
+            "fullExpression": "This is a bit of text before the list\n* @global.savings_option_1\n* @global.savings_option_2",
+            "matchedExpression": "@global.savings_option_2",
+            "type": "global",
+            "fieldName": "savings_option_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.savings_option_1": [
+          "value"
+        ],
+        "@global.savings_option_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title_5",
+      "value": "List with only global using *",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_5"
+    },
+    {
+      "type": "text",
+      "name": "text_5",
+      "value": "* @global.savings_option_1\n* @global.savings_option_2",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_5",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "* @global.savings_option_1\n* @global.savings_option_2",
+            "matchedExpression": "@global.savings_option_1",
+            "type": "global",
+            "fieldName": "savings_option_1"
+          },
+          {
+            "fullExpression": "* @global.savings_option_1\n* @global.savings_option_2",
+            "matchedExpression": "@global.savings_option_2",
+            "type": "global",
+            "fieldName": "savings_option_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.savings_option_1": [
+          "value"
+        ],
+        "@global.savings_option_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title_6",
+      "value": "Ordered lists (hardcoded)",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_6"
+    },
+    {
+      "type": "text",
+      "name": "text_6",
+      "value": "1. @global.savings_option_1\n2. @global.savings_option_2",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_6",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "1. @global.savings_option_1\n2. @global.savings_option_2",
+            "matchedExpression": "@global.savings_option_1",
+            "type": "global",
+            "fieldName": "savings_option_1"
+          },
+          {
+            "fullExpression": "1. @global.savings_option_1\n2. @global.savings_option_2",
+            "matchedExpression": "@global.savings_option_2",
+            "type": "global",
+            "fieldName": "savings_option_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.savings_option_1": [
+          "value"
+        ],
+        "@global.savings_option_2": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_var_in_bulleted_list.xlsx"
+}

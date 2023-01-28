@@ -1,0 +1,77 @@
+{
+  "flow_type": "template",
+  "flow_name": "demo_reset_app_pop",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Reset @global.parent_app",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Reset @global.parent_app",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "By pressing the button below you will reset the app to its initial settings.\n\nThis will restore all the default settings and delete any progress made.\n\nAll the data entered to the app will be deleted and you will not be able to recover it.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_1"
+    },
+    {
+      "type": "button",
+      "name": "button_1",
+      "value": "Reset @global.parent_app",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "reset_app",
+          "args": [],
+          "_raw": "click | reset_app",
+          "_cleaned": "click | reset_app"
+        }
+      ],
+      "exclude_from_translation": true,
+      "_nested_name": "button_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Reset @global.parent_app",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/demo_templates/demo_navigation.xlsx"
+}

@@ -1,0 +1,95 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_tour_template_1",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title_1",
+      "value": "Example Tour Template 1",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title_1"
+    },
+    {
+      "type": "set_variable",
+      "name": "show_button_1",
+      "value": true,
+      "_nested_name": "show_button_1"
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "Template 1",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text"
+    },
+    {
+      "type": "button",
+      "name": "button_1",
+      "value": "Click Me",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_local",
+          "args": [
+            "show_button_1",
+            false
+          ],
+          "_raw": "click | set_local:show_button_1:false",
+          "_cleaned": "click | set_local:show_button_1:false"
+        }
+      ],
+      "condition": "@local.show_button_1",
+      "_nested_name": "button_1",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.show_button_1",
+            "matchedExpression": "@local.show_button_1",
+            "type": "local",
+            "fieldName": "show_button_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.show_button_1": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "value": "Conditional logic works!",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!@local.show_button_1",
+      "_nested_name": "text_2",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@local.show_button_1",
+            "matchedExpression": "!@local.show_button_1",
+            "type": "local",
+            "fieldName": "show_button_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@local.show_button_1": [
+          "condition"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_tour.xlsx"
+}
