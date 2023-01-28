@@ -1,0 +1,277 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_condition_top_1",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "var_1",
+      "value": "\"val_1\"",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "var_1"
+    },
+    {
+      "name": "var_2",
+      "value": true,
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "var_2"
+    },
+    {
+      "name": "var_3",
+      "value": 5,
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "var_3"
+    },
+    {
+      "type": "template",
+      "name": "example_text_1",
+      "value": "example_text",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "text",
+          "value": "The condition is not satisfied",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.var_1==\"val_2\"",
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "example_text_1.text",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.var_1==\"val_2\"",
+                "matchedExpression": "@local.var_1",
+                "type": "local",
+                "fieldName": "var_1"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.var_1": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "name": "text",
+          "value": "The condition is satisfied",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.var_1==\"val_1\"",
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "example_text_1.text",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.var_1==\"val_1\"",
+                "matchedExpression": "@local.var_1",
+                "type": "local",
+                "fieldName": "var_1"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.var_1": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "example_text_1"
+    },
+    {
+      "type": "template",
+      "name": "example_text_2",
+      "value": "example_text",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "text",
+          "value": "The condition is satisfied",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.var_3<9",
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "example_text_2.text",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.var_3<9",
+                "matchedExpression": "@local.var_3",
+                "type": "local",
+                "fieldName": "var_3"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.var_3": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "name": "text",
+          "value": "The condition is not satisfied",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.var_3>9",
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "example_text_2.text",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.var_3>9",
+                "matchedExpression": "@local.var_3",
+                "type": "local",
+                "fieldName": "var_3"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.var_3": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "example_text_2"
+    },
+    {
+      "type": "template",
+      "name": "example_text_3",
+      "value": "example_text",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "text",
+          "value": "The condition is satisfied",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.var_2",
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "example_text_3.text",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.var_2",
+                "matchedExpression": "@local.var_2",
+                "type": "local",
+                "fieldName": "var_2"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.var_2": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "name": "text",
+          "value": "The condition is not satisfied",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "!@local.var_2",
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "example_text_3.text",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!@local.var_2",
+                "matchedExpression": "!@local.var_2",
+                "type": "local",
+                "fieldName": "var_2"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "!@local.var_2": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "example_text_3"
+    },
+    {
+      "type": "template",
+      "name": "example_text_4",
+      "value": "example_text",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "text",
+          "value": "The condition is not satisfied",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "!@local.var_2",
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "example_text_4.text",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "!@local.var_2",
+                "matchedExpression": "!@local.var_2",
+                "type": "local",
+                "fieldName": "var_2"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "!@local.var_2": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "name": "text",
+          "value": "The condition is satisfied",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.var_2",
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "example_text_4.text",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.var_2",
+                "matchedExpression": "@local.var_2",
+                "type": "local",
+                "fieldName": "var_2"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.var_2": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "example_text_4"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_condition.xlsx"
+}

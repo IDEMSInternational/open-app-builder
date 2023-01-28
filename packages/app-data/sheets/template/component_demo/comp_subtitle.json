@@ -1,0 +1,98 @@
+{
+  "flow_type": "template",
+  "flow_name": "comp_subtitle",
+  "status": "released",
+  "flow_subtype": "component_demo",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title_1",
+      "value": "Style",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title_1"
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle_par_1_1",
+      "parameter_list": {
+        "style": "standard"
+      },
+      "_nested_name": "subtitle_par_1_1"
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle_par_1_2",
+      "parameter_list": {
+        "style": "medium - (default)"
+      },
+      "_nested_name": "subtitle_par_1_2"
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle_par_1_3",
+      "parameter_list": {
+        "style": "small"
+      },
+      "_nested_name": "subtitle_par_1_3"
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle_par_1_4",
+      "parameter_list": {
+        "style": "large"
+      },
+      "_nested_name": "subtitle_par_1_4"
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle_par_1_5",
+      "parameter_list": {
+        "style": "center"
+      },
+      "_nested_name": "subtitle_par_1_5"
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle_par_1_6",
+      "parameter_list": {
+        "style": "left"
+      },
+      "_nested_name": "subtitle_par_1_6"
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle_par_1_7",
+      "parameter_list": {
+        "style": "right"
+      },
+      "_nested_name": "subtitle_par_1_7"
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle_par_1_8",
+      "parameter_list": {
+        "style": "alternative"
+      },
+      "_nested_name": "subtitle_par_1_8"
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle_par_1_9",
+      "parameter_list": {
+        "style": "contextual"
+      },
+      "_nested_name": "subtitle_par_1_9"
+    },
+    {
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "type": "set_variable",
+      "name": "set_variable",
+      "_nested_name": "set_variable"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/component_sheets/component_subtitle.xlsx"
+}

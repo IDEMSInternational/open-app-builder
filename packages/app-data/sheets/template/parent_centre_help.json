@@ -1,0 +1,107 @@
+{
+  "flow_type": "template",
+  "flow_name": "parent_centre_help",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@data.parent_centre.help.title",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "tiny"
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.parent_centre.help.title",
+            "matchedExpression": "@data.parent_centre.help.title",
+            "type": "data",
+            "fieldName": "parent_centre"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.parent_centre.help.title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_1",
+      "value": "Give me quick parenting tips",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "parenting_tips"
+          ],
+          "_raw": "click | go_to: parenting_tips",
+          "_cleaned": "click | go_to: parenting_tips"
+        }
+      ],
+      "_nested_name": "button_1"
+    },
+    {
+      "type": "button",
+      "name": "button_2",
+      "value": "Something really bad happened",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "hidden": true,
+      "_nested_name": "button_2"
+    },
+    {
+      "type": "button",
+      "name": "button_3",
+      "value": "I have technical problems with the app",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "parent_centre_technical_support"
+          ],
+          "_raw": "click | go_to: parent_centre_technical_support",
+          "_cleaned": "click | go_to: parent_centre_technical_support"
+        }
+      ],
+      "hidden": true,
+      "_nested_name": "button_3"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
+}

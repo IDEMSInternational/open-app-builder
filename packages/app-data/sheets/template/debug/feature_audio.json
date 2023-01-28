@@ -1,0 +1,46 @@
+{
+  "flow_type": "template",
+  "flow_name": "feature_audio",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "audio",
+      "name": "audio_1",
+      "value": "quality_assurance/test_audio.mp3",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "range_bar_disabled": "true",
+        "time_to_rewind": "5",
+        "title": "Audio player #1"
+      },
+      "style_list": [
+        "margin-top: 15px"
+      ],
+      "_nested_name": "audio_1"
+    },
+    {
+      "type": "audio",
+      "name": "audio_2",
+      "value": "quality_assurance/test_audio.mp3",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "range_bar_disabled": "false",
+        "time_to_rewind": "3",
+        "title": "Audio player #2",
+        "help": "Example"
+      },
+      "style_list": [
+        "margin-top: 15px"
+      ],
+      "_nested_name": "audio_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"
+}

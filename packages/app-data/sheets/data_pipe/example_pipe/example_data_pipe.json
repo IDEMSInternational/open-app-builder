@@ -1,0 +1,48 @@
+{
+  "flow_type": "data_pipe",
+  "flow_subtype": "example_pipe",
+  "flow_name": "example_data_pipe",
+  "status": "released",
+  "rows": [
+    {
+      "operation": "filter",
+      "args_list": [
+        "value>1"
+      ],
+      "input_source": "example_data_pipe_list"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "Text: Hello {@row.id}",
+        "Label: Another column",
+        "Field: example_{@row.id}_field"
+      ]
+    },
+    {
+      "operation": "filter_any",
+      "args_list": [
+        "value%2===0",
+        "value===5"
+      ],
+      "output_target": "intermediate_list | local_only;"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "completed"
+      ],
+      "input_source": "intermediate_list",
+      "output_target": "example_pipe_completed"
+    },
+    {
+      "operation": "filter",
+      "args_list": [
+        "!completed"
+      ],
+      "input_source": "intermediate_list",
+      "output_target": "example_pipe_uncompleted"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/example_data_pipes.xlsx"
+}

@@ -1,0 +1,109 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_dates",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "text",
+      "name": "first",
+      "value": "@field.first_app_open is the first time it opened",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "first",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@field.first_app_open is the first time it opened",
+            "matchedExpression": "@field.first_app_open",
+            "type": "field",
+            "fieldName": "first_app_open"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@field.first_app_open": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "today",
+      "value": "@field.current_date is today",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "today",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@field.current_date is today",
+            "matchedExpression": "@field.current_date",
+            "type": "field",
+            "fieldName": "current_date"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@field.current_date": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "week",
+      "value": "second_week is @field.second_week",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "week",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "second_week is @field.second_week",
+            "matchedExpression": "@field.second_week",
+            "type": "field",
+            "fieldName": "second_week"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@field.second_week": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "time_difference",
+      "value": "the time difference is @field.time_difference",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "time_difference",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "the time difference is @field.time_difference",
+            "matchedExpression": "@field.time_difference",
+            "type": "field",
+            "fieldName": "time_difference"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@field.time_difference": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_multiple_locals.xlsx"
+}

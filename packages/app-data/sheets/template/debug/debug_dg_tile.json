@@ -1,0 +1,535 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_dg_tile",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "label_group",
+      "value": "@global.together",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "label_group",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.together",
+            "matchedExpression": "@global.together",
+            "type": "global",
+            "fieldName": "together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.together": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "image_group",
+      "value": "@global.together_image",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_group",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.together_image",
+            "matchedExpression": "@global.together_image",
+            "type": "global",
+            "fieldName": "together_image"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.together_image": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "label_individual",
+      "value": "@global.individual",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "label_individual",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.individual",
+            "matchedExpression": "@global.individual",
+            "type": "global",
+            "fieldName": "individual"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.individual": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "image_individual",
+      "value": "@global.individual_image",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_individual",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.individual_image",
+            "matchedExpression": "@global.individual_image",
+            "type": "global",
+            "fieldName": "individual_image"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.individual_image": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "dg_1",
+      "rows": [
+        {
+          "type": "tile_component",
+          "name": "tile_1",
+          "parameter_list": {
+            "first_line_text": "@local.label_individual",
+            "style": "workshop_page",
+            "icon_src": "@local.image_individual"
+          },
+          "_nested_name": "dg_1.tile_1",
+          "_dynamicFields": {
+            "parameter_list": {
+              "first_line_text": [
+                {
+                  "fullExpression": "@local.label_individual",
+                  "matchedExpression": "@local.label_individual",
+                  "type": "local",
+                  "fieldName": "label_individual"
+                }
+              ],
+              "icon_src": [
+                {
+                  "fullExpression": "@local.image_individual",
+                  "matchedExpression": "@local.image_individual",
+                  "type": "local",
+                  "fieldName": "image_individual"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.label_individual": [
+              "parameter_list.first_line_text"
+            ],
+            "@local.image_individual": [
+              "parameter_list.icon_src"
+            ]
+          }
+        },
+        {
+          "type": "tile_component",
+          "name": "tile_2",
+          "parameter_list": {
+            "first_line_text": "@local.label_group",
+            "style": "workshop_page",
+            "icon_src": "@local.image_group"
+          },
+          "_nested_name": "dg_1.tile_2",
+          "_dynamicFields": {
+            "parameter_list": {
+              "first_line_text": [
+                {
+                  "fullExpression": "@local.label_group",
+                  "matchedExpression": "@local.label_group",
+                  "type": "local",
+                  "fieldName": "label_group"
+                }
+              ],
+              "icon_src": [
+                {
+                  "fullExpression": "@local.image_group",
+                  "matchedExpression": "@local.image_group",
+                  "type": "local",
+                  "fieldName": "image_group"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.label_group": [
+              "parameter_list.first_line_text"
+            ],
+            "@local.image_group": [
+              "parameter_list.icon_src"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "dg_1"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_2",
+      "rows": [
+        {
+          "type": "tile_component",
+          "name": "tile_3",
+          "parameter_list": {
+            "first_line_text": "@local.label_individual",
+            "style": "workshop_page",
+            "icon_src": "@local.image_individual"
+          },
+          "style_list": [
+            "flex: 1"
+          ],
+          "_nested_name": "dg_2.tile_3",
+          "_dynamicFields": {
+            "parameter_list": {
+              "first_line_text": [
+                {
+                  "fullExpression": "@local.label_individual",
+                  "matchedExpression": "@local.label_individual",
+                  "type": "local",
+                  "fieldName": "label_individual"
+                }
+              ],
+              "icon_src": [
+                {
+                  "fullExpression": "@local.image_individual",
+                  "matchedExpression": "@local.image_individual",
+                  "type": "local",
+                  "fieldName": "image_individual"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.label_individual": [
+              "parameter_list.first_line_text"
+            ],
+            "@local.image_individual": [
+              "parameter_list.icon_src"
+            ]
+          }
+        },
+        {
+          "type": "tile_component",
+          "name": "tile_4",
+          "parameter_list": {
+            "first_line_text": "@local.label_group",
+            "style": "workshop_page",
+            "icon_src": "@local.image_group"
+          },
+          "style_list": [
+            "flex: 1"
+          ],
+          "_nested_name": "dg_2.tile_4",
+          "_dynamicFields": {
+            "parameter_list": {
+              "first_line_text": [
+                {
+                  "fullExpression": "@local.label_group",
+                  "matchedExpression": "@local.label_group",
+                  "type": "local",
+                  "fieldName": "label_group"
+                }
+              ],
+              "icon_src": [
+                {
+                  "fullExpression": "@local.image_group",
+                  "matchedExpression": "@local.image_group",
+                  "type": "local",
+                  "fieldName": "image_group"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.label_group": [
+              "parameter_list.first_line_text"
+            ],
+            "@local.image_group": [
+              "parameter_list.icon_src"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "dg_2"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_3",
+      "style_list": [
+        "justify-content: center"
+      ],
+      "rows": [
+        {
+          "type": "tile_component",
+          "name": "tile_5",
+          "parameter_list": {
+            "first_line_text": "@local.label_individual",
+            "style": "workshop_page",
+            "icon_src": "@local.image_individual"
+          },
+          "_nested_name": "dg_3.tile_5",
+          "_dynamicFields": {
+            "parameter_list": {
+              "first_line_text": [
+                {
+                  "fullExpression": "@local.label_individual",
+                  "matchedExpression": "@local.label_individual",
+                  "type": "local",
+                  "fieldName": "label_individual"
+                }
+              ],
+              "icon_src": [
+                {
+                  "fullExpression": "@local.image_individual",
+                  "matchedExpression": "@local.image_individual",
+                  "type": "local",
+                  "fieldName": "image_individual"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.label_individual": [
+              "parameter_list.first_line_text"
+            ],
+            "@local.image_individual": [
+              "parameter_list.icon_src"
+            ]
+          }
+        },
+        {
+          "type": "tile_component",
+          "name": "tile_6",
+          "parameter_list": {
+            "first_line_text": "@local.label_group",
+            "style": "workshop_page",
+            "icon_src": "@local.image_group"
+          },
+          "_nested_name": "dg_3.tile_6",
+          "_dynamicFields": {
+            "parameter_list": {
+              "first_line_text": [
+                {
+                  "fullExpression": "@local.label_group",
+                  "matchedExpression": "@local.label_group",
+                  "type": "local",
+                  "fieldName": "label_group"
+                }
+              ],
+              "icon_src": [
+                {
+                  "fullExpression": "@local.image_group",
+                  "matchedExpression": "@local.image_group",
+                  "type": "local",
+                  "fieldName": "image_group"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.label_group": [
+              "parameter_list.first_line_text"
+            ],
+            "@local.image_group": [
+              "parameter_list.icon_src"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "dg_3"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_4",
+      "style_list": [
+        "justify-content: space-evenly"
+      ],
+      "rows": [
+        {
+          "type": "tile_component",
+          "name": "tile_7",
+          "parameter_list": {
+            "first_line_text": "@local.label_individual",
+            "style": "workshop_page",
+            "icon_src": "@local.image_individual"
+          },
+          "_nested_name": "dg_4.tile_7",
+          "_dynamicFields": {
+            "parameter_list": {
+              "first_line_text": [
+                {
+                  "fullExpression": "@local.label_individual",
+                  "matchedExpression": "@local.label_individual",
+                  "type": "local",
+                  "fieldName": "label_individual"
+                }
+              ],
+              "icon_src": [
+                {
+                  "fullExpression": "@local.image_individual",
+                  "matchedExpression": "@local.image_individual",
+                  "type": "local",
+                  "fieldName": "image_individual"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.label_individual": [
+              "parameter_list.first_line_text"
+            ],
+            "@local.image_individual": [
+              "parameter_list.icon_src"
+            ]
+          }
+        },
+        {
+          "type": "tile_component",
+          "name": "tile_8",
+          "parameter_list": {
+            "first_line_text": "@local.label_group",
+            "style": "workshop_page",
+            "icon_src": "@local.image_group"
+          },
+          "_nested_name": "dg_4.tile_8",
+          "_dynamicFields": {
+            "parameter_list": {
+              "first_line_text": [
+                {
+                  "fullExpression": "@local.label_group",
+                  "matchedExpression": "@local.label_group",
+                  "type": "local",
+                  "fieldName": "label_group"
+                }
+              ],
+              "icon_src": [
+                {
+                  "fullExpression": "@local.image_group",
+                  "matchedExpression": "@local.image_group",
+                  "type": "local",
+                  "fieldName": "image_group"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.label_group": [
+              "parameter_list.first_line_text"
+            ],
+            "@local.image_group": [
+              "parameter_list.icon_src"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "dg_4"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_5",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "tile_component",
+          "name": "tile_9",
+          "parameter_list": {
+            "first_line_text": "@local.label_individual",
+            "style": "workshop_page",
+            "icon_src": "@local.image_individual"
+          },
+          "_nested_name": "dg_5.tile_9",
+          "_dynamicFields": {
+            "parameter_list": {
+              "first_line_text": [
+                {
+                  "fullExpression": "@local.label_individual",
+                  "matchedExpression": "@local.label_individual",
+                  "type": "local",
+                  "fieldName": "label_individual"
+                }
+              ],
+              "icon_src": [
+                {
+                  "fullExpression": "@local.image_individual",
+                  "matchedExpression": "@local.image_individual",
+                  "type": "local",
+                  "fieldName": "image_individual"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.label_individual": [
+              "parameter_list.first_line_text"
+            ],
+            "@local.image_individual": [
+              "parameter_list.icon_src"
+            ]
+          }
+        },
+        {
+          "type": "tile_component",
+          "name": "tile_10",
+          "parameter_list": {
+            "first_line_text": "@local.label_group",
+            "style": "workshop_page",
+            "icon_src": "@local.image_group"
+          },
+          "_nested_name": "dg_5.tile_10",
+          "_dynamicFields": {
+            "parameter_list": {
+              "first_line_text": [
+                {
+                  "fullExpression": "@local.label_group",
+                  "matchedExpression": "@local.label_group",
+                  "type": "local",
+                  "fieldName": "label_group"
+                }
+              ],
+              "icon_src": [
+                {
+                  "fullExpression": "@local.image_group",
+                  "matchedExpression": "@local.image_group",
+                  "type": "local",
+                  "fieldName": "image_group"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.label_group": [
+              "parameter_list.first_line_text"
+            ],
+            "@local.image_group": [
+              "parameter_list.icon_src"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "dg_5"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_dg.xlsx"
+}

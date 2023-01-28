@@ -1,0 +1,235 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_dg_button",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "label_group",
+      "value": "@global.together",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "label_group",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.together",
+            "matchedExpression": "@global.together",
+            "type": "global",
+            "fieldName": "together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.together": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "image_group",
+      "value": "@global.together_image",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_group",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.together_image",
+            "matchedExpression": "@global.together_image",
+            "type": "global",
+            "fieldName": "together_image"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.together_image": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "label_individual",
+      "value": "@global.individual",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "label_individual",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.individual",
+            "matchedExpression": "@global.individual",
+            "type": "global",
+            "fieldName": "individual"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.individual": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "image_individual",
+      "value": "@global.individual_image",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "image_individual",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.individual_image",
+            "matchedExpression": "@global.individual_image",
+            "type": "global",
+            "fieldName": "individual_image"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.individual_image": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "dg_1",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_1",
+          "value": "Text 1",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "dg_1.button_1"
+        },
+        {
+          "type": "button",
+          "name": "button_2",
+          "value": "Text 2",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "dg_1.button_2"
+        }
+      ],
+      "_nested_name": "dg_1"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_2",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_3",
+          "value": "Text 3",
+          "_translations": {
+            "value": {}
+          },
+          "style_list": [
+            "flex:1"
+          ],
+          "_nested_name": "dg_2.button_3"
+        },
+        {
+          "type": "button",
+          "name": "button_4",
+          "value": "Text 4",
+          "_translations": {
+            "value": {}
+          },
+          "style_list": [
+            "flex:2"
+          ],
+          "_nested_name": "dg_2.button_4"
+        }
+      ],
+      "_nested_name": "dg_2"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_3",
+      "parameter_list": {
+        "style": "parent_point"
+      },
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_5",
+          "value": "Text 5",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "dg_3.button_5"
+        },
+        {
+          "type": "button",
+          "name": "button_6",
+          "value": "Text 6",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "dg_3.button_6"
+        }
+      ],
+      "_nested_name": "dg_3"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_4",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_7",
+          "value": "Text 7",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "dg_4.button_7"
+        },
+        {
+          "type": "button",
+          "name": "button_8",
+          "value": "Text 8",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "dg_4.button_8"
+        }
+      ],
+      "_nested_name": "dg_4"
+    },
+    {
+      "type": "button",
+      "name": "button_9",
+      "value": "Text 9",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "button_9"
+    },
+    {
+      "type": "button",
+      "name": "button_10",
+      "value": "Text 10",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "button_10"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_dg.xlsx"
+}

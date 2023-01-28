@@ -1,0 +1,18 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_text_option_1",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text",
+      "value": "You selected option 1",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_update_sibling.xlsx"
+}

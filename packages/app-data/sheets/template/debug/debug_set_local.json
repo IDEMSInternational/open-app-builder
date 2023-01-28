@@ -1,0 +1,184 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_set_local",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "debug_variable_one",
+      "value": "Value of the first debug variable.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "debug_variable_one"
+    },
+    {
+      "name": "debug_variable_two",
+      "value": "Value of the second debug variable",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "debug_variable_two"
+    },
+    {
+      "name": "debug_variable_3",
+      "value": "Value of the third debug variable",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "debug_variable_3"
+    },
+    {
+      "name": "debug_variable_four",
+      "value": "Value of the fourth debug variable",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "debug_variable_four"
+    },
+    {
+      "name": "debug_variable_five",
+      "value": "Value of the fifth debug variable",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "debug_variable_five"
+    },
+    {
+      "type": "text",
+      "name": "debug_text_1",
+      "value": "Text that includes @local.debug_variable_one",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "debug_text_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Text that includes @local.debug_variable_one",
+            "matchedExpression": "@local.debug_variable_one",
+            "type": "local",
+            "fieldName": "debug_variable_one"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.debug_variable_one": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "debug_text_2",
+      "value": "Text that includes @local.debug_variable_two",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "debug_text_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Text that includes @local.debug_variable_two",
+            "matchedExpression": "@local.debug_variable_two",
+            "type": "local",
+            "fieldName": "debug_variable_two"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.debug_variable_two": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "debug_text_3",
+      "value": "Text that includes @local.debug_variable_3",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "debug_text_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Text that includes @local.debug_variable_3",
+            "matchedExpression": "@local.debug_variable_3",
+            "type": "local",
+            "fieldName": "debug_variable_3"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.debug_variable_3": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "debug_text_4",
+      "value": "Text that includes @local.debug_variable_four",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "debug_text_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Text that includes @local.debug_variable_four",
+            "matchedExpression": "@local.debug_variable_four",
+            "type": "local",
+            "fieldName": "debug_variable_four"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.debug_variable_four": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "debug_text_5",
+      "value": "Text that includes @local.debug_variable-five",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "debug_text_5",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Text that includes @local.debug_variable-five",
+            "matchedExpression": "@local.debug_variable",
+            "type": "local",
+            "fieldName": "debug_variable"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.debug_variable": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_small_issues.xlsx"
+}

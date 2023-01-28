@@ -1,0 +1,648 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_relax_checkbox",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "set_field",
+      "name": "relax_3_favourite",
+      "value": false,
+      "exclude_from_translation": true,
+      "_nested_name": "relax_3_favourite"
+    },
+    {
+      "type": "set_field",
+      "name": "which_relax",
+      "value": "relax_3",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "which_relax"
+    },
+    {
+      "name": "favourite",
+      "value": "_favourite",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "favourite"
+    },
+    {
+      "name": "relax",
+      "value": "@field.which_relax",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "relax",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@field.which_relax",
+            "matchedExpression": "@field.which_relax",
+            "type": "field",
+            "fieldName": "which_relax"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@field.which_relax": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "relax_favourite",
+      "value": "@local.relax@local.favourite",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "relax_favourite",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.relax@local.favourite",
+            "matchedExpression": "@local.relax",
+            "type": "local",
+            "fieldName": "relax"
+          },
+          {
+            "fullExpression": "@local.relax@local.favourite",
+            "matchedExpression": "@local.favourite",
+            "type": "local",
+            "fieldName": "favourite"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.relax": [
+          "value"
+        ],
+        "@local.favourite": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "@local.relax_favourite",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.relax_favourite",
+            "matchedExpression": "@local.relax_favourite",
+            "type": "local",
+            "fieldName": "relax_favourite"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.relax_favourite": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "value": "This is @field.@local.relax_favourite",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "This is @field.@local.relax_favourite",
+            "matchedExpression": "@local.relax_favourite",
+            "type": "local",
+            "fieldName": "relax_favourite"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.relax_favourite": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_3",
+      "value": "@field.@local.relax@local.favourite",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@field.@local.relax@local.favourite",
+            "matchedExpression": "@local.relax",
+            "type": "local",
+            "fieldName": "relax"
+          },
+          {
+            "fullExpression": "@field.@local.relax@local.favourite",
+            "matchedExpression": "@local.favourite",
+            "type": "local",
+            "fieldName": "favourite"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.relax": [
+          "value"
+        ],
+        "@local.favourite": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "simple_checkbox",
+      "name": "checkbox_1",
+      "value": "@field.@local.relax_favourite",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.relax_favourite",
+            "this.value"
+          ],
+          "_raw": "changed | set_field:@local.relax_favourite:@local.checkbox_1",
+          "_cleaned": "changed | set_field:@local.relax_favourite:@local.checkbox_1"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "label_text": "checkbox 1"
+      },
+      "_nested_name": "checkbox_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@field.@local.relax_favourite",
+            "matchedExpression": "@local.relax_favourite",
+            "type": "local",
+            "fieldName": "relax_favourite"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.relax_favourite",
+                  "matchedExpression": "@local.relax_favourite",
+                  "type": "local",
+                  "fieldName": "relax_favourite"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field:@local.relax_favourite:@local.checkbox_1",
+                "matchedExpression": "@local.relax_favourite",
+                "type": "local",
+                "fieldName": "relax_favourite"
+              },
+              {
+                "fullExpression": "changed | set_field:@local.relax_favourite:@local.checkbox_1",
+                "matchedExpression": "@local.checkbox_1",
+                "type": "local",
+                "fieldName": "checkbox_1"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field:@local.relax_favourite:@local.checkbox_1",
+                "matchedExpression": "@local.relax_favourite",
+                "type": "local",
+                "fieldName": "relax_favourite"
+              },
+              {
+                "fullExpression": "changed | set_field:@local.relax_favourite:@local.checkbox_1",
+                "matchedExpression": "@local.checkbox_1",
+                "type": "local",
+                "fieldName": "checkbox_1"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.relax_favourite": [
+          "value",
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.checkbox_1": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "local_text_1",
+      "value": "checkbox local: @local.checkbox_1",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "local_text_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "checkbox local: @local.checkbox_1",
+            "matchedExpression": "@local.checkbox_1",
+            "type": "local",
+            "fieldName": "checkbox_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.checkbox_1": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "simple_checkbox",
+      "name": "checkbox_2",
+      "value": "@field.relax_3_favourite",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "relax_3_favourite",
+            "this.value"
+          ],
+          "_raw": "changed | set_field:relax_3_favourite:@local.checkbox_2",
+          "_cleaned": "changed | set_field:relax_3_favourite:@local.checkbox_2"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "label_text": "checkbox 2"
+      },
+      "_nested_name": "checkbox_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@field.relax_3_favourite",
+            "matchedExpression": "@field.relax_3_favourite",
+            "type": "field",
+            "fieldName": "relax_3_favourite"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field:relax_3_favourite:@local.checkbox_2",
+                "matchedExpression": "@local.checkbox_2",
+                "type": "local",
+                "fieldName": "checkbox_2"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field:relax_3_favourite:@local.checkbox_2",
+                "matchedExpression": "@local.checkbox_2",
+                "type": "local",
+                "fieldName": "checkbox_2"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@field.relax_3_favourite": [
+          "value"
+        ],
+        "@local.checkbox_2": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "local_text_2",
+      "value": "checkbox local: @local.checkbox_2",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "local_text_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "checkbox local: @local.checkbox_2",
+            "matchedExpression": "@local.checkbox_2",
+            "type": "local",
+            "fieldName": "checkbox_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.checkbox_2": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "simple_checkbox",
+      "name": "checkbox_3",
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "relax_3_favourite",
+            "this.value"
+          ],
+          "_raw": "changed | set_field:relax_3_favourite:@local.checkbox_3",
+          "_cleaned": "changed | set_field:relax_3_favourite:@local.checkbox_3"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "label_text": "checkbox 3"
+      },
+      "_nested_name": "checkbox_3",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field:relax_3_favourite:@local.checkbox_3",
+                "matchedExpression": "@local.checkbox_3",
+                "type": "local",
+                "fieldName": "checkbox_3"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field:relax_3_favourite:@local.checkbox_3",
+                "matchedExpression": "@local.checkbox_3",
+                "type": "local",
+                "fieldName": "checkbox_3"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.checkbox_3": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "local_text_3",
+      "value": "checkbox local: @local.checkbox_3",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "local_text_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "checkbox local: @local.checkbox_3",
+            "matchedExpression": "@local.checkbox_3",
+            "type": "local",
+            "fieldName": "checkbox_3"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.checkbox_3": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "simple_checkbox",
+      "name": "checkbox_4",
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.relax_favourite",
+            "this.value"
+          ],
+          "_raw": "changed | set_field:@local.relax_favourite:@local.checkbox_4",
+          "_cleaned": "changed | set_field:@local.relax_favourite:@local.checkbox_4"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "label_text": "checkbox 4"
+      },
+      "_nested_name": "checkbox_4",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.relax_favourite",
+                  "matchedExpression": "@local.relax_favourite",
+                  "type": "local",
+                  "fieldName": "relax_favourite"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field:@local.relax_favourite:@local.checkbox_4",
+                "matchedExpression": "@local.relax_favourite",
+                "type": "local",
+                "fieldName": "relax_favourite"
+              },
+              {
+                "fullExpression": "changed | set_field:@local.relax_favourite:@local.checkbox_4",
+                "matchedExpression": "@local.checkbox_4",
+                "type": "local",
+                "fieldName": "checkbox_4"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field:@local.relax_favourite:@local.checkbox_4",
+                "matchedExpression": "@local.relax_favourite",
+                "type": "local",
+                "fieldName": "relax_favourite"
+              },
+              {
+                "fullExpression": "changed | set_field:@local.relax_favourite:@local.checkbox_4",
+                "matchedExpression": "@local.checkbox_4",
+                "type": "local",
+                "fieldName": "checkbox_4"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.relax_favourite": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.checkbox_4": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "local_text_4",
+      "value": "checkbox local: @local.checkbox_4",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "local_text_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "checkbox local: @local.checkbox_4",
+            "matchedExpression": "@local.checkbox_4",
+            "type": "local",
+            "fieldName": "checkbox_4"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.checkbox_4": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "animated_section",
+      "name": "dave",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "type": "simple_checkbox",
+          "name": "checkbox_5",
+          "action_list": [
+            {
+              "trigger": "changed",
+              "action_id": "set_field",
+              "args": [
+                "checkbox_a_s_test",
+                "this.value"
+              ],
+              "_raw": "changed | set_field:checkbox_a_s_test:@local.checkbox_5",
+              "_cleaned": "changed | set_field:checkbox_a_s_test:@local.checkbox_5"
+            }
+          ],
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "label_text": "checkbox 5"
+          },
+          "_nested_name": "dave.checkbox_5",
+          "_dynamicFields": {
+            "action_list": {
+              "0": {
+                "_raw": [
+                  {
+                    "fullExpression": "changed | set_field:checkbox_a_s_test:@local.checkbox_5",
+                    "matchedExpression": "@local.checkbox_5",
+                    "type": "local",
+                    "fieldName": "checkbox_5"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "changed | set_field:checkbox_a_s_test:@local.checkbox_5",
+                    "matchedExpression": "@local.checkbox_5",
+                    "type": "local",
+                    "fieldName": "checkbox_5"
+                  }
+                ]
+              }
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.checkbox_5": [
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "dave"
+    },
+    {
+      "type": "text",
+      "name": "text_5",
+      "value": "the local for checkbox 5 in animates section is @local.checkbox_5 and the field is @fields.checkbox_a_s_test",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_5",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "the local for checkbox 5 in animates section is @local.checkbox_5 and the field is @fields.checkbox_a_s_test",
+            "matchedExpression": "@local.checkbox_5",
+            "type": "local",
+            "fieldName": "checkbox_5"
+          },
+          {
+            "fullExpression": "the local for checkbox 5 in animates section is @local.checkbox_5 and the field is @fields.checkbox_a_s_test",
+            "matchedExpression": "@fields.checkbox_a_s_test",
+            "type": "fields",
+            "fieldName": "checkbox_a_s_test"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.checkbox_5": [
+          "value"
+        ],
+        "@fields.checkbox_a_s_test": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_relax_checkbox.xlsx"
+}

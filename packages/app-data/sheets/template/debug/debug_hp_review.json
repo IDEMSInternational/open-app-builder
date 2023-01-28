@@ -1,0 +1,237 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_hp_review",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "workshop_data",
+      "type": "set_variable",
+      "_nested_name": "workshop_data"
+    },
+    {
+      "name": "workshop",
+      "value": "@local.workshop_data.id",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "workshop",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop_data.id",
+            "matchedExpression": "@local.workshop_data.id",
+            "type": "local",
+            "fieldName": "workshop_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_data.id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "debug",
+      "value": "_debug",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "debug"
+    },
+    {
+      "name": "workshop_debug",
+      "value": "@local.workshop@local.debug",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "workshop_debug",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop@local.debug",
+            "matchedExpression": "@local.workshop",
+            "type": "local",
+            "fieldName": "workshop"
+          },
+          {
+            "fullExpression": "@local.workshop@local.debug",
+            "matchedExpression": "@local.debug",
+            "type": "local",
+            "fieldName": "debug"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop": [
+          "value"
+        ],
+        "@local.debug": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "debug_description",
+      "value": "This template should show the same information on both sections",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "debug_description"
+    },
+    {
+      "type": "template",
+      "name": "workshop_activity",
+      "value": "debug_workshop_activity",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "intro_text",
+          "value": "@local.workshop_data.id\n@local.workshop\n@local.debug\n@local.workshop_debug",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "workshop_activity.intro_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.workshop_data.id\n@local.workshop\n@local.debug\n@local.workshop_debug",
+                "matchedExpression": "@local.workshop_data.id",
+                "type": "local",
+                "fieldName": "workshop_data"
+              },
+              {
+                "fullExpression": "@local.workshop_data.id\n@local.workshop\n@local.debug\n@local.workshop_debug",
+                "matchedExpression": "@local.workshop",
+                "type": "local",
+                "fieldName": "workshop"
+              },
+              {
+                "fullExpression": "@local.workshop_data.id\n@local.workshop\n@local.debug\n@local.workshop_debug",
+                "matchedExpression": "@local.debug",
+                "type": "local",
+                "fieldName": "debug"
+              },
+              {
+                "fullExpression": "@local.workshop_data.id\n@local.workshop\n@local.debug\n@local.workshop_debug",
+                "matchedExpression": "@local.workshop_debug",
+                "type": "local",
+                "fieldName": "workshop_debug"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_data.id": [
+              "value"
+            ],
+            "@local.workshop": [
+              "value"
+            ],
+            "@local.debug": [
+              "value"
+            ],
+            "@local.workshop_debug": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "content_box",
+          "value": "example_title_text",
+          "rows": [
+            {
+              "name": "title",
+              "value": "Content",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "workshop_activity.content_box.title"
+            },
+            {
+              "name": "text",
+              "value": "@local.workshop_data.id\n@local.workshop\n@local.debug\n@local.workshop_debug",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "workshop_activity.content_box.text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.workshop_data.id\n@local.workshop\n@local.debug\n@local.workshop_debug",
+                    "matchedExpression": "@local.workshop_data.id",
+                    "type": "local",
+                    "fieldName": "workshop_data"
+                  },
+                  {
+                    "fullExpression": "@local.workshop_data.id\n@local.workshop\n@local.debug\n@local.workshop_debug",
+                    "matchedExpression": "@local.workshop",
+                    "type": "local",
+                    "fieldName": "workshop"
+                  },
+                  {
+                    "fullExpression": "@local.workshop_data.id\n@local.workshop\n@local.debug\n@local.workshop_debug",
+                    "matchedExpression": "@local.debug",
+                    "type": "local",
+                    "fieldName": "debug"
+                  },
+                  {
+                    "fullExpression": "@local.workshop_data.id\n@local.workshop\n@local.debug\n@local.workshop_debug",
+                    "matchedExpression": "@local.workshop_debug",
+                    "type": "local",
+                    "fieldName": "workshop_debug"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.workshop_data.id": [
+                  "value"
+                ],
+                "@local.workshop": [
+                  "value"
+                ],
+                "@local.debug": [
+                  "value"
+                ],
+                "@local.workshop_debug": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "workshop_activity.content_box"
+        }
+      ],
+      "_nested_name": "workshop_activity"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_hp_review.xlsx"
+}

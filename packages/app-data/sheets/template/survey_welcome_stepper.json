@@ -1,0 +1,89 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_welcome_stepper",
+  "status": "released",
+  "rows": [
+    {
+      "type": "set_field",
+      "name": "current_survey_name",
+      "value": "survey_welcome",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "current_survey_name"
+    },
+    {
+      "type": "set_field",
+      "name": "survey_welcome_started",
+      "value": true,
+      "_nested_name": "survey_welcome_started"
+    },
+    {
+      "type": "template",
+      "name": "survey_stepper_actions",
+      "value": "survey_stepper_actions",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "survey_name",
+          "value": "survey_welcome",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "survey_stepper_actions.survey_name"
+        },
+        {
+          "type": "nested_properties",
+          "name": "survey_stepper",
+          "rows": [
+            {
+              "name": "nav_template_list",
+              "value": [
+                "survey_intro",
+                "survey_question_ppf",
+                "survey_question_ppp",
+                "survey_question_pst",
+                "survey_question_pde",
+                "survey_question_cme",
+                "survey_question_fin",
+                "survey_question_orp",
+                "survey_question_cmp",
+                "survey_question_psu",
+                "survey_question_pcsap",
+                "survey_question_ris",
+                "survey_welcome_outro"
+              ],
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "survey_stepper_actions.survey_stepper.nav_template_list"
+            }
+          ],
+          "_nested_name": "survey_stepper_actions.survey_stepper"
+        }
+      ],
+      "_nested_name": "survey_stepper_actions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/survey_welcome.xlsx"
+}
