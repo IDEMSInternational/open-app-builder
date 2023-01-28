@@ -35,7 +35,7 @@ Deployments are used to configure data sources (such as google drive) and store 
 
 An initial deployment can be created via the command
 ```
-yarn workflow deployment_create
+yarn workflow deployment create
 ```
 You will be prompted to specify the deployment type, this should be a `New Local Deployment`. You will also be prompted to provide a name.
 

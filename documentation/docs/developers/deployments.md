@@ -9,7 +9,7 @@ All user-generated content are stored within deployments, alongside app-specific
 All deployments are stored in the `.idems_app/deployments` folder, and new deployments can be added by calling the script:
 
 ```sh
-yarn workflow deployment_create
+yarn workflow deployment create
 ```
 This will prompt for a deployment type
 
@@ -88,7 +88,7 @@ If an external content repo already exists it is possible to directly import int
 
 This can be done via the script
 ```
-yarn workflow deployment_import [url]
+yarn workflow deployment import [url]
 ```
 Where [url] can be replaced with the url of a github repository where content is stored
 
