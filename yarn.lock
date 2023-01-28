@@ -7826,6 +7826,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"app-data@workspace:packages/app-data":
+  version: 0.0.0-use.local
+  resolution: "app-data@workspace:packages/app-data"
+  dependencies:
+    "@types/node": ^15.12.4
+    data-models: "workspace:*"
+    typescript: ~4.2.4
+  languageName: unknown
+  linkType: soft
+
 "app-path@npm:^3.2.0":
   version: 3.3.0
   resolution: "app-path@npm:3.3.0"
