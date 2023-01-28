@@ -17,11 +17,12 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "translate_vtt_files",
         function: async ({ tasks, config }) => {
-          await tasks.subtitles.translateAllVttFilesAndSave(
-            config.app_data.translations_output_path,
-            config.app_data.assets_output_path,
-            "global"
-          );
+          throw new Error("TODO - handle vtt translate");
+          // await tasks.subtitles.translateAllVttFilesAndSave(
+          //   config.app_data.translations_output_path,
+          //   config.app_data.assets_output_path,
+          //   "global"
+          // );
         },
       },
     ],
