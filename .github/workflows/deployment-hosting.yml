@@ -38,7 +38,7 @@ jobs:
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
       - run: yarn install
       - name: Set Scripts Deployment
-        run: yarn workflow deployment_set $DEPLOYMENT_NAME
+        run: yarn workflow deployment set $DEPLOYMENT_NAME
       ### Generate and upload sourcemaps ###
       - run: yarn build --source-map=true
       - name: set app version

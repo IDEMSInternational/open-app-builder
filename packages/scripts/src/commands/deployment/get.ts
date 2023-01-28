@@ -42,7 +42,7 @@ export function getActiveDeployment(
     }
     logError({
       msg1: "No default deployment has been specified",
-      msg2: `Run "yarn workflow deployment_set" to configure`,
+      msg2: `Run "yarn workflow deployment set" to configure`,
     });
   }
 
@@ -56,7 +56,7 @@ export function getActiveDeployment(
     fs.removeSync(defaultJsonPath);
     logError({
       msg1: `Deployment not found: ${name}`,
-      msg2: `Run "yarn workflow deployment_set" to specify a new active deployment`,
+      msg2: `Run "yarn workflow deployment set" to specify a new active deployment`,
     });
   }
   return loadDeploymentJson(_workspace_path);
