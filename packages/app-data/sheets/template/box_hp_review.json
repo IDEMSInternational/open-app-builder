@@ -373,7 +373,9 @@
           "name": "reply_no",
           "value": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "_nested_name": "reply_no_dg.reply_no"
         }
