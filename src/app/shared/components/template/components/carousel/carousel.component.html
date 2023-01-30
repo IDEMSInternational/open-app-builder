@@ -1,4 +1,5 @@
 <div class="carousel-wrapper">
+  Config: {{ config | json }}
   <swiper (swiper)="handleSwiperInitialised($event)" [config]="config">
     <ng-template
       swiperSlide

@@ -24,11 +24,11 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
   }
 
   async ngOnInit() {
-    await this.getParams();
+    this.getParams();
     await this.hackSetHighlightedTask();
   }
 
-  async getParams() {
+  getParams() {
     this.config.slidesPerView =
       getNumberParamFromTemplateRow(this._row, "slides_per_view", null) || "auto";
     this.config.spaceBetween = getNumberParamFromTemplateRow(this._row, "space_between", 10);
@@ -43,13 +43,24 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
       "centre_first_and_last",
       false
     );
-    this.initialSlide = getNumberParamFromTemplateRow(this._row, "initial_slide_index", 0);
+    this.config.initialSlide = getNumberParamFromTemplateRow(this._row, "initial_slide_index", 0);
   }
 
   /** Event emitter called when swiper initialised */
   public handleSwiperInitialised(swiper: Swiper) {
+    // setInterval(() => console.log("initial slide:", this.swiper.params.initialSlide), 10)
+    console.log("swiper initialised");
     this.swiper = swiper;
-    this.swiper.slideTo(this.initialSlide, 0, false);
+    this.swiper.slideTo(this.config.initialSlide, 0, false);
+    console.log("swiper params:", this.swiper.params);
+    console.log("active index:", this.swiper.activeIndex);
+    this.swiper.params.centeredSlidesBounds = true;
+    this.swiper.update();
+
+    setTimeout(() => {
+      console.log("hi");
+      this.swiper.slideTo(this.config.initialSlide, 0, false);
+    }, 1000);
   }
 
   /** When using carousel within task_group context set additional highlighted slide from task data */
@@ -58,10 +69,12 @@ export class TmplCarouselComponent extends TemplateBaseComponent implements OnIn
     if (taskGroupsList) {
       const highlightedTaskGroup = this.taskService.getHighlightedTaskGroup();
       if (highlightedTaskGroup) {
-        this.initialSlide = await this.taskService.getHighlightedTaskGroupIndex(
+        this.config.initialSlide = await this.taskService.getHighlightedTaskGroupIndex(
           highlightedTaskGroup,
           taskGroupsList
         );
+        // If the Swiper instance has already been intialised, update it
+        if (this.swiper) this.swiper.update();
       }
     }
   }
