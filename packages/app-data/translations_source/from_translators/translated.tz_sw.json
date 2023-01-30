@@ -786,6 +786,54 @@
     "note": "The string @global.parent_app should not be translated."
   },
   {
+    "SourceText": "By clicking in the button below you will reset the app to its initial settings. \n\nThis means that all your progress and usage data will be deleted and your app will work as if it was just installed for the first time.\n\nNOTE: Resetting the app is permanent and you will not be able to recover any information.",
+    "text": "Kwa kubofya kwenye kitufe hapo chini, utapangilia upya programu kwenye mipangilio yake ya awali.\n\nHii inamaanisha kuwa shughuli zako zote na data zilizotumiwa zitafutwa na programu yako itafanya kazi kama inaposakinishwa kwa mara ya kwanza.\n\nANGALIZO: Kupangilia upya programu ni tukio la kudumu na hautaweza kupata tena taarifa yoyote.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Open Survey",
+    "text": "Funguo dodoso",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Select Language",
+    "text": "Chagua Lugha",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Reset App",
+    "text": "Pangilia Upya Programu",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Demo Presentation",
+    "text": "Uwasilishaji wa Mfano",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Organisation Registration",
+    "text": "Usajili wa Shirika",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Developer Mode",
+    "text": "Mtengenezaji wa programu",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Select Skin",
+    "text": "Chagua Aina",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Unlock all workshops",
     "text": "Fungua vipindi vyote",
     "type": "template",
