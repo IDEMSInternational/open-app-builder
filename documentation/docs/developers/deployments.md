@@ -100,6 +100,18 @@ A local repo can have its changes pushed to github by creating a new content rel
 ```
 yarn workflow content_release
 ```
+
+## Change Deployment
+To set the active deployment for the workspace run the following script:
+```sh
+yarn workflow deployment set
+```
+This will present an interactive list of deployments to select from
+
+Alternative a name can be provided to select directly
+```sh
+yarn workflow deployment set "My Deployment Production"
+```
 This will create a new git branch, apply local changes and push to github. From there a pull request can be created to merge into the main branch.
 
 !!! warning

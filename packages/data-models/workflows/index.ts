@@ -1,19 +1,18 @@
 import type { IDeploymentWorkflows } from "./workflow.model";
 
-// Workflow files
+import ANDROID_WORKFLOWS from "./android.workflows";
 import CONTENT_WORKFLOWS from "./content.workflows";
 import DEPLOYMENT_WORKFLOWS from "./deployment.workflows";
 import MISC_WORKFLOWS from "./misc.workflows";
 import SYNC_WORKFLOWS from "./sync.workflows";
-import ANDROID_WORKFLOWS from "./android.workflows";
 
 /** Default workflows made available to all deployments */
 const WORKFLOW_DEFAULTS: IDeploymentWorkflows = {
+  ...ANDROID_WORKFLOWS,
   ...CONTENT_WORKFLOWS,
   ...DEPLOYMENT_WORKFLOWS,
   ...MISC_WORKFLOWS,
   ...SYNC_WORKFLOWS,
-  ...ANDROID_WORKFLOWS,
 };
 
 export { WORKFLOW_DEFAULTS };

@@ -23,12 +23,11 @@ export default program
   .option("-w --workflow", "Specify if script invoked from workflow")
   .action(async (options: IOptions) => {
     if (!options.workflow) {
-      // TODO - enforce use of workflows after all made compatible
-      // logWarning({
-      //   msg1: "[Deprecated] - Set via workflow instead",
-      //   msg2: "yarn workflow deployment set",
-      // });
-      // return;
+      logWarning({
+        msg1: "[Deprecated] - Set via workflow instead",
+        msg2: "yarn workflow deployment set",
+      });
+      return;
     }
     let [deploymentName] = program.args;
     await new DeploymentSet().setActiveDeployment(deploymentName);

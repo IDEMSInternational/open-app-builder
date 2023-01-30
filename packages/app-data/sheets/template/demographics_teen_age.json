@@ -23,7 +23,9 @@
       "name": "teen_word",
       "value": "Teen",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "teen_word"
@@ -32,7 +34,9 @@
       "name": "age_of_teen",
       "value": "Age of teen",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "age_of_teen"
@@ -169,7 +173,9 @@
       "name": "text",
       "value": "Let’s start with a few questions about your family.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "text"
     },
@@ -178,7 +184,9 @@
       "name": "text_q_1",
       "value": "How many teens are in your household?",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "parameter_list": {
         "style": "emphasised"
@@ -277,7 +285,9 @@
       "name": "text_q_2",
       "value": "How old are they?",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "condition": "!!@local.household_teens",
       "parameter_list": {
