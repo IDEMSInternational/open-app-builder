@@ -53,7 +53,7 @@ export class WorkflowRunnerClass {
     // load default workflows
     this.workflows = WORKFLOW_DEFAULTS;
     // load custom workflows
-    this.config = getActiveDeployment();
+    this.config = getActiveDeployment({ ignoreMissing: true });
     const { workflow, _workspace_path } = this.config as any;
     const customWorkflowFiles = [];
     if (workflow) {
@@ -155,7 +155,7 @@ export class WorkflowRunnerClass {
         const output = await step.function(context);
         this.activeWorkflow[step.name].output = output;
         // re-evaluate active deployment in case step changed it
-        this.config = getActiveDeployment();
+        this.config = getActiveDeployment({ ignoreMissing: true });
       } else {
         console.log(chalk.gray("skipped"));
       }
