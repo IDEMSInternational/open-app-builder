@@ -14271,6 +14271,7 @@ __metadata:
     qrcode: ^1.5.1
     rxdb: ^13.15.3
     rxjs: ^7.8.0
+    scripts: "workspace:*"
     shared: "workspace:*"
     stacktrace-js: ^2.0.2
     swiper: ^8.4.4
