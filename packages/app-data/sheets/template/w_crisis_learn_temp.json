@@ -93,7 +93,7 @@
                   "rows": [
                     {
                       "name": "image_src",
-                      "value": "plh_images/workshops/w_crisis/learn/slide_5.svg",
+                      "value": "plh_images/workshops/w_crisis/learn/slide_1.svg",
                       "_translations": {
                         "value": {}
                       },
@@ -195,7 +195,7 @@
                       "rows": [
                         {
                           "name": "image_src",
-                          "value": "plh_images/workshops/w_crisis/learn/slide_1.svg",
+                          "value": "plh_images/workshops/w_crisis/learn/slide_2.svg",
                           "_translations": {
                             "value": {}
                           },
@@ -204,7 +204,7 @@
                         },
                         {
                           "name": "title",
-                          "value": "Crisis 2: @global.w_crisis_teen_girl_1 gets pregnant",
+                          "value": "Crisis 2: @global.w_crisis_teen_girl_2 gets pregnant",
                           "_translations": {
                             "value": {
                               "tz_sw": true
@@ -216,22 +216,22 @@
                           "_dynamicFields": {
                             "value": [
                               {
-                                "fullExpression": "Crisis 2: @global.w_crisis_teen_girl_1 gets pregnant",
-                                "matchedExpression": "@global.w_crisis_teen_girl_1",
+                                "fullExpression": "Crisis 2: @global.w_crisis_teen_girl_2 gets pregnant",
+                                "matchedExpression": "@global.w_crisis_teen_girl_2",
                                 "type": "global",
-                                "fieldName": "w_crisis_teen_girl_1"
+                                "fieldName": "w_crisis_teen_girl_2"
                               }
                             ]
                           },
                           "_dynamicDependencies": {
-                            "@global.w_crisis_teen_girl_1": [
+                            "@global.w_crisis_teen_girl_2": [
                               "value"
                             ]
                           }
                         },
                         {
                           "name": "text",
-                          "value": "@global.w_crisis_teen_girl_1: \"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do\"",
+                          "value": "@global.w_crisis_teen_girl_2: \"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do\"",
                           "_translations": {
                             "value": {
                               "tz_sw": true
@@ -242,13 +242,13 @@
                           "_dynamicFields": {
                             "value": [
                               {
-                                "fullExpression": "@global.w_crisis_teen_girl_1: \"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do\"",
-                                "matchedExpression": "@global.w_crisis_teen_girl_1",
+                                "fullExpression": "@global.w_crisis_teen_girl_2: \"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do\"",
+                                "matchedExpression": "@global.w_crisis_teen_girl_2",
                                 "type": "global",
-                                "fieldName": "w_crisis_teen_girl_1"
+                                "fieldName": "w_crisis_teen_girl_2"
                               },
                               {
-                                "fullExpression": "@global.w_crisis_teen_girl_1: \"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do\"",
+                                "fullExpression": "@global.w_crisis_teen_girl_2: \"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do\"",
                                 "matchedExpression": "@global.w_crisis_male_caregiver_1",
                                 "type": "global",
                                 "fieldName": "w_crisis_male_caregiver_1"
@@ -256,7 +256,7 @@
                             ]
                           },
                           "_dynamicDependencies": {
-                            "@global.w_crisis_teen_girl_1": [
+                            "@global.w_crisis_teen_girl_2": [
                               "value"
                             ],
                             "@global.w_crisis_male_caregiver_1": [
@@ -266,7 +266,7 @@
                         },
                         {
                           "name": "dashed_box",
-                          "value": "How could you respond to @global.w_crisis_teen_girl_1?",
+                          "value": "How could you respond to @global.w_crisis_teen_girl_2?",
                           "_translations": {
                             "value": {
                               "tz_sw": true
@@ -278,15 +278,15 @@
                           "_dynamicFields": {
                             "value": [
                               {
-                                "fullExpression": "How could you respond to @global.w_crisis_teen_girl_1?",
-                                "matchedExpression": "@global.w_crisis_teen_girl_1",
+                                "fullExpression": "How could you respond to @global.w_crisis_teen_girl_2?",
+                                "matchedExpression": "@global.w_crisis_teen_girl_2",
                                 "type": "global",
-                                "fieldName": "w_crisis_teen_girl_1"
+                                "fieldName": "w_crisis_teen_girl_2"
                               }
                             ]
                           },
                           "_dynamicDependencies": {
-                            "@global.w_crisis_teen_girl_1": [
+                            "@global.w_crisis_teen_girl_2": [
                               "value"
                             ]
                           }
@@ -306,7 +306,7 @@
                           "rows": [
                             {
                               "name": "image_src",
-                              "value": "plh_images/workshops/w_crisis/learn/slide_2.svg",
+                              "value": "plh_images/workshops/w_crisis/learn/slide_3.svg",
                               "_translations": {
                                 "value": {}
                               },
@@ -342,7 +342,7 @@
                             },
                             {
                               "name": "text",
-                              "value": "@global.w_crisis_teen_boy_2: \"@global.w_crisis_male_caregiver_2, I don’t want to have a baby\"",
+                              "value": "@global.w_crisis_teen_boy_2: \"I don’t want to have a baby\"",
                               "_translations": {
                                 "value": {
                                   "tz_sw": true
@@ -353,24 +353,15 @@
                               "_dynamicFields": {
                                 "value": [
                                   {
-                                    "fullExpression": "@global.w_crisis_teen_boy_2: \"@global.w_crisis_male_caregiver_2, I don’t want to have a baby\"",
+                                    "fullExpression": "@global.w_crisis_teen_boy_2: \"I don’t want to have a baby\"",
                                     "matchedExpression": "@global.w_crisis_teen_boy_2",
                                     "type": "global",
                                     "fieldName": "w_crisis_teen_boy_2"
-                                  },
-                                  {
-                                    "fullExpression": "@global.w_crisis_teen_boy_2: \"@global.w_crisis_male_caregiver_2, I don’t want to have a baby\"",
-                                    "matchedExpression": "@global.w_crisis_male_caregiver_2",
-                                    "type": "global",
-                                    "fieldName": "w_crisis_male_caregiver_2"
                                   }
                                 ]
                               },
                               "_dynamicDependencies": {
                                 "@global.w_crisis_teen_boy_2": [
-                                  "value"
-                                ],
-                                "@global.w_crisis_male_caregiver_2": [
                                   "value"
                                 ]
                               }
@@ -417,7 +408,7 @@
                               "rows": [
                                 {
                                   "name": "image_src",
-                                  "value": "plh_images/workshops/w_crisis/learn/slide_3.svg",
+                                  "value": "plh_images/workshops/w_crisis/learn/slide_4.svg",
                                   "_translations": {
                                     "value": {}
                                   },
@@ -469,7 +460,7 @@
                               "rows": [
                                 {
                                   "name": "image_src",
-                                  "value": "plh_images/workshops/w_crisis/learn/slide_4.svg",
+                                  "value": "plh_images/workshops/w_crisis/learn/slide_5.svg",
                                   "_translations": {
                                     "value": {}
                                   },

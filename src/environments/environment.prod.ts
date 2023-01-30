@@ -1,11 +1,13 @@
 import { firebaseConfig } from "./firebaseConfig";
 import packageJson from "../../package.json";
 import deploymentJson from "../../.idems_app/deployments/default.json";
+import type { IDeploymentConfig } from "packages/data-models";
 
 export const environment = {
   version: packageJson.version,
   deploymentName: deploymentJson.name,
-  deploymentConfig: deploymentJson,
+  // HACK - json config converts functions to strings, not strongly typed
+  deploymentConfig: deploymentJson as any as IDeploymentConfig,
   production: true,
   rapidPro: {
     receiveUrl:
