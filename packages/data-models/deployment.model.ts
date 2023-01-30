@@ -4,7 +4,8 @@ import type { IAppConfigOverride } from "./appConfig";
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
   name: string;
-  google_drive: {
+
+  google_drive?: {
     /** ID of folder containing app sheets, as seen in end of url */
     sheets_folder_id: string;
     /** ID of folder containing app assets, as seen in end of url */
@@ -17,6 +18,12 @@ export interface IDeploymentConfig {
     sheets_filter_function?: (gdriveEntry: IGdriveEntry) => boolean;
     /** filter function applied to assets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */
     assets_filter_function?: (gdriveEntry: IGdriveEntry) => boolean;
+  };
+  local_drive?: {
+    /** Location to sheets folder if working from local drive instead of google */
+    sheets_path: string;
+    /** Location to assets folder if working from local drive instead of google */
+    assets_path: string;
   };
   android?: {
     /** Location of source android assets (splash and launcher source images). */
@@ -57,6 +64,11 @@ export interface IDeploymentConfig {
     /** path for task working directory. Default `./tasks` */
     task_cache_path?: string;
   };
+  /** 3rd party integration for logging services */
+  error_logging?: {
+    /** sentry/glitchtip logging dsn */
+    dsn: string;
+  };
   /** optional version number to force recompile */
   _version?: number;
 }
@@ -82,6 +94,10 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
   },
   android: {},
   app_config: {},
+  local_drive: {
+    assets_path: "./assets",
+    sheets_path: "./sheets",
+  },
   app_data: {
     sheets_output_path: "packages/app-data/sheets",
     converter_cache_path: "./cache/converter",

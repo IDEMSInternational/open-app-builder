@@ -5,35 +5,8 @@
   "rows": [
     {
       "type": "declare_global_constant",
-      "name": "guide_1_name",
-      "value": "@global.male_adult_name_1",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "guide_2_name",
-      "value": "@global.female_adult_name_1",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "guide_teen_name",
-      "value": "@global.male_child_name_1",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true
-    },
-    {
-      "type": "declare_global_constant",
       "name": "w_praise_female_caregiver_name",
-      "value": "@global.female_adult_name_2",
+      "value": "@global.female_caregiver_2",
       "_translations": {
         "value": {}
       },
@@ -60,7 +33,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_instruct_teen_girl",
-      "value": "@global.female_child_name_2",
+      "value": "@global.female_child_name_3",
       "_translations": {
         "value": {}
       },
@@ -87,7 +60,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_stress_girl",
-      "value": "@global.female_child_name_3",
+      "value": "@global.female_child_name_2",
       "_translations": {
         "value": {}
       },
@@ -114,7 +87,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_stress_teen_girl",
-      "value": "@global.female_child_name_4",
+      "value": "@global.female_child_name_1",
       "_translations": {
         "value": {}
       },
@@ -123,7 +96,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_stress_teen_boy_2",
-      "value": "@global.male_child_name_3",
+      "value": "@global.male_child_name_2",
       "_translations": {
         "value": {}
       },
@@ -159,7 +132,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_rules_teen_girl",
-      "value": "@global.female_child_name_6",
+      "value": "@global.female_child_name_2",
       "_translations": {
         "value": {}
       },
@@ -276,7 +249,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_solve_teen_girl",
-      "value": "@global.female_child_name_1",
+      "value": "@global.female_child_name_2",
       "_translations": {
         "value": {}
       },
@@ -321,7 +294,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_safe_teen_girl_2",
-      "value": "@global.female_child_name_4",
+      "value": "@global.female_child_name_3",
       "_translations": {
         "value": {}
       },
@@ -349,6 +322,15 @@
       "type": "declare_global_constant",
       "name": "w_crisis_teen_girl_1",
       "value": "@global.female_child_name_3",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "w_crisis_teen_girl_2",
+      "value": "@global.female_child_name_1",
       "_translations": {
         "value": {}
       },

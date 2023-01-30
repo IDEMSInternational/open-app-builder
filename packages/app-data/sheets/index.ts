@@ -1829,6 +1829,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "demo_workshop_unlock_pop",
       _xlsxPath: "global/demo_templates/demo_navigation.xlsx",
     },
+    demographics_teen_age: {
+      flow_type: "template",
+      flow_name: "demographics_teen_age",
+      _xlsxPath: "global/top_templates/survey_templates/workshop_setup.xlsx",
+    },
     ending: {
       flow_type: "template",
       flow_name: "ending",

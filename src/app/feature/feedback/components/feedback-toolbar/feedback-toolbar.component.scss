@@ -1,0 +1,40 @@
+.toolbar-container {
+  display: flex;
+  gap: 8px;
+}
+.suffix {
+  opacity: 0.5;
+  &.stacked-label {
+    position: absolute;
+    right: 16px;
+    bottom: 4px;
+  }
+}
+
+ion-item {
+  --background: white;
+  --border-color: var(--color-primary);
+  --border-width: 1px;
+  --min-height: 100%;
+  --padding-start: 8px;
+  --inner-padding-end: 8px;
+}
+ion-checkbox {
+  margin: 8px 0;
+}
+
+ion-range.width-select {
+  --bar-height: 6px;
+  padding: 0 16px;
+  margin-bottom: -4px;
+}
+
+// Hack - label sizing a pain with slider and checkboxes inlined
+ion-label.tool-label {
+  font-size: 14px;
+  line-height: 14px;
+  overflow: inherit;
+  margin: 12px 0 0 0;
+  transform: none;
+  -webkit-transform: none;
+}

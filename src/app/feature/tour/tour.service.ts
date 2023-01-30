@@ -6,11 +6,13 @@ import { TemplateTranslateService } from "src/app/shared/components/template/ser
 import { FlowTypes } from "data-models";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
+import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
+import { TemplateActionRegistry } from "src/app/shared/components/template/services/instance/template-action.registry";
 
 @Injectable({
   providedIn: "root",
 })
-export class TourService {
+export class TourService extends AsyncServiceBase {
   introJS = introJs();
 
   waitForRoutingDelay = 1000;
@@ -20,10 +22,22 @@ export class TourService {
     private router: Router,
     private templateFieldService: TemplateFieldService,
     private translateService: TemplateTranslateService,
-    private appDataService: AppDataService
-  ) {}
-  async init() {
+    private appDataService: AppDataService,
+    private templateActionRegistry: TemplateActionRegistry
+  ) {
+    super("Tour");
+    this.registerInitFunction(this.initialise);
+    this.registerTemplateActionHandlers();
+  }
+  private async initialise() {
+    await this.ensureAsyncServicesReady([this.templateFieldService, this.translateService]);
+    this.ensureSyncServicesReady([this.appDataService]);
     this.toursList = this.appDataService.listSheetsByType("tour");
+  }
+  private registerTemplateActionHandlers() {
+    this.templateActionRegistry.register({
+      start_tour: async (action) => this.startTour(action.args[0]),
+    });
   }
 
   /**
@@ -32,6 +46,7 @@ export class TourService {
    * @param tourName flow-name of tour, e.g. `test_tour`
    */
   async startTour(tourName: string) {
+    await this.ready();
     let matchingTour = await this.appDataService.getSheet<FlowTypes.Tour>("tour", tourName);
     if (matchingTour && matchingTour.rows && matchingTour.rows.length > 0) {
       this.introJS.setOptions({
