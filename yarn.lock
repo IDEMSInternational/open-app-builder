@@ -3700,7 +3700,7 @@ __metadata:
     googleapis: ^108.0.0
     log-update: ^4.0.0
     p-queue: ^6.6.2
-    ts-node: ~7.0.0
+    ts-node: ^10.8.0
     ts-node-dev: ^1.0.0
     typescript: ^4.1.2
   languageName: unknown
@@ -5381,6 +5381,115 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@swc/core-darwin-arm64@npm:1.3.31":
+  version: 1.3.31
+  resolution: "@swc/core-darwin-arm64@npm:1.3.31"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@swc/core-darwin-x64@npm:1.3.31":
+  version: 1.3.31
+  resolution: "@swc/core-darwin-x64@npm:1.3.31"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@swc/core-linux-arm-gnueabihf@npm:1.3.31":
+  version: 1.3.31
+  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.3.31"
+  conditions: os=linux & cpu=arm
+  languageName: node
+  linkType: hard
+
+"@swc/core-linux-arm64-gnu@npm:1.3.31":
+  version: 1.3.31
+  resolution: "@swc/core-linux-arm64-gnu@npm:1.3.31"
+  conditions: os=linux & cpu=arm64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"@swc/core-linux-arm64-musl@npm:1.3.31":
+  version: 1.3.31
+  resolution: "@swc/core-linux-arm64-musl@npm:1.3.31"
+  conditions: os=linux & cpu=arm64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"@swc/core-linux-x64-gnu@npm:1.3.31":
+  version: 1.3.31
+  resolution: "@swc/core-linux-x64-gnu@npm:1.3.31"
+  conditions: os=linux & cpu=x64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"@swc/core-linux-x64-musl@npm:1.3.31":
+  version: 1.3.31
+  resolution: "@swc/core-linux-x64-musl@npm:1.3.31"
+  conditions: os=linux & cpu=x64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"@swc/core-win32-arm64-msvc@npm:1.3.31":
+  version: 1.3.31
+  resolution: "@swc/core-win32-arm64-msvc@npm:1.3.31"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@swc/core-win32-ia32-msvc@npm:1.3.31":
+  version: 1.3.31
+  resolution: "@swc/core-win32-ia32-msvc@npm:1.3.31"
+  conditions: os=win32 & cpu=ia32
+  languageName: node
+  linkType: hard
+
+"@swc/core-win32-x64-msvc@npm:1.3.31":
+  version: 1.3.31
+  resolution: "@swc/core-win32-x64-msvc@npm:1.3.31"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@swc/core@npm:^1.3.29":
+  version: 1.3.31
+  resolution: "@swc/core@npm:1.3.31"
+  dependencies:
+    "@swc/core-darwin-arm64": 1.3.31
+    "@swc/core-darwin-x64": 1.3.31
+    "@swc/core-linux-arm-gnueabihf": 1.3.31
+    "@swc/core-linux-arm64-gnu": 1.3.31
+    "@swc/core-linux-arm64-musl": 1.3.31
+    "@swc/core-linux-x64-gnu": 1.3.31
+    "@swc/core-linux-x64-musl": 1.3.31
+    "@swc/core-win32-arm64-msvc": 1.3.31
+    "@swc/core-win32-ia32-msvc": 1.3.31
+    "@swc/core-win32-x64-msvc": 1.3.31
+  dependenciesMeta:
+    "@swc/core-darwin-arm64":
+      optional: true
+    "@swc/core-darwin-x64":
+      optional: true
+    "@swc/core-linux-arm-gnueabihf":
+      optional: true
+    "@swc/core-linux-arm64-gnu":
+      optional: true
+    "@swc/core-linux-arm64-musl":
+      optional: true
+    "@swc/core-linux-x64-gnu":
+      optional: true
+    "@swc/core-linux-x64-musl":
+      optional: true
+    "@swc/core-win32-arm64-msvc":
+      optional: true
+    "@swc/core-win32-ia32-msvc":
+      optional: true
+    "@swc/core-win32-x64-msvc":
+      optional: true
+  checksum: 3846440fdfa68dfc260657584b460dd21bb65efec6b54881e8b4257e7d71655f44a37170e3edf14c3ddacb7120a9740f3a9e3a7f55ec4799402028e1fcfc21a2
+  languageName: node
+  linkType: hard
+
 "@szmarczak/http-timer@npm:^1.1.2":
   version: 1.1.2
   resolution: "@szmarczak/http-timer@npm:1.1.2"
@@ -5534,7 +5643,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/node16@npm:^1.0.1, @tsconfig/node16@npm:^1.0.2":
+"@tsconfig/node16@npm:^1.0.2":
   version: 1.0.3
   resolution: "@tsconfig/node16@npm:1.0.3"
   checksum: 3a8b657dd047495b7ad23437d6afd20297ce90380ff0bdee93fc7d39a900dbd8d9e26e53ff6b465e7967ce2adf0b218782590ce9013285121e6a5928fbd6819f
@@ -7607,7 +7716,7 @@ __metadata:
     swagger-ui-express: ^4.1.6
     ts-jest: ^26.5.4
     ts-loader: ^8.0.18
-    ts-node: 10.0.0
+    ts-node: ^10.8.0
     tsconfig-paths: ^3.9.0
     typescript: 4.3.5
     umzug: 3.0.0-beta.16
@@ -11057,7 +11166,7 @@ __metadata:
     postgres-migrations: ^5.2.0
     sequelize: ^6.6.4
     sequelize-cli: ^6.2.0
-    ts-node: ^10.0.0
+    ts-node: ^10.8.0
     ts-node-dev: ^1.1.8
     winston: ^3.3.3
     ws: ^7.5.1
@@ -23508,6 +23617,7 @@ __metadata:
   dependencies:
     "@idemsInternational/gdrive-tools": "workspace:*"
     "@idemsInternational/rapidpro-excel": "workspace:*"
+    "@swc/core": ^1.3.29
     "@types/fs-extra": ^9.0.4
     "@types/inquirer": ^7.3.1
     "@types/jasmine": ^3.10.6
@@ -23531,7 +23641,7 @@ __metadata:
     pkg: ^5.5.1
     shared: "workspace:*"
     subtitles-parser-vtt: ^0.1.0
-    ts-node: ~7.0.0
+    ts-node: ^10.8.0
     ts-node-dev: ^1.0.0
     typescript: ^4.1.2
     winston: ^3.8.1
@@ -23994,7 +24104,7 @@ __metadata:
     jasmine-spec-reporter: ^7.0.0
     jasmine-ts: ^0.4.0
     nodemon: ^2.0.19
-    ts-node: ~7.0.0
+    ts-node: ^10.8.0
     typescript: ^4.1.2
   languageName: unknown
   linkType: soft
@@ -25498,7 +25608,7 @@ __metadata:
     pngjs: ^6.0.0
     puppeteer: ^10.2.0
     serve: ^13.0.2
-    ts-node: ^10.2.1
+    ts-node: ^10.8.0
     ts-node-dev: ^1.1.8
     typescript: ~4.2.4
   bin:
@@ -25811,7 +25921,7 @@ __metadata:
     commander: ^8.1.0
     fs-extra: ^10.0.0
     inquirer: ^8.1.2
-    ts-node: ^10.1.0
+    ts-node: ^10.8.0
     ts-node-dev: ^1.1.8
     typescript: ~4.2.4
   bin:
@@ -25942,41 +26052,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:10.0.0":
-  version: 10.0.0
-  resolution: "ts-node@npm:10.0.0"
-  dependencies:
-    "@tsconfig/node10": ^1.0.7
-    "@tsconfig/node12": ^1.0.7
-    "@tsconfig/node14": ^1.0.0
-    "@tsconfig/node16": ^1.0.1
-    arg: ^4.1.0
-    create-require: ^1.1.0
-    diff: ^4.0.1
-    make-error: ^1.1.1
-    source-map-support: ^0.5.17
-    yn: 3.1.1
-  peerDependencies:
-    "@swc/core": ">=1.2.45"
-    "@swc/wasm": ">=1.2.45"
-    "@types/node": "*"
-    typescript: ">=2.7"
-  peerDependenciesMeta:
-    "@swc/core":
-      optional: true
-    "@swc/wasm":
-      optional: true
-  bin:
-    ts-node: dist/bin.js
-    ts-node-cwd: dist/bin-cwd.js
-    ts-node-script: dist/bin-script.js
-    ts-node-transpile-only: dist/bin-transpile.js
-    ts-script: dist/bin-script-deprecated.js
-  checksum: 96d633774e13eb90ad49d644f397e99f5da72818e36040bf5b6bd66d0ab369dbb4348e499193c0fa45071f8e9559bb7724174139389e56bb562db36a3842484e
-  languageName: node
-  linkType: hard
-
-"ts-node@npm:7.0.1, ts-node@npm:~7.0.0":
+"ts-node@npm:7.0.1":
   version: 7.0.1
   resolution: "ts-node@npm:7.0.1"
   dependencies:
@@ -25994,7 +26070,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.0.0, ts-node@npm:^10.1.0, ts-node@npm:^10.2.1":
+"ts-node@npm:^10.8.0":
   version: 10.9.1
   resolution: "ts-node@npm:10.9.1"
   dependencies:
