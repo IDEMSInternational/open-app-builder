@@ -16,13 +16,21 @@ interface IWorkflowStepContext {
   config: IDeploymentConfig;
   workflow: IWorkflowContext;
   tasks: ITasks;
+  /** Positional args passed to workflow script */
+  args: string[];
   options: { [optionName: string]: string | boolean };
 }
 
 export interface IWorkflow {
-  label: string;
+  /**
+   * The label will be used to select the workflow from a list.
+   * If omitted the workflow will not be shown for selection
+   **/
+  label?: string;
   steps: IWorkflowStep[];
   options?: { flags: string; description?: string; defaultValue?: string | boolean }[];
+  /** Sub workflows */
+  children?: IDeploymentWorkflows;
 }
 
 export interface IDeploymentWorkflows {
