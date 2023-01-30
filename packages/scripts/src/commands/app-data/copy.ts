@@ -78,7 +78,7 @@ export class AppDataCopy {
     }
 
     // Sheet Translations (applied if sheets are copied)
-    if (!skipSheets) {
+    if (!skipSheets && this.options.localTranslationsFolder) {
       // Setup Folders
       const { localTranslationsFolder, appTranslationsFolder } = this.options;
       // Handle Copy
@@ -112,9 +112,9 @@ export class AppDataCopy {
     const topLevelFolders = listFolderNames(baseFolder);
     const languageFolders = topLevelFolders.filter((name) => isCountryLanguageCode(name));
     const themeFolders = topLevelFolders.filter((name) => isThemeAssetsFolderName(name));
-
     // TODO - ideally "global" folder should sit at top level but refactoring required so for now use filter
     const globalAssetsFolder = path.join(baseFolder, ASSETS_GLOBAL_FOLDER_NAME);
+    fs.ensureDirSync(globalAssetsFolder);
     const globalAssets = generateFolderFlatMap(globalAssetsFolder, true) as {
       [relative_path: string]: IAssetEntry;
     };
@@ -209,7 +209,7 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
     const assetFiles = readContentsFile(sourceFolder);
     const { assets_filter_function } = this.activeDeployment.app_data;
     const filterLanguages = this.activeDeployment.translations?.filter_language_codes;
-    const filterThemes = this.activeDeployment.app_config.APP_THEMES.available;
+    const filterThemes = this.activeDeployment.app_config.APP_THEMES?.available || [];
 
     const filteredFiles = assetFiles.filter((fileEntry) => {
       const [parent_folder] = fileEntry.relativePath.split("/");

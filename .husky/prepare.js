@@ -3,6 +3,7 @@
 const path = require("path");
 const fs = require("fs");
 const { spawnSync } = require("child_process");
+const husky = require("husky");
 
 const rootDir = path.resolve(__dirname, "../");
 const lockfilePath = path.resolve(rootDir, "yarn.lock");
@@ -19,11 +20,18 @@ function yarnAutoInstall() {
     const lockModifiedTime = fs.statSync(lockfilePath).mtime.getTime();
     const autoInstallTime = fs.statSync(autoInstallPath).mtime.getTime();
     if (lockModifiedTime !== autoInstallTime) {
+      // we don't strictly need husky enabled now but seems like a sensible time to install
+      // as postinstall hook can sometimes fail and break yarn install state
+      ensureHuskyEnabled();
       installPackages();
     }
   } else {
     installPackages();
   }
+}
+
+function ensureHuskyEnabled() {
+  husky.install();
 }
 
 function installPackages() {

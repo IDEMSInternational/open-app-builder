@@ -33,6 +33,8 @@ export interface IFeedbackMetadata {
   timestamp: string;
   app_version: string;
   app_deployment_name: string; // deployment name
+  app_theme: string;
+  app_skin: string;
   templateTarget?: ITemplateTargetEntry[];
 }
 

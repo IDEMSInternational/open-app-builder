@@ -8,6 +8,7 @@ import { TemplateTranslateService } from "src/app/shared/components/template/ser
 import { TemplateVariablesService } from "src/app/shared/components/template/services/template-variables.service";
 import { FlowTypes } from "src/app/shared/model";
 import { AppConfigService } from "src/app/shared/services/app-config/app-config.service";
+import { AsyncServiceBase } from "src/app/shared/services/asyncService.base";
 import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import {
@@ -32,7 +33,7 @@ type IScheduledNotificationsHashmap = {
 };
 
 @Injectable({ providedIn: "root" })
-export class CampaignService {
+export class CampaignService extends AsyncServiceBase {
   allCampaigns: ICampaignHashmap = {};
   scheduledCampaigns: IScheduledCampaignsHashmap = {};
   scheduledNotifications: IScheduledNotificationsHashmap = {};
@@ -50,7 +51,8 @@ export class CampaignService {
     private appConfigService: AppConfigService,
     private injector: Injector
   ) {
-    this.subscribeToAppConfigChanges();
+    super("Campaigns");
+    this.registerInitFunction(this.inititialise);
   }
 
   /**
@@ -61,7 +63,15 @@ export class CampaignService {
     return this.injector.get(TemplateVariablesService);
   }
 
-  public async init() {
+  private async inititialise() {
+    await this.ensureAsyncServicesReady([
+      this.localNotificationService,
+      this.templateTranslateService,
+      this.templateVariablesService,
+      this.dataEvaluationService,
+    ]);
+    this.ensureSyncServicesReady([this.appConfigService]);
+    this.subscribeToAppConfigChanges();
     await this.hackDeactivateAllNotifications();
 
     const schedules = await this.loadCampaignSchedules();
@@ -71,12 +81,15 @@ export class CampaignService {
     this.scheduledCampaigns = scheduledCampaigns;
     this.allCampaigns = allCampaigns;
 
-    console.log("[Scheduled Campaigns]", this.scheduledCampaigns);
-    console.log("[All Campaigns]", this.allCampaigns);
+    // console.log("[Scheduled Campaigns]", this.scheduledCampaigns);
+    // console.log("[All Campaigns]", this.allCampaigns);
 
     await this.scheduleCampaignNotifications();
 
     this._subscribeToNotificationUpdates();
+  }
+  public reInitialise() {
+    return this.inititialise();
   }
 
   /**
@@ -181,8 +194,8 @@ export class CampaignService {
       if (campaign._active) {
         const nextRows = await this.getNextCampaignRows(campaign.id, campaign.schedule?.batch_size);
         if (nextRows) {
-          let earliestStart = new Date();
           // add new notifications
+          let earliestStart = new Date();
           for (const nextRow of nextRows) {
             const schedule = await this.scheduleNotification(nextRow, campaign.id, earliestStart);
             scheduled[campaign.id][nextRow.id] = schedule;
@@ -283,9 +296,9 @@ export class CampaignService {
     const deactivatedNotifications = pendingNotifications.filter(
       (n) => n.extra.campaign_id === campaign_id
     );
-    for (const notification of deactivatedNotifications) {
-      await this.localNotificationService.removeNotification(notification.id);
-    }
+    await this.localNotificationService.removeNotifications(
+      deactivatedNotifications.map((n) => n.id)
+    );
   }
 
   /**
@@ -296,9 +309,7 @@ export class CampaignService {
    */
   private async hackDeactivateAllNotifications() {
     const pendingNotifications = this.localNotificationService.pendingNotifications$.value;
-    for (const notification of pendingNotifications) {
-      await this.localNotificationService.removeNotification(notification.id);
-    }
+    await this.localNotificationService.removeNotifications(pendingNotifications.map((n) => n.id));
   }
 
   /**

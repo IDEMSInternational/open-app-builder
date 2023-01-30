@@ -8,9 +8,7 @@
       "name": "button_1",
       "value": "Open Survey",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "action_list": [
         {
@@ -30,9 +28,7 @@
       "name": "language_select",
       "value": "Select Language",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "action_list": [
         {
@@ -87,9 +83,7 @@
       "name": "button_3",
       "value": "Reset App",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "action_list": [
         {
@@ -163,9 +157,7 @@
       "name": "button_5",
       "value": "Demo Presentation",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "action_list": [
         {
@@ -236,9 +228,7 @@
       "name": "button_6",
       "value": "Organisation Registration",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "action_list": [
         {
@@ -258,9 +248,7 @@
       "name": "button_8",
       "value": "Developer Mode",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "action_list": [
         {
@@ -296,9 +284,7 @@
       "name": "button_9",
       "value": "Developer Mode",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "action_list": [
         {
@@ -334,9 +320,7 @@
       "name": "button_10",
       "value": "Select Skin",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "action_list": [
         {

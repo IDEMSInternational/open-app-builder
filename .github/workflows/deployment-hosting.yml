@@ -12,7 +12,7 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           lfs: true
       # Extract deployment name as the slug of target PR branch via string operators, e.g. /deployment/plh_tz -> plh_tz
@@ -28,17 +28,10 @@ jobs:
           echo $GITHUB_REF
           echo $DEPLOYMENT_NAME
       - name: Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: 16.x
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: ./.yarn/cache
-          # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
-          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-v1-
+          node-version: 16
+          cache: 'yarn'      
       - name: Populate firebaseConfig.ts
         env:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
@@ -46,7 +39,26 @@ jobs:
       - run: yarn install
       - name: Set Scripts Deployment
         run: yarn scripts deployment set $DEPLOYMENT_NAME
-      - run: yarn build
+      ### Generate and upload sourcemaps ###
+      - run: yarn build --source-map=true
+      - name: set app version
+        run: echo "APP_VERSION=$(echo "$(cat package.json | jq -r '.version')")" >> $GITHUB_ENV
+      - name: Upload sourcemaps
+        run: |
+          npx @sentry/cli releases delete ${DEPLOYMENT_NAME}-${APP_VERSION}
+          npx @sentry/cli releases files ${DEPLOYMENT_NAME}-${APP_VERSION} upload-sourcemaps www/
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN}}
+          SENTRY_URL: https://app.glitchtip.com/
+          SENTRY_ORG: idems
+          SENTRY_PROJECT: ${{env.DEPLOYMENT_NAME}}
+        continue-on-error: true
+      - name: Remove sourcemaps from build
+        run: |
+          echo $(ls www)
+          find . -name "*.map" -type f -delete
+          echo $(ls www)
+      ###   Deploy  ###
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"

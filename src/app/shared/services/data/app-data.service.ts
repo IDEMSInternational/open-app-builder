@@ -1,15 +1,20 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { SHEETS_CONTENT_LIST, TRANSLATIONS_CONTENT_LIST } from "app-data";
+import { SHEETS_CONTENT_LIST, TRANSLATIONS_CONTENT_LIST } from "src/app/data";
+import { lastValueFrom } from "rxjs";
 import { FlowTypes } from "../../model";
 import { arrayToHashmap } from "../../utils";
+import { SyncServiceBase } from "../syncService.base";
 
 /** Default folder app_data copied into (as defined in angular.json) */
 const APP_DATA_BASE = "assets/app_data";
 
 @Injectable({ providedIn: "root" })
-export class AppDataService {
-  constructor(private http: HttpClient) {}
+export class AppDataService extends SyncServiceBase {
+  constructor(private http: HttpClient) {
+    super("AppData");
+    this.initialise();
+  }
   private sheetContents = SHEETS_CONTENT_LIST;
   private translationContents = TRANSLATIONS_CONTENT_LIST;
   public appDataCache: IAppDataCache = {
@@ -20,7 +25,7 @@ export class AppDataService {
     tour: {},
   };
 
-  public async init() {
+  private initialise() {
     this.addDataListMappings();
   }
 
@@ -30,7 +35,7 @@ export class AppDataService {
     if (contents) {
       const { filename } = contents;
       const assetPath = `${APP_DATA_BASE}/translations/${filename}`;
-      const strings = await this.http.get(assetPath).toPromise();
+      const strings = await lastValueFrom(this.http.get(assetPath));
       return strings as { [source_string: string]: string };
     } else {
       console.error("No translations exist for language", language_code);
@@ -94,7 +99,7 @@ export class AppDataService {
     if (flow_subtype) type_path += `/${flow_subtype}`;
     const path = `${APP_DATA_BASE}/sheets/${type_path}/${flow_name}.json`;
     try {
-      const data = await this.http.get(path).toPromise();
+      const data = await lastValueFrom(this.http.get(path));
       return data as T;
     } catch (error) {
       // Sheet no longer in assets folder. This typically only happens
