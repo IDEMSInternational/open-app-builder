@@ -6,7 +6,7 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "",
         function: async ({ args }) => {
-          const [childWorkflow] = args;
+          const [childWorkflow] = args || [];
           const childWorkflows = workflows.deployment.children;
           if (!childWorkflow || !(childWorkflow in childWorkflows)) {
             console.log(

@@ -226,7 +226,9 @@
                           "name": "title",
                           "value": "Crisis 2: @global.w_crisis_teen_girl_2 gets pregnant",
                           "_translations": {
-                            "value": {}
+                            "value": {
+                              "tz_sw": true
+                            }
                           },
                           "hidden": false,
                           "type": "set_variable",
@@ -251,7 +253,9 @@
                           "name": "text",
                           "value": "@global.w_crisis_teen_girl_2: \"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do\"",
                           "_translations": {
-                            "value": {}
+                            "value": {
+                              "tz_sw": true
+                            }
                           },
                           "type": "set_variable",
                           "_nested_name": "learn.workshop_activity.content_box.box_2.box_1.text",
@@ -284,7 +288,9 @@
                           "name": "dashed_box",
                           "value": "How could you respond to @global.w_crisis_teen_girl_2?",
                           "_translations": {
-                            "value": {}
+                            "value": {
+                              "tz_sw": true
+                            }
                           },
                           "hidden": false,
                           "type": "set_variable",
@@ -363,7 +369,9 @@
                               "name": "text",
                               "value": "@global.w_crisis_teen_boy_2: \"I don’t want to have a baby\"",
                               "_translations": {
-                                "value": {}
+                                "value": {
+                                  "tz_sw": true
+                                }
                               },
                               "type": "set_variable",
                               "_nested_name": "learn.workshop_activity.content_box.box_2.box_2.box_1.text",
