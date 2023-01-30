@@ -23,15 +23,16 @@ interface IProgramOptions {
  *************************************************************************************/
 export default program
   .description("Run a workflow")
-  // options for compare
   .argument("[name]", "Name of workflow to run")
   .allowUnknownOption()
   .helpOption("--helpIgnored", "will show help from child workflow instead of this")
   .option("-p --parent <string>", "Name of parent workflow triggered by")
-  .action(async (name: string, options: IProgramOptions) => {
+  .action(async (name: string, { parent }: IProgramOptions) => {
+    // pass any additional args after [name] positional argument
+    const args = program.args.slice(1);
     const runner = WorkflowRunner;
     await runner.init();
-    return runner.run(name, options.parent, []);
+    return runner.run({ name, parent, args });
   });
 
 /***************************************************************************
@@ -58,21 +59,19 @@ export class WorkflowRunnerClass {
     if (workflow) {
       for (const workflowPath of customWorkflowFiles) {
         const ts: IDeploymentWorkflows = await import(path.resolve(_workspace_path, workflowPath));
-        const workflows: IDeploymentWorkflows = ts?.default as any;
-        if (workflows) {
-          Object.entries(workflows).forEach(([name, workflow]) => {
-            this.workflows[name] = workflow;
+        const parsedWorkflows: IDeploymentWorkflows = ts?.default as any;
+        if (parsedWorkflows) {
+          Object.entries(parsedWorkflows).forEach(([name, parsedWorkflow]) => {
+            this.workflows[name] = parsedWorkflow;
           });
         }
       }
     }
   }
 
-  /**
-   *
-   * @param name
-   */
-  public async run(name?: string, parent?: string, args?: string[]) {
+  /** Run a target workflow. If no name supplied will prompt select from list */
+  public async run(options: { name?: string; parent?: string; args?: string[] }) {
+    let { name, parent, args } = options;
     if (!parent) {
       const heading = chalk.yellow(`${this.config.name}`);
       console.log(boxen(heading, { padding: 1, borderColor: "yellow" }));
@@ -81,19 +80,22 @@ export class WorkflowRunnerClass {
       name = await this.promptWorkflowSelect();
       console.log(chalk.yellow(`yarn scripts workflow run ${name}`));
     }
+    let { workflow, args: workflowArgs } = this.prepareWorkflow(name, args);
 
-    const workflow = this.prepareWorkflow(name);
     this.activeWorkflowOptions = this.parseWorkflowOptions(workflow);
-    return this.executeWorkflow(workflow);
+    return this.executeWorkflow(workflow, workflowArgs);
   }
 
-  /** Ensure task */
-  private prepareWorkflow(name: string) {
+  /**
+   * Ensure named workflow exists and pass back as json
+   * Additionally passes child workflow if defined from args
+   **/
+  private prepareWorkflow(name: string, args: string[] = []) {
     // include manual help logging as default ignored (so can pass to child command)
     if (["--help", "-h"].includes(name)) {
       logProgramHelp(program);
     }
-    const workflow = this.workflows[name];
+    let workflow = this.workflows[name];
     // Ensure workflow exists
     if (!workflow) {
       const available = Object.keys(this.workflows).join(", ");
@@ -101,7 +103,13 @@ export class WorkflowRunnerClass {
       const msg2 = `Available workflows: ${available}`;
       logError({ msg1, msg2 });
     }
-    return workflow;
+    // If args passed and first arg matches a child workflow name replace child workflow and args
+    const childWorkflowName = args[0];
+    if (workflow.children && childWorkflowName && childWorkflowName in workflow.children) {
+      workflow = workflow.children[childWorkflowName];
+      args = args.slice(1);
+    }
+    return { workflow, args };
   }
 
   /**
@@ -127,7 +135,7 @@ export class WorkflowRunnerClass {
     return parsedOptions;
   }
 
-  private async executeWorkflow(workflow: IWorkflow) {
+  private async executeWorkflow(workflow: IWorkflow, args: string[] = []) {
     this.activeWorkflow = {};
     for (const step of workflow.steps) {
       this.activeWorkflow[step.name] = step;
@@ -136,6 +144,7 @@ export class WorkflowRunnerClass {
         config: this.config,
         workflow: this.activeWorkflow,
         tasks: this.tasks,
+        args,
         options: this.activeWorkflowOptions,
       };
       let shouldProcess = true;
@@ -145,6 +154,8 @@ export class WorkflowRunnerClass {
       if (shouldProcess) {
         const output = await step.function(context);
         this.activeWorkflow[step.name].output = output;
+        // re-evaluate active deployment in case step changed it
+        this.config = getActiveDeployment();
       } else {
         console.log(chalk.gray("skipped"));
       }
@@ -152,10 +163,12 @@ export class WorkflowRunnerClass {
   }
 
   private async promptWorkflowSelect() {
-    const options = Object.entries(this.workflows).map(([id, workflow]) => ({
-      name: `${chalk.blueBright(pad(id, 15))} ${workflow.label}`,
-      value: id,
-    }));
+    const options = Object.entries(this.workflows)
+      .filter(([_, workflow]) => workflow.hasOwnProperty("label"))
+      .map(([id, workflow]) => ({
+        name: `${chalk.blueBright(pad(id, 15))} ${workflow.label}`,
+        value: id,
+      }));
     const name = await promptOptions(options, "Select a workflow to run");
     return name;
   }
