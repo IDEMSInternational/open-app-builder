@@ -1,5 +1,4 @@
-import clone from "clone";
-import type { IAppConfigOverride } from "./appConfig";
+import type { IAppConfig } from "./appConfig";
 
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
@@ -33,7 +32,7 @@ export interface IDeploymentConfig {
     icon_asset_background_path?: string;
   };
   /** Optional override of any provided constants from data-models/constants */
-  app_config?: IAppConfigOverride;
+  app_config: IAppConfig;
   app_data?: {
     /** processed sheets for use in app. Default `packages/app-data/sheets` */
     sheets_output_path?: string;
@@ -75,15 +74,6 @@ export interface IDeploymentConfig {
   _parent_config?: Partial<IDeploymentConfig & { _workspace_path: string }>;
 }
 
-/** When extending a config it is usually better to clone to avoid accidentally altering original */
-export const cloneConfig = (config: IDeploymentConfig): IDeploymentConfig => clone(config);
-
-/** Minimal example of just required config */
-export const DEPLOYMENT_CONFIG_EXAMPLE_MIN: IDeploymentConfig = {
-  name: "Minimal Config Example",
-  google_drive: { assets_folder_id: "", sheets_folder_id: "" },
-};
-
 /** Full example of just all config once merged with defaults */
 export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
   name: "Full Config Example",
@@ -95,7 +85,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     assets_filter_function: (gdriveEntry) => true,
   },
   android: {},
-  app_config: {},
+  app_config: {} as any, // populated by `getDefaultAppConstants()`,,
   local_drive: {
     assets_path: "./assets",
     sheets_path: "./sheets",
@@ -119,6 +109,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     task_cache_path: "./tasks",
   },
   _version: 1.0,
+  _parent_config: null,
 };
 
 /** Duplicate type defintion from scripts (TODO - find better way to share) */
