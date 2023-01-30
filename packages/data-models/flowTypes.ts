@@ -280,6 +280,7 @@ export namespace FlowTypes {
     | "parent_point_box"
     | "debug_toggle"
     | "items"
+    | "data_items"
     | "select_text"
     | "html"
     | "latex"
@@ -347,33 +348,39 @@ export namespace FlowTypes {
     | "sent" // notification sent
     | "info_click";
 
+  // TODO document '' action for stop propogation
+  // note - to keep target nav within component stack go_to is actually just a special case of pop_up
+  // TODO - 2021-03-11 - most of list needs reconsideration/implementation
+  export const ACTION_ID_LIST = [
+    "",
+    "audio_end",
+    "audio_play",
+    "changed",
+    "close_pop_up",
+    "emit",
+    "feedback",
+    "go_to",
+    "go_to_url",
+    "google_auth",
+    "pop_up",
+    "process_template",
+    "reset_app",
+    "set_field",
+    "set_item",
+    "set_items",
+    "set_local",
+    "style",
+    "start_tour",
+    "task_group_set_highlighted",
+    "toggle_field",
+    "track_event",
+    "trigger_actions",
+  ] as const;
+
   export interface TemplateRowAction {
     /** actions have an associated trigger */
     trigger: TemplateRowActionTrigger;
-    // TODO - 2021-03-11 - most of list needs reconsideration/implementation
-    action_id:
-      | "" // TODO document this property for stop propogation
-      | "reset_app"
-      | "set_field"
-      | "toggle_field"
-      | "set_local"
-      | "emit"
-      | "feedback"
-      | "changed"
-      // note - to keep target nav within component stack go_to is actually just a special case of pop_up
-      | "go_to"
-      | "go_to_url"
-      | "pop_up"
-      | "audio_end"
-      | "audio_play"
-      | "style"
-      | "close_pop_up"
-      | "start_tour"
-      | "trigger_actions"
-      | "track_event"
-      | "process_template"
-      | "google_auth"
-      | "task_group_set_highlighted";
+    action_id: typeof ACTION_ID_LIST[number];
     args: any[]; // should be string | boolean, but breaks type-checking for templates;
     params?: any; // additional params also used by args (does not require position argument)
     // TODO - CC 2022-04-29 - ideally args should be included as part of params

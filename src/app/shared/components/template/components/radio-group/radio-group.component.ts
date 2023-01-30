@@ -2,8 +2,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostBinding,
-  HostListener,
   Input,
   OnDestroy,
   OnInit,
@@ -17,9 +15,7 @@ import {
   getParamFromTemplateRow,
   getStringParamFromTemplateRow,
 } from "../../../../utils";
-import { takeUntil } from "rxjs/operators";
 import { ReplaySubject } from "rxjs";
-import { TemplateService } from "../../services/template.service";
 import { objectToArray } from "../../utils/template-utils";
 
 interface IButton {
@@ -47,12 +43,8 @@ export class TmplRadioGroupComponent
   options_per_row: number = 2;
   windowWidth: number;
   style: string;
-  destroy$ = new ReplaySubject(1);
+  private componentDestroyed$ = new ReplaySubject(1);
   flexWidth: string;
-
-  constructor(private templateService: TemplateService) {
-    super();
-  }
 
   ngOnInit() {
     this.getParams();
@@ -151,7 +143,7 @@ export class TmplRadioGroupComponent
   }
 
   ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
+    this.componentDestroyed$.next(true);
+    this.componentDestroyed$.complete();
   }
 }

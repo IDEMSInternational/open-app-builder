@@ -228,6 +228,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "common_workshop_tasks",
       _xlsxPath: "global/data/workshop_data/workshop_tasks.xlsx",
     },
+    comp_data_items_list: {
+      flow_type: "data_list",
+      flow_name: "comp_data_items_list",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/component_sheets/component_data_items.xlsx",
+    },
     covid_data_list: {
       flow_type: "data_list",
       flow_name: "covid_data_list",
@@ -1828,6 +1834,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "demo_workshop_unlock_pop",
       _xlsxPath: "global/demo_templates/demo_navigation.xlsx",
+    },
+    demographics_teen_age: {
+      flow_type: "template",
+      flow_name: "demographics_teen_age",
+      _xlsxPath: "global/top_templates/survey_templates/workshop_setup.xlsx",
     },
     ending: {
       flow_type: "template",
