@@ -1,8 +1,8 @@
 import { extendDeploymentConfig } from "scripts";
-import { SKINS } from "./skins";
+import { SKINS } from "../plh/skins";
 
 /** Debug config extends the global config **/
-const config = extendDeploymentConfig({ name: "debug", parent: "plh_global" });
+const config = extendDeploymentConfig({ name: "plh_debug", parent: "plh" });
 
 config.name = "plh_debug";
 

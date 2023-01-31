@@ -1,9 +1,8 @@
 import { extendDeploymentConfig } from "scripts";
 
 /** ZA config extends the default config **/
-const config = extendDeploymentConfig({ name: "tz", parent: "plh_global" });
+const config = extendDeploymentConfig({ name: "plh_za", parent: "plh" });
 
-config.name = "plh_za";
 config.app_data!.sheets_filter_function = (flow) =>
   !["debug", "component_demo", "example_hardcoded", "campaign_rows_debug"].includes(
     flow.flow_subtype!

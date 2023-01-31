@@ -1,5 +1,5 @@
 import { generateDeploymentConfig } from "scripts";
-const config = generateDeploymentConfig("plh_global");
+const config = generateDeploymentConfig("plh");
 import { SKINS } from "./skins";
 
 /**
