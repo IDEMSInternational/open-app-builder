@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { ChangeDetectorRef, Component } from "@angular/core";
 import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
@@ -16,6 +16,7 @@ import { TemplateService } from "./shared/components/template/services/template.
 import { CampaignService } from "./feature/campaign/campaign.service";
 import { ServerService } from "./shared/services/server/server.service";
 import { DataEvaluationService } from "./shared/services/data/data-evaluation.service";
+import { DynamicDataService } from "./shared/services/dynamic-data/dynamic-data.service";
 import { TemplateProcessService } from "./shared/components/template/services/instance/template-process.service";
 import { isSameDay } from "date-fns";
 import { AnalyticsService } from "./shared/services/analytics/analytics.service";
@@ -53,11 +54,13 @@ export class AppComponent {
   constructor(
     // 3rd Party Services
     private platform: Platform,
+    private cdr: ChangeDetectorRef,
     private menuController: MenuController,
     private router: Router,
     // App services
     private skinService: SkinService,
     private appConfigService: AppConfigService,
+    private dynamicDataService: DynamicDataService,
     private dbService: DbService,
     private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
@@ -120,6 +123,8 @@ export class AppComponent {
       }
       // Show main template
       this.renderAppTemplates = true;
+      // Detect changes in case expression changed prior to render (e.g. feedback sidebar)
+      this.cdr.detectChanges();
       this.scheduleReinitialisation();
     });
   }
@@ -174,6 +179,7 @@ export class AppComponent {
       eager: [this.crashlyticsService],
       blocking: [
         this.dbSyncService,
+        this.dynamicDataService,
         this.userMetaService,
         this.tourService,
         this.localNotificationService,
