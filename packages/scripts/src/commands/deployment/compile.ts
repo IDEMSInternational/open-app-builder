@@ -71,8 +71,6 @@ function convertDeploymentTsToJson(
   const _workspace_path = path.resolve(_config_ts_path, "../");
   const _config_version = DEPLOYMENT_CONFIG_VERSION;
 
-  console.log(_config_ts_path);
-
   // rewrite relative urls to absolute
   const rewritten = rewriteConfigPaths(deployment, _workspace_path);
 
