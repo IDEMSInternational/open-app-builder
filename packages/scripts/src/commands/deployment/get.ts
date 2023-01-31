@@ -5,7 +5,7 @@ import fs from "fs-extra";
 import path from "path";
 import { DEPLOYMENTS_PATH } from "../../paths";
 import { logError } from "../../utils";
-import { IDeploymentConfigJson } from "./common";
+import type { IDeploymentConfigJson } from "./common";
 import { loadTSFileDefaultExport } from "./compile";
 import { loadDeploymentJson } from "./utils";
 

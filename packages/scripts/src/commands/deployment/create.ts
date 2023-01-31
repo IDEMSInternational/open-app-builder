@@ -4,7 +4,7 @@ import fs from "fs-extra";
 import path from "path";
 import { DEPLOYMENTS_PATH } from "../../paths";
 import { logError, logOutput, logWarning, promptInput, promptOptions } from "../../utils";
-import { IDeploymentConfigJson } from "./common";
+import type { IDeploymentConfigJson } from "./common";
 import { DeploymentSet } from "./set";
 import generateDefaultConfig from "./templates/config.default";
 import generateExtendedConfig from "./templates/config.extended";
