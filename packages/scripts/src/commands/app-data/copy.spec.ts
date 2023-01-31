@@ -1,5 +1,5 @@
 import { AppDataCopy } from "./copy";
-import { IDeploymentConfigJson } from "../deployment/set";
+import type { IDeploymentConfigJson } from "../deployment/common";
 
 import fs from "fs-extra";
 import mockFs from "mock-fs";
@@ -112,7 +112,9 @@ function stubDeploymentConfig(
   const stubDeployment: Partial<IDeploymentConfigJson> = {
     app_data: { assets_filter_function },
     translations: { filter_language_codes },
-    app_config: { APP_THEMES: { available: app_themes_available } },
+    app_config: {
+      APP_THEMES: { available: app_themes_available },
+    } as any,
   };
   spyOn(spyDeployment, "getActiveDeployment").and.returnValue(
     stubDeployment as IDeploymentConfigJson
