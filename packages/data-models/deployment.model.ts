@@ -71,6 +71,8 @@ export interface IDeploymentConfig {
   };
   /** optional version number to force recompile */
   _version?: number;
+  /** track parent config  */
+  _parent_config?: Partial<IDeploymentConfig & { _workspace_path: string }>;
 }
 
 /** When extending a config it is usually better to clone to avoid accidentally altering original */
