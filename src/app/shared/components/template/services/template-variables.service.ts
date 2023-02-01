@@ -126,7 +126,6 @@ export class TemplateVariablesService extends AsyncServiceBase {
    **/
   private shouldEvaluateField(fieldName: keyof FlowTypes.TemplateRow, omitFields: string[] = []) {
     if (omitFields.includes(fieldName)) return false;
-    if (fieldName === "_nested_name") return true;
     if (fieldName.startsWith("_")) return false;
     return true;
   }
