@@ -42,7 +42,7 @@ The app supports using different workspace or deployment configurations. These a
 
 An initial deployment should be specified via the command
 ```
-yarn scripts deployment set
+yarn workflow deployment set
 ```
 
 ### Firebase

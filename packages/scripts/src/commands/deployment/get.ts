@@ -29,13 +29,21 @@ export default program
 /**
  * Read the default deployment json and return compiled json of previously set active
  * deployment.
+ * @param options.skipRecompileCheck - Skipping checking if ts file updated requiring json update
+ * @param options.ignoreMissing - If no config has been set a warning will be shown.
+ * Supress this and instead return an empty config object `{}`
  */
-export function getActiveDeployment(): IDeploymentConfigJson {
+export function getActiveDeployment(
+  options: { skipRecompileCheck?: boolean; ignoreMissing?: boolean } = {}
+): IDeploymentConfigJson {
   const defaultJsonPath = path.resolve(IDEMS_APP_CONFIG.deployments, "default.json");
   if (!fs.existsSync(defaultJsonPath)) {
+    if (options.ignoreMissing) {
+      return {} as any;
+    }
     logError({
       msg1: "No default deployment has been specified",
-      msg2: `Run "yarn scripts deployment set" to configure`,
+      msg2: `Run "yarn workflow deployment set" to configure`,
     });
   }
   const deploymentJson: IDeploymentConfigJson = fs.readJsonSync(defaultJsonPath);
@@ -45,7 +53,7 @@ export function getActiveDeployment(): IDeploymentConfigJson {
   if (!fs.existsSync(deploymentTSPath)) {
     logError({
       msg1: `Deployment not found: ${_config_ts_path}`,
-      msg2: `Run "yarn scripts deployment set" to specify a new active deployment`,
+      msg2: `Run "yarn workflow deployment set" to specify a new active deployment`,
     });
   }
 
@@ -73,7 +81,7 @@ export function getActiveDeployment(): IDeploymentConfigJson {
 
 /** Run interactive command prompt to specify config */
 function promptConfigSet() {
-  const cmd = `yarn workspace scripts start deployment set`;
+  const cmd = `yarn workspace scripts start deployment set --workflow`;
   spawnSync(cmd, { stdio: "inherit", shell: true });
 }
 

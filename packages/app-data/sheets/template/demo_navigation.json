@@ -1016,7 +1016,9 @@
           "name": "pt_11_button_1",
           "value": "Reset App",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "action_list": [
             {
