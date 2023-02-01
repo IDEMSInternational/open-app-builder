@@ -10,7 +10,7 @@ By default a separate deployment is used for working with a local-only set of sh
 It can be enabled by setting as the active deployment 
 
 ```
-yarn scripts deployment set local
+yarn workflow deployment set local
 ```
 
 In order to run the app viewing sheets from the custom local default instead of default app data folder a different start script must be run
