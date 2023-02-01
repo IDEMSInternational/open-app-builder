@@ -26,7 +26,7 @@ jobs:
       # Currently all tests are run against global deployment as this contains debug sheets
       # In the future we will want to move this to a custom deployment for testing purposes
       - name: Set Deployment
-        run: yarn scripts deployment set "plh_global"
+        run: yarn workflow deployment set "plh_global"
         # Create a production build and serve via a local webserver
         # HACK - as lifecycle_actions block template view simply remove them all
       - name : Create production build
