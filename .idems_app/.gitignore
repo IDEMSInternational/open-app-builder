@@ -5,4 +5,5 @@
 !deployments/plh/*.ts
 !deployments/early_family_math/*.ts
 !deployments/wash/*.ts
+!deployments/perinatal/*.ts
 !deployments/*/skins/*.ts

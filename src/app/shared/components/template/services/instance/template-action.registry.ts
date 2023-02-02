@@ -1,8 +1,12 @@
 import { Injectable } from "@angular/core";
+import clone from "clone";
 import { FlowTypes } from "packages/data-models";
 
 type IActionId = FlowTypes.TemplateRowAction["action_id"];
-type IHandlers = Record<IActionId, (action: FlowTypes.TemplateRowAction) => Promise<any>>;
+export type IActionHandlers = Record<
+  IActionId,
+  (action: FlowTypes.TemplateRowAction) => Promise<any>
+>;
 
 @Injectable({ providedIn: "root" })
 /**
@@ -10,11 +14,15 @@ type IHandlers = Record<IActionId, (action: FlowTypes.TemplateRowAction) => Prom
  * to allow external modules to register their own action handlers.
  */
 export class TemplateActionRegistry {
-  private handlers: Partial<IHandlers> = {};
+  private handlers: Partial<IActionHandlers> = {};
 
   /** Check if a handler has been registered for a specific action trigger */
   public has(trigger: IActionId) {
     return trigger in this.handlers;
+  }
+
+  public list() {
+    return clone(this.handlers);
   }
 
   public trigger(action: FlowTypes.TemplateRowAction) {
@@ -26,12 +34,20 @@ export class TemplateActionRegistry {
     return handler(action);
   }
 
-  public register(handlers: Partial<IHandlers> = {}) {
+  public register(handlers: Partial<IActionHandlers> = {}, allowOverride = false) {
     for (const [trigger, handler] of Object.entries(handlers)) {
-      if (trigger in this.handlers) {
+      if (trigger in this.handlers && !allowOverride) {
         throw new Error("Action handler already exists for trigger: " + trigger);
       } else {
         this.handlers[trigger] = handler;
+      }
+    }
+  }
+
+  public unregister(triggers: IActionId[]) {
+    for (const trigger of triggers) {
+      if (this.has(trigger)) {
+        delete this.handlers[trigger];
       }
     }
   }

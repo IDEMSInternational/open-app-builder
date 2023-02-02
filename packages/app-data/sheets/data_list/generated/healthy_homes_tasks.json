@@ -5,13 +5,14 @@
   "rows": [
     {
       "id": "what",
-      "title": "What is a healthy home?",
-      "text": "Keeping our homes and the area around it clean, will keep us healthy!  We should all have safe places to play free of garbage and waste water.",
+      "title": "What is a healthy house?",
+      "text": "Keeping our house and the area around it clean, will keep us healthy!  We should all have safe places to play free of garbage and waste water.",
+      "reference": ".",
       "completed_field": "healthy_homes_what_completed"
     },
     {
       "id": "how",
-      "title": "How do you keep your home clean?",
+      "title": "How do you keep your house clean?",
       "text": "Always clean areas of animal and children poop (excreta), using detergent where you can!  Children's poop should be thrown away in a latrine or a covered pit.",
       "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF; 2020.  \n\nExtract: \nRegularly clear external areas of any animal or child faeces, and clean contaminated\nareas immediately. \n\nRegular cleaning of floors with soap and water (and bleach if available).\n\nSafely dispose of child faeces, either in a latrine or a covered garbage pit.",
       "reference_link_title": "Baby WASH Programming. UNICEF; 2020.",
@@ -25,7 +26,7 @@
       "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF; 2020.  \r\n\nExtract:\nControl disease vectors such as flies, mosquitoes, cockroaches and rats by removing\nbreeding spots, covering food, improving drainage and safely disposing of garbage\ninto a waste receptacle or protected pit.",
       "reference_link_title": "Baby WASH Programming. UNICEF; 2020.",
       "reference_link": "www.unicef.org/esa/reports/baby-wash-programming",
-      "illustration": "essential_tools/housing.svg",
+      "illustration": "essential_tools/healthy_homes.svg",
       "completed_field": "healthy_homes_tips_completed"
     }
   ]
