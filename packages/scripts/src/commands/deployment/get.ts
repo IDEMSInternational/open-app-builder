@@ -81,7 +81,7 @@ export function getActiveDeployment(
 
 /** Run interactive command prompt to specify config */
 function promptConfigSet() {
-  const cmd = `yarn workspace scripts start deployment set`;
+  const cmd = `yarn workspace scripts start deployment set --workflow`;
   spawnSync(cmd, { stdio: "inherit", shell: true });
 }
 
