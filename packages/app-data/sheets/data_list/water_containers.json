@@ -8,12 +8,14 @@
       "id": "why",
       "title": "Why is a safe container important?",
       "text": "Making sure that water that is transported and stored, does not come into contact with hands, dirt and insects will keep you strong!",
+      "text 20 Jan 2023": "Making sure that water that is transported and stored, does not come into contact with hands, dirt and insects will keep you strong!",
       "illustration": "essential_tools/jerrycan.svg"
     },
     {
       "id": "what",
       "title": "What makes a water container safe?",
       "text": "Water should be carried in clean and closed water containers.\n\nThere are many designs for water containers.  A safe water storage container is one that is:\n\n* Strong and has a tightly fitting lid or cover\n* Have a tap or a narrow opening to release water (no more than three fingers)\n* Stable base so it does not tip over\n* Durable and strong so that it does not leak easily\n* Has a comfortable handle\n* And of course easy to clean",
+      "text 20 Jan 2023": "Water should be carried in clean and closed water containers.\n\nThere are many designs for water containers.  A safe water storage container is one that is:\n\n* Strong and has a tightly fitting lid or cover\n* Have a tap or a narrow opening to release water (no more than three fingers)\n* Stable base so it does not tip over\n* Durable and strong so that it does not leak easily\n* Has a comfortable handle\n* And of course easy to clean",
       "illustration": "essential_tools/store_treated_water_safely.png",
       "reference": "Guidelines for drinking-water quality: fourth edition incorporating the first and second\naddenda. Geneva: World Health Organization; 2022. Licence: CC BY-NC-SA 3.0 IGO.\n\nExtract - For water stored in the home, protection from contamination can be achieved by use of enclosed or otherwise safely designed storage containers that prevent the introduction of hands, dippers or other extraneous sources of contamination.\n\nStorage containers should preferably be fitted with a mechanism such as a tap or outlet pipe\nthat enables hygienic abstraction of water.",
       "reference_link_title": "Guidelines for drinking-water quality. WHO; 2022.",
@@ -24,7 +26,8 @@
     {
       "id": "tips",
       "title": "How do you keep your container clean?",
-      "text": "Step 1: Wash your hands following the steps in the handwashing module.\nStep 2A: Pour clean and soapy water into the container \nStep 2B: If no soap use rocks and water \nStep 3: Put on the lid and shake for one minute (or if you can scrub the inside of the container) \nStep 4:  Pour the soapy water out. Then rinse it with non soapy water. \nAlso, don't forget to wash your cup after every use.",
+      "text": "Step 1: Wash your hands following the steps in the handwashing module.\nStep 2: Pour clean and soapy water into the container \nStep 3: Put on the lid and shake for one minute (or if you can scrub the inside of the container) \nStep 4:  Pour the soapy water out. Then rinse it with non soapy water. \nAlso, don't forget to wash your cup after every use.",
+      "text 20 Jan 2023": "Step 1: Wash your hands following the steps in the handwashing module.\nStep 2A: Pour clean and soapy water into the container \nStep 2B: If no soap use rocks and water \nStep 3: Put on the lid and shake for one minute (or if you can scrub the inside of the container) \nStep 4:  Pour the soapy water out. Then rinse it with non soapy water. \nAlso, don't forget to wash your cup after every use.",
       "illustration": "essential_tools/cleancontainer.svg",
       "reference_link_title": "Community WASH Conversations.  Arkansas:  LifeWater. Mar 2022;  License:  CC BY-NC-SA 3.0",
       "reference_link": "lifewater.org/wp-content/uploads/2022/06/Community-WASH-Conversations-Public.pdf"

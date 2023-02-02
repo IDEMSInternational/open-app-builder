@@ -36,10 +36,6 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 105,
     md5Checksum: "5af2692ae7bb97ea64f0d922ae4934c1",
   },
-  "essential_tools/Archive/home_healthy_homes.png": {
-    size_kb: 504.3,
-    md5Checksum: "6f701bc8ada6933152269cf179d8a314",
-  },
   "essential_tools/Archive/home_latrines.png": {
     size_kb: 118.8,
     md5Checksum: "2e87fbaa72c5fa7f07f3532a36272ec1",
@@ -123,6 +119,10 @@ export const ASSETS_CONTENTS_LIST = {
   "essential_tools/HealthyFamiliesSick.png": {
     size_kb: 78.5,
     md5Checksum: "37e3b23879285262d9e136263a5acb26",
+  },
+  "essential_tools/healthy_homes.png": {
+    size_kb: 504.3,
+    md5Checksum: "6f701bc8ada6933152269cf179d8a314",
   },
   "essential_tools/home_boiling_water.svg": {
     size_kb: 312.9,
