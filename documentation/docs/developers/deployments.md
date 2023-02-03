@@ -104,7 +104,7 @@ This will create a new git branch, apply local changes and push to github. From 
 !!! warning
     If multiple authors are updating content and creating releases there is a high probability of conflicts arising. It is recommended to merge open pull requests before creating new content releases, and running the `yarn workflow deployment set` script to ensure local content also includes the latest remote content.
 
-## Google Drive Managemnt
+## Google Drive Management
 The deployment configuration requires IDs for two created Google Drive folders, one for template sheets and one for global assets. 
 
 The folders should again be named without spaces or special characters, and once created their unique IDs can be found by looking at the end of the URL bar when navigating inside the folder on Google Drive.
