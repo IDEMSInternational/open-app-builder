@@ -8,7 +8,7 @@ import {
   isCountryLanguageCode,
   isThemeAssetsFolderName,
   listFolderNames,
-  logError,
+  Logger,
   readContentsFile,
   IContentsEntry,
   logOutput,
@@ -18,7 +18,7 @@ import {
 } from "../../utils";
 import { spawnSync } from "child_process";
 
-import { getActiveDeployment } from "../deployment/get";
+import { ActiveDeployment } from "../deployment/get";
 import { ROOT_DIR } from "../../paths";
 import { FlowTypes } from "data-models";
 
@@ -61,7 +61,7 @@ export default program
  *
  **/
 export class AppDataCopy {
-  private activeDeployment = getActiveDeployment();
+  private activeDeployment = ActiveDeployment.get();
   constructor(private options: IProgramOptions) {}
 
   public run() {
@@ -265,13 +265,13 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
       }
     }
     if (!output.hasGlobalFolder) {
-      logError({
+      Logger.error({
         msg1: "Assets global folder not found",
         msg2: `Assets folder should include a folder named "${ASSETS_GLOBAL_FOLDER_NAME}"`,
       });
     }
     if (output.invalidFolders.length > 0) {
-      logError({
+      Logger.error({
         msg1: "Asset folders named incorrectly",
         msg2: `Invalid language codes: [${output.invalidFolders.join(", ")}]`,
       });
@@ -335,14 +335,14 @@ export const SHEETS_CONTENT_LIST:ISheetContents = ${contentsString}
   ) {
     const { flow_name, flow_type, _xlsxPath } = sheetContents;
     if (!existingContents.hasOwnProperty(flow_type)) {
-      logError({
+      Logger.error({
         msg1: `Unsupported flow_type: [${flow_type}]`,
         msg2: `${_xlsxPath}`,
       });
     }
     if (existingContents[flow_type].hasOwnProperty(flow_name)) {
       const duplicateFlowContents = existingContents[flow_type][flow_name];
-      logError({
+      Logger.error({
         msg1: `Duplicate flow_name found: [${flow_type}]`,
         msg2: `${_xlsxPath}\n${duplicateFlowContents._xlsxPath}`,
       });

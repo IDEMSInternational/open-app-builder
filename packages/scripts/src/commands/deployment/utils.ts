@@ -1,6 +1,6 @@
 import fs, { statSync } from "fs-extra";
 import path from "path";
-import { logError } from "../../utils";
+import { Logger } from "../../utils";
 import chalk from "chalk";
 import { compileDeploymentTSSync } from "./compile";
 import { DEPLOYMENT_CONFIG_VERSION, IDeploymentConfigJson } from "./common";
@@ -20,7 +20,7 @@ export function loadDeploymentJson(
   const tsPath = path.join(workspacePath, "config.ts");
   const jsonPath = path.join(workspacePath, "config.json");
   if (!fs.existsSync(tsPath)) {
-    logError({ msg1: "Config file not found", msg2: tsPath, logOnly: true });
+    Logger.error({ msg1: "Config file not found", msg2: tsPath, logOnly: true });
     process.exit(1);
   }
 
@@ -38,7 +38,7 @@ export function loadDeploymentJson(
   }
   // Otherwise attempt compile the ts to json and retry (exiting if already retry)
   if (options.isRetryCheck) {
-    logError({ msg1: "Failed to compile", msg2: tsPath, logOnly: true });
+    Logger.error({ msg1: "Failed to compile", msg2: tsPath, logOnly: true });
     process.exit(1);
   } else {
     const folderName = path.dirname(tsPath).split(path.sep).pop();
