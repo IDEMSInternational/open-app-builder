@@ -3,7 +3,7 @@ import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
 import { DEPLOYMENTS_PATH } from "../../paths";
-import { logError, logOutput, logWarning, promptInput, promptOptions } from "../../utils";
+import { Logger, logOutput, logWarning, promptInput, promptOptions } from "../../utils";
 import type { IDeploymentConfigJson } from "./common";
 import { DeploymentSet } from "./set";
 import generateDefaultConfig from "./templates/config.default";
@@ -130,7 +130,7 @@ export function listValidDeployments() {
 
 function writeConfig(targetConfigFile: string, configTs: string) {
   if (fs.existsSync(targetConfigFile)) {
-    logError({ msg1: "Deployment already exists", msg2: targetConfigFile });
+    Logger.error({ msg1: "Deployment already exists", msg2: targetConfigFile });
   }
   fs.ensureDirSync(path.dirname(targetConfigFile));
   fs.writeFileSync(targetConfigFile, configTs);
@@ -147,7 +147,7 @@ function writeGitIgnore(targetFile: string) {
   ];
   const gitIgnoreTxt = ignoredPaths.join("\n");
   if (fs.existsSync(targetFile)) {
-    logError({ msg1: "Gitignore file already exists", msg2: targetFile });
+    Logger.error({ msg1: "Gitignore file already exists", msg2: targetFile });
   }
   fs.writeFileSync(targetFile, gitIgnoreTxt);
 }

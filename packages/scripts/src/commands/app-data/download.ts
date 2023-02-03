@@ -6,7 +6,7 @@ import fs from "fs-extra";
 import path from "path";
 import { CREDENTIALS_PATH, AUTH_TOKEN_PATH } from "../../paths";
 import { logWarning, promptOptions } from "../../utils";
-import { getActiveDeployment } from "../deployment/get";
+import { ActiveDeployment } from "../deployment/get";
 
 /***************************************************************************************
  * CLI
@@ -37,7 +37,7 @@ export default program
  * Read the default deployment json and retrieve parsed ts for the named active deployment
  */
 async function appDataDownload(options: IProgramOptions) {
-  const activeDeployment = getActiveDeployment();
+  const activeDeployment = ActiveDeployment.get();
   const { _workspace_path } = activeDeployment;
   const {
     assets_folder_id,
