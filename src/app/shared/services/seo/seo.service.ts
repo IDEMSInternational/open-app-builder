@@ -23,9 +23,8 @@ type IMetaName =
 export class SeoService extends SyncServiceBase {
   constructor() {
     super("SEO Service");
-    this.updateMeta({
-      title: environment.deploymentConfig.app_config.APP_HEADER_DEFAULTS.title,
-    });
+    // call after init to apply defaults
+    this.updateMeta({});
   }
 
   /**
@@ -65,7 +64,7 @@ export class SeoService extends SyncServiceBase {
   private getDefaultSEOTags(): ISEOMeta {
     const PUBLIC_URL = location.origin;
     return {
-      title: "",
+      title: environment.deploymentConfig.app_config.APP_HEADER_DEFAULTS.title,
       description: "",
       faviconUrl: `${PUBLIC_URL}/assets/icon/favicon.png`,
       imageUrl: ``,
