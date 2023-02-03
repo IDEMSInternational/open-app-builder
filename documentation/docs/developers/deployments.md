@@ -84,6 +84,7 @@ The deployment configuration requires IDs for two created Google Drive folders, 
 
 The folders should again be named without spaces or special characters, and once created their unique IDs can be found by looking at the end of the URL bar when navigating inside the folder on Google Drive.
 
+<!-- cspell:disable-next-line -->
 E.g. `1ja6lzbphZaxnVv5mpQ4YHnn2qmxMiEBW`
 
 ![](images/deployment-gdrive-ids.png)
