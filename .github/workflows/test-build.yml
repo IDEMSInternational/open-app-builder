@@ -32,6 +32,8 @@ jobs:
       - run: yarn install
       - name: Set Scripts Deployment
         run: yarn workflow deployment set $DEPLOYMENT_NAME
+      - name: Lint
+        run: yarn lint
       - name: Unit Tests Workspaces
         run: yarn test:workspaces  
       - run: yarn build
