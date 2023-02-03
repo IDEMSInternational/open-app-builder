@@ -1,4 +1,4 @@
-name: Documentation - Deploy to GitHub Pages
+name: Docs Spellcheck
 on:
   pull_request:
     branches:
@@ -9,7 +9,7 @@ on:
       - "documentation/**"
 jobs:
   build:
-    name: Lint Docs
+    name: Spellcheck
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
@@ -20,5 +20,5 @@ jobs:
           node-version: 16
           cache: 'yarn'      
       - run: yarn install --immutable
-      - name: Lint
+      - name: Spellcheck
         run: yarn lint:docs
