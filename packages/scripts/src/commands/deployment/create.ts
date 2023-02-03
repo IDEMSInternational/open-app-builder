@@ -58,7 +58,7 @@ export async function createDeployment() {
 /** Create a new standalone deployment config */
 async function generateNewDeployment(): Promise<IGeneratedDeployment> {
   const nameInput = await promptInput("Specify a name for the deployment");
-  const name = nameInput.toLowerCase().replace(/ /, "_");
+  const name = nameInput.replace(/ /g, "_").toLowerCase();
   const targetConfigFile = path.join(DEPLOYMENTS_PATH, name, `config.ts`);
   const configTs = generateDefaultConfig(name);
   writeConfig(targetConfigFile, configTs);
@@ -73,7 +73,7 @@ async function generateExtendedDeployment(): Promise<IGeneratedDeployment> {
   const nameInput = await promptInput(
     `Specify a name for the deployment: ${parentDeployment.name} - `
   );
-  const name = nameInput.toLowerCase().replace(/ /, "_");
+  const name = nameInput.replace(/ /g, "_").toLowerCase();
   const extendedName = `${parentDeployment.name}_${name}`;
   const targetFolder = path.join(DEPLOYMENTS_PATH, extendedName);
   const targetConfigFile = path.join(targetFolder, `config.ts`);
