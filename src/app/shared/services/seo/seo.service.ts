@@ -9,8 +9,8 @@ interface ISEOMeta {
   imageUrl: string;
 }
 /** Reduced list of meta properties used within site index.html for update */
-type IPlatformMetaProperty = "og:title" | "og:image" | "og:description" | "og:url";
-type IPlatformMetaName =
+type IMetaProperty = "og:title" | "og:image" | "og:description" | "og:url";
+type IMetaName =
   | "description"
   | "twitter:title"
   | "twitter:description"
@@ -23,7 +23,9 @@ type IPlatformMetaName =
 export class SeoService extends SyncServiceBase {
   constructor() {
     super("SEO Service");
-    this.updateMeta({ title: environment.deploymentConfig.app_config.APP_HEADER_DEFAULTS.title });
+    this.updateMeta({
+      title: environment.deploymentConfig.app_config.APP_HEADER_DEFAULTS.title,
+    });
   }
 
   /**
@@ -58,27 +60,25 @@ export class SeoService extends SyncServiceBase {
   };
 
   /**
-   * Load the default SEO tags for the site (as currently hardcoded into the public index.html file)
-   * TODO - it would be better if these were linked to the active site/deployment/theme in some way
+   * Load the default SEO tags for the site as currently hardcoded into the public index.html file
    */
   private getDefaultSEOTags(): ISEOMeta {
     const PUBLIC_URL = location.origin;
     return {
-      title: "Community Platform",
-      description:
-        "A series of tools for the Precious Plastic community to collaborate around the world. Connect, share and meet each other to tackle plastic waste.",
-      faviconUrl: `${PUBLIC_URL}/favicon.ico`,
-      imageUrl: `${PUBLIC_URL}/social-image.jpg`,
+      title: "",
+      description: "",
+      faviconUrl: `${PUBLIC_URL}/assets/icon/favicon.png`,
+      imageUrl: ``,
     };
   }
 
-  private setMetaName(name: IPlatformMetaName, value: string) {
+  private setMetaName(name: IMetaName, value: string) {
     const el = document.querySelector(`meta[name="${name}"]`);
     if (el) {
       el.setAttribute("content", value);
     }
   }
-  private setMetaProperty(property: IPlatformMetaProperty, value: string) {
+  private setMetaProperty(property: IMetaProperty, value: string) {
     const el = document.querySelector(`meta[property="${property}"]`);
     if (el) {
       el.setAttribute("content", value);
