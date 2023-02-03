@@ -1,6 +1,6 @@
 # Getting Setup
 
-## Prequisites
+## Prerequisites
 
 1. Download and install [Git](https://git-scm.com/downloads)  
    This will be used to download the repository
