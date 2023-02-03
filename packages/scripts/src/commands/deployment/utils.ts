@@ -21,7 +21,7 @@ export function loadDeploymentJson(
   const jsonPath = path.join(workspacePath, "config.json");
   if (!fs.existsSync(tsPath)) {
     logError({ msg1: "Config file not found", msg2: tsPath, logOnly: true });
-    throw new Error();
+    process.exit(1);
   }
 
   // Check if config fully up-to-date, return json if so
@@ -39,7 +39,7 @@ export function loadDeploymentJson(
   // Otherwise attempt compile the ts to json and retry (exiting if already retry)
   if (options.isRetryCheck) {
     logError({ msg1: "Failed to compile", msg2: tsPath, logOnly: true });
-    throw new Error();
+    process.exit(1);
   } else {
     const folderName = path.dirname(tsPath).split(path.sep).pop();
     console.log(chalk.gray(`Compiling: ${folderName}`));
