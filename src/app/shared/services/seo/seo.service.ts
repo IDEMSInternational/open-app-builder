@@ -59,7 +59,8 @@ export class SeoService extends SyncServiceBase {
   };
 
   /**
-   * Load the default SEO tags for the site as currently hardcoded into the public index.html file
+   * Load the default SEO tags for the site as currently hardcoded into the
+   * public index.html file or specified in deployment
    */
   private getDefaultSEOTags(): ISEOMeta {
     const PUBLIC_URL = location.origin;
