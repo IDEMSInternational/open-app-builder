@@ -232,7 +232,7 @@ value_1: '' - (default)
 Parameter Name: reverse
 ##### Values and descriptions
 value_1: false - (default) 
-description: default postion - (checkbox label).
+description: default position - (checkbox label).
 value_1: true
 description: reversed - (label checkbox).
 
@@ -572,7 +572,7 @@ description: Name of class
 value_1: default - (default) 
 description: Primary text and border color
 value_2: alert 
-description: Text color white and secodary border color
+description: Text color white and secondary border color
 
 ## Title - TmplTitleComponent 
 ### Type 
@@ -610,11 +610,11 @@ description: Tiny font size (--font-size-title-tiny)
 value_2: standard 
 description: Primary color (--ion-color-primary)
 value_3: center
-description: Postition center
+description: Position center
 value_4: left - (default)
-description: Postition left
+description: Position left
 value_5: right 
-description: Postition right
+description: Position right
 value_6: alternative 
 description: White text color
 value_7: contextual 
@@ -634,17 +634,17 @@ Parameter Name: style
 value_1: standard - (default)
 description: Primary color (--ion-color-primary)
 value_2: medium - (default)
-description: Medium forn size (--font-size-subtitle-medium)
+description: Medium font size (--font-size-subtitle-medium)
 value_3: small 
 description: Small font size (--font-size-subtitle-small)
 value_4: large 
 description: Large font size (--font-size-subtitle-large)
 value_5: center
-description: Postition center
+description: Position center
 value_6: left
-description: Postition left
+description: Position left
 value_7: right 
-description: Postition right
+description: Position right
 value_8: alternative 
 description: White text color
 value_9: contextual 
@@ -664,17 +664,17 @@ Parameter Name: style
 value_1: standard - (default)
 description: Primary color (--ion-color-primary)
 value_2: medium
-description: Medium forn size (--font-size-text-medium)
+description: Medium font size (--font-size-text-medium)
 value_3: large - (default)
 description: large font size (--font-size-text-small)
 value_4: small 
 description: small font size (--font-size-text-large)
 value_5: center
-description: Postition center
+description: Position center
 value_6: left
-description: Postition left
+description: Position left
 value_7: right 
-description: Postition right
+description: Position right
 value_8: alternative 
 description: White text color
 value_9: contextual 
@@ -880,9 +880,9 @@ description: go_to value_2 after click form button
 Parameter Name: get_device_info
 ##### Values and descriptions
 value_1: false - (default) 
-description: Submit without divice info
+description: Submit without device info
 value_2: true 
-description: Submit with divice info
+description: Submit with device info
 
 ## AdvancedDashedBoxComponent - TmplAdvancedDashedBoxComponent
 ### Type 
@@ -910,7 +910,7 @@ description: Name of class
 value_1: default - (default) 
 description: Primary text and border color
 value_2: alert 
-description: Text color white and secodary border color
+description: Text color white and secondary border color
 
 ## HelpIconComponent - TmplHelpIconComponent
 ### Type 
@@ -930,5 +930,5 @@ description: Path to icon
 - no_margin_lr - remove left and right margin;
 - no_margin - remove all margins;
 - no_padding_t - remove top padding;
-- no_padding_lr - remove left and rigth padding
+- no_padding_lr - remove left and right padding
 - no_padding - remove all paddings

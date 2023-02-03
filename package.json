@@ -28,6 +28,7 @@
     "test:unit:ci": "ng test --no-watch --no-progress",
     "test:e2e": "yarn workspace test-e2e start",
     "lint": "ng lint",
+    "lint:docs": "cspell \"documentation/docs/**/*.md\" --config \"cspell.config.yml\"",
     "analyse": "yarn build -- --stats-json && npx webpack-bundle-analyzer www/stats.json"
   },
   "private": true,
@@ -126,6 +127,7 @@
     "@typescript-eslint/parser": "5.17.0",
     "codelyzer": "^6.0.2",
     "concurrently": "^6.2.0",
+    "cspell": "^6.20.1",
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "2.23.4",
