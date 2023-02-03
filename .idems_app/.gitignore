@@ -1,9 +1,10 @@
-*
-!.gitignore
-!*/
-!deployments/local/config.ts
-!deployments/plh/*.ts
-!deployments/early_family_math/*.ts
-!deployments/wash/*.ts
-!deployments/perinatal/*.ts
-!deployments/*/skins/*.ts
+deployments/*
+!deployments/early_family_math
+!deployments/local
+!deployments/perinatal
+!deployments/plh*
+!deployments/wash
+
+
+# Renamed to activeDeployment.json, include here so people can remove
+!/deployments/default.json

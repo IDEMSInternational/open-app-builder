@@ -17,15 +17,7 @@ program.version("1.0.0").description("IDEMS App Scripts");
 
 // Handle legacy command renames so can still run `yarn scripts gdrive-download`
 const legacyCommandMappings = {
-  "gdrive-download": ["app-data", "download"],
-  "gdrive-auth": ["app-data", "download", "--authorize"],
-  "decrypt-config": ["config", "decrypt"],
-  "encrypt-config": ["config", "encrypt"],
-  "sync-plh-content": ["app-data", "sync"],
-  "sync-single": ["app-data", "sync", "--sheetname"],
-  "app-data-copy": ["app-data", "copy"],
-  "app-data-sync": ["app-data", "sync"],
-  "app-data-convert": ["app-data", "convert"],
+  "legacy-command": ["new-command", "arg"],
 };
 const cmdName = process.argv[2] || "";
 const mapping = legacyCommandMappings[cmdName];
@@ -63,4 +55,10 @@ const handleError = (e) => {
 process.on("SIGINT", handleExit);
 process.on("uncaughtException", handleError);
 
-program.parse(process.argv);
+(async function () {
+  await program.parseAsync(process.argv);
+})();
+
+// Additional exports for direct consumption
+import { extendDeploymentConfig, generateDeploymentConfig } from "./deployment/common";
+export { extendDeploymentConfig, generateDeploymentConfig };

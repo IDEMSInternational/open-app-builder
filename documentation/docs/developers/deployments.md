@@ -1,62 +1,22 @@
-# Deployment Configuration
+# Deployments
 
-The app system has support for multiple app deployment configurations from within the same repo. 
+All user-generated content are stored within deployments, alongside app-specific settings such as remote data sources and app strings.
+
+
+
 
 ## Create Deployment
-All deployments are stored in the `.idems_app/deployments` folder, and new deployments can be added simply by creating new subfolders that include configuration files.
-
-For this example we will create a folder called `my_deployment`. This can be created either using a file explorer, or via script such as:
+All deployments are stored in the `.idems_app/deployments` folder, and new deployments can be added by calling the script:
 
 ```sh
-mkdir .idems_app/deployments my_deployment
+yarn workflow deployment create
 ```
+This will prompt for a deployment type
 
-!!! tip
-    The folder can have any name, but it is recommended to avoid special characters and spaces to ensure compatibility across different devices and operating systems.
-
-Create a configuration file inside the folder either named `config.ts` or with name that ends in `.config.ts`, such as `default.config.ts`.
-
-Populate the file with configuration settings. A minimal example could be:
-
-```ts title=".idems_app/deployments/my_deployment/default.config.ts"
-import { IDeploymentConfig } from "data-models";
-
-const config: IDeploymentConfig = {
-  name: "My Deployment Default",
-  google_drive: { assets_folder_id: "", sheets_folder_id: "" },
-};
-
-export default config
-```
-
-For full configuration options see the included `IDeploymentConfig` type definition. 
-
-### Google Drive Folders
-The deployment configuration requires IDs for two created Google Drive folders, one for template sheets and one for global assets. 
-
-The folders should again be named without spaces or special characters, and once created their unique IDs can be found by looking at the end of the URL bar when navigating inside the folder on Google Drive.
-
-E.g. `1ja6lzbphZaxnVv5mpQ4YHnn2qmxMiEBW`
-
-![](images/deployment-gdrive-ids.png)
-## Create Sub-Deployment
-By default all deployment folders manage their own local caches and default settings. If creating multiple deployments related to the same google sheet and asset folders, it is usually more efficient to include in the same deployment folder and simply extend the config.
-
-For example, we could create a `prod.config.ts` file that filters out sheets of a specific type 
-
-```ts title=".idems_app/deployments/my_deployment/prod.config.ts"
-import DEFAULT_CONFIG from "./default.config.ts";
-
-const config = DEFAULT_CONFIG
-config.name = "My Deployment Production"
-config.app_data.sheets_filter_function = (flow) => flow.subtype!=='debug'
-
-export default config
-```
-
-!!! Tip
-    When using multiple configs it is recommended to have a default config that does not include any filters, so that complete data can be synced and populated to the cache for use by other deployments.
-
+| Option      | Details          | 
+| --------- | ------------  | 
+| New Local Deployment	    | A new standalone deployment, will have a clean configuration. This could be an entirely new app, or related to another deployment but managed independently      | 
+| Extend Existing Local	    | Will inherit the configuration of another deployment for modification. This could be a country-specific or A/B testing version      | 
 
 ## Change Deployment
 To set the active deployment for the workspace run the following script:
@@ -67,5 +27,65 @@ This will present an interactive list of deployments to select from
 
 Alternative a name can be provided to select directly
 ```sh
-yarn workflow deployment set "My Deployment Production"
+yarn workflow deployment set example
 ```
+
+!!! Tip
+    If the deployment name contains spaces use quotation marks when specifying, e.g. `yarn workflow deployment set "another example"`
+
+
+## Customise Configuration
+When a deployment is created a default configuration will be created in the `.idems_app/deployments` folder. E.g. for a deployment named *example*
+
+```ts title=".idems_app/deployments/example/config.ts"
+import { getDefaultAppConfig, IDeploymentConfig } from "data-models";
+
+const app_config = getDefaultAppConfig()
+
+// Override any app config here
+app_config.APP_HEADER_DEFAULTS.title = 'Example Deployment'
+app_config.APP_SIDEMENU_DEFAULTS.title = 'Example Deployment'
+
+const config: IDeploymentConfig = {
+  name: "example",
+  google_drive: {
+    sheets_folder_id: "",
+    assets_folder_id: "",
+  },
+  app_config
+};
+export default config;
+```
+This configuration provides a minimal set of options to override the default header and sidemenu text, as well as configuring a remote google_drive data source (more information below)
+
+A full list of app_config and their default values can be found in [packages/data-models/appConfig.ts](https://github.com/IDEMSInternational/parenting-app-ui/blob/master/packages/data-models/appConfig.ts)
+
+A full list of general configuration options can be found in [packages/data-models/deployment.model.ts](https://github.com/IDEMSInternational/parenting-app-ui/blob/master/packages/data-models/deployment.model.ts)
+
+Any configuration changes can be applied by setting the deployment
+```
+yarn workflow deployment set [name]
+```
+
+## Change Deployment
+To set the active deployment for the workspace run the following script:
+```sh
+yarn workflow deployment set
+```
+This will present an interactive list of deployments to select from
+
+Alternative a name can be provided to select directly
+```sh
+yarn workflow deployment set "My Deployment"
+```
+
+## Google Drive Management
+The deployment configuration requires IDs for two created Google Drive folders, one for template sheets and one for global assets. 
+
+The folders should again be named without spaces or special characters, and once created their unique IDs can be found by looking at the end of the URL bar when navigating inside the folder on Google Drive.
+
+E.g. `1ja6lzbphZaxnVv5mpQ4YHnn2qmxMiEBW`
+
+![](images/deployment-gdrive-ids.png)
+
+
