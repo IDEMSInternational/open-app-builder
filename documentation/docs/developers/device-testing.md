@@ -1,7 +1,7 @@
 # On-device Testing
 
 ## Generate apk 
-A custom github action exists that can be used to trigger the building of android apks from a given repo branch. Visit the action url and click Run workflow to initiate a build
+A custom github action exists that can be used to trigger the building of android APKs from a given repo branch. Visit the action url and click Run workflow to initiate a build
 https://github.com/IDEMSInternational/parenting-app-ui/actions/workflows/trigger-build.yml
 
 ![](./images/device-testing-1.png)
