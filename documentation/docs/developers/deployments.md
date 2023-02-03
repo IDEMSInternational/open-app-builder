@@ -79,7 +79,7 @@ Alternative a name can be provided to select directly
 yarn workflow deployment set "My Deployment"
 ```
 
-## Google Drive Managemnt
+## Google Drive Management
 The deployment configuration requires IDs for two created Google Drive folders, one for template sheets and one for global assets. 
 
 The folders should again be named without spaces or special characters, and once created their unique IDs can be found by looking at the end of the URL bar when navigating inside the folder on Google Drive.
