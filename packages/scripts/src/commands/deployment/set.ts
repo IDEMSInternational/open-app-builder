@@ -72,7 +72,8 @@ export class DeploymentSet {
     const deploymentNames = fs
       .readdirSync(DEPLOYMENTS_PATH, { withFileTypes: true })
       .filter((d) => d.isDirectory())
-      .map((d) => d.name);
+      .map((d) => d.name)
+      .filter((name) => fs.existsSync(path.resolve(DEPLOYMENTS_PATH, name, "config.ts")));
     const currentDeploymentName = getActiveDeployment({
       ignoreMissing: true,
       skipRecompileCheck: true,
