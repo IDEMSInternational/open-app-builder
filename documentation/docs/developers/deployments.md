@@ -64,7 +64,7 @@ A full list of general configuration options can be found in [packages/data-mode
 
 Any configuration changes can be applied by setting the deployment
 ```
-yarn scripts deployment set [name]
+yarn workflow deployment set [name]
 ```
 
 ## Change Deployment
