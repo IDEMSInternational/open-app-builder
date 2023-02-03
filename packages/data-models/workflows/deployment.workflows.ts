@@ -24,6 +24,17 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
     children: {
+      // Copy app-data assets directly to src assets
+      // Note - this is already done as part of `tasks.appData.copy`, so just for postinstall
+      create: {
+        label: "Create a new local deployment",
+        steps: [
+          {
+            name: "deployment create",
+            function: async ({ tasks }) => tasks.deployment.create(),
+          },
+        ],
+      },
       set: {
         label: "Set active deployment",
         steps: [
