@@ -4,7 +4,7 @@ import fs from "fs-extra";
 import path from "path";
 import { DEPLOYMENTS_PATH, ROOT_DIR } from "../../paths";
 import { promptOptions, logOutput, logWarning } from "../../utils";
-import { getActiveDeployment } from "./get";
+import { ActiveDeployment } from "./get";
 import { loadDeploymentJson } from "./utils";
 
 const program = new Command("set");
@@ -74,7 +74,7 @@ export class DeploymentSet {
       .filter((d) => d.isDirectory())
       .map((d) => d.name)
       .filter((name) => fs.existsSync(path.resolve(DEPLOYMENTS_PATH, name, "config.ts")));
-    const currentDeploymentName = getActiveDeployment({
+    const currentDeploymentName = ActiveDeployment.get({
       ignoreMissing: true,
       skipRecompileCheck: true,
     })?.name;

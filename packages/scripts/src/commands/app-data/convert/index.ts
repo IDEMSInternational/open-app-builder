@@ -4,7 +4,7 @@ import { Command } from "commander";
 import * as path from "path";
 import chalk from "chalk";
 import { FlowTypes } from "data-models";
-import { getActiveDeployment } from "../../deployment/get";
+import { ActiveDeployment } from "../../deployment/get";
 import { IConverterPaths, IParsedWorkbookData } from "./types";
 import { XLSXWorkbookProcessor } from "./processors/xlsxWorkbook";
 import { JsonFileCache } from "./cacheStrategy/jsonFile";
@@ -14,7 +14,7 @@ import {
   createChildLogger,
   logSheetsSummary,
   getLogs,
-  logError,
+  Logger,
   getLogFiles,
   logWarning,
   clearLogs,
@@ -56,7 +56,7 @@ export class AppDataConverter {
   /** Change version to invalidate all underlying caches */
   public version = 20221027.0;
 
-  public activeDeployment = getActiveDeployment();
+  public activeDeployment = ActiveDeployment.get();
 
   private paths: IConverterPaths = {
     SHEETS_INPUT_FOLDER: "",
@@ -161,7 +161,7 @@ export class AppDataConverter {
     const errors = getLogs("error");
     if (errors.length > 0) {
       const errorLogFile = getLogFiles().error;
-      logError({
+      Logger.error({
         msg1: `Completed with errors`,
         msg2: errorLogFile,
         logOnly: true,
