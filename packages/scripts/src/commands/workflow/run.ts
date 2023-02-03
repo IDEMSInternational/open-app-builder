@@ -6,8 +6,8 @@ import path from "path";
 import { Command } from "commander";
 import { IDeploymentWorkflows, IWorkflow, WORKFLOW_DEFAULTS } from "data-models";
 import ALL_TASKS from "../../tasks";
-import { logError, logProgramHelp, pad, promptOptions } from "../../utils";
-import { getActiveDeployment } from "../deployment/get";
+import { Logger, logProgramHelp, pad, promptOptions } from "../../utils";
+import { ActiveDeployment } from "../deployment/get";
 import type { IDeploymentConfigJson } from "../deployment/common";
 
 const program = new Command("run");
@@ -53,7 +53,7 @@ export class WorkflowRunnerClass {
     // load default workflows
     this.workflows = WORKFLOW_DEFAULTS;
     // load custom workflows
-    this.config = getActiveDeployment({ ignoreMissing: true });
+    this.config = ActiveDeployment.get({ ignoreMissing: true });
     const { workflow, _workspace_path } = this.config as any;
     const customWorkflowFiles = [];
     if (workflow) {
@@ -101,7 +101,7 @@ export class WorkflowRunnerClass {
       const available = Object.keys(this.workflows).join(", ");
       const msg1 = `Workflow not found: ${name}`;
       const msg2 = `Available workflows: ${available}`;
-      logError({ msg1, msg2 });
+      Logger.error({ msg1, msg2 });
     }
     // If args passed and first arg matches a child workflow name replace child workflow and args
     const childWorkflowName = args[0];
@@ -155,7 +155,7 @@ export class WorkflowRunnerClass {
         const output = await step.function(context);
         this.activeWorkflow[step.name].output = output;
         // re-evaluate active deployment in case step changed it
-        this.config = getActiveDeployment({ ignoreMissing: true });
+        this.config = ActiveDeployment.get({ ignoreMissing: true });
       } else {
         console.log(chalk.gray("skipped"));
       }
