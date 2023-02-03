@@ -18,9 +18,6 @@ This will prompt for a deployment type
 | New Local Deployment	    | A new standalone deployment, will have a clean configuration. This could be an entirely new app, or related to another deployment but managed independently      | 
 | Extend Existing Local	    | Will inherit the configuration of another deployment for modification. This could be a country-specific or A/B testing version      | 
 
-!!! tip
-    Extending deployments are more efficient if using content from the same google drive folder. Content can still be customised through the use of filters or other configuration options
-
 ## Change Deployment
 To set the active deployment for the workspace run the following script:
 ```sh
@@ -70,24 +67,6 @@ Any configuration changes can be applied by setting the deployment
 yarn scripts deployment set [name]
 ```
 
-### Import Existing
-If an external content repo already exists it is possible to directly import into the local workspace, instead of first creating a new deployment and then configuring for import. 
-
-This can be done via the script
-```
-yarn workflow deployment import [url]
-```
-Where [url] can be replaced with the url of a github repository where content is stored
-
-You will see the new deployment appear in the `.idems_app` folder and be available for selection
-
-
-### Push Changes
-A local repo can have its changes pushed to github by creating a new content release
-```
-yarn workflow content_release
-```
-
 ## Change Deployment
 To set the active deployment for the workspace run the following script:
 ```sh
@@ -97,12 +76,8 @@ This will present an interactive list of deployments to select from
 
 Alternative a name can be provided to select directly
 ```sh
-yarn workflow deployment set "My Deployment Production"
+yarn workflow deployment set "My Deployment"
 ```
-This will create a new git branch, apply local changes and push to github. From there a pull request can be created to merge into the main branch.
-
-!!! warning
-    If multiple authors are updating content and creating releases there is a high probability of conflicts arising. It is recommended to merge open pull requests before creating new content releases, and running the `yarn workflow deployment set` script to ensure local content also includes the latest remote content.
 
 ## Google Drive Managemnt
 The deployment configuration requires IDs for two created Google Drive folders, one for template sheets and one for global assets. 
