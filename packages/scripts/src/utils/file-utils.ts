@@ -112,12 +112,11 @@ export function generateFolderTreeMap(folderPath: string, includeStats = true) {
 
 /**
  * Create a flat json representing nested folder structure of a given folder path.
- * Includes optional stats output that records file size and md5 checksum data
+ * Includes stats output that records file size and md5 checksum data
  * 
- * @param includeStats include basic stats such as size within nested structure.
- * If ommitted will just mark files as `TRUE`
- * @param filterFn optional filter function to be applied to relative paths for inclusion
- * 
+ * @param options.filterFn optional filter function to be applied to relative paths for inclusion
+ * @param options.includeLocalPath include full path to file on local disk
+
  * @returns Example file: i18n/flags/gb.svg
  * ```
  * "i18n/flags/gb.svg": {

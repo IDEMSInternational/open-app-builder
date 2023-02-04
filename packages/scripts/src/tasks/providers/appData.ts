@@ -1,10 +1,8 @@
 import { spawnSync } from "child_process";
-import { writeFileSync } from "fs-extra";
 import path from "path";
 import { WorkflowRunner } from "../../commands/workflow/run";
 import { SRC_ASSETS_PATH } from "../../paths";
 import { IContentsEntry, replicateDir } from "../../utils";
-import { ROOT_DIR } from "../../paths";
 
 /** Prepare sourcely cached assets for population to app */
 const postProcessAssets = (options: { sourceAssetsFolder: string }) => {
