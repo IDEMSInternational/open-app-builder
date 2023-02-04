@@ -1,7 +1,7 @@
 import path from "path";
 import { spawnSync } from "child_process";
 import { WorkflowRunner } from "../../commands/workflow/run";
-import { logError } from "../../utils";
+import { Logger } from "../../utils";
 
 /**
  * Apply translations to sheets
@@ -25,7 +25,7 @@ const apply = (options: { inputFolder: string }) => {
     shell: true,
   });
   if (status === 1) {
-    logError({ msg1: "Translations failed", msg2: stderr.toString() });
+    Logger.error({ msg1: "Translations failed", msg2: stderr.toString() });
   }
   // Returns path to both compiled strings and translated sheets
   return {

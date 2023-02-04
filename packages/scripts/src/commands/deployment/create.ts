@@ -3,8 +3,8 @@ import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
 import { DEPLOYMENTS_PATH } from "../../paths";
-import { logError, logOutput, logWarning, promptInput, promptOptions } from "../../utils";
-import { IDeploymentConfigJson } from "./common";
+import { Logger, logOutput, logWarning, promptInput, promptOptions } from "../../utils";
+import type { IDeploymentConfigJson } from "./common";
 import { DeploymentSet } from "./set";
 import generateDefaultConfig from "./templates/config.default";
 import generateExtendedConfig from "./templates/config.extended";
@@ -58,7 +58,7 @@ export async function createDeployment() {
 /** Create a new standalone deployment config */
 async function generateNewDeployment(): Promise<IGeneratedDeployment> {
   const nameInput = await promptInput("Specify a name for the deployment");
-  const name = nameInput.toLowerCase().replace(/ /, "_");
+  const name = nameInput.replace(/ /g, "_").toLowerCase();
   const targetConfigFile = path.join(DEPLOYMENTS_PATH, name, `config.ts`);
   const configTs = generateDefaultConfig(name);
   writeConfig(targetConfigFile, configTs);
@@ -73,7 +73,7 @@ async function generateExtendedDeployment(): Promise<IGeneratedDeployment> {
   const nameInput = await promptInput(
     `Specify a name for the deployment: ${parentDeployment.name} - `
   );
-  const name = nameInput.toLowerCase().replace(/ /, "_");
+  const name = nameInput.replace(/ /g, "_").toLowerCase();
   const extendedName = `${parentDeployment.name}_${name}`;
   const targetFolder = path.join(DEPLOYMENTS_PATH, extendedName);
   const targetConfigFile = path.join(targetFolder, `config.ts`);
@@ -130,7 +130,7 @@ export function listValidDeployments() {
 
 function writeConfig(targetConfigFile: string, configTs: string) {
   if (fs.existsSync(targetConfigFile)) {
-    logError({ msg1: "Deployment already exists", msg2: targetConfigFile });
+    Logger.error({ msg1: "Deployment already exists", msg2: targetConfigFile });
   }
   fs.ensureDirSync(path.dirname(targetConfigFile));
   fs.writeFileSync(targetConfigFile, configTs);
@@ -147,7 +147,7 @@ function writeGitIgnore(targetFile: string) {
   ];
   const gitIgnoreTxt = ignoredPaths.join("\n");
   if (fs.existsSync(targetFile)) {
-    logError({ msg1: "Gitignore file already exists", msg2: targetFile });
+    Logger.error({ msg1: "Gitignore file already exists", msg2: targetFile });
   }
   fs.writeFileSync(targetFile, gitIgnoreTxt);
 }

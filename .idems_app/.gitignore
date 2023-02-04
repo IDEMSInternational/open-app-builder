@@ -2,9 +2,8 @@ deployments/*
 !deployments/early_family_math
 !deployments/local
 !deployments/perinatal
-!deployments/plh
+!deployments/plh*
 !deployments/wash
-
 
 # Renamed to activeDeployment.json, include here so people can remove
 !/deployments/default.json
