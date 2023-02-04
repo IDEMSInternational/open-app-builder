@@ -352,7 +352,6 @@ export function readContentsFile(folderPath: string) {
   }
 
   const contentsFilePath = fs.readdirSync(folderPath).find((f) => f.endsWith("_contents.json"));
-  console.log("contentsFilePath", contentsFilePath);
   if (!contentsFilePath) {
     logWarning({ msg1: "Contents file not found in folder", msg2: folderPath });
     return [];

@@ -5,7 +5,7 @@ import { IDeploymentConfig } from "data-models";
 import fs from "fs-extra";
 import path from "path";
 import { ROOT_DIR } from "../../paths";
-import { logError } from "../../utils";
+import { Logger } from "../../utils";
 import { DEPLOYMENT_CONFIG_VERSION, IDeploymentConfigJson } from "./common";
 import { convertFunctionsToStrings } from "./utils";
 
@@ -59,7 +59,7 @@ export async function loadTSFileDefaultExport(input: string) {
     return res.default;
   } catch (error) {
     console.error(error);
-    logError({ msg1: "Could not compile", msg2: input });
+    Logger.error({ msg1: "Could not compile", msg2: input });
   }
 }
 
@@ -70,8 +70,6 @@ function convertDeploymentTsToJson(
 ): IDeploymentConfigJson {
   const _workspace_path = path.resolve(_config_ts_path, "../");
   const _config_version = DEPLOYMENT_CONFIG_VERSION;
-
-  console.log(_config_ts_path);
 
   // rewrite relative urls to absolute
   const rewritten = rewriteConfigPaths(deployment, _workspace_path);

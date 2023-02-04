@@ -7,7 +7,7 @@ import {
   parseAppDataActionString,
   parseAppDateValue,
 } from "../../../utils";
-import { getActiveDeployment } from "../../../../../deployment/get";
+import { ActiveDeployment } from "../../../../../deployment/get";
 import { FlowParserProcessor } from "../flowParser";
 // When running this parser assumes there is a 'type' column
 type IRowData = { type: string; name?: string; rows?: IRowData };
@@ -22,7 +22,7 @@ type IRowData = { type: string; name?: string; rows?: IRowData };
 export class DefaultParser<
   FlowType extends FlowTypes.FlowTypeWithData = FlowTypes.FlowTypeWithData
 > {
-  activeDeployment = getActiveDeployment();
+  activeDeployment = ActiveDeployment.get();
 
   public flow: FlowType;
 
