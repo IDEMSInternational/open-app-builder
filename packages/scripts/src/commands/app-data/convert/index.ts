@@ -100,7 +100,7 @@ export class AppDataConverter {
         description: "Load list of all input xlsx workbooks from folder",
         fn: async () => {
           const filterFn = (relativePath: string) => relativePath.endsWith(".xlsx");
-          return generateFolderFlatMap(inputFolder, true, filterFn);
+          return generateFolderFlatMap(inputFolder, { filterFn });
         },
       },
       {

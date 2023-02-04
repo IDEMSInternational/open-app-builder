@@ -8,12 +8,7 @@ const workflows: IDeploymentWorkflows = {
     steps: [
       {
         name: "populate_src_assets",
-        function: async ({ tasks, config }) =>
-          tasks.appData.populateSrcAssets({
-            appAssetsFolder: config.app_data.assets_output_path,
-            appSheetsFolder: config.app_data.sheets_output_path,
-            appTranslationsFolder: config.app_data.translations_output_path,
-          }),
+        function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
       },
     ],
   },
