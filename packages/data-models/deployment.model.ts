@@ -141,3 +141,12 @@ interface IFlowTypeBase {
   flow_subtype?: string;
   status: "draft" | "released";
 }
+
+/**  Subset of IContentsEntry (with additional translations) */
+export interface IAssetEntry {
+  size_kb: number;
+  modifiedTime: string;
+  md5Checksum: string;
+  translations?: { [language_code: string]: IAssetEntry };
+}
+export type IAssetEntryHashmap = { [assetPath: string]: IAssetEntry };
