@@ -1,4 +1,5 @@
 import { spawnSync } from "child_process";
+import { writeFileSync } from "fs-extra";
 import path from "path";
 import { WorkflowRunner } from "../../commands/workflow/run";
 import { SRC_ASSETS_PATH } from "../../paths";
@@ -41,6 +42,15 @@ const copyDeploymentDataToApp = () => {
   const target = path.resolve(SRC_ASSETS_PATH, "app_data");
 
   replicateDir(source, target, filter_fn);
+
+  // HACK - Angular webpack won't always live-reload when changes only made to asset files
+  // so write an arbitrary variable that can be imported into the app and will trigger reload
+  // https://github.com/angular/angular-cli/issues/22751
+  // https://github.com/webpack/webpack-dev-server/issues/3794
+  writeFileSync(
+    path.resolve(target, "index.ts"),
+    `export const DEV_COMPILE_TIME = ${new Date().getTime()}`
+  );
 };
 
 export default { postProcessAssets, postProcessSheets, copyDeploymentDataToApp };
