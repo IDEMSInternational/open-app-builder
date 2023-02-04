@@ -1,6 +1,14 @@
+import fs from "fs-extra";
 import { DB_TABLES, DB_VERSION } from "data-models/db.model";
-import { SHEETS_CONTENT_LIST } from "../sheets";
-const template = Object.values(SHEETS_CONTENT_LIST.template);
+import { TEMPLATE_CONTENTS_PATH } from "./index";
+
+/**
+ * HACK - previously contents files imported from shared app-data workspace
+ * Now only exists in app so temp workaround to import directly
+ */
+const SHEETS_CONTENT_LIST = fs.readJsonSync(TEMPLATE_CONTENTS_PATH);
+
+const template = Object.values(SHEETS_CONTENT_LIST.template) as any[];
 
 /** List of template flow subtypes to test */
 const TEST_FLOW_SUBTYPES = ["debug", "component_demo"];
@@ -9,7 +17,7 @@ const TEST_FLOW_SUBTYPES = ["debug", "component_demo"];
 const ADDITIONAL_TEMPLATE_NAMES = ["home_screen", "weekly_workshops"];
 
 /** List of template names to skip */
-const SKIPPED_TEMPLATE_NAMES = [];
+const SKIPPED_TEMPLATE_NAMES: string[] = [];
 
 /** Default time spent waiting to ensure page elements rendered fully */
 const PAGE_WAIT_DEFAULT = 1000;
