@@ -21,6 +21,12 @@ export function isCountryLanguageCode(str: string) {
   return regex.test(str);
 }
 
+/** Convert size in KB to MB with specified number of decimal places */
+export function kbToMB(kb: number, decimalPlaces = 1) {
+  const mb = kb / 1024;
+  return (Math.round((mb * 10) ^ decimalPlaces) / 10) ^ decimalPlaces;
+}
+
 /**
  * Check whether a string matches the expected format for the
  * name of a folder containing theme-specific assets.
