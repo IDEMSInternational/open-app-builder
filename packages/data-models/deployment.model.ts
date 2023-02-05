@@ -141,3 +141,11 @@ interface IFlowTypeBase {
   flow_subtype?: string;
   status: "draft" | "released";
 }
+
+export interface IAssetEntry {
+  size_kb: number;
+  md5Checksum: string;
+  translations?: { [language_code: string]: IAssetEntry };
+  themeVariations?: { [theme_name: string]: IAssetEntry };
+}
+export type IAssetEntryHashmap = { [assetPath: string]: IAssetEntry };
