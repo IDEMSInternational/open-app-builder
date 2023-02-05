@@ -63,7 +63,7 @@ export class TemplateAssetService extends AsyncServiceBase {
     }
     if (assetEntry?.themeVariations?.[themeFolderName]) {
       return this.convertPLHRelativePathToAssetPath(
-        `${themeFolderName}/${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`
+        `theme_${themeFolderName}/${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`
       );
     }
     return this.convertPLHRelativePathToAssetPath(`${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`);
