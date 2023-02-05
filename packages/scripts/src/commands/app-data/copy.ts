@@ -180,13 +180,8 @@ export class AppDataCopy {
       }
     });
 
-    // write output index file for tracked and untracked assets
-    const outputTS = `
-export const UNTRACKED_ASSETS = ${JSON.stringify(untrackedAssets, null, 2)}
-export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
-`.trim();
-    const ASSETS_INDEX_PATH = path.resolve(baseFolder, "index.ts");
-    fs.writeFileSync(ASSETS_INDEX_PATH, outputTS);
+    const ASSETS_INDEX_PATH = path.resolve(baseFolder, "contents.json");
+    fs.writeFileSync(ASSETS_INDEX_PATH, JSON.stringify(cleanedContents, null, 2));
 
     // Log total size of all exports
     let assetsTotal = 0;
@@ -318,13 +313,8 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
   private sheetsWriteContents(baseFolder: string, contents: ISheetContents) {
     // Write ts
     const contentsString = JSON.stringify(contents, null, 2);
-    const outputTS = `
-import { FlowTypes } from "data-models";
-type ISheetContents = { [flow_type in FlowTypes.FlowType]: { [flow_name: string]: FlowTypes.FlowTypeBase } };
-export const SHEETS_CONTENT_LIST:ISheetContents = ${contentsString}
-    `.trim();
-    const SHEETS_INDEX_PATH = path.resolve(baseFolder, "index.ts");
-    fs.writeFileSync(SHEETS_INDEX_PATH, outputTS);
+    const SHEETS_INDEX_PATH = path.resolve(baseFolder, "contents.json");
+    fs.writeFileSync(SHEETS_INDEX_PATH, contentsString);
   }
   /**
    * Check for unsupported flow types or flows with duplicate names (can happen across subtypes)
@@ -360,12 +350,8 @@ export const SHEETS_CONTENT_LIST:ISheetContents = ${contentsString}
       contents[language_code] = { filename: `${language_code}/strings.json` };
     });
     const contentsString = JSON.stringify(contents, null, 2);
-    const outputTS = `
-    type ITranslationContents = { [language_code:string]: { filename:  string } };
-    export const TRANSLATIONS_CONTENT_LIST:ITranslationContents = ${contentsString}
-        `.trim();
-    const TRANSLATIONS_INDEX_PATH = path.resolve(baseFolder, "index.ts");
-    fs.writeFileSync(TRANSLATIONS_INDEX_PATH, outputTS);
+    const TRANSLATIONS_INDEX_PATH = path.resolve(baseFolder, "contents.json");
+    fs.writeFileSync(TRANSLATIONS_INDEX_PATH, contentsString);
   }
 
   private translationsCopyFiles(sourceFolder: string, targetFolder: string) {
