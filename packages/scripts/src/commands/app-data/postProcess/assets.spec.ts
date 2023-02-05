@@ -11,46 +11,49 @@ import path from "path";
 
 /** Mock file system folders for use in tests */
 const mockDirs = {
-  appAssetsFolder: "mock/appAssetsFolder",
-  appSheetsFolder: "mock/appSheetsFolder",
-  appTranslationsFolder: "mock/appTranslationsFolder",
-  localAssetsFolder: "mock/localAssetsFolder",
-  localSheetsFolder: "mock/localSheetsFolder",
-  localTranslationsFolder: "mock/localTranslationsFolder",
+  appAssets: "mock/app_data/assets",
+  localAssets: "mock/local/assets",
 };
+
+const mockFile = Buffer.alloc(1 * 1024 * 1024); // create mock 1MB file
+
 /** Mock file system contents. Nesting will create folders and populate filename:contents mock files  */
 const mockDirContents = {
-  "mock/appAssetsFolder": {
-    global: {},
-  },
-  "mock/appSheetsFolder": {},
-  "mock/appTranslationsFolder": {},
-  "mock/localAssetsFolder": {
-    "_contents.json": `[{"relativePath":"global/some_file.jpg"}]`, // specify file contents
-    global: {
-      "some_file.jpg": Buffer.alloc(1 * 1024 * 1024), // create mock 1MB file
+  app_data: {},
+  local: {
+    assets: {
+      global: {
+        "test.jpg": mockFile,
+      },
+      theme_demoTheme: {
+        global: {
+          "test.jpg": mockFile,
+        },
+      },
+      tz_invalid: {},
+      tz_sw: {
+        "test.jpg": mockFile,
+      },
     },
+    sheets: {},
+    translations: {},
   },
-  "mock/localSheetsFolder": {},
-  "mock/localTranslationsFolder": {},
 };
 
 /** Mock function that will replace default `Logger` function to instead just record any invocations */
 const mockErrorLogger = jasmine.createSpy("mockErrorLogger", Logger.error);
 
-describe("App Data Converter", () => {
+describe("Assets PostProcess", () => {
   /** Initial setup */
   // replace prettier codeTidying method
   // relpace `Logger` function with created spy method
   beforeAll(() => {
-    spyOn(AppDataCopy.prototype, "runPrettierCodeTidy" as any).and.stub();
-
     spyOn(Logger, "error").and.callFake(mockErrorLogger);
   });
   // Populate a fake file system before each test. This will automatically be called for any fs operations
   // Restore regular file functionality after each test.
   beforeEach(() => {
-    mockFs(mockDirContents);
+    mockFs({ mock: mockDirContents });
   });
   afterEach(() => {
     mockFs.restore();
@@ -58,38 +61,84 @@ describe("App Data Converter", () => {
 
   /** Mock setup testing (can be removed once working consistenctly) */
   it("mocks file system for testing", () => {
-    const contents = fs.readdirSync(mockDirs.localAssetsFolder);
-    expect(contents).toEqual(Object.keys(mockDirContents["mock/localAssetsFolder"]));
-    const testFilePath = path.resolve(mockDirs.localAssetsFolder, "global", "some_file.jpg");
+    const contents = fs.readdirSync(mockDirs.localAssets);
+    expect(contents).toEqual(Object.keys(mockDirContents.local.assets));
+    const testFilePath = path.resolve(mockDirs.localAssets, "global", "test.jpg");
     expect(fs.statSync(testFilePath).size).toEqual(1 * 1024 * 1024);
   });
 
   /** Main tests */
   it("Copies assets from local to app", () => {
-    stubDeploymentConfig();
-    const copyCmd = new AppDataCopy(mockDirs);
-    copyCmd.run();
-    const appGlobalAssetsDir = path.join(mockDirs.localAssetsFolder, "global");
+    runAssetsPostProcessor();
+    const appGlobalAssetsDir = path.join(mockDirs.localAssets, "global");
     const appGlobalAssets = fs.readdirSync(appGlobalAssetsDir);
-    expect(appGlobalAssets).toEqual(["some_file.jpg"]);
+    expect(appGlobalAssets).toEqual(["test.jpg"]);
+  });
+
+  it("populates contents json", () => {
+    runAssetsPostProcessor();
+    const contentsPath = path.resolve(mockDirs.appAssets, "contents.json");
+    expect(fs.existsSync(contentsPath)).toBeTrue();
+    const contents = fs.readJSONSync(contentsPath);
+    expect("test.jpg" in contents).toBeTrue();
+  });
+
+  it("Populates translation assets", () => {
+    runAssetsPostProcessor();
+    const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
+    const { translations } = contents["test.jpg"];
+    expect(translations).toEqual({
+      tz_sw: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
+    });
+  });
+
+  it("Populates theme assets", () => {
+    runAssetsPostProcessor();
+    const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
+    const { themeVariations } = contents["test.jpg"];
+    expect(themeVariations).toEqual({
+      demoTheme: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
+    });
   });
 
   /** QA tests */
   it("throws error when global assets not found", () => {
-    console.log("global missing test");
-    fs.emptyDirSync(mockDirs.localAssetsFolder);
+    const { localAssets } = mockDirs;
+    fs.emptyDirSync(localAssets);
     stubDeploymentConfig({
       assets_filter_function: () => false,
       filter_language_codes: [],
     });
-    const copy = new AppDataCopy(mockDirs);
+    const copy = new AssetsPostProcessor({ sourceAssetsFolder: localAssets });
     copy.run();
     expect(mockErrorLogger).toHaveBeenCalledWith({
       msg1: "Assets global folder not found",
       msg2: 'Assets folder should include a folder named "global"',
     });
   });
+
+  // TODO - check functioanlity for invalid language folders and add test
+  // it("warns on invalid language codes", () => {});
+
+  // TODO - will require refactoring warning like error logger
+  // it("warns on untracked assets", () => {
+  //   const { localAssets } = mockDirs;
+  //   const untrackedPath = path.resolve(localAssets, "tz_sw", "untracked.jpg");
+  //   fs.writeFileSync(untrackedPath, mockFile);
+  //   runAssetsPostProcessor();
+  //   expect(mockWarningLogger).toHaveBeenCalledWith({
+  //     msg1: "Translated assets found without corresponding global",
+  //     msg2: "untracked.jpg",
+  //   });
+  // });
 });
+
+function runAssetsPostProcessor() {
+  stubDeploymentConfig();
+  const { localAssets } = mockDirs;
+  const processor = new AssetsPostProcessor({ sourceAssetsFolder: localAssets });
+  processor.run();
+}
 
 /** Test Utilities */
 
@@ -112,6 +161,7 @@ function stubDeploymentConfig(
   const app_themes_available = stub.app_themes_available ?? [];
 
   const stubDeployment: Partial<IDeploymentConfigJson> = {
+    _workspace_path: "mock",
     app_data: { assets_filter_function },
     translations: { filter_language_codes },
     app_config: {

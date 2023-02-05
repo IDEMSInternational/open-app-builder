@@ -46,10 +46,8 @@ export class AssetsPostProcessor {
   public run() {
     const { _workspace_path } = this.activeDeployment;
     const { sourceAssetsFolder } = this.options;
-
     const appAssetsFolder = path.resolve(_workspace_path, "app_data", "assets");
     fs.ensureDirSync(appAssetsFolder);
-
     // Generate a list of all deployment assets, merge with list of assets from parent
     const sourceAssets = generateFolderFlatMap(sourceAssetsFolder, { includeLocalPath: true });
     const sourceAssetsFiltered = this.filterAppAssets(sourceAssets);
@@ -143,7 +141,7 @@ export class AssetsPostProcessor {
     const { assets_filter_function } = this.activeDeployment.app_data;
     const { filter_language_codes } = this.activeDeployment.translations;
     // include global folder if filtering by language
-    if (filter_language_codes) {
+    if (filter_language_codes.length > 0) {
       filter_language_codes.push(ASSETS_GLOBAL_FOLDER_NAME);
     }
     // remove contents file from gdrive download
@@ -151,7 +149,7 @@ export class AssetsPostProcessor {
     // individual file filter function
     function shouldInclude(entry: IContentsEntry) {
       if (assets_filter_function && !assets_filter_function(entry)) return false;
-      if (filter_language_codes) {
+      if (filter_language_codes.length > 0) {
         const entryLang = entry.relativePath.split("/")[0];
         if (!filter_language_codes.includes(entryLang)) return false;
       }
@@ -268,7 +266,6 @@ export class AssetsPostProcessor {
 
     mergeAssetOverrides("translations");
     mergeAssetOverrides("themeVariations");
-
     return entries;
 
     /** Update global asset entries to include language or theme overrides */
