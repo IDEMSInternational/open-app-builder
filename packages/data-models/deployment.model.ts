@@ -142,11 +142,10 @@ interface IFlowTypeBase {
   status: "draft" | "released";
 }
 
-/**  Subset of IContentsEntry (with additional translations) */
-export interface IAssetEntry {
-  size_kb: number;
-  modifiedTime: string;
-  md5Checksum: string;
-  translations?: { [language_code: string]: IAssetEntry };
+type IContentsEntryWithoutPath = Omit<IContentsEntry, "relativePath">;
+
+export interface IAssetEntry extends IContentsEntryWithoutPath {
+  translations?: { [language_code: string]: IContentsEntryWithoutPath };
+  themeVariations?: { [theme_name: string]: IContentsEntryWithoutPath };
 }
 export type IAssetEntryHashmap = { [assetPath: string]: IAssetEntry };

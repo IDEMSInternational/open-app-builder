@@ -14,9 +14,11 @@ import {
   IContentsEntryHashmap,
   kbToMB,
   replicateDir,
+  isThemeAssetsFolderName,
 } from "../../../utils";
 import { ActiveDeployment } from "../../deployment/get";
 import type { IAssetEntry, IAssetEntryHashmap } from "data-models/deployment.model";
+import { writeFileSync } from "fs-extra";
 
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
@@ -46,11 +48,7 @@ export class AssetsPostProcessor {
     const { _workspace_path } = this.activeDeployment;
     const { sourceAssetsFolder } = this.options;
 
-    // TODO - remove app_data output option when working fully locally
-    const appAssetsFolder =
-      // this.activeDeployment.app_data?.assets_output_path ||
-      path.resolve(_workspace_path, "app_data", "assets");
-
+    const appAssetsFolder = path.resolve(_workspace_path, "app_data", "assets");
     fs.ensureDirSync(appAssetsFolder);
 
     // Generate a list of all deployment assets, merge with list of assets from parent
@@ -63,12 +61,12 @@ export class AssetsPostProcessor {
     this.copyAssetsToFolder(mergedAssets, stagingDir);
     this.assetsQualityCheck(stagingDir);
     this.checkTotalAssetSize(mergedAssets);
-    const { missingEntries, translatedEntries } = this.listTranslationAssets(mergedAssets);
+    const { global, missing } = this.listAssetOverrides(mergedAssets);
     fs.removeSync(stagingDir);
 
     // copy deployment assets to main folder and write merged contents file
     this.copyAssetsToFolder(sourceAssetsFiltered, appAssetsFolder);
-    this.writeAssetsContentsFiles(appAssetsFolder, translatedEntries, missingEntries);
+    this.writeAssetsContentsFiles(appAssetsFolder, global, missing);
 
     // HACK - allow copy to additional folder if specified (legacy PLH)
     if (this.activeDeployment.app_data.assets_output_path) {
@@ -86,11 +84,11 @@ export class AssetsPostProcessor {
    */
   private writeAssetsContentsFiles(
     appAssetsFolder: string,
-    translatedEntries: IAssetEntryHashmap,
+    assetEntries: IAssetEntryHashmap,
     missingEntries: IAssetEntryHashmap
   ) {
     const contentsTarget = path.resolve(appAssetsFolder, "contents.json");
-    fs.writeFileSync(contentsTarget, JSON.stringify(translatedEntries, null, 2));
+    fs.writeFileSync(contentsTarget, JSON.stringify(assetEntries, null, 2));
 
     const missingTarget = path.resolve(appAssetsFolder, "orphaned-assets.json");
     if (fs.existsSync(missingTarget)) fs.removeSync(missingTarget);
@@ -174,8 +172,8 @@ export class AssetsPostProcessor {
     const output = {
       hasGlobalFolder: false,
       languageFolders: [],
-      invalidFolders: [],
       themeFolders: [],
+      invalidFolders: [],
     };
     const topLevelFolders = listFolderNames(sourceFolder);
     for (const folderName of topLevelFolders) {
@@ -184,7 +182,7 @@ export class AssetsPostProcessor {
         if (isCountryLanguageCode(folderName)) output.languageFolders.push(folderName);
         // HACK - currently theme folders being used with languages so include
         // TODO - need to determine better way to distinguish language from theme assets
-        else if (folderName.startsWith("theme_")) output.themeFolders.push(folderName);
+        else if (isThemeAssetsFolderName(folderName)) output.themeFolders.push(folderName);
         else output.invalidFolders.push(folderName);
       }
     }
@@ -239,58 +237,74 @@ export class AssetsPostProcessor {
   }
 
   /**
-   * Make a list of any source assets that have language-code overrides, and any language assets
-   * that are missing corresponding globals
+   * Make a list of any source assets that have language-code or theme overrides,
+   * and any language assets that are missing corresponding globals
    */
-  private listTranslationAssets(sourceAssets: IContentsEntryHashmap) {
-    /** Assets that appear in translation folders but have no corresponding globals */
-    const missingEntries: IAssetEntryHashmap = {};
-    /** Assets listed in global folder with reference to translation folder overrides */
-    const globalAssets: IAssetEntryHashmap = {};
-
-    // split assets to separate global and translated assets
+  private listAssetOverrides(sourceAssets: IContentsEntryHashmap) {
+    const entries: IAssetEntriesByType = {
+      global: {},
+      translations: {},
+      themeVariations: {},
+      missing: {},
+    };
     const globalFolder = ASSETS_GLOBAL_FOLDER_NAME;
-    const languageAssets: { [languageCode: string]: IAssetEntryHashmap } = {};
+
+    // split assets to separate global, translated and theme assets
     Object.entries(sourceAssets).forEach(([relativePath, entry]) => {
-      const [languageCode, ...nestedPaths] = relativePath.split("/");
-      const nestedPath = nestedPaths.join("/");
+      let [baseFolder, ...nestedPaths] = relativePath.split("/");
+      let nestedPath = nestedPaths.join("/");
       const assetEntry = this.contentsToAssetEntry(entry);
-      if (languageCode === globalFolder) {
-        globalAssets[nestedPath] = assetEntry;
-      }
-      // HACK - ignore theme assets
-      else if (languageCode.startsWith("theme_")) {
-        // TODO - resolve in cleaner way
+      if (baseFolder === globalFolder) {
+        entries.global[nestedPath] = assetEntry;
+      } else if (baseFolder.startsWith("theme_")) {
+        baseFolder = baseFolder.replace("theme_", "");
+        nestedPath = nestedPath.replace(`${ASSETS_GLOBAL_FOLDER_NAME}/`, "");
+        entries.themeVariations[baseFolder] ??= {};
+        entries.themeVariations[baseFolder][nestedPath] = assetEntry;
       } else {
-        if (!languageAssets[languageCode]) {
-          languageAssets[languageCode] = {};
-        }
-        languageAssets[languageCode][nestedPath] = assetEntry;
+        entries.translations[baseFolder] ??= {};
+        entries.translations[baseFolder][nestedPath] = assetEntry;
       }
     });
 
-    // process assets by language, copying a reference for any language assets to corresponding
-    // global. Track as missing if global does not exist
-    Object.entries(languageAssets).forEach(([languageCode, langHashmap]) => {
-      Object.entries(langHashmap).forEach(([nestedPath, entry]) => {
-        if (globalAssets.hasOwnProperty(nestedPath)) {
-          if (!globalAssets[nestedPath].translations) {
-            globalAssets[nestedPath].translations = {};
-          }
-          globalAssets[nestedPath].translations[languageCode] = entry;
-        } else {
-          missingEntries[nestedPath] = entry;
-        }
-      });
-    });
-    return { missingEntries, translatedEntries: globalAssets };
-  }
+    mergeAssetOverrides("translations");
+    mergeAssetOverrides("themeVariations");
 
-  private listThemeAssets() {}
+    writeFileSync("assets.json", JSON.stringify(entries, null, 2));
+
+    return entries;
+
+    /** Update global asset entries to include language or theme overrides */
+    function mergeAssetOverrides(type: "translations" | "themeVariations") {
+      // process assets by language, copying a reference for any language assets to corresponding
+      // global. Track as missing if global does not exist
+      Object.entries(entries[type]).forEach(([baseName, langHashmap]) => {
+        Object.entries(langHashmap).forEach(([nestedPath, entry]) => {
+          if (entries.global.hasOwnProperty(nestedPath)) {
+            entries.global[nestedPath][type] ??= {};
+            entries.global[nestedPath][type][baseName] = entry;
+          } else {
+            // add metadata to track where missing asset came from
+            entry[`_source`] = `${type} - ${baseName}`;
+            entries.missing[nestedPath] = entry;
+          }
+        });
+      });
+    }
+  }
 
   /** Strip additional fields from contents entry to provide cleaner asset entry */
   private contentsToAssetEntry(entry: IContentsEntry): IAssetEntry {
     const { md5Checksum, modifiedTime, size_kb } = entry;
     return { md5Checksum, modifiedTime, size_kb };
   }
+}
+
+interface IAssetEntriesByType {
+  /** Assets listed in global folder with reference to language or theme overrides */
+  global: IAssetEntryHashmap;
+  translations: { [languageCode: string]: IAssetEntryHashmap };
+  themeVariations: { [themeName: string]: IAssetEntryHashmap };
+  /** Assets that appear in translation folders but have no corresponding globals */
+  missing: IAssetEntryHashmap;
 }
