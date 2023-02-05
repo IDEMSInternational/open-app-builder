@@ -162,7 +162,7 @@ function stubDeploymentConfig(
 
   const stubDeployment: Partial<IDeploymentConfigJson> = {
     _workspace_path: "mock",
-    app_data: { assets_filter_function },
+    app_data: { assets_filter_function, output_path: "mock/app_data" },
     translations: { filter_language_codes },
     app_config: {
       APP_THEMES: { available: app_themes_available },
