@@ -270,8 +270,6 @@ export class AssetsPostProcessor {
     mergeAssetOverrides("translations");
     mergeAssetOverrides("themeVariations");
 
-    writeFileSync("assets.json", JSON.stringify(entries, null, 2));
-
     return entries;
 
     /** Update global asset entries to include language or theme overrides */
