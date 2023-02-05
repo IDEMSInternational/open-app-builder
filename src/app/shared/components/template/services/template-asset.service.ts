@@ -55,7 +55,7 @@ export class TemplateAssetService extends AsyncServiceBase {
    * Fallsback to original path if does not exist
    */
   getThemeAssetPath(value: string) {
-    const themeFolderName = `theme_${this.themeService.getCurrentTheme()}`;
+    const themeFolderName = this.themeService.getCurrentTheme();
     const assetName = this.cleanAssetName(value);
     const assetEntry = ASSETS_CONTENTS_LIST[assetName];
     if (!assetEntry) {
