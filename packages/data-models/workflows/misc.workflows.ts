@@ -1,3 +1,4 @@
+import { resolve } from "path";
 import type { IDeploymentWorkflows } from "./workflow.model";
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
@@ -28,11 +29,10 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "translate_vtt_files",
         function: async ({ tasks, config }) => {
-          await tasks.subtitles.translateAllVttFilesAndSave(
-            config.app_data.translations_output_path,
-            config.app_data.assets_output_path,
-            "global"
-          );
+          const { output_path } = config.app_data;
+          const translationsPath = resolve(output_path, "translations");
+          const assetsPath = resolve(output_path, "assets");
+          await tasks.subtitles.translateAllVttFilesAndSave(translationsPath, assetsPath, "global");
         },
       },
     ],

@@ -31,16 +31,15 @@ const postProcessSheets = (options: {
  * Copy data from source deployment folder to running app assets folder
  */
 const copyDeploymentDataToApp = () => {
-  const { _workspace_path } = WorkflowRunner.config;
+  const { app_data } = WorkflowRunner.config;
   const copiedFolders = ["assets", "sheets", "translations"];
   // omit index files
   const filter_fn = (entry: IContentsEntry) => {
     const [baseDir] = entry.relativePath.split("/");
     return copiedFolders.includes(baseDir);
   };
-  const source = path.resolve(_workspace_path, "app_data");
+  const source = app_data.output_path;
   const target = path.resolve(SRC_ASSETS_PATH, "app_data");
-
   replicateDir(source, target, filter_fn);
 
   // HACK - Angular webpack won't always live-reload when changes only made to asset files
