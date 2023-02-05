@@ -709,57 +709,6 @@
       }
     },
     {
-      "name": "link_7_5_text",
-      "value": "Glitchtip",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "link_7_5_text"
-    },
-    {
-      "type": "tile_component",
-      "name": "link_7_5",
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "go_to_url",
-          "args": [
-            "https",
-            "//glitchtip.com/legal/tos"
-          ],
-          "_raw": "click | go_to_url: https://glitchtip.com/legal/tos",
-          "_cleaned": "click | go_to_url: https://glitchtip.com/legal/tos"
-        }
-      ],
-      "exclude_from_translation": true,
-      "parameter_list": {
-        "first_line_text": "@local.link_7_5_text",
-        "left_icon_src": "globe-outline",
-        "style": "button_tile",
-        "icon_src": "chevron-forward-outline"
-      },
-      "_nested_name": "link_7_5",
-      "_dynamicFields": {
-        "parameter_list": {
-          "first_line_text": [
-            {
-              "fullExpression": "@local.link_7_5_text",
-              "matchedExpression": "@local.link_7_5_text",
-              "type": "local",
-              "fieldName": "link_7_5_text"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.link_7_5_text": [
-          "parameter_list.first_line_text"
-        ]
-      }
-    },
-    {
       "type": "text",
       "name": "text_7_3",
       "value": "The inclusion of such links does not imply an endorsement or approval by the app and/or its partners of any website, product, or service. Similarly, the app and the @global.parent_app team affiliated developers and collaborators do not assume any responsibility or liability in respect of such websites, product, or service, including, for example, responsibility or liability for the accuracy or reliability of any information, data, opinions, advice or statements made on those web sites.",
@@ -965,9 +914,11 @@
     {
       "type": "text",
       "name": "text_10_2",
-      "value": "Last updated: 2 February 2023",
+      "value": "Last updated: 18 October 2022",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "parameter_list": {
         "style": "emphasised"
