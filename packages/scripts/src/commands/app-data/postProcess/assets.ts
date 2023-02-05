@@ -18,7 +18,6 @@ import {
 } from "../../../utils";
 import { ActiveDeployment } from "../../deployment/get";
 import type { IAssetEntry, IAssetEntryHashmap } from "data-models/deployment.model";
-import { writeFileSync } from "fs-extra";
 
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
@@ -293,8 +292,8 @@ export class AssetsPostProcessor {
 
   /** Strip additional fields from contents entry to provide cleaner asset entry */
   private contentsToAssetEntry(entry: IContentsEntry): IAssetEntry {
-    const { md5Checksum, modifiedTime, size_kb } = entry;
-    return { md5Checksum, modifiedTime, size_kb };
+    const { md5Checksum, size_kb } = entry;
+    return { size_kb, md5Checksum };
   }
 }
 
