@@ -36,11 +36,11 @@ class SheetsPostProcessor {
   constructor(private options: IProgramOptions) {}
 
   public run() {
-    const { _parent_config, _workspace_path } = this.activeDeployment;
+    const { app_data } = this.activeDeployment;
     // App Sheets
     // Setup Folders
     const { sourceSheetsFolder } = this.options;
-    const appSheetsFolder = path.resolve(_workspace_path, "app_data", "sheets");
+    const appSheetsFolder = path.resolve(app_data.output_path, "sheets");
     fs.ensureDirSync(appSheetsFolder);
     fs.emptyDirSync(appSheetsFolder);
     // if (_parent_config) {
@@ -60,18 +60,10 @@ class SheetsPostProcessor {
     // Sheet Translations (applied if sheets are copied)
     // Setup Folders
     const { sourceTranslationsFolder } = this.options;
-    const appTranslationsFolder = path.resolve(_workspace_path, "app_data", "translations");
+    const appTranslationsFolder = path.resolve(app_data.output_path, "translations");
     // Handle Copy
     this.translationsWriteIndex(sourceTranslationsFolder);
     this.translationsCopyFiles(sourceTranslationsFolder, appTranslationsFolder);
-
-    // HACK - allow copy to additional folder if specified (legacy PLH)
-    if (this.activeDeployment.app_data.sheets_output_path) {
-      replicateDir(appSheetsFolder, this.activeDeployment.app_data.sheets_output_path);
-    }
-    if (this.activeDeployment.app_data.translations_output_path) {
-      replicateDir(appTranslationsFolder, this.activeDeployment.app_data.translations_output_path);
-    }
 
     console.log(chalk.green("Copy Complete"));
   }

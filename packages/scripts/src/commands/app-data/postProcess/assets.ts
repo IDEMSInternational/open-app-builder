@@ -44,9 +44,9 @@ export class AssetsPostProcessor {
   constructor(private options: IProgramOptions) {}
 
   public run() {
-    const { _workspace_path } = this.activeDeployment;
+    const { app_data } = this.activeDeployment;
     const { sourceAssetsFolder } = this.options;
-    const appAssetsFolder = path.resolve(_workspace_path, "app_data", "assets");
+    const appAssetsFolder = path.resolve(app_data.output_path, "assets");
     fs.ensureDirSync(appAssetsFolder);
     // Generate a list of all deployment assets, merge with list of assets from parent
     const sourceAssets = generateFolderFlatMap(sourceAssetsFolder, { includeLocalPath: true });
@@ -64,11 +64,6 @@ export class AssetsPostProcessor {
     // copy deployment assets to main folder and write merged contents file
     this.copyAssetsToFolder(sourceAssetsFiltered, appAssetsFolder);
     this.writeAssetsContentsFiles(appAssetsFolder, global, missing);
-
-    // HACK - allow copy to additional folder if specified (legacy PLH)
-    if (this.activeDeployment.app_data.assets_output_path) {
-      replicateDir(appAssetsFolder, this.activeDeployment.app_data.assets_output_path);
-    }
 
     console.log(chalk.green("Asset Process Complete"));
   }
