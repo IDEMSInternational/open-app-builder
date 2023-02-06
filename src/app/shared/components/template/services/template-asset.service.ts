@@ -55,15 +55,15 @@ export class TemplateAssetService extends AsyncServiceBase {
    * Fallsback to original path if does not exist
    */
   getThemeAssetPath(value: string) {
-    const themeFolderName = this.themeService.getCurrentTheme();
+    const themeName = this.themeService.getCurrentTheme();
     const assetName = this.cleanAssetName(value);
     const assetEntry = ASSETS_CONTENTS_LIST[assetName];
     if (!assetEntry) {
       console.error("Asset missing", value, assetName);
     }
-    if (assetEntry?.themeVariations?.[themeFolderName]) {
+    if (assetEntry?.themeVariations?.[themeName]) {
       return this.convertPLHRelativePathToAssetPath(
-        `theme_${themeFolderName}/${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`
+        `theme_${themeName}/${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`
       );
     }
     return this.convertPLHRelativePathToAssetPath(`${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`);
