@@ -11,7 +11,7 @@ const SHEETS_CONTENT_LIST = fs.readJsonSync(TEMPLATE_CONTENTS_PATH);
 const template = Object.values(SHEETS_CONTENT_LIST.template) as any[];
 
 /** List of template flow subtypes to test */
-const TEST_FLOW_SUBTYPES = ["debug","component_demo"];
+const TEST_FLOW_SUBTYPES = ["debug", "component_demo"];
 
 /** List of additional template names to test */
 const ADDITIONAL_TEMPLATE_NAMES = ["home_screen", "weekly_workshops"];
