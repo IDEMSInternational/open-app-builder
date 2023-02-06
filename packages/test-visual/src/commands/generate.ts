@@ -10,8 +10,6 @@ import { DEXIE_SRC_PATH, paths } from "../config";
 import { outputCompleteMessage, outputErrorMessage, zipFolder } from "../utils";
 import { VISUAL_TEST_CONFIG } from "../config/test";
 
-// As using commonJS can only import from built
-// TODO - Ensure built before run. Handle sharing of types between packages
 type IPageConfig = typeof VISUAL_TEST_CONFIG["pageList"][number];
 type IDexieConfig = typeof VISUAL_TEST_CONFIG["dexieConfig"];
 
