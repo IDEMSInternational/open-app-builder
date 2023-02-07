@@ -38,34 +38,34 @@ yarn workflow deployment set example
 When a deployment is created a default configuration will be created in the `.idems_app/deployments` folder. E.g. for a deployment named *example*
 
 ```ts title=".idems_app/deployments/example/config.ts"
-import { getDefaultAppConfig, IDeploymentConfig } from "data-models";
+import { generateDeploymentConfig } from "scripts";
+const config = generateDeploymentConfig("example");
 
-const app_config = getDefaultAppConfig()
+// Main Deployment config
+config.google_drive = {
+    sheets_folder_id: "",
+    assets_folder_id: "",
+  }
+};
 
-// Override any app config here
+// Deployment app config overrides
 app_config.APP_HEADER_DEFAULTS.title = 'Example Deployment'
 app_config.APP_SIDEMENU_DEFAULTS.title = 'Example Deployment'
 
-const config: IDeploymentConfig = {
-  name: "example",
-  google_drive: {
-    sheets_folder_id: "",
-    assets_folder_id: "",
-  },
-  app_config
-};
 export default config;
 ```
 This configuration provides a minimal set of options to override the default header and sidemenu text, as well as configuring a remote google_drive data source (more information below)
 
-A full list of app_config and their default values can be found in [packages/data-models/appConfig.ts](https://github.com/IDEMSInternational/parenting-app-ui/blob/master/packages/data-models/appConfig.ts)
-
 A full list of general configuration options can be found in [packages/data-models/deployment.model.ts](https://github.com/IDEMSInternational/parenting-app-ui/blob/master/packages/data-models/deployment.model.ts)
+
+A full list of app_config and their default values can be found in [packages/data-models/appConfig.ts](https://github.com/IDEMSInternational/parenting-app-ui/blob/master/packages/data-models/appConfig.ts)
 
 Any configuration changes can be applied by setting the deployment
 ```
 yarn workflow deployment set [name]
 ```
+
+The final processed config can be found in the local `config.json` file, e.g. `.idems_app/deployments/example/config.json`
 
 ## Change Deployment
 To set the active deployment for the workspace run the following script:
