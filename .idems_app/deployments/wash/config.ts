@@ -1,5 +1,5 @@
 import { generateDeploymentConfig } from "scripts";
-const config = generateDeploymentConfig("plh");
+const config = generateDeploymentConfig("wash");
 
 config.google_drive = {
   sheets_folder_id: "1AQqtRLoNuhbHP3KPzzQqzZcjdttT0rr8",
