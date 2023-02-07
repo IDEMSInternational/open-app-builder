@@ -64,7 +64,9 @@ export interface IDeploymentConfig {
     /** sentry/glitchtip logging dsn */
     dsn: string;
   };
-  /** optional version number to force recompile */
+  /** track whether deployment processed from default config */
+  _validated?: boolean;
+  /** version number added from scripts to recompile on core changes */
   _version?: number;
   /** track parent config  */
   _parent_config?: Partial<IDeploymentConfig & { _workspace_path: string }>;
@@ -103,7 +105,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     custom_ts_files: [],
     task_cache_path: "./tasks",
   },
-  _version: 1.0,
+  _validated: true,
   _parent_config: null,
 };
 
