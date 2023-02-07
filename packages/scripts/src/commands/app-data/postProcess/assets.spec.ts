@@ -107,7 +107,6 @@ describe("Assets PostProcess", () => {
     fs.emptyDirSync(localAssets);
     stubDeploymentConfig({
       assets_filter_function: () => false,
-      filter_language_codes: [],
     });
     const copy = new AssetsPostProcessor({ sourceAssetsFolder: localAssets });
     copy.run();

@@ -136,7 +136,7 @@ export class AssetsPostProcessor {
     const { assets_filter_function } = this.activeDeployment.app_data;
     const { filter_language_codes } = this.activeDeployment.translations;
     // include global folder if filtering by language
-    if (filter_language_codes.length > 0) {
+    if (filter_language_codes?.length > 0) {
       filter_language_codes.push(ASSETS_GLOBAL_FOLDER_NAME);
     }
     // remove contents file from gdrive download
@@ -144,7 +144,7 @@ export class AssetsPostProcessor {
     // individual file filter function
     function shouldInclude(entry: IContentsEntry) {
       if (assets_filter_function && !assets_filter_function(entry)) return false;
-      if (filter_language_codes.length > 0) {
+      if (filter_language_codes?.length > 0) {
         const entryLang = entry.relativePath.split("/")[0];
         if (!filter_language_codes.includes(entryLang)) return false;
       }
