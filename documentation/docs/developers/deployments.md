@@ -98,7 +98,7 @@ To setup an encryption folder run
 yarn workflow deployment encrypt
 ```
 
-This will create a new folder named *encryption* inside the deployment folder (if not already existing). It will also populate a private key file used to decrypt data
+This will create a new folder named *encrypted* inside the deployment folder (if not already existing). It will also populate a private key file used to decrypt data
 
 !!! warning
     The `private.key` file should NOT be checked into a public repo, and should be backed up securely. If lost, encrypted files will not be able to be decrypted and will have to be regenerated with a new key
