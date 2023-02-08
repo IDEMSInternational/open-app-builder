@@ -1,5 +1,4 @@
-import clone from "clone";
-import type { IAppConfigOverride } from "./appConfig";
+import type { IAppConfig } from "./appConfig";
 
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
@@ -33,7 +32,7 @@ export interface IDeploymentConfig {
     icon_asset_background_path?: string;
   };
   /** Optional override of any provided constants from data-models/constants */
-  app_config?: IAppConfigOverride;
+  app_config: IAppConfig;
   app_data?: {
     /** processed sheets for use in app. Default `packages/app-data/sheets` */
     sheets_output_path?: string;
@@ -69,18 +68,13 @@ export interface IDeploymentConfig {
     /** sentry/glitchtip logging dsn */
     dsn: string;
   };
-  /** optional version number to force recompile */
+  /** track whether deployment processed from default config */
+  _validated?: boolean;
+  /** version number added from scripts to recompile on core changes */
   _version?: number;
+  /** track parent config  */
+  _parent_config?: Partial<IDeploymentConfig & { _workspace_path: string }>;
 }
-
-/** When extending a config it is usually better to clone to avoid accidentally altering original */
-export const cloneConfig = (config: IDeploymentConfig): IDeploymentConfig => clone(config);
-
-/** Minimal example of just required config */
-export const DEPLOYMENT_CONFIG_EXAMPLE_MIN: IDeploymentConfig = {
-  name: "Minimal Config Example",
-  google_drive: { assets_folder_id: "", sheets_folder_id: "" },
-};
 
 /** Full example of just all config once merged with defaults */
 export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
@@ -93,7 +87,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     assets_filter_function: (gdriveEntry) => true,
   },
   android: {},
-  app_config: {},
+  app_config: {} as any, // populated by `getDefaultAppConstants()`,,
   local_drive: {
     assets_path: "./assets",
     sheets_path: "./sheets",
@@ -116,7 +110,8 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     custom_ts_files: [],
     task_cache_path: "./tasks",
   },
-  _version: 1.0,
+  _validated: true,
+  _parent_config: null,
 };
 
 /** Duplicate type defintion from scripts (TODO - find better way to share) */
@@ -148,3 +143,11 @@ interface IFlowTypeBase {
   flow_subtype?: string;
   status: "draft" | "released";
 }
+
+export interface IAssetEntry {
+  size_kb: number;
+  md5Checksum: string;
+  translations?: { [language_code: string]: IAssetEntry };
+  themeVariations?: { [theme_name: string]: IAssetEntry };
+}
+export type IAssetEntryHashmap = { [assetPath: string]: IAssetEntry };

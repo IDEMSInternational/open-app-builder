@@ -756,6 +756,12 @@
     "note": ""
   },
   {
+    "SourceText": "Entering Developer Mode",
+    "text": "Unaingia kwenye ukurasa wa mtengenezaji",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "To launch the app in developer mode, enter your developer code in the box below and press @global.submit_button.",
     "text": "Ili kuzindua programu katika hali ya kubuni, weka msimbo wako wa kubuni kwenye kisanduku kilicho hapa chini na ubonyeze @global.submit_button.",
     "type": "template",
@@ -966,6 +972,12 @@
     "note": ""
   },
   {
+    "SourceText": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+    "text": "Hiyo ni sawa, usiwe mgumu sana kwako mwenyewe. Tunakuhimiza ujaribu kuifanya unapoweza.",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "How did it go?",
     "text": "Je, liliendaje?",
     "type": "template",
@@ -1118,6 +1130,36 @@
   {
     "SourceText": "Change",
     "text": "Badili",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Teen",
+    "text": "Kijana",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Age of teen",
+    "text": "Umri wa kijana",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Let’s start with a few questions about your family.",
+    "text": "Hebu tuanze na maswali machache kuhusu familia yako.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "How many teens are in your household?",
+    "text": "Je, kuna watu watu wangapi kwenye kaya yako?",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "How old are they?",
+    "text": "Je, wana umri gani?",
     "type": "template",
     "note": ""
   },
@@ -4584,16 +4626,22 @@
     "note": "The string @global.w_crisis_teen_boy_2 should not be translated."
   },
   {
-    "SourceText": "Crisis 2: @global.w_crisis_teen_girl_1 gets pregnant",
-    "text": "Tatizo la Pili: @global.w_crisis_teen_girl_1 amepata ujauzito",
+    "SourceText": "Crisis 2: @global.w_crisis_teen_girl_2 gets pregnant",
+    "text": "Tatizo la Pili: @global.w_crisis_teen_girl_2 amepata ujauzito",
     "type": "template",
-    "note": "The string @global.w_crisis_teen_girl_1 should not be translated."
+    "note": "The string @global.w_crisis_teen_girl_2 should not be translated."
   },
   {
-    "SourceText": "@global.w_crisis_teen_girl_1: \"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do\"",
-    "text": "@global.w_crisis_teen_girl_1: \"@global.w_crisis_male_caregiver_1, ninaona aibu sana. Sijui cha kufanya.\"",
+    "SourceText": "@global.w_crisis_teen_girl_2: \"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do\"",
+    "text": "@global.w_crisis_teen_girl_2: \"@global.w_crisis_male_caregiver_1, nina aibu sana. Sijui la kufanya\"",
     "type": "template",
-    "note": "The following strings should not be translated:\n@global.w_crisis_teen_girl_1\n@global.w_crisis_male_caregiver_1"
+    "note": "The following strings should not be translated:\n@global.w_crisis_teen_girl_2\n@global.w_crisis_male_caregiver_1"
+  },
+  {
+    "SourceText": "How could you respond to @global.w_crisis_teen_girl_2?",
+    "text": "Je, unaweza kumjibu vipi @global.w_crisis_teen_girl_2?",
+    "type": "template",
+    "note": "The string @global.w_crisis_teen_girl_2 should not be translated."
   },
   {
     "SourceText": "Crisis 3: @global.w_crisis_teen_boy_2 makes a girl pregnant",
@@ -4602,10 +4650,10 @@
     "note": "The string @global.w_crisis_teen_boy_2 should not be translated."
   },
   {
-    "SourceText": "@global.w_crisis_teen_boy_2: \"@global.w_crisis_male_caregiver_2, I don’t want to have a baby\"",
-    "text": "@global.w_crisis_teen_boy_2: \"@global.w_crisis_male_caregiver_2, sitaki kupata mtoto.\"",
+    "SourceText": "@global.w_crisis_teen_boy_2: \"I don’t want to have a baby\"",
+    "text": "@global.w_crisis_teen_boy_2: \"Sitaki kupata mtoto\"",
     "type": "template",
-    "note": "The following strings should not be translated:\n@global.w_crisis_teen_boy_2\n@global.w_crisis_male_caregiver_2"
+    "note": "The string @global.w_crisis_teen_boy_2 should not be translated."
   },
   {
     "SourceText": "How could you respond to @global.w_crisis_teen_boy_2?",

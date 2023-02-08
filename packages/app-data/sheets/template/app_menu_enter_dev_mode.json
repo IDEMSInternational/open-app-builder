@@ -39,7 +39,9 @@
       "name": "title",
       "value": "Entering Developer Mode",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "title"
     },

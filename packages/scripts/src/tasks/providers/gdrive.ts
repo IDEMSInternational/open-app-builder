@@ -22,10 +22,14 @@ const authorize = () => {
  * @returns path to output files
  * }
  */
-const download = (options: { folderId: string }) => {
-  const { folderId } = options;
+const download = (options: { folderId: string; filterFn?: any }) => {
+  const { folderId, filterFn } = options;
   const outputPath = getOutputFolder(folderId);
-  const dlArgs = `--folder-id ${folderId} --output-path "${outputPath}" --log-name "${folderId}.log"`;
+  let dlArgs = `--folder-id ${folderId} --output-path "${outputPath}" --log-name "${folderId}.log"`;
+  if (filterFn) {
+    const filterFnBase64 = Buffer.from(filterFn.toString()).toString("base64");
+    dlArgs += ` --filter-function-64 "${filterFnBase64}"`;
+  }
   gdriveExec("download", dlArgs);
   return outputPath;
 };

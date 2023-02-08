@@ -1,5 +1,6 @@
 import android from "./providers/android";
 import appData from "./providers/appData";
+import deployment from "./providers/deployment";
 import file from "./providers/file";
 import gdrive from "./providers/gdrive";
 import subtitles from "./providers/subtitles";
@@ -16,6 +17,7 @@ import workflow from "./providers/workflow";
 const ALL_TASKS = {
   android,
   appData,
+  deployment,
   file,
   gdrive,
   subtitles,

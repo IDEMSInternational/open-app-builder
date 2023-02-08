@@ -342,14 +342,12 @@ function isObject(item: any) {
 
 /** Search a folder for a file ending _contents and return parsed json  */
 export function readContentsFile(folderPath: string) {
-  console.log("read contents file", folderPath, fs.existsSync(folderPath));
   if (!fs.existsSync(folderPath)) {
     logWarning({ msg1: "Folder path does not exist", msg2: folderPath });
     return [];
   }
 
   const contentsFilePath = fs.readdirSync(folderPath).find((f) => f.endsWith("_contents.json"));
-  console.log("contentsFilePath", contentsFilePath);
   if (!contentsFilePath) {
     logWarning({ msg1: "Contents file not found in folder", msg2: folderPath });
     return [];

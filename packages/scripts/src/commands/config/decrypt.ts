@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import fs from "fs-extra";
-import { logError, logOutput } from "../../utils";
+import { Logger, logOutput } from "../../utils";
 import { CONFIG_FOLDER_PATH, PRIVATE_KEY_PATH } from "../../paths";
 import { Command } from "commander";
 import NodeRSA from "node-rsa";
@@ -20,7 +20,7 @@ export default program.description("Decrypt Config Files").action(async () => {
  *************************************************************************************/
 async function decryptConfig() {
   if (!fs.existsSync(PRIVATE_KEY_PATH)) {
-    logError({
+    Logger.error({
       msg1: "Private decrypt key not found, ask for one from the dev team and copy to path",
       msg2: PRIVATE_KEY_PATH,
     });
