@@ -101,10 +101,9 @@ class EncryptionProvider {
    * Ensure /encryption folder exists for deployment with private encryption key
    * Prompts user to create if not existing
    * */
-  private async setupEncryptionFolders(op: "encrypt" | "decrypt") {
+  private async setupEncryptionFolders(operation: "encrypt" | "decrypt") {
     const { _workspace_path } = WorkflowRunner.config;
     const folderPath = resolve(_workspace_path, ENCRYPTED_FOLDER_NAME);
-    this.folderPath = folderPath;
     // Check encryption folder
     if (!existsSync(folderPath)) {
       const shouldCreate = await promptConfirmation(
@@ -119,17 +118,12 @@ class EncryptionProvider {
     }
     // Check private key (required for decryption)
     this.privateKeyPath = resolve(folderPath, "private.key");
-    if (!existsSync(this.privateKeyPath) && op === "decrypt") {
-      const encryptedFiles = this.listEncryptionFolderFiles().filter(({ fileName }) =>
-        fileName.endsWith(`.${ENCRYPTED_SUFFIX}`)
-      );
-      if (encryptedFiles.length > 0) {
-        await this.promptPrivateKeyInput();
-      }
+    if (!existsSync(this.privateKeyPath) && operation === "decrypt") {
+      await this.promptPrivateKeyInput();
     }
     // Check public key (required for encryption)
     this.publicKeyPath = resolve(folderPath, "public.key");
-    if (!existsSync(this.publicKeyPath) && op === "encrypt") {
+    if (!existsSync(this.publicKeyPath) && operation === "encrypt") {
       const shouldCreate = await promptConfirmation(
         "No encryption key found\nWould you like to create one?"
       );
@@ -139,6 +133,7 @@ class EncryptionProvider {
         process.exit(0);
       }
     }
+    this.folderPath = folderPath;
   }
 
   /**
