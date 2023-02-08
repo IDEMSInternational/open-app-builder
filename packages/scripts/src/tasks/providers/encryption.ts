@@ -10,32 +10,25 @@ import {
 } from "fs-extra";
 import NodeRSA from "node-rsa";
 import { basename, resolve } from "path";
-import { WorkflowRunner } from "../../commands/workflow/run";
 import { logOutput, promptConfirmation, promptEditorInput } from "../../utils";
 
 /** Suffix added to all encrypted files to distinguish from originals */
 const ENCRYPTED_SUFFIX = "crypt";
 
-/** Deployment local folder name where encrypted files are managed */
-const ENCRYPTED_FOLDER_NAME = "encrypted";
-
 /** Expressions to populate to gitignore */
 const GIT_IGNORE_LIST = ["*.crypt", ".gitignore", "public.key"];
 
 class EncryptionProvider {
-  /** Path to encrypted content folder */
-  private folderPath: string;
-
   private publicKeyPath: string;
   private publicKey: NodeRSA;
   private privateKeyPath: string;
   private privateKey: NodeRSA;
 
-  /** Check deployment encryption file and process any files requiring encryption */
-  public async encrypt() {
-    await this.setupEncryptionFolders("encrypt");
+  /** Check folder files and process any files requiring encryption */
+  public async encrypt(folderPath: string) {
+    await this.setupEncryptionFolders(folderPath, "encrypt");
     let counter = 0;
-    const files = this.listEncryptionFolderFiles();
+    const files = this.listEncryptionFolderFiles(folderPath);
     for (const { filePath } of files) {
       if (this.shouldEncryptFile(filePath)) {
         this.encryptFile(filePath);
@@ -43,17 +36,17 @@ class EncryptionProvider {
       }
     }
     if (counter > 0) {
-      logOutput({ msg1: `${counter} files encrypted`, msg2: this.folderPath });
+      logOutput({ msg1: `${counter} files encrypted`, msg2: folderPath });
     } else {
       console.log(chalk.gray("Files already encrypted"));
     }
   }
 
-  /** Check deployment encryption file and process any files requiring decryption */
-  public async decrypt() {
-    await this.setupEncryptionFolders("decrypt");
+  /** Check folder files and process any files requiring decryption */
+  public async decrypt(folderPath: string) {
+    await this.setupEncryptionFolders(folderPath, "decrypt");
     let counter = 0;
-    const files = this.listEncryptionFolderFiles();
+    const files = this.listEncryptionFolderFiles(folderPath);
     for (const { filePath } of files) {
       if (this.shouldDecryptFile(filePath)) {
         this.decryptFile(filePath);
@@ -61,16 +54,16 @@ class EncryptionProvider {
       }
     }
     if (counter > 0) {
-      logOutput({ msg1: `${counter} files decrypted`, msg2: this.folderPath });
+      logOutput({ msg1: `${counter} files decrypted`, msg2: folderPath });
     } else {
       console.log(chalk.gray("Files already decrypted"));
     }
   }
 
-  private listEncryptionFolderFiles() {
-    return readdirSync(this.folderPath, { withFileTypes: true })
+  private listEncryptionFolderFiles(folderPath: string) {
+    return readdirSync(folderPath, { withFileTypes: true })
       .filter((f) => f.isFile())
-      .map((f) => ({ fileName: f.name, filePath: resolve(this.folderPath, f.name) }));
+      .map((f) => ({ fileName: f.name, filePath: resolve(folderPath, f.name) }));
   }
 
   private encryptFile(filePath: string) {
@@ -101,9 +94,7 @@ class EncryptionProvider {
    * Ensure /encryption folder exists for deployment with private encryption key
    * Prompts user to create if not existing
    * */
-  private async setupEncryptionFolders(operation: "encrypt" | "decrypt") {
-    const { _workspace_path } = WorkflowRunner.config;
-    const folderPath = resolve(_workspace_path, ENCRYPTED_FOLDER_NAME);
+  private async setupEncryptionFolders(folderPath: string, operation: "encrypt" | "decrypt") {
     // Check encryption folder
     if (!existsSync(folderPath)) {
       const shouldCreate = await promptConfirmation(
@@ -133,7 +124,6 @@ class EncryptionProvider {
         process.exit(0);
       }
     }
-    this.folderPath = folderPath;
   }
 
   /**
