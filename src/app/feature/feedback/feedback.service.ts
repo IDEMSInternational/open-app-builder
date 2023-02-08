@@ -268,7 +268,7 @@ export class FeedbackService {
    * Generate a path mapping to clicked template element
    */
   private generateFeedbackTemplateMeta(ev: PointerEvent) {
-    const elementPath = this.getElementPath(ev.target as HTMLElement);
+    const elementPath: HTMLElement[] = (ev as any).path;
     // filter just to include template components and containers
     const templatePath = elementPath.filter((e) =>
       ["plh-template-component", "plh-template-container"].includes(e.localName)
@@ -316,16 +316,6 @@ export class FeedbackService {
     });
     toast.present();
     await toast.onDidDismiss();
-  }
-
-  /** Generate an array of all nested elements from top html to a given element */
-  private getElementPath(element: HTMLElement) {
-    const parents: HTMLElement[] = [];
-    while (element) {
-      parents.unshift(element);
-      element = element.parentElement;
-    }
-    return parents;
   }
 }
 
