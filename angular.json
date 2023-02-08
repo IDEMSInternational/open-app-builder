@@ -140,9 +140,6 @@
             "production": {
               "browserTarget": "app:build:production"
             },
-            "glitchtip": {
-              "browserTarget": "app:build:glitchtip"
-            },
             "ci": {
               "progress": false
             }
