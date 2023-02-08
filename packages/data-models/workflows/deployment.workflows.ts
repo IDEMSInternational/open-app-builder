@@ -55,6 +55,15 @@ const workflows: IDeploymentWorkflows = {
           },
         ],
       },
+      decrypt: {
+        label: "Decrypt deployment config",
+        steps: [
+          {
+            name: "decrypt",
+            function: async ({ tasks }) => tasks.encryption.decrypt(),
+          },
+        ],
+      },
     },
   },
 };
