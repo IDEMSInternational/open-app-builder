@@ -1,12 +1,12 @@
 import { AppDataCopy } from "./copy";
-import { IDeploymentConfigJson } from "../deployment/set";
+import type { IDeploymentConfigJson } from "../deployment/common";
 
 import fs from "fs-extra";
 import mockFs from "mock-fs";
 
 // Use default imports to allow spying on functions and replacing with mock methods
-import * as spyDeployment from "../deployment/get";
-import * as spyLoggingUtils from "../../utils/logging.utils";
+import { ActiveDeployment } from "../deployment/get";
+import { Logger } from "../../utils/logging.utils";
 import path from "path";
 
 /** Mock file system folders for use in tests */
@@ -34,16 +34,18 @@ const mockDirContents = {
   "mock/localSheetsFolder": {},
   "mock/localTranslationsFolder": {},
 };
-/** Mock function that will replace default `logError` function to instead just record any invocations */
-const mockErrorLogger = jasmine.createSpy("mockErrorLogger", spyLoggingUtils.logError);
+
+/** Mock function that will replace default `Logger` function to instead just record any invocations */
+const mockErrorLogger = jasmine.createSpy("mockErrorLogger", Logger.error);
 
 describe("App Data Converter", () => {
   /** Initial setup */
   // replace prettier codeTidying method
-  // relpace `logError` function with created spy method
+  // relpace `Logger` function with created spy method
   beforeAll(() => {
     spyOn(AppDataCopy.prototype, "runPrettierCodeTidy" as any).and.stub();
-    spyOn(spyLoggingUtils, "logError").and.callFake(mockErrorLogger);
+
+    spyOn(Logger, "error").and.callFake(mockErrorLogger);
   });
   // Populate a fake file system before each test. This will automatically be called for any fs operations
   // Restore regular file functionality after each test.
@@ -112,9 +114,9 @@ function stubDeploymentConfig(
   const stubDeployment: Partial<IDeploymentConfigJson> = {
     app_data: { assets_filter_function },
     translations: { filter_language_codes },
-    app_config: { APP_THEMES: { available: app_themes_available } },
+    app_config: {
+      APP_THEMES: { available: app_themes_available },
+    } as any,
   };
-  spyOn(spyDeployment, "getActiveDeployment").and.returnValue(
-    stubDeployment as IDeploymentConfigJson
-  );
+  spyOn(ActiveDeployment, "get").and.returnValue(stubDeployment as IDeploymentConfigJson);
 }

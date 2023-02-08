@@ -5,119 +5,6 @@
   "flow_subtype": "debug",
   "rows": [
     {
-      "name": "bio_parent",
-      "value": "Biological parent",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "bio_parent"
-    },
-    {
-      "name": "foster_parent",
-      "value": "Stepparent or foster parent",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "foster_parent"
-    },
-    {
-      "name": "grandparent",
-      "value": "Grandparent",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "grandparent"
-    },
-    {
-      "name": "sibling",
-      "value": "Sibling",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "sibling"
-    },
-    {
-      "name": "other",
-      "value": "Other",
-      "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
-      },
-      "type": "set_variable",
-      "_nested_name": "other"
-    },
-    {
-      "name": "answer_list",
-      "value": [
-        "name: bio_parent | text: @local.bio_parent",
-        "name: foster_parent | text: @local.foster_parent",
-        "name: grandparent | text: @local.grandparent",
-        "name: sibling | text: @local.sibling"
-      ],
-      "type": "set_variable",
-      "_nested_name": "answer_list",
-      "_dynamicFields": {
-        "value": {
-          "0": [
-            {
-              "fullExpression": "name: bio_parent | text: @local.bio_parent",
-              "matchedExpression": "@local.bio_parent",
-              "type": "local",
-              "fieldName": "bio_parent"
-            }
-          ],
-          "1": [
-            {
-              "fullExpression": "name: foster_parent | text: @local.foster_parent",
-              "matchedExpression": "@local.foster_parent",
-              "type": "local",
-              "fieldName": "foster_parent"
-            }
-          ],
-          "2": [
-            {
-              "fullExpression": "name: grandparent | text: @local.grandparent",
-              "matchedExpression": "@local.grandparent",
-              "type": "local",
-              "fieldName": "grandparent"
-            }
-          ],
-          "3": [
-            {
-              "fullExpression": "name: sibling | text: @local.sibling",
-              "matchedExpression": "@local.sibling",
-              "type": "local",
-              "fieldName": "sibling"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.bio_parent": [
-          "value.0"
-        ],
-        "@local.foster_parent": [
-          "value.1"
-        ],
-        "@local.grandparent": [
-          "value.2"
-        ],
-        "@local.sibling": [
-          "value.3"
-        ]
-      }
-    },
-    {
       "name": "teens_word",
       "value": "Teens",
       "_translations": {
@@ -137,7 +24,9 @@
       "name": "teen_word",
       "value": "Teen",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "teen_word"
@@ -182,6 +71,7 @@
       "_translations": {
         "value": {}
       },
+      "condition": "@fields.household_teens",
       "type": "set_variable",
       "_nested_name": "household_teens",
       "_dynamicFields": {
@@ -192,25 +82,103 @@
             "type": "fields",
             "fieldName": "household_teens"
           }
+        ],
+        "condition": [
+          {
+            "fullExpression": "@fields.household_teens",
+            "matchedExpression": "@fields.household_teens",
+            "type": "fields",
+            "fieldName": "household_teens"
+          }
         ]
       },
       "_dynamicDependencies": {
         "@fields.household_teens": [
-          "value"
+          "value",
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "household_teens",
+      "value": 0,
+      "condition": "!@fields.household_teens",
+      "type": "set_variable",
+      "_nested_name": "household_teens",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@fields.household_teens",
+            "matchedExpression": "!@fields.household_teens",
+            "type": "fields",
+            "fieldName": "household_teens"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@fields.household_teens": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "household_teens",
+      "value": "+@fields.household_teens_2",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@fields.household_teens_2",
+      "type": "set_variable",
+      "_nested_name": "household_teens",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "+@fields.household_teens_2",
+            "matchedExpression": "@fields.household_teens_2",
+            "type": "fields",
+            "fieldName": "household_teens_2"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "@fields.household_teens_2",
+            "matchedExpression": "@fields.household_teens_2",
+            "type": "fields",
+            "fieldName": "household_teens_2"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.household_teens_2": [
+          "value",
+          "condition"
         ]
       }
     },
     {
       "type": "text",
       "name": "text",
-      "value": "We would like to find out more about the teens in your household:",
+      "value": "Let’s start with a few questions about your family.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "_nested_name": "text"
+    },
+    {
+      "type": "text",
+      "name": "text_q_1",
+      "value": "How many teens are in your household?",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
       },
       "parameter_list": {
         "style": "emphasised"
       },
-      "_nested_name": "text"
+      "_nested_name": "text_q_1"
     },
     {
       "type": "display_group",
@@ -240,11 +208,21 @@
               "trigger": "changed",
               "action_id": "set_field",
               "args": [
+                "household_teens_2",
+                "this.value"
+              ],
+              "_raw": "changed | set_field: household_teens_2: this.value",
+              "_cleaned": "changed | set_field: household_teens_2: this.value"
+            },
+            {
+              "trigger": "changed",
+              "action_id": "set_local",
+              "args": [
                 "household_teens",
                 "this.value"
               ],
-              "_raw": "changed | set_field: household_teens: @local.number_selector_teens",
-              "_cleaned": "changed | set_field: household_teens: @local.number_selector_teens"
+              "_raw": "changed | set_local: household_teens: this.value",
+              "_cleaned": "changed | set_local: household_teens: this.value"
             }
           ],
           "exclude_from_translation": true,
@@ -266,26 +244,6 @@
                 "fieldName": "household_teens"
               }
             ],
-            "action_list": {
-              "0": {
-                "_raw": [
-                  {
-                    "fullExpression": "changed | set_field: household_teens: @local.number_selector_teens",
-                    "matchedExpression": "@local.number_selector_teens",
-                    "type": "local",
-                    "fieldName": "number_selector_teens"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "changed | set_field: household_teens: @local.number_selector_teens",
-                    "matchedExpression": "@local.number_selector_teens",
-                    "type": "local",
-                    "fieldName": "number_selector_teens"
-                  }
-                ]
-              }
-            },
             "parameter_list": {
               "title": [
                 {
@@ -301,39 +259,8 @@
             "@local.household_teens": [
               "value"
             ],
-            "@local.number_selector_teens": [
-              "action_list.0._raw",
-              "action_list.0._cleaned"
-            ],
             "@local.number_selector_teens_title": [
               "parameter_list.title"
-            ]
-          }
-        },
-        {
-          "name": "no_teens",
-          "value": "!@local.number_selector_teens",
-          "_translations": {
-            "value": {}
-          },
-          "style_list": [
-            "flex:0"
-          ],
-          "type": "set_variable",
-          "_nested_name": "select_total.no_teens",
-          "_dynamicFields": {
-            "value": [
-              {
-                "fullExpression": "!@local.number_selector_teens",
-                "matchedExpression": "!@local.number_selector_teens",
-                "type": "local",
-                "fieldName": "number_selector_teens"
-              }
-            ]
-          },
-          "_dynamicDependencies": {
-            "!@local.number_selector_teens": [
-              "value"
             ]
           }
         }
@@ -341,578 +268,56 @@
       "_nested_name": "select_total"
     },
     {
-      "type": "accordion",
-      "name": "acc_teen_details",
+      "type": "text",
+      "name": "text_q_2",
+      "value": "How old are they?",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "condition": "!!@local.household_teens",
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "text_q_2",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!!@local.household_teens",
+            "matchedExpression": "!@local.household_teens",
+            "type": "local",
+            "fieldName": "household_teens"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@local.household_teens": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "value": "@data.number",
       "rows": [
         {
-          "type": "items",
-          "value": "@data.number",
+          "type": "display_group",
+          "name": "dg_sect_{@item.id}",
+          "condition": "@item.id != 0 && @item.id <= @local.household_teens",
           "rows": [
             {
-              "type": "accordion_section",
-              "name": "acc_sect_@item.id",
-              "value": "@local.teen_word @item.id",
-              "condition": "@item.id != 0 && @item.id <= @fields.household_teens",
-              "rows": [
-                {
-                  "type": "display_group",
-                  "name": "dg_sect_@item.id",
-                  "parameter_list": {
-                    "style": "column"
-                  },
-                  "rows": [
-                    {
-                      "type": "text",
-                      "name": "text_relation_@item.id",
-                      "value": "Age",
-                      "_translations": {
-                        "value": {}
-                      },
-                      "_nested_name": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.text_relation_@item.id",
-                      "_dynamicFields": {
-                        "name": [
-                          {
-                            "fullExpression": "text_relation_@item.id",
-                            "matchedExpression": "@item.id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ],
-                        "_nested_name": [
-                          {
-                            "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.text_relation_@item.id",
-                            "matchedExpression": "@item.id.dg_sect_",
-                            "type": "item",
-                            "fieldName": "id"
-                          },
-                          {
-                            "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.text_relation_@item.id",
-                            "matchedExpression": "@item.id.text_relation_",
-                            "type": "item",
-                            "fieldName": "id"
-                          },
-                          {
-                            "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.text_relation_@item.id",
-                            "matchedExpression": "@item.id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@item.id": [
-                          "name",
-                          "_nested_name"
-                        ],
-                        "@item.id.dg_sect_": [
-                          "_nested_name"
-                        ],
-                        "@item.id.text_relation_": [
-                          "_nested_name"
-                        ]
-                      }
-                    },
-                    {
-                      "name": "age_@item.id",
-                      "value": "age_teen_@item.id",
-                      "_translations": {
-                        "value": {}
-                      },
-                      "type": "set_variable",
-                      "_nested_name": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.age_@item.id",
-                      "_dynamicFields": {
-                        "name": [
-                          {
-                            "fullExpression": "age_@item.id",
-                            "matchedExpression": "@item.id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ],
-                        "value": [
-                          {
-                            "fullExpression": "age_teen_@item.id",
-                            "matchedExpression": "@item.id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ],
-                        "_nested_name": [
-                          {
-                            "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.age_@item.id",
-                            "matchedExpression": "@item.id.dg_sect_",
-                            "type": "item",
-                            "fieldName": "id"
-                          },
-                          {
-                            "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.age_@item.id",
-                            "matchedExpression": "@item.id.age_",
-                            "type": "item",
-                            "fieldName": "id"
-                          },
-                          {
-                            "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.age_@item.id",
-                            "matchedExpression": "@item.id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@item.id": [
-                          "name",
-                          "value",
-                          "_nested_name"
-                        ],
-                        "@item.id.dg_sect_": [
-                          "_nested_name"
-                        ],
-                        "@item.id.age_": [
-                          "_nested_name"
-                        ]
-                      }
-                    },
-                    {
-                      "type": "text_box",
-                      "name": "number_box_@item.id",
-                      "value": "@fields.@local.age_@item.id",
-                      "_translations": {
-                        "value": {}
-                      },
-                      "action_list": [
-                        {
-                          "trigger": "changed",
-                          "action_id": "set_field",
-                          "args": [
-                            "age_teen_@item.id",
-                            "this.value"
-                          ],
-                          "_raw": "changed | set_field: age_teen_@item.id: @local.number_box_@item.id",
-                          "_cleaned": "changed | set_field: age_teen_@item.id: @local.number_box_@item.id"
-                        }
-                      ],
-                      "parameter_list": {
-                        "text_align": "center",
-                        "placeholder": "@global.tap_and_type",
-                        "number_input": "true"
-                      },
-                      "_nested_name": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.number_box_@item.id",
-                      "_dynamicFields": {
-                        "name": [
-                          {
-                            "fullExpression": "number_box_@item.id",
-                            "matchedExpression": "@item.id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ],
-                        "value": [
-                          {
-                            "fullExpression": "@fields.@local.age_@item.id",
-                            "matchedExpression": "@local.age_",
-                            "type": "local",
-                            "fieldName": "age_"
-                          },
-                          {
-                            "fullExpression": "@fields.@local.age_@item.id",
-                            "matchedExpression": "@item.id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ],
-                        "action_list": {
-                          "0": {
-                            "args": {
-                              "0": [
-                                {
-                                  "fullExpression": "age_teen_@item.id",
-                                  "matchedExpression": "@item.id",
-                                  "type": "item",
-                                  "fieldName": "id"
-                                }
-                              ]
-                            },
-                            "_raw": [
-                              {
-                                "fullExpression": "changed | set_field: age_teen_@item.id: @local.number_box_@item.id",
-                                "matchedExpression": "@item.id",
-                                "type": "item",
-                                "fieldName": "id"
-                              },
-                              {
-                                "fullExpression": "changed | set_field: age_teen_@item.id: @local.number_box_@item.id",
-                                "matchedExpression": "@local.number_box_",
-                                "type": "local",
-                                "fieldName": "number_box_"
-                              },
-                              {
-                                "fullExpression": "changed | set_field: age_teen_@item.id: @local.number_box_@item.id",
-                                "matchedExpression": "@item.id",
-                                "type": "item",
-                                "fieldName": "id"
-                              }
-                            ],
-                            "_cleaned": [
-                              {
-                                "fullExpression": "changed | set_field: age_teen_@item.id: @local.number_box_@item.id",
-                                "matchedExpression": "@item.id",
-                                "type": "item",
-                                "fieldName": "id"
-                              },
-                              {
-                                "fullExpression": "changed | set_field: age_teen_@item.id: @local.number_box_@item.id",
-                                "matchedExpression": "@local.number_box_",
-                                "type": "local",
-                                "fieldName": "number_box_"
-                              },
-                              {
-                                "fullExpression": "changed | set_field: age_teen_@item.id: @local.number_box_@item.id",
-                                "matchedExpression": "@item.id",
-                                "type": "item",
-                                "fieldName": "id"
-                              }
-                            ]
-                          }
-                        },
-                        "parameter_list": {
-                          "placeholder": [
-                            {
-                              "fullExpression": "@global.tap_and_type",
-                              "matchedExpression": "@global.tap_and_type",
-                              "type": "global",
-                              "fieldName": "tap_and_type"
-                            }
-                          ]
-                        },
-                        "_nested_name": [
-                          {
-                            "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.number_box_@item.id",
-                            "matchedExpression": "@item.id.dg_sect_",
-                            "type": "item",
-                            "fieldName": "id"
-                          },
-                          {
-                            "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.number_box_@item.id",
-                            "matchedExpression": "@item.id.number_box_",
-                            "type": "item",
-                            "fieldName": "id"
-                          },
-                          {
-                            "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.number_box_@item.id",
-                            "matchedExpression": "@item.id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@item.id": [
-                          "name",
-                          "value",
-                          "action_list.0.args.0",
-                          "action_list.0._raw",
-                          "action_list.0._raw",
-                          "action_list.0._cleaned",
-                          "action_list.0._cleaned",
-                          "_nested_name"
-                        ],
-                        "@local.age_": [
-                          "value"
-                        ],
-                        "@local.number_box_": [
-                          "action_list.0._raw",
-                          "action_list.0._cleaned"
-                        ],
-                        "@global.tap_and_type": [
-                          "parameter_list.placeholder"
-                        ],
-                        "@item.id.dg_sect_": [
-                          "_nested_name"
-                        ],
-                        "@item.id.number_box_": [
-                          "_nested_name"
-                        ]
-                      }
-                    },
-                    {
-                      "type": "text",
-                      "name": "text_relation_@item.id",
-                      "value": "Relation",
-                      "_translations": {
-                        "value": {}
-                      },
-                      "_nested_name": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.text_relation_@item.id",
-                      "_dynamicFields": {
-                        "name": [
-                          {
-                            "fullExpression": "text_relation_@item.id",
-                            "matchedExpression": "@item.id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ],
-                        "_nested_name": [
-                          {
-                            "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.text_relation_@item.id",
-                            "matchedExpression": "@item.id.dg_sect_",
-                            "type": "item",
-                            "fieldName": "id"
-                          },
-                          {
-                            "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.text_relation_@item.id",
-                            "matchedExpression": "@item.id.text_relation_",
-                            "type": "item",
-                            "fieldName": "id"
-                          },
-                          {
-                            "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.text_relation_@item.id",
-                            "matchedExpression": "@item.id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@item.id": [
-                          "name",
-                          "_nested_name"
-                        ],
-                        "@item.id.dg_sect_": [
-                          "_nested_name"
-                        ],
-                        "@item.id.text_relation_": [
-                          "_nested_name"
-                        ]
-                      }
-                    },
-                    {
-                      "type": "combo_box",
-                      "name": "combo_box_@item.id",
-                      "value": "@fields.relation_teen_@item.id",
-                      "_translations": {
-                        "value": {}
-                      },
-                      "action_list": [
-                        {
-                          "trigger": "changed",
-                          "action_id": "set_field",
-                          "args": [
-                            "relation_teen_@item.id",
-                            "this.value"
-                          ],
-                          "_raw": "changed | set_field: relation_teen_@item.id: @local.combo_box_@item.id",
-                          "_cleaned": "changed | set_field: relation_teen_@item.id: @local.combo_box_@item.id"
-                        }
-                      ],
-                      "parameter_list": {
-                        "text": "What is your relationship with this teen?",
-                        "answer_list": "@local.answer_list",
-                        "placeholder": "@global.tap_and_choose",
-                        "answer_placeholder": "@local.other",
-                        "input_allowed": "true"
-                      },
-                      "_nested_name": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.combo_box_@item.id",
-                      "_dynamicFields": {
-                        "name": [
-                          {
-                            "fullExpression": "combo_box_@item.id",
-                            "matchedExpression": "@item.id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ],
-                        "value": [
-                          {
-                            "fullExpression": "@fields.relation_teen_@item.id",
-                            "matchedExpression": "@fields.relation_teen_",
-                            "type": "fields",
-                            "fieldName": "relation_teen_"
-                          },
-                          {
-                            "fullExpression": "@fields.relation_teen_@item.id",
-                            "matchedExpression": "@item.id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ],
-                        "action_list": {
-                          "0": {
-                            "args": {
-                              "0": [
-                                {
-                                  "fullExpression": "relation_teen_@item.id",
-                                  "matchedExpression": "@item.id",
-                                  "type": "item",
-                                  "fieldName": "id"
-                                }
-                              ]
-                            },
-                            "_raw": [
-                              {
-                                "fullExpression": "changed | set_field: relation_teen_@item.id: @local.combo_box_@item.id",
-                                "matchedExpression": "@item.id",
-                                "type": "item",
-                                "fieldName": "id"
-                              },
-                              {
-                                "fullExpression": "changed | set_field: relation_teen_@item.id: @local.combo_box_@item.id",
-                                "matchedExpression": "@local.combo_box_",
-                                "type": "local",
-                                "fieldName": "combo_box_"
-                              },
-                              {
-                                "fullExpression": "changed | set_field: relation_teen_@item.id: @local.combo_box_@item.id",
-                                "matchedExpression": "@item.id",
-                                "type": "item",
-                                "fieldName": "id"
-                              }
-                            ],
-                            "_cleaned": [
-                              {
-                                "fullExpression": "changed | set_field: relation_teen_@item.id: @local.combo_box_@item.id",
-                                "matchedExpression": "@item.id",
-                                "type": "item",
-                                "fieldName": "id"
-                              },
-                              {
-                                "fullExpression": "changed | set_field: relation_teen_@item.id: @local.combo_box_@item.id",
-                                "matchedExpression": "@local.combo_box_",
-                                "type": "local",
-                                "fieldName": "combo_box_"
-                              },
-                              {
-                                "fullExpression": "changed | set_field: relation_teen_@item.id: @local.combo_box_@item.id",
-                                "matchedExpression": "@item.id",
-                                "type": "item",
-                                "fieldName": "id"
-                              }
-                            ]
-                          }
-                        },
-                        "parameter_list": {
-                          "answer_list": [
-                            {
-                              "fullExpression": "@local.answer_list",
-                              "matchedExpression": "@local.answer_list",
-                              "type": "local",
-                              "fieldName": "answer_list"
-                            }
-                          ],
-                          "placeholder": [
-                            {
-                              "fullExpression": "@global.tap_and_choose",
-                              "matchedExpression": "@global.tap_and_choose",
-                              "type": "global",
-                              "fieldName": "tap_and_choose"
-                            }
-                          ],
-                          "answer_placeholder": [
-                            {
-                              "fullExpression": "@local.other",
-                              "matchedExpression": "@local.other",
-                              "type": "local",
-                              "fieldName": "other"
-                            }
-                          ]
-                        },
-                        "_nested_name": [
-                          {
-                            "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.combo_box_@item.id",
-                            "matchedExpression": "@item.id.dg_sect_",
-                            "type": "item",
-                            "fieldName": "id"
-                          },
-                          {
-                            "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.combo_box_@item.id",
-                            "matchedExpression": "@item.id.combo_box_",
-                            "type": "item",
-                            "fieldName": "id"
-                          },
-                          {
-                            "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id.combo_box_@item.id",
-                            "matchedExpression": "@item.id",
-                            "type": "item",
-                            "fieldName": "id"
-                          }
-                        ]
-                      },
-                      "_dynamicDependencies": {
-                        "@item.id": [
-                          "name",
-                          "value",
-                          "action_list.0.args.0",
-                          "action_list.0._raw",
-                          "action_list.0._raw",
-                          "action_list.0._cleaned",
-                          "action_list.0._cleaned",
-                          "_nested_name"
-                        ],
-                        "@fields.relation_teen_": [
-                          "value"
-                        ],
-                        "@local.combo_box_": [
-                          "action_list.0._raw",
-                          "action_list.0._cleaned"
-                        ],
-                        "@local.answer_list": [
-                          "parameter_list.answer_list"
-                        ],
-                        "@global.tap_and_choose": [
-                          "parameter_list.placeholder"
-                        ],
-                        "@local.other": [
-                          "parameter_list.answer_placeholder"
-                        ],
-                        "@item.id.dg_sect_": [
-                          "_nested_name"
-                        ],
-                        "@item.id.combo_box_": [
-                          "_nested_name"
-                        ]
-                      }
-                    }
-                  ],
-                  "_nested_name": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id",
-                  "_dynamicFields": {
-                    "name": [
-                      {
-                        "fullExpression": "dg_sect_@item.id",
-                        "matchedExpression": "@item.id",
-                        "type": "item",
-                        "fieldName": "id"
-                      }
-                    ],
-                    "_nested_name": [
-                      {
-                        "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id",
-                        "matchedExpression": "@item.id.dg_sect_",
-                        "type": "item",
-                        "fieldName": "id"
-                      },
-                      {
-                        "fullExpression": "acc_teen_details.items.acc_sect_@item.id.dg_sect_@item.id",
-                        "matchedExpression": "@item.id",
-                        "type": "item",
-                        "fieldName": "id"
-                      }
-                    ]
-                  },
-                  "_dynamicDependencies": {
-                    "@item.id": [
-                      "name",
-                      "_nested_name"
-                    ],
-                    "@item.id.dg_sect_": [
-                      "_nested_name"
-                    ]
-                  }
-                }
-              ],
-              "_nested_name": "acc_teen_details.items.acc_sect_@item.id",
+              "type": "text",
+              "name": "text_age_{@item.id}",
+              "value": "Age of teen @item.id",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "items.dg_sect_{@item.id}.text_age_{@item.id}",
               "_dynamicFields": {
                 "name": [
                   {
-                    "fullExpression": "acc_sect_@item.id",
+                    "fullExpression": "text_age_{@item.id}",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
@@ -920,41 +325,21 @@
                 ],
                 "value": [
                   {
-                    "fullExpression": "@local.teen_word @item.id",
-                    "matchedExpression": "@local.teen_word",
-                    "type": "local",
-                    "fieldName": "teen_word"
-                  },
-                  {
-                    "fullExpression": "@local.teen_word @item.id",
+                    "fullExpression": "Age of teen @item.id",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
-                  }
-                ],
-                "condition": [
-                  {
-                    "fullExpression": "@item.id != 0 && @item.id <= @fields.household_teens",
-                    "matchedExpression": "@item.id",
-                    "type": "item",
-                    "fieldName": "id"
-                  },
-                  {
-                    "fullExpression": "@item.id != 0 && @item.id <= @fields.household_teens",
-                    "matchedExpression": "@item.id",
-                    "type": "item",
-                    "fieldName": "id"
-                  },
-                  {
-                    "fullExpression": "@item.id != 0 && @item.id <= @fields.household_teens",
-                    "matchedExpression": "@fields.household_teens",
-                    "type": "fields",
-                    "fieldName": "household_teens"
                   }
                 ],
                 "_nested_name": [
                   {
-                    "fullExpression": "acc_teen_details.items.acc_sect_@item.id",
+                    "fullExpression": "items.dg_sect_{@item.id}.text_age_{@item.id}",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "items.dg_sect_{@item.id}.text_age_{@item.id}",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
@@ -965,39 +350,195 @@
                 "@item.id": [
                   "name",
                   "value",
-                  "condition",
-                  "condition",
+                  "_nested_name",
+                  "_nested_name"
+                ]
+              }
+            },
+            {
+              "type": "text_box",
+              "name": "number_box_{@item.id}",
+              "value": "@fields.@item.teen_age",
+              "_translations": {
+                "value": {}
+              },
+              "action_list": [
+                {
+                  "trigger": "changed",
+                  "action_id": "set_field",
+                  "args": [
+                    "@item.teen_age",
+                    "this.value"
+                  ],
+                  "_raw": "changed | set_field: @item.teen_age : this.value",
+                  "_cleaned": "changed | set_field: @item.teen_age : this.value"
+                }
+              ],
+              "parameter_list": {
+                "text_align": "center",
+                "placeholder": "@global.tap_and_type",
+                "number_input": "true"
+              },
+              "_nested_name": "items.dg_sect_{@item.id}.number_box_{@item.id}",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "number_box_{@item.id}",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@fields.@item.teen_age",
+                    "matchedExpression": "@item.teen_age",
+                    "type": "item",
+                    "fieldName": "teen_age"
+                  }
+                ],
+                "action_list": {
+                  "0": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@item.teen_age",
+                          "matchedExpression": "@item.teen_age",
+                          "type": "item",
+                          "fieldName": "teen_age"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "changed | set_field: @item.teen_age : this.value",
+                        "matchedExpression": "@item.teen_age",
+                        "type": "item",
+                        "fieldName": "teen_age"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "changed | set_field: @item.teen_age : this.value",
+                        "matchedExpression": "@item.teen_age",
+                        "type": "item",
+                        "fieldName": "teen_age"
+                      }
+                    ]
+                  }
+                },
+                "parameter_list": {
+                  "placeholder": [
+                    {
+                      "fullExpression": "@global.tap_and_type",
+                      "matchedExpression": "@global.tap_and_type",
+                      "type": "global",
+                      "fieldName": "tap_and_type"
+                    }
+                  ]
+                },
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.dg_sect_{@item.id}.number_box_{@item.id}",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "items.dg_sect_{@item.id}.number_box_{@item.id}",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name",
                   "_nested_name"
                 ],
-                "@local.teen_word": [
-                  "value"
+                "@item.teen_age": [
+                  "value",
+                  "action_list.0.args.0",
+                  "action_list.0._raw",
+                  "action_list.0._cleaned"
                 ],
-                "@fields.household_teens": [
-                  "condition"
+                "@global.tap_and_type": [
+                  "parameter_list.placeholder"
                 ]
               }
             }
           ],
-          "name": "items",
-          "_nested_name": "acc_teen_details.items",
+          "_nested_name": "items.dg_sect_{@item.id}",
           "_dynamicFields": {
-            "value": [
+            "name": [
               {
-                "fullExpression": "@data.number",
-                "matchedExpression": "@data.number",
-                "type": "data",
-                "fieldName": "number"
+                "fullExpression": "dg_sect_{@item.id}",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@item.id != 0 && @item.id <= @local.household_teens",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              },
+              {
+                "fullExpression": "@item.id != 0 && @item.id <= @local.household_teens",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              },
+              {
+                "fullExpression": "@item.id != 0 && @item.id <= @local.household_teens",
+                "matchedExpression": "@local.household_teens",
+                "type": "local",
+                "fieldName": "household_teens"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.dg_sect_{@item.id}",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@data.number": [
-              "value"
+            "@item.id": [
+              "name",
+              "condition",
+              "condition",
+              "_nested_name"
+            ],
+            "@local.household_teens": [
+              "condition"
             ]
           }
         }
       ],
-      "_nested_name": "acc_teen_details"
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.number",
+            "matchedExpression": "@data.number",
+            "type": "data",
+            "fieldName": "number"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.number": [
+          "value"
+        ]
+      }
     },
     {
       "type": "template",

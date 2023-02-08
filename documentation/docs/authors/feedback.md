@@ -98,7 +98,7 @@ Alongside user-specified data various metadata will be added. See example output
             }
         ],
         "timestamp": "2022-01-07T18:49:53",
-        "uuid": "temp_auqm0orppvg"
+        "uuid": "my_user_id"
     },
     
 }

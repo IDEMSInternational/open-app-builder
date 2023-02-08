@@ -8,7 +8,7 @@ import {
   isCountryLanguageCode,
   isThemeAssetsFolderName,
   listFolderNames,
-  logError,
+  Logger,
   readContentsFile,
   IContentsEntry,
   logOutput,
@@ -18,7 +18,7 @@ import {
 } from "../../utils";
 import { spawnSync } from "child_process";
 
-import { getActiveDeployment } from "../deployment/get";
+import { ActiveDeployment } from "../deployment/get";
 import { ROOT_DIR } from "../../paths";
 import { FlowTypes } from "data-models";
 
@@ -61,7 +61,7 @@ export default program
  *
  **/
 export class AppDataCopy {
-  private activeDeployment = getActiveDeployment();
+  private activeDeployment = ActiveDeployment.get();
   constructor(private options: IProgramOptions) {}
 
   public run() {
@@ -180,13 +180,8 @@ export class AppDataCopy {
       }
     });
 
-    // write output index file for tracked and untracked assets
-    const outputTS = `
-export const UNTRACKED_ASSETS = ${JSON.stringify(untrackedAssets, null, 2)}
-export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
-`.trim();
-    const ASSETS_INDEX_PATH = path.resolve(baseFolder, "index.ts");
-    fs.writeFileSync(ASSETS_INDEX_PATH, outputTS);
+    const ASSETS_INDEX_PATH = path.resolve(baseFolder, "contents.json");
+    fs.writeFileSync(ASSETS_INDEX_PATH, JSON.stringify(cleanedContents, null, 2));
 
     // Log total size of all exports
     let assetsTotal = 0;
@@ -265,13 +260,13 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
       }
     }
     if (!output.hasGlobalFolder) {
-      logError({
+      Logger.error({
         msg1: "Assets global folder not found",
         msg2: `Assets folder should include a folder named "${ASSETS_GLOBAL_FOLDER_NAME}"`,
       });
     }
     if (output.invalidFolders.length > 0) {
-      logError({
+      Logger.error({
         msg1: "Asset folders named incorrectly",
         msg2: `Invalid language codes: [${output.invalidFolders.join(", ")}]`,
       });
@@ -318,13 +313,8 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
   private sheetsWriteContents(baseFolder: string, contents: ISheetContents) {
     // Write ts
     const contentsString = JSON.stringify(contents, null, 2);
-    const outputTS = `
-import { FlowTypes } from "data-models";
-type ISheetContents = { [flow_type in FlowTypes.FlowType]: { [flow_name: string]: FlowTypes.FlowTypeBase } };
-export const SHEETS_CONTENT_LIST:ISheetContents = ${contentsString}
-    `.trim();
-    const SHEETS_INDEX_PATH = path.resolve(baseFolder, "index.ts");
-    fs.writeFileSync(SHEETS_INDEX_PATH, outputTS);
+    const SHEETS_INDEX_PATH = path.resolve(baseFolder, "contents.json");
+    fs.writeFileSync(SHEETS_INDEX_PATH, contentsString);
   }
   /**
    * Check for unsupported flow types or flows with duplicate names (can happen across subtypes)
@@ -335,14 +325,14 @@ export const SHEETS_CONTENT_LIST:ISheetContents = ${contentsString}
   ) {
     const { flow_name, flow_type, _xlsxPath } = sheetContents;
     if (!existingContents.hasOwnProperty(flow_type)) {
-      logError({
+      Logger.error({
         msg1: `Unsupported flow_type: [${flow_type}]`,
         msg2: `${_xlsxPath}`,
       });
     }
     if (existingContents[flow_type].hasOwnProperty(flow_name)) {
       const duplicateFlowContents = existingContents[flow_type][flow_name];
-      logError({
+      Logger.error({
         msg1: `Duplicate flow_name found: [${flow_type}]`,
         msg2: `${_xlsxPath}\n${duplicateFlowContents._xlsxPath}`,
       });
@@ -360,12 +350,8 @@ export const SHEETS_CONTENT_LIST:ISheetContents = ${contentsString}
       contents[language_code] = { filename: `${language_code}/strings.json` };
     });
     const contentsString = JSON.stringify(contents, null, 2);
-    const outputTS = `
-    type ITranslationContents = { [language_code:string]: { filename:  string } };
-    export const TRANSLATIONS_CONTENT_LIST:ITranslationContents = ${contentsString}
-        `.trim();
-    const TRANSLATIONS_INDEX_PATH = path.resolve(baseFolder, "index.ts");
-    fs.writeFileSync(TRANSLATIONS_INDEX_PATH, outputTS);
+    const TRANSLATIONS_INDEX_PATH = path.resolve(baseFolder, "contents.json");
+    fs.writeFileSync(TRANSLATIONS_INDEX_PATH, contentsString);
   }
 
   private translationsCopyFiles(sourceFolder: string, targetFolder: string) {
