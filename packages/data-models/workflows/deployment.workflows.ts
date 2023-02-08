@@ -1,3 +1,4 @@
+import { resolve } from "path";
 import type { IDeploymentWorkflows } from "./workflow.model";
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
@@ -51,7 +52,8 @@ const workflows: IDeploymentWorkflows = {
         steps: [
           {
             name: "encrypt",
-            function: async ({ tasks }) => tasks.encryption.encrypt(),
+            function: async ({ tasks, config }) =>
+              tasks.encryption.encrypt(resolve(config._workspace_path, "encrypted")),
           },
         ],
       },
@@ -60,7 +62,8 @@ const workflows: IDeploymentWorkflows = {
         steps: [
           {
             name: "decrypt",
-            function: async ({ tasks }) => tasks.encryption.decrypt(),
+            function: async ({ tasks, config }) =>
+              tasks.encryption.decrypt(resolve(config._workspace_path, "encrypted")),
           },
         ],
       },
