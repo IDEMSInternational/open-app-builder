@@ -137,14 +137,7 @@ function writeConfig(targetConfigFile: string, configTs: string) {
 }
 
 function writeGitIgnore(targetFile: string) {
-  const ignoredPaths = [
-    "/*",
-    "!/app_data",
-    "!/config.ts",
-    "!/*.config.ts",
-    "!/.gitignore",
-    "!/README.md",
-  ];
+  const ignoredPaths = ["config.json", "tasks"];
   const gitIgnoreTxt = ignoredPaths.join("\n");
   if (fs.existsSync(targetFile)) {
     Logger.error({ msg1: "Gitignore file already exists", msg2: targetFile });
