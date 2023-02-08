@@ -30,7 +30,15 @@ const mockDirContents = {
           "test.jpg": mockFile,
         },
       },
-      tz_invalid: {},
+      theme_excluded: {
+        global: {
+          "test.jpg": mockFile,
+        },
+      },
+      // language code not included
+      tz_na: {
+        "test.jpg": mockFile,
+      },
       tz_sw: {
         "test.jpg": mockFile,
       },
@@ -83,8 +91,18 @@ describe("Assets PostProcess", () => {
     expect("test.jpg" in contents).toBeTrue();
   });
 
-  it("Populates translation assets", () => {
+  it("Populates unfiltered translation assets", () => {
     runAssetsPostProcessor();
+    const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
+    const { translations } = contents["test.jpg"];
+    expect(translations).toEqual({
+      tz_sw: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
+      tz_na: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
+    });
+  });
+
+  it("Populates filtered translation assets", () => {
+    runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
     const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
     const { translations } = contents["test.jpg"];
     expect(translations).toEqual({
@@ -93,7 +111,7 @@ describe("Assets PostProcess", () => {
   });
 
   it("Populates theme assets", () => {
-    runAssetsPostProcessor();
+    runAssetsPostProcessor({ app_themes_available: ["demoTheme"] });
     const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
     const { themeVariations } = contents["test.jpg"];
     expect(themeVariations).toEqual({
@@ -132,8 +150,8 @@ describe("Assets PostProcess", () => {
   // });
 });
 
-function runAssetsPostProcessor() {
-  stubDeploymentConfig();
+function runAssetsPostProcessor(deploymentConfig: IDeploymentConfigStub = {}) {
+  stubDeploymentConfig(deploymentConfig);
   const { localAssets } = mockDirs;
   const processor = new AssetsPostProcessor({ sourceAssetsFolder: localAssets });
   processor.run();
@@ -142,17 +160,17 @@ function runAssetsPostProcessor() {
 /** Test Utilities */
 
 type IAssetsFilterFunction = IDeploymentConfigJson["app_data"]["assets_filter_function"];
+
+interface IDeploymentConfigStub {
+  filter_language_codes?: string[];
+  assets_filter_function?: IAssetsFilterFunction;
+  app_themes_available?: string[];
+}
 /**
  * Populated mock values when getActiveDeployment method called from main command
  * Limited to just values referenced in the copy method
  **/
-function stubDeploymentConfig(
-  stub: {
-    filter_language_codes?: string[];
-    assets_filter_function?: IAssetsFilterFunction;
-    app_themes_available?: string[];
-  } = {}
-) {
+function stubDeploymentConfig(stub: IDeploymentConfigStub = {}) {
   const filter_language_codes = stub.filter_language_codes ?? [];
   const assets_filter_function = stub.assets_filter_function
     ? stub.assets_filter_function

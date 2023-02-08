@@ -13,7 +13,6 @@ import {
   createTempDir,
   IContentsEntryHashmap,
   kbToMB,
-  replicateDir,
   isThemeAssetsFolderName,
 } from "../../../utils";
 import { ActiveDeployment } from "../../deployment/get";
@@ -135,18 +134,23 @@ export class AssetsPostProcessor {
     const filtered: typeof sourceAssets = {};
     const { assets_filter_function } = this.activeDeployment.app_data;
     const { filter_language_codes } = this.activeDeployment.translations;
+    const { APP_THEMES } = this.activeDeployment.app_config;
     // include global folder if filtering by language
     if (filter_language_codes?.length > 0) {
       filter_language_codes.push(ASSETS_GLOBAL_FOLDER_NAME);
     }
     // remove contents file from gdrive download
     delete sourceAssets["_contents.json"];
-    // individual file filter function
+    // individual file filter function - includes global filter as well as language and theme filters
     function shouldInclude(entry: IContentsEntry) {
       if (assets_filter_function && !assets_filter_function(entry)) return false;
-      if (filter_language_codes?.length > 0) {
-        const entryLang = entry.relativePath.split("/")[0];
-        if (!filter_language_codes.includes(entryLang)) return false;
+      const folderName = entry.relativePath.split("/")[0];
+      if (filter_language_codes?.length > 0 && isCountryLanguageCode(folderName)) {
+        return filter_language_codes.includes(folderName);
+      }
+      if (isThemeAssetsFolderName(folderName)) {
+        const folderThemeName = folderName.replace("theme_", "");
+        return APP_THEMES.available.includes(folderThemeName);
       }
       return true;
     }
