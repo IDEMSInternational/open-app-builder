@@ -109,6 +109,17 @@
                 }
               ]
             },
+            "glitchtip": {
+              "sourceMap": {
+                "scripts": true,
+                "styles": false,
+                "hidden": true,
+                "vendor": false
+              }
+            },
+            "preview": {
+              "sourceMap": true
+            },
             "ci": {
               "budgets": [
                 {
@@ -128,6 +139,9 @@
           "configurations": {
             "production": {
               "browserTarget": "app:build:production"
+            },
+            "glitchtip": {
+              "browserTarget": "app:build:glitchtip"
             },
             "ci": {
               "progress": false
