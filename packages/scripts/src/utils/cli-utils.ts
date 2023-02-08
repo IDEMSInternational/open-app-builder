@@ -19,6 +19,11 @@ export async function promptInput(message: string) {
   const res = await inquirer.prompt([{ type: "input", message, name }]);
   return res[name];
 }
+export async function promptConfirmation(message: string, defaultValue = true) {
+  const name = "confirm";
+  const res = await inquirer.prompt([{ type: "confirm", name, message, default: defaultValue }]);
+  return res[name] as boolean;
+}
 export function pad(str: string | number, chars: number) {
   str = `${str}`;
   const padChars = Math.max(chars - str.length + 1, 0);

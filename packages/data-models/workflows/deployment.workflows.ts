@@ -46,6 +46,15 @@ const workflows: IDeploymentWorkflows = {
           },
         ],
       },
+      encrypt: {
+        label: "Encrypt deployment config",
+        steps: [
+          {
+            name: "encrypt",
+            function: async ({ tasks }) => tasks.encryption.encrypt(),
+          },
+        ],
+      },
     },
   },
 };
