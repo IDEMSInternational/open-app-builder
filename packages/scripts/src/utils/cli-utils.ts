@@ -19,6 +19,11 @@ export async function promptInput(message: string) {
   const res = await inquirer.prompt([{ type: "input", message, name }]);
   return res[name];
 }
+export async function promptEditorInput(message: string) {
+  const name = "inputValue";
+  const res = await inquirer.prompt([{ type: "editor", message, name }]);
+  return res[name];
+}
 export async function promptConfirmation(message: string, defaultValue = true) {
   const name = "confirm";
   const res = await inquirer.prompt([{ type: "confirm", name, message, default: defaultValue }]);

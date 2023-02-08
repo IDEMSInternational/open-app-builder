@@ -11,7 +11,7 @@ import {
 import NodeRSA from "node-rsa";
 import { basename, resolve } from "path";
 import { WorkflowRunner } from "../../commands/workflow/run";
-import { Logger, logOutput, promptConfirmation } from "../../utils";
+import { logOutput, promptConfirmation, promptEditorInput } from "../../utils";
 
 /** Suffix added to all encrypted files to distinguish from originals */
 const ENCRYPTED_SUFFIX = "crypt";
@@ -33,7 +33,7 @@ class EncryptionProvider {
 
   /** Check deployment encryption file and process any files requiring encryption */
   public async encrypt() {
-    await this.setupEncryptionFolders();
+    await this.setupEncryptionFolders("encrypt");
     let counter = 0;
     const files = this.listEncryptionFolderFiles();
     for (const { filePath } of files) {
@@ -51,7 +51,7 @@ class EncryptionProvider {
 
   /** Check deployment encryption file and process any files requiring decryption */
   public async decrypt() {
-    await this.setupEncryptionFolders();
+    await this.setupEncryptionFolders("decrypt");
     let counter = 0;
     const files = this.listEncryptionFolderFiles();
     for (const { filePath } of files) {
@@ -101,26 +101,35 @@ class EncryptionProvider {
    * Ensure /encryption folder exists for deployment with private encryption key
    * Prompts user to create if not existing
    * */
-  private async setupEncryptionFolders() {
+  private async setupEncryptionFolders(op: "encrypt" | "decrypt") {
     const { _workspace_path } = WorkflowRunner.config;
     const folderPath = resolve(_workspace_path, ENCRYPTED_FOLDER_NAME);
+    this.folderPath = folderPath;
     // Check encryption folder
     if (!existsSync(folderPath)) {
-      if (!existsSync(folderPath)) {
-        const shouldCreate = await promptConfirmation(
-          "No encrypted folder exists\nWould you like to create one?"
-        );
-        if (shouldCreate) {
-          this.createEncryptionFolder(folderPath);
-          generateEncryptionKeys(folderPath);
-        } else {
-          process.exit(0);
-        }
+      const shouldCreate = await promptConfirmation(
+        "No encrypted folder exists\nWould you like to create one?"
+      );
+      if (shouldCreate) {
+        this.createEncryptionFolder(folderPath);
+        generateEncryptionKeys(folderPath);
+      } else {
+        process.exit(0);
       }
     }
-    // Check private key
+    // Check private key (required for decryption)
     this.privateKeyPath = resolve(folderPath, "private.key");
-    if (!existsSync(this.privateKeyPath)) {
+    if (!existsSync(this.privateKeyPath) && op === "decrypt") {
+      const encryptedFiles = this.listEncryptionFolderFiles().filter(({ fileName }) =>
+        fileName.endsWith(`.${ENCRYPTED_SUFFIX}`)
+      );
+      if (encryptedFiles.length > 0) {
+        await this.promptPrivateKeyInput();
+      }
+    }
+    // Check public key (required for encryption)
+    this.publicKeyPath = resolve(folderPath, "public.key");
+    if (!existsSync(this.publicKeyPath) && op === "encrypt") {
       const shouldCreate = await promptConfirmation(
         "No encryption key found\nWould you like to create one?"
       );
@@ -130,13 +139,6 @@ class EncryptionProvider {
         process.exit(0);
       }
     }
-    // Check public key
-    this.publicKeyPath = resolve(folderPath, "public.key");
-    if (!existsSync(this.publicKeyPath)) {
-      // TODO - handle case where private key exists but public missing (regenerate?)
-      Logger.error({ msg1: "Public key not found, cannot continue", msg2: this.publicKeyPath });
-    }
-    this.folderPath = folderPath;
   }
 
   /**
@@ -176,6 +178,16 @@ class EncryptionProvider {
       .replace(/ /g, "")
       .trim();
     writeFileSync(gitIgnorePath, gitignoreTemplate);
+  }
+
+  /** Prompt user to input their private key via a text editor and save */
+  private async promptPrivateKeyInput() {
+    const privateKeyText: string = await promptEditorInput(
+      `\n\nA private key is required to decrypt config.
+    Paste private key contents into the editor, save and close\n\n`.replace(/  /g, "")
+    );
+    if (!privateKeyText) process.exit(0);
+    writeFileSync(this.privateKeyPath, privateKeyText.trim());
   }
 }
 
