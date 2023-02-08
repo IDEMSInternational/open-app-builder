@@ -37,6 +37,12 @@ export async function compileDeploymentTS(options: IOptions) {
   // load ts file and convert to deployment json
   const ts: IDeploymentConfig = await loadTSFileDefaultExport(options.input);
   const json = convertDeploymentTsToJson(ts, options.input);
+  if (!json._validated) {
+    Logger.error({
+      msg1: "Config file incorrectly defined",
+      msg2: "Should use `generateDeploymentConfig` to create",
+    });
+  }
   // write outputs, keeping same modified time on json as ts
   fs.writeFileSync(options.output, JSON.stringify(json, null, 2));
   const { mtime } = fs.statSync(options.input);
