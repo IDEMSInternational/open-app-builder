@@ -15,7 +15,7 @@ import { logOutput, promptConfirmation, promptEditorInput } from "../../utils";
 /** Suffix added to all encrypted files to distinguish from originals */
 const ENCRYPTED_SUFFIX = "crypt";
 
-/** Expressions to populate to gitignore */
+/** Expressions to populate to gitignore when creating new encryption folder */
 const GIT_IGNORE_LIST = ["*.crypt", ".gitignore", "public.key"];
 
 class EncryptionProvider {
