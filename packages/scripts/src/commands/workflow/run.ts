@@ -4,7 +4,7 @@ import boxen from "boxen";
 import chalk from "chalk";
 import path from "path";
 import { Command } from "commander";
-import { IDeploymentWorkflows, IWorkflow, WORKFLOW_DEFAULTS } from "data-models";
+import { IDeploymentWorkflows, IWorkflow, WORKFLOW_DEFAULTS } from "data-models/workflows";
 import ALL_TASKS from "../../tasks";
 import { Logger, logProgramHelp, pad, promptOptions } from "../../utils";
 import { ActiveDeployment } from "../deployment/get";
