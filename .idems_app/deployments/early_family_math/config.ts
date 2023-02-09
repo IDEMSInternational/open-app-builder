@@ -10,7 +10,6 @@ config.translations = {
   translated_strings_path: "packages/app-data/translations_source/from_translators",
   source_strings_path: "packages/app-data/translations_source/to_translate",
 };
-
 // Override constants
 config.app_config.APP_LANGUAGES.default = "us_en";
 config.app_config.APP_HEADER_DEFAULTS.title = "Early Family Math";

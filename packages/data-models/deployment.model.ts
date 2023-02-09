@@ -4,7 +4,7 @@ export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
   name: string;
 
-  google_drive?: {
+  google_drive: {
     /** ID of folder containing app sheets, as seen in end of url */
     sheets_folder_id: string;
     /** ID of folder containing app assets, as seen in end of url */
@@ -16,13 +16,13 @@ export interface IDeploymentConfig {
     /** filter function applied to assets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */
     assets_filter_function?: (gdriveEntry: IGdriveEntry) => boolean;
   };
-  local_drive?: {
+  local_drive: {
     /** Location to sheets folder if working from local drive instead of google */
     sheets_path: string;
     /** Location to assets folder if working from local drive instead of google */
     assets_path: string;
   };
-  android?: {
+  android: {
     /** Location of source android assets (splash and launcher source images). */
     icon_asset_path?: string;
     splash_asset_path?: string;
@@ -31,15 +31,15 @@ export interface IDeploymentConfig {
   };
   /** Optional override of any provided constants from data-models/constants */
   app_config: IAppConfig;
-  app_data?: {
+  app_data: {
     /** Folder to populate processed content. Default `packages/app-data` */
-    output_path?: string;
+    output_path: string;
     /** filter function that receives converted flows. Default `(flow)=>true`*/
-    sheets_filter_function?: (flow: IFlowTypeBase) => boolean;
+    sheets_filter_function: (flow: IFlowTypeBase) => boolean;
     /** filter function that receives basic file info such as relativePath and size. Default `(fileEntry)=>true`*/
-    assets_filter_function?: (fileEntry: IContentsEntry) => boolean;
+    assets_filter_function: (fileEntry: IContentsEntry) => boolean;
   };
-  git?: {
+  git: {
     /** Url of external git repo to store content */
     content_repo?: string;
     /** Current tag of content for release */
@@ -53,11 +53,11 @@ export interface IDeploymentConfig {
     /** translated string for import. Default `./app_data/translations_source/translated_strings */
     translated_strings_path?: string;
   };
-  workflows?: {
+  workflows: {
     /** path to custom workflow files to include */
-    custom_ts_files?: string[];
+    custom_ts_files: string[];
     /** path for task working directory. Default `./tasks` */
-    task_cache_path?: string;
+    task_cache_path: string;
   };
   /** 3rd party integration for logging services */
   error_logging?: {
@@ -65,9 +65,9 @@ export interface IDeploymentConfig {
     dsn: string;
   };
   /** track whether deployment processed from default config */
-  _validated?: boolean;
+  _validated: boolean;
   /** version number added from scripts to recompile on core changes */
-  _version?: number;
+  _version: number;
   /** track parent config  */
   _parent_config?: Partial<IDeploymentConfig & { _workspace_path: string }>;
 }
