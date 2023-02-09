@@ -6,14 +6,14 @@
     {
       "id": "what",
       "title": "What is a healthy house?",
-      "text": "Keeping our house and the area around it clean, will keep us healthy!  We should all have safe places to play free of garbage and waste water.",
+      "text": "Keeping our house and the area around it clean, will keep us healthy!  We should all have safe places to live free of garbage and waste water.",
       "reference": ".",
       "completed_field": "healthy_homes_what_completed"
     },
     {
       "id": "how",
       "title": "How do you keep your house clean?",
-      "text": "Always clean areas of animal and children poop (excreta), using detergent where you can!  Children's poop should be thrown away in a latrine or a covered pit.",
+      "text": "Keep houses clean free from animals, childrens stool and other waste.  Use water and detergent where you can to clean!  Children’s stool should be thrown away in the toilet or a covered pit.",
       "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF; 2020.  \n\nExtract: \nRegularly clear external areas of any animal or child faeces, and clean contaminated\nareas immediately. \n\nRegular cleaning of floors with soap and water (and bleach if available).\n\nSafely dispose of child faeces, either in a latrine or a covered garbage pit.",
       "reference_link_title": "Baby WASH Programming. UNICEF; 2020.",
       "reference_link": "www.unicef.org/esa/reports/baby-wash-programming",
@@ -22,7 +22,7 @@
     {
       "id": "tips",
       "title": "More tips to keeping a clean home!",
-      "text": "Control the number of pests in your home (these insects often carry disease).  Protect food and throw garbage in a covered pit, flies like those!  Find places where mosquitoes like to live, such as water that is not moving which include open containers and puddles (covering or emtying if you can).",
+      "text": "*  Get rid of pests in your house (they often carry disease).  \n*  Protect food and throw garbage in a covered pit - flies like garbage!  \n*  Find places where mosquitoes like to live, such as still water which include open containers and puddles (covering or emptying if you can).",
       "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF; 2020.  \r\n\nExtract:\nControl disease vectors such as flies, mosquitoes, cockroaches and rats by removing\nbreeding spots, covering food, improving drainage and safely disposing of garbage\ninto a waste receptacle or protected pit.",
       "reference_link_title": "Baby WASH Programming. UNICEF; 2020.",
       "reference_link": "www.unicef.org/esa/reports/baby-wash-programming",
