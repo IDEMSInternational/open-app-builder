@@ -1,5 +1,9 @@
 # Deployments
+
 All user-generated content are stored within deployments, alongside app-specific settings such as remote data sources and app strings.
+
+
+
 
 ## Create Deployment
 All deployments are stored in the `.idems_app/deployments` folder, and new deployments can be added by calling the script:
@@ -63,14 +67,6 @@ yarn workflow deployment set [name]
 
 The final processed config can be found in the local `config.json` file, e.g. `.idems_app/deployments/example/config.json`
 
-## Change Deployment
-
-This will create a new git branch, apply local changes and push to github. From there a pull request can be created to merge into the main branch.
-
-!!! warning
-    If multiple authors are updating content and creating releases there is a high probability of conflicts arising. It is recommended to merge open pull requests before creating new content releases, and running the `yarn workflow deployment set` script to ensure local content also includes the latest remote content.
-
-
 ## Google Drive Management
 The deployment configuration requires IDs for two created Google Drive folders, one for template sheets and one for global assets. 
 
@@ -114,7 +110,6 @@ This will create a new git branch, apply local changes and push to github. From 
 
 !!! warning
     If multiple authors are updating content and creating releases there is a high probability of conflicts arising. It is recommended to merge open pull requests before creating new content releases, and running the `yarn scripts deployment set` script to ensure local content also includes the latest remote content.
-
     
 ## File Encryption
 In cases where deployments need to share private information, such as API keys or service accounts, a special encryption folder can be used to handle encryption and decryption processes

@@ -238,6 +238,7 @@ export class GDriveDownloader {
     const filterFn: Function = filterFunction64
       ? new Function(`return ${Buffer.from(filterFunction64, "base64").toString()}`)()
       : null;
+
     // Compare server with local
     for (const serverFile of serverFiles) {
       (() => {
