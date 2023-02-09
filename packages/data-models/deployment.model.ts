@@ -34,18 +34,14 @@ export interface IDeploymentConfig {
   /** Optional override of any provided constants from data-models/constants */
   app_config: IAppConfig;
   app_data?: {
-    /** processed sheets for use in app. Default `packages/app-data/sheets` */
-    sheets_output_path?: string;
+    /** Folder to populate processed content. Default `packages/app-data` */
+    output_path?: string;
     /** partially compiled sheets for use in repopulation. Default `./cache/converter` */
     converter_cache_path?: string;
-    /** processed assets for use in app. Defaults `packages/app_data/assets` */
-    assets_output_path?: string;
     /** filter function that receives converted flows. Default `(flow)=>true`*/
     sheets_filter_function?: (flow: IFlowTypeBase) => boolean;
     /** filter function that receives basic file info such as relativePath and size. Default `(fileEntry)=>true`*/
     assets_filter_function?: (fileEntry: IContentsEntry) => boolean;
-    /** processed translations for use in app. Default `packages/app_data/translations` */
-    translations_output_path?: string;
   };
   translations?: {
     /** List of all language codes to include. Default null (includes all) */
@@ -93,10 +89,9 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     sheets_path: "./sheets",
   },
   app_data: {
-    sheets_output_path: "packages/app-data/sheets",
+    // TODO - change to local ./app-data folder once git repos in use
+    output_path: "packages/app-data",
     converter_cache_path: "./cache/converter",
-    assets_output_path: "packages/app-data/assets",
-    translations_output_path: "packages/app-data/translations",
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
   },
@@ -144,10 +139,10 @@ interface IFlowTypeBase {
   status: "draft" | "released";
 }
 
-export interface IAssetEntry {
-  size_kb: number;
-  md5Checksum: string;
-  translations?: { [language_code: string]: IAssetEntry };
-  themeVariations?: { [theme_name: string]: IAssetEntry };
+type IContentsEntryMinimal = Omit<IContentsEntry, "relativePath" | "modifiedTime">;
+
+export interface IAssetEntry extends IContentsEntryMinimal {
+  translations?: { [language_code: string]: IContentsEntryMinimal };
+  themeVariations?: { [theme_name: string]: IContentsEntryMinimal };
 }
 export type IAssetEntryHashmap = { [assetPath: string]: IAssetEntry };
