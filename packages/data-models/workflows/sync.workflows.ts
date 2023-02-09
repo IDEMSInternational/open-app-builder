@@ -1,3 +1,4 @@
+import { resolve } from "path";
 import type { IDeploymentWorkflows } from "./workflow.model";
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
@@ -140,14 +141,20 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "app_copy_data",
         function: async ({ tasks, workflow, config }) => {
+          // HACK - skipping translations step but still use previously processed strings
+          const sourceTranslationsFolder = resolve(
+            config.workflows.task_cache_path,
+            "tasks",
+            "translate",
+            "outputs",
+            "strings"
+          );
           // copy files
-          tasks.appData.copy({
-            localSheetsFolder: workflow.sheets_process.output,
-            appSheetsFolder: config.app_data.sheets_output_path,
-            // TODO - add support for assets
-            // localAssetsFolder : config.local_drive.assets_path,
-            // appAssetsFolder: config.app_data.assets_output_path,
+          tasks.appData.postProcessSheets({
+            sourceSheetsFolder: workflow.sheets_process.output,
+            sourceTranslationsFolder,
           });
+          // TODO - add support for assets
         },
       },
       {
@@ -160,9 +167,18 @@ const workflows: IDeploymentWorkflows = {
               const output = tasks.template.process({
                 inputFolder: config.local_drive.sheets_path,
               });
-              tasks.appData.copy({
-                localSheetsFolder: output,
-                appSheetsFolder: config.app_data.sheets_output_path,
+              // HACK - skipping translations step but still use previously processed strings
+              const sourceTranslationsFolder = resolve(
+                config.workflows.task_cache_path,
+                "tasks",
+                "translate",
+                "outputs",
+                "strings"
+              );
+              // copy files
+              tasks.appData.postProcessSheets({
+                sourceSheetsFolder: output,
+                sourceTranslationsFolder,
               });
             },
           }),

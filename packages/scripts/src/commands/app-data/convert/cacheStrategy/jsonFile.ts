@@ -126,7 +126,7 @@ export class JsonFileCache {
   }
   private writeCacheContents() {
     const { contentsPath, folderPath } = this;
-    const contents = generateFolderFlatMap(folderPath, true, (p) => p !== "_contents.json");
+    const contents = generateFolderFlatMap(folderPath, { filterFn: (p) => p !== "_contents.json" });
     contents._version = this.version as any;
     this.contents = contents as any;
     writeJSONSync(contentsPath, contents);

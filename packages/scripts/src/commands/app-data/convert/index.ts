@@ -54,15 +54,9 @@ export default program
  */
 export class AppDataConverter {
   /** Change version to invalidate all underlying caches */
-  public version = 20221027.0;
+  public version = 20230203.0;
 
   public activeDeployment = ActiveDeployment.get();
-
-  private paths: IConverterPaths = {
-    SHEETS_INPUT_FOLDER: "",
-    SHEETS_CACHE_FOLDER: "",
-    SHEETS_OUTPUT_FOLDER: "",
-  };
 
   public logger = createChildLogger({ source: "converter" });
 
@@ -81,7 +75,7 @@ export class AppDataConverter {
       this.cache.clear();
     }
     // Create a cache that can be used to invalidate all underlying processor caches
-    this.cache = new JsonFileCache(this.paths.SHEETS_CACHE_FOLDER, this.version);
+    this.cache = new JsonFileCache(cacheFolder, this.version);
   }
 
   /**
@@ -89,6 +83,12 @@ export class AppDataConverter {
    * objects representing sheet names and data values
    */
   public async run() {
+    const { inputFolder, outputFolder, cacheFolder } = this.options;
+    const converterPaths: IConverterPaths = {
+      SHEETS_CACHE_FOLDER: cacheFolder,
+      SHEETS_INPUT_FOLDER: inputFolder,
+      SHEETS_OUTPUT_FOLDER: outputFolder,
+    };
     const processPipeline: {
       name: string;
       description: string;
@@ -99,14 +99,14 @@ export class AppDataConverter {
         description: "Load list of all input xlsx workbooks from folder",
         fn: async () => {
           const filterFn = (relativePath: string) => relativePath.endsWith(".xlsx");
-          return generateFolderFlatMap(this.paths.SHEETS_INPUT_FOLDER, true, filterFn);
+          return generateFolderFlatMap(inputFolder, { filterFn });
         },
       },
       {
         name: "xlsx_convert",
         description: "Convert all xlsx workbooks to json arrays",
         fn: async (list: { [key: string]: IContentsEntry }) => {
-          const xlsxConverter = new XLSXWorkbookProcessor(this.paths);
+          const xlsxConverter = new XLSXWorkbookProcessor(converterPaths);
           return xlsxConverter.process(Object.values(list));
         },
       },
@@ -119,7 +119,7 @@ export class AppDataConverter {
         name: "flows_process",
         description: "Apply specific parsers for flowtypes",
         fn: async (data: FlowTypes.FlowTypeWithData[]) => {
-          const processor = new FlowParserProcessor(this.paths);
+          const processor = new FlowParserProcessor(converterPaths);
           return processor.process(data);
         },
       },

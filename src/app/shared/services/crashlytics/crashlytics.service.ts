@@ -34,6 +34,11 @@ export class CrashlyticsService extends AsyncServiceBase {
         type: "string",
         value: webViewVersion || "",
       });
+      await this.setContext({
+        key: "pathname",
+        type: "string",
+        value: location.pathname || "",
+      });
       this.sendUnsentReports();
     }
   }
