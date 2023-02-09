@@ -34,34 +34,34 @@ yarn workflow deployment set example
 When a deployment is created a default configuration will be created in the `.idems_app/deployments` folder. E.g. for a deployment named *example*
 
 ```ts title=".idems_app/deployments/example/config.ts"
-import { getDefaultAppConfig, IDeploymentConfig } from "data-models";
+import { generateDeploymentConfig } from "scripts";
+const config = generateDeploymentConfig("example");
 
-const app_config = getDefaultAppConfig()
+// Main Deployment config
+config.google_drive = {
+    sheets_folder_id: "",
+    assets_folder_id: "",
+  }
+};
 
-// Override any app config here
+// Deployment app config overrides
 app_config.APP_HEADER_DEFAULTS.title = 'Example Deployment'
 app_config.APP_SIDEMENU_DEFAULTS.title = 'Example Deployment'
 
-const config: IDeploymentConfig = {
-  name: "example",
-  google_drive: {
-    sheets_folder_id: "",
-    assets_folder_id: "",
-  },
-  app_config
-};
 export default config;
 ```
 This configuration provides a minimal set of options to override the default header and sidemenu text, as well as configuring a remote google_drive data source (more information below)
 
-A full list of app_config and their default values can be found in [packages/data-models/appConfig.ts](https://github.com/IDEMSInternational/parenting-app-ui/blob/master/packages/data-models/appConfig.ts)
-
 A full list of general configuration options can be found in [packages/data-models/deployment.model.ts](https://github.com/IDEMSInternational/parenting-app-ui/blob/master/packages/data-models/deployment.model.ts)
+
+A full list of app_config and their default values can be found in [packages/data-models/appConfig.ts](https://github.com/IDEMSInternational/parenting-app-ui/blob/master/packages/data-models/appConfig.ts)
 
 Any configuration changes can be applied by setting the deployment
 ```
 yarn workflow deployment set [name]
 ```
+
+The final processed config can be found in the local `config.json` file, e.g. `.idems_app/deployments/example/config.json`
 
 ## Change Deployment
 
@@ -114,3 +114,32 @@ This will create a new git branch, apply local changes and push to github. From 
 
 !!! warning
     If multiple authors are updating content and creating releases there is a high probability of conflicts arising. It is recommended to merge open pull requests before creating new content releases, and running the `yarn scripts deployment set` script to ensure local content also includes the latest remote content.
+
+    
+## File Encryption
+In cases where deployments need to share private information, such as API keys or service accounts, a special encryption folder can be used to handle encryption and decryption processes
+
+To setup an encryption folder run
+```sh
+yarn workflow deployment encrypt
+```
+
+This will create a new folder named *encrypted* inside the deployment folder (if not already existing). It will also populate a private key file used to decrypt data
+
+!!! warning
+    The `private.key` file should NOT be checked into a public repo, and should be backed up securely. If lost, encrypted files will not be able to be decrypted and will have to be regenerated with a new key
+
+With the encryption folder generated any files placed inside the encryption folder will by default be marked for encryption and ignored from associated github repositories. To trigger the encryption process simply run the workflow again
+
+```sh
+yarn workflow deployment encrypt
+```
+
+!!! note
+    With the encryption folder setup anybody will be able to encrypt files using the `public.key` file, however only people with access to the `private.key` can decrypt. This can be securely shared with anybody who you wish to provide access to the encrypted files
+
+In order to decrypt files the decryption workflow should be run
+
+```sh
+yarn workflow deployment decrypt
+```

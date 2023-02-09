@@ -11362,7 +11362,7 @@ __metadata:
   resolution: "data-models@workspace:packages/data-models"
   dependencies:
     "@types/clone": ^2.1.1
-    "@types/node": ^15.12.4
+    "@types/node": ^16.18.9
     clone: ^2.1.2
     scripts: "workspace:*"
     shared: "workspace:*"

@@ -2,11 +2,9 @@ import * as path from "path";
 import * as fs from "fs-extra";
 import chalk from "chalk";
 import { Command } from "commander";
-import { logError, recursiveFindByExtension, logWarning } from "../../../utils";
-import { spawnSync } from "child_process";
+import { Logger, recursiveFindByExtension } from "../../../utils";
 
-import { getActiveDeployment } from "../../deployment/get";
-import { ROOT_DIR } from "../../../paths";
+import { ActiveDeployment } from "../../deployment/get";
 import { FlowTypes } from "data-models";
 
 /***************************************************************************************
@@ -34,25 +32,25 @@ export default program
  *
  **/
 class SheetsPostProcessor {
-  private activeDeployment = getActiveDeployment();
+  private activeDeployment = ActiveDeployment.get();
   constructor(private options: IProgramOptions) {}
 
   public run() {
-    const { _parent_config, _workspace_path } = this.activeDeployment;
+    const { app_data, _parent_config } = this.activeDeployment;
     // App Sheets
     // Setup Folders
     const { sourceSheetsFolder } = this.options;
-    const appSheetsFolder = path.resolve(_workspace_path, "app_data", "sheets");
+    const appSheetsFolder = path.resolve(app_data.output_path, "sheets");
     fs.ensureDirSync(appSheetsFolder);
     fs.emptyDirSync(appSheetsFolder);
     if (_parent_config) {
       // TODO - merge parent config
-      logWarning({ msg1: "TODO - Merge parent content" });
+      // Logger.warning({ msg1: "TODO - Merge parent content" });
       // const parentSheetsFolder =
     }
     // Merge parent
     if (_parent_config) {
-      logError({ msg1: "TODO - merge parent" });
+      Logger.error({ msg1: "TODO - merge parent" });
     }
     // Handle Copy
     this.sheetsCopyFiles(sourceSheetsFolder, appSheetsFolder);
@@ -62,7 +60,7 @@ class SheetsPostProcessor {
     // Sheet Translations (applied if sheets are copied)
     // Setup Folders
     const { sourceTranslationsFolder } = this.options;
-    const appTranslationsFolder = path.resolve(_workspace_path, "app_data", "translations");
+    const appTranslationsFolder = path.resolve(app_data.output_path, "translations");
     // Handle Copy
     this.translationsWriteIndex(sourceTranslationsFolder);
     this.translationsCopyFiles(sourceTranslationsFolder, appTranslationsFolder);
@@ -84,7 +82,13 @@ class SheetsPostProcessor {
   /** Extract a list of all sheets by type including flow contents */
   private sheetsGenerateContents(baseFolder: string) {
     // Generate contents
-    const contents: ISheetContents = { data_list: {}, global: {}, template: {}, tour: {} };
+    const contents: ISheetContents = {
+      data_list: {},
+      global: {},
+      template: {},
+      tour: {},
+      data_pipe: {},
+    };
     const sheetPaths = recursiveFindByExtension(baseFolder, "json").sort();
     for (const sheetPath of sheetPaths) {
       const filePath = path.resolve(baseFolder, sheetPath);
@@ -98,7 +102,7 @@ class SheetsPostProcessor {
 
   private extractContentsData(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeBase {
     // remove rows property (if exists)
-    const { rows, status, ...keptFields } = flow;
+    const { rows, status, _processed, ...keptFields } = flow;
     return keptFields as FlowTypes.FlowTypeBase;
   }
   private sheetsWriteContents(baseFolder: string, contents: ISheetContents) {
@@ -114,14 +118,14 @@ class SheetsPostProcessor {
   ) {
     const { flow_name, flow_type, _xlsxPath } = sheetContents;
     if (!existingContents.hasOwnProperty(flow_type)) {
-      logError({
+      Logger.error({
         msg1: `Unsupported flow_type: [${flow_type}]`,
         msg2: `${_xlsxPath}`,
       });
     }
     if (existingContents[flow_type].hasOwnProperty(flow_name)) {
       const duplicateFlowContents = existingContents[flow_type][flow_name];
-      logError({
+      Logger.error({
         msg1: `Duplicate flow_name found: [${flow_type}]`,
         msg2: `${_xlsxPath}\n${duplicateFlowContents._xlsxPath}`,
       });

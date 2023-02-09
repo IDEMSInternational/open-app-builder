@@ -1,6 +1,19 @@
+import { resolve } from "path";
 import type { IDeploymentWorkflows } from "./workflow.model";
+
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
+  // Copy app-data assets directly to src assets
+  // Note - this is already done as part of `tasks.appData.copy`, so just for postinstall
+  populate_src_assets: {
+    label: "Copy Assets to Src",
+    steps: [
+      {
+        name: "populate_src_assets",
+        function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
+      },
+    ],
+  },
   clear_workflow_cache: {
     label: "Clear workflow caches",
     steps: [
@@ -17,11 +30,10 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "translate_vtt_files",
         function: async ({ tasks, config }) => {
-          await tasks.subtitles.translateAllVttFilesAndSave(
-            config.app_data.translations_output_path,
-            config.app_data.assets_output_path,
-            "global"
-          );
+          const { output_path } = config.app_data;
+          const translationsPath = resolve(output_path, "translations");
+          const assetsPath = resolve(output_path, "assets");
+          await tasks.subtitles.translateAllVttFilesAndSave(translationsPath, assetsPath, "global");
         },
       },
     ],
