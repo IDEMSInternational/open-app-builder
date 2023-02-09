@@ -52,68 +52,6 @@
               "value"
             ]
           }
-        },
-        {
-          "type": "nested_properties",
-          "name": "workshop_activity",
-          "rows": [
-            {
-              "type": "nested_properties",
-              "name": "content_box",
-              "rows": [
-                {
-                  "name": "reply_happy",
-                  "value": "Great to hear that you are doing well. You are a wonderful parent!",
-                  "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_happy"
-                },
-                {
-                  "name": "reply_ok",
-                  "value": "Sorry that you are not having the best day. Well done for trying to figure everything out. Nobody has all the answers but you really do your best!",
-                  "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_ok"
-                },
-                {
-                  "name": "reply_sad",
-                  "value": "Sorry to hear that you are not having a good day. Well done for getting up every morning and trying again, even when you are tired. That is real courage and dedication!",
-                  "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_sad"
-                }
-              ],
-              "_nested_name": "welcome_individual.workshop_activity.content_box"
-            }
-          ],
-          "_nested_name": "welcome_individual.workshop_activity"
         }
       ],
       "_nested_name": "welcome_individual"

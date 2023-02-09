@@ -252,6 +252,12 @@
       "flow_name": "nf_schedule_inactive",
       "_xlsxPath": "global/campaigns/notifications_inactive.xlsx"
     },
+    "check_in_data": {
+      "flow_type": "data_list",
+      "flow_name": "check_in_data",
+      "data_list_name": "check_in",
+      "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+    },
     "common_workshop_task_gs": {
       "flow_type": "data_list",
       "flow_name": "common_workshop_task_gs",
