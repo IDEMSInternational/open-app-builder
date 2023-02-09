@@ -1,6 +1,7 @@
 import android from "./providers/android";
 import appData from "./providers/appData";
 import deployment from "./providers/deployment";
+import encryption from "./providers/encryption";
 import file from "./providers/file";
 import gdrive from "./providers/gdrive";
 import subtitles from "./providers/subtitles";
@@ -19,6 +20,7 @@ const ALL_TASKS = {
   android,
   appData,
   deployment,
+  encryption,
   file,
   gdrive,
   subtitles,
