@@ -10,6 +10,8 @@ export const SCRIPTS_TEST_DATA_DIR = path.join(SCRIPTS_WORKSPACE_PATH, "test", "
 export const SCRIPTS_LOGS_DIR = path.join(SCRIPTS_WORKSPACE_PATH, "logs");
 export const DATA_MODELS_WORKSPACE_PATH = path.join(ROOT_DIR, "packages/data-models");
 
+export const SRC_ASSETS_PATH = path.join(ROOT_DIR, "src", "assets");
+
 export const CONFIG_FOLDER_PATH = path.join(SCRIPTS_WORKSPACE_PATH, "config");
 export const PRIVATE_KEY_PATH = path.join(CONFIG_FOLDER_PATH, "private.key");
 export const PUBLIC_KEY_PATH = path.join(CONFIG_FOLDER_PATH, "public.key");
