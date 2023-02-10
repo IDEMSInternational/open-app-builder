@@ -79,12 +79,10 @@
           "action_list": [
             {
               "trigger": "click",
-              "action_id": "emit",
-              "args": [
-                "uncompleted"
-              ],
-              "_raw": "click | emit:uncompleted",
-              "_cleaned": "click | emit:uncompleted"
+              "action_id": "feedback_cancel",
+              "args": [],
+              "_raw": "click | feedback_cancel",
+              "_cleaned": "click | feedback_cancel"
             }
           ],
           "exclude_from_translation": true,
@@ -107,13 +105,12 @@
           "action_list": [
             {
               "trigger": "click",
-              "action_id": "emit",
+              "action_id": "feedback_submit",
               "args": [
-                "completed",
                 "@local.feedback"
               ],
-              "_raw": "click | emit:completed:@local.feedback",
-              "_cleaned": "click | emit:completed:@local.feedback"
+              "_raw": "click | feedback_submit:@local.feedback",
+              "_cleaned": "click | feedback_submit:@local.feedback"
             }
           ],
           "exclude_from_translation": true,
@@ -122,7 +119,7 @@
             "action_list": {
               "0": {
                 "args": {
-                  "1": [
+                  "0": [
                     {
                       "fullExpression": "@local.feedback",
                       "matchedExpression": "@local.feedback",
@@ -133,7 +130,7 @@
                 },
                 "_raw": [
                   {
-                    "fullExpression": "click | emit:completed:@local.feedback",
+                    "fullExpression": "click | feedback_submit:@local.feedback",
                     "matchedExpression": "@local.feedback",
                     "type": "local",
                     "fieldName": "feedback"
@@ -141,7 +138,7 @@
                 ],
                 "_cleaned": [
                   {
-                    "fullExpression": "click | emit:completed:@local.feedback",
+                    "fullExpression": "click | feedback_submit:@local.feedback",
                     "matchedExpression": "@local.feedback",
                     "type": "local",
                     "fieldName": "feedback"
@@ -152,7 +149,7 @@
           },
           "_dynamicDependencies": {
             "@local.feedback": [
-              "action_list.0.args.1",
+              "action_list.0.args.0",
               "action_list.0._raw",
               "action_list.0._cleaned"
             ]

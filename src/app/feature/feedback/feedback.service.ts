@@ -34,6 +34,7 @@ import { ThemeService } from "../theme/services/theme.service";
 import { SkinService } from "src/app/shared/services/skin/skin.service";
 import {
   IActionHandlers,
+  IActionId,
   TemplateActionRegistry,
 } from "src/app/shared/components/template/services/instance/template-action.registry";
 
@@ -49,6 +50,12 @@ export class FeedbackService {
     enabled: true,
   };
 
+  private feedbackContext: {
+    modal?: HTMLIonModalElement;
+    additional?: IFeedbackEntryAdditional;
+    ev?: PointerEvent;
+  } = {};
+
   private deviceInfo: DeviceInfo;
   /** Track content el style to allow revert on component destroy */
   private initialContentStyle?: CSSStyleDeclaration;
@@ -56,8 +63,8 @@ export class FeedbackService {
   /** Track template action defaults to restore after disable */
   private actionListDefault: Partial<IActionHandlers>;
 
-  feedbackModuleDefaults;
-  appStrings;
+  feedbackModuleDefaults: IAppConfig["FEEDBACK_MODULE_DEFAULTS"];
+  appStrings: IAppConfig["APP_STRINGS"];
   feedbackButtons: IFeedbackContextMenuButton[];
 
   constructor(
@@ -84,6 +91,62 @@ export class FeedbackService {
       this._WIP_trackContentClicks(isReviewMode);
       this.setContextMenuActions(isReviewMode);
     });
+    this.registerFeedbackActions();
+  }
+
+  /**
+   * Register actions availble within feedback child actions
+   * @example
+   * ```
+   * click | feedback : cancel
+   * ```
+   * ```
+   * click | feedback : submit : @local.some_feedback
+   * ```
+   */
+  private registerFeedbackActions() {
+    this.templateActionRegistry.register({
+      feedback: async ({ args }) => {
+        const [actionId, ...feedbackArgs] = args;
+        const childActions = {
+          cancel: () => this.clearFeedback(),
+          submit: async () => {
+            const user_feedback = feedbackArgs[0];
+            const metadata = this.generateFeedbackMetadata();
+            const { additional, ev } = this.feedbackContext;
+            const feedbackEntry: IFeedbackEntry = { metadata, user_feedback, additional };
+            if (ev) {
+              feedbackEntry.additional.templateTarget = this.generateFeedbackTemplateMeta(ev);
+            }
+            await this.saveFeedback(feedbackEntry);
+            this.clearFeedback();
+          },
+          // TODO - Possibly legacy actions (?) to confirm if required
+          send: ([data]) => {
+            const metadata = this.generateFeedbackMetadata();
+            return this.saveFeedback({ metadata, user_feedback: data, additional: {} });
+          },
+          open: ([templatename]) => {
+            return this.runFeedbackTemplate(templatename);
+          },
+          disable: () => this.setEnabled(false),
+          enable: () => this.setEnabled(true),
+        };
+        if (!(actionId in childActions)) {
+          console.error("Feedback does not have action", actionId);
+          return;
+        }
+        return childActions[actionId]();
+      },
+    });
+  }
+
+  private clearFeedback() {
+    const { modal } = this.feedbackContext;
+    if (modal) {
+      modal.dismiss();
+    }
+    this.feedbackContext = {};
   }
 
   /**
@@ -117,7 +180,7 @@ export class FeedbackService {
 
   /**
    * Create a standalone popup of the provided template and use to collect user feedback.
-   * On completed emit retrieve any passed values, combine with metadata and submit to server
+   * Modal dismiss and feedback retrieval will be handled by the feedback actions handlers
    * @param additional optional additional user data to be included alongside generated metadata
    * @param ev pointer event captured if context menu created via pointer action
    * (e.g. right-click/long-press/text-select). Will be used to generate specific component metadata
@@ -127,19 +190,11 @@ export class FeedbackService {
     additional: IFeedbackEntryAdditional = {},
     ev?: PointerEvent
   ) {
-    const templateData = await this.templateService.runStandaloneTemplate(templatename, {
+    const { modal } = await this.templateService.runStandaloneTemplate(templatename, {
       fullscreen: false,
+      waitForDismiss: false,
     });
-    // Submit feedback if popup dismissed by emit:completed event
-    const { emit_data, emit_value } = templateData || {};
-    if (emit_value === "completed") {
-      const metadata = this.generateFeedbackMetadata();
-      const feedbackEntry: IFeedbackEntry = { metadata, user_feedback: emit_data, additional };
-      if (ev) {
-        feedbackEntry.additional.templateTarget = this.generateFeedbackTemplateMeta(ev);
-      }
-      await this.saveFeedback(feedbackEntry);
-    }
+    this.feedbackContext = { modal, ev, additional };
   }
 
   /** Save feedback to local db. Will sync on dmeand */
@@ -214,8 +269,12 @@ export class FeedbackService {
       const existingActions = this.templateActionRegistry.list();
       this.actionListDefault = existingActions;
       const dummyActionList = {};
+      const allowedActions: IActionId[] = ["feedback", "set_local"];
       for (const actionID of actionsIDs) {
-        dummyActionList[actionID] = () => null;
+        if (!allowedActions.includes(actionID)) {
+          dummyActionList[actionID] = (args) =>
+            console.log("Feedback action disabled", actionID, args);
+        }
       }
       this.templateActionRegistry.register(dummyActionList, true);
     }
