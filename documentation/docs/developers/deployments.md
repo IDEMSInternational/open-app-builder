@@ -90,3 +90,30 @@ E.g. `1ja6lzbphZaxnVv5mpQ4YHnn2qmxMiEBW`
 ![](images/deployment-gdrive-ids.png)
 
 
+## File Encryption
+In cases where deployments need to share private information, such as API keys or service accounts, a special encryption folder can be used to handle encryption and decryption processes
+
+To setup an encryption folder run
+```sh
+yarn workflow deployment encrypt
+```
+
+This will create a new folder named *encrypted* inside the deployment folder (if not already existing). It will also populate a private key file used to decrypt data
+
+!!! warning
+    The `private.key` file should NOT be checked into a public repo, and should be backed up securely. If lost, encrypted files will not be able to be decrypted and will have to be regenerated with a new key
+
+With the encryption folder generated any files placed inside the encryption folder will by default be marked for encryption and ignored from associated github repositories. To trigger the encryption process simply run the workflow again
+
+```sh
+yarn workflow deployment encrypt
+```
+
+!!! note
+    With the encryption folder setup anybody will be able to encrypt files using the `public.key` file, however only people with access to the `private.key` can decrypt. This can be securely shared with anybody who you wish to provide access to the encrypted files
+
+In order to decrypt files the decryption workflow should be run
+
+```sh
+yarn workflow deployment decrypt
+```
