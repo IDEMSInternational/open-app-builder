@@ -33,6 +33,22 @@ const workflows: IDeploymentWorkflows = {
             name: "deployment create",
             function: async ({ tasks }) => tasks.deployment.create(),
           },
+          {
+            name: "set deployment",
+            function: async ({ tasks, workflow }) => {
+              const shouldSet = await tasks.userInput.promptConfirmation(
+                "Would you like to set the deployment as active?",
+                true
+              );
+              if (shouldSet) {
+                const deploymentName = workflow["deployment create"].output;
+                await tasks.workflow.runWorkflow({
+                  name: `deployment set ${deploymentName}`,
+                  parent: workflow,
+                });
+              }
+            },
+          },
         ],
       },
       import: {
@@ -40,12 +56,23 @@ const workflows: IDeploymentWorkflows = {
         steps: [
           {
             name: "deployment import",
-            function: async ({ tasks, args }) => tasks.git().importRemoteRepo(args[0]),
+            function: async ({ tasks, args }) => tasks.deployment.import(args[0]),
           },
           {
-            name: "set_deployment",
-            function: async ({ tasks, workflow }) =>
-              tasks.workflow.runWorkflow({ name: "deployment set", parent: workflow }),
+            name: "set deployment",
+            function: async ({ tasks, workflow }) => {
+              const shouldSet = await tasks.userInput.promptConfirmation(
+                "Would you like to set the deployment as active?",
+                true
+              );
+              if (shouldSet) {
+                const deploymentName = workflow["deployment import"].output;
+                await tasks.workflow.runWorkflow({
+                  name: `deployment set ${deploymentName}`,
+                  parent: workflow,
+                });
+              }
+            },
           },
         ],
       },
