@@ -3107,7 +3107,13 @@
   },
   "plh_images/workshops/w_rules/read_2/slide_5.svg": {
     "size_kb": 6.9,
-    "md5Checksum": "c427f203f1915bcd0302921fc35d729a"
+    "md5Checksum": "c427f203f1915bcd0302921fc35d729a",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 423.4,
+        "md5Checksum": "c0662b8f585a26bbb07a58e631059f48"
+      }
+    }
   },
   "plh_images/workshops/w_rules/tools.svg": {
     "size_kb": 9.1,

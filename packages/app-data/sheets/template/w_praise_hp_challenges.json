@@ -1,13 +1,13 @@
 {
   "flow_type": "template",
-  "module": "solve",
-  "flow_name": "w_solve_hp_review",
+  "module": "praise",
+  "flow_name": "w_praise_hp_challenges",
   "status": "released",
   "rows": [
     {
       "type": "template",
-      "name": "home_practice_review",
-      "value": "home_practice_review",
+      "name": "home_practice_challenges",
+      "value": "home_practice_challenges",
       "action_list": [
         {
           "trigger": "completed",
@@ -31,17 +31,17 @@
       "rows": [
         {
           "name": "workshop",
-          "value": "w_solve",
+          "value": "w_praise",
           "_translations": {
             "value": {}
           },
           "exclude_from_translation": true,
           "type": "set_variable",
-          "_nested_name": "home_practice_review.workshop"
+          "_nested_name": "home_practice_challenges.workshop"
         }
       ],
-      "_nested_name": "home_practice_review"
+      "_nested_name": "home_practice_challenges"
     }
   ],
-  "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_solve_hp_review.xlsx"
+  "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_praise_hp_review.xlsx"
 }
