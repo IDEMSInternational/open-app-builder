@@ -1070,6 +1070,18 @@
       "data_list_name": "habit",
       "_xlsxPath": "global/data/habit_data_list.xlsx"
     },
+    "hp_challenges_data": {
+      "flow_type": "data_list",
+      "flow_name": "hp_challenges_data",
+      "data_list_name": "hp_challenges",
+      "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+    },
+    "hp_check_in_data": {
+      "flow_type": "data_list",
+      "flow_name": "hp_check_in_data",
+      "data_list_name": "hp_check_in",
+      "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+    },
     "hp_praise_messages": {
       "flow_type": "data_list",
       "flow_name": "hp_praise_messages",
@@ -1795,11 +1807,6 @@
       "flow_name": "app_menu_plh",
       "_xlsxPath": "global/core_templates/core_templates_menu.xlsx"
     },
-    "app_menu_privacy_policy": {
-      "flow_type": "template",
-      "flow_name": "app_menu_privacy_policy",
-      "_xlsxPath": "global/core_templates/core_templates_menu.xlsx"
-    },
     "app_menu_reset_app_pop": {
       "flow_type": "template",
       "flow_name": "app_menu_reset_app_pop",
@@ -1809,11 +1816,6 @@
       "flow_type": "template",
       "flow_name": "app_menu_settings",
       "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
-    },
-    "app_menu_terms": {
-      "flow_type": "template",
-      "flow_name": "app_menu_terms",
-      "_xlsxPath": "global/core_templates/core_templates_menu.xlsx"
     },
     "app_menu_unlock_workshops_pop": {
       "flow_type": "template",
@@ -3950,7 +3952,7 @@
     "in_week_message": {
       "flow_type": "template",
       "flow_name": "in_week_message",
-      "_xlsxPath": "global/in_week_messages/in_week_message_types.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_types.xlsx"
     },
     "language_select": {
       "flow_type": "template",
@@ -3979,6 +3981,18 @@
       "flow_type": "template",
       "flow_name": "learn_temp",
       "_xlsxPath": "global/mode_templates/read.xlsx"
+    },
+    "app_menu_privacy_policy": {
+      "flow_type": "template",
+      "flow_name": "app_menu_privacy_policy",
+      "flow_subtype": "legal_terms",
+      "_xlsxPath": "global/core_templates/core_templates_menu.xlsx"
+    },
+    "app_menu_terms": {
+      "flow_type": "template",
+      "flow_name": "app_menu_terms",
+      "flow_subtype": "legal_terms",
+      "_xlsxPath": "global/core_templates/core_templates_menu.xlsx"
     },
     "lib_act_change_thoughts": {
       "flow_type": "template",
@@ -4098,52 +4112,52 @@
     "m_hp_reminder": {
       "flow_type": "template",
       "flow_name": "m_hp_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_types.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_types.xlsx"
     },
     "m_parent_points_overview": {
       "flow_type": "template",
       "flow_name": "m_parent_points_overview",
-      "_xlsxPath": "global/in_week_messages/in_week_message_types.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_types.xlsx"
     },
     "m_praise": {
       "flow_type": "template",
       "flow_name": "m_praise",
-      "_xlsxPath": "global/in_week_messages/in_week_message_types.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_types.xlsx"
     },
     "m_relax": {
       "flow_type": "template",
       "flow_name": "m_relax",
-      "_xlsxPath": "global/in_week_messages/in_week_message_types.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_types.xlsx"
     },
     "m_something_fun": {
       "flow_type": "template",
       "flow_name": "m_something_fun",
-      "_xlsxPath": "global/in_week_messages/in_week_message_types.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_types.xlsx"
     },
     "m_workshop_in_progress": {
       "flow_type": "template",
       "flow_name": "m_workshop_in_progress",
-      "_xlsxPath": "global/in_week_messages/in_week_message_types.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_types.xlsx"
     },
     "m_workshop_released": {
       "flow_type": "template",
       "flow_name": "m_workshop_released",
-      "_xlsxPath": "global/in_week_messages/in_week_message_types.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_types.xlsx"
     },
     "m_workshop_reminder": {
       "flow_type": "template",
       "flow_name": "m_workshop_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_types.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_types.xlsx"
     },
     "m_workshop_tomorrow": {
       "flow_type": "template",
       "flow_name": "m_workshop_tomorrow",
-      "_xlsxPath": "global/in_week_messages/in_week_message_types.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_types.xlsx"
     },
     "message_navigation": {
       "flow_type": "template",
       "flow_name": "message_navigation",
-      "_xlsxPath": "global/in_week_messages/message_navigation.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/message_navigation.xlsx"
     },
     "module_card": {
       "flow_type": "template",
@@ -4816,13 +4830,13 @@
       "flow_type": "template",
       "module": "1on1",
       "flow_name": "w_1on1_box_1",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
     },
     "w_1on1_box_2": {
       "flow_type": "template",
       "module": "1on1",
       "flow_name": "w_1on1_box_2",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
     },
     "w_1on1_care_together": {
       "flow_type": "template",
@@ -4852,19 +4866,19 @@
       "flow_type": "template",
       "module": "1on1",
       "flow_name": "w_1on1_hp_challenges",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
     },
     "w_1on1_hp_highlights": {
       "flow_type": "template",
       "module": "1on1",
       "flow_name": "w_1on1_hp_highlights",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
     },
     "w_1on1_hp_review": {
       "flow_type": "template",
       "module": "1on1",
       "flow_name": "w_1on1_hp_review",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
     },
     "w_1on1_intro": {
       "flow_type": "template",
@@ -4882,54 +4896,54 @@
       "flow_type": "template",
       "module": "1on1",
       "flow_name": "w_1on1_m_hp_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
     },
     "w_1on1_m_praise": {
       "flow_type": "template",
       "module": "1on1",
       "flow_name": "w_1on1_m_praise",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
     },
     "w_1on1_m_relax": {
       "flow_type": "template",
       "module": "1on1",
       "flow_name": "w_1on1_m_relax",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
     },
     "w_1on1_m_something_fun": {
       "flow_type": "template",
       "module": "1on1",
       "flow_name": "w_1on1_m_something_fun",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
     },
     "w_1on1_m_w_in_progress": {
       "flow_type": "template",
       "module": "1on1",
       "flow_name": "w_1on1_m_w_in_progress",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
     },
     "w_1on1_m_w_released": {
       "flow_type": "template",
       "module": "1on1",
       "flow_name": "w_1on1_m_w_released",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
     },
     "w_1on1_m_w_reminder": {
       "flow_type": "template",
       "module": "1on1",
       "flow_name": "w_1on1_m_w_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
     },
     "w_1on1_m_w_tomorrow": {
       "flow_type": "template",
       "module": "1on1",
       "flow_name": "w_1on1_m_w_tomorrow",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_1on1_messages.xlsx"
     },
     "w_1on1_messages": {
       "flow_type": "template",
       "flow_name": "w_1on1_messages",
-      "_xlsxPath": "global/in_week_messages/message_navigation.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/message_navigation.xlsx"
     },
     "w_1on1_question": {
       "flow_type": "template",
@@ -5151,13 +5165,13 @@
       "flow_type": "template",
       "module": "consequence",
       "flow_name": "w_consequence_hp_challenges",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_consequence_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_consequence_hp_review.xlsx"
     },
     "w_consequence_hp_review": {
       "flow_type": "template",
       "module": "consequence",
       "flow_name": "w_consequence_hp_review",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_consequence_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_consequence_hp_review.xlsx"
     },
     "w_consequence_intro": {
       "flow_type": "template",
@@ -5187,54 +5201,54 @@
       "flow_type": "template",
       "module": "consequence",
       "flow_name": "w_consequence_m_hp_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
     },
     "w_consequence_m_praise": {
       "flow_type": "template",
       "module": "consequence",
       "flow_name": "w_consequence_m_praise",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
     },
     "w_consequence_m_relax": {
       "flow_type": "template",
       "module": "consequence",
       "flow_name": "w_consequence_m_relax",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
     },
     "w_consequence_m_something_fun": {
       "flow_type": "template",
       "module": "consequence",
       "flow_name": "w_consequence_m_something_fun",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
     },
     "w_consequence_m_w_in_progress": {
       "flow_type": "template",
       "module": "consequence",
       "flow_name": "w_consequence_m_w_in_progress",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
     },
     "w_consequence_m_w_released": {
       "flow_type": "template",
       "module": "consequence",
       "flow_name": "w_consequence_m_w_released",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
     },
     "w_consequence_m_w_reminder": {
       "flow_type": "template",
       "module": "consequence",
       "flow_name": "w_consequence_m_w_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
     },
     "w_consequence_m_w_tomorrow": {
       "flow_type": "template",
       "module": "consequence",
       "flow_name": "w_consequence_m_w_tomorrow",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_consequence_messages.xlsx"
     },
     "w_consequence_messages": {
       "flow_type": "template",
       "flow_name": "w_consequence_messages",
-      "_xlsxPath": "global/in_week_messages/message_navigation.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/message_navigation.xlsx"
     },
     "w_consequence_question_1": {
       "flow_type": "template",
@@ -5378,13 +5392,13 @@
       "flow_type": "template",
       "module": "solve",
       "flow_name": "w_crisis_hp_challenges",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_crisis_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_crisis_hp_review.xlsx"
     },
     "w_crisis_hp_review": {
       "flow_type": "template",
       "module": "solve",
       "flow_name": "w_crisis_hp_review",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_crisis_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_crisis_hp_review.xlsx"
     },
     "w_crisis_intro": {
       "flow_type": "template",
@@ -5408,54 +5422,54 @@
       "flow_type": "template",
       "module": "crisis",
       "flow_name": "w_crisis_m_hp_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_crisis_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_crisis_messages.xlsx"
     },
     "w_crisis_m_praise": {
       "flow_type": "template",
       "module": "crisis",
       "flow_name": "w_crisis_m_praise",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_crisis_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_crisis_messages.xlsx"
     },
     "w_crisis_m_relax": {
       "flow_type": "template",
       "module": "crisis",
       "flow_name": "w_crisis_m_relax",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_crisis_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_crisis_messages.xlsx"
     },
     "w_crisis_m_something_fun": {
       "flow_type": "template",
       "module": "crisis",
       "flow_name": "w_crisis_m_something_fun",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_crisis_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_crisis_messages.xlsx"
     },
     "w_crisis_m_w_in_progress": {
       "flow_type": "template",
       "module": "crisis",
       "flow_name": "w_crisis_m_w_in_progress",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_crisis_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_crisis_messages.xlsx"
     },
     "w_crisis_m_w_released": {
       "flow_type": "template",
       "module": "crisis",
       "flow_name": "w_crisis_m_w_released",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_crisis_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_crisis_messages.xlsx"
     },
     "w_crisis_m_w_reminder": {
       "flow_type": "template",
       "module": "crisis",
       "flow_name": "w_crisis_m_w_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_crisis_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_crisis_messages.xlsx"
     },
     "w_crisis_m_w_tomorrow": {
       "flow_type": "template",
       "module": "crisis",
       "flow_name": "w_crisis_m_w_tomorrow",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_crisis_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_crisis_messages.xlsx"
     },
     "w_crisis_messages": {
       "flow_type": "template",
       "flow_name": "w_crisis_messages",
-      "_xlsxPath": "global/in_week_messages/message_navigation.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/message_navigation.xlsx"
     },
     "w_crisis_question_1": {
       "flow_type": "template",
@@ -5575,31 +5589,31 @@
       "flow_type": "template",
       "module": "instruct",
       "flow_name": "w_instruct_hp_box_1",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
     },
     "w_instruct_hp_box_2": {
       "flow_type": "template",
       "module": "instruct",
       "flow_name": "w_instruct_hp_box_2",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
     },
     "w_instruct_hp_challenges": {
       "flow_type": "template",
       "module": "instruct",
       "flow_name": "w_instruct_hp_challenges",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
     },
     "w_instruct_hp_highlights": {
       "flow_type": "template",
       "module": "instruct",
       "flow_name": "w_instruct_hp_highlights",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
     },
     "w_instruct_hp_review": {
       "flow_type": "template",
       "module": "instruct",
       "flow_name": "w_instruct_hp_review",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
     },
     "w_instruct_intro": {
       "flow_type": "template",
@@ -5617,54 +5631,54 @@
       "flow_type": "template",
       "module": "instruct",
       "flow_name": "w_instruct_m_hp_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
     },
     "w_instruct_m_praise": {
       "flow_type": "template",
       "module": "instruct",
       "flow_name": "w_instruct_m_praise",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
     },
     "w_instruct_m_relax": {
       "flow_type": "template",
       "module": "instruct",
       "flow_name": "w_instruct_m_relax",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
     },
     "w_instruct_m_something_fun": {
       "flow_type": "template",
       "module": "instruct",
       "flow_name": "w_instruct_m_something_fun",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
     },
     "w_instruct_m_w_in_progress": {
       "flow_type": "template",
       "module": "instruct",
       "flow_name": "w_instruct_m_w_in_progress",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
     },
     "w_instruct_m_w_released": {
       "flow_type": "template",
       "module": "instruct",
       "flow_name": "w_instruct_m_w_released",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
     },
     "w_instruct_m_w_reminder": {
       "flow_type": "template",
       "module": "instruct",
       "flow_name": "w_instruct_m_w_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
     },
     "w_instruct_m_w_tomorrow": {
       "flow_type": "template",
       "module": "instruct",
       "flow_name": "w_instruct_m_w_tomorrow",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_instruct_messages.xlsx"
     },
     "w_instruct_messages": {
       "flow_type": "template",
       "flow_name": "w_instruct_messages",
-      "_xlsxPath": "global/in_week_messages/message_navigation.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/message_navigation.xlsx"
     },
     "w_instruct_question_1": {
       "flow_type": "template",
@@ -5808,13 +5822,13 @@
       "flow_type": "template",
       "module": "money",
       "flow_name": "w_money_hp_challenges",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_money_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_money_hp_review.xlsx"
     },
     "w_money_hp_review": {
       "flow_type": "template",
       "module": "money",
       "flow_name": "w_money_hp_review",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_money_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_money_hp_review.xlsx"
     },
     "w_money_intro": {
       "flow_type": "template",
@@ -5868,54 +5882,54 @@
       "flow_type": "template",
       "module": "money",
       "flow_name": "w_money_m_hp_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
     },
     "w_money_m_praise": {
       "flow_type": "template",
       "module": "money",
       "flow_name": "w_money_m_praise",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
     },
     "w_money_m_relax": {
       "flow_type": "template",
       "module": "money",
       "flow_name": "w_money_m_relax",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
     },
     "w_money_m_something_fun": {
       "flow_type": "template",
       "module": "money",
       "flow_name": "w_money_m_something_fun",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
     },
     "w_money_m_w_in_progress": {
       "flow_type": "template",
       "module": "money",
       "flow_name": "w_money_m_w_in_progress",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
     },
     "w_money_m_w_released": {
       "flow_type": "template",
       "module": "money",
       "flow_name": "w_money_m_w_released",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
     },
     "w_money_m_w_reminder": {
       "flow_type": "template",
       "module": "money",
       "flow_name": "w_money_m_w_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
     },
     "w_money_m_w_tomorrow": {
       "flow_type": "template",
       "module": "money",
       "flow_name": "w_money_m_w_tomorrow",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_money_messages.xlsx"
     },
     "w_money_messages": {
       "flow_type": "template",
       "flow_name": "w_money_messages",
-      "_xlsxPath": "global/in_week_messages/message_navigation.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/message_navigation.xlsx"
     },
     "w_money_read_1_temp": {
       "flow_type": "template",
@@ -6043,17 +6057,17 @@
       "flow_name": "w_praise_home_practice",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"
     },
-    "w_praise_hp_content": {
+    "w_praise_hp_challenges": {
       "flow_type": "template",
       "module": "praise",
-      "flow_name": "w_praise_hp_content",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_praise_hp_review.xlsx"
+      "flow_name": "w_praise_hp_challenges",
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_praise_hp_review.xlsx"
     },
     "w_praise_hp_review": {
       "flow_type": "template",
       "module": "praise",
       "flow_name": "w_praise_hp_review",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_praise_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_praise_hp_review.xlsx"
     },
     "w_praise_intro": {
       "flow_type": "template",
@@ -6071,54 +6085,54 @@
       "flow_type": "template",
       "module": "praise",
       "flow_name": "w_praise_m_hp_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
     },
     "w_praise_m_praise": {
       "flow_type": "template",
       "module": "praise",
       "flow_name": "w_praise_m_praise",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
     },
     "w_praise_m_relax": {
       "flow_type": "template",
       "module": "praise",
       "flow_name": "w_praise_m_relax",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
     },
     "w_praise_m_something_fun": {
       "flow_type": "template",
       "module": "praise",
       "flow_name": "w_praise_m_something_fun",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
     },
     "w_praise_m_w_in_progress": {
       "flow_type": "template",
       "module": "praise",
       "flow_name": "w_praise_m_w_in_progress",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
     },
     "w_praise_m_w_released": {
       "flow_type": "template",
       "module": "praise",
       "flow_name": "w_praise_m_w_released",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
     },
     "w_praise_m_w_reminder": {
       "flow_type": "template",
       "module": "praise",
       "flow_name": "w_praise_m_w_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
     },
     "w_praise_m_w_tomorrow": {
       "flow_type": "template",
       "module": "praise",
       "flow_name": "w_praise_m_w_tomorrow",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_praise_messages.xlsx"
     },
     "w_praise_messages": {
       "flow_type": "template",
       "flow_name": "w_praise_messages",
-      "_xlsxPath": "global/in_week_messages/message_navigation.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/message_navigation.xlsx"
     },
     "w_praise_question_1": {
       "flow_type": "template",
@@ -6250,13 +6264,13 @@
       "flow_type": "template",
       "module": "rules",
       "flow_name": "w_rules_hp_challenges",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_rules_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_rules_hp_review.xlsx"
     },
     "w_rules_hp_review": {
       "flow_type": "template",
       "module": "rules",
       "flow_name": "w_rules_hp_review",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_rules_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_rules_hp_review.xlsx"
     },
     "w_rules_intro": {
       "flow_type": "template",
@@ -6280,54 +6294,54 @@
       "flow_type": "template",
       "module": "rules",
       "flow_name": "w_rules_m_hp_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"
     },
     "w_rules_m_praise": {
       "flow_type": "template",
       "module": "rules",
       "flow_name": "w_rules_m_praise",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"
     },
     "w_rules_m_relax": {
       "flow_type": "template",
       "module": "rules",
       "flow_name": "w_rules_m_relax",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"
     },
     "w_rules_m_something_fun": {
       "flow_type": "template",
       "module": "rules",
       "flow_name": "w_rules_m_something_fun",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"
     },
     "w_rules_m_w_in_progress": {
       "flow_type": "template",
       "module": "rules",
       "flow_name": "w_rules_m_w_in_progress",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"
     },
     "w_rules_m_w_released": {
       "flow_type": "template",
       "module": "rules",
       "flow_name": "w_rules_m_w_released",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"
     },
     "w_rules_m_w_reminder": {
       "flow_type": "template",
       "module": "rules",
       "flow_name": "w_rules_m_w_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"
     },
     "w_rules_m_w_tomorrow": {
       "flow_type": "template",
       "module": "rules",
       "flow_name": "w_rules_m_w_tomorrow",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_rules_messages.xlsx"
     },
     "w_rules_messages": {
       "flow_type": "template",
       "flow_name": "w_rules_messages",
-      "_xlsxPath": "global/in_week_messages/message_navigation.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/message_navigation.xlsx"
     },
     "w_rules_question": {
       "flow_type": "template",
@@ -6453,13 +6467,13 @@
       "flow_type": "template",
       "module": "safe",
       "flow_name": "w_safe_hp_challenges",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_safe_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_safe_hp_review.xlsx"
     },
     "w_safe_hp_review": {
       "flow_type": "template",
       "module": "safe",
       "flow_name": "w_safe_hp_review",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_safe_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_safe_hp_review.xlsx"
     },
     "w_safe_intro": {
       "flow_type": "template",
@@ -6495,54 +6509,54 @@
       "flow_type": "template",
       "module": "safe",
       "flow_name": "w_safe_m_hp_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_safe_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_safe_messages.xlsx"
     },
     "w_safe_m_praise": {
       "flow_type": "template",
       "module": "safe",
       "flow_name": "w_safe_m_praise",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_safe_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_safe_messages.xlsx"
     },
     "w_safe_m_relax": {
       "flow_type": "template",
       "module": "safe",
       "flow_name": "w_safe_m_relax",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_safe_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_safe_messages.xlsx"
     },
     "w_safe_m_something_fun": {
       "flow_type": "template",
       "module": "safe",
       "flow_name": "w_safe_m_something_fun",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_safe_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_safe_messages.xlsx"
     },
     "w_safe_m_w_in_progress": {
       "flow_type": "template",
       "module": "safe",
       "flow_name": "w_safe_m_w_in_progress",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_safe_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_safe_messages.xlsx"
     },
     "w_safe_m_w_released": {
       "flow_type": "template",
       "module": "safe",
       "flow_name": "w_safe_m_w_released",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_safe_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_safe_messages.xlsx"
     },
     "w_safe_m_w_reminder": {
       "flow_type": "template",
       "module": "safe",
       "flow_name": "w_safe_m_w_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_safe_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_safe_messages.xlsx"
     },
     "w_safe_m_w_tomorrow": {
       "flow_type": "template",
       "module": "safe",
       "flow_name": "w_safe_m_w_tomorrow",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_safe_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_safe_messages.xlsx"
     },
     "w_safe_messages": {
       "flow_type": "template",
       "flow_name": "w_safe_messages",
-      "_xlsxPath": "global/in_week_messages/message_navigation.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/message_navigation.xlsx"
     },
     "w_safe_question_1": {
       "flow_type": "template",
@@ -6670,24 +6684,24 @@
       "flow_type": "template",
       "module": "self_care",
       "flow_name": "w_self_care_m_hp_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_self_care_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_self_care_messages.xlsx"
     },
     "w_self_care_m_relax": {
       "flow_type": "template",
       "module": "self_care",
       "flow_name": "w_self_care_m_relax",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_self_care_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_self_care_messages.xlsx"
     },
     "w_self_care_m_w_tomorrow": {
       "flow_type": "template",
       "module": "self_care",
       "flow_name": "w_self_care_m_w_tomorrow",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_self_care_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_self_care_messages.xlsx"
     },
     "w_self_care_messages": {
       "flow_type": "template",
       "flow_name": "w_self_care_messages",
-      "_xlsxPath": "global/in_week_messages/message_navigation.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/message_navigation.xlsx"
     },
     "w_self_care_recognise": {
       "flow_type": "template",
@@ -6772,13 +6786,13 @@
       "flow_type": "template",
       "module": "solve",
       "flow_name": "w_solve_hp_challenges",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_solve_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_solve_hp_review.xlsx"
     },
     "w_solve_hp_review": {
       "flow_type": "template",
       "module": "solve",
       "flow_name": "w_solve_hp_review",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_solve_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_solve_hp_review.xlsx"
     },
     "w_solve_intro": {
       "flow_type": "template",
@@ -6802,54 +6816,54 @@
       "flow_type": "template",
       "module": "solve",
       "flow_name": "w_solve_m_hp_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
     },
     "w_solve_m_praise": {
       "flow_type": "template",
       "module": "solve",
       "flow_name": "w_solve_m_praise",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
     },
     "w_solve_m_relax": {
       "flow_type": "template",
       "module": "solve",
       "flow_name": "w_solve_m_relax",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
     },
     "w_solve_m_something_fun": {
       "flow_type": "template",
       "module": "solve",
       "flow_name": "w_solve_m_something_fun",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
     },
     "w_solve_m_w_in_progress": {
       "flow_type": "template",
       "module": "solve",
       "flow_name": "w_solve_m_w_in_progress",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
     },
     "w_solve_m_w_released": {
       "flow_type": "template",
       "module": "solve",
       "flow_name": "w_solve_m_w_released",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
     },
     "w_solve_m_w_reminder": {
       "flow_type": "template",
       "module": "solve",
       "flow_name": "w_solve_m_w_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
     },
     "w_solve_m_w_tomorrow": {
       "flow_type": "template",
       "module": "solve",
       "flow_name": "w_solve_m_w_tomorrow",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
     },
     "w_solve_messages": {
       "flow_type": "template",
       "flow_name": "w_solve_messages",
-      "_xlsxPath": "global/in_week_messages/message_navigation.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/message_navigation.xlsx"
     },
     "w_solve_read_1_temp": {
       "flow_type": "template",
@@ -6975,13 +6989,13 @@
       "flow_type": "template",
       "module": "stress",
       "flow_name": "w_stress_hp_challenges",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_stress_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_stress_hp_review.xlsx"
     },
     "w_stress_hp_review": {
       "flow_type": "template",
       "module": "stress",
       "flow_name": "w_stress_hp_review",
-      "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_stress_hp_review.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_stress_hp_review.xlsx"
     },
     "w_stress_intro": {
       "flow_type": "template",
@@ -6999,54 +7013,54 @@
       "flow_type": "template",
       "module": "stress",
       "flow_name": "w_stress_m_hp_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
     },
     "w_stress_m_praise": {
       "flow_type": "template",
       "module": "stress",
       "flow_name": "w_stress_m_praise",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
     },
     "w_stress_m_relax": {
       "flow_type": "template",
       "module": "stress",
       "flow_name": "w_stress_m_relax",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
     },
     "w_stress_m_something_fun": {
       "flow_type": "template",
       "module": "stress",
       "flow_name": "w_stress_m_something_fun",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
     },
     "w_stress_m_w_in_progress": {
       "flow_type": "template",
       "module": "stress",
       "flow_name": "w_stress_m_w_in_progress",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
     },
     "w_stress_m_w_released": {
       "flow_type": "template",
       "module": "stress",
       "flow_name": "w_stress_m_w_released",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
     },
     "w_stress_m_w_reminder": {
       "flow_type": "template",
       "module": "stress",
       "flow_name": "w_stress_m_w_reminder",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
     },
     "w_stress_m_w_tomorrow": {
       "flow_type": "template",
       "module": "stress",
       "flow_name": "w_stress_m_w_tomorrow",
-      "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/in_week_message_texts/w_stress_messages.xlsx"
     },
     "w_stress_messages": {
       "flow_type": "template",
       "flow_name": "w_stress_messages",
-      "_xlsxPath": "global/in_week_messages/message_navigation.xlsx"
+      "_xlsxPath": "global/top_templates/in_week_messages/message_navigation.xlsx"
     },
     "w_stress_question": {
       "flow_type": "template",
