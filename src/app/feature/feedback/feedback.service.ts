@@ -272,8 +272,7 @@ export class FeedbackService {
       const allowedActions: IActionId[] = ["feedback", "set_local"];
       for (const actionID of actionsIDs) {
         if (!allowedActions.includes(actionID)) {
-          dummyActionList[actionID] = (args) =>
-            console.log("Feedback action disabled", actionID, args);
+          dummyActionList[actionID] = () => console.info("Feedback action disabled", actionID);
         }
       }
       this.templateActionRegistry.register(dummyActionList, true);
