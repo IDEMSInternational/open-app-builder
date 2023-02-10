@@ -5,10 +5,9 @@ import semver from "semver";
 import simpleGit, { ResetMode } from "simple-git";
 import type { SimpleGit } from "simple-git";
 import { Project, PropertyAssignment, SyntaxKind } from "ts-morph";
-import { getActiveDeployment } from "../../commands/deployment/get";
-import { logError, logOutput, promptInput, promptOptions } from "../../utils";
+import { ActiveDeployment } from "../../commands/deployment/get";
+import { Logger, logOutput, promptOptions } from "../../utils";
 import type { IDeploymentConfigJson } from "../../commands/deployment/common";
-import { DEPLOYMENTS_PATH } from "../../paths";
 
 class GitProvider {
   private git: SimpleGit;
@@ -19,21 +18,10 @@ class GitProvider {
    **/
   constructor() {}
 
-  /** Clone a remote repo to deployments */
-  public async importRemoteRepo(remoteTarget?: string) {
-    if (!remoteTarget) {
-      remoteTarget = await promptInput("Specify url to remote git repo");
-    }
-    const [owner, repo] = remoteTarget.split("/").slice(-2);
-    const targetDir = path.resolve(DEPLOYMENTS_PATH, repo);
-    if (fs.existsSync(targetDir)) {
-      logError({ msg1: "A folder for this deployment already exists", msg2: targetDir });
-    }
-    this.git = simpleGit(DEPLOYMENTS_PATH);
-    console.log(chalk.gray(`Cloning ${remoteTarget}`));
-    await this.git.clone(remoteTarget, targetDir);
-    logOutput({ msg1: "Deployment imported successfully", msg2: targetDir });
-    return targetDir;
+  /** Access git clone methods directly independent of deployment */
+  public async cloneRepo(repoPath: string, localPath: string) {
+    const git = simpleGit();
+    return git.clone(repoPath, localPath);
   }
 
   /** Pull latest content from remote repo into local branch. Attempt to resolve any conflicts */
@@ -102,7 +90,7 @@ class GitProvider {
   private async prepareReleaseBranch(branchName: string, compareLink: string) {
     // Ensure existing release does not already exist for tag
     if (await this.checkRemoteBranchExists(branchName)) {
-      logError({ msg1: "A branch already exists for this release", msg2: compareLink });
+      Logger.error({ msg1: "A branch already exists for this release", msg2: compareLink });
     }
     if (await this.checkLocalBranchExists(branchName)) {
       await this.git.deleteLocalBranch(branchName, true);
@@ -194,16 +182,16 @@ class GitProvider {
     if (this.git) {
       return;
     }
-    this.deployment = getActiveDeployment();
+    this.deployment = ActiveDeployment.get();
     const { _workspace_path, git, _config_ts_path } = this.deployment;
     if (!git?.content_repo) {
-      logError({
+      Logger.error({
         msg1: "No git content repo configured, specify in config",
         msg2: _config_ts_path,
       });
     }
     if (!_workspace_path) {
-      logError({
+      Logger.error({
         msg1: "No active deployment specified",
         msg2: "yarn workflow deployment set",
       });

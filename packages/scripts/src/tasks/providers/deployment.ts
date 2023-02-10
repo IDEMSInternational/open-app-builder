@@ -1,13 +1,25 @@
+import { promptInput } from "../../utils";
+
 import { parseCommand } from "../../commands";
+import { createDeployment } from "../../commands/deployment/create";
+import { importRepo } from "../../commands/deployment/import";
+import { DeploymentSet } from "../../commands/deployment/set";
 
 class DeploymentProvider {
   /** Create a new app deployment configuration */
   async create() {
-    parseCommand(`deployment create`);
+    return createDeployment();
   }
 
   async set(name = "") {
-    parseCommand(`deployment set ${name} --workflow`);
+    return new DeploymentSet().setActiveDeployment(name);
+  }
+
+  async import(remoteRepo?: string) {
+    if (!remoteRepo) {
+      remoteRepo = await promptInput("Specify url to remote git repo");
+    }
+    return importRepo(remoteRepo);
   }
 }
 
