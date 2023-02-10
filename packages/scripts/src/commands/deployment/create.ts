@@ -19,7 +19,9 @@ const program = new Command("create");
 export default program
   .description("Create new deployment")
   // options copied from/passed to generate
-  .action(async () => createDeployment());
+  .action(async () => {
+    await createDeployment();
+  });
 
 /***************************************************************************************
  * Main Methods
@@ -42,17 +44,7 @@ export async function createDeployment() {
   );
   const createdDeployment = await generatorExec();
   logOutput({ msg1: "Deployment created", msg2: createdDeployment.targetConfigFile });
-
-  // Set new config
-  const shouldSetConfig = await promptOptions(
-    ["Yes", "No"],
-    "Would you like to set the deployment as active?"
-  );
-  if (shouldSetConfig === "Yes") {
-    // Set newly created config as active
-    const { setActiveDeployment } = new DeploymentSet();
-    await setActiveDeployment(createdDeployment.name);
-  }
+  return createdDeployment.name;
 }
 
 /** Create a new standalone deployment config */
