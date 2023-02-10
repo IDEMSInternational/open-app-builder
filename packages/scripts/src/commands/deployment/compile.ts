@@ -1,9 +1,9 @@
 #!/usr/bin/env node
+import { spawnSync } from "child_process";
 import { Command } from "commander";
 import { IDeploymentConfig } from "data-models";
 import fs from "fs-extra";
 import path from "path";
-import { parseCommand } from "..";
 import { ROOT_DIR } from "../../paths";
 import { Logger } from "../../utils";
 import { DEPLOYMENT_CONFIG_VERSION, IDeploymentConfigJson } from "./common";
@@ -49,13 +49,13 @@ export async function compileDeploymentTS(options: IOptions) {
   fs.utimesSync(options.output, mtime, mtime);
 }
 
-/** Additional export to call program */
+/** Additional export to call program a child process to allow sync execution of async functions */
 export function compileDeploymentTSSync(options: IOptions) {
   const exec = `yarn workspace scripts start`;
   const args = `deployment compile --input "${options.input}" --output "${options.output}"`;
   const cmd = `${exec} ${args}`;
   // console.log(chalk.yellow(cmd));
-  parseCommand(cmd);
+  spawnSync(cmd, { stdio: "inherit", shell: true });
 }
 
 /** Load a .ts file and return the default export */
