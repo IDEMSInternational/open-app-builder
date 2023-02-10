@@ -43,7 +43,6 @@ export class WorkflowRunnerClass {
   tasks = ALL_TASKS;
   workflows: IDeploymentWorkflows = {};
   config: IDeploymentConfigJson;
-  activeWorkflow = {};
   activeWorkflowOptions: { [name: string]: string | boolean } = {};
 
   /**
@@ -136,13 +135,13 @@ export class WorkflowRunnerClass {
   }
 
   private async executeWorkflow(workflow: IWorkflow, args: string[] = []) {
-    this.activeWorkflow = {};
+    const activeWorkflow = {};
     for (const step of workflow.steps) {
-      this.activeWorkflow[step.name] = step;
+      activeWorkflow[step.name] = step;
       console.log(chalk.yellow(`========== ${step.name} ==========`));
       const context = {
         config: this.config,
-        workflow: this.activeWorkflow,
+        workflow: activeWorkflow,
         tasks: this.tasks,
         args,
         options: this.activeWorkflowOptions,
@@ -153,7 +152,9 @@ export class WorkflowRunnerClass {
       }
       if (shouldProcess) {
         const output = await step.function(context);
-        this.activeWorkflow[step.name].output = output;
+        if (activeWorkflow[step.name]) {
+          activeWorkflow[step.name].output = output;
+        }
         // re-evaluate active deployment in case step changed it
         this.config = ActiveDeployment.get({ ignoreMissing: true });
       } else {
