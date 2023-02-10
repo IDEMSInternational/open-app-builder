@@ -55,12 +55,15 @@ const handleError = (e) => {
 process.on("SIGINT", handleExit);
 process.on("uncaughtException", handleError);
 
-program.parseAsync(process.argv);
+async function main() {
+  await program.parseAsync(process.argv);
+}
+main();
 
 /** Allow programmatic call of command parser */
-export const parseCommand = (cmd: string) => {
+export const parseCommand = async (cmd: string) => {
   const args = [...process.argv.slice(0, 2), ...cmd.split(" ")];
-  program.parse(args);
+  return program.parseAsync(args);
 };
 
 // Additional exports for direct consumption
