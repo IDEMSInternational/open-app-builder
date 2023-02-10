@@ -113,15 +113,10 @@ export function createChildLogger(meta = {}) {
 function error(opts: Partial<ILogOptions> = {}) {
   const { msg1, msg2, error, logOnly } = { ...defaultLog, ...opts };
   console.log(
-    boxen(
-      `
-    ${chalk.red(msg1)}
-          
-    ${chalk.yellow(msg2)}
-          
-          `,
-      { padding: 1, borderColor: "red" }
-    )
+    boxen(`${chalk.red(msg1)}\n\n${chalk.yellow(msg2)}`, {
+      padding: 1,
+      borderColor: "red",
+    })
   );
   if (error) {
     console.error(error);
@@ -142,14 +137,10 @@ export const Logger = {
 export function logOutput(opts: Partial<ILogOptions> = {}) {
   const { msg1, msg2 } = { ...defaultLog, ...opts };
   console.log(
-    boxen(
-      `
-${chalk.blueBright(msg1)}
-            
-${chalk.cyanBright(msg2)}
-            `,
-      { padding: 1, borderColor: "blueBright" }
-    )
+    boxen(`${chalk.blueBright(msg1)}\n\n${chalk.cyanBright(msg2)}`, {
+      padding: 1,
+      borderColor: "blueBright",
+    })
   );
 }
 
@@ -157,14 +148,10 @@ ${chalk.cyanBright(msg2)}
 export function logWarning(opts: Partial<ILogOptions> = {}) {
   const { msg1, msg2 } = { ...defaultLog, ...opts };
   console.log(
-    boxen(
-      `
-      ${chalk.yellowBright(msg1)}
-              
-      ${chalk.yellow(msg2)}
-              `,
-      { padding: 1, borderColor: "yellowBright" }
-    )
+    boxen(`${chalk.yellowBright(msg1)}\n\n${chalk.yellow(msg2)}`, {
+      padding: 1,
+      borderColor: "yellowBright",
+    })
   );
 }
 
