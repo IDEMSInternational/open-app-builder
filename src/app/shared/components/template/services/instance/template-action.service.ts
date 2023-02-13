@@ -203,10 +203,7 @@ export class TemplateActionService extends SyncServiceBase {
           return this.templateService.runStandaloneTemplate(action.args[0], action.params);
         }
         return this.templateNavService.handlePopupAction(action, this.container);
-      case "feedback": {
-        const [subtopic, ...payload] = args;
-        return this.eventService.publish({ topic: "FEEDBACK", subtopic, payload });
-      }
+
       case "track_event":
         this.analyticsService.trackEvent(key);
         break;

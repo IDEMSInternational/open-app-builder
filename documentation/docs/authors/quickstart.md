@@ -14,9 +14,9 @@ yarn install
 
 ### Setup required configuration
 
-All configuration is pre-established in the `packages/scripts/config` folder, however is encrypted to avoid sharing sensitive information publically.
+All configuration is pre-established in the `packages/scripts/config` folder, however is encrypted to avoid sharing sensitive information publicly.
 
-You must optain a `private.key` file from the development team which you can copy into the `packages/scripts/config` folder.
+You must obtain a `private.key` file from the development team which you can copy into the `packages/scripts/config` folder.
 
 Once the file is copied run the following command:
 

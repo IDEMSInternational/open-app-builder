@@ -82,6 +82,55 @@
       "_nested_name": "final"
     },
     {
+      "name": "data_list_row",
+      "value": [
+        "check_in.@local.workshop"
+      ],
+      "type": "set_variable",
+      "_nested_name": "data_list_row",
+      "_dynamicFields": {
+        "value": {
+          "0": [
+            {
+              "fullExpression": "check_in.@local.workshop",
+              "matchedExpression": "@local.workshop",
+              "type": "local",
+              "fieldName": "workshop"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.workshop": [
+          "value.0"
+        ]
+      }
+    },
+    {
+      "name": "row_data",
+      "value": "@data.@local.data_list_row",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "row_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.@local.data_list_row",
+            "matchedExpression": "@local.data_list_row",
+            "type": "local",
+            "fieldName": "data_list_row"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.data_list_row": [
+          "value"
+        ]
+      }
+    },
+    {
       "type": "template",
       "name": "workshop_activity",
       "value": "workshop_activity",
@@ -117,40 +166,51 @@
         },
         {
           "name": "activity_title",
-          "value": "Welcome @fields.user_name",
+          "value": "@local.row_data.activity_title",
           "_translations": {
-            "value": {
-              "tz_sw": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "workshop_activity.activity_title",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "Welcome @fields.user_name",
-                "matchedExpression": "@fields.user_name",
-                "type": "fields",
-                "fieldName": "user_name"
+                "fullExpression": "@local.row_data.activity_title",
+                "matchedExpression": "@local.row_data.activity_title",
+                "type": "local",
+                "fieldName": "row_data"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@fields.user_name": [
+            "@local.row_data.activity_title": [
               "value"
             ]
           }
         },
         {
           "name": "intro_text",
-          "value": "It's great to see you again!",
+          "value": "@local.row_data.intro_text",
           "_translations": {
-            "value": {
-              "tz_sw": true
-            }
+            "value": {}
           },
           "type": "set_variable",
-          "_nested_name": "workshop_activity.intro_text"
+          "_nested_name": "workshop_activity.intro_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.row_data.intro_text",
+                "matchedExpression": "@local.row_data.intro_text",
+                "type": "local",
+                "fieldName": "row_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.row_data.intro_text": [
+              "value"
+            ]
+          }
         },
         {
           "name": "activity_banner",
@@ -250,15 +310,136 @@
               }
             },
             {
-              "name": "question_text",
-              "value": "How are you feeling today?",
+              "name": "text",
+              "value": "@local.row_data.text",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
+              },
+              "hidden": "!@local.row_data.text",
+              "type": "set_variable",
+              "_nested_name": "workshop_activity.content_box.text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.row_data.text",
+                    "matchedExpression": "@local.row_data.text",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ],
+                "hidden": [
+                  {
+                    "fullExpression": "!@local.row_data.text",
+                    "matchedExpression": "!@local.row_data.text",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.row_data.text": [
+                  "value"
+                ],
+                "!@local.row_data.text": [
+                  "hidden"
+                ]
+              }
+            },
+            {
+              "name": "question_text",
+              "value": "@local.row_data.question_text",
+              "_translations": {
+                "value": {}
               },
               "type": "set_variable",
-              "_nested_name": "workshop_activity.content_box.question_text"
+              "_nested_name": "workshop_activity.content_box.question_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.row_data.question_text",
+                    "matchedExpression": "@local.row_data.question_text",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.row_data.question_text": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "reply_happy",
+              "value": "@local.row_data.reply_happy",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "workshop_activity.content_box.reply_happy",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.row_data.reply_happy",
+                    "matchedExpression": "@local.row_data.reply_happy",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.row_data.reply_happy": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "reply_ok",
+              "value": "@local.row_data.reply_ok",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "workshop_activity.content_box.reply_ok",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.row_data.reply_ok",
+                    "matchedExpression": "@local.row_data.reply_ok",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.row_data.reply_ok": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "reply_sad",
+              "value": "@local.row_data.reply_sad",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "workshop_activity.content_box.reply_sad",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.row_data.reply_sad",
+                    "matchedExpression": "@local.row_data.reply_sad",
+                    "type": "local",
+                    "fieldName": "row_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.row_data.reply_sad": [
+                  "value"
+                ]
+              }
             }
           ],
           "_nested_name": "workshop_activity.content_box"

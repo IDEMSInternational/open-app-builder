@@ -10,7 +10,7 @@ const copy = (options: { src: string; target: string; copyOptions?: fs.CopyOptio
 
 /** Create an _contents.json file of folder contents */
 const writeFolderContents = (options: { src: string }) => {
-  const contents = generateFolderFlatMap(options.src, true, (p) => p !== "_contents.json");
+  const contents = generateFolderFlatMap(options.src, { filterFn: (p) => p !== "_contents.json" });
   const targetFile = resolve(options.src, "_contents.json");
   fs.writeJSONSync(targetFile, contents);
 };
