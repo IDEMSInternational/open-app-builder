@@ -124,6 +124,7 @@ const workflows: IDeploymentWorkflows = {
             sourceSheetsFolder: workflow.sheets_process.output,
             sourceTranslationsFolder,
           });
+          tasks.appData.copyDeploymentDataToApp();
           // TODO - add support for assets
         },
       },

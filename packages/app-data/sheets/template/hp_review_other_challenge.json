@@ -4,33 +4,9 @@
   "status": "released",
   "rows": [
     {
-      "name": "workshop_data",
-      "type": "set_variable",
-      "_nested_name": "workshop_data"
-    },
-    {
       "name": "workshop",
-      "value": "@local.workshop_data.id",
-      "_translations": {
-        "value": {}
-      },
       "type": "set_variable",
-      "_nested_name": "workshop",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.workshop_data.id",
-            "matchedExpression": "@local.workshop_data.id",
-            "type": "local",
-            "fieldName": "workshop_data"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_data.id": [
-          "value"
-        ]
-      }
+      "_nested_name": "workshop"
     },
     {
       "name": "hp_challenge",
