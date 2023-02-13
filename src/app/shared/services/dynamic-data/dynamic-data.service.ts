@@ -178,10 +178,10 @@ export class DynamicDataService extends AsyncServiceBase {
     const { id, ...fields } = data;
     // TODO - could make QC check in parser instead of at runtime
     if (!id) {
-      throw new Error("Cannot create dynamic data without id column", data);
+      throw new Error("Cannot create dynamic data without id column\n" + data);
     }
     if (typeof id !== "string") {
-      throw new Error("ID column must be formatted as a string", data);
+      throw new Error("ID column must be formatted as a string\n" + data);
     }
     const schema = REACTIVE_SCHEMA_BASE;
     for (const [key, value] of Object.entries(fields)) {

@@ -1,6 +1,8 @@
 {
   "root": true,
   "ignorePatterns": ["projects/**/*"],
+  "plugins": ["jasmine"],
+  "env": { "jasmine": true },
   "overrides": [
     {
       "files": ["*.ts"],
@@ -101,6 +103,16 @@
       "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {
         "@angular-eslint/template/eqeqeq": "warn"
+      }
+    },
+    {
+      "files": ["*.spec.ts"],
+      "extends": ["plugin:jasmine/recommended"],
+      "rules": {
+        "jasmine/no-focused-tests": 2,
+        "jasmine/new-line-before-expect": 0,
+        "jasmine/new-line-between-declarations": 0,
+        "jasmine/prefer-toHaveBeenCalledWith": 0
       }
     }
   ]

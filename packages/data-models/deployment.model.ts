@@ -1,5 +1,4 @@
-import clone from "clone";
-import type { IAppConfigOverride } from "./appConfig";
+import type { IAppConfig } from "./appConfig";
 
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
@@ -33,20 +32,16 @@ export interface IDeploymentConfig {
     icon_asset_background_path?: string;
   };
   /** Optional override of any provided constants from data-models/constants */
-  app_config?: IAppConfigOverride;
+  app_config: IAppConfig;
   app_data?: {
-    /** processed sheets for use in app. Default `packages/app-data/sheets` */
-    sheets_output_path?: string;
+    /** Folder to populate processed content. Default `packages/app-data` */
+    output_path?: string;
     /** partially compiled sheets for use in repopulation. Default `./cache/converter` */
     converter_cache_path?: string;
-    /** processed assets for use in app. Defaults `packages/app_data/assets` */
-    assets_output_path?: string;
     /** filter function that receives converted flows. Default `(flow)=>true`*/
     sheets_filter_function?: (flow: IFlowTypeBase) => boolean;
     /** filter function that receives basic file info such as relativePath and size. Default `(fileEntry)=>true`*/
     assets_filter_function?: (fileEntry: IContentsEntry) => boolean;
-    /** processed translations for use in app. Default `packages/app_data/translations` */
-    translations_output_path?: string;
   };
   translations?: {
     /** List of all language codes to include. Default null (includes all) */
@@ -69,20 +64,13 @@ export interface IDeploymentConfig {
     /** sentry/glitchtip logging dsn */
     dsn: string;
   };
-  /** optional version number to force recompile */
+  /** track whether deployment processed from default config */
+  _validated?: boolean;
+  /** version number added from scripts to recompile on core changes */
   _version?: number;
   /** track parent config  */
   _parent_config?: Partial<IDeploymentConfig & { _workspace_path: string }>;
 }
-
-/** When extending a config it is usually better to clone to avoid accidentally altering original */
-export const cloneConfig = (config: IDeploymentConfig): IDeploymentConfig => clone(config);
-
-/** Minimal example of just required config */
-export const DEPLOYMENT_CONFIG_EXAMPLE_MIN: IDeploymentConfig = {
-  name: "Minimal Config Example",
-  google_drive: { assets_folder_id: "", sheets_folder_id: "" },
-};
 
 /** Full example of just all config once merged with defaults */
 export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
@@ -95,16 +83,15 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     assets_filter_function: (gdriveEntry) => true,
   },
   android: {},
-  app_config: {},
+  app_config: {} as any, // populated by `getDefaultAppConstants()`,,
   local_drive: {
     assets_path: "./assets",
     sheets_path: "./sheets",
   },
   app_data: {
-    sheets_output_path: "packages/app-data/sheets",
+    // TODO - change to local ./app-data folder once git repos in use
+    output_path: "packages/app-data",
     converter_cache_path: "./cache/converter",
-    assets_output_path: "packages/app-data/assets",
-    translations_output_path: "packages/app-data/translations",
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
   },
@@ -118,7 +105,8 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     custom_ts_files: [],
     task_cache_path: "./tasks",
   },
-  _version: 1.0,
+  _validated: true,
+  _parent_config: null,
 };
 
 /** Duplicate type defintion from scripts (TODO - find better way to share) */
@@ -150,3 +138,11 @@ interface IFlowTypeBase {
   flow_subtype?: string;
   status: "draft" | "released";
 }
+
+type IContentsEntryMinimal = Omit<IContentsEntry, "relativePath" | "modifiedTime">;
+
+export interface IAssetEntry extends IContentsEntryMinimal {
+  translations?: { [language_code: string]: IContentsEntryMinimal };
+  themeVariations?: { [theme_name: string]: IContentsEntryMinimal };
+}
+export type IAssetEntryHashmap = { [assetPath: string]: IAssetEntry };
