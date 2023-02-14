@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import clone from "clone";
 import { FlowTypes } from "packages/data-models";
 
-type IActionId = FlowTypes.TemplateRowAction["action_id"];
+export type IActionId = FlowTypes.TemplateRowAction["action_id"];
 export type IActionHandlers = Record<
   IActionId,
   (action: FlowTypes.TemplateRowAction) => Promise<any>
