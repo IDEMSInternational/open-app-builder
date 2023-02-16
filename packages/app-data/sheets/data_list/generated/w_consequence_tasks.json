@@ -89,7 +89,7 @@
       "group": "read_1",
       "individual": true,
       "together": true,
-      "template": "w_consequence_read_1_temp",
+      "template": "w_consequence_read_1",
       "rel_priority": 1,
       "completed_field": "task_w_consequence_read_1_completed",
       "completed": "@fields.task_w_consequence_read_1_completed"
@@ -137,7 +137,7 @@
       "group": "read_2",
       "individual": true,
       "together": true,
-      "template": "w_consequence_read_3_temp",
+      "template": "w_consequence_read_3",
       "rel_priority": 1,
       "completed_field": "task_w_consequence_read_2_completed",
       "completed": "@fields.task_w_consequence_read_2_completed"

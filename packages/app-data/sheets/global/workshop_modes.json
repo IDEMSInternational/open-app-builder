@@ -62,6 +62,25 @@
           "za_zu": true
         }
       }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "story",
+      "value": "Story",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "part_connector",
+      "value": "-",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_globals.xlsx"

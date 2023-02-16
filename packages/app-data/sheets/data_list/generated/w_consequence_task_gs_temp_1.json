@@ -173,17 +173,16 @@
       "together": true,
       "priority": 11,
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.neg_consequence.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.neg_consequence.title"
         }
-      }
+      },
+      "story_id": "neg_consequence"
     },
     {
       "id": "learn_1",
@@ -239,17 +238,16 @@
       "together": true,
       "priority": 72,
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.pos_consequence.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.pos_consequence.title"
         }
-      }
+      },
+      "story_id": "pos_consequence"
     },
     {
       "id": "learn_2",
