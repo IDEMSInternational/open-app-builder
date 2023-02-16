@@ -87,7 +87,7 @@
       "group": "read",
       "individual": true,
       "together": true,
-      "template": "w_praise_read_temp",
+      "template": "w_praise_read",
       "priority": 12,
       "rel_priority": 1
     },
