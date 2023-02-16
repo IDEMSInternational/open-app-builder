@@ -1,7 +1,7 @@
 {
   "flow_type": "template",
-  "module": "praise",
-  "flow_name": "w_praise_read",
+  "module": "safe",
+  "flow_name": "w_safe_read_2",
   "status": "released",
   "rows": [
     {
@@ -31,7 +31,7 @@
       "rows": [
         {
           "name": "story_id",
-          "value": "praise",
+          "value": "online_contact",
           "_translations": {
             "value": {}
           },
@@ -42,5 +42,5 @@
       "_nested_name": "read"
     }
   ],
-  "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"
 }
