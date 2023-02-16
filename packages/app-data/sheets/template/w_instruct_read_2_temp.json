@@ -85,53 +85,46 @@
                     },
                     {
                       "name": "text",
-                      "value": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
+                      "value": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practicing dance moves with her friend.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "read.workshop_activity.content_box.box_1.text",
                       "_dynamicFields": {
                         "value": [
                           {
-                            "fullExpression": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
+                            "fullExpression": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practicing dance moves with her friend.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
                             "matchedExpression": "@global.w_instruct_female_caregiver",
                             "type": "global",
                             "fieldName": "w_instruct_female_caregiver"
                           },
                           {
-                            "fullExpression": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
+                            "fullExpression": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practicing dance moves with her friend.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
                             "matchedExpression": "@global.w_instruct_teen_girl",
                             "type": "global",
                             "fieldName": "w_instruct_teen_girl"
                           },
                           {
-                            "fullExpression": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
+                            "fullExpression": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practicing dance moves with her friend.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
                             "matchedExpression": "@global.w_instruct_female_caregiver",
                             "type": "global",
                             "fieldName": "w_instruct_female_caregiver"
                           },
                           {
-                            "fullExpression": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
+                            "fullExpression": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practicing dance moves with her friend.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
                             "matchedExpression": "@global.w_instruct_teen_girl",
                             "type": "global",
                             "fieldName": "w_instruct_teen_girl"
                           },
                           {
-                            "fullExpression": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
+                            "fullExpression": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practicing dance moves with her friend.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
                             "matchedExpression": "@global.w_instruct_teen_girl",
                             "type": "global",
                             "fieldName": "w_instruct_teen_girl"
                           },
                           {
-                            "fullExpression": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
+                            "fullExpression": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practicing dance moves with her friend.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
                             "matchedExpression": "@global.w_instruct_female_caregiver",
                             "type": "global",
                             "fieldName": "w_instruct_female_caregiver"
@@ -175,9 +168,30 @@
                         },
                         {
                           "name": "text",
+                          "value": "@global.w_instruct_teen_girl and her friend enjoy practising their dance moves.",
+                          "_translations": {
+                            "value": {
+                              "tz_sw": true
+                            }
+                          },
                           "hidden": true,
                           "type": "set_variable",
-                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.text"
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.text",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@global.w_instruct_teen_girl and her friend enjoy practising their dance moves.",
+                                "matchedExpression": "@global.w_instruct_teen_girl",
+                                "type": "global",
+                                "fieldName": "w_instruct_teen_girl"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@global.w_instruct_teen_girl": [
+                              "value"
+                            ]
+                          }
                         }
                       ],
                       "_nested_name": "read.workshop_activity.content_box.box_2.box_1"
