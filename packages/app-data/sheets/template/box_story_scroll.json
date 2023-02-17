@@ -1,11 +1,11 @@
 {
   "flow_type": "template",
-  "flow_name": "box_content_scroll",
+  "flow_name": "box_story_scroll",
   "status": "released",
   "rows": [
     {
       "name": "story_id",
-      "value": "w_praise",
+      "value": "praise",
       "_translations": {
         "value": {}
       },

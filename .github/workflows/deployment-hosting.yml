@@ -40,7 +40,7 @@ jobs:
       - name: Set Scripts Deployment
         run: yarn workflow deployment set $DEPLOYMENT_NAME
       ### Generate and upload sourcemaps ###
-      - run: yarn build --source-map=true
+      - run: yarn build --configuration "production,glitchtip"
       - name: set app version
         run: echo "APP_VERSION=$(echo "$(cat package.json | jq -r '.version')")" >> $GITHUB_ENV
       - name: Upload sourcemaps
