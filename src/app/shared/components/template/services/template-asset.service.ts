@@ -9,6 +9,7 @@ const ASSETS_BASE = `assets/app_data/assets`;
 
 /** Expected folder containing global assets (TODO - merge with scripts) */
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
+const DEFAULT_THEME_NAME = "default";
 
 @Injectable({ providedIn: "root" })
 export class TemplateAssetService extends AsyncServiceBase {
@@ -25,53 +26,53 @@ export class TemplateAssetService extends AsyncServiceBase {
     this.ensureSyncServicesReady([this.themeService]);
   }
 
-  getAbsoluteAssetPath(value: string) {
-    const assetName = this.cleanAssetName(value);
-    const assetEntry = ASSETS_CONTENTS_LIST[assetName];
-    if (!assetEntry) {
-      console.error("Asset missing", value, assetName);
-    }
-    return this.convertPLHRelativePathToAssetPath(`${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`);
-  }
   /**
-   * Retrieve the path to translated version of an asset path for the current language.
-   * Fallsback to original path if does not exist
+   * Retrieve the path to a variation of an asset for the current language and theme.
+   * It is possible that such a variation does not exist, in which case the path to a
+   * different version of the asset will be returned as a fallback.
+   * The order of priority for these fallbacks is:
+   * 1. current theme, current language
+   * 2. default theme, current language
+   * 3. current theme, default language
+   * 4. default theme, default language
    */
   getTranslatedAssetPath(value: string) {
-    const currentLanguageCode = this.translateService.app_language;
     const assetName = this.cleanAssetName(value);
     const assetEntry = ASSETS_CONTENTS_LIST[assetName];
     if (!assetEntry) {
       console.error("Asset missing", value, assetName);
     }
-    if (assetEntry?.translations?.[currentLanguageCode]) {
-      return this.convertPLHRelativePathToAssetPath(`${currentLanguageCode}/${assetName}`);
-    }
-    return this.convertPLHRelativePathToAssetPath(`${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`);
-  }
+    // Define default/fallback asset path: asset's "global" version for the default theme
+    let relativePathToOverride = `${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`;
 
-  /**
-   * Retrieve the path to theme-specific version of an asset path for the current theme.
-   * Fallsback to original path if does not exist
-   */
-  getThemeAssetPath(value: string) {
-    const themeName = this.themeService.getCurrentTheme();
-    const assetName = this.cleanAssetName(value);
-    const assetEntry = ASSETS_CONTENTS_LIST[assetName];
-    if (!assetEntry) {
-      console.error("Asset missing", value, assetName);
+    const currentThemeName = this.themeService.getCurrentTheme();
+    const currentLanguageCode = this.translateService.app_language;
+
+    // Assets for the default theme are stored in the base folder,
+    // assets for other themes are nested in a child "theme_" folder
+    const themePath = currentThemeName === DEFAULT_THEME_NAME ? "" : `theme_${currentThemeName}/`;
+
+    // Use a translated version of the asset for the current language and theme, if it exists
+    if (assetEntry?.themeVariations?.[currentThemeName]?.[currentLanguageCode]) {
+      relativePathToOverride = `${themePath}${currentLanguageCode}/${assetName}`;
     }
-    if (assetEntry?.themeVariations?.[themeName]) {
-      return this.convertPLHRelativePathToAssetPath(
-        `theme_${themeName}/${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`
-      );
+    // If a translated version does not exist in this theme for the current language,
+    // use the translated version for the default theme, if it exists.
+    // This prioritises language over theme, in order to try and serve the user the asset
+    // in their chosen language if any translation exists.
+    else if (assetEntry?.themeVariations?.[DEFAULT_THEME_NAME]?.[currentLanguageCode]) {
+      relativePathToOverride = `${currentLanguageCode}/${assetName}`;
     }
-    return this.convertPLHRelativePathToAssetPath(`${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`);
+    // Otherwise use a the global version of the asset for the current theme, if it exists
+    else if (assetEntry?.themeVariations?.[currentThemeName]?.[ASSETS_GLOBAL_FOLDER_NAME]) {
+      relativePathToOverride = `${themePath}${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`;
+    }
+    return this.convertPLHRelativePathToAssetPath(relativePathToOverride);
   }
 
   private cleanAssetName(value: string) {
     // remove prefix slash
-    if (value.startsWith("/")) value = value.replace("/", "");
+    if (value.startsWith("/")) value = value.substring(1);
     return value;
   }
 
