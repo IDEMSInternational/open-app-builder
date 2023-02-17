@@ -32,16 +32,15 @@
       "individual": true,
       "together": true,
       "priority": 12,
+      "story_id": "neg_instruct",
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.neg_instruct.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.neg_instruct.title"
         }
       }
     },
@@ -50,16 +49,15 @@
       "individual": true,
       "together": true,
       "priority": 14,
+      "story_id": "pos_instruct",
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.pos_instruct.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.pos_instruct.title"
         }
       }
     },
