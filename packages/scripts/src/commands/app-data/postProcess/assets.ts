@@ -14,9 +14,14 @@ import {
   IContentsEntryHashmap,
   kbToMB,
   isThemeAssetsFolderName,
+  getThemeNameFromThemeAssetFolderName,
 } from "../../../utils";
 import { ActiveDeployment } from "../../deployment/get";
-import type { IAssetEntry, IAssetEntryHashmap } from "data-models/deployment.model";
+import type {
+  IAssetEntry,
+  IAssetEntryHashmap,
+  IContentsEntryMinimal,
+} from "data-models/deployment.model";
 
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
@@ -57,12 +62,12 @@ export class AssetsPostProcessor {
     this.copyAssetsToFolder(mergedAssets, stagingDir);
     this.assetsQualityCheck(stagingDir);
     this.checkTotalAssetSize(mergedAssets);
-    const { global, missing } = this.listAssetOverrides(mergedAssets);
+    const { complete, orphaned } = this.listAssetOverrides(mergedAssets);
     fs.removeSync(stagingDir);
 
     // copy deployment assets to main folder and write merged contents file
     this.copyAssetsToFolder(sourceAssetsFiltered, appAssetsFolder);
-    this.writeAssetsContentsFiles(appAssetsFolder, global, missing);
+    this.writeAssetsContentsFiles(appAssetsFolder, complete, orphaned);
 
     console.log(chalk.green("Asset Process Complete"));
   }
@@ -70,8 +75,8 @@ export class AssetsPostProcessor {
   /**
    * Write two entries to the app assets folder
    * `contents.json` provides a summary of all assets available to the global app with translations
-   * `orphaned-assets.json` provides a summary of all assets that appear in translation folders
-   * but do not have corresponding global entries (only populated if entries exist)
+   * `orphaned-assets.json` provides a summary of all assets that appear in translation or theme folders
+   * but do not have corresponding default global entries (only populated if entries exist)
    */
   private writeAssetsContentsFiles(
     appAssetsFolder: string,
@@ -144,13 +149,17 @@ export class AssetsPostProcessor {
     // individual file filter function - includes global filter as well as language and theme filters
     function shouldInclude(entry: IContentsEntry) {
       if (assets_filter_function && !assets_filter_function(entry)) return false;
-      const folderName = entry.relativePath.split("/")[0];
+      const [folderName, ...nestedPath] = entry.relativePath.split("/");
       if (filter_language_codes?.length > 0 && isCountryLanguageCode(folderName)) {
         return filter_language_codes.includes(folderName);
       }
       if (isThemeAssetsFolderName(folderName)) {
-        const folderThemeName = folderName.replace("theme_", "");
-        return APP_THEMES.available.includes(folderThemeName);
+        const themeName = getThemeNameFromThemeAssetFolderName(folderName);
+        if (!APP_THEMES.available.includes(themeName)) return false;
+        const languageFolder = nestedPath[0];
+        if (filter_language_codes?.length > 0 && isCountryLanguageCode(languageFolder)) {
+          return filter_language_codes.includes(languageFolder);
+        }
       }
       return true;
     }
@@ -202,15 +211,6 @@ export class AssetsPostProcessor {
     Object.values(sourceAssets).forEach((entry) => {
       totalSize += entry.size_kb;
       langSizes.global += entry.size_kb;
-
-      // repeat for nested translation entries (TODO - could give breakdown by language)
-      if (entry.translations) {
-        Object.entries(entry.translations).forEach(([translated_key, translatedEntry]) => {
-          totalSize += translatedEntry.size_kb;
-          if (!langSizes[translated_key]) langSizes[translated_key] = 0;
-          langSizes[translated_key] += translatedEntry.size_kb;
-        });
-      }
     });
     // Log output
     const langSizesMBSummary = Object.entries(langSizes)
@@ -238,66 +238,58 @@ export class AssetsPostProcessor {
    */
   private listAssetOverrides(sourceAssets: IContentsEntryHashmap) {
     const entries: IAssetEntriesByType = {
-      global: {},
-      translations: {},
-      themeVariations: {},
-      missing: {},
+      complete: {},
+      orphaned: {},
     };
     const globalFolder = ASSETS_GLOBAL_FOLDER_NAME;
 
     // split assets to separate global, translated and theme assets
     Object.entries(sourceAssets).forEach(([relativePath, entry]) => {
+      const assetEntry = this.contentsToAssetEntry(entry);
+
       let [baseFolder, ...nestedPaths] = relativePath.split("/");
       let nestedPath = nestedPaths.join("/");
-      const assetEntry = this.contentsToAssetEntry(entry);
-      if (baseFolder === globalFolder) {
-        entries.global[nestedPath] = assetEntry;
-      } else if (baseFolder.startsWith("theme_")) {
-        baseFolder = baseFolder.replace("theme_", "");
-        nestedPath = nestedPath.replace(`${ASSETS_GLOBAL_FOLDER_NAME}/`, "");
-        entries.themeVariations[baseFolder] ??= {};
-        entries.themeVariations[baseFolder][nestedPath] = assetEntry;
+      let themeName = "default";
+
+      // Handle case where asset is nested inside a theme folder
+      if (isThemeAssetsFolderName(baseFolder)) {
+        themeName = getThemeNameFromThemeAssetFolderName(baseFolder);
+        [baseFolder, ...nestedPaths] = nestedPath.split("/");
+        nestedPath = nestedPaths.join("/");
+      }
+
+      if (baseFolder === globalFolder || isCountryLanguageCode(baseFolder)) {
+        entries.complete[nestedPath] ??= {} as any;
+        entries.complete[nestedPath].themeVariations ??= {};
+        entries.complete[nestedPath].themeVariations[themeName] ??= {};
+        entries.complete[nestedPath].themeVariations[themeName][baseFolder] = assetEntry;
       } else {
-        entries.translations[baseFolder] ??= {};
-        entries.translations[baseFolder][nestedPath] = assetEntry;
+        console.log(
+          `Folder naming error: The folder "${baseFolder}" is not named with a valid language code`
+        );
       }
     });
 
-    mergeAssetOverrides("translations");
-    mergeAssetOverrides("themeVariations");
+    // Check for assets which have no default version, and move them to "orphaned"
+    Object.entries(entries.complete).forEach(([assetPath, assetEntry]) => {
+      if (!assetEntry.themeVariations.default?.hasOwnProperty("global")) {
+        entries.orphaned[assetPath] = assetEntry;
+        delete entries.complete.assetPath;
+      }
+    });
     return entries;
-
-    /** Update global asset entries to include language or theme overrides */
-    function mergeAssetOverrides(type: "translations" | "themeVariations") {
-      // process assets by language, copying a reference for any language assets to corresponding
-      // global. Track as missing if global does not exist
-      Object.entries(entries[type]).forEach(([baseName, langHashmap]) => {
-        Object.entries(langHashmap).forEach(([nestedPath, entry]) => {
-          if (entries.global.hasOwnProperty(nestedPath)) {
-            entries.global[nestedPath][type] ??= {};
-            entries.global[nestedPath][type][baseName] = entry;
-          } else {
-            // add metadata to track where missing asset came from
-            entry[`_source`] = `${type} - ${baseName}`;
-            entries.missing[nestedPath] = entry;
-          }
-        });
-      });
-    }
   }
 
   /** Strip additional fields from contents entry to provide cleaner asset entry */
-  private contentsToAssetEntry(entry: IContentsEntry): IAssetEntry {
+  private contentsToAssetEntry(entry: IContentsEntry): IContentsEntryMinimal {
     const { md5Checksum, size_kb } = entry;
     return { size_kb, md5Checksum };
   }
 }
 
 interface IAssetEntriesByType {
-  /** Assets listed in global folder with reference to language or theme overrides */
-  global: IAssetEntryHashmap;
-  translations: { [languageCode: string]: IAssetEntryHashmap };
-  themeVariations: { [themeName: string]: IAssetEntryHashmap };
-  /** Assets that appear in translation folders but have no corresponding globals */
-  missing: IAssetEntryHashmap;
+  /** Assets that have a global in the default theme, including their respective overrides */
+  complete: IAssetEntryHashmap;
+  /** Assets that appear in translation or theme folders but have no corresponding global in the default theme */
+  orphaned: IAssetEntryHashmap;
 }

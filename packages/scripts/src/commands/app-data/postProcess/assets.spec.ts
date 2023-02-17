@@ -29,6 +29,12 @@ const mockDirContents = {
         global: {
           "test.jpg": mockFile,
         },
+        tz_sw: {
+          "test.jpg": mockFile,
+        },
+        es_sp: {
+          "test.jpg": mockFile,
+        },
       },
       theme_excluded: {
         global: {
@@ -91,31 +97,65 @@ describe("Assets PostProcess", () => {
     expect("test.jpg" in contents).toBeTrue();
   });
 
-  it("Populates unfiltered translation assets", () => {
+  it("Populates global assets for default theme", () => {
     runAssetsPostProcessor();
     const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
-    const { translations } = contents["test.jpg"];
-    expect(translations).toEqual({
+    const assetEntry = contents["test.jpg"];
+    expect(assetEntry.themeVariations.default.global).toEqual({
+      size_kb: 1024,
+      md5Checksum: "b6d81b360a5672d80c27430f39153e2c",
+    });
+  });
+
+  it("Populates unfiltered translation assets for default theme", () => {
+    runAssetsPostProcessor();
+    const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
+    const assetEntry = contents["test.jpg"];
+    expect(assetEntry.themeVariations.default).toEqual({
+      global: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
       tz_sw: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
       tz_na: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
     });
   });
 
-  it("Populates filtered translation assets", () => {
+  it("Populates filtered translation assets for default theme", () => {
     runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
     const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
-    const { translations } = contents["test.jpg"];
-    expect(translations).toEqual({
+    const assetEntry = contents["test.jpg"];
+    expect(assetEntry.themeVariations.default).toEqual({
+      global: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
       tz_sw: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
     });
   });
 
-  it("Populates theme assets", () => {
-    runAssetsPostProcessor({ app_themes_available: ["demoTheme"] });
+  it("Populates global assets for additional theme", () => {
+    runAssetsPostProcessor();
     const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
-    const { themeVariations } = contents["test.jpg"];
-    expect(themeVariations).toEqual({
-      demoTheme: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
+    const assetEntry = contents["test.jpg"];
+    expect(assetEntry.themeVariations.demoTheme.global).toEqual({
+      size_kb: 1024,
+      md5Checksum: "b6d81b360a5672d80c27430f39153e2c",
+    });
+  });
+
+  it("Populates unfiltered translated for additional theme", () => {
+    runAssetsPostProcessor();
+    const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
+    const assetEntry = contents["test.jpg"];
+    expect(assetEntry.themeVariations.demoTheme).toEqual({
+      global: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
+      tz_sw: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
+      es_sp: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
+    });
+  });
+
+  it("Populates filtered translation assets for additional theme", () => {
+    runAssetsPostProcessor({ filter_language_codes: ["tz_sw"] });
+    const contents = fs.readJSONSync(path.resolve(mockDirs.appAssets, "contents.json"));
+    const assetEntry = contents["test.jpg"];
+    expect(assetEntry.themeVariations.demoTheme).toEqual({
+      global: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
+      tz_sw: { size_kb: 1024, md5Checksum: "b6d81b360a5672d80c27430f39153e2c" },
     });
   });
 
@@ -151,6 +191,7 @@ describe("Assets PostProcess", () => {
 });
 
 function runAssetsPostProcessor(deploymentConfig: IDeploymentConfigStub = {}) {
+  deploymentConfig.app_themes_available = ["demoTheme"];
   stubDeploymentConfig(deploymentConfig);
   const { localAssets } = mockDirs;
   const processor = new AssetsPostProcessor({ sourceAssetsFolder: localAssets });
