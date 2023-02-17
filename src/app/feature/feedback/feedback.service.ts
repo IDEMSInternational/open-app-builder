@@ -37,11 +37,12 @@ import {
   IActionId,
   TemplateActionRegistry,
 } from "src/app/shared/components/template/services/instance/template-action.registry";
+import { SyncServiceBase } from "src/app/shared/services/syncService.base";
 
 @Injectable({
   providedIn: "root",
 })
-export class FeedbackService {
+export class FeedbackService extends SyncServiceBase {
   public isReviewingMode$ = new BehaviorSubject(false);
 
   public options = {
@@ -58,7 +59,7 @@ export class FeedbackService {
 
   private deviceInfo: DeviceInfo;
   /** Track content el style to allow revert on component destroy */
-  private initialContentStyle?: CSSStyleDeclaration;
+  private initialContentStyle?: Partial<CSSStyleDeclaration>;
 
   /** Track template action defaults to restore after disable */
   private actionListDefault: Partial<IActionHandlers>;
@@ -81,6 +82,7 @@ export class FeedbackService {
     private skinService: SkinService,
     private templateActionRegistry: TemplateActionRegistry
   ) {
+    super("Feedback");
     this.subscribeToAppConfigChanges();
     // retrieve device info for passing in metadata
     Device.getInfo().then((deviceInfo) => {
@@ -121,16 +123,18 @@ export class FeedbackService {
             await this.saveFeedback(feedbackEntry);
             this.clearFeedback();
           },
+          open: () => this.sidebarOpen(),
+          close: () => this.sidebarClose(),
+          template: ([templatename]) => {
+            return this.runFeedbackTemplate(templatename);
+          },
+          enable: () => this.setEnabled(true),
+          disable: () => this.setEnabled(false),
           // TODO - Possibly legacy actions (?) to confirm if required
           send: ([data]) => {
             const metadata = this.generateFeedbackMetadata();
             return this.saveFeedback({ metadata, user_feedback: data, additional: {} });
           },
-          open: ([templatename]) => {
-            return this.runFeedbackTemplate(templatename);
-          },
-          disable: () => this.setEnabled(false),
-          enable: () => this.setEnabled(true),
         };
         if (!(actionId in childActions)) {
           console.error("Feedback does not have action", actionId);
@@ -178,6 +182,13 @@ export class FeedbackService {
     }
   }
 
+  public async sidebarOpen() {
+    this.router.navigate([{ outlets: { sidebar: ["feedback"] } }]);
+  }
+  public async sidebarClose() {
+    this.router.navigate([{ outlets: { sidebar: [] } }]);
+  }
+
   /**
    * Create a standalone popup of the provided template and use to collect user feedback.
    * Modal dismiss and feedback retrieval will be handled by the feedback actions handlers
@@ -215,24 +226,27 @@ export class FeedbackService {
   }
 
   /** Set the width of the main content */
-  public setContentPageWidth(width?: number) {
+  public setContentPageWidth(pageWidth?: number) {
     const contentEl = document.getElementById("main");
     if (!contentEl) {
       console.error("Main content element not found, cannot set width");
       return;
     }
+
     if (!this.initialContentStyle) {
-      this.initialContentStyle = contentEl.style;
+      const { width, maxWidth, margin } = contentEl.style;
+      this.initialContentStyle = { width, maxWidth, margin };
     }
-    if (width) {
-      this.options.contentPageWidth = width;
-      contentEl.style.width = `${width}px`;
-      contentEl.style.maxWidth = `${width}px`;
+    if (pageWidth) {
+      this.options.contentPageWidth = pageWidth;
+      contentEl.style.width = `${pageWidth}px`;
+      contentEl.style.maxWidth = `${pageWidth}px`;
       contentEl.style.margin = `auto`;
     } else {
-      contentEl.style.width = this.initialContentStyle.width;
-      contentEl.style.maxWidth = this.initialContentStyle.maxWidth;
-      contentEl.style.margin = this.initialContentStyle.margin;
+      const { width, maxWidth, margin } = this.initialContentStyle;
+      contentEl.style.width = width;
+      contentEl.style.maxWidth = maxWidth;
+      contentEl.style.margin = margin;
     }
   }
 
