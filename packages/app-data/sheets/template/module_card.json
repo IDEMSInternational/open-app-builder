@@ -15,7 +15,7 @@
     },
     {
       "name": "module_id",
-      "value": "handwashing",
+      "value": "handwashing_with_soap",
       "_translations": {
         "value": {}
       },
@@ -29,6 +29,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "tasks"
     },
@@ -207,6 +208,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "click_template"
     },
