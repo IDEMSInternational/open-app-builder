@@ -34,6 +34,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "tasks"
     },
@@ -43,6 +44,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "module_tasks",
       "_dynamicFields": {
@@ -76,6 +78,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "tool_id",
       "_dynamicFields": {
@@ -146,24 +149,25 @@
     },
     {
       "name": "card_tools_title",
-      "value": "@local.module_data.tools_title",
+      "value": "@local.module_data.title",
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "card_tools_title",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.module_data.tools_title",
-            "matchedExpression": "@local.module_data.tools_title",
+            "fullExpression": "@local.module_data.title",
+            "matchedExpression": "@local.module_data.title",
             "type": "local",
             "fieldName": "module_data"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.module_data.tools_title": [
+        "@local.module_data.title": [
           "value"
         ]
       }
@@ -174,6 +178,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "module_tool",
       "_dynamicFields": {
@@ -207,6 +212,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "tool_data",
       "_dynamicFields": {
@@ -231,10 +237,12 @@
       "parameter_list": {
         "style": "tool_2"
       },
+      "exclude_from_translation": true,
       "rows": [
         {
           "type": "display_group",
           "name": "dg_top",
+          "exclude_from_translation": true,
           "rows": [
             {
               "type": "title",
@@ -249,6 +257,7 @@
               "style_list": [
                 "flex: 1"
               ],
+              "exclude_from_translation": true,
               "_nested_name": "dg_box.dg_top.title",
               "_dynamicFields": {
                 "value": [
@@ -294,6 +303,7 @@
                 "icon_src": "book-outline"
               },
               "condition": "@fields.show_references && (!!@local.tool_data.reference || !!@local.tool_data.url)",
+              "exclude_from_translation": true,
               "_nested_name": "dg_box.dg_top.reference_button",
               "_dynamicFields": {
                 "action_list": {
@@ -374,6 +384,7 @@
           "_translations": {
             "value": {}
           },
+          "exclude_from_translation": true,
           "_nested_name": "dg_box.text",
           "_dynamicFields": {
             "value": [
@@ -402,6 +413,7 @@
           "style_list": [
             "height: 200px"
           ],
+          "exclude_from_translation": true,
           "_nested_name": "dg_box.image",
           "_dynamicFields": {
             "value": [
@@ -429,6 +441,83 @@
               "condition"
             ]
           }
+        },
+        {
+          "type": "subtitle",
+          "name": "subtitle",
+          "value": "@local.tool_data.subtitle",
+          "_translations": {
+            "value": {}
+          },
+          "parameter_list": {
+            "style": "emphasised"
+          },
+          "condition": "!!@local.tool_data.subtitle",
+          "exclude_from_translation": true,
+          "_nested_name": "dg_box.subtitle",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.tool_data.subtitle",
+                "matchedExpression": "@local.tool_data.subtitle",
+                "type": "local",
+                "fieldName": "tool_data"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "!!@local.tool_data.subtitle",
+                "matchedExpression": "!@local.tool_data.subtitle",
+                "type": "local",
+                "fieldName": "tool_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.tool_data.subtitle": [
+              "value"
+            ],
+            "!@local.tool_data.subtitle": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "text_2",
+          "value": "@local.tool_data.text_2",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "!!@local.tool_data.text_2",
+          "exclude_from_translation": true,
+          "_nested_name": "dg_box.text_2",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.tool_data.text_2",
+                "matchedExpression": "@local.tool_data.text_2",
+                "type": "local",
+                "fieldName": "tool_data"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "!!@local.tool_data.text_2",
+                "matchedExpression": "!@local.tool_data.text_2",
+                "type": "local",
+                "fieldName": "tool_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.tool_data.text_2": [
+              "value"
+            ],
+            "!@local.tool_data.text_2": [
+              "condition"
+            ]
+          }
         }
       ],
       "_nested_name": "dg_box"
@@ -436,6 +525,7 @@
     {
       "type": "display_group",
       "name": "dg_completed",
+      "exclude_from_translation": true,
       "rows": [
         {
           "type": "toggle_bar",
@@ -456,6 +546,7 @@
               "_cleaned": "changed | set_field: @local.tool_data.completed_field: this.value"
             }
           ],
+          "exclude_from_translation": true,
           "_nested_name": "dg_completed.toggle_completed",
           "_dynamicFields": {
             "value": [

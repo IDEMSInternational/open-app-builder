@@ -10,16 +10,10 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "bathing",
       _xlsxPath: "data_lists/homepage/module_details.xlsx",
     },
-    breastfeeding: {
+    clean_toilets: {
       flow_type: "data_list",
-      flow_name: "breastfeeding",
-      data_list_name: "breastfeeding",
-      _xlsxPath: "data_lists/homepage/module_details.xlsx",
-    },
-    clean_latrines: {
-      flow_type: "data_list",
-      flow_name: "clean_latrines",
-      data_list_name: "clean_latrines",
+      flow_name: "clean_toilets",
+      data_list_name: "clean_toilets",
       _xlsxPath: "data_lists/homepage/module_details.xlsx",
     },
     debug_nav_list: {
@@ -33,18 +27,13 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "generated",
       flow_type: "data_list",
     },
-    breastfeeding_tasks: {
-      flow_name: "breastfeeding_tasks",
+    clean_toilets_tasks: {
+      flow_name: "clean_toilets_tasks",
       flow_subtype: "generated",
       flow_type: "data_list",
     },
-    clean_latrines_tasks: {
-      flow_name: "clean_latrines_tasks",
-      flow_subtype: "generated",
-      flow_type: "data_list",
-    },
-    handwashing_tasks: {
-      flow_name: "handwashing_tasks",
+    handwashing_with_soap_tasks: {
+      flow_name: "handwashing_with_soap_tasks",
       flow_subtype: "generated",
       flow_type: "data_list",
     },
@@ -58,13 +47,18 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "generated",
       flow_type: "data_list",
     },
-    menstrual_hygiene_tasks: {
-      flow_name: "menstrual_hygiene_tasks",
+    how_to_wash_your_hands_tasks: {
+      flow_name: "how_to_wash_your_hands_tasks",
       flow_subtype: "generated",
       flow_type: "data_list",
     },
     module_tasks: {
       flow_name: "module_tasks",
+      flow_subtype: "generated",
+      flow_type: "data_list",
+    },
+    safe_drinking_water_tasks: {
+      flow_name: "safe_drinking_water_tasks",
       flow_subtype: "generated",
       flow_type: "data_list",
     },
@@ -78,25 +72,15 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "generated",
       flow_type: "data_list",
     },
-    water_containers_tasks: {
-      flow_name: "water_containers_tasks",
+    when_to_wash_your_hands_tasks: {
+      flow_name: "when_to_wash_your_hands_tasks",
       flow_subtype: "generated",
       flow_type: "data_list",
     },
-    water_source_tasks: {
-      flow_name: "water_source_tasks",
-      flow_subtype: "generated",
+    handwashing_with_soap: {
       flow_type: "data_list",
-    },
-    water_treatment_tasks: {
-      flow_name: "water_treatment_tasks",
-      flow_subtype: "generated",
-      flow_type: "data_list",
-    },
-    handwashing: {
-      flow_type: "data_list",
-      flow_name: "handwashing",
-      data_list_name: "handwashing",
+      flow_name: "handwashing_with_soap",
+      data_list_name: "handwashing_with_soap",
       _xlsxPath: "data_lists/homepage/module_details.xlsx",
     },
     healthy_families: {
@@ -111,10 +95,10 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "healthy_homes",
       _xlsxPath: "data_lists/homepage/module_details.xlsx",
     },
-    menstrual_hygiene: {
+    how_to_wash_your_hands: {
       flow_type: "data_list",
-      flow_name: "menstrual_hygiene",
-      data_list_name: "menstrual_hygiene",
+      flow_name: "how_to_wash_your_hands",
+      data_list_name: "how_to_wash_your_hands",
       _xlsxPath: "data_lists/homepage/module_details.xlsx",
     },
     module: {
@@ -122,6 +106,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "module",
       data_list_name: "module",
       _xlsxPath: "data_lists/homepage/module_tasks.xlsx",
+    },
+    safe_drinking_water: {
+      flow_type: "data_list",
+      flow_name: "safe_drinking_water",
+      data_list_name: "safe_drinking_water",
+      _xlsxPath: "data_lists/homepage/module_details.xlsx",
     },
     safe_food: {
       flow_type: "data_list",
@@ -135,22 +125,10 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "waste",
       _xlsxPath: "data_lists/homepage/module_details.xlsx",
     },
-    water_containers: {
+    when_to_wash_your_hands: {
       flow_type: "data_list",
-      flow_name: "water_containers",
-      data_list_name: "water_containers",
-      _xlsxPath: "data_lists/homepage/module_details.xlsx",
-    },
-    water_source: {
-      flow_type: "data_list",
-      flow_name: "water_source",
-      data_list_name: "water_source",
-      _xlsxPath: "data_lists/homepage/module_details.xlsx",
-    },
-    water_treatment: {
-      flow_type: "data_list",
-      flow_name: "water_treatment",
-      data_list_name: "water_treatment",
+      flow_name: "when_to_wash_your_hands",
+      data_list_name: "when_to_wash_your_hands",
       _xlsxPath: "data_lists/homepage/module_details.xlsx",
     },
   },
