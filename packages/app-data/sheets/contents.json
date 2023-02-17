@@ -4826,18 +4826,6 @@
       "flow_name": "user_code",
       "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
     },
-    "w_1on1_box_1": {
-      "flow_type": "template",
-      "module": "1on1",
-      "flow_name": "w_1on1_box_1",
-      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
-    },
-    "w_1on1_box_2": {
-      "flow_type": "template",
-      "module": "1on1",
-      "flow_name": "w_1on1_box_2",
-      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
-    },
     "w_1on1_care_together": {
       "flow_type": "template",
       "module": "1on1",
@@ -5584,18 +5572,6 @@
       "module": "instruct",
       "flow_name": "w_instruct_home_practice",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
-    },
-    "w_instruct_hp_box_1": {
-      "flow_type": "template",
-      "module": "instruct",
-      "flow_name": "w_instruct_hp_box_1",
-      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
-    },
-    "w_instruct_hp_box_2": {
-      "flow_type": "template",
-      "module": "instruct",
-      "flow_name": "w_instruct_hp_box_2",
-      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
     },
     "w_instruct_hp_challenges": {
       "flow_type": "template",
