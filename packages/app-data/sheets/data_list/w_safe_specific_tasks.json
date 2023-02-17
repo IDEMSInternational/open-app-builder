@@ -9,7 +9,7 @@
       "rel_priority": 1,
       "individual": true,
       "together": true,
-      "template": "w_safe_read_1_temp"
+      "template": "w_safe_read_1"
     },
     {
       "id": "question_1",
@@ -33,7 +33,7 @@
       "rel_priority": 1,
       "individual": true,
       "together": true,
-      "template": "w_safe_read_2_temp"
+      "template": "w_safe_read_2"
     },
     {
       "id": "question_2",

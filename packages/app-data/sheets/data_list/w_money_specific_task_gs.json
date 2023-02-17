@@ -8,17 +8,16 @@
       "individual": true,
       "together": true,
       "priority": 11,
+      "story_id": "money_problems",
       "has_single_task": true,
-      "template": "w_money_read_1_temp",
-      "title": "Story",
+      "template": "w_money_read_1",
+      "title": "@global.story @global.part_connector @data.story.money_problems.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.money_problems.title"
         }
       }
     },
@@ -29,20 +28,13 @@
       "priority": 12,
       "has_single_task": true,
       "template": "w_money_learn_1_temp",
-      "title": "Learn",
+      "title": "Learn - Budget preparation",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Learn"
+          "eng": "Learn - Budget preparation"
         }
       }
     },
@@ -53,20 +45,13 @@
       "priority": 13,
       "has_single_task": true,
       "template": "w_money_learn_2_temp",
-      "title": "Learn",
+      "title": "Learn - Step 1: Think",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Learn"
+          "eng": "Learn - Step 1: Think"
         }
       }
     },
@@ -77,20 +62,13 @@
       "priority": 14,
       "has_single_task": true,
       "template": "w_money_learn_3_temp",
-      "title": "Learn",
+      "title": "Learn - Step 2: Choose",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Learn"
+          "eng": "Learn - Step 2: Choose"
         }
       }
     },
@@ -101,20 +79,13 @@
       "priority": 15,
       "has_single_task": true,
       "template": "w_money_learn_4_temp",
-      "title": "Learn",
+      "title": "Learn - Step 3: Build",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Learn"
+          "eng": "Learn - Step 3: Build"
         }
       }
     },
@@ -123,16 +94,15 @@
       "individual": true,
       "together": true,
       "priority": 16,
+      "story_id": "money_plan",
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.money_plan.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.money_plan.title"
         }
       }
     },
@@ -141,16 +111,15 @@
       "individual": true,
       "together": true,
       "priority": 18,
+      "story_id": "money_emergencies",
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.money_emergencies.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.money_emergencies.title"
         }
       }
     },
@@ -161,20 +130,13 @@
       "priority": 21,
       "has_single_task": true,
       "template": "w_money_learn_5_temp",
-      "title": "Learn",
+      "title": "Learn - Step 4: Plan",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Learn"
+          "eng": "Learn - Step 4: Plan"
         }
       }
     }
