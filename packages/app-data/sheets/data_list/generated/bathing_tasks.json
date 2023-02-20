@@ -5,6 +5,7 @@
   "rows": [
     {
       "id": "why",
+      "illustration": "essential_tools/soap.svg",
       "reference_link_title": "Community WASH Conversations.  Arkansas:  LifeWater. Mar 2022;  License:  CC BY-NC-SA 3.0",
       "reference_link": "lifewater.org/wp-content/uploads/2022/06/Community-WASH-Conversations-Public.pdf",
       "test_1": "What is a bathing shelter?",
@@ -47,21 +48,21 @@
     },
     {
       "id": "tips",
-      "title": "Tips for a Clean Bathroom",
+      "title": "Tips for a clean bathroom",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Tips for a Clean Bathroom"
+          "eng": "Tips for a clean bathroom"
         },
         "text": {
           "eng": "* Sweep your bathroom, the area around it and pathway to it daily.\n* Use soap to get rid of any stains on the floor if you can.\n* Check your bathroom regularly.  Make any repairs quickly."
         }
       },
       "text": "* Sweep your bathroom, the area around it and pathway to it daily.\n* Use soap to get rid of any stains on the floor if you can.\n* Check your bathroom regularly.  Make any repairs quickly.",
-      "sample illustration": "Bathroom block next image over with toilet / bathroom next to each other.",
+      "sample illustration": "Bathroom block next image over with toilet / bathroom next to each other.  Same sort of cleaning concept except remove boy pouring water into basin next to bathroom.",
       "completed_field": "bathing_tips_completed"
     }
   ]

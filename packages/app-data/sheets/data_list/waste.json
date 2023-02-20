@@ -39,10 +39,10 @@
           "eng": "Why should we manage our waste?"
         },
         "text": {
-          "eng": "* Reduce breeding grounds for pathogens, bugs, rodents, mosquitos, snakes, and other animals which can spread diseases  \n* Protect the environment and water sources  \n* Waste can block drains and cause flooding  \n* Rotting waste leads to a bad smell, which causes discomfort.  \n* It really isn't nice to look at!"
+          "eng": "* Reduce breeding grounds for pathogens, bugs, rodents, mosquitos, snakes, and other animals which can spread diseases  \n* Protect the environment and water sources  \n* Waste can block drains and cause flooding  \n* Rotting waste leads to a bad smell, which causes discomfort  \n* It really isn't nice to look at!"
         }
       },
-      "text": "* Reduce breeding grounds for pathogens, bugs, rodents, mosquitos, snakes, and other animals which can spread diseases  \n* Protect the environment and water sources  \n* Waste can block drains and cause flooding  \n* Rotting waste leads to a bad smell, which causes discomfort.  \n* It really isn't nice to look at!"
+      "text": "* Reduce breeding grounds for pathogens, bugs, rodents, mosquitos, snakes, and other animals which can spread diseases  \n* Protect the environment and water sources  \n* Waste can block drains and cause flooding  \n* Rotting waste leads to a bad smell, which causes discomfort  \n* It really isn't nice to look at!"
     },
     {
       "id": "how",
@@ -77,10 +77,10 @@
           "eng": "Ways to reduce the amount of waste we make"
         },
         "text": {
-          "eng": "* Carry your own bag to the shops to avoid using a new plastic bag. \n* Use reusable containers, like plastic bottles, rather than buying new ones  \n* Try to fix or repair things when they break!"
+          "eng": "* Carry your own bag to the shops to avoid using a new plastic bag. \n* Use reusable containers, like plastic bottles, rather than buying new ones.  \n* Try to fix or repair things when they break!"
         }
       },
-      "text": "* Carry your own bag to the shops to avoid using a new plastic bag. \n* Use reusable containers, like plastic bottles, rather than buying new ones  \n* Try to fix or repair things when they break!"
+      "text": "* Carry your own bag to the shops to avoid using a new plastic bag. \n* Use reusable containers, like plastic bottles, rather than buying new ones.  \n* Try to fix or repair things when they break!"
     }
   ],
   "_xlsxPath": "data_lists/homepage/module_details.xlsx"

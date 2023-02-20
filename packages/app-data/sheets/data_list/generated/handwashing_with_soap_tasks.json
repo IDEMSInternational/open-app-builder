@@ -6,7 +6,7 @@
     {
       "id": "why",
       "title": "Why do we wash hands?",
-      "text": "Washing your hands with soap is one of the cheapest and most effective things you can do to protect yourself and your family from getting ill. Handwashing with soap stops germs which cause illness like diarrhoea and COVID from passing from person to person or  to you food and water!",
+      "text": "Washing your hands with soap is one of the cheapest and most effective things you can do to protect yourself and your family from getting ill. Handwashing with soap stops germs which cause illness like diarrhoea and COVID from passing from person to person or to your food and water!",
       "PETER COMMENTS": "Rephrase: Washing your hands with soap is one of the cheapest and most effective things you can do to protect yourself and your family from getting ill. Handwashing with soap stops germs which cause illness like diarrhoea and COVID from passing from person to person or  to you food and water!",
       "illustration": "essential_tools/handwashing2.svg",
       "completed_field": "handwashing_with_soap_why_completed"
@@ -14,7 +14,7 @@
     {
       "id": "why_soap",
       "title": "Why is soap important?",
-      "text": "Washing your hands with just water is not enough to remove to all the dirt and stool from your hands after you have been to the toilet or changed a nappy.  Even if your hands look clean you can still have poop germs on them, especially if you haven't washed your hands with soap! These germs spread when you touch your face, nose, or mouth.",
+      "text": "Washing your hands with just water is not enough to remove all the dirt and stool from your hands after you have been to the toilet or changed a nappy.  Even if your hands look clean you can still have poop germs on them, especially if you haven't washed your hands with soap! These germs spread when you touch your face, nose, or mouth.",
       "PETER COMMENTS": "Washing your hands with just water is not enough to remove to all the dirt and poop (or faecal matter, it depends how this translates in Swahili) from your hands after you have been to the toilet.  Even if your hands look clean you could be eating poop off them, especially if you haven't washed your hands with soap!",
       "illustration": "essential_tools/soap.svg",
       "completed_field": "handwashing_with_soap_why_soap_completed"
@@ -22,7 +22,7 @@
     {
       "id": "materials",
       "title": "What do you need?",
-      "text": "Washing your hands is easy. All you need can be a container of clean water, a small basin, and a piece of soap.  Soap should be kept near a handwashing station. If the station is outside, keep soap near the door so it can be easily accessed, but kept safe.",
+      "text": "Washing your hands is easy. All you need is a container of water (or a tap), a basin, and some soap.   Soap should be kept near a handwashing station. If the station is outside, keep soap near the door so it can be easily accessed, but kept safe.",
       "PETER COMMENTS": "Replace jug with container --> note a later section of safe water",
       "illustration": "essential_tools/handwash_need.svg",
       "reference": "United Nations Children’s Fund and World Health Organization, State of the World’s Hand Hygiene: A global call to action to make hand hygiene a priority in policy and practice. New York: UNICEF; 2021.\n\nExtract:\nSustainble Development Goal - Service Ladder for Hygiene in Households:\n- Basic - Availability of a handwashing facility on premises with soap and water.\n- Limited - Availability of a handwashing facility on premises lacking soap and/or water.\n- No Facility - No handwashing facility on premises.\n\nIn some cultures, ash, soil, sand or other materials are used as handwashing agents, but these are less effective than soap and are therefore counted as a limited service.",

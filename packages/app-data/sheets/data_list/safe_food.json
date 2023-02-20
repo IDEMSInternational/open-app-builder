@@ -28,6 +28,7 @@
     },
     {
       "id": "clean",
+      "illustration": "essential_tools/handwashing2.svg",
       "subtitle": "Why?",
       "text_2": "Small pathogens that cause disease can transfer from your unwashed hands, chopping boards, cloths and utensils. Keep these clean.",
       "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\n\nExtract\nKeep Clean\ni. Wash your hands before handling food and often during food preparation\nii. Wash your hands after going to the toilet\niii. Wash and sanitize all surfaces and equipment used for food preparation\niv. Protect kitchen areas and food from insects, pests, and other animals",
@@ -36,20 +37,20 @@
       "reference 3": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\n\nExtract:\nWhile most microorganisms do not cause\ndisease, dangerous microorganisms are\nwidely found in soil, water, animals\nand people. These microorganisms are\ncarried on hands, wiping cloths and\nutensils, especially cutting boards and\nthe slightest contact can transfer them\nto food and cause foodborne diseases.",
       "reference_link_title_3": "5 Keys to Safer Food Manual.  WHO; 2006.",
       "reference_link_3": "https://www.who.int/publications/i/item/9789241594639",
-      "title": "Keep Clean",
+      "title": "Keep clean",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Keep Clean"
+          "eng": "Keep clean"
         },
         "text": {
-          "eng": "* Handwash before and during touching food for cooking.\n* Wash your hands after going to the toilet.\n* Clean your cooking space and tools.\n* Keep bugs, pests, and other animals away from the cooking area.  \n* Cover food if you can, and use can use food nets to keep away bugs!"
+          "eng": "* Handwash before and during touching food for cooking.\n* Wash your hands after going to the toilet.\n* Clean your cooking space and tools.\n* Keep bugs, pests, and other animals away from the cooking area.  \n* Cover food if you can, and you can use food nets to keep away bugs!"
         }
       },
-      "text": "* Handwash before and during touching food for cooking.\n* Wash your hands after going to the toilet.\n* Clean your cooking space and tools.\n* Keep bugs, pests, and other animals away from the cooking area.  \n* Cover food if you can, and use can use food nets to keep away bugs!"
+      "text": "* Handwash before and during touching food for cooking.\n* Wash your hands after going to the toilet.\n* Clean your cooking space and tools.\n* Keep bugs, pests, and other animals away from the cooking area.  \n* Cover food if you can, and you can use food nets to keep away bugs!"
     },
     {
       "id": "separate",
@@ -103,7 +104,6 @@
     },
     {
       "id": "temperature",
-      "sample illustration": "Show passage of time of more than 2 hours and picture of food (ugali with fish) - with cross symbol.",
       "subtitle": "Why?",
       "text_2": "When food is stored at room temperature pathogens can grow.  That's why it's important to keep food at a safe temperature.",
       "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\r\n\nExtract\nKeep food at a safe temperature\ni. Do not leave cooked food at room temperature for more than 2 hours\nii. Refrigerate promptly all cooked food and food that can go bad\n(preferably below 5 degrees Celsius)\niii.  Keep cooked food piping hot (more than 60°C) prior to serving\niv. Do not store food too long even in the refrigerator\nv. Do not thaw frozen food at room temperature",
@@ -144,10 +144,10 @@
           "eng": "Use safe water and raw materials"
         },
         "text": {
-          "eng": "*  Use safe water (see our modules on water for more tips).  Even though your water might look clean, it's still important to treat it.\n*  Remember to wash your fruits and vegetables."
+          "eng": "*  Use safe water (see our modules on safe drinking water for more tips).  Even though your water might look clean, it's still important to treat it.\n*  Remember to wash your fruits and vegetables."
         }
       },
-      "text": "*  Use safe water (see our modules on water for more tips).  Even though your water might look clean, it's still important to treat it.\n*  Remember to wash your fruits and vegetables."
+      "text": "*  Use safe water (see our modules on safe drinking water for more tips).  Even though your water might look clean, it's still important to treat it.\n*  Remember to wash your fruits and vegetables."
     }
   ],
   "_xlsxPath": "data_lists/homepage/module_details.xlsx"
