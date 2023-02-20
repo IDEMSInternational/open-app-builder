@@ -19,10 +19,10 @@
           "eng": "What is a healthy family?"
         },
         "text": {
-          "eng": "Healthy families drink safe water, use clean latrines and wash their hands often.\n\nPoor practices can lead to  diarrohea, undernutrition, and other diseases involving worms as well as those involving bugs."
+          "eng": "Healthy families drink safe water, use clean latrines and wash their hands often.\n\nPoor practices can lead to diarrohea, undernutrition, and other diseases involving worms as well as those involving bugs."
         }
       },
-      "text": "Healthy families drink safe water, use clean latrines and wash their hands often.\n\nPoor practices can lead to  diarrohea, undernutrition, and other diseases involving worms as well as those involving bugs.",
+      "text": "Healthy families drink safe water, use clean latrines and wash their hands often.\n\nPoor practices can lead to diarrohea, undernutrition, and other diseases involving worms as well as those involving bugs.",
       "completed_field": "healthy_families_healthy_family_completed"
     },
     {
@@ -86,10 +86,10 @@
           "eng": "Avoiding worms in your compound"
         },
         "text": {
-          "eng": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and abdominal pain, among other symptoms.  \n\nEggs of these worms are found in human poop, which can then land in soil and transfer to your feet and hands.\n\nRegularly cleaning your compound and toilet, disposing of child faeces in the toilets, and regular handwashing are important so you don't get infected."
+          "eng": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and abdominal pain, among other symptoms.  \n\nEggs of these worms are found in human stool, which can then land in soil and transfer to your feet and hands.\n\nRegularly cleaning your compound and toilet, disposing of child stool in the toilets, and regular handwashing are important so you don't get infected."
         }
       },
-      "text": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and abdominal pain, among other symptoms.  \n\nEggs of these worms are found in human poop, which can then land in soil and transfer to your feet and hands.\n\nRegularly cleaning your compound and toilet, disposing of child faeces in the toilets, and regular handwashing are important so you don't get infected.",
+      "text": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and abdominal pain, among other symptoms.  \n\nEggs of these worms are found in human stool, which can then land in soil and transfer to your feet and hands.\n\nRegularly cleaning your compound and toilet, disposing of child stool in the toilets, and regular handwashing are important so you don't get infected.",
       "reference_link_title_2": "Ending the neglect to attain the Sustainable Development Goals. WHO; 2021.",
       "refererence_link_2": "www.who.int/publications/i/item/9789240022782",
       "completed_field": "healthy_families_worms_compound_completed"
@@ -109,10 +109,10 @@
           "eng": "Preventing blindness"
         },
         "text": {
-          "eng": "Trachoma is a disease of the eye that can cause blindness. It is passed when an fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home. \n\nFace washing, removing mucous from the face, is the best way to prevent Trachoma. Making sure that the face washing cloth, when used, is clean, is quite important. Mothers should not wipe their children's eyes with dirty khanga cloths, for example.\n\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of trachoma."
+          "eng": "Trachoma is a disease of the eye that can cause blindness. It is passed when a fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home. \n\nFace washing, removing mucous from the face, is the best way to prevent Trachoma. Making sure that the face washing cloth, when used, is clean, is quite important. Mothers should not wipe their children's eyes with dirty khanga cloths, for example.\n\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of Trachoma."
         }
       },
-      "text": "Trachoma is a disease of the eye that can cause blindness. It is passed when an fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home. \n\nFace washing, removing mucous from the face, is the best way to prevent Trachoma. Making sure that the face washing cloth, when used, is clean, is quite important. Mothers should not wipe their children's eyes with dirty khanga cloths, for example.\n\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of trachoma.",
+      "text": "Trachoma is a disease of the eye that can cause blindness. It is passed when a fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home. \n\nFace washing, removing mucous from the face, is the best way to prevent Trachoma. Making sure that the face washing cloth, when used, is clean, is quite important. Mothers should not wipe their children's eyes with dirty khanga cloths, for example.\n\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of Trachoma.",
       "illustration": "essential_tools/eye_pain_license_needed.png",
       "reference_link_title_2": "Ending the neglect to attain the Sustainable Development Goals. WHO; 2021.",
       "refererence_link_2": "www.who.int/publications/i/item/9789240022782",

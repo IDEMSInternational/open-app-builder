@@ -20,10 +20,10 @@
           "eng": "When do we wash hands?"
         },
         "text": {
-          "eng": "To help keep your family healthy it is very important to wash your hands with soap at the following times:\n*  After using the toilet\n*  After changing a baby's nappy or helping your child toilet.\n*  Before feeding yourself or a child\n\nAlso to stop the spread of COVID and other illness, wash your hands after coughing or sneezing, helping to care for someone sick or when returning home for the day."
+          "eng": "To help keep your family healthy it is very important to wash your hands with soap at the following times:\n*  After using the toilet\n*  After changing a baby's nappy or helping your child toilet\n*  Before feeding yourself or a child\n\nAlso to stop the spread of COVID and other illness, wash your hands after coughing or sneezing, helping to care for someone sick or when returning home for the day."
         }
       },
-      "text": "To help keep your family healthy it is very important to wash your hands with soap at the following times:\n*  After using the toilet\n*  After changing a baby's nappy or helping your child toilet.\n*  Before feeding yourself or a child\n\nAlso to stop the spread of COVID and other illness, wash your hands after coughing or sneezing, helping to care for someone sick or when returning home for the day.",
+      "text": "To help keep your family healthy it is very important to wash your hands with soap at the following times:\n*  After using the toilet\n*  After changing a baby's nappy or helping your child toilet\n*  Before feeding yourself or a child\n\nAlso to stop the spread of COVID and other illness, wash your hands after coughing or sneezing, helping to care for someone sick or when returning home for the day.",
       "completed_field": "when_to_wash_your_hands_when_handwash_completed"
     },
     {
@@ -57,10 +57,10 @@
           "eng": "Cleaning after child care"
         },
         "text": {
-          "eng": "Baby poop looks and smells different from adult poop, but it can still make you sick. It's important to wash your hands after cleaning a baby's nappy or helping your child use the toilet"
+          "eng": "Baby poop looks and smells different from adult poop, but it can still make you sick. It's important to wash your hands after cleaning a baby's nappy or helping your child use the toilet."
         }
       },
-      "text": "Baby poop looks and smells different from adult poop, but it can still make you sick. It's important to wash your hands after cleaning a baby's nappy or helping your child use the toilet",
+      "text": "Baby poop looks and smells different from adult poop, but it can still make you sick. It's important to wash your hands after cleaning a baby's nappy or helping your child use the toilet.",
       "completed_field": "when_to_wash_your_hands_why_cleaning_completed"
     }
   ]
