@@ -1,0 +1,249 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_theme_language_assets",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "subtitle",
+      "value": "Example image:",
+      "_translations": {
+        "value": {}
+      },
+      "name": "subtitle",
+      "_nested_name": "subtitle"
+    },
+    {
+      "type": "image",
+      "value": "quality_assurance/debug_theme_language.png",
+      "_translations": {
+        "value": {}
+      },
+      "name": "image",
+      "_nested_name": "image"
+    },
+    {
+      "type": "subtitle",
+      "value": "Set theme:",
+      "_translations": {
+        "value": {}
+      },
+      "name": "subtitle",
+      "_nested_name": "subtitle"
+    },
+    {
+      "name": "theme_list",
+      "value": [
+        "name: default | text: default",
+        "name: professional | text: professional"
+      ],
+      "type": "set_variable",
+      "_nested_name": "theme_list"
+    },
+    {
+      "type": "radio_group",
+      "name": "theme_select",
+      "value": "@fields._app_theme",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "emit",
+          "args": [
+            "set_theme",
+            "this.value"
+          ],
+          "_raw": "changed | emit: set_theme:@local.theme_select",
+          "_cleaned": "changed | emit: set_theme:@local.theme_select"
+        },
+        {
+          "trigger": "changed",
+          "action_id": "emit",
+          "args": [
+            "force_reload"
+          ],
+          "_raw": "changed | emit: force_reload",
+          "_cleaned": "changed | emit: force_reload"
+        }
+      ],
+      "parameter_list": {
+        "answer_list": "@local.theme_list",
+        "options_per_row": "2"
+      },
+      "_nested_name": "theme_select",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields._app_theme",
+            "matchedExpression": "@fields._app_theme",
+            "type": "fields",
+            "fieldName": "_app_theme"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "_raw": [
+              {
+                "fullExpression": "changed | emit: set_theme:@local.theme_select",
+                "matchedExpression": "@local.theme_select",
+                "type": "local",
+                "fieldName": "theme_select"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | emit: set_theme:@local.theme_select",
+                "matchedExpression": "@local.theme_select",
+                "type": "local",
+                "fieldName": "theme_select"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.theme_list",
+              "matchedExpression": "@local.theme_list",
+              "type": "local",
+              "fieldName": "theme_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@fields._app_theme": [
+          "value"
+        ],
+        "@local.theme_select": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.theme_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "value": "Set language:",
+      "_translations": {
+        "value": {}
+      },
+      "name": "subtitle",
+      "_nested_name": "subtitle"
+    },
+    {
+      "name": "language_select_options",
+      "value": "@data.debug_language",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "language_select_options",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.debug_language",
+            "matchedExpression": "@data.debug_language",
+            "type": "data",
+            "fieldName": "debug_language"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.debug_language": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "radio_group",
+      "name": "language_select",
+      "value": "@fields._app_language",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "emit",
+          "args": [
+            "set_language",
+            "this.value"
+          ],
+          "_raw": "changed | emit: set_language:@local.language_select",
+          "_cleaned": "changed | emit: set_language:@local.language_select"
+        },
+        {
+          "trigger": "changed",
+          "action_id": "emit",
+          "args": [
+            "force_reload"
+          ],
+          "_raw": "changed | emit: force_reload",
+          "_cleaned": "changed | emit: force_reload"
+        }
+      ],
+      "parameter_list": {
+        "answer_list": "@local.language_select_options"
+      },
+      "_nested_name": "language_select",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields._app_language",
+            "matchedExpression": "@fields._app_language",
+            "type": "fields",
+            "fieldName": "_app_language"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "_raw": [
+              {
+                "fullExpression": "changed | emit: set_language:@local.language_select",
+                "matchedExpression": "@local.language_select",
+                "type": "local",
+                "fieldName": "language_select"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | emit: set_language:@local.language_select",
+                "matchedExpression": "@local.language_select",
+                "type": "local",
+                "fieldName": "language_select"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.language_select_options",
+              "matchedExpression": "@local.language_select_options",
+              "type": "local",
+              "fieldName": "language_select_options"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@fields._app_language": [
+          "value"
+        ],
+        "@local.language_select": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.language_select_options": [
+          "parameter_list.answer_list"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/debug_theme_language_assets.xlsx"
+}
