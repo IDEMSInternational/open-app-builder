@@ -123,6 +123,12 @@
       "flow_name": "nf_inactive_day",
       "_xlsxPath": "global/campaigns/notifications_inactive.xlsx"
     },
+    "nf_inactive_progress": {
+      "flow_type": "data_list",
+      "flow_subtype": "campaign_rows",
+      "flow_name": "nf_inactive_progress",
+      "_xlsxPath": "global/campaigns/notifications_inactive.xlsx"
+    },
     "nf_inactive_week_month": {
       "flow_type": "data_list",
       "flow_subtype": "campaign_rows",
@@ -292,6 +298,13 @@
       "flow_name": "debug_delimiters_list",
       "flow_subtype": "debug",
       "_xlsxPath": "quality_assurance/debug_sheets/debug_delimiters.xlsx"
+    },
+    "debug_language_data_list": {
+      "flow_type": "data_list",
+      "flow_name": "debug_language_data_list",
+      "flow_subtype": "debug",
+      "data_list_name": "debug_language",
+      "_xlsxPath": "quality_assurance/debug_sheets/debug_theme_language_assets.xlsx"
     },
     "debug_variable_data": {
       "flow_type": "data_list",
@@ -1355,11 +1368,11 @@
       "flow_subtype": "debug",
       "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_global.xlsx"
     },
-    "example_field_array_global": {
+    "example_field_hist_global": {
       "flow_type": "global",
       "flow_subtype": "debug",
-      "flow_name": "example_field_array_global",
-      "_xlsxPath": "quality_assurance/example_sheets/example_field_array.xlsx"
+      "flow_name": "example_field_hist_global",
+      "_xlsxPath": "quality_assurance/example_sheets/example_field_history.xlsx"
     },
     "example_glob_override_default": {
       "flow_type": "global",
@@ -1497,11 +1510,6 @@
       "module": "money",
       "flow_name": "savings_options",
       "_xlsxPath": "global/data/suggestion_globals.xlsx"
-    },
-    "skin_fields": {
-      "flow_type": "global",
-      "flow_name": "skin_fields",
-      "_xlsxPath": "global/data/navigation_globals.xlsx"
     },
     "spend_time_ideas": {
       "flow_type": "global",
@@ -2941,6 +2949,12 @@
       "flow_subtype": "debug",
       "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_theme_assets.xlsx"
     },
+    "debug_theme_language_assets": {
+      "flow_type": "template",
+      "flow_name": "debug_theme_language_assets",
+      "flow_subtype": "debug",
+      "_xlsxPath": "quality_assurance/debug_sheets/debug_theme_language_assets.xlsx"
+    },
     "debug_tile_text": {
       "flow_type": "template",
       "flow_name": "debug_tile_text",
@@ -3253,11 +3267,11 @@
       "flow_subtype": "debug",
       "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_actions.xlsx"
     },
-    "example_field_array": {
+    "example_field_hist": {
       "flow_type": "template",
       "flow_subtype": "debug",
-      "flow_name": "example_field_array",
-      "_xlsxPath": "quality_assurance/example_sheets/example_field_array.xlsx"
+      "flow_name": "example_field_hist",
+      "_xlsxPath": "quality_assurance/example_sheets/example_field_history.xlsx"
     },
     "example_footer": {
       "flow_type": "template",
