@@ -61,8 +61,9 @@ export class AssetsPostProcessor {
     const stagingDir = createTempDir();
     this.copyAssetsToFolder(mergedAssets, stagingDir);
     this.assetsQualityCheck(stagingDir);
-    this.checkTotalAssetSize(mergedAssets);
-    const { complete, orphaned } = this.listAssetOverrides(mergedAssets);
+    const assetsByType = this.listAssetOverrides(mergedAssets);
+    const { complete, orphaned } = assetsByType;
+    this.checkTotalAssetSize(assetsByType);
     fs.removeSync(stagingDir);
 
     // copy deployment assets to main folder and write merged contents file
@@ -205,17 +206,33 @@ export class AssetsPostProcessor {
     }
   }
 
-  private checkTotalAssetSize(sourceAssets: { [relativePath: string]: IAssetEntry }) {
+  private checkTotalAssetSize(sourceAssets: IAssetEntriesByType) {
     let totalSize = 0;
     let langSizes = { global: 0 };
-    Object.values(sourceAssets).forEach((entry) => {
-      totalSize += entry.size_kb;
-      langSizes.global += entry.size_kb;
+    let themeAndLanguageSizes = { default: { total: 0, global: 0 } };
+    Object.values(sourceAssets).forEach((assetEntryHashmap: IAssetEntryHashmap) => {
+      Object.values(assetEntryHashmap).forEach((entry) => {
+        Object.entries(entry.themeVariations).forEach(([themeName, languageEntries]) => {
+          Object.entries(languageEntries).forEach(([languageCode, languageEntry]) => {
+            const assetSize = languageEntry.size_kb;
+            totalSize += assetSize;
+            themeAndLanguageSizes[themeName] ??= {};
+            themeAndLanguageSizes[themeName].total ??= 0;
+            themeAndLanguageSizes[themeName].total += assetSize;
+            themeAndLanguageSizes[themeName][languageCode] ??= 0;
+            themeAndLanguageSizes[themeName][languageCode] += assetSize;
+          });
+        });
+      });
     });
-    // Log output
-    const langSizesMBSummary = Object.entries(langSizes)
-      // Make a list by
-      .map(([key, value]) => `${key}: ${kbToMB(value)} MB`)
+
+    const themeLangSizesMBSummary = Object.entries(themeAndLanguageSizes)
+      .map(([themeName, themeEntry]) => {
+        const languageBreakdown = Object.entries(themeEntry)
+          .map(([language, size]) => `${language}: ${kbToMB(size)} MB`)
+          .join("\n    ");
+        return `${themeName} theme:\n  ${languageBreakdown}`;
+      })
       .join("\n");
     const totalSizeMB = kbToMB(totalSize);
     const maxWarningSize = 145;
@@ -228,7 +245,7 @@ export class AssetsPostProcessor {
 
     logOutput({
       msg1: "Assets Summary",
-      msg2: `Total size: ${totalSizeMB} MB\n\n${langSizesMBSummary}`,
+      msg2: `Total size: ${totalSizeMB} MB\n\nBreakdown by theme and language:\n${themeLangSizesMBSummary}`,
     });
   }
 
