@@ -1511,11 +1511,6 @@
       "flow_name": "savings_options",
       "_xlsxPath": "global/data/suggestion_globals.xlsx"
     },
-    "skin_fields": {
-      "flow_type": "global",
-      "flow_name": "skin_fields",
-      "_xlsxPath": "global/data/navigation_globals.xlsx"
-    },
     "spend_time_ideas": {
       "flow_type": "global",
       "module": "1on1",
