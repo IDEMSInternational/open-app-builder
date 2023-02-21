@@ -162,8 +162,9 @@ export class TemplateActionService extends SyncServiceBase {
   private async processAction(action: FlowTypes.TemplateRowAction) {
     action.args = action.args.map((arg) => {
       // HACK - update any self referenced values (see note from template.parser method)
-      if (arg === "this.value") {
-        arg = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.value;
+      if (typeof arg === "string" && arg.startsWith("this.")) {
+        const selfField = arg.split(".")[1];
+        arg = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.[selfField];
       }
       return arg;
     });
@@ -202,10 +203,7 @@ export class TemplateActionService extends SyncServiceBase {
           return this.templateService.runStandaloneTemplate(action.args[0], action.params);
         }
         return this.templateNavService.handlePopupAction(action, this.container);
-      case "feedback": {
-        const [subtopic, ...payload] = args;
-        return this.eventService.publish({ topic: "FEEDBACK", subtopic, payload });
-      }
+
       case "track_event":
         this.analyticsService.trackEvent(key);
         break;
@@ -348,7 +346,7 @@ export class TemplateActionService extends SyncServiceBase {
     );
     // no match found
     if (matchedRows.length === 0) {
-      console.error(`row [${name}] not found`, this.container.templateRowService.templateRowMap);
+      console.error(`row "${name}" not found`, this.container.templateRowService.templateRowMap);
       return null;
     }
     // match found - return least nested (in case of duplicates)

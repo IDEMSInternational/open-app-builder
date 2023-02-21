@@ -1,10 +1,13 @@
 import android from "./providers/android";
 import appData from "./providers/appData";
+import deployment from "./providers/deployment";
+import encryption from "./providers/encryption";
 import file from "./providers/file";
 import gdrive from "./providers/gdrive";
 import subtitles from "./providers/subtitles";
 import template from "./providers/template";
 import translate from "./providers/translate";
+import userInput from "./providers/userInput";
 import workflow from "./providers/workflow";
 
 /**
@@ -16,11 +19,14 @@ import workflow from "./providers/workflow";
 const ALL_TASKS = {
   android,
   appData,
+  deployment,
+  encryption,
   file,
   gdrive,
   subtitles,
   template,
   translate,
+  userInput,
   workflow,
 };
 

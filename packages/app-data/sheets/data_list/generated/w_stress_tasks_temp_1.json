@@ -71,7 +71,7 @@
       "group": "read_1",
       "individual": true,
       "together": true,
-      "template": "w_stress_read_1_temp",
+      "template": "w_stress_read_1",
       "rel_priority": 1
     },
     {
@@ -95,14 +95,14 @@
       "group": "read_2",
       "individual": true,
       "together": true,
-      "template": "w_stress_read_2_temp"
+      "template": "w_stress_read_2"
     },
     {
       "id": "read_3",
       "group": "read_3",
       "individual": true,
       "together": true,
-      "template": "w_stress_read_3_temp"
+      "template": "w_stress_read_3"
     }
   ]
 }

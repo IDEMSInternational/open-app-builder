@@ -18,5 +18,7 @@ if (require.main === module) {
   if (!process.argv.slice(2).length) {
     logProgramHelp(program);
   }
-  program.parse(process.argv);
+  (async function () {
+    await program.parseAsync(process.argv);
+  })();
 }

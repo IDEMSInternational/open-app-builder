@@ -40,8 +40,8 @@ jobs:
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
       - run: yarn install
       - name: Set Scripts Deployment
-        run: yarn scripts deployment set $DEPLOYMENT_NAME
-      - run: yarn build
+        run: yarn workflow deployment set $DEPLOYMENT_NAME
+      - run: yarn build --configuration "production,preview"
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
