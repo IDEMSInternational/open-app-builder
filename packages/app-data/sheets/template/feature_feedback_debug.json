@@ -36,6 +36,92 @@
     },
     {
       "type": "button",
+      "value": "Sidebar Open",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "feedback",
+          "args": [
+            "open"
+          ],
+          "_raw": "click | feedback:open",
+          "_cleaned": "click | feedback:open"
+        }
+      ],
+      "exclude_from_translation": true,
+      "name": "button",
+      "_nested_name": "button"
+    },
+    {
+      "type": "button",
+      "value": "Sidebar Close",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "feedback",
+          "args": [
+            "close"
+          ],
+          "_raw": "click | feedback:close",
+          "_cleaned": "click | feedback:close"
+        }
+      ],
+      "exclude_from_translation": true,
+      "name": "button",
+      "_nested_name": "button"
+    },
+    {
+      "type": "button",
+      "value": "Open Feedback Template",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "feedback",
+          "args": [
+            "template",
+            "feature_feedback_default"
+          ],
+          "_raw": "click | feedback:template:feature_feedback_default",
+          "_cleaned": "click | feedback:template:feature_feedback_default"
+        }
+      ],
+      "exclude_from_translation": true,
+      "name": "button",
+      "_nested_name": "button"
+    },
+    {
+      "type": "button",
+      "value": "Send Test Feedback",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "feedback",
+          "args": [
+            "send",
+            "test feedback"
+          ],
+          "_raw": "click | feedback:send:test feedback",
+          "_cleaned": "click | feedback:send:test feedback"
+        }
+      ],
+      "exclude_from_translation": true,
+      "name": "button",
+      "_nested_name": "button"
+    },
+    {
+      "type": "button",
       "value": "Enable Feedback Mode",
       "_translations": {
         "value": {}
@@ -70,50 +156,6 @@
           ],
           "_raw": "click | feedback:disable",
           "_cleaned": "click | feedback:disable"
-        }
-      ],
-      "exclude_from_translation": true,
-      "name": "button",
-      "_nested_name": "button"
-    },
-    {
-      "type": "button",
-      "value": "Open Feedback Template",
-      "_translations": {
-        "value": {}
-      },
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "feedback",
-          "args": [
-            "open",
-            "feature_feedback_default"
-          ],
-          "_raw": "click | feedback:open:feature_feedback_default",
-          "_cleaned": "click | feedback:open:feature_feedback_default"
-        }
-      ],
-      "exclude_from_translation": true,
-      "name": "button",
-      "_nested_name": "button"
-    },
-    {
-      "type": "button",
-      "value": "Send Test Feedback",
-      "_translations": {
-        "value": {}
-      },
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "feedback",
-          "args": [
-            "send",
-            "test feedback"
-          ],
-          "_raw": "click | feedback:send:test feedback",
-          "_cleaned": "click | feedback:send:test feedback"
         }
       ],
       "exclude_from_translation": true,

@@ -6,7 +6,6 @@ on:
       - master
 jobs:
   build:
-    if: "!contains(github.event.pull_request.labels.*.name, 'Test - preview')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -31,8 +30,10 @@ jobs:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
       - run: yarn install
-      - name: Set Scripts Deployment
-        run: yarn scripts deployment set $DEPLOYMENT_NAME
-      - name: Unit Tests Workspaces
+      - name: Set Deployment
+        run: yarn workflow deployment set $DEPLOYMENT_NAME
+      - name: Lint
+        run: yarn lint
+      - name: Unit Test Workspaces
         run: yarn test:workspaces  
       - run: yarn build

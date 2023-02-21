@@ -4,7 +4,7 @@ import { Command } from "commander";
 import * as path from "path";
 import chalk from "chalk";
 import { FlowTypes } from "data-models";
-import { getActiveDeployment } from "../../deployment/get";
+import { ActiveDeployment } from "../../deployment/get";
 import { IConverterPaths, IParsedWorkbookData } from "./types";
 import { XLSXWorkbookProcessor } from "./processors/xlsxWorkbook";
 import { JsonFileCache } from "./cacheStrategy/jsonFile";
@@ -14,7 +14,7 @@ import {
   createChildLogger,
   logSheetsSummary,
   getLogs,
-  logError,
+  Logger,
   getLogFiles,
   logWarning,
   clearLogs,
@@ -27,17 +27,17 @@ import { FlowParserProcessor } from "./processors/flowParser/flowParser";
  *************************************************************************************/
 const program = new Command("convert");
 interface IProgramOptions {
+  cacheFolder: string;
+  inputFolder: string;
+  outputFolder: string;
   skipCache?: boolean;
-  cacheFolder?: string;
-  inputFolder?: string;
-  outputFolder?: string;
 }
 export default program
   .description("Convert app data")
-  .option("-i --input-folder <string>", "")
+  .requiredOption("-i --input-folder <string>", "")
+  .requiredOption("-c --cache-folder <string>", "")
+  .requiredOption("-o --output-folder <string>", "")
   .option("-s --skip-cache", "Wipe local conversion cache and process all files")
-  .option("-c --cache-folder <string>", "")
-  .option("-o --output-folder <string>", "")
   .action(async (options: IProgramOptions) => {
     await new AppDataConverter(options).run();
   });
@@ -54,15 +54,9 @@ export default program
  */
 export class AppDataConverter {
   /** Change version to invalidate all underlying caches */
-  public version = 20221027.0;
+  public version = 20230203.0;
 
-  public activeDeployment = getActiveDeployment();
-
-  private paths: IConverterPaths = {
-    SHEETS_INPUT_FOLDER: "",
-    SHEETS_CACHE_FOLDER: "",
-    SHEETS_OUTPUT_FOLDER: "",
-  };
+  public activeDeployment = ActiveDeployment.get();
 
   public logger = createChildLogger({ source: "converter" });
 
@@ -76,19 +70,13 @@ export class AppDataConverter {
     console.log(chalk.yellow("App Data Convert"));
     // Setup Folders
     const { inputFolder, outputFolder, cacheFolder } = options;
-    const { app_data, _workspace_path } = this.activeDeployment;
-    const SHEETS_CACHE_FOLDER = app_data.converter_cache_path;
-    this.paths = {
-      SHEETS_INPUT_FOLDER: inputFolder || path.resolve(_workspace_path, "app_data", "sheets"),
-      SHEETS_CACHE_FOLDER: cacheFolder || path.resolve(SHEETS_CACHE_FOLDER, "individual"),
-      SHEETS_OUTPUT_FOLDER: outputFolder || path.resolve(SHEETS_CACHE_FOLDER, "converted"),
-    };
-    Object.values(this.paths).forEach((p) => fs.ensureDir(p));
+    [inputFolder, outputFolder, cacheFolder].forEach((p) => fs.ensureDir(p));
+
     if (this.options.skipCache) {
       this.cache.clear();
     }
     // Create a cache that can be used to invalidate all underlying processor caches
-    this.cache = new JsonFileCache(this.paths.SHEETS_CACHE_FOLDER, this.version);
+    this.cache = new JsonFileCache(cacheFolder, this.version);
   }
 
   /**
@@ -96,6 +84,12 @@ export class AppDataConverter {
    * objects representing sheet names and data values
    */
   public async run() {
+    const { inputFolder, outputFolder, cacheFolder } = this.options;
+    const converterPaths: IConverterPaths = {
+      SHEETS_CACHE_FOLDER: cacheFolder,
+      SHEETS_INPUT_FOLDER: inputFolder,
+      SHEETS_OUTPUT_FOLDER: outputFolder,
+    };
     const processPipeline: {
       name: string;
       description: string;
@@ -106,14 +100,14 @@ export class AppDataConverter {
         description: "Load list of all input xlsx workbooks from folder",
         fn: async () => {
           const filterFn = (relativePath: string) => relativePath.endsWith(".xlsx");
-          return generateFolderFlatMap(this.paths.SHEETS_INPUT_FOLDER, true, filterFn);
+          return generateFolderFlatMap(inputFolder, { filterFn });
         },
       },
       {
         name: "xlsx_convert",
         description: "Convert all xlsx workbooks to json arrays",
         fn: async (list: { [key: string]: IContentsEntry }) => {
-          const xlsxConverter = new XLSXWorkbookProcessor(this.paths);
+          const xlsxConverter = new XLSXWorkbookProcessor(converterPaths);
           return xlsxConverter.process(Object.values(list));
         },
       },
@@ -126,7 +120,7 @@ export class AppDataConverter {
         name: "flows_process",
         description: "Apply specific parsers for flowtypes",
         fn: async (data: FlowTypes.FlowTypeWithData[]) => {
-          const processor = new FlowParserProcessor(this.paths);
+          const processor = new FlowParserProcessor(converterPaths);
           return processor.process(data);
         },
       },
@@ -161,7 +155,7 @@ export class AppDataConverter {
     const errors = getLogs("error");
     if (errors.length > 0) {
       const errorLogFile = getLogFiles().error;
-      logError({
+      Logger.error({
         msg1: `Completed with errors`,
         msg2: errorLogFile,
         logOnly: true,
@@ -191,7 +185,7 @@ export class AppDataConverter {
 
   /** Write individual converted jsons to flow_type folders */
   private writeOutputJsons(data: IParsedWorkbookData) {
-    const outputBase = this.paths.SHEETS_OUTPUT_FOLDER;
+    const outputBase = this.options.outputFolder;
     fs.ensureDirSync(outputBase);
     fs.emptyDirSync(outputBase);
     Object.values(data).forEach((flowArray) => {

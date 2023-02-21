@@ -24,7 +24,9 @@
       "name": "teen_word",
       "value": "Teen",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "teen_word"
@@ -158,7 +160,9 @@
       "name": "text",
       "value": "Let’s start with a few questions about your family.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "text"
     },
@@ -167,7 +171,9 @@
       "name": "text_q_1",
       "value": "How many teens are in your household?",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "parameter_list": {
         "style": "emphasised"
@@ -266,7 +272,9 @@
       "name": "text_q_2",
       "value": "How old are they?",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "condition": "!!@local.household_teens",
       "parameter_list": {
@@ -295,21 +303,21 @@
       "rows": [
         {
           "type": "display_group",
-          "name": "dg_sect_@item.id",
+          "name": "dg_sect_{@item.id}",
           "condition": "@item.id != 0 && @item.id <= @local.household_teens",
           "rows": [
             {
               "type": "text",
-              "name": "text_age_@item.id",
+              "name": "text_age_{@item.id}",
               "value": "Age of teen @item.id",
               "_translations": {
                 "value": {}
               },
-              "_nested_name": "items.dg_sect_@item.id.text_age_@item.id",
+              "_nested_name": "items.dg_sect_{@item.id}.text_age_{@item.id}",
               "_dynamicFields": {
                 "name": [
                   {
-                    "fullExpression": "text_age_@item.id",
+                    "fullExpression": "text_age_{@item.id}",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
@@ -325,13 +333,13 @@
                 ],
                 "_nested_name": [
                   {
-                    "fullExpression": "items.dg_sect_@item.id.text_age_@item.id",
-                    "matchedExpression": "@item.id.text_age_",
+                    "fullExpression": "items.dg_sect_{@item.id}.text_age_{@item.id}",
+                    "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
                   },
                   {
-                    "fullExpression": "items.dg_sect_@item.id.text_age_@item.id",
+                    "fullExpression": "items.dg_sect_{@item.id}.text_age_{@item.id}",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
@@ -342,16 +350,14 @@
                 "@item.id": [
                   "name",
                   "value",
-                  "_nested_name"
-                ],
-                "@item.id.text_age_": [
+                  "_nested_name",
                   "_nested_name"
                 ]
               }
             },
             {
               "type": "text_box",
-              "name": "number_box_@item.id",
+              "name": "number_box_{@item.id}",
               "value": "@fields.@item.teen_age",
               "_translations": {
                 "value": {}
@@ -364,8 +370,8 @@
                     "@item.teen_age",
                     "this.value"
                   ],
-                  "_raw": "changed | set_field: @item.teen_age: this.value",
-                  "_cleaned": "changed | set_field: @item.teen_age: this.value"
+                  "_raw": "changed | set_field: @item.teen_age : this.value",
+                  "_cleaned": "changed | set_field: @item.teen_age : this.value"
                 }
               ],
               "parameter_list": {
@@ -373,11 +379,11 @@
                 "placeholder": "@global.tap_and_type",
                 "number_input": "true"
               },
-              "_nested_name": "items.dg_sect_@item.id.number_box_@item.id",
+              "_nested_name": "items.dg_sect_{@item.id}.number_box_{@item.id}",
               "_dynamicFields": {
                 "name": [
                   {
-                    "fullExpression": "number_box_@item.id",
+                    "fullExpression": "number_box_{@item.id}",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
@@ -405,7 +411,7 @@
                     },
                     "_raw": [
                       {
-                        "fullExpression": "changed | set_field: @item.teen_age: this.value",
+                        "fullExpression": "changed | set_field: @item.teen_age : this.value",
                         "matchedExpression": "@item.teen_age",
                         "type": "item",
                         "fieldName": "teen_age"
@@ -413,7 +419,7 @@
                     ],
                     "_cleaned": [
                       {
-                        "fullExpression": "changed | set_field: @item.teen_age: this.value",
+                        "fullExpression": "changed | set_field: @item.teen_age : this.value",
                         "matchedExpression": "@item.teen_age",
                         "type": "item",
                         "fieldName": "teen_age"
@@ -433,13 +439,13 @@
                 },
                 "_nested_name": [
                   {
-                    "fullExpression": "items.dg_sect_@item.id.number_box_@item.id",
-                    "matchedExpression": "@item.id.number_box_",
+                    "fullExpression": "items.dg_sect_{@item.id}.number_box_{@item.id}",
+                    "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
                   },
                   {
-                    "fullExpression": "items.dg_sect_@item.id.number_box_@item.id",
+                    "fullExpression": "items.dg_sect_{@item.id}.number_box_{@item.id}",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
@@ -449,6 +455,7 @@
               "_dynamicDependencies": {
                 "@item.id": [
                   "name",
+                  "_nested_name",
                   "_nested_name"
                 ],
                 "@item.teen_age": [
@@ -459,18 +466,15 @@
                 ],
                 "@global.tap_and_type": [
                   "parameter_list.placeholder"
-                ],
-                "@item.id.number_box_": [
-                  "_nested_name"
                 ]
               }
             }
           ],
-          "_nested_name": "items.dg_sect_@item.id",
+          "_nested_name": "items.dg_sect_{@item.id}",
           "_dynamicFields": {
             "name": [
               {
-                "fullExpression": "dg_sect_@item.id",
+                "fullExpression": "dg_sect_{@item.id}",
                 "matchedExpression": "@item.id",
                 "type": "item",
                 "fieldName": "id"
@@ -498,7 +502,7 @@
             ],
             "_nested_name": [
               {
-                "fullExpression": "items.dg_sect_@item.id",
+                "fullExpression": "items.dg_sect_{@item.id}",
                 "matchedExpression": "@item.id",
                 "type": "item",
                 "fieldName": "id"

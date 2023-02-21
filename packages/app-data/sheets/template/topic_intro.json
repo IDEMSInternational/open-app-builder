@@ -499,6 +499,7 @@
                           "_cleaned": "click | pop_up:@local.workshop_summary"
                         }
                       ],
+                      "condition": "@fields._app_skin == \"weekly_workshop\"",
                       "hidden": false,
                       "type": "set_variable",
                       "_nested_name": "listen.workshop_activity.content_box.box_1.button_2",
@@ -532,13 +533,24 @@
                               }
                             ]
                           }
-                        }
+                        },
+                        "condition": [
+                          {
+                            "fullExpression": "@fields._app_skin == \"weekly_workshop\"",
+                            "matchedExpression": "@fields._app_skin",
+                            "type": "fields",
+                            "fieldName": "_app_skin"
+                          }
+                        ]
                       },
                       "_dynamicDependencies": {
                         "@local.workshop_summary": [
                           "action_list.0.args.0",
                           "action_list.0._raw",
                           "action_list.0._cleaned"
+                        ],
+                        "@fields._app_skin": [
+                          "condition"
                         ]
                       }
                     }

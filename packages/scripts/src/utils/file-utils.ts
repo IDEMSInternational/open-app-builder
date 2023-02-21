@@ -1,7 +1,10 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+import * as os from "os";
 import { createHash, randomUUID } from "crypto";
 import { logWarning } from "./logging.utils";
+import { ROOT_DIR } from "../paths";
+import { spawnSync } from "child_process";
 import { tmpdir } from "os";
 
 /**
@@ -109,12 +112,11 @@ export function generateFolderTreeMap(folderPath: string, includeStats = true) {
 
 /**
  * Create a flat json representing nested folder structure of a given folder path.
- * Includes optional stats output that records file size and md5 checksum data
+ * Includes stats output that records file size and md5 checksum data
  * 
- * @param includeStats include basic stats such as size within nested structure.
- * If ommitted will just mark files as `TRUE`
- * @param filterFn optional filter function to be applied to relative paths for inclusion
- * 
+ * @param options.filterFn optional filter function to be applied to relative paths for inclusion
+ * @param options.includeLocalPath include full path to file on local disk
+
  * @returns Example file: i18n/flags/gb.svg
  * ```
  * "i18n/flags/gb.svg": {
@@ -125,30 +127,28 @@ export function generateFolderTreeMap(folderPath: string, includeStats = true) {
  */
 export function generateFolderFlatMap(
   folderPath: string,
-  includeStats = true,
-  filterFn = (relativePath: string) => true
+  options: {
+    filterFn?: (relativePath: string) => boolean;
+    includeLocalPath?: boolean;
+  } = {}
 ) {
   const allFiles = recursiveFindByExtension(folderPath);
-  // const relativeFiles = allFiles.map(filepath => path.relative(folderPath, filepath))
-  let flatMap: {
-    [relativePath: string]: boolean | IContentsEntry;
-  } = {};
+  let flatMap: { [relativePath: string]: IContentsEntry } = {};
   for (const filePath of allFiles) {
     const relativePath = path.relative(folderPath, filePath).split(path.sep).join("/");
-    const shouldInclude = filterFn(relativePath);
+    const shouldInclude = options.filterFn ? options.filterFn(relativePath) : true;
     if (shouldInclude) {
-      if (includeStats) {
-        // generate size and md5 checksum stats
-        const { size, mtime } = fs.statSync(filePath);
-        const modifiedTime = mtime.toISOString();
-        // write size in kb to 1 dpclear
-        const size_kb = Math.round(size / 102.4) / 10;
-        const md5Checksum = getFileMD5Checksum(filePath);
-        const entry: IContentsEntry = { relativePath, size_kb, md5Checksum, modifiedTime };
-        flatMap[relativePath] = entry;
-      } else {
-        flatMap[relativePath] = true;
+      // generate size and md5 checksum stats
+      const { size, mtime } = fs.statSync(filePath);
+      const modifiedTime = mtime.toISOString();
+      // write size in kb to 1 dpclear
+      const size_kb = Math.round(size / 102.4) / 10;
+      const md5Checksum = getFileMD5Checksum(filePath);
+      const entry: IContentsEntry = { relativePath, size_kb, md5Checksum, modifiedTime };
+      if (options.includeLocalPath) {
+        entry.localPath = filePath;
       }
+      flatMap[relativePath] = entry as any;
     }
   }
   return flatMap;
@@ -159,7 +159,10 @@ export interface IContentsEntry {
   size_kb: number;
   modifiedTime: string;
   md5Checksum: string;
+  localPath?: string;
 }
+export type IContentsEntryHashmap = { [relativePath: string]: IContentsEntry };
+
 /** Generate md5 checksum for file */
 export function getFileMD5Checksum(filePath: string) {
   const hash = createHash("md5", {});
@@ -348,7 +351,6 @@ export function readContentsFile(folderPath: string) {
   }
 
   const contentsFilePath = fs.readdirSync(folderPath).find((f) => f.endsWith("_contents.json"));
-  console.log("contentsFilePath", contentsFilePath);
   if (!contentsFilePath) {
     logWarning({ msg1: "Contents file not found in folder", msg2: folderPath });
     return [];
@@ -401,8 +403,8 @@ export function replicateDir(
 ) {
   fs.ensureDirSync(src);
   fs.ensureDirSync(target);
-  const srcFiles = generateFolderFlatMap(src, true);
-  const targetFiles = generateFolderFlatMap(target, true);
+  const srcFiles = generateFolderFlatMap(src);
+  const targetFiles = generateFolderFlatMap(target);
 
   // omit src files via filter
   if (filter_fn) {
@@ -452,6 +454,57 @@ export function replicateDir(
   // remove hanging directories
   cleanupEmptyFolders(target);
   return ops;
+}
+
+/**
+ * Copy all files from src to target folder, overriding target files with src
+ * and keeping original modified times
+ */
+export function mergeFoldersRecursively(
+  src: string,
+  target: string,
+  options = { conflictStrategy: "keepSrc" }
+) {
+  fs.ensureDirSync(src);
+  fs.ensureDirSync(target);
+  const srcFiles = generateFolderFlatMap(src);
+  const targetFiles = generateFolderFlatMap(target);
+  // Copy function
+  function copySrcToTarget(filepath: string, entry: IContentsEntry) {
+    if (targetFiles.hasOwnProperty(filepath)) {
+      if (options.conflictStrategy !== "keepSrc") {
+        // TODO - add handling for other strategies if required
+        return;
+      }
+    }
+    const { relativePath, modifiedTime } = entry;
+    const srcPath = path.resolve(src, relativePath);
+    const targetPath = path.resolve(target, relativePath);
+    const mtime = new Date(modifiedTime);
+    fs.ensureDirSync(path.dirname(targetPath));
+    fs.copyFileSync(srcPath, targetPath);
+    fs.utimesSync(targetPath, mtime, mtime);
+  }
+  // Process entries
+  Object.entries(srcFiles).forEach(([filepath, entry]) =>
+    copySrcToTarget(filepath, entry as IContentsEntry)
+  );
+}
+export function createTempDir() {
+  const dirName = randomUUID();
+  const dirPath = path.join(os.tmpdir(), dirName);
+  fs.ensureDirSync(dirPath);
+  fs.emptyDirSync(dirPath);
+  return dirPath;
+}
+
+/**
+ * Run prettier to automatically format code in given folder path
+ * NOTE - by default will only format .ts files
+ */
+export function runPrettierCodeTidy(folderPath: string) {
+  const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${folderPath}/**/*.ts --loglevel error`;
+  return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
 }
 
 /** Create a randomly-named temporary folder within the os temp directory */

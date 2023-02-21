@@ -6,7 +6,7 @@
   "rows": [
     {
       "id": "my_tips",
-      "show": true,
+      "show": "@fields._app_skin == \"weekly_workshop\"",
       "icon_asset": "plh_images/icons/light_bulb_heart_white.svg",
       "template": "parent_centre_my_tips",
       "tile_style": "parent_centre_1",
@@ -78,7 +78,7 @@
     },
     {
       "id": "customisation",
-      "show": "!@fields.survey_welcome_completed",
+      "show": false,
       "icon_asset": "plh_images/icons/phone_heart_white.svg",
       "template": "setup_and_survey_stepper",
       "tile_style": "parent_centre_4",
@@ -114,7 +114,7 @@
     },
     {
       "id": "customise_again",
-      "show": "@fields.survey_welcome_completed",
+      "show": false,
       "icon_asset": "plh_images/icons/phone_heart_white.svg",
       "template": "parent_centre_customisation",
       "tile_style": "parent_centre_4",
@@ -328,7 +328,7 @@
     },
     {
       "id": "message_archive",
-      "show": true,
+      "show": "@fields._app_skin == \"weekly_workshop\"",
       "icon_asset": "plh_images/icons/letter_white.svg",
       "template": "parent_centre_message_archive",
       "tile_style": "parent_centre_4",

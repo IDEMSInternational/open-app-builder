@@ -94,16 +94,9 @@
     {
       "type": "declare_global_constant",
       "name": "m_something_fun",
-      "value": "Something Fun",
+      "value": "Something fun",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -154,16 +147,9 @@
     {
       "type": "declare_global_constant",
       "name": "m_hp_reminder",
-      "value": "Home Practice Reminder",
+      "value": "Remember to practise",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {

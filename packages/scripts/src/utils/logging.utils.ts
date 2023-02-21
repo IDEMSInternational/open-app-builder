@@ -110,18 +110,13 @@ export function createChildLogger(meta = {}) {
 }
 
 /** Record a 2-line error message in a box with additional optional logging and exit */
-export function logError(opts: Partial<ILogOptions> = {}) {
+function error(opts: Partial<ILogOptions> = {}) {
   const { msg1, msg2, error, logOnly } = { ...defaultLog, ...opts };
   console.log(
-    boxen(
-      `
-    ${chalk.red(msg1)}
-          
-    ${chalk.yellow(msg2)}
-          
-          `,
-      { padding: 1, borderColor: "red" }
-    )
+    boxen(`${chalk.red(msg1)}\n\n${chalk.yellow(msg2)}`, {
+      padding: 1,
+      borderColor: "red",
+    })
   );
   if (error) {
     console.error(error);
@@ -130,19 +125,22 @@ export function logError(opts: Partial<ILogOptions> = {}) {
     process.exit(1);
   }
 }
+/**
+ * HACK - export error within a Logger const to allow easier mocking in tests
+ * https://github.com/jasmine/jasmine/issues/1414
+ */
+export const Logger = {
+  error,
+};
 
 /** Display an output message in a blue box with 2 lines of text */
 export function logOutput(opts: Partial<ILogOptions> = {}) {
   const { msg1, msg2 } = { ...defaultLog, ...opts };
   console.log(
-    boxen(
-      `
-${chalk.blueBright(msg1)}
-            
-${chalk.cyanBright(msg2)}
-            `,
-      { padding: 1, borderColor: "blueBright" }
-    )
+    boxen(`${chalk.blueBright(msg1)}\n\n${chalk.cyanBright(msg2)}`, {
+      padding: 1,
+      borderColor: "blueBright",
+    })
   );
 }
 
@@ -150,14 +148,10 @@ ${chalk.cyanBright(msg2)}
 export function logWarning(opts: Partial<ILogOptions> = {}) {
   const { msg1, msg2 } = { ...defaultLog, ...opts };
   console.log(
-    boxen(
-      `
-      ${chalk.yellowBright(msg1)}
-              
-      ${chalk.yellow(msg2)}
-              `,
-      { padding: 1, borderColor: "yellowBright" }
-    )
+    boxen(`${chalk.yellowBright(msg1)}\n\n${chalk.yellow(msg2)}`, {
+      padding: 1,
+      borderColor: "yellowBright",
+    })
   );
 }
 
