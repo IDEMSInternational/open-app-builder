@@ -34,11 +34,6 @@ const FeatureRoutes: Routes = [
     loadChildren: () => import("./feature/theme/theme.module").then((m) => m.ThemeModule),
   },
   {
-    path: "app-update",
-    loadChildren: () =>
-      import("./feature/app-update/app-update.module").then((m) => m.AppUpdateModule),
-  },
-  {
     path: "tour",
     loadChildren: () => import("./feature/tour/tour.module").then((m) => m.TourModule),
   },
