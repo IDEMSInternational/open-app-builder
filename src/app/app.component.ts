@@ -59,7 +59,7 @@ export class AppComponent {
     private platform: Platform,
     private cdr: ChangeDetectorRef,
     private menuController: MenuController,
-    public router: Router,
+    private router: Router,
     // App services
     private skinService: SkinService,
     private appConfigService: AppConfigService,
@@ -270,6 +270,7 @@ export class AppComponent {
         const lastLaunchDay = new Date(lastLaunchEntry._created);
         // reprocess initialisation if the day has changed
         if (!isSameDay(lastLaunchDay, new Date())) {
+          await this.checkForAppUpdatesAndApply();
           await this.initialiseCoreServices();
         } else {
           console.log("welcome back :D");
