@@ -32,7 +32,7 @@ import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lif
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
 import { IAppConfig } from "./shared/model";
 import { TaskService } from "./shared/services/task/task.service";
-import { AppUpdateService } from "./feature/app-update/services/app-update.service";
+import { AppUpdateService } from "./shared/services/app-update/app-update.service";
 import { AsyncServiceBase } from "./shared/services/asyncService.base";
 import { SyncServiceBase } from "./shared/services/syncService.base";
 import { SeoService } from "./shared/services/seo/seo.service";
