@@ -132,27 +132,6 @@
       "template": "w_celebrate_think",
       "completed_field": "task_gp_w_celebrate_think_completed",
       "completed": "@fields.task_gp_w_celebrate_think_completed"
-    },
-    {
-      "id": "survey_activity",
-      "individual": true,
-      "together": false,
-      "priority": 12,
-      "has_single_task": true,
-      "title": "Survey",
-      "_translations": {
-        "title": {
-          "tz_sw": true
-        }
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Survey"
-        }
-      },
-      "template": "survey_final_stepper",
-      "completed_field": "task_gp_w_celebrate_survey_activity_completed",
-      "completed": "@fields.task_gp_w_celebrate_survey_activity_completed"
     }
   ]
 }

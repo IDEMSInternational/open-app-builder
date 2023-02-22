@@ -65,13 +65,6 @@
       "individual": true,
       "together": true,
       "template": "w_self_care_reward"
-    },
-    {
-      "id": "survey_activity",
-      "group": "survey_activity",
-      "individual": true,
-      "together": false,
-      "template": "w_self_care_survey_activity"
     }
   ]
 }
