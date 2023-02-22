@@ -1,11 +1,17 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { AppUpdateService } from "./app-update.service";
-import { AppUpdateComponent } from "./app-update.component";
+import { FormsModule } from "@angular/forms";
+
+import { IonicModule } from "@ionic/angular";
+
+import { AppUpdatePageRoutingModule } from "./app-update-routing.module";
+
+import { AppUpdatePage } from "./app-update.page";
+import { AppUpdateService } from "./services/app-update.service";
 
 @NgModule({
-  declarations: [AppUpdateComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, IonicModule, AppUpdatePageRoutingModule],
+  declarations: [AppUpdatePage],
   providers: [AppUpdateService],
 })
 export class AppUpdateModule {}

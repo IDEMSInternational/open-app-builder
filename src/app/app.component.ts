@@ -32,7 +32,7 @@ import { LifecycleActionsService } from "./shared/services/lifecycle-actions/lif
 import { AppConfigService } from "./shared/services/app-config/app-config.service";
 import { IAppConfig } from "./shared/model";
 import { TaskService } from "./shared/services/task/task.service";
-import { AppUpdateService } from "./feature/app-update/app-update.service";
+import { AppUpdateService } from "./feature/app-update/services/app-update.service";
 import { AsyncServiceBase } from "./shared/services/asyncService.base";
 import { SyncServiceBase } from "./shared/services/syncService.base";
 import { SeoService } from "./shared/services/seo/seo.service";
@@ -59,7 +59,7 @@ export class AppComponent {
     private platform: Platform,
     private cdr: ChangeDetectorRef,
     private menuController: MenuController,
-    private router: Router,
+    public router: Router,
     // App services
     private skinService: SkinService,
     private appConfigService: AppConfigService,
@@ -99,6 +99,7 @@ export class AppComponent {
       // ensure deployment field set correctly for use in any startup services or templates
       localStorage.setItem(this.appFields.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
       localStorage.setItem(this.appFields.APP_VERSION, this.APP_VERSION);
+      await this.checkForAppUpdatesAndApply();
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
@@ -166,11 +167,6 @@ export class AppComponent {
    * (e.g. notifications before campaigns that require notifications)
    **/
   private async initialiseCoreServices() {
-    if (Capacitor.isNativePlatform()) {
-      const appUpdateInfo = this.appUpdateService.getAppUpdateInfo();
-      this.appUpdateInfo = JSON.stringify(appUpdateInfo);
-      console.log("appUpdateInfo:", appUpdateInfo);
-    }
     // Organise all services into groups
     const services: {
       /** should be called early but don't need to be waited for */
@@ -289,6 +285,12 @@ export class AppComponent {
       if (isUserMode !== false) {
         this.templateFieldService.setField("user_mode", "false");
       }
+    }
+  }
+
+  private async checkForAppUpdatesAndApply() {
+    if (Capacitor.isNativePlatform()) {
+      await this.appUpdateService.checkForUpdatesAndAttemptImmediateUpdate();
     }
   }
 }
