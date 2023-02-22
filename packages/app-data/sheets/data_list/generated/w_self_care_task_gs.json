@@ -184,27 +184,6 @@
       "template": "w_self_care_reward",
       "completed_field": "task_gp_w_self_care_reward_completed",
       "completed": "@fields.task_gp_w_self_care_reward_completed"
-    },
-    {
-      "id": "survey",
-      "individual": true,
-      "together": false,
-      "priority": 71,
-      "has_single_task": true,
-      "title": "Survey",
-      "_translations": {
-        "title": {
-          "tz_sw": true
-        }
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Survey"
-        }
-      },
-      "template": "setup_and_survey_stepper",
-      "completed_field": "task_gp_w_self_care_survey_completed",
-      "completed": "@fields.task_gp_w_self_care_survey_completed"
     }
   ]
 }
