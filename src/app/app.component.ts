@@ -52,7 +52,6 @@ export class AppComponent {
   footerDefaults: IAppConfig["APP_FOOTER_DEFAULTS"];
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
-  appUpdateInfo: any;
 
   constructor(
     // 3rd Party Services
