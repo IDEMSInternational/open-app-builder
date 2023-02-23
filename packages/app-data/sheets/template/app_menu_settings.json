@@ -75,6 +75,7 @@
           "_cleaned": "click | go_to: workshop_options_page"
         }
       ],
+      "condition": "@fields._app_skin == \"weekly_workshop\"",
       "_nested_name": "button_2",
       "_dynamicFields": {
         "value": [
@@ -84,11 +85,22 @@
             "type": "global",
             "fieldName": "weekly_workshop_options"
           }
+        ],
+        "condition": [
+          {
+            "fullExpression": "@fields._app_skin == \"weekly_workshop\"",
+            "matchedExpression": "@fields._app_skin",
+            "type": "fields",
+            "fieldName": "_app_skin"
+          }
         ]
       },
       "_dynamicDependencies": {
         "@global.weekly_workshop_options": [
           "value"
+        ],
+        "@fields._app_skin": [
+          "condition"
         ]
       }
     },
@@ -389,6 +401,7 @@
           "_cleaned": "click | go_to: skin_select"
         }
       ],
+      "condition": false,
       "_nested_name": "button_10"
     }
   ],
