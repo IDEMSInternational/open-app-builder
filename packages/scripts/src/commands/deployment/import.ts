@@ -2,7 +2,7 @@
 import chalk from "chalk";
 import { Command } from "commander";
 import fs, { moveSync, rmSync } from "fs-extra";
-import path, { resolve } from "path";
+import { resolve } from "path";
 import GitProvider from "../../tasks/providers/git";
 import { DEPLOYMENTS_PATH } from "../../paths";
 import { Logger, logOutput, logWarning, promptConfirmation, promptInput } from "../../utils";
@@ -77,8 +77,8 @@ function createTempDeploymentName(remoteTarget: string) {
   return tmpDir;
 }
 
+/** Check if deployment config can be compiled */
 async function validateImportDeployment(deploymentPath: string) {
-  console.log("validate", deploymentPath);
   const deploymentJson = loadDeploymentJson(deploymentPath, { exitOnError: false });
   if (deploymentJson) {
     return { valid: true, name: deploymentJson.name, shouldContinue: true };
