@@ -183,10 +183,17 @@ export class FeedbackService extends SyncServiceBase {
   }
 
   public async sidebarOpen() {
+    await this.setSidebarField(true);
     this.router.navigate([{ outlets: { sidebar: ["feedback"] } }]);
   }
   public async sidebarClose() {
+    await this.setSidebarField(false);
     this.router.navigate([{ outlets: { sidebar: [] } }]);
+  }
+
+  private async setSidebarField(isOpen: boolean) {
+    const { sidebar_open_field } = this.feedbackModuleDefaults;
+    await this.templateFieldService.setField(sidebar_open_field, `${isOpen}`);
   }
 
   /**
