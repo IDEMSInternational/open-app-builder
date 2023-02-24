@@ -218,93 +218,28 @@
     },
     {
       "type": "text",
-      "name": "question_text_happy",
-      "value": "@local.row_data.question_text_happy",
+      "name": "question_text",
+      "value": "@local.row_data.question_text",
       "_translations": {
         "value": {}
       },
-      "condition": "!(@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\")",
       "parameter_list": {
         "style": "emphasised"
       },
-      "_nested_name": "question_text_happy",
+      "_nested_name": "question_text",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@local.row_data.question_text_happy",
-            "matchedExpression": "@local.row_data.question_text_happy",
+            "fullExpression": "@local.row_data.question_text",
+            "matchedExpression": "@local.row_data.question_text",
             "type": "local",
             "fieldName": "row_data"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "!(@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\")",
-            "matchedExpression": "@local.workshop_hp_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_mood"
-          },
-          {
-            "fullExpression": "!(@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\")",
-            "matchedExpression": "@local.workshop_hp_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_mood"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.row_data.question_text_happy": [
+        "@local.row_data.question_text": [
           "value"
-        ],
-        "@local.workshop_hp_mood": [
-          "condition",
-          "condition"
-        ]
-      }
-    },
-    {
-      "type": "text",
-      "name": "question_text_ok_sad",
-      "value": "@local.row_data.question_text_ok_sad",
-      "_translations": {
-        "value": {}
-      },
-      "condition": "@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\"",
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "question_text_ok_sad",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.row_data.question_text_ok_sad",
-            "matchedExpression": "@local.row_data.question_text_ok_sad",
-            "type": "local",
-            "fieldName": "row_data"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\"",
-            "matchedExpression": "@local.workshop_hp_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_mood"
-          },
-          {
-            "fullExpression": "@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\"",
-            "matchedExpression": "@local.workshop_hp_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_mood"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.row_data.question_text_ok_sad": [
-          "value"
-        ],
-        "@local.workshop_hp_mood": [
-          "condition",
-          "condition"
         ]
       }
     },

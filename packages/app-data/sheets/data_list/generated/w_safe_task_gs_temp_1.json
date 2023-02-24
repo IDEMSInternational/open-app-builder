@@ -173,17 +173,16 @@
       "together": true,
       "priority": 11,
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.sugar_daddy.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.sugar_daddy.title"
         }
-      }
+      },
+      "story_id": "sugar_daddy"
     },
     {
       "id": "read_2",
@@ -191,17 +190,16 @@
       "together": true,
       "priority": 13,
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.online_contact.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.online_contact.title"
         }
-      }
+      },
+      "story_id": "online_contact"
     },
     {
       "id": "learn_ind",

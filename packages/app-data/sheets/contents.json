@@ -123,6 +123,12 @@
       "flow_name": "nf_inactive_day",
       "_xlsxPath": "global/campaigns/notifications_inactive.xlsx"
     },
+    "nf_inactive_progress": {
+      "flow_type": "data_list",
+      "flow_subtype": "campaign_rows",
+      "flow_name": "nf_inactive_progress",
+      "_xlsxPath": "global/campaigns/notifications_inactive.xlsx"
+    },
     "nf_inactive_week_month": {
       "flow_type": "data_list",
       "flow_subtype": "campaign_rows",
@@ -292,6 +298,13 @@
       "flow_name": "debug_delimiters_list",
       "flow_subtype": "debug",
       "_xlsxPath": "quality_assurance/debug_sheets/debug_delimiters.xlsx"
+    },
+    "debug_language_data_list": {
+      "flow_type": "data_list",
+      "flow_name": "debug_language_data_list",
+      "flow_subtype": "debug",
+      "data_list_name": "debug_language",
+      "_xlsxPath": "quality_assurance/debug_sheets/debug_theme_language_assets.xlsx"
     },
     "debug_variable_data": {
       "flow_type": "data_list",
@@ -1355,11 +1368,11 @@
       "flow_subtype": "debug",
       "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_global.xlsx"
     },
-    "example_field_array_global": {
+    "example_field_hist_global": {
       "flow_type": "global",
       "flow_subtype": "debug",
-      "flow_name": "example_field_array_global",
-      "_xlsxPath": "quality_assurance/example_sheets/example_field_array.xlsx"
+      "flow_name": "example_field_hist_global",
+      "_xlsxPath": "quality_assurance/example_sheets/example_field_history.xlsx"
     },
     "example_glob_override_default": {
       "flow_type": "global",
@@ -1497,11 +1510,6 @@
       "module": "money",
       "flow_name": "savings_options",
       "_xlsxPath": "global/data/suggestion_globals.xlsx"
-    },
-    "skin_fields": {
-      "flow_type": "global",
-      "flow_name": "skin_fields",
-      "_xlsxPath": "global/data/navigation_globals.xlsx"
     },
     "spend_time_ideas": {
       "flow_type": "global",
@@ -1867,16 +1875,6 @@
       "flow_name": "box_content",
       "_xlsxPath": "global_modular/core_templates/box_story.xlsx"
     },
-    "box_content_pages": {
-      "flow_type": "template",
-      "flow_name": "box_content_pages",
-      "_xlsxPath": "global_modular/core_templates/box_story.xlsx"
-    },
-    "box_content_scroll": {
-      "flow_type": "template",
-      "flow_name": "box_content_scroll",
-      "_xlsxPath": "global_modular/core_templates/box_story.xlsx"
-    },
     "box_duo": {
       "flow_type": "template",
       "flow_name": "box_duo",
@@ -1946,6 +1944,16 @@
       "flow_type": "template",
       "flow_name": "box_story",
       "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+    },
+    "box_story_pages": {
+      "flow_type": "template",
+      "flow_name": "box_story_pages",
+      "_xlsxPath": "global_modular/core_templates/box_story.xlsx"
+    },
+    "box_story_scroll": {
+      "flow_type": "template",
+      "flow_name": "box_story_scroll",
+      "_xlsxPath": "global_modular/core_templates/box_story.xlsx"
     },
     "box_survey_question": {
       "flow_type": "template",
@@ -2941,6 +2949,12 @@
       "flow_subtype": "debug",
       "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_theme_assets.xlsx"
     },
+    "debug_theme_language_assets": {
+      "flow_type": "template",
+      "flow_name": "debug_theme_language_assets",
+      "flow_subtype": "debug",
+      "_xlsxPath": "quality_assurance/debug_sheets/debug_theme_language_assets.xlsx"
+    },
     "debug_tile_text": {
       "flow_type": "template",
       "flow_name": "debug_tile_text",
@@ -3253,11 +3267,11 @@
       "flow_subtype": "debug",
       "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_actions.xlsx"
     },
-    "example_field_array": {
+    "example_field_hist": {
       "flow_type": "template",
       "flow_subtype": "debug",
-      "flow_name": "example_field_array",
-      "_xlsxPath": "quality_assurance/example_sheets/example_field_array.xlsx"
+      "flow_name": "example_field_hist",
+      "_xlsxPath": "quality_assurance/example_sheets/example_field_history.xlsx"
     },
     "example_footer": {
       "flow_type": "template",
@@ -4826,18 +4840,6 @@
       "flow_name": "user_code",
       "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
     },
-    "w_1on1_box_1": {
-      "flow_type": "template",
-      "module": "1on1",
-      "flow_name": "w_1on1_box_1",
-      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
-    },
-    "w_1on1_box_2": {
-      "flow_type": "template",
-      "module": "1on1",
-      "flow_name": "w_1on1_box_2",
-      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
-    },
     "w_1on1_care_together": {
       "flow_type": "template",
       "module": "1on1",
@@ -5262,16 +5264,16 @@
       "flow_name": "w_consequence_question_2",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
     },
-    "w_consequence_read_1_temp": {
+    "w_consequence_read_1": {
       "flow_type": "template",
       "module": "consequence",
-      "flow_name": "w_consequence_read_1_temp",
+      "flow_name": "w_consequence_read_1",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
     },
-    "w_consequence_read_3_temp": {
+    "w_consequence_read_3": {
       "flow_type": "template",
       "module": "consequence",
-      "flow_name": "w_consequence_read_3_temp",
+      "flow_name": "w_consequence_read_3",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
     },
     "w_consequence_reflect_ind": {
@@ -5483,16 +5485,16 @@
       "flow_name": "w_crisis_question_2",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"
     },
-    "w_crisis_read_1_temp": {
+    "w_crisis_read_1": {
       "flow_type": "template",
       "module": "crisis",
-      "flow_name": "w_crisis_read_1_temp",
+      "flow_name": "w_crisis_read_1",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"
     },
-    "w_crisis_read_2_temp": {
+    "w_crisis_read_2": {
       "flow_type": "template",
       "module": "crisis",
-      "flow_name": "w_crisis_read_2_temp",
+      "flow_name": "w_crisis_read_2",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_crisis.xlsx"
     },
     "w_crisis_reflect_individual": {
@@ -5584,18 +5586,6 @@
       "module": "instruct",
       "flow_name": "w_instruct_home_practice",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
-    },
-    "w_instruct_hp_box_1": {
-      "flow_type": "template",
-      "module": "instruct",
-      "flow_name": "w_instruct_hp_box_1",
-      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
-    },
-    "w_instruct_hp_box_2": {
-      "flow_type": "template",
-      "module": "instruct",
-      "flow_name": "w_instruct_hp_box_2",
-      "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
     },
     "w_instruct_hp_challenges": {
       "flow_type": "template",
@@ -5692,16 +5682,16 @@
       "flow_name": "w_instruct_question_2",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
     },
-    "w_instruct_read_1_temp": {
+    "w_instruct_read_1": {
       "flow_type": "template",
       "module": "instruct",
-      "flow_name": "w_instruct_read_1_temp",
+      "flow_name": "w_instruct_read_1",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
     },
-    "w_instruct_read_2_temp": {
+    "w_instruct_read_2": {
       "flow_type": "template",
       "module": "instruct",
-      "flow_name": "w_instruct_read_2_temp",
+      "flow_name": "w_instruct_read_2",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_instruct.xlsx"
     },
     "w_instruct_reflect_individual": {
@@ -5931,22 +5921,22 @@
       "flow_name": "w_money_messages",
       "_xlsxPath": "global/top_templates/in_week_messages/message_navigation.xlsx"
     },
-    "w_money_read_1_temp": {
+    "w_money_read_1": {
       "flow_type": "template",
       "module": "money",
-      "flow_name": "w_money_read_1_temp",
+      "flow_name": "w_money_read_1",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
     },
-    "w_money_read_2_temp": {
+    "w_money_read_2": {
       "flow_type": "template",
       "module": "money",
-      "flow_name": "w_money_read_2_temp",
+      "flow_name": "w_money_read_2",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
     },
-    "w_money_read_3_temp": {
+    "w_money_read_3": {
       "flow_type": "template",
       "module": "money",
-      "flow_name": "w_money_read_3_temp",
+      "flow_name": "w_money_read_3",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
     },
     "w_money_reflect_individual": {
@@ -6152,12 +6142,6 @@
       "flow_name": "w_praise_read",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"
     },
-    "w_praise_read_temp": {
-      "flow_type": "template",
-      "module": "praise",
-      "flow_name": "w_praise_read_temp",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_praise.xlsx"
-    },
     "w_praise_reflect_individual": {
       "flow_type": "template",
       "module": "praise",
@@ -6349,16 +6333,16 @@
       "flow_name": "w_rules_question",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_rules.xlsx"
     },
-    "w_rules_read_1_temp": {
+    "w_rules_read_1": {
       "flow_type": "template",
       "module": "rules",
-      "flow_name": "w_rules_read_1_temp",
+      "flow_name": "w_rules_read_1",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_rules.xlsx"
     },
-    "w_rules_read_2_temp": {
+    "w_rules_read_2": {
       "flow_type": "template",
       "module": "rules",
-      "flow_name": "w_rules_read_2_temp",
+      "flow_name": "w_rules_read_2",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_rules.xlsx"
     },
     "w_rules_reflect_individual": {
@@ -6570,16 +6554,16 @@
       "flow_name": "w_safe_question_2",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"
     },
-    "w_safe_read_1_temp": {
+    "w_safe_read_1": {
       "flow_type": "template",
       "module": "safe",
-      "flow_name": "w_safe_read_1_temp",
+      "flow_name": "w_safe_read_1",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"
     },
-    "w_safe_read_2_temp": {
+    "w_safe_read_2": {
       "flow_type": "template",
       "module": "safe",
-      "flow_name": "w_safe_read_2_temp",
+      "flow_name": "w_safe_read_2",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"
     },
     "w_safe_reflect_individual": {
@@ -6865,16 +6849,16 @@
       "flow_name": "w_solve_messages",
       "_xlsxPath": "global/top_templates/in_week_messages/message_navigation.xlsx"
     },
-    "w_solve_read_1_temp": {
+    "w_solve_read_1": {
       "flow_type": "template",
       "module": "solve",
-      "flow_name": "w_solve_read_1_temp",
+      "flow_name": "w_solve_read_1",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"
     },
-    "w_solve_read_2_temp": {
+    "w_solve_read_2": {
       "flow_type": "template",
       "module": "solve",
-      "flow_name": "w_solve_read_2_temp",
+      "flow_name": "w_solve_read_2",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_solve.xlsx"
     },
     "w_solve_reflect_individual": {
@@ -7068,22 +7052,22 @@
       "flow_name": "w_stress_question",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
     },
-    "w_stress_read_1_temp": {
+    "w_stress_read_1": {
       "flow_type": "template",
       "module": "stress",
-      "flow_name": "w_stress_read_1_temp",
+      "flow_name": "w_stress_read_1",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
     },
-    "w_stress_read_2_temp": {
+    "w_stress_read_2": {
       "flow_type": "template",
       "module": "stress",
-      "flow_name": "w_stress_read_2_temp",
+      "flow_name": "w_stress_read_2",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
     },
-    "w_stress_read_3_temp": {
+    "w_stress_read_3": {
       "flow_type": "template",
       "module": "stress",
-      "flow_name": "w_stress_read_3_temp",
+      "flow_name": "w_stress_read_3",
       "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
     },
     "w_stress_reflect_individual": {

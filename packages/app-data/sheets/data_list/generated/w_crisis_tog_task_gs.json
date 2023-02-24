@@ -170,17 +170,16 @@
       "together": true,
       "priority": 11,
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.rape.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.rape.title"
         }
       },
+      "story_id": "rape",
       "completed_field": "task_gp_w_crisis_read_1_completed",
       "completed": "@fields.task_gp_w_crisis_read_1_completed"
     },
@@ -190,17 +189,16 @@
       "together": true,
       "priority": 13,
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.violence.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.violence.title"
         }
       },
+      "story_id": "violence",
       "completed_field": "task_gp_w_crisis_read_2_completed",
       "completed": "@fields.task_gp_w_crisis_read_2_completed"
     },
