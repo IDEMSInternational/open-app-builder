@@ -16,13 +16,52 @@
     },
     {
       "type": "text",
-      "value": "_feedback_selected_text",
+      "value": "_feedback_selected_text  : @fields._feedback_selected_text",
       "_translations": {
         "value": {}
       },
       "exclude_from_translation": true,
       "name": "text",
-      "_nested_name": "text"
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "_feedback_selected_text  : @fields._feedback_selected_text",
+            "matchedExpression": "@fields._feedback_selected_text",
+            "type": "fields",
+            "fieldName": "_feedback_selected_text"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._feedback_selected_text": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "value": "_feedback_sidebar_open : @fields._feedback_sidebar_open",
+      "_translations": {
+        "value": {}
+      },
+      "name": "text",
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "_feedback_sidebar_open : @fields._feedback_sidebar_open",
+            "matchedExpression": "@fields._feedback_sidebar_open",
+            "type": "fields",
+            "fieldName": "_feedback_sidebar_open"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._feedback_sidebar_open": [
+          "value"
+        ]
+      }
     },
     {
       "type": "title",
@@ -49,11 +88,36 @@
           ],
           "_raw": "click | feedback:open",
           "_cleaned": "click | feedback:open"
+        },
+        {
+          "trigger": "click",
+          "action_id": "emit",
+          "args": [
+            "force_reprocess"
+          ],
+          "_raw": "click | emit: force_reprocess",
+          "_cleaned": "click | emit: force_reprocess"
         }
       ],
+      "condition": "!@fields._feedback_sidebar_open",
       "exclude_from_translation": true,
       "name": "button",
-      "_nested_name": "button"
+      "_nested_name": "button",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@fields._feedback_sidebar_open",
+            "matchedExpression": "!@fields._feedback_sidebar_open",
+            "type": "fields",
+            "fieldName": "_feedback_sidebar_open"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@fields._feedback_sidebar_open": [
+          "condition"
+        ]
+      }
     },
     {
       "type": "button",
@@ -70,11 +134,36 @@
           ],
           "_raw": "click | feedback:close",
           "_cleaned": "click | feedback:close"
+        },
+        {
+          "trigger": "click",
+          "action_id": "emit",
+          "args": [
+            "force_reprocess"
+          ],
+          "_raw": "click | emit: force_reprocess",
+          "_cleaned": "click | emit: force_reprocess"
         }
       ],
+      "condition": "@fields._feedback_sidebar_open",
       "exclude_from_translation": true,
       "name": "button",
-      "_nested_name": "button"
+      "_nested_name": "button",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields._feedback_sidebar_open",
+            "matchedExpression": "@fields._feedback_sidebar_open",
+            "type": "fields",
+            "fieldName": "_feedback_sidebar_open"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._feedback_sidebar_open": [
+          "condition"
+        ]
+      }
     },
     {
       "type": "button",
