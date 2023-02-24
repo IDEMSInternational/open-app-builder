@@ -131,15 +131,6 @@
     },
     {
       "type": "declare_global_constant",
-      "name": "female_caregiver_4",
-      "value": "Mama",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true
-    },
-    {
-      "type": "declare_global_constant",
       "name": "male_adult_name_1",
       "value": "Giles",
       "_translations": {

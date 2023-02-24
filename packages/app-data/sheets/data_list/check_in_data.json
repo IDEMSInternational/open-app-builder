@@ -835,32 +835,11 @@
     {
       "id": "w_celebrate",
       "activity_image": "plh_images/workshop_modes/guide_2/final/wave.svg",
-      "reply_happy": "Fantastic! We are proud of you for all you have done over the past weeks.",
+      "reply_happy": "Fantastic! And well done for investing in yourself and your family - you have accomplished a lot.",
       "_translations": {
-        "reply_happy": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_ok": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_sad": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "reply_happy": {},
+        "reply_ok": {},
+        "reply_sad": {},
         "activity_title": {
           "tz_sw": true,
           "za_af": true,
@@ -889,13 +868,13 @@
       },
       "_translatedFields": {
         "reply_happy": {
-          "eng": "Fantastic! We are proud of you for all you have done over the past weeks."
+          "eng": "Fantastic! And well done for investing in yourself and your family - you have accomplished a lot."
         },
         "reply_ok": {
-          "eng": "We’re sorry it’s a difficult day. We are proud of you for all you have done over the past weeks."
+          "eng": "Sorry that you are not having the best day. Well done for trying to figure everything out. @global.parent_app is here to help."
         },
         "reply_sad": {
-          "eng": "We’re sorry it’s a difficult day. We are proud of you for all you have done over the past weeks."
+          "eng": "Being a parent can be challenging. Take a deep breath and recognise all you have done for your family - you deserve praise!"
         },
         "activity_title": {
           "eng": "Welcome @fields.user_name"
@@ -907,8 +886,8 @@
           "eng": "How are you feeling today?"
         }
       },
-      "reply_ok": "We’re sorry it’s a difficult day. We are proud of you for all you have done over the past weeks.",
-      "reply_sad": "We’re sorry it’s a difficult day. We are proud of you for all you have done over the past weeks.",
+      "reply_ok": "Sorry that you are not having the best day. Well done for trying to figure everything out. @global.parent_app is here to help.",
+      "reply_sad": "Being a parent can be challenging. Take a deep breath and recognise all you have done for your family - you deserve praise!",
       "activity_title": "Welcome @fields.user_name",
       "intro_text": "It's great to see you again!",
       "question_text": "How are you feeling today?"
