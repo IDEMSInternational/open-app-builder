@@ -4,12 +4,12 @@
     "md5Checksum": "665b1f091c80ed455d21c668f3771b6b"
   },
   "android/icon-foreground.png": {
-    "size_kb": 54.5,
-    "md5Checksum": "578b32e963489685a8d38c60089fd16b"
+    "size_kb": 48.2,
+    "md5Checksum": "19ed1c544bc0e076ef25b9d343c6b42f"
   },
   "android/icon.png": {
-    "size_kb": 73.5,
-    "md5Checksum": "69a75a2348ed955966773086a42f740e"
+    "size_kb": 76.8,
+    "md5Checksum": "0cb603e1f04d4e13254107339bd0f94f"
   },
   "android/splash.png": {
     "size_kb": 80.9,
@@ -1716,8 +1716,8 @@
     "md5Checksum": "5e779b9b284bc8170eb8a8ae54948a01"
   },
   "plh_images/icons/tick.svg": {
-    "size_kb": 0.4,
-    "md5Checksum": "36c0ae7a400495b42e147e06698012b4"
+    "size_kb": 0.3,
+    "md5Checksum": "b4e6f1e9ba6e5bcdd2e404bc432ba745"
   },
   "plh_images/icons/tick_circle.svg": {
     "size_kb": 1.8,
@@ -2761,7 +2761,7 @@
       }
     }
   },
-  "plh_images/workshops/w_instruct/read_2/slide_1_a.svg": {
+  "plh_images/workshops/w_instruct/read_2/slide_2.svg": {
     "size_kb": 13.1,
     "md5Checksum": "0fecc8dc1e3f3f3881de2bbd5c234c5b",
     "themeVariations": {
@@ -2771,7 +2771,7 @@
       }
     }
   },
-  "plh_images/workshops/w_instruct/read_2/slide_2.svg": {
+  "plh_images/workshops/w_instruct/read_2/slide_3.svg": {
     "size_kb": 13.2,
     "md5Checksum": "57831972a8564f3cf949026a70ab8fc9",
     "themeVariations": {
@@ -2781,7 +2781,7 @@
       }
     }
   },
-  "plh_images/workshops/w_instruct/read_2/slide_3.svg": {
+  "plh_images/workshops/w_instruct/read_2/slide_4.svg": {
     "size_kb": 11,
     "md5Checksum": "43a3bad70ebe57788bbc7efcbb8eb501",
     "themeVariations": {
@@ -2791,7 +2791,7 @@
       }
     }
   },
-  "plh_images/workshops/w_instruct/read_2/slide_4.svg": {
+  "plh_images/workshops/w_instruct/read_2/slide_5.svg": {
     "size_kb": 10.4,
     "md5Checksum": "2ac7364286f00393a236404e22dbdec7",
     "themeVariations": {
@@ -3107,7 +3107,13 @@
   },
   "plh_images/workshops/w_rules/read_2/slide_5.svg": {
     "size_kb": 6.9,
-    "md5Checksum": "c427f203f1915bcd0302921fc35d729a"
+    "md5Checksum": "c427f203f1915bcd0302921fc35d729a",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 423.4,
+        "md5Checksum": "c0662b8f585a26bbb07a58e631059f48"
+      }
+    }
   },
   "plh_images/workshops/w_rules/tools.svg": {
     "size_kb": 9.1,
@@ -4130,6 +4136,22 @@
       "za_tn": {
         "size_kb": 1.9,
         "md5Checksum": "1108e9d18835084b836c046d82b443f3"
+      }
+    }
+  },
+  "quality_assurance/debug_theme_language.png": {
+    "size_kb": 21.9,
+    "md5Checksum": "a86e175e00b77a34a936cc08214359ca",
+    "translations": {
+      "tz_sw": {
+        "size_kb": 21.6,
+        "md5Checksum": "d851eef52c8d12fdbf0497210961a407"
+      }
+    },
+    "themeVariations": {
+      "professional": {
+        "size_kb": 23.5,
+        "md5Checksum": "4bc61051e4d1a8e6cbb74902ae3dde88"
       }
     }
   },

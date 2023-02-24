@@ -9,11 +9,11 @@ const workflows: IDeploymentWorkflows = {
         function: async ({ args }) => {
           const [childWorkflow] = args || [];
           const childWorkflows = workflows.deployment.children;
-          if (!childWorkflow || !(childWorkflow in childWorkflows)) {
+          if (!childWorkflow || !childWorkflows?.childWorkflow) {
             console.log(
               "available commands",
               "\n\n" +
-                Object.keys(childWorkflows)
+                Object.keys(childWorkflows as IDeploymentWorkflows)
                   .map((name) => `deployment ${name}`)
                   .join("\n"),
               "\n"

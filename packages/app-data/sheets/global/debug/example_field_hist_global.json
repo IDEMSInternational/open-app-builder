@@ -1,0 +1,17 @@
+{
+  "flow_type": "global",
+  "flow_subtype": "debug",
+  "flow_name": "example_field_hist_global",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_field_default",
+      "name": "debug_version",
+      "value": "v1",
+      "_translations": {
+        "value": {}
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/example_field_history.xlsx"
+}

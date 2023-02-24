@@ -1,6 +1,5 @@
 import { promptInput } from "../../utils";
 
-import { parseCommand } from "../../commands";
 import { createDeployment } from "../../commands/deployment/create";
 import { importRepo } from "../../commands/deployment/import";
 import { DeploymentSet } from "../../commands/deployment/set";

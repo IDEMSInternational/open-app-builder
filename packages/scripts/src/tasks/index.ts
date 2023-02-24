@@ -25,6 +25,7 @@ const ALL_TASKS = {
   file,
   git,
   gdrive,
+  git,
   subtitles,
   template,
   translate,

@@ -111,6 +111,7 @@ This will create a new git branch, apply local changes and push to github. From 
 !!! warning
     If multiple authors are updating content and creating releases there is a high probability of conflicts arising. It is recommended to merge open pull requests before creating new content releases, and running the `yarn scripts deployment set` script to ensure local content also includes the latest remote content.
     
+   
 ## File Encryption
 In cases where deployments need to share private information, such as API keys or service accounts, a special encryption folder can be used to handle encryption and decryption processes
 
