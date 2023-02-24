@@ -10,9 +10,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.iwm_as_notifications"
+            "calc": "@fields._app_skin == \"weekly_workshop\""
           },
-          "_raw": "@fields.iwm_as_notifications"
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
         }
       ],
       "deactivation_condition_list": [
@@ -38,9 +38,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.iwm_as_notifications && @fields.w_self_care_started"
+            "calc": "@fields._app_skin == \"weekly_workshop\""
           },
-          "_raw": "@fields.iwm_as_notifications && @fields.w_self_care_started"
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
         }
       ],
       "time": {
@@ -54,9 +54,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.iwm_as_notifications"
+            "calc": "@fields._app_skin == \"weekly_workshop\""
           },
-          "_raw": "@fields.iwm_as_notifications"
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
         }
       ],
       "deactivation_condition_list": [
@@ -82,9 +82,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.iwm_as_notifications"
+            "calc": "@fields._app_skin == \"weekly_workshop\""
           },
-          "_raw": "@fields.iwm_as_notifications"
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
         }
       ],
       "deactivation_condition_list": [
@@ -110,9 +110,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.iwm_as_notifications"
+            "calc": "@fields._app_skin == \"weekly_workshop\""
           },
-          "_raw": "@fields.iwm_as_notifications"
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
         }
       ],
       "deactivation_condition_list": [
@@ -138,9 +138,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.iwm_as_notifications"
+            "calc": "@fields._app_skin == \"weekly_workshop\""
           },
-          "_raw": "@fields.iwm_as_notifications"
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
         }
       ],
       "schedule": {
@@ -157,9 +157,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.iwm_as_notifications"
+            "calc": "@fields._app_skin == \"weekly_workshop\""
           },
-          "_raw": "@fields.iwm_as_notifications"
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
         }
       ],
       "schedule": {
@@ -176,9 +176,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.iwm_as_notifications"
+            "calc": "@fields._app_skin == \"weekly_workshop\""
           },
-          "_raw": "@fields.iwm_as_notifications"
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
         }
       ],
       "deactivation_condition_list": [
@@ -204,9 +204,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.iwm_as_notifications"
+            "calc": "@fields._app_skin == \"weekly_workshop\""
           },
-          "_raw": "@fields.iwm_as_notifications"
+          "_raw": "@fields._app_skin == \"weekly_workshop\""
         }
       ],
       "schedule": {
