@@ -74,25 +74,6 @@
           "eng": "Reward"
         }
       }
-    },
-    {
-      "id": "survey",
-      "individual": true,
-      "together": false,
-      "priority": 71,
-      "has_single_task": true,
-      "template": "setup_and_survey_stepper",
-      "title": "Survey",
-      "_translations": {
-        "title": {
-          "tz_sw": true
-        }
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Survey"
-        }
-      }
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_task_groups.xlsx"
