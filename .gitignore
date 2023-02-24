@@ -47,6 +47,7 @@ src/assets/app_data
 
 .env
 scripts/config/token.json
+
 .eslintcache
 report.*
 
