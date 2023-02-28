@@ -40,10 +40,10 @@
           "eng": "Importance of bathing and washing"
         },
         "text": {
-          "eng": "It's important to use clean water to wash our bodies and faces so we don't get diseases like trachoma (which can lead to blindness). Encourage your children to wash often if you can.  You can do it for your family."
+          "eng": "It is important to use clean water to wash our bodies and faces so we don't get diseases like trachoma (which can lead to blindness). Encourage your children to wash often if you can. You can help your family."
         }
       },
-      "text": "It's important to use clean water to wash our bodies and faces so we don't get diseases like trachoma (which can lead to blindness). Encourage your children to wash often if you can.  You can do it for your family."
+      "text": "It is important to use clean water to wash our bodies and faces so we don't get diseases like trachoma (which can lead to blindness). Encourage your children to wash often if you can. You can help your family."
     },
     {
       "id": "tips",
@@ -64,5 +64,5 @@
       "text": "* Sweep your bathroom, the area around it and pathway to it daily.\n* Use soap to get rid of any stains on the floor if you can.\n* Check your bathroom regularly.  Make any repairs quickly."
     }
   ],
-  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+  "_xlsxPath": "data_lists/modules/module_details.xlsx"
 }

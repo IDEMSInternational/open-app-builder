@@ -20,10 +20,10 @@
           "eng": "What is a healthy family?"
         },
         "text": {
-          "eng": "Healthy families drink safe water, use clean latrines and wash their hands often.\n\nPoor practices can lead to diarrohea, undernutrition, and other diseases involving worms as well as those involving bugs."
+          "eng": "Healthy families drink safe water, use clean toilets and wash their hands often.\n\nPoor practices can lead to diarrohea, undernutrition, and other diseases involving worms as well as those involving bugs."
         }
       },
-      "text": "Healthy families drink safe water, use clean latrines and wash their hands often.\n\nPoor practices can lead to diarrohea, undernutrition, and other diseases involving worms as well as those involving bugs."
+      "text": "Healthy families drink safe water, use clean toilets and wash their hands often.\n\nPoor practices can lead to diarrohea, undernutrition, and other diseases involving worms as well as those involving bugs."
     },
     {
       "id": "diarrhoea",
@@ -86,10 +86,10 @@
           "eng": "Avoiding worms in your compound"
         },
         "text": {
-          "eng": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and abdominal pain, among other symptoms.  \n\nEggs of these worms are found in human stool, which can then land in soil and transfer to your feet and hands.\n\nRegularly cleaning your compound and toilet, disposing of child stool in the toilets, and regular handwashing are important so you don't get infected."
+          "eng": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and abdominal pain, among other symptoms.  \n\nEggs of these worms are found in human stool, which can then land in soil and transfer to your feet and hands.\n\nRegularly cleaning your compound and toilet, disposing of children's stool in the toilets, and regular handwashing are important so you don't get infected."
         }
       },
-      "text": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and abdominal pain, among other symptoms.  \n\nEggs of these worms are found in human stool, which can then land in soil and transfer to your feet and hands.\n\nRegularly cleaning your compound and toilet, disposing of child stool in the toilets, and regular handwashing are important so you don't get infected."
+      "text": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and abdominal pain, among other symptoms.  \n\nEggs of these worms are found in human stool, which can then land in soil and transfer to your feet and hands.\n\nRegularly cleaning your compound and toilet, disposing of children's stool in the toilets, and regular handwashing are important so you don't get infected."
     },
     {
       "id": "blindness",
@@ -132,5 +132,5 @@
       "text": "If you feel unwell it is important to visit a health facility.  They can help!"
     }
   ],
-  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+  "_xlsxPath": "data_lists/modules/module_details.xlsx"
 }

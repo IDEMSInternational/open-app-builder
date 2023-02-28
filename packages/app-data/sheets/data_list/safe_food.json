@@ -21,16 +21,16 @@
           "eng": "The five keys to keeping your food safe"
         },
         "text": {
-          "eng": "People become infected with intestinal worms (also known as parasitic helminths) by eating unsafe food. \nDiseases such as typhoid fever (bacteria infection) can also happen by eating unsafe food or water.\n\nThere are five keys to keeping your food safe:\n* Keep clean.\n* Separate raw and cooked food.  \n* Cook thoroughly.\n* Keep food at a safe temperature. \n* Use safe water and raw materials."
+          "eng": "People become infected with intestinal worms (also known as parasitic helminths) by eating unsafe food. \nDiseases such as typhoid fever (bacteria infection) can also happen by eating unsafe food or water.\n\nThere are five keys to keeping your food safe:\n* Keep clean.\n* Separate raw and cooked food.  \n* Cook food thoroughly.\n* Keep food at a safe temperature. \n* Use safe water and raw materials."
         }
       },
-      "text": "People become infected with intestinal worms (also known as parasitic helminths) by eating unsafe food. \nDiseases such as typhoid fever (bacteria infection) can also happen by eating unsafe food or water.\n\nThere are five keys to keeping your food safe:\n* Keep clean.\n* Separate raw and cooked food.  \n* Cook thoroughly.\n* Keep food at a safe temperature. \n* Use safe water and raw materials."
+      "text": "People become infected with intestinal worms (also known as parasitic helminths) by eating unsafe food. \nDiseases such as typhoid fever (bacteria infection) can also happen by eating unsafe food or water.\n\nThere are five keys to keeping your food safe:\n* Keep clean.\n* Separate raw and cooked food.  \n* Cook food thoroughly.\n* Keep food at a safe temperature. \n* Use safe water and raw materials."
     },
     {
       "id": "clean",
       "illustration": "essential_tools/handwashing2.svg",
       "subtitle": "Why?",
-      "text_2": "Small pathogens that cause disease can transfer from your unwashed hands, chopping boards, cloths and utensils. Keep these clean.",
+      "text_2": "Small pathogens that cause disease can transfer from your unwashed hands, chopping boards, cloths and utensils.  Keep these clean.",
       "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\n\nExtract\nKeep Clean\ni. Wash your hands before handling food and often during food preparation\nii. Wash your hands after going to the toilet\niii. Wash and sanitize all surfaces and equipment used for food preparation\niv. Protect kitchen areas and food from insects, pests, and other animals",
       "reference_link_title": "5 Keys to Safer Food Manual.  WHO; 2006.",
       "reference_link": "https://www.who.int/publications/i/item/9789241594639",
@@ -47,10 +47,10 @@
           "eng": "Keep clean"
         },
         "text": {
-          "eng": "* Handwash before and during touching food for cooking.\n* Wash your hands after going to the toilet.\n* Clean your cooking space and tools.\n* Keep bugs, pests, and other animals away from the cooking area.  \n* Cover food if you can, and you can use food nets to keep away bugs!"
+          "eng": "* Wash your hands before touching food and while cooking.\r\n* Wash your hands after going to the toilet.\r\n* Clean your cooking space and tools.\r\n* Keep bugs, pests, and other animals away from the cooking area.\r\n* Cover food if you can, and you can use food nets to keep bugs away!"
         }
       },
-      "text": "* Handwash before and during touching food for cooking.\n* Wash your hands after going to the toilet.\n* Clean your cooking space and tools.\n* Keep bugs, pests, and other animals away from the cooking area.  \n* Cover food if you can, and you can use food nets to keep away bugs!"
+      "text": "* Wash your hands before touching food and while cooking.\r\n* Wash your hands after going to the toilet.\r\n* Clean your cooking space and tools.\r\n* Keep bugs, pests, and other animals away from the cooking area.\r\n* Cover food if you can, and you can use food nets to keep bugs away!"
     },
     {
       "id": "separate",
@@ -73,10 +73,10 @@
           "eng": "Separate raw and cooked"
         },
         "text": {
-          "eng": "* Wash your knife after cutting raw meat, chicken, or seafood, before cutting other foods.\n* Store food in containers when you can!  This will keep it safe from pests, moisture, rot, and also stop the mixing of raw and prepared foods.\n* Clean up any leftover ingredients when done, especially raw meat."
+          "eng": "* Wash your knife as well as chopping board after cutting raw meat, chicken, or seafood and before cutting other foods.\n* Store food in containers when you can!  This will keep it safe from pests, moisture, rot, and also stop the mixing of raw and prepared foods.\n* Clean up any leftover ingredients when done, especially raw meat."
         }
       },
-      "text": "* Wash your knife after cutting raw meat, chicken, or seafood, before cutting other foods.\n* Store food in containers when you can!  This will keep it safe from pests, moisture, rot, and also stop the mixing of raw and prepared foods.\n* Clean up any leftover ingredients when done, especially raw meat."
+      "text": "* Wash your knife as well as chopping board after cutting raw meat, chicken, or seafood and before cutting other foods.\n* Store food in containers when you can!  This will keep it safe from pests, moisture, rot, and also stop the mixing of raw and prepared foods.\n* Clean up any leftover ingredients when done, especially raw meat."
     },
     {
       "id": "cook",
@@ -97,10 +97,10 @@
           "eng": "Cook thoroughly"
         },
         "text": {
-          "eng": "* Cook food thoroughly, especially meat, chicken, eggs, and seafood.  For meat and chicken, check that their juice is clear rather than pink or bloody. \n* When making stews, remember to bring them to a boil.\n* Reheat cooked food thoroughly.\n* Boil water used to make baby foods and drinks."
+          "eng": "* Cook food thoroughly, especially meat, chicken, eggs, and seafood.  For meat and chicken, check that their juice is clear rather than pink or bloody. \n* When making stews, remember to bring them to a boil.\n* Reheat cooked food thoroughly.\n* Boil the water you use to make baby foods and drinks."
         }
       },
-      "text": "* Cook food thoroughly, especially meat, chicken, eggs, and seafood.  For meat and chicken, check that their juice is clear rather than pink or bloody. \n* When making stews, remember to bring them to a boil.\n* Reheat cooked food thoroughly.\n* Boil water used to make baby foods and drinks."
+      "text": "* Cook food thoroughly, especially meat, chicken, eggs, and seafood.  For meat and chicken, check that their juice is clear rather than pink or bloody. \n* When making stews, remember to bring them to a boil.\n* Reheat cooked food thoroughly.\n* Boil the water you use to make baby foods and drinks."
     },
     {
       "id": "temperature",
@@ -129,7 +129,7 @@
       "id": "water",
       "sample illustration": "Pouring water over fruits and vegetables.",
       "subtitle": "Why?",
-      "text_2": "Your vegetables, fruits and meats along with even water can hold dangerous pathogens that cause illness.  Care in selecting raw foods, as well as washing and peeling will decrease the chances of getting sick.",
+      "text_2": "Your vegetables, fruits, meats and even water can hold dangerous pathogens that cause illness. Take care when selecting raw foods, washing and peeling will decrease your chances of getting sick.",
       "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\r\n\nExtract\ni. Use safe water or treat it to make it safe\nii. Select fresh and wholesome foods \niii. Choose foods processed for safety, such as pasteurized milk\niv. Wash fruits and vegetables, especially if eaten raw\nv. Do not use food beyond its expiry date",
       "reference_link_title": "5 Keys to Safer Food Manual.  WHO; 2006.",
       "reference_link": "https://www.who.int/publications/i/item/9789241594639",
@@ -150,5 +150,5 @@
       "text": "*  Use safe water (see our modules on safe drinking water for more tips).  Even though your water might look clean, it's still important to treat it.\n*  Remember to wash your fruits and vegetables."
     }
   ],
-  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+  "_xlsxPath": "data_lists/modules/module_details.xlsx"
 }

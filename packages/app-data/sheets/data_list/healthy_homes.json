@@ -38,10 +38,10 @@
           "eng": "How do you keep your house clean?"
         },
         "text": {
-          "eng": "Make sure you clean your compound regularly.  Children’s stool should be thrown away in the toilet as well as animal waste and litter removed. \n\nUse water and detergent where you can to clean!"
+          "eng": "Make sure you clean your compound regularly. Children’s stool should be thrown in the toilet, and animal waste and litter removed.\r\n\r\nUse water and detergent to clean where you can."
         }
       },
-      "text": "Make sure you clean your compound regularly.  Children’s stool should be thrown away in the toilet as well as animal waste and litter removed. \n\nUse water and detergent where you can to clean!"
+      "text": "Make sure you clean your compound regularly. Children’s stool should be thrown in the toilet, and animal waste and litter removed.\r\n\r\nUse water and detergent to clean where you can."
     },
     {
       "id": "tips",
@@ -58,11 +58,11 @@
           "eng": "More tips to keeping a clean home!"
         },
         "text": {
-          "eng": "*  Get rid of pests in your house (they often carry disease).  \n*  Protect food and throw garbage in a covered pit - flies like garbage!  \n*  Find places where mosquitoes like to live, such as still water which include open containers and puddles (covering or emptying if you can)."
+          "eng": "* Get rid of pests in your house (they often carry disease).\r\n* Protect food and throw garbage in a covered pit - flies like garbage!\r\n* Mosquitoes like to live in still water, such as in open containers and puddles. Cover or empty any still water in your home to keep mosquitoes away.\r\n."
         }
       },
-      "text": "*  Get rid of pests in your house (they often carry disease).  \n*  Protect food and throw garbage in a covered pit - flies like garbage!  \n*  Find places where mosquitoes like to live, such as still water which include open containers and puddles (covering or emptying if you can)."
+      "text": "* Get rid of pests in your house (they often carry disease).\r\n* Protect food and throw garbage in a covered pit - flies like garbage!\r\n* Mosquitoes like to live in still water, such as in open containers and puddles. Cover or empty any still water in your home to keep mosquitoes away.\r\n."
     }
   ],
-  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+  "_xlsxPath": "data_lists/modules/module_details.xlsx"
 }

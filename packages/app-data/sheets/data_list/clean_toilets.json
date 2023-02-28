@@ -38,10 +38,10 @@
           "eng": "Importance of clean and safe toilets"
         },
         "text": {
-          "eng": "Keep your toilet clean, your family healthy and the germs away.  Besides, you don't want to be stepping on stool or urine whilst toileting.  Cleaning your toilet will also stop the spread of diseases.  You can do it!  Keep them clean for you, your family and your neighbours."
+          "eng": "Keep your toilet clean, your family healthy and the germs away. Besides, you don't want to be stepping on stool or urine while you are using the toilet. Cleaning your toilet will also stop the spread of diseases. You can do it! Keep it clean for you, your family and your neighbours."
         }
       },
-      "text": "Keep your toilet clean, your family healthy and the germs away.  Besides, you don't want to be stepping on stool or urine whilst toileting.  Cleaning your toilet will also stop the spread of diseases.  You can do it!  Keep them clean for you, your family and your neighbours."
+      "text": "Keep your toilet clean, your family healthy and the germs away. Besides, you don't want to be stepping on stool or urine while you are using the toilet. Cleaning your toilet will also stop the spread of diseases. You can do it! Keep it clean for you, your family and your neighbours."
     },
     {
       "id": "importance",
@@ -82,5 +82,5 @@
       "text": "* Sweep your toilet, the area around it and pathway to it daily.\n* Use soap to get rid of any urine stains or stool.\n* Throw used toilet paper into the toilet.\n* Check your toilet regularly.  Make any repairs quickly."
     }
   ],
-  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+  "_xlsxPath": "data_lists/modules/module_details.xlsx"
 }

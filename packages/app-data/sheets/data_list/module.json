@@ -5,8 +5,26 @@
   "data_list_name": "module",
   "rows": [
     {
-      "id": "handwashing_with_soap",
+      "id": "introduction",
       "number": 1,
+      "title": "Water, Sanitation and Hygiene",
+      "_translations": {
+        "title": {},
+        "text_introduction": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Water, Sanitation and Hygiene"
+        },
+        "text_introduction": {
+          "eng": "Safe Water, Sanitation and Hygiene (WASH) ensures our children have a healthy start in life."
+        }
+      },
+      "text_introduction": "Safe Water, Sanitation and Hygiene (WASH) ensures our children have a healthy start in life."
+    },
+    {
+      "id": "handwashing_with_soap",
+      "number": 2,
       "illustration": "essential_tools/home_handwashing.svg",
       "title": "Handwashing with soap",
       "_translations": {
@@ -25,7 +43,7 @@
     },
     {
       "id": "when_to_wash_your_hands",
-      "number": 2,
+      "number": 3,
       "illustration": "essential_tools/handgerms.svg",
       "title": "When to wash your hands",
       "_translations": {
@@ -44,7 +62,7 @@
     },
     {
       "id": "how_to_wash_your_hands",
-      "number": 3,
+      "number": 4,
       "illustration": "essential_tools/soap.svg",
       "title": "How to wash your hands",
       "_translations": {
@@ -63,7 +81,7 @@
     },
     {
       "id": "healthy_families",
-      "number": 4,
+      "number": 5,
       "illustration": "essential_tools/home_family.svg",
       "title": "Healthy families",
       "_translations": {
@@ -75,14 +93,14 @@
           "eng": "Healthy families"
         },
         "text_introduction": {
-          "eng": "Keep your family healthy by drinking safe water, using clean latrines and washing your hands often."
+          "eng": "Keep your family healthy by drinking safe water, using clean toilets and washing your hands often."
         }
       },
-      "text_introduction": "Keep your family healthy by drinking safe water, using clean latrines and washing your hands often."
+      "text_introduction": "Keep your family healthy by drinking safe water, using clean toilets and washing your hands often."
     },
     {
       "id": "clean_toilets",
-      "number": 5,
+      "number": 6,
       "illustration": "essential_tools/home_latrine.svg",
       "title": "Clean toilets",
       "_translations": {
@@ -101,7 +119,7 @@
     },
     {
       "id": "healthy_homes",
-      "number": 6,
+      "number": 7,
       "illustration": "essential_tools/home_healthy_homes.svg",
       "title": "Healthy homes",
       "_translations": {
@@ -113,14 +131,14 @@
           "eng": "Healthy homes"
         },
         "text_introduction": {
-          "eng": "A safe place to play is possible when your home and its surroundings are clean.  Clean for your family!"
+          "eng": "A safe place to live is possible when your home and its surroundings are clean.  Clean for your family!"
         }
       },
-      "text_introduction": "A safe place to play is possible when your home and its surroundings are clean.  Clean for your family!"
+      "text_introduction": "A safe place to live is possible when your home and its surroundings are clean.  Clean for your family!"
     },
     {
       "id": "safe_drinking_water",
-      "number": 7,
+      "number": 8,
       "illustration": "essential_tools/home_water_source.svg",
       "title": "Safe drinking water",
       "_translations": {
@@ -139,7 +157,7 @@
     },
     {
       "id": "safe_food",
-      "number": 8,
+      "number": 9,
       "illustration": "essential_tools/home_safe_food.svg",
       "title": "Safe food",
       "_translations": {
@@ -151,14 +169,14 @@
           "eng": "Safe food"
         },
         "text_introduction": {
-          "eng": "There are 5 keys to safe food.  Know what they are!"
+          "eng": "There are five keys to safe food.  Know what they are!"
         }
       },
-      "text_introduction": "There are 5 keys to safe food.  Know what they are!"
+      "text_introduction": "There are five keys to safe food.  Know what they are!"
     },
     {
       "id": "waste",
-      "number": 9,
+      "number": 10,
       "illustration": "essential_tools/home_waste.svg",
       "title": "Waste management",
       "_translations": {
@@ -177,7 +195,7 @@
     },
     {
       "id": "bathing",
-      "number": 10,
+      "number": 11,
       "illustration": "essential_tools/home_shower.svg",
       "sample illustration": "Bucket with soap",
       "title": "Bathing and washing",
@@ -194,7 +212,25 @@
         }
       },
       "text_introduction": "Wash often in a clean private bathing place (sometimes, you can even sing while bathing!!)"
+    },
+    {
+      "id": "celebration",
+      "number": 12,
+      "title": "Celebration",
+      "_translations": {
+        "title": {},
+        "text_introduction": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Celebration"
+        },
+        "text_introduction": {
+          "eng": "Celebrate everything that you learned and continue to support your family."
+        }
+      },
+      "text_introduction": "Celebrate everything that you learned and continue to support your family."
     }
   ],
-  "_xlsxPath": "data_lists/homepage/module_tasks.xlsx"
+  "_xlsxPath": "data_lists/modules/module_tasks.xlsx"
 }

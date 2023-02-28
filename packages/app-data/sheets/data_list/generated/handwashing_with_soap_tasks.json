@@ -5,26 +5,62 @@
   "rows": [
     {
       "id": "why",
-      "title": "Why do we wash hands?",
-      "text": "Washing your hands with soap is one of the cheapest and most effective things you can do to protect yourself and your family from getting ill. Handwashing with soap stops germs which cause illness like diarrhoea and COVID from passing from person to person or to your food and water!",
       "PETER COMMENTS": "Rephrase: Washing your hands with soap is one of the cheapest and most effective things you can do to protect yourself and your family from getting ill. Handwashing with soap stops germs which cause illness like diarrhoea and COVID from passing from person to person or  to you food and water!",
       "illustration": "essential_tools/handwashing2.svg",
+      "title": "Why do we wash hands?",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Why do we wash hands?"
+        },
+        "text": {
+          "eng": "Washing your hands with soap is one of the cheapest and most effective things you can do to protect yourself and your family from getting ill. Handwashing with soap stops germs which cause illness like diarrhoea and COVID from passing from person to person or to your food and water."
+        }
+      },
+      "text": "Washing your hands with soap is one of the cheapest and most effective things you can do to protect yourself and your family from getting ill. Handwashing with soap stops germs which cause illness like diarrhoea and COVID from passing from person to person or to your food and water.",
       "completed_field": "handwashing_with_soap_why_completed"
     },
     {
       "id": "why_soap",
-      "title": "Why is soap important?",
-      "text": "Washing your hands with just water is not enough to remove all the dirt and stool from your hands after you have been to the toilet or changed a nappy.  Even if your hands look clean you can still have poop germs on them, especially if you haven't washed your hands with soap! These germs spread when you touch your face, nose, or mouth.",
       "PETER COMMENTS": "Washing your hands with just water is not enough to remove to all the dirt and poop (or faecal matter, it depends how this translates in Swahili) from your hands after you have been to the toilet.  Even if your hands look clean you could be eating poop off them, especially if you haven't washed your hands with soap!",
       "illustration": "essential_tools/soap.svg",
+      "title": "Why is soap important?",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Why is soap important?"
+        },
+        "text": {
+          "eng": "Washing your hands with just water is not enough to remove all the dirt and stool from your hands after you have been to the toilet or changed a nappy.  Even if your hands look clean you can still have poop germs on them, especially if you haven't washed your hands with soap. These germs spread when you touch your face, nose, or mouth."
+        }
+      },
+      "text": "Washing your hands with just water is not enough to remove all the dirt and stool from your hands after you have been to the toilet or changed a nappy.  Even if your hands look clean you can still have poop germs on them, especially if you haven't washed your hands with soap. These germs spread when you touch your face, nose, or mouth.",
       "completed_field": "handwashing_with_soap_why_soap_completed"
     },
     {
       "id": "materials",
-      "title": "What do you need?",
-      "text": "Washing your hands is easy. All you need is a container of water (or a tap), a basin, and some soap.   Soap should be kept near a handwashing station. If the station is outside, keep soap near the door so it can be easily accessed, but kept safe.",
       "PETER COMMENTS": "Replace jug with container --> note a later section of safe water",
       "illustration": "essential_tools/handwash_need.svg",
+      "title": "What do you need?",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "What do you need?"
+        },
+        "text": {
+          "eng": "Washing your hands is easy. All you need is a container of water (or a tap), a basin, and some soap.   Soap should be kept near a handwashing station. If the station is outside, keep soap near the door so it can be easily accessed, but kept safe."
+        }
+      },
+      "text": "Washing your hands is easy. All you need is a container of water (or a tap), a basin, and some soap.   Soap should be kept near a handwashing station. If the station is outside, keep soap near the door so it can be easily accessed, but kept safe.",
       "reference": "United Nations Children’s Fund and World Health Organization, State of the World’s Hand Hygiene: A global call to action to make hand hygiene a priority in policy and practice. New York: UNICEF; 2021.\n\nExtract:\nSustainble Development Goal - Service Ladder for Hygiene in Households:\n- Basic - Availability of a handwashing facility on premises with soap and water.\n- Limited - Availability of a handwashing facility on premises lacking soap and/or water.\n- No Facility - No handwashing facility on premises.\n\nIn some cultures, ash, soil, sand or other materials are used as handwashing agents, but these are less effective than soap and are therefore counted as a limited service.",
       "reference_link_title": "State of the World’s Hand Hygiene. UNICEF; 2021.",
       "reference_link": "www.who.int/publications/i/item/9789240036444",
@@ -32,10 +68,22 @@
     },
     {
       "id": "handwashing_motivators",
-      "title": "Importance of handwashing",
-      "text": "Don't forget, you are setting an example for your child, who will be following you. Teach them good handwashing, so they can grow to be happy, healthy and successful.",
       "PETER COMMENTS": "Don't forget, you are setting an example for your child, who will be following you. Teach them good handwashing, so they can grow to be happy, healthy and successful.",
       "illustration": "essential_tools/handgerms.svg",
+      "title": "Importance of handwashing",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Importance of handwashing"
+        },
+        "text": {
+          "eng": "Set a good example for your children who will be copying what you do. Teach them to wash their hands well so they can grow to be happy, healthy children."
+        }
+      },
+      "text": "Set a good example for your children who will be copying what you do. Teach them to wash their hands well so they can grow to be happy, healthy children.",
       "other notes (not for App but to support content development)": "Malima, G., Mshida, H., Machunda, R., Moyo, F., Banzi, J., Gautam, O. P., Mbeguere, M., Smith, K., Cairncross, S., & Njau, K. N. (2022). What influences individuals to invest in improved sanitation services and hygiene behaviours in a small town? A formative research study in Babati, Tanzania. PLOS ONE, 17(7), e0270688. https://doi.org/10.1371/journal.pone.0270688<br/>The fear of contracting diseases motivated people to practice handwashing, however, this is mostly done when there are disease outbreaks in town. Previous studies also identified fear as one of the key motives for uptalking WASH behaviour [9, 32, 33]. However, previous evidence shows that fear is a temporary stimulus to change behaviours as when fear disappears so does the behaviours too [34]. <span><b>The feeling of disgust due to the presence of dirt/dust in hands, bad smell in the latrine, protecting children and their future by washing hands (nurture) and the wish to look smart and clean also motivate individuals to wash hands.</b></span> These emotional push factors can also be exploited in promotional campaigns to promote handwashing practices.<br/><br/>Tough, H., Abdallah, A.-K., Zemp, E., & Molesworth, K. (2022). Gender dynamics of community-led total sanitation interventions in Mpwapwa District, Tanzania. Global Public Health, 1–15<span>. </span><span>https://doi.org/10.1080/17441692.2022.2053733<br/></span>Women placed importance on intrinsic factors such as shame, disgust, privacy, responsibility for care giving and hygiene within the household, while men gave more importance to extrinsic factors such as prestige, social status and law enforcement. A third of all women mentioned the health of their children as their main motivating factor for participating in the HPSS-supported CLTS initiatives",
       "completed_field": "handwashing_with_soap_handwashing_motivators_completed"
     }

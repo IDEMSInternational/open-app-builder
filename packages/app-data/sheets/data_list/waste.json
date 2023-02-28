@@ -58,10 +58,10 @@
           "eng": "How to manage solid waste"
         },
         "text": {
-          "eng": "The disposal/treatment of solid waste depends on the type and amount of waste made. To throw your waste:\n* Paper waste can be buried or collected.\n* Organic materials can be composted, for instance in household compost pits, and used as fertilizers/soil conditioners for trees and plants around your home.\n* Plastic waste can be collected and buried or recycled.\n*  And remember, don't place your solid waste in the toilet."
+          "eng": "The disposal/treatment of solid waste depends on the type and amount of waste made. To throw your waste:\r\n* Paper waste can be buried or collected.\r\n* Organic materials can be composted, for instance in household compost pits, and can be used as fertilisers/soil conditioners for trees and plants around your home.\r\n* Plastic waste can be collected and buried or recycled.\r\n* And remember, do not place your solid waste in the toilet."
         }
       },
-      "text": "The disposal/treatment of solid waste depends on the type and amount of waste made. To throw your waste:\n* Paper waste can be buried or collected.\n* Organic materials can be composted, for instance in household compost pits, and used as fertilizers/soil conditioners for trees and plants around your home.\n* Plastic waste can be collected and buried or recycled.\n*  And remember, don't place your solid waste in the toilet."
+      "text": "The disposal/treatment of solid waste depends on the type and amount of waste made. To throw your waste:\r\n* Paper waste can be buried or collected.\r\n* Organic materials can be composted, for instance in household compost pits, and can be used as fertilisers/soil conditioners for trees and plants around your home.\r\n* Plastic waste can be collected and buried or recycled.\r\n* And remember, do not place your solid waste in the toilet."
     },
     {
       "id": "reduce",
@@ -83,5 +83,5 @@
       "text": "* Carry your own bag to the shops to avoid using a new plastic bag. \n* Use reusable containers, like plastic bottles, rather than buying new ones.  \n* Try to fix or repair things when they break!"
     }
   ],
-  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+  "_xlsxPath": "data_lists/modules/module_details.xlsx"
 }
