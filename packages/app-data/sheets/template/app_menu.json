@@ -6,10 +6,6 @@
     {
       "type": "debug_toggle",
       "name": "debug_toggle_bar",
-      "value": "The debug toggle bar would go here",
-      "_translations": {
-        "value": {}
-      },
       "condition": "!@fields.user_mode",
       "exclude_from_translation": true,
       "_nested_name": "debug_toggle_bar",
