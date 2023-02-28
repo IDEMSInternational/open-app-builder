@@ -125,12 +125,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       data_list_name: "safe_drinking_water",
       _xlsxPath: "data_lists/modules/module_details.xlsx",
     },
-    safe_drinking_water: {
-      flow_type: "data_list",
-      flow_name: "safe_drinking_water",
-      data_list_name: "safe_drinking_water",
-      _xlsxPath: "data_lists/homepage/module_details.xlsx",
-    },
     safe_food: {
       flow_type: "data_list",
       flow_name: "safe_food",

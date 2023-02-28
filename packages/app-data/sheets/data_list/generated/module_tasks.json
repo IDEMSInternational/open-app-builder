@@ -140,20 +140,6 @@
       },
       "text_introduction": "A safe place to live is possible when your home and its surroundings are clean.  Clean for your family!",
       "illustration": "essential_tools/home_healthy_homes.svg",
-      "title": "Healthy homes",
-      "_translations": {
-        "title": {},
-        "text_introduction": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Healthy homes"
-        },
-        "text_introduction": {
-          "eng": "A safe place to play is possible when your home and its surroundings are clean.  Clean for your family!"
-        }
-      },
-      "text_introduction": "A safe place to play is possible when your home and its surroundings are clean.  Clean for your family!",
       "completed_field": "healthy_homes_completed"
     },
     {
@@ -214,20 +200,6 @@
       },
       "text_introduction": "Let's manage our waste!  It will mean a clean home and a healthy family.",
       "illustration": "essential_tools/home_waste.svg",
-      "title": "Waste management",
-      "_translations": {
-        "title": {},
-        "text_introduction": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Waste management"
-        },
-        "text_introduction": {
-          "eng": "Let's manage our waste!  It will mean a clean home and a healthy family."
-        }
-      },
-      "text_introduction": "Let's manage our waste!  It will mean a clean home and a healthy family.",
       "completed_field": "waste_completed"
     },
     {
