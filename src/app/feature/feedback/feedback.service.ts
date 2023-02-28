@@ -37,6 +37,7 @@ import {
   IActionId,
   TemplateActionRegistry,
 } from "src/app/shared/components/template/services/instance/template-action.registry";
+import { APP_VERSION } from "src/environments/version";
 
 @Injectable({
   providedIn: "root",
@@ -358,7 +359,7 @@ export class FeedbackService {
       pathname: location.pathname,
       uuid: this.userMetaService.getUserMeta("uuid"),
       timestamp: generateTimestamp(),
-      app_version: environment.version,
+      app_version: APP_VERSION.name,
       app_deployment_name: environment.deploymentName,
       app_theme: this.themeService.getCurrentTheme(),
       app_skin: this.skinService.getActiveSkinName(),

@@ -35,6 +35,7 @@ import { TaskService } from "./shared/services/task/task.service";
 import { AsyncServiceBase } from "./shared/services/asyncService.base";
 import { SyncServiceBase } from "./shared/services/syncService.base";
 import { SeoService } from "./shared/services/seo/seo.service";
+import { APP_VERSION } from "src/environments/version";
 
 @Component({
   selector: "app-root",
@@ -42,7 +43,7 @@ import { SeoService } from "./shared/services/seo/seo.service";
   styleUrls: ["app.component.scss"],
 })
 export class AppComponent {
-  APP_VERSION = environment.version;
+  APP_VERSION = APP_VERSION;
   DEPLOYMENT_NAME = environment.deploymentName;
   appConfig: IAppConfig;
   appFields: IAppConfig["APP_FIELDS"];
@@ -95,7 +96,8 @@ export class AppComponent {
       this.subscribeToAppConfigChanges();
       // ensure deployment field set correctly for use in any startup services or templates
       localStorage.setItem(this.appFields.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
-      localStorage.setItem(this.appFields.APP_VERSION, this.APP_VERSION);
+      localStorage.setItem(this.appFields.APP_VERSION, this.APP_VERSION.name);
+      localStorage.setItem(this.appFields.APP_VERSION_CODE, `${this.APP_VERSION.code}`);
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;

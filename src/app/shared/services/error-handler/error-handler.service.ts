@@ -5,6 +5,7 @@ import * as Sentry from "@sentry/angular";
 import { environment } from "src/environments/environment";
 import { fromError as getStacktraceFromError } from "stacktrace-js";
 import { CrashlyticsService } from "../crashlytics/crashlytics.service";
+import { APP_VERSION } from "src/environments/version";
 
 @Injectable({
   providedIn: "root",
@@ -66,12 +67,12 @@ export class ErrorHandlerService extends ErrorHandler {
    * https://docs.sentry.io/platforms/javascript/guides/capacitor/
    */
   private async initialiseSentry() {
-    const { deploymentConfig, version, production } = environment;
+    const { deploymentConfig, production } = environment;
     const { error_logging, name } = deploymentConfig;
     Sentry.init({
       dsn: error_logging.dsn,
       environment: production ? "production" : "development",
-      release: `${name}-${version}`,
+      release: `${name}-${APP_VERSION.name}`,
       autoSessionTracking: false,
       attachStacktrace: true,
       enabled: true,

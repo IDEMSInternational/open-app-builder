@@ -8,6 +8,7 @@ import { environment } from "src/environments/environment";
 import { generateTimestamp } from "../../utils";
 import { AppConfigService } from "../app-config/app-config.service";
 import { SyncServiceBase } from "../syncService.base";
+import { APP_VERSION } from "src/environments/version";
 
 /**
  * Backend API
@@ -68,7 +69,7 @@ export class ServerService extends SyncServiceBase {
     // TODO - get DTO from api (?)
     const data = {
       contact_fields,
-      app_version: environment.version,
+      app_version: APP_VERSION.name,
       device_info: this.device_info,
       app_deployment_name: environment.deploymentName,
     };

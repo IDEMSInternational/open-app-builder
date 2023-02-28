@@ -39,7 +39,10 @@ const APP_FIELDS = {
   SERVER_SYNC_LATEST: `${FIELD_PREFIX}._server_sync_latest`,
   APP_LANGUAGE: `${FIELD_PREFIX}._app_language`,
   DEPLOYMENT_NAME: `${FIELD_PREFIX}._deployment_name`,
+  /** Name given to app version, e.g 0.16.10 */
   APP_VERSION: `${FIELD_PREFIX}._app_version`,
+  /** Number given to app version, e.g 16010 */
+  APP_VERSION_CODE: `${FIELD_PREFIX}._app_version_code`,
   APP_AUTH_USER: `${FIELD_PREFIX}._app_auth_user`,
   APP_SKIN: `${FIELD_PREFIX}._app_skin`,
   APP_THEME: `${FIELD_PREFIX}._app_theme`,

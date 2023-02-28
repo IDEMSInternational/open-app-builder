@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 
 import { Subject } from "rxjs";
-import { environment } from "src/environments/environment";
 import { generateTimestamp } from "../../utils";
 import { AsyncServiceBase } from "../asyncService.base";
 import { DbService } from "../db/db.service";
+import { APP_VERSION } from "src/environments/version";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -136,7 +136,7 @@ export class TaskActionService extends AsyncServiceBase {
       task_id,
       actions: [],
       _created: timestamp,
-      _appVersion: environment.version,
+      _appVersion: APP_VERSION.name,
       _completed: false,
       _duration: 0,
     };

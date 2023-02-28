@@ -15,6 +15,7 @@ import { AppConfigService } from "../app-config/app-config.service";
 import { AsyncServiceBase } from "../asyncService.base";
 import { UserMetaService } from "../userMeta/userMeta.service";
 import { DbService } from "./db.service";
+import { APP_VERSION } from "src/environments/version";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -88,7 +89,7 @@ export class DBSyncService extends AsyncServiceBase {
         app_user_id: this.userMetaService.getUserMeta("uuid"),
         app_user_record_id: record[user_record_id_field],
         app_deployment_name: environment.deploymentName,
-        app_version: environment.version,
+        app_version: APP_VERSION.name,
         data: record,
       };
       return serverRecord;
