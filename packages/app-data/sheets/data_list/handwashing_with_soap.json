@@ -1,0 +1,88 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "handwashing_with_soap",
+  "status": "released",
+  "data_list_name": "handwashing_with_soap",
+  "rows": [
+    {
+      "id": "why",
+      "PETER COMMENTS": "Rephrase: Washing your hands with soap is one of the cheapest and most effective things you can do to protect yourself and your family from getting ill. Handwashing with soap stops germs which cause illness like diarrhoea and COVID from passing from person to person or  to you food and water!",
+      "illustration": "essential_tools/handwashing2.svg",
+      "title": "Why do we wash hands?",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Why do we wash hands?"
+        },
+        "text": {
+          "eng": "comment_nimr"
+        }
+      },
+      "text": "comment_nimr"
+    },
+    {
+      "id": "why_soap",
+      "PETER COMMENTS": "Washing your hands with just water is not enough to remove to all the dirt and poop (or faecal matter, it depends how this translates in Swahili) from your hands after you have been to the toilet.  Even if your hands look clean you could be eating poop off them, especially if you haven't washed your hands with soap!",
+      "illustration": "essential_tools/soap.svg",
+      "title": "Why is soap important?",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Why is soap important?"
+        },
+        "text": {
+          "eng": "Washing your hands with just water is not enough to remove all the dirt and stool from your hands after you have been to the toilet or changed a nappy.  Even if your hands look clean you can still have poop germs on them, especially if you haven't washed your hands with soap. These germs spread when you touch your face, nose, or mouth."
+        }
+      },
+      "text": "Washing your hands with just water is not enough to remove all the dirt and stool from your hands after you have been to the toilet or changed a nappy.  Even if your hands look clean you can still have poop germs on them, especially if you haven't washed your hands with soap. These germs spread when you touch your face, nose, or mouth."
+    },
+    {
+      "id": "materials",
+      "PETER COMMENTS": "Replace jug with container --> note a later section of safe water",
+      "illustration": "essential_tools/handwash_need.svg",
+      "reference": "United Nations Children’s Fund and World Health Organization, State of the World’s Hand Hygiene: A global call to action to make hand hygiene a priority in policy and practice. New York: UNICEF; 2021.\n\nExtract:\nSustainble Development Goal - Service Ladder for Hygiene in Households:\n- Basic - Availability of a handwashing facility on premises with soap and water.\n- Limited - Availability of a handwashing facility on premises lacking soap and/or water.\n- No Facility - No handwashing facility on premises.\n\nIn some cultures, ash, soil, sand or other materials are used as handwashing agents, but these are less effective than soap and are therefore counted as a limited service.",
+      "reference_link_title": "State of the World’s Hand Hygiene. UNICEF; 2021.",
+      "reference_link": "www.who.int/publications/i/item/9789240036444",
+      "title": "What do you need?",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "What do you need?"
+        },
+        "text": {
+          "eng": "Washing your hands is easy. All you need is a container of water (or a tap), a basin, and some soap.   Soap should be kept near a handwashing station. If the station is outside, keep soap near the door so it can be easily accessed, but kept safe."
+        }
+      },
+      "text": "Washing your hands is easy. All you need is a container of water (or a tap), a basin, and some soap.   Soap should be kept near a handwashing station. If the station is outside, keep soap near the door so it can be easily accessed, but kept safe."
+    },
+    {
+      "id": "handwashing_motivators",
+      "PETER COMMENTS": "Don't forget, you are setting an example for your child, who will be following you. Teach them good handwashing, so they can grow to be happy, healthy and successful.",
+      "illustration": "essential_tools/handgerms.svg",
+      "title": "Importance of handwashing",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Importance of handwashing"
+        },
+        "text": {
+          "eng": "Set a good example for your children who will be copying what you do. Teach them to wash their hands well so they can grow to be happy, healthy children."
+        }
+      },
+      "text": "Set a good example for your children who will be copying what you do. Teach them to wash their hands well so they can grow to be happy, healthy children."
+    }
+  ],
+  "_xlsxPath": "data_lists/modules/module_details.xlsx"
+}

@@ -5,116 +5,232 @@
   "data_list_name": "module",
   "rows": [
     {
-      "id": "handwashing",
+      "id": "introduction",
       "number": 1,
-      "title": "Handwashing",
-      "original": "Good hand hygiene stops the passing of germs from person to person or from person to food or water",
-      "text_introduction": "Good hand hygiene stops the passing of germs from person to person or from person to food or water",
-      "tools_title": "Handwashing",
-      "illustration": "essential_tools/home_handwashing.svg"
+      "title": "Water, Sanitation and Hygiene",
+      "_translations": {
+        "title": {},
+        "text_introduction": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Water, Sanitation and Hygiene"
+        },
+        "text_introduction": {
+          "eng": "Safe Water, Sanitation and Hygiene (WASH) ensures our children have a healthy start in life."
+        }
+      },
+      "text_introduction": "Safe Water, Sanitation and Hygiene (WASH) ensures our children have a healthy start in life."
     },
     {
-      "id": "water_source",
+      "id": "handwashing_with_soap",
       "number": 2,
-      "title": "Safe Water Source",
-      "original": "Clean water saves money and improves health.  Making sure you collect water from a safe source is the start!",
-      "text_introduction": "Clean water saves money and improves health.  Making sure you collect water from a safe source is the start!",
-      "tools_title": "Safe Water Source",
-      "illustration": "essential_tools/home_water_source.svg"
+      "illustration": "essential_tools/home_handwashing.svg",
+      "title": "Handwashing with soap",
+      "_translations": {
+        "title": {},
+        "text_introduction": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Handwashing with soap"
+        },
+        "text_introduction": {
+          "eng": "Washing your hands with soap is one of the most important things you can do to keep your family strong and healthy."
+        }
+      },
+      "text_introduction": "Washing your hands with soap is one of the most important things you can do to keep your family strong and healthy."
     },
     {
-      "id": "water_containers",
+      "id": "when_to_wash_your_hands",
       "number": 3,
-      "title": "Water Containers",
-      "original": "Keep strong with clean water.  Healthy homes have good water containers that are easy to use.",
-      "text_introduction": "Keep strong with clean water.  Healthy homes have good water containers that are easy to use.",
-      "tools_title": "Water Containers",
-      "illustration": "essential_tools/home_water_containers.svg"
+      "illustration": "essential_tools/handgerms.svg",
+      "title": "When to wash your hands",
+      "_translations": {
+        "title": {},
+        "text_introduction": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "When to wash your hands"
+        },
+        "text_introduction": {
+          "eng": "To avoid the spread of germs it is important to wash your hands with soap several times a day."
+        }
+      },
+      "text_introduction": "To avoid the spread of germs it is important to wash your hands with soap several times a day."
     },
     {
-      "id": "water_treatment",
+      "id": "how_to_wash_your_hands",
       "number": 4,
-      "title": "Water Treatment",
-      "original": "Never believe all water is safe to drink – always treat it.",
-      "text_introduction": "Never believe all water is safe to drink – always treat it.",
-      "tools_title": "Water Treatment",
-      "illustration": "essential_tools/home_boiling_water.svg"
-    },
-    {
-      "id": "clean_latrines",
-      "number": 5,
-      "title": "Clean Latrines",
-      "original": "A clean latrine means good hygiene. Good hygiene means diseases will not spread from a dirty latrine.",
-      "text_introduction": "A clean latrine means good hygiene.  A dirty one can mean disease.",
-      "tools_title": "Clean Latrines",
-      "illustration": "essential_tools/home_latrine.svg"
-    },
-    {
-      "id": "healthy_homes",
-      "number": 6,
-      "title": "Healthy Homes",
-      "original": "A clean healthy home makes everyone happy. Clean healthy homes reduce your family’s risk of exposure to bacteria and diseases. A clean house is also less inviting to pests.",
-      "text_introduction": "A safe place to play is possible when your home and its surrounds are clean.  Clean for your family!",
-      "tools_title": "Healthy Homes",
-      "illustration": "essential_tools/home_healthy_homes.svg"
+      "illustration": "essential_tools/soap.svg",
+      "title": "How to wash your hands",
+      "_translations": {
+        "title": {},
+        "text_introduction": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How to wash your hands"
+        },
+        "text_introduction": {
+          "eng": "Washing your hands is easy! Just follow these simple steps to help you and your family practice good health and hygiene."
+        }
+      },
+      "text_introduction": "Washing your hands is easy! Just follow these simple steps to help you and your family practice good health and hygiene."
     },
     {
       "id": "healthy_families",
+      "number": 5,
+      "illustration": "essential_tools/home_family.svg",
+      "title": "Healthy families",
+      "_translations": {
+        "title": {},
+        "text_introduction": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Healthy families"
+        },
+        "text_introduction": {
+          "eng": "Keep your family healthy by drinking safe water, using clean toilets and washing your hands often."
+        }
+      },
+      "text_introduction": "Keep your family healthy by drinking safe water, using clean toilets and washing your hands often."
+    },
+    {
+      "id": "clean_toilets",
+      "number": 6,
+      "illustration": "essential_tools/home_latrine.svg",
+      "title": "Clean toilets",
+      "_translations": {
+        "title": {},
+        "text_introduction": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Clean toilets"
+        },
+        "text_introduction": {
+          "eng": "A clean toilet means good hygiene.  A dirty one can mean disease."
+        }
+      },
+      "text_introduction": "A clean toilet means good hygiene.  A dirty one can mean disease."
+    },
+    {
+      "id": "healthy_homes",
       "number": 7,
-      "title": "Healthy Families",
-      "original": "With a clean place to stay, you and your family members can avoid various diseases, and therefore be very happy.",
-      "text_introduction": "Healthy habits can stop diarrhoea, diseases caused by worms and undernutrition.  Keep your family healthy.",
-      "tools_title": "Healthy Families",
-      "illustration": "essential_tools/home_family.svg"
+      "illustration": "essential_tools/home_healthy_homes.svg",
+      "title": "Healthy homes",
+      "_translations": {
+        "title": {},
+        "text_introduction": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Healthy homes"
+        },
+        "text_introduction": {
+          "eng": "A safe place to live is possible when your home and its surroundings are clean.  Clean for your family!"
+        }
+      },
+      "text_introduction": "A safe place to live is possible when your home and its surroundings are clean.  Clean for your family!"
     },
     {
-      "id": "menstrual_hygiene",
+      "id": "safe_drinking_water",
       "number": 8,
-      "title": "Menstrual Hygiene",
-      "original": "With good mentrual hygiene, girls can maintain their body hygiene and health. This gives them confidence and dignity. It also means that girls do not miss school during menstruation.",
-      "text_introduction": "With good menstrual hygiene girls can keep up their health.  Confident and with dignity, they shall not miss school during menstruation.",
-      "tools_title": "Menstrual Hygiene",
-      "illustration": "essential_tools/home_menstruation.png",
-      "reference": "https://www.who.int/news-room/feature-stories/detail/strengthening-primary-health-care-sri-lanka, https://www.who.int/news/item/22-06-2021-unesco-and-who-urge-countries-to-make-every-school-a-health-promoting-school"
-    },
-    {
-      "id": "waste",
-      "number": 9,
-      "title": "Waste management",
-      "original": "Poor solid waste management could cause many problems including clogging of pipes and drainage systems and the creation of breeding sites for flies or insects which contribute to disease spread.",
-      "text_introduction": "Let's manage our waste!  It will mean a clean home and keep your family healthy.",
-      "tools_title": "Waste management",
-      "illustration": "essential_tools/home_waste.svg"
+      "illustration": "essential_tools/home_water_source.svg",
+      "title": "Safe drinking water",
+      "_translations": {
+        "title": {},
+        "text_introduction": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Safe drinking water"
+        },
+        "text_introduction": {
+          "eng": "Clean water saves money and improves health.  Making sure you collect water from a safe source, maintain clean containers and treat water is important."
+        }
+      },
+      "text_introduction": "Clean water saves money and improves health.  Making sure you collect water from a safe source, maintain clean containers and treat water is important."
     },
     {
       "id": "safe_food",
-      "number": 10,
-      "title": "Safe Food",
-      "original": "Food can become contaminated with germs and bacteria during slaughtering, while harvesting from the filed, during storage and transportation, and also while cooking.\n\nBy following good food hygiene practices, we can prevent food from becoming contaminated and causing food poisoning. This ensures families eat safe and healthy meals. refers to the conditions and measures necessary to ensure the safety of food from the moment you are cooking it to when you eat it.",
-      "text_introduction": "There are 5 keys to safe food.  Know what they are!",
-      "tools_title": "Safe Food",
-      "illustration": "essential_tools/home_safe_food.svg"
+      "number": 9,
+      "illustration": "essential_tools/home_safe_food.svg",
+      "title": "Safe food",
+      "_translations": {
+        "title": {},
+        "text_introduction": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Safe food"
+        },
+        "text_introduction": {
+          "eng": "There are five keys to safe food.  Know what they are!"
+        }
+      },
+      "text_introduction": "There are five keys to safe food.  Know what they are!"
     },
     {
-      "id": "breastfeeding",
-      "number": 11,
-      "title": "Breastfeeding",
-      "original": "Breastfeeding is one of the most effective ways to ensure child health and survival. A safe, clean and healthy environment can help protect a mother and her child from many common childhood and maternal illnesses.",
-      "text_introduction": "Breastfeeding can keep your baby strong!  Clean water and safe food for the mother and other healthy habits are important.",
-      "tools_title": "Breastfeeding",
-      "illustration": "essential_tools/home_breastfeeding_license_needed.png",
-      "reference": "https://www.who.int/health-topics/breastfeeding#tab=tab_1"
+      "id": "waste",
+      "number": 10,
+      "illustration": "essential_tools/home_waste.svg",
+      "title": "Waste management",
+      "_translations": {
+        "title": {},
+        "text_introduction": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Waste management"
+        },
+        "text_introduction": {
+          "eng": "Let's manage our waste!  It will mean a clean home and a healthy family."
+        }
+      },
+      "text_introduction": "Let's manage our waste!  It will mean a clean home and a healthy family."
     },
     {
       "id": "bathing",
-      "number": 12,
-      "title": "Bathing and Washing",
-      "original": "A clean healthy bathing place is relaxing and comfortable to use. (Sometimes, you can even sing while bathing!!)",
-      "text_introduction": "Wash often in a clean private bathing place (Sometimes, you can even sing while bathing!!)",
-      "tools_title": "Bathing Shelters",
+      "number": 11,
       "illustration": "essential_tools/home_shower.svg",
-      "reference": "https://www.newhealthadvisor.org/importance-of-bathing.html"
+      "sample illustration": "Bucket with soap",
+      "title": "Bathing and washing",
+      "_translations": {
+        "title": {},
+        "text_introduction": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Bathing and washing"
+        },
+        "text_introduction": {
+          "eng": "Wash often in a clean private bathing place (sometimes, you can even sing while bathing!!)"
+        }
+      },
+      "text_introduction": "Wash often in a clean private bathing place (sometimes, you can even sing while bathing!!)"
+    },
+    {
+      "id": "celebration",
+      "number": 12,
+      "title": "Celebration",
+      "_translations": {
+        "title": {},
+        "text_introduction": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Celebration"
+        },
+        "text_introduction": {
+          "eng": "Celebrate everything that you learned and continue to support your family."
+        }
+      },
+      "text_introduction": "Celebrate everything that you learned and continue to support your family."
     }
   ],
-  "_xlsxPath": "data_lists/homepage/module_tasks.xlsx"
+  "_xlsxPath": "data_lists/modules/module_tasks.xlsx"
 }

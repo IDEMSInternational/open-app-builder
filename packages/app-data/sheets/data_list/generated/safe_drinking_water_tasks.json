@@ -1,0 +1,113 @@
+{
+  "flow_name": "safe_drinking_water_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "how",
+      "reference": "Guidelines for drinking-water quality: fourth edition incorporating the first and second addenda. Geneva: World Health Organization; 2022. Licence: CC BY-NC-SA 3.0 IGO.\n\nExtract:\nImproved drinking-water sources - \n* piped supplies (including household and yard connections, public taps and\nstandpipes)\n* boreholes and tubewells\n* protected dug wells\n* protected springs\n*  rainwater\n* water kiosks\n* packaged water\n* delivered water",
+      "reference_link_title": "Guidelines for drinking-water quality. WHO; 2022.",
+      "reference_link": "www.who.int/publications/i/item/9789240045064",
+      "context  (not for App but to support content development)": "Mushi, M. F., Mpelasoka, O. E., Mazigo, H. D., McLeod, L., Moremi, N., Mirambo, M. M., & Mshana, S. E. (2018). High rate of drinking water contamination due to poor storage in squatter settlements in Mwanza, Tanzania. Tanzania Journal of Health Research, 20(3). https://doi.org/10.4314/thrb.v20i3.7\n\nExtract - In the  city  of Mwanza,  about  78%  of  the  people are  estimated  to receive  piped  water  from  the  Mwanza Urban  Water  Supply and Sewerage  Authority,  and  the  rest get water  from  other  sources  including  deep  wells,  shallow  wells  and  directly  from  the  Lake  Victoria (Lukawe,  2007).",
+      "title": "Safe water source tips",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Safe water source tips"
+        },
+        "text": {
+          "eng": "You can get water from many sources. The safest water is often from a tap.  Water from unprotected streams, open sources (such as the lake) and open dug wells may have bugs (parasites) which can make us sick. They may also have stool from animals or humans.  This can make it unsafe!"
+        }
+      },
+      "text": "You can get water from many sources. The safest water is often from a tap.  Water from unprotected streams, open sources (such as the lake) and open dug wells may have bugs (parasites) which can make us sick. They may also have stool from animals or humans.  This can make it unsafe!",
+      "completed_field": "safe_drinking_water_how_completed"
+    },
+    {
+      "id": "why",
+      "title": "Transporting and storing water",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Transporting and storing water"
+        },
+        "text": {
+          "eng": "Make sure that water that is carried and stored does not come into contact with hands, dirt or insects. Hands, dirt and insects make water unsafe to drink."
+        }
+      },
+      "text": "Make sure that water that is carried and stored does not come into contact with hands, dirt or insects. Hands, dirt and insects make water unsafe to drink.",
+      "completed_field": "safe_drinking_water_why_completed"
+    },
+    {
+      "id": "what",
+      "reference": "Guidelines for drinking-water quality: fourth edition incorporating the first and second\naddenda. Geneva: World Health Organization; 2022. Licence: CC BY-NC-SA 3.0 IGO.\n\nExtract - For water stored in the home, protection from contamination can be achieved by use of enclosed or otherwise safely designed storage containers that prevent the introduction of hands, dippers or other extraneous sources of contamination.\n\nStorage containers should preferably be fitted with a mechanism such as a tap or outlet pipe\nthat enables hygienic abstraction of water.",
+      "reference_link_title": "Guidelines for drinking-water quality. WHO; 2022.",
+      "reference_link": "www.who.int/publications/i/item/9789240045064",
+      "title": "Using a water container",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Using a water container"
+        },
+        "text": {
+          "eng": "Water should be carried in clean and closed water containers.\n\nThere are many designs for water containers.  A safe water storage container is one that is:\n\n* Strong and has a tightly fitting lid or cover\n* Stable base so it does not tip over\n* Durable so that it does not leak easily\n* Has a comfortable handle\n* And, of course, easy to clean"
+        }
+      },
+      "text": "Water should be carried in clean and closed water containers.\n\nThere are many designs for water containers.  A safe water storage container is one that is:\n\n* Strong and has a tightly fitting lid or cover\n* Stable base so it does not tip over\n* Durable so that it does not leak easily\n* Has a comfortable handle\n* And, of course, easy to clean",
+      "illustration": "essential_tools/home_water_containers.svg",
+      "reference_link_title_2": "<span>Mushi, M. F., Mpelasoka, O. E., Mazigo, H. D., McLeod, L., Moremi, N., Mirambo, M. M., & Mshana, S. E. (2018). High rate of drinking water contamination due to poor storage in squatter settlements in Mwanza, Tanzania. Tanzania Journal of Health Research, 20(3). </span><span>https://doi.org/10.4314/thrb.v20i3.7</span><span><br/><br/>Source of drinking water in the squatters of Mwanza city - All  households  used  tap  water  as  the  source  of  their  drinking  water.    A  total  of  157  (75.84%) respondents, reported treating their water for drinking using boiling, 119 (57.49%) leaving the water to stand and settle, 23 (11.11%) used chlorination and 15 (9.6%) strain through cloth (Table1).  </span><span><b>The majority of households 202 (97.58%) stored their drinking water; of these 200 (98.55%) used a clay pot. </b></span><span>Only 2 (1%) used buckets with cover and spigot as storage container of drinking water.</span>",
+      "reference_link_2": "LInks to images:https://sswm.info/sswm-solutions-bop-markets/affordable-wash-services-and-products/affordable-water-supply/household-water-treatment-and-safe-storage-%28hwts%29",
+      "completed_field": "safe_drinking_water_what_completed"
+    },
+    {
+      "id": "tips",
+      "reference_link_title": "Community WASH Conversations.  Arkansas:  LifeWater. Mar 2022;  License:  CC BY-NC-SA 3.0",
+      "reference_link": "lifewater.org/wp-content/uploads/2022/06/Community-WASH-Conversations-Public.pdf",
+      "title": "How do you keep your container clean?",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "How do you keep your container clean?"
+        },
+        "text": {
+          "eng": "Step 1: Wash your hands following the steps in the how to wash your hands module.\nStep 2: Pour clean and soapy water into the container. \nStep 3: Put on the lid and shake for one minute (or if you can scrub the inside of the container). \nStep 4:  Pour the soapy water out. Rinsing next with non soapy water. \nAlso, don't forget to wash your cup after every use."
+        }
+      },
+      "text": "Step 1: Wash your hands following the steps in the how to wash your hands module.\nStep 2: Pour clean and soapy water into the container. \nStep 3: Put on the lid and shake for one minute (or if you can scrub the inside of the container). \nStep 4:  Pour the soapy water out. Rinsing next with non soapy water. \nAlso, don't forget to wash your cup after every use.",
+      "illustration": "essential_tools/cleancontainer.svg",
+      "completed_field": "safe_drinking_water_tips_completed"
+    },
+    {
+      "id": "disinfect_boiling",
+      "reference": "Water, Sanitation and Hygiene for Schoolchildren in Emergencies A Guidebook for Teachers. New York: UNICEF; 2011. \n\nExtract\nWhichever method is used locally, children should learn how to treat water for drinking.  If using heat to disinfect, the water should be boiled and remain boiling for at least 10 minutes to make sure all pathogens are killed before use. Boiled water should be stored, handled carefully and consumed within 24 hours to avoid recontamination. If sunlight is used to disinfect small quantities of water, the bottles should be filled with pre-filtered, clear water and set out in the sun (usually on rooftops) for 6 hours.",
+      "reference_link_title": "Water, Sanitation, and Hygiene for School Children. UNICEF; 2021.",
+      "reference_link": "www.unicef.org/kyrgyzstan/media/1586/file/WASH%20Guidebook-Eng_0.pdf%20.pdf",
+      "title": "Treating water by boiling",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Treating water by boiling"
+        },
+        "text": {
+          "eng": "Boiling water can make it safe to drink or cook with. Let the water sit for some time until the dirt settles at the bottom. Pour it into a pot and boil it for at least 10 minutes to make sure all the germs (pathogens) are killed before using it. Drink the water within 24 hours. This helps to keep it clean, fresh and free from other germs (pathogens)."
+        }
+      },
+      "text": "Boiling water can make it safe to drink or cook with. Let the water sit for some time until the dirt settles at the bottom. Pour it into a pot and boil it for at least 10 minutes to make sure all the germs (pathogens) are killed before using it. Drink the water within 24 hours. This helps to keep it clean, fresh and free from other germs (pathogens).",
+      "completed_field": "safe_drinking_water_disinfect_boiling_completed"
+    }
+  ]
+}

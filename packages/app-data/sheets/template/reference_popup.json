@@ -9,6 +9,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "module_id",
       "_dynamicFields": {
@@ -58,6 +59,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "tool",
       "_dynamicFields": {
@@ -91,6 +93,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "tool_data",
       "_dynamicFields": {
@@ -115,6 +118,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "url_description",
       "_dynamicFields": {
@@ -139,6 +143,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "url",
       "_dynamicFields": {
@@ -163,6 +168,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "url_2_description",
       "_dynamicFields": {
@@ -187,6 +193,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "url_2",
       "_dynamicFields": {
@@ -213,6 +220,7 @@
         "value": {}
       },
       "condition": "!!@local.@local.tool_data.reference",
+      "exclude_from_translation": true,
       "_nested_name": "reference_text",
       "_dynamicFields": {
         "value": [
@@ -260,6 +268,7 @@
         "icon_src": "chevron-forward-outline"
       },
       "condition": "!!@local.url",
+      "exclude_from_translation": true,
       "_nested_name": "reference_1",
       "_dynamicFields": {
         "action_list": {
@@ -346,6 +355,7 @@
         "icon_src": "chevron-forward-outline"
       },
       "condition": "!!@local.url_2",
+      "exclude_from_translation": true,
       "_nested_name": "reference_2",
       "_dynamicFields": {
         "action_list": {
@@ -412,5 +422,5 @@
       }
     }
   ],
-  "_xlsxPath": "templates/global/navigation_modular.xlsx"
+  "_xlsxPath": "templates/global/navigation_templates.xlsx"
 }

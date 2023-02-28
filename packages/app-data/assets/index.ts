@@ -1,5 +1,13 @@
 export const UNTRACKED_ASSETS = [];
 export const ASSETS_CONTENTS_LIST = {
+  "android/icon.png": {
+    size_kb: 179.6,
+    md5Checksum: "e1a9b7e45d5e3cea50616ee3db488d6b",
+  },
+  "android/splash.png": {
+    size_kb: 595.7,
+    md5Checksum: "50f727d3eaaf1e7807e935370b7e13ca",
+  },
   "essential_tools/Archive/cleaning_container.png": {
     size_kb: 80.9,
     md5Checksum: "aafc7cb380fa5eb05b7005b7753bb98b",
@@ -256,17 +264,17 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 0.8,
     md5Checksum: "ed5f072869e65f75b4293b1aabae77ef",
   },
-  "icons/in_progress_white.svg": {
+  "icons/in_progress.svg": {
     size_kb: 1.1,
-    md5Checksum: "f7bdd991a067c30d0cb140d5b77745bb",
+    md5Checksum: "6105962bc0edd981675d874dc8a51035",
   },
   "icons/library_icon.png": {
     size_kb: 0.7,
     md5Checksum: "f60b4985e614c14119b7938cf9cf8a0d",
   },
-  "icons/tick_white.svg": {
+  "icons/tick.svg": {
     size_kb: 0.3,
-    md5Checksum: "81136e04436759812dc3f6e90c61de11",
+    md5Checksum: "b4e6f1e9ba6e5bcdd2e404bc432ba745",
   },
   "modules/clean_water_1.png": {
     size_kb: 23.4,
