@@ -10,6 +10,10 @@ const config: IDeploymentConfig = {
     sheets_folder_id: "1AQqtRLoNuhbHP3KPzzQqzZcjdttT0rr8",
     assets_folder_id: "1hebyXSR-rkpYLH_No2QTvCQiYfbh1RE9",
   },
+  android: {
+    splash_asset_path: "packages/app-data/assets/global/android/splash.png",
+    icon_asset_path: "packages/app-data/assets/global/android/icon.png",
+  },
   error_logging:{
     dsn:"https://976f6a201e1049fdb65d3f642724f0f9@app.glitchtip.com/2444"
   }
