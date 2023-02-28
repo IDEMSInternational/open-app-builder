@@ -42,7 +42,7 @@
     {
       "type": "text",
       "name": "text_1_1",
-      "value": "These @global.terms_and_conditions are an agreement between you and international.idems.wash(‘@global.app_name’ or ‘the app’) which furthermore sets out the rules for your use of @global.app_name.",
+      "value": "These @global.terms_and_conditions are an agreement between you and @global.app_id (‘@global.app_name’ or ‘the app’) which furthermore sets out the rules for your use of @global.app_name.",
       "_translations": {
         "value": {}
       },
@@ -50,19 +50,25 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "These @global.terms_and_conditions are an agreement between you and international.idems.wash(‘@global.app_name’ or ‘the app’) which furthermore sets out the rules for your use of @global.app_name.",
+            "fullExpression": "These @global.terms_and_conditions are an agreement between you and @global.app_id (‘@global.app_name’ or ‘the app’) which furthermore sets out the rules for your use of @global.app_name.",
             "matchedExpression": "@global.terms_and_conditions",
             "type": "global",
             "fieldName": "terms_and_conditions"
           },
           {
-            "fullExpression": "These @global.terms_and_conditions are an agreement between you and international.idems.wash(‘@global.app_name’ or ‘the app’) which furthermore sets out the rules for your use of @global.app_name.",
+            "fullExpression": "These @global.terms_and_conditions are an agreement between you and @global.app_id (‘@global.app_name’ or ‘the app’) which furthermore sets out the rules for your use of @global.app_name.",
+            "matchedExpression": "@global.app_id",
+            "type": "global",
+            "fieldName": "app_id"
+          },
+          {
+            "fullExpression": "These @global.terms_and_conditions are an agreement between you and @global.app_id (‘@global.app_name’ or ‘the app’) which furthermore sets out the rules for your use of @global.app_name.",
             "matchedExpression": "@global.app_name",
             "type": "global",
             "fieldName": "app_name"
           },
           {
-            "fullExpression": "These @global.terms_and_conditions are an agreement between you and international.idems.wash(‘@global.app_name’ or ‘the app’) which furthermore sets out the rules for your use of @global.app_name.",
+            "fullExpression": "These @global.terms_and_conditions are an agreement between you and @global.app_id (‘@global.app_name’ or ‘the app’) which furthermore sets out the rules for your use of @global.app_name.",
             "matchedExpression": "@global.app_name",
             "type": "global",
             "fieldName": "app_name"
@@ -71,6 +77,9 @@
       },
       "_dynamicDependencies": {
         "@global.terms_and_conditions": [
+          "value"
+        ],
+        "@global.app_id": [
           "value"
         ],
         "@global.app_name": [
@@ -220,7 +229,7 @@
     {
       "type": "text",
       "name": "text_2",
-      "value": "@global.app_name is open source and therefore its source code is available on GitHub for the usage and adaption by the wider software community. Nevertheless, you are not allowed to modify the existing app as is or its contents or copy any @global.app_name team trademarks. Whilst open source, you should not translate the app into other languages or make derivative versions without acknowledging the @global.app_name team in your efforts. Attempts to obtain sensitive account information or other personal data is not permitted. You should also not falsely represent yourself in the use of the app, make wrongful claims of affiliations to the app or make misleading reports of app misconduct. Use of the app must not also be in breach of any applicable laws or regulations. Finally in accessing and using the app, we believe you not to be a minor in your country of residence.",
+      "value": "@global.app_name is open source and therefore its source code is available on GitHub for the usage and adaptation by the wider software community.  Nevertheless, you are not allowed to modify the existing app as is or its contents or copy any @global.app_name team trademarks.  Whilst open source, you should not translate the app into other languages or make derivative versions without acknowledging the @global.app_name team in your efforts.  Attempts to obtain sensitive account information or other personal data is not permitted.  You should also not falsely represent yourself in the use of the app, make wrongful claims of affiliations to the app or make misleading reports of app misconduct.   Use of the app must not also be in breach of any applicable laws or regulations.",
       "_translations": {
         "value": {}
       },
@@ -228,19 +237,19 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@global.app_name is open source and therefore its source code is available on GitHub for the usage and adaption by the wider software community. Nevertheless, you are not allowed to modify the existing app as is or its contents or copy any @global.app_name team trademarks. Whilst open source, you should not translate the app into other languages or make derivative versions without acknowledging the @global.app_name team in your efforts. Attempts to obtain sensitive account information or other personal data is not permitted. You should also not falsely represent yourself in the use of the app, make wrongful claims of affiliations to the app or make misleading reports of app misconduct. Use of the app must not also be in breach of any applicable laws or regulations. Finally in accessing and using the app, we believe you not to be a minor in your country of residence.",
+            "fullExpression": "@global.app_name is open source and therefore its source code is available on GitHub for the usage and adaptation by the wider software community.  Nevertheless, you are not allowed to modify the existing app as is or its contents or copy any @global.app_name team trademarks.  Whilst open source, you should not translate the app into other languages or make derivative versions without acknowledging the @global.app_name team in your efforts.  Attempts to obtain sensitive account information or other personal data is not permitted.  You should also not falsely represent yourself in the use of the app, make wrongful claims of affiliations to the app or make misleading reports of app misconduct.   Use of the app must not also be in breach of any applicable laws or regulations.",
             "matchedExpression": "@global.app_name",
             "type": "global",
             "fieldName": "app_name"
           },
           {
-            "fullExpression": "@global.app_name is open source and therefore its source code is available on GitHub for the usage and adaption by the wider software community. Nevertheless, you are not allowed to modify the existing app as is or its contents or copy any @global.app_name team trademarks. Whilst open source, you should not translate the app into other languages or make derivative versions without acknowledging the @global.app_name team in your efforts. Attempts to obtain sensitive account information or other personal data is not permitted. You should also not falsely represent yourself in the use of the app, make wrongful claims of affiliations to the app or make misleading reports of app misconduct. Use of the app must not also be in breach of any applicable laws or regulations. Finally in accessing and using the app, we believe you not to be a minor in your country of residence.",
+            "fullExpression": "@global.app_name is open source and therefore its source code is available on GitHub for the usage and adaptation by the wider software community.  Nevertheless, you are not allowed to modify the existing app as is or its contents or copy any @global.app_name team trademarks.  Whilst open source, you should not translate the app into other languages or make derivative versions without acknowledging the @global.app_name team in your efforts.  Attempts to obtain sensitive account information or other personal data is not permitted.  You should also not falsely represent yourself in the use of the app, make wrongful claims of affiliations to the app or make misleading reports of app misconduct.   Use of the app must not also be in breach of any applicable laws or regulations.",
             "matchedExpression": "@global.app_name",
             "type": "global",
             "fieldName": "app_name"
           },
           {
-            "fullExpression": "@global.app_name is open source and therefore its source code is available on GitHub for the usage and adaption by the wider software community. Nevertheless, you are not allowed to modify the existing app as is or its contents or copy any @global.app_name team trademarks. Whilst open source, you should not translate the app into other languages or make derivative versions without acknowledging the @global.app_name team in your efforts. Attempts to obtain sensitive account information or other personal data is not permitted. You should also not falsely represent yourself in the use of the app, make wrongful claims of affiliations to the app or make misleading reports of app misconduct. Use of the app must not also be in breach of any applicable laws or regulations. Finally in accessing and using the app, we believe you not to be a minor in your country of residence.",
+            "fullExpression": "@global.app_name is open source and therefore its source code is available on GitHub for the usage and adaptation by the wider software community.  Nevertheless, you are not allowed to modify the existing app as is or its contents or copy any @global.app_name team trademarks.  Whilst open source, you should not translate the app into other languages or make derivative versions without acknowledging the @global.app_name team in your efforts.  Attempts to obtain sensitive account information or other personal data is not permitted.  You should also not falsely represent yourself in the use of the app, make wrongful claims of affiliations to the app or make misleading reports of app misconduct.   Use of the app must not also be in breach of any applicable laws or regulations.",
             "matchedExpression": "@global.app_name",
             "type": "global",
             "fieldName": "app_name"

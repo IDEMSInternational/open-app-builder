@@ -1,5 +1,13 @@
 export const UNTRACKED_ASSETS = [];
 export const ASSETS_CONTENTS_LIST = {
+  "android/icon-background.png": {
+    size_kb: 1.7,
+    md5Checksum: "94bfe00c537a98b68d072897d9d58e44",
+  },
+  "android/icon-foreground.png": {
+    size_kb: 49.5,
+    md5Checksum: "884c3d8d34b0df7cdf5880eb66d61794",
+  },
   "android/icon.png": {
     size_kb: 179.6,
     md5Checksum: "e1a9b7e45d5e3cea50616ee3db488d6b",

@@ -27,6 +27,14 @@
         "value": {}
       },
       "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "app_id",
+      "value": "international.idems.wash",
+      "_translations": {
+        "value": {}
+      }
     }
   ],
   "_xlsxPath": "globals/navigation_globals.xlsx"

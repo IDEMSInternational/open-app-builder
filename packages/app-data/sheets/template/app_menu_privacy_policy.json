@@ -31,7 +31,7 @@
     {
       "type": "text",
       "name": "text_0_1",
-      "value": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.app_name’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.app_name.",
+      "value": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.app_name’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.app_name.",
       "_translations": {
         "value": {}
       },
@@ -39,19 +39,25 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.app_name’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.app_name.",
+            "fullExpression": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.app_name’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.app_name.",
             "matchedExpression": "@global.privacy_policy",
             "type": "global",
             "fieldName": "privacy_policy"
           },
           {
-            "fullExpression": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.app_name’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.app_name.",
+            "fullExpression": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.app_name’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.app_name.",
+            "matchedExpression": "@global.app_id",
+            "type": "global",
+            "fieldName": "app_id"
+          },
+          {
+            "fullExpression": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.app_name’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.app_name.",
             "matchedExpression": "@global.app_name",
             "type": "global",
             "fieldName": "app_name"
           },
           {
-            "fullExpression": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.app_name’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.app_name.",
+            "fullExpression": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.app_name’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.app_name.",
             "matchedExpression": "@global.app_name",
             "type": "global",
             "fieldName": "app_name"
@@ -60,6 +66,9 @@
       },
       "_dynamicDependencies": {
         "@global.privacy_policy": [
+          "value"
+        ],
+        "@global.app_id": [
           "value"
         ],
         "@global.app_name": [
@@ -126,11 +135,42 @@
     {
       "type": "text",
       "name": "text_0_4",
-      "value": "The terms used in this @global.privacy_policy have the same meanings as in our @global.terms_and_conditions, which are accessible within the app, unless otherwise defined in this @global.privacy_policy.",
+      "value": "Please read this @global.privacy_policy carefully. By downloading or using the app, you agree to the collection and use of information in relation to this policy. We will not use or share your information with anyone except as described in this @global.privacy_policy.",
       "_translations": {
         "value": {}
       },
       "_nested_name": "text_0_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Please read this @global.privacy_policy carefully. By downloading or using the app, you agree to the collection and use of information in relation to this policy. We will not use or share your information with anyone except as described in this @global.privacy_policy.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          },
+          {
+            "fullExpression": "Please read this @global.privacy_policy carefully. By downloading or using the app, you agree to the collection and use of information in relation to this policy. We will not use or share your information with anyone except as described in this @global.privacy_policy.",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value",
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_0_5",
+      "value": "The terms used in this @global.privacy_policy have the same meanings as in our @global.terms_and_conditions, which are accessible within the app, unless otherwise defined in this @global.privacy_policy.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_0_5",
       "_dynamicFields": {
         "value": [
           {
@@ -159,68 +199,6 @@
           "value"
         ],
         "@global.terms_and_conditions": [
-          "value"
-        ]
-      }
-    },
-    {
-      "type": "text",
-      "name": "text_0_5",
-      "value": "Please read this @global.privacy_policy carefully. By downloading or using the app, you agree to the collection and use of information in relation to this policy. We will not use or share your information with anyone except as described in this @global.privacy_policy.",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "text_0_5",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "Please read this @global.privacy_policy carefully. By downloading or using the app, you agree to the collection and use of information in relation to this policy. We will not use or share your information with anyone except as described in this @global.privacy_policy.",
-            "matchedExpression": "@global.privacy_policy",
-            "type": "global",
-            "fieldName": "privacy_policy"
-          },
-          {
-            "fullExpression": "Please read this @global.privacy_policy carefully. By downloading or using the app, you agree to the collection and use of information in relation to this policy. We will not use or share your information with anyone except as described in this @global.privacy_policy.",
-            "matchedExpression": "@global.privacy_policy",
-            "type": "global",
-            "fieldName": "privacy_policy"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.privacy_policy": [
-          "value",
-          "value"
-        ]
-      }
-    },
-    {
-      "type": "text",
-      "name": "text_0_6",
-      "value": "The terms used in this @global.privacy_policy have the same meanings as in our Terms and Conditions, which are accessible within the app, unless otherwise defined in this @global.privacy_policy.",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "text_0_6",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "The terms used in this @global.privacy_policy have the same meanings as in our Terms and Conditions, which are accessible within the app, unless otherwise defined in this @global.privacy_policy.",
-            "matchedExpression": "@global.privacy_policy",
-            "type": "global",
-            "fieldName": "privacy_policy"
-          },
-          {
-            "fullExpression": "The terms used in this @global.privacy_policy have the same meanings as in our Terms and Conditions, which are accessible within the app, unless otherwise defined in this @global.privacy_policy.",
-            "matchedExpression": "@global.privacy_policy",
-            "type": "global",
-            "fieldName": "privacy_policy"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.privacy_policy": [
-          "value",
           "value"
         ]
       }
@@ -349,7 +327,7 @@
     {
       "type": "text",
       "name": "text_1_1_5",
-      "value": "The @global.app_name team legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
+      "value": "The @global.app_name team has legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
       "_translations": {
         "value": {}
       },
@@ -357,7 +335,7 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "The @global.app_name team legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
+            "fullExpression": "The @global.app_name team has legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
             "matchedExpression": "@global.app_name",
             "type": "global",
             "fieldName": "app_name"
@@ -373,7 +351,7 @@
     {
       "type": "text",
       "name": "text_1_1_6",
-      "value": "Your consent, under Art. 6(1)(a) GDPR, regarding the email address you provide at the point of Google Sign-in and the sharing of answers you may provide to in-app surveys (which are entirely optional).",
+      "value": "Your consent, under Art. 6(1)(a) GDPR, regarding the sharing of answers you may provide to in-app questions (those involving as stated gender and again entirely optional).",
       "_translations": {
         "value": {}
       },
