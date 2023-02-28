@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
 import { AppDataService } from "../data/app-data.service";
-import { CampaignService } from "src/app/feature/campaign/campaign.service";
 import { arrayToHashmap } from "../../utils";
 import { AsyncServiceBase } from "../asyncService.base";
 
@@ -17,8 +16,7 @@ export class TaskService extends AsyncServiceBase {
   taskGroupsHashmap: Record<string, any> = {};
   constructor(
     private templateFieldService: TemplateFieldService,
-    private appDataService: AppDataService,
-    private campaignService: CampaignService
+    private appDataService: AppDataService
   ) {
     super("Task");
     this.registerInitFunction(this.initialise);
@@ -70,16 +68,12 @@ export class TaskService extends AsyncServiceBase {
           return highestPriority.number < taskGroup.number ? highestPriority : taskGroup;
         }
       );
-      if (highestPriorityTaskGroup.id !== previousHighlightedTaskGroup) {
-        this.templateFieldService.setField(
-          this.highlightedTaskFieldName,
-          highestPriorityTaskGroup.id
-        );
-        // HACK - reschedule campaign notifications when the highlighted task group has changed,
-        // in order to handle any that are conditional on the highlighted task group
-        this.campaignService.scheduleCampaignNotifications();
+      const newHighlightedTaskGroup = highestPriorityTaskGroup.id;
+      if (newHighlightedTaskGroup !== previousHighlightedTaskGroup) {
+        this.templateFieldService.setField(this.highlightedTaskFieldName, newHighlightedTaskGroup);
       }
-      console.log("[HIGHLIGHTED TASK GROUP] - ", highestPriorityTaskGroup.id);
+      console.log("[HIGHLIGHTED TASK GROUP] - ", newHighlightedTaskGroup);
+      return [previousHighlightedTaskGroup, newHighlightedTaskGroup];
     }
   }
 
@@ -123,7 +117,7 @@ export class TaskService extends AsyncServiceBase {
       }
     });
     // Re-evaluate highlighted task group
-    this.evaluateHighlightedTaskGroup();
+    return this.evaluateHighlightedTaskGroup();
   }
 
   /**
