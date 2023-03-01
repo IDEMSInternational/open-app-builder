@@ -11,11 +11,11 @@ import type { SyncServiceBase } from "./syncService.base";
  * ```
  * class MyService extends AsyncServiceBase
  * constructor(private anotherService:AsyncService){
- *   this.registerInitFunction(this.init)
+ *   this.registerInitFunction(this.initialise)
  * }
  *
  * ...
- * function(){
+ * private initialise(){
  *  await myAsyncService.ready()
  *  doSomethingWithService()
  * }

@@ -8,7 +8,7 @@ import { DEPLOYMENTS_PATH } from "../../paths";
 import { loadDeploymentJson } from "./utils";
 
 /** Adjust config version to force new config set */
-export const DEPLOYMENT_CONFIG_VERSION = 2.2;
+export const DEPLOYMENT_CONFIG_VERSION = 20230228.0;
 
 export interface IDeploymentConfigJson extends IDeploymentConfig {
   _workspace_path: string;

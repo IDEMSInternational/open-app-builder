@@ -36,6 +36,7 @@ import { AsyncServiceBase } from "./shared/services/asyncService.base";
 import { SyncServiceBase } from "./shared/services/syncService.base";
 import { SeoService } from "./shared/services/seo/seo.service";
 import { APP_VERSION } from "src/environments/version";
+import { MigrationActionService } from "./shared/services/migration-action/migration-action.service";
 
 @Component({
   selector: "app-root",
@@ -60,33 +61,33 @@ export class AppComponent {
     private menuController: MenuController,
     private router: Router,
     // App services
-    private skinService: SkinService,
+    private analyticsService: AnalyticsService,
     private appConfigService: AppConfigService,
-    private dynamicDataService: DynamicDataService,
+    private appDataService: AppDataService,
+    private appEventService: AppEventService,
+    private authService: AuthService,
+    private campaignService: CampaignService,
+    private crashlyticsService: CrashlyticsService,
+    private dataEvaluationService: DataEvaluationService,
     private dbService: DbService,
     private dbSyncService: DBSyncService,
-    private userMetaService: UserMetaService,
-    private themeService: ThemeService,
-    private tourService: TourService,
+    private dynamicDataService: DynamicDataService,
+    private lifecycleActionsService: LifecycleActionsService,
+    private localNotificationService: LocalNotificationService,
+    private localNotificationInteractionService: LocalNotificationInteractionService,
+    private migrationActionService: MigrationActionService,
+    private skinService: SkinService,
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
     private templateProcessService: TemplateProcessService,
-    private appEventService: AppEventService,
-    private campaignService: CampaignService,
-    private dataEvaluationService: DataEvaluationService,
-    private analyticsService: AnalyticsService,
-    private localNotificationService: LocalNotificationService,
-    private localNotificationInteractionService: LocalNotificationInteractionService,
     private templateTranslateService: TemplateTranslateService,
-    private crashlyticsService: CrashlyticsService,
-    private appDataService: AppDataService,
-    private authService: AuthService,
+    private themeService: ThemeService,
+    private tourService: TourService,
     private seoService: SeoService,
-    private taskService: TaskService,
-    /** Inject in the main app component to start tracking actions immediately */
+    private serverService: ServerService,
     private taskActions: TaskActionService,
-    private lifecycleActionsService: LifecycleActionsService,
-    private serverService: ServerService
+    private taskService: TaskService,
+    private userMetaService: UserMetaService
   ) {
     this.initializeApp();
   }
@@ -96,8 +97,6 @@ export class AppComponent {
       this.subscribeToAppConfigChanges();
       // ensure deployment field set correctly for use in any startup services or templates
       localStorage.setItem(this.appFields.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
-      localStorage.setItem(this.appFields.APP_VERSION, this.APP_VERSION.name);
-      localStorage.setItem(this.appFields.APP_VERSION_CODE, `${this.APP_VERSION.code}`);
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
@@ -189,6 +188,7 @@ export class AppComponent {
         this.localNotificationService,
         this.localNotificationInteractionService,
         this.taskService,
+        this.migrationActionService,
         this.taskActions,
         this.campaignService,
       ],

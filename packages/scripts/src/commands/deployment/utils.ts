@@ -1,4 +1,4 @@
-import fs, { readdirSync, statSync } from "fs-extra";
+import fs, { statSync } from "fs-extra";
 import path from "path";
 import { Logger } from "../../utils";
 import chalk from "chalk";

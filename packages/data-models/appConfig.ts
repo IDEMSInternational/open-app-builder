@@ -40,7 +40,7 @@ const APP_FIELDS = {
   APP_LANGUAGE: `${FIELD_PREFIX}._app_language`,
   DEPLOYMENT_NAME: `${FIELD_PREFIX}._deployment_name`,
   /** Name given to app version, e.g 0.16.10 */
-  APP_VERSION: `${FIELD_PREFIX}._app_version`,
+  APP_VERSION_NAME: `${FIELD_PREFIX}._app_version`,
   /** Number given to app version, e.g 16010 */
   APP_VERSION_CODE: `${FIELD_PREFIX}._app_version_code`,
   APP_AUTH_USER: `${FIELD_PREFIX}._app_auth_user`,
@@ -179,6 +179,11 @@ const FEEDBACK_MODULE_DEFAULTS = {
   selected_text_field: "_feedback_selected_text",
 };
 
+const MIGRATION_ACTIONS = {
+  enabled: false,
+  dataListName: "app_version_actions",
+};
+
 const APP_CONFIG = {
   APP_FIELDS,
   APP_HEADER_DEFAULTS,
@@ -194,6 +199,7 @@ const APP_CONFIG = {
   DYNAMIC_PREFIXES,
   FEEDBACK_MODULE_DEFAULTS,
   FIELD_PREFIX,
+  MIGRATION_ACTIONS,
   NOTIFICATIONS_SYNC_FREQUENCY_MS,
   NOTIFICATION_DEFAULTS,
   SERVER_SYNC_FREQUENCY_MS,
