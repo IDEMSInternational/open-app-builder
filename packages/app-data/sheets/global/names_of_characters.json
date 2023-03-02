@@ -5,6 +5,114 @@
   "rows": [
     {
       "type": "declare_global_constant",
+      "name": "topic_intro_name_1",
+      "value": "@global.female_adult_name_3",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "topic_intro_name_2",
+      "value": "@global.female_adult_name_4",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "topic_intro_name_3",
+      "value": "@global.female_adult_name_5",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "topic_intro_name_4",
+      "value": "@global.female_adult_name_6",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "topic_intro_name_5",
+      "value": "@global.female_adult_name_7",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "topic_intro_name_6",
+      "value": "@global.female_adult_name_8",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "topic_intro_name_7",
+      "value": "@global.female_adult_name_9",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "topic_intro_name_8",
+      "value": "@global.female_adult_name_10",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "topic_intro_name_9",
+      "value": "@global.female_adult_name_11",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "topic_intro_name_10",
+      "value": "@global.female_adult_name_12",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "topic_intro_name_11",
+      "value": "@global.female_adult_name_13",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "topic_intro_name_12",
+      "value": "@global.female_adult_name_14",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
       "name": "w_praise_female_caregiver_name",
       "value": "@global.female_caregiver_2",
       "_translations": {
@@ -204,7 +312,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_money_grandma",
-      "value": "@global.female_caregiver_1 @global.female_adult_name_3",
+      "value": "@global.female_caregiver_1 @global.female_adult_name_1",
       "_translations": {
         "value": {}
       },
@@ -240,7 +348,7 @@
     {
       "type": "declare_global_constant",
       "name": "w_solve_female_caregiver_1_name",
-      "value": "@global.female_adult_name_4",
+      "value": "@global.female_adult_name_2",
       "_translations": {
         "value": {}
       },
