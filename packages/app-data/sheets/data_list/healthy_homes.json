@@ -17,14 +17,13 @@
           "eng": "What is a clean house?"
         },
         "text": {
-          "eng": "Keeping our house and the area around it clean, will keep us healthy!  We should all have safe places to live free of litter, as well as human and animal waste."
+          "eng": "Keeping our house and the area around it clean, will keep us healthy. We should all have safe places to live free of litter, as well as human and animal waste."
         }
       },
-      "text": "Keeping our house and the area around it clean, will keep us healthy!  We should all have safe places to live free of litter, as well as human and animal waste."
+      "text": "Keeping our house and the area around it clean, will keep us healthy. We should all have safe places to live free of litter, as well as human and animal waste."
     },
     {
       "id": "how",
-      "sample illustration": "Would be good to have a visual here of sweeping and if possible the disposal of child faeces",
       "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF; 2020.  \n\nExtract: \nRegularly clear external areas of any animal or child faeces, and clean contaminated\nareas immediately. \n\nRegular cleaning of floors with soap and water (and bleach if available).\n\nSafely dispose of child faeces, either in a latrine or a covered garbage pit.",
       "reference_link_title": "Baby WASH Programming. UNICEF; 2020.",
       "reference_link": "www.unicef.org/esa/reports/baby-wash-programming",
@@ -38,10 +37,10 @@
           "eng": "How do you keep your house clean?"
         },
         "text": {
-          "eng": "Make sure you clean your compound regularly.  Children’s stool should be thrown away in the toilet as well as animal waste and litter removed. \n\nUse water and detergent where you can to clean!"
+          "eng": "Make sure you clean your compound regularly. Children’s stool should be thrown in the toilet, and animal waste and litter removed.\r\n\r\nUse water and detergent to clean the floor and walls where you can."
         }
       },
-      "text": "Make sure you clean your compound regularly.  Children’s stool should be thrown away in the toilet as well as animal waste and litter removed. \n\nUse water and detergent where you can to clean!"
+      "text": "Make sure you clean your compound regularly. Children’s stool should be thrown in the toilet, and animal waste and litter removed.\r\n\r\nUse water and detergent to clean the floor and walls where you can."
     },
     {
       "id": "tips",
@@ -58,11 +57,11 @@
           "eng": "More tips to keeping a clean home!"
         },
         "text": {
-          "eng": "*  Get rid of pests in your house (they often carry disease).  \n*  Protect food and throw garbage in a covered pit - flies like garbage!  \n*  Find places where mosquitoes like to live, such as still water which include open containers and puddles (covering or emptying if you can)."
+          "eng": "* Get rid of pests in your house by sweeping, washing and drying up damp places regularly.\r\n* Protect food and throw garbage in a covered pit - flies like garbage!\r\n*Mosquitoes like to live in still water, such as in open containers and puddles. Cover or empty any still water in your home to keep mosquitoes away.\r\n.\n."
         }
       },
-      "text": "*  Get rid of pests in your house (they often carry disease).  \n*  Protect food and throw garbage in a covered pit - flies like garbage!  \n*  Find places where mosquitoes like to live, such as still water which include open containers and puddles (covering or emptying if you can)."
+      "text": "* Get rid of pests in your house by sweeping, washing and drying up damp places regularly.\r\n* Protect food and throw garbage in a covered pit - flies like garbage!\r\n*Mosquitoes like to live in still water, such as in open containers and puddles. Cover or empty any still water in your home to keep mosquitoes away.\r\n.\n."
     }
   ],
-  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+  "_xlsxPath": "data_lists/modules/module_details.xlsx"
 }

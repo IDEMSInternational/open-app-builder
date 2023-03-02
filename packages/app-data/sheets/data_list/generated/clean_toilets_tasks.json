@@ -5,7 +5,7 @@
   "rows": [
     {
       "id": "what",
-      "illustration": "Illusatration of pour flush latrine",
+      "illustration": "essential_tools/home_toilet.svg",
       "reference": "Guidelines on sanitation and health. Geneva: World Health Organization; 2018. Licence: CC BY-NC-SA 3.0 IGO.\n\nExtract:\nSafely managed sanitation for households includes - \nUse of improved facilities that are not shared with other households and where excreta are safely disposed of in situ or transported and treated off-site.",
       "reference_link_title": "Guidelines on sanitation and health. WHO; 2018.",
       "reference_link": "www.who.int/publications/i/item/9789241514705",
@@ -19,10 +19,10 @@
           "eng": "What makes a toilet safe?"
         },
         "text": {
-          "eng": "A safe toilet is one that is clean, separates you from your stool and urine, and is well ventilated.  Regular cleaning will also keep away nasty smells and flies."
+          "eng": "A safe toilet is one that is clean, separates you from your stool and urine, and is well-ventilated. Regular cleaning will also keep away nasty smells and flies."
         }
       },
-      "text": "A safe toilet is one that is clean, separates you from your stool and urine, and is well ventilated.  Regular cleaning will also keep away nasty smells and flies.",
+      "text": "A safe toilet is one that is clean, separates you from your stool and urine, and is well-ventilated. Regular cleaning will also keep away nasty smells and flies.",
       "completed_field": "clean_toilets_what_completed"
     },
     {
@@ -37,10 +37,10 @@
           "eng": "Importance of clean and safe toilets"
         },
         "text": {
-          "eng": "Keep your toilet clean, your family healthy and the germs away.  Besides, you don't want to be stepping on stool or urine whilst toileting.  Cleaning your toilet will also stop the spread of diseases.  You can do it!  Keep them clean for you, your family and your neighbours."
+          "eng": "Keeping your toilet clean keeps germs away and stops the spread of disease. Besides, you don't want to be stepping on stool or urine while you are using the toilet. You can do it! Keep it clean for you and your neighbours."
         }
       },
-      "text": "Keep your toilet clean, your family healthy and the germs away.  Besides, you don't want to be stepping on stool or urine whilst toileting.  Cleaning your toilet will also stop the spread of diseases.  You can do it!  Keep them clean for you, your family and your neighbours.",
+      "text": "Keeping your toilet clean keeps germs away and stops the spread of disease. Besides, you don't want to be stepping on stool or urine while you are using the toilet. You can do it! Keep it clean for you and your neighbours.",
       "context  (not for App but to support content development)": "Malima, G., Mshida, H., Machunda, R., Moyo, F., Banzi, J., Gautam, O. P., Mbeguere, M., Smith, K., Cairncross, S., & Njau, K. N. (2022). What influences individuals to invest in improved sanitation services and hygiene behaviours in a small town? A formative research study in Babati, Tanzania. PLOS ONE, 17(7), e0270688. <span>https://doi.org/10.1371/journal.pone.0270688</span><br/><span><b>FGDs unveiled four motives for cleaning latrines. First, social influence or the feeling of being embarrassed by neighbours. Second, fear of being fined by health officers, who occasionally inspects households and fine those whose latrines are found to be dirty. Third, the feeling of disgust when using a latrine with visible faeces and urine, and fourth, fear of contracting diseases from a dirty latrine.</b></span> For barriers, FGDs revealed two key factors, namely poorly maintained floors and limited water availability. Most of the latrines had mud or wooden slabs which cannot be easily washed or cleaned using water. Households that had installed pour-flush or flush toilets also identified a lack of water as the main reason for having dirty latrines. FGD participants stated fear of contracting urinary tract infections (UTIs) and fungal diseases while using flush toilets when water is limited.",
       "completed_field": "clean_toilets_motivators_completed"
     },
@@ -56,11 +56,10 @@
           "eng": "Why using a toilet is important"
         },
         "text": {
-          "eng": "Open defecation, or pooping outside of a toilet, can feel safer, cleaner, or more convenient. However, the flies that land on human poop surely land on your ugali, too. It is important that you and your family use a toilet."
+          "eng": "Open defecation, or pooping outside of a toilet, can feel safer, cleaner, or more convenient. However, the flies that land on human poop surely land on your ugali, too. It is important that you use a toilet."
         }
       },
-      "text": "Open defecation, or pooping outside of a toilet, can feel safer, cleaner, or more convenient. However, the flies that land on human poop surely land on your ugali, too. It is important that you and your family use a toilet.",
-      "sample illustration": "Picture of an individual engaging in open defacation with a big cross through it.",
+      "text": "Open defecation, or pooping outside of a toilet, can feel safer, cleaner, or more convenient. However, the flies that land on human poop surely land on your ugali, too. It is important that you use a toilet.",
       "completed_field": "clean_toilets_importance_completed"
     },
     {
@@ -78,10 +77,10 @@
           "eng": "Tips for a clean toilet"
         },
         "text": {
-          "eng": "* Sweep your toilet, the area around it and pathway to it daily.\n* Use soap to get rid of any urine stains or stool.\n* Throw used toilet paper into the toilet.\n* Check your toilet regularly.  Make any repairs quickly."
+          "eng": "* Sweep your toilet, the area around it and pathway to it daily.\r\n* Use soap to get rid of any urine stains or stool.\r\n* Throw used toilet paper into the toilet.\r\n* Check your toilet regularly. Make any repairs quickly."
         }
       },
-      "text": "* Sweep your toilet, the area around it and pathway to it daily.\n* Use soap to get rid of any urine stains or stool.\n* Throw used toilet paper into the toilet.\n* Check your toilet regularly.  Make any repairs quickly.",
+      "text": "* Sweep your toilet, the area around it and pathway to it daily.\r\n* Use soap to get rid of any urine stains or stool.\r\n* Throw used toilet paper into the toilet.\r\n* Check your toilet regularly. Make any repairs quickly.",
       "completed_field": "clean_toilets_tips_completed"
     }
   ]

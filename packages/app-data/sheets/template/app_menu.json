@@ -67,6 +67,66 @@
       "_nested_name": "button_reset"
     },
     {
+      "type": "button",
+      "name": "button_references",
+      "value": "References",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "reference_page"
+          ],
+          "_raw": "click | go_to:reference_page",
+          "_cleaned": "click | go_to:reference_page"
+        }
+      ],
+      "_nested_name": "button_references"
+    },
+    {
+      "type": "button",
+      "name": "button_terms_and_conditions",
+      "value": "Terms and Conditions",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "app_menu_terms"
+          ],
+          "_raw": "click | go_to:app_menu_terms",
+          "_cleaned": "click | go_to:app_menu_terms"
+        }
+      ],
+      "_nested_name": "button_terms_and_conditions"
+    },
+    {
+      "type": "button",
+      "name": "button_privacy_policy",
+      "value": "Privacy Policy",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "app_menu_privacy_policy"
+          ],
+          "_raw": "click | go_to:app_menu_privacy_policy",
+          "_cleaned": "click | go_to:app_menu_privacy_policy"
+        }
+      ],
+      "_nested_name": "button_privacy_policy"
+    },
+    {
       "type": "display_group",
       "name": "dg_references",
       "rows": [
@@ -89,6 +149,7 @@
               "_cleaned": "changed | set_field: show_references: this.value"
             }
           ],
+          "condition": false,
           "_nested_name": "dg_references.toggle_references",
           "_dynamicFields": {
             "value": [
@@ -109,10 +170,6 @@
         {
           "type": "text",
           "name": "toggle_text",
-          "value": "Show references",
-          "_translations": {
-            "value": {}
-          },
           "style_list": [
             "flex: 1"
           ],
@@ -122,5 +179,5 @@
       "_nested_name": "dg_references"
     }
   ],
-  "_xlsxPath": "templates/global/navigation_modular.xlsx"
+  "_xlsxPath": "templates/global/navigation_templates.xlsx"
 }

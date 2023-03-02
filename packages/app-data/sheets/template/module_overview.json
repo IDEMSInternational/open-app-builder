@@ -349,8 +349,43 @@
       }
     },
     {
+      "type": "text",
+      "name": "text_detail",
+      "value": "@local.module_data.text_detail",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@local.module_data.text_detail",
+      "_nested_name": "text_detail",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.module_data.text_detail",
+            "matchedExpression": "@local.module_data.text_detail",
+            "type": "local",
+            "fieldName": "module_data"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "@local.module_data.text_detail",
+            "matchedExpression": "@local.module_data.text_detail",
+            "type": "local",
+            "fieldName": "module_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.module_data.text_detail": [
+          "value",
+          "condition"
+        ]
+      }
+    },
+    {
       "type": "items",
       "value": "@data.@local.module_tasks",
+      "condition": "!(@local.module_id==\"introduction\" || @local.module_id==\"celebration\")",
       "rows": [
         {
           "type": "task_card",
@@ -390,8 +425,8 @@
             "completed_field": "@item.completed_field",
             "title": "@item.title",
             "style": "button",
-            "in_progress_icon": "icons/in_progress_white.svg",
-            "completed_icon": "icons/tick_white.svg"
+            "in_progress_icon": "icons/in_progress.svg",
+            "completed_icon": "icons/tick.svg"
           },
           "exclude_from_translation": true,
           "_nested_name": "items.task_card",
@@ -512,14 +547,32 @@
             "type": "local",
             "fieldName": "module_tasks"
           }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!(@local.module_id==\"introduction\" || @local.module_id==\"celebration\")",
+            "matchedExpression": "@local.module_id",
+            "type": "local",
+            "fieldName": "module_id"
+          },
+          {
+            "fullExpression": "!(@local.module_id==\"introduction\" || @local.module_id==\"celebration\")",
+            "matchedExpression": "@local.module_id",
+            "type": "local",
+            "fieldName": "module_id"
+          }
         ]
       },
       "_dynamicDependencies": {
         "@local.module_tasks": [
           "value"
+        ],
+        "@local.module_id": [
+          "condition",
+          "condition"
         ]
       }
     }
   ],
-  "_xlsxPath": "templates/global/navigation_modular.xlsx"
+  "_xlsxPath": "templates/global/navigation_templates.xlsx"
 }

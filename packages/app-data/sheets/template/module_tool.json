@@ -235,7 +235,7 @@
       "type": "display_group",
       "name": "dg_box",
       "parameter_list": {
-        "style": "tool_2"
+        "style": "white_box"
       },
       "exclude_from_translation": true,
       "rows": [
@@ -600,7 +600,7 @@
         {
           "type": "text",
           "name": "toggle_text",
-          "value": "I have read this!",
+          "value": "I have read this",
           "_translations": {
             "value": {}
           },
@@ -613,5 +613,5 @@
       "_nested_name": "dg_completed"
     }
   ],
-  "_xlsxPath": "templates/global/navigation_modular.xlsx"
+  "_xlsxPath": "templates/global/navigation_templates.xlsx"
 }

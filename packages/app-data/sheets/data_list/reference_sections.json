@@ -1,0 +1,93 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "reference_sections",
+  "status": "released",
+  "data_list_name": "reference_sections",
+  "rows": [
+    {
+      "id": "general",
+      "title": "General WASH (including Waste and Bathing topics)",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "General WASH (including Waste and Bathing topics)"
+        }
+      }
+    },
+    {
+      "id": "handwashing",
+      "title": "Handwashing",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Handwashing"
+        }
+      }
+    },
+    {
+      "id": "healthy_families",
+      "title": "@data.module.healthy_families.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.module.healthy_families.title"
+        }
+      }
+    },
+    {
+      "id": "clean_toilets",
+      "title": "@data.module.clean_toilets.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.module.clean_toilets.title"
+        }
+      }
+    },
+    {
+      "id": "healthy_homes",
+      "title": "@data.module.healthy_homes.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.module.healthy_homes.title"
+        }
+      }
+    },
+    {
+      "id": "safe_drinking_water",
+      "title": "@data.module.safe_drinking_water.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.module.safe_drinking_water.title"
+        }
+      }
+    },
+    {
+      "id": "safe_food",
+      "title": "@data.module.safe_food.title",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "@data.module.safe_food.title"
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "data_lists/references.xlsx"
+}

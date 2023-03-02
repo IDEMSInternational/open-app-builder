@@ -9,8 +9,6 @@
       "illustration": "essential_tools/soap.svg",
       "reference_link_title": "Community WASH Conversations.  Arkansas:  LifeWater. Mar 2022;  License:  CC BY-NC-SA 3.0",
       "reference_link": "lifewater.org/wp-content/uploads/2022/06/Community-WASH-Conversations-Public.pdf",
-      "test_1": "What is a bathing shelter?",
-      "test_2": "A bathroom is private and has walls and a door.  The bathroom should have a drain (so water does not build up).  This often has a floor made of grass, rocks or dirt.  A bathroom can have soap (which is best), whilst others use a jerrycan full of water.",
       "title": "Why do we need to be clean?",
       "_translations": {
         "title": {},
@@ -21,15 +19,13 @@
           "eng": "Why do we need to be clean?"
         },
         "text": {
-          "eng": "Clean bodies keep us healthy and free from disease.  Be sure to wash your face and all your other body parts with soap.  You will feel great after!"
+          "eng": "Clean bodies keep us healthy and free from disease. Be sure to wash your face and all your other body parts with soap. You will feel great after!"
         }
       },
-      "text": "Clean bodies keep us healthy and free from disease.  Be sure to wash your face and all your other body parts with soap.  You will feel great after!"
+      "text": "Clean bodies keep us healthy and free from disease. Be sure to wash your face and all your other body parts with soap. You will feel great after!"
     },
     {
       "id": "motivators",
-      "sample illustration": "Teenager washing face",
-      "context  (not for App but to support content development)": "<span>Rog, M., Swenor, B., Cajas-Monson, L. C., Mchiwe, W., Kiboko, S., Mkocha, H., & West, S. (2011). A cross-sectional survey of water and clean faces in trachoma endemic communities in Tanzania. BMC Public Health, 11(1). https://doi.org/10.1186/1471-2458-11-495<br/><br/>Face washing appears to have moved up as a household water use priority. Previous studies indicated that the major impediment to face washing was the mother's perception that face washing required a lot of water and was not as important as other household water uses such as cooking and drinking [9]. In this study on the other hand, the vast majority of households spontaneously listed washing as one of the major uses of their water and many households reported washing their children more than once per day. There appeared to be a general consensus that washing the faces of young children was an important priority. These results are in contrast to previous studies where women reported not wanting to wash their children's faces for fear of appearing that they were trying to be superior to their neighbors (9).</span><span><b> In fact, many respondents in this study reported thinking that mothers who did not wash their children were lazy. This prioritization of face washing to the point of thinking that others who do not do so are lazy was significantly associated with a reduction in unclean faces, indicating the shift in village norms with respect to attitudes about face washing. </b></span>",
       "title": "Importance of bathing and washing",
       "_translations": {
         "title": {},
@@ -40,14 +36,13 @@
           "eng": "Importance of bathing and washing"
         },
         "text": {
-          "eng": "It's important to use clean water to wash our bodies and faces so we don't get diseases like trachoma (which can lead to blindness). Encourage your children to wash often if you can.  You can do it for your family."
+          "eng": "It is important to use clean water to wash our bodies and faces so we don't get diseases like trachoma (which can lead to blindness)."
         }
       },
-      "text": "It's important to use clean water to wash our bodies and faces so we don't get diseases like trachoma (which can lead to blindness). Encourage your children to wash often if you can.  You can do it for your family."
+      "text": "It is important to use clean water to wash our bodies and faces so we don't get diseases like trachoma (which can lead to blindness)."
     },
     {
       "id": "tips",
-      "sample illustration": "Bathroom block next image over with toilet / bathroom next to each other.  Same sort of cleaning concept except remove boy pouring water into basin next to bathroom.",
       "title": "Tips for a clean bathroom",
       "_translations": {
         "title": {},
@@ -58,11 +53,11 @@
           "eng": "Tips for a clean bathroom"
         },
         "text": {
-          "eng": "* Sweep your bathroom, the area around it and pathway to it daily.\n* Use soap to get rid of any stains on the floor if you can.\n* Check your bathroom regularly.  Make any repairs quickly."
+          "eng": "* Sweep your bathroom, the area around it and pathway to it daily.\n* Use soap to get rid of any stains on the floor if you can.\n* Check your bathroom regularly. Make any repairs quickly."
         }
       },
-      "text": "* Sweep your bathroom, the area around it and pathway to it daily.\n* Use soap to get rid of any stains on the floor if you can.\n* Check your bathroom regularly.  Make any repairs quickly."
+      "text": "* Sweep your bathroom, the area around it and pathway to it daily.\n* Use soap to get rid of any stains on the floor if you can.\n* Check your bathroom regularly. Make any repairs quickly."
     }
   ],
-  "_xlsxPath": "data_lists/homepage/module_details.xlsx"
+  "_xlsxPath": "data_lists/modules/module_details.xlsx"
 }

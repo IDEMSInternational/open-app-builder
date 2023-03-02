@@ -1,84 +1,20 @@
 export const UNTRACKED_ASSETS = [];
 export const ASSETS_CONTENTS_LIST = {
-  "essential_tools/Archive/cleaning_container.png": {
-    size_kb: 80.9,
-    md5Checksum: "aafc7cb380fa5eb05b7005b7753bb98b",
+  "android/icon-background.png": {
+    size_kb: 1.7,
+    md5Checksum: "94bfe00c537a98b68d072897d9d58e44",
   },
-  "essential_tools/Archive/hands_with_soap.jpg": {
-    size_kb: 105.8,
-    md5Checksum: "5a195c6e638e776c4f50aaf2f40d1ebd",
+  "android/icon-foreground.png": {
+    size_kb: 49.5,
+    md5Checksum: "884c3d8d34b0df7cdf5880eb66d61794",
   },
-  "essential_tools/Archive/handwashing.png": {
-    size_kb: 54.3,
-    md5Checksum: "cf356a8f0997a9cd60e5e8f25470bb0c",
+  "android/icon.png": {
+    size_kb: 179.6,
+    md5Checksum: "e1a9b7e45d5e3cea50616ee3db488d6b",
   },
-  "essential_tools/Archive/HandwashingDisgust.png": {
-    size_kb: 77,
-    md5Checksum: "1d21c34d8b38a642426b8b1009fa0aa1",
-  },
-  "essential_tools/Archive/handwashing_how.png": {
-    size_kb: 68.8,
-    md5Checksum: "157905091b065e6602b73366ae6b9cd6",
-  },
-  "essential_tools/Archive/handwashing_how_1.png": {
-    size_kb: 127.6,
-    md5Checksum: "25d784247b874701a592b7aed07485b9",
-  },
-  "essential_tools/Archive/handwashing_steps.png": {
-    size_kb: 284.4,
-    md5Checksum: "d3e6d0264bcfabd12fe5d71252468792",
-  },
-  "essential_tools/Archive/healthy homes_clean compound.png": {
-    size_kb: 479,
-    md5Checksum: "fa4f54990181043498bb3289442144a3",
-  },
-  "essential_tools/Archive/home_handwashing.png": {
-    size_kb: 105,
-    md5Checksum: "5af2692ae7bb97ea64f0d922ae4934c1",
-  },
-  "essential_tools/Archive/home_latrines.png": {
-    size_kb: 118.8,
-    md5Checksum: "2e87fbaa72c5fa7f07f3532a36272ec1",
-  },
-  "essential_tools/Archive/home_safe_food.png": {
-    size_kb: 784.6,
-    md5Checksum: "e693660837d0d14267223fcbd287f485",
-  },
-  "essential_tools/Archive/home_shower.png": {
-    size_kb: 41.9,
-    md5Checksum: "01afdabc5d45155c2cb4cabf145f9118",
-  },
-  "essential_tools/Archive/home_waste_license_needed.png": {
-    size_kb: 88.3,
-    md5Checksum: "4b4c990f19a0a479c1ef4c34c07e70ad",
-  },
-  "essential_tools/Archive/home_water_containers.png": {
-    size_kb: 268.2,
-    md5Checksum: "b9d3306ea813cecdcb01f25278e1e132",
-  },
-  "essential_tools/Archive/home_water_source.png": {
-    size_kb: 71.8,
-    md5Checksum: "402b2ab53805c84ff3c4d0155b8d6869",
-  },
-  "essential_tools/Archive/home_water_treatment_license_needed.png": {
-    size_kb: 189.7,
-    md5Checksum: "d5004336bcbdb00b9470ad9b177be617",
-  },
-  "essential_tools/Archive/housing.svg": {
-    size_kb: 359.4,
-    md5Checksum: "79a3eb950b74f552210ce2ddc31ff889",
-  },
-  "essential_tools/Archive/jerrycan_license_needed.png": {
-    size_kb: 29.5,
-    md5Checksum: "da5b4e7e9b89215b6e7c053f0cbbcf24",
-  },
-  "essential_tools/Archive/soap.png": {
-    size_kb: 47.3,
-    md5Checksum: "065fd6de72cf42ba1494d5fb7839807e",
-  },
-  "essential_tools/Archive/water_germs_license_needed.png": {
-    size_kb: 252,
-    md5Checksum: "5fb1646e5e30c656321145250b00d895",
+  "android/splash.png": {
+    size_kb: 595.7,
+    md5Checksum: "50f727d3eaaf1e7807e935370b7e13ca",
   },
   "essential_tools/breastfeeding2_license_needed.png": {
     size_kb: 82.8,
@@ -144,10 +80,6 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 707.4,
     md5Checksum: "494633f7c51bb7b05155943b282ef62a",
   },
-  "essential_tools/home_latrine.svg": {
-    size_kb: 566.5,
-    md5Checksum: "e557b16d27fa954c934fb81f63623822",
-  },
   "essential_tools/home_menstruation.png": {
     size_kb: 38.4,
     md5Checksum: "80155e7cab0b15c35e52bc148c667cb8",
@@ -159,6 +91,10 @@ export const ASSETS_CONTENTS_LIST = {
   "essential_tools/home_shower.svg": {
     size_kb: 372.8,
     md5Checksum: "7f9661fd4bd0735c4d244a88fb9714e7",
+  },
+  "essential_tools/home_toilet.svg": {
+    size_kb: 566.5,
+    md5Checksum: "e557b16d27fa954c934fb81f63623822",
   },
   "essential_tools/home_waste.svg": {
     size_kb: 827,
@@ -240,52 +176,12 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 170.5,
     md5Checksum: "892eead569ec8eef85d3ebf081798c11",
   },
-  "homepage/habits.png": {
-    size_kb: 58.2,
-    md5Checksum: "a6dc385d1503471ab1bd46643a3309eb",
-  },
-  "homepage/library.png": {
-    size_kb: 350.4,
-    md5Checksum: "6c374bc43bfd43fee8a7120230c3b082",
-  },
-  "homepage/topics.png": {
-    size_kb: 46.2,
-    md5Checksum: "65664bfb46d5c1448bbaf3adc6c1c6a6",
-  },
-  "icons/home_icon.png": {
-    size_kb: 0.8,
-    md5Checksum: "ed5f072869e65f75b4293b1aabae77ef",
-  },
-  "icons/in_progress_white.svg": {
+  "icons/in_progress.svg": {
     size_kb: 1.1,
-    md5Checksum: "f7bdd991a067c30d0cb140d5b77745bb",
+    md5Checksum: "6105962bc0edd981675d874dc8a51035",
   },
-  "icons/library_icon.png": {
-    size_kb: 0.7,
-    md5Checksum: "f60b4985e614c14119b7938cf9cf8a0d",
-  },
-  "icons/tick_white.svg": {
+  "icons/tick.svg": {
     size_kb: 0.3,
-    md5Checksum: "81136e04436759812dc3f6e90c61de11",
-  },
-  "modules/clean_water_1.png": {
-    size_kb: 23.4,
-    md5Checksum: "b534e8f65359e14333e1fe5cda545f27",
-  },
-  "water/boil_water.png": {
-    size_kb: 418.2,
-    md5Checksum: "4726cf7846658d66672c285a2fecf94a",
-  },
-  "water/ceramic_filter.png": {
-    size_kb: 292.7,
-    md5Checksum: "b22619daefd49087d62c27c496103f44",
-  },
-  "water/clean_filter.png": {
-    size_kb: 412.2,
-    md5Checksum: "f2b4f83ca7427413b49f73122b20b483",
-  },
-  "water/filter_water.png": {
-    size_kb: 80.8,
-    md5Checksum: "7bc88327b55bf2f56f106cf84e05afea",
+    md5Checksum: "b4e6f1e9ba6e5bcdd2e404bc432ba745",
   },
 };

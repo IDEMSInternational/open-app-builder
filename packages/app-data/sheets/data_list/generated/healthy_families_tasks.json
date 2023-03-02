@@ -4,26 +4,25 @@
   "flow_type": "data_list",
   "rows": [
     {
-      "id": "healthy_family",
-      "sample illustration": "Picture of family",
+      "id": "keep_healthy",
       "reference": "Preventing diarrhoea through better water, sanitation and hygiene.  Geneva: WHO; 2014.\n\nExtract: Earlier work showed that poor water, sanitation, and hygiene have a major impact on undernutrition, and also on a number of neglected tropical diseases including schistosomiasis, trachoma and soil-transmitted helminths (intestinal worms).",
       "reference_link_title": "Preventing diarrhoea through better water, sanitation and hygiene. WHO; 2014.",
       "reference_link": "www.who.int/publications/i/item/9789241564823",
-      "title": "What is a healthy family?",
+      "title": "How to keep healthy",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "What is a healthy family?"
+          "eng": "How to keep healthy"
         },
         "text": {
-          "eng": "Healthy families drink safe water, use clean latrines and wash their hands often.\n\nPoor practices can lead to diarrohea, undernutrition, and other diseases involving worms as well as those involving bugs."
+          "eng": "You can stay healthy by drinking safe water, using clean toilets and washing your hands often.\r\n\r\nNot doing this can lead to diarrhoea, undernutrition, and other diseases involving worms or bugs."
         }
       },
-      "text": "Healthy families drink safe water, use clean latrines and wash their hands often.\n\nPoor practices can lead to diarrohea, undernutrition, and other diseases involving worms as well as those involving bugs.",
-      "completed_field": "healthy_families_healthy_family_completed"
+      "text": "You can stay healthy by drinking safe water, using clean toilets and washing your hands often.\r\n\r\nNot doing this can lead to diarrhoea, undernutrition, and other diseases involving worms or bugs.",
+      "completed_field": "healthy_families_keep_healthy_completed"
     },
     {
       "id": "diarrhoea",
@@ -40,16 +39,15 @@
           "eng": "Diarrhoea"
         },
         "text": {
-          "eng": "Diarrhoea is when you have three or more loose or liquid stools per day.  It is often a sign that your body has a bug (a bacterial, viral, or parasitic infection). \n\nDiarrhoea can be prevented but can be serious especially when the body looses a lot of water.  In fact, diarrhoeal disease is the second leading cause of death in children under five years old. \n\nRemember to handwash often and practice safe food and clean water habits."
+          "eng": "Diarrhoea is when you have three or more loose or liquid stools per day. It is often a sign that your body has a bug (a bacterial, viral, or parasitic infection).\r\n\r\nDiarrhoea can be prevented but can be serious, especially when the body loses a lot of water.\r\n\r\nRemember to wash your hands often and practise safe food and clean water habits."
         }
       },
-      "text": "Diarrhoea is when you have three or more loose or liquid stools per day.  It is often a sign that your body has a bug (a bacterial, viral, or parasitic infection). \n\nDiarrhoea can be prevented but can be serious especially when the body looses a lot of water.  In fact, diarrhoeal disease is the second leading cause of death in children under five years old. \n\nRemember to handwash often and practice safe food and clean water habits.",
-      "illustration": "essential_tools/stomach_ache_license_needed.png",
+      "text": "Diarrhoea is when you have three or more loose or liquid stools per day. It is often a sign that your body has a bug (a bacterial, viral, or parasitic infection).\r\n\r\nDiarrhoea can be prevented but can be serious, especially when the body loses a lot of water.\r\n\r\nRemember to wash your hands often and practise safe food and clean water habits.",
+      "illustration": "essential_tools/handwashing2.svg",
       "completed_field": "healthy_families_diarrhoea_completed"
     },
     {
       "id": "worms_water",
-      "sample illustration": "Picture of an individual engaging in open defecation with a big cross through it.",
       "reference": "Shistosomiasis - WHO Factsheet - 2022 \n\nExtract:\n-  Schistosomiasis is an acute and chronic parasitic disease caused by blood flukes (trematode worms) of the genus Schistosoma.\n-  People become infected when larval forms of the parasite – released by freshwater snails – penetrate the skin during contact with infested water. Transmission occurs when people suffering from schistosomiasis contaminate freshwater sources with their excreta containing parasite eggs, which hatch in water.\n- Intestinal schistosomiasis can result in abdominal pain, diarrhoea, and blood in the stool.\n\n\nEnding the neglect to attain the Sustainable Development Goals: a global strategy on water, sanitation and hygiene to combat neglected tropical diseases, 2021-2030. Geneva: World Health Organization; 2021. Licence: CC BY-NC-SA 3.0 IGO. \n\nExtract:\nSchistosomiasis can be tackled through the following WASH behaviour:\n- Prevention of open defecation/urination\n- Exclusive use, cleanliness and maintenance of toilets\n- Avoidance of contact with surface water \n- Personal hygiene",
       "reference_link_title": "Schistosomiasis. WHO Factsheet; 2022.",
       "reference_link": "www.who.int/news-room/fact-sheets/detail/schistosomiasis#:~:text=The%20WHO%20strategy%20for%20schistosomiasis,of%20all%20at%2Drisk%20groups.",
@@ -63,10 +61,10 @@
           "eng": "Avoiding worms in your water"
         },
         "text": {
-          "eng": "Tiny, invisible worms can cause a disease known as bilharzia or schistosomiasis.  They lead to abdominal pain, rash, diarrhoea, and blood in your stool.  People become infected when coming into contact with infected water.  \n\nStop the spread of the disease by drinking and bathing in clean water and don't contaminate the water sources by defecating in the open or in the lake."
+          "eng": "Tiny, invisible worms can cause a disease known as bilharzia or schistosomiasis. They lead to abdominal pain, rash, diarrhoea, and blood in your stool. People become infected when coming into contact with infected water.\r\n\r\nStop the spread of the disease by drinking and bathing in clean water and don't contaminate the water sources by defecating in open areas or in the lake."
         }
       },
-      "text": "Tiny, invisible worms can cause a disease known as bilharzia or schistosomiasis.  They lead to abdominal pain, rash, diarrhoea, and blood in your stool.  People become infected when coming into contact with infected water.  \n\nStop the spread of the disease by drinking and bathing in clean water and don't contaminate the water sources by defecating in the open or in the lake.",
+      "text": "Tiny, invisible worms can cause a disease known as bilharzia or schistosomiasis. They lead to abdominal pain, rash, diarrhoea, and blood in your stool. People become infected when coming into contact with infected water.\r\n\r\nStop the spread of the disease by drinking and bathing in clean water and don't contaminate the water sources by defecating in open areas or in the lake.",
       "reference_link_title_2": "Ending the neglect to attain the Sustainable Development Goals. WHO; 2021.",
       "refererence_link_2": "www.who.int/publications/i/item/9789240022782",
       "completed_field": "healthy_families_worms_water_completed"
@@ -86,10 +84,10 @@
           "eng": "Avoiding worms in your compound"
         },
         "text": {
-          "eng": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and abdominal pain, among other symptoms.  \n\nEggs of these worms are found in human stool, which can then land in soil and transfer to your feet and hands.\n\nRegularly cleaning your compound and toilet, disposing of child stool in the toilets, and regular handwashing are important so you don't get infected."
+          "eng": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and stomach pain, among other symptoms.\r\n\r\nEggs of these worms are found in human stool, which can land in soil and transfer to your feet and hands.\r\n\r\nRegularly cleaning your compound and toilet, disposing of children’s stool in the toilets, and regular handwashing are important to prevent infections."
         }
       },
-      "text": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and abdominal pain, among other symptoms.  \n\nEggs of these worms are found in human stool, which can then land in soil and transfer to your feet and hands.\n\nRegularly cleaning your compound and toilet, disposing of child stool in the toilets, and regular handwashing are important so you don't get infected.",
+      "text": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and stomach pain, among other symptoms.\r\n\r\nEggs of these worms are found in human stool, which can land in soil and transfer to your feet and hands.\r\n\r\nRegularly cleaning your compound and toilet, disposing of children’s stool in the toilets, and regular handwashing are important to prevent infections.",
       "reference_link_title_2": "Ending the neglect to attain the Sustainable Development Goals. WHO; 2021.",
       "refererence_link_2": "www.who.int/publications/i/item/9789240022782",
       "completed_field": "healthy_families_worms_compound_completed"
@@ -109,31 +107,30 @@
           "eng": "Preventing blindness"
         },
         "text": {
-          "eng": "Trachoma is a disease of the eye that can cause blindness. It is passed when a fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home. \n\nFace washing, removing mucous from the face, is the best way to prevent Trachoma. Making sure that the face washing cloth, when used, is clean, is quite important. Mothers should not wipe their children's eyes with dirty khanga cloths, for example.\n\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of Trachoma."
+          "eng": "Trachoma is a disease of the eye that can cause blindness. It is passed when a fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home.\r\n\r\nFace washing is the best way to prevent Trachoma. Make sure that the face washing cloth, when used, is clean.\r\n\r\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of Trachoma."
         }
       },
-      "text": "Trachoma is a disease of the eye that can cause blindness. It is passed when a fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home. \n\nFace washing, removing mucous from the face, is the best way to prevent Trachoma. Making sure that the face washing cloth, when used, is clean, is quite important. Mothers should not wipe their children's eyes with dirty khanga cloths, for example.\n\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of Trachoma.",
-      "illustration": "essential_tools/eye_pain_license_needed.png",
+      "text": "Trachoma is a disease of the eye that can cause blindness. It is passed when a fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home.\r\n\r\nFace washing is the best way to prevent Trachoma. Make sure that the face washing cloth, when used, is clean.\r\n\r\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of Trachoma.",
       "reference_link_title_2": "Ending the neglect to attain the Sustainable Development Goals. WHO; 2021.",
       "refererence_link_2": "www.who.int/publications/i/item/9789240022782",
       "completed_field": "healthy_families_blindness_completed"
     },
     {
       "id": "doctor",
-      "title": "See your doctor!",
+      "title": "See your doctor",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "See your doctor!"
+          "eng": "See your doctor"
         },
         "text": {
-          "eng": "If you feel unwell it is important to visit a health facility.  They can help!"
+          "eng": "If you feel unwell it is important to visit a health facility. They can help!"
         }
       },
-      "text": "If you feel unwell it is important to visit a health facility.  They can help!",
+      "text": "If you feel unwell it is important to visit a health facility. They can help!",
       "completed_field": "healthy_families_doctor_completed"
     }
   ]

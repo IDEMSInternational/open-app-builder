@@ -1,0 +1,123 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "references",
+  "status": "released",
+  "data_list_name": "references",
+  "rows": [
+    {
+      "id": "unicef_1",
+      "reference_section": "general",
+      "reference": "Water, Sanitation and Hygiene (WASH).  UNICEF. (n.d.). Retrieved February 22, 2023, from https://www.unicef.org/wash",
+      "reference_link": "www.unicef.org/wash",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "who_1",
+      "reference_section": "general",
+      "reference": "Water, Sanitation and Hygiene (WASH). WHO. (n.d.). Retrieved February 22, 2023, from https://www.who.int/health-topics/water-sanitation-and-hygiene-wash",
+      "reference_link": "www.who.int/health-topics/water-sanitation-and-hygiene-wash",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "national_guidlines_schools",
+      "reference_section": "general",
+      "reference": "National Guideline for Water, Sanitation and Hygiene for Tanzania Schools. MoEST; 2016.",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "unicef_2",
+      "reference_section": "general",
+      "reference": "Water, Sanitation and Hygiene for Schoolchildren in Emergencies A Guidebook for Teachers. New York: UNICEF; 2011.",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "community_wash_conversations",
+      "reference_section": "general",
+      "reference": "Community WASH Conversations. Arkansas: LifeWater. Mar 2022; Licence: CC BY-NC-SA 3.0",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "community_wash_promotions",
+      "reference_section": "general",
+      "reference": "Centre for Affordable Water and Sanitation Technology: Community WASH Promotion; 2017.",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "unicef_3",
+      "reference_section": "handwashing",
+      "reference": "United Nations Children’s Fund and World Health Organization, State of the World’s Hand Hygiene: A global call to action to make hand hygiene a priority in policy and practice. New York: UNICEF; 2021.",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "unicef_4",
+      "reference_section": "handwashing",
+      "reference": "Handwashing Promotion Monitoring and Evaluation Module. UNICEF; 2013.",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "unicef_5",
+      "reference_section": "handwashing",
+      "reference": "How to teach your kids handwashing. UNICEF Parenting. (n.d.). Retrieved February 22, 2023, from https://www.unicef.org/parenting/health/how-to-teach-your-kids-handwashing",
+      "reference_link": "www.unicef.org/parenting/health/how-to-teach-your-kids-handwashing",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "who_2",
+      "reference_section": "healthy_families",
+      "reference": "Preventing diarrhoea through better water, sanitation and hygiene. Geneva: WHO; 2014.",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "who_3",
+      "reference_section": "healthy_families",
+      "reference": "Diarrhoeal disease. World Health Organization. (2 May 2017). Retrieved February 22, 2023 from https://www.who.int/news-room/fact-sheets/detail/diarrhoeal-disease",
+      "reference_link": "www.who.int/news-room/fact-sheets/detail/diarrhoeal-disease",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "who_4",
+      "reference_section": "healthy_families",
+      "reference": "Schistosomiasis. World Health Organization. (1 Feb 2023). Retrieved February 22, 2023, from https://www.who.int/news-room/fact-sheets/detail/schistosomiasis#:~:text=The%20WHO%20strategy%20for%20schistosomiasis",
+      "reference_link": "www.who.int/news-room/fact-sheets/detail/schistosomiasis#:~:text=The%20WHO%20strategy%20for%20schistosomiasis",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "who_5",
+      "reference_section": "healthy_families",
+      "reference": "Soil-transmitted helminth infections. World Health Organization: WHO. (18 Jan 2023). Retrieved February 22,2023, from https://www.who.int/news-room/fact-sheets/detail/soil-transmitted-helminth-infections",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "who_6",
+      "reference_section": "healthy_families",
+      "reference": "Trachoma. World Health Organization: WHO. (5 Oct 2022). Retrieved February 22, 2023, from http://www.who.int/news-room/fact-sheets/detail/trachoma#:~:text=Trachoma%20is%20a%20disease%20of",
+      "reference_link": "www.who.int/news-room/fact-sheets/detail/trachoma#:~:text=Trachoma%20is%20a%20disease%20of",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "who_7",
+      "reference_section": "clean_toilets",
+      "reference": "Guidelines on sanitation and health. Geneva: World Health Organization; 2018. Licence: CC BY-NC-SA 3.0 IGO.",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "unicef_6",
+      "reference_section": "healthy_homes",
+      "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF; 2020.",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "who_8",
+      "reference_section": "safe_drinking_water",
+      "reference": "Guidelines for drinking-water quality: fourth edition incorporating the first and second addenda. Geneva: World Health Organization; 2022. Licence: CC BY-NC-SA 3.0 IGO.",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "who_9",
+      "reference_section": "safe_food",
+      "reference": "5 Keys to Safer Food Manual. Geneva: WHO; 2016.",
+      "reference_link_title": "Go to website"
+    }
+  ],
+  "_xlsxPath": "data_lists/references.xlsx"
+}

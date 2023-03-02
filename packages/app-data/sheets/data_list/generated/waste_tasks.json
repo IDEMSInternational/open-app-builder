@@ -5,84 +5,83 @@
   "rows": [
     {
       "id": "what",
-      "sample illustration": "Show examples of different solid wastes. Paper waste can be a newpaper, organic material can be green, leafy vegetable (like kale), plastic waste can be a plastic bag or water bottle.",
       "reference": "Ministry of Education, Science and Technology, National Guideline for Water, Sanitation and Hygiene for Tanzania Schools; 2016.\n\nExtract:\nSanitation/environmental sanitation is the hygienic means of preventing human contact from hazards of wastes to promote health. Hazards can be physical, microbiological, biological or chemical agents of disease. Subsets of this category are:\ni. safe collection, storage, treatment and disposal/re-use/recycling of human excreta (faeces and urine);\nii. management/re-use/recycling of solid wastes (trash or rubbish);\niii. drainage and disposal/re-use/recycling of household wastewater (often referred to as sullage or wastewater);\niv. drainage of storm-water;\nv. treatment and disposal/re-use/recycling of sewage effluents;\nvi. collection and management of industrial waste products;\nvii. air and noise pollution; and\nviii. management of hazardous wastes including hospital wastes, and chemical/radioactive and other dangerous substances.",
       "reference_link_title": "National Guideline for Water, Sanitation and Hygiene for Tanzania Schools. MoEST; 2016.",
       "reference_link": "www.unicef.org/tanzania/media/1526/file/National%20Guideline%20for%20Water,%20Sanitation%20and%20Hygiene%20for%20Tanzania%20Schools.pdf",
-      "title": "What is solid waste?",
+      "title": "What is solid garbage?",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "What is solid waste?"
+          "eng": "What is solid garbage?"
         },
         "text": {
-          "eng": "Solid waste can be everything from:\n* Paper waste (paper bags)\n* Organic materials (food)\n* Plastic waste (bottles)"
+          "eng": "Solid garbage can be everything from:\r\n* Paper garbage (paper bags)\r\n* Organic materials (food)\r\n* Plastic garbage (bottles)"
         }
       },
-      "text": "Solid waste can be everything from:\n* Paper waste (paper bags)\n* Organic materials (food)\n* Plastic waste (bottles)",
+      "text": "Solid garbage can be everything from:\r\n* Paper garbage (paper bags)\r\n* Organic materials (food)\r\n* Plastic garbage (bottles)",
       "completed_field": "waste_what_completed"
     },
     {
       "id": "why",
       "reference_link_title": "Centre for Affordable Water and Sanitation Technology: Community WASH Promotion; 2017.",
       "reference_link": "cdn.sanity.io/files/r8bm187e/production/ec2f1615fae8971ff69114f6274d47536213e608.pdf",
-      "title": "Why should we manage our waste?",
+      "title": "Why should we manage our garbage?",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Why should we manage our waste?"
+          "eng": "Why should we manage our garbage?"
         },
         "text": {
-          "eng": "* Reduce breeding grounds for pathogens, bugs, rodents, mosquitos, snakes, and other animals which can spread diseases  \n* Protect the environment and water sources  \n* Waste can block drains and cause flooding  \n* Rotting waste leads to a bad smell, which causes discomfort  \n* It really isn't nice to look at!"
+          "eng": "* Reduce breeding grounds for germs, bugs, rodents, mosquitos, snakes, and other animals which can spread diseases.\r\n* Protect the environment and clean water sources.\r\n* Garbage can block drains and cause flooding.\r\n* Rotting garbage leads to a bad smell, which causes discomfort.\r\n* It really isn't nice to look at!"
         }
       },
-      "text": "* Reduce breeding grounds for pathogens, bugs, rodents, mosquitos, snakes, and other animals which can spread diseases  \n* Protect the environment and water sources  \n* Waste can block drains and cause flooding  \n* Rotting waste leads to a bad smell, which causes discomfort  \n* It really isn't nice to look at!",
+      "text": "* Reduce breeding grounds for germs, bugs, rodents, mosquitos, snakes, and other animals which can spread diseases.\r\n* Protect the environment and clean water sources.\r\n* Garbage can block drains and cause flooding.\r\n* Rotting garbage leads to a bad smell, which causes discomfort.\r\n* It really isn't nice to look at!",
       "completed_field": "waste_why_completed"
     },
     {
       "id": "how",
       "reference_link_title": "National Guideline for Water, Sanitation and Hygiene for Tanzania Schools. MoEST; 2016.",
       "reference_link": "www.unicef.org/tanzania/media/1526/file/National%20Guideline%20for%20Water,%20Sanitation%20and%20Hygiene%20for%20Tanzania%20Schools.pdf",
-      "title": "How to manage solid waste",
+      "title": "How to manage solid garbage",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "How to manage solid waste"
+          "eng": "How to manage solid garbage"
         },
         "text": {
-          "eng": "The disposal/treatment of solid waste depends on the type and amount of waste made. To throw your waste:\n* Paper waste can be buried or collected.\n* Organic materials can be composted, for instance in household compost pits, and used as fertilizers/soil conditioners for trees and plants around your home.\n* Plastic waste can be collected and buried or recycled.\n*  And remember, don't place your solid waste in the toilet."
+          "eng": "The disposal/treatment of solid garbage depends on the type and amount of garbage made. Here’s how to manage your garbage: To throw your garbage:\r\n* Paper garbage can be buried or collected.\r\n* Organic materials can be composted, for instance in household compost pits, and can be used as fertilisers/soil conditioners for trees and plants around your home.\r\n* Plastic garbage can be collected and buried or recycled.\r\n* And remember, do not place your solid garbage in the toilet."
         }
       },
-      "text": "The disposal/treatment of solid waste depends on the type and amount of waste made. To throw your waste:\n* Paper waste can be buried or collected.\n* Organic materials can be composted, for instance in household compost pits, and used as fertilizers/soil conditioners for trees and plants around your home.\n* Plastic waste can be collected and buried or recycled.\n*  And remember, don't place your solid waste in the toilet.",
+      "text": "The disposal/treatment of solid garbage depends on the type and amount of garbage made. Here’s how to manage your garbage: To throw your garbage:\r\n* Paper garbage can be buried or collected.\r\n* Organic materials can be composted, for instance in household compost pits, and can be used as fertilisers/soil conditioners for trees and plants around your home.\r\n* Plastic garbage can be collected and buried or recycled.\r\n* And remember, do not place your solid garbage in the toilet.",
       "completed_field": "waste_how_completed"
     },
     {
       "id": "reduce",
       "reference_link_title": "Centre for Affordable Water and Sanitation Technology: Community WASH Promotion; 2017.",
       "reference_link": "cdn.sanity.io/files/r8bm187e/production/ec2f1615fae8971ff69114f6274d47536213e608.pdf",
-      "title": "Ways to reduce the amount of waste we make",
+      "title": "Ways to reduce the amount of garbage we make",
       "_translations": {
         "title": {},
         "text": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Ways to reduce the amount of waste we make"
+          "eng": "Ways to reduce the amount of garbage we make"
         },
         "text": {
-          "eng": "* Carry your own bag to the shops to avoid using a new plastic bag. \n* Use reusable containers, like plastic bottles, rather than buying new ones.  \n* Try to fix or repair things when they break!"
+          "eng": "* Carry your own bag to the shops to avoid using a new plastic bag.\r\n* Use reusable containers, like plastic bottles, rather than buying new ones.\r\n* Try to fix or repair things when they break."
         }
       },
-      "text": "* Carry your own bag to the shops to avoid using a new plastic bag. \n* Use reusable containers, like plastic bottles, rather than buying new ones.  \n* Try to fix or repair things when they break!",
+      "text": "* Carry your own bag to the shops to avoid using a new plastic bag.\r\n* Use reusable containers, like plastic bottles, rather than buying new ones.\r\n* Try to fix or repair things when they break.",
       "completed_field": "waste_reduce_completed"
     }
   ]
