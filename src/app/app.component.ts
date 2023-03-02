@@ -98,7 +98,6 @@ export class AppComponent {
       // ensure deployment field set correctly for use in any startup services or templates
       localStorage.setItem(this.appFields.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
       localStorage.setItem(this.appFields.APP_VERSION, this.APP_VERSION);
-      await this.checkForAppUpdatesAndApply();
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
@@ -194,6 +193,7 @@ export class AppComponent {
         this.campaignService,
       ],
       nonBlocking: [
+        this.appUpdateService,
         this.skinService,
         this.appConfigService,
         this.themeService,
@@ -269,7 +269,6 @@ export class AppComponent {
         const lastLaunchDay = new Date(lastLaunchEntry._created);
         // reprocess initialisation if the day has changed
         if (!isSameDay(lastLaunchDay, new Date())) {
-          await this.checkForAppUpdatesAndApply();
           await this.initialiseCoreServices();
         } else {
           console.log("welcome back :D");
@@ -285,12 +284,6 @@ export class AppComponent {
       if (isUserMode !== false) {
         this.templateFieldService.setField("user_mode", "false");
       }
-    }
-  }
-
-  private async checkForAppUpdatesAndApply() {
-    if (Capacitor.isNativePlatform()) {
-      await this.appUpdateService.checkForUpdatesAndAttemptImmediateUpdate();
     }
   }
 }
