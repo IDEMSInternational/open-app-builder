@@ -197,6 +197,7 @@
                     "style": "button_tile",
                     "icon_src": "chevron-forward-outline"
                   },
+                  "condition": false,
                   "exclude_from_translation": true,
                   "_nested_name": "items.items.references_@item.id.reference_1",
                   "_dynamicFields": {

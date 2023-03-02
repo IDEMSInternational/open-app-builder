@@ -16,10 +16,10 @@
           "eng": "Water, Sanitation and Hygiene"
         },
         "text_introduction": {
-          "eng": "Safe Water, Sanitation and Hygiene (WASH) ensures our children have a healthy start in life."
+          "eng": "Safe Water, Sanitation and Hygiene (WASH) helps us and keeps our communities safe from harmful germs."
         }
       },
-      "text_introduction": "Safe Water, Sanitation and Hygiene (WASH) ensures our children have a healthy start in life.",
+      "text_introduction": "Safe Water, Sanitation and Hygiene (WASH) helps us and keeps our communities safe from harmful germs.",
       "completed_field": "introduction_completed"
     },
     {
@@ -35,10 +35,10 @@
           "eng": "Handwashing with soap"
         },
         "text_introduction": {
-          "eng": "Washing your hands with soap is one of the most important things you can do to keep your family strong and healthy."
+          "eng": "Washing your hands with soap is one of the most important things you can do to keep strong and healthy."
         }
       },
-      "text_introduction": "Washing your hands with soap is one of the most important things you can do to keep your family strong and healthy.",
+      "text_introduction": "Washing your hands with soap is one of the most important things you can do to keep strong and healthy.",
       "illustration": "essential_tools/home_handwashing.svg",
       "completed_field": "handwashing_with_soap_completed"
     },
@@ -75,30 +75,30 @@
           "eng": "How to wash your hands"
         },
         "text_introduction": {
-          "eng": "Washing your hands is easy! Just follow these simple steps to help you and your family practice good health and hygiene."
+          "eng": "Washing your hands is easy! Just follow these simple steps."
         }
       },
-      "text_introduction": "Washing your hands is easy! Just follow these simple steps to help you and your family practice good health and hygiene.",
+      "text_introduction": "Washing your hands is easy! Just follow these simple steps.",
       "illustration": "essential_tools/soap.svg",
       "completed_field": "how_to_wash_your_hands_completed"
     },
     {
       "id": "healthy_families",
       "number": 5,
-      "title": "Healthy families",
+      "title": "Keeping healthy",
       "_translations": {
         "title": {},
         "text_introduction": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Healthy families"
+          "eng": "Keeping healthy"
         },
         "text_introduction": {
-          "eng": "Keep your family healthy by drinking safe water, using clean toilets and washing your hands often."
+          "eng": "Prevent diseases by drinking safe water, using clean toilets and washing your hands often."
         }
       },
-      "text_introduction": "Keep your family healthy by drinking safe water, using clean toilets and washing your hands often.",
+      "text_introduction": "Prevent diseases by drinking safe water, using clean toilets and washing your hands often.",
       "illustration": "essential_tools/home_family.svg",
       "completed_field": "healthy_families_completed"
     },
@@ -119,26 +119,26 @@
         }
       },
       "text_introduction": "A clean toilet means good hygiene.  A dirty one can mean disease.",
-      "illustration": "essential_tools/home_latrine.svg",
+      "illustration": "essential_tools/home_toilet.svg",
       "completed_field": "clean_toilets_completed"
     },
     {
       "id": "healthy_homes",
       "number": 7,
-      "title": "Healthy homes",
+      "title": "Healthy home",
       "_translations": {
         "title": {},
         "text_introduction": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Healthy homes"
+          "eng": "Healthy home"
         },
         "text_introduction": {
-          "eng": "A safe place to live is possible when your home and its surroundings are clean.  Clean for your family!"
+          "eng": "A safe place to live is possible when your home and its surroundings are clean."
         }
       },
-      "text_introduction": "A safe place to live is possible when your home and its surroundings are clean.  Clean for your family!",
+      "text_introduction": "A safe place to live is possible when your home and its surroundings are clean.",
       "illustration": "essential_tools/home_healthy_homes.svg",
       "completed_field": "healthy_homes_completed"
     },
@@ -155,10 +155,10 @@
           "eng": "Safe drinking water"
         },
         "text_introduction": {
-          "eng": "Clean water saves money and improves health.  Making sure you collect water from a safe source, maintain clean containers and treat water is important."
+          "eng": "Clean water saves money and improves health. Collect water from a safe source, maintain clean containers, and treat water to make it clean."
         }
       },
-      "text_introduction": "Clean water saves money and improves health.  Making sure you collect water from a safe source, maintain clean containers and treat water is important.",
+      "text_introduction": "Clean water saves money and improves health. Collect water from a safe source, maintain clean containers, and treat water to make it clean.",
       "illustration": "essential_tools/home_water_source.svg",
       "completed_field": "safe_drinking_water_completed"
     },
@@ -175,30 +175,30 @@
           "eng": "Safe food"
         },
         "text_introduction": {
-          "eng": "There are five keys to safe food.  Know what they are!"
+          "eng": "There are five ways to keep food safe. Know what they are!"
         }
       },
-      "text_introduction": "There are five keys to safe food.  Know what they are!",
+      "text_introduction": "There are five ways to keep food safe. Know what they are!",
       "illustration": "essential_tools/home_safe_food.svg",
       "completed_field": "safe_food_completed"
     },
     {
       "id": "waste",
       "number": 10,
-      "title": "Waste management",
+      "title": "Garbage management",
       "_translations": {
         "title": {},
         "text_introduction": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Waste management"
+          "eng": "Garbage management"
         },
         "text_introduction": {
-          "eng": "Let's manage our waste!  It will mean a clean home and a healthy family."
+          "eng": "Let's manage our garbage.  It will mean a clean home."
         }
       },
-      "text_introduction": "Let's manage our waste!  It will mean a clean home and a healthy family.",
+      "text_introduction": "Let's manage our garbage.  It will mean a clean home.",
       "illustration": "essential_tools/home_waste.svg",
       "completed_field": "waste_completed"
     },
@@ -215,12 +215,11 @@
           "eng": "Bathing and washing"
         },
         "text_introduction": {
-          "eng": "Wash often in a clean private bathing place (sometimes, you can even sing while bathing!!)"
+          "eng": "Wash often in a clean private bathing place (sometimes, you can even sing while bathing!)."
         }
       },
-      "text_introduction": "Wash often in a clean private bathing place (sometimes, you can even sing while bathing!!)",
+      "text_introduction": "Wash often in a clean private bathing place (sometimes, you can even sing while bathing!).",
       "illustration": "essential_tools/home_shower.svg",
-      "sample illustration": "Bucket with soap",
       "completed_field": "bathing_completed"
     },
     {
@@ -236,10 +235,10 @@
           "eng": "Celebration"
         },
         "text_introduction": {
-          "eng": "Celebrate everything that you learned and continue to support your family."
+          "eng": "Celebrate everything that you learned."
         }
       },
-      "text_introduction": "Celebrate everything that you learned and continue to support your family.",
+      "text_introduction": "Celebrate everything that you learned.",
       "completed_field": "celebration_completed"
     }
   ]

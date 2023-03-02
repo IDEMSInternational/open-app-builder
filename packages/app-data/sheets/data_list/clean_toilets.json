@@ -6,7 +6,7 @@
   "rows": [
     {
       "id": "what",
-      "illustration": "Illusatration of pour flush latrine",
+      "illustration": "essential_tools/home_toilet.svg",
       "reference": "Guidelines on sanitation and health. Geneva: World Health Organization; 2018. Licence: CC BY-NC-SA 3.0 IGO.\n\nExtract:\nSafely managed sanitation for households includes - \nUse of improved facilities that are not shared with other households and where excreta are safely disposed of in situ or transported and treated off-site.",
       "reference_link_title": "Guidelines on sanitation and health. WHO; 2018.",
       "reference_link": "www.who.int/publications/i/item/9789241514705",
@@ -20,10 +20,10 @@
           "eng": "What makes a toilet safe?"
         },
         "text": {
-          "eng": "A safe toilet is one that is clean, separates you from your stool and urine, and is well ventilated.  Regular cleaning will also keep away nasty smells and flies."
+          "eng": "A safe toilet is one that is clean, separates you from your stool and urine, and is well-ventilated. Regular cleaning will also keep away nasty smells and flies."
         }
       },
-      "text": "A safe toilet is one that is clean, separates you from your stool and urine, and is well ventilated.  Regular cleaning will also keep away nasty smells and flies."
+      "text": "A safe toilet is one that is clean, separates you from your stool and urine, and is well-ventilated. Regular cleaning will also keep away nasty smells and flies."
     },
     {
       "id": "motivators",
@@ -38,14 +38,13 @@
           "eng": "Importance of clean and safe toilets"
         },
         "text": {
-          "eng": "Keep your toilet clean, your family healthy and the germs away. Besides, you don't want to be stepping on stool or urine while you are using the toilet. Cleaning your toilet will also stop the spread of diseases. You can do it! Keep it clean for you, your family and your neighbours."
+          "eng": "Keeping your toilet clean keeps germs away and stops the spread of disease. Besides, you don't want to be stepping on stool or urine while you are using the toilet. You can do it! Keep it clean for you and your neighbours."
         }
       },
-      "text": "Keep your toilet clean, your family healthy and the germs away. Besides, you don't want to be stepping on stool or urine while you are using the toilet. Cleaning your toilet will also stop the spread of diseases. You can do it! Keep it clean for you, your family and your neighbours."
+      "text": "Keeping your toilet clean keeps germs away and stops the spread of disease. Besides, you don't want to be stepping on stool or urine while you are using the toilet. You can do it! Keep it clean for you and your neighbours."
     },
     {
       "id": "importance",
-      "sample illustration": "Picture of an individual engaging in open defacation with a big cross through it.",
       "title": "Why using a toilet is important",
       "_translations": {
         "title": {},
@@ -56,10 +55,10 @@
           "eng": "Why using a toilet is important"
         },
         "text": {
-          "eng": "Open defecation, or pooping outside of a toilet, can feel safer, cleaner, or more convenient. However, the flies that land on human poop surely land on your ugali, too. It is important that you and your family use a toilet."
+          "eng": "Open defecation, or pooping outside of a toilet, can feel safer, cleaner, or more convenient. However, the flies that land on human poop surely land on your ugali, too. It is important that you use a toilet."
         }
       },
-      "text": "Open defecation, or pooping outside of a toilet, can feel safer, cleaner, or more convenient. However, the flies that land on human poop surely land on your ugali, too. It is important that you and your family use a toilet."
+      "text": "Open defecation, or pooping outside of a toilet, can feel safer, cleaner, or more convenient. However, the flies that land on human poop surely land on your ugali, too. It is important that you use a toilet."
     },
     {
       "id": "tips",
@@ -76,10 +75,10 @@
           "eng": "Tips for a clean toilet"
         },
         "text": {
-          "eng": "* Sweep your toilet, the area around it and pathway to it daily.\n* Use soap to get rid of any urine stains or stool.\n* Throw used toilet paper into the toilet.\n* Check your toilet regularly.  Make any repairs quickly."
+          "eng": "* Sweep your toilet, the area around it and pathway to it daily.\r\n* Use soap to get rid of any urine stains or stool.\r\n* Throw used toilet paper into the toilet.\r\n* Check your toilet regularly. Make any repairs quickly."
         }
       },
-      "text": "* Sweep your toilet, the area around it and pathway to it daily.\n* Use soap to get rid of any urine stains or stool.\n* Throw used toilet paper into the toilet.\n* Check your toilet regularly.  Make any repairs quickly."
+      "text": "* Sweep your toilet, the area around it and pathway to it daily.\r\n* Use soap to get rid of any urine stains or stool.\r\n* Throw used toilet paper into the toilet.\r\n* Check your toilet regularly. Make any repairs quickly."
     }
   ],
   "_xlsxPath": "data_lists/modules/module_details.xlsx"

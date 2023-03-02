@@ -2,7 +2,6 @@
   "flow_type": "template",
   "flow_name": "app_menu_terms",
   "status": "released",
-  "flow_subtype": "legal_terms",
   "rows": [
     {
       "type": "title",
@@ -92,7 +91,7 @@
     {
       "type": "text",
       "name": "text_1_2",
-      "value": "@global.app_name is a is a free app designed to provide parents and caregivers with simple and useful messages regarding water, sanitation and hygiene practices for the home.",
+      "value": "@global.app_name is a free app designed to provide parents and caregivers with simple and useful messages regarding water, sanitation and hygiene practices for the home.",
       "_translations": {
         "value": {}
       },
@@ -100,7 +99,7 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@global.app_name is a is a free app designed to provide parents and caregivers with simple and useful messages regarding water, sanitation and hygiene practices for the home.",
+            "fullExpression": "@global.app_name is a free app designed to provide parents and caregivers with simple and useful messages regarding water, sanitation and hygiene practices for the home.",
             "matchedExpression": "@global.app_name",
             "type": "global",
             "fieldName": "app_name"
