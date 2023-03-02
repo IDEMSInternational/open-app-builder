@@ -6,8 +6,48 @@
   "rows": [
     {
       "lifecycle_event": "app_start",
-      "id": "app_start_splash_screens",
+      "id": "app_start_set_skin",
       "priority": 1,
+      "condition_list": [
+        "@fields._app_skin != \"modular\" && @fields.user_mode"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "emit",
+          "args": [
+            "set_skin",
+            "modular"
+          ],
+          "_raw": "emit: set_skin: modular",
+          "_cleaned": "click | emit: set_skin: modular"
+        }
+      ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "id": "app_start_set_theme",
+      "priority": 2,
+      "condition_list": [
+        "@fields._app_theme != \"professional\" && @fields.user_mode"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "emit",
+          "args": [
+            "set_theme",
+            "professional"
+          ],
+          "_raw": "emit: set_theme: professional",
+          "_cleaned": "click | emit: set_theme: professional"
+        }
+      ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "id": "app_start_splash_screens",
+      "priority": 3,
       "condition_list": [
         "!@fields.splash_screens_viewed && @fields.user_mode"
       ],
@@ -39,31 +79,8 @@
     },
     {
       "lifecycle_event": "app_start",
-      "id": "app_start_accept_terms",
-      "priority": 2,
-      "condition_list": [
-        "!@fields.terms_v20230202_accepted && @fields.user_mode"
-      ],
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "pop_up",
-          "args": [
-            "accept_terms"
-          ],
-          "_raw": "pop_up: accept_terms | fullscreen: true, showCloseButton: false",
-          "_cleaned": "click | pop_up: accept_terms | fullscreen: true, showCloseButton: false",
-          "params": {
-            "fullscreen": true,
-            "showCloseButton": false
-          }
-        }
-      ]
-    },
-    {
-      "lifecycle_event": "app_start",
       "id": "app_start_language_select",
-      "priority": 3,
+      "priority": 4,
       "condition_list": [
         "!@fields.language_selected && @fields.user_mode"
       ],
@@ -95,53 +112,43 @@
     },
     {
       "lifecycle_event": "app_start",
-      "id": "app_start_skin_select",
-      "priority": 4,
+      "id": "app_start_accept_terms",
+      "priority": 5,
       "condition_list": [
-        "!@fields.skin_selected && @fields.user_mode"
+        "!@fields.terms_v20230301_accepted && @fields.user_mode"
       ],
       "action_list": [
         {
           "trigger": "click",
           "action_id": "pop_up",
           "args": [
-            "skin_select"
+            "accept_terms"
           ],
-          "_raw": "pop_up: skin_select | fullscreen: true, showCloseButton: false",
-          "_cleaned": "click | pop_up: skin_select | fullscreen: true, showCloseButton: false",
+          "_raw": "pop_up: accept_terms | fullscreen: true, showCloseButton: false",
+          "_cleaned": "click | pop_up: accept_terms | fullscreen: true, showCloseButton: false",
           "params": {
             "fullscreen": true,
             "showCloseButton": false
           }
-        },
-        {
-          "trigger": "click",
-          "action_id": "set_field",
-          "args": [
-            "skin_selected",
-            true
-          ],
-          "_raw": "set_field: skin_selected: true",
-          "_cleaned": "click | set_field: skin_selected: true"
         }
       ]
     },
     {
       "lifecycle_event": "app_start",
-      "id": "app_start_organisation_registration",
-      "priority": 5,
+      "id": "app_start_user_info",
+      "priority": 6,
       "condition_list": [
-        "!@fields.organisation_registration_completed && @fields.user_mode"
+        "!@fields.user_info_submitted && @fields.user_mode"
       ],
       "action_list": [
         {
           "trigger": "click",
           "action_id": "pop_up",
           "args": [
-            "organisation_registration"
+            "user_info"
           ],
-          "_raw": "pop_up: organisation_registration | fullscreen: true, showCloseButton: false",
-          "_cleaned": "click | pop_up: organisation_registration | fullscreen: true, showCloseButton: false",
+          "_raw": "pop_up: user_info | fullscreen: true, showCloseButton: false",
+          "_cleaned": "click | pop_up: user_info | fullscreen: true, showCloseButton: false",
           "params": {
             "fullscreen": true,
             "showCloseButton": false
@@ -151,18 +158,18 @@
           "trigger": "click",
           "action_id": "set_field",
           "args": [
-            "organisation_registration_completed",
+            "user_info_submitted",
             true
           ],
-          "_raw": "set_field: organisation_registration_completed: true",
-          "_cleaned": "click | set_field: organisation_registration_completed: true"
+          "_raw": "set_field: user_info_submitted: true",
+          "_cleaned": "click | set_field: user_info_submitted: true"
         }
       ]
     },
     {
       "lifecycle_event": "app_start",
       "id": "app_start_home_screen_tour",
-      "priority": 6,
+      "priority": 7,
       "condition_list": [
         "!@fields.home_screen_tour_viewed && @fields._app_skin ==\"weekly_workshop\" && @fields.user_mode"
       ],
