@@ -81,8 +81,8 @@
     {
       "name": "answer_list_3",
       "value": [
-        "name: individual | text: First | image:plh_images/workshop_modes/guide_2/wave.svg",
-        "name: together | text: Second| image:plh_images/workshop_modes/guide_1/wave.svg"
+        "name: individual | text: First | image:plh_images/workshop_modes/individual/wave.svg",
+        "name: together | text: Second| image:plh_images/workshop_modes/individual/wave.svg"
       ],
       "type": "set_variable",
       "_nested_name": "answer_list_3"
