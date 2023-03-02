@@ -279,7 +279,7 @@ export class AppComponent {
     if (location.hostname === "localhost" && !environment.production) {
       const isUserMode = this.templateFieldService.getField("user_mode");
       if (isUserMode !== false) {
-        this.templateFieldService.setField("user_mode", "true");
+        this.templateFieldService.setField("user_mode", "false");
       }
     }
   }
