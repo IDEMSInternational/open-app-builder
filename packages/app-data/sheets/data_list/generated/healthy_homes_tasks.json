@@ -16,10 +16,10 @@
           "eng": "What is a clean house?"
         },
         "text": {
-          "eng": "Keeping our house and the area around it clean, will keep us healthy!  We should all have safe places to live free of litter, as well as human and animal waste."
+          "eng": "Keeping our house and the area around it clean, will keep us healthy. We should all have safe places to live free of litter, as well as human and animal waste."
         }
       },
-      "text": "Keeping our house and the area around it clean, will keep us healthy!  We should all have safe places to live free of litter, as well as human and animal waste.",
+      "text": "Keeping our house and the area around it clean, will keep us healthy. We should all have safe places to live free of litter, as well as human and animal waste.",
       "completed_field": "healthy_homes_what_completed"
     },
     {
@@ -35,11 +35,10 @@
           "eng": "How do you keep your house clean?"
         },
         "text": {
-          "eng": "Make sure you clean your compound regularly. Children’s stool should be thrown in the toilet, and animal waste and litter removed.\r\n\r\nUse water and detergent to clean where you can."
+          "eng": "Make sure you clean your compound regularly. Children’s stool should be thrown in the toilet, and animal waste and litter removed.\r\n\r\nUse water and detergent to clean the floor and walls where you can."
         }
       },
-      "text": "Make sure you clean your compound regularly. Children’s stool should be thrown in the toilet, and animal waste and litter removed.\r\n\r\nUse water and detergent to clean where you can.",
-      "sample illustration": "Would be good to have a visual here of sweeping and if possible the disposal of child faeces",
+      "text": "Make sure you clean your compound regularly. Children’s stool should be thrown in the toilet, and animal waste and litter removed.\r\n\r\nUse water and detergent to clean the floor and walls where you can.",
       "reference_link_title": "Baby WASH Programming. UNICEF; 2020.",
       "reference_link": "www.unicef.org/esa/reports/baby-wash-programming",
       "completed_field": "healthy_homes_how_completed"
@@ -57,10 +56,10 @@
           "eng": "More tips to keeping a clean home!"
         },
         "text": {
-          "eng": "* Get rid of pests in your house (they often carry disease).\r\n* Protect food and throw garbage in a covered pit - flies like garbage!\r\n* Mosquitoes like to live in still water, such as in open containers and puddles. Cover or empty any still water in your home to keep mosquitoes away.\r\n."
+          "eng": "* Get rid of pests in your house by sweeping, washing and drying up damp places regularly.\r\n* Protect food and throw garbage in a covered pit - flies like garbage!\r\n*Mosquitoes like to live in still water, such as in open containers and puddles. Cover or empty any still water in your home to keep mosquitoes away.\r\n.\n."
         }
       },
-      "text": "* Get rid of pests in your house (they often carry disease).\r\n* Protect food and throw garbage in a covered pit - flies like garbage!\r\n* Mosquitoes like to live in still water, such as in open containers and puddles. Cover or empty any still water in your home to keep mosquitoes away.\r\n.",
+      "text": "* Get rid of pests in your house by sweeping, washing and drying up damp places regularly.\r\n* Protect food and throw garbage in a covered pit - flies like garbage!\r\n*Mosquitoes like to live in still water, such as in open containers and puddles. Cover or empty any still water in your home to keep mosquitoes away.\r\n.\n.",
       "reference_link_title": "Baby WASH Programming. UNICEF; 2020.",
       "reference_link": "www.unicef.org/esa/reports/baby-wash-programming",
       "completed_field": "healthy_homes_tips_completed"
