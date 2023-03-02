@@ -69,7 +69,7 @@
     {
       "type": "declare_global_constant",
       "name": "individual_image",
-      "value": "plh_images/workshop_modes/guide_2/wave.svg",
+      "value": "plh_images/workshop_modes/individual/wave.svg",
       "_translations": {
         "value": {}
       },
