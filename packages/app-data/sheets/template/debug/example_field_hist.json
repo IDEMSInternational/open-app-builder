@@ -68,30 +68,6 @@
       "_nested_name": "list_separator_2"
     },
     {
-      "name": "now",
-      "value": "@calc(timestamp())",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "now",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@calc(timestamp())",
-            "matchedExpression": "@calc(timestamp())",
-            "type": "calc",
-            "fieldName": "timestamp()"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@calc(timestamp())": [
-          "value"
-        ]
-      }
-    },
-    {
       "name": "update_history",
       "value": "!!(@fields.@local.response_history_field)",
       "_translations": {
@@ -158,10 +134,10 @@
           "action_id": "set_field",
           "args": [
             "@local.last_response_timestamp_field",
-            "@local.now"
+            "@calc(timestamp())"
           ],
-          "_raw": "changed | set_field: @local.last_response_timestamp_field: @local.now",
-          "_cleaned": "changed | set_field: @local.last_response_timestamp_field: @local.now"
+          "_raw": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
+          "_cleaned": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())"
         }
       ],
       "condition": "!@local.update_history",
@@ -304,39 +280,39 @@
               ],
               "1": [
                 {
-                  "fullExpression": "@local.now",
-                  "matchedExpression": "@local.now",
-                  "type": "local",
-                  "fieldName": "now"
+                  "fullExpression": "@calc(timestamp())",
+                  "matchedExpression": "@calc(timestamp())",
+                  "type": "calc",
+                  "fieldName": "timestamp()"
                 }
               ]
             },
             "_raw": [
               {
-                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @local.now",
+                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
                 "matchedExpression": "@local.last_response_timestamp_field",
                 "type": "local",
                 "fieldName": "last_response_timestamp_field"
               },
               {
-                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @local.now",
-                "matchedExpression": "@local.now",
-                "type": "local",
-                "fieldName": "now"
+                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
+                "matchedExpression": "@calc(timestamp())",
+                "type": "calc",
+                "fieldName": "timestamp()"
               }
             ],
             "_cleaned": [
               {
-                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @local.now",
+                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
                 "matchedExpression": "@local.last_response_timestamp_field",
                 "type": "local",
                 "fieldName": "last_response_timestamp_field"
               },
               {
-                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @local.now",
-                "matchedExpression": "@local.now",
-                "type": "local",
-                "fieldName": "now"
+                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
+                "matchedExpression": "@calc(timestamp())",
+                "type": "calc",
+                "fieldName": "timestamp()"
               }
             ]
           }
@@ -381,7 +357,7 @@
           "action_list.3._raw",
           "action_list.3._cleaned"
         ],
-        "@local.now": [
+        "@calc(timestamp())": [
           "action_list.3.args.1",
           "action_list.3._raw",
           "action_list.3._cleaned"
@@ -434,10 +410,10 @@
           "action_id": "set_field",
           "args": [
             "@local.last_response_timestamp_field",
-            "@local.now"
+            "@calc(timestamp())"
           ],
-          "_raw": "changed | set_field: @local.last_response_timestamp_field: @local.now",
-          "_cleaned": "changed | set_field: @local.last_response_timestamp_field: @local.now"
+          "_raw": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
+          "_cleaned": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())"
         }
       ],
       "condition": "@local.update_history",
@@ -708,39 +684,39 @@
               ],
               "1": [
                 {
-                  "fullExpression": "@local.now",
-                  "matchedExpression": "@local.now",
-                  "type": "local",
-                  "fieldName": "now"
+                  "fullExpression": "@calc(timestamp())",
+                  "matchedExpression": "@calc(timestamp())",
+                  "type": "calc",
+                  "fieldName": "timestamp()"
                 }
               ]
             },
             "_raw": [
               {
-                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @local.now",
+                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
                 "matchedExpression": "@local.last_response_timestamp_field",
                 "type": "local",
                 "fieldName": "last_response_timestamp_field"
               },
               {
-                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @local.now",
-                "matchedExpression": "@local.now",
-                "type": "local",
-                "fieldName": "now"
+                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
+                "matchedExpression": "@calc(timestamp())",
+                "type": "calc",
+                "fieldName": "timestamp()"
               }
             ],
             "_cleaned": [
               {
-                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @local.now",
+                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
                 "matchedExpression": "@local.last_response_timestamp_field",
                 "type": "local",
                 "fieldName": "last_response_timestamp_field"
               },
               {
-                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @local.now",
-                "matchedExpression": "@local.now",
-                "type": "local",
-                "fieldName": "now"
+                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
+                "matchedExpression": "@calc(timestamp())",
+                "type": "calc",
+                "fieldName": "timestamp()"
               }
             ]
           }
@@ -810,7 +786,7 @@
           "action_list.2._raw",
           "action_list.2._cleaned"
         ],
-        "@local.now": [
+        "@calc(timestamp())": [
           "action_list.3.args.1",
           "action_list.3._raw",
           "action_list.3._cleaned"
