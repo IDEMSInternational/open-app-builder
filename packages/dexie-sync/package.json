@@ -13,7 +13,7 @@
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.4",
     "postgres-migrations": "^5.2.0",
-    "sequelize": "^6.6.4",
+    "sequelize": "^6.29.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {
@@ -25,7 +25,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4",
     "sequelize-cli": "^6.2.0",
-    "ts-node": "^10.0.0",
+    "ts-node": "^10.8.0",
     "ts-node-dev": "^1.1.8",
     "ws": "^7.5.1"
   }

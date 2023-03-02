@@ -1,3 +1,4 @@
+import { resolve } from "path";
 import type { IDeploymentWorkflows } from "./workflow.model";
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
@@ -19,6 +20,10 @@ const workflows: IDeploymentWorkflows = {
         name: "sync_sheets",
         function: async ({ tasks, workflow }) =>
           tasks.workflow.runWorkflow({ name: "sync_sheets", parent: workflow }),
+      },
+      {
+        name: "copy_to_app",
+        function: async ({ tasks }) => tasks.appData.copyDeploymentDataToApp(),
       },
       {
         name: "sync_watch",
@@ -65,38 +70,31 @@ const workflows: IDeploymentWorkflows = {
           tasks.translate.apply({ inputFolder: workflow.sheets_process.output }),
       },
       {
-        name: "translations_copy_for_export",
+        name: "sheets_post_process",
         function: async ({ tasks, workflow }) =>
-          tasks.translate.copyContentForTranslators({
-            inputFolder: workflow.sheets_process.output,
-          }),
-      },
-      {
-        name: "app_copy_sheets",
-        function: async ({ tasks, workflow, config }) =>
-          tasks.appData.copy({
-            localSheetsFolder: workflow.translations_apply.output.sheets,
-            localTranslationsFolder: workflow.translations_apply.output.strings,
-            appSheetsFolder: config.app_data.sheets_output_path,
-            appTranslationsFolder: config.app_data.translations_output_path,
+          tasks.appData.postProcessSheets({
+            sourceSheetsFolder: workflow.translations_apply.output.sheets,
+            sourceTranslationsFolder: workflow.translations_apply.output.strings,
           }),
       },
     ],
   },
   sync_assets: {
-    label: "Sync Latest Assets",
+    // label: "Sync Latest Assets",
     steps: [
       {
         name: "assets_dl",
         function: async ({ tasks, config }) =>
-          tasks.gdrive.download({ folderId: config.google_drive.assets_folder_id }),
+          tasks.gdrive.download({
+            folderId: config.google_drive.assets_folder_id,
+            // filterFn: config.google_drive.assets_filter_function,
+          }),
       },
       {
-        name: "app_copy_add_data",
-        function: async ({ tasks, workflow, config }) =>
-          tasks.appData.copy({
-            localAssetsFolder: workflow.assets_dl.output,
-            appAssetsFolder: config.app_data.assets_output_path,
+        name: "assets_post_process",
+        function: async ({ tasks, workflow }) =>
+          tasks.appData.postProcessAssets({
+            sourceAssetsFolder: workflow.assets_dl.output,
           }),
       },
     ],
@@ -113,14 +111,21 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "app_copy_data",
         function: async ({ tasks, workflow, config }) => {
+          // HACK - skipping translations step but still use previously processed strings
+          const sourceTranslationsFolder = resolve(
+            config.workflows.task_cache_path,
+            "tasks",
+            "translate",
+            "outputs",
+            "strings"
+          );
           // copy files
-          tasks.appData.copy({
-            localSheetsFolder: workflow.sheets_process.output,
-            appSheetsFolder: config.app_data.sheets_output_path,
-            // TODO - add support for assets
-            // localAssetsFolder : config.local_drive.assets_path,
-            // appAssetsFolder: config.app_data.assets_output_path,
+          tasks.appData.postProcessSheets({
+            sourceSheetsFolder: workflow.sheets_process.output,
+            sourceTranslationsFolder,
           });
+          // TODO - add support for assets
+          tasks.appData.copyDeploymentDataToApp();
         },
       },
       {
@@ -133,9 +138,18 @@ const workflows: IDeploymentWorkflows = {
               const output = tasks.template.process({
                 inputFolder: config.local_drive.sheets_path,
               });
-              tasks.appData.copy({
-                localSheetsFolder: output,
-                appSheetsFolder: config.app_data.sheets_output_path,
+              // HACK - skipping translations step but still use previously processed strings
+              const sourceTranslationsFolder = resolve(
+                config.workflows.task_cache_path,
+                "tasks",
+                "translate",
+                "outputs",
+                "strings"
+              );
+              // copy files
+              tasks.appData.postProcessSheets({
+                sourceSheetsFolder: output,
+                sourceTranslationsFolder,
               });
             },
           }),
@@ -159,6 +173,7 @@ const workflows: IDeploymentWorkflows = {
                   parent: workflow,
                   args: ["--skip-download"],
                 });
+                tasks.appData.copyDeploymentDataToApp();
               }
             },
           });

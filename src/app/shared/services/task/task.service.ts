@@ -68,13 +68,12 @@ export class TaskService extends AsyncServiceBase {
           return highestPriority.number < taskGroup.number ? highestPriority : taskGroup;
         }
       );
-      if (highestPriorityTaskGroup.id !== previousHighlightedTaskGroup) {
-        this.templateFieldService.setField(
-          this.highlightedTaskFieldName,
-          highestPriorityTaskGroup.id
-        );
+      const newHighlightedTaskGroup = highestPriorityTaskGroup.id;
+      if (newHighlightedTaskGroup !== previousHighlightedTaskGroup) {
+        this.templateFieldService.setField(this.highlightedTaskFieldName, newHighlightedTaskGroup);
       }
-      console.log("[HIGHLIGHTED TASK GROUP] - ", highestPriorityTaskGroup.id);
+      console.log("[HIGHLIGHTED TASK GROUP] - ", newHighlightedTaskGroup);
+      return [previousHighlightedTaskGroup, newHighlightedTaskGroup];
     }
   }
 
@@ -118,7 +117,7 @@ export class TaskService extends AsyncServiceBase {
       }
     });
     // Re-evaluate highlighted task group
-    this.evaluateHighlightedTaskGroup();
+    return this.evaluateHighlightedTaskGroup();
   }
 
   /**
