@@ -380,6 +380,50 @@
     {
       "type": "set_field",
       "name": "app_launch_history",
+      "value": "@fields.app_launch_history ;  @local.now",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@fields.app_launch_history",
+      "exclude_from_translation": true,
+      "_nested_name": "app_launch_history",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.app_launch_history ;  @local.now",
+            "matchedExpression": "@fields.app_launch_history",
+            "type": "fields",
+            "fieldName": "app_launch_history"
+          },
+          {
+            "fullExpression": "@fields.app_launch_history ;  @local.now",
+            "matchedExpression": "@local.now",
+            "type": "local",
+            "fieldName": "now"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "@fields.app_launch_history",
+            "matchedExpression": "@fields.app_launch_history",
+            "type": "fields",
+            "fieldName": "app_launch_history"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.app_launch_history": [
+          "value",
+          "condition"
+        ],
+        "@local.now": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "set_field",
+      "name": "app_launch_history",
       "value": "@local.now",
       "_translations": {
         "value": {}
@@ -410,52 +454,6 @@
           "value"
         ],
         "!@fields.app_launch_history": [
-          "condition"
-        ]
-      }
-    },
-    {
-      "type": "set_field",
-      "name": "app_launch_history",
-      "value": "@local.app_last_launch ;  @local.now",
-      "_translations": {
-        "value": {}
-      },
-      "condition": "@fields.app_launch_history",
-      "exclude_from_translation": true,
-      "_nested_name": "app_launch_history",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.app_last_launch ;  @local.now",
-            "matchedExpression": "@local.app_last_launch",
-            "type": "local",
-            "fieldName": "app_last_launch"
-          },
-          {
-            "fullExpression": "@local.app_last_launch ;  @local.now",
-            "matchedExpression": "@local.now",
-            "type": "local",
-            "fieldName": "now"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@fields.app_launch_history",
-            "matchedExpression": "@fields.app_launch_history",
-            "type": "fields",
-            "fieldName": "app_launch_history"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.app_last_launch": [
-          "value"
-        ],
-        "@local.now": [
-          "value"
-        ],
-        "@fields.app_launch_history": [
           "condition"
         ]
       }
