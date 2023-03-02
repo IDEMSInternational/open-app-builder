@@ -143,19 +143,6 @@ const APP_AUTHENTICATION_DEFAULTS = {
   signInTemplate: "sign_in",
 };
 
-type IAppLaunchAction = {
-  type: "template_popup" | "tour_start";
-  value: string;
-};
-/** Define app-specific startup tasks and logic */
-const APP_INITIALISATION_DEFAULTS = {
-  /** Define initial launch tasks to be performed before main content loaded */
-  app_first_launch_actions: [] as IAppLaunchAction[],
-
-  // TODO - better if refactored to more general handler with condition to filter
-  // for things such as app_first_launch, app_version_first_launch etc. and pass data fields
-};
-
 const FEEDBACK_MODULE_DEFAULTS = {
   /** Buttons that will be made available during feedback mode when context events triggered (e.g. right-click) */
   buttons: [
@@ -176,10 +163,20 @@ const FEEDBACK_MODULE_DEFAULTS = {
   selected_text_field: "_feedback_selected_text",
 };
 
+/** Specify strategy for automatically checking for available updates and prompting the user to apply any */
+const APP_UPDATES = {
+  /** Check for updates and prompt the user in-app to apply available updates */
+  enabled: false,
+  /** If an update is available, force the user to download and apply it.
+   * Uses "Immediate" update strategy if true, otherwise uses "Flexible" update strategy
+   * Further details at https://developer.android.com/guide/playcore/in-app-updates
+   */
+  forceUpdate: false,
+};
+
 const APP_CONFIG = {
   APP_FIELDS,
   APP_HEADER_DEFAULTS,
-  APP_INITIALISATION_DEFAULTS,
   APP_AUTHENTICATION_DEFAULTS,
   APP_LANGUAGES,
   APP_ROUTE_DEFAULTS,
@@ -188,6 +185,7 @@ const APP_CONFIG = {
   APP_STRINGS,
   APP_SKINS,
   APP_THEMES,
+  APP_UPDATES,
   DYNAMIC_PREFIXES,
   FEEDBACK_MODULE_DEFAULTS,
   FIELD_PREFIX,
