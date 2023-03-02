@@ -295,6 +295,15 @@
           "name": "workshop_activity",
           "rows": [
             {
+              "name": "activity_image",
+              "value": "plh_images/workshop_modes/individual/explain.svg",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "listen.workshop_activity.activity_image"
+            },
+            {
               "name": "intro_title",
               "value": "Why @local.workshop_data.title?",
               "_translations": {

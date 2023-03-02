@@ -2264,8 +2264,8 @@
     "md5Checksum": "73fa7ff26e4700c9ca379f473781de74",
     "themeVariations": {
       "professional": {
-        "size_kb": 51.1,
-        "md5Checksum": "79573ea144de581deeebf42da2d6888c"
+        "size_kb": 52.5,
+        "md5Checksum": "636e5c4f220204a4d3869f670f57f91b"
       }
     }
   },
@@ -2314,8 +2314,8 @@
     "md5Checksum": "d174a38918eb7e8d3da081239eabc711",
     "themeVariations": {
       "professional": {
-        "size_kb": 49.2,
-        "md5Checksum": "9f68864937ce4d22f3fafcc51db47d3a"
+        "size_kb": 37.4,
+        "md5Checksum": "63614c1d91b37cc93388b1f8dbd1bea7"
       }
     }
   },
@@ -2484,8 +2484,8 @@
     "md5Checksum": "e47046d8530f041f4b5e5a669ee8aa20",
     "themeVariations": {
       "professional": {
-        "size_kb": 24.8,
-        "md5Checksum": "543caf49b28e3dd89cdfe7fc71cdb1a2"
+        "size_kb": 21.2,
+        "md5Checksum": "5cfeb47f0d56169785e4fa2d69ed13fa"
       }
     }
   },
@@ -2664,8 +2664,8 @@
     "md5Checksum": "61bf31672e88435f3293b3e6ff164689",
     "themeVariations": {
       "professional": {
-        "size_kb": 56.2,
-        "md5Checksum": "bcd98f1f4ea655b63785b30e7fa3f987"
+        "size_kb": 57,
+        "md5Checksum": "12e56e240b8a92617559e8f92ad5ff8f"
       }
     }
   },
@@ -2812,8 +2812,8 @@
     "md5Checksum": "be953cb1a0f7dae1956aaf76862c3faa",
     "themeVariations": {
       "professional": {
-        "size_kb": 24.9,
-        "md5Checksum": "ceaed2757884b74d53bf85ae86f3079d"
+        "size_kb": 20.7,
+        "md5Checksum": "7fb1a763780e827c5a939adab2fcbe5a"
       }
     }
   },
@@ -2954,8 +2954,8 @@
     "md5Checksum": "1019da9152557bade59a3a1c852c377b",
     "themeVariations": {
       "professional": {
-        "size_kb": 53,
-        "md5Checksum": "bba4198030e6efac29377a3603c8afad"
+        "size_kb": 33,
+        "md5Checksum": "77de144e20d06a6da8d51e620c7e8616"
       }
     }
   },
@@ -2996,8 +2996,8 @@
     "md5Checksum": "c1361f5a07783b5901d6f4a7fce13210",
     "themeVariations": {
       "professional": {
-        "size_kb": 36.3,
-        "md5Checksum": "270b0f948ee51b3776890ea7f8cd65de"
+        "size_kb": 32,
+        "md5Checksum": "6b55c48aa2d51ead1b92cfdbd2c3fd2f"
       }
     }
   },
@@ -3126,8 +3126,8 @@
     "md5Checksum": "4d74cd467f5f816face62deadc63aaf6",
     "themeVariations": {
       "professional": {
-        "size_kb": 39.4,
-        "md5Checksum": "7e2cd3324df554df7f281ea3e35dd97a"
+        "size_kb": 41.2,
+        "md5Checksum": "ac18a9c7b31a23ae7f667418832acd5d"
       }
     }
   },
@@ -3266,8 +3266,8 @@
     "md5Checksum": "fe8e84f3f2b124d7a71a30dea507f9e7",
     "themeVariations": {
       "professional": {
-        "size_kb": 24.3,
-        "md5Checksum": "3e029ab5e5902c86f82b524642197aa1"
+        "size_kb": 23,
+        "md5Checksum": "f9c326c18bb27635730c7fafbf5aa8cc"
       }
     }
   },
@@ -3298,8 +3298,8 @@
     "md5Checksum": "3298c27b7df419a0fc43a59d22b37b81",
     "themeVariations": {
       "professional": {
-        "size_kb": 10.2,
-        "md5Checksum": "e51a8c6f8c9cc740964a66214bda6593"
+        "size_kb": 10.4,
+        "md5Checksum": "e6e75db632b0178ac0692ec4ecac2431"
       }
     }
   },
@@ -3498,8 +3498,8 @@
     "md5Checksum": "26faa69fe9cf041c664a3e57a1a0e096",
     "themeVariations": {
       "professional": {
-        "size_kb": 24.8,
-        "md5Checksum": "6442ade0a5565c45edf56cee74e03f04"
+        "size_kb": 51.3,
+        "md5Checksum": "6df9ca0c1475938765f9be70e62d36cd"
       }
     }
   },
@@ -3678,8 +3678,8 @@
     "md5Checksum": "fc0219dbf6b39c6fe7eeaa36cc40c4cc",
     "themeVariations": {
       "professional": {
-        "size_kb": 10,
-        "md5Checksum": "bfa1481824dc135d25527d63175fb4df"
+        "size_kb": 10.3,
+        "md5Checksum": "cd80f6c372affa44bd8fc927d0e9b701"
       }
     }
   },
@@ -3815,6 +3815,16 @@
       }
     }
   },
+  "plh_images/workshop_modes/individual/explain.svg": {
+    "size_kb": 3.4,
+    "md5Checksum": "563c9632f379e12af0159f39256dcd81",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 8.9,
+        "md5Checksum": "b12fb7be38a646102df3443a85e8939d"
+      }
+    }
+  },
   "plh_images/workshop_modes/individual/final/cup.svg": {
     "size_kb": 10.3,
     "md5Checksum": "54b84af382b03708d44ad0846572fe13",
@@ -3822,6 +3832,16 @@
       "professional": {
         "size_kb": 35.6,
         "md5Checksum": "e725449da44a72eb62888d6913435dbc"
+      }
+    }
+  },
+  "plh_images/workshop_modes/individual/final/explain.svg": {
+    "size_kb": 3.4,
+    "md5Checksum": "563c9632f379e12af0159f39256dcd81",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 28.7,
+        "md5Checksum": "dab4ef8540105aa2cecb73ec7c9bf178"
       }
     }
   },
@@ -3842,6 +3862,16 @@
       "professional": {
         "size_kb": 33.3,
         "md5Checksum": "a8192fe36173916dd69010ac8bb9cd53"
+      }
+    }
+  },
+  "plh_images/workshop_modes/individual/final/read.svg": {
+    "size_kb": 3.7,
+    "md5Checksum": "37004d531d300bcba599761b8fde65c3",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 38.6,
+        "md5Checksum": "06f84c13446845bb5ee1d01b7b62b442"
       }
     }
   },
@@ -3932,10 +3962,6 @@
         "md5Checksum": "68b253c4aee3d6462e09dbe40ddffacb"
       }
     }
-  },
-  "plh_images/workshop_modes/individual/thumbs_up.svg": {
-    "size_kb": 3.4,
-    "md5Checksum": "563c9632f379e12af0159f39256dcd81"
   },
   "plh_images/workshop_modes/individual/wave.svg": {
     "size_kb": 3,
