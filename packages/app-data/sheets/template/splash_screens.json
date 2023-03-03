@@ -4,6 +4,12 @@
   "status": "released",
   "rows": [
     {
+      "name": "number",
+      "value": 210,
+      "type": "set_variable",
+      "_nested_name": "number"
+    },
+    {
       "type": "animated_slides",
       "action_list": [
         {
@@ -45,7 +51,7 @@
                 {
                   "type": "image",
                   "name": "image_1",
-                  "value": "plh_images/first_app_launch/frustrated_shadow.svg",
+                  "value": "plh_images/first_app_launch/frustrated.svg",
                   "_translations": {
                     "value": {}
                   },
@@ -92,7 +98,7 @@
                 {
                   "type": "image",
                   "name": "image_2",
-                  "value": "plh_images/first_app_launch/loving_parent_shadow.svg",
+                  "value": "plh_images/first_app_launch/loving_parent.svg",
                   "_translations": {
                     "value": {}
                   },
@@ -139,7 +145,7 @@
                 {
                   "type": "image",
                   "name": "image_3",
-                  "value": "plh_images/first_app_launch/parent_group_shadow.svg",
+                  "value": "plh_images/first_app_launch/parent_phone.svg",
                   "_translations": {
                     "value": {}
                   },
@@ -153,16 +159,29 @@
             {
               "type": "text",
               "name": "slogan_3",
-              "value": "Join the 210 million parents who have used our resources",
+              "value": "Join the @local.number million parents who have used our resources",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "parameter_list": {
                 "style": "large center"
               },
-              "_nested_name": "animated_slides.animated_section.slogan_3"
+              "_nested_name": "animated_slides.animated_section.slogan_3",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Join the @local.number million parents who have used our resources",
+                    "matchedExpression": "@local.number",
+                    "type": "local",
+                    "fieldName": "number"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.number": [
+                  "value"
+                ]
+              }
             }
           ],
           "name": "animated_section",
