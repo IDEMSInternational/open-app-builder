@@ -5,14 +5,33 @@
   "rows": [
     {
       "type": "title",
-      "value": "Language",
+      "name": "title",
+      "value": "@global.language",
       "_translations": {
+<<<<<<< HEAD
         "value": {
           "tz_sw": true
         }
+=======
+        "value": {}
+>>>>>>> eb8d718842096b50b8deb07ccc92593d71c9d5bd
       },
-      "name": "title",
-      "_nested_name": "title"
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.language",
+            "matchedExpression": "@global.language",
+            "type": "global",
+            "fieldName": "language"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.language": [
+          "value"
+        ]
+      }
     },
     {
       "name": "language_select_options",

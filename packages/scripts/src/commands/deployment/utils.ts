@@ -1,4 +1,4 @@
-import fs, { statSync } from "fs-extra";
+import fs, { readdirSync, statSync } from "fs-extra";
 import path from "path";
 import { Logger } from "../../utils";
 import chalk from "chalk";
@@ -14,14 +14,15 @@ export function loadDeploymentJson(
   workspacePath: string,
   options: {
     isRetryCheck?: boolean;
-  } = {}
+    exitOnError?: boolean;
+  } = { exitOnError: true }
 ): IDeploymentConfigJson {
   // Load deployment
   const tsPath = path.join(workspacePath, "config.ts");
   const jsonPath = path.join(workspacePath, "config.json");
   if (!fs.existsSync(tsPath)) {
     Logger.error({ msg1: "Config file not found", msg2: tsPath, logOnly: true });
-    process.exit(1);
+    if (options.exitOnError) process.exit(1);
   }
 
   // Check if config fully up-to-date, return json if so
@@ -39,7 +40,7 @@ export function loadDeploymentJson(
   // Otherwise attempt compile the ts to json and retry (exiting if already retry)
   if (options.isRetryCheck) {
     Logger.error({ msg1: "Failed to compile", msg2: tsPath, logOnly: true });
-    process.exit(1);
+    if (options.exitOnError) process.exit(1);
   } else {
     const folderName = path.dirname(tsPath).split(path.sep).pop();
     console.log(chalk.gray(`Compiling: ${folderName}`));

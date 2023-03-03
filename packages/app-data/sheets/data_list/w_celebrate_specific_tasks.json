@@ -11,13 +11,6 @@
       "template": "w_celebrate_think"
     },
     {
-      "id": "survey_activity",
-      "group": "survey_activity",
-      "individual": true,
-      "together": false,
-      "template": "w_celebrate_survey_activity"
-    },
-    {
       "id": "talk_1",
       "group": "talk_1",
       "individual": false,

@@ -8,16 +8,15 @@
       "individual": true,
       "together": true,
       "priority": 11,
+      "story_id": "rape",
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.rape.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.rape.title"
         }
       }
     },
@@ -26,16 +25,15 @@
       "individual": true,
       "together": true,
       "priority": 13,
+      "story_id": "violence",
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.violence.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.violence.title"
         }
       }
     },

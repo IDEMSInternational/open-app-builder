@@ -7,30 +7,36 @@
     {
       "id": "w_praise",
       "number_of_challenges": "3",
-      "question_text_happy": "Did you have any challenges when trying to praise your teen?",
+      "question_text": "Did you have any challenges when trying to praise your teen?",
       "_translations": {
-        "question_text_happy": {},
-        "question_text_ok_sad": {},
-        "text_challenge_1": {},
+        "question_text": {
+          "tz_sw": true
+        },
+        "text_challenge_1": {
+          "tz_sw": true
+        },
         "reply_challenge_1": {
           "tz_sw": true
         },
-        "text_challenge_2": {},
+        "text_challenge_2": {
+          "tz_sw": true
+        },
         "reply_challenge_2": {
           "tz_sw": true
         },
-        "text_challenge_3": {},
+        "text_challenge_3": {
+          "tz_sw": true
+        },
         "reply_challenge_3": {
           "tz_sw": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
-        "question_text_happy": {
+        "question_text": {
           "eng": "Did you have any challenges when trying to praise your teen?"
-        },
-        "question_text_ok_sad": {
-          "eng": "What was difficult for you about praising your teen?"
         },
         "text_challenge_1": {
           "eng": "I forgot to do it."
@@ -54,7 +60,6 @@
           "eng": "Challenges other parents experience:"
         }
       },
-      "question_text_ok_sad": "What was difficult for you about praising your teen?",
       "text_challenge_1": "I forgot to do it.",
       "reply_challenge_1": "It can sometimes be hard to remember to praise our teens. Next time you spend one-on-one time with your teen, try and think of one thing you can praise them for. You can even say, “Thank you for spending time with me!”.",
       "text_challenge_2": "My teen was surprised or suspicious.",
@@ -66,7 +71,7 @@
     {
       "id": "w_stress",
       "number_of_challenges": "5",
-      "question_text_happy": "Did you experience any of these challenges when sharing how you feel with your teen?",
+      "question_text": "Did you have any challenges when sharing how you feel with your teen?",
       "_translations": {
         "question_text_happy": {
           "tz_sw": true
@@ -104,14 +109,13 @@
         "reply_challenge_5": {
           "tz_sw": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
-        "question_text_happy": {
-          "eng": "Did you experience any of these challenges when sharing how you feel with your teen?"
-        },
-        "question_text_ok_sad": {
-          "eng": "What was difficult for you about sharing how you feel with your teen?"
+        "question_text": {
+          "eng": "Did you have any challenges when sharing how you feel with your teen?"
         },
         "text_challenge_1": {
           "eng": "I was afraid my teen would think I was weak."
@@ -147,7 +151,6 @@
           "eng": "Challenges other parents experience:"
         }
       },
-      "question_text_ok_sad": "What was difficult for you about sharing how you feel with your teen?",
       "text_challenge_1": "I was afraid my teen would think I was weak.",
       "reply_challenge_1": "Sharing feelings, especially the difficult ones, sets an important example for your teen! It actually makes everyone in the family stronger, because you can understand and support each other better.",
       "text_challenge_2": "I felt uncomfortable about naming specific difficult feelings.",
@@ -164,7 +167,7 @@
       "id": "w_money",
       "number_of_challenges": "4",
       "button_go_to_template_3_a": "lib_act_w_money",
-      "question_text_happy": "Did you have any challenges when making your budget together?",
+      "question_text": "Did you have any challenges when making your budget together?",
       "_translations": {
         "question_text_happy": {
           "tz_sw": true
@@ -197,14 +200,13 @@
         "reply_challenge_4": {
           "tz_sw": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
-        "question_text_happy": {
+        "question_text": {
           "eng": "Did you have any challenges when making your budget together?"
-        },
-        "question_text_ok_sad": {
-          "eng": "What whas difficult for you about making your budget together?"
         },
         "text_challenge_1": {
           "eng": "I did not want to tell my family how much I earn."
@@ -237,7 +239,6 @@
           "eng": "Challenges other parents experience:"
         }
       },
-      "question_text_ok_sad": "What whas difficult for you about making your budget together?",
       "text_challenge_1": "I did not want to tell my family how much I earn.",
       "reply_challenge_1": "You don’t have to reveal the exact amount you earn; you could give an estimate. You could say, “In this household, we have @global.currency@global.monthly_income_estimate every month” rather than, “I make @global.currency@global.monthly_income_precise”.",
       "text_challenge_2": "When budgeting, we could not agree on what should fall under needs and what should fall under wants.",
@@ -252,7 +253,7 @@
     {
       "id": "w_rules",
       "number_of_challenges": "6",
-      "question_text_happy": "Did you have any challenges when trying to make a rule together?",
+      "question_text": "Did you have any challenges when trying to make a rule together?",
       "_translations": {
         "question_text_happy": {
           "tz_sw": true
@@ -296,14 +297,13 @@
         "reply_challenge_6": {
           "tz_sw": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
-        "question_text_happy": {
+        "question_text": {
           "eng": "Did you have any challenges when trying to make a rule together?"
-        },
-        "question_text_ok_sad": {
-          "eng": "What was difficult for you about making a rule with your teen?"
         },
         "text_challenge_1": {
           "eng": "My teen and I could not agree on a rule."
@@ -345,7 +345,6 @@
           "eng": "Challenges other parents experience:"
         }
       },
-      "question_text_ok_sad": "What was difficult for you about making a rule with your teen?",
       "text_challenge_1": "My teen and I could not agree on a rule.",
       "reply_challenge_1": "Think about whether the rule is reasonable. Can your teen follow it? When making rules as a family, it helps to think about your teen, how old they are, and what is important to them.",
       "text_challenge_2": "My teen felt it was unfair that they have to follow the rule while I don’t have to follow it.",
@@ -363,7 +362,7 @@
     {
       "id": "w_consequence",
       "number_of_challenges": "7",
-      "question_text_happy": "Did you have any challenges when trying to introduce a consequence together?",
+      "question_text": "Did you have any challenges when trying to introduce a consequence together?",
       "_translations": {
         "question_text_happy": {
           "tz_sw": true
@@ -413,14 +412,13 @@
         "reply_challenge_7": {
           "tz_sw": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
-        "question_text_happy": {
+        "question_text": {
           "eng": "Did you have any challenges when trying to introduce a consequence together?"
-        },
-        "question_text_ok_sad": {
-          "eng": "What was difficult for you about introducing a consequence with your teen?"
         },
         "text_challenge_1": {
           "eng": "I got very angry when my teen broke the rule."
@@ -468,7 +466,6 @@
           "eng": "Challenges other parents experience:"
         }
       },
-      "question_text_ok_sad": "What was difficult for you about introducing a consequence with your teen?",
       "text_challenge_1": "I got very angry when my teen broke the rule.",
       "reply_challenge_1": "When we take a pause before responding, it helps us to calm down and respond better. \n\nNext time your teen makes you angry, try to take a pause first. Even a few deep breaths can make a big difference!",
       "text_challenge_2": "My teen got very angry with me after I gave the consequence.",
@@ -490,10 +487,11 @@
       "number_of_challenges": "5",
       "button_go_to_template_1_a": "lib_act_w_solve",
       "button_go_to_template_2_a": "lib_act_w_solve",
-      "question_text_happy": "Did you experience any challenges when trying to resolve the problem with your teen?",
+      "question_text": "Did you have any challenges when trying to resolve the problem with your teen?",
       "_translations": {
-        "question_text_happy": {},
-        "question_text_ok_sad": {},
+        "question_text": {
+          "tz_sw": true
+        },
         "text_challenge_1": {
           "tz_sw": true
         },
@@ -530,14 +528,13 @@
         "reply_challenge_5": {
           "tz_sw": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
-        "question_text_happy": {
-          "eng": "Did you experience any challenges when trying to resolve the problem with your teen?"
-        },
-        "question_text_ok_sad": {
-          "eng": "What was difficult for you when trying to resolve the problem with your teen?"
+        "question_text": {
+          "eng": "Did you have any challenges when trying to resolve the problem with your teen?"
         },
         "text_challenge_1": {
           "eng": "I forgot the steps of problem solving."
@@ -579,7 +576,6 @@
           "eng": "Challenges other parents experience:"
         }
       },
-      "question_text_ok_sad": "What was difficult for you when trying to resolve the problem with your teen?",
       "text_challenge_1": "I forgot the steps of problem solving.",
       "reply_challenge_1": "It takes some practice to use all four steps of problem solving. Next time a problem comes up, look at the four steps together with your teen - it will make a big difference!",
       "button_text_1_a": "Four steps of problem solving",
@@ -597,10 +593,11 @@
     {
       "id": "w_safe",
       "number_of_challenges": "6",
-      "question_text_happy": "Did you experience any challenges when trying to map risks and support with your teen?",
+      "question_text": "Did you have any challenges when trying to map risks and support with your teen?",
       "_translations": {
-        "question_text_happy": {},
-        "question_text_ok_sad": {},
+        "question_text": {
+          "tz_sw": true
+        },
         "text_challenge_1": {
           "tz_sw": true
         },
@@ -637,14 +634,13 @@
         "reply_challenge_6": {
           "tz_sw": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
-        "question_text_happy": {
-          "eng": "Did you experience any challenges when trying to map risks and support with your teen?"
-        },
-        "question_text_ok_sad": {
-          "eng": "What was difficult for you when trying to map risks and support with your teen?"
+        "question_text": {
+          "eng": "Did you have any challenges when trying to map risks and support with your teen?"
         },
         "text_challenge_1": {
           "eng": "My teen and I disagreed on which areas and online activities were unsafe."
@@ -686,7 +682,6 @@
           "eng": "Challenges other parents experience:"
         }
       },
-      "question_text_ok_sad": "What was difficult for you when trying to map risks and support with your teen?",
       "text_challenge_1": "My teen and I disagreed on which areas and online activities were unsafe.",
       "reply_challenge_1": "Well done for trying the activity! When we listen to our teenagers, even if we disagree, we learn to understand their thinking. Try and find time to do the activity again - try to really listen and show you understand them before sharing your thoughts.",
       "text_challenge_2": "My teen identified the house of someone I trust as unsafe. I was shocked and did not know what to do.",
@@ -705,10 +700,12 @@
       "id": "w_crisis",
       "number_of_challenges": "3",
       "button_go_to_template_1_a": "lib_act_w_solve",
-      "question_text_happy": "Did you experience any challenges when trying to prepare for a possible crisis with your teen?",
+      "button_go_to_template_1_b": "parent_centre_help",
+      "question_text": "Did you have any challenges when trying to prepare for a possible crisis with your teen?",
       "_translations": {
-        "question_text_happy": {},
-        "question_text_ok_sad": {},
+        "question_text": {
+          "tz_sw": true
+        },
         "text_challenge_1": {
           "tz_sw": true
         },
@@ -731,14 +728,13 @@
         "reply_challenge_3": {
           "tz_sw": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
-        "question_text_happy": {
-          "eng": "Did you experience any challenges when trying to prepare for a possible crisis with your teen?"
-        },
-        "question_text_ok_sad": {
-          "eng": "What was difficult for you when trying to prepare for a possible crisis with your teen?"
+        "question_text": {
+          "eng": "Did you have any challenges when trying to prepare for a possible crisis with your teen?"
         },
         "text_challenge_1": {
           "eng": "My teen told me that something serious happened to them and I did not know how to handle it."
@@ -768,7 +764,6 @@
           "eng": "Challenges other parents experience:"
         }
       },
-      "question_text_ok_sad": "What was difficult for you when trying to prepare for a possible crisis with your teen?",
       "text_challenge_1": "My teen told me that something serious happened to them and I did not know how to handle it.",
       "reply_challenge_1": "Praise your teen for telling you; that is not easy to do! Remember, you can use all the skills you picked from your toolbox: Take a pause, use the four steps of problem solving, and reach out to get the support you and your teen need!",
       "button_text_1_a": "@data.workshop.w_solve.tools",

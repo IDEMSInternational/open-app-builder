@@ -76,15 +76,6 @@
       "completed": "@fields.task_w_celebrate_think_completed"
     },
     {
-      "id": "survey_activity",
-      "group": "survey_activity",
-      "individual": true,
-      "together": false,
-      "template": "w_celebrate_survey_activity",
-      "completed_field": "task_w_celebrate_survey_activity_completed",
-      "completed": "@fields.task_w_celebrate_survey_activity_completed"
-    },
-    {
       "id": "talk_1",
       "group": "talk_1",
       "individual": false,

@@ -109,6 +109,17 @@
                 }
               ]
             },
+            "glitchtip": {
+              "sourceMap": {
+                "scripts": true,
+                "styles": false,
+                "hidden": true,
+                "vendor": false
+              }
+            },
+            "preview": {
+              "sourceMap": true
+            },
             "ci": {
               "budgets": [
                 {

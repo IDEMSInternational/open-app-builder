@@ -1,5 +1,6 @@
 import { resolve } from "path";
 import type { IDeploymentWorkflows } from "./workflow.model";
+
 /** Default workflows made available to all deployments */
 const workflows: IDeploymentWorkflows = {
   // Copy app-data assets directly to src assets
