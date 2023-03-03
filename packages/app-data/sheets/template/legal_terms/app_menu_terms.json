@@ -120,7 +120,7 @@
       "_translations": {
         "value": {}
       },
-      "_nested_name": "text_1_4",
+      "_nested_name": "text_1_3",
       "_dynamicFields": {
         "value": [
           {
@@ -146,12 +146,12 @@
     },
     {
       "type": "text",
-      "name": "text_1_5",
+      "name": "text_1_4",
       "value": "Please read these @global.terms_and_conditions carefully. By downloading or using the app, you agree that you have read, understood, and accepted the @global.terms_and_conditions contained below.",
       "_translations": {
         "value": {}
       },
-      "_nested_name": "text_1_5",
+      "_nested_name": "text_1_4",
       "_dynamicFields": {
         "value": [
           {
@@ -182,7 +182,7 @@
       "_translations": {
         "value": {}
       },
-      "_nested_name": "text_1_6",
+      "_nested_name": "text_1_5",
       "_dynamicFields": {
         "value": [
           {
@@ -234,7 +234,7 @@
       "_translations": {
         "value": {}
       },
-      "_nested_name": "text_2_1",
+      "_nested_name": "text_2",
       "_dynamicFields": {
         "value": [
           {

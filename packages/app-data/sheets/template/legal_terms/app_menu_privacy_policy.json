@@ -109,16 +109,7 @@
       "_translations": {
         "value": {}
       },
-      "_nested_name": "text_0_3"
-    },
-    {
-      "type": "text",
-      "name": "text_0_4",
-      "value": "The digital @global.parent_app is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.parent_app team’).",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "text_0_4",
+      "_nested_name": "text_0_3",
       "_dynamicFields": {
         "value": [
           {
@@ -149,7 +140,7 @@
       "_translations": {
         "value": {}
       },
-      "_nested_name": "text_0_5",
+      "_nested_name": "text_0_4",
       "_dynamicFields": {
         "value": [
           {
@@ -180,7 +171,7 @@
       "_translations": {
         "value": {}
       },
-      "_nested_name": "text_0_6",
+      "_nested_name": "text_0_5",
       "_dynamicFields": {
         "value": [
           {
@@ -412,7 +403,7 @@
     {
       "type": "text",
       "name": "text_1_3_2",
-      "value": "This app does not use these “cookies” explicitly.  However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. In particular, the app integrates GlitchTip and Matomo analytics as well as Firebase authentication software.",
+      "value": "This app does not use these “cookies” explicitly. However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. In particular, the app integrates Matomo analytics and Firebase authentication software.",
       "_translations": {
         "value": {}
       },
@@ -556,7 +547,7 @@
     {
       "type": "text",
       "name": "text_2_2",
-      "value": "You agree that your personal information may be shared with third parties such as researchers and partners involved in the improvement or implementation of the app including those outside your country. Prior to the disclosure of information with research partners we will make anonymous to the extent possible and where appropriate, information such as chosen username and email address (where collected).  In reading and accepting this @global.privacy_policy , you permit us to use your anonymized data in published research.",
+      "value": "You agree that your personal information may be shared with third parties such as researchers and partners involved in the improvement or implementation of the app including those outside your country. Prior to the disclosure of information with research partners we will make anonymous to the extent possible and where appropriate information such as chosen username and email address (where collected). In reading and accepting this @global.privacy_policy, you permit us to use your anonymized data in published research.",
       "_translations": {
         "value": {}
       },
@@ -564,7 +555,7 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "You agree that your personal information may be shared with third parties such as researchers and partners involved in the improvement or implementation of the app including those outside your country. Prior to the disclosure of information with research partners we will make anonymous to the extent possible and where appropriate, information such as chosen username and email address (where collected).  In reading and accepting this @global.privacy_policy , you permit us to use your anonymized data in published research.",
+            "fullExpression": "You agree that your personal information may be shared with third parties such as researchers and partners involved in the improvement or implementation of the app including those outside your country. Prior to the disclosure of information with research partners we will make anonymous to the extent possible and where appropriate information such as chosen username and email address (where collected). In reading and accepting this @global.privacy_policy, you permit us to use your anonymized data in published research.",
             "matchedExpression": "@global.privacy_policy",
             "type": "global",
             "fieldName": "privacy_policy"
@@ -830,57 +821,6 @@
       }
     },
     {
-      "name": "link_3_5_text",
-      "value": "GlitchTip",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true,
-      "type": "set_variable",
-      "_nested_name": "link_3_5_text"
-    },
-    {
-      "type": "tile_component",
-      "name": "link_3_5",
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "go_to_url",
-          "args": [
-            "https",
-            "//glitchtip.com/legal/privacy"
-          ],
-          "_raw": "click | go_to_url: https://glitchtip.com/legal/privacy",
-          "_cleaned": "click | go_to_url: https://glitchtip.com/legal/privacy"
-        }
-      ],
-      "exclude_from_translation": true,
-      "parameter_list": {
-        "first_line_text": "@local.link_3_5_text",
-        "left_icon_src": "globe-outline",
-        "style": "button_tile",
-        "icon_src": "chevron-forward-outline"
-      },
-      "_nested_name": "link_3_5",
-      "_dynamicFields": {
-        "parameter_list": {
-          "first_line_text": [
-            {
-              "fullExpression": "@local.link_3_5_text",
-              "matchedExpression": "@local.link_3_5_text",
-              "type": "local",
-              "fieldName": "link_3_5_text"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.link_3_5_text": [
-          "parameter_list.first_line_text"
-        ]
-      }
-    },
-    {
       "type": "text",
       "name": "text_3_4",
       "value": "This app may contain links to other sites that are not covered by this @global.privacy_policy. If you click on a third-party link, you will be directed to that site. This @global.privacy_policy applies only to the processing of your information by this app. It does not address, and we are not responsible for, the privacy, information, or other practices of any third parties, including any third party operating any site or service to which this app links to.",
@@ -1027,6 +967,10 @@
     {
       "type": "tile_component",
       "name": "link_7_1",
+      "value": "ico",
+      "_translations": {
+        "value": {}
+      },
       "action_list": [
         {
           "trigger": "click",
