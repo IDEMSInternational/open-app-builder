@@ -96,14 +96,6 @@
       },
       "element": "plh-navigation-bar",
       "route": "template/parent_centre"
-    },
-    {
-      "type": "step",
-      "message_text": "Have a look around! Wherever you start, just the fact you are here shows you care.",
-      "_translations": {
-        "message_text": {}
-      },
-      "route": "template/home_screen"
     }
   ],
   "_xlsxPath": "global_modular/tours/home_screen_modular_tour.xlsx"
