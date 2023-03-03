@@ -2,6 +2,7 @@
   "flow_type": "template",
   "flow_name": "app_menu_privacy_policy",
   "status": "released",
+  "flow_subtype": "legal_terms",
   "rows": [
     {
       "type": "title",
