@@ -3277,19 +3277,17 @@
       }
     }
   },
-  "plh_images/workshops/w_self_care/guide_1/recognise.svg": {
+  "plh_images/workshops/w_self_care/individual/recognise.svg": {
     "size_kb": 6.9,
-    "md5Checksum": "49344911ea9c25685fffed47728dadbc"
+    "md5Checksum": "a84438c8ff0caacc78cc353e0f6b22f9",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 34.7,
+        "md5Checksum": "d49ac09071734c0db1a5b7bf3c900a71"
+      }
+    }
   },
-  "plh_images/workshops/w_self_care/guide_1/reward.svg": {
-    "size_kb": 8,
-    "md5Checksum": "a8992712e9a949e14bdaaf03f40575f4"
-  },
-  "plh_images/workshops/w_self_care/guide_2/recognise.svg": {
-    "size_kb": 6.9,
-    "md5Checksum": "a84438c8ff0caacc78cc353e0f6b22f9"
-  },
-  "plh_images/workshops/w_self_care/guide_2/reward.svg": {
+  "plh_images/workshops/w_self_care/individual/reward.svg": {
     "size_kb": 7.9,
     "md5Checksum": "681910eca8201998e670a0f3caffa9e7",
     "themeVariations": {
