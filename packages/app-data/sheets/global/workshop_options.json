@@ -89,7 +89,9 @@
       "name": "user_name_default",
       "value": "Awesome parent",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
