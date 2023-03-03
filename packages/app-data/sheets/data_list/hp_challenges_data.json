@@ -9,8 +9,12 @@
       "number_of_challenges": "3",
       "question_text": "Did you have any challenges when trying to praise your teen?",
       "_translations": {
-        "question_text": {},
-        "text_challenge_1": {},
+        "question_text": {
+          "tz_sw": true
+        },
+        "text_challenge_1": {
+          "tz_sw": true
+        },
         "reply_challenge_1": {
           "tz_sw": true,
           "za_af": true,
@@ -19,7 +23,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "text_challenge_2": {},
+        "text_challenge_2": {
+          "tz_sw": true
+        },
         "reply_challenge_2": {
           "tz_sw": true,
           "za_af": true,
@@ -28,7 +34,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "text_challenge_3": {},
+        "text_challenge_3": {
+          "tz_sw": true
+        },
         "reply_challenge_3": {
           "tz_sw": true,
           "za_af": true,
@@ -37,7 +45,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -78,7 +88,9 @@
       "number_of_challenges": "5",
       "question_text": "Did you have any challenges when sharing how you feel with your teen?",
       "_translations": {
-        "question_text": {},
+        "question_text": {
+          "tz_sw": true
+        },
         "text_challenge_1": {
           "tz_sw": true,
           "za_af": true,
@@ -159,7 +171,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -290,7 +304,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -447,7 +463,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -632,7 +650,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -707,7 +727,9 @@
       "button_go_to_template_2_a": "lib_act_w_solve",
       "question_text": "Did you have any challenges when trying to resolve the problem with your teen?",
       "_translations": {
-        "question_text": {},
+        "question_text": {
+          "tz_sw": true
+        },
         "text_challenge_1": {
           "tz_sw": true,
           "za_af": true,
@@ -804,7 +826,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -869,7 +893,9 @@
       "number_of_challenges": "6",
       "question_text": "Did you have any challenges when trying to map risks and support with your teen?",
       "_translations": {
-        "question_text": {},
+        "question_text": {
+          "tz_sw": true
+        },
         "text_challenge_1": {
           "tz_sw": true,
           "za_af": true,
@@ -966,7 +992,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
@@ -1033,7 +1061,9 @@
       "button_go_to_template_1_b": "parent_centre_help",
       "question_text": "Did you have any challenges when trying to prepare for a possible crisis with your teen?",
       "_translations": {
-        "question_text": {},
+        "question_text": {
+          "tz_sw": true
+        },
         "text_challenge_1": {
           "tz_sw": true,
           "za_af": true,
@@ -1091,7 +1121,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "top_text": {}
+        "top_text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "question_text": {
