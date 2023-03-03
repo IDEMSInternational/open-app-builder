@@ -4,13 +4,11 @@ export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
   name: string;
 
-  google_drive?: {
+  google_drive: {
     /** ID of folder containing app sheets, as seen in end of url */
     sheets_folder_id: string;
     /** ID of folder containing app assets, as seen in end of url */
     assets_folder_id: string;
-    /** cache of downloaded gdrive files. Default `./cache/gdrive` */
-    cache_path?: string;
     /** generated gdrive access token. Default `packages/scripts/config/token.json` */
     auth_token_path?: string;
     /** filter function applied to sheets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */
@@ -18,13 +16,13 @@ export interface IDeploymentConfig {
     /** filter function applied to assets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */
     assets_filter_function?: (gdriveEntry: IGdriveEntry) => boolean;
   };
-  local_drive?: {
+  local_drive: {
     /** Location to sheets folder if working from local drive instead of google */
     sheets_path: string;
     /** Location to assets folder if working from local drive instead of google */
     assets_path: string;
   };
-  android?: {
+  android: {
     /** Location of source android assets (splash and launcher source images). */
     icon_asset_path?: string;
     splash_asset_path?: string;
@@ -33,31 +31,33 @@ export interface IDeploymentConfig {
   };
   /** Optional override of any provided constants from data-models/constants */
   app_config: IAppConfig;
-  app_data?: {
+  app_data: {
     /** Folder to populate processed content. Default `packages/app-data` */
-    output_path?: string;
-    /** partially compiled sheets for use in repopulation. Default `./cache/converter` */
-    converter_cache_path?: string;
+    output_path: string;
     /** filter function that receives converted flows. Default `(flow)=>true`*/
-    sheets_filter_function?: (flow: IFlowTypeBase) => boolean;
+    sheets_filter_function: (flow: IFlowTypeBase) => boolean;
     /** filter function that receives basic file info such as relativePath and size. Default `(fileEntry)=>true`*/
-    assets_filter_function?: (fileEntry: IContentsEntry) => boolean;
+    assets_filter_function: (fileEntry: IContentsEntry) => boolean;
   };
-  translations?: {
+  git: {
+    /** Url of external git repo to store content */
+    content_repo?: string;
+    /** Current tag of content for release */
+    content_tag_latest?: string;
+  };
+  translations: {
     /** List of all language codes to include. Default null (includes all) */
     filter_language_codes?: string[];
     /** generated output of list of strings to translate. Default `./app_data/translations_source/source_strings` */
     source_strings_path?: string;
     /** translated string for import. Default `./app_data/translations_source/translated_strings */
     translated_strings_path?: string;
-    /** generated output cache. Default `./cache/translations_source` */
-    output_cache_path?: string;
   };
-  workflows?: {
+  workflows: {
     /** path to custom workflow files to include */
-    custom_ts_files?: string[];
+    custom_ts_files: string[];
     /** path for task working directory. Default `./tasks` */
-    task_cache_path?: string;
+    task_cache_path: string;
   };
   /** 3rd party integration for logging services */
   error_logging?: {
@@ -65,9 +65,9 @@ export interface IDeploymentConfig {
     dsn: string;
   };
   /** track whether deployment processed from default config */
-  _validated?: boolean;
+  _validated: boolean;
   /** version number added from scripts to recompile on core changes */
-  _version?: number;
+  _version: number;
   /** track parent config  */
   _parent_config?: Partial<IDeploymentConfig & { _workspace_path: string }>;
 }
@@ -83,7 +83,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     assets_filter_function: (gdriveEntry) => true,
   },
   android: {},
-  app_config: {} as any, // populated by `getDefaultAppConstants()`,,
+  app_config: {} as any, // populated by `getDefaultAppConstants()`,
   local_drive: {
     assets_path: "./assets",
     sheets_path: "./sheets",
@@ -91,7 +91,6 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
   app_data: {
     // TODO - change to local ./app-data folder once git repos in use
     output_path: "packages/app-data",
-    converter_cache_path: "./cache/converter",
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
   },
@@ -99,14 +98,15 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     filter_language_codes: null,
     source_strings_path: "./app_data/translations_source/source_strings",
     translated_strings_path: "./app_data/translations_source/translated_strings",
-    output_cache_path: "./cache/translations",
   },
   workflows: {
     custom_ts_files: [],
     task_cache_path: "./tasks",
   },
+  git: {},
   _validated: true,
   _parent_config: null,
+  _version: 1.0,
 };
 
 /** Duplicate type defintion from scripts (TODO - find better way to share) */

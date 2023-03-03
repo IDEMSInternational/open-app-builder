@@ -198,10 +198,10 @@
           "tz_sw": true
         }
       },
-      "condition": "@fields.@local.workshop_hp_mood == \"happy\" || !@fields.@local.workshop_hp_mood",
       "parameter_list": {
         "style": "emphasised"
       },
+<<<<<<< HEAD
       "_nested_name": "question_text_happy",
       "_dynamicFields": {
         "condition": [
@@ -262,6 +262,9 @@
           "condition"
         ]
       }
+=======
+      "_nested_name": "question_text_happy"
+>>>>>>> eb8d718842096b50b8deb07ccc92593d71c9d5bd
     },
     {
       "name": "text_challenge_1",

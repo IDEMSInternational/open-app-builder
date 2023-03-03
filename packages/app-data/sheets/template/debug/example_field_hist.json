@@ -1,0 +1,897 @@
+{
+  "flow_type": "template",
+  "flow_subtype": "debug",
+  "flow_name": "example_field_hist",
+  "status": "released",
+  "rows": [
+    {
+      "name": "response_history_field",
+      "value": "debug_response_history",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "response_history_field"
+    },
+    {
+      "name": "last_response_field",
+      "value": "debug_last_response",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "last_response_field"
+    },
+    {
+      "name": "last_response_timestamp_field",
+      "value": "debug_last_response_timestamp",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "last_response_timestamp_field"
+    },
+    {
+      "name": "last_response_version_field",
+      "value": "debug_last_response_version",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "last_response_version_field"
+    },
+    {
+      "name": "version_field",
+      "value": "debug_version",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "version_field"
+    },
+    {
+      "name": "list_separator_1",
+      "value": ";",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "list_separator_1"
+    },
+    {
+      "name": "list_separator_2",
+      "value": "|",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "list_separator_2"
+    },
+    {
+      "name": "update_history",
+      "value": "!!(@fields.@local.response_history_field)",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "update_history",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "!!(@fields.@local.response_history_field)",
+            "matchedExpression": "@local.response_history_field",
+            "type": "local",
+            "fieldName": "response_history_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.response_history_field": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "slider",
+      "name": "slider_1",
+      "value": "@fields.@local.last_response_field",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.response_history_field",
+            "start"
+          ],
+          "_raw": "changed | set_field: @local.response_history_field: start",
+          "_cleaned": "changed | set_field: @local.response_history_field: start"
+        },
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.last_response_field",
+            "this.value"
+          ],
+          "_raw": "changed | set_field: @local.last_response_field: @local.slider_1",
+          "_cleaned": "changed | set_field: @local.last_response_field: @local.slider_1"
+        },
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.last_response_version_field",
+            "@fields.@local.version_field"
+          ],
+          "_raw": "changed | set_field: @local.last_response_version_field: @fields.@local.version_field",
+          "_cleaned": "changed | set_field: @local.last_response_version_field: @fields.@local.version_field"
+        },
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.last_response_timestamp_field",
+            "@calc(timestamp())"
+          ],
+          "_raw": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
+          "_cleaned": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())"
+        }
+      ],
+      "condition": "!@local.update_history",
+      "_nested_name": "slider_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.@local.last_response_field",
+            "matchedExpression": "@local.last_response_field",
+            "type": "local",
+            "fieldName": "last_response_field"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.response_history_field",
+                  "matchedExpression": "@local.response_history_field",
+                  "type": "local",
+                  "fieldName": "response_history_field"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: start",
+                "matchedExpression": "@local.response_history_field",
+                "type": "local",
+                "fieldName": "response_history_field"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: start",
+                "matchedExpression": "@local.response_history_field",
+                "type": "local",
+                "fieldName": "response_history_field"
+              }
+            ]
+          },
+          "1": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.last_response_field",
+                  "matchedExpression": "@local.last_response_field",
+                  "type": "local",
+                  "fieldName": "last_response_field"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: @local.last_response_field: @local.slider_1",
+                "matchedExpression": "@local.last_response_field",
+                "type": "local",
+                "fieldName": "last_response_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.last_response_field: @local.slider_1",
+                "matchedExpression": "@local.slider_1",
+                "type": "local",
+                "fieldName": "slider_1"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: @local.last_response_field: @local.slider_1",
+                "matchedExpression": "@local.last_response_field",
+                "type": "local",
+                "fieldName": "last_response_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.last_response_field: @local.slider_1",
+                "matchedExpression": "@local.slider_1",
+                "type": "local",
+                "fieldName": "slider_1"
+              }
+            ]
+          },
+          "2": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.last_response_version_field",
+                  "matchedExpression": "@local.last_response_version_field",
+                  "type": "local",
+                  "fieldName": "last_response_version_field"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@fields.@local.version_field",
+                  "matchedExpression": "@local.version_field",
+                  "type": "local",
+                  "fieldName": "version_field"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: @local.last_response_version_field: @fields.@local.version_field",
+                "matchedExpression": "@local.last_response_version_field",
+                "type": "local",
+                "fieldName": "last_response_version_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.last_response_version_field: @fields.@local.version_field",
+                "matchedExpression": "@local.version_field",
+                "type": "local",
+                "fieldName": "version_field"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: @local.last_response_version_field: @fields.@local.version_field",
+                "matchedExpression": "@local.last_response_version_field",
+                "type": "local",
+                "fieldName": "last_response_version_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.last_response_version_field: @fields.@local.version_field",
+                "matchedExpression": "@local.version_field",
+                "type": "local",
+                "fieldName": "version_field"
+              }
+            ]
+          },
+          "3": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.last_response_timestamp_field",
+                  "matchedExpression": "@local.last_response_timestamp_field",
+                  "type": "local",
+                  "fieldName": "last_response_timestamp_field"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@calc(timestamp())",
+                  "matchedExpression": "@calc(timestamp())",
+                  "type": "calc",
+                  "fieldName": "timestamp()"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
+                "matchedExpression": "@local.last_response_timestamp_field",
+                "type": "local",
+                "fieldName": "last_response_timestamp_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
+                "matchedExpression": "@calc(timestamp())",
+                "type": "calc",
+                "fieldName": "timestamp()"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
+                "matchedExpression": "@local.last_response_timestamp_field",
+                "type": "local",
+                "fieldName": "last_response_timestamp_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
+                "matchedExpression": "@calc(timestamp())",
+                "type": "calc",
+                "fieldName": "timestamp()"
+              }
+            ]
+          }
+        },
+        "condition": [
+          {
+            "fullExpression": "!@local.update_history",
+            "matchedExpression": "!@local.update_history",
+            "type": "local",
+            "fieldName": "update_history"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.last_response_field": [
+          "value",
+          "action_list.1.args.0",
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ],
+        "@local.response_history_field": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.slider_1": [
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ],
+        "@local.last_response_version_field": [
+          "action_list.2.args.0",
+          "action_list.2._raw",
+          "action_list.2._cleaned"
+        ],
+        "@local.version_field": [
+          "action_list.2.args.1",
+          "action_list.2._raw",
+          "action_list.2._cleaned"
+        ],
+        "@local.last_response_timestamp_field": [
+          "action_list.3.args.0",
+          "action_list.3._raw",
+          "action_list.3._cleaned"
+        ],
+        "@calc(timestamp())": [
+          "action_list.3.args.1",
+          "action_list.3._raw",
+          "action_list.3._cleaned"
+        ],
+        "!@local.update_history": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "slider",
+      "name": "slider_1",
+      "value": "@fields.@local.last_response_field",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.response_history_field",
+            "@fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field"
+          ],
+          "_raw": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+          "_cleaned": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field"
+        },
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.last_response_field",
+            "this.value"
+          ],
+          "_raw": "changed | set_field: @local.last_response_field: @local.slider_1",
+          "_cleaned": "changed | set_field: @local.last_response_field: @local.slider_1"
+        },
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.last_response_version_field",
+            "@fields.@local.version_field"
+          ],
+          "_raw": "changed | set_field: @local.last_response_version_field: @fields.@local.version_field",
+          "_cleaned": "changed | set_field: @local.last_response_version_field: @fields.@local.version_field"
+        },
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.last_response_timestamp_field",
+            "@calc(timestamp())"
+          ],
+          "_raw": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
+          "_cleaned": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())"
+        }
+      ],
+      "condition": "@local.update_history",
+      "_nested_name": "slider_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.@local.last_response_field",
+            "matchedExpression": "@local.last_response_field",
+            "type": "local",
+            "fieldName": "last_response_field"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.response_history_field",
+                  "matchedExpression": "@local.response_history_field",
+                  "type": "local",
+                  "fieldName": "response_history_field"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                  "matchedExpression": "@local.response_history_field",
+                  "type": "local",
+                  "fieldName": "response_history_field"
+                },
+                {
+                  "fullExpression": "@fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                  "matchedExpression": "@local.list_separator_1",
+                  "type": "local",
+                  "fieldName": "list_separator_1"
+                },
+                {
+                  "fullExpression": "@fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                  "matchedExpression": "@local.last_response_field",
+                  "type": "local",
+                  "fieldName": "last_response_field"
+                },
+                {
+                  "fullExpression": "@fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                  "matchedExpression": "@local.list_separator_2",
+                  "type": "local",
+                  "fieldName": "list_separator_2"
+                },
+                {
+                  "fullExpression": "@fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                  "matchedExpression": "@local.last_response_timestamp_field",
+                  "type": "local",
+                  "fieldName": "last_response_timestamp_field"
+                },
+                {
+                  "fullExpression": "@fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                  "matchedExpression": "@local.list_separator_2",
+                  "type": "local",
+                  "fieldName": "list_separator_2"
+                },
+                {
+                  "fullExpression": "@fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                  "matchedExpression": "@local.version_field",
+                  "type": "local",
+                  "fieldName": "version_field"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                "matchedExpression": "@local.response_history_field",
+                "type": "local",
+                "fieldName": "response_history_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                "matchedExpression": "@local.response_history_field",
+                "type": "local",
+                "fieldName": "response_history_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                "matchedExpression": "@local.list_separator_1",
+                "type": "local",
+                "fieldName": "list_separator_1"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                "matchedExpression": "@local.last_response_field",
+                "type": "local",
+                "fieldName": "last_response_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                "matchedExpression": "@local.list_separator_2",
+                "type": "local",
+                "fieldName": "list_separator_2"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                "matchedExpression": "@local.last_response_timestamp_field",
+                "type": "local",
+                "fieldName": "last_response_timestamp_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                "matchedExpression": "@local.list_separator_2",
+                "type": "local",
+                "fieldName": "list_separator_2"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                "matchedExpression": "@local.version_field",
+                "type": "local",
+                "fieldName": "version_field"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                "matchedExpression": "@local.response_history_field",
+                "type": "local",
+                "fieldName": "response_history_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                "matchedExpression": "@local.response_history_field",
+                "type": "local",
+                "fieldName": "response_history_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                "matchedExpression": "@local.list_separator_1",
+                "type": "local",
+                "fieldName": "list_separator_1"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                "matchedExpression": "@local.last_response_field",
+                "type": "local",
+                "fieldName": "last_response_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                "matchedExpression": "@local.list_separator_2",
+                "type": "local",
+                "fieldName": "list_separator_2"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                "matchedExpression": "@local.last_response_timestamp_field",
+                "type": "local",
+                "fieldName": "last_response_timestamp_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                "matchedExpression": "@local.list_separator_2",
+                "type": "local",
+                "fieldName": "list_separator_2"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.response_history_field: @fields.@local.response_history_field @local.list_separator_1 @fields.@local.last_response_field @local.list_separator_2 @fields.@local.last_response_timestamp_field @local.list_separator_2 @fields.@local.version_field",
+                "matchedExpression": "@local.version_field",
+                "type": "local",
+                "fieldName": "version_field"
+              }
+            ]
+          },
+          "1": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.last_response_field",
+                  "matchedExpression": "@local.last_response_field",
+                  "type": "local",
+                  "fieldName": "last_response_field"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: @local.last_response_field: @local.slider_1",
+                "matchedExpression": "@local.last_response_field",
+                "type": "local",
+                "fieldName": "last_response_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.last_response_field: @local.slider_1",
+                "matchedExpression": "@local.slider_1",
+                "type": "local",
+                "fieldName": "slider_1"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: @local.last_response_field: @local.slider_1",
+                "matchedExpression": "@local.last_response_field",
+                "type": "local",
+                "fieldName": "last_response_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.last_response_field: @local.slider_1",
+                "matchedExpression": "@local.slider_1",
+                "type": "local",
+                "fieldName": "slider_1"
+              }
+            ]
+          },
+          "2": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.last_response_version_field",
+                  "matchedExpression": "@local.last_response_version_field",
+                  "type": "local",
+                  "fieldName": "last_response_version_field"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@fields.@local.version_field",
+                  "matchedExpression": "@local.version_field",
+                  "type": "local",
+                  "fieldName": "version_field"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: @local.last_response_version_field: @fields.@local.version_field",
+                "matchedExpression": "@local.last_response_version_field",
+                "type": "local",
+                "fieldName": "last_response_version_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.last_response_version_field: @fields.@local.version_field",
+                "matchedExpression": "@local.version_field",
+                "type": "local",
+                "fieldName": "version_field"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: @local.last_response_version_field: @fields.@local.version_field",
+                "matchedExpression": "@local.last_response_version_field",
+                "type": "local",
+                "fieldName": "last_response_version_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.last_response_version_field: @fields.@local.version_field",
+                "matchedExpression": "@local.version_field",
+                "type": "local",
+                "fieldName": "version_field"
+              }
+            ]
+          },
+          "3": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.last_response_timestamp_field",
+                  "matchedExpression": "@local.last_response_timestamp_field",
+                  "type": "local",
+                  "fieldName": "last_response_timestamp_field"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@calc(timestamp())",
+                  "matchedExpression": "@calc(timestamp())",
+                  "type": "calc",
+                  "fieldName": "timestamp()"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
+                "matchedExpression": "@local.last_response_timestamp_field",
+                "type": "local",
+                "fieldName": "last_response_timestamp_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
+                "matchedExpression": "@calc(timestamp())",
+                "type": "calc",
+                "fieldName": "timestamp()"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
+                "matchedExpression": "@local.last_response_timestamp_field",
+                "type": "local",
+                "fieldName": "last_response_timestamp_field"
+              },
+              {
+                "fullExpression": "changed | set_field: @local.last_response_timestamp_field: @calc(timestamp())",
+                "matchedExpression": "@calc(timestamp())",
+                "type": "calc",
+                "fieldName": "timestamp()"
+              }
+            ]
+          }
+        },
+        "condition": [
+          {
+            "fullExpression": "@local.update_history",
+            "matchedExpression": "@local.update_history",
+            "type": "local",
+            "fieldName": "update_history"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.last_response_field": [
+          "value",
+          "action_list.0.args.1",
+          "action_list.0._raw",
+          "action_list.0._cleaned",
+          "action_list.1.args.0",
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ],
+        "@local.response_history_field": [
+          "action_list.0.args.0",
+          "action_list.0.args.1",
+          "action_list.0._raw",
+          "action_list.0._raw",
+          "action_list.0._cleaned",
+          "action_list.0._cleaned"
+        ],
+        "@local.list_separator_1": [
+          "action_list.0.args.1",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.list_separator_2": [
+          "action_list.0.args.1",
+          "action_list.0.args.1",
+          "action_list.0._raw",
+          "action_list.0._raw",
+          "action_list.0._cleaned",
+          "action_list.0._cleaned"
+        ],
+        "@local.last_response_timestamp_field": [
+          "action_list.0.args.1",
+          "action_list.0._raw",
+          "action_list.0._cleaned",
+          "action_list.3.args.0",
+          "action_list.3._raw",
+          "action_list.3._cleaned"
+        ],
+        "@local.version_field": [
+          "action_list.0.args.1",
+          "action_list.0._raw",
+          "action_list.0._cleaned",
+          "action_list.2.args.1",
+          "action_list.2._raw",
+          "action_list.2._cleaned"
+        ],
+        "@local.slider_1": [
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ],
+        "@local.last_response_version_field": [
+          "action_list.2.args.0",
+          "action_list.2._raw",
+          "action_list.2._cleaned"
+        ],
+        "@calc(timestamp())": [
+          "action_list.3.args.1",
+          "action_list.3._raw",
+          "action_list.3._cleaned"
+        ],
+        "@local.update_history": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "show_field_response",
+      "value": "last response: @fields.@local.last_response_field",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "show_field_response",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "last response: @fields.@local.last_response_field",
+            "matchedExpression": "@local.last_response_field",
+            "type": "local",
+            "fieldName": "last_response_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.last_response_field": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "show_field_time",
+      "value": "last time: @fields.@local.last_response_timestamp_field",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "show_field_time",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "last time: @fields.@local.last_response_timestamp_field",
+            "matchedExpression": "@local.last_response_timestamp_field",
+            "type": "local",
+            "fieldName": "last_response_timestamp_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.last_response_timestamp_field": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "show_field_version",
+      "value": "last version: @fields.@local.last_response_version_field",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "show_field_version",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "last version: @fields.@local.last_response_version_field",
+            "matchedExpression": "@local.last_response_version_field",
+            "type": "local",
+            "fieldName": "last_response_version_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.last_response_version_field": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "show_history",
+      "value": "history: @fields.@local.response_history_field",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "show_history",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "history: @fields.@local.response_history_field",
+            "matchedExpression": "@local.response_history_field",
+            "type": "local",
+            "fieldName": "response_history_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.response_history_field": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/example_field_history.xlsx"
+}

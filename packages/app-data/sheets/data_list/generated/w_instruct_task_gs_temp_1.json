@@ -187,17 +187,16 @@
       "together": true,
       "priority": 12,
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.neg_instruct.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.neg_instruct.title"
         }
-      }
+      },
+      "story_id": "neg_instruct"
     },
     {
       "id": "read_2",
@@ -205,17 +204,16 @@
       "together": true,
       "priority": 14,
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.pos_instruct.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.pos_instruct.title"
         }
-      }
+      },
+      "story_id": "pos_instruct"
     },
     {
       "id": "try",

@@ -43,7 +43,9 @@
       "id": "private_family_foundation",
       "description": "A private family foundation which wishes to remain anonymous",
       "_translations": {
-        "description": {}
+        "description": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "description": {

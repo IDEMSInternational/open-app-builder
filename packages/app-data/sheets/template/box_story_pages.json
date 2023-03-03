@@ -1,11 +1,11 @@
 {
   "flow_type": "template",
-  "flow_name": "box_content_pages",
+  "flow_name": "box_story_pages",
   "status": "released",
   "rows": [
     {
       "name": "story_id",
-      "value": "w_praise",
+      "value": "praise",
       "_translations": {
         "value": {}
       },
@@ -461,6 +461,299 @@
           "rows": [
             {
               "type": "template",
+              "name": "one_page_only",
+              "value": "box_image",
+              "action_list": [
+                {
+                  "trigger": "uncompleted",
+                  "action_id": "emit",
+                  "args": [
+                    "uncompleted"
+                  ],
+                  "_raw": "uncompleted | emit: uncompleted",
+                  "_cleaned": "uncompleted | emit: uncompleted"
+                },
+                {
+                  "trigger": "completed",
+                  "action_id": "emit",
+                  "args": [
+                    "completed"
+                  ],
+                  "_raw": "completed | emit: completed",
+                  "_cleaned": "completed | emit: completed"
+                }
+              ],
+              "condition": "@local.number_of_pages == 1",
+              "rows": [
+                {
+                  "name": "image_src",
+                  "value": "@data.@local.image_src",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "condition": "!!(@data.@local.image_src)",
+                  "type": "set_variable",
+                  "_nested_name": "items.page_@item.id.one_page_only.image_src",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@data.@local.image_src",
+                        "matchedExpression": "@local.image_src",
+                        "type": "local",
+                        "fieldName": "image_src"
+                      }
+                    ],
+                    "condition": [
+                      {
+                        "fullExpression": "!!(@data.@local.image_src)",
+                        "matchedExpression": "@local.image_src",
+                        "type": "local",
+                        "fieldName": "image_src"
+                      }
+                    ],
+                    "_nested_name": [
+                      {
+                        "fullExpression": "items.page_@item.id.one_page_only.image_src",
+                        "matchedExpression": "@item.id.one_page_only.image_src",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.image_src": [
+                      "value",
+                      "condition"
+                    ],
+                    "@item.id.one_page_only.image_src": [
+                      "_nested_name"
+                    ]
+                  }
+                },
+                {
+                  "name": "text",
+                  "value": "@data.@local.text",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "condition": "!!(@data.@local.text)",
+                  "type": "set_variable",
+                  "_nested_name": "items.page_@item.id.one_page_only.text",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@data.@local.text",
+                        "matchedExpression": "@local.text",
+                        "type": "local",
+                        "fieldName": "text"
+                      }
+                    ],
+                    "condition": [
+                      {
+                        "fullExpression": "!!(@data.@local.text)",
+                        "matchedExpression": "@local.text",
+                        "type": "local",
+                        "fieldName": "text"
+                      }
+                    ],
+                    "_nested_name": [
+                      {
+                        "fullExpression": "items.page_@item.id.one_page_only.text",
+                        "matchedExpression": "@item.id.one_page_only.text",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.text": [
+                      "value",
+                      "condition"
+                    ],
+                    "@item.id.one_page_only.text": [
+                      "_nested_name"
+                    ]
+                  }
+                },
+                {
+                  "name": "dashed_box",
+                  "value": "@data.@local.dashed_box",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "condition": "!!(@data.@local.dashed_box)",
+                  "type": "set_variable",
+                  "_nested_name": "items.page_@item.id.one_page_only.dashed_box",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@data.@local.dashed_box",
+                        "matchedExpression": "@local.dashed_box",
+                        "type": "local",
+                        "fieldName": "dashed_box"
+                      }
+                    ],
+                    "condition": [
+                      {
+                        "fullExpression": "!!(@data.@local.dashed_box)",
+                        "matchedExpression": "@local.dashed_box",
+                        "type": "local",
+                        "fieldName": "dashed_box"
+                      }
+                    ],
+                    "_nested_name": [
+                      {
+                        "fullExpression": "items.page_@item.id.one_page_only.dashed_box",
+                        "matchedExpression": "@item.id.one_page_only.dashed_box",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@local.dashed_box": [
+                      "value",
+                      "condition"
+                    ],
+                    "@item.id.one_page_only.dashed_box": [
+                      "_nested_name"
+                    ]
+                  }
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "nav_buttons",
+                  "value": "nav_buttons",
+                  "rows": [
+                    {
+                      "name": "use_completed_chevron",
+                      "value": true,
+                      "condition": "@local.use_completed_chevron",
+                      "type": "set_variable",
+                      "_nested_name": "items.page_@item.id.one_page_only.nav_buttons.use_completed_chevron",
+                      "_dynamicFields": {
+                        "condition": [
+                          {
+                            "fullExpression": "@local.use_completed_chevron",
+                            "matchedExpression": "@local.use_completed_chevron",
+                            "type": "local",
+                            "fieldName": "use_completed_chevron"
+                          }
+                        ],
+                        "_nested_name": [
+                          {
+                            "fullExpression": "items.page_@item.id.one_page_only.nav_buttons.use_completed_chevron",
+                            "matchedExpression": "@item.id.one_page_only.nav_buttons.use_completed_chevron",
+                            "type": "item",
+                            "fieldName": "id"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@local.use_completed_chevron": [
+                          "condition"
+                        ],
+                        "@item.id.one_page_only.nav_buttons.use_completed_chevron": [
+                          "_nested_name"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "button_completed",
+                      "value": "@global.more_button",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "condition": "@local.use_completed_more",
+                      "type": "set_variable",
+                      "_nested_name": "items.page_@item.id.one_page_only.nav_buttons.button_completed",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@global.more_button",
+                            "matchedExpression": "@global.more_button",
+                            "type": "global",
+                            "fieldName": "more_button"
+                          }
+                        ],
+                        "condition": [
+                          {
+                            "fullExpression": "@local.use_completed_more",
+                            "matchedExpression": "@local.use_completed_more",
+                            "type": "local",
+                            "fieldName": "use_completed_more"
+                          }
+                        ],
+                        "_nested_name": [
+                          {
+                            "fullExpression": "items.page_@item.id.one_page_only.nav_buttons.button_completed",
+                            "matchedExpression": "@item.id.one_page_only.nav_buttons.button_completed",
+                            "type": "item",
+                            "fieldName": "id"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@global.more_button": [
+                          "value"
+                        ],
+                        "@local.use_completed_more": [
+                          "condition"
+                        ],
+                        "@item.id.one_page_only.nav_buttons.button_completed": [
+                          "_nested_name"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "items.page_@item.id.one_page_only.nav_buttons",
+                  "_dynamicFields": {
+                    "_nested_name": [
+                      {
+                        "fullExpression": "items.page_@item.id.one_page_only.nav_buttons",
+                        "matchedExpression": "@item.id.one_page_only.nav_buttons",
+                        "type": "item",
+                        "fieldName": "id"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@item.id.one_page_only.nav_buttons": [
+                      "_nested_name"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "items.page_@item.id.one_page_only",
+              "_dynamicFields": {
+                "condition": [
+                  {
+                    "fullExpression": "@local.number_of_pages == 1",
+                    "matchedExpression": "@local.number_of_pages",
+                    "type": "local",
+                    "fieldName": "number_of_pages"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.page_@item.id.one_page_only",
+                    "matchedExpression": "@item.id.one_page_only",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.number_of_pages": [
+                  "condition"
+                ],
+                "@item.id.one_page_only": [
+                  "_nested_name"
+                ]
+              }
+            },
+            {
+              "type": "template",
               "name": "first_page",
               "value": "box_image",
               "action_list": [
@@ -484,7 +777,7 @@
                   "_cleaned": "completed | set_local: show_page_number: @item.id + 1"
                 }
               ],
-              "condition": "@item.id == 1",
+              "condition": "@item.id == 1 && @local.number_of_pages != 1",
               "rows": [
                 {
                   "name": "image_src",
@@ -759,10 +1052,16 @@
                 },
                 "condition": [
                   {
-                    "fullExpression": "@item.id == 1",
+                    "fullExpression": "@item.id == 1 && @local.number_of_pages != 1",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "@item.id == 1 && @local.number_of_pages != 1",
+                    "matchedExpression": "@local.number_of_pages",
+                    "type": "local",
+                    "fieldName": "number_of_pages"
                   }
                 ],
                 "_nested_name": [
@@ -779,6 +1078,9 @@
                   "action_list.1.args.1",
                   "action_list.1._raw",
                   "action_list.1._cleaned",
+                  "condition"
+                ],
+                "@local.number_of_pages": [
                   "condition"
                 ],
                 "@item.id.first_page": [
@@ -1186,7 +1488,7 @@
                   "_cleaned": "completed | emit: completed"
                 }
               ],
-              "condition": "@item.id == @local.number_of_pages",
+              "condition": "@item.id == @local.number_of_pages && @local.number_of_pages != 1",
               "rows": [
                 {
                   "name": "image_src",
@@ -1358,13 +1660,19 @@
                 },
                 "condition": [
                   {
-                    "fullExpression": "@item.id == @local.number_of_pages",
+                    "fullExpression": "@item.id == @local.number_of_pages && @local.number_of_pages != 1",
                     "matchedExpression": "@item.id",
                     "type": "item",
                     "fieldName": "id"
                   },
                   {
-                    "fullExpression": "@item.id == @local.number_of_pages",
+                    "fullExpression": "@item.id == @local.number_of_pages && @local.number_of_pages != 1",
+                    "matchedExpression": "@local.number_of_pages",
+                    "type": "local",
+                    "fieldName": "number_of_pages"
+                  },
+                  {
+                    "fullExpression": "@item.id == @local.number_of_pages && @local.number_of_pages != 1",
                     "matchedExpression": "@local.number_of_pages",
                     "type": "local",
                     "fieldName": "number_of_pages"
@@ -1387,6 +1695,7 @@
                   "condition"
                 ],
                 "@local.number_of_pages": [
+                  "condition",
                   "condition"
                 ],
                 "@item.id.last_page": [

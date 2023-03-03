@@ -1,4 +1,4 @@
-import weekly_workshop from "./weely_workshop";
+import weekly_workshop from "./weekly_workshop";
 import modular from "./modular";
 import debug from "./debug";
 
