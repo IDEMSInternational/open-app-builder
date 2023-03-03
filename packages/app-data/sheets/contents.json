@@ -159,16 +159,6 @@
       "flow_name": "app_menu",
       "_xlsxPath": "templates/global/navigation_templates.xlsx"
     },
-    "app_menu_privacy_policy": {
-      "flow_type": "template",
-      "flow_name": "app_menu_privacy_policy",
-      "_xlsxPath": "templates/global/navigation_templates.xlsx"
-    },
-    "app_menu_terms": {
-      "flow_type": "template",
-      "flow_name": "app_menu_terms",
-      "_xlsxPath": "templates/global/navigation_templates.xlsx"
-    },
     "debug_nav": {
       "flow_type": "template",
       "flow_name": "debug_nav",
@@ -184,6 +174,18 @@
     "home_screen": {
       "flow_type": "template",
       "flow_name": "home_screen",
+      "_xlsxPath": "templates/global/navigation_templates.xlsx"
+    },
+    "app_menu_privacy_policy": {
+      "flow_type": "template",
+      "flow_name": "app_menu_privacy_policy",
+      "flow_subtype": "legal_terms",
+      "_xlsxPath": "templates/global/navigation_templates.xlsx"
+    },
+    "app_menu_terms": {
+      "flow_type": "template",
+      "flow_name": "app_menu_terms",
+      "flow_subtype": "legal_terms",
       "_xlsxPath": "templates/global/navigation_templates.xlsx"
     },
     "module_card": {

@@ -15,29 +15,17 @@
     "size_kb": 595.7,
     "md5Checksum": "50f727d3eaaf1e7807e935370b7e13ca"
   },
-  "essential_tools/HealthyFamiliesSick.png": {
-    "size_kb": 78.5,
-    "md5Checksum": "37e3b23879285262d9e136263a5acb26"
-  },
-  "essential_tools/Latrines.png": {
-    "size_kb": 124.7,
-    "md5Checksum": "d7fccbcd69d642116c927f984addf93b"
-  },
-  "essential_tools/WaterTreatment.png": {
-    "size_kb": 92.2,
-    "md5Checksum": "81994442f9908d215a4d063f962a78fd"
-  },
   "essential_tools/breastfeeding2_license_needed.png": {
     "size_kb": 82.8,
     "md5Checksum": "cc5e4cb9baa6371531594e13accd4a81"
   },
-  "essential_tools/clean_latrine.png": {
-    "size_kb": 172,
-    "md5Checksum": "3a095e3d3e005436832e8f8b7be8b06a"
-  },
   "essential_tools/cleancontainer.svg": {
     "size_kb": 313.8,
     "md5Checksum": "09604dd04f9544fda0e6316b8f875928"
+  },
+  "essential_tools/clean_latrine.png": {
+    "size_kb": 172,
+    "md5Checksum": "3a095e3d3e005436832e8f8b7be8b06a"
   },
   "essential_tools/eye_pain_license_needed.png": {
     "size_kb": 62.9,
@@ -46,10 +34,6 @@
   "essential_tools/handgerms.svg": {
     "size_kb": 803.5,
     "md5Checksum": "eed26be73bd08438a72a3d7014968252"
-  },
-  "essential_tools/handwash_need.svg": {
-    "size_kb": 289.1,
-    "md5Checksum": "80d62d26a05f54139304fa38e667f759"
   },
   "essential_tools/handwashing2.svg": {
     "size_kb": 526.3,
@@ -62,6 +46,14 @@
   "essential_tools/handwashing_steps.svg": {
     "size_kb": 1139.3,
     "md5Checksum": "1fcd8852457c35cd9314205aafe60fbb"
+  },
+  "essential_tools/handwash_need.svg": {
+    "size_kb": 289.1,
+    "md5Checksum": "80d62d26a05f54139304fa38e667f759"
+  },
+  "essential_tools/HealthyFamiliesSick.png": {
+    "size_kb": 78.5,
+    "md5Checksum": "37e3b23879285262d9e136263a5acb26"
   },
   "essential_tools/healthy_homes.png": {
     "size_kb": 504.3,
@@ -119,6 +111,10 @@
     "size_kb": 200.6,
     "md5Checksum": "40f1cdf2e6f0fdf37a3a06a0304d00dd"
   },
+  "essential_tools/Latrines.png": {
+    "size_kb": 124.7,
+    "md5Checksum": "d7fccbcd69d642116c927f984addf93b"
+  },
   "essential_tools/menstruation2.png": {
     "size_kb": 85.5,
     "md5Checksum": "ed0216a35a516b09bb6f39cf46abf394"
@@ -147,6 +143,18 @@
     "size_kb": 110.5,
     "md5Checksum": "5302030042883ed22b4594af244f43ef"
   },
+  "essential_tools/waterfilter.svg": {
+    "size_kb": 447.5,
+    "md5Checksum": "2f21c0529ab893605915cce2a934c240"
+  },
+  "essential_tools/watergerms.svg": {
+    "size_kb": 477.7,
+    "md5Checksum": "a1d3140cc2496ec49ec1388178926c3d"
+  },
+  "essential_tools/WaterTreatment.png": {
+    "size_kb": 92.2,
+    "md5Checksum": "81994442f9908d215a4d063f962a78fd"
+  },
   "essential_tools/water_filter.png": {
     "size_kb": 30.4,
     "md5Checksum": "be3fbb74b7ee0393b6bc32281ac10aba"
@@ -158,14 +166,6 @@
   "essential_tools/water_treatment_SODIS.png": {
     "size_kb": 199.4,
     "md5Checksum": "fa5d3a43640a44d6427379afd3319640"
-  },
-  "essential_tools/waterfilter.svg": {
-    "size_kb": 447.5,
-    "md5Checksum": "2f21c0529ab893605915cce2a934c240"
-  },
-  "essential_tools/watergerms.svg": {
-    "size_kb": 477.7,
-    "md5Checksum": "a1d3140cc2496ec49ec1388178926c3d"
   },
   "essential_tools/ways_of_treating_water.jpg": {
     "size_kb": 54.4,
