@@ -1272,28 +1272,34 @@
     }
   },
   "plh_images/first_app_launch/frustrated.svg": {
-    "size_kb": 11.9,
-    "md5Checksum": "9a2e9a5b9ccd2827abc842a0043dadb7"
-  },
-  "plh_images/first_app_launch/frustrated_shadow.svg": {
     "size_kb": 12,
-    "md5Checksum": "e1a851ee35268d34d4948a13649b70d0"
+    "md5Checksum": "e1a851ee35268d34d4948a13649b70d0",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 22.5,
+        "md5Checksum": "ca1e5dccb941a194d132e6b65b262147"
+      }
+    }
   },
   "plh_images/first_app_launch/loving_parent.svg": {
-    "size_kb": 864.1,
-    "md5Checksum": "4a88fa5e3141147eaac754f65d17342d"
-  },
-  "plh_images/first_app_launch/loving_parent_shadow.svg": {
     "size_kb": 864.2,
-    "md5Checksum": "6f967d5476582da02692d65983f46d32"
+    "md5Checksum": "6f967d5476582da02692d65983f46d32",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 25.7,
+        "md5Checksum": "d39c926edcbcc3167d11bcfd8be007ff"
+      }
+    }
   },
-  "plh_images/first_app_launch/parent_group.svg": {
-    "size_kb": 8.2,
-    "md5Checksum": "ced4c669fce01f8ba982a61be7b12ae0"
-  },
-  "plh_images/first_app_launch/parent_group_shadow.svg": {
+  "plh_images/first_app_launch/parent_phone.svg": {
     "size_kb": 8.3,
-    "md5Checksum": "0f0c41812fbb43e02a7e4cd6d8ae8fa6"
+    "md5Checksum": "0f0c41812fbb43e02a7e4cd6d8ae8fa6",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 47.6,
+        "md5Checksum": "bf1da0314218601052f705b21bd44b87"
+      }
+    }
   },
   "plh_images/first_app_launch/shield.svg": {
     "size_kb": 2.8,
@@ -3271,19 +3277,17 @@
       }
     }
   },
-  "plh_images/workshops/w_self_care/guide_1/recognise.svg": {
+  "plh_images/workshops/w_self_care/individual/recognise.svg": {
     "size_kb": 6.9,
-    "md5Checksum": "49344911ea9c25685fffed47728dadbc"
+    "md5Checksum": "a84438c8ff0caacc78cc353e0f6b22f9",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 34.7,
+        "md5Checksum": "d49ac09071734c0db1a5b7bf3c900a71"
+      }
+    }
   },
-  "plh_images/workshops/w_self_care/guide_1/reward.svg": {
-    "size_kb": 8,
-    "md5Checksum": "a8992712e9a949e14bdaaf03f40575f4"
-  },
-  "plh_images/workshops/w_self_care/guide_2/recognise.svg": {
-    "size_kb": 6.9,
-    "md5Checksum": "a84438c8ff0caacc78cc353e0f6b22f9"
-  },
-  "plh_images/workshops/w_self_care/guide_2/reward.svg": {
+  "plh_images/workshops/w_self_care/individual/reward.svg": {
     "size_kb": 7.9,
     "md5Checksum": "681910eca8201998e670a0f3caffa9e7",
     "themeVariations": {

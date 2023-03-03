@@ -1030,6 +1030,7 @@
       "id": "w_crisis",
       "number_of_challenges": "3",
       "button_go_to_template_1_a": "lib_act_w_solve",
+      "button_go_to_template_1_b": "parent_centre_help",
       "question_text": "Did you have any challenges when trying to prepare for a possible crisis with your teen?",
       "_translations": {
         "question_text": {},
