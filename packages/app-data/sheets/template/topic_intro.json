@@ -398,13 +398,7 @@
                       "name": "audio_title",
                       "value": "Hear @global.@local.topic_intro_name's message",
                       "_translations": {
-<<<<<<< HEAD
-                        "value": {
-                          "tz_sw": true
-                        }
-=======
                         "value": {}
->>>>>>> eb8d718842096b50b8deb07ccc92593d71c9d5bd
                       },
                       "type": "set_variable",
                       "_nested_name": "listen.workshop_activity.content_box.box_1.audio_title",
@@ -452,13 +446,7 @@
                       "name": "button_1",
                       "value": "Read @global.@local.topic_intro_name's message",
                       "_translations": {
-<<<<<<< HEAD
-                        "value": {
-                          "tz_sw": true
-                        }
-=======
                         "value": {}
->>>>>>> eb8d718842096b50b8deb07ccc92593d71c9d5bd
                       },
                       "action_list": [
                         {
@@ -894,13 +882,7 @@
                   "name": "audio_title",
                   "value": "Hear @global.@local.topic_intro_name's message",
                   "_translations": {
-<<<<<<< HEAD
-                    "value": {
-                      "tz_sw": true
-                    }
-=======
                     "value": {}
->>>>>>> eb8d718842096b50b8deb07ccc92593d71c9d5bd
                   },
                   "type": "set_variable",
                   "_nested_name": "listen.workshop_activity.content_box.audio_title",
@@ -948,13 +930,7 @@
                   "name": "button_1",
                   "value": "Read @global.@local.topic_intro_name's message",
                   "_translations": {
-<<<<<<< HEAD
-                    "value": {
-                      "tz_sw": true
-                    }
-=======
                     "value": {}
->>>>>>> eb8d718842096b50b8deb07ccc92593d71c9d5bd
                   },
                   "action_list": [
                     {

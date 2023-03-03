@@ -117,12 +117,7 @@
           "tz_sw": true
         },
         "text_5": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -294,12 +289,7 @@
       "title": "Safety Amnesty",
       "_translations": {
         "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         },
         "intro_text": {
           "tz_sw": true
@@ -467,20 +457,10 @@
           "tz_sw": true
         },
         "intro_text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         },
         "text_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {

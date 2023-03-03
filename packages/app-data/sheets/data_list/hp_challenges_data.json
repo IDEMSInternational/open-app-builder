@@ -73,10 +73,7 @@
       "number_of_challenges": "5",
       "question_text": "Did you have any challenges when sharing how you feel with your teen?",
       "_translations": {
-        "question_text_happy": {
-          "tz_sw": true
-        },
-        "question_text_ok_sad": {
+        "question_text": {
           "tz_sw": true
         },
         "text_challenge_1": {
@@ -169,10 +166,7 @@
       "button_go_to_template_3_a": "lib_act_w_money",
       "question_text": "Did you have any challenges when making your budget together?",
       "_translations": {
-        "question_text_happy": {
-          "tz_sw": true
-        },
-        "question_text_ok_sad": {
+        "question_text": {
           "tz_sw": true
         },
         "text_challenge_1": {
@@ -255,10 +249,7 @@
       "number_of_challenges": "6",
       "question_text": "Did you have any challenges when trying to make a rule together?",
       "_translations": {
-        "question_text_happy": {
-          "tz_sw": true
-        },
-        "question_text_ok_sad": {
+        "question_text": {
           "tz_sw": true
         },
         "text_challenge_1": {
@@ -364,10 +355,7 @@
       "number_of_challenges": "7",
       "question_text": "Did you have any challenges when trying to introduce a consequence together?",
       "_translations": {
-        "question_text_happy": {
-          "tz_sw": true
-        },
-        "question_text_ok_sad": {
+        "question_text": {
           "tz_sw": true
         },
         "text_challenge_1": {
