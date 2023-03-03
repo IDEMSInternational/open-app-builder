@@ -1,0 +1,24 @@
+name: Docs Spellcheck
+on:
+  pull_request:
+    branches:
+      - master
+    # Only run action if changes have been made
+    # to the documentation or components packages
+    paths:
+      - "documentation/**"
+jobs:
+  build:
+    name: Spellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'yarn'      
+      - run: yarn install --immutable
+      - name: Spellcheck
+        run: yarn lint:docs

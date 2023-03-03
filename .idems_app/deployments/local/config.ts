@@ -1,10 +1,6 @@
-import { IDeploymentConfig } from "data-models";
+import { generateDeploymentConfig } from "scripts";
+const config = generateDeploymentConfig("local");
 
-const config: IDeploymentConfig = {
-  name: "local",
-  app_data:{
-    // NOTE - sheets will be copied directly to app only and ignored from git
-    sheets_output_path:'src/assets/app_data/sheets'
-  }
-};
+ // NOTE - sheets will be copied directly to app only and ignored from git
+config!.app_data!.output_path= "src/assets/app_data"
 export default config;
