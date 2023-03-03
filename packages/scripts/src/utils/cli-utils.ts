@@ -14,10 +14,20 @@ export async function promptOptions<T = any>(
   const res = await inquirer.prompt([{ type: "list", name: "selected", message, choices }]);
   return res.selected as T;
 }
-export async function promptInput(message: string) {
+export async function promptInput(message: string, defaultValue?: string) {
   const name = "inputValue";
-  const res = await inquirer.prompt([{ type: "input", message, name }]);
+  const res = await inquirer.prompt([{ type: "input", message, name, default: defaultValue }]);
   return res[name];
+}
+export async function promptEditorInput(message: string) {
+  const name = "inputValue";
+  const res = await inquirer.prompt([{ type: "editor", message, name }]);
+  return res[name];
+}
+export async function promptConfirmation(message: string, defaultValue = true) {
+  const name = "confirm";
+  const res = await inquirer.prompt([{ type: "confirm", name, message, default: defaultValue }]);
+  return res[name] as boolean;
 }
 export function pad(str: string | number, chars: number) {
   str = `${str}`;

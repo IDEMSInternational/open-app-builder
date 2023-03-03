@@ -11,11 +11,9 @@
       "rows": [
         {
           "name": "activity_text",
-          "value": "Close your eyes. \n\nDo your children ever make you feel like screaming? \n\nGive yourself a 10-second pause. Breath in and out slowly 5 times. \n\nThen try responding in a calmer way.",
+          "value": "Close your eyes. \n\nDo your children ever make you feel like screaming? \n\nGive yourself a 10-second pause. Breathe in and out slowly 5 times. \n\nThen try responding in a calmer way.",
           "_translations": {
-            "value": {
-              "tz_sw": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "relax_text.activity_text"

@@ -168,18 +168,17 @@
       "together": true,
       "priority": 11,
       "has_single_task": true,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.money_problems.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.money_problems.title"
         }
       },
-      "template": "w_money_read_1_temp"
+      "template": "w_money_read_1",
+      "story_id": "money_problems"
     },
     {
       "id": "learn_1",
@@ -187,7 +186,7 @@
       "together": true,
       "priority": 12,
       "has_single_task": true,
-      "title": "Learn",
+      "title": "Learn - Budget preparation",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -195,7 +194,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Learn"
+          "eng": "Learn - Budget preparation"
         }
       },
       "template": "w_money_learn_1_temp"
@@ -206,7 +205,7 @@
       "together": true,
       "priority": 13,
       "has_single_task": true,
-      "title": "Learn",
+      "title": "Learn - Step 1: Think",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -214,7 +213,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Learn"
+          "eng": "Learn - Step 1: Think"
         }
       },
       "template": "w_money_learn_2_temp"
@@ -225,7 +224,7 @@
       "together": true,
       "priority": 14,
       "has_single_task": true,
-      "title": "Learn",
+      "title": "Learn - Step 2: Choose",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -233,7 +232,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Learn"
+          "eng": "Learn - Step 2: Choose"
         }
       },
       "template": "w_money_learn_3_temp"
@@ -244,7 +243,7 @@
       "together": true,
       "priority": 15,
       "has_single_task": true,
-      "title": "Learn",
+      "title": "Learn - Step 3: Build",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -252,7 +251,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Learn"
+          "eng": "Learn - Step 3: Build"
         }
       },
       "template": "w_money_learn_4_temp"
@@ -263,17 +262,16 @@
       "together": true,
       "priority": 16,
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.money_plan.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.money_plan.title"
         }
-      }
+      },
+      "story_id": "money_plan"
     },
     {
       "id": "read_3",
@@ -281,17 +279,16 @@
       "together": true,
       "priority": 18,
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.money_emergencies.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.money_emergencies.title"
         }
-      }
+      },
+      "story_id": "money_emergencies"
     },
     {
       "id": "learn_5",
@@ -299,7 +296,7 @@
       "together": true,
       "priority": 21,
       "has_single_task": true,
-      "title": "Learn",
+      "title": "Learn - Step 4: Plan",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -307,7 +304,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Learn"
+          "eng": "Learn - Step 4: Plan"
         }
       },
       "template": "w_money_learn_5_temp"

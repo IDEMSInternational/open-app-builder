@@ -52,64 +52,6 @@
               "value"
             ]
           }
-        },
-        {
-          "type": "nested_properties",
-          "name": "workshop_activity",
-          "rows": [
-            {
-              "type": "nested_properties",
-              "name": "content_box",
-              "rows": [
-                {
-                  "name": "text",
-                  "value": "We care about you, and how life is treating you.",
-                  "_translations": {
-                    "value": {
-                      "tz_sw": true
-                    }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.text"
-                },
-                {
-                  "name": "reply_happy",
-                  "value": "You are a star. And you are making a real difference. Be proud of yourself.",
-                  "_translations": {
-                    "value": {
-                      "tz_sw": true
-                    }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_happy"
-                },
-                {
-                  "name": "reply_ok",
-                  "value": "Sorry that things are not easy today. All parents have these days.",
-                  "_translations": {
-                    "value": {
-                      "tz_sw": true
-                    }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_ok"
-                },
-                {
-                  "name": "reply_sad",
-                  "value": "Sorry that things are not easy today. All parents have these days.",
-                  "_translations": {
-                    "value": {
-                      "tz_sw": true
-                    }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_sad"
-                }
-              ],
-              "_nested_name": "welcome_individual.workshop_activity.content_box"
-            }
-          ],
-          "_nested_name": "welcome_individual.workshop_activity"
         }
       ],
       "_nested_name": "welcome_individual"

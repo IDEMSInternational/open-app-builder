@@ -65,6 +65,24 @@
           "tz_sw": true
         }
       }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "language",
+      "value": "Language",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "user_info",
+      "value": "Your Profile",
+      "_translations": {
+        "value": {}
+      }
     }
   ],
   "_xlsxPath": "global/data/app_menu_globals.xlsx"

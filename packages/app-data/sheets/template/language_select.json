@@ -5,14 +5,27 @@
   "rows": [
     {
       "type": "title",
-      "value": "Language",
-      "_translations": {
-        "value": {
-          "tz_sw": true
-        }
-      },
       "name": "title",
-      "_nested_name": "title"
+      "value": "@global.language",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.language",
+            "matchedExpression": "@global.language",
+            "type": "global",
+            "fieldName": "language"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.language": [
+          "value"
+        ]
+      }
     },
     {
       "name": "language_select_options",

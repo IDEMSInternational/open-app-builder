@@ -23,7 +23,7 @@
 |style                  |yellow                  |Button colour yellow|
 |style                  |orange                  |Button colour orange|
 |style                  |dark_orange             |Button colour dark orange|
-|style                  |home_screen             |Button colour primary positioned to the righthand side of the screen|
+|style                  |home_screen             |Button colour primary positioned to the right hand side of the screen|
 |text                   |empty string (default)|No text on the button|
 |text                   |string                  |Any string as a button text|
 |disabled	            |false (default)         |To be removed|

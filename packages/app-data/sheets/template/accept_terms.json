@@ -279,11 +279,11 @@
           "trigger": "completed",
           "action_id": "set_field",
           "args": [
-            "terms_v20221018_accepted",
+            "terms_v20230301_accepted",
             true
           ],
-          "_raw": "completed | set_field: terms_v20221018_accepted: true",
-          "_cleaned": "completed | set_field: terms_v20221018_accepted: true"
+          "_raw": "completed | set_field: terms_v20230301_accepted: true",
+          "_cleaned": "completed | set_field: terms_v20230301_accepted: true"
         },
         {
           "trigger": "uncompleted",

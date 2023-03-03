@@ -52,6 +52,54 @@
       }
     },
     {
+      "name": "workshop_number",
+      "value": "@local.workshop_data.number",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "workshop_number",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop_data.number",
+            "matchedExpression": "@local.workshop_data.number",
+            "type": "local",
+            "fieldName": "workshop_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_data.number": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "topic_intro_name",
+      "value": "topic_intro_name_@local.workshop_number",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "topic_intro_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "topic_intro_name_@local.workshop_number",
+            "matchedExpression": "@local.workshop_number",
+            "type": "local",
+            "fieldName": "workshop_number"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_number": [
+          "value"
+        ]
+      }
+    },
+    {
       "name": "intro_text",
       "value": "_intro_text",
       "_translations": {
@@ -247,6 +295,15 @@
           "name": "workshop_activity",
           "rows": [
             {
+              "name": "activity_image",
+              "value": "plh_images/workshop_modes/individual/explain.svg",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "listen.workshop_activity.activity_image"
+            },
+            {
               "name": "intro_title",
               "value": "Why @local.workshop_data.title?",
               "_translations": {
@@ -339,26 +396,24 @@
                   "rows": [
                     {
                       "name": "audio_title",
-                      "value": "Hear @global.topic_intro_name's message",
+                      "value": "Hear @global.@local.topic_intro_name's message",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "listen.workshop_activity.content_box.box_1.audio_title",
                       "_dynamicFields": {
                         "value": [
                           {
-                            "fullExpression": "Hear @global.topic_intro_name's message",
-                            "matchedExpression": "@global.topic_intro_name",
-                            "type": "global",
+                            "fullExpression": "Hear @global.@local.topic_intro_name's message",
+                            "matchedExpression": "@local.topic_intro_name",
+                            "type": "local",
                             "fieldName": "topic_intro_name"
                           }
                         ]
                       },
                       "_dynamicDependencies": {
-                        "@global.topic_intro_name": [
+                        "@local.topic_intro_name": [
                           "value"
                         ]
                       }
@@ -389,11 +444,9 @@
                     },
                     {
                       "name": "button_1",
-                      "value": "Read @global.topic_intro_name's message",
+                      "value": "Read @global.@local.topic_intro_name's message",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true
-                        }
+                        "value": {}
                       },
                       "action_list": [
                         {
@@ -412,9 +465,9 @@
                       "_dynamicFields": {
                         "value": [
                           {
-                            "fullExpression": "Read @global.topic_intro_name's message",
-                            "matchedExpression": "@global.topic_intro_name",
-                            "type": "global",
+                            "fullExpression": "Read @global.@local.topic_intro_name's message",
+                            "matchedExpression": "@local.topic_intro_name",
+                            "type": "local",
                             "fieldName": "topic_intro_name"
                           }
                         ],
@@ -450,7 +503,7 @@
                         }
                       },
                       "_dynamicDependencies": {
-                        "@global.topic_intro_name": [
+                        "@local.topic_intro_name": [
                           "value"
                         ],
                         "@local.workshop_intro_text": [
@@ -479,6 +532,7 @@
                           "_cleaned": "click | pop_up:@local.workshop_summary"
                         }
                       ],
+                      "condition": "@fields._app_skin == \"weekly_workshop\"",
                       "hidden": false,
                       "type": "set_variable",
                       "_nested_name": "listen.workshop_activity.content_box.box_1.button_2",
@@ -512,13 +566,24 @@
                               }
                             ]
                           }
-                        }
+                        },
+                        "condition": [
+                          {
+                            "fullExpression": "@fields._app_skin == \"weekly_workshop\"",
+                            "matchedExpression": "@fields._app_skin",
+                            "type": "fields",
+                            "fieldName": "_app_skin"
+                          }
+                        ]
                       },
                       "_dynamicDependencies": {
                         "@local.workshop_summary": [
                           "action_list.0.args.0",
                           "action_list.0._raw",
                           "action_list.0._cleaned"
+                        ],
+                        "@fields._app_skin": [
+                          "condition"
                         ]
                       }
                     }
@@ -815,26 +880,24 @@
               "rows": [
                 {
                   "name": "audio_title",
-                  "value": "Hear @global.topic_intro_name's message",
+                  "value": "Hear @global.@local.topic_intro_name's message",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true
-                    }
+                    "value": {}
                   },
                   "type": "set_variable",
                   "_nested_name": "listen.workshop_activity.content_box.audio_title",
                   "_dynamicFields": {
                     "value": [
                       {
-                        "fullExpression": "Hear @global.topic_intro_name's message",
-                        "matchedExpression": "@global.topic_intro_name",
-                        "type": "global",
+                        "fullExpression": "Hear @global.@local.topic_intro_name's message",
+                        "matchedExpression": "@local.topic_intro_name",
+                        "type": "local",
                         "fieldName": "topic_intro_name"
                       }
                     ]
                   },
                   "_dynamicDependencies": {
-                    "@global.topic_intro_name": [
+                    "@local.topic_intro_name": [
                       "value"
                     ]
                   }
@@ -865,11 +928,9 @@
                 },
                 {
                   "name": "button_1",
-                  "value": "Read @global.topic_intro_name's message",
+                  "value": "Read @global.@local.topic_intro_name's message",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true
-                    }
+                    "value": {}
                   },
                   "action_list": [
                     {
@@ -888,9 +949,9 @@
                   "_dynamicFields": {
                     "value": [
                       {
-                        "fullExpression": "Read @global.topic_intro_name's message",
-                        "matchedExpression": "@global.topic_intro_name",
-                        "type": "global",
+                        "fullExpression": "Read @global.@local.topic_intro_name's message",
+                        "matchedExpression": "@local.topic_intro_name",
+                        "type": "local",
                         "fieldName": "topic_intro_name"
                       }
                     ],
@@ -926,7 +987,7 @@
                     }
                   },
                   "_dynamicDependencies": {
-                    "@global.topic_intro_name": [
+                    "@local.topic_intro_name": [
                       "value"
                     ],
                     "@local.workshop_intro_text": [

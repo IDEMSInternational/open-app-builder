@@ -186,17 +186,16 @@
       "together": true,
       "priority": 11,
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.make_rule.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.make_rule.title"
         }
       },
+      "story_id": "make_rule",
       "completed_field": "task_gp_w_rules_read_1_completed",
       "completed": "@fields.task_gp_w_rules_read_1_completed"
     },
@@ -206,18 +205,17 @@
       "together": true,
       "priority": 71,
       "has_single_task": true,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.online_safety.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.online_safety.title"
         }
       },
-      "template": "w_rules_read_2_temp",
+      "template": "w_rules_read_2",
+      "story_id": "online_safety",
       "completed_field": "task_gp_w_rules_read_2_completed",
       "completed": "@fields.task_gp_w_rules_read_2_completed"
     },

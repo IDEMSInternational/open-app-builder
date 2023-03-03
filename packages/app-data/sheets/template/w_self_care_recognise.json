@@ -117,7 +117,7 @@
               "rows": [
                 {
                   "name": "image_src",
-                  "value": "plh_images/workshops/w_self_care/guide_2/recognise.svg",
+                  "value": "plh_images/workshops/w_self_care/individual/recognise.svg",
                   "_translations": {
                     "value": {}
                   },
@@ -345,7 +345,7 @@
                 },
                 {
                   "name": "image_src",
-                  "value": "plh_images/workshops/w_self_care/guide_2/recognise.svg",
+                  "value": "plh_images/workshops/w_self_care/individual/recognise.svg",
                   "_translations": {
                     "value": {}
                   },

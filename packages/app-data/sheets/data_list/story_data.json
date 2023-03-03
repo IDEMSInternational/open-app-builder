@@ -5,11 +5,11 @@
   "data_list_name": "story",
   "rows": [
     {
-      "id": "w_praise",
+      "id": "praise",
       "workshop": "w_praise",
       "image_1": "plh_images/workshops/w_praise/read/slide_1.svg",
       "image_2": "plh_images/workshops/w_praise/read/slide_2.svg",
-      "title": "Story",
+      "title": "Notice the good",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -26,7 +26,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "Notice the good"
         },
         "intro_text": {
           "eng": "Praise really is powerful. \n\nLet’s look at the example of @global.w_praise_female_caregiver_name and her daughters:"
@@ -43,13 +43,12 @@
       "text_2": "@global.w_praise_female_caregiver_name: \"Thank you for doing your schoolwork, @global.w_praise_girl, and thank you for helping your sister,  @global.w_praise_teen_girl. I'm so proud of you!\""
     },
     {
-      "id": "w_instruct_neg",
+      "id": "neg_instruct",
       "workshop": "w_instruct",
-      "suffix": "neg",
       "image_1": "plh_images/workshops/w_instruct/read_1/slide_1.svg",
       "image_2": "plh_images/workshops/w_instruct/read_1/slide_2.svg",
       "image_3": "plh_images/workshops/w_instruct/read_1/slide_3.svg",
-      "title": "Story",
+      "title": "Negative instructions",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -69,7 +68,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "Negative instructions"
         },
         "intro_text": {
           "eng": "Let’s see what happens if @global.w_instruct_female_caregiver tells @global.w_instruct_teen_girl \"DON'T\":"
@@ -90,71 +89,14 @@
       "text_3": "@global.w_instruct_teen_girl: “Arrg!! Why am I being yelled at all the time????”\n\n@global.w_instruct_female_caregiver to herself: “That child is always making trouble.”"
     },
     {
-      "id": "w_instruct_pos",
+      "id": "pos_instruct",
       "workshop": "w_instruct",
-      "suffix": "pos",
       "image_1": "plh_images/workshops/w_instruct/read_2/slide_1.svg",
       "image_2": "plh_images/workshops/w_instruct/read_2/slide_2.svg",
       "image_3": "plh_images/workshops/w_instruct/read_2/slide_3.svg",
       "image_4": "plh_images/workshops/w_instruct/read_2/slide_4.svg",
-      "title": "Story",
-      "_translations": {
-        "title": {
-          "tz_sw": true
-        },
-        "intro_text": {
-          "tz_sw": true
-        },
-        "text_1": {
-          "tz_sw": true
-        },
-        "text_2": {
-          "tz_sw": true
-        },
-        "text_3": {
-          "tz_sw": true
-        },
-        "text_4": {
-          "tz_sw": true
-        }
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Story"
-        },
-        "intro_text": {
-          "eng": "Thank you for thinking along! \n\nLet’s go back in time and see what happens if @global.w_instruct_female_caregiver gives a positive instruction:"
-        },
-        "text_1": {
-          "eng": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practising dance moves with her friend.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practise dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”"
-        },
-        "text_2": {
-          "eng": "@global.w_instruct_teen_girl and her friend enjoy practising their dance moves."
-        },
-        "text_3": {
-          "eng": "@global.w_instruct_female_caregiver: \"Thank you for practising outside while I finished cleaning, @global.w_instruct_teen_girl. Now I have some time to watch your dance.\""
-        },
-        "text_4": {
-          "eng": "@global.w_instruct_female_caregiver: \"Wow, @global.w_instruct_teen_girl! You have such good dance moves!\""
-        }
-      },
-      "intro_text": "Thank you for thinking along! \n\nLet’s go back in time and see what happens if @global.w_instruct_female_caregiver gives a positive instruction:",
-      "text_1": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practising dance moves with her friend.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practise dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
-      "text_2": "@global.w_instruct_teen_girl and her friend enjoy practising their dance moves.",
-      "text_3": "@global.w_instruct_female_caregiver: \"Thank you for practising outside while I finished cleaning, @global.w_instruct_teen_girl. Now I have some time to watch your dance.\"",
-      "text_4": "@global.w_instruct_female_caregiver: \"Wow, @global.w_instruct_teen_girl! You have such good dance moves!\""
-    },
-    {
-      "id": "w_stress_neg",
-      "workshop": "w_stress",
-      "suffix": "neg",
-      "image_1": "plh_images/workshops/w_stress/read_1/slide_1.svg",
-      "image_2": "plh_images/workshops/w_stress/read_1/slide_2.svg",
-      "image_3": "plh_images/workshops/w_stress/read_1/slide_3.svg",
-      "image_4": "plh_images/workshops/w_stress/read_1/slide_4.svg",
-      "image_5": "plh_images/workshops/w_stress/read_1/slide_5.svg",
-      "image_6": "plh_images/workshops/w_stress/read_1/slide_6.svg",
-      "title": "Story",
+      "image_5": "plh_images/workshops/w_instruct/read_2/slide_5.svg",
+      "title": "Positive instructions",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -180,7 +122,70 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "Positive instructions"
+        },
+        "intro_text": {
+          "eng": "Thank you for thinking along! \n\nLet’s go back in time and see what happens if @global.w_instruct_female_caregiver gives a positive instruction:"
+        },
+        "text_1": {
+          "eng": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practising dance moves with her friend.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practise dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\""
+        },
+        "text_2": {
+          "eng": "@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”"
+        },
+        "text_3": {
+          "eng": "@global.w_instruct_teen_girl and her friend enjoy practising their dance moves."
+        },
+        "text_4": {
+          "eng": "@global.w_instruct_female_caregiver: \"Thank you for practising outside while I finished cleaning, @global.w_instruct_teen_girl. Now I have some time to watch your dance.\""
+        },
+        "text_5": {
+          "eng": "@global.w_instruct_female_caregiver: \"Wow, @global.w_instruct_teen_girl! You have such good dance moves!\""
+        }
+      },
+      "intro_text": "Thank you for thinking along! \n\nLet’s go back in time and see what happens if @global.w_instruct_female_caregiver gives a positive instruction:",
+      "text_1": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practising dance moves with her friend.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practise dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"",
+      "text_2": "@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
+      "text_3": "@global.w_instruct_teen_girl and her friend enjoy practising their dance moves.",
+      "text_4": "@global.w_instruct_female_caregiver: \"Thank you for practising outside while I finished cleaning, @global.w_instruct_teen_girl. Now I have some time to watch your dance.\"",
+      "text_5": "@global.w_instruct_female_caregiver: \"Wow, @global.w_instruct_teen_girl! You have such good dance moves!\""
+    },
+    {
+      "id": "ignore_emotions",
+      "workshop": "w_stress",
+      "image_1": "plh_images/workshops/w_stress/read_1/slide_1.svg",
+      "image_2": "plh_images/workshops/w_stress/read_1/slide_2.svg",
+      "image_3": "plh_images/workshops/w_stress/read_1/slide_3.svg",
+      "image_4": "plh_images/workshops/w_stress/read_1/slide_4.svg",
+      "image_5": "plh_images/workshops/w_stress/read_1/slide_5.svg",
+      "image_6": "plh_images/workshops/w_stress/read_1/slide_6.svg",
+      "title": "Ignoring our emotions",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "text_1": {
+          "tz_sw": true
+        },
+        "text_2": {
+          "tz_sw": true
+        },
+        "text_3": {
+          "tz_sw": true
+        },
+        "text_4": {
+          "tz_sw": true
+        },
+        "text_5": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Ignoring our emotions"
         },
         "intro_text": {
           "eng": "Let’s look at an example of how stress can sometimes just get too much, for all of us:"
@@ -209,16 +214,15 @@
       "text_5": "@global.w_stress_teen_boy_1: “Who cares about your stupid house!”"
     },
     {
-      "id": "w_stress_pos",
+      "id": "acknowledge_emotions",
       "workshop": "w_stress",
-      "suffix": "pos",
-      "outro_habit_data": "@data.habit.breathe",
+      "outro_habit": "breathe",
       "image_1": "plh_images/workshops/w_stress/read_1/slide_1.svg",
       "image_2": "plh_images/workshops/w_stress/read_2/slide_2.svg",
       "image_3": "plh_images/workshops/w_stress/read_2/slide_3.svg",
       "image_4": "plh_images/workshops/w_stress/read_2/slide_4.svg",
       "image_5": "plh_images/workshops/w_stress/read_2/slide_5.svg",
-      "title": "Story",
+      "title": "Acknowledging our emotions",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -244,7 +248,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "Acknowledging our emotions"
         },
         "intro_text": {
           "eng": "Thank you for thinking along! Let’s go back in time and see what @global.w_stress_male_caregiver does now:"
@@ -273,17 +277,16 @@
       "text_5": "@global.w_stress_male_caregiver: “Let’s play some soccer together. It will help me get this stress off my mind for a bit.”  \n\n@global.w_stress_teen_boy_1: “Okay, @global.w_stress_male_caregiver!”"
     },
     {
-      "id": "w_stress_safety_amnesty",
+      "id": "safety_amnesty",
       "workshop": "w_stress",
-      "suffix": "safety_amnesty",
-      "outro_habit_data": "@data.habit.safe",
+      "outro_habit": "safe",
       "image_1": "plh_images/workshops/w_stress/read_3/slide_1.svg",
       "image_2": "plh_images/workshops/w_stress/read_3/slide_2.svg",
       "image_3": "plh_images/workshops/w_stress/read_3/slide_3.svg",
       "image_4": "plh_images/workshops/w_stress/read_3/slide_4.svg",
       "image_5": "plh_images/workshops/w_stress/read_3/slide_5.svg",
       "image_6": "plh_images/workshops/w_stress/read_3/slide_6.svg",
-      "title": "Story",
+      "title": "Safety Amnesty",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -312,7 +315,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "Safety Amnesty"
         },
         "intro_text": {
           "eng": "Think back to when you were a teenager. \n\nWas there ever a time when you were in danger but you couldn’t tell your family because they would have been angry?\n\nThis ALMOST happened to @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl! Let’s have a look:"
@@ -345,12 +348,11 @@
       "text_6": "@global.w_stress_teen_boy_2: \"@global.w_stress_parent, safety amnesty. I think my friends are in trouble. I don’t want to stop being their friend, but I’m worried. Can we talk?\""
     },
     {
-      "id": "w_money_neg",
+      "id": "money_problems",
       "workshop": "w_money",
-      "suffix": "neg",
       "image_1": "plh_images/workshops/w_money/read_2/slide_1.svg",
       "image_2": "plh_images/workshops/w_money/read_1/slide_1.svg",
-      "title": "Story",
+      "title": "Money problems",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -367,7 +369,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "Money problems"
         },
         "intro_text": {
           "eng": "It can be hard to make ends meet every month. Many families have this problem! \n\nIncluding @global.w_money_grandma - let's have a look:"
@@ -384,15 +386,14 @@
       "text_2": "@global.w_money_grandma: \"I am so stressed. I don’t have any money left. And now I’m fighting with my teens over things they want – again.\""
     },
     {
-      "id": "w_money_pos",
+      "id": "money_plan",
       "workshop": "w_money",
-      "suffix": "pos",
       "image_1": "plh_images/workshops/w_money/read_3/slide_2.svg",
       "image_2": "plh_images/workshops/w_money/read_3/slide_3.svg",
       "image_3": "plh_images/workshops/w_money/read_3/slide_4.svg",
       "image_4": "plh_images/workshops/w_money/read_3/slide_5.svg",
       "image_5": "plh_images/workshops/w_money/read_3/slide_6.svg",
-      "title": "Story",
+      "title": "Preparing for the future",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -418,7 +419,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "Preparing for the future"
         },
         "intro_text": {
           "eng": "Great work, you have completed the first 3 steps! \n\nLet's see how @global.w_money_grandma made a plan with her money, just like you are doing:"
@@ -447,9 +448,38 @@
       "text_5": "A few years later:\n\n\"Look, we reached our dreams! I didn’t borrow any money from friends or loan sharks. By saving a tiny bit each week, I managed to pay for @global.w_money_teen_boy’s high school and save some money for @global.w_money_teen_girl’s university. I am so proud of this.”"
     },
     {
-      "id": "w_rules_pos_neg",
+      "id": "money_emergencies",
+      "workshop": "w_money",
+      "image_1": "plh_images/workshops/w_money/read_4/slide_1.svg",
+      "title": "Coping with emergencies",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "intro_text": {
+          "tz_sw": true
+        },
+        "text_1": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Coping with emergencies"
+        },
+        "intro_text": {
+          "eng": "Saving is important for one more reason: emergencies! @global.w_money_grandma also learned this along the way:"
+        },
+        "text_1": {
+          "eng": "“One night there was a horrible storm that broke my roof. Everything was flooded. I suddenly had to find money to fix the roof. I just felt defeated.”"
+        }
+      },
+      "intro_text": "Saving is important for one more reason: emergencies! @global.w_money_grandma also learned this along the way:",
+      "text_1": "“One night there was a horrible storm that broke my roof. Everything was flooded. I suddenly had to find money to fix the roof. I just felt defeated.”"
+    },
+    {
+      "id": "make_rule",
       "workshop": "w_rules",
-      "suffix": "pos_neg",
       "image_1": "plh_images/workshops/w_rules/read_1/slide_1.svg",
       "image_2": "plh_images/workshops/w_rules/read_1/slide_3.svg",
       "image_3": "plh_images/workshops/w_rules/read_1/slide_4.svg",
@@ -457,7 +487,7 @@
       "image_5": "plh_images/workshops/w_rules/read_1/slide_6.svg",
       "image_6": "plh_images/workshops/w_rules/read_1/slide_7.svg",
       "image_7": "plh_images/workshops/w_rules/read_1/slide_8.svg",
-      "title": "Story",
+      "title": "Making a rule",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -492,7 +522,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "Making a rule"
         },
         "intro_text": {
           "eng": "Let's read what happened with @global.w_rules_teen_boy and his @global.w_rules_female_caregiver_1:"
@@ -533,16 +563,15 @@
       "text_7": "The next day...\n\n@global.w_rules_female_caregiver_1: “Thank you, @global.w_rules_teen_boy, for coming home on time. After you finish your schoolwork we can have your favourite meal for dinner.”"
     },
     {
-      "id": "w_rules_online_safety",
+      "id": "online_safety",
       "workshop": "w_rules",
-      "suffix": "online_safety",
-      "outro_habit_data": "@data.habit.safe",
+      "outro_habit": "safe",
       "image_1": "plh_images/workshops/w_rules/read_2/slide_1.svg",
       "image_2": "plh_images/workshops/w_rules/read_2/slide_2.svg",
       "image_3": "plh_images/workshops/w_rules/read_2/slide_3.svg",
       "image_4": "plh_images/workshops/w_rules/read_2/slide_4.svg",
       "image_5": "plh_images/workshops/w_rules/read_2/slide_5.svg",
-      "title": "Story",
+      "title": "Online safety",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -568,7 +597,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "Online safety"
         },
         "intro_text": {
           "eng": "Rules are important to keep your teens safe - also online. There’s more about this in the @global.weekly_workshop on safety planning, but let’s already have a first look now!"
@@ -597,14 +626,13 @@
       "text_5": "@global.w_rules_female_caregiver_2: \"I’m proud of you @global.w_rules_teen_girl\""
     },
     {
-      "id": "w_consequence_neg",
+      "id": "neg_consequence",
       "workshop": "w_consequence",
-      "suffix": "neg",
       "image_1": "plh_images/workshops/w_consequence/read_1/slide_1.svg",
       "image_2": "plh_images/workshops/w_consequence/read_1/slide_2.svg",
       "image_3": "plh_images/workshops/w_consequence/read_1/slide_3.svg",
       "image_4": "plh_images/workshops/w_consequence/read_1/slide_4.svg",
-      "title": "Story",
+      "title": "Home late",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -627,7 +655,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "Home late"
         },
         "intro_text": {
           "eng": "Let's read what happened with @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver:"
@@ -652,9 +680,8 @@
       "text_4": "@global.w_consequence_teen_boy_1: “That’s unfair! You never listen to me!! I hate you!”"
     },
     {
-      "id": "w_consequence_pos",
+      "id": "pos_consequence",
       "workshop": "w_consequence",
-      "suffix": "pos",
       "image_1": "plh_images/workshops/w_consequence/read_3/slide_1.svg",
       "image_2": "plh_images/workshops/w_consequence/read_3/slide_2.svg",
       "image_3": "plh_images/workshops/w_consequence/read_3/slide_3.svg",
@@ -664,7 +691,7 @@
       "image_7": "plh_images/workshops/w_consequence/read_3/slide_7.svg",
       "image_8": "plh_images/workshops/w_consequence/read_3/slide_8.svg",
       "image_9": "plh_images/workshops/w_consequence/read_3/slide_9.svg",
-      "title": "Story",
+      "title": "Discussing and using consequences",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -702,7 +729,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "Discussing and using consequences"
         },
         "intro_text": {
           "eng": "Let's go back to @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver"
@@ -747,13 +774,12 @@
       "text_9": "@global.w_consequence_teen_boy_1: “I am sorry I worried you and @global.w_consequence_female_caregiver.” \n\n@global.w_consequence_male_caregiver: “Thank you. Now go to bed, but just to be clear, as you came home later than we agreed, you will not be allowed to go out tomorrow night.”"
     },
     {
-      "id": "w_solve_neg",
+      "id": "neg_solve",
       "workshop": "w_solve",
-      "suffix": "neg",
       "image_1": "plh_images/workshops/w_solve/read_1/slide_1.svg",
       "image_2": "plh_images/workshops/w_solve/read_1/slide_2.svg",
       "image_3": "plh_images/workshops/w_solve/read_1/slide_3.svg",
-      "title": "Story",
+      "title": "The new phone",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -773,7 +799,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "The new phone"
         },
         "intro_text": {
           "eng": "Let’s look at what happened to @global.w_solve_teen_girl and her @global.w_solve_female_caregiver_1 when @global.w_solve_teen_girl got a phone from a boy… a phone!"
@@ -794,9 +820,8 @@
       "text_3": "@global.w_solve_female_caregiver_1: “I don’t want to hear it!” \n\n@global.w_solve_teen_girl: “You’re not even trying to listen to me! I don’t know why I even try with you!”"
     },
     {
-      "id": "w_solve_pos",
+      "id": "pos_solve",
       "workshop": "w_solve",
-      "suffix": "pos",
       "image_1": "plh_images/workshops/w_solve/read_2/slide_1.svg",
       "image_2": "plh_images/workshops/w_solve/read_2/slide_2.svg",
       "image_3": "plh_images/workshops/w_solve/read_2/slide_3.svg",
@@ -809,7 +834,7 @@
       "image_10": "plh_images/workshops/w_solve/read_2/slide_10.svg",
       "image_11": "plh_images/workshops/w_solve/read_2/slide_11.svg",
       "image_12": "plh_images/workshops/w_solve/read_2/slide_12.svg",
-      "title": "Story",
+      "title": "Dealing with bullies",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -868,7 +893,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "Dealing with bullies"
         },
         "intro_text": {
           "eng": "Let’s see how problem solving works in practice."
@@ -941,16 +966,15 @@
       "text_12": "@global.w_solve_female_caregiver_2: \"I am sorry to hear that, @global.w_solve_teen_boy_2. Shall I ask your uncle to go talk to his parents? If that does not work, we will try something else!\"\n\n@global.w_solve_teen_boy_2: \"Yes, thank you @global.w_solve_female_caregiver_2. At least I know you are on my side.\""
     },
     {
-      "id": "w_safe_sugar_daddy",
+      "id": "sugar_daddy",
       "workshop": "w_safe",
-      "suffix": "sugar_daddy",
       "image_1": "plh_images/workshops/w_safe/read_1/slide_1.svg",
       "image_2": "plh_images/workshops/w_safe/read_1/slide_2.svg",
       "image_3": "plh_images/workshops/w_safe/read_1/slide_3.svg",
       "image_4": "plh_images/workshops/w_safe/read_1/slide_4.svg",
       "image_5": "plh_images/workshops/w_safe/read_1/slide_5.svg",
       "image_6": "plh_images/workshops/w_safe/read_1/slide_6.svg",
-      "title": "Story",
+      "title": "Man in car",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -979,7 +1003,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "Man in car"
         },
         "intro_text": {
           "eng": "Communication is the most important thing!\n\nLet's see what happened with @global.w_safe_female_caregiver and @global.w_safe_teen_girl_1:"
@@ -1012,13 +1036,12 @@
       "text_6": "@global.w_safe_female_caregiver: \"Pfff, I am so proud of you that you did not get into the car. That was a dangerous situation, thank you for telling me!\""
     },
     {
-      "id": "w_safe_sexting",
+      "id": "online_contact",
       "workshop": "w_safe",
-      "suffix": "sexting",
       "image_1": "plh_images/workshops/w_safe/read_2/slide_1.svg",
       "image_2": "plh_images/workshops/w_safe/read_2/slide_2.svg",
       "image_3": "plh_images/workshops/w_safe/read_2/slide_3.svg",
-      "title": "Story",
+      "title": "Online contact",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -1038,7 +1061,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "Online contact"
         },
         "intro_text": {
           "eng": "Let's look at another example of a dangerous situation together."
@@ -1059,16 +1082,15 @@
       "text_3": "@global.w_safe_female_caregiver: \"Sometimes people aren’t who they say they are online – he could say he is your age but be a 50 year old man. Or when they break up, he could send those photos to everyone and your friend would feel awful.\""
     },
     {
-      "id": "w_crisis_rape",
+      "id": "rape",
       "workshop": "w_crisis",
-      "suffix": "rape",
       "image_1": "plh_images/workshops/w_crisis/read_1/slide_1.svg",
       "image_2": "plh_images/workshops/w_crisis/read_1/slide_2.svg",
       "image_3": "plh_images/workshops/w_crisis/read_1/slide_3.svg",
       "image_4": "plh_images/workshops/w_crisis/read_1/slide_4.svg",
       "image_5": "plh_images/workshops/w_crisis/read_1/slide_5.svg",
       "image_6": "plh_images/workshops/w_crisis/read_1/slide_6.svg",
-      "title": "Story",
+      "title": "@global.w_crisis_teen_girl_1's crisis",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -1097,7 +1119,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.w_crisis_teen_girl_1's crisis"
         },
         "intro_text": {
           "eng": "Crisis can happen to anyone. \n\nLet's see what happened with @global.w_crisis_teen_girl_1 and @global.w_crisis_female_caregiver:"
@@ -1130,16 +1152,15 @@
       "text_6": "@global.w_crisis_female_caregiver: \"Of course I will. And @global.w_crisis_teen_girl_1? Remember this is not your fault. I love you. You are a good person. We will get through this.\""
     },
     {
-      "id": "w_crisis_violence",
+      "id": "violence",
       "workshop": "w_crisis",
-      "suffix": "violence",
       "image_1": "plh_images/workshops/w_crisis/read_2/slide_1.svg",
       "image_2": "plh_images/workshops/w_crisis/read_2/slide_2.svg",
       "image_3": "plh_images/workshops/w_crisis/read_2/slide_3.svg",
       "image_4": "plh_images/workshops/w_crisis/read_2/slide_4.svg",
       "image_5": "plh_images/workshops/w_crisis/read_2/slide_5.svg",
       "image_6": "plh_images/workshops/w_crisis/read_2/slide_6.svg",
-      "title": "Story",
+      "title": "The fight",
       "_translations": {
         "title": {
           "tz_sw": true
@@ -1168,7 +1189,7 @@
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "The fight"
         },
         "intro_text": {
           "eng": "Another problem that many parents are worried about is violence and crime. Let’s look at an example together."
