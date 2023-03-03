@@ -23,25 +23,6 @@
       }
     },
     {
-      "id": "survey_activity",
-      "individual": true,
-      "together": false,
-      "priority": 12,
-      "has_single_task": true,
-      "template": "survey_final_stepper",
-      "title": "Survey",
-      "_translations": {
-        "title": {
-          "tz_sw": true
-        }
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Survey"
-        }
-      }
-    },
-    {
       "id": "talk_1",
       "individual": false,
       "together": true,

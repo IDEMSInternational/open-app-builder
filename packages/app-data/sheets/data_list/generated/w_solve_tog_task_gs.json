@@ -165,18 +165,17 @@
       "together": true,
       "priority": 11,
       "has_single_task": true,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.neg_solve.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.neg_solve.title"
         }
       },
-      "template": "w_solve_read_1_temp",
+      "template": "w_solve_read_1",
+      "story_id": "neg_solve",
       "completed_field": "task_gp_w_solve_read_1_completed",
       "completed": "@fields.task_gp_w_solve_read_1_completed"
     },
@@ -186,17 +185,16 @@
       "together": true,
       "priority": 71,
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.pos_solve.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.pos_solve.title"
         }
       },
+      "story_id": "pos_solve",
       "completed_field": "task_gp_w_solve_read_2_completed",
       "completed": "@fields.task_gp_w_solve_read_2_completed"
     },

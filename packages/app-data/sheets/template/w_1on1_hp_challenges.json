@@ -195,77 +195,17 @@
     },
     {
       "type": "text",
-      "name": "question_text_happy",
+      "name": "question_text",
       "value": "Did you have any challenges when trying to spend time with your teen?",
       "_translations": {
         "value": {
           "tz_sw": true
         }
       },
-      "condition": "@fields.@local.workshop_hp_mood == \"happy\" || !@fields.@local.workshop_hp_mood",
       "parameter_list": {
         "style": "emphasised"
       },
-      "_nested_name": "question_text_happy",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@fields.@local.workshop_hp_mood == \"happy\" || !@fields.@local.workshop_hp_mood",
-            "matchedExpression": "@local.workshop_hp_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_mood"
-          },
-          {
-            "fullExpression": "@fields.@local.workshop_hp_mood == \"happy\" || !@fields.@local.workshop_hp_mood",
-            "matchedExpression": "@local.workshop_hp_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_mood"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_hp_mood": [
-          "condition",
-          "condition"
-        ]
-      }
-    },
-    {
-      "type": "text",
-      "name": "question_text_ok_sad",
-      "value": "What challenge did you have when trying to spend time with your teen?",
-      "_translations": {
-        "value": {
-          "tz_sw": true
-        }
-      },
-      "condition": "@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\"",
-      "parameter_list": {
-        "style": "emphasised"
-      },
-      "_nested_name": "question_text_ok_sad",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\"",
-            "matchedExpression": "@local.workshop_hp_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_mood"
-          },
-          {
-            "fullExpression": "@fields.@local.workshop_hp_mood == \"ok\" || @fields.@local.workshop_hp_mood == \"sad\"",
-            "matchedExpression": "@local.workshop_hp_mood",
-            "type": "local",
-            "fieldName": "workshop_hp_mood"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.workshop_hp_mood": [
-          "condition",
-          "condition"
-        ]
-      }
+      "_nested_name": "question_text"
     },
     {
       "name": "text_challenge_1",
@@ -2391,5 +2331,5 @@
       "_nested_name": "nav_buttons"
     }
   ],
-  "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
+  "_xlsxPath": "global/top_templates/in_week_messages/home_practice_reviews/w_1on1_hp_review.xlsx"
 }

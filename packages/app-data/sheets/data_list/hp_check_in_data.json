@@ -1,0 +1,857 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "hp_check_in_data",
+  "status": "released",
+  "data_list_name": "hp_check_in",
+  "rows": [
+    {
+      "id": "w_1on1",
+      "habit_id": "spend_time",
+      "has_highlights": true,
+      "challenges_structure": "nested",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
+      "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
+      "button_no_go_to_template": "w_1on1_home_practice",
+      "has_challenges": true,
+      "text_goal": "Your goal was to spend one-on-one time with your teen.",
+      "_translations": {
+        "text_goal": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "activity_title": {},
+        "intro_text": {},
+        "question_done": {
+          "tz_sw": true
+        },
+        "reply_no": {
+          "tz_sw": true
+        },
+        "button_no_text": {},
+        "question_how": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "text_goal": {
+          "eng": "Your goal was to spend one-on-one time with your teen."
+        },
+        "reply_happy": {
+          "eng": "That’s wonderful! Well done for spending time together. It lays the foundation for a great relationship with your teen!"
+        },
+        "reply_ok": {
+          "eng": "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will definitely improve your relationship!"
+        },
+        "reply_sad": {
+          "eng": "Sorry to hear that it was difficult for you to spend time with your teen. We all have challenges sometimes. Just be patient with yourself and your teen - things will get better. Well done for trying!"
+        },
+        "activity_title": {
+          "eng": "@global.hp_review"
+        },
+        "intro_text": {
+          "eng": "@global.text_hp_review"
+        },
+        "question_done": {
+          "eng": "Did you have a chance to try this?"
+        },
+        "reply_no": {
+          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+        },
+        "button_no_text": {
+          "eng": "@global.home_practice"
+        },
+        "question_how": {
+          "eng": "How did it go?"
+        },
+        "outro_text": {
+          "eng": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
+        }
+      },
+      "reply_happy": "That’s wonderful! Well done for spending time together. It lays the foundation for a great relationship with your teen!",
+      "reply_ok": "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will definitely improve your relationship!",
+      "reply_sad": "Sorry to hear that it was difficult for you to spend time with your teen. We all have challenges sometimes. Just be patient with yourself and your teen - things will get better. Well done for trying!",
+      "activity_title": "@global.hp_review",
+      "intro_text": "@global.text_hp_review",
+      "question_done": "Did you have a chance to try this?",
+      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "button_no_text": "@global.home_practice",
+      "question_how": "How did it go?",
+      "outro_text": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
+    },
+    {
+      "id": "w_praise",
+      "habit_id": "praise_teen",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
+      "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
+      "button_no_go_to_template": "w_praise_home_practice",
+      "has_highlights": false,
+      "has_challenges": true,
+      "challenges_structure": "plain",
+      "text_goal": "Your goal was to praise your teen.",
+      "_translations": {
+        "text_goal": {
+          "tz_sw": true
+        },
+        "reply_no": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        },
+        "activity_title": {},
+        "intro_text": {},
+        "question_done": {
+          "tz_sw": true
+        },
+        "button_no_text": {},
+        "question_how": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "text_goal": {
+          "eng": "Your goal was to praise your teen."
+        },
+        "reply_no": {
+          "eng": "It can sometimes be hard to remember to praise our teens. Next time you spend one-on-one time with your teen, try and think of one thing you can praise them for. You can even say, “Thank you for spending time with me!”."
+        },
+        "reply_happy": {
+          "eng": "Great to hear it went well! Keep up the praise - you will see your teen do more and more of the behaviour you like to see!"
+        },
+        "reply_ok": {
+          "eng": "It sometimes takes a bit of time to adjust to praising, but it makes a big difference, you will see."
+        },
+        "reply_sad": {
+          "eng": "Sorry that you struggled with this. Starting with praise can take some practice, but you will see the positive results soon!"
+        },
+        "outro_text": {
+          "eng": "You deserve some praise, too. Thank you again for using @global.parent_app. It shows you really care!"
+        },
+        "activity_title": {
+          "eng": "@global.hp_review"
+        },
+        "intro_text": {
+          "eng": "@global.text_hp_review"
+        },
+        "question_done": {
+          "eng": "Did you have a chance to try this?"
+        },
+        "button_no_text": {
+          "eng": "@global.home_practice"
+        },
+        "question_how": {
+          "eng": "How did it go?"
+        }
+      },
+      "reply_no": "It can sometimes be hard to remember to praise our teens. Next time you spend one-on-one time with your teen, try and think of one thing you can praise them for. You can even say, “Thank you for spending time with me!”.",
+      "reply_happy": "Great to hear it went well! Keep up the praise - you will see your teen do more and more of the behaviour you like to see!",
+      "reply_ok": "It sometimes takes a bit of time to adjust to praising, but it makes a big difference, you will see.",
+      "reply_sad": "Sorry that you struggled with this. Starting with praise can take some practice, but you will see the positive results soon!",
+      "outro_text": "You deserve some praise, too. Thank you again for using @global.parent_app. It shows you really care!",
+      "activity_title": "@global.hp_review",
+      "intro_text": "@global.text_hp_review",
+      "question_done": "Did you have a chance to try this?",
+      "button_no_text": "@global.home_practice",
+      "question_how": "How did it go?"
+    },
+    {
+      "id": "w_instruct",
+      "habit_id": "instruct_positively",
+      "has_highlights": true,
+      "challenges_structure": "nested",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
+      "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
+      "button_no_go_to_template": "w_instruct_home_practice",
+      "has_challenges": true,
+      "text_goal": "Your home practice was to try out REAL, POSITIVE and EXACT instructions with your teen.",
+      "_translations": {
+        "text_goal": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        },
+        "activity_title": {},
+        "intro_text": {},
+        "question_done": {
+          "tz_sw": true
+        },
+        "reply_no": {
+          "tz_sw": true
+        },
+        "button_no_text": {},
+        "question_how": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "text_goal": {
+          "eng": "Your home practice was to try out REAL, POSITIVE and EXACT instructions with your teen."
+        },
+        "reply_happy": {
+          "eng": "Great to hear it went well. You are a star!"
+        },
+        "reply_ok": {
+          "eng": "Sorry to hear it was difficult for you. Well done for trying!"
+        },
+        "reply_sad": {
+          "eng": "Giving instructions in a new way takes some practice. Keep trying, you will soon see  the difference it makes!"
+        },
+        "outro_text": {
+          "eng": "Thank you for sharing! Well done for trying to give your teen positive instructions and for building a positive relationship with your teen. \n\nYour teen deserves praise and YOU as well!"
+        },
+        "activity_title": {
+          "eng": "@global.hp_review"
+        },
+        "intro_text": {
+          "eng": "@global.text_hp_review"
+        },
+        "question_done": {
+          "eng": "Did you have a chance to try this?"
+        },
+        "reply_no": {
+          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+        },
+        "button_no_text": {
+          "eng": "@global.home_practice"
+        },
+        "question_how": {
+          "eng": "How did it go?"
+        }
+      },
+      "reply_happy": "Great to hear it went well. You are a star!",
+      "reply_ok": "Sorry to hear it was difficult for you. Well done for trying!",
+      "reply_sad": "Giving instructions in a new way takes some practice. Keep trying, you will soon see  the difference it makes!",
+      "outro_text": "Thank you for sharing! Well done for trying to give your teen positive instructions and for building a positive relationship with your teen. \n\nYour teen deserves praise and YOU as well!",
+      "activity_title": "@global.hp_review",
+      "intro_text": "@global.text_hp_review",
+      "question_done": "Did you have a chance to try this?",
+      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "button_no_text": "@global.home_practice",
+      "question_how": "How did it go?"
+    },
+    {
+      "id": "w_stress",
+      "habit_id": "breathe",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
+      "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
+      "button_no_go_to_template": "w_stress_home_practice",
+      "has_highlights": false,
+      "has_challenges": true,
+      "challenges_structure": "plain",
+      "text_goal": "This week, your goal was: Whenever you are feeling stressed or upset, take five breaths in and out before you react. \n\nYour goal was also to talk to your teen about how you both felt in a stressful situation.",
+      "_translations": {
+        "text_goal": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "activity_title": {},
+        "intro_text": {},
+        "question_done": {
+          "tz_sw": true
+        },
+        "reply_no": {
+          "tz_sw": true
+        },
+        "button_no_text": {},
+        "question_how": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "text_goal": {
+          "eng": "This week, your goal was: Whenever you are feeling stressed or upset, take five breaths in and out before you react. \n\nYour goal was also to talk to your teen about how you both felt in a stressful situation."
+        },
+        "reply_happy": {
+          "eng": "Wonderful! You deserve all the happy times!"
+        },
+        "reply_ok": {
+          "eng": "Sorry that this was difficult for you. You are a star for trying!"
+        },
+        "reply_sad": {
+          "eng": "Life can be so stressful. Every small step counts. Keep up the good work!"
+        },
+        "activity_title": {
+          "eng": "@global.hp_review"
+        },
+        "intro_text": {
+          "eng": "@global.text_hp_review"
+        },
+        "question_done": {
+          "eng": "Did you have a chance to try this?"
+        },
+        "reply_no": {
+          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+        },
+        "button_no_text": {
+          "eng": "@global.home_practice"
+        },
+        "question_how": {
+          "eng": "How did it go?"
+        },
+        "outro_text": {
+          "eng": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
+        }
+      },
+      "reply_happy": "Wonderful! You deserve all the happy times!",
+      "reply_ok": "Sorry that this was difficult for you. You are a star for trying!",
+      "reply_sad": "Life can be so stressful. Every small step counts. Keep up the good work!",
+      "activity_title": "@global.hp_review",
+      "intro_text": "@global.text_hp_review",
+      "question_done": "Did you have a chance to try this?",
+      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "button_no_text": "@global.home_practice",
+      "question_how": "How did it go?",
+      "outro_text": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
+    },
+    {
+      "id": "w_money",
+      "habit_id": "money",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
+      "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
+      "button_no_go_to_template": "w_money_home_practice",
+      "has_highlights": false,
+      "has_challenges": true,
+      "challenges_structure": "plain",
+      "text_goal": "Your goal was to make a family budget and savings plan.",
+      "_translations": {
+        "text_goal": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        },
+        "activity_title": {},
+        "intro_text": {},
+        "question_done": {
+          "tz_sw": true
+        },
+        "reply_no": {
+          "tz_sw": true
+        },
+        "button_no_text": {},
+        "question_how": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "text_goal": {
+          "eng": "Your goal was to make a family budget and savings plan."
+        },
+        "reply_happy": {
+          "eng": "Great to hear it went well. Talking about your finances together really makes your family stronger!"
+        },
+        "reply_ok": {
+          "eng": "It is never easy to talk about money. Well done on starting the conversation and teaching your teen about this."
+        },
+        "reply_sad": {
+          "eng": "Sorry to hear it was difficult for you. Well done for trying. Helping your teen understand money better will benefit them so much in life!"
+        },
+        "outro_text": {
+          "eng": "Thank you for sharing your experiences! Well done for thinking about how you can budget and save with your family. This will really help you to work towards your family goals. \n\nTogether you can achieve so many good things!"
+        },
+        "activity_title": {
+          "eng": "@global.hp_review"
+        },
+        "intro_text": {
+          "eng": "@global.text_hp_review"
+        },
+        "question_done": {
+          "eng": "Did you have a chance to try this?"
+        },
+        "reply_no": {
+          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+        },
+        "button_no_text": {
+          "eng": "@global.home_practice"
+        },
+        "question_how": {
+          "eng": "How did it go?"
+        }
+      },
+      "reply_happy": "Great to hear it went well. Talking about your finances together really makes your family stronger!",
+      "reply_ok": "It is never easy to talk about money. Well done on starting the conversation and teaching your teen about this.",
+      "reply_sad": "Sorry to hear it was difficult for you. Well done for trying. Helping your teen understand money better will benefit them so much in life!",
+      "outro_text": "Thank you for sharing your experiences! Well done for thinking about how you can budget and save with your family. This will really help you to work towards your family goals. \n\nTogether you can achieve so many good things!",
+      "activity_title": "@global.hp_review",
+      "intro_text": "@global.text_hp_review",
+      "question_done": "Did you have a chance to try this?",
+      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "button_no_text": "@global.home_practice",
+      "question_how": "How did it go?"
+    },
+    {
+      "id": "w_rules",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
+      "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
+      "button_no_go_to_template": "w_rules_home_practice",
+      "has_highlights": false,
+      "has_challenges": true,
+      "challenges_structure": "plain",
+      "text_goal": "Your goal was to make ONE rule with your teen.",
+      "_translations": {
+        "text_goal": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        },
+        "activity_title": {},
+        "intro_text": {},
+        "question_done": {
+          "tz_sw": true
+        },
+        "reply_no": {
+          "tz_sw": true
+        },
+        "button_no_text": {},
+        "question_how": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "text_goal": {
+          "eng": "Your goal was to make ONE rule with your teen."
+        },
+        "reply_happy": {
+          "eng": "Great to hear it went well! Consistent rules help make our teens feel secure, and keep them safe!"
+        },
+        "reply_ok": {
+          "eng": "It can be hard to create your first rule together, but you will see the benefits of involving your family. Keep trying!"
+        },
+        "reply_sad": {
+          "eng": "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it!"
+        },
+        "outro_text": {
+          "eng": "Well done for this! It’s not easy, and teenagers won’t keep to the rules all the time, but making a few key rules together is a great start. Praise yourself for trying this - we are proud of you!"
+        },
+        "activity_title": {
+          "eng": "@global.hp_review"
+        },
+        "intro_text": {
+          "eng": "@global.text_hp_review"
+        },
+        "question_done": {
+          "eng": "Did you have a chance to try this?"
+        },
+        "reply_no": {
+          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+        },
+        "button_no_text": {
+          "eng": "@global.home_practice"
+        },
+        "question_how": {
+          "eng": "How did it go?"
+        }
+      },
+      "reply_happy": "Great to hear it went well! Consistent rules help make our teens feel secure, and keep them safe!",
+      "reply_ok": "It can be hard to create your first rule together, but you will see the benefits of involving your family. Keep trying!",
+      "reply_sad": "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it!",
+      "outro_text": "Well done for this! It’s not easy, and teenagers won’t keep to the rules all the time, but making a few key rules together is a great start. Praise yourself for trying this - we are proud of you!",
+      "activity_title": "@global.hp_review",
+      "intro_text": "@global.text_hp_review",
+      "question_done": "Did you have a chance to try this?",
+      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "button_no_text": "@global.home_practice",
+      "question_how": "How did it go?"
+    },
+    {
+      "id": "w_consequence",
+      "habit_id": "consequence",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
+      "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
+      "button_no_go_to_template": "w_consequence_home_practice",
+      "has_highlights": false,
+      "has_challenges": true,
+      "challenges_structure": "plain",
+      "text_goal": "Your goal was to introduce ONE positive consequence (for your teen taking responsibility) and ONE negative consequence (for your teen breaking a household rule).",
+      "_translations": {
+        "text_goal": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "activity_title": {},
+        "intro_text": {},
+        "question_done": {
+          "tz_sw": true
+        },
+        "reply_no": {
+          "tz_sw": true
+        },
+        "button_no_text": {},
+        "question_how": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "text_goal": {
+          "eng": "Your goal was to introduce ONE positive consequence (for your teen taking responsibility) and ONE negative consequence (for your teen breaking a household rule)."
+        },
+        "reply_happy": {
+          "eng": "Great to hear it went well! Getting consequences right helps teens behave better and makes family life calmer."
+        },
+        "reply_ok": {
+          "eng": "Staying calm and consistent can be hard, but you are doing so well. You can do this!"
+        },
+        "reply_sad": {
+          "eng": "Sorry that this was difficult for you. Setting consequences together will make your teen want to follow the rules more often!"
+        },
+        "activity_title": {
+          "eng": "@global.hp_review"
+        },
+        "intro_text": {
+          "eng": "@global.text_hp_review"
+        },
+        "question_done": {
+          "eng": "Did you have a chance to try this?"
+        },
+        "reply_no": {
+          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+        },
+        "button_no_text": {
+          "eng": "@global.home_practice"
+        },
+        "question_how": {
+          "eng": "How did it go?"
+        },
+        "outro_text": {
+          "eng": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
+        }
+      },
+      "reply_happy": "Great to hear it went well! Getting consequences right helps teens behave better and makes family life calmer.",
+      "reply_ok": "Staying calm and consistent can be hard, but you are doing so well. You can do this!",
+      "reply_sad": "Sorry that this was difficult for you. Setting consequences together will make your teen want to follow the rules more often!",
+      "activity_title": "@global.hp_review",
+      "intro_text": "@global.text_hp_review",
+      "question_done": "Did you have a chance to try this?",
+      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "button_no_text": "@global.home_practice",
+      "question_how": "How did it go?",
+      "outro_text": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
+    },
+    {
+      "id": "w_solve",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
+      "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
+      "button_no_go_to_template": "w_solve_home_practice",
+      "has_highlights": false,
+      "has_challenges": true,
+      "challenges_structure": "plain",
+      "text_goal": "Your goal was to try and resolve a problem or conflict together with your teen.",
+      "_translations": {
+        "text_goal": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "activity_title": {},
+        "intro_text": {},
+        "question_done": {
+          "tz_sw": true
+        },
+        "reply_no": {
+          "tz_sw": true
+        },
+        "button_no_text": {},
+        "question_how": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "text_goal": {
+          "eng": "Your goal was to try and resolve a problem or conflict together with your teen."
+        },
+        "reply_happy": {
+          "eng": "Great to hear it went well! When your teen learns how to solve problems, they can use that skill their whole life. What a gift!"
+        },
+        "reply_ok": {
+          "eng": "Solving problems together takes some practice. The more often you involve your teen when you are both calm, the better it will go. Well done for trying!"
+        },
+        "reply_sad": {
+          "eng": "Sorry that this was hard. Sometimes we just have to keep trying. Find a time when you and your teen are calm and try again to talk through a problem using the four steps of problem-solving. Together, you can do so much!"
+        },
+        "activity_title": {
+          "eng": "@global.hp_review"
+        },
+        "intro_text": {
+          "eng": "@global.text_hp_review"
+        },
+        "question_done": {
+          "eng": "Did you have a chance to try this?"
+        },
+        "reply_no": {
+          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+        },
+        "button_no_text": {
+          "eng": "@global.home_practice"
+        },
+        "question_how": {
+          "eng": "How did it go?"
+        },
+        "outro_text": {
+          "eng": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
+        }
+      },
+      "reply_happy": "Great to hear it went well! When your teen learns how to solve problems, they can use that skill their whole life. What a gift!",
+      "reply_ok": "Solving problems together takes some practice. The more often you involve your teen when you are both calm, the better it will go. Well done for trying!",
+      "reply_sad": "Sorry that this was hard. Sometimes we just have to keep trying. Find a time when you and your teen are calm and try again to talk through a problem using the four steps of problem-solving. Together, you can do so much!",
+      "activity_title": "@global.hp_review",
+      "intro_text": "@global.text_hp_review",
+      "question_done": "Did you have a chance to try this?",
+      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "button_no_text": "@global.home_practice",
+      "question_how": "How did it go?",
+      "outro_text": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
+    },
+    {
+      "id": "w_safe",
+      "habit_id": "safe",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
+      "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
+      "button_no_go_to_template": "w_safe_home_practice",
+      "has_highlights": false,
+      "has_challenges": true,
+      "challenges_structure": "plain",
+      "text_goal": "Your goal was to map risks and support systems with your teen - both in your community and online.",
+      "_translations": {
+        "text_goal": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "activity_title": {},
+        "intro_text": {},
+        "question_done": {
+          "tz_sw": true
+        },
+        "reply_no": {
+          "tz_sw": true
+        },
+        "button_no_text": {},
+        "question_how": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "text_goal": {
+          "eng": "Your goal was to map risks and support systems with your teen - both in your community and online."
+        },
+        "reply_happy": {
+          "eng": "Great to hear it went well! Talking about risks and support options prevents problems and really helps to keep your teen safe."
+        },
+        "reply_ok": {
+          "eng": "Even if it did not go so well yet, you will get there! Mapping risks and support systems together will help your family. Well done for trying."
+        },
+        "reply_sad": {
+          "eng": "Sorry that this was hard. Mapping risks and places to get support can be challenging and emotional. It really does help to keep your teen safe!"
+        },
+        "activity_title": {
+          "eng": "@global.hp_review"
+        },
+        "intro_text": {
+          "eng": "@global.text_hp_review"
+        },
+        "question_done": {
+          "eng": "Did you have a chance to try this?"
+        },
+        "reply_no": {
+          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+        },
+        "button_no_text": {
+          "eng": "@global.home_practice"
+        },
+        "question_how": {
+          "eng": "How did it go?"
+        },
+        "outro_text": {
+          "eng": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
+        }
+      },
+      "reply_happy": "Great to hear it went well! Talking about risks and support options prevents problems and really helps to keep your teen safe.",
+      "reply_ok": "Even if it did not go so well yet, you will get there! Mapping risks and support systems together will help your family. Well done for trying.",
+      "reply_sad": "Sorry that this was hard. Mapping risks and places to get support can be challenging and emotional. It really does help to keep your teen safe!",
+      "activity_title": "@global.hp_review",
+      "intro_text": "@global.text_hp_review",
+      "question_done": "Did you have a chance to try this?",
+      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "button_no_text": "@global.home_practice",
+      "question_how": "How did it go?",
+      "outro_text": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
+    },
+    {
+      "id": "w_crisis",
+      "habit_id": "safe",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
+      "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
+      "button_no_go_to_template": "w_crisis_home_practice",
+      "has_highlights": false,
+      "has_challenges": true,
+      "challenges_structure": "plain",
+      "text_goal": "Your goal was to discuss a possible crisis situation with your teen and make a plan for it.",
+      "_translations": {
+        "text_goal": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
+        "activity_title": {},
+        "intro_text": {},
+        "question_done": {
+          "tz_sw": true
+        },
+        "reply_no": {
+          "tz_sw": true
+        },
+        "button_no_text": {},
+        "question_how": {
+          "tz_sw": true
+        },
+        "outro_text": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "text_goal": {
+          "eng": "Your goal was to discuss a possible crisis situation with your teen and make a plan for it."
+        },
+        "reply_happy": {
+          "eng": "Great to hear it went well!"
+        },
+        "reply_ok": {
+          "eng": "It can be hard to think and talk about a crisis happening in your family. By trying you are already on the right path. Keep up the good work!"
+        },
+        "reply_sad": {
+          "eng": "Sorry that it didn’t go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?"
+        },
+        "activity_title": {
+          "eng": "@global.hp_review"
+        },
+        "intro_text": {
+          "eng": "@global.text_hp_review"
+        },
+        "question_done": {
+          "eng": "Did you have a chance to try this?"
+        },
+        "reply_no": {
+          "eng": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can."
+        },
+        "button_no_text": {
+          "eng": "@global.home_practice"
+        },
+        "question_how": {
+          "eng": "How did it go?"
+        },
+        "outro_text": {
+          "eng": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
+        }
+      },
+      "reply_happy": "Great to hear it went well!",
+      "reply_ok": "It can be hard to think and talk about a crisis happening in your family. By trying you are already on the right path. Keep up the good work!",
+      "reply_sad": "Sorry that it didn’t go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?",
+      "activity_title": "@global.hp_review",
+      "intro_text": "@global.text_hp_review",
+      "question_done": "Did you have a chance to try this?",
+      "reply_no": "That's okay, don't be too hard on yourself. We encourage you to try and do it when you can.",
+      "button_no_text": "@global.home_practice",
+      "question_how": "How did it go?",
+      "outro_text": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!"
+    }
+  ],
+  "_xlsxPath": "global/data/workshop_data/workshop_data_list.xlsx"
+}

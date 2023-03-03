@@ -186,17 +186,16 @@
       "together": true,
       "priority": 12,
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.praise.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.praise.title"
         }
       },
+      "story_id": "praise",
       "completed_field": "task_gp_w_praise_read_completed",
       "completed": "@fields.task_gp_w_praise_read_completed"
     },

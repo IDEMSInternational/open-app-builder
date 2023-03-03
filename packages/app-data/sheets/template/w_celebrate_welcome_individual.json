@@ -52,68 +52,6 @@
               "value"
             ]
           }
-        },
-        {
-          "type": "nested_properties",
-          "name": "workshop_activity",
-          "rows": [
-            {
-              "name": "activity_image",
-              "value": "plh_images/workshop_modes/guide_2/final/wave.svg",
-              "_translations": {
-                "value": {}
-              },
-              "type": "set_variable",
-              "_nested_name": "welcome_individual.workshop_activity.activity_image"
-            },
-            {
-              "type": "nested_properties",
-              "name": "content_box",
-              "rows": [
-                {
-                  "name": "text",
-                  "hidden": true,
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.text"
-                },
-                {
-                  "name": "reply_happy",
-                  "value": "Fantastic! We are proud of you for all you have done over the past weeks.",
-                  "_translations": {
-                    "value": {
-                      "tz_sw": true
-                    }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_happy"
-                },
-                {
-                  "name": "reply_ok",
-                  "value": "We’re sorry it’s a difficult day. We are proud of you for all you have done over the past weeks.",
-                  "_translations": {
-                    "value": {
-                      "tz_sw": true
-                    }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_ok"
-                },
-                {
-                  "name": "reply_sad",
-                  "value": "We’re sorry it’s a difficult day. We are proud of you for all you have done over the past weeks.",
-                  "_translations": {
-                    "value": {
-                      "tz_sw": true
-                    }
-                  },
-                  "type": "set_variable",
-                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_sad"
-                }
-              ],
-              "_nested_name": "welcome_individual.workshop_activity.content_box"
-            }
-          ],
-          "_nested_name": "welcome_individual.workshop_activity"
         }
       ],
       "_nested_name": "welcome_individual"

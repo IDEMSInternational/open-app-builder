@@ -1,6 +1,6 @@
 import { firebaseConfig } from "./firebaseConfig";
 import packageJson from "../../package.json";
-import deploymentJson from "../../.idems_app/deployments/default.json";
+import deploymentJson from "../../.idems_app/deployments/activeDeployment.json";
 import type { IDeploymentConfig } from "packages/data-models";
 
 export const environment = {

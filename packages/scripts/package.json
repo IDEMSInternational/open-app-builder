@@ -34,12 +34,14 @@
     "node-rsa": "^1.1.1",
     "p-queue": "^6.6.2",
     "shared": "workspace:*",
+    "simple-git": "^3.7.1",
     "subtitles-parser-vtt": "^0.1.0",
     "typescript": "^4.1.2",
     "winston": "^3.8.1",
     "xlsx": "^0.16.6"
   },
   "devDependencies": {
+    "@swc/core": "^1.3.29",
     "@types/fs-extra": "^9.0.4",
     "@types/inquirer": "^7.3.1",
     "@types/jasmine": "^3.10.6",
@@ -51,7 +53,7 @@
     "mock-fs": "^5.2.0",
     "nodemon": "^2.0.19",
     "pkg": "^5.5.1",
-    "ts-node": "~7.0.0",
+    "ts-node": "^10.8.0",
     "ts-node-dev": "^1.0.0"
   }
 }

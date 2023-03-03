@@ -11,27 +11,14 @@
     {
       "type": "title",
       "name": "title",
-      "value": "@data.parent_centre.support_contacts.title",
+      "value": "Support Contacts",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "exclude_from_translation": true,
-      "_nested_name": "title",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@data.parent_centre.support_contacts.title",
-            "matchedExpression": "@data.parent_centre.support_contacts.title",
-            "type": "data",
-            "fieldName": "parent_centre"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@data.parent_centre.support_contacts.title": [
-          "value"
-        ]
-      }
+      "_nested_name": "title"
     },
     {
       "type": "text",

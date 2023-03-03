@@ -46,16 +46,15 @@
       "individual": true,
       "together": true,
       "priority": 12,
+      "story_id": "praise",
       "has_single_task": false,
-      "title": "Story",
+      "title": "@global.story @global.part_connector @data.story.praise.title",
       "_translations": {
-        "title": {
-          "tz_sw": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Story"
+          "eng": "@global.story @global.part_connector @data.story.praise.title"
         }
       }
     },

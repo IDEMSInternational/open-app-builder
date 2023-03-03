@@ -172,7 +172,7 @@
               "rows": [
                 {
                   "name": "image_src",
-                  "value": "plh_images/workshops/w_self_care/guide_2/reward.svg",
+                  "value": "plh_images/workshops/w_self_care/individual/reward.svg",
                   "_translations": {
                     "value": {}
                   },
@@ -385,7 +385,7 @@
                 },
                 {
                   "name": "image_src",
-                  "value": "plh_images/workshops/w_self_care/guide_2/reward.svg",
+                  "value": "plh_images/workshops/w_self_care/individual/reward.svg",
                   "_translations": {
                     "value": {}
                   },
