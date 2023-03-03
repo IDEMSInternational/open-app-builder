@@ -143,6 +143,19 @@ const APP_AUTHENTICATION_DEFAULTS = {
   signInTemplate: "sign_in",
 };
 
+type IAppLaunchAction = {
+  type: "template_popup" | "tour_start";
+  value: string;
+};
+/** Define app-specific startup tasks and logic */
+const APP_INITIALISATION_DEFAULTS = {
+  /** Define initial launch tasks to be performed before main content loaded */
+  app_first_launch_actions: [] as IAppLaunchAction[],
+
+  // TODO - better if refactored to more general handler with condition to filter
+  // for things such as app_first_launch, app_version_first_launch etc. and pass data fields
+};
+
 const FEEDBACK_MODULE_DEFAULTS = {
   /** Buttons that will be made available during feedback mode when context events triggered (e.g. right-click) */
   buttons: [
@@ -169,9 +182,10 @@ const APP_UPDATES = {
   enabled: false,
   /** If an update is available, force the user to download and apply it.
    * Uses "Immediate" update strategy if true, otherwise uses "Flexible" update strategy
-   * Further details at https://developer.android.com/guide/playcore/in-app-updates
-   */
+   * Further details at https://developer.android.com/guide/playcore/in-app-updates */
   forceUpdate: false,
+  /** Template to be displayed after a flexible update has downloaded, prompting the user
+   * to install the update and restart the app */
   completeUpdateTemplate: "complete_app_update",
 };
 
