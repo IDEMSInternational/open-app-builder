@@ -9,7 +9,7 @@
       "habit_id": "spend_time",
       "has_highlights": true,
       "challenges_structure": "nested",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_1on1_home_practice",
       "has_challenges": true,
@@ -113,7 +113,7 @@
     {
       "id": "w_praise",
       "habit_id": "praise_teen",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_praise_home_practice",
       "has_highlights": false,
@@ -212,7 +212,7 @@
       "habit_id": "instruct_positively",
       "has_highlights": true,
       "challenges_structure": "nested",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_instruct_home_practice",
       "has_challenges": true,
@@ -309,7 +309,7 @@
     {
       "id": "w_stress",
       "habit_id": "breathe",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_stress_home_practice",
       "has_highlights": false,
@@ -408,7 +408,7 @@
     {
       "id": "w_money",
       "habit_id": "money",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_money_home_practice",
       "has_highlights": false,
@@ -506,7 +506,7 @@
     },
     {
       "id": "w_rules",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_rules_home_practice",
       "has_highlights": false,
@@ -605,7 +605,7 @@
     {
       "id": "w_consequence",
       "habit_id": "consequence",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_consequence_home_practice",
       "has_highlights": false,
@@ -703,7 +703,7 @@
     },
     {
       "id": "w_solve",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_solve_home_practice",
       "has_highlights": false,
@@ -809,7 +809,7 @@
     {
       "id": "w_safe",
       "habit_id": "safe",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_safe_home_practice",
       "has_highlights": false,
@@ -915,7 +915,7 @@
     {
       "id": "w_crisis",
       "habit_id": "safe",
-      "activity_image_ind": "plh_images/workshop_modes/guide_2/with_teen.svg",
+      "activity_image_ind": "plh_images/workshop_modes/individual/with_teen.svg",
       "activity_image_tog": "plh_images/workshop_modes/group/with_teen.svg",
       "button_no_go_to_template": "w_crisis_home_practice",
       "has_highlights": false,

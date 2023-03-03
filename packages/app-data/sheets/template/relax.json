@@ -257,7 +257,7 @@
         },
         {
           "name": "activity_image",
-          "value": "plh_images/workshop_modes/guide_2/relax.svg",
+          "value": "plh_images/workshop_modes/individual/relax.svg",
           "_translations": {
             "value": {}
           },
@@ -446,7 +446,7 @@
             },
             {
               "name": "image_src",
-              "value": "plh_images/habits/relax_chair.gif",
+              "value": "plh_images/habits/breathe.svg",
               "_translations": {
                 "value": {}
               },
