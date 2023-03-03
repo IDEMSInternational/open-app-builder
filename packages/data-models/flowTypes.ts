@@ -375,6 +375,7 @@ export namespace FlowTypes {
     "toggle_field",
     "track_event",
     "trigger_actions",
+    "complete_app_update",
   ] as const;
 
   export interface TemplateRowAction {

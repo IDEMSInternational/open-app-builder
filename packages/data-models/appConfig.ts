@@ -172,6 +172,7 @@ const APP_UPDATES = {
    * Further details at https://developer.android.com/guide/playcore/in-app-updates
    */
   forceUpdate: false,
+  completeUpdateTemplate: "complete_app_update",
 };
 
 const APP_CONFIG = {
