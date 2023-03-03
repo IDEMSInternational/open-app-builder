@@ -15,4 +15,8 @@ config.app_config.APP_SKINS.available = [SKINS.debug];
 config.app_config.APP_THEMES.available = ["default"]
 config.translations!.filter_language_codes = ["gb_en"];
 
+config.app_config.APP_UPDATES.enabled = true
+config.app_config.APP_UPDATES.forceUpdate = false
+config.app_config.APP_UPDATES.completeUpdateTemplate = "complete_app_update"
+
 export default config;
