@@ -30,7 +30,9 @@
       "template": "w_money_learn_1_temp",
       "title": "Learn - Budget preparation",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -47,7 +49,9 @@
       "template": "w_money_learn_2_temp",
       "title": "Learn - Step 1: Think",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -64,7 +68,9 @@
       "template": "w_money_learn_3_temp",
       "title": "Learn - Step 2: Choose",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -81,7 +87,9 @@
       "template": "w_money_learn_4_temp",
       "title": "Learn - Step 3: Build",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -132,7 +140,9 @@
       "template": "w_money_learn_5_temp",
       "title": "Learn - Step 4: Plan",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
