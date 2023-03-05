@@ -2006,6 +2006,11 @@
       "flow_subtype": "common_with_parent_text",
       "_xlsxPath": "global/mode_templates/welcome.xlsx"
     },
+    "complete_app_update": {
+      "flow_type": "template",
+      "flow_name": "complete_app_update",
+      "_xlsxPath": "quality_assurance/debug_sheets/debug_app_update.xlsx"
+    },
     "comp_button": {
       "flow_type": "template",
       "flow_name": "comp_button",
@@ -4553,6 +4558,11 @@
       "flow_name": "self_care_accordion_item",
       "_xlsxPath": "global/core_templates/core_templates_navigation.xlsx"
     },
+    "settings_customise": {
+      "flow_type": "template",
+      "flow_name": "settings_customise",
+      "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
+    },
     "setup_and_survey_stepper": {
       "flow_type": "template",
       "flow_name": "setup_and_survey_stepper",
@@ -4838,6 +4848,11 @@
     "user_code": {
       "flow_type": "template",
       "flow_name": "user_code",
+      "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
+    },
+    "user_info": {
+      "flow_type": "template",
+      "flow_name": "user_info",
       "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
     },
     "w_1on1_care_together": {
@@ -7261,6 +7276,16 @@
       "flow_type": "tour",
       "flow_name": "demo_essential_tools_tour",
       "_xlsxPath": "global/demo_templates/demo_navigation.xlsx"
+    },
+    "home_screen_modular_tour_intro": {
+      "flow_type": "tour",
+      "flow_name": "home_screen_modular_tour_intro",
+      "_xlsxPath": "global_modular/tours/home_screen_modular_tour.xlsx"
+    },
+    "home_screen_modular_tour_menu": {
+      "flow_type": "tour",
+      "flow_name": "home_screen_modular_tour_menu",
+      "_xlsxPath": "global_modular/tours/home_screen_modular_tour.xlsx"
     },
     "home_screen_tour_intro": {
       "flow_type": "tour",

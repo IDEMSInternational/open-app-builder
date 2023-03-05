@@ -7,34 +7,7 @@
   "rows": [
     {
       "type": "declare_global_constant",
-      "name": "topic_intro_name",
-      "value": "Joyce",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true
-    },
-    {
-      "type": "declare_global_constant",
       "name": "female_adult_name_1",
-      "value": "Amina",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "female_adult_name_2",
-      "value": "Naomi",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "female_adult_name_3",
       "value": "Rebeka",
       "_translations": {
         "value": {}
@@ -43,8 +16,116 @@
     },
     {
       "type": "declare_global_constant",
-      "name": "female_adult_name_4",
+      "name": "female_adult_name_2",
       "value": "Esta",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_adult_name_3",
+      "value": "Mtumwa",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_adult_name_4",
+      "value": "Amina",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_adult_name_5",
+      "value": "Asha",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_adult_name_6",
+      "value": "Zulpha",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_adult_name_7",
+      "value": "Naomi",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_adult_name_8",
+      "value": "Salma",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_adult_name_9",
+      "value": "Aisha",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_adult_name_10",
+      "value": "Mira",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_adult_name_11",
+      "value": "Miriam",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_adult_name_12",
+      "value": "Salama",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_adult_name_13",
+      "value": "Wanjiru",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_adult_name_14",
+      "value": "Sabrina",
       "_translations": {
         "value": {}
       },
@@ -97,6 +178,15 @@
     },
     {
       "type": "declare_global_constant",
+      "name": "female_child_name_6",
+      "value": "Debora",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
       "name": "female_caregiver_1",
       "value": "Bibi",
       "_translations": {
@@ -126,6 +216,105 @@
       "type": "declare_global_constant",
       "name": "male_adult_name_1",
       "value": "Baraka",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_adult_name_2",
+      "value": "Petseo",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_adult_name_3",
+      "value": "Sanka",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_adult_name_4",
+      "value": "Jumanne",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_adult_name_5",
+      "value": "Senge",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_adult_name_6",
+      "value": "Sendeu",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_adult_name_7",
+      "value": "Lonyori",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_adult_name_8",
+      "value": "Fadhili",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_adult_name_9",
+      "value": "Saguda",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_adult_name_10",
+      "value": "Salmin",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_adult_name_11",
+      "value": "Salim",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_adult_name_12",
+      "value": "Gibu",
       "_translations": {
         "value": {}
       },

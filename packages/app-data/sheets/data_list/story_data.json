@@ -11,7 +11,9 @@
       "image_2": "plh_images/workshops/w_praise/read/slide_2.svg",
       "title": "Notice the good",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -63,7 +65,9 @@
       "image_3": "plh_images/workshops/w_instruct/read_1/slide_3.svg",
       "title": "Negative instructions",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -130,8 +134,12 @@
           "za_xh": true,
           "za_zu": true
         },
-        "text_1": {},
-        "text_2": {},
+        "text_1": {
+          "tz_sw": true
+        },
+        "text_2": {
+          "tz_sw": true
+        },
         "text_3": {
           "tz_sw": true
         },
@@ -188,7 +196,9 @@
       "image_6": "plh_images/workshops/w_stress/read_1/slide_6.svg",
       "title": "Ignoring our emotions",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -279,7 +289,9 @@
       "image_5": "plh_images/workshops/w_stress/read_2/slide_5.svg",
       "title": "Acknowledging our emotions",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -477,7 +489,9 @@
       "image_2": "plh_images/workshops/w_money/read_1/slide_1.svg",
       "title": "Money problems",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -531,7 +545,9 @@
       "image_5": "plh_images/workshops/w_money/read_3/slide_6.svg",
       "title": "Preparing for the future",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -617,7 +633,9 @@
       "image_1": "plh_images/workshops/w_money/read_4/slide_1.svg",
       "title": "Coping with emergencies",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -661,7 +679,9 @@
       "image_7": "plh_images/workshops/w_rules/read_1/slide_8.svg",
       "title": "Making a rule",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -788,7 +808,9 @@
       "image_5": "plh_images/workshops/w_rules/read_2/slide_5.svg",
       "title": "Online safety",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true
         },
@@ -872,7 +894,9 @@
       "image_4": "plh_images/workshops/w_consequence/read_1/slide_4.svg",
       "title": "Home late",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -954,7 +978,9 @@
       "image_9": "plh_images/workshops/w_consequence/read_3/slide_9.svg",
       "title": "Discussing and using consequences",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -1090,7 +1116,9 @@
       "image_3": "plh_images/workshops/w_solve/read_1/slide_3.svg",
       "title": "The new phone",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -1163,7 +1191,9 @@
       "image_12": "plh_images/workshops/w_solve/read_2/slide_12.svg",
       "title": "Dealing with bullies",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -1386,7 +1416,9 @@
       "image_6": "plh_images/workshops/w_safe/read_1/slide_6.svg",
       "title": "Man in car",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -1486,7 +1518,9 @@
       "image_3": "plh_images/workshops/w_safe/read_2/slide_3.svg",
       "title": "Online contact",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -1553,7 +1587,9 @@
       "image_6": "plh_images/workshops/w_crisis/read_1/slide_6.svg",
       "title": "@global.w_crisis_teen_girl_1's crisis",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -1651,7 +1687,9 @@
       "image_6": "plh_images/workshops/w_crisis/read_2/slide_6.svg",
       "title": "The fight",
       "_translations": {
-        "title": {},
+        "title": {
+          "tz_sw": true
+        },
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
