@@ -403,7 +403,7 @@
     {
       "type": "text",
       "name": "text_1_3_2",
-      "value": "This app does not use these “cookies” explicitly. However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. In particular, the app integrates Matomo analytics and Firebase authentication software.",
+      "value": "This app does not use these “cookies” explicitly. However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. In particular, the app integrates GlitchTip and Matomo analytics as well as Firebase authentication software.",
       "_translations": {
         "value": {}
       },
@@ -816,6 +816,56 @@
       },
       "_dynamicDependencies": {
         "@local.link_3_4_text": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "name": "link_3_5_text",
+      "value": "GlitchTip",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "link_3_5_text"
+    },
+    {
+      "type": "tile_component",
+      "name": "link_3_5",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "https",
+            "//glitchtip.com/legal/privacy"
+          ],
+          "_raw": "click | go_to_url: https://glitchtip.com/legal/privacy",
+          "_cleaned": "click | go_to_url: https://glitchtip.com/legal/privacy"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "first_line_text": "@local.link_3_5_text",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "_nested_name": "link_3_5",
+      "_dynamicFields": {
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.link_3_5_text",
+              "matchedExpression": "@local.link_3_5_text",
+              "type": "local",
+              "fieldName": "link_3_5_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.link_3_5_text": [
           "parameter_list.first_line_text"
         ]
       }
@@ -1284,5 +1334,5 @@
       }
     }
   ],
-  "_xlsxPath": "templates/global/navigation_templates.xlsx"
+  "_xlsxPath": "templates/global/app_menu.xlsx"
 }

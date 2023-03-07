@@ -5,6 +5,7 @@
   "rows": [
     {
       "id": "keys",
+      "illustration": "essential_tools/mod5and9_keep_healthy.svg",
       "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF; 2020.  \r\n\r\nExtract;\r\nPeople become infected with intestinal parasitic worms (also known as helminths) by eating contaminated food or through contact with contaminated soil. \r\n\r\nDiseases such as typhoid fever – a bacterial infection – are also caused by ingesting contaminated food or water.",
       "reference_link_title": "Baby WASH Programming. UNICEF; 2020.",
       "reference_link": "www.unicef.org/esa/media/7076/file/UNICEF-ESA-Baby-WASH-Programming-2020.pdf",
@@ -20,14 +21,15 @@
           "eng": "The five ways to keeping your food safe"
         },
         "text": {
-          "eng": "People become infected with intestinal worms by eating unsafe food.\n\nDiseases such as typhoid fever (bacteria infection) can also happen by eating unsafe food or water.\n\nThere are five ways to keeping your food safe:\n* Keep clean.\n* Separate raw and cooked food.\n* Cook food thoroughly.\n* Keep food at a safe temperature.\n* Use safe water"
+          "eng": "People become infected with intestinal worms by eating unsafe food.\n\nDiseases such as typhoid fever (bacteria infection) can also happen by eating unsafe food or water.\n\nThere are five ways to keeping your food safe:\n* Keep clean.\n* Separate raw and cooked food.\n* Cook food thoroughly.\n* Keep food at a safe temperature.\n* Use safe water."
         }
       },
-      "text": "People become infected with intestinal worms by eating unsafe food.\n\nDiseases such as typhoid fever (bacteria infection) can also happen by eating unsafe food or water.\n\nThere are five ways to keeping your food safe:\n* Keep clean.\n* Separate raw and cooked food.\n* Cook food thoroughly.\n* Keep food at a safe temperature.\n* Use safe water",
+      "text": "People become infected with intestinal worms by eating unsafe food.\n\nDiseases such as typhoid fever (bacteria infection) can also happen by eating unsafe food or water.\n\nThere are five ways to keeping your food safe:\n* Keep clean.\n* Separate raw and cooked food.\n* Cook food thoroughly.\n* Keep food at a safe temperature.\n* Use safe water.",
       "completed_field": "safe_food_keys_completed"
     },
     {
       "id": "clean",
+      "illustration": "essential_tools/handwashing2.svg",
       "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\n\nExtract\nKeep Clean\ni. Wash your hands before handling food and often during food preparation\nii. Wash your hands after going to the toilet\niii. Wash and sanitize all surfaces and equipment used for food preparation\niv. Protect kitchen areas and food from insects, pests, and other animals",
       "reference_link_title": "5 Keys to Safer Food Manual.  WHO; 2006.",
       "reference_link": "https://www.who.int/publications/i/item/9789241594639",
@@ -45,7 +47,6 @@
         }
       },
       "text": "* Wash your hands with soap before touching food and while cooking.\r\n* Wash your hands after going to the toilet.\r\n* Clean your cooking space and tools.\r\n* Keep bugs, pests, and other animals away from the cooking area.\r\n* Cover food if you can.",
-      "illustration": "essential_tools/handwashing2.svg",
       "subtitle": "Why?",
       "text_2": "Small pathogens that cause disease can transfer from your unwashed hands, chopping boards, cloths and utensils.  Keep these clean.",
       "reference 3": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\n\nExtract:\nWhile most microorganisms do not cause\ndisease, dangerous microorganisms are\nwidely found in soil, water, animals\nand people. These microorganisms are\ncarried on hands, wiping cloths and\nutensils, especially cutting boards and\nthe slightest contact can transfer them\nto food and cause foodborne diseases.",
@@ -81,6 +82,7 @@
     },
     {
       "id": "cook",
+      "illustration": "essential_tools/mod9_hot_food_pot.svg",
       "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\n\nExtract\ni. Cook food thoroughly, especially meat, poultry, eggs, and seafood\nii. Bring food like soups and stews to boil to make sure they have reached 70 degrees Celsius. For meat and poultry, make sure that juices are clear, not pink. Ideally, use a thermometer.\niii. Reheat cooked food thoroughly",
       "reference_link_title": "5 Keys to Safer Food Manual.  WHO; 2006.",
       "reference_link": "https://www.who.int/publications/i/item/9789241594639",
@@ -105,6 +107,7 @@
     },
     {
       "id": "temperature",
+      "illustration": "essential_tools/mod9_hot_food.svg",
       "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\r\n\nExtract\nKeep food at a safe temperature\ni. Do not leave cooked food at room temperature for more than 2 hours\nii. Refrigerate promptly all cooked food and food that can go bad\n(preferably below 5 degrees Celsius)\niii.  Keep cooked food piping hot (more than 60°C) prior to serving\niv. Do not store food too long even in the refrigerator\nv. Do not thaw frozen food at room temperature",
       "reference_link_title": "5 Keys to Safer Food Manual.  WHO; 2006.",
       "reference_link": "https://www.who.int/publications/i/item/9789241594639",
@@ -129,6 +132,7 @@
     },
     {
       "id": "water",
+      "illustration": "essential_tools/mod9_washing_fruit_and_veg.svg",
       "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\r\n\nExtract\ni. Use safe water or treat it to make it safe\nii. Select fresh and wholesome foods \niii. Choose foods processed for safety, such as pasteurized milk\niv. Wash fruits and vegetables, especially if eaten raw\nv. Do not use food beyond its expiry date",
       "reference_link_title": "5 Keys to Safer Food Manual.  WHO; 2006.",
       "reference_link": "https://www.who.int/publications/i/item/9789241594639",

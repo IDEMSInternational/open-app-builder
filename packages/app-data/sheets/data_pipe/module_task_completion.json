@@ -2,6 +2,7 @@
   "flow_type": "data_pipe",
   "flow_name": "module_task_completion",
   "status": "released",
+  "data_list_name": "module_task_completion",
   "rows": [
     {
       "operation": "append_columns",
@@ -10,6 +11,14 @@
       ],
       "input_source": "module",
       "output_target": "module_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: introduction_{@row.id}_completed"
+      ],
+      "input_source": "introduction",
+      "output_target": "introduction_tasks"
     },
     {
       "operation": "append_columns",
@@ -90,6 +99,14 @@
       ],
       "input_source": "bathing",
       "output_target": "bathing_tasks"
+    },
+    {
+      "operation": "append_columns",
+      "args_list": [
+        "completed_field: celebration_{@row.id}_completed"
+      ],
+      "input_source": "celebration",
+      "output_target": "celebration_tasks"
     }
   ],
   "_xlsxPath": "data_lists/modules/module_tasks.xlsx"

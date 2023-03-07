@@ -6,7 +6,7 @@
   "rows": [
     {
       "id": "why",
-      "illustration": "essential_tools/soap.svg",
+      "illustration": "essential_tools/mod11_soap_bucket.svg",
       "reference_link_title": "Community WASH Conversations.  Arkansas:  LifeWater. Mar 2022;  License:  CC BY-NC-SA 3.0",
       "reference_link": "lifewater.org/wp-content/uploads/2022/06/Community-WASH-Conversations-Public.pdf",
       "title": "Why do we need to be clean?",
@@ -26,6 +26,7 @@
     },
     {
       "id": "motivators",
+      "illustration": "essential_tools/mod5and11_washing_face.svg",
       "title": "Importance of bathing and washing",
       "_translations": {
         "title": {},
@@ -43,6 +44,7 @@
     },
     {
       "id": "tips",
+      "illustration": "essential_tools/mod11_cleaning_bathroom.svg",
       "title": "Tips for a clean bathroom",
       "_translations": {
         "title": {},

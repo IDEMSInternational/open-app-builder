@@ -1,0 +1,45 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "partners_data_list",
+  "status": "released",
+  "data_list_name": "partners",
+  "rows": [
+    {
+      "id": "innodems",
+      "splash_page": 1,
+      "name": "INNODEMS",
+      "image_asset": "logos/innodems.png"
+    },
+    {
+      "id": "idems",
+      "splash_page": 1,
+      "name": "IDEMS",
+      "image_asset": "logos/idems.png"
+    },
+    {
+      "id": "university_of_oxford",
+      "splash_page": 1,
+      "name": "University of Oxford",
+      "image_asset": "logos/university_of_oxford.png"
+    },
+    {
+      "id": "uct",
+      "splash_page": 1,
+      "name": "UCT",
+      "image_asset": "logos/uct.png"
+    },
+    {
+      "id": "nimr",
+      "splash_page": 1,
+      "name": "NIMR",
+      "image_asset": "logos/nimr.png"
+    },
+    {
+      "id": "cwb",
+      "splash_page": 1,
+      "name": "Clowns Without Borders",
+      "image_asset": "logos/cwb.png"
+    }
+  ],
+  "_xlsxPath": "data_lists/partners_data_lists.xlsx"
+}

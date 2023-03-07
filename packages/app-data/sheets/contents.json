@@ -1,9 +1,22 @@
 {
   "data_list": {
+    "language": {
+      "flow_type": "data_list",
+      "flow_name": "language",
+      "data_list_name": "language",
+      "flow_subtype": "app_config_language_list",
+      "_xlsxPath": "data_lists/language.xlsx"
+    },
     "bathing": {
       "flow_type": "data_list",
       "flow_name": "bathing",
       "data_list_name": "bathing",
+      "_xlsxPath": "data_lists/modules/module_details.xlsx"
+    },
+    "celebration": {
+      "flow_type": "data_list",
+      "flow_name": "celebration",
+      "data_list_name": "celebration",
       "_xlsxPath": "data_lists/modules/module_details.xlsx"
     },
     "clean_toilets": {
@@ -20,6 +33,11 @@
     },
     "bathing_tasks": {
       "flow_name": "bathing_tasks",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
+    "celebration_tasks": {
+      "flow_name": "celebration_tasks",
       "flow_subtype": "generated",
       "flow_type": "data_list"
     },
@@ -45,6 +63,11 @@
     },
     "how_to_wash_your_hands_tasks": {
       "flow_name": "how_to_wash_your_hands_tasks",
+      "flow_subtype": "generated",
+      "flow_type": "data_list"
+    },
+    "introduction_tasks": {
+      "flow_name": "introduction_tasks",
       "flow_subtype": "generated",
       "flow_type": "data_list"
     },
@@ -97,11 +120,29 @@
       "data_list_name": "how_to_wash_your_hands",
       "_xlsxPath": "data_lists/modules/module_details.xlsx"
     },
+    "introduction": {
+      "flow_type": "data_list",
+      "flow_name": "introduction",
+      "data_list_name": "introduction",
+      "_xlsxPath": "data_lists/modules/module_details.xlsx"
+    },
+    "launch_actions": {
+      "flow_type": "data_list",
+      "flow_subtype": "lifecycle_actions",
+      "flow_name": "launch_actions",
+      "_xlsxPath": "templates/global/app_launch_templates.xlsx"
+    },
     "module": {
       "flow_type": "data_list",
       "flow_name": "module",
       "data_list_name": "module",
       "_xlsxPath": "data_lists/modules/module_tasks.xlsx"
+    },
+    "partners_data_list": {
+      "flow_type": "data_list",
+      "flow_name": "partners_data_list",
+      "data_list_name": "partners",
+      "_xlsxPath": "data_lists/partners_data_lists.xlsx"
     },
     "reference_sections": {
       "flow_type": "data_list",
@@ -141,13 +182,38 @@
     }
   },
   "global": {
+    "app_menu_globals": {
+      "flow_type": "global",
+      "flow_name": "app_menu_globals",
+      "_xlsxPath": "globals/navigation_globals.xlsx"
+    },
+    "nav_button_globals": {
+      "flow_type": "global",
+      "flow_name": "nav_button_globals",
+      "_xlsxPath": "globals/navigation_globals.xlsx"
+    },
     "navigation_globals": {
       "flow_type": "global",
       "flow_name": "navigation_globals",
       "_xlsxPath": "globals/navigation_globals.xlsx"
+    },
+    "user_input_globals": {
+      "flow_type": "global",
+      "flow_name": "user_input_globals",
+      "_xlsxPath": "globals/navigation_globals.xlsx"
     }
   },
   "template": {
+    "accept_terms": {
+      "flow_type": "template",
+      "flow_name": "accept_terms",
+      "_xlsxPath": "templates/global/app_launch_templates.xlsx"
+    },
+    "accept_terms_warning": {
+      "flow_type": "template",
+      "flow_name": "accept_terms_warning",
+      "_xlsxPath": "templates/global/app_launch_templates.xlsx"
+    },
     "app_launch_calculations": {
       "flow_type": "template",
       "flow_name": "app_launch_calculations",
@@ -157,7 +223,12 @@
     "app_menu": {
       "flow_type": "template",
       "flow_name": "app_menu",
-      "_xlsxPath": "templates/global/navigation_templates.xlsx"
+      "_xlsxPath": "templates/global/app_menu.xlsx"
+    },
+    "app_settings": {
+      "flow_type": "template",
+      "flow_name": "app_settings",
+      "_xlsxPath": "templates/global/app_settings.xlsx"
     },
     "debug_nav": {
       "flow_type": "template",
@@ -171,22 +242,37 @@
       "flow_subtype": "debug",
       "_xlsxPath": "quality_assurance/debug_sheets/debug_nav.xlsx"
     },
+    "dev_mode_enter": {
+      "flow_type": "template",
+      "flow_name": "dev_mode_enter",
+      "_xlsxPath": "templates/global/app_settings.xlsx"
+    },
+    "dev_mode_exit": {
+      "flow_type": "template",
+      "flow_name": "dev_mode_exit",
+      "_xlsxPath": "templates/global/app_settings.xlsx"
+    },
     "home_screen": {
       "flow_type": "template",
       "flow_name": "home_screen",
       "_xlsxPath": "templates/global/navigation_templates.xlsx"
     },
+    "language_select": {
+      "flow_type": "template",
+      "flow_name": "language_select",
+      "_xlsxPath": "templates/global/app_settings.xlsx"
+    },
     "app_menu_privacy_policy": {
       "flow_type": "template",
       "flow_name": "app_menu_privacy_policy",
       "flow_subtype": "legal_terms",
-      "_xlsxPath": "templates/global/navigation_templates.xlsx"
+      "_xlsxPath": "templates/global/app_menu.xlsx"
     },
     "app_menu_terms": {
       "flow_type": "template",
       "flow_name": "app_menu_terms",
       "flow_subtype": "legal_terms",
-      "_xlsxPath": "templates/global/navigation_templates.xlsx"
+      "_xlsxPath": "templates/global/app_menu.xlsx"
     },
     "module_card": {
       "flow_type": "template",
@@ -203,22 +289,69 @@
       "flow_name": "module_tool",
       "_xlsxPath": "templates/global/navigation_templates.xlsx"
     },
+    "nav_buttons": {
+      "flow_type": "template",
+      "flow_name": "nav_buttons",
+      "_xlsxPath": "templates/global/navigation_templates.xlsx"
+    },
     "reference_page": {
       "flow_type": "template",
       "flow_name": "reference_page",
-      "_xlsxPath": "templates/global/navigation_templates.xlsx"
+      "_xlsxPath": "templates/global/app_menu.xlsx"
     },
     "reference_popup": {
       "flow_type": "template",
       "flow_name": "reference_popup",
+      "_xlsxPath": "templates/global/app_menu.xlsx"
+    },
+    "reset_app": {
+      "flow_type": "template",
+      "flow_name": "reset_app",
+      "_xlsxPath": "templates/global/app_settings.xlsx"
+    },
+    "splash_partners": {
+      "flow_type": "template",
+      "flow_name": "splash_partners",
+      "_xlsxPath": "templates/global/app_launch_templates.xlsx"
+    },
+    "splash_screens": {
+      "flow_type": "template",
+      "flow_name": "splash_screens",
+      "_xlsxPath": "templates/global/app_launch_templates.xlsx"
+    },
+    "task_completion_toggle": {
+      "flow_type": "template",
+      "flow_name": "task_completion_toggle",
       "_xlsxPath": "templates/global/navigation_templates.xlsx"
+    },
+    "user_code": {
+      "flow_type": "template",
+      "flow_name": "user_code",
+      "_xlsxPath": "templates/global/app_settings.xlsx"
+    },
+    "user_info": {
+      "flow_type": "template",
+      "flow_name": "user_info",
+      "_xlsxPath": "templates/global/app_settings.xlsx"
     }
   },
-  "tour": {},
+  "tour": {
+    "home_screen_modular_tour_intro": {
+      "flow_type": "tour",
+      "flow_name": "home_screen_modular_tour_intro",
+      "_xlsxPath": "tours/global/home_screen_modular_tour.xlsx"
+    },
+    "home_screen_modular_tour_menu": {
+      "flow_type": "tour",
+      "flow_name": "home_screen_modular_tour_menu",
+      "_xlsxPath": "tours/global/home_screen_modular_tour.xlsx"
+    }
+  },
   "data_pipe": {
     "module_task_completion": {
       "flow_type": "data_pipe",
       "flow_name": "module_task_completion",
+      "data_list_name": "module_task_completion",
       "_xlsxPath": "data_lists/modules/module_tasks.xlsx"
     }
   }

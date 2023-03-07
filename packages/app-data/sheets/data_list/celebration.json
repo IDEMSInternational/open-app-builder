@@ -1,0 +1,27 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "celebration",
+  "status": "released",
+  "data_list_name": "celebration",
+  "rows": [
+    {
+      "id": "congratulations",
+      "illustration": "essential_tools/mod12_woman_celebrating.svg",
+      "title": "Well done",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Well done"
+        },
+        "text": {
+          "eng": "CONGRATULATIONS!  You have done it!  You have built important skills in WASH.  This is a huge achievement.  Let’s celebrate you, and the steps you are taking to ensure your home is healthy and strong."
+        }
+      },
+      "text": "CONGRATULATIONS!  You have done it!  You have built important skills in WASH.  This is a huge achievement.  Let’s celebrate you, and the steps you are taking to ensure your home is healthy and strong."
+    }
+  ],
+  "_xlsxPath": "data_lists/modules/module_details.xlsx"
+}

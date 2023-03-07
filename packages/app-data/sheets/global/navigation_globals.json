@@ -5,22 +5,6 @@
   "rows": [
     {
       "type": "declare_global_constant",
-      "name": "terms_and_conditions",
-      "value": "Terms and Conditions",
-      "_translations": {
-        "value": {}
-      }
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "privacy_policy",
-      "value": "Privacy Policy",
-      "_translations": {
-        "value": {}
-      }
-    },
-    {
-      "type": "declare_global_constant",
       "name": "app_name",
       "value": "WASH App",
       "_translations": {

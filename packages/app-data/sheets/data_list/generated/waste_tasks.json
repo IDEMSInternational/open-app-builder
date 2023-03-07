@@ -5,6 +5,7 @@
   "rows": [
     {
       "id": "what",
+      "illustration": "essential_tools/mod10_waste.svg",
       "reference": "Ministry of Education, Science and Technology, National Guideline for Water, Sanitation and Hygiene for Tanzania Schools; 2016.\n\nExtract:\nSanitation/environmental sanitation is the hygienic means of preventing human contact from hazards of wastes to promote health. Hazards can be physical, microbiological, biological or chemical agents of disease. Subsets of this category are:\ni. safe collection, storage, treatment and disposal/re-use/recycling of human excreta (faeces and urine);\nii. management/re-use/recycling of solid wastes (trash or rubbish);\niii. drainage and disposal/re-use/recycling of household wastewater (often referred to as sullage or wastewater);\niv. drainage of storm-water;\nv. treatment and disposal/re-use/recycling of sewage effluents;\nvi. collection and management of industrial waste products;\nvii. air and noise pollution; and\nviii. management of hazardous wastes including hospital wastes, and chemical/radioactive and other dangerous substances.",
       "reference_link_title": "National Guideline for Water, Sanitation and Hygiene for Tanzania Schools. MoEST; 2016.",
       "reference_link": "www.unicef.org/tanzania/media/1526/file/National%20Guideline%20for%20Water,%20Sanitation%20and%20Hygiene%20for%20Tanzania%20Schools.pdf",
@@ -26,6 +27,7 @@
     },
     {
       "id": "why",
+      "illustration": "essential_tools/mod10_home_wastebin.svg",
       "reference_link_title": "Centre for Affordable Water and Sanitation Technology: Community WASH Promotion; 2017.",
       "reference_link": "cdn.sanity.io/files/r8bm187e/production/ec2f1615fae8971ff69114f6274d47536213e608.pdf",
       "title": "Why should we manage our garbage?",

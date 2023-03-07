@@ -6,6 +6,7 @@
   "rows": [
     {
       "id": "what",
+      "illustration": "essential_tools/mod7_house.svg",
       "reference": ".",
       "title": "What is a clean house?",
       "_translations": {
@@ -24,6 +25,7 @@
     },
     {
       "id": "how",
+      "illustration": "essential_tools/mod5and7_worms_in_compound.svg",
       "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF; 2020.  \n\nExtract: \nRegularly clear external areas of any animal or child faeces, and clean contaminated\nareas immediately. \n\nRegular cleaning of floors with soap and water (and bleach if available).\n\nSafely dispose of child faeces, either in a latrine or a covered garbage pit.",
       "reference_link_title": "Baby WASH Programming. UNICEF; 2020.",
       "reference_link": "www.unicef.org/esa/reports/baby-wash-programming",
@@ -57,10 +59,10 @@
           "eng": "More tips to keeping a clean home!"
         },
         "text": {
-          "eng": "* Get rid of pests in your house by sweeping, washing and drying up damp places regularly.\r\n* Protect food and throw garbage in a covered pit - flies like garbage!\r\n*Mosquitoes like to live in still water, such as in open containers and puddles. Cover or empty any still water in your home to keep mosquitoes away.\r\n.\n."
+          "eng": "* Get rid of pests in your house by sweeping, washing and drying up damp places regularly.\n* Protect food and throw garbage in a covered pit - flies like garbage!\n*Mosquitoes like to live in still water, such as in open containers and puddles. Cover or empty any still water in your home to keep mosquitoes away."
         }
       },
-      "text": "* Get rid of pests in your house by sweeping, washing and drying up damp places regularly.\r\n* Protect food and throw garbage in a covered pit - flies like garbage!\r\n*Mosquitoes like to live in still water, such as in open containers and puddles. Cover or empty any still water in your home to keep mosquitoes away.\r\n.\n."
+      "text": "* Get rid of pests in your house by sweeping, washing and drying up damp places regularly.\n* Protect food and throw garbage in a covered pit - flies like garbage!\n*Mosquitoes like to live in still water, such as in open containers and puddles. Cover or empty any still water in your home to keep mosquitoes away."
     }
   ],
   "_xlsxPath": "data_lists/modules/module_details.xlsx"
