@@ -28,9 +28,9 @@ config.error_logging = {
 config.app_config.APP_LANGUAGES.default = "gb_en";
 config.app_config.APP_SIDEMENU_DEFAULTS.title = "ParentApp";
 config.app_config.APP_HEADER_DEFAULTS.title = "ParentApp";
-config.app_config.NOTIFICATION_DEFAULTS.title = "New message from PLH";
+config.app_config.NOTIFICATION_DEFAULTS.title = "New message from ParentApp";
 config.app_config.NOTIFICATION_DEFAULTS.text = "You have a new message from ParentApp";
-config.app_config.APP_SKINS.defaultSkinName = SKINS.weekly_workshop.name;
+config.app_config.APP_SKINS.defaultSkinName = SKINS.modular.name;
 config.app_config.APP_SKINS.available = [SKINS.modular, SKINS.weekly_workshop];
 config.app_config.APP_THEMES.available = ["default", "professional"];
 
