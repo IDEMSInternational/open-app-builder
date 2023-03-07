@@ -523,94 +523,36 @@
       "_nested_name": "dg_box"
     },
     {
-      "type": "display_group",
-      "name": "dg_completed",
-      "exclude_from_translation": true,
+      "type": "template",
+      "name": "task_completion_toggle",
+      "value": "task_completion_toggle",
       "rows": [
         {
-          "type": "toggle_bar",
-          "name": "toggle_completed",
-          "value": "@fields.@local.tool_data.completed_field",
+          "name": "completed_field",
+          "value": "@local.tool_data.completed_field",
           "_translations": {
             "value": {}
           },
-          "action_list": [
-            {
-              "trigger": "changed",
-              "action_id": "set_field",
-              "args": [
-                "@local.tool_data.completed_field",
-                "this.value"
-              ],
-              "_raw": "changed | set_field: @local.tool_data.completed_field: this.value",
-              "_cleaned": "changed | set_field: @local.tool_data.completed_field: this.value"
-            }
-          ],
-          "exclude_from_translation": true,
-          "_nested_name": "dg_completed.toggle_completed",
+          "type": "set_variable",
+          "_nested_name": "task_completion_toggle.completed_field",
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@fields.@local.tool_data.completed_field",
+                "fullExpression": "@local.tool_data.completed_field",
                 "matchedExpression": "@local.tool_data.completed_field",
                 "type": "local",
                 "fieldName": "tool_data"
               }
-            ],
-            "action_list": {
-              "0": {
-                "args": {
-                  "0": [
-                    {
-                      "fullExpression": "@local.tool_data.completed_field",
-                      "matchedExpression": "@local.tool_data.completed_field",
-                      "type": "local",
-                      "fieldName": "tool_data"
-                    }
-                  ]
-                },
-                "_raw": [
-                  {
-                    "fullExpression": "changed | set_field: @local.tool_data.completed_field: this.value",
-                    "matchedExpression": "@local.tool_data.completed_field",
-                    "type": "local",
-                    "fieldName": "tool_data"
-                  }
-                ],
-                "_cleaned": [
-                  {
-                    "fullExpression": "changed | set_field: @local.tool_data.completed_field: this.value",
-                    "matchedExpression": "@local.tool_data.completed_field",
-                    "type": "local",
-                    "fieldName": "tool_data"
-                  }
-                ]
-              }
-            }
+            ]
           },
           "_dynamicDependencies": {
             "@local.tool_data.completed_field": [
-              "value",
-              "action_list.0.args.0",
-              "action_list.0._raw",
-              "action_list.0._cleaned"
+              "value"
             ]
           }
-        },
-        {
-          "type": "text",
-          "name": "toggle_text",
-          "value": "I have read this",
-          "_translations": {
-            "value": {}
-          },
-          "parameter_list": {
-            "flex": "1"
-          },
-          "_nested_name": "dg_completed.toggle_text"
         }
       ],
-      "_nested_name": "dg_completed"
+      "_nested_name": "task_completion_toggle"
     }
   ],
   "_xlsxPath": "templates/global/navigation_templates.xlsx"

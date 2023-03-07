@@ -5,7 +5,7 @@
   "rows": [
     {
       "id": "what",
-      "illustration": "essential_tools/home_toilet.svg",
+      "illustration": "essential_tools/mod6_toilet_closeup.svg",
       "reference": "Guidelines on sanitation and health. Geneva: World Health Organization; 2018. Licence: CC BY-NC-SA 3.0 IGO.\n\nExtract:\nSafely managed sanitation for households includes - \nUse of improved facilities that are not shared with other households and where excreta are safely disposed of in situ or transported and treated off-site.",
       "reference_link_title": "Guidelines on sanitation and health. WHO; 2018.",
       "reference_link": "www.who.int/publications/i/item/9789241514705",
@@ -27,6 +27,7 @@
     },
     {
       "id": "motivators",
+      "illustration": "essential_tools/mod6_cleaning_toilet.svg",
       "title": "Importance of clean and safe toilets",
       "_translations": {
         "title": {},
@@ -46,6 +47,7 @@
     },
     {
       "id": "importance",
+      "illustration": "essential_tools/mod6_food_with_flies.svg",
       "title": "Why using a toilet is important",
       "_translations": {
         "title": {},
@@ -64,7 +66,7 @@
     },
     {
       "id": "tips",
-      "illustration": "essential_tools/clean_latrine.png",
+      "illustration": "essential_tools/mod6_sweeping_toilet.svg",
       "reference_link_title": "Community WASH Conversations.  Arkansas:  LifeWater. Mar 2022;  License:  CC BY-NC-SA 3.0",
       "reference_link": "https://lifewater.org/wp-content/uploads/2022/06/Community-WASH-Conversations-Public.pdf",
       "title": "Tips for a clean toilet",

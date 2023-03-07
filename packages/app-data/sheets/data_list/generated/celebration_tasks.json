@@ -1,0 +1,26 @@
+{
+  "flow_name": "celebration_tasks",
+  "flow_subtype": "generated",
+  "flow_type": "data_list",
+  "rows": [
+    {
+      "id": "congratulations",
+      "illustration": "essential_tools/mod12_woman_celebrating.svg",
+      "title": "Well done",
+      "_translations": {
+        "title": {},
+        "text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Well done"
+        },
+        "text": {
+          "eng": "CONGRATULATIONS!  You have done it!  You have built important skills in WASH.  This is a huge achievement.  Let’s celebrate you, and the steps you are taking to ensure your home is healthy and strong."
+        }
+      },
+      "text": "CONGRATULATIONS!  You have done it!  You have built important skills in WASH.  This is a huge achievement.  Let’s celebrate you, and the steps you are taking to ensure your home is healthy and strong.",
+      "completed_field": "celebration_congratulations_completed"
+    }
+  ]
+}

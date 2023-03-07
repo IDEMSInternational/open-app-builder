@@ -1,0 +1,104 @@
+{
+  "flow_type": "global",
+  "flow_name": "nav_button_globals",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_global_constant",
+      "name": "next",
+      "value": "Next",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "previous",
+      "value": "Previous",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "save",
+      "value": "Save",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "start",
+      "value": "Start",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "skip",
+      "value": "Skip",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "continue",
+      "value": "Continue",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "next_button",
+      "value": "**@global.next**",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "previous_button",
+      "value": "**@global.previous**",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "save_button",
+      "value": "**@global.save**",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "start_button",
+      "value": "**@global.start**",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "skip_button",
+      "value": "**@global.skip**",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "continue_button",
+      "value": "**@global.continue**",
+      "_translations": {
+        "value": {}
+      }
+    }
+  ],
+  "_xlsxPath": "globals/navigation_globals.xlsx"
+}

@@ -1,0 +1,185 @@
+{
+  "flow_type": "template",
+  "flow_name": "app_settings",
+  "status": "released",
+  "rows": [
+    {
+      "type": "button",
+      "name": "button_lang",
+      "value": "@global.language",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "language_select"
+          ],
+          "_raw": "click | go_to: language_select",
+          "_cleaned": "click | go_to: language_select"
+        }
+      ],
+      "_nested_name": "button_lang",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.language",
+            "matchedExpression": "@global.language",
+            "type": "global",
+            "fieldName": "language"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.language": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_profile",
+      "value": "@global.user_info",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "user_info"
+          ],
+          "_raw": "click | go_to: user_info",
+          "_cleaned": "click | go_to: user_info"
+        }
+      ],
+      "_nested_name": "button_profile",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.user_info",
+            "matchedExpression": "@global.user_info",
+            "type": "global",
+            "fieldName": "user_info"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.user_info": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_id",
+      "value": "@global.uuid_title",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "user_code"
+          ],
+          "_raw": "click | go_to: user_code",
+          "_cleaned": "click | go_to: user_code"
+        }
+      ],
+      "_nested_name": "button_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.uuid_title",
+            "matchedExpression": "@global.uuid_title",
+            "type": "global",
+            "fieldName": "uuid_title"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.uuid_title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_dev_enter",
+      "value": "Developer Mode",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "dev_mode_enter"
+          ],
+          "_raw": "click | go_to: dev_mode_enter",
+          "_cleaned": "click | go_to: dev_mode_enter"
+        }
+      ],
+      "condition": "@fields.user_mode",
+      "_nested_name": "button_dev_enter",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.user_mode",
+            "matchedExpression": "@fields.user_mode",
+            "type": "fields",
+            "fieldName": "user_mode"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.user_mode": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_dev_exit",
+      "value": "Developer Mode",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "dev_mode_exit"
+          ],
+          "_raw": "click | go_to: dev_mode_exit",
+          "_cleaned": "click | go_to: dev_mode_exit"
+        }
+      ],
+      "condition": "!@fields.user_mode",
+      "_nested_name": "button_dev_exit",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@fields.user_mode",
+            "matchedExpression": "!@fields.user_mode",
+            "type": "fields",
+            "fieldName": "user_mode"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@fields.user_mode": [
+          "condition"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "templates/global/app_settings.xlsx"
+}

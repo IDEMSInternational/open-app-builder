@@ -1,0 +1,124 @@
+{
+  "flow_type": "template",
+  "flow_name": "splash_partners",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "value": "@global.app_name is brought to you by",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "large center"
+      },
+      "name": "text",
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.app_name is brought to you by",
+            "matchedExpression": "@global.app_name",
+            "type": "global",
+            "fieldName": "app_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.app_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "global_partners",
+      "parameter_list": {
+        "style": "two_columns_images grid-spacing-sm"
+      },
+      "rows": [
+        {
+          "type": "items",
+          "name": "loop_partners",
+          "value": "@data.partners",
+          "rows": [
+            {
+              "type": "image",
+              "name": "@item.id",
+              "value": "@item.image_asset",
+              "_translations": {
+                "value": {}
+              },
+              "condition": "@item.splash_page == 1",
+              "_nested_name": "global_partners.loop_partners.@item.id",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@item.image_asset",
+                    "matchedExpression": "@item.image_asset",
+                    "type": "item",
+                    "fieldName": "image_asset"
+                  }
+                ],
+                "condition": [
+                  {
+                    "fullExpression": "@item.splash_page == 1",
+                    "matchedExpression": "@item.splash_page",
+                    "type": "item",
+                    "fieldName": "splash_page"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "global_partners.loop_partners.@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name"
+                ],
+                "@item.image_asset": [
+                  "value"
+                ],
+                "@item.splash_page": [
+                  "condition"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "global_partners.loop_partners",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.partners",
+                "matchedExpression": "@data.partners",
+                "type": "data",
+                "fieldName": "partners"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.partners": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "global_partners"
+    }
+  ],
+  "_xlsxPath": "templates/global/app_launch_templates.xlsx"
+}

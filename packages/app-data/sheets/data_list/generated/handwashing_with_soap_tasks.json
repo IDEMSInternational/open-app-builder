@@ -5,7 +5,7 @@
   "rows": [
     {
       "id": "why",
-      "illustration": "essential_tools/handwashing2.svg",
+      "illustration": "essential_tools/mod2and5_why_wash_hands.svg",
       "title": "Why do we wash hands?",
       "_translations": {
         "title": {},
@@ -24,7 +24,7 @@
     },
     {
       "id": "why_soap",
-      "illustration": "essential_tools/soap.svg",
+      "illustration": "essential_tools/mod2_why_soap.svg",
       "title": "Why is soap important?",
       "_translations": {
         "title": {},
@@ -43,7 +43,7 @@
     },
     {
       "id": "materials",
-      "illustration": "essential_tools/handwash_need.svg",
+      "illustration": "essential_tools/mod2_handwash_need.svg",
       "title": "What do you need?",
       "_translations": {
         "title": {},

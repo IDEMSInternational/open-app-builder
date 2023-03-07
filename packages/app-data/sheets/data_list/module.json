@@ -7,6 +7,7 @@
     {
       "id": "introduction",
       "number": 1,
+      "illustration": "essential_tools/home_woman_advising.svg",
       "title": "Water, Sanitation and Hygiene",
       "_translations": {
         "title": {},
@@ -44,7 +45,7 @@
     {
       "id": "when_to_wash_your_hands",
       "number": 3,
-      "illustration": "essential_tools/handgerms.svg",
+      "illustration": "essential_tools/home_handgerms.svg",
       "title": "When to wash your hands",
       "_translations": {
         "title": {},
@@ -63,7 +64,7 @@
     {
       "id": "how_to_wash_your_hands",
       "number": 4,
-      "illustration": "essential_tools/soap.svg",
+      "illustration": "essential_tools/mod2_why_soap.svg",
       "title": "How to wash your hands",
       "_translations": {
         "title": {},
@@ -82,7 +83,7 @@
     {
       "id": "healthy_families",
       "number": 5,
-      "illustration": "essential_tools/home_family.svg",
+      "illustration": "essential_tools/home_man_advising.svg",
       "title": "Keeping healthy",
       "_translations": {
         "title": {},
@@ -120,7 +121,7 @@
     {
       "id": "healthy_homes",
       "number": 7,
-      "illustration": "essential_tools/home_healthy_homes.svg",
+      "illustration": "essential_tools/mod7_house.svg",
       "title": "Healthy home",
       "_translations": {
         "title": {},
@@ -139,7 +140,7 @@
     {
       "id": "safe_drinking_water",
       "number": 8,
-      "illustration": "essential_tools/home_water_source.svg",
+      "illustration": "essential_tools/home_water_flow.svg",
       "title": "Safe drinking water",
       "_translations": {
         "title": {},
@@ -158,7 +159,7 @@
     {
       "id": "safe_food",
       "number": 9,
-      "illustration": "essential_tools/home_safe_food.svg",
+      "illustration": "essential_tools/mod9_hot_food.svg",
       "title": "Safe food",
       "_translations": {
         "title": {},
@@ -177,7 +178,7 @@
     {
       "id": "waste",
       "number": 10,
-      "illustration": "essential_tools/home_waste.svg",
+      "illustration": "essential_tools/mod10_home_wastebin.svg",
       "title": "Garbage management",
       "_translations": {
         "title": {},
@@ -196,7 +197,7 @@
     {
       "id": "bathing",
       "number": 11,
-      "illustration": "essential_tools/home_shower.svg",
+      "illustration": "essential_tools/mod11_soap_bucket.svg",
       "title": "Bathing and washing",
       "_translations": {
         "title": {},
@@ -215,6 +216,7 @@
     {
       "id": "celebration",
       "number": 12,
+      "illustration": "essential_tools/home_man_celebrating.svg",
       "title": "Celebration",
       "_translations": {
         "title": {},
@@ -225,10 +227,10 @@
           "eng": "Celebration"
         },
         "text_introduction": {
-          "eng": "Celebrate everything that you learned."
+          "eng": "Celebrate everything that you have learned."
         }
       },
-      "text_introduction": "Celebrate everything that you learned."
+      "text_introduction": "Celebrate everything that you have learned."
     }
   ],
   "_xlsxPath": "data_lists/modules/module_tasks.xlsx"

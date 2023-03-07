@@ -6,6 +6,7 @@
     {
       "id": "introduction",
       "number": 1,
+      "illustration": "essential_tools/home_woman_advising.svg",
       "title": "Water, Sanitation and Hygiene",
       "_translations": {
         "title": {},
@@ -25,6 +26,7 @@
     {
       "id": "handwashing_with_soap",
       "number": 2,
+      "illustration": "essential_tools/home_handwashing.svg",
       "title": "Handwashing with soap",
       "_translations": {
         "title": {},
@@ -39,12 +41,12 @@
         }
       },
       "text_introduction": "Washing your hands with soap is one of the most important things you can do to keep strong and healthy.",
-      "illustration": "essential_tools/home_handwashing.svg",
       "completed_field": "handwashing_with_soap_completed"
     },
     {
       "id": "when_to_wash_your_hands",
       "number": 3,
+      "illustration": "essential_tools/home_handgerms.svg",
       "title": "When to wash your hands",
       "_translations": {
         "title": {},
@@ -59,12 +61,12 @@
         }
       },
       "text_introduction": "To avoid the spread of germs it is important to wash your hands with soap several times a day.",
-      "illustration": "essential_tools/handgerms.svg",
       "completed_field": "when_to_wash_your_hands_completed"
     },
     {
       "id": "how_to_wash_your_hands",
       "number": 4,
+      "illustration": "essential_tools/mod2_why_soap.svg",
       "title": "How to wash your hands",
       "_translations": {
         "title": {},
@@ -79,12 +81,12 @@
         }
       },
       "text_introduction": "Washing your hands is easy! Just follow these simple steps.",
-      "illustration": "essential_tools/soap.svg",
       "completed_field": "how_to_wash_your_hands_completed"
     },
     {
       "id": "healthy_families",
       "number": 5,
+      "illustration": "essential_tools/home_man_advising.svg",
       "title": "Keeping healthy",
       "_translations": {
         "title": {},
@@ -99,12 +101,12 @@
         }
       },
       "text_introduction": "Prevent diseases by drinking safe water, using clean toilets and washing your hands often.",
-      "illustration": "essential_tools/home_family.svg",
       "completed_field": "healthy_families_completed"
     },
     {
       "id": "clean_toilets",
       "number": 6,
+      "illustration": "essential_tools/home_toilet.svg",
       "title": "Clean toilets",
       "_translations": {
         "title": {},
@@ -119,12 +121,12 @@
         }
       },
       "text_introduction": "A clean toilet means good hygiene.  A dirty one can mean disease.",
-      "illustration": "essential_tools/home_toilet.svg",
       "completed_field": "clean_toilets_completed"
     },
     {
       "id": "healthy_homes",
       "number": 7,
+      "illustration": "essential_tools/mod7_house.svg",
       "title": "Healthy home",
       "_translations": {
         "title": {},
@@ -139,12 +141,12 @@
         }
       },
       "text_introduction": "A safe place to live is possible when your home and its surroundings are clean.",
-      "illustration": "essential_tools/home_healthy_homes.svg",
       "completed_field": "healthy_homes_completed"
     },
     {
       "id": "safe_drinking_water",
       "number": 8,
+      "illustration": "essential_tools/home_water_flow.svg",
       "title": "Safe drinking water",
       "_translations": {
         "title": {},
@@ -159,12 +161,12 @@
         }
       },
       "text_introduction": "Clean water saves money and improves health. Collect water from a safe source, maintain clean containers, and treat water to make it clean.",
-      "illustration": "essential_tools/home_water_source.svg",
       "completed_field": "safe_drinking_water_completed"
     },
     {
       "id": "safe_food",
       "number": 9,
+      "illustration": "essential_tools/mod9_hot_food.svg",
       "title": "Safe food",
       "_translations": {
         "title": {},
@@ -179,12 +181,12 @@
         }
       },
       "text_introduction": "There are five ways to keep food safe. Know what they are!",
-      "illustration": "essential_tools/home_safe_food.svg",
       "completed_field": "safe_food_completed"
     },
     {
       "id": "waste",
       "number": 10,
+      "illustration": "essential_tools/mod10_home_wastebin.svg",
       "title": "Garbage management",
       "_translations": {
         "title": {},
@@ -199,12 +201,12 @@
         }
       },
       "text_introduction": "Let's manage our garbage.  It will mean a clean home.",
-      "illustration": "essential_tools/home_waste.svg",
       "completed_field": "waste_completed"
     },
     {
       "id": "bathing",
       "number": 11,
+      "illustration": "essential_tools/mod11_soap_bucket.svg",
       "title": "Bathing and washing",
       "_translations": {
         "title": {},
@@ -219,12 +221,12 @@
         }
       },
       "text_introduction": "Wash often in a clean private bathing place (sometimes, you can even sing while bathing!).",
-      "illustration": "essential_tools/home_shower.svg",
       "completed_field": "bathing_completed"
     },
     {
       "id": "celebration",
       "number": 12,
+      "illustration": "essential_tools/home_man_celebrating.svg",
       "title": "Celebration",
       "_translations": {
         "title": {},
@@ -235,10 +237,10 @@
           "eng": "Celebration"
         },
         "text_introduction": {
-          "eng": "Celebrate everything that you learned."
+          "eng": "Celebrate everything that you have learned."
         }
       },
-      "text_introduction": "Celebrate everything that you learned.",
+      "text_introduction": "Celebrate everything that you have learned.",
       "completed_field": "celebration_completed"
     }
   ]

@@ -1,0 +1,63 @@
+{
+  "flow_type": "tour",
+  "flow_name": "home_screen_modular_tour_intro",
+  "status": "released",
+  "rows": [
+    {
+      "type": "step",
+      "title": "Welcome to @global.app_name",
+      "_translations": {
+        "title": {},
+        "message_text": {}
+      },
+      "message_text": "<p>You deserve to feel good, and have happier family relationships.</p>\n\n<p>@global.app_name is here to support you.</p>\n\n<p>Here is how to use the app:</p>",
+      "route": "template/home_screen"
+    },
+    {
+      "type": "step",
+      "message_text": "This big button takes you to the @global.workshop you are currently exploring. Tap this to find:",
+      "_translations": {
+        "message_text": {}
+      },
+      "template_component_name": "dg_highlighted_module",
+      "route": "template/home_screen"
+    },
+    {
+      "type": "step",
+      "message_text": "Quick reminders on how to successfully use a parenting skill.",
+      "_translations": {
+        "message_text": {}
+      },
+      "template_component_name": "dg_card_tools",
+      "route": "template/module_overview"
+    },
+    {
+      "type": "step",
+      "message_text": "One easy idea on how you can apply a new skill with your family.",
+      "_translations": {
+        "message_text": {}
+      },
+      "template_component_name": "dg_card_hp",
+      "route": "template/module_overview"
+    },
+    {
+      "type": "step",
+      "message_text": "Here you can select any of the other @global.workshops in @global.parent_app. Each @global.workshop gives you one important parenting skill. Swipe to see the next @global.workshops.",
+      "_translations": {
+        "message_text": {}
+      },
+      "template_component_name": "dg_all_modules",
+      "route": "template/home_screen"
+    },
+    {
+      "type": "step",
+      "message_text": "You can explore any @global.workshop whenever you want. To see the biggest change in your family, complete all the activities in one @global.workshop before moving to the next one.",
+      "_translations": {
+        "message_text": {}
+      },
+      "template_component_name": "dg_all_modules",
+      "route": "template/home_screen"
+    }
+  ],
+  "_xlsxPath": "tours/global/home_screen_modular_tour.xlsx"
+}
