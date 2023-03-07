@@ -6,10 +6,11 @@
   "rows": [
     {
       "id": "w_self_care",
-      "activity_image": "plh_images/workshop_modes/guide_2/wave.svg",
+      "activity_image": "plh_images/workshop_modes/individual/wave.svg",
       "intro_text": "Welcome! It’s great to have you here. This week is about YOU. \n\nIn this welcome workshop you will: \n* Get tools to care for yourself \n* Customise the app for your needs",
       "_translations": {
         "intro_text": {
+          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -24,7 +25,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_ok": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
         "reply_sad": {
           "tz_sw": true,
           "za_af": true,
@@ -79,13 +82,21 @@
     },
     {
       "id": "w_1on1",
-      "activity_image": "plh_images/workshop_modes/guide_2/wave.svg",
+      "activity_image": "plh_images/workshop_modes/individual/wave.svg",
       "text": "Let’s take a moment for YOU. Looking after yourself well starts with noticing how you feel.",
       "_translations": {
-        "text": {},
-        "reply_happy": {},
-        "reply_ok": {},
-        "reply_sad": {},
+        "text": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
         "activity_title": {
           "tz_sw": true,
           "za_af": true,
@@ -144,10 +155,12 @@
     },
     {
       "id": "w_praise",
-      "activity_image": "plh_images/workshop_modes/guide_2/wave.svg",
+      "activity_image": "plh_images/workshop_modes/individual/wave.svg",
       "text": "You matter! Take a moment to check in with yourself.",
       "_translations": {
-        "text": {},
+        "text": {
+          "tz_sw": true
+        },
         "reply_happy": {
           "tz_sw": true,
           "za_af": true,
@@ -230,10 +243,12 @@
     },
     {
       "id": "w_instruct",
-      "activity_image": "plh_images/workshop_modes/guide_2/wave.svg",
+      "activity_image": "plh_images/workshop_modes/individual/wave.svg",
       "text": "Recognising how you feel helps you care for yourself well. You deserve it.",
       "_translations": {
-        "text": {},
+        "text": {
+          "tz_sw": true
+        },
         "reply_happy": {
           "tz_sw": true,
           "za_af": true,
@@ -242,7 +257,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_ok": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
         "reply_sad": {
           "tz_sw": true,
           "za_af": true,
@@ -309,10 +326,12 @@
     },
     {
       "id": "w_stress",
-      "activity_image": "plh_images/workshop_modes/guide_2/wave.svg",
+      "activity_image": "plh_images/workshop_modes/individual/wave.svg",
       "text": "Looking after yourself matters. And how you feel matters too!",
       "_translations": {
-        "text": {},
+        "text": {
+          "tz_sw": true
+        },
         "reply_happy": {
           "tz_sw": true,
           "za_af": true,
@@ -329,7 +348,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_sad": {},
+        "reply_sad": {
+          "tz_sw": true
+        },
         "activity_title": {
           "tz_sw": true,
           "za_af": true,
@@ -388,10 +409,12 @@
     },
     {
       "id": "w_money",
-      "activity_image": "plh_images/workshop_modes/guide_2/wave.svg",
+      "activity_image": "plh_images/workshop_modes/individual/wave.svg",
       "text": "Caring for yourself is so essential. When you know how you feel, you can see what you need.",
       "_translations": {
-        "text": {},
+        "text": {
+          "tz_sw": true
+        },
         "reply_happy": {
           "tz_sw": true,
           "za_af": true,
@@ -400,7 +423,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_ok": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
         "reply_sad": {
           "tz_sw": true,
           "za_af": true,
@@ -467,10 +492,12 @@
     },
     {
       "id": "w_rules",
-      "activity_image": "plh_images/workshop_modes/guide_2/wave.svg",
+      "activity_image": "plh_images/workshop_modes/individual/wave.svg",
       "text": "Remember that YOU matter! Let’s check in with our emotions first.",
       "_translations": {
-        "text": {},
+        "text": {
+          "tz_sw": true
+        },
         "reply_happy": {
           "tz_sw": true,
           "za_af": true,
@@ -479,8 +506,12 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_ok": {},
-        "reply_sad": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
         "activity_title": {
           "tz_sw": true,
           "za_af": true,
@@ -539,10 +570,12 @@
     },
     {
       "id": "w_consequence",
-      "activity_image": "plh_images/workshop_modes/guide_2/wave.svg",
+      "activity_image": "plh_images/workshop_modes/individual/wave.svg",
       "text": "Self-care is a key parenting tool. It starts with recognising how we feel.",
       "_translations": {
-        "text": {},
+        "text": {
+          "tz_sw": true
+        },
         "reply_happy": {
           "tz_sw": true,
           "za_af": true,
@@ -551,7 +584,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_ok": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
         "reply_sad": {
           "tz_sw": true,
           "za_af": true,
@@ -618,13 +653,21 @@
     },
     {
       "id": "w_solve",
-      "activity_image": "plh_images/workshop_modes/guide_2/wave.svg",
+      "activity_image": "plh_images/workshop_modes/individual/wave.svg",
       "text": "Recognising how you feel is key to handling life well. Be real and kind to yourself.",
       "_translations": {
-        "text": {},
-        "reply_happy": {},
-        "reply_ok": {},
-        "reply_sad": {},
+        "text": {
+          "tz_sw": true
+        },
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
         "activity_title": {
           "tz_sw": true,
           "za_af": true,
@@ -683,10 +726,12 @@
     },
     {
       "id": "w_safe",
-      "activity_image": "plh_images/workshop_modes/guide_2/wave.svg",
+      "activity_image": "plh_images/workshop_modes/individual/wave.svg",
       "text": "Being a great parent also means taking time to care for yourself every day. It starts with recognising how you feel.",
       "_translations": {
-        "text": {},
+        "text": {
+          "tz_sw": true
+        },
         "reply_happy": {
           "tz_sw": true,
           "za_af": true,
@@ -695,8 +740,12 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_ok": {},
-        "reply_sad": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
         "activity_title": {
           "tz_sw": true,
           "za_af": true,
@@ -755,10 +804,12 @@
     },
     {
       "id": "w_crisis",
-      "activity_image": "plh_images/workshop_modes/guide_2/wave.svg",
+      "activity_image": "plh_images/workshop_modes/individual/wave.svg",
       "text": "Taking a moment for YOU makes a big difference for everyone!",
       "_translations": {
-        "text": {},
+        "text": {
+          "tz_sw": true
+        },
         "reply_happy": {
           "tz_sw": true,
           "za_af": true,
@@ -767,7 +818,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_ok": {},
+        "reply_ok": {
+          "tz_sw": true
+        },
         "reply_sad": {
           "tz_sw": true,
           "za_af": true,
@@ -837,9 +890,15 @@
       "activity_image": "plh_images/workshop_modes/guide_2/final/wave.svg",
       "reply_happy": "Fantastic! And well done for investing in yourself and your family - you have accomplished a lot.",
       "_translations": {
-        "reply_happy": {},
-        "reply_ok": {},
-        "reply_sad": {},
+        "reply_happy": {
+          "tz_sw": true
+        },
+        "reply_ok": {
+          "tz_sw": true
+        },
+        "reply_sad": {
+          "tz_sw": true
+        },
         "activity_title": {
           "tz_sw": true,
           "za_af": true,
