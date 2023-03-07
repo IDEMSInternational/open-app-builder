@@ -1,19 +1,11 @@
 {
-  "android/icon-background.png": {
-    "size_kb": 1.7,
-    "md5Checksum": "94bfe00c537a98b68d072897d9d58e44"
-  },
-  "android/icon-foreground.png": {
-    "size_kb": 49.5,
-    "md5Checksum": "884c3d8d34b0df7cdf5880eb66d61794"
-  },
   "android/icon.png": {
-    "size_kb": 179.6,
-    "md5Checksum": "e1a9b7e45d5e3cea50616ee3db488d6b"
+    "size_kb": 70.8,
+    "md5Checksum": "b20335986d51de8f50b9d5b6fef00900"
   },
   "android/splash.png": {
-    "size_kb": 595.7,
-    "md5Checksum": "50f727d3eaaf1e7807e935370b7e13ca"
+    "size_kb": 233.5,
+    "md5Checksum": "3cefb9a946f82911925906da42c9a7c8"
   },
   "essential_tools/home_handgerms.svg": {
     "size_kb": 803.5,
