@@ -57,8 +57,6 @@ export class AppUpdateService extends AsyncServiceBase {
       app_update: async ({ args }) => {
         const [actionId] = args;
         const childActions = {
-          force: async () => {},
-          // Complete
           complete: async () => {
             await this.completeFlexibleUpdate();
           },
