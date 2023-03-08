@@ -10,12 +10,12 @@ import { TemplateActionRegistry } from "../../components/template/services/insta
 import { TemplateNavService } from "../../components/template/services/template-nav.service";
 import { IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
-import { SyncServiceBase } from "../syncService.base";
+import { AsyncServiceBase } from "../asyncService.base";
 
 @Injectable({
   providedIn: "root",
 })
-export class AppUpdateService extends SyncServiceBase {
+export class AppUpdateService extends AsyncServiceBase {
   appUpdatesEnabled: boolean;
   forceUpdate: boolean;
   completeUpdateTemplate: string;
@@ -26,7 +26,7 @@ export class AppUpdateService extends SyncServiceBase {
     private templateNavService: TemplateNavService
   ) {
     super("AppUpdate");
-    this.initialise();
+    this.registerInitFunction(this.initialise);
     this.registerTemplateActionHandlers();
   }
 
@@ -54,7 +54,21 @@ export class AppUpdateService extends SyncServiceBase {
 
   private registerTemplateActionHandlers() {
     this.templateActionRegistry.register({
-      complete_app_update: async (action) => this.completeFlexibleUpdate(),
+      app_update: async ({ args }) => {
+        const [actionId] = args;
+        const childActions = {
+          force: async () => {},
+          // Complete
+          complete: async () => {
+            await this.completeFlexibleUpdate();
+          },
+        };
+        if (!(actionId in childActions)) {
+          console.error("app_update does not have action", actionId);
+          return;
+        }
+        return childActions[actionId]();
+      },
     });
   }
 
