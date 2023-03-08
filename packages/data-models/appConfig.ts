@@ -180,13 +180,17 @@ const FEEDBACK_MODULE_DEFAULTS = {
 const APP_UPDATES = {
   /** Check for updates and prompt the user in-app to apply available updates */
   enabled: false,
-  /** If an update is available, force the user to download and apply it.
+  /**
+   * If an update is available, force the user to download and apply it.
    * Uses "Immediate" update strategy if true, otherwise uses "Flexible" update strategy
-   * Further details at https://developer.android.com/guide/playcore/in-app-updates */
+   * Further details at https://developer.android.com/guide/playcore/in-app-updates
+   */
   forceUpdate: false,
-  /** Template to be displayed after a flexible update has downloaded, prompting the user
-   * to install the update and restart the app */
-  completeUpdateTemplate: "complete_app_update",
+  /**
+   * Template to be displayed after a flexible update has downloaded, prompting the user
+   * to install the update and restart the app. If none provided, installation will be completed on relaunch
+   */
+  completeUpdateTemplate: "app_update_complete",
 };
 
 const APP_CONFIG = {

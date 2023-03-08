@@ -353,6 +353,7 @@ export namespace FlowTypes {
   // TODO - 2021-03-11 - most of list needs reconsideration/implementation
   export const ACTION_ID_LIST = [
     "",
+    "app_update",
     "audio_end",
     "audio_play",
     "changed",
@@ -375,7 +376,6 @@ export namespace FlowTypes {
     "toggle_field",
     "track_event",
     "trigger_actions",
-    "complete_app_update",
   ] as const;
 
   export interface TemplateRowAction {
