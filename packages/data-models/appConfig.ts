@@ -186,6 +186,10 @@ const APP_UPDATES = {
    * If no template is provided provided, installation of the downloaded flexible update will be completed on next app init
    */
   completeUpdateTemplate: "app_update_complete",
+  /** Track whether an update is available for download */
+  app_update_available_field: "_app_update_available",
+  /** Track whether an update has been downloaded and is available for install */
+  app_update_downloaded_field: "_app_update_downloaded",
 };
 
 const APP_CONFIG = {
