@@ -8,7 +8,7 @@
 name: Sourcemaps Upload
 on: 
   workflow_dispatch:
-    push:
+  push:
     branches: 
       - feat/git-sha-tracking
 jobs:
@@ -21,9 +21,8 @@ jobs:
       - name: Set Environment Deployment
         # NOTE - setting SHA_SHORT will have different value if target pull_request / workflow_dispatch
         # https://github.com/orgs/community/discussions/25191
-        # PR alt: ${{github.event.pull_request.head.sha::8}} instead
         run: |
-          echo "SHA_SHORT=$(git rev-parse --short=8 HEAD)" >> $GITHUB_ENV
+          echo "SHA_SHORT=$(git rev-parse --short=6 HEAD)" >> $GITHUB_ENV
           echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV
         shell: bash
       - name: Node ${{ matrix.node-version }}
