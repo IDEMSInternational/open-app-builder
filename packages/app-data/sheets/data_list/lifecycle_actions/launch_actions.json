@@ -125,6 +125,35 @@
           "_cleaned": "click | set_field: user_info_submitted: true"
         }
       ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "id": "app_start_home_screen_tour",
+      "priority": 5,
+      "condition_list": [
+        "!@fields.home_screen_tour_viewed && @fields.user_mode"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "start_tour",
+          "args": [
+            "home_screen_tour"
+          ],
+          "_raw": "start_tour: home_screen_tour",
+          "_cleaned": "click | start_tour: home_screen_tour"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "home_screen_tour_viewed",
+            true
+          ],
+          "_raw": "set_field: home_screen_tour_viewed: true",
+          "_cleaned": "click | set_field: home_screen_tour_viewed: true"
+        }
+      ]
     }
   ],
   "_xlsxPath": "templates/global/app_launch_templates.xlsx"

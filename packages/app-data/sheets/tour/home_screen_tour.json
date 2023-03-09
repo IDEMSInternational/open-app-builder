@@ -1,6 +1,6 @@
 {
   "flow_type": "tour",
-  "flow_name": "home_screen_modular_tour_intro",
+  "flow_name": "home_screen_tour",
   "status": "released",
   "rows": [
     {
@@ -51,5 +51,5 @@
       "route": "template/home_screen"
     }
   ],
-  "_xlsxPath": "tours/global/home_screen_modular_tour.xlsx"
+  "_xlsxPath": "tours/global/home_screen_tour.xlsx"
 }
