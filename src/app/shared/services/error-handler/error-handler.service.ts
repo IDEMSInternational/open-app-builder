@@ -19,11 +19,6 @@ export class ErrorHandlerService extends ErrorHandler {
   // Because of this we should manually inject the services with Injector.
   constructor(private injector: Injector) {
     super();
-    setTimeout(() => {
-      console.log("error handler", { GIT_SHA });
-      this.handleError(new Error("Test Error Logged"));
-      throw new Error("Test Error Thrown");
-    }, 5000);
   }
 
   /**
