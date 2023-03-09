@@ -21,7 +21,9 @@
       "name": "tap_and_type",
       "value": "Tap and type",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -29,7 +31,9 @@
       "name": "tap_and_choose",
       "value": "Tap and choose",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -37,7 +41,9 @@
       "name": "type_your_own",
       "value": "Type your own",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -45,7 +51,9 @@
       "name": "dont_show_again",
       "value": "I've understood this. Don't show me this message again.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     }
   ],

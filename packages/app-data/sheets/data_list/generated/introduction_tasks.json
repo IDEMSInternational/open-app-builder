@@ -13,7 +13,9 @@
       "title": "@data.module.introduction.title",
       "_translations": {
         "title": {},
-        "text": {}
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

@@ -10,8 +10,12 @@
       "reference": ".",
       "title": "What is a clean house?",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -31,8 +35,12 @@
       "reference_link": "www.unicef.org/esa/reports/baby-wash-programming",
       "title": "How do you keep your house clean?",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -52,8 +60,12 @@
       "reference_link": "www.unicef.org/esa/reports/baby-wash-programming",
       "title": "More tips to keeping a clean home!",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

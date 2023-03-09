@@ -11,8 +11,12 @@
       "reference_link": "www.who.int/publications/i/item/9789240036444",
       "title": "Set up a handwashing station at home",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -32,8 +36,12 @@
       "reference_link": "www.unicef.org/parenting/health/how-to-teach-your-kids-handwashing",
       "title": "How to wash hands",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

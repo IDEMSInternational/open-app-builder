@@ -11,8 +11,12 @@
       "reference_link": "www.unicef.org/tanzania/media/1526/file/National%20Guideline%20for%20Water,%20Sanitation%20and%20Hygiene%20for%20Tanzania%20Schools.pdf",
       "title": "What is solid garbage?",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -32,8 +36,12 @@
       "reference_link": "cdn.sanity.io/files/r8bm187e/production/ec2f1615fae8971ff69114f6274d47536213e608.pdf",
       "title": "Why should we manage our garbage?",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -53,8 +61,12 @@
       "reference_link": "www.unicef.org/tanzania/media/1526/file/National%20Guideline%20for%20Water,%20Sanitation%20and%20Hygiene%20for%20Tanzania%20Schools.pdf",
       "title": "How to manage solid garbage",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -73,8 +85,12 @@
       "reference_link": "cdn.sanity.io/files/r8bm187e/production/ec2f1615fae8971ff69114f6274d47536213e608.pdf",
       "title": "Ways to reduce the amount of garbage we make",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

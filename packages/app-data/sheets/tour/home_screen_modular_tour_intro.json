@@ -7,8 +7,12 @@
       "type": "step",
       "title": "Welcome to @global.app_name",
       "_translations": {
-        "title": {},
-        "message_text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "message_text": {
+          "tz_sw": true
+        }
       },
       "message_text": "<p>Keep healthy and feel good after learning more about safe Water, Sanitation and Hygiene (WASH).</p>\n\n<p>@global.app_name is here to support you.</p>\n\n<p>Here is how to use the app:</p>",
       "route": "template/home_screen"
@@ -17,7 +21,9 @@
       "type": "step",
       "message_text": "This big button takes you to the module we encourage you to explore.",
       "_translations": {
-        "message_text": {}
+        "message_text": {
+          "tz_sw": true
+        }
       },
       "template_component_name": "dg_highlighted_module",
       "route": "template/home_screen"
@@ -26,7 +32,9 @@
       "type": "step",
       "message_text": "Here you can select any of the other modules in @global.app_name. Each module gives you simple tips and information about WASH. Swipe to see the next modules.",
       "_translations": {
-        "message_text": {}
+        "message_text": {
+          "tz_sw": true
+        }
       },
       "template_component_name": "dg_all_modules",
       "route": "template/home_screen"
@@ -35,7 +43,9 @@
       "type": "step",
       "message_text": "You can explore any module whenever you want. To build your knowledge and skills in WASH, access all of the content in one module before moving to the next one.",
       "_translations": {
-        "message_text": {}
+        "message_text": {
+          "tz_sw": true
+        }
       },
       "template_component_name": "dg_all_modules",
       "route": "template/home_screen"

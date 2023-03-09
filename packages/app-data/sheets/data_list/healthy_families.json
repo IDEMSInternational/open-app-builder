@@ -12,8 +12,12 @@
       "reference_link": "www.who.int/publications/i/item/9789241564823",
       "title": "How to keep healthy",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -33,8 +37,12 @@
       "reference_link": "www.who.int/news-room/fact-sheets/detail/diarrhoeal-disease",
       "title": "Diarrhoea",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -56,8 +64,12 @@
       "refererence_link_2": "www.who.int/publications/i/item/9789240022782",
       "title": "Avoiding worms in your water",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -79,8 +91,12 @@
       "refererence_link_2": "www.who.int/publications/i/item/9789240022782",
       "title": "Avoiding worms in your compound",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -102,8 +118,12 @@
       "refererence_link_2": "www.who.int/publications/i/item/9789240022782",
       "title": "Preventing blindness",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -119,8 +139,12 @@
       "id": "doctor",
       "title": "See your doctor",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

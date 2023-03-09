@@ -7,7 +7,9 @@
       "type": "text",
       "value": "@global.app_name is brought to you by",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "parameter_list": {
         "style": "large center"

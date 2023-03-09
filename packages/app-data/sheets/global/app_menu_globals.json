@@ -8,7 +8,9 @@
       "name": "terms_and_conditions",
       "value": "Terms and Conditions",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -16,7 +18,9 @@
       "name": "privacy_policy",
       "value": "Privacy Policy",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -57,7 +61,9 @@
       "name": "uuid_title",
       "value": "Your @global.app_name Code",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -65,7 +71,9 @@
       "name": "terms_and_conditions",
       "value": "Terms & Conditions",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -73,7 +81,9 @@
       "name": "privacy_policy",
       "value": "Privacy Policy",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -81,7 +91,9 @@
       "name": "language",
       "value": "Language",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {
@@ -89,7 +101,9 @@
       "name": "user_info",
       "value": "Your Profile",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     }
   ],

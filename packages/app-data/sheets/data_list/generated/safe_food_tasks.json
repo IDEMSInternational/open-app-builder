@@ -13,8 +13,12 @@
       "reference_link_2": "https://www.who.int/publications/i/item/9789241594639",
       "title": "The five ways to keeping your food safe",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -35,8 +39,12 @@
       "reference_link": "https://www.who.int/publications/i/item/9789241594639",
       "title": "Keep clean",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -62,8 +70,12 @@
       "reference_link": "https://www.who.int/publications/i/item/9789241594639",
       "title": "Separate raw and cooked",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -89,8 +101,12 @@
       "reference_link": "https://www.who.int/publications/i/item/9789241594639",
       "title": "Cook thoroughly",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -114,8 +130,12 @@
       "reference_link": "https://www.who.int/publications/i/item/9789241594639",
       "title": "Keep food at a safe temperature",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -139,8 +159,12 @@
       "reference_link": "https://www.who.int/publications/i/item/9789241594639",
       "title": "Use safe water",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

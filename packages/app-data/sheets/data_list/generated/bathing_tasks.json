@@ -10,8 +10,12 @@
       "reference_link": "lifewater.org/wp-content/uploads/2022/06/Community-WASH-Conversations-Public.pdf",
       "title": "Why do we need to be clean?",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -29,8 +33,12 @@
       "illustration": "essential_tools/mod5and11_washing_face.svg",
       "title": "Importance of bathing and washing",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -48,8 +56,12 @@
       "illustration": "essential_tools/mod11_cleaning_bathroom.svg",
       "title": "Tips for a clean bathroom",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

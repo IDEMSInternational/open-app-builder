@@ -11,8 +11,12 @@
       "reference_link": "www.who.int/publications/i/item/9789241564823",
       "title": "How to keep healthy",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -33,8 +37,12 @@
       "reference_link": "www.who.int/news-room/fact-sheets/detail/diarrhoeal-disease",
       "title": "Diarrhoea",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -55,8 +63,12 @@
       "reference_link": "www.who.int/news-room/fact-sheets/detail/schistosomiasis#:~:text=The%20WHO%20strategy%20for%20schistosomiasis,of%20all%20at%2Drisk%20groups.",
       "title": "Avoiding worms in your water",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -79,8 +91,12 @@
       "reference_link": "www.who.int/news-room/fact-sheets/detail/soil-transmitted-helminth-infections",
       "title": "Avoiding worms in your compound",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -103,8 +119,12 @@
       "reference_link": "www.who.int/news-room/fact-sheets/detail/trachoma#:~:text=Trachoma%20is%20a%20disease%20of,Blindness%20from%20trachoma%20is%20irreversible.",
       "title": "Preventing blindness",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -123,8 +143,12 @@
       "id": "doctor",
       "title": "See your doctor",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

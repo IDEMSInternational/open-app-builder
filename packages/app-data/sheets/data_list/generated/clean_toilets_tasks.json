@@ -11,8 +11,12 @@
       "reference_link": "www.who.int/publications/i/item/9789241514705",
       "title": "What makes a toilet safe?",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -30,8 +34,12 @@
       "illustration": "essential_tools/mod6_cleaning_toilet.svg",
       "title": "Importance of clean and safe toilets",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -50,8 +58,12 @@
       "illustration": "essential_tools/mod6_food_with_flies.svg",
       "title": "Why using a toilet is important",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -71,8 +83,12 @@
       "reference_link": "https://lifewater.org/wp-content/uploads/2022/06/Community-WASH-Conversations-Public.pdf",
       "title": "Tips for a clean toilet",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

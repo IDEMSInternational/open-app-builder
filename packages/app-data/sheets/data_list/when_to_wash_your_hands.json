@@ -12,8 +12,12 @@
       "reference_link": "www.unicef.org/documents/handwashing-promotion-monitoring-and-evaluation-module",
       "title": "When do we wash hands?",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -30,8 +34,12 @@
       "illustration": "essential_tools/mod3_sparkly_hands.svg",
       "title": "Washing your hands with soap feels good",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -48,8 +56,12 @@
       "illustration": "essential_tools/mod3_changing_nappies.svg",
       "title": "Cleaning after changing nappies",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

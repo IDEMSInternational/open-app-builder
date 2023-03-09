@@ -12,8 +12,12 @@
       "reference_link": "www.who.int/publications/i/item/9789240045064",
       "title": "Safe water source tips",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -30,8 +34,12 @@
       "illustration": "essential_tools/mod8_watergerms.svg",
       "title": "Transporting and storing water",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -53,8 +61,12 @@
       "reference_link_2": "LInks to images:https://sswm.info/sswm-solutions-bop-markets/affordable-wash-services-and-products/affordable-water-supply/household-water-treatment-and-safe-storage-%28hwts%29",
       "title": "Using a water container",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -73,8 +85,12 @@
       "reference_link": "lifewater.org/wp-content/uploads/2022/06/Community-WASH-Conversations-Public.pdf",
       "title": "How do you keep your container clean?",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -94,8 +110,12 @@
       "reference_link": "www.unicef.org/kyrgyzstan/media/1586/file/WASH%20Guidebook-Eng_0.pdf%20.pdf",
       "title": "Treating water by boiling",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

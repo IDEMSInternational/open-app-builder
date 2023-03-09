@@ -14,8 +14,12 @@
       "reference_link_2": "https://www.who.int/publications/i/item/9789241594639",
       "title": "The five ways to keeping your food safe",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -40,8 +44,12 @@
       "reference_link_3": "https://www.who.int/publications/i/item/9789241594639",
       "title": "Keep clean",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -66,8 +74,12 @@
       "reference_link_3": "https://www.who.int/publications/i/item/9789241594639",
       "title": "Separate raw and cooked",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -90,8 +102,12 @@
       "reference 3": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\n\nExtract:\nProper cooking kills almost all dangerous\nmicroorganisms. Studies have shown that\ncooking food to a temperature of 70°C can\nhelp ensure it is safe for consumption.\nFoods that require special attention\ninclude minced meats, rolled roasts, large\njoints of meat and whole poultry.",
       "title": "Cook thoroughly",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -114,8 +130,12 @@
       "reference 3": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\r\n\r\nExtract:\nMicroorganisms can multiply very\nquickly if food is stored at room\ntemperature. By holding at temperatures below 5°C or above 60°C, the\ngrowth of microorganisms is slowed\ndown or stopped. Some dangerous\nmicroorganisms still grow below 5°C.",
       "title": "Keep food at a safe temperature",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -138,8 +158,12 @@
       "reference 3": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\r\n\r\nExtract:\nRaw materials, including water and ice,\nmaybe contaminated with dangerous\nmicroorganisms and chemicals. Toxic\nchemicals may be formed in damaged\nand mouldy foods. Care in selection of\nraw materials and simple measures\nsuch as washing and peeling may\nreduce the risk.",
       "title": "Use safe water",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

@@ -70,7 +70,9 @@
       "name": "copy",
       "value": "Copy code",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "copy"
@@ -79,7 +81,9 @@
       "name": "copied",
       "value": "Copied!",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "copied"
@@ -197,7 +201,9 @@
           "name": "text",
           "value": "You may be asked to share this code with people who will support your @global.app_name journey.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "_nested_name": "has_ever_been_synced.text",
           "_dynamicFields": {
@@ -221,7 +227,9 @@
           "name": "last_sync_text",
           "value": "Last sync at: @local.sync_latest",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "_nested_name": "has_ever_been_synced.last_sync_text",
           "_dynamicFields": {
@@ -271,7 +279,9 @@
           "name": "not_synced_text",
           "value": "This device has never been synced. Sync to reveal your code.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "_nested_name": "has_never_been_synced.not_synced_text"
         }
@@ -298,7 +308,9 @@
       "name": "sync_button",
       "value": "Sync now",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "action_list": [
         {
@@ -392,7 +404,9 @@
       "name": "sync_button_disabled",
       "value": "Syncing...",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "condition": "@local.sync_status",
       "parameter_list": {

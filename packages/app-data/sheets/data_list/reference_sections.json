@@ -8,7 +8,9 @@
       "id": "general",
       "title": "General WASH (including Waste as well as Bathing and Washing topics)",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -20,7 +22,9 @@
       "id": "handwashing",
       "title": "Handwashing",
       "_translations": {
-        "title": {}
+        "title": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

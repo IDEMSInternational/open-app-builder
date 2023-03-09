@@ -249,7 +249,9 @@
       "name": "highlighted_text",
       "value": "Active",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "highlighted_text"
@@ -333,7 +335,9 @@
       "name": "progress_units_name",
       "value": "sections",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "condition": "@local.module_has_multiple_tools",
       "type": "set_variable",
@@ -358,7 +362,9 @@
       "name": "progress_units_name",
       "value": "section",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "condition": "!@local.module_has_multiple_tools",
       "type": "set_variable",

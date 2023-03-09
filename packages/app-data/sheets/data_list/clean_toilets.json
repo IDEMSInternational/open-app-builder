@@ -12,8 +12,12 @@
       "reference_link": "www.who.int/publications/i/item/9789241514705",
       "title": "What makes a toilet safe?",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -31,8 +35,12 @@
       "context  (not for App but to support content development)": "Malima, G., Mshida, H., Machunda, R., Moyo, F., Banzi, J., Gautam, O. P., Mbeguere, M., Smith, K., Cairncross, S., & Njau, K. N. (2022). What influences individuals to invest in improved sanitation services and hygiene behaviours in a small town? A formative research study in Babati, Tanzania. PLOS ONE, 17(7), e0270688. <span>https://doi.org/10.1371/journal.pone.0270688</span><br/><span><b>FGDs unveiled four motives for cleaning latrines. First, social influence or the feeling of being embarrassed by neighbours. Second, fear of being fined by health officers, who occasionally inspects households and fine those whose latrines are found to be dirty. Third, the feeling of disgust when using a latrine with visible faeces and urine, and fourth, fear of contracting diseases from a dirty latrine.</b></span> For barriers, FGDs revealed two key factors, namely poorly maintained floors and limited water availability. Most of the latrines had mud or wooden slabs which cannot be easily washed or cleaned using water. Households that had installed pour-flush or flush toilets also identified a lack of water as the main reason for having dirty latrines. FGD participants stated fear of contracting urinary tract infections (UTIs) and fungal diseases while using flush toilets when water is limited.",
       "title": "Importance of clean and safe toilets",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -49,8 +57,12 @@
       "illustration": "essential_tools/mod6_food_with_flies.svg",
       "title": "Why using a toilet is important",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -69,8 +81,12 @@
       "reference_link": "https://lifewater.org/wp-content/uploads/2022/06/Community-WASH-Conversations-Public.pdf",
       "title": "Tips for a clean toilet",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

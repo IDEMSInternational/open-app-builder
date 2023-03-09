@@ -14,7 +14,9 @@
       "name": "skip_text",
       "value": "Skip intro",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "skip_text"
@@ -67,7 +69,9 @@
               "name": "slogan",
               "value": "Safe Water, Sanitation and Hygiene (WASH) is beneficial for you and your community",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "parameter_list": {
                 "text_align": "center"

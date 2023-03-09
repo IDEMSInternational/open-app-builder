@@ -9,8 +9,12 @@
       "illustration": "essential_tools/mod12_woman_celebrating.svg",
       "title": "Well done",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
