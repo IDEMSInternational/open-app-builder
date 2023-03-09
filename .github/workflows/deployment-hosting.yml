@@ -23,19 +23,23 @@ jobs:
           then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;          \
           else echo "DEPLOYMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV;   \
           fi;
+          echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
         shell: bash
       - run: |
           echo $GITHUB_REF
           echo $DEPLOYMENT_NAME
+          echo $SHA_SHORT
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: 'yarn'      
-      - name: Populate firebaseConfig.ts
+      - name: Populate environment config
         env:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
-        run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
+        run: |
+          echo "export const GIT_SHA = \"$SHA_SHORT\";" > src/environments/sha.ts
+          echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
       - run: yarn install
       - name: Set Scripts Deployment
         run: yarn workflow deployment set $DEPLOYMENT_NAME
@@ -45,14 +49,21 @@ jobs:
         run: echo "APP_VERSION=$(echo "$(cat package.json | jq -r '.version')")" >> $GITHUB_ENV
       - name: Upload sourcemaps
         run: |
-          npx @sentry/cli releases delete ${DEPLOYMENT_NAME}-${APP_VERSION}
-          npx @sentry/cli releases files ${DEPLOYMENT_NAME}-${APP_VERSION} upload-sourcemaps www/
+          npx @sentry/cli releases delete ${DEPLOYMENT_NAME}-${APP_VERSION}-${SHA_SHORT}
+          npx @sentry/cli releases files ${DEPLOYMENT_NAME}-${APP_VERSION}-${SHA_SHORT} upload-sourcemaps www/
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN}}
           SENTRY_URL: https://app.glitchtip.com/
           SENTRY_ORG: idems
           SENTRY_PROJECT: ${{env.DEPLOYMENT_NAME}}
         continue-on-error: true
+      - name: Store sourcemaps artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: sourcemaps-$SHA_SHORT
+          path: www/*.map
+          # Only used for short-term debugging purposes or manual upload
+          retention-days: 30
       - name: Remove sourcemaps from build
         run: |
           echo $(ls www)
