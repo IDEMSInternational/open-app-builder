@@ -88,9 +88,6 @@ export class AppComponent {
     private serverService: ServerService
   ) {
     this.initializeApp();
-    setTimeout(() => {
-      throw new Error("Test Error");
-    }, 5000);
   }
 
   private async initializeApp() {
