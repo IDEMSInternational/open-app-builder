@@ -18,7 +18,8 @@
       "value": "international.idems.wash",
       "_translations": {
         "value": {}
-      }
+      },
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "globals/navigation_globals.xlsx"
