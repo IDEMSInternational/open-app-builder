@@ -7,6 +7,7 @@ import {
   AppUpdateResultCode,
 } from "@capawesome/capacitor-app-update";
 import { TemplateActionRegistry } from "../../components/template/services/instance/template-action.registry";
+import { TemplateFieldService } from "../../components/template/services/template-field.service";
 import { TemplateNavService } from "../../components/template/services/template-nav.service";
 import { IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
@@ -21,11 +22,14 @@ export class AppUpdateService extends AsyncServiceBase {
   updateAvailable: boolean;
   /** Track whether a flexible update has been downloaded and is ready to install */
   updateDownloaded: boolean;
+  updateAvailableField: string;
+  updateDownloadedField: string;
 
   constructor(
     private templateActionRegistry: TemplateActionRegistry,
     private appConfigService: AppConfigService,
-    private templateNavService: TemplateNavService
+    private templateNavService: TemplateNavService,
+    private templateFieldService: TemplateFieldService
   ) {
     super("AppUpdate");
     this.registerInitFunction(this.initialise);
@@ -38,15 +42,12 @@ export class AppUpdateService extends AsyncServiceBase {
     if (!Capacitor.isNativePlatform()) return;
     if (this.appUpdatesEnabled) {
       const appUpdateInfo = await AppUpdate.getAppUpdateInfo();
-      this.updateAvailable =
-        appUpdateInfo.updateAvailability === AppUpdateAvailability.UPDATE_AVAILABLE;
-      this.updateDownloaded =
-        appUpdateInfo.installStatus === FlexibleUpdateInstallStatus.DOWNLOADED;
-
-      // If a flexible update has previously been downloaded but not installed, install it now on init
-      if (this.updateDownloaded) {
-        await this.completeFlexibleUpdate();
-      }
+      this.setUpdateAvailable(
+        appUpdateInfo.updateAvailability === AppUpdateAvailability.UPDATE_AVAILABLE
+      );
+      this.setUpdateDownloaded(
+        appUpdateInfo.installStatus === FlexibleUpdateInstallStatus.DOWNLOADED
+      );
     }
   }
 
@@ -90,9 +91,16 @@ export class AppUpdateService extends AsyncServiceBase {
 
   private subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      const { enabled, completeUpdateTemplate } = appConfig.APP_UPDATES;
+      const {
+        enabled,
+        completeUpdateTemplate,
+        app_update_available_field,
+        app_update_downloaded_field,
+      } = appConfig.APP_UPDATES;
       this.appUpdatesEnabled = enabled;
       this.completeUpdateTemplate = completeUpdateTemplate;
+      this.updateAvailableField = app_update_available_field;
+      this.updateDownloadedField = app_update_downloaded_field;
     });
   }
 
@@ -115,7 +123,7 @@ export class AppUpdateService extends AsyncServiceBase {
     AppUpdate.startFlexibleUpdate();
     const updateListener = AppUpdate.addListener("onFlexibleUpdateStateChange", (state) => {
       if (state.installStatus === FlexibleUpdateInstallStatus.DOWNLOADED) {
-        this.updateDownloaded = true;
+        this.setUpdateDownloaded(true);
         return this.handleFlexibleUpdateCompletion();
       }
       // Error handling. Currently causes listener to be removed erroneously
@@ -137,12 +145,12 @@ export class AppUpdateService extends AsyncServiceBase {
     // If no template is provided, the app will complete the flexible installation on restart
   }
 
-  async completeFlexibleUpdate() {
-    this.updateDownloaded = false;
+  private async completeFlexibleUpdate() {
+    this.setUpdateDownloaded(false);
     await AppUpdate.completeFlexibleUpdate();
   }
 
-  async isUpdateEnabledAndAvailable() {
+  private async isUpdateEnabledAndAvailable() {
     if (this.appUpdatesEnabled) {
       if (this.updateAvailable) {
         return true;
@@ -152,5 +160,15 @@ export class AppUpdateService extends AsyncServiceBase {
       console.log("[App Update] App updates are not enabled in deployment config.");
     }
     return false;
+  }
+
+  private setUpdateAvailable(value: boolean) {
+    this.updateAvailable = value;
+    this.templateFieldService.setField(this.updateAvailableField, value.toString());
+  }
+
+  private setUpdateDownloaded(value: boolean) {
+    this.updateDownloaded = value;
+    this.templateFieldService.setField(this.updateDownloadedField, value.toString());
   }
 }
