@@ -3,6 +3,7 @@ import { Capacitor } from "@capacitor/core";
 import { Device } from "@capacitor/device";
 import * as Sentry from "@sentry/angular";
 import { environment } from "src/environments/environment";
+import { GIT_SHA } from "src/environments/sha";
 import { fromError as getStacktraceFromError } from "stacktrace-js";
 import { CrashlyticsService } from "../crashlytics/crashlytics.service";
 
@@ -71,7 +72,7 @@ export class ErrorHandlerService extends ErrorHandler {
     Sentry.init({
       dsn: error_logging.dsn,
       environment: production ? "production" : "development",
-      release: `${name}-${version}`,
+      release: `${name}-${version}-${GIT_SHA}`,
       autoSessionTracking: false,
       attachStacktrace: true,
       enabled: true,
