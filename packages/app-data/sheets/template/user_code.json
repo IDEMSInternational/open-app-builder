@@ -195,7 +195,7 @@
         {
           "type": "text",
           "name": "text",
-          "value": "You may be asked to share this code with people who will support your @global.parent_app journey.",
+          "value": "You may be asked to share this code with people who will support your @global.app_name journey.",
           "_translations": {
             "value": {}
           },
@@ -203,15 +203,15 @@
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "You may be asked to share this code with people who will support your @global.parent_app journey.",
-                "matchedExpression": "@global.parent_app",
+                "fullExpression": "You may be asked to share this code with people who will support your @global.app_name journey.",
+                "matchedExpression": "@global.app_name",
                 "type": "global",
-                "fieldName": "parent_app"
+                "fieldName": "app_name"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@global.parent_app": [
+            "@global.app_name": [
               "value"
             ]
           }

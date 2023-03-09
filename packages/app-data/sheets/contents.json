@@ -204,6 +204,11 @@
     }
   },
   "template": {
+    "about_wash": {
+      "flow_type": "template",
+      "flow_name": "about_wash",
+      "_xlsxPath": "templates/global/app_menu.xlsx"
+    },
     "accept_terms": {
       "flow_type": "template",
       "flow_name": "accept_terms",

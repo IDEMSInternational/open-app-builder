@@ -6,7 +6,7 @@
   "rows": [
     {
       "id": "keys",
-      "illustration": "essential_tools/mod5and9_keep_healthy.svg",
+      "illustration": "essential_tools/mod5_keep_healthy.svg",
       "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF; 2020.  \r\n\r\nExtract;\r\nPeople become infected with intestinal parasitic worms (also known as helminths) by eating contaminated food or through contact with contaminated soil. \r\n\r\nDiseases such as typhoid fever – a bacterial infection – are also caused by ingesting contaminated food or water.",
       "reference_link_title": "Baby WASH Programming. UNICEF; 2020.",
       "reference_link": "www.unicef.org/esa/media/7076/file/UNICEF-ESA-Baby-WASH-Programming-2020.pdf",
@@ -29,7 +29,7 @@
     },
     {
       "id": "clean",
-      "illustration": "essential_tools/handwashing2.svg",
+      "illustration": "essential_tools/home_handwashing.svg",
       "subtitle": "Why?",
       "text_2": "Small pathogens that cause disease can transfer from your unwashed hands, chopping boards, cloths and utensils.  Keep these clean.",
       "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\n\nExtract\nKeep Clean\ni. Wash your hands before handling food and often during food preparation\nii. Wash your hands after going to the toilet\niii. Wash and sanitize all surfaces and equipment used for food preparation\niv. Protect kitchen areas and food from insects, pests, and other animals",
@@ -55,6 +55,7 @@
     },
     {
       "id": "separate",
+      "illustration": "essential_tools/mod9_separate_food.svg",
       "subtitle": "Why?",
       "text_2": "Germs causing illness can be found in raw food (such as meat, chicken and seafood). These can be transferred to other foods during food preparation or storage.  Separating raw and cooked food is therefore important.",
       "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\n\nExtract\nSeparate raw and cooked\ni.  Separate raw meat, poultry, and seafood from other foods\nii.  Use separate equipment and utensils, such as  knives and cutting boards, for handling raw foods\niii.  Store food in containers to avoid contact between raw and prepared foods",
