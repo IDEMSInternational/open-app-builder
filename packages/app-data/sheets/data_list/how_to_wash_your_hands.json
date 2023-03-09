@@ -6,6 +6,7 @@
   "rows": [
     {
       "id": "materials",
+      "illustration": "essential_tools/mod4_handwashing_station.svg",
       "reference": "United Nations Children’s Fund and World Health Organization, State of the World’s Hand Hygiene: A global call to action to make hand hygiene a priority in policy and practice. New York: UNICEF; 2021.\n\nExtract:\nSustainble Development Goal - Service Ladder for Hygiene in Households:\n- Basic - Availability of a handwashing facility on premises with soap and water.\n- Limited - Availability of a handwashing facility on premises lacking soap and/or water.\n- No Facility - No handwashing facility on premises.\n\nIn some cultures, ash, soil, sand or other materials are used as handwashing agents, but these are less effective than soap and are therefore counted as a limited service.",
       "reference_link_title": "State of the World’s Hand Hygiene. UNICEF; 2021.",
       "reference_link": "www.who.int/publications/i/item/9789240036444",
