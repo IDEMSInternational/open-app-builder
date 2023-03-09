@@ -46,62 +46,6 @@
     },
     {
       "type": "button",
-      "name": "button_tour",
-      "value": "Tour list",
-      "_translations": {
-        "value": {}
-      },
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "go_to",
-          "args": [
-            "/tour"
-          ],
-          "_raw": "click | go_to:/tour",
-          "_cleaned": "click | go_to:/tour"
-        }
-      ],
-      "condition": "!@fields.user_mode",
-      "_nested_name": "button_tour",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "!@fields.user_mode",
-            "matchedExpression": "!@fields.user_mode",
-            "type": "fields",
-            "fieldName": "user_mode"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "!@fields.user_mode": [
-          "condition"
-        ]
-      }
-    },
-    {
-      "type": "button",
-      "name": "button_settings",
-      "value": "Settings",
-      "_translations": {
-        "value": {}
-      },
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "go_to",
-          "args": [
-            "app_settings"
-          ],
-          "_raw": "click | go_to: app_settings",
-          "_cleaned": "click | go_to: app_settings"
-        }
-      ],
-      "_nested_name": "button_settings"
-    },
-    {
-      "type": "button",
       "name": "button_reset",
       "value": "Reset app",
       "_translations": {
@@ -137,7 +81,7 @@
     {
       "type": "button",
       "name": "button_references",
-      "value": "References",
+      "value": "About @global.app_name",
       "_translations": {
         "value": {}
       },
@@ -146,18 +90,33 @@
           "trigger": "click",
           "action_id": "go_to",
           "args": [
-            "reference_page"
+            "about_wash"
           ],
-          "_raw": "click | go_to:reference_page",
-          "_cleaned": "click | go_to:reference_page"
+          "_raw": "click | go_to:about_wash",
+          "_cleaned": "click | go_to:about_wash"
         }
       ],
-      "_nested_name": "button_references"
+      "_nested_name": "button_references",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "About @global.app_name",
+            "matchedExpression": "@global.app_name",
+            "type": "global",
+            "fieldName": "app_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.app_name": [
+          "value"
+        ]
+      }
     },
     {
       "type": "button",
-      "name": "button_terms_and_conditions",
-      "value": "Terms and Conditions",
+      "name": "button_settings",
+      "value": "Settings",
       "_translations": {
         "value": {}
       },
@@ -166,13 +125,48 @@
           "trigger": "click",
           "action_id": "go_to",
           "args": [
-            "app_menu_terms"
+            "app_settings"
           ],
-          "_raw": "click | go_to:app_menu_terms",
-          "_cleaned": "click | go_to:app_menu_terms"
+          "_raw": "click | go_to: app_settings",
+          "_cleaned": "click | go_to: app_settings"
         }
       ],
-      "_nested_name": "button_terms_and_conditions"
+      "_nested_name": "button_settings"
+    },
+    {
+      "type": "button",
+      "name": "button_tour",
+      "value": "How to use @global.app_name",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "/tour"
+          ],
+          "_raw": "click | go_to:/tour",
+          "_cleaned": "click | go_to:/tour"
+        }
+      ],
+      "_nested_name": "button_tour",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "How to use @global.app_name",
+            "matchedExpression": "@global.app_name",
+            "type": "global",
+            "fieldName": "app_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.app_name": [
+          "value"
+        ]
+      }
     },
     {
       "type": "button",
@@ -193,6 +187,26 @@
         }
       ],
       "_nested_name": "button_privacy_policy"
+    },
+    {
+      "type": "button",
+      "name": "button_terms_and_conditions",
+      "value": "Terms and Conditions",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "app_menu_terms"
+          ],
+          "_raw": "click | go_to:app_menu_terms",
+          "_cleaned": "click | go_to:app_menu_terms"
+        }
+      ],
+      "_nested_name": "button_terms_and_conditions"
     },
     {
       "type": "display_group",

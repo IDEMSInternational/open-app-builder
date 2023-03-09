@@ -1,19 +1,11 @@
 {
-  "android/icon-background.png": {
-    "size_kb": 1.7,
-    "md5Checksum": "94bfe00c537a98b68d072897d9d58e44"
-  },
-  "android/icon-foreground.png": {
-    "size_kb": 49.5,
-    "md5Checksum": "884c3d8d34b0df7cdf5880eb66d61794"
-  },
   "android/icon.png": {
-    "size_kb": 179.6,
-    "md5Checksum": "e1a9b7e45d5e3cea50616ee3db488d6b"
+    "size_kb": 70.8,
+    "md5Checksum": "b20335986d51de8f50b9d5b6fef00900"
   },
   "android/splash.png": {
-    "size_kb": 595.7,
-    "md5Checksum": "50f727d3eaaf1e7807e935370b7e13ca"
+    "size_kb": 233.5,
+    "md5Checksum": "3cefb9a946f82911925906da42c9a7c8"
   },
   "essential_tools/home_handgerms.svg": {
     "size_kb": 803.5,
@@ -43,6 +35,10 @@
     "size_kb": 8.7,
     "md5Checksum": "37e3ea40a216fb655ff8f9a64ade1624"
   },
+  "essential_tools/mod10_bins.svg": {
+    "size_kb": 22.5,
+    "md5Checksum": "b814b932d0ebbc5d4b40df7dd2c12709"
+  },
   "essential_tools/mod10_home_wastebin.svg": {
     "size_kb": 368.6,
     "md5Checksum": "70cd8da8b117e469437beeed1aa15fa7"
@@ -52,8 +48,8 @@
     "md5Checksum": "e2f3c9b670a4f357f3a62c309b1385cb"
   },
   "essential_tools/mod11_cleaning_bathroom.svg": {
-    "size_kb": 46.4,
-    "md5Checksum": "c20486c00d9c440940cc0a0b55375726"
+    "size_kb": 61.1,
+    "md5Checksum": "bff2b5c2919e204124af821c651d10b3"
   },
   "essential_tools/mod11_soap_bucket.svg": {
     "size_kb": 491.2,
@@ -67,10 +63,6 @@
     "size_kb": 372,
     "md5Checksum": "6194dc3b0e2ac98ef34c3448049180a7"
   },
-  "essential_tools/mod1_what_is_wash.svg": {
-    "size_kb": 465.1,
-    "md5Checksum": "b56c65a1209176fea34e5084e11c400d"
-  },
   "essential_tools/mod2and5_why_wash_hands.svg": {
     "size_kb": 270,
     "md5Checksum": "09b7c26e481efc0030ae9bd3e42724db"
@@ -80,8 +72,8 @@
     "md5Checksum": "80d62d26a05f54139304fa38e667f759"
   },
   "essential_tools/mod2_why_soap.svg": {
-    "size_kb": 290.9,
-    "md5Checksum": "dd87a250c1ac003e9b8565e8196c6e89"
+    "size_kb": 237.8,
+    "md5Checksum": "dfe598cf5113148ecae0eea535896a49"
   },
   "essential_tools/mod3_changing_nappies.svg": {
     "size_kb": 12,
@@ -104,12 +96,12 @@
     "md5Checksum": "b6284193722e830a47cd671de702584e"
   },
   "essential_tools/mod5and11_washing_face.svg": {
-    "size_kb": 16.1,
-    "md5Checksum": "1e5b5ae4760a51f4b24aadc1e5f923bf"
+    "size_kb": 15.4,
+    "md5Checksum": "07863c8f9d48d19643db75469f4edbdf"
   },
   "essential_tools/mod5and7_worms_in_compound.svg": {
-    "size_kb": 18.8,
-    "md5Checksum": "0f4c0675ee5ec190611df553ee456f79"
+    "size_kb": 22.5,
+    "md5Checksum": "e5d3f7127175760fa87224d2cbec82b4"
   },
   "essential_tools/mod5_keep_healthy.svg": {
     "size_kb": 9.5,
@@ -120,16 +112,16 @@
     "md5Checksum": "c75b2c76aa2d0f09b9eb8cc49add4eb5"
   },
   "essential_tools/mod6_cleaning_toilet.svg": {
-    "size_kb": 39.1,
-    "md5Checksum": "558d047a26b0121003872fe0076b8cd9"
+    "size_kb": 46.2,
+    "md5Checksum": "cae8ebaf29567c601559758a42d1e692"
   },
   "essential_tools/mod6_food_with_flies.svg": {
     "size_kb": 59.5,
     "md5Checksum": "5ca5894bd4613049313b18da8c08fe73"
   },
   "essential_tools/mod6_sweeping_toilet.svg": {
-    "size_kb": 23.6,
-    "md5Checksum": "446215c132e45f201c9af269670b3777"
+    "size_kb": 26.8,
+    "md5Checksum": "a772d344a0132ccfca410113272454ac"
   },
   "essential_tools/mod6_toilet_closeup.svg": {
     "size_kb": 452.7,
@@ -139,13 +131,17 @@
     "size_kb": 11,
     "md5Checksum": "fca60c9722a362bd11496a08ee22c798"
   },
+  "essential_tools/mod7_man_cleaning.svg": {
+    "size_kb": 38.3,
+    "md5Checksum": "1e9b2de9a5ef7b19fdcfdf203d9d47ed"
+  },
   "essential_tools/mod8_cleaning_container.svg": {
     "size_kb": 609.6,
     "md5Checksum": "dcbe239bac5f72aa19fbf62b81aa6c4e"
   },
-  "essential_tools/mod8_getting water.svg": {
+  "essential_tools/mod8_getting_water.svg": {
     "size_kb": 29.1,
-    "md5Checksum": "09ef8ad258c954d5b8a7396489947ab5"
+    "md5Checksum": "338c62423a679075da6d9302b39a4e2a"
   },
   "essential_tools/mod8_using_water_container.svg": {
     "size_kb": 407.8,
@@ -167,6 +163,10 @@
     "size_kb": 21.3,
     "md5Checksum": "31a0ee38464dafcf36ad65ade42abffe"
   },
+  "essential_tools/mod9_separate_food.svg": {
+    "size_kb": 15.1,
+    "md5Checksum": "f415a1274e70322ffa89fd4689dc7963"
+  },
   "essential_tools/mod9_washing_fruit_and_veg.svg": {
     "size_kb": 22.1,
     "md5Checksum": "5c4a3e955f26a0140410821e9948775f"
@@ -182,6 +182,10 @@
   "essential_tools/WASH Archive/clean_latrine.png": {
     "size_kb": 172,
     "md5Checksum": "3a095e3d3e005436832e8f8b7be8b06a"
+  },
+  "essential_tools/WASH Archive/Copy of Woman washing hands.svg": {
+    "size_kb": 25.7,
+    "md5Checksum": "77ab531735b46490e519cf6f5e38b3e4"
   },
   "essential_tools/WASH Archive/eye_pain_license_needed.png": {
     "size_kb": 62.9,
@@ -259,13 +263,45 @@
     "size_kb": 85.5,
     "md5Checksum": "ed0216a35a516b09bb6f39cf46abf394"
   },
+  "essential_tools/WASH Archive/mod11_cleaning_bathroom.svg": {
+    "size_kb": 46.4,
+    "md5Checksum": "c20486c00d9c440940cc0a0b55375726"
+  },
+  "essential_tools/WASH Archive/mod1_what_is_wash.svg": {
+    "size_kb": 465.1,
+    "md5Checksum": "b56c65a1209176fea34e5084e11c400d"
+  },
+  "essential_tools/WASH Archive/mod2_why_soap_sabuni.svg": {
+    "size_kb": 290.9,
+    "md5Checksum": "dd87a250c1ac003e9b8565e8196c6e89"
+  },
+  "essential_tools/WASH Archive/mod5and11_washing_face.svg": {
+    "size_kb": 16.1,
+    "md5Checksum": "1e5b5ae4760a51f4b24aadc1e5f923bf"
+  },
+  "essential_tools/WASH Archive/mod5and7_worms_in_compound.svg": {
+    "size_kb": 18.8,
+    "md5Checksum": "0f4c0675ee5ec190611df553ee456f79"
+  },
+  "essential_tools/WASH Archive/mod6_cleaning_toilet.svg": {
+    "size_kb": 39.1,
+    "md5Checksum": "558d047a26b0121003872fe0076b8cd9"
+  },
+  "essential_tools/WASH Archive/mod6_sweeping_toilet.svg": {
+    "size_kb": 23.6,
+    "md5Checksum": "446215c132e45f201c9af269670b3777"
+  },
+  "essential_tools/WASH Archive/mod7_man_cleaning.svg": {
+    "size_kb": 41.3,
+    "md5Checksum": "a0c92feb480fe7e69d8dab870190d524"
+  },
+  "essential_tools/WASH Archive/mod8_getting water.svg": {
+    "size_kb": 29.1,
+    "md5Checksum": "09ef8ad258c954d5b8a7396489947ab5"
+  },
   "essential_tools/WASH Archive/mod9_washing_fruit_and_veg.svg": {
     "size_kb": 22.7,
     "md5Checksum": "2691d30a4fbd4ca63395efff34bcc788"
-  },
-  "essential_tools/WASH Archive/no4_hometext_soap.svg": {
-    "size_kb": 237.8,
-    "md5Checksum": "dfe598cf5113148ecae0eea535896a49"
   },
   "essential_tools/WASH Archive/protect_your_water_source.png": {
     "size_kb": 988.5,

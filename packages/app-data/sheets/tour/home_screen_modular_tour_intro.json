@@ -10,12 +10,12 @@
         "title": {},
         "message_text": {}
       },
-      "message_text": "<p>You deserve to feel good, and have happier family relationships.</p>\n\n<p>@global.app_name is here to support you.</p>\n\n<p>Here is how to use the app:</p>",
+      "message_text": "<p>Keep healthy and feel good after learning more about safe Water, Sanitation and Hygiene (WASH).</p>\n\n<p>@global.app_name is here to support you.</p>\n\n<p>Here is how to use the app:</p>",
       "route": "template/home_screen"
     },
     {
       "type": "step",
-      "message_text": "This big button takes you to the @global.workshop you are currently exploring. Tap this to find:",
+      "message_text": "This big button takes you to the module we encourage you to explore.",
       "_translations": {
         "message_text": {}
       },
@@ -24,25 +24,7 @@
     },
     {
       "type": "step",
-      "message_text": "Quick reminders on how to successfully use a parenting skill.",
-      "_translations": {
-        "message_text": {}
-      },
-      "template_component_name": "dg_card_tools",
-      "route": "template/module_overview"
-    },
-    {
-      "type": "step",
-      "message_text": "One easy idea on how you can apply a new skill with your family.",
-      "_translations": {
-        "message_text": {}
-      },
-      "template_component_name": "dg_card_hp",
-      "route": "template/module_overview"
-    },
-    {
-      "type": "step",
-      "message_text": "Here you can select any of the other @global.workshops in @global.parent_app. Each @global.workshop gives you one important parenting skill. Swipe to see the next @global.workshops.",
+      "message_text": "Here you can select any of the other modules in @global.app_name. Each module gives you simple tips and information about WASH. Swipe to see the next modules.",
       "_translations": {
         "message_text": {}
       },
@@ -51,7 +33,7 @@
     },
     {
       "type": "step",
-      "message_text": "You can explore any @global.workshop whenever you want. To see the biggest change in your family, complete all the activities in one @global.workshop before moving to the next one.",
+      "message_text": "You can explore any module whenever you want. To build your knowledge and skills in WASH, access all of the content in one module before moving to the next one.",
       "_translations": {
         "message_text": {}
       },
