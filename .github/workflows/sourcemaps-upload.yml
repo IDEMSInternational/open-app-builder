@@ -8,9 +8,9 @@
 name: Sourcemaps Upload
 on: 
   workflow_dispatch:
-  # push:
-  #   branches: 
-  #     - feat/git-sha-tracking
+  push:
+    branches: 
+      - feat/git-sha-tracking
 jobs:
   sourcemaps_upload:
     runs-on: ubuntu-latest
