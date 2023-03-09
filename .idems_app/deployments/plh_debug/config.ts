@@ -16,8 +16,7 @@ config.app_config.APP_THEMES.available = ["default"]
 config.translations!.filter_language_codes = ["gb_en"];
 
 config.app_config.APP_UPDATES.enabled = true
-config.app_config.APP_UPDATES.forceUpdate = false
-config.app_config.APP_UPDATES.completeUpdateTemplate = "complete_app_update"
+config.app_config.APP_UPDATES.completeUpdateTemplate = "app_update_complete"
 
 config.error_logging = {
   dsn: "https://69ccfba168f04b848cdd96ac066d01b5@app.glitchtip.com/2438",

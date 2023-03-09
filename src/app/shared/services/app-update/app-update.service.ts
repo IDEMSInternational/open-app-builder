@@ -17,8 +17,10 @@ import { AsyncServiceBase } from "../asyncService.base";
 })
 export class AppUpdateService extends AsyncServiceBase {
   appUpdatesEnabled: boolean;
-  forceUpdate: boolean;
   completeUpdateTemplate: string;
+  updateAvailable: boolean;
+  /** Track whether a flexible update has been downloaded and is ready to install */
+  updateDownloaded: boolean;
 
   constructor(
     private templateActionRegistry: TemplateActionRegistry,
@@ -36,18 +38,14 @@ export class AppUpdateService extends AsyncServiceBase {
     if (!Capacitor.isNativePlatform()) return;
     if (this.appUpdatesEnabled) {
       const appUpdateInfo = await AppUpdate.getAppUpdateInfo();
-      // If a flexible update has previously been downloaded but not installed, install now on init
-      if (
-        appUpdateInfo.installStatus &&
-        appUpdateInfo.installStatus === FlexibleUpdateInstallStatus?.DOWNLOADED
-      ) {
+      this.updateAvailable =
+        appUpdateInfo.updateAvailability === AppUpdateAvailability.UPDATE_AVAILABLE;
+      this.updateDownloaded =
+        appUpdateInfo.installStatus === FlexibleUpdateInstallStatus.DOWNLOADED;
+
+      // If a flexible update has previously been downloaded but not installed, install it now on init
+      if (this.updateDownloaded) {
         await this.completeFlexibleUpdate();
-      } else if (appUpdateInfo.updateAvailability === AppUpdateAvailability.UPDATE_AVAILABLE) {
-        if (this.forceUpdate) {
-          await this.attemptImmediateUpdate();
-        } else {
-          await this.attemptFlexibleUpdate();
-        }
       }
     }
   }
@@ -57,6 +55,26 @@ export class AppUpdateService extends AsyncServiceBase {
       app_update: async ({ args }) => {
         const [actionId] = args;
         const childActions = {
+          /**
+           * If an update is available, force the user to download and apply it,
+           * using Android's "Immediate" update strategy UI (the prompt can in fact still be dismissed)
+           * Further details at https://developer.android.com/guide/playcore/in-app-updates#immediate
+           */
+          force: async () => {
+            await this.attemptImmediateUpdate();
+          },
+          /**
+           * If an update is available, prompt the user to download and apply it, using Android's "Flexible"
+           * update strategy UI, which encourages the user to update but gives the option to not do so
+           * Further details at https://developer.android.com/guide/playcore/in-app-updates#flexible
+           */
+          prompt: async () => {
+            await this.attemptFlexibleUpdate();
+          },
+          /**
+           * After a flexible update has finished downloading, this action will finish applying the update,
+           * by installing it and relaunching the app
+           */
           complete: async () => {
             await this.completeFlexibleUpdate();
           },
@@ -72,14 +90,14 @@ export class AppUpdateService extends AsyncServiceBase {
 
   private subscribeToAppConfigChanges() {
     this.appConfigService.appConfig$.subscribe((appConfig: IAppConfig) => {
-      const { enabled, forceUpdate, completeUpdateTemplate } = appConfig.APP_UPDATES;
+      const { enabled, completeUpdateTemplate } = appConfig.APP_UPDATES;
       this.appUpdatesEnabled = enabled;
-      this.forceUpdate = forceUpdate;
       this.completeUpdateTemplate = completeUpdateTemplate;
     });
   }
 
   private async attemptImmediateUpdate() {
+    if (!this.isUpdateEnabledAndAvailable()) return;
     const updateResult = await AppUpdate.performImmediateUpdate();
     if (updateResult.code !== AppUpdateResultCode.OK) {
       console.error(
@@ -93,10 +111,11 @@ export class AppUpdateService extends AsyncServiceBase {
   }
 
   private async attemptFlexibleUpdate() {
+    if (!this.isUpdateEnabledAndAvailable()) return;
     AppUpdate.startFlexibleUpdate();
     const updateListener = AppUpdate.addListener("onFlexibleUpdateStateChange", (state) => {
-      // DOWNLOADED state indicates the update is ready to install https://developer.android.com/guide/playcore/in-app-updates/kotlin-java#install-flexible
       if (state.installStatus === FlexibleUpdateInstallStatus.DOWNLOADED) {
+        this.updateDownloaded = true;
         return this.handleFlexibleUpdateCompletion();
       }
       // Error handling. Currently causes listener to be removed erroneously
@@ -119,6 +138,19 @@ export class AppUpdateService extends AsyncServiceBase {
   }
 
   async completeFlexibleUpdate() {
+    this.updateDownloaded = false;
     await AppUpdate.completeFlexibleUpdate();
+  }
+
+  async isUpdateEnabledAndAvailable() {
+    if (this.appUpdatesEnabled) {
+      if (this.updateAvailable) {
+        return true;
+      }
+      console.log("[App Update] No app update available.");
+    } else {
+      console.log("[App Update] App updates are not enabled in deployment config.");
+    }
+    return false;
   }
 }

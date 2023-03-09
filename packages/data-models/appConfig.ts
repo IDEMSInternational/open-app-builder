@@ -178,17 +178,12 @@ const FEEDBACK_MODULE_DEFAULTS = {
 
 /** Specify strategy for automatically checking for available updates and prompting the user to apply any */
 const APP_UPDATES = {
-  /** Check for updates and prompt the user in-app to apply available updates */
+  /** Check for updates on init and enable in-app "app_update" template actions */
   enabled: false,
   /**
-   * If an update is available, force the user to download and apply it.
-   * Uses "Immediate" update strategy if true, otherwise uses "Flexible" update strategy
-   * Further details at https://developer.android.com/guide/playcore/in-app-updates
-   */
-  forceUpdate: false,
-  /**
-   * Template to be displayed after a flexible update has downloaded, prompting the user
-   * to install the update and restart the app. If none provided, installation will be completed on relaunch
+   * Template to be displayed after a flexible update has downloaded, prompting the user to install
+   * the update and restart the app. It should include a button that triggers the "app_update | complete" action
+   * If no template is provided provided, installation of the downloaded flexible update will be completed on next app init
    */
   completeUpdateTemplate: "app_update_complete",
 };
