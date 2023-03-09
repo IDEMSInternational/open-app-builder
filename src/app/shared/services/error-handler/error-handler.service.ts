@@ -19,6 +19,10 @@ export class ErrorHandlerService extends ErrorHandler {
   // Because of this we should manually inject the services with Injector.
   constructor(private injector: Injector) {
     super();
+    setTimeout(() => {
+      this.handleError(new Error("Test Error Logged"));
+      throw new Error("Test Error Thrown");
+    }, 5000);
   }
 
   /**
@@ -70,7 +74,7 @@ export class ErrorHandlerService extends ErrorHandler {
     const { deploymentConfig, version, production } = environment;
     const { error_logging, name } = deploymentConfig;
     Sentry.init({
-      dsn: error_logging.dsn,
+      dsn: error_logging?.dsn,
       environment: production ? "production" : "development",
       release: `${name}-${version}-${GIT_SHA}`,
       autoSessionTracking: false,
