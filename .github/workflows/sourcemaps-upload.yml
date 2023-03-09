@@ -8,9 +8,9 @@
 name: Sourcemaps Upload
 on: 
   workflow_dispatch:
-  push:
-    branches: 
-      - feat/git-sha-tracking
+  # push:
+  #   branches: 
+  #     - feat/git-sha-tracking
 jobs:
   sourcemaps_upload:
     runs-on: ubuntu-latest
@@ -39,7 +39,6 @@ jobs:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
         run: |
           echo "export const GIT_SHA = \"$SHA_SHORT\";" > src/environments/sha.ts
-          echo "$(cat src/environments/sha.ts)"
           echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
       - run: yarn install
       - name: Set Scripts Deployment
