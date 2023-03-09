@@ -19,7 +19,7 @@ jobs:
         with:
           lfs: true
       - name: Set Environment Deployment
-        # HACK - pr preview brnach only, should replace before merge
+        # HACK - pr preview branch only, should replace before merge
         run: |
           echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
           echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV
@@ -61,8 +61,10 @@ jobs:
       - name: Store sourcemaps artifact
         uses: actions/upload-artifact@v3
         with:
-          name: sourcemaps
+          name: sourcemaps-$SHA_SHORT
           path: www/*.map
+          # Only used for short-term debugging purposes or manual upload
+          retention-days: 30
       - name: Remove sourcemaps from build
         run: |
           echo $(ls www)
