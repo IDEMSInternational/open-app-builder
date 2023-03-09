@@ -613,7 +613,7 @@
   },
   {
     "SourceText": "You can stay healthy by drinking safe water, using clean toilets and washing your hands often.\r\n\r\nNot doing this can lead to diarrhoea, undernutrition, and other diseases involving worms or bugs.",
-    "text": "Unaweza kukaa na afya bora kwa kunywa maji salama, kutumia vyoo safi na kunawa mikono mara kwa mara\n\nKutofanya hivi kunaweza kusababisha kuhara, utapiamlo, na magonjwa mengine yanayohusisha minyoo au kunguni.",
+    "text": "Unaweza kukaa na afya bora kwa kunywa maji salama, kutumia vyoo safi na kunawa mikono mara kwa mara.\r\n\r\nKutofanya hivi kunaweza kusababisha kuhara, utapiamlo, na magonjwa mengine yanayohusisha minyoo au kunguni.",
     "type": "data_list",
     "note": ""
   },
@@ -625,7 +625,7 @@
   },
   {
     "SourceText": "Diarrhoea is when you have three or more loose or liquid stools per day. It is often a sign that your body has a bug (a bacterial, viral, or parasitic infection).\r\n\r\nDiarrhoea can be prevented but can be serious, especially when the body loses a lot of water.\r\n\r\nRemember to wash your hands often and practise safe food and clean water habits.",
-    "text": "Kuhara ni wakati una kinyesi kisicho na maji mara tatu au zaidi kwa siku. Mara nyingi ni ishara kwamba mwili wako una mdudu (bakteria, virusi, au maambukizi ya vimelea)\n\nKuhara kunaweza kuzuiwa lakini kunaweza kuwa mbaya, haswa wakati mwili unapoteza maji mengi.\r\n\nKumbuka kunawa mikono mara kwa mara na kufanya mazoezi ya chakula salama na maji safi.",
+    "text": "Kuhara ni wakati una kinyesi kisicho na maji mara tatu au zaidi kwa siku. Mara nyingi ni ishara kwamba mwili wako una mdudu (bakteria, virusi, au maambukizi ya vimelea).\r\n\r\nKuhara kunaweza kuzuiwa lakini kunaweza kuwa mbaya, haswa wakati mwili unapoteza maji mengi.\r\n\r\nKumbuka kunawa mikono mara kwa mara na kufanya mazoezi ya chakula salama na maji safi.",
     "type": "data_list",
     "note": ""
   },
@@ -649,7 +649,7 @@
   },
   {
     "SourceText": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and stomach pain, among other symptoms.\r\n\r\nEggs of these worms are found in human stool, which can land in soil and transfer to your feet and hands.\r\n\r\nRegularly cleaning your compound and toilet, disposing of children’s stool in the toilets, and regular handwashing are important to prevent infections.",
-    "text": "Minyoo inayovunja chakula kwa ajili ya mboji inasaidia. Minyoo mingine, kama vile mnyoo, minyoo, na mjeledi, ni wadogo na hawaonekani na ni hatari. Wanaweza kusababisha utapiamlo, kuhara, na maumivu ya tumbo, kati ya dalili zingine\nEggs of these worms are found in human stool, which can land in soil and transfer to your feet and hands.\n\nKusafisha mara kwa mara kiwanja chako na choo, kutupa kinyesi cha watoto kwenye vyoo, na unawaji mikono mara kwa mara ni muhimu ili kuzuia maambukizi.",
+    "text": "Minyoo inayovunja chakula kwa ajili ya mboji inasaidia. Minyoo mingine, kama vile mnyoo, minyoo, na mjeledi, ni wadogo na hawaonekani na ni hatari. Wanaweza kusababisha utapiamlo, kuhara, na maumivu ya tumbo, kati ya dalili zingine.\r\n\r\nEggs of these worms are found in human stool, which can land in soil and transfer to your feet and hands.\r\n\r\nKusafisha mara kwa mara kiwanja chako na choo, kutupa kinyesi cha watoto kwenye vyoo, na unawaji mikono mara kwa mara ni muhimu ili kuzuia maambukizi.",
     "type": "data_list",
     "note": ""
   },
@@ -739,7 +739,7 @@
   },
   {
     "SourceText": "WASH means Water, Sanitation, and Hygiene. Good WASH practises, like using safe water and food, ensuring clean toilets and homes, and handwashing, keep us healthy. \n\n* Hand washing prevents the spread of diseases.\n* Drinking safe clean water prevents illnesses, like diarrhoea. \n* Access to clean toilets helps to keep germs away.",
-    "text": "WASH ina maana ya Maji, Usafi wa Mazingira, na Usafi wa jumla. Mazoea mazuri ya WASH, kama vile kutumia maji na chakula salama, kuhakikisha vyoo na nyumba safi, na unawaji mikono, hutuweka tukiwa na afya njema.\n\n*Kunawa mikono huzuia kuenea kwa magonjwa.\n*Kunywa maji safi na salama huzuia magonjwa kama vile kuhara.\n* Uwepo wa vyoo safi huzuia vijidudu.",
+    "text": "WASH ina maana ya Maji, Usafi wa Mazingira, na Usafi wa jumla. Mazoea mazuri ya WASH, kama vile kutumia maji na chakula salama, kuhakikisha vyoo na nyumba safi, na unawaji mikono, hutuweka tukiwa na afya njema.\n\n* Kunawa mikono huzuia kuenea kwa magonjwa.\n* Kunywa maji safi na salama huzuia magonjwa kama vile kuhara.\n* Uwepo wa vyoo safi huzuia vijidudu.",
     "type": "data_list",
     "note": ""
   },
@@ -1087,7 +1087,7 @@
   },
   {
     "SourceText": "To help keep healthy it is very important to wash your hands with soap at the following times:\r\n* Before and after cooking\r\n* Before eating\r\n* Before and after attending a sick person\r\n* After using the toilet\r\n* After changing a baby’s nappy",
-    "text": "Ili kusaidia kuweka afya ni muhimu sana kunawa mikono kwa sabuni nyakati zifuatazo:\r\n* Kabla na baada ya kupika\r\n* Kabla ya kula\r\n* Kabla na baada ya kumuhudumia  mtu mgonjwa\r\n* Baada ya kutumia choo\r\n* Baada ya kubadilisha nepi ya mtoto.",
+    "text": "Ili kusaidia kuweka afya ni muhimu sana kunawa mikono kwa sabuni nyakati zifuatazo:\r\n* Kabla na baada ya kupika\r\n* Kabla ya kula\r\n* Kabla na baada ya kumuhudumia mtu mgonjwa\r\n* Baada ya kutumia choo\r\n* Baada ya kubadilisha nepi ya mtoto",
     "type": "data_list",
     "note": ""
   },
