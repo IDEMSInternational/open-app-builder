@@ -1,1 +1,5 @@
-{}
+{
+  "tz_sw": {
+    "filename": "tz_sw/strings.json"
+  }
+}

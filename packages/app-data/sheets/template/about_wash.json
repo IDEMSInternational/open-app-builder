@@ -8,7 +8,9 @@
       "name": "title",
       "value": "About @global.app_name",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "title",
       "_dynamicFields": {
@@ -32,7 +34,9 @@
       "name": "text",
       "value": "@global.app_name is brought to you by the collaboration of partners including INNODEMS, IDEMS International, University of Oxford, University of Cape Town, National Institute for Medical Research (NIMR) - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.app_name team’).",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "text",
       "_dynamicFields": {
@@ -63,7 +67,9 @@
       "name": "button_references",
       "value": "References",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "action_list": [
         {

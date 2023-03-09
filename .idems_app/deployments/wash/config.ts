@@ -20,7 +20,13 @@ config.android = {
 config.error_logging = {
   dsn: "https://976f6a201e1049fdb65d3f642724f0f9@app.glitchtip.com/2444",
 };
+config.translations = {
+  filter_language_codes: ["gb_en", "tz_sw"],
+  translated_strings_path: "packages/app-data/translations_source/from_translators",
+  source_strings_path: "packages/app-data/translations_source/to_translate",
+};
 
+config.app_config.APP_LANGUAGES.default = "tz_sw";
 config.app_config.APP_SIDEMENU_DEFAULTS!.title = "WASH App";
 config.app_config.APP_HEADER_DEFAULTS!.title = "WASH App";
 config.app_config.NOTIFICATION_DEFAULTS!.title = "New message from WASH App";

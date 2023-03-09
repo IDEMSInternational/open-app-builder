@@ -1,4 +1,12 @@
 {
+  "android/icon-background.png": {
+    "size_kb": 7,
+    "md5Checksum": "12c68f0e8007b8d9c0bd02ea9e96f61b"
+  },
+  "android/icon-foreground.png": {
+    "size_kb": 65.9,
+    "md5Checksum": "0d18a54f7adf0e1e3efc57913d7fa797"
+  },
   "android/icon.png": {
     "size_kb": 70.8,
     "md5Checksum": "b20335986d51de8f50b9d5b6fef00900"
@@ -59,9 +67,9 @@
     "size_kb": 14.3,
     "md5Checksum": "fd2e25b18037595a1da2c9acb1677a9f"
   },
-  "essential_tools/mod1_pyramid.svg": {
-    "size_kb": 372,
-    "md5Checksum": "6194dc3b0e2ac98ef34c3448049180a7"
+  "essential_tools/mod1_fuzzy_circle.svg": {
+    "size_kb": 507.1,
+    "md5Checksum": "ef7e3f7daab550306e5413ae351d3192"
   },
   "essential_tools/mod2and5_why_wash_hands.svg": {
     "size_kb": 270,
@@ -88,12 +96,12 @@
     "md5Checksum": "cb30cbc885717b81e097afaed1c185cc"
   },
   "essential_tools/mod4_handwashing_station.svg": {
-    "size_kb": 393,
-    "md5Checksum": "1b87ddcac9d94fa14c4bacca5fef84fc"
+    "size_kb": 551.4,
+    "md5Checksum": "dc85216942e15b9b5f830b431e0a2fc0"
   },
   "essential_tools/mod4_how_to_wash_hands.svg": {
-    "size_kb": 756.4,
-    "md5Checksum": "b6284193722e830a47cd671de702584e"
+    "size_kb": 781.8,
+    "md5Checksum": "6c837d249cb4b8f212cfecd3c7a478dc"
   },
   "essential_tools/mod5and11_washing_face.svg": {
     "size_kb": 15.4,
@@ -144,8 +152,8 @@
     "md5Checksum": "338c62423a679075da6d9302b39a4e2a"
   },
   "essential_tools/mod8_using_water_container.svg": {
-    "size_kb": 407.8,
-    "md5Checksum": "c399231b9b47d8cda466631d3010d6f6"
+    "size_kb": 390.6,
+    "md5Checksum": "430e682382b6a8d971e8d40f34de2408"
   },
   "essential_tools/mod8_watergerms.svg": {
     "size_kb": 477.7,
@@ -170,6 +178,10 @@
   "essential_tools/mod9_washing_fruit_and_veg.svg": {
     "size_kb": 22.1,
     "md5Checksum": "5c4a3e955f26a0140410821e9948775f"
+  },
+  "essential_tools/no1_circle.svg": {
+    "size_kb": 424.6,
+    "md5Checksum": "6cdd2dbcdcd4c6e80fcb465a5aadac46"
   },
   "essential_tools/WASH Archive/breastfeeding2_license_needed.png": {
     "size_kb": 82.8,
@@ -267,6 +279,10 @@
     "size_kb": 46.4,
     "md5Checksum": "c20486c00d9c440940cc0a0b55375726"
   },
+  "essential_tools/WASH Archive/mod1_pyramid.svg": {
+    "size_kb": 372,
+    "md5Checksum": "6194dc3b0e2ac98ef34c3448049180a7"
+  },
   "essential_tools/WASH Archive/mod1_what_is_wash.svg": {
     "size_kb": 465.1,
     "md5Checksum": "b56c65a1209176fea34e5084e11c400d"
@@ -274,6 +290,14 @@
   "essential_tools/WASH Archive/mod2_why_soap_sabuni.svg": {
     "size_kb": 290.9,
     "md5Checksum": "dd87a250c1ac003e9b8565e8196c6e89"
+  },
+  "essential_tools/WASH Archive/mod4_handwashing_station.svg": {
+    "size_kb": 393,
+    "md5Checksum": "1b87ddcac9d94fa14c4bacca5fef84fc"
+  },
+  "essential_tools/WASH Archive/mod4_how_to_wash_hands.svg": {
+    "size_kb": 756.4,
+    "md5Checksum": "b6284193722e830a47cd671de702584e"
   },
   "essential_tools/WASH Archive/mod5and11_washing_face.svg": {
     "size_kb": 16.1,
@@ -299,9 +323,21 @@
     "size_kb": 29.1,
     "md5Checksum": "09ef8ad258c954d5b8a7396489947ab5"
   },
+  "essential_tools/WASH Archive/mod8_using_water_container.svg": {
+    "size_kb": 407.8,
+    "md5Checksum": "c399231b9b47d8cda466631d3010d6f6"
+  },
   "essential_tools/WASH Archive/mod9_washing_fruit_and_veg.svg": {
     "size_kb": 22.7,
     "md5Checksum": "2691d30a4fbd4ca63395efff34bcc788"
+  },
+  "essential_tools/WASH Archive/no1_pyramid_brush.svg": {
+    "size_kb": 442.6,
+    "md5Checksum": "e7de8cb013d5d609dcd3b316be27cc78"
+  },
+  "essential_tools/WASH Archive/no4_handwashing_station_2.svg": {
+    "size_kb": 287.3,
+    "md5Checksum": "a16168f25b9b1d91a4adf78216e97183"
   },
   "essential_tools/WASH Archive/protect_your_water_source.png": {
     "size_kb": 988.5,

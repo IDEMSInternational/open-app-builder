@@ -9,8 +9,12 @@
       "illustration": "essential_tools/mod2and5_why_wash_hands.svg",
       "title": "Why do we wash hands?",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -27,8 +31,12 @@
       "illustration": "essential_tools/mod2_why_soap.svg",
       "title": "Why is soap important?",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -48,8 +56,12 @@
       "reference_link": "www.who.int/publications/i/item/9789240036444",
       "title": "What do you need?",
       "_translations": {
-        "title": {},
-        "text": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

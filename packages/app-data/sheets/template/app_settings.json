@@ -113,7 +113,9 @@
       "name": "button_dev_enter",
       "value": "Developer Mode",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "action_list": [
         {
@@ -149,7 +151,9 @@
       "name": "button_dev_exit",
       "value": "Developer Mode",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "action_list": [
         {

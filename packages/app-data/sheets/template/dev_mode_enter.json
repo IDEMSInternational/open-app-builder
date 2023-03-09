@@ -39,7 +39,9 @@
       "name": "title",
       "value": "Entering Developer Mode",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "title"
     },
@@ -48,7 +50,9 @@
       "name": "text_1",
       "value": "To launch the app in developer mode, enter your developer code in the box below and press @global.save_button.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "text_1",
       "_dynamicFields": {
@@ -273,7 +277,9 @@
           "name": "text_2",
           "value": "You have successfully entered developer mode.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "hidden": "@fields.user_mode",
           "_nested_name": "enter_replies.text_2",
@@ -298,7 +304,9 @@
           "name": "text_3",
           "value": "You have entered an incorrect code.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "hidden": "!@fields.user_mode",
           "_nested_name": "enter_replies.text_3",

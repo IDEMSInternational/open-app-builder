@@ -4,6 +4,17 @@
   "status": "released",
   "rows": [
     {
+      "name": "toggle_text",
+      "value": "I have read this",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "toggle_text"
+    },
+    {
       "name": "completed_field",
       "type": "set_variable",
       "_nested_name": "completed_field"
@@ -85,15 +96,30 @@
         },
         {
           "type": "text",
-          "name": "toggle_text",
-          "value": "I have read this",
+          "name": "text",
+          "value": "@local.toggle_text",
           "_translations": {
             "value": {}
           },
-          "parameter_list": {
-            "flex": "1"
+          "style_list": [
+            "flex: 1"
+          ],
+          "_nested_name": "dg_completed.text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.toggle_text",
+                "matchedExpression": "@local.toggle_text",
+                "type": "local",
+                "fieldName": "toggle_text"
+              }
+            ]
           },
-          "_nested_name": "dg_completed.toggle_text"
+          "_dynamicDependencies": {
+            "@local.toggle_text": [
+              "value"
+            ]
+          }
         }
       ],
       "_nested_name": "dg_completed"

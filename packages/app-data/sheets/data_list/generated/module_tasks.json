@@ -9,8 +9,12 @@
       "illustration": "essential_tools/home_woman_advising.svg",
       "title": "Water, Sanitation and Hygiene",
       "_translations": {
-        "title": {},
-        "text_introduction": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text_introduction": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -29,8 +33,12 @@
       "illustration": "essential_tools/home_handwashing.svg",
       "title": "Handwashing with soap",
       "_translations": {
-        "title": {},
-        "text_introduction": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text_introduction": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -49,8 +57,12 @@
       "illustration": "essential_tools/home_handgerms.svg",
       "title": "When to wash your hands",
       "_translations": {
-        "title": {},
-        "text_introduction": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text_introduction": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -69,8 +81,12 @@
       "illustration": "essential_tools/mod2_why_soap.svg",
       "title": "How to wash your hands",
       "_translations": {
-        "title": {},
-        "text_introduction": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text_introduction": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -89,8 +105,12 @@
       "illustration": "essential_tools/home_man_advising.svg",
       "title": "Keeping healthy",
       "_translations": {
-        "title": {},
-        "text_introduction": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text_introduction": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -109,8 +129,12 @@
       "illustration": "essential_tools/home_toilet.svg",
       "title": "Clean toilets",
       "_translations": {
-        "title": {},
-        "text_introduction": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text_introduction": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -129,8 +153,12 @@
       "illustration": "essential_tools/mod7_house.svg",
       "title": "Healthy home",
       "_translations": {
-        "title": {},
-        "text_introduction": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text_introduction": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -149,8 +177,12 @@
       "illustration": "essential_tools/home_water_flow.svg",
       "title": "Safe drinking water",
       "_translations": {
-        "title": {},
-        "text_introduction": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text_introduction": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -169,8 +201,12 @@
       "illustration": "essential_tools/mod9_hot_food.svg",
       "title": "Safe food",
       "_translations": {
-        "title": {},
-        "text_introduction": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text_introduction": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -189,8 +225,12 @@
       "illustration": "essential_tools/mod10_home_wastebin.svg",
       "title": "Garbage management",
       "_translations": {
-        "title": {},
-        "text_introduction": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text_introduction": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -209,8 +249,12 @@
       "illustration": "essential_tools/mod11_soap_bucket.svg",
       "title": "Bathing and washing",
       "_translations": {
-        "title": {},
-        "text_introduction": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text_introduction": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -229,8 +273,12 @@
       "illustration": "essential_tools/home_man_celebrating.svg",
       "title": "Celebration",
       "_translations": {
-        "title": {},
-        "text_introduction": {}
+        "title": {
+          "tz_sw": true
+        },
+        "text_introduction": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
