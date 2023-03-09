@@ -14,6 +14,8 @@ config.google_drive = {
 config.android = {
   splash_asset_path: "packages/app-data/assets/global/android/splash.png",
   icon_asset_path: "packages/app-data/assets/global/android/icon.png",
+  icon_asset_foreground_path: "packages/app-data/assets/global/android/icon-foreground.png",
+  icon_asset_background_path: "packages/app-data/assets/global/android/icon-background.png",
 }
 config.error_logging = {
   dsn: "https://976f6a201e1049fdb65d3f642724f0f9@app.glitchtip.com/2444",
