@@ -176,7 +176,6 @@ const FEEDBACK_MODULE_DEFAULTS = {
   selected_text_field: "_feedback_selected_text",
 };
 
-/** Specify strategy for automatically checking for available updates and prompting the user to apply any */
 const APP_UPDATES = {
   /** Check for updates on init and enable in-app "app_update" template actions */
   enabled: false,
