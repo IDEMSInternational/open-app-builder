@@ -25,7 +25,7 @@ jobs:
           then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;              \
           else echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;  \
           fi;
-          echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+          echo "SHA_SHORT=${{github.event.pull_request.head.sha::8}}" >> $GITHUB_ENV
         shell: bash
       - run: |
           echo $GITHUB_BASE_REF
