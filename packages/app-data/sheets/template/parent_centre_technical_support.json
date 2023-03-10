@@ -8,14 +8,7 @@
       "name": "title",
       "value": "Technical Support",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "tiny"
@@ -27,14 +20,7 @@
       "name": "text",
       "value": "Are you experiencing any technical issues? Let us know and help to make @global.parent_app better!",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "_nested_name": "text",
       "_dynamicFields": {
@@ -57,14 +43,7 @@
       "name": "text_type_name",
       "value": "Type your name (optional)",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "text_type_name"
@@ -99,13 +78,7 @@
       "name": "text_checkbox_whatsapp",
       "value": "Contact me on @global.whatsapp",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "text_checkbox_whatsapp",
@@ -160,14 +133,7 @@
           "name": "text_type_phone_number",
           "value": "Type your phone number",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "dg_whatsapp.text_type_phone_number"
@@ -220,14 +186,7 @@
       "name": "text_checkbox_email",
       "value": "Contact me via email",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "text_checkbox_email"
@@ -267,14 +226,7 @@
           "name": "text_type_email",
           "value": "Type your email address",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "dg_email.text_type_email"
@@ -327,14 +279,7 @@
       "name": "text_issue",
       "value": "Tell us about your issue",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "text_issue"

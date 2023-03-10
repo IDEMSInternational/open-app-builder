@@ -42,14 +42,7 @@
               "name": "activity_title",
               "value": "Welcome @fields.group_name",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "watch.workshop_activity.activity_title",
@@ -82,14 +75,7 @@
               "name": "intro_text",
               "value": "It's great to see you again! Let’s start with a song for families everywhere.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "watch.workshop_activity.intro_text"
@@ -102,14 +88,7 @@
                   "name": "video_title",
                   "value": "Let's Slow Down",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "type": "set_variable",
                   "_nested_name": "watch.workshop_activity.content_box.video_title"

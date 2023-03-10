@@ -8,14 +8,7 @@
       "name": "answer_1",
       "value": "They discussed the reasons behind the rule",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_1"
@@ -24,14 +17,7 @@
       "name": "answer_2",
       "value": "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_2",
@@ -64,14 +50,7 @@
       "name": "answer_3",
       "value": "The rule was clear, specific and fair",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_3"
@@ -80,14 +59,7 @@
       "name": "answer_4",
       "value": "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_4",
@@ -149,14 +121,7 @@
               "name": "intro_text",
               "value": "Let's think about what happened in this story.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "question_time.workshop_activity.intro_text"
@@ -189,14 +154,7 @@
                       "name": "question_text",
                       "value": "What went well here in making a rule together?",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.question_text"
@@ -273,14 +231,7 @@
                       "name": "reply",
                       "value": "That's right, making clear rules together in a calm and positive way works so well!",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.reply"
@@ -319,14 +270,7 @@
                       "name": "question_text",
                       "value": "How do you think @global.w_rules_teen_boy knew his @global.w_rules_female_caregiver_1 appreciated him?",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.question_text",
@@ -375,14 +319,7 @@
                       "name": "reply",
                       "value": "Exactly - a positive response makes all the difference!",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.reply"

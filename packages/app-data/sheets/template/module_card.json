@@ -352,9 +352,7 @@
       "name": "highlighted_text",
       "value": "Active",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "highlighted_text"
@@ -363,9 +361,7 @@
       "name": "progress_units_name",
       "value": "sections",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "progress_units_name"

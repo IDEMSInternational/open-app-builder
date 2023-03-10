@@ -178,14 +178,7 @@
           "name": "pt_3_button_3",
           "value": "Unlock workshops",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "action_list": [
             {
@@ -422,14 +415,7 @@
           "name": "pt_6_button_1",
           "value": "Read Together",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "action_list": [
             {
@@ -649,14 +635,7 @@
           "name": "pt_7_button_3",
           "value": "Try it Together",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "action_list": [
             {
@@ -1031,14 +1010,7 @@
           "name": "pt_11_button_1",
           "value": "Reset App",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "action_list": [
             {

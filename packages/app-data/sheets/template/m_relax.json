@@ -138,14 +138,7 @@
           "name": "button_1",
           "value": "Relax now",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "action_list": [
             {
@@ -249,14 +242,7 @@
           "name": "habit_text",
           "value": "Did you relax already? Tap it!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": false,
           "type": "set_variable",

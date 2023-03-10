@@ -65,14 +65,7 @@
           "name": "intro_text",
           "value": "Let's see how this week has been.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "workshop_activity.intro_text"
@@ -92,14 +85,7 @@
               "name": "top_text",
               "value": "This week you have done...",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "workshop_activity.content_box.top_text"
@@ -108,14 +94,7 @@
               "name": "bottom_text",
               "value": "You are showing such commitment to being a parent and to caring for yourself. \n\nYou are fantastic.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "workshop_activity.content_box.bottom_text"

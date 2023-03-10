@@ -9,14 +9,7 @@
       "name": "myself",
       "value": "I found it myself",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "myself"
@@ -25,14 +18,7 @@
       "name": "friend",
       "value": "A friend or family",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "friend"
@@ -51,9 +37,7 @@
       "name": "organisation_2",
       "value": "NIMR",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "organisation_2"

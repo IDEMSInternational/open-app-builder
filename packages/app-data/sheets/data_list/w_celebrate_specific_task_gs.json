@@ -12,14 +12,7 @@
       "template": "w_celebrate_think",
       "title": "Think",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
@@ -36,14 +29,7 @@
       "template": "w_celebrate_talk_1",
       "title": "Talk Together",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {
@@ -60,14 +46,7 @@
       "template": "w_celebrate_talk_2",
       "title": "Talk Together",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "title": {}
       },
       "_translatedFields": {
         "title": {

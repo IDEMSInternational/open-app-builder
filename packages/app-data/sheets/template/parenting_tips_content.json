@@ -107,14 +107,7 @@
       "name": "text",
       "value": "Raising teens can be hard, and we all struggle sometimes.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "_nested_name": "text"
     },
@@ -123,14 +116,7 @@
       "name": "question_text",
       "value": "What is the main challenge you are experiencing right now?",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -141,14 +127,7 @@
       "name": "choice_1",
       "value": "My relationship with my teen is not good",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "choice_1"
@@ -157,14 +136,7 @@
       "name": "choice_2",
       "value": "My teen’s behaviour is difficult",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "choice_2"
@@ -173,14 +145,7 @@
       "name": "choice_3",
       "value": "I feel stressed, lonely, angry",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "choice_3"
@@ -189,14 +154,7 @@
       "name": "choice_4",
       "value": "I have money worries",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "choice_4"
@@ -205,14 +163,7 @@
       "name": "choice_5",
       "value": "I worry about my teen’s safety",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "choice_5"
@@ -221,14 +172,7 @@
       "name": "choice_6",
       "value": "We often fight in our family",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "choice_6"
@@ -237,14 +181,7 @@
       "name": "choice_7",
       "value": "I have a different problem…",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "choice_7"
@@ -554,14 +491,7 @@
           "name": "reply",
           "value": "Building a better relationship starts with spending time together - even 5 minutes a day makes a difference! At first, it can be hard to spend time together, as we are all busy and our teens can be in a bad mood sometimes. But spending even 5 minutes a day of focused time with your teen helps to build trust. Try asking your teen what they would like to do together. It can be fun and relaxing for you too!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "reply_choice_1.reply"
@@ -570,14 +500,7 @@
           "name": "reply_workshop_start",
           "value": "You can get more support on how to spend one-on-one time with your teen here:",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "reply_choice_1.reply_workshop_start"
@@ -645,14 +568,7 @@
           "name": "choice_2_reply_text",
           "value": "All teenagers sometimes behave just horribly! One thing that can help with teenage behaviour is to praise them any time that they do something good – however small. Teens may not look like they want or seek your praise but they still really, really do.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "reply_choice_2.choice_2_reply_text"
@@ -715,14 +631,7 @@
               "name": "reply_workshop_start",
               "value": "You can get more support here on how to encourage good behaviour through praising:",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "reply_choice_2.reply_choice_2_praise.reply_workshop_start"
@@ -970,14 +879,7 @@
           "name": "choice_3_reply_text",
           "value": "Parenting stress is really high right now. We know exactly how overwhelming life can be. Doing something for yourself can reduce your stress. You deserve it! And when you feel overwhelmed, take back control over your body by taking five slow, deep breaths before responding. Lots of parents found this helpful.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "reply_choice_3.choice_3_reply_text"
@@ -1040,14 +942,7 @@
               "name": "reply_workshop_start",
               "value": "You can get more support on how to take care of yourself here:",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "reply_choice_3.reply_choice_3_self_care.reply_workshop_start"
@@ -1212,14 +1107,7 @@
           "name": "reply",
           "value": "You are not alone. Money stress is so hard for parents. Try talking to your teen about how much money comes in and what you need to spend money on as a family each month. This can help them to understand why you cannot afford something they want. And when everyone understands where the money goes, it is easier to agree on where you can save together too!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "reply_choice_4.reply"
@@ -1228,14 +1116,7 @@
           "name": "reply_workshop_start",
           "value": "You can get more support on how to budget and save here:",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "reply_choice_4.reply_workshop_start"
@@ -1292,14 +1173,7 @@
           "name": "reply",
           "value": "Teens spend a lot of time outside the house or online, where it is harder for us to keep them safe - many parents worry about this. Try to start a conversation with your teen about safe and unsafe places in your community and online (you might need to try a few times). They may even know some you do not. This can start to help you make a plan together about how to stay safe.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "reply_choice_5.reply"
@@ -1308,14 +1182,7 @@
           "name": "reply_workshop_start",
           "value": "You can get more support on how to keep your teen safe here:",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "reply_choice_5.reply_workshop_start"
@@ -1372,14 +1239,7 @@
           "name": "reply",
           "value": "When a problem comes up, try to talk about it together. What is the problem exactly? What different solutions are there and what are the consequences of one? That way, you can find a solution that can be OK for everyone.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "reply_choice_6.reply"
@@ -1388,14 +1248,7 @@
           "name": "reply_workshop_start",
           "value": "You can get more support on how to solve problems together here:",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "reply_choice_6.reply_workshop_start"
@@ -1434,14 +1287,7 @@
           "name": "reply",
           "value": "It is not easy to look after our families. We all have challenges sometimes, but we hope this app will help you navigate them well. @global.parent_app is based on ten years of experience running parenting programmes in South Africa, and thousands of parents have found that the tips that are shared help with many parenting challenges. We hope this app will help you and your family too.\n\nHere are some of the key proven tips for you:",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "reply_choice_7.reply",
@@ -1465,14 +1311,7 @@
           "name": "button_1",
           "value": "Start your first parenting workshop",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "action_list": [
             {

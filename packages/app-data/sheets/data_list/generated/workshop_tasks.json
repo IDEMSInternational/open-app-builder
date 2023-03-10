@@ -14,51 +14,14 @@
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_self_care.mp3",
       "title": "Welcome and Self-Care",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
-        "short_title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "caregiver_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        },
-        "teen_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "short_title": {},
+        "intro_title": {},
+        "tools": {},
+        "caregiver_testimonial_script": {},
+        "teen_testimonial_script": {}
       },
       "_translatedFields": {
         "title": {
@@ -108,43 +71,13 @@
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_1on1.mp3",
       "title": "One-on-One Time",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "caregiver_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        },
-        "teen_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {},
+        "tools": {},
+        "caregiver_testimonial_script": {},
+        "teen_testimonial_script": {}
       },
       "_translatedFields": {
         "title": {
@@ -191,43 +124,13 @@
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_praise.mp3",
       "title": "Praise",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "caregiver_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        },
-        "teen_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {},
+        "tools": {},
+        "caregiver_testimonial_script": {},
+        "teen_testimonial_script": {}
       },
       "_translatedFields": {
         "title": {
@@ -274,43 +177,13 @@
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_instruct.mp3",
       "title": "Positive Instructions",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "caregiver_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        },
-        "teen_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {},
+        "tools": {},
+        "caregiver_testimonial_script": {},
+        "teen_testimonial_script": {}
       },
       "_translatedFields": {
         "title": {
@@ -357,43 +230,13 @@
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_stress.mp3",
       "title": "Managing Stress",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "caregiver_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        },
-        "teen_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {},
+        "tools": {},
+        "caregiver_testimonial_script": {},
+        "teen_testimonial_script": {}
       },
       "_translatedFields": {
         "title": {
@@ -440,43 +283,13 @@
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_money.mp3",
       "title": "Family Budgets",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "caregiver_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        },
-        "teen_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {},
+        "tools": {},
+        "caregiver_testimonial_script": {},
+        "teen_testimonial_script": {}
       },
       "_translatedFields": {
         "title": {
@@ -523,43 +336,13 @@
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_rules.mp3",
       "title": "Rules",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "caregiver_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        },
-        "teen_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {},
+        "tools": {},
+        "caregiver_testimonial_script": {},
+        "teen_testimonial_script": {}
       },
       "_translatedFields": {
         "title": {
@@ -606,43 +389,13 @@
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_consequence.mp3",
       "title": "Calm Consequences",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "caregiver_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        },
-        "teen_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {},
+        "tools": {},
+        "caregiver_testimonial_script": {},
+        "teen_testimonial_script": {}
       },
       "_translatedFields": {
         "title": {
@@ -689,43 +442,13 @@
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_solve.mp3",
       "title": "Problem Solving",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "caregiver_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        },
-        "teen_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {},
+        "tools": {},
+        "caregiver_testimonial_script": {},
+        "teen_testimonial_script": {}
       },
       "_translatedFields": {
         "title": {
@@ -772,43 +495,13 @@
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_safe.mp3",
       "title": "Teen Safety",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "caregiver_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        },
-        "teen_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {},
+        "tools": {},
+        "caregiver_testimonial_script": {},
+        "teen_testimonial_script": {}
       },
       "_translatedFields": {
         "title": {
@@ -855,43 +548,13 @@
       "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_crisis.mp3",
       "title": "Dealing with Crisis",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "caregiver_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        },
-        "teen_testimonial_script": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true
-        }
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {},
+        "tools": {},
+        "caregiver_testimonial_script": {},
+        "teen_testimonial_script": {}
       },
       "_translatedFields": {
         "title": {
@@ -936,31 +599,11 @@
       "intro_audio_asset": "plh_audio/topic_intros/w_celebrate_intro.mp3",
       "title": "Celebration and Next Steps",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "title": {},
+        "in_text_title": {},
+        "description": {},
+        "intro_title": {},
+        "tools": {}
       },
       "_translatedFields": {
         "title": {

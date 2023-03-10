@@ -45,14 +45,7 @@
               "name": "text",
               "value": "Content unlocked by these questions is now accessible under @data.parent_centre.my_tips.location_text.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "survey_outro.box_image.text",

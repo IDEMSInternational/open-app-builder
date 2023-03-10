@@ -65,9 +65,7 @@
               "name": "text",
               "value": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s @global.workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "condition": "!@local.do_workshops_together",
               "type": "set_variable",
@@ -121,9 +119,7 @@
               "name": "text",
               "value": "Hi @fields.group_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s @global.workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "condition": "@local.do_workshops_together",
               "type": "set_variable",

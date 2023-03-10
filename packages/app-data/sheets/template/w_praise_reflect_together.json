@@ -80,14 +80,7 @@
                       "name": "title",
                       "value": "Step 1: Share what went well and what was hard",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "hidden": false,
                       "type": "set_variable",
@@ -97,14 +90,7 @@
                       "name": "text",
                       "value": "\"I learned so much more about my teen’s life when we spent one-on-one time! But after the first day, my teen only wanted to play on his phone.\"",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "reflect_together.workshop_activity.content_box.box_1.text"
@@ -135,14 +121,7 @@
                           "name": "title",
                           "value": "Step 2: Bring ideas!",
                           "_translations": {
-                            "value": {
-                              "tz_sw": true,
-                              "za_af": true,
-                              "za_st": true,
-                              "za_tn": true,
-                              "za_xh": true,
-                              "za_zu": true
-                            }
+                            "value": {}
                           },
                           "hidden": false,
                           "type": "set_variable",
@@ -152,14 +131,7 @@
                           "name": "text",
                           "value": "\"Well done for trying! Maybe you could suggest some other fun things you could do together with your teen.\"\n\n\"Yes, or you could do something together on his phone? Or he could show you how his phone works?\"",
                           "_translations": {
-                            "value": {
-                              "tz_sw": true,
-                              "za_af": true,
-                              "za_st": true,
-                              "za_tn": true,
-                              "za_xh": true,
-                              "za_zu": true
-                            }
+                            "value": {}
                           },
                           "type": "set_variable",
                           "_nested_name": "reflect_together.workshop_activity.content_box.box_2.box_1.text"
@@ -190,14 +162,7 @@
                               "name": "title",
                               "value": "Step 3: Pick and try one!",
                               "_translations": {
-                                "value": {
-                                  "tz_sw": true,
-                                  "za_af": true,
-                                  "za_st": true,
-                                  "za_tn": true,
-                                  "za_xh": true,
-                                  "za_zu": true
-                                }
+                                "value": {}
                               },
                               "hidden": false,
                               "type": "set_variable",
@@ -207,14 +172,7 @@
                               "name": "text",
                               "value": "“Thank you for those great ideas! Yes, let me ask my teen to show how his phone works tomorrow after school. Can one of you pretend to be my teen now, so I can practice asking?”",
                               "_translations": {
-                                "value": {
-                                  "tz_sw": true,
-                                  "za_af": true,
-                                  "za_st": true,
-                                  "za_tn": true,
-                                  "za_xh": true,
-                                  "za_zu": true
-                                }
+                                "value": {}
                               },
                               "type": "set_variable",
                               "_nested_name": "reflect_together.workshop_activity.content_box.box_2.box_2.box_1.text"
@@ -231,14 +189,7 @@
                               "name": "text",
                               "value": "Think about how your home activities went this week. \n\nTake turns to discuss:\n\n* What went well and what was a problem?\n* What solutions can you think of together?\n* Pick one solution and try it later with your teen! \n\n(Or you can even practice it now  so it will be easier later!)",
                               "_translations": {
-                                "value": {
-                                  "tz_sw": true,
-                                  "za_af": true,
-                                  "za_st": true,
-                                  "za_tn": true,
-                                  "za_xh": true,
-                                  "za_zu": true
-                                }
+                                "value": {}
                               },
                               "type": "set_variable",
                               "_nested_name": "reflect_together.workshop_activity.content_box.box_2.box_2.box_2.text"

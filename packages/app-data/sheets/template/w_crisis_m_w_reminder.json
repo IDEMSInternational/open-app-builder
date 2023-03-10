@@ -41,9 +41,7 @@
               "name": "text",
               "value": "We never know when a crisis may happen, but we CAN be prepared! \n\nStart the next @global.workshop to explore how you can do this together with your teen.",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "m_workshop_reminder.in_week_message.text",

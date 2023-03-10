@@ -41,14 +41,7 @@
       "name": "uuid_title",
       "value": "Your @global.parent_app Code",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -56,14 +49,7 @@
       "name": "terms_and_conditions",
       "value": "Terms & Conditions",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -71,14 +57,7 @@
       "name": "privacy_policy",
       "value": "Privacy Policy",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -86,14 +65,7 @@
       "name": "language",
       "value": "Language",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {

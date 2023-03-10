@@ -35,14 +35,7 @@
       "name": "top_text",
       "value": "We all have negative thoughts sometimes.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "_nested_name": "top_text"
     },
@@ -51,14 +44,7 @@
       "name": "dashed_box_1",
       "value": "\"I am a failure\"",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "icon_src": "@local.sad_face",
@@ -91,14 +77,7 @@
           "name": "title_1",
           "value": "What to do?",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "accordion.title_1"
@@ -107,14 +86,7 @@
           "name": "title_2",
           "value": "Examples",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "accordion.title_2"
@@ -136,14 +108,7 @@
                   "name": "text_1",
                   "value": "Telling yourself or your teen to stop or to say the positive opposite often does not help.",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "_nested_name": "accordion.section_1.dg.text_1"
                 },
@@ -152,14 +117,7 @@
                   "name": "dashed_box_2",
                   "value": "\"I do everything perfectly\"",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "parameter_list": {
                     "icon_src": "@local.confused_face",
@@ -189,14 +147,7 @@
                   "name": "text_2",
                   "value": "Instead, you can ask:",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "_nested_name": "accordion.section_1.dg.text_2"
                 },
@@ -205,14 +156,7 @@
                   "name": "text_3",
                   "value": "- Is the thought realistic? What are other explanations? \n- What happens if I continue to believe this thought?\n - What would I tell a friend if he/she had this thought?",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "_nested_name": "accordion.section_1.dg.text_3"
                 },
@@ -221,14 +165,7 @@
                   "name": "dashed_box_3",
                   "value": "\"This is hard, but you are trying your best, and we will work together to find a solution\"",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "parameter_list": {
                     "icon_src": "@local.happy_face",
@@ -295,14 +232,7 @@
                       "name": "thought_neg",
                       "value": "\"It’s your fault\"",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "accordion.section_2.dg.change_1.thought_neg"
@@ -311,14 +241,7 @@
                       "name": "thought_pos",
                       "value": "\"Let’s come up with a solution together\"",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "accordion.section_2.dg.change_1.thought_pos"
@@ -335,14 +258,7 @@
                       "name": "thought_neg",
                       "value": "\"I lost my job\"",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "accordion.section_2.dg.change_2.thought_neg"
@@ -351,14 +267,7 @@
                       "name": "thought_pos",
                       "value": "\"I learned a lot in my job – that will help me find another one\"",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "accordion.section_2.dg.change_2.thought_pos"
@@ -375,14 +284,7 @@
                       "name": "thought_neg",
                       "value": "\"Nobody likes me\"",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "accordion.section_2.dg.change_3.thought_neg"
@@ -391,14 +293,7 @@
                       "name": "thought_pos",
                       "value": "\"Last week I did have a great time with...\"",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "accordion.section_2.dg.change_3.thought_pos"
@@ -415,14 +310,7 @@
                       "name": "thought_neg",
                       "value": "\"Bad things always happen to me\"",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "accordion.section_2.dg.change_4.thought_neg"
@@ -431,14 +319,7 @@
                       "name": "thought_pos",
                       "value": "\"This good thing happened the other day...\"",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "accordion.section_2.dg.change_4.thought_pos"

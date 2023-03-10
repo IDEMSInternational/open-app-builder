@@ -12,14 +12,7 @@
           "name": "top_text",
           "value": "We all sometimes want to tell our teens \"You must do this, or else… trouble!\", but it often does not make them follow rules better.  \n\nInstead, you can help your teen make good choices by showing you trust them and speaking with them:",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": false,
           "type": "set_variable",
@@ -33,14 +26,7 @@
               "name": "title",
               "value": "DISCUSS CONSEQUENCES",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_1.title"
@@ -49,14 +35,7 @@
               "name": "text_1",
               "value": "Ask \"If you do this, what could happen?\"",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_1.text_1"
@@ -72,14 +51,7 @@
               "name": "title",
               "value": "PRAISE",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_2.title"
@@ -88,14 +60,7 @@
               "name": "text_1",
               "value": "If something goes well, praise your teen!",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_2.text_1"
@@ -111,14 +76,7 @@
               "name": "title",
               "value": "REFLECT TOGETHER",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_3.title"
@@ -127,14 +85,7 @@
               "name": "text_1",
               "value": "If something goes wrong, ask \"How could you have done that differently?\"",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_3.text_1"
@@ -151,14 +102,7 @@
               "name": "title",
               "value": "START SMALL",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_4.title"
@@ -167,14 +111,7 @@
               "name": "text_1",
               "value": "Give your teen small responsibilities first. When that goes well, you can add more to show that you trust your teen.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_4.text_1"

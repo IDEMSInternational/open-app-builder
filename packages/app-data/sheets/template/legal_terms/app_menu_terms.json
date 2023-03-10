@@ -33,9 +33,7 @@
       "name": "title_1",
       "value": "1. User Agreement",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -47,9 +45,7 @@
       "name": "text_1_1",
       "value": "These @global.terms_and_conditions are an agreement between you and international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) which furthermore sets out the rules for your use of @global.parent_app.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_1_1",
       "_dynamicFields": {
@@ -89,9 +85,7 @@
       "name": "text_1_2",
       "value": "@global.parent_app is a free app version of the Parenting for Lifelong Health for Parents and Teens programme designed for parents and caregivers of adolescents aged 10 to 17 years.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_1_2",
       "_dynamicFields": {
@@ -155,9 +149,7 @@
       "name": "text_1_5",
       "value": "Please read these @global.terms_and_conditions carefully. By downloading or using the app, you agree that you have read, understood, and accepted the @global.terms_and_conditions contained below.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_1_5",
       "_dynamicFields": {
@@ -188,9 +180,7 @@
       "name": "text_1_6",
       "value": "Your privacy is important to us – please also read our @global.privacy_policy, which will detail how we collect, store and use the information that you provide to us. By using @global.parent_app you are confirming to us that you are further agreeing to our @global.privacy_policy, as set out separately.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_1_6",
       "_dynamicFields": {
@@ -230,9 +220,7 @@
       "name": "title_2",
       "value": "2. Rules of Usage",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -291,9 +279,7 @@
       "name": "title_3",
       "value": "3. Content Changes",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -305,9 +291,7 @@
       "name": "text_3_1",
       "value": "The @global.parent_app team is committed to ensuring that the app is as useful and user friendly as possible. For that reason, we reserve the right to make changes to the app which will be delivered through updates. At present the app is free of charge and our intention is for it to stay that way.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_3_1",
       "_dynamicFields": {
@@ -331,9 +315,7 @@
       "name": "text_3_2",
       "value": "In the future it is possible that some services may be offered that would incur a cost. We will never charge you for the app or its services without clearly making known to you first any access charges applicable.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_3_2"
     },
@@ -342,9 +324,7 @@
       "name": "title_4",
       "value": "4. Intellectual property",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -356,9 +336,7 @@
       "name": "text_4",
       "value": "The app itself, the trademarks, copyright, database rights and other intellectual property rights related to it, belong to or are licensed to the various applicable collaborators of the @global.parent_app team (noting that code is covered under GPL 3 and content by CC BY). The use of names and emblems/logos of collaborating institutions are the exclusive property of those institutions and are protected under international and national laws. Unauthorised use is prohibited. They may not be copied or reproduced in any way without the prior written permission of said institution.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_4",
       "_dynamicFields": {
@@ -382,9 +360,7 @@
       "name": "title_5",
       "value": "5. Submissions",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -396,9 +372,7 @@
       "name": "text_5",
       "value": "Your feedback on the app is appreciated. So that we can improve, any comments are not considered confidential and will become available for further lawful use without additional approval or compensation. We shall therefore own exclusive rights and believe any feedback that you have made is original by you.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_5"
     },
@@ -407,9 +381,7 @@
       "name": "title_6",
       "value": "6. Security",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -421,9 +393,7 @@
       "name": "text_6_1",
       "value": "Our app stores and processes personal data that you have provided to us, in order to offer our services. It is your responsibility to keep your phone and access to the app secure. Removal of software restrictions and limitations imposed by the official operating system of your device is therefore not recommended. Doing so could make your phone vulnerable to malware, viruses, malicious programs as well as compromise your phone’s security features and could mean that the app will not work properly or at all.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_6_1"
     },
@@ -432,9 +402,7 @@
       "name": "text_6_2",
       "value": "To see how we handle your personal information, please see our @global.privacy_policy.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_6_2",
       "_dynamicFields": {
@@ -458,9 +426,7 @@
       "name": "title_7",
       "value": "7. External links and resources",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -472,9 +438,7 @@
       "name": "text_7_1",
       "value": "The app uses third party services that declare their own @global.terms_and_conditions and may link to other websites and resources that are not under the app’s control.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_7_1",
       "_dynamicFields": {
@@ -498,9 +462,7 @@
       "name": "text_7_2",
       "value": "Link to @global.terms_and_conditions of third party service providers used by the app include:",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_7_2",
       "_dynamicFields": {
@@ -779,9 +741,7 @@
       "name": "text_7_3",
       "value": "The inclusion of such links does not imply an endorsement or approval by the app and/or its partners of any website, product, or service. Similarly, the app and the @global.parent_app team affiliated developers and collaborators do not assume any responsibility or liability in respect of such websites, product, or service, including, for example, responsibility or liability for the accuracy or reliability of any information, data, opinions, advice or statements made on those web sites.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_7_3",
       "_dynamicFields": {
@@ -805,9 +765,7 @@
       "name": "title_8",
       "value": "8. Disclaimer",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -878,9 +836,7 @@
       "name": "title_9",
       "value": "9. Changes to the @global.terms_and_conditions",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -907,9 +863,7 @@
       "name": "text_9",
       "value": "We may update our @global.terms_and_conditions from time to time. You waive your right to be notified directly of changes and are advised to review this page periodically for any updates. Your continued use of the app suggests you agree to subsequent revisions of the @global.terms_and_conditions.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_9",
       "_dynamicFields": {
@@ -940,9 +894,7 @@
       "name": "title_10",
       "value": "10. Contact Us",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -954,9 +906,7 @@
       "name": "text_10_1",
       "value": "If you have any questions or suggestions about our @global.terms_and_conditions, do not hesitate to contact us at apps@idems.international.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_10_1",
       "_dynamicFields": {

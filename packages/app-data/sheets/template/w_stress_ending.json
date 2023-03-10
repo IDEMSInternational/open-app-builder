@@ -41,14 +41,7 @@
                   "name": "intro_text",
                   "value": "You've completed this week's workshop.\n\nNext week, we will talk about money - you will need:\n* a sheet of paper/cardboard\n* a pen\n* 20 small rocks/beans/kernels\n\nIt will be fun!",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "condition": "@fields.do_this_workshop_together",
                   "type": "set_variable",

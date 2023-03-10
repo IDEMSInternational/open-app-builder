@@ -8,14 +8,7 @@
       "name": "parent_app",
       "value": "ParentApp",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -23,14 +16,7 @@
       "name": "home_screen",
       "value": "Home",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -38,14 +24,7 @@
       "name": "weekly_workshops",
       "value": "Weekly Workshops",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -53,14 +32,7 @@
       "name": "weekly_workshop",
       "value": "Weekly Workshop",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -68,14 +40,7 @@
       "name": "options",
       "value": "Options",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -92,9 +57,7 @@
       "name": "workshops",
       "value": "workshops",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       }
     },
     {
@@ -102,9 +65,7 @@
       "name": "workshop",
       "value": "workshop",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       }
     },
     {
@@ -112,9 +73,7 @@
       "name": "workshops_capital",
       "value": "Workshops",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       }
     },
     {
@@ -122,9 +81,7 @@
       "name": "workshop_capital",
       "value": "Workshop",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       }
     },
     {
@@ -132,14 +89,7 @@
       "name": "parent_points",
       "value": "ParentPoints",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -147,14 +97,7 @@
       "name": "parent_point",
       "value": "ParentPoint",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -162,14 +105,7 @@
       "name": "parent_centre",
       "value": "Parent Library",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -177,14 +113,7 @@
       "name": "in_week_messages",
       "value": "In-Week Messages",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -192,9 +121,7 @@
       "name": "things_to_do",
       "value": "Things to do",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       }
     }
   ],

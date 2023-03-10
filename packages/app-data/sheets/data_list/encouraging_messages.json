@@ -7,9 +7,7 @@
       "id": "message_1",
       "text": "You are doing amazing, keep up the good work.",
       "_translations": {
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "text": {
@@ -21,9 +19,7 @@
       "id": "message_2",
       "text": "Your teen is so lucky to have you as a parent.",
       "_translations": {
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "text": {
@@ -35,9 +31,7 @@
       "id": "message_3",
       "text": "Parenting can be hard, but @global.parent_app is here to help you win.",
       "_translations": {
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "text": {
@@ -49,9 +43,7 @@
       "id": "message_4",
       "text": "Spending 1 minute learning about parenting makes a world of difference.",
       "_translations": {
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "text": {

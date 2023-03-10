@@ -68,14 +68,7 @@
               "name": "intro_text",
               "value": "Let’s go back to @global.w_solve_teen_girl and her @global.w_solve_female_caregiver_1 and see what solutions they came up with.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "learn.workshop_activity.intro_text",
@@ -113,14 +106,7 @@
                   "name": "text_1",
                   "value": "@global.w_solve_teen_girl and her @global.w_solve_female_caregiver_1 came up with three solutions.",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "type": "set_variable",
                   "_nested_name": "learn.workshop_activity.content_box.text_1",
@@ -153,14 +139,7 @@
                   "name": "button_1",
                   "value": "Ground @global.w_solve_teen_girl for a month",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "action_list": [
                     {
@@ -195,14 +174,7 @@
                   "name": "button_2",
                   "value": "Return the phone and save up",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "action_list": [
                     {
@@ -223,14 +195,7 @@
                   "name": "button_3",
                   "value": "Learn about safe sex",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "action_list": [
                     {
@@ -254,14 +219,7 @@
               "name": "outro_text",
               "value": "Parenting teens is really hard. \n\nOften there are no simple and easy solutions, but now @global.w_solve_female_caregiver_1 learned she can talk to her daughter about these things. \n\nBefore, she worried alone, now they can come up with solutions together!",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "learn.workshop_activity.outro_text",

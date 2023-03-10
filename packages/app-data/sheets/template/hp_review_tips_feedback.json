@@ -207,14 +207,7 @@
       "name": "text",
       "value": "Sorry to hear the tips did not help you.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "_nested_name": "text"
     },
@@ -223,14 +216,7 @@
       "name": "question_text_1b",
       "value": "Do you want to share with us what you think would help you?",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -330,14 +316,7 @@
       "name": "reply_text_box",
       "value": "Thank you for sharing! You are an awesome parent for trying to spend time with your teen. It makes all the difference. Keep up the good work, and remember, I am always here to support!",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "hidden": "!@local.text_box",
       "_nested_name": "reply_text_box",

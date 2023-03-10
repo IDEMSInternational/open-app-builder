@@ -9,45 +9,14 @@
       "number_of_challenges": "3",
       "question_text": "Did you have any challenges when trying to praise your teen?",
       "_translations": {
-        "question_text": {
-          "tz_sw": true
-        },
-        "text_challenge_1": {
-          "tz_sw": true
-        },
-        "reply_challenge_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_2": {
-          "tz_sw": true
-        },
-        "reply_challenge_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_3": {
-          "tz_sw": true
-        },
-        "reply_challenge_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "top_text": {
-          "tz_sw": true
-        }
+        "question_text": {},
+        "text_challenge_1": {},
+        "reply_challenge_1": {},
+        "text_challenge_2": {},
+        "reply_challenge_2": {},
+        "text_challenge_3": {},
+        "reply_challenge_3": {},
+        "top_text": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -88,92 +57,18 @@
       "number_of_challenges": "5",
       "question_text": "Did you have any challenges when sharing how you feel with your teen?",
       "_translations": {
-        "question_text": {
-          "tz_sw": true
-        },
-        "text_challenge_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_4": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_4": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_5": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_5": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "top_text": {
-          "tz_sw": true
-        }
+        "question_text": {},
+        "text_challenge_1": {},
+        "reply_challenge_1": {},
+        "text_challenge_2": {},
+        "reply_challenge_2": {},
+        "text_challenge_3": {},
+        "reply_challenge_3": {},
+        "text_challenge_4": {},
+        "reply_challenge_4": {},
+        "text_challenge_5": {},
+        "reply_challenge_5": {},
+        "top_text": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -231,82 +126,17 @@
       "button_go_to_template_3_a": "lib_act_w_money",
       "question_text": "Did you have any challenges when making your budget together?",
       "_translations": {
-        "question_text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "question_text": {},
+        "text_challenge_1": {},
+        "reply_challenge_1": {},
+        "text_challenge_2": {},
+        "reply_challenge_2": {},
+        "text_challenge_3": {},
+        "reply_challenge_3": {},
         "button_text_3_a": {},
-        "text_challenge_4": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_4": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "top_text": {
-          "tz_sw": true
-        }
+        "text_challenge_4": {},
+        "reply_challenge_4": {},
+        "top_text": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -359,113 +189,20 @@
       "number_of_challenges": "6",
       "question_text": "Did you have any challenges when trying to make a rule together?",
       "_translations": {
-        "question_text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_4": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_4": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_5": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_5": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_6": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_6": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "top_text": {
-          "tz_sw": true
-        }
+        "question_text": {},
+        "text_challenge_1": {},
+        "reply_challenge_1": {},
+        "text_challenge_2": {},
+        "reply_challenge_2": {},
+        "text_challenge_3": {},
+        "reply_challenge_3": {},
+        "text_challenge_4": {},
+        "reply_challenge_4": {},
+        "text_challenge_5": {},
+        "reply_challenge_5": {},
+        "text_challenge_6": {},
+        "reply_challenge_6": {},
+        "top_text": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -530,129 +267,22 @@
       "number_of_challenges": "7",
       "question_text": "Did you have any challenges when trying to introduce a consequence together?",
       "_translations": {
-        "question_text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_4": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_4": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_5": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_5": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_6": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_6": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_7": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_7": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "top_text": {
-          "tz_sw": true
-        }
+        "question_text": {},
+        "text_challenge_1": {},
+        "reply_challenge_1": {},
+        "text_challenge_2": {},
+        "reply_challenge_2": {},
+        "text_challenge_3": {},
+        "reply_challenge_3": {},
+        "text_challenge_4": {},
+        "reply_challenge_4": {},
+        "text_challenge_5": {},
+        "reply_challenge_5": {},
+        "text_challenge_6": {},
+        "reply_challenge_6": {},
+        "text_challenge_7": {},
+        "reply_challenge_7": {},
+        "top_text": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -727,108 +357,20 @@
       "button_go_to_template_2_a": "lib_act_w_solve",
       "question_text": "Did you have any challenges when trying to resolve the problem with your teen?",
       "_translations": {
-        "question_text": {
-          "tz_sw": true
-        },
-        "text_challenge_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "button_text_1_a": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "button_text_2_a": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_4": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_4": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_5": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_5": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "top_text": {
-          "tz_sw": true
-        }
+        "question_text": {},
+        "text_challenge_1": {},
+        "reply_challenge_1": {},
+        "button_text_1_a": {},
+        "text_challenge_2": {},
+        "reply_challenge_2": {},
+        "button_text_2_a": {},
+        "text_challenge_3": {},
+        "reply_challenge_3": {},
+        "text_challenge_4": {},
+        "reply_challenge_4": {},
+        "text_challenge_5": {},
+        "reply_challenge_5": {},
+        "top_text": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -893,108 +435,20 @@
       "number_of_challenges": "6",
       "question_text": "Did you have any challenges when trying to map risks and support with your teen?",
       "_translations": {
-        "question_text": {
-          "tz_sw": true
-        },
-        "text_challenge_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_4": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_4": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_5": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_5": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_6": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_6": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "top_text": {
-          "tz_sw": true
-        }
+        "question_text": {},
+        "text_challenge_1": {},
+        "reply_challenge_1": {},
+        "text_challenge_2": {},
+        "reply_challenge_2": {},
+        "text_challenge_3": {},
+        "reply_challenge_3": {},
+        "text_challenge_4": {},
+        "reply_challenge_4": {},
+        "text_challenge_5": {},
+        "reply_challenge_5": {},
+        "text_challenge_6": {},
+        "reply_challenge_6": {},
+        "top_text": {}
       },
       "_translatedFields": {
         "question_text": {
@@ -1061,69 +515,16 @@
       "button_go_to_template_1_b": "parent_centre_help",
       "question_text": "Did you have any challenges when trying to prepare for a possible crisis with your teen?",
       "_translations": {
-        "question_text": {
-          "tz_sw": true
-        },
-        "text_challenge_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_1": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "question_text": {},
+        "text_challenge_1": {},
+        "reply_challenge_1": {},
         "button_text_1_a": {},
-        "button_text_1_b": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_2": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_challenge_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "reply_challenge_3": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "top_text": {
-          "tz_sw": true
-        }
+        "button_text_1_b": {},
+        "text_challenge_2": {},
+        "reply_challenge_2": {},
+        "text_challenge_3": {},
+        "reply_challenge_3": {},
+        "top_text": {}
       },
       "_translatedFields": {
         "question_text": {

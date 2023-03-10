@@ -187,14 +187,7 @@
       "name": "top_text",
       "value": "Many parents experience challenges in having one-on-one time with their teens. \n\nHere are the top 8 challenges parents told us they experience when planning or spending one-on-one time with their teen. If you experienced one of these or are afraid that you will, tap it to get a possible solution. You can tap and explore other challenges afterwards.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "_nested_name": "top_text"
     },
@@ -203,14 +196,7 @@
       "name": "question_text",
       "value": "Did you have any challenges when trying to spend time with your teen?",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -221,14 +207,7 @@
       "name": "text_challenge_1",
       "value": "I don’t have enough time.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "text_challenge_1"
@@ -237,14 +216,7 @@
       "name": "text_challenge_2",
       "value": "My teen does not want to spend time with me.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "text_challenge_2"
@@ -253,14 +225,7 @@
       "name": "text_challenge_3",
       "value": "My teen only wants to watch TV or play on his/her phone.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "text_challenge_3"
@@ -269,14 +234,7 @@
       "name": "text_challenge_4",
       "value": "My teen wants to do things that are not safe or that cost money.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "text_challenge_4"
@@ -285,14 +243,7 @@
       "name": "text_challenge_5",
       "value": "My teen wants to do things that I cannot physically do.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "text_challenge_5"
@@ -301,14 +252,7 @@
       "name": "text_challenge_6",
       "value": "My teen chose a competitive activity. I won and s/he got angry.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "text_challenge_6"
@@ -317,14 +261,7 @@
       "name": "text_challenge_7",
       "value": "I struggled to end the one-on-one time.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "text_challenge_7"
@@ -333,14 +270,7 @@
       "name": "text_challenge_8",
       "value": "All my children want one-on-one time with me at the same time.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "text_challenge_8"
@@ -690,14 +620,7 @@
           "name": "reply_challenge_1",
           "value": "Yes, it can be really hard to find time during the day, with work, chores, and everything else.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "_nested_name": "challenge_1.reply_challenge_1"
         },
@@ -792,14 +715,7 @@
           "name": "reply_choice_1_a",
           "value": "Perfect! Even spending 5 minutes makes a big difference, and if you do it at the same time every day (like at breakfast or before bed), it will be easier to keep it up!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_1!=\"choice_1_a\"",
           "_nested_name": "challenge_1.reply_choice_1_a",
@@ -824,14 +740,7 @@
           "name": "reply_choice_1_b",
           "value": "Great! That way you get your work done and have a fun time together with your teen!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_1!=\"choice_1_b\"",
           "_nested_name": "challenge_1.reply_choice_1_b",
@@ -856,14 +765,7 @@
           "name": "reply_choice_1_c",
           "value": "Wonderful! By sharing responsibilities, you will have more time to do something fun with your teen – it’s so important!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_1!=\"choice_1_c\"",
           "_nested_name": "challenge_1.reply_choice_1_c",
@@ -914,14 +816,7 @@
           "name": "reply_challenge_2",
           "value": "Sorry that you struggled with that. It can make us feel bad if our children do not want to spend one-on-one time with us.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "_nested_name": "challenge_2.reply_challenge_2"
         },
@@ -1016,14 +911,7 @@
           "name": "reply_choice_2_a",
           "value": "Great! Picking a time when your teen is more talkative will help them to respond well to your attempt to connect.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_2!=\"choice_2_a\"",
           "_nested_name": "challenge_2.reply_choice_2_a",
@@ -1048,14 +936,7 @@
           "name": "reply_choice_2_b",
           "value": "Nice! Watching your teen’s favourite T.V. show or sports match together will show them that you care. Just be patient; they will open up to you over time!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_2!=\"choice_2_b\"",
           "_nested_name": "challenge_2.reply_choice_2_b",
@@ -1080,14 +961,7 @@
           "name": "reply_choice_2_c",
           "value": "Perfect! Sometimes it can be easier to start with spending time with the whole family. That way your teen can get more comfortable with spending one-on-one time with you over time.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_2!=\"choice_2_c\"",
           "_nested_name": "challenge_2.reply_choice_2_c",
@@ -1138,14 +1012,7 @@
           "name": "reply_challenge_3",
           "value": "Sorry that you had that challenge. Children often want to spend time watching T.V. or playing with a gadget. Well done for being patient with your teen!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "_nested_name": "challenge_3.reply_challenge_3"
         },
@@ -1240,14 +1107,7 @@
           "name": "reply_choice_3_a",
           "value": "That's perfect! If you need inspiration, here are some ideas from other families of what you could do together. Remember, let your teen choose.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_3!=\"choice_3_a\"",
           "_nested_name": "challenge_3.reply_choice_3_a",
@@ -1319,14 +1179,7 @@
           "name": "reply_choice_3_b",
           "value": "Wonderful!  There are lots of fun and educational apps on phones that you can explore together. Ask questions, show interest, and remember to say something nice.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_3!=\"choice_3_b\"",
           "_nested_name": "challenge_3.reply_choice_3_b",
@@ -1351,14 +1204,7 @@
           "name": "reply_choice_3_c",
           "value": "Nice! Teens love it when you show interest in their gadget and when they get to explain something they know to you. This is a great starting point!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_3!=\"choice_3_c\"",
           "_nested_name": "challenge_3.reply_choice_3_c",
@@ -1409,14 +1255,7 @@
           "name": "reply_challenge_4",
           "value": "You are not alone here. Many parents sometimes have this challenge, too. One-on-one time should always be safe, and it does not have to cost a thing!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "_nested_name": "challenge_4.reply_challenge_4"
         },
@@ -1510,14 +1349,7 @@
           "name": "reply_choice_4_a",
           "value": "Awesome! It is very important that your teen understands why you cannot do the activity that they suggested. Ask them for other ideas!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_4!=\"choice_4_a\"",
           "_nested_name": "challenge_4.reply_choice_4_a",
@@ -1542,14 +1374,7 @@
           "name": "reply_choice_4_b",
           "value": "This is perfect! If you need any inspiration, you can find suggestions for activities @data.parent_centre.relax_and_activities.location_text. Remember, let your teen choose the activity!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_4!=\"choice_4_b\"",
           "_nested_name": "challenge_4.reply_choice_4_b",
@@ -1611,14 +1436,7 @@
           "name": "reply_challenge_5",
           "value": "Sorry to hear this. Our teens may be disappointed if we cannot do what they want to do, like playing sports or doing other physically demanding activities. But remember, what is most important is that we spend time with them. That looks different for everyone!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "_nested_name": "challenge_5.reply_challenge_5"
         },
@@ -1712,14 +1530,7 @@
           "name": "reply_choice_5_a",
           "value": "Wonderful! Even if you are watching instead of doing the activity together, you can show your interest by describing and praising what your teen is doing!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_5!=\"choice_5_a\"",
           "_nested_name": "challenge_5.reply_choice_5_a",
@@ -1744,14 +1555,7 @@
           "name": "reply_choice_5_b",
           "value": "That’s perfect! If you need any inspiration, you can find suggestions for activities @data.parent_centre.relax_and_activities.location_text. Remember, let your teen choose the activity!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_5!=\"choice_5_b\"",
           "_nested_name": "challenge_5.reply_choice_5_b",
@@ -1813,14 +1617,7 @@
           "name": "reply_challenge_6",
           "value": "This sometimes happens! Competitive games can be challenging for teens (and adults!) if they have difficulty with losing.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "_nested_name": "challenge_6.reply_challenge_6"
         },
@@ -1914,14 +1711,7 @@
           "name": "reply_choice_6_a",
           "value": "Remember, let your teen choose! You can find suggestions for activities you could do with your teen @data.parent_centre.relax_and_activities.location_text, if you need it.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_6!=\"choice_6_a\"",
           "_nested_name": "challenge_6.reply_choice_6_a",
@@ -1957,14 +1747,7 @@
           "name": "reply_choice_6_b",
           "value": "If you and your teen are in the same team, you can help them manage their emotions if your team loses.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_6!=\"choice_6_b\"",
           "_nested_name": "challenge_6.reply_choice_6_b",
@@ -2015,14 +1798,7 @@
           "name": "reply_challenge_7",
           "value": "Yes, the end of one-on-one time can sometimes be difficult.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "_nested_name": "challenge_7.reply_challenge_7"
         },
@@ -2117,14 +1893,7 @@
           "name": "reply_choice_7_a",
           "value": "Wonderful! By giving your teen a heads-up, the end of one-on-one time will not come as a surprise. Also, you can remind your teen that you will spend time together again tomorrow.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_7!=\"choice_7_a\"",
           "_nested_name": "challenge_7.reply_choice_7_a",
@@ -2149,14 +1918,7 @@
           "name": "reply_choice_7_b",
           "value": "Great! That way your teen has the responsibility to monitor the time and will be aware when time is almost up. Remind them that you will spend time together again tomorrow.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_7!=\"choice_7_b\"",
           "_nested_name": "challenge_7.reply_choice_7_b",
@@ -2181,14 +1943,7 @@
           "name": "reply_choice_7_c",
           "value": "Wonderful! If you spend time together right before dinner, you can happily say, “one-on-one time is over. Let’s get ready for dinner with the rest of the family!”",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_7!=\"choice_7_c\"",
           "_nested_name": "challenge_7.reply_choice_7_c",
@@ -2239,14 +1994,7 @@
           "name": "reply_challenge_8",
           "value": "Many parents face this. It can be difficult to spend one-on-one time with our teens when we have more than one child.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "_nested_name": "challenge_8.reply_challenge_8"
         },
@@ -2341,14 +2089,7 @@
           "name": "reply_choice_8_a",
           "value": "Perfect! This way, you can give your undivided attention to your teen, so they feel valued and loved.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_8!=\"choice_8_a\"",
           "_nested_name": "challenge_8.reply_choice_8_a",
@@ -2373,14 +2114,7 @@
           "name": "reply_choice_8_b",
           "value": "Great! You can try spending time with your teen when the other children have already gone to bed, or are playing outside.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_8!=\"choice_8_b\"",
           "_nested_name": "challenge_8.reply_choice_8_b",
@@ -2405,14 +2139,7 @@
           "name": "reply_choice_8_c",
           "value": "Wonderful! Maybe you can walk to the shops together or go watch a sports match, so you can chat without having the other children demand your attention.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "@local.combo_box_challenge_8!=\"choice_8_c\"",
           "_nested_name": "challenge_8.reply_choice_8_c",

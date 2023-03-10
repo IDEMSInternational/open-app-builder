@@ -57,9 +57,7 @@
       "name": "text",
       "value": "You will find the in-week messages from the previous @global.workshops here.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "condition": "@data.workshop.w_self_care.number == @local.workshop_number",
       "_nested_name": "text",

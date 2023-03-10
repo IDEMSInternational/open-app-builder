@@ -68,14 +68,7 @@
                       "name": "text_1",
                       "value": "Whenever you can, relax, recognise and reward yourself. \n\nCare for yourself every day. You matter!",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1"
@@ -84,14 +77,7 @@
                       "name": "button_1",
                       "value": "Relax activity",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "action_list": [
                         {
@@ -112,14 +98,7 @@
                       "name": "button_2",
                       "value": "Recognise activity",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "action_list": [
                         {
@@ -140,14 +119,7 @@
                       "name": "button_3",
                       "value": "Reward activity",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "action_list": [
                         {
@@ -168,14 +140,7 @@
                       "name": "habit_text",
                       "value": "Every time you relax, recognise something you've done well or reward yourself, tap the @global.parent_points to celebrate your success!",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "hidden": false,
                       "type": "set_variable",

@@ -64,14 +64,7 @@
                   "name": "intro_title",
                   "value": "Why @data.workshop.w_self_care.short_title?",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "type": "set_variable",
                   "_nested_name": "topic_intro.listen.workshop_activity.intro_title",
@@ -95,14 +88,7 @@
                   "name": "intro_text",
                   "value": "We often don’t look after ourselves enough. But this is so important, especially as a parent! \n\nReducing our stress and treating ourselves well helps us AND our teenagers.",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "type": "set_variable",
                   "_nested_name": "topic_intro.listen.workshop_activity.intro_text"

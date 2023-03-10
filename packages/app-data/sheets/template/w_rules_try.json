@@ -37,14 +37,7 @@
               "name": "intro_text",
               "value": "Let's practice making rules.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "try_together.workshop_activity.intro_text"
@@ -57,14 +50,7 @@
                   "name": "text",
                   "value": "* What is one important rule you’d each like to make with your teenager? \n* What do you think your teen will think about that rule? \n\nRemember, make rules specific and realistic!",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "type": "set_variable",
                   "_nested_name": "try_together.workshop_activity.content_box.text"

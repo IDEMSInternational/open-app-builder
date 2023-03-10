@@ -32,14 +32,7 @@
           "name": "title",
           "value": "Customise for your needs",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": false,
           "type": "set_variable",
@@ -61,14 +54,7 @@
           "name": "text",
           "value": "Every parent in the world is struggling in these hard times. The next questions about your parenting experiences will help us to get you the support you need.\n\nBe honest. Remember that you are not alone! Millions of parents feel like you do, and we all deserve support.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "box_image.text"

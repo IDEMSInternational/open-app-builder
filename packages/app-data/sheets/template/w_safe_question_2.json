@@ -8,14 +8,7 @@
       "name": "answer_1",
       "value": "Adults use social media, gaming and messaging apps and websites to meet teenagers and persuade them to do sexual things",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_1"
@@ -24,14 +17,7 @@
       "name": "answer_2",
       "value": "People put things online to make us hurt other people – like making violence seem cool, or hating people from another race or country",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_2"
@@ -40,14 +26,7 @@
       "name": "answer_3",
       "value": "People put things online to persuade teenagers to hurt themselves or commit suicide",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_3"
@@ -56,14 +35,7 @@
       "name": "answer_4",
       "value": "Teenagers share sexy videos or photos or information about themselves, and people show it to others or use it to upset them",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_4"
@@ -72,14 +44,7 @@
       "name": "answer_5",
       "value": "People can often be nasty to teenagers online – they feel like they can bully people safely",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_5"
@@ -117,14 +82,7 @@
               "name": "intro_text",
               "value": "Let's think about our teens' online safety.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "question_time.workshop_activity.intro_text"
@@ -153,14 +111,7 @@
                   "name": "question_text",
                   "value": "What is the biggest online risk for teens these days?",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "type": "set_variable",
                   "_nested_name": "question_time.workshop_activity.content_box.question_text"

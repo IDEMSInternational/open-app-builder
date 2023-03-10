@@ -104,14 +104,7 @@
       "name": "toggle_bar_text",
       "value": "Add this activity to @global.my_activities",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "toggle_bar_text",

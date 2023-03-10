@@ -69,14 +69,7 @@
                       "name": "text_1",
                       "value": "Spend 5-20 minutes of one-on-one time with your teen, every day you can this week.",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "home_practice.workshop_activity.content_box.box_1.text_1"
@@ -156,14 +149,7 @@
                       "name": "text_3",
                       "value": "Remember - whenever you can, relax, recognise and reward yourself. \n\nCare for yourself every day. You matter!",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "hidden": false,
                       "condition": "@fields.do_this_workshop_together",

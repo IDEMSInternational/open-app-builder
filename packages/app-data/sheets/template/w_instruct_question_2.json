@@ -8,14 +8,7 @@
       "name": "answer_1",
       "value": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_1",
@@ -48,14 +41,7 @@
       "name": "answer_2",
       "value": "@global.w_instruct_female_caregiver was able to stay calm",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_2",
@@ -79,14 +65,7 @@
       "name": "answer_3",
       "value": "@global.w_instruct_female_caregiver kept a positive attitude",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_3",
@@ -195,14 +174,7 @@
                       "name": "question_text",
                       "value": "How did @global.w_instruct_teen_girl and @global.w_instruct_female_caregiver feel now?",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.combo_box_1.question_text",
@@ -281,14 +253,7 @@
                       "name": "question_text",
                       "value": "Why do you think the situation went better for @global.w_instruct_female_caregiver this time?",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.combo_box_2.question_text",
@@ -380,14 +345,7 @@
               "name": "outro_text",
               "value": "Positive instructions can work with your teen too!",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "question_time.workshop_activity.outro_text"

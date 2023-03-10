@@ -65,14 +65,7 @@
                   "name": "intro_text",
                   "value": "We know how stressful it is to bring up teenagers in these times. Learning to manage your stress helps you - and your family.",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "type": "set_variable",
                   "_nested_name": "topic_intro.listen.workshop_activity.intro_text"

@@ -7,17 +7,10 @@
   "rows": [
     {
       "type": "declare_global_constant",
-      "name": "parent_app",
-      "value": "ParentApp",
+      "name": "app_name",
+      "value": "Modular App",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -25,158 +18,63 @@
       "name": "home_screen",
       "value": "Home",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
-      }
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "weekly_workshops",
-      "value": "Modules",
-      "_translations": {
-        "value": {
-          "tz_sw": true
-        }
-      }
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "weekly_workshop",
-      "value": "Module",
-      "_translations": {
-        "value": {
-          "tz_sw": true
-        }
-      }
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "options",
-      "value": "Options",
-      "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
-      }
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "weekly_workshop_options",
-      "value": "@global.weekly_workshop @global.options",
-      "_translations": {
         "value": {}
-      },
-      "exclude_from_translation": true
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "workshops",
-      "value": "modules",
-      "_translations": {
-        "value": {
-          "tz_sw": true
-        }
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "workshop",
+      "name": "module",
       "value": "module",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "workshops_capital",
-      "value": "Modules",
+      "name": "modules",
+      "value": "modules",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "workshop_capital",
+      "name": "module_capital",
       "value": "Module",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "parent_points",
-      "value": "ParentPoints",
+      "name": "modules_capital",
+      "value": "Modules",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "parent_point",
-      "value": "ParentPoint",
+      "name": "habits",
+      "value": "Habits",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "parent_centre",
-      "value": "Parent Library",
+      "name": "habit",
+      "value": "Habit",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "in_week_messages",
-      "value": "In-Week Messages",
+      "name": "library",
+      "value": "Library",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     }
   ],

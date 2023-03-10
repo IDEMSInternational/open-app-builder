@@ -7,9 +7,7 @@
       "type": "title",
       "value": "App Skin",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "name": "title",
       "_nested_name": "title"
@@ -59,9 +57,7 @@
           "name": "text_1",
           "value": "To get access to changing the app skin, enter your developer code in the box below and press @global.submit_button.",
           "_translations": {
-            "value": {
-              "tz_sw": true
-            }
+            "value": {}
           },
           "_nested_name": "not_first_access.text_1",
           "_dynamicFields": {
@@ -166,14 +162,7 @@
       "name": "text_incorrect",
       "value": "You have entered an incorrect code.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "condition": "@local.reply_entered && !(@local.text_box == @global.dev_mode_code || @local.text_box == @global.test_mode_code)",
       "_nested_name": "text_incorrect",
@@ -239,9 +228,7 @@
           "name": "workshop_skin_text",
           "value": "Workshop",
           "_translations": {
-            "value": {
-              "tz_sw": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "dg_correct.workshop_skin_text"
@@ -250,9 +237,7 @@
           "name": "module_skin_text",
           "value": "Module",
           "_translations": {
-            "value": {
-              "tz_sw": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "dg_correct.module_skin_text"

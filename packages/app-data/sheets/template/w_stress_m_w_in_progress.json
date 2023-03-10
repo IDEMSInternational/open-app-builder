@@ -65,14 +65,7 @@
               "name": "text",
               "value": "We all feel overwhelmed sometimes. Taking a deep breath helps! \n\nComplete the @local.workshop_data.in_text_title to get some useful tools to deal with stress.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "m_workshop_in_progress.in_week_message.text",

@@ -65,9 +65,7 @@
               "name": "text",
               "value": "Hi @fields.user_name! You are making such good progress on your parenting journey! \n\nHaving a teen means having a lot of unexpected problems to deal with. This @global.workshop will show you how to deal with them.",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "condition": "!@local.do_workshops_together",
               "type": "set_variable",
@@ -112,9 +110,7 @@
               "name": "text",
               "value": "Hi @fields.group_name! You are making such good progress on your parenting journey!\n\nHaving a teen means having a lot of unexpected problems to deal with. This @global.workshop will show you all how to deal with them.",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "condition": "@local.do_workshops_together",
               "type": "set_variable",

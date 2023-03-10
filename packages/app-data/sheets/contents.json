@@ -5080,15 +5080,10 @@
       "flow_name": "demo_essential_tools_tour",
       "_xlsxPath": "global/demo_templates/demo_navigation.xlsx"
     },
-    "home_screen_modular_tour_intro": {
+    "home_screen_modular_tour": {
       "flow_type": "tour",
-      "flow_name": "home_screen_modular_tour_intro",
-      "_xlsxPath": "global_modular/tours/home_screen_modular_tour.xlsx"
-    },
-    "home_screen_modular_tour_menu": {
-      "flow_type": "tour",
-      "flow_name": "home_screen_modular_tour_menu",
-      "_xlsxPath": "global_modular/tours/home_screen_modular_tour.xlsx"
+      "flow_name": "home_screen_modular_tour",
+      "_xlsxPath": "global_modular/tours/home_screen_tour.xlsx"
     },
     "home_screen_tour_intro": {
       "flow_type": "tour",

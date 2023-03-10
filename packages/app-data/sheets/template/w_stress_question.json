@@ -8,14 +8,7 @@
       "name": "answer_1",
       "value": "Recognise why he feels stressed",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_1"
@@ -24,14 +17,7 @@
       "name": "answer_2",
       "value": "Take a deep breath and speak calmly",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_2"
@@ -40,14 +26,7 @@
       "name": "answer_3",
       "value": "Show he understands his teen’s feelings",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_3"
@@ -56,14 +35,7 @@
       "name": "answer_4",
       "value": "Think about solutions together with @global.w_stress_teen_boy_1",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_4",
@@ -87,14 +59,7 @@
       "name": "answer_5",
       "value": "Do something positive together with @global.w_stress_teen_boy_1",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_5",
@@ -147,14 +112,7 @@
               "name": "intro_text",
               "value": "Let's think about what happened in this story.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "question_time.workshop_activity.intro_text"
@@ -188,14 +146,7 @@
                       "name": "question_text",
                       "value": "How do you think @global.w_stress_teen_boy_1 felt?",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_1.question_text",
@@ -259,14 +210,7 @@
                       "name": "question_text",
                       "value": "And @global.w_stress_male_caregiver?",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_2.question_text",
@@ -330,14 +274,7 @@
                       "name": "question_text",
                       "value": "And @global.w_stress_girl?",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_3.question_text",
@@ -372,14 +309,7 @@
                       "name": "reply",
                       "value": "Each of them was feeling upset for their own reason!",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_3.reply"
@@ -412,14 +342,7 @@
                       "name": "question_text",
                       "value": "What could @global.w_stress_male_caregiver have done differently?",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "question_time.workshop_activity.content_box.radio_buttons_4.question_text",

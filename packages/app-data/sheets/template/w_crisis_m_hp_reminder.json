@@ -17,14 +17,7 @@
               "name": "text",
               "value": "Have you discussed with your teen what you would do in a crisis situation?",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "m_hp_reminder.in_week_message.text"
@@ -58,14 +51,7 @@
               "name": "button_1",
               "value": "Crisis Examples",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "action_list": [
                 {

@@ -21,14 +21,7 @@
       "name": "timer_title",
       "value": "Timer",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "timer_title"
@@ -37,14 +30,7 @@
       "name": "timer_help",
       "value": "Press the triangle to help you keep this discussion to @local.timer_duration minutes.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "timer_help",

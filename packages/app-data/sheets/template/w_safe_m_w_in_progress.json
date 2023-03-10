@@ -65,14 +65,7 @@
               "name": "text",
               "value": "To keep your teen safe, it helps to chat together about your community and their online experiences. \n\nComplete the @local.workshop_data.in_text_title and see how you can do this!",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "m_workshop_in_progress.in_week_message.text",

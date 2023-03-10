@@ -65,9 +65,7 @@
               "name": "text",
               "value": "Hi @fields.user_name! Congratulations for starting your third  @global.parent_app week. \n\nA new @global.workshop awaits you! Can you guess the topic of the @global.workshop from this picture?",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "condition": "!@local.do_workshops_together",
               "type": "set_variable",
@@ -128,9 +126,7 @@
               "name": "text",
               "value": "Hi @fields.group_name! Congratulations for starting your third  @global.parent_app week. \n\nA new @global.workshop awaits you! Can you guess the topic of the @global.workshop from this picture?",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "condition": "@local.do_workshops_together",
               "type": "set_variable",

@@ -307,14 +307,7 @@
               "name": "intro_title",
               "value": "Why @local.workshop_data.title?",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "listen.workshop_activity.intro_title",
@@ -522,14 +515,7 @@
                       "name": "button_2",
                       "value": "Today's steps",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
-                        }
+                        "value": {}
                       },
                       "action_list": [
                         {
@@ -609,12 +595,7 @@
                       "name": "audio_title",
                       "value": "Hear a caregiver's testimonial",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true
-                        }
+                        "value": {}
                       },
                       "type": "set_variable",
                       "_nested_name": "listen.workshop_activity.content_box.box_2.audio_title"
@@ -647,12 +628,7 @@
                       "name": "button_1",
                       "value": "Read a caregiver's testimonial",
                       "_translations": {
-                        "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true
-                        }
+                        "value": {}
                       },
                       "action_list": [
                         {
@@ -812,14 +788,7 @@
               "name": "intro_title",
               "value": "Why @local.workshop_data.title?",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "listen.workshop_activity.intro_title",
@@ -1022,14 +991,7 @@
                   "name": "button_2",
                   "value": "Today's steps",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "action_list": [
                     {

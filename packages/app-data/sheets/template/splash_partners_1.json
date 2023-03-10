@@ -7,14 +7,7 @@
       "type": "text",
       "value": "Powered by Parenting for Lifelong Health and partners",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "large center"

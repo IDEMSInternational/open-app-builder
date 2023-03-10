@@ -65,9 +65,7 @@
               "name": "text",
               "value": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting @global.workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "condition": "!@local.do_workshops_together",
               "type": "set_variable",
@@ -121,9 +119,7 @@
               "name": "text",
               "value": "Hi @fields.group_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting @global.workshop awaits you with tips how we can stay calm and in control when our teens are driving us crazy.",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "condition": "@local.do_workshops_together",
               "type": "set_variable",

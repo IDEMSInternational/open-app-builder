@@ -133,14 +133,7 @@
       "name": "tip_text",
       "value": "You can always find these tools in the @global.parent_centre",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "icon_src": "@local.tip_icon",

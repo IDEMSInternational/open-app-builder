@@ -65,14 +65,7 @@
               "name": "text",
               "value": "Praising makes all the difference. \n\nComplete the @local.workshop_data.in_text_title and see how YOU can use praise in your family.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "m_workshop_in_progress.in_week_message.text",

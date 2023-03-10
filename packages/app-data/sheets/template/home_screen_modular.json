@@ -112,9 +112,7 @@
           "name": "title",
           "value": "All @global.workshops_capital",
           "_translations": {
-            "value": {
-              "tz_sw": true
-            }
+            "value": {}
           },
           "_nested_name": "dg_all_modules.title",
           "_dynamicFields": {
@@ -245,9 +243,7 @@
       "name": "text_things_to_do",
       "value": "Things to do",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "text_things_to_do"

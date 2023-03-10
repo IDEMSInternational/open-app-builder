@@ -8,14 +8,7 @@
       "name": "title",
       "value": "How did you hear about @global.parent_app?",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "_nested_name": "title",
       "_dynamicFields": {
@@ -38,14 +31,7 @@
       "name": "myself",
       "value": "I found it myself",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "myself"
@@ -54,14 +40,7 @@
       "name": "friend",
       "value": "A friend or family",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "friend"
@@ -107,14 +86,7 @@
       "name": "answer_placeholder",
       "value": "Other",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "answer_placeholder"
@@ -273,9 +245,7 @@
       "name": "text",
       "value": "By selecting this organisation you are allowing them to have access to your anonymous usage data so that they can support you on this journey.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "condition": "@fields.organisation_code == \"organisation_1\" || @fields.organisation_code == \"organisation_2\" || @fields.organisation_code == \"organisation_3\" || @fields.organisation_code == \"organisation_4\" || @fields.organisation_code == \"organisation_5\" || @fields.organisation_code == \"organisation_6\" || @fields.organisation_code == \"organisation_7\" || @fields.organisation_code == \"organisation_8\" || @fields.organisation_code == \"organisation_9\" || @fields.organisation_code == \"organisation_10\"",
       "_nested_name": "text",

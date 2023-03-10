@@ -8,9 +8,7 @@
       "name": "home_practice",
       "value": "Ready to practise?",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       }
     },
     {
@@ -18,9 +16,7 @@
       "name": "home_practice_problem_solving",
       "value": "Talk about home practice",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       }
     },
     {
@@ -28,9 +24,7 @@
       "name": "hp_review",
       "value": "How did your practice go?",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       }
     },
     {
@@ -38,14 +32,7 @@
       "name": "text_hp_review",
       "value": "Let's talk about how your home practice went this week.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -53,9 +40,7 @@
       "name": "story",
       "value": "Story",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       }
     },
     {

@@ -295,14 +295,7 @@
               "name": "reply_workshop_disabled",
               "value": "You will get more support in the @local.workshop_data.in_text_title.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "_nested_name": "workshop_specific_content.dg_workshop_disabled.reply_workshop_disabled",
               "_dynamicFields": {
@@ -352,14 +345,7 @@
               "name": "reply_workshop_start",
               "value": "You can get more support in the @local.workshop_data.in_text_title.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "_nested_name": "workshop_specific_content.dg_workshop_start.reply_workshop_start",
               "_dynamicFields": {
@@ -383,14 +369,7 @@
               "name": "button_workshop_start",
               "value": "Start the @local.workshop_data.in_text_title",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "action_list": [
                 {
@@ -495,14 +474,7 @@
               "name": "reply_workshop_continue",
               "value": "Finish the @local.workshop_data.in_text_title to get more support.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "_nested_name": "workshop_specific_content.dg_workshop_continue.reply_workshop_continue",
               "_dynamicFields": {
@@ -526,14 +498,7 @@
               "name": "button_workshop_continue",
               "value": "Continue the @local.workshop_data.in_text_title",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "action_list": [
                 {
@@ -638,14 +603,7 @@
               "name": "button_workshop_completed",
               "value": "Re-access the @local.workshop_data.in_text_title",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "action_list": [
                 {

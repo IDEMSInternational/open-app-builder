@@ -34,9 +34,7 @@
       "name": "text_0_1",
       "value": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_0_1",
       "_dynamicFields": {
@@ -76,9 +74,7 @@
       "name": "text_0_2",
       "value": "@global.parent_app is a free app version of the Parenting for Lifelong Health for Parents and Teens programme, hosted by UNICEF and designed for parents and caregivers of adolescents aged 10 to 17 years.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_0_2",
       "_dynamicFields": {
@@ -142,9 +138,7 @@
       "name": "text_0_5",
       "value": "Please read this @global.privacy_policy carefully. By downloading or using the app, you agree to the collection and use of information in relation to this policy. We will not use or share your information with anyone except as described in this @global.privacy_policy.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_0_5",
       "_dynamicFields": {
@@ -175,9 +169,7 @@
       "name": "text_0_6",
       "value": "The terms used in this @global.privacy_policy have the same meanings as in our @global.terms_and_conditions, which are accessible within the app, unless otherwise defined in this @global.privacy_policy.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_0_6",
       "_dynamicFields": {
@@ -217,9 +209,7 @@
       "name": "title_1",
       "value": "1. What information does the app collect about you and how do we use it?",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -231,9 +221,7 @@
       "name": "subtitle_1_1",
       "value": "Personal Data",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "contextual"
@@ -245,9 +233,7 @@
       "name": "text_1_1_1",
       "value": "For the purpose of this @global.privacy_policy, “personal data” means any information that enables us to identify an individual, directly or indirectly, by reference to an identifier such as email, name, @global.parent_app identification number, location data, or one or more factors specific to the individual. While using our app, we may require you to provide us with other personally identifiable information.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_1_1_1",
       "_dynamicFields": {
@@ -311,9 +297,7 @@
       "name": "text_1_1_3",
       "value": "We process your data to provide parenting support to you, communicate when you contact us, for security reasons as well as research purposes (see section ‘Information Sharing’). The primary research purpose includes optimising engagement of a digital parenting intervention (use of @global.parent_app) to prevent violence against adolescents. During the course of research, the study team may use aggregated and anonymised data from the app for further research projects. Finally, please note that we may process your data without your knowledge or consent, where this is required or permitted by law.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_1_1_3",
       "_dynamicFields": {
@@ -337,9 +321,7 @@
       "name": "text_1_1_4",
       "value": "The processing of your personal data is primarily based on:",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_1_1_4"
     },
@@ -381,9 +363,7 @@
       "name": "subtitle_1_2",
       "value": "Log Data",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "contextual"
@@ -404,9 +384,7 @@
       "name": "subtitle_1_3",
       "value": "Cookies",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "contextual"
@@ -418,9 +396,7 @@
       "name": "text_1_3_1",
       "value": "Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_1_3_1"
     },
@@ -438,9 +414,7 @@
       "name": "subtitle_1_4",
       "value": "Legal",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "contextual"
@@ -452,9 +426,7 @@
       "name": "text_1_4",
       "value": "The information that we request will be retained by us and used as described in this @global.privacy_policy.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_1_4",
       "_dynamicFields": {
@@ -478,9 +450,7 @@
       "name": "subtitle_1_5",
       "value": "Feedback Submissions",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "contextual"
@@ -492,9 +462,7 @@
       "name": "text_1_5",
       "value": "Your feedback on the app is important to us. We shall always anonymise your personal information when sharing and publishing your feedback verbatim more broadly.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_1_5"
     },
@@ -503,9 +471,7 @@
       "name": "subtitle_1_6",
       "value": "Aggregate Data",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "contextual"
@@ -517,9 +483,7 @@
       "name": "text_1_6",
       "value": "Your data is important to the @global.parent_app team for broader research purposes. Aggregate data is always anonymised.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_1_6",
       "_dynamicFields": {
@@ -543,9 +507,7 @@
       "name": "subtitle_1_7",
       "value": "Push notifications",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "contextual"
@@ -557,9 +519,7 @@
       "name": "text_1_7",
       "value": "You may opt out of push notifications which will be set up to inform you of certain account features or other notifications.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_1_7"
     },
@@ -568,9 +528,7 @@
       "name": "title_2",
       "value": "2. Information Sharing",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -615,9 +573,7 @@
       "name": "text_2_3",
       "value": "You agree that we may transfer your personal information outside your country, for example, to administer cloud services. We will ensure that any country, company or person that we pass your personal information to agrees to treat your information with the same level of protection as we are obliged to.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_2_3"
     },
@@ -626,9 +582,7 @@
       "name": "title_3",
       "value": "3. Third Party Service Providers and Websites",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -640,9 +594,7 @@
       "name": "text_3_1",
       "value": "The app does use third party services that may collect information used to identify you. We do so for the following reasons:\n* To facilitate our app\n* To provide the app on our behalf\n* To perform app-related services; or\n* To assist us in analysing how our app is used.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_3_1"
     },
@@ -651,9 +603,7 @@
       "name": "text_3_2",
       "value": "We want to inform users of this app that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_3_2"
     },
@@ -662,9 +612,7 @@
       "name": "text_3_3",
       "value": "Links to the privacy policies of third-party service providers used by the app:",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_3_3"
     },
@@ -928,9 +876,7 @@
       "name": "text_3_4",
       "value": "This app may contain links to other sites that are not covered by this @global.privacy_policy. If you click on a third-party link, you will be directed to that site. This @global.privacy_policy applies only to the processing of your information by this app. It does not address, and we are not responsible for, the privacy, information, or other practices of any third parties, including any third party operating any site or service to which this app links to.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_3_4",
       "_dynamicFields": {
@@ -961,9 +907,7 @@
       "name": "title_4",
       "value": "4. How long do we keep your data?",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -975,9 +919,7 @@
       "name": "text_4",
       "value": "We will only retain your personal information for as long as we need it to fulfil our purposes, including any relating to app services as well as legal, accounting, or reporting requirements.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_4"
     },
@@ -986,9 +928,7 @@
       "name": "title_5",
       "value": "5. How do we keep your data secure?",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -1024,9 +964,7 @@
       "name": "title_6",
       "value": "6. Children’s Privacy",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -1047,9 +985,7 @@
       "name": "title_7",
       "value": "7. Your rights",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -1061,9 +997,7 @@
       "name": "text_7_1",
       "value": "Under certain circumstances, by law you have the right to:\n* Request access to your data (commonly known as a \"subject access request\"). This enables you to receive a copy of your data and to check that we are lawfully processing it.\n* Request correction of your data. This enables you to ask us to correct any incomplete or inaccurate information we hold about you.\n* Request erasure of your data. This enables you to ask us to delete or remove your data under certain circumstances, for example, if you consider that there is no good reason for us continuing to process it. You also have the right to ask us to delete or remove your data where you have exercised your right to object to processing (see below).\n* Object to processing of your data where we are relying on our legitimate interests (or those of a third party) and there is something about your particular situation which makes you want to object to processing on this ground.\n* Request the restriction of processing of your data. This enables you to ask us to suspend the processing of your data, for example if you want us to establish its accuracy or the reason for processing it.\n* Request the transfer of your data to another party.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_7_1"
     },
@@ -1072,9 +1006,7 @@
       "name": "text_7_2",
       "value": "Depending on the circumstances and the nature of your request it may not be possible for us to do what you have asked, for example, where there is a statutory or contractual requirement for us to process your data and it would not be possible to fulfil our legal obligations if we were to stop. Further information on your rights is available from the Information Commissioner’s Office (ICO).",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_7_2"
     },
@@ -1082,9 +1014,7 @@
       "name": "link_7_1_text",
       "value": "ICO",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "link_7_1_text"
@@ -1135,9 +1065,7 @@
       "name": "title_8",
       "value": "8. Removing the app",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -1149,9 +1077,7 @@
       "name": "text_8",
       "value": "We are sorry if you find our app no longer useful. Should you decide to remove our app, we may still retain some of your data (although anonymised) to troubleshoot, aid in investigations, comply with legal requirements or to add to our existing research data sets.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_8"
     },
@@ -1160,9 +1086,7 @@
       "name": "title_9",
       "value": "9. Changes to the @global.privacy_policy",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -1189,9 +1113,7 @@
       "name": "text_9",
       "value": "We may update our @global.privacy_policy from time to time. You waive your right to be notified directly of changes and are advised to review this page periodically for any updates. Your continued use of the app suggests you agree to subsequent revisions of the @global.privacy_policy.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_9",
       "_dynamicFields": {
@@ -1222,9 +1144,7 @@
       "name": "title_10",
       "value": "10. Contact Us",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -1236,9 +1156,7 @@
       "name": "text_10_1",
       "value": "If you have any questions or suggestions about our @global.privacy_policy, do not hesitate to contact us at apps@idems.international.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_10_1",
       "_dynamicFields": {
@@ -1294,9 +1212,7 @@
       "name": "text_10_3",
       "value": "This @global.privacy_policy page was based on a draft created at @local.link_10_1_text and modified/generated by @local.link_10_2_text.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "contextual"

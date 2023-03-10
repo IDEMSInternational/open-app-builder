@@ -36,14 +36,7 @@
               "name": "activity_title",
               "value": "Let's Slow Down",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "watch.workshop_activity.activity_title"
@@ -102,14 +95,7 @@
               "name": "intro_title",
               "value": "Well done!",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "watch.workshop_activity.intro_title"
@@ -118,14 +104,7 @@
               "name": "intro_text",
               "value": "You’ve completed this week’s workshop.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "watch.workshop_activity.intro_text"
@@ -193,12 +172,7 @@
                   "name": "button",
                   "value": "Read along",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true
-                    }
+                    "value": {}
                   },
                   "action_list": [
                     {
@@ -219,14 +193,7 @@
                   "name": "bottom_text",
                   "value": "See you soon.",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "hidden": false,
                   "type": "set_variable",

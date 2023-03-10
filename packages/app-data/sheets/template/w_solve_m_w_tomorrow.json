@@ -61,9 +61,7 @@
           "name": "text_not_completed",
           "value": "Tomorrow a brand new @global.parent_app @global.workshop is ready for you. \n\nTry to complete the @local.workshop_data.in_text_title before starting the new @global.workshop. Knowing how to solve problems together will help in many situations!",
           "_translations": {
-            "value": {
-              "tz_sw": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "m_workshop_tomorrow.text_not_completed",
@@ -112,14 +110,7 @@
           "name": "text_completed",
           "value": "Great that you completed the @local.workshop_data.in_text_title. Tomorrow, a new workshop is unlocked to help you keep your teen safe.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "m_workshop_tomorrow.text_completed",

@@ -46,14 +46,7 @@
               "name": "intro_text",
               "value": "Let's talk about what has changed.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "talk_together.workshop_activity.intro_text"
@@ -66,14 +59,7 @@
                   "name": "text",
                   "value": "Discuss together:\n* What has changed in your family?\n* What are you proud of that you have done?\n\nRemember to praise and encourage each other!",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "type": "set_variable",
                   "_nested_name": "talk_together.workshop_activity.content_box.text"

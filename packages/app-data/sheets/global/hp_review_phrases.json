@@ -8,14 +8,7 @@
       "name": "to_solve_hp_challenge",
       "value": "To solve this challenge, I will try to:",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -23,14 +16,7 @@
       "name": "try_this_hp_challenge",
       "value": "Do you want to try one of the following things?",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     },
     {
@@ -38,14 +24,7 @@
       "name": "challenge_not_here",
       "value": "My challenge is not listed here.",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       }
     }
   ],

@@ -77,12 +77,7 @@
               "name": "slogan_1",
               "value": "Bringing teenagers up is hard",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true
-                }
+                "value": {}
               },
               "parameter_list": {
                 "text_align": "center"
@@ -124,12 +119,7 @@
               "name": "slogan_2",
               "value": "You are the best parent your teen could have",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true
-                }
+                "value": {}
               },
               "parameter_list": {
                 "style": "large center"

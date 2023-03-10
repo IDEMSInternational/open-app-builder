@@ -8,14 +8,7 @@
       "name": "title",
       "value": "Unlock all workshops",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "exclude_from_translation": true,
       "_nested_name": "title"
@@ -35,14 +28,7 @@
       "name": "button_1",
       "value": "Unlock workshops",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "action_list": [
         {
@@ -200,9 +186,7 @@
       "name": "text_2",
       "value": "All @global.workshops are now unlocked.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "exclude_from_translation": true,
       "hidden": "!@fields.unlock_workshops_confirm",

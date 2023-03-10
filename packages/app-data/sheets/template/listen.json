@@ -50,14 +50,7 @@
           "name": "activity_title",
           "value": "Listen Together",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "condition": "@field.do_this_workshop_together",
           "type": "set_variable",
@@ -82,14 +75,7 @@
           "name": "intro_text",
           "value": "Let's listen to an audio together!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "condition": "@field.do_this_workshop_together",
           "type": "set_variable",
@@ -114,14 +100,7 @@
           "name": "activity_title",
           "value": "Listen",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "condition": "!@field.do_this_workshop_together",
           "type": "set_variable",
@@ -146,14 +125,7 @@
           "name": "intro_text",
           "value": "Let's listen to an audio!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "condition": "!@field.do_this_workshop_together",
           "type": "set_variable",

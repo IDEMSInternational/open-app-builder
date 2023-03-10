@@ -41,9 +41,7 @@
               "name": "text",
               "value": "Does your teen always listen to you? If not (like the rest of us), have a look at this week's @global.workshop to learn how giving positive instructions can help - a lot.",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "m_workshop_reminder.in_week_message.text",

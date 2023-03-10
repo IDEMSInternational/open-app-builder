@@ -13,14 +13,7 @@
       "name": "title",
       "value": "Support Contacts",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "exclude_from_translation": true,
       "_nested_name": "title"
@@ -30,9 +23,7 @@
       "name": "text",
       "value": "I need help with:",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text"
     },

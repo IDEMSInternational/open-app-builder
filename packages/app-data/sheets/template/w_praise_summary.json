@@ -13,14 +13,7 @@
           "name": "description_text",
           "value": "Today you will explore:",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "suggestions.description_text"
@@ -29,14 +22,7 @@
           "name": "list_text",
           "value": "* Effects of praise\n* Story & discussion – that worked!\n* Tools: How to praise\nSEE IT - SAY IT - REPEAT IT\n* Try it out!\n* Home practice suggestions",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "condition": "@field.do_this_workshop_together",
           "type": "set_variable",
@@ -61,14 +47,7 @@
           "name": "list_text",
           "value": "* Effects of praise\n* Story & reflection – that worked!\n* Tools: How to praise\nSEE IT - SAY IT - REPEAT IT\n* Home practice suggestions",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "condition": "!@field.do_this_workshop_together",
           "type": "set_variable",

@@ -9,14 +9,7 @@
       "name": "question_text_1",
       "value": "Which of the tips helped you?",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "parameter_list": {
         "style": "emphasised"
@@ -27,14 +20,7 @@
       "name": "choice_1",
       "value": "DAY – Do it every day",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "hidden": true,
       "type": "set_variable",
@@ -44,14 +30,7 @@
       "name": "choice_2",
       "value": "PLAY – Let your teen choose the activity",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "choice_2"
@@ -60,14 +39,7 @@
       "name": "choice_3",
       "value": "STAY – Give your teen all of your attention",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "choice_3"
@@ -267,14 +239,7 @@
       "name": "question_text_2",
       "value": "Why was this tip helpful for you?",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "hidden": "!@local.combo_box || @local.combo_box==\"choice_none\"",
       "parameter_list": {
@@ -310,14 +275,7 @@
       "name": "combo_box_text_choice_1",
       "value": "\"@local.choice_1\" was helpful because...",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "combo_box_text_choice_1",
@@ -341,14 +299,7 @@
       "name": "combo_box_text_choice_2",
       "value": "\"@local.choice_2\" was helpful because...",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "combo_box_text_choice_2",
@@ -372,14 +323,7 @@
       "name": "combo_box_text_choice_3",
       "value": "\"@local.choice_3\" was helpful because...",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "type": "set_variable",
       "_nested_name": "combo_box_text_choice_3",
@@ -471,14 +415,7 @@
           "name": "reply_choice_1",
           "value": "Ah yes, even 10 minutes together makes a big difference – that makes it easy to schedule it in, next to your work and chores!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "!@local.combo_box_choice_1",
           "_nested_name": "replies_choice_1.reply_choice_1",
@@ -590,14 +527,7 @@
           "name": "reply_choice_2",
           "value": "So true! And if our teens choose, they are encouraged to also take responsibility in other areas of their lives.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "!@local.combo_box_choice_2",
           "_nested_name": "replies_choice_2.reply_choice_2",
@@ -707,14 +637,7 @@
           "name": "reply_choice_3",
           "value": "Yes! If we give our teens our full attention, they will more likely do the same for us the next time we ask them for something!",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "hidden": "!@local.combo_box_choice_3",
           "_nested_name": "replies_choice_3.reply_choice_3",

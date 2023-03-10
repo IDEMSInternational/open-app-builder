@@ -65,9 +65,7 @@
               "name": "text",
               "value": "Hi @fields.user_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s @global.workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "condition": "!@local.do_workshops_together",
               "type": "set_variable",
@@ -121,9 +119,7 @@
               "name": "text",
               "value": "Hi @fields.group_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s @global.workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "condition": "@local.do_workshops_together",
               "type": "set_variable",

@@ -41,9 +41,7 @@
               "name": "text",
               "value": "Do you feel stressed about money? Does your teen keep asking for things you can’t afford? \n\nThis week’s @global.workshop deals with money and budgeting.",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "m_workshop_reminder.in_week_message.text",

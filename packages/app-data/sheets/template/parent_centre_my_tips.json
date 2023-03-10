@@ -40,14 +40,7 @@
           "name": "text_if_empty",
           "value": "You will find tips that we think you may find useful here, based on your answers to the app customisation.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "_nested_name": "dg_if_empty.text_if_empty"
         },
