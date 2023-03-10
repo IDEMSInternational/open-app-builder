@@ -378,7 +378,7 @@
       "_nested_name": "nav_buttons"
     }
   ],
-  "_xlsxPath": "global/core_templates/core_templates_settings.xlsx",
+  "_xlsxPath": "global/core_templates/settings.xlsx",
   "_overrides": {
     "organisation_registration_tz": "@fields._deployment_name == \"plh_tz\""
   }

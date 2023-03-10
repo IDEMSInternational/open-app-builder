@@ -472,5 +472,5 @@
       "exclude_from_translation": true
     }
   ],
-  "_xlsxPath": "global/data/navigation_globals.xlsx"
+  "_xlsxPath": "global/data/navigation_data/navigation_globals.xlsx"
 }

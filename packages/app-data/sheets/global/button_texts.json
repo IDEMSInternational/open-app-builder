@@ -141,14 +141,6 @@
     },
     {
       "type": "declare_global_constant",
-      "name": "finish_with_song",
-      "value": "Finish with a song",
-      "_translations": {
-        "value": {}
-      }
-    },
-    {
-      "type": "declare_global_constant",
       "name": "goodbye",
       "value": "Goodbye!",
       "_translations": {
@@ -282,5 +274,5 @@
       "exclude_from_translation": true
     }
   ],
-  "_xlsxPath": "global/data/navigation_globals.xlsx"
+  "_xlsxPath": "global/data/navigation_data/navigation_globals.xlsx"
 }

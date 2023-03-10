@@ -6,28 +6,28 @@
     {
       "type": "debug_toggle",
       "name": "debug_toggle_bar",
-      "condition": "!@fields.user_mode",
+      "condition": "@fields.dev_mode",
       "exclude_from_translation": true,
       "_nested_name": "debug_toggle_bar",
       "_dynamicFields": {
         "condition": [
           {
-            "fullExpression": "!@fields.user_mode",
-            "matchedExpression": "!@fields.user_mode",
+            "fullExpression": "@fields.dev_mode",
+            "matchedExpression": "@fields.dev_mode",
             "type": "fields",
-            "fieldName": "user_mode"
+            "fieldName": "dev_mode"
           }
         ]
       },
       "_dynamicDependencies": {
-        "!@fields.user_mode": [
+        "@fields.dev_mode": [
           "condition"
         ]
       }
     },
     {
       "type": "button",
-      "name": "button_1",
+      "name": "button_home",
       "value": "Home",
       "_translations": {
         "value": {}
@@ -43,46 +43,11 @@
           "_cleaned": "click | go_to:/home"
         }
       ],
-      "_nested_name": "button_1"
+      "_nested_name": "button_home"
     },
     {
       "type": "button",
-      "name": "button_2",
-      "value": "About @global.parent_app",
-      "_translations": {
-        "value": {}
-      },
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "go_to",
-          "args": [
-            "app_menu_plh"
-          ],
-          "_raw": "click | go_to:app_menu_plh",
-          "_cleaned": "click | go_to:app_menu_plh"
-        }
-      ],
-      "_nested_name": "button_2",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "About @global.parent_app",
-            "matchedExpression": "@global.parent_app",
-            "type": "global",
-            "fieldName": "parent_app"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.parent_app": [
-          "value"
-        ]
-      }
-    },
-    {
-      "type": "button",
-      "name": "button_3",
+      "name": "button_settings",
       "value": "Settings",
       "_translations": {
         "value": {}
@@ -98,12 +63,211 @@
           "_cleaned": "click | go_to:app_menu_settings"
         }
       ],
-      "_nested_name": "button_3"
+      "_nested_name": "button_settings"
     },
     {
       "type": "button",
-      "name": "button_4",
-      "value": "Template",
+      "name": "button_about",
+      "value": "About @global.app_name",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "app_menu_about"
+          ],
+          "_raw": "click | go_to:app_menu_about",
+          "_cleaned": "click | go_to:app_menu_about"
+        }
+      ],
+      "_nested_name": "button_about",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "About @global.app_name",
+            "matchedExpression": "@global.app_name",
+            "type": "global",
+            "fieldName": "app_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.app_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_privacy",
+      "value": "@global.privacy_policy",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "app_menu_privacy_policy"
+          ],
+          "_raw": "click | go_to:app_menu_privacy_policy",
+          "_cleaned": "click | go_to:app_menu_privacy_policy"
+        }
+      ],
+      "_nested_name": "button_privacy",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.privacy_policy",
+            "matchedExpression": "@global.privacy_policy",
+            "type": "global",
+            "fieldName": "privacy_policy"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.privacy_policy": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_terms",
+      "value": "@global.terms_and_conditions",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "app_menu_terms"
+          ],
+          "_raw": "click | go_to:app_menu_terms",
+          "_cleaned": "click | go_to:app_menu_terms"
+        }
+      ],
+      "_nested_name": "button_terms",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.terms_and_conditions",
+            "matchedExpression": "@global.terms_and_conditions",
+            "type": "global",
+            "fieldName": "terms_and_conditions"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.terms_and_conditions": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_how",
+      "value": "How to use @global.app_name",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "start_tour",
+          "args": [
+            "home_screen_tour"
+          ],
+          "_raw": "click | start_tour:home_screen_tour",
+          "_cleaned": "click | start_tour:home_screen_tour"
+        }
+      ],
+      "condition": "@fields._app_skin == \"weekly_workshop\"",
+      "_nested_name": "button_how",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "How to use @global.app_name",
+            "matchedExpression": "@global.app_name",
+            "type": "global",
+            "fieldName": "app_name"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "@fields._app_skin == \"weekly_workshop\"",
+            "matchedExpression": "@fields._app_skin",
+            "type": "fields",
+            "fieldName": "_app_skin"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.app_name": [
+          "value"
+        ],
+        "@fields._app_skin": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_how_modular",
+      "value": "How to use @global.app_name",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "start_tour",
+          "args": [
+            "home_screen_modular_tour"
+          ],
+          "_raw": "click | start_tour:home_screen_modular_tour",
+          "_cleaned": "click | start_tour:home_screen_modular_tour"
+        }
+      ],
+      "condition": "@fields._app_skin == \"modular\"",
+      "_nested_name": "button_how_modular",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "How to use @global.app_name",
+            "matchedExpression": "@global.app_name",
+            "type": "global",
+            "fieldName": "app_name"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "@fields._app_skin == \"modular\"",
+            "matchedExpression": "@fields._app_skin",
+            "type": "fields",
+            "fieldName": "_app_skin"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.app_name": [
+          "value"
+        ],
+        "@fields._app_skin": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_templates",
+      "value": "Templates",
       "_translations": {
         "value": {}
       },
@@ -118,166 +282,27 @@
           "_cleaned": "click | go_to:/template"
         }
       ],
-      "condition": "!@fields.user_mode",
-      "_nested_name": "button_4",
+      "condition": "@fields.dev_mode",
+      "_nested_name": "button_templates",
       "_dynamicFields": {
         "condition": [
           {
-            "fullExpression": "!@fields.user_mode",
-            "matchedExpression": "!@fields.user_mode",
+            "fullExpression": "@fields.dev_mode",
+            "matchedExpression": "@fields.dev_mode",
             "type": "fields",
-            "fieldName": "user_mode"
+            "fieldName": "dev_mode"
           }
         ]
       },
       "_dynamicDependencies": {
-        "!@fields.user_mode": [
+        "@fields.dev_mode": [
           "condition"
         ]
       }
     },
     {
       "type": "button",
-      "name": "button_5",
-      "value": "How to use @global.parent_app",
-      "_translations": {
-        "value": {}
-      },
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "start_tour",
-          "args": [
-            "home_screen_tour_menu"
-          ],
-          "_raw": "click | start_tour:home_screen_tour_menu",
-          "_cleaned": "click | start_tour:home_screen_tour_menu"
-        }
-      ],
-      "condition": "@fields._app_skin == \"weekly_workshop\"",
-      "_nested_name": "button_5",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "How to use @global.parent_app",
-            "matchedExpression": "@global.parent_app",
-            "type": "global",
-            "fieldName": "parent_app"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@fields._app_skin == \"weekly_workshop\"",
-            "matchedExpression": "@fields._app_skin",
-            "type": "fields",
-            "fieldName": "_app_skin"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.parent_app": [
-          "value"
-        ],
-        "@fields._app_skin": [
-          "condition"
-        ]
-      }
-    },
-    {
-      "type": "button",
-      "name": "button_5",
-      "value": "How to use @global.parent_app",
-      "_translations": {
-        "value": {}
-      },
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "start_tour",
-          "args": [
-            "home_screen_modular_tour_menu"
-          ],
-          "_raw": "click | start_tour:home_screen_modular_tour_menu",
-          "_cleaned": "click | start_tour:home_screen_modular_tour_menu"
-        }
-      ],
-      "condition": "@fields._app_skin == \"modular\"",
-      "_nested_name": "button_5",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "How to use @global.parent_app",
-            "matchedExpression": "@global.parent_app",
-            "type": "global",
-            "fieldName": "parent_app"
-          }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@fields._app_skin == \"modular\"",
-            "matchedExpression": "@fields._app_skin",
-            "type": "fields",
-            "fieldName": "_app_skin"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.parent_app": [
-          "value"
-        ],
-        "@fields._app_skin": [
-          "condition"
-        ]
-      }
-    },
-    {
-      "type": "button",
-      "name": "button_6",
-      "value": "In-Week Messages",
-      "_translations": {
-        "value": {}
-      },
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "go_to",
-          "args": [
-            "message_navigation"
-          ],
-          "_raw": "click | go_to:message_navigation",
-          "_cleaned": "click | go_to:message_navigation"
-        }
-      ],
-      "condition": "!@fields.user_mode && @fields._app_skin == \"weekly_workshop\"",
-      "_nested_name": "button_6",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "!@fields.user_mode && @fields._app_skin == \"weekly_workshop\"",
-            "matchedExpression": "!@fields.user_mode",
-            "type": "fields",
-            "fieldName": "user_mode"
-          },
-          {
-            "fullExpression": "!@fields.user_mode && @fields._app_skin == \"weekly_workshop\"",
-            "matchedExpression": "@fields._app_skin",
-            "type": "fields",
-            "fieldName": "_app_skin"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "!@fields.user_mode": [
-          "condition"
-        ],
-        "@fields._app_skin": [
-          "condition"
-        ]
-      }
-    },
-    {
-      "type": "button",
-      "name": "button_7",
+      "name": "button_campaigns",
       "value": "Campaigns",
       "_translations": {
         "value": {}
@@ -293,20 +318,20 @@
           "_cleaned": "click | go_to:/campaigns"
         }
       ],
-      "condition": "!@fields.user_mode",
-      "_nested_name": "button_7",
+      "condition": "@fields.dev_mode",
+      "_nested_name": "button_campaigns",
       "_dynamicFields": {
         "condition": [
           {
-            "fullExpression": "!@fields.user_mode",
-            "matchedExpression": "!@fields.user_mode",
+            "fullExpression": "@fields.dev_mode",
+            "matchedExpression": "@fields.dev_mode",
             "type": "fields",
-            "fieldName": "user_mode"
+            "fieldName": "dev_mode"
           }
         ]
       },
       "_dynamicDependencies": {
-        "!@fields.user_mode": [
+        "@fields.dev_mode": [
           "condition"
         ]
       }
@@ -329,28 +354,28 @@
           "_cleaned": "click | go_to:/notifications"
         }
       ],
-      "condition": "!@fields.user_mode",
+      "condition": "@fields.dev_mode",
       "_nested_name": "button_notifications",
       "_dynamicFields": {
         "condition": [
           {
-            "fullExpression": "!@fields.user_mode",
-            "matchedExpression": "!@fields.user_mode",
+            "fullExpression": "@fields.dev_mode",
+            "matchedExpression": "@fields.dev_mode",
             "type": "fields",
-            "fieldName": "user_mode"
+            "fieldName": "dev_mode"
           }
         ]
       },
       "_dynamicDependencies": {
-        "!@fields.user_mode": [
+        "@fields.dev_mode": [
           "condition"
         ]
       }
     },
     {
       "type": "button",
-      "name": "button_8",
-      "value": "@global.privacy_policy",
+      "name": "button_tours",
+      "value": "Tours",
       "_translations": {
         "value": {}
       },
@@ -359,64 +384,30 @@
           "trigger": "click",
           "action_id": "go_to",
           "args": [
-            "app_menu_privacy_policy"
+            "/tour"
           ],
-          "_raw": "click | go_to:app_menu_privacy_policy",
-          "_cleaned": "click | go_to:app_menu_privacy_policy"
+          "_raw": "click | go_to:/tour",
+          "_cleaned": "click | go_to:/tour"
         }
       ],
-      "_nested_name": "button_8",
+      "condition": "@fields.dev_mode",
+      "_nested_name": "button_tours",
       "_dynamicFields": {
-        "value": [
+        "condition": [
           {
-            "fullExpression": "@global.privacy_policy",
-            "matchedExpression": "@global.privacy_policy",
-            "type": "global",
-            "fieldName": "privacy_policy"
+            "fullExpression": "@fields.dev_mode",
+            "matchedExpression": "@fields.dev_mode",
+            "type": "fields",
+            "fieldName": "dev_mode"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.privacy_policy": [
-          "value"
-        ]
-      }
-    },
-    {
-      "type": "button",
-      "name": "button_9",
-      "value": "@global.terms_and_conditions",
-      "_translations": {
-        "value": {}
-      },
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "go_to",
-          "args": [
-            "app_menu_terms"
-          ],
-          "_raw": "click | go_to:app_menu_terms",
-          "_cleaned": "click | go_to:app_menu_terms"
-        }
-      ],
-      "_nested_name": "button_9",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@global.terms_and_conditions",
-            "matchedExpression": "@global.terms_and_conditions",
-            "type": "global",
-            "fieldName": "terms_and_conditions"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@global.terms_and_conditions": [
-          "value"
+        "@fields.dev_mode": [
+          "condition"
         ]
       }
     }
   ],
-  "_xlsxPath": "global/core_templates/core_templates_menu.xlsx"
+  "_xlsxPath": "global/core_templates/app_menu.xlsx"
 }

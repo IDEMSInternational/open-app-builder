@@ -5,8 +5,16 @@
   "rows": [
     {
       "type": "declare_global_constant",
-      "name": "parent_app",
-      "value": "ParentApp",
+      "name": "app_name",
+      "value": "Module Scaffolding App",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "app_id",
+      "value": "idems.international.module_scaffolding",
       "_translations": {
         "value": {}
       }
@@ -21,109 +29,68 @@
     },
     {
       "type": "declare_global_constant",
-      "name": "weekly_workshops",
-      "value": "Weekly Workshops",
+      "name": "module",
+      "value": "module",
       "_translations": {
         "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "weekly_workshop",
-      "value": "Weekly Workshop",
+      "name": "modules",
+      "value": "modules",
       "_translations": {
         "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "options",
-      "value": "Options",
+      "name": "module_capital",
+      "value": "Module",
       "_translations": {
         "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "weekly_workshop_options",
-      "value": "@global.weekly_workshop @global.options",
-      "_translations": {
-        "value": {}
-      },
-      "exclude_from_translation": true
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "workshops",
-      "value": "workshops",
+      "name": "modules_capital",
+      "value": "Modules",
       "_translations": {
         "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "workshop",
-      "value": "workshop",
+      "name": "habits",
+      "value": "Habits",
       "_translations": {
         "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "workshops_capital",
-      "value": "Workshops",
+      "name": "habit",
+      "value": "Habit",
       "_translations": {
         "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "workshop_capital",
-      "value": "Workshop",
+      "name": "library",
+      "value": "Library",
       "_translations": {
         "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "parent_points",
-      "value": "ParentPoints",
-      "_translations": {
-        "value": {}
-      }
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "parent_point",
-      "value": "ParentPoint",
-      "_translations": {
-        "value": {}
-      }
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "parent_centre",
-      "value": "Parent Library",
-      "_translations": {
-        "value": {}
-      }
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "in_week_messages",
-      "value": "In-Week Messages",
-      "_translations": {
-        "value": {}
-      }
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "things_to_do",
+      "name": "drawer_name",
       "value": "Things to do",
       "_translations": {
         "value": {}
       }
     }
   ],
-  "_xlsxPath": "global/data/navigation_globals.xlsx"
+  "_xlsxPath": "global/data/navigation_data/navigation_globals.xlsx"
 }

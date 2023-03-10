@@ -159,7 +159,7 @@
     {
       "type": "text",
       "name": "test_text",
-      "value": "We will need to cover other parenting issues before we can start working on @local.workshop_data.title.\n\nYou can get essential tools on @local.workshop_data.title via the @global.parent_centre.",
+      "value": "We will need to cover other parenting issues before we can start working on @local.workshop_data.title.\n\nYou can get essential tools on @local.workshop_data.title via the @global.library.",
       "_translations": {
         "value": {}
       },
@@ -167,22 +167,22 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "We will need to cover other parenting issues before we can start working on @local.workshop_data.title.\n\nYou can get essential tools on @local.workshop_data.title via the @global.parent_centre.",
+            "fullExpression": "We will need to cover other parenting issues before we can start working on @local.workshop_data.title.\n\nYou can get essential tools on @local.workshop_data.title via the @global.library.",
             "matchedExpression": "@local.workshop_data.title",
             "type": "local",
             "fieldName": "workshop_data"
           },
           {
-            "fullExpression": "We will need to cover other parenting issues before we can start working on @local.workshop_data.title.\n\nYou can get essential tools on @local.workshop_data.title via the @global.parent_centre.",
+            "fullExpression": "We will need to cover other parenting issues before we can start working on @local.workshop_data.title.\n\nYou can get essential tools on @local.workshop_data.title via the @global.library.",
             "matchedExpression": "@local.workshop_data.title",
             "type": "local",
             "fieldName": "workshop_data"
           },
           {
-            "fullExpression": "We will need to cover other parenting issues before we can start working on @local.workshop_data.title.\n\nYou can get essential tools on @local.workshop_data.title via the @global.parent_centre.",
-            "matchedExpression": "@global.parent_centre",
+            "fullExpression": "We will need to cover other parenting issues before we can start working on @local.workshop_data.title.\n\nYou can get essential tools on @local.workshop_data.title via the @global.library.",
+            "matchedExpression": "@global.library",
             "type": "global",
-            "fieldName": "parent_centre"
+            "fieldName": "library"
           }
         ]
       },
@@ -191,7 +191,7 @@
           "value",
           "value"
         ],
-        "@global.parent_centre": [
+        "@global.library": [
           "value"
         ]
       }
@@ -272,7 +272,7 @@
     {
       "type": "button",
       "name": "button_tools",
-      "value": "@global.parent_centre",
+      "value": "@global.library",
       "_translations": {
         "value": {}
       },
@@ -281,10 +281,10 @@
           "trigger": "click",
           "action_id": "go_to",
           "args": [
-            "parent_centre"
+            "library"
           ],
-          "_raw": "click | go_to:parent_centre",
-          "_cleaned": "click | go_to:parent_centre"
+          "_raw": "click | go_to:library",
+          "_cleaned": "click | go_to:library"
         }
       ],
       "parameter_list": {
@@ -294,19 +294,19 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@global.parent_centre",
-            "matchedExpression": "@global.parent_centre",
+            "fullExpression": "@global.library",
+            "matchedExpression": "@global.library",
             "type": "global",
-            "fieldName": "parent_centre"
+            "fieldName": "library"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.parent_centre": [
+        "@global.library": [
           "value"
         ]
       }
     }
   ],
-  "_xlsxPath": "global/core_templates/core_templates_navigation.xlsx"
+  "_xlsxPath": "global/core_templates/navigation.xlsx"
 }

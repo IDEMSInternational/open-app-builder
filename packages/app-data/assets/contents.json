@@ -14,5 +14,29 @@
   "android/splash.png": {
     "size_kb": 75,
     "md5Checksum": "b5615acc2ee8096f7509da7c7922fbd1"
+  },
+  "icons/home.svg": {
+    "size_kb": 0.6,
+    "md5Checksum": "e16b7483b581e4701569d3f5e7fc0ae2"
+  },
+  "icons/home_white.svg": {
+    "size_kb": 0.9,
+    "md5Checksum": "f0e5c289173021f4c5af4ce718d5b72b"
+  },
+  "icons/library.svg": {
+    "size_kb": 0.7,
+    "md5Checksum": "0b4bb60ce0e51c17f1b1f77040a098de"
+  },
+  "icons/library_white.svg": {
+    "size_kb": 1.1,
+    "md5Checksum": "8e791b3a63a264780daa816589472b9e"
+  },
+  "icons/repeat.svg": {
+    "size_kb": 0.5,
+    "md5Checksum": "06728ebce1c24d38a1f8230c6c958aca"
+  },
+  "icons/repeat_white.svg": {
+    "size_kb": 0.5,
+    "md5Checksum": "4f4c62746ba763d9e305415b7c357703"
   }
 }

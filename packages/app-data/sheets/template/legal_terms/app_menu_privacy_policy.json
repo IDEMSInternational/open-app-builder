@@ -32,7 +32,7 @@
     {
       "type": "text",
       "name": "text_0_1",
-      "value": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
+      "value": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.app_name’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.app_name.",
       "_translations": {
         "value": {}
       },
@@ -40,22 +40,22 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
+            "fullExpression": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.app_name’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.app_name.",
             "matchedExpression": "@global.privacy_policy",
             "type": "global",
             "fieldName": "privacy_policy"
           },
           {
-            "fullExpression": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
-            "matchedExpression": "@global.parent_app",
+            "fullExpression": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.app_name’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.app_name.",
+            "matchedExpression": "@global.app_name",
             "type": "global",
-            "fieldName": "parent_app"
+            "fieldName": "app_name"
           },
           {
-            "fullExpression": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
-            "matchedExpression": "@global.parent_app",
+            "fullExpression": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.app_name’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.app_name.",
+            "matchedExpression": "@global.app_name",
             "type": "global",
-            "fieldName": "parent_app"
+            "fieldName": "app_name"
           }
         ]
       },
@@ -63,7 +63,7 @@
         "@global.privacy_policy": [
           "value"
         ],
-        "@global.parent_app": [
+        "@global.app_name": [
           "value",
           "value"
         ]
@@ -72,7 +72,7 @@
     {
       "type": "text",
       "name": "text_0_2",
-      "value": "@global.parent_app is a free app version of the Parenting for Lifelong Health for Parents and Teens programme, hosted by UNICEF and designed for parents and caregivers of adolescents aged 10 to 17 years.",
+      "value": "@global.app_name is a free app version of the Parenting for Lifelong Health for Parents and Teens programme, hosted by UNICEF and designed for parents and caregivers of adolescents aged 10 to 17 years.",
       "_translations": {
         "value": {}
       },
@@ -80,15 +80,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@global.parent_app is a free app version of the Parenting for Lifelong Health for Parents and Teens programme, hosted by UNICEF and designed for parents and caregivers of adolescents aged 10 to 17 years.",
-            "matchedExpression": "@global.parent_app",
+            "fullExpression": "@global.app_name is a free app version of the Parenting for Lifelong Health for Parents and Teens programme, hosted by UNICEF and designed for parents and caregivers of adolescents aged 10 to 17 years.",
+            "matchedExpression": "@global.app_name",
             "type": "global",
-            "fieldName": "parent_app"
+            "fieldName": "app_name"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.parent_app": [
+        "@global.app_name": [
           "value"
         ]
       }
@@ -105,7 +105,7 @@
     {
       "type": "text",
       "name": "text_0_4",
-      "value": "The digital @global.parent_app is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.parent_app team’).",
+      "value": "The digital @global.app_name is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.app_name team’).",
       "_translations": {
         "value": {}
       },
@@ -113,21 +113,21 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "The digital @global.parent_app is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.parent_app team’).",
-            "matchedExpression": "@global.parent_app",
+            "fullExpression": "The digital @global.app_name is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.app_name team’).",
+            "matchedExpression": "@global.app_name",
             "type": "global",
-            "fieldName": "parent_app"
+            "fieldName": "app_name"
           },
           {
-            "fullExpression": "The digital @global.parent_app is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.parent_app team’).",
-            "matchedExpression": "@global.parent_app",
+            "fullExpression": "The digital @global.app_name is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.app_name team’).",
+            "matchedExpression": "@global.app_name",
             "type": "global",
-            "fieldName": "parent_app"
+            "fieldName": "app_name"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.parent_app": [
+        "@global.app_name": [
           "value",
           "value"
         ]
@@ -231,7 +231,7 @@
     {
       "type": "text",
       "name": "text_1_1_1",
-      "value": "For the purpose of this @global.privacy_policy, “personal data” means any information that enables us to identify an individual, directly or indirectly, by reference to an identifier such as email, name, @global.parent_app identification number, location data, or one or more factors specific to the individual. While using our app, we may require you to provide us with other personally identifiable information.",
+      "value": "For the purpose of this @global.privacy_policy, “personal data” means any information that enables us to identify an individual, directly or indirectly, by reference to an identifier such as email, name, @global.app_name identification number, location data, or one or more factors specific to the individual. While using our app, we may require you to provide us with other personally identifiable information.",
       "_translations": {
         "value": {}
       },
@@ -239,16 +239,16 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "For the purpose of this @global.privacy_policy, “personal data” means any information that enables us to identify an individual, directly or indirectly, by reference to an identifier such as email, name, @global.parent_app identification number, location data, or one or more factors specific to the individual. While using our app, we may require you to provide us with other personally identifiable information.",
+            "fullExpression": "For the purpose of this @global.privacy_policy, “personal data” means any information that enables us to identify an individual, directly or indirectly, by reference to an identifier such as email, name, @global.app_name identification number, location data, or one or more factors specific to the individual. While using our app, we may require you to provide us with other personally identifiable information.",
             "matchedExpression": "@global.privacy_policy",
             "type": "global",
             "fieldName": "privacy_policy"
           },
           {
-            "fullExpression": "For the purpose of this @global.privacy_policy, “personal data” means any information that enables us to identify an individual, directly or indirectly, by reference to an identifier such as email, name, @global.parent_app identification number, location data, or one or more factors specific to the individual. While using our app, we may require you to provide us with other personally identifiable information.",
-            "matchedExpression": "@global.parent_app",
+            "fullExpression": "For the purpose of this @global.privacy_policy, “personal data” means any information that enables us to identify an individual, directly or indirectly, by reference to an identifier such as email, name, @global.app_name identification number, location data, or one or more factors specific to the individual. While using our app, we may require you to provide us with other personally identifiable information.",
+            "matchedExpression": "@global.app_name",
             "type": "global",
-            "fieldName": "parent_app"
+            "fieldName": "app_name"
           }
         ]
       },
@@ -256,7 +256,7 @@
         "@global.privacy_policy": [
           "value"
         ],
-        "@global.parent_app": [
+        "@global.app_name": [
           "value"
         ]
       }
@@ -264,7 +264,7 @@
     {
       "type": "text",
       "name": "text_1_1_2",
-      "value": "Specifically, this is data regarding chosen username, as well as gender.  All data collected is linked to your unique @global.parent_app identification number.  The @global.parent_app identification number produced within the app may also be used to link with any out of app surveys conducted.",
+      "value": "Specifically, this is data regarding chosen username, as well as gender.  All data collected is linked to your unique @global.app_name identification number.  The @global.app_name identification number produced within the app may also be used to link with any out of app surveys conducted.",
       "_translations": {
         "value": {}
       },
@@ -272,21 +272,21 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "Specifically, this is data regarding chosen username, as well as gender.  All data collected is linked to your unique @global.parent_app identification number.  The @global.parent_app identification number produced within the app may also be used to link with any out of app surveys conducted.",
-            "matchedExpression": "@global.parent_app",
+            "fullExpression": "Specifically, this is data regarding chosen username, as well as gender.  All data collected is linked to your unique @global.app_name identification number.  The @global.app_name identification number produced within the app may also be used to link with any out of app surveys conducted.",
+            "matchedExpression": "@global.app_name",
             "type": "global",
-            "fieldName": "parent_app"
+            "fieldName": "app_name"
           },
           {
-            "fullExpression": "Specifically, this is data regarding chosen username, as well as gender.  All data collected is linked to your unique @global.parent_app identification number.  The @global.parent_app identification number produced within the app may also be used to link with any out of app surveys conducted.",
-            "matchedExpression": "@global.parent_app",
+            "fullExpression": "Specifically, this is data regarding chosen username, as well as gender.  All data collected is linked to your unique @global.app_name identification number.  The @global.app_name identification number produced within the app may also be used to link with any out of app surveys conducted.",
+            "matchedExpression": "@global.app_name",
             "type": "global",
-            "fieldName": "parent_app"
+            "fieldName": "app_name"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.parent_app": [
+        "@global.app_name": [
           "value",
           "value"
         ]
@@ -295,7 +295,7 @@
     {
       "type": "text",
       "name": "text_1_1_3",
-      "value": "We process your data to provide parenting support to you, communicate when you contact us, for security reasons as well as research purposes (see section ‘Information Sharing’). The primary research purpose includes optimising engagement of a digital parenting intervention (use of @global.parent_app) to prevent violence against adolescents. During the course of research, the study team may use aggregated and anonymised data from the app for further research projects. Finally, please note that we may process your data without your knowledge or consent, where this is required or permitted by law.",
+      "value": "We process your data to provide parenting support to you, communicate when you contact us, for security reasons as well as research purposes (see section ‘Information Sharing’). The primary research purpose includes optimising engagement of a digital parenting intervention (use of @global.app_name) to prevent violence against adolescents. During the course of research, the study team may use aggregated and anonymised data from the app for further research projects. Finally, please note that we may process your data without your knowledge or consent, where this is required or permitted by law.",
       "_translations": {
         "value": {}
       },
@@ -303,15 +303,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "We process your data to provide parenting support to you, communicate when you contact us, for security reasons as well as research purposes (see section ‘Information Sharing’). The primary research purpose includes optimising engagement of a digital parenting intervention (use of @global.parent_app) to prevent violence against adolescents. During the course of research, the study team may use aggregated and anonymised data from the app for further research projects. Finally, please note that we may process your data without your knowledge or consent, where this is required or permitted by law.",
-            "matchedExpression": "@global.parent_app",
+            "fullExpression": "We process your data to provide parenting support to you, communicate when you contact us, for security reasons as well as research purposes (see section ‘Information Sharing’). The primary research purpose includes optimising engagement of a digital parenting intervention (use of @global.app_name) to prevent violence against adolescents. During the course of research, the study team may use aggregated and anonymised data from the app for further research projects. Finally, please note that we may process your data without your knowledge or consent, where this is required or permitted by law.",
+            "matchedExpression": "@global.app_name",
             "type": "global",
-            "fieldName": "parent_app"
+            "fieldName": "app_name"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.parent_app": [
+        "@global.app_name": [
           "value"
         ]
       }
@@ -328,7 +328,7 @@
     {
       "type": "text",
       "name": "text_1_1_5",
-      "value": "The @global.parent_app team has legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
+      "value": "The @global.app_name team has legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
       "_translations": {
         "value": {}
       },
@@ -336,15 +336,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "The @global.parent_app team has legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
-            "matchedExpression": "@global.parent_app",
+            "fullExpression": "The @global.app_name team has legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
+            "matchedExpression": "@global.app_name",
             "type": "global",
-            "fieldName": "parent_app"
+            "fieldName": "app_name"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.parent_app": [
+        "@global.app_name": [
           "value"
         ]
       }
@@ -481,7 +481,7 @@
     {
       "type": "text",
       "name": "text_1_6",
-      "value": "Your data is important to the @global.parent_app team for broader research purposes. Aggregate data is always anonymised.",
+      "value": "Your data is important to the @global.app_name team for broader research purposes. Aggregate data is always anonymised.",
       "_translations": {
         "value": {}
       },
@@ -489,15 +489,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "Your data is important to the @global.parent_app team for broader research purposes. Aggregate data is always anonymised.",
-            "matchedExpression": "@global.parent_app",
+            "fullExpression": "Your data is important to the @global.app_name team for broader research purposes. Aggregate data is always anonymised.",
+            "matchedExpression": "@global.app_name",
             "type": "global",
-            "fieldName": "parent_app"
+            "fieldName": "app_name"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.parent_app": [
+        "@global.app_name": [
           "value"
         ]
       }
@@ -938,7 +938,7 @@
     {
       "type": "text",
       "name": "text_5",
-      "value": "We value your trust in providing us your personal information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.  We also reserve the right to the storage of your data on third party servers or databases outside of the listed @global.parent_app team (refer to the section on Third Party Service Providers and Websites).  Therefore usage of the app is at your own risk.",
+      "value": "We value your trust in providing us your personal information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.  We also reserve the right to the storage of your data on third party servers or databases outside of the listed @global.app_name team (refer to the section on Third Party Service Providers and Websites).  Therefore usage of the app is at your own risk.",
       "_translations": {
         "value": {}
       },
@@ -946,15 +946,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "We value your trust in providing us your personal information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.  We also reserve the right to the storage of your data on third party servers or databases outside of the listed @global.parent_app team (refer to the section on Third Party Service Providers and Websites).  Therefore usage of the app is at your own risk.",
-            "matchedExpression": "@global.parent_app",
+            "fullExpression": "We value your trust in providing us your personal information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.  We also reserve the right to the storage of your data on third party servers or databases outside of the listed @global.app_name team (refer to the section on Third Party Service Providers and Websites).  Therefore usage of the app is at your own risk.",
+            "matchedExpression": "@global.app_name",
             "type": "global",
-            "fieldName": "parent_app"
+            "fieldName": "app_name"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@global.parent_app": [
+        "@global.app_name": [
           "value"
         ]
       }
@@ -1335,5 +1335,5 @@
       }
     }
   ],
-  "_xlsxPath": "global/core_templates/core_templates_menu.xlsx"
+  "_xlsxPath": "global/core_templates/app_menu.xlsx"
 }

@@ -20,11 +20,17 @@
       "flow_subtype": "app_config_language_list",
       "_xlsxPath": "tz/app_config/language_data_list_tz.xlsx"
     },
+    "app_section_data": {
+      "flow_type": "data_list",
+      "flow_name": "app_section_data",
+      "data_list_name": "app_section",
+      "_xlsxPath": "global/data/navigation_data/app_section_data.xlsx"
+    },
     "bereavement_data_list": {
       "flow_type": "data_list",
       "flow_name": "bereavement_data_list",
       "data_list_name": "bereavement",
-      "_xlsxPath": "global/data/parent_centre_data_list.xlsx"
+      "_xlsxPath": "global/data/library_data/parent_centre_data_list.xlsx"
     },
     "campaign_hs_w_1on1": {
       "flow_type": "data_list",
@@ -226,7 +232,7 @@
       "flow_type": "data_list",
       "flow_name": "covid_data_list",
       "data_list_name": "covid",
-      "_xlsxPath": "global/data/parent_centre_data_list.xlsx"
+      "_xlsxPath": "global/data/library_data/parent_centre_data_list.xlsx"
     },
     "encouraging_messages": {
       "flow_type": "data_list",
@@ -868,7 +874,7 @@
       "flow_type": "data_list",
       "flow_name": "habit_data_list",
       "data_list_name": "habit",
-      "_xlsxPath": "global/data/habit_data_list.xlsx"
+      "_xlsxPath": "global/data/habit_data/habit_data_list.xlsx"
     },
     "hp_challenges_data": {
       "flow_type": "data_list",
@@ -892,7 +898,7 @@
       "flow_type": "data_list",
       "flow_subtype": "lifecycle_actions",
       "flow_name": "launch_actions",
-      "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"
+      "_xlsxPath": "global/core_templates/app_launch.xlsx"
     },
     "number_data": {
       "flow_type": "data_list",
@@ -916,7 +922,7 @@
       "flow_type": "data_list",
       "flow_name": "parent_centre_data_list",
       "data_list_name": "parent_centre",
-      "_xlsxPath": "global/data/parent_centre_data_list.xlsx"
+      "_xlsxPath": "global/data/library_data/parent_centre_data_list.xlsx"
     },
     "partners_data_list": {
       "flow_type": "data_list",
@@ -964,13 +970,13 @@
       "flow_type": "data_list",
       "flow_name": "survey_question",
       "data_list_name": "survey_question",
-      "_xlsxPath": "global/data/survey_data_list.xlsx"
+      "_xlsxPath": "global/data/survey_data/survey_data_list.xlsx"
     },
     "survey_question_group": {
       "flow_type": "data_list",
       "flow_name": "survey_question_group",
       "data_list_name": "survey_question_group",
-      "_xlsxPath": "global/data/survey_data_list.xlsx"
+      "_xlsxPath": "global/data/survey_data/survey_data_list.xlsx"
     },
     "w_1on1_specific_task_gs": {
       "flow_type": "data_list",
@@ -1103,7 +1109,7 @@
     "activity_variables": {
       "flow_type": "global",
       "flow_name": "activity_variables",
-      "_xlsxPath": "global/data/parent_centre_globals.xlsx"
+      "_xlsxPath": "global/data/library_data/parent_centre_globals.xlsx"
     },
     "app_menu_globals": {
       "flow_type": "global",
@@ -1113,12 +1119,12 @@
     "button_texts": {
       "flow_type": "global",
       "flow_name": "button_texts",
-      "_xlsxPath": "global/data/navigation_globals.xlsx"
+      "_xlsxPath": "global/data/navigation_data/navigation_globals.xlsx"
     },
     "click_count_defaults": {
       "flow_type": "global",
       "flow_name": "click_count_defaults",
-      "_xlsxPath": "global/data/navigation_globals.xlsx"
+      "_xlsxPath": "global/data/navigation_data/navigation_globals.xlsx"
     },
     "consequences": {
       "flow_type": "global",
@@ -1146,29 +1152,7 @@
     "home_screen_variables": {
       "flow_type": "global",
       "flow_name": "home_screen_variables",
-      "_xlsxPath": "global/data/navigation_globals.xlsx"
-    },
-    "home_screen_variables_mod": {
-      "flow_type": "global",
-      "flow_name": "home_screen_variables_mod",
-      "override_target": "home_screen_variables",
-      "override_condition": "@fields._app_skin == \"modular\"",
-      "_xlsxPath": "global_modular/data/navigation_globals_modular.xlsx"
-    },
-    "hp_review_phrases": {
-      "flow_type": "global",
-      "flow_name": "hp_review_phrases",
-      "_xlsxPath": "global/data/in_week_message_globals.xlsx"
-    },
-    "in_week_message_options": {
-      "flow_type": "global",
-      "flow_name": "in_week_message_options",
-      "_xlsxPath": "global/data/in_week_message_globals.xlsx"
-    },
-    "in_week_message_titles": {
-      "flow_type": "global",
-      "flow_name": "in_week_message_titles",
-      "_xlsxPath": "global/data/in_week_message_globals.xlsx"
+      "_xlsxPath": "global/data/navigation_data/navigation_globals.xlsx"
     },
     "localisation_options": {
       "flow_type": "global",
@@ -1202,17 +1186,17 @@
     "parent_point_variables": {
       "flow_type": "global",
       "flow_name": "parent_point_variables",
-      "_xlsxPath": "global/data/habit_globals.xlsx"
+      "_xlsxPath": "global/data/habit_data/habit_globals.xlsx"
     },
     "pc_click_count_defaults": {
       "flow_type": "global",
       "flow_name": "pc_click_count_defaults",
-      "_xlsxPath": "global/data/parent_centre_globals.xlsx"
+      "_xlsxPath": "global/data/library_data/parent_centre_globals.xlsx"
     },
     "relax_variables": {
       "flow_type": "global",
       "flow_name": "relax_variables",
-      "_xlsxPath": "global/data/parent_centre_globals.xlsx"
+      "_xlsxPath": "global/data/library_data/parent_centre_globals.xlsx"
     },
     "saving_goals": {
       "flow_type": "global",
@@ -1235,7 +1219,7 @@
     "survey_completed": {
       "flow_type": "global",
       "flow_name": "survey_completed",
-      "_xlsxPath": "global/data/survey_globals.xlsx"
+      "_xlsxPath": "global/data/survey_data/survey_globals.xlsx"
     },
     "workshop_completion_levels": {
       "flow_type": "global",
@@ -1257,12 +1241,12 @@
     "accept_terms": {
       "flow_type": "template",
       "flow_name": "accept_terms",
-      "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"
+      "_xlsxPath": "global/core_templates/app_launch.xlsx"
     },
     "accept_terms_warning": {
       "flow_type": "template",
       "flow_name": "accept_terms_warning",
-      "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"
+      "_xlsxPath": "global/core_templates/app_launch.xlsx"
     },
     "activity_check_in_chat": {
       "flow_type": "template",
@@ -1513,42 +1497,42 @@
     "app_menu": {
       "flow_type": "template",
       "flow_name": "app_menu",
-      "_xlsxPath": "global/core_templates/core_templates_menu.xlsx"
+      "_xlsxPath": "global/core_templates/app_menu.xlsx"
+    },
+    "app_menu_about": {
+      "flow_type": "template",
+      "flow_name": "app_menu_about",
+      "_xlsxPath": "global/core_templates/app_menu.xlsx"
     },
     "app_menu_enter_dev_mode": {
       "flow_type": "template",
       "flow_name": "app_menu_enter_dev_mode",
-      "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
+      "_xlsxPath": "global/core_templates/settings.xlsx"
     },
     "app_menu_exit_dev_mode": {
       "flow_type": "template",
       "flow_name": "app_menu_exit_dev_mode",
-      "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
-    },
-    "app_menu_plh": {
-      "flow_type": "template",
-      "flow_name": "app_menu_plh",
-      "_xlsxPath": "global/core_templates/core_templates_menu.xlsx"
+      "_xlsxPath": "global/core_templates/settings.xlsx"
     },
     "app_menu_reset_app_pop": {
       "flow_type": "template",
       "flow_name": "app_menu_reset_app_pop",
-      "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
+      "_xlsxPath": "global/core_templates/settings.xlsx"
     },
     "app_menu_settings": {
       "flow_type": "template",
       "flow_name": "app_menu_settings",
-      "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
+      "_xlsxPath": "global/core_templates/settings.xlsx"
     },
     "app_menu_unlock_workshops_pop": {
       "flow_type": "template",
       "flow_name": "app_menu_unlock_workshops_pop",
-      "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
+      "_xlsxPath": "global/core_templates/settings.xlsx"
     },
     "banner": {
       "flow_type": "template",
       "flow_name": "banner",
-      "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"
+      "_xlsxPath": "global/core_templates/modules.xlsx"
     },
     "bereavement_practical": {
       "flow_type": "template",
@@ -1573,17 +1557,17 @@
     "box_audio": {
       "flow_type": "template",
       "flow_name": "box_audio",
-      "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/module_boxes.xlsx"
     },
     "box_buttons": {
       "flow_type": "template",
       "flow_name": "box_buttons",
-      "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/module_boxes.xlsx"
     },
     "box_combo_box": {
       "flow_type": "template",
       "flow_name": "box_combo_box",
-      "_xlsxPath": "global/core_templates/core_templates_survey_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/survey_boxes.xlsx"
     },
     "box_content": {
       "flow_type": "template",
@@ -1593,72 +1577,72 @@
     "box_duo": {
       "flow_type": "template",
       "flow_name": "box_duo",
-      "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"
+      "_xlsxPath": "global/core_templates/modules.xlsx"
     },
     "box_duo_combo_box": {
       "flow_type": "template",
       "flow_name": "box_duo_combo_box",
-      "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/module_boxes.xlsx"
     },
     "box_duo_radio_buttons": {
       "flow_type": "template",
       "flow_name": "box_duo_radio_buttons",
-      "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/module_boxes.xlsx"
     },
     "box_hp_review": {
       "flow_type": "template",
       "flow_name": "box_hp_review",
-      "_xlsxPath": "global/core_templates/core_templates_survey_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/survey_boxes.xlsx"
     },
     "box_image": {
       "flow_type": "template",
       "flow_name": "box_image",
-      "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/module_boxes.xlsx"
     },
     "box_image_more": {
       "flow_type": "template",
       "flow_name": "box_image_more",
-      "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/module_boxes.xlsx"
     },
     "box_multi_1": {
       "flow_type": "template",
       "flow_name": "box_multi_1",
-      "_xlsxPath": "global/core_templates/core_templates_survey_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/survey_boxes.xlsx"
     },
     "box_multi_2": {
       "flow_type": "template",
       "flow_name": "box_multi_2",
-      "_xlsxPath": "global/core_templates/core_templates_survey_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/survey_boxes.xlsx"
     },
     "box_multi_radio_buttons": {
       "flow_type": "template",
       "flow_name": "box_multi_radio_buttons",
-      "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/module_boxes.xlsx"
     },
     "box_number_selector": {
       "flow_type": "template",
       "flow_name": "box_number_selector",
-      "_xlsxPath": "global/core_templates/core_templates_survey_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/survey_boxes.xlsx"
     },
     "box_parent_point_counter": {
       "flow_type": "template",
       "flow_name": "box_parent_point_counter",
-      "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/module_boxes.xlsx"
     },
     "box_radio_buttons": {
       "flow_type": "template",
       "flow_name": "box_radio_buttons",
-      "_xlsxPath": "global/core_templates/core_templates_survey_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/survey_boxes.xlsx"
     },
     "box_radio_buttons_emo_temp": {
       "flow_type": "template",
       "flow_name": "box_radio_buttons_emo_temp",
-      "_xlsxPath": "global/core_templates/core_templates_survey_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/survey_boxes.xlsx"
     },
     "box_story": {
       "flow_type": "template",
       "flow_name": "box_story",
-      "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/module_boxes.xlsx"
     },
     "box_story_pages": {
       "flow_type": "template",
@@ -1673,17 +1657,17 @@
     "box_survey_question": {
       "flow_type": "template",
       "flow_name": "box_survey_question",
-      "_xlsxPath": "global/core_templates/core_templates_survey_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/survey_boxes.xlsx"
     },
     "box_text_box": {
       "flow_type": "template",
       "flow_name": "box_text_box",
-      "_xlsxPath": "global/core_templates/core_templates_survey_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/survey_boxes.xlsx"
     },
     "box_timer": {
       "flow_type": "template",
       "flow_name": "box_timer",
-      "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/module_boxes.xlsx"
     },
     "box_tools": {
       "flow_type": "template",
@@ -1693,7 +1677,7 @@
     "box_video": {
       "flow_type": "template",
       "flow_name": "box_video",
-      "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/module_boxes.xlsx"
     },
     "care_together": {
       "flow_type": "template",
@@ -1789,7 +1773,7 @@
     "home_screen": {
       "flow_type": "template",
       "flow_name": "home_screen",
-      "_xlsxPath": "global/core_templates/core_templates_navigation.xlsx",
+      "_xlsxPath": "global/core_templates/navigation.xlsx",
       "_overrides": {
         "home_screen_modular": "@fields._app_skin == \"modular\""
       }
@@ -1819,7 +1803,7 @@
     "language_select": {
       "flow_type": "template",
       "flow_name": "language_select",
-      "_xlsxPath": "global/core_templates/core_templates_settings.xlsx",
+      "_xlsxPath": "global/core_templates/settings.xlsx",
       "_overrides": {
         "language_select_tz": "@fields._deployment_name == \"plh_tz\""
       }
@@ -1840,13 +1824,13 @@
       "flow_type": "template",
       "flow_name": "app_menu_privacy_policy",
       "flow_subtype": "legal_terms",
-      "_xlsxPath": "global/core_templates/core_templates_menu.xlsx"
+      "_xlsxPath": "global/core_templates/app_menu.xlsx"
     },
     "app_menu_terms": {
       "flow_type": "template",
       "flow_name": "app_menu_terms",
       "flow_subtype": "legal_terms",
-      "_xlsxPath": "global/core_templates/core_templates_menu.xlsx"
+      "_xlsxPath": "global/core_templates/app_menu.xlsx"
     },
     "lib_act_change_thoughts": {
       "flow_type": "template",
@@ -1956,7 +1940,7 @@
     "library_activity": {
       "flow_type": "template",
       "flow_name": "library_activity",
-      "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"
+      "_xlsxPath": "global/core_templates/modules.xlsx"
     },
     "listen": {
       "flow_type": "template",
@@ -2031,12 +2015,12 @@
     "nav_buttons": {
       "flow_type": "template",
       "flow_name": "nav_buttons",
-      "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"
+      "_xlsxPath": "global/core_templates/modules.xlsx"
     },
     "organisation_registration": {
       "flow_type": "template",
       "flow_name": "organisation_registration",
-      "_xlsxPath": "global/core_templates/core_templates_settings.xlsx",
+      "_xlsxPath": "global/core_templates/settings.xlsx",
       "_overrides": {
         "organisation_registration_tz": "@fields._deployment_name == \"plh_tz\""
       }
@@ -2051,17 +2035,17 @@
     "pair": {
       "flow_type": "template",
       "flow_name": "pair",
-      "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"
+      "_xlsxPath": "global/core_templates/modules.xlsx"
     },
     "pair_hidden": {
       "flow_type": "template",
       "flow_name": "pair_hidden",
-      "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"
+      "_xlsxPath": "global/core_templates/modules.xlsx"
     },
     "parent_centre": {
       "flow_type": "template",
       "flow_name": "parent_centre",
-      "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
+      "_xlsxPath": "global/core_templates/library.xlsx"
     },
     "parent_centre_activities": {
       "flow_type": "template",
@@ -2081,37 +2065,37 @@
     "parent_centre_covid_temp": {
       "flow_type": "template",
       "flow_name": "parent_centre_covid_temp",
-      "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
+      "_xlsxPath": "global/core_templates/library.xlsx"
     },
     "parent_centre_covid_uni_pop_up": {
       "flow_type": "template",
       "flow_name": "parent_centre_covid_uni_pop_up",
-      "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
+      "_xlsxPath": "global/core_templates/library.xlsx"
     },
     "parent_centre_covid_who_pop_up": {
       "flow_type": "template",
       "flow_name": "parent_centre_covid_who_pop_up",
-      "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
+      "_xlsxPath": "global/core_templates/library.xlsx"
     },
     "parent_centre_customisation": {
       "flow_type": "template",
       "flow_name": "parent_centre_customisation",
-      "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
+      "_xlsxPath": "global/core_templates/library.xlsx"
     },
     "parent_centre_essential_tools": {
       "flow_type": "template",
       "flow_name": "parent_centre_essential_tools",
-      "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
+      "_xlsxPath": "global/core_templates/library.xlsx"
     },
     "parent_centre_help": {
       "flow_type": "template",
       "flow_name": "parent_centre_help",
-      "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
+      "_xlsxPath": "global/core_templates/library.xlsx"
     },
     "parent_centre_message_archive": {
       "flow_type": "template",
       "flow_name": "parent_centre_message_archive",
-      "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
+      "_xlsxPath": "global/core_templates/library.xlsx"
     },
     "parent_centre_my_activities": {
       "flow_type": "template",
@@ -2126,7 +2110,7 @@
     "parent_centre_my_tips": {
       "flow_type": "template",
       "flow_name": "parent_centre_my_tips",
-      "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
+      "_xlsxPath": "global/core_templates/library.xlsx"
     },
     "parent_centre_relax_and_act": {
       "flow_type": "template",
@@ -2141,12 +2125,12 @@
     "parent_centre_support_category": {
       "flow_type": "template",
       "flow_name": "parent_centre_support_category",
-      "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
+      "_xlsxPath": "global/core_templates/library.xlsx"
     },
     "parent_centre_support_con": {
       "flow_type": "template",
       "flow_name": "parent_centre_support_con",
-      "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx",
+      "_xlsxPath": "global/core_templates/library.xlsx",
       "_overrides": {
         "parent_centre_support_con_tz": "@fields._deployment_name == \"plh_tz\""
       }
@@ -2161,37 +2145,37 @@
     "parent_centre_technical_support": {
       "flow_type": "template",
       "flow_name": "parent_centre_technical_support",
-      "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
+      "_xlsxPath": "global/core_templates/library.xlsx"
     },
     "parent_centre_testimonies": {
       "flow_type": "template",
       "flow_name": "parent_centre_testimonies",
-      "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
+      "_xlsxPath": "global/core_templates/library.xlsx"
     },
     "parent_point_dashed_box": {
       "flow_type": "template",
       "flow_name": "parent_point_dashed_box",
-      "_xlsxPath": "global/core_templates/core_templates_parent_points.xlsx"
+      "_xlsxPath": "global/core_templates/habits.xlsx"
     },
     "parent_point_info": {
       "flow_type": "template",
       "flow_name": "parent_point_info",
-      "_xlsxPath": "global/core_templates/core_templates_parent_points.xlsx"
+      "_xlsxPath": "global/core_templates/habits.xlsx"
     },
     "parent_point_tile": {
       "flow_type": "template",
       "flow_name": "parent_point_tile",
-      "_xlsxPath": "global/core_templates/core_templates_parent_points.xlsx"
+      "_xlsxPath": "global/core_templates/habits.xlsx"
     },
     "parent_point_tiles": {
       "flow_type": "template",
       "flow_name": "parent_point_tiles",
-      "_xlsxPath": "global/core_templates/core_templates_parent_points.xlsx"
+      "_xlsxPath": "global/core_templates/habits.xlsx"
     },
     "parent_points": {
       "flow_type": "template",
       "flow_name": "parent_points",
-      "_xlsxPath": "global/core_templates/core_templates_parent_points.xlsx"
+      "_xlsxPath": "global/core_templates/habits.xlsx"
     },
     "parenting_tips": {
       "flow_type": "template",
@@ -2383,12 +2367,12 @@
     "self_care_accordion_item": {
       "flow_type": "template",
       "flow_name": "self_care_accordion_item",
-      "_xlsxPath": "global/core_templates/core_templates_navigation.xlsx"
+      "_xlsxPath": "global/core_templates/navigation.xlsx"
     },
     "settings_customise": {
       "flow_type": "template",
       "flow_name": "settings_customise",
-      "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
+      "_xlsxPath": "global/core_templates/settings.xlsx"
     },
     "setup_and_survey_stepper": {
       "flow_type": "template",
@@ -2398,12 +2382,12 @@
     "sign_in": {
       "flow_type": "template",
       "flow_name": "sign_in",
-      "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"
+      "_xlsxPath": "global/core_templates/app_launch.xlsx"
     },
     "skin_select": {
       "flow_type": "template",
       "flow_name": "skin_select",
-      "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
+      "_xlsxPath": "global/core_templates/settings.xlsx"
     },
     "something_fun": {
       "flow_type": "template",
@@ -2413,22 +2397,22 @@
     "splash_funders": {
       "flow_type": "template",
       "flow_name": "splash_funders",
-      "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"
+      "_xlsxPath": "global/core_templates/app_launch.xlsx"
     },
     "splash_partners_1": {
       "flow_type": "template",
       "flow_name": "splash_partners_1",
-      "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"
+      "_xlsxPath": "global/core_templates/app_launch.xlsx"
     },
     "splash_partners_2": {
       "flow_type": "template",
       "flow_name": "splash_partners_2",
-      "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"
+      "_xlsxPath": "global/core_templates/app_launch.xlsx"
     },
     "splash_screens": {
       "flow_type": "template",
       "flow_name": "splash_screens",
-      "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"
+      "_xlsxPath": "global/core_templates/app_launch.xlsx"
     },
     "suggestions": {
       "flow_type": "template",
@@ -2468,7 +2452,7 @@
     "survey_nav_buttons": {
       "flow_type": "template",
       "flow_name": "survey_nav_buttons",
-      "_xlsxPath": "global/core_templates/core_templates_survey_boxes.xlsx"
+      "_xlsxPath": "global/core_templates/survey_boxes.xlsx"
     },
     "survey_outro": {
       "flow_type": "template",
@@ -2533,12 +2517,12 @@
     "survey_stepper": {
       "flow_type": "template",
       "flow_name": "survey_stepper",
-      "_xlsxPath": "global/core_templates/core_templates_surveys.xlsx"
+      "_xlsxPath": "global/core_templates/surveys.xlsx"
     },
     "survey_stepper_actions": {
       "flow_type": "template",
       "flow_name": "survey_stepper_actions",
-      "_xlsxPath": "global/core_templates/core_templates_surveys.xlsx"
+      "_xlsxPath": "global/core_templates/surveys.xlsx"
     },
     "survey_warning": {
       "flow_type": "template",
@@ -2593,7 +2577,7 @@
     "task_group_pair": {
       "flow_type": "template",
       "flow_name": "task_group_pair",
-      "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"
+      "_xlsxPath": "global/core_templates/modules.xlsx"
     },
     "teen_testimonial_text": {
       "flow_type": "template",
@@ -2675,12 +2659,12 @@
     "user_code": {
       "flow_type": "template",
       "flow_name": "user_code",
-      "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
+      "_xlsxPath": "global/core_templates/settings.xlsx"
     },
     "user_info": {
       "flow_type": "template",
       "flow_name": "user_info",
-      "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
+      "_xlsxPath": "global/core_templates/settings.xlsx"
     },
     "w_1on1_care_together": {
       "flow_type": "template",
@@ -4986,7 +4970,7 @@
     "weekly_workshops": {
       "flow_type": "template",
       "flow_name": "weekly_workshops",
-      "_xlsxPath": "global/core_templates/core_templates_navigation.xlsx"
+      "_xlsxPath": "global/core_templates/navigation.xlsx"
     },
     "welcome_individual": {
       "flow_type": "template",
@@ -5001,32 +4985,32 @@
     "workshop_accordion_item": {
       "flow_type": "template",
       "flow_name": "workshop_accordion_item",
-      "_xlsxPath": "global/core_templates/core_templates_navigation.xlsx"
+      "_xlsxPath": "global/core_templates/navigation.xlsx"
     },
     "workshop_accordion_item_locked": {
       "flow_type": "template",
       "flow_name": "workshop_accordion_item_locked",
-      "_xlsxPath": "global/core_templates/core_templates_navigation.xlsx"
+      "_xlsxPath": "global/core_templates/navigation.xlsx"
     },
     "workshop_activity": {
       "flow_type": "template",
       "flow_name": "workshop_activity",
-      "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"
+      "_xlsxPath": "global/core_templates/modules.xlsx"
     },
     "workshop_activity_old": {
       "flow_type": "template",
       "flow_name": "workshop_activity_old",
-      "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"
+      "_xlsxPath": "global/core_templates/modules.xlsx"
     },
     "workshop_completed_calc": {
       "flow_type": "template",
       "flow_name": "workshop_completed_calc",
-      "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"
+      "_xlsxPath": "global/core_templates/modules.xlsx"
     },
     "workshop_options_page": {
       "flow_type": "template",
       "flow_name": "workshop_options_page",
-      "_xlsxPath": "global/core_templates/core_templates_navigation.xlsx"
+      "_xlsxPath": "global/core_templates/navigation.xlsx"
     },
     "workshop_setup_intro": {
       "flow_type": "template",
@@ -5056,12 +5040,12 @@
     "workshop_stepper": {
       "flow_type": "template",
       "flow_name": "workshop_stepper",
-      "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"
+      "_xlsxPath": "global/core_templates/modules.xlsx"
     },
     "workshop_stepper_actions": {
       "flow_type": "template",
       "flow_name": "workshop_stepper_actions",
-      "_xlsxPath": "global/core_templates/core_templates_workshops.xlsx"
+      "_xlsxPath": "global/core_templates/modules.xlsx"
     },
     "workshop_task_groups_test": {
       "flow_type": "template",
@@ -5071,7 +5055,7 @@
     "workshop_unlock": {
       "flow_type": "template",
       "flow_name": "workshop_unlock",
-      "_xlsxPath": "global/core_templates/core_templates_navigation.xlsx"
+      "_xlsxPath": "global/core_templates/navigation.xlsx"
     }
   },
   "tour": {

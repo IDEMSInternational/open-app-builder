@@ -1,0 +1,36 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "app_section_data",
+  "status": "released",
+  "data_list_name": "app_section",
+  "rows": [
+    {
+      "id": "modules",
+      "title": "Modules",
+      "title_modular": "Home",
+      "icon_asset": "icons/home_white.svg",
+      "target_template": "weekly_workshops",
+      "target_template_modular": "home_screen",
+      "image_asset": "icons/home_white.svg"
+    },
+    {
+      "id": "habits",
+      "title": "Habits",
+      "icon_asset": "icons/repeat_white.svg",
+      "target_template": "parent_points",
+      "title_modular": "Habits",
+      "image_asset": "icons/repeat_white.svg",
+      "target_template_modular": "parent_points"
+    },
+    {
+      "id": "library",
+      "title": "Library",
+      "icon_asset": "icons/library_white.svg",
+      "target_template": "parent_centre",
+      "title_modular": "Library",
+      "image_asset": "icons/library_white.svg",
+      "target_template_modular": "parent_centre"
+    }
+  ],
+  "_xlsxPath": "global/data/navigation_data/app_section_data.xlsx"
+}

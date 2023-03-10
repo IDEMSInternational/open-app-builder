@@ -80,5 +80,5 @@
       "exclude_from_translation": true
     }
   ],
-  "_xlsxPath": "global/data/habit_globals.xlsx"
+  "_xlsxPath": "global/data/habit_data/habit_globals.xlsx"
 }

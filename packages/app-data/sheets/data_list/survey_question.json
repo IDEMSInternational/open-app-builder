@@ -64,7 +64,7 @@
       "threshold": 8,
       "parent_text": true,
       "threshold positive": ">=6",
-      "parent_text_question": "In our busy lives, it's hard to focus on the positive. How many days in the past week have you praised your child? (0, 1, 2, 3, 4, 5, 6, 7)\r\n\r\nIf you don't want to answer, please type 99.",
+      "parent_text_question": "In our busy lives, it's hard to focus on the positive. How many days in the past week have you praised your child? (0, 1, 2, 3, 4, 5, 6, 7)\n\nIf you don't want to answer, please type 99.",
       "improvement (condition on diff to get fb_better)": ">",
       "feedback_better::0": "Wonderful that you are praising your child! This helps them feel seen and loved – your encouragement means a lot.",
       "feedback_better::1": "So good to hear you are telling your child when they are doing something well. With time, you will see them do that behaviour more and more. You are doing a great job!",
@@ -110,7 +110,7 @@
       "threshold": 2,
       "parent_text": true,
       "threshold positive": "<=0",
-      "parent_text_question": "This is a very stressful time for families. How many days in the past week did you feel very stressed as a parent/caregiver? (0, 1, 2, 3, 4, 5, 6, 7)\r\n\r\nIf you don't want to answer, please type 99.",
+      "parent_text_question": "This is a very stressful time for families. How many days in the past week did you feel very stressed as a parent/caregiver? (0, 1, 2, 3, 4, 5, 6, 7)\n\nIf you don't want to answer, please type 99.",
       "improvement (condition on diff to get fb_better)": ">",
       "feedback_better::0": "Did you know that you are less stressed than you were last week? Amazing!",
       "feedback_better::1": "It’s wonderful to hear you are feeling less stress than last week. Keep up the good work!",
@@ -243,7 +243,7 @@
       "threshold": 1,
       "parent_text": true,
       "threshold positive": "<=0",
-      "parent_text_question": "Sometimes our children make us really upset. How many days in the past week did you shout, scream, or yell at your children? (0, 1, 2, 3, 4, 5, 6, 7)\r\n\r\nIf you don't want to answer, please type 99.",
+      "parent_text_question": "Sometimes our children make us really upset. How many days in the past week did you shout, scream, or yell at your children? (0, 1, 2, 3, 4, 5, 6, 7)\n\nIf you don't want to answer, please type 99.",
       "improvement (condition on diff to get fb_better)": ">",
       "feedback_better::0": "Well done! Brain science shows if you control your anger when your child misbehaves, you increase your child's brain development. Be proud of yourself when you manage to do it!",
       "feedback_better::1": "Great work! When we respond calmly, our teens are more likely to do the same.",
@@ -320,7 +320,7 @@
       "range_max": 8,
       "threshold": 1,
       "parent_text": true,
-      "parent_text_question": "Money is one of the biggest stresses for families now. How many days in the past week have you felt very worried or anxious about money? (0, 1, 2, 3, 4, 5, 6, 7)\r\n\r\nIf you don't want to answer, please type 99.",
+      "parent_text_question": "Money is one of the biggest stresses for families now. How many days in the past week have you felt very worried or anxious about money? (0, 1, 2, 3, 4, 5, 6, 7)\n\nIf you don't want to answer, please type 99.",
       "intro_text": "Money is one of the biggest stresses for families.",
       "_translations": {
         "intro_text": {},
@@ -354,7 +354,7 @@
       "range_max": 30,
       "threshold": 1,
       "parent_text": true,
-      "parent_text_question": "How many days in the past month (30 days) did you run out of money to pay for food? (0, 1, 2, 3, ... 30)\r\n\r\nIf you don't want to answer, please type 99.",
+      "parent_text_question": "How many days in the past month (30 days) did you run out of money to pay for food? (0, 1, 2, 3, ... 30)\n\nIf you don't want to answer, please type 99.",
       "question": "How many days in the past month (30 days) did you run out of money to pay for food?",
       "_translations": {
         "question": {},
@@ -431,7 +431,7 @@
       "threshold": 1,
       "parent_text": true,
       "threshold positive": "<=0",
-      "parent_text_question": "It is so stressful when children misbehave. How many days in the past week did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt? (0, 1, 2, 3, 4, 5, 6, 7)\r\n\r\nIf you don't want to answer, please type 99.",
+      "parent_text_question": "It is so stressful when children misbehave. How many days in the past week did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt? (0, 1, 2, 3, 4, 5, 6, 7)\n\nIf you don't want to answer, please type 99.",
       "improvement (condition on diff to get fb_better)": ">",
       "feedback_better::0": "It is wonderful that you are responding in a calm way when your child does something upsetting. They can learn so much from you!",
       "feedback_better::1": "Well done! Learning new ways of responding to your children when they misbehave will make a BIG difference in the way they learn how to resolve conflicts as they get older.",
@@ -682,7 +682,7 @@
       "outcome": "Parental self-efficacy",
       "parent_text": true,
       "threshold positive": ">=6",
-      "parent_text_question": "It can sometimes be difficult to have a positive relationship with our children. How confident do you feel about your ability as a parent/caregiver to have a positive relationship with your children? (0=not confident to 7=extremely confident)\r\n\r\nIf you don't want to answer, please type 99.",
+      "parent_text_question": "It can sometimes be difficult to have a positive relationship with our children. How confident do you feel about your ability as a parent/caregiver to have a positive relationship with your children? (0=not confident to 7=extremely confident)\n\nIf you don't want to answer, please type 99.",
       "improvement (condition on diff to get fb_better)": ">",
       "intro_text": "It can sometimes be difficult to have a positive relationship with our children.",
       "_translations": {
@@ -4632,5 +4632,5 @@
       "parent_text": false
     }
   ],
-  "_xlsxPath": "global/data/survey_data_list.xlsx"
+  "_xlsxPath": "global/data/survey_data/survey_data_list.xlsx"
 }

@@ -183,7 +183,7 @@
       }
     }
   ],
-  "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx",
+  "_xlsxPath": "global/core_templates/library.xlsx",
   "_overrides": {
     "parent_centre_support_con_tz": "@fields._deployment_name == \"plh_tz\""
   }
