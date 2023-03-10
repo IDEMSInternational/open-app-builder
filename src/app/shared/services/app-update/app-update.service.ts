@@ -11,12 +11,12 @@ import { TemplateFieldService } from "../../components/template/services/templat
 import { TemplateNavService } from "../../components/template/services/template-nav.service";
 import { IAppConfig } from "../../model";
 import { AppConfigService } from "../app-config/app-config.service";
-import { AsyncServiceBase } from "../asyncService.base";
+import { SyncServiceBase } from "../syncService.base";
 
 @Injectable({
   providedIn: "root",
 })
-export class AppUpdateService extends AsyncServiceBase {
+export class AppUpdateService extends SyncServiceBase {
   appUpdatesEnabled: boolean;
   completeUpdateTemplate: string;
   updateAvailable: boolean;
@@ -32,23 +32,21 @@ export class AppUpdateService extends AsyncServiceBase {
     private templateFieldService: TemplateFieldService
   ) {
     super("AppUpdate");
-    this.registerInitFunction(this.initialise);
-    this.registerTemplateActionHandlers();
+    this.initialise();
   }
 
-  private async initialise() {
+  private initialise() {
     this.ensureSyncServicesReady([this.appConfigService, this.templateNavService]);
     this.subscribeToAppConfigChanges();
-    if (!Capacitor.isNativePlatform()) return;
-    if (this.appUpdatesEnabled) {
-      const appUpdateInfo = await AppUpdate.getAppUpdateInfo();
-      this.setUpdateAvailable(
-        appUpdateInfo.updateAvailability === AppUpdateAvailability.UPDATE_AVAILABLE
-      );
-      this.setUpdateDownloaded(
-        appUpdateInfo.installStatus === FlexibleUpdateInstallStatus.DOWNLOADED
-      );
+    if (Capacitor.isNativePlatform() && this.appUpdatesEnabled) {
+      this.registerTemplateActionHandlers();
     }
+  }
+
+  private async checkForUpdates() {
+    const { updateAvailability, installStatus } = await AppUpdate.getAppUpdateInfo();
+    this.setUpdateAvailable(updateAvailability === AppUpdateAvailability.UPDATE_AVAILABLE);
+    this.setUpdateDownloaded(installStatus === FlexibleUpdateInstallStatus.DOWNLOADED);
   }
 
   private registerTemplateActionHandlers() {
@@ -62,6 +60,7 @@ export class AppUpdateService extends AsyncServiceBase {
            * Further details at https://developer.android.com/guide/playcore/in-app-updates#immediate
            */
           force: async () => {
+            await this.checkForUpdates();
             await this.attemptImmediateUpdate();
           },
           /**
@@ -70,6 +69,7 @@ export class AppUpdateService extends AsyncServiceBase {
            * Further details at https://developer.android.com/guide/playcore/in-app-updates#flexible
            */
           prompt: async () => {
+            await this.checkForUpdates();
             await this.attemptFlexibleUpdate();
           },
           /**

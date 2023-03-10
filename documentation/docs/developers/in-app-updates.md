@@ -17,9 +17,10 @@ The `app_update` template action can be triggered with one of the following argu
 
 | argument             | description   |
 | ---------         | ------------  |
-| prompt	        | If an update is available, force the user to download and apply it, using Android's "Immediate" update strategy UI (the prompt can in fact still be dismissed). Further details for this flow can be found in [Google's Docs](https://developer.android.com/guide/playcore/in-app-updates#immediate) |
-| force	| If an update is available, prompt the user to download and apply it, using Android's "Flexible" update strategy UI, which encourages the user to update but gives the option to not do so. Further details in [Google's Docs](https://developer.android.com/guide/playcore/in-app-updates#flexible)	|
+| prompt	| Check for updates. If an update is available, prompt the user to download and apply it, using Android's "Flexible" update strategy UI, which encourages the user to update but gives the option to not do so. Further details in [Android Documentation](https://developer.android.com/guide/playcore/in-app-updates#flexible)	|
 | complete	    | After a flexible update has finished downloading, this action will finish applying the update, by installing it and relaunching the app. If this action is not triggered manually from a template, the update will be installed on the app's next init (e.g. relaunch) |
+| force	        | Check for updates. If an update is available, force the user to download and apply it, using Android's "Immediate" update strategy UI (the prompt can in fact still be dismissed). Further details for this flow can be found in [Android Documentation](https://developer.android.com/guide/playcore/in-app-updates#immediate) |
+
 
 ## Flexible Updates
 If using the Flexible update flow, i.e. triggering the `app_update: prompt` action, then it is recommended to include a template's name as the value for `APP_UPDATES.completeUpdateTemplate`, which will be displayed in-app when a flexible update is downloaded and ready to install. This template should include a trigger for the `app_update: complete` action. For example:
