@@ -66,5 +66,5 @@
       "template": "w_instruct_try"
     }
   ],
-  "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
+  "_xlsxPath": "global/data/module_data/workshop_tasks.xlsx"
 }

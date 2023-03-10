@@ -1,0 +1,54 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "library_data",
+  "status": "released",
+  "data_list_name": "library",
+  "rows": [
+    {
+      "id": "item_1",
+      "tile_style": "parent_centre_1",
+      "show": true,
+      "icon_asset": "images/icons/book_white.svg",
+      "title": "First item",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "First item"
+        }
+      }
+    },
+    {
+      "id": "item_2",
+      "tile_style": "parent_centre_3",
+      "show": true,
+      "icon_asset": "images/icons/book_white.svg",
+      "title": "Second item",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Second item"
+        }
+      }
+    },
+    {
+      "id": "tech_support",
+      "icon_asset": "images/icons/buoy_white.svg",
+      "tile_style": "parent_centre_4",
+      "show": true,
+      "title": "Technical Support",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Technical Support"
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/library_data/library_data.xlsx"
+}

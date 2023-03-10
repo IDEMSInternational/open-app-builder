@@ -42,5 +42,5 @@
       "template": "w_stress_read_3"
     }
   ],
-  "_xlsxPath": "global/data/workshop_data/workshop_tasks.xlsx"
+  "_xlsxPath": "global/data/module_data/workshop_tasks.xlsx"
 }

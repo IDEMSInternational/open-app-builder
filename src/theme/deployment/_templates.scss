@@ -9,8 +9,8 @@ plh-template-container[data-templatename="w_self_care_stepper"] {
   margin-top: -20px;
 }
 
-/// parent_centre
-plh-template-container[data-templatename="parent_centre"] {
+/// library
+plh-template-container[data-templatename="library"] {
   plh-tmpl-title {
     margin-top: 0;
     margin-bottom: 20px;
@@ -24,7 +24,7 @@ plh-template-container[data-templatename="parent_centre"] {
 }
 
 /// parent_points
-plh-template-container[data-templatename="parent_points"] {
+plh-template-container[data-templatename="habits"] {
   plh-template-component[data-type="parent_point_box"] {
     margin-top: 0;
   }

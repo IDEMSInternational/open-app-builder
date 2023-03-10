@@ -186,7 +186,7 @@
       "_nested_name": "nav_buttons"
     }
   ],
-  "_xlsxPath": "global/core_templates/settings.xlsx",
+  "_xlsxPath": "global/templates/core_templates/settings.xlsx",
   "_overrides": {
     "language_select_tz": "@fields._deployment_name == \"plh_tz\""
   }

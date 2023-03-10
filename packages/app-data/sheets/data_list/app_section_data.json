@@ -6,30 +6,30 @@
   "rows": [
     {
       "id": "modules",
-      "title": "Modules",
+      "title": "@global.modules_capital",
       "title_modular": "Home",
-      "icon_asset": "icons/home_white.svg",
-      "target_template": "weekly_workshops",
-      "target_template_modular": "home_screen",
-      "image_asset": "icons/home_white.svg"
+      "icon_asset": "images/icons/home_white.svg",
+      "template": "weekly_workshops",
+      "template_modular": "home_screen",
+      "image_asset": "images/icons/home_white.svg"
     },
     {
       "id": "habits",
-      "title": "Habits",
-      "icon_asset": "icons/repeat_white.svg",
-      "target_template": "parent_points",
-      "title_modular": "Habits",
-      "image_asset": "icons/repeat_white.svg",
-      "target_template_modular": "parent_points"
+      "title": "@global.habits_capital",
+      "icon_asset": "images/icons/repeat_white.svg",
+      "template": "parent_points",
+      "title_modular": "@global.habits_capital",
+      "image_asset": "images/icons/repeat_white.svg",
+      "template_modular": "parent_points"
     },
     {
       "id": "library",
       "title": "Library",
-      "icon_asset": "icons/library_white.svg",
-      "target_template": "parent_centre",
+      "icon_asset": "images/icons/library_white.svg",
+      "template": "library",
       "title_modular": "Library",
-      "image_asset": "icons/library_white.svg",
-      "target_template_modular": "parent_centre"
+      "image_asset": "images/icons/library_white.svg",
+      "template_modular": "library"
     }
   ],
   "_xlsxPath": "global/data/navigation_data/app_section_data.xlsx"

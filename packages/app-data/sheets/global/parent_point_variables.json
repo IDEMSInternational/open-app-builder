@@ -4,22 +4,6 @@
   "status": "released",
   "rows": [
     {
-      "type": "declare_global_constant",
-      "name": "parent_points_make_me_smile",
-      "value": "Make me smile",
-      "_translations": {
-        "value": {}
-      }
-    },
-    {
-      "type": "declare_global_constant",
-      "name": "parent_points_get_me_going",
-      "value": "Get me going",
-      "_translations": {
-        "value": {}
-      }
-    },
-    {
       "type": "declare_field_default",
       "name": "parent_point_count_relax",
       "value": 0,

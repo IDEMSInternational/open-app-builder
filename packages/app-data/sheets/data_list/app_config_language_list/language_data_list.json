@@ -83,5 +83,5 @@
       "image": "i18n/flags/tz.svg"
     }
   ],
-  "_xlsxPath": "global/app_config/language_data_list.xlsx"
+  "_xlsxPath": "global/data/app_config/language_data_list.xlsx"
 }

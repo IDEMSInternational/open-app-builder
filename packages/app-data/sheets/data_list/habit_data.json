@@ -1,0 +1,125 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "habit_data",
+  "status": "released",
+  "data_list_name": "habit",
+  "rows": [
+    {
+      "id": "relax",
+      "task_id": "task_habit_relax",
+      "image_asset": "images/icons/repeat.svg",
+      "title": "Relax",
+      "_translations": {
+        "title": {},
+        "description": {},
+        "mark_text": {},
+        "short_mark_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Relax"
+        },
+        "description": {
+          "eng": "Do a short relaxation activity: Take a deep breath or open one of the relaxation activities in @global.parent_app. You can do this anytime or anywhere. Taking care of yourself helps you to take care of others."
+        },
+        "mark_text": {
+          "eng": "Every time you do a relax, tap the @global.parent_point and celebrate your success!"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "description": "Do a short relaxation activity: Take a deep breath or open one of the relaxation activities in @global.parent_app. You can do this anytime or anywhere. Taking care of yourself helps you to take care of others.",
+      "mark_text": "Every time you do a relax, tap the @global.parent_point and celebrate your success!",
+      "short_mark_text": "Did it? Tap it!"
+    },
+    {
+      "id": "praise_child",
+      "task_id": "task_habit_praise_child",
+      "image_asset": "images/icons/repeat.svg",
+      "title": "Praise your child",
+      "_translations": {
+        "title": {},
+        "description": {},
+        "mark_text": {},
+        "short_mark_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Praise your child"
+        },
+        "description": {
+          "eng": "Notice when your child does something well and praise them right away - be specific and use their name. You can even praise them for trying.\n\nThe more you praise, the more positive behaviour you will see!"
+        },
+        "mark_text": {
+          "eng": "Every time you praise your child, tap the @global.habit_capital and celebrate your success!"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "description": "Notice when your child does something well and praise them right away - be specific and use their name. You can even praise them for trying.\n\nThe more you praise, the more positive behaviour you will see!",
+      "mark_text": "Every time you praise your child, tap the @global.habit_capital and celebrate your success!",
+      "short_mark_text": "Did it? Tap it!"
+    },
+    {
+      "id": "item_3",
+      "task_id": "task_habit_item_3",
+      "image_asset": "images/icons/repeat.svg",
+      "title": "Habit 3",
+      "_translations": {
+        "title": {},
+        "description": {},
+        "mark_text": {},
+        "short_mark_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Habit 3"
+        },
+        "description": {
+          "eng": "Description of habit 3"
+        },
+        "mark_text": {
+          "eng": "Every time you do this, tap the @global.habit_capital and celebrate your success!"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "description": "Description of habit 3",
+      "mark_text": "Every time you do this, tap the @global.habit_capital and celebrate your success!",
+      "short_mark_text": "Did it? Tap it!"
+    },
+    {
+      "id": "item_4",
+      "task_id": "task_habit_item_4",
+      "image_asset": "images/icons/repeat.svg",
+      "title": "Habit 4",
+      "_translations": {
+        "title": {},
+        "description": {},
+        "mark_text": {},
+        "short_mark_text": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Habit 4"
+        },
+        "description": {
+          "eng": "Description of habit 4"
+        },
+        "mark_text": {
+          "eng": "Every time you do this, tap the @global.habit_capital and celebrate your success!"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "description": "Description of habit 4",
+      "mark_text": "Every time you do this, tap the @global.habit_capital and celebrate your success!",
+      "short_mark_text": "Did it? Tap it!"
+    }
+  ],
+  "_xlsxPath": "global/data/habit_data/habit_data_list.xlsx"
+}

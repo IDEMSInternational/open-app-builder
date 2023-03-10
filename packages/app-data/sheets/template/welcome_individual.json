@@ -448,5 +448,5 @@
       "_nested_name": "workshop_activity"
     }
   ],
-  "_xlsxPath": "global/mode_templates/welcome.xlsx"
+  "_xlsxPath": "global/templates/mode_templates/welcome.xlsx"
 }

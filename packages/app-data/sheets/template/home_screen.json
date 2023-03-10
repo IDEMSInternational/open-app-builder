@@ -553,7 +553,7 @@
       "_nested_name": "tile_library"
     }
   ],
-  "_xlsxPath": "global/core_templates/navigation.xlsx",
+  "_xlsxPath": "global/templates/core_templates/navigation.xlsx",
   "_overrides": {
     "home_screen_modular": "@fields._app_skin == \"modular\""
   }

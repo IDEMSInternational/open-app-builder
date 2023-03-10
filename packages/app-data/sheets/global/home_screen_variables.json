@@ -21,14 +21,6 @@
     },
     {
       "type": "declare_global_constant",
-      "name": "home_screen",
-      "value": "Home",
-      "_translations": {
-        "value": {}
-      }
-    },
-    {
-      "type": "declare_global_constant",
       "name": "module",
       "value": "module",
       "_translations": {
@@ -61,15 +53,23 @@
     },
     {
       "type": "declare_global_constant",
-      "name": "habits",
-      "value": "Habits",
+      "name": "habit",
+      "value": "habit",
       "_translations": {
         "value": {}
       }
     },
     {
       "type": "declare_global_constant",
-      "name": "habit",
+      "name": "habits",
+      "value": "habits",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "habit_capital",
       "value": "Habit",
       "_translations": {
         "value": {}
@@ -77,8 +77,8 @@
     },
     {
       "type": "declare_global_constant",
-      "name": "library",
-      "value": "Library",
+      "name": "habits_capital",
+      "value": "Habits",
       "_translations": {
         "value": {}
       }

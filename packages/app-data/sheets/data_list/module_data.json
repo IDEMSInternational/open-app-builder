@@ -1,0 +1,45 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "module_data",
+  "status": "released",
+  "data_list_name": "workshop",
+  "rows": [
+    {
+      "id": "praise",
+      "number": 3,
+      "relax_data": "@data.relax.relax_3",
+      "image_asset": "plh_images/workshops/praise/tools.svg",
+      "relax_title": "@data.relax.relax_3.title",
+      "title": "Praise",
+      "_translations": {
+        "title": {},
+        "description": {},
+        "tools_title": {},
+        "in_text_title": {},
+        "intro_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Praise"
+        },
+        "description": {
+          "eng": "Praise helps teens show more positive behaviour."
+        },
+        "tools_title": {
+          "eng": "How to praise"
+        },
+        "in_text_title": {
+          "eng": "**Praise** @global.workshop"
+        },
+        "intro_title": {
+          "eng": "Why Praise?"
+        }
+      },
+      "description": "Praise helps teens show more positive behaviour.",
+      "tools_title": "How to praise",
+      "in_text_title": "**Praise** @global.workshop",
+      "intro_title": "Why Praise?"
+    }
+  ],
+  "_xlsxPath": "global/data/module_data/module_data.xlsx"
+}

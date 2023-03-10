@@ -15,7 +15,7 @@
     },
     {
       "type": "step",
-      "message_text": "This big button takes you to the @global.module you are currently exploring. Tap this to find:",
+      "message_text": "This big button takes you to the recommended @global.module. Tap this to find:",
       "_translations": {
         "message_text": {}
       },

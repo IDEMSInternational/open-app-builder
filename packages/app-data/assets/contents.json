@@ -15,28 +15,52 @@
     "size_kb": 75,
     "md5Checksum": "b5615acc2ee8096f7509da7c7922fbd1"
   },
-  "icons/home.svg": {
+  "images/icons/book.svg": {
+    "size_kb": 0.6,
+    "md5Checksum": "55abd071b6b4a23e4bf2b4dcc1717c9b"
+  },
+  "images/icons/book_white.svg": {
+    "size_kb": 0.8,
+    "md5Checksum": "60b1765a5686443bfd087ef70aa751e0"
+  },
+  "images/icons/buoy.svg": {
+    "size_kb": 0.9,
+    "md5Checksum": "e774c8cef520b50bbe56b6e33eb47b5b"
+  },
+  "images/icons/buoy_white.svg": {
+    "size_kb": 1.2,
+    "md5Checksum": "a53f0359c14641b2c0f2d818773247ce"
+  },
+  "images/icons/home.svg": {
     "size_kb": 0.6,
     "md5Checksum": "e16b7483b581e4701569d3f5e7fc0ae2"
   },
-  "icons/home_white.svg": {
+  "images/icons/home_white.svg": {
     "size_kb": 0.9,
     "md5Checksum": "f0e5c289173021f4c5af4ce718d5b72b"
   },
-  "icons/library.svg": {
+  "images/icons/library.svg": {
     "size_kb": 0.7,
     "md5Checksum": "0b4bb60ce0e51c17f1b1f77040a098de"
   },
-  "icons/library_white.svg": {
+  "images/icons/library_white.svg": {
     "size_kb": 1.1,
     "md5Checksum": "8e791b3a63a264780daa816589472b9e"
   },
-  "icons/repeat.svg": {
+  "images/icons/question_mark_blue.svg": {
+    "size_kb": 0.8,
+    "md5Checksum": "49e1d1e478068a24949d87d09c9ba07b"
+  },
+  "images/icons/repeat.svg": {
     "size_kb": 0.5,
     "md5Checksum": "06728ebce1c24d38a1f8230c6c958aca"
   },
-  "icons/repeat_white.svg": {
+  "images/icons/repeat_white.svg": {
     "size_kb": 0.5,
     "md5Checksum": "4f4c62746ba763d9e305415b7c357703"
+  },
+  "images/logos/idems.png": {
+    "size_kb": 123.9,
+    "md5Checksum": "285b8e02cc1a1fd820a2e117df4fab21"
   }
 }
