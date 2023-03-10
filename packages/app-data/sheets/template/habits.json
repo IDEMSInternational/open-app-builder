@@ -1,6 +1,6 @@
 {
   "flow_type": "template",
-  "flow_name": "parent_points",
+  "flow_name": "habits",
   "status": "released",
   "rows": [
     {
@@ -39,10 +39,10 @@
     },
     {
       "type": "template",
-      "name": "parent_point_tiles",
-      "value": "parent_point_tiles",
+      "name": "habit_tiles",
+      "value": "habit_tiles",
       "rows": [],
-      "_nested_name": "parent_point_tiles"
+      "_nested_name": "habit_tiles"
     }
   ],
   "_xlsxPath": "global/templates/core_templates/habits.xlsx"

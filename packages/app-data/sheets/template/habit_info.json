@@ -1,11 +1,11 @@
 {
   "flow_type": "template",
-  "flow_name": "parent_point_info",
+  "flow_name": "habit_info",
   "status": "released",
   "rows": [
     {
       "name": "habit",
-      "value": "@fields.current_parent_point",
+      "value": "@fields.current_habit",
       "_translations": {
         "value": {}
       },
@@ -14,15 +14,15 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@fields.current_parent_point",
-            "matchedExpression": "@fields.current_parent_point",
+            "fullExpression": "@fields.current_habit",
+            "matchedExpression": "@fields.current_habit",
             "type": "fields",
-            "fieldName": "current_parent_point"
+            "fieldName": "current_habit"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@fields.current_parent_point": [
+        "@fields.current_habit": [
           "value"
         ]
       }

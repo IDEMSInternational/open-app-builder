@@ -110,7 +110,7 @@
         {
           "type": "title",
           "name": "title",
-          "value": "All @global.workshops_capital",
+          "value": "All @global.modules_capital",
           "_translations": {
             "value": {}
           },
@@ -118,15 +118,15 @@
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "All @global.workshops_capital",
-                "matchedExpression": "@global.workshops_capital",
+                "fullExpression": "All @global.modules_capital",
+                "matchedExpression": "@global.modules_capital",
                 "type": "global",
-                "fieldName": "workshops_capital"
+                "fieldName": "modules_capital"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@global.workshops_capital": [
+            "@global.modules_capital": [
               "value"
             ]
           }
@@ -136,7 +136,7 @@
           "name": "carousel",
           "parameter_list": {
             "space_between": "8",
-            "task_group_data": "workshop_tasks"
+            "task_group_data": "module_tasks"
           },
           "exclude_from_translation": true,
           "rows": [
@@ -240,15 +240,6 @@
       "_nested_name": "dg_all_modules"
     },
     {
-      "name": "text_things_to_do",
-      "value": "Things to do",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "text_things_to_do"
-    },
-    {
       "type": "display_group",
       "name": "dg_drawer",
       "parameter_list": {
@@ -258,7 +249,7 @@
         {
           "type": "drawer",
           "name": "drawer",
-          "value": "@local.text_things_to_do",
+          "value": "@global.drawer",
           "parameter_list": {
             "style": "secondary"
           },
@@ -277,15 +268,15 @@
           "_dynamicFields": {
             "value": [
               {
-                "fullExpression": "@local.text_things_to_do",
-                "matchedExpression": "@local.text_things_to_do",
-                "type": "local",
-                "fieldName": "text_things_to_do"
+                "fullExpression": "@global.drawer",
+                "matchedExpression": "@global.drawer",
+                "type": "global",
+                "fieldName": "drawer"
               }
             ]
           },
           "_dynamicDependencies": {
-            "@local.text_things_to_do": [
+            "@global.drawer": [
               "value"
             ]
           }

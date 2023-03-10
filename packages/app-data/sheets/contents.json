@@ -1402,8 +1402,8 @@
     "app_launch_calculations": {
       "flow_type": "template",
       "flow_name": "app_launch_calculations",
-      "process_on_start": 2,
-      "_xlsxPath": "global/campaigns/timing_calculations.xlsx"
+      "process_on_start": 1,
+      "_xlsxPath": "global/templates/core_templates/timing_calculations.xlsx"
     },
     "app_menu": {
       "flow_type": "template",
@@ -1641,6 +1641,31 @@
       "flow_name": "footer",
       "_xlsxPath": "global_modular/core_templates/footer.xlsx"
     },
+    "habit_dashed_box": {
+      "flow_type": "template",
+      "flow_name": "habit_dashed_box",
+      "_xlsxPath": "global/templates/core_templates/habits.xlsx"
+    },
+    "habit_info": {
+      "flow_type": "template",
+      "flow_name": "habit_info",
+      "_xlsxPath": "global/templates/core_templates/habits.xlsx"
+    },
+    "habit_tile": {
+      "flow_type": "template",
+      "flow_name": "habit_tile",
+      "_xlsxPath": "global/templates/core_templates/habits.xlsx"
+    },
+    "habit_tiles": {
+      "flow_type": "template",
+      "flow_name": "habit_tiles",
+      "_xlsxPath": "global/templates/core_templates/habits.xlsx"
+    },
+    "habits": {
+      "flow_type": "template",
+      "flow_name": "habits",
+      "_xlsxPath": "global/templates/core_templates/habits.xlsx"
+    },
     "home_practice": {
       "flow_type": "template",
       "flow_name": "home_practice",
@@ -1851,17 +1876,7 @@
     "organisation_registration": {
       "flow_type": "template",
       "flow_name": "organisation_registration",
-      "_xlsxPath": "global/templates/core_templates/settings.xlsx",
-      "_overrides": {
-        "organisation_registration_tz": "@fields._deployment_name == \"plh_tz\""
-      }
-    },
-    "organisation_registration_tz": {
-      "flow_type": "template",
-      "flow_name": "organisation_registration_tz",
-      "override_target": "organisation_registration",
-      "override_condition": "@fields._deployment_name == \"plh_tz\"",
-      "_xlsxPath": "tz/core_templates/core_templates_settings_tz.xlsx"
+      "_xlsxPath": "global/templates/core_templates/settings.xlsx"
     },
     "pair": {
       "flow_type": "template",
@@ -1882,38 +1897,6 @@
       "flow_type": "template",
       "flow_name": "parent_centre_covid",
       "_xlsxPath": "global/templates/top_templates/library_templates/covid/covid.xlsx"
-    },
-    "parent_centre_support_con_tz": {
-      "flow_type": "template",
-      "flow_name": "parent_centre_support_con_tz",
-      "override_target": "parent_centre_support_con",
-      "override_condition": "@fields._deployment_name == \"plh_tz\"",
-      "_xlsxPath": "tz/core_templates/core_templates_parent_centre_tz.xlsx"
-    },
-    "parent_point_dashed_box": {
-      "flow_type": "template",
-      "flow_name": "parent_point_dashed_box",
-      "_xlsxPath": "global/templates/core_templates/habits.xlsx"
-    },
-    "parent_point_info": {
-      "flow_type": "template",
-      "flow_name": "parent_point_info",
-      "_xlsxPath": "global/templates/core_templates/habits.xlsx"
-    },
-    "parent_point_tile": {
-      "flow_type": "template",
-      "flow_name": "parent_point_tile",
-      "_xlsxPath": "global/templates/core_templates/habits.xlsx"
-    },
-    "parent_point_tiles": {
-      "flow_type": "template",
-      "flow_name": "parent_point_tiles",
-      "_xlsxPath": "global/templates/core_templates/habits.xlsx"
-    },
-    "parent_points": {
-      "flow_type": "template",
-      "flow_name": "parent_points",
-      "_xlsxPath": "global/templates/core_templates/habits.xlsx"
     },
     "parenting_tips": {
       "flow_type": "template",
@@ -2122,19 +2105,9 @@
       "flow_name": "skin_select",
       "_xlsxPath": "global/templates/core_templates/settings.xlsx"
     },
-    "splash_funders": {
+    "splash_partners": {
       "flow_type": "template",
-      "flow_name": "splash_funders",
-      "_xlsxPath": "global/templates/core_templates/app_launch.xlsx"
-    },
-    "splash_partners_1": {
-      "flow_type": "template",
-      "flow_name": "splash_partners_1",
-      "_xlsxPath": "global/templates/core_templates/app_launch.xlsx"
-    },
-    "splash_partners_2": {
-      "flow_type": "template",
-      "flow_name": "splash_partners_2",
+      "flow_name": "splash_partners",
       "_xlsxPath": "global/templates/core_templates/app_launch.xlsx"
     },
     "splash_screens": {
@@ -2327,12 +2300,6 @@
       "flow_name": "think_temp",
       "_xlsxPath": "global/templates/mode_templates/read.xlsx"
     },
-    "timing_calculations": {
-      "flow_type": "template",
-      "flow_name": "timing_calculations",
-      "process_on_start": 1,
-      "_xlsxPath": "global/campaigns/timing_calculations.xlsx"
-    },
     "tool_tile": {
       "flow_type": "template",
       "flow_name": "tool_tile",
@@ -2382,12 +2349,6 @@
       "flow_type": "template",
       "flow_name": "understand_teen_influences",
       "_xlsxPath": "global/templates/top_templates/library_templates/covid/covid_reflect.xlsx"
-    },
-    "unlock_workshops": {
-      "flow_type": "template",
-      "flow_name": "unlock_workshops",
-      "process_on_start": 3,
-      "_xlsxPath": "global/campaigns/timing_calculations.xlsx"
     },
     "user_code": {
       "flow_type": "template",

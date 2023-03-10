@@ -85,7 +85,7 @@
     },
     {
       "type": "declare_global_constant",
-      "name": "drawer_name",
+      "name": "drawer",
       "value": "Things to do",
       "_translations": {
         "value": {}

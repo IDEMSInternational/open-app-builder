@@ -17,10 +17,10 @@
       "id": "habits",
       "title": "@global.habits_capital",
       "icon_asset": "images/icons/repeat_white.svg",
-      "template": "parent_points",
+      "template": "habits",
       "title_modular": "@global.habits_capital",
       "image_asset": "images/icons/repeat_white.svg",
-      "template_modular": "parent_points"
+      "template_modular": "habits"
     },
     {
       "id": "library",

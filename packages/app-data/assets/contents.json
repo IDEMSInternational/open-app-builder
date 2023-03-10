@@ -59,8 +59,16 @@
     "size_kb": 0.5,
     "md5Checksum": "4f4c62746ba763d9e305415b7c357703"
   },
+  "images/icons/star.svg": {
+    "size_kb": 0.6,
+    "md5Checksum": "7d4e0f861269a6d8b84456aa7302fa8e"
+  },
   "images/logos/idems.png": {
     "size_kb": 123.9,
     "md5Checksum": "285b8e02cc1a1fd820a2e117df4fab21"
+  },
+  "lottie/habits/cascading_stars.json": {
+    "size_kb": 140.5,
+    "md5Checksum": "131145b165cd19613a9e277a514eec2f"
   }
 }

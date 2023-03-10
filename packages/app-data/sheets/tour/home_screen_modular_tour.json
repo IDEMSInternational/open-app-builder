@@ -60,7 +60,7 @@
     },
     {
       "type": "step",
-      "title": "@global.drawer_name",
+      "title": "@global.drawer",
       "_translations": {
         "title": {},
         "message_text": {}
