@@ -17,9 +17,10 @@ The `app_update` template action can be triggered with one of the following argu
 
 | argument             | description   |
 | ---------         | ------------  |
-| prompt	        | If an update is available, force the user to download and apply it, using Android's "Immediate" update strategy UI (the prompt can in fact still be dismissed). Further details for this flow can be found in [Google's Docs](https://developer.android.com/guide/playcore/in-app-updates#immediate) |
-| force	| If an update is available, prompt the user to download and apply it, using Android's "Flexible" update strategy UI, which encourages the user to update but gives the option to not do so. Further details in [Google's Docs](https://developer.android.com/guide/playcore/in-app-updates#flexible)	|
+| prompt	| Check for updates. If an update is available, prompt the user to download and apply it, using Android's "Flexible" update strategy UI, which encourages the user to update but gives the option to not do so. Further details in [Android Documentation](https://developer.android.com/guide/playcore/in-app-updates#flexible)	|
 | complete	    | After a flexible update has finished downloading, this action will finish applying the update, by installing it and relaunching the app. If this action is not triggered manually from a template, the update will be installed on the app's next init (e.g. relaunch) |
+| force	        | Check for updates. If an update is available, force the user to download and apply it, using Android's "Immediate" update strategy UI (the prompt can in fact still be dismissed). Further details for this flow can be found in [Android Documentation](https://developer.android.com/guide/playcore/in-app-updates#immediate) |
+
 
 Example action triggers can be found in the [launch_actions](https://docs.google.com/spreadsheets/d/1MJzzdTYDZg0VkS5zxrXY4lKV5Oi954pw1sIVJUOOzWM/edit#gid=1876097204) template.
 

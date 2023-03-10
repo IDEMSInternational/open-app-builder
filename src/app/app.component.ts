@@ -180,7 +180,7 @@ export class AppComponent {
       /** likely no longer required, should be removed in future (impact can be tested by moving into group) */
       deprecated: (AsyncServiceBase | SyncServiceBase)[];
     } = {
-      eager: [this.crashlyticsService, this.appUpdateService],
+      eager: [this.crashlyticsService],
       blocking: [
         this.dbSyncService,
         this.dynamicDataService,
@@ -195,6 +195,7 @@ export class AppComponent {
       nonBlocking: [
         this.skinService,
         this.appConfigService,
+        this.appUpdateService,
         this.themeService,
         this.templateService,
         this.templateProcessService,
