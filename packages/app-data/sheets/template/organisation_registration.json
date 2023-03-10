@@ -410,7 +410,6 @@
   ],
   "_xlsxPath": "global/core_templates/core_templates_settings.xlsx",
   "_overrides": {
-    "organisation_registration_za": "@fields._deployment_name == \"plh_za\"",
     "organisation_registration_tz": "@fields._deployment_name == \"plh_tz\""
   }
 }
