@@ -64,7 +64,7 @@ export class TmplParentPointBoxComponent
       };
     }
     const celebrationAnimationPath = this.templateAssetService.getTranslatedAssetPath(
-      "/plh_lottie/habits/cascading_stars.json"
+      "/lottie/habits/cascading_stars.json"
     );
     this.animCelebrationOptions = {
       path: celebrationAnimationPath,
