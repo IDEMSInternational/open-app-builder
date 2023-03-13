@@ -381,6 +381,12 @@
       "flow_subtype": "debug",
       "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_items.xlsx"
     },
+    "debug_launch_actions": {
+      "flow_type": "data_list",
+      "flow_subtype": "debug_lifecycle_actions",
+      "flow_name": "debug_launch_actions",
+      "_xlsxPath": "quality_assurance/debug_sheets/debug_launch_actions.xlsx"
+    },
     "encouraging_messages": {
       "flow_type": "data_list",
       "flow_name": "encouraging_messages",
@@ -1830,6 +1836,11 @@
       "flow_name": "app_menu_unlock_workshops_pop",
       "_xlsxPath": "global/core_templates/core_templates_settings.xlsx"
     },
+    "app_update_complete": {
+      "flow_type": "template",
+      "flow_name": "app_update_complete",
+      "_xlsxPath": "quality_assurance/debug_sheets/debug_app_update.xlsx"
+    },
     "banner": {
       "flow_type": "template",
       "flow_name": "banner",
@@ -2005,11 +2016,6 @@
       "flow_name": "lets_slow_down_lyrics",
       "flow_subtype": "common_with_parent_text",
       "_xlsxPath": "global/mode_templates/welcome.xlsx"
-    },
-    "complete_app_update": {
-      "flow_type": "template",
-      "flow_name": "complete_app_update",
-      "_xlsxPath": "quality_assurance/debug_sheets/debug_app_update.xlsx"
     },
     "comp_button": {
       "flow_type": "template",
