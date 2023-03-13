@@ -33,11 +33,14 @@ export class LifecycleActionsService extends SyncServiceBase {
     // if all are satisfied, run its actions list
     const templateActionService = new TemplateActionService(this.injector);
     for (const launchAction of allLaunchActions) {
-      const allConditionsSatisfied = await asyncEvery(
-        launchAction.condition_list,
-        async (condition: string) =>
-          await this.templateVariablesService.evaluateConditionString(condition)
-      );
+      let allConditionsSatisfied = true;
+      if (Array.isArray(launchAction.condition_list)) {
+        allConditionsSatisfied = await asyncEvery(
+          launchAction.condition_list,
+          async (condition: string) =>
+            await this.templateVariablesService.evaluateConditionString(condition)
+        );
+      }
       if (allConditionsSatisfied) {
         console.log(`[Lifecycle Actions] ${launchAction.id}`);
         await templateActionService.handleActions(launchAction.action_list);
@@ -49,7 +52,7 @@ export class LifecycleActionsService extends SyncServiceBase {
   private async getAllLifecycleActions() {
     const dataLists = await this.appDataService.getSheetsWithData(
       "data_list",
-      (list) => list.flow_subtype === "lifecycle_actions"
+      (list) => list.flow_subtype === "debug_lifecycle_actions"
     );
     const launchActionRows = dataLists.map((d) => d.rows);
     const allLifecycleActions: FlowTypes.Lifecycle_Action[] = mergeArrayOfArrays(launchActionRows);
