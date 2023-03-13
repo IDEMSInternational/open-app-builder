@@ -381,16 +381,9 @@
       "image_4": "plh_images/workshops/w_stress/read_3/slide_4.svg",
       "image_5": "plh_images/workshops/w_stress/read_3/slide_5.svg",
       "image_6": "plh_images/workshops/w_stress/read_3/slide_6.svg",
-      "title": "Safety Amnesty",
+      "title": "@global.safety_word",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
+        "title": {},
         "intro_text": {
           "tz_sw": true,
           "za_af": true,
@@ -423,34 +416,13 @@
           "za_xh": true,
           "za_zu": true
         },
-        "text_4": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_5": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
-        "text_6": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "text_4": {},
+        "text_5": {},
+        "text_6": {}
       },
       "_translatedFields": {
         "title": {
-          "eng": "Safety Amnesty"
+          "eng": "@global.safety_word"
         },
         "intro_text": {
           "eng": "Think back to when you were a teenager. \n\nWas there ever a time when you were in danger but you couldn’t tell your family because they would have been angry?\n\nThis ALMOST happened to @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl! Let’s have a look:"
@@ -465,22 +437,22 @@
           "eng": "@global.w_stress_teen_girl: \"I’m scared. Everyone is too drunk to drive me home. This boy says he’ll take me but he wants us to go to his house first. I can’t tell my parents – I lied about coming to this party.\""
         },
         "text_4": {
-          "eng": "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nJust say 'SAFETY AMNESTY'. I promise that I will try my best to help and I won’t be angry – even if you are doing something you shouldn't.\""
+          "eng": "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nShall we use an imaginary ‘@global.safety_word_example_1’ as @global.safety_word? Just say something about @global.safety_word_example_1, I promise that I will try my best to help and I won’t be angry – even if you are doing something you shouldn’t.\""
         },
         "text_5": {
-          "eng": "@global.w_stress_teen_girl: \"@global.w_stress_parent, it’s a safety amnesty. Can you come and pick me up? I really need a lift home.\""
+          "eng": "@global.w_stress_teen_girl: \"@global.w_stress_parent, how is @global.safety_word_example_1 doing now?\"\n\n@global.w_stress_parent (on the other side of the phone): \"Not well. We need you at home. I will come pick you up right away. Where are you?\""
         },
         "text_6": {
-          "eng": "@global.w_stress_teen_boy_2: \"@global.w_stress_parent, safety amnesty. I think my friends are in trouble. I don’t want to stop being their friend, but I’m worried. Can we talk?\""
+          "eng": "@global.w_stress_teen_boy_2 (thinking): \"I think my friends are in trouble. I don’t want to stop being their friend, but I’m worried. Maybe @global.w_stress_parent knows what to do.\"\n\n@global.w_stress_teen_boy_2: \"@global.w_stress_parent, I just remembered, @global.safety_word_example_1 said she will come visit tomorrow.\"\n\n Baba (on the other side of the phone): “Okay, I need you at home to help get things ready. I will come pick you up now. Where are you?”"
         }
       },
       "intro_text": "Think back to when you were a teenager. \n\nWas there ever a time when you were in danger but you couldn’t tell your family because they would have been angry?\n\nThis ALMOST happened to @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl! Let’s have a look:",
       "text_1": "@global.w_stress_teen_boy_2: \"Don’t tell the adults, but I’m going to bar with my friends tonight\" \n\n@global.w_stress_teen_girl: \"Have fun! I’ve told them I’m staying with my girlfriend, but I’m actually going to a cool party\"",
       "text_2": "@global.w_stress_teen_boy_2: \"I think they are dealing drugs. We could all get arrested. But I can’t tell my parents – they’ll be so angry\"",
       "text_3": "@global.w_stress_teen_girl: \"I’m scared. Everyone is too drunk to drive me home. This boy says he’ll take me but he wants us to go to his house first. I can’t tell my parents – I lied about coming to this party.\"",
-      "text_4": "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nJust say 'SAFETY AMNESTY'. I promise that I will try my best to help and I won’t be angry – even if you are doing something you shouldn't.\"",
-      "text_5": "@global.w_stress_teen_girl: \"@global.w_stress_parent, it’s a safety amnesty. Can you come and pick me up? I really need a lift home.\"",
-      "text_6": "@global.w_stress_teen_boy_2: \"@global.w_stress_parent, safety amnesty. I think my friends are in trouble. I don’t want to stop being their friend, but I’m worried. Can we talk?\""
+      "text_4": "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nShall we use an imaginary ‘@global.safety_word_example_1’ as @global.safety_word? Just say something about @global.safety_word_example_1, I promise that I will try my best to help and I won’t be angry – even if you are doing something you shouldn’t.\"",
+      "text_5": "@global.w_stress_teen_girl: \"@global.w_stress_parent, how is @global.safety_word_example_1 doing now?\"\n\n@global.w_stress_parent (on the other side of the phone): \"Not well. We need you at home. I will come pick you up right away. Where are you?\"",
+      "text_6": "@global.w_stress_teen_boy_2 (thinking): \"I think my friends are in trouble. I don’t want to stop being their friend, but I’m worried. Maybe @global.w_stress_parent knows what to do.\"\n\n@global.w_stress_teen_boy_2: \"@global.w_stress_parent, I just remembered, @global.safety_word_example_1 said she will come visit tomorrow.\"\n\n Baba (on the other side of the phone): “Okay, I need you at home to help get things ready. I will come pick you up now. Where are you?”"
     },
     {
       "id": "money_problems",
