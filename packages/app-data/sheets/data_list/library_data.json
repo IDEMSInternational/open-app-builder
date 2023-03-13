@@ -37,6 +37,7 @@
     {
       "id": "tech_support",
       "icon_asset": "images/icons/buoy_white.svg",
+      "template": "technical_support",
       "tile_style": "parent_centre_4",
       "show": true,
       "title": "Technical Support",
