@@ -52,7 +52,7 @@ export class LifecycleActionsService extends SyncServiceBase {
   private async getAllLifecycleActions() {
     const dataLists = await this.appDataService.getSheetsWithData(
       "data_list",
-      (list) => list.flow_subtype === "lifecycle_actions"
+      (list) => list.flow_subtype === "debug_lifecycle_actions"
     );
     const launchActionRows = dataLists.map((d) => d.rows);
     const allLifecycleActions: FlowTypes.Lifecycle_Action[] = mergeArrayOfArrays(launchActionRows);
