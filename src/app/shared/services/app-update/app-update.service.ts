@@ -38,9 +38,7 @@ export class AppUpdateService extends SyncServiceBase {
   private initialise() {
     this.ensureSyncServicesReady([this.appConfigService, this.templateNavService]);
     this.subscribeToAppConfigChanges();
-    if (Capacitor.isNativePlatform() && this.appUpdatesEnabled) {
-      this.registerTemplateActionHandlers();
-    }
+    this.registerTemplateActionHandlers();
   }
 
   private async checkForUpdates() {
@@ -64,8 +62,10 @@ export class AppUpdateService extends SyncServiceBase {
            * Further details at https://developer.android.com/guide/playcore/in-app-updates#immediate
            */
           force: async () => {
-            await this.checkForUpdates();
-            await this.attemptImmediateUpdate();
+            if (this.areUpdatesEnabled()) {
+              await this.checkForUpdates();
+              await this.attemptImmediateUpdate();
+            }
           },
           /**
            * If an update is available, prompt the user to download and apply it, using Android's "Flexible"
@@ -73,15 +73,19 @@ export class AppUpdateService extends SyncServiceBase {
            * Further details at https://developer.android.com/guide/playcore/in-app-updates#flexible
            */
           prompt: async () => {
-            await this.checkForUpdates();
-            await this.attemptFlexibleUpdate();
+            if (this.areUpdatesEnabled()) {
+              await this.checkForUpdates();
+              await this.attemptFlexibleUpdate();
+            }
           },
           /**
            * After a flexible update has finished downloading, this action will finish applying the update,
            * by installing it and relaunching the app
            */
           complete: async () => {
-            await this.completeFlexibleUpdate();
+            if (this.areUpdatesEnabled()) {
+              await this.completeFlexibleUpdate();
+            }
           },
         };
         if (!(actionId in childActions)) {
@@ -109,7 +113,7 @@ export class AppUpdateService extends SyncServiceBase {
   }
 
   private async attemptImmediateUpdate() {
-    if (!this.isUpdateEnabledAndAvailable()) return;
+    if (!this.isUpdateAvailable()) return;
     const updateResult = await AppUpdate.performImmediateUpdate();
     if (updateResult.code !== AppUpdateResultCode.OK) {
       console.error(
@@ -123,7 +127,7 @@ export class AppUpdateService extends SyncServiceBase {
   }
 
   private async attemptFlexibleUpdate() {
-    if (!this.isUpdateEnabledAndAvailable()) return;
+    if (!this.isUpdateAvailable()) return;
     AppUpdate.startFlexibleUpdate();
     const updateListener = AppUpdate.addListener("onFlexibleUpdateStateChange", (state) => {
       if (state.installStatus === FlexibleUpdateInstallStatus.DOWNLOADED) {
@@ -154,15 +158,22 @@ export class AppUpdateService extends SyncServiceBase {
     await AppUpdate.completeFlexibleUpdate();
   }
 
-  private async isUpdateEnabledAndAvailable() {
-    if (this.appUpdatesEnabled) {
-      if (this.updateAvailable) {
+  private areUpdatesEnabled() {
+    if (Capacitor.isNativePlatform()) {
+      if (this.appUpdatesEnabled) {
         return true;
+      } else {
+        console.log("[App Update] App updates are not enabled in deployment config.");
       }
-      console.log("[App Update] No app update available.");
-    } else {
-      console.log("[App Update] App updates are not enabled in deployment config.");
     }
+    return false;
+  }
+
+  private async isUpdateAvailable() {
+    if (this.updateAvailable) {
+      return true;
+    }
+    console.log("[App Update] No app update available.");
     return false;
   }
 
