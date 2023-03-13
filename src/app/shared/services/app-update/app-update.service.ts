@@ -44,9 +44,13 @@ export class AppUpdateService extends SyncServiceBase {
   }
 
   private async checkForUpdates() {
-    const { updateAvailability, installStatus } = await AppUpdate.getAppUpdateInfo();
-    this.setUpdateAvailable(updateAvailability === AppUpdateAvailability.UPDATE_AVAILABLE);
-    this.setUpdateDownloaded(installStatus === FlexibleUpdateInstallStatus.DOWNLOADED);
+    try {
+      const { updateAvailability, installStatus } = await AppUpdate.getAppUpdateInfo();
+      this.setUpdateAvailable(updateAvailability === AppUpdateAvailability.UPDATE_AVAILABLE);
+      this.setUpdateDownloaded(installStatus === FlexibleUpdateInstallStatus.DOWNLOADED);
+    } catch (error) {
+      console.error("[App Update]", error);
+    }
   }
 
   private registerTemplateActionHandlers() {
