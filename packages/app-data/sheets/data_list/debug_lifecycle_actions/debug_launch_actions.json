@@ -247,9 +247,6 @@
       "lifecycle_event": "app_start",
       "id": "app_start_update_prompt",
       "priority": 10,
-      "condition_list": [
-        "@fields.user_mode"
-      ],
       "action_list": [
         {
           "trigger": "click",
