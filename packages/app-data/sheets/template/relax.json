@@ -314,16 +314,9 @@
         },
         {
           "name": "intro_text",
-          "value": "Let’s do a short relaxation activity together – it will take less than 1 minute and you will feel more relaxed.",
+          "value": "Let’s do a short relaxation activity together. It will only take a moment and you will feel more relaxed.",
           "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
+            "value": {}
           },
           "type": "set_variable",
           "_nested_name": "workshop_activity.intro_text"
