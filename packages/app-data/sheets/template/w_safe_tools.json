@@ -98,16 +98,9 @@
             },
             {
               "name": "text_1",
-              "value": "Make RULES with your teen about safely using the apps and websites that they like. \n\nRemember the story about Online Safety? See it again here.",
+              "value": "Make RULES with your teen about how they can stay safe in your community (especially in risky areas that cannot be avoided) and how they can safely use the apps and websites that they like. \n\nRemember the story about Online Safety? See it again here.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_2.text_1"
@@ -130,10 +123,10 @@
                   "trigger": "click",
                   "action_id": "go_to",
                   "args": [
-                    "w_rules_read_2_temp"
+                    "w_rules_read_2"
                   ],
-                  "_raw": "click | go_to:w_rules_read_2_temp",
-                  "_cleaned": "click | go_to:w_rules_read_2_temp"
+                  "_raw": "click | go_to:w_rules_read_2",
+                  "_cleaned": "click | go_to:w_rules_read_2"
                 }
               ],
               "hidden": false,
@@ -149,63 +142,101 @@
           "rows": [
             {
               "name": "title",
-              "value": "AMNESTY",
+              "value": "@global.safety_word",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
-              "_nested_name": "essential_tools.tool_3.title"
+              "_nested_name": "essential_tools.tool_3.title",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.safety_word",
+                    "matchedExpression": "@global.safety_word",
+                    "type": "global",
+                    "fieldName": "safety_word"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.safety_word": [
+                  "value"
+                ]
+              }
             },
             {
               "name": "text_1",
-              "value": "Make an AMNESTY agreement. If something happens that makes them upset, uncomfortable or scared, they can talk to you and you won’t get angry or punish them, even if they were doing something wrong.\n\nRemember the story about Safety Amnesty? See it again here.",
+              "value": "Agree on a @global.safety_word. If something happens that makes your teen upset, uncomfortable or scared, they can say the @global.safety_word  and you will help them without getting angry or punishing them, even if they were doing something wrong. \n\nRemember the story about the @global.safety_word? See it again here.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
-              "_nested_name": "essential_tools.tool_3.text_1"
+              "_nested_name": "essential_tools.tool_3.text_1",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Agree on a @global.safety_word. If something happens that makes your teen upset, uncomfortable or scared, they can say the @global.safety_word  and you will help them without getting angry or punishing them, even if they were doing something wrong. \n\nRemember the story about the @global.safety_word? See it again here.",
+                    "matchedExpression": "@global.safety_word",
+                    "type": "global",
+                    "fieldName": "safety_word"
+                  },
+                  {
+                    "fullExpression": "Agree on a @global.safety_word. If something happens that makes your teen upset, uncomfortable or scared, they can say the @global.safety_word  and you will help them without getting angry or punishing them, even if they were doing something wrong. \n\nRemember the story about the @global.safety_word? See it again here.",
+                    "matchedExpression": "@global.safety_word",
+                    "type": "global",
+                    "fieldName": "safety_word"
+                  },
+                  {
+                    "fullExpression": "Agree on a @global.safety_word. If something happens that makes your teen upset, uncomfortable or scared, they can say the @global.safety_word  and you will help them without getting angry or punishing them, even if they were doing something wrong. \n\nRemember the story about the @global.safety_word? See it again here.",
+                    "matchedExpression": "@global.safety_word",
+                    "type": "global",
+                    "fieldName": "safety_word"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.safety_word": [
+                  "value",
+                  "value",
+                  "value"
+                ]
+              }
             },
             {
               "name": "button_1",
-              "value": "Safety Amnesty Story",
+              "value": "@global.safety_word Story",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "action_list": [
                 {
                   "trigger": "click",
                   "action_id": "go_to",
                   "args": [
-                    "w_stress_read_3_temp"
+                    "w_stress_read_3"
                   ],
-                  "_raw": "click | go_to:w_stress_read_3_temp",
-                  "_cleaned": "click | go_to:w_stress_read_3_temp"
+                  "_raw": "click | go_to:w_stress_read_3",
+                  "_cleaned": "click | go_to:w_stress_read_3"
                 }
               ],
               "hidden": false,
               "type": "set_variable",
-              "_nested_name": "essential_tools.tool_3.button_1"
+              "_nested_name": "essential_tools.tool_3.button_1",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.safety_word Story",
+                    "matchedExpression": "@global.safety_word",
+                    "type": "global",
+                    "fieldName": "safety_word"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.safety_word": [
+                  "value"
+                ]
+              }
             }
           ],
           "_nested_name": "essential_tools.tool_3"
@@ -226,40 +257,6 @@
           "hidden": false,
           "type": "set_variable",
           "_nested_name": "essential_tools.bottom_text"
-        },
-        {
-          "name": "button_1",
-          "value": "Resources to help in the community",
-          "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
-          },
-          "hidden": true,
-          "type": "set_variable",
-          "_nested_name": "essential_tools.button_1"
-        },
-        {
-          "name": "button_2",
-          "value": "Online Safety Resources",
-          "_translations": {
-            "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
-            }
-          },
-          "hidden": true,
-          "type": "set_variable",
-          "_nested_name": "essential_tools.button_2"
         }
       ],
       "_nested_name": "essential_tools"
