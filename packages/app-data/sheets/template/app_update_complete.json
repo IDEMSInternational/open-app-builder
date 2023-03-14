@@ -1,6 +1,6 @@
 {
   "flow_type": "template",
-  "flow_name": "complete_app_update",
+  "flow_name": "app_update_complete",
   "status": "released",
   "rows": [
     {
@@ -37,10 +37,12 @@
       "action_list": [
         {
           "trigger": "click",
-          "action_id": "complete_app_update",
-          "args": [],
-          "_raw": "click | complete_app_update",
-          "_cleaned": "click | complete_app_update"
+          "action_id": "app_update",
+          "args": [
+            "complete"
+          ],
+          "_raw": "click | app_update: complete",
+          "_cleaned": "click | app_update: complete"
         }
       ],
       "_nested_name": "button"

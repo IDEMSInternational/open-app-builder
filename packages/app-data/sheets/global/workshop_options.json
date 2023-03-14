@@ -144,6 +144,22 @@
         "value": {}
       },
       "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "safety_word",
+      "value": "Safety Word",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "safety_word_example_1",
+      "value": "Aunty Cecilia",
+      "_translations": {
+        "value": {}
+      }
     }
   ],
   "_xlsxPath": "global/data/workshop_data/workshop_globals.xlsx"
