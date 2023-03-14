@@ -86,19 +86,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "How do you keep your container clean?"
         },
         "text": {
-          "eng": "Step 1: Wash your hands following the steps in the how to wash your hands module.\r\nStep 2: Pour clean and soapy water into the container.\r\nStep 3: Put on the lid and shake for one minute (or if you can, scrub the inside of the container).\r\nStep 4: Pour the soapy water out. Rinsing next with non soapy water.\r\nAlso, don't forget to wash your cup after every use."
+          "eng": "Step 1: Wash your hands following the steps in the how to wash your hands module.\nStep 2: Pour clean and soapy water into the container.\nStep 3: Put on the lid and shake for one minute (or if you can, scrub the inside of the container).\nStep 4: Pour the soapy water out. Rinsing next with non soapy water.\nAlso, don't forget to wash your cup after every use."
         }
       },
-      "text": "Step 1: Wash your hands following the steps in the how to wash your hands module.\r\nStep 2: Pour clean and soapy water into the container.\r\nStep 3: Put on the lid and shake for one minute (or if you can, scrub the inside of the container).\r\nStep 4: Pour the soapy water out. Rinsing next with non soapy water.\r\nAlso, don't forget to wash your cup after every use."
+      "text": "Step 1: Wash your hands following the steps in the how to wash your hands module.\nStep 2: Pour clean and soapy water into the container.\nStep 3: Put on the lid and shake for one minute (or if you can, scrub the inside of the container).\nStep 4: Pour the soapy water out. Rinsing next with non soapy water.\nAlso, don't forget to wash your cup after every use."
     },
     {
       "id": "disinfect_boiling",

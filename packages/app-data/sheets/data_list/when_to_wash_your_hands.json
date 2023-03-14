@@ -15,19 +15,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "When do we wash hands?"
         },
         "text": {
-          "eng": "To help keep healthy it is very important to wash your hands with soap at the following times:\r\n* Before and after cooking\r\n* Before eating\r\n* Before and after attending a sick person\r\n* After using the toilet\r\n* After changing a baby’s nappy"
+          "eng": "To help keep healthy it is very important to wash your hands with soap at the following times:\n* Before and after cooking\n* Before eating\n* Before and after attending a sick person\n* After using the toilet\n* After changing a baby’s nappy"
         }
       },
-      "text": "To help keep healthy it is very important to wash your hands with soap at the following times:\r\n* Before and after cooking\r\n* Before eating\r\n* Before and after attending a sick person\r\n* After using the toilet\r\n* After changing a baby’s nappy"
+      "text": "To help keep healthy it is very important to wash your hands with soap at the following times:\n* Before and after cooking\n* Before eating\n* Before and after attending a sick person\n* After using the toilet\n* After changing a baby’s nappy"
     },
     {
       "id": "why_handwash",

@@ -88,19 +88,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Avoiding worms in your compound"
         },
         "text": {
-          "eng": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and stomach pain, among other symptoms.\r\n\r\nEggs of these worms are found in human stool, which can land in soil and transfer to your feet and hands.\r\n\r\nRegularly cleaning your compound and toilet, disposing of children’s stool in the toilets, and regular handwashing are important to prevent infections."
+          "eng": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and stomach pain, among other symptoms.\n\nEggs of these worms are found in human stool, which can land in soil and transfer to your feet and hands.\n\nRegularly cleaning your compound and toilet, disposing of children’s stool in the toilets, and regular handwashing are important to prevent infections."
         }
       },
-      "text": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and stomach pain, among other symptoms.\r\n\r\nEggs of these worms are found in human stool, which can land in soil and transfer to your feet and hands.\r\n\r\nRegularly cleaning your compound and toilet, disposing of children’s stool in the toilets, and regular handwashing are important to prevent infections.",
+      "text": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and stomach pain, among other symptoms.\n\nEggs of these worms are found in human stool, which can land in soil and transfer to your feet and hands.\n\nRegularly cleaning your compound and toilet, disposing of children’s stool in the toilets, and regular handwashing are important to prevent infections.",
       "reference_link_title_2": "Ending the neglect to attain the Sustainable Development Goals. WHO; 2021.",
       "refererence_link_2": "www.who.int/publications/i/item/9789240022782",
       "completed_field": "healthy_families_worms_compound_completed"
@@ -116,19 +114,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Preventing blindness"
         },
         "text": {
-          "eng": "Trachoma is a disease of the eye that can cause blindness. It is passed when a fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home.\r\n\r\nFace washing is the best way to prevent Trachoma. Make sure that the face washing cloth, when used, is clean.\r\n\r\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of Trachoma."
+          "eng": "Trachoma is a disease of the eye that can cause blindness. It is passed when a fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home.\n\nFace washing is the best way to prevent Trachoma. Make sure that the face washing cloth, when used, is clean.\n\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of Trachoma."
         }
       },
-      "text": "Trachoma is a disease of the eye that can cause blindness. It is passed when a fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home.\r\n\r\nFace washing is the best way to prevent Trachoma. Make sure that the face washing cloth, when used, is clean.\r\n\r\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of Trachoma.",
+      "text": "Trachoma is a disease of the eye that can cause blindness. It is passed when a fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home.\n\nFace washing is the best way to prevent Trachoma. Make sure that the face washing cloth, when used, is clean.\n\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of Trachoma.",
       "reference_link_title_2": "Ending the neglect to attain the Sustainable Development Goals. WHO; 2021.",
       "refererence_link_2": "www.who.int/publications/i/item/9789240022782",
       "completed_field": "healthy_families_blindness_completed"

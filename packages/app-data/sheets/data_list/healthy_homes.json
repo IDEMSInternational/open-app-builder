@@ -38,24 +38,22 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "How do you keep your house clean?"
         },
         "text": {
-          "eng": "Make sure you clean your compound regularly. Children’s stool should be thrown in the toilet, and animal waste and litter removed.\r\n\r\nUse water and detergent to clean the floor and walls where you can."
+          "eng": "Make sure you clean your compound regularly. Children’s stool should be thrown in the toilet, and animal waste and litter removed.\n\nUse water and detergent to clean the floor and walls where you can."
         }
       },
-      "text": "Make sure you clean your compound regularly. Children’s stool should be thrown in the toilet, and animal waste and litter removed.\r\n\r\nUse water and detergent to clean the floor and walls where you can."
+      "text": "Make sure you clean your compound regularly. Children’s stool should be thrown in the toilet, and animal waste and litter removed.\n\nUse water and detergent to clean the floor and walls where you can."
     },
     {
       "id": "tips",
       "illustration": "essential_tools/mod7_man_cleaning.svg",
-      "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF; 2020.  \r\n\nExtract:\nControl disease vectors such as flies, mosquitoes, cockroaches and rats by removing\nbreeding spots, covering food, improving drainage and safely disposing of garbage\ninto a waste receptacle or protected pit.",
+      "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF; 2020.  \n\nExtract:\nControl disease vectors such as flies, mosquitoes, cockroaches and rats by removing\nbreeding spots, covering food, improving drainage and safely disposing of garbage\ninto a waste receptacle or protected pit.",
       "reference_link_title": "Baby WASH Programming. UNICEF; 2020.",
       "reference_link": "www.unicef.org/esa/reports/baby-wash-programming",
       "title": "More tips to keeping a clean home!",

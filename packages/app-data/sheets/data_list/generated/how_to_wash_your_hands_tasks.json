@@ -39,19 +39,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "How to wash hands"
         },
         "text": {
-          "eng": "Step 1: Wet your hands with clean water.\r\nStep 2: Use enough soap to cover your hands.\r\nStep 3: Scrub all surfaces of your hands – such as the back of hands, between fingers and under nails. You should scrub for at least 20 seconds.\r\nStep 4: Rinse well with clean water.\r\nStep 5: Dry your hands with a clean cloth or towel."
+          "eng": "Step 1: Wet your hands with clean water.\nStep 2: Use enough soap to cover your hands.\nStep 3: Scrub all surfaces of your hands – such as the back of hands, between fingers and under nails. You should scrub for at least 20 seconds.\nStep 4: Rinse well with clean water.\nStep 5: Dry your hands with a clean cloth or towel."
         }
       },
-      "text": "Step 1: Wet your hands with clean water.\r\nStep 2: Use enough soap to cover your hands.\r\nStep 3: Scrub all surfaces of your hands – such as the back of hands, between fingers and under nails. You should scrub for at least 20 seconds.\r\nStep 4: Rinse well with clean water.\r\nStep 5: Dry your hands with a clean cloth or towel.",
+      "text": "Step 1: Wet your hands with clean water.\nStep 2: Use enough soap to cover your hands.\nStep 3: Scrub all surfaces of your hands – such as the back of hands, between fingers and under nails. You should scrub for at least 20 seconds.\nStep 4: Rinse well with clean water.\nStep 5: Dry your hands with a clean cloth or towel.",
       "completed_field": "how_to_wash_your_hands_handwashing_tips_completed"
     }
   ]
