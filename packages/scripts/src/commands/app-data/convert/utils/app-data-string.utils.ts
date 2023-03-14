@@ -122,3 +122,8 @@ export function extractDynamicDependencies(dynamicFields: FlowTypes.TemplateRow[
   });
   return dynamicDependencies;
 }
+
+// Standardised newline characters within a string (i.e. replace "\r\n" and "\r" with "\n")
+export function standardiseNewlines(str: string) {
+  return str.replace(/\\r\\n/g, "\\n").replace(/\\r/g, "\\n");
+}
