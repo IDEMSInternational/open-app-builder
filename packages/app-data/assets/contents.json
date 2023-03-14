@@ -1,19 +1,19 @@
 {
   "android/icon-background.png": {
-    "size_kb": 9.1,
-    "md5Checksum": "665b1f091c80ed455d21c668f3771b6b"
+    "size_kb": 6.4,
+    "md5Checksum": "4d74b997d4ac22f99b48f717ff9a3a07"
   },
   "android/icon-foreground.png": {
-    "size_kb": 48.2,
-    "md5Checksum": "19ed1c544bc0e076ef25b9d343c6b42f"
+    "size_kb": 31.4,
+    "md5Checksum": "21703838b036bf47d9e7aadab8a0774d"
   },
   "android/icon.png": {
-    "size_kb": 76.8,
-    "md5Checksum": "0cb603e1f04d4e13254107339bd0f94f"
+    "size_kb": 31.4,
+    "md5Checksum": "21703838b036bf47d9e7aadab8a0774d"
   },
   "android/splash.png": {
-    "size_kb": 80.9,
-    "md5Checksum": "3e225d2f52e559606e7a90184f28d6e4"
+    "size_kb": 123.3,
+    "md5Checksum": "b0c03fe0d1c374ba04fa7d554f26bc01"
   },
   "i18n/flags/gb.svg": {
     "size_kb": 0.5,
@@ -1277,7 +1277,17 @@
     "themeVariations": {
       "professional": {
         "size_kb": 22.5,
-        "md5Checksum": "ca1e5dccb941a194d132e6b65b262147"
+        "md5Checksum": "23b81d9fc4c0db3713281de53d658618"
+      }
+    }
+  },
+  "plh_images/first_app_launch/join_parents.svg": {
+    "size_kb": 8.3,
+    "md5Checksum": "0f0c41812fbb43e02a7e4cd6d8ae8fa6",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 37.6,
+        "md5Checksum": "238c3d241862f588b148bbfbca470b5f"
       }
     }
   },
@@ -1287,17 +1297,7 @@
     "themeVariations": {
       "professional": {
         "size_kb": 25.7,
-        "md5Checksum": "d39c926edcbcc3167d11bcfd8be007ff"
-      }
-    }
-  },
-  "plh_images/first_app_launch/parent_phone.svg": {
-    "size_kb": 8.3,
-    "md5Checksum": "0f0c41812fbb43e02a7e4cd6d8ae8fa6",
-    "themeVariations": {
-      "professional": {
-        "size_kb": 47.6,
-        "md5Checksum": "bf1da0314218601052f705b21bd44b87"
+        "md5Checksum": "35ab1bf3969302fd3076c84ccd9ffeba"
       }
     }
   },
@@ -3457,6 +3457,36 @@
       }
     }
   },
+  "plh_images/workshops/w_solve/read_3/slide_1.svg": {
+    "size_kb": 6.6,
+    "md5Checksum": "e413d37ea5a999964f29d0c156baae87",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 31.5,
+        "md5Checksum": "f8b9c67d446224125fbb9df24a04c1d3"
+      }
+    }
+  },
+  "plh_images/workshops/w_solve/read_3/slide_2.svg": {
+    "size_kb": 7.5,
+    "md5Checksum": "e9a7e9234f1cae498ca65e2a049f551f",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 31.9,
+        "md5Checksum": "7f9f6bfe7b25b609b98f37cae1908607"
+      }
+    }
+  },
+  "plh_images/workshops/w_solve/read_3/slide_3.svg": {
+    "size_kb": 7.5,
+    "md5Checksum": "e9a7e9234f1cae498ca65e2a049f551f",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 31.3,
+        "md5Checksum": "fd9fdbad4c2ab99b42b6f2533af7c010"
+      }
+    }
+  },
   "plh_images/workshops/w_solve/tools/tool_1.svg": {
     "size_kb": 23.9,
     "md5Checksum": "2146c95f6b02a306a68525a3cf632187",
@@ -3623,7 +3653,7 @@
     "themeVariations": {
       "professional": {
         "size_kb": 24.3,
-        "md5Checksum": "7cc1ef73878be4d04d4c5a79ecba1372"
+        "md5Checksum": "d14940e9c0b6abc8c00f0ddd58faef9f"
       }
     }
   },
@@ -3642,8 +3672,8 @@
     "md5Checksum": "8f0efce15850644762cfc0b6bc983ba0",
     "themeVariations": {
       "professional": {
-        "size_kb": 39.6,
-        "md5Checksum": "7d1b3edcc1ef1c069d16d9b04dea7feb"
+        "size_kb": 38.5,
+        "md5Checksum": "4cec497ee9afd4d388856c13d3679c97"
       }
     }
   },
@@ -3653,7 +3683,7 @@
     "themeVariations": {
       "professional": {
         "size_kb": 103.5,
-        "md5Checksum": "f5fd2b009d3908fa07cc19a29bdce97a"
+        "md5Checksum": "5921bdac4662f5df231e0a54879f03c8"
       }
     }
   },
@@ -3662,8 +3692,8 @@
     "md5Checksum": "16c5e7e893a1fc0e53a85ecc659f8707",
     "themeVariations": {
       "professional": {
-        "size_kb": 42.2,
-        "md5Checksum": "8538aa770c1e1fb11b673a7922cda585"
+        "size_kb": 71.4,
+        "md5Checksum": "fd334d81f2cd55a9edfef5e8dec85f0d"
       }
     }
   },
@@ -3672,8 +3702,8 @@
     "md5Checksum": "cc2a3d7312025e21a1b1025bb7533c50",
     "themeVariations": {
       "professional": {
-        "size_kb": 24.2,
-        "md5Checksum": "af9157e52811cd2d09cf54969811822f"
+        "size_kb": 57.8,
+        "md5Checksum": "62a6d4c3fc8a490a5b641ae8643e1cd2"
       }
     }
   },
