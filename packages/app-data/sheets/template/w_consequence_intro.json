@@ -63,16 +63,9 @@
               "rows": [
                 {
                   "name": "intro_text",
-                  "value": "You can help your teenager to understand that breaking family rules leads to consequences. \n\nBut HOW you do this matters. \n\nGetting consequences right helps teens behave better and makes family life calmer...",
+                  "value": "Our actions have consequences: Some consequences happen naturally (“if you break something, you can’t use it anymore”). Other consequences we set as a family to motivate us to follow the rules (“if you come home late, you can’t go out with friends tomorrow”).\n\nHOW you set and use consequences together matters.\n\nGetting consequences right helps teens behave better and makes family life calmer...",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
-                    }
+                    "value": {}
                   },
                   "type": "set_variable",
                   "_nested_name": "topic_intro.listen.workshop_activity.intro_text"
