@@ -3457,6 +3457,18 @@
       }
     }
   },
+  "plh_images/workshops/w_solve/read_3/slide_1.svg": {
+    "size_kb": 6.6,
+    "md5Checksum": "e413d37ea5a999964f29d0c156baae87"
+  },
+  "plh_images/workshops/w_solve/read_3/slide_2.svg": {
+    "size_kb": 7.5,
+    "md5Checksum": "e9a7e9234f1cae498ca65e2a049f551f"
+  },
+  "plh_images/workshops/w_solve/read_3/slide_3.svg": {
+    "size_kb": 7.5,
+    "md5Checksum": "e9a7e9234f1cae498ca65e2a049f551f"
+  },
   "plh_images/workshops/w_solve/tools/tool_1.svg": {
     "size_kb": 23.9,
     "md5Checksum": "2146c95f6b02a306a68525a3cf632187",
@@ -3623,7 +3635,7 @@
     "themeVariations": {
       "professional": {
         "size_kb": 24.3,
-        "md5Checksum": "7cc1ef73878be4d04d4c5a79ecba1372"
+        "md5Checksum": "d14940e9c0b6abc8c00f0ddd58faef9f"
       }
     }
   },
@@ -3642,8 +3654,8 @@
     "md5Checksum": "8f0efce15850644762cfc0b6bc983ba0",
     "themeVariations": {
       "professional": {
-        "size_kb": 39.6,
-        "md5Checksum": "7d1b3edcc1ef1c069d16d9b04dea7feb"
+        "size_kb": 38.5,
+        "md5Checksum": "4cec497ee9afd4d388856c13d3679c97"
       }
     }
   },
@@ -3653,7 +3665,7 @@
     "themeVariations": {
       "professional": {
         "size_kb": 103.5,
-        "md5Checksum": "f5fd2b009d3908fa07cc19a29bdce97a"
+        "md5Checksum": "5921bdac4662f5df231e0a54879f03c8"
       }
     }
   },
@@ -3662,8 +3674,8 @@
     "md5Checksum": "16c5e7e893a1fc0e53a85ecc659f8707",
     "themeVariations": {
       "professional": {
-        "size_kb": 42.2,
-        "md5Checksum": "8538aa770c1e1fb11b673a7922cda585"
+        "size_kb": 71.4,
+        "md5Checksum": "fd334d81f2cd55a9edfef5e8dec85f0d"
       }
     }
   },
@@ -3672,8 +3684,8 @@
     "md5Checksum": "cc2a3d7312025e21a1b1025bb7533c50",
     "themeVariations": {
       "professional": {
-        "size_kb": 24.2,
-        "md5Checksum": "af9157e52811cd2d09cf54969811822f"
+        "size_kb": 57.8,
+        "md5Checksum": "62a6d4c3fc8a490a5b641ae8643e1cd2"
       }
     }
   },
