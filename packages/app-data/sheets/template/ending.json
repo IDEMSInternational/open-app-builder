@@ -116,19 +116,27 @@
             },
             {
               "name": "intro_text",
-              "value": "You’ve completed this week’s workshop.",
+              "value": "You’ve completed your @global.workshop.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
               "type": "set_variable",
-              "_nested_name": "watch.workshop_activity.intro_text"
+              "_nested_name": "watch.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "You’ve completed your @global.workshop.",
+                    "matchedExpression": "@global.workshop",
+                    "type": "global",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.workshop": [
+                  "value"
+                ]
+              }
             },
             {
               "name": "activity_banner",

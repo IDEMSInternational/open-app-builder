@@ -11,6 +11,15 @@
       "_nested_name": "number"
     },
     {
+      "name": "skip_text",
+      "value": "Skip intro",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "skip_text"
+    },
+    {
       "type": "animated_slides",
       "action_list": [
         {
@@ -33,7 +42,7 @@
         }
       ],
       "parameter_list": {
-        "skip_text": "Skip Intro",
+        "skip_text": "@local.skip_text",
         "style": "light"
       },
       "rows": [
@@ -241,7 +250,24 @@
         }
       ],
       "name": "animated_slides",
-      "_nested_name": "animated_slides"
+      "_nested_name": "animated_slides",
+      "_dynamicFields": {
+        "parameter_list": {
+          "skip_text": [
+            {
+              "fullExpression": "@local.skip_text",
+              "matchedExpression": "@local.skip_text",
+              "type": "local",
+              "fieldName": "skip_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.skip_text": [
+          "parameter_list.skip_text"
+        ]
+      }
     }
   ],
   "_xlsxPath": "global/core_templates/core_templates_app_launch.xlsx"
