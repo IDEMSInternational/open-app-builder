@@ -1,19 +1,19 @@
 {
   "android/icon-background.png": {
-    "size_kb": 9.1,
-    "md5Checksum": "665b1f091c80ed455d21c668f3771b6b"
+    "size_kb": 6.4,
+    "md5Checksum": "4d74b997d4ac22f99b48f717ff9a3a07"
   },
   "android/icon-foreground.png": {
-    "size_kb": 48.2,
-    "md5Checksum": "19ed1c544bc0e076ef25b9d343c6b42f"
+    "size_kb": 31.4,
+    "md5Checksum": "21703838b036bf47d9e7aadab8a0774d"
   },
   "android/icon.png": {
-    "size_kb": 76.8,
-    "md5Checksum": "0cb603e1f04d4e13254107339bd0f94f"
+    "size_kb": 31.4,
+    "md5Checksum": "21703838b036bf47d9e7aadab8a0774d"
   },
   "android/splash.png": {
-    "size_kb": 80.9,
-    "md5Checksum": "3e225d2f52e559606e7a90184f28d6e4"
+    "size_kb": 123.3,
+    "md5Checksum": "b0c03fe0d1c374ba04fa7d554f26bc01"
   },
   "i18n/flags/gb.svg": {
     "size_kb": 0.5,
@@ -1277,7 +1277,17 @@
     "themeVariations": {
       "professional": {
         "size_kb": 22.5,
-        "md5Checksum": "ca1e5dccb941a194d132e6b65b262147"
+        "md5Checksum": "23b81d9fc4c0db3713281de53d658618"
+      }
+    }
+  },
+  "plh_images/first_app_launch/join_parents.svg": {
+    "size_kb": 8.3,
+    "md5Checksum": "0f0c41812fbb43e02a7e4cd6d8ae8fa6",
+    "themeVariations": {
+      "professional": {
+        "size_kb": 37.6,
+        "md5Checksum": "238c3d241862f588b148bbfbca470b5f"
       }
     }
   },
@@ -1287,17 +1297,7 @@
     "themeVariations": {
       "professional": {
         "size_kb": 25.7,
-        "md5Checksum": "d39c926edcbcc3167d11bcfd8be007ff"
-      }
-    }
-  },
-  "plh_images/first_app_launch/parent_phone.svg": {
-    "size_kb": 8.3,
-    "md5Checksum": "0f0c41812fbb43e02a7e4cd6d8ae8fa6",
-    "themeVariations": {
-      "professional": {
-        "size_kb": 47.6,
-        "md5Checksum": "bf1da0314218601052f705b21bd44b87"
+        "md5Checksum": "35ab1bf3969302fd3076c84ccd9ffeba"
       }
     }
   },
