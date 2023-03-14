@@ -5,7 +5,11 @@
   "rows": [
     {
       "name": "number",
+<<<<<<< HEAD
       "value": 210,
+=======
+      "value": 200,
+>>>>>>> 97719467b8e6ee44484e00cd1b74923217dbbfa3
       "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "number"
@@ -14,9 +18,13 @@
       "name": "skip_text",
       "value": "Skip intro",
       "_translations": {
+<<<<<<< HEAD
         "value": {
           "tz_sw": true
         }
+=======
+        "value": {}
+>>>>>>> 97719467b8e6ee44484e00cd1b74923217dbbfa3
       },
       "type": "set_variable",
       "_nested_name": "skip_text"
@@ -51,16 +59,43 @@
         {
           "type": "animated_section",
           "parameter_list": {
-            "duration": "3.5"
+            "duration": "4"
           },
           "rows": [
             {
+<<<<<<< HEAD
               "type": "image",
               "name": "image",
               "value": "essential_tools/mod1_fuzzy_circle.svg",
+=======
+              "type": "display_group",
+              "parameter_list": {
+                "style": "centre_image"
+              },
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "image_1",
+                  "value": "plh_images/first_app_launch/frustrated.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.image_1"
+                }
+              ],
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
+            },
+            {
+              "type": "text",
+              "name": "slogan_1",
+              "value": "Bringing teenagers up is hard",
+>>>>>>> 97719467b8e6ee44484e00cd1b74923217dbbfa3
               "_translations": {
                 "value": {}
               },
+<<<<<<< HEAD
               "exclude_from_translation": true,
               "_nested_name": "animated_slides.animated_section.image"
             },
@@ -68,15 +103,100 @@
               "type": "text",
               "name": "slogan",
               "value": "Safe Water, Sanitation and Hygiene (WASH) is beneficial for you and your community",
+=======
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "image_2",
+                  "value": "plh_images/first_app_launch/loving_parent.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.image_2"
+                }
+              ],
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
+            },
+            {
+              "type": "text",
+              "name": "slogan_2",
+              "value": "You are the best parent your teen could have",
               "_translations": {
                 "value": {
-                  "tz_sw": true
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true
                 }
+              },
+              "parameter_list": {
+                "style": "large center"
+              },
+              "_nested_name": "animated_slides.animated_section.slogan_2"
+            }
+          ],
+          "name": "animated_section",
+          "_nested_name": "animated_slides.animated_section"
+        },
+        {
+          "type": "animated_section",
+          "parameter_list": {
+            "duration": "4"
+          },
+          "rows": [
+            {
+              "type": "display_group",
+              "parameter_list": {
+                "style": "centre_image"
+              },
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "image_3",
+                  "value": "plh_images/first_app_launch/join_parents.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.image_3"
+                }
+              ],
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
+            },
+            {
+              "type": "text",
+              "name": "slogan_3",
+              "value": "Join the over @local.number million parents who have used our resources",
+>>>>>>> 97719467b8e6ee44484e00cd1b74923217dbbfa3
+              "_translations": {
+                "value": {}
               },
               "parameter_list": {
                 "text_align": "center"
               },
+<<<<<<< HEAD
               "_nested_name": "animated_slides.animated_section.slogan"
+=======
+              "_nested_name": "animated_slides.animated_section.slogan_3",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Join the over @local.number million parents who have used our resources",
+                    "matchedExpression": "@local.number",
+                    "type": "local",
+                    "fieldName": "number"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.number": [
+                  "value"
+                ]
+              }
+>>>>>>> 97719467b8e6ee44484e00cd1b74923217dbbfa3
             }
           ],
           "name": "animated_section",
