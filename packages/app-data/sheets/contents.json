@@ -6736,7 +6736,10 @@
     "w_self_care_reward": {
       "flow_type": "template",
       "flow_name": "w_self_care_reward",
-      "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"
+      "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx",
+      "_overrides": {
+        "w_self_care_reward_tz": "@fields._deployment_name == \"plh_tz\""
+      }
     },
     "w_self_care_reward_pop": {
       "flow_type": "template",
@@ -6750,6 +6753,13 @@
       "flow_type": "template",
       "flow_name": "w_self_care_reward_pop_tz",
       "override_target": "w_self_care_reward_pop",
+      "override_condition": "@fields._deployment_name == \"plh_tz\"",
+      "_xlsxPath": "tz/top_templates/workshop_templates/workshop_self_care_tz.xlsx"
+    },
+    "w_self_care_reward_tz": {
+      "flow_type": "template",
+      "flow_name": "w_self_care_reward_tz",
+      "override_target": "w_self_care_reward",
       "override_condition": "@fields._deployment_name == \"plh_tz\"",
       "_xlsxPath": "tz/top_templates/workshop_templates/workshop_self_care_tz.xlsx"
     },
