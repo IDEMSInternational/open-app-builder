@@ -14,19 +14,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "How to keep healthy"
         },
         "text": {
-          "eng": "You can stay healthy by drinking safe water, using clean toilets and washing your hands often.\r\n\r\nNot doing this can lead to diarrhoea, undernutrition, and other diseases involving worms or bugs."
+          "eng": "You can stay healthy by drinking safe water, using clean toilets, and washing your hands often.\n\nNot doing this can lead to diarrhoea, undernutrition, and other diseases involving worms or bugs."
         }
       },
-      "text": "You can stay healthy by drinking safe water, using clean toilets and washing your hands often.\r\n\r\nNot doing this can lead to diarrhoea, undernutrition, and other diseases involving worms or bugs.",
+      "text": "You can stay healthy by drinking safe water, using clean toilets, and washing your hands often.\n\nNot doing this can lead to diarrhoea, undernutrition, and other diseases involving worms or bugs.",
       "completed_field": "healthy_families_keep_healthy_completed"
     },
     {
@@ -40,19 +38,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Diarrhoea"
         },
         "text": {
-          "eng": "Diarrhoea is when you have three or more loose or liquid stools per day. It is often a sign that your body has a bug (a bacterial, viral, or parasitic infection).\r\n\r\nDiarrhoea can be prevented but can be serious, especially when the body loses a lot of water.\r\n\r\nRemember to wash your hands often and practise safe food and clean water habits."
+          "eng": "Diarrhoea is when you have three or more loose or liquid stools per day. It is often a sign that your body has a bug (a bacterial, viral, or parasitic infection).\n\nDiarrhoea can be prevented but can be serious, especially when the body loses a lot of water.\n\nRemember to wash your hands often and practise safe food and clean water habits."
         }
       },
-      "text": "Diarrhoea is when you have three or more loose or liquid stools per day. It is often a sign that your body has a bug (a bacterial, viral, or parasitic infection).\r\n\r\nDiarrhoea can be prevented but can be serious, especially when the body loses a lot of water.\r\n\r\nRemember to wash your hands often and practise safe food and clean water habits.",
+      "text": "Diarrhoea is when you have three or more loose or liquid stools per day. It is often a sign that your body has a bug (a bacterial, viral, or parasitic infection).\n\nDiarrhoea can be prevented but can be serious, especially when the body loses a lot of water.\n\nRemember to wash your hands often and practise safe food and clean water habits.",
       "completed_field": "healthy_families_diarrhoea_completed"
     },
     {
@@ -66,19 +62,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Avoiding worms in your water"
         },
         "text": {
-          "eng": "Tiny, invisible worms can cause a disease known as bilharzia or schistosomiasis. They lead to abdominal pain, rash, diarrhoea, and blood in your stool. People become infected when coming into contact with infected water.\r\n\r\nStop the spread of the disease by drinking and bathing in clean water and don't contaminate the water sources by defecating in open areas or in the lake."
+          "eng": "Tiny, invisible worms can cause a disease known as bilharzia or schistosomiasis. They lead to abdominal pain, rash, diarrhoea, and blood in your stool. People become infected when coming into contact with infected water.\n\nStop the spread of the disease by drinking and bathing in clean water and don't contaminate the water sources by defecating in open areas or in the lake."
         }
       },
-      "text": "Tiny, invisible worms can cause a disease known as bilharzia or schistosomiasis. They lead to abdominal pain, rash, diarrhoea, and blood in your stool. People become infected when coming into contact with infected water.\r\n\r\nStop the spread of the disease by drinking and bathing in clean water and don't contaminate the water sources by defecating in open areas or in the lake.",
+      "text": "Tiny, invisible worms can cause a disease known as bilharzia or schistosomiasis. They lead to abdominal pain, rash, diarrhoea, and blood in your stool. People become infected when coming into contact with infected water.\n\nStop the spread of the disease by drinking and bathing in clean water and don't contaminate the water sources by defecating in open areas or in the lake.",
       "reference_link_title_2": "Ending the neglect to attain the Sustainable Development Goals. WHO; 2021.",
       "refererence_link_2": "www.who.int/publications/i/item/9789240022782",
       "completed_field": "healthy_families_worms_water_completed"

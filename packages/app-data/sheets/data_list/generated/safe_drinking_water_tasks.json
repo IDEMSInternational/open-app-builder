@@ -37,19 +37,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Transporting and storing water"
         },
         "text": {
-          "eng": "Make sure that water that is carried and stored does not come into contact with hands, dirt or insects. Hands, dirt and insects make water unsafe to drink."
+          "eng": "Make sure that water that is carried and stored does not come into contact with hands, dirt or insects. Hands, dirt, and insects make water unsafe to drink."
         }
       },
-      "text": "Make sure that water that is carried and stored does not come into contact with hands, dirt or insects. Hands, dirt and insects make water unsafe to drink.",
+      "text": "Make sure that water that is carried and stored does not come into contact with hands, dirt or insects. Hands, dirt, and insects make water unsafe to drink.",
       "completed_field": "safe_drinking_water_why_completed"
     },
     {
@@ -116,19 +114,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Treating water by boiling"
         },
         "text": {
-          "eng": "*  Boiling water can make it safe to drink or cook with.\n*  Let the water sit for some time until the dirt settles at the bottom. \n*  Pour it into a pot and boil it for at least 10 minutes to make sure all the germs are killed before using it. \n*  Drink the water within 24 hours. This helps to keep it clean, fresh and free from other germs."
+          "eng": "*  Boiling water can make it safe to drink or cook with.\n*  Let the water sit for some time until the dirt settles at the bottom. \n*  Pour it into a pot and boil it for at least 10 minutes to make sure all the germs are killed before using it. \n*  Drink the water within 24 hours. This helps to keep it clean, fresh, and free from other germs."
         }
       },
-      "text": "*  Boiling water can make it safe to drink or cook with.\n*  Let the water sit for some time until the dirt settles at the bottom. \n*  Pour it into a pot and boil it for at least 10 minutes to make sure all the germs are killed before using it. \n*  Drink the water within 24 hours. This helps to keep it clean, fresh and free from other germs.",
+      "text": "*  Boiling water can make it safe to drink or cook with.\n*  Let the water sit for some time until the dirt settles at the bottom. \n*  Pour it into a pot and boil it for at least 10 minutes to make sure all the germs are killed before using it. \n*  Drink the water within 24 hours. This helps to keep it clean, fresh, and free from other germs.",
       "completed_field": "safe_drinking_water_disinfect_boiling_completed"
     }
   ]
