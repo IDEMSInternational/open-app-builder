@@ -21,9 +21,6 @@ config.translations = {
   translated_strings_path: "packages/app-data/translations_source/from_translators",
   source_strings_path: "packages/app-data/translations_source/to_translate",
 };
-config.error_logging = {
-  dsn: "https://a8b2897d48e84c5fa4398b4eb6158480@app.glitchtip.com/2230",
-};
 
 config.app_config.APP_LANGUAGES.default = "gb_en";
 config.app_config.APP_SIDEMENU_DEFAULTS.title = "ParentApp";
