@@ -1,0 +1,19 @@
+{
+  "flow_type": "global",
+  "flow_name": "app_id_tz",
+  "status": "released",
+  "override_target": "app_id",
+  "override_condition": "@fields._deployment_name == \"plh_tz\"",
+  "rows": [
+    {
+      "type": "declare_global_constant",
+      "name": "app_id",
+      "value": "international.idems.plh_teens_tz",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    }
+  ],
+  "_xlsxPath": "tz/data/navigation_globals_tz.xlsx"
+}
