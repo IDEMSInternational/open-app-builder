@@ -150,12 +150,6 @@
       "data_list_name": "reference_sections",
       "_xlsxPath": "data_lists/references.xlsx"
     },
-    "references": {
-      "flow_type": "data_list",
-      "flow_name": "references",
-      "data_list_name": "references",
-      "_xlsxPath": "data_lists/references.xlsx"
-    },
     "safe_drinking_water": {
       "flow_type": "data_list",
       "flow_name": "safe_drinking_water",
@@ -167,6 +161,18 @@
       "flow_name": "safe_food",
       "data_list_name": "safe_food",
       "_xlsxPath": "data_lists/modules/module_details.xlsx"
+    },
+    "section_1_references": {
+      "flow_type": "data_list",
+      "flow_name": "section_1_references",
+      "data_list_name": "section_1_references",
+      "_xlsxPath": "data_lists/references.xlsx"
+    },
+    "section_2_references": {
+      "flow_type": "data_list",
+      "flow_name": "section_2_references",
+      "data_list_name": "section_2_references",
+      "_xlsxPath": "data_lists/references.xlsx"
     },
     "waste": {
       "flow_type": "data_list",
@@ -228,6 +234,11 @@
     "app_menu": {
       "flow_type": "template",
       "flow_name": "app_menu",
+      "_xlsxPath": "templates/global/app_menu.xlsx"
+    },
+    "app_menu_technical_support": {
+      "flow_type": "template",
+      "flow_name": "app_menu_technical_support",
       "_xlsxPath": "templates/global/app_menu.xlsx"
     },
     "app_settings": {

@@ -403,6 +403,14 @@
     "size_kb": 0.5,
     "md5Checksum": "4cba6f3545595d585cf1c89394955c71"
   },
+  "icons/ask_question.svg": {
+    "size_kb": 1.4,
+    "md5Checksum": "a442e88503da6639f07b956f55f935a8"
+  },
+  "icons/globe_circle.svg": {
+    "size_kb": 1.4,
+    "md5Checksum": "09762126162da34a86ad978f17ef1102"
+  },
   "icons/in_progress.svg": {
     "size_kb": 1.1,
     "md5Checksum": "6105962bc0edd981675d874dc8a51035"
