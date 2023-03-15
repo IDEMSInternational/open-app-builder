@@ -20,6 +20,154 @@
       "_nested_name": "completed_field"
     },
     {
+      "name": "history",
+      "value": "_history",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "history"
+    },
+    {
+      "name": "toggle_history_field",
+      "value": "@local.completed_field@local.history",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "toggle_history_field",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.completed_field@local.history",
+            "matchedExpression": "@local.completed_field",
+            "type": "local",
+            "fieldName": "completed_field"
+          },
+          {
+            "fullExpression": "@local.completed_field@local.history",
+            "matchedExpression": "@local.history",
+            "type": "local",
+            "fieldName": "history"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.completed_field": [
+          "value"
+        ],
+        "@local.history": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "now",
+      "value": "@calc(timestamp())",
+      "_translations": {
+        "value": {}
+      },
+      "style_list": true,
+      "type": "set_variable",
+      "_nested_name": "now",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@calc(timestamp())",
+            "matchedExpression": "@calc(timestamp())",
+            "type": "calc",
+            "fieldName": "timestamp()"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@calc(timestamp())": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "toggle_history",
+      "value": "@fields.@local.toggle_history_field ;  @local.now",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!!(@fields.@local.toggle_history_field)",
+      "style_list": true,
+      "type": "set_variable",
+      "_nested_name": "toggle_history",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.@local.toggle_history_field ;  @local.now",
+            "matchedExpression": "@local.toggle_history_field",
+            "type": "local",
+            "fieldName": "toggle_history_field"
+          },
+          {
+            "fullExpression": "@fields.@local.toggle_history_field ;  @local.now",
+            "matchedExpression": "@local.now",
+            "type": "local",
+            "fieldName": "now"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!!(@fields.@local.toggle_history_field)",
+            "matchedExpression": "@local.toggle_history_field",
+            "type": "local",
+            "fieldName": "toggle_history_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.toggle_history_field": [
+          "value",
+          "condition"
+        ],
+        "@local.now": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "toggle_history",
+      "value": "@local.now",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "!(@fields.@local.toggle_history_field)",
+      "style_list": true,
+      "type": "set_variable",
+      "_nested_name": "toggle_history",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.now",
+            "matchedExpression": "@local.now",
+            "type": "local",
+            "fieldName": "now"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "!(@fields.@local.toggle_history_field)",
+            "matchedExpression": "@local.toggle_history_field",
+            "type": "local",
+            "fieldName": "toggle_history_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.now": [
+          "value"
+        ],
+        "@local.toggle_history_field": [
+          "condition"
+        ]
+      }
+    },
+    {
       "type": "display_group",
       "name": "dg_completed",
       "exclude_from_translation": true,
@@ -41,6 +189,16 @@
               ],
               "_raw": "changed | set_field: @local.completed_field: this.value",
               "_cleaned": "changed | set_field: @local.completed_field: this.value"
+            },
+            {
+              "trigger": "changed",
+              "action_id": "set_field",
+              "args": [
+                "@local.toggle_history_field",
+                "@local.toggle_history"
+              ],
+              "_raw": "changed | set_field: @local.toggle_history_field: @local.toggle_history",
+              "_cleaned": "changed | set_field: @local.toggle_history_field: @local.toggle_history"
             }
           ],
           "exclude_from_translation": true,
@@ -82,6 +240,54 @@
                     "fieldName": "completed_field"
                   }
                 ]
+              },
+              "1": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.toggle_history_field",
+                      "matchedExpression": "@local.toggle_history_field",
+                      "type": "local",
+                      "fieldName": "toggle_history_field"
+                    }
+                  ],
+                  "1": [
+                    {
+                      "fullExpression": "@local.toggle_history",
+                      "matchedExpression": "@local.toggle_history",
+                      "type": "local",
+                      "fieldName": "toggle_history"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "changed | set_field: @local.toggle_history_field: @local.toggle_history",
+                    "matchedExpression": "@local.toggle_history_field",
+                    "type": "local",
+                    "fieldName": "toggle_history_field"
+                  },
+                  {
+                    "fullExpression": "changed | set_field: @local.toggle_history_field: @local.toggle_history",
+                    "matchedExpression": "@local.toggle_history",
+                    "type": "local",
+                    "fieldName": "toggle_history"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "changed | set_field: @local.toggle_history_field: @local.toggle_history",
+                    "matchedExpression": "@local.toggle_history_field",
+                    "type": "local",
+                    "fieldName": "toggle_history_field"
+                  },
+                  {
+                    "fullExpression": "changed | set_field: @local.toggle_history_field: @local.toggle_history",
+                    "matchedExpression": "@local.toggle_history",
+                    "type": "local",
+                    "fieldName": "toggle_history"
+                  }
+                ]
               }
             }
           },
@@ -91,6 +297,16 @@
               "action_list.0.args.0",
               "action_list.0._raw",
               "action_list.0._cleaned"
+            ],
+            "@local.toggle_history_field": [
+              "action_list.1.args.0",
+              "action_list.1._raw",
+              "action_list.1._cleaned"
+            ],
+            "@local.toggle_history": [
+              "action_list.1.args.1",
+              "action_list.1._raw",
+              "action_list.1._cleaned"
             ]
           }
         },
