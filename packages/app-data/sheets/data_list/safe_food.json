@@ -7,7 +7,7 @@
     {
       "id": "keys",
       "illustration": "essential_tools/mod5_keep_healthy.svg",
-      "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF; 2020.  \r\n\r\nExtract;\r\nPeople become infected with intestinal parasitic worms (also known as helminths) by eating contaminated food or through contact with contaminated soil. \r\n\r\nDiseases such as typhoid fever – a bacterial infection – are also caused by ingesting contaminated food or water.",
+      "reference": "Baby WASH Programming. UNICEF Eastern and Southern Africa: UNICEF; 2020.  \n\nExtract;\nPeople become infected with intestinal parasitic worms (also known as helminths) by eating contaminated food or through contact with contaminated soil. \n\nDiseases such as typhoid fever – a bacterial infection – are also caused by ingesting contaminated food or water.",
       "reference_link_title": "Baby WASH Programming. UNICEF; 2020.",
       "reference_link": "www.unicef.org/esa/media/7076/file/UNICEF-ESA-Baby-WASH-Programming-2020.pdf",
       "reference_link_title_2": "5 Keys to Safer Food Manual.  WHO; 2006.",
@@ -34,8 +34,6 @@
     {
       "id": "clean",
       "illustration": "essential_tools/home_handwashing.svg",
-      "subtitle": "Why?",
-      "text_2": "Small pathogens that cause disease can transfer from your unwashed hands, chopping boards, cloths and utensils.  Keep these clean.",
       "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\n\nExtract\nKeep Clean\ni. Wash your hands before handling food and often during food preparation\nii. Wash your hands after going to the toilet\niii. Wash and sanitize all surfaces and equipment used for food preparation\niv. Protect kitchen areas and food from insects, pests, and other animals",
       "reference_link_title": "5 Keys to Safer Food Manual.  WHO; 2006.",
       "reference_link": "https://www.who.int/publications/i/item/9789241594639",
@@ -47,25 +45,31 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {},
+        "subtitle": {},
+        "text_2": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Keep clean"
         },
         "text": {
-          "eng": "* Wash your hands with soap before touching food and while cooking.\r\n* Wash your hands after going to the toilet.\r\n* Clean your cooking space and tools.\r\n* Keep bugs, pests, and other animals away from the cooking area.\r\n* Cover food if you can."
+          "eng": "* Wash your hands with soap before touching food and while cooking.\n* Wash your hands after going to the toilet.\n* Clean your cooking space and tools.\n* Keep bugs, pests, and other animals away from the cooking area.\n* Cover food if you can."
+        },
+        "subtitle": {
+          "eng": "Why?"
+        },
+        "text_2": {
+          "eng": "Small pathogens that cause disease can transfer from your unwashed hands, chopping boards, cloths, and utensils.  Keep these clean."
         }
       },
-      "text": "* Wash your hands with soap before touching food and while cooking.\r\n* Wash your hands after going to the toilet.\r\n* Clean your cooking space and tools.\r\n* Keep bugs, pests, and other animals away from the cooking area.\r\n* Cover food if you can."
+      "text": "* Wash your hands with soap before touching food and while cooking.\n* Wash your hands after going to the toilet.\n* Clean your cooking space and tools.\n* Keep bugs, pests, and other animals away from the cooking area.\n* Cover food if you can.",
+      "subtitle": "Why?",
+      "text_2": "Small pathogens that cause disease can transfer from your unwashed hands, chopping boards, cloths, and utensils.  Keep these clean."
     },
     {
       "id": "separate",
       "illustration": "essential_tools/mod9_separate_food.svg",
-      "subtitle": "Why?",
-      "text_2": "Germs causing illness can be found in raw food (such as meat, chicken and seafood). These can be transferred to other foods during food preparation or storage.  Separating raw and cooked food is therefore important.",
       "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\n\nExtract\nSeparate raw and cooked\ni.  Separate raw meat, poultry, and seafood from other foods\nii.  Use separate equipment and utensils, such as  knives and cutting boards, for handling raw foods\niii.  Store food in containers to avoid contact between raw and prepared foods",
       "reference_link_title": "5 Keys to Safer Food Manual.  WHO; 2006.",
       "reference_link": "https://www.who.int/publications/i/item/9789241594639",
@@ -77,25 +81,31 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {},
+        "subtitle": {},
+        "text_2": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Separate raw and cooked"
         },
         "text": {
-          "eng": "* Wash your knife and chopping board after cutting raw meat, chicken, or fish, before you use them for cutting other foods.\r\n* Store food in covered containers when you can. This will keep it safe from pests, moisture, rot, and also stop the mixing of raw and prepared foods.\r\n* Clean up any leftover ingredients when done, especially raw meat."
+          "eng": "* Wash your knife and chopping board after cutting raw meat, chicken, or fish, before you use them for cutting other foods.\n* Store food in covered containers when you can. This will keep it safe from pests, moisture, rot, and also stop the mixing of raw and prepared foods.\n* Clean up any leftover ingredients when done, especially raw meat."
+        },
+        "subtitle": {
+          "eng": "Why?"
+        },
+        "text_2": {
+          "eng": "Germs causing illness can be found in raw food (such as meat, chicken, and seafood). These can be transferred to other foods during food preparation or storage.  Separating raw and cooked food is therefore important."
         }
       },
-      "text": "* Wash your knife and chopping board after cutting raw meat, chicken, or fish, before you use them for cutting other foods.\r\n* Store food in covered containers when you can. This will keep it safe from pests, moisture, rot, and also stop the mixing of raw and prepared foods.\r\n* Clean up any leftover ingredients when done, especially raw meat."
+      "text": "* Wash your knife and chopping board after cutting raw meat, chicken, or fish, before you use them for cutting other foods.\n* Store food in covered containers when you can. This will keep it safe from pests, moisture, rot, and also stop the mixing of raw and prepared foods.\n* Clean up any leftover ingredients when done, especially raw meat.",
+      "subtitle": "Why?",
+      "text_2": "Germs causing illness can be found in raw food (such as meat, chicken, and seafood). These can be transferred to other foods during food preparation or storage.  Separating raw and cooked food is therefore important."
     },
     {
       "id": "cook",
       "illustration": "essential_tools/mod9_hot_food_pot.svg",
-      "subtitle": "Why?",
-      "text_2": "Cooking with very high heat kills almost all dangerous germs causing illness.  Let's make sure that cooked food is heated thoroughly.",
       "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\n\nExtract\ni. Cook food thoroughly, especially meat, poultry, eggs, and seafood\nii. Bring food like soups and stews to boil to make sure they have reached 70 degrees Celsius. For meat and poultry, make sure that juices are clear, not pink. Ideally, use a thermometer.\niii. Reheat cooked food thoroughly",
       "reference_link_title": "5 Keys to Safer Food Manual.  WHO; 2006.",
       "reference_link": "https://www.who.int/publications/i/item/9789241594639",
@@ -105,29 +115,35 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {},
+        "subtitle": {},
+        "text_2": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Cook thoroughly"
         },
         "text": {
-          "eng": "* Cook food thoroughly, especially meat, chicken, eggs, and seafood. \r\n* When making stews, remember to bring them to a boil.\r\n* Reheat cooked food thoroughly.\r\n* Boil the water you use to make baby foods and drinks."
+          "eng": "* Cook food thoroughly, especially meat, chicken, eggs, and seafood. \n* When making stews, remember to bring them to a boil.\n* Reheat cooked food thoroughly.\n* Boil the water you use to make baby foods and drinks."
+        },
+        "subtitle": {
+          "eng": "Why?"
+        },
+        "text_2": {
+          "eng": "Cooking with very high heat kills almost all dangerous germs causing illness.  Let's make sure that cooked food is heated thoroughly."
         }
       },
-      "text": "* Cook food thoroughly, especially meat, chicken, eggs, and seafood. \r\n* When making stews, remember to bring them to a boil.\r\n* Reheat cooked food thoroughly.\r\n* Boil the water you use to make baby foods and drinks."
+      "text": "* Cook food thoroughly, especially meat, chicken, eggs, and seafood. \n* When making stews, remember to bring them to a boil.\n* Reheat cooked food thoroughly.\n* Boil the water you use to make baby foods and drinks.",
+      "subtitle": "Why?",
+      "text_2": "Cooking with very high heat kills almost all dangerous germs causing illness.  Let's make sure that cooked food is heated thoroughly."
     },
     {
       "id": "temperature",
       "illustration": "essential_tools/mod9_hot_food.svg",
-      "subtitle": "Why?",
-      "text_2": "When food is stored at room temperature germs can grow.  That's why it's important to heat food well and eat it soon after cooking.",
-      "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\r\n\nExtract\nKeep food at a safe temperature\ni. Do not leave cooked food at room temperature for more than 2 hours\nii. Refrigerate promptly all cooked food and food that can go bad\n(preferably below 5 degrees Celsius)\niii.  Keep cooked food piping hot (more than 60°C) prior to serving\niv. Do not store food too long even in the refrigerator\nv. Do not thaw frozen food at room temperature",
+      "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\n\nExtract\nKeep food at a safe temperature\ni. Do not leave cooked food at room temperature for more than 2 hours\nii. Refrigerate promptly all cooked food and food that can go bad\n(preferably below 5 degrees Celsius)\niii.  Keep cooked food piping hot (more than 60°C) prior to serving\niv. Do not store food too long even in the refrigerator\nv. Do not thaw frozen food at room temperature",
       "reference_link_title": "5 Keys to Safer Food Manual.  WHO; 2006.",
       "reference_link": "https://www.who.int/publications/i/item/9789241594639",
-      "reference 3": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\r\n\r\nExtract:\nMicroorganisms can multiply very\nquickly if food is stored at room\ntemperature. By holding at temperatures below 5°C or above 60°C, the\ngrowth of microorganisms is slowed\ndown or stopped. Some dangerous\nmicroorganisms still grow below 5°C.",
+      "reference 3": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\n\nExtract:\nMicroorganisms can multiply very\nquickly if food is stored at room\ntemperature. By holding at temperatures below 5°C or above 60°C, the\ngrowth of microorganisms is slowed\ndown or stopped. Some dangerous\nmicroorganisms still grow below 5°C.",
       "title": "Keep food at a safe temperature",
       "_translations": {
         "title": {
@@ -135,7 +151,9 @@
         },
         "text": {
           "tz_sw": true
-        }
+        },
+        "subtitle": {},
+        "text_2": {}
       },
       "_translatedFields": {
         "title": {
@@ -143,37 +161,51 @@
         },
         "text": {
           "eng": "* Leaving cooked food out for longer than two hours can be unsafe.\n* Keep cooked food really hot before eating."
+        },
+        "subtitle": {
+          "eng": "Why?"
+        },
+        "text_2": {
+          "eng": "When food is stored at room temperature germs can grow.  That's why it's important to heat food well and eat it soon after cooking."
         }
       },
-      "text": "* Leaving cooked food out for longer than two hours can be unsafe.\n* Keep cooked food really hot before eating."
+      "text": "* Leaving cooked food out for longer than two hours can be unsafe.\n* Keep cooked food really hot before eating.",
+      "subtitle": "Why?",
+      "text_2": "When food is stored at room temperature germs can grow.  That's why it's important to heat food well and eat it soon after cooking."
     },
     {
       "id": "water",
       "illustration": "essential_tools/mod9_washing_fruit_and_veg.svg",
-      "subtitle": "Why?",
-      "text_2": "Your vegetables, fruits, meats and even water can hold dangerous germs that cause illness. Washing with safe water and peeling raw foods decreases your risk of getting sick.",
-      "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\r\n\nExtract\ni. Use safe water or treat it to make it safe\nii. Select fresh and wholesome foods \niii. Choose foods processed for safety, such as pasteurized milk\niv. Wash fruits and vegetables, especially if eaten raw\nv. Do not use food beyond its expiry date",
+      "reference": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\n\nExtract\ni. Use safe water or treat it to make it safe\nii. Select fresh and wholesome foods \niii. Choose foods processed for safety, such as pasteurized milk\niv. Wash fruits and vegetables, especially if eaten raw\nv. Do not use food beyond its expiry date",
       "reference_link_title": "5 Keys to Safer Food Manual.  WHO; 2006.",
       "reference_link": "https://www.who.int/publications/i/item/9789241594639",
-      "reference 3": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\r\n\r\nExtract:\nRaw materials, including water and ice,\nmaybe contaminated with dangerous\nmicroorganisms and chemicals. Toxic\nchemicals may be formed in damaged\nand mouldy foods. Care in selection of\nraw materials and simple measures\nsuch as washing and peeling may\nreduce the risk.",
+      "reference 3": "5 Keys to Safer Food Manual.  Geneva: WHO; 2016.\n\nExtract:\nRaw materials, including water and ice,\nmaybe contaminated with dangerous\nmicroorganisms and chemicals. Toxic\nchemicals may be formed in damaged\nand mouldy foods. Care in selection of\nraw materials and simple measures\nsuch as washing and peeling may\nreduce the risk.",
       "title": "Use safe water",
       "_translations": {
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {},
+        "subtitle": {},
+        "text_2": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Use safe water"
         },
         "text": {
-          "eng": "* Use safe water (see our modules on safe drinking water for more tips). Even though your water might look clean, it's still important to treat or boil it.\r\n* Remember to wash your fruits and vegetables with safe water."
+          "eng": "* Use safe water (see our modules on safe drinking water for more tips). Even though your water might look clean, it's still important to treat or boil it.\n* Remember to wash your fruits and vegetables with safe water."
+        },
+        "subtitle": {
+          "eng": "Why?"
+        },
+        "text_2": {
+          "eng": "Your vegetables, fruits, meats, and even water can hold dangerous germs that cause illness. Washing with safe water and peeling raw foods decreases your risk of getting sick."
         }
       },
-      "text": "* Use safe water (see our modules on safe drinking water for more tips). Even though your water might look clean, it's still important to treat or boil it.\r\n* Remember to wash your fruits and vegetables with safe water."
+      "text": "* Use safe water (see our modules on safe drinking water for more tips). Even though your water might look clean, it's still important to treat or boil it.\n* Remember to wash your fruits and vegetables with safe water.",
+      "subtitle": "Why?",
+      "text_2": "Your vegetables, fruits, meats, and even water can hold dangerous germs that cause illness. Washing with safe water and peeling raw foods decreases your risk of getting sick."
     }
   ],
   "_xlsxPath": "data_lists/modules/module_details.xlsx"

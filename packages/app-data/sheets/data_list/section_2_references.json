@@ -1,0 +1,21 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "section_2_references",
+  "status": "released",
+  "data_list_name": "section_2_references",
+  "rows": [
+    {
+      "id": "community_wash_conversations",
+      "reference_section": "general",
+      "reference": "Community WASH Conversations. Arkansas: LifeWater. Mar 2022; Licence: CC BY-NC-SA 3.0.",
+      "reference_link_title": "Go to website"
+    },
+    {
+      "id": "community_wash_promotions",
+      "reference_section": "general",
+      "reference": "Centre for Affordable Water and Sanitation Technology: Community WASH Promotion; 2017.",
+      "reference_link_title": "Go to website"
+    }
+  ],
+  "_xlsxPath": "data_lists/references.xlsx"
+}

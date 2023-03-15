@@ -15,19 +15,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "How to keep healthy"
         },
         "text": {
-          "eng": "You can stay healthy by drinking safe water, using clean toilets and washing your hands often.\r\n\r\nNot doing this can lead to diarrhoea, undernutrition, and other diseases involving worms or bugs."
+          "eng": "You can stay healthy by drinking safe water, using clean toilets, and washing your hands often.\n\nNot doing this can lead to diarrhoea, undernutrition, and other diseases involving worms or bugs."
         }
       },
-      "text": "You can stay healthy by drinking safe water, using clean toilets and washing your hands often.\r\n\r\nNot doing this can lead to diarrhoea, undernutrition, and other diseases involving worms or bugs."
+      "text": "You can stay healthy by drinking safe water, using clean toilets, and washing your hands often.\n\nNot doing this can lead to diarrhoea, undernutrition, and other diseases involving worms or bugs."
     },
     {
       "id": "diarrhoea",
@@ -40,19 +38,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Diarrhoea"
         },
         "text": {
-          "eng": "Diarrhoea is when you have three or more loose or liquid stools per day. It is often a sign that your body has a bug (a bacterial, viral, or parasitic infection).\r\n\r\nDiarrhoea can be prevented but can be serious, especially when the body loses a lot of water.\r\n\r\nRemember to wash your hands often and practise safe food and clean water habits."
+          "eng": "Diarrhoea is when you have three or more loose or liquid stools per day. It is often a sign that your body has a bug (a bacterial, viral, or parasitic infection).\n\nDiarrhoea can be prevented but can be serious, especially when the body loses a lot of water.\n\nRemember to wash your hands often and practise safe food and clean water habits."
         }
       },
-      "text": "Diarrhoea is when you have three or more loose or liquid stools per day. It is often a sign that your body has a bug (a bacterial, viral, or parasitic infection).\r\n\r\nDiarrhoea can be prevented but can be serious, especially when the body loses a lot of water.\r\n\r\nRemember to wash your hands often and practise safe food and clean water habits."
+      "text": "Diarrhoea is when you have three or more loose or liquid stools per day. It is often a sign that your body has a bug (a bacterial, viral, or parasitic infection).\n\nDiarrhoea can be prevented but can be serious, especially when the body loses a lot of water.\n\nRemember to wash your hands often and practise safe food and clean water habits."
     },
     {
       "id": "worms_water",
@@ -67,19 +63,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Avoiding worms in your water"
         },
         "text": {
-          "eng": "Tiny, invisible worms can cause a disease known as bilharzia or schistosomiasis. They lead to abdominal pain, rash, diarrhoea, and blood in your stool. People become infected when coming into contact with infected water.\r\n\r\nStop the spread of the disease by drinking and bathing in clean water and don't contaminate the water sources by defecating in open areas or in the lake."
+          "eng": "Tiny, invisible worms can cause a disease known as bilharzia or schistosomiasis. They lead to abdominal pain, rash, diarrhoea, and blood in your stool. People become infected when coming into contact with infected water.\n\nStop the spread of the disease by drinking and bathing in clean water and don't contaminate the water sources by defecating in open areas or in the lake."
         }
       },
-      "text": "Tiny, invisible worms can cause a disease known as bilharzia or schistosomiasis. They lead to abdominal pain, rash, diarrhoea, and blood in your stool. People become infected when coming into contact with infected water.\r\n\r\nStop the spread of the disease by drinking and bathing in clean water and don't contaminate the water sources by defecating in open areas or in the lake."
+      "text": "Tiny, invisible worms can cause a disease known as bilharzia or schistosomiasis. They lead to abdominal pain, rash, diarrhoea, and blood in your stool. People become infected when coming into contact with infected water.\n\nStop the spread of the disease by drinking and bathing in clean water and don't contaminate the water sources by defecating in open areas or in the lake."
     },
     {
       "id": "worms_compound",
@@ -94,19 +88,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Avoiding worms in your compound"
         },
         "text": {
-          "eng": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and stomach pain, among other symptoms.\r\n\r\nEggs of these worms are found in human stool, which can land in soil and transfer to your feet and hands.\r\n\r\nRegularly cleaning your compound and toilet, disposing of children’s stool in the toilets, and regular handwashing are important to prevent infections."
+          "eng": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and stomach pain, among other symptoms.\n\nEggs of these worms are found in human stool, which can land in soil and transfer to your feet and hands.\n\nRegularly cleaning your compound and toilet, disposing of children’s stool in the toilets, and regular handwashing are important to prevent infections."
         }
       },
-      "text": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and stomach pain, among other symptoms.\r\n\r\nEggs of these worms are found in human stool, which can land in soil and transfer to your feet and hands.\r\n\r\nRegularly cleaning your compound and toilet, disposing of children’s stool in the toilets, and regular handwashing are important to prevent infections."
+      "text": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and stomach pain, among other symptoms.\n\nEggs of these worms are found in human stool, which can land in soil and transfer to your feet and hands.\n\nRegularly cleaning your compound and toilet, disposing of children’s stool in the toilets, and regular handwashing are important to prevent infections."
     },
     {
       "id": "blindness",
@@ -121,19 +113,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Preventing blindness"
         },
         "text": {
-          "eng": "Trachoma is a disease of the eye that can cause blindness. It is passed when a fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home.\r\n\r\nFace washing is the best way to prevent Trachoma. Make sure that the face washing cloth, when used, is clean.\r\n\r\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of Trachoma."
+          "eng": "Trachoma is a disease of the eye that can cause blindness. It is passed when a fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home.\n\nFace washing is the best way to prevent Trachoma. Make sure that the face washing cloth, when used, is clean.\n\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of Trachoma."
         }
       },
-      "text": "Trachoma is a disease of the eye that can cause blindness. It is passed when a fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home.\r\n\r\nFace washing is the best way to prevent Trachoma. Make sure that the face washing cloth, when used, is clean.\r\n\r\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of Trachoma."
+      "text": "Trachoma is a disease of the eye that can cause blindness. It is passed when a fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home.\n\nFace washing is the best way to prevent Trachoma. Make sure that the face washing cloth, when used, is clean.\n\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of Trachoma."
     },
     {
       "id": "doctor",

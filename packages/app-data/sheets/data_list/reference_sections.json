@@ -6,6 +6,8 @@
   "rows": [
     {
       "id": "general",
+      "relevant_for_section_1": true,
+      "relevant_for_section_2": true,
       "title": "General WASH (including Waste as well as Bathing and Washing topics)",
       "_translations": {
         "title": {
@@ -20,6 +22,8 @@
     },
     {
       "id": "handwashing",
+      "relevant_for_section_1": true,
+      "relevant_for_section_2": false,
       "title": "Handwashing",
       "_translations": {
         "title": {
@@ -34,6 +38,8 @@
     },
     {
       "id": "healthy_families",
+      "relevant_for_section_1": true,
+      "relevant_for_section_2": false,
       "title": "@data.module.healthy_families.title",
       "_translations": {
         "title": {}
@@ -46,6 +52,8 @@
     },
     {
       "id": "clean_toilets",
+      "relevant_for_section_1": true,
+      "relevant_for_section_2": false,
       "title": "@data.module.clean_toilets.title",
       "_translations": {
         "title": {}
@@ -58,6 +66,8 @@
     },
     {
       "id": "healthy_homes",
+      "relevant_for_section_1": true,
+      "relevant_for_section_2": false,
       "title": "@data.module.healthy_homes.title",
       "_translations": {
         "title": {}
@@ -70,6 +80,8 @@
     },
     {
       "id": "safe_drinking_water",
+      "relevant_for_section_1": true,
+      "relevant_for_section_2": false,
       "title": "@data.module.safe_drinking_water.title",
       "_translations": {
         "title": {}
@@ -82,6 +94,8 @@
     },
     {
       "id": "safe_food",
+      "relevant_for_section_1": true,
+      "relevant_for_section_2": false,
       "title": "@data.module.safe_food.title",
       "_translations": {
         "title": {}

@@ -12,10 +12,10 @@
     "note": "The following strings should not be translated:\n@global.privacy_policy\n@global.privacy_policy"
   },
   {
-    "SourceText": "The terms used in this @global.privacy_policy have the same meanings as in our @global.terms_and_conditions, which are accessible within the app, unless otherwise defined in this @global.privacy_policy.",
-    "text": "Masharti yanayotumika katika @global.privacy_policy yana maana sawa na yaliyopo katika @global.terms_and_conditions zetu, ambazo zinaweza kufikiwa ndani ya programu tumishi, isipokuwa kama imefafanuliwa vinginevyo katika @global.privacy_policy.",
+    "SourceText": "Remember that you have a choice",
+    "text": "Kumbuka kwamba una chaguo",
     "type": "template",
-    "note": "The following strings should not be translated:\n@global.privacy_policy\n@global.terms_and_conditions\n@global.privacy_policy"
+    "note": ""
   },
   {
     "SourceText": "1. What information does the app collect about you and how do we use it?",
@@ -24,8 +24,8 @@
     "note": ""
   },
   {
-    "SourceText": "Personal Data",
-    "text": "Data Binafsi",
+    "SourceText": "Take a few deep breaths",
+    "text": "Vuta pumzi ndefu",
     "type": "template",
     "note": ""
   },
@@ -66,9 +66,9 @@
     "note": ""
   },
   {
-    "SourceText": "Log Data",
-    "text": "Data ya Kumbukumbu",
-    "type": "template",
+    "SourceText": "Check-in chat",
+    "text": "Simulizi ya kuanzia",
+    "type": "data_list",
     "note": ""
   },
   {
@@ -78,15 +78,15 @@
     "note": ""
   },
   {
-    "SourceText": "Cookies",
-    "text": "Vidakuzi",
-    "type": "template",
+    "SourceText": "Famous Party",
+    "text": "Chama Maarufu",
+    "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.",
-    "text": "Vidakuzi ni faili zilizo na kiasi kidogo cha data ambazo hutumiwa kama vitambulishi vya kipekee visivyojulikana. Hizi hutumiwa kwa kivinjari chako kutoka kwa tovuti unazotembelea na kuhifadhiwa kwenye kumbukumbu ya ndani ya kifaa chako.",
-    "type": "template",
+    "SourceText": "Two truths, one lie",
+    "text": "Kweli mbili, uongo mmoja",
+    "type": "data_list",
     "note": ""
   },
   {
@@ -96,21 +96,21 @@
     "note": ""
   },
   {
-    "SourceText": "Legal",
-    "text": "Kisheria",
-    "type": "template",
+    "SourceText": "Superpowers",
+    "text": "Nguvu kubwa",
+    "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "The information that we request will be retained by us and used as described in this @global.privacy_policy.",
-    "text": "Taarifa tunazoomba tutazihifadhi na kuzitumia kama ilivyoelezwa katika @global.privacy_policy.",
-    "type": "template",
-    "note": "The string @global.privacy_policy should not be translated."
+    "SourceText": "Just a friendly chat",
+    "text": "Maongezi ya kirafiki",
+    "type": "data_list",
+    "note": ""
   },
   {
-    "SourceText": "Feedback Submissions",
-    "text": "Mawasilisho ya Maoni",
-    "type": "template",
+    "SourceText": "The Interrupter",
+    "text": "Mdakizi",
+    "type": "data_list",
     "note": ""
   },
   {
@@ -120,9 +120,9 @@
     "note": ""
   },
   {
-    "SourceText": "Aggregate Data",
-    "text": "Taarifa ya Jumla",
-    "type": "template",
+    "SourceText": "Yes, No or Maybe",
+    "text": "Ndiyo, Hapana au Labda",
+    "type": "data_list",
     "note": ""
   },
   {
@@ -132,9 +132,9 @@
     "note": "The string @global.app_name should not be translated."
   },
   {
-    "SourceText": "Push notifications",
-    "text": "Taarifa za kushinikiza",
-    "type": "template",
+    "SourceText": "Make up a story",
+    "text": "Buni Hadithi",
+    "type": "data_list",
     "note": ""
   },
   {
@@ -144,9 +144,9 @@
     "note": ""
   },
   {
-    "SourceText": "2. Information Sharing",
-    "text": "2. Kupeana Taarifa",
-    "type": "template",
+    "SourceText": "Dance moves",
+    "text": "Miondoko ya kucheza",
+    "type": "data_list",
     "note": ""
   },
   {
@@ -162,27 +162,27 @@
     "note": "The string @global.privacy_policy should not be translated."
   },
   {
-    "SourceText": "You agree that we may transfer your personal information outside your country, for example, to administer cloud services. We will ensure that any country, company or person that we pass your personal information to agrees to treat your information with the same level of protection as we are obliged to.",
-    "text": "Unakubali kwamba tunaweza kuhamisha taarifa yako binafsi nje ya nchi yako, kwa mfano, ili kusimamia huduma za uhifadhi mtandaoni. Tutahakikisha kwamba nchi, kampuni yooyote au mtu yeyote ambaye tunampatia taarifa zako za binafsi anakubali kushughulikia maelezo yako kwa kiwango sawa cha ulinzi tunachowajibika.",
-    "type": "template",
+    "SourceText": "Get active!",
+    "text": "Changamka!",
+    "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "3. Third Party Service Providers and Websites",
-    "text": "3. Watoa Huduma na Tovuti za Wahusika wengine",
-    "type": "template",
+    "SourceText": "Name that tune",
+    "text": "Taja jina la wimbo huo",
+    "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "The app does use third party services that may collect information used to identify you. We do so for the following reasons:\n* To facilitate our app\n* To provide the app on our behalf\n* To perform app-related services; or\n* To assist us in analysing how our app is used.",
-    "text": "Programu tumishi hii haitumii huduma za watu wengine ambazo zinaweza kukusanya taarifa zinazotumiwa kukutambulisha. Tunafanya hivyo kwa sababu zifuatazo:\n* Ili kuwezesha programu tumishi yetu\n* Ili kutoa programu tumishi kwa niaba yetu\n* Kufanya huduma zinazohusiana na programu tumishi; au\n* Ili kutusaidia katika kuchanganua jinsi programu tumishi yetu inatumiwa.",
-    "type": "template",
+    "SourceText": "Pass the snap",
+    "text": "Pitisha kitufe",
+    "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "We want to inform users of this app that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.",
-    "text": "Tunataka kuwafahamisha watumiaji wa programu hii kwamba wahusika hawa wengine wanaweza kufikia Taarifa zako za Binafsi. Sababu ni kufanya kazi walizopewa kwa niaba yetu. Walakini, wanalazimika kutofichua au kutumia habari kwa madhumuni mengine yoyote.",
-    "type": "template",
+    "SourceText": "Family workout",
+    "text": "Mazoezi ya familia",
+    "type": "data_list",
     "note": ""
   },
   {
@@ -198,15 +198,15 @@
     "note": ""
   },
   {
-    "SourceText": "This app may contain links to other sites that are not covered by this @global.privacy_policy. If you click on a third-party link, you will be directed to that site. This @global.privacy_policy applies only to the processing of your information by this app. It does not address, and we are not responsible for, the privacy, information, or other practices of any third parties, including any third party operating any site or service to which this app links to.",
-    "text": "Programu tumishi hii inaweza kuwa na viungo vya tovuti zingine ambazo hazijashughulikiwa na @global.privacy_policy. Ukibofya kiungo cha mtu wa tatu, utaelekezwa kwenye tovuti hiyo. Hii @global.privacy_policy inatumika tu kwa uchakataji wa maelezo yako na programu tumishi hii. Haishughulikii, na hatuwajibikii, faragha, taarifa, au desturi nyingine za wahusika wengine, ikiwa ni pamoja na wahusika wengine wanaoendesha tovuti au huduma yoyote ambayo programu tumishi hii inaunganisha nayo.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.privacy_policy\n@global.privacy_policy"
+    "SourceText": "Household chores aren’t fun… or are they? You can make them into a game!",
+    "text": "Je, kazi za nyumbani hazifurahishi... au zinafurahisha? Unaweza kuzifanya kuwa mchezo!",
+    "type": "data_list",
+    "note": ""
   },
   {
-    "SourceText": "4. How long do we keep your data?",
-    "text": "4. Je, tunahifadhi data yako kwa muda gani?",
-    "type": "template",
+    "SourceText": "What are you doing?",
+    "text": "Unafanya nini?",
+    "type": "data_list",
     "note": ""
   },
   {
@@ -216,9 +216,9 @@
     "note": ""
   },
   {
-    "SourceText": "5. How do we keep your data secure?",
-    "text": "5. Je, tunawekaje data yako salama?",
-    "type": "template",
+    "SourceText": "Crazy chicken",
+    "text": "Kuku kichaa",
+    "type": "data_list",
     "note": ""
   },
   {
@@ -228,9 +228,9 @@
     "note": "The string @global.app_name should not be translated."
   },
   {
-    "SourceText": "6. Children’s Privacy",
-    "text": "6. Faragha ya Watoto",
-    "type": "template",
+    "SourceText": "Help your teen cope",
+    "text": "Msaidie kijana kwendana",
+    "type": "data_list",
     "note": ""
   },
   {
@@ -240,46 +240,46 @@
     "note": ""
   },
   {
-    "SourceText": "Under certain circumstances, by law you have the right to:\n* Request access to your data (commonly known as a \"subject access request\"). This enables you to receive a copy of your data and to check that we are lawfully processing it.\n* Request correction of your data. This enables you to ask us to correct any incomplete or inaccurate information we hold about you.\n* Request erasure of your data. This enables you to ask us to delete or remove your data under certain circumstances, for example, if you consider that there is no good reason for us continuing to process it. You also have the right to ask us to delete or remove your data where you have exercised your right to object to processing (see below).\n* Object to processing of your data where we are relying on our legitimate interests (or those of a third party) and there is something about your particular situation which makes you want to object to processing on this ground.\n* Request the restriction of processing of your data. This enables you to ask us to suspend the processing of your data, for example if you want us to establish its accuracy or the reason for processing it.\n* Request the transfer of your data to another party.",
-    "text": "Chini ya hali fulani, kisheria una haki ya:\n* Omba ufikiaji wa data yako (inayojulikana kama \"ombi la ufikiaji wa mada\"). Hii hukuwezesha kupokea nakala ya data yako na kuangalia kama tunaichakata kihalali.\n* Omba marekebisho ya data yako. Hii hukuwezesha kutuuliza kusahihisha taarifa yoyote isiyo kamili au isiyo sahihi tunayoshikilia kukuhusu.\n* Omba kufutwa kwa data yako. Hii hukuwezesha kutuomba kufuta au kuondoa data yako chini ya hali fulani, kwa mfano, ikiwa unaona kuwa hakuna sababu nzuri ya sisi kuendelea kuichakata. Pia una haki ya kutuomba kufuta au kuondoa data yako ambapo umetumia haki yako ya kupinga kuchakatwa (tazama hapa chini).\n* Inapinga kuchakata data yako ambapo tunategemea maslahi yetu halali (au yale ya wahusika wengine) na kuna kitu kuhusu hali yako mahususi ambacho kinakufanya utake kukataa kuchakatwa kwa msingi huu.\n* Omba kizuizi cha usindikaji wa data yako. Hii hukuwezesha kutuuliza tuahirishe uchakataji wa data yako, kwa mfano ikiwa unataka tubainishe usahihi wake au sababu ya kuichakata.\n* Omba uhamishaji wa data yako kwa chama kingine.",
-    "type": "template",
+    "SourceText": "Wonderful, I am so happy things are going well.",
+    "text": "Ni jambo la kuvutia sana, ninafurahi sana mambo yanaenda vizuri.",
+    "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "Depending on the circumstances and the nature of your request it may not be possible for us to do what you have asked, for example, where there is a statutory or contractual requirement for us to process your data and it would not be possible to fulfil our legal obligations if we were to stop. Further information on your rights is available from the Information Commissioner’s Office (ICO).",
-    "text": "Kulingana na mazingira na aina ya ombi lako huenda isiwezekane kwetu kufanya ulichoomba, kwa mfano, pale ambapo kuna mahitaji ya kisheria au ya kimkataba ili sisi kuchakata data yako na haingewezekana kutimiza wajibu wetu. majukumu ya kisheria ikiwa tungeacha. Taarifa zaidi kuhusu haki zako zinapatikana kutoka Ofisi ya Kamishna wa Habari (ICO).",
-    "type": "template",
+    "SourceText": "Some days will have their challenges. That is okay. You are on the right path!",
+    "text": "Baadhi ya siku zingine zitakuwa na changamoto zake. Hiyo ni sawa. Uko kwenye njia sahihi!",
+    "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "ICO",
-    "text": "ICO",
-    "type": "template",
+    "SourceText": "Let’s take a moment for YOU. Looking after yourself well starts with noticing how you feel.",
+    "text": "Hebu tuchukue muda kwa ajili YAKO. Kujitunza vizuri huanza na kugundua jinsi unavyohisi.",
+    "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "8. Removing the app",
-    "text": "8. Kuondoa programu tumishi",
-    "type": "template",
+    "SourceText": "Great! So good to hear you are in a positive space.",
+    "text": "Hongera! ni vizuri sana kusikia uko katika nafasi nzuri",
+    "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "We are sorry if you find our app no longer useful. Should you decide to remove our app, we may still retain some of your data (although anonymised) to troubleshoot, aid in investigations, comply with legal requirements or to add to our existing research data sets.",
-    "text": "Samahani ikiwa unaona programu tumishi yetu haina maana tena. Iwapo utaamua kuondoa programu tumishi yetu, bado tunaweza kuhifadhi baadhi ya data yako (ingawa hatujulikani) ili kutatua matatizo, kusaidia uchunguzi, kutii mahitaji ya kisheria au kuongeza kwenye seti zetu zilizopo za data za utafiti.",
-    "type": "template",
+    "SourceText": "Things are not always easy. But that is how we can grow and learn every day!",
+    "text": "Mambo si rahisi kila wakati. Lakini hivyo ndivyo tunavyoweza kukua na kujifunza kila siku!",
+    "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "9. Changes to the @global.privacy_policy",
-    "text": "9. Mabadiliko ya @global.privacy_policy",
-    "type": "template",
-    "note": "The string @global.privacy_policy should not be translated."
+    "SourceText": "Life can be hard. Whatever you are feeling, you can be proud of yourself for being here!",
+    "text": "Maisha yanaweza kuwa magumu. Vyovyote unavyohisi, unaweza kujivunia kuwa hapa!",
+    "type": "data_list",
+    "note": ""
   },
   {
-    "SourceText": "We may update our @global.privacy_policy from time to time. You waive your right to be notified directly of changes and are advised to review this page periodically for any updates. Your continued use of the app suggests you agree to subsequent revisions of the @global.privacy_policy.",
-    "text": "Tunaweza kuboresha @global.privacy_policy mara kwa mara. Unaachilia haki yako ya kuarifiwa moja kwa moja kuhusu mabadiliko na unashauriwa kukagua ukurasa huu mara kwa mara kwa masasisho yoyote. Kuendelea kwako kutumia programu kunapendekeza ukubali masahihisho yajayo ya sera ya @global.privacy_policy.",
-    "type": "template",
-    "note": "The following strings should not be translated:\n@global.privacy_policy\n@global.privacy_policy"
+    "SourceText": "You matter! Take a moment to check in with yourself.",
+    "text": "Wewe ni wa muhimu! Chukua muda kujiangalia wewe mwenyewe.",
+    "type": "data_list",
+    "note": ""
   },
   {
     "SourceText": "If you have any questions or suggestions about our @global.privacy_policy, do not hesitate to contact us at apps@idems.international.",

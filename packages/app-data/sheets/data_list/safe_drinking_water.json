@@ -37,19 +37,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Transporting and storing water"
         },
         "text": {
-          "eng": "Make sure that water that is carried and stored does not come into contact with hands, dirt or insects. Hands, dirt and insects make water unsafe to drink."
+          "eng": "Make sure that water that is carried and stored does not come into contact with hands, dirt or insects. Hands, dirt, and insects make water unsafe to drink."
         }
       },
-      "text": "Make sure that water that is carried and stored does not come into contact with hands, dirt or insects. Hands, dirt and insects make water unsafe to drink."
+      "text": "Make sure that water that is carried and stored does not come into contact with hands, dirt or insects. Hands, dirt, and insects make water unsafe to drink."
     },
     {
       "id": "what",
@@ -88,19 +86,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "How do you keep your container clean?"
         },
         "text": {
-          "eng": "Step 1: Wash your hands following the steps in the how to wash your hands module.\r\nStep 2: Pour clean and soapy water into the container.\r\nStep 3: Put on the lid and shake for one minute (or if you can, scrub the inside of the container).\r\nStep 4: Pour the soapy water out. Rinsing next with non soapy water.\r\nAlso, don't forget to wash your cup after every use."
+          "eng": "Step 1: Wash your hands following the steps in the how to wash your hands module.\nStep 2: Pour clean and soapy water into the container.\nStep 3: Put on the lid and shake for one minute (or if you can, scrub the inside of the container).\nStep 4: Pour the soapy water out. Rinsing next with non soapy water.\nAlso, don't forget to wash your cup after every use."
         }
       },
-      "text": "Step 1: Wash your hands following the steps in the how to wash your hands module.\r\nStep 2: Pour clean and soapy water into the container.\r\nStep 3: Put on the lid and shake for one minute (or if you can, scrub the inside of the container).\r\nStep 4: Pour the soapy water out. Rinsing next with non soapy water.\r\nAlso, don't forget to wash your cup after every use."
+      "text": "Step 1: Wash your hands following the steps in the how to wash your hands module.\nStep 2: Pour clean and soapy water into the container.\nStep 3: Put on the lid and shake for one minute (or if you can, scrub the inside of the container).\nStep 4: Pour the soapy water out. Rinsing next with non soapy water.\nAlso, don't forget to wash your cup after every use."
     },
     {
       "id": "disinfect_boiling",
@@ -113,19 +109,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Treating water by boiling"
         },
         "text": {
-          "eng": "*  Boiling water can make it safe to drink or cook with.\n*  Let the water sit for some time until the dirt settles at the bottom. \n*  Pour it into a pot and boil it for at least 10 minutes to make sure all the germs are killed before using it. \n*  Drink the water within 24 hours. This helps to keep it clean, fresh and free from other germs."
+          "eng": "*  Boiling water can make it safe to drink or cook with.\n*  Let the water sit for some time until the dirt settles at the bottom. \n*  Pour it into a pot and boil it for at least 10 minutes to make sure all the germs are killed before using it. \n*  Drink the water within 24 hours. This helps to keep it clean, fresh, and free from other germs."
         }
       },
-      "text": "*  Boiling water can make it safe to drink or cook with.\n*  Let the water sit for some time until the dirt settles at the bottom. \n*  Pour it into a pot and boil it for at least 10 minutes to make sure all the germs are killed before using it. \n*  Drink the water within 24 hours. This helps to keep it clean, fresh and free from other germs."
+      "text": "*  Boiling water can make it safe to drink or cook with.\n*  Let the water sit for some time until the dirt settles at the bottom. \n*  Pour it into a pot and boil it for at least 10 minutes to make sure all the germs are killed before using it. \n*  Drink the water within 24 hours. This helps to keep it clean, fresh, and free from other germs."
     }
   ],
   "_xlsxPath": "data_lists/modules/module_details.xlsx"

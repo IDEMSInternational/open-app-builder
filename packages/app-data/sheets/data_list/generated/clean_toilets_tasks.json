@@ -86,19 +86,17 @@
         "title": {
           "tz_sw": true
         },
-        "text": {
-          "tz_sw": true
-        }
+        "text": {}
       },
       "_translatedFields": {
         "title": {
           "eng": "Tips for a clean toilet"
         },
         "text": {
-          "eng": "* Sweep your toilet, the area around it and pathway to it daily.\r\n* Use soap to get rid of any urine stains or stool.\r\n* Throw used toilet paper into the toilet.\r\n* Check your toilet regularly. Make any repairs quickly."
+          "eng": "* Sweep your toilet, the area around it and pathway to it daily.\n* Use soap to get rid of any urine stains or stool.\n* Throw used toilet paper into the toilet.\n* Check your toilet regularly. Make any repairs quickly."
         }
       },
-      "text": "* Sweep your toilet, the area around it and pathway to it daily.\r\n* Use soap to get rid of any urine stains or stool.\r\n* Throw used toilet paper into the toilet.\r\n* Check your toilet regularly. Make any repairs quickly.",
+      "text": "* Sweep your toilet, the area around it and pathway to it daily.\n* Use soap to get rid of any urine stains or stool.\n* Throw used toilet paper into the toilet.\n* Check your toilet regularly. Make any repairs quickly.",
       "completed_field": "clean_toilets_tips_completed"
     }
   ]
