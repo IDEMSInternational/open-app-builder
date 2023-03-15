@@ -45,29 +45,33 @@
     {
       "type": "text",
       "name": "text_1_1",
-      "value": "These @global.terms_and_conditions are an agreement between you and international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) which furthermore sets out the rules for your use of @global.parent_app.",
+      "value": "These @global.terms_and_conditions are an agreement between you and @global.app_id (‘@global.parent_app’ or ‘the app’) which furthermore sets out the rules for your use of @global.parent_app.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_1_1",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "These @global.terms_and_conditions are an agreement between you and international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) which furthermore sets out the rules for your use of @global.parent_app.",
+            "fullExpression": "These @global.terms_and_conditions are an agreement between you and @global.app_id (‘@global.parent_app’ or ‘the app’) which furthermore sets out the rules for your use of @global.parent_app.",
             "matchedExpression": "@global.terms_and_conditions",
             "type": "global",
             "fieldName": "terms_and_conditions"
           },
           {
-            "fullExpression": "These @global.terms_and_conditions are an agreement between you and international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) which furthermore sets out the rules for your use of @global.parent_app.",
+            "fullExpression": "These @global.terms_and_conditions are an agreement between you and @global.app_id (‘@global.parent_app’ or ‘the app’) which furthermore sets out the rules for your use of @global.parent_app.",
+            "matchedExpression": "@global.app_id",
+            "type": "global",
+            "fieldName": "app_id"
+          },
+          {
+            "fullExpression": "These @global.terms_and_conditions are an agreement between you and @global.app_id (‘@global.parent_app’ or ‘the app’) which furthermore sets out the rules for your use of @global.parent_app.",
             "matchedExpression": "@global.parent_app",
             "type": "global",
             "fieldName": "parent_app"
           },
           {
-            "fullExpression": "These @global.terms_and_conditions are an agreement between you and international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) which furthermore sets out the rules for your use of @global.parent_app.",
+            "fullExpression": "These @global.terms_and_conditions are an agreement between you and @global.app_id (‘@global.parent_app’ or ‘the app’) which furthermore sets out the rules for your use of @global.parent_app.",
             "matchedExpression": "@global.parent_app",
             "type": "global",
             "fieldName": "parent_app"
@@ -76,6 +80,9 @@
       },
       "_dynamicDependencies": {
         "@global.terms_and_conditions": [
+          "value"
+        ],
+        "@global.app_id": [
           "value"
         ],
         "@global.parent_app": [

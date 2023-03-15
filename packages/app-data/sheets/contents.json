@@ -1334,6 +1334,18 @@
       "flow_name": "activity_variables",
       "_xlsxPath": "global/data/parent_centre_globals.xlsx"
     },
+    "app_id": {
+      "flow_type": "global",
+      "flow_name": "app_id",
+      "_xlsxPath": "global/data/navigation_globals.xlsx"
+    },
+    "app_id_tz": {
+      "flow_type": "global",
+      "flow_name": "app_id_tz",
+      "override_target": "app_id",
+      "override_condition": "@fields._deployment_name == \"plh_tz\"",
+      "_xlsxPath": "tz/data/navigation_globals_tz.xlsx"
+    },
     "app_menu_globals": {
       "flow_type": "global",
       "flow_name": "app_menu_globals",
