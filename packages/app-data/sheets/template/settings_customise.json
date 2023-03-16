@@ -32,7 +32,9 @@
       "name": "language",
       "value": "Choose your language",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "parameter_list": {
         "style": "emphasised"

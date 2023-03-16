@@ -1,9 +1,9 @@
 [
   {
-    "SourceText": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
-    "text": "Data yako ni muhimu kwetu. Hii @global.privacy_policy for international.idems.plh_teens\n(‘@global.parent_app’ ‘au programu’) huweka bayana sera zetu za ukusanyaji, matumizi na ufichuaji wa taarifa binafsi katika matumizi ya @global.parent_app.",
+    "SourceText": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
+    "text": "Data yako ni muhimu kwetu. Hii @global.privacy_policy for @global.app_id (‘@global.parent_app’ ‘au programu’) huweka bayana sera zetu za ukusanyaji, matumizi na ufichuaji wa taarifa binafsi katika matumizi ya @global.parent_app.",
     "type": "template",
-    "note": "The following strings should not be translated:\n@global.privacy_policy\n@global.parent_app\n@global.parent_app"
+    "note": "The following strings should not be translated:\n@global.privacy_policy\n@global.app_id\n@global.parent_app\n@global.parent_app"
   },
   {
     "SourceText": "@global.parent_app is a free app version of the Parenting for Lifelong Health for Parents and Teens programme, hosted by UNICEF and designed for parents and caregivers of adolescents aged 10 to 17 years.",
@@ -42,6 +42,12 @@
     "note": "The following strings should not be translated:\n@global.privacy_policy\n@global.parent_app"
   },
   {
+    "SourceText": "Specifically, this is data regarding chosen username, as well as gender.  All data collected is linked to your unique @global.parent_app identification number.  The @global.parent_app identification number produced within the app may also be used to link with any out of app surveys conducted.",
+    "text": "Hasa, hizi ni taarifa zinazohusisha jina lililochaguliwa pamoja na jinsia. Taarifa zote zilizokusanywa zitaunganishwa na namba yako ya kipekee ya utambulisho @global.parent_app. namba yako ya utambulisho ya @global.parent_app itatolewa kupitia programu tumishi, pia itatumika kuunganisha na tafiti nyingine zitakazo fanyika nnje ya programu tumishi.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@global.parent_app\n@global.parent_app"
+  },
+  {
     "SourceText": "We process your data to provide parenting support to you, communicate when you contact us, for security reasons as well as research purposes (see section ‘Information Sharing’). The primary research purpose includes optimising engagement of a digital parenting intervention (use of @global.parent_app) to prevent violence against adolescents. During the course of research, the study team may use aggregated and anonymised data from the app for further research projects. Finally, please note that we may process your data without your knowledge or consent, where this is required or permitted by law.",
     "text": "Tunachakata taarifa zako ili kukupa usaidizi wa malezi, unapowasiliana nasi, kwa sababu za usalama na pia madhumuni ya utafiti (angalia sehemu ya ‘Kushirikishana Taarifa’). Madhumuni ya kimsingi ya utafiti ni pamoja na kuboresha ushiriki katika malezi kwa njia ya kidijitali (matumizi ya @global.parent_app) ili kuzuia unyanyasaji dhidi ya vijana. Wakati wa utafiti, timu ya utafiti inaweza kutumia taarifa zilizojumlishwa na zisizokuwa na utambulisho kutoka katika programu tumishi kwa miradi zaidi ya utafiti. Hatimaye, tafadhali kumbuka kwamba tunaweza kuchakata taarifa yako bila ujuzi au idhini yako, ambapo hii inahitajika au inaruhusiwa na sheria.",
     "type": "template",
@@ -54,8 +60,26 @@
     "note": ""
   },
   {
+    "SourceText": "The @global.parent_app team has legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
+    "text": "Timu ya @global.parent_app ina maslahi halali katika kutekeleza shughuli za utafiti, chini ya Sanaa. 6(1)(f) GDPR, kuhusiana na kushirikisha maelezo machache yanayohusiana na jinsi unavyotumia programu tumishi; na",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "Your consent, under Art. 6(1)(a) GDPR, regarding the email address you provide at the point of Google Sign-in and the sharing of answers you may provide to in-app questions (those involving as stated chosen username and gender which are entirely optional).",
+    "text": "Idhini yako, chini ya Sanaa. 6(1)(a) GDPR, kuhusiana na anuani ya barua pepe unayotoa wakati wa Kuingia kwa Kutumia Google na kushiriki majibu ambayo unaweza kutoa kwa tafiti za ndani ya programu tumishi (ambazo ni za hiari kabisa).",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Log Data",
     "text": "Data ya Kumbukumbu",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Whenever you use our app, we collect data and information (through third party services) on your phone called Log Data. This Log Data includes information such as a truncated device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilising our app, the time, date and your intentions within the app (which include but are not limited to any app buttons clicked or pages visited.)",
+    "text": "Wakati wowote unapotumia programu yetu, tunakusanya data na taarifa (kupitia huduma za watu wengine) kwenye simu yako inayoitwa Data ya Kumbukumbu. Data hii ya Kumbukumbu inajumuisha maelezo kama vile anuani ya Itifaki ya kifaa cha Mtandao kilichopunguzwa (\"IP\"), jina la kifaa, toleo la mfumo wa uendeshaji, usanidi wa programu tumishi unapotumia programu tumishi yetu, saa, tarehe na asili ya matumizi yako ya programu tumishi.)",
     "type": "template",
     "note": ""
   },
@@ -68,6 +92,12 @@
   {
     "SourceText": "Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.",
     "text": "Vidakuzi ni faili zilizo na kiasi kidogo cha data ambazo hutumiwa kama vitambulishi vya kipekee visivyojulikana. Hizi hutumiwa kwa kivinjari chako kutoka kwa tovuti unazotembelea na kuhifadhiwa kwenye kumbukumbu ya ndani ya kifaa chako.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "This app does not use these “cookies” explicitly.  However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. In particular, the app integrates GlitchTip and Matomo analytics as well as Firebase authentication software.",
+    "text": "Programu tumishi hii haitumii \"vidakuzi\" hivi kwa uwazi. Hata hivyo, programu tumishi hii inaweza kutumia msimbo wa watu wengine na maktaba zinazotumia \"vidakuzi\" kukusanya maelezo na kuboresha huduma zao. Haswa, programu tumishi inaunganisha uchanganuzi wa Matomo na programu ya uthibitishaji wa kanzidata.",
     "type": "template",
     "note": ""
   },
@@ -126,6 +156,18 @@
     "note": ""
   },
   {
+    "SourceText": "Limited internal staff to IDEMS may have access to personal data collected via the app as well as log data, as necessary to perform their duties regarding the operation of the app. These data will only be accessed on a need-to-know basis, and all team members with access to the data are bound to confidentiality.",
+    "text": "Wafanyakazi wachache wa ndani wa IDEMS wanaweza kufikia data binafsi iliyokusanywa kupitia programu tumishi, inapohitajika ili kutekeleza majukumu yao kuhusu uendeshaji wa programu. Taarifa hizi zitafikiwa tu kwa msingi wa kuhitaji kujua, na timu nzima inayoweza kufikia taarifa hizo wanalazimika kuwa na siri.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "You agree that your personal information may be shared with third parties such as researchers and partners involved in the improvement or implementation of the app including those outside your country. Prior to the disclosure of information with research partners we will make anonymous to the extent possible and where appropriate, information such as chosen username and email address (where collected).  In reading and accepting this @global.privacy_policy , you permit us to use your anonymized data in published research.",
+    "text": "Unakubali kwamba maelezo yako ya binafsi yanaweza kushirikiwa na washirika wengine kama vile watafiti na wabia wanaohusika katika uboreshaji au utekelezaji wa programu tumishi ikiwa ni pamoja na wale walio nje ya nchi yako. Kabla ya kufichuliwa kwa habari na wabia wa utafiti, tutafanya bila utambulisho kwa kadiri tuwezavyo na inapofaa taarifa kama vile jina la mtumiaji lilochaguliwa na anwani ya barua pepe (zinapokusanywa). Katika kusoma na kukubali hii @global.privacy_policy, unaturuhusu kutumia data yako isiyojulikana katika utafiti uliochapishwa.",
+    "type": "template",
+    "note": "The string @global.privacy_policy should not be translated."
+  },
+  {
     "SourceText": "You agree that we may transfer your personal information outside your country, for example, to administer cloud services. We will ensure that any country, company or person that we pass your personal information to agrees to treat your information with the same level of protection as we are obliged to.",
     "text": "Unakubali kwamba tunaweza kuhamisha taarifa yako binafsi nje ya nchi yako, kwa mfano, ili kusimamia huduma za uhifadhi mtandaoni. Tutahakikisha kwamba nchi, kampuni yooyote au mtu yeyote ambaye tunampatia taarifa zako za binafsi anakubali kushughulikia maelezo yako kwa kiwango sawa cha ulinzi tunachowajibika.",
     "type": "template",
@@ -180,8 +222,20 @@
     "note": ""
   },
   {
+    "SourceText": "We value your trust in providing us your personal information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.  We also reserve the right to the storage of your data on third party servers or databases outside of the listed @global.parent_app team (refer to the section on Third Party Service Providers and Websites).  Therefore usage of the app is at your own risk.",
+    "text": "Tunathamini uaminifu wako kwa kutupa taarifa zako za kibinafsi, kwa hivyo tunajitahidi kutumia njia zinazokubalika kibiashara kuzilinda. Lakini kumbuka kuwa hakuna njia ya uwasilishaji kupitia mtandao, au njia ya uhifadhi wa kielektroniki ambayo ni salama na ya kuaminika kwa 100%, na hatuwezi kuhakikisha usalama wake kamili. Pia tunahifadhi haki ya kutunza taarifa yako kwenye kanzidata za watu wengine au kuhifadhi taarifa  nje ya timu iliyoorodheshwa ya @global.parent_app. Kwa hivyo matumizi ya programu ni kwa taadhari yako mwenyewe.",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
     "SourceText": "6. Children’s Privacy",
     "text": "6. Faragha ya Watoto",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "This app is not targeted towards anyone under the age of 18. We do not knowingly collect personally identifiable information from individuals under 18. As per our Terms and Conditions, In the case we discover that an individual under 18 has provided us with personal information (such as gender / name or nickname), we will immediately delete this data from our servers. If you are a parent or guardian and are aware that your child has provided us with personal information, please contact us so that we will be able to undertake the necessary actions.",
+    "text": "Programu tumishi hii haijalengwa mtu yeyote aliye na umri wa chini ya miaka 18. Hatukusanyi taarifa zinazoweza kumtambulisha mtu binafsi kutoka kwa watu walio chini ya umri wa miaka 18 kwa makusudi. Huwatuna kusanya taarifa kuhusu watoto chini ya miaka 18 maana programu tumishi imelenga walezi wa watoto wenye umri miala 10 - 17 ambao wanaweza kuulizwa maswali kuhusu tabia za watoto wao. Iwapo tutagundua kuwa mtu aliye na umri wa chini ya miaka 18 ametupa taarifa za binafsi, tutafuta data hii mara moja kutoka kwa seva zetu. Ikiwa wewe ni mzazi au mlezi na unafahamu kwamba mtoto wako ametupa taarifa za kibinafsi, tafadhali wasiliana nasi ili tuweze kuchukua hatua zinazohitajika.",
     "type": "template",
     "note": ""
   },
@@ -252,16 +306,28 @@
     "note": ""
   },
   {
-    "SourceText": "These @global.terms_and_conditions are an agreement between you and international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) which furthermore sets out the rules for your use of @global.parent_app.",
-    "text": "Haya @global.terms_and_conditions ni makubaliano kati yako na international.idems.plh_teens (‘@global.parent_app’ au ‘programu’) ambayo zaidi ya hayo yanaweka sheria za matumizi yako ya @global.parent_app.",
+    "SourceText": "These @global.terms_and_conditions are an agreement between you and @global.app_id (‘@global.parent_app’ or ‘the app’) which furthermore sets out the rules for your use of @global.parent_app.",
+    "text": "Haya @global.terms_and_conditions ni makubaliano kati yako na @global.app_id (‘@global.parent_app’ au ‘programu’) ambayo zaidi ya hayo yanaweka sheria za matumizi yako ya @global.parent_app.",
     "type": "template",
-    "note": "The following strings should not be translated:\n@global.terms_and_conditions\n@global.parent_app\n@global.parent_app"
+    "note": "The following strings should not be translated:\n@global.terms_and_conditions\n@global.app_id\n@global.parent_app\n@global.parent_app"
   },
   {
     "SourceText": "@global.parent_app is a free app version of the Parenting for Lifelong Health for Parents and Teens programme designed for parents and caregivers of adolescents aged 10 to 17 years.",
     "text": "@global.parent_app ni toleo la programu lisilolipishwa la mpango wa Uzazi kwa Afya ya Maisha Yote kwa Wazazi na Vijana iliyoundwa kwa ajili ya wazazi na walezi wa vijana waliobalehe walio na umri wa miaka 10 hadi 17.",
     "type": "template",
     "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "Parenting for Lifelong Health (PLH) - was designed through a worldwide collaboration between parenting experts from UNICEF, the WHO and Universities in South Africa and the UK, as well as African NGOs and families and teens all across Africa.",
+    "text": "Parenting for Lifelong Health (PLH)- ilitengenezwa kupitia ushirikiano wa wadau mbali mbali wa malezi ulimwenguni kutoka UNICEF, WHO na Chuo Kikuu cha Afrika ya Kusini na Uingereza ,pamoja na taasisi zisizo za kiserikari za afrika na familia na vijana kote kote Afrika.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "The digital @global.parent_app is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.parent_app team’).",
+    "text": "@global.parent_app inaletwa kwako kwa ushirikiano wa washirika wakiwemo Chuo Kikuu cha Oxford, IDEMS International, Chuo Kikuu cha Cape Town, Taasisi ya Kitaifa ya Utafiti wa Matibabu - Kituo cha Mwanza Tanzania, na Clowns Without Borders Afrika Kusini ('the @global.parent_app team ').",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@global.parent_app\n@global.parent_app"
   },
   {
     "SourceText": "Please read these @global.terms_and_conditions carefully. By downloading or using the app, you agree that you have read, understood, and accepted the @global.terms_and_conditions contained below.",
@@ -278,6 +344,18 @@
   {
     "SourceText": "2. Rules of Usage",
     "text": "2. Kanuni za Matumizi",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "@global.parent_app is open source and therefore its source code is available on GitHub for the usage and adaption by the wider software community. Nevertheless, you are not allowed to modify the existing app as is or its contents or copy any @global.parent_app team trademarks. Whilst open source, you should not translate the app into other languages or make derivative versions without acknowledging the @global.parent_app team in your efforts. Attempts to obtain sensitive account information or other personal data is not permitted. You should also not falsely represent yourself in the use of the app, make wrongful claims of affiliations to the app or make misleading reports of app misconduct. Use of the app must not also be in breach of any applicable laws or regulations.",
+    "text": "@global.parent_app ni chanzo huria na kwa hivyo msimbo wake wa chanzo unapatikana kwenye GitHub kwa matumizi na urekebishaji na jumuiya pana ya programu tumishi. Hata hivyo, huruhusiwi kurekebisha programu iliyopo kama ilivyo au yaliyomo au kunakili alama za biashara za timu ya @global.parent_app. Ingawa ni chanzo huria, hupaswi kutafsiri programu katika lugha nyingine au kutengeneza matoleo mengine bila kutambua timu ya @global.parent_app katika juhudi zako. Majaribio ya kupata maelezo nyeti ya akaunti au taarifa nyingine ya binafsi hairuhusiwi. Pia hupaswi kujiwakilisha kwa uwongo katika matumizi ya programu, kutoa madai yasiyo sahihi ya ushirika na programu au kutoa ripoti za kupotosha za utovu wa nidhamu wa programu. Matumizi ya programu haipaswi pia kukiuka sheria au kanuni zozote zinazotumika. ",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@global.parent_app\n@global.parent_app\n@global.parent_app"
+  },
+  {
+    "SourceText": "Finally this app is not targeted towards anyone under the age of 18. We do not knowingly collect personally identifiable information from individuals under 18.  In the case we discover that an individual under 18 has provided us with personal information (such as gender / name or nickname), we will immediately delete this data from our servers. If you are a parent or guardian and are aware that your child has provided us with personal information, please contact us so that we will be able to undertake the necessary actions.",
+    "text": "Programu tumishi hii haijaleng mtu yeyote aliye na umri wa chini ya miaka 18. Hatukusanyi taarifa zinazoweza kumtambulisha mtu binafsi kutoka kwa watu walio chini ya umri wa miaka 18 kwa makusudi. Iwapo tutagundua kuwa mtu aliye na umri wa chini ya miaka 18 ametupa taarifa za binafsi(kama vile jinsia/ jina au jina la utani), tutafuta taarifa hii mara moja kutoka kwa kanzidata zetu. Ikiwa wewe ni mzazi au mlezi na unafahamu kwamba mtoto wako ametupa taarifa binafsi, tafadhali wasiliana nasi ili tuweze kuchukua hatua zinazohitajika.",
     "type": "template",
     "note": ""
   },
@@ -372,6 +450,12 @@
     "note": ""
   },
   {
+    "SourceText": "Please be aware that the @global.parent_app team exclude responsibility for the following:\n\n\na. Certain functions of the app will require the app to have an active internet connection. The @global.parent_app team cannot take responsibility for the app not working at full functionality if you do not have access to Wi-Fi, or you do not have any of your data allowance left.\n\n\nb. Using the app outside of an area with Wi-Fi, will mean that your terms of agreement with your mobile network provider will still apply. As a result, you may be charged by your mobile provider for the cost of data for the duration of the connection while accessing the app, or other third party charges. In using the app, you accept responsibility for any such charges, including roaming data charges if you use the app outside of your home territory (i.e. region or country) without turning off data roaming. If you are not the bill payer for the device on which you are using the app, please be aware that we assume that you have received permission from the bill payer for using the app.\n\n\nc. Although we endeavour to ensure that the app is updated and its content accurate, we do rely on third parties to provide information to us so that we can make it available to you. We do not regularly check out all of the external sites and cannot guarantee that they are always accurate or reliable.\n\n\nd. The @global.parent_app team accepts no liability for any damage or loss, direct or indirect, you experience as a result of using the app, or arising from any reliance you may place on advice or information provided from the app. You should always exercise your own discretion and judgement appropriate to your own circumstances in relation to any advice or information provided from the app.\n\n\ne. Any instances of software bugs, viruses or other malicious material transmitted by a third party through our site are a regret, but we are devoid of responsibility.\n\n\nf. Updates to the app occur regularly in order to improve performance and content. The app is available on Android – the requirements for this system (and for any additional systems we decide to extend the availability of the app to) may change. It is your responsibility to download app updates to keep using the app. The @global.parent_app team does not promise that it will always update the app so that it is relevant to you and/or works with the Android version that you have installed on your device. However, you agree to always accept updates to the application when offered to you.\n\n\ng. The app site might not be available at all times for reasons of maintenance or trouble with associated software or hardware. Whilst we apologise for inconveniences, we are not liable for any loss you may incur should the site not be accessible or is withdrawn. Equally, we have the right and choice to terminate your access and use of the app (including availability of captured data) at any time, without warning. Unless we tell you otherwise, upon any termination, (a) the rights and licences granted to you in these terms will end; (b) you must stop using the app, and (if needed) delete it from your device.\n\n\nh. You agree to indemnify, at your own expense, the @global.parent_app team, its officials, employees, consultants and agents, against any claims, including your costs and expenses, by any third party, resulting from your use of the app.\n\n\ni. Companies or products associated with the app should not be interpreted as endorsement by the app or the @global.parent_app team or demonstrate an intention to infringe proprietary rights.",
+    "text": "Tafadhali fahamu kuwa timu ya @global.parent_app haiwajibiki kwa majukumu kwa yafuatayo:\n\n\na. Baadhi ya utendakazi wa programu utahitaji programu kuwa na muunganisho wa intaneti. Timu ya @global.parent_app haiwezi kuwajibika kwa programu kutofanya kazi kikamilifu ikiwa huna ufikiaji wa Wi-Fi, au huna salio lolote la bando la data.\n\n\nb. Kutumia programu nje ya eneo lenye Wi-Fi, kutamaanisha kuwa masharti yako ya makubaliano na mtoa huduma wako wa mtandao wa simu bado yatatumika. Kwa hivyo, unaweza kutozwa na mtoa huduma wako wa simu kwa gharama ya data kwa muda wa muunganisho unapotumia programu, au gharama zingine za watu wengine. Katika kutumia programu, unakubali kuwajibika kwa gharama zozote kama hizo, ikiwa ni pamoja na gharama za data ya kutumia mitandao ya ng'ambo ikiwa unatumia programu nje ya eneo lako la nyumbani (yaani, eneo au nchi) bila kuzima utumiaji wa data nje ya mtandao wako. Ikiwa wewe si mlipaji wa bili wa kifaa ambacho unatumia programu, tafadhali fahamu kwamba tunadhania kuwa umepokea ruhusa kutoka kwa mlipaji wa bili kwa kutumia programu.\n\n\nc. Ingawa tunajitahidi kuhakikisha kuwa programu imesasishwa na maudhui yake ni sahihi, tunategemea washirika wengine kutupa maelezo ili tuweze kufanya ipatikane kwako. Hatuangalii tovuti zote za nje mara kwa mara na hatuwezi kuhakikisha kuwa ni sahihi au za kuaminika kila wakati.\n\n\nd. Timu ya @global.parent_app haikubali dhima yoyote ya uharibifu au hasara yoyote, ya moja kwa moja au isiyo ya moja kwa moja, unayopata kutokana na kutumia programu, au kutokana na utegemezi wowote unaoweza kuweka kwa ushauri au maelezo yanayotolewa kutoka kwa programu. Unapaswa kutumia busara na uamuzi wako kila wakati kulingana na hali yako kuhusiana na ushauri au taarifa yoyote iliyotolewa kutoka kwa programu.\n\n\ne. Matukio yoyote ya hitilafu za programu, virusi au nyenzo zingine hasidi zinazopitishwa na mtu mwingine kupitia tovuti yetu ni majuto, lakini hatuna jukumu.\n\n\nf. Masasisho ya programu hutokea mara kwa mara ili kuboresha utendaji na maudhui. Programu inapatikana kwenye Android - mahitaji ya mfumo huu (na kwa mifumo yoyote ya ziada tunayoamua kupanua upatikanaji wa programu) inaweza kubadilika. Ni wajibu wako kupakua masasisho ya programu ili kuendelea kutumia programu. Timu ya @global.parent_app haiahidi kuwa itasasisha programu kila wakati ili iwe muhimu kwako na/au kufanya kazi na toleo la Android ambalo umesakinisha kwenye kifaa chako. Hata hivyo, unakubali kwamba kila mara utakubali masasisho ya programu yanapotolewa kwako.\n\n\ng. Tovuti ya programu inaweza kuwa haipatikani kila wakati kwa sababu za matengenezo au changamoto inayohusiana na programu au vifaa husika. Ingawa tunaomba radhi kwa usumbufu, hatuwajibikii kwa hasara yoyote ambayo unaweza kupata ikiwa tovuti haitafikiwa au kuondolewa. Vile vile, tuna haki na chaguo la kusitisha ufikiaji na matumizi yako ya programu (ikiwa ni pamoja na upatikanaji wa data iliyonaswa) wakati wowote, bila onyo. Isipokuwa tukikuambia vinginevyo, baada ya kusitishwa, (a) haki na leseni ulizopewa katika masharti haya zitaisha; (b) lazima uache kutumia programu, na (kama ikihitajika) uifute kwenye kifaa chako.\n\n\nh. Unakubali kufidia, kwa gharama yako mwenyewe, timu ya @global.parent_app, maafisa wake, wafanyakazi, washauri na mawakala wake, dhidi ya madai yoyote, ikiwa ni pamoja na gharama na matumizi yako, na wahusika wengine, kutokana na matumizi yako ya programu.\n\n\ni. Makampuni au bidhaa zinazohusishwa na programu hazipaswi kutafsiriwa kama uidhinishaji na programu au timu ya @global.parent_app au kuonyesha nia ya kukiuka haki za umiliki.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@global.parent_app\n@global.parent_app\n@global.parent_app\n@global.parent_app\n@global.parent_app\n@global.parent_app"
+  },
+  {
     "SourceText": "9. Changes to the @global.terms_and_conditions",
     "text": "9. Mabadiliko ya @global.terms_and_conditions",
     "type": "template",
@@ -394,6 +478,12 @@
     "text": "Ikiwa una maswali au mapendekezo kuhusu @global.terms_and_conditions zetu, usisite kuwasiliana nasi kwa apps@idems.international.",
     "type": "template",
     "note": "The string @global.terms_and_conditions should not be translated."
+  },
+  {
+    "SourceText": "Last updated: 1 March 2023",
+    "text": "Mara ya mwisho imeboreshwa: 1 mwezi wa tatu 2023",
+    "type": "template",
+    "note": ""
   },
   {
     "SourceText": "When everything feels like it is falling apart",
@@ -1218,10 +1308,10 @@
     "note": "The string @global.parent_point should not be translated."
   },
   {
-    "SourceText": "Help your teen stay safe by doing one of these things:\n* Map out or talk about safe and unsafe spaces in your community.\n* Map out or talk about safe and unsafe spaces online.\n* Make rules with your teen about how they can stay safe in the community and online.\n* Explain, remind, or use your teen's 'Safety Amnesty': Your teen can always tell you if they are in a dangerous or difficult situation, and you won't get angry or punish them.",
-    "text": "Msaidie kijana wako kuwa salama kwa kufanya mojawapo ya vitu hivi:\n*Tambua au zungumza kuhusu sehemu salama na zisizo salama katika jamii yako.\n*Tambua au zungumza kuhusu sehemu salama na zisizo salama mtandaoni.\n* Tengeneza sheria na kijana wako kuhusu jinsi wanavyoweza kuwa salama katika jamii na mtandaoni.\n* Mueleze, mkumbushe au na tumia 'Msamaha wa Usalama': Kijana wako anaweza kukuambia kila wakati iwapo yupo katika hali hatarishi au ngumu, na hutokasirika au kuwaadhibu.",
+    "SourceText": "Help your teen stay safe by doing one of these things:\n* Map out or talk about safe and unsafe spaces in your community.\n* Map out or talk about safe and unsafe spaces online.\n* Make rules with your teen about how they can stay safe in the community and online.\n* Explain, remind, or use your teen's \"@global.safety_word\": Your teen can always tell you if they are in a dangerous or difficult situation, and you won't get angry or punish them.",
+    "text": "Msaidie kijana wako kuwa salama kwa kufanya mojawapo ya vitu hivi:\n*Tambua au zungumza kuhusu sehemu salama na zisizo salama katika jamii yako.\n*Tambua au zungumza kuhusu sehemu salama na zisizo salama mtandaoni.\n* Tengeneza sheria na kijana wako kuhusu jinsi wanavyoweza kuwa salama katika jamii na mtandaoni.\n* Mueleze, mkumbushe au tumia \"@global.safety_word\": Kijana wako anaweza kukuambia kila wakati iwapo yupo katika hali hatarishi au ngumu, na hutokasirika au kuwaadhibu.",
     "type": "data_list",
-    "note": ""
+    "note": "The string \"@global.safety_word\": should not be translated."
   },
   {
     "SourceText": "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!",
@@ -1488,10 +1578,10 @@
     "note": ""
   },
   {
-    "SourceText": "When your teen gets angry, you might need to walk away until you are both calm. \n\nCheck to make sure your consequence is fair and reasonable. Listen to your teen’s explanation, and make sure to give a “Safety Amnesty” if they broke a rule in order to stay safe.",
-    "text": "Kijana wako anapokasirika, unaweza kuhitaji kuondoka hadi nyote mtakapokuwa mmetulia.\n\nTazama ili kuhakikisha kuwa athari ni ya haki na ya busara. Sikiliza maelezo ya kijana wako, na hakikisha unatoa \"Msamaha wa Usalama\" kama alivunja sheria ili kuwa salama.",
+    "SourceText": "When your teen gets angry, you might need to walk away until you are both calm.\n\nCheck to make sure your consequence is fair and reasonable. Listen to your teen’s explanation, and react calmly as you agreed if they used the “@global.safety_word” or broke a rule in order to stay safe.",
+    "text": "Kijana wako anapokasirika, unaweza kuhitaji kuondoka karibu nae hadi nyote mtakapokuwa mmetulia.\n\nTazama ili kuhakikisha kuwa madhara ni ya kawaida na ya busara. Sikiliza maelezo ya kijana wako, na hakikisha unatoa \"@global.safety_word” au kama alivunja sheria ili kuwa salama.",
     "type": "data_list",
-    "note": ""
+    "note": "The string “@global.safety_word” should not be translated."
   },
   {
     "SourceText": "I introduced the consequence without first discussing it with my teen.",
@@ -2130,30 +2220,6 @@
     "note": "The string @global.parent_centre should not be translated."
   },
   {
-    "SourceText": "Customise @global.parent_app",
-    "text": "Rekebisha @global.parent_app",
-    "type": "data_list",
-    "note": "The string @global.parent_app should not be translated."
-  },
-  {
-    "SourceText": "**Customise @global.parent_app** in the @global.parent_centre",
-    "text": "**Rekebisha @global.parent_app** kwenye @global.parent_centre",
-    "type": "data_list",
-    "note": "The following strings should not be translated:\n@global.parent_app**\n@global.parent_centre"
-  },
-  {
-    "SourceText": "Customise Again",
-    "text": "Rekebisha Tena",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "**Customise Again** in the @global.parent_centre",
-    "text": "**Binafsisha tena** katika @global.parent_centre",
-    "type": "data_list",
-    "note": "The string @global.parent_centre should not be translated."
-  },
-  {
     "SourceText": "Relax & Activities",
     "text": "Burudani & Shughuli",
     "type": "data_list",
@@ -2174,18 +2240,6 @@
   {
     "SourceText": "**Help** in the @global.parent_centre",
     "text": "**Msaada** kwenye @global.parent_centre",
-    "type": "data_list",
-    "note": "The string @global.parent_centre should not be translated."
-  },
-  {
-    "SourceText": "Technical Support",
-    "text": "Msaada wa Kiufundi",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "**Technical Support** in the @global.parent_centre",
-    "text": "**Msaada wa Kiufundi** kwenye @global.parent_centre",
     "type": "data_list",
     "note": "The string @global.parent_centre should not be translated."
   },
@@ -2226,28 +2280,10 @@
     "note": "The string @global.parent_centre should not be translated."
   },
   {
-    "SourceText": "Support Contacts",
-    "text": "Mawasiliano ya Msaada",
+    "SourceText": "Vodacom Tanzania",
+    "text": "Vodacom Tanzania",
     "type": "data_list",
     "note": ""
-  },
-  {
-    "SourceText": "**Support Contacts** in the @global.parent_centre",
-    "text": "**Mawasiliano ya Msaada** kwenye @global.parent_centre",
-    "type": "data_list",
-    "note": "The string @global.parent_centre should not be translated."
-  },
-  {
-    "SourceText": "Evidence Base",
-    "text": "Yenye Ushahidi wa Kufanya Kazi",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "**Evidence Base** in the @global.parent_centre",
-    "text": "**Yenye Ushahidi wa Kufanya Kazi** kwenye @global.parent_centre",
-    "type": "data_list",
-    "note": "The string @global.parent_centre should not be translated."
   },
   {
     "SourceText": "Quick pause",
@@ -2701,7 +2737,7 @@
   },
   {
     "SourceText": "@global.w_instruct_female_caregiver: \"Thank you for practising outside while I finished cleaning, @global.w_instruct_teen_girl. Now I have some time to watch your dance.\"",
-    "text": "@global.w_instruct_female_caregiver: \"Asante kwa kufanyia mazoezi nje wakati nilipokuwa nikimalizia kufanya usafi, w_instruct_teen_girl. Sasa ninamuda wakuangalia namna unavyocheza mziki.\"",
+    "text": "@global.w_instruct_female_caregiver: \"Asante kwa kufanyia mazoezi nje wakati nilipokuwa nikimalizia kufanya usafi, @global.w_instruct_teen_girl. Sasa ninamuda wakuangalia namna unavyocheza mziki.\"",
     "type": "data_list",
     "note": "The following strings should not be translated:\n@global.w_instruct_female_caregiver:\n@global.w_instruct_teen_girl."
   },
@@ -2790,12 +2826,6 @@
     "note": "The following strings should not be translated:\n@global.w_stress_male_caregiver:\n@global.w_stress_teen_boy_1:\n@global.w_stress_male_caregiver!”"
   },
   {
-    "SourceText": "Safety Amnesty",
-    "text": "Msamaha wa Usalama",
-    "type": "data_list",
-    "note": ""
-  },
-  {
     "SourceText": "Think back to when you were a teenager. \n\nWas there ever a time when you were in danger but you couldn’t tell your family because they would have been angry?\n\nThis ALMOST happened to @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl! Let’s have a look:",
     "text": "Kumbuka wakati ulipokuwa kijana.\n\nJe, kulikuwa na wakati wowote ambao ulikuwa hatarini lakini hukuweza kuiambia familia yako kwa sababu wangekasirika?\n\nHali hiyo ILIKARIBIA KABISA kumtokea @global.w_stress_teen_boy_2 na @global.w_stress_teen_girl! Hebu tuangalie:",
     "type": "data_list",
@@ -2820,22 +2850,22 @@
     "note": "The string @global.w_stress_teen_girl: should not be translated."
   },
   {
-    "SourceText": "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nJust say 'SAFETY AMNESTY'. I promise that I will try my best to help and I won’t be angry – even if you are doing something you shouldn't.\"",
-    "text": "Hizi ni hali za hatari! Kwa bahati nzuri, @global.w_stress_teen_boy_2 na @global.w_stress_teen_girl walikumbuka kile @global.w_stress_parent alichowaambia:\n\n\"Ninajali sana usalama wenu kuliko kitu chochote. Mkipata shida yoyote, au kuogopa kitu, mnaweza kunipigia simu nije kuwasaidia wakati wowote, au kunieleza shida hiyo.\n\nSemeni tu 'NINAOMBA MSAMAHA WA USALAMA'. Ninaahidi kuwa nitajitahidi kadiri ya uwezo wangu kuwasaidia na sitakasirika – hata mkiwa mnafanya jambo ambalo hampaswi kulifanya.\"",
+    "SourceText": "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nShall we use an imaginary ‘@global.safety_word_example_1’ as @global.safety_word? Just say something about @global.safety_word_example_1, I promise that I will try my best to help and I won’t be angry – even if you are doing something you shouldn’t.\"",
+    "text": "Hizi ni hali za hatari! Kwa bahati nzuri, @global.w_stress_teen_boy_2 na @global.w_stress_teen_girl walikumbuka kile @global.w_stress_parent alichowaambia:\n\n\"Ninajali sana usalama wenu kuliko kitu chochote. Mkipata shida yoyote, au kuogopa kitu, mnaweza kunipigia simu nije kuwasaidia wakati wowote, au kunieleza shida hiyo.\n\nJe, tunaweza kutumia ya kufikirika  '‘@global.safety_word_example_1 kama @global.safety_word? Sema tu kitu  kuhusu @global.safety_word_example_1, Ninaahidi kuwa nitajitahidi kadri ya uwezo wangu kusaidia na sitakasirika – hata mkiwa mnafanya jambo ambalo hampaswi kulifanya.\"",
     "type": "data_list",
-    "note": "The following strings should not be translated:\n@global.w_stress_teen_boy_2\n@global.w_stress_teen_girl\n@global.w_stress_parent"
+    "note": "The following strings should not be translated:\n@global.w_stress_teen_boy_2\n@global.w_stress_teen_girl\n@global.w_stress_parent\n‘@global.safety_word_example_1’\n@global.safety_word?\n@global.safety_word_example_1,"
   },
   {
-    "SourceText": "@global.w_stress_teen_girl: \"@global.w_stress_parent, it’s a safety amnesty. Can you come and pick me up? I really need a lift home.\"",
-    "text": "@global.w_stress_teen_girl: \"@global.w_stress_parent, ninaomba msamaha wa usalama. Unaweza kuja kunichukua? Ninahitaji sana usafiri wa kuja nyumbani.\"",
+    "SourceText": "@global.w_stress_teen_girl: \"@global.w_stress_parent, how is @global.safety_word_example_1 doing now?\"\n\n@global.w_stress_parent (on the other side of the phone): \"Not well. We need you at home. I will come pick you up right away. Where are you?\"",
+    "text": "@global.w_stress_teen_girl: \"@global.w_stress_parent, unaendeleaje @global.safety_word_example_1 kwa sasa?\"\n\n@global.w_stress_parent (kwa upande mwingine wa simu): \"Sio sawa. Tunakuhitaji nyumbani. Nitakuja kukuchukua mara moja. Uko wapi?\"",
     "type": "data_list",
-    "note": "The following strings should not be translated:\n@global.w_stress_teen_girl:\n\"@global.w_stress_parent,"
+    "note": "The following strings should not be translated:\n@global.w_stress_teen_girl:\n\"@global.w_stress_parent,\n@global.safety_word_example_1\n@global.w_stress_parent"
   },
   {
-    "SourceText": "@global.w_stress_teen_boy_2: \"@global.w_stress_parent, safety amnesty. I think my friends are in trouble. I don’t want to stop being their friend, but I’m worried. Can we talk?\"",
-    "text": "@global.w_stress_teen_boy_2: \"@global.w_stress_parent, ninaomba msamaha wa usalama. Nadhani marafiki zangu wako matatani. Sitaki kuvunja urafiki wetu, lakini nina wasiwasi. Tunaweza kuzungumza?\"",
+    "SourceText": "@global.w_stress_teen_boy_2 (thinking): \"I think my friends are in trouble. I don’t want to stop being their friend, but I’m worried. Maybe @global.w_stress_parent knows what to do.\"\n\n@global.w_stress_teen_boy_2: \"@global.w_stress_parent, I just remembered, @global.safety_word_example_1 said she will come visit tomorrow.\"\n\n@global.w_stress_parent (on the other side of the phone): \"Okay, I need you at home to help get things ready. I will come pick you up now. Where are you?\"",
+    "text": "@global.w_stress_teen_boy_2 (anafikiri): \" Nadhani marafiki zangu wapo katika changamoto. Sitaki kuacha kuwa rafiki yao, lakini na wasiwasi. Labda @global.w_stress_parent anajua cha kufanya.\"\n\n@global.w_stress_teen_boy_2: \"@global.w_stress_parent, nimekumbuka, @global.safety_word_example_1 alisema atakuja kututembelea kesho.\"\n\nBaba (katika upande mwingine wa simu): \"Sawa, ninakuhitaji nyumbani kusadia kuweka vitu tayari. Nitakuja kukuchukua sasa. Upo wapi?\"",
     "type": "data_list",
-    "note": "The following strings should not be translated:\n@global.w_stress_teen_boy_2:\n\"@global.w_stress_parent,"
+    "note": "The following strings should not be translated:\n@global.w_stress_teen_boy_2\n@global.w_stress_parent\n@global.w_stress_teen_boy_2:\n\"@global.w_stress_parent,\n@global.safety_word_example_1\n@global.w_stress_parent"
   },
   {
     "SourceText": "Money problems",
@@ -3978,6 +4008,48 @@
     "note": ""
   },
   {
+    "SourceText": "Problem Solving",
+    "text": "Kutatua Matatizo",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "**Problem Solving** @global.workshop",
+    "text": "**Kutatua matatizo** @global.workshop",
+    "type": "data_list",
+    "note": "The string @global.workshop should not be translated."
+  },
+  {
+    "SourceText": "Together with your teen, you can handle any challenge.",
+    "text": "Pamoja na kijana wako mnaweza kutatua changamoto yoyote.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Why Problem Solving?",
+    "text": "Kwa nini Kutatua Matatizo ni muhimu?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "How to solve problems",
+    "text": "Jinsi ya kutatua matatizo",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "I did not have a good relationship with my daughter. I was always shouting at her, and she was refusing to go to school. \n\nOnly when I started spending One-on-One time with her, I realised that she did not want to go to school because she was being bullied at school. We sat down and used the 6 steps of problem solving. We identified the problem, and figured out solutions together: “What can I do as a parent so you can attend school and feel safe?”\n\nWe agreed I would go talk to the teacher to find a way forward. We really found the solutions together, and we are closer now.",
+    "text": "Sina mahusiano mazuri na binti yangu. Mara nyingi nilikuwa nikimfokea, na alikuwa akikataa kwenda shuleni.\n\nMara nilipoanza kutumia muda wangu pamoja naye, Nilitambua kwamba hakutaka kwenda shuleni kwa sababu alikuwa akionewa. Tulikaa chini na kutumia hatua sita za kutatua tatizo. Tulitambua tatizo, na kutafuta suluhisho kwa pamoja:\"Naweza kufanya nini kama mzazi ili uweze kuhudhuria shuleni na kujihisi salama?\"\n\nTulikubaliana kuwa nitakwenda kuzungumza na mwalimu kutafuta suluhisho. Ni kweli tulipata suluhisho kwa pamoja, na sasa tupo karibu.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "When my father introduced the problem-solving steps to me, it helped me with my family, but it also helped me with my friends. \n\nI told my friends about the steps, and now when we are arguing we sit down and everyone comes up with solutions. We then look for the negatives and positives of each solution, and we agree “okay let’s try this one.” \n\nMy friends even took it to their own homes, and it is helping with their families as well! \n\nIt is great when others listen to you and accept your ideas even though you are young. We can all bring that harmony with our friends and family.",
+    "text": "Pindi Baba yangu aliponitambulisha hatua za kutatua tatizo, ilinisaidia mimi na familia yangu, lakini pia iliwasaidia marafiki zangu.\n\nNiliwaambia marafiki zangu kuhusu hatua hizo, na sasa wakati tunapobishana tunakaa chini na kila mmoja anakuja na suluhisho. Kisha tunaangalia madhara hasi na chanya ya kila suluhisho, na tunakubaliana\"sawa ngoja tujaribu hii moja,\"\n\nMarafiki zangu huchukua na kupeleka nyumbani kwao, na inawasaidia wao na familia zao pia!\n\nNi furaha pindi ambapo wengine wanakusikiliza na kukubaliana na mawazo yako hata kama wewe ni mdogo. Sote tunaweza kuleta maelewano na marafiki na familia.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
     "SourceText": "Family Budgets",
     "text": "Bajeti za Familia",
     "type": "data_list",
@@ -4100,48 +4172,6 @@
   {
     "SourceText": "My mom and dad would always punish me when they were angry with me. They would shout at me and I would also get angry. I often did not follow the rules, because they were too harsh, I did not understand what they were saying, or I would not even bother listening to them, because we were all angry.\n\nOne day, they asked me: Let's think together what the consequence should be for not coming home in time. It was great to give my view – before something happens that makes us all angry. We are all calm and agree first. It is easier for me to follow the rules now because I know I agreed on the rule and on the consequence if I do not follow the rule.",
     "text": "Mama yangu na Baba yangu mara nyingi waliniadhibu pindi walipokuwa na hasira na mimi. Walinifokea na mimi nilipata hasira. Mara nyingi sikufuata sheria zao, kwa sababu zilikuwa kali, sikuelewa kile walichokuwa wakisema, au Nilikuwa sijihangaishi kuwasikiliza, kwa sababu wote tulikuwa na hasira.\n\nSiku moja, waliniuliza: Hebu tufikiri kwa pamoja madhara yanayoweza kukupata kwa kushindwa kurudi nyumbani kwa wakati. Ilikuwa ni furaha kubwa kutoa maoni yangu kabla kitu hakijatokea na kutufanya wote kuwa na hasira. Wote tulitulia na kukubaliana kwanza. Sasa ni rahisi kwangu kufuata sheria kwa sababu najua na nilikubali sheria hizo na madhara kama sitafuata sheria hizo.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Problem Solving",
-    "text": "Kutatua Matatizo",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "**Problem Solving** @global.workshop",
-    "text": "**Kutatua matatizo** @global.workshop",
-    "type": "data_list",
-    "note": "The string @global.workshop should not be translated."
-  },
-  {
-    "SourceText": "Together with your teen, you can handle any challenge.",
-    "text": "Pamoja na kijana wako mnaweza kutatua changamoto yoyote.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Why Problem Solving?",
-    "text": "Kwa nini Kutatua Matatizo ni muhimu?",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "How to solve problems",
-    "text": "Jinsi ya kutatua matatizo",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "I did not have a good relationship with my daughter. I was always shouting at her, and she was refusing to go to school. \n\nOnly when I started spending One-on-One time with her, I realised that she did not want to go to school because she was being bullied at school. We sat down and used the 6 steps of problem solving. We identified the problem, and figured out solutions together: “What can I do as a parent so you can attend school and feel safe?”\n\nWe agreed I would go talk to the teacher to find a way forward. We really found the solutions together, and we are closer now.",
-    "text": "Sina mahusiano mazuri na binti yangu. Mara nyingi nilikuwa nikimfokea, na alikuwa akikataa kwenda shuleni.\n\nMara nilipoanza kutumia muda wangu pamoja naye, Nilitambua kwamba hakutaka kwenda shuleni kwa sababu alikuwa akionewa. Tulikaa chini na kutumia hatua sita za kutatua tatizo. Tulitambua tatizo, na kutafuta suluhisho kwa pamoja:\"Naweza kufanya nini kama mzazi ili uweze kuhudhuria shuleni na kujihisi salama?\"\n\nTulikubaliana kuwa nitakwenda kuzungumza na mwalimu kutafuta suluhisho. Ni kweli tulipata suluhisho kwa pamoja, na sasa tupo karibu.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "When my father introduced the problem-solving steps to me, it helped me with my family, but it also helped me with my friends. \n\nI told my friends about the steps, and now when we are arguing we sit down and everyone comes up with solutions. We then look for the negatives and positives of each solution, and we agree “okay let’s try this one.” \n\nMy friends even took it to their own homes, and it is helping with their families as well! \n\nIt is great when others listen to you and accept your ideas even though you are young. We can all bring that harmony with our friends and family.",
-    "text": "Pindi Baba yangu aliponitambulisha hatua za kutatua tatizo, ilinisaidia mimi na familia yangu, lakini pia iliwasaidia marafiki zangu.\n\nNiliwaambia marafiki zangu kuhusu hatua hizo, na sasa wakati tunapobishana tunakaa chini na kila mmoja anakuja na suluhisho. Kisha tunaangalia madhara hasi na chanya ya kila suluhisho, na tunakubaliana\"sawa ngoja tujaribu hii moja,\"\n\nMarafiki zangu huchukua na kupeleka nyumbani kwao, na inawasaidia wao na familia zao pia!\n\nNi furaha pindi ambapo wengine wanakusikiliza na kukubaliana na mawazo yako hata kama wewe ni mdogo. Sote tunaweza kuleta maelewano na marafiki na familia.",
     "type": "data_list",
     "note": ""
   },
@@ -5310,6 +5340,12 @@
     "note": ""
   },
   {
+    "SourceText": "Your Profile",
+    "text": "Wasifu wako",
+    "type": "global",
+    "note": ""
+  },
+  {
     "SourceText": "Real-world ideas",
     "text": "Mawazo ya ulimwengu halisi",
     "type": "global",
@@ -6006,8 +6042,20 @@
     "note": ""
   },
   {
+    "SourceText": "Safety Word",
+    "text": "Neno la Usalama",
+    "type": "global",
+    "note": ""
+  },
+  {
+    "SourceText": "Aunty Cecilia",
+    "text": "Shangazi Cecilia",
+    "type": "global",
+    "note": ""
+  },
+  {
     "SourceText": "By providing your consent below you acknowledge reading and accepting the @global.terms_and_conditions and @global.privacy_policy. The most important commitments are:\n1. This is, and will always be, a fully free app.\n2. Your data will never be sold. We are not for profit.\n3. By using the app you are helping to make the app better for you and others.\n4. Your anonymised data may be used for research purposes by our @global.parent_app team.",
-    "text": "Kwa kutoa ridhaa hii hapa chini unakubali kusoma na kukubali @global.terms_and_conditions na @global.privacy_policy. Mambo muhimu ya kukubaliana nayo:\n1. Hii ni na itazidi kuwa programu tumishi inayopatikana bure.\n2. Taarifa zako kamwe hazitouzwa. Sisi hatupo kwa faida ya kifedha.\n3. Kwa kutumia programu tumishi unasaidia kuiboresha programu tumishi kwa ajili yako na wengine. \n4. Taarifa zisizo na utambulisho zitatumika kwa ajili ya utafiti na timu yetu ya @global.parent_app.",
+    "text": "Kwa kutoa ridhaa hii hapa chini unakubali kusoma na kukubali @global.terms_and_conditions na @global.privacy_policy. Mambo muhimu ya kukubaliana nayo:\n1. Hii ni, na itazidi kuwa programu tumishi inayopatikana bure.\n2. Taarifa zako kamwe hazitouzwa. Sisi hatupo kwa faida ya kifedha.\n3. Kwa kutumia programu tumishi unasaidia kuiboresha programu tumishi kwa ajili yako na wengine. \n4. Taarifa zisizo na utambulisho zitatumika kwa ajili ya utafiti na timu yetu ya @global.parent_app.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.terms_and_conditions\n@global.privacy_policy\n@global.parent_app"
   },
@@ -6306,6 +6354,18 @@
     "note": "The string @global.workshops should not be translated."
   },
   {
+    "SourceText": "@global.parent_app has downloaded an update. Please restart the app to finish installation.",
+    "text": "@global.parent_app imesasishwa. Tafadhali anzisha tena programu tumishi kumalizia kuiweka swa.",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "Restart",
+    "text": "Anzisha upya tena",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Losing a loved one can feel very overwhelming. Here are a few practical tips that can be helpful to keep in mind.",
     "text": "Kumpoteza mtu unayempenda ni jambo zito mno. Hapa kuna vidokezo kadhaa vinavyoweza kukusaidia ukivikumbuka.",
     "type": "template",
@@ -6600,10 +6660,10 @@
     "note": ""
   },
   {
-    "SourceText": "You’ve completed this week’s workshop.",
-    "text": "Umemaliza kipindi cha wiki hii.",
+    "SourceText": "You’ve completed your @global.workshop.",
+    "text": "Umekamilisha @global.workshop.",
     "type": "template",
-    "note": ""
+    "note": "The string @global.workshop should not be translated."
   },
   {
     "SourceText": "Read along",
@@ -6878,12 +6938,6 @@
   {
     "SourceText": "A friend or family",
     "text": "Rafiki au familia",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Quick Parenting Tips",
-    "text": "Vidokezo vya Malezi vya Haraka",
     "type": "template",
     "note": ""
   },
@@ -7176,20 +7230,14 @@
     "note": "The string @global.workshop should not be translated."
   },
   {
-    "SourceText": "Give me quick parenting tips",
-    "text": "Nipe vidokezo vya malezi vya haraka",
+    "SourceText": "Support Contacts",
+    "text": "Mawasiliano ya Msaada",
     "type": "template",
     "note": ""
   },
   {
-    "SourceText": "Something really bad happened",
-    "text": "Kitu kibaya sana kimetokea",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "I have technical problems with the app",
-    "text": "Nina matatizo ya kiufundi kwenye programu hii",
+    "SourceText": "Quick Parenting Tips",
+    "text": "Vidokezo vya Malezi vya Haraka",
     "type": "template",
     "note": ""
   },
@@ -7232,6 +7280,12 @@
   {
     "SourceText": "I need help with:",
     "text": "Ninahitaji msaada na:",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Technical Support",
+    "text": "Msaada wa Kiufundi",
     "type": "template",
     "note": ""
   },
@@ -7374,8 +7428,8 @@
     "note": ""
   },
   {
-    "SourceText": "Let’s do a short relaxation activity together – it will take less than 1 minute and you will feel more relaxed.",
-    "text": "Hebu tufanye shughuli moja fupi ya kuchukua pumziko- itachukua chini ya dakika 1 na utajiskia vizuri zaidi.",
+    "SourceText": "Let’s do a short relaxation activity together. It will only take a moment and you will feel more relaxed.",
+    "text": "Hebu tufanye shughuli moja fupi ya kuchukua pumziko. Itachukua muda mfupi na utajisikia vizuri zaidi.",
     "type": "template",
     "note": ""
   },
@@ -7602,6 +7656,12 @@
     "note": ""
   },
   {
+    "SourceText": "Close your eyes. \n\nDo your children ever make you feel like screaming? \n\nGive yourself a 10-second pause. Breathe in and out slowly 5 times. \n\nThen try responding in a calmer way.",
+    "text": "Fumba macho yako.\n\nJe, watototo wako wamewahi kukufanya ujihisi kupiga yowe?\n\nJipe sekunde 10 za kupumzika. Vuta pumzi ndani na nje taratibu mara 5.\n\nBaadae jaribu kujibu kwa hali ya utulivu.",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Millions of parents say this helps - A LOT.",
     "text": "Mamilioni ya wazazi wanasema kufanya hivyo kunasaidia – TENA SANA.",
     "type": "template",
@@ -7628,6 +7688,12 @@
   {
     "SourceText": "Start",
     "text": "Anza",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Choose your language",
+    "text": "Chagua lugha yako",
     "type": "template",
     "note": ""
   },
@@ -7692,6 +7758,12 @@
     "note": ""
   },
   {
+    "SourceText": "Skip intro",
+    "text": "Ruka utangulizi",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Bringing teenagers up is hard",
     "text": "Kuwakuza vijana ni kazi ngumu",
     "type": "template",
@@ -7702,6 +7774,12 @@
     "text": "Wewe ni mzazi bora sana ambaye kijana wako anaye",
     "type": "template",
     "note": ""
+  },
+  {
+    "SourceText": "Join the over @local.number million parents who have used our resources",
+    "text": "Jiunge na zaidi ya mamilioni @local.number ya wazazi ambao wametumia rasilimali zetu",
+    "type": "template",
+    "note": "The string @local.number should not be translated."
   },
   {
     "SourceText": "Ideas from other families:",
@@ -7831,7 +7909,7 @@
   },
   {
     "SourceText": "Here are this week’s takeaway skills! \n\nUse them at home and find them anytime in your @global.parent_centre.",
-    "text": "Hapa kuna ujuzi wa kujichukulia kwa wiki hii!\nutumie nyumbani na unaweza kuupata wakati wowote kwene maktaba ya mzazi @global.parent_centre.",
+    "text": "Hapa kuna ujuzi wa kujichukulia kwa wiki hii!\n\nZitumie nyumbani na utaweza kuzipata wakati wowote kwenye @global.parent_centre.",
     "type": "template",
     "note": "The string @global.parent_centre should not be translated."
   },
@@ -7948,6 +8026,18 @@
     "text": "Kwanini @local.workshop_data.title?",
     "type": "template",
     "note": "The string @local.workshop_data.title should not be translated."
+  },
+  {
+    "SourceText": "Hear @global.@local.topic_intro_name's message",
+    "text": "Sikia ujumbe wa @global.@local.topic_intro_name",
+    "type": "template",
+    "note": "The string @local.topic_intro_name should not be translated."
+  },
+  {
+    "SourceText": "Read @global.@local.topic_intro_name's message",
+    "text": "Soma ujumbe wa @global.@local.topic_intro_name",
+    "type": "template",
+    "note": "The string @local.topic_intro_name should not be translated."
   },
   {
     "SourceText": "Today's steps",
@@ -8174,6 +8264,24 @@
   {
     "SourceText": "Syncing...",
     "text": "Inaoanisha...",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "What is your name or nickname?",
+    "text": "Jina lako au jina lako la utani ni nani?",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "What is your gender?",
+    "text": "Jinsia yako ni ipi?",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Prefer not to say",
+    "text": "Ningependa nisiseme",
     "type": "template",
     "note": ""
   },
@@ -9336,8 +9444,8 @@
     "note": ""
   },
   {
-    "SourceText": "You can help your teenager to understand that breaking family rules leads to consequences. \n\nBut HOW you do this matters. \n\nGetting consequences right helps teens behave better and makes family life calmer...",
-    "text": "Unaweza kumsaidia kijana wako kuelewa kwamba kuvunja sheria za familia kunasababisha mtu kufanya malipo.\n\nLakini NAMNA unavyofanya jambo hilo ni muhimu.\n\nKuweka njia sahihi huwasaidia vijana kuwa na tabia nzuri zaidi na hufanya maisha ya familia kuwa tulivu zaidi...",
+    "SourceText": "Our actions have consequences: Some consequences happen naturally (“if you break something, you can’t use it anymore”). Other consequences we set as a family to motivate us to follow the rules (“if you come home late, you can’t go out with friends tomorrow”).\n\nHOW you set and use consequences together matters.\n\nGetting consequences right helps teens behave better and makes family life calmer...",
+    "text": "Angalizo: Matendo yetu yana matokeo: Baadhi ya matokeo yanatokea kwa kawaida (\"kama ukivunja kitu, huwezi kukitumia tena\"). Adhabu nyepesi nyingine tunaweka kama familia kutuhamasisha kufuata sheria (\"kama ukichelewa kurudi nyumbani, hautatoka na marafiki kesho\"). \n\nJINSI mnavyoweka na kutumia adhabu kwa pamoja ni muhimu.\n\nKuweka adhabu sahihi inasaidia kijana kuwa na tabia njema na kufanya maisha ya familia kuwa na utulivu...",
     "type": "template",
     "note": ""
   },
@@ -9624,13 +9732,13 @@
     "note": ""
   },
   {
-    "SourceText": "You’ve completed this week’s @global.workshop. \n\nNext week’s @global.workshop will celebrate you all, and help you plan for the future. \n\nWhy don’t you plan some party food together, and have some music ready if you like to dance!",
-    "text": "Umemaliza @global.workshop ya wiki hii.\n\n@global.workshop ya wiki ijayo tutawasherehekea, na kuwasaidia kupanga mipango ya siku zijazo.\n\nKwa nini msipange kufanya sherehe pamoja itakayokuwa na chakula, na kuandaa muziki kama mtapenda kucheza!",
+    "SourceText": "You’ve completed your @global.workshop. \n\nThe next @global.workshop will celebrate you all, and help you plan for the future. \n\nWhy don’t you plan some party food together, and have some music ready if you like to dance!",
+    "text": "Umemaliza @global.workshop ya wiki hii.\n\n@global.workshop inayofuata itawasheherekea wote, na kuwasaidia kupanga mipango ya siku zijazo.\n\nKwa nini msipange kufanya sherehe ya chakula pamoja, na kuandaa muziki kama mtapenda kucheza!",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.workshop\n@global.workshop"
   },
   {
-    "SourceText": "You’ve completed this week’s @global.workshop. \n\nNext week’s @global.workshop will celebrate you, and you can choose the support you want going forward. \n\nYou can prepare a treat to celebrate – something you like to eat, or music you like to listen to!",
+    "SourceText": "You’ve completed your @global.workshop. \n\nThe next @global.workshop will celebrate you, and you can choose the support you want going forward. \n\nYou can prepare a treat to celebrate – something you like to eat, or music you like to listen to!",
     "text": "Umemaliza @global.workshop ya wiki hii.\n\n@global.workshop ya wiki ijayo tutakusherehekea, na unaweza kuchagua msaada unaoutaka ili kusonga mbele.\n\nUnaweza kuandaa sherehe – kitu unachopenda kula, au muziki unaopenda kusikiliza!",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.workshop\n@global.workshop"
@@ -9672,6 +9780,12 @@
     "note": "The string @global.w_crisis_teen_boy_2 should not be translated."
   },
   {
+    "SourceText": "How could you respond to @global.w_crisis_teen_boy_2?",
+    "text": "Utafanyaje kwa @global.w_crisis_teen_boy_2?",
+    "type": "template",
+    "note": "The string @global.w_crisis_teen_boy_2 should not be translated."
+  },
+  {
     "SourceText": "Crisis 2: @global.w_crisis_teen_girl_2 gets pregnant",
     "text": "Tatizo la 2: @global.w_crisis_teen_girl_2 amepata ujauzito",
     "type": "template",
@@ -9690,26 +9804,26 @@
     "note": "The string @global.w_crisis_teen_girl_2 should not be translated."
   },
   {
-    "SourceText": "Crisis 3: @global.w_crisis_teen_boy_2 makes a girl pregnant",
-    "text": "Tatizo la Tatu: @global.w_crisis_teen_boy_2 amempa msichana mimba",
+    "SourceText": "Crisis 3: @global.w_crisis_teen_boy_1 makes a girl pregnant",
+    "text": "Tatizo la 3: @global.w_crisis_teen_boy_1 kumpa msichana mimba",
     "type": "template",
-    "note": "The string @global.w_crisis_teen_boy_2 should not be translated."
+    "note": "The string @global.w_crisis_teen_boy_1 should not be translated."
   },
   {
-    "SourceText": "@global.w_crisis_teen_boy_2: \"I don’t want to have a baby\"",
-    "text": "@global.w_crisis_teen_boy_2: \"Sitaki kupata mtoto\"",
+    "SourceText": "@global.w_crisis_teen_boy_1: \"I don’t want to have a baby\"",
+    "text": "@global.w_crisis_teen_boy_1: \"Sitaki kuwa na mtoto\"",
     "type": "template",
-    "note": "The string @global.w_crisis_teen_boy_2 should not be translated."
+    "note": "The string @global.w_crisis_teen_boy_1 should not be translated."
   },
   {
-    "SourceText": "How could you respond to @global.w_crisis_teen_boy_2?",
-    "text": "Utafanyaje kwa @global.w_crisis_teen_boy_2?",
+    "SourceText": "How could you respond to @global.w_crisis_teen_boy_1?",
+    "text": "Je, unaweza kumjibu vipi @global.w_crisis_teen_boy_1?",
     "type": "template",
-    "note": "The string @global.w_crisis_teen_boy_2 should not be translated."
+    "note": "The string @global.w_crisis_teen_boy_1 should not be translated."
   },
   {
-    "SourceText": "Crisis 4: Someone in the family gets sick",
-    "text": "Tatizo la Nne: Mwanafamilia anaugua",
+    "SourceText": "Crisis 4: Someone in the family may get sick",
+    "text": "Tatizo la 4: Mmoja ya wanafamilia anaweza kuwa mgonjwa",
     "type": "template",
     "note": ""
   },
@@ -11418,6 +11532,12 @@
     "note": ""
   },
   {
+    "SourceText": "Resources to help in the community",
+    "text": "Rasilimali za msaada katika jamii",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Step 4: What are risky places online and how can you make them safer?",
     "text": "Hatua ya Nne: Je, maeneo gani mtandaoni ni ya hatari na unawezaje kuyafanya yawe salama zaidi?",
     "type": "template",
@@ -11426,6 +11546,12 @@
   {
     "SourceText": "* Draw pictures of the apps and websites your teenagers use \n* Praise each other for how good they are at using the web!  \n* Talk about which ones might be unsafe. Why? \n* What could you and your teen do to make using the internet safer for your teen and their friends?",
     "text": "* Choreni picha za programu na tovuti ambazo vijana wenu hutumia\n* Sifianeni kwa jinsi wanavyojua kutumia mtandao.\n* Zungumzieni zile ambazo zinaweza zisiwe salama. Kwa nini?\n* Je, nyinyi na vijana wenu mnaweza kufanya nini ili matumizi ya intaneti yawe salama kwa vijana wenu na marafiki zao?",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Online Safety Resources",
+    "text": "Rasilimali za Usalama Mtandaoni",
     "type": "template",
     "note": ""
   },
@@ -11652,8 +11778,8 @@
     "note": ""
   },
   {
-    "SourceText": "Make RULES with your teen about safely using the apps and websites that they like. \n\nRemember the story about Online Safety? See it again here.",
-    "text": "Tengeneza SHERIA na kijana wako kuhusu kutumia kwa usalama programu na tovuti anazozipenda.\n\nJe, unakumbuka hadithi kuhusu Usalama Mtandaoni? Iangalie tena hapa.",
+    "SourceText": "Make RULES with your teen about how they can stay safe in your community (especially in risky areas that cannot be avoided) and how they can safely use the apps and websites that they like. \n\nRemember the story about Online Safety? See it again here.",
+    "text": "Tengeneza SHERIA na kijana wako kuhusu namna gani wanaweza kuwa salama katika jamii yako (hususani katika maeneo hatarishi ambayo hayawezi kuepukika) na namna wanaweza kutumia kwa usalama programu tumishi na mitandao ambayo wanayopenda.\n\nUnakumbuka hadithi kuhusu Usalama Mtandaoni? Angalia tena hapa.",
     "type": "template",
     "note": ""
   },
@@ -11664,32 +11790,14 @@
     "note": ""
   },
   {
-    "SourceText": "AMNESTY",
-    "text": "MSAMAHA",
+    "SourceText": "Agree on a @global.safety_word. If something happens that makes your teen upset, uncomfortable or scared, they can say the @global.safety_word  and you will help them without getting angry or punishing them, even if they were doing something wrong. \n\nRemember the story about the @global.safety_word? See it again here.",
+    "text": "Kubaliana kuhusu @global.safety_word. Kama kitu kikitokea ambacho kitamfanya kijana wako akasirike, kukosa uhuru au kuogopa,  wanaweza kusema @global.safety_word na utawasaidia bila kukasirika au kuwaadhibu,  hataka kama walikuwa wanafanya kitu ambacho sio sahihi.\n\nKumbuka hadithi kuhusu @global.safety_word? Angalia tena hapa.",
     "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Make an AMNESTY agreement. If something happens that makes them upset, uncomfortable or scared, they can talk to you and you won’t get angry or punish them, even if they were doing something wrong.\n\nRemember the story about Safety Amnesty? See it again here.",
-    "text": "Wekeni makubaliano ya MSAMAHA. Kama kikitokea kitu kitakachomfadhaisha, kumnyima raha, au kumwogofya, anaweza kuzungumza na wewe na hautakasirika au kumwadhibu, hata kama alikuwa akifanya jambo baya.\n\nJe, unakumbuka hadithi kuhusu Msamaha wa Usalama? Iangalie tena hapa.",
-    "type": "template",
-    "note": ""
+    "note": "The following strings should not be translated:\n@global.safety_word\n@global.safety_word\n@global.safety_word"
   },
   {
     "SourceText": "Digital parenting is just like parenting in the real world. You have taken a BIG STEP to keeping your teen safe in the community AND online. Good for you!",
     "text": "Malezi yanayohusu masuala ya kidijitali ni sawa tu na malezi ya masuala mengine maishani. Umepiga HATUA KUBWA ya kumweka salama kijana wako katika jamii NA mtandaoni. Ni jambo zuri kwako!",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Resources to help in the community",
-    "text": "Rasilimali za msaada katika jamii",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Online Safety Resources",
-    "text": "Rasilimali za Usalama Mtandaoni",
     "type": "template",
     "note": ""
   },
@@ -11856,36 +11964,6 @@
     "note": ""
   },
   {
-    "SourceText": "Have a hot drink",
-    "text": "Kunywa kinywaji cha moto",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Call a friend or relative",
-    "text": "Mpigie simu rafiki au jamaa",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Have a relaxing bath",
-    "text": "Oga kwa kujiburudisha",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Read",
-    "text": "Soma",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Watch TV",
-    "text": "Kutazama runinga",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "Taking care of ourselves is an important parenting skill. Share with each other:\n\nWhat small things make you happy?",
     "text": "Kujithamini sisi wenyewe ni ujuzi muhimu wa malezi. Shirikishaneni nyote:\n\nJe, ni vitu gani vidogo vinavyokufurahisha?",
     "type": "template",
@@ -11922,34 +12000,34 @@
     "note": ""
   },
   {
-    "SourceText": "Try to do something to reward yourself every day. This could be to @local.name_1 or anything else that you enjoy.",
-    "text": "Jaribu kufanya kitu cha kujipongeza kila siku. Kinaweza kuwa @local.name_1 au kitu kingine chochote kinachokufurahisha.",
+    "SourceText": "Try to do something to reward yourself every day.",
+    "text": "Jaribu kufanya kitu cha kujipongeza mwenyewe kila siku.",
     "type": "template",
-    "note": "The string @local.name_1 should not be translated."
+    "note": ""
   },
   {
-    "SourceText": "Try to do something to reward yourself every day. This could be to @local.name_2 or anything else that you enjoy.",
-    "text": "Jaribu kufanya kitu cha kujipongeza kila siku. Kinaweza kuwa @local.name_2 au kitu kingine chochote kinachokufurahisha.",
+    "SourceText": "Have a hot drink",
+    "text": "Kunywa kinywaji cha moto",
     "type": "template",
-    "note": "The string @local.name_2 should not be translated."
+    "note": ""
   },
   {
-    "SourceText": "Try to do something to reward yourself every day. This could be to @local.name_3 or anything else that you enjoy.",
-    "text": "Jaribu kufanya kitu cha kujipongeza kila siku. Kinaweza kuwa @local.name_3 au kitu kingine chochote kinachokufurahisha.",
+    "SourceText": "Call a friend or relative",
+    "text": "Mpigie simu rafiki au jamaa",
     "type": "template",
-    "note": "The string @local.name_3 should not be translated."
+    "note": ""
   },
   {
-    "SourceText": "Try to do something to reward yourself every day. This could be to @local.name_4 or anything else that you enjoy.",
-    "text": "Jaribu kufanya kitu cha kujipongeza kila siku. Kinaweza kuwa @local.name_4 au kitu kingine chochote kinachokufurahisha.",
+    "SourceText": "Have a relaxing bath",
+    "text": "Oga kwa kujiburudisha",
     "type": "template",
-    "note": "The string @local.name_4 should not be translated."
+    "note": ""
   },
   {
-    "SourceText": "Try to do something to reward yourself every day. This could be to @local.name_5 or anything else that you enjoy.",
-    "text": "Jaribu kufanya kitu cha kujipongeza kila siku. Kinaweza kuwa @local.name_5 au kitu kingine chochote kinachokufurahisha.",
+    "SourceText": "Read",
+    "text": "Soma",
     "type": "template",
-    "note": "The string @local.name_5 should not be translated."
+    "note": ""
   },
   {
     "SourceText": "Things you can do to reward yourself:",
@@ -11958,8 +12036,26 @@
     "note": ""
   },
   {
-    "SourceText": "* Have a hot drink \n* Call a friend or relative \n* Have a relaxing bath \n* Read \n* Watch TV",
-    "text": "* Kunywa kinywaji cha moto\n* Kumpigia simu rafiki au jamaa\n* Oga wa kujiburudisha\n* Soma\n* Kutazama runinga",
+    "SourceText": "Sleeping",
+    "text": "Kulala",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Talking with a friend",
+    "text": "Kuongea na rafiki",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Doing something I enjoy",
+    "text": "Kufanya kitu ninafurahia",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Doing something relaxing",
+    "text": "Kufanya kitu cha kupumzika",
     "type": "template",
     "note": ""
   },
@@ -12318,16 +12414,16 @@
     "note": ""
   },
   {
-    "SourceText": "Discuss \"safety amnesty\" with your teenager, and think of a situation together when you could use this.",
-    "text": "Jadili na kijana wako kuhusu \"msamaha wa usalama\", kisha fikirieni kwa pamoja mazingira ambamo mnaweza kuutumia.",
+    "SourceText": "Choose a \"@global.safety_word\" with your teenager, and think of a situation together when you could use this.",
+    "text": "Chagua \"@global.safety_word\", na kijana wako na mfikiri kwa pamoja mazingira ambayo mnaweza kutumia.",
     "type": "template",
-    "note": ""
+    "note": "The string @global.safety_word should not be translated."
   },
   {
-    "SourceText": "Safety Amnesty Story",
-    "text": "Hadithi ya Msamaha wa Usalama",
+    "SourceText": "@global.safety_word Story",
+    "text": "Hadithi ya @global.safety_word",
     "type": "template",
-    "note": ""
+    "note": "The string @global.safety_word should not be translated."
   },
   {
     "SourceText": "Every time you take a pause before responding, or whenever you do something to keep your teen safe, tap your @global.parent_points and celebrate your success!",
@@ -12342,8 +12438,8 @@
     "note": ""
   },
   {
-    "SourceText": "Greetings everyone. \n\nToday's topic is managing stress. \n\nIt is important to know how to manage our stress. At times our children can behave in ways that makes us feel stressed and us as parents can make our children feel stressed too. \n\nSo, it is important to notice when we feel stressed and take a pause and breathe. That will help you manage your stress.",
-    "text": "Habari zenu?\n\nMada ya leo inahusu kudhibiti msongo wa mawazo.\n\nNi muhimu kwetu kujua jinsi ya kudhibiti msongo wa mawazo. Wakati mwingine watoto wetu wanaweza kuwa na tabia zinazotufanya tuwe na msongo wa mawazo. Sisi kama wazazi, tunaweza pia kuwafanya watoto wetu kuwa na msongo wa mawazo.\n\nKwa hiyo, ni muhimu kwetu kutambua wakati tunapokuwa na msongo wa mawazo ili tutulie na kuvuta pumzi. Kufanya hivyo kutatusaidia kudhibiti msongo wa mawazo.",
+    "SourceText": "Greetings everyone. \n\nToday's topic is managing stress. \n\nIt is important to know how to manage our stress. At times our children can behave in ways that make us feel stressed and us as parents can make our children feel stressed too. \n\nSo, it is important to notice when we feel stressed and take a pause and breathe. That will help you manage your stress.",
+    "text": "Salamu kwa wote.\n\nKipindi cha leo ni kukabiliana na msongo wa mawazo.\n\nNi muhumu kufahamu namna ya kukabiliana na msongo wa mawazo. Wakati mwingine, watoto wetu wanaweza kuwa na tabia zinazotupa mawazo na sisi kama wazazi tunaweza kuwafanya watoto wetu wawe na mawazo pia.\n\nKwa hiyo, ni muhumimu kutambua wakati tunahisi mawazo kisha tutulie na kuvuta pumzi ndefu. Hii itakusaidia kukabiliana na msongo wa mawazo.",
     "type": "template",
     "note": ""
   },
@@ -12498,6 +12594,54 @@
     "note": "The string @global.w_stress_male_caregiver should not be translated."
   },
   {
+    "SourceText": "Having a @global.safety_word can help your teen stay safe too.",
+    "text": "Kuwa na @global.safety_word inaweza kumsaidia kijana wako kuwa salama pia.",
+    "type": "template",
+    "note": "The string @global.safety_word should not be translated."
+  },
+  {
+    "SourceText": "You can choose any word as a @global.safety_word. Only your family knows it means ‘help’. \n\nYour teen can say this word to let you know they are in trouble without you getting angry or punishing them, so you can help them.",
+    "text": "Unaweza kuchagua neno lolote kama @global.safety_word. Ni familia yako tu inajua linamaanisha 'msaada'.\n\nKijana wako anaweza kusema neno hili kukujulisha wanapokuwa katika matatizo pasipo wewe kuwa na hasira au kuwaadhibu, ili uweze kuwasaidia.",
+    "type": "template",
+    "note": "The string @global.safety_word should not be translated."
+  },
+  {
+    "SourceText": "What @global.safety_word can you choose with your teen?",
+    "text": "Ni nini @global.safety_word unaweza kuchagua na kijana wako?",
+    "type": "template",
+    "note": "The string @global.safety_word should not be translated."
+  },
+  {
+    "SourceText": "Your teen can say:\n\"I saw...\"\n\"I look forward to...\"\n\"Did you remember to…?\"\n\nYou respond calmly and give your teen an excuse why they need to come home.",
+    "text": "Kijana wako anaweza kusema:\n\"Nimeona...\"\n\"Ninatazamia...\"\n\"Ulikumbuka ku...?\"\n\nUnajibu kwa utulivu na kuwaambia vijana wako kwa nini wanatakiwa kuja nyumbani.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "A specific food",
+    "text": "Chakula maalum",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "A specific family member",
+    "text": "Mwanafamilia maalum",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "A specific animal",
+    "text": "Mnyama maalum",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Something else",
+    "text": "Kitu kingine",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "This is fantastic, especially in such difficult times as this. You are a star.",
     "text": "Hiyo ni nzuri, hasa kwenye nyakati ngumu kama hizi. Wewe ni mshindi.",
     "type": "template",
@@ -12600,10 +12744,76 @@
     "note": ""
   },
   {
-    "SourceText": "Things to do",
-    "text": "Vitu vya kufanya",
+    "SourceText": "This big button takes you to the @global.workshop you are currently exploring. Tap this to find:",
+    "text": "Hiki kitufe kikubwa kitakupeleka kwenye @global.workshop unayopitia kwa sasa. Gusa hiki kukipata.",
+    "type": "tour",
+    "note": "The string @global.workshop should not be translated."
+  },
+  {
+    "SourceText": "Have a look around! Wherever you start, just the fact you are here shows you care.",
+    "text": "Angalia! Popote utakapoanzia, ukweli ni kwamba kuwepo hapa inaonesha unajali.",
     "type": "tour",
     "note": ""
+  },
+  {
+    "SourceText": "This big button takes you to the @global.workshop you are currently exploring. Tap it to find:",
+    "text": "Hiki kitufe kikubwa kitakupeleka kwenye @global.workshop unayopitia kwa sasa. Gusa hiki kukipata:",
+    "type": "tour",
+    "note": "The string @global.workshop should not be translated."
+  },
+  {
+    "SourceText": "A set of activities to help you build a parenting skill.",
+    "text": "Kazi za kukusaidia kujenga mbinu za malezi.",
+    "type": "tour",
+    "note": ""
+  },
+  {
+    "SourceText": "Quick reminders on how to successfully use a parenting skill.",
+    "text": "Ukumbusho wa haraka jinsi unavyoweza kutumia ujuzi wa malezi kwa mafanikio.",
+    "type": "tour",
+    "note": ""
+  },
+  {
+    "SourceText": "One easy idea on how you can apply a new skill with your family.",
+    "text": "Ukumbusho wa haraka jinsi unavyoweza kutumia ujuzi wa malezi kwa mafanikio.",
+    "type": "tour",
+    "note": ""
+  },
+  {
+    "SourceText": "Here you can select any of the other @global.workshops in @global.parent_app. Each @global.workshop gives you one important parenting skill. Swipe to see the next @global.workshops.",
+    "text": "Hapa unaweza kuchagua @global.workshops nyingine yoyote katika @global.parent_app. Kila @global.workshops inakupa ujuzi muhimu wa malezi.",
+    "type": "tour",
+    "note": "The following strings should not be translated:\n@global.workshops\n@global.parent_app.\n@global.workshop\n@global.workshops."
+  },
+  {
+    "SourceText": "You can explore any @global.workshop whenever you want. To see the biggest change in your family, complete all the activities in one @global.workshop before moving to the next one.",
+    "text": "Unaweza kuchunguza @global.workshop yoyote wakati wowote unaotaka. Kuona mabadiliko makubwa katika familia yako,maliza shughuli zako katika moja ya @global.workshop kabla ya kuhamia nyingine.",
+    "type": "tour",
+    "note": "The following strings should not be translated:\n@global.workshop\n@global.workshop"
+  },
+  {
+    "SourceText": "Tap here whenever you enter @global.parent_app! You will find 3 short activities that you can do next to help yourself and your family.",
+    "text": "Bonyeza hapa kila unapoingia kwenye @global.parent_app! Utapata shughuli tatu fupi unzaoweza kufanya zikusaidie wewe na familia yako.",
+    "type": "tour",
+    "note": "The string @global.parent_app! should not be translated."
+  },
+  {
+    "SourceText": "The HOUSE button brings you back to the home screen at any time.",
+    "text": "Kitufe cha NYUMBA kinakurudisha kwenye skrini ya kwanza wakati wowote.",
+    "type": "tour",
+    "note": ""
+  },
+  {
+    "SourceText": "The STAR button takes you to the @global.parent_points. Each new parenting skill comes with a @global.parent_point. @global.parent_points help you celebrate your achievements.",
+    "text": "Kitufe cha NYOTA kinakupeleka wewe kwenye@global.parent_points.Kila ujuzi mpya wa malezi huja na @global.parent_point. @global.parent_points inakusaidia wewe kusherehekea mafanikio.",
+    "type": "tour",
+    "note": "The following strings should not be translated:\n@global.parent_points.\n@global.parent_point.\n@global.parent_points"
+  },
+  {
+    "SourceText": "Tap the BOOK button to go to the @global.parent_centre. Check out the extra relaxation activities and ideas for fun things to do with your teen! You can also find contact details for support services in your area and for technical support with @global.parent_app.",
+    "text": "Gusa kitufe cha KITABU ili kwenda kwenye@global.parent_centre. Angalia kazi za zaidi za kupumzika na mawazo ya kufurahisha kufanya na kijana wako! Unaweza pia kupata taarifa za mawasiliano za msaada katika eneo lako na msaada wa kiufundi kwenye @global.parent_app.\n\nCommunity Verified icon\nSearch for this on Go.",
+    "type": "tour",
+    "note": "The following strings should not be translated:\n@global.parent_centre.\n@global.parent_app."
   },
   {
     "SourceText": "Welcome to @global.parent_app",

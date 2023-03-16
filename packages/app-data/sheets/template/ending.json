@@ -118,7 +118,9 @@
               "name": "intro_text",
               "value": "You’ve completed your @global.workshop.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "type": "set_variable",
               "_nested_name": "watch.workshop_activity.intro_text",
