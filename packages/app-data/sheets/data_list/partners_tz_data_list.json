@@ -15,6 +15,22 @@
       "splash_page": 2,
       "name": "USAID",
       "image_asset": "plh_images/logos/usaid.png"
+    },
+    {
+      "id": "vodacom_tz",
+      "splash_page": 2,
+      "name": "Vodacom Tanzania",
+      "description": "Vodacom Tanzania",
+      "_translations": {
+        "description": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "description": {
+          "eng": "Vodacom Tanzania"
+        }
+      }
     }
   ],
   "_xlsxPath": "global/data/partners_data_lists.xlsx"

@@ -4,6 +4,70 @@
   "status": "released",
   "rows": [
     {
+      "name": "name_1",
+      "value": "Have a hot drink",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "name_1"
+    },
+    {
+      "name": "name_2",
+      "value": "Call a friend or relative",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "name_2"
+    },
+    {
+      "name": "name_3",
+      "value": "Have a relaxing bath",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "name_3"
+    },
+    {
+      "name": "name_4",
+      "value": "Read",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "type": "set_variable",
+      "_nested_name": "name_4"
+    },
+    {
       "type": "template",
       "name": "suggestions",
       "value": "suggestions",
@@ -21,18 +85,68 @@
         },
         {
           "name": "list_text",
-          "value": "* Have a hot drink \n* Call a friend or relative \n* Have a relaxing bath \n* Read \n* Watch TV",
+          "value": "* @local.name_1\n* @local.name_2\n* @local.name_3\n* @local.name_4",
           "_translations": {
+<<<<<<< HEAD
             "value": {
               "tz_sw": true
             }
+=======
+            "value": {}
+>>>>>>> 7618fe582330a7709ec8e7903017ed11bd44a842
           },
+          "exclude_from_translation": true,
           "type": "set_variable",
-          "_nested_name": "suggestions.list_text"
+          "_nested_name": "suggestions.list_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "* @local.name_1\n* @local.name_2\n* @local.name_3\n* @local.name_4",
+                "matchedExpression": "@local.name_1",
+                "type": "local",
+                "fieldName": "name_1"
+              },
+              {
+                "fullExpression": "* @local.name_1\n* @local.name_2\n* @local.name_3\n* @local.name_4",
+                "matchedExpression": "@local.name_2",
+                "type": "local",
+                "fieldName": "name_2"
+              },
+              {
+                "fullExpression": "* @local.name_1\n* @local.name_2\n* @local.name_3\n* @local.name_4",
+                "matchedExpression": "@local.name_3",
+                "type": "local",
+                "fieldName": "name_3"
+              },
+              {
+                "fullExpression": "* @local.name_1\n* @local.name_2\n* @local.name_3\n* @local.name_4",
+                "matchedExpression": "@local.name_4",
+                "type": "local",
+                "fieldName": "name_4"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.name_1": [
+              "value"
+            ],
+            "@local.name_2": [
+              "value"
+            ],
+            "@local.name_3": [
+              "value"
+            ],
+            "@local.name_4": [
+              "value"
+            ]
+          }
         }
       ],
       "_nested_name": "suggestions"
     }
   ],
-  "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx",
+  "_overrides": {
+    "w_self_care_reward_pop_tz": "@fields._deployment_name == \"plh_tz\""
+  }
 }

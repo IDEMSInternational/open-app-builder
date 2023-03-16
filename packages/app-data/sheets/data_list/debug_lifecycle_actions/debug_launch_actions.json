@@ -1,0 +1,264 @@
+{
+  "flow_type": "data_list",
+  "flow_subtype": "debug_lifecycle_actions",
+  "flow_name": "debug_launch_actions",
+  "status": "released",
+  "rows": [
+    {
+      "lifecycle_event": "app_start",
+      "id": "app_start_update_complete",
+      "priority": 1,
+      "condition_list": [
+        "@fields._app_update_downloaded"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "app_update",
+          "args": [
+            "complete"
+          ],
+          "_raw": "app_update: complete",
+          "_cleaned": "click | app_update: complete"
+        }
+      ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "id": "app_start_set_skin",
+      "priority": 2,
+      "condition_list": [
+        "@fields._app_skin != \"modular\" && @fields.user_mode"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "emit",
+          "args": [
+            "set_skin",
+            "modular"
+          ],
+          "_raw": "emit: set_skin: modular",
+          "_cleaned": "click | emit: set_skin: modular"
+        }
+      ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "id": "app_start_set_theme",
+      "priority": 3,
+      "condition_list": [
+        "@fields._app_theme != \"professional\" && @fields.user_mode"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "emit",
+          "args": [
+            "set_theme",
+            "professional"
+          ],
+          "_raw": "emit: set_theme: professional",
+          "_cleaned": "click | emit: set_theme: professional"
+        }
+      ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "id": "app_start_splash_screens",
+      "priority": 4,
+      "condition_list": [
+        "!@fields.splash_screens_viewed && @fields.user_mode"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "splash_screens"
+          ],
+          "_raw": "pop_up: splash_screens | fullscreen: true, showCloseButton: false",
+          "_cleaned": "click | pop_up: splash_screens | fullscreen: true, showCloseButton: false",
+          "params": {
+            "fullscreen": true,
+            "showCloseButton": false
+          }
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "splash_screens_viewed",
+            true
+          ],
+          "_raw": "set_field: splash_screens_viewed: true",
+          "_cleaned": "click | set_field: splash_screens_viewed: true"
+        }
+      ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "id": "app_start_language_select",
+      "priority": 5,
+      "condition_list": [
+        "!@fields.language_selected && @fields.user_mode"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "language_select"
+          ],
+          "_raw": "pop_up: language_select | fullscreen: true, showCloseButton: false",
+          "_cleaned": "click | pop_up: language_select | fullscreen: true, showCloseButton: false",
+          "params": {
+            "fullscreen": true,
+            "showCloseButton": false
+          }
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "language_selected",
+            true
+          ],
+          "_raw": "set_field: language_selected: true",
+          "_cleaned": "click | set_field: language_selected: true"
+        }
+      ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "id": "app_start_accept_terms",
+      "priority": 6,
+      "condition_list": [
+        "!@fields.terms_v20230301_accepted && @fields.user_mode"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "accept_terms"
+          ],
+          "_raw": "pop_up: accept_terms | fullscreen: true, showCloseButton: false",
+          "_cleaned": "click | pop_up: accept_terms | fullscreen: true, showCloseButton: false",
+          "params": {
+            "fullscreen": true,
+            "showCloseButton": false
+          }
+        }
+      ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "id": "app_start_user_info",
+      "priority": 7,
+      "condition_list": [
+        "!@fields.user_info_submitted && @fields.user_mode"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "user_info"
+          ],
+          "_raw": "pop_up: user_info | fullscreen: true, showCloseButton: false",
+          "_cleaned": "click | pop_up: user_info | fullscreen: true, showCloseButton: false",
+          "params": {
+            "fullscreen": true,
+            "showCloseButton": false
+          }
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "user_info_submitted",
+            true
+          ],
+          "_raw": "set_field: user_info_submitted: true",
+          "_cleaned": "click | set_field: user_info_submitted: true"
+        }
+      ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "id": "app_start_home_screen_tour",
+      "priority": 8,
+      "condition_list": [
+        "!@fields.home_screen_tour_viewed && @fields._app_skin ==\"weekly_workshop\" && @fields.user_mode"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "start_tour",
+          "args": [
+            "home_screen_tour_intro"
+          ],
+          "_raw": "start_tour: home_screen_tour_intro",
+          "_cleaned": "click | start_tour: home_screen_tour_intro"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "home_screen_tour_viewed",
+            true
+          ],
+          "_raw": "set_field: home_screen_tour_viewed: true",
+          "_cleaned": "click | set_field: home_screen_tour_viewed: true"
+        }
+      ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "id": "app_start_home_screen_tour",
+      "priority": 9,
+      "condition_list": [
+        "!@fields.home_screen_modular_tour_viewed && @fields._app_skin ==\"modular\" && @fields.user_mode"
+      ],
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "start_tour",
+          "args": [
+            "home_screen_modular_tour_intro"
+          ],
+          "_raw": "start_tour: home_screen_modular_tour_intro",
+          "_cleaned": "click | start_tour: home_screen_modular_tour_intro"
+        },
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "home_screen_modular_tour_viewed",
+            true
+          ],
+          "_raw": "set_field: home_screen_modular_tour_viewed: true",
+          "_cleaned": "click | set_field: home_screen_modular_tour_viewed: true"
+        }
+      ]
+    },
+    {
+      "lifecycle_event": "app_start",
+      "id": "app_start_update_prompt",
+      "priority": 10,
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "app_update",
+          "args": [
+            "prompt"
+          ],
+          "_raw": "app_update: prompt",
+          "_cleaned": "click | app_update: prompt"
+        }
+      ]
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/debug_launch_actions.xlsx"
+}

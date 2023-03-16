@@ -1,12 +1,5 @@
 <div class="toolbar-container">
-  <ion-item lines="none" style="flex: 1">
-    <ion-label class="tool-label" position="stacked">Enabled</ion-label>
-    <ion-checkbox
-      [(ngModel)]="feedbackService.options.enabled"
-      (ionChange)="feedbackService.setEnabled(feedbackService.options.enabled)"
-    ></ion-checkbox>
-  </ion-item>
-  <ion-item lines="none" style="flex: 1">
+  <ion-item lines="none" style="width: 100px">
     <ion-label class="tool-label" position="stacked">Navigation</ion-label>
     <ion-checkbox
       [(ngModel)]="feedbackService.options.navigationEnabled"
