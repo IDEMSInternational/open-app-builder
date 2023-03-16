@@ -32,7 +32,9 @@
       "name": "name",
       "value": "What is your name or nickname?",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "parameter_list": {
         "style": "emphasised"
@@ -173,7 +175,9 @@
       "name": "gender",
       "value": "What is your gender?",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "parameter_list": {
         "style": "emphasised"

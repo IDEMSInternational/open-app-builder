@@ -316,7 +316,9 @@
           "name": "intro_text",
           "value": "Let’s do a short relaxation activity together. It will only take a moment and you will feel more relaxed.",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "workshop_activity.intro_text"

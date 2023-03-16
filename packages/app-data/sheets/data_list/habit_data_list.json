@@ -582,7 +582,9 @@
         "in_text_title": {
           "tz_sw": true
         },
-        "description": {},
+        "description": {
+          "tz_sw": true
+        },
         "mark_text": {
           "tz_sw": true,
           "za_af": true,
