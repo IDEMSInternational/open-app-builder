@@ -23,14 +23,19 @@ interface IAuthorParameterList {
    * default '100%'
    **/
   grid_width: string;
+  /**
+   * Spacing between grid items
+   * default '16px'
+   **/
+  grid_gap: string;
 }
 
 @Component({
-  selector: "plh-radio-group-grid",
-  templateUrl: "./radio-group-grid.component.html",
-  styleUrls: ["./radio-group-grid.component.scss"],
+  selector: "plh-radio-button-grid",
+  templateUrl: "./radio-button-grid.component.html",
+  styleUrls: ["./radio-button-grid.component.scss"],
 })
-export class TmplRadioGroupGridComponent
+export class TmplRadioButtonGridComponent
   extends TemplateBaseComponent
   implements ITemplateRowProps
 {
@@ -49,7 +54,7 @@ export class TmplRadioGroupGridComponent
   /**
    * Authoring parameters
    */
-  protected parameter_list: IAuthorParameterList;
+  private parameter_list: IAuthorParameterList;
 
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row = row;
@@ -66,8 +71,11 @@ export class TmplRadioGroupGridComponent
   }
 
   private setParams() {
+    this.parameter_list = this._row.parameter_list as any;
+    console.log("set params", this.parameter_list);
     this.radioItems = this.generateItemList();
     this.gridStyle = this.generateGridStyle();
+    console.log("grid style", this.gridStyle);
   }
 
   /**
@@ -75,12 +83,16 @@ export class TmplRadioGroupGridComponent
    * https://thesoftwayfarecoder.com/dynamically-creating-css-classes-in-angular/
    */
   private generateGridStyle() {
-    const minItemWidth = getParamFromTemplateRow(this._row, "item_width", "200px");
-    const maxGridWidth = getParamFromTemplateRow(this._row, "grid_width", "100%");
+    const minItemWidth = this.parameter_list.item_width || "200px";
+    const maxGridWidth = this.parameter_list.grid_width || "100%";
+    const gridGap = this.parameter_list.grid_gap || "16px";
+
     const style: Partial<CSSStyleDeclaration> = {
       // center grid with maximum width
       maxWidth: maxGridWidth,
       margin: "auto",
+      // apply fixed gap between grid items
+      gap: gridGap,
       // fit columns with target item width
       gridTemplateColumns: `repeat(auto-fit, minmax(${minItemWidth}, 1fr))`,
       // make all rows same height
