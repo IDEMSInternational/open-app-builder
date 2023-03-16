@@ -355,9 +355,14 @@ export function trackObservableObjectChanges<T extends Object>(subject: Observab
   );
 }
 
-/** A recursive version of Partial, making all properties, included nested ones, optional.
+/**
+ * A recursive version of Partial, making all properties, included nested ones, optional.
  * Copied from https://stackoverflow.com/a/47914631
  */
 export type RecursivePartial<T> = {
   [P in keyof T]?: RecursivePartial<T[P]>;
 };
+
+export function isNonEmptyArray(value: unknown): value is any[] {
+  return Array.isArray(value) && value.length > 0;
+}

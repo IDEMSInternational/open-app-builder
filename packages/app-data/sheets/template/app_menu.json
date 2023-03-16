@@ -243,7 +243,9 @@
       "name": "button_1",
       "value": "Technical Support",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "action_list": [
         {

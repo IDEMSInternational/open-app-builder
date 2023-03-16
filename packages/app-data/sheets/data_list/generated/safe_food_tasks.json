@@ -42,9 +42,15 @@
         "title": {
           "tz_sw": true
         },
-        "text": {},
-        "subtitle": {},
-        "text_2": {}
+        "text": {
+          "tz_sw": true
+        },
+        "subtitle": {
+          "tz_sw": true
+        },
+        "text_2": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -79,9 +85,15 @@
         "title": {
           "tz_sw": true
         },
-        "text": {},
-        "subtitle": {},
-        "text_2": {}
+        "text": {
+          "tz_sw": true
+        },
+        "subtitle": {
+          "tz_sw": true
+        },
+        "text_2": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -116,9 +128,15 @@
         "title": {
           "tz_sw": true
         },
-        "text": {},
-        "subtitle": {},
-        "text_2": {}
+        "text": {
+          "tz_sw": true
+        },
+        "subtitle": {
+          "tz_sw": true
+        },
+        "text_2": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -154,8 +172,12 @@
         "text": {
           "tz_sw": true
         },
-        "subtitle": {},
-        "text_2": {}
+        "subtitle": {
+          "tz_sw": true
+        },
+        "text_2": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {
@@ -188,9 +210,15 @@
         "title": {
           "tz_sw": true
         },
-        "text": {},
-        "subtitle": {},
-        "text_2": {}
+        "text": {
+          "tz_sw": true
+        },
+        "subtitle": {
+          "tz_sw": true
+        },
+        "text_2": {
+          "tz_sw": true
+        }
       },
       "_translatedFields": {
         "title": {

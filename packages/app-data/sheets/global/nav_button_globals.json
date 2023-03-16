@@ -65,6 +65,16 @@
     },
     {
       "type": "declare_global_constant",
+      "name": "submit",
+      "value": "Submit",
+      "_translations": {
+        "value": {
+          "tz_sw": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
       "name": "next_button",
       "value": "**@global.next**",
       "_translations": {
@@ -107,6 +117,14 @@
       "type": "declare_global_constant",
       "name": "continue_button",
       "value": "**@global.continue**",
+      "_translations": {
+        "value": {}
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "submit_button",
+      "value": "**@global.submit**",
       "_translations": {
         "value": {}
       }
