@@ -6,6 +6,7 @@ $background-selected: var(
 );
 $border: var(--ion-border-standard);
 $border-radius: var(--ion-border-radius-standard);
+$font-size: var(--radio-button-font-size, 1.25rem);
 
 .radio-grid {
   display: grid;
@@ -20,4 +21,10 @@ $border-radius: var(--ion-border-radius-standard);
 }
 .item[data-selected="true"] {
   background: $background-selected;
+  .item-text {
+    font-weight: bold;
+  }
+}
+.item-text {
+  font-size: $font-size;
 }
