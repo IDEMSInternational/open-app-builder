@@ -25,7 +25,7 @@
       "_nested_name": "title_row"
     },
     {
-      "type": "radio_group",
+      "type": "radio_group_grid",
       "name": "radio_group_without_options_per_row",
       "exclude_from_translation": true,
       "parameter_list": {
@@ -51,7 +51,7 @@
       }
     },
     {
-      "type": "radio_group",
+      "type": "radio_group_grid",
       "name": "radio_group_with_options_per_row",
       "exclude_from_translation": true,
       "parameter_list": {
@@ -123,7 +123,7 @@
       }
     },
     {
-      "type": "radio_group",
+      "type": "radio_group_grid",
       "name": "radio_group_with_long_text_and_options_per_row",
       "parameter_list": {
         "answer_list": "@local.answer_list_2",
@@ -149,7 +149,7 @@
       }
     },
     {
-      "type": "radio_group",
+      "type": "radio_group_grid",
       "name": "radio_group_with_long_text",
       "exclude_from_translation": true,
       "parameter_list": {

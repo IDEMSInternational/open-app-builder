@@ -37,7 +37,9 @@
               "name": "intro_text",
               "value": "Having a @global.safety_word can help your teen stay safe too.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "type": "set_variable",
               "_nested_name": "question_time.workshop_activity.intro_text",
@@ -76,7 +78,9 @@
                   "name": "text",
                   "value": "You can choose any word as a @global.safety_word. Only your family knows it means ‘help’. \n\nYour teen can say this word to let you know they are in trouble without you getting angry or punishing them, so you can help them.",
                   "_translations": {
-                    "value": {}
+                    "value": {
+                      "tz_sw": true
+                    }
                   },
                   "type": "set_variable",
                   "_nested_name": "question_time.workshop_activity.content_box.text",
@@ -100,7 +104,9 @@
                   "name": "question_text",
                   "value": "What @global.safety_word can you choose with your teen?",
                   "_translations": {
-                    "value": {}
+                    "value": {
+                      "tz_sw": true
+                    }
                   },
                   "type": "set_variable",
                   "_nested_name": "question_time.workshop_activity.content_box.question_text",
@@ -160,7 +166,9 @@
                   "name": "reply",
                   "value": "Your teen can say:\n\"I saw...\"\n\"I look forward to...\"\n\"Did you remember to…?\"\n\nYou respond calmly and give your teen an excuse why they need to come home.",
                   "_translations": {
-                    "value": {}
+                    "value": {
+                      "tz_sw": true
+                    }
                   },
                   "type": "set_variable",
                   "_nested_name": "question_time.workshop_activity.content_box.reply"

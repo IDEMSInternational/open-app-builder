@@ -562,7 +562,9 @@
           "za_xh": true,
           "za_zu": true
         },
-        "reply_challenge_2": {},
+        "reply_challenge_2": {
+          "tz_sw": true
+        },
         "text_challenge_3": {
           "tz_sw": true,
           "za_af": true,
