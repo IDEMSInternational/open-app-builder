@@ -622,11 +622,11 @@
           "trigger": "click",
           "action_id": "feedback",
           "args": [
-            "send",
+            "submit",
             "@local.form_data"
           ],
-          "_raw": "click | feedback:send:@local.form_data",
-          "_cleaned": "click | feedback:send:@local.form_data"
+          "_raw": "click | feedback:submit:@local.form_data",
+          "_cleaned": "click | feedback:submit:@local.form_data"
         },
         {
           "trigger": "click",
@@ -671,7 +671,7 @@
             },
             "_raw": [
               {
-                "fullExpression": "click | feedback:send:@local.form_data",
+                "fullExpression": "click | feedback:submit:@local.form_data",
                 "matchedExpression": "@local.form_data",
                 "type": "local",
                 "fieldName": "form_data"
@@ -679,7 +679,7 @@
             ],
             "_cleaned": [
               {
-                "fullExpression": "click | feedback:send:@local.form_data",
+                "fullExpression": "click | feedback:submit:@local.form_data",
                 "matchedExpression": "@local.form_data",
                 "type": "local",
                 "fieldName": "form_data"
