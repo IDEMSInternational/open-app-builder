@@ -12787,15 +12787,9 @@
   },
   {
     "SourceText": "You can explore any @global.workshop whenever you want. To see the biggest change in your family, complete all the activities in one @global.workshop before moving to the next one.",
-    "text": "Unaweza kuchunguza@global.workshop yoyote wakati wowote unaotaka. Kuona mabadiliko makubwa katika familia yako,maliza shughuli zako katika moja ya @global.workshop kabla ya kuhamia nyingine.",
+    "text": "Unaweza kuchunguza @global.workshop yoyote wakati wowote unaotaka. Kuona mabadiliko makubwa katika familia yako,maliza shughuli zako katika moja ya @global.workshop kabla ya kuhamia nyingine.",
     "type": "tour",
     "note": "The following strings should not be translated:\n@global.workshop\n@global.workshop"
-  },
-  {
-    "SourceText": "Things to do",
-    "text": "Unaweza kuchunguza@global.workshop yoyote wakati wowote unaotaka. Kuona mabadiliko makubwa katika familia yako, maliza shughuli zako katika moja ya @global.workshop kabla ya kuhamia nyingine",
-    "type": "tour",
-    "note": ""
   },
   {
     "SourceText": "Tap here whenever you enter @global.parent_app! You will find 3 short activities that you can do next to help yourself and your family.",
