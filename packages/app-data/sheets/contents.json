@@ -246,6 +246,11 @@
       "flow_name": "app_settings",
       "_xlsxPath": "templates/global/app_settings.xlsx"
     },
+    "app_update_complete": {
+      "flow_type": "template",
+      "flow_name": "app_update_complete",
+      "_xlsxPath": "templates/global/app_launch_templates.xlsx"
+    },
     "debug_nav": {
       "flow_type": "template",
       "flow_name": "debug_nav",

@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "app_update_complete",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text",
+      "value": "@global.app_name has downloaded an update. Please restart the app to finish installation.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.app_name has downloaded an update. Please restart the app to finish installation.",
+            "matchedExpression": "@global.app_name",
+            "type": "global",
+            "fieldName": "app_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.app_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button",
+      "value": "Restart",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "app_update",
+          "args": [
+            "complete"
+          ],
+          "_raw": "click | app_update: complete",
+          "_cleaned": "click | app_update: complete"
+        }
+      ],
+      "_nested_name": "button"
+    }
+  ],
+  "_xlsxPath": "templates/global/app_launch_templates.xlsx"
+}
