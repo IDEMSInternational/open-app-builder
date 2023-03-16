@@ -130,6 +130,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/TmplDashedBoxComponent.html" data-type="entity-link" >TmplDashedBoxComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/TmplDataItemsComponent.html" data-type="entity-link" >TmplDataItemsComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/TmplDisplayGroupComponent.html" data-type="entity-link" >TmplDisplayGroupComponent</a>
                             </li>
                             <li class="link">
