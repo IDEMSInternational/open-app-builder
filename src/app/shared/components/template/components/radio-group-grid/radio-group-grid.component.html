@@ -5,9 +5,9 @@
     (click)="handleItemClick(item)"
     [attr.data-selected]="item.name === _row.value"
   >
-    <div class="item-image-container" *ngIf="radioButton.image">
-      <img class="item-image" [src]="radioButton.image | plhAsset" />
+    <div class="item-image-container" *ngIf="item.image">
+      <img class="item-image" [src]="item.image | plhAsset" />
     </div>
-    <div class="item-text">{{ radioButton.text }}</div>
+    <div class="item-text">{{ item.text }}</div>
   </div>
 </div>

@@ -1,14 +1,28 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { FlowTypes, ITemplateRowProps } from "../../models";
 import { getParamFromTemplateRow } from "src/app/shared/utils";
 import { objectToArray } from "../../utils";
 
-interface IRadioButton {
-  name: string | null;
-  image: string | null;
-  text: string | null;
-  image_checked: string | null;
+interface IAnswerListItem {
+  name: string;
+  image?: string;
+  text?: string;
+}
+
+interface IAuthorParameterList {
+  /** List of options presented as radio items */
+  answer_list: IAnswerListItem[];
+  /**
+   * Minimum item width, will increase to fit grid
+   * default '200px'
+   **/
+  item_width: string;
+  /**
+   * Maximum grid width, if specified will center items in available space
+   * default '100%'
+   **/
+  grid_width: string;
 }
 
 @Component({
@@ -24,7 +38,7 @@ export class TmplRadioGroupGridComponent
    * Computed item array from input parameters
    * @ignore
    */
-  public radioButtons: Array<IRadioButton>;
+  public radioItems: Array<IAnswerListItem>;
 
   /**
    * Computed grid style from input parameters
@@ -35,21 +49,7 @@ export class TmplRadioGroupGridComponent
   /**
    * Authoring parameters
    */
-  protected parameter_list: {
-    /** List of options presented as radio items */
-    answer_list: string[];
-    /**
-     * Minimum item width, will increase to fit grid
-     * default '200px'
-     **/
-    item_width: string;
-
-    /**
-     * Maximum grid width, if specified will center items in available space
-     * default '100%'
-     **/
-    grid_width: string;
-  };
+  protected parameter_list: IAuthorParameterList;
 
   @Input() set row(row: FlowTypes.TemplateRow) {
     this._row = row;
@@ -60,13 +60,13 @@ export class TmplRadioGroupGridComponent
    * S
    * @ignore
    */
-  public async handleRadioButtonClick(radioButton: IRadioButton) {
-    await this.setValue(radioButton.name);
+  public async handleItemClick(item: IAnswerListItem) {
+    await this.setValue(item.name);
     this.triggerActions("changed");
   }
 
   private setParams() {
-    this.radioButtons = this.generateItemList();
+    this.radioItems = this.generateItemList();
     this.gridStyle = this.generateGridStyle();
   }
 
@@ -99,13 +99,15 @@ export class TmplRadioGroupGridComponent
     if (answerList.constructor === {}.constructor) {
       answerList = objectToArray(answerList);
     }
-    const radioButtons: IRadioButton[] = answerList.map((item: string | Record<string, string>) => {
-      if (typeof item === "string") {
-        return this.parseAnswerListItemString(item);
+    const radioItems: IAnswerListItem[] = answerList.map(
+      (item: string | Record<string, string>) => {
+        if (typeof item === "string") {
+          return this.parseAnswerListItemString(item);
+        }
+        return item as any;
       }
-      return item as any;
-    });
-    return radioButtons;
+    );
+    return radioItems;
   }
 
   /**
@@ -113,7 +115,7 @@ export class TmplRadioGroupGridComponent
    * TODO - CC 2023-03-16 - should ideally convert in parsers instead of at runtime
    */
   private parseAnswerListItemString(item: string) {
-    const itemObj: IRadioButton = {} as any;
+    const itemObj: IAnswerListItem = {} as any;
     const stringProperties = item.split("|");
     stringProperties.forEach((s) => {
       const [field, value] = s.split(":").map((v) => v.trim());
