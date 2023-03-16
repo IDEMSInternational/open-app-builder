@@ -250,6 +250,27 @@
       "exclude_from_translation": true,
       "name": "button",
       "_nested_name": "button"
+    },
+    {
+      "type": "button",
+      "value": "Submit Test Feedback",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "feedback",
+          "args": [
+            "submit",
+            "test feedback"
+          ],
+          "_raw": "click | feedback:submit:test feedback",
+          "_cleaned": "click | feedback:submit:test feedback"
+        }
+      ],
+      "name": "button",
+      "_nested_name": "button"
     }
   ],
   "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_feedback.xlsx"
