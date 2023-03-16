@@ -234,7 +234,7 @@
       }
     },
     {
-      "type": "radio_group",
+      "type": "radio_group_grid",
       "name": "radio_group_1",
       "value": "@fields.workshop_path",
       "_translations": {
