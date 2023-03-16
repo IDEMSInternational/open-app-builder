@@ -47,7 +47,9 @@
       "name": "text_1_1",
       "value": "These @global.terms_and_conditions are an agreement between you and @global.app_id (‘@global.app_name’ or ‘the app’) which furthermore sets out the rules for your use of @global.app_name.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "text_1_1",
       "_dynamicFields": {

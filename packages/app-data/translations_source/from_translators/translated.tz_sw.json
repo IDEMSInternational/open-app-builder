@@ -66,6 +66,18 @@
     "note": ""
   },
   {
+    "SourceText": "The @global.parent_app team has legitimate interests in carrying out research activities, under Art. 6(1)(f) GDPR, regarding the sharing of limited details related to how you use the app; and",
+    "text": "Timu ya @global.parent_app ina maslahi halali katika kutekeleza shughuli za utafiti, chini ya Sanaa. 6(1)(f) GDPR, kuhusiana na kushirikisha maelezo machache yanayohusiana na jinsi unavyotumia programu tumishi; na",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "Your consent, under Art. 6(1)(a) GDPR, regarding the email address you provide at the point of Google Sign-in and the sharing of answers you may provide to in-app questions (those involving as stated chosen username and gender which are entirely optional).",
+    "text": "Idhini yako, chini ya Sanaa. 6(1)(a) GDPR, kuhusiana na anuani ya barua pepe unayotoa wakati wa Kuingia kwa Kutumia Google na kushiriki majibu ambayo unaweza kutoa kwa tafiti za ndani ya programu tumishi (ambazo ni za hiari kabisa).",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Log Data",
     "text": "Data ya Kumbukumbu",
     "type": "template",
@@ -316,6 +328,18 @@
     "text": "@global.app_name inaletwa kwako na ushirikiano wa washirika wakiwemo Chuo Kikuu cha Oxford, IDEMS International, Chuo Kikuu cha Cape Town, Taasisi ya Kitaifa ya Utafiti wa Matibabu - Kituo cha Mwanza Tanzania, na Clowns Without Borders Afrika Kusini ('the @global.app_name team ').",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.app_name\n@global.app_name"
+  },
+  {
+    "SourceText": "Parenting for Lifelong Health (PLH) - was designed through a worldwide collaboration between parenting experts from UNICEF, the WHO and Universities in South Africa and the UK, as well as African NGOs and families and teens all across Africa.",
+    "text": "Parenting for Lifelong Health (PLH)- ilitengenezwa kupitia ushirikiano wa wadau mbali mbali wa malezi ulimwenguni kutoka UNICEF, WHO na Chuo Kikuu cha Afrika ya Kusini na Uingereza ,pamoja na taasisi zisizo za kiserikari za afrika na familia na vijana kote kote Afrika.",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "The digital @global.parent_app is brought to you by the collaboration of partners including University of Oxford, IDEMS International, University of Cape Town, National Institute for Medical Research - Mwanza Centre Tanzania, and Clowns Without Borders South Africa (‘the @global.parent_app team’).",
+    "text": "@global.parent_app inaletwa kwako kwa ushirikiano wa washirika wakiwemo Chuo Kikuu cha Oxford, IDEMS International, Chuo Kikuu cha Cape Town, Taasisi ya Kitaifa ya Utafiti wa Matibabu - Kituo cha Mwanza Tanzania, na Clowns Without Borders Afrika Kusini ('the @global.parent_app team ').",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@global.parent_app\n@global.parent_app"
   },
   {
     "SourceText": "Please read these @global.terms_and_conditions carefully. By downloading or using the app, you agree that you have read, understood, and accepted the @global.terms_and_conditions contained below.",
