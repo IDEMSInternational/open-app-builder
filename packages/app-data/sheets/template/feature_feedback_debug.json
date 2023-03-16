@@ -45,6 +45,7 @@
       "_translations": {
         "value": {}
       },
+      "exclude_from_translation": true,
       "name": "text",
       "_nested_name": "text",
       "_dynamicFields": {
@@ -269,6 +270,7 @@
           "_cleaned": "click | feedback:submit:test feedback"
         }
       ],
+      "exclude_from_translation": true,
       "name": "button",
       "_nested_name": "button"
     }
