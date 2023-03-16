@@ -31,5 +31,7 @@ config.app_config.APP_SIDEMENU_DEFAULTS!.title = "WASH App";
 config.app_config.APP_HEADER_DEFAULTS!.title = "WASH App";
 config.app_config.NOTIFICATION_DEFAULTS!.title = "New message from WASH App";
 config.app_config.NOTIFICATION_DEFAULTS!.text = "You have a new message from WASH App";
+config.app_config.APP_UPDATES.enabled = true
+config.app_config.APP_UPDATES.completeUpdateTemplate = "app_update_complete"
 
 export default config;
