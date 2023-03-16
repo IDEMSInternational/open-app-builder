@@ -7,14 +7,13 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "",
         function: async ({ args }) => {
-          console.log("deployment workflow", args);
           const [childWorkflow] = args || [];
           const childWorkflows = workflows.deployment.children;
-          if (!childWorkflow || !(childWorkflow in childWorkflows)) {
+          if (!childWorkflow || !childWorkflows?.childWorkflow) {
             console.log(
               "available commands",
               "\n\n" +
-                Object.keys(childWorkflows)
+                Object.keys(childWorkflows as IDeploymentWorkflows)
                   .map((name) => `deployment ${name}`)
                   .join("\n"),
               "\n"
@@ -33,6 +32,47 @@ const workflows: IDeploymentWorkflows = {
           {
             name: "deployment create",
             function: async ({ tasks }) => tasks.deployment.create(),
+          },
+          {
+            name: "set deployment",
+            function: async ({ tasks, workflow }) => {
+              const shouldSet = await tasks.userInput.promptConfirmation(
+                "Would you like to set the deployment as active?",
+                true
+              );
+              if (shouldSet) {
+                const deploymentName = workflow["deployment create"].output;
+                await tasks.workflow.runWorkflow({
+                  name: `deployment set ${deploymentName}`,
+                  parent: workflow,
+                });
+              }
+            },
+          },
+        ],
+      },
+      import: {
+        label: "Import a remote deployment repository",
+        steps: [
+          {
+            name: "deployment import",
+            function: async ({ tasks, args }) => tasks.deployment.import(args[0]),
+          },
+          {
+            name: "set deployment",
+            function: async ({ tasks, workflow }) => {
+              const shouldSet = await tasks.userInput.promptConfirmation(
+                "Would you like to set the deployment as active?",
+                true
+              );
+              if (shouldSet) {
+                const deploymentName = workflow["deployment import"].output;
+                await tasks.workflow.runWorkflow({
+                  name: `deployment set ${deploymentName}`,
+                  parent: workflow,
+                });
+              }
+            },
           },
         ],
       },

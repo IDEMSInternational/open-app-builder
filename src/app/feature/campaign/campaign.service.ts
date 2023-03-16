@@ -185,7 +185,7 @@ export class CampaignService extends AsyncServiceBase {
    * Check all campaigns for those with notification schedules and evaluate
    * any notifications requiring scheduling
    */
-  private async scheduleCampaignNotifications() {
+  public async scheduleCampaignNotifications() {
     const scheduled: IScheduledNotificationsHashmap = {};
     for (const campaign of Object.values(this.scheduledCampaigns)) {
       scheduled[campaign.id] = {};
