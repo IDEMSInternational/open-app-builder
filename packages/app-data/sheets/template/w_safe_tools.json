@@ -100,7 +100,9 @@
               "name": "text_1",
               "value": "Make RULES with your teen about how they can stay safe in your community (especially in risky areas that cannot be avoided) and how they can safely use the apps and websites that they like. \n\nRemember the story about Online Safety? See it again here.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_2.text_1"
@@ -168,7 +170,9 @@
               "name": "text_1",
               "value": "Agree on a @global.safety_word. If something happens that makes your teen upset, uncomfortable or scared, they can say the @global.safety_word  and you will help them without getting angry or punishing them, even if they were doing something wrong. \n\nRemember the story about the @global.safety_word? See it again here.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "type": "set_variable",
               "_nested_name": "essential_tools.tool_3.text_1",
@@ -206,7 +210,9 @@
               "name": "button_1",
               "value": "@global.safety_word Story",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "action_list": [
                 {

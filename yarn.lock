@@ -2192,6 +2192,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@capawesome/capacitor-app-update@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@capawesome/capacitor-app-update@npm:2.0.1"
+  peerDependencies:
+    "@capacitor/core": ^4.0.0
+  checksum: 251476fd241cd233d3d0fe7a3b1e9bcb00f49695dda53b9c18f80bb5ea9a4f647f6b885021e4e280165783b79ef6b2a56132758e7c37be9c28050bb9e7096972
+  languageName: node
+  linkType: hard
+
 "@cnakazawa/watch@npm:^1.0.3":
   version: 1.0.4
   resolution: "@cnakazawa/watch@npm:1.0.4"
@@ -14784,6 +14793,7 @@ __metadata:
     "@capacitor/local-notifications": ^4.1.4
     "@capacitor/push-notifications": ^4.1.2
     "@capacitor/splash-screen": ^4.1.2
+    "@capawesome/capacitor-app-update": ^2.0.1
     "@compodoc/compodoc": ^1.1.19
     "@ionic-native/core": ^5.36.0
     "@ionic-native/device": ^5.36.0
