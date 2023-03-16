@@ -272,6 +272,7 @@ export namespace FlowTypes {
     | "text_box"
     | "text_area"
     | "radio_group"
+    | "radio_group_grid"
     | "tile_component"
     | "combo_box"
     | "icon_banner"

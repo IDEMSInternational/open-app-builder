@@ -1,0 +1,24 @@
+// @use "/src/theme/mixins";
+
+$background-selected: var(
+  --radio-group-background-selected,
+  var(--gradient-primary-light-vertical)
+);
+$border: var(--ion-border-standard);
+$border-radius: var(--ion-border-radius-standard);
+
+.radio-grid {
+  display: grid;
+  gap: 1rem;
+}
+.radio-button {
+  border: $border;
+  border-radius: 15px;
+  text-align: center;
+  padding: 8px;
+  background: white;
+  cursor: pointer;
+}
+.radio-button[data-selected="true"] {
+  background: $background-selected;
+}
