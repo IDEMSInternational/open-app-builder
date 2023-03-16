@@ -79,7 +79,8 @@
       "value": "**@global.next**",
       "_translations": {
         "value": {}
-      }
+      },
+      "exclude_from_translation": true
     },
     {
       "type": "declare_global_constant",
@@ -87,7 +88,8 @@
       "value": "**@global.previous**",
       "_translations": {
         "value": {}
-      }
+      },
+      "exclude_from_translation": true
     },
     {
       "type": "declare_global_constant",
@@ -95,7 +97,8 @@
       "value": "**@global.save**",
       "_translations": {
         "value": {}
-      }
+      },
+      "exclude_from_translation": true
     },
     {
       "type": "declare_global_constant",
@@ -103,7 +106,8 @@
       "value": "**@global.start**",
       "_translations": {
         "value": {}
-      }
+      },
+      "exclude_from_translation": true
     },
     {
       "type": "declare_global_constant",
@@ -111,7 +115,8 @@
       "value": "**@global.skip**",
       "_translations": {
         "value": {}
-      }
+      },
+      "exclude_from_translation": true
     },
     {
       "type": "declare_global_constant",
@@ -119,7 +124,8 @@
       "value": "**@global.continue**",
       "_translations": {
         "value": {}
-      }
+      },
+      "exclude_from_translation": true
     },
     {
       "type": "declare_global_constant",
@@ -127,7 +133,8 @@
       "value": "**@global.submit**",
       "_translations": {
         "value": {}
-      }
+      },
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "globals/navigation_globals.xlsx"

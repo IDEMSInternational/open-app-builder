@@ -1,7 +1,7 @@
 [
   {
     "SourceText": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.app_name’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.app_name.",
-    "text": "Data yako ni muhimu kwetu. Hii @global.privacy_policy for global.app_id\n(‘@global.app_name’ ‘au programu’) huweka bayana sera zetu za ukusanyaji, matumizi na ufichuaji wa taarifa binafsi katika matumizi ya @global.app_name.",
+    "text": "Data yako ni muhimu kwetu. Hii @global.privacy_policy for @global.app_id\n(‘@global.app_name’ ‘au programu’) huweka bayana sera zetu za ukusanyaji, matumizi na ufichuaji wa taarifa binafsi katika matumizi ya @global.app_name.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.privacy_policy\n@global.app_id\n@global.app_name\n@global.app_name"
   },
@@ -313,7 +313,7 @@
   },
   {
     "SourceText": "These @global.terms_and_conditions are an agreement between you and @global.app_id (‘@global.app_name’ or ‘the app’) which furthermore sets out the rules for your use of @global.app_name.",
-    "text": "Haya @global.terms_and_conditions ni makubaliano kati yako na global.app_id (‘@global.app_name’ au ‘programu’) ambayo zaidi ya hayo yanaweka sheria za matumizi yako ya @global.app_name.",
+    "text": "Haya @global.terms_and_conditions ni makubaliano kati yako na @global.app_id (‘@global.app_name’ au ‘programu’) ambayo zaidi ya hayo yanaweka sheria za matumizi yako ya @global.app_name.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.terms_and_conditions\n@global.app_id\n@global.app_name\n@global.app_name"
   },
