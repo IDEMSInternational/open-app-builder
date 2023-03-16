@@ -118,6 +118,7 @@ export class LocalNotificationService extends AsyncServiceBase {
   /** Ensure all notifications in database are also scheduled on device */
   private async setApiNotifications() {
     const existingNotifications = await LocalNotifications.getPending();
+    // Ensure notification ops use non-empty arrays to avoid error shown in #1827
     if (isNonEmptyArray(existingNotifications.notifications)) {
       await LocalNotifications.cancel({ notifications: existingNotifications.notifications });
     }
