@@ -1630,5 +1630,17 @@
     "text": "Unaweza kuchunguza vipindi vyovyote wakati wowote unapotaka. Ili kujenga maarifa na ujuzi wako katika WASH, pata maudhui yote katika sehemu moja kabla ya kuhamia nyingine.",
     "type": "tour",
     "note": ""
+  },
+  {
+    "SourceText": "@global.app_name has downloaded an update. Please restart the app to finish installation.",
+    "text": "@global.app_name imesasishwa. Tafadhali anzisha tena programu tumishi kumalizia kuiweka swa.",
+    "type": "template",
+    "note": "The string @global.app_name should not be translated."
+  },
+  {
+    "SourceText": "Restart",
+    "text": "Anzisha upya tena",
+    "type": "template",
+    "note": ""
   }
 ]
