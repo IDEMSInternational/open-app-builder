@@ -15,11 +15,26 @@
     {
       "type": "text",
       "name": "text",
-      "value": "The WASH App team would firstly like to acknowledge and show appreciation for the inputs of colleagues from the National Institute for Medical Research (whom are also community members) of Mwanza, Tanzania in shaping the content and design of this App.",
+      "value": "The @global.app_name team would firstly like to acknowledge and show appreciation for the inputs of colleagues from the National Institute for Medical Research (whom are also community members) of Mwanza, Tanzania in shaping the content and design of this App.",
       "_translations": {
         "value": {}
       },
-      "_nested_name": "text"
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "The @global.app_name team would firstly like to acknowledge and show appreciation for the inputs of colleagues from the National Institute for Medical Research (whom are also community members) of Mwanza, Tanzania in shaping the content and design of this App.",
+            "matchedExpression": "@global.app_name",
+            "type": "global",
+            "fieldName": "app_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.app_name": [
+          "value"
+        ]
+      }
     },
     {
       "type": "title",
@@ -47,11 +62,26 @@
     {
       "type": "text",
       "name": "text",
-      "value": "The content of the WASH App is driven by the primary source material outlined below:",
+      "value": "The content of the @global.app_name is driven by the primary source material outlined below:",
       "_translations": {
         "value": {}
       },
-      "_nested_name": "text"
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "The content of the @global.app_name is driven by the primary source material outlined below:",
+            "matchedExpression": "@global.app_name",
+            "type": "global",
+            "fieldName": "app_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.app_name": [
+          "value"
+        ]
+      }
     },
     {
       "type": "items",
@@ -485,11 +515,26 @@
     {
       "type": "text",
       "name": "text",
-      "value": "Additional sources consulted in the development of content for the WASH App include the below:",
+      "value": "Additional sources consulted in the development of content for the @global.app_name include the below:",
       "_translations": {
         "value": {}
       },
-      "_nested_name": "text"
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Additional sources consulted in the development of content for the @global.app_name include the below:",
+            "matchedExpression": "@global.app_name",
+            "type": "global",
+            "fieldName": "app_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.app_name": [
+          "value"
+        ]
+      }
     },
     {
       "type": "items",

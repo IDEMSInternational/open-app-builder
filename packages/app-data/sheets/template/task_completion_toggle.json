@@ -67,7 +67,7 @@
       "_translations": {
         "value": {}
       },
-      "style_list": true,
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "now",
       "_dynamicFields": {
@@ -93,7 +93,7 @@
         "value": {}
       },
       "condition": "!!(@fields.@local.toggle_history_field)",
-      "style_list": true,
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "toggle_history",
       "_dynamicFields": {
@@ -137,7 +137,7 @@
         "value": {}
       },
       "condition": "!(@fields.@local.toggle_history_field)",
-      "style_list": true,
+      "exclude_from_translation": true,
       "type": "set_variable",
       "_nested_name": "toggle_history",
       "_dynamicFields": {
