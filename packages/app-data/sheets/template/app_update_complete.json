@@ -8,7 +8,9 @@
       "name": "text",
       "value": "@global.parent_app has downloaded an update. Please restart the app to finish installation.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "text",
       "_dynamicFields": {
@@ -32,7 +34,9 @@
       "name": "button",
       "value": "Restart",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "action_list": [
         {
