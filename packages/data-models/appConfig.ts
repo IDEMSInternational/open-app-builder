@@ -174,6 +174,7 @@ const FEEDBACK_MODULE_DEFAULTS = {
   ],
   /** Field to populate with selected text for use in templates */
   selected_text_field: "_feedback_selected_text",
+  sidebar_open_field: "_feedback_sidebar_open",
 };
 
 const APP_UPDATES = {

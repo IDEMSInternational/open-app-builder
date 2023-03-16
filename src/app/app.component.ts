@@ -36,6 +36,7 @@ import { AppUpdateService } from "./shared/services/app-update/app-update.servic
 import { AsyncServiceBase } from "./shared/services/asyncService.base";
 import { SyncServiceBase } from "./shared/services/syncService.base";
 import { SeoService } from "./shared/services/seo/seo.service";
+import { FeedbackService } from "./feature/feedback/feedback.service";
 
 @Component({
   selector: "app-root",
@@ -83,6 +84,7 @@ export class AppComponent {
     private authService: AuthService,
     private seoService: SeoService,
     private taskService: TaskService,
+    private feedbackService: FeedbackService,
     /** Inject in the main app component to start tracking actions immediately */
     private taskActions: TaskActionService,
     private lifecycleActionsService: LifecycleActionsService,
@@ -203,6 +205,7 @@ export class AppComponent {
         this.authService,
         this.serverService,
         this.seoService,
+        this.feedbackService,
       ],
       deferred: [this.analyticsService],
       implicit: [
