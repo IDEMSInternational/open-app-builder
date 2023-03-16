@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from "@angular/core";
+import { AfterViewInit, Component, OnDestroy } from "@angular/core";
 import { FeedbackService } from "../../feedback.service";
 
 @Component({
@@ -6,17 +6,17 @@ import { FeedbackService } from "../../feedback.service";
   templateUrl: "./feedback-toolbar.component.html",
   styleUrls: ["./feedback-toolbar.component.scss"],
 })
-export class FeedbackToolbarComponent implements AfterViewInit {
+export class FeedbackToolbarComponent implements AfterViewInit, OnDestroy {
   constructor(public feedbackService: FeedbackService) {}
 
   ngAfterViewInit(): void {
-    const { contentPageWidth, enabled, navigationEnabled } = this.feedbackService.options;
+    const { contentPageWidth } = this.feedbackService.options;
     this.feedbackService.setContentPageWidth(contentPageWidth);
-    this.feedbackService.setEnabled(enabled);
-    this.feedbackService.setNavigationEnabled(navigationEnabled);
+    this.feedbackService.setEnabled(true);
+    this.feedbackService.setNavigationEnabled(true);
   }
 
-  ngOnDetroy() {
+  ngOnDestroy() {
     this.feedbackService.setContentPageWidth(null);
     this.feedbackService.setEnabled(false);
     this.feedbackService.setNavigationEnabled(true);
