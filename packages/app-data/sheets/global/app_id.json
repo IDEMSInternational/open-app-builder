@@ -1,0 +1,17 @@
+{
+  "flow_type": "global",
+  "flow_name": "app_id",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_global_constant",
+      "name": "app_id",
+      "value": "international.idems.plh_teens",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    }
+  ],
+  "_xlsxPath": "global/data/navigation_globals.xlsx"
+}
