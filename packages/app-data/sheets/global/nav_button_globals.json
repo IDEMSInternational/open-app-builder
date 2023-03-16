@@ -68,7 +68,9 @@
       "name": "submit",
       "value": "Submit",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       }
     },
     {

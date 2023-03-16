@@ -12,10 +12,10 @@
     "note": "The following strings should not be translated:\n@global.privacy_policy\n@global.privacy_policy"
   },
   {
-    "SourceText": "Remember that you have a choice",
-    "text": "Kumbuka kwamba una chaguo",
+    "SourceText": "The terms used in this @global.privacy_policy have the same meanings as in our @global.terms_and_conditions, which are accessible within the app, unless otherwise defined in this @global.privacy_policy.",
+    "text": "Masharti yanayotumika katika @global.privacy_policy yana maana sawa na yaliyopo katika @global.terms_and_conditions zetu, ambazo zinaweza kufikiwa ndani ya programu tumishi, isipokuwa kama imefafanuliwa vinginevyo katika @global.privacy_policy.",
     "type": "template",
-    "note": ""
+    "note": "The following strings should not be translated:\n@global.privacy_policy\n@global.terms_and_conditions\n@global.privacy_policy"
   },
   {
     "SourceText": "1. What information does the app collect about you and how do we use it?",
@@ -24,8 +24,8 @@
     "note": ""
   },
   {
-    "SourceText": "Take a few deep breaths",
-    "text": "Vuta pumzi ndefu",
+    "SourceText": "Personal Data",
+    "text": "Data Binafsi",
     "type": "template",
     "note": ""
   },
@@ -66,9 +66,9 @@
     "note": ""
   },
   {
-    "SourceText": "Check-in chat",
-    "text": "Simulizi ya kuanzia",
-    "type": "data_list",
+    "SourceText": "Log Data",
+    "text": "Data ya Kumbukumbu",
+    "type": "template",
     "note": ""
   },
   {
@@ -78,15 +78,15 @@
     "note": ""
   },
   {
-    "SourceText": "Famous Party",
-    "text": "Chama Maarufu",
-    "type": "data_list",
+    "SourceText": "Cookies",
+    "text": "Vidakuzi",
+    "type": "template",
     "note": ""
   },
   {
-    "SourceText": "Two truths, one lie",
-    "text": "Kweli mbili, uongo mmoja",
-    "type": "data_list",
+    "SourceText": "Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.",
+    "text": "Vidakuzi ni faili zilizo na kiasi kidogo cha data ambazo hutumiwa kama vitambulishi vya kipekee visivyojulikana. Hizi hutumiwa kwa kivinjari chako kutoka kwa tovuti unazotembelea na kuhifadhiwa kwenye kumbukumbu ya ndani ya kifaa chako.",
+    "type": "template",
     "note": ""
   },
   {
@@ -96,21 +96,21 @@
     "note": ""
   },
   {
-    "SourceText": "Superpowers",
-    "text": "Nguvu kubwa",
-    "type": "data_list",
+    "SourceText": "Legal",
+    "text": "Kisheria",
+    "type": "template",
     "note": ""
   },
   {
-    "SourceText": "Just a friendly chat",
-    "text": "Maongezi ya kirafiki",
-    "type": "data_list",
-    "note": ""
+    "SourceText": "The information that we request will be retained by us and used as described in this @global.privacy_policy.",
+    "text": "Taarifa tunazoomba tutazihifadhi na kuzitumia kama ilivyoelezwa katika @global.privacy_policy.",
+    "type": "template",
+    "note": "The string @global.privacy_policy should not be translated."
   },
   {
-    "SourceText": "The Interrupter",
-    "text": "Mdakizi",
-    "type": "data_list",
+    "SourceText": "Feedback Submissions",
+    "text": "Mawasilisho ya Maoni",
+    "type": "template",
     "note": ""
   },
   {
@@ -120,9 +120,9 @@
     "note": ""
   },
   {
-    "SourceText": "Yes, No or Maybe",
-    "text": "Ndiyo, Hapana au Labda",
-    "type": "data_list",
+    "SourceText": "Aggregate Data",
+    "text": "Taarifa ya Jumla",
+    "type": "template",
     "note": ""
   },
   {
@@ -132,9 +132,9 @@
     "note": "The string @global.app_name should not be translated."
   },
   {
-    "SourceText": "Make up a story",
-    "text": "Buni Hadithi",
-    "type": "data_list",
+    "SourceText": "Push notifications",
+    "text": "Taarifa za kushinikiza",
+    "type": "template",
     "note": ""
   },
   {
@@ -144,9 +144,9 @@
     "note": ""
   },
   {
-    "SourceText": "Dance moves",
-    "text": "Miondoko ya kucheza",
-    "type": "data_list",
+    "SourceText": "2. Information Sharing",
+    "text": "2. Kupeana Taarifa",
+    "type": "template",
     "note": ""
   },
   {
@@ -162,27 +162,27 @@
     "note": "The string @global.privacy_policy should not be translated."
   },
   {
-    "SourceText": "Get active!",
-    "text": "Changamka!",
-    "type": "data_list",
+    "SourceText": "You agree that we may transfer your personal information outside your country, for example, to administer cloud services. We will ensure that any country, company or person that we pass your personal information to agrees to treat your information with the same level of protection as we are obliged to.",
+    "text": "Unakubali kwamba tunaweza kuhamisha taarifa yako binafsi nje ya nchi yako, kwa mfano, ili kusimamia huduma za uhifadhi mtandaoni. Tutahakikisha kwamba nchi, kampuni yooyote au mtu yeyote ambaye tunampatia taarifa zako za binafsi anakubali kushughulikia maelezo yako kwa kiwango sawa cha ulinzi tunachowajibika.",
+    "type": "template",
     "note": ""
   },
   {
-    "SourceText": "Name that tune",
-    "text": "Taja jina la wimbo huo",
-    "type": "data_list",
+    "SourceText": "3. Third Party Service Providers and Websites",
+    "text": "3. Watoa Huduma na Tovuti za Wahusika wengine",
+    "type": "template",
     "note": ""
   },
   {
-    "SourceText": "Pass the snap",
-    "text": "Pitisha kitufe",
-    "type": "data_list",
+    "SourceText": "The app does use third party services that may collect information used to identify you. We do so for the following reasons:\n* To facilitate our app\n* To provide the app on our behalf\n* To perform app-related services; or\n* To assist us in analysing how our app is used.",
+    "text": "Programu tumishi hii haitumii huduma za watu wengine ambazo zinaweza kukusanya taarifa zinazotumiwa kukutambulisha. Tunafanya hivyo kwa sababu zifuatazo:\n* Ili kuwezesha programu tumishi yetu\n* Ili kutoa programu tumishi kwa niaba yetu\n* Kufanya huduma zinazohusiana na programu tumishi; au\n* Ili kutusaidia katika kuchanganua jinsi programu tumishi yetu inatumiwa.",
+    "type": "template",
     "note": ""
   },
   {
-    "SourceText": "Family workout",
-    "text": "Mazoezi ya familia",
-    "type": "data_list",
+    "SourceText": "We want to inform users of this app that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.",
+    "text": "Tunataka kuwafahamisha watumiaji wa programu hii kwamba wahusika hawa wengine wanaweza kufikia Taarifa zako za Binafsi. Sababu ni kufanya kazi walizopewa kwa niaba yetu. Walakini, wanalazimika kutofichua au kutumia habari kwa madhumuni mengine yoyote.",
+    "type": "template",
     "note": ""
   },
   {
@@ -198,15 +198,15 @@
     "note": ""
   },
   {
-    "SourceText": "Household chores aren’t fun… or are they? You can make them into a game!",
-    "text": "Je, kazi za nyumbani hazifurahishi... au zinafurahisha? Unaweza kuzifanya kuwa mchezo!",
-    "type": "data_list",
-    "note": ""
+    "SourceText": "This app may contain links to other sites that are not covered by this @global.privacy_policy. If you click on a third-party link, you will be directed to that site. This @global.privacy_policy applies only to the processing of your information by this app. It does not address, and we are not responsible for, the privacy, information, or other practices of any third parties, including any third party operating any site or service to which this app links to.",
+    "text": "Programu tumishi hii inaweza kuwa na viungo vya tovuti zingine ambazo hazijashughulikiwa na @global.privacy_policy. Ukibofya kiungo cha mtu wa tatu, utaelekezwa kwenye tovuti hiyo. Hii @global.privacy_policy inatumika tu kwa uchakataji wa maelezo yako na programu tumishi hii. Haishughulikii, na hatuwajibikii, faragha, taarifa, au desturi nyingine za wahusika wengine, ikiwa ni pamoja na wahusika wengine wanaoendesha tovuti au huduma yoyote ambayo programu tumishi hii inaunganisha nayo.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@global.privacy_policy\n@global.privacy_policy"
   },
   {
-    "SourceText": "What are you doing?",
-    "text": "Unafanya nini?",
-    "type": "data_list",
+    "SourceText": "4. How long do we keep your data?",
+    "text": "4. Je, tunahifadhi data yako kwa muda gani?",
+    "type": "template",
     "note": ""
   },
   {
@@ -216,9 +216,9 @@
     "note": ""
   },
   {
-    "SourceText": "Crazy chicken",
-    "text": "Kuku kichaa",
-    "type": "data_list",
+    "SourceText": "5. How do we keep your data secure?",
+    "text": "5. Je, tunawekaje data yako salama?",
+    "type": "template",
     "note": ""
   },
   {
@@ -228,9 +228,9 @@
     "note": "The string @global.app_name should not be translated."
   },
   {
-    "SourceText": "Help your teen cope",
-    "text": "Msaidie kijana kwendana",
-    "type": "data_list",
+    "SourceText": "6. Children’s Privacy",
+    "text": "6. Faragha ya Watoto",
+    "type": "template",
     "note": ""
   },
   {
@@ -240,46 +240,46 @@
     "note": ""
   },
   {
-    "SourceText": "Wonderful, I am so happy things are going well.",
-    "text": "Ni jambo la kuvutia sana, ninafurahi sana mambo yanaenda vizuri.",
-    "type": "data_list",
+    "SourceText": "Under certain circumstances, by law you have the right to:\n* Request access to your data (commonly known as a \"subject access request\"). This enables you to receive a copy of your data and to check that we are lawfully processing it.\n* Request correction of your data. This enables you to ask us to correct any incomplete or inaccurate information we hold about you.\n* Request erasure of your data. This enables you to ask us to delete or remove your data under certain circumstances, for example, if you consider that there is no good reason for us continuing to process it. You also have the right to ask us to delete or remove your data where you have exercised your right to object to processing (see below).\n* Object to processing of your data where we are relying on our legitimate interests (or those of a third party) and there is something about your particular situation which makes you want to object to processing on this ground.\n* Request the restriction of processing of your data. This enables you to ask us to suspend the processing of your data, for example if you want us to establish its accuracy or the reason for processing it.\n* Request the transfer of your data to another party.",
+    "text": "Chini ya hali fulani, kisheria una haki ya:\n* Omba ufikiaji wa data yako (inayojulikana kama \"ombi la ufikiaji wa mada\"). Hii hukuwezesha kupokea nakala ya data yako na kuangalia kama tunaichakata kihalali.\n* Omba marekebisho ya data yako. Hii hukuwezesha kutuuliza kusahihisha taarifa yoyote isiyo kamili au isiyo sahihi tunayoshikilia kukuhusu.\n* Omba kufutwa kwa data yako. Hii hukuwezesha kutuomba kufuta au kuondoa data yako chini ya hali fulani, kwa mfano, ikiwa unaona kuwa hakuna sababu nzuri ya sisi kuendelea kuichakata. Pia una haki ya kutuomba kufuta au kuondoa data yako ambapo umetumia haki yako ya kupinga kuchakatwa (tazama hapa chini).\n* Inapinga kuchakata data yako ambapo tunategemea maslahi yetu halali (au yale ya wahusika wengine) na kuna kitu kuhusu hali yako mahususi ambacho kinakufanya utake kukataa kuchakatwa kwa msingi huu.\n* Omba kizuizi cha usindikaji wa data yako. Hii hukuwezesha kutuuliza tuahirishe uchakataji wa data yako, kwa mfano ikiwa unataka tubainishe usahihi wake au sababu ya kuichakata.\n* Omba uhamishaji wa data yako kwa chama kingine.",
+    "type": "template",
     "note": ""
   },
   {
-    "SourceText": "Some days will have their challenges. That is okay. You are on the right path!",
-    "text": "Baadhi ya siku zingine zitakuwa na changamoto zake. Hiyo ni sawa. Uko kwenye njia sahihi!",
-    "type": "data_list",
+    "SourceText": "Depending on the circumstances and the nature of your request it may not be possible for us to do what you have asked, for example, where there is a statutory or contractual requirement for us to process your data and it would not be possible to fulfil our legal obligations if we were to stop. Further information on your rights is available from the Information Commissioner’s Office (ICO).",
+    "text": "Kulingana na mazingira na aina ya ombi lako huenda isiwezekane kwetu kufanya ulichoomba, kwa mfano, pale ambapo kuna mahitaji ya kisheria au ya kimkataba ili sisi kuchakata data yako na haingewezekana kutimiza wajibu wetu. majukumu ya kisheria ikiwa tungeacha. Taarifa zaidi kuhusu haki zako zinapatikana kutoka Ofisi ya Kamishna wa Habari (ICO).",
+    "type": "template",
     "note": ""
   },
   {
-    "SourceText": "Let’s take a moment for YOU. Looking after yourself well starts with noticing how you feel.",
-    "text": "Hebu tuchukue muda kwa ajili YAKO. Kujitunza vizuri huanza na kugundua jinsi unavyohisi.",
-    "type": "data_list",
+    "SourceText": "ICO",
+    "text": "ICO",
+    "type": "template",
     "note": ""
   },
   {
-    "SourceText": "Great! So good to hear you are in a positive space.",
-    "text": "Hongera! ni vizuri sana kusikia uko katika nafasi nzuri",
-    "type": "data_list",
+    "SourceText": "8. Removing the app",
+    "text": "8. Kuondoa programu tumishi",
+    "type": "template",
     "note": ""
   },
   {
-    "SourceText": "Things are not always easy. But that is how we can grow and learn every day!",
-    "text": "Mambo si rahisi kila wakati. Lakini hivyo ndivyo tunavyoweza kukua na kujifunza kila siku!",
-    "type": "data_list",
+    "SourceText": "We are sorry if you find our app no longer useful. Should you decide to remove our app, we may still retain some of your data (although anonymised) to troubleshoot, aid in investigations, comply with legal requirements or to add to our existing research data sets.",
+    "text": "Samahani ikiwa unaona programu tumishi yetu haina maana tena. Iwapo utaamua kuondoa programu tumishi yetu, bado tunaweza kuhifadhi baadhi ya data yako (ingawa hatujulikani) ili kutatua matatizo, kusaidia uchunguzi, kutii mahitaji ya kisheria au kuongeza kwenye seti zetu zilizopo za data za utafiti.",
+    "type": "template",
     "note": ""
   },
   {
-    "SourceText": "Life can be hard. Whatever you are feeling, you can be proud of yourself for being here!",
-    "text": "Maisha yanaweza kuwa magumu. Vyovyote unavyohisi, unaweza kujivunia kuwa hapa!",
-    "type": "data_list",
-    "note": ""
+    "SourceText": "9. Changes to the @global.privacy_policy",
+    "text": "9. Mabadiliko ya @global.privacy_policy",
+    "type": "template",
+    "note": "The string @global.privacy_policy should not be translated."
   },
   {
-    "SourceText": "You matter! Take a moment to check in with yourself.",
-    "text": "Wewe ni wa muhimu! Chukua muda kujiangalia wewe mwenyewe.",
-    "type": "data_list",
-    "note": ""
+    "SourceText": "We may update our @global.privacy_policy from time to time. You waive your right to be notified directly of changes and are advised to review this page periodically for any updates. Your continued use of the app suggests you agree to subsequent revisions of the @global.privacy_policy.",
+    "text": "Tunaweza kuboresha @global.privacy_policy mara kwa mara. Unaachilia haki yako ya kuarifiwa moja kwa moja kuhusu mabadiliko na unashauriwa kukagua ukurasa huu mara kwa mara kwa masasisho yoyote. Kuendelea kwako kutumia programu kunapendekeza ukubali masahihisho yajayo ya sera ya @global.privacy_policy.",
+    "type": "template",
+    "note": "The following strings should not be translated:\n@global.privacy_policy\n@global.privacy_policy"
   },
   {
     "SourceText": "If you have any questions or suggestions about our @global.privacy_policy, do not hesitate to contact us at apps@idems.international.",
@@ -439,7 +439,7 @@
   },
   {
     "SourceText": "Please be aware that the @global.app_name team exclude responsibility for the following:\n\n\na. Certain functions of the app will require the app to have an active internet connection. The @global.app_name team cannot take responsibility for the app not working at full functionality if you do not have access to Wi-Fi, or you do not have any of your data allowance left.\n\n\nb. Using the app outside of an area with Wi-Fi, will mean that your terms of agreement with your mobile network provider will still apply. As a result, you may be charged by your mobile provider for the cost of data for the duration of the connection while accessing the app, or other third party charges. In using the app, you accept responsibility for any such charges, including roaming data charges if you use the app outside of your home territory (i.e. region or country) without turning off data roaming. If you are not the bill payer for the device on which you are using the app, please be aware that we assume that you have received permission from the bill payer for using the app.\n\n\nc. Although we endeavour to ensure that the app is updated and its content accurate, we do rely on third parties to provide information to us so that we can make it available to you. We do not regularly check out all of the external sites and cannot guarantee that they are always accurate or reliable.\n\n\nd. The @global.app_name  team accepts no liability for any damage or loss, direct or indirect, you experience as a result of using the app, or arising from any reliance you may place on advice or information provided from the app. You should always exercise your own discretion and judgement appropriate to your own circumstances in relation to any advice or information provided from the app.\n\n\ne. Any instances of software bugs, viruses or other malicious material transmitted by a third party through our site are a regret, but we are devoid of responsibility.\n\n\nf. Updates to the app occur regularly in order to improve performance and content. The app is available on Android – the requirements for this system (and for any additional systems we decide to extend the availability of the app to) may change. It is your responsibility to download app updates to keep using the app. The @global.app_name  team does not promise that it will always update the app so that it is relevant to you and/or works with the Android version that you have installed on your device. However, you agree to always accept updates to the application when offered to you.\n\n\ng. The app site might not be available at all times for reasons of maintenance or trouble with associated software or hardware. Whilst we apologise for inconveniences, we are not liable for any loss you may incur should the site not be accessible or is withdrawn. Equally, we have the right and choice to terminate your access and use of the app (including availability of captured data) at any time, without warning. Unless we tell you otherwise, upon any termination, (a) the rights and licences granted to you in these terms will end; (b) you must stop using the app, and (if needed) delete it from your device.\n\n\nh. You agree to indemnify, at your own expense, the @global.app_name , its officials, employees, consultants and agents, against any claims, including your costs and expenses, by any third party, resulting from your use of the app.\n\n\ni. Companies or products associated with the app should not be interpreted as endorsement by the app or the @global.app_name team or demonstrate an intention to infringe proprietary rights.",
-    "text": "Tafadhali fahamu kuwa timu ya @global.app_name haijumuishi wajibu wa yafuatayo:\n\n\na. Baadhi ya utendakazi wa programu utahitaji programu kuwa na muunganisho unaotumika wa intaneti. Timu ya @global.app_name haiwezi kuwajibika kwa programu kutofanya kazi kikamilifu ikiwa huna ufikiaji wa Wi-Fi, au huna salio yoyote ya bando la data.\n\n\nb. Kutumia programu nje ya eneo lenye Wi-Fi, kutamaanisha kuwa masharti yako ya makubaliano na mtoa huduma wako wa mtandao wa simu bado yatatumika. Kwa hivyo, unaweza kutozwa na mtoa huduma wako wa simu kwa gharama ya data kwa muda wa muunganisho unapofikia programu, au gharama zingine za watu wengine. Katika kutumia programu, unakubali kuwajibika kwa gharama zozote kama hizo, ikiwa ni pamoja na gharama za data ya kutumia mitandao ya ng'ambo ikiwa unatumia programu nje ya eneo lako la nyumbani (yaani, eneo au nchi) bila kuzima utumiaji wa data nje ya mtandao wako. Ikiwa wewe si mlipaji wa bili wa kifaa ambacho unatumia programu, tafadhali fahamu kwamba tunadhania kuwa umepokea ruhusa kutoka kwa mlipaji wa bili kwa kutumia programu.\n\n\nc. Ingawa tunajitahidi kuhakikisha kuwa programu imesasishwa na maudhui yake ni sahihi, tunategemea washirika wengine kutupa maelezo ili tuweze kufanya ipatikane kwako. Hatuangalii tovuti zote za nje mara kwa mara na hatuwezi kuhakikisha kuwa ni sahihi au za kuaminika kila wakati.\n\n\nd. Timu ya @global.app_name haikubali dhima yoyote ya uharibifu au hasara yoyote, ya moja kwa moja au isiyo ya moja kwa moja, unayopata kutokana na kutumia programu, au kutokana na utegemezi wowote unaoweza kuweka kwa ushauri au maelezo yanayotolewa kutoka kwa programu. Unapaswa kutumia busara na uamuzi wako kila wakati kulingana na hali yako kuhusiana na ushauri au taarifa yoyote iliyotolewa kutoka kwa programu.\n\n\ne. Matukio yoyote ya hitilafu za programu, virusi au nyenzo zingine hasidi zinazopitishwa na mtu mwingine kupitia tovuti yetu ni majuto, lakini hatuna jukumu.\n\n\nf. Masasisho ya programu hutokea mara kwa mara ili kuboresha utendaji na maudhui. Programu inapatikana kwenye Android - mahitaji ya mfumo huu (na kwa mifumo yoyote ya ziada tunayoamua kupanua upatikanaji wa programu) inaweza kubadilika. Ni wajibu wako kupakua masasisho ya programu ili kuendelea kutumia programu. Timu ya @global.app_name haiahidi kuwa itasasisha programu kila wakati ili iwe muhimu kwako na/au kufanya kazi na toleo la Android ambalo umesakinisha kwenye kifaa chako. Hata hivyo, unakubali kwamba kila mara utakubali masasisho ya programu yanapotolewa kwako.\n\n\ng. Tovuti ya programu inaweza kuwa haipatikani kila wakati kwa sababu za matengenezo au shida na programu au maunzi husika. Ingawa tunaomba radhi kwa usumbufu, hatuwajibikii kwa hasara yoyote ambayo unaweza kupata ikiwa tovuti haitafikiwa au kuondolewa. Vile vile, tuna haki na chaguo la kusitisha ufikiaji na matumizi yako ya programu (ikiwa ni pamoja na upatikanaji wa data iliyonaswa) wakati wowote, bila onyo. Isipokuwa tukikuambia vinginevyo, baada ya kusitishwa, (a) haki na leseni ulizopewa katika masharti haya zitaisha; (b) lazima uache kutumia programu, na (ikihitajika) uifute kwenye kifaa chako.\n\n\nh. Unakubali kufidia, kwa gharama yako mwenyewe, jina la @global.app_name , maafisa wake, wafanyakazi, washauri na mawakala wake, dhidi ya madai yoyote, ikiwa ni pamoja na gharama na matumizi yako, na wahusika wengine, kutokana na matumizi yako ya programu.\n\n\ni. Makampuni au bidhaa zinazohusishwa na programu hazipaswi kutafsiriwa kama uidhinishaji na programu au timu ya @global.app_name au kuonyesha nia ya kukiuka haki za umiliki.",
+    "text": "Tafadhali fahamu kuwa timu ya @global.app_name haiwajibiki kwa majukumu kwa yafuatayo:\n\n\na. Baadhi ya utendakazi wa programu utahitaji programu kuwa na muunganisho wa intaneti. Timu ya @global.app_name haiwezi kuwajibika kwa programu kutofanya kazi kikamilifu ikiwa huna ufikiaji wa Wi-Fi, au huna salio lolote la bando la data.\n\n\nb. Kutumia programu nje ya eneo lenye Wi-Fi, kutamaanisha kuwa masharti yako ya makubaliano na mtoa huduma wako wa mtandao wa simu bado yatatumika. Kwa hivyo, unaweza kutozwa na mtoa huduma wako wa simu kwa gharama ya data kwa muda wa muunganisho unapotumia programu, au gharama zingine za watu wengine. Katika kutumia programu, unakubali kuwajibika kwa gharama zozote kama hizo, ikiwa ni pamoja na gharama za data ya kutumia mitandao ya ng'ambo ikiwa unatumia programu nje ya eneo lako la nyumbani (yaani, eneo au nchi) bila kuzima utumiaji wa data nje ya mtandao wako. Ikiwa wewe si mlipaji wa bili wa kifaa ambacho unatumia programu, tafadhali fahamu kwamba tunadhania kuwa umepokea ruhusa kutoka kwa mlipaji wa bili kwa kutumia programu.\n\n\nc. Ingawa tunajitahidi kuhakikisha kuwa programu imesasishwa na maudhui yake ni sahihi, tunategemea washirika wengine kutupa maelezo ili tuweze kufanya ipatikane kwako. Hatuangalii tovuti zote za nje mara kwa mara na hatuwezi kuhakikisha kuwa ni sahihi au za kuaminika kila wakati.\n\n\nd. Timu ya @global.app_name haikubali dhima yoyote ya uharibifu au hasara yoyote, ya moja kwa moja au isiyo ya moja kwa moja, unayopata kutokana na kutumia programu, au kutokana na utegemezi wowote unaoweza kuweka kwa ushauri au maelezo yanayotolewa kutoka kwa programu. Unapaswa kutumia busara na uamuzi wako kila wakati kulingana na hali yako kuhusiana na ushauri au taarifa yoyote iliyotolewa kutoka kwa programu.\n\n\ne. Matukio yoyote ya hitilafu za programu, virusi au nyenzo zingine hasidi zinazopitishwa na mtu mwingine kupitia tovuti yetu ni majuto, lakini hatuna jukumu.\n\n\nf. Masasisho ya programu hutokea mara kwa mara ili kuboresha utendaji na maudhui. Programu inapatikana kwenye Android - mahitaji ya mfumo huu (na kwa mifumo yoyote ya ziada tunayoamua kupanua upatikanaji wa programu) inaweza kubadilika. Ni wajibu wako kupakua masasisho ya programu ili kuendelea kutumia programu. Timu ya @global.app_name haiahidi kuwa itasasisha programu kila wakati ili iwe muhimu kwako na/au kufanya kazi na toleo la Android ambalo umesakinisha kwenye kifaa chako. Hata hivyo, unakubali kwamba kila mara utakubali masasisho ya programu yanapotolewa kwako.\n\n\ng. Tovuti ya programu inaweza kuwa haipatikani kila wakati kwa sababu za matengenezo au changamoto inayohusiana na programu au vifaa husika. Ingawa tunaomba radhi kwa usumbufu, hatuwajibikii kwa hasara yoyote ambayo unaweza kupata ikiwa tovuti haitafikiwa au kuondolewa. Vile vile, tuna haki na chaguo la kusitisha ufikiaji na matumizi yako ya programu (ikiwa ni pamoja na upatikanaji wa data iliyonaswa) wakati wowote, bila onyo. Isipokuwa tukikuambia vinginevyo, baada ya kusitishwa, (a) haki na leseni ulizopewa katika masharti haya zitaisha; (b) lazima uache kutumia programu, na (kama ikihitajika) uifute kwenye kifaa chako.\n\n\nh. Unakubali kufidia, kwa gharama yako mwenyewe, timu ya @global.app_name, maafisa wake, wafanyakazi, washauri na mawakala wake, dhidi ya madai yoyote, ikiwa ni pamoja na gharama na matumizi yako, na wahusika wengine, kutokana na matumizi yako ya programu.\n\n\ni. Makampuni au bidhaa zinazohusishwa na programu hazipaswi kutafsiriwa kama uidhinishaji na programu au timu ya @global.app_name au kuonyesha nia ya kukiuka haki za umiliki.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.app_name\n@global.app_name\n@global.app_name\n@global.app_name\n@global.app_name\n@global.app_name"
   },
@@ -469,19 +469,19 @@
   },
   {
     "SourceText": "Last updated: 1 March 2023",
-    "text": "Mara ya mwisho imeboreshwa: 1 mwezi wa tatu 2023",
+    "text": "Mara ya mwisho imeboreshwa: tarehe 1 mwezi wa tatu 2023",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Why do we need to be clean?",
-    "text": "Kwa nini tunahitaji kuwa safi?",
+    "text": "Kwa nini tunahitaji kuwa wasafi?",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "Clean bodies keep us healthy and free from disease. Be sure to wash your face and all your other body parts with soap. You will feel great after!",
-    "text": "Miili safi hutufanya tuwe na afya njema na tusiwe na magonjwa. Hakikisha unaosha uso wako na sehemu zako zote za mwili kwa sabuni. Utajisikia vizuri baada ya!",
+    "text": "Miili safi hutufanya tuwe na afya njema na tusiwe na magonjwa. Hakikisha unaosha uso wako na sehemu zako zote za mwili kwa sabuni. Utajisikia vizuri baada ya hapo!",
     "type": "data_list",
     "note": ""
   },
@@ -505,13 +505,13 @@
   },
   {
     "SourceText": "* Sweep your bathroom, the area around it and pathway to it daily.\n* Use soap to get rid of any stains on the floor if you can.\n* Check your bathroom regularly. Make any repairs quickly.",
-    "text": "* Fagia bafu yako, eneo linaloizunguka na njia ya  kila siku.\n* Tumia sabuni kuondoa madoa yoyote kwenye sakafu ukiweza.\n* Angalia bafu yako mara kwa mara. Fanya matengenezo yoyote haraka.",
+    "text": "* Fagia bafu lako, njia yake, no eneo linaloizunguka kila siku.\n* Tumia sabuni kuondoa madoa yoyote kwenye sakafu kama ukiweza.\n* Angalia bafu lako mara kwa mara. Fanya matengenezo yoyote haraka.",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "Well done",
-    "text": "Hongera",
+    "text": "Umefanya vizuri",
     "type": "data_list",
     "note": ""
   },
@@ -564,8 +564,8 @@
     "note": ""
   },
   {
-    "SourceText": "* Sweep your toilet, the area around it and pathway to it daily.\r\n* Use soap to get rid of any urine stains or stool.\r\n* Throw used toilet paper into the toilet.\r\n* Check your toilet regularly. Make any repairs quickly.",
-    "text": "*Fagia choo chako, eneo linalokizunguka na njia kila siku.\r\n* Tumia sabuni kuondoa madoa au kinyesi chochote cha mkojo.\r\n* Tupa karatasi ya choo iliyotumika kwenye choo.\r\n* Angalia choo chako mara kwa mara. Fanya matengenezo yoyote haraka.",
+    "SourceText": "* Sweep your toilet, the area around it and pathway to it daily.\n* Use soap to get rid of any urine stains or stool.\n* Throw used toilet paper into the toilet.\n* Check your toilet regularly. Make any repairs quickly.",
+    "text": "* Fagia choo chako, eneo linalokizunguka na njia yake kila siku.\n* Tumia sabuni kuondoa madoa ya mkojo au kinyesi.\n* Tupa karatasi ya tishu iliyotumika kwenye choo.\n* Angalia choo chako mara kwa mara. Fanya marekebosho yoyote haraka.",
     "type": "data_list",
     "note": ""
   },
@@ -577,7 +577,7 @@
   },
   {
     "SourceText": "Washing your hands with soap is one of the cheapest and most effective things you can do to protect yourself from getting ill. Handwashing with soap stops germs, which cause illness like diarrhoea and COVID, from passing from person to person or to your food and water.",
-    "text": "Kunawa mikono kwa sabuni ni mojawapo ya jambo rahisi na yenye ufanisi zaidi unaloweza kufanya ili kujikinga na maradhi. Kunawa mikono kwa sabuni huzuia vijidudu, vinavyosababisha magonjwa kama kuhara na UVIKO 19, kutoka kwa mtu hadi kwa mtu au kwenye chakula na maji yako.",
+    "text": "Kunawa mikono kwa sabuni ni mojawapo ya jambo rahisi na yenye ufanisi zaidi unaloweza kufanya ili kujikinga na maradhi. Kunawa mikono kwa sabuni huzuia vijidudu, vinavyosababisha magonjwa kama kuhara na COVID 19, kutoka kwa mtu kwenda kwa mwingine au kwenye chakula na maji yako.",
     "type": "data_list",
     "note": ""
   },
@@ -607,13 +607,13 @@
   },
   {
     "SourceText": "How to keep healthy",
-    "text": "Jinsi ya kuweka afya",
+    "text": "Jinsi ya kuwa na afya",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "You can stay healthy by drinking safe water, using clean toilets and washing your hands often.\r\n\r\nNot doing this can lead to diarrhoea, undernutrition, and other diseases involving worms or bugs.",
-    "text": "Unaweza kukaa na afya bora kwa kunywa maji salama, kutumia vyoo safi na kunawa mikono mara kwa mara.\r\n\r\nKutofanya hivi kunaweza kusababisha kuhara, utapiamlo, na magonjwa mengine yanayohusisha minyoo au kunguni.",
+    "SourceText": "You can stay healthy by drinking safe water, using clean toilets, and washing your hands often.\n\nNot doing this can lead to diarrhoea, undernutrition, and other diseases involving worms or bugs.",
+    "text": "Unaweza kuwa na afya bora kwa kunywa maji salama, kutumia vyoo safi, na kunawa mikono mara kwa mara.\n\nKutofanya hivi kunaweza kusababisha kuhara, utapiamlo, na magonjwa mengine yanayohusisha minyoo au wadudu.",
     "type": "data_list",
     "note": ""
   },
@@ -624,20 +624,20 @@
     "note": ""
   },
   {
-    "SourceText": "Diarrhoea is when you have three or more loose or liquid stools per day. It is often a sign that your body has a bug (a bacterial, viral, or parasitic infection).\r\n\r\nDiarrhoea can be prevented but can be serious, especially when the body loses a lot of water.\r\n\r\nRemember to wash your hands often and practise safe food and clean water habits.",
-    "text": "Kuhara ni wakati una kinyesi kisicho na maji mara tatu au zaidi kwa siku. Mara nyingi ni ishara kwamba mwili wako una mdudu (bakteria, virusi, au maambukizi ya vimelea).\r\n\r\nKuhara kunaweza kuzuiwa lakini kunaweza kuwa mbaya, haswa wakati mwili unapoteza maji mengi.\r\n\r\nKumbuka kunawa mikono mara kwa mara na kufanya mazoezi ya chakula salama na maji safi.",
+    "SourceText": "Diarrhoea is when you have three or more loose or liquid stools per day. It is often a sign that your body has a bug (a bacterial, viral, or parasitic infection).\n\nDiarrhoea can be prevented but can be serious, especially when the body loses a lot of water.\n\nRemember to wash your hands often and practise safe food and clean water habits.",
+    "text": "Kuhara ni wakati una kinyesi kilicho na maji mara tatu au zaidi kwa siku. Mara nyingi ni ishara kwamba mwili wako una mdudu (bakteria, virusi, au maambukizi ya vimelea).\n\nKuhara kunaweza kuzuiwa lakini kunaweza kusababisha madhara, haswa wakati mwili unapoteza maji mengi.\n\nKumbuka kunawa mikono mara kwa mara na kuwa na mazoea ya kula chakula salama na kunywa maji safi.",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "Avoiding worms in your water",
-    "text": "Kuepuka minyoo katika maji yako",
+    "text": "Kuzuia minyoo katika maji yako",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "Tiny, invisible worms can cause a disease known as bilharzia or schistosomiasis. They lead to abdominal pain, rash, diarrhoea, and blood in your stool. People become infected when coming into contact with infected water.\r\n\r\nStop the spread of the disease by drinking and bathing in clean water and don't contaminate the water sources by defecating in open areas or in the lake.",
-    "text": "Minyoo wadogo wasioonekana wanaweza kusababisha ugonjwa unaojulikana kama bilharzia au kichocho. Husababisha maumivu ya tumbo, upele, kuhara, na damu kwenye kinyesi chako. Watu huambukizwa wanapogusana na maji yaliyoambukizwa.",
+    "SourceText": "Tiny, invisible worms can cause a disease known as bilharzia or schistosomiasis. They lead to abdominal pain, rash, diarrhoea, and blood in your stool. People become infected when coming into contact with infected water.\n\nStop the spread of the disease by drinking and bathing in clean water and don't contaminate the water sources by defecating in open areas or in the lake.",
+    "text": "Minyoo wadogo wasioonekana wanaweza kusababisha ugonjwa unaojulikana kama bilharzia au kichocho. Husababisha maumivu ya tumbo, upele, kuhara, na damu kwenye kinyesi chako. Watu huambukizwa wanapogusana na maji yaliyoambukizwa.\n\nZuia kusambaa kwa ugonjwa kwa kunywa na kuoga maji safi na usichafue vyanzo vya maji kwa kujisaidia maeneo ya wazi au katika ziwa.",
     "type": "data_list",
     "note": ""
   },
@@ -648,8 +648,8 @@
     "note": ""
   },
   {
-    "SourceText": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and stomach pain, among other symptoms.\r\n\r\nEggs of these worms are found in human stool, which can land in soil and transfer to your feet and hands.\r\n\r\nRegularly cleaning your compound and toilet, disposing of children’s stool in the toilets, and regular handwashing are important to prevent infections.",
-    "text": "Minyoo inayovunja chakula kwa ajili ya mboji inasaidia. Minyoo mingine, kama vile mnyoo, minyoo, na mjeledi, ni wadogo na hawaonekani na ni hatari. Wanaweza kusababisha utapiamlo, kuhara, na maumivu ya tumbo, kati ya dalili zingine.\r\n\r\nEggs of these worms are found in human stool, which can land in soil and transfer to your feet and hands.\r\n\r\nKusafisha mara kwa mara kiwanja chako na choo, kutupa kinyesi cha watoto kwenye vyoo, na unawaji mikono mara kwa mara ni muhimu ili kuzuia maambukizi.",
+    "SourceText": "Worms that break down food for compost are helpful. Other worms, like hookworm, roundworm, and whipworm, are tiny and invisible and dangerous. They can lead to malnutrition, diarrhoea, and stomach pain, among other symptoms.\n\nEggs of these worms are found in human stool, which can land in soil and transfer to your feet and hands.\n\nRegularly cleaning your compound and toilet, disposing of children’s stool in the toilets, and regular handwashing are important to prevent infections.",
+    "text": "Minyoo inayosaidia kumeng'enya chakula ni muhimu. Minyoo mingine, kama vile safura, ni wadogo na hawaonekani, na ni hatari. Wanaweza kusababisha utapiamlo, kuhara, na maumivu ya tumbo, kati ya dalili zingine.\n\nMayai ya minyoo inapatikana katika kinyesi cha binadamu, ambayo inaweza kufikia ardhi na kuhamia katika miguu na mikono yako.\n\nKusafisha mara kwa mara kiwanja chako na choo, kutupa kinyesi cha watoto kwenye vyoo, na unawaji mikono mara kwa mara ni muhimu ili kuzuia maambukizi.",
     "type": "data_list",
     "note": ""
   },
@@ -660,8 +660,8 @@
     "note": ""
   },
   {
-    "SourceText": "Trachoma is a disease of the eye that can cause blindness. It is passed when a fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home.\r\n\r\nFace washing is the best way to prevent Trachoma. Make sure that the face washing cloth, when used, is clean.\r\n\r\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of Trachoma.",
-    "text": "Trakoma ni ugonjwa wa macho ambao unaweza kusababisha upofu. Hupitishwa wakati nzi, mkono, au kitambaa kilichobeba bakteria kinagusa jicho. Nzi hudhibitiwa vyema na nyumba safi.\r\n\r\nKuosha uso ndiyo njia bora ya kuzuia Trakoma. Hakikisha kwamba kitambaa cha kunawia uso, kinapotumiwa, ni safi.\r\n\r\nKunawa mikono, kusafisha vyoo na nyumba, pamoja na usafi wa kawaida huzuia kuenea kwa Trakoma.",
+    "SourceText": "Trachoma is a disease of the eye that can cause blindness. It is passed when a fly, hand, or cloth carrying the bacteria touches an eye. Flies are best controlled with a clean home.\n\nFace washing is the best way to prevent Trachoma. Make sure that the face washing cloth, when used, is clean.\n\nHandwashing, cleaning toilets and homes, as well as regular cleanliness stops the spread of Trachoma.",
+    "text": "Trakoma ni ugonjwa wa macho ambao unaweza kusababisha upofu. Hupitishwa wakati nzi, mkono, au kitambaa kilichobeba bakteria kinagusa jicho. Nzi hudhibitiwa vyema kwa nyumba kuwa safi.\n\nKuosha uso ndiyo njia bora ya kuzuia Trakoma. Hakikisha kwamba kitambaa cha kunawia uso kinapotumiwa ni safi.\n\nKunawa mikono, kusafisha vyoo na nyumba, pamoja na usafi wa kawaida huzuia kuenea kwa Trakoma.",
     "type": "data_list",
     "note": ""
   },
@@ -696,8 +696,8 @@
     "note": ""
   },
   {
-    "SourceText": "Make sure you clean your compound regularly. Children’s stool should be thrown in the toilet, and animal waste and litter removed.\r\n\r\nUse water and detergent to clean the floor and walls where you can.",
-    "text": "Hakikisha unasafisha kiwanja chako mara kwa mara. Kinyesi cha watoto kinapaswa kutupwa chooni, na taka za wanyama na takataka ziondolewe.\r\n\r\nTumia maji na sabuni kusafisha sakafu na kuta unapoweza.",
+    "SourceText": "Make sure you clean your compound regularly. Children’s stool should be thrown in the toilet, and animal waste and litter removed.\n\nUse water and detergent to clean the floor and walls where you can.",
+    "text": "Hakikisha unasafisha kiwanja chako mara kwa mara. Kinyesi cha watoto kinapaswa kutupwa chooni, na taka za wanyama na takataka kwa ujumla ziondolewe.\n\nTumia maji na sabuni kusafisha sakafu na kuta unapoweza.",
     "type": "data_list",
     "note": ""
   },
@@ -709,7 +709,7 @@
   },
   {
     "SourceText": "* Get rid of pests in your house by sweeping, washing and drying up damp places regularly.\n* Protect food and throw garbage in a covered pit - flies like garbage!\n*Mosquitoes like to live in still water, such as in open containers and puddles. Cover or empty any still water in your home to keep mosquitoes away.",
-    "text": "* Ondoa wadudu nyumbani mwako kwa kufagia, kuosha na kukausha sehemu zenye unyevu mara kwa mara.\n* Kinga chakula na kutupa taka kwenye shimo lililofunikwa - nzi wanapenda takataka!\n*Mbu hupenda kuishi kwenye maji tulivu, kama vile kwenye vyombo vilivyo wazi na madimbwi. Funika au mwaga maji yoyote tulivu nyumbani kwako ili kuzuia mbu.",
+    "text": "* Ondoa wadudu nyumbani mwako kwa kufagia, kuosha na kukausha sehemu zenye unyevu mara kwa mara.\n* Funika chakula na kutupa taka kwenye shimo lililofunikwa - nzi wanapenda takataka!\n*Mbu hupenda kuishi kwenye maji tulivu kama vile kwenye vyombo vilivyo wazi na madimbwi. Funika au mwaga maji yoyote tulivu nyumbani kwako ili kuzuia mbu.",
     "type": "data_list",
     "note": ""
   },
@@ -727,13 +727,13 @@
   },
   {
     "SourceText": "How to wash hands",
-    "text": "Jinsi ya kunawia mikono",
+    "text": "Jinsi ya kunawa mikono",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "Step 1: Wet your hands with clean water.\r\nStep 2: Use enough soap to cover your hands.\r\nStep 3: Scrub all surfaces of your hands – such as the back of hands, between fingers and under nails. You should scrub for at least 20 seconds.\r\nStep 4: Rinse well with clean water.\r\nStep 5: Dry your hands with a clean cloth or towel.",
-    "text": "Hatua ya 1: Lowesha mikono yako kwa maji safi.\r\nHatua ya 2: Tumia sabuni ya kutosha kufunika mikono yako.\r\nHatua ya 3: Sugua nyuso zote za mikono yako - kama vile sehemu ya nyuma ya mikono, kati ya vidole na chini ya kucha. Unapaswa kusugua kwa angalau sekunde 20.\r\nHatua ya 4: Osha vizuri kwa maji safi.\r\nHatua ya 5: Kausha mikono yako kwa kitambaa safi au taulo.",
+    "SourceText": "Step 1: Wet your hands with clean water.\nStep 2: Use enough soap to cover your hands.\nStep 3: Scrub all surfaces of your hands – such as the back of hands, between fingers and under nails. You should scrub for at least 20 seconds.\nStep 4: Rinse well with clean water.\nStep 5: Dry your hands with a clean cloth or towel.",
+    "text": "Hatua ya 1: Lowesha mikono yako kwa maji safi.\nHatua ya 2: Paka sabuni ya kutosha kwenye mikono yako.\nHatua ya 3: Sugua sehemu zote za mikono yako - kama vile sehemu ya nyuma ya mikono, kati ya vidole na chini ya kucha. Unapaswa kusugua kwa angalau sekunde 20.\nHatua ya 4: Osha vizuri kwa maji safi.\nHatua ya 5: Kausha mikono yako kwa kitambaa safi au taulo.",
     "type": "data_list",
     "note": ""
   },
@@ -751,19 +751,19 @@
   },
   {
     "SourceText": "Safe Water, Sanitation and Hygiene (WASH) helps us and keeps our communities safe from harmful germs.",
-    "text": "Maji Salama, Usafi wa Mazingira na Usafi (KUOSHA) hutusaidia na kuweka jamii zetu salama dhidi ya vijidudu hatari.",
+    "text": "Maji Salama, Usafi wa Mazingira na Usafi kwa ujumla (WASH) hutusaidia na kuweka jamii zetu salama dhidi ya vijidudu hatari.",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "Handwashing with soap",
-    "text": "Kunawia miko na sabuni",
+    "text": "Kunawa mikono na sabuni",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "Washing your hands with soap is one of the most important things you can do to keep strong and healthy.",
-    "text": "Kunawia mikono yako na sabuni ni moja vitu muhimu sana unavyoweza kufanya kujiweka imara na mwenye afya.",
+    "text": "Kunawa mikono yako na sabuni ni moja ya vitu muhimu sana unavyoweza kufanya kujiweka imara na mwenye afya.",
     "type": "data_list",
     "note": ""
   },
@@ -781,7 +781,7 @@
   },
   {
     "SourceText": "How to wash your hands",
-    "text": "Jinsi ya kunawia miko yako",
+    "text": "Jinsi ya kunawa mikono yako",
     "type": "data_list",
     "note": ""
   },
@@ -817,7 +817,7 @@
   },
   {
     "SourceText": "Healthy home",
-    "text": "Kaya yenye afya",
+    "text": "Kaya salama",
     "type": "data_list",
     "note": ""
   },
@@ -835,7 +835,7 @@
   },
   {
     "SourceText": "Clean water saves money and improves health. Collect water from a safe source, maintain clean containers, and treat water to make it clean.",
-    "text": "Maji safi huokoa pesa na kuboresha afya. Kusanya maji kutoka kwenye chanzo salama, tunza vyombo safi na kutibu maji ili kuyafanya kuwa safi.",
+    "text": "Maji safi huokoa pesa na kuboresha afya. Kusanya maji kutoka kwenye chanzo salama, weka vyombo safi na kutibu maji ili kuyafanya kuwa safi.",
     "type": "data_list",
     "note": ""
   },
@@ -853,13 +853,13 @@
   },
   {
     "SourceText": "Garbage management",
-    "text": "Usimamizi wa uchafu",
+    "text": "Kudhibiti uchafu",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "Let's manage our garbage.  It will mean a clean home.",
-    "text": "Wacha tusimamie takataka zetu. Itamaanisha nyumba safi.",
+    "text": "Wacha tudhibiti takataka zetu. Itamaanisha nyumba safi.",
     "type": "data_list",
     "note": ""
   },
@@ -871,7 +871,7 @@
   },
   {
     "SourceText": "Wash often in a clean private bathing place (sometimes, you can even sing while bathing!).",
-    "text": "Oga mara nyingi katika sehemu safi ya kuogea ya kibinafsi (wakati mwingine, unaweza hata kuimba wakati wa kuoga.",
+    "text": "Mara zote, oga katika sehemu yako ya kibinafsi safi (wakati mwingine, unaweza hata kuimba wakati wa kuoga!).",
     "type": "data_list",
     "note": ""
   },
@@ -889,7 +889,7 @@
   },
   {
     "SourceText": "General WASH (including Waste as well as Bathing and Washing topics)",
-    "text": "WASH kwa jumla (pamoja na Taka vilevile mada za Kuoga na Kuosha)",
+    "text": "WASH kwa ujumla (pamoja na Taka vilevile mada za Kuoga na Kuosha)",
     "type": "data_list",
     "note": ""
   },
@@ -918,32 +918,32 @@
     "note": ""
   },
   {
-    "SourceText": "Make sure that water that is carried and stored does not come into contact with hands, dirt or insects. Hands, dirt and insects make water unsafe to drink.",
-    "text": "Hakikisha kwamba maji yanayobebwa na kuhifadhiwa hayagusani na mikono, uchafu au wadudu. Mikono, uchafu na wadudu hufanya maji kutokuwa salama kwa kunywa.",
+    "SourceText": "Make sure that water that is carried and stored does not come into contact with hands, dirt or insects. Hands, dirt, and insects make water unsafe to drink.",
+    "text": "Hakikisha kwamba maji yaliyobebwa na kuhifadhiwa hayagusani na mikono, uchafu au wadudu. Mikono, uchafu na wadudu hufanya maji kutokuwa salama kwa kunywa.",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "Using a water container",
-    "text": "Kutumia chomba cha kutunzia maji",
+    "text": "Kutumia chombo cha kutunzia maji",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "Water should be carried in clean and closed water containers.\n\nThere are many designs for water containers. A safe water storage container is one that is:\n\n* Strong and has a tightly fitting lid or cover\n* Stable base so it does not tip over\n* Durable so that it does not leak easily\n* Has a comfortable handle\n* And of course, is easy to clean",
-    "text": "Maji yanapaswa kubebwa kwenye vyombo safi na vilivyofungwa vya maji.\n\nKuna miundo mingi ya vyombo vya maji. Chombo cha kuhifadhi maji salama ni kimoja ambacho ni:\n* Inayo nguvu na ina mfuniko au kifuniko kinachobana sana\n* Msingi thabiti ili isipinduke\n* Inadumu ili isivuje kwa urahisi\n* Ina mpini mzuri\n* Na bila shaka, ni rahisi kusafisha",
+    "text": "Maji yanapaswa kubebwa kwenye vyombo safi na vilivyofungwa.\n\nKuna miundo mingi ya vyombo vya maji. Chombo cha kuhifadhi maji salama ni kile ambacho:\n\n* Kina nguvu na kina mfuniko au kifuniko kinachobana sana\n* Msingi thabiti ili ianguke\n* Kinadumu ili kisivuje kwa urahisi\n* Kina mshikio mzuri\n* Na bila shaka, ni rahisi kusafisha",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "How do you keep your container clean?",
-    "text": "Je, unaiwekaje chonbo chako cha kutunzia maji safi?",
+    "text": "Je, unawekaje chombo chako cha kutunzia maji safi?",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "Step 1: Wash your hands following the steps in the how to wash your hands module.\r\nStep 2: Pour clean and soapy water into the container.\r\nStep 3: Put on the lid and shake for one minute (or if you can, scrub the inside of the container).\r\nStep 4: Pour the soapy water out. Rinsing next with non soapy water.\r\nAlso, don't forget to wash your cup after every use.",
-    "text": "Hatua ya 1: Nawa mikono yako kwa kufuata hatua za vipindi vya jinsi ya kunawa mikono yako.\r\nHatua ya 2: Mimina maji safi na yenye sabuni kwenye chombo.\r\nHatua ya 3: Vaa mfuniko na utikise kwa dakika moja (au ukiweza, sugua ndani ya chombo).\r\nHatua ya 4: Mimina maji ya sabuni nje. Kisha suuza kwa maji yasiyo na sabuni.\r\nPia, usisahau kuosha kikombe chako baada ya kila matumizi.",
+    "SourceText": "Step 1: Wash your hands following the steps in the how to wash your hands module.\nStep 2: Pour clean and soapy water into the container.\nStep 3: Put on the lid and shake for one minute (or if you can, scrub the inside of the container).\nStep 4: Pour the soapy water out. Rinsing next with non soapy water.\nAlso, don't forget to wash your cup after every use.",
+    "text": "Hatua ya 1: Nawa mikono yako kwa kufuata hatua za kipindi cha jinsi ya kunawa mikono yako.\nHatua ya 2: Mimina maji safi na yenye sabuni kwenye chombo.\nHatua ya 3: Funika chombo na utikise kwa dakika moja (au ukiweza, sugua ndani ya chombo).\nHatua ya 4: Mimina maji ya sabuni nje. Kisha suuza kwa maji yasiyo na sabuni.\nPia, usisahau kuosha kikombe chako baada ya kila matumizi.",
     "type": "data_list",
     "note": ""
   },
@@ -954,8 +954,8 @@
     "note": ""
   },
   {
-    "SourceText": "*  Boiling water can make it safe to drink or cook with.\n*  Let the water sit for some time until the dirt settles at the bottom. \n*  Pour it into a pot and boil it for at least 10 minutes to make sure all the germs are killed before using it. \n*  Drink the water within 24 hours. This helps to keep it clean, fresh and free from other germs.",
-    "text": "Maji yanayochemka yanaweza kuifanya kuwa salama kwa kunywa au kupika nayo.\n* Acha maji yakae kwa muda hadi uchafu utulie chini.\n* Mimina kwenye chungu na chemsha kwa angalau dakika 10 ili kuhakikisha vijidudu vyote vimeuawa kabla ya kuvitumia.\n* Kunywa maji ndani ya masaa 24. Hii husaidia kuiweka safi, safi na isiyo na vijidudu vingine.",
+    "SourceText": "*  Boiling water can make it safe to drink or cook with.\n*  Let the water sit for some time until the dirt settles at the bottom. \n*  Pour it into a pot and boil it for at least 10 minutes to make sure all the germs are killed before using it. \n*  Drink the water within 24 hours. This helps to keep it clean, fresh, and free from other germs.",
+    "text": "* Kuchemsha maji kunayafanya yawe salama kwa kunywa au kupikia.\n* Acha maji yakae kwa muda hadi uchafu utulie chini.\n* Mimina kwenye chungu na chemsha kwa angalau dakika 10 ili kuhakikisha vijidudu vyote vimeuawa kabla ya kuyatumia.\n* Kunywa maji ndani ya masaa 24. Hii husaidia kuyaweka safi, salama, na yasiyo na vijidudu vingine.",
     "type": "data_list",
     "note": ""
   },
@@ -967,7 +967,7 @@
   },
   {
     "SourceText": "People become infected with intestinal worms by eating unsafe food.\n\nDiseases such as typhoid fever (bacteria infection) can also happen by eating unsafe food or water.\n\nThere are five ways to keeping your food safe:\n* Keep clean.\n* Separate raw and cooked food.\n* Cook food thoroughly.\n* Keep food at a safe temperature.\n* Use safe water.",
-    "text": "Watu huambukizwa minyoo ya matumbo kwa kula chakula kisicho salama.\n\nMagonjwa kama vile homa ya matumbo (maambukizi ya bakteria) yanaweza pia kutokea kwa kula chakula kisicho salama au maji.\n\nKuna njia tano za kuweka chakula chako salama:\n* Weka safi.\n* Tenganisha chakula kibichi na kilichopikwa.\n* Pika chakula vizuri.\n* Weka chakula katika halijoto salama.\n*Tumia maji salama.",
+    "text": "Watu huambukizwa minyoo ya matumbo kwa kula chakula kisicho salama.\n\nMagonjwa kama vile homa ya matumbo (maambukizi ya bakteria) yanaweza pia kutokea kwa kula chakula kisicho salama au kunywa maji yasiyo salama.\n\nKuna njia tano za kuweka chakula chako salama:\n* Weka safi.\n* Tenganisha chakula kibichi na kilichopikwa.\n* Pika chakula vizuri.\n* Weka chakula katika halijoto salama.\n*Tumia maji salama.",
     "type": "data_list",
     "note": ""
   },
@@ -978,32 +978,50 @@
     "note": ""
   },
   {
-    "SourceText": "* Wash your hands with soap before touching food and while cooking.\r\n* Wash your hands after going to the toilet.\r\n* Clean your cooking space and tools.\r\n* Keep bugs, pests, and other animals away from the cooking area.\r\n* Cover food if you can.",
-    "text": "*Nawa mikono yako kwa sabuni kabla ya kugusa chakula na unapopika.\r\n*Nawa mikono yako baada ya kutoka chooni.\r\n* Safisha nafasi yako ya kupikia na zana.\r\n* Weka wadudu, wadudu na wanyama wengine mbali na mahali pa kupikia.\r\n* Funika chakula ukiweza.",
+    "SourceText": "* Wash your hands with soap before touching food and while cooking.\n* Wash your hands after going to the toilet.\n* Clean your cooking space and tools.\n* Keep bugs, pests, and other animals away from the cooking area.\n* Cover food if you can.",
+    "text": "* Nawa mikono yako kwa sabuni kabla ya kugusa chakula na unapopika.\n* Nawa mikono yako baada ya kutoka chooni.\n* Safisha sehemu yako ya kupikia na vifaa.\n* Weka vijidudu vyote na wanyama wengine mbali na mahali pa kupikia.\n* Funika chakula kama ukiweza.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Small pathogens that cause disease can transfer from your unwashed hands, chopping boards, cloths, and utensils.  Keep these clean.",
+    "text": "Vijidudu vidogo vinanyoweza kusababisha magonjwa vinaweza kusambaa kutoka katika mikono yako ambayo haijasafishwa, ubao wa kukatia vyakula, nguo, na vyombo. Viweke safi.",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "Separate raw and cooked",
-    "text": "Tenganisha kibichi na kilichopikwa",
+    "text": "Tenganisha chakula kibichi na kilichopikwa",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "* Wash your knife and chopping board after cutting raw meat, chicken, or fish, before you use them for cutting other foods.\r\n* Store food in covered containers when you can. This will keep it safe from pests, moisture, rot, and also stop the mixing of raw and prepared foods.\r\n* Clean up any leftover ingredients when done, especially raw meat.",
-    "text": "Osha kisu chako na ubao wako wa kukatia vyakula baada ya kukata nyama mbichi, kuku au samaki kabla ya kuzitumia kukata vyakula vingine.\r\n* Hifadhi chakula katika vyombo vilivyofunikwa wakati unaweza. Hii itaiweka salama dhidi ya wadudu, unyevu, kuoza, na pia kuacha kuchanganya vyakula vibichi na vilivyotayarishwa.\r\n* Safisha viungo vyovyote vilivyosalia ukimaliza, hasa nyama mbichi.",
+    "SourceText": "* Wash your knife and chopping board after cutting raw meat, chicken, or fish, before you use them for cutting other foods.\n* Store food in covered containers when you can. This will keep it safe from pests, moisture, rot, and also stop the mixing of raw and prepared foods.\n* Clean up any leftover ingredients when done, especially raw meat.",
+    "text": "* Osha kisu chako na ubao wako wa kukatia vyakula baada ya kukata nyama mbichi, kuku au samaki kabla ya kuvitumia kukata vyakula vingine.\n* Hifadhi chakula katika vyombo vilivyofunikwa kama unaweza. Hii itakiweka salama dhidi ya wadudu, unyevu, kuoza, na pia kuacha kuchanganya vyakula vibichi na vilivyotayarishwa.\n* Safisha viungo vyovyote vilivyosalia ukimaliza, hasa nyama mbichi.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Germs causing illness can be found in raw food (such as meat, chicken, and seafood). These can be transferred to other foods during food preparation or storage.  Separating raw and cooked food is therefore important.",
+    "text": "Vimelea vinavyosababisha magonjwa vinaweza kupatikana katika vyakula vibichi (kama nyama, kuku, na vyakula vya baharini). Hivi vinaweza kusambaa kwa vyakula vingine wakati wa maandalizi ya chakula au kuhifadhi. Hivyo, kutenganisha chakula kibichi na kilichopikwa ni muhimu.",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "Cook thoroughly",
-    "text": "Pika mpaka kiive",
+    "text": "Pika chakula mpaka kiive",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "* Cook food thoroughly, especially meat, chicken, eggs, and seafood. \r\n* When making stews, remember to bring them to a boil.\r\n* Reheat cooked food thoroughly.\r\n* Boil the water you use to make baby foods and drinks.",
-    "text": "* Pika chakula vizuri, hasa nyama, kuku, mayai, na vyakula vya baharini. \r\n* Unapopika kitoweo, kumbuka kuvicha vichemke.\r\n* Pasha moto tena chakula kilichopikwa vizuri.\r\n* Chemsha maji unayotumia kutengeneza vyakula na vinywaji vya watoto.",
+    "SourceText": "* Cook food thoroughly, especially meat, chicken, eggs, and seafood. \n* When making stews, remember to bring them to a boil.\n* Reheat cooked food thoroughly.\n* Boil the water you use to make baby foods and drinks.",
+    "text": "* Pika chakula vizuri, hasa nyama, kuku, mayai, na vyakula vya baharini. \n* Unapopika kitoweo, kumbuka kuviacha vichemke.\n* Pasha moto tena chakula kilichopikwa vizuri.\n* Chemsha maji unayotumia kutengeneza vyakula na vinywaji vya watoto.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Cooking with very high heat kills almost all dangerous germs causing illness.  Let's make sure that cooked food is heated thoroughly.",
+    "text": "Kupika kwa moto mkali inauwa karibia vimelea hatari vyote vinavyosababisha magonjwa. Tuhakikishe kuwa chakula kilichopikwa kinapashwa vyema.",
     "type": "data_list",
     "note": ""
   },
@@ -1020,14 +1038,32 @@
     "note": ""
   },
   {
+    "SourceText": "When food is stored at room temperature germs can grow.  That's why it's important to heat food well and eat it soon after cooking.",
+    "text": "Chakula kikihifadhiwa kwenye chumba chenye joto, vimelea vya magonjwa vinaweza kukuwa. Ndio maana ni muhimu kupika chakula na moto mkali na kula mara baada ya kupika.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
     "SourceText": "Use safe water",
     "text": "Tumia maji salama",
     "type": "data_list",
     "note": ""
   },
   {
-    "SourceText": "* Use safe water (see our modules on safe drinking water for more tips). Even though your water might look clean, it's still important to treat or boil it.\r\n* Remember to wash your fruits and vegetables with safe water.",
-    "text": "* Tumia maji salama (tazama moduli zetu za maji salama ya kunywa kwa vidokezo zaidi). Ingawa maji yako yanaweza kuonekana kuwa safi, bado ni muhimu kuyatibu au kuyachemsha.\r\n* Kumbuka kuosha matunda na mboga zako kwa maji salama.",
+    "SourceText": "* Use safe water (see our modules on safe drinking water for more tips). Even though your water might look clean, it's still important to treat or boil it.\n* Remember to wash your fruits and vegetables with safe water.",
+    "text": "* Tumia maji salama (tazama vipindi vyetu vya maji salama ya kunywa kwa vidokezo zaidi). Ingawa maji yako yanaweza kuonekana kuwa safi, bado ni muhimu kuyatibu au kuyachemsha.\n* Kumbuka kuosha matunda na mboga zako kwa maji salama.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Why?",
+    "text": "Kwanini?",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Your vegetables, fruits, meats, and even water can hold dangerous germs that cause illness. Washing with safe water and peeling raw foods decreases your risk of getting sick.",
+    "text": "Mboga zako, matunda, nyama, na hata maji vinawezakuwa na vimelea hatari vinavyoweza kusababbisha magonjwa. Kuosha kwa maji salama na kumenya matunda kunapunguza hatari ya kupata magonjwa.",
     "type": "data_list",
     "note": ""
   },
@@ -1038,8 +1074,8 @@
     "note": ""
   },
   {
-    "SourceText": "Solid garbage can be everything from:\r\n* Paper garbage (paper bags)\r\n* Organic materials (food)\r\n* Plastic garbage (bottles)",
-    "text": "Takataka ngumu inaweza kuwa kila kitu kutoka kwa:\r\n* Takataka za karatasi (mifuko ya karatasi)\r\n* Nyenzo-hai (chakula)\r\n* Takataka za plastiki (chupa)",
+    "SourceText": "Solid garbage can be everything from:\n* Paper garbage (paper bags)\n* Organic materials (food)\n* Plastic garbage (bottles)",
+    "text": "Takataka ngumu inajumuisha:\n* Takataka za karatasi (mifuko ya karatasi)\n* Nyenzo-hai (chakula)\n* Takataka za plastiki (chupa)",
     "type": "data_list",
     "note": ""
   },
@@ -1050,8 +1086,8 @@
     "note": ""
   },
   {
-    "SourceText": "* Reduce breeding grounds for germs, bugs, rodents, mosquitos, snakes, and other animals which can spread diseases.\r\n* Protect the environment and clean water sources.\r\n* Garbage can block drains and cause flooding.\r\n* Rotting garbage leads to a bad smell, which causes discomfort.\r\n* It really isn't nice to look at!",
-    "text": "* Punguza mazalia ya vijidudu, kunguni, panya, mbu, nyoka na wanyama wengine ambao wanaweza kueneza magonjwa.\r\n* Linda mazingira na vyanzo vya maji safi.\r\n* Takataka zinaweza kuzuia mifereji ya maji na kusababisha mafuriko.\r\n* Takataka zinazooza husababisha harufu mbaya, ambayo husababisha usumbufu.\r\n* Kwa kweli sio nzuri kutazama!",
+    "SourceText": "* Reduce breeding grounds for germs, bugs, rodents, mosquitos, snakes, and other animals which can spread diseases.\n* Protect the environment and clean water sources.\n* Garbage can block drains and cause flooding.\n* Rotting garbage leads to a bad smell, which causes discomfort.\n* It really isn't nice to look at!",
+    "text": "* Kupunguza mazalia ya vijidudu, kunguni, panya, mbu, nyoka na wanyama wengine ambao wanaweza kueneza magonjwa.\n* Kulinda mazingira na vyanzo vya maji safi.\n* Takataka zinaweza kuzuia mifereji ya maji na kusababisha mafuriko.\n* Takataka zinazooza husababisha harufu mbaya, ambayo husababisha usumbufu.\n* Kwa kweli sio nzuri kutazama!",
     "type": "data_list",
     "note": ""
   },
@@ -1062,8 +1098,8 @@
     "note": ""
   },
   {
-    "SourceText": "The disposal/treatment of solid garbage depends on the type and amount of garbage made. Here’s how to manage your garbage: To throw your garbage:\r\n* Paper garbage can be buried or collected.\r\n* Organic materials can be composted, for instance in household compost pits, and can be used as fertilisers/soil conditioners for trees and plants around your home.\r\n* Plastic garbage can be collected and buried or recycled.\r\n* And remember, do not place your solid garbage in the toilet.",
-    "text": "Utupaji/utunzaji wa taka ngumu hutegemea aina na kiasi cha takataka zilizotengenezwa. Hivi ndivyo jinsi ya kudhibiti uchafu wako: Kutupa takataka yako:\r\n* Takataka za karatasi zinaweza kuzikwa au kukusanywa.\r\n* Nyenzo-hai zinaweza kuwekwa mboji, kwa mfano katika mashimo ya mboji ya nyumbani, na inaweza kutumika kama mbolea/viyoyozi vya udongo kwa miti na mimea karibu na nyumba yako.\r\n* Taka za plastiki zinaweza kukusanywa na kuzikwa au kurejeshwa tena.\r\n* Na kumbuka, usiweke takataka yako ngumu kwenye choo.",
+    "SourceText": "The disposal/treatment of solid garbage depends on the type and amount of garbage made. Here’s how to manage your garbage: To throw your garbage:\n* Paper garbage can be buried or collected.\n* Organic materials can be composted, for instance in household compost pits, and can be used as fertilisers/soil conditioners for trees and plants around your home.\n* Plastic garbage can be collected and buried or recycled.\n* And remember, do not place your solid garbage in the toilet.",
+    "text": "Utupaji/utunzaji wa taka ngumu hutegemea aina na kiasi cha takataka zilizotengenezwa. Hivi ndivyo jinsi ya kudhibiti uchafu wako: Kutupa takataka yako:\n* Takataka za karatasi zinaweza kuzikwa au kukusanywa.\n* Taka zinazoweza kuoza zinaweza kuwekwa kama mbolea, kwa mfano katika mashimo ya mbolea nyumbani, na inaweza kutumika kama mbolea/kutunza unyevu wa udongo kwa miti na mimea karibu na nyumba yako.\n* Taka za plastiki zinaweza kukusanywa na kufukiwa au kutumika tena.\n* Kumbuka, usiweke takataka yako ngumu kwenye choo.",
     "type": "data_list",
     "note": ""
   },
@@ -1074,8 +1110,8 @@
     "note": ""
   },
   {
-    "SourceText": "* Carry your own bag to the shops to avoid using a new plastic bag.\r\n* Use reusable containers, like plastic bottles, rather than buying new ones.\r\n* Try to fix or repair things when they break.",
-    "text": " Beba begi lako mwenyewe hadi dukani ili kuepuka kutumia mfuko mpya wa plastiki.\r\n* Tumia vyombo vinavyoweza kutumika tena, kama vile chupa za plastiki, badala ya kununua vipya.\r\n* Jaribu kurekebisha au kurekebisha vitu vinapovunjika.",
+    "SourceText": "* Carry your own bag to the shops to avoid using a new plastic bag.\n* Use reusable containers, like plastic bottles, rather than buying new ones.\n* Try to fix or repair things when they break.",
+    "text": "* Beba mfuko wako mwenyewe hadi dukani ili kuepuka kutumia mfuko mpya wa plastiki.\n* Tumia vyombo vinavyoweza kutumika tena, kama vile chupa za plastiki, badala ya kununua vipya.\n* Jaribu kutengeneza au kurekebisha vitu vinapovunjika.",
     "type": "data_list",
     "note": ""
   },
@@ -1086,8 +1122,8 @@
     "note": ""
   },
   {
-    "SourceText": "To help keep healthy it is very important to wash your hands with soap at the following times:\r\n* Before and after cooking\r\n* Before eating\r\n* Before and after attending a sick person\r\n* After using the toilet\r\n* After changing a baby’s nappy",
-    "text": "Ili kusaidia kuweka afya ni muhimu sana kunawa mikono kwa sabuni nyakati zifuatazo:\r\n* Kabla na baada ya kupika\r\n* Kabla ya kula\r\n* Kabla na baada ya kumuhudumia mtu mgonjwa\r\n* Baada ya kutumia choo\r\n* Baada ya kubadilisha nepi ya mtoto",
+    "SourceText": "To help keep healthy it is very important to wash your hands with soap at the following times:\n* Before and after cooking\n* Before eating\n* Before and after attending a sick person\n* After using the toilet\n* After changing a baby’s nappy",
+    "text": "Ili kusaidia kuweka afya ni muhimu sana kunawa mikono kwa sabuni nyakati zifuatazo:\n* Kabla na baada ya kupika\n* Kabla ya kula\n* Kabla na baada ya kumuhudumia mtu mgonjwa\n* Baada ya kutumia choo\n* Baada ya kubadilisha nepi ya mtoto",
     "type": "data_list",
     "note": ""
   },
@@ -1129,7 +1165,7 @@
   },
   {
     "SourceText": "Terms & Conditions",
-    "text": "Vigezo & Masharti",
+    "text": "Vigezo na Masharti",
     "type": "global",
     "note": ""
   },
@@ -1184,6 +1220,12 @@
   {
     "SourceText": "Continue",
     "text": "Endelea",
+    "type": "global",
+    "note": ""
+  },
+  {
+    "SourceText": "Submit",
+    "text": "Tuma",
     "type": "global",
     "note": ""
   },
@@ -1284,6 +1326,54 @@
     "note": ""
   },
   {
+    "SourceText": "Technical Support",
+    "text": "Msaada wa Kiufundi",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Are you experiencing any technical issues? Let us know and help to make @global.app_name better!",
+    "text": "Je, unapata matatizo yoyote ya kiufundi? Tujulishe ili kutusaidia kuboresha @global.app_name!",
+    "type": "template",
+    "note": "The string @global.app_name should not be translated."
+  },
+  {
+    "SourceText": "Type your name (optional)",
+    "text": "Andika jina lako (hiari)",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Contact me on WhatsApp",
+    "text": "Wasiliana na mimi kwa WhatsApp",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Type your phone number",
+    "text": "Andika namba yako ya simu",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Contact me via email",
+    "text": "Wasiliana nami kwa barua-pepe",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Type your email address",
+    "text": "Andika anuani yako ya barua-pepe",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Tell us about your issue",
+    "text": "Tueleze tatizo lako",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Developer Mode",
     "text": "Mtengenezaji wa programu",
     "type": "template",
@@ -1338,14 +1428,44 @@
     "note": ""
   },
   {
+    "SourceText": "Acknowledgement",
+    "text": "Shukrani",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "The @global.app_name team would firstly like to acknowledge and show appreciation for the inputs of colleagues from the National Institute for Medical Research (whom are also community members) of Mwanza, Tanzania in shaping the content and design of this App.",
+    "text": "Timu ya @global.app_name kwanza ingependa kutambua na kuonyesha kuthamini mchango wa wafanyakazi wenzetu kutoka Taasisi ya Taifa ya Utafiti wa Magonjwa ya Binadamu (NIMR) iliyopo Mwanza, Tanzania (ambao pia ni wanajamii), katika kuunda maudhui na muundo wa Programu hii.",
+    "type": "template",
+    "note": "The string @global.app_name should not be translated."
+  },
+  {
     "SourceText": "References",
     "text": "Marejeleo",
     "type": "template",
     "note": ""
   },
   {
-    "SourceText": "The list below outlines sources that were additionally consulted in the development of content for the @global.app_name.",
-    "text": "Orodha iliyo hapa chini inaangazia vyanzo ambavyo vilishauriwa zaidi katika uundaji wa maudhui ya @global.app_name.",
+    "SourceText": "Section 1",
+    "text": "Sehemu 1",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "The content of the @global.app_name is driven by the primary source material outlined below:",
+    "text": "Maudhui ya @global.app_name yanatokana na nyenzo za msingi zilizoorodheshwa hapo chini:",
+    "type": "template",
+    "note": "The string @global.app_name should not be translated."
+  },
+  {
+    "SourceText": "Section 2",
+    "text": "Sehemu 2",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Additional sources consulted in the development of content for the @global.app_name include the below:",
+    "text": "Nyenzo za ziada zilizoshauriwa katika uundaji wa maudhui ya @global.app_name inajumuisha yafuatayo:",
     "type": "template",
     "note": "The string @global.app_name should not be translated."
   },
@@ -1471,13 +1591,13 @@
   },
   {
     "SourceText": "This big button takes you to the module we encourage you to explore.",
-    "text": "Kitufe hiki kikubwa kinakupeleka kwenye kipindi tunayokuhimiza kuangalia.",
+    "text": "Kitufe hiki kikubwa kinakupeleka kwenye kipindi tunachokuhimiza kuangalia.",
     "type": "tour",
     "note": ""
   },
   {
     "SourceText": "Here you can select any of the other modules in @global.app_name. Each module gives you simple tips and information about WASH. Swipe to see the next modules.",
-    "text": "Hapa unaweza kuchagua vipindi vingine vyovyote katika @global.app_name. Kila kipindi hukupa vidokezo rahisi na habari kuhusu WASH. Telezesha kidole ili kuona vipindi vinavyofuata.",
+    "text": "Hapa unaweza kuchagua vipindi vingine vyovyote katika @global.app_name. Kila kipindi hukupa vidokezo rahisi na habari kuhusu WASH. Peruzi ili kuona vipindi vinavyofuata.",
     "type": "tour",
     "note": "The string @global.app_name. should not be translated."
   },

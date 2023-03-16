@@ -8,7 +8,9 @@
       "name": "title",
       "value": "Technical Support",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "parameter_list": {
         "style": "tiny"
@@ -20,7 +22,9 @@
       "name": "text",
       "value": "Are you experiencing any technical issues? Let us know and help to make @global.app_name better!",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "_nested_name": "text",
       "_dynamicFields": {
@@ -43,7 +47,9 @@
       "name": "text_type_name",
       "value": "Type your name (optional)",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "text_type_name"
@@ -78,7 +84,9 @@
       "name": "text_checkbox_whatsapp",
       "value": "Contact me on WhatsApp",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "text_checkbox_whatsapp"
@@ -118,7 +126,9 @@
           "name": "text_type_phone_number",
           "value": "Type your phone number",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "dg_whatsapp.text_type_phone_number"
@@ -171,7 +181,9 @@
       "name": "text_checkbox_email",
       "value": "Contact me via email",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "text_checkbox_email"
@@ -211,7 +223,9 @@
           "name": "text_type_email",
           "value": "Type your email address",
           "_translations": {
-            "value": {}
+            "value": {
+              "tz_sw": true
+            }
           },
           "type": "set_variable",
           "_nested_name": "dg_email.text_type_email"
@@ -264,7 +278,9 @@
       "name": "text_issue",
       "value": "Tell us about your issue",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "type": "set_variable",
       "_nested_name": "text_issue"
