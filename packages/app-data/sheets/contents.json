@@ -286,6 +286,12 @@
       "flow_subtype": "component_demo",
       "_xlsxPath": "quality_assurance/component_sheets/component_radio_button_grid.xlsx"
     },
+    "comp_radio_button_grid_params": {
+      "flow_type": "data_list",
+      "flow_name": "comp_radio_button_grid_params",
+      "flow_subtype": "component_demo",
+      "_xlsxPath": "quality_assurance/component_sheets/component_radio_button_grid.xlsx"
+    },
     "covid_data_list": {
       "flow_type": "data_list",
       "flow_name": "covid_data_list",
