@@ -25,99 +25,291 @@
       "_nested_name": "parameters"
     },
     {
-      "type": "display_group",
-      "exclude_from_translation": true,
+      "type": "items",
+      "value": "@data.comp_radio_button_grid_params",
       "rows": [
         {
-          "type": "text",
-          "name": "item_width_input_label",
-          "value": "item_width",
-          "_translations": {
-            "value": {}
-          },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.item_width_input_label"
-        },
-        {
-          "type": "text_box",
-          "name": "item_width_input",
-          "value": "120px",
-          "_translations": {
-            "value": {}
-          },
-          "action_list": [
+          "type": "display_group",
+          "name": "@item.id",
+          "rows": [
             {
-              "trigger": "changed",
-              "action_id": "emit",
-              "args": [
-                "force_reprocess"
+              "type": "text",
+              "name": "{@item.id}_name",
+              "value": "@item.id",
+              "_translations": {
+                "value": {}
+              },
+              "style_list": [
+                "width: 150px"
               ],
-              "_raw": "changed | emit:force_reprocess",
-              "_cleaned": "changed | emit:force_reprocess"
+              "_nested_name": "items.@item.id.{@item.id}_name",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "{@item.id}_name",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.@item.id.{@item.id}_name",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "items.@item.id.{@item.id}_name",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "value",
+                  "_nested_name",
+                  "_nested_name"
+                ]
+              }
+            },
+            {
+              "type": "text_box",
+              "name": "{@item.id}_input",
+              "value": "@item.default_value",
+              "_translations": {
+                "value": {}
+              },
+              "condition": "@item.default_value",
+              "style_list": [
+                "width: 100px"
+              ],
+              "action_list": [
+                {
+                  "trigger": "changed",
+                  "action_id": "emit",
+                  "args": [
+                    "force_reprocess"
+                  ],
+                  "_raw": "changed | emit:force_reprocess",
+                  "_cleaned": "changed | emit:force_reprocess"
+                }
+              ],
+              "exclude_from_translation": true,
+              "_nested_name": "items.@item.id.{@item.id}_input",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "{@item.id}_input",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@item.default_value",
+                    "matchedExpression": "@item.default_value",
+                    "type": "item",
+                    "fieldName": "default_value"
+                  }
+                ],
+                "condition": [
+                  {
+                    "fullExpression": "@item.default_value",
+                    "matchedExpression": "@item.default_value",
+                    "type": "item",
+                    "fieldName": "default_value"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.@item.id.{@item.id}_input",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "items.@item.id.{@item.id}_input",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name",
+                  "_nested_name"
+                ],
+                "@item.default_value": [
+                  "value",
+                  "condition"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "name": "{@item.id}_input",
+              "condition": "!@item.default_value",
+              "style_list": [
+                "width: 100px"
+              ],
+              "_nested_name": "items.@item.id.{@item.id}_input",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "{@item.id}_input",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "condition": [
+                  {
+                    "fullExpression": "!@item.default_value",
+                    "matchedExpression": "!@item.default_value",
+                    "type": "item",
+                    "fieldName": "default_value"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.@item.id.{@item.id}_input",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "items.@item.id.{@item.id}_input",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name",
+                  "_nested_name"
+                ],
+                "!@item.default_value": [
+                  "condition"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "name": "{@item.id}_description",
+              "value": "@item.description",
+              "_translations": {
+                "value": {}
+              },
+              "style_list": [
+                "flex: 1"
+              ],
+              "_nested_name": "items.@item.id.{@item.id}_description",
+              "_dynamicFields": {
+                "name": [
+                  {
+                    "fullExpression": "{@item.id}_description",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "value": [
+                  {
+                    "fullExpression": "@item.description",
+                    "matchedExpression": "@item.description",
+                    "type": "item",
+                    "fieldName": "description"
+                  }
+                ],
+                "_nested_name": [
+                  {
+                    "fullExpression": "items.@item.id.{@item.id}_description",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  },
+                  {
+                    "fullExpression": "items.@item.id.{@item.id}_description",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@item.id": [
+                  "name",
+                  "_nested_name",
+                  "_nested_name"
+                ],
+                "@item.description": [
+                  "value"
+                ]
+              }
             }
           ],
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.item_width_input"
-        },
-        {
-          "type": "text",
-          "name": "item_width_input_description",
-          "value": "Minimum width that items will occupy (will stretch to fit space)\n Default 200px",
-          "_translations": {
-            "value": {}
+          "_nested_name": "items.@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items.@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
           },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.item_width_input_description"
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "_nested_name"
+            ]
+          }
         }
       ],
-      "name": "display_group",
-      "_nested_name": "display_group"
-    },
-    {
-      "type": "display_group",
-      "exclude_from_translation": true,
-      "rows": [
-        {
-          "type": "text",
-          "name": "grid_width_input_label",
-          "value": "grid_width",
-          "_translations": {
-            "value": {}
-          },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.grid_width_input_label"
-        },
-        {
-          "type": "text_box",
-          "name": "grid_width_input",
-          "value": 0.75,
-          "action_list": [
-            {
-              "trigger": "changed",
-              "action_id": "emit",
-              "args": [
-                "force_reprocess"
-              ],
-              "_raw": "changed | emit:force_reprocess",
-              "_cleaned": "changed | emit:force_reprocess"
-            }
-          ],
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.grid_width_input"
-        },
-        {
-          "type": "text",
-          "name": "grid_width_input_description",
-          "value": "Maximum grid width, if specified will center items in available space.\n Default 100% (full width)",
-          "_translations": {
-            "value": {}
-          },
-          "exclude_from_translation": true,
-          "_nested_name": "display_group.grid_width_input_description"
-        }
-      ],
-      "name": "display_group",
-      "_nested_name": "display_group"
+      "name": "items",
+      "_nested_name": "items",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.comp_radio_button_grid_params",
+            "matchedExpression": "@data.comp_radio_button_grid_params",
+            "type": "data",
+            "fieldName": "comp_radio_button_grid_params"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.comp_radio_button_grid_params": [
+          "value"
+        ]
+      }
     },
     {
       "type": "subtitle",
@@ -126,7 +318,6 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
       "_nested_name": "output"
     },
     {
@@ -136,7 +327,6 @@
       "_translations": {
         "value": {}
       },
-      "exclude_from_translation": true,
       "_nested_name": "output_text",
       "_dynamicFields": {
         "value": [
@@ -155,7 +345,7 @@
       }
     },
     {
-      "type": "radio_group_grid",
+      "type": "radio_button_grid",
       "name": "grid_1",
       "action_list": [
         {
@@ -168,21 +358,22 @@
           "_cleaned": "changed | emit:force_reprocess"
         }
       ],
-      "exclude_from_translation": true,
       "parameter_list": {
-        "answer_list": "@data.comp_radio_grid_data",
+        "answer_list": "@data.comp_radio_button_grid_data",
         "item_width": "@local.item_width_input",
-        "grid_width": "@local.grid_width_input"
+        "grid_width": "@local.grid_width_input",
+        "grid_gap": "@local.grid_gap_input"
       },
+      "exclude_from_translation": true,
       "_nested_name": "grid_1",
       "_dynamicFields": {
         "parameter_list": {
           "answer_list": [
             {
-              "fullExpression": "@data.comp_radio_grid_data",
-              "matchedExpression": "@data.comp_radio_grid_data",
+              "fullExpression": "@data.comp_radio_button_grid_data",
+              "matchedExpression": "@data.comp_radio_button_grid_data",
               "type": "data",
-              "fieldName": "comp_radio_grid_data"
+              "fieldName": "comp_radio_button_grid_data"
             }
           ],
           "item_width": [
@@ -200,11 +391,19 @@
               "type": "local",
               "fieldName": "grid_width_input"
             }
+          ],
+          "grid_gap": [
+            {
+              "fullExpression": "@local.grid_gap_input",
+              "matchedExpression": "@local.grid_gap_input",
+              "type": "local",
+              "fieldName": "grid_gap_input"
+            }
           ]
         }
       },
       "_dynamicDependencies": {
-        "@data.comp_radio_grid_data": [
+        "@data.comp_radio_button_grid_data": [
           "parameter_list.answer_list"
         ],
         "@local.item_width_input": [
@@ -212,6 +411,9 @@
         ],
         "@local.grid_width_input": [
           "parameter_list.grid_width"
+        ],
+        "@local.grid_gap_input": [
+          "parameter_list.grid_gap"
         ]
       }
     }
