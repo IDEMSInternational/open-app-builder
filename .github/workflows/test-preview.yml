@@ -25,6 +25,7 @@ jobs:
           then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;              \
           else echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;  \
           fi;
+          echo "SHA_SHORT=`echo ${{github.event.pull_request.head.sha}} | cut -c1-6`" >> $GITHUB_ENV
         shell: bash
       - run: |
           echo $GITHUB_BASE_REF
@@ -34,10 +35,12 @@ jobs:
         with:
           node-version: 16
           cache: 'yarn'
-      - name: Populate firebaseConfig.ts
+      - name: Populate environment config
         env:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
-        run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
+        run: |
+          echo "export const GIT_SHA = \"$SHA_SHORT\";" > src/environments/sha.ts
+          echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
       - run: yarn install
       - name: Set Scripts Deployment
         run: yarn workflow deployment set $DEPLOYMENT_NAME

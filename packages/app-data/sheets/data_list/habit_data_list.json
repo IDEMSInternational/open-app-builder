@@ -440,7 +440,7 @@
           "eng": "**Keep your teen safe** @global.parent_point"
         },
         "description": {
-          "eng": "Help your teen stay safe by doing one of these things:\n* Map out or talk about safe and unsafe spaces in your community.\n* Map out or talk about safe and unsafe spaces online.\n* Make rules with your teen about how they can stay safe in the community and online.\n* Explain, remind, or use your teen's 'Safety Amnesty': Your teen can always tell you if they are in a dangerous or difficult situation, and you won't get angry or punish them."
+          "eng": "Help your teen stay safe by doing one of these things:\n* Map out or talk about safe and unsafe spaces in your community.\n* Map out or talk about safe and unsafe spaces online.\n* Make rules with your teen about how they can stay safe in the community and online.\n* Explain, remind, or use your teen's \"@global.safety_word\": Your teen can always tell you if they are in a dangerous or difficult situation, and you won't get angry or punish them."
         },
         "mark_text": {
           "eng": "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!"
@@ -450,7 +450,7 @@
         }
       },
       "in_text_title": "**Keep your teen safe** @global.parent_point",
-      "description": "Help your teen stay safe by doing one of these things:\n* Map out or talk about safe and unsafe spaces in your community.\n* Map out or talk about safe and unsafe spaces online.\n* Make rules with your teen about how they can stay safe in the community and online.\n* Explain, remind, or use your teen's 'Safety Amnesty': Your teen can always tell you if they are in a dangerous or difficult situation, and you won't get angry or punish them.",
+      "description": "Help your teen stay safe by doing one of these things:\n* Map out or talk about safe and unsafe spaces in your community.\n* Map out or talk about safe and unsafe spaces online.\n* Make rules with your teen about how they can stay safe in the community and online.\n* Explain, remind, or use your teen's \"@global.safety_word\": Your teen can always tell you if they are in a dangerous or difficult situation, and you won't get angry or punish them.",
       "mark_text": "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!",
       "short_mark_text": "Did it? Tap it!"
     }
