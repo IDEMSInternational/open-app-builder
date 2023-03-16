@@ -304,7 +304,7 @@
         },
         {
           "name": "intro_text",
-          "value": "Let’s do a short relaxation activity together – it will take less than 1 minute and you will feel more relaxed.",
+          "value": "Let’s do a short relaxation activity together. It will only take a moment and you will feel more relaxed.",
           "_translations": {
             "value": {
               "tz_sw": true

@@ -1,0 +1,187 @@
+{
+  "flow_type": "template",
+  "module": "stress",
+  "flow_name": "w_stress_question_2",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "question_time",
+      "value": "question_time",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Having a @global.safety_word can help your teen stay safe too.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "question_time.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Having a @global.safety_word can help your teen stay safe too.",
+                    "matchedExpression": "@global.safety_word",
+                    "type": "global",
+                    "fieldName": "safety_word"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.safety_word": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "box_text_box",
+              "rows": [
+                {
+                  "name": "text_box_tracker",
+                  "value": "w_stress_question_2_a",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.text_box_tracker"
+                },
+                {
+                  "name": "text",
+                  "value": "You can choose any word as a @global.safety_word. Only your family knows it means ‘help’. \n\nYour teen can say this word to let you know they are in trouble without you getting angry or punishing them, so you can help them.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.text",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "You can choose any word as a @global.safety_word. Only your family knows it means ‘help’. \n\nYour teen can say this word to let you know they are in trouble without you getting angry or punishing them, so you can help them.",
+                        "matchedExpression": "@global.safety_word",
+                        "type": "global",
+                        "fieldName": "safety_word"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@global.safety_word": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "name": "question_text",
+                  "value": "What @global.safety_word can you choose with your teen?",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.question_text",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "What @global.safety_word can you choose with your teen?",
+                        "matchedExpression": "@global.safety_word",
+                        "type": "global",
+                        "fieldName": "safety_word"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@global.safety_word": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "name": "button",
+                  "value": "@global.ideas_button",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "pop_up",
+                      "args": [
+                        "w_stress_question_2_pop"
+                      ],
+                      "_raw": "click | pop_up: w_stress_question_2_pop",
+                      "_cleaned": "click | pop_up: w_stress_question_2_pop"
+                    }
+                  ],
+                  "hidden": false,
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.button",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@global.ideas_button",
+                        "matchedExpression": "@global.ideas_button",
+                        "type": "global",
+                        "fieldName": "ideas_button"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@global.ideas_button": [
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "name": "reply",
+                  "value": "Your teen can say:\n\"I saw...\"\n\"I look forward to...\"\n\"Did you remember to…?\"\n\nYou respond calmly and give your teen an excuse why they need to come home.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "question_time.workshop_activity.content_box.reply"
+                }
+              ],
+              "_nested_name": "question_time.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "question_time.workshop_activity"
+        }
+      ],
+      "_nested_name": "question_time"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
+}

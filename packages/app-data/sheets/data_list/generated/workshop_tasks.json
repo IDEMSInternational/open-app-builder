@@ -345,8 +345,75 @@
       "skipped_field": "task_w_stress_skipped"
     },
     {
-      "id": "w_money",
+      "id": "w_solve",
       "number": 6,
+      "image_asset": "plh_images/workshops/w_solve/tools.svg",
+      "relax_data": "@data.relax.relax_11",
+      "relax_title": "@data.relax.relax_11.title",
+      "intro_audio_asset": "plh_audio/topic_intros/w_solve_intro.mp3",
+      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_solve.mp3",
+      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_solve.mp3",
+      "title": "Problem Solving",
+      "_translations": {
+        "title": {
+          "tz_sw": true
+        },
+        "in_text_title": {
+          "tz_sw": true
+        },
+        "description": {
+          "tz_sw": true
+        },
+        "intro_title": {
+          "tz_sw": true
+        },
+        "tools": {
+          "tz_sw": true
+        },
+        "caregiver_testimonial_script": {
+          "tz_sw": true
+        },
+        "teen_testimonial_script": {
+          "tz_sw": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Problem Solving"
+        },
+        "in_text_title": {
+          "eng": "**Problem Solving** @global.workshop"
+        },
+        "description": {
+          "eng": "Together with your teen, you can handle any challenge."
+        },
+        "intro_title": {
+          "eng": "Why Problem Solving?"
+        },
+        "tools": {
+          "eng": "How to solve problems"
+        },
+        "caregiver_testimonial_script": {
+          "eng": "I did not have a good relationship with my daughter. I was always shouting at her, and she was refusing to go to school. \n\nOnly when I started spending One-on-One time with her, I realised that she did not want to go to school because she was being bullied at school. We sat down and used the 6 steps of problem solving. We identified the problem, and figured out solutions together: “What can I do as a parent so you can attend school and feel safe?”\n\nWe agreed I would go talk to the teacher to find a way forward. We really found the solutions together, and we are closer now."
+        },
+        "teen_testimonial_script": {
+          "eng": "When my father introduced the problem-solving steps to me, it helped me with my family, but it also helped me with my friends. \n\nI told my friends about the steps, and now when we are arguing we sit down and everyone comes up with solutions. We then look for the negatives and positives of each solution, and we agree “okay let’s try this one.” \n\nMy friends even took it to their own homes, and it is helping with their families as well! \n\nIt is great when others listen to you and accept your ideas even though you are young. We can all bring that harmony with our friends and family."
+        }
+      },
+      "in_text_title": "**Problem Solving** @global.workshop",
+      "description": "Together with your teen, you can handle any challenge.",
+      "intro_title": "Why Problem Solving?",
+      "tools": "How to solve problems",
+      "caregiver_testimonial_script": "I did not have a good relationship with my daughter. I was always shouting at her, and she was refusing to go to school. \n\nOnly when I started spending One-on-One time with her, I realised that she did not want to go to school because she was being bullied at school. We sat down and used the 6 steps of problem solving. We identified the problem, and figured out solutions together: “What can I do as a parent so you can attend school and feel safe?”\n\nWe agreed I would go talk to the teacher to find a way forward. We really found the solutions together, and we are closer now.",
+      "teen_testimonial_script": "When my father introduced the problem-solving steps to me, it helped me with my family, but it also helped me with my friends. \n\nI told my friends about the steps, and now when we are arguing we sit down and everyone comes up with solutions. We then look for the negatives and positives of each solution, and we agree “okay let’s try this one.” \n\nMy friends even took it to their own homes, and it is helping with their families as well! \n\nIt is great when others listen to you and accept your ideas even though you are young. We can all bring that harmony with our friends and family.",
+      "something_fun_data": "@data.something_fun.mirror",
+      "completed_field": "task_w_solve_completed",
+      "completed": "@fields.task_w_solve_completed",
+      "skipped_field": "task_w_solve_skipped"
+    },
+    {
+      "id": "w_money",
+      "number": 7,
       "image_asset": "plh_images/workshops/w_money/tools.svg",
       "relax_data": "@data.relax.relax_8",
       "relax_title": "@data.relax.relax_8.title",
@@ -413,7 +480,7 @@
     },
     {
       "id": "w_rules",
-      "number": 7,
+      "number": 8,
       "image_asset": "plh_images/workshops/w_rules/tools.svg",
       "relax_data": "@data.relax.relax_9",
       "relax_title": "@data.relax.relax_9.title",
@@ -480,7 +547,7 @@
     },
     {
       "id": "w_consequence",
-      "number": 8,
+      "number": 9,
       "image_asset": "plh_images/workshops/w_consequence/tools.svg",
       "relax_data": "@data.relax.relax_10",
       "relax_title": "@data.relax.relax_10.title",
@@ -544,73 +611,6 @@
       "completed_field": "task_w_consequence_completed",
       "completed": "@fields.task_w_consequence_completed",
       "skipped_field": "task_w_consequence_skipped"
-    },
-    {
-      "id": "w_solve",
-      "number": 9,
-      "image_asset": "plh_images/workshops/w_solve/tools.svg",
-      "relax_data": "@data.relax.relax_11",
-      "relax_title": "@data.relax.relax_11.title",
-      "intro_audio_asset": "plh_audio/topic_intros/w_solve_intro.mp3",
-      "caregiver_testimonial_audio_asset": "plh_audio/testimonials/caregiver/caregiver_test_w_solve.mp3",
-      "teen_testimonial_audio_asset": "plh_audio/testimonials/teen/teen_test_w_solve.mp3",
-      "title": "Problem Solving",
-      "_translations": {
-        "title": {
-          "tz_sw": true
-        },
-        "in_text_title": {
-          "tz_sw": true
-        },
-        "description": {
-          "tz_sw": true
-        },
-        "intro_title": {
-          "tz_sw": true
-        },
-        "tools": {
-          "tz_sw": true
-        },
-        "caregiver_testimonial_script": {
-          "tz_sw": true
-        },
-        "teen_testimonial_script": {
-          "tz_sw": true
-        }
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Problem Solving"
-        },
-        "in_text_title": {
-          "eng": "**Problem Solving** @global.workshop"
-        },
-        "description": {
-          "eng": "Together with your teen, you can handle any challenge."
-        },
-        "intro_title": {
-          "eng": "Why Problem Solving?"
-        },
-        "tools": {
-          "eng": "How to solve problems"
-        },
-        "caregiver_testimonial_script": {
-          "eng": "I did not have a good relationship with my daughter. I was always shouting at her, and she was refusing to go to school. \n\nOnly when I started spending One-on-One time with her, I realised that she did not want to go to school because she was being bullied at school. We sat down and used the 6 steps of problem solving. We identified the problem, and figured out solutions together: “What can I do as a parent so you can attend school and feel safe?”\n\nWe agreed I would go talk to the teacher to find a way forward. We really found the solutions together, and we are closer now."
-        },
-        "teen_testimonial_script": {
-          "eng": "When my father introduced the problem-solving steps to me, it helped me with my family, but it also helped me with my friends. \n\nI told my friends about the steps, and now when we are arguing we sit down and everyone comes up with solutions. We then look for the negatives and positives of each solution, and we agree “okay let’s try this one.” \n\nMy friends even took it to their own homes, and it is helping with their families as well! \n\nIt is great when others listen to you and accept your ideas even though you are young. We can all bring that harmony with our friends and family."
-        }
-      },
-      "in_text_title": "**Problem Solving** @global.workshop",
-      "description": "Together with your teen, you can handle any challenge.",
-      "intro_title": "Why Problem Solving?",
-      "tools": "How to solve problems",
-      "caregiver_testimonial_script": "I did not have a good relationship with my daughter. I was always shouting at her, and she was refusing to go to school. \n\nOnly when I started spending One-on-One time with her, I realised that she did not want to go to school because she was being bullied at school. We sat down and used the 6 steps of problem solving. We identified the problem, and figured out solutions together: “What can I do as a parent so you can attend school and feel safe?”\n\nWe agreed I would go talk to the teacher to find a way forward. We really found the solutions together, and we are closer now.",
-      "teen_testimonial_script": "When my father introduced the problem-solving steps to me, it helped me with my family, but it also helped me with my friends. \n\nI told my friends about the steps, and now when we are arguing we sit down and everyone comes up with solutions. We then look for the negatives and positives of each solution, and we agree “okay let’s try this one.” \n\nMy friends even took it to their own homes, and it is helping with their families as well! \n\nIt is great when others listen to you and accept your ideas even though you are young. We can all bring that harmony with our friends and family.",
-      "something_fun_data": "@data.something_fun.mirror",
-      "completed_field": "task_w_solve_completed",
-      "completed": "@fields.task_w_solve_completed",
-      "skipped_field": "task_w_solve_skipped"
     },
     {
       "id": "w_safe",
