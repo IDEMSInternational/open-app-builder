@@ -32,29 +32,33 @@
     {
       "type": "text",
       "name": "text_0_1",
-      "value": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
+      "value": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
       "_translations": {
-        "value": {
-          "tz_sw": true
-        }
+        "value": {}
       },
       "_nested_name": "text_0_1",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
+            "fullExpression": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
             "matchedExpression": "@global.privacy_policy",
             "type": "global",
             "fieldName": "privacy_policy"
           },
           {
-            "fullExpression": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
+            "fullExpression": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
+            "matchedExpression": "@global.app_id",
+            "type": "global",
+            "fieldName": "app_id"
+          },
+          {
+            "fullExpression": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
             "matchedExpression": "@global.parent_app",
             "type": "global",
             "fieldName": "parent_app"
           },
           {
-            "fullExpression": "Your data is important to us. This @global.privacy_policy for international.idems.plh_teens (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
+            "fullExpression": "Your data is important to us. This @global.privacy_policy for @global.app_id (‘@global.parent_app’ or ‘the app’) sets out our policies for the collection, use, and disclosure of personal information in the use of @global.parent_app.",
             "matchedExpression": "@global.parent_app",
             "type": "global",
             "fieldName": "parent_app"
@@ -63,6 +67,9 @@
       },
       "_dynamicDependencies": {
         "@global.privacy_policy": [
+          "value"
+        ],
+        "@global.app_id": [
           "value"
         ],
         "@global.parent_app": [
