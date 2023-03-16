@@ -32,6 +32,7 @@ import { RoundIconButtonComponent } from "./round-icon-button/round-icon-button.
 import { SquareIconButtonComponent } from "./square-icon-button/square-icon-button.component";
 import { TmplSliderComponent } from "./slider/slider.component";
 import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
+import { TmplRadioGroupGridComponent } from "./radio-group-grid/radio-group-grid.component";
 import { TmplTileComponent } from "./tile-component/tile-component.component";
 import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.component";
 import { TmplTextBoxComponent } from "./text-box/text-box.component";
@@ -87,6 +88,7 @@ export const TEMPLATE_COMPONENTS = [
   RoundIconButtonComponent,
   SquareIconButtonComponent,
   TmplRadioGroupComponent,
+  TmplRadioGroupGridComponent,
   TmplTileComponent,
   TmplSimpleCheckboxComponent,
   TmplTextBoxComponent,
@@ -158,6 +160,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   round_button: RoundIconButtonComponent,
   square_button: SquareIconButtonComponent,
   radio_group: TmplRadioGroupComponent,
+  radio_group_grid: TmplRadioGroupGridComponent,
   tile_component: TmplTileComponent,
   simple_checkbox: TmplSimpleCheckboxComponent,
   icon_banner: TmplIconBannerComponent,
