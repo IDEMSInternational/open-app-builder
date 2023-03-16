@@ -597,7 +597,7 @@
     {
       "type": "button",
       "name": "button_submit",
-      "value": "@global.submit_button",
+      "value": "@global.submit",
       "_translations": {
         "value": {}
       },
@@ -635,10 +635,10 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@global.submit_button",
-            "matchedExpression": "@global.submit_button",
+            "fullExpression": "@global.submit",
+            "matchedExpression": "@global.submit",
             "type": "global",
-            "fieldName": "submit_button"
+            "fieldName": "submit"
           }
         ],
         "action_list": {
@@ -673,7 +673,7 @@
         }
       },
       "_dynamicDependencies": {
-        "@global.submit_button": [
+        "@global.submit": [
           "value"
         ],
         "@local.form_data": [

@@ -6,6 +6,24 @@
     {
       "type": "title",
       "name": "title",
+      "value": "Acknowledgement",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title"
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "The WASH App team would firstly like to acknowledge and show appreciation for the inputs of colleagues from the National Institute for Medical Research (whom are also community members) of Mwanza, Tanzania in shaping the content and design of this App.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text"
+    },
+    {
+      "type": "title",
+      "name": "title",
       "value": "References",
       "_translations": {
         "value": {
