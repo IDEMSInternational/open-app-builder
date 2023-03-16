@@ -1,13 +1,13 @@
 <div class="radio-grid" [ngStyle]="gridStyle">
   <div
-    *ngFor="let radioButton of radioButtons"
-    class="radio-button"
-    (click)="handleRadioButtonClick(radioButton)"
-    [attr.data-selected]="radioButton.name === _row.value"
+    *ngFor="let item of radioItems"
+    class="item"
+    (click)="handleItemClick(item)"
+    [attr.data-selected]="item.name === _row.value"
   >
-    <div class="radio-button-image-container" *ngIf="radioButton.image">
-      <img class="radio-button-image" [src]="radioButton.image | plhAsset" />
+    <div class="item-image-container" *ngIf="radioButton.image">
+      <img class="item-image" [src]="radioButton.image | plhAsset" />
     </div>
-    <div class="radio-button-text">{{ radioButton.text }}</div>
+    <div class="item-text">{{ radioButton.text }}</div>
   </div>
 </div>

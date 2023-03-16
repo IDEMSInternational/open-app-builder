@@ -11,7 +11,7 @@ $border-radius: var(--ion-border-radius-standard);
   display: grid;
   gap: 1rem;
 }
-.radio-button {
+.item {
   border: $border;
   border-radius: 15px;
   text-align: center;
@@ -19,6 +19,6 @@ $border-radius: var(--ion-border-radius-standard);
   background: white;
   cursor: pointer;
 }
-.radio-button[data-selected="true"] {
+.item[data-selected="true"] {
   background: $background-selected;
 }
